@@ -1,0 +1,229 @@
+{
+ "name": "monitor-el-nino-brasil-mare",
+ "title": "Monitor El Niño Brasil — índice MARÉ e registros verificados",
+ "version": "2.2.3",
+ "homepage": "https://monitorelnino.com.br",
+ "created": "31/08/2026",
+ "description": "Preparação demonstrável publicamente de estados e municípios brasileiros para o El Niño 2026/2027: instrumentos localizados em fontes oficiais, categorizados por vocabulário controlado, e o índice MARÉ (0–100). Metodologia aberta em METODOLOGIA.md.",
+ "licenses": [
+  {
+   "name": "MIT",
+   "path": "https://opensource.org/licenses/MIT",
+   "title": "MIT License (a mesma do repositório; ver docs/DADOS_ABERTOS.md sobre licença de dados)"
+  }
+ ],
+ "contributors": [
+  {
+   "title": "Futura Evidence Lab",
+   "role": "author",
+   "path": "https://futuraevidencelab.com.br"
+  }
+ ],
+ "resources": [
+  {
+   "name": "indice",
+   "path": "indice.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Índice MARÉ por unidade da federação: nota 0–100, faixa interpretativa e componentes.",
+   "schema": {
+    "fields": [
+     {
+      "name": "uf",
+      "type": "string"
+     },
+     {
+      "name": "estado",
+      "type": "string"
+     },
+     {
+      "name": "mare_total",
+      "type": "number"
+     },
+     {
+      "name": "faixa",
+      "type": "string"
+     },
+     {
+      "name": "componente_estadual",
+      "type": "number"
+     },
+     {
+      "name": "componente_cobertura_populacional",
+      "type": "number"
+     },
+     {
+      "name": "componente_antecipacao",
+      "type": "number"
+     },
+     {
+      "name": "status_estadual",
+      "type": "string"
+     }
+    ]
+   },
+   "rowCount": 27
+  },
+  {
+   "name": "estados",
+   "path": "estados.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Instrumento estadual localizado por UF (status NOVO/READ/VIG/ELAB/LAC), documento, data e órgão.",
+   "schema": {
+    "fields": [
+     {
+      "name": "uf",
+      "type": "string"
+     },
+     {
+      "name": "estado",
+      "type": "string"
+     },
+     {
+      "name": "status",
+      "type": "string"
+     },
+     {
+      "name": "natureza_doc",
+      "type": "string"
+     },
+     {
+      "name": "documento",
+      "type": "string"
+     },
+     {
+      "name": "data",
+      "type": "string"
+     },
+     {
+      "name": "orgao",
+      "type": "string"
+     },
+     {
+      "name": "url",
+      "type": "string"
+     }
+    ]
+   },
+   "rowCount": 27
+  },
+  {
+   "name": "municipios",
+   "path": "municipios.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Registros municipais verificados individualmente (categoria do vocabulário controlado, documento, fonte).",
+   "schema": {
+    "fields": [
+     {
+      "name": "uf",
+      "type": "string"
+     },
+     {
+      "name": "municipio",
+      "type": "string"
+     },
+     {
+      "name": "categoria",
+      "type": "string"
+     },
+     {
+      "name": "documento",
+      "type": "string"
+     },
+     {
+      "name": "data",
+      "type": "string"
+     },
+     {
+      "name": "fonte",
+      "type": "string"
+     },
+     {
+      "name": "url",
+      "type": "string"
+     }
+    ]
+   },
+   "rowCount": 265
+  },
+  {
+   "name": "atos_resposta",
+   "path": "atos_resposta.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Decretos municipais de emergência/calamidade registrados (atos de resposta; nunca pontuam).",
+   "schema": {
+    "fields": [
+     {
+      "name": "uf",
+      "type": "string"
+     },
+     {
+      "name": "municipio",
+      "type": "string"
+     },
+     {
+      "name": "data",
+      "type": "string"
+     },
+     {
+      "name": "causa",
+      "type": "string"
+     },
+     {
+      "name": "decreto",
+      "type": "string"
+     },
+     {
+      "name": "fonte",
+      "type": "string"
+     },
+     {
+      "name": "url",
+      "type": "string"
+     }
+    ]
+   },
+   "rowCount": 5
+  },
+  {
+   "name": "historico_mudancas",
+   "path": "historico_mudancas.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Mudanças detectadas pelo pipeline entre atualizações (base dos feeds Atom).",
+   "schema": {
+    "fields": [
+     {
+      "name": "data",
+      "type": "string"
+     },
+     {
+      "name": "uf",
+      "type": "string"
+     },
+     {
+      "name": "tipo",
+      "type": "string"
+     },
+     {
+      "name": "titulo",
+      "type": "string"
+     },
+     {
+      "name": "resumo",
+      "type": "string"
+     }
+    ]
+   },
+   "rowCount": 27
+  }
+ ]
+}

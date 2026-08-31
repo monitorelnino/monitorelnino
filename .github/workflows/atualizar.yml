@@ -1,0 +1,200 @@
+name: Atualização semanal de dados
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"  # atualizacao SEMANAL (compromisso publico do site), segundas 09h UTC
+  workflow_dispatch: {}    # execução manual pelo botão "Run workflow"
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+
+      # Node/jsdom precisam vir ANTES do atualizar.py: o orquestrador chama
+      # scripts/verificar_estrutura.js, scripts/verificar_runtime.js e (desde
+      # 31/08/2026, quando mapas/gráficos ganharam página própria)
+      # scripts/verificar_runtime_mapas.js — todos dependem de jsdom — como
+      # portões obrigatórios da própria atualização, não um passo separado
+      # depois. Corrigido em 26/08/2026: a ordem antiga rodava o Python
+      # primeiro, o que faria a Action falhar com "Cannot find module 'jsdom'"
+      # na primeira execução real.
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: npm install --no-save jsdom d3@7
+
+      # C4 (auditoria 29/08/2026): com versões travadas para reprodutibilidade,
+      # nenhuma atualização de segurança entra sozinha — estas duas etapas são o
+      # detector semanal de CVE novo. Informativas por ora (continue-on-error);
+      # promover a bloqueantes quando a política de resposta for decidida.
+      - name: Auditoria de vulnerabilidades Python (informativa)
+        continue-on-error: true
+        run: pip install pip-audit --quiet && pip-audit -r requirements.txt --format json --output docs/pip-audit-resultado.json
+      - name: Auditoria de vulnerabilidades Node (informativa)
+        continue-on-error: true
+        run: npm audit --json > docs/npm-audit-resultado.json || true
+
+      - name: População do Censo 2022 (uma vez; revalida se já existir)
+        run: |
+          if [ -f data/populacao_censo2022.json ]; then
+            python atualizar_populacao.py --check
+          else
+            python atualizar_populacao.py
+          fi
+        # Se a busca ou a validação falhar, o job para aqui: o índice nunca
+        # publica um componente populacional com dado não confirmado. As
+        # sentinelas do script existem porque a primeira fonte candidata
+        # (projeções RIPSA rotuladas como 2022) foi rejeitada por elas.
+
+      - name: Processar contribuições do formulário (verificação automática)
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          pip install pypdf --quiet
+          python processar_contribuicoes.py
+        # Aprova sozinho apenas o que passa nas regras R1-R7. A R7 (27/08/2026)
+        # reserva ao julgamento humano tudo que move o índice: tipo "plano" e
+        # qualquer capital (maior alavanca populacional individual, v2.2) — esses ficam na fila humana (verificar_contribuicoes
+        # → converter_contribuicao → aplicar_revisao). O caminho automático fica
+        # restrito a decretos de não-capitais, neutros ao escore pela Correção B;
+        # após aplicar, o script regrava índice/percentual derivados (--write).
+        # Recusas ficam em data/contribuicoes_recusadas.json com motivo.
+        # Sem os secrets, o passo apenas avisa e segue. Os portões rodam DEPOIS
+        # (atualizar.py) — a checagem de média nacional idêntica no site é a
+        # prova mecânica de que o caminho automático segue neutro; qualquer
+        # regressão trava o job e nada é publicado.
+
+      # §15 (29/08/2026): vigia de sinais federais novos (DOU, ADPF 743) —
+      # descoberta para triagem humana, nunca classificação; e checagem de
+      # prazos federais contra o banco — marcador editorial, nunca pontuação.
+      - name: Vigiar sinais federais novos (descoberta; informativa)
+        continue-on-error: true
+        run: python3 monitorar_sinais_federais.py
+      - name: Checar prazos federais contra o banco (marcador editorial)
+        continue-on-error: true
+        run: python3 verificar_prazos_legais.py
+
+      # §17 (29/08/2026): vigia de imprensa nacional (Google News RSS) por
+      # possíveis instrumentos ainda não registrados — descoberta pura, com
+      # trava absoluta (nenhuma pista entra no banco sem confirmação humana
+      # em documento oficial). Limite alto pois a rede da Action é aberta.
+      - name: Vigiar imprensa nacional por novos instrumentos (descoberta; informativa)
+        continue-on-error: true
+        run: python3 monitorar_imprensa_regional.py --limite 40
+
+      # 31/08/2026 (pedido de Patricia, motivado pelo temporal de granizo em SC):
+      # vigia de atos de RESPOSTA (decretos de emergência/calamidade pública) —
+      # varre as 27 UFs em rodízio simples, sem priorização (um temporal pode
+      # acontecer em qualquer lugar, diferente da busca de instrumentos ex-ante,
+      # que prioriza UFs LAC). Alimenta a MESMA fila de pistas da vigia de
+      # imprensa acima — o julgamento automático (etapa seguinte) decide se cada
+      # pista é resposta (vai para o mapa "Cidades que decretaram emergência",
+      # nunca pontua) ou, por engano de busca, algo ex-ante.
+      - name: Vigiar imprensa nacional por novos atos de resposta (descoberta; informativa)
+        continue-on-error: true
+        run: python3 monitorar_atos_resposta.py --limite 10
+
+      # 31/08/2026 (pedido de Patricia): julgamento automático do que as duas
+      # vigias acima descobriram — a trava de fonte oficial não mudou (só
+      # processa pistas de domínio .gov.br/.leg.br/Diário Oficial), mas o
+      # julgamento ex-ante × resposta que antes esperava uma sessão humana
+      # agora é automático quando o classificador está confiante: ex-ante com
+      # citação completa aplica em estados.json/municipios.json; resposta com
+      # município identificável aplica em data/atos_resposta.json (o mapa).
+      # Continua exigindo revisão humana em qualquer outro caso — sem mudança
+      # nessa parte. Roda com rede aberta (busca o documento de verdade, não só
+      # a notícia sobre ele); no ambiente de edição, sem rede para .gov.br, essa
+      # etapa não tem o que buscar e não faz nada (degrada graciosamente).
+      - name: Vigiar o painel El Niño da Política Por Inteiro (agregador terceiro; descoberta; informativa)
+        continue-on-error: true
+        run: |
+          # 31/08/2026 (decisão de Patricia): o painel da Talanoa entra como fonte de PISTAS,
+          # nunca de registro — cada ato exige confirmação no documento oficial. O vigia
+          # descobre a fonte de dados do painel em tempo de execução; se não conseguir ler,
+          # enfileira uma pista de manutenção e não derruba a atualização.
+          python3 monitorar_politica_por_inteiro.py
+
+      - name: Julgar e aplicar descobertas com fonte oficial e citação completa
+        continue-on-error: true
+        run: python3 julgar_e_aplicar_descobertas.py
+
+      - name: Atualizar dados (boletins + instrumentos estaduais + transferências)
+        env:
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+        run: python atualizar.py
+        # atualizar.py já roda, nesta ordem e como etapas bloqueantes,
+        # verificar_estrutura.js → verificar_consistencia.py →
+        # recalcular_mare.py --check → verificar_runtime.js →
+        # verificar_runtime_mapas.js (desde 31/08/2026) — falha aqui
+        # interrompe o job antes do commit, então nada quebrado é publicado.
+
+      - name: Regenerar PDF de documentação do índice
+        run: |
+          python consultar_querido_diario.py && python consultar_querido_diario.py --descobrir-termos || true
+          python atualizar_recursos.py || true
+          python verificar_vigencia.py || true
+          python analisar_decretos.py || echo 'QD indisponível — pistas ficam da execução anterior'
+          python gerar_pdf_indice.py
+          python gerar_pdf_metodologia.py
+        # Roda DEPOIS dos quatro portões (dentro de atualizar.py): o PDF é
+        # documentação computada ao vivo dos dados vigentes — regenerá-lo a
+        # cada atualização garante que o documento público nunca envelhece
+        # em relação à base (o defeito clássico de PDF montado à mão).
+
+      - name: Avisar sobre propostas pendentes de revisão humana
+        if: always()
+        run: |
+          if [ -f data/instrumentos_revisar.json ]; then
+            echo "::warning::Há propostas em data/instrumentos_revisar.json aguardando revisão humana (não aplicadas automaticamente)."
+          fi
+          if [ -f data/pistas_imprensa.json ]; then
+            python3 -c "import json; f = json.load(open('data/pistas_imprensa.json', encoding='utf-8')); pendentes = [p for p in f['pistas'] if p.get('status') == 'pendente_confirmacao_documento']; print(f'::warning::{len(pendentes)} pista(s) de imprensa aguardando revisão humana em data/pistas_imprensa.json (dúvida do classificador, citação incompleta, ou fonte não confirmada como oficial).') if pendentes else None"
+          fi
+
+      - name: Verificar links externos (informativa; nunca remove link — decisão humana)
+        if: always()
+        continue-on-error: true
+        run: |
+          # 31/08/2026: verificar_links.py existia, mas não rodava em lugar nenhum — o
+          # sandbox de edição não alcança gov.br; só aqui há rede de verdade. Cobre os
+          # href das 5 páginas, as URLs em constantes JS (portais, diários oficiais,
+          # guias, links do PDF do cidadão), estados.json e as 104 urls do banco
+          # municipal. Link quebrado vira ::warning:: e relatório no artefato, nunca
+          # remoção automática (regra de ouro do projeto).
+          python3 verificar_links.py > links_relatorio.txt 2>&1 || true
+          QUEBRADOS=$(grep -c "QUEBRADO" links_relatorio.txt || true)
+          tail -40 links_relatorio.txt
+          if [ "$QUEBRADOS" != "0" ]; then echo "::warning::$QUEBRADOS link(s) externos com problema — ver artefato links_relatorio.txt e decidir (remover, substituir ou manter nomeado sem link)."; fi
+      - name: Guardar relatório de links
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: links-relatorio
+          path: links_relatorio.txt
+          retention-days: 30
+
+      - name: Commit das alterações de dados
+        run: |
+          git config user.name "monitor-el-nino-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ index.html mapas-e-graficos.html recalcular_mare.py MARE_Indice_Documentacao.pdf METODOLOGIA.pdf selos/ feeds/ dados-abertos/
+          # Escopo do commit ampliado em 31/08/2026, e revisado depois no mesmo
+          # dia quando mapas/gráficos ganharam página própria: index.html
+          # (o número fixo do medidor), mapas-e-graficos.html (AREAS —
+          # CONSIST mudou de JS embutido para data/consist.json, já coberto
+          # por data/) e recalcular_mare.py (o dicionário ESTADOS, a fonte de
+          # verdade real do cálculo) são os únicos arquivos fora de data/ que
+          # a automação pode tocar, e só através das funções testadas e
+          # protegidas por rollback de julgar_e_aplicar_descobertas.py — nunca
+          # edição livre. O resto (demais páginas, scripts, metodologia) segue
+          # fora do alcance da automação.
+          git diff --cached --quiet && echo "Sem alterações." || git commit -m "Atualização automática de dados ($(date +%d/%m/%Y))"
+          git push

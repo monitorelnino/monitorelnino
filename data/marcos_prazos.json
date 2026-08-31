@@ -1,0 +1,178 @@
+{
+ "_formato": {
+  "descricao": "Registro curado de marcos federais com efeito de prazo sobre estados e municípios. Cada marco tem classe (legal | judicial | tecnico), fundamento citável, data-base (null quando a data exata ainda não foi verificada em fonte primária — nesse caso o prazo NÃO é computado), regra de prazo e destinatários. Efeito sobre o índice: SEMPRE marcador_editorial nesta versão — nenhum marco pontua (METODOLOGIA §15; mudança de pontuação exige versão maior).",
+  "editado_por": "curadoria humana + registro de sessão; a rotina monitorar_sinais_federais.py NUNCA escreve neste arquivo — ela apenas propõe pistas em data/pistas_sinais.json para triagem humana",
+  "registrado_em": "29/08/2026"
+ },
+ "marcos": [
+  {
+   "id": "legal_pnpdc_adequacao_24m",
+   "classe": "legal",
+   "fundamento": "Lei 12.608/2012, art. 7º, §2º, II (incluído pela Lei 14.750/2023): Plano Estadual de Proteção e Defesa Civil adequado ao Plano Nacional em até 24 meses após a publicação deste",
+   "data_base": null,
+   "data_base_pendencia": "data exata de publicação do PN-PDC 2025-2035 no DOU ainda não verificada em fonte primária — prazo não computável até verificação (protocolo: 'não localizamos' é o teto da afirmação)",
+   "prazo": {
+    "tipo": "meses",
+    "valor": 24
+   },
+   "destinatarios": [
+    "*UF"
+   ],
+   "observacao": "Nuance registrada: o inciso I do mesmo §2º, que fixava prazo para INSTITUIR o plano estadual, foi VETADO — o prazo vigente é de ADEQUAÇÃO ao Plano Nacional, o que pressupõe a existência do plano. Incisos III e IV criam relógios recorrentes (prestação de contas anual por audiência pública; atualização a cada 2 anos).",
+   "efeito_indice": "marcador_editorial",
+   "titulo_curto": "Adequação dos planos estaduais à Lei 12.608 (24 meses)",
+   "status_curto": "data-base pendente de verificação"
+  },
+  {
+   "id": "legal_plancon_municipal_1ano",
+   "classe": "legal",
+   "fundamento": "Lei 12.340/2010, art. 3º-A, §6º (redação da Lei 14.750/2023): Plano de Contingência de Proteção e Defesa Civil elaborado no prazo de 1 ano, com avaliação e prestação de contas anual por audiência pública",
+   "data_base": null,
+   "data_base_pendencia": "aplica-se aos municípios incluídos no cadastro nacional (2.086 prioritários, Nota Técnica nº 2/2025/SADJ-VI/SEPAC/CC/PR); a lista não integra o banco — o marco só é computável por município após a incorporação de data/cadastro_prioritarios.json (pendência declarada)",
+   "prazo": {
+    "tipo": "meses",
+    "valor": 12
+   },
+   "destinatarios": [
+    "municipios_cadastro"
+   ],
+   "observacao": "Pista do DF já registrada na METODOLOGIA §14: conferir se Brasília consta do cadastro.",
+   "efeito_indice": "marcador_editorial",
+   "titulo_curto": "Plano de contingência municipal em 1 ano (Lei 12.340, art. 3º-A)",
+   "status_curto": "aguarda o cadastro nacional de municípios prioritários"
+  },
+  {
+   "id": "judicial_adpf743_medidas_2026",
+   "classe": "judicial",
+   "fundamento": "ADPF 743 (STF, rel. min. Flávio Dino), despacho de 25/05/2026: União e estados da Amazônia Legal e do Pantanal devem informar em 10 dias úteis as medidas de prevenção e enfrentamento ao risco de agravamento dos incêndios florestais em 2026, com base em nota técnica do INPE sobre a alta probabilidade de consolidação do El Niño no 2º semestre de 2026",
+   "data_base": "25/05/2026",
+   "prazo": {
+    "tipo": "dias_uteis",
+    "valor": 10,
+    "limitacao_declarada": "cômputo por dias de semana, sem tabela de feriados — aproximação declarada"
+   },
+   "destinatarios": [
+    "AC",
+    "AM",
+    "AP",
+    "MA",
+    "MT",
+    "PA",
+    "RO",
+    "RR",
+    "TO",
+    "MS"
+   ],
+   "observacao": "Sinal oficial datado que nomeia o fenômeno do ciclo; candidato a marco da família fogo na régua de antecipação em versão maior (METODOLOGIA §15). Instrumento federal de cumprimento identificado em 31/08/2026: MP nº 1.367/2026 (ver campo instrumento_cumprimento e o marco legal_mp1367_deliberacao_senado_2026).",
+   "efeito_indice": "marcador_editorial",
+   "instrumento_cumprimento": {
+    "ato": "MP nº 1.367/2026 (DOU 15/06/2026), crédito extraordinário de R$ 337.483.432,00 ao MMA para incêndios e fiscalização — a Exposição de Motivos declara cumprir as decisões do STF nas ADPFs 743 e 760",
+    "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624",
+    "registrado_em": "31/08/2026"
+   },
+   "titulo_curto": "ADPF 743 (STF): medidas contra incêndios — informe em 10 dias úteis",
+   "status_curto": "prazo transcorrido; homologações e MP 1.367 como cumprimento"
+  },
+  {
+   "id": "judicial_adpf743_correcoes_2026",
+   "classe": "judicial",
+   "fundamento": "ADPF 743 (STF, rel. min. Flávio Dino), decisão de junho/2026: prazo de 30 dias para que oito estados corrijam seus planos de combate a incêndios; planos de MT e PA homologados",
+   "data_base": "25/06/2026",
+   "data_base_pendencia": "dia exato da decisão de junho a confirmar na consulta processual da ADPF 743 antes de qualquer citação pública — data provisória pelo noticiário",
+   "prazo": {
+    "tipo": "dias",
+    "valor": 30
+   },
+   "destinatarios": [
+    "AC",
+    "AM",
+    "AP",
+    "MA",
+    "MS",
+    "RO",
+    "RR",
+    "TO"
+   ],
+   "fatos_verificaveis": {
+    "planos_homologados": [
+     "MT",
+     "PA"
+    ]
+   },
+   "observacao": "PISTA DE PRIMEIRA ORDEM registrada para a bateria humana: o STF homologou plano do PA, hoje LAC no banco ('não localizado' em canal admissível). As duas coisas podem coexistir (peça de autos ≠ publicação em canal do vocabulário), mas a existência do documento é evidência oficial datada. Reclassificação é julgamento editorial reservado, caso a caso, pelo protocolo padrão. Decisão de vocabulário pendente e reservada: admitir ou não 'autos judiciais públicos' como canal.",
+   "efeito_indice": "marcador_editorial",
+   "titulo_curto": "ADPF 743 (STF): correções determinadas",
+   "status_curto": "acompanhamento nos autos"
+  },
+  {
+   "id": "tecnico_boletim1_painel",
+   "classe": "tecnico",
+   "fundamento": "Boletim nº 1 do Painel El Niño (29/06/2026) — âncora vigente da régua de antecipação (METODOLOGIA §5.2.1); não impõe prazo jurídico",
+   "data_base": "29/06/2026",
+   "prazo": null,
+   "destinatarios": [
+    "*UF"
+   ],
+   "observacao": "Consta aqui para que a rotina de prazos e a de sinais compartilhem um registro único de marcos datados. A vigia de novos boletins permanece em atualizar_boletins.py.",
+   "efeito_indice": "ancora_de_antecipacao_vigente",
+   "titulo_curto": "Boletim nº 1 do Painel El Niño (29/06/2026)",
+   "status_curto": "âncora técnica do ciclo; Boletim nº 2 em 31/07"
+  },
+  {
+   "id": "legal_mp1367_deliberacao_senado_2026",
+   "classe": "legal",
+   "fundamento": "MP nº 1.367/2026 (DOU 15/06/2026, p. 1-2): crédito extraordinário de R$ 337.483.432,00 ao Ministério do Meio Ambiente e Mudança do Clima (Ibama R$ 194.417.722; ICMBio R$ 143.065.710) para prevenção e combate a incêndios florestais e fiscalização ambiental, em cumprimento às ADPFs 743 e 760 (STF). Tramitação (página oficial do CN, dados de 27/08/2026): CMO aprovou parecer em 07/07; Câmara aprovou em 15/07 (MPV 1.367-A); Senado aguardando leitura desde 17/07. Prazo de deliberação retificado para 13/08/2026 e prorrogado por 60 dias pelo ATCN nº 73/2026: vence em 12/10/2026 (CF, art. 62, §§ 3º e 7º).",
+   "data_base": "13/08/2026",
+   "prazo": {
+    "tipo": "dias",
+    "valor": 60
+   },
+   "destinatarios": [
+    "UNIAO"
+   ],
+   "observacao": "Destinatário é o Senado Federal (União), não os estados — o cruzamento por UF não se aplica a este marco. Se não deliberada até 12/10/2026, a MP perde eficácia; as despesas já executadas são preservadas (CF, art. 62, § 11). Reconferir o status na página oficial do CN na verificação semanal. Vínculo: instrumento de cumprimento do marco judicial_adpf743_medidas_2026.",
+   "fontes": [
+    {
+     "nome": "Congresso Nacional — texto, tramitação e prazos",
+     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624"
+    },
+    {
+     "nome": "DOU 15/06/2026, p. 1-2",
+     "url": "https://pesquisa.in.gov.br/imprensa/jsp/visualiza/index.jsp?jornal=515&pagina=1&data=15/06/2026"
+    }
+   ],
+   "efeito_indice": "marcador_editorial",
+   "registrado_em": "31/08/2026 (promoção humana da pista de 31/08; decisão de Patricia)",
+   "titulo_curto": "MP 1.367/2026 (R$ 337,5 mi, incêndios) — deliberação no Senado",
+   "status_curto": "aprovada na Câmara em 15/07; no Senado, aguardando leitura; prazo prorrogado"
+  },
+  {
+   "id": "legal_mp1384_deliberacao_2026",
+   "classe": "legal",
+   "fundamento": "MP nº 1.384, de 12/08/2026 (DOU 13/08/2026, p. 1-2): crédito extraordinário de R$ 924.985.960,00 em favor do Ministério do Desenvolvimento Agrário e Agricultura Familiar e do Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome — instrumento legal da parte de abastecimento e segurança alimentar do plano federal de 29/07/2026 (estoques de milho e arroz R$ 850 mi + cestas R$ 65 mi + PAA R$ 13 mi = R$ 928 mi, conforme a nota oficial do MDS). Prazo de deliberação: 13/08/2026 a 11/10/2026; emendas encerradas em 19/08 sem apresentação; na CMO.",
+   "data_base": "13/08/2026",
+   "prazo": {
+    "tipo": "dias",
+    "valor": 59
+   },
+   "destinatarios": [
+    "UNIAO"
+   ],
+   "observacao": "Vencimento 11/10/2026 conforme o calendário oficial do CN (a prorrogação por 60 dias, se houver, leva a dezembro). Segundo crédito extraordinário do plano El Niño (o primeiro foi a MP 1.367, incêndios). Execução direta da União — não vira transferência municipal (ver seção de financiamento).",
+   "fontes": [
+    {
+     "nome": "Congresso Nacional — texto e tramitação",
+     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455"
+    },
+    {
+     "nome": "Nota oficial do MDS sobre o plano de R$ 1,335 bi (29/07/2026)",
+     "url": "https://www.gov.br/mds/pt-br/noticias/planejamento-para-enfrentamento-de-eventos-climaticos-associados-ao-el-nino-preve-r-1-335-bilhao-para-acoes-de-preparacao-e-resposta"
+    }
+   ],
+   "efeito_indice": "marcador_editorial",
+   "registrado_em": "31/08/2026 (documento oficial localizado; decisão de Patricia de promover as pistas quando o documento chegasse)",
+   "titulo_curto": "MP 1.384/2026 (R$ 925 mi, estoques e cestas) — deliberação no Congresso",
+   "status_curto": "na Comissão Mista de Orçamento; sem emendas"
+  }
+ ]
+}

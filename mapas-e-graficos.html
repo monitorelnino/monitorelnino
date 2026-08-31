@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapas e gráficos · Monitor El Niño Brasil</title>
+<meta name="description" content="Monitor El Niño Brasil · Mapas geográficos e gráficos analíticos: cobertura municipal, natureza dos atos, risco projetado × instrumento estadual, financiamento e transferências, municípios prioritários e cidades que decretaram emergência.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.1/chart.umd.min.js"
+        integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"
+        integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+  :root{--ink:#15201A; --muted:#55645B; --link:#465D6E; --osso:#EDE6D8; --card:#F5F1E8; --line:#D6C4AC;}
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--osso); color:var(--ink); font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size:15px; line-height:1.6;}
+  .wrap{max-width:1180px; margin:0 auto; padding:26px 20px 40px;}
+  @media (max-width:640px){ .wrap{padding:20px 14px 36px;} h2{font-size:23px;} }
+  .volta{display:inline-block; margin:4px 0 18px; color:var(--link); font-weight:600; text-decoration:none;}
+  .volta:hover{text-decoration:underline;}
+  h1{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:30px; font-weight:500; margin:0 0 10px;}
+  h2{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:27px; font-weight:500; margin:26px 0 10px;}
+  h3{font-size:19px; margin:16px 0 6px; color:var(--ink);}
+  p{margin:0 0 10px;}
+  a{color:var(--link);}
+  .selo{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 8px;}
+  .hint{font-size:14.5px; color:var(--muted);}
+  .note{font-size:13.5px; color:var(--muted);}
+  .panel{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:22px; margin:0 0 24px;}
+  .btn-pdf{margin-top:4px; padding:9px 16px; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:14px; font-weight:600;
+    background:var(--ink); color:#F5F1E8; border:none; border-radius:8px; cursor:pointer;}
+  .btn-pdf:hover{background:#38413C;}
+
+  /* ===== Identidade: masthead e rodapé unificados ===== */
+  .grad-line{height:4px; border-radius:2px; border:none; margin:0;
+    background:linear-gradient(90deg,#A65F3F 0%,#C69B72 20%,#8FA6B5 48%,#35566B 88%);}
+  header.masthead{display:block; border-bottom:none; padding-bottom:0; margin-bottom:28px;}
+  .mast-top{display:flex; justify-content:space-between; align-items:center; gap:16px 22px;
+    flex-wrap:wrap; margin-bottom:20px;}
+  .mainnav{display:flex; gap:8px; flex-wrap:wrap;}
+  .mainnav a, .mainnav span{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:13.5px; font-weight:600;
+    letter-spacing:.07em; text-transform:uppercase; color:var(--muted); text-decoration:none;
+    padding:7px 15px; border:1px solid var(--line); border-radius:999px;
+    transition:color .15s, border-color .15s, background .15s;}
+  .mainnav a:hover{color:var(--ink); border-color:var(--ink); text-decoration:none;}
+  .mainnav .ativa, .mainnav .ativa:hover{background:var(--ink); color:#F5F1E8; border-color:var(--ink);}
+  .kicker{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 8px;}
+  .site-title{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:550;
+    font-size:clamp(33px, 5.4vw, 46px); line-height:1.08; letter-spacing:-.012em;
+    color:var(--ink); margin:0 0 6px;}
+  .site-title em{font-style:italic; font-weight:500;}
+  .mast-sub{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; font-weight:600;
+    letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:0 0 16px;}
+  footer.site-footer{border-top:none; margin-top:40px; padding:0 0 10px; text-align:center;
+    font-size:13.5px; color:var(--muted);}
+  footer.site-footer .grad-line{margin:0 0 20px;}
+  footer.site-footer svg, footer.site-footer img{height:24px; width:auto; display:block; margin:0 auto 10px;}
+
+  .analysis{margin-top:0;}
+  .analysis .hint{margin-bottom:20px;}
+  .charts-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(330px, 1fr)); gap:18px;}
+  .chart-box{background:var(--card); border:1px solid var(--line); border-radius:9px; padding:16px 18px;}
+  .chart-box.wide{grid-column:1/-1;}
+  .chart-box h3, .chart-box h4{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:15px; font-weight:600; margin:0 0 3px;}
+  .chart-box .note{font-size:13.5px; color:var(--muted); margin:0 0 12px; line-height:1.4;}
+  .chart-box .canvas-wrap{position:relative; height:230px;}
+  .chart-box.wide .canvas-wrap{height:210px;}
+  .canvas-wrap{width:100%; max-width:100%;}
+  canvas{max-width:100% !important;}
+
+  .maps-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(330px, 1fr)); gap:18px;}
+  .map-box{background:var(--card); border:1px solid var(--line); border-radius:9px; padding:16px 18px;}
+  .map-box h3, .map-box h4{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:15px; font-weight:600; margin:0 0 4px;}
+  .map-box .note{font-size:13.5px; color:var(--muted); margin:0 0 10px; line-height:1.5;}
+  .map-card-h{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:600; font-size:13.5px; margin:0 0 6px; color:var(--ink);}
+  .map-legend{display:flex; flex-wrap:wrap; gap:12px; margin-top:10px; font-size:12.5px; color:var(--muted);}
+  .map-legend span{display:flex; align-items:center; gap:6px;}
+  .map-legend i{width:10px; height:10px; border-radius:2px; display:inline-block;}
+  .uf-path{stroke:#F5F1E8; stroke-width:.6; cursor:default; transition:opacity .12s;}
+  .uf-path:hover{opacity:.8;}
+  .map-tooltip{position:fixed; pointer-events:none; background:#141B16; border:1px solid #55645B; border-radius:6px;
+    padding:6px 10px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:#EDE6D8; z-index:200; display:none;}
+  img, svg{max-width:100%;}
+  #riscoinstrumento details, .map-box details{overflow-x:auto;}
+  .tbl-wrap{max-height:480px; overflow:auto; border:1px solid var(--line); border-radius:8px;}
+  .mun-table{width:100%; border-collapse:collapse; font-size:15px;}
+  .mun-table th, .mun-table td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  .mun-table thead th{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--muted); position:sticky; top:0; background:var(--card);}
+  .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap;}
+  @media (max-width:880px){ .charts-grid{grid-template-columns:1fr;} .maps-grid{grid-template-columns:1fr;} }
+  @media print{ .btn-pdf{display:none;} }
+
+
+  @media (prefers-reduced-motion: reduce){ *, *::before, *::after{transition:none !important; animation:none !important; scroll-behavior:auto !important;} }
+
+  .skip{position:absolute; left:-999px; top:8px; background:var(--ink); color:#F5F1E8; padding:8px 12px; border-radius:6px; z-index:300; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;}
+  .skip:focus{left:8px;}
+  details > summary{padding:6px 0; min-height:24px; box-sizing:border-box;}  /* alvo de toque ≥24px (WCAG 2.5.8) */
+</style>
+</head>
+<body>
+<div class="map-tooltip" id="mapTooltip"></div>
+<a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
+<div class="wrap">
+  <header class="masthead masthead--mini">
+    <div class="mast-top">
+      <a href="./" style="line-height:0;"><svg style="height:42px; width:auto; display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="88 96 816 312" role="img" aria-label="Futura Evidence Lab">
+  <path d="M100,180 C290,112 608,108 892,148" fill="none" stroke="#C04430" stroke-width="3" stroke-linecap="round"/>
+  <g fill="#1A0E08"><path d="M106.512 340.0Q106.216 340.0 106.216 339.11199999999997Q106.216 338.224 106.512 338.224Q112.136 338.224 114.948 337.48400000000004Q117.75999999999999 336.744 118.722 334.524Q119.684 332.304 119.684 328.012V259.488Q119.684 255.196 118.722 253.05Q117.75999999999999 250.904 114.948 250.09Q112.136 249.276 106.512 249.276Q106.216 249.276 106.216 248.388Q106.216 247.5 106.512 247.5H165.12Q166.452 247.5 166.452 248.832L166.748 266.74Q166.748 267.18399999999997 165.934 267.18399999999997Q165.12 267.18399999999997 165.12 266.74Q165.12 259.044 161.124 254.678Q157.128 250.312 150.61599999999999 250.312H140.404Q132.412 250.312 129.97 252.08800000000002Q127.52799999999999 253.864 127.52799999999999 259.636V327.42Q127.52799999999999 331.86 128.786 334.154Q130.04399999999998 336.448 134.04 337.336Q138.036 338.224 146.028 338.224Q146.47199999999998 338.224 146.47199999999998 339.11199999999997Q146.47199999999998 340.0 146.028 340.0Q141.292 340.0 135.74200000000002 339.852Q130.192 339.704 123.68 339.704Q118.944 339.704 114.50399999999999 339.852Q110.064 340.0 106.512 340.0ZM157.572 306.996Q157.572 300.336 154.39 297.672Q151.208 295.008 143.06799999999998 295.008H123.828V292.196H143.66Q151.356 292.196 154.39 289.828Q157.424 287.46 157.424 281.984Q157.424 281.688 158.312 281.688Q159.2 281.688 159.2 281.984Q159.2 286.276 159.12599999999998 288.644Q159.052 291.012 159.052 293.676Q159.052 296.932 159.2 300.11400000000003Q159.348 303.296 159.348 306.996Q159.348 307.29200000000003 158.46 307.29200000000003Q157.572 307.29200000000003 157.572 306.996Z"/><path d="M283.544 263.04Q283.544 255.936 280.51 252.606Q277.476 249.276 270.96399999999994 249.276Q270.52 249.276 270.52 248.388Q270.52 247.5 270.96399999999994 247.5Q274.21999999999997 247.5 277.698 247.722Q281.176 247.94400000000002 285.32 247.94400000000002Q288.724 247.94400000000002 292.202 247.722Q295.67999999999995 247.5 298.49199999999996 247.5Q298.78799999999995 247.5 298.78799999999995 248.388Q298.78799999999995 249.276 298.49199999999996 249.276Q292.572 249.276 289.686 252.606Q286.79999999999995 255.936 286.79999999999995 263.04V305.368Q286.79999999999995 317.06 282.508 325.2Q278.216 333.34 270.446 337.63199999999995Q262.676 341.924 252.31599999999997 341.924Q241.36399999999998 341.924 233.224 337.558Q225.08399999999997 333.192 220.64399999999998 325.274Q216.20399999999998 317.356 216.20399999999998 306.7V259.488Q216.20399999999998 255.196 215.24199999999996 253.05Q214.27999999999997 250.904 211.46799999999996 250.09Q208.65599999999998 249.276 203.03199999999998 249.276Q202.736 249.276 202.736 248.388Q202.736 247.5 203.03199999999998 247.5Q206.58399999999997 247.5 210.87599999999998 247.722Q215.16799999999998 247.94400000000002 220.05199999999996 247.94400000000002Q225.08399999999997 247.94400000000002 229.45 247.722Q233.81599999999997 247.5 237.07199999999997 247.5Q237.51599999999996 247.5 237.51599999999996 248.388Q237.51599999999996 249.276 237.07199999999997 249.276Q231.44799999999998 249.276 228.63599999999997 250.16400000000002Q225.82399999999998 251.05200000000002 224.93599999999998 253.27200000000002Q224.04799999999997 255.49200000000002 224.04799999999997 259.784V301.52Q224.04799999999997 318.984 232.188 328.308Q240.32799999999997 337.632 254.97999999999996 337.632Q268.596 337.632 276.07 329.048Q283.544 320.464 283.544 305.516Z"/><path d="M352.68399999999997 250.01600000000002Q343.35999999999996 250.01600000000002 339.14199999999994 254.45600000000002Q334.924 258.896 333.296 270.29200000000003Q333.296 270.588 332.408 270.588Q331.52 270.588 331.52 270.29200000000003Q331.816 268.516 332.186 265.11199999999997Q332.556 261.70799999999997 332.852 257.786Q333.14799999999997 253.864 333.37 250.238Q333.592 246.61200000000002 333.592 244.244Q333.592 243.50400000000002 334.48 243.50400000000002Q335.368 243.50400000000002 335.368 244.244Q335.368 245.724 336.774 246.39Q338.18 247.056 340.03 247.27800000000002Q341.88 247.5 343.212 247.5Q355.94 247.94400000000002 372.96 247.94400000000002Q383.46799999999996 247.94400000000002 389.60999999999996 247.722Q395.75199999999995 247.5 401.524 247.5Q406.40799999999996 247.5 409.14599999999996 246.834Q411.88399999999996 246.168 412.62399999999997 243.8Q412.772 243.208 413.51199999999994 243.208Q414.25199999999995 243.208 414.25199999999995 243.8Q414.104 246.02 413.808 249.72000000000003Q413.51199999999994 253.42000000000002 413.364 257.49Q413.216 261.56 413.068 265.038Q412.91999999999996 268.516 412.91999999999996 270.29200000000003Q412.91999999999996 270.588 412.032 270.588Q411.144 270.588 411.144 270.29200000000003Q411.144 258.896 407.296 254.45600000000002Q403.448 250.01600000000002 393.236 250.01600000000002Q386.28 250.01600000000002 382.80199999999996 250.53400000000002Q379.32399999999996 251.05200000000002 378.21399999999994 253.05Q377.104 255.048 377.104 259.784V328.012Q377.104 332.304 378.14 334.524Q379.176 336.744 382.35799999999995 337.48400000000004Q385.53999999999996 338.224 392.05199999999996 338.224Q392.34799999999996 338.224 392.34799999999996 339.11199999999997Q392.34799999999996 340.0 392.05199999999996 340.0Q388.20399999999995 340.0 383.394 339.852Q378.584 339.704 372.96 339.704Q367.632 339.704 362.822 339.852Q358.012 340.0 354.01599999999996 340.0Q353.71999999999997 340.0 353.71999999999997 339.11199999999997Q353.71999999999997 338.224 354.01599999999996 338.224Q360.38 338.224 363.63599999999997 337.48400000000004Q366.892 336.744 368.00199999999995 334.524Q369.11199999999997 332.304 369.11199999999997 328.012V259.488Q369.11199999999997 254.752 367.928 252.75400000000002Q366.74399999999997 250.756 363.192 250.38600000000002Q359.64 250.01600000000002 352.68399999999997 250.01600000000002Z"/><path d="M528.236 263.04Q528.236 255.936 525.202 252.606Q522.168 249.276 515.656 249.276Q515.212 249.276 515.212 248.388Q515.212 247.5 515.656 247.5Q518.912 247.5 522.39 247.722Q525.8679999999999 247.94400000000002 530.012 247.94400000000002Q533.4159999999999 247.94400000000002 536.894 247.722Q540.372 247.5 543.184 247.5Q543.48 247.5 543.48 248.388Q543.48 249.276 543.184 249.276Q537.264 249.276 534.3779999999999 252.606Q531.492 255.936 531.492 263.04V305.368Q531.492 317.06 527.2 325.2Q522.908 333.34 515.138 337.63199999999995Q507.368 341.924 497.008 341.924Q486.056 341.924 477.91599999999994 337.558Q469.77599999999995 333.192 465.33599999999996 325.274Q460.89599999999996 317.356 460.89599999999996 306.7V259.488Q460.89599999999996 255.196 459.93399999999997 253.05Q458.972 250.904 456.15999999999997 250.09Q453.34799999999996 249.276 447.724 249.276Q447.428 249.276 447.428 248.388Q447.428 247.5 447.724 247.5Q451.276 247.5 455.568 247.722Q459.85999999999996 247.94400000000002 464.74399999999997 247.94400000000002Q469.77599999999995 247.94400000000002 474.14199999999994 247.722Q478.508 247.5 481.764 247.5Q482.20799999999997 247.5 482.20799999999997 248.388Q482.20799999999997 249.276 481.764 249.276Q476.14 249.276 473.328 250.16400000000002Q470.51599999999996 251.05200000000002 469.628 253.27200000000002Q468.74 255.49200000000002 468.74 259.784V301.52Q468.74 318.984 476.88 328.308Q485.02 337.632 499.67199999999997 337.632Q513.288 337.632 520.762 329.048Q528.236 320.464 528.236 305.516Z"/><path d="M653.616 340.0Q651.1 340.0 645.328 334.228Q639.556 328.456 631.4159999999999 317.726Q623.276 306.996 613.212 292.344L620.316 290.124Q633.044 308.032 641.924 318.61400000000003Q650.804 329.196 657.612 333.71000000000004Q664.42 338.224 670.784 338.224Q671.228 338.224 671.228 339.11199999999997Q671.228 340.0 670.784 340.0Q664.124 340.0 659.906 340.0Q655.688 340.0 653.616 340.0ZM614.9879999999999 247.056Q626.384 247.056 632.3779999999999 252.53200000000004Q638.372 258.00800000000004 638.372 266.74Q638.372 274.584 633.784 280.948Q629.196 287.312 621.5740000000001 291.012Q613.952 294.712 604.776 294.712Q603.444 294.712 601.6679999999999 294.56399999999996Q599.8919999999999 294.416 598.412 294.26800000000003V328.012Q598.412 332.304 599.3 334.524Q600.188 336.744 603.0740000000001 337.48400000000004Q605.96 338.224 611.584 338.224Q612.028 338.224 612.028 339.11199999999997Q612.028 340.0 611.584 340.0Q608.032 340.0 603.8140000000001 339.852Q599.596 339.704 594.4159999999999 339.704Q589.68 339.704 585.24 339.852Q580.8 340.0 577.2479999999999 340.0Q576.952 340.0 576.952 339.11199999999997Q576.952 338.224 577.2479999999999 338.224Q582.872 338.224 585.758 337.48400000000004Q588.644 336.744 589.6800000000001 334.524Q590.716 332.304 590.716 328.012V259.488Q590.716 255.196 589.754 253.05Q588.792 250.904 585.98 250.09Q583.168 249.276 577.544 249.276Q577.1 249.276 577.1 248.388Q577.1 247.5 577.544 247.5Q580.948 247.5 585.314 247.722Q589.68 247.94400000000002 594.4159999999999 247.94400000000002Q599.004 247.94400000000002 605.072 247.5Q611.14 247.056 614.9879999999999 247.056ZM630.084 270.736Q630.084 262.744 627.4939999999999 258.00800000000004Q624.904 253.272 620.094 251.126Q615.284 248.98000000000002 608.476 248.98000000000002Q603.148 248.98000000000002 600.78 250.904Q598.412 252.828 598.412 259.784V290.86400000000003Q600.484 291.012 602.9259999999999 291.15999999999997Q605.3679999999999 291.308 607.292 291.308Q620.02 291.308 625.0519999999999 285.98Q630.084 280.652 630.084 270.736Z"/><path d="M723.052 297.524 724.384 294.86H762.716L763.752 297.524ZM796.164 338.224Q796.756 338.224 796.756 339.11199999999997Q796.756 340.0 796.164 340.0Q792.02 340.0 787.654 339.704Q783.288 339.408 779.292 339.408Q774.704 339.408 771.374 339.704Q768.044 340.0 764.048 340.0Q763.456 340.0 763.456 339.11199999999997Q763.456 338.224 764.048 338.224Q772.336 338.224 774.482 336.004Q776.628 333.784 773.816 327.568L740.3679999999999 255.64L743.18 253.12400000000002L714.616 321.796Q710.9159999999999 330.824 714.0239999999999 334.524Q717.132 338.224 727.196 338.224Q727.936 338.224 727.936 339.11199999999997Q727.936 340.0 727.196 340.0Q722.756 340.0 719.056 339.704Q715.356 339.408 709.732 339.408Q704.552 339.408 701.37 339.704Q698.188 340.0 693.748 340.0Q693.156 340.0 693.156 339.11199999999997Q693.156 338.224 693.748 338.224Q697.744 338.224 700.704 336.744Q703.664 335.264 706.254 331.416Q708.844 327.568 711.804 320.464L742.736 246.02Q743.032 245.57600000000002 743.6980000000001 245.57600000000002Q744.364 245.57600000000002 744.512 246.02L778.848 319.724Q782.252 327.124 784.9159999999999 331.194Q787.58 335.264 790.244 336.744Q792.908 338.224 796.164 338.224Z"/></g>
+  <g fill="#3A6B8A"><path d="M107.54 390.0V374.908H116.846V376.668H109.476V381.398H115.878V383.158H109.476V388.24H116.978V390.0Z"/><path d="M144.808 390.0 140.20999999999998 374.908H142.344L146.084 387.866H146.172L150.022 374.908H151.892L147.29399999999998 390.0Z"/><path d="M175.60799999999998 390.0V374.908H177.54399999999998V390.0Z"/><path d="M202.62399999999997 390.0V374.908H207.30999999999997Q209.99399999999997 374.908 211.51199999999997 376.745Q213.02999999999997 378.582 213.02999999999997 382.234Q213.02999999999997 386.106 211.51199999999997 388.053Q209.99399999999997 390.0 207.30999999999997 390.0ZM204.55999999999997 388.24H207.134Q208.91599999999997 388.24 209.96099999999996 386.887Q211.00599999999997 385.534 211.00599999999997 382.784V381.684Q211.00599999999997 379.154 209.96099999999996 377.911Q208.91599999999997 376.668 207.134 376.668H204.55999999999997Z"/><path d="M237.64799999999997 390.0V374.908H246.95399999999998V376.668H239.58399999999997V381.398H245.986V383.158H239.58399999999997V388.24H247.08599999999998V390.0Z"/><path d="M271.682 390.0V374.908H273.354L278.964 384.39Q279.14 384.676 279.349 385.15999999999997Q279.558 385.644 279.72299999999996 386.029Q279.888 386.414 279.888 386.414L279.954 386.392Q279.954 386.392 279.943 385.996Q279.932 385.6 279.90999999999997 385.116Q279.888 384.632 279.888 384.39V374.908H281.626V390.0H280.02L274.366 380.386Q274.19 380.056 273.959 379.58299999999997Q273.728 379.11 273.563 378.736Q273.39799999999997 378.362 273.39799999999997 378.362L273.332 378.384Q273.332 378.384 273.354 378.75800000000004Q273.376 379.132 273.398 379.605Q273.42 380.078 273.42 380.386V390.0Z"/><path d="M312.03 390.264Q309.104 390.264 307.597 388.317Q306.09 386.37 306.09 382.454Q306.09 378.516 307.597 376.58000000000004Q309.104 374.644 312.03 374.644Q313.57 374.644 314.758 375.271Q315.94599999999997 375.898 316.61699999999996 377.163Q317.288 378.428 317.288 380.364H315.308Q315.308 378.384 314.41700000000003 377.405Q313.526 376.426 312.03 376.426Q310.05 376.426 309.082 377.78999999999996Q308.114 379.154 308.114 381.904V383.004Q308.114 385.754 309.082 387.11800000000005Q310.05 388.482 312.03 388.482Q313.548 388.482 314.461 387.514Q315.374 386.546 315.374 384.588H317.288Q317.288 386.524 316.61699999999996 387.789Q315.94599999999997 389.054 314.758 389.659Q313.57 390.264 312.03 390.264Z"/><path d="M341.73 390.0V374.908H351.036V376.668H343.666V381.398H350.068V383.158H343.666V388.24H351.168V390.0Z"/><path d="M429.79600000000005 390.0V374.908H431.732V388.24H437.89200000000005V390.0Z"/><path d="M460.266 390.0 465.062 374.908H467.548L472.344 390.0H470.254L469.22 386.634H463.236L462.202 390.0ZM463.764 384.874H468.67L466.624 378.164Q466.558 377.9 466.47 377.504Q466.382 377.108 466.327 376.8Q466.272 376.492 466.272 376.492H466.184Q466.184 376.492 466.129 376.81100000000004Q466.074 377.13 465.997 377.526Q465.92 377.922 465.832 378.164Z"/><path d="M495.752 390.0V374.908H501.472Q502.594 374.908 503.474 375.37Q504.354 375.832 504.86 376.65700000000004Q505.366 377.482 505.366 378.604Q505.366 379.902 504.695 380.815Q504.024 381.728 503.056 382.08V382.168Q504.178 382.52 504.948 383.532Q505.718 384.544 505.718 385.996Q505.718 387.272 505.135 388.163Q504.552 389.054 503.595 389.527Q502.638 390.0 501.472 390.0ZM497.688 388.24H501.208Q502.286 388.24 502.99 387.591Q503.694 386.942 503.694 385.732Q503.694 384.698 502.99 383.928Q502.286 383.158 501.076 383.158H497.688ZM497.688 381.398H500.9Q502.0 381.398 502.671 380.683Q503.342 379.968 503.342 379.022Q503.342 377.834 502.704 377.251Q502.06600000000003 376.668 501.032 376.668H497.688Z"/></g>
+</svg></a>
+      <nav class="mainnav" aria-label="Páginas do site"><a href="./">O monitor</a><span class="ativa" aria-current="page">Mapas e gráficos</span><a href="proteja-se.html">Proteja-se</a><a href="envie-dados.html">Enviar documento</a><a href="para-gestores.html">Para gestores</a></nav>
+    </div>
+    <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
+    <p class="site-title">Monitor <em>El Niño</em> Brasil</p>
+    <p class="mast-sub">MARÉ · Medida de Antecipação e Resposta ao El Niño</p>
+    <div class="grad-line"></div>
+  </header>
+<main id="conteudo">
+  <p class="selo">Dados vivos · atualizados na mesma rotina semanal do resto do site</p>
+  <h1>Mapas e gráficos</h1>
+  <p class="hint" style="margin-bottom:22px;">Todos os mapas e gráficos que estavam na página inicial, agrupados aqui. Nenhum dado mudou — só o lugar onde vivem no site.</p>
+
+  <div class="panel" style="margin-top:24px;">
+    <h2>Mapas geográficos</h2>
+    <p class="hint">Sete leituras geográficas dos mesmos registros: verificação municipal, cobertura, natureza dos atos, risco projetado, municípios prioritários, cidades que decretaram emergência e transferências de recursos. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe.</p>
+    <div class="maps-grid">
+      <div class="map-box">
+        <h3 class="map-card-h">1 · Verificação municipal: atos localizados</h3>
+        <p class="note"><strong id="countComAto">—</strong> municípios verificados com algum documento: plano preventivo ou decreto reativo de emergência. Cores distinguem o tipo de ato (passe o mouse).</p>
+        <svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto;"></svg>
+        <div class="map-legend" id="pointsLegend"></div>
+      </div>
+      <div class="map-box">
+        <h3 class="map-card-h">2 · Cobertura: % de municípios com ato</h3>
+        <p class="note" style="margin:0 0 8px;">Percentual de municípios do estado com algum ato formal; quanto mais escuro, maior o percentual.</p>
+        <svg id="mapCobertura" role="img" aria-label="Mapa do Brasil: percentual de municípios de cada estado com algum ato formal" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legCobertura"></div>
+      </div>
+      <div class="map-box">
+        <h3 class="map-card-h">3 · Natureza dos atos: decretos reativos ou planos preventivos?</h3>
+        <p class="note" style="margin:0 0 8px;">Em cada estado com atos, o que predomina; hachura = nenhum ato identificado.</p>
+        <svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legNatureza"></div>
+      </div>
+      <div class="map-box" id="riscoinstrumento">
+        <h3 class="map-card-h">4 · Risco projetado × instrumento estadual</h3>
+        <p class="note" style="margin:0 0 8px;">Relação entre o risco projetado nos Boletins nº 1 e 2 do Painel El Niño e a área coberta pelo instrumento estadual vigente.</p>
+        <svg id="mapConsistencia" role="img" aria-label="Mapa do Brasil: relação entre o risco projetado pelos boletins federais e a área coberta pelo instrumento de cada estado, com o risco abrangendo suas consequências diretas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legConsist"></div>
+        <details style="margin-top:14px;">
+      <summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela: risco e instrumento de cada estado (com definições)</summary>
+      <div class="tbl-wrap" style="margin-top:10px;">
+        <table class="mun-table">
+          <thead><tr><th style="width:52px;">UF</th><th>Risco projetado (Boletins nº 1–2)</th><th>Área do instrumento estadual</th></tr></thead>
+          <tbody id="tblConsistencia"></tbody>
+        </table>
+      </div>
+    </details>
+      </div>
+<div class="map-box">
+        <h3 class="map-card-h">5 · Municípios prioritários — quem já publicou, quem ainda não</h3>
+        <p class="note" style="margin:0 0 8px;"><strong id="countPrioritariosTotal">—</strong> municípios prioritários do Cadastro Nacional de Suscetíveis: <strong id="countPrioritariosPublicados">—</strong> já têm instrumento localizado (ponto cheio); os demais aparecem tracejados.</p>
+        <svg id="mapPrioritarios" role="img"
+      aria-label="Mapa do Brasil com os municípios prioritários do Cadastro Nacional (aproximação por população), distinguindo os que já têm instrumento localizado dos que ainda não"
+      viewBox="0 0 480 460" style="width:100%; max-width:640px; height:auto; display:block; margin:0 auto;"></svg>
+        <div class="map-legend" id="legPrioritarios"></div>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Como esta lista foi montada</summary>
+          <p class="note" style="margin-top:8px;">O Cadastro Nacional de Municípios Suscetíveis a enxurradas, inundações e deslizamentos (Nota Técnica nº 1/2025/SADJ-VI/SEPAC/CC/PR, Casa Civil) tem a lista nominal restrita a login no portal do Ministério. Este mapa usa uma aproximação transparente: em cada estado, os municípios de maior população, na mesma quantidade da nota técnica. Ponto tracejado significa "não localizamos até o corte", nunca "não existe".</p>
+        </details>
+  </div>
+<div class="map-box">
+        <h3 class="map-card-h">6 · Cidades que decretaram emergência</h3>
+        <p class="note" style="margin:0 0 8px;"><strong id="countAtosResposta">—</strong> cidades que decretaram situação de emergência ou calamidade pública, localizadas em fontes oficiais até o corte. Passe o mouse para ver data e causa.</p>
+        <svg id="mapAtosResposta" role="img"
+      aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, atos de resposta que não pontuam no índice"
+      viewBox="0 0 480 460" style="width:100%; max-width:640px; height:auto; display:block; margin:0 auto;"></svg>
+        <div class="map-legend" id="legAtosResposta"></div>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Por que estes decretos não entram no índice</summary>
+          <p class="note" style="margin-top:8px;">Decretos de emergência são atos de resposta a dano já ocorrido; o MARÉ mede preparação demonstrada antes do evento, então eles nunca pontuam (<a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Correção B</a>, §5.6). Este mapa é um registro de transparência à parte — não um histórico completo do país, mas o que foi localizado em fontes oficiais.</p>
+        </details>
+  </div>
+<div class="map-box">
+        <h3 class="map-card-h">7 · Transferências e repasses — habilitação federal</h3>
+        <p class="note" style="margin:0 0 8px;">Repasses estaduais confirmados (Prepara RS) em azul, com tamanho proporcional ao valor; municípios habilitados a recurso federal de resposta em ocre. Passe o mouse para ver faixa e valor.</p>
+        <svg id="mapDinheiro" role="img" aria-label="Mapa das transferências: repasses estaduais confirmados e municípios habilitados a recursos federais" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend">
+          <span><i style="background:#35566B"></i>Repasse confirmado (Prepara RS)</span>
+          <span><i style="background:#C69B72"></i>Habilitado a recurso federal</span>
+        </div>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Ver números e cobertura do mapa</summary>
+          <p class="note" style="margin-top:8px;">Repasses estaduais (preventivos): <strong id="dinTotalRS">—</strong> confirmados pelo Prepara RS a <strong id="dinNumRS">—</strong> municípios gaúchos, fundo a fundo (<span id="dinFaixas">—</span>). Pagos antes do dano do ciclo, condicionados a plano de contingência atualizado e coordenador designado (Resolução FUNDEC nº 008/2026), com focalização pelo histórico de calamidades de 2023-24. Não localizamos programa análogo em outro estado até o corte.</p>
+          <p class="note" style="margin-top:6px;">Habilitação federal (rota de resposta): <strong id="dinNumFed">—</strong> municípios do país têm reconhecimento vigente e podem solicitar recursos de resposta pelo S2iD, com crédito no Cartão de Pagamento de Defesa Civil. Habilitação não é recebimento.</p>
+          <p class="note" style="margin-top:6px;">Cobertura do mapa: apenas municípios nomeados em fonte pública. Em PB, RN e RO, os totais oficiais (147, 166 e 38) superam os nomeados; a diferença está registrada nos percentuais por UF.</p>
+        </details>
+      </div>
+      </div>
+    </div>
+  
+
+  <div class="panel analysis">
+    <h2>Gráficos analíticos</h2>
+    <p class="hint">Seis leituras cruzadas dos 27 registros estaduais e das 27 capitais verificadas. Todos os valores vêm dos registros publicados nas fontes citadas. Passe o mouse para ver quais estados compõem cada categoria.</p>
+    <div class="charts-grid">
+      <div class="chart-box">
+        <h3 class="map-card-h">1 · Status geral dos planos estaduais</h3>
+        <p class="note">Das 27 UFs, quantas têm plano novo, readaptado, em elaboração, recorrente ou nenhum plano nominal.</p>
+        <div class="canvas-wrap"><canvas id="chartDonut"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h3 class="map-card-h">2 · Status por região</h3>
+        <p class="note">Distribuição dos status por região; mostra se a ausência de plano é dispersa ou concentrada.</p>
+        <div class="canvas-wrap"><canvas id="chartRegion"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h3 class="map-card-h">3 · Financiamento federal por área (R$)</h3>
+        <p class="note">Quantos programas federais atuam em cada área de risco; programas que cobrem mais de uma área contam em cada uma delas.</p>
+        <div class="canvas-wrap"><canvas id="chartFinance"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h3 class="map-card-h">4 · Status das 27 capitais</h3>
+        <p class="note">O retrato muda quando se olha a execução municipal, não só a estadual.</p>
+        <div class="canvas-wrap"><canvas id="chartCapitals"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h3 class="map-card-h">5 · O vão da prova: municípios com plano, declarado × documentado (PR · SC · RS)</h3>
+        <p class="note">Municípios com plano declarado a órgão de controle ou sistema estadual versus municípios com documento localizado por esta verificação. Só PR, SC e RS mantêm levantamento público nominal; critérios no documento de metodologia.</p>
+        <div style="position:relative; height:230px;"><canvas id="chartDeclarado"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h3 class="map-card-h">6 · Áreas temáticas dos instrumentos estaduais (COBRADE)</h3>
+        <p class="note">Classificação pela taxonomia oficial de desastres: o grupo Seca (1.4.1) compreende estiagem, seca, incêndio florestal e baixa umidade; a família das chuvas reúne os grupos Meteorológico (1.3) e Hidrológico (1.2). Instrumentos multiárea contam em cada uma; passe o mouse para ver os estados.</p>
+        <div style="position:relative; height:220px;"><canvas id="chartAreas"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="panel" style="margin-bottom:24px;">
+    <h2 id="financiamento">Como o dinheiro chega</h2>
+    <p class="hint">Como o dinheiro do ciclo El Niño chega (ou não) aos municípios, e onde verificar cada etapa — contexto para o mapa de transferências (item 7, acima). Importante: a maior parte do plano federal de R$1,335 bi é execução direta da União (estoques CONAB, cestas, ForSUS) e <strong>não vira transferência municipal</strong>; o que chega às prefeituras são as transferências obrigatórias de defesa civil (Lei 12.340/2010) e repasses estaduais fundo a fundo.</p>
+    <div class="charts-grid">
+<div class="chart-box">
+        <h3 class="map-card-h">1 · O caminho do recurso federal de resposta</h3>
+        <p class="note">Seis etapas rastreáveis, do decreto municipal ao cartão de pagamento.</p>
+        <ol style="font-size:14px; line-height:1.8; color:var(--ink); margin:0; padding-left:20px;">
+          <li>Município decreta situação de emergência/calamidade</li>
+          <li>Registra o desastre no <strong>S2iD</strong> (FIDE + documentos)</li>
+          <li><strong>SEDEC/MIDR reconhece</strong> por portaria no DOU: <em>é o gatilho do dinheiro</em></li>
+          <li>Município solicita recursos de resposta pelo S2iD (plano de trabalho)</li>
+          <li>Recurso liberado no <strong>Cartão de Pagamento de Defesa Civil (CPDC)</strong>, sem convênio</li>
+          <li>Prestação de contas; reconstrução/prevenção seguem via Transferegov</li>
+        </ol>
+      </div>
+      <div class="chart-box">
+        <h3 class="map-card-h">2 · Onde monitorar cada etapa (fontes oficiais)</h3>
+        <p class="note">Endereços públicos de verificação, na ordem do caminho do recurso.</p>
+        <ul id="fontesMonit" style="font-size:14px; line-height:1.9; margin:0; padding-left:20px;"></ul>
+      </div>
+          </div>
+  </div>
+
+
+  
+
+  
+</main>
+  <footer class="site-footer">
+    <div class="grad-line"></div>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;">
+    <svg style="height:24px; width:auto; display:block; margin:0 auto 10px;" xmlns="http://www.w3.org/2000/svg" viewBox="88 96 816 312" role="img" aria-label="Futura Evidence Lab — abrir site">
+  <path d="M100,180 C290,112 608,108 892,148" fill="none" stroke="#C04430" stroke-width="3" stroke-linecap="round"/>
+  <g fill="#1A0E08"><path d="M106.512 340.0Q106.216 340.0 106.216 339.11199999999997Q106.216 338.224 106.512 338.224Q112.136 338.224 114.948 337.48400000000004Q117.75999999999999 336.744 118.722 334.524Q119.684 332.304 119.684 328.012V259.488Q119.684 255.196 118.722 253.05Q117.75999999999999 250.904 114.948 250.09Q112.136 249.276 106.512 249.276Q106.216 249.276 106.216 248.388Q106.216 247.5 106.512 247.5H165.12Q166.452 247.5 166.452 248.832L166.748 266.74Q166.748 267.18399999999997 165.934 267.18399999999997Q165.12 267.18399999999997 165.12 266.74Q165.12 259.044 161.124 254.678Q157.128 250.312 150.61599999999999 250.312H140.404Q132.412 250.312 129.97 252.08800000000002Q127.52799999999999 253.864 127.52799999999999 259.636V327.42Q127.52799999999999 331.86 128.786 334.154Q130.04399999999998 336.448 134.04 337.336Q138.036 338.224 146.028 338.224Q146.47199999999998 338.224 146.47199999999998 339.11199999999997Q146.47199999999998 340.0 146.028 340.0Q141.292 340.0 135.74200000000002 339.852Q130.192 339.704 123.68 339.704Q118.944 339.704 114.50399999999999 339.852Q110.064 340.0 106.512 340.0ZM157.572 306.996Q157.572 300.336 154.39 297.672Q151.208 295.008 143.06799999999998 295.008H123.828V292.196H143.66Q151.356 292.196 154.39 289.828Q157.424 287.46 157.424 281.984Q157.424 281.688 158.312 281.688Q159.2 281.688 159.2 281.984Q159.2 286.276 159.12599999999998 288.644Q159.052 291.012 159.052 293.676Q159.052 296.932 159.2 300.11400000000003Q159.348 303.296 159.348 306.996Q159.348 307.29200000000003 158.46 307.29200000000003Q157.572 307.29200000000003 157.572 306.996Z"/><path d="M283.544 263.04Q283.544 255.936 280.51 252.606Q277.476 249.276 270.96399999999994 249.276Q270.52 249.276 270.52 248.388Q270.52 247.5 270.96399999999994 247.5Q274.21999999999997 247.5 277.698 247.722Q281.176 247.94400000000002 285.32 247.94400000000002Q288.724 247.94400000000002 292.202 247.722Q295.67999999999995 247.5 298.49199999999996 247.5Q298.78799999999995 247.5 298.78799999999995 248.388Q298.78799999999995 249.276 298.49199999999996 249.276Q292.572 249.276 289.686 252.606Q286.79999999999995 255.936 286.79999999999995 263.04V305.368Q286.79999999999995 317.06 282.508 325.2Q278.216 333.34 270.446 337.63199999999995Q262.676 341.924 252.31599999999997 341.924Q241.36399999999998 341.924 233.224 337.558Q225.08399999999997 333.192 220.64399999999998 325.274Q216.20399999999998 317.356 216.20399999999998 306.7V259.488Q216.20399999999998 255.196 215.24199999999996 253.05Q214.27999999999997 250.904 211.46799999999996 250.09Q208.65599999999998 249.276 203.03199999999998 249.276Q202.736 249.276 202.736 248.388Q202.736 247.5 203.03199999999998 247.5Q206.58399999999997 247.5 210.87599999999998 247.722Q215.16799999999998 247.94400000000002 220.05199999999996 247.94400000000002Q225.08399999999997 247.94400000000002 229.45 247.722Q233.81599999999997 247.5 237.07199999999997 247.5Q237.51599999999996 247.5 237.51599999999996 248.388Q237.51599999999996 249.276 237.07199999999997 249.276Q231.44799999999998 249.276 228.63599999999997 250.16400000000002Q225.82399999999998 251.05200000000002 224.93599999999998 253.27200000000002Q224.04799999999997 255.49200000000002 224.04799999999997 259.784V301.52Q224.04799999999997 318.984 232.188 328.308Q240.32799999999997 337.632 254.97999999999996 337.632Q268.596 337.632 276.07 329.048Q283.544 320.464 283.544 305.516Z"/><path d="M352.68399999999997 250.01600000000002Q343.35999999999996 250.01600000000002 339.14199999999994 254.45600000000002Q334.924 258.896 333.296 270.29200000000003Q333.296 270.588 332.408 270.588Q331.52 270.588 331.52 270.29200000000003Q331.816 268.516 332.186 265.11199999999997Q332.556 261.70799999999997 332.852 257.786Q333.14799999999997 253.864 333.37 250.238Q333.592 246.61200000000002 333.592 244.244Q333.592 243.50400000000002 334.48 243.50400000000002Q335.368 243.50400000000002 335.368 244.244Q335.368 245.724 336.774 246.39Q338.18 247.056 340.03 247.27800000000002Q341.88 247.5 343.212 247.5Q355.94 247.94400000000002 372.96 247.94400000000002Q383.46799999999996 247.94400000000002 389.60999999999996 247.722Q395.75199999999995 247.5 401.524 247.5Q406.40799999999996 247.5 409.14599999999996 246.834Q411.88399999999996 246.168 412.62399999999997 243.8Q412.772 243.208 413.51199999999994 243.208Q414.25199999999995 243.208 414.25199999999995 243.8Q414.104 246.02 413.808 249.72000000000003Q413.51199999999994 253.42000000000002 413.364 257.49Q413.216 261.56 413.068 265.038Q412.91999999999996 268.516 412.91999999999996 270.29200000000003Q412.91999999999996 270.588 412.032 270.588Q411.144 270.588 411.144 270.29200000000003Q411.144 258.896 407.296 254.45600000000002Q403.448 250.01600000000002 393.236 250.01600000000002Q386.28 250.01600000000002 382.80199999999996 250.53400000000002Q379.32399999999996 251.05200000000002 378.21399999999994 253.05Q377.104 255.048 377.104 259.784V328.012Q377.104 332.304 378.14 334.524Q379.176 336.744 382.35799999999995 337.48400000000004Q385.53999999999996 338.224 392.05199999999996 338.224Q392.34799999999996 338.224 392.34799999999996 339.11199999999997Q392.34799999999996 340.0 392.05199999999996 340.0Q388.20399999999995 340.0 383.394 339.852Q378.584 339.704 372.96 339.704Q367.632 339.704 362.822 339.852Q358.012 340.0 354.01599999999996 340.0Q353.71999999999997 340.0 353.71999999999997 339.11199999999997Q353.71999999999997 338.224 354.01599999999996 338.224Q360.38 338.224 363.63599999999997 337.48400000000004Q366.892 336.744 368.00199999999995 334.524Q369.11199999999997 332.304 369.11199999999997 328.012V259.488Q369.11199999999997 254.752 367.928 252.75400000000002Q366.74399999999997 250.756 363.192 250.38600000000002Q359.64 250.01600000000002 352.68399999999997 250.01600000000002Z"/><path d="M528.236 263.04Q528.236 255.936 525.202 252.606Q522.168 249.276 515.656 249.276Q515.212 249.276 515.212 248.388Q515.212 247.5 515.656 247.5Q518.912 247.5 522.39 247.722Q525.8679999999999 247.94400000000002 530.012 247.94400000000002Q533.4159999999999 247.94400000000002 536.894 247.722Q540.372 247.5 543.184 247.5Q543.48 247.5 543.48 248.388Q543.48 249.276 543.184 249.276Q537.264 249.276 534.3779999999999 252.606Q531.492 255.936 531.492 263.04V305.368Q531.492 317.06 527.2 325.2Q522.908 333.34 515.138 337.63199999999995Q507.368 341.924 497.008 341.924Q486.056 341.924 477.91599999999994 337.558Q469.77599999999995 333.192 465.33599999999996 325.274Q460.89599999999996 317.356 460.89599999999996 306.7V259.488Q460.89599999999996 255.196 459.93399999999997 253.05Q458.972 250.904 456.15999999999997 250.09Q453.34799999999996 249.276 447.724 249.276Q447.428 249.276 447.428 248.388Q447.428 247.5 447.724 247.5Q451.276 247.5 455.568 247.722Q459.85999999999996 247.94400000000002 464.74399999999997 247.94400000000002Q469.77599999999995 247.94400000000002 474.14199999999994 247.722Q478.508 247.5 481.764 247.5Q482.20799999999997 247.5 482.20799999999997 248.388Q482.20799999999997 249.276 481.764 249.276Q476.14 249.276 473.328 250.16400000000002Q470.51599999999996 251.05200000000002 469.628 253.27200000000002Q468.74 255.49200000000002 468.74 259.784V301.52Q468.74 318.984 476.88 328.308Q485.02 337.632 499.67199999999997 337.632Q513.288 337.632 520.762 329.048Q528.236 320.464 528.236 305.516Z"/><path d="M653.616 340.0Q651.1 340.0 645.328 334.228Q639.556 328.456 631.4159999999999 317.726Q623.276 306.996 613.212 292.344L620.316 290.124Q633.044 308.032 641.924 318.61400000000003Q650.804 329.196 657.612 333.71000000000004Q664.42 338.224 670.784 338.224Q671.228 338.224 671.228 339.11199999999997Q671.228 340.0 670.784 340.0Q664.124 340.0 659.906 340.0Q655.688 340.0 653.616 340.0ZM614.9879999999999 247.056Q626.384 247.056 632.3779999999999 252.53200000000004Q638.372 258.00800000000004 638.372 266.74Q638.372 274.584 633.784 280.948Q629.196 287.312 621.5740000000001 291.012Q613.952 294.712 604.776 294.712Q603.444 294.712 601.6679999999999 294.56399999999996Q599.8919999999999 294.416 598.412 294.26800000000003V328.012Q598.412 332.304 599.3 334.524Q600.188 336.744 603.0740000000001 337.48400000000004Q605.96 338.224 611.584 338.224Q612.028 338.224 612.028 339.11199999999997Q612.028 340.0 611.584 340.0Q608.032 340.0 603.8140000000001 339.852Q599.596 339.704 594.4159999999999 339.704Q589.68 339.704 585.24 339.852Q580.8 340.0 577.2479999999999 340.0Q576.952 340.0 576.952 339.11199999999997Q576.952 338.224 577.2479999999999 338.224Q582.872 338.224 585.758 337.48400000000004Q588.644 336.744 589.6800000000001 334.524Q590.716 332.304 590.716 328.012V259.488Q590.716 255.196 589.754 253.05Q588.792 250.904 585.98 250.09Q583.168 249.276 577.544 249.276Q577.1 249.276 577.1 248.388Q577.1 247.5 577.544 247.5Q580.948 247.5 585.314 247.722Q589.68 247.94400000000002 594.4159999999999 247.94400000000002Q599.004 247.94400000000002 605.072 247.5Q611.14 247.056 614.9879999999999 247.056ZM630.084 270.736Q630.084 262.744 627.4939999999999 258.00800000000004Q624.904 253.272 620.094 251.126Q615.284 248.98000000000002 608.476 248.98000000000002Q603.148 248.98000000000002 600.78 250.904Q598.412 252.828 598.412 259.784V290.86400000000003Q600.484 291.012 602.9259999999999 291.15999999999997Q605.3679999999999 291.308 607.292 291.308Q620.02 291.308 625.0519999999999 285.98Q630.084 280.652 630.084 270.736Z"/><path d="M723.052 297.524 724.384 294.86H762.716L763.752 297.524ZM796.164 338.224Q796.756 338.224 796.756 339.11199999999997Q796.756 340.0 796.164 340.0Q792.02 340.0 787.654 339.704Q783.288 339.408 779.292 339.408Q774.704 339.408 771.374 339.704Q768.044 340.0 764.048 340.0Q763.456 340.0 763.456 339.11199999999997Q763.456 338.224 764.048 338.224Q772.336 338.224 774.482 336.004Q776.628 333.784 773.816 327.568L740.3679999999999 255.64L743.18 253.12400000000002L714.616 321.796Q710.9159999999999 330.824 714.0239999999999 334.524Q717.132 338.224 727.196 338.224Q727.936 338.224 727.936 339.11199999999997Q727.936 340.0 727.196 340.0Q722.756 340.0 719.056 339.704Q715.356 339.408 709.732 339.408Q704.552 339.408 701.37 339.704Q698.188 340.0 693.748 340.0Q693.156 340.0 693.156 339.11199999999997Q693.156 338.224 693.748 338.224Q697.744 338.224 700.704 336.744Q703.664 335.264 706.254 331.416Q708.844 327.568 711.804 320.464L742.736 246.02Q743.032 245.57600000000002 743.6980000000001 245.57600000000002Q744.364 245.57600000000002 744.512 246.02L778.848 319.724Q782.252 327.124 784.9159999999999 331.194Q787.58 335.264 790.244 336.744Q792.908 338.224 796.164 338.224Z"/></g>
+  <g fill="#3A6B8A"><path d="M107.54 390.0V374.908H116.846V376.668H109.476V381.398H115.878V383.158H109.476V388.24H116.978V390.0Z"/><path d="M144.808 390.0 140.20999999999998 374.908H142.344L146.084 387.866H146.172L150.022 374.908H151.892L147.29399999999998 390.0Z"/><path d="M175.60799999999998 390.0V374.908H177.54399999999998V390.0Z"/><path d="M202.62399999999997 390.0V374.908H207.30999999999997Q209.99399999999997 374.908 211.51199999999997 376.745Q213.02999999999997 378.582 213.02999999999997 382.234Q213.02999999999997 386.106 211.51199999999997 388.053Q209.99399999999997 390.0 207.30999999999997 390.0ZM204.55999999999997 388.24H207.134Q208.91599999999997 388.24 209.96099999999996 386.887Q211.00599999999997 385.534 211.00599999999997 382.784V381.684Q211.00599999999997 379.154 209.96099999999996 377.911Q208.91599999999997 376.668 207.134 376.668H204.55999999999997Z"/><path d="M237.64799999999997 390.0V374.908H246.95399999999998V376.668H239.58399999999997V381.398H245.986V383.158H239.58399999999997V388.24H247.08599999999998V390.0Z"/><path d="M271.682 390.0V374.908H273.354L278.964 384.39Q279.14 384.676 279.349 385.15999999999997Q279.558 385.644 279.72299999999996 386.029Q279.888 386.414 279.888 386.414L279.954 386.392Q279.954 386.392 279.943 385.996Q279.932 385.6 279.90999999999997 385.116Q279.888 384.632 279.888 384.39V374.908H281.626V390.0H280.02L274.366 380.386Q274.19 380.056 273.959 379.58299999999997Q273.728 379.11 273.563 378.736Q273.39799999999997 378.362 273.39799999999997 378.362L273.332 378.384Q273.332 378.384 273.354 378.75800000000004Q273.376 379.132 273.398 379.605Q273.42 380.078 273.42 380.386V390.0Z"/><path d="M312.03 390.264Q309.104 390.264 307.597 388.317Q306.09 386.37 306.09 382.454Q306.09 378.516 307.597 376.58000000000004Q309.104 374.644 312.03 374.644Q313.57 374.644 314.758 375.271Q315.94599999999997 375.898 316.61699999999996 377.163Q317.288 378.428 317.288 380.364H315.308Q315.308 378.384 314.41700000000003 377.405Q313.526 376.426 312.03 376.426Q310.05 376.426 309.082 377.78999999999996Q308.114 379.154 308.114 381.904V383.004Q308.114 385.754 309.082 387.11800000000005Q310.05 388.482 312.03 388.482Q313.548 388.482 314.461 387.514Q315.374 386.546 315.374 384.588H317.288Q317.288 386.524 316.61699999999996 387.789Q315.94599999999997 389.054 314.758 389.659Q313.57 390.264 312.03 390.264Z"/><path d="M341.73 390.0V374.908H351.036V376.668H343.666V381.398H350.068V383.158H343.666V388.24H351.168V390.0Z"/><path d="M429.79600000000005 390.0V374.908H431.732V388.24H437.89200000000005V390.0Z"/><path d="M460.266 390.0 465.062 374.908H467.548L472.344 390.0H470.254L469.22 386.634H463.236L462.202 390.0ZM463.764 384.874H468.67L466.624 378.164Q466.558 377.9 466.47 377.504Q466.382 377.108 466.327 376.8Q466.272 376.492 466.272 376.492H466.184Q466.184 376.492 466.129 376.81100000000004Q466.074 377.13 465.997 377.526Q465.92 377.922 465.832 378.164Z"/><path d="M495.752 390.0V374.908H501.472Q502.594 374.908 503.474 375.37Q504.354 375.832 504.86 376.65700000000004Q505.366 377.482 505.366 378.604Q505.366 379.902 504.695 380.815Q504.024 381.728 503.056 382.08V382.168Q504.178 382.52 504.948 383.532Q505.718 384.544 505.718 385.996Q505.718 387.272 505.135 388.163Q504.552 389.054 503.595 389.527Q502.638 390.0 501.472 390.0ZM497.688 388.24H501.208Q502.286 388.24 502.99 387.591Q503.694 386.942 503.694 385.732Q503.694 384.698 502.99 383.928Q502.286 383.158 501.076 383.158H497.688ZM497.688 381.398H500.9Q502.0 381.398 502.671 380.683Q503.342 379.968 503.342 379.022Q503.342 377.834 502.704 377.251Q502.06600000000003 376.668 501.032 376.668H497.688Z"/></g>
+</svg>
+    </a>
+    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v2.2.3)</span>
+    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados.</span>
+  </footer>
+</div>
+
+<script>
+let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, MUN_REF, POP_CENSO,
+    MUN_COD = {}, MUN_LATLON = {}, POP_UF = {};
+async function __load(){
+  let __ref;
+  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, __ref, POP_CENSO] = await Promise.all(
+    ['geo_uf','percentual_uf','pontos_mapa','indice','estados','transferencias','consist','atos_resposta','municipios_ibge_referencia','populacao_censo2022']
+      .map(f => fetch('data/' + f + '.json').then(r => {
+        if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json');
+        return r.json();
+      }))
+  );
+  MUN_REF = {};
+  __ref.forEach(m => (MUN_REF[m.uf] = MUN_REF[m.uf] || []).push(m.nome));
+  __ref.forEach(m => {
+    const c = String(m.codigo_ibge).padStart(7, '0');
+    MUN_COD[m.uf + '|' + m.nome] = c;
+    MUN_LATLON[m.uf + '|' + m.nome] = [m.lon, m.lat];
+    POP_UF[m.uf] = (POP_UF[m.uf] || 0) + (POP_CENSO[c] || 0);
+  });
+  __init();
+}
+function __init(){
+const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VIG:"Vigente-recorrente", LAC:"Sem plano localizado"};
+// =========================================================
+// ANÁLISES — 6 gráficos derivados do mesmo objeto DATA
+// =========================================================
+const PALETTE = {NOVO:'#35566B', READ:'#6E8CA0', ELAB:'#9FB6C6', VIG:'#C69B72', LAC:'#A65F3F'};
+const LABELS  = {NOVO:'Novo', READ:'Readaptado', ELAB:'Em elaboração', VIG:'Vigente-recorrente', LAC:'Sem plano'};
+const STATUS_ORDER = ['NOVO','READ','ELAB','VIG','LAC'];
+
+Chart.defaults.color = '#55645B'; // var(--muted) — mesma cor de texto secundário do resto do site
+Chart.defaults.font.family = "'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif";
+Chart.defaults.font.size = 11.5;
+Chart.defaults.borderColor = '#15201A'; // var(--ink) — mesmo tom estrutural usado em botões e navegação
+
+// ---- 1. Donut nacional ----
+const donutCounts = STATUS_ORDER.map(s => DATA.ufs.filter(u=>u.status===s).length);
+const UFS_POR_STATUS = {}; DATA.ufs.forEach(u => (UFS_POR_STATUS[u.status] = UFS_POR_STATUS[u.status] || []).push(u.uf));
+const CAP_POR_STATUS = {}; DATA.ufs.forEach(u => { const s = u.capital.status; (CAP_POR_STATUS[s] = CAP_POR_STATUS[s] || []).push(u.uf); });
+const quebraLinhas = arr => { const o = []; for (let i = 0; i < arr.length; i += 9) o.push(arr.slice(i, i+9).join(' · ')); return o; };
+new Chart(document.getElementById('chartDonut'), {
+  type: 'doughnut',
+  data: { labels: STATUS_ORDER.map(s=>LABELS[s]),
+    datasets:[{ data: donutCounts, backgroundColor: STATUS_ORDER.map(s=>PALETTE[s]), borderColor:'#E4DBC6', borderWidth:2 }] },
+  options: { plugins:{ legend:{ position:'right', labels:{boxWidth:10, padding:10} },
+    tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(UFS_POR_STATUS[STATUS_ORDER[ctx.dataIndex]] || []) } } }, cutout:'62%',
+    maintainAspectRatio:false }
+});
+
+// ---- 2. Status por região (stacked horizontal) ----
+const regionData = STATUS_ORDER.map(s => DATA.regions.map(r =>
+  DATA.ufs.filter(u=>u.regiao===r && u.status===s).length));
+new Chart(document.getElementById('chartRegion'), {
+  type:'bar',
+  data:{ labels: DATA.regions,
+    datasets: STATUS_ORDER.map((s,i)=>({ label: LABELS[s], data: regionData[i], backgroundColor: PALETTE[s] })) },
+  options:{ indexAxis:'y', maintainAspectRatio:false,
+    plugins:{ legend:{ position:'bottom', labels:{boxWidth:10, padding:8, font:{size:12}} },
+      tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(DATA.ufs.filter(u => u.regiao === ctx.label && u.status === STATUS_ORDER[ctx.datasetIndex]).map(u => u.uf)) } } },
+    scales:{ x:{ stacked:true, grid:{color:'#D6C4AC'}, ticks:{stepSize:1} }, y:{ stacked:true, grid:{display:false} } } }
+});
+
+// ---- 3. Financiamento federal por área (R$ reais, calculados a partir de Registro_Federal) ----
+const financeData = [
+  {label:'Segurança Hídrica', value:14217500000},
+  {label:'Saúde', value:1335000000},
+  {label:'Segurança Alimentar', value:1335000000},
+  {label:'Incêndios Florestais', value:858000000},
+];
+new Chart(document.getElementById('chartFinance'), {
+  type:'bar',
+  data:{ labels: financeData.map(d=>d.label),
+    datasets:[{ data: financeData.map(d=>d.value),
+      backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? '#35566B'
+        : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? '#A65F3F'
+        : /aliment|agr[íi]cola|safra/i.test(d.label) ? '#C69B72'
+        : /sa[úu]de/i.test(d.label) ? '#8FA6B5' : '#B9B2A4'),
+      borderRadius:4 }] },
+  options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{ legend:{display:false} },
+    scales:{ x:{ grid:{color:'#D6C4AC'}, ticks:{ callback:v => 'R$ '+(v/1e9).toFixed(1)+'bi' } }, y:{ grid:{display:false} } } }
+});
+
+// ---- 4. Status das 27 capitais ----
+const capStatusCounts = {};
+DATA.ufs.forEach(u=>{ const s=u.capital.status; capStatusCounts[s]=(capStatusCounts[s]||0)+1; });
+const capLabels = Object.keys(capStatusCounts);
+const CAP_COLOR = {'Novo':'#35566B','Readaptado':'#6E8CA0','Em elaboração':'#9FB6C6',
+  'Vigente-recorrente':'#C69B72','Coberto pelo estadual':'#87855C','Coberto pelo estado':'#87855C',
+  'Não é de El Niño':'#B9B2A4','Não localizado':'#7C4A34'};
+new Chart(document.getElementById('chartCapitals'), {
+  type:'bar',
+  data:{ labels: capLabels,
+    datasets:[{ data: capLabels.map(l=>capStatusCounts[l]),
+      backgroundColor: capLabels.map(l => CAP_COLOR[l] || '#B9B2A4'), borderRadius:4}] },
+  options:{ maintainAspectRatio:false, plugins:{legend:{display:false},
+      tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(CAP_POR_STATUS[ctx.label] || []) } }},
+    scales:{ x:{ grid:{display:false}, ticks:{font:{size:9.5}, maxRotation:35, minRotation:35} }, y:{ grid:{color:'#D6C4AC'}, ticks:{stepSize:1} } } }
+});
+
+// ---- 5. Timeline de reatividade (dias em relação ao Boletim nº1, 29/06/2026) ----
+
+
+// =========================================================
+// MAPAS GEOGRÁFICOS (D3 — projeção real das 27 UFs)
+// =========================================================
+const tooltip = document.getElementById('mapTooltip');
+function showTip(html, evt){ tooltip.innerHTML = html; tooltip.style.display='block';
+  tooltip.style.left = (evt.clientX+14)+'px'; tooltip.style.top = (evt.clientY+10)+'px'; }
+function hideTip(){ tooltip.style.display='none'; }
+
+const projection = d3.geoMercator().fitSize([480,460], BR_GEOJSON);
+const pathGen = d3.geoPath().projection(projection);
+
+// ---- Mapa 1: pontos por categoria de ato (Fase 1 + Fase 2) ----
+const CAT_STYLE = {
+  plano:            {cor:'#35566B', r:5.5, label:'Plano publicado'},
+  plano_antigo:     {cor:'#6E8CA0', r:5,   label:'Plano desatualizado'},
+  plano_elaboracao: {cor:'#9FB6C6', r:5,   label:'Plano em elaboração'},
+  decreto:          {cor:'#A65F3F', r:4.5, label:'Decreto de emergência'},
+  coberto_estadual: {cor:'#87855C', r:4.5, label:'Coberto pelo estado'},
+  nao_el_nino:      {cor:'#B9B2A4', r:4,   label:'Não é El Niño'},
+  nao_localizado:   {cor:'#7C4A34', r:4.5, label:'Nenhum ato localizado'},
+};
+
+const svgPoints = d3.select('#mapPoints');
+svgPoints.append('g').selectAll('path')
+  .data(BR_GEOJSON.features).join('path')
+  .attr('d', pathGen).attr('fill', '#E4DBC6').attr('class', 'uf-path')
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+
+const contaveis = MAP_POINTS.filter(p => p.categoria==='plano' || p.categoria==='plano_antigo' || p.categoria==='decreto').length;
+document.getElementById('countComAto').textContent = contaveis;
+
+// ordenar para desenhar "plano" por cima de "decreto" por cima de "não localizado"
+const drawOrder = ['nao_localizado','nao_el_nino','coberto_estadual','plano_elaboracao','decreto','plano_antigo','plano'];
+const sortedPoints = [...MAP_POINTS].sort((a,b)=> drawOrder.indexOf(a.categoria) - drawOrder.indexOf(b.categoria));
+
+svgPoints.append('g').selectAll('circle')
+  .data(sortedPoints).join('circle')
+  .attr('cx', d=>projection([d.lon,d.lat])[0])
+  .attr('cy', d=>projection([d.lon,d.lat])[1])
+  .attr('r', d=>CAT_STYLE[d.categoria].r)
+  .attr('fill', d=>CAT_STYLE[d.categoria].cor)
+  .attr('stroke', d=>d.categoria==='plano' ? '#F5F1E8' : '#F5F1E8')
+  .attr('stroke-width', d=>d.categoria==='plano' ? 1.6 : 1)
+  .attr('stroke-dasharray', d=>d.categoria==='nao_localizado' ? '2,1.5' : null)
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>${CAT_STYLE[d.categoria].label}${d.fase===2?' · Fase 2':''}`, evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+
+document.getElementById('pointsLegend').innerHTML = Object.entries(CAT_STYLE).map(([k,v])=>
+  `<span><i style="background:${v.cor}"></i>${v.label}</span>`).join('');
+
+// ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada (31/08/2026) ----
+// LIMITAÇÃO DECLARADA: a lista NOMINAL dos 2.095 municípios do Cadastro Nacional de
+// Municípios Suscetíveis (Nota Técnica 1/2025/SADJ-VI/SEPAC/CC/PR) exige login no
+// portal do MDR e não é publicamente acessível (verificado em 31/08/2026). Este mapa
+// usa uma PROXY documentada: em cada UF, os N municípios de MAIOR POPULAÇÃO, onde N é
+// a contagem OFICIAL de municípios prioritários daquela UF (fonte: mesma nota técnica,
+// Tabela 2 — pública). Não é a lista real nome a nome; é a aproximação mais defensável
+// disponível sem acesso autenticado, e está rotulada como tal na página e no tooltip.
+const CADASTRO_UF_N = {AC:20,AL:47,AM:59,AP:14,BA:144,CE:80,DF:1,ES:71,GO:25,MA:113,
+  MG:306,MS:33,MT:40,PA:97,PB:43,PE:108,PI:47,PR:84,RJ:76,RN:32,RO:14,RR:5,RS:206,
+  SC:218,SE:17,SP:177,TO:18};
+const CATS_PUBLICADO = new Set(['plano','plano_antigo','plano_elaboracao','decreto','coberto_estadual']);
+const publicadosSet = new Set(MAP_POINTS.filter(p => CATS_PUBLICADO.has(p.categoria)).map(p => p.uf+'|'+p.nome));
+const prioritariosProxy = [];
+Object.entries(CADASTRO_UF_N).forEach(([uf, n]) => {
+  const candidatos = (MUN_REF[uf] || []).map(nome => {
+    const cod = MUN_COD[uf+'|'+nome];
+    return {nome, uf, pop: POP_CENSO[cod] || 0, latlon: MUN_LATLON[uf+'|'+nome]};
+  }).filter(x => x.latlon).sort((a,b) => b.pop - a.pop).slice(0, n);
+  candidatos.forEach(x => prioritariosProxy.push({
+    nome: x.nome, uf: x.uf, lon: x.latlon[0], lat: x.latlon[1],
+    publicado: publicadosSet.has(x.uf+'|'+x.nome),
+  }));
+});
+const nPublicados = prioritariosProxy.filter(x => x.publicado).length;
+document.getElementById('countPrioritariosPublicados').textContent = nPublicados;
+document.getElementById('countPrioritariosTotal').textContent = prioritariosProxy.length;
+
+const svgPrior = d3.select('#mapPrioritarios');
+svgPrior.append('g').selectAll('path')
+  .data(BR_GEOJSON.features).join('path')
+  .attr('d', pathGen).attr('fill', '#E4DBC6').attr('class', 'uf-path')
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+const prioridadeOrdenada = [...prioritariosProxy].sort((a,b) => (a.publicado?1:0) - (b.publicado?1:0)); // não-publicados desenhados por baixo
+svgPrior.append('g').selectAll('circle')
+  .data(prioridadeOrdenada).join('circle')
+  .attr('cx', d => projection([d.lon, d.lat])[0])
+  .attr('cy', d => projection([d.lon, d.lat])[1])
+  .attr('r', d => d.publicado ? 4 : 3)
+  .attr('fill', d => d.publicado ? '#35566B' : '#E4DBC6')
+  .attr('stroke', d => d.publicado ? '#F5F1E8' : '#A65F3F')
+  .attr('stroke-width', d => d.publicado ? 1.6 : 1)
+  .attr('stroke-dasharray', d => d.publicado ? null : '1.5,1.2')
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>Município prioritário (proxy populacional) — `
+    + (d.publicado ? 'JÁ TEM instrumento localizado' : 'nenhum instrumento localizado ainda'), evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+document.getElementById('legPrioritarios').innerHTML =
+  `<span><i style="background:#35566B"></i>Com instrumento</span>`
+  + `<span><i style="background:repeating-linear-gradient(45deg,#EDE6D8,#EDE6D8 3px,#A65F3F 3px,#A65F3F 4px)"></i>Sem instrumento ainda</span>`;
+
+// ===========================================================
+// Mapa de atos de resposta (decretos de emergência) — NUNCA pontuam no
+// índice (Correção B). Junta duas fontes: municipios.json (categoria
+// 'decreto', registros históricos, majoritariamente PB) e o arquivo dedicado
+// data/atos_resposta.json (eventos novos, com causa/danos/fonte por registro
+// — pedido de Patricia, 31/08/2026, motivado pelo temporal de granizo em SC).
+const eventosAntigos = MAP_POINTS.filter(p => p.categoria === 'decreto').map(p => ({
+  nome: p.nome, uf: p.uf, lat: p.lat, lon: p.lon, data: null, causa: null,
+}));
+const eventosNovos = (ATOS_RESPOSTA.eventos || []).map(e => ({
+  nome: e.nome, uf: e.uf, lat: e.lat, lon: e.lon, data: e.data, causa: e.causa,
+  danos: e.danos, decreto: e.decreto, fonte: e.fonte,
+}));
+const TODOS_ATOS_RESPOSTA = [...eventosAntigos, ...eventosNovos];
+document.getElementById('countAtosResposta').textContent = TODOS_ATOS_RESPOSTA.length;
+
+const svgResp = d3.select('#mapAtosResposta');
+svgResp.append('g').selectAll('path')
+  .data(BR_GEOJSON.features).join('path')
+  .attr('d', pathGen).attr('fill', '#E4DBC6').attr('class', 'uf-path')
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+svgResp.append('g').selectAll('circle')
+  .data(TODOS_ATOS_RESPOSTA).join('circle')
+  .attr('cx', d => projection([d.lon, d.lat])[0])
+  .attr('cy', d => projection([d.lon, d.lat])[1])
+  .attr('r', 4)
+  .attr('fill', '#A65F3F')
+  .attr('stroke', '#F5F1E8')
+  .attr('stroke-width', 1.6)
+  .on('mouseenter', (evt,d)=> showTip(
+    `<strong>${d.nome} (${d.uf})</strong><br>Decreto de emergência — ato de resposta, não pontua`
+    + (d.data ? `<br>Data: ${d.data}` : '')
+    + (d.causa ? `<br>Causa: ${d.causa}` : ''), evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+document.getElementById('legAtosResposta').innerHTML =
+  `<span><i style="background:#A65F3F"></i>Decreto de emergência</span>`;
+
+// ---- Mapa 2a: COBERTURA (uma pergunta: quantos municípios têm algum ato?) ----
+const corCobertura = (info) => {
+  if (!info.com_ato) return '#E4DBC6';
+  const k = Math.pow(Math.min(info.pct, 100)/100, 0.5);
+  return d3.interpolateHcl('#E4DBC6', '#35566B')(0.15 + 0.85*k);
+};
+// ---- Mapa 2b: NATUREZA — 5 classes divergentes (centro neutro oliva; sem gradiente contínuo) ----
+// Degradê contínuo terracota→areia→azul (mesmo eixo cromático do site inteiro),
+// interpolado por d3 em vez de 5 faixas de cor fixas — a proporção real
+// plano/decreto de cada estado agora tem uma cor própria na escala, não um
+// "degrau" compartilhado com estados de proporção bem diferente.
+const ESCALA_NATUREZA = d3.scaleLinear()
+  .domain([0, 0.05, 0.35, 0.65, 0.95, 1])
+  .range(['#A65F3F', '#A65F3F', '#C69B72', '#DDD3C0', '#8FA6B5', '#35566B'])
+  .clamp(true);
+const corNatureza = (info) => {
+  const atos = (info.n_plano||0) + (info.n_decreto||0);
+  if (!atos) return 'url(#hatchSemAtos)';
+  return ESCALA_NATUREZA(info.n_plano / atos);
+};
+
+function mapaUF(sel, cor, tipTexto){
+  const svg = d3.select(sel);
+  svg.append('g').selectAll('path')
+    .data(BR_GEOJSON.features).join('path')
+    .attr('d', pathGen)
+    .attr('class', 'uf-path')
+    .attr('fill', d => cor(PCT_POR_UF[d.properties.sigla] || {}))
+    .attr('tabindex', 0)
+    .attr('role', 'img').attr('aria-label', d => tipTexto(PCT_POR_UF[d.properties.sigla], d.properties.name).replace(/<[^>]+>/g, ' '))
+    .on('mouseenter', (evt,d)=> showTip(tipTexto(PCT_POR_UF[d.properties.sigla], d.properties.name), evt))
+    .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+    .on('mouseleave', hideTip)
+    .on('focus', function(evt,d){
+      const b = this.getBoundingClientRect();
+      showTip(tipTexto(PCT_POR_UF[d.properties.sigla], d.properties.name), {clientX: b.x + b.width/2, clientY: b.y});
+    })
+    .on('blur', hideTip);
+  return svg;
+}
+
+const svgCob = mapaUF('#mapCobertura', corCobertura, (i, nome) => {
+  const decl = (i.declarado_plano||0)+(i.declarado_antigo||0);
+  const l = decl ? `<br>Declarada (TCE/sistema estadual): ${(100*decl/i.total).toFixed(1)}%` : '';
+  return `<strong>${nome}</strong><br>${i.com_ato} de ${i.total} municípios com ato (${i.pct}%)${l}`;
+});
+const svgNat = mapaUF('#mapNatureza', corNatureza, (i, nome) => {
+  const atos = (i.n_plano||0)+(i.n_decreto||0);
+  if (!atos) return `<strong>${nome}</strong><br>Nenhum ato identificado`;
+  return `<strong>${nome}</strong><br>${i.n_plano} plano(s) preventivo(s) · ${i.n_decreto} decreto(s) reativo(s)<br>${Math.round(100*i.n_plano/atos)}% preventivo`;
+});
+const __defsNat = svgNat.append('defs');
+const __pat = __defsNat.append('pattern').attr('id','hatchSemAtos')
+  .attr('width', 6).attr('height', 6)
+  .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
+__pat.append('rect').attr('width', 6).attr('height', 6).attr('fill', '#EDE6D8');
+__pat.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
+  .attr('stroke', '#B9B2A4').attr('stroke-width', 1.4);
+
+document.getElementById('legCobertura').innerHTML =
+  `<span><i style="background:linear-gradient(90deg,#E4DBC6,#35566B); width:44px;"></i>0% → 100% dos municípios com ato</span>`;
+document.getElementById('legNatureza').innerHTML =
+  `<div style="width:100%; max-width:360px;">
+     <div style="height:12px; border-radius:6px; border:1px solid #CDBB9F;
+       background:linear-gradient(90deg, #A65F3F 0%, #C69B72 20%, #DDD3C0 50%, #8FA6B5 80%, #35566B 100%);"></div>
+     <div style="display:flex; justify-content:space-between; font-size:12.5px; color:var(--muted); margin-top:3px;"><span>só decretos reativos</span><span>misto</span><span>só planos preventivos</span></div>
+   </div>
+   <span><i style="background:repeating-linear-gradient(45deg,#EDE6D8,#EDE6D8 3px,#B9B2A4 3px,#B9B2A4 4px)"></i>sem atos identificados</span>`;
+
+// ---- Mapa: risco projetado × instrumento estadual ----
+const CONSIST_ROTULO = {COBRE:'Cobre o risco projetado', PARCIAL:'Cobre parte do risco', DIFERE:'Risco difere do instrumento', SEM:'Sem instrumento estadual', NEUTRO:'Sem sinal elevado no trimestre'};
+const CONSIST_COR = {COBRE:'#35566B', PARCIAL:'#8FA6B5', DIFERE:'#A65F3F', SEM:'url(#hatchSemInstr)', NEUTRO:'#B9B2A4'};
+// Cor de borda plana para a TABELA (SEM usa padrão de hachura no mapa SVG, que não
+// é uma cor CSS válida para border — aqui precisa de um tom sólido equivalente).
+const CONSIST_COR_TABELA = {COBRE:'#35566B', PARCIAL:'#8FA6B5', DIFERE:'#A65F3F', SEM:'#7C4A34', NEUTRO:'#B9B2A4'};
+
+// Tabela "risco × instrumento" gerada DIRETO de CONSIST — antes disso era uma cópia
+// digitada à mão, que chegou a divergir de verdade do CONSIST real (PE aparecia
+// duas vezes, em categorias diferentes; achado ao investigar a automação estadual,
+// 31/08/2026). Gerar aqui elimina a cópia — só existe uma fonte de verdade agora.
+function renderTabelaConsistencia(){
+  const corpo = document.getElementById('tblConsistencia');
+  if (!corpo) return;
+  const porCategoria = {};
+  Object.entries(CONSIST).forEach(([uf, v]) => {
+    (porCategoria[v.cat] = porCategoria[v.cat] || []).push([uf, v]);
+  });
+  let html = '';
+  Object.keys(CONSIST_ROTULO).forEach(cat => {
+    const linhas = (porCategoria[cat] || []).sort((a, b) => a[0].localeCompare(b[0]));
+    if (!linhas.length) return;
+    html += `<tr><td colspan="3" style="padding-top:16px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink); border-bottom:3px solid ${CONSIST_COR_TABELA[cat]};">${CONSIST_ROTULO[cat]} · ${linhas.length} estado(s)</td></tr>`;
+    linhas.forEach(([uf, v]) => {
+      html += `<tr><td style="white-space:nowrap;"><strong>${uf}</strong></td><td>${v.risco}</td><td>${v.instr}</td></tr>`;
+    });
+  });
+  corpo.innerHTML = html;
+}
+const svgConsist = d3.select('#mapConsistencia');
+const __defsC = svgConsist.append('defs');
+const __patC = __defsC.append('pattern').attr('id','hatchSemInstr')
+  .attr('width', 6).attr('height', 6)
+  .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
+__patC.append('rect').attr('width', 6).attr('height', 6).attr('fill', '#EDE6D8');
+__patC.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
+  .attr('stroke', '#7C4A34').attr('stroke-width', 1.4).attr('stroke-opacity', .55);
+svgConsist.append('g').selectAll('path')
+  .data(BR_GEOJSON.features).join('path')
+  .attr('d', pathGen)
+  .attr('class', 'uf-path')
+  .attr('fill', d => CONSIST_COR[CONSIST[d.properties.sigla].cat])
+  .attr('tabindex', 0)
+  .attr('role', 'img').attr('aria-label', d => { const c = CONSIST[d.properties.sigla]; return `${d.properties.name}: ${CONSIST_ROTULO[c.cat]}. Risco projetado: ${c.risco}. Instrumento: ${c.instr}`; })
+  .on('mouseenter', (evt,d) => { const c = CONSIST[d.properties.sigla];
+    showTip(`<strong>${d.properties.name}</strong><br><em>${CONSIST_ROTULO[c.cat]}</em><br>Risco projetado: ${c.risco}<br>Instrumento estadual: ${c.instr}`, evt); })
+  .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip)
+  .on('focus', function(evt,d) { const b = this.getBoundingClientRect(); const c = CONSIST[d.properties.sigla];
+    showTip(`<strong>${d.properties.name}</strong><br><em>${CONSIST_ROTULO[c.cat]}</em><br>Risco: ${c.risco}<br>Instrumento: ${c.instr}`, {clientX: b.x + b.width/2, clientY: b.y}); })
+  .on('blur', hideTip);
+addSiglas(svgConsist);
+const __contC = {};
+Object.values(CONSIST).forEach(c => __contC[c.cat] = (__contC[c.cat]||0) + 1);
+document.getElementById('legConsist').innerHTML =
+  ['COBRE','PARCIAL','DIFERE','SEM','NEUTRO'].map(k =>
+    `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,#EDE6D8,#EDE6D8 3px,#7C4A34 3px,#7C4A34 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
+renderTabelaConsistencia();
+
+// =========================================================
+// MARE — ranking com componentes ponderados
+// =========================================================
+
+// =========================================================
+// Áreas temáticas cobertas pelos instrumentos estaduais
+// =========================================================
+const AREAS = [
+  {label:'Grupo Seca (COBRADE 1.4.1): estiagem, seca e segurança hídrica', cor:'#87855C', ufs:['AC','AL','AM','AP','BA','CE','DF','GO','PA','PE','PI','SE']},
+  {label:'Grupo Seca · frente de incêndio florestal (1.4.1.3)', cor:'#A65F3F', ufs:['BA','GO','MA','MS','MT','RO','RR','TO']},
+  {label:'Família das chuvas (1.2-1.3): chuvas intensas e enchentes', cor:'#35566B', ufs:['ES','MG','PR','RJ','RS','SP']},
+  {label:'Multirrisco integrado', cor:'#2A4457', ufs:['SC']},
+];
+new Chart(document.getElementById('chartAreas'), {
+  type:'bar',
+  data:{ labels: AREAS.map(a=>a.label),
+    datasets:[{ data: AREAS.map(a=>a.ufs.length), backgroundColor: AREAS.map(a=>a.cor), borderRadius:4 }] },
+  options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{legend:{display:false},
+      tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(AREAS[ctx.dataIndex].ufs) } }},
+    scales:{ x:{ grid:{color:'#D6C4AC'}, ticks:{stepSize:2}, title:{display:true, text:'nº de UFs', color:'#647A7E', font:{size:12}} },
+      y:{ grid:{display:false}, ticks:{font:{size:12.5}} } } }
+});
+
+// =========================================================
+// FINANCIAMENTO E TRANSFERÊNCIAS
+// =========================================================
+document.getElementById('fontesMonit').innerHTML = TRANSFERENCIAS.fontes_monitoramento.map(f =>
+  `<li><a href="${f.url}" target="_blank" rel="noopener" style="color:var(--link);">${f.nome}</a></li>`).join('');
+
+// ---- Mapa do dinheiro ----
+const svgDin = d3.select('#mapDinheiro');
+svgDin.append('g').selectAll('path')
+  .data(BR_GEOJSON.features).join('path')
+  .attr('d', pathGen).attr('fill', '#E4DBC6').attr('class', 'uf-path')
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+
+// camada 1: habilitados a recurso federal (reconhecimento SEDEC = categoria decreto)
+const habilitados = MAP_POINTS.filter(p => p.categoria === 'decreto');
+const HAB_SET = new Set(habilitados.map(p => (p.nome || '').toLowerCase() + '|' + p.uf));
+svgDin.append('g').selectAll('circle.hab')
+  .data(habilitados).join('circle')
+  .attr('cx', d=>projection([d.lon,d.lat])[0])
+  .attr('cy', d=>projection([d.lon,d.lat])[1])
+  .attr('r', 3).attr('fill', '#C69B72')
+  .attr('stroke', '#F5F1E8').attr('stroke-width', 1)
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>Reconhecimento federal vigente: habilitado a solicitar recursos de resposta (S2iD → CPDC)`, evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+
+// camada 2: repasses confirmados (Prepara RS), raio proporcional ao valor
+const RAIO_FAIXA = {300000: 6, 250000: 5, 200000: 4};
+const repassesGeo = TRANSFERENCIAS.repasses_rs.filter(r => r.lat);
+svgDin.append('g').selectAll('circle.rep')
+  .data(repassesGeo).join('circle')
+  .attr('cx', d=>projection([d.lon,d.lat])[0])
+  .attr('cy', d=>projection([d.lon,d.lat])[1])
+  .attr('r', d=>RAIO_FAIXA[d.valor] || 4)
+  .attr('fill', '#35566B')
+  .attr('stroke', '#F5F1E8').attr('stroke-width', 1.6)
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.municipio} (RS)</strong><br>Faixa: ${d.faixa}<br>Repasse confirmado: R$ ${d.valor.toLocaleString('pt-BR')} (Prepara RS, 09/07/2026)`, evt))
+  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+  .on('mouseleave', hideTip);
+
+document.getElementById('dinTotalRS').textContent = 'R$ ' + (repassesGeo.reduce((s,r)=>s+r.valor,0)).toLocaleString('pt-BR');
+document.getElementById('dinNumRS').textContent = repassesGeo.length;
+document.getElementById('dinNumFed').textContent = habilitados.length;
+const __porFaixa = {};
+repassesGeo.forEach(r => { __porFaixa[r.faixa] = (__porFaixa[r.faixa] || 0) + 1; });
+document.getElementById('dinFaixas').textContent = Object.entries(__porFaixa)
+  .sort((a, b) => b[0].localeCompare(a[0]))
+  .map(([fx, n]) => `${fx}: ${n} municípios`).join(' · ');
+
+// ---- Siglas das UFs sobre os três mapas ----
+function addSiglas(svg){
+  svg.append('g').selectAll('text')
+    .data(BR_GEOJSON.features).join('text')
+    .attr('x', d=>pathGen.centroid(d)[0])
+    .attr('y', d=>pathGen.centroid(d)[1])
+    .attr('text-anchor','middle').attr('dominant-baseline','middle')
+    .attr('font-family', "'Archivo Narrow', 'Arial Narrow', Arial, sans-serif")
+    .attr('font-size', 11).attr('font-weight', 600)
+    .attr('fill', '#2E3D30')
+    .attr('paint-order','stroke').attr('stroke','#F5F1E8').attr('stroke-width',2.6).attr('stroke-opacity',.75)
+    .style('pointer-events','none')
+    .text(d=>d.properties.sigla);
+}
+addSiglas(svgPoints); addSiglas(svgCob); addSiglas(svgNat); addSiglas(svgDin); addSiglas(svgPrior); addSiglas(svgResp);
+
+// ---- Declarada × Documentada ----
+const UFS_DECL = ['PR','SC','RS'];
+new Chart(document.getElementById('chartDeclarado'), {
+  type:'bar',
+  data:{ labels: UFS_DECL.map(uf => {
+      const i = PCT_POR_UF[uf];
+      return `${uf} · ${i.fonte_declarada.split('—')[0].split(',')[0].trim()}`;
+    }),
+    datasets:[
+      {label:'Declarada (a TCE / sistema estadual)', data: UFS_DECL.map(uf => {
+        const i = PCT_POR_UF[uf];
+        return +(100*((i.declarado_plano||0)+(i.declarado_antigo||0))/i.total).toFixed(1);
+      }), backgroundColor:'#8FA6B5', borderRadius:4},
+      {label:'Documentada (esta verificação)', data: UFS_DECL.map(uf => PCT_POR_UF[uf].pct), backgroundColor:'#35566B', borderRadius:4},
+    ]},
+  options:{ indexAxis:'y', maintainAspectRatio:false,
+    plugins:{ legend:{position:'bottom'},
+      tooltip:{ callbacks:{ footer:(items)=>{
+        const uf = items[0].label.slice(0,2);
+        const i = PCT_POR_UF[uf];
+        return [
+          `${i.declarado_plano||0} municípios com plano declarado${i.declarado_antigo?` + ${i.declarado_antigo} com plano declarado desatualizado`:''}`,
+          `${i.com_ato} com documento localizado, de ${i.total} municípios`,
+          `Fonte da camada declarada: ${i.fonte_declarada}`,
+        ];
+      }}}},
+    scales:{ x:{max:100, grid:{color:'#D6C4AC'}, ticks:{callback:v=>v+'%'}}, y:{grid:{display:false}} } }
+});
+
+
+
+
+}
+__load().catch(err => {
+  document.body.insertAdjacentHTML('afterbegin',
+    '<div id="errBanner" style="background:#7C4A34;color:#fff;padding:14px 20px;font-family:Archivo, system-ui, sans-serif;">' +
+    'Erro ao carregar os dados: ' + err.message +
+    '. Sirva a pasta via HTTP (ex.: <code>npx serve</code>) — abrir o arquivo diretamente bloqueia o fetch.</div>');
+});
+</script>
+<!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
+     (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
+     Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+<script>window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });</script>
+</body>
+</html>

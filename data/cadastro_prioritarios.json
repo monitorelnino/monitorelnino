@@ -1,0 +1,48 @@
+{
+ "_governanca": {
+  "descricao": "Priorização municipal para a busca dirigida (§17 do dicionário + varredura manual de sessão), a partir do Cadastro Nacional de Municípios Suscetíveis a Eventos de Enxurradas e Inundações.",
+  "fonte_primaria": "Nota Técnica nº 1/2025/SADJ-VI/SEPAC/CC/PR (Casa Civil/PR), Tabela 2 (base 2022, 1.942 municípios) + Tabela 3 (complemento 2024, 153 municípios) = 2.095 municípios no total nacional",
+  "url_nota_tecnica": "https://www.gov.br/casacivil/pt-br/assuntos/cadastro-de-municipios-suscetiveis-a-eventos-de-enxurradas-e-inundacoes/sei_6390694_nota_tecnica_1_2025.pdf",
+  "limitacao_declarada": "A LISTA NOMINAL COMPLETA (2.095 municípios com nome e código IBGE) exige autenticação no portal do MDR (servicos.mdr.gov.br, login com CPF/senha) — não é acessível por busca pública nem fetch direto (verificado em 31/08/2026, 5 tentativas de acesso ao anexo PDF, todas retornando 'Conteúdo Restrito'). O que este arquivo contém, em vez disso, são os TOTAIS OFICIAIS POR UF (Tabela 2 do documento), usados para ordenar a prioridade de busca por estado — não uma lista de nomes de município.",
+  "registrado_em": "31/08/2026",
+  "uso": "verificar_prazos_legais.py e monitorar_imprensa_regional.py consultam 'ordem_prioridade_uf' para decidir em que UF concentrar buscas municipais primeiro; a busca dentro de cada UF usa o critério de maior população (data/populacao_censo2022.json), não uma lista nominal do cadastro."
+ },
+ "total_nacional_no_cadastro": 2095,
+ "total_municipios_brasil": 5570,
+ "percentual_no_cadastro": 37.6,
+ "por_uf": {
+  "MG": {"municipios_no_cadastro": 306, "total_uf": 853, "pct": 35.9},
+  "SC": {"municipios_no_cadastro": 218, "total_uf": 295, "pct": 73.9},
+  "RS": {"municipios_no_cadastro": 206, "total_uf": 497, "pct": 41.4},
+  "SP": {"municipios_no_cadastro": 177, "total_uf": 645, "pct": 27.4},
+  "PE": {"municipios_no_cadastro": 108, "total_uf": 185, "pct": 58.4},
+  "BA": {"municipios_no_cadastro": 144, "total_uf": 417, "pct": 34.5},
+  "MA": {"municipios_no_cadastro": 113, "total_uf": 217, "pct": 52.1},
+  "PA": {"municipios_no_cadastro": 97, "total_uf": 144, "pct": 67.4},
+  "RJ": {"municipios_no_cadastro": 76, "total_uf": 92, "pct": 82.6},
+  "CE": {"municipios_no_cadastro": 80, "total_uf": 184, "pct": 43.5},
+  "PR": {"municipios_no_cadastro": 84, "total_uf": 399, "pct": 21.1},
+  "AL": {"municipios_no_cadastro": 47, "total_uf": 102, "pct": 46.1},
+  "PI": {"municipios_no_cadastro": 47, "total_uf": 224, "pct": 21.0},
+  "AM": {"municipios_no_cadastro": 59, "total_uf": 62, "pct": 95.2},
+  "ES": {"municipios_no_cadastro": 71, "total_uf": 78, "pct": 91.0},
+  "MT": {"municipios_no_cadastro": 40, "total_uf": 141, "pct": 28.4},
+  "PB": {"municipios_no_cadastro": 43, "total_uf": 223, "pct": 19.3},
+  "MS": {"municipios_no_cadastro": 33, "total_uf": 79, "pct": 41.8},
+  "RN": {"municipios_no_cadastro": 32, "total_uf": 167, "pct": 19.2},
+  "AC": {"municipios_no_cadastro": 20, "total_uf": 22, "pct": 90.9},
+  "TO": {"municipios_no_cadastro": 18, "total_uf": 139, "pct": 12.9},
+  "GO": {"municipios_no_cadastro": 25, "total_uf": 246, "pct": 10.2},
+  "SE": {"municipios_no_cadastro": 17, "total_uf": 75, "pct": 22.7},
+  "RO": {"municipios_no_cadastro": 14, "total_uf": 52, "pct": 26.9},
+  "AP": {"municipios_no_cadastro": 14, "total_uf": 16, "pct": 87.5},
+  "RR": {"municipios_no_cadastro": 5, "total_uf": 15, "pct": 33.3},
+  "DF": {"municipios_no_cadastro": 1, "total_uf": 1, "pct": 100.0}
+ },
+ "ordem_prioridade_uf_por_percentual": [
+  "AM", "ES", "AC", "AP", "RJ", "DF", "PA", "PE", "SC", "MA",
+  "AL", "RS", "MT", "MS", "CE", "BA", "MG", "SP", "PR", "RR",
+  "SE", "RO", "RN", "TO", "PB", "GO"
+ ],
+ "nota_metodologica": "O percentual reflete a proporção de municípios da UF já identificados como suscetíveis a desastres geo-hidrológicos pelo governo federal — não a proporção de municípios da UF já verificados no banco do MARÉ (essa é a cobertura_nominal em data/percentual_uf.json). São eixos independentes: um mede risco reconhecido, o outro mede evidência já localizada."
+}

@@ -1,0 +1,33 @@
+# Configuração de deploy do Monitor El Niño Brasil no Netlify.
+# O site é estático (sem framework, sem empacotador): publicar a raiz do
+# repositório é suficiente. Este arquivo documenta o deploy para o auditor
+# reproduzir; ele NÃO é obrigatório caso a hospedagem seja feita por outro
+# meio (ver docs/COMO_RODAR_E_PENDENCIAS.md para alternativas).
+
+[build]
+  publish = "."
+  # Sem comando de build: os arquivos data/*.json já vêm prontos no
+  # repositório (gerados pelo pipeline Python/Node antes do commit,
+  # tipicamente pela Action semanal). Não há passo de compilação do site.
+
+[[redirects]]
+  from = "/obrigado"
+  to = "/obrigado.html"
+  status = 200
+
+# --- Formulário público (envie-dados.html) ---
+# O formulário usa Netlify Forms (atributo data-netlify="true" na marcação),
+# detectado automaticamente pelo Netlify no build — nenhuma configuração
+# adicional é necessária aqui. As submissões ficam disponíveis no painel
+# Netlify (Site → Forms) e são lidas programaticamente por
+# verificar_contribuicoes.py via API, que requer NETLIFY_AUTH_TOKEN e
+# NETLIFY_SITE_ID (ver .env.example). Nenhum dado do formulário, incluindo
+# o campo de e-mail, é publicado no site ou entra em data/*.json: ver
+# docs/LGPD_PRIVACIDADE.md para o fluxo completo do dado pessoal coletado.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

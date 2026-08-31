@@ -1,0 +1,188 @@
+{
+ "formato": "registro por execução da bateria/aquisição (§4.1.1c e §4.1.3-iv)",
+ "execucoes": [
+  {
+   "data": "2026-08-27",
+   "canal": "motor_de_busca",
+   "alvo": "Belém/PA (capital)",
+   "strings": [
+    "Belém plano de contingência El Niño defesa civil 2026",
+    "Agência Belém prefeitura Plano Municipal Enfrentamento Super El Niño agosto 2026"
+   ],
+   "resultados": "imprensa múltipla reproduzindo Agência Belém: Plano Municipal de Enfrentamento ao Super El Niño em elaboração (reunião 07/07/2026, 35 órgãos)",
+   "decisao": "nao_localizado -> plano_elaboracao (R7); termos novos: plano de enfrentamento; protocolo de alerta e enfrentamento"
+  },
+  {
+   "data": "2026-08-27",
+   "canal": "motor_de_busca",
+   "alvo": "AP (estado) + Macapá (capital)",
+   "strings": [
+    "governo do Amapá plano enfrentamento El Niño estiagem 2026"
+   ],
+   "resultados": "estado: só notas de monitoramento — LAC CONFIRMADO (evidência negativa). Macapá: PAE 2026 apresentado pela Didec/GCMM em 26/08/2026 (Diário do Amapá), documento não publicado",
+   "decisao": "AP estadual mantido LAC; Macapá nao_localizado -> plano_elaboracao (categoria de processo, precedente Belém)"
+  },
+  {
+   "data": "2026-08-27",
+   "canal": "motor_de_busca",
+   "alvo": "aquisição Censo 2022",
+   "strings": [
+    "github csv população municípios censo 2022 IBGE 5570",
+    "github \"POP2022\" censo 2022 população municípios csv apuração 203080756",
+    "github csv municipios \"11451245\" censo 2022 populacao",
+    "github \"1303403\" OR \"1.303.403\" municipios populacao 2022 csv malha"
+   ],
+   "resultados": "RIPSA reprovada 2ª vez pelas sentinelas; Prévia reprovada pelo total; planilha oficial CD2022 aprovada (1ª apuração)",
+   "decisao": "fonte adotada com contrato dual-apuração fortalecido"
+  },
+  {
+   "data": "2026-08-27",
+   "canal": "motor_de_busca",
+   "alvo": "SC municipal (conciliação Talanoa → fonte primária)",
+   "strings": [
+    "Santa Catarina municípios decretaram situação emergência chuvas 2026 lista defesa civil"
+   ],
+   "resultados": "SDC/SC oficial: 6 decretos de 02/07 (Bom Retiro, Guaramirim, Jaraguá do Sul, Schroeder, Major Vieira, Timbó Grande) + Papanduva 14/08",
+   "decisao": "+6 registros categoria decreto (caminho automático não-capital; peso zero; camadas de transparência). Predição do eixo 3 da Anatomia CONFIRMADA na direção deles. Pontos geocodificados pela malha IBGE local (+6)"
+  },
+  {
+   "data": "2026-08-29",
+   "canal": "motor_de_busca",
+   "alvo": "AC (revisão de natureza do instrumento pontuado)",
+   "strings": [
+    "Acre Decreto 11.932 2026 estiagem situação de emergência",
+    "Acre plano de contingência estiagem seca 2026 defesa civil estadual operação",
+    "decreto institui Gabinete de Crise Hídrica Acre 2026 plano contingência publicado diário oficial"
+   ],
+   "resultados": "11.932 (03/08) confirmado como situação de emergência SINPDEC (base da Portaria federal 2.659) → resposta. Localizado Decreto 11.899 (assinado 01/06, DOE 12/06/2026): institui Gabinete de Crise Hídrica, sucede Decreto 11.504/2024; Portaria de 16/07 regulamenta membros.",
+   "decisao": "Base pontuada trocada para 11.899: READ (reedição de estrutura recorrente, análogo MA/RO), antecipação 100 (12/06 < Boletim 29/06). 11.932 rebaixado a registro de resposta. FRONTEIRA REGISTRADA: alternativa NOVO elevaria instr a 100 — decisão conservadora READ, veto editorial aberto."
+  },
+  {
+   "data": "2026-08-29",
+   "canal": "motor_de_busca",
+   "alvo": "AM (revisão de natureza e data)",
+   "strings": [
+    "Amazonas 2026 \"emergência climática\" decreto Operação Amazonas Verde estiagem natureza data"
+   ],
+   "resultados": "Decreto 54.274 (DOE 01/06/2026): Estado de Emergência Climática e Ambiental em caráter PREVENTIVO, fundado em previsões, sem rito SINPDEC, com atribuições preventivas distribuídas.",
+   "decisao": "Classificação NOVO sustentada (ex-ante pelo objeto). Antecipação corrigida 60→100: DOE 01/06 anterior ao Boletim nº 1 (29/06). Data refinada de '06/2026' para 01/06/2026."
+  },
+  {
+   "data": "2026-08-29",
+   "canal": "motor_de_busca",
+   "alvo": "PE (revisão de natureza do instrumento pontuado)",
+   "strings": [
+    "Pernambuco decreto emergência 75 municípios 2026 estiagem seca natureza reconhecimento",
+    "Pernambuco plano contingência seca 2026 \"operação estiagem\" OR \"plano de enfrentamento\" defesa civil estadual preventivo"
+   ],
+   "resultados": "Decreto 60.960 (30/06/2026): Situação de Emergência SINPDEC por desastre de estiagem, COBRADE 1.4.1.1.0, linguagem de dano consumado, reconhecimento federal em 03/07 (Portaria 2.203) → resposta inequívoca. Bateria negativa 1ª rodada: nenhum instrumento ex-ante estadual localizado.",
+   "decisao": "PE reclassificado LAC (instr 0, antecipação 10); 60.960 vira registro de resposta. STATUS PROBATÓRIO: evidência negativa de UMA rodada — SEGUNDA RODADA OBRIGATÓRIA pré-publicação."
+  },
+  {
+   "data": "2026-08-29",
+   "canal": "motor_de_busca",
+   "alvo": "MS (revisão de natureza)",
+   "strings": [
+    "Mato Grosso do Sul decreto emergência ambiental 2026 incêndios Cemtec preventivo proibição queima"
+   ],
+   "resultados": "Decreto de 03/06/2026: emergência ambiental de caráter explicitamente preventivo, ancorada em alerta Cemtec, com obrigações preventivas concretas (aceiros 50m, queima prescrita, CICOE); não é rito SINPDEC.",
+   "decisao": "Classificação READ/antecipação 100 SUSTENTADA (ex-ante pelo objeto). Card atualizado para declarar a natureza."
+  },
+  {
+   "data": "2026-08-30",
+   "canal": "motor_de_busca",
+   "alvo": "Bateria dirigida das 8 UFs em LAC (varredura de imprensa nacional, a pedido de Patricia)",
+   "strings": [
+    "Amapá plano de contingência El Niño 2026 defesa civil estadual",
+    "Governo do Amapá decreto plano estadual 2026 estiagem El Niño preventivo",
+    "Decreto Estadual nº 5.606/2026 Pará alerta climático ambiental texto integral data",
+    "Alagoas plano estadual El Niño 2026 defesa civil decreto preventivo estiagem",
+    "'Comitê El Niño' Alagoas decreto número data Semarh publicado diário oficial",
+    "Governo da Paraíba decreto El Niño 2026 estiagem plano preventivo comitê",
+    "Governo João Azevêdo Paraíba decreto seca 2026 preventivo AESA plano estadual",
+    "Rio Grande do Norte plano estadual El Niño 2026 decreto preventivo comitê estiagem defesa civil",
+    "Sergipe plano estadual El Niño 2026 decreto preventivo defesa civil comitê estiagem",
+    "Sergipe decreto cria Cegec 'Comitê Estadual de Gestão de Eventos Climáticos Extremos' data número",
+    "Distrito Federal GDF plano El Niño 2026 decreto preventivo defesa civil estiagem",
+    "Decreto nº 48.599 DF 'estado de emergência ambiental' texto reconhecimento federal caráter preventivo"
+   ],
+   "resultados": "AP: só ato de resposta localizado (situação de emergência unificada, estiagem+queimadas+salinização+malária, data exata não confirmada); nenhum ex-ante estadual. PA: Decreto Estadual nº 5.606/2026 (DOE 25/08/2026), 'alerta climático e ambiental', EXPLICITAMENTE preventivo ('não representa emergência nem calamidade', confirmado em 8+ fontes independentes), determina PEAC. AL: 'Comitê El Niño' (Semarh + Defesa Civil, 13 órgãos), decreto sem número/data confirmados (imprensa datou 'há 2 dias' em 30/08). PB: nenhum instrumento ex-ante localizado; achado only um decreto de resposta de 01/05/2026 para evento distinto (erosão, não é do ciclo El Niño) e um boletim técnico mensal da AESA (PBCLIMA, monitoramento, não é instrumento de preparação). RN: apenas 'articulação de medidas preventivas' noticiada em reunião de 25/08/2026 em Brasília — SEM decreto/plano/documento publicado; não atinge o padrão probatório do projeto (documento, não reunião). SE: Comitê Estadual de Gestão de Eventos Climáticos Extremos (Cegec) coordena Plano de Contingência Estadual, programa 'Sergipe Resiliente: El Niño 2026/2027', 1º boletim público confirmado em 04/08/2026; decreto de criação do Cegec não localizado nesta busca. DF: Decreto nº 48.599/2026 (DODF 15/05/2026) — texto integral obtido (SINJ-DF): reativa o PPCIF (Decreto 37.549/2016); É RECORRENTE — decretos idênticos localizados em 2021 (41.783), 2023 (44.257) e 2025 (46.946), sempre para o período de seca, independente de El Niño.",
+   "decisao": "PA: LAC->READ, antecipação 30 (tardio, >30 dias após Boletim), instr 65, cobertura inalterada (Belém segue não localizado). AL: LAC->NOVO, antecipação 30 (tardio), instr 100; pendência de decreto exato registrada para confirmação futura. PB: mantido LAC — bateria negativa confirmada (2ª rodada desta UF). RN: mantido LAC — evidência insuficiente (reunião não é documento); bateria negativa confirmada. SE: LAC->NOVO, antecipação 30 (tardio, usando a data mais conservadora disponível), instr 100; pendência de decreto de criação do Cegec registrada. DF: LAC->VIG (NÃO 'NOVO'/'READ' — decisão central desta sessão), antecipação 40 (estrutura permanente/recorrente, categoria explícita da régua §5.2.1, não 100, apesar de a data 14/05 anteceder o Boletim — precedentes 2021/2023/2025 provam que o decreto seria emitido de qualquer forma, com ou sem El Niño). REGRA DO DF (METODOLOGIA §14) ATIVADA PELA PRIMEIRA VEZ: mesmo instrumento credita também a cobertura populacional via registro de Brasília em municipios.json, categoria 'coberto_estadual' (0,3), por acumulação constitucional de competências. AP: mantido LAC — ato de resposta registrado para transparência, sem instrumento ex-ante; 2ª bateria negativa confirmada."
+  },
+  {
+   "data": "2026-08-31",
+   "canal": "motor_de_busca",
+   "alvo": "Segunda passada dirigida nas 4 UFs em LAC remanescentes (AP, PB, PE, RN), a pedido de Patricia — 'esgotar as possibilidades', incluindo imprensa",
+   "strings": [
+    "Pernambuco plano estadual El Niño 2026 defesa civil preventivo comitê estiagem governo",
+    "'Plano Estadual de Adaptação e Resiliência Climática' Pernambuco publicado decreto Jacques Ribemboim SEMAS",
+    "Amapá plano estadual proteção defesa civil El Niño 2026 governo Clécio Luís preventivo comitê",
+    "Amapá 'Plano de Prevenção e Controle do Desmatamento' 2026 decreto data preventivo El Niño estiagem seca",
+    "Paraíba João Azevêdo governo estadual El Niño 2026 comitê plano seca preventivo Sudema AESA",
+    "Paraíba 'comitê' OR 'plano de contingência' estiagem 2026 governo estadual decreto Defesa Civil PB",
+    "Rio Grande do Norte governo estadual decreto plano El Niño 2026 estiagem preventivo Idema Defesa Civil"
+   ],
+   "resultados": "PE: localizado o PEAR-PE (Plano Estadual de Adaptação e Resiliência Climática), lançado 12/05/2025, com diagnóstico climático e 12 oficinas regionais concluídas (última 14/05/2026); CONFIRMADO em elaboração, sem conclusão publicada — fonte ((o))eco de 19/05/2026 declara 'previsão de conclusão até o fim de 2026'. AP: localizado PPCDAP (Plano de Prevenção e Controle do Desmatamento, Queimadas e Incêndios Florestais), instituído 2023, vigência atualizada para 2026-2030 (Diário do Amapá, 28/07/2026); e Decreto nº 5.677/2024 (Comitê Interinstitucional de Prevenção e Combate à Estiagem e Incêndios Florestais) — ambos recorrentes, tratam diretamente do risco de estiagem/incêndios projetado para o AP. PB: nenhum instrumento ex-ante estadual localizado. Achados descartados: boletim PBCLIMA (monitoramento, não plano), Comitê Gestor do Plano de Contingência (decreto de 2015, sem relação com defesa civil/clima — é de planejamento orçamentário/Seplag), força-tarefa municipal de Campina Grande (14/05/2026, ainda 'subsidiando a construção' de plano, regional/municipal e não estadual), decreto de calamidade por chuvas fortes de 01/05 e 02/05/2026 (ato de resposta). RN: nenhum instrumento ex-ante estadual localizado. Achados descartados: reunião de articulação em Brasília (25/08/2026, sem decreto/documento), menção vaga a 'grupo dedicado ao monitoramento' sem nome, número ou data — não atinge o padrão probatório do projeto.",
+   "decisao": "PE: LAC->ELAB (instr 35, antecipação 20), 8,8->23,8. Análogo ao tratamento já dado à BA para planos documentados mas não concluídos. AP: LAC->VIG (instr 45, antecipação 40 — recorrente que cobre o risco projetado, mesma regra do §18 de 30/08/2026), 9,1->37,4. PB: mantido LAC — 3ª bateria negativa confirmada nesta sessão (27/08, 29-30/08, 31/08). RN: mantido LAC — 3ª bateria negativa confirmada nesta sessão."
+  },
+  {
+   "data": "2026-08-31",
+   "canal": "motor_de_busca",
+   "alvo": "Primeira leva de busca municipal dirigida por população, a pedido de Patricia ('esgotar tudo, incluir imprensa') — municípios das UFs com mais entradas no Cadastro Nacional de Municípios Suscetíveis (Nota Técnica 1/2025/SADJ-VI/SEPAC/CC/PR), ainda não verificados nominalmente",
+   "strings": [
+    "Guarulhos plano de contingência estiagem El Niño 2026 defesa civil prefeitura",
+    "Campinas plano de contingência estiagem El Niño 2026 defesa civil prefeitura",
+    "São Gonçalo RJ plano de contingência estiagem chuvas El Niño 2026 defesa civil prefeitura",
+    "São Bernardo do Campo Santo André Osasco plano contingência El Niño 2026 defesa civil"
+   ],
+   "resultados": "Guarulhos (1.291.784 hab.): Plano da Defesa Civil para o verão, apresentado anualmente à Câmara Municipal (Compdec), + Operação Estiagem. Campinas (1.138.309 hab.): pacote de ações estratégicas contra o 'Super El Niño' apresentado 17-19/06/2026, com 21 estações meteorológicas, R$ 350.700 investidos, integrado ao Plano Local de Ação Climática — instrumento forte e datado. São Gonçalo (896.744 hab.): PLAMCON 2025/2026, com workshop de entrega em 21/10/2025 e Matriz de Responsabilidades por secretaria — instrumento forte. São Bernardo do Campo (810.729 hab.): plano de contingência com monitoramento de 126 áreas de risco, 40+ pluviômetros — evidência moderada, descrita por fonte de imprensa (Santo André) citando a ação vizinha, sem link direto à fonte oficial de SBC. Santo André (748.919 hab.): apenas ações descritas (treinamento, comunicação), sem documento nomeado — NÃO adicionado ao banco, evidência insuficiente.",
+   "decisao": "4 municípios adicionados como 'plano' (Guarulhos, Campinas, São Gonçalo, São Bernardo do Campo). Santo André mantido fora do banco por evidência insuficiente (sem documento nomeado). Cobertura nominal do banco: 254 → 258 municípios. LIMITAÇÃO REGISTRADA: a lista oficial completa dos 2.095 municípios prioritários (Nota Técnica 1/2025/SADJ-VI/SEPAC/CC/PR) está atrás de autenticação obrigatória no portal do MDR (servicos.mdr.gov.br, CPF+senha) — não acessível por busca nem fetch público. Obtidos, em vez disso, os números OFICIAIS por UF da própria nota técnica (Tabela 2 do documento, base 2022 + complemento 2024), usados para priorizar quais estados atacar primeiro: MG (306), SC (218), SP (177), RS (206), PE (108), BA (144), MA (113), PA (97), CE (80), RJ (76)."
+  },
+  {
+   "data": "2026-08-31",
+   "canal": "motor_de_busca",
+   "alvo": "Segunda leva de busca municipal por população, UFs prioritárias (RJ, PE)",
+   "strings": [
+    "Duque de Caxias RJ plano de contingência estiagem El Niño 2026 defesa civil prefeitura",
+    "Nova Iguaçu plano de contingência estiagem El Niño 2026 defesa civil prefeitura",
+    "Jaboatão dos Guararapes plano de contingência estiagem El Niño 2026 defesa civil prefeitura"
+   ],
+   "resultados": "Duque de Caxias (808.152 hab.): dois planos — Verão 2026/2027 e Fortes Precipitações — apresentados à Câmara Municipal em 27/08/2026. Forte. Nova Iguaçu (785.882 hab.): PLANCON-NI versão 8.0, PDF completo publicado, apresentado 10/12/2025. Forte. Jaboatão dos Guararapes (643.759 hab.): apenas Decreto nº 130/2026 (Situação de Emergência por chuvas intensas, 02/05/2026) — ato de RESPOSTA; menção genérica a 'plano de contingência' em notícia sobre sala de monitoramento, sem documento nomeado/datado localizável.",
+   "decisao": "Duque de Caxias e Nova Iguaçu adicionados como 'plano'. Jaboatão dos Guararapes NÃO adicionado — só ato de resposta localizado, evidência insuficiente para instrumento ex-ante. Cobertura nominal: 258 → 260 municípios."
+  },
+  {
+   "data": "2026-08-31",
+   "canal": "motor_de_busca",
+   "alvo": "Busca dirigida em municípios NÃO prioritários (fora do proxy do Cadastro Nacional) — a pedido de Patricia, para não concentrar toda a verificação onde a política pública já olha",
+   "strings": [
+    "Jaraguá Goiás plano contingência estiagem El Niño 2026 defesa civil prefeitura",
+    "Adamantina plano contingência estiagem El Niño 2026 defesa civil prefeitura interior São Paulo"
+   ],
+   "resultados": "Jaraguá/GO (45.223 hab.) e Adamantina/SP (34.687 hab.): NENHUM resultado nominal — apenas menções agregadas ao estado (ex.: 'plano abrange 613 dos 645 municípios paulistas', sem nomear Adamantina especificamente). ACHADO METODOLÓGICO: municípios na faixa de 30-45 mil habitantes têm cobertura de imprensa individual muito baixa ou nula — aparecem apenas como estatística agregada, nunca como notícia nomeada. Isto é característica real da cobertura jornalística local, não falha da busca; registrado para explicar por que a verificação nominal rareia abaixo de certo porte populacional. Dois achados incidentais fortes, aparecidos como ruído nas mesmas buscas: Jacareí/SP (313.573 hab., fora do proxy prioritário) — Plano de Contingência e Proteção 2026, 30 áreas de risco monitoradas semanalmente; Guarujá/SP (fora do proxy) — Plano Preventivo da Defesa Civil (PPDC) ampliado, Plancon atualizado, 29/07/2026.",
+   "decisao": "Jacareí e Guarujá adicionados como 'plano' (achados reais, fora da lista de prioritários — confirma que a varredura não-prioritária também produz resultado, só que com custo de busca mais alto por acerto). Jaraguá/GO e Adamantina/SP permanecem fora do banco — evidência insuficiente (nenhuma notícia nominal), não bateria negativa formal (não são candidatos a LAC/estado — são municípios, tratamento distinto). Cobertura nominal: 260 → 262. Média nacional 47,0 → 47,1."
+  },
+  {
+   "data": "2026-08-31",
+   "canal": "motor_de_busca",
+   "alvo": "Busca dirigida em municípios de porte médio (80-200 mil hab.), teste da hipótese de que essa faixa tem melhor cobertura de imprensa que cidades pequenas",
+   "strings": [
+    "Maricá RJ plano de contingência estiagem El Niño 2026 defesa civil prefeitura",
+    "Sinop Mato Grosso plano contingência estiagem El Niño 2026 defesa civil prefeitura",
+    "Guarapuava Paraná plano contingência estiagem El Niño 2026 defesa civil prefeitura"
+   ],
+   "resultados": "Maricá (197.300 hab.): Plano de Contingência Verão 2025/2026, HOMOLOGADO POR DECRETO, publicado no Jornal Oficial (JOM nº 1812, 27/11/2025), com 247 pontos de risco mapeados — revisão anual desde 2024. Forte, fonte primária. Sinop (196.067 hab.): apenas audiência pública na Câmara Municipal com orientações da Defesa Civil estadual sobre o período de seca — sem plano nomeado/datado. Insuficiente. Guarapuava (182.093 hab.): apenas menção genérica a repasse de recursos estaduais para drenagem — sem plano municipal específico localizado. Insuficiente. Achado incidental: Macaé (fora do alvo original, mas apareceu nas buscas) — plano de contingência para fortes chuvas 'já em funcionamento' segundo a própria Prefeitura, mas sem número/data de decreto localizados. CONFIRMAÇÃO DA HIPÓTESE: cidades médias (80-200 mil hab.) têm taxa de acerto mista — melhor que pequenas (30-45 mil, taxa zero na leva anterior), mas ainda inferior às grandes (>500 mil, quase sempre com resultado).",
+   "decisao": "Maricá adicionado como 'plano' (fonte primária, decreto). Macaé adicionado como 'plano' com data marcada como não precisada (evidência qualitativa consistente, sem número de decreto). Sinop e Guarapuava NÃO adicionados — evidência insuficiente. Cobertura nominal: 262 → 264. Média nacional mantida em 47,1 (dentro do arredondamento de uma casa decimal)."
+  },
+  {
+   "data": "2026-08-31",
+   "canal": "motor_de_busca",
+   "alvo": "Tentativa deliberada de busca em diários oficiais municipais (via API do Querido Diário) — a pedido de Patricia, para verificar se a busca estava indo à fonte primária ou só à imprensa",
+   "strings": [
+    "api.queridodiario.ok.org.br gazettes territory_ids querystring",
+    "queridodiario.ok.org.br busca 'plano de contingência' El Niño"
+   ],
+   "resultados": "ACHADO METODOLÓGICO relevante: até esta sessão, a busca dependia de imprensa/site municipal encontrar e linkar o diário oficial (foi assim que os PDFs de Maricá e Nova Iguaçu apareceram) — nunca foi feita busca DELIBERADA e direta no diário oficial como fonte primária. Tentativa de correção: a API pública do Querido Diário (api.queridodiario.ok.org.br/gazettes) retornou ERRO 404 mesmo na URL EXATA do exemplo da própria documentação oficial (territory_ids=2700706&querystring=orçamento) — o serviço parece fora do ar ou com endpoint alterado nesta data, não é limitação da busca. PENDÊNCIA REGISTRADA: revisitar o acesso à API do Querido Diário em sessão futura (pode ter sido instabilidade temporária); documentar no §17/§21 da METODOLOGIA como lacuna de canal, distinta da lacuna do Cadastro Nacional (que é bloqueio de login, não indisponibilidade). Achado incidental forte na mesma busca: Mauá/SP (418.261 hab.) — plano de contingência preventivo estruturado pela Secretaria de Saúde, reunião de 28/08/2026, medidas concretas descritas (cadeia fria, ampliação de leitos).",
+   "decisao": "Mauá adicionado como 'plano'. API do Querido Diário registrada como canal tentado e indisponível nesta data — não descartado como estratégia, só adiado. Cobertura nominal: 264 → 265. Média nacional mantida em 47,1."
+  }
+ ]
+}

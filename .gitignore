@@ -1,0 +1,14 @@
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+fila_contribuicoes/
+
+# Segredos reais — NUNCA versionar (v2.2.4, achado C10 da 2ª auditoria, 30/08/2026):
+# .env.example é o único arquivo de credenciais que deve existir no repositório.
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+links_relatorio.txt

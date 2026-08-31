@@ -1,0 +1,25 @@
+{
+  "_governanca": "Histórico de decretos ESTADUAIS por UF (só estaduais — municipal tem 5.571 linhas, custo diferente; decisão de Patricia, 31/08/2026), usado por verificar_recorrencia_uf.py para detectar quando um 'novo' decreto é, na prática, o mesmo instrumento reeditado ano a ano. Cresce a cada decreto estadual processado (recorrente ou não) — mesmo um decreto genuinamente novo entra aqui, para servir de comparação em ciclos futuros. Nunca removido; apenas anotado se um resumo precisar de correção.",
+  "UF": {
+    "DF": [
+      {"ano": 2016, "numero": "37.472", "tema": "PPCIF — Plano de Prevenção e Combate a Incêndios Florestais",
+       "resumo": "estado de emergência ambiental no DF entre abril e dezembro, para prevenir e minimizar incêndios florestais",
+       "origem": "reconstruído por busca em 30/08/2026 ao investigar o Decreto 48.599/2026 (ver METODOLOGIA §18 addendum)"},
+      {"ano": 2021, "numero": "42.328", "tema": "PPCIF — Plano de Prevenção e Combate a Incêndios Florestais",
+       "resumo": "estado de emergência ambiental no DF entre abril e dezembro, para prevenir e minimizar incêndios florestais",
+       "origem": "reconstruído por busca em 30/08/2026"},
+      {"ano": 2023, "numero": "44.903", "tema": "PPCIF — Plano de Prevenção e Combate a Incêndios Florestais",
+       "resumo": "estado de emergência ambiental no DF entre abril e dezembro, para prevenir e minimizar incêndios florestais",
+       "origem": "reconstruído por busca em 30/08/2026"},
+      {"ano": 2025, "numero": "46.712", "tema": "PPCIF — Plano de Prevenção e Combate a Incêndios Florestais",
+       "resumo": "estado de emergência ambiental no DF entre abril e dezembro, para prevenir e minimizar incêndios florestais",
+       "origem": "reconstruído por busca em 30/08/2026"}
+    ],
+    "AC": [
+      {"ano": 2024, "numero": "11.504", "tema": "estrutura de crise hídrica anterior",
+       "resumo": "gabinete ou comitê de resposta à estiagem, coordenação setorial básica sem plano de contingência formal",
+       "origem": "citado no Decreto 11.899/2026 como estrutura sucedida"}
+    ]
+  },
+  "nota_metodologica": "Um decreto com similaridade >= 0.55 (SequenceMatcher sobre o texto normalizado) contra qualquer entrada do histórico da mesma UF é tratado como possível reedição do mesmo instrumento: a antecipação aplicada NÃO é 100 (novo), mas a régua de cobertura de risco já declarada em §18 addendum (COBRE=40, NEUTRO=30, DIFERE=20). Abaixo do limiar, ou UF sem histórico ainda, o decreto é tratado como candidato a NOVO — mas SEMPRE registrado aqui para comparação futura. IMPORTANTE: o histórico contém só ANOS ANTERIORES ao decreto sendo avaliado; o próprio decreto do ciclo corrente entra aqui via registrar_no_historico() SÓ DEPOIS de classificado — nunca antes, para não comparar um candidato contra si mesmo."
+}

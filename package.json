@@ -1,0 +1,23 @@
+{
+  "name": "monitor-el-nino-brasil",
+  "version": "2.2.2",
+  "private": true,
+  "description": "Portões de verificação (estrutura e runtime) do Monitor El Niño Brasil — MARÉ. O site em si (index.html, proteja-se.html, envie-dados.html) não tem build step: é HTML/CSS/JS estático servido diretamente, sem empacotador. Estas dependências servem exclusivamente aos scripts em scripts/, que simulam um navegador para auditar o site antes de cada publicação.",
+  "scripts": {
+    "verificar:estrutura": "node scripts/verificar_estrutura.js",
+    "verificar:runtime": "node scripts/verificar_runtime.js",
+    "verificar": "npm run verificar:estrutura && npm run verificar:runtime"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "jsdom": "^30.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/futuraevidencelab/monitorelnino"
+  }
+}
