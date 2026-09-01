@@ -20,6 +20,9 @@ não pontuados permanecem na versão corrente.
 - **`docs/GUIA_DO_EDITOR.md`** — a mesma rotina em linguagem simples, sem
   comandos: passo a passo do PR, rotina de segunda-feira (aba Actions),
   botão de desfazer no Netlify, o que continua reservado ao julgamento humano.
+- **Fase de testes:** ramo órfão `publico` (página em branco + noindex) para
+  servir o domínio até o lançamento; `main` publicado como branch deploy
+  reservado. Documentado no protocolo §7 e no guia §7.
 - Documentação apenas: nenhum dado, escore ou regra do índice mudou.
   Manifesto regenerado para incluir os dois arquivos.
 

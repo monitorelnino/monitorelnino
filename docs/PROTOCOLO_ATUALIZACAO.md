@@ -141,7 +141,20 @@ Regras: `.env.example` permanece modelo vazio; nenhuma chave em commit,
 CHANGELOG, PR ou memória. Rotação do token: criar novo no GitHub, substituir
 o arquivo do projeto, apagar o antigo.
 
-## 7. Registro
+## 7. Fase de testes (a partir de 01/09/2026)
+
+Até o lançamento, o ramo de produção no Netlify é **`publico`** (órfão:
+`index.html` em branco, `robots.txt` bloqueando tudo, `netlify.toml` com
+redirect `/* → /index.html` e `X-Robots-Tag: noindex`). O ramo `main`
+continua sendo o site completo e é publicado como *branch deploy*
+(`main--<site>.netlify.app`, que o Netlify já serve com `noindex`). Deploy
+Previews de PR seguem funcionando. A pista A continua comitando no `main`.
+
+Lançamento = trocar o ramo de produção de `publico` para `main` no painel
+do Netlify (sem alteração no repositório). Reversão = o inverso. O ramo
+`publico` nunca recebe merge de `main` nem é rebaseado.
+
+## 8. Registro
 
 Todo PR da pista B referencia a entrada correspondente do `CHANGELOG.md`.
 Toda execução da pista A fica registrada na aba Actions (90 dias de

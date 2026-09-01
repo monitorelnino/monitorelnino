@@ -98,7 +98,27 @@ comum, o fluxo do §3 basta.
 - **Design e vocabulário**: nada vai ao ar sem sua prévia.
 - **O clique de Merge.**
 
-## 7. Acessos (onde está cada coisa)
+## 7. Fase de testes: domínio em branco, site completo em endereço reservado
+
+Enquanto o site não é lançado, o domínio monitorelnino.com.br mostra uma
+**página em branco** (ramo `publico`), e o site completo (ramo `main`) fica
+num **endereço reservado** do Netlify, no formato
+`main--NOME-DO-SITE.netlify.app`. Esse endereço não aparece em buscadores
+(o Netlify marca como "não indexar") e só quem tem o link chega nele. Não é
+senha: é um endereço não divulgado. Se um dia precisar de senha de verdade,
+isso existe no Netlify como recurso pago — é só pedir.
+
+- **Testar:** abra o endereço reservado. É o site completo, sempre na
+  versão atual do `main`.
+- **Prévias de PR** continuam funcionando normalmente.
+- **A rotina de segunda-feira** continua atuando no `main`; o domínio em
+  branco não é tocado.
+- **Lançar** (quando decidir): Netlify → *Site configuration* → *Build &
+  deploy* → *Branches and deploy contexts* → *Configure* → em *Production
+  branch*, trocar `publico` por `main` → *Save*. Em um minuto o domínio mostra
+  o site completo. Para voltar ao branco, o caminho inverso.
+
+## 8. Acessos (onde está cada coisa)
 
 - **Token do GitHub:** no arquivo `ACESSO_GITHUB_claude.txt`, dentro dos
   arquivos do projeto Claude. Claude lê sozinho a cada conversa. Vence por
