@@ -23,6 +23,11 @@ não pontuados permanecem na versão corrente.
 - **Fase de testes:** ramo órfão `publico` (página em branco + noindex) para
   servir o domínio até o lançamento; `main` publicado como branch deploy
   reservado. Documentado no protocolo §7 e no guia §7.
+- **Publicação via GitHub Actions** (01/09/2026, tarde): constatado que o
+  site no Netlify não estava ligado ao GitHub (versão no ar era de 27/08).
+  Criados `publicar_dominio.yml` (ramo `publico` → produção, página em branco)
+  e `publicar_previa.yml` (`main` → endereço reservado). Relatórios do robô no
+  repositório privado `robo-registro`. Protocolo §7 e guia §7 reescritos.
 - Documentação apenas: nenhum dado, escore ou regra do índice mudou.
   Manifesto regenerado para incluir os dois arquivos.
 

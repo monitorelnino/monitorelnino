@@ -143,16 +143,27 @@ o arquivo do projeto, apagar o antigo.
 
 ## 7. Fase de testes (a partir de 01/09/2026)
 
-Até o lançamento, o ramo de produção no Netlify é **`publico`** (órfão:
-`index.html` em branco, `robots.txt` bloqueando tudo, `netlify.toml` com
-redirect `/* → /index.html` e `X-Robots-Tag: noindex`). O ramo `main`
-continua sendo o site completo e é publicado como *branch deploy*
-(`main--<site>.netlify.app`, que o Netlify já serve com `noindex`). Deploy
-Previews de PR seguem funcionando. A pista A continua comitando no `main`.
+**Constatação de 01/09/2026:** o site no Netlify (`site_id` em segredo) foi
+publicado manualmente e **não está ligado ao GitHub**. Em vez de ligar, o
+deploy passou a ser feito pelo próprio GitHub Actions, com a CLI do Netlify e
+os segredos já cadastrados — o repositório continua sendo a única fonte:
 
-Lançamento = trocar o ramo de produção de `publico` para `main` no painel
-do Netlify (sem alteração no repositório). Reversão = o inverso. O ramo
-`publico` nunca recebe merge de `main` nem é rebaseado.
+| Workflow | Ramo | Gatilho | Publica em |
+|---|---|---|---|
+| `publicar_dominio.yml` (vive no ramo `publico`) | `publico` (órfão: `index.html` em branco, `robots.txt`, `netlify.toml` com `/* → /index.html` e `noindex`) | push em `publico` | **produção** — monitorelnino.com.br |
+| `publicar_previa.yml` (vive no `main`) | `main` (site completo) | push em `main` — inclusive os commits da Action semanal | endereço reservado `main--<NETLIFY_SITE_NAME>.netlify.app` (Netlify serve com `noindex`) |
+
+Segredos adicionais: `NETLIFY_SITE_NAME` (nome aleatório do site, aplicado
+por `updateSite` de forma idempotente) e `ROBO_TOKEN` (para o robô gravar
+relatórios). Relatórios de toda execução vão para o repositório **privado**
+`monitorelnino/robo-registro` — nunca para este repositório público, que não
+deve conter o nome do site nem o endereço reservado.
+
+**Lançamento** = PR no `main` que copie `publicar_dominio.yml` (ajustado para
+`branches: [main]`) e remova `publicar_previa.yml`; merge pela editoria.
+**Reversão** = o inverso. O ramo `publico` nunca recebe merge de `main`.
+Se um dia o site for ligado ao GitHub pelo painel do Netlify, estes
+workflows devem ser desativados antes, para não haver dois publicadores.
 
 ## 8. Registro
 
