@@ -113,10 +113,13 @@ isso existe no Netlify como recurso pago — é só pedir.
 - **Prévias de PR** continuam funcionando normalmente.
 - **A rotina de segunda-feira** continua atuando no `main`; o domínio em
   branco não é tocado.
-- **Lançar** (quando decidir): Netlify → *Site configuration* → *Build &
-  deploy* → *Branches and deploy contexts* → *Configure* → em *Production
-  branch*, trocar `publico` por `main` → *Save*. Em um minuto o domínio mostra
-  o site completo. Para voltar ao branco, o caminho inverso.
+- **Quem publica é o robô do repositório**, não o painel do Netlify: cada
+  mudança aprovada no `main` vai sozinha para o endereço reservado, e o
+  domínio em branco só muda se alguém mexer no ramo `publico`.
+- **Lançar** (quando decidir): diga ao Claude "lançar o site". Ele prepara um
+  PR que troca o publicador do domínio para o `main`; você aprova com Merge e,
+  em dois minutos, monitorelnino.com.br mostra o site completo. Para voltar
+  ao branco, o inverso — também por PR.
 
 ## 8. Acessos (onde está cada coisa)
 
