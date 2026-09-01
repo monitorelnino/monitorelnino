@@ -1,0 +1,18 @@
+# Ramo "publico": página inicial em branco servida no domínio enquanto o site
+# completo (ramo main) fica em fase de testes num endereço secundário.
+# Para lançar: no Netlify, mudar o ramo de produção de "publico" para "main".
+[build]
+  publish = "."
+
+# Qualquer endereço do domínio mostra a página em branco (evita que URLs
+# antigas do site completo continuem acessíveis pelo domínio público).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
