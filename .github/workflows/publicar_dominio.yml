@@ -27,6 +27,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
+          set +e
           {
             echo "execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
             echo "token_presente=$([ -n "$NETLIFY_AUTH_TOKEN" ] && echo sim || echo nao) site_id_presente=$([ -n "$NETLIFY_SITE_ID" ] && echo sim || echo nao)"
