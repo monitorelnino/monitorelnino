@@ -1,4 +1,4 @@
-# MANIFEST_SHA256 · Monitor El Niño Brasil · selado em 31/08/2026 por scripts/gerar_manifesto.py
+# MANIFEST_SHA256 · Monitor El Niño Brasil · selado em 01/09/2026 por scripts/gerar_manifesto.py
 # Escopo: código, páginas, dados, documentação-fonte, configuração E os dois PDFs publicados
 # (METODOLOGIA.pdf, MARE_Indice_Documentacao.pdf — C7 da auditoria de 29/08/2026; os PDFs são
 # regenerados com números vivos; desde a v2.2.3 são bit-deterministicos via SOURCE_DATE_EPOCH,
@@ -7,7 +7,7 @@
 # (ferramenta de sessão — inventário em docs/AUDITORIA_CODIGO.md §2). Conferência: sha256sum -c
 e7b36936250d82483b3277c3bff749a3d98ef7f5092efbb5b5943b1e11ada877  .env.example
 4cf5d9f3ef3584929ed12fad04e2671b9c6b18c8305110ee2908073b1e96db6d  .github/workflows/atualizar.yml
-705494707e70260d36f3277c71ca1c43b6bde856b5429ea4703c353ee1f434c5  CHANGELOG.md
+c4441e3ffd8c41d819724de6199e07c7061e9fa4de4af6766dca9b891f14e311  CHANGELOG.md
 0a2332e73585c23a7ad80e9e7afd4626d866cdc622ac593b0119e68198ee5caf  DOCUMENTACAO_TECNICA.md
 ea423fa1bbd947859f20a81a4a284b2b3f62e9ae836c2f072d693550b813167d  INSTALACAO_E_AUDITORIA.md
 5846dd6098adc59112ea0ed4000109017a8f9f68ab2af404f77a47e58ce59ad6  LEIA-ME-PRIMEIRO.md
@@ -62,7 +62,9 @@ a21b6014a59e1e69351214d7a39a39a3bdfd6410ff9fb1d318901211f72a5b73  data/transfere
 eb25b0af16c304a01fbc8bbef99ffd1474e6570c4364f3e9683bc6a16407cd36  docs/AUDITORIA_METODOLOGIA.md
 1e8f4247b05e261080092ff2410cf78c4f45a087231a5a37c8fa0ea4dc51d9ab  docs/COMO_RODAR_E_PENDENCIAS.md
 29cabad9cfed92a365ef5fea27bfe8e0aba6a75dde81b19aca63afe697a015b1  docs/DADOS_ABERTOS.md
+4e7cfa29c9ff04e174c1f9baee9eadd2c5d16a02393afe46c5eab7a51c719f7f  docs/GUIA_DO_EDITOR.md
 cfa5ea9006365b55a38f20b9b1ec71ba4e84b810b2011e40a3975531ebdb14fd  docs/LGPD_PRIVACIDADE.md
+f3a647d120d230b9b35d15647cb8b08950c6d105cb45e64ca39ccb7f6ed9ddd0  docs/PROTOCOLO_ATUALIZACAO.md
 b9472dbefe24cd4e97c12bfe2678afe029eb79e9a19c47d0ecc1afc7f70144f4  docs/RESPOSTA_AUDITORIA_29-08-2026.md
 b34917bc3a790bc34936b2b86ff59d35f8aa36c6894f8a7ffcd708bf0247d60e  docs/RESPOSTA_SEGUNDA_AUDITORIA_29-08-2026.md
 549ac9042e3805dd245d922a76d29b269cafc4dc80770d1533b911f32399e292  docs/SBOM.md

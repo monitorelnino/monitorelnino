@@ -1,0 +1,152 @@
+# Protocolo de atualização do site publicado · Monitor El Niño Brasil
+
+**Vigência:** a partir de 01/09/2026 (site já publicado em monitorelnino.com.br).
+**Complementa:** `INSTALACAO_E_AUDITORIA.md` (como reproduzir) e
+`docs/COMO_RODAR_E_PENDENCIAS.md` (como rodar). Este documento diz **como
+uma mudança entra no site em produção** — quem faz o quê, em que ordem, com
+que portões.
+**Versão simples, para a editoria:** `docs/GUIA_DO_EDITOR.md`.
+
+---
+
+## 1. Princípio
+
+O que está na branch `main` do repositório **é** o site: o Netlify publica a
+raiz do repositório sem passo de montagem (`netlify.toml`, `publish = "."`).
+Logo, **nada entra na `main` sem passar por um portão** — mecânico (scripts)
+ou humano (aprovação da editoria) — e toda entrada é reversível.
+
+Duas pistas levam à `main`, com regras diferentes:
+
+| Pista | Quem executa | O que pode tocar | Portão |
+|---|---|---|---|
+| **A — automática** (Action semanal `atualizar.yml`) | robô, sem intervenção | apenas `data/`, o número do medidor em `index.html`, `mapas-e-graficos.html`, o dicionário `ESTADOS` em `recalcular_mare.py`, PDFs, `selos/`, `feeds/`, `dados-abertos/` — e só via funções com rollback de `julgar_e_aplicar_descobertas.py` | os cinco portões bloqueantes de `atualizar.py`; falha ⇒ nenhum commit |
+| **B — editorial** (sessão Claude + editoria) | Claude prepara; editoria aprova | qualquer arquivo | ramo + pull request + prévia + aprovação humana + portões |
+
+A pista A **executa regras**; nunca as cria. Tudo que a regra não cobre vai
+para fila (`data/instrumentos_revisar.json`, `data/pistas_imprensa.json`) e
+espera a pista B. Isso é a governança automático × humano do projeto
+(`TRANSFERENCIA_CONCEITUAL_MARE.md` §9) aplicada ao deploy.
+
+## 2. Pista A — atualização automática semanal
+
+- **Gatilho:** segundas-feiras, 09h UTC (06h Brasília), ou botão *Run
+  workflow* na aba Actions. Primeira execução prevista: 07/09/2026.
+- **Segredos necessários** (Settings → Secrets and variables → Actions):
+  `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID`, `PORTAL_TRANSPARENCIA_API_KEY`.
+  Confirmados presentes em 01/09/2026. Ausência de qualquer um faz a etapa
+  correspondente ser **pulada com aviso**, nunca publicar dado não confirmado.
+- **Resultado esperado:** commit `Atualização automática de dados (dd/mm/aaaa)`
+  na `main` pelo usuário `monitor-el-nino-bot`, ou "Sem alterações."
+- **Sinais para a editoria** (aba Actions, execução da semana):
+  - ✅ verde sem avisos — nada a fazer;
+  - ✅ verde com `::warning::` — há pistas/propostas na fila humana ou links
+    quebrados; abrir sessão da pista B para julgar;
+  - ❌ vermelho — nada foi publicado; o site continua como estava. Abrir
+    sessão da pista B com o link da execução para diagnóstico.
+- **Notificação:** o GitHub envia e-mail ao dono do repositório quando a
+  execução falha. Sucesso não gera e-mail — a conferência semanal é
+  responsabilidade da editoria (Guia do Editor, §4).
+
+## 3. Pista B — mudança editorial (texto, design, código, dados, método)
+
+### 3.1 Sequência obrigatória
+
+```
+1. Editoria descreve a mudança no chat (o que, onde, por quê).
+2. Claude clona a main atual com o token (nunca trabalha sobre cópia antiga).
+3. Claude cria ramo  edicao/AAAA-MM-DD-tema  a partir da main.
+4. Claude edita com assert-before-write (âncora verificada por grep antes
+   de cada substituição; verificação de sintaxe após cada arquivo).
+5. Claude roda os portões locais (§3.3) — todos ✓ ou a mudança não sobe.
+6. Claude registra no CHANGELOG.md e, se cabível, em METODOLOGIA.md.
+7. Claude faz push do ramo e abre um pull request contra a main, com:
+   resumo em linguagem simples · lista de arquivos · saída dos portões ·
+   o que a editoria deve olhar na prévia.
+8. Netlify gera a prévia (Deploy Preview) do PR.
+9. Editoria abre a prévia, confere e decide: aprovar (Merge) ou pedir ajuste.
+10. Merge na main ⇒ Netlify publica em ~1 min.
+11. Claude (ou a editoria) confere o site vivo; CHANGELOG muda de
+    "em publicação" para a data.
+```
+
+**O clique de Merge é da editoria.** Claude não faz merge por conta própria
+de nenhum PR da pista B, mesmo com autorização genérica prévia — cada PR é
+uma decisão. Exceção única: correção de emergência (§5), com autorização
+explícita naquela sessão.
+
+### 3.2 Classes de mudança e o que cada uma exige
+
+| Classe | Exemplos | Além da sequência 3.1 exige | Versão |
+|---|---|---|---|
+| **Texto/editorial** | frase do herói, legenda, rótulo, texto de página | auditoria de vocabulário controlado (`grep` contra frases-teto e frases proibidas; "não localizamos até o corte" é o teto) · paridade METODOLOGIA ↔ site onde o texto é espelhado | mantém |
+| **Design** | cores, layout, posição de figuras, cartões | prévia obrigatória; nenhum rótulo de faixa ou legenda pode afirmar mais do que o índice mede (§2.2 da transferência conceitual) · `verificar_runtime.js` e `verificar_runtime_mapas.js` verdes | mantém |
+| **Código** | scripts, workflow, dependências | portões completos (§3.3) · SBOM e `MANIFEST_SHA256.txt` regenerados (`scripts/gerar_manifesto.py`) · SRI recalculado se algum CDN mudar · `pip-audit`/`npm audit` sem CVE crítico novo | patch (v2.2.x) |
+| **Dados** | registrar instrumento, reclassificar ato, aplicar contribuição | entra **somente** por `aplicar_revisao.py` / `converter_contribuicao.py`, nunca por edição direta de `data/*.json` · citação completa (número + data do ato) · `recalcular_mare.py --write` seguido de `--check` · determinismo do PDF (`SOURCE_DATE_EPOCH` = corte) · errata se corrige registro anterior | mantém; novo corte em `data/meta.json` |
+| **Método** | pesos, créditos, componentes, faixas, régua | regra **declarada antes** de beneficiar alguém (§3.5 da transferência) · simulação antes/depois apresentada à editoria · teste de estresse · seção datada em METODOLOGIA · entrada em errata/governança | **maior** (v2.3, v3…) |
+
+Contribuições do formulário público seguem o caminho já definido
+(`verificar_contribuicoes.py → converter_contribuicao.py → aplicar_revisao.py`)
+e são a única reserva de julgamento humano que Claude **nunca** executa sozinho.
+
+### 3.3 Portões locais (ordem canônica, todos bloqueantes)
+
+```
+node   scripts/verificar_estrutura.js
+python verificar_consistencia.py
+python recalcular_mare.py --check
+node   scripts/verificar_runtime.js
+node   scripts/verificar_runtime_mapas.js
+```
+Critério: cinco `✓` e média nacional reproduzida bit a bit. Se a mudança
+tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
+Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
+
+### 3.4 Convivência entre as pistas
+
+O robô só toca os arquivos listados em §1. Um ramo da pista B que edite
+qualquer um deles deve ser **rebaseado na `main`** imediatamente antes do
+merge (a Action pode ter comitado na segunda-feira). Conflito em
+`data/*.json` nunca é resolvido "à mão": refaz-se a alteração por
+`aplicar_revisao.py` sobre a base nova.
+
+## 4. Reversão (rollback)
+
+- **Site:** Netlify → *Deploys* → escolher o deploy anterior → *Publish
+  deploy*. Instantâneo, sem tocar no repositório. Use quando o site vivo
+  estiver visivelmente errado.
+- **Repositório:** `git revert` do commit problemático, via PR da pista B
+  (mantém histórico; nunca `force push` na `main`).
+- Toda ação da pista A já é revertida pelos rollbacks internos de
+  `julgar_e_aplicar_descobertas.py`; se um commit automático inteiro precisar
+  cair, aplica-se o `git revert` acima.
+
+## 5. Correção de emergência
+
+Definição: erro **público e material** no site vivo (número errado no
+medidor, afirmação que ultrapassa o teto probatório, link malicioso, dado
+pessoal exposto). Fluxo: rollback pelo Netlify **primeiro** (§4), depois PR
+normal com a correção. Nesse caso, e só nele, a editoria pode autorizar
+Claude a fazer o merge na mesma sessão, por escrito no chat.
+
+## 6. Acessos e segredos
+
+| Item | Onde vive | Quem vê |
+|---|---|---|
+| Token GitHub (fine-grained, `claude-monitorelnino`, Contents + Pull requests, vence ~30/11/2026) | arquivo `ACESSO_GITHUB_claude.txt` nos arquivos do projeto Claude — **nunca** no repositório | Claude, em sessão |
+| Segredos da Action | GitHub Secrets | ninguém (só nomes) |
+| Conector Netlify | conta Claude da editoria | Claude, em sessões novas |
+
+Regras: `.env.example` permanece modelo vazio; nenhuma chave em commit,
+CHANGELOG, PR ou memória. Rotação do token: criar novo no GitHub, substituir
+o arquivo do projeto, apagar o antigo.
+
+## 7. Registro
+
+Todo PR da pista B referencia a entrada correspondente do `CHANGELOG.md`.
+Toda execução da pista A fica registrada na aba Actions (90 dias de
+artefatos; relatório de links por 30 dias). A trajetória da média nacional
+continua registrada em `METODOLOGIA.md` §5.5.
+
+---
+*Protocolo de atualização · Futura Evidence Lab · 01/09/2026.*
