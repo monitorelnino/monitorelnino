@@ -12,7 +12,7 @@ const path = require("path");
 const { JSDOM } = require("jsdom");
 
 const RAIZ = path.join(__dirname, "..");
-const PADRAO = ["index.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "mapas-e-graficos.html", "para-gestores.html"]
+const PADRAO = ["index.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "mapas-e-graficos.html", "para-gestores.html", "sinais-de-risco.html"]
   .map(a => path.join(RAIZ, a));
 const arquivos = process.argv.length > 2 ? process.argv.slice(2) : PADRAO;
 

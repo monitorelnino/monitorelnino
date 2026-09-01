@@ -14,6 +14,7 @@ Etapas:
   6. recalcular_mare.py --check — índice bate com os dados (obrigatória; falha bloqueia)
   7. verificar_runtime.js — site roda em navegador simulado (obrigatória; falha bloqueia)
   7b. verificar_runtime_mapas.js — mapas-e-graficos.html roda em navegador simulado
+  7c. verificar_runtime_sinais.js — sinais-de-risco.html roda em navegador simulado
      (obrigatória; falha bloqueia; página própria desde 31/08/2026)
   8. data/meta.json — carimbo de atualização (e novo corte, se a etapa 3 alterou dados)
 
@@ -52,6 +53,11 @@ def main():
 
     rodar([sys.executable, "atualizar_boletins.py"])
 
+    # Sinais oficiais de risco (01/09/2026, METODOLOGIA §23): coleta as três camadas
+    # para sinais-de-risco.html. NÃO é bloqueante e NÃO toca no índice — fonte fora do
+    # ar permanece como lacuna declarada na página, nunca como valor estimado.
+    rodar([sys.executable, "coletar_sinais_risco.py"])
+
     rodar([sys.executable, "verificar_contribuicoes.py"])
 
     revisar_p = RAIZ / "data" / "instrumentos_revisar.json"
@@ -81,9 +87,11 @@ def main():
     rodar(["node", "scripts/verificar_estrutura.js"], obrigatorio=True)
 
     rodar([sys.executable, "verificar_consistencia.py"], obrigatorio=True)
+    rodar([sys.executable, "verificar_sinais.py"], obrigatorio=True)
     rodar([sys.executable, "recalcular_mare.py", "--check"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_mapas.js"], obrigatorio=True)
+    rodar(["node", "scripts/verificar_runtime_sinais.js"], obrigatorio=True)
 
     meta_p = RAIZ / "data" / "meta.json"
     meta = json.load(open(meta_p, encoding="utf-8"))

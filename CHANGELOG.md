@@ -11,6 +11,39 @@ não pontuados permanecem na versão corrente.
 
 ## [2.2.3] — em publicação (corte de dados 31/08/2026)
 
+### Added (01/09/2026 — página de sinais oficiais de risco)
+- **`sinais-de-risco.html`** — sétima página do site: o que CEMADEN/INPE, ANA,
+  INMET, CEMADEN e NOAA/IRI publicaram sobre o ciclo 2026/2027, por estado, com
+  órgão, documento e data em cada valor. Cinco mapas (tipo de risco projetado,
+  seca observada, avisos meteorológicos, focos ativos, alertas vigentes), quatro
+  gráficos (série ONI, probabilidades por trimestre, estados por tipo de risco e
+  o cruzamento tipo de risco × estágio do arcabouço público), quatro cartões de
+  estado do ciclo e a tabela das oito fontes. Origem: pergunta editorial de
+  Patricia a partir de um site homônimo que publica previsão de impacto própria.
+- **Peso zero estrutural.** Nada da página entra no índice MARÉ. `verificar_sinais.py`
+  falha se qualquer chave de sinal aparecer em `recalcular_mare.py` ou em
+  `data/indice.json` — o portão que impede a deriva, não a promessa de não derivar.
+- **`coletar_sinais_risco.py`** — coletor das três camadas (ciclo · observado ·
+  ENOS), com adaptador por fonte, `--semear` (a partir do que já é verificado no
+  repositório) e `--autoteste` (22 provas de parser, classificação e guardas, sem
+  rede). Falha de rede não interrompe o pipeline: a fonte volta a ser lacuna declarada.
+- **Dois portões novos, ambos bloqueantes:** `verificar_sinais.py` (estrutura,
+  proveniência de todo valor, peso zero, linguagem, lacuna honesta) e
+  `scripts/verificar_runtime_sinais.js` (29 verificações no DOM renderizado,
+  incluindo o gesto do usuário no tooltip e o crédito de fonte figura a figura).
+  A suíte canônica passa de cinco para **sete** portões.
+- **Vocabulário de tipo de risco** (estiagem · chuvas · incêndios · misto · sem
+  sinal), lista fechada: classifica *risco de quê*, nunca *quão grave*. Escala de
+  severidade continua sendo só a da fonte oficial.
+- Documentação: `METODOLOGIA.md` §23 (com a fronteira, as oito fontes e os riscos
+  que a própria página cria) e `docs/PROTOCOLO_ATUALIZACAO.md` atualizados para sete
+  portões. **Pendência declarada:** o comentário de `.github/workflows/atualizar.yml`
+  ainda enumera cinco portões — o token da sessão não tem escopo `workflow`. É só
+  comentário: a Action roda `atualizar.py`, que já executa os sete.
+- **Estado na publicação:** 1 das 8 fontes coletada (camada do ciclo, já verificada
+  no repositório); as outras 7 entram na primeira rodada semanal com rede aberta e,
+  até lá, aparecem como lacuna declarada — nenhum valor estimado.
+
 ### Added (01/09/2026 — site já publicado; governança de atualização)
 - **`docs/PROTOCOLO_ATUALIZACAO.md`** — como uma mudança entra no site em
   produção: duas pistas (A, automática semanal, escopo restrito a dados;
