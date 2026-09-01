@@ -1,0 +1,35 @@
+name: Publicar este ramo no domínio (produção)
+
+# Fase de testes (01/09/2026): este ramo "publico" contém só a página em branco.
+# A cada push aqui, o robô envia o conteúdo ao Netlify como deploy de PRODUÇÃO
+# (monitorelnino.com.br). O site completo (ramo main) é publicado à parte,
+# num endereço reservado, por outro workflow. Lançar = mover este workflow
+# para o ramo main (ver docs/PROTOCOLO_ATUALIZACAO.md §7).
+on:
+  push:
+    branches: [publico]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: Deploy de produção no Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          set -e
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::error::Segredos NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID ausentes"; exit 1; fi
+          npx --yes netlify-cli@17 deploy --prod --dir=. --no-build \
+            --message "Página em branco (ramo publico) · $(date -u +%Y-%m-%dT%H:%MZ)" --json > deploy.json
+          node -e '
+            const d=JSON.parse(require("fs").readFileSync("deploy.json","utf8"));
+            console.log("RESULTADO site_name=" + (d.site_name||"") + " url=" + (d.url||"") + " deploy_url=" + (d.deploy_url||""));'
