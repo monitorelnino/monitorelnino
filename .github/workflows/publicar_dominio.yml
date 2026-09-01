@@ -32,8 +32,9 @@ jobs:
             echo "execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
             echo "token_presente=$([ -n "$NETLIFY_AUTH_TOKEN" ] && echo sim || echo nao) site_id_presente=$([ -n "$NETLIFY_SITE_ID" ] && echo sim || echo nao)"
             echo "--- netlify deploy --prod ---"
-            npx --yes netlify-cli@17 deploy --prod --dir=. --message "Página em branco (ramo publico)" > deploy_out.txt 2>&1; echo "codigo_saida=$?"
-            grep -vE "npm warn" deploy_out.txt | head -c 2500
+            mkdir -p /tmp/site && cp index.html robots.txt netlify.toml /tmp/site/
+            npx --yes netlify-cli@17 deploy --prod --dir=/tmp/site --message "Página em branco (ramo publico)" > /tmp/deploy_out.txt 2>&1; echo "codigo_saida=$?"
+            grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "codigo|Error|error|422|Deploy is live|Website URL|Unique deploy|Deployed to" | head -c 1500
           } > resultado_robo.txt 2>&1
           sed -i "s/${NETLIFY_AUTH_TOKEN:-NUNCA_VAZIO_X}/[TOKEN]/g" resultado_robo.txt
           cat resultado_robo.txt
