@@ -3,15 +3,17 @@ name: Publicar este ramo no domínio (produção)
 # Fase de testes (01/09/2026): este ramo "publico" contém só a página em branco.
 # A cada push aqui, o robô envia o conteúdo ao Netlify como deploy de PRODUÇÃO
 # (monitorelnino.com.br). O site completo (ramo main) é publicado à parte,
-# num endereço reservado, por outro workflow. Lançar = mover este workflow
-# para o ramo main (ver docs/PROTOCOLO_ATUALIZACAO.md §7).
+# num endereço reservado, pelo workflow publicar_previa.yml do próprio main.
+# Lançar = copiar este workflow para o main com branches: [main]
+# (ver docs/PROTOCOLO_ATUALIZACAO.md §7). Relatórios de execução vão para o
+# repositório privado monitorelnino/robo-registro — nunca para este ramo.
 on:
   push:
     branches: [publico]
   workflow_dispatch: {}
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   publicar:
@@ -21,26 +23,30 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "20" }
       - name: Deploy de produção no Netlify
-        id: deploy
-        continue-on-error: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
           set +e
+          mkdir -p /tmp/site && cp index.html robots.txt netlify.toml /tmp/site/
           {
-            echo "execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            echo "token_presente=$([ -n "$NETLIFY_AUTH_TOKEN" ] && echo sim || echo nao) site_id_presente=$([ -n "$NETLIFY_SITE_ID" ] && echo sim || echo nao)"
-            echo "--- netlify deploy --prod ---"
-            mkdir -p /tmp/site && cp index.html robots.txt netlify.toml /tmp/site/
-            npx --yes netlify-cli@17 deploy --prod --dir=/tmp/site --message "Página em branco (ramo publico)" > /tmp/deploy_out.txt 2>&1; echo "codigo_saida=$?"
-            grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "codigo|Error|error|422|Deploy is live|Website URL|Unique deploy|Deployed to" | head -c 1500
-          } > resultado_robo.txt 2>&1
-          sed -i "s/${NETLIFY_AUTH_TOKEN:-NUNCA_VAZIO_X}/[TOKEN]/g" resultado_robo.txt
-          cat resultado_robo.txt
-      - name: Gravar resultado no ramo (para leitura pelo Claude)
+            echo "workflow=publicar_dominio ramo=publico commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            npx --yes netlify-cli@17 deploy --prod --dir=/tmp/site --message "Página em branco (ramo publico) ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1
+            echo "codigo_saida=$?"
+            grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "Error|error|422|Deploy is live|Website URL|Unique deploy" | head -c 1500
+          } > /tmp/relatorio.txt 2>&1
+          sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/relatorio.txt
+          grep -q "Deploy is live" /tmp/relatorio.txt && echo "DEPLOY_OK=1" >> $GITHUB_ENV || echo "DEPLOY_OK=0" >> $GITHUB_ENV
+      - name: Registrar relatório no repositório privado
         if: always()
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
         run: |
-          mkdir -p .robo && mv resultado_robo.txt .robo/ultimo_resultado.txt
-          git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
-          git add .robo/ultimo_resultado.txt && git commit -m "robô: resultado da publicação [skip ci]" && git push
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
+          mkdir -p /tmp/registro/relatorios
+          cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_publicar_dominio.txt"
+          cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
+          git add -A && git commit -q -m "publicar_dominio ${GITHUB_SHA::7}" && git push -q
+      - name: Resultado
+        run: |
+          [ "$DEPLOY_OK" = "1" ] && echo "Domínio publicado." || { echo "::error::Deploy falhou — ver robo-registro"; exit 1; }
