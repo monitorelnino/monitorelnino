@@ -11,6 +11,21 @@ não pontuados permanecem na versão corrente.
 
 ## [2.2.3] — em publicação (corte de dados 31/08/2026)
 
+### Added (01/09/2026 — site já publicado; governança de atualização)
+- **`docs/PROTOCOLO_ATUALIZACAO.md`** — como uma mudança entra no site em
+  produção: duas pistas (A, automática semanal, escopo restrito a dados;
+  B, editorial, via ramo + pull request + prévia Netlify + merge pela
+  editoria), classes de mudança com portões e regra de versão, rollback,
+  emergência, acessos. Clique de merge reservado à editoria.
+- **`docs/GUIA_DO_EDITOR.md`** — a mesma rotina em linguagem simples, sem
+  comandos: passo a passo do PR, rotina de segunda-feira (aba Actions),
+  botão de desfazer no Netlify, o que continua reservado ao julgamento humano.
+- **Fase de testes:** ramo órfão `publico` (página em branco + noindex) para
+  servir o domínio até o lançamento; `main` publicado como branch deploy
+  reservado. Documentado no protocolo §7 e no guia §7.
+- Documentação apenas: nenhum dado, escore ou regra do índice mudou.
+  Manifesto regenerado para incluir os dois arquivos.
+
 ### Added (as sete sugestões aprovadas por Patricia, implementadas em 31/08/2026)
 1. **VLibras** (tradução para Libras, plugin oficial gov.br) nas seis páginas,
    antes de `</body>` conforme o fabricante, com guarda: sem rede, nenhum erro.
