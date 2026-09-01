@@ -1,3 +1,55 @@
-execucao=2026-09-01T10:35:31Z
+execucao=2026-09-01T10:37:13Z
 token_presente=sim site_id_presente=sim
 --- netlify deploy --prod ---
+codigo_saida=1
+Deploy path:        /home/runner/work/monitorelnino/monitorelnino
+Configuration path: /home/runner/work/monitorelnino/monitorelnino/netlify.toml
+Deploying to main site URL...
+- Uploading blobs to deploy store...
+
+​
+Netlify Build                                                 
+────────────────────────────────────────────────────────────────
+​
+❯ Version
+  @netlify/build 29.58.0
+​
+❯ Flags
+  auth: [TOKEN]
+  deployId: 6a96aaf2404d46f5e11294d6
+  dir: .
+  message: Página em branco (ramo publico)
+  open: false
+  prod: true
+  prodIfUnlocked: false
+  site: f04e26ad-f196-44b9-89bb-af314bce01a9
+  skipFunctionsCache: false
+​
+❯ Current directory
+  /home/runner/work/monitorelnino/monitorelnino
+​
+❯ Config file
+  /home/runner/work/monitorelnino/monitorelnino/netlify.toml
+​
+❯ Context
+  dev
+✔ Finished uploading blobs to deploy store
+- Hashing files...
+- Looking for a functions cache...
+✔ No cached functions were found
+✔ Finished hashing 
+- CDN diffing files...
+✔ CDN requesting 2 files
+- Uploading 2 files
+ ›   Warning: JSONHTTPError: no records matched 422
+ ›   Warning: 
+{
+  "name": "JSONHTTPError",
+  "status": 422,
+  "json": {
+    "code": 422,
+    "message": "no records matched"
+  }
+}
+
+ ›   JSONHTTPError: Unprocessable Entity
