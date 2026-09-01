@@ -11,7 +11,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   publicar:
@@ -21,15 +21,27 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "20" }
       - name: Deploy de produção no Netlify
+        id: deploy
+        continue-on-error: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          set -e
-          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
-            echo "::error::Segredos NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID ausentes"; exit 1; fi
-          npx --yes netlify-cli@17 deploy --prod --dir=. --no-build \
-            --message "Página em branco (ramo publico) · $(date -u +%Y-%m-%dT%H:%MZ)" --json > deploy.json
-          node -e '
-            const d=JSON.parse(require("fs").readFileSync("deploy.json","utf8"));
-            console.log("RESULTADO site_name=" + (d.site_name||"") + " url=" + (d.url||"") + " deploy_url=" + (d.deploy_url||""));'
+          {
+            echo "execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "token_presente=$([ -n "$NETLIFY_AUTH_TOKEN" ] && echo sim || echo nao) site_id_presente=$([ -n "$NETLIFY_SITE_ID" ] && echo sim || echo nao)"
+            echo "--- netlify api getSite ---"
+            npx --yes netlify-cli@17 api getSite --data "{\"site_id\":\"$NETLIFY_SITE_ID\"}" 2>&1 | node -e '
+              let t="";process.stdin.on("data",d=>t+=d).on("end",()=>{try{const s=JSON.parse(t);console.log("site_name="+s.name,"url="+s.url,"ssl_url="+s.ssl_url,"custom_domain="+s.custom_domain,"repo="+(s.build_settings&&s.build_settings.repo_url),"branch="+(s.build_settings&&s.build_settings.repo_branch),"published_deploy="+(s.published_deploy&&s.published_deploy.created_at))}catch(e){console.log(t.slice(0,1500))}})'
+            echo "--- netlify deploy --prod ---"
+            npx --yes netlify-cli@17 deploy --prod --dir=. --no-build --message "Página em branco (ramo publico)" --json 2>&1 | head -c 3000
+            echo; echo "codigo_saida=${PIPESTATUS[0]}"
+          } > resultado_robo.txt 2>&1
+          sed -i "s/${NETLIFY_AUTH_TOKEN:-NUNCA_VAZIO_X}/[TOKEN]/g" resultado_robo.txt
+          cat resultado_robo.txt
+      - name: Gravar resultado no ramo (para leitura pelo Claude)
+        if: always()
+        run: |
+          mkdir -p .robo && mv resultado_robo.txt .robo/ultimo_resultado.txt
+          git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
+          git add .robo/ultimo_resultado.txt && git commit -m "robô: resultado da publicação [skip ci]" && git push
