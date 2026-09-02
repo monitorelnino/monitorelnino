@@ -330,6 +330,7 @@
   .card-src{font-size:13.5px; color:var(--muted); margin:0;}
   .card-link{margin-top:8px; font-size:13.5px; font-weight:600;}
   .card-note{margin-top:8px; font-size:12.5px; color:var(--muted);}
+  .pill-nivel{display:inline-block; font-family:'Archivo Narrow','Arial Narrow',Arial,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:#F5F1E8; background:var(--neutro); border-radius:999px; padding:3px 10px; margin-right:6px;}
   .card-sep{border:none; border-top:1px solid var(--line); margin:14px 0;}
   details > summary{padding:6px 0; min-height:24px; box-sizing:border-box;}  /* alvo de toque ≥24px (WCAG 2.5.8) */
 </style>
@@ -372,7 +373,7 @@
       <p class="site-sub">Como estados e municípios estão se preparando para o El Niño 2026/2027: verificação independente dos planos de contingência nos três níveis de governo, com fontes primárias, metodologia aberta e transparência sobre o que falta.</p>
       <div class="meta">
       Fonte: <a href="#fontes" style="color:inherit;">registros verificados individualmente, com fonte e data citadas ↓</a><br>
-      <span id="metaUfsMun">27 UFs · 5.571 municípios cadastrados</span><br>
+      <span id="metaUfsMun">27 estados verificados · verificação municipal por níveis (contador abaixo)</span><br>
       Última verificação: <strong id="metaUltimaVerif">25/08/2026</strong>
     </div>
     </div>
@@ -427,7 +428,24 @@
   </div>
 
   <div class="panel" style="margin-bottom:24px; border-left:6px solid #A65F3F; background:linear-gradient(180deg, #FBF7EC, #F5F1E8); box-shadow:0 1px 0 #E2D8C4 inset;">
-    <h2>Como ler o MARÉ</h2>
+    <div class="panel" id="blocoPosDefeso" style="display:none; margin:0 0 22px;">
+  <p class="selo" style="margin:0 0 6px;">O que o período eleitoral escondeu · publicado a partir de 26/10/2026</p>
+  <p style="margin:0 0 4px;" id="pdFontes">—</p>
+  <p style="margin:0 0 4px;" id="pdInstrumentos">—</p>
+  <p style="margin:0;" id="pdVariacao">—</p>
+  <p class="note" style="margin:6px 0 0;">Somente contagens e datas, decompostas por causa (<a href="METODOLOGIA.pdf">metodologia, §29</a> — pré-registro de 02/09/2026).</p>
+</div>
+
+<div class="panel" id="contadorVerificacao" style="margin:0 0 22px;">
+  <p class="selo" style="margin:0 0 6px;">Contador público da verificação · <span id="cvData">—</span></p>
+  <p style="margin:0 0 4px;" id="cvNiveis">Verificação municipal em andamento por níveis.</p>
+  <p style="margin:0 0 4px;" id="cvSuspensas"></p>
+  <p style="margin:0;" id="cvFila"></p>
+  <p class="note" style="margin:6px 0 0;">O que cada nível significa está na <a href="METODOLOGIA.pdf">metodologia, §25</a>. Os buracos ficam visíveis por decisão editorial: o que não foi verificado aparece como não verificado, não como ausência.</p>
+</div>
+
+<h2>Como ler o MARÉ</h2>
+<p class="note" style="margin:4px 0 12px;"><strong>Período eleitoral (04/07–25/10/2026):</strong> a lei suspende transferências voluntárias e parte da comunicação oficial, e alguns sítios públicos ficam com conteúdo fora do ar — por isso nenhuma regra que altere notas muda nesse período, e as buscas sem resultado são provisórias até repetição após 25/10 (<a href="METODOLOGIA.pdf">metodologia, §24</a>).</p>
     <p class="hint" style="margin-bottom:10px;">O essencial em seis pontos; cada regra pode ser conferida no <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">documento metodológico</a> (v2.2.3):</p>
     <ul style="columns:2 360px; column-gap:38px; font-size:14px; color:var(--ink); line-height:1.7; margin:0; padding-left:18px;">
       <li style="break-inside:avoid;"><strong>O que a nota mede.</strong> Três componentes, com pesos iguais: o <em>plano estadual</em> (existe? é específico para o El Niño?), a <em>população coberta</em> (que fração dos habitantes vive em municípios com plano preventivo) e a <em>antecipação</em> (o plano saiu antes ou depois do primeiro alerta federal, de 29/06/2026).</li>
@@ -452,7 +470,7 @@
 
   <div class="panel" style="margin-bottom:24px;">
     <h2 id="minhacidade">Encontre sua cidade</h2>
-    <p class="hint">Escolha o estado e digite (ou selecione) o município: <strong>todos os 5.570</strong> estão na lista. Você verá tudo o que esta verificação sabe sobre ele, como o estado se compara, e o que fazer e cobrar.</p>
+    <p class="hint">Escolha o estado e digite (ou selecione) o município: <strong>todos os 5.571 da lista oficial do IBGE</strong> estão aqui. Você verá tudo o que esta verificação sabe sobre ele, como o estado se compara, e o que fazer e cobrar.</p>
     <div class="tbl-controls">
       <select id="ufSelect" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
       <input id="cidadeInput" type="text" list="listaMun" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off"><button type="button" id="limparCidade" aria-label="Limpar e escolher outro município" title="Trocar de município" style="margin-left:6px; padding:6px 11px; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:15px; font-weight:600; background:transparent; color:var(--link); border:1px solid var(--line); border-radius:8px; cursor:pointer;">×</button>
@@ -548,6 +566,7 @@
         <option value="coberto_estadual">Coberto pelo estado</option>
         <option value="nao_el_nino">Ato não relacionado a El Niño</option>
         <option value="nao_localizado">Nenhum ato localizado</option>
+        <option value="nao_verificado">Ainda não verificado</option>
       </select>
     </div>
     <div class="tbl-wrap">
@@ -580,11 +599,20 @@
 
 
 <script>
-let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
+let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
+function nivelVerificacao(uf, nome){
+  // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
+  const cod = MUN_COD[uf + '|' + nome];
+  if (!cod || !VRESUMO || !VRESUMO.niveis_acima_do_padrao) return 'nao_verificado';
+  return VRESUMO.niveis_acima_do_padrao[String(cod)] || 'nao_verificado';
+}
+const NIVEL_ROTULO = { nao_verificado: 'ainda não verificado individualmente',
+  nacional: 'verificado em fontes nacionais', estadual: 'verificado em fontes nacionais e estaduais',
+  municipal_completo: 'verificação completa' };
 async function __load(){
   let __ref;
-  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, __ref, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS] = await Promise.all(
-    ['geo_uf','percentual_uf','pontos_mapa','municipios','indice','estados','transferencias','municipios_ibge_referencia','meta','populacao_censo2022','recursos_uf','financiamento_uf','consist','atos_resposta','prazos_uf']
+  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, __ref, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO] = await Promise.all(
+    ['geo_uf','percentual_uf','pontos_mapa','municipios','indice','estados','transferencias','municipios_ibge_referencia','meta','populacao_censo2022','recursos_uf','financiamento_uf','consist','atos_resposta','prazos_uf', 'verificacao_resumo']
       .map(f => fetch('data/' + f + '.json').then(r => {
         if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json');
         return r.json();
@@ -689,7 +717,9 @@ function selectUF(uf, tileEl){
     ? `<div class="card-link"><a href="${capReg.url}" target="_blank" rel="noopener">Ver fonte oficial →</a></div>`
     : capReg && capReg.categoria === 'nao_localizado'
       ? `<div class="card-note">Nenhum documento localizado até o corte dos dados.</div>`
-      : `<div class="card-note">Documento nomeado; link oficial em verificação.</div>`;
+      : capReg && capReg.categoria === 'nao_verificado'
+        ? `<div class="card-note">Ainda não verificada individualmente com a bateria completa de fontes.</div>`
+        : `<div class="card-note">Documento nomeado; link oficial em verificação.</div>`;
   const capitalBlock = d.capital ? `
     <div class="capital-box">
       <div class="card-kicker">Capital · verificação individual</div>
@@ -741,6 +771,7 @@ const CAT_LABEL_TBL = {
   plano_elaboracao:['Em elaboração','#9FB6C6'], decreto:['Decreto reativo','#A65F3F'],
   coberto_estadual:['Coberto pelo estado','#87855C'], nao_el_nino:['Não é El Niño','#B9B2A4'],
   nao_localizado:['Nada localizado','#7C4A34'],
+  nao_verificado:['Ainda não verificado','#64645C'],
 };
 // Caixa "Prazos em curso" (31/08/2026): lê data/prazos_uf.json, que o vigia de
 // prazos regrava a cada atualização. Mostra o que vence daqui para a frente e o que
@@ -779,6 +810,32 @@ document.getElementById('tblSearch').addEventListener('input', renderTable);
 document.getElementById('tblCat').addEventListener('change', renderTable);
 renderTable();
 renderPrazos();
+  (function(){
+    // C14: visível somente a partir de 26/10/2026, por data — não por flag manual.
+    const lim = new Date(2026, 9, 26); const hoje = new Date();
+    if (hoje >= lim) {
+      const bl = document.getElementById('blocoPosDefeso');
+      if (bl && VRESUMO && VRESUMO.pos_defeso) {
+        bl.style.display = '';
+        document.getElementById('pdFontes').textContent = VRESUMO.pos_defeso.fontes_que_voltaram_txt || '—';
+        document.getElementById('pdInstrumentos').textContent = VRESUMO.pos_defeso.instrumentos_anteriores_txt || '—';
+        document.getElementById('pdVariacao').textContent = VRESUMO.pos_defeso.variacao_decomposta_txt || '—';
+      }
+    }
+  })();
+  (function(){
+    try{
+      const t = (VRESUMO && VRESUMO.totais_por_nivel) || {};
+      const nNac=(t.nacional||0), nEst=(t.estadual||0), nComp=(t.municipal_completo||0), nNao=(t.nao_verificado||0);
+      const el=(id)=>document.getElementById(id);
+      el('cvData').textContent = VRESUMO && VRESUMO.ultima_rodada_log ? ('última rodada de busca: ' + VRESUMO.ultima_rodada_log) : 'antes da primeira rodada estruturada';
+      el('cvNiveis').innerHTML = '<strong>' + nNac.toLocaleString('pt-BR') + '</strong> municípios verificados em fontes nacionais · <strong>' + nEst.toLocaleString('pt-BR') + '</strong> em fontes nacionais e estaduais · <strong>' + nComp.toLocaleString('pt-BR') + '</strong> com verificação completa · <strong>' + nNao.toLocaleString('pt-BR') + '</strong> ainda não verificados.';
+      const susp = VRESUMO ? VRESUMO.fontes_suspensas_defeso_ultima_rodada : 0;
+      el('cvSuspensas').innerHTML = '<strong>' + (susp||0) + '</strong> fonte(s) oficial(is) consultada(s) estava(m) suspensa(s) por período eleitoral na última rodada.';
+      const fila = VRESUMO ? VRESUMO.fila_citacao_incompleta : null;
+      if (fila !== null && fila !== undefined) el('cvFila').innerHTML = '<strong>' + fila + '</strong> registro(s) na fila pública de citação incompleta (prazo de saneamento 25/10/2026; regra declarada em 02/09/2026).';
+    }catch(e){}
+  })();
 (function(){ const c = document.getElementById('citacaoCorte'); if (c && META && META.corte) c.textContent = META.corte; })();
 // Link direto para um estado (#SC): usado pelos selos embutidos em outros sites (31/08/2026).
 (function(){
@@ -958,7 +1015,9 @@ function textoPedidoAcesso(uf, municipio){
       'a data da última revisão do plano e da audiência pública de prestação de contas correspondente;',
       'o nome e o contato institucional do coordenador municipal de proteção e defesa civil designado.'
     ];
-    if (!cat || cat === 'nao_localizado') contexto = `não localizou, em fonte pública de acesso aberto, plano de contingência do município para o ciclo`;
+    const _niv = nivelVerificacao(uf, municipio);
+    if (cat === 'nao_localizado' && _niv === 'municipal_completo') contexto = `não localizou, após verificação individual completa em fontes públicas, plano de contingência do município para o ciclo`;
+    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') contexto = `ainda não verificou individualmente as fontes públicas deste município (verificação em andamento por níveis)`;
     else if (cat === 'plano_antigo') contexto = `localizou apenas ${reg.documento} (${reg.data}), edição anterior ao ciclo`;
     else if (cat === 'decreto') contexto = `localizou apenas decreto de emergência (${reg.documento}, ${reg.data}), ato de resposta, e não plano preventivo`;
     else if (cat === 'plano_elaboracao') contexto = `localizou registro de que o plano está em elaboração (${reg.documento}, ${reg.data})`;
@@ -1042,7 +1101,8 @@ function renderMinha(){
     } else {
       const emergsSemReg = ufFinal ? emergenciasDoMunicipio(document.getElementById('cidadeInput').value.trim(), ufFinal) : [];
       html += emergsSemReg.map(e => `<h4>${document.getElementById('cidadeInput').value.trim()} · ${ufFinal}</h4><p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('');
-      html += `<p style="margin:0 0 10px;">${naLista ? 'Este município consta da lista oficial do IBGE, mas' : 'Este município'} ainda não está entre os <strong>${TABELA_MUNICIPIOS.length} registros verificados individualmente</strong> até ${document.getElementById('gaugeCorte').textContent}, o que <em>não</em> significa ausência de plano; significa que nenhum documento foi localizado por esta verificação até aqui. Abaixo, o retrato do seu estado e o que fazer.</p>
+      const _nivCard = ufFinal ? nivelVerificacao(ufFinal, document.getElementById('cidadeInput').value.trim()) : 'nao_verificado';
+      html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
       <p style="margin:6px 0 12px;"><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
       ${ufFinal ? '' : '<p style="margin:0; color:var(--muted);">Selecione o estado para ver o retrato estadual.</p>'}<hr style="border:none; border-top:1px solid var(--line); margin:14px 0;">`;
     }
@@ -1231,7 +1291,9 @@ function gerarRelatorioCidadao(uf, municipio){
   if (v.status_estadual === 'VIG') faltas.push('O instrumento estadual é recorrente e não menciona o El Niño 2026/2027. Pergunte se haverá atualização específica para o ciclo.');
   if (municipio) {
     const cat = reg ? reg.categoria : null;
-    if (!cat || cat === 'nao_localizado') faltas.push('Não localizamos plano de contingência da sua cidade. Peça à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011): resposta obrigatória em 20 dias.');
+    const _nivF = nivelVerificacao(uf, municipio);
+    if (cat === 'nao_localizado' && _nivF === 'municipal_completo') faltas.push('Após verificação individual completa, não localizamos plano de contingência da sua cidade. Peça à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011): resposta obrigatória em 20 dias.');
+    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') faltas.push('Ainda não verificamos sua cidade com a bateria completa de fontes. Isso não significa que não haja plano — você pode ajudar pedindo o documento à prefeitura (e-SIC, resposta em 20 dias) e enviando pelo formulário.');
     else if (cat === 'plano_antigo') faltas.push('O plano da sua cidade é de edição anterior. Pergunte à prefeitura se há atualização para 2026/2027.');
     else if (cat === 'decreto') faltas.push('Sua cidade tem decreto de emergência (resposta a dano ocorrido), mas não localizamos plano preventivo. Pergunte à prefeitura se existe e onde está publicado.');
     else if (cat === 'plano_elaboracao') faltas.push('O plano da sua cidade está em elaboração. Pergunte a data prevista.');
