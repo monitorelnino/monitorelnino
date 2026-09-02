@@ -99,6 +99,24 @@ def construir():
         f"<b>{R['media']:.1f}/100</b>. Documentos irmãos: METODOLOGIA.md (fundamentos e errata), "
         "DOCUMENTACAO_TECNICA.md (arquitetura e reprodução), Livro-Razão de Verificação (rastreabilidade dos julgamentos). "
         "Em divergência, o código (recalcular_mare.py) é a referência de implementação e o METODOLOGIA.md a referência normativa.", S_P))
+    # v2.2.4 — nota do defeso (permanente, E8) e contador público da verificação
+    E.append(Paragraph(
+        "<b>Período eleitoral (04/07–25/10/2026):</b> a Lei 9.504/1997 (art. 73, VI) suspende transferências "
+        "voluntárias e parte da comunicação oficial na janela crítica de preparação; nenhuma regra que altere "
+        "notas muda nesse período, e baterias negativas do intervalo são provisórias até repetição posterior "
+        "(METODOLOGIA §24). Esta nota permanece após o período, como memória do registro.", S_P))
+    try:
+        _vr = json.load(open(RAIZ / "data" / "verificacao_resumo.json", encoding="utf-8"))
+        _t = _vr.get("totais_por_nivel", {})
+        _fila = _vr.get("fila_citacao_incompleta")
+        E.append(Paragraph(
+            f"<b>Contador público da verificação:</b> {_t.get('nacional',0)} municípios verificados em fontes "
+            f"nacionais · {_t.get('estadual',0)} também em estaduais · {_t.get('municipal_completo',0)} com verificação "
+            f"completa · {_t.get('nao_verificado',0)} ainda não verificados (de {_vr.get('total_municipios',0)}). "
+            f"Fontes suspensas por defeso na última rodada: {_vr.get('fontes_suspensas_defeso_ultima_rodada',0)}. "
+            + (f"Fila pública de citação incompleta: {_fila} registro(s), prazo 25/10/2026." if _fila is not None else ""), S_P))
+    except FileNotFoundError:
+        pass
 
     E.append(Paragraph("1. O que o índice mede — e o que não mede", S_H1))
     E.append(Paragraph(

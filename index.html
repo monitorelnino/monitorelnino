@@ -445,7 +445,7 @@
 </div>
 
 <h2>Como ler o MARÉ</h2>
-<p class="note" style="margin:4px 0 12px;"><strong>Período eleitoral (04/07–25/10/2026):</strong> a lei suspende transferências voluntárias e parte da comunicação oficial, e alguns sítios públicos ficam com conteúdo fora do ar — por isso nenhuma regra que altere notas muda nesse período, e as buscas sem resultado são provisórias até repetição após 25/10 (<a href="METODOLOGIA.pdf">metodologia, §24</a>).</p>
+<p class="note" id="notaDefeso" style="margin:4px 0 12px;"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial, e alguns sítios públicos ficam com conteúdo fora do ar — por isso nenhuma regra que altere notas muda nesse período, e as buscas sem resultado são provisórias até repetição após 25/10</span> (<a href="METODOLOGIA.pdf">metodologia, §24</a>).</p>
     <p class="hint" style="margin-bottom:10px;">O essencial em seis pontos; cada regra pode ser conferida no <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">documento metodológico</a> (v2.2.3):</p>
     <ul style="columns:2 360px; column-gap:38px; font-size:14px; color:var(--ink); line-height:1.7; margin:0; padding-left:18px;">
       <li style="break-inside:avoid;"><strong>O que a nota mede.</strong> Três componentes, com pesos iguais: o <em>plano estadual</em> (existe? é específico para o El Niño?), a <em>população coberta</em> (que fração dos habitantes vive em municípios com plano preventivo) e a <em>antecipação</em> (o plano saiu antes ou depois do primeiro alerta federal, de 29/06/2026).</li>
@@ -810,6 +810,15 @@ document.getElementById('tblSearch').addEventListener('input', renderTable);
 document.getElementById('tblCat').addEventListener('change', renderTable);
 renderTable();
 renderPrazos();
+  (function(){
+    // E8 (decisão editorial de 02/09/2026): a nota do defeso é PERMANENTE — após
+    // 25/10/2026 ela muda de tempo verbal e vira memória do site, nunca é removida.
+    const fim = new Date(2026, 9, 26);
+    if (new Date() >= fim) {
+      const t = document.getElementById('notaDefesoTxt');
+      if (t) t.innerHTML = 'a lei suspendeu transferências voluntárias e parte da comunicação oficial, e sítios públicos ficaram com conteúdo fora do ar durante a janela crítica de preparação. As buscas do período foram marcadas provisórias e repetidas; os efeitos estão decompostos, só com contagens e datas, no bloco "O que o período eleitoral escondeu"';
+    }
+  })();
   (function(){
     // C14: visível somente a partir de 26/10/2026, por data — não por flag manual.
     const lim = new Date(2026, 9, 26); const hoje = new Date();
@@ -1306,6 +1315,7 @@ function gerarRelatorioCidadao(uf, municipio){
   if (i.com_ato === 0) faltas.push('Nenhum ato municipal localizado no estado até o corte.');
   else if (i.n_decreto > i.n_plano) faltas.push('No estado, predominam decretos de emergência sobre planos preventivos: a resposta vem depois do dano.');
   if (!faltas.length) faltas.push('Nenhuma lacuna crítica localizada até o corte. Confirme se o plano está atualizado para 2026/2027 e conheça a rota de saída do seu bairro.');
+  par('Nível de verificação desta cidade: ' + NIVEL_ROTULO[nivelVerificacao(uf, municipio)] + ' (METODOLOGIA §25).', {tam:9.5, cor:MUTED, espaco:4});
   faltas.forEach(item);
   par('O planejamento federal de 29/07/2026 (Sala de Situação do El Niño, 24 ministérios) prevê a atualização dos planos de contingência, com identificação de áreas de risco e fortalecimento das estruturas locais de resposta — é um compromisso público, e vale como argumento ao cobrar o estado e a prefeitura.', {tam:9.5, cor:MUTED, espaco:4});
 
