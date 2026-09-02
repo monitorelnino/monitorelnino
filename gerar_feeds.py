@@ -42,7 +42,7 @@ STATUS_HUMANO = {"NOVO": "plano estadual novo, específico para o El Niño", "RE
                  "LAC": "sem plano estadual nominal localizado"}
 
 
-def fotografar(estados, municipios, atos, indice, vresumo=None, saude_uf=None):
+def fotografar(estados, municipios, atos, indice, vresumo=None, saude_uf=None, evidencias=None):
     """Reduz o banco ao que o feed acompanha (apenas campos cujas mudanças viram evento)."""
     return {
         "estados": {u["uf"]: {"status": u.get("status"), "doc": u.get("doc", ""), "data": u.get("data", "")} for u in estados["ufs"]},
@@ -54,6 +54,7 @@ def fotografar(estados, municipios, atos, indice, vresumo=None, saude_uf=None):
         "niveis": dict((vresumo or {}).get("niveis_acima_do_padrao", {})),
         "reconhecimentos": sorted({f"{e['nome']}|{e['uf']}|{e.get('data', '')}" for e in atos.get("eventos", []) if e.get("causa") == "reconhecimento federal"}),
         "saude": {uf: {"status": v.get("status"), "doc": v.get("doc") or ""} for uf, v in ((saude_uf or {}).get("uf") or {}).items()},
+        "docs_alterados": sorted(f"{h}|{it.get('alterado_em')}|{it.get('municipio','')}" for h, it in ((evidencias or {}).get("itens") or {}).items() if it.get("alterado_em")),
     }
 
 
@@ -103,6 +104,11 @@ def diferencas(antes, agora, data):
             nome, uf, d = chave.split("|")
             ev.append(_evento(data, uf, "decreto_reconhecido", chave, f"{nome} ({uf}): reconhecimento federal de emergência ({d or 'data não localizada'})",
                               "Portaria SEDEC/MIDR no DOU. Ato de resposta: registro à parte, peso zero no índice.", nomes))
+    for chave in agora.get("docs_alterados", []):
+        if chave not in set(antes.get("docs_alterados", [])):
+            h, dt, mun = chave.split("|"); uf = mun[-2:] if "/" in mun else "BR"
+            ev.append(_evento(data, uf, "documento_alterado", chave, f"{mun or 'documento'}: documento-fonte alterado em {dt}",
+                              f"O documento citado mudou de conteúdo (hash {h[:12]}…). Categoria mantida até julgamento humano (§3.8-bis).", nomes))
     for uf, v in sorted(agora.get("saude", {}).items()):
         a = antes.get("saude", {}).get(uf, {})
         if a and (a.get("status") != v["status"] or a.get("doc") != v["doc"]):
@@ -173,9 +179,9 @@ def executar(data, dados=None, gravar=True):
     """Ciclo completo. `dados` injetável para o self-test; devolve os eventos novos."""
     if dados is None:
         dados = {k: json.load(open(DATA / f"{k}.json", encoding="utf-8")) for k in ("estados", "municipios", "atos_resposta", "indice")}
-        for k in ("verificacao_resumo", "saude_uf"):
+        for k in ("verificacao_resumo", "saude_uf", "evidencias"):
             if (DATA / f"{k}.json").exists(): dados[k] = json.load(open(DATA / f"{k}.json", encoding="utf-8"))
-    agora = fotografar(dados["estados"], dados["municipios"], dados["atos_resposta"], dados["indice"], dados.get("verificacao_resumo"), dados.get("saude_uf"))
+    agora = fotografar(dados["estados"], dados["municipios"], dados["atos_resposta"], dados["indice"], dados.get("verificacao_resumo"), dados.get("saude_uf"), dados.get("evidencias"))
     antes = json.load(open(SNAPSHOT, encoding="utf-8")) if (gravar and SNAPSHOT.exists()) else dados.get("_antes")
     historico = json.load(open(HISTORICO, encoding="utf-8")) if (gravar and HISTORICO.exists()) else dados.get("_historico") or {"_governanca": "Histórico append-only de mudanças detectadas pelo pipeline (feeds Atom). Nunca é lido pelo cálculo do índice.", "eventos": []}
     novos = diferencas(antes, agora, data)

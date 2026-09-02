@@ -16,6 +16,31 @@ from coletores_base import buscar, preservar_evidencia, ler, gravar, registrar_l
 PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estadual"}
 
 
+def reconferir(limite: int = 200) -> int:
+    """§3.8-bis: a rodada semanal REBAIXA e COMPARA o hash dos documentos-fonte já preservados.
+    Hash diferente = 'documento-fonte alterado em dd/mm': entrada no log, marca em
+    data/evidencias.json (alterado_em, hash_novo) e evento no feed (tipo documento_alterado).
+    Nunca altera a categoria do registro — isso é julgamento humano."""
+    from datetime import date
+    mun = ler("municipios.json"); idx = ler("evidencias.json", {"itens": {}}); n = alt = falhas = 0
+    for m in mun:
+        h = m.get("hash_evidencia")
+        if not h or not str(m.get("url", "")).startswith("http") or n + falhas >= limite: continue
+        try:
+            bruto = buscar(m["url"], timeout=45)
+        except Exception as e:  # noqa: BLE001
+            falhas += 1; continue
+        n += 1; h2 = __import__("hashlib").sha256(bruto).hexdigest()
+        if h2 != h:
+            alt += 1; hoje = date.today().strftime("%d/%m/%Y")
+            it = idx["itens"].setdefault(h, {}); it["alterado_em"] = hoje; it["hash_novo"] = h2; it["municipio"] = f"{m['nome']}/{m['uf']}"
+            log_busca(m.get("canal") or "DOM", 2, [m["url"]], "pista", uf=m["uf"], municipio=m["nome"],
+                      resultados=f"documento-fonte alterado em {hoje}: hash {h[:12]}… → {h2[:12]}… (categoria mantida; julgamento humano)")
+    gravar("evidencias.json", idx)
+    print(f"reconferência: {n} documento(s) rebaixado(s) e comparado(s), {alt} alterado(s), {falhas} inacessível(is)")
+    return 0
+
+
 def main(limite: int = 200) -> int:
     mun = ler("municipios.json"); feitos = pulados = falhas = 0
     for m in mun:
@@ -40,4 +65,5 @@ def main(limite: int = 200) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main(int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else 200))
+    lim = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else 200
+    sys.exit(reconferir(lim) if "--reconferir" in sys.argv else main(lim))

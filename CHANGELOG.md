@@ -20,6 +20,13 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### §3.8-bis — hash dos documentos-fonte reconferido toda rodada (E8) — 02/09/2026, noite
+- `preservar_evidencias.py --reconferir`: a rotina rebaixa cada documento citado com hash
+  preservado e compara; hash diferente vira entrada no log, marca em `evidencias.json` e
+  **evento no feed** (`documento_alterado`) — a categoria só muda por julgamento humano.
+  A Action `ler_documento` do repositório privado continua sendo a leitura integral sob
+  demanda; a preservação e a reconferência semanal rodam no orquestrador.
+
 ### PR-D2 — "Por onde o dinheiro chega" (financiamento.html; E9, E10, E12; §7.8) — 02/09/2026, noite
 - **Página completa, oito blocos:** as sete rotas + estadual (ordem e cores fixas, chave de
   acesso, base legal, o que o decreto destranca; absorve "rotas sem decretar" e "o caminho
