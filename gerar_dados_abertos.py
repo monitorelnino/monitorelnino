@@ -23,7 +23,7 @@ from pathlib import Path
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
 SAIDA = RAIZ / "dados-abertos"
-VERSAO = "2.2.3"
+VERSAO = "2.2.4"
 SITE = "https://monitorelnino.com.br"
 FAIXAS = [(25, "estágio inicial"), (50, "em construção"), (70, "consolidado"), (101, "avançado")]
 

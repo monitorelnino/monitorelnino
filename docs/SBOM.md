@@ -1,4 +1,4 @@
-# SBOM (Software Bill of Materials) · Monitor El Niño Brasil · v2.2.2
+# SBOM (Software Bill of Materials) · Monitor El Niño Brasil · v2.2.4
 
 Gerado em 27/08/2026 por ferramentas oficiais do próprio ecossistema, não à
 mão: `cyclonedx-py` (CycloneDX Python) contra um ambiente virtual limpo
@@ -84,3 +84,15 @@ recomendado para decidir quando uma atualização é necessária.
   baixar os `.woff2` em ambiente com acesso; até lá, a dependência fica
   declarada acima como recurso externo sem SRI possível (forma mínima,
   aplicada em 29/08/2026).
+
+## Adendo v2.2.4 (02/09/2026)
+
+Os módulos introduzidos na v2.2.4 (`coletores_base.py`, `coletar_s2id.py`,
+`coletar_doe.py`, `coletar_declarado_nacional.py`, `coletar_diarios_municipais.py`,
+`coletar_saude.py`, `preservar_evidencias.py`, `verificar_evidencias.py`,
+`verificar_saude.py`, `migrar_v224_verificacao.py`) usam **apenas a biblioteca
+padrão do Python** (`urllib`, `json`, `csv`, `hashlib`, `re`, `datetime`). Nenhuma
+dependência Python ou Node foi adicionada; os arquivos CycloneDX permanecem
+válidos para a v2.2.4. `pip-audit`/`npm audit`: sem CVE novo a reportar (sem
+dependência nova). Próxima regeneração completa do SBOM: quando uma dependência
+mudar.

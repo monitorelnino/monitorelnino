@@ -75,7 +75,7 @@ def rodape(canvas, doc):
     canvas.saveState()
     canvas.setFont("Helvetica", 7.5)
     canvas.setFillColor(CINZA)
-    canvas.drawString(18 * mm, 12 * mm, "Monitor El Niño Brasil · Futura Evidence Lab — MARÉ v2.2.3: documentação e auditoria do índice")
+    canvas.drawString(18 * mm, 12 * mm, "Monitor El Niño Brasil · Futura Evidence Lab — MARÉ v2.2.4: documentação e auditoria do índice")
     canvas.drawRightString(A4[0] - 18 * mm, 12 * mm, f"página {doc.page}")
     canvas.setStrokeColor(TERRA); canvas.setLineWidth(0.6)
     canvas.line(18 * mm, 16 * mm, A4[0] - 18 * mm, 16 * mm)
@@ -91,7 +91,7 @@ def construir():
     nomes = ["Instrumento estadual", "Cobertura populacional", "Antecipação"]
 
     E = []
-    E.append(Paragraph("MARÉ v2.2.3 — Documentação do Índice", S_TIT))
+    E.append(Paragraph("MARÉ v2.2.4 — Documentação do Índice", S_TIT))
     E.append(Paragraph("Medida de Antecipação e Resposta ao El Niño · Monitor El Niño Brasil (monitorelnino.com.br) · Futura Evidence Lab", S_SUB))
     E.append(Paragraph(
         f"Documento gerado programaticamente em {hoje} a partir dos dados publicados (corte {meta['corte']}); "
@@ -329,7 +329,7 @@ def construir():
     doc = SimpleDocTemplate(str(RAIZ / "MARE_Indice_Documentacao.pdf"), pagesize=A4,
                             leftMargin=18 * mm, rightMargin=18 * mm,
                             topMargin=16 * mm, bottomMargin=22 * mm,
-                            title="MARÉ v2.2.3 — Documentação do Índice",
+                            title="MARÉ v2.2.4 — Documentação do Índice",
                             author="Futura Evidence Lab · Monitor El Niño Brasil")
     doc.build(E, onFirstPage=rodape, onLaterPages=rodape)
     print(f"MARE_Indice_Documentacao.pdf gerado · média nacional {R['media']:.1f} · corte {meta['corte']}")
