@@ -20,6 +20,28 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Harmonização de design, acessibilidade e responsividade (02/09/2026, a pedido da editoria)
+- **`assets/base.css`**: folha base única com os componentes compartilhados das 8
+  páginas (tipografia, masthead e navegação, painéis, cartões de mapa/gráfico,
+  legendas, tooltip, tabelas, botões, rodapé), foco visível, alvo de toque
+  ≥40px no celular, skip-link, pontos de quebra canônicos (1020/880/640/420),
+  reduced-motion e impressão. As 7 páginas secundárias perderam 30–66 regras
+  duplicadas cada; ficam só os estilos próprios. O index importa a base e mantém
+  o herói.
+- **Causa do "fora do padrão" das páginas novas:** mapas, sinais e saúde
+  herdaram a classe do masthead compacto sem a regra (título gigante). A regra
+  agora vive na base e vale para todas as secundárias. Contorno dos mapas e
+  legendas unificados.
+- **Portão 1 ampliado**: exige `base.css` e proíbe página redefinir o núcleo
+  (teste negativo acusado). **Portão 11 novo `verificar_acessibilidade.js`**:
+  idioma, viewport, skip-link, um h1, ordem de títulos, alt, rótulos de
+  formulário (dois defeitos reais corrigidos no index), SVG rotulados,
+  aria-current, sem tabindex positivo, tabelas com cabeçalho, rel=noopener,
+  contraste AA calculado dos pares de tokens (todos passam), pontos de quebra
+  e foco visível na base. Suíte: 11 portões.
+- Limite declarado: a captura de tela desta sessão não executa grid CSS; a
+  conferência visual em celular e tablet é da editoria na prévia.
+
 ### PR-F — Pedidos de acesso à informação (02/09/2026; §12, C13)
 - **`gerar_lai.py`**: 27 pedidos às defesas civis estaduais (modelo do §12),
   27 às secretarias estaduais de saúde (variante saúde) e 1 ao CMNE/MIDR pela
