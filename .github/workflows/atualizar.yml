@@ -28,8 +28,8 @@ jobs:
       # primeiro, o que faria a Action falhar com "Cannot find module 'jsdom'"
       # na primeira execução real.
       - uses: actions/setup-node@v4
-        with: { node-version: "20" }
-      - run: npm install --no-save jsdom d3@7
+        with: { node-version: "22" }   # AUD-18: coerente com engines.node e com o lockfile
+      - run: npm ci                    # AUD-11: instalação reproduzível a partir do package-lock.json
 
       # C4 (auditoria 29/08/2026): com versões travadas para reprodutibilidade,
       # nenhuma atualização de segurança entra sozinha — estas duas etapas são o
@@ -59,7 +59,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          pip install pypdf --quiet
+          # pypdf agora vem de requirements.txt (AUD-11)
           python processar_contribuicoes.py
         # Aprova sozinho apenas o que passa nas regras R1-R7. A R7 (27/08/2026)
         # reserva ao julgamento humano tudo que move o índice: tipo "plano" e
