@@ -126,7 +126,20 @@ for (const arq of arquivos) {
   if (tamanhos.length) falha(`${nome}: font-size abaixo de 12px no CSS: ${[...new Set(tamanhos)].join(", ")}px`);
   const clampTitulo = css.match(/\.site-title\{[^}]*font-size:(clamp\([^)]*\))/);
   if (clampTitulo && clampTitulo[1] !== "clamp(33px, 5.4vw, 46px)") falha(`${nome}: .site-title com escala diferente das outras páginas: ${clampTitulo[1]}`);
-  if (!/prefers-reduced-motion/.test(css)) falha(`${nome}: sem @media (prefers-reduced-motion)`);
+  // v2.3: as regras compartilhadas vivem em assets/base.css; a página só precisa importá-la
+  const baseCss = fs.readFileSync(path.join(RAIZ, "assets", "base.css"), "utf-8");
+  const temBase = /<link[^>]+href="assets\/base\.css"/.test(html);
+  if (!temBase) falha(`${nome}: sem <link> para assets/base.css`);
+  if (!/prefers-reduced-motion/.test(css + (temBase ? baseCss : ""))) falha(`${nome}: sem @media (prefers-reduced-motion)`);
+  if (!/\.masthead--mini \.site-title\{[^}]*clamp\(24px, 3\.6vw, 30px\)/.test(baseCss)) falha(`${nome}: base.css sem a escala canônica do masthead compacto`);
+  // nenhuma página pode redefinir os componentes da folha base
+  const NUCLEO = [".mainnav a, .mainnav span", ".mainnav .ativa, .mainnav .ativa:hover", "header.masthead", ".site-title", ".masthead--mini .site-title", ".kicker", ".map-box", ".chart-box", ".map-legend", ".map-tooltip", "footer.site-footer", ".skip", ".panel"];
+  if (nome !== "index.html") {
+    for (const sel of NUCLEO) {
+      const re = new RegExp("(^|[\\s}])" + sel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*\\{");
+      if (re.test(css)) falha(`${nome}: redefine '${sel}' localmente (deve viver só em assets/base.css)`);
+    }
+  }
   if (/aria-label=/.test(html.replace(/<script[\s\S]*?<\/script>/g, "")) && [...d.querySelectorAll("[aria-label]")].some(el => ["SPAN","DIV","PATH"].includes(el.tagName) && !el.getAttribute("role")))
     falha(`${nome}: aria-label em span/div/path sem role (aria-prohibited-attr)`);
 }

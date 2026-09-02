@@ -80,7 +80,7 @@ explícita naquela sessão.
 | Classe | Exemplos | Além da sequência 3.1 exige | Versão |
 |---|---|---|---|
 | **Texto/editorial** | frase do herói, legenda, rótulo, texto de página | auditoria de vocabulário controlado (`grep` contra frases-teto e frases proibidas; "não localizamos até o corte" é o teto) · paridade METODOLOGIA ↔ site onde o texto é espelhado | mantém |
-| **Design** | cores, layout, posição de figuras, cartões | prévia obrigatória; nenhum rótulo de faixa ou legenda pode afirmar mais do que o índice mede (§2.2 da transferência conceitual) · os quatro `verificar_runtime_*.js` verdes | mantém |
+| **Design** | cores, layout, posição de figuras, cartões | prévia obrigatória (desktop, tablet e celular); componentes compartilhados só em `assets/base.css` e tokens só em `assets/tokens.css` — nenhuma página redefine o núcleo (portão 1); acessibilidade e responsividade pelo portão 11; nenhum rótulo de faixa ou legenda pode afirmar mais do que o índice mede (§2.2 da transferência conceitual) · os quatro `verificar_runtime_*.js` verdes | mantém |
 | **Código** | scripts, workflow, dependências | portões completos (§3.3) · SBOM e `MANIFEST_SHA256.txt` regenerados (`scripts/gerar_manifesto.py`) · SRI recalculado se algum CDN mudar · `pip-audit`/`npm audit` sem CVE crítico novo | patch (v2.2.x) |
 | **Dados** | registrar instrumento, reclassificar ato, aplicar contribuição | entra **somente** por `aplicar_revisao.py` / `converter_contribuicao.py`, nunca por edição direta de `data/*.json` · citação completa (número + data do ato) · `recalcular_mare.py --write` seguido de `--check` · determinismo do PDF (`SOURCE_DATE_EPOCH` = corte) · errata se corrige registro anterior | mantém; novo corte em `data/meta.json` |
 | **Método** | pesos, créditos, componentes, faixas, régua | regra **declarada antes** de beneficiar alguém (§3.5 da transferência) · simulação antes/depois apresentada à editoria · teste de estresse · seção datada em METODOLOGIA · entrada em errata/governança | **maior** (v2.3, v3…) |
@@ -89,7 +89,7 @@ Contribuições do formulário público seguem o caminho já definido
 (`verificar_contribuicoes.py → converter_contribuicao.py → aplicar_revisao.py`)
 e são a única reserva de julgamento humano que Claude **nunca** executa sozinho.
 
-### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.2.4: dez portões
+### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.3: onze portões
 
 ```
  1. node   scripts/verificar_estrutura.js        (8 páginas; tokens.css; nav canônica; :root inline proibido)
@@ -103,8 +103,10 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
  8. node   scripts/verificar_runtime_mapas.js
  9. node   scripts/verificar_runtime_sinais.js
 10. node   scripts/verificar_runtime_saude.js
+11. node   scripts/verificar_acessibilidade.js   (idioma, viewport, skip-link, títulos, alt, rótulos, SVG, foco,
+                                                  contraste AA dos tokens, pontos de quebra; base.css obrigatória)
 ```
-Critério: dez `✓` (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
+Critério: onze `✓` (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
 tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
 Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 
