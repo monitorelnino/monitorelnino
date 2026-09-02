@@ -40,6 +40,15 @@ não pontuados permanecem na versão corrente.
   portões. **Pendência declarada:** o comentário de `.github/workflows/atualizar.yml`
   ainda enumera cinco portões — o token da sessão não tem escopo `workflow`. É só
   comentário: a Action roda `atualizar.py`, que já executa os sete.
+- **Revisão de texto e UX (01/09/2026, após revisão editorial).** A página passou a
+  seguir a gramática das demais: títulos de figura numerados (`1 · …`), notas que
+  descrevem a codificação visual e não a definição do dado, H2 curtos e alinhados aos
+  da página irmã ("Mapas geográficos", "Gráficos analíticos"), `details` explicativo
+  em cada mapa ainda vazio ("Por que este mapa ainda está vazio", que some sozinho
+  quando a fonte entrar) e em como ler o gráfico do cruzamento. CSS próprio da página
+  para o estado de lacuna e foco visível por teclado nos mapas; hierarquia de títulos
+  sem saltos de nível (H1→H2→H3). Auditoria medida em navegador: sem transbordo
+  horizontal, sem texto abaixo de 12px, sem SVG sem rótulo acessível.
 - **Estado na publicação:** 1 das 8 fontes coletada (camada do ciclo, já verificada
   no repositório); as outras 7 entram na primeira rodada semanal com rede aberta e,
   até lá, aparecem como lacuna declarada — nenhum valor estimado.
