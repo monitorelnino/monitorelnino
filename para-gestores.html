@@ -139,7 +139,7 @@
   <div class="panel" id="pedidoslai">
     <h2 style="margin-top:0;">Pedidos de acesso à informação enviados pelo Monitor</h2>
     <p class="hint">Transparência do próprio projeto: cada pedido de LAI enviado às defesas civis e secretarias de saúde estaduais, com protocolo, prazo e resultado.</p>
-    <div id="tabelaLai"><p class="note">Nenhum pedido registrado até o momento. Os 27+27 pedidos da fase v2.2.4 serão enviados e listados aqui com número de protocolo.</p></div>
+    <div id="tabelaLai"><p class="note">Carregando o registro de pedidos…</p></div>
   </div>
 
   <h2>O que conta, o que conta em parte, o que não conta</h2>
@@ -203,7 +203,7 @@
 (function(){
   fetch('data/lai_pedidos.json').then(r=>r.ok?r.json():null).then(d=>{
     if(!d || !d.pedidos || !d.pedidos.length) return;
-    var linhas=d.pedidos.map(function(p){return '<tr><td>'+p.uf+'</td><td>'+(p.orgao||'')+'</td><td>'+(p.protocolo||'—')+'</td><td>'+(p.data_envio||'')+'</td><td>'+(p.resultado||'aguardando')+'</td></tr>';}).join('');
+    var ST={a_enviar:'texto pronto, envio pendente',enviado:'enviado',respondido:'respondido'};var linhas=d.pedidos.map(function(p){return '<tr><td>'+p.uf+'</td><td>'+(p.orgao||'')+' <span class="note">('+(p.tipo||'')+')</span></td><td>'+(p.protocolo||'—')+'</td><td>'+(p.data_envio||'—')+'</td><td>'+(p.resultado||ST[p.status]||p.status)+'</td></tr>';}).join('');
     document.getElementById('tabelaLai').innerHTML='<div class="tbl-wrap"><table class="mun-table"><thead><tr><th>UF</th><th>Órgão</th><th>Protocolo</th><th>Enviado</th><th>Situação</th></tr></thead><tbody>'+linhas+'</tbody></table></div>';
   }).catch(function(){});
 })();
