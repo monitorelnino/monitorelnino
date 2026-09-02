@@ -223,6 +223,108 @@
      }
     ]
    },
+   "rowCount": 41
+  },
+  {
+   "name": "verificacao_municipal",
+   "path": "verificacao_municipal.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Nível de verificação alcançado pelo Monitor em cada um dos 5.571 municípios (nao_verificado/nacional/estadual/municipal_completo); 'nada localizado' só com verificação completa.",
+   "schema": {
+    "fields": [
+     {
+      "name": "ibge",
+      "type": "string"
+     },
+     {
+      "name": "uf",
+      "type": "string"
+     },
+     {
+      "name": "municipio",
+      "type": "string"
+     },
+     {
+      "name": "nivel_verificacao",
+      "type": "string"
+     },
+     {
+      "name": "ultima_verificacao",
+      "type": "string"
+     },
+     {
+      "name": "plano_localizado",
+      "type": "string"
+     },
+     {
+      "name": "decreto_reconhecido",
+      "type": "string"
+     },
+     {
+      "name": "decreto_homologado",
+      "type": "string"
+     }
+    ]
+   },
+   "rowCount": 5571
+  },
+  {
+   "name": "saude_uf",
+   "path": "saude_uf.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Instrumento estadual de saúde para o ciclo, por UF (NOVO/READ/VIG/ELAB/LAC/NAO_VERIFICADO). Registro de transparência: nunca pontua.",
+   "schema": {
+    "fields": [
+     {
+      "name": "uf",
+      "type": "string"
+     },
+     {
+      "name": "status",
+      "type": "string"
+     },
+     {
+      "name": "orgao",
+      "type": "string"
+     },
+     {
+      "name": "documento",
+      "type": "string"
+     },
+     {
+      "name": "numero",
+      "type": "string"
+     },
+     {
+      "name": "data",
+      "type": "string"
+     },
+     {
+      "name": "natureza_doc",
+      "type": "string"
+     },
+     {
+      "name": "consist",
+      "type": "string"
+     },
+     {
+      "name": "riscos_sanitarios_projetados",
+      "type": "string"
+     },
+     {
+      "name": "data_verificacao",
+      "type": "string"
+     },
+     {
+      "name": "url",
+      "type": "string"
+     }
+    ]
+   },
    "rowCount": 27
   }
  ]
