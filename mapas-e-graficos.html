@@ -137,6 +137,12 @@
         <svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto;"></svg>
         <div class="map-legend" id="pointsLegend"></div>
       </div>
+      <div class="map-box" id="nivelverificacao">
+        <h3 class="map-card-h">1b · Nível de verificação municipal (todos os 5.571)</h3>
+        <p class="note" style="margin:0 0 8px;">Até onde a verificação do Monitor chegou em cada município: <strong id="countNiveis">—</strong>. Cinza = ainda não verificado; a classe "fonte suspensa (defeso)" marca municípios cuja fonte oficial estava fora do ar por período eleitoral na data da busca. Os buracos ficam visíveis por decisão editorial (metodologia, §25).</p>
+        <svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto;"></svg>
+        <div class="map-legend" id="legNiveis"></div>
+      </div>
       <div class="map-box">
         <h3 class="map-card-h">2 · Cobertura: % de municípios com ato</h3>
         <p class="note" style="margin:0 0 8px;">Percentual de municípios do estado com algum ato formal; quanto mais escuro, maior o percentual.</p>
@@ -250,6 +256,12 @@
 
   <div class="panel" style="margin-bottom:24px;">
     <h2 id="financiamento">Como o dinheiro chega</h2>
+    <div class="chart-box" style="border-left:4px solid var(--amber); margin:12px 0 16px;">
+      <p class="note" style="margin:0;" id="notaDefesoFin"><strong>Transferências voluntárias: suspensas por lei de 04/07 a 25/10/2026</strong> (art. 73, VI, "a", Lei 9.504/1997) — <em>não é inação</em>: é vedação do período eleitoral. Nota permanente, como memória do site.</p>
+      <details style="margin-top:6px;"><summary style="cursor:pointer; color:var(--link); font-weight:600;">Entenda a regra e as exceções</summary>
+        <p class="note" style="margin:6px 0 0;">A vedação admite obrigações preexistentes com cronograma e situações de emergência ou calamidade. Transferências de emergência feitas no intervalo são <strong>resposta a dano</strong>: aparecem na cor de resposta e nunca são somadas à preparação. Quando a série de transferências for publicada neste módulo, o intervalo 04/07–25/10 aparecerá como faixa sombreada com o mesmo rótulo — inclusive depois de 25/10 (metodologia, §24).</p>
+      </details>
+    </div>
     <p class="hint">Como o dinheiro do ciclo El Niño chega (ou não) aos municípios, e onde verificar cada etapa — contexto para o mapa de transferências (item 7, acima). Importante: a maior parte do plano federal de R$1,335 bi é execução direta da União (estoques CONAB, cestas, ForSUS) e <strong>não vira transferência municipal</strong>; o que chega às prefeituras são as transferências obrigatórias de defesa civil (Lei 12.340/2010) e repasses estaduais fundo a fundo.</p>
     <div class="charts-grid">
 <div class="chart-box">
@@ -292,18 +304,19 @@
 </div>
 
 <script>
-let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, MUN_REF, POP_CENSO,
+let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, MUN_REF, POP_CENSO, VRESUMO,
     MUN_COD = {}, MUN_LATLON = {}, POP_UF = {};
 async function __load(){
   let __ref;
-  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, __ref, POP_CENSO] = await Promise.all(
-    ['geo_uf','percentual_uf','pontos_mapa','indice','estados','transferencias','consist','atos_resposta','municipios_ibge_referencia','populacao_censo2022']
+  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, __ref, POP_CENSO, VRESUMO] = await Promise.all(
+    ['geo_uf','percentual_uf','pontos_mapa','indice','estados','transferencias','consist','atos_resposta','municipios_ibge_referencia','populacao_censo2022','verificacao_resumo']
       .map(f => fetch('data/' + f + '.json').then(r => {
         if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json');
         return r.json();
       }))
   );
   MUN_REF = {};
+  window.REF_MUNICIPIOS = __ref; // v2.2.4: usado pelo mapa de nível de verificação
   __ref.forEach(m => (MUN_REF[m.uf] = MUN_REF[m.uf] || []).push(m.nome));
   __ref.forEach(m => {
     const c = String(m.codigo_ibge).padStart(7, '0');
@@ -447,6 +460,53 @@ svgPoints.append('g').selectAll('circle')
 
 document.getElementById('pointsLegend').innerHTML = Object.entries(CAT_STYLE).map(([k,v])=>
   `<span><i style="background:${v.cor}"></i>${v.label}</span>`).join('');
+
+// ---- 1b. Nível de verificação municipal (v2.2.4, §7.3/C8) ----
+// Desenho adiado (setTimeout 0) e camada padrão em UM único <path>: 5.571 nós
+// individuais tornavam a página lenta e atrasavam os mapas seguintes (pego pelo
+// portão de runtime em 02/09/2026).
+setTimeout(function(){
+  const NIV_STYLE = {
+    nao_verificado:     {cor:'#64645C', label:'Ainda não verificado'},
+    nacional:           {cor:'#87855C', label:'Verificado em fontes nacionais'},
+    estadual:           {cor:'#5E7C93', label:'Fontes nacionais e estaduais'},
+    municipal_completo: {cor:'#35566B', label:'Verificação completa'},
+    fonte_suspensa:     {cor:'#A65F3F', label:'Fonte suspensa (defeso)'},
+  };
+  const acima = (VRESUMO && VRESUMO.niveis_acima_do_padrao) || {};
+  const susp  = new Set((VRESUMO && VRESUMO.fontes_suspensas_municipios) || []);
+  const svg = d3.select('#mapNiveis');
+  svg.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
+    .attr('d', pathGen).attr('fill', 'var(--surface-2, #E7DECD)').attr('stroke', 'var(--line)').attr('stroke-width', .6);
+  const pts = (window.REF_MUNICIPIOS || []).map(r => {
+    const cod = String(r.codigo_ibge).padStart(7,'0');
+    const niv = susp.has(cod) ? 'fonte_suspensa' : (acima[cod] || acima[String(r.codigo_ibge)] || 'nao_verificado');
+    return {lat:r.lat, lon:r.lon, niv};
+  }).filter(p => p.lat && p.lon);
+  // camada padrão (não verificados): um único <path> de pontos — barato de renderizar
+  const dPadrao = pts.filter(p=>p.niv==='nao_verificado')
+    .map(p=>{const c=projection([p.lon,p.lat]); return 'M'+c[0].toFixed(1)+' '+c[1].toFixed(1)+'h0';}).join('');
+  svg.append('path').attr('d', dPadrao).attr('stroke', NIV_STYLE.nao_verificado.cor)
+    .attr('stroke-width', 1.4).attr('stroke-linecap','round').attr('stroke-opacity', .55).attr('fill','none');
+  // níveis acima do padrão e fontes suspensas: círculos individuais (poucos)
+  svg.append('g').selectAll('circle').data(pts.filter(p=>p.niv!=='nao_verificado')).join('circle')
+    .attr('cx', d=>projection([d.lon,d.lat])[0]).attr('cy', d=>projection([d.lon,d.lat])[1])
+    .attr('r', 2.6).attr('fill', d=>NIV_STYLE[d.niv].cor).attr('fill-opacity', .95);
+  const t = (VRESUMO && VRESUMO.totais_por_nivel) || {};
+  document.getElementById('countNiveis').textContent =
+    (t.nacional||0).toLocaleString('pt-BR') + ' em fontes nacionais · ' + (t.estadual||0).toLocaleString('pt-BR') +
+    ' também em estaduais · ' + (t.municipal_completo||0).toLocaleString('pt-BR') + ' completos · ' +
+    (t.nao_verificado||0).toLocaleString('pt-BR') + ' ainda não verificados';
+  document.getElementById('legNiveis').innerHTML = Object.entries(NIV_STYLE).map(([k,v])=>
+    `<span class="leg-item"><span class="leg-dot" style="background:${v.cor}"></span>${v.label}</span>`).join('');
+  // crédito de figura dentro do MESMO parágrafo-nota (regra de harmonização: 1 parágrafo visível por cartão)
+  const notaFig = document.querySelector('#nivelverificacao .note');
+  if (notaFig && !notaFig.querySelector('.fonte-figura')) {
+    const sp = document.createElement('span'); sp.className = 'fonte-figura';
+    sp.innerHTML = ' <br>Fonte: verificação própria do Monitor · data/verificacao_municipal.json · ' + ((VRESUMO && VRESUMO.ultima_rodada_log) || 'antes da primeira rodada estruturada') + ' · malha e coordenadas IBGE.';
+    notaFig.appendChild(sp);
+  }
+}, 0);
 
 // ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada (31/08/2026) ----
 // LIMITAÇÃO DECLARADA: a lista NOMINAL dos 2.095 municípios do Cadastro Nacional de

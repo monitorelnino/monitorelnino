@@ -41,8 +41,22 @@ não pontuados permanecem na versão corrente.
   confere os dois derivados. **Cinco testes negativos executados** — o quarto
   revelou fraqueza real (resumo mentiroso passava) e levou à paridade do resumo
   no `--check` antes de ser aprovado.
-- Pendências do PR-B para a próxima sessão do dia: mapa de nível de verificação
-  e faixa do defeso no financiamento (§7.3), bloco de gestores (§7.4), PDFs.
+- **Decisão editorial E8 (02/09/2026):** a nota do defeso é PERMANENTE — após
+  25/10 muda de tempo verbal e vira memória do site (index, financiamento, PDF).
+- **Mapa "Nível de verificação municipal"** (§7.3): os 5.571 na página de mapas,
+  camada padrão em traçado único (5.571 nós individuais atrasavam os demais
+  mapas — pego pelo portão de runtime), classe "fonte suspensa (defeso)" (C8),
+  crédito de figura embutido no parágrafo único do cartão.
+- **Financiamento (C9):** caixa permanente da suspensão legal 04/07–25/10, com
+  detalhe dobrável; transferências de emergência do período tratadas como
+  resposta. Faixa sombreada entra quando a série de transferências existir.
+- **Para gestores (§7.4):** bloco "O que um município pode acessar sem
+  decretar" (6 rotas com base legal e cláusula de neutralidade), tabela de
+  pedidos de LAI (lê data/lai_pedidos.json, criado vazio) e item de saúde no
+  checklist de publicação.
+- **PDFs:** documentação do índice regenerada com nota do defeso e contador
+  (determinística, SOURCE_DATE_EPOCH = corte); PDF do cidadão com linha de
+  nível de verificação.
 
 ### PR-A — Sinais de risco + harmonização de design (02/09/2026)
 - **Página "Sinais oficiais de risco" incorporada** (PR #3 rebased): peso zero,
