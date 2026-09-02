@@ -99,7 +99,7 @@ def construir():
         f"<b>{R['media']:.1f}/100</b>. Documentos irmãos: METODOLOGIA.md (fundamentos e errata), "
         "DOCUMENTACAO_TECNICA.md (arquitetura e reprodução), Livro-Razão de Verificação (rastreabilidade dos julgamentos). "
         "Em divergência, o código (recalcular_mare.py) é a referência de implementação e o METODOLOGIA.md a referência normativa.", S_P))
-    # v2.2.4 — nota do defeso (permanente, E8) e contador público da verificação
+    # v2.2.4 — nota do defeso (permanente, E13) e contador público da verificação
     E.append(Paragraph(
         "<b>Período eleitoral (04/07–25/10/2026):</b> a Lei 9.504/1997 (art. 73, VI) suspende transferências "
         "voluntárias e parte da comunicação oficial na janela crítica de preparação; nenhuma regra que altere "
