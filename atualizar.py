@@ -53,8 +53,10 @@ def main():
 
     # v2.2.4 (E4/§13): cadência ANTES de qualquer coleta — em dia não publicável nada muda.
     intensivo = os.environ.get("INTENSIVO_ATE", "")
+    intensivo_de = os.environ.get("INTENSIVO_DE", "") or intensivo  # sem início declarado, vale só o fim
+    hoje_iso = datetime.date.today().isoformat()
     dia_semana = datetime.date.today().weekday()  # 0 = segunda
-    em_intensivo = bool(intensivo) and datetime.date.today().isoformat() <= intensivo
+    em_intensivo = bool(intensivo) and intensivo_de <= hoje_iso <= intensivo
     if not em_intensivo and dia_semana != 0:
         print("[cadência] fora da semana intensiva e não é segunda-feira: execução diária encerra sem coletar nem comitar.")
         return 0
@@ -78,8 +80,8 @@ def main():
         # lote rotativo: 1 no primeiro dia da semana intensiva, subindo até o último dia (D1..D7);
         # fora do intensivo (segunda-feira semanal) usa o lote 1 — os lotes seguintes são pós-defeso (§13)
         if em_intensivo:
-            faltam = (datetime.date.fromisoformat(intensivo) - datetime.date.today()).days
-            lote = str(max(1, 7 - faltam))
+            decorridos = (datetime.date.today() - datetime.date.fromisoformat(intensivo_de)).days
+            lote = str(max(1, min(7, decorridos + 1)))  # D0 = lote 1 … D6+ = lote 7
         else:
             lote = "1"
     rodar([sys.executable, "coletar_diarios_municipais.py", "--lote", lote, "--tamanho", os.environ.get("TAMANHO_LOTE", "150")])
