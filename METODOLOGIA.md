@@ -639,3 +639,52 @@ A partir delas, o mapa novo constrói uma **aproximação documentada, não a li
 **Tentativa de correção.** A API pública do Querido Diário (Open Knowledge Brasil), desenhada exatamente para buscar por palavra-chave em diários oficiais de centenas de municípios brasileiros, foi tentada via `api.queridodiario.ok.org.br/gazettes`. Resultado: **erro 404**, inclusive na URL exemplo exata da própria documentação oficial do serviço (`territory_ids=2700706&querystring=orçamento`) — indicando indisponibilidade ou mudança de endpoint nesta data, não falha da estratégia de busca.
 
 **Pendência registrada, não descartada.** Este canal continua sendo a estratégia correta para busca direta em diário oficial — só não pôde ser executado nesta sessão. Fica como item para retomar em sessão futura (a API pode estar temporariamente fora do ar) ou, alternativamente, testar a interface web de busca do Querido Diário diretamente. Distingue-se da lacuna do Cadastro Nacional de Municípios Suscetíveis (§21): aquela é bloqueio de acesso por login; esta é indisponibilidade momentânea de serviço.
+
+## 23. Sinais oficiais de risco: página nova, peso zero e a fronteira que ela obriga a declarar (01/09/2026)
+
+**Origem.** Patricia encontrou, em busca comum, um site de nome quase idêntico ao do projeto (`monitorelninobrasi.com.br`), que publica um mapa de "intensidade do impacto previsto" por estado, com probabilidades e faixas de gravidade próprias, sem boletim citável por trás de cada número. A pergunta editorial foi se o Monitor deveria ter algo equivalente. A resposta metodológica é: **algo com a mesma utilidade para o leitor e o estatuto probatório oposto**.
+
+**O que a página é.** `sinais-de-risco.html` reproduz, por estado, o que órgãos oficiais já publicaram sobre o ciclo 2026/2027 — cada valor com órgão, documento e data de consulta. Não é previsão do Monitor; é registro de leitura de fonte primária, no mesmo estatuto de `data/atos_resposta.json`: mostrado, datado, **nunca pontuado**.
+
+**Por que ela não pode pontuar.** Um sinal de risco é propriedade do território, não conduta do ente. Fazê-lo entrar no índice inverteria o objeto de medida (§2 da transferência conceitual): um estado passaria a subir ou descer de nota por causa do clima, e não por causa do que publicou. Também reintroduziria pela porta dos fundos a escala de dano que o projeto registrou como deliberadamente não feita (§11 da transferência). O peso zero é, portanto, **estrutural**: `verificar_sinais.py` falha se qualquer chave de sinal aparecer em `recalcular_mare.py` ou em `data/indice.json`.
+
+### 23.1 A regra de prova própria desta página
+
+Três frases, verificadas por portão:
+
+1. **Reprodução, nunca previsão.** O vocabulário de severidade exibido é o da fonte (S0–S4 do Monitor de Secas, os graus de aviso do INMET, o ONI em graus Celsius). O Monitor não cria escala própria de intensidade, e o portão recusa a página se termos como "risco crítico" ou rótulos ausentes dos boletins oficiais aparecerem no texto visível.
+2. **Proveniência em todo valor exibido.** Nenhum número chega à tela sem fonte conhecida, documento citado e data de consulta. O portão de runtime confere isso no DOM renderizado, figura por figura — não na intenção do código.
+3. **Lacuna declarada.** Fonte ainda não coletada aparece como tal, com a linguagem-teto do projeto ("não localizamos coleta até o corte") e o link para conferir na origem. Nenhum valor é preenchido por estimativa, interpolação ou memória.
+
+### 23.2 As três camadas e as oito fontes
+
+| Camada | Fonte | Órgão | Papel |
+|---|---|---|---|
+| Ciclo | Painel El Niño 2026-2027 | CEMADEN/INPE | Risco projetado por região; a largada pública do ciclo |
+| Observado | Monitor de Secas | ANA e parceiros estaduais | Categoria de seca observada (S0–S4) |
+| Observado | Avisos meteorológicos | INMET | Avisos vigentes por área, com grau declarado pelo instituto |
+| Observado | Programa Queimadas | INPE | Focos ativos nas últimas 24 h por UF |
+| Observado | Alertas hidrológicos e geológicos | CEMADEN | Alertas vigentes aos municípios monitorados |
+| ENOS | Oceanic Niño Index (ONI) | NOAA/CPC | Série observada do índice que define oficialmente o fenômeno |
+| ENOS | Plume de probabilidades ENSO | IRI/Columbia | Probabilidade de El Niño, neutro e La Niña por trimestre |
+| ENOS | Prognóstico climático trimestral | INMET/CPTEC-INPE | A leitura brasileira da mesma previsão, em português |
+
+Imprensa e agregadores de terceiros **não figuram**: nesta página, como em todo o projeto, eles descobrem e nunca registram (§3.2 da transferência conceitual).
+
+### 23.3 O vocabulário de tipo de risco — e por que não é uma escala
+
+O mapa principal classifica o risco projetado em cinco **tipos**, não em cinco graus: estiagem · chuvas · incêndios · misto · sem sinal elevado. A distinção é deliberada e verificada por portão (lista fechada, categoria nova exige decisão editorial declarada, como no vocabulário do índice, §6 da transferência). Tipo responde "risco de quê"; grau responderia "quão grave" — e "quão grave" é juízo que só a fonte oficial pode emitir.
+
+A classificação é feita por analista sobre o texto do boletim, no mesmo estatuto documental do resto do projeto: nunca por auto-relato do ente avaliado, nunca por modelo próprio.
+
+### 23.4 O risco que a própria página cria, e como ele é contido
+
+Publicar sinais de risco ao lado de um índice de preparação cria três riscos novos, cada um com sua contenção:
+
+- **Ser lida como previsão do Monitor.** Contenção: declaração fixa no alto da página, repetida no crédito de cada figura, e portão de linguagem que recusa primeira pessoa preditiva.
+- **Virar insumo do índice por deriva.** Contenção: o portão de peso zero descrito acima, que lê o motor de cálculo e o índice publicado.
+- **Envelhecer sem avisar.** Contenção: toda figura carrega a data de consulta; fonte que pare de responder volta ao estado de lacuna declarada na rodada seguinte, em vez de manter na tela um número velho sem aviso.
+
+### 23.5 Estado na publicação
+
+Na edição de 01/09/2026, **uma das oito fontes está coletada** — a camada do ciclo, cujo risco projetado por UF já vinha do registro curado dos Boletins nº 1 e 2 (`data/consist.json`). As outras sete entram na primeira execução da rotina semanal com rede aberta (`coletar_sinais_risco.py`, etapa não-bloqueante de `atualizar.py`), e até lá aparecem na página como lacuna declarada. Os parsers das sete foram provados contra fixtures, com testes negativos, antes da publicação — o que a sessão de construção pôde provar sem rede, provou; o que dependia de rede, ficou declarado como pendente em vez de simulado.
