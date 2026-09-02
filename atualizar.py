@@ -87,6 +87,7 @@ def main():
     rodar([sys.executable, "coletar_diarios_municipais.py", "--lote", lote, "--tamanho", os.environ.get("TAMANHO_LOTE", "150")])
     rodar([sys.executable, "recalcular_mare.py", "--simular-declarado-nacional"])  # anexo público; não altera indice.json
     rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
+    rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
     rodar([sys.executable, "coletar_financiamento.py"])                 # §7.8: Portal (chave), rotas; peso zero
     rodar([sys.executable, "gerar_painel.py", "--fichas"])                 # §10-bis: reverificação semanal das fichas
