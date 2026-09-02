@@ -20,6 +20,13 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Nota de dependência de LAI (02/09/2026, decisão editorial)
+- O contador público, o cartão da cidade e a página de Saúde dizem, com números,
+  quando a informação atualizada depende de resposta a pedido de acesso à
+  informação (`verificacao_resumo.json` → `lai`); a UF fica "pendente, não
+  presumida" até a resposta. Antes do envio, a editoria verifica o que já é
+  público sem LAI e filtra os pedidos ao que faltar.
+
 ### PR-F — Pedidos de acesso à informação (02/09/2026; §12, C13)
 - **`gerar_lai.py`**: 27 pedidos às defesas civis estaduais (modelo do §12),
   27 às secretarias estaduais de saúde (variante saúde) e 1 ao CMNE/MIDR pela
