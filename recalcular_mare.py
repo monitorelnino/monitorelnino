@@ -122,7 +122,22 @@ def derivar_percentual_uf(cnt, totais, pct_existente):
     return novo
 
 
-def calcular():
+def _declarado_nacional_uf():
+    """Nº de municípios por UF que DECLARAM plano de contingência (MUNIC 'sim' ou ICM
+    variável 8 'sim') em data/declarado_nacional.json. Vazio se o arquivo não existe."""
+    p = RAIZ / "data" / "declarado_nacional.json"
+    if not p.exists(): return {}
+    d = json.load(open(p, encoding="utf-8")).get("municipios", {})
+    ref = json.load(open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8"))
+    uf_por = {str(r["codigo_ibge"]).zfill(7): r["uf"] for r in ref}
+    n = {}
+    for cod, v in d.items():
+        if v.get("munic_plano_contingencia") == "sim" or v.get("icm_var8_plano_contingencia") == "sim":
+            uf = uf_por.get(cod)
+            if uf: n[uf] = n.get(uf, 0) + 1
+    return n
+
+def calcular(simular_declarado_nacional: bool = False):
     """Motor do índice: lê data/*.json, calcula os três componentes por estado, agrega com elemento geométrico e piso, e devolve o dicionário completo (270 campos) que vira data/indice.json."""
     import statistics
     tab = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
@@ -163,6 +178,11 @@ def calcular():
             w += excedente * mediana_uf[uf] * CRED_POP[tipo_agr]
         dp = pct[uf].get("declarado_plano", 0) or 0
         da = pct[uf].get("declarado_antigo", 0) or 0
+        if simular_declarado_nacional:
+            # C5/§3.9 (regra declarada em 02/09/2026, vigência 26/10/2026): camada declarada
+            # nacional (MUNIC/ICM) entra com o MESMO desconto de 50%. Conservador: não soma
+            # à declaração de tribunal de contas — usa o maior dos dois contadores.
+            dp = max(dp, _declarado_nacional_uf().get(uf, 0))
         doc_n = sum(v for k, v in c.items() if k in PESO_DOC)
         if dp: w += max(dp - doc_n, 0) * mediana_uf[uf] * (CRED_POP["plano"] * 0.5)
         if da: w += da * mediana_uf[uf] * (CRED_POP["plano_antigo"] * 0.5)
@@ -231,14 +251,25 @@ def _recomputar_verificacao_em_memoria():
             ch=(e["municipio"],e["uf"])
             if ordem[e["nivel"]] > ordem.get(niveis_log.get(ch,""),0): niveis_log[ch]=e["nivel"]
     por = {(m["nome"], m["uf"]): m for m in mun}
+    # v2.2.4 (PR-C): livro de fontes consultadas dos coletores (nível, datas, fatos binários)
+    _lp = RAIZ / "data" / "fontes_consultadas.json"
+    livro = (json.load(open(_lp, encoding="utf-8")).get("municipios", {}) if _lp.exists() else {})
+    ordem = {"nao_verificado": 0, "nacional": 1, "estadual": 2, "municipal_completo": 3}
     out = []
     for r in ref:
         ch = (r["nome"], r["uf"]); reg = por.get(ch)
+        cod7 = str(r["codigo_ibge"]).zfill(7)
+        lv = livro.get(cod7, {})
+        n_log = niveis_log.get(ch, "nao_verificado"); n_livro = lv.get("nivel_verificacao", "nao_verificado")
+        # "municipal_completo" só pelo log (bateria inteira logada por município), nunca pelo livro
+        if n_livro == "municipal_completo": n_livro = "estadual"
+        nivel = n_log if ordem[n_log] >= ordem[n_livro] else n_livro
         out.append({"ibge": str(r["codigo_ibge"]), "nome": r["nome"], "uf": r["uf"],
-            "nivel_verificacao": niveis_log.get(ch, "nao_verificado"),
-            "ultima_verificacao": None, "fontes_consultadas": [],
-            "decreto_reconhecido": None, "decreto_homologado": None,
-            "plano_declarado_munic": None, "plano_declarado_icm": None,
+            "nivel_verificacao": nivel,
+            "ultima_verificacao": lv.get("ultima_verificacao"),
+            "fontes_consultadas": sorted({f["fonte"] for f in lv.get("fontes", [])}),
+            "decreto_reconhecido": lv.get("decreto_reconhecido"), "decreto_homologado": lv.get("decreto_homologado"),
+            "plano_declarado_munic": lv.get("plano_declarado_munic"), "plano_declarado_icm": lv.get("plano_declarado_icm"),
             "plano_localizado": (reg["categoria"] if reg and reg["categoria"] in PONT else None)})
     return out
 
@@ -283,6 +314,23 @@ def regravar_verificacao_municipal():
 def main():
     """Interface de linha de comando: sem flag, recalcula e grava; com --check, recalcula em memória e compara campo a campo contra o data/indice.json publicado (portão 2), sem gravar nada."""
     modo = sys.argv[1] if len(sys.argv) > 1 else "--check"
+    if modo == "--simular-declarado-nacional":
+        novo_b, ma, _, _ = calcular(); novo_s, ms, _, _ = calcular(simular_declarado_nacional=True)
+        linhas = {}
+        for uf in sorted(k for k in novo_b if len(k) == 2):
+            a_, b_ = novo_b[uf]["total"], novo_s[uf]["total"]
+            linhas[uf] = {"antes": a_, "depois": b_, "delta": round(b_ - a_, 1),
+                          "declarados_nacional": _declarado_nacional_uf().get(uf, 0)}
+        json.dump({"_governanca": "SIMULAÇÃO da camada declarada nacional (C5, §3.9). Regra declarada em "
+                                  "02/09/2026 com vigência em 26/10/2026; nada disto altera data/indice.json "
+                                  "antes dessa data. Anexo público da METODOLOGIA (§26).",
+                   "gerado_em": __import__("datetime").date.today().isoformat(),
+                   "media_nacional_antes": round(ma, 1), "media_nacional_depois": round(ms, 1),
+                   "por_uf": linhas},
+                  open(RAIZ / "data" / "simulacao_declarado_nacional.json", "w", encoding="utf-8"),
+                  ensure_ascii=False, indent=1)
+        print(f"simulação gravada: média {ma:.1f} → {ms:.1f} (27 UFs em data/simulacao_declarado_nacional.json)")
+        return 0
     novo, media, pct_derivado, robustez = calcular()
     alvo = RAIZ / "data" / "indice.json"
     alvo_pct = RAIZ / "data" / "percentual_uf.json"
