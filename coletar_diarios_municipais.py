@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+"""
+coletar_diarios_municipais.py
+=============================
+Diários oficiais MUNICIPAIS via API do Querido Diário (municípios indexados),
+em lotes por prioridade (§4, §13). O que produz:
+  - decretos de emergência/calamidade NÃO homologados → `data/atos_resposta.json`
+    (resposta, peso zero, fonte "querido_diario");
+  - menções a plano de contingência / ativação preventiva → `data/pistas_imprensa.json`
+    (fila de pista, com hash da evidência; promover a registro é HUMANO, §3.2).
+  - livro de fontes consultadas: registra a consulta, mas NÃO eleva o nível a
+    `municipal_completo` — isso exige a bateria inteira do §4.1.2 (diário + sítio
+    da prefeitura + busca dirigida), executada e logada por município (pós-defeso).
+
+Prioridade dos lotes: a lista NOMINAL do Cadastro Nacional de Municípios
+Suscetíveis não é pública (limitação declarada em 31/08/2026); usa-se o proxy
+declarado — UFs em ordem do percentual no cadastro (`cadastro_prioritarios.json`)
+e, dentro da UF, população decrescente (Censo 2022).
+
+USO
+  python coletar_diarios_municipais.py --autoteste
+  python coletar_diarios_municipais.py --lote 1 --tamanho 150 --desde 2026-06-29
+"""
+import json, re, sys, urllib.parse
+from datetime import date
+from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
+                            marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste)
+
+QD_API = "https://queridodiario.ok.org.br/api/gazettes?{params}"
+TERMOS_RESPOSTA = ['"situação de emergência"', '"estado de calamidade pública"']
+TERMOS_PISTA = ['"plano de contingência"', '"El Niño"', '"plano de ação"']
+PAD_DECRETO = re.compile(r"decreto\s+(?:municipal\s+)?n[ºo°\.]?\s*([\d\.\/-]+)[^.]{0,200}?(situa[çc][ãa]o de emerg[êe]ncia|estado de calamidade p[úu]blica)", re.I)
+PAD_PLANO = re.compile(r"plano\s+(?:municipal\s+)?de\s+conting[êe]ncia[^.]{0,160}", re.I)
+
+
+def ordem_prioridade(por_cod: dict, cadastro: dict, pop: dict) -> list:
+    ufs = cadastro.get("ordem_prioridade_uf_por_percentual") or sorted({r["uf"] for r in por_cod.values()})
+    rank_uf = {uf: i for i, uf in enumerate(ufs)}
+    return sorted(por_cod, key=lambda c: (rank_uf.get(por_cod[c]["uf"], 99), -int(pop.get(c, 0) or 0)))
+
+
+def parse_qd(dados) -> list:
+    return [{"data": g.get("date", ""), "url": g.get("url") or g.get("txt_url", ""),
+             "trechos": [t for t in g.get("excerpts", []) if t]} for g in (dados or {}).get("gazettes", [])]
+
+
+def classificar_trechos(itens: list) -> tuple:
+    """(decretos, pistas). Decreto só com número (citação completa); plano vira pista."""
+    decretos, pistas = [], []
+    for it in itens:
+        for tr in it["trechos"]:
+            for numero, tipo in PAD_DECRETO.findall(tr):
+                decretos.append({"decreto": f"Decreto municipal nº {numero}", "tipo": tipo.lower(), "data": it["data"], "url": it["url"], "trecho": tr[:300]})
+            if PAD_PLANO.search(tr):
+                pistas.append({"data": it["data"], "url": it["url"], "trecho": tr[:300]})
+    return decretos, pistas
+
+
+def iso_para_br(s):
+    try:
+        y, m, d = s[:10].split("-"); return f"{d}/{m}/{y}"
+    except ValueError:
+        return s
+
+
+def coletar_lote(lote: int, tamanho: int, desde: str) -> int:
+    por_cod, _ = referencia_ibge()
+    pop = ler("populacao_censo2022.json", {}) or {}
+    cadastro = ler("cadastro_prioritarios.json", {}) or {}
+    ordem = ordem_prioridade(por_cod, cadastro, pop)
+    alvo = ordem[(lote - 1) * tamanho: lote * tamanho]
+    atos = ler("atos_resposta.json"); pistas = ler("pistas_imprensa.json", {"_governanca": "", "pistas": []})
+    pistas.setdefault("pistas", [])
+    vistos = {(e["nome"], e["uf"], e["data"], e.get("causa")) for e in atos["eventos"]}
+    n_ok = n_lac = novos = npist = 0
+    for cod in alvo:
+        ref = por_cod[cod]
+        params = urllib.parse.urlencode({"territory_ids": cod, "published_since": desde,
+                                         "querystring": " OR ".join(TERMOS_RESPOSTA + TERMOS_PISTA), "size": 50})
+        url = QD_API.format(params=params)
+        try:
+            bruto = buscar(url, timeout=30)
+            dados = json.loads(bruto.decode("utf-8", "replace"))
+        except Exception as e:  # noqa: BLE001
+            registrar_lacuna(f"Querido Diário/{ref['nome']}-{ref['uf']}", f"{type(e).__name__}", canal="DOM", camada=1,
+                             uf=ref["uf"], municipio=ref["nome"], ibge=cod, strings=[url]); n_lac += 1
+            continue
+        if dados.get("total_gazettes", 0) == 0 and not dados.get("gazettes"):
+            # município não indexado OU sem menção: não é "nada localizado" (exige bateria completa)
+            marcar_fonte_consultada([cod], "Querido Diário (diário municipal)", "nao_verificado",
+                                    resultado="sem edições/menções no período (cobertura a confirmar)")
+            log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "pista", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
+                      n_resultados=0, resultados="Querido Diário: 0 resultados (não indexado ou sem menção)")
+            n_ok += 1; continue
+        h = preservar_evidencia(bruto, url, "json", "coletar_diarios_municipais")
+        decretos, pist = classificar_trechos(parse_qd(dados))
+        for d in decretos:
+            dbr = iso_para_br(d["data"]); chave = (ref["nome"], ref["uf"], dbr, d["tipo"])
+            if chave in vistos:
+                continue
+            atos["eventos"].append({"nome": ref["nome"], "uf": ref["uf"], "ibge": cod, "data": dbr, "causa": d["tipo"],
+                                    "decreto": d["decreto"], "fonte": "Diário oficial municipal (via Querido Diário)",
+                                    "url": d["url"], "lat": ref["lat"], "lon": ref["lon"], "canal": "DOM", "hash_evidencia": h})
+            vistos.add(chave); novos += 1
+        for p in pist:
+            pistas["pistas"].append({"municipio": ref["nome"], "uf": ref["uf"], "ibge": cod, "origem": "querido_diario",
+                                    "data": iso_para_br(p["data"]), "url": p["url"], "trecho": p["trecho"],
+                                    "hash_evidencia": h, "registrado_em": date.today().isoformat(),
+                                    "status": "pista — promover a registro exige documento primário lido por humano"}); npist += 1
+        marcar_fonte_consultada([cod], "Querido Diário (diário municipal)", "nao_verificado",
+                                resultado=f"{len(decretos)} decreto(s), {len(pist)} pista(s)")
+        log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "registro" if decretos else "pista", uf=ref["uf"],
+                  municipio=ref["nome"], ibge=cod, n_resultados=dados.get("total_gazettes"), hash_evidencia=h,
+                  resultados=f"{len(decretos)} decretos, {len(pist)} pistas")
+        n_ok += 1
+    gravar("atos_resposta.json", atos); gravar("pistas_imprensa.json", pistas)
+    print(f"lote {lote}: {n_ok} consultados, {n_lac} lacunas, {novos} decretos novos, {npist} pistas")
+    return 0
+
+
+FIX = {"total_gazettes": 1, "gazettes": [{"date": "2026-08-30", "url": "https://x/d.pdf", "excerpts": [
+    "DECRETO Nº 987/2026 — Declara situação de emergência nas áreas afetadas pelas chuvas.",
+    "Fica instituído o Plano Municipal de Contingência para o período chuvoso 2026/2027."]}]}
+
+
+def autoteste() -> int:
+    def t1():
+        d, p = classificar_trechos(parse_qd(FIX)); return len(d) == 1 and d[0]["decreto"] == "Decreto municipal nº 987/2026" and len(p) == 1
+    def t2():  # negativo: decreto sem número não entra como ato
+        d, _ = classificar_trechos([{"data": "2026-08-30", "url": "", "trechos": ["Decreta situação de emergência."]}]); return d == []
+    def t3():
+        por = {"1": {"uf": "SC"}, "2": {"uf": "RS"}, "3": {"uf": "SC"}}
+        o = ordem_prioridade(por, {"ordem_prioridade_uf_por_percentual": ["SC", "RS"]}, {"1": 10, "3": 500})
+        return o == ["3", "1", "2"]
+    def t4(): return parse_qd(None) == [] and parse_qd({}) == []
+    return rodar_autoteste({"classifica decreto com nº e pista de plano": t1, "negativo: decreto sem número": t2,
+                            "prioridade: UF do cadastro, depois população": t3, "negativo: resposta nula": t4})
+
+
+if __name__ == "__main__":
+    if "--autoteste" in sys.argv:
+        sys.exit(autoteste())
+    a = sys.argv
+    lote = int(a[a.index("--lote") + 1]) if "--lote" in a else 1
+    tam = int(a[a.index("--tamanho") + 1]) if "--tamanho" in a else 150
+    desde = a[a.index("--desde") + 1] if "--desde" in a else "2026-06-29"
+    sys.exit(coletar_lote(lote, tam, desde))

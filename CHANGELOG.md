@@ -11,6 +11,32 @@ não pontuados permanecem na versão corrente.
 
 ## [2.2.4] — em preparação (sessão de 02/09/2026, documento de redesenho)
 
+### PR-C — Coletores da Pista A, evidência preservada e cadência intensiva (02/09/2026)
+- **`coletores_base.py`**: disciplina comum — nada inventado (lacuna declarada),
+  descoberta ≠ registro, log v2 por consulta, preservação de evidência com
+  sha256 (`evidencias/`, índice `data/evidencias.json`, Wayback acima de 5 MB) e
+  **livro de fontes consultadas** (`data/fontes_consultadas.json`), único insumo
+  dos coletores para o nível de verificação — que continua derivado pelo motor.
+- **Quatro coletores** com `--autoteste` (fixtures + testes negativos, 17 casos):
+  `coletar_s2id.py` (DOU/SEDEC; S2iD `a_verificar`), `coletar_doe.py` (27 DOEs por
+  config `fontes_doe.json`, todas `a_verificar` até a Action confirmar; adaptador
+  Querido Diário), `coletar_declarado_nacional.py` (MUNIC/ICM `a_verificar`;
+  parsers CSV provados) e `coletar_diarios_municipais.py` (Querido Diário por
+  lotes; prioridade = proxy declarado; NUNCA eleva a `municipal_completo`).
+  Teste de ponta a ponta sem rede: 100% lacunas declaradas, zero travamentos.
+- **Camada declarada nacional (C5)**: `recalcular_mare.py --simular-declarado-nacional`
+  grava `data/simulacao_declarado_nacional.json` (27 notas antes/depois); provado
+  com 60 declarações sintéticas na BA (24,0 → 25,2 só na simulação; índice
+  intacto). Hoje idêntico (0 declarações coletadas).
+- **Portão 6 `verificar_evidencias.py`**: aviso até 09/09 (97 de 97 registros
+  pontuáveis com URL ainda sem evidência), bloqueante a partir de 10/09/2026;
+  `preservar_evidencias.py` (idempotente, roda na Action) fecha essa lacuna.
+- **Cadência (E4/§13)**: cron diário adicional; `atualizar.py` checa
+  `INTENSIVO_ATE` ANTES de qualquer coleta (fora do período e não sendo segunda,
+  encerra sem tocar em nada); lote rotativo D1–D7. Variáveis de repositório
+  criadas: `INTENSIVO_ATE=2026-09-12` (provisório; ajustar ao dia 0 real),
+  `TAMANHO_LOTE=150`.
+
 ### PR-B — Verificação por níveis, "não verificado" e regras de prova (02/09/2026)
 - **Categoria `nao_verificado`** (crédito 0,0; cor `--neutro`) em motor, portões,
   legenda, seletor e cartões. **Errata pública** (`data/erratas_v224.json`): os
