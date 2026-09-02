@@ -20,7 +20,7 @@ Duas pistas levam à `main`, com regras diferentes:
 
 | Pista | Quem executa | O que pode tocar | Portão |
 |---|---|---|---|
-| **A — automática** (Action semanal `atualizar.yml`) | robô, sem intervenção | apenas `data/`, o número do medidor em `index.html`, `mapas-e-graficos.html`, o dicionário `ESTADOS` em `recalcular_mare.py`, PDFs, `selos/`, `feeds/`, `dados-abertos/` — e só via funções com rollback de `julgar_e_aplicar_descobertas.py` | os cinco portões bloqueantes de `atualizar.py`; falha ⇒ nenhum commit |
+| **A — automática** (Action semanal `atualizar.yml`) | robô, sem intervenção | apenas `data/` (inclui `data/sinais_risco.json`), o número do medidor em `index.html`, `mapas-e-graficos.html`, o dicionário `ESTADOS` em `recalcular_mare.py`, PDFs, `selos/`, `feeds/`, `dados-abertos/` — e só via funções com rollback de `julgar_e_aplicar_descobertas.py` | os **sete** portões bloqueantes de `atualizar.py`; falha ⇒ nenhum commit |
 | **B — editorial** (sessão Claude + editoria) | Claude prepara; editoria aprova | qualquer arquivo | ramo + pull request + prévia + aprovação humana + portões |
 
 A pista A **executa regras**; nunca as cria. Tudo que a regra não cobre vai
@@ -80,7 +80,7 @@ explícita naquela sessão.
 | Classe | Exemplos | Além da sequência 3.1 exige | Versão |
 |---|---|---|---|
 | **Texto/editorial** | frase do herói, legenda, rótulo, texto de página | auditoria de vocabulário controlado (`grep` contra frases-teto e frases proibidas; "não localizamos até o corte" é o teto) · paridade METODOLOGIA ↔ site onde o texto é espelhado | mantém |
-| **Design** | cores, layout, posição de figuras, cartões | prévia obrigatória; nenhum rótulo de faixa ou legenda pode afirmar mais do que o índice mede (§2.2 da transferência conceitual) · `verificar_runtime.js` e `verificar_runtime_mapas.js` verdes | mantém |
+| **Design** | cores, layout, posição de figuras, cartões | prévia obrigatória; nenhum rótulo de faixa ou legenda pode afirmar mais do que o índice mede (§2.2 da transferência conceitual) · `verificar_runtime.js`, `verificar_runtime_mapas.js` e `verificar_runtime_sinais.js` verdes | mantém |
 | **Código** | scripts, workflow, dependências | portões completos (§3.3) · SBOM e `MANIFEST_SHA256.txt` regenerados (`scripts/gerar_manifesto.py`) · SRI recalculado se algum CDN mudar · `pip-audit`/`npm audit` sem CVE crítico novo | patch (v2.2.x) |
 | **Dados** | registrar instrumento, reclassificar ato, aplicar contribuição | entra **somente** por `aplicar_revisao.py` / `converter_contribuicao.py`, nunca por edição direta de `data/*.json` · citação completa (número + data do ato) · `recalcular_mare.py --write` seguido de `--check` · determinismo do PDF (`SOURCE_DATE_EPOCH` = corte) · errata se corrige registro anterior | mantém; novo corte em `data/meta.json` |
 | **Método** | pesos, créditos, componentes, faixas, régua | regra **declarada antes** de beneficiar alguém (§3.5 da transferência) · simulação antes/depois apresentada à editoria · teste de estresse · seção datada em METODOLOGIA · entrada em errata/governança | **maior** (v2.3, v3…) |
@@ -95,10 +95,12 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
 node   scripts/verificar_estrutura.js
 python verificar_consistencia.py
 python recalcular_mare.py --check
+python verificar_sinais.py
 node   scripts/verificar_runtime.js
 node   scripts/verificar_runtime_mapas.js
+node   scripts/verificar_runtime_sinais.js
 ```
-Critério: cinco `✓` e média nacional reproduzida bit a bit. Se a mudança
+Critério: sete `✓` e média nacional reproduzida bit a bit. Se a mudança
 tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
 Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 
