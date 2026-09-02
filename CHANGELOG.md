@@ -34,6 +34,11 @@ semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 - **Licença dos dados (AUD-15):** **CC BY 4.0** para dados, dados abertos, feeds,
   selos e METODOLOGIA; código segue MIT. LICENSE, `datapackage.json`, CITATION.cff e
   guia de dados abertos alinhados.
+- **Proteção provada (02/09/2026, noite):** antes do ruleset existir, um push de teste
+  meu entrou na `main` (arquivo `_teste.txt`, removido neste PR) — exatamente o risco
+  que o AUD-06 apontava. Depois do ruleset: push humano direto **recusado** (GH013);
+  push do robô por deploy key **aceito** (commit vazio de teste `2ede830`, mantido no
+  histórico como prova).
 - **Tag e release (AUD-22):** `v2.3` anotada no commit desta edição, com release no
   GitHub. DOI: fica para quando a editoria vincular o repositório ao Zenodo (exige
   conta institucional); registrado como pendência.
