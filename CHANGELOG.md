@@ -20,6 +20,31 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Alinhamento ao documento ampliado (E8–E12) e correção C10 (02/09/2026, à noite)
+- **Correção de dado C10 (aplicada no defeso por ser correção, não método):** os 12
+  registros pontuáveis apoiados apenas em imprensa (canal `imprensa`) foram
+  rebaixados a pista (`nao_verificado`), com citação preservada em
+  `data/pistas_imprensa.json` e errata em `data/erratas_v224.json`. **Efeito:**
+  AC −14,6 · AP −9,1 · PA −2,4 · SP −2,2 · MG −1,7 · SC −1,3; **média nacional
+  47,1 → 45,9.** Script auditável e idempotente `aplicar_c10_imprensa.py`. PDFs,
+  dados abertos, medidor e METODOLOGIA (§5.5, §24) atualizados; 19 eventos no feed.
+- **Nove páginas (C4 atualizada por E9):** `financiamento.html` nasce como
+  placeholder no padrão, "Financiamento" entre Saúde e Proteja-se; portões 1 e
+  11 cobrem nove páginas.
+- **E10 (neutralidade permanente):** portão no `verificar_consistencia.py` que
+  bloqueia qualquer campo de autor de emenda em `data/` (teste negativo
+  acusado); regra registrada no §24.
+- **C12:** cartão do estado diz quando o instrumento foi publicado dentro do
+  período eleitoral (ato oficial, não publicidade).
+- **Feeds (§7.2):** tipos novos `verificacao_ampliada`, `decreto_reconhecido`,
+  `instrumento_saude`; texto correto para o rebaixamento C10.
+- **Rodapé de fontes** ampliado com as fontes incorporadas na v2.3.
+- **Rótulos:** a permanência da nota do defeso passa de "E8" a **E13** (E8 é,
+  no documento ampliado, "nenhum download manual — Action `ler_documento`").
+- Pendentes, na ordem do documento: PR-D2 (financiamento completo, §7.8),
+  PR-D3 (painel amostral, §10-bis), integração da Action `ler_documento` ao
+  portão de evidências (§3.8-bis).
+
 ### Harmonização de design, acessibilidade e responsividade (02/09/2026, a pedido da editoria)
 - **`assets/base.css`**: folha base única com os componentes compartilhados das 8
   páginas (tipografia, masthead e navegação, painéis, cartões de mapa/gráfico,
@@ -59,7 +84,7 @@ semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
 ### PR-E — Metodologia, protocolo, guia e versão v2.2.4 (02/09/2026)
 - **METODOLOGIA.md**: seções novas §24 (defeso: fatos, consequências, regra C6,
-  memória E8), §25 (níveis de verificação e "não verificado"), §26 (fontes
+  memória E13), §25 (níveis de verificação e "não verificado"), §26 (fontes
   incorporadas e disciplina dos coletores), §27 (saúde, peso zero), §28
   (fundamentação normativa, cláusula de neutralidade; Lei 14.750/2023 fica "a
   verificar antes de citar"), §29 (pré-registro da recontagem pós-defeso) e
@@ -154,7 +179,7 @@ semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
   confere os dois derivados. **Cinco testes negativos executados** — o quarto
   revelou fraqueza real (resumo mentiroso passava) e levou à paridade do resumo
   no `--check` antes de ser aprovado.
-- **Decisão editorial E8 (02/09/2026):** a nota do defeso é PERMANENTE — após
+- **Decisão editorial E13 (02/09/2026; rotulada E8 até a sessão paralela ocupar esse número):** a nota do defeso é PERMANENTE — após
   25/10 muda de tempo verbal e vira memória do site (index, financiamento, PDF).
 - **Mapa "Nível de verificação municipal"** (§7.3): os 5.571 na página de mapas,
   camada padrão em traçado único (5.571 nós individuais atrasavam os demais
