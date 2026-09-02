@@ -45,12 +45,143 @@
   </header>
 
 <main class="wrap" id="conteudo">
-  <p class="selo">Financiamento · registro de transparência · peso zero no índice · em construção</p>
+  <p class="selo">Financiamento · registro de transparência · peso zero no índice</p>
   <h1>Por onde o dinheiro chega</h1>
-  <p class="hint">Esta página vai reunir, numa ordem fixa e com fonte, consulta e data em cada figura, as sete rotas por que o dinheiro público chega ao município — repartição constitucional, fundo a fundo setorial, defesa civil obrigatória, emergência setorial, voluntárias e emendas, transferências especiais e execução direta da União — mais a rota estadual, e o que o decreto de emergência destranca em cada uma. Separa o que vem <em>antes</em> do dano do que vem <em>depois</em>.</p>
-  <div class="panel">
-    <p><strong>Nada aqui entra no índice MARÉ.</strong> Como as páginas de sinais e de saúde, esta é uma camada de transparência de peso zero, provada por portão.</p>
-    <p class="note">Regra permanente de neutralidade (decisão E10): nomes de parlamentares não aparecem neste site, em texto nem em link; emendas são mostradas por rota, por estado e por município. Enquanto a página está em construção, o conteúdo sobre dinheiro continua em <a href="mapas-e-graficos.html#financiamento">Mapas e gráficos</a> e em <a href="para-gestores.html#semdecretar">Para gestores</a>.</p>
+  <p class="hint" id="subFin">Sete rotas por que o dinheiro público chega ao município — mais a rota estadual — sempre na mesma ordem e nas mesmas cores, cada uma rotulada pela chave que a abre: <strong>regra</strong>, <strong>decreto</strong>, <strong>discricionária</strong> ou <strong>direta</strong>. Cada figura diz o órgão, a consulta e a data. Separa o que vem <em>antes</em> do dano do que vem <em>depois</em>; nunca soma resposta a preparação. Nada aqui entra no índice MARÉ. Corte: <strong id="corteFin">—</strong>.</p>
+
+  <div class="panel" id="comoler">
+    <h2 style="margin-top:0;">1 · Como ler: as sete rotas e o que o decreto destranca</h2>
+    <p class="hint">Cláusula de neutralidade: este bloco descreve rotas existentes, com base legal citada; não recomenda desenho de política pública. Nomes de parlamentares não aparecem nesta página, em texto nem em link (decisão E10).</p>
+    <div class="charts-grid" id="rotasCards"></div>
+    <div class="charts-grid" style="margin-top:12px;">
+      <div class="chart-box">
+        <h3 class="map-card-h">O caminho do recurso federal de resposta (rota 3)</h3>
+        <p class="note">Seis etapas rastreáveis, do decreto municipal ao cartão de pagamento — é o único caminho com dinheiro e voz garantidos para a maioria dos municípios no período eleitoral.</p>
+        <ol style="font-size:14px; line-height:1.8; color:var(--ink); margin:0; padding-left:20px;">
+          <li>Município decreta situação de emergência/calamidade</li>
+          <li>Registra o desastre no <strong>S2iD</strong> (FIDE + documentos)</li>
+          <li><strong>SEDEC/MIDR reconhece</strong> por portaria no DOU: <em>é o gatilho do dinheiro</em></li>
+          <li>Município solicita recursos de resposta pelo S2iD (plano de trabalho)</li>
+          <li>Recurso liberado no <strong>Cartão de Pagamento de Defesa Civil (CPDC)</strong>, sem convênio</li>
+          <li>Prestação de contas; reconstrução/prevenção seguem via Transferegov</li>
+        </ol>
+      </div>
+      <div class="chart-box">
+        <h3 class="map-card-h">O que um município pode acessar sem decretar</h3>
+        <p class="note">Rotas de recurso e proteção que não exigem decreto de emergência — serviço informativo, com base legal em cada item.</p>
+        <ul style="font-size:14px; line-height:1.8; margin:0; padding-left:20px;">
+          <li><strong>Transferência preventiva de defesa civil</strong> (rota 3, prevenção-obra) — Lei 12.340/2010 e Decreto 11.219/2022: área de risco mapeada e plano de trabalho de obra; sem ressarcimento de gasto já feito.</li>
+          <li><strong>Garantia-Safra</strong> (rota 7) — Lei 10.420/2002: adesão municipal anual antes do plantio, cota municipal de 6%; pagamento por perda verificada, sem decreto.</li>
+          <li><strong>Programa Cisternas</strong> (rota 7) — MDS: adesão e projeto, contínuo.</li>
+          <li><strong>Repasses fundo a fundo do SUS e do SUAS</strong> (rota 2) — por regra.</li>
+          <li><strong>Voluntárias e emendas</strong> (rotas 5 e 6) — suspensas até 25/10/2026 (art. 73, VI, "a"), salvo emergência e obrigações preexistentes.</li>
+          <li><strong>Fundo estadual preventivo</strong> (rota estadual), onde existir — Prepara RS como precedente (E12).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="serie">
+    <h2 style="margin-top:0;">2 · Brasil, por semana</h2>
+    <p class="hint">Transferências da União a municípios em 2026, empilhadas por rota, com a faixa do período eleitoral (04/07–25/10) sombreada — <em>suspensas por lei, não é inação</em>. A faixa permanece depois de 25/10, como memória do site.</p>
+    <div class="chart-box wide" id="boxSerie">
+      <h3 class="map-card-h">Série semanal 2026 por rota</h3>
+      <p class="note" id="notaSerie">Aguardando a primeira coleta dos dados abertos mensais do Portal da Transparência pela rotina automática. Enquanto a série não existe, o gráfico mostra só a faixa do defeso — a lacuna é declarada, não preenchida.</p>
+      <svg id="svgSerie" role="img" aria-label="Série semanal de transferências da União a municípios em 2026, por rota, com a faixa do período eleitoral" viewBox="0 0 900 260" style="width:100%; height:auto;"></svg>
+      <div class="map-legend" id="legSerie"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="porestado">
+    <h2 style="margin-top:0;">3 · Por estado</h2>
+    <p class="hint">Dois mapas: o fundo a fundo estadual <em>preventivo</em> (o precedente do Prepara RS) e, quando a coleta chegar, o coroplético em R$ por habitante com seletor de rota.</p>
+    <div class="maps-grid">
+      <div class="map-box" id="boxFundoEstadual">
+        <h3 class="map-card-h">Fundo a fundo estadual preventivo</h3>
+        <p class="note">Localizado · em elaboração · não localizado (bateria datada) · ainda não verificado. Só o RS tem instrumento localizado até o corte (Resolução nº 008/FUNDEC/2026).</p>
+        <svg id="mapaFundo" role="img" aria-label="Mapa do Brasil pelo status do fundo a fundo estadual preventivo de defesa civil" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legFundo"></div>
+      </div>
+      <div class="map-box" id="boxPorHab">
+        <h3 class="map-card-h">Transferências da União por habitante, por rota</h3>
+        <p class="note">Coroplético em R$/hab. com seletor de rota. Aguardando a primeira coleta pela rotina automática (Portal da Transparência, Tesouro, FNS, FNAS): mapa em cinza uniforme = lacuna declarada.</p>
+        <label class="sr-only" for="selRota">Rota</label>
+        <select id="selRota" aria-label="Escolher a rota exibida no mapa" style="margin:0 0 8px; font-family:inherit; font-size:13.5px;"></select>
+        <svg id="mapaHab" role="img" aria-label="Mapa do Brasil com transferências da União por habitante na rota escolhida" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legHab"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="resposta">
+    <h2 style="margin-top:0;">4 · Resposta por decreto</h2>
+    <p class="hint">Reconhecimentos federais do ciclo (S2iD/DOU), transferências obrigatórias de resposta e repasses do CPDC — na cor de resposta, nunca somados a preparação. Ao lado, os repasses estaduais preventivos confirmados e a habilitação federal por município.</p>
+    <div class="maps-grid">
+      <div class="map-box" id="boxDinheiro">
+        <h3 class="map-card-h">Repasses preventivos confirmados e habilitação federal</h3>
+        <p class="note" style="margin:0 0 8px;">Repasses estaduais confirmados (Prepara RS) em verde, com tamanho proporcional ao valor; municípios habilitados à rota federal de resposta (reconhecimento) em cor de resposta. Só municípios nomeados em fonte pública.</p>
+        <svg id="mapDinheiro" role="img" aria-label="Mapa das transferências: repasses estaduais preventivos confirmados e municípios com reconhecimento federal" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legDinheiro"></div>
+        <details style="margin-top:10px;"><summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Ver números e cobertura do mapa</summary>
+          <p class="note" style="margin-top:8px;">Repasses estaduais preventivos: <strong id="dinTotalRS">—</strong> confirmados pelo Prepara RS a <strong id="dinNumRS">—</strong> municípios. Reconhecimentos federais do ciclo registrados: <strong id="dinNumFed">—</strong> município(s).</p>
+        </details>
+      </div>
+      <div class="chart-box" id="boxResposta">
+        <h3 class="map-card-h">Resposta: reconhecimentos e transferências obrigatórias</h3>
+        <p class="note">Contagem por UF de reconhecimentos federais (portarias SEDEC) e, quando coletado, o valor transferido pela rota 3. Aguardando a primeira coleta do S2iD/DOU pela rotina automática.</p>
+        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblResposta"><thead><tr><th>UF</th><th>Reconhecimentos</th><th>Municípios</th><th>Transferido (rota 3)</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="painel">
+    <h2 style="margin-top:0;">5 · Painel amostral</h2>
+    <p class="hint">Doze municípios por estado (324), sorteados com semente publicada antes da primeira verificação, reverificados toda semana: quanto chega por regra, por decreto, por discricionariedade e sem passar pelo caixa — e quantos têm instrumento publicado. Leitura por região × porte × risco, não por UF isolada.</p>
+    <div class="chart-box wide" id="boxPainel">
+      <h3 class="map-card-h">Lista e agregados do painel</h3>
+      <p class="note" id="notaPainel">O painel é publicado por <code>gerar_painel.py --sortear --semente N</code> (§10-bis); lista e semente ficam na metodologia e nos dados abertos antes de qualquer verificação. Aguardando publicação.</p>
+      <div id="painelResumo"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="programas">
+    <h2 style="margin-top:0;">6 · Programas permanentes no território (rota 7)</h2>
+    <p class="hint">Execução direta da União: Garantia-Safra, Cisternas, Carro-Pipa, CISC, monitoramento do Cemaden. Registro de transparência, sem crédito no índice; "lista não pública" quando for o caso.</p>
+    <div class="charts-grid" id="programasCards"></div>
+  </div>
+
+  <div class="panel" id="compromissos">
+    <h2 style="margin-top:0;">7 · Compromissos federais com dinheiro e prazo</h2>
+    <p class="hint">O que foi prometido, com fonte e data, ao lado da execução correspondente no Portal da Transparência (aguardando coleta).</p>
+    <div class="charts-grid">
+      <div class="chart-box" id="boxCompromissos">
+        <h3 class="map-card-h">Compromissos verificados</h3>
+        <p class="note">Cada linha traz instrumento, valor e condicionalidade tal como publicados; a coluna de execução fica vazia até a coleta.</p>
+        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCompromissos"><thead><tr><th>Compromisso</th><th>Esfera</th><th>Instrumento</th><th>Valor</th><th>Rota</th><th>Execução</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <div class="chart-box" id="boxFinance">
+        <h3 class="map-card-h">Plano federal El Niño 2026/2027 por área (R$)</h3>
+        <p class="note">Valores anunciados pelo governo federal por área, tal como registrados em fonte primária (transferencias.json); a execução por ação orçamentária virá do Portal.</p>
+        <div class="canvas-wrap"><canvas id="chartFinance" aria-label="Gráfico de barras: financiamento federal anunciado por área"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="fontes">
+    <h2 style="margin-top:0;">8 · Fontes e consultas</h2>
+    <p class="hint">Toda figura alimentada por API tem a consulta reproduzível registrada: endpoint, parâmetros, data, hash da resposta e número de itens. CSV correspondente nos dados abertos.</p>
+    <div class="charts-grid">
+      <div class="chart-box" id="boxFontesMonit">
+        <h3 class="map-card-h">Onde monitorar cada etapa (fontes oficiais)</h3>
+        <p class="note">Endereços públicos de verificação, na ordem do caminho do recurso.</p>
+        <ul id="fontesMonit" style="font-size:14px; line-height:1.9; margin:0; padding-left:20px;"></ul>
+      </div>
+      <div class="chart-box" id="boxConsultas">
+        <h3 class="map-card-h">Consultas registradas</h3>
+        <p class="note" id="notaConsultas">Nenhuma consulta registrada até o corte — a primeira é da rotina automática.</p>
+        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblConsultas"><thead><tr><th>Endpoint</th><th>Parâmetros</th><th>Data</th><th>Itens</th><th>Hash</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
   </div>
 </main>
 <footer class="site-footer">
@@ -66,5 +197,162 @@
     <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados.</span>
   </footer>
 </div>
+
+<script>
+let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, PAINEL;
+const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
+const NEUTRA = '#DCD3C2';
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const brl = v => (v == null) ? '—' : 'R$ ' + Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 0});
+const tooltip = document.getElementById('mapTooltip');
+function showTip(html, evt){ tooltip.innerHTML = html; tooltip.style.display='block'; tooltip.style.left=(evt.clientX+14)+'px'; tooltip.style.top=(evt.clientY+10)+'px'; }
+function hideTip(){ tooltip.style.display='none'; }
+function fonteFigura(caixaId, texto){
+  const nota = document.querySelector('#' + caixaId + ' .note');
+  if(!nota || nota.querySelector('.fonte-figura')) return;
+  const sp = document.createElement('span'); sp.className = 'fonte-figura'; sp.innerHTML = '<br>' + texto; nota.appendChild(sp);
+}
+// Regra estrutural (portão): soma de PREPARAÇÃO só com rotas ex_ante; resposta (r3/r4) nunca entra.
+function somaPreparacao(valoresPorRota){
+  return ROTAS.rotas.filter(r => r.ex_ante).reduce((s, r) => s + (Number(valoresPorRota[r.id]) || 0), 0);
+}
+async function __load(){
+  const carregar = f => fetch(f).then(r => { if(!r.ok) throw new Error('Falha ao carregar ' + f); return r.json(); });
+  [BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP] = await Promise.all([
+    'data/geo_uf.json','data/financiamento/rotas.json','data/financiamento/por_uf.json','data/financiamento/compromissos_federais.json',
+    'data/financiamento/serie_nacional.json','data/financiamento/emendas.json','data/financiamento/consultas.json','data/transferencias.json',
+    'data/atos_resposta.json','data/populacao_censo2022.json'].map(carregar));
+  try { PAINEL = await carregar('data/painel/agregados.json'); } catch(e) { PAINEL = null; }
+  __init();
+}
+function __init(){
+  const projection = d3.geoMercator().fitSize([480,460], BR_GEOJSON), pathGen = d3.geoPath().projection(projection);
+  document.getElementById('corteFin').textContent = ROTAS.corte || '—';
+  function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){
+    const svg = d3.select('#' + svgId);
+    svg.selectAll('path').data(BR_GEOJSON.features).join('path').attr('d', pathGen).attr('class','uf-path')
+      .attr('fill', d => corDe(d.properties.sigla)).attr('tabindex', 0).attr('role','img')
+      .attr('aria-label', d => d.properties.name + ': ' + rotuloDe(d.properties.sigla).replace(/<[^>]+>/g,' '))
+      .on('mouseenter', (evt,d) => showTip('<strong>'+esc(d.properties.name)+'</strong><br>'+rotuloDe(d.properties.sigla), evt))
+      .on('mousemove', (evt,d) => showTip('<strong>'+esc(d.properties.name)+'</strong><br>'+rotuloDe(d.properties.sigla), evt))
+      .on('mouseleave', hideTip);
+    document.getElementById(legendaId).innerHTML = itens.map(i => '<span><i style="background:'+i.cor+'"></i>'+esc(i.rotulo)+'</span>').join('');
+    return svg;
+  }
+  // 1 · rotas
+  document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="chart-box" style="border-left:4px solid '+r.cor+'"><h3 class="map-card-h">'+r.n+' · '+esc(r.nome)+' <span style="font-weight:400; text-transform:none; letter-spacing:0;">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
+    + '<p class="note"><strong>'+esc(r.curta)+'.</strong> '+esc(r.base_legal)+'<br><em>O que o decreto destranca:</em> '+esc(r.decreto_destranca)+'.</p></div>').join('');
+  // 2 · série (faixa do defeso sempre; barras só quando houver dados)
+  (function(){
+    const svg = d3.select('#svgSerie'), W = 900, H = 260, m = {t: 16, r: 16, b: 34, l: 60};
+    const x = d3.scaleTime().domain([new Date(2026,0,1), new Date(2026,11,31)]).range([m.l, W - m.r]);
+    const d0 = new Date(SERIE.defeso.inicio + 'T00:00:00'), d1 = new Date(SERIE.defeso.fim + 'T00:00:00');
+    svg.append('rect').attr('x', x(d0)).attr('y', m.t).attr('width', x(d1) - x(d0)).attr('height', H - m.t - m.b).attr('fill', '#A65F3F').attr('fill-opacity', .13);
+    svg.append('text').attr('x', (x(d0) + x(d1)) / 2).attr('y', m.t + 16).attr('text-anchor','middle').attr('font-size', 12).attr('fill', '#7C4A34')
+      .attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('Período eleitoral 04/07–25/10: voluntárias suspensas por lei (art. 73, VI, a) — não é inação');
+    const semanas = SERIE.semanas || [];
+    if (!semanas.length) {
+      svg.append('text').attr('x', W/2).attr('y', H/2 + 8).attr('text-anchor','middle').attr('font-size', 13).attr('fill', '#55645B').text('Série ainda não coletada — lacuna declarada');
+    } else {
+      const y = d3.scaleLinear().domain([0, d3.max(semanas, s => ROTAS.rotas.reduce((a, r) => a + (s[r.id] || 0), 0))]).nice().range([H - m.b, m.t]);
+      const pilha = d3.stack().keys(ROTAS.rotas.map(r => r.id))(semanas.map(s => Object.assign({}, s)));
+      svg.selectAll('g.rota').data(pilha).join('g').attr('fill', d => ROTAS.rotas.find(r => r.id === d.key).cor)
+        .selectAll('rect').data(d => d).join('rect').attr('x', d => x(new Date(d.data.semana))).attr('width', 10)
+        .attr('y', d => y(d[1])).attr('height', d => y(d[0]) - y(d[1]));
+      svg.append('g').attr('transform', 'translate(' + m.l + ',0)').call(d3.axisLeft(y).ticks(5).tickFormat(v => 'R$ ' + (v/1e6).toFixed(0) + ' mi'));
+      document.getElementById('notaSerie').textContent = 'Série semanal 2026 por rota; fonte: dados abertos do Portal da Transparência, consulta registrada no bloco 8.';
+    }
+    svg.append('g').attr('transform', 'translate(0,' + (H - m.b) + ')').call(d3.axisBottom(x).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat('%b')));
+    document.getElementById('legSerie').innerHTML = ROTAS.rotas.map(r => '<span><i style="background:'+r.cor+'"></i>'+r.n+' · '+esc(r.nome)+'</span>').join('') + '<span><i style="background:#A65F3F; opacity:.35"></i>faixa do defeso</span>';
+    fonteFigura('boxSerie', semanas.length ? 'Fonte: Portal da Transparência (dados abertos mensais + API), consultas em ' + esc(SERIE.corte) + '.' : 'Não localizamos coleta desta fonte até o corte — lacuna declarada (Portal da Transparência). Faixa do defeso: Lei 9.504/1997, art. 73, VI, a.');
+  })();
+  // 3 · por estado
+  const FUNDO = {localizado:['Localizado','#4F7D48'], em_elaboracao:['Em elaboração','#C69B72'], nao_localizado:['Não localizado (bateria datada)','#7C4A34'], nao_verificado:['Ainda não verificado','#64645C']};
+  const fundo = uf => ((PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}).status || 'nao_verificado';
+  desenharMapa('mapaFundo','legFundo', uf => (FUNDO[fundo(uf)] || FUNDO.nao_verificado)[1],
+    uf => { const f = (PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}; return '<em>' + esc((FUNDO[fundo(uf)] || FUNDO.nao_verificado)[0]) + '</em>' + (f.instrumento ? '<br>' + esc(f.instrumento) + (f.norma ? ' · ' + esc(f.norma) : '') : '') + (f.condicionalidade ? '<br>Condição: ' + esc(f.condicionalidade) : '') + (f.verificado_em ? '<br>verificado em ' + esc(f.verificado_em) : '<br>bateria estadual ainda não executada'); },
+    Object.values(FUNDO).map(v => ({cor: v[1], rotulo: v[0]})));
+  fonteFigura('boxFundoEstadual', 'Fonte: verificação própria do Monitor (data/financiamento/por_uf.json ← financiamento_uf.json), corte ' + esc(PORUF.corte) + '. RS: Resolução nº 008/FUNDEC/2026 (precedente E12).');
+  const sel = document.getElementById('selRota'); sel.innerHTML = ROTAS.rotas.map(r => '<option value="'+r.id+'">'+r.n+' · '+esc(r.nome)+'</option>').join('');
+  function valorHab(uf, rota){ const v = (((PORUF.uf[uf] || {}).rotas || {})[rota] || {}).valor_2026; const pop = UFS.includes(uf) ? Object.entries(POP).filter(([c]) => String(c).startsWith(String(UFS.indexOf(uf)))).length : 0; return (v == null) ? null : v; }
+  function desenharHab(){
+    const rota = sel.value; const vals = UFS.map(uf => valorHab(uf, rota)).filter(v => v != null);
+    const cor = d3.scaleSequential(d3.interpolateBlues).domain([0, d3.max(vals) || 1]);
+    desenharMapa('mapaHab','legHab', uf => { const v = valorHab(uf, rota); return v == null ? NEUTRA : cor(v); },
+      uf => { const v = valorHab(uf, rota); return v == null ? 'Aguardando coleta (rota ' + esc(rota) + ')' : brl(v); },
+      vals.length ? [{cor: cor(0), rotulo: 'menor'}, {cor: cor(d3.max(vals)), rotulo: 'maior'}] : [{cor: NEUTRA, rotulo: 'aguardando coleta'}]);
+  }
+  desenharHab(); sel.addEventListener('change', desenharHab);
+  fonteFigura('boxPorHab', 'Não localizamos coleta desta fonte até o corte — lacuna declarada (Portal da Transparência, Tesouro, FNS, FNAS). População: Censo 2022 (IBGE).');
+  // 4 · resposta por decreto
+  const svgDin = desenharMapa('mapDinheiro','legDinheiro', uf => NEUTRA, uf => 'Sem repasse ou reconhecimento nomeado até o corte',
+    [{cor:'#4F7D48', rotulo:'Repasse preventivo confirmado (Prepara RS)'}, {cor:'#7C4A34', rotulo:'Reconhecimento federal (rota 3, resposta)'}]);
+  const repassesGeo = (TRANSF.repasses_rs || []).filter(r => r.lat);
+  const rEsc = d3.scaleSqrt().domain([0, d3.max(repassesGeo, r => r.valor) || 1]).range([1.5, 9]);
+  svgDin.append('g').selectAll('circle').data(repassesGeo).join('circle')
+    .attr('cx', r => projection([r.lon, r.lat])[0]).attr('cy', r => projection([r.lon, r.lat])[1]).attr('r', r => rEsc(r.valor))
+    .attr('fill', '#4F7D48').attr('fill-opacity', .75).attr('stroke', '#F5F1E8').attr('stroke-width', .6)
+    .on('mouseenter', (evt, r) => showTip('<strong>' + esc(r.municipio || r.nome) + ' (RS)</strong><br>' + brl(r.valor) + ' · Prepara RS', evt)).on('mouseleave', hideTip);
+  const recs = (ATOS.eventos || []).filter(e => e.causa === 'reconhecimento federal' && e.lat);
+  svgDin.append('g').selectAll('circle.rec').data(recs).join('circle').attr('class','rec')
+    .attr('cx', e => projection([e.lon, e.lat])[0]).attr('cy', e => projection([e.lon, e.lat])[1]).attr('r', 4).attr('fill', '#7C4A34').attr('fill-opacity', .85);
+  document.getElementById('dinTotalRS').textContent = brl(repassesGeo.reduce((s, r) => s + r.valor, 0));
+  document.getElementById('dinNumRS').textContent = repassesGeo.length;
+  document.getElementById('dinNumFed').textContent = recs.length;
+  fonteFigura('boxDinheiro', 'Fontes: Governo do RS / FUNDEC (Resolução nº 008/2026; lista de 138 repasses) · DOU, portarias SEDEC/MIDR (reconhecimentos, via coletor S2iD) · corte ' + esc(ROTAS.corte) + '.');
+  const porUF = {}; recs.forEach(e => { const p = porUF[e.uf] = porUF[e.uf] || {n: 0, m: new Set()}; p.n++; p.m.add(e.nome); });
+  document.querySelector('#tblResposta tbody').innerHTML = UFS.map(uf => '<tr><td><strong>' + uf + '</strong></td><td>' + (porUF[uf] ? porUF[uf].n : 0) + '</td><td>' + (porUF[uf] ? [...porUF[uf].m].map(esc).join(', ') : '—') + '</td><td>' + brl((((PORUF.uf[uf] || {}).rotas || {}).r3 || {}).valor_2026) + '</td></tr>').join('');
+  fonteFigura('boxResposta', recs.length ? 'Fonte: DOU — portarias SEDEC/MIDR (coletor S2iD), ' + esc(ROTAS.corte) + '.' : 'Não localizamos coleta desta fonte até o corte — lacuna declarada (DOU/S2iD, primeira coleta pela rotina automática).');
+  // 5 · painel
+  if (PAINEL && PAINEL.lista_publicada_em) {
+    document.getElementById('notaPainel').textContent = 'Painel de ' + PAINEL.n + ' municípios; semente ' + PAINEL.semente + ', lista publicada em ' + PAINEL.lista_publicada_em + ' (hash ' + String(PAINEL.hash_lista).slice(0,12) + '…).';
+    document.getElementById('painelResumo').innerHTML = '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>Região × porte</th><th>Municípios</th><th>Com instrumento publicado</th><th>Ainda não verificados</th></tr></thead><tbody>'
+      + (PAINEL.agregados || []).map(a => '<tr><td>' + esc(a.regiao) + ' · ' + esc(a.porte) + '</td><td>' + a.n + '</td><td>' + a.com_instrumento + '</td><td>' + a.nao_verificados + '</td></tr>').join('') + '</tbody></table></div>';
+    fonteFigura('boxPainel', 'Fonte: data/painel/ (sorteio publicado; fichas com fonte e data por município).');
+  } else {
+    fonteFigura('boxPainel', 'Não localizamos publicação do painel até o corte — lacuna declarada (gerar_painel.py, §10-bis).');
+  }
+  // 6 · programas permanentes
+  const PROG = [
+    {nome: 'Garantia-Safra', base: 'Lei 10.420/2002 · MDA', regra: 'adesão municipal anual antes do plantio; cota municipal 6%; pagamento por perda verificada — sem decreto', lista: 'relação de municípios aderentes: a coletar (MDA)'},
+    {nome: 'Programa Cisternas', base: 'MDS', regra: 'adesão e projeto; contínuo', lista: 'execução por município: a coletar (MDS)'},
+    {nome: 'Operação Carro-Pipa', base: 'Exército (CMNE) / MIDR', regra: 'inclusão condicionada, na maior parte dos casos, a reconhecimento federal', lista: 'LISTA NÃO PÚBLICA — portal do Exército bloqueou acesso automatizado em 02/09/2026; pedido de LAI gerado'},
+    {nome: 'CISC — Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal não localizada — não inventar'},
+    {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: a arquivar pela Action ler_documento (§10-bis)'},
+  ];
+  document.getElementById('programasCards').innerHTML = PROG.map(p => '<div class="chart-box"><h3 class="map-card-h">' + esc(p.nome) + '</h3><p class="note"><strong>' + esc(p.base) + '.</strong> ' + esc(p.regra) + '.<br><em>' + esc(p.lista) + '.</em></p></div>').join('');
+  // 7 · compromissos + gráfico por área
+  document.querySelector('#tblCompromissos tbody').innerHTML = (COMP.itens || []).map(c => '<tr><td>' + esc(c.nome) + '</td><td>' + esc(c.esfera || '—') + '</td><td>' + esc(c.instrumento || '—') + (c.fonte ? ' <a href="' + esc(c.fonte) + '" target="_blank" rel="noopener">fonte</a>' : '') + '</td><td>' + brl(c.valor_total) + '</td><td>' + esc((ROTAS.rotas.find(r => r.id === c.rota) || {}).nome || c.rota) + '</td><td>' + esc((c.execucao || {}).status === 'aguardando_coleta' ? 'aguardando coleta' : (c.execucao || {}).status || '—') + '</td></tr>').join('');
+  fonteFigura('boxCompromissos', 'Fontes: as citadas em cada linha (data/transferencias.json, verificadas em fonte primária em 25/08/2026); execução: Portal da Transparência (aguardando coleta).');
+  const financeData = [
+  {label:'Segurança Hídrica', value:14217500000},
+  {label:'Saúde', value:1335000000},
+  {label:'Segurança Alimentar', value:1335000000},
+  {label:'Incêndios Florestais', value:858000000},
+];
+new Chart(document.getElementById('chartFinance'), {
+  type:'bar',
+  data:{ labels: financeData.map(d=>d.label),
+    datasets:[{ data: financeData.map(d=>d.value),
+      backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? '#35566B'
+        : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? '#A65F3F'
+        : /aliment|agr[íi]cola|safra/i.test(d.label) ? '#C69B72'
+        : /sa[úu]de/i.test(d.label) ? '#8FA6B5' : '#B9B2A4'),
+      borderRadius:4 }] },
+  options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{ legend:{display:false} },
+    scales:{ x:{ grid:{color:'#D6C4AC'}, ticks:{ callback:v => 'R$ '+(v/1e9).toFixed(1)+'bi' } }, y:{ grid:{display:false} } } }
+});
+
+
+  fonteFigura('boxFinance', 'Fonte: Plano federal El Niño 2026/2027 (anúncio do governo federal, registrado em data/transferencias.json); valores anunciados, não executados.');
+  // 8 · fontes e consultas
+  document.getElementById('fontesMonit').innerHTML = (TRANSF.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a></li>').join('');
+  fonteFigura('boxFontesMonit', 'Fonte: data/transferencias.json (fontes de monitoramento verificadas em 25/08/2026).');
+  const cons = CONSULTAS.consultas || [];
+  if (cons.length) { document.getElementById('notaConsultas').textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
+  fonteFigura('boxConsultas', cons.length ? 'Fonte: data/financiamento/consultas.json.' : 'Não localizamos consulta registrada até o corte — lacuna declarada.');
+}
+__load().catch(err => { const m = document.getElementById('subFin'); if (m) m.insertAdjacentHTML('afterend', '<p class="note" style="color:var(--rust)">Erro ao carregar os dados: ' + esc(err.message) + '</p>'); });
+</script>
 </body>
 </html>

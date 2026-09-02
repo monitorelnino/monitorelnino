@@ -20,6 +20,43 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### PR-D2 — "Por onde o dinheiro chega" (financiamento.html; E9, E10, E12; §7.8) — 02/09/2026, noite
+- **Página completa, oito blocos:** as sete rotas + estadual (ordem e cores fixas, chave de
+  acesso, base legal, o que o decreto destranca; absorve "rotas sem decretar" e "o caminho
+  do recurso de resposta"); série semanal 2026 por rota com a **faixa do defeso sempre
+  desenhada** (lacuna declarada até a primeira coleta); fundo a fundo estadual preventivo
+  por UF (RS localizado — Prepara RS como precedente, E12) e coroplético R$/hab. com
+  seletor de rota (aguardando coleta); resposta por decreto (mapa migrado: repasses do
+  Prepara RS e reconhecimentos federais; tabela por UF); painel amostral; programas
+  permanentes (Carro-Pipa: lista não pública, declarado); compromissos federais com
+  execução a coletar e o gráfico por área migrado; fontes e consultas reproduzíveis.
+- **`coletar_financiamento.py`**: semeia `data/financiamento/` (rotas, por_uf — convergência
+  de financiamento_uf/recursos_uf/transferencias com fonte por campo —, compromissos, série,
+  emendas, consultas); adaptador Portal da Transparência (60 req/min; chave só no robô);
+  **autor de emenda descartado na coleta** (E10, provado por fixture); Tesouro/FNS/FNAS/
+  Transferegov/MDS `a_verificar` (§15). 6 autotestes ✓.
+- **Portões 13 e 14:** `verificar_financiamento.py` (sem chave, créditos, reconciliação,
+  nada imputado, resposta separada, **teste de estresse: pasta inteira apagada → índice
+  bit a bit igual**, faixa do defeso, E10; 7 negativos acusados) e
+  `verificar_runtime_financiamento.js` (20 verificações).
+- **Migrações (E9):** mapa 7, gráfico 3 e "Como o dinheiro chega" saem de
+  mapas-e-graficos.html (fica cartão de link); a linha de financiamento do cartão da UF
+  vira link; o bloco de rotas de Para gestores vira link. METODOLOGIA §28 com o modelo.
+
+### PR-D3 — Painel amostral estratificado (E11; §10-bis) — 02/09/2026, noite
+- **Lista arquivada com hash:** Anexo I da NT 1/2023 (1.942 municípios geo-hidrológicos)
+  extraído pela máquina da leitura registrada no repositório privado (Action
+  `ler_documento`, E8); Anexo II (preliminar) arquivado à parte, fora dos estratos.
+  Demais marcadores declarados indisponíveis até serem arquivados.
+- **`gerar_painel.py --sortear --semente 20260902`**: 313 municípios (12 por UF; **DF = 1,
+  exceção declarada** — o documento previa 324), sem capitais, porte proporcional, mínimo
+  2 no marcador dominante e 1 controle, Ponte Serrada/SC incluído; lista imutável
+  (hash publicado na METODOLOGIA §28-bis e nos dados abertos); fichas com fonte e data;
+  agregados região × porte × risco. Reverificação semanal no orquestrador.
+- **Portão 15 `verificar_painel.py`** (5 negativos acusados); bloco 5 da página de
+  financiamento renderiza o painel; `dados-abertos/painel_amostral.csv`.
+- Suíte: **15 portões**.
+
 ### Governança (decisões delegadas à sessão em 02/09/2026, à noite — fecha AUD-06, AUD-11, AUD-15, AUD-21, AUD-22)
 - **Proteção da `main` (AUD-06):** ruleset no GitHub — nenhum push direto humano,
   mudanças só por pull request, **checagem obrigatória** "Portões (pull request)"
