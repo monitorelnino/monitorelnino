@@ -6,13 +6,21 @@
 
 # Qualquer endereço do domínio mostra a página em branco (evita que URLs
 # antigas do site completo continuem acessíveis pelo domínio público).
+# Raiz: a página "Em atualização" com 200. Qualquer outra rota (páginas antigas, JSON,
+# PDF, feeds): a MESMA página, mas com status 404 — nada de "soft 404" para consumidores
+# automáticos (auditoria externa 02/09/2026, AUD-01/AUD-24).
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 404
 
 [[headers]]
   for = "/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     Cache-Control = "no-store"
