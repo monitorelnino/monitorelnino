@@ -89,6 +89,18 @@ estados por região; dias 4–7 diários municipais em lotes. O que você faz:
    monitorelnino. Se der tudo certo, ele não avisa — por isso a olhada
    semanal.
 
+## 4a-bis. Duas páginas de peso zero e o painel
+
+- **Saúde e El Niño** e **Por onde o dinheiro chega** são registros de transparência: nada
+  delas entra na nota, e um portão prova isso (apagar a pasta inteira do financiamento
+  não muda nenhuma nota). Quando o robô coletar a série de transferências, o gráfico do
+  bloco 2 preenche sozinho — a faixa do período eleitoral já está desenhada e fica.
+- O **painel amostral** (313 municípios, 12 por estado, sorteados com semente publicada)
+  é reverificado toda segunda. A lista é imutável: se um dia precisar trocar um município,
+  é errata pública, nunca edição silenciosa.
+- Nomes de parlamentares não aparecem no site, em texto nem em link (regra E10, provada
+  por portão).
+
 ## 4b. Pedidos de acesso à informação (uma vez, dia 0)
 
 Os 55 textos estão prontos em `docs/lai/` no repositório (um por estado para a
