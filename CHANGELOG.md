@@ -11,6 +11,28 @@ não pontuados permanecem na versão corrente.
 
 ## [2.2.4] — em preparação (sessão de 02/09/2026, documento de redesenho)
 
+### PR-D — Página "Saúde e El Niño" (02/09/2026; E2, C1–C3)
+- **`saude.html` completa**, no motor de mapas da página de sinais: cartões da
+  camada federal (6, com estatuto "localizado" ou "anunciado, não localizado até
+  o corte"; um único link, a página oficial do MS sobre dengue, verificada em
+  02/09), mapa de status do instrumento estadual de saúde (6 classes), mapa de
+  risco sanitário projetado (derivado dos boletins, sem projeção nova), dengue
+  nas capitais (InfoDengue com crédito; MS como fonte primária do número), calor
+  (reuso INMET), emergências sanitárias (resposta, peso zero), cruzamento
+  **defesa civil × saúde** em quadrantes (soma 27 provada), série de dengue como
+  lacuna declarada, camada do cidadão com orientações do MS reproduzidas.
+- **`coletar_saude.py`**: as 27 UFs nascem **NAO_VERIFICADO** (C1) — a bateria
+  estadual é executada e logada na semana intensiva; adaptador InfoDengue com
+  parser provado por fixture.
+- **`data/saude_uf.json` · `saude_federal.json` · `saude_sinais.json`**; feed
+  `feeds/saude.xml`; dados abertos `saude_uf.csv` e `verificacao_municipal.csv`
+  (datapackage atualizado).
+- **Portão 5 `verificar_saude.py`** (8 provas, 6 testes negativos acusando) e
+  **portão 10 `verificar_runtime_saude.js`** (21 verificações, incluindo o gesto
+  do tooltip); ambos no orquestrador. A suíte passa a ter 10 portões.
+- Feeds: rótulo humano para "ainda não verificado" e resumo correto da
+  reclassificação (14 eventos de 02/09/2026 regenerados após correção do texto).
+
 ### PR-C — Coletores da Pista A, evidência preservada e cadência intensiva (02/09/2026)
 - **`coletores_base.py`**: disciplina comum — nada inventado (lacuna declarada),
   descoberta ≠ registro, log v2 por consulta, preservação de evidência com

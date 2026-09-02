@@ -1,0 +1,53 @@
+{
+ "_governanca": "Camada observada de saúde (§9.3). Mesmo formato de sinais_risco.json: por fonte, coletado_em, órgão, documento, data de referência, URL, valores por UF/município, lacuna declarada. Dado epidemiológico é observação, nunca juízo de preparo. Peso zero.",
+ "fontes": {
+  "painel_arboviroses_ms": {
+   "nome": "Painel de Arboviroses",
+   "orgao": "Ministério da Saúde",
+   "papel": "fonte PRIMÁRIA do número de casos prováveis por semana epidemiológica",
+   "url_publica": null,
+   "status": "a_verificar",
+   "consultado_em": null,
+   "nota": "formato a verificar (§15)"
+  },
+  "infodengue": {
+   "nome": "InfoDengue",
+   "orgao": "Fiocruz/FGV",
+   "papel": "nível de alerta e série municipal semanal (modelo); crédito obrigatório 'modelo InfoDengue (Fiocruz/FGV)'",
+   "url_publica": "https://info.dengue.mat.br",
+   "status": "aguardando_primeira_coleta",
+   "consultado_em": null,
+   "regra_divergencia": "divergência com o painel do MS → exibe o MS e loga a diferença (C2)"
+  },
+  "inmet_calor": {
+   "nome": "Avisos de calor",
+   "orgao": "INMET",
+   "papel": "reuso do adaptador do PR #3 (sinais_risco.json → avisos_inmet)",
+   "status": "reuso",
+   "consultado_em": null
+  },
+  "inpe_focos": {
+   "nome": "Focos de queimada (proxy respiratório)",
+   "orgao": "INPE",
+   "papel": "reuso (sinais_risco.json → fogo)",
+   "status": "reuso",
+   "consultado_em": null
+  },
+  "sisagua": {
+   "nome": "SISAGUA — água/intermitência em estiagem",
+   "orgao": "Ministério da Saúde",
+   "url_publica": null,
+   "status": "a_verificar",
+   "consultado_em": null
+  },
+  "espin": {
+   "nome": "ESPIN e decretos de emergência sanitária",
+   "orgao": "DOU / diários municipais",
+   "papel": "RESPOSTA, peso zero",
+   "status": "aguardando_primeira_coleta",
+   "consultado_em": null
+  }
+ },
+ "dengue_capitais": {},
+ "gerado_em": "02/09/2026"
+}
