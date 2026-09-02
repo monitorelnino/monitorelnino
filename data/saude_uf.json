@@ -1,0 +1,561 @@
+{
+ "_governanca": "Camada estadual de saúde (§9.2, C1). Vocabulário fechado: NOVO · READ · VIG · ELAB · LAC (bateria datada) · NAO_VERIFICADO. NUNCA lida por recalcular_mare.py (portão). 'LAC' só com bateria estadual logada (nivel='estadual').",
+ "vocabulario": [
+  "NOVO",
+  "READ",
+  "VIG",
+  "ELAB",
+  "LAC",
+  "NAO_VERIFICADO"
+ ],
+ "consist_vocabulario": [
+  "COBRE",
+  "PARCIAL",
+  "DIFERE",
+  "SEM",
+  "NEUTRO"
+ ],
+ "corte": "02/09/2026",
+ "uf": {
+  "AC": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "AL": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "AM": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "AP": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "BA": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "CE": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "DF": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "ES": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "GO": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "MA": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "MG": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "MS": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses",
+    "respiratórias por queimadas",
+    "leptospirose e diarreias",
+    "continuidade de serviços (diálise, oxigênio, rede de frio)"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "MT": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "PA": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "PB": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "PE": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "PI": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "PR": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "RJ": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "RN": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "RO": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "RR": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "RS": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "SC": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "SE": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "SP": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  },
+  "TO": {
+   "status": "NAO_VERIFICADO",
+   "orgao": null,
+   "doc": null,
+   "numero": null,
+   "data": null,
+   "url": null,
+   "hash_evidencia": null,
+   "natureza_doc": "nenhum",
+   "justificativa_ex_ante": null,
+   "risco_sanitario_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ],
+   "consist": "NEUTRO",
+   "data_verificacao": null,
+   "log_ref": null
+  }
+ }
+}
