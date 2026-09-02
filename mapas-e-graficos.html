@@ -414,6 +414,7 @@ const CAT_STYLE = {
   coberto_estadual: {cor:'#87855C', r:4.5, label:'Coberto pelo estado'},
   nao_el_nino:      {cor:'#B9B2A4', r:4,   label:'Não é El Niño'},
   nao_localizado:   {cor:'#7C4A34', r:4.5, label:'Nenhum ato localizado'},
+  nao_verificado:   {cor:'#64645C', r:4.5, label:'Ainda não verificado'},
 };
 
 const svgPoints = d3.select('#mapPoints');
@@ -428,7 +429,7 @@ const contaveis = MAP_POINTS.filter(p => p.categoria==='plano' || p.categoria===
 document.getElementById('countComAto').textContent = contaveis;
 
 // ordenar para desenhar "plano" por cima de "decreto" por cima de "não localizado"
-const drawOrder = ['nao_localizado','nao_el_nino','coberto_estadual','plano_elaboracao','decreto','plano_antigo','plano'];
+const drawOrder = ['nao_verificado','nao_localizado','nao_el_nino','coberto_estadual','plano_elaboracao','decreto','plano_antigo','plano'];
 const sortedPoints = [...MAP_POINTS].sort((a,b)=> drawOrder.indexOf(a.categoria) - drawOrder.indexOf(b.categoria));
 
 svgPoints.append('g').selectAll('circle')
@@ -439,7 +440,7 @@ svgPoints.append('g').selectAll('circle')
   .attr('fill', d=>CAT_STYLE[d.categoria].cor)
   .attr('stroke', d=>d.categoria==='plano' ? '#F5F1E8' : '#F5F1E8')
   .attr('stroke-width', d=>d.categoria==='plano' ? 1.6 : 1)
-  .attr('stroke-dasharray', d=>d.categoria==='nao_localizado' ? '2,1.5' : null)
+  .attr('stroke-dasharray', d=>(d.categoria==='nao_localizado'||d.categoria==='nao_verificado') ? '2,1.5' : null)
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>${CAT_STYLE[d.categoria].label}${d.fase===2?' · Fase 2':''}`, evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
