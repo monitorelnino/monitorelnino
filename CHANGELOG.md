@@ -11,6 +11,15 @@ não pontuados permanecem na versão corrente.
 
 ## [2.2.4] — em publicação (sessão de construção de 02/09/2026; corte de dados 31/08/2026; média nacional 47,1 inalterada)
 
+### PR-F — Pedidos de acesso à informação (02/09/2026; §12, C13)
+- **`gerar_lai.py`**: 27 pedidos às defesas civis estaduais (modelo do §12),
+  27 às secretarias estaduais de saúde (variante saúde) e 1 ao CMNE/MIDR pela
+  relação nominal da Operação Carro-Pipa (C13) — 55 textos em `docs/lai/`,
+  registro público `data/lai_pedidos.json` com status `a_enviar` e protocolo
+  nulo. O envio é humano (Fala.BR exige pessoa física); `--registrar` grava
+  protocolo, data e prazos (20 + 10 dias). A tabela em Para gestores exibe os
+  55 com o estado de envio. Autoteste (3 casos) ✓.
+
 ### PR-E — Metodologia, protocolo, guia e versão v2.2.4 (02/09/2026)
 - **METODOLOGIA.md**: seções novas §24 (defeso: fatos, consequências, regra C6,
   memória E8), §25 (níveis de verificação e "não verificado"), §26 (fontes

@@ -89,6 +89,15 @@ estados por região; dias 4–7 diários municipais em lotes. O que você faz:
    monitorelnino. Se der tudo certo, ele não avisa — por isso a olhada
    semanal.
 
+## 4b. Pedidos de acesso à informação (uma vez, dia 0)
+
+Os 55 textos estão prontos em `docs/lai/` no repositório (um por estado para a
+defesa civil, um por estado para a saúde, um para o Carro-Pipa). O envio é seu:
+no Fala.BR (falabr.cgu.gov.br) ou no e-SIC de cada estado, cole o texto,
+envie e anote o **número de protocolo**. Depois, numa conversa, diga ao Claude
+"registre o protocolo NNN do pedido de defesa civil de SC, enviado em
+DD/MM" — ele grava no registro público e a tabela em Para gestores atualiza.
+
 ## 5. Se o site estiver errado agora (o "botão de desfazer")
 
 Qualquer versão anterior do site pode voltar ao ar em segundos, sem tocar em
