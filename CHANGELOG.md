@@ -41,6 +41,12 @@ semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
   e foco visível na base. Suíte: 11 portões.
 - Limite declarado: a captura de tela desta sessão não executa grid CSS; a
   conferência visual em celular e tablet é da editoria na prévia.
+### Nota de dependência de LAI (02/09/2026, decisão editorial)
+- O contador público, o cartão da cidade e a página de Saúde dizem, com números,
+  quando a informação atualizada depende de resposta a pedido de acesso à
+  informação (`verificacao_resumo.json` → `lai`); a UF fica "pendente, não
+  presumida" até a resposta. Antes do envio, a editoria verifica o que já é
+  público sem LAI e filtra os pedidos ao que faltar.
 
 ### PR-F — Pedidos de acesso à informação (02/09/2026; §12, C13)
 - **`gerar_lai.py`**: 27 pedidos às defesas civis estaduais (modelo do §12),
