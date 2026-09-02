@@ -88,6 +88,8 @@ def main():
     rodar([sys.executable, "recalcular_mare.py", "--simular-declarado-nacional"])  # anexo público; não altera indice.json
     rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
+    rodar([sys.executable, "coletar_financiamento.py"])                 # §7.8: Portal (chave), rotas; peso zero
+    rodar([sys.executable, "gerar_painel.py", "--fichas"])                 # §10-bis: reverificação semanal das fichas
 
     rodar([sys.executable, "verificar_contribuicoes.py"])
 
@@ -120,12 +122,15 @@ def main():
     rodar([sys.executable, "verificar_consistencia.py"], obrigatorio=True)
     rodar([sys.executable, "verificar_sinais.py"], obrigatorio=True)
     rodar([sys.executable, "verificar_saude.py"], obrigatorio=True)        # §9.6: peso zero provado
+    rodar([sys.executable, "verificar_financiamento.py"], obrigatorio=True) # §7.8: peso zero, E10, estresse
+    rodar([sys.executable, "verificar_painel.py"], obrigatorio=True)         # §10-bis: lista imutável, fichas, paridade
     rodar([sys.executable, "verificar_evidencias.py"], obrigatorio=True)   # aviso até 09/09, bloqueante depois
     rodar([sys.executable, "recalcular_mare.py", "--check"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_mapas.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_sinais.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_saude.js"], obrigatorio=True)
+    rodar(["node", "scripts/verificar_runtime_financiamento.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_acessibilidade.js"], obrigatorio=True)   # v2.3: a11y + responsividade
     rodar(["bash", "scripts/verificar_derivados.sh"], obrigatorio=True)         # AUD-04: derivados reproduzíveis em árvore limpa
 

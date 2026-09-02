@@ -51,7 +51,7 @@ setTimeout(() => {
   teste("mapa cobertura: 27 estados", q("mapCobertura") && q("mapCobertura").querySelectorAll("path").length === 27);
   teste("mapa natureza: 27 estados", q("mapNatureza") && q("mapNatureza").querySelectorAll("path").length === 27);
   teste("mapa consistência: 27 estados", q("mapConsistencia") && q("mapConsistencia").querySelectorAll("path").length === 27);
-  teste("mapa transferências com círculos", q("mapDinheiro") && q("mapDinheiro").querySelectorAll("circle").length > 100);
+  // (financiamento — mapa do dinheiro, totais e fontes — migrou para financiamento.html, E9; testado em verificar_runtime_financiamento.js)
   teste("mapa de municípios prioritários: 2.095 pontos", q("mapPrioritarios") && q("mapPrioritarios").querySelectorAll("circle").length === 2095);
 
   const hover = d.querySelector("#mapCobertura path");
@@ -93,9 +93,6 @@ setTimeout(() => {
     esperados5.every(n => nomesSC.has(n)));
 
   // Financiamento: totais derivados de transferencias.json, nunca texto fixo.
-  teste("financiamento: total de repasses RS preenchido", q("dinTotalRS") && q("dinTotalRS").textContent !== "—");
-  teste("financiamento: municípios habilitados preenchido", q("dinNumFed") && /^\d+$/.test(q("dinNumFed").textContent));
-  teste("financiamento: lista de fontes de monitoramento populada", q("fontesMonit") && q("fontesMonit").children.length > 0);
 
   // Harmonização visual entre os 7 mapas (achado de Patricia, 31/08/2026: os mapas
   // 5, 6 e 7 — municípios prioritários, atos de resposta, transferências — tinham
@@ -103,7 +100,7 @@ setTimeout(() => {
   // pontos, legenda centralizada em vez de alinhada à esquerda). Todo mapa categórico
   // precisa ter as 27 siglas, e nenhuma legenda pode sobrescrever o alinhamento padrão.
   const MAPAS_COM_SIGLA = ["mapPoints", "mapCobertura", "mapNatureza", "mapConsistencia",
-    "mapPrioritarios", "mapAtosResposta", "mapDinheiro"];
+    "mapPrioritarios", "mapAtosResposta"];
   const semSiglaCompleta = MAPAS_COM_SIGLA.filter(id => q(id).querySelectorAll("text").length !== 27);
   teste("harmonização: todos os 7 mapas têm as 27 siglas de UF", semSiglaCompleta.length === 0);
   const legendasDesalinhadas = [...d.querySelectorAll(".map-legend")]

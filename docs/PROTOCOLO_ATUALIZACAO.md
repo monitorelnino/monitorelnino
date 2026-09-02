@@ -89,7 +89,7 @@ Contribuições do formulário público seguem o caminho já definido
 (`verificar_contribuicoes.py → converter_contribuicao.py → aplicar_revisao.py`)
 e são a única reserva de julgamento humano que Claude **nunca** executa sozinho.
 
-### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.3: doze portões
+### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.3: quinze portões
 
 ```
  1. node   scripts/verificar_estrutura.js        (8 páginas; tokens.css; nav canônica; :root inline proibido)
@@ -107,8 +107,13 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
                                                   contraste AA dos tokens, pontos de quebra; base.css obrigatória)
 12. bash   scripts/verificar_derivados.sh        (regenera índice → feeds → dados abertos → PDFs → manifesto com
                                                   relógio no corte e exige git diff --exit-code: derivado obsoleto bloqueia)
+13. python verificar_financiamento.py            (financiamento: sem chave, créditos, reconciliação, nada imputado,
+                                                  resposta separada, motor intacto sob estresse, faixa do defeso, E10)
+14. node   scripts/verificar_runtime_financiamento.js
+15. python verificar_painel.py                   (painel amostral: lista imutável por hash, 313, sem capitais,
+                                                  fichas com fonte e data, marcadores arquivados, motor intacto)
 ```
-Critério: doze `✓` (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
+Critério: quinze `✓` (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
 tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
 Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 
