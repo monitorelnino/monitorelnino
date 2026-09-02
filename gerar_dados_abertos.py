@@ -97,7 +97,7 @@ def datapackage(tabs, corte):
         "version": VERSAO, "homepage": SITE, "created": _iso(corte),  # AUD-10: ISO 8601
         "corte_dos_dados": corte,
         "description": "Preparação demonstrável publicamente de estados e municípios brasileiros para o El Niño 2026/2027: instrumentos localizados em fontes oficiais, categorizados por vocabulário controlado, e o índice MARÉ (0–100). Metodologia aberta em METODOLOGIA.md.",
-        "licenses": [{"name": "MIT", "path": "https://opensource.org/licenses/MIT", "title": "MIT License (a mesma do repositório; ver docs/DADOS_ABERTOS.md sobre licença de dados)"}],
+        "licenses": [{"name": "CC-BY-4.0", "path": "https://creativecommons.org/licenses/by/4.0/", "title": "Creative Commons Attribution 4.0 International (dados); código sob MIT"}],
         "contributors": [{"title": "Futura Evidence Lab", "role": "author", "path": "https://futuraevidencelab.com.br"}],
         "resources": [{"name": nome, "path": f"{nome}.csv", "format": "csv", "mediatype": "text/csv", "encoding": "utf-8",
                        "description": desc, "schema": {"fields": [{"name": c, "type": "number" if c.startswith(("mare_", "componente_")) else "string"} for c in campos]},
@@ -115,7 +115,7 @@ version: "{VERSAO}"
 date-released: "{aa}-{mm}-{dd}"
 url: "{SITE}"
 # repository-code: "https://github.com/<organizacao>/<repositorio>"   # preencher com a URL real do repositório
-license: MIT
+license: CC-BY-4.0
 type: dataset
 authors:
   - name: "Futura Evidence Lab"
