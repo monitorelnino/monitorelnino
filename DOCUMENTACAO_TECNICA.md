@@ -2,7 +2,7 @@
 
 **Público-alvo:** auditores externos, revisores técnicos e futuros mantenedores. Este documento descreve como o código funciona e como reproduzir, do zero, cada número publicado. Ele complementa — e nunca substitui — dois documentos irmãos: o **METODOLOGIA.md** (o *porquê* de cada regra: fundamentos, calibrações, errata) e o **README.md** (guia editorial: como publicar e como editar dados). Regra de leitura: se este documento e o código divergirem, **o código é a verdade** e a divergência é um defeito a reportar; se este documento e o METODOLOGIA.md divergirem sobre uma regra, o METODOLOGIA.md prevalece.
 
-Versão de referência: pacote de 27/08/2026, metodologia MARÉ v2.2.3 (reestruturação populacional; régua de antecipação formalizada — §5.2.1, sem mudança numérica) com Correção B, corte de dados 26/08/2026.
+Versão de referência: pacote de 27/08/2026, metodologia MARÉ v2.2.4 (reestruturação populacional; régua de antecipação formalizada — §5.2.1, sem mudança numérica) com Correção B, corte de dados 26/08/2026.
 
 ---
 
@@ -131,8 +131,8 @@ Invariante central: **todo caminho que muda `municipios.json` termina em `recalc
 2. **Cobertura populacional (v2.2):** `w = Σ pop_mun·CRED_POP[cat]` `+ excedente_agregado()·mediana_UF·CRED_POP[tipo]` `+ max(declarado_plano − documentados, 0)·mediana_UF·0,5 + declarado_antigo·mediana_UF·0,3`; `cobertura_pop = min(100, 100·w/pop_UF)`. CRED_POP: plano 1,0 · plano_antigo 0,6 · plano_elaboracao 0,45 · coberto_estadual 0,3 · nao_localizado 0 · nao_el_nino 0 (desvio declarado; METODOLOGIA §12.4.3).
 3. `excedente_agregado(uf, contagem)` desconta do agregado apenas os municípios já nomeados **da mesma categoria** do agregado (o termo cruzado decreto×plano foi removido pela Correção B — defeito exposto pelo teste de estresse §12.1, ver §9).
 4. `derivar_percentual_uf()` deriva `total/com_ato/n_plano/n_decreto/pct` **da mesma contagem** usada no escore (fonte única — as duas métricas não podem divergir), preservando os campos de levantamento externo (`declarado_*`, `fonte_declarada`) que não são deriváveis.
-5. **Agregações:** `total` = média aritmética dos 4 componentes; `total_geo` = `exp(mean(log(max(componente, 5))))` — piso 5 resolve o problema clássico do zero na média geométrica.
-6. **Incerteza:** 10.000 vetores de pesos ~ Dirichlet(1,1,1,1), **semente fixa 42** (`np.random.default_rng(42)` — o Monte Carlo é determinístico e reproduzível bit a bit); `rank_mediano/p5/p95` derivam da distribuição de posições.
+5. **Agregações:** `total` = média aritmética dos 3 componentes; `total_geo` = `exp(mean(log(max(componente, 5))))` — piso 5 resolve o problema clássico do zero na média geométrica.
+6. **Incerteza:** 10.000 vetores de pesos ~ Dirichlet(1,1,1), **semente fixa 42** (`np.random.default_rng(42)` — o Monte Carlo é determinístico e reproduzível bit a bit); `rank_mediano/p5/p95` derivam da distribuição de posições.
 7. `--check` recomputa tudo e compara com `indice.json` campo a campo (27×10), devolvendo código ≠ 0 em divergência; `--write` regrava `indice.json` **e** `percentual_uf.json`.
 
 ---
@@ -179,7 +179,7 @@ Consequência estrutural da R7: **o caminho automático fica restrito, por const
 | # | Comando | O que prova |
 |---|---|---|
 | 1 | `node scripts/verificar_estrutura.js` | Árvore HTML íntegra, contêineres/masthead/rodapé consistentes nas 4 páginas; tags balanceadas. |
-| 2 | `python3 verificar_consistencia.py` | Invariantes dos dados: paridade `municipios`↔`pontos_mapa` (248↔248); `percentual_uf` idêntico ao derivado da base (mesma função do motor — fonte única); `total` de cada UF = média dos 4 componentes; soma dos repasses RS = 32.300.000 e todos geocodificados; **veredito do herói (`gaugeNum`) = média nacional recomputada**; ausência de nomes de projeto antigos; termos obrigatórios no README. |
+| 2 | `python3 verificar_consistencia.py` | Invariantes dos dados: paridade `municipios`↔`pontos_mapa` (248↔248); `percentual_uf` idêntico ao derivado da base (mesma função do motor — fonte única); `total` de cada UF = média dos 3 componentes; soma dos repasses RS = 32.300.000 e todos geocodificados; **veredito do herói (`gaugeNum`) = média nacional recomputada**; ausência de nomes de projeto antigos; termos obrigatórios no README. |
 | 3 | `python3 recalcular_mare.py --check` | Os 27×10 campos de `indice.json` reproduzem-se exatamente a partir dos dados brutos (média nacional 40,7). |
 | 4 | `node scripts/verificar_runtime.js` | O site executa num navegador simulado (jsdom+D3): zero erros de runtime; 5 mapas com as contagens corretas; tabela de 248 linhas; seletor, consulta municipal, detalhe de estado e tooltips funcionais. |
 

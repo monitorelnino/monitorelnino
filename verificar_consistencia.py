@@ -352,5 +352,15 @@ try:
 except Exception as _e:
     erro(f"portão da verificação municipal falhou ao executar: {_e}")
 
+# ── Portão de fósseis (v2.2.4, doc de redesenho §11.2): strings do modelo de 4 componentes ──
+try:
+    _FOSSEIS = ("4 componentes", "Dirichlet(1,1,1,1)", "componentes (25%)", "1,0/0,7/0,4")
+    for _f in ("METODOLOGIA.md", "README.md", "DOCUMENTACAO_TECNICA.md", "gerar_pdf_indice.py", "gerar_pdf_metodologia.py", "recalcular_mare.py"):
+        _t = (RAIZ / _f).read_text(encoding="utf-8") if (RAIZ / _f).exists() else ""
+        for _k in _FOSSEIS:
+            if _k in _t: erro(f"fóssil do modelo de 4 componentes em {_f}: '{_k}'")
+except Exception as _e:
+    erro(f"portão de fósseis falhou ao executar: {_e}")
+
 if ERROS:  print("ERROS:");  [print("  ✗", e) for e in ERROS]; sys.exit(1)
 print("✓ CONSISTENTE — todas as verificações passaram.")

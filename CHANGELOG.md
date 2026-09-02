@@ -9,7 +9,26 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## [2.2.4] — em preparação (sessão de 02/09/2026, documento de redesenho)
+## [2.2.4] — em publicação (sessão de construção de 02/09/2026; corte de dados 31/08/2026; média nacional 47,1 inalterada)
+
+### PR-E — Metodologia, protocolo, guia e versão v2.2.4 (02/09/2026)
+- **METODOLOGIA.md**: seções novas §24 (defeso: fatos, consequências, regra C6,
+  memória E8), §25 (níveis de verificação e "não verificado"), §26 (fontes
+  incorporadas e disciplina dos coletores), §27 (saúde, peso zero), §28
+  (fundamentação normativa, cláusula de neutralidade; Lei 14.750/2023 fica "a
+  verificar antes de citar"), §29 (pré-registro da recontagem pós-defeso) e
+  adendo §12.4.4 (candidatos declarados com vigência ≥ 26/10/2026).
+  **Fósseis corrigidos** (§11.2 do doc de redesenho): "4 componentes",
+  "Dirichlet(1,1,1,1)", "25%", escala 1,0/0,7/0,4, exemplo do AM, ordem
+  histórico/vigente em §5.3; também em README e DOCUMENTACAO_TECNICA. Portão
+  de fósseis no `verificar_consistencia.py`. Cabeçalho v2.2.4, corte 31/08.
+- **Versão v2.2.4** nas superfícies vivas (rodapés das 8 páginas, PDFs,
+  motor, CITATION.cff/datapackage, LEIA-ME); menções históricas à v2.2.3
+  preservadas. Média nacional inalterada (47,1): nenhuma regra de nota mudou.
+- **PROTOCOLO §3.3**: dez portões; pista A diária na semana intensiva.
+  **GUIA DO EDITOR §4a**: o que fazer em cada dia da semana intensiva.
+- **SBOM**: adendo — módulos novos usam só a biblioteca padrão; nenhuma
+  dependência adicionada. PDFs e dados abertos regenerados; manifesto 130.
 
 ### PR-D — Página "Saúde e El Niño" (02/09/2026; E2, C1–C3)
 - **`saude.html` completa**, no motor de mapas da página de sinais: cartões da
