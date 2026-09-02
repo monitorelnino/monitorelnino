@@ -6,6 +6,12 @@
 <meta name="description" content="Monitor El Niño Brasil · Saúde e El Niño 2026/2027: instrumentos oficiais de preparação em saúde e sinais epidemiológicos observados, por estado, com documento e data. Registro de transparência: não entra no índice MARÉ.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.1/chart.umd.min.js"
+        integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"
+        integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="assets/tokens.css">
 <style>
   *{box-sizing:border-box;}
@@ -110,6 +116,7 @@
 </style>
 </head>
 <body>
+<div class="map-tooltip" id="mapTooltip"></div>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead masthead--mini">
@@ -128,18 +135,90 @@
   </header>
 
 <main class="wrap" id="conteudo">
-  <p class="selo">Página em construção · v2.2.4</p>
+  <p class="selo">Saúde · registro de transparência · peso zero no índice</p>
   <h1>Saúde e <em>El Niño</em></h1>
-  <p class="hint">Esta página reunirá, em camadas separadas e com fonte e data em cada figura:
-  os instrumentos federais de preparação em saúde para o ciclo 2026/2027; a verificação, estado a
-  estado, dos instrumentos das secretarias estaduais de saúde; e os sinais epidemiológicos
-  observados (arboviroses, calor, queimadas), reproduzidos das fontes oficiais.</p>
-  <div class="panel">
-    <p><strong>Nada aqui entra no índice MARÉ.</strong> Como a página de sinais de risco, esta é
-    uma camada de transparência com peso zero, verificada por portão próprio.</p>
-    <p class="note">Conteúdo em preparação na semana intensiva de atualização. Enquanto isso,
-    consulte <a href="sinais-de-risco.html">Sinais de risco</a> e
-    <a href="proteja-se.html">Proteja-se</a>.</p>
+  <p class="hint" id="subSaude">Três camadas separadas, cada figura com órgão, documento e data: o que a União publicou para a saúde no ciclo 2026/2027; o que cada secretaria estadual de saúde publicou, verificado com o protocolo do Monitor; e os sinais epidemiológicos observados, reproduzidos das fontes oficiais. Nada aqui pontua no MARÉ. Corte: <strong id="corteSaude">—</strong>.</p>
+
+  <div class="panel" id="federal">
+    <h2 style="margin-top:0;">1 · O que a União publicou</h2>
+    <p class="hint">Cartões reproduzem documentos oficiais. "Anunciado, não localizado até o corte" é uma linha própria — nunca um cartão inventado.</p>
+    <div class="charts-grid" id="cartoesFederal"></div>
+  </div>
+
+  <div class="panel" id="estadual">
+    <h2 style="margin-top:0;">2 · O que cada estado publicou (verificação em andamento)</h2>
+    <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE para os riscos sanitários do ciclo. "Ainda não verificado" significa exatamente isso: a bateria estadual desta camada não foi executada para a UF — não é ausência de documento. <strong id="contagemUF">—</strong></p>
+    <div class="maps-grid">
+      <div class="map-box" id="boxStatus">
+        <h3 class="map-card-h">Status do instrumento estadual de saúde</h3>
+        <p class="note">Seis classes, no vocabulário do Monitor: novo · readaptado · vigente-recorrente · em elaboração · não localizado (bateria datada) · ainda não verificado.</p>
+        <svg id="mapaStatus" role="img" aria-label="Mapa do Brasil pelo status do instrumento estadual de saúde para o ciclo" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legStatus"></div>
+      </div>
+      <div class="map-box" id="boxRiscoSan">
+        <h3 class="map-card-h">Risco sanitário projetado (derivado)</h3>
+        <p class="note">Derivado do risco projetado nos boletins do Painel El Niño por família de risco (seca/calor → arboviroses, respiratórias, calor, água; chuvas → leptospirose, diarreias, hepatite A, abrigos). Não é projeção nova.</p>
+        <svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil pela família de risco sanitário derivada do risco projetado" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legRiscoSan"></div>
+      </div>
+    </div>
+    <details style="margin-top:14px;"><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela: as 27 UFs</summary>
+      <div class="tbl-wrap" style="margin-top:10px;"><table class="mun-table" id="tblUF"><thead><tr><th>UF</th><th>Status</th><th>Documento</th><th>Riscos sanitários projetados</th><th>Verificado em</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </div>
+
+  <div class="panel" id="observado">
+    <h2 style="margin-top:0;">3 · O que se observa</h2>
+    <p class="hint">Dado epidemiológico é observação, nunca juízo de preparo. Fonte não coletada aparece como lacuna declarada.</p>
+    <div class="maps-grid">
+      <div class="map-box" id="boxDengue">
+        <h3 class="map-card-h">Dengue nas capitais · última semana epidemiológica</h3>
+        <p class="note">Nível de alerta por capital (1 a 4, no vocabulário da fonte). Fonte primária do número é o Painel de Arboviroses do MS; a série municipal semanal vem do modelo InfoDengue (Fiocruz/FGV), com crédito. Capitais apenas — não representa o estado.</p>
+        <svg id="mapaDengue" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nas capitais" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legDengue"></div>
+      </div>
+      <div class="map-box" id="boxCalor">
+        <h3 class="map-card-h">Avisos de calor vigentes (INMET)</h3>
+        <p class="note">Reuso da camada de avisos da página de sinais de risco, filtrada para calor; quanto mais escuro, mais avisos.</p>
+        <svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de avisos de calor do INMET" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legCalor"></div>
+      </div>
+      <div class="map-box" id="boxEmerg">
+        <h3 class="map-card-h">Emergências sanitárias declaradas (resposta)</h3>
+        <p class="note">ESPIN e decretos municipais por dengue ou calor: atos de resposta, registro à parte, peso zero — o teste do objeto vale sem adaptação.</p>
+        <svg id="mapaEmerg" role="img" aria-label="Mapa do Brasil com emergências sanitárias declaradas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legEmerg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="cruzamento">
+    <h2 style="margin-top:0;">4 · Defesa civil × saúde, por estado</h2>
+    <p class="hint">Quadrantes: instrumento de defesa civil <em>e</em> de saúde localizados · só defesa civil · só saúde · nenhum localizado — ou ainda não verificado na camada de saúde. A página de mapas e gráficos apenas linka para cá (decisão C3).</p>
+    <div class="charts-grid">
+      <div class="chart-box wide" id="boxQuadrantes">
+        <h3 class="map-card-h">Quadrantes</h3>
+        <p class="note">Contagem de UFs por quadrante; a lista de cada quadrante aparece abaixo. Defesa civil vem do instrumento estadual do índice (status NOVO/READ/VIG = localizado); saúde, desta página.</p>
+        <div id="quadrantes" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:6px;"></div>
+      </div>
+      <div class="chart-box wide" id="boxSerie">
+        <h3 class="map-card-h">Série semanal de dengue · 2026 × 2025 × 2024</h3>
+        <p class="note">Aguardando a primeira coleta do Painel de Arboviroses (MS). Enquanto a série não existir, esta lacuna é declarada aqui — não preenchida.</p>
+        <div class="canvas-wrap" id="serieWrap"><canvas id="serieDengue" aria-label="Série semanal de dengue — aguardando coleta"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="cidadao">
+    <h2 style="margin-top:0;">5 · Para você</h2>
+    <p class="hint">Orientações do Ministério da Saúde, reproduzidas com link. O Monitor não dá orientação médica própria.</p>
+    <ul style="font-size:14.5px; line-height:1.8; margin:0; padding-left:20px;">
+      <li>Febre alta de início repentino com pelo menos dois destes sinais — dor de cabeça, prostração, dores no corpo ou nas articulações, dor atrás dos olhos — é motivo para procurar um serviço de saúde de imediato.</li>
+      <li>Quando a febre cede (entre o 3º e o 7º dia) é o momento de maior atenção: os sinais de alarme podem surgir aí.</li>
+      <li>Não se automedicar; em caso de sangramento ou de qualquer sinal de alarme, procurar imediatamente o serviço de urgência.</li>
+      <li>Fonte: <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue" target="_blank" rel="noopener">Ministério da Saúde — Dengue (Saúde de A a Z)</a>, consultado em 02/09/2026. Orientações sobre calor: a reproduzir quando a página oficial for localizada (lacuna declarada).</li>
+    </ul>
+    <p class="note" style="margin:10px 0 0;">Sua secretaria de saúde publicou plano de contingência para arboviroses ou calor? <a href="envie-dados.html?tipo=plano_saude">Envie pelo formulário</a> — entra na fila de análise humana, nunca automática.</p>
   </div>
 </main>
 <footer class="site-footer">
@@ -156,5 +235,103 @@
   </footer>
 </div>
 
+
+<script>
+let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE;
+const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
+const NEUTRA = '#DCD3C2';
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const tooltip = document.getElementById('mapTooltip');
+function showTip(html, evt){ tooltip.innerHTML = html; tooltip.style.display='block'; tooltip.style.left=(evt.clientX+14)+'px'; tooltip.style.top=(evt.clientY+10)+'px'; }
+function hideTip(){ tooltip.style.display='none'; }
+
+async function __load(){
+  [BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE] = await Promise.all(
+    ['geo_uf','saude_uf','saude_federal','saude_sinais','sinais_risco','indice'].map(f => fetch('data/' + f + '.json').then(r => {
+      if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
+  __init();
+}
+
+function fonteFigura(caixaId, texto){
+  // crédito de figura dentro do parágrafo-nota único do cartão (regra de harmonização)
+  const nota = document.querySelector('#' + caixaId + ' .note');
+  if(!nota || nota.querySelector('.fonte-figura')) return;
+  const sp = document.createElement('span'); sp.className = 'fonte-figura'; sp.innerHTML = '<br>' + texto; nota.appendChild(sp);
+}
+
+function __init(){
+  const projection = d3.geoMercator().fitSize([480,460], BR_GEOJSON), pathGen = d3.geoPath().projection(projection);
+  document.getElementById('corteSaude').textContent = SUF.corte || '—';
+  function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){
+    const svg = d3.select('#' + svgId);
+    svg.selectAll('path').data(BR_GEOJSON.features).join('path').attr('d', pathGen).attr('class','uf-path')
+      .attr('fill', d => corDe(d.properties.sigla)).attr('tabindex', 0).attr('role','img')
+      .attr('aria-label', d => d.properties.name + ': ' + rotuloDe(d.properties.sigla).replace(/<[^>]+>/g,' '))
+      .on('mouseenter', (evt,d) => showTip('<strong>'+esc(d.properties.name)+'</strong><br>'+rotuloDe(d.properties.sigla), evt))
+      .on('mousemove', (evt,d) => showTip('<strong>'+esc(d.properties.name)+'</strong><br>'+rotuloDe(d.properties.sigla), evt))
+      .on('mouseleave', hideTip);
+    document.getElementById(legendaId).innerHTML = itens.map(i => '<span><i style="background:'+i.cor+'"></i>'+esc(i.rotulo)+'</span>').join('');
+    return svg;
+  }
+
+  // 1 · federal
+  const STATUS_FED = {localizado:'localizado', anunciado_nao_localizado:'anunciado, não localizado até o corte'};
+  document.getElementById('cartoesFederal').innerHTML = SFED.cartoes.map(c => '<div class="chart-box"><h3>'+esc(c.titulo)+'</h3>'
+    + '<p class="note">'+esc(c.orgao)+' · '+esc(c.data)+' · <em>'+esc(STATUS_FED[c.status]||c.status)+'</em>'
+    + (c.url ? ' · <a href="'+esc(c.url)+'" target="_blank" rel="noopener">documento oficial</a>' : ' · documento nomeado; endereço em verificação')
+    + (c.nota ? '<br>'+esc(c.nota) : '') + '</p></div>').join('');
+
+  // 2 · estadual
+  const ST = {NOVO:['Novo, específico para o ciclo','#35566B'], READ:['Recorrente readaptado','#5E7C93'], VIG:['Vigente, sem menção ao ciclo','#87855C'],
+              ELAB:['Em elaboração','#C69B72'], LAC:['Não localizado (bateria datada)','#7C4A34'], NAO_VERIFICADO:['Ainda não verificado','#64645C']};
+  const st = uf => (SUF.uf[uf] || {}).status || 'NAO_VERIFICADO';
+  desenharMapa('mapaStatus','legStatus', uf => ST[st(uf)][1],
+    uf => { const u = SUF.uf[uf]||{}; return '<em>'+esc(ST[st(uf)][0])+'</em>' + (u.doc ? '<br>'+esc(u.doc)+(u.data?' · '+esc(u.data):'') : '') + (u.data_verificacao ? '<br>verificado em '+esc(u.data_verificacao) : '<br>bateria estadual ainda não executada'); },
+    Object.values(ST).map(v => ({cor:v[1], rotulo:v[0]})));
+  const nv = UFS.filter(u => st(u)==='NAO_VERIFICADO').length;
+  document.getElementById('contagemUF').textContent = nv + ' de 27 UFs ainda não verificadas na camada de saúde · ' + (27-nv) + ' verificada(s).';
+  fonteFigura('boxStatus', 'Fonte: verificação própria do Monitor (data/saude_uf.json), corte ' + esc(SUF.corte) + '.');
+  const FAM = {seca:['Seca / calor / fogo','#A65F3F'], chuvas:['Chuvas extremas','#35566B'], multi:['Mais de uma família','#7A6A4F']};
+  const fam = uf => { const r = ((SUF.uf[uf]||{}).risco_sanitario_projetado||[]).join(' ').toLowerCase(); const s = /calor|queimad|arbovir|estiagem/.test(r), c = /leptospir|diarre|hepatite/.test(r); return s&&c?'multi':s?'seca':c?'chuvas':null; };
+  desenharMapa('mapaRiscoSan','legRiscoSan', uf => fam(uf) ? FAM[fam(uf)][1] : NEUTRA,
+    uf => { const u = SUF.uf[uf]||{}; return (u.risco_sanitario_projetado||['sem risco projetado registrado']).map(esc).join('<br>'); },
+    Object.values(FAM).map(v => ({cor:v[1], rotulo:v[0]})));
+  fonteFigura('boxRiscoSan', 'Fonte: Boletins nº 1 e 2 do Painel El Niño 2026-2027 (CEMADEN/INPE) via data/consist.json; derivação por família de risco (METODOLOGIA §27).');
+  document.querySelector('#tblUF tbody').innerHTML = UFS.map(uf => { const u = SUF.uf[uf]||{}; return '<tr><td><strong>'+uf+'</strong></td><td>'+esc(ST[st(uf)][0])+'</td><td>'+esc(u.doc||'—')+'</td><td>'+esc((u.risco_sanitario_projetado||[]).join('; '))+'</td><td>'+esc(u.data_verificacao||'—')+'</td></tr>'; }).join('');
+
+  // 3 · observado
+  const NIV_DENGUE = {1:['Nível 1 (baixa atividade)','#87855C'], 2:['Nível 2 (atenção)','#C69B72'], 3:['Nível 3 (alerta)','#A65F3F'], 4:['Nível 4 (emergência)','#7C4A34']};
+  const svgD = desenharMapa('mapaDengue','legDengue', uf => NEUTRA, uf => { const d = (SSIN.dengue_capitais||{})[uf]; return d ? esc(d.municipio)+': nível '+esc(d.nivel)+' · SE '+esc(d.se)+'<br>'+esc(d.fonte) : 'Capital: aguardando primeira coleta'; },
+    Object.values(NIV_DENGUE).map(v => ({cor:v[1], rotulo:v[0]})).concat([{cor:NEUTRA, rotulo:'aguardando coleta'}]));
+  const capitais = Object.entries(SSIN.dengue_capitais||{});
+  if (capitais.length && SINAIS && SINAIS.uf) {
+    svgD.append('g').selectAll('circle').data(capitais).join('circle')
+      .attr('cx', ([uf,d]) => projection([d.lon||0, d.lat||0])[0]).attr('cy', ([uf,d]) => projection([d.lon||0, d.lat||0])[1])
+      .attr('r', 5).attr('fill', ([uf,d]) => (NIV_DENGUE[d.nivel]||['',NEUTRA])[1]);
+  }
+  const fD = SSIN.fontes.infodengue;
+  fonteFigura('boxDengue', fD.status === 'coletado' ? 'Fonte: modelo InfoDengue (Fiocruz/FGV) · consultado em '+esc(fD.consultado_em)+' · número primário: Painel de Arboviroses (MS).'
+                                                    : 'Não localizamos coleta desta fonte até o corte — lacuna declarada. Fonte prevista: modelo InfoDengue (Fiocruz/FGV) e Painel de Arboviroses (MS).');
+  const avisos = uf => (SINAIS.uf && SINAIS.uf[uf] && SINAIS.uf[uf].avisos_inmet) || null;
+  const nCalor = uf => { const a = avisos(uf); if(!a) return null; const lista = a.lista || a.avisos || []; return lista.filter(x => /calor/i.test(JSON.stringify(x))).length; };
+  const CAL = ['#E8D9BE','#DCC08E','#C69B72','#A65F3F'];
+  desenharMapa('mapaCalor','legCalor', uf => { const n = nCalor(uf); return n == null ? NEUTRA : CAL[Math.min(3, n)]; },
+    uf => { const n = nCalor(uf); return n == null ? 'Aguardando coleta do INMET' : n + ' aviso(s) de calor vigente(s)'; },
+    [{cor:CAL[0],rotulo:'0'},{cor:CAL[1],rotulo:'1'},{cor:CAL[2],rotulo:'2'},{cor:CAL[3],rotulo:'3+'},{cor:NEUTRA,rotulo:'aguardando coleta'}]);
+  fonteFigura('boxCalor', (SINAIS.fontes && SINAIS.fontes.inmet_avisos && SINAIS.fontes.inmet_avisos.status === 'coletado') ? 'Fonte: INMET, avisos meteorológicos · consultado em '+esc(SINAIS.fontes.inmet_avisos.consultado_em)+'.' : 'Não localizamos coleta desta fonte até o corte — lacuna declarada (INMET).');
+  desenharMapa('mapaEmerg','legEmerg', uf => NEUTRA, uf => 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento)', [{cor:NEUTRA, rotulo:'nenhuma registrada até o corte'}]);
+  fonteFigura('boxEmerg', 'Fonte: DOU (ESPIN) e diários municipais — coleta da Pista A; peso zero.');
+
+  // 4 · quadrantes DC × saúde
+  const dcLoc = uf => ['NOVO','READ','VIG'].includes(((MARE[uf]||{}).status_estadual||'').toUpperCase());
+  const q = {ambos:[], so_dc:[], so_saude:[], nenhum:[], nv:[]};
+  UFS.forEach(uf => { const s = st(uf); if (s === 'NAO_VERIFICADO') { q.nv.push(uf); return; } const sl = ['NOVO','READ','VIG'].includes(s); const d = dcLoc(uf); (d&&sl ? q.ambos : d ? q.so_dc : sl ? q.so_saude : q.nenhum).push(uf); });
+  const ROT = {ambos:'Defesa civil e saúde', so_dc:'Só defesa civil', so_saude:'Só saúde', nenhum:'Nenhum localizado', nv:'Saúde ainda não verificada'};
+  document.getElementById('quadrantes').innerHTML = Object.keys(ROT).map(k => '<div style="border:1px solid var(--line); border-radius:8px; padding:10px;"><div class="map-card-h">'+ROT[k]+' · <strong>'+q[k].length+'</strong></div><div class="note" style="margin:0;">'+(q[k].join(' · ')||'—')+'</div></div>').join('');
+  fonteFigura('boxQuadrantes', 'Fonte: data/indice.json (status_estadual) × data/saude_uf.json, corte '+esc(SUF.corte)+'.');
+  fonteFigura('boxSerie', 'Não localizamos coleta desta fonte até o corte — lacuna declarada (Painel de Arboviroses, MS).');
+}
+__load().catch(err => { const m = document.getElementById('subSaude'); if (m) m.insertAdjacentHTML('afterend', '<p class="note" style="color:var(--rust)">Erro ao carregar os dados: '+esc(err.message)+'</p>'); });
+</script>
 </body>
 </html>

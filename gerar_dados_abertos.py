@@ -61,6 +61,16 @@ def tabelas(dados):
             for e in sorted(dados["atos_resposta"].get("eventos", []), key=lambda x: (x["uf"], x["nome"], x.get("data", "")))]
     hist = [{"data": h["data"], "uf": h["uf"], "tipo": h["tipo"], "titulo": h["titulo"], "resumo": h["resumo"]}
             for h in dados.get("historico", {}).get("eventos", [])]
+    verif = [{"ibge": v["ibge"], "uf": v["uf"], "municipio": v["nome"], "nivel_verificacao": v["nivel_verificacao"],
+              "ultima_verificacao": v.get("ultima_verificacao") or "", "plano_localizado": v.get("plano_localizado") or "",
+              "decreto_reconhecido": "" if v.get("decreto_reconhecido") is None else v["decreto_reconhecido"],
+              "decreto_homologado": "" if v.get("decreto_homologado") is None else v["decreto_homologado"]}
+             for v in sorted(dados.get("verificacao_municipal", []), key=lambda x: (x["uf"], x["nome"]))]
+    saude = [{"uf": uf, "status": u.get("status"), "orgao": u.get("orgao") or "", "documento": u.get("doc") or "",
+              "numero": u.get("numero") or "", "data": u.get("data") or "", "natureza_doc": u.get("natureza_doc"),
+              "consist": u.get("consist"), "riscos_sanitarios_projetados": "; ".join(u.get("risco_sanitario_projetado", [])),
+              "data_verificacao": u.get("data_verificacao") or "", "url": u.get("url") or ""}
+             for uf, u in sorted(dados.get("saude_uf", {}).get("uf", {}).items())]
     return {
         "indice": (indice, ["uf", "estado", "mare_total", "faixa", "componente_estadual", "componente_cobertura_populacional", "componente_antecipacao", "status_estadual"],
                    "Índice MARÉ por unidade da federação: nota 0–100, faixa interpretativa e componentes."),
@@ -72,6 +82,11 @@ def tabelas(dados):
                           "Decretos municipais de emergência/calamidade registrados (atos de resposta; nunca pontuam)."),
         "historico_mudancas": (hist, ["data", "uf", "tipo", "titulo", "resumo"],
                                "Mudanças detectadas pelo pipeline entre atualizações (base dos feeds Atom)."),
+        # v2.2.4 (§7.7): verificação por níveis e camada de saúde (peso zero)
+        "verificacao_municipal": (verif, ["ibge", "uf", "municipio", "nivel_verificacao", "ultima_verificacao", "plano_localizado", "decreto_reconhecido", "decreto_homologado"],
+                                  "Nível de verificação alcançado pelo Monitor em cada um dos 5.571 municípios (nao_verificado/nacional/estadual/municipal_completo); 'nada localizado' só com verificação completa."),
+        "saude_uf": (saude, ["uf", "status", "orgao", "documento", "numero", "data", "natureza_doc", "consist", "riscos_sanitarios_projetados", "data_verificacao", "url"],
+                     "Instrumento estadual de saúde para o ciclo, por UF (NOVO/READ/VIG/ELAB/LAC/NAO_VERIFICADO). Registro de transparência: nunca pontua."),
     }
 
 
@@ -122,6 +137,9 @@ def gerar():
     dados = {k: json.load(open(DATA / f"{k}.json", encoding="utf-8")) for k in ("indice", "estados", "municipios", "atos_resposta")}
     if (DATA / "historico_mudancas.json").exists():
         dados["historico"] = json.load(open(DATA / "historico_mudancas.json", encoding="utf-8"))
+    for k in ("verificacao_municipal", "saude_uf"):  # v2.2.4
+        if (DATA / f"{k}.json").exists():
+            dados[k] = json.load(open(DATA / f"{k}.json", encoding="utf-8"))
     corte = json.load(open(DATA / "meta.json", encoding="utf-8")).get("corte", "")
     tabs = tabelas(dados)
     SAIDA.mkdir(exist_ok=True)

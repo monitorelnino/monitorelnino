@@ -35,7 +35,8 @@ SNAPSHOT = DATA / "snapshot_feed.json"
 HISTORICO = DATA / "historico_mudancas.json"
 CAT_HUMANO = {"plano": "plano preventivo", "plano_antigo": "plano de edição anterior", "plano_elaboracao": "plano em elaboração",
               "decreto": "decreto de emergência", "coberto_estadual": "cobertura pelo plano estadual",
-              "nao_el_nino": "ato que não trata do El Niño", "nao_localizado": "verificação sem ato localizado"}
+              "nao_el_nino": "ato que não trata do El Niño", "nao_localizado": "verificação completa sem ato localizado",
+              "nao_verificado": "ainda não verificado com a bateria completa de fontes"}
 STATUS_HUMANO = {"NOVO": "plano estadual novo, específico para o El Niño", "READ": "plano recorrente readaptado para o ciclo",
                  "VIG": "instrumento recorrente, sem menção nominal ao El Niño", "ELAB": "plano estadual em elaboração",
                  "LAC": "sem plano estadual nominal localizado"}
@@ -82,7 +83,9 @@ def diferencas(antes, agora, data):
                               f"{m['documento'] or '—'}{(' (' + m['data'] + ')') if m['data'] else ''}.", nomes))
         elif a.get("categoria") != m["categoria"] or a.get("documento") != m["documento"]:
             ev.append(_evento(data, uf, "municipio", chave, f"{nome} ({uf}): registro atualizado — {CAT_HUMANO.get(m['categoria'], m['categoria'])}",
-                              f"Antes: {CAT_HUMANO.get(a.get('categoria'), a.get('categoria'))}. Agora: {m['documento'] or '—'}{(' (' + m['data'] + ')') if m['data'] else ''}.", nomes))
+                              (f"Antes: registrado como 'nada localizado' sem bateria municipal completa logada. Agora: {CAT_HUMANO['nao_verificado']} — reclassificação por regra de prova (§2.1, 02/09/2026), com errata pública; efeito nulo na nota."
+                               if m['categoria'] == 'nao_verificado' else
+                               f"Antes: {CAT_HUMANO.get(a.get('categoria'), a.get('categoria'))}. Agora: {m['documento'] or '—'}{(' (' + m['data'] + ')') if m['data'] else ''}."), nomes))
     for chave in agora["atos_resposta"]:
         if chave not in set(antes.get("atos_resposta", [])):
             nome, uf, d = chave.split("|")
@@ -135,7 +138,12 @@ def renderizar(historico, nomes, data):
     for uf, nome in sorted(nomes.items()):
         ev = [x for x in eventos if x["uf"] == uf][:50]
         (FEEDS / f"{uf}.xml").write_text(atom(f"Monitor El Niño Brasil — {nome}", f"{uf}.xml", ev, ev[0]["data"] if ev else data), encoding="utf-8")
-    (FEEDS / "index.json").write_text(json.dumps({"brasil": f"{SITE}/feeds/brasil.xml",
+    # v2.2.4 (§7.7): feed próprio de saúde — eventos dos tipos novos (instrumento_saude,
+    # verificacao_ampliada, decreto_reconhecido). Nasce válido mesmo sem eventos.
+    ev_saude = [x for x in eventos if x.get("tipo") in ("instrumento_saude", "verificacao_ampliada", "decreto_reconhecido")][:100]
+    (FEEDS / "saude.xml").write_text(atom("Monitor El Niño Brasil — saúde e El Niño (registro de transparência, peso zero)", "saude.xml",
+                                          ev_saude, ev_saude[0]["data"] if ev_saude else data), encoding="utf-8")
+    (FEEDS / "index.json").write_text(json.dumps({"brasil": f"{SITE}/feeds/brasil.xml", "saude": f"{SITE}/feeds/saude.xml",
                                                   "ufs": {uf: f"{SITE}/feeds/{uf}.xml" for uf in sorted(nomes)}}, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
