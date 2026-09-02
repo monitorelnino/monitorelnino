@@ -56,9 +56,9 @@ abre um PR → você olha a prévia → você clica em Merge → o site atualiza
 O que **não** precisa fazer: baixar arquivos, editar nada no GitHub, mexer no
 Netlify, digitar comandos.
 
-## 4a. Semana intensiva (a primeira semana depois de aprovar os PRs da v2.2.4)
+## 4a. Semana intensiva (de domingo 06/09 a domingo 13/09/2026)
 
-Durante uns sete dias o robô roda **todo dia às 6h**, um lote por vez: dia 1
+A partir de **domingo, 06/09/2026** (dia 0), o robô roda **todo dia às 6h** por sete dias, um lote por vez — antes disso ele não coleta nada, mesmo se os PRs forem aprovados antes: dia 1
 reconhecimentos federais e a camada declarada; dias 2–4 diários oficiais dos
 estados por região; dias 4–7 diários municipais em lotes. O que você faz:
 

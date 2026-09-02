@@ -133,6 +133,7 @@ jobs:
           # v2.2.4 (§13): semana intensiva controlada por variáveis de repositório
           # (Settings → Secrets and variables → Actions → Variables). Fora do período,
           # a execução diária encerra sem coletar nem comitar (retorno ao semanal é automático).
+          INTENSIVO_DE: ${{ vars.INTENSIVO_DE }}
           INTENSIVO_ATE: ${{ vars.INTENSIVO_ATE }}
           LOTE_DIARIOS: ${{ vars.LOTE_DIARIOS }}
           TAMANHO_LOTE: ${{ vars.TAMANHO_LOTE }}
