@@ -31,3 +31,10 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # AUD-12 (auditoria externa 02/09/2026): CSP. Os scripts das páginas são inline (site
+    # estático sem empacotador) — 'unsafe-inline' em script-src é uma limitação declarada;
+    # a defesa principal contra XSS é o escape na carga (index.html) + validação no
+    # processador de contribuições. VLibras precisa de script + frame + conexão.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://vlibras.gov.br; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://vlibras.gov.br https://*.vlibras.gov.br; frame-src https://vlibras.gov.br; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"

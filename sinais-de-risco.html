@@ -74,7 +74,7 @@
         <svg id="mapaTipoRisco" role="img" aria-label="Mapa do Brasil por tipo de risco projetado nos boletins do Painel El Niño" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legTipoRisco"></div>
         <details><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela: o que o boletim projeta para cada estado</summary>
-          <div class="tbl-wrap" style="margin-top:10px;"><table class="mun-table" id="tblTipoRisco"><thead><tr><th>UF</th><th>Risco projetado no boletim</th><th>Tipo</th></tr></thead><tbody></tbody></table></div>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="margin-top:10px;"><table class="mun-table" id="tblTipoRisco"><thead><tr><th>UF</th><th>Risco projetado no boletim</th><th>Tipo</th></tr></thead><tbody></tbody></table></div>
         </details>
       </div>
 
@@ -147,7 +147,7 @@
   <div class="panel" id="fontes">
     <h2 style="margin-top:0;">As oito fontes</h2>
     <p class="hint">Organizadas em três camadas: o <strong>ciclo</strong> (o que se projeta para o período), o <strong>observado</strong> (o que os sistemas de monitoramento registram agora) e o <strong>ENOS</strong> (o estado do fenômeno no Pacífico). Cada linha diz o que a fonte informa, quando foi consultada e para onde ir conferir.</p>
-    <div class="tbl-wrap" style="max-height:none;"><table class="mun-table" id="tblFontes"><thead><tr><th>Fonte</th><th>Órgão</th><th>O que informa</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="max-height:none;"><table class="mun-table" id="tblFontes"><thead><tr><th>Fonte</th><th>Órgão</th><th>O que informa</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
     <p class="note" style="margin-top:12px;">Imprensa e agregadores de terceiros não aparecem nesta tabela: no protocolo do Monitor eles servem para descobrir um documento, nunca para registrá-lo.</p>
   </div>
 

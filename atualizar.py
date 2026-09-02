@@ -127,6 +127,7 @@ def main():
     rodar(["node", "scripts/verificar_runtime_sinais.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_saude.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_acessibilidade.js"], obrigatorio=True)   # v2.3: a11y + responsividade
+    rodar(["bash", "scripts/verificar_derivados.sh"], obrigatorio=True)         # AUD-04: derivados reproduzíveis em árvore limpa
 
     meta_p = RAIZ / "data" / "meta.json"
     meta = json.load(open(meta_p, encoding="utf-8"))

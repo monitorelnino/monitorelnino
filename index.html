@@ -572,7 +572,7 @@
         <option value="nao_verificado">Ainda não verificado</option>
       </select>
     </div>
-    <div class="tbl-wrap">
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">
       <table class="mun-table">
         <caption class="sr-only">Municípios verificados: categoria do ato, documento, data, fonte e canal de verificação</caption>
         <thead><tr><th>Município</th><th>UF</th><th>Categoria</th><th>Documento</th><th>Data</th><th>Fonte</th><th>Canal</th></tr></thead>
@@ -621,6 +621,22 @@ async function __load(){
         return r.json();
       }))
   );
+  // AUD-02 (auditoria externa, 02/09/2026): todo texto vindo dos dados é escapado NA CARGA,
+  // antes de qualquer interpolação em innerHTML; URLs só sobrevivem se forem https://.
+  // Os dados não contêm marcação legítima (verificado em 02/09/2026), então escapar é neutro.
+  (function sanitizar(){
+    const esc = v => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const walk = (o, chave) => {
+      if (Array.isArray(o)) { for (let i = 0; i < o.length; i++) o[i] = walk(o[i], chave); return o; }
+      if (o && typeof o === 'object') { for (const k of Object.keys(o)) o[k] = walk(o[k], k); return o; }
+      if (typeof o === 'string') {
+        if (/^url/i.test(chave || '') || /_url$/i.test(chave || '')) return /^https:\/\//i.test(o.trim()) ? o.trim() : '';
+        return esc(o);
+      }
+      return o;
+    };
+    [TABELA_MUNICIPIOS, MAP_POINTS, DATA, ATOS_RESPOSTA, TRANSFERENCIAS, RECURSOS, FIN, PRAZOS, CONSIST].forEach(x => walk(x, ''));
+  })();
   MUN_REF = {};
   __ref.forEach(m => (MUN_REF[m.uf] = MUN_REF[m.uf] || []).push(m.nome));
   __ref.forEach(m => {
