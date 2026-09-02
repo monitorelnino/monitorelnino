@@ -28,7 +28,7 @@ indice = json.load(open(f"{D}/indice.json"))
 transf = json.load(open(f"{D}/transferencias.json"))
 atos_resposta = json.load(open(f"{D}/atos_resposta.json"))
 
-CATS = {"plano","plano_antigo","plano_elaboracao","decreto","coberto_estadual","nao_el_nino","nao_localizado"}
+CATS = {"plano","plano_antigo","plano_elaboracao","decreto","coberto_estadual","nao_el_nino","nao_localizado","nao_verificado"}
 CANAIS = {"DOM","DOU","repositorio_estadual","orgao_estadual","site_municipal","imprensa","—"}
 
 # 1. Vocabulário controlado e campos obrigatórios
@@ -300,6 +300,57 @@ try:
             erro(f"segredos: arquivo real de ambiente encontrado no pacote: {_f.name} — nunca deve ser distribuído")
 except Exception as _e:
     erro(f"portão de segredos falhou ao executar: {_e}")
+
+# ── Portões v2.2.4 (doc de redesenho 02/09/2026, §2, §3, §6) ────────────────
+try:
+    _lg = json.load(open(RAIZ / "data" / "log_buscas.json", encoding="utf-8"))
+    if _lg.get("formato_versao") != 2:
+        erro("log_buscas: esquema v2 ausente (formato_versao != 2)")
+    _NIVEIS = {None, "nacional", "estadual", "municipal_completo"}
+    _DEC_OK = ("registro", "pista", "nada localizado", "fonte suspensa (defeso)", "erro")
+    _completos = set()
+    for _i, _e in enumerate(_lg.get("execucoes", [])):
+        for _k in ("data", "canal", "strings", "decisao", "executor"):
+            if _k not in _e: erro(f"log_buscas[{_i}]: campo ausente '{_k}'")
+        if _e.get("nivel") not in _NIVEIS: erro(f"log_buscas[{_i}]: nivel inválido: {_e.get('nivel')}")
+        if _e.get("nivel") == "municipal_completo" and not (_e.get("municipio") and _e.get("uf")):
+            erro(f"log_buscas[{_i}]: municipal_completo exige municipio e uf estruturados")
+        if str(_e.get("decisao","")).strip().lower().startswith("nada localizado") and _e.get("nivel") != "municipal_completo":
+            erro(f"log_buscas[{_i}]: decisão 'nada localizado' com nivel '{_e.get('nivel')}' — regra §2.1: só com bateria municipal completa")
+        if _e.get("nivel") == "municipal_completo" and str(_e.get("decisao","")).strip().lower().startswith("nada localizado"):
+            _completos.add((_e.get("municipio"), _e.get("uf")))
+    # nada-localizado no banco exige o log correspondente
+    _tab = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
+    for _r in _tab:
+        if _r.get("categoria") == "nao_localizado" and (_r["nome"], _r["uf"]) not in _completos:
+            erro(f"'{_r['nome']}/{_r['uf']}' está nao_localizado sem bateria municipal completa no log (§2.1) — reclassificar para nao_verificado")
+except Exception as _e:
+    erro(f"portão do log v2 falhou ao executar: {_e}")
+
+try:
+    _dic = json.load(open(RAIZ / "data" / "dicionario_busca.json", encoding="utf-8")).get("grupos", {})
+    for _g in ("saude", "programas_permanentes", "rotas_sem_decreto"):
+        if _g not in _dic: erro(f"dicionario_busca: grupo '{_g}' ausente (§2.4)")
+        else:
+            _gg = _dic[_g]
+            _termos = _gg.get("termos") if isinstance(_gg, dict) else _gg
+            if not _termos: erro(f"dicionario_busca: grupo '{_g}' vazio")
+            if isinstance(_gg, dict) and _gg.get("origem") != "sessão metodológica 02/09/2026":
+                erro(f"dicionario_busca: grupo '{_g}' sem origem declarada")
+except Exception as _e:
+    erro(f"portão do dicionário v2.2.4 falhou ao executar: {_e}")
+
+try:
+    _vm = json.load(open(RAIZ / "data" / "verificacao_municipal.json", encoding="utf-8"))
+    if len(_vm) != 5571: erro(f"verificacao_municipal: {len(_vm)} municípios (esperados 5.571)")
+    _NV = {"nao_verificado", "nacional", "estadual", "municipal_completo"}
+    for _v in _vm:
+        if _v.get("nivel_verificacao") not in _NV:
+            erro(f"verificacao_municipal: nível inválido em {_v.get('nome')}/{_v.get('uf')}"); break
+    _fila = json.load(open(RAIZ / "data" / "citacao_incompleta.json", encoding="utf-8"))
+    if "regra" not in _fila or "fila" not in _fila: erro("citacao_incompleta: sem regra declarada ou sem fila")
+except Exception as _e:
+    erro(f"portão da verificação municipal falhou ao executar: {_e}")
 
 if ERROS:  print("ERROS:");  [print("  ✗", e) for e in ERROS]; sys.exit(1)
 print("✓ CONSISTENTE — todas as verificações passaram.")

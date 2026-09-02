@@ -158,6 +158,8 @@ def main():
         chave = (norm(municipio), uf)
         if chave not in ref:
             recusa(sid, uf, municipio, "município não reconhecido na malha IBGE — grafia precisa ser exata (R2)"); continue
+        # v2.2.4 (§7.6): "plano_saude" NUNCA é automatizável — cai sempre na fila humana,
+        # como todo tipo fora do par ("plano", "decreto").
         if tipo not in ("plano", "decreto"):
             # R3 (corrigida em 27/08/2026): tipos não-automáticos NÃO são recusados —
             # ficam RESERVADOS à análise editorial, visíveis na fila humana até o

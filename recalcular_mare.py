@@ -44,7 +44,9 @@ ESTADO_SCORE = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
 # nao_el_nino (0, não 0,1; ver docstring). decreto ausente por regra estrutural
 # (Correção B): `CRED_POP.get(cat, 0.0)` já o exclui sem lista de exceções.
 CRED_POP = {"plano": 1.0, "plano_antigo": 0.6, "plano_elaboracao": 0.45,
-            "coberto_estadual": 0.3, "nao_el_nino": 0.0, "nao_localizado": 0.0}
+            "coberto_estadual": 0.3, "nao_el_nino": 0.0, "nao_localizado": 0.0,
+            # v2.2.4 (§2.1): ausência de verificação ≠ ausência de documento; mesmo crédito 0.0
+            "nao_verificado": 0.0}
 AGREGADOS = {"RO": (38, "plano")}  # Correção B (26/08/2026): agregados tipo decreto (PB, RN) excluídos do índice — atos de resposta, nunca ex-ante
 CAPITAIS = {"Rio Branco":"AC","Maceió":"AL","Manaus":"AM","Macapá":"AP","Salvador":"BA","Fortaleza":"CE",
  "Brasília":"DF","Vitória":"ES","Goiânia":"GO","São Luís":"MA","Cuiabá":"MT","Campo Grande":"MS",
@@ -207,6 +209,77 @@ def calcular():
                                "decisao": "Metodologia §13, 29/08/2026"}
     return saida, float(lin.mean()), pct, robustez
 
+def _recomputar_verificacao_em_memoria():
+    """v2.2.4 (§3.3): data/verificacao_municipal.json é ARTEFATO DERIVADO de
+    municipios.json + log_buscas.json + municipios_ibge_referencia.json —
+    regravado por quem regrava a origem (lição §10 da transferência: 'artefato
+    derivado precisa ser regravado por quem regrava a origem'). O nível de
+    verificação só sobe com log estruturado; nada é imputado."""
+    import re as _re
+    PONT = {"plano","plano_antigo","plano_elaboracao","coberto_estadual","decreto","nao_el_nino"}
+    with open(RAIZ / "data" / "municipios.json", encoding="utf-8") as f: mun = json.load(f)
+    with open(RAIZ / "data" / "log_buscas.json", encoding="utf-8") as f: lg = json.load(f)
+    with open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8") as f: ref = json.load(f)
+    completos = set()
+    for e in lg.get("execucoes", []):
+        if e.get("nivel") == "municipal_completo" and str(e.get("decisao","")).strip().lower().startswith("nada localizado") and e.get("municipio") and e.get("uf"):
+            completos.add((e["municipio"], e["uf"]))
+    niveis_log = {}
+    for e in lg.get("execucoes", []):
+        if e.get("municipio") and e.get("uf") and e.get("nivel") in ("nacional","estadual","municipal_completo"):
+            ordem = {"nacional":1,"estadual":2,"municipal_completo":3}
+            ch=(e["municipio"],e["uf"])
+            if ordem[e["nivel"]] > ordem.get(niveis_log.get(ch,""),0): niveis_log[ch]=e["nivel"]
+    por = {(m["nome"], m["uf"]): m for m in mun}
+    out = []
+    for r in ref:
+        ch = (r["nome"], r["uf"]); reg = por.get(ch)
+        out.append({"ibge": str(r["codigo_ibge"]), "nome": r["nome"], "uf": r["uf"],
+            "nivel_verificacao": niveis_log.get(ch, "nao_verificado"),
+            "ultima_verificacao": None, "fontes_consultadas": [],
+            "decreto_reconhecido": None, "decreto_homologado": None,
+            "plano_declarado_munic": None, "plano_declarado_icm": None,
+            "plano_localizado": (reg["categoria"] if reg and reg["categoria"] in PONT else None)})
+    return out
+
+def _resumo_verificacao(out):
+    """Resumo derivado para o site (data/verificacao_resumo.json): contagens por
+    nível e por UF, mapa compacto ibge→nível apenas para níveis acima do padrão,
+    nº de fontes suspensas pelo defeso na última rodada do log e tamanho da fila
+    de citação incompleta. Fonte única: verificacao_municipal.json."""
+    tot = {}
+    por_uf = {}
+    acima = {}
+    for v in out:
+        n = v["nivel_verificacao"]; tot[n] = tot.get(n, 0) + 1
+        d_uf = por_uf.setdefault(v["uf"], {}); d_uf[n] = d_uf.get(n, 0) + 1
+        if n != "nao_verificado": acima[v["ibge"]] = n
+    try:
+        lg = json.load(open(RAIZ / "data" / "log_buscas.json", encoding="utf-8"))
+        datas = [e["data"] for e in lg.get("execucoes", []) if e.get("data")]
+        ult = max(datas) if datas else None
+        suspensas = sum(1 for e in lg.get("execucoes", []) if e.get("data") == ult and e.get("fonte_suspensa_defeso"))
+    except Exception:
+        ult, suspensas = None, 0
+    try:
+        fila = len(json.load(open(RAIZ / "data" / "citacao_incompleta.json", encoding="utf-8")).get("fila", []))
+    except Exception:
+        fila = None
+    resumo = {"gerado_de": "verificacao_municipal.json", "total_municipios": len(out),
+              "totais_por_nivel": tot, "por_uf": por_uf, "niveis_acima_do_padrao": acima,
+              "ultima_rodada_log": ult, "fontes_suspensas_defeso_ultima_rodada": suspensas,
+              "fila_citacao_incompleta": fila}
+    with open(RAIZ / "data" / "verificacao_resumo.json", "w", encoding="utf-8") as f:
+        json.dump(resumo, f, ensure_ascii=False, indent=1); f.write("\n")
+    return resumo
+
+def regravar_verificacao_municipal():
+    out = _recomputar_verificacao_em_memoria()
+    with open(RAIZ / "data" / "verificacao_municipal.json", "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=1); f.write("\n")
+    _resumo_verificacao(out)
+    return out
+
 def main():
     """Interface de linha de comando: sem flag, recalcula e grava; com --check, recalcula em memória e compara campo a campo contra o data/indice.json publicado (portão 2), sem gravar nada."""
     modo = sys.argv[1] if len(sys.argv) > 1 else "--check"
@@ -219,6 +292,8 @@ def main():
         json.dump(pct_derivado, open(alvo_pct, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         json.dump(robustez, open(alvo_rob, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         print(f"data/indice.json, data/percentual_uf.json e data/robustez_mc.json regravados · média nacional {media:.1f}")
+        vm = regravar_verificacao_municipal()
+        print(f"data/verificacao_municipal.json regravado (derivado) · {len(vm)} municípios")
         # Selos SVG são função pura do índice: quem regrava o índice regrava os selos
         # (31/08/2026 — sem isto, o portão selo×índice revertia toda mudança legítima
         # dentro do julgamento automático).
@@ -228,6 +303,33 @@ def main():
         print("(percentual_uf.json agora é DERIVADO de municipios.json a cada --write; campos")
         print(" declarado_plano/declarado_antigo/fonte_declarada de auditorias externas preservados.)")
         return 0
+    # v2.2.4: paridade do artefato derivado verificacao_municipal.json
+    import tempfile, copy
+    vm_disco_path = RAIZ / "data" / "verificacao_municipal.json"
+    if vm_disco_path.exists():
+        vm_disco = json.load(open(vm_disco_path, encoding="utf-8"))
+        vm_novo = _recomputar_verificacao_em_memoria()
+        if vm_disco != vm_novo:
+            print("✗ VERIFICACAO_MUNICIPAL NÃO REPRODUZIDA — derivado em disco diverge do recomputado (rode --write)")
+            return 1
+        # resumo também é derivado: conferir contra o recomputado (sem gravar)
+        import io, contextlib
+        res_path = RAIZ / "data" / "verificacao_resumo.json"
+        if res_path.exists():
+            res_disco = json.load(open(res_path, encoding="utf-8"))
+            _tmp = res_path.read_bytes()
+            _resumo_verificacao(vm_novo)          # regrava…
+            res_novo = json.load(open(res_path, encoding="utf-8"))
+            res_path.write_bytes(_tmp)            # …e restaura o disco (modo --check não grava)
+            if res_disco != res_novo:
+                print("✗ VERIFICACAO_RESUMO NÃO REPRODUZIDO — derivado em disco diverge do recomputado (rode --write)")
+                return 1
+        else:
+            print("✗ data/verificacao_resumo.json ausente (rode --write)")
+            return 1
+    else:
+        print("✗ data/verificacao_municipal.json ausente (rode --write)")
+        return 1
     atual = json.load(open(alvo, encoding="utf-8"))
     campos = ["estado", "cobertura_pop", "antecipacao", "total", "total_geo",
               "confianca", "status_estadual"]
