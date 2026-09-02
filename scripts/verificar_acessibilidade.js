@@ -10,7 +10,7 @@
 const fs = require("fs"), path = require("path"); const { JSDOM } = require("jsdom");
 const RAIZ = path.join(__dirname, ".."); let falhas = 0;
 const falha = m => { console.log("  ✗ " + m); falhas++; };
-const PAGINAS = ["index.html","mapas-e-graficos.html","sinais-de-risco.html","saude.html","proteja-se.html","envie-dados.html","para-gestores.html","obrigado.html"];
+const PAGINAS = ["index.html","mapas-e-graficos.html","sinais-de-risco.html","saude.html","financiamento.html","proteja-se.html","envie-dados.html","para-gestores.html","obrigado.html"];
 const base = fs.readFileSync(path.join(RAIZ,"assets","base.css"),"utf-8"), tokens = fs.readFileSync(path.join(RAIZ,"assets","tokens.css"),"utf-8");
 // contraste WCAG dos pares texto/fundo usados no site
 const hex = n => { const m = tokens.match(new RegExp("--" + n + ":\\s*(#[0-9A-Fa-f]{6})")); return m && m[1]; };

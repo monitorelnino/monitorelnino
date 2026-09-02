@@ -352,6 +352,17 @@ try:
 except Exception as _e:
     erro(f"portão da verificação municipal falhou ao executar: {_e}")
 
+# ── Portão E10 (v2.3, 02/09/2026): nenhum campo de autor de emenda parlamentar em data/ ──
+try:
+    import pathlib as _pl, re as _re
+    _CAMPOS = _re.compile(r'"(nomeAutor|codigoAutor|autor_emenda|nome_autor|codigo_autor|parlamentar|nomeParlamentar|autorEmenda)"', _re.I)
+    for _p in sorted(_pl.Path(RAIZ / "data").rglob("*.json")):
+        _t = _p.read_text(encoding="utf-8", errors="replace")
+        _m = _CAMPOS.search(_t)
+        if _m: erro(f"E10: campo de autor de emenda em {_p.relative_to(RAIZ)}: {_m.group(1)}")
+except Exception as _e:
+    erro(f"portão E10 falhou ao executar: {_e}")
+
 # ── Portão de fósseis (v2.2.4, doc de redesenho §11.2): strings do modelo de 4 componentes ──
 try:
     _FOSSEIS = ("4 componentes", "Dirichlet(1,1,1,1)", "componentes (25%)", "1,0/0,7/0,4")
