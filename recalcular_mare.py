@@ -296,7 +296,15 @@ def _resumo_verificacao(out):
         fila = len(json.load(open(RAIZ / "data" / "citacao_incompleta.json", encoding="utf-8")).get("fila", []))
     except Exception:
         fila = None
-    resumo = {"gerado_de": "verificacao_municipal.json", "total_municipios": len(out),
+    try:
+        _lai = json.load(open(RAIZ / "data" / "lai_pedidos.json", encoding="utf-8")).get("pedidos", [])
+        lai = {"total": len(_lai), "a_enviar": sum(1 for p in _lai if p.get("status") == "a_enviar"),
+               "enviados_sem_resposta": sum(1 for p in _lai if p.get("status") == "enviado" and not p.get("data_resposta")),
+               "respondidos": sum(1 for p in _lai if p.get("data_resposta")),
+               "ufs_dependentes": sorted({p["uf"] for p in _lai if p.get("tipo") == "defesa_civil" and not p.get("data_resposta") and p["uf"] != "BR"})}
+    except Exception:
+        lai = None
+    resumo = {"gerado_de": "verificacao_municipal.json", "total_municipios": len(out), "lai": lai,
               "totais_por_nivel": tot, "por_uf": por_uf, "niveis_acima_do_padrao": acima,
               "ultima_rodada_log": ult, "fontes_suspensas_defeso_ultima_rodada": suspensas,
               "fila_citacao_incompleta": fila}

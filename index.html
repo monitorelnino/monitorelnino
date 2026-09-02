@@ -442,6 +442,7 @@
   <p style="margin:0 0 4px;" id="cvNiveis">Verificação municipal em andamento por níveis.</p>
   <p style="margin:0 0 4px;" id="cvSuspensas"></p>
   <p style="margin:0;" id="cvFila"></p>
+  <p style="margin:4px 0 0;" id="cvLai"></p>
   <p class="note" style="margin:6px 0 0;">O que cada nível significa está na <a href="METODOLOGIA.pdf">metodologia, §25</a>. Os buracos ficam visíveis por decisão editorial: o que não foi verificado aparece como não verificado, não como ausência.</p>
 </div>
 
@@ -844,6 +845,8 @@ renderPrazos();
       el('cvSuspensas').innerHTML = '<strong>' + (susp||0) + '</strong> fonte(s) oficial(is) consultada(s) estava(m) suspensa(s) por período eleitoral na última rodada.';
       const fila = VRESUMO ? VRESUMO.fila_citacao_incompleta : null;
       if (fila !== null && fila !== undefined) el('cvFila').innerHTML = '<strong>' + fila + '</strong> registro(s) na fila pública de citação incompleta (prazo de saneamento 25/10/2026; regra declarada em 02/09/2026).';
+      const lai = VRESUMO && VRESUMO.lai;
+      if (lai && lai.total) el('cvLai').innerHTML = '<strong>Dependência de acesso à informação:</strong> a lista oficial de municípios com plano, estado a estado, depende de respostas a pedidos de LAI — ' + lai.total + ' pedido(s) (' + lai.a_enviar + ' a enviar · ' + lai.enviados_sem_resposta + ' aguardando resposta · ' + lai.respondidos + ' respondido[s]). Enquanto a resposta de uma UF não chega, sua verificação estadual por essa fonte fica pendente, não presumida. <a href="para-gestores.html#pedidoslai">Ver os pedidos</a>.';
     }catch(e){}
   })();
 (function(){ const c = document.getElementById('citacaoCorte'); if (c && META && META.corte) c.textContent = META.corte; })();
@@ -1112,7 +1115,8 @@ function renderMinha(){
       const emergsSemReg = ufFinal ? emergenciasDoMunicipio(document.getElementById('cidadeInput').value.trim(), ufFinal) : [];
       html += emergsSemReg.map(e => `<h4>${document.getElementById('cidadeInput').value.trim()} · ${ufFinal}</h4><p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('');
       const _nivCard = ufFinal ? nivelVerificacao(ufFinal, document.getElementById('cidadeInput').value.trim()) : 'nao_verificado';
-      html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
+      const _laiUF = (VRESUMO && VRESUMO.lai && VRESUMO.lai.ufs_dependentes || []).includes(ufFinal);
+      html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano.${_laiUF ? ' A lista oficial de municípios com plano em ' + ufFinal + ' depende de resposta a pedido de acesso à informação ainda pendente.' : ''} Abaixo, o retrato do seu estado e o que fazer.</p>
       <p style="margin:6px 0 12px;"><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
       ${ufFinal ? '' : '<p style="margin:0; color:var(--muted);">Selecione o estado para ver o retrato estadual.</p>'}<hr style="border:none; border-top:1px solid var(--line); margin:14px 0;">`;
     }
