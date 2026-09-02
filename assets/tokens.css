@@ -1,0 +1,38 @@
+/* ============================================================
+   tokens.css — fonte única dos tokens de design (v2.2.4)
+   Extraído do :root de index.html em 02/09/2026 (harmonização §8
+   do documento de redesenho). Nenhuma página pode declarar :root
+   inline; o portão verificar_estrutura.js verifica.
+   ============================================================ */
+:root{
+  /* Paleta "Futurismo regenerativo" — base OSSO (tema claro p/ leitura sustentada) */
+  --bg: #EDE6D8;        /* OSSO */
+  --surface: #F5F1E8;   /* osso-claro (derivado) */
+  --surface-2: #E7DECD; /* areia-claro (derivado) */
+  --ink: #15201A;       /* ABISSAL */
+  --muted: #55645B;     /* musgo-texto (derivado p/ ≥4,5:1) */
+  --line: #D6C4AC;      /* AREIA */
+  --green: #4F7D48;     /* bioluz-escuro (dados s/ claro, ≥3:1) */
+  --teal: #5E7C93;      /* SINTÉTICO */
+  --violet: #7A6A4F;    /* areia-escuro (dados) */
+  --slate: #647A7E;     /* mineral-escuro (dados) */
+  --rust: #7C4A34;      /* ARGILA — sem plano / nada localizado */
+  --amber: #A65F3F;     /* argila-dados — calor legível s/ claro */
+  --radius: 10px;
+  --link: #465D6E;
+
+  /* Novo em v2.2.4 (decisão C7): ausência de verificação ≠ ausência de documento.
+     Cinza neutro; contraste AA verificado por cálculo WCAG: 4,81:1 sobre --bg,
+     5,29:1 sobre --surface (mínimo 4,5:1). */
+  --neutro: #64645C;
+
+  /* Aliases legados (proteja-se, mapas, envie-dados, para-gestores, obrigado)
+     — mantidos até a migração completa das folhas locais. */
+  --osso: #EDE6D8;
+  --card: #F5F1E8;
+
+  /* Tríade de risco da página Proteja-se */
+  --chuva: #35566B;
+  --seca: #805E37;
+  --fogo: #864C32;
+}

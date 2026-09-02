@@ -9,6 +9,30 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## [2.2.4] — em preparação (sessão de 02/09/2026, documento de redesenho)
+
+### PR-A — Sinais de risco + harmonização de design (02/09/2026)
+- **Página "Sinais oficiais de risco" incorporada** (PR #3 rebased): peso zero,
+  coletor de 3 camadas, `verificar_sinais.py` e runtime próprio. 7 de 8 fontes
+  aguardam primeira coleta real pela Action (limitação de rede da sessão,
+  declarada no PR #3).
+- **`assets/tokens.css`** — fonte única dos tokens de design das 8 páginas;
+  blocos `:root` inline removidos de todas. Novo token `--neutro` (#64645C,
+  decisão C7) para "ainda não verificado", contraste AA verificado por cálculo
+  (4,81:1 sobre `--bg`; 5,29:1 sobre `--surface`).
+- **Navegação canônica (decisão C4)** nas 8 páginas: O monitor · Mapas e
+  gráficos · Sinais de risco · Saúde · Proteja-se · Enviar documento · Para
+  gestores; `obrigado.html` com a nav completa sem item ativo.
+- **`saude.html` (placeholder, decisão E2)** — nav e cabeçalho padrão, aviso de
+  peso zero; conteúdo entra no PR-D.
+- **Portão `verificar_estrutura.js` estendido**: 8 páginas; exige
+  `assets/tokens.css`, proíbe `:root` inline, verifica a ordem canônica da nav
+  e o item ativo. Três testes negativos executados (nav fora de ordem, `:root`
+  inline, link ausente) — todos acusados e restaurados.
+- **`publicar_previa.yml` generalizado**: workflow_dispatch em qualquer ramo
+  publica prévia no alias do ramo — é a prévia de PR do protocolo, já que o
+  site não é ligado ao GitHub.
+
 ## [2.2.3] — em publicação (corte de dados 31/08/2026)
 
 ### Added (01/09/2026 — página de sinais oficiais de risco)
