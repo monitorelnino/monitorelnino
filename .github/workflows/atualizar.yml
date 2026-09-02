@@ -13,9 +13,10 @@ jobs:
   atualizar:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }   # AUD-11: sem credencial git na árvore; o push é pela API com o GITHUB_TOKEN só no passo final
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
 
@@ -27,7 +28,7 @@ jobs:
       # depois. Corrigido em 26/08/2026: a ordem antiga rodava o Python
       # primeiro, o que faria a Action falhar com "Cannot find module 'jsdom'"
       # na primeira execução real.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with: { node-version: "22" }   # AUD-18: coerente com engines.node e com o lockfile
       - run: npm ci                    # AUD-11: instalação reproduzível a partir do package-lock.json
 
@@ -183,7 +184,7 @@ jobs:
           if [ "$QUEBRADOS" != "0" ]; then echo "::warning::$QUEBRADOS link(s) externos com problema — ver artefato links_relatorio.txt e decidir (remover, substituir ou manter nomeado sem link)."; fi
       - name: Guardar relatório de links
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: links-relatorio
           path: links_relatorio.txt
@@ -204,5 +205,7 @@ jobs:
           # protegidas por rollback de julgar_e_aplicar_descobertas.py — nunca
           # edição livre. O resto (demais páginas, scripts, metodologia) segue
           # fora do alcance da automação.
-          git diff --cached --quiet && echo "Sem alterações." || git commit -m "Atualização automática de dados ($(date +%d/%m/%Y))"
-          git push
+          # AUD-21 (02/09/2026): o commit é criado pela API do GitHub e sai assinado/verificado.
+          python3 scripts/comitar_via_api.py --mensagem "Atualização automática de dados ($(date +%d/%m/%Y))" --ref main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -43,7 +43,7 @@ do GitHub. Enquanto não houver DOI:
 ## Licença dos dados — decisão pendente
 
 O repositório está sob MIT (código). Para **dados**, a prática consolidada é
-CC BY 4.0 (uso livre com atribuição) ou CC0. Recomendação: CC BY 4.0, que
+CC BY 4.0 (uso livre com atribuição) ou CC0. Recomendação: CC BY 4.0, que — **adotada em 02/09/2026 (decisão editorial): dados sob CC BY 4.0; código sob MIT.**
 preserva a atribuição ao Futura Evidence Lab. É decisão editorial: até ela ser
 tomada, `datapackage.json` declara MIT, a licença vigente do repositório.
 

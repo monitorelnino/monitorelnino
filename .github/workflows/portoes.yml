@@ -1,0 +1,44 @@
+name: Portões (pull request)
+
+# Checagem obrigatória para mesclar na main (ruleset): os 12 portões do protocolo §3.3
+# rodam em árvore limpa a cada pull request. Falhou = não mescla.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  portoes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false, fetch-depth: 0 }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: "22" }
+      - run: pip install -r requirements.txt --quiet
+      - run: npm ci --silent
+      - name: Portões 1–11
+        run: |
+          set -e
+          node scripts/verificar_estrutura.js
+          python3 verificar_consistencia.py
+          python3 recalcular_mare.py --check
+          python3 verificar_sinais.py
+          python3 verificar_saude.py
+          python3 verificar_evidencias.py
+          node scripts/verificar_runtime.js
+          node scripts/verificar_runtime_mapas.js
+          node scripts/verificar_runtime_sinais.js
+          node scripts/verificar_runtime_saude.js
+          node scripts/verificar_acessibilidade.js
+      - name: Portão 12 — derivados em árvore limpa
+        run: bash scripts/verificar_derivados.sh
+      - name: Autotestes dos coletores
+        run: |
+          for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_saude gerar_lai; do python3 $c.py --autoteste; done
+          python3 gerar_feeds.py --self-test

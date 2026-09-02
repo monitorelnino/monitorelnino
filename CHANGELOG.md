@@ -20,6 +20,23 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Governança (decisões delegadas à sessão em 02/09/2026, à noite — fecha AUD-06, AUD-11, AUD-15, AUD-21, AUD-22)
+- **Proteção da `main` (AUD-06):** ruleset no GitHub — nenhum push direto humano,
+  mudanças só por pull request, **checagem obrigatória** "Portões (pull request)"
+  (workflow novo `portoes.yml`: os 12 portões + autotestes em árvore limpa a cada
+  PR), sem apagar nem forçar; **exceção única para o robô** (GitHub Actions), que
+  comita os dados da rotina. `publico` protegido contra apagamento e force-push.
+- **Commits do robô assinados (AUD-21):** `scripts/comitar_via_api.py` cria o commit
+  pela API Git Data com o token da Action — sai "Verified". `persist-credentials:
+  false` no checkout (AUD-11); Actions pinadas por SHA (checkout, setup-node,
+  setup-python, upload-artifact).
+- **Licença dos dados (AUD-15):** **CC BY 4.0** para dados, dados abertos, feeds,
+  selos e METODOLOGIA; código segue MIT. LICENSE, `datapackage.json`, CITATION.cff e
+  guia de dados abertos alinhados.
+- **Tag e release (AUD-22):** `v2.3` anotada no commit desta edição, com release no
+  GitHub. DOI: fica para quando a editoria vincular o repositório ao Zenodo (exige
+  conta institucional); registrado como pendência.
+
 ### Resposta à auditoria técnica externa (Manus AI, commit `3f049a6`, 02/09/2026)
 Auditoria anônima com 25 achados (1 crítico, 7 altos, 12 médios, 5 baixos). Estado de
 cada um após este commit:
