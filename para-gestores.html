@@ -165,7 +165,7 @@
   fetch('data/lai_pedidos.json').then(r=>r.ok?r.json():null).then(d=>{
     if(!d || !d.pedidos || !d.pedidos.length) return;
     var ST={a_enviar:'texto pronto, envio pendente',enviado:'enviado',respondido:'respondido'};var linhas=d.pedidos.map(function(p){return '<tr><td>'+p.uf+'</td><td>'+(p.orgao||'')+' <span class="note">('+(p.tipo||'')+')</span></td><td>'+(p.protocolo||'—')+'</td><td>'+(p.data_envio||'—')+'</td><td>'+(p.resultado||ST[p.status]||p.status)+'</td></tr>';}).join('');
-    document.getElementById('tabelaLai').innerHTML='<div class="tbl-wrap"><table class="mun-table"><thead><tr><th>UF</th><th>Órgão</th><th>Protocolo</th><th>Enviado</th><th>Situação</th></tr></thead><tbody>'+linhas+'</tbody></table></div>';
+    document.getElementById('tabelaLai').innerHTML='<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>UF</th><th>Órgão</th><th>Protocolo</th><th>Enviado</th><th>Situação</th></tr></thead><tbody>'+linhas+'</tbody></table></div>';
   }).catch(function(){});
 })();
 </script>

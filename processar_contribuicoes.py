@@ -63,6 +63,7 @@ PALAVRAS = {
                 "emergencia", "calamidade publica"],
 }
 DOMINIOS_OFICIAIS = (".gov.br", ".leg.br", ".jus.br", ".mp.br", ".def.br")
+AUTOAPLICAR = False  # suspenso em 02/09/2026 (auditoria externa AUD-02/AUD-03)
 
 
 def norm(s):
@@ -80,15 +81,64 @@ def api(caminho, token):
         return json.load(r)
 
 
+import ipaddress, socket, urllib.parse
+DIARIOS_MUNICIPAIS_OFICIAIS = ("diariomunicipal.com.br", "diariomunicipal.sc.gov.br", "diariomunicipal.org")  # allowlist exata (registrável)
+TAM_MAX_NUMERO_DATA = 160
+PADRAO_NUMERO_DATA = re.compile(r"^[\w\sÀ-ÿ.,;:/º°ª()\-–]+$")  # letras, dígitos, pontuação simples; sem < > \" ' & { } [ ]
+
+
+def numero_data_valido(v: str) -> bool:
+    """AUD-02: o campo livre do formulário só entra no banco se for curto e sem marcação."""
+    v = (v or "").strip()
+    return bool(v) and len(v) <= TAM_MAX_NUMERO_DATA and bool(PADRAO_NUMERO_DATA.match(v))
+
+
+def host_oficial(url: str):
+    """AUD-03: devolve (ok, host, motivo). Só https, sem userinfo, hostname canônico,
+    sufixo oficial ou allowlist exata de diários municipais, e resolução DNS sem IP
+    privado/loopback/link-local/reservado (IPv4 e IPv6)."""
+    try:
+        u = urllib.parse.urlsplit(url.strip())
+    except ValueError:
+        return False, "", "URL malformada"
+    if u.scheme != "https": return False, "", "esquema não é https"
+    if u.username or u.password: return False, "", "URL com credenciais"
+    host = (u.hostname or "").lower().rstrip(".")
+    if not host or host != host.encode("idna").decode("ascii", "ignore") or " " in host: return False, host, "hostname inválido"
+    permitido = host.endswith(DOMINIOS_OFICIAIS) or any(host == d or host.endswith("." + d) for d in DIARIOS_MUNICIPAIS_OFICIAIS)
+    if not permitido: return False, host, f"domínio '{host}' fora das fontes oficiais aceitas (R4)"
+    try:
+        infos = socket.getaddrinfo(host, 443, proto=socket.IPPROTO_TCP)
+    except socket.gaierror:
+        return False, host, "DNS não resolve"
+    for fam, _, _, _, sa in infos:
+        ip = ipaddress.ip_address(sa[0])
+        if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved or ip.is_multicast or ip.is_unspecified:
+            return False, host, f"resolve para endereço não público ({ip})"
+    return True, host, ""
+
+
+class _SemRedirect(urllib.request.HTTPRedirectHandler):
+    """Cada salto de redirecionamento é revalidado por host_oficial (máximo 3)."""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        ok, _, motivo = host_oficial(newurl)
+        if not ok: raise urllib.error.URLError(f"redirecionamento para destino não permitido: {motivo}")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def baixar_documento(url):
     """Devolve (ok, texto_normalizado, content_type). Nunca levanta exceção."""
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNino/1.0"})
-        with urllib.request.urlopen(req, timeout=45) as r:
+        ok, _, motivo = host_oficial(url)
+        if not ok: return False, "", motivo
+        opener = urllib.request.build_opener(_SemRedirect()); opener.addheaders = [("User-Agent", "MonitorElNino/1.0")]
+        with opener.open(url, timeout=45) as r:
             if r.status != 200:
                 return False, "", f"http {r.status}"
             ct = (r.headers.get("Content-Type") or "").lower()
-            bruto = r.read(8_000_000)
+            if not any(k in ct for k in ("pdf", "html", "text/plain")): return False, "", f"tipo de conteúdo não aceito ({ct[:40]})"
+            bruto = r.read(8_000_001)
+            if len(bruto) > 8_000_000: return False, "", "documento acima de 8 MB"
         if "pdf" in ct or bruto[:4] == b"%PDF":
             try:
                 from pypdf import PdfReader
@@ -158,6 +208,13 @@ def main():
         chave = (norm(municipio), uf)
         if chave not in ref:
             recusa(sid, uf, municipio, "município não reconhecido na malha IBGE — grafia precisa ser exata (R2)"); continue
+        # AUTOAPLICAÇÃO SUSPENSA (auditoria externa de 02/09/2026, AUD-02/AUD-03): até a
+        # editoria reativar por escrito, toda contribuição vai para a fila humana. Reativar =
+        # AUTOAPLICAR = True, somente após os testes negativos de XSS/SSRF passarem no CI.
+        if not AUTOAPLICAR:
+            reservadas += 1
+            print(f"  ◷ {municipio}/{uf}: reservada à revisão humana (autoaplicação suspensa — auditoria 02/09/2026)")
+            continue
         # v2.2.4 (§7.6): "plano_saude" NUNCA é automatizável — cai sempre na fila humana,
         # como todo tipo fora do par ("plano", "decreto").
         if tipo not in ("plano", "decreto"):
@@ -189,9 +246,11 @@ def main():
             print(f"  ◷ {ref[chave]['nome']}/{uf}: reservada à revisão humana (R7 — "
                   + ("plano move o índice" if tipo == "plano" else "capital"), end=")\n")
             continue
-        host = re.sub(r"^https://([^/]+).*", r"\1", url).lower()
-        if not (host.endswith(DOMINIOS_OFICIAIS) or "diariomunicipal" in host):
-            recusa(sid, uf, municipio, f"domínio '{host}' fora das fontes oficiais aceitas (R4)"); continue
+        ok_host, host, motivo = host_oficial(url)
+        if not ok_host:
+            recusa(sid, uf, municipio, motivo + " (R4)"); continue
+        if d.get("numero_data") and not numero_data_valido(d.get("numero_data")):
+            recusa(sid, uf, municipio, "campo número/data com marcação ou tamanho inválido (R4-bis, AUD-02)"); continue
         ok, texto, info = baixar_documento(url)
         if not ok:
             recusa(sid, uf, municipio, f"documento inacessível ({info}) (R5)"); continue

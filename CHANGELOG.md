@@ -20,6 +20,59 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Resposta à auditoria técnica externa (Manus AI, commit `3f049a6`, 02/09/2026)
+Auditoria anônima com 25 achados (1 crítico, 7 altos, 12 médios, 5 baixos). Estado de
+cada um após este commit:
+- **AUD-01 (crítico) — domínio serve a cortina "Em atualização":** intencional e agora
+  declarado no protocolo (§2 e §7): o lançamento é decisão da editoria. Corrigido o
+  *soft 404*: fora da raiz a cortina responde **404 real** e cabeçalhos de segurança
+  (ramo `publico`).
+- **AUD-02 (alta) — XSS persistente pelo campo `numero_data`:** validação estrita por
+  esquema e tamanho no processador; **escape de todo texto dos dados na carga do
+  index** (antes de qualquer `innerHTML`) e URLs só `https://`; **teste negativo**
+  executado (marcação injetada rende como texto, `javascript:` descartado).
+  **Autoaplicação de contribuições SUSPENSA** (`AUTOAPLICAR = False`) até os testes
+  negativos rodarem no CI. CSP, HSTS e Permissions-Policy no `netlify.toml` (AUD-12),
+  com a limitação declarada de `'unsafe-inline'` para os scripts inline do site.
+- **AUD-03 (alta) — SSRF/envenenamento por validação de host contornável:**
+  `host_oficial()` com `urlsplit`, só `https`, sem credenciais, allowlist exata de
+  diários municipais, resolução DNS com rejeição de IP privado/loopback/link-local/
+  reservado (IPv4/IPv6), revalidação de cada redirecionamento, limite de 8 MB e MIME
+  aceito. Os cinco payloads da auditoria são rejeitados (provado).
+- **AUD-04 (alta) — derivados obsoletos com portões verdes:** **portão 12**
+  `scripts/verificar_derivados.sh` regenera a cadeia canônica em árvore limpa com o
+  relógio no corte e exige `git diff --exit-code` (teste negativo com PDF obsoleto
+  comitado: bloqueia). Suíte: 12 portões.
+- **AUD-05 (alta) — documentação contraditória:** estado do lançamento, número de
+  páginas (9) e de portões (12) alinhados no protocolo; inventários antigos ficam
+  para revisão documental completa (pendente).
+- **AUD-06 (alta) — ramos desprotegidos:** pendente de decisão da editoria (proteger
+  `main` exige exceção para o robô que comita dados; proposta: ruleset com bypass
+  para a Action e revisão obrigatória para humanos).
+- **AUD-07 (alta) — auditor UX não portátil:** substituído pelo portão 11
+  (`verificar_acessibilidade.js`, portátil e bloqueante) e pelas regiões roláveis
+  focáveis (AUD-13: `tabindex`, `role`, rótulo); a saída do VLibras sem `alt` é do
+  widget de terceiro — decisão documental pendente.
+- **AUD-08 (alta) — 0/97 evidências, 145/149 citações na fila:** já declarado e
+  cronometrado (portão 6 bloqueante a partir de 10/09; fila até 25/10); a Action
+  `ler_documento` do repositório privado passa a preservar as evidências (integração
+  pendente, §3.8-bis).
+- **AUD-09 — manifesto omite 124 arquivos:** manifesto ampliado (dados abertos,
+  feeds, selos, CSS, LAI, CITATION: **259 arquivos**) e exclusões declaradas.
+- **AUD-10 — `datapackage.json` inválido:** `created` em ISO 8601 (corte mantido em
+  campo próprio).
+- **AUD-11/AUD-18 — suprimentos:** `pypdf` fixado em `requirements.txt`; workflow com
+  `npm ci` e Node 22; `engines.node >=22.14`. Pinar Actions por SHA e isolar o push:
+  pendentes.
+- **AUD-14 — dois 404 no ES:** URLs oficiais atuais de Afonso Cláudio e São Mateus.
+- **AUD-17 — auditor de PDFs com 14 falsos positivos:** conhece `nao_verificado`.
+- **AUD-20 — governança aberta:** `SECURITY.md` e `CONTRIBUTING.md` criados.
+- **AUD-15 (licença dos dados), AUD-21 (assinatura de commits), AUD-22 (tag/release/
+  DOI), AUD-19 (CEMADEN em http), AUD-23, AUD-25:** pendentes, os três primeiros por
+  decisão da editoria.
+- Correção de dado apontada pela auditoria: uma entrada do log (pista de PE) tinha
+  `nivel="estadual"` indevido e elevava Cabo de Santo Agostinho; corrigida para `null`.
+
 ### Alinhamento ao documento ampliado (E8–E12) e correção C10 (02/09/2026, à noite)
 - **Correção de dado C10 (aplicada no defeso por ser correção, não método):** os 12
   registros pontuáveis apoiados apenas em imprensa (canal `imprensa`) foram
