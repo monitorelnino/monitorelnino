@@ -6,6 +6,9 @@ name: Publicar o site completo no endereço reservado (prévia)
 # Netlify serve com "noindex". O nome do site é o segredo NETLIFY_SITE_NAME
 # (renomeado aqui, de forma idempotente, a partir do nome gerado pelo Netlify).
 # Dispara a cada push no main — inclusive os commits da atualização semanal.
+# Também roda por workflow_dispatch em QUALQUER ramo: publica o ramo no alias
+# derivado do nome (ex.: edicao-2026-09-02-pr-a--<site>.netlify.app) — é a
+# prévia de PR do protocolo (§3.1 passo 8), já que o site não é ligado ao GitHub.
 # Relatórios vão para o repositório privado monitorelnino/robo-registro.
 # Ver docs/PROTOCOLO_ATUALIZACAO.md §7.
 on:
@@ -40,7 +43,8 @@ jobs:
               npx --yes netlify-cli@17 api updateSite --data "{\"site_id\":\"$NETLIFY_SITE_ID\",\"body\":{\"name\":\"$NETLIFY_SITE_NAME\"}}" > /tmp/rename.txt 2>&1
               echo "rename_codigo=$? $(grep -oE '"name": *"[^"]+"' /tmp/rename.txt | head -1)"
             fi
-            npx --yes netlify-cli@17 deploy --alias=main --dir=. --message "Prévia do main ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1
+            ALIAS=$(echo "${GITHUB_REF_NAME}" | tr '/_.' '---' | tr -cd 'a-zA-Z0-9-' | cut -c1-37 | sed 's/-*$//')
+            npx --yes netlify-cli@17 deploy --alias="$ALIAS" --dir=. --message "Prévia de ${GITHUB_REF_NAME} ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1
             echo "codigo_saida=$?"
             grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "Error|error|422|Deploy is live|Website|Unique deploy|Deployed to" | head -c 1500
           } > /tmp/relatorio.txt 2>&1
