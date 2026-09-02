@@ -9,85 +9,415 @@
   "instrumento": {
    "descricao": "Como um instrumento ex-ante se nomeia nas fontes.",
    "termos": [
-    {"termo": "plano de contingência", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "PLANCON", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "PLACON", "origem": "grafia com erro encontrada em documento oficial vigente; Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "plano municipal de contingência", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "plano de contingência de proteção e defesa civil", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "plano preventivo", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "plano de chamada", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "protocolo de resposta", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "plano de enfrentamento", "origem": "Belém/PA, comunicação oficial de 07/07/2026, achado pela bateria negativa de 27/08/2026"},
-    {"termo": "protocolo de alerta e enfrentamento", "origem": "Belém/PA, comunicação oficial de 07/07/2026, achado pela bateria negativa de 27/08/2026"},
-    {"termo": "gabinete de crise", "origem": "Acre, Decreto nº 11.899/2026, achado pela revisão de natureza de 29/08/2026 (METODOLOGIA §16)"},
-    {"termo": "gabinete de crise hídrica", "origem": "Acre, Decreto nº 11.899/2026, achado pela revisão de natureza de 29/08/2026 (METODOLOGIA §16)"},
-    {"termo": "plano de enfrentamento às secas", "origem": "Acre 2026, achado pela revisão de natureza de 29/08/2026 (METODOLOGIA §16)"},
-    {"termo": "plano de ação para contingência", "origem": "Acre/Saerb, achado pela revisão de natureza de 29/08/2026 (METODOLOGIA §16)"},
-    {"termo": "PAE", "origem": "Macapá, achado na bateria negativa de 27/08/2026 (Plano de Atendimento Emergencial)"}
+    {
+     "termo": "plano de contingência",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "PLANCON",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "PLACON",
+     "origem": "grafia com erro encontrada em documento oficial vigente; Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "plano municipal de contingência",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "plano de contingência de proteção e defesa civil",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "plano preventivo",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "plano de chamada",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "protocolo de resposta",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "plano de enfrentamento",
+     "origem": "Belém/PA, comunicação oficial de 07/07/2026, achado pela bateria negativa de 27/08/2026"
+    },
+    {
+     "termo": "protocolo de alerta e enfrentamento",
+     "origem": "Belém/PA, comunicação oficial de 07/07/2026, achado pela bateria negativa de 27/08/2026"
+    },
+    {
+     "termo": "gabinete de crise",
+     "origem": "Acre, Decreto nº 11.899/2026, achado pela revisão de natureza de 29/08/2026 (METODOLOGIA §16)"
+    },
+    {
+     "termo": "gabinete de crise hídrica",
+     "origem": "Acre, Decreto nº 11.899/2026, achado pela revisão de natureza de 29/08/2026 (METODOLOGIA §16)"
+    },
+    {
+     "termo": "plano de enfrentamento às secas",
+     "origem": "Acre 2026, achado pela revisão de natureza de 29/08/2026 (METODOLOGIA §16)"
+    },
+    {
+     "termo": "plano de ação para contingência",
+     "origem": "Acre/Saerb, achado pela revisão de natureza de 29/08/2026 (METODOLOGIA §16)"
+    },
+    {
+     "termo": "PAE",
+     "origem": "Macapá, achado na bateria negativa de 27/08/2026 (Plano de Atendimento Emergencial)"
+    }
    ]
   },
   "operacoes_sazonais": {
    "descricao": "Nomes recorrentes de operações estaduais/municipais ligadas ao ciclo — mapeadas por UF quando identificadas.",
    "termos": [
-    {"termo": "operação verão", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "operação inverno", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "operação estiagem", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "operação chuvas", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "sp sem fogo", "origem": "São Paulo, achado na revisão de 29/08/2026"},
-    {"termo": "amazonas+verde", "origem": "Amazonas, achado na revisão de natureza de 29/08/2026 (METODOLOGIA §16)"},
-    {"termo": "verão sem fogo", "origem": "Roraima, card estadual"}
+    {
+     "termo": "operação verão",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "operação inverno",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "operação estiagem",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "operação chuvas",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "sp sem fogo",
+     "origem": "São Paulo, achado na revisão de 29/08/2026"
+    },
+    {
+     "termo": "amazonas+verde",
+     "origem": "Amazonas, achado na revisão de natureza de 29/08/2026 (METODOLOGIA §16)"
+    },
+    {
+     "termo": "verão sem fogo",
+     "origem": "Roraima, card estadual"
+    }
    ]
   },
   "atos_resposta": {
    "descricao": "Vocabulário da camada de IMPACTO (rito SINPDEC/IN MDR nº 2/2016) — atos aqui pontuam ZERO no MARÉ por definição (Correção B). AVISO DE CORREÇÃO (29/08/2026): os verbos soltos 'decreta', 'homologa', 'reconhece', 'prorroga' e os acrônimos soltos 'SE'/'ECP' foram RETIRADOS do sinalizador automático do portão de natureza (ver campo sinalizadores_automaticos abaixo) por alta taxa de falso positivo — um decreto que 'homologa o Plano Estadual' ou 'reconhece o Comitê X' é tipicamente ex-ante, e 'SE' colide com a sigla do estado de Sergipe. Permanecem no dicionário para BUSCA (camada 2-4), nunca para classificação automática.",
    "termos": [
-    {"termo": "situação de emergência", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "SE", "origem": "Protocolo de Busca v2, 26/08/2026", "uso_restrito": "busca apenas, nunca sinalizador automático (colide com a UF Sergipe)"},
-    {"termo": "estado de calamidade pública", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "calamidade pública", "origem": "consolidação de 29/08/2026 — variante sem 'estado de', ocorre em texto corrido"},
-    {"termo": "ECP", "origem": "Protocolo de Busca v2, 26/08/2026", "uso_restrito": "busca apenas, nunca sinalizador automático (acrônimo ambíguo fora de contexto)"},
-    {"termo": "decreta", "origem": "Protocolo de Busca v2, 26/08/2026", "uso_restrito": "busca apenas — verbo genérico, ocorre em atos ex-ante e de resposta"},
-    {"termo": "homologa", "origem": "Protocolo de Busca v2, 26/08/2026", "uso_restrito": "busca apenas — ocorre em homologação de planos ex-ante (ex.: MT/PA na ADPF 743)"},
-    {"termo": "reconhece", "origem": "Protocolo de Busca v2, 26/08/2026", "uso_restrito": "busca apenas — verbo genérico"},
-    {"termo": "prorroga", "origem": "Protocolo de Busca v2, 26/08/2026", "uso_restrito": "busca apenas — verbo genérico, prorroga tanto planos quanto decretos de emergência"},
-    {"termo": "reconhecimento federal", "origem": "consolidação de 29/08/2026, análogo a decretos AC/PE"},
-    {"termo": "portaria de reconhecimento", "origem": "consolidação de 29/08/2026, análogo à Portaria SEDEC nº 2.659 (AC) e nº 2.203 (PE)"}
+    {
+     "termo": "situação de emergência",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "SE",
+     "origem": "Protocolo de Busca v2, 26/08/2026",
+     "uso_restrito": "busca apenas, nunca sinalizador automático (colide com a UF Sergipe)"
+    },
+    {
+     "termo": "estado de calamidade pública",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "calamidade pública",
+     "origem": "consolidação de 29/08/2026 — variante sem 'estado de', ocorre em texto corrido"
+    },
+    {
+     "termo": "ECP",
+     "origem": "Protocolo de Busca v2, 26/08/2026",
+     "uso_restrito": "busca apenas, nunca sinalizador automático (acrônimo ambíguo fora de contexto)"
+    },
+    {
+     "termo": "decreta",
+     "origem": "Protocolo de Busca v2, 26/08/2026",
+     "uso_restrito": "busca apenas — verbo genérico, ocorre em atos ex-ante e de resposta"
+    },
+    {
+     "termo": "homologa",
+     "origem": "Protocolo de Busca v2, 26/08/2026",
+     "uso_restrito": "busca apenas — ocorre em homologação de planos ex-ante (ex.: MT/PA na ADPF 743)"
+    },
+    {
+     "termo": "reconhece",
+     "origem": "Protocolo de Busca v2, 26/08/2026",
+     "uso_restrito": "busca apenas — verbo genérico"
+    },
+    {
+     "termo": "prorroga",
+     "origem": "Protocolo de Busca v2, 26/08/2026",
+     "uso_restrito": "busca apenas — verbo genérico, prorroga tanto planos quanto decretos de emergência"
+    },
+    {
+     "termo": "reconhecimento federal",
+     "origem": "consolidação de 29/08/2026, análogo a decretos AC/PE"
+    },
+    {
+     "termo": "portaria de reconhecimento",
+     "origem": "consolidação de 29/08/2026, análogo à Portaria SEDEC nº 2.659 (AC) e nº 2.203 (PE)"
+    }
    ],
    "sinalizadores_automaticos": {
     "descricao": "Subconjunto SEGURO usado pelo portão bloqueante de natureza (verificar_consistencia.py). Critério de inclusão: precisão alta o bastante para bloquear sem revisão prévia — nenhum caso ex-ante conhecido no banco contém estes termos.",
-    "termos": ["situação de emergência", "estado de calamidade pública", "calamidade pública"]
+    "termos": [
+     "situação de emergência",
+     "estado de calamidade pública",
+     "calamidade pública"
+    ]
    }
   },
   "riscos_ciclo": {
    "descricao": "Nomeação dos riscos do ciclo El Niño 2026/2027, cruzada com o risco projetado de cada UF (Boletins).",
    "termos": [
-    {"termo": "El Niño", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "ENOS", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "estiagem", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "seca", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "cheias", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "inundação", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "enxurrada", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "alagamento", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "deslizamento", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "escorregamento", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "incêndio florestal", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "queimadas", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "chuvas intensas", "origem": "METODOLOGIA §3 (termos nucleares originais)"},
-    {"termo": "crise hídrica", "origem": "Acre, achado na revisão de natureza de 29/08/2026 (METODOLOGIA §16)"},
-    {"termo": "seca hidrológica", "origem": "Pernambuco, Decreto nº 60.960/2026 (registro de resposta)"}
+    {
+     "termo": "El Niño",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "ENOS",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "estiagem",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "seca",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "cheias",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "inundação",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "enxurrada",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "alagamento",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "deslizamento",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "escorregamento",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "incêndio florestal",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "queimadas",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "chuvas intensas",
+     "origem": "METODOLOGIA §3 (termos nucleares originais)"
+    },
+    {
+     "termo": "crise hídrica",
+     "origem": "Acre, achado na revisão de natureza de 29/08/2026 (METODOLOGIA §16)"
+    },
+    {
+     "termo": "seca hidrológica",
+     "origem": "Pernambuco, Decreto nº 60.960/2026 (registro de resposta)"
+    }
    ]
   },
   "estruturas": {
    "descricao": "Órgãos e colegiados cuja criação/atuação pode ser instrumento ex-ante.",
    "termos": [
-    {"termo": "Defesa Civil", "origem": "METODOLOGIA §3 (termos nucleares originais)"},
-    {"termo": "COMPDEC", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "COMDEC", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "coordenadoria municipal de proteção e defesa civil", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "NUPDEC", "origem": "Protocolo de Busca v2, 26/08/2026"},
-    {"termo": "gabinete de crise hídrica", "origem": "Acre, achado na revisão de natureza de 29/08/2026 (ver também grupo instrumento)"},
-    {"termo": "CICOE", "origem": "Mato Grosso do Sul, achado na revisão de natureza de 29/08/2026"}
+    {
+     "termo": "Defesa Civil",
+     "origem": "METODOLOGIA §3 (termos nucleares originais)"
+    },
+    {
+     "termo": "COMPDEC",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "COMDEC",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "coordenadoria municipal de proteção e defesa civil",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "NUPDEC",
+     "origem": "Protocolo de Busca v2, 26/08/2026"
+    },
+    {
+     "termo": "gabinete de crise hídrica",
+     "origem": "Acre, achado na revisão de natureza de 29/08/2026 (ver também grupo instrumento)"
+    },
+    {
+     "termo": "CICOE",
+     "origem": "Mato Grosso do Sul, achado na revisão de natureza de 29/08/2026"
+    }
+   ]
+  },
+  "programas_permanentes": {
+   "descricao": "Programas permanentes ex-ante federais — descoberta e registro de transparência, sem crédito nesta versão (§2.4).",
+   "origem": "sessão metodológica 02/09/2026",
+   "termos": [
+    {
+     "termo": "Operação Carro-Pipa",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "OCP",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "Garantia-Safra",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "Programa Cisternas",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "P1MC",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "Água Doce",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "PREVFOGO",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "brigada florestal",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "Plano Safra",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "ZARC",
+     "origem": "sessão metodológica 02/09/2026"
+    }
+   ]
+  },
+  "rotas_sem_decreto": {
+   "descricao": "Rotas de acesso a recursos sem decreto — uso interno do bloco de gestores (§7.4), nunca em busca de instrumento.",
+   "origem": "sessão metodológica 02/09/2026",
+   "termos": [
+    {
+     "termo": "transferência voluntária",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "Transferegov",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "plano de trabalho",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "área de risco mapeada",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "emenda parlamentar",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "fundo a fundo",
+     "origem": "sessão metodológica 02/09/2026"
+    }
+   ]
+  },
+  "saude": {
+   "descricao": "Instrumentos e estruturas de preparação em saúde para o ciclo (E2/C1; recuperação, não classificação).",
+   "origem": "sessão metodológica 02/09/2026",
+   "termos": [
+    {
+     "termo": "plano de contingência para arboviroses",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "plano de contingência da dengue",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "plano de contingência para ondas de calor",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "plano de contingência para emergências em saúde pública",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "plano de ação em saúde e clima",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "plano estadual de saúde e mudança do clima",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "sala de situação",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "CIEVS",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "COE saúde",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "comitê de saúde e clima",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "VIGIDESASTRES",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "vigilância em saúde ambiental",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "VIGIAGUA",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "VIGIAR",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "alerta de calor",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "emergência em saúde pública",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "ESPIN",
+     "origem": "sessão metodológica 02/09/2026"
+    },
+    {
+     "termo": "LIRAa",
+     "origem": "sessão metodológica 02/09/2026",
+     "nota": "vigência a verificar (§15 do doc de redesenho)"
+    }
    ]
   }
  }

@@ -68,6 +68,23 @@ setTimeout(() => {
     teste("datalist com municípios de SC", q("listaMun").children.length === 295);
   } catch (e) { teste("fluxo da consulta municipal", false); }
 
+  // ── v2.2.4 (§6): portão de linguagem — "não localizamos" só com verificação completa ──
+  try {
+    q("ufSelect").value = "MT";
+    q("ufSelect").dispatchEvent(new dom.window.Event("change"));
+    q("cidadeInput").value = "Sorriso"; // município sem registro no banco → nível padrão "não verificado"
+    q("cidadeInput").dispatchEvent(new dom.window.Event("input"));
+    const cardNV = q("meuCard").innerHTML;
+    teste("linguagem: município não verificado diz 'Ainda não verificamos'", cardNV.includes("Ainda não verificamos"));
+    teste("linguagem: município não verificado NÃO diz 'Não localizamos'", !/[Nn]ão localizamos/.test(cardNV));
+    teste("contador público: números renderizados = contagem do arquivo", (() => {
+      const vr = JSON.parse(fs.readFileSync(path.join(raiz, "data", "verificacao_resumo.json"), "utf-8"));
+      const txt = (q("cvNiveis") && q("cvNiveis").textContent) || "";
+      const nNao = (vr.totais_por_nivel.nao_verificado || 0).toLocaleString("pt-BR");
+      return txt.includes(nNao);
+    })());
+  } catch (e) { teste("portão de linguagem v2.2.4", false); }
+
   try {
     const tile = d.querySelector('#regions .tile[data-uf="SC"]');
     tile.click();

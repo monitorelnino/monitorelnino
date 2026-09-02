@@ -11,6 +11,53 @@ não pontuados permanecem na versão corrente.
 
 ## [2.2.4] — em preparação (sessão de 02/09/2026, documento de redesenho)
 
+### PR-B — Verificação por níveis, "não verificado" e regras de prova (02/09/2026)
+- **Categoria `nao_verificado`** (crédito 0,0; cor `--neutro`) em motor, portões,
+  legenda, seletor e cartões. **Errata pública** (`data/erratas_v224.json`): os
+  14 registros `nao_localizado` foram reclassificados `nao_verificado` porque o
+  log não contém bateria municipal completa para nenhum deles (regra §2.1);
+  efeito nas notas: nenhum (0,0 → 0,0). `pontos_mapa.json` sincronizado.
+- **`data/log_buscas.json` migrado ao esquema v2** (15 execuções preservadas;
+  campos estruturais null, não imputados; alvo original em `alvo_v1`).
+- **`data/verificacao_municipal.json`** (5.571 municípios) e
+  **`data/verificacao_resumo.json`** como ARTEFATOS DERIVADOS regravados por
+  `recalcular_mare.py --write` e conferidos bit a bit no `--check`.
+- **`data/citacao_incompleta.json`**: fila pública com 145 registros pontuáveis
+  sem número formal de ato, com data fora do padrão ou sem URL; prazo de
+  saneamento 25/10/2026; saída da pontuação em 26/10/2026 por regra declarada
+  em 02/09/2026 (C11). Contagem sai de consulta ao dado, não do documento.
+- **`index.html`**: contador público da verificação no herói (níveis, fontes
+  suspensas pelo defeso, fila de citação); cartão da cidade com TRÊS mensagens
+  distintas (não verificado / nada localizado após verificação completa /
+  demais), corrigindo a violação do corolário §3.1; frase de escopo sem
+  "5.571 municípios cadastrados"; nota do defeso em "Como ler o MARÉ"; bloco
+  "O que o período eleitoral escondeu" oculto por data até 26/10/2026 (C14).
+- **Formulário**: tipo "plano de contingência de saúde" (nunca automatizável).
+- **Dicionário**: grupos `saude`, `programas_permanentes`, `rotas_sem_decreto`
+  com origem declarada (§2.4).
+- **Portões**: consistência valida log v2, proíbe `nao_localizado` sem bateria
+  completa e exige os grupos novos; runtime testa a linguagem ("não localizamos"
+  proibido para município não verificado) e a paridade contador↔arquivo; motor
+  confere os dois derivados. **Cinco testes negativos executados** — o quarto
+  revelou fraqueza real (resumo mentiroso passava) e levou à paridade do resumo
+  no `--check` antes de ser aprovado.
+- **Decisão editorial E8 (02/09/2026):** a nota do defeso é PERMANENTE — após
+  25/10 muda de tempo verbal e vira memória do site (index, financiamento, PDF).
+- **Mapa "Nível de verificação municipal"** (§7.3): os 5.571 na página de mapas,
+  camada padrão em traçado único (5.571 nós individuais atrasavam os demais
+  mapas — pego pelo portão de runtime), classe "fonte suspensa (defeso)" (C8),
+  crédito de figura embutido no parágrafo único do cartão.
+- **Financiamento (C9):** caixa permanente da suspensão legal 04/07–25/10, com
+  detalhe dobrável; transferências de emergência do período tratadas como
+  resposta. Faixa sombreada entra quando a série de transferências existir.
+- **Para gestores (§7.4):** bloco "O que um município pode acessar sem
+  decretar" (6 rotas com base legal e cláusula de neutralidade), tabela de
+  pedidos de LAI (lê data/lai_pedidos.json, criado vazio) e item de saúde no
+  checklist de publicação.
+- **PDFs:** documentação do índice regenerada com nota do defeso e contador
+  (determinística, SOURCE_DATE_EPOCH = corte); PDF do cidadão com linha de
+  nível de verificação.
+
 ### PR-A — Sinais de risco + harmonização de design (02/09/2026)
 - **Página "Sinais oficiais de risco" incorporada** (PR #3 rebased): peso zero,
   coletor de 3 camadas, `verificar_sinais.py` e runtime próprio. 7 de 8 fontes

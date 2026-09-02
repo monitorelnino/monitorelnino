@@ -118,7 +118,28 @@
       <li><b>Revisão anual e audiência pública</b>A Lei nº 12.340/2010 (art. 3º-A, com a redação da Lei nº 14.750/2023) prevê a elaboração do plano no prazo de um ano, com avaliação e prestação de contas anual em audiência pública. Publique a data da última revisão junto com o documento.</li>
       <li><b>Cadastro no S2iD</b>O Sistema Integrado de Informações sobre Desastres é onde a União reconhece emergências e libera recursos de resposta; município sem cadastro não acessa o Cartão de Pagamento de Defesa Civil. É também uma das variáveis do Indicador de Capacidade Municipal do governo federal.</li>
       <li><b>Arquivo legível por máquina</b>PDF com texto pesquisável (não imagem escaneada) ou página HTML. Facilita a verificação, a leitura por pessoas com deficiência visual e a preservação.</li>
+      <li><strong>Saúde:</strong> se o município tem plano de contingência de arboviroses, calor ou emergências sanitárias, publique-o com os mesmos elementos (número, data, endereço estável) — a página de Saúde do Monitor o registrará como transparência, sem peso no índice.</li>
+</ul>
+  </div>
+
+  <div class="panel" id="semdecretar">
+    <h2 style="margin-top:0;">O que um município pode acessar sem decretar emergência</h2>
+    <p class="hint">Rotas de recurso e proteção que NÃO exigem decreto de emergência — serviço informativo, com fonte primária em cada item; nenhuma recomendação de política.</p>
+    <ul style="font-size:14.5px; line-height:1.8; margin:0; padding-left:20px;">
+      <li><strong>Transferência preventiva de defesa civil</strong> — Lei 12.340/2010 e Decreto 11.219/2022: exige área de risco mapeada e plano de trabalho de obra; sem ressarcimento de gasto já feito (art. 4º, § único). Órgão: SEDEC/MIDR, via Transferegov.</li>
+      <li><strong>Garantia-Safra</strong> — Lei 10.420/2002: adesão municipal anual, antes do plantio, com cota municipal de 6%; pagamento por perda verificada pelo MDA — <em>sem decreto</em>. Ciclo 2026/27 em curso.</li>
+      <li><strong>Programa Cisternas</strong> — MDS: acesso por adesão e projeto, contínuo.</li>
+      <li><strong>Repasses fundo a fundo do SUS</strong> e instrumentos do plano federal de saúde para o ciclo (MS, apresentado ao CONASS em 26/08/2026).</li>
+      <li><strong>Transferências voluntárias e emendas</strong> — <em>suspensas até 25/10/2026</em> pelo período eleitoral (art. 73, VI, "a", Lei 9.504/1997), exceto emergência/calamidade e obrigações preexistentes.</li>
+      <li><strong>Fundos estaduais preventivos</strong>, onde existirem (ex.: programa estadual do RS) — verificar na Defesa Civil do seu estado.</li>
     </ul>
+    <p class="note" style="margin:10px 0 0;">Fontes: textos legais citados (Planalto) e páginas oficiais dos programas (gov.br). Cláusula de neutralidade: este bloco descreve rotas existentes; não recomenda desenho de política pública.</p>
+  </div>
+
+  <div class="panel" id="pedidoslai">
+    <h2 style="margin-top:0;">Pedidos de acesso à informação enviados pelo Monitor</h2>
+    <p class="hint">Transparência do próprio projeto: cada pedido de LAI enviado às defesas civis e secretarias de saúde estaduais, com protocolo, prazo e resultado.</p>
+    <div id="tabelaLai"><p class="note">Nenhum pedido registrado até o momento. Os 27+27 pedidos da fase v2.2.4 serão enviados e listados aqui com número de protocolo.</p></div>
   </div>
 
   <h2>O que conta, o que conta em parte, o que não conta</h2>
@@ -178,5 +199,14 @@
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
 <script>window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });</script>
+<script>
+(function(){
+  fetch('data/lai_pedidos.json').then(r=>r.ok?r.json():null).then(d=>{
+    if(!d || !d.pedidos || !d.pedidos.length) return;
+    var linhas=d.pedidos.map(function(p){return '<tr><td>'+p.uf+'</td><td>'+(p.orgao||'')+'</td><td>'+(p.protocolo||'—')+'</td><td>'+(p.data_envio||'')+'</td><td>'+(p.resultado||'aguardando')+'</td></tr>';}).join('');
+    document.getElementById('tabelaLai').innerHTML='<div class="tbl-wrap"><table class="mun-table"><thead><tr><th>UF</th><th>Órgão</th><th>Protocolo</th><th>Enviado</th><th>Situação</th></tr></thead><tbody>'+linhas+'</tbody></table></div>';
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
