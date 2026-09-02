@@ -24,12 +24,13 @@ semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 - **Proteção da `main` (AUD-06):** ruleset no GitHub — nenhum push direto humano,
   mudanças só por pull request, **checagem obrigatória** "Portões (pull request)"
   (workflow novo `portoes.yml`: os 12 portões + autotestes em árvore limpa a cada
-  PR), sem apagar nem forçar; **exceção única para o robô** (GitHub Actions), que
-  comita os dados da rotina. `publico` protegido contra apagamento e force-push.
-- **Commits do robô assinados (AUD-21):** `scripts/comitar_via_api.py` cria o commit
-  pela API Git Data com o token da Action — sai "Verified". `persist-credentials:
-  false` no checkout (AUD-11); Actions pinadas por SHA (checkout, setup-node,
-  setup-python, upload-artifact).
+  PR), sem apagar nem forçar; **exceção única para o robô**, via deploy key. `publico` protegido contra apagamento e force-push.
+- **Commits do robô (AUD-21) — parcial:** `scripts/comitar_via_api.py` (commit
+  assinado pela API) está pronto, mas em repositório de **usuário** o GitHub não
+  aceita a Action como exceção do ruleset; o robô publica por **deploy key** (push
+  SSH, segredo `ROBO_DEPLOY_KEY`), sem "Verified". Para ter proteção **e** assinatura,
+  converter a conta `monitorelnino` em organização (decisão da editoria).
+  `persist-credentials: false` no checkout (AUD-11); Actions pinadas por SHA.
 - **Licença dos dados (AUD-15):** **CC BY 4.0** para dados, dados abertos, feeds,
   selos e METODOLOGIA; código segue MIT. LICENSE, `datapackage.json`, CITATION.cff e
   guia de dados abertos alinhados.

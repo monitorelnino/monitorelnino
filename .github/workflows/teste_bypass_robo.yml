@@ -1,0 +1,16 @@
+name: Teste do bypass do robô (ramo de teste, não mesclar)
+on: { workflow_dispatch: {} }
+permissions: { contents: read }
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false, ref: main }
+      - run: |
+          git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
+          git commit --allow-empty -m "teste: push do robô sob o ruleset da main (commit vazio, 02/09/2026)"
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main && echo "PUSH DO ROBO OK"
+        env: { ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }} }
