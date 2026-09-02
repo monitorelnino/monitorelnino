@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cálculo canônico do índice MARÉ v2.2.3 — Monitor El Niño Brasil.
+"""Cálculo canônico do índice MARÉ v2.2.4 — Monitor El Niño Brasil.
 
 Reproduz integralmente os 27 valores publicados em data/indice.json a partir de
 data/municipios.json, data/percentual_uf.json, data/municipios_ibge_referencia.json
@@ -209,7 +209,7 @@ def calcular(simular_declarado_nacional: bool = False):
             "antecipacao": int(ant),
             "total": round(float(lin[i]), 1), "total_geo": round(float(geo[i]), 1),
             "confianca": conf, "status_estadual": st,
-            "metodo": "v2.2.3 — 3 componentes, pesos iguais (1/3): instrumento estadual, cobertura populacional (Censo 2022; crédito por categoria; agregados e declarada via mediana; Metodologia §5 e §12.4.2-3), antecipação (régua e teste do objeto: §5.2.1); linear + geométrico piso 5. Sem ranking ordinal público (decisão de 29/08/2026, Metodologia §13): o Monte Carlo 10k Dirichlet(1,1,1) seed 42 permanece como evidência de robustez em data/robustez_mc.json.",
+            "metodo": "v2.2.4 — 3 componentes, pesos iguais (1/3): instrumento estadual, cobertura populacional (Censo 2022; crédito por categoria; agregados e declarada via mediana; Metodologia §5 e §12.4.2-3), antecipação (régua e teste do objeto: §5.2.1); linear + geométrico piso 5. Sem ranking ordinal público (decisão de 29/08/2026, Metodologia §13): o Monte Carlo 10k Dirichlet(1,1,1) seed 42 permanece como evidência de robustez em data/robustez_mc.json.",
         }
         # Decisão de 29/08/2026 (Metodologia §13): o rank ordinal deixa de ser
         # produto público por UF — a resolução do instrumento não sustenta

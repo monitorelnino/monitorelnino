@@ -56,6 +56,23 @@ abre um PR → você olha a prévia → você clica em Merge → o site atualiza
 O que **não** precisa fazer: baixar arquivos, editar nada no GitHub, mexer no
 Netlify, digitar comandos.
 
+## 4a. Semana intensiva (a primeira semana depois de aprovar os PRs da v2.2.4)
+
+Durante uns sete dias o robô roda **todo dia às 6h**, um lote por vez: dia 1
+reconhecimentos federais e a camada declarada; dias 2–4 diários oficiais dos
+estados por região; dias 4–7 diários municipais em lotes. O que você faz:
+
+1. Cada manhã, a mesma olhada da rotina de segunda (abaixo): cor da bolinha.
+2. Com bolinha amarela, haverá **pistas** para julgar (documentos que o robô
+   achou mas que só um humano pode promover a registro) — abra uma conversa
+   e diga "há pistas para julgar".
+3. O fim da semana intensiva é automático: a data está numa variável do
+   repositório (`INTENSIVO_ATE`); depois dela o robô volta ao ritmo semanal
+   sozinho. Se quiser esticar ou encurtar, diga ao Claude a data nova.
+4. Quatro fontes nascem marcadas "a verificar" (S2iD, MUNIC, ICM e a cobertura
+   dos diários estaduais): o robô tenta, e o que não confirmar aparece como
+   lacuna declarada — nunca como dado inventado.
+
 ## 4. Rotina de segunda-feira (5 minutos)
 
 1. Abra github.com/monitorelnino/monitorelnino e clique na aba **Actions**.
