@@ -319,6 +319,96 @@
    "executor": "claude",
    "hash_evidencia": null,
    "alvo_v1": "Tentativa deliberada de busca em diários oficiais municipais (via API do Querido Diário) — a pedido de Patricia, para verificar se a busca estava indo à fonte primária ou só à imprensa"
+  },
+  {
+   "data": "2026-09-02",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "PB",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "Defesa Civil Paraíba lista municípios plano de contingência 2026"
+   ],
+   "n_resultados": null,
+   "resultados": "Levantamento sem LAI (02/09/2026): A União (auniao.pb.gov.br) reproduz ICM/MIDR para a PB — 4 municípios A, 39 B, 81 C, 99 D; oficina SEDEC/Plamcon em 11 municípios (antigo.paraiba.pb.gov.br). Nenhuma lista pública de municípios com plano localizada no sítio da Defesa Civil PB. ICM = camada declarada (C5), não registro.",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-02",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "SE",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "planos de contingência municipais defesa civil estadual repositório"
+   ],
+   "n_resultados": null,
+   "resultados": "Levantamento sem LAI: REPOSITÓRIO ESTADUAL PÚBLICO — defesacivil.se.gov.br/planos-de-contigencia/ (DEPEC/SUPDEC) publica os planos municipais disponibilizados pelas COMPDECs; última atualização 09/03/2026. Candidato a fonte 'repositorio_estadual' (dispensa LAI para a lista de SE).",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-02",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "AM",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "planos de contingência municipais defesa civil estadual repositório"
+   ],
+   "n_resultados": null,
+   "resultados": "Levantamento sem LAI: REPOSITÓRIO ESTADUAL PÚBLICO — defesacivil.am.gov.br/planos-de-contingencia-municipais/ (Defesa Civil AM). Candidato a fonte 'repositorio_estadual' (dispensa LAI para a lista do AM); conteúdo a inventariar.",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-02",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "PE",
+   "municipio": "Cabo de Santo Agostinho",
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "planos de contingência municipais defesa civil Pernambuco 2026"
+   ],
+   "n_resultados": null,
+   "resultados": "Levantamento sem LAI: documento primário municipal — cabo.pe.gov.br/static/pagina/defesasocial/PLANO_DE_CONTINGENCIA_2026.pdf (Cabo de Santo Agostinho, Plano de Contingência 2026). Pista para registro: falta número/data do ato instituidor (ler o PDF).",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-02",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "BR",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "reconhecimentos federais 2026 portaria SEDEC estiagem Bahia Pernambuco"
+   ],
+   "n_resultados": null,
+   "resultados": "Levantamento sem LAI: agregador Atlas Público (atlaspublico.com.br) reproduz portarias SEDEC de reconhecimento (nº 2.212 de 06/07/2026: Sento Sé/BA, Caucaia/CE e 7 municípios de PE; nº 2.420 de 27/07/2026: 12 municípios em 5 UFs do NE). Agregador = descoberta, nunca registro (§3.2); confirmar no DOU pelo coletar_s2id.py.",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
   }
  ]
 }
