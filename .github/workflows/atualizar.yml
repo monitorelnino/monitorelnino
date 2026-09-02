@@ -205,7 +205,15 @@ jobs:
           # protegidas por rollback de julgar_e_aplicar_descobertas.py — nunca
           # edição livre. O resto (demais páginas, scripts, metodologia) segue
           # fora do alcance da automação.
-          # AUD-21 (02/09/2026): o commit é criado pela API do GitHub e sai assinado/verificado.
-          python3 scripts/comitar_via_api.py --mensagem "Atualização automática de dados ($(date +%d/%m/%Y))" --ref main
+          git diff --cached --quiet && echo "Sem alterações." || git commit -m "Atualização automática de dados ($(date +%d/%m/%Y))"
+          # AUD-06: a main tem ruleset (PR + checagem obrigatória). O robô é a única exceção,
+          # via deploy key (segredo ROBO_DEPLOY_KEY) — push por SSH. Em repositório de USUÁRIO o
+          # GitHub não aceita "GitHub Actions" como ator de bypass; por isso o commit assinado
+          # pela API (scripts/comitar_via_api.py, AUD-21) fica reservado para quando a conta
+          # virar organização (decisão da editoria). Até lá, o commit do robô não sai "Verified".
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
+          rm -f ~/.ssh/robo
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
