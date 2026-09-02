@@ -3,6 +3,7 @@ name: Atualização semanal de dados
 on:
   schedule:
     - cron: "0 9 * * 1"  # atualizacao SEMANAL (compromisso publico do site), segundas 09h UTC
+    - cron: "0 9 * * *"  # v2.2.4 (E4): execucao DIARIA; atualizar.py encerra sem comitar fora da semana intensiva (INTENSIVO_ATE) se nao for segunda
   workflow_dispatch: {}    # execução manual pelo botão "Run workflow"
 
 permissions:
@@ -129,6 +130,12 @@ jobs:
       - name: Atualizar dados (boletins + instrumentos estaduais + transferências)
         env:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+          # v2.2.4 (§13): semana intensiva controlada por variáveis de repositório
+          # (Settings → Secrets and variables → Actions → Variables). Fora do período,
+          # a execução diária encerra sem coletar nem comitar (retorno ao semanal é automático).
+          INTENSIVO_ATE: ${{ vars.INTENSIVO_ATE }}
+          LOTE_DIARIOS: ${{ vars.LOTE_DIARIOS }}
+          TAMANHO_LOTE: ${{ vars.TAMANHO_LOTE }}
         run: python atualizar.py
         # atualizar.py já roda, nesta ordem e como etapas bloqueantes,
         # verificar_estrutura.js → verificar_consistencia.py →

@@ -51,12 +51,40 @@ def main():
     transf = RAIZ / "data" / "transferencias.json"
     antes = hash_arquivo(transf)
 
+    # v2.2.4 (E4/§13): cadência ANTES de qualquer coleta — em dia não publicável nada muda.
+    intensivo = os.environ.get("INTENSIVO_ATE", "")
+    dia_semana = datetime.date.today().weekday()  # 0 = segunda
+    em_intensivo = bool(intensivo) and datetime.date.today().isoformat() <= intensivo
+    if not em_intensivo and dia_semana != 0:
+        print("[cadência] fora da semana intensiva e não é segunda-feira: execução diária encerra sem coletar nem comitar.")
+        return 0
+
     rodar([sys.executable, "atualizar_boletins.py"])
 
     # Sinais oficiais de risco (01/09/2026, METODOLOGIA §23): coleta as três camadas
     # para sinais-de-risco.html. NÃO é bloqueante e NÃO toca no índice — fonte fora do
     # ar permanece como lacuna declarada na página, nunca como valor estimado.
     rodar([sys.executable, "coletar_sinais_risco.py"])
+
+    # v2.2.4 (PR-C, doc de redesenho §4): coletores da Pista A. Nenhum é bloqueante e
+    # nenhum toca a nota: escrevem atos de resposta (peso zero), pistas e o livro de
+    # fontes consultadas. Fonte fora do ar ou não confirmada = lacuna declarada no log.
+    # Lotes da semana intensiva (§13) controlados por INTENSIVO_ATE (variável de repositório):
+    rodar([sys.executable, "coletar_s2id.py"])
+    rodar([sys.executable, "coletar_declarado_nacional.py"])
+    rodar([sys.executable, "coletar_doe.py"])                       # 27 UFs; sem adaptador = lacuna
+    lote = os.environ.get("LOTE_DIARIOS") or ""
+    if not lote:
+        # lote rotativo: 1 no primeiro dia da semana intensiva, subindo até o último dia (D1..D7);
+        # fora do intensivo (segunda-feira semanal) usa o lote 1 — os lotes seguintes são pós-defeso (§13)
+        if em_intensivo:
+            faltam = (datetime.date.fromisoformat(intensivo) - datetime.date.today()).days
+            lote = str(max(1, 7 - faltam))
+        else:
+            lote = "1"
+    rodar([sys.executable, "coletar_diarios_municipais.py", "--lote", lote, "--tamanho", os.environ.get("TAMANHO_LOTE", "150")])
+    rodar([sys.executable, "recalcular_mare.py", "--simular-declarado-nacional"])  # anexo público; não altera indice.json
+    rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
 
     rodar([sys.executable, "verificar_contribuicoes.py"])
 
@@ -88,6 +116,7 @@ def main():
 
     rodar([sys.executable, "verificar_consistencia.py"], obrigatorio=True)
     rodar([sys.executable, "verificar_sinais.py"], obrigatorio=True)
+    rodar([sys.executable, "verificar_evidencias.py"], obrigatorio=True)   # aviso até 09/09, bloqueante depois
     rodar([sys.executable, "recalcular_mare.py", "--check"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_mapas.js"], obrigatorio=True)
