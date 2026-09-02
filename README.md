@@ -120,12 +120,12 @@ de municípios (não estime).
 `plano`, `plano_antigo` ou `decreto`) — `pct` = com_ato/total×100, com 2 decimais.
 `nao_el_nino`, `plano_elaboracao` e `nao_localizado` NÃO entram no numerador.
 
-**Recalcular o MARÉ** (`indice.json`) — metodologia v2.2.3 (reestruturação populacional + régua de antecipação formalizada §5.2.1, 27/08/2026), com Correção B; o cálculo canônico é `python3 recalcular_mare.py --write` (nunca recalcule à mão — ver DOCUMENTACAO_TECNICA.md §5):
+**Recalcular o MARÉ** (`indice.json`) — metodologia v2.2.4 (reestruturação populacional + régua de antecipação formalizada §5.2.1, 27/08/2026), com Correção B; o cálculo canônico é `python3 recalcular_mare.py --write` (nunca recalcule à mão — ver DOCUMENTACAO_TECNICA.md §5):
 ```
 total      = média simples dos 3 componentes (pesos iguais, 1/3 cada)
-total_geo  = média geométrica dos 4 componentes com piso 5 (penaliza desequilíbrio; estilo INFORM)
+total_geo  = média geométrica dos 3 componentes com piso 5 (penaliza desequilíbrio; estilo INFORM)
 rank_p5/p95 = intervalo de posições em 90% de 10.000 simulações Monte Carlo
-              (pesos sorteados uniformemente no simplex — Dirichlet(1,1,1,1))
+              (pesos sorteados uniformemente no simplex — Dirichlet(1,1,1))
 ```
 Justificativa: sem base para diferenciar a importância dos componentes, pesos iguais são
 a escolha neutra recomendada pelo Handbook OCDE/JRC (2008); a sensibilidade do ranking à
