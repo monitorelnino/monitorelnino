@@ -1,6 +1,6 @@
-# Monitor El Niño Brasil · MARÉ v2.2.4 — PACOTE ÚNICO (02/09/2026)
+# Monitor El Niño Brasil · MARÉ v2.3 — PACOTE ÚNICO (02/09/2026)
 
-**A versão desta edição é v2.2.4 (verificação por níveis, defeso, fontes incorporadas, saúde). Não existe v2.2.5.**
+**A versão desta edição é v2.3 — designação editorial de 02/09/2026 para o redesenho da verificação (níveis, defeso, fontes, saúde). O motor de cálculo é o mesmo da v2.2.3; nenhuma nota mudou.**
 Corte de dados: 31/08/2026 · média nacional 47,1 · 6 páginas · 265 registros municipais.
 
 Este pacote contém TUDO: o site pronto para publicar, o pipeline completo para

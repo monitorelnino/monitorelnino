@@ -9,7 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## [2.2.4] — em publicação (sessão de construção de 02/09/2026; corte de dados 31/08/2026; média nacional 47,1 inalterada)
+## [2.3] — em publicação (sessão de construção de 02/09/2026; corte de dados 31/08/2026; média nacional 47,1 inalterada)
+
+**Designação (decisão editorial de 02/09/2026):** o redesenho da verificação — níveis,
+defeso, fontes nacionais e estaduais, página de saúde — recebe o número **v2.3**. O
+motor de cálculo é idêntico ao da v2.2.3 (nenhum peso, crédito, componente ou régua
+mudou; regra C6 do defeso). A reserva antes atribuída à v2.3 (fator de alinhamento
+com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
+(METODOLOGIA §12.4.4 e §13). Nos registros abaixo, "v2.2.4" nomeia o documento de
+redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
+semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
 ### PR-F — Pedidos de acesso à informação (02/09/2026; §12, C13)
 - **`gerar_lai.py`**: 27 pedidos às defesas civis estaduais (modelo do §12),

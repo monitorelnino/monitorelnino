@@ -2,7 +2,7 @@
 
 **Público-alvo:** auditores externos, revisores técnicos e futuros mantenedores. Este documento descreve como o código funciona e como reproduzir, do zero, cada número publicado. Ele complementa — e nunca substitui — dois documentos irmãos: o **METODOLOGIA.md** (o *porquê* de cada regra: fundamentos, calibrações, errata) e o **README.md** (guia editorial: como publicar e como editar dados). Regra de leitura: se este documento e o código divergirem, **o código é a verdade** e a divergência é um defeito a reportar; se este documento e o METODOLOGIA.md divergirem sobre uma regra, o METODOLOGIA.md prevalece.
 
-Versão de referência: pacote de 27/08/2026, metodologia MARÉ v2.2.4 (reestruturação populacional; régua de antecipação formalizada — §5.2.1, sem mudança numérica) com Correção B, corte de dados 26/08/2026.
+Versão de referência: pacote de 27/08/2026, metodologia MARÉ v2.3 (reestruturação populacional; régua de antecipação formalizada — §5.2.1, sem mudança numérica) com Correção B, corte de dados 26/08/2026.
 
 ---
 
