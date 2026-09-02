@@ -4,7 +4,7 @@
 const { chromium } = require('playwright');
 const mun = require('../data/municipios.json'), atos = require('../data/atos_resposta.json').eventos;
 const est = require('../data/estados.json').ufs, indice = require('../data/indice.json'), fin = require('../data/financiamento_uf.json');
-const CAT = {plano:'Plano preventivo', plano_antigo:'Plano desatualizado', plano_elaboracao:'Em elaboração', decreto:'Decreto reativo', coberto_estadual:'Coberto pelo estado', nao_el_nino:'Não é El Niño', nao_localizado:'verificado individualmente'};
+const CAT = {plano:'Plano preventivo', plano_antigo:'Plano desatualizado', plano_elaboracao:'Em elaboração', decreto:'Decreto reativo', coberto_estadual:'Coberto pelo estado', nao_el_nino:'Não é El Niño', nao_localizado:'verificado individualmente', nao_verificado:'Ainda não verificado'};
 const FRASE_STATUS = {LAC:'O estado ainda não publicou plano estadual', ELAB:'está em elaboração e ainda não foi publicado', VIG:'não menciona o El Niño 2026/2027'};
 (async () => {
   const b = await chromium.launch(); const page = await (await b.newContext()).newPage(); page.on('dialog', d => d.dismiss());
@@ -14,8 +14,8 @@ const FRASE_STATUS = {LAC:'O estado ainda não publicou plano estadual', ELAB:'e
   // 265 registros municipais
   for (const m of mun) { const t = await gerar(m.uf, m.nome);
     if (!t.includes(CAT[m.categoria])) probs.push([m.nome + '/' + m.uf, 'categoria ausente: ' + CAT[m.categoria]]);
-    if (m.categoria !== 'nao_localizado' && m.documento && m.documento !== '—' && !t.includes(m.documento.slice(0, 40).replace(/\s+/g,' '))) probs.push([m.nome + '/' + m.uf, 'documento ausente']);
-    if (m.categoria !== 'nao_localizado' && m.fonte && m.fonte !== '—' && !t.includes(m.fonte.slice(0, 25).replace(/\s+/g,' '))) probs.push([m.nome + '/' + m.uf, 'fonte ausente']); }
+    if (!['nao_localizado','nao_verificado'].includes(m.categoria) && m.documento && m.documento !== '—' && !t.includes(m.documento.slice(0, 40).replace(/\s+/g,' '))) probs.push([m.nome + '/' + m.uf, 'documento ausente']);
+    if (!['nao_localizado','nao_verificado'].includes(m.categoria) && m.fonte && m.fonte !== '—' && !t.includes(m.fonte.slice(0, 25).replace(/\s+/g,' '))) probs.push([m.nome + '/' + m.uf, 'fonte ausente']); }
   // 5 emergências
   for (const e of atos) { const t = await gerar(e.uf, e.nome);
     if (!t.includes(e.nome + ' decretou situação de emergência em ' + e.data)) probs.push([e.nome + '/' + e.uf, 'emergência ausente']); }

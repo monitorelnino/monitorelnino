@@ -53,7 +53,10 @@ def listar():
                "data/*.json", "docs/*.md", "netlify.toml", "package.json",
                "package-lock.json", "requirements.txt", ".env.example",
                ".github/workflows/*.yml", "LICENSE",
-               "METODOLOGIA.pdf", "MARE_Indice_Documentacao.pdf"]
+               "METODOLOGIA.pdf", "MARE_Indice_Documentacao.pdf",
+               # AUD-09 (auditoria externa 02/09/2026): derivados publicados também selados
+               "dados-abertos/*.csv", "dados-abertos/datapackage.json", "CITATION.cff",
+               "feeds/*.xml", "feeds/index.json", "selos/*.svg", "assets/*.css", "docs/lai/*.txt"]
     vistos = set()
     for pad in padroes:
         for p in RAIZ.glob(pad):
@@ -79,7 +82,8 @@ def gerar():
         "# (METODOLOGIA.pdf, MARE_Indice_Documentacao.pdf — C7 da auditoria de 29/08/2026; os PDFs são",
         "# regenerados com números vivos; desde a v2.2.3 são bit-deterministicos via SOURCE_DATE_EPOCH,",
         "# fixado a partir da data de corte dos dados — regenerar não muda o hash sem mudar os dados).",
-        "# Fora da selagem: assets/, docs/sbom-*.cdx.json, docs/*-audit-resultado.json, gerar_tese.js",
+        "# Fora da selagem (declarado): docs/sbom-*.cdx.json e docs/*-audit-resultado.json (relatórios de ferramenta), gerar_tese.js (ferramenta de sessão),",
+        "# evidencias/ (cópias de documentos-fonte, indexadas por hash em data/evidencias.json), node_modules/ e arquivos de imagem. Tudo o mais versionado está selado (AUD-09).",
         "# (ferramenta de sessão — inventário em docs/AUDITORIA_CODIGO.md §2). Conferência: sha256sum -c",
     ]
     linhas += [f"{sha256(rel)}  {rel}" for rel in listar()]

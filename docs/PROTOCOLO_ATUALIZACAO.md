@@ -1,6 +1,6 @@
 # Protocolo de atualização do site publicado · Monitor El Niño Brasil
 
-**Vigência:** a partir de 01/09/2026 (site já publicado em monitorelnino.com.br).
+**Vigência:** a partir de 01/09/2026. **Estado do lançamento (02/09/2026):** o domínio monitorelnino.com.br serve a página "Em atualização" (ramo `publico`); o site completo v2.3 está no endereço reservado de prévia. O lançamento é decisão da editoria (§7).
 **Complementa:** `INSTALACAO_E_AUDITORIA.md` (como reproduzir) e
 `docs/COMO_RODAR_E_PENDENCIAS.md` (como rodar). Este documento diz **como
 uma mudança entra no site em produção** — quem faz o quê, em que ordem, com
@@ -89,7 +89,7 @@ Contribuições do formulário público seguem o caminho já definido
 (`verificar_contribuicoes.py → converter_contribuicao.py → aplicar_revisao.py`)
 e são a única reserva de julgamento humano que Claude **nunca** executa sozinho.
 
-### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.3: onze portões
+### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.3: doze portões
 
 ```
  1. node   scripts/verificar_estrutura.js        (8 páginas; tokens.css; nav canônica; :root inline proibido)
@@ -105,8 +105,10 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
 10. node   scripts/verificar_runtime_saude.js
 11. node   scripts/verificar_acessibilidade.js   (idioma, viewport, skip-link, títulos, alt, rótulos, SVG, foco,
                                                   contraste AA dos tokens, pontos de quebra; base.css obrigatória)
+12. bash   scripts/verificar_derivados.sh        (regenera índice → feeds → dados abertos → PDFs → manifesto com
+                                                  relógio no corte e exige git diff --exit-code: derivado obsoleto bloqueia)
 ```
-Critério: onze `✓` (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
+Critério: doze `✓` (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
 tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
 Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 
@@ -117,6 +119,13 @@ qualquer um deles deve ser **rebaseado na `main`** imediatamente antes do
 merge (a Action pode ter comitado na segunda-feira). Conflito em
 `data/*.json` nunca é resolvido "à mão": refaz-se a alteração por
 `aplicar_revisao.py` sobre a base nova.
+
+### 3.5 Push confirmado (lição de 02/09/2026)
+
+Nenhum push é dado como feito por uma mensagem de sucesso: a sessão confere que o commit
+existe no remoto (`git fetch && git merge-base --is-ancestor HEAD origin/<ramo>`) antes de
+abrir PR ou pedir merge. Um push falhou em silêncio nessa data e o site chegou a ser
+mesclado sem a designação de versão.
 
 ## 4. Reversão (rollback)
 

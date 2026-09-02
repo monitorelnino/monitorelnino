@@ -94,7 +94,8 @@ def datapackage(tabs, corte):
     """Descritor Frictionless com um recurso por CSV e o esquema de campos."""
     return {
         "name": "monitor-el-nino-brasil-mare", "title": "Monitor El Niño Brasil — índice MARÉ e registros verificados",
-        "version": VERSAO, "homepage": SITE, "created": corte,
+        "version": VERSAO, "homepage": SITE, "created": _iso(corte),  # AUD-10: ISO 8601
+        "corte_dos_dados": corte,
         "description": "Preparação demonstrável publicamente de estados e municípios brasileiros para o El Niño 2026/2027: instrumentos localizados em fontes oficiais, categorizados por vocabulário controlado, e o índice MARÉ (0–100). Metodologia aberta em METODOLOGIA.md.",
         "licenses": [{"name": "MIT", "path": "https://opensource.org/licenses/MIT", "title": "MIT License (a mesma do repositório; ver docs/DADOS_ABERTOS.md sobre licença de dados)"}],
         "contributors": [{"title": "Futura Evidence Lab", "role": "author", "path": "https://futuraevidencelab.com.br"}],
@@ -130,6 +131,14 @@ keywords:
 #   - type: doi
 #     value: "10.5281/zenodo.XXXXXXX"   # preencher após o release + Zenodo (docs/DADOS_ABERTOS.md)
 """
+
+
+def _iso(d_br: str) -> str:
+    """dd/mm/aaaa → aaaa-mm-ddT00:00:00Z (Frictionless exige datetime ISO 8601 em `created`)."""
+    try:
+        d, m, a = d_br.split("/"); return f"{a}-{m}-{d}T00:00:00Z"
+    except ValueError:
+        return d_br
 
 
 def gerar():
