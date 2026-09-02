@@ -37,7 +37,23 @@ jobs:
           node scripts/verificar_runtime_saude.js
           node scripts/verificar_acessibilidade.js
       - name: Portão 12 — derivados em árvore limpa
+        id: p12
+        continue-on-error: true
         run: bash scripts/verificar_derivados.sh
+      - name: Diagnóstico do portão 12 (relatório no repositório privado)
+        if: steps.p12.outcome == 'failure'
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          { echo "workflow=portoes ramo=${GITHUB_HEAD_REF} commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "--- git diff --stat ---"; git diff --stat -- . ':!data/snapshot_feed.json'
+            echo "--- diff (texto, 120 linhas) ---"; git diff -- . ':!data/snapshot_feed.json' ':!*.pdf' | head -120
+            echo "--- versoes ---"; python3 --version; node --version; python3 -c "import reportlab,pypdf;print('reportlab',reportlab.Version,'pypdf',pypdf.__version__)"; fc-list 2>/dev/null | wc -l
+          } > /tmp/relatorio.txt 2>&1
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
+          mkdir -p /tmp/registro/relatorios && cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portoes_p12.txt"
+          cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -q -m "portoes p12 diagnostico" && git push -q
+          exit 1
       - name: Autotestes dos coletores
         run: |
           for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_saude gerar_lai; do python3 $c.py --autoteste; done
