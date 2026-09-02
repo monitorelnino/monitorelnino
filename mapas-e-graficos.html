@@ -110,21 +110,7 @@
           <p class="note" style="margin-top:8px;">Decretos de emergência são atos de resposta a dano já ocorrido; o MARÉ mede preparação demonstrada antes do evento, então eles nunca pontuam (<a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Correção B</a>, §5.6). Este mapa é um registro de transparência à parte — não um histórico completo do país, mas o que foi localizado em fontes oficiais.</p>
         </details>
   </div>
-<div class="map-box">
-        <h3 class="map-card-h">7 · Transferências e repasses — habilitação federal</h3>
-        <p class="note" style="margin:0 0 8px;">Repasses estaduais confirmados (Prepara RS) em azul, com tamanho proporcional ao valor; municípios habilitados a recurso federal de resposta em ocre. Passe o mouse para ver faixa e valor.</p>
-        <svg id="mapDinheiro" role="img" aria-label="Mapa das transferências: repasses estaduais confirmados e municípios habilitados a recursos federais" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
-        <div class="map-legend">
-          <span><i style="background:#35566B"></i>Repasse confirmado (Prepara RS)</span>
-          <span><i style="background:#C69B72"></i>Habilitado a recurso federal</span>
-        </div>
-        <details style="margin-top:10px;">
-          <summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Ver números e cobertura do mapa</summary>
-          <p class="note" style="margin-top:8px;">Repasses estaduais (preventivos): <strong id="dinTotalRS">—</strong> confirmados pelo Prepara RS a <strong id="dinNumRS">—</strong> municípios gaúchos, fundo a fundo (<span id="dinFaixas">—</span>). Pagos antes do dano do ciclo, condicionados a plano de contingência atualizado e coordenador designado (Resolução FUNDEC nº 008/2026), com focalização pelo histórico de calamidades de 2023-24. Não localizamos programa análogo em outro estado até o corte.</p>
-          <p class="note" style="margin-top:6px;">Habilitação federal (rota de resposta): <strong id="dinNumFed">—</strong> municípios do país têm reconhecimento vigente e podem solicitar recursos de resposta pelo S2iD, com crédito no Cartão de Pagamento de Defesa Civil. Habilitação não é recebimento.</p>
-          <p class="note" style="margin-top:6px;">Cobertura do mapa: apenas municípios nomeados em fonte pública. Em PB, RN e RO, os totais oficiais (147, 166 e 38) superam os nomeados; a diferença está registrada nos percentuais por UF.</p>
-        </details>
-      </div>
+
       </div>
     </div>
   
@@ -143,11 +129,7 @@
         <p class="note">Distribuição dos status por região; mostra se a ausência de plano é dispersa ou concentrada.</p>
         <div class="canvas-wrap"><canvas id="chartRegion"></canvas></div>
       </div>
-      <div class="chart-box">
-        <h3 class="map-card-h">3 · Financiamento federal por área (R$)</h3>
-        <p class="note">Quantos programas federais atuam em cada área de risco; programas que cobrem mais de uma área contam em cada uma delas.</p>
-        <div class="canvas-wrap"><canvas id="chartFinance"></canvas></div>
-      </div>
+
       <div class="chart-box">
         <h3 class="map-card-h">4 · Status das 27 capitais</h3>
         <p class="note">O retrato muda quando se olha a execução municipal, não só a estadual.</p>
@@ -172,38 +154,10 @@
 
   <div class="panel" style="margin-bottom:24px;">
     <h2 id="financiamento">Como o dinheiro chega</h2>
-    <div class="chart-box" style="border-left:4px solid var(--amber); margin:12px 0 16px;">
-      <p class="note" style="margin:0;" id="notaDefesoFin"><strong>Transferências voluntárias: suspensas por lei de 04/07 a 25/10/2026</strong> (art. 73, VI, "a", Lei 9.504/1997) — <em>não é inação</em>: é vedação do período eleitoral. Nota permanente, como memória do site.</p>
-      <details style="margin-top:6px;"><summary style="cursor:pointer; color:var(--link); font-weight:600;">Entenda a regra e as exceções</summary>
-        <p class="note" style="margin:6px 0 0;">A vedação admite obrigações preexistentes com cronograma e situações de emergência ou calamidade. Transferências de emergência feitas no intervalo são <strong>resposta a dano</strong>: aparecem na cor de resposta e nunca são somadas à preparação. Quando a série de transferências for publicada neste módulo, o intervalo 04/07–25/10 aparecerá como faixa sombreada com o mesmo rótulo — inclusive depois de 25/10 (metodologia, §24).</p>
-      </details>
+    <div class="chart-box" style="border-left:4px solid var(--amber);">
+      <p class="note" style="margin:0;">O conteúdo sobre dinheiro — as sete rotas por que o recurso público chega ao município, a série com a faixa do defeso, o mapa de habilitação federal por estado, os compromissos federais e o financiamento por área — ganhou página própria (decisão E9): <a href="financiamento.html"><strong>Por onde o dinheiro chega</strong></a>. Peso zero no índice; nada muda no MARÉ.</p>
     </div>
-    <p class="hint">Como o dinheiro do ciclo El Niño chega (ou não) aos municípios, e onde verificar cada etapa — contexto para o mapa de transferências (item 7, acima). Importante: a maior parte do plano federal de R$1,335 bi é execução direta da União (estoques CONAB, cestas, ForSUS) e <strong>não vira transferência municipal</strong>; o que chega às prefeituras são as transferências obrigatórias de defesa civil (Lei 12.340/2010) e repasses estaduais fundo a fundo.</p>
-    <div class="charts-grid">
-<div class="chart-box">
-        <h3 class="map-card-h">1 · O caminho do recurso federal de resposta</h3>
-        <p class="note">Seis etapas rastreáveis, do decreto municipal ao cartão de pagamento.</p>
-        <ol style="font-size:14px; line-height:1.8; color:var(--ink); margin:0; padding-left:20px;">
-          <li>Município decreta situação de emergência/calamidade</li>
-          <li>Registra o desastre no <strong>S2iD</strong> (FIDE + documentos)</li>
-          <li><strong>SEDEC/MIDR reconhece</strong> por portaria no DOU: <em>é o gatilho do dinheiro</em></li>
-          <li>Município solicita recursos de resposta pelo S2iD (plano de trabalho)</li>
-          <li>Recurso liberado no <strong>Cartão de Pagamento de Defesa Civil (CPDC)</strong>, sem convênio</li>
-          <li>Prestação de contas; reconstrução/prevenção seguem via Transferegov</li>
-        </ol>
-      </div>
-      <div class="chart-box">
-        <h3 class="map-card-h">2 · Onde monitorar cada etapa (fontes oficiais)</h3>
-        <p class="note">Endereços públicos de verificação, na ordem do caminho do recurso.</p>
-        <ul id="fontesMonit" style="font-size:14px; line-height:1.9; margin:0; padding-left:20px;"></ul>
-      </div>
-          </div>
   </div>
-
-
-  
-
-  
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -284,24 +238,7 @@ new Chart(document.getElementById('chartRegion'), {
 });
 
 // ---- 3. Financiamento federal por área (R$ reais, calculados a partir de Registro_Federal) ----
-const financeData = [
-  {label:'Segurança Hídrica', value:14217500000},
-  {label:'Saúde', value:1335000000},
-  {label:'Segurança Alimentar', value:1335000000},
-  {label:'Incêndios Florestais', value:858000000},
-];
-new Chart(document.getElementById('chartFinance'), {
-  type:'bar',
-  data:{ labels: financeData.map(d=>d.label),
-    datasets:[{ data: financeData.map(d=>d.value),
-      backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? '#35566B'
-        : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? '#A65F3F'
-        : /aliment|agr[íi]cola|safra/i.test(d.label) ? '#C69B72'
-        : /sa[úu]de/i.test(d.label) ? '#8FA6B5' : '#B9B2A4'),
-      borderRadius:4 }] },
-  options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{ legend:{display:false} },
-    scales:{ x:{ grid:{color:'#D6C4AC'}, ticks:{ callback:v => 'R$ '+(v/1e9).toFixed(1)+'bi' } }, y:{ grid:{display:false} } } }
-});
+// (gráfico 3 — financiamento federal por área — migrou para financiamento.html, E9)
 
 // ---- 4. Status das 27 capitais ----
 const capStatusCounts = {};
@@ -668,56 +605,7 @@ new Chart(document.getElementById('chartAreas'), {
       y:{ grid:{display:false}, ticks:{font:{size:12.5}} } } }
 });
 
-// =========================================================
-// FINANCIAMENTO E TRANSFERÊNCIAS
-// =========================================================
-document.getElementById('fontesMonit').innerHTML = TRANSFERENCIAS.fontes_monitoramento.map(f =>
-  `<li><a href="${f.url}" target="_blank" rel="noopener" style="color:var(--link);">${f.nome}</a></li>`).join('');
-
-// ---- Mapa do dinheiro ----
-const svgDin = d3.select('#mapDinheiro');
-svgDin.append('g').selectAll('path')
-  .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', '#E4DBC6').attr('class', 'uf-path')
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-
-// camada 1: habilitados a recurso federal (reconhecimento SEDEC = categoria decreto)
-const habilitados = MAP_POINTS.filter(p => p.categoria === 'decreto');
-const HAB_SET = new Set(habilitados.map(p => (p.nome || '').toLowerCase() + '|' + p.uf));
-svgDin.append('g').selectAll('circle.hab')
-  .data(habilitados).join('circle')
-  .attr('cx', d=>projection([d.lon,d.lat])[0])
-  .attr('cy', d=>projection([d.lon,d.lat])[1])
-  .attr('r', 3).attr('fill', '#C69B72')
-  .attr('stroke', '#F5F1E8').attr('stroke-width', 1)
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>Reconhecimento federal vigente: habilitado a solicitar recursos de resposta (S2iD → CPDC)`, evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-
-// camada 2: repasses confirmados (Prepara RS), raio proporcional ao valor
-const RAIO_FAIXA = {300000: 6, 250000: 5, 200000: 4};
-const repassesGeo = TRANSFERENCIAS.repasses_rs.filter(r => r.lat);
-svgDin.append('g').selectAll('circle.rep')
-  .data(repassesGeo).join('circle')
-  .attr('cx', d=>projection([d.lon,d.lat])[0])
-  .attr('cy', d=>projection([d.lon,d.lat])[1])
-  .attr('r', d=>RAIO_FAIXA[d.valor] || 4)
-  .attr('fill', '#35566B')
-  .attr('stroke', '#F5F1E8').attr('stroke-width', 1.6)
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.municipio} (RS)</strong><br>Faixa: ${d.faixa}<br>Repasse confirmado: R$ ${d.valor.toLocaleString('pt-BR')} (Prepara RS, 09/07/2026)`, evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-
-document.getElementById('dinTotalRS').textContent = 'R$ ' + (repassesGeo.reduce((s,r)=>s+r.valor,0)).toLocaleString('pt-BR');
-document.getElementById('dinNumRS').textContent = repassesGeo.length;
-document.getElementById('dinNumFed').textContent = habilitados.length;
-const __porFaixa = {};
-repassesGeo.forEach(r => { __porFaixa[r.faixa] = (__porFaixa[r.faixa] || 0) + 1; });
-document.getElementById('dinFaixas').textContent = Object.entries(__porFaixa)
-  .sort((a, b) => b[0].localeCompare(a[0]))
-  .map(([fx, n]) => `${fx}: ${n} municípios`).join(' · ');
+// (financiamento e transferências — mapa do dinheiro e fontes de monitoramento — migraram para financiamento.html, E9)
 
 // ---- Siglas das UFs sobre os três mapas ----
 function addSiglas(svg){
@@ -733,7 +621,7 @@ function addSiglas(svg){
     .style('pointer-events','none')
     .text(d=>d.properties.sigla);
 }
-addSiglas(svgPoints); addSiglas(svgCob); addSiglas(svgNat); addSiglas(svgDin); addSiglas(svgPrior); addSiglas(svgResp);
+addSiglas(svgPoints); addSiglas(svgCob); addSiglas(svgNat); addSiglas(svgPrior); addSiglas(svgResp);
 
 // ---- Declarada × Documentada ----
 const UFS_DECL = ['PR','SC','RS'];

@@ -1,0 +1,71 @@
+{
+ "_governanca": "Compromissos federais e estaduais com dinheiro e prazo, já verificados em fonte primária (transferencias.json), e a execução correspondente no Portal (aguardando coleta). Nada estimado.",
+ "corte": "02/09/2026",
+ "itens": [
+  {
+   "nome": "Prepara RS — repasse fundo a fundo (FUNDEC → fundos municipais)",
+   "esfera": "Estadual (RS)",
+   "instrumento": "Resolução nº 008/FUNDEC/2026 (12/06/2026); autorização de repasse em 09/07/2026",
+   "valor_total": 32300000,
+   "condicionalidade": "Plano de contingência municipal atualizado + coordenador designado + plano de aplicação",
+   "fonte": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "rota": "rE",
+   "execucao": {
+    "status": "aguardando_coleta",
+    "fonte_prevista": "Portal da Transparência — execução por ação orçamentária"
+   }
+  },
+  {
+   "nome": "Transferências obrigatórias de defesa civil (resposta) — CPDC",
+   "esfera": "Federal (SEDEC/MIDR)",
+   "instrumento": "Lei 12.340/2010; solicitação via S2iD após reconhecimento federal",
+   "valor_total": null,
+   "condicionalidade": "Decreto municipal + registro no S2iD + portaria de reconhecimento no DOU",
+   "fonte": "https://s2id.mi.gov.br",
+   "rota": "r3",
+   "execucao": {
+    "status": "aguardando_coleta",
+    "fonte_prevista": "Portal da Transparência — execução por ação orçamentária"
+   }
+  },
+  {
+   "nome": "Plano federal El Niño — R$1,335 bi",
+   "esfera": "Federal (execução direta)",
+   "instrumento": "Anúncio 29/07/2026; MP nº 1.367/2026 (R$337 mi)",
+   "valor_total": 1335000000,
+   "condicionalidade": "Majoritariamente execução federal direta (CONAB, cestas, ForSUS) — NÃO é transferência municipal",
+   "fonte": "https://www.gov.br/mds/pt-br/noticias/planejamento-para-enfrentamento-de-eventos-climaticos-associados-ao-el-nino-preve-r-1-335-bilhao-para-acoes-de-preparacao-e-resposta",
+   "rota": "r5",
+   "execucao": {
+    "status": "aguardando_coleta",
+    "fonte_prevista": "Portal da Transparência — execução por ação orçamentária"
+   }
+  },
+  {
+   "nome": "Fecap — obras de drenagem/pontes (PR)",
+   "esfera": "Estadual (PR)",
+   "instrumento": "Fundo Estadual para Calamidades Públicas (Fecap), 2025–2026",
+   "valor_total": 16000000,
+   "condicionalidade": "Obras de infraestrutura (drenagem/pontes) em Londrina, Guaratuba/Guarapuava (divergência de fonte) e Espigão Alto do Iguaçu — financiamento de obra, não plano de contingência",
+   "fonte": "Imprensa regional (fonte divergente sobre Guaratuba vs Guarapuava)",
+   "rota": "rE",
+   "execucao": {
+    "status": "aguardando_coleta",
+    "fonte_prevista": "Portal da Transparência — execução por ação orçamentária"
+   }
+  },
+  {
+   "nome": "PPA 2024–2027 — Programa 1158 (Enfrentamento da Emergência Climática), ação 20YJ",
+   "esfera": "Federal",
+   "instrumento": "PPA 2024–2027 / LOA 2026",
+   "valor_total": null,
+   "condicionalidade": null,
+   "fonte": null,
+   "rota": "r3",
+   "execucao": {
+    "status": "a_verificar",
+    "fonte_prevista": "SIOP/Portal da Transparência (§15: verificar antes de citar valores)"
+   }
+  }
+ ]
+}

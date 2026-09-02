@@ -272,6 +272,67 @@
    "rowCount": 5571
   },
   {
+   "name": "painel_amostral",
+   "path": "painel_amostral.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Painel amostral estratificado (E11): 313 municípios (12 por UF; DF = 1), sorteio com semente 20260902 publicada; lista imutável (hash em data/painel/lista.json). Reverificado toda semana. Peso zero.",
+   "schema": {
+    "fields": [
+     {
+      "name": "ibge",
+      "type": "string"
+     },
+     {
+      "name": "uf",
+      "type": "string"
+     },
+     {
+      "name": "regiao",
+      "type": "string"
+     },
+     {
+      "name": "municipio",
+      "type": "string"
+     },
+     {
+      "name": "populacao",
+      "type": "string"
+     },
+     {
+      "name": "porte",
+      "type": "string"
+     },
+     {
+      "name": "marcadores",
+      "type": "string"
+     },
+     {
+      "name": "controle",
+      "type": "string"
+     },
+     {
+      "name": "nivel_verificacao",
+      "type": "string"
+     },
+     {
+      "name": "instrumento_localizado",
+      "type": "string"
+     },
+     {
+      "name": "natureza",
+      "type": "string"
+     },
+     {
+      "name": "decreto_reconhecido",
+      "type": "string"
+     }
+    ]
+   },
+   "rowCount": 313
+  },
+  {
    "name": "saude_uf",
    "path": "saude_uf.csv",
    "format": "csv",

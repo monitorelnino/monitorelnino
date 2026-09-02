@@ -1,0 +1,94 @@
+{
+ "_governanca": "Modelo das sete rotas + estadual (§7.8, §28 da METODOLOGIA). Ordem e cores fixas em todas as figuras. Cláusula de neutralidade: descreve rotas existentes, não recomenda desenho de política.",
+ "corte": "02/09/2026",
+ "rotas": [
+  {
+   "id": "r1",
+   "n": 1,
+   "nome": "Repartição constitucional",
+   "curta": "FPM · cota ICMS/IPVA",
+   "chave": "regra",
+   "cor": "#35566B",
+   "base_legal": "CF art. 158–159; FPM = 22,5% de IR+IPI mais adicionais de 1% (jul/set/dez); cota de 25% do ICMS estadual",
+   "decreto_destranca": "nada — flui por regra, sem condição de emergência",
+   "ex_ante": true
+  },
+  {
+   "id": "r2",
+   "n": 2,
+   "nome": "Fundo a fundo setorial",
+   "curta": "FNS · FNAS · FUNDEB/FNDE",
+   "chave": "regra",
+   "cor": "#5E7C93",
+   "base_legal": "SUS (Lei 8.080/1990, blocos de financiamento); SUAS (Lei 8.742/1993); FUNDEB (Lei 14.113/2020)",
+   "decreto_destranca": "nada na regra; abre a exceção da rota 4",
+   "ex_ante": true
+  },
+  {
+   "id": "r3",
+   "n": 3,
+   "nome": "Defesa civil obrigatória",
+   "curta": "resposta · recuperação · prevenção-obra (CPDC)",
+   "chave": "decreto",
+   "cor": "#7C4A34",
+   "base_legal": "Lei 12.340/2010; Decreto 11.219/2022 (arts. 6–8: prevenção = obra em área de risco mapeada; art. 4º par. único: sem ressarcimento de gasto próprio; art. 37: suspensão sem risco ou decreto)",
+   "decreto_destranca": "resposta e recuperação exigem reconhecimento federal do decreto; prevenção-obra exige área mapeada e plano de trabalho de engenharia",
+   "ex_ante": false
+  },
+  {
+   "id": "r4",
+   "n": 4,
+   "nome": "Emergência setorial",
+   "curta": "SUAS/PVAC · portarias do MS",
+   "chave": "decreto",
+   "cor": "#A65F3F",
+   "base_legal": "SUAS: portaria de 2026 por porte (PVAC); SUS: portarias específicas do MS por evento",
+   "decreto_destranca": "o repasse extraordinário; sem ressarcimento retroativo (penaliza quem age antes)",
+   "ex_ante": false
+  },
+  {
+   "id": "r5",
+   "n": 5,
+   "nome": "Voluntárias e emendas com finalidade",
+   "curta": "Transferegov · emendas individuais/bancada",
+   "chave": "discricionária",
+   "cor": "#C69B72",
+   "base_legal": "Lei 9.504/1997, art. 73, VI, 'a': suspensas de 04/07 a 25/10/2026, salvo obrigações preexistentes e emergência/calamidade; Lei 14.133/2021 art. 75, VIII (dispensa de licitação em emergência); LRF art. 65",
+   "decreto_destranca": "a exceção da vedação eleitoral e a dispensa de licitação",
+   "ex_ante": true
+  },
+  {
+   "id": "r6",
+   "n": 6,
+   "nome": "Transferências especiais",
+   "curta": "art. 166-A, I (emendas 'pix')",
+   "chave": "discricionária",
+   "cor": "#87855C",
+   "base_legal": "CF art. 166-A, I (EC 105/2019): sem finalidade definida, sem convênio",
+   "decreto_destranca": "nada",
+   "ex_ante": true
+  },
+  {
+   "id": "r7",
+   "n": 7,
+   "nome": "Execução direta da União no território",
+   "curta": "Carro-Pipa · Cisternas · Garantia-Safra · obras federais",
+   "chave": "direta",
+   "cor": "#647A7E",
+   "base_legal": "Garantia-Safra (Lei 10.420/2002: adesão anual antes do plantio, cotas 2/6/12/40%); Programa Cisternas (MDS); Operação Carro-Pipa (Exército/MIDR)",
+   "decreto_destranca": "Carro-Pipa: inclusão condicionada a reconhecimento federal na maior parte dos casos; Garantia-Safra: nenhum decreto",
+   "ex_ante": true
+  },
+  {
+   "id": "rE",
+   "n": 8,
+   "nome": "Rota estadual",
+   "curta": "cota ICMS · fundo a fundo preventivo (Prepara RS) · convênios",
+   "chave": "regra/discricionária",
+   "cor": "#4F7D48",
+   "base_legal": "Prepara RS: Resolução nº 008/FUNDEC/2026 (12/06/2026) — fundo a fundo estadual PREVENTIVO, condicionado a plano de contingência atualizado (precedente, E12)",
+   "decreto_destranca": "nada no Prepara RS (é ex-ante); convênios seguem a regra estadual",
+   "ex_ante": true
+  }
+ ]
+}

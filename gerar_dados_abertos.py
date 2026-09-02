@@ -66,6 +66,10 @@ def tabelas(dados):
               "decreto_reconhecido": "" if v.get("decreto_reconhecido") is None else v["decreto_reconhecido"],
               "decreto_homologado": "" if v.get("decreto_homologado") is None else v["decreto_homologado"]}
              for v in sorted(dados.get("verificacao_municipal", []), key=lambda x: (x["uf"], x["nome"]))]
+    painel = [{"ibge": f["ibge"], "uf": f["uf"], "regiao": f["regiao"], "municipio": f["nome"], "populacao": f["populacao"], "porte": f["porte"], "marcadores": ";".join(f["marcadores"]),
+               "controle": f["controle"], "nivel_verificacao": f["nivel_verificacao"], "instrumento_localizado": f.get("instrumento_localizado") or "", "natureza": f.get("natureza") or "",
+               "decreto_reconhecido": "" if f.get("decreto_reconhecido") is None else f["decreto_reconhecido"]}
+              for f in (dados.get("painel") or {}).get("fichas", [])]
     saude = [{"uf": uf, "status": u.get("status"), "orgao": u.get("orgao") or "", "documento": u.get("doc") or "",
               "numero": u.get("numero") or "", "data": u.get("data") or "", "natureza_doc": u.get("natureza_doc"),
               "consist": u.get("consist"), "riscos_sanitarios_projetados": "; ".join(u.get("risco_sanitario_projetado", [])),
@@ -85,6 +89,8 @@ def tabelas(dados):
         # v2.2.4 (§7.7): verificação por níveis e camada de saúde (peso zero)
         "verificacao_municipal": (verif, ["ibge", "uf", "municipio", "nivel_verificacao", "ultima_verificacao", "plano_localizado", "decreto_reconhecido", "decreto_homologado"],
                                   "Nível de verificação alcançado pelo Monitor em cada um dos 5.571 municípios (nao_verificado/nacional/estadual/municipal_completo); 'nada localizado' só com verificação completa."),
+        "painel_amostral": (painel, ["ibge", "uf", "regiao", "municipio", "populacao", "porte", "marcadores", "controle", "nivel_verificacao", "instrumento_localizado", "natureza", "decreto_reconhecido"],
+                            "Painel amostral estratificado (E11): 313 municípios (12 por UF; DF = 1), sorteio com semente 20260902 publicada; lista imutável (hash em data/painel/lista.json). Reverificado toda semana. Peso zero."),
         "saude_uf": (saude, ["uf", "status", "orgao", "documento", "numero", "data", "natureza_doc", "consist", "riscos_sanitarios_projetados", "data_verificacao", "url"],
                      "Instrumento estadual de saúde para o ciclo, por UF (NOVO/READ/VIG/ELAB/LAC/NAO_VERIFICADO). Registro de transparência: nunca pontua."),
     }
@@ -146,6 +152,8 @@ def gerar():
     dados = {k: json.load(open(DATA / f"{k}.json", encoding="utf-8")) for k in ("indice", "estados", "municipios", "atos_resposta")}
     if (DATA / "historico_mudancas.json").exists():
         dados["historico"] = json.load(open(DATA / "historico_mudancas.json", encoding="utf-8"))
+    if (DATA / "painel" / "fichas.json").exists():
+        dados["painel"] = json.load(open(DATA / "painel" / "fichas.json", encoding="utf-8"))
     for k in ("verificacao_municipal", "saude_uf"):  # v2.2.4
         if (DATA / f"{k}.json").exists():
             dados[k] = json.load(open(DATA / f"{k}.json", encoding="utf-8"))
