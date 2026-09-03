@@ -1,8 +1,10 @@
 {
  "_governanca": "Modelo das sete rotas + estadual (§7.8, §28 da METODOLOGIA). Ordem e cores fixas em todas as figuras. Cláusula de neutralidade: descreve rotas existentes, não recomenda desenho de política.",
- "corte": "02/09/2026",
+ "corte": "03/09/2026",
  "rotas": [
   {
+   "alcanca_estado": true,
+   "base_estado": "FPE — CF art. 159, I, a (21,5% de IR+IPI aos estados) e cota-parte do ICMS (art. 158, IV) repassada aos municípios",
    "id": "r1",
    "n": 1,
    "nome": "Repartição constitucional",
@@ -14,6 +16,8 @@
    "ex_ante": true
   },
   {
+   "alcanca_estado": true,
+   "base_estado": "fundo a fundo aos fundos estaduais de saúde e de assistência social (Lei 8.080/1990; Lei 8.742/1993); FUNDEB com complementação da União aos estados",
    "id": "r2",
    "n": 2,
    "nome": "Fundo a fundo setorial",
@@ -25,6 +29,8 @@
    "ex_ante": true
   },
   {
+   "alcanca_estado": true,
+   "base_estado": "Lei 12.340/2010, art. 1º: transferências da União a estados E municípios para resposta, recuperação e prevenção; estados repassam ou executam",
    "id": "r3",
    "n": 3,
    "nome": "Defesa civil obrigatória",
@@ -36,6 +42,8 @@
    "ex_ante": false
   },
   {
+   "alcanca_estado": true,
+   "base_estado": "portarias do MS e do MDS também habilitam gestores estaduais (SUS/SUAS) em emergência",
    "id": "r4",
    "n": 4,
    "nome": "Emergência setorial",
@@ -47,6 +55,8 @@
    "ex_ante": false
   },
   {
+   "alcanca_estado": true,
+   "base_estado": "convênios e emendas com finalidade também a órgãos estaduais (Transferegov); mesma vedação eleitoral",
    "id": "r5",
    "n": 5,
    "nome": "Voluntárias e emendas com finalidade",
@@ -58,6 +68,8 @@
    "ex_ante": true
   },
   {
+   "alcanca_estado": true,
+   "base_estado": "CF art. 166-A: transferências especiais a estados e municípios",
    "id": "r6",
    "n": 6,
    "nome": "Transferências especiais",
@@ -69,6 +81,8 @@
    "ex_ante": true
   },
   {
+   "alcanca_estado": false,
+   "base_estado": null,
    "id": "r7",
    "n": 7,
    "nome": "Execução direta da União no território",
@@ -80,6 +94,8 @@
    "ex_ante": true
   },
   {
+   "alcanca_estado": null,
+   "base_estado": "origem ESTADUAL: cota ICMS (CF art. 158, IV), fundo a fundo preventivo (Prepara RS) e convênios estaduais",
    "id": "rE",
    "n": 8,
    "nome": "Rota estadual",
