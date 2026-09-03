@@ -41,7 +41,7 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["O monitor", "Mapas", "Sinais de risco", "Saúde", "Financiamento", "Proteja-se", "Enviar dados", "Gestores", "Imprensa"]; // 03/09/2026: dez páginas (Imprensa a pedido da editoria)
+  const NAV_ORDEM = ["O monitor", "Sinais de risco", "Mapas", "Financiamento", "Saúde", "Proteja-se", "Gestores", "Enviar dados", "Imprensa"]; // ordem narrativa (03/09/2026): risco → o que foi publicado → detalhe → dinheiro → saúde → cidadão → gestor → contribuir → imprensa // 03/09/2026: dez páginas (Imprensa a pedido da editoria)
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {

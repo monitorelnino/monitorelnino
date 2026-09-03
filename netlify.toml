@@ -38,3 +38,51 @@
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://vlibras.gov.br; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://vlibras.gov.br https://*.vlibras.gov.br; frame-src https://vlibras.gov.br; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# ── Cache para lançamento com muitos acessos simultâneos (03/09/2026) ──────────────────
+# O site é estático e servido pela CDN do Netlify (escala horizontal por padrão; brotli/gzip
+# automáticos). O que controla o custo por visita é o cache no navegador e na borda:
+# HTML sempre revalidado (mudanças aparecem em minutos); dados JSON por 5 min com
+# revalidação em segundo plano (a rotina publica no máximo uma vez por dia); folhas,
+# módulo, fontes, selos e PDFs por mais tempo. Peso por visita ≈ 300 KB comprimidos na
+# página inicial (medido em 03/09/2026).
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, stale-while-revalidate=900"
+[[headers]]
+  for = "/data/financiamento/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, stale-while-revalidate=900"
+[[headers]]
+  for = "/data/painel/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, stale-while-revalidate=900"
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=86400"
+[[headers]]
+  for = "/selos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=3600"
+[[headers]]
+  for = "/feeds/*"
+  [headers.values]
+    Cache-Control = "public, max-age=600"
+[[headers]]
+  for = "/dados-abertos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

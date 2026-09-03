@@ -20,6 +20,32 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Preparação para o lançamento oficial (03/09/2026, a pedido da editoria)
+- **Ordem narrativa das páginas:** O monitor → Sinais de risco → Mapas → Financiamento →
+  Saúde → Proteja-se → Gestores → Enviar dados → Imprensa (risco anunciado → o que foi
+  publicado → o detalhe → o dinheiro → o setor → o cidadão → o gestor → contribuir →
+  imprensa). Portão 1 atualizado.
+- **Muitos acessos simultâneos:** o site é estático na CDN do Netlify (escala por padrão;
+  brotli automático). Cabeçalhos de cache por caminho (HTML sempre revalidado; dados JSON
+  5 min com revalidação em segundo plano; folhas/módulo 1 dia; selos, feeds, dados
+  abertos e PDFs 10–60 min). Os três JSON mais pesados foram compactados sem mudar
+  conteúdo (referência IBGE 597→467 KB; malha 289→120 KB). Peso medido da página
+  inicial: ≈300 KB comprimidos. Limites do plano gratuito a acompanhar no lançamento:
+  100 GB/mês de tráfego (≈330 mil visitas à inicial) e **100 envios/mês no formulário**
+  (Netlify Forms) — acima disso o formulário para de aceitar sem aviso.
+- **Release reescrito** com a componente narrativa da editoria: a nota baixa é evidência
+  de preparação não tornada pública — o Monitor busca nos canais que a lei define como o
+  lugar da preparação (Lei 12.608/2012; LAI), e o que não está lá não cumpriu o rito nem
+  pode ser conferido ou cobrado. Mantido o teto: sobre a existência do plano, "não
+  localizamos até o corte". A mesma componente entrou em "Como ler o MARÉ" (inicial),
+  no cartão "Como ler uma nota" e na FAQ da página de imprensa.
+- **Rede do dinheiro em três níveis:** sim, há conexão financeira União → estado nas
+  mesmas rotas — FPE (CF art. 159, I, a), fundo a fundo aos fundos estaduais (SUS/SUAS/
+  FUNDEB), defesa civil (Lei 12.340/2010, art. 1º: estados e municípios), emergência
+  setorial, convênios e transferências especiais (art. 166-A). O diagrama ganhou o ramo
+  União → Estado por rota, o estado alimenta a rota estadual e repassa cotas ao
+  município; cada rota traz a base legal do nível estadual no tooltip.
+
 ### Navegação em uma linha — segunda correção (03/09/2026)
 - A editoria ainda via duas linhas: o `index.html` mantinha cópia própria das regras da
   navegação e do masthead (vencia a folha base) e a barra dividia a linha com o logotipo.
