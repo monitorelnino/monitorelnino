@@ -121,6 +121,14 @@ do pedido de defesa civil de SC, enviado em DD/MM" — ele grava no registro pri
 site aparece apenas, sem contagens, que a verificação de um estado depende de resposta
 a pedido de acesso à informação.
 
+## 4b-bis. Prévia com senha
+
+O endereço reservado pede senha (usuário `editoria`). Ela fica num segredo do GitHub
+(`PREVIA_BASIC_AUTH`) e no navegador só há uma impressão digital dela. Para trocar: diga
+ao Claude a senha nova — ele atualiza o segredo e a impressão. Se o Netlify estiver no
+plano gratuito, a senha do servidor é ignorada e resta o véu do navegador, que só impede
+a visualização casual.
+
 ## 4c. Lançamento oficial: o que vigiar
 
 - O site é estático e escala sozinho na CDN; o que pode estourar no plano gratuito do
