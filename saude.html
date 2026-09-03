@@ -205,7 +205,7 @@ function __init(){
       .attr('r', 5).attr('fill', ([uf,d]) => (NIV_DENGUE[d.nivel]||['',NEUTRA])[1]);
   }
   const fD = SSIN.fontes.infodengue;
-  fonteFigura('boxDengue', fD.status === 'coletado' ? 'Fonte: modelo InfoDengue (Fiocruz/FGV) · consultado em '+esc(fD.consultado_em)+' · número primário: Painel de Arboviroses (MS).'
+  fonteFigura('boxDengue', fD.status === 'coletado' ? 'Fonte: modelo InfoDengue (Fiocruz/FGV) · consultado em '+esc(fD.ultima_coleta_ok || fD.consultado_em)+(fD.ultima_tentativa_falhou ? ' (nova consulta em '+esc(fD.ultima_tentativa_falhou)+' falhou; dados da última coleta válida)' : '')+' · número primário: Painel de Arboviroses (MS).'
                                                     : 'Não localizamos coleta desta fonte até o corte — lacuna declarada. Fonte prevista: modelo InfoDengue (Fiocruz/FGV) e Painel de Arboviroses (MS).');
   const avisos = uf => (SINAIS.uf && SINAIS.uf[uf] && SINAIS.uf[uf].avisos_inmet) || null;
   const nCalor = uf => { const a = avisos(uf); if(!a) return null; const lista = a.lista || a.avisos || []; return lista.filter(x => /calor/i.test(JSON.stringify(x))).length; };

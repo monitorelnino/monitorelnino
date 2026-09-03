@@ -139,8 +139,19 @@ def coletar():
             ok += 1
         log_busca("DOU", 1, [url], "registro" if r else "pista", uf=uf, municipio=cap, ibge=cod, nivel=None,
                   n_resultados=len(dados) if isinstance(dados, list) else 0, resultados=f"InfoDengue: {r}", hash_evidencia=h)
-    sinais["fontes"]["infodengue"]["status"] = "coletado" if ok else "aguardando_primeira_coleta"
-    sinais["fontes"]["infodengue"]["consultado_em"] = date.today().strftime("%d/%m/%Y")
+    hoje_br = date.today().strftime("%d/%m/%Y")
+    if ok:
+        sinais["fontes"]["infodengue"]["status"] = "coletado"
+        sinais["fontes"]["infodengue"]["ultima_coleta_ok"] = hoje_br
+        sinais["fontes"]["infodengue"].pop("ultima_tentativa_falhou", None)
+    elif sinais.get("dengue_capitais"):
+        # 03/09/2026: tentativa sem rede NÃO rebaixa uma coleta anterior — os dados exibidos continuam
+        # sendo os da última coleta bem-sucedida, e a falha fica declarada ao lado.
+        sinais["fontes"]["infodengue"]["status"] = "coletado"
+        sinais["fontes"]["infodengue"]["ultima_tentativa_falhou"] = hoje_br
+    else:
+        sinais["fontes"]["infodengue"]["status"] = "aguardando_primeira_coleta"
+    sinais["fontes"]["infodengue"]["consultado_em"] = hoje_br
     sinais["gerado_em"] = date.today().strftime("%d/%m/%Y")
     gravar("saude_sinais.json", sinais)
     print(f"InfoDengue: {ok} capitais coletadas, {lac} lacunas")
@@ -155,10 +166,31 @@ def autoteste():
     def t1(): r = parse_infodengue(FIX); return r["se"] == 202635 and r["nivel"] == 3
     def t2(): return parse_infodengue([]) == {} and parse_infodengue(None) == {} and parse_infodengue({"erro": 1}) == {}
     def t3():
-        semear(); u = ler("saude_uf.json")["uf"]; return len(u) == 27 and all(v["status"] == "NAO_VERIFICADO" for v in u.values())
+        # 03/09/2026: o autoteste NUNCA toca os dados reais — semeia e restaura byte a byte
+        # (antes, rodar --autoteste apagava a coleta do InfoDengue do repositório).
+        import coletores_base as cb
+        nomes = ("saude_federal.json", "saude_uf.json", "saude_sinais.json")
+        antes = {n: (cb.DATA / n).read_bytes() if (cb.DATA / n).exists() else None for n in nomes}
+        try:
+            semear(); u = ler("saude_uf.json")["uf"]; return len(u) == 27 and all(v["status"] == "NAO_VERIFICADO" for v in u.values())
+        finally:
+            for n, b in antes.items():
+                if b is not None: (cb.DATA / n).write_bytes(b)
     def t4(): f = ler("saude_federal.json"); return all(c["url"] is None or c["url"].startswith("https://www.gov.br/") for c in f["cartoes"])
+    def t5():  # negativo: autoteste não altera dados reais (o próprio t3 já rodou)
+        import coletores_base as cb
+        return (cb.DATA / "saude_sinais.json").read_bytes() == _SNAP
+    def t6():  # falha de rede não rebaixa coleta válida: regra de status
+        fontes = {"infodengue": {"status": "coletado"}}
+        def regra(ok, tem_dados):
+            if ok: return "coletado"
+            return "coletado" if tem_dados else "aguardando_primeira_coleta"
+        return regra(0, True) == "coletado" and regra(0, False) == "aguardando_primeira_coleta" and regra(3, False) == "coletado"
+    import coletores_base as cb
+    _SNAP = (cb.DATA / "saude_sinais.json").read_bytes() if (cb.DATA / "saude_sinais.json").exists() else b""
     return rodar_autoteste({"parser InfoDengue: última SE": t1, "negativo: resposta vazia/malformada": t2,
-                            "semear: 27 UFs NAO_VERIFICADO": t3, "cartões federais: nenhum link fora de gov.br": t4})
+                            "semear: 27 UFs NAO_VERIFICADO (sem tocar os dados reais)": t3, "cartões federais: nenhum link fora de gov.br": t4,
+                            "negativo: autoteste não altera dados reais": t5, "status: falha de rede não rebaixa coleta válida": t6})
 
 
 if __name__ == "__main__":

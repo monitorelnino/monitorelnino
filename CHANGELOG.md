@@ -20,6 +20,22 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Varredura integral dos diários municipais até 10/09 (03/09/2026, autorização escrita da editoria)
+- Semana intensiva passa de "lote rotativo com teto de 7 × 150" para **varredura integral**:
+  cada rodada diária consulta, no Querido Diário, os próximos municípios ainda não
+  consultados na janela (`INTENSIVO_DE`..`INTENSIVO_ATE`), com tamanho recalculado a cada
+  dia para cobrir os 5.571 até a data-fim (mínimo `TAMANHO_LOTE`, teto 1.500/rodada).
+  Pausa de 0,25 s entre consultas e nova tentativa em HTTP 429. Consulta não é verificação (§4.1.2).
+- Contador público ganha a linha "Varredura dos diários oficiais municipais" (consultados de 5.571,
+  com/sem menção, datas), com portão de runtime que exige o número do arquivo e proíbe
+  afirmação de existência/inexistência de plano.
+- `coletar_saude.py`: tentativa sem rede **não rebaixa** uma coleta válida do InfoDengue
+  (03/09: a rodada das 08h36 falhou por rede e apagara o status "coletado" das 6h);
+  a página de Saúde diz "nova consulta em dd/mm falhou; dados da última coleta válida".
+  Correção do autoteste, que semeava por cima dos dados reais (agora restaura byte a byte).
+- `coletar_financiamento.py`: erro do Portal da Transparência loga o **código HTTP**
+  (401/403 chave · 429 limite · 5xx Portal); em 429 espera 60 s; em 401/403 interrompe a rodada.
+
 ### Endpoint certo dos reconhecimentos federais + prévia com senha (03/09/2026)
 - **DOU/S2iD, corrigido pela fonte oficial:** o MIDR publica cada lote de reconhecimentos
   como notícia com os links diretos das portarias no DOU (número e data no endereço) e
