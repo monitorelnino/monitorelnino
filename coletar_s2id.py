@@ -95,6 +95,12 @@ def coletar(desde: str, ate: str) -> int:
         registrar_lacuna(FONTES["dou"]["nome"], "página com aviso de período eleitoral", canal="DOU",
                          camada=1, strings=[url], suspensa=True, hash_evidencia=h)
         return 0
+    if "jsonArray" not in texto:
+        # 03/09/2026 (achado da 1ª atualização real): a página veio sem a estrutura de resultados —
+        # NÃO é consulta bem-sucedida; ninguém sobe de nível por uma leitura vazia.
+        registrar_lacuna(FONTES["dou"]["nome"], "página sem a estrutura de resultados (jsonArray ausente) — parser/endpoint a verificar",
+                         canal="DOU", camada=1, strings=[url], hash_evidencia=h)
+        return 0
     itens = extrair_reconhecimentos(parse_dou_html(texto))
     atos = ler("atos_resposta.json")
     vistos = {(e["nome"], e["uf"], e["data"], e.get("causa")) for e in atos["eventos"]}

@@ -65,6 +65,9 @@ def _evento(data, uf, tipo, chave, titulo, resumo, nomes):
             "url": f"{SITE}/#{uf}"}
 
 
+_REF = json.load(open(DATA / "municipios_ibge_referencia.json", encoding="utf-8")) if (DATA / "municipios_ibge_referencia.json").exists() else []
+UF_POR_IBGE = {str(r["codigo_ibge"]).zfill(7): r["uf"] for r in _REF}
+
 def diferencas(antes, agora, data):
     """Compara duas fotografias e devolve a lista de eventos (vazia se nada mudou)."""
     ev = []
@@ -95,10 +98,14 @@ def diferencas(antes, agora, data):
                                f"Antes: {CAT_HUMANO.get(a.get('categoria'), a.get('categoria'))}. Agora: {m['documento'] or '—'}{(' (' + m['data'] + ')') if m['data'] else ''}."), nomes))
     NIV_H = {"nacional": "verificado em fontes nacionais", "estadual": "verificado em fontes nacionais e estaduais", "municipal_completo": "verificação completa"}
     ORD = {"nao_verificado": 0, "nacional": 1, "estadual": 2, "municipal_completo": 3}
+    # 03/09/2026: agregado por UF e nível (um evento por município inundava o feed: 5.571 de uma vez)
+    subiram = {}
     for cod, niv in sorted(agora.get("niveis", {}).items()):
         if ORD.get(niv, 0) > ORD.get(antes.get("niveis", {}).get(cod, "nao_verificado"), 0):
-            ev.append(_evento(data, "BR", "verificacao_ampliada", cod, f"Município IBGE {cod}: nível de verificação ampliado — {NIV_H.get(niv, niv)}",
-                              "Fonte consultada e registrada no livro de fontes; nenhuma nota muda por verificação.", nomes))
+            uf = UF_POR_IBGE.get(str(cod).zfill(7), "BR"); subiram.setdefault((uf, niv), 0); subiram[(uf, niv)] += 1
+    for (uf, niv), n in sorted(subiram.items()):
+        ev.append(_evento(data, uf, "verificacao_ampliada", f"{uf}|{niv}|{data}", f"{nomes.get(uf, uf)}: {n} município(s) passaram a '{NIV_H.get(niv, niv)}'",
+                          "Fonte consultada e registrada no livro de fontes; nenhuma nota muda por verificação.", nomes))
     for chave in agora.get("reconhecimentos", []):
         if chave not in set(antes.get("reconhecimentos", [])):
             nome, uf, d = chave.split("|")

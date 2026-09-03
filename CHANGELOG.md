@@ -20,6 +20,28 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Primeira atualização real (03/09/2026, 11h06 UTC) — e a correção que ela exigiu
+- **Rodou de ponta a ponta e comitou** (dia 0 antecipado para 03/09; semana intensiva até
+  10/09): 3 fontes de sinais coletadas (Painel El Niño, INMET, NOAA/ONI), InfoDengue nas
+  27 capitais, 47 evidências preservadas, 149 diários municipais consultados, pistas e
+  atos novos; 16 portões verdes; publicado no endereço reservado.
+- **Erro grave pego na leitura do relatório:** a busca no DOU voltou **0 itens** porque a
+  página veio sem a estrutura de resultados — e o coletor marcou os 5.571 municípios como
+  "verificados em fontes nacionais". Leitura vazia não é verificação. Corrigido: só conta
+  como consulta nacional se a estrutura de resultados estiver presente (senão, lacuna
+  declarada, "parser/endpoint a verificar"); a marcação indevida foi revertida (5.571 → 0;
+  os 149 consultados no Querido Diário voltam a "ainda não verificado", como manda a regra:
+  diário municipal não eleva nível). O feed que recebera 5.571 eventos de uma vez passa a
+  agregar por estado e nível; os 5.571 eventos foram removidos do histórico.
+- **Evidências preservadas mas não comitadas:** a rotina gravou 47 cópias em `evidencias/`
+  na máquina do robô, mas o passo de commit não incluía a pasta — o índice apontava
+  para arquivos inexistentes (o portão 6 acusou "integridade violada"). Corrigido: o
+  commit inclui `evidencias/` e o manifesto; as 42 cópias perdidas ficam marcadas "a
+  re-preservar" e o preservador as rebaixa na próxima rodada (com comparação de hash);
+  o portão 6 só aceita evidência com cópia ou snapshot.
+- **Dump bruto da API do Portal (8,9 MB)** sai do repositório público (regenerado a cada
+  rodada; fora do manifesto). O CSV de transferências a revisar continua.
+
 ### Preparação para o lançamento oficial (03/09/2026, a pedido da editoria)
 - **Ordem narrativa das páginas:** O monitor → Sinais de risco → Mapas → Financiamento →
   Saúde → Proteja-se → Gestores → Enviar dados → Imprensa (risco anunciado → o que foi
