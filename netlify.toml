@@ -46,6 +46,15 @@
 # revalidação em segundo plano (a rotina publica no máximo uma vez por dia); folhas,
 # módulo, fontes, selos e PDFs por mais tempo. Peso por visita ≈ 300 KB comprimidos na
 # página inicial (medido em 03/09/2026).
+# ── Acesso com senha à prévia (decisão da editoria, 03/09/2026) ────────────────────────
+# Basic-Auth do Netlify protege TODAS as rotas no servidor (plano Pro ou superior; no plano
+# gratuito o cabeçalho é ignorado). Por isso há também o portão de senha no navegador
+# (assets/acesso.js): impede a visualização casual, mas NÃO é segurança — dados e páginas
+# continuam alcançáveis por quem souber os endereços. A cortina do domínio (ramo publico)
+# não é afetada: este arquivo vale só para os deploys do main.
+# A credencial NÃO fica neste arquivo (o repositório é público): o workflow de prévia grava
+# um arquivo _headers na hora do deploy a partir do segredo PREVIA_BASIC_AUTH.
+
 [[headers]]
   for = "/*.html"
   [headers.values]
