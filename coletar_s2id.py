@@ -77,7 +77,11 @@ def extrair_reconhecimentos(resultados: list) -> list:
     return saida
 
 
-RSS_MIDR = "https://www.gov.br/mdr/pt-br/noticias/RSS"
+RSS_MIDR = "https://www.gov.br/mdr/pt-br/noticias-midr/RSS"
+# 03/09/2026: a pasta antiga (/noticias/RSS, que o rodapé do sítio ainda aponta) passou a exigir login
+# ("Conteúdo Restrito"); as notícias vivem em /noticias-midr. Se o RSS dessa pasta também não vier como
+# XML, lê-se a LISTAGEM HTML da pasta (2 páginas) — e resposta sem <item>/<h2> é lacuna declarada, nunca "0 notícias".
+LISTAGEM_MIDR = ["https://www.gov.br/mdr/pt-br/noticias-midr", "https://www.gov.br/mdr/pt-br/noticias-midr?b_start:int=30"]
 ESTADOS = {"acre": "AC", "alagoas": "AL", "amazonas": "AM", "amapá": "AP", "bahia": "BA", "ceará": "CE", "distrito federal": "DF", "espírito santo": "ES",
            "goiás": "GO", "maranhão": "MA", "minas gerais": "MG", "mato grosso do sul": "MS", "mato grosso": "MT", "pará": "PA", "paraíba": "PB", "pernambuco": "PE",
            "piauí": "PI", "paraná": "PR", "rio de janeiro": "RJ", "rio grande do norte": "RN", "rondônia": "RO", "roraima": "RR", "rio grande do sul": "RS",
@@ -93,6 +97,22 @@ def parse_rss_midr(xml: str) -> list:
         if t and l and re.search(r"reconhec", t.group(1), re.I):
             out.append({"titulo": _html.unescape(t.group(1).strip()), "link": l.group(1).strip(), "data": (d.group(1).strip() if d else "")})
     return out
+
+
+def parse_listagem_midr(html_txt: str) -> list:
+    """Itens da listagem HTML de /noticias-midr cujo título fala de reconhecimento: [{titulo, link, data}]. Função pura.
+    Cada item: <h2><a href="…/noticias-midr/slug">Título</a></h2> … dd/mm/aaaa - subtítulo."""
+    out = []
+    for m in re.finditer(r'<h2[^>]*>\s*<a[^>]+href="([^"]+/noticias-midr/[^"]+)"[^>]*>(.*?)</a>\s*</h2>(.{0,2500}?)(\d{2}/\d{2}/\d{4})', html_txt, flags=re.S | re.I):
+        link, tit, _, data = m.groups(); tit = _html.unescape(re.sub(r"<[^>]+>", "", tit)).strip()
+        if re.search(r"reconhec", tit, re.I):
+            out.append({"titulo": tit, "link": link.strip(), "data": data})
+    return out
+
+
+def eh_xml_rss(texto: str) -> bool:
+    """Resposta é mesmo um feed (tem <item>), e não uma página HTML/login."""
+    return bool(re.search(r"<item[ >]", texto)) and "<rss" in texto[:2000].lower() + texto[:2000]
 
 
 def parse_noticia_midr(html_txt: str) -> dict:
@@ -144,12 +164,30 @@ def _norm(nome: str) -> str:
 
 def coletar_midr(por_cod, por_nome, atos, vistos, h_rss_ok) -> tuple:
     """Fonte principal (03/09/2026): RSS do MIDR → notícias de reconhecimento → portarias no DOU."""
+    itens, h, origem = [], None, None
     try:
-        bruto = buscar(RSS_MIDR)
+        bruto = buscar(RSS_MIDR); txt = bruto.decode("utf-8", "replace")
+        if eh_xml_rss(txt):
+            h = preservar_evidencia(bruto, RSS_MIDR, "xml", "coletar_s2id"); itens = parse_rss_midr(txt); origem = RSS_MIDR
+        else:
+            registrar_lacuna("MIDR — RSS de /noticias-midr", "resposta não é RSS (HTML/login); usando a listagem HTML", canal="DOU", camada=1, strings=[RSS_MIDR])
     except Exception as e:  # noqa: BLE001
-        registrar_lacuna("MIDR — notícias de reconhecimento (RSS)", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[RSS_MIDR]); return 0, 0, False
-    h = preservar_evidencia(bruto, RSS_MIDR, "xml", "coletar_s2id")
-    itens = parse_rss_midr(bruto.decode("utf-8", "replace"))
+        registrar_lacuna("MIDR — RSS de /noticias-midr", f"{type(e).__name__}: {e}; usando a listagem HTML", canal="DOU", camada=1, strings=[RSS_MIDR])
+    if origem is None:
+        paginas_ok = 0
+        for url_l in LISTAGEM_MIDR:
+            try:
+                bl = buscar(url_l); tl = bl.decode("utf-8", "replace")
+            except Exception as e:  # noqa: BLE001
+                registrar_lacuna("MIDR — listagem de notícias", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[url_l]); continue
+            if "noticias-midr/" not in tl or "<h2" not in tl:
+                registrar_lacuna("MIDR — listagem de notícias", "página sem a estrutura de listagem (endpoint a verificar)", canal="DOU", camada=1, strings=[url_l]); continue
+            hl = preservar_evidencia(bl, url_l, "html", "coletar_s2id"); h = h or hl; paginas_ok += 1
+            itens += parse_listagem_midr(tl)
+        if not paginas_ok:
+            return 0, 0, False
+        origem = LISTAGEM_MIDR[0]
+    vistos_links = set(); itens = [i for i in itens if not (i["link"] in vistos_links or vistos_links.add(i["link"]))]
     por_norm = {(_norm(n), uf): cod for (n, uf), cod in por_nome.items()}  # casamento tolerante a acento/apóstrofo
     novos = total = 0
     for it in itens[:40]:
@@ -180,7 +218,7 @@ def coletar_midr(por_cod, por_nome, atos, vistos, h_rss_ok) -> tuple:
                                     "data_reconhecimento": dt, "portaria": dec, "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR", "url": url,
                                     "lat": ref["lat"], "lon": ref["lon"], "canal": "DOU", "hash_evidencia": hp})
             marcar_fato_municipal(cod, "decreto_reconhecido", True); vistos.add(chave); novos += 1
-    log_busca("DOU", 1, [RSS_MIDR], "registro" if novos else "pista", resultados=f"MIDR RSS: {len(itens)} notícias de reconhecimento, {total} municípios lidos, {novos} novos",
+    log_busca("DOU", 1, [origem], "registro" if novos else "pista", resultados=f"MIDR ({'RSS' if origem == RSS_MIDR else 'listagem HTML'}): {len(itens)} notícias de reconhecimento, {total} municípios lidos, {novos} novos",
               nivel="nacional", n_resultados=len(itens), hash_evidencia=h)
     return novos, total, bool(itens)
 
@@ -281,11 +319,19 @@ def autoteste() -> int:
         return parse_portaria_dou(FIX_PORTARIA) == [("Chorrochó", "BA"), ("Tremedal", "BA")]
     def t9():  # negativo: RSS sem itens de reconhecimento → lista vazia, nunca exceção
         return parse_rss_midr("<rss><channel><item><title>x</title><link>y</link></item></channel></rss>") == []
+    FIX_LIST = """<ul><li><h2><a href="https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-20-cidades-afetadas-por-desastres-1">Reconhecida emergência em 20 cidades afetadas por desastres</a></h2>
+<img src="x"> 13/08/2026 - Estão na lista municípios de Alagoas</li>
+<li><h2><a href="https://www.gov.br/mdr/pt-br/noticias-midr/autorizado-repasse-de-r-12-9-milhoes-para-gramado">Autorizado repasse de R$ 12,9 milhões para Gramado</a></h2> 12/08/2026 - Recursos</li></ul>"""
+    def t10():  # listagem HTML: só reconhecimentos, com link e data
+        r = parse_listagem_midr(FIX_LIST); return len(r) == 1 and r[0]["link"].endswith("desastres-1") and r[0]["data"] == "13/08/2026"
+    def t11():  # negativo: página de login/HTML não é RSS
+        return (not eh_xml_rss("<!DOCTYPE html><html><body>Conteúdo Restrito</body></html>")) and eh_xml_rss(FIX_RSS)
     return rodar_autoteste({"parser do DOU lê o JSON embutido": t1, "extrai portaria+data+município": t2,
                             "negativo: sem número não entra": t3, "negativo: HTML sem JSON": t4,
                             "heurística de suspensão por defeso": t5,
                             "RSS do MIDR: só notícias de reconhecimento": t6, "notícia do MIDR: portarias (nº+data) e 14+ municípios/UF": t7,
-                            "página da portaria no DOU: municípios nomeados": t8, "negativo: RSS sem reconhecimentos": t9})
+                            "página da portaria no DOU: municípios nomeados": t8, "negativo: RSS sem reconhecimentos": t9,
+                            "listagem HTML do MIDR: só reconhecimentos": t10, "negativo: HTML/login não é RSS": t11})
 
 
 if __name__ == "__main__":
