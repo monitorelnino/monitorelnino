@@ -162713,6 +162713,96 @@
    "fonte_suspensa_defeso": false,
    "executor": "robo",
    "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-03",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "PB",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "Paraíba plano de contingência estadual El Niño 2026 Defesa Civil decreto"
+   ],
+   "n_resultados": null,
+   "resultados": "Cartório estadual (03/09/2026): nenhum plano estadual El Niño localizado; único achado é o Comitê Gestor do Plano de Contingência da Seplag (decretos 36.199/2015 e 38.940/2019 — plano fiscal, fora do objeto). LAC mantido.",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-03",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "RN",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "Rio Grande do Norte plano estadual El Niño 2026 Defesa Civil contingência estiagem decreto"
+   ],
+   "n_resultados": null,
+   "resultados": "Cartório estadual (03/09/2026): nenhum plano publicado. Imprensa (Diário do RN, Mossoró Hoje, ~26/08) registra articulação com Casa Civil/SRI e 'plano de contingência definitivo a ser selado em reunião nacional' — sem documento nomeado nem fonte oficial: LAC mantido (regra Belém/Macapá exige documento nomeado para ELAB). Decreto estadual de SE por seca renovado em 04/2026 (166 municípios) = resposta, 0 pontos.",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-03",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "BA",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "Bahia plano estadual El Niño 2026/2027 comitê"
+   ],
+   "n_resultados": null,
+   "resultados": "Cartório estadual (03/09/2026): Jornal Grande Bahia (~26/08) — Estado criou comitê para construir o 'Plano Estadual de Ações de Enfrentamento aos Impactos do El Niño 2026/2027' (segurança hídrica, agricultura, saúde, defesa civil, incêndios). ELAB (08/2026) confirmado; o ato de criação do comitê (decreto?) é candidato ao teste do objeto se localizado em fonte oficial.",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-03",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "PE",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "Pernambuco plano estadual El Niño 2026 2027 Defesa Civil plano de contingência publicado"
+   ],
+   "n_resultados": null,
+   "resultados": "Cartório estadual (03/09/2026): nenhum plano El Niño publicado (Brasil de Fato 21/07 cobra 'onde está o plano'); ELAB mantido. Achado para a camada de financiamento: Lei nº 19.240/2026 (13/05) institui o FUNDPRA (Fundo de Proteção, Defesa Civil e Recuperação Ambiental) e Decreto nº 60.732/2026 (27/05) o regulamenta — fontes: legis.alepe.pe.gov.br e BGSDS 095/2026 (transcrição do DOE-PE 28/05/2026).",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-03",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "SP",
+   "municipio": "Pindamonhangaba",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "El Niño Pindamonhangaba PLANCON 2026 decreto"
+   ],
+   "n_resultados": null,
+   "resultados": "Descoberta por imprensa (Vale 360 News, ~13/08/2026): PLANCON 2026 de Pindamonhangaba aprovado pelo Decreto Municipal nº 7.087, de 16/06/2026 (chuvas, enxurradas, deslizamentos, estiagem, queimadas). Imprensa descobre, nunca registra: confirmar no diário oficial/sítio da prefeitura antes de registrar.",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
   }
  ]
 }

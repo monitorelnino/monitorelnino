@@ -177,6 +177,15 @@
     <p class="ficha-fonte">Fonte oficial: Ministério da Saúde e vigilâncias em saúde (ciclo El Niño 2026) · verificado 26/08/2026 — <a href="https://agenciagov.ebc.com.br/noticias/202607/15-estados-na-lista-de-focos-de-calor-veja-como-se-cuidar" target="_blank" rel="noopener">ver na fonte →</a></p>
   </section>
 
+  <h2 id="alertas-saude">Alertas de saúde do momento</h2>
+  <p class="hint" style="margin-bottom:10px;">Espelho da página de <a href="saude.html#observado">Saúde</a>: observação, nunca previsão nem juízo de preparo. O robô consulta as fontes oficiais a cada rodada; o que não foi coletado aparece como lacuna, não como ausência. Cor = família de risco.</p>
+  <div class="tr-grid" id="alertasSaude">
+    <div class="tr-card r-seca"><b>Dengue nas capitais</b><span id="asDengue">Carregando…</span><a href="saude.html#observado">ver mapa na página de Saúde</a></div>
+    <div class="tr-card r-seca"><b>Avisos de calor (INMET)</b><span id="asCalor">Carregando…</span><a href="sinais-de-risco.html">ver avisos por estado</a></div>
+    <div class="tr-card r-neutro"><b>Emergências sanitárias declaradas</b><span id="asEmerg">Carregando…</span><a href="saude.html#observado">ver na página de Saúde</a></div>
+  </div>
+  <p class="ficha-fonte" id="asFonte" style="margin:4px 0 22px;"></p>
+
   <h2 id="tempo-real">Onde acompanhar em tempo real</h2>
   <p class="hint" style="margin-bottom:10px;">Cor = tipo de fonte: monitoramento hidrometeorológico, queimadas, saúde ou coordenação — não é o mesmo código de risco dos guias acima.</p>
   <div class="tr-grid">
@@ -262,5 +271,47 @@ function gerarPDFGuia(){
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
 <script>window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });</script>
+<script>
+// Alertas de saúde do momento: MESMOS arquivos e MESMAS regras da página de Saúde (saude.html),
+// sem cópia de números à mão. Qualquer falha de carga vira lacuna declarada no próprio cartão.
+(async function(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const el = id => document.getElementById(id);
+  let SSIN = null, SINAIS = null;
+  try { [SSIN, SINAIS] = await Promise.all(['data/saude_sinais.json','data/sinais_risco.json'].map(f => fetch(f).then(r => { if(!r.ok) throw new Error(f); return r.json(); }))); }
+  catch(e) { ['asDengue','asCalor','asEmerg'].forEach(id => el(id).textContent = 'Não foi possível carregar os dados desta camada agora — lacuna declarada.'); return; }
+  // Dengue (InfoDengue, capitais): mostra as capitais em nível 2 ou mais; nível é vocabulário da fonte.
+  const NIV = {1:'nível 1 (baixa atividade)', 2:'nível 2 (atenção)', 3:'nível 3 (alerta)', 4:'nível 4 (emergência)'};
+  const caps = Object.entries(SSIN.dengue_capitais || {});
+  const fD = (SSIN.fontes || {}).infodengue || {};
+  if (!caps.length || fD.status !== 'coletado') {
+    el('asDengue').textContent = 'Não localizamos coleta desta fonte até o corte — lacuna declarada.';
+  } else {
+    const altas = caps.filter(([uf,d]) => (d.nivel||0) >= 2).sort((a,b) => (b[1].nivel||0)-(a[1].nivel||0));
+    el('asDengue').innerHTML = (altas.length
+      ? altas.map(([uf,d]) => '<strong>' + esc(d.municipio) + '/' + esc(uf) + '</strong> — ' + esc(NIV[d.nivel] || ('nível ' + d.nivel))).join('<br>')
+      : 'Nenhuma capital em nível 2 ou acima na última coleta (' + caps.length + ' capitais consultadas).')
+      + '<br><small>Última semana epidemiológica disponível · capitais apenas, não representa o estado.</small>';
+  }
+  // Calor (INMET): reuso da camada de avisos dos sinais de risco, filtrada para calor.
+  const avisos = uf => (SINAIS.uf && SINAIS.uf[uf] && SINAIS.uf[uf].avisos_inmet) || null;
+  const nCalor = uf => { const a = avisos(uf); if(!a) return null; const lista = a.lista || a.avisos || []; return lista.filter(x => /calor/i.test(JSON.stringify(x))).length; };
+  const fI = (SINAIS.fontes || {}).inmet_avisos || {};
+  if (fI.status !== 'coletado' || !SINAIS.uf) {
+    el('asCalor').textContent = 'Não localizamos coleta do INMET até o corte — lacuna declarada.';
+  } else {
+    const comCalor = Object.keys(SINAIS.uf).map(uf => [uf, nCalor(uf)]).filter(([uf,n]) => n).sort((a,b) => b[1]-a[1]);
+    el('asCalor').innerHTML = (comCalor.length
+      ? comCalor.map(([uf,n]) => '<strong>' + esc(uf) + '</strong> — ' + n + ' aviso(s) de calor vigente(s)').join('<br>')
+      : 'Nenhum aviso de calor vigente na última consulta ao INMET.') + '<br><small>Consultado em ' + esc(fI.consultado_em || '—') + '.</small>';
+  }
+  // Emergências sanitárias (ESPIN e decretos por dengue/calor): resposta, peso zero.
+  const fE = (SSIN.fontes || {}).espin || {};
+  el('asEmerg').textContent = (fE.status === 'coletado' && (SSIN.emergencias || []).length)
+    ? (SSIN.emergencias.length + ' emergência(s) sanitária(s) registrada(s) — atos de resposta, registro à parte, peso zero.')
+    : 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento).';
+  el('asFonte').textContent = 'Fontes: modelo InfoDengue (Fiocruz/FGV) para a série municipal; Painel de Arboviroses (MS) como número primário; INMET (avisos); DOU e diários municipais (ESPIN). Estado das fontes e datas de consulta na página de Saúde.';
+})();
+</script>
 </body>
 </html>
