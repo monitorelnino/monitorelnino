@@ -12,6 +12,8 @@ const path = require("path");
 const { JSDOM } = require("jsdom");
 
 const RAIZ = path.join(__dirname, "..");
+// 03/09/2026: YAML dos workflows sem chave duplicada (o GitHub recusa o arquivo inteiro)
+try { require("child_process").execSync("python3 scripts/validar_workflows.py", { cwd: RAIZ, stdio: "pipe" }); } catch (e) { console.log("  ✗ workflows inválidos: " + String(e.stdout || "")); process.exit(1); }
 const PADRAO = ["index.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "mapas-e-graficos.html", "para-gestores.html", "sinais-de-risco.html", "saude.html", "financiamento.html"]
   .map(a => path.join(RAIZ, a));
 const arquivos = process.argv.length > 2 ? process.argv.slice(2) : PADRAO;

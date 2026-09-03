@@ -96,3 +96,14 @@ dependência Python ou Node foi adicionada; os arquivos CycloneDX permanecem
 válidos para a v2.2.4. `pip-audit`/`npm audit`: sem CVE novo a reportar (sem
 dependência nova). Próxima regeneração completa do SBOM: quando uma dependência
 mudar.
+
+## Adendo 03/09/2026
+
+`PyYAML==6.0.3` entra em `requirements.txt` para `scripts/validar_workflows.py` (validação dos
+workflows com detecção de chave duplicada, chamada pelo portão 1 e pela checagem de PR).
+`pip-audit` na data: sem CVE conhecido para esta versão. Regenerar `docs/sbom-python.cdx.json` na
+próxima rodada completa de SBOM.
+
+## Adendo 03/09/2026
+
+`PyYAML==6.0.3` adicionado a `requirements.txt` (validador de workflows, `scripts/validar_workflows.py`). Única dependência nova desde a v2.2.2; `pip-audit` sem CVE conhecido para esta versão na data.

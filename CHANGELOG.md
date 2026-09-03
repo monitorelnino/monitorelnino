@@ -40,6 +40,11 @@ semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 - **Cadência declarada nas superfícies:** Saúde diz que não é tempo real (diária na
   semana intensiva, semanal depois) e mostra o estado de cada fonte; o mapa de atos
   de resposta mostra o último evento e a rotina de coleta (DOU/S2iD e diários).
+- **Erro meu, corrigido em minutos:** o passo de relatório do `atualizar.yml` ficou com
+  duas chaves `env` — o pyyaml aceita, o GitHub recusa o arquivo inteiro (o ensaio
+  acusou 422). Corrigido; nasce `scripts/validar_workflows.py` (detecta chave
+  duplicada), chamado pelo portão 1 e pela checagem de PR, com teste negativo. A primeira
+  rodada do CI falhou porque o PyYAML não estava em `requirements.txt` — fixado.
 - **Ensaio da rotina:** `atualizar.yml` ganha o botão "ensaio" (roda tudo como dia
   da semana intensiva, sem comitar nem publicar) e grava o relatório completo da
   execução no repositório privado em toda rodada — a execução manual de 02/09
