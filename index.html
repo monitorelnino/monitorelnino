@@ -414,18 +414,10 @@
   <p style="margin:0 0 4px;" id="pdFontes">—</p>
   <p style="margin:0 0 4px;" id="pdInstrumentos">—</p>
   <p style="margin:0;" id="pdVariacao">—</p>
-  <p class="note" style="margin:6px 0 0;">Somente contagens e datas, decompostas por causa (<a href="METODOLOGIA.pdf">metodologia, §29</a> — pré-registro de 02/09/2026).</p>
+  <p class="note" style="margin:6px 0 0;">Somente contagens e datas, decompostas por causa (<a href="METODOLOGIA.pdf">ver metodologia</a>).</p>
 </div>
 
-<div class="panel" id="contadorVerificacao" style="margin:0 0 22px;">
-  <p class="selo" style="margin:0 0 6px;">Contador público da verificação · <span id="cvData">—</span></p>
-  <p style="margin:0 0 10px;font-weight:600;" id="cvVarredura"></p>
-  <p style="margin:0 0 4px;" id="cvNiveis">Verificação municipal em andamento por níveis.</p>
-  <p style="margin:0 0 4px;" id="cvSuspensas"></p>
-  <p style="margin:0;" id="cvFila"></p>
-  <p style="margin:4px 0 0;" id="cvLai"></p>
-  <p class="note" style="margin:6px 0 0;">O que cada nível significa está na <a href="METODOLOGIA.pdf">metodologia, §25</a>. Os buracos ficam visíveis por decisão editorial: o que não foi verificado aparece como não verificado, não como ausência.</p>
-</div>
+
 
 <h2>Como ler o MARÉ</h2>
 <p class="note" style="margin:4px 0 8px;"><strong>Por que a nota baixa importa:</strong> o Monitor busca nos canais que a lei define como o lugar da preparação — diários oficiais e sítios de governo (Lei 12.608/2012; Lei 12.527/2011). Preparação que não foi publicada ali não cumpriu o rito público e não pode ser conferida nem cobrada; nota baixa é evidência de preparação não tornada pública. Sobre a existência do plano, o teto continua o mesmo: "não localizamos até o corte".</p>
@@ -481,7 +473,7 @@
   </div>
   <div class="panel" id="prazos" style="margin-bottom:24px;">
     <h2>Prazos em curso</h2>
-    <p class="hint">Prazos legais e judiciais ligados ao ciclo, computados a partir do registro curado de marcos (METODOLOGIA §15). Marcador editorial: nenhum prazo pontua no índice.</p>
+    <p class="hint">Prazos legais e judiciais ligados ao ciclo, computados a partir do registro curado de marcos. Nenhum prazo pontua no índice.</p>
     <ul class="fontes-list prazos-list" id="prazosLista" aria-live="polite"></ul>
     <p class="note" id="prazosVazio" hidden>Nenhum prazo em curso até o corte.</p>
   </div>
@@ -508,11 +500,11 @@
           <li><a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Documento Técnico-Metodológico da plataforma · MARÉ v2.3, íntegra em PDF</a></li>
         
         </ul>
-        <p class="note" style="margin:8px 0 0;">Fonte de descoberta (agregador terceiro — pista, nunca registro; METODOLOGIA §4.1.1.1): painel El Niño 2026/2027 da Política Por Inteiro / Instituto Talanoa · <a href="https://politicaporinteiro.org/el-nino/" target="_blank" rel="noopener">politicaporinteiro.org/el-nino</a>.</p>
+        <p class="note" style="margin:8px 0 0;">Fonte de descoberta (agregador terceiro — pista, nunca registro): painel El Niño 2026/2027 da Política Por Inteiro / Instituto Talanoa · <a href="https://politicaporinteiro.org/el-nino/" target="_blank" rel="noopener">politicaporinteiro.org/el-nino</a>.</p>
         <p class="note" style="margin-top:8px;">Os <span id="fontesFederaisCount">—</span> registros federais completos constam do banco de dados do projeto e do documento metodológico.</p>
       </div>
       <div>
-        <p class="note" style="margin:8px 0 10px;"><strong>Fontes incorporadas na v2.3 (02/09/2026), em coleta pela rotina automática:</strong> DOU — portarias SEDEC/MIDR de reconhecimento (atos de resposta, peso zero) · diários oficiais dos 27 estados e diários municipais (via Querido Diário, cobertura declarada por UF) · MUNIC/IBGE e ICM/SEDEC (camada declarada, simulada; vigência 26/10/2026) · Painel de Arboviroses/MS e modelo InfoDengue (Fiocruz/FGV), INMET e INPE (página de Saúde) · pedidos de acesso à informação (registro público em Para gestores). Fonte não confirmada aparece como lacuna, nunca como número.</p>
+        <p class="note" style="margin:8px 0 10px;"><strong>Fontes oficiais consultadas pela rotina automática:</strong> DOU — portarias SEDEC/MIDR de reconhecimento (atos de resposta, peso zero) · diários oficiais dos 27 estados e diários municipais (via Querido Diário, cobertura declarada por UF) · MUNIC/IBGE e ICM/SEDEC (camada declarada, simulada; vigência 26/10/2026) · Painel de Arboviroses/MS e modelo InfoDengue (Fiocruz/FGV), INMET e INPE (página de Saúde) · pedidos de acesso à informação (registro público em Para gestores). Fonte não confirmada aparece como lacuna, nunca como número.</p>
 <h3 style="font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:500; font-size:15px; margin:0 0 8px;">Plataformas oficiais de monitoramento</h3>
         <ul class="fontes-list" id="fontesMonitoramento"></ul>
       </div>
@@ -835,27 +827,6 @@ renderPrazos();
       }
     }
   })();
-  (function(){
-    try{
-      const t = (VRESUMO && VRESUMO.totais_por_nivel) || {};
-      const nNac=(t.nacional||0), nEst=(t.estadual||0), nComp=(t.municipal_completo||0), nNao=(t.nao_verificado||0);
-      const el=(id)=>document.getElementById(id);
-      el('cvData').textContent = VRESUMO && VRESUMO.ultima_rodada_log ? ('última rodada de busca: ' + VRESUMO.ultima_rodada_log) : 'antes da primeira rodada estruturada';
-      el('cvNiveis').innerHTML = '<strong>' + nNac.toLocaleString('pt-BR') + '</strong> municípios verificados em fontes nacionais · <strong>' + nEst.toLocaleString('pt-BR') + '</strong> em fontes nacionais e estaduais · <strong>' + nComp.toLocaleString('pt-BR') + '</strong> com verificação completa · <strong>' + nNao.toLocaleString('pt-BR') + '</strong> ainda não verificados. (Estes níveis só sobem com a bateria completa por município — diário, sítio da prefeitura e busca dirigida — prevista para depois do período eleitoral; não se movem durante a varredura abaixo.)';
-      const susp = VRESUMO ? VRESUMO.fontes_suspensas_defeso_ultima_rodada : 0;
-      el('cvSuspensas').innerHTML = '<strong>' + (susp||0) + '</strong> fonte(s) oficial(is) consultada(s) estava(m) suspensa(s) por período eleitoral na última rodada.';
-      const fila = VRESUMO ? VRESUMO.fila_citacao_incompleta : null;
-      if (fila !== null && fila !== undefined) el('cvFila').innerHTML = '<strong>' + fila + '</strong> registro(s) na fila pública de citação incompleta (prazo de saneamento 25/10/2026; regra declarada em 02/09/2026).';
-      const vd = VRESUMO && VRESUMO.varredura_diarios;
-      if (vd && vd.consultados) {
-        const br = d => d ? d.split('-').reverse().join('/') : '—';
-        const pct = Math.round(100 * vd.consultados / vd.total);
-        el('cvVarredura').innerHTML = 'Varredura dos diários oficiais municipais (atualiza a cada rodada, 2×/dia): <strong>' + vd.consultados.toLocaleString('pt-BR') + '</strong> de ' + vd.total.toLocaleString('pt-BR') + ' municípios consultados (' + pct + '%) no Querido Diário desde ' + br(vd.desde) + ' (última consulta ' + br(vd.ultima) + ') — ' + vd.com_mencao.toLocaleString('pt-BR') + ' com menção a instrumento ou decreto, ' + vd.sem_mencao.toLocaleString('pt-BR') + ' sem edição ou menção no período. Consultar uma fonte não é verificar o município: o nível de verificação só muda com a bateria completa.';
-      }
-      const lai = VRESUMO && VRESUMO.lai;
-      if (lai && lai.ufs_dependentes && lai.ufs_dependentes.length) el('cvLai').innerHTML = '<strong>Dependência de acesso à informação:</strong> em ' + lai.ufs_dependentes.length + ' estado(s) a lista oficial de municípios com plano ainda depende de resposta a pedido de acesso à informação; enquanto a resposta não chega, a verificação estadual por essa fonte fica pendente, não presumida.';
-    }catch(e){}
-  })();
 (function(){ const c = document.getElementById('citacaoCorte'); if (c && META && META.corte) c.textContent = META.corte; })();
 // Link direto para um estado (#SC): usado pelos selos embutidos em outros sites (31/08/2026).
 (function(){
@@ -1122,8 +1093,7 @@ function renderMinha(){
       const emergsSemReg = ufFinal ? emergenciasDoMunicipio(document.getElementById('cidadeInput').value.trim(), ufFinal) : [];
       html += emergsSemReg.map(e => `<h4>${document.getElementById('cidadeInput').value.trim()} · ${ufFinal}</h4><p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('');
       const _nivCard = ufFinal ? nivelVerificacao(ufFinal, document.getElementById('cidadeInput').value.trim()) : 'nao_verificado';
-      const _laiUF = (VRESUMO && VRESUMO.lai && VRESUMO.lai.ufs_dependentes || []).includes(ufFinal);
-      html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano.${_laiUF ? ' A lista oficial de municípios com plano em ' + ufFinal + ' depende de resposta a pedido de acesso à informação ainda pendente.' : ''} Abaixo, o retrato do seu estado e o que fazer.</p>
+      html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
       <p style="margin:6px 0 12px;"><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
       ${ufFinal ? '' : '<p style="margin:0; color:var(--muted);">Selecione o estado para ver o retrato estadual.</p>'}<hr style="border:none; border-top:1px solid var(--line); margin:14px 0;">`;
     }
@@ -1327,7 +1297,7 @@ function gerarRelatorioCidadao(uf, municipio){
   if (i.com_ato === 0) faltas.push('Nenhum ato municipal localizado no estado até o corte.');
   else if (i.n_decreto > i.n_plano) faltas.push('No estado, predominam decretos de emergência sobre planos preventivos: a resposta vem depois do dano.');
   if (!faltas.length) faltas.push('Nenhuma lacuna crítica localizada até o corte. Confirme se o plano está atualizado para 2026/2027 e conheça a rota de saída do seu bairro.');
-  par('Nível de verificação desta cidade: ' + NIVEL_ROTULO[nivelVerificacao(uf, municipio)] + ' (METODOLOGIA §25).', {tam:9.5, cor:MUTED, espaco:4});
+  par('Nível de verificação desta cidade: ' + NIVEL_ROTULO[nivelVerificacao(uf, municipio)] + '.', {tam:9.5, cor:MUTED, espaco:4});
   faltas.forEach(item);
   par('O planejamento federal de 29/07/2026 (Sala de Situação do El Niño, 24 ministérios) prevê a atualização dos planos de contingência, com identificação de áreas de risco e fortalecimento das estruturas locais de resposta — é um compromisso público, e vale como argumento ao cobrar o estado e a prefeitura.', {tam:9.5, cor:MUTED, espaco:4});
 
