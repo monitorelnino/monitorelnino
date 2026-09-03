@@ -26,7 +26,7 @@ def main() -> int:
     for m in mun:
         if m.get("categoria") in PONT and str(m.get("url", "")).startswith("http"):
             h = m.get("hash_evidencia")
-            if not h or h not in itens:
+            if not h or h not in itens or not (itens[h].get("arquivo") or itens[h].get("wayback")):
                 faltam.append(f"{m['nome']}/{m['uf']}")
     for h, it in itens.items():
         arq = it.get("arquivo")

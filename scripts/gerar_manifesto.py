@@ -44,7 +44,8 @@ import sys
 RAIZ = pathlib.Path(__file__).parent.parent
 MANIFESTO = RAIZ / "docs" / "MANIFEST_SHA256.txt"
 
-FORA = {"gerar_tese.js"}  # ferramenta de sessão (C8): inventariada, não selada
+FORA_EXTRA = {"data/transferencias_api_raw.json"}
+FORA = {"gerar_tese.js", "data/transferencias_api_raw.json"}  # ferramenta de sessão (C8) e dump bruto da API (03/09): não selados
 
 
 def listar():

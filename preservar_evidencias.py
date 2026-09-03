@@ -46,8 +46,12 @@ def main(limite: int = 200) -> int:
     for m in mun:
         if m.get("categoria") not in PONT or not str(m.get("url", "")).startswith("http"):
             continue
-        if m.get("hash_evidencia"):
-            pulados += 1; continue
+        h_ex = m.get("hash_evidencia")
+        if h_ex:
+            it = (ler("evidencias.json", {"itens": {}}).get("itens") or {}).get(h_ex, {})
+            if it.get("arquivo") or it.get("wayback"):
+                pulados += 1; continue
+            # 03/09/2026: hash registrado mas cópia perdida (não comitada) → re-preserva
         if feitos + falhas >= limite:
             break
         try:
@@ -57,6 +61,10 @@ def main(limite: int = 200) -> int:
                              camada=2, uf=m["uf"], municipio=m["nome"], strings=[m["url"]]); falhas += 1
             continue
         ext = (mimetypes.guess_extension(("application/pdf" if bruto[:4] == b"%PDF" else "text/html")) or ".bin").lstrip(".")
+        h_novo = __import__("hashlib").sha256(bruto).hexdigest()
+        if h_ex and h_novo != h_ex:
+            registrar_lacuna(f"evidência {m['nome']}/{m['uf']}", f"documento mudou desde o hash registrado ({h_ex[:12]}… → {h_novo[:12]}…)", canal=m.get("canal") or "DOM", camada=2, uf=m["uf"], municipio=m["nome"], strings=[m["url"]])
+        idx = ler("evidencias.json", {"itens": {}}); idx["itens"].pop(h_ex, None) if h_ex and h_novo != h_ex else None; gravar("evidencias.json", idx)
         m["hash_evidencia"] = preservar_evidencia(bruto, m["url"], ext, "preservar_evidencias")
         feitos += 1
     gravar("municipios.json", mun)
