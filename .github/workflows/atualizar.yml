@@ -3,7 +3,8 @@ name: Atualização semanal de dados
 on:
   schedule:
     - cron: "0 9 * * 1"  # atualizacao SEMANAL (compromisso publico do site), segundas 09h UTC
-    - cron: "0 9 * * *"  # v2.2.4 (E4): execucao DIARIA; atualizar.py encerra sem comitar fora da semana intensiva (INTENSIVO_ATE) se nao for segunda
+    - cron: "0 9 * * *"  # v2.2.4 (E4): execucao DIARIA (06h Brasília); atualizar.py encerra sem comitar fora da semana intensiva (INTENSIVO_ATE) se nao for segunda
+    - cron: "0 21 * * *"  # 03/09/2026: 2a rodada DIARIA (18h Brasília), so para acelerar a varredura integral (03-10/09); mesma regra de cadencia
   workflow_dispatch:       # execução manual pelo botão "Run workflow"
     inputs:
       ensaio:
@@ -231,6 +232,13 @@ jobs:
           # edição livre. O resto (demais páginas, scripts, metodologia) segue
           # fora do alcance da automação.
           git diff --cached --quiet && echo "Sem alterações." || git commit -m "Atualização automática de dados ($(date +%d/%m/%Y))"
+          # 03/09/2026 (achado da 1a rodada com rebase): checkout do runner é raso (depth=1) e
+          # arquivos gerados fora do escopo do commit (ex.: docs/pip-audit-resultado.json) ficam
+          # modificados e não staged; isso faz o checkout interno do rebase abaixo falhar com
+          # "local changes would be overwritten". Descarta qualquer modificação não commitada
+          # em arquivos rastreados antes do rebase — nada aqui é dado do índice, é regenerado
+          # a cada rodada.
+          git checkout -- .
           # AUD-06: a main tem ruleset (PR + checagem obrigatória). O robô é a única exceção,
           # via deploy key (segredo ROBO_DEPLOY_KEY) — push por SSH. Em repositório de USUÁRIO o
           # GitHub não aceita "GitHub Actions" como ator de bypass; por isso o commit assinado
@@ -241,7 +249,9 @@ jobs:
           # 03/09/2026: se a main andou durante a rodada (merge editorial), rebase antes do push —
           # senão o push é recusado e o dia inteiro de coleta se perde. Conflito real (raro: o robô só
           # toca data/) aborta o rebase e o push falha com aviso, sem commit parcial.
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch git@github.com:${GITHUB_REPOSITORY}.git main
+          # depth=50 (em vez do padrão herdado do checkout raso) para o merge-base do rebase
+          # ter história o bastante mesmo com PRs editoriais mesclados no meio da rodada.
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
           git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito em data/; rodada não comitada"; rm -f ~/.ssh/robo; exit 1; }
           GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
           rm -f ~/.ssh/robo
