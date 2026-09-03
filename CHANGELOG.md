@@ -20,6 +20,23 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Cartório estadual: passada nas 23 UFs restantes (03/09/2026)
+- Todas as 27 UFs revisitadas hoje (4 na passada anterior + 23 agora), com três
+  buscas dirigidas logadas por UF (camada 3 — não substitui a bateria negativa
+  completa do §4.1.3).
+- **Mudança material localizada — RR:** em 02/09/2026 o governo criou o
+  **Gabinete Integrado da Operação El Niño 2026-2027** (19 órgãos, Casa Civil +
+  Defesa Civil), junto com decreto de situação de emergência por estiagem
+  (180 dias). O gabinete é ato ex-ante nomeado e é **candidato a elevar RR de VIG
+  para NOVO**; o decreto de SE é resposta (0 pontos). Registrado como pista até a
+  citação completa no DOE-RR — nenhuma nota mudou.
+- Pistas menores: SP (plano de contingência para estiagem apresentado ao Conselho
+  Estadual de Mudanças Climáticas em 24/07, sem número/data) e PI (declaração do
+  secretário de que já existe plano, sem documento). VIG mantido nos dois.
+- Demais 20 UFs: nenhum instrumento novo ou revisão publicada localizada; status
+  mantido.
+
+
 ### Cartório estadual (passada de 03/09) e alertas de saúde no Proteja-se
 - Passada dirigida nos quatro estados mais sensíveis do cartório: PB (LAC mantido —
   único achado é plano fiscal da Seplag, fora do objeto), RN (LAC mantido — imprensa
