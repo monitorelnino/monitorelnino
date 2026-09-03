@@ -19,7 +19,7 @@
   },
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "01/09/2026",
+ "gerado_em": "03/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -49,10 +49,10 @@
    "camada": "observado",
    "url_publica": "https://alertas2.inmet.gov.br/",
    "papel": "Avisos vigentes por área, com grau e vigência declarados pelo INMET.",
-   "status": "aguardando_primeira_coleta",
-   "consultado_em": null,
-   "documento": null,
-   "detalhe": null
+   "status": "coletado",
+   "consultado_em": "03/09/2026",
+   "documento": "Avisos ativos no momento da consulta",
+   "detalhe": "Avisos vigentes por área, com grau e vigência declarados pelo INMET."
   },
   "inpe_fogo": {
    "nome": "Programa Queimadas — risco de fogo",
@@ -82,10 +82,10 @@
    "camada": "enos",
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
-   "status": "aguardando_primeira_coleta",
-   "consultado_em": null,
-   "documento": null,
-   "detalhe": null
+   "status": "coletado",
+   "consultado_em": "03/09/2026",
+   "documento": "ONI v5, último trimestre MJJ/2026",
+   "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
   "iri_plume": {
    "nome": "Probabilidades ENSO (plume IRI/CPC)",
@@ -111,7 +111,812 @@
   }
  },
  "enos": {
-  "oni": null,
+  "oni": {
+   "serie": [
+    {
+     "trimestre": "FMA",
+     "ano": 2013,
+     "anomalia": -0.23
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2013,
+     "anomalia": -0.2
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2013,
+     "anomalia": -0.3
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2013,
+     "anomalia": -0.38
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2013,
+     "anomalia": -0.45
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2013,
+     "anomalia": -0.34
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2013,
+     "anomalia": -0.32
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2013,
+     "anomalia": -0.14
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2013,
+     "anomalia": -0.12
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2013,
+     "anomalia": -0.11
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2014,
+     "anomalia": -0.24
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2014,
+     "anomalia": -0.21
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2014,
+     "anomalia": -0.02
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2014,
+     "anomalia": 0.25
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2014,
+     "anomalia": 0.35
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2014,
+     "anomalia": 0.22
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2014,
+     "anomalia": 0.07
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2014,
+     "anomalia": 0.07
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2014,
+     "anomalia": 0.24
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2014,
+     "anomalia": 0.51
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2014,
+     "anomalia": 0.7
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2014,
+     "anomalia": 0.8
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2015,
+     "anomalia": 0.73
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2015,
+     "anomalia": 0.65
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2015,
+     "anomalia": 0.72
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2015,
+     "anomalia": 0.86
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2015,
+     "anomalia": 1.04
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2015,
+     "anomalia": 1.19
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2015,
+     "anomalia": 1.44
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2015,
+     "anomalia": 1.73
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2015,
+     "anomalia": 2.02
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2015,
+     "anomalia": 2.28
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2015,
+     "anomalia": 2.45
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2015,
+     "anomalia": 2.59
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2016,
+     "anomalia": 2.5
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2016,
+     "anomalia": 2.21
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2016,
+     "anomalia": 1.69
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2016,
+     "anomalia": 1.11
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2016,
+     "anomalia": 0.57
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2016,
+     "anomalia": 0.09
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2016,
+     "anomalia": -0.19
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2016,
+     "anomalia": -0.34
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2016,
+     "anomalia": -0.42
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2016,
+     "anomalia": -0.51
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2016,
+     "anomalia": -0.49
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2016,
+     "anomalia": -0.37
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2017,
+     "anomalia": -0.08
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2017,
+     "anomalia": 0.08
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2017,
+     "anomalia": 0.27
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2017,
+     "anomalia": 0.32
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2017,
+     "anomalia": 0.35
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2017,
+     "anomalia": 0.32
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2017,
+     "anomalia": 0.14
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2017,
+     "anomalia": -0.07
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2017,
+     "anomalia": -0.23
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2017,
+     "anomalia": -0.44
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2017,
+     "anomalia": -0.61
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2017,
+     "anomalia": -0.76
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2018,
+     "anomalia": -0.71
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2018,
+     "anomalia": -0.67
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2018,
+     "anomalia": -0.55
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2018,
+     "anomalia": -0.35
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2018,
+     "anomalia": -0.07
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2018,
+     "anomalia": 0.13
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2018,
+     "anomalia": 0.2
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2018,
+     "anomalia": 0.3
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2018,
+     "anomalia": 0.52
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2018,
+     "anomalia": 0.82
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2018,
+     "anomalia": 1.04
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2018,
+     "anomalia": 1.05
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2019,
+     "anomalia": 0.99
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2019,
+     "anomalia": 0.94
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2019,
+     "anomalia": 0.87
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2019,
+     "anomalia": 0.82
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2019,
+     "anomalia": 0.71
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2019,
+     "anomalia": 0.59
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2019,
+     "anomalia": 0.38
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2019,
+     "anomalia": 0.2
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2019,
+     "anomalia": 0.31
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2019,
+     "anomalia": 0.51
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2019,
+     "anomalia": 0.72
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2019,
+     "anomalia": 0.75
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2020,
+     "anomalia": 0.71
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2020,
+     "anomalia": 0.66
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2020,
+     "anomalia": 0.57
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2020,
+     "anomalia": 0.33
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2020,
+     "anomalia": 0.04
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2020,
+     "anomalia": -0.18
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2020,
+     "anomalia": -0.29
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2020,
+     "anomalia": -0.43
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2020,
+     "anomalia": -0.77
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2020,
+     "anomalia": -1.0
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2020,
+     "anomalia": -1.11
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2020,
+     "anomalia": -1.06
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2021,
+     "anomalia": -0.99
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2021,
+     "anomalia": -0.85
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2021,
+     "anomalia": -0.74
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2021,
+     "anomalia": -0.56
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2021,
+     "anomalia": -0.4
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2021,
+     "anomalia": -0.31
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2021,
+     "anomalia": -0.35
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2021,
+     "anomalia": -0.46
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2021,
+     "anomalia": -0.64
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2021,
+     "anomalia": -0.77
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2021,
+     "anomalia": -0.91
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2021,
+     "anomalia": -0.83
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2022,
+     "anomalia": -0.76
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2022,
+     "anomalia": -0.68
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2022,
+     "anomalia": -0.77
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2022,
+     "anomalia": -0.86
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2022,
+     "anomalia": -0.83
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2022,
+     "anomalia": -0.73
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2022,
+     "anomalia": -0.7
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2022,
+     "anomalia": -0.78
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2022,
+     "anomalia": -0.87
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2022,
+     "anomalia": -0.89
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2022,
+     "anomalia": -0.82
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2022,
+     "anomalia": -0.7
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2023,
+     "anomalia": -0.55
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2023,
+     "anomalia": -0.33
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2023,
+     "anomalia": -0.11
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2023,
+     "anomalia": 0.19
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2023,
+     "anomalia": 0.46
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2023,
+     "anomalia": 0.73
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2023,
+     "anomalia": 1.0
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2023,
+     "anomalia": 1.25
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2023,
+     "anomalia": 1.5
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2023,
+     "anomalia": 1.74
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2023,
+     "anomalia": 1.9
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2023,
+     "anomalia": 1.99
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2024,
+     "anomalia": 1.84
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2024,
+     "anomalia": 1.53
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2024,
+     "anomalia": 1.18
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2024,
+     "anomalia": 0.77
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2024,
+     "anomalia": 0.43
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2024,
+     "anomalia": 0.18
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2024,
+     "anomalia": 0.06
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2024,
+     "anomalia": -0.04
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2024,
+     "anomalia": -0.12
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2024,
+     "anomalia": -0.19
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2024,
+     "anomalia": -0.29
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2024,
+     "anomalia": -0.43
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2025,
+     "anomalia": -0.46
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2025,
+     "anomalia": -0.22
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2025,
+     "anomalia": -0.08
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2025,
+     "anomalia": 0.02
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2025,
+     "anomalia": -0.04
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2025,
+     "anomalia": -0.02
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2025,
+     "anomalia": -0.11
+    },
+    {
+     "trimestre": "JAS",
+     "ano": 2025,
+     "anomalia": -0.26
+    },
+    {
+     "trimestre": "ASO",
+     "ano": 2025,
+     "anomalia": -0.43
+    },
+    {
+     "trimestre": "SON",
+     "ano": 2025,
+     "anomalia": -0.57
+    },
+    {
+     "trimestre": "OND",
+     "ano": 2025,
+     "anomalia": -0.61
+    },
+    {
+     "trimestre": "NDJ",
+     "ano": 2025,
+     "anomalia": -0.6
+    },
+    {
+     "trimestre": "DJF",
+     "ano": 2026,
+     "anomalia": -0.39
+    },
+    {
+     "trimestre": "JFM",
+     "ano": 2026,
+     "anomalia": -0.21
+    },
+    {
+     "trimestre": "FMA",
+     "ano": 2026,
+     "anomalia": 0.11
+    },
+    {
+     "trimestre": "MAM",
+     "ano": 2026,
+     "anomalia": 0.46
+    },
+    {
+     "trimestre": "AMJ",
+     "ano": 2026,
+     "anomalia": 0.95
+    },
+    {
+     "trimestre": "MJJ",
+     "ano": 2026,
+     "anomalia": 1.39
+    }
+   ],
+   "fonte": "noaa_oni",
+   "documento": "ONI v5, último trimestre MJJ/2026"
+  },
   "probabilidades": null,
   "prognostico": null
  },

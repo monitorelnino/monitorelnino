@@ -2,49 +2,69 @@
   "_governanca": "Registro de ATOS DE RESPOSTA (decretos de situação de emergência/calamidade pública) — NUNCA pontuam no índice MARÉ (Correção B, METODOLOGIA §5.6 e §12.1: o índice mede preparação ex-ante, não resposta a dano já ocorrido). Arquivo separado de municipios.json de propósito: um ato de resposta é um EVENTO datado (uma cidade pode decretar emergência várias vezes ao ano, por eventos diferentes), enquanto municipios.json representa o STATUS ATUAL de preparação de cada cidade (um registro por cidade). As duas coisas não são mutuamente exclusivas — uma cidade pode ter um plano ex-ante em municipios.json E, separadamente, um ou mais atos de resposta aqui, de eventos reais distintos. Alimentado manualmente (achado de sessão) e, a partir de 31/08/2026, também por rotina automática (monitorar_atos_resposta.py + julgar_e_aplicar_descobertas.py) — mesma trava de fonte oficial já usada no resto do projeto.",
   "eventos": [
     {
-      "nome": "Florianópolis", "uf": "SC", "data": "30/08/2026",
+      "nome": "Florianópolis",
+      "uf": "SC",
+      "data": "30/08/2026",
       "causa": "chuva intensa com granizo",
       "decreto": "situação de emergência (número exato não localizado até o corte — decreto municipal, não publicado em fonte com número indexável nas buscas realizadas)",
       "danos": "cerca de 700-1.000 residências afetadas, principalmente Norte da Ilha",
       "fonte": "Defesa Civil de Santa Catarina (oficial) + Informe Floripa + TVBV Online",
       "url": "https://www.defesacivil.sc.gov.br/2026/08/30/chuva-intensa-com-granizo-leva-cinco-municipios-de-santa-catarina-a-decretar-situacao-de-emergencia/",
-      "lat": -27.5945, "lon": -48.5477, "canal": "orgao_estadual"
+      "lat": -27.5945,
+      "lon": -48.5477,
+      "canal": "orgao_estadual"
     },
     {
-      "nome": "Biguaçu", "uf": "SC", "data": "30/08/2026",
+      "nome": "Biguaçu",
+      "uf": "SC",
+      "data": "30/08/2026",
       "causa": "chuva intensa com granizo",
       "decreto": "Decreto nº 285-A/2026 (número conforme imprensa — Correio de Santa Catarina; não confirmado ainda contra o texto no Diário Oficial do Município)",
       "danos": "cerca de 250 residências afetadas",
       "fonte": "Defesa Civil de Santa Catarina (oficial) + Correio de Santa Catarina",
       "url": "https://www.defesacivil.sc.gov.br/2026/08/30/chuva-intensa-com-granizo-leva-cinco-municipios-de-santa-catarina-a-decretar-situacao-de-emergencia/",
-      "lat": -27.496, "lon": -48.6598, "canal": "orgao_estadual"
+      "lat": -27.496,
+      "lon": -48.6598,
+      "canal": "orgao_estadual"
     },
     {
-      "nome": "Bom Jesus", "uf": "SC", "data": "30/08/2026",
+      "nome": "Bom Jesus",
+      "uf": "SC",
+      "data": "30/08/2026",
       "causa": "chuva intensa com granizo",
       "decreto": "situação de emergência (número exato não localizado até o corte)",
       "danos": "81 residências afetadas",
       "fonte": "Defesa Civil de Santa Catarina (oficial) + Informe Floripa",
       "url": "https://www.defesacivil.sc.gov.br/2026/08/30/chuva-intensa-com-granizo-leva-cinco-municipios-de-santa-catarina-a-decretar-situacao-de-emergencia/",
-      "lat": -26.7326, "lon": -52.3919, "canal": "orgao_estadual"
+      "lat": -26.7326,
+      "lon": -52.3919,
+      "canal": "orgao_estadual"
     },
     {
-      "nome": "Ipuaçu", "uf": "SC", "data": "30/08/2026",
+      "nome": "Ipuaçu",
+      "uf": "SC",
+      "data": "30/08/2026",
       "causa": "chuva intensa com granizo",
       "decreto": "situação de emergência (número exato não localizado até o corte)",
       "danos": "210 residências afetadas",
       "fonte": "Defesa Civil de Santa Catarina (oficial) + Informe Floripa",
       "url": "https://www.defesacivil.sc.gov.br/2026/08/30/chuva-intensa-com-granizo-leva-cinco-municipios-de-santa-catarina-a-decretar-situacao-de-emergencia/",
-      "lat": -26.635, "lon": -52.4556, "canal": "orgao_estadual"
+      "lat": -26.635,
+      "lon": -52.4556,
+      "canal": "orgao_estadual"
     },
     {
-      "nome": "Quilombo", "uf": "SC", "data": "30/08/2026",
+      "nome": "Quilombo",
+      "uf": "SC",
+      "data": "30/08/2026",
       "causa": "chuva intensa com granizo",
       "decreto": "situação de emergência (número exato não localizado até o corte)",
       "danos": "32 residências afetadas",
       "fonte": "Defesa Civil de Santa Catarina (oficial) + Informe Floripa",
       "url": "https://www.defesacivil.sc.gov.br/2026/08/30/chuva-intensa-com-granizo-leva-cinco-municipios-de-santa-catarina-a-decretar-situacao-de-emergencia/",
-      "lat": -26.7264, "lon": -52.724, "canal": "orgao_estadual"
+      "lat": -26.7264,
+      "lon": -52.724,
+      "canal": "orgao_estadual"
     }
   ]
 }
