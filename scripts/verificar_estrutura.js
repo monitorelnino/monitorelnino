@@ -41,7 +41,7 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["O monitor", "Mapas e gráficos", "Sinais de risco", "Saúde", "Financiamento", "Proteja-se", "Enviar documento", "Para gestores", "Imprensa"]; // 03/09/2026: dez páginas (Imprensa a pedido da editoria)
+  const NAV_ORDEM = ["O monitor", "Mapas", "Sinais de risco", "Saúde", "Financiamento", "Proteja-se", "Enviar dados", "Gestores", "Imprensa"]; // 03/09/2026: dez páginas (Imprensa a pedido da editoria)
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {
@@ -147,7 +147,7 @@ for (const arq of arquivos) {
   }
   // nenhuma página pode redefinir os componentes da folha base
   const NUCLEO = [".mainnav a, .mainnav span", ".mainnav .ativa, .mainnav .ativa:hover", "header.masthead", ".site-title", ".masthead--mini .site-title", ".kicker", ".map-box", ".chart-box", ".map-legend", ".map-tooltip", "footer.site-footer", ".skip", ".panel"];
-  if (nome !== "index.html") {
+  { // 03/09/2026: o index também não pode redefinir o núcleo (a nav duplicada dele vencia a base)
     for (const sel of NUCLEO) {
       const re = new RegExp("(^|[\\s}])" + sel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*\\{");
       if (re.test(css)) falha(`${nome}: redefine '${sel}' localmente (deve viver só em assets/base.css)`);
