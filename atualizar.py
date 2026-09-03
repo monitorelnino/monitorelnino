@@ -150,6 +150,7 @@ def main():
     rodar(["node", "scripts/verificar_runtime_saude.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_financiamento.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_acessibilidade.js"], obrigatorio=True)   # v2.3: a11y + responsividade
+    rodar(["node", "scripts/verificar_vocabulario_publico.js"], obrigatorio=True)  # 03/09: sem jargão interno no texto visível
     rodar(["bash", "scripts/verificar_derivados.sh", "--idempotencia"], obrigatorio=True)         # AUD-04: derivados reproduzíveis em árvore limpa
 
     meta_p = RAIZ / "data" / "meta.json"

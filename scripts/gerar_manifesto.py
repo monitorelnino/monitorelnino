@@ -56,7 +56,7 @@ def listar():
                "METODOLOGIA.pdf", "MARE_Indice_Documentacao.pdf",
                # AUD-09 (auditoria externa 02/09/2026): derivados publicados também selados
                "dados-abertos/*.csv", "dados-abertos/datapackage.json", "CITATION.cff",
-               "feeds/*.xml", "feeds/index.json", "selos/*.svg", "assets/*.css", "docs/lai/*.txt"]
+               "feeds/*.xml", "feeds/index.json", "selos/*.svg", "assets/*.css"]
     vistos = set()
     for pad in padroes:
         for p in RAIZ.glob(pad):
