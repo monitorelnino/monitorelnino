@@ -21,10 +21,13 @@ USO
   python coletar_diarios_municipais.py --autoteste
   python coletar_diarios_municipais.py --lote 1 --tamanho 150 --desde 2026-06-29
 """
-import json, re, sys, urllib.parse
+import json, math, re, sys, time, urllib.parse, urllib.error
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste)
+
+FONTE_QD = "Querido Diário (diário municipal)"
+PAUSA_ENTRE_CONSULTAS = 0.25   # segundos; cortesia com a API pública
 
 QD_API = "https://queridodiario.ok.org.br/api/gazettes?{params}"
 TERMOS_RESPOSTA = ['"situação de emergência"', '"estado de calamidade pública"']
@@ -37,6 +40,39 @@ def ordem_prioridade(por_cod: dict, cadastro: dict, pop: dict) -> list:
     ufs = cadastro.get("ordem_prioridade_uf_por_percentual") or sorted({r["uf"] for r in por_cod.values()})
     rank_uf = {uf: i for i, uf in enumerate(ufs)}
     return sorted(por_cod, key=lambda c: (rank_uf.get(por_cod[c]["uf"], 99), -int(pop.get(c, 0) or 0)))
+
+
+def pendentes_na_janela(ordem: list, livro: dict, desde_janela: str) -> list:
+    """Municípios, na ordem de prioridade, SEM consulta ao Querido Diário datada >= desde_janela.
+    Varredura integral (03/09/2026): cada dia consome os próximos ainda não consultados —
+    nunca repete quem já foi visto na janela e nunca pula ninguém."""
+    mun = (livro or {}).get("municipios", {})
+    def consultado(cod):
+        return any(f.get("fonte") == FONTE_QD and (f.get("data") or "") >= desde_janela
+                   for f in mun.get(str(cod).zfill(7), {}).get("fontes", []))
+    return [c for c in ordem if not consultado(c)]
+
+
+def tamanho_para_cobrir(n_pendentes: int, hoje_iso: str, ate_iso: str, minimo: int, maximo: int = 1500) -> int:
+    """Quantos consultar hoje para que TODOS os pendentes caibam nos dias que restam
+    (hoje inclusive) até `ate_iso`. Nunca abaixo de `minimo`; teto `maximo` por rodada."""
+    try:
+        dias = (date.fromisoformat(ate_iso) - date.fromisoformat(hoje_iso)).days + 1
+    except ValueError:
+        dias = 1
+    dias = max(1, dias)
+    return max(minimo, min(maximo, math.ceil(n_pendentes / dias)))
+
+
+def buscar_com_espera(url: str, timeout: int = 30) -> bytes:
+    """Uma nova tentativa após 30 s se a API limitar (HTTP 429); outros erros sobem."""
+    try:
+        return buscar(url, timeout=timeout)
+    except urllib.error.HTTPError as e:
+        if e.code == 429:
+            time.sleep(30)
+            return buscar(url, timeout=timeout)
+        raise
 
 
 def parse_qd(dados) -> list:
@@ -63,12 +99,19 @@ def iso_para_br(s):
         return s
 
 
-def coletar_lote(lote: int, tamanho: int, desde: str) -> int:
+def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "", ate: str = "") -> int:
     por_cod, _ = referencia_ibge()
     pop = ler("populacao_censo2022.json", {}) or {}
     cadastro = ler("cadastro_prioritarios.json", {}) or {}
     ordem = ordem_prioridade(por_cod, cadastro, pop)
-    alvo = ordem[(lote - 1) * tamanho: lote * tamanho]
+    if pendentes_desde:
+        # varredura integral: próximos ainda não consultados na janela; tamanho dimensionado para cobrir todos até `ate`
+        pend = pendentes_na_janela(ordem, ler("fontes_consultadas.json", {}), pendentes_desde)
+        tamanho = tamanho_para_cobrir(len(pend), date.today().isoformat(), ate or date.today().isoformat(), tamanho)
+        alvo = pend[:tamanho]
+        print(f"varredura integral: {len(pend)} pendentes desde {pendentes_desde}; hoje {len(alvo)} (fim previsto {ate or 'hoje'})")
+    else:
+        alvo = ordem[(lote - 1) * tamanho: lote * tamanho]
     atos = ler("atos_resposta.json"); pistas = ler("pistas_imprensa.json", {"_governanca": "", "pistas": []})
     pistas.setdefault("pistas", [])
     vistos = {(e["nome"], e["uf"], e["data"], e.get("causa")) for e in atos["eventos"]}
@@ -78,8 +121,9 @@ def coletar_lote(lote: int, tamanho: int, desde: str) -> int:
         params = urllib.parse.urlencode({"territory_ids": cod, "published_since": desde,
                                          "querystring": " OR ".join(TERMOS_RESPOSTA + TERMOS_PISTA), "size": 50})
         url = QD_API.format(params=params)
+        time.sleep(PAUSA_ENTRE_CONSULTAS)
         try:
-            bruto = buscar(url, timeout=30)
+            bruto = buscar_com_espera(url, timeout=30)
             dados = json.loads(bruto.decode("utf-8", "replace"))
         except Exception as e:  # noqa: BLE001
             registrar_lacuna(f"Querido Diário/{ref['nome']}-{ref['uf']}", f"{type(e).__name__}", canal="DOM", camada=1,
@@ -87,7 +131,7 @@ def coletar_lote(lote: int, tamanho: int, desde: str) -> int:
             continue
         if dados.get("total_gazettes", 0) == 0 and not dados.get("gazettes"):
             # município não indexado OU sem menção: não é "nada localizado" (exige bateria completa)
-            marcar_fonte_consultada([cod], "Querido Diário (diário municipal)", "nao_verificado",
+            marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado",
                                     resultado="sem edições/menções no período (cobertura a confirmar)")
             log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "pista", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
                       n_resultados=0, resultados="Querido Diário: 0 resultados (não indexado ou sem menção)")
@@ -107,7 +151,7 @@ def coletar_lote(lote: int, tamanho: int, desde: str) -> int:
                                     "data": iso_para_br(p["data"]), "url": p["url"], "trecho": p["trecho"],
                                     "hash_evidencia": h, "registrado_em": date.today().isoformat(),
                                     "status": "pista — promover a registro exige documento primário lido por humano"}); npist += 1
-        marcar_fonte_consultada([cod], "Querido Diário (diário municipal)", "nao_verificado",
+        marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado",
                                 resultado=f"{len(decretos)} decreto(s), {len(pist)} pista(s)")
         log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "registro" if decretos else "pista", uf=ref["uf"],
                   municipio=ref["nome"], ibge=cod, n_resultados=dados.get("total_gazettes"), hash_evidencia=h,
@@ -133,8 +177,19 @@ def autoteste() -> int:
         o = ordem_prioridade(por, {"ordem_prioridade_uf_por_percentual": ["SC", "RS"]}, {"1": 10, "3": 500})
         return o == ["3", "1", "2"]
     def t4(): return parse_qd(None) == [] and parse_qd({}) == []
+    def t5():  # varredura integral: quem já foi consultado na janela sai da fila; quem foi antes da janela volta
+        livro = {"municipios": {"0000001": {"fontes": [{"fonte": FONTE_QD, "data": "2026-09-03"}]},
+                                "0000002": {"fontes": [{"fonte": FONTE_QD, "data": "2026-08-20"}]}}}
+        return pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03") == ["2", "3"]
+    def t6():  # dimensionamento: 5.421 pendentes em 8 dias → 678/dia; nunca abaixo do mínimo; teto respeitado
+        return (tamanho_para_cobrir(5421, "2026-09-03", "2026-09-10", 150) == 678
+                and tamanho_para_cobrir(100, "2026-09-03", "2026-09-10", 150) == 150
+                and tamanho_para_cobrir(100000, "2026-09-10", "2026-09-10", 150) == 1500
+                and tamanho_para_cobrir(300, "2026-09-11", "2026-09-10", 150) == 300)  # data-fim passada: tudo hoje
     return rodar_autoteste({"classifica decreto com nº e pista de plano": t1, "negativo: decreto sem número": t2,
-                            "prioridade: UF do cadastro, depois população": t3, "negativo: resposta nula": t4})
+                            "prioridade: UF do cadastro, depois população": t3, "negativo: resposta nula": t4,
+                            "varredura integral: fila de pendentes na janela": t5,
+                            "varredura integral: tamanho para cobrir até a data-fim": t6})
 
 
 if __name__ == "__main__":
@@ -144,4 +199,6 @@ if __name__ == "__main__":
     lote = int(a[a.index("--lote") + 1]) if "--lote" in a else 1
     tam = int(a[a.index("--tamanho") + 1]) if "--tamanho" in a else 150
     desde = a[a.index("--desde") + 1] if "--desde" in a else "2026-06-29"
-    sys.exit(coletar_lote(lote, tam, desde))
+    pend = a[a.index("--pendentes-desde") + 1] if "--pendentes-desde" in a else ""
+    ate = a[a.index("--ate") + 1] if "--ate" in a else ""
+    sys.exit(coletar_lote(lote, tam, desde, pendentes_desde=pend, ate=ate))

@@ -25,7 +25,7 @@ endpoints /transferencias-voluntarias, /convenios e /emendas, com limite de 60 r
 Tesouro (constitucionais), FNS, FNAS, Transferegov, MDS/PVAC: `a_verificar` (§15) → lacuna.
 Parsers provados por fixture (--autoteste). Uso: --semear · --autoteste · (coleta) --uf XX
 """
-import hashlib, json, os, pathlib, sys, time, urllib.parse
+import hashlib, json, os, pathlib, sys, time, urllib.error, urllib.parse
 from datetime import date
 from coletores_base import buscar, log_busca, registrar_lacuna, ler, gravar, rodar_autoteste, referencia_ibge, sha256
 
@@ -161,6 +161,14 @@ def coletar(uf=None):
             with urllib.request.urlopen(req, timeout=40) as r: bruto = r.read()
             dados = json.loads(bruto.decode("utf-8", "replace")); registrar_consulta("/transferencias-voluntarias", params, bruto, len(dados)); itens += parse_transferencias(dados); ok += 1
             time.sleep(1.0)  # 60 req/min
+        except urllib.error.HTTPError as e:
+            # 03/09/2026: o código importa para o diagnóstico (401/403 = chave; 429 = limite; 5xx = Portal)
+            registrar_lacuna(f"Portal/{cod}", f"HTTPError {e.code}", canal="DOU", camada=1, ibge=cod); lac += 1
+            if e.code == 429:
+                time.sleep(60)
+            elif e.code in (401, 403):
+                registrar_lacuna("Portal da Transparência", f"chave recusada (HTTP {e.code}); demais consultas puladas", canal="DOU", camada=1)
+                break
         except Exception as e:  # noqa: BLE001
             registrar_lacuna(f"Portal/{cod}", type(e).__name__, canal="DOU", camada=1, ibge=cod); lac += 1
     em = _l("emendas.json", {"itens": []}); em["itens"] = [i for i in itens if i["rota"] in ("r5", "r6")]; em["status"] = "coletado" if ok else "aguardando_primeira_coleta"; _g("emendas.json", em)

@@ -91,6 +91,12 @@ setTimeout(() => {
       const nNao = (vr.totais_por_nivel.nao_verificado || 0).toLocaleString("pt-BR");
       return txt.includes(nNao);
     })());
+    teste("varredura dos diários: número renderizado = arquivo, e nunca afirma existência/inexistência", (() => {
+      const vr = JSON.parse(fs.readFileSync(path.join(raiz, "data", "verificacao_resumo.json"), "utf-8"));
+      const vd = vr.varredura_diarios; const txt = (q("cvVarredura") && q("cvVarredura").textContent) || "";
+      if (!vd || !vd.consultados) return txt === "";
+      return txt.includes(vd.consultados.toLocaleString("pt-BR")) && txt.includes("não é verificar") && !/[Nn]ão localizamos|não t[êe]m plano|sem plano/.test(txt);
+    })());
   } catch (e) { teste("portão de linguagem v2.2.4", false); }
 
   try {
