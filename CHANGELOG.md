@@ -20,6 +20,16 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Contador real na cortina pública (03/09/2026, autorização escrita)
+- O robô publica, a cada rodada que gerar mudança, um contador operacional
+  (`progresso.json`) no ramo `publico` — quantos municípios já foram
+  consultados na varredura dos diários oficiais, sobre 5.571. A cortina
+  "Em atualização" no domínio passa a mostrar esse número em vez da barra
+  puramente decorativa; se o arquivo não carregar, volta ao modo indeterminado.
+  Nunca dado do índice, nunca afirmação sobre existência de plano. Script:
+  `scripts/atualizar_contador_cortina.py`; publica só quando os números mudam.
+
+
 ### Correção: rebase do robô falhava por arquivo sujo fora do escopo (03/09/2026)
 - A 1ª execução real com o rebase (introduzido mais cedo hoje) falhou: `docs/pip-audit-resultado.json`
   fica modificado a cada rodada mas fora da lista de arquivos do commit automático; isso deixava o
