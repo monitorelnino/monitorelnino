@@ -20,6 +20,20 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Duas regras novas do teste do objeto para pistas municipais (03/09/2026, decisão editorial)
+- **Autoridade:** só ato do Executivo institui plano para o componente pontuado.
+  Conselho de saúde aprovando plano de desastres → camada observada de saúde
+  (Quissamã/RJ); câmara/colegiado sem decreto → "executivo pendente".
+- **Família de risco:** plano cujo risco está fora das três famílias do ciclo
+  (frio/baixas temperaturas/geada; epidemia/arboviroses/gripe) fica visível como
+  "fora do objeto", nunca pontua, nunca é apagado (Itapevi/SP).
+- Regra declarada na METODOLOGIA §5.2.1 antes de beneficiar qualquer ente;
+  codificada em `classificar_pista_civil.py` (campos `autoridade`, `objeto`,
+  `destino`), com 14 autotestes incluindo os dois casos reais; reaplicada às 41
+  pistas de hoje (6 candidatas ao componente pontuado, 2 camada saúde, 2 fora do
+  objeto, 1 executivo pendente, 30 para leitura humana).
+
+
 ### Triagem das pistas de plano de contingência (03/09/2026, autorização escrita)
 - `classificar_pista_civil.py`: heurística que classifica cada pista da
   varredura (origem `querido_diario`) em `candidato_forte`,
