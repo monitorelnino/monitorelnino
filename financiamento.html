@@ -290,7 +290,7 @@ function __init(){
       no(g, n, 300, passo - 8, n.cor, n.n + ' · ' + n.nome, 'chave: ' + n.chave + (n.ex_ante ? '' : ' · resposta'));
     });
     MonitorMapas.legenda('legRede', [{cor: '#35566B', rotulo: 'contínuo: regra'}, {cor: '#7C4A34', rotulo: 'tracejado: decreto (resposta)'}, {cor: '#C69B72', rotulo: 'pontilhado: discricionária'}, {cor: '#647A7E', rotulo: 'duplo: execução direta'}]);
-    fonteFigura('boxRede', 'Fonte: modelo das sete rotas (metodologia, §28), base legal citada em cada rota; sem valores — as quantias entram nos blocos 2 a 4 conforme a coleta.');
+    fonteFigura('boxRede', 'Fonte: modelo das sete rotas (ver metodologia), base legal citada em cada rota; sem valores — as quantias entram nos blocos 2 a 4 conforme a coleta.');
   })();
   document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="chart-box" style="border-left:4px solid '+r.cor+'"><h3 class="map-card-h">'+r.n+' · '+esc(r.nome)+' <span style="font-weight:400; text-transform:none; letter-spacing:0;">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
     + '<p class="note"><strong>'+esc(r.curta)+'.</strong> '+esc(r.base_legal)+'<br><em>O que o decreto destranca:</em> '+esc(r.decreto_destranca)+'.</p></div>').join('');
@@ -362,7 +362,7 @@ function __init(){
       + (PAINEL.agregados || []).map(a => '<tr><td>' + esc(a.regiao) + ' · ' + esc(a.porte) + '</td><td>' + a.n + '</td><td>' + a.com_instrumento + '</td><td>' + a.nao_verificados + '</td></tr>').join('') + '</tbody></table></div>';
     fonteFigura('boxPainel', 'Fonte: painel amostral do Monitor (sorteio publicado; fichas com fonte e data por município, nos dados abertos).');
   } else {
-    fonteFigura('boxPainel', 'Não localizamos publicação do painel até o corte — lacuna declarada (gerar_painel.py, §10-bis).');
+    fonteFigura('boxPainel', 'Não localizamos publicação do painel até o corte — lacuna declarada.');
   }
   // 6 · programas permanentes
   const PROG = [
@@ -370,7 +370,7 @@ function __init(){
     {nome: 'Programa Cisternas', base: 'MDS', regra: 'adesão e projeto; contínuo', lista: 'execução por município: a coletar (MDS)'},
     {nome: 'Operação Carro-Pipa', base: 'Exército (CMNE) / MIDR', regra: 'inclusão condicionada, na maior parte dos casos, a reconhecimento federal', lista: 'LISTA NÃO PÚBLICA — portal do Exército bloqueou acesso automatizado em 02/09/2026; pedido de LAI gerado'},
     {nome: 'CISC — Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal não localizada — não inventar'},
-    {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: a arquivar pela Action ler_documento (§10-bis)'},
+    {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: em coleta'},
   ];
   document.getElementById('programasCards').innerHTML = PROG.map(p => '<div class="chart-box"><h3 class="map-card-h">' + esc(p.nome) + '</h3><p class="note"><strong>' + esc(p.base) + '.</strong> ' + esc(p.regra) + '.<br><em>' + esc(p.lista) + '.</em></p></div>').join('');
   // 7 · compromissos + gráfico por área

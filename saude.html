@@ -59,7 +59,7 @@
 
   <div class="panel" id="estadual">
     <h2 style="margin-top:0;">2 · O que cada estado publicou (verificação em andamento)</h2>
-    <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE para os riscos sanitários do ciclo. "Ainda não verificado" significa exatamente isso: a bateria estadual desta camada não foi executada para a UF — não é ausência de documento. <strong id="contagemUF">—</strong> Parte desta camada depende de respostas a pedidos de acesso à informação às secretarias estaduais de saúde; enquanto não chegam, a UF fica "ainda não verificado" por essa fonte.</p>
+    <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE para os riscos sanitários do ciclo. "Ainda não verificado" significa exatamente isso: a bateria estadual desta camada não foi executada para a UF — não é ausência de documento. <strong id="contagemUF">—</strong></p>
     <div class="maps-grid">
       <div class="map-box" id="boxStatus">
         <h3 class="map-card-h">Status do instrumento estadual de saúde</h3>
@@ -191,7 +191,7 @@ function __init(){
   desenharMapa('mapaRiscoSan','legRiscoSan', uf => fam(uf) ? FAM[fam(uf)][1] : NEUTRA,
     uf => { const u = SUF.uf[uf]||{}; return (u.risco_sanitario_projetado||['sem risco projetado registrado']).map(esc).join('<br>'); },
     Object.values(FAM).map(v => ({cor:v[1], rotulo:v[0]})));
-  fonteFigura('boxRiscoSan', 'Fonte: Boletins nº 1 e 2 do Painel El Niño 2026-2027 (CEMADEN/INPE); derivação por família de risco (metodologia, §27).');
+  fonteFigura('boxRiscoSan', 'Fonte: Boletins nº 1 e 2 do Painel El Niño 2026-2027 (CEMADEN/INPE); derivação por família de risco (ver metodologia).');
   document.querySelector('#tblUF tbody').innerHTML = UFS.map(uf => { const u = SUF.uf[uf]||{}; return '<tr><td><strong>'+uf+'</strong></td><td>'+esc(ST[st(uf)][0])+'</td><td>'+esc(u.doc||'—')+'</td><td>'+esc((u.risco_sanitario_projetado||[]).join('; '))+'</td><td>'+esc(u.data_verificacao||'—')+'</td></tr>'; }).join('');
 
   // 3 · observado
