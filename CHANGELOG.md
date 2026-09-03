@@ -20,6 +20,24 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Triagem das pistas de plano de contingência (03/09/2026, autorização escrita)
+- `classificar_pista_civil.py`: heurística que classifica cada pista da
+  varredura (origem `querido_diario`) em `candidato_forte`,
+  `falso_positivo_provavel` ou `indefinido` — só para ORDENAR a fila de
+  revisão humana, nunca para decidir sozinha nem promover a registro.
+  Calibrada contra as 41 pistas reais da 1ª varredura integral: 14 fortes,
+  13 prováveis falsos positivos, 14 indefinidos (ficam na dúvida, por
+  desenho — regra "na dúvida, não classifica").
+- Conectada em `coletar_diarios_municipais.py`: toda pista nova já sai com
+  o campo `triagem`. As 41 pistas de hoje foram reclassificadas
+  retroativamente.
+- Sinal forte: ato que institui/aprova o plano ("fica instituído",
+  "institui o PLACOM/PLANCON", decreto que aprova, câmara que aprova).
+  Sinal fraco: cláusula padrão sem relação com defesa civil (TI/backup,
+  termo de referência, matriz de risco genérica de licitação, transporte
+  escolar, síndrome gripal, sandbox regulatório).
+
+
 ### Encerrar a varredura hoje, sob pedido (03/09/2026, autorização escrita)
 - Novo botão manual no Actions ("finalizar_varredura_hoje"): consulta TODOS os
   municípios ainda pendentes numa rodada só, em vez do ritmo por dias restantes.
