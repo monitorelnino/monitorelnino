@@ -219,7 +219,7 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ index.html mapas-e-graficos.html recalcular_mare.py MARE_Indice_Documentacao.pdf METODOLOGIA.pdf selos/ feeds/ dados-abertos/
+          git add data/ index.html mapas-e-graficos.html recalcular_mare.py MARE_Indice_Documentacao.pdf METODOLOGIA.pdf selos/ feeds/ dados-abertos/ evidencias/ docs/MANIFEST_SHA256.txt
           # Escopo do commit ampliado em 31/08/2026, e revisado depois no mesmo
           # dia quando mapas/gráficos ganharam página própria: index.html
           # (o número fixo do medidor), mapas-e-graficos.html (AREAS —
