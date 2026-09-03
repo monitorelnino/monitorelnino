@@ -20,6 +20,16 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Contador que se move em primeiro lugar (03/09/2026, decisão editorial)
+- Pedido da editoria: "não faz sentido um contador que não se move na frente".
+  No painel "Contador público da verificação" (site completo), a linha da
+  varredura dos diários municipais — a que sobe a cada rodada, 2×/dia — passou
+  a vir PRIMEIRO, em destaque (negrito), com percentual junto ao número.
+- A linha de níveis de verificação (nacional/estadual/completo), que fica
+  parada até a bateria completa pós-defeso, ganhou uma frase explicando por
+  que ela não se move agora — não foi escondida, só contextualizada.
+
+
 ### Correção: contador da cortina nunca disparava (03/09/2026)
 - Bug na 1ª versão: `HOUVE_ALTERACAO` era calculado checando `git diff --cached`
   DEPOIS do commit já feito — o staged vira commit, o diff some, a variável
