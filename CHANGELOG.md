@@ -20,6 +20,19 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Correção: rebase do robô falhava por arquivo sujo fora do escopo (03/09/2026)
+- A 1ª execução real com o rebase (introduzido mais cedo hoje) falhou: `docs/pip-audit-resultado.json`
+  fica modificado a cada rodada mas fora da lista de arquivos do commit automático; isso deixava o
+  checkout raso do runner (depth=1) com alteração não commitada, e o `git rebase` recusava com
+  "cannot rebase: you have unstaged changes". Corrigido descartando essas modificações (`git checkout --
+  .`) antes do rebase, e aprofundando o fetch (depth=50) para o merge-base ter história suficiente.
+  Reproduzido e confirmado localmente antes e depois do fix.
+
+### Robô: duas rodadas diárias durante a semana intensiva (03/09/2026, autorização escrita)
+- Segundo gatilho de cron às 18h Brasília, além do já existente às 06h — só durante
+  03–10/09/2026, para acelerar a varredura integral dos 5.571 municípios. Cadência normal
+  (segunda-feira) e fora da janela intensiva não muda: rodadas extras encerram sem coletar.
+
 ### Reconhecimentos federais: pasta nova do MIDR (03/09/2026, autorização escrita)
 - A pasta `/noticias/RSS` (que o rodapé do sítio do MIDR ainda aponta) passou a exigir login;
   a 1ª rodada real leu uma página de login e registrou "0 notícias". Agora o coletor lê o RSS
