@@ -57,6 +57,9 @@ def main():
     hoje_iso = datetime.date.today().isoformat()
     dia_semana = datetime.date.today().weekday()  # 0 = segunda
     em_intensivo = bool(intensivo) and intensivo_de <= hoje_iso <= intensivo
+    if os.environ.get("ENSAIO"):
+        print("[ensaio] execução de ensaio: tudo roda como no dia da semana intensiva; NADA será comitado nem publicado.")
+        em_intensivo = True
     if not em_intensivo and dia_semana != 0:
         print("[cadência] fora da semana intensiva e não é segunda-feira: execução diária encerra sem coletar nem comitar.")
         return 0

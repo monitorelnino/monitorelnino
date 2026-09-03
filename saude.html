@@ -14,6 +14,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
+<script src="assets/mapas.js"></script>
 <style>
 /* --- saude.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
@@ -79,7 +80,7 @@
 
   <div class="panel" id="observado">
     <h2 style="margin-top:0;">3 · O que se observa</h2>
-    <p class="hint">Dado epidemiológico é observação, nunca juízo de preparo. Fonte não coletada aparece como lacuna declarada.</p>
+    <p class="hint">Dado epidemiológico é observação, nunca juízo de preparo. Fonte não coletada aparece como lacuna declarada. <strong>Cadência:</strong> não é tempo real — o robô consulta as fontes oficiais todo dia na semana intensiva (06 a 13/09/2026) e toda segunda-feira depois; cada figura mostra a data da consulta. <span id="carimboSaude"></span></p>
     <div class="maps-grid">
       <div class="map-box" id="boxDengue">
         <h3 class="map-card-h">Dengue nas capitais · última semana epidemiológica</h3>
@@ -151,9 +152,7 @@ let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = '#DCD3C2';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const tooltip = document.getElementById('mapTooltip');
-function showTip(html, evt){ tooltip.innerHTML = html; tooltip.style.display='block'; tooltip.style.left=(evt.clientX+14)+'px'; tooltip.style.top=(evt.clientY+10)+'px'; }
-function hideTip(){ tooltip.style.display='none'; }
+const { showTip, hideTip } = MonitorMapas;
 
 async function __load(){
   [BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE] = await Promise.all(
@@ -162,27 +161,12 @@ async function __load(){
   __init();
 }
 
-function fonteFigura(caixaId, texto){
-  // crédito de figura dentro do parágrafo-nota único do cartão (regra de harmonização)
-  const nota = document.querySelector('#' + caixaId + ' .note');
-  if(!nota || nota.querySelector('.fonte-figura')) return;
-  const sp = document.createElement('span'); sp.className = 'fonte-figura'; sp.innerHTML = '<br>' + texto; nota.appendChild(sp);
-}
+const fonteFigura = MonitorMapas.credito;
 
 function __init(){
-  const projection = d3.geoMercator().fitSize([480,460], BR_GEOJSON), pathGen = d3.geoPath().projection(projection);
   document.getElementById('corteSaude').textContent = SUF.corte || '—';
-  function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){
-    const svg = d3.select('#' + svgId);
-    svg.selectAll('path').data(BR_GEOJSON.features).join('path').attr('d', pathGen).attr('class','uf-path')
-      .attr('fill', d => corDe(d.properties.sigla)).attr('tabindex', 0).attr('role','img')
-      .attr('aria-label', d => d.properties.name + ': ' + rotuloDe(d.properties.sigla).replace(/<[^>]+>/g,' '))
-      .on('mouseenter', (evt,d) => showTip('<strong>'+esc(d.properties.name)+'</strong><br>'+rotuloDe(d.properties.sigla), evt))
-      .on('mousemove', (evt,d) => showTip('<strong>'+esc(d.properties.name)+'</strong><br>'+rotuloDe(d.properties.sigla), evt))
-      .on('mouseleave', hideTip);
-    document.getElementById(legendaId).innerHTML = itens.map(i => '<span><i style="background:'+i.cor+'"></i>'+esc(i.rotulo)+'</span>').join('');
-    return svg;
-  }
+  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
+  function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){ const svg = MonitorMapas.ufs(ctx, svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itens); return svg; }
 
   // 1 · federal
   const STATUS_FED = {localizado:'localizado', anunciado_nao_localizado:'anunciado, não localizado até o corte'};
@@ -231,6 +215,8 @@ function __init(){
   fonteFigura('boxCalor', (SINAIS.fontes && SINAIS.fontes.inmet_avisos && SINAIS.fontes.inmet_avisos.status === 'coletado') ? 'Fonte: INMET, avisos meteorológicos · consultado em '+esc(SINAIS.fontes.inmet_avisos.consultado_em)+'.' : 'Não localizamos coleta desta fonte até o corte — lacuna declarada (INMET).');
   desenharMapa('mapaEmerg','legEmerg', uf => NEUTRA, uf => 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento)', [{cor:NEUTRA, rotulo:'nenhuma registrada até o corte'}]);
   fonteFigura('boxEmerg', 'Fonte: DOU (ESPIN) e diários municipais — coleta da Pista A; peso zero.');
+  (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => (v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
+    const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes — ' + c.join(' · ') + '.'; })();
 
   // 4 · quadrantes DC × saúde
   const dcLoc = uf => ['NOVO','READ','VIG'].includes(((MARE[uf]||{}).status_estadual||'').toUpperCase());

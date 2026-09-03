@@ -4,7 +4,12 @@ on:
   schedule:
     - cron: "0 9 * * 1"  # atualizacao SEMANAL (compromisso publico do site), segundas 09h UTC
     - cron: "0 9 * * *"  # v2.2.4 (E4): execucao DIARIA; atualizar.py encerra sem comitar fora da semana intensiva (INTENSIVO_ATE) se nao for segunda
-  workflow_dispatch: {}    # execução manual pelo botão "Run workflow"
+  workflow_dispatch:       # execução manual pelo botão "Run workflow"
+    inputs:
+      ensaio:
+        description: "Ensaio: roda tudo como se fosse dia da semana intensiva, SEM comitar nem publicar (relatório no repositório privado)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -136,9 +141,29 @@ jobs:
           # a execução diária encerra sem coletar nem comitar (retorno ao semanal é automático).
           INTENSIVO_DE: ${{ vars.INTENSIVO_DE }}
           INTENSIVO_ATE: ${{ vars.INTENSIVO_ATE }}
+          ENSAIO: ${{ github.event.inputs.ensaio == 'true' && '1' || '' }}
           LOTE_DIARIOS: ${{ vars.LOTE_DIARIOS }}
           TAMANHO_LOTE: ${{ vars.TAMANHO_LOTE }}
-        run: python atualizar.py
+        id: atualizar
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python atualizar.py 2>&1 | tee /tmp/atualizar.log
+      - name: Relatório da execução no repositório privado (sempre)
+        if: always()
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          { echo "workflow=atualizar evento=${{ github.event_name }} ensaio=${ENSAIO:-0} commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) resultado=${{ steps.atualizar.outcome }}"
+            echo "--- arquivos alterados ---"; git status --short | head -40
+            echo "--- log (últimas 220 linhas) ---"; tail -220 /tmp/atualizar.log 2>/dev/null
+          } > /tmp/relatorio.txt 2>&1
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
+          mkdir -p /tmp/registro/relatorios && cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_atualizar.txt"
+          cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -q -m "atualizar ${GITHUB_SHA::7}" && git push -q
+          [ "${{ steps.atualizar.outcome }}" = "success" ] || { echo "::error::atualizar.py falhou — ver relatório em robo-registro"; exit 1; }
+        env:
+          ENSAIO: ${{ github.event.inputs.ensaio == 'true' && '1' || '' }}
         # atualizar.py já roda, nesta ordem e como etapas bloqueantes,
         # verificar_estrutura.js → verificar_consistencia.py →
         # recalcular_mare.py --check → verificar_runtime.js →
@@ -191,6 +216,7 @@ jobs:
           retention-days: 30
 
       - name: Commit das alterações de dados
+        if: github.event.inputs.ensaio != 'true'
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"

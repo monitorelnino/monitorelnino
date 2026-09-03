@@ -14,6 +14,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
+<script src="assets/mapas.js"></script>
 <style>
 /* --- sinais-de-risco.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
@@ -201,15 +202,12 @@ async function __load(){
   __init();
 }
 
-const tooltip = document.getElementById('mapTooltip');
-function showTip(html, evt){ tooltip.innerHTML = html; tooltip.style.display='block';
-  tooltip.style.left = (evt.clientX+14)+'px'; tooltip.style.top = (evt.clientY+10)+'px'; }
-function hideTip(){ tooltip.style.display='none'; }
+const showTip = MonitorMapas.showTip, hideTip = MonitorMapas.hideTip;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 function __init(){
-const projection = d3.geoMercator().fitSize([480,460], BR_GEOJSON);
-const pathGen = d3.geoPath().projection(projection);
+const projection = __ctx().projection;
+const pathGen = __ctx().path;
 const fonteDe = id => (SINAIS.fontes || {})[id] || {};
 const coletada = id => fonteDe(id).status === 'coletado';
 
@@ -254,21 +252,9 @@ function explicarVazio(caixaId, fonteId, oQueVira){
 
 /* ---------- desenho genérico de mapa coroplético por UF ---------- */
 function desenharMapa(svgId, legendaId, corDe, rotuloDe, itensLegenda){
-  const svg = d3.select('#' + svgId);
-  svg.selectAll('path').data(BR_GEOJSON.features).join('path')
-    .attr('d', pathGen).attr('class', 'uf-path')
-    .attr('fill', d => corDe(d.properties.sigla))
-    .attr('tabindex', 0).attr('role', 'img')
-    .attr('aria-label', d => d.properties.name + ': ' + rotuloDe(d.properties.sigla).replace(/<[^>]+>/g, ' '))
-    .on('mouseenter', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong><br>' + rotuloDe(d.properties.sigla), evt))
-    .on('mousemove', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong><br>' + rotuloDe(d.properties.sigla), evt))
-    .on('mouseleave', hideTip)
-    .on('focus', function(evt, d){ const b = this.getBoundingClientRect();
-      showTip('<strong>' + esc(d.properties.name) + '</strong><br>' + rotuloDe(d.properties.sigla), {clientX:b.x + b.width/2, clientY:b.y}); })
-    .on('blur', hideTip);
-  const leg = document.getElementById(legendaId);
-  leg.innerHTML = itensLegenda.map(i => '<span><i style="background:' + i.cor + '"></i>' + esc(i.rotulo) + '</span>').join('');
+  const svg = MonitorMapas.ufs(__ctx(), svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itensLegenda); return svg;
 }
+function __ctx(){ if (!window.__ctxCache) window.__ctxCache = MonitorMapas.contexto(BR_GEOJSON, 480, 460); return window.__ctxCache; }
 
 // ---- Mapa 1: tipo de risco projetado (dado coletado) ----
 const RISCO = uf => (SINAIS.uf[uf] || {}).risco_projetado;
