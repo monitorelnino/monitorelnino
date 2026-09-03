@@ -30,6 +30,12 @@ espera a pista B. Isso é a governança automático × humano do projeto
 
 ## 2. Pista A — atualização automática semanal
 
+> **Semana intensiva 03/09–10/09/2026 (varredura integral):** a rodada diária consulta, no
+> Querido Diário, os próximos municípios ainda não consultados na janela, em tamanho
+> recalculado a cada dia para cobrir os 5.571 até `INTENSIVO_ATE` (variáveis do repositório
+> `INTENSIVO_DE`, `INTENSIVO_ATE`, `TAMANHO_LOTE` = mínimo por rodada). O progresso aparece
+> no contador público ("Varredura dos diários oficiais municipais"). Consulta não é verificação.
+
 - **Gatilho:** segundas-feiras, 09h UTC (06h Brasília), ou botão *Run
   workflow* na aba Actions. Primeira execução: **domingo, 06/09/2026, 06h Brasília** — dia 0 da semana intensiva (`INTENSIVO_DE=2026-09-06`, `INTENSIVO_ATE=2026-09-13`); antes de 06/09 a execução diária encerra sem coletar.
 - **Segredos necessários** (Settings → Secrets and variables → Actions):

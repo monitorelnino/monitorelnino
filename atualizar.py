@@ -87,7 +87,14 @@ def main():
             lote = str(max(1, min(7, decorridos + 1)))  # D0 = lote 1 … D6+ = lote 7
         else:
             lote = "1"
-    rodar([sys.executable, "coletar_diarios_municipais.py", "--lote", lote, "--tamanho", os.environ.get("TAMANHO_LOTE", "150")])
+    if em_intensivo and not os.environ.get("LOTE_DIARIOS"):
+        # 03/09/2026 (decisão editorial): varredura INTEGRAL — todos os 5.571 municípios até INTENSIVO_ATE.
+        # Cada dia consulta os próximos ainda não consultados na janela; o tamanho é recalculado a cada
+        # rodada para caber nos dias que restam (mínimo TAMANHO_LOTE). Consulta não é verificação (§4.1.2).
+        rodar([sys.executable, "coletar_diarios_municipais.py", "--pendentes-desde", intensivo_de, "--ate", intensivo,
+               "--tamanho", os.environ.get("TAMANHO_LOTE", "150")])
+    else:
+        rodar([sys.executable, "coletar_diarios_municipais.py", "--lote", lote, "--tamanho", os.environ.get("TAMANHO_LOTE", "150")])
     rodar([sys.executable, "recalcular_mare.py", "--simular-declarado-nacional"])  # anexo público; não altera indice.json
     rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento

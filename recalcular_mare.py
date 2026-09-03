@@ -312,10 +312,24 @@ def _resumo_verificacao(out):
         pass
     except Exception:
         lai = None
+    try:
+        # 03/09/2026: progresso da varredura integral dos diários municipais (Querido Diário).
+        # Consulta NÃO é verificação (§4.1.2): o número diz quantos municípios já foram consultados
+        # nessa fonte, quantos tiveram menção e quantos não — nunca quantos "têm" ou "não têm" plano.
+        _fc = json.load(open(RAIZ / "data" / "fontes_consultadas.json", encoding="utf-8")).get("municipios", {})
+        _FQD = "Querido Diário (diário municipal)"
+        _qd = {c: [f for f in m.get("fontes", []) if f.get("fonte") == _FQD] for c, m in _fc.items()}
+        _qd = {c: f for c, f in _qd.items() if f}
+        _datas = sorted({f["data"] for fs in _qd.values() for f in fs if f.get("data")})
+        _com_mencao = sum(1 for fs in _qd.values() if any(not str(f.get("resultado", "")).startswith("sem edições") for f in fs))
+        varredura = {"fonte": _FQD, "consultados": len(_qd), "total": len(out), "com_mencao": _com_mencao,
+                     "sem_mencao": len(_qd) - _com_mencao, "desde": (_datas[0] if _datas else None), "ultima": (_datas[-1] if _datas else None)}
+    except Exception:
+        varredura = None
     resumo = {"gerado_de": "verificacao_municipal.json", "total_municipios": len(out), "lai": lai,
               "totais_por_nivel": tot, "por_uf": por_uf, "niveis_acima_do_padrao": acima,
               "ultima_rodada_log": ult, "fontes_suspensas_defeso_ultima_rodada": suspensas,
-              "fila_citacao_incompleta": fila}
+              "fila_citacao_incompleta": fila, "varredura_diarios": varredura}
     with open(RAIZ / "data" / "verificacao_resumo.json", "w", encoding="utf-8") as f:
         json.dump(resumo, f, ensure_ascii=False, indent=1); f.write("\n")
     return resumo
