@@ -95,5 +95,23 @@
     const sp = document.createElement('span'); sp.className = 'fonte-figura'; sp.innerHTML = '<br>' + texto; nota.appendChild(sp);
   }
 
-  global.MonitorMapas = { NEUTRA, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito };
+  /** Padrão único dos gráficos Chart.js (03/09/2026): tipografia, cores, grade, tooltip. */
+  function padraoGraficos(Chart) {
+    if (!Chart || !Chart.defaults) return;
+    Chart.defaults.color = '#55645B';                      // --muted
+    Chart.defaults.font.family = "'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif";
+    Chart.defaults.font.size = 11.5;
+    Chart.defaults.borderColor = '#D6C4AC';                // --line (grade)
+    if (!Chart.defaults.font) Chart.defaults.font = {};
+    if (Chart.defaults.plugins && Chart.defaults.plugins.legend && Chart.defaults.plugins.legend.labels) { Chart.defaults.plugins.legend.labels.boxWidth = 10; Chart.defaults.plugins.legend.labels.padding = 10; }
+    if (Chart.defaults.plugins && Chart.defaults.plugins.tooltip) { const t = Chart.defaults.plugins.tooltip; t.backgroundColor = '#15201A'; t.titleFont = { family: "'Archivo', sans-serif", weight: '600' }; t.bodyFont = { family: "'Archivo', sans-serif" }; t.cornerRadius = 6; t.padding = 8; }
+    const el = Chart.defaults.elements || {};
+    if (el.bar) el.bar.borderRadius = 3; if (el.line) el.line.borderWidth = 2; if (el.point) el.point.radius = 2.5;
+    Chart.defaults.maintainAspectRatio = false;
+  }
+  /** Paleta ordinal e categórica do site (tokens), para uso nos gráficos. */
+  const PALETA = { status: { NOVO: '#35566B', READ: '#6E8CA0', ELAB: '#9FB6C6', VIG: '#C69B72', LAC: '#A65F3F', NAO_VERIFICADO: '#64645C' },
+                   resposta: '#7C4A34', preparacao: '#35566B', neutra: '#DCD3C2', serie: ['#35566B', '#5E7C93', '#C69B72', '#A65F3F', '#87855C', '#647A7E', '#4F7D48', '#7A6A4F'] };
+
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito };
 })(window);
