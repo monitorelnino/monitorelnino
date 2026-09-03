@@ -24,6 +24,8 @@ const dom = new JSDOM(html, {
   beforeParse(w) {
     global.window = w; global.document = w.document; global.navigator = w.navigator;
     w.d3 = require("d3");
+    // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
+    w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
     class Chart { constructor() {} } Chart.defaults = { font: {}, color: "" };
     w.Chart = Chart;
     w.fetch = (rel) => {
@@ -123,7 +125,7 @@ setTimeout(() => {
   // cada item ocupar sua própria linha em vez de várias legendas cabendo lado a lado
   // — rótulos precisam ser nomes de categoria diretos, não frases descritivas com
   // parênteses explicativos (esses vão no tooltip, que já tem espaço de sobra).
-  const itensLongos = [...d.querySelectorAll(".map-legend span")]
+  const itensLongos = [...d.querySelectorAll(".map-legend > span:not(.escala)")]
     .filter(s => s.textContent.length > 40);
   teste("harmonização: nenhum item de legenda passa de 40 caracteres",
     itensLongos.length === 0);
@@ -141,6 +143,12 @@ setTimeout(() => {
   teste("harmonização: todo cartão de mapa/gráfico tem exatamente 1 parágrafo visível",
     cartoesComParagrafosDemais.length === 0);
 
+
+  // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──
+  const mapasSvg = [...d.querySelectorAll('svg[id^="map"], svg[id^="mapa"]')].filter(s => s.querySelector("path.uf-path") || s.querySelector("path"));
+  teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com siglas das 27 UFs`, mapasSvg.length > 0 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
+  const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
+  teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I")) && /background:/.test(c.firstElementChild.getAttribute("style") || "") && c.textContent.trim().length > 0)));
   if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
   console.log("\n✓ RUNTIME (mapas e gráficos) OK — todas as verificações passaram.");
   process.exit(0);

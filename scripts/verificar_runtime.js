@@ -22,6 +22,8 @@ const dom = new JSDOM(html, {
   beforeParse(w) {
     global.window = w; global.document = w.document; global.navigator = w.navigator;
     w.d3 = require("d3");
+    // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
+    w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
     class Chart { constructor() {} } Chart.defaults = { font: {}, color: "" };
     w.Chart = Chart;
     w.fetch = (rel) => {
@@ -75,7 +77,13 @@ setTimeout(() => {
     q("cidadeInput").value = "Sorriso"; // município sem registro no banco → nível padrão "não verificado"
     q("cidadeInput").dispatchEvent(new dom.window.Event("input"));
     const cardNV = q("meuCard").innerHTML;
-    teste("linguagem: município não verificado diz 'Ainda não verificamos'", cardNV.includes("Ainda não verificamos"));
+    teste("medidor do herói: alvo da barra e número = média do índice (não o HTML)", (() => {
+    const idx = JSON.parse(fs.readFileSync(path.join(raiz, "data", "indice.json"), "utf-8"));
+    const tot = Object.keys(idx).filter(k => k.length === 2).map(k => idx[k].total); const media = Math.round(tot.reduce((a, b) => a + b, 0) / 27 * 10) / 10;
+    const alvo = parseFloat(q("gaugeFill").dataset.alvo); const num = (q("gaugeNum").textContent || "").replace(",", ".");
+    return Math.abs(alvo - media) < 0.05 && q("gaugeFill").style.width === alvo + "%";
+  })());
+  teste("linguagem: município não verificado diz 'Ainda não verificamos'", cardNV.includes("Ainda não verificamos"));
     teste("linguagem: município não verificado NÃO diz 'Não localizamos'", !/[Nn]ão localizamos/.test(cardNV));
     teste("contador público: números renderizados = contagem do arquivo", (() => {
       const vr = JSON.parse(fs.readFileSync(path.join(raiz, "data", "verificacao_resumo.json"), "utf-8"));

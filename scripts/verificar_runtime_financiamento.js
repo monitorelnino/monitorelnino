@@ -30,6 +30,8 @@ const dom = new JSDOM(html, {
   beforeParse(w) {
     global.window = w; global.document = w.document; global.navigator = w.navigator;
     w.d3 = require("d3");
+    // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
+    w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
     class Chart { constructor(ctx, cfg) { graficos.push({ ctx, cfg }); } }
     Chart.defaults = { font: {}, color: "" };
     w.Chart = Chart;
@@ -53,7 +55,9 @@ setTimeout(() => {
   const ROTAS = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "rotas.json"), "utf-8")).rotas;
   const TR = JSON.parse(fs.readFileSync(path.join(raiz, "data", "transferencias.json"), "utf-8"));
   teste("zero erros de runtime", erros.length === 0); erros.slice(0, 4).forEach(e => console.log("     ", e));
-  teste("bloco 1: 8 cartões de rota, na ordem e nas cores do modelo", q("rotasCards").children.length === 8 && [...q("rotasCards").children].every((c, i) => c.getAttribute("style").includes(ROTAS[i].cor)));
+  teste("bloco 1: rede com 8 rotas, 3 nós de origem/destino e arestas coloridas", q("redeRotas").querySelectorAll("g.nos g[role=img]").length === 8 && q("redeRotas").querySelectorAll("g.nos rect").length === 11 && q("redeRotas").querySelectorAll("path.aresta").length >= 16);
+  teste("bloco 1: rede reage ao gesto (tooltip ao passar o mouse numa rota)", (() => { const g = q("redeRotas").querySelector("g.nos g[role=img]"); g.dispatchEvent(new dom.window.MouseEvent("mouseenter", {bubbles: true, clientX: 10, clientY: 10})); return q("mapTooltip").style.display === "block" && /chave/.test(q("mapTooltip").innerHTML); })());
+  teste("bloco 1: 8 cartões de rota em texto (dobrável), na ordem e nas cores do modelo", q("rotasCards").children.length === 8 && [...q("rotasCards").children].every((c, i) => c.getAttribute("style").includes(ROTAS[i].cor)));
   teste("bloco 2: faixa do defeso desenhada", q("svgSerie").querySelector("rect") && q("svgSerie").textContent.includes("04/07–25/10"));
   for (const id of ["mapaFundo", "mapaHab", "mapDinheiro"]) teste(`${id}: 27 estados`, q(id).querySelectorAll("path").length === 27);
   teste("mapa do dinheiro: um círculo por repasse do Prepara RS", q("mapDinheiro").querySelectorAll("circle:not(.rec)").length === TR.repasses_rs.filter(r => r.lat).length);
@@ -77,6 +81,12 @@ setTimeout(() => {
   teste("somaPreparacao ignora r3 e r4 (resposta)", soma === 60);
   const ativa = d.querySelector(".mainnav .ativa");
   teste("nav: 'Financiamento' é o item ativo", ativa && ativa.textContent.trim() === "Financiamento");
+
+  // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──
+  const mapasSvg = [...d.querySelectorAll('svg[id^="map"], svg[id^="mapa"]')].filter(s => s.querySelector("path.uf-path") || s.querySelector("path"));
+  teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com siglas das 27 UFs`, mapasSvg.length > 0 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
+  const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
+  teste(`padrão de legendas: ${legendas.length} legenda(s) no formato canônico`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I" && /background:/.test(c.firstElementChild.getAttribute("style") || ""))) && c.textContent.trim().length > 0)));
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (financiamento) OK — rotas, faixa do defeso, mapas, resposta, compromissos, fontes, E10 e soma de preparação.");
   process.exit(falhas.length ? 1 : 0);
 }, 1200);

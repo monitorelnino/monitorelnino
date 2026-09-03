@@ -30,6 +30,8 @@ const dom = new JSDOM(html, {
   beforeParse(w) {
     global.window = w; global.document = w.document; global.navigator = w.navigator;
     w.d3 = require("d3");
+    // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
+    w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
     class Chart { constructor(ctx, cfg) { graficos.push({ ctx, cfg }); } }
     Chart.defaults = { font: {}, color: "" };
     w.Chart = Chart;
@@ -82,6 +84,12 @@ setTimeout(() => {
   // nav canônica com Saúde ativa
   const ativa = d.querySelector(".mainnav .ativa");
   teste("nav: 'Saúde' é o item ativo", ativa && ativa.textContent.trim() === "Saúde");
+
+  // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──
+  const mapasSvg = [...d.querySelectorAll('svg[id^="map"], svg[id^="mapa"]')].filter(s => s.querySelector("path.uf-path") || s.querySelector("path"));
+  teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com siglas das 27 UFs`, mapasSvg.length > 0 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
+  const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
+  teste(`padrão de legendas: ${legendas.length} legenda(s) no formato canônico`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I" && /background:/.test(c.firstElementChild.getAttribute("style") || ""))) && c.textContent.trim().length > 0)));
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, quadrantes, tooltip, créditos e lacunas declaradas.");
   process.exit(falhas.length ? 1 : 0);
 }, 900);

@@ -14,6 +14,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
+<script src="assets/mapas.js"></script>
 <style>
 /* --- mapas-e-graficos.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
@@ -100,7 +101,7 @@
   </div>
 <div class="map-box">
         <h3 class="map-card-h">6 · Cidades que decretaram emergência</h3>
-        <p class="note" style="margin:0 0 8px;"><strong id="countAtosResposta">—</strong> cidades que decretaram situação de emergência ou calamidade pública, localizadas em fontes oficiais até o corte. Passe o mouse para ver data e causa.</p>
+        <p class="note" style="margin:0 0 8px;"><strong id="countAtosResposta">—</strong> cidades que decretaram situação de emergência ou calamidade pública, localizadas em fontes oficiais até o corte. Passe o mouse para ver data e causa. <span id="carimboAtos"></span></p>
         <svg id="mapAtosResposta" role="img"
       aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, atos de resposta que não pontuam no índice"
       viewBox="0 0 480 460" style="width:100%; max-width:640px; height:auto; display:block; margin:0 auto;"></svg>
@@ -263,10 +264,7 @@ new Chart(document.getElementById('chartCapitals'), {
 // =========================================================
 // MAPAS GEOGRÁFICOS (D3 — projeção real das 27 UFs)
 // =========================================================
-const tooltip = document.getElementById('mapTooltip');
-function showTip(html, evt){ tooltip.innerHTML = html; tooltip.style.display='block';
-  tooltip.style.left = (evt.clientX+14)+'px'; tooltip.style.top = (evt.clientY+10)+'px'; }
-function hideTip(){ tooltip.style.display='none'; }
+const showTip = MonitorMapas.showTip, hideTip = MonitorMapas.hideTip;
 
 const projection = d3.geoMercator().fitSize([480,460], BR_GEOJSON);
 const pathGen = d3.geoPath().projection(projection);
@@ -311,8 +309,7 @@ svgPoints.append('g').selectAll('circle')
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
 
-document.getElementById('pointsLegend').innerHTML = Object.entries(CAT_STYLE).map(([k,v])=>
-  `<span><i style="background:${v.cor}"></i>${v.label}</span>`).join('');
+MonitorMapas.legenda('pointsLegend', Object.values(CAT_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
 
 // ---- 1b. Nível de verificação municipal (v2.2.4, §7.3/C8) ----
 // Desenho adiado (setTimeout 0) e camada padrão em UM único <path>: 5.571 nós
@@ -328,30 +325,22 @@ setTimeout(function(){
   };
   const acima = (VRESUMO && VRESUMO.niveis_acima_do_padrao) || {};
   const susp  = new Set((VRESUMO && VRESUMO.fontes_suspensas_municipios) || []);
-  const svg = d3.select('#mapNiveis');
-  svg.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
-    .attr('d', pathGen).attr('fill', 'var(--surface-2, #E7DECD)').attr('stroke', 'var(--line)').attr('stroke-width', .6);
+  const __ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
+  const svg = MonitorMapas.ufs(__ctx, 'mapNiveis', uf => 'var(--surface-2, #E7DECD)', uf => { const p = (VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {}; return Object.entries(p).map(([k, v]) => v + ' ' + (NIV_STYLE[k] ? NIV_STYLE[k].label.toLowerCase() : k)).join(' · ') || 'sem dados'; });
   const pts = (window.REF_MUNICIPIOS || []).map(r => {
     const cod = String(r.codigo_ibge).padStart(7,'0');
     const niv = susp.has(cod) ? 'fonte_suspensa' : (acima[cod] || acima[String(r.codigo_ibge)] || 'nao_verificado');
     return {lat:r.lat, lon:r.lon, niv};
   }).filter(p => p.lat && p.lon);
   // camada padrão (não verificados): um único <path> de pontos — barato de renderizar
-  const dPadrao = pts.filter(p=>p.niv==='nao_verificado')
-    .map(p=>{const c=projection([p.lon,p.lat]); return 'M'+c[0].toFixed(1)+' '+c[1].toFixed(1)+'h0';}).join('');
-  svg.append('path').attr('d', dPadrao).attr('stroke', NIV_STYLE.nao_verificado.cor)
-    .attr('stroke-width', 1.4).attr('stroke-linecap','round').attr('stroke-opacity', .55).attr('fill','none');
-  // níveis acima do padrão e fontes suspensas: círculos individuais (poucos)
-  svg.append('g').selectAll('circle').data(pts.filter(p=>p.niv!=='nao_verificado')).join('circle')
-    .attr('cx', d=>projection([d.lon,d.lat])[0]).attr('cy', d=>projection([d.lon,d.lat])[1])
-    .attr('r', 2.6).attr('fill', d=>NIV_STYLE[d.niv].cor).attr('fill-opacity', .95);
+  MonitorMapas.pontosDensos(__ctx, 'mapNiveis', pts.filter(p=>p.niv==='nao_verificado'), NIV_STYLE.nao_verificado.cor, 1.4, .55);
+  MonitorMapas.pontos(__ctx, 'mapNiveis', pts.filter(p=>p.niv!=='nao_verificado'), {r: () => 2.6, cor: d => NIV_STYLE[d.niv].cor, classe: 'acima'});
   const t = (VRESUMO && VRESUMO.totais_por_nivel) || {};
   document.getElementById('countNiveis').textContent =
     (t.nacional||0).toLocaleString('pt-BR') + ' em fontes nacionais · ' + (t.estadual||0).toLocaleString('pt-BR') +
     ' também em estaduais · ' + (t.municipal_completo||0).toLocaleString('pt-BR') + ' completos · ' +
     (t.nao_verificado||0).toLocaleString('pt-BR') + ' ainda não verificados';
-  document.getElementById('legNiveis').innerHTML = Object.entries(NIV_STYLE).map(([k,v])=>
-    `<span><i style="background:${v.cor}"></i>${v.label}</span>`).join('');
+  MonitorMapas.legenda('legNiveis', Object.values(NIV_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
   // crédito de figura dentro do MESMO parágrafo-nota (regra de harmonização: 1 parágrafo visível por cartão)
   const notaFig = document.querySelector('#nivelverificacao .note');
   if (notaFig && !notaFig.querySelector('.fonte-figura')) {
@@ -431,6 +420,8 @@ const TODOS_ATOS_RESPOSTA = [...eventosAntigos, ...eventosNovos];
 document.getElementById('countAtosResposta').textContent = TODOS_ATOS_RESPOSTA.length;
 
 const svgResp = d3.select('#mapAtosResposta');
+(function(){ const ev = ATOS_RESPOSTA.eventos || []; const datas = ev.map(e => e.data).filter(Boolean).map(d => d.split('/').reverse().join('-')).sort(); const ult = datas.length ? datas[datas.length - 1].split('-').reverse().join('/') : '—';
+  const el = document.getElementById('carimboAtos'); if (el) el.textContent = 'Registro: ' + ev.length + ' evento(s), último em ' + ult + '. Coleta automática (DOU/S2iD e diários oficiais) a partir de 06/09/2026: diária na semana intensiva, semanal depois; até lá, os eventos vêm da verificação manual.'; })();
 svgResp.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
   .attr('d', pathGen).attr('fill', '#E4DBC6').attr('class', 'uf-path')
@@ -515,13 +506,7 @@ __pat.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
 
 document.getElementById('legCobertura').innerHTML =
   `<span><i style="background:linear-gradient(90deg,#E4DBC6,#35566B); width:44px;"></i>0% → 100% dos municípios com ato</span>`;
-document.getElementById('legNatureza').innerHTML =
-  `<div style="width:100%; max-width:360px;">
-     <div style="height:12px; border-radius:6px; border:1px solid #CDBB9F;
-       background:linear-gradient(90deg, #A65F3F 0%, #C69B72 20%, #DDD3C0 50%, #8FA6B5 80%, #35566B 100%);"></div>
-     <div style="display:flex; justify-content:space-between; font-size:12.5px; color:var(--muted); margin-top:3px;"><span>só decretos reativos</span><span>misto</span><span>só planos preventivos</span></div>
-   </div>
-   <span><i style="background:repeating-linear-gradient(45deg,#EDE6D8,#EDE6D8 3px,#B9B2A4 3px,#B9B2A4 4px)"></i>sem atos identificados</span>`;
+MonitorMapas.legendaContinua('legNatureza', 'linear-gradient(90deg, #A65F3F 0%, #C69B72 20%, #DDD3C0 50%, #8FA6B5 80%, #35566B 100%)', 'só decretos reativos', 'só planos preventivos', [{cor: 'repeating-linear-gradient(45deg,#EDE6D8,#EDE6D8 3px,#B9B2A4 3px,#B9B2A4 4px)', rotulo: 'sem atos identificados'}]);
 
 // ---- Mapa: risco projetado × instrumento estadual ----
 const CONSIST_ROTULO = {COBRE:'Cobre o risco projetado', PARCIAL:'Cobre parte do risco', DIFERE:'Risco difere do instrumento', SEM:'Sem instrumento estadual', NEUTRO:'Sem sinal elevado no trimestre'};
@@ -608,19 +593,7 @@ new Chart(document.getElementById('chartAreas'), {
 // (financiamento e transferências — mapa do dinheiro e fontes de monitoramento — migraram para financiamento.html, E9)
 
 // ---- Siglas das UFs sobre os três mapas ----
-function addSiglas(svg){
-  svg.append('g').selectAll('text')
-    .data(BR_GEOJSON.features).join('text')
-    .attr('x', d=>pathGen.centroid(d)[0])
-    .attr('y', d=>pathGen.centroid(d)[1])
-    .attr('text-anchor','middle').attr('dominant-baseline','middle')
-    .attr('font-family', "'Archivo Narrow', 'Arial Narrow', Arial, sans-serif")
-    .attr('font-size', 11).attr('font-weight', 600)
-    .attr('fill', '#2E3D30')
-    .attr('paint-order','stroke').attr('stroke','#F5F1E8').attr('stroke-width',2.6).attr('stroke-opacity',.75)
-    .style('pointer-events','none')
-    .text(d=>d.properties.sigla);
-}
+function addSiglas(svg){ MonitorMapas.siglas(MonitorMapas.contexto(BR_GEOJSON, 480, 460), svg); }
 addSiglas(svgPoints); addSiglas(svgCob); addSiglas(svgNat); addSiglas(svgPrior); addSiglas(svgResp);
 
 // ---- Declarada × Documentada ----
