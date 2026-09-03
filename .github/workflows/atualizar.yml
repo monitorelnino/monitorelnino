@@ -153,6 +153,7 @@ jobs:
         if: always()
         env:
           ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+          ENSAIO: ${{ github.event.inputs.ensaio == 'true' && '1' || '' }}
         run: |
           { echo "workflow=atualizar evento=${{ github.event_name }} ensaio=${ENSAIO:-0} commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) resultado=${{ steps.atualizar.outcome }}"
             echo "--- arquivos alterados ---"; git status --short | head -40
@@ -162,8 +163,6 @@ jobs:
           mkdir -p /tmp/registro/relatorios && cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_atualizar.txt"
           cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -q -m "atualizar ${GITHUB_SHA::7}" && git push -q
           [ "${{ steps.atualizar.outcome }}" = "success" ] || { echo "::error::atualizar.py falhou — ver relatório em robo-registro"; exit 1; }
-        env:
-          ENSAIO: ${{ github.event.inputs.ensaio == 'true' && '1' || '' }}
         # atualizar.py já roda, nesta ordem e como etapas bloqueantes,
         # verificar_estrutura.js → verificar_consistencia.py →
         # recalcular_mare.py --check → verificar_runtime.js →
