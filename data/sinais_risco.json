@@ -84,7 +84,7 @@
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
    "consultado_em": "03/09/2026",
-   "documento": "ONI v5, último trimestre MJJ/2026",
+   "documento": "ONI v5, último trimestre JJA/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
   "iri_plume": {
@@ -113,11 +113,6 @@
  "enos": {
   "oni": {
    "serie": [
-    {
-     "trimestre": "FMA",
-     "ano": 2013,
-     "anomalia": -0.23
-    },
     {
      "trimestre": "MAM",
      "ano": 2013,
@@ -912,10 +907,15 @@
      "trimestre": "MJJ",
      "ano": 2026,
      "anomalia": 1.39
+    },
+    {
+     "trimestre": "JJA",
+     "ano": 2026,
+     "anomalia": 1.8
     }
    ],
    "fonte": "noaa_oni",
-   "documento": "ONI v5, último trimestre MJJ/2026"
+   "documento": "ONI v5, último trimestre JJA/2026"
   },
   "probabilidades": null,
   "prognostico": null
