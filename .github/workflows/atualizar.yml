@@ -3,7 +3,8 @@ name: Atualização semanal de dados
 on:
   schedule:
     - cron: "0 9 * * 1"  # atualizacao SEMANAL (compromisso publico do site), segundas 09h UTC
-    - cron: "0 9 * * *"  # v2.2.4 (E4): execucao DIARIA; atualizar.py encerra sem comitar fora da semana intensiva (INTENSIVO_ATE) se nao for segunda
+    - cron: "0 9 * * *"  # v2.2.4 (E4): execucao DIARIA (06h Brasília); atualizar.py encerra sem comitar fora da semana intensiva (INTENSIVO_ATE) se nao for segunda
+    - cron: "0 21 * * *"  # 03/09/2026: 2a rodada DIARIA (18h Brasília), so para acelerar a varredura integral (03-10/09); mesma regra de cadencia
   workflow_dispatch:       # execução manual pelo botão "Run workflow"
     inputs:
       ensaio:
