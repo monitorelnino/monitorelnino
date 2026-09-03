@@ -25,6 +25,7 @@ jobs:
       - name: Portões 1–11
         run: |
           set -e
+          python3 scripts/validar_workflows.py
           node scripts/verificar_estrutura.js
           python3 verificar_consistencia.py
           python3 recalcular_mare.py --check
