@@ -20,6 +20,31 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Correções da revisão da editoria (03/09/2026)
+- **Medidor do herói dessincronizado (causa raiz):** a barra e o contador animado liam
+  `data-alvo="47.1"` gravado no HTML — a rotina só regravava o número, não o alvo, e
+  a animação sobrescrevia o 45,9 com 47,1. Agora o alvo vem do índice na carga; o motor
+  regrava o fallback estático em `--write` e o `--check` bloqueia se ele divergir; o
+  runtime testa barra = número = média.
+- **Motor único de mapas (`assets/mapas.js`)**: projeção, coroplético por UF, siglas das
+  27 UFs em todo mapa, camadas de pontos (inclusive densas), legenda canônica
+  (discreta e contínua), tooltip e crédito de figura — usados por index, mapas,
+  sinais, saúde e financiamento. Portão 1 exige o módulo em página com mapa e proíbe
+  helpers e legendas locais; os quatro runtimes de mapa verificam siglas em todos os
+  mapas e o formato canônico de todas as legendas (o mapa 1b e a escala do mapa
+  "natureza" foram os primeiros pegos).
+- **Financiamento, bloco 1: rede em vez de cartões** (decisão de design delegada):
+  origem → rota → município, traço por chave (contínuo regra · tracejado decreto ·
+  pontilhado discricionária · duplo direta), realce ao passar o mouse, base legal no
+  tooltip; os cartões continuam em texto dobrável. Legenda da série pelo módulo.
+- **Cadência declarada nas superfícies:** Saúde diz que não é tempo real (diária na
+  semana intensiva, semanal depois) e mostra o estado de cada fonte; o mapa de atos
+  de resposta mostra o último evento e a rotina de coleta (DOU/S2iD e diários).
+- **Ensaio da rotina:** `atualizar.yml` ganha o botão "ensaio" (roda tudo como dia
+  da semana intensiva, sem comitar nem publicar) e grava o relatório completo da
+  execução no repositório privado em toda rodada — a execução manual de 02/09
+  falhou sem deixar diagnóstico legível; isso não se repete.
+
 ### §3.8-bis — hash dos documentos-fonte reconferido toda rodada (E8) — 02/09/2026, noite
 - `preservar_evidencias.py --reconferir`: a rotina rebaixa cada documento citado com hash
   preservado e compara; hash diferente vira entrada no log, marca em `evidencias.json` e

@@ -18,6 +18,7 @@
 
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
+<script src="assets/mapas.js"></script>
 <style>
   *{box-sizing:border-box;}
   body{
@@ -403,7 +404,7 @@
         <span class="glabel">MARÉ · Medida de Antecipação e<br>Resposta ao El Niño<br>Média dos 27 estados · corte <span id="gaugeCorte">26/08/2026</span></span>
       </div>
       <div class="gauge-track" role="img" aria-label="Barra de progresso: MARÉ nacional em 45,9 de 100">
-        <div class="gauge-fill" id="gaugeFill" data-alvo="47.1" style="--galvo:47.1;"></div>
+        <div class="gauge-fill" id="gaugeFill" data-alvo="45.9" style="--galvo:45.9;"></div>
         <span class="gtick" style="left:25%"></span>
         <span class="gtick" style="left:50%"></span>
         <span class="gtick" style="left:70%"></span>
@@ -777,10 +778,7 @@ function selectUF(uf, tileEl){
 // (usado pela linha do tempo do herói) e HAB_SET (usado no cartão de cidade,
 // indicador de habilitação a recurso federal) — pequenas o bastante para
 // recalcular aqui em vez de depender da página que tem os mapas completos.
-const tooltip = document.getElementById('mapTooltip');
-function showTip(html, evt){ tooltip.innerHTML = html; tooltip.style.display='block';
-  tooltip.style.left = (evt.clientX+14)+'px'; tooltip.style.top = (evt.clientY+10)+'px'; }
-function hideTip(){ tooltip.style.display='none'; }
+const showTip = MonitorMapas.showTip, hideTip = MonitorMapas.hideTip;
 const habilitados = MAP_POINTS.filter(p => p.categoria === 'decreto');
 const HAB_SET = new Set(habilitados.map(p => (p.nome || '').toLowerCase() + '|' + p.uf));
 
@@ -1411,6 +1409,19 @@ function copiarPedido(botao){
 // ---- Herói: barra do MARÉ + faixa temporal ----
 (function(){
   const fill = document.getElementById('gaugeFill');
+  // 03/09/2026: o alvo da barra e do contador vem do ÍNDICE calculado (data/indice.json), não do
+  // HTML — o valor gravado (data-alvo) é só fallback e é regravado por recalcular_mare.py --write.
+  try {
+    if (typeof MARE === 'object' && MARE) {
+      const tot = Object.keys(MARE).filter(k => k.length === 2 && MARE[k] && typeof MARE[k].total === 'number').map(k => MARE[k].total);
+      if (tot.length === 27) {
+        const media = Math.round((tot.reduce((a, b) => a + b, 0) / 27) * 10) / 10;
+        fill.dataset.alvo = String(media); fill.style.setProperty('--galvo', String(media));
+        const tr = fill.closest('.gauge-track'); if (tr) tr.setAttribute('aria-label', 'Barra de progresso: MARÉ nacional em ' + media.toLocaleString('pt-BR', {minimumFractionDigits: 1}) + ' de 100');
+        const nEl = document.getElementById('gaugeNum'); if (nEl) nEl.textContent = media.toLocaleString('pt-BR', {minimumFractionDigits: 1});
+      }
+    }
+  } catch (e) {}
   const temRAF = (typeof requestAnimationFrame === 'function');
   const raf = temRAF
     ? (f) => requestAnimationFrame(() => requestAnimationFrame(f))
