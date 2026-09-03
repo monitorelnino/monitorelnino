@@ -11,6 +11,10 @@ on:
         description: "Ensaio: roda tudo como se fosse dia da semana intensiva, SEM comitar nem publicar (relatório no repositório privado)"
         type: boolean
         default: false
+      finalizar_varredura_hoje:
+        description: "Encerrar a varredura HOJE: consulta todos os municípios pendentes numa rodada só, ignorando o ritmo por dias restantes (pedido editorial pontual)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -145,6 +149,7 @@ jobs:
           ENSAIO: ${{ github.event.inputs.ensaio == 'true' && '1' || '' }}
           LOTE_DIARIOS: ${{ vars.LOTE_DIARIOS }}
           TAMANHO_LOTE: ${{ vars.TAMANHO_LOTE }}
+          FINALIZAR_VARREDURA_HOJE: ${{ github.event.inputs.finalizar_varredura_hoje == 'true' && '1' || '' }}
         id: atualizar
         continue-on-error: true
         run: |
