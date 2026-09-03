@@ -121,6 +121,15 @@ do pedido de defesa civil de SC, enviado em DD/MM" — ele grava no registro pri
 site aparece apenas, sem contagens, que a verificação de um estado depende de resposta
 a pedido de acesso à informação.
 
+## 4c. Lançamento oficial: o que vigiar
+
+- O site é estático e escala sozinho na CDN; o que pode estourar no plano gratuito do
+  Netlify é o **formulário** (100 envios por mês) e, com muito tráfego, a **banda**
+  (100 GB/mês ≈ 330 mil visitas à página inicial). Se o lançamento for grande, vale
+  subir o plano do Netlify antes — é uma troca de plano no painel, sem mudar nada no site.
+- Dados novos aparecem em até 5 minutos para quem já visitou (cache); a página em si
+  sempre revalida.
+
 ## 5. Se o site estiver errado agora (o "botão de desfazer")
 
 Qualquer versão anterior do site pode voltar ao ar em segundos, sem tocar em
