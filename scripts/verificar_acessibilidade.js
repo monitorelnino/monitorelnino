@@ -37,6 +37,16 @@ for (const p of PAGINAS) {
   if (p !== "obrigado.html" && !d.querySelector('.mainnav [aria-current="page"]')) falha(`${p}: nav sem aria-current="page"`);
   d.querySelectorAll("a[target=_blank]").forEach(a => { if (!/noopener/.test(a.getAttribute("rel")||"")) falha(`${p}: link externo sem rel=noopener`); });
   if (!/<link[^>]+assets\/base\.css/.test(html)) falha(`${p}: sem assets/base.css`);
+  // 03/09/2026: ids duplicados e links internos quebrados (âncoras e páginas)
+  const ids = [...d.querySelectorAll("[id]")].map(e => e.id); const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
+  if (dup.length) falha(`${p}: id(s) duplicado(s): ${[...new Set(dup)].slice(0, 5).join(", ")}`);
+  d.querySelectorAll("a[href]").forEach(a => {
+    const h = a.getAttribute("href"); if (!h || /^(https?:|mailto:|tel:|#$)/.test(h)) return;
+    const [arq0, anc] = h.split("#"); const arq = arq0.split("?")[0]; const alvo = arq ? path.join(RAIZ, arq) : path.join(RAIZ, p);
+    if (arq && !fs.existsSync(alvo)) { falha(`${p}: link interno para arquivo inexistente: ${h}`); return; }
+    if (anc && arq === "" && !d.getElementById(anc)) falha(`${p}: âncora inexistente na própria página: #${anc}`);
+    if (anc && arq && fs.existsSync(alvo) && alvo.endsWith(".html")) { const t = fs.readFileSync(alvo, "utf-8"); if (t.indexOf('id="' + anc + '"') < 0) falha(`${p}: âncora inexistente em ${arq}: #${anc}`); }
+  });
 }
 console.log(falhas ? `✗ ACESSIBILIDADE: ${falhas} problema(s). Publicação bloqueada.` : "✓ ACESSIBILIDADE OK — idioma, viewport, skip-link, títulos, alt, rótulos, SVG rotulados, foco visível, contraste AA e pontos de quebra nas 8 páginas.");
 process.exit(falhas ? 1 : 0);

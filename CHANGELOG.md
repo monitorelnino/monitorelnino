@@ -20,6 +20,27 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Verificação geral antes da primeira atualização (03/09/2026, a pedido da editoria)
+- **Navegação em uma linha no desktop:** fonte condensada 12,5px, espaçamento .05em,
+  pastilhas mais estreitas, sem quebra acima de 1020px (≈1.050px de 1.140 disponíveis);
+  abaixo disso volta a quebrar.
+- **Padrão único de gráficos** (`MonitorMapas.padraoGraficos`): tipografia, cores, grade e
+  tooltip iguais em todos os Chart.js; o portão 1 proíbe `Chart.defaults` local e exige a
+  chamada em toda página com gráfico. Gráfico 1 (rosca) virou **barras horizontais**
+  (contagem compara-se por comprimento; soma 27 explícita) e o rótulo "Sem plano" virou
+  "Nenhum localizado" (teto da afirmação).
+- **Cartão 1b** com nota curta como os demais (as contagens ficam no contador público e
+  no tooltip; crédito de figura mantido).
+- **Portão 17 `verificar_robustez_atualizacao.py`** (CI): cópia perturbada em 6 famílias —
+  9 planos municipais novos, 155 municípios com nível de verificação maior (log v2), 3
+  reconhecimentos federais, 2 UFs com instrumento de saúde, série de financiamento em 8
+  rotas, avisos INMET — derivados regenerados e **todos os runtimes verdes** (média 45,9 →
+  46,0 na cópia). Primeira rodada pegou uma fragilidade real do padrão de gráficos
+  (defaults sem `elements`), corrigida. A tentativa de mudar status estadual à mão foi
+  bloqueada pelo portão de consistência — como deve ser: o canal legítimo é a revisão.
+- **Acessibilidade:** ids duplicados e links internos/âncoras quebrados passam a ser
+  bloqueantes.
+
 ### Linha narrativa pública, página para jornalistas e LAI fora do site (03/09/2026, a pedido da editoria)
 - **Registro de pedidos de LAI nunca no site:** seção e tabela removidas de Para
   gestores; registro e os 55 textos saíram do repositório público para o privado
