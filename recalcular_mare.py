@@ -297,11 +297,19 @@ def _resumo_verificacao(out):
     except Exception:
         fila = None
     try:
+        # 03/09/2026: o registro de LAI vive no repositório PRIVADO (nunca no site); aqui só
+        # entra a lista de UFs cuja verificação estadual depende de resposta — sem contagens.
+        _lp = RAIZ / "data" / "ufs_dependentes_de_lai.json"
+        _lai = json.load(open(_lp, encoding="utf-8")) if _lp.exists() else {"ufs": []}
+        lai = {"ufs_dependentes": sorted(_lai.get("ufs", []))}
+        raise StopIteration
         _lai = json.load(open(RAIZ / "data" / "lai_pedidos.json", encoding="utf-8")).get("pedidos", [])
         lai = {"total": len(_lai), "a_enviar": sum(1 for p in _lai if p.get("status") == "a_enviar"),
                "enviados_sem_resposta": sum(1 for p in _lai if p.get("status") == "enviado" and not p.get("data_resposta")),
                "respondidos": sum(1 for p in _lai if p.get("data_resposta")),
                "ufs_dependentes": sorted({p["uf"] for p in _lai if p.get("tipo") == "defesa_civil" and not p.get("data_resposta") and p["uf"] != "BR"})}
+    except StopIteration:
+        pass
     except Exception:
         lai = None
     resumo = {"gerado_de": "verificacao_municipal.json", "total_municipios": len(out), "lai": lai,
