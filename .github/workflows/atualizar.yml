@@ -238,6 +238,11 @@ jobs:
           # virar organização (decisão da editoria). Até lá, o commit do robô não sai "Verified".
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          # 03/09/2026: se a main andou durante a rodada (merge editorial), rebase antes do push —
+          # senão o push é recusado e o dia inteiro de coleta se perde. Conflito real (raro: o robô só
+          # toca data/) aborta o rebase e o push falha com aviso, sem commit parcial.
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch git@github.com:${GITHUB_REPOSITORY}.git main
+          git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito em data/; rodada não comitada"; rm -f ~/.ssh/robo; exit 1; }
           GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
           rm -f ~/.ssh/robo
         env:

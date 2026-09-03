@@ -20,6 +20,12 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Reconhecimentos federais: pasta nova do MIDR (03/09/2026, autorização escrita)
+- A pasta `/noticias/RSS` (que o rodapé do sítio do MIDR ainda aponta) passou a exigir login;
+  a 1ª rodada real leu uma página de login e registrou "0 notícias". Agora o coletor lê o RSS
+  de `/noticias-midr` e, se a resposta não for XML, a **listagem HTML** da pasta (2 páginas);
+  resposta sem estrutura vira lacuna declarada ("endpoint a verificar"), nunca "0 notícias".
+
 ### Varredura integral dos diários municipais até 10/09 (03/09/2026, autorização escrita da editoria)
 - Semana intensiva passa de "lote rotativo com teto de 7 × 150" para **varredura integral**:
   cada rodada diária consulta, no Querido Diário, os próximos municípios ainda não
