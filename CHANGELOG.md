@@ -20,6 +20,15 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Navegação em uma linha — segunda correção (03/09/2026)
+- A editoria ainda via duas linhas: o `index.html` mantinha cópia própria das regras da
+  navegação e do masthead (vencia a folha base) e a barra dividia a linha com o logotipo.
+  Removidas todas as regras de núcleo duplicadas do index (a isenção do portão 1 para o
+  index acabou); a navegação ganha a linha inteira abaixo do logotipo no desktop; rótulos
+  encurtados sem perda de sentido — "Mapas", "Enviar dados", "Gestores" — para caber
+  com folga mesmo em fonte substituta (≈840px com Archivo Narrow; ≈970px com fonte
+  larga; 1.140 disponíveis). Confirmado em captura.
+
 ### Verificação geral antes da primeira atualização (03/09/2026, a pedido da editoria)
 - **Navegação em uma linha no desktop:** fonte condensada 12,5px, espaçamento .05em,
   pastilhas mais estreitas, sem quebra acima de 1020px (≈1.050px de 1.140 disponíveis);
