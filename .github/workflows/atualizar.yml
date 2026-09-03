@@ -171,10 +171,10 @@ jobs:
 
       - name: Regenerar PDF de documentação do índice
         run: |
-          python consultar_querido_diario.py && python consultar_querido_diario.py --descobrir-termos || true
-          python atualizar_recursos.py || true
-          python verificar_vigencia.py || true
-          python analisar_decretos.py || echo 'QD indisponível — pistas ficam da execução anterior'
+          # 03/09/2026: os coletores legados (Querido Diário, recursos, vigência, decretos) passaram
+          # para DENTRO de atualizar.py, antes dos derivados e dos portões. Aqui só se garante o PDF
+          # com o relógio fixado no corte (determinismo; o portão 12 compara byte a byte).
+          export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd)).timestamp()))")"
           python gerar_pdf_indice.py
           python gerar_pdf_metodologia.py
         # Roda DEPOIS dos quatro portões (dentro de atualizar.py): o PDF é
