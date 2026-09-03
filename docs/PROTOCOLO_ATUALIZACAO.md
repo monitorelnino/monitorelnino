@@ -89,7 +89,7 @@ Contribuições do formulário público seguem o caminho já definido
 (`verificar_contribuicoes.py → converter_contribuicao.py → aplicar_revisao.py`)
 e são a única reserva de julgamento humano que Claude **nunca** executa sozinho.
 
-### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.3: dezesseis portões
+### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.3: dezessete portões
 
 ```
  1. node   scripts/verificar_estrutura.js        (8 páginas; tokens.css; nav canônica; :root inline proibido)
@@ -114,8 +114,11 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
                                                   fichas com fonte e data, marcadores arquivados, motor intacto)
 16. node   scripts/verificar_vocabulario_publico.js (texto visível sem jargão interno: nomes de arquivo, códigos de
                                                   decisão, "portão", "robô", PR, auditoria, registro de LAI)
+17. python scripts/verificar_robustez_atualizacao.py (só no CI: perturba 6 famílias de dados numa cópia, regenera
+                                                  os derivados e exige todos os runtimes verdes — atualização não quebra
+                                                  mapas, barras, indicadores nem legendas)
 ```
-Critério: dezesseis `✓` (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
+Critério: dezessete `✓` (o 17º roda no CI) (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
 tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
 Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 

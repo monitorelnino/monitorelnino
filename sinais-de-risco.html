@@ -206,6 +206,7 @@ const showTip = MonitorMapas.showTip, hideTip = MonitorMapas.hideTip;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 function __init(){
+  MonitorMapas.padraoGraficos(window.Chart);
 const projection = __ctx().projection;
 const pathGen = __ctx().path;
 const fonteDe = id => (SINAIS.fontes || {})[id] || {};
@@ -336,10 +337,6 @@ document.getElementById('cartoesCiclo').innerHTML = cartoes.map((c, i) =>
 cartoes.forEach((c, i) => credito('cartaoCiclo' + i, c.f));
 
 // =============================  Gráficos  =============================
-Chart.defaults.color = '#55645B';
-Chart.defaults.font.family = "'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif";
-Chart.defaults.font.size = 11.5;
-Chart.defaults.borderColor = '#15201A';
 const SEM_ANIM = {animation:false, responsive:true, maintainAspectRatio:false};
 
 function canvasEm(wrapId, canvasId){
