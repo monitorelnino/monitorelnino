@@ -15,11 +15,13 @@ com `status: "a_enviar"`; quem envia preenche protocolo e data por
 A LAI não é suspensa pelo defeso; o prazo de 20 dias cai antes de 25/10 para
 pedidos enviados até 05/10/2026.
 """
-import json, pathlib, sys
+import json, os, pathlib, sys
 from datetime import date, timedelta
 
 RAIZ = pathlib.Path(__file__).parent
-SAIDA = RAIZ / "docs" / "lai"
+# 03/09/2026 (decisão editorial): pedidos e textos de LAI NUNCA no site nem no repositório público —
+# saída no repositório privado (monitorelnino/robo-registro), variável LAI_DIR ou ../registro/notas/lai
+SAIDA = pathlib.Path(os.environ.get("LAI_DIR", RAIZ.parent / "registro" / "notas" / "lai")) / "textos"
 UF_NOME = {"AC": "Acre", "AL": "Alagoas", "AM": "Amazonas", "AP": "Amapá", "BA": "Bahia", "CE": "Ceará", "DF": "Distrito Federal",
            "ES": "Espírito Santo", "GO": "Goiás", "MA": "Maranhão", "MG": "Minas Gerais", "MS": "Mato Grosso do Sul", "MT": "Mato Grosso",
            "PA": "Pará", "PB": "Paraíba", "PE": "Pernambuco", "PI": "Piauí", "PR": "Paraná", "RJ": "Rio de Janeiro", "RN": "Rio Grande do Norte",
@@ -91,12 +93,12 @@ def gerar():
     reg = {"formato": "§3.7 do doc de redesenho 02/09/2026 — registro público dos pedidos de LAI do Monitor; "
                       "'a_enviar' = texto gerado, envio humano pendente (Fala.BR exige pessoa física identificada)",
            "gerado_em": date.today().isoformat(), "pedidos": pedidos}
-    json.dump(reg, open(RAIZ / "data" / "lai_pedidos.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(reg, open(SAIDA.parent / "lai_pedidos.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"LAI: {len(pedidos)} pedidos gerados em docs/lai/ (27 defesa civil + 27 saúde + 1 Carro-Pipa); registro em data/lai_pedidos.json")
 
 
 def registrar(uf, tipo, protocolo, data_envio):
-    p = RAIZ / "data" / "lai_pedidos.json"; reg = json.load(open(p, encoding="utf-8"))
+    p = SAIDA.parent / "lai_pedidos.json"; reg = json.load(open(p, encoding="utf-8"))
     for it in reg["pedidos"]:
         if it["uf"] == uf and it["tipo"] == tipo:
             d = date.fromisoformat(data_envio)
@@ -110,7 +112,7 @@ def registrar(uf, tipo, protocolo, data_envio):
 def autoteste():
     from coletores_base import rodar_autoteste
     def t1(): gerar(); return len(list(SAIDA.glob("*.txt"))) == 55
-    def t2(): r = json.load(open(RAIZ / "data" / "lai_pedidos.json", encoding="utf-8")); return len(r["pedidos"]) == 55 and all(p["protocolo"] is None for p in r["pedidos"])
+    def t2(): r = json.load(open(SAIDA.parent / "lai_pedidos.json", encoding="utf-8")); return len(r["pedidos"]) == 55 and all(p["protocolo"] is None for p in r["pedidos"])
     def t3(): return "12.527" in (SAIDA / "SC_defesa_civil.txt").read_text(encoding="utf-8") and "Santa Catarina" in (SAIDA / "SC_saude.txt").read_text(encoding="utf-8")
     return rodar_autoteste({"55 textos gerados": t1, "registro com 55 pedidos, protocolo null": t2, "texto cita a LAI e o estado": t3})
 

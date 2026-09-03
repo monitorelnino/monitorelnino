@@ -37,6 +37,7 @@ jobs:
           node scripts/verificar_runtime_sinais.js
           node scripts/verificar_runtime_saude.js
           node scripts/verificar_acessibilidade.js
+          node scripts/verificar_vocabulario_publico.js
           python3 verificar_financiamento.py
           python3 verificar_painel.py
           node scripts/verificar_runtime_financiamento.js

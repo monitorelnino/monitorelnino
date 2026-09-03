@@ -14,7 +14,7 @@ const { JSDOM } = require("jsdom");
 const RAIZ = path.join(__dirname, "..");
 // 03/09/2026: YAML dos workflows sem chave duplicada (o GitHub recusa o arquivo inteiro)
 try { require("child_process").execSync("python3 scripts/validar_workflows.py", { cwd: RAIZ, stdio: "pipe" }); } catch (e) { console.log("  ✗ workflows inválidos: " + String(e.stdout || "")); process.exit(1); }
-const PADRAO = ["index.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "mapas-e-graficos.html", "para-gestores.html", "sinais-de-risco.html", "saude.html", "financiamento.html"]
+const PADRAO = ["index.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "mapas-e-graficos.html", "para-gestores.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "imprensa.html"]
   .map(a => path.join(RAIZ, a));
 const arquivos = process.argv.length > 2 ? process.argv.slice(2) : PADRAO;
 
@@ -41,7 +41,7 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["O monitor", "Mapas e gráficos", "Sinais de risco", "Saúde", "Financiamento", "Proteja-se", "Enviar documento", "Para gestores"]; // C4 atualizada por E9: nove páginas
+  const NAV_ORDEM = ["O monitor", "Mapas e gráficos", "Sinais de risco", "Saúde", "Financiamento", "Proteja-se", "Enviar documento", "Para gestores", "Imprensa"]; // 03/09/2026: dez páginas (Imprensa a pedido da editoria)
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {
