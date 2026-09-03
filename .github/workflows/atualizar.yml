@@ -232,6 +232,7 @@ jobs:
           # edição livre. O resto (demais páginas, scripts, metodologia) segue
           # fora do alcance da automação.
           git diff --cached --quiet && echo "Sem alterações." || git commit -m "Atualização automática de dados ($(date +%d/%m/%Y))"
+          git diff --cached --quiet && echo "HOUVE_ALTERACAO=0" >> $GITHUB_ENV || echo "HOUVE_ALTERACAO=1" >> $GITHUB_ENV
           # 03/09/2026 (achado da 1a rodada com rebase): checkout do runner é raso (depth=1) e
           # arquivos gerados fora do escopo do commit (ex.: docs/pip-audit-resultado.json) ficam
           # modificados e não staged; isso faz o checkout interno do rebase abaixo falhar com
@@ -254,6 +255,18 @@ jobs:
           GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
           git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito em data/; rodada não comitada"; rm -f ~/.ssh/robo; exit 1; }
           GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
-          rm -f ~/.ssh/robo
+        env:
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+
+      - name: Atualizar contador da cortina pública (ramo publico)
+        # 03/09/2026: publica só um número operacional (consultados/total da varredura
+        # dos diários municipais) no domínio, para a editoria acompanhar sem precisar da
+        # prévia com senha. Nunca dado do índice, nunca afirma existência de plano.
+        if: env.HOUVE_ALTERACAO == '1'
+        run: |
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > "$RUNNER_TEMP/robo_cortina" && chmod 600 "$RUNNER_TEMP/robo_cortina"
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          ROBO_DEPLOY_KEY_SSH_DIR="$RUNNER_TEMP/robo_cortina" python3 scripts/atualizar_contador_cortina.py
+          rm -f "$RUNNER_TEMP/robo_cortina"
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
