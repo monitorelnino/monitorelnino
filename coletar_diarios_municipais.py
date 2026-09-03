@@ -99,17 +99,24 @@ def iso_para_br(s):
         return s
 
 
-def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "", ate: str = "") -> int:
+def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "", ate: str = "", tudo: bool = False) -> int:
     por_cod, _ = referencia_ibge()
     pop = ler("populacao_censo2022.json", {}) or {}
     cadastro = ler("cadastro_prioritarios.json", {}) or {}
     ordem = ordem_prioridade(por_cod, cadastro, pop)
     if pendentes_desde:
-        # varredura integral: próximos ainda não consultados na janela; tamanho dimensionado para cobrir todos até `ate`
         pend = pendentes_na_janela(ordem, ler("fontes_consultadas.json", {}), pendentes_desde)
-        tamanho = tamanho_para_cobrir(len(pend), date.today().isoformat(), ate or date.today().isoformat(), tamanho)
-        alvo = pend[:tamanho]
-        print(f"varredura integral: {len(pend)} pendentes desde {pendentes_desde}; hoje {len(alvo)} (fim previsto {ate or 'hoje'})")
+        if tudo:
+            # 03/09/2026: pedido editorial de encerrar a varredura HOJE — consulta TODOS os
+            # pendentes numa rodada só, ignorando o ritmo por dias restantes (só usado sob pedido
+            # explícito; a pausa entre consultas (§ PAUSA_ENTRE_CONSULTAS) continua valendo).
+            alvo = pend
+            print(f"varredura integral (--tudo): {len(pend)} pendentes desde {pendentes_desde}; consultando todos nesta rodada")
+        else:
+            # varredura integral: próximos ainda não consultados na janela; tamanho dimensionado para cobrir todos até `ate`
+            tamanho = tamanho_para_cobrir(len(pend), date.today().isoformat(), ate or date.today().isoformat(), tamanho)
+            alvo = pend[:tamanho]
+            print(f"varredura integral: {len(pend)} pendentes desde {pendentes_desde}; hoje {len(alvo)} (fim previsto {ate or 'hoje'})")
     else:
         alvo = ordem[(lote - 1) * tamanho: lote * tamanho]
     atos = ler("atos_resposta.json"); pistas = ler("pistas_imprensa.json", {"_governanca": "", "pistas": []})
@@ -186,10 +193,15 @@ def autoteste() -> int:
                 and tamanho_para_cobrir(100, "2026-09-03", "2026-09-10", 150) == 150
                 and tamanho_para_cobrir(100000, "2026-09-10", "2026-09-10", 150) == 1500
                 and tamanho_para_cobrir(300, "2026-09-11", "2026-09-10", 150) == 300)  # data-fim passada: tudo hoje
+    def t7():  # --tudo: alvo é a fila inteira de pendentes, sem fatiar por tamanho/dias restantes
+        livro = {"municipios": {"1": {"fontes": [{"fonte": FONTE_QD, "data": "2026-08-20"}]}}}  # fora da janela: pendente
+        pend = pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03")
+        return pend == ["1", "2", "3"]  # os três pendentes; --tudo (testado no fluxo real) os consultaria todos, não só um fatiamento
     return rodar_autoteste({"classifica decreto com nº e pista de plano": t1, "negativo: decreto sem número": t2,
                             "prioridade: UF do cadastro, depois população": t3, "negativo: resposta nula": t4,
                             "varredura integral: fila de pendentes na janela": t5,
-                            "varredura integral: tamanho para cobrir até a data-fim": t6})
+                            "varredura integral: tamanho para cobrir até a data-fim": t6,
+                            "--tudo: fila completa de pendentes (não fatiada)": t7})
 
 
 if __name__ == "__main__":
@@ -201,4 +213,5 @@ if __name__ == "__main__":
     desde = a[a.index("--desde") + 1] if "--desde" in a else "2026-06-29"
     pend = a[a.index("--pendentes-desde") + 1] if "--pendentes-desde" in a else ""
     ate = a[a.index("--ate") + 1] if "--ate" in a else ""
-    sys.exit(coletar_lote(lote, tam, desde, pendentes_desde=pend, ate=ate))
+    tudo = "--tudo" in a
+    sys.exit(coletar_lote(lote, tam, desde, pendentes_desde=pend, ate=ate, tudo=tudo))

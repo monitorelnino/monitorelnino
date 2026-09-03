@@ -20,6 +20,14 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Encerrar a varredura hoje, sob pedido (03/09/2026, autorização escrita)
+- Novo botão manual no Actions ("finalizar_varredura_hoje"): consulta TODOS os
+  municípios ainda pendentes numa rodada só, em vez do ritmo por dias restantes.
+  `coletar_diarios_municipais.py --tudo`; a pausa de cortesia entre consultas
+  continua valendo. Não altera `INTENSIVO_DE`/`INTENSIVO_ATE` nem a cadência
+  normal das próximas rodadas — é um botão de uma vez só, não uma mudança de regra.
+
+
 ### Contador que se move em primeiro lugar (03/09/2026, decisão editorial)
 - Pedido da editoria: "não faz sentido um contador que não se move na frente".
   No painel "Contador público da verificação" (site completo), a linha da
