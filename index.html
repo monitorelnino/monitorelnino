@@ -423,6 +423,7 @@
   <p style="margin:0 0 4px;" id="cvSuspensas"></p>
   <p style="margin:0;" id="cvFila"></p>
   <p style="margin:4px 0 0;" id="cvLai"></p>
+  <p style="margin:4px 0 0;" id="cvVarredura"></p>
   <p class="note" style="margin:6px 0 0;">O que cada nível significa está na <a href="METODOLOGIA.pdf">metodologia, §25</a>. Os buracos ficam visíveis por decisão editorial: o que não foi verificado aparece como não verificado, não como ausência.</p>
 </div>
 
@@ -845,6 +846,11 @@ renderPrazos();
       el('cvSuspensas').innerHTML = '<strong>' + (susp||0) + '</strong> fonte(s) oficial(is) consultada(s) estava(m) suspensa(s) por período eleitoral na última rodada.';
       const fila = VRESUMO ? VRESUMO.fila_citacao_incompleta : null;
       if (fila !== null && fila !== undefined) el('cvFila').innerHTML = '<strong>' + fila + '</strong> registro(s) na fila pública de citação incompleta (prazo de saneamento 25/10/2026; regra declarada em 02/09/2026).';
+      const vd = VRESUMO && VRESUMO.varredura_diarios;
+      if (vd && vd.consultados) {
+        const br = d => d ? d.split('-').reverse().join('/') : '—';
+        el('cvVarredura').innerHTML = '<strong>Varredura dos diários oficiais municipais:</strong> <strong>' + vd.consultados.toLocaleString('pt-BR') + '</strong> de ' + vd.total.toLocaleString('pt-BR') + ' municípios consultados no Querido Diário desde ' + br(vd.desde) + ' (última consulta ' + br(vd.ultima) + ') — ' + vd.com_mencao.toLocaleString('pt-BR') + ' com menção a instrumento ou decreto, ' + vd.sem_mencao.toLocaleString('pt-BR') + ' sem edição ou menção no período. Consultar uma fonte não é verificar o município: o nível de verificação só muda com a bateria completa.';
+      }
       const lai = VRESUMO && VRESUMO.lai;
       if (lai && lai.ufs_dependentes && lai.ufs_dependentes.length) el('cvLai').innerHTML = '<strong>Dependência de acesso à informação:</strong> em ' + lai.ufs_dependentes.length + ' estado(s) a lista oficial de municípios com plano ainda depende de resposta a pedido de acesso à informação; enquanto a resposta não chega, a verificação estadual por essa fonte fica pendente, não presumida.';
     }catch(e){}
