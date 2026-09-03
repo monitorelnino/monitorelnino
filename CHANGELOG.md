@@ -20,6 +20,25 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Linha narrativa pública, página para jornalistas e LAI fora do site (03/09/2026, a pedido da editoria)
+- **Registro de pedidos de LAI nunca no site:** seção e tabela removidas de Para
+  gestores; registro e os 55 textos saíram do repositório público para o privado
+  (`robo-registro/notas/lai/`); o site diz apenas, sem contagens, que a verificação de
+  um estado depende de resposta a pedido de acesso à informação (lista de UFs em
+  `data/ufs_dependentes_de_lai.json`, alimentada pelo levantamento).
+- **Portão 16 `verificar_vocabulario_publico.js`:** lê o texto visível renderizado das
+  10 páginas e bloqueia jargão interno (nomes de arquivo/script, caminhos de dados,
+  códigos de decisão E/C, "portão", "robô", números de PR, códigos de auditoria,
+  "documento de redesenho", "sessão", marcadores TODO, "pedidos de acesso à informação
+  enviados"). Primeira passada: 18 ocorrências em 5 páginas, todas reescritas na
+  linha pública (fonte por nome, não por arquivo; regras sem código).
+- **`imprensa.html` — Para jornalistas** (10ª página, no menu e no rodapé de todas):
+  release com números lidos ao vivo, o que o índice mede e não mede, régua e teto da
+  afirmação, como citar (texto, referência, licença CC BY 4.0, imagens), como usar
+  (consulta, dados abertos, feeds, selos, metodologia, cadência), FAQ na linha do site
+  e contato imprensa@monitorelnino.com.br. Padrão de design da folha base.
+- Suíte: **16 portões**.
+
 ### Achados do ensaio da rotina (03/09/2026)
 - **O ensaio funcionou como instrumento:** a rotina rodou de ponta a ponta com rede
   real (3 de 8 fontes de sinais coletadas; 18 evidências preservadas; coletores

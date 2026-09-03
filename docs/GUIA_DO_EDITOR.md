@@ -101,14 +101,25 @@ estados por região; dias 4–7 diários municipais em lotes. O que você faz:
 - Nomes de parlamentares não aparecem no site, em texto nem em link (regra E10, provada
   por portão).
 
+## 4a-ter. Página para jornalistas e linha narrativa
+
+- **Para jornalistas** (`imprensa.html`, no menu e no rodapé): release lido ao vivo dos
+  dados, o que o índice mede e não mede, como citar, dados abertos, feeds, selos, FAQ e
+  o contato imprensa@monitorelnino.com.br. O release muda sozinho quando a média muda.
+- Um portão (o 16º) lê o texto visível de todas as páginas e bloqueia jargão interno —
+  nomes de arquivo, códigos de decisão, "portão", "robô", números de PR, auditoria,
+  qualquer menção a pedidos de LAI enviados. Se quiser proibir uma expressão nova, é
+  uma linha na lista do portão.
+
 ## 4b. Pedidos de acesso à informação (uma vez, dia 0)
 
-Os 55 textos estão prontos em `docs/lai/` no repositório (um por estado para a
-defesa civil, um por estado para a saúde, um para o Carro-Pipa). O envio é seu:
-no Fala.BR (falabr.cgu.gov.br) ou no e-SIC de cada estado, cole o texto,
-envie e anote o **número de protocolo**. Depois, numa conversa, diga ao Claude
-"registre o protocolo NNN do pedido de defesa civil de SC, enviado em
-DD/MM" — ele grava no registro público e a tabela em Para gestores atualiza.
+Os 55 textos ficam no repositório **privado** (`robo-registro`, pasta `notas/lai/textos`),
+nunca no site nem no repositório público (decisão de 03/09/2026). O envio é seu: no
+Fala.BR (falabr.cgu.gov.br) ou no e-SIC de cada estado, cole o texto, envie e anote o
+**número de protocolo**. Depois, numa conversa, diga ao Claude "registre o protocolo NNN
+do pedido de defesa civil de SC, enviado em DD/MM" — ele grava no registro privado. No
+site aparece apenas, sem contagens, que a verificação de um estado depende de resposta
+a pedido de acesso à informação.
 
 ## 5. Se o site estiver errado agora (o "botão de desfazer")
 
