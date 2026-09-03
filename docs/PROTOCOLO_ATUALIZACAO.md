@@ -35,6 +35,12 @@ espera a pista B. Isso é a governança automático × humano do projeto
 > recalculado a cada dia para cobrir os 5.571 até `INTENSIVO_ATE` (variáveis do repositório
 > `INTENSIVO_DE`, `INTENSIVO_ATE`, `TAMANHO_LOTE` = mínimo por rodada). O progresso aparece
 > no contador público ("Varredura dos diários oficiais municipais"). Consulta não é verificação.
+>
+> **Cortina pública com contador real (03/09/2026):** a cada rodada que gerar
+> mudança, o robô publica `progresso.json` no ramo `publico` (contador
+> operacional consultados/total) — a editoria acompanha pelo próprio domínio
+> (monitorelnino.com.br), sem precisar da prévia com senha. Script:
+> `scripts/atualizar_contador_cortina.py`.
 
 - **Gatilho:** segundas-feiras, 09h UTC (06h Brasília) — compromisso semanal fora da
   semana intensiva; durante a semana intensiva em curso (03–06/09/2026), **duas rodadas
