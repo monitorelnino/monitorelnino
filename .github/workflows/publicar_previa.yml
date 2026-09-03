@@ -35,6 +35,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_SITE_NAME: ${{ secrets.NETLIFY_SITE_NAME }}
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
         run: |
           set +e
           {
@@ -44,7 +45,10 @@ jobs:
               echo "rename_codigo=$? $(grep -oE '"name": *"[^"]+"' /tmp/rename.txt | head -1)"
             fi
             ALIAS=$(echo "${GITHUB_REF_NAME}" | tr '/_.' '---' | tr -cd 'a-zA-Z0-9-' | cut -c1-37 | sed 's/-*$//')
-            npx --yes netlify-cli@17 deploy --alias="$ALIAS" --dir=. --message "Prévia de ${GITHUB_REF_NAME} ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1
+            # senha da prévia (03/09/2026): Basic-Auth via _headers gerado no deploy, a partir de segredo — nunca no repositório
+            if [ -n "$PREVIA_BASIC_AUTH" ]; then printf '/*\n  Basic-Auth: %s\n' "$PREVIA_BASIC_AUTH" > _headers; fi
+            npx --yes netlify-cli@17 deploy --alias="$ALIAS" --dir=. --message "Prévia de ${GITHUB_REF_NAME} ${GITHUB_SHA::7}"
+            rm -f _headers > /tmp/deploy_out.txt 2>&1
             echo "codigo_saida=$?"
             grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "Error|error|422|Deploy is live|Website|Unique deploy|Deployed to" | head -c 1500
           } > /tmp/relatorio.txt 2>&1
