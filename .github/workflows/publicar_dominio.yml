@@ -28,7 +28,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
           set +e
-          mkdir -p /tmp/site && cp index.html robots.txt netlify.toml /tmp/site/
+          mkdir -p /tmp/site && cp index.html robots.txt netlify.toml progresso.json /tmp/site/
           {
             echo "workflow=publicar_dominio ramo=publico commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
             npx --yes netlify-cli@17 deploy --prod --dir=/tmp/site --message "Página em branco (ramo publico) ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1

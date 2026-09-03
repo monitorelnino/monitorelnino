@@ -13,13 +13,16 @@
     .caixa{width:min(520px,100%);text-align:center}
     .marca{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--apoio);margin:0 0 18px}
     h1{font-weight:400;font-size:clamp(28px,5vw,40px);margin:0 0 10px;letter-spacing:-.01em}
-    p{margin:0 0 28px;color:var(--apoio);font-size:16px;line-height:1.5}
+    p{margin:0 0 14px;color:var(--apoio);font-size:16px;line-height:1.5}
     .progresso{height:6px;background:var(--trilho);border-radius:999px;overflow:hidden;position:relative}
-    .progresso span{position:absolute;top:0;bottom:0;width:38%;background:var(--barra);border-radius:999px;
-      animation:desliza 1.8s cubic-bezier(.4,0,.2,1) infinite}
+    .progresso span{position:absolute;top:0;bottom:0;border-radius:999px;background:var(--barra)}
+    .progresso.indeterminado span{width:38%;animation:desliza 1.8s cubic-bezier(.4,0,.2,1) infinite}
+    .progresso:not(.indeterminado) span{left:0;transition:width .4s ease}
     @keyframes desliza{0%{left:-40%}100%{left:105%}}
-    @media (prefers-reduced-motion:reduce){.progresso span{animation:none;width:60%;left:20%}}
-    footer{margin-top:40px;font-size:12px;color:var(--apoio)}
+    @media (prefers-reduced-motion:reduce){.progresso.indeterminado span{animation:none;width:60%;left:20%}}
+    .status{margin:16px 0 0;font-size:13px;color:var(--apoio);line-height:1.5}
+    .status strong{color:var(--tinta)}
+    footer{margin-top:32px;font-size:12px;color:var(--apoio)}
   </style>
 </head>
 <body>
@@ -28,9 +31,28 @@
       <p class="marca">Monitor El Niño Brasil</p>
       <h1>Em atualização</h1>
       <p>Estamos preparando uma nova edição. Voltamos em breve.</p>
-      <div class="progresso" role="progressbar" aria-label="Site em atualização"><span></span></div>
+      <div class="progresso indeterminado" id="barra" role="progressbar" aria-label="Varredura dos diários oficiais municipais" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+      <p class="status" id="statusTexto">Carregando o andamento da varredura…</p>
       <footer>Futura Evidence Lab</footer>
     </div>
   </main>
+  <script>
+    // 03/09/2026: contador real da varredura dos diários municipais, alimentado pelo
+    // robô a cada rodada (progresso.json). Nunca afirma existência ou inexistência de
+    // plano — só quantos municípios já foram CONSULTADOS nessa fonte. Se o arquivo não
+    // carregar, a barra volta ao modo indeterminado (nada quebra para quem visita).
+    fetch('/progresso.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : Promise.reject()).then(d => {
+      var b = document.getElementById('barra'), s = document.getElementById('statusTexto');
+      if (!d || !d.consultados || !d.total) return;
+      var pct = Math.round(100 * d.consultados / d.total);
+      b.classList.remove('indeterminado');
+      b.setAttribute('aria-valuenow', String(pct));
+      b.querySelector('span').style.width = pct + '%';
+      var fmt = function(n){ return n.toLocaleString('pt-BR'); };
+      s.innerHTML = '<strong>' + fmt(d.consultados) + '</strong> de ' + fmt(d.total) +
+        ' municípios consultados nos diários oficiais (' + pct + '%) — consultar não é verificar.' +
+        (d.atualizado_em ? ' Última rodada: ' + d.atualizado_em + '.' : '');
+    }).catch(function(){});
+  </script>
 </body>
 </html>
