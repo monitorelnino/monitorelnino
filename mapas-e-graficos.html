@@ -57,9 +57,10 @@
       </div>
       <div class="map-box" id="nivelverificacao">
         <h3 class="map-card-h">1b · Nível de verificação municipal (todos os 5.571)</h3>
-        <p class="note" style="margin:0 0 8px;">Até onde a verificação do Monitor chegou em cada município, em quatro níveis; o que ainda não foi verificado aparece como tal, não como ausência. <span id="countNiveis" class="sr-only"></span></p>
+        <p class="note" style="margin:0 0 8px;">Até onde a verificação do Monitor chegou em cada município, em quatro níveis; o que ainda não foi verificado aparece como tal, não como ausência.</p>
         <svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto;"></svg>
         <div class="map-legend" id="legNiveis"></div>
+        <div class="fonte-figura" id="fonteNiveis" style="font-size:12.5px; color:var(--muted); margin-top:6px;"></div>
       </div>
       <div class="map-box">
         <h3 class="map-card-h">2 · Cobertura: % de municípios com ato</h3>
@@ -335,19 +336,10 @@ setTimeout(function(){
   // camada padrão (não verificados): um único <path> de pontos — barato de renderizar
   MonitorMapas.pontosDensos(__ctx, 'mapNiveis', pts.filter(p=>p.niv==='nao_verificado'), NIV_STYLE.nao_verificado.cor, 1.4, .55);
   MonitorMapas.pontos(__ctx, 'mapNiveis', pts.filter(p=>p.niv!=='nao_verificado'), {r: () => 2.6, cor: d => NIV_STYLE[d.niv].cor, classe: 'acima'});
-  const t = (VRESUMO && VRESUMO.totais_por_nivel) || {};
-  document.getElementById('countNiveis').textContent =
-    (t.nacional||0).toLocaleString('pt-BR') + ' em fontes nacionais · ' + (t.estadual||0).toLocaleString('pt-BR') +
-    ' também em estaduais · ' + (t.municipal_completo||0).toLocaleString('pt-BR') + ' completos · ' +
-    (t.nao_verificado||0).toLocaleString('pt-BR') + ' ainda não verificados';
   MonitorMapas.legenda('legNiveis', Object.values(NIV_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
-  // crédito de figura dentro do MESMO parágrafo-nota (regra de harmonização: 1 parágrafo visível por cartão)
-  const notaFig = document.querySelector('#nivelverificacao .note');
-  if (notaFig && !notaFig.querySelector('.fonte-figura')) {
-    const sp = document.createElement('span'); sp.className = 'fonte-figura';
-    sp.innerHTML = ' <br>Fonte: verificação própria do Monitor (registro de verificação municipal, nos dados abertos) · ' + ((VRESUMO && VRESUMO.ultima_rodada_log) || 'antes da primeira rodada estruturada') + ' · malha e coordenadas IBGE.';
-    notaFig.appendChild(sp);
-  }
+  // crédito DEPOIS do mapa (pedido editorial de 03/09/2026), fora do parágrafo-nota inicial
+  const fonteFig = document.getElementById('fonteNiveis');
+  if (fonteFig) fonteFig.textContent = 'Fonte: verificação própria do Monitor (registro de verificação municipal, nos dados abertos) · malha e coordenadas IBGE.';
 }, 0);
 
 // ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada (31/08/2026) ----

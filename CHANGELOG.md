@@ -20,6 +20,22 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Limpeza da superfície pública (03/09/2026, pedido da editoria)
+- Removido o painel "Contador público da verificação" da página inicial
+  (os números continuam nos dados abertos, `verificacao_resumo.json`); o
+  contador de varredura segue na cortina do domínio.
+- Removidas todas as menções a pedidos de acesso à informação (LAI) da parte
+  visível: cartão da cidade, página de Saúde. O registro de LAI vive no
+  repositório privado.
+- Removidos comentários internos visíveis (datas de decisão, números de
+  seção, versões, nomes de scripts) das páginas inicial, Saúde e Financiamento;
+  os links para a metodologia permanecem, sem numeração de seção.
+- Mapa 1b (nível de verificação): a linha de contagens que vazava para a tela
+  (a classe `sr-only` não existia nessa página) foi removida; o crédito de
+  fonte passa para DEPOIS do mapa, fora do parágrafo inicial.
+- Portão de runtime ajustado (dois testes do painel removido).
+
+
 ### Duas regras novas do teste do objeto para pistas municipais (03/09/2026, decisão editorial)
 - **Autoridade:** só ato do Executivo institui plano para o componente pontuado.
   Conselho de saúde aprovando plano de desastres → camada observada de saúde
