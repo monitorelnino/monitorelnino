@@ -29,7 +29,7 @@ Uso:
   python recalcular_mare.py --check   # compara com data/indice.json; falha se divergir (padrão)
   python recalcular_mare.py --write   # regrava data/indice.json
 """
-import json, pathlib, sys
+import json, re, pathlib, sys
 import numpy as np
 
 RAIZ = pathlib.Path(__file__).parent
@@ -348,6 +348,12 @@ def main():
         json.dump(pct_derivado, open(alvo_pct, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         json.dump(robustez, open(alvo_rob, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         print(f"data/indice.json, data/percentual_uf.json e data/robustez_mc.json regravados · média nacional {media:.1f}")
+        # 03/09/2026: o fallback estático do medidor do herói (index.html) é DERIVADO do índice
+        _p = RAIZ / "index.html"; _h = _p.read_text(encoding="utf-8"); _m = f"{media:.1f}"; _mbr = _m.replace(".", ",")
+        _h2 = re.sub(r'(id="gaugeNum">)[\d,]+(<)', rf"\g<1>{_mbr}\g<2>", _h, count=1)
+        _h2 = re.sub(r'data-alvo="[\d.]+" style="--galvo:[\d.]+;"', f'data-alvo="{_m}" style="--galvo:{_m};"', _h2, count=1)
+        _h2 = re.sub(r'aria-label="Barra de progresso: MARÉ nacional em [\d,]+ de 100"', f'aria-label="Barra de progresso: MARÉ nacional em {_mbr} de 100"', _h2, count=1)
+        if _h2 != _h: _p.write_text(_h2, encoding="utf-8"); print(f"index.html: fallback do medidor regravado ({_mbr})")
         vm = regravar_verificacao_municipal()
         print(f"data/verificacao_municipal.json regravado (derivado) · {len(vm)} municípios")
         # Selos SVG são função pura do índice: quem regrava o índice regrava os selos
@@ -386,6 +392,10 @@ def main():
     else:
         print("✗ data/verificacao_municipal.json ausente (rode --write)")
         return 1
+    _h = (RAIZ / "index.html").read_text(encoding="utf-8")
+    _mm = re.search(r'data-alvo="([\d.]+)"', _h); _mn = re.search(r'id="gaugeNum">([\d,]+)<', _h)
+    if not _mm or abs(float(_mm.group(1)) - round(media, 1)) > 0.05 or not _mn or _mn.group(1) != f"{media:.1f}".replace(".", ","):
+        print(f"✗ MEDIDOR DO HERÓI desatualizado no index.html (fallback ≠ média {media:.1f}; rode --write)"); return 1
     atual = json.load(open(alvo, encoding="utf-8"))
     campos = ["estado", "cobertura_pop", "antecipacao", "total", "total_geo",
               "confianca", "status_estadual"]

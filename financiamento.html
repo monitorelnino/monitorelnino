@@ -14,6 +14,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
+<script src="assets/mapas.js"></script>
 <style>
 /* --- financiamento.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
@@ -52,7 +53,15 @@
   <div class="panel" id="comoler">
     <h2 style="margin-top:0;">1 · Como ler: as sete rotas e o que o decreto destranca</h2>
     <p class="hint">Cláusula de neutralidade: este bloco descreve rotas existentes, com base legal citada; não recomenda desenho de política pública. Nomes de parlamentares não aparecem nesta página, em texto nem em link (decisão E10).</p>
-    <div class="charts-grid" id="rotasCards"></div>
+    <div class="chart-box wide" id="boxRede">
+      <h3 class="map-card-h">A rede do dinheiro: de quem vem, por qual rota, com que chave</h3>
+      <p class="note">Da esquerda para a direita: origem (União, estado) → rota → município. Traço contínuo = <em>regra</em>; tracejado = <em>decreto</em>; pontilhado = <em>discricionária</em>; traço duplo = <em>direta</em>. Rotas de resposta em cor de resposta. Passe o mouse — ou navegue com Tab — sobre uma rota para ver base legal e o que o decreto destranca.</p>
+      <svg id="redeRotas" role="img" aria-label="Diagrama de rede: origem do recurso, oito rotas e o município, com o tipo de chave de acesso de cada rota" viewBox="0 0 960 420" style="width:100%; height:auto;"></svg>
+      <div class="map-legend" id="legRede"></div>
+      <details style="margin-top:10px;"><summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Ver as oito rotas em texto (base legal e o que o decreto destranca)</summary>
+        <div class="charts-grid" id="rotasCards" style="margin-top:10px;"></div>
+      </details>
+    </div>
     <div class="charts-grid" style="margin-top:12px;">
       <div class="chart-box">
         <h3 class="map-card-h">O caminho do recurso federal de resposta (rota 3)</h3>
@@ -204,14 +213,8 @@ const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","P
 const NEUTRA = '#DCD3C2';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const brl = v => (v == null) ? '—' : 'R$ ' + Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 0});
-const tooltip = document.getElementById('mapTooltip');
-function showTip(html, evt){ tooltip.innerHTML = html; tooltip.style.display='block'; tooltip.style.left=(evt.clientX+14)+'px'; tooltip.style.top=(evt.clientY+10)+'px'; }
-function hideTip(){ tooltip.style.display='none'; }
-function fonteFigura(caixaId, texto){
-  const nota = document.querySelector('#' + caixaId + ' .note');
-  if(!nota || nota.querySelector('.fonte-figura')) return;
-  const sp = document.createElement('span'); sp.className = 'fonte-figura'; sp.innerHTML = '<br>' + texto; nota.appendChild(sp);
-}
+const { showTip, hideTip } = MonitorMapas;
+const fonteFigura = MonitorMapas.credito;
 // Regra estrutural (portão): soma de PREPARAÇÃO só com rotas ex_ante; resposta (r3/r4) nunca entra.
 function somaPreparacao(valoresPorRota){
   return ROTAS.rotas.filter(r => r.ex_ante).reduce((s, r) => s + (Number(valoresPorRota[r.id]) || 0), 0);
@@ -226,20 +229,56 @@ async function __load(){
   __init();
 }
 function __init(){
-  const projection = d3.geoMercator().fitSize([480,460], BR_GEOJSON), pathGen = d3.geoPath().projection(projection);
   document.getElementById('corteFin').textContent = ROTAS.corte || '—';
-  function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){
-    const svg = d3.select('#' + svgId);
-    svg.selectAll('path').data(BR_GEOJSON.features).join('path').attr('d', pathGen).attr('class','uf-path')
-      .attr('fill', d => corDe(d.properties.sigla)).attr('tabindex', 0).attr('role','img')
-      .attr('aria-label', d => d.properties.name + ': ' + rotuloDe(d.properties.sigla).replace(/<[^>]+>/g,' '))
-      .on('mouseenter', (evt,d) => showTip('<strong>'+esc(d.properties.name)+'</strong><br>'+rotuloDe(d.properties.sigla), evt))
-      .on('mousemove', (evt,d) => showTip('<strong>'+esc(d.properties.name)+'</strong><br>'+rotuloDe(d.properties.sigla), evt))
-      .on('mouseleave', hideTip);
-    document.getElementById(legendaId).innerHTML = itens.map(i => '<span><i style="background:'+i.cor+'"></i>'+esc(i.rotulo)+'</span>').join('');
-    return svg;
-  }
-  // 1 · rotas
+  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
+  function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){ const svg = MonitorMapas.ufs(ctx, svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itens); return svg; }
+  // 1 · rede do dinheiro (decisão de design de 03/09/2026: rede em vez de cartões; cartões ficam em texto dobrável)
+  (function(){
+    const svg = d3.select('#redeRotas'), W = 960, H = 420;
+    const ORIG = [{id: 'uniao', nome: 'União', y: 140}, {id: 'estado', nome: 'Estado', y: 300}];
+    const rotas = ROTAS.rotas; const passo = (H - 40) / rotas.length;
+    const nos = rotas.map((r, i) => ({...r, x: 480, y: 30 + passo * i + passo / 2}));
+    const destino = {id: 'mun', nome: 'Município', x: 880, y: H / 2};
+    const arestas = [];
+    rotas.forEach(r => {
+      const de = (r.id === 'rE') ? ['estado'] : (r.id === 'r1' || r.id === 'r5') ? ['uniao', 'estado'] : ['uniao'];
+      de.forEach(o => arestas.push({de: o, para: r.id}));
+      arestas.push({de: r.id, para: 'mun'});
+    });
+    const pos = id => id === 'mun' ? destino : (ORIG.find(o => o.id === id) ? {x: 80, y: ORIG.find(o => o.id === id).y} : nos.find(n => n.id === id));
+    const dash = r => r.chave === 'decreto' ? '8,5' : r.chave === 'discricionária' ? '2,4' : r.chave === 'direta' ? '1,0' : null;
+    const curva = (p, q) => `M${p.x},${p.y} C${(p.x + q.x) / 2},${p.y} ${(p.x + q.x) / 2},${q.y} ${q.x},${q.y}`;
+    const gA = svg.append('g').attr('class', 'arestas');
+    arestas.forEach(a => {
+      const r = rotas.find(x => x.id === (a.de.startsWith('r') ? a.de : a.para)); const p = pos(a.de), q = pos(a.para);
+      gA.append('path').attr('d', curva({x: p.x + 70, y: p.y}, {x: q.x - 70, y: q.y})).attr('fill', 'none').attr('stroke', r.cor)
+        .attr('stroke-width', r.chave === 'direta' ? 5 : 3).attr('stroke-opacity', r.ex_ante ? .75 : .9).attr('stroke-dasharray', dash(r))
+        .attr('class', 'aresta ' + r.id);
+      if (r.chave === 'direta') gA.append('path').attr('d', curva({x: p.x + 70, y: p.y}, {x: q.x - 70, y: q.y})).attr('fill', 'none').attr('stroke', '#F5F1E8').attr('stroke-width', 1.5);
+    });
+    const no = (g, n, w, h, cor, texto, sub) => {
+      g.append('rect').attr('x', n.x - w / 2).attr('y', n.y - h / 2).attr('width', w).attr('height', h).attr('rx', 8).attr('fill', cor).attr('stroke', '#F5F1E8').attr('stroke-width', 1.2);
+      g.append('text').attr('x', n.x).attr('y', n.y - (sub ? 5 : 0)).attr('text-anchor', 'middle').attr('dominant-baseline', 'middle').attr('fill', '#F5F1E8')
+        .attr('font-family', "'Archivo', Arial, sans-serif").attr('font-size', 12.5).attr('font-weight', 600).text(texto);
+      if (sub) g.append('text').attr('x', n.x).attr('y', n.y + 11).attr('text-anchor', 'middle').attr('dominant-baseline', 'middle').attr('fill', '#F5F1E8').attr('fill-opacity', .9)
+        .attr('font-family', "'Archivo Narrow', Arial, sans-serif").attr('font-size', 11).text(sub);
+    };
+    const gN = svg.append('g').attr('class', 'nos');
+    ORIG.forEach(o => no(gN, {x: 80, y: o.y}, 130, 44, '#15201A', o.nome, null));
+    no(gN, destino, 130, 44, '#15201A', 'Município', null);
+    nos.forEach(n => {
+      const g = gN.append('g').attr('tabindex', 0).attr('role', 'img').attr('aria-label', n.n + ' · ' + n.nome + ' — chave: ' + n.chave + (n.ex_ante ? '' : ' (resposta)'))
+        .on('mouseenter', evt => showTip('<strong>' + n.n + ' · ' + esc(n.nome) + '</strong><br><em>chave: ' + esc(n.chave) + (n.ex_ante ? '' : ' · resposta') + '</em><br>' + esc(n.base_legal) + '<br><em>O decreto destranca:</em> ' + esc(n.decreto_destranca), evt))
+        .on('mousemove', evt => showTip('<strong>' + n.n + ' · ' + esc(n.nome) + '</strong><br><em>chave: ' + esc(n.chave) + '</em><br>' + esc(n.base_legal), evt))
+        .on('focus', () => showTip('<strong>' + n.n + ' · ' + esc(n.nome) + '</strong><br>' + esc(n.base_legal), {clientX: 24, clientY: 24}))
+        .on('mouseleave', hideTip).on('blur', hideTip)
+        .on('mouseenter.realce', () => svg.selectAll('.aresta').attr('stroke-opacity', .15).filter('.' + n.id).attr('stroke-opacity', 1))
+        .on('mouseleave.realce', () => svg.selectAll('.aresta').attr('stroke-opacity', .75));
+      no(g, n, 300, passo - 8, n.cor, n.n + ' · ' + n.nome, 'chave: ' + n.chave + (n.ex_ante ? '' : ' · resposta'));
+    });
+    MonitorMapas.legenda('legRede', [{cor: '#35566B', rotulo: 'contínuo: regra'}, {cor: '#7C4A34', rotulo: 'tracejado: decreto (resposta)'}, {cor: '#C69B72', rotulo: 'pontilhado: discricionária'}, {cor: '#647A7E', rotulo: 'duplo: execução direta'}]);
+    fonteFigura('boxRede', 'Fonte: modelo das sete rotas (METODOLOGIA §28), base legal citada em cada rota; sem valores — as quantias entram nos blocos 2 a 4 conforme a coleta.');
+  })();
   document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="chart-box" style="border-left:4px solid '+r.cor+'"><h3 class="map-card-h">'+r.n+' · '+esc(r.nome)+' <span style="font-weight:400; text-transform:none; letter-spacing:0;">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
     + '<p class="note"><strong>'+esc(r.curta)+'.</strong> '+esc(r.base_legal)+'<br><em>O que o decreto destranca:</em> '+esc(r.decreto_destranca)+'.</p></div>').join('');
   // 2 · série (faixa do defeso sempre; barras só quando houver dados)
@@ -263,7 +302,7 @@ function __init(){
       document.getElementById('notaSerie').textContent = 'Série semanal 2026 por rota; fonte: dados abertos do Portal da Transparência, consulta registrada no bloco 8.';
     }
     svg.append('g').attr('transform', 'translate(0,' + (H - m.b) + ')').call(d3.axisBottom(x).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat('%b')));
-    document.getElementById('legSerie').innerHTML = ROTAS.rotas.map(r => '<span><i style="background:'+r.cor+'"></i>'+r.n+' · '+esc(r.nome)+'</span>').join('') + '<span><i style="background:#A65F3F; opacity:.35"></i>faixa do defeso</span>';
+    MonitorMapas.legenda('legSerie', ROTAS.rotas.map(r => ({cor: r.cor, rotulo: r.n + ' · ' + r.nome})).concat([{cor: '#A65F3F', opacidade: .35, rotulo: 'faixa do defeso'}]));
     fonteFigura('boxSerie', semanas.length ? 'Fonte: Portal da Transparência (dados abertos mensais + API), consultas em ' + esc(SERIE.corte) + '.' : 'Não localizamos coleta desta fonte até o corte — lacuna declarada (Portal da Transparência). Faixa do defeso: Lei 9.504/1997, art. 73, VI, a.');
   })();
   // 3 · por estado

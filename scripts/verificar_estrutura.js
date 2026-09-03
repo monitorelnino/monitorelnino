@@ -132,6 +132,13 @@ for (const arq of arquivos) {
   if (!temBase) falha(`${nome}: sem <link> para assets/base.css`);
   if (!/prefers-reduced-motion/.test(css + (temBase ? baseCss : ""))) falha(`${nome}: sem @media (prefers-reduced-motion)`);
   if (!/\.masthead--mini \.site-title\{[^}]*clamp\(24px, 3\.6vw, 30px\)/.test(baseCss)) falha(`${nome}: base.css sem a escala canônica do masthead compacto`);
+  // v2.3 (03/09/2026): motor único de mapas — assets/mapas.js
+  const temMapa = /<svg id="map/.test(html) || /d3\.geoMercator/.test(html);
+  if (temMapa && !/<script src="assets\/mapas\.js"><\/script>/.test(html)) falha(`${nome}: página com mapa sem assets/mapas.js`);
+  for (const fn of ["showTip", "hideTip", "desenharSiglas"]) if (new RegExp("function " + fn + "\\(").test(html)) falha(`${nome}: define ${fn} localmente (deve vir de MonitorMapas)`);
+  if (/geoMercator\(\)\.fitSize/.test(html) && nome !== "mapas-e-graficos.html") falha(`${nome}: cria projeção própria (usar MonitorMapas.contexto)`);
+  const legendasManuais = (html.match(/innerHTML = [^\n]*<span><i style=\\?"background/g) || []).length;
+  if (legendasManuais) falha(`${nome}: ${legendasManuais} legenda(s) montada(s) à mão (usar MonitorMapas.legenda)`);
   // nenhuma página pode redefinir os componentes da folha base
   const NUCLEO = [".mainnav a, .mainnav span", ".mainnav .ativa, .mainnav .ativa:hover", "header.masthead", ".site-title", ".masthead--mini .site-title", ".kicker", ".map-box", ".chart-box", ".map-legend", ".map-tooltip", "footer.site-footer", ".skip", ".panel"];
   if (nome !== "index.html") {
