@@ -20,6 +20,19 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Achados do ensaio da rotina (03/09/2026)
+- **O ensaio funcionou como instrumento:** a rotina rodou de ponta a ponta com rede
+  real (3 de 8 fontes de sinais coletadas; 18 evidências preservadas; coletores
+  gravaram dados) e falhou no portão certo — o derivado de verificação estava
+  obsoleto porque **o índice nunca era recomputado dentro da rotina**. Agora
+  `recalcular_mare.py --write` (relógio no corte) roda depois de TODOS os coletores e
+  antes dos portões; as fichas do painel vêm depois dele.
+- **Coletores legados** (Querido Diário, recursos, vigência, decretos) rodavam no
+  workflow DEPOIS dos portões: passaram para dentro do orquestrador, antes dos
+  derivados. O PDF do passo final usa o relógio do corte.
+- **Portão 12 dentro da rotina:** modo `--idempotencia` (a árvore está suja com dados
+  novos): uma segunda regeneração não pode mudar nada. O modo `git` continua no CI.
+
 ### Correções da revisão da editoria (03/09/2026)
 - **Medidor do herói dessincronizado (causa raiz):** a barra e o contador animado liam
   `data-alvo="47.1"` gravado no HTML — a rotina só regravava o número, não o alvo, e

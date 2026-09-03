@@ -93,7 +93,6 @@ def main():
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
     rodar([sys.executable, "coletar_financiamento.py"])                 # §7.8: Portal (chave), rotas; peso zero
-    rodar([sys.executable, "gerar_painel.py", "--fichas"])                 # §10-bis: reverificação semanal das fichas
 
     rodar([sys.executable, "verificar_contribuicoes.py"])
 
@@ -109,12 +108,27 @@ def main():
         print(f"\n[aviso] {revisar_p.relative_to(RAIZ)} tem proposta(s) pendente(s) de revisão humana.")
         print("        Revise o arquivo e rode: python3 aplicar_revisao.py --arquivo", revisar_p.relative_to(RAIZ))
 
+    # 03/09/2026 (achado do ensaio): coletores legados que rodavam DEPOIS dos portões, no workflow,
+    # passam para cá — antes dos derivados e dos portões (nunca mais dado gravado sem portão).
+    rodar([sys.executable, "consultar_querido_diario.py"]); rodar([sys.executable, "consultar_querido_diario.py", "--descobrir-termos"])
+    rodar([sys.executable, "atualizar_recursos.py"]); rodar([sys.executable, "verificar_vigencia.py"]); rodar([sys.executable, "analisar_decretos.py"])
     if os.environ.get("PORTAL_TRANSPARENCIA_API_KEY"):
         rodar([sys.executable, "atualizar_transferencias.py"])
     else:
         print("\n[aviso] PORTAL_TRANSPARENCIA_API_KEY ausente — etapa de transferências pulada.")
         print("        Cadastre a chave gratuita em https://portaldatransparencia.gov.br/api-de-dados")
 
+    # 03/09/2026 (achado do ensaio): TODO derivado é regravado DEPOIS de todos os coletores e
+    # ANTES dos portões — índice, percentuais, robustez, selos, verificação municipal e resumo,
+    # fallback do medidor (recalcular --write); depois as fichas do painel (dependem da
+    # verificação), feeds e dados abertos. Relógio fixado no corte (determinismo dos PDFs).
+    corte = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("corte", "")
+    try:
+        dd, mm, aa = corte.split("/"); epoch = str(int(datetime.datetime(int(aa), int(mm), int(dd)).timestamp()))
+    except Exception:
+        epoch = None
+    rodar([sys.executable, "recalcular_mare.py", "--write"], obrigatorio=True, env_extra=({"SOURCE_DATE_EPOCH": epoch} if epoch else None))
+    rodar([sys.executable, "gerar_painel.py", "--fichas"], obrigatorio=True)   # §10-bis: reverificação semanal das fichas
     # Artefatos derivados (31/08/2026): função pura dos dados desta rodada; gerados ANTES dos
     # portões, que os conferem (selos × índice; feeds válidos; dados abertos × banco).
     rodar([sys.executable, "gerar_selos.py"], obrigatorio=True)
@@ -136,7 +150,7 @@ def main():
     rodar(["node", "scripts/verificar_runtime_saude.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_financiamento.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_acessibilidade.js"], obrigatorio=True)   # v2.3: a11y + responsividade
-    rodar(["bash", "scripts/verificar_derivados.sh"], obrigatorio=True)         # AUD-04: derivados reproduzíveis em árvore limpa
+    rodar(["bash", "scripts/verificar_derivados.sh", "--idempotencia"], obrigatorio=True)         # AUD-04: derivados reproduzíveis em árvore limpa
 
     meta_p = RAIZ / "data" / "meta.json"
     meta = json.load(open(meta_p, encoding="utf-8"))
