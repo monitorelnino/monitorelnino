@@ -36,8 +36,10 @@ espera a pista B. Isso é a governança automático × humano do projeto
 > `INTENSIVO_DE`, `INTENSIVO_ATE`, `TAMANHO_LOTE` = mínimo por rodada). O progresso aparece
 > no contador público ("Varredura dos diários oficiais municipais"). Consulta não é verificação.
 
-- **Gatilho:** segundas-feiras, 09h UTC (06h Brasília), ou botão *Run
-  workflow* na aba Actions. Primeira execução: **domingo, 06/09/2026, 06h Brasília** — dia 0 da semana intensiva (`INTENSIVO_DE=2026-09-06`, `INTENSIVO_ATE=2026-09-13`); antes de 06/09 a execução diária encerra sem coletar.
+- **Gatilho:** segundas-feiras, 09h UTC (06h Brasília) — compromisso semanal fora da
+  semana intensiva; durante a semana intensiva em curso (03–10/09/2026), **duas rodadas
+  por dia**, 06h e 18h Brasília (03/09/2026, decisão editorial: acelerar a varredura
+  integral); ou botão *Run workflow* na aba Actions a qualquer momento.
 - **Segredos necessários** (Settings → Secrets and variables → Actions):
   `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID`, `PORTAL_TRANSPARENCIA_API_KEY`.
   Confirmados presentes em 01/09/2026. Ausência de qualquer um faz a etapa

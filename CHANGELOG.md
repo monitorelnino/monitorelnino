@@ -20,6 +20,11 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Robô: duas rodadas diárias durante a semana intensiva (03/09/2026, autorização escrita)
+- Segundo gatilho de cron às 18h Brasília, além do já existente às 06h — só durante
+  03–10/09/2026, para acelerar a varredura integral dos 5.571 municípios. Cadência normal
+  (segunda-feira) e fora da janela intensiva não muda: rodadas extras encerram sem coletar.
+
 ### Reconhecimentos federais: pasta nova do MIDR (03/09/2026, autorização escrita)
 - A pasta `/noticias/RSS` (que o rodapé do sítio do MIDR ainda aponta) passou a exigir login;
   a 1ª rodada real leu uma página de login e registrou "0 notícias". Agora o coletor lê o RSS
