@@ -20,6 +20,20 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Endpoint certo dos reconhecimentos federais + prévia com senha (03/09/2026)
+- **DOU/S2iD, corrigido pela fonte oficial:** o MIDR publica cada lote de reconhecimentos
+  como notícia com os links diretos das portarias no DOU (número e data no endereço) e
+  mantém RSS. O coletor passa a ir do RSS às notícias e das notícias às páginas das
+  portarias (municípios nomeados), com casamento IBGE tolerante a acento/apóstrofo —
+  provado por fixture da notícia real de 25/05/2026 (18 de 18 municípios). A consulta
+  textual do DOU vira complementar e nunca confere nível. S2iD, MUNIC e ICM seguem
+  "a verificar".
+- **Prévia com senha (decisão da editoria):** Basic-Auth do Netlify em todas as rotas dos
+  deploys do `main`, gerado no deploy a partir de segredo (nunca no repositório público);
+  mais um véu no navegador (`assets/acesso.js`, hash SHA-256, ativo só em *.netlify.app).
+  Limite declarado: o Basic-Auth exige plano Pro; o véu não é segurança. A cortina do
+  domínio não muda.
+
 ### Primeira atualização real (03/09/2026, 11h06 UTC) — e a correção que ela exigiu
 - **Rodou de ponta a ponta e comitou** (dia 0 antecipado para 03/09; semana intensiva até
   10/09): 3 fontes de sinais coletadas (Painel El Niño, INMET, NOAA/ONI), InfoDengue nas
