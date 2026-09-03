@@ -229,6 +229,7 @@ async function __load(){
   __init();
 }
 function __init(){
+  MonitorMapas.padraoGraficos(window.Chart);
   document.getElementById('corteFin').textContent = ROTAS.corte || '—';
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
   function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){ const svg = MonitorMapas.ufs(ctx, svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itens); return svg; }

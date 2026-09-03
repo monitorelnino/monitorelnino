@@ -59,6 +59,8 @@ jobs:
           mkdir -p /tmp/registro/relatorios && cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portoes_p12.txt"
           cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -q -m "portoes p12 diagnostico" && git push -q
           exit 1
+      - name: Portão 17 — robustez a atualização de dados (cópia perturbada)
+        run: python3 scripts/verificar_robustez_atualizacao.py
       - name: Autotestes dos coletores
         run: |
           for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_saude coletar_financiamento gerar_lai gerar_painel; do python3 $c.py --autoteste; done

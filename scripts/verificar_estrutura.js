@@ -141,6 +141,10 @@ for (const arq of arquivos) {
   if (/geoMercator\(\)\.fitSize/.test(html) && nome !== "mapas-e-graficos.html") falha(`${nome}: cria projeção própria (usar MonitorMapas.contexto)`);
   const legendasManuais = (html.match(/innerHTML = [^\n]*<span><i style=\\?"background/g) || []).length;
   if (legendasManuais) falha(`${nome}: ${legendasManuais} legenda(s) montada(s) à mão (usar MonitorMapas.legenda)`);
+  if (/new Chart\(/.test(html)) {
+    if (!/MonitorMapas\.padraoGraficos\(/.test(html)) falha(`${nome}: usa Chart.js sem MonitorMapas.padraoGraficos`);
+    if (/Chart\.defaults\./.test(html)) falha(`${nome}: define Chart.defaults localmente (padrão único em assets/mapas.js)`);
+  }
   // nenhuma página pode redefinir os componentes da folha base
   const NUCLEO = [".mainnav a, .mainnav span", ".mainnav .ativa, .mainnav .ativa:hover", "header.masthead", ".site-title", ".masthead--mini .site-title", ".kicker", ".map-box", ".chart-box", ".map-legend", ".map-tooltip", "footer.site-footer", ".skip", ".panel"];
   if (nome !== "index.html") {
