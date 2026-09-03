@@ -20,6 +20,17 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Correção: contador da cortina nunca disparava (03/09/2026)
+- Bug na 1ª versão: `HOUVE_ALTERACAO` era calculado checando `git diff --cached`
+  DEPOIS do commit já feito — o staged vira commit, o diff some, a variável
+  sempre dava "0". A etapa "Atualizar contador da cortina pública" saía
+  sempre `skipped`, mesmo com commit real (confirmado na execução das 15h06:
+  commit `2d10fa7` na main, contador não publicado). Corrigido: uma única
+  decisão if/else antes do commit, sem checar o diff de novo depois.
+  Número de hoje (2.278/5.571) publicado manualmente enquanto o conserto
+  não entrava, para não deixar a cortina desatualizada.
+
+
 ### Contador real na cortina pública (03/09/2026, autorização escrita)
 - O robô publica, a cada rodada que gerar mudança, um contador operacional
   (`progresso.json`) no ramo `publico` — quantos municípios já foram
