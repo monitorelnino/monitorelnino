@@ -20,6 +20,22 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Cartório estadual (passada de 03/09) e alertas de saúde no Proteja-se
+- Passada dirigida nos quatro estados mais sensíveis do cartório: PB (LAC mantido —
+  único achado é plano fiscal da Seplag, fora do objeto), RN (LAC mantido — imprensa
+  registra articulação sem documento nomeado; decreto de SE por seca = resposta),
+  BA (ELAB confirmado — comitê para o Plano Estadual El Niño 2026/2027; ato de
+  criação a localizar no DOE-BA), PE (ELAB mantido; achado para a camada de
+  financiamento: Lei nº 19.240/2026 institui o FUNDPRA e Decreto nº 60.732/2026 o
+  regulamenta — registrado como pista, status `nao_verificado` mantido até leitura
+  da íntegra). Descoberta municipal por imprensa: PLANCON 2026 de Pindamonhangaba/SP
+  (Decreto nº 7.087, 16/06/2026) — pista, a confirmar em fonte oficial. Cinco buscas
+  logadas (executor `claude`).
+- Proteja-se: novo bloco "Alertas de saúde do momento" — espelho da página de Saúde
+  (dengue nas capitais em nível 2+, avisos de calor do INMET, emergências sanitárias),
+  lendo os MESMOS arquivos e regras, com lacuna declarada em qualquer falha de carga.
+
+
 ### Limpeza da superfície pública (03/09/2026, pedido da editoria)
 - Removido o painel "Contador público da verificação" da página inicial
   (os números continuam nos dados abertos, `verificacao_resumo.json`); o
