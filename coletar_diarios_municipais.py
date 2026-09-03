@@ -25,7 +25,7 @@ import json, math, re, sys, time, urllib.parse, urllib.error
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste)
-from classificar_pista_civil import triagem_pista
+from classificar_pista_civil import triagem_completa
 
 FONTE_QD = "Querido Diário (diário municipal)"
 PAUSA_ENTRE_CONSULTAS = 0.25   # segundos; cortesia com a API pública
@@ -158,7 +158,8 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
             pistas["pistas"].append({"municipio": ref["nome"], "uf": ref["uf"], "ibge": cod, "origem": "querido_diario",
                                     "data": iso_para_br(p["data"]), "url": p["url"], "trecho": p["trecho"],
                                     "hash_evidencia": h, "registrado_em": date.today().isoformat(),
-                                    "triagem": triagem_pista(p["trecho"]),  # 03/09/2026: só ordena a fila; nunca decide sozinho (§3.2)
+                                    # 03/09/2026: triagem/autoridade/objeto/destino só ORDENAM a fila; nunca decidem sozinhos (§3.2, §5.2.1-bis)
+                                    **triagem_completa(p["trecho"]),
                                     "status": "pista — promover a registro exige documento primário lido por humano"}); npist += 1
         marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado",
                                 resultado=f"{len(decretos)} decreto(s), {len(pist)} pista(s)")
