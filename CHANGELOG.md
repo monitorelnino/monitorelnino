@@ -28,6 +28,13 @@ semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
   .`) antes do rebase, e aprofundando o fetch (depth=50) para o merge-base ter história suficiente.
   Reproduzido e confirmado localmente antes e depois do fix.
 
+### Janela da varredura integral encurtada de 10/09 para 06/09 (03/09/2026, autorização escrita)
+- Com duas rodadas por dia, cada lote se recalcula sozinho (pendentes ÷ dias de calendário
+  restantes) — projeção com os números reais desta tarde (688 consultados na 1ª rodada de
+  hoje) mostra convergência completa até a manhã de 06/09, com a rodada da tarde de 06/09
+  como folga/reforço. `INTENSIVO_ATE` alterado de `2026-09-10` para `2026-09-06` (variável
+  do repositório, GitHub Actions). `INTENSIVO_DE` inalterado (2026-09-03).
+
 ### Robô: duas rodadas diárias durante a semana intensiva (03/09/2026, autorização escrita)
 - Segundo gatilho de cron às 18h Brasília, além do já existente às 06h — só durante
   03–10/09/2026, para acelerar a varredura integral dos 5.571 municípios. Cadência normal
