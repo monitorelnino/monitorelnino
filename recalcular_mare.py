@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Cálculo canônico do índice MARÉ v2.3 — Monitor El Niño Brasil.
+"""Cálculo canônico do índice MARÉ v3.0 — Monitor El Niño Brasil.
+
+v3.0 (04/09/2026, decisão editorial; Metodologia §30): o componente estadual passa a ser
+a média de DOIS sub-elementos com peso igual — ESTRUTURA DE COORDENAÇÃO (comitê, gabinete,
+sala de situação, COE criados ou ativados para o ciclo) e INSTRUMENTO OPERACIONAL (plano,
+protocolo, decreto preventivo). Cada um usa a escada ESTADO_SCORE. A cobertura municipal ganha
+a categoria `estrutura` (comitê/gabinete municipal nomeado para o ciclo, ou COMPDEC ativada por
+ato datado — nunca a COMPDEC genérica), crédito 0,45 = paridade com plano_elaboracao.
 
 Reproduz integralmente os 27 valores publicados em data/indice.json a partir de
 data/municipios.json, data/percentual_uf.json, data/municipios_ibge_referencia.json
@@ -44,6 +51,9 @@ ESTADO_SCORE = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
 # nao_el_nino (0, não 0,1; ver docstring). decreto ausente por regra estrutural
 # (Correção B): `CRED_POP.get(cat, 0.0)` já o exclui sem lista de exceções.
 CRED_POP = {"plano": 1.0, "plano_antigo": 0.6, "plano_elaboracao": 0.45,
+            # v3.0: estrutura de coordenação nomeada para o ciclo — compromisso formal sem instrumento
+            # operacional; paridade declarada com plano_elaboracao (§30). O crédito é o MAIOR, nunca a soma.
+            "estrutura": 0.45,
             "coberto_estadual": 0.3, "nao_el_nino": 0.0, "nao_localizado": 0.0,
             # v2.2.4 (§2.1): ausência de verificação ≠ ausência de documento; mesmo crédito 0.0
             "nao_verificado": 0.0}
@@ -54,10 +64,12 @@ CAPITAIS = {"Rio Branco":"AC","Maceió":"AL","Manaus":"AM","Macapá":"AP","Salva
  "Rio de Janeiro":"RJ","Natal":"RN","Porto Alegre":"RS","Porto Velho":"RO","Boa Vista":"RR",
  "Florianópolis":"SC","São Paulo":"SP","Aracaju":"SE","Palmas":"TO"}
 
-# (status_estadual, antecipação, confiança) — insumos de julgamento da verificação,
+# (status do INSTRUMENTO OPERACIONAL, antecipação, confiança) — insumos de julgamento da verificação,
 # datados no banco de registros; régua de antecipação na Metodologia §5.2.
+# v3.0: o status aqui é o do instrumento operacional (plano/protocolo/decreto preventivo); a
+# estrutura de coordenação está em ESTRUTURA, abaixo. Componente estadual = média dos dois.
 ESTADOS = {
- "AC":("READ",100,"Alta"),  "AL":("NOVO",30,"Média"),   "AM":("NOVO",100,"Média"),
+ "AC":("ELAB",100,"Alta"),  "AL":("ELAB",30,"Média"),   "AM":("NOVO",100,"Média"),
  "AP":("VIG",40,"Média"),    "BA":("ELAB",20,"Média"), "CE":("VIG",40,"Média"),
  "DF":("VIG",40,"Média"),   "ES":("VIG",30,"Baixa"),  "GO":("NOVO",30,"Média"),
  "MA":("READ",100,"Média"),"MG":("VIG",20,"Baixa"),  "MS":("READ",100,"Média"),
@@ -67,6 +79,27 @@ ESTADOS = {
  "RR":("VIG",40,"Alta"),   "RS":("READ",100,"Alta"), "SC":("NOVO",100,"Alta"),
  "SE":("NOVO",30,"Média"),   "SP":("VIG",40,"Baixa"),  "TO":("READ",40,"Média"),
 }
+
+# v3.0 — ESTRUTURA DE COORDENAÇÃO por UF (§30), julgada pela FUNÇÃO do ato, não pelo nome:
+#   NOVO = órgão/instância criado para o ciclo por ato do Executivo (comitê, gabinete, sala de situação),
+#          OU plano do ciclo que institui níveis de mobilização e responsáveis (SC);
+#   READ = estrutura permanente ativada/re-instituída/designada para o ciclo por ato datado;
+#   VIG  = ativação recorrente anual (plano de verão/operação sazonal que mobiliza o sistema todo ano);
+#   LAC  = nenhum ato do ciclo toca a estrutura (estrutura permanente sem ato = 0, como a COMPDEC genérica).
+# Fontes e datas de cada julgamento: data/estados.json (campo estrutura) e log_buscas (04/09/2026).
+ESTRUTURA = {
+ "AC":"READ","AL":"NOVO","AM":"READ","AP":"LAC","BA":"LAC","CE":"LAC","DF":"READ","ES":"VIG","GO":"NOVO",
+ "MA":"VIG","MG":"VIG","MS":"READ","MT":"NOVO","PA":"READ","PB":"LAC","PE":"LAC","PI":"LAC","PR":"READ",
+ "RJ":"VIG","RN":"LAC","RO":"VIG","RR":"VIG","RS":"READ","SC":"NOVO","SE":"NOVO","SP":"VIG","TO":"VIG",
+}
+PESO_ESTRUTURA = 0.5   # v3.0: peso igual entre estrutura e instrumento operacional (padrão da casa; sensibilidade 30/70–50/50 sem troca de faixa, §30)
+
+
+def score_estado(uf: str) -> float:
+    """Componente estadual v3.0 = média ponderada (PESO_ESTRUTURA) de estrutura e instrumento operacional."""
+    st = ESTADOS[uf][0]
+    return PESO_ESTRUTURA * ESTADO_SCORE[ESTRUTURA[uf]] + (1 - PESO_ESTRUTURA) * ESTADO_SCORE[st]
+
 
 def excedente_agregado(uf, c):
     """Excesso do agregado estadual sobre o que já está contado individualmente
@@ -188,7 +221,7 @@ def calcular(simular_declarado_nacional: bool = False):
         if da: w += da * mediana_uf[uf] * (CRED_POP["plano_antigo"] * 0.5)
         cobertura = min(100.0, 100.0 * w / pop_uf[uf])
         st, ant, conf = ESTADOS[uf]
-        comp.append([ESTADO_SCORE[st], round(cobertura, 1), ant])
+        comp.append([score_estado(uf), round(cobertura, 1), ant])
 
     X = np.array(comp, float)
     lin = X.mean(axis=1)
@@ -205,11 +238,14 @@ def calcular(simular_declarado_nacional: bool = False):
     for i, uf in enumerate(ufs):
         st, ant, conf = ESTADOS[uf]
         saida[uf] = {
-            "estado": int(X[i, 0]), "cobertura_pop": round(float(X[i, 1]), 1),
+            "estado": round(float(X[i, 0]), 1), "cobertura_pop": round(float(X[i, 1]), 1),
             "antecipacao": int(ant),
             "total": round(float(lin[i]), 1), "total_geo": round(float(geo[i]), 1),
             "confianca": conf, "status_estadual": st,
-            "metodo": "v2.3 — 3 componentes (motor idêntico ao da v2.2.3), pesos iguais (1/3): instrumento estadual, cobertura populacional (Censo 2022; crédito por categoria; agregados e declarada via mediana; Metodologia §5 e §12.4.2-3), antecipação (régua e teste do objeto: §5.2.1); linear + geométrico piso 5. Sem ranking ordinal público (decisão de 29/08/2026, Metodologia §13): o Monte Carlo 10k Dirichlet(1,1,1) seed 42 permanece como evidência de robustez em data/robustez_mc.json.",
+            # v3.0: os dois sub-elementos do componente estadual, sempre visíveis
+            "estrutura_status": ESTRUTURA[uf], "estado_estrutura": ESTADO_SCORE[ESTRUTURA[uf]],
+            "operacional_status": st, "estado_operacional": ESTADO_SCORE[st],
+            "metodo": "v3.0 — 3 componentes, pesos iguais (1/3): instrumento estadual = média (1/2, 1/2) de ESTRUTURA DE COORDENAÇÃO e INSTRUMENTO OPERACIONAL (Metodologia §30, decisão de 04/09/2026), cobertura populacional (Censo 2022; crédito por categoria, inclusive `estrutura` 0,45; agregados e declarada via mediana; §5 e §12.4.2-3), antecipação (régua e teste do objeto: §5.2.1); linear + geométrico piso 5. Sem ranking ordinal público (§13); Monte Carlo 10k Dirichlet(1,1,1) seed 42 em data/robustez_mc.json.",
         }
         # Decisão de 29/08/2026 (Metodologia §13): o rank ordinal deixa de ser
         # produto público por UF — a resolução do instrumento não sustenta
@@ -236,7 +272,7 @@ def _recomputar_verificacao_em_memoria():
     derivado precisa ser regravado por quem regrava a origem'). O nível de
     verificação só sobe com log estruturado; nada é imputado."""
     import re as _re
-    PONT = {"plano","plano_antigo","plano_elaboracao","coberto_estadual","decreto","nao_el_nino"}
+    PONT = {"plano","plano_antigo","plano_elaboracao","estrutura","coberto_estadual","decreto","nao_el_nino"}
     with open(RAIZ / "data" / "municipios.json", encoding="utf-8") as f: mun = json.load(f)
     with open(RAIZ / "data" / "log_buscas.json", encoding="utf-8") as f: lg = json.load(f)
     with open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8") as f: ref = json.load(f)

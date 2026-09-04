@@ -9,6 +9,25 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## v3.0 — 04/09/2026 · Componente estadual em dois sub-elementos
+
+- **Regra (Metodologia §30):** componente estadual = média (1/2, 1/2) de *estrutura de
+  coordenação* e *instrumento operacional*, cada um na escada 100/65/45/35/0. Estrutura julgada
+  pela função do ato (plano que institui níveis de mobilização conta como estrutura nova);
+  estrutura permanente sem ato do ciclo = 0. Pesos iguais por sensibilidade (30/70–50/50 sem
+  troca de faixa) e pelo padrão da casa.
+- **Município:** oitava categoria `estrutura` (comitê/gabinete nomeado para o ciclo ou COMPDEC
+  ativada por ato), crédito 0,45; COMPDEC genérica não conta.
+- **Reclassificação uniforme das 27 UFs** (tabela na metodologia): AL parcial→insuficiente,
+  AP insuficiente→crítico; SC e MT mantidos pela regra da função (SC: níveis do plano; MT: Sala
+  de Situação Central do Decreto 2.015/2026, IOMAT). Média 45,9 → 43,6.
+- **Bateria v3:** AL e AC passam a *em elaboração* no instrumento operacional (plano nomeado,
+  não publicado). RR e BA ficam como pistas (atos ainda não localizados no DOE).
+- `data/estados.json`: campos `estrutura` e `instrumentos`; `indice.json`: `estrutura_status`,
+  `estado_estrutura`, `operacional_status`, `estado_operacional`.
+- Site: cartão do estado mostra os dois sub-elementos e a média; legendas e seletor com a
+  categoria `estrutura`; rodapés em v3.0.
+
 ## [2.3] — em publicação (sessão de construção de 02/09/2026; corte de dados 31/08/2026; média nacional 47,1 inalterada)
 
 **Designação (decisão editorial de 02/09/2026):** o redesenho da verificação — níveis,

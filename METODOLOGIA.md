@@ -6,7 +6,7 @@ FUTURA · EVIDENCE LAB
 
 Documento Técnico-Metodológico
 
-Edição 2026/2027 · Metodologia v2.3 (designação editorial de 02/09/2026 para o redesenho da verificação: níveis, defeso eleitoral, fontes nacionais e estaduais incorporadas, página setorial de saúde — §24 a §29; **motor de cálculo idêntico ao da v2.2.3: nenhum peso, crédito, componente ou régua alterado**) · Corte dos dados: 31/08/2026
+Edição 2026/2027 · Metodologia v3.0 (04/09/2026: componente estadual em dois sub-elementos — estrutura de coordenação e instrumento operacional — e categoria municipal `estrutura`; §30) · v2.3 (designação editorial de 02/09/2026 para o redesenho da verificação: níveis, defeso eleitoral, fontes nacionais e estaduais incorporadas, página setorial de saúde — §24 a §29; **motor de cálculo idêntico ao da v2.2.3: nenhum peso, crédito, componente ou régua alterado**) · Corte dos dados: 31/08/2026
 
 **Sumário**
 
@@ -778,3 +778,53 @@ Cláusula de neutralidade (padrão do §5.2.1): o que segue explica escolhas de 
 
 **Compromisso.** A variação pós-defeso será publicada decomposta em *recall recuperado* × *instrumento novo* antes de qualquer leitura editorial sobre "melhora da preparação". Uma alta explicada majoritariamente por reabertura de sítios não é evidência de preparação nova, e o Monitor dirá isso com os números.
 
+## 30. Componente estadual em dois sub-elementos: estrutura de coordenação e instrumento operacional (v3.0, decisão editorial de 04/09/2026)
+
+**Motivação.** A primeira varredura integral e o cartório estadual de 03/09/2026 mostraram que a régua da v2.3 tratava como iguais duas coisas diferentes: um estado que **criou um comitê** para o El Niño e ainda não publicou nada (Alagoas, Comitê El Niño) e um estado que **publicou um plano integrado** com níveis de mobilização (Santa Catarina). Ambos recebiam 100 no componente estadual. A editoria decidiu que a criação de uma estrutura de coordenação nomeada para o ciclo **é** ato preparatório e deve pontuar — mas não como se fosse o plano. Esta seção é declarada antes de beneficiar ou prejudicar qualquer ente; a reclassificação é uniforme e está anexada.
+
+**Regra.** O componente estadual passa a ser a média, com **pesos iguais (1/2, 1/2)**, de dois sub-elementos, cada um na escada já declarada (novo 100 · readequado 65 · vigente-recorrente 45 · em elaboração 35 · não localizado 0):
+
+1. **Estrutura de coordenação** — julgada pela *função* do ato, não pelo nome: **novo** = órgão ou instância criado para o ciclo por ato do Executivo (comitê, gabinete, sala de situação, COE), **ou** plano do ciclo que institui níveis de mobilização e responsáveis (o plano cria a estrutura); **readequado** = estrutura permanente ativada, re-instituída ou designada para o ciclo por ato datado; **vigente-recorrente** = mobilização anual do sistema por plano de verão ou operação sazonal; **não localizado** = nenhum ato do ciclo toca a estrutura. **Estrutura permanente sem ato do ciclo vale zero** — a mesma lógica que, no município, exclui a COMPDEC genérica: existir por obrigação legal de 2012 não é preparação para este ciclo.
+2. **Instrumento operacional** — plano de contingência, protocolo, decreto preventivo; é o `status` que a v2.3 já usava.
+
+**Por que pesos iguais.** A escolha é normativa e foi testada: a sensibilidade de 30/70 a 50/50 nas 27 UFs (04/09/2026) não troca nenhuma faixa entre um extremo e o outro, e a média nacional varia três décimos. Sem evidência que justifique privilegiar um sub-elemento, aplica-se o padrão da casa (nenhum componente privilegiado, §13) — que também é a proporção aproximada do análogo oficial brasileiro, o ICM da SEDEC (7 variáveis de coordenação para 8 de instrumentos de planejamento). Os pesos ficam publicados aqui e no motor (`PESO_ESTRUTURA = 0.5`).
+
+**Município.** A cobertura populacional ganha a oitava categoria **`estrutura`** — comitê ou gabinete municipal nomeado para o ciclo, ou COMPDEC formalmente ativada para o ciclo por ato datado — com crédito **0,45**, paridade declarada com `plano_elaboracao` (compromisso formal sem instrumento operacional). O crédito é o maior, nunca a soma: município com plano continua em 1,0. **A criação da COMPDEC não conta.**
+
+**Antecipação.** Mantém a régua da §5.2; o ato de referência passa a ser o *primeiro* ato do ciclo que passa o teste do objeto, seja estrutura ou instrumento (aplicação prospectiva; os valores vigentes foram mantidos na transição).
+
+**Modelo de dados.** `data/estados.json` ganha o campo `estrutura` (status, documento, data, órgão, data do julgamento) e a lista `instrumentos`, acumulativa por UF — os produtos que um comitê publicar entram nela, classificados, sem substituir o que já foi registrado. `data/indice.json` expõe `estrutura_status`, `estado_estrutura`, `operacional_status`, `estado_operacional`.
+
+**Reclassificação uniforme (anexo).** Todas as 27 UFs foram rejulgadas nos dois sub-elementos em 04/09/2026, com fonte e data em `data/estados.json` e no `log_buscas.json`. Duas UFs trocam de faixa: **AL** (parcial → insuficiente: comitê novo, plano só em elaboração) e **AP** (insuficiente → crítico: comitê de 2024 nunca ativado para o ciclo). Média nacional: 45.9 → 43.6.
+
+| UF | Estrutura | Instrumento | Estadual v3 | Total v2.3 | Total v3.0 | Δ |
+|---|---|---|---|---|---|---|
+| AC | READ (65) | ELAB (35) | 50.0 | 55.0 parcial | 50.0 parcial | -5.0 |
+| AL | NOVO (100) | ELAB (35) | 67.5 | 53.5 parcial | 42.7 insuficiente | -10.8 |
+| AM | READ (65) | NOVO (100) | 82.5 | 84.1 avançado | 78.3 avançado | -5.8 |
+| AP | LAC (0) | VIG (45) | 22.5 | 28.3 insuficiente | 20.8 crítico | -7.5 |
+| BA | LAC (0) | ELAB (35) | 17.5 | 24.0 crítico | 18.2 crítico | -5.8 |
+| CE | LAC (0) | VIG (45) | 22.5 | 37.5 insuficiente | 30.0 insuficiente | -7.5 |
+| DF | READ (65) | VIG (45) | 55.0 | 38.3 insuficiente | 41.7 insuficiente | +3.4 |
+| ES | VIG (45) | VIG (45) | 45.0 | 57.5 parcial | 57.5 parcial | +0.0 |
+| GO | NOVO (100) | NOVO (100) | 100.0 | 45.4 insuficiente | 45.4 insuficiente | +0.0 |
+| MA | VIG (45) | READ (65) | 55.0 | 60.3 parcial | 57.0 parcial | -3.3 |
+| MG | VIG (45) | VIG (45) | 45.0 | 21.7 crítico | 21.7 crítico | +0.0 |
+| MS | READ (65) | READ (65) | 65.0 | 55.0 parcial | 55.0 parcial | +0.0 |
+| MT | NOVO (100) | NOVO (100) | 100.0 | 69.3 parcial | 69.3 parcial | +0.0 |
+| PA | READ (65) | READ (65) | 65.0 | 31.7 insuficiente | 31.7 insuficiente | +0.0 |
+| PB | LAC (0) | LAC (0) | 0.0 | 11.9 crítico | 11.9 crítico | +0.0 |
+| PE | LAC (0) | ELAB (35) | 17.5 | 23.8 crítico | 18.0 crítico | -5.8 |
+| PI | LAC (0) | VIG (45) | 22.5 | 37.2 insuficiente | 29.7 insuficiente | -7.5 |
+| PR | READ (65) | READ (65) | 65.0 | 67.4 parcial | 67.4 parcial | +0.0 |
+| RJ | VIG (45) | VIG (45) | 45.0 | 44.0 insuficiente | 44.0 insuficiente | +0.0 |
+| RN | LAC (0) | LAC (0) | 0.0 | 10.9 crítico | 10.9 crítico | +0.0 |
+| RO | VIG (45) | READ (65) | 55.0 | 54.1 parcial | 50.8 parcial | -3.3 |
+| RR | VIG (45) | VIG (45) | 45.0 | 50.3 parcial | 50.3 parcial | +0.0 |
+| RS | READ (65) | READ (65) | 65.0 | 62.3 parcial | 62.3 parcial | +0.0 |
+| SC | NOVO (100) | NOVO (100) | 100.0 | 77.3 avançado | 77.3 avançado | +0.0 |
+| SE | NOVO (100) | NOVO (100) | 100.0 | 60.0 parcial | 60.0 parcial | +0.0 |
+| SP | VIG (45) | VIG (45) | 45.0 | 37.9 insuficiente | 37.9 insuficiente | +0.0 |
+| TO | VIG (45) | READ (65) | 55.0 | 41.7 insuficiente | 38.3 insuficiente | -3.4 |
+
+Três julgamentos ficam explicitamente como **pistas** até o ato em fonte oficial: RR (Gabinete Integrado da Operação El Niño 2026-2027, imprensa de 02/09/2026 — se localizado no DOE-RR, estrutura passa a novo e o total vai a ~59,5), BA (comitê do Plano Estadual El Niño 2026/2027, imprensa de 01–02/09/2026 — se localizado, ~34,9, saindo de crítico) e AC (planos nomeados sem número/data). Nenhum deles pontuou por imprensa: *imprensa descobre, nunca registra*.
