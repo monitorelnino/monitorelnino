@@ -39,6 +39,16 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### TransfereGov: primeira coleta real e duas correções (04/09/2026)
+- Série semanal 2026 da rota r5 preenchida: R$ 6,7 bi assinados com municípios em 28
+  semanas; pico de R$ 573 mi na última semana de junho, véspera do defeso (04/07). A carga
+  da fonte é de 17/07, então o gráfico cobre só o início do defeso — a data vai no crédito.
+- Correções após ler o resultado: os CSVs são **UTF-8** (lidos como latin-1 na 1ª rodada);
+  e a fila El Niño excluía mal — "Rancho Queimado" e "Mato Queimado" entravam por "queimad"
+  no NOME do município; agora o nome é removido do objeto antes das palavras-chave
+  (autoteste negativo). Fila a ser regerada na próxima rodada.
+
+
 ### Transferências sem chave: coletor do TransfereGov (04/09/2026)
 - A chave do Portal da Transparência autentica, mas os endpoints de transferências
   respondem 403 (exigem emissão via gov.br Prata/Ouro). Caminho escolhido pela editoria:
