@@ -2,66 +2,102 @@
 """
 diagnosticar_fontes_sinais.py
 ==============================
-Ferramenta de UMA VEZ (não faz parte do pipeline regular): testa, com rede
-real, os endpoints candidatos das cinco fontes de sinais de risco que nunca
-coletaram (monitor_secas, inpe_fogo, cemaden_alertas, iri_plume) e imprime
-status HTTP, content-type e os primeiros bytes de cada resposta — só isso,
-sem gravar dados. O sandbox de desenvolvimento não alcança esses domínios;
-esta rodada roda dentro do Actions, que tem rede real, para diagnosticar
-com evidência em vez de suposição (04/09/2026).
-"""
-import json, urllib.request, urllib.error
+Ferramenta de UMA VEZ (não faz parte do pipeline regular): descobre os
+endpoints REAIS das fontes de sinais de risco que ainda não coletam.
 
-CANDIDATOS = {
-    "monitor_secas": [
-        "https://monitordesecas.ana.gov.br/api/mapa",
-        "https://monitordesecas.ana.gov.br/api/dados-tabulares",
-        "https://monitordesecas.ana.gov.br/api/mapa-mais-recente",
-        "https://dadosabertos.ana.gov.br/api/3/action/package_search?q=monitor+de+secas&rows=5",
-    ],
-    "inpe_fogo": [
-        "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/media/focos/focos_abertos_24h_brasil.csv",
-        "https://data.inpe.br/queimadas/dados-abertos/",
-        "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/situacao_atual/",
-        "https://terrabrasilis.dpi.inpe.br/queimadas/api/focos/24h",
-    ],
-    "cemaden_alertas": [
-        "http://www2.cemaden.gov.br/mapainterativo/alertas/alertas.json",
-        "https://www2.cemaden.gov.br/mapainterativo/alertas/alertas.json",
-        "https://mapainterativo.cemaden.gov.br/api/alertas",
-    ],
-    "iri_plume": [
-        "https://iri.columbia.edu/~forecast/ensofcst/Data/ensofcst_ONI",
-        "https://iri.columbia.edu/~forecast/ensofcst/Data/",
-        "https://iri.columbia.edu/~forecast/ensofcst/Data/archive/ensofcst_cpc_ALL_KMASNU",
-    ],
+Método (04/09/2026, 2ª versão): a 1ª versão testou URLs adivinhadas e todas
+falharam — mas o erro era do método, não das fontes. Monitor de Secas e
+Queimadas são aplicativos de página única: qualquer rota devolve o HTML do
+app, e a API real está escrita DENTRO dos pacotes JavaScript. Esta versão
+baixa o HTML, encontra os scripts, baixa cada script e extrai por expressão
+regular todas as URLs e caminhos de API que aparecem no código — depois
+testa cada candidato encontrado. Nada é gravado em data/.
+"""
+import json, re, urllib.parse, urllib.request, urllib.error
+
+UA = {"User-Agent": "Mozilla/5.0 (MonitorElNino/diagnostico)"}
+
+ALVOS = {
+    "monitor_secas": "https://monitordesecas.ana.gov.br/",
+    "inpe_fogo": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
+    "cemaden_alertas": "https://mapainterativo.cemaden.gov.br/",
+    "cemaden_alertas_portal": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
+    "iri_plume": "https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/",
 }
+
+# Padrões de coisa que parece endpoint de dados dentro de um bundle JS.
+RE_URL = re.compile(r'["\'`](https?://[^"\'`\s]{10,200})["\'`]')
+RE_PATH = re.compile(r'["\'`((](/(?:api|rest|service|services|data|dados|geoserver|ows|wms|wfs|json)[^"\'`\s)]{0,160})["\'`)]', re.I)
+RE_INTERESSE = re.compile(r'api|rest|service|geoserver|\.json|\.csv|wfs|ows|dados|data/', re.I)
+RE_RUIDO = re.compile(r'w3\.org|schema\.org|googleapis|gstatic|fonts?\.|jquery|bootstrap|angular\.io|github\.com|license|\.png|\.jpg|\.svg|\.woff|\.css$', re.I)
+
+
+def baixar(url: str, limite: int = 4_000_000) -> tuple:
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.read(limite).decode("utf-8", "replace"), r.headers.get("Content-Type", "?"), r.status
+
+
+def scripts_de(html: str, base: str) -> list:
+    achados = re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I)
+    achados += re.findall(r'<link[^>]+href=["\']([^"\']+\.js)["\']', html, re.I)
+    return [urllib.parse.urljoin(base, s) for s in dict.fromkeys(achados)]
+
+
+def candidatos_em(texto: str, base: str) -> list:
+    out = []
+    for u in RE_URL.findall(texto):
+        if RE_INTERESSE.search(u) and not RE_RUIDO.search(u):
+            out.append(u)
+    for p in RE_PATH.findall(texto):
+        if not RE_RUIDO.search(p):
+            out.append(urllib.parse.urljoin(base, p))
+    return list(dict.fromkeys(out))
 
 
 def testar(url: str) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (MonitorElNino/diagnostico)"})
     try:
-        with urllib.request.urlopen(req, timeout=15) as r:
-            corpo = r.read(300)
-            return f"HTTP {r.status} | {r.headers.get('Content-Type','?')} | {len(corpo)}+ bytes | {corpo[:200]!r}"
+        corpo, ct, status = baixar(url, 400)
+        marca = "DADOS" if ("json" in ct or "csv" in ct or corpo.lstrip()[:1] in "[{") else "html/outro"
+        return f"HTTP {status} | {ct} | {marca} | {corpo[:160]!r}"
     except urllib.error.HTTPError as e:
-        return f"HTTPError {e.code} | {e.reason}"
+        return f"HTTPError {e.code}"
     except Exception as e:  # noqa: BLE001
         return f"{type(e).__name__}: {e}"
 
 
 def main() -> None:
-    saida = {}
-    for chave, urls in CANDIDATOS.items():
-        print(f"\n=== {chave} ===")
-        saida[chave] = []
-        for u in urls:
-            r = testar(u)
-            print(f"  {u}\n    -> {r}")
-            saida[chave].append({"url": u, "resultado": r})
+    relatorio = {}
+    for chave, pagina in ALVOS.items():
+        print(f"\n{'='*70}\n=== {chave} — {pagina}\n{'='*70}")
+        relatorio[chave] = {"pagina": pagina, "scripts": [], "candidatos": {}}
+        try:
+            html, ct, _ = baixar(pagina)
+        except Exception as e:  # noqa: BLE001
+            print(f"  !! não consegui abrir a página: {type(e).__name__}: {e}")
+            relatorio[chave]["erro"] = str(e)
+            continue
+        # candidatos já visíveis no próprio HTML
+        cands = candidatos_em(html, pagina)
+        scripts = scripts_de(html, pagina)
+        print(f"  scripts encontrados: {len(scripts)}")
+        for s in scripts[:12]:
+            print(f"    - {s}")
+            relatorio[chave]["scripts"].append(s)
+            try:
+                js, _, _ = baixar(s)
+                cands += candidatos_em(js, pagina)
+            except Exception as e:  # noqa: BLE001
+                print(f"      (falha ao ler: {type(e).__name__})")
+        cands = list(dict.fromkeys(cands))
+        print(f"  candidatos a endpoint: {len(cands)}")
+        for c in cands[:25]:
+            r = testar(c)
+            print(f"    {c}\n      -> {r}")
+            relatorio[chave]["candidatos"][c] = r
     with open("diagnostico_sinais.json", "w", encoding="utf-8") as f:
-        json.dump(saida, f, ensure_ascii=False, indent=1)
-    print("\n→ diagnostico_sinais.json gravado (não versionado; só para o relatório do robô).")
+        json.dump(relatorio, f, ensure_ascii=False, indent=1)
+    print("\n→ diagnostico_sinais.json gravado.")
 
 
 if __name__ == "__main__":
