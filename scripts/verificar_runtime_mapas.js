@@ -83,9 +83,8 @@ setTimeout(() => {
   // motivado pelo temporal de granizo em SC.
   const decretosMun = MUNICIPIOS.filter(m => m.categoria === "decreto").length;
   const totalEsperado = decretosMun + ATOS_RESPOSTA.eventos.length;
-  const totalNaPagina = q("countAtosResposta").textContent;
-  teste("mapa de atos de resposta: contador bate (decreto em municipios.json + atos_resposta.json)",
-    totalNaPagina === String(totalEsperado));
+  // 04/09/2026: o contador em texto saiu do cartão (figuras só com título, legenda e crédito);
+  // a contagem passa a ser conferida direto no mapa, abaixo.
   const pontosNoMapa = d.querySelectorAll("#mapAtosResposta circle").length;
   teste("mapa de atos de resposta: um círculo por evento, nenhum a mais nem a menos",
     pontosNoMapa === totalEsperado);
@@ -130,18 +129,12 @@ setTimeout(() => {
   teste("harmonização: nenhum item de legenda passa de 40 caracteres",
     itensLongos.length === 0);
 
-  // Achado de Patricia, 31/08/2026 (quarta rodada): os mapas 5 e 6 tinham 2
-  // parágrafos de introdução visíveis, contra 1 em todos os outros 13 cartões
-  // da página (mapas e gráficos) — regra agora fixada: exatamente 1 parágrafo
-  // visível por cartão; qualquer detalhe extra vai para dentro de <details>.
-  const cartoesComParagrafosDemais = [...d.querySelectorAll(".map-box, .chart-box")]
-    .map(c => ({
-      titulo: c.querySelector(".map-card-h")?.textContent.slice(0, 40) || "?",
-      n: [...c.querySelectorAll(".note")].filter(p => !p.closest("details")).length,
-    }))
-    .filter(c => c.n !== 1);
-  teste("harmonização: todo cartão de mapa/gráfico tem exatamente 1 parágrafo visível",
-    cartoesComParagrafosDemais.length === 0);
+  // Decisão editorial de 04/09/2026: figuras trazem SÓ título, legenda e crédito de uma linha.
+  // Nenhum parágrafo/nota dentro de cartão (o portão scripts/verificar_figuras.js cobre as 5 páginas;
+  // aqui fica a guarda local desta página).
+  const cartoesComParagrafo = [...d.querySelectorAll(".map-box, .chart-box")]
+    .filter(c => [...c.querySelectorAll(".note, .hint, p")].some(e => !e.closest("details") && !e.classList.contains("map-card-h")));
+  teste("figuras: nenhum parágrafo ou nota dentro de cartão de mapa/gráfico", cartoesComParagrafo.length === 0);
 
 
   // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──
