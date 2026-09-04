@@ -1,0 +1,28 @@
+name: Diagnóstico pontual — fontes de sinais de risco
+
+# 04/09/2026: ferramenta de uma vez para testar, com rede real, os endpoints
+# candidatos das fontes que nunca coletaram (monitor_secas, inpe_fogo,
+# cemaden_alertas, iri_plume). Não faz parte do pipeline regular; roda só
+# sob disparo manual e não grava nada em data/. Pode ser apagado depois de usado.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnosticar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af67726
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e402e56a733eb
+        with:
+          python-version: "3.12"
+      - name: Testar endpoints candidatos
+        run: python3 scripts/diagnosticar_fontes_sinais.py
+      - name: Publicar resultado como artefato
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa9
+        with:
+          name: diagnostico-sinais
+          path: diagnostico_sinais.json
+          retention-days: 7
