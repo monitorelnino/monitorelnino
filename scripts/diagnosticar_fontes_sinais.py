@@ -118,8 +118,48 @@ LISTAGENS = {
 }
 
 
+def inspecionar_cemaden() -> dict:
+    """04/09/2026: a camada respondeu mas o parser agregou zero por UF. Duas hipóteses:
+    (a) não há alertas vigentes agora; (b) os nomes dos campos diferem dos procurados.
+    Esta sonda imprime a contagem de feições e as CHAVES reais de properties."""
+    url = ("https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0"
+           "&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=50")
+    print(f"\n{'='*70}\n=== CEMADEN — estrutura real da camada de alertas\n{'='*70}\n{url}")
+    out = {}
+    try:
+        corpo, ct, _ = baixar(url, 900_000)
+        dados = json.loads(corpo)
+        fs = dados.get("features") or []
+        print(f"  feições: {len(fs)} | totalFeatures={dados.get('totalFeatures')} numberMatched={dados.get('numberMatched')}")
+        out = {"n": len(fs), "numberMatched": dados.get("numberMatched")}
+        if fs:
+            props = fs[0].get("properties") or {}
+            print(f"  CHAVES de properties: {list(props.keys())}")
+            print(f"  1ª feição: {json.dumps(props, ensure_ascii=False)[:600]}")
+            out["chaves"] = list(props.keys()); out["amostra"] = props
+        else:
+            print("  camada vazia agora — nenhum alerta vigente no momento da consulta")
+    except Exception as e:  # noqa: BLE001
+        print(f"  !! {type(e).__name__}: {e}")
+        out = {"erro": str(e)}
+    # camada alternativa, caso a materializada tenha outro conteúdo
+    url2 = url.replace("alertas_vigentes_siaden", "view_alertas_vigentes_geom_materialized")
+    print(f"\n-- alternativa: view_alertas_vigentes_geom_materialized")
+    try:
+        corpo, _, _ = baixar(url2, 900_000)
+        d2 = json.loads(corpo); f2 = d2.get("features") or []
+        print(f"  feições: {len(f2)}")
+        if f2: print(f"  CHAVES: {list((f2[0].get('properties') or {}).keys())}")
+        out["alternativa_n"] = len(f2)
+        if f2: out["alternativa_chaves"] = list((f2[0].get('properties') or {}).keys())
+    except Exception as e:  # noqa: BLE001
+        print(f"  !! {type(e).__name__}: {e}")
+    return out
+
+
 def main() -> None:
     relatorio = {}
+    relatorio["_cemaden"] = inspecionar_cemaden()
     print(f"\n{'='*70}\n=== LISTAGENS DOS SERVIDORES ACHADOS\n{'='*70}")
     relatorio["_listagens"] = {}
     for nome, url in LISTAGENS.items():
