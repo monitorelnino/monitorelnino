@@ -165,8 +165,9 @@ def coletar() -> int:
     propostas = filtrar_propostas(_csv_do_zip(bp), 2025)
     semanas, por_uf_r5, itens = cruzar_convenios(_csv_do_zip(bc), propostas, 2026)
     for nome, b in (("siconv_proposta.csv.zip", bp), ("siconv_convenio.csv.zip", bc)):
-        consultas["consultas"].append({"endpoint": REPO + nome, "params": {"carga": carga}, "data": hoje,
-                                       "hash": hashlib.sha256(b).hexdigest(), "bytes": len(b), "fonte": "TransfereGov — Dados Abertos (sem chave)"})
+        # mesmo esquema de registrar_consulta() em coletar_financiamento.py (a página lê parametros/itens/hash_resposta)
+        consultas["consultas"].append({"endpoint": REPO + nome, "parametros": {"carga": carga}, "data": date.today().isoformat(),
+                                       "hash_resposta": hashlib.sha256(b).hexdigest(), "itens": None, "bytes": len(b), "fonte": "TransfereGov — Dados Abertos (sem chave)"})
     # série nacional (rota r5)
     rotas = ler("financiamento/rotas.json", {}) or {}
     ids = [r["id"] for r in rotas.get("rotas", [])] or ["r1","r2","r3","r4","r5","r6","r7","rE"]
@@ -193,8 +194,8 @@ def coletar() -> int:
     try:
         faf = json.loads(_baixar(API_FAF, 120).decode("utf-8", "replace"))
         rel = programas_faf(faf)
-        consultas["consultas"].append({"endpoint": API_FAF, "params": {}, "data": hoje, "hash": hashlib.sha256(json.dumps(faf, sort_keys=True).encode()).hexdigest(),
-                                       "n": len(faf), "fonte": "TransfereGov — API Fundo a Fundo (sem chave)"})
+        consultas["consultas"].append({"endpoint": API_FAF, "parametros": {}, "data": date.today().isoformat(), "hash_resposta": hashlib.sha256(json.dumps(faf, sort_keys=True).encode()).hexdigest(),
+                                       "itens": len(faf), "bytes": None, "fonte": "TransfereGov — API Fundo a Fundo (sem chave)"})
         gravar("financiamento/programas_faf_2026.json", {"_governanca": "Programas fundo a fundo de 2026 (API pública do TransfereGov) cujo nome/objetivo cita defesa civil ou desastre. Vocabulário da fonte.", "gerado_em": hoje, "total_programas_2026": len(faf), "relevantes": rel})
     except Exception as e:  # noqa: BLE001
         registrar_lacuna("TransfereGov — API fundo a fundo", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[API_FAF])
