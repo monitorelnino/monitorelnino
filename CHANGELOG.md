@@ -39,6 +39,11 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Página inicial: dois painéis removidos (04/09/2026, pedido da editoria)
+- Saíram os painéis "Proteja-se" (chamada para a página de proteção) e "Ajude a completar o
+  mapa" (chamada para o formulário). As páginas continuam no menu; só a chamada na inicial saiu.
+
+
 ### TransfereGov: primeira coleta real e duas correções (04/09/2026)
 - Série semanal 2026 da rota r5 preenchida: R$ 6,7 bi assinados com municípios em 28
   semanas; pico de R$ 573 mi na última semana de junho, véspera do defeso (04/07). A carga
