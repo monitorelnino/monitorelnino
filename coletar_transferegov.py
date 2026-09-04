@@ -41,8 +41,8 @@ UA = {"User-Agent": "MonitorElNinoBrasil/3.0 (coletor TransfereGov; dados aberto
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
 
 # Objeto que fala do ciclo: mesmas famílias de risco do teste do objeto (§5.2.1) + defesa civil.
-PAD_EL_NINO = re.compile(r"defesa civil|desastre|calamidade|emerg[êe]nci|estiagem|\bseca\b|enchente|inunda[çc]|alagamento|"
-                         r"deslizamento|el ni[ñn]o|conting[êe]ncia|cisterna|abastecimento de [áa]gua|inc[êe]ndio|queimad", re.I)
+PAD_EL_NINO = re.compile(r"defesa civil|desastre|calamidade|emergenci|estiagem|\bseca\b|enchente|inundac|alagamento|"
+                         r"deslizamento|el nino|contingencia|cisterna|abastecimento de agua|incendio|queimad", re.I)   # texto já sem acento
 
 
 def _baixar(url: str, timeout: int = 900) -> bytes:
@@ -54,7 +54,8 @@ def _csv_do_zip(bruto: bytes):
     """Itera as linhas (dict) do CSV dentro do zip do TransfereGov (latin-1, ';', BOM no cabeçalho)."""
     z = zipfile.ZipFile(io.BytesIO(bruto))
     with z.open(z.namelist()[0]) as f:
-        txt = io.TextIOWrapper(f, encoding="latin-1", errors="replace", newline="")
+        # 04/09/2026: os CSVs do TransfereGov são UTF-8 (a 1ª coleta, lida como latin-1, produziu "MINISTÃ‰RIO")
+        txt = io.TextIOWrapper(f, encoding="utf-8", errors="replace", newline="")
         rd = csv.DictReader(txt, delimiter=";")
         rd.fieldnames = [c.replace("\ufeff", "").replace("ï»¿", "").strip() for c in rd.fieldnames]
         for row in rd:
@@ -83,6 +84,23 @@ def semana_de(d: date) -> str:
     return (d - timedelta(days=d.weekday())).isoformat()
 
 
+import unicodedata
+
+def _plano(t: str) -> str:
+    """minúsculas, sem acentos — para comparar nome de município com o objeto."""
+    return "".join(c for c in unicodedata.normalize("NFD", str(t or "").lower()) if unicodedata.category(c) != "Mn")
+
+
+def objeto_cita_ciclo(objeto: str, municipio: str = "") -> bool:
+    """Palavra-chave do ciclo no objeto, IGNORANDO o nome do município (04/09/2026: 'Rancho Queimado' e
+    'Mato Queimado' entravam na fila por 'queimad' no nome da cidade, não no assunto)."""
+    texto = _plano(objeto)
+    nome = _plano(municipio).strip()
+    if nome:
+        texto = texto.replace(nome, " ")
+    return bool(PAD_EL_NINO.search(texto))
+
+
 def filtrar_propostas(linhas, ano_min: int = 2025) -> dict:
     """ID_PROPOSTA → {ibge, uf, municipio, orgao, objeto, el_nino, ano} para propostas de MUNICÍPIOS
     a partir de `ano_min`. Só municipal (natureza jurídica), porque a série é 'União → municípios'."""
@@ -100,7 +118,7 @@ def filtrar_propostas(linhas, ano_min: int = 2025) -> dict:
         objeto = (r.get("OBJETO_PROPOSTA") or "").strip()
         out[r.get("ID_PROPOSTA")] = {"ibge": ibge.zfill(7), "uf": (r.get("UF_PROPONENTE") or "").strip().upper(),
                                      "municipio": (r.get("MUNIC_PROPONENTE") or "").strip(), "orgao": (r.get("DESC_ORGAO_SUP") or "").strip(),
-                                     "objeto": objeto[:400], "el_nino": bool(PAD_EL_NINO.search(objeto)), "ano": ano,
+                                     "objeto": objeto[:400], "el_nino": objeto_cita_ciclo(objeto, r.get("MUNIC_PROPONENTE") or ""), "ano": ano,
                                      "modalidade": (r.get("MODALIDADE") or "").strip()}
     return out
 
@@ -147,7 +165,7 @@ def programas_faf(dados) -> list:
     out = []
     for p in dados or []:
         nome = (p.get("nome_programa") or "").strip()
-        if PAD_EL_NINO.search(nome + " " + (p.get("objetivo_programa") or "")):
+        if PAD_EL_NINO.search(_plano(nome + " " + (p.get("objetivo_programa") or ""))):
             out.append({"codigo": p.get("codigo_programa"), "nome": nome, "orgao": p.get("nome_orgao_superior_programa"), "ano": p.get("ano_programa")})
     return out
 
@@ -230,13 +248,18 @@ def autoteste() -> int:
         return s["r5"] == 590038.0 and s["r1"] == 0 and s["total"] == 590038.0 and all(l["total"] == sum(float(l[r]) for r in ("r1", "r5", "rE")) for l in lin)
     def t6():  # negativo: números e datas malformados não quebram
         return numero("abc") == 0.0 and data_br("31/02/2026") is None and data_br(None) is None and filtrar_propostas([{"ANO_PROP": "x"}]) == {}
+    def t8():  # nome do município não é assunto: 'Rancho Queimado' fora; 'queimadas' no objeto dentro
+        return (not objeto_cita_ciclo("Ampliação do pavilhão de eventos no Município de Rancho Queimado", "RANCHO QUEIMADO")
+                and objeto_cita_ciclo("Aquisição de equipamentos para combate a queimadas", "RANCHO QUEIMADO")
+                and objeto_cita_ciclo("Enfrentamento da ESTIAGEM", "Mato Queimado"))
     def t7():  # fundo a fundo: só programas que citam o ciclo
         f = programas_faf([{"nome_programa": "Apoio à Defesa Civil 2026", "ano_programa": 2026}, {"nome_programa": "Segurança Pública", "objetivo_programa": "x"}])
         return len(f) == 1 and f[0]["nome"].startswith("Apoio")
     return rodar_autoteste({"propostas: municipal, ≥2025, objeto do ciclo marcado": t1, "semana ISO (segunda-feira)": t2,
                             "cruzamento: soma por semana/UF só do ano da série": t3, "fila El Niño: só objeto do ciclo, valores com vírgula": t4,
                             "série: total = soma das rotas (reconciliação)": t5, "negativo: malformados não quebram": t6,
-                            "fundo a fundo: só programas do ciclo": t7})
+                            "fundo a fundo: só programas do ciclo": t7,
+                            "negativo: nome do município não vira assunto": t8})
 
 
 if __name__ == "__main__":
