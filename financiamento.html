@@ -390,7 +390,7 @@ new Chart(document.getElementById('chartFinance'), {
   document.getElementById('fontesMonit').innerHTML = (TRANSF.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a></li>').join('');
   fonteFigura('boxFontesMonit', 'Fontes: as listadas · verificadas em 25/08/2026');
   const cons = CONSULTAS.consultas || [];
-  if (cons.length) { document.getElementById('notaConsultas').textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
+  if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
   fonteFigura('boxConsultas', cons.length ? 'Fonte: Monitor El Niño Brasil' : 'Fonte: Monitor El Niño Brasil · sem consulta até o corte');
 }
 __load().catch(err => { const m = document.getElementById('subFin'); if (m) m.insertAdjacentHTML('afterend', '<p class="note" style="color:var(--rust)">Erro ao carregar os dados: ' + esc(err.message) + '</p>'); });
