@@ -39,6 +39,19 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Endpoints reais das fontes de sinais de risco (04/09/2026)
+- Três das cinco fontes que nunca coletaram estavam apontando para endereços que
+  não existem mais. Descobertos por diagnóstico com rede real (cinco rodadas):
+  - **INPE (focos):** `dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/`,
+    arquivos `focos_diario_br_AAAAMMDD.csv`; o coletor escolhe o mais recente do índice.
+  - **CEMADEN (alertas):** GeoServer `gsc.cemaden.gov.br/geoserver/cemaden_dev`, camada
+    `alertas_vigentes_siaden` via WFS/GeoJSON (o JSON antigo responde 404).
+  - **Monitor de Secas (ANA):** API `apimsbr.ana.gov.br/rpc/v1/<recurso>` (o catálogo
+    antigo responde 404); arquivos no bucket `ana-monitor-secas-files`.
+- Parsers novos com 6 autotestes (3 negativos). O IRI (probabilidades ENSO) segue
+  sem endpoint localizado — lacuna declarada, como antes.
+
+
 ### Cartório estadual: passada nas 23 UFs restantes (03/09/2026)
 - Todas as 27 UFs revisitadas hoje (4 na passada anterior + 23 agora), com três
   buscas dirigidas logadas por UF (camada 3 — não substitui a bateria negativa
