@@ -165909,6 +165909,42 @@
    "fonte_suspensa_defeso": false,
    "executor": "robo",
    "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-04",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "AL",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "Alagoas Defesa Civil plano de contingência estadual 2026 El Niño Comitê El Niño decreto"
+   ],
+   "n_resultados": null,
+   "resultados": "Bateria v3 (04/09/2026), sub-elemento operacional: o decreto do Comitê El Niño (13 instituições; Semarh + Defesa Civil; sem remuneração; vigência pelo período crítico) define como missão principal 'criar um plano de ação integrado' (agricultura, água, infraestrutura, saúde) — o plano é produto esperado, não publicado. Leitura para a v3: estrutura NOVO / operacional ELAB (plano nomeado em elaboração). Fonte de descoberta: Rádio Sampaio (~27/08); número/data do decreto a confirmar no DOE-AL.",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-04",
+   "canal": "motor_de_busca",
+   "camada": 3,
+   "uf": "AC",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "estadual",
+   "strings": [
+    "Acre Gabinete de Crise Hídrica 2026 plano de contingência estiagem queimadas Decreto 11.899"
+   ],
+   "n_resultados": null,
+   "resultados": "Bateria v3 (04/09/2026), sub-elemento operacional: Agência de Notícias do Acre (oficial, 20/05/2026) descreve 'o plano de contingência estadual dividido em oito eixos' (monitoramento e alerta, saúde, logística, comunicação, assistência, meio ambiente/incêndios, abastecimento, orçamento) com planos setoriais por secretaria; em 12/06 a mesma agência noticia 'Governo inicia elaboração do Plano de Enfrentamento às Secas 2026 para os 22 municípios'; portaria no DOE-AC de 16/07/2026 nomeia os 14 órgãos do gabinete (presidência Defesa Civil, coordenação Casa Civil). O gabinete (Decreto 11.899, 01/06/2026) revoga e re-institui a estrutura do Decreto 11.504/2024. Leitura para a v3: estrutura READ / operacional ELAB (plano nomeado, sem ato com número/data localizado).",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
   }
  ]
 }
