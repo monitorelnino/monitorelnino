@@ -74,7 +74,7 @@
           <li>Prestação de contas; reconstrução/prevenção seguem via Transferegov</li>
         </ol>
       </div>
-      <div class="chart-box">
+      <div class="chart-box" id="boxSemDecretar">
         <h3 class="map-card-h">O que um município pode acessar sem decretar</h3>
         <ul style="font-size:14px; line-height:1.8; margin:0; padding-left:20px;">
           <li><strong>Transferência preventiva de defesa civil</strong> (rota 3, prevenção-obra) — Lei 12.340/2010 e Decreto 11.219/2022: área de risco mapeada e plano de trabalho de obra; sem ressarcimento de gasto já feito.</li>
@@ -364,6 +364,7 @@ function __init(){
   // 7 · compromissos + gráfico por área
   document.querySelector('#tblCompromissos tbody').innerHTML = (COMP.itens || []).map(c => '<tr><td>' + esc(c.nome) + '</td><td>' + esc(c.esfera || '—') + '</td><td>' + esc(c.instrumento || '—') + (c.fonte ? ' <a href="' + esc(c.fonte) + '" target="_blank" rel="noopener">fonte</a>' : '') + '</td><td>' + brl(c.valor_total) + '</td><td>' + esc((ROTAS.rotas.find(r => r.id === c.rota) || {}).nome || c.rota) + '</td><td>' + esc((c.execucao || {}).status === 'aguardando_coleta' ? 'aguardando coleta' : (c.execucao || {}).status || '—') + '</td></tr>').join('');
   fonteFigura('boxCompromissos', 'Fontes: as citadas em cada linha · execução: Portal da Transparência');
+  fonteFigura('boxSemDecretar', 'Fontes: as bases legais citadas em cada item');
   const financeData = [
   {label:'Segurança Hídrica', value:14217500000},
   {label:'Saúde', value:1335000000},
