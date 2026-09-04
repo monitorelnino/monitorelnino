@@ -61,17 +61,17 @@ setTimeout(() => {
   teste("bloco 2: faixa do defeso desenhada", q("svgSerie").querySelector("rect") && q("svgSerie").textContent.includes("04/07–25/10"));
   for (const id of ["mapaFundo", "mapaHab", "mapDinheiro"]) teste(`${id}: 27 estados`, q(id).querySelectorAll("path").length === 27);
   teste("mapa do dinheiro: um círculo por repasse do Prepara RS", q("mapDinheiro").querySelectorAll("circle:not(.rec)").length === TR.repasses_rs.filter(r => r.lat).length);
-  teste("totais RS preenchidos", q("dinTotalRS").textContent.startsWith("R$") && /^\d+$/.test(q("dinNumRS").textContent));
+  teste("totais RS na legenda do mapa", /R\$/.test(q("legDinheiro").textContent) && /\d+ municípios/.test(q("legDinheiro").textContent));   // 04/09/2026
   teste("seletor de rota com 8 opções e mapa reage à troca", (() => { const s = q("selRota"); if (s.options.length !== 8) return false; s.value = "r3"; s.dispatchEvent(new dom.window.Event("change")); return q("mapaHab").querySelectorAll("path").length === 27; })());
   teste("tabela de resposta: 27 UFs", d.querySelectorAll("#tblResposta tbody tr").length === 27);
-  teste("bloco 5: painel publicado (313) renderizado", (q("notaPainel").textContent || "").includes("313") && d.querySelectorAll("#painelResumo table tbody tr").length > 10);
+  teste("bloco 5: painel publicado renderizado", d.querySelectorAll("#painelResumo table tbody tr").length > 10);   // 04/09/2026: a nota em texto saiu do cartão
   teste("bloco 6: 5 programas permanentes", q("programasCards").children.length === 5);
   teste("bloco 7: compromissos listados", d.querySelectorAll("#tblCompromissos tbody tr").length >= 4);
   teste("bloco 8: fontes de monitoramento populadas", q("fontesMonit").children.length > 0);
   const caixas = [...d.querySelectorAll(".map-box, .chart-box")].filter(c => c.querySelector("svg, canvas, table, ul"));
   const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura") && !c.closest("#rotasCards") && !c.closest("#programasCards") && !c.closest("#comoler"));
   teste(`toda figura tem crédito de fonte (${caixas.length - semCredito.length}/${caixas.length})`, semCredito.length === 0);
-  teste("cada cartão tem exatamente 1 parágrafo-nota visível", caixas.every(c => c.querySelectorAll(":scope > .note").length === 1));
+  teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p").length === 0));
   try { const p = q("mapaFundo").querySelector("path"); p.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true })); teste("gesto: tooltip", q("mapTooltip").style.display === "block"); } catch (e) { teste("gesto: tooltip", false); }
   // E10: nenhum nome de parlamentar / campo de autor na página renderizada
   const html = d.documentElement.outerHTML;

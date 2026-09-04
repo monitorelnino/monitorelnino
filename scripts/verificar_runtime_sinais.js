@@ -103,7 +103,7 @@ setTimeout(() => {
   teste("crédito de fonte coletada traz a data de consulta", coletadasSemData.length === 0);
 
   const esperaSemTeto = creditos.filter(p => SINAIS.fontes[p.dataset.credito].status !== "coletado"
-    && !/Não localizamos/.test(p.textContent));
+    && !/Não localizamos|sem coleta até o corte/.test(p.textContent));   // 04/09/2026: crédito de uma linha
   teste("fonte em espera usa a linguagem-teto do projeto", esperaSemTeto.length === 0);
 
   // --- tabela de fontes: uma linha por fonte catalogada ---
