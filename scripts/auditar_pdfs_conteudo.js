@@ -4,7 +4,7 @@
 const { chromium } = require('playwright');
 const mun = require('../data/municipios.json'), atos = require('../data/atos_resposta.json').eventos;
 const est = require('../data/estados.json').ufs, indice = require('../data/indice.json'), fin = require('../data/financiamento_uf.json');
-const CAT = {plano:'Plano preventivo', plano_antigo:'Plano desatualizado', plano_elaboracao:'Em elaboração', decreto:'Decreto reativo', coberto_estadual:'Coberto pelo estado', nao_el_nino:'Não é El Niño', nao_localizado:'verificado individualmente', nao_verificado:'Ainda não verificado'};
+const CAT = {plano:'Plano preventivo', plano_antigo:'Plano desatualizado', estrutura:'Estrutura de coordenação', plano_elaboracao:'Em elaboração', decreto:'Decreto reativo', coberto_estadual:'Coberto pelo estado', nao_el_nino:'Não é El Niño', nao_localizado:'verificado individualmente', nao_verificado:'Ainda não verificado'};
 const FRASE_STATUS = {LAC:'O estado ainda não publicou plano estadual', ELAB:'está em elaboração e ainda não foi publicado', VIG:'não menciona o El Niño 2026/2027'};
 (async () => {
   const b = await chromium.launch(); const page = await (await b.newContext()).newPage(); page.on('dialog', d => d.dismiss());

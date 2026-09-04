@@ -11,10 +11,10 @@
    "uf": "AC",
    "nome": "Acre",
    "regiao": "Norte",
-   "status": "READ",
+   "status": "ELAB",
    "orgao": "Defesa Civil AC",
-   "doc": "Gabinete de Crise Hídrica (Decreto nº 11.899, DOE 12/06/2026; sucede a estrutura do Decreto 11.504/2024)",
-   "data": "12/06/2026",
+   "doc": "Plano de contingência estadual em oito eixos (20/05/2026) e Plano de Enfrentamento às Secas 2026 (22 municípios) — nomeados, sem ato com número/data localizado",
+   "data": "06/2026",
    "capital": {
     "nome": "Rio Branco",
     "status": "Novo",
@@ -22,7 +22,28 @@
    },
    "natureza_doc": "ex-ante",
    "justificativa_ex_ante": "Institui estrutura de coordenação preventiva para estiagem e incêndios, motivada por previsão (92% El Niño), anterior ao Boletim nº 1; teste do objeto satisfeito.",
-   "registro_resposta": "Decreto nº 11.932 (03/08/2026), situação de emergência por estiagem — ato de resposta (rito SINPDEC; base da Portaria federal nº 2.659): registro de transparência, não pontua."
+   "registro_resposta": "Decreto nº 11.932 (03/08/2026), situação de emergência por estiagem — ato de resposta (rito SINPDEC; base da Portaria federal nº 2.659): registro de transparência, não pontua.",
+   "estrutura": {
+    "status": "READ",
+    "doc": "Gabinete de Crise Hídrica — re-institui a estrutura de 2024 (Decreto nº 11.899, DOE 01/06/2026; portaria de composição, DOE 16/07/2026)",
+    "data": "01/06/2026",
+    "orgao": "Casa Civil (coordenação) / CEPDC (presidência)",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "READ",
+     "doc": "Gabinete de Crise Hídrica — re-institui a estrutura de 2024 (Decreto nº 11.899, DOE 01/06/2026; portaria de composição, DOE 16/07/2026)",
+     "data": "01/06/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "ELAB",
+     "doc": "Plano de contingência estadual em oito eixos (20/05/2026) e Plano de Enfrentamento às Secas 2026 (22 municípios) — nomeados, sem ato com número/data localizado",
+     "data": "06/2026"
+    }
+   ]
   },
   {
    "uf": "AM",
@@ -38,7 +59,28 @@
     "info": "Plano Operacional de Enfrentamento à Estiagem 2026 (16/07/2026), menciona El Niño de forte intensidade."
    },
    "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "Declaração preventiva fundada em previsões (Cemaden/INPE/Inmet/Funceme), sem rito SINPDEC de dano, distribuindo atribuições preventivas (CBMAM, Sema/Ipaam, Sepror); ex-ante pelo objeto, anterior ao Boletim nº 1."
+   "justificativa_ex_ante": "Declaração preventiva fundada em previsões (Cemaden/INPE/Inmet/Funceme), sem rito SINPDEC de dano, distribuindo atribuições preventivas (CBMAM, Sema/Ipaam, Sepror); ex-ante pelo objeto, anterior ao Boletim nº 1.",
+   "estrutura": {
+    "status": "READ",
+    "doc": "Sistema estadual mobilizado pelo decreto preventivo + Operação Amazonas+Verde",
+    "data": "01/06/2026",
+    "orgao": "Defesa Civil AM",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "READ",
+     "doc": "Sistema estadual mobilizado pelo decreto preventivo + Operação Amazonas+Verde",
+     "data": "01/06/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "NOVO",
+     "doc": "Estado de Emergência Climática e Ambiental preventivo (Decreto nº 54.274, DOE 01/06/2026) + Operação Amazonas+Verde",
+     "data": "01/06/2026"
+    }
+   ]
   },
   {
    "uf": "AP",
@@ -55,7 +97,28 @@
    },
    "natureza_doc": "ex-ante",
    "registro_resposta": "Decreto estadual de situação de emergência (unifica estiagem, queimadas, salinização e malária), assinado pelo governador Clécio Luís — data exata não confirmada nesta busca; ato de resposta (rito SINPDEC): registro de transparência, não pontua. Nenhum instrumento ex-ante estadual localizado nesta rodada (2ª bateria negativa).",
-   "justificativa_ex_ante": "Estrutura RECORRENTE (PPCDAP instituído em 2023, atualizado para vigência 2026-2030; comitê de estiagem/incêndios criado em 2024) — não é ato dedicado ao ciclo 2026/2027, mas o risco projetado para o AP neste corte é justamente 'estiagem' (CONSIST cat=COBRE): o PPCDAP e o comitê tratam diretamente do risco vigente (63% de redução em focos de calor e incêndios no último triênio, per Diário do Amapá, 28/07/2026). Aplicada a mesma regra de recorrência ponderada por cobertura de risco do §18 (30/08/2026): antecipação 40 (VIG, COBRE). Ato de resposta (situação de emergência unificada) já registrado separadamente, não pontua."
+   "justificativa_ex_ante": "Estrutura RECORRENTE (PPCDAP instituído em 2023, atualizado para vigência 2026-2030; comitê de estiagem/incêndios criado em 2024) — não é ato dedicado ao ciclo 2026/2027, mas o risco projetado para o AP neste corte é justamente 'estiagem' (CONSIST cat=COBRE): o PPCDAP e o comitê tratam diretamente do risco vigente (63% de redução em focos de calor e incêndios no último triênio, per Diário do Amapá, 28/07/2026). Aplicada a mesma regra de recorrência ponderada por cobertura de risco do §18 (30/08/2026): antecipação 40 (VIG, COBRE). Ato de resposta (situação de emergência unificada) já registrado separadamente, não pontua.",
+   "estrutura": {
+    "status": "LAC",
+    "doc": "Comitê Interinstitucional (Decreto nº 5.677/2024) é permanente; nenhum ato do ciclo o ativa — não localizamos",
+    "data": "—",
+    "orgao": "—",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "LAC",
+     "doc": "Comitê Interinstitucional (Decreto nº 5.677/2024) é permanente; nenhum ato do ciclo o ativa — não localizamos",
+     "data": "—"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Plano de Prevenção e Controle do Desmatamento, Queimadas e Incêndios Florestais (PPCDAP, vigência atualizada 2026-2030) + Comitê Interinstitucional de Prevenção e Combate à Estiagem e Incêndios Florestais (Decreto nº 5.677/2024)",
+     "data": "Recorrente"
+    }
+   ]
   },
   {
    "uf": "PA",
@@ -72,7 +135,28 @@
    },
    "natureza_doc": "ex-ante",
    "justificativa_ex_ante": "Ato expressamente preventivo: o próprio governo declara que 'não representa situação de emergência nem estado de calamidade pública' (múltiplas fontes de imprensa, 25-26/08/2026); ancorado em projeção meteorológica (não em dano ocorrido); determina a elaboração do Plano Estadual de Adaptação à Mudança do Clima (PEAC). Teste do objeto satisfeito.",
-   "registro_resposta": null
+   "registro_resposta": null,
+   "estrutura": {
+    "status": "READ",
+    "doc": "Sistema estadual acionado pelo Alerta Climático e Ambiental preventivo (Decreto nº 5.606/2026)",
+    "data": "25/08/2026",
+    "orgao": "Defesa Civil PA",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "READ",
+     "doc": "Sistema estadual acionado pelo Alerta Climático e Ambiental preventivo (Decreto nº 5.606/2026)",
+     "data": "25/08/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "READ",
+     "doc": "Alerta Climático e Ambiental preventivo (Decreto Estadual nº 5.606/2026, DOE 25/08/2026)",
+     "data": "25/08/2026"
+    }
+   ]
   },
   {
    "uf": "RO",
@@ -87,7 +171,28 @@
     "status": "Vigente-recorrente",
     "info": "Força-tarefa integrada + Programa 10 Passos; menciona 'Super El Niño'."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "VIG",
+    "doc": "CEPCIF (Decreto 28.811/2024), mobilização recorrente",
+    "data": "Recorrente",
+    "orgao": "Defesa Civil RO",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "VIG",
+     "doc": "CEPCIF (Decreto 28.811/2024), mobilização recorrente",
+     "data": "Recorrente"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "READ",
+     "doc": "CEPCIF / POTIF-RO (Decreto 28.811/2024)",
+     "data": "2024–2026"
+    }
+   ]
   },
   {
    "uf": "RR",
@@ -102,7 +207,28 @@
     "status": "Vigente-recorrente",
     "info": "'Plano de Estiagem' sem nº/data + fiscalização de terrenos; menciona El Niño como justificativa."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "VIG",
+    "doc": "Operação Verão Sem Fogo mobiliza o sistema todo ano. Imprensa (02/09/2026): Gabinete Integrado da Operação El Niño 2026-2027 (19 órgãos) — ato no DOE-RR ainda não localizado; pista",
+    "data": "Recorrente",
+    "orgao": "CBMRR / Defesa Civil",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "VIG",
+     "doc": "Operação Verão Sem Fogo mobiliza o sistema todo ano. Imprensa (02/09/2026): Gabinete Integrado da Operação El Niño 2026-2027 (19 órgãos) — ato no DOE-RR ainda não localizado; pista",
+     "data": "Recorrente"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Operação Verão Sem Fogo (ciclo nov–abr)",
+     "data": "Recorrente"
+    }
+   ]
   },
   {
    "uf": "TO",
@@ -117,16 +243,37 @@
     "status": "Vigente-recorrente",
     "info": "Comitê PrevIncêndio permanente; sem menção nominal ao El Niño."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "VIG",
+    "doc": "Mobilização recorrente pelo Plano Integrado de Prevenção e Combate a Incêndios",
+    "data": "Recorrente",
+    "orgao": "Defesa Civil TO / CBMTO",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "VIG",
+     "doc": "Mobilização recorrente pelo Plano Integrado de Prevenção e Combate a Incêndios",
+     "data": "Recorrente"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "READ",
+     "doc": "Plano Integrado de Prevenção e Combate a Incêndios 2025/2026",
+     "data": "2026"
+    }
+   ]
   },
   {
    "uf": "AL",
    "nome": "Alagoas",
    "regiao": "Nordeste",
-   "status": "NOVO",
+   "status": "ELAB",
    "orgao": "Defesa Civil AL",
-   "doc": "\"Comitê El Niño\" — criado por decreto estadual para monitorar, prevenir e reduzir impactos do El Niño (coordenação Semarh + Defesa Civil Estadual)",
-   "data": "28/08/2026",
+   "doc": "Plano de ação integrado do Comitê El Niño — em elaboração (missão principal do comitê, segundo o decreto)",
+   "data": "08/2026",
    "capital": {
     "nome": "Maceió",
     "status": "Vigente-recorrente",
@@ -134,7 +281,28 @@
    },
    "natureza_doc": "ex-ante",
    "justificativa_ex_ante": "Comitê interinstitucional (13 órgãos estaduais e federais) para monitoramento, prevenção e plano de ação integrado; sem rito SINPDEC, sem dano declarado, ancorado em previsão climática. Teste do objeto satisfeito. PENDÊNCIA DECLARADA: número e data exata do decreto não confirmados em fonte primária nesta busca (imprensa datou 'publicado há 2 dias' em 30/08/2026) — confirmar em Diário Oficial de Alagoas na próxima verificação.",
-   "registro_resposta": null
+   "registro_resposta": null,
+   "estrutura": {
+    "status": "NOVO",
+    "doc": "Comitê El Niño — 13 instituições, criado por decreto estadual para o período crítico",
+    "data": "28/08/2026",
+    "orgao": "Semarh + Defesa Civil Estadual",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "NOVO",
+     "doc": "Comitê El Niño — 13 instituições, criado por decreto estadual para o período crítico",
+     "data": "28/08/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "ELAB",
+     "doc": "Plano de ação integrado do Comitê El Niño — em elaboração (missão principal do comitê, segundo o decreto)",
+     "data": "08/2026"
+    }
+   ]
   },
   {
    "uf": "BA",
@@ -149,7 +317,28 @@
     "status": "Vigente-recorrente",
     "info": "Operação Chuva 2026 (Codesal); modelo recorrente desde 2016."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "LAC",
+    "doc": "Imprensa (01–02/09/2026) noticia comitê para o Plano Estadual El Niño 2026/2027; ato não localizado no DOE-BA — pista",
+    "data": "—",
+    "orgao": "—",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "LAC",
+     "doc": "Imprensa (01–02/09/2026) noticia comitê para o Plano Estadual El Niño 2026/2027; ato não localizado no DOE-BA — pista",
+     "data": "—"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "ELAB",
+     "doc": "Plano de enfrentamento em estruturação",
+     "data": "08/2026"
+    }
+   ]
   },
   {
    "uf": "CE",
@@ -164,7 +353,28 @@
     "status": "Vigente-recorrente",
     "info": "Operação Quadra Chuvosa 2026; 214+ intervenções, foco em canais e lagoas."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "LAC",
+    "doc": "Comitê de Segurança Hídrica é permanente; nenhum ato do ciclo o ativa — não localizamos",
+    "data": "—",
+    "orgao": "—",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "LAC",
+     "doc": "Comitê de Segurança Hídrica é permanente; nenhum ato do ciclo o ativa — não localizamos",
+     "data": "—"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Monitoramento + Comitê de Segurança Hídrica",
+     "data": "Recorrente"
+    }
+   ]
   },
   {
    "uf": "MA",
@@ -179,7 +389,28 @@
     "status": "Vigente-recorrente",
     "info": "Plano de Contingência de 2024, não atualizado nominalmente para 2026."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "VIG",
+    "doc": "Mobilização recorrente pelo programa Maranhão Sem Queimadas (7ª edição)",
+    "data": "Recorrente",
+    "orgao": "Sema / CBMMA",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "VIG",
+     "doc": "Mobilização recorrente pelo programa Maranhão Sem Queimadas (7ª edição)",
+     "data": "Recorrente"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "READ",
+     "doc": "Maranhão Sem Queimadas (7ª edição)",
+     "data": "26/05/2026"
+    }
+   ]
   },
   {
    "uf": "PB",
@@ -195,7 +426,28 @@
     "info": "Plano de Contingência elaborado; prefeito solicitou recursos federais."
    },
    "natureza_doc": "nenhum",
-   "registro_resposta": null
+   "registro_resposta": null,
+   "estrutura": {
+    "status": "LAC",
+    "doc": "Nenhum ato do ciclo localizado",
+    "data": "—",
+    "orgao": "—",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "LAC",
+     "doc": "Nenhum ato do ciclo localizado",
+     "data": "—"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "LAC",
+     "doc": "Nenhum plano estadual nominal localizado",
+     "data": "—"
+    }
+   ]
   },
   {
    "uf": "PE",
@@ -212,7 +464,28 @@
    },
    "natureza_doc": "ex-ante",
    "registro_resposta": "Decreto nº 60.960 (DOE 30/06/2026), Situação de Emergência em 75 municípios por desastre de estiagem (COBRADE 1.4.1.1.0; reconhecimento federal pela Portaria nº 2.203, 03/07/2026) — ato de resposta: registro de transparência, não pontua.",
-   "justificativa_ex_ante": "PEAR-PE, lançado publicamente em 12/05/2025 (CBA19, Recife), coordenado pela Semas/UFPE, com diagnóstico climático e estratégias de adaptação para as 12 regiões de desenvolvimento do estado. Ciclo de 12 oficinas regionais concluído (última em 14/05/2026, Jaboatão dos Guararapes). Conclusão prevista para o fim de 2026 (fonte: ((o))eco, 19/05/2026) — instrumento ainda NÃO PUBLICADO como documento final. Classificado ELAB (em elaboração), mesmo tratamento dado a outros estados com processo documentado mas não concluído (ex.: BA). Diferente de PB/RN, onde não foi localizado nenhum processo formal, com decreto ou cronograma público."
+   "justificativa_ex_ante": "PEAR-PE, lançado publicamente em 12/05/2025 (CBA19, Recife), coordenado pela Semas/UFPE, com diagnóstico climático e estratégias de adaptação para as 12 regiões de desenvolvimento do estado. Ciclo de 12 oficinas regionais concluído (última em 14/05/2026, Jaboatão dos Guararapes). Conclusão prevista para o fim de 2026 (fonte: ((o))eco, 19/05/2026) — instrumento ainda NÃO PUBLICADO como documento final. Classificado ELAB (em elaboração), mesmo tratamento dado a outros estados com processo documentado mas não concluído (ex.: BA). Diferente de PB/RN, onde não foi localizado nenhum processo formal, com decreto ou cronograma público.",
+   "estrutura": {
+    "status": "LAC",
+    "doc": "Nenhum ato do ciclo localizado (FUNDPRA é fundo, não estrutura de coordenação)",
+    "data": "—",
+    "orgao": "—",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "LAC",
+     "doc": "Nenhum ato do ciclo localizado (FUNDPRA é fundo, não estrutura de coordenação)",
+     "data": "—"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "ELAB",
+     "doc": "Plano Estadual de Adaptação e Resiliência Climática de Pernambuco (PEAR-PE) — em elaboração",
+     "data": "Em elaboração (lançado 12/05/2025)"
+    }
+   ]
   },
   {
    "uf": "PI",
@@ -227,7 +500,28 @@
     "status": "Readaptado",
     "info": "Único plano municipal multi-hazard explícito (chuva+seca+incêndio), com 4 níveis de alerta."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "LAC",
+    "doc": "PAA/PAS/Garantia-Safra são programas permanentes; nenhum ato do ciclo ativa estrutura — não localizamos",
+    "data": "—",
+    "orgao": "—",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "LAC",
+     "doc": "PAA/PAS/Garantia-Safra são programas permanentes; nenhum ato do ciclo ativa estrutura — não localizamos",
+     "data": "—"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Antecipação de ações (PAA/PAS/Garantia-Safra)",
+     "data": "2026"
+    }
+   ]
   },
   {
    "uf": "RN",
@@ -243,7 +537,28 @@
     "info": "Plano de Contingência para chuvas; reunião de planejamento em 22/05/2026."
    },
    "natureza_doc": "nenhum",
-   "registro_resposta": null
+   "registro_resposta": null,
+   "estrutura": {
+    "status": "LAC",
+    "doc": "Nenhum ato do ciclo localizado",
+    "data": "—",
+    "orgao": "—",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "LAC",
+     "doc": "Nenhum ato do ciclo localizado",
+     "data": "—"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "LAC",
+     "doc": "Nenhum plano estadual nominal localizado",
+     "data": "—"
+    }
+   ]
   },
   {
    "uf": "SE",
@@ -260,7 +575,28 @@
    },
    "natureza_doc": "ex-ante",
    "justificativa_ex_ante": "Plano de Contingência Estadual coordenado pela Sala de Situação Governamental, com boletins técnicos periódicos e rede de 50 estações meteorológicas; sem rito SINPDEC, ancorado em projeção climática. Teste do objeto satisfeito. PENDÊNCIA DECLARADA: data de criação do Cegec não confirmada em fonte primária — usada, por conservadorismo, a data do primeiro boletim público confirmado (04/08/2026), não a data real (possivelmente anterior) de instituição do comitê; confirmar decreto de criação na próxima verificação.",
-   "registro_resposta": null
+   "registro_resposta": null,
+   "estrutura": {
+    "status": "NOVO",
+    "doc": "Comitê Estadual de Gestão de Eventos Climáticos Extremos (Cegec)",
+    "data": "04/08/2026",
+    "orgao": "Defesa Civil SE",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "NOVO",
+     "doc": "Comitê Estadual de Gestão de Eventos Climáticos Extremos (Cegec)",
+     "data": "04/08/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "NOVO",
+     "doc": "Comitê Estadual de Gestão de Eventos Climáticos Extremos (Cegec) — Plano de Contingência Estadual, programa \"Sergipe Resiliente: El Niño 2026/2027\"",
+     "data": "04/08/2026"
+    }
+   ]
   },
   {
    "uf": "DF",
@@ -277,7 +613,28 @@
    },
    "natureza_doc": "ex-ante",
    "justificativa_ex_ante": "Decreto ANUAL RECORRENTE (precedentes idênticos em 2021, 2023, 2025) que reativa o PPCIF (2016) contra incêndios florestais — não é ato dedicado ao ciclo 2026/2027 no sentido de ser um documento novo, mas o risco projetado para o DF neste corte é justamente 'incêndios; deficiência hídrica' (CONSIST cat=COBRE): o instrumento recorrente TRATA do risco atual. Antecipação de instrumento RECORRENTE ponderada pela cobertura do risco projetado (CONSIST/§5.2.1), regra estabelecida em 30/08/2026 a partir de proposta direta de Patricia: o mérito de um decreto recorrente não é 'é novo?', é 'trata do risco que está vindo?' — um estado pode ter avaliado e concluído que a estrutura já existente basta. Antecipação 40 (VIG, cobertura de risco positiva) — corrigido de 30 no mesmo dia (era um alinhamento cego a RJ/ES/MG/SP sem checar cobertura de risco; ver §18-addendum).",
-   "registro_resposta": null
+   "registro_resposta": null,
+   "estrutura": {
+    "status": "READ",
+    "doc": "PPCIF ativado para o ciclo pelo Decreto nº 48.599/2026",
+    "data": "15/05/2026",
+    "orgao": "Defesa Civil DF / Ibram",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "READ",
+     "doc": "PPCIF ativado para o ciclo pelo Decreto nº 48.599/2026",
+     "data": "15/05/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Estado de Emergência Ambiental preventivo recorrente (Decreto nº 48.599/2026, DODF 15/05/2026) — ativa o PPCIF (Decreto nº 37.549/2016) contra incêndios florestais",
+     "data": "Recorrente"
+    }
+   ]
   },
   {
    "uf": "GO",
@@ -292,7 +649,28 @@
     "status": "Coberto pelo estadual",
     "info": "Sem plano municipal próprio localizado; capital coberta pelo PLANCON estadual."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "NOVO",
+    "doc": "Gabinete de Ações Integradas (PLANCON Estiagem 2026)",
+    "data": "18/08/2026",
+    "orgao": "Defesa Civil GO",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "NOVO",
+     "doc": "Gabinete de Ações Integradas (PLANCON Estiagem 2026)",
+     "data": "18/08/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "NOVO",
+     "doc": "PLANCON Estiagem 2026 + Gabinete de Ações Integradas",
+     "data": "18/08/2026"
+    }
+   ]
   },
   {
    "uf": "MT",
@@ -307,7 +685,28 @@
     "status": "Em elaboração",
     "info": "PLACON municipal em elaboração; projeto 'Cuiabá Sem Queimadas' reduziu focos em ~90%."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "NOVO",
+    "doc": "Sala de Situação Central (SSC) instituída para a temporada 2026 (Decreto nº 2.015, IOMAT 28/04/2026)",
+    "data": "28/04/2026",
+    "orgao": "Sesp-MT / CBMMT (coordenação-geral)",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "NOVO",
+     "doc": "Sala de Situação Central (SSC) instituída para a temporada 2026 (Decreto nº 2.015, IOMAT 28/04/2026)",
+     "data": "28/04/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "NOVO",
+     "doc": "Plano de Combate a Incêndios 2º sem. 2026 (Decreto 2.015/2026)",
+     "data": "25/05/2026"
+    }
+   ]
   },
   {
    "uf": "MS",
@@ -323,7 +722,28 @@
     "info": "Prefeitura não confirmou Plancon consolidado. Prioridade alta."
    },
    "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "Emergência ambiental de caráter preventivo (não é rito SINPDEC): aceiros obrigatórios, queima prescrita, mobilização CICOE, ancorada em alerta observacional do Cemtec; teste do objeto satisfeito, anterior ao Boletim nº 1."
+   "justificativa_ex_ante": "Emergência ambiental de caráter preventivo (não é rito SINPDEC): aceiros obrigatórios, queima prescrita, mobilização CICOE, ancorada em alerta observacional do Cemtec; teste do objeto satisfeito, anterior ao Boletim nº 1.",
+   "estrutura": {
+    "status": "READ",
+    "doc": "CICOE ativado pelo decreto de emergência ambiental preventivo",
+    "data": "03/06/2026",
+    "orgao": "Defesa Civil MS / CBMMS",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "READ",
+     "doc": "CICOE ativado pelo decreto de emergência ambiental preventivo",
+     "data": "03/06/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "READ",
+     "doc": "Decreto de emergência ambiental PREVENTIVO (DOE 03/06/2026, base alerta Cemtec) — ex-ante pelo objeto; CICOE",
+     "data": "03/06/2026"
+    }
+   ]
   },
   {
    "uf": "ES",
@@ -338,7 +758,28 @@
     "status": "Readaptado",
     "info": "Único plano com gatilhos quantitativos claros (mm de chuva por período) entre as 27 capitais."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "VIG",
+    "doc": "Mobilização anual do sistema pelo plano de verão/chuvas",
+    "data": "Recorrente",
+    "orgao": "Defesa Civil ES",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "VIG",
+     "doc": "Mobilização anual do sistema pelo plano de verão/chuvas",
+     "data": "Recorrente"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Plano de verão/chuvas (ciclo anual)",
+     "data": "Recorrente"
+    }
+   ]
   },
   {
    "uf": "MG",
@@ -354,7 +795,28 @@
     "info": "Revisão do Plano de Contingência + treinamentos iniciados em 17/08/2026."
    },
    "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "Plano de verão/chuvas (ciclo anual) — instrumento hidrológico recorrente. O risco projetado para MG neste corte é 'seca em intensificação' (IIS-3; CONSIST cat=DIFERE): o instrumento recorrente NÃO TRATA do risco atual (é desenhado para excesso de chuva, o risco vigente é o oposto). Antecipação de instrumento RECORRENTE ponderada pela cobertura do risco projetado (CONSIST/§5.2.1), regra estabelecida em 30/08/2026 a partir de proposta direta de Patricia: o mérito de um decreto recorrente não é 'é novo?', é 'trata do risco que está vindo?' — um estado pode ter avaliado e concluído que a estrutura já existente basta. Antecipação rebaixada de 30 para 20 (VIG, cobertura de risco negativa) — MG permanece com instrumento reconhecido (não é LAC), mas com crédito de antecipação reduzido por desalinhamento declarado com o risco do ciclo."
+   "justificativa_ex_ante": "Plano de verão/chuvas (ciclo anual) — instrumento hidrológico recorrente. O risco projetado para MG neste corte é 'seca em intensificação' (IIS-3; CONSIST cat=DIFERE): o instrumento recorrente NÃO TRATA do risco atual (é desenhado para excesso de chuva, o risco vigente é o oposto). Antecipação de instrumento RECORRENTE ponderada pela cobertura do risco projetado (CONSIST/§5.2.1), regra estabelecida em 30/08/2026 a partir de proposta direta de Patricia: o mérito de um decreto recorrente não é 'é novo?', é 'trata do risco que está vindo?' — um estado pode ter avaliado e concluído que a estrutura já existente basta. Antecipação rebaixada de 30 para 20 (VIG, cobertura de risco negativa) — MG permanece com instrumento reconhecido (não é LAC), mas com crédito de antecipação reduzido por desalinhamento declarado com o risco do ciclo.",
+   "estrutura": {
+    "status": "VIG",
+    "doc": "Mobilização anual do sistema pelo plano de verão/chuvas",
+    "data": "Recorrente",
+    "orgao": "Defesa Civil MG",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "VIG",
+     "doc": "Mobilização anual do sistema pelo plano de verão/chuvas",
+     "data": "Recorrente"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Plano de verão/chuvas (ciclo anual)",
+     "data": "Recorrente"
+    }
+   ]
   },
   {
    "uf": "RJ",
@@ -369,7 +831,28 @@
     "status": "Vigente-recorrente",
     "info": "Plano de Contingência para Chuvas Intensas, base Decreto Est. 46.935/2020."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "VIG",
+    "doc": "Mobilização anual do sistema pelo plano de verão/chuvas",
+    "data": "Recorrente",
+    "orgao": "Defesa Civil RJ",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "VIG",
+     "doc": "Mobilização anual do sistema pelo plano de verão/chuvas",
+     "data": "Recorrente"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Plano de verão/chuvas (ciclo anual)",
+     "data": "Recorrente"
+    }
+   ]
   },
   {
    "uf": "SP",
@@ -385,7 +868,28 @@
     "info": "Plano Preventivo de Chuvas de Verão (PPCV); ciclo anual de rotina."
    },
    "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "Plano de verão/chuvas (ciclo anual) — instrumento hidrológico recorrente. O risco projetado para SP neste corte é 'chuvas acima da média no sul do estado' (CONSIST cat=COBRE): o instrumento recorrente TRATA do risco atual. Antecipação de instrumento RECORRENTE ponderada pela cobertura do risco projetado (CONSIST/§5.2.1), regra estabelecida em 30/08/2026 a partir de proposta direta de Patricia: o mérito de um decreto recorrente não é 'é novo?', é 'trata do risco que está vindo?' — um estado pode ter avaliado e concluído que a estrutura já existente basta. Antecipação elevada de 30 para 40 (VIG, cobertura de risco positiva)."
+   "justificativa_ex_ante": "Plano de verão/chuvas (ciclo anual) — instrumento hidrológico recorrente. O risco projetado para SP neste corte é 'chuvas acima da média no sul do estado' (CONSIST cat=COBRE): o instrumento recorrente TRATA do risco atual. Antecipação de instrumento RECORRENTE ponderada pela cobertura do risco projetado (CONSIST/§5.2.1), regra estabelecida em 30/08/2026 a partir de proposta direta de Patricia: o mérito de um decreto recorrente não é 'é novo?', é 'trata do risco que está vindo?' — um estado pode ter avaliado e concluído que a estrutura já existente basta. Antecipação elevada de 30 para 40 (VIG, cobertura de risco positiva).",
+   "estrutura": {
+    "status": "VIG",
+    "doc": "Mobilização anual do sistema pelo plano de verão/chuvas",
+    "data": "Recorrente",
+    "orgao": "Defesa Civil SP",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "VIG",
+     "doc": "Mobilização anual do sistema pelo plano de verão/chuvas",
+     "data": "Recorrente"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "VIG",
+     "doc": "Plano de verão/chuvas (ciclo anual)",
+     "data": "Recorrente"
+    }
+   ]
   },
   {
    "uf": "PR",
@@ -400,7 +904,28 @@
     "status": "Novo",
     "info": "Plano Estratégico de Enfrentamento ao El Niño 2026/2027, o caso mais avançado nominalmente entre as 27 capitais; articulação metropolitana."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "READ",
+    "doc": "Coordenação conjunta pela Nota Técnica Conjunta nº 01/2026",
+    "data": "05/2026",
+    "orgao": "Defesa Civil PR / Simepar",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "READ",
+     "doc": "Coordenação conjunta pela Nota Técnica Conjunta nº 01/2026",
+     "data": "05/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "READ",
+     "doc": "Nota Técnica Conjunta nº 01/2026",
+     "data": "05/2026"
+    }
+   ]
   },
   {
    "uf": "RS",
@@ -415,7 +940,28 @@
     "status": "Em elaboração",
     "info": "Plano de contingência para o El Niño anunciado e em elaboração; foco no nível do Guaíba."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "READ",
+    "doc": "Governança do Prepara RS (Plano Rio Grande)",
+    "data": "17/06/2026",
+    "orgao": "Defesa Civil RS",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "READ",
+     "doc": "Governança do Prepara RS (Plano Rio Grande)",
+     "data": "17/06/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "READ",
+     "doc": "Prepara RS (Plano Rio Grande)",
+     "data": "17/06/2026"
+    }
+   ]
   },
   {
    "uf": "SC",
@@ -430,7 +976,29 @@
     "status": "Em elaboração",
     "info": "Plano municipal em elaboração, alinhado aos 4 níveis do plano estadual."
    },
-   "natureza_doc": "ex-ante"
+   "natureza_doc": "ex-ante",
+   "estrutura": {
+    "status": "NOVO",
+    "doc": "Plano de Contingência El Niño SC 2026 institui quatro níveis de mobilização e responsáveis — estrutura criada pelo próprio plano",
+    "data": "20/08/2026",
+    "orgao": "Sec. Proteção e Defesa Civil SC",
+    "julgado_em": "04/09/2026"
+   },
+   "instrumentos": [
+    {
+     "tipo": "estrutura_coordenacao",
+     "status": "NOVO",
+     "doc": "Plano de Contingência El Niño SC 2026 institui quatro níveis de mobilização e responsáveis — estrutura criada pelo próprio plano",
+     "data": "20/08/2026"
+    },
+    {
+     "tipo": "instrumento_operacional",
+     "status": "NOVO",
+     "doc": "Plano de Contingência El Niño SC 2026 (único estadual integrado)",
+     "data": "20/08/2026"
+    }
+   ]
   }
- ]
+ ],
+ "_governanca_v3": "v3.0 (04/09/2026): 'status'/'doc'/'data' = instrumento operacional; 'estrutura' = estrutura de coordenação (§30); 'instrumentos' = lista acumulativa dos atos do ciclo por UF (produtos de comitês entram aqui, classificados)."
 }
