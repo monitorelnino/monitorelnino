@@ -1,50 +1,50 @@
 #!/usr/bin/env python3
 """
-sondar_transferegov.py — sonda de UMA VEZ (04/09/2026) para desenhar o coletor do
-TransfereGov com evidência: lista o repositório de CSVs do módulo Discricionárias e
-Legais e testa as APIs PostgREST públicas (sem chave) de Fundo a Fundo e Transferências
-Especiais, imprimindo status, cabeçalhos e amostra de cada resposta. Nada é gravado em data/.
+sondar_transferegov.py — sonda de UMA VEZ, 2ª rodada (04/09/2026): (a) lista os recursos
+(paths) do Swagger das três APIs PostgREST; (b) baixa os CSVs de convênio, proposta e programa
+do módulo Discricionárias e Legais e imprime cabeçalho, 2 linhas de amostra, nº de linhas e as
+colunas que parecem IBGE/UF/data/valor/objeto — para desenhar o coletor com evidência.
 """
-import json, re, urllib.request, urllib.error
+import csv, io, json, re, urllib.request, zipfile
 
-UA = {"User-Agent": "Mozilla/5.0 (MonitorElNino/sonda)", "Accept": "application/json, text/csv, */*"}
+UA = {"User-Agent": "Mozilla/5.0 (MonitorElNino/sonda)"}
+REPO = "https://repositorio.dados.gov.br/seges/detru/"
 
-def baixar(url, limite=300_000):
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40) as r:
-        return r.read(limite).decode("utf-8", "replace"), r.headers.get("Content-Type", "?"), r.status, r.headers.get("Content-Length")
+def baixar(url, limite=None):
+    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=600) as r:
+        return r.read(limite) if limite else r.read()
 
-def testar(url):
+print("=== SWAGGER: recursos de cada API ===")
+for api in ("fundoafundo", "transferenciasespeciais", "ted"):
     try:
-        corpo, ct, st, cl = baixar(url, 1200)
-        return f"HTTP {st} | {ct} | len={cl} | {corpo[:400]!r}"
-    except urllib.error.HTTPError as e:
-        return f"HTTPError {e.code} | {e.read(300)!r}"
+        sw = json.loads(baixar(f"https://api.transferegov.gestao.gov.br/{api}/").decode("utf-8", "replace"))
+        paths = sorted(sw.get("paths", {}).keys())
+        print(f"\n-- {api}: {len(paths)} recursos\n   " + "\n   ".join(paths))
     except Exception as e:  # noqa: BLE001
-        return f"{type(e).__name__}: {e}"
+        print(f"\n-- {api}: !! {type(e).__name__}: {e}")
 
-print("=== REPOSITÓRIO DE CSVs (Discricionárias e Legais) ===")
-for u in ["http://repositorio.dados.gov.br/seges/detru/", "https://repositorio.dados.gov.br/seges/detru/"]:
-    print(f"\n-- {u}")
+print("\n=== data da carga ===")
+try: print("  ", baixar(REPO + "data_carga_siconv.txt").decode("utf-8", "replace")[:200].strip())
+except Exception as e: print("   !!", e)
+
+print("\n=== CSVs: cabeçalho, amostra e colunas-chave ===")
+for nome in ("siconv_convenio.csv.zip", "siconv_proposta.csv.zip", "siconv_programa.csv.zip", "siconv_proponentes.csv.zip"):
+    print(f"\n-- {nome}")
     try:
-        corpo, ct, st, _ = baixar(u, 400_000)
-        links = re.findall(r'href="([^"?][^"]*)"', corpo)
-        tam = dict(re.findall(r'href="([^"]+\.csv(?:\.zip)?)"[^\n]*?(\d[\d.,]*\s*[KMG]?)', corpo))
-        print(f"   HTTP {st} | {len(links)} links")
-        for l in links:
-            if l.endswith((".csv", ".zip", ".txt", ".pdf")): print("    ", l, tam.get(l, ""))
+        z = zipfile.ZipFile(io.BytesIO(baixar(REPO + nome)))
+        interno = z.namelist()[0]
+        with z.open(interno) as f:
+            txt = io.TextIOWrapper(f, encoding="latin-1", errors="replace")
+            primeira = txt.readline()
+            sep = ";" if primeira.count(";") > primeira.count(",") else ","
+            cab = [c.strip() for c in primeira.strip().split(sep)]
+            linhas = [txt.readline() for _ in range(2)]
+            n = 2
+            for _ in txt: n += 1
+        print(f"   arquivo interno: {interno} | sep='{sep}' | colunas: {len(cab)} | linhas: {n:,}")
+        print(f"   cabeçalho: {cab}")
+        for l in linhas: print(f"   amostra: {l.strip()[:300]}")
+        chaves = [c for c in cab if re.search(r"IBGE|UF|MUNIC|DATA|DIA_|ANO|VALOR|VL_|OBJETO|SITUACAO|PROGRAMA|ORGAO|NR_", c, re.I)]
+        print(f"   colunas-chave: {chaves}")
     except Exception as e:  # noqa: BLE001
         print(f"   !! {type(e).__name__}: {e}")
-
-print("\n=== APIs PostgREST públicas ===")
-for u in [
-    "https://api.transferegov.gestao.gov.br/fundoafundo/programa?limit=3",
-    "https://api.transferegov.gestao.gov.br/fundoafundo/programa?ano_programa=eq.2026&limit=5",
-    "https://api.transferegov.gestao.gov.br/fundoafundo/",
-    "https://api.transferegov.gestao.gov.br/transferenciasespeciais/programa_especial?ano_programa=eq.2026&limit=3",
-    "https://api.transferegov.gestao.gov.br/transferenciasespeciais/",
-    "https://api.transferegov.gestao.gov.br/ted/",
-    "https://api-publica.transferegov.gestao.gov.br/",
-    "https://api-publica.transferegov.gestao.gov.br/gestaoparcerias/",
-    "https://api-publica.transferegov.gestao.gov.br/transferenciasespeciais/",
-]:
-    print(f"\n-- {u}\n   -> {testar(u)}")
