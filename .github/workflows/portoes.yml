@@ -41,6 +41,7 @@ jobs:
           python3 verificar_financiamento.py
           python3 verificar_painel.py
           node scripts/verificar_runtime_financiamento.js
+          node scripts/verificar_figuras.js
       - name: Portão 12 — derivados em árvore limpa
         id: p12
         continue-on-error: true

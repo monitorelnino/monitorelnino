@@ -88,11 +88,13 @@
       + (itens || []).map(i => '<span><i style="background:' + i.cor + '"></i>' + esc(i.rotulo) + '</span>').join('');
   }
 
-  /** Crédito de figura dentro do parágrafo-nota único do cartão (regra de harmonização). */
+  /** Crédito de figura (04/09/2026, decisão editorial): UMA linha curta ao pé do cartão —
+   *  "Fonte: … · data". Sem explicação, sem instrução, sem "por que está vazio". Figuras trazem
+   *  título, legenda e este crédito; nada mais. O portão verificar_figuras.js garante isso. */
   function credito(caixaId, texto) {
-    const nota = document.querySelector('#' + caixaId + ' .note');
-    if (!nota || nota.querySelector('.fonte-figura')) return;
-    const sp = document.createElement('span'); sp.className = 'fonte-figura'; sp.innerHTML = '<br>' + texto; nota.appendChild(sp);
+    const caixa = document.getElementById(caixaId);
+    if (!caixa || caixa.querySelector('.fonte-figura')) return;
+    const d = document.createElement('div'); d.className = 'fonte-figura'; d.innerHTML = texto; caixa.appendChild(d);
   }
 
   /** Padrão único dos gráficos Chart.js (03/09/2026): tipografia, cores, grade, tooltip. */

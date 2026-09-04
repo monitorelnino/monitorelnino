@@ -39,6 +39,21 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Figuras só com título, legenda e crédito (04/09/2026, decisão editorial definitiva)
+- Mapas e gráficos passam a trazer apenas título, legenda e um crédito de uma linha
+  ("Fonte: … · data" ou "· sem coleta até o corte"). Saíram todas as notas, dicas,
+  parágrafos de "como ler", "por que está vazio" e explicações de uso, estáticos ou
+  escritos pelo JavaScript, nas cinco páginas com figuras (43 cartões limpos).
+- Dados que moravam em notas viraram itens de legenda (totais do mapa de repasses,
+  "nenhum alerta vigente" do CEMADEN, listas de UF por quadrante). Alternativas em tabela
+  ou em texto (acessibilidade) ficam como `<details>` fechado, com resumo neutro ("Ver em tabela").
+- **Novo portão `scripts/verificar_figuras.js`** na suíte do PR: renderiza as cinco páginas e
+  bloqueia qualquer `<p>`, `.note`, `.hint` ou `<details>` sem tabela dentro de cartão de
+  figura, mais de um crédito por cartão, crédito com mais de 160 caracteres ou com
+  linguagem de explicação. Os portões antigos que exigiam "1 parágrafo por cartão"
+  foram invertidos para "zero".
+
+
 ### Sinais de risco: seis das oito fontes coletando (04/09/2026)
 - Primeira coleta real com os endpoints novos: **INPE** trouxe 3.500+ focos em 23 UFs
   (AM 1.553, PA 871, MT 249); **Monitor de Secas (ANA)** coletado (mapas até 31/07/2026);

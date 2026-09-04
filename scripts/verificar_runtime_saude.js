@@ -71,11 +71,11 @@ setTimeout(() => {
     p.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
     teste("gesto: tooltip abre ao passar o mouse", q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
   } catch (e) { teste("gesto: tooltip", false); }
-  // crédito por figura (dentro do parágrafo-nota único)
+  // crédito por figura: UMA linha .fonte-figura ao pé do cartão
   const caixas = [...d.querySelectorAll(".map-box, .chart-box")].filter(c => c.querySelector("svg, canvas, #quadrantes"));
   const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura"));
   teste(`toda figura tem crédito de fonte (${caixas.length - semCredito.length}/${caixas.length})`, semCredito.length === 0);
-  teste("cada cartão tem exatamente 1 parágrafo-nota visível", caixas.every(c => c.querySelectorAll(":scope > .note").length === 1));
+  teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p").length === 0));
   // linguagem: "não localizamos" só como lacuna de coleta ("Não localizamos coleta"), nunca sobre instrumento não verificado
   const texto = d.body.textContent;
   const naoLocIndevido = /não localizamos (?!coleta)/i.test(texto);
