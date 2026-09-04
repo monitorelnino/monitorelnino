@@ -39,6 +39,23 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Transferências sem chave: coletor do TransfereGov (04/09/2026)
+- A chave do Portal da Transparência autentica, mas os endpoints de transferências
+  respondem 403 (exigem emissão via gov.br Prata/Ouro). Caminho escolhido pela editoria:
+  **TransfereGov — Dados Abertos**, sem chave. Sondado com rede real: repositório de CSVs
+  do módulo Discricionárias e Legais (`repositorio.dados.gov.br/seges/detru`, 59 arquivos;
+  carga de 17/07/2026) e API PostgREST pública (fundo a fundo, especiais, TED).
+- `coletar_transferegov.py`: cruza `siconv_proposta` (município, IBGE, objeto) com
+  `siconv_convenio` (assinatura, valores) e produz a **série semanal 2026 da rota r5**
+  (voluntárias a municípios, por data de assinatura), `r5.valor_2026` por UF, a fila de
+  revisão humana `transferegov_el_nino_revisar.json` (instrumentos cujo objeto cita o
+  ciclo — nada publicado como "recurso do El Niño" sem leitura) e a proveniência em
+  `financiamento/consultas.json` (URL, hash, bytes). Programas fundo a fundo 2026 que
+  citam defesa civil em `financiamento/programas_faf_2026.json`.
+- 7 autotestes (parsers e agregações, com negativo). Sem rede: lacuna declarada, nada muda.
+  As demais rotas seguem em 0 com status declarado até coleta própria.
+
+
 ### Figuras só com título, legenda e crédito (04/09/2026, decisão editorial definitiva)
 - Mapas e gráficos passam a trazer apenas título, legenda e um crédito de uma linha
   ("Fonte: … · data" ou "· sem coleta até o corte"). Saíram todas as notas, dicas,
