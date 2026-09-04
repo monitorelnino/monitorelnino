@@ -68,7 +68,8 @@ FONTES = {
     "monitor_secas": {
         "nome": "Monitor de Secas", "orgao": "ANA e parceiros estaduais", "camada": "observado",
         "url_publica": "https://monitordesecas.ana.gov.br/",
-        "endpoint": "https://dadosabertos.ana.gov.br/api/3/action/package_search?q=monitor+de+secas&rows=20",
+        # 04/09/2026: catálogo antigo responde 404. API real: apimsbr.ana.gov.br/rpc/v1/<recurso>.
+        "endpoint": "https://apimsbr.ana.gov.br/rpc/v1/change_maps",
         "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
     },
     "inmet_avisos": {
@@ -80,13 +81,17 @@ FONTES = {
     "inpe_fogo": {
         "nome": "Programa Queimadas — risco de fogo", "orgao": "INPE", "camada": "observado",
         "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
-        "endpoint": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/media/focos/focos_abertos_24h_brasil.csv",
+        # 04/09/2026: endereço antigo devolvia HTML (o portal mudou). Diretório real,
+        # confirmado por diagnóstico: dataserver-coids.inpe.br, arquivos focos_diario_br_AAAAMMDD.csv.
+        "endpoint": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/",
         "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
     },
     "cemaden_alertas": {
         "nome": "Alertas hidrológicos e geológicos", "orgao": "CEMADEN", "camada": "observado",
         "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
-        "endpoint": "http://www2.cemaden.gov.br/mapainterativo/alertas/alertas.json",
+        # 04/09/2026: o JSON antigo não existe mais (404). Camada confirmada por GetCapabilities.
+        "endpoint": ("https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0"
+                      "&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000"),
         "papel": "Alertas vigentes emitidos aos municípios monitorados.",
     },
     "noaa_oni": {
@@ -221,6 +226,42 @@ def parse_focos_inpe(texto: str) -> dict:
     return contagem
 
 
+def escolher_csv_focos(html_indice: str) -> str:
+    """Nome do CSV diário mais recente listado no diretório do INPE (focos_diario_br_AAAAMMDD.csv). Função pura."""
+    nomes = re.findall(r'focos_diario_br_(\d{8})\.csv', html_indice or "")
+    return f"focos_diario_br_{max(nomes)}.csv" if nomes else ""
+
+
+def parse_alertas_wfs_cemaden(dados) -> dict:
+    """Agrega o GeoJSON de alertas vigentes do CEMADEN por UF. O nível é o vocabulário da fonte, nunca reescalado (§23.3)."""
+    feicoes = (dados or {}).get("features") or []
+    saida = {}
+    for f in feicoes:
+        p = f.get("properties") or {}
+        uf = next((str(p[k]).strip().upper() for k in ("uf", "sigla_uf", "estado", "UF") if p.get(k)), "")
+        if uf not in UFS:
+            continue
+        nivel = next((str(p[k]).strip() for k in ("nivel", "severidade", "nivel_alerta", "classificacao") if p.get(k)), "sem nível declarado")
+        mun = next((str(p[k]).strip() for k in ("municipio", "nome_municipio", "nm_mun", "cidade") if p.get(k)), "")
+        d = saida.setdefault(uf, {"total": 0, "niveis": {}, "municipios": []})
+        d["total"] += 1
+        d["niveis"][nivel] = d["niveis"].get(nivel, 0) + 1
+        if mun and mun not in d["municipios"]:
+            d["municipios"].append(mun)
+    for d in saida.values():
+        d["municipios"] = sorted(d["municipios"])[:40]
+    return saida
+
+
+def parse_change_maps_ana(dados) -> dict:
+    """Extrai do recurso /rpc/v1/change_maps da ANA a lista datada de mapas e a data mais recente."""
+    bruto = (dados or {}).get("file") or ""
+    caminhos = re.findall(r'([\w/\-.]+\.(?:png|pdf|zip|xlsx|csv))', bruto)
+    datas = sorted(set(re.findall(r'(\d{4}-\d{2}-\d{2})', bruto)))
+    return {"arquivos": caminhos[-24:], "datas": datas[-24:], "ultima_data": (datas[-1] if datas else None),
+            "base": "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/"}
+
+
 def parse_avisos_inmet(dados) -> dict:
     """Agrega avisos ativos do INMET por UF, preservando o grau tal como o INMET o nomeia, e devolve {'UF': {'total': n, 'graus': {...}, 'exemplos': [...]}}."""
     itens = dados.get("hoje", dados) if isinstance(dados, dict) else dados
@@ -302,21 +343,24 @@ def coletar_fonte(chave: str):
             raise ValueError("plume IRI sem trimestres reconhecíveis — recusada")
         return {"trimestres": plume}, f"Plume ENSO, {len(plume)} trimestres"
     if chave == "inpe_fogo":
-        focos = parse_focos_inpe(bruto)
+        nome = escolher_csv_focos(bruto)   # `bruto` é o ÍNDICE do diretório
+        if not nome:
+            raise ValueError("índice do INPE sem arquivo focos_diario_br_*.csv — recusado")
+        focos = parse_focos_inpe(_buscar(fonte["endpoint"] + nome))
         if not focos:
             raise ValueError("CSV de focos sem coluna de UF reconhecível — recusado")
-        return {"focos_por_uf": focos}, "Focos ativos nas últimas 24 h"
+        return {"focos_por_uf": focos}, f"Focos do dia — {nome}"
     if chave == "inmet_avisos":
         avisos = parse_avisos_inmet(json.loads(bruto))
         return {"por_uf": avisos}, "Avisos ativos no momento da consulta"
     if chave == "cemaden_alertas":
-        alertas = parse_alertas_cemaden(json.loads(bruto))
-        return {"por_uf": alertas}, "Alertas vigentes no momento da consulta"
+        alertas = parse_alertas_wfs_cemaden(json.loads(bruto))
+        return {"por_uf": alertas}, "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)"
     if chave == "monitor_secas":
-        recurso = parse_catalogo_secas(json.loads(bruto))
-        if not recurso:
-            raise ValueError("nenhum recurso do Monitor de Secas encontrado no catálogo da ANA")
-        return {"recurso": recurso}, f"Catálogo ANA — {recurso.get('titulo')}"
+        recurso = parse_change_maps_ana(json.loads(bruto))
+        if not recurso.get("datas"):
+            raise ValueError("recurso da ANA sem datas reconhecíveis — recusado")
+        return {"recurso": recurso}, f"Monitor de Secas (ANA) — mapas até {recurso['ultima_data']}"
     raise RuntimeError(f"adaptador ausente para {chave}")
 
 
@@ -477,6 +521,26 @@ def autoteste() -> int:
     checar("tipo: misto", classificar_tipo("Incêndios; seca em intensificação (IIS-3)") == "misto")
     checar("tipo: sem sinal", classificar_tipo("Sem sinal elevado no trimestre") == "sem_sinal")
     checar("tipo negativo: vazio não vira categoria de risco", classificar_tipo("") == "sem_sinal")
+
+    # --- endpoints reais (04/09/2026) ---
+    checar("INPE: escolhe o CSV diário mais recente",
+           escolher_csv_focos('<a href="focos_diario_br_20260902.csv">x</a><a href="focos_diario_br_20260904.csv">y</a><a href="focos_diario_br_20260903.csv">z</a>') == "focos_diario_br_20260904.csv")
+    checar("INPE negativo: índice sem CSV não quebra",
+           escolher_csv_focos("<html>vazio</html>") == "" and escolher_csv_focos("") == "")
+    _gj = {"features": [{"properties": {"uf": "SP", "municipio": "Santos", "nivel": "Moderado"}},
+                        {"properties": {"uf": "SP", "municipio": "Cubatão", "nivel": "Alto"}},
+                        {"properties": {"uf": "RJ", "municipio": "Petrópolis", "nivel": "Alto"}},
+                        {"properties": {"uf": "XX", "municipio": "Fora", "nivel": "Alto"}}]}
+    _r = parse_alertas_wfs_cemaden(_gj)
+    checar("CEMADEN WFS: agrega por UF com o nível da fonte",
+           set(_r) == {"SP", "RJ"} and _r["SP"]["total"] == 2 and _r["SP"]["niveis"] == {"Moderado": 1, "Alto": 1})
+    checar("CEMADEN negativo: GeoJSON vazio não quebra",
+           parse_alertas_wfs_cemaden({}) == {} and parse_alertas_wfs_cemaden({"features": []}) == {})
+    _ana = parse_change_maps_ana({"file": '["data/change-maps/2026/08/drought-monitor_2026-08-31_66m.png", "data/change-maps/2026/07/x_2026-07-31_66m.png"]'})
+    checar("ANA: extrai datas e arquivos do recurso change_maps",
+           _ana["ultima_data"] == "2026-08-31" and len(_ana["arquivos"]) == 2)
+    checar("ANA negativo: recurso vazio não quebra",
+           parse_change_maps_ana({})["ultima_data"] is None)
 
     esq = esqueleto()
     checar("esqueleto: 27 UFs", len(esq["uf"]) == 27)
