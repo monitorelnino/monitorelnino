@@ -3,7 +3,10 @@ name: Diagnóstico pontual — fontes de sinais de risco
 # 04/09/2026: ferramenta de uma vez para testar, com rede real, os endpoints
 # candidatos das fontes que nunca coletaram (monitor_secas, inpe_fogo,
 # cemaden_alertas, iri_plume). Não faz parte do pipeline regular; roda só
-# sob disparo manual e não grava nada em data/. Pode ser apagado depois de usado.
+# sob disparo manual e não grava nada em data/. Resultado vai para o
+# repositório privado (mesmo padrão dos relatórios do robô) em vez de
+# artefato do Actions — o artefato fica em blob storage externo, inacessível
+# ao ambiente de edição.
 on:
   workflow_dispatch:
 
@@ -19,10 +22,16 @@ jobs:
         with:
           python-version: "3.12"
       - name: Testar endpoints candidatos
-        run: python3 scripts/diagnosticar_fontes_sinais.py
-      - name: Publicar resultado como artefato
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: diagnostico-sinais
-          path: diagnostico_sinais.json
-          retention-days: 7
+        run: |
+          set -o pipefail
+          python3 scripts/diagnosticar_fontes_sinais.py 2>&1 | tee /tmp/diagnostico.log
+      - name: Publicar resultado no repositório privado
+        if: always()
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
+          mkdir -p /tmp/registro/relatorios
+          cp /tmp/diagnostico.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_sinais.txt"
+          cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com
+          git add -A && git commit -q -m "diagnostico_sinais ${GITHUB_SHA::7}" && git push
