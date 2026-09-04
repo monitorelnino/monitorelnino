@@ -28,6 +28,11 @@ jobs:
         run: |
           set -o pipefail
           python3 scripts/sondar_portal_transparencia.py 2>&1 | tee /tmp/portal.log
+      - name: Sondar o TransfereGov (repositório de CSVs e APIs sem chave)
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python3 scripts/sondar_transferegov.py 2>&1 | tee /tmp/transferegov.log
       - name: Testar endpoints candidatos
         run: |
           set -o pipefail
@@ -41,5 +46,6 @@ jobs:
           mkdir -p /tmp/registro/relatorios
           cp /tmp/diagnostico.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_sinais.txt"
           cp /tmp/portal.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portal_transparencia.txt" 2>/dev/null || true
+          cp /tmp/transferegov.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_transferegov.txt" 2>/dev/null || true
           cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com
           git add -A && git commit -q -m "diagnostico_sinais ${GITHUB_SHA::7}" && git push
