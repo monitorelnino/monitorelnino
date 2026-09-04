@@ -300,7 +300,7 @@ function __init(){
     }
     svg.append('g').attr('transform', 'translate(0,' + (H - m.b) + ')').call(d3.axisBottom(x).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat('%b')));
     MonitorMapas.legenda('legSerie', ROTAS.rotas.map(r => ({cor: r.cor, rotulo: r.n + ' · ' + r.nome})).concat([{cor: '#A65F3F', opacidade: .35, rotulo: 'faixa do defeso'}]));
-    fonteFigura('boxSerie', semanas.length ? 'Fonte: Portal da Transparência · ' + esc(SERIE.corte) : 'Fonte: Portal da Transparência · sem coleta até o corte');
+    fonteFigura('boxSerie', semanas.length ? 'Fonte: TransfereGov — Dados Abertos · carga ' + esc(SERIE.carga_da_fonte || SERIE.corte) : 'Fonte: TransfereGov — Dados Abertos · sem coleta até o corte');
   })();
   // 3 · por estado
   const FUNDO = {localizado:['Localizado','#4F7D48'], em_elaboracao:['Em elaboração','#C69B72'], nao_localizado:['Não localizado (bateria datada)','#7C4A34'], nao_verificado:['Ainda não verificado','#64645C']};
