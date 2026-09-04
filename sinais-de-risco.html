@@ -317,7 +317,25 @@ desenharMapa('mapaCemaden', 'legCemaden',
     const niveis = Object.entries(a.niveis || {}).map(([n, q]) => esc(n) + ': ' + q).join(' · ');
     return a.total + ' alerta(s) vigente(s)' + (niveis ? '<br>' + niveis : ''); },
   [{cor:'#E7E4D6', rotulo:'Menos alertas'}, {cor:'#6B6A44', rotulo:'Mais alertas'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
-explicarVazio('boxCemaden', 'cemaden_alertas', 'quantos alertas cada estado tem vigentes, e em que nível');
+// 04/09/2026: o CEMADEN passou a coletar. Quando a coleta ocorre e a resposta oficial é
+// "nenhum alerta vigente", isso é INFORMAÇÃO, não lacuna — e precisa ser dito com essas palavras,
+// nunca como "não localizamos coleta" (que significaria falha nossa, não ausência de alerta).
+(function(){
+  const temAlerta = Object.values((SINAIS && SINAIS.uf) || {}).some(u => u.alertas_cemaden && u.alertas_cemaden.total);
+  if (coletada('cemaden_alertas') && !temAlerta) {
+    const caixa = document.getElementById('boxCemaden');
+    if (caixa) {
+      const p = document.createElement('p');
+      p.className = 'note'; p.style.margin = '8px 0 0';
+      p.innerHTML = '<strong>Nenhum alerta vigente no momento da consulta.</strong> O mapa em cinza aqui significa ' +
+        'ausência de alerta declarada pela fonte — não ausência de coleta. O CEMADEN respondeu; a lista de alertas ' +
+        'vigentes estava vazia.';
+      caixa.appendChild(p);
+    }
+  } else {
+    explicarVazio('boxCemaden', 'cemaden_alertas', 'quantos alertas cada estado tem vigentes, e em que nível');
+  }
+})();
 credito('boxCemaden', 'cemaden_alertas');
 
 // =====================  Cartões do estado do ciclo  =====================

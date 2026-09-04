@@ -39,6 +39,18 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Sinais de risco: seis das oito fontes coletando (04/09/2026)
+- Primeira coleta real com os endpoints novos: **INPE** trouxe 3.500+ focos em 23 UFs
+  (AM 1.553, PA 871, MT 249); **Monitor de Secas (ANA)** coletado (mapas até 31/07/2026);
+  **CEMADEN** respondeu com `totalFeatures=0` — camada correta, **nenhum alerta vigente**
+  no momento da consulta.
+- A página passa a distinguir as duas coisas: quando a fonte responde e a resposta é
+  "nenhum alerta", o texto diz exatamente isso, em vez de "não localizamos coleta"
+  (que significaria falha nossa, e não ausência de alerta declarada pela fonte).
+- Seguem em lacuna declarada: IRI (probabilidades ENSO) e CPTEC (prognóstico trimestral,
+  que sempre foi de leitura humana).
+
+
 ### Endpoints reais das fontes de sinais de risco (04/09/2026)
 - Três das cinco fontes que nunca coletaram estavam apontando para endereços que
   não existem mais. Descobertos por diagnóstico com rede real (cinco rodadas):
