@@ -108,8 +108,41 @@ SONDAS = {
 }
 
 
+# v5 (04/09/2026): os três servidores foram achados. Agora LISTAR o conteúdo de cada um.
+LISTAGENS = {
+    "inpe_diretorio_diario": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/",
+    "inpe_diretorio_focos": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/",
+    "cemaden_wfs_camadas": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetCapabilities",
+    "ana_s3_spreadsheet": "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/?list-type=2&prefix=data/spreadsheet&max-keys=200",
+    "ana_s3_raiz": "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/?list-type=2&prefix=data/&delimiter=/&max-keys=200",
+}
+
+
 def main() -> None:
     relatorio = {}
+    print(f"\n{'='*70}\n=== LISTAGENS DOS SERVIDORES ACHADOS\n{'='*70}")
+    relatorio["_listagens"] = {}
+    for nome, url in LISTAGENS.items():
+        print(f"\n-- {nome}\n   {url}")
+        try:
+            corpo, ct, _ = baixar(url, 900_000)
+        except Exception as e:  # noqa: BLE001
+            print(f"   !! {type(e).__name__}: {e}"); continue
+        if "wfs" in nome:
+            nomes = re.findall(r"<(?:wfs:)?Name>([^<]+)</(?:wfs:)?Name>", corpo)
+            alerta = [n for n in nomes if re.search(r"alerta|risco|munic|aviso", n, re.I)]
+            print(f"   camadas: {len(nomes)} | com 'alerta/risco/munic': {alerta[:25]}")
+            relatorio["_listagens"][nome] = {"total": len(nomes), "relevantes": alerta[:40], "amostra": nomes[:40]}
+        elif "s3" in nome:
+            keys = re.findall(r"<Key>([^<]+)</Key>", corpo)
+            prefixos = re.findall(r"<Prefix>([^<]+)</Prefix>", corpo)
+            print(f"   pastas: {prefixos[:20]}")
+            print(f"   arquivos ({len(keys)}): {keys[:20]}")
+            relatorio["_listagens"][nome] = {"prefixos": prefixos[:30], "keys": keys[:60]}
+        else:
+            links = re.findall(r'href="([^"?][^"]*)"', corpo)
+            print(f"   links ({len(links)}): {links[:30]}")
+            relatorio["_listagens"][nome] = links[:60]
     for chave, pagina in ALVOS.items():
         print(f"\n{'='*70}\n=== {chave} — {pagina}\n{'='*70}")
         relatorio[chave] = {"pagina": pagina, "scripts": [], "candidatos": {}}
