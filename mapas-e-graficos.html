@@ -51,36 +51,31 @@
     <div class="maps-grid">
       <div class="map-box">
         <h3 class="map-card-h">1 · Verificação municipal: atos localizados</h3>
-        <p class="note"><strong id="countComAto">—</strong> municípios verificados com algum documento: plano preventivo ou decreto reativo de emergência. Cores distinguem o tipo de ato (passe o mouse).</p>
         <svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto;"></svg>
         <div class="map-legend" id="pointsLegend"></div>
       </div>
       <div class="map-box" id="nivelverificacao">
         <h3 class="map-card-h">1b · Nível de verificação municipal (todos os 5.571)</h3>
-        <p class="note" style="margin:0 0 8px;">Até onde a verificação do Monitor chegou em cada município, em quatro níveis; o que ainda não foi verificado aparece como tal, não como ausência.</p>
         <svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto;"></svg>
         <div class="map-legend" id="legNiveis"></div>
         <div class="fonte-figura" id="fonteNiveis" style="font-size:12.5px; color:var(--muted); margin-top:6px;"></div>
       </div>
       <div class="map-box">
         <h3 class="map-card-h">2 · Cobertura: % de municípios com ato</h3>
-        <p class="note" style="margin:0 0 8px;">Percentual de municípios do estado com algum ato formal; quanto mais escuro, maior o percentual.</p>
         <svg id="mapCobertura" role="img" aria-label="Mapa do Brasil: percentual de municípios de cada estado com algum ato formal" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legCobertura"></div>
       </div>
       <div class="map-box">
         <h3 class="map-card-h">3 · Natureza dos atos: decretos reativos ou planos preventivos?</h3>
-        <p class="note" style="margin:0 0 8px;">Em cada estado com atos, o que predomina; hachura = nenhum ato identificado.</p>
         <svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legNatureza"></div>
       </div>
       <div class="map-box" id="riscoinstrumento">
         <h3 class="map-card-h">4 · Risco projetado × instrumento estadual</h3>
-        <p class="note" style="margin:0 0 8px;">Relação entre o risco projetado nos Boletins nº 1 e 2 do Painel El Niño e a área coberta pelo instrumento estadual vigente.</p>
         <svg id="mapConsistencia" role="img" aria-label="Mapa do Brasil: relação entre o risco projetado pelos boletins federais e a área coberta pelo instrumento de cada estado, com o risco abrangendo suas consequências diretas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legConsist"></div>
         <details style="margin-top:14px;">
-      <summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela: risco e instrumento de cada estado (com definições)</summary>
+      <summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
       <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="margin-top:10px;">
         <table class="mun-table">
           <thead><tr><th style="width:52px;">UF</th><th>Risco projetado (Boletins nº 1–2)</th><th>Área do instrumento estadual</th></tr></thead>
@@ -91,27 +86,17 @@
       </div>
 <div class="map-box">
         <h3 class="map-card-h">5 · Municípios prioritários — quem já publicou, quem ainda não</h3>
-        <p class="note" style="margin:0 0 8px;"><strong id="countPrioritariosTotal">—</strong> municípios prioritários do Cadastro Nacional de Suscetíveis: <strong id="countPrioritariosPublicados">—</strong> já têm instrumento localizado (ponto cheio); os demais aparecem tracejados.</p>
         <svg id="mapPrioritarios" role="img"
       aria-label="Mapa do Brasil com os municípios prioritários do Cadastro Nacional (aproximação por população), distinguindo os que já têm instrumento localizado dos que ainda não"
       viewBox="0 0 480 460" style="width:100%; max-width:640px; height:auto; display:block; margin:0 auto;"></svg>
         <div class="map-legend" id="legPrioritarios"></div>
-        <details style="margin-top:10px;">
-          <summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Como esta lista foi montada</summary>
-          <p class="note" style="margin-top:8px;">O Cadastro Nacional de Municípios Suscetíveis a enxurradas, inundações e deslizamentos (Nota Técnica nº 1/2025/SADJ-VI/SEPAC/CC/PR, Casa Civil) tem a lista nominal restrita a login no portal do Ministério. Este mapa usa uma aproximação transparente: em cada estado, os municípios de maior população, na mesma quantidade da nota técnica. Ponto tracejado significa "não localizamos até o corte", nunca "não existe".</p>
-        </details>
   </div>
 <div class="map-box">
         <h3 class="map-card-h">6 · Cidades que decretaram emergência</h3>
-        <p class="note" style="margin:0 0 8px;"><strong id="countAtosResposta">—</strong> cidades que decretaram situação de emergência ou calamidade pública, localizadas em fontes oficiais até o corte. Passe o mouse para ver data e causa. <span id="carimboAtos"></span></p>
         <svg id="mapAtosResposta" role="img"
       aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, atos de resposta que não pontuam no índice"
       viewBox="0 0 480 460" style="width:100%; max-width:640px; height:auto; display:block; margin:0 auto;"></svg>
         <div class="map-legend" id="legAtosResposta"></div>
-        <details style="margin-top:10px;">
-          <summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Por que estes decretos não entram no índice</summary>
-          <p class="note" style="margin-top:8px;">Decretos de emergência são atos de resposta a dano já ocorrido; o MARÉ mede preparação demonstrada antes do evento, então eles nunca pontuam (<a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Correção B</a>, §5.6). Este mapa é um registro de transparência à parte — não um histórico completo do país, mas o que foi localizado em fontes oficiais.</p>
-        </details>
   </div>
 
       </div>
@@ -124,28 +109,23 @@
     <div class="charts-grid">
       <div class="chart-box">
         <h3 class="map-card-h">1 · Status geral dos planos estaduais</h3>
-        <p class="note">Das 27 UFs, quantas têm plano novo, readaptado, em elaboração, recorrente — ou nenhum plano nominal localizado até o corte.</p>
         <div class="canvas-wrap"><canvas id="chartDonut"></canvas></div>
       </div>
       <div class="chart-box">
         <h3 class="map-card-h">2 · Status por região</h3>
-        <p class="note">Distribuição dos status por região; mostra se a ausência de plano é dispersa ou concentrada.</p>
         <div class="canvas-wrap"><canvas id="chartRegion"></canvas></div>
       </div>
 
       <div class="chart-box">
         <h3 class="map-card-h">4 · Status das 27 capitais</h3>
-        <p class="note">O retrato muda quando se olha a execução municipal, não só a estadual.</p>
         <div class="canvas-wrap"><canvas id="chartCapitals"></canvas></div>
       </div>
       <div class="chart-box">
         <h3 class="map-card-h">5 · O vão da prova: municípios com plano, declarado × documentado (PR · SC · RS)</h3>
-        <p class="note">Municípios com plano declarado a órgão de controle ou sistema estadual versus municípios com documento localizado por esta verificação. Só PR, SC e RS mantêm levantamento público nominal; critérios no documento de metodologia.</p>
         <div style="position:relative; height:230px;"><canvas id="chartDeclarado"></canvas></div>
       </div>
       <div class="chart-box">
         <h3 class="map-card-h">6 · Áreas temáticas dos instrumentos estaduais (COBRADE)</h3>
-        <p class="note">Classificação pela taxonomia oficial de desastres: o grupo Seca (1.4.1) compreende estiagem, seca, incêndio florestal e baixa umidade; a família das chuvas reúne os grupos Meteorológico (1.3) e Hidrológico (1.2). Instrumentos multiárea contam em cada uma; passe o mouse para ver os estados.</p>
         <div style="position:relative; height:220px;"><canvas id="chartAreas"></canvas></div>
       </div>
     </div>
@@ -158,7 +138,6 @@
   <div class="panel" style="margin-bottom:24px;">
     <h2 id="financiamento">Como o dinheiro chega</h2>
     <div class="chart-box" style="border-left:4px solid var(--amber);">
-      <p class="note" style="margin:0;">O conteúdo sobre dinheiro — as sete rotas por que o recurso público chega ao município, a série com a faixa do defeso, o mapa de habilitação federal por estado, os compromissos federais e o financiamento por área — ganhou página própria: <a href="financiamento.html"><strong>Por onde o dinheiro chega</strong></a>. Peso zero no índice; nada muda no MARÉ.</p>
     </div>
   </div>
 </main>
@@ -292,7 +271,7 @@ svgPoints.append('g').selectAll('path')
   .on('mouseleave', hideTip);
 
 const contaveis = MAP_POINTS.filter(p => p.categoria==='plano' || p.categoria==='plano_antigo' || p.categoria==='decreto').length;
-document.getElementById('countComAto').textContent = contaveis;
+(document.getElementById('countComAto')||{}).textContent = contaveis;
 
 // ordenar para desenhar "plano" por cima de "decreto" por cima de "não localizado"
 const drawOrder = ['nao_verificado','nao_localizado','nao_el_nino','coberto_estadual','plano_elaboracao','estrutura','decreto','plano_antigo','plano'];
@@ -368,8 +347,8 @@ Object.entries(CADASTRO_UF_N).forEach(([uf, n]) => {
   }));
 });
 const nPublicados = prioritariosProxy.filter(x => x.publicado).length;
-document.getElementById('countPrioritariosPublicados').textContent = nPublicados;
-document.getElementById('countPrioritariosTotal').textContent = prioritariosProxy.length;
+(document.getElementById('countPrioritariosPublicados')||{}).textContent = nPublicados;
+(document.getElementById('countPrioritariosTotal')||{}).textContent = prioritariosProxy.length;
 
 const svgPrior = d3.select('#mapPrioritarios');
 svgPrior.append('g').selectAll('path')
@@ -410,7 +389,7 @@ const eventosNovos = (ATOS_RESPOSTA.eventos || []).map(e => ({
   danos: e.danos, decreto: e.decreto, fonte: e.fonte,
 }));
 const TODOS_ATOS_RESPOSTA = [...eventosAntigos, ...eventosNovos];
-document.getElementById('countAtosResposta').textContent = TODOS_ATOS_RESPOSTA.length;
+(document.getElementById('countAtosResposta')||{}).textContent = TODOS_ATOS_RESPOSTA.length;
 
 const svgResp = d3.select('#mapAtosResposta');
 (function(){ const ev = ATOS_RESPOSTA.eventos || []; const datas = ev.map(e => e.data).filter(Boolean).map(d => d.split('/').reverse().join('-')).sort(); const ult = datas.length ? datas[datas.length - 1].split('-').reverse().join('/') : '—';

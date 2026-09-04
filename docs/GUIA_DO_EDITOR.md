@@ -202,3 +202,13 @@ isso existe no Netlify como recurso pago — é só pedir.
 
 ---
 *Guia do Editor · Futura Evidence Lab · 01/09/2026.*
+
+## Figuras: só título, legenda e crédito (regra de 04/09/2026)
+
+Mapa ou gráfico traz três coisas e nada mais: o **título**, a **legenda** (cores, faixas,
+totais que ajudam a ler a figura) e **um crédito de uma linha** ("Fonte: nome · data"; se
+não houve coleta, "· sem coleta até o corte"). Nenhuma nota, dica, "como ler", "por que está
+vazio" ou instrução de uso — o leitor não quer explicação sobre o que está vendo. O que for
+dado (um total, uma contagem, "nenhum alerta vigente") entra como item de legenda. Tabela ou
+texto alternativo, por acessibilidade, fica num `<details>` fechado com resumo neutro
+("Ver em tabela"). O portão `scripts/verificar_figuras.js` bloqueia a publicação se isso voltar.

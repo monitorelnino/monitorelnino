@@ -72,38 +72,33 @@
 
       <div class="map-box" id="boxTipoRisco">
         <p class="map-card-h">1 · Tipo de risco projetado para o ciclo</p>
-        <p class="note">Que <em>tipo</em> de risco os boletins do Painel projetam para cada estado — estiagem, chuvas, incêndios ou mais de um. A cor indica tipo, não gravidade: aqui não há escala de intensidade.</p>
         <svg id="mapaTipoRisco" role="img" aria-label="Mapa do Brasil por tipo de risco projetado nos boletins do Painel El Niño" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legTipoRisco"></div>
-        <details><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela: o que o boletim projeta para cada estado</summary>
+        <details><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="margin-top:10px;"><table class="mun-table" id="tblTipoRisco"><thead><tr><th>UF</th><th>Risco projetado no boletim</th><th>Tipo</th></tr></thead><tbody></tbody></table></div>
         </details>
       </div>
 
       <div class="map-box" id="boxSecas">
         <p class="map-card-h">2 · Seca observada — Monitor de Secas</p>
-        <p class="note">Categoria de seca publicada pela ANA e pelos parceiros estaduais, de S0 (fraca) a S4 (excepcional). Quanto mais escuro, mais severa a categoria declarada pelo Monitor.</p>
         <svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legSecas"></div>
       </div>
 
       <div class="map-box" id="boxAvisos">
         <p class="map-card-h">3 · Avisos meteorológicos vigentes</p>
-        <p class="note">Quantos avisos o INMET mantém ativos em cada estado; quanto mais escuro, mais avisos. Passe o mouse para ver o grau de cada um, no nome que o próprio instituto usa.</p>
         <svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos vigentes do INMET" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legAvisos"></div>
       </div>
 
       <div class="map-box" id="boxFogo">
         <p class="map-card-h">4 · Focos ativos nas últimas 24 horas</p>
-        <p class="note">Contagem de focos publicada pelo Programa Queimadas do INPE; quanto mais escuro, mais focos. É medida do que já está queimando, não de risco futuro.</p>
         <svg id="mapaFogo" role="img" aria-label="Mapa do Brasil pelo número de focos ativos nas últimas 24 horas segundo o INPE" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legFogo"></div>
       </div>
 
       <div class="map-box" id="boxCemaden">
         <p class="map-card-h">5 · Alertas de risco vigentes — CEMADEN</p>
-        <p class="note">Alertas hidrológicos e geológicos emitidos aos municípios monitorados; quanto mais escuro, mais alertas no estado. Passe o mouse para ver os níveis declarados.</p>
         <svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legCemaden"></div>
       </div>
@@ -118,29 +113,22 @@
 
       <div class="chart-box wide" id="boxOni">
         <h3>1 · Índice ONI: a série que define o fenômeno</h3>
-        <p class="note">A anomalia de temperatura do Pacífico medida pelo CPC/NOAA, trimestre a trimestre. É esse índice, e não a impressão de quem observa, que caracteriza oficialmente um El Niño.</p>
         <div class="canvas-wrap" id="wrapOni"></div>
       </div>
 
       <div class="chart-box" id="boxPlume">
         <h3>2 · Probabilidade por trimestre</h3>
-        <p class="note">Chance de El Niño, condição neutra ou La Niña em cada trimestre à frente, segundo o conjunto de modelos do IRI/CPC. As três faixas de cada trimestre somam 100%.</p>
         <div class="canvas-wrap" id="wrapPlume"></div>
       </div>
 
       <div class="chart-box" id="boxTipos">
         <h3>3 · Estados por tipo de risco projetado</h3>
-        <p class="note">Quantos dos 27 estados têm cada tipo de risco projetado nos boletins do Painel. As cores são as mesmas do mapa 1.</p>
         <div class="canvas-wrap" id="wrapTipos"><canvas id="cTipos"></canvas></div>
       </div>
 
       <div class="chart-box wide" id="boxCruz">
         <h3>4 · Tipo de risco projetado × estágio do arcabouço público</h3>
-        <p class="note">Para cada tipo de risco, em que faixa do índice MARÉ estão os estados que o enfrentam. A altura da barra é o número de estados; a cor, a faixa. As 27 unidades aparecem uma única vez.</p>
         <div class="canvas-wrap" id="wrapCruz"><canvas id="cCruz"></canvas></div>
-        <details><summary style="cursor:pointer; color:var(--link); font-weight:600;">Como ler este gráfico — e o que ele não diz</summary>
-          <p class="note" style="margin-top:10px;">O eixo horizontal vem dos boletins oficiais; a cor, do índice MARÉ. Uma barra alta e escura significa que vários estados enfrentam aquele tipo de risco com o arcabouço público ainda em estágio inicial — o que é uma pergunta a fazer, não uma conclusão sobre a capacidade de resposta deles. O cruzamento é de leitura: nenhum estado ganha ou perde ponto por causa do risco que lhe cabe.</p>
-        </details>
       </div>
 
     </div>
@@ -213,18 +201,15 @@ const pathGen = __ctx().path;
 const fonteDe = id => (SINAIS.fontes || {})[id] || {};
 const coletada = id => fonteDe(id).status === 'coletado';
 
-/* Credita a fonte embaixo de cada figura, sempre com documento e data. */
+/* Crédito de UMA linha ao pé do cartão (04/09/2026): "Fonte: nome · data" ou "· sem coleta até o corte". */
 function credito(caixaId, fonteId, extra){
   const f = fonteDe(fonteId), caixa = document.getElementById(caixaId);
-  if(!caixa) return;
-  const p = document.createElement('p');
-  p.className = 'note'; p.style.margin = '8px 0 0'; p.dataset.credito = fonteId;
-  p.innerHTML = coletada(fonteId)
-    ? 'Fonte: <a href="' + esc(f.url_publica) + '" target="_blank" rel="noopener">' + esc(f.nome) + ' · ' + esc(f.orgao) + '</a>. ' +
-      esc(f.documento || '') + ' · consultado em ' + esc(f.consultado_em) + '.' + (extra ? ' ' + extra : '')
-    : 'Não localizamos coleta desta fonte até o corte. Confira na origem: <a href="' + esc(f.url_publica) +
-      '" target="_blank" rel="noopener">' + esc(f.nome) + ' · ' + esc(f.orgao) + '</a>.';
-  caixa.appendChild(p);
+  if(!caixa || caixa.querySelector('.fonte-figura')) return;
+  const d = document.createElement('div');
+  d.className = 'fonte-figura'; d.dataset.credito = fonteId;
+  d.innerHTML = 'Fonte: <a href="' + esc(f.url_publica) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a> · ' +
+    (coletada(fonteId) ? 'consultado em ' + esc(f.consultado_em) : 'sem coleta até o corte');
+  caixa.appendChild(d);
 }
 
 /* Marca visualmente uma figura que espera a primeira coleta. */
@@ -237,20 +222,6 @@ function lacuna(alvoId, texto){
   alvo.appendChild(d);
 }
 
-/* Para mapa cuja fonte ainda não respondeu: explica o vazio em vez de deixá-lo mudo.
-   Some sozinho na rodada em que a fonte entrar. */
-function explicarVazio(caixaId, fonteId, oQueVira){
-  if(coletada(fonteId)) return;
-  const f = fonteDe(fonteId), caixa = document.getElementById(caixaId);
-  if(!caixa) return;
-  const det = document.createElement('details');
-  det.innerHTML = '<summary style="cursor:pointer; color:var(--link); font-weight:600;">Por que este mapa ainda está vazio</summary>' +
-    '<p class="note" style="margin-top:10px;">A rotina semanal do site ainda não registrou uma coleta de <strong>' + esc(f.nome) +
-    '</strong> (' + esc(f.orgao) + '). Enquanto isso o mapa fica em cinza uniforme, porque preencher com estimativa contrariaria a regra ' +
-    'de prova do projeto. Quando a coleta entrar, o mapa passa a mostrar ' + oQueVira + ', e este aviso desaparece sozinho. ' +
-    'Até lá, o dado está disponível na origem, no link abaixo.</p>';
-  caixa.appendChild(det);
-}
 
 /* ---------- desenho genérico de mapa coroplético por UF ---------- */
 function desenharMapa(svgId, legendaId, corDe, rotuloDe, itensLegenda){
@@ -280,7 +251,6 @@ desenharMapa('mapaSecas', 'legSecas',
   uf => { const s = seca(uf); return s ? (SECA_COR[s.categoria] || NEUTRA) : NEUTRA; },
   uf => { const s = seca(uf); return s ? 'Categoria ' + esc(s.categoria) : 'Aguardando a primeira coleta desta fonte'; },
   Object.keys(SECA_COR).map(c => ({cor:SECA_COR[c], rotulo:c})).concat([{cor:NEUTRA, rotulo:'Sem coleta até o corte'}]));
-explicarVazio('boxSecas', 'monitor_secas', 'a categoria de seca de cada estado, de S0 a S4');
 credito('boxSecas', 'monitor_secas');
 
 // ---- Mapa 3: avisos INMET ----
@@ -293,7 +263,6 @@ desenharMapa('mapaAvisos', 'legAvisos',
     const graus = Object.entries(a.graus || {}).map(([g, n]) => esc(g) + ': ' + n).join(' · ');
     return a.total + ' aviso(s) vigente(s)' + (graus ? '<br>' + graus : ''); },
   [{cor:'#E3EAF0', rotulo:'Menos avisos'}, {cor:'#35566B', rotulo:'Mais avisos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
-explicarVazio('boxAvisos', 'inmet_avisos', 'quantos avisos cada estado tem vigentes, e de que grau');
 credito('boxAvisos', 'inmet_avisos');
 
 // ---- Mapa 4: focos ativos ----
@@ -304,7 +273,6 @@ desenharMapa('mapaFogo', 'legFogo',
   uf => { const f = fogo(uf); return f ? escalaFogo(f.focos_24h) : NEUTRA; },
   uf => { const f = fogo(uf); return f ? f.focos_24h + ' foco(s) nas últimas 24 h' : 'Aguardando a primeira coleta desta fonte'; },
   [{cor:'#F0E4DC', rotulo:'Menos focos'}, {cor:'#A65F3F', rotulo:'Mais focos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
-explicarVazio('boxFogo', 'inpe_fogo', 'quantos focos ativos o INPE contou em cada estado nas últimas 24 h');
 credito('boxFogo', 'inpe_fogo');
 
 // ---- Mapa 5: alertas vigentes do CEMADEN ----
@@ -317,24 +285,11 @@ desenharMapa('mapaCemaden', 'legCemaden',
     const niveis = Object.entries(a.niveis || {}).map(([n, q]) => esc(n) + ': ' + q).join(' · ');
     return a.total + ' alerta(s) vigente(s)' + (niveis ? '<br>' + niveis : ''); },
   [{cor:'#E7E4D6', rotulo:'Menos alertas'}, {cor:'#6B6A44', rotulo:'Mais alertas'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
-// 04/09/2026: o CEMADEN passou a coletar. Quando a coleta ocorre e a resposta oficial é
-// "nenhum alerta vigente", isso é INFORMAÇÃO, não lacuna — e precisa ser dito com essas palavras,
-// nunca como "não localizamos coleta" (que significaria falha nossa, não ausência de alerta).
+// CEMADEN: "nenhum alerta vigente" é informação da fonte, não lacuna — vai na LEGENDA, não em parágrafo.
 (function(){
   const temAlerta = Object.values((SINAIS && SINAIS.uf) || {}).some(u => u.alertas_cemaden && u.alertas_cemaden.total);
-  if (coletada('cemaden_alertas') && !temAlerta) {
-    const caixa = document.getElementById('boxCemaden');
-    if (caixa) {
-      const p = document.createElement('p');
-      p.className = 'note'; p.style.margin = '8px 0 0';
-      p.innerHTML = '<strong>Nenhum alerta vigente no momento da consulta.</strong> O mapa em cinza aqui significa ' +
-        'ausência de alerta declarada pela fonte — não ausência de coleta. O CEMADEN respondeu; a lista de alertas ' +
-        'vigentes estava vazia.';
-      caixa.appendChild(p);
-    }
-  } else {
-    explicarVazio('boxCemaden', 'cemaden_alertas', 'quantos alertas cada estado tem vigentes, e em que nível');
-  }
+  const leg = document.getElementById('legCemaden');
+  if (leg && coletada('cemaden_alertas') && !temAlerta) MonitorMapas.legenda('legCemaden', [{cor:'#DCD3C2', rotulo:'nenhum alerta vigente na consulta'}, {cor:'#6B6A44', rotulo:'com alertas (quando houver)'}]);
 })();
 credito('boxCemaden', 'cemaden_alertas');
 
@@ -350,9 +305,9 @@ const cartoes = [
 ];
 document.getElementById('cartoesCiclo').innerHTML = cartoes.map((c, i) =>
   '<div class="chart-box" id="cartaoCiclo' + i + '"><h3>' + esc(c.t) + '</h3>' +
-  '<p class="cartao-ciclo-valor">' +
-  (c.v ? esc(c.v) : '<span class="lacuna">Não localizamos coleta até o corte</span>') +
-  '</p></div>').join('');
+  '<div class="cartao-ciclo-valor">' +
+  (c.v ? esc(c.v) : '<span class="lacuna">sem coleta até o corte</span>') +
+  '</div></div>').join('');
 cartoes.forEach((c, i) => credito('cartaoCiclo' + i, c.f));
 
 // =============================  Gráficos  =============================
