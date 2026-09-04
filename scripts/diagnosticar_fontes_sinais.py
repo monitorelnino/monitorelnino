@@ -29,7 +29,7 @@ ALVOS = {
 RE_URL = re.compile(r'["\'`](https?://[^"\'`\s]{10,200})["\'`]')
 RE_PATH = re.compile(r'["\'`((](/(?:api|rest|service|services|data|dados|geoserver|ows|wms|wfs|json)[^"\'`\s)]{0,160})["\'`)]', re.I)
 RE_INTERESSE = re.compile(r'api|rest|service|geoserver|\.json|\.csv|wfs|ows|dados|data/', re.I)
-RE_RUIDO = re.compile(r'w3\.org|schema\.org|googleapis|gstatic|fonts?\.|jquery|bootstrap|angular\.io|github\.com|license|\.png|\.jpg|\.svg|\.woff|\.css$', re.I)
+RE_RUIDO = re.compile(r'w3\.org|schema\.org|opengis\.net|googleapis|googletagmanager|googleadservices|adservice\.google|doubleclick|gstatic|youtube|pinterest|facebook|twitter|linkedin|fonts?\.|jquery|bootstrap|angular\.io|github\.com|cloudflare|jsdelivr|vlibras|recaptcha|wp\.com|api\.w\.org|license|\.png|\.jpg|\.svg|\.woff|\.css$', re.I)
 
 
 def baixar(url: str, limite: int = 4_000_000) -> tuple:
@@ -66,6 +66,22 @@ def testar(url: str) -> str:
         return f"{type(e).__name__}: {e}"
 
 
+# Sondagens dirigidas, a partir do que a 2ª rodada já provou existir.
+SONDAS = {
+    "monitor_secas_rpc": [f"https://apimsbr.ana.gov.br/rpc/v1/{r}" for r in
+        ("mapa", "mapas", "map", "monitor", "shapefile", "shapefiles", "municipios", "municipio",
+         "categorias", "dados_tabulares", "dados-tabulares", "tabular", "tabulares", "planilha",
+         "ultimo_mapa", "ultimo-mapa", "last_map", "arquivos", "files", "sig", "dados_sig",
+         "publicacoes", "calendario", "change_maps", "disclaimer")],
+    "monitor_secas_raiz": ["https://apimsbr.ana.gov.br/rpc/v1/", "https://apimsbr.ana.gov.br/rpc/",
+                            "https://apimsbr.ana.gov.br/rest/", "https://apimsbr.ana.gov.br/api/"],
+    "cemaden_geoserver": ["https://mapainterativo.cemaden.gov.br/geoserver/web/",
+        "https://mapainterativo.cemaden.gov.br/geoserver/ows?service=WFS&version=1.0.0&request=GetCapabilities",
+        "http://www2.cemaden.gov.br/geoserver/ows?service=WFS&version=1.0.0&request=GetCapabilities",
+        "https://mapainterativo.cemaden.gov.br/resources/alertas.json"],
+}
+
+
 def main() -> None:
     relatorio = {}
     for chave, pagina in ALVOS.items():
@@ -80,8 +96,15 @@ def main() -> None:
         # candidatos já visíveis no próprio HTML
         cands = candidatos_em(html, pagina)
         scripts = scripts_de(html, pagina)
-        print(f"  scripts encontrados: {len(scripts)}")
-        for s in scripts[:12]:
+        # 04/09/2026 (2ª correção): prioriza scripts do PRÓPRIO domínio da fonte e lê todos.
+        # O corte em 12 e a mistura com Google/jQuery/YouTube escondiam justamente os
+        # arquivos que carregam os dados (exportador_csv_situacao_atual.js, enso_forecast.js).
+        host = urllib.parse.urlparse(pagina).netloc
+        proprios = [u for u in scripts if urllib.parse.urlparse(u).netloc == host]
+        terceiros = [u for u in scripts if urllib.parse.urlparse(u).netloc != host]
+        scripts = proprios + terceiros
+        print(f"  scripts encontrados: {len(scripts)} ({len(proprios)} do próprio domínio)")
+        for s in scripts:
             print(f"    - {s}")
             relatorio[chave]["scripts"].append(s)
             try:
@@ -95,6 +118,15 @@ def main() -> None:
             r = testar(c)
             print(f"    {c}\n      -> {r}")
             relatorio[chave]["candidatos"][c] = r
+    print(f"\n{'='*70}\n=== SONDAGENS DIRIGIDAS\n{'='*70}")
+    relatorio["_sondas"] = {}
+    for grupo, urls in SONDAS.items():
+        print(f"\n-- {grupo}")
+        for u in urls:
+            r = testar(u)
+            if "HTTPError 404" not in r:   # só o que não é 404 interessa
+                print(f"  {u}\n    -> {r}")
+            relatorio["_sondas"][u] = r
     with open("diagnostico_sinais.json", "w", encoding="utf-8") as f:
         json.dump(relatorio, f, ensure_ascii=False, indent=1)
     print("\n→ diagnostico_sinais.json gravado.")
