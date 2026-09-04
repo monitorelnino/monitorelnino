@@ -67,6 +67,19 @@ def testar(url: str) -> str:
 
 
 # Sondagens dirigidas, a partir do que a 2ª rodada já provou existir.
+# 04/09/2026 (v4): três achados firmes da v3 orientam esta rodada —
+#  (a) ANA: API é apimsbr.ana.gov.br/rpc/v1/<recurso> (change_maps e disclaimer confirmados);
+#      os arquivos ficam no bucket ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/data/...
+#  (b) CEMADEN: GeoServer em gsc.cemaden.gov.br (responde WMS) + WebService MapaInterativoWS;
+#  (c) INPE: os dados não estão no JS da página — o exportador monta a URL do portal de
+#      dados abertos, então sondamos diretamente os caminhos publicados do Programa Queimadas.
+ALVO_EXTRA_JS = {
+    "inpe_exportador": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/assets-sa/js/situacao_atual/exportador_csv_situacao_atual.js",
+    "inpe_boot": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/assets-sa/js/situacao_atual/boot.js",
+    "inpe_loader": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/components-sa/loader.js",
+    "iri_enso": "https://iri.columbia.edu/wp-content/themes/iri/assets/js/enso_forecast.js?ver=7.1",
+}
+
 SONDAS = {
     "monitor_secas_rpc": [f"https://apimsbr.ana.gov.br/rpc/v1/{r}" for r in
         ("mapa", "mapas", "map", "monitor", "shapefile", "shapefiles", "municipios", "municipio",
@@ -75,6 +88,19 @@ SONDAS = {
          "publicacoes", "calendario", "change_maps", "disclaimer")],
     "monitor_secas_raiz": ["https://apimsbr.ana.gov.br/rpc/v1/", "https://apimsbr.ana.gov.br/rpc/",
                             "https://apimsbr.ana.gov.br/rest/", "https://apimsbr.ana.gov.br/api/"],
+    "ana_s3": ["https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/?list-type=2&prefix=data/&max-keys=60",
+               "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/?list-type=2&prefix=data/shapefile&max-keys=40",
+               "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/?list-type=2&prefix=data/spreadsheet&max-keys=40"],
+    "cemaden_ws": ["https://mapservices.cemaden.gov.br/MapaInterativoWS/resources/layer/",
+                    "https://mapainterativo.cemaden.gov.br/MapaInterativoWS/resources/layer/",
+                    "https://gsc.cemaden.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetCapabilities",
+                    "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetCapabilities",
+                    "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/wms?service=WMS&version=1.3.0&request=GetCapabilities"],
+    "inpe_portal": ["https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/estatisticas/estatisticas_estados/",
+                     "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/media/focos/focos_abertos_24h_Brasil.csv",
+                     "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/",
+                     "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/24h/",
+                     "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/estatisticas/estatisticas_estados/dados.json"],
     "cemaden_geoserver": ["https://mapainterativo.cemaden.gov.br/geoserver/web/",
         "https://mapainterativo.cemaden.gov.br/geoserver/ows?service=WFS&version=1.0.0&request=GetCapabilities",
         "http://www2.cemaden.gov.br/geoserver/ows?service=WFS&version=1.0.0&request=GetCapabilities",
@@ -118,6 +144,26 @@ def main() -> None:
             r = testar(c)
             print(f"    {c}\n      -> {r}")
             relatorio[chave]["candidatos"][c] = r
+    print(f"\n{'='*70}\n=== SCRIPTS-CHAVE (leitura direta e extração de URLs)\n{'='*70}")
+    relatorio["_scripts_chave"] = {}
+    for nome, url in ALVO_EXTRA_JS.items():
+        print(f"\n-- {nome}: {url}")
+        try:
+            js, _, _ = baixar(url)
+        except Exception as e:  # noqa: BLE001
+            print(f"   !! {type(e).__name__}: {e}"); continue
+        achados = candidatos_em(js, url)
+        # também qualquer coisa que pareça caminho de arquivo de dados
+        achados += [m for m in re.findall(r'["\'`]([^"\'`\s]{4,160}\.(?:csv|json|geojson|zip|txt))["\'`]', js)]
+        achados = list(dict.fromkeys(achados))
+        print(f"   {len(achados)} candidato(s)")
+        relatorio["_scripts_chave"][nome] = {}
+        for c in achados[:20]:
+            u = c if c.startswith("http") else urllib.parse.urljoin(url, c)
+            r = testar(u)
+            print(f"   {u}\n     -> {r}")
+            relatorio["_scripts_chave"][nome][u] = r
+
     print(f"\n{'='*70}\n=== SONDAGENS DIRIGIDAS\n{'='*70}")
     relatorio["_sondas"] = {}
     for grupo, urls in SONDAS.items():
