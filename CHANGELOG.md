@@ -39,6 +39,19 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Rota do dinheiro das MPs no topo da página de finanças (05/09/2026)
+- Nova seção 0, antes de todo o conteúdo: barras de prazo das MPs 1.367 (R$ 337,5 mi,
+  incêndios; Ibama 194,4 mi + ICMBio 143,1 mi) e 1.384 (R$ 925 mi, alimentos; Conab 849 mi
+  em estoques + MDS ~76 mi em cestas), e o fluxo MP → órgão executor → uso declarado, com
+  larguras proporcionais ao valor. Dotações das notas oficiais (Agência Gov, Câmara, Conab)
+  e do Congresso; `data/financiamento/mps_2026.json`.
+- Execução (empenhado/liquidado/pago) e destino (brigadas por estado, estoques por armazém,
+  cestas por município) declarados como "sem coleta até o corte"; a parcela paga aparece
+  dentro do bloco do órgão quando coletada. Sonda da API de despesas (que aceita a chave)
+  preparada para preencher isso.
+- Só título, legenda e crédito de uma linha (portão de figuras ✓).
+
+
 ### ADPF 743 no cartão dos dez estados intimados (05/09/2026)
 - Campo `adpf743` em `estados.json` para AC, AM, AP, MA, MT, MS, PA, RO, RR, TO: intimação
   (25/05/2026, nota oficial do STF), decisão de 26/06/2026 — MT e PA homologados (nota oficial

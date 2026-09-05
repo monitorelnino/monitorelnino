@@ -17,6 +17,20 @@
 <link rel="stylesheet" href="assets/base.css">
 <script src="assets/mapas.js"></script>
 <style>
+  /* Prazos das MPs (05/09/2026): mesmo desenho das barras da página inicial */
+  .prazos-barras{display:flex; flex-direction:column; gap:12px;}
+  .prazo{display:grid; grid-template-columns:1fr auto; gap:4px 14px; align-items:end;}
+  .prazo-titulo{font-family:'Fraunces', Georgia, serif; font-weight:300; font-size:16px; line-height:1.3; color:var(--ink);}
+  .prazo-meta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); white-space:nowrap;}
+  .prazo-meta strong{color:var(--ink); font-weight:600;}
+  .prazo-trilho{grid-column:1 / -1; height:10px; background:#D6C4AC; border-radius:999px; overflow:hidden; position:relative;}
+  .prazo-resta{position:absolute; right:0; top:0; bottom:0; background:#C9814B; border-radius:999px;}
+  .prazo-resta.urgente{background:#7C4A34;}
+  .prazo-resta.vencido{background:#8FA5A8; width:100% !important; opacity:.55;}
+  .prazo-datas{grid-column:1 / -1; display:flex; justify-content:space-between; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12px; color:var(--muted); letter-spacing:.04em;}
+  .rota-mp-rotulo{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; fill:var(--ink);}
+  .rota-mp-valor{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12px; fill:var(--muted);}
+
 /* --- financiamento.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
   .grad-line{height:4px; border-radius:2px; border:none; margin:0; background:linear-gradient(90deg,#A65F3F 0%,#C69B72 20%,#8FA6B5 48%,#35566B 88%);}
@@ -50,6 +64,18 @@
   <p class="selo">Financiamento · registro de transparência · peso zero no índice</p>
   <h1>Por onde o dinheiro chega</h1>
   <p class="hint" id="subFin">Sete rotas por que o dinheiro público chega ao município — mais a rota estadual — sempre na mesma ordem e nas mesmas cores, cada uma rotulada pela chave que a abre: <strong>regra</strong>, <strong>decreto</strong>, <strong>discricionária</strong> ou <strong>direta</strong>. Cada figura diz o órgão, a consulta e a data. Separa o que vem <em>antes</em> do dano do que vem <em>depois</em>; nunca soma resposta a preparação. Nada aqui entra no índice MARÉ. Corte: <strong id="corteFin">—</strong>.</p>
+
+  <div class="panel" id="rotaMpsSecao" style="margin-bottom:24px;">
+    <h2 style="margin-top:0;">0 · A rota do dinheiro das duas MPs do ciclo</h2>
+  <div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-box" id="boxRotaMPs">
+      <h3 class="map-card-h">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
+      <div class="prazos-barras" id="mpsPrazos" style="margin:8px 0 14px;"></div>
+      <div id="rotaMPs" style="width:100%; min-height:300px;"></div>
+      <div class="map-legend" id="legRotaMPs"></div>
+    </div>
+  </div>
+  </div>
 
   <div class="panel" id="comoler">
     <h2 style="margin-top:0;">1 · Como ler: as sete rotas e o que o decreto destranca</h2>
@@ -193,7 +219,74 @@
 </div>
 
 <script>
-let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, PAINEL;
+let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, PAINEL, MPS;
+
+// ===== 0 · Rota do dinheiro das MPs (05/09/2026): barras de prazo + fluxo MP → órgão → uso =====
+function renderRotaMPs(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const mps = (MPS && MPS.mps) || [];
+  const brl = v => 'R$ ' + (v >= 1e9 ? (v/1e9).toFixed(2).replace('.', ',') + ' bi' : (v/1e6).toFixed(1).replace('.', ',') + ' mi');
+  const dataBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  // barras de prazo (publicação → deliberação)
+  document.getElementById('mpsPrazos').innerHTML = mps.map(mp => {
+    const ini = dataBR(mp.publicada_em), fim = dataBR(mp.tramitacao.deliberacao_ate);
+    const dias = Math.round((fim - hoje) / 86400000), resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));
+    const vencido = dias < 0, cls = vencido ? 'vencido' : resta < 0.3 ? 'urgente' : '';
+    const quando = vencido ? `transcorrido há ${-dias} dia(s)` : dias === 0 ? 'vence hoje' : `${dias} dias`;
+    return `<div class="prazo ${vencido ? 'vencido' : ''}" role="group" aria-label="${esc(mp.numero)}">
+      <div class="prazo-titulo">${esc(mp.numero)} — ${brl(mp.valor)} · ${esc(mp.tema)}</div>
+      <div class="prazo-meta">deliberação · <strong>${quando}</strong></div>
+      <div class="prazo-trilho" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(resta*100)}" aria-valuetext="${Math.round(resta*100)}% do prazo restante"><div class="prazo-resta ${cls}" style="width:${(resta*100).toFixed(1)}%; background:${vencido ? '' : mp.cor}"></div></div>
+      <div class="prazo-datas"><span>publicada em ${esc(mp.publicada_em)}</span><span>${esc(mp.tramitacao.situacao)} · até ${esc(mp.tramitacao.deliberacao_ate)}</span></div>
+    </div>`; }).join('');
+  // fluxo MP → órgão → uso (SVG, três colunas; larguras proporcionais ao valor)
+  const box = document.getElementById('rotaMPs'); box.innerHTML = '';
+  const W = Math.max(640, box.clientWidth || 900), colW = 200, gapX = (W - 3*colW) / 2, H = 330, pad = 14;
+  const total = mps.reduce((s, m) => s + m.valor, 0), escala = (H - pad*(mps.length+1)) / total;
+  const svg = d3.select(box).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('width', '100%').attr('role', 'img')
+    .attr('aria-label', 'Fluxo: MP → órgão executor → uso, larguras proporcionais ao valor');
+  let y0 = pad;
+  mps.forEach(mp => {
+    const h = mp.valor * escala; const x0 = 0, x1 = colW + gapX, x2 = 2*(colW + gapX);
+    svg.append('rect').attr('x', x0).attr('y', y0).attr('width', colW).attr('height', h).attr('rx', 6).attr('fill', mp.cor);
+    svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x0 + 10).attr('y', y0 + Math.min(18, h/2 + 4)).text(mp.numero);
+    svg.append('text').attr('class', 'rota-mp-valor').attr('x', x0 + 10).attr('y', y0 + Math.min(34, h/2 + 20)).text(brl(mp.valor));
+    let yo = y0;
+    mp.orgaos.forEach(org => {
+      const ho = org.valor * escala;
+      svg.append('path').attr('d', `M${x0+colW},${yo} C${x0+colW+gapX/2},${yo} ${x1-gapX/2},${yo} ${x1},${yo} L${x1},${yo+ho} C${x1-gapX/2},${yo+ho} ${x0+colW+gapX/2},${y0+ (yo-y0) + ho} ${x0+colW},${yo+ho} Z`)
+        .attr('fill', mp.cor).attr('opacity', .35);
+      svg.append('rect').attr('x', x1).attr('y', yo).attr('width', colW).attr('height', ho).attr('rx', 6).attr('fill', mp.cor).attr('opacity', .85);
+      svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x1 + 10).attr('y', yo + Math.min(18, ho/2 + 4)).text(org.nome + ' · ' + brl(org.valor));
+      // execução (barra escura dentro do órgão) — só quando coletada
+      if (mp.execucao && mp.execucao.status === 'coletado' && mp.execucao.pago != null) {
+        const frac = Math.max(0, Math.min(1, (org.execucao_pago ?? mp.execucao.pago) / (org.execucao_pago != null ? org.valor : mp.valor)));
+        svg.append('rect').attr('x', x1).attr('y', yo).attr('width', colW * frac).attr('height', ho).attr('rx', 6).attr('fill', '#15201A').attr('opacity', .55);
+      }
+      let yu = yo;
+      org.usos.forEach(u => {
+        const hu = u.valor * escala;
+        svg.append('path').attr('d', `M${x1+colW},${yu} C${x1+colW+gapX/2},${yu} ${x2-gapX/2},${yu} ${x2},${yu} L${x2},${yu+hu} C${x2-gapX/2},${yu+hu} ${x1+colW+gapX/2},${yu+hu} ${x1+colW},${yu+hu} Z`)
+          .attr('fill', mp.cor).attr('opacity', .25);
+        svg.append('rect').attr('x', x2).attr('y', yu).attr('width', colW).attr('height', hu).attr('rx', 6).attr('fill', '#EDE6D8').attr('stroke', mp.cor);
+        const linhas = u.nome.length > 34 ? [u.nome.slice(0, 34) + '…'] : [u.nome];
+        svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x2 + 10).attr('y', yu + Math.min(18, hu/2 + 4)).text(linhas[0]);
+        if (hu > 30) svg.append('text').attr('class', 'rota-mp-valor').attr('x', x2 + 10).attr('y', yu + Math.min(34, hu/2 + 20)).text(brl(u.valor));
+        yu += hu;
+      });
+      yo += ho;
+    });
+    y0 += h + pad;
+  });
+  ['MP', 'Órgão executor', 'Uso declarado'].forEach((t, i) => svg.append('text').attr('class', 'rota-mp-valor').attr('x', i*(colW+gapX)).attr('y', H - 2).text(t));
+  const exec = mps.map(mp => mp.execucao && mp.execucao.status === 'coletado' ? `${mp.numero}: pago ${brl(mp.execucao.pago)} (${mp.execucao.atualizado_em})` : `${mp.numero}: execução sem coleta até o corte`);
+  MonitorMapas.legenda('legRotaMPs', [
+    ...mps.map(mp => ({cor: mp.cor, rotulo: mp.numero + ' · ' + mp.tema})),
+    {cor: '#15201A', rotulo: 'parcela já paga (quando coletada)'},
+    ...exec.map(t => ({cor: '#D6C4AC', rotulo: t}))]);
+  fonteFigura('boxRotaMPs', 'Fontes: Congresso Nacional, Agência Gov, Câmara, Conab · execução: Portal da Transparência · sem coleta até o corte');
+}
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = '#DCD3C2';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -206,10 +299,11 @@ function somaPreparacao(valoresPorRota){
 }
 async function __load(){
   const carregar = f => fetch(f).then(r => { if(!r.ok) throw new Error('Falha ao carregar ' + f); return r.json(); });
-  [BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP] = await Promise.all([
+  [BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS] = await Promise.all([
     'data/geo_uf.json','data/financiamento/rotas.json','data/financiamento/por_uf.json','data/financiamento/compromissos_federais.json',
     'data/financiamento/serie_nacional.json','data/financiamento/emendas.json','data/financiamento/consultas.json','data/transferencias.json',
-    'data/atos_resposta.json','data/populacao_censo2022.json'].map(carregar));
+    'data/atos_resposta.json','data/populacao_censo2022.json','data/financiamento/mps_2026.json'].map(carregar));
+  renderRotaMPs();
   try { PAINEL = await carregar('data/painel/agregados.json'); } catch(e) { PAINEL = null; }
   __init();
 }
