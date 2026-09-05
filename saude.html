@@ -110,6 +110,7 @@
       <div class="chart-box wide" id="boxSerie">
         <h3 class="map-card-h">Série semanal de dengue · 2026 × 2025 × 2024</h3>
         <div class="canvas-wrap" id="serieWrap"><canvas id="serieDengue" aria-label="Série semanal de dengue — aguardando coleta"></canvas></div>
+        <div class="map-legend" id="legSerie"></div>
       </div>
     </div>
   </div>
@@ -216,7 +217,23 @@ function __init(){
   const ROT = {ambos:'Defesa civil e saúde', so_dc:'Só defesa civil', so_saude:'Só saúde', nenhum:'Nenhum localizado', nv:'Saúde ainda não verificada'};
   document.getElementById('quadrantes').innerHTML = Object.keys(ROT).map(k => '<div style="border:1px solid var(--line); border-radius:8px; padding:10px;"><div class="map-card-h">'+ROT[k]+' · <strong>'+q[k].length+'</strong></div><div class="lista-uf" style="margin:0; font-size:13.5px; color:var(--muted);">'+(q[k].join(' · ')||'—')+'</div></div>').join('');
   fonteFigura('boxQuadrantes', 'Fonte: Monitor El Niño Brasil · corte '+esc(SUF.corte));
-  fonteFigura('boxSerie', 'Fonte: Painel de Arboviroses (MS) · sem coleta até o corte');
+  // Série semanal 2026 × 2025 × 2024 (05/09/2026): soma das 27 capitais no InfoDengue — não é o total nacional.
+  const SER = SSIN.serie_capitais;
+  if (SER && SER.anos && Object.keys(SER.anos).length && typeof Chart !== 'undefined') {
+    MonitorMapas.padraoGraficos(window.Chart);
+    const semanas = Array.from({length: 52}, (_, i) => String(i + 1).padStart(2, '0'));
+    const cores = {'2026': '#7C4A34', '2025': '#C9814B', '2024': '#8FA5A8'};
+    const ds = Object.keys(SER.anos).sort().reverse().map(ano => ({label: ano, data: semanas.map(w => SER.anos[ano][w] ?? null),
+      borderColor: cores[ano] || '#5E7C93', backgroundColor: 'transparent', borderWidth: ano === '2026' ? 2.5 : 1.5, pointRadius: 0, tension: .25, spanGaps: false}));
+    new Chart(document.getElementById('serieDengue'), {type: 'line', data: {labels: semanas.map(w => 'SE ' + w), datasets: ds},
+      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}},
+                scales: {x: {ticks: {maxTicksLimit: 13}}, y: {title: {display: true, text: 'casos estimados · 27 capitais'}}}}});
+    document.getElementById('serieDengue').setAttribute('aria-label', 'Série semanal de dengue, soma das 27 capitais, 2024 a 2026');
+    MonitorMapas.legenda('legSerie', Object.keys(cores).map(a => ({cor: cores[a], rotulo: a})));
+    fonteFigura('boxSerie', 'Fonte: InfoDengue (Fiocruz/FGV), soma das 27 capitais · consultado em ' + esc(SER.coletado_em) + ' · não é o total nacional');
+  } else {
+    fonteFigura('boxSerie', 'Fonte: InfoDengue (Fiocruz/FGV), 27 capitais · sem coleta até o corte');
+  }
 }
 __load().catch(err => { const m = document.getElementById('subSaude'); if (m) m.insertAdjacentHTML('afterend', '<p class="note" style="color:var(--rust)">Erro ao carregar os dados: '+esc(err.message)+'</p>'); });
 </script>

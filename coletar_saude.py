@@ -120,9 +120,30 @@ def parse_infodengue(dados) -> dict:
             "nivel": ult.get("nivel"), "data_iniSE": ult.get("data_iniSE")}
 
 
+def parse_serie_infodengue(dados) -> dict:
+    """{'AAAA-SS': casos_est} de uma resposta multi-ano do InfoDengue (SE no formato AAAASS). Função pura."""
+    out = {}
+    for r in (dados if isinstance(dados, list) else []):
+        se = r.get("SE"); v = r.get("casos_est")
+        if isinstance(se, int) and se >= 200000 and v is not None:
+            out[f"{se // 100}-{se % 100:02d}"] = float(v)
+    return out
+
+
+def somar_series(series: list) -> dict:
+    """Soma por semana (AAAA-SS) as séries das capitais → {ano: {SS: total}}. Função pura."""
+    tot = {}
+    for serie in series:
+        for chave, v in serie.items():
+            ano, ss = chave.split("-")
+            tot.setdefault(ano, {})[ss] = round(tot.setdefault(ano, {}).get(ss, 0.0) + v, 1)
+    return tot
+
+
 def coletar():
     _, por_nome = referencia_ibge()
     sinais = ler("saude_sinais.json"); ano = date.today().year; ok = lac = 0
+    series_capitais = []   # 05/09/2026: série semanal 2024–2026 (27 capitais somadas) para o gráfico da página de Saúde
     for uf, cap in CAPITAIS.items():
         cod = por_nome.get((cap, uf))
         url = INFODENGUE_API.format(geocode=cod, ano=ano)
@@ -133,6 +154,12 @@ def coletar():
             continue
         h = preservar_evidencia(bruto, url, "json", "coletar_saude")
         r = parse_infodengue(dados)
+        # série 2024–2026 da capital (mesma API, janela de três anos)
+        try:
+            url_s = INFODENGUE_API.format(geocode=cod, ano=ano).replace(f"ey_start={ano}", f"ey_start={ano-2}")
+            series_capitais.append(parse_serie_infodengue(json.loads(buscar(url_s, timeout=45).decode("utf-8", "replace"))))
+        except Exception as e:  # noqa: BLE001
+            registrar_lacuna(f"InfoDengue série/{cap}-{uf}", type(e).__name__, canal="DOU", camada=1, uf=uf, municipio=cap, ibge=cod)
         if r:
             sinais["dengue_capitais"][uf] = {**r, "municipio": cap, "ibge": cod, "fonte": "modelo InfoDengue (Fiocruz/FGV)",
                                              "url": url, "coletado_em": date.today().strftime("%d/%m/%Y"), "hash_evidencia": h}
@@ -152,6 +179,9 @@ def coletar():
     else:
         sinais["fontes"]["infodengue"]["status"] = "aguardando_primeira_coleta"
     sinais["fontes"]["infodengue"]["consultado_em"] = hoje_br
+    if series_capitais:
+        sinais["serie_capitais"] = {"medida": "casos estimados de dengue por semana epidemiológica, soma das 27 capitais (InfoDengue) — não é o total nacional",
+                                    "capitais": len(series_capitais), "anos": somar_series(series_capitais), "coletado_em": hoje_br}
     sinais["gerado_em"] = date.today().strftime("%d/%m/%Y")
     gravar("saude_sinais.json", sinais)
     print(f"InfoDengue: {ok} capitais coletadas, {lac} lacunas")
@@ -177,6 +207,11 @@ def autoteste():
             for n, b in antes.items():
                 if b is not None: (cb.DATA / n).write_bytes(b)
     def t4(): f = ler("saude_federal.json"); return all(c["url"] is None or c["url"].startswith("https://www.gov.br/") for c in f["cartoes"])
+    def t7():  # série: SE AAAASS → 'AAAA-SS'; soma de capitais por semana; malformado ignorado
+        a = parse_serie_infodengue([{"SE": 202601, "casos_est": 10.5}, {"SE": 202602, "casos_est": 2}, {"SE": "x", "casos_est": 1}, {"SE": 202601}])
+        b = parse_serie_infodengue([{"SE": 202601, "casos_est": 4.5}, {"SE": 202503, "casos_est": 7}])
+        t = somar_series([a, b])
+        return a == {"2026-01": 10.5, "2026-02": 2.0} and t["2026"]["01"] == 15.0 and t["2026"]["02"] == 2.0 and t["2025"]["03"] == 7.0 and parse_serie_infodengue(None) == {}
     def t5():  # negativo: autoteste não altera dados reais (o próprio t3 já rodou)
         import coletores_base as cb
         return (cb.DATA / "saude_sinais.json").read_bytes() == _SNAP
@@ -190,7 +225,8 @@ def autoteste():
     _SNAP = (cb.DATA / "saude_sinais.json").read_bytes() if (cb.DATA / "saude_sinais.json").exists() else b""
     return rodar_autoteste({"parser InfoDengue: última SE": t1, "negativo: resposta vazia/malformada": t2,
                             "semear: 27 UFs NAO_VERIFICADO (sem tocar os dados reais)": t3, "cartões federais: nenhum link fora de gov.br": t4,
-                            "negativo: autoteste não altera dados reais": t5, "status: falha de rede não rebaixa coleta válida": t6})
+                            "negativo: autoteste não altera dados reais": t5, "status: falha de rede não rebaixa coleta válida": t6,
+                            "série 2024–2026: parse e soma das capitais": t7})
 
 
 if __name__ == "__main__":
