@@ -39,6 +39,20 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Monitor Saúde v0.1 no topo da página de Saúde (05/09/2026, decisão editorial — Metodologia §31)
+- Medida separada do MARÉ, mesma gramática, peso zero no índice. Prontidão sanitária por UF
+  verificada = média (1/2, 1/2) de instrumento operacional (escada da §9) e antecipação (régua
+  ancorada na janela crítica out/2026–mar/2027 declarada pelo MS em 26/08/2026: edição 2026/2027
+  antes de 01/10 = 100; 2025/2026 = 45; anterior = 20; nenhuma = 0). UF não verificada não recebe
+  número. Sem número nacional enquanto houver UF não verificada.
+- Hoje: 11 UFs verificadas, todas em "em construção" (planos sazonais 2025/2026 = 45; DF e PR,
+  com edições antigas, 32,5). 16 UFs em cinza. GO, se o plano El Niño 2026-2027 for localizado
+  em fonte oficial, iria a 100 ("avançado") — o primeiro do país.
+- `gerar_monitor_saude.py` (7 autotestes) na cadeia de derivados e na rotina; mapa + barras +
+  tabela alternativa no topo de `saude.html`; portão `verificar_saude.py` (m) com teste negativo;
+  runtime da página confere 27 UFs, legenda e barras.
+
+
 ### Bateria estadual de saúde — bloco 2 (05/09/2026)
 - Mais quatro UFs com plano localizado em fonte oficial (VIG): CE (2025/2026, 01/07/2025),
   PE (2025/2026, 22/01/2025), PR (2024/2025; página oficial de dengue suspensa pelo defeso —

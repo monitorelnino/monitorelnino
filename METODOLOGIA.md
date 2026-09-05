@@ -828,3 +828,19 @@ Cláusula de neutralidade (padrão do §5.2.1): o que segue explica escolhas de 
 | TO | VIG (45) | READ (65) | 55.0 | 41.7 insuficiente | 38.3 insuficiente | -3.4 |
 
 Três julgamentos ficam explicitamente como **pistas** até o ato em fonte oficial: RR (Gabinete Integrado da Operação El Niño 2026-2027, imprensa de 02/09/2026 — se localizado no DOE-RR, estrutura passa a novo e o total vai a ~59,5), BA (comitê do Plano Estadual El Niño 2026/2027, imprensa de 01–02/09/2026 — se localizado, ~34,9, saindo de crítico) e AC (planos nomeados sem número/data). Nenhum deles pontuou por imprensa: *imprensa descobre, nunca registra*.
+
+## 31. Monitor Saúde v0.1 — prontidão sanitária estadual (decisão editorial de 05/09/2026)
+
+**O que é.** Uma medida **separada do MARÉ**, com a mesma gramática (escada de status, régua de antecipação, pesos iguais, faixas), publicada no topo da página de Saúde. Peso zero no índice: `data/monitor_saude.json` nunca é lido por `recalcular_mare.py` (portão), e o MARÉ não muda um décimo por causa dele. Motivação: a camada de saúde (§9) já era observada e classificada, mas sem uma leitura sintética que o leitor pudesse comparar entre estados; a editoria pediu "um monitor de saúde no topo, com critérios semelhantes ao MARÉ".
+
+**Um componente pontuado, por UF verificada.** Prontidão = média com pesos iguais (1/2, 1/2) — como no componente estadual do MARÉ v3.0 (§30) — de:
+1. **Instrumento operacional** — status do plano estadual de saúde para arboviroses/clima, na escada da §9: novo (100) · readequado (65) · vigente-recorrente (45) · em elaboração (35) · não localizado, com bateria datada (0).
+2. **Antecipação** — a edição em vigor em relação à janela crítica de saúde declarada pelo Ministério da Saúde no Plano de Preparação e Resposta a Emergências em Saúde Pública associadas ao El Niño 2026-2027 (apresentado ao Conass em 26/08/2026): **out/2026–mar/2027**. Edição para 2026/2027 publicada antes de 01/10/2026 → 100; edição 2025/2026 (temporada que acabou de passar, ainda o instrumento vigente) → 45; edição anterior a 2025 → 20; sem instrumento → 0.
+
+**Duas leituras de contexto, nunca pontuadas:** risco observado agora (nível de dengue na capital pelo InfoDengue; avisos de calor do INMET; focos do INPE) e risco sanitário projetado (família derivada dos boletins do Painel El Niño, §9). Elas aparecem na tabela e nos quadrantes, ao lado da prontidão, para que o leitor cruze preparo com exposição sem que o Monitor misture as duas coisas.
+
+**O que o Monitor não faz.** UF ainda não verificada **não recebe número** — aparece em cinza, como "ainda não verificado", nunca como zero. Não há número nacional enquanto houver UF não verificada: o resumo diz quantas foram verificadas e quantas caem em cada faixa; a média das verificadas é publicada como tal, com a nota de que não é um número nacional. As faixas são as do site: estágio inicial (0–25), em construção (25–50), consolidado (50–70), avançado (70–100).
+
+**Por que "v0.1".** A régua tem um sub-elemento a menos que o MARÉ v3.0: a estrutura de coordenação sanitária (COE-dengue, gabinete saúde-clima, sala de situação) ainda não é coletada de forma sistemática. Quando for, entra como terceiro sub-elemento, com versão nova declarada antes. Enquanto isso, o instrumento e a antecipação já são verificáveis, datados e citados por UF (`data/saude_uf.json`, campo por campo).
+
+**Governança.** Gerado por `gerar_monitor_saude.py` a cada atualização (parte da cadeia de derivados); portão `verificar_saude.py` (m): número só para UF verificada, prontidão idêntica à média dos sub-elementos, motor do índice não referencia o arquivo. Autotestes cobrem a escada, a régua de antecipação, os limites das faixas e o caso negativo (status fora do vocabulário não pontua).

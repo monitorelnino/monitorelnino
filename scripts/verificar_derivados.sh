@@ -11,6 +11,7 @@ cd "$(dirname "$0")/.."
 MODO="${1:-git}"
 export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd)).timestamp()))")}"
 python3 recalcular_mare.py --write >/dev/null
+python3 gerar_monitor_saude.py >/dev/null
 python3 gerar_feeds.py >/dev/null
 python3 gerar_dados_abertos.py >/dev/null
 python3 gerar_pdf_indice.py >/dev/null
@@ -18,7 +19,7 @@ python3 gerar_pdf_metodologia.py >/dev/null
 python3 scripts/gerar_manifesto.py >/dev/null
 if [ "$MODO" = "--idempotencia" ]; then
   ANTES="$(git ls-files -z | xargs -0 sha256sum 2>/dev/null | sha256sum)"
-  python3 recalcular_mare.py --write >/dev/null; python3 gerar_feeds.py >/dev/null; python3 gerar_dados_abertos.py >/dev/null
+  python3 recalcular_mare.py --write >/dev/null; python3 gerar_monitor_saude.py >/dev/null; python3 gerar_feeds.py >/dev/null; python3 gerar_dados_abertos.py >/dev/null
   python3 gerar_pdf_indice.py >/dev/null; python3 gerar_pdf_metodologia.py >/dev/null; python3 scripts/gerar_manifesto.py >/dev/null
   DEPOIS="$(git ls-files -z | xargs -0 sha256sum 2>/dev/null | sha256sum)"
   if [ "$ANTES" = "$DEPOIS" ]; then echo "✓ DERIVADOS OK — cadeia canônica idempotente nesta rodada (segunda regeneração não alterou nada)."; exit 0
