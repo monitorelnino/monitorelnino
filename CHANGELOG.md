@@ -39,6 +39,16 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Bateria estadual de saúde — bloco 4 (05/09/2026): 17 de 27 verificadas
+- PA → VIG (plano em execução contínua, notícia oficial da SESPA, 02/2025; documento a
+  localizar); PB → VIG (PDF oficial de 15/02/2024). Federal: Plano de Contingência Nacional
+  para Dengue, Chikungunya e Zika (MS, 2025) como cartão.
+- Emergências sanitárias de 2026: busca manual não localizou ESPIN nem decreto estadual por
+  arboviroses em 2026 (achados são de 2024 e 2025); contexto de queda de 73% da dengue
+  (MS, 22/07). Logado; coleta automática do DOU segue pendente.
+- Pendentes de busca individual: AC, RR, AP, TO, RO, AL, RN, PI, MA (e o estadual de MT).
+
+
 ### Bateria estadual de saúde — bloco 3 (05/09/2026): 15 de 27 verificadas; dois "novos"
 - **GO → NOVO (100):** Plano de Emergências em Saúde Pública de Goiás para o El Niño 2026-2027,
   Nota Informativa nº 1/2026 – SES/SUVISA/SUVEPI/GESP/V-21845 (27/08/2026), listada no portal
