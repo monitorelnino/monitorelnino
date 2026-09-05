@@ -29,12 +29,13 @@
   }
  },
  "resumo": {
-  "verificadas": 11,
-  "nao_verificadas": 16,
+  "verificadas": 15,
+  "nao_verificadas": 12,
   "por_faixa": {
-   "em construção": 11
+   "avançado": 2,
+   "em construção": 13
   },
-  "media_das_verificadas": 42.7,
+  "media_das_verificadas": 50.3,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -101,20 +102,20 @@
    ]
   },
   "AM": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "NOVO",
+    "pontos": 100,
+    "doc": "Plano de Contingência para Emergências em Saúde Pública Relacionadas a Eventos Climáticos Sazonais de Seca e Estiagem (publicado em 08/06/2026; cinco estágios operacionais: normalidade, mobilização, alerta, situação de emergência e crise)",
+    "data": "08/06/2026",
+    "orgao": "SES-AM / FVS-RCP",
+    "url": "https://www.fvs.am.gov.br",
+    "temporada": "2026/2027"
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 100,
     "janela_critica_inicio": "01/10/2026"
    },
    "risco_atual": {
@@ -256,20 +257,20 @@
    ]
   },
   "ES": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Contingência Estadual das Arboviroses — Dengue, Zika e Chikungunya (PDF no portal oficial 'mosquito.saude.es.gov.br'; sem data de edição no documento localizado)",
     "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "orgao": "SESA-ES",
+    "url": "https://mosquito.saude.es.gov.br/Media/dengue/Notas-Tecnicas-Alertas-Epidemiologicos/Plano%20Conting%C3%AAncia%20Arboviroses.pdf",
+    "temporada": "desconhecida"
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 45,
     "janela_critica_inicio": "01/10/2026"
    },
    "risco_atual": {
@@ -287,20 +288,20 @@
    ]
   },
   "GO": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "NOVO",
+    "pontos": 100,
+    "doc": "Plano de Emergências em Saúde Pública de Goiás — cenários do El Niño 2026-2027 (calor extremo, baixa umidade, fumaça de queimadas, arboviroses), apresentado em 27/08/2026, com a Nota Informativa nº 1/2026 – SES/SUVISA/SUVEPI/GESP/V-21845 encaminhada aos 246 municípios",
+    "data": "27/08/2026",
+    "orgao": "SES-GO / SUVISA",
+    "url": "https://www.saude.go.gov.br/unidades-de-saude/outras-unidades",
+    "temporada": "2026/2027"
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 100,
     "janela_critica_inicio": "01/10/2026"
    },
    "risco_atual": {
@@ -597,20 +598,20 @@
    ]
   },
   "RJ": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 40.0,
+   "faixa": "em construção",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "ELAB",
+    "pontos": 35,
+    "doc": "Plano de Contingência para Enfrentamento às Arboviroses — em atualização: a SES-RJ anunciou em 01/2025 a preparação do plano para 2025 e, em ata da Assessoria de Regionalização (12/2025), o grupo técnico 'se encontra em fase de atualização do plano'; a última edição publicada localizada é 2018/2019",
+    "data": "12/2025",
+    "orgao": "SES-RJ",
+    "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzY0ODg,",
+    "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 45,
     "janela_critica_inicio": "01/10/2026"
    },
    "risco_atual": {
