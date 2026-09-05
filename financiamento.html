@@ -280,12 +280,12 @@ function renderRotaMPs(){
     y0 += h + pad;
   });
   ['MP', 'Órgão executor', 'Uso declarado'].forEach((t, i) => svg.append('text').attr('class', 'rota-mp-valor').attr('x', i*(colW+gapX)).attr('y', H - 2).text(t));
-  const exec = mps.map(mp => mp.execucao && mp.execucao.status === 'coletado' ? `${mp.numero}: pago ${brl(mp.execucao.pago)} (${mp.execucao.atualizado_em})` : `${mp.numero}: execução sem coleta até o corte`);
+  const exec = mps.map(mp => mp.execucao && mp.execucao.status === 'coletado' ? `${mp.numero}: ações reforçadas — pago ${brl(mp.execucao.pago)} de ${brl(mp.execucao.empenhado)} empenhado desde a MP (${mp.execucao.meses.join(', ')})` : `${mp.numero}: execução sem coleta até o corte`);
   MonitorMapas.legenda('legRotaMPs', [
     ...mps.map(mp => ({cor: mp.cor, rotulo: mp.numero + ' · ' + mp.tema})),
-    {cor: '#15201A', rotulo: 'parcela já paga (quando coletada)'},
+    {cor: '#15201A', rotulo: 'parcela paga nas ações reforçadas (inclui dotação ordinária da ação — teto, não a execução do crédito)'},
     ...exec.map(t => ({cor: '#D6C4AC', rotulo: t}))]);
-  fonteFigura('boxRotaMPs', 'Fontes: Congresso Nacional, Agência Gov, Câmara, Conab · execução: Portal da Transparência · sem coleta até o corte');
+  fonteFigura('boxRotaMPs', mps.some(mp => mp.execucao && mp.execucao.status === 'coletado') ? 'Fontes: Congresso Nacional, Agência Gov, Câmara, Conab · execução: Portal da Transparência, arquivos mensais · ' + esc(mps[0].execucao.atualizado_em) : 'Fontes: Congresso Nacional, Agência Gov, Câmara, Conab · execução: Portal da Transparência · sem coleta até o corte');
 }
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = '#DCD3C2';
