@@ -39,6 +39,14 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Saúde: série semanal de dengue 2024–2026 pelo InfoDengue (05/09/2026)
+- O Painel de Arboviroses do MS é Tableau sem API; a série passa a vir do InfoDengue
+  (Fiocruz/FGV), que já coletamos para as capitais: o coletor pede a janela 2024–2026 de
+  cada capital e soma as 27 por semana epidemiológica. Rótulo e crédito dizem "soma das 27
+  capitais — não é o total nacional". Autoteste da soma. O gráfico desenha 2026 em Argila,
+  2025 em Âmbar, 2024 em Mineral; padrão de gráficos da casa aplicado.
+
+
 ### Execução das ações das MPs, pelos arquivos mensais abertos (05/09/2026)
 - Quatro sondas da API do Portal mostraram: `por-orgao` devolve o orçamento inteiro do
   órgão (não a MP); `plano-orcamentario` é catálogo sem valores; `movimentacao-liquida`
