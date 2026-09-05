@@ -27,18 +27,17 @@ def main():
     chave = os.environ.get("PORTAL_TRANSPARENCIA_API_KEY", "")
     print("chave presente:", bool(chave), "| comprimento:", len(chave))
     if not chave: return
-    # variantes de nome de parâmetro para descobrir a forma aceita
-    for params in ({"ano": 2026, "orgao": "44201", "pagina": 1}, {"ano": 2026, "codigoOrgao": "44201", "pagina": 1},
-                   {"ano": 2026, "orgaoSuperior": "44000", "pagina": 1}, {"ano": 2026, "codigoOrgaoSuperior": "44000", "pagina": 1}):
-        testar("/despesas/por-orgao", chave, params)
-    # documentos de despesa (empenhos) por órgão/período — forma provável
-    for params in ({"unidadeGestora": "443001", "dataEmissaoInicial": "15/06/2026", "dataEmissaoFinal": "05/09/2026", "fase": 1, "pagina": 1},
-                   {"codigoOrgao": "44201", "dataEmissaoInicial": "15/06/2026", "dataEmissaoFinal": "05/09/2026", "fase": 1, "pagina": 1}):
-        testar("/despesas/documentos", chave, params)
-    testar("/despesas/por-funcional", chave, {"ano": 2026, "codigoFuncao": "18", "pagina": 1})
-    testar("/despesas/por-orgao", chave, {"ano": 2026, "orgao": "22211", "pagina": 1})   # Conab?
-    testar("/despesas/por-orgao", chave, {"ano": 2026, "orgao": "55000", "pagina": 1})   # MDS
-    testar("/despesas/por-orgao", chave, {"ano": 2026, "orgao": "44207", "pagina": 1})   # ICMBio
+    # 3ª rodada (05/09/2026): execução POR AÇÃO ORÇAMENTÁRIA — onde o crédito extraordinário aparece isolado.
+    testar("/despesas/plano-orcamentario", chave, {"ano": 2026, "pagina": 1})
+    for params in ({"ano": 2026, "codigoOrgao": "20701", "pagina": 1}, {"ano": 2026, "orgao": "20701", "pagina": 1},
+                   {"ano": 2026, "codigoOrgaoSuperior": "44000", "pagina": 1}, {"ano": 2026, "acao": "2130", "pagina": 1},
+                   {"ano": 2026, "codigoAcao": "2130", "pagina": 1}, {"ano": 2026, "orgao": "22211", "pagina": 1}):
+        testar("/despesas/plano-orcamentario", chave, params)
+    for params in ({"ano": 2026, "acao": "2130", "pagina": 1}, {"ano": 2026, "codigoAcao": "2130", "pagina": 1},
+                   {"ano": 2026, "programa": "2203", "pagina": 1}, {"ano": 2026, "subfuncao": "541", "pagina": 1},
+                   {"ano": 2026, "funcao": "18", "pagina": 1}):
+        testar("/despesas/por-funcional-programatica/movimentacao-liquida", chave, params)
+    testar("/despesas/documentos", chave, {"unidadeGestora": "193099", "gestao": "19309", "dataEmissao": "01/07/2026", "fase": 1, "pagina": 1})
 
 if __name__ == "__main__":
     main()
