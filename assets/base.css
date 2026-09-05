@@ -20,7 +20,7 @@
   p{margin:0 0 10px;}
   a{color:var(--link);}
   .selo{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--muted); margin:0 0 8px;}
+    color:var(--teal); margin:0 0 8px;}
   .hint{font-size:14.5px; color:var(--muted);}
   .note{font-size:13.5px; color:var(--muted);}
   .panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px; margin:0 0 24px;}
@@ -41,7 +41,7 @@
   .mainnav a:hover{color:var(--ink); border-color:var(--ink); text-decoration:none;}
   .mainnav .ativa, .mainnav .ativa:hover{background:var(--green); color:#FFFFFF; border-color:var(--green);}
   .kicker{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; font-weight:600;
-    letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 8px;}
+    letter-spacing:.16em; text-transform:uppercase; color:var(--teal); margin:0 0 8px;}
   .site-title{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:400;
     font-size:clamp(33px, 5.4vw, 46px); line-height:1.08; letter-spacing:-.012em;
     color:var(--ink); margin:0 0 6px;}

@@ -14,10 +14,10 @@
 :root{
   --bg: #FFFFFF;        /* branco técnico */
   --surface: #FFFFFF;   /* painéis brancos, delimitados por linha */
-  --surface-2: #F4F1EA; /* osso-claro: trilhos, zebras, faixas de tabela */
+  --surface-2: #F0F4F3; /* mineral-claríssimo: trilhos, zebras, faixas de tabela */
   --ink: #0E0F0D;       /* VAZIO */
   --muted: #55645B;     /* musgo-texto (5,6:1 sobre branco) */
-  --line: #D6C4AC;      /* AREIA */
+  --line: #C5CFCE;      /* mineral-claro: linhas e bordas técnicas */
   --green: #2E3D30;     /* MUSGO — cor de ação e de "novo" */
   --teal: #5E7C93;      /* SINTÉTICO — frio de dado */
   --violet: #7A6A4F;    /* areia-escuro (dados) */
@@ -25,14 +25,16 @@
   --rust: #7C4A34;      /* ARGILA — nada localizado, urgente */
   --amber: #C9814B;     /* ÂMBAR — calor de dado (preenchimentos; texto só ≥18px) */
   --radius: 6px;        /* cantos curtos: registro técnico */
-  --link: #2E3D30;
+  --link: #4F6B80;      /* sintético-escuro (5,4:1 sobre branco) */
   --terracota: #C04430; /* o "U" do logotipo — acento único, em dose mínima */
 
   /* ausência de verificação ≠ ausência de documento (C7): cinza quente, 5,0:1 sobre branco */
-  --neutro: #6F6A61;
+  --neutro: #66736F;    /* mineral-escuro, 5,3:1 sobre branco */
+  --bioluz: #A8C99A;    /* BIOLUZ — acento positivo, em dose mínima (coletado, ok) */
+  --areia: #D6C4AC;     /* AREIA — reservada aos trilhos das barras de prazo */
 
   /* Aliases legados */
-  --osso: #F4F1EA;
+  --osso: #F0F4F3;
   --card: #FFFFFF;
 
   /* Tríade de risco da página Proteja-se (famílias do ciclo) */

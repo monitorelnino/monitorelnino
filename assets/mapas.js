@@ -9,7 +9,7 @@
    ============================================================ */
 (function (global) {
   'use strict';
-  const NEUTRA = '#E6E0D4';   // tema técnico (05/09/2026): 'sem dado' em areia-clara sobre branco
+  const NEUTRA = '#DCE3E2';   // tema técnico (05/09/2026): 'sem dado' em areia-clara sobre branco
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const tooltipEl = () => document.getElementById('mapTooltip');
   function showTip(html, evt) {
@@ -112,10 +112,10 @@
     Chart.defaults.maintainAspectRatio = false;
   }
   /** Paleta ordinal e categórica do site (tokens), para uso nos gráficos. */
-  const PALETA = { status: { NOVO: '#2E3D30', READ: '#5E7C93', ELAB: '#C9814B', VIG: '#8FA5A8', LAC: '#7C4A34', NAO_VERIFICADO: '#6F6A61' },
+  const PALETA = { status: { NOVO: '#2E3D30', READ: '#5E7C93', ELAB: '#C9814B', VIG: '#8FA5A8', LAC: '#7C4A34', NAO_VERIFICADO: '#66736F' },
                    faixas: { inicial: '#7C4A34', construcao: '#C9814B', consolidado: '#5E7C93', avancado: '#2E3D30' },
                    risco: { seca: '#C9814B', chuvas: '#5E7C93', multi: '#2E3D30' },
-                   resposta: '#7C4A34', preparacao: '#2E3D30', neutra: '#E6E0D4',
+                   resposta: '#7C4A34', preparacao: '#2E3D30', neutra: '#DCE3E2',
                    serie: ['#2E3D30', '#5E7C93', '#C9814B', '#7C4A34', '#8FA5A8', '#7A6A4F', '#A8C99A', '#55645B'] };   // paleta da marca (Musgo, Sintético, Âmbar, Argila, Mineral)
 
   global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito };
