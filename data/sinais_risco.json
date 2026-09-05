@@ -19,7 +19,7 @@
   },
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "04/09/2026",
+ "gerado_em": "05/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -39,7 +39,7 @@
    "url_publica": "https://monitordesecas.ana.gov.br/",
    "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "status": "coletado",
-   "consultado_em": "04/09/2026",
+   "consultado_em": "05/09/2026",
    "documento": "Monitor de Secas (ANA) — mapas até 2026-07-31",
    "detalhe": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "recurso": {
@@ -106,7 +106,7 @@
    "url_publica": "https://alertas2.inmet.gov.br/",
    "papel": "Avisos vigentes por área, com grau e vigência declarados pelo INMET.",
    "status": "coletado",
-   "consultado_em": "04/09/2026",
+   "consultado_em": "05/09/2026",
    "documento": "Avisos ativos no momento da consulta",
    "detalhe": "Avisos vigentes por área, com grau e vigência declarados pelo INMET."
   },
@@ -117,8 +117,8 @@
    "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
-   "consultado_em": "04/09/2026",
-   "documento": "Focos do dia — focos_diario_br_20260904.csv",
+   "consultado_em": "05/09/2026",
+   "documento": "Focos do dia — focos_diario_br_20260905.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -128,7 +128,7 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
    "papel": "Alertas vigentes emitidos aos municípios monitorados.",
    "status": "coletado",
-   "consultado_em": "04/09/2026",
+   "consultado_em": "05/09/2026",
    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
    "detalhe": "Alertas vigentes emitidos aos municípios monitorados."
   },
@@ -139,7 +139,7 @@
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
-   "consultado_em": "04/09/2026",
+   "consultado_em": "05/09/2026",
    "documento": "ONI v5, último trimestre JJA/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
@@ -990,10 +990,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 150,
+    "focos_24h": 24,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1010,10 +1010,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 24,
+    "focos_24h": 16,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1030,10 +1030,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 2476,
+    "focos_24h": 625,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1050,10 +1050,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 85,
+    "focos_24h": 31,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1070,10 +1070,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 456,
+    "focos_24h": 244,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1090,10 +1090,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 62,
+    "focos_24h": 46,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1130,10 +1130,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 38,
+    "focos_24h": 6,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1150,10 +1150,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 178,
+    "focos_24h": 53,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1170,10 +1170,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 436,
+    "focos_24h": 254,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1190,10 +1190,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 521,
+    "focos_24h": 273,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1210,10 +1210,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 213,
+    "focos_24h": 39,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1230,10 +1230,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 630,
+    "focos_24h": 136,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1250,10 +1250,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 1432,
+    "focos_24h": 639,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1270,10 +1270,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 13,
+    "focos_24h": 7,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1290,10 +1290,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 46,
+    "focos_24h": 8,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1310,10 +1310,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 321,
+    "focos_24h": 58,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1370,10 +1370,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 18,
+    "focos_24h": 8,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1390,10 +1390,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 188,
+    "focos_24h": 3,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1410,10 +1410,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 66,
+    "focos_24h": 15,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1430,10 +1430,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 11,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1450,10 +1450,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 6,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1490,10 +1490,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 137,
+    "focos_24h": 60,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1510,10 +1510,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 334,
+    "focos_24h": 77,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260904.csv",
-    "consultado_em": "04/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260905.csv",
+    "consultado_em": "05/09/2026"
    },
    "alertas_cemaden": null
   }
