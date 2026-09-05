@@ -26,7 +26,7 @@
 
 /* --- saude.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
-  .grad-line{height:4px; border-radius:2px; border:none; margin:0; background:linear-gradient(90deg,#7C4A34 0%,#C9814B 20%,#8FA5A8 48%,#2E3D30 88%);}
+  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
   .lacuna{display:flex; align-items:center; justify-content:center; min-height:150px; height:100%; border:1px dashed var(--line); border-radius:8px; padding:16px; text-align:center; font-size:13.5px; line-height:1.5; color:var(--muted); background:rgba(0,0,0,.012);}
   .uf-path:focus-visible{outline:2px solid var(--link); outline-offset:2px;}
   .fonte-espera{color:var(--muted);}
@@ -161,7 +161,7 @@
 <script>
 let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
-const NEUTRA = '#E6E0D4';
+const NEUTRA = '#DCE3E2';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const { showTip, hideTip } = MonitorMapas;
 
@@ -182,7 +182,7 @@ function __init(){
   // 0 · Monitor Saúde (v0.1, Metodologia §31): prontidão = média (instrumento, antecipação); não verificada = cinza, sem número
   (function(){
     const M = (MSAUDE && MSAUDE.ufs) || {};
-    const FX = {'estágio inicial': '#7C4A34', 'em construção': '#C9814B', 'consolidado': '#5E7C93', 'avançado': '#2E3D30', 'não verificado': '#6F6A61'};
+    const FX = {'estágio inicial': '#7C4A34', 'em construção': '#C9814B', 'consolidado': '#5E7C93', 'avançado': '#2E3D30', 'não verificado': '#66736F'};
     const ST_H = {NOVO:'novo, do ciclo', READ:'readequado', VIG:'vigente, recorrente', ELAB:'em elaboração', LAC:'não localizado', NAO_VERIFICADO:'ainda não verificado'};
     desenharMapa('mapaMonitor', 'legMonitor', uf => FX[(M[uf] || {}).faixa] || FX['não verificado'],
       uf => { const m = M[uf] || {}; if (!m.verificado) return '<em>ainda não verificado</em> — sem número'; const i = m.instrumento || {}, a = m.antecipacao || {};
@@ -202,7 +202,7 @@ function __init(){
     const bx = document.getElementById('monitorBarras');
     if (bx) bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; background:' + FX[m.faixa] + '"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
       : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
-    MonitorMapas.legenda('legMonitorBarras', [{cor: '#D6C4AC', rotulo: 'trilho 0–100'}, {cor: '#2E3D30', rotulo: 'cor = faixa'}, {cor: '#6F6A61', rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
+    MonitorMapas.legenda('legMonitorBarras', [{cor: '#D6C4AC', rotulo: 'trilho 0–100'}, {cor: '#2E3D30', rotulo: 'cor = faixa'}, {cor: '#66736F', rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
     fonteFigura('boxMonitorBarras', 'Fonte: Monitor El Niño Brasil · Monitor Saúde v0.1 · ' + esc((MSAUDE || {}).gerado_em || ''));
   })();
 
@@ -213,7 +213,7 @@ function __init(){
 
   // 2 · estadual
   const ST = {NOVO:['Novo, específico para o ciclo','#2E3D30'], READ:['Recorrente readaptado','#5E7C93'], VIG:['Vigente, sem menção ao ciclo','#8FA5A8'],
-              ELAB:['Em elaboração','#C9814B'], LAC:['Não localizado (bateria datada)','#7C4A34'], NAO_VERIFICADO:['Ainda não verificado','#6F6A61']};
+              ELAB:['Em elaboração','#C9814B'], LAC:['Não localizado (bateria datada)','#7C4A34'], NAO_VERIFICADO:['Ainda não verificado','#66736F']};
   const st = uf => (SUF.uf[uf] || {}).status || 'NAO_VERIFICADO';
   desenharMapa('mapaStatus','legStatus', uf => ST[st(uf)][1],
     uf => { const u = SUF.uf[uf]||{}; return '<em>'+esc(ST[st(uf)][0])+'</em>' + (u.doc ? '<br>'+esc(u.doc)+(u.data?' · '+esc(u.data):'') : '') + (u.data_verificacao ? '<br>verificado em '+esc(u.data_verificacao) : '<br>bateria estadual ainda não executada'); },
@@ -243,7 +243,7 @@ function __init(){
   fonteFigura('boxDengue', fD.status === 'coletado' ? 'Fonte: InfoDengue (Fiocruz/FGV) · consultado em '+esc(fD.ultima_coleta_ok || fD.consultado_em) : 'Fonte: InfoDengue (Fiocruz/FGV) · sem coleta até o corte');
   const avisos = uf => (SINAIS.uf && SINAIS.uf[uf] && SINAIS.uf[uf].avisos_inmet) || null;
   const nCalor = uf => { const a = avisos(uf); if(!a) return null; const lista = a.lista || a.avisos || []; return lista.filter(x => /calor/i.test(JSON.stringify(x))).length; };
-  const CAL = ['#EEE9E0','#C9814B','#C9814B','#7C4A34'];
+  const CAL = ['#E9EEEC','#C9814B','#C9814B','#7C4A34'];
   desenharMapa('mapaCalor','legCalor', uf => { const n = nCalor(uf); return n == null ? NEUTRA : CAL[Math.min(3, n)]; },
     uf => { const n = nCalor(uf); return n == null ? 'Aguardando coleta do INMET' : n + ' aviso(s) de calor vigente(s)'; },
     [{cor:CAL[0],rotulo:'0'},{cor:CAL[1],rotulo:'1'},{cor:CAL[2],rotulo:'2'},{cor:CAL[3],rotulo:'3+'},{cor:NEUTRA,rotulo:'aguardando coleta'}]);

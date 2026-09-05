@@ -19,7 +19,7 @@
 <style>
 /* --- sinais-de-risco.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
-  .grad-line{height:4px; border-radius:2px; border:none; margin:0; background:linear-gradient(90deg,#7C4A34 0%,#C9814B 20%,#8FA5A8 48%,#2E3D30 88%);}
+  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
   .lacuna{display:flex; align-items:center; justify-content:center; min-height:150px; height:100%; border:1px dashed var(--line); border-radius:8px; padding:16px; text-align:center; font-size:13.5px; line-height:1.5; color:var(--muted); background:rgba(0,0,0,.012);}
   .uf-path:focus-visible{outline:2px solid var(--link); outline-offset:2px;}
   .fonte-espera{color:var(--muted);}
@@ -161,7 +161,7 @@
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
 let BR_GEOJSON, SINAIS, MARE;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
-const NEUTRA = '#E6E0D4';           // estado sem dado coletado
+const NEUTRA = '#DCE3E2';           // estado sem dado coletado
 const TIPO_COR = {estiagem:'#C9814B', chuvas:'#2E3D30', incendios:'#7C4A34', misto:'#8FA5A8', sem_sinal:'#D6C4AC'};
 const FAIXAS = [
   {nome:'Estágio inicial', cor:'#7C4A34', teste:v => v < 25},
@@ -235,7 +235,7 @@ corpoTipo.innerHTML = UFS.map(uf => { const r = RISCO(uf);
          '</td><td>' + esc(r ? TIPO_ROTULO[r.tipo] : '—') + '</td></tr>'; }).join('');
 
 // ---- Mapa 2: seca observada ----
-const SECA_COR = {S0:'#EEE9E0', S1:'#C9814B', S2:'#C9814B', S3:'#A87A50', S4:'#7C4A34'};
+const SECA_COR = {S0:'#E9EEEC', S1:'#C9814B', S2:'#C9814B', S3:'#A87A50', S4:'#7C4A34'};
 const seca = uf => (SINAIS.uf[uf] || {}).secas;
 desenharMapa('mapaSecas', 'legSecas',
   uf => { const s = seca(uf); return s ? (SECA_COR[s.categoria] || NEUTRA) : NEUTRA; },
@@ -246,40 +246,40 @@ credito('boxSecas', 'monitor_secas');
 // ---- Mapa 3: avisos INMET ----
 const aviso = uf => (SINAIS.uf[uf] || {}).avisos_inmet;
 const maxAvisos = Math.max(1, ...UFS.map(uf => (aviso(uf) || {}).total || 0));
-const escalaAviso = d3.scaleLinear().domain([0, maxAvisos]).range(['#EEE9E0', '#2E3D30']);
+const escalaAviso = d3.scaleLinear().domain([0, maxAvisos]).range(['#E9EEEC', '#2E3D30']);
 desenharMapa('mapaAvisos', 'legAvisos',
   uf => { const a = aviso(uf); return a ? escalaAviso(a.total) : NEUTRA; },
   uf => { const a = aviso(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
     const graus = Object.entries(a.graus || {}).map(([g, n]) => esc(g) + ': ' + n).join(' · ');
     return a.total + ' aviso(s) vigente(s)' + (graus ? '<br>' + graus : ''); },
-  [{cor:'#EEE9E0', rotulo:'Menos avisos'}, {cor:'#2E3D30', rotulo:'Mais avisos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:'#E9EEEC', rotulo:'Menos avisos'}, {cor:'#2E3D30', rotulo:'Mais avisos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxAvisos', 'inmet_avisos');
 
 // ---- Mapa 4: focos ativos ----
 const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
 const maxFogo = Math.max(1, ...UFS.map(uf => (fogo(uf) || {}).focos_24h || 0));
-const escalaFogo = d3.scaleSqrt().domain([0, maxFogo]).range(['#F4F1EA', '#7C4A34']);
+const escalaFogo = d3.scaleSqrt().domain([0, maxFogo]).range(['#F0F4F3', '#7C4A34']);
 desenharMapa('mapaFogo', 'legFogo',
   uf => { const f = fogo(uf); return f ? escalaFogo(f.focos_24h) : NEUTRA; },
   uf => { const f = fogo(uf); return f ? f.focos_24h + ' foco(s) nas últimas 24 h' : 'Aguardando a primeira coleta desta fonte'; },
-  [{cor:'#F4F1EA', rotulo:'Menos focos'}, {cor:'#7C4A34', rotulo:'Mais focos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:'#F0F4F3', rotulo:'Menos focos'}, {cor:'#7C4A34', rotulo:'Mais focos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxFogo', 'inpe_fogo');
 
 // ---- Mapa 5: alertas vigentes do CEMADEN ----
 const alerta = uf => (SINAIS.uf[uf] || {}).alertas_cemaden;
 const maxAlerta = Math.max(1, ...UFS.map(uf => (alerta(uf) || {}).total || 0));
-const escalaAlerta = d3.scaleLinear().domain([0, maxAlerta]).range(['#EEE9E0', '#2E3D30']);
+const escalaAlerta = d3.scaleLinear().domain([0, maxAlerta]).range(['#E9EEEC', '#2E3D30']);
 desenharMapa('mapaCemaden', 'legCemaden',
   uf => { const a = alerta(uf); return a ? escalaAlerta(a.total) : NEUTRA; },
   uf => { const a = alerta(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
     const niveis = Object.entries(a.niveis || {}).map(([n, q]) => esc(n) + ': ' + q).join(' · ');
     return a.total + ' alerta(s) vigente(s)' + (niveis ? '<br>' + niveis : ''); },
-  [{cor:'#EEE9E0', rotulo:'Menos alertas'}, {cor:'#2E3D30', rotulo:'Mais alertas'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:'#E9EEEC', rotulo:'Menos alertas'}, {cor:'#2E3D30', rotulo:'Mais alertas'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 // CEMADEN: "nenhum alerta vigente" é informação da fonte, não lacuna — vai na LEGENDA, não em parágrafo.
 (function(){
   const temAlerta = Object.values((SINAIS && SINAIS.uf) || {}).some(u => u.alertas_cemaden && u.alertas_cemaden.total);
   const leg = document.getElementById('legCemaden');
-  if (leg && coletada('cemaden_alertas') && !temAlerta) MonitorMapas.legenda('legCemaden', [{cor:'#E6E0D4', rotulo:'nenhum alerta vigente na consulta'}, {cor:'#2E3D30', rotulo:'com alertas (quando houver)'}]);
+  if (leg && coletada('cemaden_alertas') && !temAlerta) MonitorMapas.legenda('legCemaden', [{cor:'#DCE3E2', rotulo:'nenhum alerta vigente na consulta'}, {cor:'#2E3D30', rotulo:'com alertas (quando houver)'}]);
 })();
 credito('boxCemaden', 'cemaden_alertas');
 
