@@ -17,6 +17,13 @@
 <link rel="stylesheet" href="assets/base.css">
 <script src="assets/mapas.js"></script>
 <style>
+  .prazos-barras{display:flex; flex-direction:column; gap:8px;}
+  .msb{display:grid; grid-template-columns:44px 1fr 56px; gap:0 10px; align-items:center;}
+  .msb b{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:600; font-size:13px; color:var(--ink);}
+  .msb .trilho{height:10px; background:#D6C4AC; border-radius:999px; overflow:hidden;}
+  .msb .barra{height:100%; border-radius:999px;}
+  .msb span{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); text-align:right;}
+
 /* --- saude.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
   .grad-line{height:4px; border-radius:2px; border:none; margin:0; background:linear-gradient(90deg,#A65F3F 0%,#C69B72 20%,#8FA6B5 48%,#35566B 88%);}
@@ -50,6 +57,25 @@
   <p class="selo">Saúde · registro de transparência · peso zero no índice</p>
   <h1>Saúde e <em>El Niño</em></h1>
   <p class="hint" id="subSaude">Três camadas separadas, cada figura com órgão, documento e data: o que a União publicou para a saúde no ciclo 2026/2027; o que cada secretaria estadual de saúde publicou, verificado com o protocolo do Monitor; e os sinais epidemiológicos observados, reproduzidos das fontes oficiais. Nada aqui pontua no MARÉ. Corte: <strong id="corteSaude">—</strong>.</p>
+
+  <div class="panel" id="monitorSaude" style="border-top:3px solid var(--ink);">
+    <h2 style="margin-top:0;">0 · Monitor Saúde</h2>
+    <div class="maps-grid">
+      <div class="map-box" id="boxMonitor">
+        <h3 class="map-card-h">Prontidão sanitária estadual para o ciclo · instrumento × antecipação</h3>
+        <svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil pela prontidão sanitária estadual (faixas) e UFs ainda não verificadas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legMonitor"></div>
+        <details style="margin-top:8px;" data-alternativa="dados"><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Prontidão</th><th>Faixa</th><th>Instrumento</th><th>Antecipação</th><th>Dengue na capital</th><th>Risco projetado</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      </div>
+      <div class="chart-box" id="boxMonitorBarras">
+        <h3 class="map-card-h">Prontidão por estado verificado</h3>
+        <div id="monitorBarras" class="prazos-barras" style="margin:6px 0 4px;"></div>
+        <div class="map-legend" id="legMonitorBarras"></div>
+      </div>
+    </div>
+  </div>
 
   <div class="panel" id="federal">
     <h2 style="margin-top:0;">1 · O que a União publicou</h2>
@@ -143,15 +169,15 @@
 
 
 <script>
-let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE;
+let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = '#DCD3C2';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const { showTip, hideTip } = MonitorMapas;
 
 async function __load(){
-  [BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE] = await Promise.all(
-    ['geo_uf','saude_uf','saude_federal','saude_sinais','sinais_risco','indice'].map(f => fetch('data/' + f + '.json').then(r => {
+  [BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE] = await Promise.all(
+    ['geo_uf','saude_uf','saude_federal','saude_sinais','sinais_risco','indice','monitor_saude'].map(f => fetch('data/' + f + '.json').then(r => {
       if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
   __init();
 }
@@ -162,6 +188,33 @@ function __init(){
   document.getElementById('corteSaude').textContent = SUF.corte || '—';
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
   function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){ const svg = MonitorMapas.ufs(ctx, svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itens); return svg; }
+
+  // 0 · Monitor Saúde (v0.1, Metodologia §31): prontidão = média (instrumento, antecipação); não verificada = cinza, sem número
+  (function(){
+    const M = (MSAUDE && MSAUDE.ufs) || {};
+    const FX = {'estágio inicial': '#A65F3F', 'em construção': '#C69B72', 'consolidado': '#6E8CA0', 'avançado': '#35566B', 'não verificado': '#64645C'};
+    const ST_H = {NOVO:'novo, do ciclo', READ:'readequado', VIG:'vigente, recorrente', ELAB:'em elaboração', LAC:'não localizado', NAO_VERIFICADO:'ainda não verificado'};
+    desenharMapa('mapaMonitor', 'legMonitor', uf => FX[(M[uf] || {}).faixa] || FX['não verificado'],
+      uf => { const m = M[uf] || {}; if (!m.verificado) return '<em>ainda não verificado</em> — sem número'; const i = m.instrumento || {}, a = m.antecipacao || {};
+        return '<em>' + esc(m.faixa) + ' · ' + esc(m.prontidao) + '</em><br>instrumento ' + esc(i.pontos) + ' (' + esc(ST_H[i.status] || i.status) + ')' + (i.data ? ' · ' + esc(i.data) : '') + '<br>antecipação ' + esc(a.pontos) + (i.temporada ? ' (edição ' + esc(i.temporada) + ')' : ''); },
+      []);
+    const R = (MSAUDE && MSAUDE.resumo) || {}; const pf = R.por_faixa || {};
+    MonitorMapas.legenda('legMonitor', [
+      ...['avançado', 'consolidado', 'em construção', 'estágio inicial'].map(f => ({cor: FX[f], rotulo: f + ' · ' + (pf[f] || 0) + ' UF' + ((pf[f] || 0) === 1 ? '' : 's')})),
+      {cor: FX['não verificado'], rotulo: 'ainda não verificado · ' + (R.nao_verificadas ?? '—') + ' UFs (sem número)'}]);
+    fonteFigura('boxMonitor', 'Fonte: Monitor El Niño Brasil · Monitor Saúde v0.1 · ' + esc((MSAUDE || {}).gerado_em || '') + ' · peso zero no índice');
+    // tabela alternativa
+    const tb = document.querySelector('#tblMonitor tbody');
+    if (tb) tb.innerHTML = UFS.map(uf => { const m = M[uf] || {}, i = m.instrumento || {}, a = m.antecipacao || {}, r = m.risco_atual || {};
+      return '<tr><td><strong>' + uf + '</strong></td><td>' + (m.verificado ? esc(m.prontidao) : '—') + '</td><td>' + esc(m.faixa || '') + '</td><td>' + esc(ST_H[i.status] || '') + (i.data ? ' · ' + esc(i.data) : '') + '</td><td>' + (a.pontos ?? '—') + (i.temporada ? ' · ' + esc(i.temporada) : '') + '</td><td>' + (r.dengue_capital_nivel ? 'nível ' + esc(r.dengue_capital_nivel) + ' (' + esc(r.dengue_capital) + ')' : '—') + '</td><td>' + esc((m.risco_projetado || []).join('; ')) + '</td></tr>'; }).join('');
+    // barras por UF verificada
+    const ver = UFS.filter(uf => (M[uf] || {}).verificado).sort((x, y) => (M[y].prontidao - M[x].prontidao) || x.localeCompare(y));
+    const bx = document.getElementById('monitorBarras');
+    if (bx) bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; background:' + FX[m.faixa] + '"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
+      : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
+    MonitorMapas.legenda('legMonitorBarras', [{cor: '#D6C4AC', rotulo: 'trilho 0–100'}, {cor: '#35566B', rotulo: 'cor = faixa'}, {cor: '#64645C', rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
+    fonteFigura('boxMonitorBarras', 'Fonte: Monitor El Niño Brasil · Monitor Saúde v0.1 · ' + esc((MSAUDE || {}).gerado_em || ''));
+  })();
 
   // 1 · federal
   const STATUS_FED = {localizado:'localizado', anunciado_nao_localizado:'anunciado, não localizado até o corte'};

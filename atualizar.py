@@ -104,6 +104,7 @@ def main():
     rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
+    rodar([sys.executable, "gerar_monitor_saude.py"])                   # 05/09/2026: Monitor Saúde v0.1 (§31), derivado da camada de saúde; peso zero
     rodar([sys.executable, "coletar_financiamento.py"])                 # §7.8: Portal (chave), rotas; peso zero
     rodar([sys.executable, "coletar_transferegov.py"])                  # 04/09/2026: transferências sem chave (TransfereGov dados abertos); r5 na série
     rodar([sys.executable, "coletar_execucao_mps.py"])                  # 05/09/2026: execução das ações das MPs 1.367/1.384 (arquivos mensais abertos)

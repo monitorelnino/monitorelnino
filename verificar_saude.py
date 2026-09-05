@@ -37,6 +37,18 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
     # (c) vocabulário
     for uf, u in suf.get("uf", {}).items():
         if u.get("status") not in VOCAB: erros.append(f"(c) status fora do vocabulário em {uf}: {u.get('status')}")
+    # (m) Monitor Saúde v0.1 (§31): número só para UF verificada; prontidão = média dos dois sub-elementos; motor não o lê
+    try:
+        _ms = json.load(open(RAIZ / "data" / "monitor_saude.json", encoding="utf-8"))
+        for uf, m in (_ms.get("ufs") or {}).items():
+            st = (m.get("instrumento") or {}).get("status")
+            if st == "NAO_VERIFICADO" and m.get("prontidao") is not None: erros.append(f"(m) monitor_saude: {uf} não verificada com número")
+            if st != "NAO_VERIFICADO" and m.get("prontidao") is not None:
+                pi = (m.get("instrumento") or {}).get("pontos"); pa = (m.get("antecipacao") or {}).get("pontos")
+                if pi is None or pa is None or abs(m["prontidao"] - round(0.5 * pi + 0.5 * pa, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos sub-elementos")
+        if "monitor_saude" in motor: erros.append("(m) recalcular_mare.py referencia monitor_saude (proibido)")
+    except FileNotFoundError:
+        erros.append("(m) data/monitor_saude.json ausente")
         if u.get("consist") not in CONSIST: erros.append(f"(c) consist fora do vocabulário em {uf}: {u.get('consist')}")
         # (e) LAC exige bateria datada e referência de log
         if u.get("status") == "LAC" and not (u.get("data_verificacao") and u.get("log_ref")):
