@@ -39,6 +39,19 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Execução das ações das MPs, pelos arquivos mensais abertos (05/09/2026)
+- Quatro sondas da API do Portal mostraram: `por-orgao` devolve o orçamento inteiro do
+  órgão (não a MP); `plano-orcamentario` é catálogo sem valores; `movimentacao-liquida`
+  está vazio para 2026. O caminho certo é o arquivo mensal aberto "Execução da Despesa"
+  (sem chave), que traz órgão, ação, unidade gestora (com a UF no nome) e os valores.
+- Ações confirmadas no arquivo de 08/2026: Ibama 214M e 214N; ICMBio 214P; Conab 2130;
+  MDS 2792 e 2798. `coletar_execucao_mps.py` soma empenhado/liquidado/pago desde o mês
+  de cada MP e o pago por UF (destino), gravando em `mps_2026.json`; 6 autotestes.
+- **Limite declarado na própria legenda:** o arquivo não separa a fonte do dinheiro — o
+  que se mostra é a execução das ações reforçadas pela MP (inclui a dotação ordinária),
+  um teto, nunca "a execução do crédito".
+
+
 ### Rota do dinheiro das MPs no topo da página de finanças (05/09/2026)
 - Nova seção 0, antes de todo o conteúdo: barras de prazo das MPs 1.367 (R$ 337,5 mi,
   incêndios; Ibama 194,4 mi + ICMBio 143,1 mi) e 1.384 (R$ 925 mi, alimentos; Conab 849 mi

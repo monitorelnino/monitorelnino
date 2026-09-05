@@ -106,6 +106,7 @@ def main():
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
     rodar([sys.executable, "coletar_financiamento.py"])                 # §7.8: Portal (chave), rotas; peso zero
     rodar([sys.executable, "coletar_transferegov.py"])                  # 04/09/2026: transferências sem chave (TransfereGov dados abertos); r5 na série
+    rodar([sys.executable, "coletar_execucao_mps.py"])                  # 05/09/2026: execução das ações das MPs 1.367/1.384 (arquivos mensais abertos)
 
     rodar([sys.executable, "verificar_contribuicoes.py"])
 
