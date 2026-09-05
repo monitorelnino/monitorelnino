@@ -39,6 +39,19 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Bateria estadual de saúde — bloco 3 (05/09/2026): 15 de 27 verificadas; dois "novos"
+- **GO → NOVO (100):** Plano de Emergências em Saúde Pública de Goiás para o El Niño 2026-2027,
+  Nota Informativa nº 1/2026 – SES/SUVISA/SUVEPI/GESP/V-21845 (27/08/2026), listada no portal
+  oficial da SES-GO. **AM → NOVO (100):** Plano de Contingência para Emergências em Saúde Pública
+  Relacionadas a Eventos Climáticos Sazonais de Seca e Estiagem (SES-AM/FVS-RCP, 08/06/2026, cinco
+  estágios operacionais). São os dois primeiros estados "avançados" no Monitor Saúde.
+- RJ → ELAB (plano em atualização, ata da SES-RJ de 12/2025; última edição publicada 2018/2019);
+  ES → VIG (plano sem data no portal oficial). MT com pista (CIRs aprovam planos municipais
+  2025/2026; estadual não localizado).
+- Federal: cartão do alerta do MS a estados e municípios (22/07/2026) adicionado.
+- Pendentes: PA, TO, RO, AC, RR, AP, AL, PB, RN, PI, MA (e o estadual de MT).
+
+
 ### Monitor Saúde v0.1 no topo da página de Saúde (05/09/2026, decisão editorial — Metodologia §31)
 - Medida separada do MARÉ, mesma gramática, peso zero no índice. Prontidão sanitária por UF
   verificada = média (1/2, 1/2) de instrumento operacional (escada da §9) e antecipação (régua
