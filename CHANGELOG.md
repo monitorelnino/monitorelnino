@@ -39,6 +39,15 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### ADPF 743 no cartão dos dez estados intimados (05/09/2026)
+- Campo `adpf743` em `estados.json` para AC, AM, AP, MA, MT, MS, PA, RO, RR, TO: intimação
+  (25/05/2026, nota oficial do STF), decisão de 26/06/2026 — MT e PA homologados (nota oficial
+  do STF; CNN/Correio), AC/AM/AP/MA/MS com 30 dias para corrigir orçamento, equipes e metas
+  (imprensa), RO/RR/TO listados na trilha do CAR (Correio). Resultado após 25/07 não localizado;
+  íntegra da decisão a arquivar. Proveniência declarada no registro; **nenhum efeito na nota**.
+- Cartão do estado ganha a linha "ADPF 743 (STF)" com o selo do status e as datas.
+
+
 ### "Prazos em curso" vira barras que esvaziam (05/09/2026, pedido da editoria)
 - A caixa deixa de ser lista de texto e passa a mostrar, para cada marco datado, uma
   barra que esvazia da data-base ao vencimento: trilho em Areia, tempo restante em Âmbar,
