@@ -39,6 +39,17 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Tema técnico, 2ª passada: superfícies frias e caixinhas dos estados (05/09/2026)
+- As superfícies secundárias saem do osso-claro (terra) para mineral-claríssimo (#F0F4F3) e as
+  linhas de Areia para mineral-claro (#C5CFCE); Areia fica reservada aos trilhos das barras de
+  prazo. Links em Sintético-escuro; versaletes (selo/kicker) em Sintético; Bioluz declarado como
+  acento positivo. "Sem dado" nos mapas em cinza frio. Gradiente de identidade das dez páginas
+  vira fio Musgo de 2px; títulos Fraunces em peso 400.
+- Cartões dos estados na página inicial recuperam a caixa: fundo branco, borda mineral-claro,
+  hover em Sintético (haviam ficado sem borda sobre o fundo branco).
+- Medidor do MARÉ e barras dos cartões (o indicador) preservados.
+
+
 ### Tema técnico sobre fundo branco (05/09/2026, decisão editorial)
 - `assets/tokens.css` reescrito: base branca e osso-claro (#F4F1EA) para trilhos e faixas;
   tinta Vazio; verde Musgo como cor de ação (links, botões, "novo"); terracota Argila/Âmbar

@@ -19,7 +19,7 @@
 <style>
 /* --- mapas-e-graficos.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
-  .grad-line{height:4px; border-radius:2px; border:none; margin:0; background:linear-gradient(90deg,#7C4A34 0%,#C9814B 20%,#8FA5A8 48%,#2E3D30 88%);}
+  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
 </style>
 </head>
 <body>
@@ -249,13 +249,13 @@ const CAT_STYLE = {
   coberto_estadual: {cor:'#8FA5A8', r:4.5, label:'Coberto pelo estado'},
   nao_el_nino:      {cor:'#D6C4AC', r:4,   label:'Não é El Niño'},
   nao_localizado:   {cor:'#7C4A34', r:4.5, label:'Nenhum ato localizado'},
-  nao_verificado:   {cor:'#6F6A61', r:4.5, label:'Ainda não verificado'},
+  nao_verificado:   {cor:'#66736F', r:4.5, label:'Ainda não verificado'},
 };
 
 const svgPoints = d3.select('#mapPoints');
 svgPoints.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', '#EEE9E0').attr('class', 'uf-path')
+  .attr('d', pathGen).attr('fill', '#E9EEEC').attr('class', 'uf-path')
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
@@ -288,7 +288,7 @@ MonitorMapas.legenda('pointsLegend', Object.values(CAT_STYLE).map(v => ({cor: v.
 // portão de runtime em 02/09/2026).
 setTimeout(function(){
   const NIV_STYLE = {
-    nao_verificado:     {cor:'#6F6A61', label:'Ainda não verificado'},
+    nao_verificado:     {cor:'#66736F', label:'Ainda não verificado'},
     nacional:           {cor:'#8FA5A8', label:'Verificado em fontes nacionais'},
     estadual:           {cor:'#5E7C93', label:'Fontes nacionais e estaduais'},
     municipal_completo: {cor:'#2E3D30', label:'Verificação completa'},
@@ -297,7 +297,7 @@ setTimeout(function(){
   const acima = (VRESUMO && VRESUMO.niveis_acima_do_padrao) || {};
   const susp  = new Set((VRESUMO && VRESUMO.fontes_suspensas_municipios) || []);
   const __ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
-  const svg = MonitorMapas.ufs(__ctx, 'mapNiveis', uf => 'var(--surface-2, #F4F1EA)', uf => { const p = (VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {}; return Object.entries(p).map(([k, v]) => v + ' ' + (NIV_STYLE[k] ? NIV_STYLE[k].label.toLowerCase() : k)).join(' · ') || 'sem dados'; });
+  const svg = MonitorMapas.ufs(__ctx, 'mapNiveis', uf => 'var(--surface-2, #F0F4F3)', uf => { const p = (VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {}; return Object.entries(p).map(([k, v]) => v + ' ' + (NIV_STYLE[k] ? NIV_STYLE[k].label.toLowerCase() : k)).join(' · ') || 'sem dados'; });
   const pts = (window.REF_MUNICIPIOS || []).map(r => {
     const cod = String(r.codigo_ibge).padStart(7,'0');
     const niv = susp.has(cod) ? 'fonte_suspensa' : (acima[cod] || acima[String(r.codigo_ibge)] || 'nao_verificado');
@@ -343,7 +343,7 @@ const nPublicados = prioritariosProxy.filter(x => x.publicado).length;
 const svgPrior = d3.select('#mapPrioritarios');
 svgPrior.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', '#EEE9E0').attr('class', 'uf-path')
+  .attr('d', pathGen).attr('fill', '#E9EEEC').attr('class', 'uf-path')
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
@@ -353,7 +353,7 @@ svgPrior.append('g').selectAll('circle')
   .attr('cx', d => projection([d.lon, d.lat])[0])
   .attr('cy', d => projection([d.lon, d.lat])[1])
   .attr('r', d => d.publicado ? 4 : 3)
-  .attr('fill', d => d.publicado ? '#2E3D30' : '#EEE9E0')
+  .attr('fill', d => d.publicado ? '#2E3D30' : '#E9EEEC')
   .attr('stroke', d => d.publicado ? '#FFFFFF' : '#7C4A34')
   .attr('stroke-width', d => d.publicado ? 1.6 : 1)
   .attr('stroke-dasharray', d => d.publicado ? null : '1.5,1.2')
@@ -363,7 +363,7 @@ svgPrior.append('g').selectAll('circle')
   .on('mouseleave', hideTip);
 document.getElementById('legPrioritarios').innerHTML =
   `<span><i style="background:#2E3D30"></i>Com instrumento</span>`
-  + `<span><i style="background:repeating-linear-gradient(45deg,#F4F1EA,#F4F1EA 3px,#7C4A34 3px,#7C4A34 4px)"></i>Sem instrumento ainda</span>`;
+  + `<span><i style="background:repeating-linear-gradient(45deg,#F0F4F3,#F0F4F3 3px,#7C4A34 3px,#7C4A34 4px)"></i>Sem instrumento ainda</span>`;
 
 // ===========================================================
 // Mapa de atos de resposta (decretos de emergência) — NUNCA pontuam no
@@ -386,7 +386,7 @@ const svgResp = d3.select('#mapAtosResposta');
   const el = document.getElementById('carimboAtos'); if (el) el.textContent = 'Registro: ' + ev.length + ' evento(s), último em ' + ult + '. Coleta automática (DOU/S2iD e diários oficiais) a partir de 06/09/2026: diária na semana intensiva, semanal depois; até lá, os eventos vêm da verificação manual.'; })();
 svgResp.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', '#EEE9E0').attr('class', 'uf-path')
+  .attr('d', pathGen).attr('fill', '#E9EEEC').attr('class', 'uf-path')
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
@@ -409,9 +409,9 @@ document.getElementById('legAtosResposta').innerHTML =
 
 // ---- Mapa 2a: COBERTURA (uma pergunta: quantos municípios têm algum ato?) ----
 const corCobertura = (info) => {
-  if (!info.com_ato) return '#EEE9E0';
+  if (!info.com_ato) return '#E9EEEC';
   const k = Math.pow(Math.min(info.pct, 100)/100, 0.5);
-  return d3.interpolateHcl('#EEE9E0', '#2E3D30')(0.15 + 0.85*k);
+  return d3.interpolateHcl('#E9EEEC', '#2E3D30')(0.15 + 0.85*k);
 };
 // ---- Mapa 2b: NATUREZA — 5 classes divergentes (centro neutro oliva; sem gradiente contínuo) ----
 // Degradê contínuo terracota→areia→azul (mesmo eixo cromático do site inteiro),
@@ -420,7 +420,7 @@ const corCobertura = (info) => {
 // "degrau" compartilhado com estados de proporção bem diferente.
 const ESCALA_NATUREZA = d3.scaleLinear()
   .domain([0, 0.05, 0.35, 0.65, 0.95, 1])
-  .range(['#7C4A34', '#7C4A34', '#C9814B', '#E6E0D4', '#8FA5A8', '#2E3D30'])
+  .range(['#7C4A34', '#7C4A34', '#C9814B', '#DCE3E2', '#8FA5A8', '#2E3D30'])
   .clamp(true);
 const corNatureza = (info) => {
   const atos = (info.n_plano||0) + (info.n_decreto||0);
@@ -462,13 +462,13 @@ const __defsNat = svgNat.append('defs');
 const __pat = __defsNat.append('pattern').attr('id','hatchSemAtos')
   .attr('width', 6).attr('height', 6)
   .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
-__pat.append('rect').attr('width', 6).attr('height', 6).attr('fill', '#F4F1EA');
+__pat.append('rect').attr('width', 6).attr('height', 6).attr('fill', '#F0F4F3');
 __pat.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
   .attr('stroke', '#D6C4AC').attr('stroke-width', 1.4);
 
 document.getElementById('legCobertura').innerHTML =
-  `<span><i style="background:linear-gradient(90deg,#EEE9E0,#2E3D30); width:44px;"></i>0% → 100% dos municípios com ato</span>`;
-MonitorMapas.legendaContinua('legNatureza', 'linear-gradient(90deg, #7C4A34 0%, #C9814B 20%, #E6E0D4 50%, #8FA5A8 80%, #2E3D30 100%)', 'só decretos reativos', 'só planos preventivos', [{cor: 'repeating-linear-gradient(45deg,#F4F1EA,#F4F1EA 3px,#D6C4AC 3px,#D6C4AC 4px)', rotulo: 'sem atos identificados'}]);
+  `<span><i style="background:linear-gradient(90deg,#E9EEEC,#2E3D30); width:44px;"></i>0% → 100% dos municípios com ato</span>`;
+MonitorMapas.legendaContinua('legNatureza', 'linear-gradient(90deg, #7C4A34 0%, #C9814B 20%, #DCE3E2 50%, #8FA5A8 80%, #2E3D30 100%)', 'só decretos reativos', 'só planos preventivos', [{cor: 'repeating-linear-gradient(45deg,#F0F4F3,#F0F4F3 3px,#D6C4AC 3px,#D6C4AC 4px)', rotulo: 'sem atos identificados'}]);
 
 // ---- Mapa: risco projetado × instrumento estadual ----
 const CONSIST_ROTULO = {COBRE:'Cobre o risco projetado', PARCIAL:'Cobre parte do risco', DIFERE:'Risco difere do instrumento', SEM:'Sem instrumento estadual', NEUTRO:'Sem sinal elevado no trimestre'};
@@ -504,7 +504,7 @@ const __defsC = svgConsist.append('defs');
 const __patC = __defsC.append('pattern').attr('id','hatchSemInstr')
   .attr('width', 6).attr('height', 6)
   .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
-__patC.append('rect').attr('width', 6).attr('height', 6).attr('fill', '#F4F1EA');
+__patC.append('rect').attr('width', 6).attr('height', 6).attr('fill', '#F0F4F3');
 __patC.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
   .attr('stroke', '#7C4A34').attr('stroke-width', 1.4).attr('stroke-opacity', .55);
 svgConsist.append('g').selectAll('path')
@@ -526,7 +526,7 @@ const __contC = {};
 Object.values(CONSIST).forEach(c => __contC[c.cat] = (__contC[c.cat]||0) + 1);
 document.getElementById('legConsist').innerHTML =
   ['COBRE','PARCIAL','DIFERE','SEM','NEUTRO'].map(k =>
-    `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,#F4F1EA,#F4F1EA 3px,#7C4A34 3px,#7C4A34 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
+    `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,#F0F4F3,#F0F4F3 3px,#7C4A34 3px,#7C4A34 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
 renderTabelaConsistencia();
 
 // =========================================================
