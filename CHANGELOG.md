@@ -39,6 +39,20 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Bateria estadual de saúde — bloco 2 (05/09/2026)
+- Mais quatro UFs com plano localizado em fonte oficial (VIG): CE (2025/2026, 01/07/2025),
+  PE (2025/2026, 22/01/2025), PR (2024/2025; página oficial de dengue suspensa pelo defeso —
+  nota factual), DF (edição de 12/2023 — a mais recente localizada). Total: 11 de 27.
+- **Achado de outra natureza — GO:** a SES-GO apresentou em 27/08/2026 um Plano de
+  Emergências em Saúde Pública para o El Niño 2026-2027 (calor, fumaça, arboviroses) e a Nota
+  Informativa nº 1/2026 às prefeituras. Candidato a **NOVO** (instrumento do ciclo), registrado
+  como pista até o documento oficial. RN também como pista (COE-dengue antecipado, imprensa).
+- **Federal:** o Plano de Preparação e Resposta a Emergências em Saúde Pública associadas ao
+  El Niño 2026-2027 foi apresentado ao Conass em 26/08/2026 (notícia oficial do MS) — cartão
+  federal passa de "anunciado" a **localizado**, com os cinco eixos e a janela crítica declarada.
+- Pendentes de busca individual: PB, RN, PI, MA, AL, RJ, ES, MT, TO, PA, AM, AC, RO, RR, AP.
+
+
 ### Bateria estadual de saúde — bloco 1 (05/09/2026)
 - Sete UFs com plano estadual de contingência de arboviroses localizado em fonte oficial e
   registrado como **vigente-recorrente** (plano sazonal anual, sem citação ao ciclo El Niño):
