@@ -1,0 +1,121 @@
+{
+ "_governanca": "Rota do dinheiro das MPs do ciclo 2026/2027 (créditos extraordinários). Dotações por órgão/ação vêm das notas oficiais (Agência Gov, Câmara, Conab) e do texto das MPs no Congresso; execução (empenhado/liquidado/pago) vem do Portal da Transparência (despesas) quando coletada — 'sem coleta' declarado até lá. Crédito extraordinário é executado por órgão federal: não é transferência a município; o 'destino' é onde a execução chega (brigadas, estoques, cestas). Peso zero.",
+ "gerado_em": "05/09/2026",
+ "mps": [
+  {
+   "id": "mp1367",
+   "numero": "MP 1.367/2026",
+   "publicada_em": "15/06/2026",
+   "valor": 337483432,
+   "tema": "Incêndios florestais e fiscalização ambiental",
+   "beneficiario": "Ministério do Meio Ambiente e Mudança do Clima (MMA)",
+   "cor": "#C9814B",
+   "fundamento": "Crédito extraordinário; cumpre decisões do STF nas ADPFs 743 e 760",
+   "fontes": [
+    "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624",
+    "https://agenciagov.ebc.com.br/noticias/202606/governo-do-brasil-destina-r-337-5-milhoes-para-combate-a-incendios-e-fiscalizacao-ambiental",
+    "https://www.gov.br/ibama/pt-br/assuntos/noticias/2026/brasil-registra-maior-volume-de-recursos-da-historia-para-controle-do-desmatamento-e-combate-aos-incendios-florestais"
+   ],
+   "tramitacao": {
+    "cmo_relatorio_aprovado": "07/07/2026",
+    "deliberacao_ate": "12/10/2026",
+    "situacao": "em tramitação (Senado)"
+   },
+   "orgaos": [
+    {
+     "nome": "Ibama",
+     "valor": 194400000,
+     "usos": [
+      {
+       "nome": "Prevenção e controle de incêndios florestais em áreas federais prioritárias",
+       "valor": 149000000,
+       "detalhe": "diárias e passagens, brigadistas temporários, EPIs, meios aéreos, logística"
+      },
+      {
+       "nome": "Fiscalização ambiental",
+       "valor": 45000000
+      }
+     ]
+    },
+    {
+     "nome": "ICMBio",
+     "valor": 143100000,
+     "usos": [
+      {
+       "nome": "Prevenção e combate a incêndios e fiscalização em unidades de conservação federais",
+       "valor": 143100000,
+       "detalhe": "capacitação e estruturação de equipes, contratação, equipamentos, sistemas de monitoramento"
+      }
+     ]
+    }
+   ],
+   "execucao": {
+    "status": "sem_coleta",
+    "fonte": "Portal da Transparência — despesas (por órgão/ação)",
+    "empenhado": null,
+    "liquidado": null,
+    "pago": null,
+    "atualizado_em": null
+   },
+   "destino": {
+    "status": "sem_coleta",
+    "nota": "brigadas e operações por estado (Ibama/PrevFogo, ICMBio) — a coletar"
+   }
+  },
+  {
+   "id": "mp1384",
+   "numero": "MP 1.384/2026",
+   "publicada_em": "12/08/2026",
+   "valor": 925000000,
+   "tema": "Estoques públicos de alimentos e cestas (segurança alimentar)",
+   "beneficiario": "MDA (Conab) e MDS",
+   "cor": "#5E7C93",
+   "fundamento": "Crédito extraordinário; ações preventivas para o ciclo El Niño 2026/2027 (abastecimento e segurança alimentar)",
+   "fontes": [
+    "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455",
+    "https://www.camara.leg.br/noticias/1297542-medida-provisoria-abre-credito-orcamentario-para-aumento-de-estoques-de-alimentos-por-causa-do-el-nino"
+   ],
+   "tramitacao": {
+    "emendas": "13/08–19/08/2026",
+    "deliberacao_ate": "11/10/2026",
+    "situacao": "em tramitação (CMO → plenários)"
+   },
+   "orgaos": [
+    {
+     "nome": "MDA / Conab",
+     "valor": 849000000,
+     "usos": [
+      {
+       "nome": "Formação de estoques públicos (ação 2130): arroz e milho",
+       "valor": 849000000,
+       "detalhe": "arroz: +106% sobre o estoque atual (~20 dias de consumo); milho para a estiagem prevista no Nordeste"
+      }
+     ]
+    },
+    {
+     "nome": "MDS",
+     "valor": 76000000,
+     "usos": [
+      {
+       "nome": "Ação de Distribuição de Alimentos (cestas): grupos tradicionais e famílias em emergência ou calamidade",
+       "valor": 76000000,
+       "detalhe": "valor por diferença (925 − 849); a confirmar no anexo da MP"
+      }
+     ]
+    }
+   ],
+   "execucao": {
+    "status": "sem_coleta",
+    "fonte": "Portal da Transparência — despesas (por órgão/ação)",
+    "empenhado": null,
+    "liquidado": null,
+    "pago": null,
+    "atualizado_em": null
+   },
+   "destino": {
+    "status": "sem_coleta",
+    "nota": "estoques por armazém/UF (Conab) e cestas entregues por município (MDS) — a coletar"
+   }
+  }
+ ]
+}
