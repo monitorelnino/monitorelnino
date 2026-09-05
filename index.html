@@ -282,6 +282,19 @@
   .pedido-lai{margin-top:12px;}
   .pedido-lai summary{cursor:pointer; color:var(--link); font-weight:600;}
   .pedido-texto{width:100%; min-width:0; box-sizing:border-box; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink); background:#EDE6D8; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:0 0 8px; resize:vertical;}
+  /* Prazos em curso (05/09/2026): barras que esvaziam de data-base a vencimento. */
+  .prazos-barras{display:flex; flex-direction:column; gap:14px; margin:4px 0 10px;}
+  .prazo{display:grid; grid-template-columns:1fr auto; gap:4px 14px; align-items:end;}
+  .prazo-titulo{font-family:'Fraunces', Georgia, serif; font-weight:300; font-size:17px; line-height:1.3; color:var(--ink);}
+  .prazo-meta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); white-space:nowrap;}
+  .prazo-meta strong{color:var(--ink); font-weight:600;}
+  .prazo-trilho{grid-column:1 / -1; height:10px; background:#D6C4AC; border-radius:999px; overflow:hidden; position:relative;}
+  .prazo-resta{position:absolute; right:0; top:0; bottom:0; background:#C9814B; border-radius:999px; transition:width .6s ease;}
+  .prazo-resta.urgente{background:#7C4A34;}
+  .prazo-resta.vencido{background:#8FA5A8; width:100% !important; opacity:.55;}
+  .prazo-datas{grid-column:1 / -1; display:flex; justify-content:space-between; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12px; color:var(--muted); letter-spacing:.04em;}
+  .prazo.vencido .prazo-titulo{color:var(--muted);}
+  @media (prefers-reduced-motion:reduce){.prazo-resta{transition:none;}}
   .prazos-list{list-style:none; padding-left:0; line-height:1.55;}
   .prazos-list li{padding:8px 0; border-top:1px solid var(--line);}
   .prazos-list li:first-child{border-top:0;}
@@ -456,9 +469,9 @@
 
   <div class="panel" id="prazos" style="margin-bottom:24px;">
     <h2>Prazos em curso</h2>
-    <p class="hint">Prazos legais e judiciais ligados ao ciclo, computados a partir do registro curado de marcos. Nenhum prazo pontua no índice.</p>
-    <ul class="fontes-list prazos-list" id="prazosLista" aria-live="polite"></ul>
+    <div class="prazos-barras" id="prazosLista" aria-live="polite"></div>
     <p class="note" id="prazosVazio" hidden>Nenhum prazo em curso até o corte.</p>
+    <div class="fonte-figura">Fonte: registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384) · nenhum prazo pontua no índice</div>
   </div>
   <div class="panel" id="fontes" style="margin-bottom:24px;">
     <h2>Registros e fontes dos dados</h2>
@@ -757,18 +770,27 @@ const CAT_LABEL_TBL = {
 // prazos regrava a cada atualização. Mostra o que vence daqui para a frente e o que
 // venceu nos últimos 60 dias (marcado), em ordem de data. Nunca pontua.
 function renderPrazos(){
-  const ul = document.getElementById('prazosLista'), vazio = document.getElementById('prazosVazio');
-  if (!ul || !PRAZOS || !PRAZOS.marcos) return;
-  const dataBR = s => { const [d,m,a] = String(s).split('/').map(Number); return new Date(a, m-1, d); };
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const box = document.getElementById('prazosLista'), vazio = document.getElementById('prazosVazio');
+  if (!box || !PRAZOS || !PRAZOS.marcos) return;
+  const dataBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
   const hoje = new Date(); hoje.setHours(0,0,0,0);
-  const itens = PRAZOS.marcos.filter(m => m.vencimento && m.titulo_curto)
-    .map(m => ({...m, dt: dataBR(m.vencimento), dias: Math.round((dataBR(m.vencimento) - hoje) / 86400000)}))
-    .filter(m => m.dias >= -60).sort((x,y) => x.dt - y.dt);
-  ul.innerHTML = itens.map(m => {
-    const fonte = (m.fontes && m.fontes[0]) ? ` · <a href="${m.fontes[0].url}" target="_blank" rel="noopener">fonte</a>` : '';
-    const quando = m.dias > 1 ? `em ${m.dias} dias` : m.dias === 1 ? 'amanhã' : m.dias === 0 ? 'hoje' : `transcorrido há ${-m.dias} dia(s)`;
-    return `<li><span class="prazo-classe">${m.classe}</span><strong>${m.titulo_curto}</strong> — ${m.dias < 0 ? 'venceu em' : 'vence em'} <strong>${m.vencimento}</strong> <span class="prazo-dias${m.dias < 0 ? ' vencido' : ''}">(${quando})</span>${m.status_curto ? ' · ' + m.status_curto : ''}${fonte}</li>`;
-  }).join('');
+  const itens = PRAZOS.marcos.filter(m => m.vencimento && m.data_base && m.titulo_curto)
+    .map(m => { const ini = dataBR(m.data_base), fim = dataBR(m.vencimento);
+      const total = Math.max(1, (fim - ini) / 86400000), dias = Math.round((fim - hoje) / 86400000);
+      const resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));   // fração do prazo que ainda resta
+      return {...m, ini, fim, dias, resta}; })
+    .filter(m => m.dias >= -60).sort((x,y) => x.fim - y.fim);
+  box.innerHTML = itens.map(m => {
+    const vencido = m.dias < 0, urgente = !vencido && m.resta < 0.3;
+    const quando = vencido ? `transcorrido há ${-m.dias} dia(s)` : m.dias === 0 ? 'vence hoje' : m.dias === 1 ? 'vence amanhã' : `${m.dias} dias`;
+    const cls = vencido ? 'vencido' : urgente ? 'urgente' : '';
+    return `<div class="prazo ${vencido ? 'vencido' : ''}" role="group" aria-label="${esc(m.titulo_curto)}">
+      <div class="prazo-titulo">${esc(m.titulo_curto)}</div>
+      <div class="prazo-meta">${m.classe} · <strong>${quando}</strong></div>
+      <div class="prazo-trilho" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(m.resta*100)}" aria-valuetext="${Math.round(m.resta*100)}% do prazo restante"><div class="prazo-resta ${cls}" style="width:${(m.resta*100).toFixed(1)}%"></div></div>
+      <div class="prazo-datas"><span>${m.data_base}</span><span>${m.vencimento}</span></div>
+    </div>`; }).join('');
   vazio.hidden = itens.length > 0;
 }
 function renderTable(){
