@@ -39,6 +39,21 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Tema técnico sobre fundo branco (05/09/2026, decisão editorial)
+- `assets/tokens.css` reescrito: base branca e osso-claro (#F4F1EA) para trilhos e faixas;
+  tinta Vazio; verde Musgo como cor de ação (links, botões, "novo"); terracota Argila/Âmbar
+  como calor de dado; Sintético e Mineral como frios; Areia como linha; cantos de 6px;
+  números tabulares. Sem gradiente, sem brilho — a linha de identidade vira um fio Musgo.
+  **O medidor do MARÉ permanece como estava** (bloco `.gauge` preservado).
+- Logotipo "FUTURA" (positivo, para fundo branco) no masthead e no rodapé das 10 páginas, no
+  lugar da assinatura em SVG inline (`assets/futura-positivo.svg`, sem o manifesto c2pa).
+- Paleta compartilhada dos mapas (`assets/mapas.js`) e todas as cores inline das páginas
+  remapeadas para a marca: novo = Musgo, readequado = Sintético, vigente = Mineral, em
+  elaboração = Âmbar, não localizado = Argila, não verificado = cinza quente; faixas
+  inicial/construção/consolidado/avançado = Argila/Âmbar/Sintético/Musgo; risco seca = Âmbar,
+  chuvas = Sintético, multi = Musgo. Contraste AA verificado pelo portão de acessibilidade.
+
+
 ### Bateria estadual de saúde — bloco 4 (05/09/2026): 17 de 27 verificadas
 - PA → VIG (plano em execução contínua, notícia oficial da SESPA, 02/2025; documento a
   localizar); PB → VIG (PDF oficial de 15/02/2024). Federal: Plano de Contingência Nacional

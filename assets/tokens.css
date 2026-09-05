@@ -1,38 +1,42 @@
 /* ============================================================
-   tokens.css — fonte única dos tokens de design (v2.2.4)
-   Extraído do :root de index.html em 02/09/2026 (harmonização §8
-   do documento de redesenho). Nenhuma página pode declarar :root
-   inline; o portão verificar_estrutura.js verifica.
+   tokens.css — fonte única dos tokens de design (v3.0-tema, 05/09/2026)
+   Tema TÉCNICO sobre fundo branco (decisão editorial de 05/09/2026):
+   base branca e osso-claro; tinta Vazio/Abissal; verde Musgo como cor de
+   ação (links, botões, "novo"); terracota Argila/Âmbar como calor de dado
+   (nunca protagonista); Sintético e Mineral como frios de dado; Areia
+   como linha. Sem gradientes, sem brilho — exceto o indicador do índice
+   (medidor do MARÉ), que permanece como está. Nenhuma página declara
+   :root inline; o portão verificar_estrutura.js verifica.
+   Paleta da marca: Vazio #0E0F0D · Abissal #15201A · Musgo #2E3D30 ·
+   Argila #7C4A34 · Âmbar #C9814B · Bioluz #A8C99A · Sintético #5E7C93 ·
+   Mineral #8FA5A8 · Areia #D6C4AC · Osso #EDE6D8.
    ============================================================ */
 :root{
-  /* Paleta "Futurismo regenerativo" — base OSSO (tema claro p/ leitura sustentada) */
-  --bg: #EDE6D8;        /* OSSO */
-  --surface: #F5F1E8;   /* osso-claro (derivado) */
-  --surface-2: #E7DECD; /* areia-claro (derivado) */
-  --ink: #15201A;       /* ABISSAL */
-  --muted: #55645B;     /* musgo-texto (derivado p/ ≥4,5:1) */
+  --bg: #FFFFFF;        /* branco técnico */
+  --surface: #FFFFFF;   /* painéis brancos, delimitados por linha */
+  --surface-2: #F4F1EA; /* osso-claro: trilhos, zebras, faixas de tabela */
+  --ink: #0E0F0D;       /* VAZIO */
+  --muted: #55645B;     /* musgo-texto (5,6:1 sobre branco) */
   --line: #D6C4AC;      /* AREIA */
-  --green: #4F7D48;     /* bioluz-escuro (dados s/ claro, ≥3:1) */
-  --teal: #5E7C93;      /* SINTÉTICO */
+  --green: #2E3D30;     /* MUSGO — cor de ação e de "novo" */
+  --teal: #5E7C93;      /* SINTÉTICO — frio de dado */
   --violet: #7A6A4F;    /* areia-escuro (dados) */
-  --slate: #647A7E;     /* mineral-escuro (dados) */
-  --rust: #7C4A34;      /* ARGILA — sem plano / nada localizado */
-  --amber: #A65F3F;     /* argila-dados — calor legível s/ claro */
-  --radius: 10px;
-  --link: #465D6E;
+  --slate: #8FA5A8;     /* MINERAL — frio de dado, recorrente */
+  --rust: #7C4A34;      /* ARGILA — nada localizado, urgente */
+  --amber: #C9814B;     /* ÂMBAR — calor de dado (preenchimentos; texto só ≥18px) */
+  --radius: 6px;        /* cantos curtos: registro técnico */
+  --link: #2E3D30;
+  --terracota: #C04430; /* o "U" do logotipo — acento único, em dose mínima */
 
-  /* Novo em v2.2.4 (decisão C7): ausência de verificação ≠ ausência de documento.
-     Cinza neutro; contraste AA verificado por cálculo WCAG: 4,81:1 sobre --bg,
-     5,29:1 sobre --surface (mínimo 4,5:1). */
-  --neutro: #64645C;
+  /* ausência de verificação ≠ ausência de documento (C7): cinza quente, 5,0:1 sobre branco */
+  --neutro: #6F6A61;
 
-  /* Aliases legados (proteja-se, mapas, envie-dados, para-gestores, obrigado)
-     — mantidos até a migração completa das folhas locais. */
-  --osso: #EDE6D8;
-  --card: #F5F1E8;
+  /* Aliases legados */
+  --osso: #F4F1EA;
+  --card: #FFFFFF;
 
-  /* Tríade de risco da página Proteja-se */
-  --chuva: #35566B;
-  --seca: #805E37;
-  --fogo: #864C32;
+  /* Tríade de risco da página Proteja-se (famílias do ciclo) */
+  --chuva: #5E7C93;
+  --seca: #C9814B;
+  --fogo: #7C4A34;
 }
