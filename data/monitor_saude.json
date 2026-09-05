@@ -29,13 +29,13 @@
   }
  },
  "resumo": {
-  "verificadas": 15,
-  "nao_verificadas": 12,
+  "verificadas": 17,
+  "nao_verificadas": 10,
   "por_faixa": {
    "avançado": 2,
-   "em construção": 13
+   "em construção": 15
   },
-  "media_das_verificadas": 50.3,
+  "media_das_verificadas": 49.0,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -443,20 +443,20 @@
    ]
   },
   "PA": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Contingência Estadual de Dengue, Chikungunya e Zika vírus — em execução contínua, com salas de situação das arboviroses implantadas (notícia oficial da SESPA, 02/2025); edição e data do documento não indicadas",
+    "data": "02/2025",
+    "orgao": "SESPA / Coordenação Estadual de Arboviroses",
+    "url": "http://www.saude.pa.gov.br/casos-de-dengue-caem-quase-60-no-para-em-janeiro-de-2025/",
+    "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 45,
     "janela_critica_inicio": "01/10/2026"
    },
    "risco_atual": {
@@ -474,20 +474,20 @@
    ]
   },
   "PB": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 32.5,
+   "faixa": "em construção",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano Estadual de Contingência para Controle das Arboviroses (PDF no portal oficial, 15/02/2024)",
+    "data": "15/02/2024",
+    "orgao": "SES-PB / Vigilância em Saúde",
+    "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/plano_contingencia_arboviroses_15_02_2024.pdf",
+    "temporada": "anterior"
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 20,
     "janela_critica_inicio": "01/10/2026"
    },
    "risco_atual": {
