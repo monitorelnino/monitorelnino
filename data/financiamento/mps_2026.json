@@ -35,6 +35,12 @@
        "nome": "Fiscalização ambiental",
        "valor": 45000000
       }
+     ],
+     "execucao_empenhado": 212185509.18,
+     "execucao_pago": 119531302.02,
+     "acoes": [
+      "214M",
+      "214N"
      ]
     },
     {
@@ -46,20 +52,62 @@
        "valor": 143100000,
        "detalhe": "capacitação e estruturação de equipes, contratação, equipamentos, sistemas de monitoramento"
       }
+     ],
+     "execucao_empenhado": 144377765.35,
+     "execucao_pago": 106447364.13,
+     "acoes": [
+      "214P"
      ]
     }
    ],
    "execucao": {
-    "status": "sem_coleta",
-    "fonte": "Portal da Transparência — despesas (por órgão/ação)",
-    "empenhado": null,
-    "liquidado": null,
-    "pago": null,
-    "atualizado_em": null
+    "status": "coletado",
+    "fonte": "Portal da Transparência — Execução da Despesa (arquivos mensais abertos)",
+    "empenhado": 356563274.53,
+    "liquidado": 227535367.3,
+    "pago": 225978666.15,
+    "meses": [
+     "202606",
+     "202607",
+     "202608",
+     "202609"
+    ],
+    "atualizado_em": "05/09/2026",
+    "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito"
    },
    "destino": {
-    "status": "sem_coleta",
-    "nota": "brigadas e operações por estado (Ibama/PrevFogo, ICMBio) — a coletar"
+    "status": "coletado",
+    "medida": "valor pago por UF da unidade gestora (BR = unidade nacional)",
+    "por_uf_pago": {
+     "BR": 216355801.12,
+     "PA": 1463799.36,
+     "MT": 1192108.76,
+     "RO": 953141.38,
+     "AM": 754713.57,
+     "TO": 627222.86,
+     "MA": 586792.84,
+     "GO": 464961.45,
+     "CE": 444127.94,
+     "MS": 365581.4,
+     "AC": 346502.77,
+     "RR": 304259.92,
+     "PE": 281950.78,
+     "BA": 274866.08,
+     "RJ": 219428.58,
+     "PR": 193741.62,
+     "PI": 182289.07,
+     "SC": 138192.71,
+     "AP": 125645.94,
+     "SP": 124813.17,
+     "PB": 105364.92,
+     "RN": 98597.08,
+     "MG": 96964.88,
+     "AL": 87497.26,
+     "RS": 87019.41,
+     "ES": 63058.36,
+     "SE": 40222.92
+    },
+    "atualizado_em": "05/09/2026"
    }
   },
   {
@@ -90,6 +138,11 @@
        "valor": 849000000,
        "detalhe": "arroz: +106% sobre o estoque atual (~20 dias de consumo); milho para a estiagem prevista no Nordeste"
       }
+     ],
+     "execucao_empenhado": 11461112.27,
+     "execucao_pago": 36913118.65,
+     "acoes": [
+      "2130"
      ]
     },
     {
@@ -101,21 +154,46 @@
        "valor": 76000000,
        "detalhe": "valor por diferença (925 − 849); a confirmar no anexo da MP"
       }
+     ],
+     "execucao_empenhado": 7484544.61,
+     "execucao_pago": 7320512.54,
+     "acoes": [
+      "2792",
+      "2798"
      ]
     }
    ],
    "execucao": {
-    "status": "sem_coleta",
-    "fonte": "Portal da Transparência — despesas (por órgão/ação)",
-    "empenhado": null,
-    "liquidado": null,
-    "pago": null,
-    "atualizado_em": null
+    "status": "coletado",
+    "fonte": "Portal da Transparência — Execução da Despesa (arquivos mensais abertos)",
+    "empenhado": 18945656.88,
+    "liquidado": 31170897.51,
+    "pago": 44233631.19,
+    "meses": [
+     "202608",
+     "202609"
+    ],
+    "atualizado_em": "05/09/2026",
+    "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito"
    },
    "destino": {
-    "status": "sem_coleta",
-    "nota": "estoques por armazém/UF (Conab) e cestas entregues por município (MDS) — a coletar"
+    "status": "coletado",
+    "medida": "valor pago por UF da unidade gestora (BR = unidade nacional)",
+    "por_uf_pago": {
+     "BR": 43248579.99,
+     "GO": 479804.14,
+     "PA": 293622.34,
+     "MG": 188366.92,
+     "SP": 23257.8
+    },
+    "atualizado_em": "05/09/2026"
    }
   }
- ]
+ ],
+ "hashes_arquivos_mensais": {
+  "202606": "c9555402af07850317ba8362781a54f9f09ebba939da99f7c8e6c8bc3360bb98",
+  "202607": "2874e6981da8c6d104caaea12f4737aa93ac20cd2160b0334b02fd7e82bdbb7f",
+  "202608": "5346ce85394f357957fbb7058b53e82e2e3dcbc46d2b5f6e534860aee96fecdf",
+  "202609": "486885cbcb89a57662e9ed87ee0c707d3b58c8911aba3ed2710ff921e61efb43"
+ }
 }

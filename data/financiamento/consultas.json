@@ -93,6 +93,37 @@
    "itens": 11,
    "bytes": null,
    "fonte": "TransfereGov — API Fundo a Fundo (sem chave)"
+  },
+  {
+   "endpoint": "https://repositorio.dados.gov.br/seges/detru/siconv_proposta.csv.zip",
+   "parametros": {
+    "carga": "17/07/2026 06:30:47"
+   },
+   "data": "2026-09-05",
+   "hash_resposta": "55c4dc8ff6fc85a9dc65b8f7e09176794dabf88362aa5143c68e22d7cc69e817",
+   "itens": null,
+   "bytes": 199551960,
+   "fonte": "TransfereGov — Dados Abertos (sem chave)"
+  },
+  {
+   "endpoint": "https://repositorio.dados.gov.br/seges/detru/siconv_convenio.csv.zip",
+   "parametros": {
+    "carga": "17/07/2026 06:30:47"
+   },
+   "data": "2026-09-05",
+   "hash_resposta": "7b4d1b9ab5c822184bffae77f993b6e3c8a705f22a2f3d86f7aa4faa5c3e4a34",
+   "itens": null,
+   "bytes": 16517558,
+   "fonte": "TransfereGov — Dados Abertos (sem chave)"
+  },
+  {
+   "endpoint": "https://api.transferegov.gestao.gov.br/fundoafundo/programa?ano_programa=eq.2026&limit=500",
+   "parametros": {},
+   "data": "2026-09-05",
+   "hash_resposta": "f37928c9dff6ed3c2147377d2b492a14cf3025af690966752935658cac8fd82d",
+   "itens": 11,
+   "bytes": null,
+   "fonte": "TransfereGov — API Fundo a Fundo (sem chave)"
   }
  ]
 }
