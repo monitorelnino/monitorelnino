@@ -133,8 +133,10 @@ setTimeout(() => {
   const prazos = JSON.parse(fs.readFileSync(path.join(raiz, "data", "prazos_uf.json"), "utf-8")).marcos;
   const _d = s => { const [dd, mm, aa] = s.split("/").map(Number); return new Date(aa, mm - 1, dd); };
   const _hoje = new Date(); _hoje.setHours(0, 0, 0, 0);
-  const esperados = prazos.filter(m => m.vencimento && m.titulo_curto && Math.round((_d(m.vencimento) - _hoje) / 86400000) >= -60).length;
-  teste(`prazos em curso: ${esperados} item(ns) renderizados a partir de prazos_uf.json`, q("prazosLista").querySelectorAll("li").length === esperados && esperados > 0);
+  const esperados = prazos.filter(m => m.vencimento && m.data_base && m.titulo_curto && Math.round((_d(m.vencimento) - _hoje) / 86400000) >= -60).length;   // 05/09/2026: barra exige data_base
+  teste(`prazos em curso: ${esperados} item(ns) renderizados a partir de prazos_uf.json`, q("prazosLista").querySelectorAll(".prazo").length === esperados && esperados > 0);   // 05/09/2026: barras, não <li>
+  teste("prazos em curso: cada barra tem largura entre 0 e 100% e vencido é marcado",
+    [...q("prazosLista").querySelectorAll(".prazo")].every(p => { const w = parseFloat(p.querySelector(".prazo-resta").style.width); const venc = /transcorrido/.test(p.querySelector(".prazo-meta").textContent); return w >= 0 && w <= 100 && (!venc || p.querySelector(".prazo-resta").classList.contains("vencido")); }));
   // Pedido de informação pronto (31/08/2026): presente no cartão da cidade e no detalhe do estado,
   // com linguagem probatória ("não localizou") e sem afirmação de inexistência.
   const pedidoCard = q("meuCard").querySelector(".pedido-texto"), pedidoUF = q("detail").querySelector(".pedido-texto");

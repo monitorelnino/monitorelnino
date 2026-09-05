@@ -39,6 +39,17 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### "Prazos em curso" vira barras que esvaziam (05/09/2026, pedido da editoria)
+- A caixa deixa de ser lista de texto e passa a mostrar, para cada marco datado, uma
+  barra que esvazia da data-base ao vencimento: trilho em Areia, tempo restante em Âmbar,
+  abaixo de 30% em Argila (urgente), transcorrido em Mineral apagado. Título em Fraunces
+  leve, metadados em Archivo Narrow, datas nas pontas. Acessível (`progressbar` com
+  percentual restante). Sem parágrafo explicativo: título, barras e crédito de uma linha.
+- O vigia de prazos passa a emitir `data_base` (início do prazo) em `prazos_uf.json`;
+  marco sem data-base não vira barra. Portão de runtime ajustado (conta barras, confere
+  largura 0–100% e marcação de vencido).
+
+
 ### Página inicial: dois painéis removidos (04/09/2026, pedido da editoria)
 - Saíram os painéis "Proteja-se" (chamada para a página de proteção) e "Ajude a completar o
   mapa" (chamada para o formulário). As páginas continuam no menu; só a chamada na inicial saiu.
