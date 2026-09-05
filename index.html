@@ -37,7 +37,7 @@
   .meta strong{color:var(--ink); font-weight:500;}
 
   .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:32px;}
-  .kpi{background:#F4F1EA; border:1px solid #D6C4AC; border-radius:var(--radius); padding:16px 18px;}
+  .kpi{background:#FFFFFF; border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;}
   .kpi .n{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:28px; font-weight:600;}
   .kpi .l{font-size:13.5px; color:var(--muted); margin-top:4px;}
 
@@ -52,15 +52,15 @@
   .tile{
     border-radius:7px; padding:9px 8px; cursor:pointer; text-align:center;
     font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:14px; font-weight:500;
-    border:1px solid transparent; transition:transform .12s ease, box-shadow .12s ease;
-    position:relative; color:#FFFFFF;
+    border:1px solid var(--line); transition:transform .12s ease, box-shadow .12s ease;
+    position:relative; color:#FFFFFF; background:#FFFFFF;
   }
-  .tile:hover{transform:translateY(-2px); box-shadow:0 4px 14px rgba(0,0,0,.35);}
+  .tile:hover{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); border-color:var(--teal);}
   .tile.active{outline:2px solid var(--ink); outline-offset:2px;}
   .tile .cap-dot{position:absolute; top:5px; right:6px; width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.6;}
   .tile .tile-uf{display:block; font-weight:700;}
   .tile .tile-score{display:block; font-size:12px; font-weight:600; opacity:.85; margin-top:1px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; letter-spacing:.02em; font-variant-numeric:tabular-nums;}
-  .tile .tile-bar{height:6px; background:#D6CBB2; border-radius:3px; overflow:hidden; margin-top:4px;}
+  .tile .tile-bar{height:6px; background:#DCE3E2; border-radius:3px; overflow:hidden; margin-top:4px;}
   .tile .tile-fill{height:100%; width:0;
     background:linear-gradient(90deg,#7C4A34 0%,#C9814B 20%,#8FA5A8 48%,#2E3D30 88%);
     background-size:calc(10000%/var(--galvo,1)) 100%; background-repeat:no-repeat;
@@ -70,17 +70,17 @@
   /* ===== Barra principal: textura de corrente quente (El Niño) ===== */
   #hero .gauge-fill::after{content:''; position:absolute; inset:0; border-radius:inherit;
     background:
-      radial-gradient(72px 2.5px at 36px 26%, rgba(245,241,232,.17) 55%, transparent 62%) repeat-x,
+      radial-gradient(72px 2.5px at 36px 26%, rgba(255,255,255,.17) 55%, transparent 62%) repeat-x,
       radial-gradient(98px 3px at 60px 52%, rgba(21,32,26,.09) 55%, transparent 62%) repeat-x,
-      radial-gradient(58px 2px at 20px 76%, rgba(245,241,232,.12) 55%, transparent 62%) repeat-x,
-      linear-gradient(180deg, transparent 30%, rgba(245,241,232,.06) 31%, rgba(245,241,232,.06) 32%, transparent 33%,
-        transparent 62%, rgba(245,241,232,.05) 63%, rgba(245,241,232,.05) 64%, transparent 65%);
+      radial-gradient(58px 2px at 20px 76%, rgba(255,255,255,.12) 55%, transparent 62%) repeat-x,
+      linear-gradient(180deg, transparent 30%, rgba(255,255,255,.06) 31%, rgba(255,255,255,.06) 32%, transparent 33%,
+        transparent 62%, rgba(255,255,255,.05) 63%, rgba(255,255,255,.05) 64%, transparent 65%);
     background-size: 156px 100%, 214px 100%, 132px 100%, 100% 100%;
     animation: correnteQuente 7.5s linear infinite;}
   @keyframes correnteQuente{to{background-position: 156px 0, 214px 0, 132px 0, 0 0;}}
   #hero .gauge-fill::before{content:''; position:absolute; top:0; bottom:0; right:0; width:26px;
     border-radius:inherit;
-    background:radial-gradient(ellipse at right, rgba(245,241,232,.85), transparent 70%);
+    background:radial-gradient(ellipse at right, rgba(255,255,255,.85), transparent 70%);
     animation: cristaQuente 3.6s ease-in-out infinite;}
   @keyframes cristaQuente{0%,100%{transform:translateY(0); opacity:.85;} 50%{transform:translateY(1px); opacity:1;}}
   @media (prefers-reduced-motion: reduce){
@@ -108,9 +108,8 @@
   .detail[hidden]{display:none;}
   .panel.analysis{border-top:3px solid var(--link); margin-bottom:24px;}
   /* ===== Identidade: masthead, navegação e rodapé unificados ===== */
-  .grad-line{height:4px; border-radius:2px; border:none; margin:0;
-    background:linear-gradient(90deg,#7C4A34 0%,#C9814B 20%,#8FA5A8 48%,#2E3D30 88%);}
-  h1.site-title{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:550;
+  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
+  h1.site-title{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:400;
     font-size:clamp(33px, 5.4vw, 46px); line-height:1.08; letter-spacing:-.012em;
     color:var(--ink); margin:0 0 6px;}
   h1.site-title em{font-style:italic; font-weight:500;}
@@ -146,10 +145,10 @@
     background-size:calc(10000%/var(--galvo,1)) 100%; background-repeat:no-repeat;
     border-radius:13px 0 0 13px; transition:width 1.4s cubic-bezier(.2,.7,.3,1);}
   .gauge-fill::after{content:''; position:absolute; inset:0; border-radius:inherit;
-    background:repeating-linear-gradient(-55deg, rgba(245,241,232,.13) 0 9px, transparent 9px 22px);
+    background:repeating-linear-gradient(-55deg, rgba(255,255,255,.13) 0 9px, transparent 9px 22px);
     animation:gflow 1.8s linear infinite;}
   .gauge-fill::before{content:''; position:absolute; right:-2px; top:-2px; bottom:-2px; width:14px;
-    background:radial-gradient(ellipse at right, rgba(245,241,232,.75), transparent 72%);}
+    background:radial-gradient(ellipse at right, rgba(255,255,255,.75), transparent 72%);}
   @keyframes gflow{ to{ background-position:31px 0; } }
   .gtick{position:absolute; top:0; bottom:0; width:1px; background:rgba(21,32,26,.22);}
   .gauge-tick-labels{position:relative; height:24px; margin-top:3px;}
@@ -173,7 +172,7 @@
   .fld{display:flex; flex-direction:column; gap:5px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;
     font-size:13.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);}
   .fld input, .fld select, .fld textarea{font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:15px; color:var(--ink);
-    background:var(--surface-2, #F4F1EA); border:1px solid #D6C4AC; border-radius:8px; padding:9px 11px;
+    background:var(--surface-2, #F0F4F3); border:1px solid var(--line); border-radius:8px; padding:9px 11px;
     text-transform:none; letter-spacing:0;}
   .fld input:focus, .fld select:focus, .fld textarea:focus{outline:2px solid var(--link); outline-offset:1px;}
   .fld-full{grid-column:1 / -1;}
@@ -191,7 +190,7 @@
   .strip-title{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; text-transform:uppercase;
     letter-spacing:.07em; color:var(--muted); margin:0 0 8px;}
   .strip{position:relative; height:34px;}
-  .strip-line{position:absolute; left:0; right:0; top:16px; height:2px; background:#D6C4AC;}
+  .strip-line{position:absolute; left:0; right:0; top:16px; height:2px; background:var(--line);}
   .strip-tick{position:absolute; top:8px; width:2.5px; height:18px; background:#2E3D30; border-radius:2px; cursor:default;}
   .strip-tick.boletim{background:#2E3D30; width:4px; top:5px; height:24px;}
   .strip-tick:hover, .strip-tick:focus-visible{background:#7C4A34; outline:none;}
@@ -281,7 +280,7 @@
   .fontes-list{font-size:13.5px; line-height:1.9; margin:0; padding-left:18px; color:var(--ink);}
   .pedido-lai{margin-top:12px;}
   .pedido-lai summary{cursor:pointer; color:var(--link); font-weight:600;}
-  .pedido-texto{width:100%; min-width:0; box-sizing:border-box; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink); background:#F4F1EA; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:0 0 8px; resize:vertical;}
+  .pedido-texto{width:100%; min-width:0; box-sizing:border-box; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink); background:#F0F4F3; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:0 0 8px; resize:vertical;}
   /* Prazos em curso (05/09/2026): barras que esvaziam de data-base a vencimento. */
   .prazos-barras{display:flex; flex-direction:column; gap:14px; margin:4px 0 10px;}
   .prazo{display:grid; grid-template-columns:1fr auto; gap:4px 14px; align-items:end;}
@@ -414,7 +413,7 @@
     <p class="hero-links"><a href="#regions">Índice por estado ↓</a><a href="#minhacidade">Encontre sua cidade ↓</a></p>
   </div>
 
-  <div class="panel" style="margin-bottom:24px; border-left:6px solid #7C4A34; background:linear-gradient(180deg, #FFFFFF, #FFFFFF); box-shadow:0 1px 0 #EEE9E0 inset;">
+  <div class="panel" style="margin-bottom:24px; border-left:4px solid var(--teal); background:#FFFFFF; box-shadow:0 1px 0 #E9EEEC inset;">
     <div class="panel" id="blocoPosDefeso" style="display:none; margin:0 0 22px;">
   <p class="selo" style="margin:0 0 6px;">O que o período eleitoral escondeu · publicado a partir de 26/10/2026</p>
   <p style="margin:0 0 4px;" id="pdFontes">—</p>
@@ -655,7 +654,7 @@ DATA.ufs.forEach(item=>{
   const tile = document.createElement('div');
   tile.className = `tile st-${item.status}`;
   tile.dataset.uf = item.uf;
-  tile.style.background = '#F4F1EA';
+  tile.style.background = '#FFFFFF';
   tile.style.color = 'var(--ink)';
   const v = (typeof MARE !== 'undefined' && MARE[item.uf]) ? MARE[item.uf].total : null;
   tile.title = `${item.uf} · MARÉ ${v == null ? 'sem dado' : String(v).replace('.', ',')} / 100`;
@@ -757,7 +756,7 @@ const CAT_LABEL_TBL = {
   plano_elaboracao:['Em elaboração','#C9814B'], estrutura:['Estrutura de coordenação','#C9814B'], decreto:['Decreto reativo','#7C4A34'],
   coberto_estadual:['Coberto pelo estado','#8FA5A8'], nao_el_nino:['Não é El Niño','#D6C4AC'],
   nao_localizado:['Nada localizado','#7C4A34'],
-  nao_verificado:['Ainda não verificado','#6F6A61'],
+  nao_verificado:['Ainda não verificado','#66736F'],
 };
 // Caixa "Prazos em curso" (31/08/2026): lê data/prazos_uf.json, que o vigia de
 // prazos regrava a cada atualização. Mostra o que vence daqui para a frente e o que
@@ -1139,7 +1138,7 @@ function renderMinha(){
       <h4>Como se proteger (${guiasDoEstado(ufFinal).length < 3 ? 'riscos projetados do seu estado' : 'guias gerais'})</h4>
       ${guiasDoEstado(ufFinal).map(g => htmlGuia(g)).join('')}
       ${(typeof HAB_SET !== 'undefined' && HAB_SET.has((document.getElementById('cidadeInput').value.trim().toLowerCase()) + '|' + ufFinal))
-        ? `<p style="margin:8px 0 0; background:#F4F1EA; border-left:4px solid #2E3D30; border-radius:8px; padding:10px 12px;"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
+        ? `<p style="margin:8px 0 0; background:#F0F4F3; border-left:4px solid #2E3D30; border-radius:8px; padding:10px 12px;"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
         : ''}
       <p class="note" style="margin-top:4px;">Encontrou erro, atualização ou um documento que não temos? <a href="envie-dados.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
   }

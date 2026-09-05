@@ -33,7 +33,7 @@
 
 /* --- financiamento.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
-  .grad-line{height:4px; border-radius:2px; border:none; margin:0; background:linear-gradient(90deg,#7C4A34 0%,#C9814B 20%,#8FA5A8 48%,#2E3D30 88%);}
+  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
   .lacuna{display:flex; align-items:center; justify-content:center; min-height:150px; height:100%; border:1px dashed var(--line); border-radius:8px; padding:16px; text-align:center; font-size:13.5px; line-height:1.5; color:var(--muted); background:rgba(0,0,0,.012);}
   .uf-path:focus-visible{outline:2px solid var(--link); outline-offset:2px;}
   .fonte-espera{color:var(--muted);}
@@ -259,7 +259,7 @@ function renderRotaMPs(){
         const hu = u.valor * escala;
         svg.append('path').attr('d', `M${x1+colW},${yu} C${x1+colW+gapX/2},${yu} ${x2-gapX/2},${yu} ${x2},${yu} L${x2},${yu+hu} C${x2-gapX/2},${yu+hu} ${x1+colW+gapX/2},${yu+hu} ${x1+colW},${yu+hu} Z`)
           .attr('fill', mp.cor).attr('opacity', .25);
-        svg.append('rect').attr('x', x2).attr('y', yu).attr('width', colW).attr('height', hu).attr('rx', 6).attr('fill', '#F4F1EA').attr('stroke', mp.cor);
+        svg.append('rect').attr('x', x2).attr('y', yu).attr('width', colW).attr('height', hu).attr('rx', 6).attr('fill', '#F0F4F3').attr('stroke', mp.cor);
         const linhas = u.nome.length > 34 ? [u.nome.slice(0, 34) + '…'] : [u.nome];
         svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x2 + 10).attr('y', yu + Math.min(18, hu/2 + 4)).text(linhas[0]);
         if (hu > 30) svg.append('text').attr('class', 'rota-mp-valor').attr('x', x2 + 10).attr('y', yu + Math.min(34, hu/2 + 20)).text(brl(u.valor));
@@ -278,7 +278,7 @@ function renderRotaMPs(){
   fonteFigura('boxRotaMPs', mps.some(mp => mp.execucao && mp.execucao.status === 'coletado') ? 'Fontes: Congresso Nacional, Agência Gov, Câmara, Conab · execução: Portal da Transparência, arquivos mensais · ' + esc(mps[0].execucao.atualizado_em) : 'Fontes: Congresso Nacional, Agência Gov, Câmara, Conab · execução: Portal da Transparência · sem coleta até o corte');
 }
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
-const NEUTRA = '#E6E0D4';
+const NEUTRA = '#DCE3E2';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const brl = v => (v == null) ? '—' : 'R$ ' + Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 0});
 const { showTip, hideTip } = MonitorMapas;
@@ -387,7 +387,7 @@ function __init(){
     fonteFigura('boxSerie', semanas.length ? 'Fonte: TransfereGov — Dados Abertos · carga ' + esc(SERIE.carga_da_fonte || SERIE.corte) : 'Fonte: TransfereGov — Dados Abertos · sem coleta até o corte');
   })();
   // 3 · por estado
-  const FUNDO = {localizado:['Localizado','#2E3D30'], em_elaboracao:['Em elaboração','#C9814B'], nao_localizado:['Não localizado (bateria datada)','#7C4A34'], nao_verificado:['Ainda não verificado','#6F6A61']};
+  const FUNDO = {localizado:['Localizado','#2E3D30'], em_elaboracao:['Em elaboração','#C9814B'], nao_localizado:['Não localizado (bateria datada)','#7C4A34'], nao_verificado:['Ainda não verificado','#66736F']};
   const fundo = uf => ((PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}).status || 'nao_verificado';
   desenharMapa('mapaFundo','legFundo', uf => (FUNDO[fundo(uf)] || FUNDO.nao_verificado)[1],
     uf => { const f = (PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}; return '<em>' + esc((FUNDO[fundo(uf)] || FUNDO.nao_verificado)[0]) + '</em>' + (f.instrumento ? '<br>' + esc(f.instrumento) + (f.norma ? ' · ' + esc(f.norma) : '') : '') + (f.condicionalidade ? '<br>Condição: ' + esc(f.condicionalidade) : '') + (f.verificado_em ? '<br>verificado em ' + esc(f.verificado_em) : '<br>bateria estadual ainda não executada'); },
