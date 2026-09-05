@@ -75,6 +75,12 @@ setTimeout(() => {
   const caixas = [...d.querySelectorAll(".map-box, .chart-box")].filter(c => c.querySelector("svg, canvas, #quadrantes"));
   const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura"));
   teste(`toda figura tem crédito de fonte (${caixas.length - semCredito.length}/${caixas.length})`, semCredito.length === 0);
+  teste("Monitor Saúde: mapa com 27 UFs, legenda com contagens e barras só para verificadas", (() => {
+    const ms = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf-8"));
+    const ver = Object.values(ms.ufs).filter(u => u.verificado).length;
+    return d.querySelectorAll("#mapaMonitor path").length === 27 && /não verificado/.test(q("legMonitor").textContent)
+      && d.querySelectorAll("#monitorBarras .msb").length === Math.max(1, ver) && d.querySelectorAll("#tblMonitor tbody tr").length === 27;
+  })());
   teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p").length === 0));
   // linguagem: "não localizamos" só como lacuna de coleta ("Não localizamos coleta"), nunca sobre instrumento não verificado
   const texto = d.body.textContent;

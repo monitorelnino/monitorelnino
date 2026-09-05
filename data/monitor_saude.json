@@ -1,0 +1,879 @@
+{
+ "_governanca": "Monitor Saúde v0.1 (05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Um componente pontuado (instrumento operacional × antecipação, pesos iguais) e duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31.",
+ "versao": "0.1",
+ "gerado_em": "05/09/2026",
+ "corte": "05/09/2026",
+ "metodo": {
+  "pesos": {
+   "instrumento": 0.5,
+   "antecipacao": 0.5
+  },
+  "escada": {
+   "NOVO": 100,
+   "READ": 65,
+   "VIG": 45,
+   "ELAB": 35,
+   "LAC": 0
+  },
+  "antecipacao": {
+   "2026/2027 antes de 01/10/2026": 100,
+   "2025/2026": 45,
+   "anterior": 20,
+   "sem instrumento": 0
+  },
+  "faixas": {
+   "estágio inicial": "0–25",
+   "em construção": "25–50",
+   "consolidado": "50–70",
+   "avançado": "70–100"
+  }
+ },
+ "resumo": {
+  "verificadas": 11,
+  "nao_verificadas": 16,
+  "por_faixa": {
+   "em construção": 11
+  },
+  "media_das_verificadas": 42.7,
+  "nota": "a média cobre só as UFs verificadas e não é um número nacional"
+ },
+ "ufs": {
+  "AC": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Rio Branco",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 24
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "AL": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Maceió",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 16
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "AM": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Manaus",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 625
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "AP": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 2,
+    "dengue_capital": "Macapá",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 31
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "BA": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano Estadual de Contingência das Arboviroses Urbanas — atualização 2025-2026 (reedição para o biênio, em conformidade com as Diretrizes Nacionais)",
+    "data": "05/2025",
+    "orgao": "SESAB/SUVISA/DIVEP",
+    "url": "https://www.saude.ba.gov.br/wp-content/uploads/2025/05/Atualizacao-Plano-de-Contingencia-veesao-2025_20261.pdf",
+    "temporada": "2025/2026"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Salvador",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 244
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "CE": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano Estadual de Enfrentamento das Arboviroses 2025/2026 (apresentado em 01/07/2025 na oficina de emergências com o MS)",
+    "data": "01/07/2025",
+    "orgao": "SESA-CE / SEVIR",
+    "url": "https://www.saude.ce.gov.br/wp-content/uploads/sites/9/2022/02/2025_PLANO-ESTADUAL_ENFRENTAMENTO-ARBOVIROSES.pptx.pdf",
+    "temporada": "2025/2026"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Fortaleza",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 46
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "DF": {
+   "verificado": true,
+   "prontidao": 32.5,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Enfrentamento das Arboviroses do Distrito Federal (PDF no portal oficial, versão de 22/12/2023 — edição mais recente localizada)",
+    "data": "22/12/2023",
+    "orgao": "SES-DF",
+    "url": "https://www.saude.df.gov.br/documents/37101/0/Plano-de-enfrentamento-arboviroses_231222_161225+(1).pdf/3061d8c1-7d45-cb9b-7584-5f49f9f73aff?t=1703339749606",
+    "temporada": "anterior"
+   },
+   "antecipacao": {
+    "pontos": 20,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Brasília",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 7
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "ES": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Vitória",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 6
+   },
+   "risco_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ]
+  },
+  "GO": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Goiânia",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 53
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "MA": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 2,
+    "dengue_capital": "São Luís",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 254
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "MG": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC-ARBO), instituído por resolução",
+    "data": "17/09/2025",
+    "orgao": "SES-MG",
+    "url": "https://www.saude.mg.gov.br/aedes/orientacoes/",
+    "temporada": "2025/2026"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 3,
+    "dengue_capital": "Belo Horizonte",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 273
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "MS": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Contingência Estadual Arboviroses 2025-2026 (guias e manuais da SES)",
+    "data": "08/10/2025",
+    "orgao": "SES-MS",
+    "url": "https://www.saude.ms.gov.br/informativos/guias-e-manuais/plano-de-contingencia-estadual-arboviroses-2025-2026/",
+    "temporada": "2025/2026"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Campo Grande",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 39
+   },
+   "risco_projetado": [
+    "arboviroses",
+    "respiratórias por queimadas",
+    "leptospirose e diarreias",
+    "continuidade de serviços (diálise, oxigênio, rede de frio)"
+   ]
+  },
+  "MT": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Cuiabá",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 136
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "PA": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 2,
+    "dengue_capital": "Belém",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 639
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "PB": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "João Pessoa",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 7
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "PE": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Enfrentamento das Arboviroses 2025/2026 (divulgado em 22/01/2025; capítulo específico de Oropouche)",
+    "data": "22/01/2025",
+    "orgao": "SES-PE",
+    "url": "https://portal.saude.pe.gov.br/pernambuco-divulga-plano-de-enfrentamento-das-arboviroses-2025-2026/",
+    "temporada": "2025/2026"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Recife",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 8
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "PI": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Teresina",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 58
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "PR": {
+   "verificado": true,
+   "prontidao": 32.5,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de ação e contingência de arboviroses para a sazonalidade 2024/2025, apresentado ao Comitê Intersetorial de Controle da Dengue (22/11/2024); página oficial de dengue da SESA está 'indisponível devido ao período eleitoral' (fonte suspensa no defeso)",
+    "data": "22/11/2024",
+    "orgao": "SESA-PR",
+    "url": "https://www.saude.pr.gov.br/Noticia/Parana-intensifica-combate-dengue-com-Comite-Intersetorial-e-acoes-integradas",
+    "temporada": "anterior"
+   },
+   "antecipacao": {
+    "pontos": 20,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Curitiba",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 5
+   },
+   "risco_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ]
+  },
+  "RJ": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Rio de Janeiro",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 27
+   },
+   "risco_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ]
+  },
+  "RN": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Natal",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 8
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "RO": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Porto Velho",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 3
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "RR": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Boa Vista",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 15
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "RS": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Contingência Dengue 2024-2025, 2ª versão (fevereiro/2025); plano para o verão 2025/2026 apresentado às coordenadorias em 29-31/10/2025, edição ainda não listada na página oficial",
+    "data": "10/02/2025",
+    "orgao": "SES-RS / CEVS",
+    "url": "https://saude.rs.gov.br/plano-de-contingencia",
+    "temporada": "2025/2026"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Porto Alegre",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 2
+   },
+   "risco_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ]
+  },
+  "SC": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Contingência para o enfrentamento da dengue, zika e chikungunya — temporada 2025/2026 (cenário de preparação + três níveis de alerta)",
+    "data": "08/09/2025",
+    "orgao": "SES-SC / DIVE",
+    "url": "https://www.dive.sc.gov.br/index.php/noticias-todas/843-saude-atualiza-plano-de-contingencia-para-o-enfrentamento-das-arboviroses-em-santa-catarina",
+    "temporada": "2025/2026"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Florianópolis",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 1
+   },
+   "risco_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ]
+  },
+  "SE": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Contingência para Enfrentamento e Controle de Epidemias por Arboviroses no Estado de Sergipe (publicado na página oficial de arboviroses da SES; sem data de edição na página)",
+    "data": null,
+    "orgao": "SES-SE",
+    "url": "https://saude.se.gov.br/arboviroses-dengue-chikungunya-e-zika/",
+    "temporada": "desconhecida"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Aracaju",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 13
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  },
+  "SP": {
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
+   "instrumento": {
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Contingência das Arboviroses Urbanas: Dengue, Chikungunya e Zika 2025/2026 (apresentado em 15/01/2025; nova metodologia de estágios)",
+    "data": "15/01/2025",
+    "orgao": "SES-SP / CVE",
+    "url": "https://dengue.saude.sp.gov.br/",
+    "temporada": "2025/2026"
+   },
+   "antecipacao": {
+    "pontos": 45,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "São Paulo",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 60
+   },
+   "risco_projetado": [
+    "leptospirose",
+    "doenças diarreicas agudas",
+    "hepatite A",
+    "abrigos e continuidade de serviços"
+   ]
+  },
+  "TO": {
+   "verificado": false,
+   "prontidao": null,
+   "faixa": "não verificado",
+   "instrumento": {
+    "status": "NAO_VERIFICADO",
+    "pontos": null,
+    "doc": null,
+    "data": null,
+    "orgao": null,
+    "url": null,
+    "temporada": null
+   },
+   "antecipacao": {
+    "pontos": null,
+    "janela_critica_inicio": "01/10/2026"
+   },
+   "risco_atual": {
+    "dengue_capital_nivel": 1,
+    "dengue_capital": "Palmas",
+    "dengue_se": 202634,
+    "avisos_calor": 0,
+    "focos_24h": 77
+   },
+   "risco_projetado": [
+    "arboviroses (armazenamento de água)",
+    "doenças respiratórias por fumaça de queimadas",
+    "ondas de calor",
+    "qualidade da água em estiagem"
+   ]
+  }
+ }
+}
