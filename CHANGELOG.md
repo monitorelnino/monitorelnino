@@ -39,6 +39,14 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Carimbo de cache nos assets (05/09/2026)
+- `/assets/*` fica 24 h no cache do navegador (netlify.toml); a página, revalidada, seguia
+  apontando para o mesmo nome de arquivo — e o leitor via o tema velho mesmo atualizando.
+  `scripts/carimbar_assets.py` reescreve cada `assets/x.css|js|svg` com `?v=<8 hex do sha256
+  do conteúdo>` (determinístico; 55 referências em 10 páginas), na cadeia de derivados antes do
+  manifesto. Portão de estrutura aceita o carimbo.
+
+
 ### Tema técnico, 2ª passada: superfícies frias e caixinhas dos estados (05/09/2026)
 - As superfícies secundárias saem do osso-claro (terra) para mineral-claríssimo (#F0F4F3) e as
   linhas de Areia para mineral-claro (#C5CFCE); Areia fica reservada aos trilhos das barras de
