@@ -39,6 +39,16 @@ com κ, população real na camada declarada, anexo MARÉ×ICM) passa a **v2.4**
 redesenho de 02/09/2026 que orientou a construção. **Primeira atualização (dia 0 da
 semana intensiva): domingo, 06/09/2026, às 6h de Brasília.**
 
+### Bateria estadual de saúde — bloco 1 (05/09/2026)
+- Sete UFs com plano estadual de contingência de arboviroses localizado em fonte oficial e
+  registrado como **vigente-recorrente** (plano sazonal anual, sem citação ao ciclo El Niño):
+  BA (atualização 2025-2026, 05/2025), SP (2025/2026, 15/01/2025), MS (2025-2026, 08/10/2025),
+  MG (PEC-ARBO, Resolução SES/MG nº 10.440, 17/09/2025 — ato com número e data), SC (2025/2026,
+  08/09/2025), RS (2024-2025 v2 publicado; edição 2025/2026 apresentada em 10/2025, PDF não
+  listado) e SE (sem data de edição). Buscas logadas (canal `orgao_estadual`); sete UFs do
+  Nordeste logadas como pendentes de busca individual.
+
+
 ### Saúde: série semanal de dengue 2024–2026 pelo InfoDengue (05/09/2026)
 - O Painel de Arboviroses do MS é Tableau sem API; a série passa a vir do InfoDengue
   (Fiocruz/FGV), que já coletamos para as capitais: o coletor pede a janela 2024–2026 de
