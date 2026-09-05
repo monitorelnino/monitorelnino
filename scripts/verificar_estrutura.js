@@ -39,7 +39,7 @@ for (const arq of arquivos) {
   }
 
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
-  if (!/<link[^>]+href="assets\/tokens\.css"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
+  if (!/<link[^>]+href="assets\/tokens\.css(\?v=[0-9a-f]+)?"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
   const NAV_ORDEM = ["O monitor", "Sinais de risco", "Mapas", "Financiamento", "Saúde", "Proteja-se", "Gestores", "Enviar dados", "Imprensa"]; // ordem narrativa (03/09/2026): risco → o que foi publicado → detalhe → dinheiro → saúde → cidadão → gestor → contribuir → imprensa // 03/09/2026: dez páginas (Imprensa a pedido da editoria)
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
@@ -130,13 +130,13 @@ for (const arq of arquivos) {
   if (clampTitulo && clampTitulo[1] !== "clamp(33px, 5.4vw, 46px)") falha(`${nome}: .site-title com escala diferente das outras páginas: ${clampTitulo[1]}`);
   // v2.3: as regras compartilhadas vivem em assets/base.css; a página só precisa importá-la
   const baseCss = fs.readFileSync(path.join(RAIZ, "assets", "base.css"), "utf-8");
-  const temBase = /<link[^>]+href="assets\/base\.css"/.test(html);
+  const temBase = /<link[^>]+href="assets\/base\.css(\?v=[0-9a-f]+)?"/.test(html);   // ?v= = carimbo de cache (05/09/2026)
   if (!temBase) falha(`${nome}: sem <link> para assets/base.css`);
   if (!/prefers-reduced-motion/.test(css + (temBase ? baseCss : ""))) falha(`${nome}: sem @media (prefers-reduced-motion)`);
   if (!/\.masthead--mini \.site-title\{[^}]*clamp\(24px, 3\.6vw, 30px\)/.test(baseCss)) falha(`${nome}: base.css sem a escala canônica do masthead compacto`);
   // v2.3 (03/09/2026): motor único de mapas — assets/mapas.js
   const temMapa = /<svg id="map/.test(html) || /d3\.geoMercator/.test(html);
-  if (temMapa && !/<script src="assets\/mapas\.js"><\/script>/.test(html)) falha(`${nome}: página com mapa sem assets/mapas.js`);
+  if (temMapa && !/<script src="assets\/mapas\.js(\?v=[0-9a-f]+)?"><\/script>/.test(html)) falha(`${nome}: página com mapa sem assets/mapas.js`);
   for (const fn of ["showTip", "hideTip", "desenharSiglas"]) if (new RegExp("function " + fn + "\\(").test(html)) falha(`${nome}: define ${fn} localmente (deve vir de MonitorMapas)`);
   if (/geoMercator\(\)\.fitSize/.test(html) && nome !== "mapas-e-graficos.html") falha(`${nome}: cria projeção própria (usar MonitorMapas.contexto)`);
   const legendasManuais = (html.match(/innerHTML = [^\n]*<span><i style=\\?"background/g) || []).length;
