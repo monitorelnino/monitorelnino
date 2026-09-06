@@ -360,7 +360,7 @@
       <div class="meta">
       Fonte: <a href="#fontes" style="color:inherit;">registros verificados individualmente, com fonte e data citadas ↓</a><br>
       <span id="metaUfsMun">27 estados verificados · verificação municipal por níveis (contador abaixo)</span><br>
-      Última verificação: <strong id="metaUltimaVerif">25/08/2026</strong>
+      Última verificação: <strong id="metaUltimaVerif">—</strong>
     </div>
     </div>
     <div class="grad-line"></div>
@@ -370,9 +370,9 @@
   <div class="kpis">
     <a class="kpi" style="border-left:4px solid var(--ink);" href="#fontes"><div class="n" style="color:var(--ink);" id="kpiFederais">—</div><div class="l">Programas federais</div></a>
     <a class="kpi" style="border-left:4px solid var(--ink);" href="#regions"><div class="n" style="color:var(--ink);" id="kpiRegistros">—</div><div class="l">Registros estaduais</div></a>
-    <a class="kpi" style="border-left:4px solid #7C4A34;" href="mapas-e-graficos.html#mapCobertura"><div class="n" style="color:#7C4A34;" id="kpiSemPlano">—</div><div class="l">Estados sem plano estadual localizado</div></a>
+    <a class="kpi" style="border-left:4px solid #7C4A34;" href="#regions"><div class="n" style="color:#7C4A34;" id="kpiSemPlano">—</div><div class="l">Estados sem plano estadual localizado</div></a>
     <a class="kpi" style="border-left:4px solid var(--ink);" href="#fontes"><div class="n" style="color:var(--ink);" id="kpiCapitais">—</div><div class="l">Capitais verificadas uma a uma</div></a>
-    <a class="kpi" style="border-left:4px solid #7C4A34;" href="mapas-e-graficos.html#mapCobertura"><div class="n" style="color:#7C4A34;" id="kpiMunSemPlano">—</div><div class="l">Municípios em estados sem plano estadual</div></a>
+    <a class="kpi" style="border-left:4px solid #7C4A34;" href="#regions"><div class="n" style="color:#7C4A34;" id="kpiMunSemPlano">—</div><div class="l">Municípios em estados sem plano estadual</div></a>
   </div>
 
   <div class="hero" id="hero">
@@ -385,7 +385,7 @@
         <div class="gauge-head">
         <span class="gnum" id="gaugeNum">43,6</span><span class="gden">/ 100</span>
         <span class="gfaixa-badge" id="faixaMare"></span>
-        <span class="glabel">MARÉ · Medida de Antecipação e<br>Resposta ao El Niño<br>Média dos 27 estados · corte <span id="gaugeCorte">26/08/2026</span></span>
+        <span class="glabel">MARÉ · Medida de Antecipação e<br>Resposta ao El Niño<br>Média dos 27 estados · corte <span id="gaugeCorte">—</span></span>
       </div>
       <div class="gauge-track" role="img" aria-label="Barra de progresso: MARÉ nacional em 43,6 de 100">
         <div class="gauge-fill" id="gaugeFill" data-alvo="43.6" style="--galvo:43.6;"></div>
@@ -406,19 +406,20 @@
       <div class="strip" id="heroStrip" role="img" aria-label="Linha do tempo dos atos verificados, de 1º de abril à publicação">
         <div class="strip-line"></div>
       </div>
-      <div class="strip-ends"><span>01/04/2026 · primeira resposta estadual</span><span>25/08/2026 · corte desta edição</span></div>
+      <div class="strip-ends"><span>01/04/2026 · primeira resposta estadual</span><span><span id="stripCorte">—</span> · corte desta edição</span></div>
     </div>
 
-    <p class="hero-scope">O MARÉ mede o <strong>arcabouço público da preparação</strong>: existência, natureza, alcance populacional e antecipação dos instrumentos ex-ante publicados por estados e municípios. Suficiência de recursos frente à necessidade não é pontuada; as dimensões complementares estão em <a href="mapas-e-graficos.html#riscoinstrumento">risco projetado × instrumento</a> e <a href="mapas-e-graficos.html#financiamento">financiamento</a>, na página de mapas e gráficos; o cálculo completo e sua auditoria de robustez, no <a href="MARE_Indice_Documentacao.pdf" target="_blank" rel="noopener">documento do índice</a>.</p>
+    <p class="hero-scope">O MARÉ mede o <strong>arcabouço público da preparação</strong>: existência, natureza, alcance populacional e antecipação dos instrumentos ex-ante publicados por estados e municípios. Suficiência de recursos frente à necessidade não é pontuada; risco projetado × instrumento está em <a href="sinais-de-risco.html">Sinais</a>, e o dinheiro, em <a href="financiamento.html">Financiamento</a>; o cálculo completo e sua auditoria de robustez, no <a href="MARE_Indice_Documentacao.pdf" target="_blank" rel="noopener">documento do índice</a>.</p>
     <p class="hero-links"><a href="#regions">Índice por estado ↓</a><a href="#minhacidade">Encontre sua cidade ↓</a></p>
   </div>
 
   <div class="panel" style="margin-bottom:24px; border-left:4px solid var(--teal); background:#FFFFFF; box-shadow:0 1px 0 #E9EEEC inset;">
-    <div class="panel" id="blocoPosDefeso" style="display:none; margin:0 0 22px;">
+    <div class="panel" id="blocoPosDefeso" style="margin:0 0 22px;">
   <p class="selo" style="margin:0 0 6px;">O que o período eleitoral escondeu · publicado a partir de 26/10/2026</p>
-  <p style="margin:0 0 4px;" id="pdFontes">—</p>
-  <p style="margin:0 0 4px;" id="pdInstrumentos">—</p>
-  <p style="margin:0;" id="pdVariacao">—</p>
+  <p class="hint" style="margin:0 0 8px;">Publicado a partir de 26/10, com contagens e datas. Até lá, o espaço fica visível de propósito — <a href="METODOLOGIA.pdf">ver metodologia, §24</a> (a página Calendário nasce na v3.1).</p>
+  <p style="margin:0 0 4px;" id="pdFontes" hidden>—</p>
+  <p style="margin:0 0 4px;" id="pdInstrumentos" hidden>—</p>
+  <p style="margin:0;" id="pdVariacao" hidden>—</p>
   <p class="note" style="margin:6px 0 0;">Somente contagens e datas, decompostas por causa (<a href="METODOLOGIA.pdf">ver metodologia</a>).</p>
 </div>
 
@@ -426,7 +427,7 @@
 
 <h2>Como ler o MARÉ</h2>
 <p class="note" style="margin:4px 0 8px;"><strong>Por que a nota baixa importa:</strong> o Monitor busca nos canais que a lei define como o lugar da preparação — diários oficiais e sítios de governo (Lei 12.608/2012; Lei 12.527/2011). Preparação que não foi publicada ali não cumpriu o rito público e não pode ser conferida nem cobrada; nota baixa é evidência de preparação não tornada pública. Sobre a existência do plano, o teto continua o mesmo: "não localizamos até o corte".</p>
-<p class="note" id="notaDefeso" style="margin:4px 0 12px;"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial, e alguns sítios públicos ficam com conteúdo fora do ar — por isso nenhuma regra que altere notas muda nesse período, e as buscas sem resultado são provisórias até repetição após 25/10</span> (<a href="METODOLOGIA.pdf">metodologia, §24</a>).</p>
+<p class="note" id="notaDefeso" style="margin:4px 0 12px;"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial, e alguns sítios públicos ficam com conteúdo fora do ar. Desde 05/09/2026, nenhuma regra que altere notas muda até 25/10 — a última mudança estrutural, a v3.0, foi em 04/09 (<a href="METODOLOGIA.pdf">ver errata</a>); as buscas sem resultado são provisórias até repetição após 25/10</span> (<a href="METODOLOGIA.pdf">metodologia, §24</a>).</p>
     <p class="hint" style="margin-bottom:10px;">O essencial em seis pontos; cada regra pode ser conferida no <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">documento metodológico</a> (v2.3):</p>
     <ul style="columns:2 360px; column-gap:38px; font-size:14px; color:var(--ink); line-height:1.7; margin:0; padding-left:18px;">
       <li style="break-inside:avoid;"><strong>O que a nota mede.</strong> Três componentes, com pesos iguais: o <em>plano estadual</em> (existe? é específico para o El Niño?), a <em>população coberta</em> (que fração dos habitantes vive em municípios com plano preventivo) e a <em>antecipação</em> (o plano saiu antes ou depois do primeiro alerta federal, de 29/06/2026).</li>
@@ -556,7 +557,7 @@
   <footer class="site-footer">
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.0) · Última atualização: <span id="metaAtualizado">27/08/2026</span> · Corte dos dados: <span id="corteDados">26/08/2026</span></span>
+    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.0) · Última atualização: <span id="metaAtualizado">—</span> · Corte dos dados: <span id="corteDados">26/08/2026</span></span>
         <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:imprensa@monitorelnino.com.br">imprensa@monitorelnino.com.br</a></span>
   </footer>
 </div>
@@ -819,7 +820,7 @@ renderPrazos();
     if (hoje >= lim) {
       const bl = document.getElementById('blocoPosDefeso');
       if (bl && VRESUMO && VRESUMO.pos_defeso) {
-        bl.style.display = '';
+        ['pdFontes','pdInstrumentos','pdVariacao'].forEach(id => { const e = document.getElementById(id); if (e) e.hidden = false; });
         document.getElementById('pdFontes').textContent = VRESUMO.pos_defeso.fontes_que_voltaram_txt || '—';
         document.getElementById('pdInstrumentos').textContent = VRESUMO.pos_defeso.instrumentos_anteriores_txt || '—';
         document.getElementById('pdVariacao').textContent = VRESUMO.pos_defeso.variacao_decomposta_txt || '—';
@@ -1077,7 +1078,6 @@ function renderMinha(){
       <p class="fv">${m.documento}${m.data && m.data !== '—' ? ` <span style="color:var(--muted)">· ${m.data}</span>` : ''}</p>
       <p class="fk">Fonte</p>
       <p class="fv">${fonte}${CANAL_LABEL[m.canal] ? ' <span style="color:var(--muted)">· via ' + CANAL_LABEL[m.canal] + '</span>' : ''}</p>
-      ${m.sinal_ato && m.sinal_ato !== 'pendente_leitura' ? '<p class="fk">Sinal do ato (leitura de conteúdo)</p><p class="fv">' + ({protetivo:'Protetivo — conteúdo material de proteção', flexibilizador:'⚠ Flexibilizador — contém dispositivo de dispensa regulatória', misto:'Misto — protetivo com dispositivo de flexibilização', institucional:'Institucional — cria estrutura, sem conteúdo material'}[m.sinal_ato] || m.sinal_ato) + '</p>' : ''}
       ${emergenciasDoMunicipio(m.nome, m.uf).map(e => `<p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('')}
       ${popLinha(m.nome, m.uf)}
       ${m.vigencia ? `<p class="fk">Vigência (regra automática)</p><p class="fv">${m.vigencia === 'ativo' ? 'Dentro do prazo típico de SE (180 dias)' : m.vigencia === 'prazo_tipico_vencido' ? 'Prazo típico de SE vencido; pode ter sido prorrogado' : 'Data insuficiente para aferir'}</p>` : ''}
@@ -1405,7 +1405,10 @@ function copiarPedido(botao){
     const el = document.getElementById('gaugeCorte'); if (el) el.textContent = META.corte;
   }
   const strip = document.getElementById('heroStrip');
-  const d0 = -89, d1 = 57; // 01/04/2026 → 25/08/2026, em dias relativos ao Boletim nº 1
+  const d0 = -89;   // 01/04/2026, em dias relativos ao Boletim nº 1
+  const __corteParts = ((typeof META !== 'undefined' && META && META.corte) || '25/08/2026').split('/').map(Number);
+  const d1 = Math.round((new Date(__corteParts[2], __corteParts[1]-1, __corteParts[0]) - new Date(2026, 5, 29)) / 86400000);   // corte lido de meta.json
+  { const sc = document.getElementById('stripCorte'); if (sc && typeof META !== 'undefined' && META && META.corte) sc.textContent = META.corte; }
   // faixa derivada dos dados vivos (27/08): Boletim nº 1 + datas reais dos instrumentos estaduais
   const __MARCO = new Date(2026, 5, 29);
   const timelineData = [{days: 0, label: 'Boletim nº 1 · Painel El Niño', quando: '29/06/2026', doc: ''}];
