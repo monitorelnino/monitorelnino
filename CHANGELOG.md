@@ -9,6 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
+
+### PR-N1 — Andaime e errata (06/09/2026)
+- **Errata C25 (Metodologia §10.3 e §24):** a regra C6 (nenhuma alteração de nota no defeso)
+  foi declarada em 02/09 e excepcionada em 04/09 pela v3.0, por decisão editorial escrita e
+  motivada; desde 05/09 vale sem exceção até 25/10. A frase da página inicial foi reescrita
+  para dizer isso. **Portão de congelamento:** hash das constantes do motor (escada, créditos,
+  ESTADOS, ESTRUTURA, peso) em `data/congelamento_defeso.json`; `verificar_consistencia.py`
+  falha se mudarem dentro do intervalo (negativo provado).
+- **Datas de edição só via `meta.json`:** os literais "25/08/2026", "26/08/2026" e "27/08/2026"
+  (última verificação, corte do medidor, corte da régua, rodapé) viram placeholders preenchidos
+  pelo JavaScript a partir de `meta.corte`/`meta.atualizado_em`; a régua do ciclo calcula o fim
+  pelo corte real. **Portão de datas literais** de edição no HTML (negativo provado).
+- Andaime removido: ponteiro "na página de mapas e gráficos" (reescrito para Sinais e
+  Financiamento); campo "Sinal do ato" no cartão da cidade (C24; a doutrina fica); KPIs deixam
+  de apontar para a galeria. O bloco "O que o período eleitoral escondeu" passa a ficar
+  **visível e vazio de propósito**, com a linha que explica o vazio e o link para o Calendário.
+
 ## v3.0 — 04/09/2026 · Componente estadual em dois sub-elementos
 
 - **Regra (Metodologia §30):** componente estadual = média (1/2, 1/2) de *estrutura de
