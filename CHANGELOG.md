@@ -11,6 +11,24 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N6 — Cortes e Pesquisadores completo (06/09/2026)
+- **Sai da vista, fica nos dados ou em Pesquisadores:** "As oito fontes" e "o que esta página
+  é/não faz" de Sinais (viram uma linha com a declaração de peso zero); "Fontes e consultas" de
+  Financiamento; "Como usar o site e os dados" de Imprensa; "Onde acompanhar em tempo real" de
+  Proteja-se (duplicava Sinais); a tabela "conta / conta em parte / não conta" de Gestores (vira
+  três frases na inicial + link ao Calendário + nota de que nenhum pedido de LAI foi enviado);
+  Enviar dados fica com três frases de regra e o formulário.
+- **Pesquisadores completo** (§9): metodologia e versões; dados abertos, feeds e selos; log com
+  totais, por UF/nível e por canal na última rodada; painel amostral; registros e fontes (da
+  inicial) + fontes dos sinais + fontes e consultas do financiamento + como usar o site (de
+  Imprensa), com os renderizadores migrados; código e replicação.
+- **Imprensa:** release de 502 → 171 palavras, com os dois números lidos ao vivo (média MARÉ e
+  faixa; municípios sob decreto e fração da população) e a frase citável; entra "O que mudou esta
+  semana", lido do feed nacional (últimos sete dias).
+- **Portão de palavras estáticas** (`scripts/verificar_palavras.js`, na suíte): meta do §7 por
+  página (avisa) e teto (bloqueia). Hoje: oito páginas acima da meta, nenhuma acima do teto —
+  o aperto até a meta segue nos próximos PRs, sem perder informação.
+
 ### PR-N5 — Calendário eleitoral (06/09/2026)
 - **Bloco 1 conferido inciso a inciso:** nove dispositivos (Lei 9.504, art. 73, V, VI a/b/c, VII,
   § 10; LRF arts. 21 parágrafo único, 42, 65) em `data/calendario/dispositivos.json`, cada um com o

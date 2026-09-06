@@ -46,6 +46,7 @@ jobs:
           python3 verificar_resposta.py
           node scripts/verificar_runtime_resposta.js
           node scripts/verificar_calendario.js
+          node scripts/verificar_palavras.js
       - name: Portão 12 — derivados em árvore limpa
         id: p12
         continue-on-error: true
