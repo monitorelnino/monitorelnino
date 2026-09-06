@@ -108,7 +108,7 @@ setTimeout(() => {
 
   // --- tabela de fontes: uma linha por fonte catalogada ---
   const nFontes = Object.keys(SINAIS.fontes).length;
-  teste(`tabela de fontes: ${nFontes} linhas`, q("tblFontes") && q("tblFontes").querySelectorAll("tbody tr").length === nFontes);
+  // v3.1 §7: a tabela das oito fontes vive em pesquisadores.html
 
   // --- tooltip funciona no gesto do usuário (lição de 30/08: teste o gesto) ---
   const alvo = d.querySelector("#mapaTipoRisco path");

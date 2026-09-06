@@ -185,20 +185,8 @@
     </div>
   </div>
 
-  <div class="panel" id="fontes">
-    <h2 style="margin-top:0;">8 · Fontes e consultas</h2>
-    <p class="hint">Toda figura alimentada por API tem a consulta reproduzível registrada: endpoint, parâmetros, data, hash da resposta e número de itens. CSV correspondente nos dados abertos.</p>
-    <div class="charts-grid">
-      <div class="chart-box" id="boxFontesMonit">
-        <h3 class="map-card-h">Onde monitorar cada etapa (fontes oficiais)</h3>
-        <ul id="fontesMonit" style="font-size:13.5px; line-height:1.9; margin:0; padding-left:20px;"></ul>
-      </div>
-      <div class="chart-box" id="boxConsultas">
-        <h3 class="map-card-h">Consultas registradas</h3>
-        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblConsultas"><thead><tr><th>Endpoint</th><th>Parâmetros</th><th>Data</th><th>Itens</th><th>Hash</th></tr></thead><tbody></tbody></table></div>
-      </div>
-    </div>
-  </div>
+    <p class="hint" style="margin:0 0 18px;">Fontes, consultas e proveniência de cada série estão em <a href="pesquisadores.html#fontes-financiamento">Pesquisadores</a>.</p>
+
 </main>
 <footer class="site-footer">
     <div class="grad-line"></div>
@@ -471,7 +459,6 @@ new Chart(document.getElementById('chartFinance'), {
 
   fonteFigura('boxFinance', 'Fonte: Plano federal El Niño 2026/2027 · valores anunciados');
   // 8 · fontes e consultas
-  document.getElementById('fontesMonit').innerHTML = (TRANSF.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a></li>').join('');
   fonteFigura('boxFontesMonit', 'Fontes: as listadas · verificadas em 25/08/2026');
   const cons = CONSULTAS.consultas || [];
   if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
