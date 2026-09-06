@@ -11,6 +11,12 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N0b — Diagnóstico do Querido Diário concluído (06/09/2026)
+- Resultado conhecido (Cerrito/RS): um território por chamada → 3 diários e 3 excertos; **20 territórios
+  em lote → 0, com e sem palavra-chave**. Cobertura real confirmada (Porto Alegre 10.000 edições;
+  Curitiba 9.138). Aspas, `OR`, `published_since` e `size` funcionam. Causa única dos 5.331 zeros de
+  03/09: a consulta em lote. Registrado na §26; request/response em `robo-registro/leituras/`.
+
 ### PR-N0 — Canal de diários, detector de defeso e canal LAI (06/09/2026; instruções complementares, com precedência)
 - **Diagnóstico do Querido Diário com resultado conhecido** (`scripts/diagnosticar_querido_diario.py`,
   na Action, request/response integrais em `robo-registro/leituras/`): um território vs lote,
