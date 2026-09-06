@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- Chart.js e D3 removidos daqui em 31/08/2026: nenhum mapa/gráfico ficou na
-     página inicial depois da divisão em mapas-e-graficos.html — só jsPDF
+     página inicial depois da divisão em defesa-civil.html — só jsPDF
      continua (relatórios em PDF, que ficam aqui). -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
         integrity="sha384-JcnsjUPPylna1s1fvi1u12X5qjY5OL56iySh75FdtrwhO/SWXgMjoVqcKyIIWOLk"
@@ -109,6 +109,19 @@
   .panel.analysis{border-top:3px solid var(--link); margin-bottom:24px;}
   /* ===== Identidade: masthead, navegação e rodapé unificados ===== */
   .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
+  /* v3.1 §4.3: medidor (antecipação) e contador (resposta) lado a lado, mesma altura */
+  .mare-duas-metades{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px; align-items:stretch;}
+  .contador-zone{display:flex; flex-direction:column; gap:6px; border-left:1px solid var(--line); padding-left:22px;}
+  .contador-zone .gnum{color:var(--rust);}
+  .contador-zone svg{width:100%; height:44px; display:block; margin-top:6px;}
+  @media (max-width:640px){ .contador-zone{border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:14px;} }
+  .tile .tile-bar2{height:4px; background:var(--sem-dado); border-radius:2px; overflow:hidden; margin-top:3px; position:relative;}
+  .tile .tile-fill2{height:100%; background:var(--rust); border-radius:2px;}
+  .tile .tile-pop2{position:absolute; top:-2px; width:2px; height:8px; background:var(--ink);}
+  .barra-resp{position:relative; height:10px; background:var(--sem-dado); border-radius:999px; overflow:visible; margin:4px 0 2px;}
+  .barra-resp i{position:absolute; left:0; top:0; height:100%; background:var(--rust); border-radius:999px;}
+  .barra-resp i.rec{background:var(--rust);} .barra-resp i.dec{background:var(--ambar);}
+  .barra-resp b{position:absolute; top:-3px; width:2px; height:16px; background:var(--ink);}
   h1.site-title{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:400;
     font-size:clamp(33px, 5.4vw, 46px); line-height:1.08; letter-spacing:-.012em;
     color:var(--ink); margin:0 0 6px;}
@@ -350,7 +363,7 @@
   <header class="masthead">
     <div class="mast-top">
       <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
-      <nav class="mainnav" aria-label="Páginas do site"><span class="ativa" aria-current="page">O monitor</span><a href="sinais-de-risco.html">Sinais de risco</a><a href="mapas-e-graficos.html">Mapas</a><a href="financiamento.html">Financiamento</a><a href="saude.html">Saúde</a><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="envie-dados.html">Enviar dados</a><a href="imprensa.html">Imprensa</a></nav>
+      <nav class="mainnav" aria-label="Páginas do site"><span class="ativa" aria-current="page">O monitor</span><a href="sinais-de-risco.html">Sinais de risco</a><a href="defesa-civil.html">Defesa civil</a><a href="financiamento.html">Financiamento</a><a href="saude.html">Saúde</a><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="envie-dados.html">Enviar dados</a><a href="imprensa.html">Imprensa</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente</p>
     <h1 class="site-title">Monitor <em>El Niño</em> Brasil</h1>
@@ -381,6 +394,7 @@
     <p class="hero-sub" style="margin:0 0 14px; color:var(--ink);">Esta plataforma verifica, em fontes públicas oficiais, os instrumentos de preparação dos 26 estados, do Distrito Federal e dos municípios, e os consolida no índice MARÉ, com atualização semanal.</p>
     <p style="margin:0 0 14px;"><a class="btn-pdf" style="text-decoration:none; display:inline-block;" href="#minhacidade">Consultar seu município ↓</a></p>
     <p class="hero-sub">Os registros verificados mostram quanto do arcabouço público de preparação já está de pé e quando cada instrumento veio a público. O MARÉ mede a <em>preparação demonstrável publicamente</em>: pontua o que está publicado e verificável nas fontes citadas — o que existe mas não foi publicado não pontua.</p>
+    <div class="mare-duas-metades">
     <div class="gauge-zone">
         <div class="gauge-head">
         <span class="gnum" id="gaugeNum">43,6</span><span class="gden">/ 100</span>
@@ -399,6 +413,18 @@
         <span style="left:70%">70<b>avançado</b></span>
       </div>
       <div class="gauge-ends"><span>0 · estágio inicial</span><span>100</span></div>
+    </div>
+    <div class="contador-zone" id="contadorResposta" role="group" aria-label="Resposta: municípios sob decreto de emergência no ciclo">
+      <div class="gauge-head">
+        <span class="gnum" id="respNum">—</span><span class="gden" id="respDen">municípios</span>
+        <span class="glabel">Resposta · o que foi decretado depois<br><span id="respLinha">—</span></span>
+      </div>
+      <svg id="respSerie" viewBox="0 0 320 44" preserveAspectRatio="none" role="img" aria-label="Municípios com primeiro decreto por semana desde 29/06; faixa do defeso sombreada"></svg>
+      <div class="gauge-ends"><span id="respIni">29/06</span><span id="respFim">—</span></div>
+      <div class="map-legend" id="legResp"></div>
+      <div class="fonte-figura" id="respC18">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>).</div>
+      <div class="fonte-figura" id="respFonte"></div>
+    </div>
     </div>
 
     <div class="strip-wrap">
@@ -565,7 +591,24 @@
 
 
 <script>
-let VMUN;
+let VMUN, RESP, RESP_SERIE, RESP_MUN;
+// v3.1 §3/§5: contador de RESPOSTA — contagens e frações, nunca combinadas com o índice (C17)
+function respostaTile(uf){
+  const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
+  const fm = Math.round(100 * r.fracao_municipios), fp = Math.round(100 * r.fracao_populacao);
+  return `<div class="tile-bar2" title="Resposta: ${r.n_municipios} de ${r.total_municipios} municípios sob decreto · ${fp}% da população"><div class="tile-fill2" style="width:${Math.max(fm, r.n_municipios ? 1 : 0)}%"></div>${r.n_municipios ? `<span class="tile-pop2" style="left:${fp}%"></span>` : ''}</div>`;
+}
+function barraResposta(uf){
+  const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
+  const fm = 100 * r.fracao_municipios, fp = 100 * r.fracao_populacao;
+  const rec = r.tons.reconhecido, dec = r.tons.decretado_sem_reconhecimento, n = r.n_municipios;
+  const wRec = n ? fm * rec / n : 0, wDec = n ? fm * dec / n : 0;
+  return `<div class="field"><div class="k">Resposta · decretos no ciclo</div><div class="v">
+    <div class="barra-resp" role="img" aria-label="${n} de ${r.total_municipios} municípios sob decreto; ${fp.toFixed(0)}% da população" title="tons: ${rec} reconhecido(s) · ${dec} decretado(s) sem reconhecimento · fatias: ${r.fatias.em_classificacao} em classificação (evento observado ainda não lido)">
+      <i class="rec" style="width:${wRec.toFixed(1)}%"></i><i class="dec" style="left:${wRec.toFixed(1)}%; width:${wDec.toFixed(1)}%"></i>${n ? `<b style="left:${fp.toFixed(1)}%"></b>` : ''}</div>
+    <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${fp.toFixed(0)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto em ' + r.primeiro_decreto : ''}<br>
+    <span class="fv" style="color:var(--muted);">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
+}
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
   // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
@@ -576,6 +619,25 @@ function nivelVerificacao(uf, nome){
 const NIVEL_ROTULO = { nao_verificado: 'ainda não verificado individualmente',
   nacional: 'verificado em fontes nacionais', estadual: 'verificado em fontes nacionais e estaduais',
   municipal_completo: 'verificação completa' };
+function renderContadorResposta(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const N = RESP && RESP.nacional; const box = document.getElementById('contadorResposta'); if (!box) return;
+  if (!N) { document.getElementById('respLinha').textContent = 'sem coleta até o corte'; document.getElementById('respFonte').textContent = 'Fonte: Monitor El Niño Brasil · sem coleta'; return; }
+  document.getElementById('respNum').textContent = N.n_municipios.toLocaleString('pt-BR');
+  document.getElementById('respDen').textContent = 'municípios (' + (100 * N.fracao_municipios).toFixed(1).replace('.', ',') + '%)';
+  document.getElementById('respLinha').innerHTML = (100 * N.fracao_populacao).toFixed(1).replace('.', ',') + '% da população sob decreto desde ' + esc(RESP.inicio_ciclo) + (N.primeiro_decreto ? ' · primeiro decreto em ' + esc(N.primeiro_decreto) : '') + '<br>' + N.reconhecidos + ' reconhecidos pela União · ' + N.decretados_sem_reconhecimento + ' decretados sem reconhecimento';
+  const S = (RESP_SERIE && RESP_SERIE.semanas) || []; const svg = document.getElementById('respSerie');
+  if (S.length && svg) {
+    const W = 320, H = 44, max = Math.max(1, ...S.map(x => x.municipios)), bw = W / S.length;
+    let g = '';
+    S.forEach((x, i) => { if (x.defeso) g += `<rect x="${(i*bw).toFixed(1)}" y="0" width="${bw.toFixed(1)}" height="${H}" fill="var(--areia)" opacity=".45"/>`; });
+    S.forEach((x, i) => { const h = H * x.municipios / max; g += `<rect x="${(i*bw+1).toFixed(1)}" y="${(H-h).toFixed(1)}" width="${Math.max(1, bw-2).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--rust)"><title>semana de ${x.semana}: ${x.municipios} município(s)</title></rect>`; });
+    svg.innerHTML = g;
+    document.getElementById('respFim').textContent = S[S.length-1].semana.split('-').reverse().slice(0,2).join('/');
+  }
+  MonitorMapas.legenda('legResp', [{cor: MonitorMapas.cor('argila'), rotulo: 'primeiro decreto na semana'}, {cor: MonitorMapas.cor('areia'), rotulo: 'período eleitoral (04/07–25/10)'}]);
+  document.getElementById('respFonte').textContent = 'Fonte: DOU/SEDEC (S2iD), diários oficiais estaduais e municipais · ' + esc(RESP.gerado_em);
+}
 async function __load(){
   let __ref;
   [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, __ref, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO] = await Promise.all(
@@ -610,7 +672,12 @@ async function __load(){
     POP_UF[m.uf] = (POP_UF[m.uf] || 0) + (POP_CENSO[c] || 0);  // município pós-Censo: 0
   });
   Object.values(MUN_REF).forEach(a => a.sort((x,y) => x.localeCompare(y)));
+  // v3.1 §3: contador de resposta (peso zero; arquivos próprios)
+  try {
+    [RESP, RESP_SERIE, RESP_MUN] = await Promise.all(['data/resposta/por_uf.json','data/resposta/serie_semanal.json','data/resposta/municipios_decretados.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null)));
+  } catch(e) { RESP = RESP_SERIE = RESP_MUN = null; }
   __init();
+  renderContadorResposta();
   // PR-N0 §1.2: cobertura do diário por município (arquivo pequeno; ausente = rótulo 'ainda não testada')
   fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(d => {
     VMUN = {}; Object.entries((d && d.municipios) || {}).forEach(([k, v]) => { VMUN[String(k).padStart(7, '0')] = v.cobertura_qd; });
@@ -669,6 +736,7 @@ DATA.ufs.forEach(item=>{
       ? '<span class="tile-score">·</span>'
       : `<span class="tile-score" data-contar="${v}">0,0</span>
          <div class="tile-bar"><div class="tile-fill" data-alvo="${v}" style="--galvo:${Math.max(v, 0.1)};"></div></div>`) +
+    respostaTile(item.uf) +
     (item.capital ? '<span class="cap-dot"></span>' : '');
   tile.addEventListener('click', ()=>{ selectUF(item.uf, tile); animarGauges(document.getElementById('detail')); });
   container.appendChild(tile);
@@ -725,6 +793,7 @@ function selectUF(uf, tileEl){
     <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${d.doc}${d.data ? ' (' + d.data + ')' : ''}</div></div>
     <div class="field"><div class="k">Órgão responsável</div><div class="v">${d.orgao}</div></div>
     ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || d.adpf743.status) + '</span> intimado em ' + d.adpf743.intimado_em + ' · decisão de ' + d.adpf743.decisao + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' : '') + '</div></div>' : ''}
+    ${barraResposta(d.uf)}
     ${typeof MARE !== 'undefined' && MARE[d.uf] && MARE[d.uf].estado_estrutura !== undefined ? '<div class="field"><div class="k">Componente estadual</div><div class="v">estrutura ' + MARE[d.uf].estado_estrutura + ' · instrumento ' + MARE[d.uf].estado_operacional + ' → média ' + MARE[d.uf].estado + ' (pesos iguais)</div></div>' : ''}
     ${(function(){ // C12: instrumento publicado dentro da janela do defeso (04/07–25/10/2026) — fato datado, sem juízo
         const m = String(d.data || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); if (!m) return '';
@@ -1101,6 +1170,9 @@ function renderMinha(){
       // PR-N0 §1.2 (06/09/2026): rótulo público da cobertura do diário oficial — "verificado em diário oficial" só
       // para município coberto (coberto_sem_mencao/com_excerto); não indexado diz isso, nunca "nada localizado".
       const _cob = (typeof VMUN !== 'undefined' && VMUN) ? VMUN[String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0')] : undefined;
+      { const _ib = String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0');
+        const _r = RESP_MUN && RESP_MUN.municipios && RESP_MUN.municipios[_ib];
+        html += `<p style="margin:0 0 6px;"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
       if (_cob !== undefined) html += `<p style="margin:0 0 6px;" class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
       html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
       <p style="margin:6px 0 12px;"><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>

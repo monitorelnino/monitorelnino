@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mapas e gráficos · Monitor El Niño Brasil</title>
-<meta name="description" content="Monitor El Niño Brasil · Mapas geográficos e gráficos analíticos: cobertura municipal, natureza dos atos, risco projetado × instrumento estadual, financiamento e transferências, municípios prioritários e cidades que decretaram emergência.">
+<title>Defesa civil · Monitor El Niño Brasil</title>
+<meta name="description" content="Monitor El Niño Brasil · Defesa civil: o que foi publicado (antecipação) e o que foi decretado (resposta), estado a estado — mapas, dispersão antecipação × resposta, série semanal e decretado × reconhecido.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.1/chart.umd.min.js"
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="assets/base.css?v=fddf34dd">
 <script src="assets/mapas.js?v=8e6310d1"></script>
 <style>
-/* --- mapas-e-graficos.html: estilos próprios desta página (o compartilhado está na folha base) --- */
+/* --- defesa-civil.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
   .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
 </style>
@@ -29,7 +29,7 @@
   <header class="masthead masthead--mini">
     <div class="mast-top">
       <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
-      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><a href="sinais-de-risco.html">Sinais de risco</a><span class="ativa" aria-current="page">Mapas</span><a href="financiamento.html">Financiamento</a><a href="saude.html">Saúde</a><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="envie-dados.html">Enviar dados</a><a href="imprensa.html">Imprensa</a></nav>
+      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><a href="sinais-de-risco.html">Sinais de risco</a><span class="ativa" aria-current="page">Defesa civil</span><a href="financiamento.html">Financiamento</a><a href="saude.html">Saúde</a><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="envie-dados.html">Enviar dados</a><a href="imprensa.html">Imprensa</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     <p class="site-title">Monitor <em>El Niño</em> Brasil</p>
@@ -38,11 +38,11 @@
   </header>
 <main id="conteudo">
   <p class="selo">Dados vivos · atualizados na mesma rotina semanal do resto do site</p>
-  <h1>Mapas e gráficos</h1>
+  <h1>Defesa civil</h1>
   <p class="hint" style="margin-bottom:22px;">Todos os mapas e gráficos que estavam na página inicial, agrupados aqui. Nenhum dado mudou — só o lugar onde vivem no site.</p>
 
   <div class="panel" style="margin-top:24px;">
-    <h2>Mapas geográficos</h2>
+    <h2>1 · Antecipação — o que foi publicado</h2>
     <p class="hint">Sete leituras geográficas dos mesmos registros: verificação municipal, cobertura, natureza dos atos, risco projetado, municípios prioritários, cidades que decretaram emergência e transferências de recursos. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe.</p>
     <div class="maps-grid">
       <div class="map-box">
@@ -100,7 +100,7 @@
   
 
   <div class="panel analysis">
-    <h2>Gráficos analíticos</h2>
+    <h2>2 · Antecipação — leituras</h2>
     <p class="hint">Seis leituras cruzadas dos 27 registros estaduais e das 27 capitais verificadas. Todos os valores vêm dos registros publicados nas fontes citadas. Passe o mouse para ver quais estados compõem cada categoria.</p>
     <div class="charts-grid">
       <div class="chart-box">
@@ -131,11 +131,29 @@
 
 
 
-  <div class="panel" style="margin-bottom:24px;">
-    <h2 id="financiamento">Como o dinheiro chega</h2>
-    <div class="chart-box" style="border-left:4px solid var(--amber);">
+  
+  <div class="panel" id="resposta" style="border-top:3px solid var(--rust);">
+    <h2>3 · Resposta — o que foi decretado depois</h2>
+    <p class="hint">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>). As duas metades nunca se combinam num número.</p>
+    <div class="maps-grid">
+      <div class="chart-box wide" id="boxDispersao">
+        <h3 class="map-card-h">Antecipação × resposta · 27 estados</h3>
+        <div class="canvas-wrap" style="height:360px;"><canvas id="cDispersao" aria-label="Dispersão: nota de antecipação (MARÉ) no eixo horizontal; fração de municípios sob decreto no eixo vertical; um ponto por estado"></canvas></div>
+        <div class="map-legend" id="legDispersao"></div>
+      </div>
+      <div class="chart-box" id="boxSerieResp">
+        <h3 class="map-card-h">Municípios com primeiro decreto, por semana</h3>
+        <div class="canvas-wrap" style="height:260px;"><canvas id="cSerieResp" aria-label="Série semanal de municípios com primeiro decreto desde 29/06, com a faixa do período eleitoral"></canvas></div>
+        <div class="map-legend" id="legSerieResp"></div>
+      </div>
+      <div class="chart-box" id="boxDecRec">
+        <h3 class="map-card-h">Decretado × reconhecido, por estado</h3>
+        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblDecRec"><thead><tr><th>UF</th><th>Municípios sob decreto</th><th>% municípios</th><th>% população</th><th>Reconhecidos (União)</th><th>Decretados sem reconhecimento</th><th>Primeiro decreto</th></tr></thead><tbody></tbody></table></div>
+        <div class="map-legend" id="legDecRec"></div>
+      </div>
     </div>
   </div>
+
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -146,6 +164,7 @@
 </div>
 
 <script>
+let RESP, RESP_SERIE, RESP_Q;
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, MUN_REF, POP_CENSO, VRESUMO,
     MUN_COD = {}, MUN_LATLON = {}, POP_UF = {};
 async function __load(){
@@ -157,6 +176,8 @@ async function __load(){
         return r.json();
       }))
   );
+  // v3.1 §3: contador de resposta (arquivos próprios; peso zero)
+  try { [RESP, RESP_SERIE, RESP_Q] = await Promise.all(['data/resposta/por_uf.json','data/resposta/serie_semanal.json','data/resposta/quadrantes.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { RESP = RESP_SERIE = RESP_Q = null; }
   MUN_REF = {};
   window.REF_MUNICIPIOS = __ref; // v2.2.4: usado pelo mapa de nível de verificação
   __ref.forEach(m => (MUN_REF[m.uf] = MUN_REF[m.uf] || []).push(m.nome));
@@ -590,6 +611,35 @@ new Chart(document.getElementById('chartDeclarado'), {
 
 
 
+  renderResposta();
+}
+function renderResposta(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fF = id => (typeof fonteFigura === 'function' ? fonteFigura : (cid, t) => MonitorMapas.credito(cid, t));
+  const N = RESP && RESP.nacional;
+  const c18 = (RESP && RESP.frase_c18) || '';
+  if (!N) { ['boxDispersao','boxSerieResp','boxDecRec'].forEach(id => MonitorMapas.credito(id, 'Fonte: Monitor El Niño Brasil · sem coleta até o corte')); return; }
+  // dispersão (C20): x = antecipação (MARÉ), y = % municípios sob decreto; forma = evento observado (sem dado → círculo vazio)
+  const pts = ((RESP_Q && RESP_Q.pontos) || []).filter(p => p.antecipacao != null);
+  new Chart(document.getElementById('cDispersao'), {type: 'scatter', data: {datasets: [{label: 'UF', data: pts.map(p => ({x: p.antecipacao, y: +(100 * p.resposta).toFixed(1), uf: p.uf})),
+      pointStyle: 'circle', pointRadius: 6, borderColor: MonitorMapas.cor('argila'), backgroundColor: 'transparent', borderWidth: 2}]},
+    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}, tooltip: {callbacks: {label: c => c.raw.uf + ' · antecipação ' + c.raw.x + ' · ' + c.raw.y + '% dos municípios sob decreto'}}},
+      scales: {x: {min: 0, max: 100, title: {display: true, text: 'Antecipação (MARÉ, 0–100)'}}, y: {min: 0, title: {display: true, text: '% dos municípios sob decreto'}}}}});
+  MonitorMapas.legenda('legDispersao', [{cor: MonitorMapas.cor('argila'), rotulo: 'um ponto por UF'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'círculo vazio: evento sem dado'}]);
+  MonitorMapas.credito('boxDispersao', 'Fonte: Monitor El Niño Brasil · ' + esc(RESP.gerado_em));
+  // série semanal com faixa do defeso
+  const S = (RESP_SERIE && RESP_SERIE.semanas) || [];
+  new Chart(document.getElementById('cSerieResp'), {type: 'bar', data: {labels: S.map(x => x.semana.slice(5)), datasets: [
+      {label: 'municípios', data: S.map(x => x.municipios), backgroundColor: S.map(x => MonitorMapas.cor(x.defeso ? 'argila' : 'ambar'))}]},
+    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 10}}, y: {beginAtZero: true, title: {display: true, text: 'municípios (primeiro decreto)'}}}}});
+  MonitorMapas.legenda('legSerieResp', [{cor: MonitorMapas.cor('ambar'), rotulo: 'antes do período eleitoral'}, {cor: MonitorMapas.cor('argila'), rotulo: 'no período eleitoral'}]);
+  MonitorMapas.credito('boxSerieResp', 'Fonte: DOU/SEDEC (S2iD), diários oficiais · ' + esc(RESP.gerado_em));
+  // tabela decretado × reconhecido
+  const tb = document.querySelector('#tblDecRec tbody');
+  tb.innerHTML = Object.keys(RESP.uf).sort((a, b) => RESP.uf[b].n_municipios - RESP.uf[a].n_municipios || a.localeCompare(b)).map(uf => { const r = RESP.uf[uf];
+    return '<tr><td><strong>' + uf + '</strong></td><td>' + r.n_municipios + ' de ' + r.total_municipios + '</td><td>' + (100 * r.fracao_municipios).toFixed(1).replace('.', ',') + '%</td><td>' + (100 * r.fracao_populacao).toFixed(1).replace('.', ',') + '%</td><td>' + r.tons.reconhecido + '</td><td>' + r.tons.decretado_sem_reconhecimento + '</td><td>' + esc(r.primeiro_decreto || '—') + '</td></tr>'; }).join('');
+  MonitorMapas.legenda('legDecRec', [{cor: MonitorMapas.cor('argila'), rotulo: 'reconhecido pela União (S2iD)'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'decretado sem reconhecimento'}]);
+  MonitorMapas.credito('boxDecRec', 'Fonte: DOU/SEDEC (S2iD), diários oficiais · ' + esc(RESP.gerado_em));
 }
 __load().catch(err => {
   document.body.insertAdjacentHTML('afterbegin',

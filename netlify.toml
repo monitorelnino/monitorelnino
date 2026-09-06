@@ -95,3 +95,13 @@
   for = "/*.pdf"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+
+# v3.1 (06/09/2026): a galeria "Mapas e gráficos" dissolveu-se em defesa-civil.html (C21)
+[[redirects]]
+  from = "/mapas-e-graficos.html"
+  to = "/defesa-civil.html"
+  status = 301
+[[redirects]]
+  from = "/mapas-e-graficos"
+  to = "/defesa-civil.html"
+  status = 301
