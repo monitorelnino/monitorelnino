@@ -16,7 +16,7 @@ let __baseCss = null;
 function baseCssParaBreakpoints() { if (__baseCss === null) __baseCss = fs.readFileSync(path.join(RAIZ, "assets", "base.css"), "utf-8"); return __baseCss; }
 // 03/09/2026: YAML dos workflows sem chave duplicada (o GitHub recusa o arquivo inteiro)
 try { require("child_process").execSync("python3 scripts/validar_workflows.py", { cwd: RAIZ, stdio: "pipe" }); } catch (e) { console.log("  ✗ workflows inválidos: " + String(e.stdout || "")); process.exit(1); }
-const PADRAO = ["index.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "defesa-civil.html", "para-gestores.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "imprensa.html"]
+const PADRAO = ["index.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "para-gestores.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "imprensa.html"]
   .map(a => path.join(RAIZ, a));
 const arquivos = process.argv.length > 2 ? process.argv.slice(2) : PADRAO;
 
@@ -43,14 +43,14 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css(\?v=[0-9a-f]+)?"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["O monitor", "Sinais de risco", "Defesa civil", "Financiamento", "Saúde", "Proteja-se", "Gestores", "Enviar dados", "Imprensa"];   // v3.1 PR-N3: a galeria virou Defesa civil (a grade em grupos do §6 entra no PR-N4) // ordem narrativa (03/09/2026): risco → o que foi publicado → detalhe → dinheiro → saúde → cidadão → gestor → contribuir → imprensa // 03/09/2026: dez páginas (Imprensa a pedido da editoria)
+  const NAV_ORDEM = ["O monitor", "Sinais", "Calendário", "Defesa civil", "Saúde", "Financiamento", "Proteja-se", "Gestores", "Imprensa", "Pesquisadores", "Enviar dados"];   // v3.1 §6 (06/09/2026): grupos como <b class="nav-grupo">, botão Enviar dados
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {
     const rotulos = [...navM[1].matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map(m => m[1].trim());
     if (JSON.stringify(rotulos) !== JSON.stringify(NAV_ORDEM))
       falha(`${nome}: nav fora da ordem canônica (${rotulos.join(" · ")})`);
-    const ativa = navM[1].match(/<span class="ativa"[^>]*>([^<]+)<\/span>/);
+    const ativa = navM[1].match(/<span class="ativa(?: [^"]*)?"[^>]*>([^<]+)<\/span>/);
     if (nome !== "obrigado.html" && !ativa) falha(`${nome}: nav sem item ativo`);
   }
 

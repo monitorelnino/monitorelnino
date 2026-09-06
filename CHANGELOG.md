@@ -11,6 +11,23 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N4 — Página inicial e navegação (06/09/2026)
+- **Navegação em grupos** (§6) nas doze páginas: O ciclo (Sinais · Calendário) · Antecipação e
+  resposta (Defesa civil · Saúde) · O dinheiro (Financiamento) · Para você (Proteja-se · Gestores ·
+  Imprensa · Pesquisadores) · botão "Enviar dados". Ordem canônica nova no portão de estrutura.
+- **Duas páginas nascem:** `pesquisadores.html` ("tudo o que prova o resto": metodologia, dados
+  abertos, log e cobertura, a seção "Registros e fontes" e a tabela de auditoria que saíram da
+  inicial, código e replicação) e `calendario-eleitoral.html` (E20: blocos 1–4 com o buraco à
+  vista — a tabela de dispositivos "a confirmar" até a conferência inciso a inciso do PR-N5).
+- **Inicial na ordem do §4:** uma frase de abertura; medidor + contador; "Como ler" em três
+  frases (o que mede, o que não mede, o teto da afirmação); 27 cartões com **cinco campos na
+  face** (antecipação, resposta, nível de verificação da UF, instrumento estadual, capital);
+  Encontre sua cidade; Prazos em curso; **A história em cinco números** (anunciado · publicado ·
+  decretado · chegou · não sabemos, cada um linkando à sua página, todos calculados dos dados);
+  bloco pós-eleitoral visível e vazio. Palavras estáticas: 1.664 → ~700.
+- Portões ajustados (páginas novas na suíte; cinco números no lugar dos KPIs; tabela de auditoria
+  verificada em Pesquisadores). Vocabulário público: Pesquisadores pode citar arquivos e caminhos.
+
 ### PR-N3 — Contador de resposta e página Defesa civil (06/09/2026)
 - **A outra metade do MARÉ** (E13): `gerar_resposta.py` produz `data/resposta/{por_uf, serie_semanal,
   municipios, municipios_decretados, quadrantes}.json` a partir de `atos_resposta.json` (245

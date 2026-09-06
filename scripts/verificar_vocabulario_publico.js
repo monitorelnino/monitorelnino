@@ -7,7 +7,7 @@
  * Uso: node scripts/verificar_vocabulario_publico.js [--listar] */
 const fs = require("fs"), path = require("path"); const { JSDOM, VirtualConsole } = require("jsdom");
 const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("--listar");
-const PAGINAS = ["index.html", "defesa-civil.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "proteja-se.html", "envie-dados.html", "para-gestores.html", "obrigado.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+const PAGINAS = ["index.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "proteja-se.html", "envie-dados.html", "para-gestores.html", "obrigado.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 const PROIBIDOS = [
   [/\b(?!datapackage\b)[\w-]+\.(py|json|js|yml|sh)\b/g, "nome de arquivo/script (os .csv dos dados abertos são permitidos)"],
   [/\bdata\/[\w./-]+/g, "caminho de dados"],
@@ -27,6 +27,8 @@ const PROIBIDOS = [
 let total = 0;
 (async () => {
   for (const p of PAGINAS) {
+    // v3.1 §9: Pesquisadores é a página de provas — nomes de arquivo, caminhos de dados e "verificações" são o assunto dela.
+    const REGRAS = p === "pesquisadores.html" ? PROIBIDOS.filter(([, rot]) => !/nome de arquivo|caminho de dados/.test(rot)) : PROIBIDOS;
     const html = fs.readFileSync(path.join(RAIZ, p), "utf-8"); const vc = new VirtualConsole();
     const dom = new JSDOM(html, { url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc, beforeParse(w) {
       global.window = w; global.document = w.document; w.d3 = require("d3"); w.eval(fs.readFileSync(path.join(RAIZ, "assets", "mapas.js"), "utf-8"));
@@ -37,7 +39,7 @@ let total = 0;
     const d = dom.window.document; d.querySelectorAll("script, style, noscript, code, pre").forEach(e => e.remove());
     const texto = d.body.textContent.replace(/\s+/g, " ");
     const achados = [];
-    for (const [re, motivo] of PROIBIDOS) { const m = texto.match(re); if (m) achados.push([motivo, [...new Set(m)].slice(0, 6)]); }
+    for (const [re, motivo] of REGRAS) { const m = texto.match(re); if (m) achados.push([motivo, [...new Set(m)].slice(0, 6)]); }
     if (achados.length) { total += achados.length; console.log(`  ✗ ${p}:`); achados.forEach(([mo, ex]) => console.log(`      ${mo}: ${ex.join(" | ")}`)); }
     else if (listar) console.log(`  ✓ ${p}`);
   }
