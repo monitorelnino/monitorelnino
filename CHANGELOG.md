@@ -11,6 +11,18 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N2 — Tokens e portões de design (06/09/2026)
+- **Escala tipográfica** de dez degraus em `tokens.css` (12 · 12,5 · 13,5 · 15 · 17 · 19 · 23 ·
+  28 · 38 · 52 px); 48 tamanhos fora da escala ajustados para o degrau mais próximo nas dez
+  páginas e no `base.css`. O medidor do MARÉ (18/44 px) fica como está (E14) e é a única exceção.
+- **Hex proibido fora de `tokens.css` e `mapas.js`:** 296 cores em hex nas páginas viraram
+  `var(--nome)` (CSS e estilo inline) ou `MonitorMapas.cor('nome')` (valores concretos para o
+  canvas); paleta nomeada da marca nos tokens e no `COR` do `mapas.js`.
+- **Dois breakpoints** (640 e 1020 px): 420/760/880 normalizados; grids já eram auto-fit/minmax.
+- **Portões** em `verificar_estrutura.js`: font-size fora da escala, hex solto e breakpoint fora
+  de 640/1020 bloqueiam a publicação (negativos provados). Pendente do §14.3: teste a 390 px com
+  captura de tela exige navegador (Playwright), que este ambiente não tem — registrado.
+
 ### PR-N1 — Andaime e errata (06/09/2026)
 - **Errata C25 (Metodologia §10.3 e §24):** a regra C6 (nenhuma alteração de nota no defeso)
   foi declarada em 02/09 e excepcionada em 04/09 pela v3.0, por decisão editorial escrita e
