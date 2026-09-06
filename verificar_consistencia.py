@@ -373,5 +373,40 @@ try:
 except Exception as _e:
     erro(f"portão de fósseis falhou ao executar: {_e}")
 
+# ── v3.1 (06/09/2026), PR-N1 ──────────────────────────────────────────────────────────────
+# (1) datas de edição/corte só via meta.json: nenhuma data literal junto de 'corte desta edição',
+#     'última verificação:' ou 'última atualização:' no HTML estático (fora de <script>);
+# (2) congelamento das constantes do motor no defeso (Errata C25): hash em data/congelamento_defeso.json.
+try:
+    import glob as _g, re as _re2, pathlib
+    for _f in sorted(_g.glob(str(RAIZ / "*.html"))):
+        _t = _re2.sub(r"<script.*?</script>", "", open(_f, encoding="utf-8").read(), flags=_re2.S)
+        for _m in _re2.finditer(r"(corte desta edi[çc][ãa]o|[Úu]ltima verifica[çc][ãa]o:|[Úu]ltima atualiza[çc][ãa]o:)[^<\n]{0,40}?(\d{2}/\d{2}/20\d{2})", _t):
+            erro(f"data literal de edição no HTML (v3.1 §12) em {pathlib.Path(_f).name}: '{_m.group(0)[:70]}'")
+        for _m in _re2.finditer(r"(\d{2}/\d{2}/20\d{2})\s*·\s*corte desta edi[çc][ãa]o", _t):
+            erro(f"data literal de corte no HTML (v3.1 §12) em {pathlib.Path(_f).name}: '{_m.group(0)[:70]}'")
+        if _re2.search(r"id=\"gaugeCorte\">\d{2}/\d{2}/20\d{2}<", _t):
+            erro(f"data literal no medidor (v3.1 §12) em {pathlib.Path(_f).name}")
+except Exception as _e:
+    erro(f"portão de datas literais falhou ao executar: {_e}")
+
+try:
+    import hashlib as _hl, re as _re3, json as _js, datetime as _dt
+    _cfg_p = RAIZ / "data" / "congelamento_defeso.json"
+    if not _cfg_p.exists():
+        erro("congelamento (Errata C25): data/congelamento_defeso.json ausente")
+    else:
+        _cfg = _js.load(open(_cfg_p, encoding="utf-8")); _hoje = _dt.date.today().isoformat()
+        if _cfg["desde"] <= _hoje <= _cfg["ate"]:
+            _src = open(RAIZ / "recalcular_mare.py", encoding="utf-8").read()
+            def _bloco(n):
+                _m = _re3.search(r"^%s\s*=\s*(\{.*?\n\}|\{[^\n]*\}|[0-9.]+)" % n, _src, _re3.S | _re3.M)
+                return _m.group(0) if _m else f"{n} AUSENTE"
+            _h = _hl.sha256("\n".join(_bloco(n) for n in ("ESTADO_SCORE", "CRED_POP", "ESTADOS", "ESTRUTURA", "PESO_ESTRUTURA")).encode()).hexdigest()
+            if _h != _cfg["hash_constantes"]:
+                erro(f"congelamento (Errata C25): constantes do motor mudaram dentro do defeso ({_cfg['desde']}–{_cfg['ate']}); exige errata pública")
+except Exception as _e:
+    erro(f"portão de congelamento falhou ao executar: {_e}")
+
 if ERROS:  print("ERROS:");  [print("  ✗", e) for e in ERROS]; sys.exit(1)
 print("✓ CONSISTENTE — todas as verificações passaram.")
