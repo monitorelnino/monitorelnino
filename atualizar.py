@@ -125,7 +125,10 @@ def main():
 
     # 03/09/2026 (achado do ensaio): coletores legados que rodavam DEPOIS dos portões, no workflow,
     # passam para cá — antes dos derivados e dos portões (nunca mais dado gravado sem portão).
-    rodar([sys.executable, "consultar_querido_diario.py"]); rodar([sys.executable, "consultar_querido_diario.py", "--descobrir-termos"])
+    # PR-N0 §1.1 (06/09/2026): o varredor em LOTE (territory_ids com vírgulas) produziu 8.165 zeros uniformes em 03/09;
+    # suspenso até o diagnóstico de resultado conhecido concluir. O coletar_diarios_municipais.py (um território por vez)
+    # é o canal DOM vigente e grava as três decisões do §1.2.
+    # rodar([sys.executable, "consultar_querido_diario.py"]); rodar([sys.executable, "consultar_querido_diario.py", "--descobrir-termos"])
     rodar([sys.executable, "atualizar_recursos.py"]); rodar([sys.executable, "verificar_vigencia.py"]); rodar([sys.executable, "analisar_decretos.py"])
     if os.environ.get("PORTAL_TRANSPARENCIA_API_KEY"):
         rodar([sys.executable, "atualizar_transferencias.py"])

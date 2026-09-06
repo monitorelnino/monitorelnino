@@ -565,6 +565,7 @@
 
 
 <script>
+let VMUN;
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
   // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
@@ -610,6 +611,10 @@ async function __load(){
   });
   Object.values(MUN_REF).forEach(a => a.sort((x,y) => x.localeCompare(y)));
   __init();
+  // PR-N0 §1.2: cobertura do diário por município (arquivo pequeno; ausente = rótulo 'ainda não testada')
+  fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(d => {
+    VMUN = {}; Object.entries((d && d.municipios) || {}).forEach(([k, v]) => { VMUN[String(k).padStart(7, '0')] = v.cobertura_qd; });
+  }).catch(() => { VMUN = {}; });
 }
 function __init(){
 const MEDIA_NACIONAL = +(Object.values(MARE).reduce((s,v)=>s+v.total,0)/27).toFixed(1);
@@ -1093,6 +1098,10 @@ function renderMinha(){
       const emergsSemReg = ufFinal ? emergenciasDoMunicipio(document.getElementById('cidadeInput').value.trim(), ufFinal) : [];
       html += emergsSemReg.map(e => `<h4>${document.getElementById('cidadeInput').value.trim()} · ${ufFinal}</h4><p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('');
       const _nivCard = ufFinal ? nivelVerificacao(ufFinal, document.getElementById('cidadeInput').value.trim()) : 'nao_verificado';
+      // PR-N0 §1.2 (06/09/2026): rótulo público da cobertura do diário oficial — "verificado em diário oficial" só
+      // para município coberto (coberto_sem_mencao/com_excerto); não indexado diz isso, nunca "nada localizado".
+      const _cob = (typeof VMUN !== 'undefined' && VMUN) ? VMUN[String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0')] : undefined;
+      if (_cob !== undefined) html += `<p style="margin:0 0 6px;" class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
       html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
       <p style="margin:6px 0 12px;"><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
       ${ufFinal ? '' : '<p style="margin:0; color:var(--muted);">Selecione o estado para ver o retrato estadual.</p>'}<hr style="border:none; border-top:1px solid var(--line); margin:14px 0;">`;

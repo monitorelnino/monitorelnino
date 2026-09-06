@@ -11,6 +11,33 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N0 — Canal de diários, detector de defeso e canal LAI (06/09/2026; instruções complementares, com precedência)
+- **Diagnóstico do Querido Diário com resultado conhecido** (`scripts/diagnosticar_querido_diario.py`,
+  na Action, request/response integrais em `robo-registro/leituras/`): um território vs lote,
+  aspas/OR, `published_since`, `size`, docs da API. Hipótese principal: o varredor em lote
+  (`territory_ids` com dezenas de códigos) é a origem dos 8.165 zeros uniformes de 03/09 — o coletor
+  de 03/09 (um território por vez) obteve excertos. O varredor em lote fica **suspenso** na rotina.
+- **Três decisões distintas** no canal DOM: `sem_cobertura_qd` / `coberto_sem_mencao` / `com_excerto`
+  (+ `registro`, `erro`), com teste de cobertura por território em cache (`data/cobertura_qd.json`) e
+  espelho `cobertura_qd`/`data_teste_cobertura` em `verificacao_municipal.json`. Rótulo público no
+  cartão da cidade: "diário não indexado — verificação por outro canal pendente". Teste de estresse:
+  100 municípios com resposta vazia → 100 `coberto_sem_mencao`, zero "nada localizado".
+- **Detector de página de defeso** em `coletores_base.buscar()`: padrões normalizados (período
+  eleitoral, conduta vedada, Lei 9.504, indisponível + contexto eleitoral…), só em sítios públicos
+  (não em APIs); registro em `data/calendario/fontes_suspensas.json` (primeira/última detecção, hash,
+  amostra) e propagação automática de `fonte_suspensa_defeso` ao log. Autoteste com fixture no
+  espírito da página da SUDEC/BA (a captura real substitui a fixture ao ser arquivada); na suíte do PR.
+- **Portões §1.6** em `verificar_consistencia.py`: log DOM só com as decisões do §1.2 a partir da
+  primeira rodada após a mudança; `municipal_completo` sem cobertura e sem bateria completa bloqueado;
+  execução de sítio público sem `fonte_suspensa_defeso` booleano bloqueada.
+- **Metodologia:** §24 ganha a correção conceitual (diário oficial não é publicidade; o defeso esconde
+  a divulgação e o documento); §26 a nota de cobertura real; §29 o pré-registro do canal LAI, escrito
+  antes de qualquer envio. `data/lai_pedidos.json` não existe e não existirá (decisão de 03/09): a lista
+  de destinatários das Defesas Civis foi gravada só em `robo-registro/notas/lai/destinatarios.json`.
+- **Não feito, por exigir a editoria:** envio dos pedidos (mensagem a mensagem, com "sim" explícito);
+  SICs das 27 secretarias de saúde (a localizar um a um com URL); adaptadores dos 26 DOEs e dos
+  diários consorciados (§1.3–1.4) — trabalho de dias, iniciado após o diagnóstico.
+
 ### PR-N2 — Tokens e portões de design (06/09/2026)
 - **Escala tipográfica** de dez degraus em `tokens.css` (12 · 12,5 · 13,5 · 15 · 17 · 19 · 23 ·
   28 · 38 · 52 px); 48 tamanhos fora da escala ajustados para o degrau mais próximo nas dez
