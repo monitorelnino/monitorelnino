@@ -7,15 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=c35c88f6">
-<link rel="stylesheet" href="assets/base.css?v=60be8e5b">
+<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
+<link rel="stylesheet" href="assets/base.css?v=fddf34dd">
 <style>
 /* --- para-gestores.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
   ul{margin:4px 0 12px; padding-left:20px;}
   li{margin:0 0 6px; line-height:1.55;}
   .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:0 0 18px;}
-  .destaque{background:#F0F4F3; border:1px solid var(--line); border-left:4px solid var(--link); border-radius:10px; padding:14px 16px; margin:0 0 18px;}
+  .destaque{background:var(--osso-claro); border:1px solid var(--line); border-left:4px solid var(--link); border-radius:10px; padding:14px 16px; margin:0 0 18px;}
   .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
   .mast-body{display:flex; justify-content:space-between; align-items:flex-end; gap:18px 28px; flex-wrap:wrap; margin-bottom:20px;}
   .mast-body .sub{flex:1 1 460px; margin:0;}
@@ -25,15 +25,15 @@
   .check li{position:relative; padding:9px 0 9px 34px; border-top:1px solid var(--line); font-size:15px; line-height:1.55;}
   .check li:first-child{border-top:0;}
   .check li::before{content:""; position:absolute; left:2px; top:13px; width:18px; height:18px; border:2px solid var(--link); border-radius:5px; background:var(--card);}
-  .check li b{display:block; font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:600; font-size:16px;}
-  .categorias{width:100%; border-collapse:collapse; font-size:14.5px; margin:12px 0 0;}
+  .check li b{display:block; font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:600; font-size:15px;}
+  .categorias{width:100%; border-collapse:collapse; font-size:15px; margin:12px 0 0;}
   .categorias th,.categorias td{text-align:left; vertical-align:top; padding:8px 10px 8px 0; border-top:1px solid var(--line);}
   .categorias th{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); border-top:0;}
   .categorias td:first-child{white-space:nowrap; font-weight:600;}
   .conta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; padding:2px 8px; border-radius:999px; white-space:nowrap;}
-  .conta.sim{background:#2E3D30; color:#FFFFFF;}
-  .conta.parcial{background:#C9814B; color:#15201A;}
-  .conta.nao{background:#7C4A34; color:#FFFFFF;}
+  .conta.sim{background:var(--musgo); color:var(--branco);}
+  .conta.parcial{background:var(--ambar); color:var(--abissal);}
+  .conta.nao{background:var(--argila); color:var(--branco);}
   .grid2{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:18px; margin-top:14px;}
   .categorias{table-layout:fixed;}
   .categorias th:nth-child(1),.categorias td:nth-child(1){width:26%;}

@@ -12,6 +12,8 @@ const path = require("path");
 const { JSDOM } = require("jsdom");
 
 const RAIZ = path.join(__dirname, "..");
+let __baseCss = null;
+function baseCssParaBreakpoints() { if (__baseCss === null) __baseCss = fs.readFileSync(path.join(RAIZ, "assets", "base.css"), "utf-8"); return __baseCss; }
 // 03/09/2026: YAML dos workflows sem chave duplicada (o GitHub recusa o arquivo inteiro)
 try { require("child_process").execSync("python3 scripts/validar_workflows.py", { cwd: RAIZ, stdio: "pipe" }); } catch (e) { console.log("  ✗ workflows inválidos: " + String(e.stdout || "")); process.exit(1); }
 const PADRAO = ["index.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "mapas-e-graficos.html", "para-gestores.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "imprensa.html"]
@@ -126,6 +128,16 @@ for (const arq of arquivos) {
   const inline = [...d.querySelectorAll("[style]")].map(el => el.getAttribute("style")).join(";");
   const tamanhos = [...(css + ";" + inline).matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1]).filter(v => v < 12);
   if (tamanhos.length) falha(`${nome}: font-size abaixo de 12px no CSS: ${[...new Set(tamanhos)].join(", ")}px`);
+  // v3.1 §14 (06/09/2026): escala tipográfica, hex proibido fora dos tokens, dois breakpoints
+  const ESCALA = new Set([12, 12.5, 13.5, 15, 17, 19, 23, 28, 38, 52]);
+  const foraEscala = [...(css + ";" + inline).matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1])
+    .filter(v => !ESCALA.has(v) && !(nome === "index.html" && (v === 18 || v === 44)));   // medidor preservado (E14)
+  if (foraEscala.length) falha(`${nome}: font-size fora da escala (12·12,5·13,5·15·17·19·23·28·38·52): ${[...new Set(foraEscala)].join(", ")}px`);
+  const bruto = fs.readFileSync(path.join(RAIZ, nome), "utf-8");
+  const hex = [...bruto.matchAll(/#[0-9A-Fa-f]{6}\b/g)].map(m => m[0]);
+  if (hex.length) falha(`${nome}: cor em hex fora de tokens.css/mapas.js (${hex.length}): ${[...new Set(hex)].slice(0, 5).join(", ")}`);
+  const bps = [...(css + baseCssParaBreakpoints()).matchAll(/@media[^{]*\((?:max|min)-width:\s*(\d+)px\)/g)].map(m => +m[1]).filter(v => ![640, 1020, 1021].includes(v));
+  if (bps.length) falha(`${nome}: breakpoint fora de 640/1020: ${[...new Set(bps)].join(", ")}px`);
   const clampTitulo = css.match(/\.site-title\{[^}]*font-size:(clamp\([^)]*\))/);
   if (clampTitulo && clampTitulo[1] !== "clamp(33px, 5.4vw, 46px)") falha(`${nome}: .site-title com escala diferente das outras páginas: ${clampTitulo[1]}`);
   // v2.3: as regras compartilhadas vivem em assets/base.css; a página só precisa importá-la

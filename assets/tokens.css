@@ -42,3 +42,27 @@
   --seca: #C9814B;
   --fogo: #7C4A34;
 }
+
+/* Escala tipográfica (v3.1 §14.1, 06/09/2026): dez degraus; todo font-size em px fora da escala é
+   bloqueado por verificar_estrutura.js. */
+:root{
+  --fs-0: 12px;   /* mínimo (portão de estrutura) */
+  --fs-1: 12.5px; /* versaletes, créditos, legendas */
+  --fs-2: 13.5px; /* dados em tabela, notas */
+  --fs-3: 15px;   /* corpo */
+  --fs-4: 17px;   /* títulos de cartão */
+  --fs-5: 19px;   /* subtítulos */
+  --fs-6: 23px;   /* h3 grandes */
+  --fs-7: 28px;   /* h2 */
+  --fs-8: 38px;   /* h1 secundário */
+  --fs-9: 52px;   /* display (medidor, hero) */
+}
+
+/* Paleta nomeada (v3.1 §14.2): hex só aqui e em assets/mapas.js; páginas usam var(--…). */
+:root{
+  --vazio:#0E0F0D; --abissal:#15201A; --musgo:#2E3D30; --argila:#7C4A34; --ambar:#C9814B;
+  --bioluz:#A8C99A; --sintetico:#5E7C93; --mineral:#8FA5A8; --areia:#D6C4AC; --osso-claro:#F0F4F3;
+  --linha:#C5CFCE; --cinza-quente:#66736F; --sem-dado:#DCE3E2; --branco:#FFFFFF; --areia-escura:#7A6A4F;
+  --zebra:#E9EEEC; --preto:#000000; --muted-token:#55645B;
+  --gauge-trilho:#E7DECD; --gauge-borda:#CDBB9F; --gauge-osso:#F5F1E8; --gauge-cinza:#DDDED9; --ambar-escuro:#A87A50; --sintetico-escuro:#2A4457;
+}

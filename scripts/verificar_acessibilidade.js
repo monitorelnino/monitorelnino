@@ -19,7 +19,7 @@ const ratio = (a,b) => { const [x,y] = [lum(a),lum(b)].sort((p,q)=>q-p); return 
 for (const [texto, fundo, min, uso] of [["ink","bg",4.5,"texto sobre fundo"],["ink","surface",4.5,"texto sobre painel"],["muted","bg",4.5,"texto secundário sobre fundo"],["muted","surface",4.5,"texto secundário sobre painel"],["link","bg",4.5,"links sobre fundo"],["link","surface",4.5,"links sobre painel"],["neutro","bg",4.5,"'não verificado' sobre fundo"],["rust","surface",3,"cor de dado sobre painel (≥3:1)"]]) {
   const r = ratio(hex(texto), hex(fundo)); if (r < min) falha(`contraste ${uso}: --${texto}/--${fundo} = ${r.toFixed(2)}:1 (mínimo ${min}:1)`);
 }
-for (const bp of ["max-width:1020px","max-width:880px","max-width:640px","max-width:420px"]) if (!base.includes(bp)) falha(`base.css sem ponto de quebra ${bp}`);
+for (const bp of ["max-width:1020px","max-width:640px"])   // v3.1 §14.3: dois breakpoints if (!base.includes(bp)) falha(`base.css sem ponto de quebra ${bp}`);
 if (!/:focus-visible\{/.test(base)) falha("base.css sem foco visível (:focus-visible)");
 if (!/\.mainnav a, \.mainnav span\{[^}]*min-height:36px/.test(base)) falha("base.css sem alvo de toque mínimo na navegação");
 for (const p of PAGINAS) {
