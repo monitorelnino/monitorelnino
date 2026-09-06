@@ -11,6 +11,18 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N5 — Calendário eleitoral (06/09/2026)
+- **Bloco 1 conferido inciso a inciso:** nove dispositivos (Lei 9.504, art. 73, V, VI a/b/c, VII,
+  § 10; LRF arts. 21 parágrafo único, 42, 65) em `data/calendario/dispositivos.json`, cada um com o
+  trecho lido, a fonte (transcrição do MPC/AM para o art. 73; publicação original da Câmara para a
+  LRF) e a data. A íntegra no Planalto bloqueia leitura automatizada — registrado; o art. 65 foi
+  conferido no caput e no início do inciso I, e a linha diz isso.
+- **Bloco 2** (o que não é suspenso) com a base legal por item; **bloco 3** com as duas medidas
+  separadas (fontes suspensas × municípios sem diário indexado) lidas dos dados; **bloco 4** vazio de
+  propósito até 26/10.
+- **Portão anticontrafactual** `scripts/verificar_calendario.js` (na suíte): nenhuma expressão
+  "teria/poderia ter/se não fosse" na página nem no JSON; todo dispositivo com trecho e fonte.
+
 ### PR-N4 — Página inicial e navegação (06/09/2026)
 - **Navegação em grupos** (§6) nas doze páginas: O ciclo (Sinais · Calendário) · Antecipação e
   resposta (Defesa civil · Saúde) · O dinheiro (Financiamento) · Para você (Proteja-se · Gestores ·

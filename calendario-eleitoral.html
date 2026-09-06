@@ -61,15 +61,16 @@
   </header>
 <main id="conteudo">
   <h1>O calendário eleitoral</h1>
-  <p class="hint">A lei está citada; os números são contagens e comparações; o "poderia ter sido" fica com o leitor. Peso zero no índice.</p>
+  <p class="hint">A lei está citada; os números são contagens e comparações; a conclusão fica com o leitor. Peso zero no índice.</p>
   <div class="panel" id="bloco1">
     <h2>1 · O que a lei suspende e o que não suspende (04/07–25/10/2026)</h2>
-    <p class="hint">Cada linha desta tabela é confirmada, inciso a inciso, no texto da Lei nº 9.504/1997 e da Lei Complementar nº 101/2000 antes de ser publicada. Enquanto não é, aparece como "a confirmar".</p>
-    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblDispositivos"><thead><tr><th>Dispositivo</th><th>O que bloqueia</th><th>Exceção</th><th>O que significa para a preparação</th><th>Fonte</th></tr></thead><tbody><tr><td colspan="5">a confirmar no texto legal — publicado quando conferido</td></tr></tbody></table></div>
+    <p class="hint">Cada linha foi conferida no texto legal em <span id="calConferido">—</span>: o trecho lido abre ao clicar em "trecho". Janela dos três meses: <strong>04/07 a 04/10/2026</strong> (primeiro turno); para os efeitos deste site, o período vai até o segundo turno, <strong>25/10</strong>.</p>
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblDispositivos"><thead><tr><th>Dispositivo</th><th>O que bloqueia</th><th>Exceção</th><th>O que significa para a preparação</th><th>Trecho e fonte</th></tr></thead><tbody></tbody></table></div>
   </div>
   <div class="panel" id="bloco2">
     <h2>2 · O que não é suspenso</h2>
-    <p class="hint">O diário oficial não é publicidade: publicar atos é dever legal. Fundo a fundo por regra (SUS, SUAS, FUNDEB); transferências obrigatórias da Lei nº 12.340/2010; programas já em execução; prazos da Lei de Acesso à Informação; planejamento, treinamento, simulados, comitês e planos — lista a confirmar linha a linha no texto legal.</p>
+    <p class="hint">O diário oficial não é publicidade: publicar atos é dever legal. O que a lei deixa aberto, com a base conferida em cada linha:</p>
+    <ul class="fontes-list" id="listaNaoSuspenso"></ul>
   </div>
   <div class="panel" id="bloco3">
     <h2>3 · O que o Monitor mediu</h2>
@@ -111,6 +112,13 @@
 <script>
 async function __load(){
   const el = id => document.getElementById(id);
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const D = await fetch('data/calendario/dispositivos.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  if (D) {
+    el('calConferido').textContent = D.conferido_em;
+    document.querySelector('#tblDispositivos tbody').innerHTML = D.dispositivos.map(x => '<tr><td><strong>' + esc(x.dispositivo) + '</strong></td><td>' + esc(x.bloqueia) + '</td><td>' + esc(x.excecao) + '</td><td>' + esc(x.significa) + '</td><td><details><summary style="cursor:pointer; color:var(--link);">trecho</summary><p style="margin:6px 0; font-size:12.5px;">' + esc(x.trecho) + '</p><a href="' + esc(x.fonte) + '" target="_blank" rel="noopener">fonte lida</a></details></td></tr>').join('');
+    el('listaNaoSuspenso').innerHTML = D.nao_suspenso.map(x => '<li><strong>' + esc(x.item) + '</strong> — ' + esc(x.base) + ' <span style="color:var(--muted);">(' + esc(x.status) + ')</span></li>').join('');
+  }
   const f = await fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).catch(() => null);
   const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0;
   el('calSuspensas').textContent = n ? n + ' fonte(s), primeira detecção ' + Object.values(f.fontes).map(x => x.primeira_deteccao).sort()[0] : 'nenhuma detectada pelo robô até o corte (o detector passou a rodar em 06/09/2026; a página da SUDEC/BA foi achada à mão em 02/09)';
