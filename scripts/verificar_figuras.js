@@ -8,7 +8,7 @@
 const { JSDOM, VirtualConsole } = require("jsdom");
 const fs = require("fs"), path = require("path");
 const raiz = path.join(__dirname, "..");
-const PAGINAS = ["index.html", "defesa-civil.html", "sinais-de-risco.html", "saude.html", "financiamento.html"];
+const PAGINAS = ["index.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "sinais-de-risco.html", "saude.html", "financiamento.html"];
 const PROIBIDOS = "p, details, .note, .hint, summary";
 const PERMITIDOS_TEXTO = [".map-card-h", ".map-legend", ".fonte-figura", ".lacuna", "h3", "h4"];
 const falhas = [];
