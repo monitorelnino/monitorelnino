@@ -61,21 +61,11 @@
   <h1>Por onde o dinheiro chega</h1>
   <p class="hint" id="subFin">Sete rotas por que o dinheiro público chega ao município — mais a rota estadual — sempre na mesma ordem e nas mesmas cores, cada uma rotulada pela chave que a abre: <strong>regra</strong>, <strong>decreto</strong>, <strong>discricionária</strong> ou <strong>direta</strong>. Cada figura diz o órgão, a consulta e a data. Separa o que vem <em>antes</em> do dano do que vem <em>depois</em>; nunca soma resposta a preparação. Nada aqui entra no índice MARÉ. Corte: <strong id="corteFin">—</strong>.</p>
 
-  <div class="panel" id="rotaMpsSecao" style="margin-bottom:24px;">
-    <h2 style="margin-top:0;">0 · A rota do dinheiro das duas MPs do ciclo</h2>
-  <div class="charts-grid" style="grid-template-columns:1fr;">
-    <div class="chart-box" id="boxRotaMPs">
-      <h3 class="map-card-h">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
-      <div class="prazos-barras" id="mpsPrazos" style="margin:8px 0 14px;"></div>
-      <div id="rotaMPs" style="width:100%; min-height:300px;"></div>
-      <div class="map-legend" id="legRotaMPs"></div>
-    </div>
-  </div>
-  </div>
+
 
   <div class="panel" id="comoler">
     <h2 style="margin-top:0;">1 · Como ler: as sete rotas e o que o decreto destranca</h2>
-    <p class="hint">Cláusula de neutralidade: este bloco descreve rotas existentes, com base legal citada; não recomenda desenho de política pública. Nomes de parlamentares não aparecem nesta página, em texto nem em link — regra permanente de neutralidade.</p>
+    <p class="hint">Este bloco descreve rotas existentes, com base legal citada; não recomenda desenho de política. Nenhuma rota pontua no índice (peso zero).</p>
     <div class="chart-box wide" id="boxRede">
       <h3 class="map-card-h">A rede do dinheiro: de quem vem, por qual rota, com que chave</h3>
       <svg id="redeRotas" role="img" aria-label="Diagrama de rede: origem do recurso, oito rotas e o município, com o tipo de chave de acesso de cada rota" viewBox="0 0 960 420" style="width:100%; height:auto;"></svg>
@@ -139,9 +129,17 @@
     </div>
   </div>
 
-  <div class="panel" id="resposta">
+    <div class="panel" id="contadores">
+    <h2 style="margin-top:0;">3b · Quatro contadores por estado</h2>
+    <p class="hint">Contagens e razões por estado — antes de 04/07 · período eleitoral · depois de 25/10 —, sem escala nem juízo; "sem coleta" onde a fonte ainda não entrega.</p>
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblContadores"><thead><tr><th>UF</th><th>R$/hab. voluntárias 2026 (r5)</th><th>Por período</th><th>Municípios com recurso preventivo</th><th>Municípios com recurso de resposta</th><th>Razão depois/antes</th><th>Represado</th></tr></thead><tbody></tbody></table></div>
+    <div class="map-legend" id="legContadores"></div>
+    <div class="fonte-figura" id="fonteContadores"></div>
+  </div>
+
+<div class="panel" id="resposta">
     <h2 style="margin-top:0;">4 · Resposta por decreto</h2>
-    <p class="hint">Reconhecimentos federais do ciclo (S2iD/DOU), transferências obrigatórias de resposta e repasses do CPDC — na cor de resposta, nunca somados a preparação. Ao lado, os repasses estaduais preventivos confirmados e a habilitação federal por município.</p>
+    <p class="hint">Reconhecimentos federais (S2iD/DOU) e transferências obrigatórias de resposta, na cor de resposta, nunca somados a preparação; ao lado, os repasses estaduais preventivos confirmados.</p>
     <div class="maps-grid">
       <div class="map-box" id="boxDinheiro">
         <h3 class="map-card-h">Repasses preventivos confirmados e habilitação federal</h3>
@@ -157,6 +155,7 @@
 
   <div class="panel" id="painel">
     <h2 style="margin-top:0;">5 · Painel amostral</h2>
+    <p class="hint">Só o agregado fica aqui; lista e fichas em <a href="pesquisadores.html#painel-amostral">Pesquisadores</a>.</p>
     <p class="hint">Doze municípios por estado (324), sorteados com semente publicada antes da primeira verificação, reverificados toda semana: quanto chega por regra, por decreto, por discricionariedade e sem passar pelo caixa — e quantos têm instrumento publicado. Leitura por região × porte × risco, não por UF isolada.</p>
     <div class="chart-box wide" id="boxPainel">
       <h3 class="map-card-h">Lista e agregados do painel</h3>
@@ -165,13 +164,23 @@
   </div>
 
   <div class="panel" id="programas">
-    <h2 style="margin-top:0;">6 · Programas permanentes no território (rota 7)</h2>
-    <p class="hint">Execução direta da União: Garantia-Safra, Cisternas, Carro-Pipa, CISC, monitoramento do Cemaden. Registro de transparência, sem crédito no índice; "lista não pública" quando for o caso.</p>
+    <h2 style="margin-top:0;">7 · Programas permanentes no território (rota 7)</h2>
+    <p class="hint">Execução direta da União (Garantia-Safra, Cisternas, Carro-Pipa, CISC, Cemaden): transparência, sem crédito no índice.</p>
     <div class="charts-grid" id="programasCards"></div>
   </div>
 
   <div class="panel" id="compromissos">
-    <h2 style="margin-top:0;">7 · Compromissos federais com dinheiro e prazo</h2>
+    <h2 style="margin-top:0;">6 · Compromissos federais com dinheiro e prazo</h2>
+<div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-box" id="boxRotaMPs">
+      <h3 class="map-card-h">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
+      <div class="prazos-barras" id="mpsPrazos" style="margin:8px 0 14px;"></div>
+      <div id="rotaMPs" style="width:100%; min-height:300px;"></div>
+      <div class="map-legend" id="legRotaMPs"></div>
+    </div>
+  </div>
+  
+
     <p class="hint">O que foi prometido, com fonte e data, ao lado da execução correspondente no Portal da Transparência (aguardando coleta).</p>
     <div class="charts-grid">
       <div class="chart-box" id="boxCompromissos">
@@ -197,7 +206,18 @@
 </div>
 
 <script>
-let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, PAINEL, MPS;
+let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, PAINEL, MPS, CONTADORES;
+
+// ===== 3b · Quatro contadores por estado (v3.1 §11) =====
+function renderContadores(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const C = (CONTADORES && CONTADORES.uf) || {}; const tb = document.querySelector('#tblContadores tbody'); if (!tb) return;
+  const brl = v => v == null ? '<span style="color:var(--muted);">sem coleta</span>' : 'R$ ' + v.toFixed(2).replace('.', ',');
+  tb.innerHTML = Object.keys(C).sort((a, b) => ((C[b].por_habitante_2026 || {}).r5 || 0) - ((C[a].por_habitante_2026 || {}).r5 || 0)).map(uf => { const c = C[uf], m = c.municipios_cobertos;
+    return '<tr><td><strong>' + uf + '</strong></td><td>' + brl((c.por_habitante_2026 || {}).r5) + '</td><td><span style="color:var(--muted);">sem coleta</span></td><td>' + (m.preventivo != null ? m.preventivo + (m.preventivo_valor ? ' · R$ ' + (m.preventivo_valor / 1e6).toFixed(1).replace('.', ',') + ' mi' : '') : '<span style="color:var(--muted);">não localizado</span>') + '</td><td><span style="color:var(--muted);">sem coleta</span></td><td>' + (c.razao_depois_antes != null ? c.razao_depois_antes : '<span style="color:var(--muted);">—</span>') + '</td><td><span style="color:var(--muted);">não disponível</span></td></tr>'; }).join('');
+  MonitorMapas.legenda('legContadores', [{cor: MonitorMapas.cor('sintetico'), rotulo: 'r5: TransfereGov, dados abertos'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'preventivo: fundo a fundo estadual localizado'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta / não disponível'}]);
+  fonteFigura('contadores', 'Fontes: TransfereGov (r5), atos estaduais (fundo a fundo preventivo), Censo 2022 · ' + esc((CONTADORES || {}).gerado_em || '') + ' · sem escala nem juízo');
+}
 
 // ===== 0 · Rota do dinheiro das MPs (05/09/2026): barras de prazo + fluxo MP → órgão → uso =====
 function renderRotaMPs(){
@@ -277,10 +297,11 @@ function somaPreparacao(valoresPorRota){
 }
 async function __load(){
   const carregar = f => fetch(f).then(r => { if(!r.ok) throw new Error('Falha ao carregar ' + f); return r.json(); });
-  [BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS] = await Promise.all([
+  [BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES] = await Promise.all([
     'data/geo_uf.json','data/financiamento/rotas.json','data/financiamento/por_uf.json','data/financiamento/compromissos_federais.json',
     'data/financiamento/serie_nacional.json','data/financiamento/emendas.json','data/financiamento/consultas.json','data/transferencias.json',
-    'data/atos_resposta.json','data/populacao_censo2022.json','data/financiamento/mps_2026.json'].map(carregar));
+    'data/atos_resposta.json','data/populacao_censo2022.json','data/financiamento/mps_2026.json','data/financiamento/contadores_uf.json'].map(carregar));
+  renderContadores();
   renderRotaMPs();
   try { PAINEL = await carregar('data/painel/agregados.json'); } catch(e) { PAINEL = null; }
   __init();

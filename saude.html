@@ -55,15 +55,20 @@
   <p class="hint" id="subSaude">Três camadas separadas, cada figura com órgão, documento e data: o que a União publicou para a saúde no ciclo 2026/2027; o que cada secretaria estadual de saúde publicou, verificado com o protocolo do Monitor; e os sinais epidemiológicos observados, reproduzidos das fontes oficiais. Nada aqui pontua no MARÉ. Corte: <strong id="corteSaude">—</strong>.</p>
 
   <div class="panel" id="monitorSaude" style="border-top:3px solid var(--ink);">
-    <h2 style="margin-top:0;">0 · Monitor Saúde</h2>
+    <h2 style="margin-top:0;">0 · MARÉ · Saúde — antecipação e resposta</h2>
     <div class="maps-grid">
       <div class="map-box" id="boxMonitor">
-        <h3 class="map-card-h">Prontidão sanitária estadual para o ciclo · instrumento × antecipação</h3>
+        <h3 class="map-card-h">Antecipação · prontidão sanitária estadual (instrumento × antecipação)</h3>
         <svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil pela prontidão sanitária estadual (faixas) e UFs ainda não verificadas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legMonitor"></div>
         <details style="margin-top:8px;" data-alternativa="dados"><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Prontidão</th><th>Faixa</th><th>Instrumento</th><th>Antecipação</th><th>Dengue na capital</th><th>Risco projetado</th></tr></thead><tbody></tbody></table></div>
         </details>
+      </div>
+      <div class="chart-box" id="boxRespostaSanitaria">
+        <h3 class="map-card-h">Resposta · emergências sanitárias no ciclo</h3>
+        <div class="gauge-head" style="margin:8px 0 2px;"><span class="gnum" id="rsNum" style="color:var(--rust);">—</span><span class="gden">emergências localizadas em 2026</span></div>
+        <div class="map-legend" id="legRespostaSanitaria"></div>
       </div>
       <div class="chart-box" id="boxMonitorBarras">
         <h3 class="map-card-h">Prontidão por estado verificado</h3>
@@ -137,17 +142,8 @@
     </div>
   </div>
 
-  <div class="panel" id="cidadao">
-    <h2 style="margin-top:0;">5 · Para você</h2>
-    <p class="hint">Orientações do Ministério da Saúde, reproduzidas com link. O Monitor não dá orientação médica própria.</p>
-    <ul style="font-size:15px; line-height:1.8; margin:0; padding-left:20px;">
-      <li>Febre alta de início repentino com pelo menos dois destes sinais — dor de cabeça, prostração, dores no corpo ou nas articulações, dor atrás dos olhos — é motivo para procurar um serviço de saúde de imediato.</li>
-      <li>Quando a febre cede (entre o 3º e o 7º dia) é o momento de maior atenção: os sinais de alarme podem surgir aí.</li>
-      <li>Não se automedicar; em caso de sangramento ou de qualquer sinal de alarme, procurar imediatamente o serviço de urgência.</li>
-      <li>Fonte: <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue" target="_blank" rel="noopener">Ministério da Saúde — Dengue (Saúde de A a Z)</a>, consultado em 02/09/2026. Orientações sobre calor: a reproduzir quando a página oficial for localizada (lacuna declarada).</li>
-    </ul>
-    <p class="note" style="margin:10px 0 0;">Sua secretaria de saúde publicou plano de contingência para arboviroses ou calor? <a href="envie-dados.html?tipo=plano_saude">Envie pelo formulário</a> — entra na fila de análise humana, nunca automática.</p>
-  </div>
+    <p class="hint">Os alertas e as orientações para a população estão em <a href="proteja-se.html#alertas-saude">Proteja-se</a>, alimentados pelos mesmos dados desta página.</p>
+
 </main>
 <footer class="site-footer">
     <div class="grad-line"></div>
@@ -204,6 +200,10 @@ function __init(){
       : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
     MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.cor('areia'), rotulo: 'trilho 0–100'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'cor = faixa'}, {cor: MonitorMapas.cor('cinza-quente'), rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
     fonteFigura('boxMonitorBarras', 'Fonte: Monitor El Niño Brasil · Monitor Saúde v0.1 · ' + esc((MSAUDE || {}).gerado_em || ''));
+    // Resposta sanitária (E17): ESPIN federal, decretos estaduais por arboviroses, créditos por portaria — contador, hoje zero de verdade
+    const em = (SSIN && SSIN.emergencias) || []; const rn = document.getElementById('rsNum'); if (rn) rn.textContent = String(em.length);
+    MonitorMapas.legenda('legRespostaSanitaria', [{cor: MonitorMapas.cor('argila'), rotulo: 'ESPIN federal: nenhuma em 2026'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'decretos estaduais por arboviroses: nenhum'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'busca manual de 05/09; coleta do DOU pendente'}]);
+    fonteFigura('boxRespostaSanitaria', 'Fonte: DOU (ESPIN), diários estaduais · busca de 05/09/2026 · o zero é dado, não lacuna');
   })();
 
   // 1 · federal
