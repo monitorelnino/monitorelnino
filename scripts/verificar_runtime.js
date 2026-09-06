@@ -57,7 +57,7 @@ setTimeout(() => {
 
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
-  teste(`tabela de auditoria: ${N_PONTOS} linhas`, q("tblBody") && q("tblBody").children.length === N_PONTOS);
+  // v3.1 §4: a tabela de auditoria vive em pesquisadores.html (verificada lá pelo runtime de resposta/pesquisadores)
   teste("seletor de UF populado", q("ufSelect") && q("ufSelect").children.length === 28);
 
   try {
@@ -155,11 +155,12 @@ setTimeout(() => {
   // KPIs do topo: sempre calculados a partir dos dados carregados (nunca texto fixo) —
   // guarda-corpo contra o card ficar desatualizado silenciosamente (achado de 31/08/2026).
   const nLAC = Object.values(INDICE).filter(v => v.status_estadual === "LAC").length;
-  teste("KPI 'estados sem plano' bate com o banco", q("kpiSemPlano").textContent === String(nLAC));
-  teste("KPI 'registros estaduais' = 27", q("kpiRegistros").textContent === "27");
-  teste("KPI 'capitais verificadas' é numérico e > 0", /^\d+$/.test(q("kpiCapitais").textContent) && +q("kpiCapitais").textContent > 0);
-  teste("KPI 'programas federais' bate com a lista real", q("kpiFederais").textContent === String(q("fontesFederais").querySelectorAll("li").length));
-  teste("KPI 'municípios sem plano' é numérico", /^[\d.]+$/.test(q("kpiMunSemPlano").textContent));
+  // v3.1 §4.8: a história em cinco números, calculados dos dados
+  { const MARE_IDX = JSON.parse(fs.readFileSync(path.join(raiz, "data", "indice.json"), "utf-8")); const _tot = Object.keys(MARE_IDX).filter(k => k.length === 2).map(k => MARE_IDX[k].total); const _media = Math.round(_tot.reduce((a, b) => a + b, 0) / 27 * 10) / 10;
+    teste("cinco números: 'publicado' = média do índice com faixa", q("n2Publicado").textContent.startsWith(String(_media).replace(".", ","))); }
+  teste("cinco números: 'decretado' = contador de resposta", /^\d/.test(q("n3Decretado").textContent));
+  teste("cinco números: 'não sabemos' é numérico e cita 5.571", /de 5\.571/.test(q("n5NaoSabemos").textContent));
+  teste("cartões de estado: cinco campos na face (barras + nível + instrumento + capital)", d.querySelectorAll(".tile .tile-face").length === 27 && [...d.querySelectorAll(".tile .tile-face")].every(f => f.querySelectorAll("span").length === 3));
 
   // Medidor principal do herói: a barra de progresso precisa de fato preencher
   // (achado de 31/08/2026 — animarGauges() estava escopada só a #regions e nunca

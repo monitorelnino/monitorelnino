@@ -231,7 +231,7 @@ _alvos = {
     "index.html (pílula)": _re.search(r"var f = v < 25 \? \[(.*?)\];", _h_idx := open(RAIZ / "index.html", encoding="utf-8").read()).group(1).lower(),
     "index.html (PDF)": _re.search(r"const fx = v\.total < 25 \? (.*?);", _h_idx).group(1).lower(),
     "index.html (régua)": _re.search(r'<div class="gauge-tick-labels">[\s\S]*?<div class="gauge-ends">[\s\S]*?</div>', _h_idx).group(0).lower(),
-    "index.html (Como ler)": _re.search(r"As faixas descrevem[^<]*</strong>:([^<]*)", _h_idx).group(1).lower(),
+    # v3.1 §4: "Como ler" virou três frases sem a lista de faixas; a régua do medidor e o PDF seguem verificados
     "METODOLOGIA.md": _re.search(r"Quarta renomeação[^\n]*", open(RAIZ / "METODOLOGIA.md", encoding="utf-8").read()).group(0).lower(),
     "gerar_pdf_indice.py": _re.search(r"Faixas \(estágio[^\"]*", open(RAIZ / "gerar_pdf_indice.py", encoding="utf-8").read()).group(0).lower(),
 }

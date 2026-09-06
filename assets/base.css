@@ -157,3 +157,10 @@ button, .btn-pdf, input[type=submit]{min-height:40px;}
   .map-box, .chart-box{border-radius:var(--radius);}
   .map-legend span i, .map-legend i{border-radius:2px;}
   table th{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; letter-spacing:.06em; text-transform:uppercase; font-size:12px; color:var(--muted);}
+
+  /* v3.1 §6: navegação em grupos (rótulo em versalete, sem link) e botão "Enviar dados" */
+  .mainnav .nav-grupo{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:600; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); padding:7px 4px 7px 10px; white-space:nowrap;}
+  .mainnav .nav-grupo:first-of-type{margin-left:4px;}
+  .mainnav .btn-nav{margin-left:auto; background:var(--green); color:var(--branco); border-color:var(--green);}
+  .mainnav .btn-nav:hover{background:var(--ink); border-color:var(--ink);}
+  @media (max-width:640px){ .mainnav .btn-nav{margin-left:0;} }

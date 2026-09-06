@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Monitor El Niño Brasil · Pesquisadores: metodologia, dados abertos, log de verificação, fontes, feeds, selos, código e replicação — tudo o que prova o resto."><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesquisadores · Monitor El Niño Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="assets/acesso.js?v=d8738b3e"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
+<link rel="stylesheet" href="assets/base.css?v=fddf34dd">
+<style>
+/* --- para-gestores.html: estilos próprios desta página (o compartilhado está na folha base) --- */
+  *{box-sizing:border-box;}
+  ul{margin:4px 0 12px; padding-left:20px;}
+  li{margin:0 0 6px; line-height:1.55;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:0 0 18px;}
+  .destaque{background:var(--osso-claro); border:1px solid var(--line); border-left:4px solid var(--link); border-radius:10px; padding:14px 16px; margin:0 0 18px;}
+  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
+  .mast-body{display:flex; justify-content:space-between; align-items:flex-end; gap:18px 28px; flex-wrap:wrap; margin-bottom:20px;}
+  .mast-body .sub{flex:1 1 460px; margin:0;}
+  .masthead--mini .mast-sub{margin-bottom:0;}
+  .masthead--mini .grad-line{margin-top:16px;}
+  .check{list-style:none; padding:0; margin:12px 0 0;}
+  .check li{position:relative; padding:9px 0 9px 34px; border-top:1px solid var(--line); font-size:15px; line-height:1.55;}
+  .check li:first-child{border-top:0;}
+  .check li::before{content:""; position:absolute; left:2px; top:13px; width:18px; height:18px; border:2px solid var(--link); border-radius:5px; background:var(--card);}
+  .check li b{display:block; font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:600; font-size:15px;}
+  .categorias{width:100%; border-collapse:collapse; font-size:15px; margin:12px 0 0;}
+  .categorias th,.categorias td{text-align:left; vertical-align:top; padding:8px 10px 8px 0; border-top:1px solid var(--line);}
+  .categorias th{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); border-top:0;}
+  .categorias td:first-child{white-space:nowrap; font-weight:600;}
+  .conta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; padding:2px 8px; border-radius:999px; white-space:nowrap;}
+  .conta.sim{background:var(--musgo); color:var(--branco);}
+  .conta.parcial{background:var(--ambar); color:var(--abissal);}
+  .conta.nao{background:var(--argila); color:var(--branco);}
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:18px; margin-top:14px;}
+  .categorias{table-layout:fixed;}
+  .categorias th:nth-child(1),.categorias td:nth-child(1){width:26%;}
+  .categorias th:nth-child(3),.categorias td:nth-child(3){width:22%;}
+  .categorias td,.categorias th{overflow-wrap:anywhere;}
+  @media (max-width:640px){ .categorias td:first-child{white-space:normal;} }
+  @media (max-width:640px){ .categorias{font-size:13.5px;} }
+  @media (max-width:640px){ .conta{white-space:normal;} }
+  @media (max-width:640px){ .categorias th:nth-child(1),.categorias td:nth-child(1){width:30%;} }
+  @media (max-width:640px){ .categorias th:nth-child(3),.categorias td:nth-child(3){width:26%;} }
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
+<div class="wrap">
+  <header class="masthead masthead--mini">
+    <div class="mast-top">
+      <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><b class="nav-grupo">O ciclo</b><a href="sinais-de-risco.html">Sinais</a><a href="calendario-eleitoral.html">Calendário</a><b class="nav-grupo">Antecipação e resposta</b><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><b class="nav-grupo">O dinheiro</b><a href="financiamento.html">Financiamento</a><b class="nav-grupo">Para você</b><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="imprensa.html">Imprensa</a><span class="ativa" aria-current="page">Pesquisadores</span><a class="btn-nav" href="envie-dados.html">Enviar dados</a></nav>
+    </div>
+    <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
+    <p class="site-title">Monitor <em>El Niño</em> Brasil</p>
+    <p class="mast-sub">MARÉ · Medida de Antecipação e Resposta ao El Niño</p>
+    <div class="grad-line"></div>
+  </header>
+<main id="conteudo">
+  <h1>Pesquisadores</h1>
+  <p class="hint">Tudo o que prova o resto: metodologia, dados abertos, log de verificação, fontes, feeds, selos, código. Sem gráficos — é a página de provas.</p>
+  <div class="panel" id="metodologia">
+    <h2>1 · Metodologia e versões</h2>
+    <ul class="fontes-list">
+      <li><a href="METODOLOGIA.pdf">Documento Técnico-Metodológico (PDF)</a> · <a href="METODOLOGIA.md">versão em Markdown</a> · <a href="MARE_Indice_Documentacao.pdf">Documentação do índice MARÉ (cálculo, escolhas normativas, auditoria de robustez)</a></li>
+      <li><a href="CHANGELOG.md">Histórico de versões e erratas (CHANGELOG)</a> · corte <strong id="pqCorte">—</strong> · atualizado em <strong id="pqAtualizado">—</strong></li>
+    </ul>
+  </div>
+  <div class="panel" id="dados-abertos">
+    <h2>2 · Dados abertos, feeds e selos</h2>
+    <ul class="fontes-list">
+      <li><a href="dados-abertos/datapackage.json">datapackage.json</a> (esquema Frictionless, dicionário de colunas) · <a href="dados-abertos/indice.csv">indice.csv</a> · <a href="dados-abertos/estados.csv">estados.csv</a> · <a href="dados-abertos/municipios.csv">municipios.csv</a> · <a href="data/indice.json">JSON brutos em data/</a> · contador de resposta em <a href="data/resposta/por_uf.json">data/resposta/</a></li>
+      <li><a href="feeds/brasil.xml" type="application/atom+xml">Feed nacional (Atom)</a> · um por estado em <code>feeds/UF.xml</code> · <a href="feeds/saude.xml">feed de saúde</a></li>
+      <li><a href="selos/README.md">Selos por estado</a> para embutir · <a href="docs/MANIFEST_SHA256.txt">manifesto SHA-256 dos arquivos publicados</a></li>
+    </ul>
+  </div>
+  <div class="panel" id="log">
+    <h2>3 · Log de verificação e cobertura</h2>
+    <ul class="fontes-list">
+      <li><a href="data/log_buscas.json">log_buscas.json</a> — <strong id="pqLog">—</strong> execuções registradas (data, canal, camada, string, decisão, executor); resumo em <a href="data/verificacao_resumo.json">verificacao_resumo.json</a> e <a href="data/verificacao_municipal.json">verificacao_municipal.json</a> (5.571 municípios × nível de verificação)</li>
+      <li>Cobertura do Querido Diário por município (diário indexado ou não): <a href="data/cobertura_qd.json">cobertura_qd.json</a> — <strong id="pqCobertura">—</strong></li>
+      <li>Fontes oficiais que responderam com página de período eleitoral: <a href="data/calendario/fontes_suspensas.json">fontes_suspensas.json</a> — <strong id="pqSuspensas">—</strong></li>
+    </ul>
+  </div>
+  <div class="panel" id="fontes" style="margin-bottom:24px;">
+    <h2>4 · Registros e fontes dos dados</h2>
+    <p class="hint">Todas as fontes utilizadas na coleta, em dois níveis: <strong>links diretos</strong> apenas para URLs citadas e verificadas na pesquisa; <strong>portais institucionais</strong> (DOU, Planalto, IBGE, gov.br/mdr) como porta de entrada oficial quando o ato tem número/data mas não URL própria verificada. Itens sem link têm a fonte nominal na tabela de municípios; regra metodológica: nenhum link sem verificação.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:22px;">
+      <div>
+        <h3 style="font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:500; font-size:15px; margin:0 0 8px;">Registros federais</h3>
+        <ul class="fontes-list" id="fontesFederais">
+          <li>Sala de Situação do El Niño · 24 ministérios e instituições, coordena o plano federal de 29/07/2026 · <a href="https://www.gov.br/mds/pt-br/noticias/planejamento-para-enfrentamento-de-eventos-climaticos-associados-ao-el-nino-preve-r-1-335-bilhao-para-acoes-de-preparacao-e-resposta" target="_blank" rel="noopener">nota oficial (MDS)</a></li>
+          <li><a href="https://www.gov.br/mds/pt-br/noticias/planejamento-para-enfrentamento-de-eventos-climaticos-associados-ao-el-nino-preve-r-1-335-bilhao-para-acoes-de-preparacao-e-resposta" target="_blank" rel="noopener">Plano federal de preparação · R$ 1,335 bi (29/07/2026)</a></li>
+          <li>MP nº 1.367/2026 (12/06/2026) · crédito extraordinário de R$ 337,5 mi para incêndios e fiscalização ambiental (Ibama/ICMBio), em cumprimento às ADPFs 743 e 760 · <a href="https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624" target="_blank" rel="noopener">texto e tramitação (Congresso Nacional)</a></li>
+          <li>MP nº 1.384/2026 (12/08/2026) · crédito extraordinário de R$ 925 mi (MDA e MDS) para estoques públicos, cestas e PAA — a parte de alimentos do plano federal · <a href="https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455" target="_blank" rel="noopener">texto e tramitação (Congresso Nacional)</a></li>
+          <li>Painel El Niño 2026/2027 · boletins mensais (INMET · INPE · CEMADEN · ANA · SGB · SEDEC · CENSIPAM) · <a href="https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf" target="_blank" rel="noopener">Boletim nº 2, 31/07/2026 (INPE)</a></li>
+          <li>Portarias SEDEC de reconhecimento (nºs 459, 875, 1.878, 1.948, 2.215, 2.420, 2.659…) · <a href="https://www.in.gov.br" target="_blank" rel="noopener">DOU</a></li>
+          <li>S2iD · Sistema Integrado de Informações sobre Desastres · <a href="https://s2id.mi.gov.br" target="_blank" rel="noopener">s2id.mi.gov.br</a></li>
+          <li>Lei nº 12.340/2010 · transferências obrigatórias e CPDC · <a href="https://www.planalto.gov.br" target="_blank" rel="noopener">planalto.gov.br</a></li>
+          <li>Malha municipal, códigos e coordenadas · <a href="https://www.ibge.gov.br" target="_blank" rel="noopener">IBGE</a></li>
+          <li><a href="https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-no-brasil-e-no-mundo-1/defesa-civil-no-brasil" target="_blank" rel="noopener">Diretório oficial das Defesas Civis estaduais: endereços, telefones e e-mails (MIDR)</a></li>
+          <li><a href="https://www.gov.br/cemaden/pt-br/lancado-o-primeiro-boletim-do-painel-do-el-nino-2026-2027-apresentando-potenciais-impactos-e-orientacoes" target="_blank" rel="noopener">Boletim nº 1 · Painel El Niño 2026-2027 (CEMADEN/MCTI)</a></li>
+          <li><a href="https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf" target="_blank" rel="noopener">Boletim nº 2 · Painel El Niño 2026-2027, íntegra em PDF (INPE)</a></li>
+          <li><a href="MARE_Indice_Documentacao.pdf" target="_blank" rel="noopener">Documentação do Índice MARÉ · cálculo, escolhas normativas e auditoria de robustez, em PDF (regenerado a cada atualização de dados)</a></li>
+          <li><a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Documento Técnico-Metodológico da plataforma · MARÉ v2.3, íntegra em PDF</a></li>
+        
+        </ul>
+        <p class="note" style="margin:8px 0 0;">Fonte de descoberta (agregador terceiro — pista, nunca registro): painel El Niño 2026/2027 da Política Por Inteiro / Instituto Talanoa · <a href="https://politicaporinteiro.org/el-nino/" target="_blank" rel="noopener">politicaporinteiro.org/el-nino</a>.</p>
+        <p class="note" style="margin-top:8px;">Os <span id="fontesFederaisCount">—</span> registros federais completos constam do banco de dados do projeto e do documento metodológico.</p>
+      </div>
+      <div>
+        <p class="note" style="margin:8px 0 10px;"><strong>Fontes oficiais consultadas pela rotina automática:</strong> DOU — portarias SEDEC/MIDR de reconhecimento (atos de resposta, peso zero) · diários oficiais dos 27 estados e diários municipais (via Querido Diário, cobertura declarada por UF) · MUNIC/IBGE e ICM/SEDEC (camada declarada, simulada; vigência 26/10/2026) · Painel de Arboviroses/MS e modelo InfoDengue (Fiocruz/FGV), INMET e INPE (página de Saúde) · pedidos de acesso à informação (registro público em Para gestores). Fonte não confirmada aparece como lacuna, nunca como número.</p>
+<h3 style="font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:500; font-size:15px; margin:0 0 8px;">Plataformas oficiais de monitoramento</h3>
+        <ul class="fontes-list" id="fontesMonitoramento"></ul>
+      </div>
+      <div>
+        <h3 style="font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:500; font-size:15px; margin:0 0 8px;">Fontes municipais e estaduais verificadas</h3>
+        <ul class="fontes-list" id="fontesVerificadas"></ul>
+      </div>
+      <div>
+        <h3 style="font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:500; font-size:15px; margin:0 0 8px;">Dados abertos e feeds</h3>
+        <ul class="fontes-list">
+          <li><a href="dados-abertos/indice.csv">indice.csv</a> · <a href="dados-abertos/estados.csv">estados.csv</a> · <a href="dados-abertos/municipios.csv">municipios.csv</a> · <a href="dados-abertos/atos_resposta.csv">atos_resposta.csv</a></li>
+          <li><a href="dados-abertos/datapackage.json">datapackage.json</a> (esquema Frictionless) · <a href="data/indice.json">JSON brutos em data/</a></li>
+          <li><a href="feeds/brasil.xml" type="application/atom+xml">Feed nacional (Atom)</a> · um por estado em <code>feeds/UF.xml</code>, no detalhe de cada estado</li>
+          <li><a href="selos/README.md">Selos por estado</a> para embutir, no detalhe de cada estado</li>
+        </ul>
+        <p class="note" style="margin:8px 0 0;">Como citar: Futura Evidence Lab (2026), <em>Monitor El Niño Brasil — índice MARÉ, dados verificados</em>, v2.3, corte de <span id="citacaoCorte">—</span>. Regravados a cada atualização; esquema e roteiro de DOI em <code>docs/DADOS_ABERTOS.md</code>.</p>
+      </div>
+      <div>
+        <h3>Portais oficiais das Defesas Civis estaduais</h3>
+        <p class="hint" style="margin-bottom:8px;">Conforme o diretório oficial do MIDR (11/09/2024). Estados sem portal listado no diretório: AC, AM, PA, PB, RN e SP.</p>
+        <p style="line-height:2.1; font-size:15px; margin:0;"><a href="https://defesacivil.al.gov.br" target="_blank" rel="noopener">AL</a> · <a href="https://defesacivil.ap.gov.br" target="_blank" rel="noopener">AP</a> · <a href="https://defesacivil.ba.gov.br" target="_blank" rel="noopener">BA</a> · <a href="https://defesacivil.ce.gov.br" target="_blank" rel="noopener">CE</a> · <a href="https://defesacivil.df.gov.br" target="_blank" rel="noopener">DF</a> · <a href="https://defesacivil.es.gov.br" target="_blank" rel="noopener">ES</a> · <a href="https://bombeiros.go.gov.br" target="_blank" rel="noopener">GO</a> · <a href="https://defesacivil.ma.gov.br" target="_blank" rel="noopener">MA</a> · <a href="https://defesacivil.mg.gov.br" target="_blank" rel="noopener">MG</a> · <a href="https://defesacivil.ms.gov.br" target="_blank" rel="noopener">MS</a> · <a href="https://defesacivil.mt.gov.br" target="_blank" rel="noopener">MT</a> · <a href="https://defesacivil.pe.gov.br" target="_blank" rel="noopener">PE</a> · <a href="https://portal.pi.gov.br/defesacivil" target="_blank" rel="noopener">PI</a> · <a href="https://defesacivil.pr.gov.br" target="_blank" rel="noopener">PR</a> · <a href="https://cbmerj.rj.gov.br" target="_blank" rel="noopener">RJ</a> · <a href="https://cbm.ro.gov.br" target="_blank" rel="noopener">RO</a> · <a href="https://bombeiros.rr.gov.br" target="_blank" rel="noopener">RR</a> · <a href="https://defesacivil.rs.gov.br" target="_blank" rel="noopener">RS</a> · <a href="https://defesacivil.sc.gov.br" target="_blank" rel="noopener">SC</a> · <a href="https://defesacivil.se.gov.br" target="_blank" rel="noopener">SE</a> · <a href="https://defesacivil.to.gov.br" target="_blank" rel="noopener">TO</a></p>
+      </div>
+    </div>
+    <details style="margin-top:18px;">
+      <summary style="cursor:pointer; color:var(--link); font-weight:600;">Registros da verificação individual · <span id="munCount">—</span> municípios verificados um a um (camada de auditoria)</summary>
+      <p class="hint" style="margin-top:10px;">Categoria, documento, data, fonte e canal de cada registro. Links levam à fonte oficial ou à plataforma do Diário Oficial dos Municípios; use número e data do documento para localizar o ato.</p>
+
+    <div class="tbl-controls">
+      <input id="tblSearch" type="text" placeholder="Buscar município ou UF..." aria-label="Buscar município ou UF na tabela de registros">
+      <select id="tblCat" aria-label="Filtrar a tabela por categoria do ato">
+        <option value="">Todas as categorias</option>
+        <option value="plano">Plano preventivo publicado</option>
+        <option value="plano_antigo">Plano desatualizado</option>
+        <option value="plano_elaboracao">Plano em elaboração</option>
+        <option value="estrutura">Estrutura de coordenação para o ciclo</option>
+        <option value="decreto">Decreto de emergência (reativo)</option>
+        <option value="coberto_estadual">Coberto pelo estado</option>
+        <option value="nao_el_nino">Ato não relacionado a El Niño</option>
+        <option value="nao_localizado">Nenhum ato localizado</option>
+        <option value="nao_verificado">Ainda não verificado</option>
+      </select>
+    </div>
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">
+      <table class="mun-table">
+        <caption class="sr-only">Municípios verificados: categoria do ato, documento, data, fonte e canal de verificação</caption>
+        <thead><tr><th>Município</th><th>UF</th><th>Categoria</th><th>Documento</th><th>Data</th><th>Fonte</th><th>Canal</th></tr></thead>
+        <tbody id="tblBody"></tbody>
+      </table>
+    </div>
+    
+    </details>
+  </div>
+  <div class="panel" id="codigo">
+    <h2>5 · Código e replicação</h2>
+    <ul class="fontes-list">
+      <li>Repositório público: <a href="https://github.com/monitorelnino/monitorelnino" target="_blank" rel="noopener">github.com/monitorelnino/monitorelnino</a> · <a href="docs/PROTOCOLO_ATUALIZACAO.md">protocolo de atualização</a> · <a href="docs/GUIA_DO_EDITOR.md">guia do editor</a></li>
+      <li>Replicar o índice: <code>python3 recalcular_mare.py --write</code>; provar: <code>python3 recalcular_mare.py --check</code>; verificações: <code>bash scripts/verificar_derivados.sh</code></li>
+      <li>Pedidos de acesso à informação: só contagens agregadas serão publicadas aqui, se a editoria confirmar; textos, protocolos e destinatários não vão ao site.</li>
+    </ul>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="grad-line"></div>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.0)</span>
+    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:imprensa@monitorelnino.com.br">imprensa@monitorelnino.com.br</a></span>
+  </footer>
+</div>
+
+<!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
+     (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
+     Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+<script>window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });</script>
+</body>
+</html>
+<script>
+let DATA, TRANSFERENCIAS, META, TABELA_MUNICIPIOS;
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function __load(){
+  [DATA, TRANSFERENCIAS, META, TABELA_MUNICIPIOS] = await Promise.all(['estados','transferencias','meta','municipios'].map(f => fetch('data/' + f + '.json').then(r => { if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
+document.getElementById('fontesMonitoramento').innerHTML = TRANSFERENCIAS.fontes_monitoramento
+  .map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${f.nome}</a></li>`).join('');
+  const ROTULO_HOST = {
+  'www.diariomunicipal.com.br': 'Diários Oficiais dos Municípios (FAMUP/FEMURN/AMA/FAMEP/Sergipe)',
+  'acaoinverno.recife.pe.gov.br': 'Ação Inverno · Prefeitura do Recife',
+  'www.defesacivil.sc.gov.br': 'Defesa Civil de Santa Catarina',
+  'defesacivil.es.gov.br': 'CEPDEC/ES — repositório estadual de planos de contingência',
+  'www.gov.br': 'Portais gov.br (MIDR/SEDEC e órgãos federais)',
+};
+const porFonte = new Map();
+TABELA_MUNICIPIOS.filter(m => m.url).forEach(m => {
+  const host = new URL(m.url).hostname;
+  // subcaminhos do diariomunicipal distinguem federações; demais domínios agrupam pelo host
+  const chave = host === 'www.diariomunicipal.com.br' ? host + '/' + (new URL(m.url).pathname.split('/')[1] || '') : host;
+  const g = porFonte.get(chave) || {host, urls: [], n: 0};
+  g.urls.push(m.url); g.n++;
+  porFonte.set(chave, g);
+});
+document.getElementById('fontesVerificadas').innerHTML =
+  [...porFonte.values()]
+    .map(g => {
+      const nome = ROTULO_HOST[g.host] || g.host;
+      const href = g.urls.sort((a,b)=>a.length-b.length)[0]; // o link mais raiz do domínio
+      return {nome, href, n: g.n};
+    })
+    .sort((a,b)=>b.n - a.n || a.nome.localeCompare(b.nome))
+    .map(f => `<li><a href="${f.href}" target="_blank" rel="noopener">${f.nome}</a> <span style="color:var(--muted);">· ${f.n} registro${f.n > 1 ? 's' : ''}</span></li>`).join('');
+document.getElementById('fontesFederaisCount').textContent = document.querySelectorAll('#fontesFederais li').length;
+
+function renderTable(){
+    const q = document.getElementById('tblSearch').value.toLowerCase();
+    const cat = document.getElementById('tblCat').value;
+    const rows = TABELA_MUNICIPIOS
+      .filter(m => (!cat || m.categoria===cat) &&
+        (!q || m.nome.toLowerCase().includes(q) || m.uf.toLowerCase().includes(q)))
+      .sort((a,b)=> a.uf.localeCompare(b.uf) || a.nome.localeCompare(b.nome));
+    document.getElementById('tblBody').innerHTML = rows.map(m=>{
+      const [lbl,cor] = CAT_LABEL_TBL[m.categoria];
+      const fonte = m.url ? `<a href="${m.url}" target="_blank" rel="noopener">${m.fonte}</a>` : m.fonte;
+      return `<tr><td><strong>${m.nome}</strong></td><td>${m.uf}</td>
+        <td><span class="cat-pill" style="background:${cor}">${lbl}</span></td>
+        <td>${m.documento}</td><td style="white-space:nowrap;">${m.data}</td><td>${fonte}</td><td style="white-space:nowrap; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted);">${m.canal||'—'}</td></tr>`;
+    }).join('');
+  }
+  document.getElementById('tblSearch').addEventListener('input', renderTable);
+  document.getElementById('tblCat').addEventListener('change', renderTable);
+  renderTable();
+  
+  const CAT_LABEL_TBL = {
+    plano:['Plano preventivo',MonitorMapas.cor('musgo')], plano_antigo:['Plano desatualizado',MonitorMapas.cor('sintetico')],
+    plano_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], estrutura:['Estrutura de coordenação',MonitorMapas.cor('ambar')], decreto:['Decreto reativo',MonitorMapas.cor('argila')],
+    coberto_estadual:['Coberto pelo estado',MonitorMapas.cor('mineral')], nao_el_nino:['Não é El Niño',MonitorMapas.cor('areia')],
+    nao_localizado:['Nada localizado',MonitorMapas.cor('argila')],
+    nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')],
+  };
+  
+  (document.getElementById('munCount')||{}).textContent = TABELA_MUNICIPIOS.length;
+  const el = id => document.getElementById(id);
+  el('pqCorte').textContent = META.corte || '—'; el('pqAtualizado').textContent = META.atualizado_em || '—';
+  fetch('data/log_buscas.json').then(r => r.ok ? r.json() : null).then(l => { if (l && l.execucoes) el('pqLog').textContent = l.execucoes.length.toLocaleString('pt-BR'); });
+  fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(c => { const m = (c && c.municipios) || {}; const t = Object.values(m); el('pqCobertura').textContent = t.length ? t.filter(x => x.cobertura_qd === true).length + ' indexados · ' + t.filter(x => x.cobertura_qd === false).length + ' não indexados · ' + (5571 - t.length) + ' ainda não testados' : 'ainda não testada (a rotina preenche a partir da próxima rodada)'; });
+  fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).then(f => { const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0; el('pqSuspensas').textContent = n + ' fonte(s) suspensa(s) detectada(s)'; });
+}
+__load().catch(err => { document.body.insertAdjacentHTML('afterbegin', '<div style="background:var(--argila);color:#fff;padding:14px 20px;">Erro ao carregar os dados: ' + err.message + '</div>'); });
+</script>
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+<script>window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });</script>
+</body>
+</html>
