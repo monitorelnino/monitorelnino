@@ -133,11 +133,11 @@ for termo in ["v2.1", "declaração vale metade", "MARÉ", "canal", "0,4", "0,5"
 
 # 8. FIGURAS: mapas e gráficos da página dedicada versus dados e classificação canônica
 # (portão criado em 27/08/2026 após o caso chartAreas/COBRADE e o aria fóssil; migrado
-# em 31/08/2026 de index.html para mapas-e-graficos.html, quando mapas/gráficos ganharam
+# em 31/08/2026 de index.html para defesa-civil.html, quando mapas/gráficos ganharam
 # página própria — CONSIST também deixou de ser JS embutido e virou data/consist.json,
 # fonte única compartilhada pelas duas páginas que ainda precisam dele.)
 import re as _re
-_h = open(RAIZ / "mapas-e-graficos.html", encoding="utf-8").read()
+_h = open(RAIZ / "defesa-civil.html", encoding="utf-8").read()
 _est = json.load(open(RAIZ / "data" / "estados.json", encoding="utf-8"))
 _lac = {u["uf"] for u in _est["ufs"] if u["status"] == "LAC"}
 _nao_lac = {u["uf"] for u in _est["ufs"]} - _lac
@@ -150,14 +150,14 @@ for _u, _v in _cons.items():
         erro(f"figuras: consist.json {_u} cat×instr inconsistentes")
 _mA = _re.search(r"const AREAS = \[(.*?)\];", _h, _re.S)
 if not _mA:
-    erro("figuras: AREAS não encontrado em mapas-e-graficos.html")
+    erro("figuras: AREAS não encontrado em defesa-civil.html")
 else:
     _ufsA = set(_re.findall(r"'([A-Z]{2})'", _mA.group(1)))
     if _ufsA != _nao_lac:
         erro(f"figuras: união das AREAS difere dos estados com instrumento: {sorted(_ufsA ^ _nao_lac)}")
     # A tabela "risco × instrumento" deixou de ser uma cópia estática em HTML e passou
     # a ser gerada em runtime DIRETO de CONSIST (31/08/2026, eliminação de duplicação —
-    # ver renderTabelaConsistencia() em mapas-e-graficos.html). Drift entre tabela e
+    # ver renderTabelaConsistencia() em defesa-civil.html). Drift entre tabela e
     # CONSIST deixa de ser possível por construção; a checagem correspondente migrou para
     # scripts/verificar_runtime.js (que renderiza a página de verdade e confere a
     # tabela já populada), então a checagem estática de HTML bruto foi removida daqui.
@@ -239,7 +239,7 @@ for _nome, _txt in _alvos.items():
     _falta = [f for f in FAIXAS if f not in _txt]
     if _falta: erro(f"faixas: {_nome} sem {_falta}")
 _site_sem_script = _re.sub(r"<script[\s\S]*?</script>", "", _h_idx).lower()
-for _pag in ["mapas-e-graficos.html", "proteja-se.html", "envie-dados.html", "obrigado.html"]:
+for _pag in ["defesa-civil.html", "proteja-se.html", "envie-dados.html", "obrigado.html"]:
     _site_sem_script += _re.sub(r"<script[\s\S]*?</script>", "", open(RAIZ / _pag, encoding="utf-8").read()).lower()
 _velhos = [a for a in APOSENTADOS if a in _site_sem_script or a in _h_idx.lower()]
 if _velhos: erro(f"faixas: nomenclatura aposentada ainda no site: {_velhos}")

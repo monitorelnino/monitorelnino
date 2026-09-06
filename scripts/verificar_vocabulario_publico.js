@@ -7,7 +7,7 @@
  * Uso: node scripts/verificar_vocabulario_publico.js [--listar] */
 const fs = require("fs"), path = require("path"); const { JSDOM, VirtualConsole } = require("jsdom");
 const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("--listar");
-const PAGINAS = ["index.html", "mapas-e-graficos.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "proteja-se.html", "envie-dados.html", "para-gestores.html", "obrigado.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+const PAGINAS = ["index.html", "defesa-civil.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "proteja-se.html", "envie-dados.html", "para-gestores.html", "obrigado.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 const PROIBIDOS = [
   [/\b(?!datapackage\b)[\w-]+\.(py|json|js|yml|sh)\b/g, "nome de arquivo/script (os .csv dos dados abertos são permitidos)"],
   [/\bdata\/[\w./-]+/g, "caminho de dados"],

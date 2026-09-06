@@ -146,7 +146,7 @@ setTimeout(() => {
     /function gerarPDFEstado\(uf\)\{ ?gerarRelatorioCidadao\(uf, null\)/.test(fonte) && /gerarRelatorioCidadao\(uf, cid \|\| null\)/.test(fonte));
 
   // Tooltip compartilhado (usado pela linha do tempo do herói desde que os mapas
-  // saíram para mapas-e-graficos.html, 31/08/2026) — alvo de hover trocado de
+  // saíram para defesa-civil.html, 31/08/2026) — alvo de hover trocado de
   // #mapCobertura (mudou de página) para um tick da linha do tempo, que continua aqui.
   const hover = d.querySelector(".strip-tick");
   hover.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
