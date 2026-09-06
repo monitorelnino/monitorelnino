@@ -854,3 +854,23 @@ Três julgamentos ficam explicitamente como **pistas** até o ato em fonte ofici
 **Por que "v0.1".** A régua tem um sub-elemento a menos que o MARÉ v3.0: a estrutura de coordenação sanitária (COE-dengue, gabinete saúde-clima, sala de situação) ainda não é coletada de forma sistemática. Quando for, entra como terceiro sub-elemento, com versão nova declarada antes. Enquanto isso, o instrumento e a antecipação já são verificáveis, datados e citados por UF (`data/saude_uf.json`, campo por campo).
 
 **Governança.** Gerado por `gerar_monitor_saude.py` a cada atualização (parte da cadeia de derivados); portão `verificar_saude.py` (m): número só para UF verificada, prontidão idêntica à média dos sub-elementos, motor do índice não referencia o arquivo. Autotestes cobrem a escada, a régua de antecipação, os limites das faixas e o caso negativo (status fora do vocabulário não pontua).
+
+## 32. Contador de resposta — a outra metade do MARÉ (v3.1, decisão editorial de 06/09/2026)
+
+**Definição (E13).** MARÉ é Medida de Antecipação *e Resposta*. Cada eixo tem duas metades: **antecipação = índice** (o que foi publicado antes; 0–100, três componentes, faixas, Monte Carlo) e **resposta = contador** (o que foi decretado depois; contagens, frações e datas — sem fórmula, sem faixa, sem peso). Nome na interface: "Resposta", par de "Antecipação" (C19). Nenhum acrônimo novo, nenhum "índice de calamidade".
+
+**Escala (C15).** Por UF: comprimento da barra = fração dos municípios da UF sob decreto no ciclo (desde 29/06/2026, Boletim nº 1); um traço vertical na mesma barra = fração da população da UF sob decreto (Censo 2022). Sem fórmula que combine os dois; algarismos ao lado ("31 de 417 municípios · 12% da população"). Nacional: N municípios (x%) · y% da população · primeiro decreto em dd/mm.
+
+**Fatias e tons (C16).** A barra é empilhada em três fatias — *após evento observado* / *antes de evento, com previsão* / *recorrente* — e dois tons — *reconhecido pela União* (DOU/SEDEC, S2iD) / *decretado sem reconhecimento* (DOE/DOM/imprensa oficial). Até existir o adaptador municipal de evento observado (alertas Cemaden por município, avisos INMET por área, focos INPE por município, cotas ANA), toda fatia fica **em classificação** (cinza) — nunca é imputada. Portão.
+
+**Sem composto (C17).** As duas metades nunca se combinam num número: nem "nota − decretos", nem "índice de contradição". Portão por padrão em todos os arquivos e páginas. O gráfico de dispersão antecipação × resposta (C20; forma do ponto = evento observado sim/não/sem dado) é a única leitura conjunta, e é visual, não numérica.
+
+**Frase obrigatória (C18).** Toda superfície do contador carrega: "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, *a*)." Quem leu o art. 73 não é penalizado pelo Monitor.
+
+**Fontes e limitação.** `data/atos_resposta.json` (245 eventos em 06/09: DOU 221, diários municipais 19, órgãos estaduais 5; cada um com fonte, data e URL/hash) + `decreto_reconhecido` de `verificacao_municipal.json` (S2iD, completo para os 5.571). O registro federal é completo; DOE/DOM é parcial e depende do canal de diários (§26). Por isso a resposta é afirmável para os 5.571 no tom "reconhecido", e só no nível verificado no tom "decretado sem reconhecimento" — o nível de verificação fica sempre ao lado das duas barras.
+
+**Arquivos.** `data/resposta/por_uf.json`, `serie_semanal.json` (desde 29/06, faixa do defeso), `municipios.json` (5.571) e `municipios_decretados.json` (só quem decretou), `quadrantes.json` (27 pontos). Gerados por `gerar_resposta.py` (7 autotestes) a cada atualização; cadeia de derivados.
+
+**Portão `verificar_resposta.py`.** (a) o motor não lê `data/resposta/`; (b) estresse: apagar a pasta inteira não muda nenhuma nota nem faixa; (c) nenhum campo composto; (d) fatia em classificação nunca imputada; (e) frase C18 em toda superfície; (f) frações recomputadas = publicadas; (g) todo evento com fonte, data e URL/hash. Runtime: `scripts/verificar_runtime_resposta.js` (contador nacional, barras nos 27 cartões, cartão do estado, dispersão, tabela, navegação).
+
+**Superfícies.** Página inicial: contador nacional ao lado do medidor, mesma altura, com miniatura da série e a frase C18; cada cartão de estado com a segunda barra (Argila); cartão do estado expandido com barra, tons e fatias; cartão da cidade com "Decreto no ciclo: sim (dd/mm · tipo · reconhecido) / não consta decreto reconhecido no ciclo". Página **Defesa civil** (que absorveu a galeria "Mapas e gráficos"; redirecionamento 301): dispersão, série semanal e tabela decretado × reconhecido por UF.

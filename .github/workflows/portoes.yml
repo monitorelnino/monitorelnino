@@ -43,6 +43,8 @@ jobs:
           node scripts/verificar_runtime_financiamento.js
           node scripts/verificar_figuras.js
           python3 scripts/testar_detector_defeso.py
+          python3 verificar_resposta.py
+          node scripts/verificar_runtime_resposta.js
       - name: Portão 12 — derivados em árvore limpa
         id: p12
         continue-on-error: true

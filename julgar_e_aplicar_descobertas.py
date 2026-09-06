@@ -127,7 +127,7 @@ def backup_dados():
     teste de ponta a ponta de 31/08/2026, escrever só em estados.json deixava
     o motor e a exibição dessincronizados) e as duas páginas HTML que a
     aplicação estadual toca: index.html (o número fixo do medidor) e
-    mapas-e-graficos.html (AREAS — CONSIST mudou para data/consist.json,
+    defesa-civil.html (AREAS — CONSIST mudou para data/consist.json,
     já coberto por ARQUIVOS_MUTAVEIS, quando mapas/gráficos ganharam página
     própria em 31/08/2026)."""
     backup = {}
@@ -137,7 +137,7 @@ def backup_dados():
             backup[f"data/{nome}"] = p.read_bytes()
     backup["recalcular_mare.py"] = RECALCULAR_PY.read_bytes()
     backup["index.html"] = INDEX_HTML.read_bytes()  # gaugeNum é gravado aqui
-    backup["mapas-e-graficos.html"] = MAPAS_HTML.read_bytes()  # AREAS é gravado aqui
+    backup["defesa-civil.html"] = MAPAS_HTML.read_bytes()  # AREAS é gravado aqui
     return backup
 
 
@@ -165,7 +165,7 @@ def atualizar_estados_py(uf, status, antecipacao, confianca="Média"):
 
 
 INDEX_HTML = RAIZ / "index.html"
-MAPAS_HTML = RAIZ / "mapas-e-graficos.html"
+MAPAS_HTML = RAIZ / "defesa-civil.html"
 CONSIST_JSON = RAIZ / "data" / "consist.json"
 
 
@@ -176,7 +176,7 @@ def sincronizar_consist(uf, nova_cat, novo_instr):
     31/08/2026: CONSIST deixou de viver embutido em index.html (mudou para cá
     quando mapas/gráficos ganharam página própria) — agora é JSON de verdade,
     fonte única compartilhada por index.html (cartão de cidade) e
-    mapas-e-graficos.html (mapa e tabela de risco×instrumento)."""
+    defesa-civil.html (mapa e tabela de risco×instrumento)."""
     consist = json.load(open(CONSIST_JSON, encoding="utf-8"))
     if uf not in consist:
         return False, f"{uf} não existe em consist.json (não deveria acontecer — todas as 27 UFs têm entrada)"
@@ -197,11 +197,11 @@ def sincronizar_areas(uf, risco_texto):
     """Adiciona a UF ao(s) grupo(s) temáticos de AREAS cujo risco bate com o texto já
     existente em CONSIST[uf]['risco'] (nunca inventa um risco novo — só classifica o
     que já está declarado). Não remove de nenhum grupo (fluxo só de LAC/SEM → algo).
-    31/08/2026: AREAS mudou de index.html para mapas-e-graficos.html."""
+    31/08/2026: AREAS mudou de index.html para defesa-civil.html."""
     src = MAPAS_HTML.read_text(encoding="utf-8")
     m = re.search(r"const AREAS = (\[.*?\]);", src, re.S)
     if not m:
-        return False, "AREAS não encontrado em mapas-e-graficos.html"
+        return False, "AREAS não encontrado em defesa-civil.html"
     # AREAS não é JSON puro (chaves sem aspas) — edita via regex pontual em vez de parsear
     bloco = m.group(1)
     risco_lower = risco_texto.lower()

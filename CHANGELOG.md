@@ -11,6 +11,22 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N3 — Contador de resposta e página Defesa civil (06/09/2026)
+- **A outra metade do MARÉ** (E13): `gerar_resposta.py` produz `data/resposta/{por_uf, serie_semanal,
+  municipios, municipios_decretados, quadrantes}.json` a partir de `atos_resposta.json` (245
+  eventos) e do S2iD; hoje **231 municípios sob decreto (4,1%) · 2,9% da população · primeiro
+  decreto em 06/07/2026**; 220 reconhecidos pela União, 11 decretados sem reconhecimento; RS com
+  74 de 497 municípios (15% da população). Fatias de evento observado todas "em classificação" (C16).
+- **Superfícies:** contador nacional ao lado do medidor (mesma altura, miniatura semanal com a faixa
+  do defeso, frase C18); segunda barra (Argila) nos 27 cartões de estado com o traço da população
+  (C15); barra empilhada por tons no cartão expandido; "Decreto no ciclo" no cartão da cidade.
+- **`defesa-civil.html`** absorve `mapas-e-graficos.html` (301 no `netlify.toml`; navegação
+  "Defesa civil" nas dez páginas): seções 1–2 = antecipação (mapas e leituras, sem "Como o dinheiro
+  chega" — C21), seção 3 = resposta com a **dispersão antecipação × resposta** (C20), a série
+  semanal e a tabela decretado × reconhecido por UF.
+- **Portões:** `verificar_resposta.py` (a–g, com o teste de estresse: apagar `data/resposta/`
+  não muda uma nota) e `scripts/verificar_runtime_resposta.js`; Metodologia §32.
+
 ### PR-N0b — Diagnóstico do Querido Diário concluído (06/09/2026)
 - Resultado conhecido (Cerrito/RS): um território por chamada → 3 diários e 3 excertos; **20 territórios
   em lote → 0, com e sem palavra-chave**. Cobertura real confirmada (Porto Alegre 10.000 edições;
