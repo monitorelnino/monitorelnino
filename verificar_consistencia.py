@@ -408,5 +408,23 @@ try:
 except Exception as _e:
     erro(f"portão de congelamento falhou ao executar: {_e}")
 
+# ── PR-N0 §1.6 (06/09/2026): canal de diários e detector de defeso ─────────────────────────
+try:
+    import json as _j0
+    _lg = _j0.load(open(RAIZ / "data" / "log_buscas.json", encoding="utf-8"))
+    _DEC_DOM = {"sem_cobertura_qd", "coberto_sem_mencao", "com_excerto", "registro", "erro"}
+    _ruins = [e for e in _lg.get("execucoes", []) if e.get("canal") == "DOM" and (e.get("data") or "") >= "2026-09-07"   # a partir da primeira rodada após o §1.2 (a de 06/09 6h ainda era o varredor em lote)
+              and e.get("decisao") not in _DEC_DOM]
+    if _ruins: erro(f"log DOM sem as decisões do §1.2 (sem_cobertura_qd/coberto_sem_mencao/com_excerto) em {len(_ruins)} execução(ões) desde 06/09 — ex.: {_ruins[0].get('decisao')!r} {str(_ruins[0].get('resultados'))[:60]!r}")
+    # 'nada localizado' municipal exige cobertura confirmada (cobertura_qd = true) ou bateria completa (§4.1.2)
+    _vm = _j0.load(open(RAIZ / "data" / "verificacao_municipal.json", encoding="utf-8"))
+    _nl = [r for r in _vm if r.get("nivel_verificacao") == "municipal_completo" and r.get("cobertura_qd") is False and not r.get("bateria_completa")]
+    if _nl: erro(f"{len(_nl)} município(s) 'municipal_completo' com diário não indexado e sem bateria completa — 'nada localizado' proibido sem cobertura (§1.6)")
+    # execuções em sítio estadual/municipal depois do detector devem ter fonte_suspensa_defeso preenchido (bool), nunca null
+    _sem = [e for e in _lg.get("execucoes", []) if e.get("canal") in ("site_municipal", "orgao_estadual", "imprensa_oficial") and (e.get("data") or "") >= "2026-09-07" and not isinstance(e.get("fonte_suspensa_defeso"), bool)]
+    if _sem: erro(f"{len(_sem)} execução(ões) de sítio público sem fonte_suspensa_defeso booleano desde 06/09 (§1.6)")
+except Exception as _e:
+    erro(f"portão PR-N0 §1.6 falhou ao executar: {_e}")
+
 if ERROS:  print("ERROS:");  [print("  ✗", e) for e in ERROS]; sys.exit(1)
 print("✓ CONSISTENTE — todas as verificações passaram.")

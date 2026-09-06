@@ -76,6 +76,45 @@ def buscar_com_espera(url: str, timeout: int = 30) -> bytes:
         raise
 
 
+def decisao_para_vazio(coberto) -> str:
+    """Função pura: decisão do log para resposta sem edições, dada a cobertura (True/False/None)."""
+    return "coberto_sem_mencao" if coberto is True else "sem_cobertura_qd" if coberto is False else "erro"
+
+
+def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
+    """PR-N0 §1.2: True se o território tem diário indexado no Querido Diário (total_gazettes>0 sem
+    querystring), False se não, None se o teste falhou. Cache em data/cobertura_qd.json (uma vez por janela).
+    Também grava cobertura_qd/data_teste_cobertura em verificacao_municipal.json."""
+    cache = ler("cobertura_qd.json", {"_governanca": "Cobertura do Querido Diário por município (PR-N0 §1.2): true = diário indexado; false = não indexado; testado sem querystring, size=1. Uma vez por janela.", "janela": desde, "municipios": {}}) or {}
+    if cache.get("janela") != desde:
+        cache = {"_governanca": cache.get("_governanca", ""), "janela": desde, "municipios": {}}
+    mun = cache.setdefault("municipios", {})
+    hoje = date.today().isoformat()
+    if resposta_com_diario:
+        mun[cod] = {"cobertura_qd": True, "data_teste": hoje}
+    elif cod in mun and mun[cod].get("cobertura_qd") is not None:
+        pass
+    else:
+        try:
+            time.sleep(PAUSA_ENTRE_CONSULTAS)
+            d = json.loads(buscar_com_espera(QD_API.format(params=urllib.parse.urlencode({"territory_ids": cod, "size": 1})), timeout=30).decode("utf-8", "replace"))
+            mun[cod] = {"cobertura_qd": (d.get("total_gazettes", 0) or 0) > 0, "data_teste": hoje}
+        except Exception:  # noqa: BLE001
+            mun[cod] = {"cobertura_qd": None, "data_teste": hoje}
+    gravar("cobertura_qd.json", cache)
+    # espelho em verificacao_municipal.json (campo público)
+    try:
+        vm = ler("verificacao_municipal.json", []) or []
+        if isinstance(vm, list):
+            for reg in vm:
+                if str(reg.get("ibge")).zfill(7) == str(cod).zfill(7):
+                    reg["cobertura_qd"] = mun[cod]["cobertura_qd"]; reg["data_teste_cobertura"] = hoje
+                    gravar("verificacao_municipal.json", vm); break
+    except Exception:  # noqa: BLE001
+        pass
+    return mun[cod]["cobertura_qd"]
+
+
 def parse_qd(dados) -> list:
     return [{"data": g.get("date", ""), "url": g.get("url") or g.get("txt_url", ""),
              "trechos": [t for t in g.get("excerpts", []) if t]} for g in (dados or {}).get("gazettes", [])]
@@ -138,11 +177,21 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
                              uf=ref["uf"], municipio=ref["nome"], ibge=cod, strings=[url]); n_lac += 1
             continue
         if dados.get("total_gazettes", 0) == 0 and not dados.get("gazettes"):
-            # município não indexado OU sem menção: não é "nada localizado" (exige bateria completa)
-            marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado",
-                                    resultado="sem edições/menções no período (cobertura a confirmar)")
-            log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "pista", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
-                      n_resultados=0, resultados="Querido Diário: 0 resultados (não indexado ou sem menção)")
+            # PR-N0 §1.2 (06/09/2026): distinguir "não indexado" de "sem menção". Teste de cobertura por
+            # território (sem querystring, size=1), guardado em data/cobertura_qd.json (uma vez por janela).
+            coberto = cobertura_qd(cod, desde)
+            if coberto is False:
+                marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado="sem_cobertura_qd: diário não indexado no Querido Diário")
+                log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "sem_cobertura_qd", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
+                          n_resultados=0, resultados="Querido Diário: território sem diário indexado (total_gazettes=0 sem querystring) — verificação por outro canal pendente")
+            elif coberto is True:
+                marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado="coberto_sem_mencao: indexado; nenhum excerto com os termos no período")
+                log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "coberto_sem_mencao", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
+                          n_resultados=0, resultados="Querido Diário: diário indexado, nenhuma menção aos termos no período (bateria negativa de camada 1)")
+            else:
+                marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado="cobertura a confirmar (teste de cobertura falhou)")
+                log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "erro", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
+                          n_resultados=0, resultados="Querido Diário: 0 resultados e teste de cobertura sem resposta")
             n_ok += 1; continue
         h = preservar_evidencia(bruto, url, "json", "coletar_diarios_municipais")
         decretos, pist = classificar_trechos(parse_qd(dados))
@@ -163,9 +212,10 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
                                     "status": "pista — promover a registro exige documento primário lido por humano"}); npist += 1
         marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado",
                                 resultado=f"{len(decretos)} decreto(s), {len(pist)} pista(s)")
-        log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "registro" if decretos else "pista", uf=ref["uf"],
+        cobertura_qd(cod, desde, resposta_com_diario=True)   # com excertos = coberto, sem gastar outra chamada
+        log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "registro" if decretos else "com_excerto", uf=ref["uf"],
                   municipio=ref["nome"], ibge=cod, n_resultados=dados.get("total_gazettes"), hash_evidencia=h,
-                  resultados=f"{len(decretos)} decretos, {len(pist)} pistas")
+                  resultados=f"{len(decretos)} decretos, {len(pist)} pistas (com_excerto: pista para a fila humana; R7)")
         n_ok += 1
     gravar("atos_resposta.json", atos); gravar("pistas_imprensa.json", pistas)
     print(f"lote {lote}: {n_ok} consultados, {n_lac} lacunas, {novos} decretos novos, {npist} pistas")
@@ -196,6 +246,8 @@ def autoteste() -> int:
                 and tamanho_para_cobrir(100, "2026-09-03", "2026-09-10", 150) == 150
                 and tamanho_para_cobrir(100000, "2026-09-10", "2026-09-10", 150) == 1500
                 and tamanho_para_cobrir(300, "2026-09-11", "2026-09-10", 150) == 300)  # data-fim passada: tudo hoje
+    def t8():  # PR-N0 §1.2: resposta vazia nunca vira 'nada localizado' — só as três decisões (ou erro)
+        return decisao_para_vazio(True) == "coberto_sem_mencao" and decisao_para_vazio(False) == "sem_cobertura_qd" and decisao_para_vazio(None) == "erro"
     def t7():  # --tudo: alvo é a fila inteira de pendentes, sem fatiar por tamanho/dias restantes
         livro = {"municipios": {"1": {"fontes": [{"fonte": FONTE_QD, "data": "2026-08-20"}]}}}  # fora da janela: pendente
         pend = pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03")
@@ -204,7 +256,8 @@ def autoteste() -> int:
                             "prioridade: UF do cadastro, depois população": t3, "negativo: resposta nula": t4,
                             "varredura integral: fila de pendentes na janela": t5,
                             "varredura integral: tamanho para cobrir até a data-fim": t6,
-                            "--tudo: fila completa de pendentes (não fatiada)": t7})
+                            "--tudo: fila completa de pendentes (não fatiada)": t7,
+                            "resposta vazia → sem_cobertura_qd / coberto_sem_mencao / erro (nunca 'nada localizado')": t8})
 
 
 if __name__ == "__main__":

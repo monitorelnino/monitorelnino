@@ -21,7 +21,7 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
    É deste livro (mais o log) que `recalcular_mare.py` deriva o nível de
    verificação — os coletores nunca escrevem `verificacao_municipal.json`.
 """
-import hashlib, json, os, pathlib, sys, urllib.error, urllib.request
+import hashlib, json, os, pathlib, re, sys, urllib.error, urllib.parse, urllib.request
 from datetime import date, datetime
 
 RAIZ = pathlib.Path(__file__).parent
@@ -64,12 +64,85 @@ def gravar(nome, obj):
         f.write("\n")
 
 
+# ---------------------------------------------------------------------------------
+# Detector de página de defeso eleitoral (PR-N0 §1.5, 06/09/2026). Sítios estaduais e
+# municipais que respondem com aviso de "período eleitoral" NÃO são "nada localizado":
+# são fonte suspensa (defeso). O detector roda dentro de buscar(); a marcação é registrada
+# em data/calendario/fontes_suspensas.json e propagada ao log_busca() da mesma URL.
+# ---------------------------------------------------------------------------------
+import unicodedata as _ud
+
+PADROES_DEFESO = [
+    r"periodo eleitoral", r"conduta vedada", r"legislacao eleitoral", r"lei 9\.?504", r"lei n[oº.]* ?9\.?504",
+    r"conteudo temporariamente indisponivel(?=[\s\S]{0,400}(eleic|9\.?504))",   # só com contexto eleitoral: manutenção não é defeso
+    r"indisponivel[^.]{0,80}eleic", r"defeso eleitoral", r"restricoes eleitorais",
+    r"suspens[ao][^.]{0,80}legislacao eleitoral", r"em razao d[ao] (periodo|calendario) eleitoral", r"vedacoes eleitorais",
+]
+_RE_DEFESO = [re.compile(p) for p in PADROES_DEFESO]
+_SUSPENSAS_SESSAO = {}   # url → padrão que casou (nesta execução)
+
+
+def _plano(t: str) -> str:
+    return "".join(c for c in _ud.normalize("NFD", str(t or "").lower()) if _ud.category(c) != "Mn")
+
+
+def detectar_defeso(texto: str) -> str | None:
+    """Padrão que casou (sem acento) ou None. Função pura; só corpos HTML/texto pequenos interessam."""
+    if not texto:
+        return None
+    t = _plano(texto[:200000])
+    for rx in _RE_DEFESO:
+        m = rx.search(t)
+        if m:
+            return m.group(0)
+    return None
+
+
+def _dominio_publico(url: str) -> bool:
+    """Sítio estadual/municipal (não API de dados): .gov.br, .leg.br, .jus.br ou domínio brasileiro de prefeitura."""
+    h = (urllib.parse.urlparse(url).netloc or "").lower()
+    if any(h.startswith(x) or x in h for x in ("api.", "apimsbr", "queridodiario", "dataserver", "geoserver", "gsc.cemaden", "info.dengue", "portaldatransparencia.gov.br", "repositorio.dados.gov.br", "transferegov", "s3.", "amazonaws")):
+        return False
+    return h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h
+
+
+def registrar_fonte_suspensa(url: str, corpo: bytes, padrao: str) -> None:
+    """Grava a detecção (hash + 500 primeiras letras) e a contagem por UF em data/calendario/fontes_suspensas.json."""
+    import datetime as _dt
+    h = hashlib.sha256(corpo).hexdigest()
+    (DATA / "calendario").mkdir(parents=True, exist_ok=True)
+    p = DATA / "calendario" / "fontes_suspensas.json"
+    d = json.load(open(p, encoding="utf-8")) if p.exists() else {"_governanca": "Fontes oficiais que responderam com página de período eleitoral (detector de PR-N0 §1.5). Nunca 'nada localizado': fonte suspensa (defeso). A reabertura é o flag voltando a false, com data.", "fontes": {}}
+    hoje = _dt.date.today().isoformat()
+    f = d["fontes"].setdefault(url, {"primeira_deteccao": hoje, "ultima_deteccao": hoje, "padrao": padrao, "hash": h, "amostra": corpo[:2000].decode("utf-8", "replace")[:500], "suspensa": True})
+    f.update({"ultima_deteccao": hoje, "padrao": padrao, "hash": h, "suspensa": True})
+    json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1); open(p, "a").write("\n")
+    (EVID).mkdir(parents=True, exist_ok=True)
+    (EVID / f"defeso_{h[:16]}.txt").write_text(corpo[:20000].decode("utf-8", "replace"), encoding="utf-8")
+
+
 def buscar(url: str, timeout: int = 40) -> bytes:
     """GET simples com User-Agent do projeto. Levanta a exceção — quem chama decide
-    se vira lacuna declarada (regra 1) ou aborta."""
+    se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
+    contra os padrões de página de defeso e registra a fonte como suspensa (PR-N0 §1.5)."""
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read()
+        corpo = r.read()
+        ct = (r.headers.get("Content-Type") or "").lower()
+    if _dominio_publico(url) and ("html" in ct or "text" in ct or corpo[:200].lstrip().lower().startswith(b"<!doctype") or b"<html" in corpo[:2000].lower()):
+        pad = detectar_defeso(corpo[:200000].decode("utf-8", "replace"))
+        if pad:
+            _SUSPENSAS_SESSAO[url] = pad
+            try:
+                registrar_fonte_suspensa(url, corpo, pad)
+            except Exception:  # noqa: BLE001
+                pass
+    return corpo
+
+
+def fonte_esta_suspensa(urls) -> bool:
+    """True se alguma URL desta execução casou o detector de defeso."""
+    return any(u in _SUSPENSAS_SESSAO for u in (urls or []))
 
 
 def sha256(b: bytes) -> str:
@@ -118,7 +191,7 @@ def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: 
         "data": hoje(), "canal": canal, "camada": camada, "uf": uf, "municipio": municipio,
         "ibge": ibge, "nivel": nivel, "strings": strings, "n_resultados": n_resultados,
         "resultados": resultados[:600], "decisao": decisao,
-        "fonte_suspensa_defeso": bool(fonte_suspensa_defeso), "executor": EXECUTOR,
+        "fonte_suspensa_defeso": bool(fonte_suspensa_defeso) or fonte_esta_suspensa(strings), "executor": EXECUTOR,
         "hash_evidencia": hash_evidencia})
     gravar("log_buscas.json", lg)
 
