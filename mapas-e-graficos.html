@@ -13,9 +13,9 @@
         integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i"
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=c35c88f6">
-<link rel="stylesheet" href="assets/base.css?v=60be8e5b">
-<script src="assets/mapas.js?v=ad836378"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
+<link rel="stylesheet" href="assets/base.css?v=fddf34dd">
+<script src="assets/mapas.js?v=8e6310d1"></script>
 <style>
 /* --- mapas-e-graficos.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
@@ -173,7 +173,7 @@ const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VI
 // =========================================================
 // ANÁLISES — 6 gráficos derivados do mesmo objeto DATA
 // =========================================================
-const PALETTE = {NOVO:'#2E3D30', READ:'#5E7C93', ELAB:'#C9814B', VIG:'#C9814B', LAC:'#7C4A34'};
+const PALETTE = {NOVO:MonitorMapas.cor('musgo'), READ:MonitorMapas.cor('sintetico'), ELAB:MonitorMapas.cor('ambar'), VIG:MonitorMapas.cor('ambar'), LAC:MonitorMapas.cor('argila')};
 const LABELS  = {NOVO:'Novo', READ:'Readaptado', ELAB:'Em elaboração', VIG:'Vigente-recorrente', LAC:'Nenhum localizado'};
 const STATUS_ORDER = ['NOVO','READ','ELAB','VIG','LAC'];
 
@@ -205,7 +205,7 @@ new Chart(document.getElementById('chartRegion'), {
   options:{ indexAxis:'y', maintainAspectRatio:false,
     plugins:{ legend:{ position:'bottom', labels:{boxWidth:10, padding:8, font:{size:12}} },
       tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(DATA.ufs.filter(u => u.regiao === ctx.label && u.status === STATUS_ORDER[ctx.datasetIndex]).map(u => u.uf)) } } },
-    scales:{ x:{ stacked:true, grid:{color:'#D6C4AC'}, ticks:{stepSize:1} }, y:{ stacked:true, grid:{display:false} } } }
+    scales:{ x:{ stacked:true, grid:{color:MonitorMapas.cor('areia')}, ticks:{stepSize:1} }, y:{ stacked:true, grid:{display:false} } } }
 });
 
 // ---- 3. Financiamento federal por área (R$ reais, calculados a partir de Registro_Federal) ----
@@ -215,17 +215,17 @@ new Chart(document.getElementById('chartRegion'), {
 const capStatusCounts = {};
 DATA.ufs.forEach(u=>{ const s=u.capital.status; capStatusCounts[s]=(capStatusCounts[s]||0)+1; });
 const capLabels = Object.keys(capStatusCounts);
-const CAP_COLOR = {'Novo':'#2E3D30','Readaptado':'#5E7C93','Em elaboração':'#C9814B',
-  'Vigente-recorrente':'#C9814B','Coberto pelo estadual':'#8FA5A8','Coberto pelo estado':'#8FA5A8',
-  'Não é de El Niño':'#D6C4AC','Não localizado':'#7C4A34'};
+const CAP_COLOR = {'Novo':MonitorMapas.cor('musgo'),'Readaptado':MonitorMapas.cor('sintetico'),'Em elaboração':MonitorMapas.cor('ambar'),
+  'Vigente-recorrente':MonitorMapas.cor('ambar'),'Coberto pelo estadual':MonitorMapas.cor('mineral'),'Coberto pelo estado':MonitorMapas.cor('mineral'),
+  'Não é de El Niño':MonitorMapas.cor('areia'),'Não localizado':MonitorMapas.cor('argila')};
 new Chart(document.getElementById('chartCapitals'), {
   type:'bar',
   data:{ labels: capLabels,
     datasets:[{ data: capLabels.map(l=>capStatusCounts[l]),
-      backgroundColor: capLabels.map(l => CAP_COLOR[l] || '#D6C4AC'), borderRadius:4}] },
+      backgroundColor: capLabels.map(l => CAP_COLOR[l] || MonitorMapas.cor('areia')), borderRadius:4}] },
   options:{ maintainAspectRatio:false, plugins:{legend:{display:false},
       tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(CAP_POR_STATUS[ctx.label] || []) } }},
-    scales:{ x:{ grid:{display:false}, ticks:{font:{size:9.5}, maxRotation:35, minRotation:35} }, y:{ grid:{color:'#D6C4AC'}, ticks:{stepSize:1} } } }
+    scales:{ x:{ grid:{display:false}, ticks:{font:{size:9.5}, maxRotation:35, minRotation:35} }, y:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{stepSize:1} } } }
 });
 
 // ---- 5. Timeline de reatividade (dias em relação ao Boletim nº1, 29/06/2026) ----
@@ -241,21 +241,21 @@ const pathGen = d3.geoPath().projection(projection);
 
 // ---- Mapa 1: pontos por categoria de ato (Fase 1 + Fase 2) ----
 const CAT_STYLE = {
-  plano:            {cor:'#2E3D30', r:5.5, label:'Plano publicado'},
-  plano_antigo:     {cor:'#5E7C93', r:5,   label:'Plano desatualizado'},
-  plano_elaboracao: {cor:'#C9814B', r:5,   label:'Plano em elaboração'},
-  estrutura:        {cor:'#C9814B', r:5,   label:'Estrutura de coordenação'},
-  decreto:          {cor:'#7C4A34', r:4.5, label:'Decreto de emergência'},
-  coberto_estadual: {cor:'#8FA5A8', r:4.5, label:'Coberto pelo estado'},
-  nao_el_nino:      {cor:'#D6C4AC', r:4,   label:'Não é El Niño'},
-  nao_localizado:   {cor:'#7C4A34', r:4.5, label:'Nenhum ato localizado'},
-  nao_verificado:   {cor:'#66736F', r:4.5, label:'Ainda não verificado'},
+  plano:            {cor:MonitorMapas.cor('musgo'), r:5.5, label:'Plano publicado'},
+  plano_antigo:     {cor:MonitorMapas.cor('sintetico'), r:5,   label:'Plano desatualizado'},
+  plano_elaboracao: {cor:MonitorMapas.cor('ambar'), r:5,   label:'Plano em elaboração'},
+  estrutura:        {cor:MonitorMapas.cor('ambar'), r:5,   label:'Estrutura de coordenação'},
+  decreto:          {cor:MonitorMapas.cor('argila'), r:4.5, label:'Decreto de emergência'},
+  coberto_estadual: {cor:MonitorMapas.cor('mineral'), r:4.5, label:'Coberto pelo estado'},
+  nao_el_nino:      {cor:MonitorMapas.cor('areia'), r:4,   label:'Não é El Niño'},
+  nao_localizado:   {cor:MonitorMapas.cor('argila'), r:4.5, label:'Nenhum ato localizado'},
+  nao_verificado:   {cor:MonitorMapas.cor('cinza-quente'), r:4.5, label:'Ainda não verificado'},
 };
 
 const svgPoints = d3.select('#mapPoints');
 svgPoints.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', '#E9EEEC').attr('class', 'uf-path')
+  .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
@@ -273,7 +273,7 @@ svgPoints.append('g').selectAll('circle')
   .attr('cy', d=>projection([d.lon,d.lat])[1])
   .attr('r', d=>CAT_STYLE[d.categoria].r)
   .attr('fill', d=>CAT_STYLE[d.categoria].cor)
-  .attr('stroke', d=>d.categoria==='plano' ? '#FFFFFF' : '#FFFFFF')
+  .attr('stroke', d=>d.categoria==='plano' ? MonitorMapas.cor('branco') : MonitorMapas.cor('branco'))
   .attr('stroke-width', d=>d.categoria==='plano' ? 1.6 : 1)
   .attr('stroke-dasharray', d=>(d.categoria==='nao_localizado'||d.categoria==='nao_verificado') ? '2,1.5' : null)
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>${CAT_STYLE[d.categoria].label}${d.fase===2?' · Fase 2':''}`, evt))
@@ -288,16 +288,16 @@ MonitorMapas.legenda('pointsLegend', Object.values(CAT_STYLE).map(v => ({cor: v.
 // portão de runtime em 02/09/2026).
 setTimeout(function(){
   const NIV_STYLE = {
-    nao_verificado:     {cor:'#66736F', label:'Ainda não verificado'},
-    nacional:           {cor:'#8FA5A8', label:'Verificado em fontes nacionais'},
-    estadual:           {cor:'#5E7C93', label:'Fontes nacionais e estaduais'},
-    municipal_completo: {cor:'#2E3D30', label:'Verificação completa'},
-    fonte_suspensa:     {cor:'#7C4A34', label:'Fonte suspensa (defeso)'},
+    nao_verificado:     {cor:MonitorMapas.cor('cinza-quente'), label:'Ainda não verificado'},
+    nacional:           {cor:MonitorMapas.cor('mineral'), label:'Verificado em fontes nacionais'},
+    estadual:           {cor:MonitorMapas.cor('sintetico'), label:'Fontes nacionais e estaduais'},
+    municipal_completo: {cor:MonitorMapas.cor('musgo'), label:'Verificação completa'},
+    fonte_suspensa:     {cor:MonitorMapas.cor('argila'), label:'Fonte suspensa (defeso)'},
   };
   const acima = (VRESUMO && VRESUMO.niveis_acima_do_padrao) || {};
   const susp  = new Set((VRESUMO && VRESUMO.fontes_suspensas_municipios) || []);
   const __ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
-  const svg = MonitorMapas.ufs(__ctx, 'mapNiveis', uf => 'var(--surface-2, #F0F4F3)', uf => { const p = (VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {}; return Object.entries(p).map(([k, v]) => v + ' ' + (NIV_STYLE[k] ? NIV_STYLE[k].label.toLowerCase() : k)).join(' · ') || 'sem dados'; });
+  const svg = MonitorMapas.ufs(__ctx, 'mapNiveis', uf => 'var(--surface-2, var(--osso-claro))', uf => { const p = (VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {}; return Object.entries(p).map(([k, v]) => v + ' ' + (NIV_STYLE[k] ? NIV_STYLE[k].label.toLowerCase() : k)).join(' · ') || 'sem dados'; });
   const pts = (window.REF_MUNICIPIOS || []).map(r => {
     const cod = String(r.codigo_ibge).padStart(7,'0');
     const niv = susp.has(cod) ? 'fonte_suspensa' : (acima[cod] || acima[String(r.codigo_ibge)] || 'nao_verificado');
@@ -343,7 +343,7 @@ const nPublicados = prioritariosProxy.filter(x => x.publicado).length;
 const svgPrior = d3.select('#mapPrioritarios');
 svgPrior.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', '#E9EEEC').attr('class', 'uf-path')
+  .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
@@ -353,8 +353,8 @@ svgPrior.append('g').selectAll('circle')
   .attr('cx', d => projection([d.lon, d.lat])[0])
   .attr('cy', d => projection([d.lon, d.lat])[1])
   .attr('r', d => d.publicado ? 4 : 3)
-  .attr('fill', d => d.publicado ? '#2E3D30' : '#E9EEEC')
-  .attr('stroke', d => d.publicado ? '#FFFFFF' : '#7C4A34')
+  .attr('fill', d => d.publicado ? MonitorMapas.cor('musgo') : MonitorMapas.cor('zebra'))
+  .attr('stroke', d => d.publicado ? MonitorMapas.cor('branco') : MonitorMapas.cor('argila'))
   .attr('stroke-width', d => d.publicado ? 1.6 : 1)
   .attr('stroke-dasharray', d => d.publicado ? null : '1.5,1.2')
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>Município prioritário (proxy populacional) — `
@@ -362,8 +362,8 @@ svgPrior.append('g').selectAll('circle')
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
 document.getElementById('legPrioritarios').innerHTML =
-  `<span><i style="background:#2E3D30"></i>Com instrumento</span>`
-  + `<span><i style="background:repeating-linear-gradient(45deg,#F0F4F3,#F0F4F3 3px,#7C4A34 3px,#7C4A34 4px)"></i>Sem instrumento ainda</span>`;
+  `<span><i style="background:var(--musgo)"></i>Com instrumento</span>`
+  + `<span><i style="background:repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)"></i>Sem instrumento ainda</span>`;
 
 // ===========================================================
 // Mapa de atos de resposta (decretos de emergência) — NUNCA pontuam no
@@ -386,7 +386,7 @@ const svgResp = d3.select('#mapAtosResposta');
   const el = document.getElementById('carimboAtos'); if (el) el.textContent = 'Registro: ' + ev.length + ' evento(s), último em ' + ult + '. Coleta automática (DOU/S2iD e diários oficiais) a partir de 06/09/2026: diária na semana intensiva, semanal depois; até lá, os eventos vêm da verificação manual.'; })();
 svgResp.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', '#E9EEEC').attr('class', 'uf-path')
+  .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
@@ -395,8 +395,8 @@ svgResp.append('g').selectAll('circle')
   .attr('cx', d => projection([d.lon, d.lat])[0])
   .attr('cy', d => projection([d.lon, d.lat])[1])
   .attr('r', 4)
-  .attr('fill', '#7C4A34')
-  .attr('stroke', '#FFFFFF')
+  .attr('fill', MonitorMapas.cor('argila'))
+  .attr('stroke', MonitorMapas.cor('branco'))
   .attr('stroke-width', 1.6)
   .on('mouseenter', (evt,d)=> showTip(
     `<strong>${d.nome} (${d.uf})</strong><br>Decreto de emergência — ato de resposta, não pontua`
@@ -405,13 +405,13 @@ svgResp.append('g').selectAll('circle')
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
 document.getElementById('legAtosResposta').innerHTML =
-  `<span><i style="background:#7C4A34"></i>Decreto de emergência</span>`;
+  `<span><i style="background:var(--argila)"></i>Decreto de emergência</span>`;
 
 // ---- Mapa 2a: COBERTURA (uma pergunta: quantos municípios têm algum ato?) ----
 const corCobertura = (info) => {
-  if (!info.com_ato) return '#E9EEEC';
+  if (!info.com_ato) return MonitorMapas.cor('zebra');
   const k = Math.pow(Math.min(info.pct, 100)/100, 0.5);
-  return d3.interpolateHcl('#E9EEEC', '#2E3D30')(0.15 + 0.85*k);
+  return d3.interpolateHcl(MonitorMapas.cor('zebra'), MonitorMapas.cor('musgo'))(0.15 + 0.85*k);
 };
 // ---- Mapa 2b: NATUREZA — 5 classes divergentes (centro neutro oliva; sem gradiente contínuo) ----
 // Degradê contínuo terracota→areia→azul (mesmo eixo cromático do site inteiro),
@@ -420,7 +420,7 @@ const corCobertura = (info) => {
 // "degrau" compartilhado com estados de proporção bem diferente.
 const ESCALA_NATUREZA = d3.scaleLinear()
   .domain([0, 0.05, 0.35, 0.65, 0.95, 1])
-  .range(['#7C4A34', '#7C4A34', '#C9814B', '#DCE3E2', '#8FA5A8', '#2E3D30'])
+  .range([MonitorMapas.cor('argila'), MonitorMapas.cor('argila'), MonitorMapas.cor('ambar'), MonitorMapas.cor('sem-dado'), MonitorMapas.cor('mineral'), MonitorMapas.cor('musgo')])
   .clamp(true);
 const corNatureza = (info) => {
   const atos = (info.n_plano||0) + (info.n_decreto||0);
@@ -462,20 +462,20 @@ const __defsNat = svgNat.append('defs');
 const __pat = __defsNat.append('pattern').attr('id','hatchSemAtos')
   .attr('width', 6).attr('height', 6)
   .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
-__pat.append('rect').attr('width', 6).attr('height', 6).attr('fill', '#F0F4F3');
+__pat.append('rect').attr('width', 6).attr('height', 6).attr('fill', MonitorMapas.cor('osso-claro'));
 __pat.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
-  .attr('stroke', '#D6C4AC').attr('stroke-width', 1.4);
+  .attr('stroke', MonitorMapas.cor('areia')).attr('stroke-width', 1.4);
 
 document.getElementById('legCobertura').innerHTML =
-  `<span><i style="background:linear-gradient(90deg,#E9EEEC,#2E3D30); width:44px;"></i>0% → 100% dos municípios com ato</span>`;
-MonitorMapas.legendaContinua('legNatureza', 'linear-gradient(90deg, #7C4A34 0%, #C9814B 20%, #DCE3E2 50%, #8FA5A8 80%, #2E3D30 100%)', 'só decretos reativos', 'só planos preventivos', [{cor: 'repeating-linear-gradient(45deg,#F0F4F3,#F0F4F3 3px,#D6C4AC 3px,#D6C4AC 4px)', rotulo: 'sem atos identificados'}]);
+  `<span><i style="background:linear-gradient(90deg,var(--zebra),var(--musgo)); width:44px;"></i>0% → 100% dos municípios com ato</span>`;
+MonitorMapas.legendaContinua('legNatureza', 'linear-gradient(90deg, var(--argila) 0%, var(--ambar) 20%, var(--sem-dado) 50%, var(--mineral) 80%, var(--musgo) 100%)', 'só decretos reativos', 'só planos preventivos', [{cor: 'repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--areia) 3px,var(--areia) 4px)', rotulo: 'sem atos identificados'}]);
 
 // ---- Mapa: risco projetado × instrumento estadual ----
 const CONSIST_ROTULO = {COBRE:'Cobre o risco projetado', PARCIAL:'Cobre parte do risco', DIFERE:'Risco difere do instrumento', SEM:'Sem instrumento estadual', NEUTRO:'Sem sinal elevado no trimestre'};
-const CONSIST_COR = {COBRE:'#2E3D30', PARCIAL:'#8FA5A8', DIFERE:'#7C4A34', SEM:'url(#hatchSemInstr)', NEUTRO:'#D6C4AC'};
+const CONSIST_COR = {COBRE:MonitorMapas.cor('musgo'), PARCIAL:MonitorMapas.cor('mineral'), DIFERE:MonitorMapas.cor('argila'), SEM:'url(#hatchSemInstr)', NEUTRO:MonitorMapas.cor('areia')};
 // Cor de borda plana para a TABELA (SEM usa padrão de hachura no mapa SVG, que não
 // é uma cor CSS válida para border — aqui precisa de um tom sólido equivalente).
-const CONSIST_COR_TABELA = {COBRE:'#2E3D30', PARCIAL:'#8FA5A8', DIFERE:'#7C4A34', SEM:'#7C4A34', NEUTRO:'#D6C4AC'};
+const CONSIST_COR_TABELA = {COBRE:MonitorMapas.cor('musgo'), PARCIAL:MonitorMapas.cor('mineral'), DIFERE:MonitorMapas.cor('argila'), SEM:MonitorMapas.cor('argila'), NEUTRO:MonitorMapas.cor('areia')};
 
 // Tabela "risco × instrumento" gerada DIRETO de CONSIST — antes disso era uma cópia
 // digitada à mão, que chegou a divergir de verdade do CONSIST real (PE aparecia
@@ -504,9 +504,9 @@ const __defsC = svgConsist.append('defs');
 const __patC = __defsC.append('pattern').attr('id','hatchSemInstr')
   .attr('width', 6).attr('height', 6)
   .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
-__patC.append('rect').attr('width', 6).attr('height', 6).attr('fill', '#F0F4F3');
+__patC.append('rect').attr('width', 6).attr('height', 6).attr('fill', MonitorMapas.cor('osso-claro'));
 __patC.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
-  .attr('stroke', '#7C4A34').attr('stroke-width', 1.4).attr('stroke-opacity', .55);
+  .attr('stroke', MonitorMapas.cor('argila')).attr('stroke-width', 1.4).attr('stroke-opacity', .55);
 svgConsist.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
   .attr('d', pathGen)
@@ -526,7 +526,7 @@ const __contC = {};
 Object.values(CONSIST).forEach(c => __contC[c.cat] = (__contC[c.cat]||0) + 1);
 document.getElementById('legConsist').innerHTML =
   ['COBRE','PARCIAL','DIFERE','SEM','NEUTRO'].map(k =>
-    `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,#F0F4F3,#F0F4F3 3px,#7C4A34 3px,#7C4A34 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
+    `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
 renderTabelaConsistencia();
 
 // =========================================================
@@ -537,10 +537,10 @@ renderTabelaConsistencia();
 // Áreas temáticas cobertas pelos instrumentos estaduais
 // =========================================================
 const AREAS = [
-  {label:'Grupo Seca (COBRADE 1.4.1): estiagem, seca e segurança hídrica', cor:'#8FA5A8', ufs:['AC','AL','AM','AP','BA','CE','DF','GO','PA','PE','PI','SE']},
-  {label:'Grupo Seca · frente de incêndio florestal (1.4.1.3)', cor:'#7C4A34', ufs:['BA','GO','MA','MS','MT','RO','RR','TO']},
-  {label:'Família das chuvas (1.2-1.3): chuvas intensas e enchentes', cor:'#2E3D30', ufs:['ES','MG','PR','RJ','RS','SP']},
-  {label:'Multirrisco integrado', cor:'#2A4457', ufs:['SC']},
+  {label:'Grupo Seca (COBRADE 1.4.1): estiagem, seca e segurança hídrica', cor:MonitorMapas.cor('mineral'), ufs:['AC','AL','AM','AP','BA','CE','DF','GO','PA','PE','PI','SE']},
+  {label:'Grupo Seca · frente de incêndio florestal (1.4.1.3)', cor:MonitorMapas.cor('argila'), ufs:['BA','GO','MA','MS','MT','RO','RR','TO']},
+  {label:'Família das chuvas (1.2-1.3): chuvas intensas e enchentes', cor:MonitorMapas.cor('musgo'), ufs:['ES','MG','PR','RJ','RS','SP']},
+  {label:'Multirrisco integrado', cor:MonitorMapas.cor('sintetico-escuro'), ufs:['SC']},
 ];
 new Chart(document.getElementById('chartAreas'), {
   type:'bar',
@@ -548,7 +548,7 @@ new Chart(document.getElementById('chartAreas'), {
     datasets:[{ data: AREAS.map(a=>a.ufs.length), backgroundColor: AREAS.map(a=>a.cor), borderRadius:4 }] },
   options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{legend:{display:false},
       tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(AREAS[ctx.dataIndex].ufs) } }},
-    scales:{ x:{ grid:{color:'#D6C4AC'}, ticks:{stepSize:2}, title:{display:true, text:'nº de UFs', color:'#8FA5A8', font:{size:12}} },
+    scales:{ x:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{stepSize:2}, title:{display:true, text:'nº de UFs', color:MonitorMapas.cor('mineral'), font:{size:12}} },
       y:{ grid:{display:false}, ticks:{font:{size:12.5}} } } }
 });
 
@@ -570,8 +570,8 @@ new Chart(document.getElementById('chartDeclarado'), {
       {label:'Declarada (a TCE / sistema estadual)', data: UFS_DECL.map(uf => {
         const i = PCT_POR_UF[uf];
         return +(100*((i.declarado_plano||0)+(i.declarado_antigo||0))/i.total).toFixed(1);
-      }), backgroundColor:'#8FA5A8', borderRadius:4},
-      {label:'Documentada (esta verificação)', data: UFS_DECL.map(uf => PCT_POR_UF[uf].pct), backgroundColor:'#2E3D30', borderRadius:4},
+      }), backgroundColor:MonitorMapas.cor('mineral'), borderRadius:4},
+      {label:'Documentada (esta verificação)', data: UFS_DECL.map(uf => PCT_POR_UF[uf].pct), backgroundColor:MonitorMapas.cor('musgo'), borderRadius:4},
     ]},
   options:{ indexAxis:'y', maintainAspectRatio:false,
     plugins:{ legend:{position:'bottom'},
@@ -584,7 +584,7 @@ new Chart(document.getElementById('chartDeclarado'), {
           `Fonte da camada declarada: ${i.fonte_declarada}`,
         ];
       }}}},
-    scales:{ x:{max:100, grid:{color:'#D6C4AC'}, ticks:{callback:v=>v+'%'}}, y:{grid:{display:false}} } }
+    scales:{ x:{max:100, grid:{color:MonitorMapas.cor('areia')}, ticks:{callback:v=>v+'%'}}, y:{grid:{display:false}} } }
 });
 
 
@@ -593,7 +593,7 @@ new Chart(document.getElementById('chartDeclarado'), {
 }
 __load().catch(err => {
   document.body.insertAdjacentHTML('afterbegin',
-    '<div id="errBanner" style="background:#7C4A34;color:#fff;padding:14px 20px;font-family:Archivo, system-ui, sans-serif;">' +
+    '<div id="errBanner" style="background:var(--argila);color:#fff;padding:14px 20px;font-family:Archivo, system-ui, sans-serif;">' +
     'Erro ao carregar os dados: ' + err.message +
     '. Sirva a pasta via HTTP (ex.: <code>npx serve</code>) — abrir o arquivo diretamente bloqueia o fetch.</div>');
 });
