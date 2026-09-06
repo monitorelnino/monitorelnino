@@ -67,7 +67,7 @@ setTimeout(() => {
   teste("bloco 5: painel publicado renderizado", d.querySelectorAll("#painelResumo table tbody tr").length > 10);   // 04/09/2026: a nota em texto saiu do cartão
   teste("bloco 6: 5 programas permanentes", q("programasCards").children.length === 5);
   teste("bloco 7: compromissos listados", d.querySelectorAll("#tblCompromissos tbody tr").length >= 4);
-  teste("bloco 8: fontes de monitoramento populadas", q("fontesMonit").children.length > 0);
+  // v3.1 §7: as fontes do financiamento vivem em pesquisadores.html
   const caixas = [...d.querySelectorAll(".map-box, .chart-box")].filter(c => c.querySelector("svg, canvas, table, ul"));
   const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura") && !c.closest("#rotasCards") && !c.closest("#programasCards") && !c.closest("#comoler"));
   teste(`toda figura tem crédito de fonte (${caixas.length - semCredito.length}/${caixas.length})`, semCredito.length === 0);
