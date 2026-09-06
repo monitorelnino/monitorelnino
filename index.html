@@ -37,13 +37,13 @@
   .meta strong{color:var(--ink); font-weight:500;}
 
   .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:32px;}
-  .kpi{background:#FFFFFF; border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;}
+  .kpi{background:var(--branco); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;}
   .kpi .n{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:28px; font-weight:600;}
   .kpi .l{font-size:13.5px; color:var(--muted); margin-top:4px;}
 
   .layout{display:grid; grid-template-columns:1.55fr 1fr; gap:24px; align-items:start;}
-  /* (.panel h2 removida em 31/08/2026 — era código morto: a regra global h2{font-size:27px !important} sempre venceria) */
-  .panel .hint{font-size:14.5px; color:var(--muted); margin-bottom:18px;}
+  /* (.panel h2 removida em 31/08/2026 — era código morto: a regra global h2{font-size:28px !important} sempre venceria) */
+  .panel .hint{font-size:15px; color:var(--muted); margin-bottom:18px;}
 
   .regions{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
     .region-col{position:relative; padding-top:56px;}
@@ -51,18 +51,18 @@
   .tiles{display:flex; flex-direction:column; gap:6px;}
   .tile{
     border-radius:7px; padding:9px 8px; cursor:pointer; text-align:center;
-    font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:14px; font-weight:500;
+    font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:13.5px; font-weight:500;
     border:1px solid var(--line); transition:transform .12s ease, box-shadow .12s ease;
-    position:relative; color:#FFFFFF; background:#FFFFFF;
+    position:relative; color:var(--branco); background:var(--branco);
   }
   .tile:hover{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); border-color:var(--teal);}
   .tile.active{outline:2px solid var(--ink); outline-offset:2px;}
   .tile .cap-dot{position:absolute; top:5px; right:6px; width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.6;}
   .tile .tile-uf{display:block; font-weight:700;}
   .tile .tile-score{display:block; font-size:12px; font-weight:600; opacity:.85; margin-top:1px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; letter-spacing:.02em; font-variant-numeric:tabular-nums;}
-  .tile .tile-bar{height:6px; background:#DCE3E2; border-radius:3px; overflow:hidden; margin-top:4px;}
+  .tile .tile-bar{height:6px; background:var(--sem-dado); border-radius:3px; overflow:hidden; margin-top:4px;}
   .tile .tile-fill{height:100%; width:0;
-    background:linear-gradient(90deg,#7C4A34 0%,#C9814B 20%,#8FA5A8 48%,#2E3D30 88%);
+    background:linear-gradient(90deg,var(--argila) 0%,var(--ambar) 20%,var(--mineral) 48%,var(--musgo) 88%);
     background-size:calc(10000%/var(--galvo,1)) 100%; background-repeat:no-repeat;
     border-radius:3px; transition:width 1.2s cubic-bezier(.2,.7,.3,1);}
   @media (prefers-reduced-motion: reduce){ .tile .tile-fill{transition:none;} }
@@ -94,11 +94,11 @@
     repeating-linear-gradient(0deg, transparent 0 12px, rgba(46,61,48,.09) 12px 13px);}
   #hero .gauge-fill{box-shadow: 0 0 16px rgba(166,95,63,.30), 0 0 34px rgba(198,155,114,.16);}
 
-  .st-NOVO{background:#2E3D30;}
-  .st-READ{background:#5E7C93;}
-  .st-ELAB{background:#C9814B; color:#15201A;}
-  .st-VIG{background:#C9814B; color:#15201A;}
-  .st-LAC{background:#7C4A34; color:#fff;}
+  .st-NOVO{background:var(--musgo);}
+  .st-READ{background:var(--sintetico);}
+  .st-ELAB{background:var(--ambar); color:var(--abissal);}
+  .st-VIG{background:var(--ambar); color:var(--abissal);}
+  .st-LAC{background:var(--argila); color:#fff;}
 
   .legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:20px; padding-top:16px; border-top:1px solid var(--line);}
   .legend span{display:flex; align-items:center; gap:7px; font-size:13.5px; color:var(--muted);}
@@ -121,12 +121,12 @@
   footer.site-footer .grad-line{margin:0 0 20px;}
   footer.site-footer svg, footer.site-footer img{height:24px; width:auto; display:block; margin:0 auto 10px;}
 
-  .btn-pdf{margin-top:16px; padding:9px 16px; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:14px; font-weight:600;
-    color:#FFFFFF; background:#2E3D30; border:none; border-radius:8px; cursor:pointer;}
-  .btn-pdf:hover{background:#15201A;}
+  .btn-pdf{margin-top:16px; padding:9px 16px; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px; font-weight:600;
+    color:var(--branco); background:var(--musgo); border:none; border-radius:8px; cursor:pointer;}
+  .btn-pdf:hover{background:var(--abissal);}
   .hero{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
     padding:26px 28px 22px; margin:26px 0 24px; box-shadow:0 1px 3px rgba(21,32,26,.10);}
-  .hero h2{margin:0 0 6px;} /* font-size:26px removido em 31/08/2026 — código morto, h2{27px !important} sempre vencia */
+  .hero h2{margin:0 0 6px;} /* font-size:28px removido em 31/08/2026 — código morto, h2{27px !important} sempre vencia */
   .hero .hero-sub{margin:0 0 20px; color:var(--muted); font-size:15px;}
   /* Lede: único parágrafo em Fraunces fora dos títulos (abertura editorial). 19px é o
      degrau h3 da escala; 68ch mantém 60-75 caracteres por linha; 17px no celular evita
@@ -135,13 +135,13 @@
   @media (max-width:640px){ .hero-lede{font-size:17px; line-height:1.5;} }
   .gauge-head{display:flex; align-items:baseline; gap:10px; margin-bottom:8px;}
   .gauge-head .gnum{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:52px; font-weight:600; color:var(--ink); line-height:1;}
-  .gauge-head .gden{font-size:18px; color:var(--muted);}
+  .gauge-head .gden{font-size:18px; color:var(--muted);}   /* medidor: preservado (E14) */
   .gauge-head .glabel{margin-left:auto; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px;
     text-transform:uppercase; letter-spacing:.07em; color:var(--muted); text-align:right;}
-  .gauge-track{position:relative; height:26px; background:#E7DECD; border:1px solid #CDBB9F;
+  .gauge-track{position:relative; height:26px; background:var(--gauge-trilho); border:1px solid var(--gauge-borda);
     border-radius:13px; overflow:hidden;}
   .gauge-fill{position:relative; height:100%; width:0;
-    background:linear-gradient(90deg,#7C4A34 0%,#C9814B 20%,#8FA5A8 48%,#2E3D30 88%);
+    background:linear-gradient(90deg,var(--argila) 0%,var(--ambar) 20%,var(--mineral) 48%,var(--musgo) 88%);
     background-size:calc(10000%/var(--galvo,1)) 100%; background-repeat:no-repeat;
     border-radius:13px 0 0 13px; transition:width 1.4s cubic-bezier(.2,.7,.3,1);}
   .gauge-fill::after{content:''; position:absolute; inset:0; border-radius:inherit;
@@ -167,12 +167,12 @@
   #meuCard .btn-pdf{margin-top:14px;}
   /* (regra específica de #meuCard h4 removida em 31/08/2026 — unificada com #detail h4 acima, mesmo papel tipográfico) */
   #meuCard .fk{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin:10px 0 2px !important;}
-  #meuCard .fv{margin:0 0 4px !important; font-size:14px; line-height:1.55;}
+  #meuCard .fv{margin:0 0 4px !important; font-size:13.5px; line-height:1.55;}
   .contrib-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px 16px;}
   .fld{display:flex; flex-direction:column; gap:5px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;
     font-size:13.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);}
   .fld input, .fld select, .fld textarea{font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:15px; color:var(--ink);
-    background:var(--surface-2, #F0F4F3); border:1px solid var(--line); border-radius:8px; padding:9px 11px;
+    background:var(--surface-2, var(--osso-claro)); border:1px solid var(--line); border-radius:8px; padding:9px 11px;
     text-transform:none; letter-spacing:0;}
   .fld input:focus, .fld select:focus, .fld textarea:focus{outline:2px solid var(--link); outline-offset:1px;}
   .fld-full{grid-column:1 / -1;}
@@ -182,8 +182,8 @@
   #protejase li{margin:0 0 6px; line-height:1.55; font-size:15px;}
   #protejase .note{margin:4px 0 0;}
   .gfaixa-badge{display:inline-flex; align-items:center; gap:6px; margin-top:6px;
-    font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:13px; color:var(--muted);}
-  .gfaixa-pill{font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:12.5px; font-weight:600; color:#F5F1E8;
+    font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted);}
+  .gfaixa-pill{font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:12.5px; font-weight:600; color:var(--gauge-osso);
     padding:3px 11px; border-radius:999px; white-space:nowrap;}
   .gauge-ends{display:flex; justify-content:space-between; font-size:12.5px; color:var(--muted); margin-top:4px;}
   .strip-wrap{margin-top:22px;}
@@ -191,19 +191,19 @@
     letter-spacing:.07em; color:var(--muted); margin:0 0 8px;}
   .strip{position:relative; height:34px;}
   .strip-line{position:absolute; left:0; right:0; top:16px; height:2px; background:var(--line);}
-  .strip-tick{position:absolute; top:8px; width:2.5px; height:18px; background:#2E3D30; border-radius:2px; cursor:default;}
-  .strip-tick.boletim{background:#2E3D30; width:4px; top:5px; height:24px;}
-  .strip-tick:hover, .strip-tick:focus-visible{background:#7C4A34; outline:none;}
+  .strip-tick{position:absolute; top:8px; width:2.5px; height:18px; background:var(--musgo); border-radius:2px; cursor:default;}
+  .strip-tick.boletim{background:var(--musgo); width:4px; top:5px; height:24px;}
+  .strip-tick:hover, .strip-tick:focus-visible{background:var(--argila); outline:none;}
   .strip-ends{display:flex; justify-content:space-between; font-size:12.5px; color:var(--muted); margin-top:2px;}
   .hero-scope{margin:18px 0 0; font-size:13.5px; color:var(--muted); line-height:1.55;}
-  .hero-links{margin:12px 0 0; font-size:14.5px;}
+  .hero-links{margin:12px 0 0; font-size:15px;}
   .hero-links a{margin-right:18px;}
   @media (prefers-reduced-motion: reduce){ .gauge-fill{transition:none;} .gauge-fill::after{animation:none;} }
 
   /* ===== Sistema de design: tipografia padronizada (duas cores: ink e muted) ===== */
-  h2{font-family:'Fraunces', Georgia, 'Times New Roman', serif !important; font-size:27px !important; font-weight:500 !important; color:var(--ink) !important;}
+  h2{font-family:'Fraunces', Georgia, 'Times New Roman', serif !important; font-size:28px !important; font-weight:500 !important; color:var(--ink) !important;}
   h3{font-size:19px !important; color:var(--ink) !important;}
-  .hint{font-size:14.5px !important; color:var(--muted) !important;}
+  .hint{font-size:15px !important; color:var(--muted) !important;}
   .note{font-size:13.5px !important; color:var(--muted) !important;}
   .map-card-h{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:600; font-size:13.5px; margin:0 0 6px;
     color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
@@ -218,7 +218,7 @@
     .layout{grid-template-columns:1fr;}
     .regions{grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));}
   }
-  @media (max-width:880px){
+  @media (max-width:1020px){
     .charts-grid{grid-template-columns:1fr;}
     .maps-grid{grid-template-columns:1fr;}
     .wrap{padding:26px 18px 60px;}
@@ -228,21 +228,21 @@
     h2{font-size:23px !important;}
     .regions{grid-template-columns:repeat(auto-fill, minmax(124px, 1fr)); gap:10px;}
     .gauge-head{flex-wrap:wrap;}
-    .gauge-head .gnum{font-size:44px;}
+    .gauge-head .gnum{font-size:44px;}   /* medidor: preservado (E14) */
     .gauge-head .glabel{flex-basis:100%; margin-left:0; text-align:left; margin-top:4px;}
     .detail{min-height:0;}
     .strip-tick span{display:none;}
-    .kpi .n{font-size:24px;}
+    .kpi .n{font-size:23px;}
     .mast-body{margin-bottom:14px;}
   }
   @media print{ .btn-pdf{display:none;} }
   .detail .placeholder{color:var(--muted); font-size:15px; margin-top:8px;}
-  .detail .uf-name{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:22px; font-weight:600;}
+  .detail .uf-name{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:23px; font-weight:600;}
   .detail .uf-region{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:16px;}
   .badge{display:inline-block; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; padding:4px 10px; border-radius:20px; font-weight:600; margin-bottom:14px;}
   .field{margin-bottom:14px;}
   .field .k{font-size:12.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px;}
-  .field .v{font-size:14px; line-height:1.5;}
+  .field .v{font-size:13.5px; line-height:1.5;}
   .capital-box{background:var(--surface-2); border-radius:8px; padding:14px 16px; margin-top:6px; border:1px solid var(--line);}
   .capital-box .k{color:var(--rust);}
 
@@ -257,9 +257,9 @@
   .mun-table{width:100%; border-collapse:collapse; font-size:15px;}
   .mun-table th{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.06em;
     color:var(--muted); text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--surface);}
-  .mun-table td{padding:8px 10px; border-bottom:1px solid #D6C4AC; vertical-align:top;}
+  .mun-table td{padding:8px 10px; border-bottom:1px solid var(--areia); vertical-align:top;}
   .mun-table a{color:var(--link);}
-  .cat-pill{display:inline-block; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; padding:2px 8px; border-radius:12px; color:#FFFFFF; font-weight:600; white-space:nowrap;}
+  .cat-pill{display:inline-block; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; padding:2px 8px; border-radius:12px; color:var(--branco); font-weight:600; white-space:nowrap;}
   .tbl-wrap{max-height:480px; overflow:auto; border:1px solid var(--line); border-radius:8px;}
 
   /* — Legibilidade e acessibilidade (WCAG AA) — */
@@ -280,17 +280,17 @@
   .fontes-list{font-size:13.5px; line-height:1.9; margin:0; padding-left:18px; color:var(--ink);}
   .pedido-lai{margin-top:12px;}
   .pedido-lai summary{cursor:pointer; color:var(--link); font-weight:600;}
-  .pedido-texto{width:100%; min-width:0; box-sizing:border-box; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink); background:#F0F4F3; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:0 0 8px; resize:vertical;}
+  .pedido-texto{width:100%; min-width:0; box-sizing:border-box; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink); background:var(--osso-claro); border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:0 0 8px; resize:vertical;}
   /* Prazos em curso (05/09/2026): barras que esvaziam de data-base a vencimento. */
   .prazos-barras{display:flex; flex-direction:column; gap:14px; margin:4px 0 10px;}
   .prazo{display:grid; grid-template-columns:1fr auto; gap:4px 14px; align-items:end;}
   .prazo-titulo{font-family:'Fraunces', Georgia, serif; font-weight:300; font-size:17px; line-height:1.3; color:var(--ink);}
   .prazo-meta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); white-space:nowrap;}
   .prazo-meta strong{color:var(--ink); font-weight:600;}
-  .prazo-trilho{grid-column:1 / -1; height:10px; background:#D6C4AC; border-radius:999px; overflow:hidden; position:relative;}
-  .prazo-resta{position:absolute; right:0; top:0; bottom:0; background:#C9814B; border-radius:999px; transition:width .6s ease;}
-  .prazo-resta.urgente{background:#7C4A34;}
-  .prazo-resta.vencido{background:#8FA5A8; width:100% !important; opacity:.55;}
+  .prazo-trilho{grid-column:1 / -1; height:10px; background:var(--areia); border-radius:999px; overflow:hidden; position:relative;}
+  .prazo-resta{position:absolute; right:0; top:0; bottom:0; background:var(--ambar); border-radius:999px; transition:width .6s ease;}
+  .prazo-resta.urgente{background:var(--argila);}
+  .prazo-resta.vencido{background:var(--mineral); width:100% !important; opacity:.55;}
   .prazo-datas{grid-column:1 / -1; display:flex; justify-content:space-between; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12px; color:var(--muted); letter-spacing:.04em;}
   .prazo.vencido .prazo-titulo{color:var(--muted);}
   @media (prefers-reduced-motion:reduce){.prazo-resta{transition:none;}}
@@ -320,7 +320,7 @@
   .card-src{font-size:13.5px; color:var(--muted); margin:0;}
   .card-link{margin-top:8px; font-size:13.5px; font-weight:600;}
   .card-note{margin-top:8px; font-size:12.5px; color:var(--muted);}
-  .pill-nivel{display:inline-block; font-family:'Archivo Narrow','Arial Narrow',Arial,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:#FFFFFF; background:var(--neutro); border-radius:999px; padding:3px 10px; margin-right:6px;}
+  .pill-nivel{display:inline-block; font-family:'Archivo Narrow','Arial Narrow',Arial,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--branco); background:var(--neutro); border-radius:999px; padding:3px 10px; margin-right:6px;}
   .card-sep{border:none; border-top:1px solid var(--line); margin:14px 0;}
   details > summary{padding:6px 0; min-height:24px; box-sizing:border-box;}  /* alvo de toque ≥24px (WCAG 2.5.8) */
 </style>
@@ -331,7 +331,7 @@
   function banner(msg){
     if(document.getElementById('errBanner')) return;
     document.body.insertAdjacentHTML('afterbegin',
-      '<div id="errBanner" style="background:#7C4A34;color:#fff;padding:12px 20px;font-family:Archivo, system-ui, sans-serif;font-size:14px;">'+msg+'</div>');
+      '<div id="errBanner" style="background:var(--argila);color:#fff;padding:12px 20px;font-family:Archivo, system-ui, sans-serif;font-size:13.5px;">'+msg+'</div>');
   }
   window.addEventListener('error', function(e){
     banner('Erro ao renderizar: ' + (e.message||'desconhecido') + '. Recarregue a página; se persistir, verifique a conexão.');
@@ -370,9 +370,9 @@
   <div class="kpis">
     <a class="kpi" style="border-left:4px solid var(--ink);" href="#fontes"><div class="n" style="color:var(--ink);" id="kpiFederais">—</div><div class="l">Programas federais</div></a>
     <a class="kpi" style="border-left:4px solid var(--ink);" href="#regions"><div class="n" style="color:var(--ink);" id="kpiRegistros">—</div><div class="l">Registros estaduais</div></a>
-    <a class="kpi" style="border-left:4px solid #7C4A34;" href="#regions"><div class="n" style="color:#7C4A34;" id="kpiSemPlano">—</div><div class="l">Estados sem plano estadual localizado</div></a>
+    <a class="kpi" style="border-left:4px solid var(--argila);" href="#regions"><div class="n" style="color:var(--argila);" id="kpiSemPlano">—</div><div class="l">Estados sem plano estadual localizado</div></a>
     <a class="kpi" style="border-left:4px solid var(--ink);" href="#fontes"><div class="n" style="color:var(--ink);" id="kpiCapitais">—</div><div class="l">Capitais verificadas uma a uma</div></a>
-    <a class="kpi" style="border-left:4px solid #7C4A34;" href="#regions"><div class="n" style="color:#7C4A34;" id="kpiMunSemPlano">—</div><div class="l">Municípios em estados sem plano estadual</div></a>
+    <a class="kpi" style="border-left:4px solid var(--argila);" href="#regions"><div class="n" style="color:var(--argila);" id="kpiMunSemPlano">—</div><div class="l">Municípios em estados sem plano estadual</div></a>
   </div>
 
   <div class="hero" id="hero">
@@ -413,7 +413,7 @@
     <p class="hero-links"><a href="#regions">Índice por estado ↓</a><a href="#minhacidade">Encontre sua cidade ↓</a></p>
   </div>
 
-  <div class="panel" style="margin-bottom:24px; border-left:4px solid var(--teal); background:#FFFFFF; box-shadow:0 1px 0 #E9EEEC inset;">
+  <div class="panel" style="margin-bottom:24px; border-left:4px solid var(--teal); background:var(--branco); box-shadow:0 1px 0 var(--zebra) inset;">
     <div class="panel" id="blocoPosDefeso" style="margin:0 0 22px;">
   <p class="selo" style="margin:0 0 6px;">O que o período eleitoral escondeu · publicado a partir de 26/10/2026</p>
   <p class="hint" style="margin:0 0 8px;">Publicado a partir de 26/10, com contagens e datas. Até lá, o espaço fica visível de propósito — <a href="METODOLOGIA.pdf">ver metodologia, §24</a> (a página Calendário nasce na v3.1).</p>
@@ -429,7 +429,7 @@
 <p class="note" style="margin:4px 0 8px;"><strong>Por que a nota baixa importa:</strong> o Monitor busca nos canais que a lei define como o lugar da preparação — diários oficiais e sítios de governo (Lei 12.608/2012; Lei 12.527/2011). Preparação que não foi publicada ali não cumpriu o rito público e não pode ser conferida nem cobrada; nota baixa é evidência de preparação não tornada pública. Sobre a existência do plano, o teto continua o mesmo: "não localizamos até o corte".</p>
 <p class="note" id="notaDefeso" style="margin:4px 0 12px;"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial, e alguns sítios públicos ficam com conteúdo fora do ar. Desde 05/09/2026, nenhuma regra que altere notas muda até 25/10 — a última mudança estrutural, a v3.0, foi em 04/09 (<a href="METODOLOGIA.pdf">ver errata</a>); as buscas sem resultado são provisórias até repetição após 25/10</span> (<a href="METODOLOGIA.pdf">metodologia, §24</a>).</p>
     <p class="hint" style="margin-bottom:10px;">O essencial em seis pontos; cada regra pode ser conferida no <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">documento metodológico</a> (v2.3):</p>
-    <ul style="columns:2 360px; column-gap:38px; font-size:14px; color:var(--ink); line-height:1.7; margin:0; padding-left:18px;">
+    <ul style="columns:2 360px; column-gap:38px; font-size:13.5px; color:var(--ink); line-height:1.7; margin:0; padding-left:18px;">
       <li style="break-inside:avoid;"><strong>O que a nota mede.</strong> Três componentes, com pesos iguais: o <em>plano estadual</em> (existe? é específico para o El Niño?), a <em>população coberta</em> (que fração dos habitantes vive em municípios com plano preventivo) e a <em>antecipação</em> (o plano saiu antes ou depois do primeiro alerta federal, de 29/06/2026).</li>
       <li style="break-inside:avoid;"><strong>As faixas descrevem o estágio do arcabouço público</strong>: estágio inicial (0-25), em construção (25-50), consolidado (50-70) e avançado (70-100). Dizem quanto do que existe está publicado — não medem suficiência nem capacidade instalada — e o índice sobe a cada plano preventivo publicado.</li>
       <li style="break-inside:avoid;"><strong>Decretos de emergência não pontuam.</strong> São instrumentos de resposta a dano ocorrido; o índice mede preparação ex-ante. Apenas instrumentos preventivos recebem crédito.</li>
@@ -517,7 +517,7 @@
       <div>
         <h3>Portais oficiais das Defesas Civis estaduais</h3>
         <p class="hint" style="margin-bottom:8px;">Conforme o diretório oficial do MIDR (11/09/2024). Estados sem portal listado no diretório: AC, AM, PA, PB, RN e SP.</p>
-        <p style="line-height:2.1; font-size:14.5px; margin:0;"><a href="https://defesacivil.al.gov.br" target="_blank" rel="noopener">AL</a> · <a href="https://defesacivil.ap.gov.br" target="_blank" rel="noopener">AP</a> · <a href="https://defesacivil.ba.gov.br" target="_blank" rel="noopener">BA</a> · <a href="https://defesacivil.ce.gov.br" target="_blank" rel="noopener">CE</a> · <a href="https://defesacivil.df.gov.br" target="_blank" rel="noopener">DF</a> · <a href="https://defesacivil.es.gov.br" target="_blank" rel="noopener">ES</a> · <a href="https://bombeiros.go.gov.br" target="_blank" rel="noopener">GO</a> · <a href="https://defesacivil.ma.gov.br" target="_blank" rel="noopener">MA</a> · <a href="https://defesacivil.mg.gov.br" target="_blank" rel="noopener">MG</a> · <a href="https://defesacivil.ms.gov.br" target="_blank" rel="noopener">MS</a> · <a href="https://defesacivil.mt.gov.br" target="_blank" rel="noopener">MT</a> · <a href="https://defesacivil.pe.gov.br" target="_blank" rel="noopener">PE</a> · <a href="https://portal.pi.gov.br/defesacivil" target="_blank" rel="noopener">PI</a> · <a href="https://defesacivil.pr.gov.br" target="_blank" rel="noopener">PR</a> · <a href="https://cbmerj.rj.gov.br" target="_blank" rel="noopener">RJ</a> · <a href="https://cbm.ro.gov.br" target="_blank" rel="noopener">RO</a> · <a href="https://bombeiros.rr.gov.br" target="_blank" rel="noopener">RR</a> · <a href="https://defesacivil.rs.gov.br" target="_blank" rel="noopener">RS</a> · <a href="https://defesacivil.sc.gov.br" target="_blank" rel="noopener">SC</a> · <a href="https://defesacivil.se.gov.br" target="_blank" rel="noopener">SE</a> · <a href="https://defesacivil.to.gov.br" target="_blank" rel="noopener">TO</a></p>
+        <p style="line-height:2.1; font-size:15px; margin:0;"><a href="https://defesacivil.al.gov.br" target="_blank" rel="noopener">AL</a> · <a href="https://defesacivil.ap.gov.br" target="_blank" rel="noopener">AP</a> · <a href="https://defesacivil.ba.gov.br" target="_blank" rel="noopener">BA</a> · <a href="https://defesacivil.ce.gov.br" target="_blank" rel="noopener">CE</a> · <a href="https://defesacivil.df.gov.br" target="_blank" rel="noopener">DF</a> · <a href="https://defesacivil.es.gov.br" target="_blank" rel="noopener">ES</a> · <a href="https://bombeiros.go.gov.br" target="_blank" rel="noopener">GO</a> · <a href="https://defesacivil.ma.gov.br" target="_blank" rel="noopener">MA</a> · <a href="https://defesacivil.mg.gov.br" target="_blank" rel="noopener">MG</a> · <a href="https://defesacivil.ms.gov.br" target="_blank" rel="noopener">MS</a> · <a href="https://defesacivil.mt.gov.br" target="_blank" rel="noopener">MT</a> · <a href="https://defesacivil.pe.gov.br" target="_blank" rel="noopener">PE</a> · <a href="https://portal.pi.gov.br/defesacivil" target="_blank" rel="noopener">PI</a> · <a href="https://defesacivil.pr.gov.br" target="_blank" rel="noopener">PR</a> · <a href="https://cbmerj.rj.gov.br" target="_blank" rel="noopener">RJ</a> · <a href="https://cbm.ro.gov.br" target="_blank" rel="noopener">RO</a> · <a href="https://bombeiros.rr.gov.br" target="_blank" rel="noopener">RR</a> · <a href="https://defesacivil.rs.gov.br" target="_blank" rel="noopener">RS</a> · <a href="https://defesacivil.sc.gov.br" target="_blank" rel="noopener">SC</a> · <a href="https://defesacivil.se.gov.br" target="_blank" rel="noopener">SE</a> · <a href="https://defesacivil.to.gov.br" target="_blank" rel="noopener">TO</a></p>
       </div>
     </div>
     <details style="margin-top:18px;">
@@ -655,7 +655,7 @@ DATA.ufs.forEach(item=>{
   const tile = document.createElement('div');
   tile.className = `tile st-${item.status}`;
   tile.dataset.uf = item.uf;
-  tile.style.background = '#FFFFFF';
+  tile.style.background = MonitorMapas.cor('branco');
   tile.style.color = 'var(--ink)';
   const v = (typeof MARE !== 'undefined' && MARE[item.uf]) ? MARE[item.uf].total : null;
   tile.title = `${item.uf} · MARÉ ${v == null ? 'sem dado' : String(v).replace('.', ',')} / 100`;
@@ -677,7 +677,7 @@ function renderDetalhePadrao(){
   if (!det || det.innerHTML.trim() || typeof MARE === 'undefined') return;
   const mediaBR = +(Object.values(MARE).reduce((s, v) => s + v.total, 0) / 27).toFixed(1);
   det.innerHTML = `
-    <div class="uf-name">Brasil <span style="color:var(--muted); font-weight:400; font-size:16px;">(média nacional)</span></div>
+    <div class="uf-name">Brasil <span style="color:var(--muted); font-weight:400; font-size:15px;">(média nacional)</span></div>
     ${miniGauge(mediaBR, 'MARÉ · média dos 27')}
     <p class="placeholder">Clique em um estado na grade para abrir o detalhe: componentes verificados, situação da capital e o que cobrar.</p>`;
   det.hidden = false;
@@ -712,7 +712,7 @@ function selectUF(uf, tileEl){
 
   document.getElementById('detail').hidden = false;
   document.getElementById('detail').innerHTML = `
-    <div class="uf-name">${d.nome} <span style="color:var(--muted); font-weight:400; font-size:16px;">(${d.uf})</span></div>
+    <div class="uf-name">${d.nome} <span style="color:var(--muted); font-weight:400; font-size:15px;">(${d.uf})</span></div>
     ${typeof MARE !== 'undefined' && MARE[d.uf] ? miniGauge(MARE[d.uf].total) : ''}
     <div class="uf-region">${d.regiao}</div>
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
@@ -753,11 +753,11 @@ const CANAL_LABEL = {DOM:'Diário Oficial dos Municípios', DOU:'Diário Oficial
   repositorio_estadual:'repositório estadual de planos', orgao_estadual:'órgão estadual',
   site_municipal:'site oficial do município', imprensa:'imprensa', '—':''};
 const CAT_LABEL_TBL = {
-  plano:['Plano preventivo','#2E3D30'], plano_antigo:['Plano desatualizado','#5E7C93'],
-  plano_elaboracao:['Em elaboração','#C9814B'], estrutura:['Estrutura de coordenação','#C9814B'], decreto:['Decreto reativo','#7C4A34'],
-  coberto_estadual:['Coberto pelo estado','#8FA5A8'], nao_el_nino:['Não é El Niño','#D6C4AC'],
-  nao_localizado:['Nada localizado','#7C4A34'],
-  nao_verificado:['Ainda não verificado','#66736F'],
+  plano:['Plano preventivo',MonitorMapas.cor('musgo')], plano_antigo:['Plano desatualizado',MonitorMapas.cor('sintetico')],
+  plano_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], estrutura:['Estrutura de coordenação',MonitorMapas.cor('ambar')], decreto:['Decreto reativo',MonitorMapas.cor('argila')],
+  coberto_estadual:['Coberto pelo estado',MonitorMapas.cor('mineral')], nao_el_nino:['Não é El Niño',MonitorMapas.cor('areia')],
+  nao_localizado:['Nada localizado',MonitorMapas.cor('argila')],
+  nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')],
 };
 // Caixa "Prazos em curso" (31/08/2026): lê data/prazos_uf.json, que o vigia de
 // prazos regrava a cada atualização. Mostra o que vence daqui para a frente e o que
@@ -947,7 +947,7 @@ function miniGauge(valor, rotulo){
   const media = String(MEDIA_NACIONAL).replace('.', ',');
   return `<div class="gauge-mini" style="margin:6px 0 16px;">
     <div class="gauge-head" style="margin-bottom:6px;">
-      <span class="gnum" style="font-size:32px;" data-contar="${valor}">0,0</span><span class="gden">/ 100</span>
+      <span class="gnum" style="font-size:28px;" data-contar="${valor}">0,0</span><span class="gden">/ 100</span>
       <span class="glabel">${rotulo || 'MARÉ do estado'}</span>
     </div>
     <div class="gauge-track" style="height:18px;">
@@ -1138,7 +1138,7 @@ function renderMinha(){
       <h4>Como se proteger (${guiasDoEstado(ufFinal).length < 3 ? 'riscos projetados do seu estado' : 'guias gerais'})</h4>
       ${guiasDoEstado(ufFinal).map(g => htmlGuia(g)).join('')}
       ${(typeof HAB_SET !== 'undefined' && HAB_SET.has((document.getElementById('cidadeInput').value.trim().toLowerCase()) + '|' + ufFinal))
-        ? `<p style="margin:8px 0 0; background:#F0F4F3; border-left:4px solid #2E3D30; border-radius:8px; padding:10px 12px;"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
+        ? `<p style="margin:8px 0 0; background:var(--osso-claro); border-left:4px solid var(--musgo); border-radius:8px; padding:10px 12px;"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
         : ''}
       <p class="note" style="margin-top:4px;">Encontrou erro, atualização ou um documento que não temos? <a href="envie-dados.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
   }
@@ -1442,7 +1442,7 @@ function copiarPedido(botao){
 }
 __load().catch(err => {
   document.body.insertAdjacentHTML('afterbegin',
-    '<div style="background:#7C4A34;color:#fff;padding:14px 20px;font-family:Archivo, system-ui, sans-serif;">' +
+    '<div style="background:var(--argila);color:#fff;padding:14px 20px;font-family:Archivo, system-ui, sans-serif;">' +
     'Erro ao carregar os dados: ' + err.message +
     '. Sirva a pasta via HTTP (ex.: <code>npx serve</code>) — abrir o arquivo diretamente bloqueia o fetch.</div>');
 });
@@ -1457,7 +1457,7 @@ __load().catch(err => {
   var v = parseFloat(g.textContent.replace(',', '.'));
   // [rótulo, fundo, texto] — pares conferidos contra WCAG AA (4,5:1) em 31/08/2026:
   // ferrugem/claro 6,45 · tan/escuro 6,65 · oliva escurecido/claro ≥4,5 · azul/claro 6,91
-  var f = v < 25 ? ['Estágio inicial', '#7C4A34', '#FFFFFF'] : v < 50 ? ['Em construção', '#C9814B', '#15201A'] : v < 70 ? ['Consolidado', '#2E3D30', '#FFFFFF'] : ['Avançado', '#2E3D30', '#FFFFFF'];
+  var f = v < 25 ? ['Estágio inicial', MonitorMapas.cor('argila'), MonitorMapas.cor('branco')] : v < 50 ? ['Em construção', MonitorMapas.cor('ambar'), MonitorMapas.cor('abissal')] : v < 70 ? ['Consolidado', MonitorMapas.cor('musgo'), MonitorMapas.cor('branco')] : ['Avançado', MonitorMapas.cor('musgo'), MonitorMapas.cor('branco')];
   el.innerHTML = 'Preparação demonstrada<span class="gfaixa-pill" style="background:' + f[1] + '; color:' + f[2] + '">' + f[0] + '</span>';
 })();
 

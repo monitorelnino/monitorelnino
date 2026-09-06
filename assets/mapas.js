@@ -9,7 +9,15 @@
    ============================================================ */
 (function (global) {
   'use strict';
-  const NEUTRA = '#DCE3E2';   // tema técnico (05/09/2026): 'sem dado' em areia-clara sobre branco
+  const NEUTRA = '#DCE3E2';
+  // v3.1 §14.2 (06/09/2026): hex só aqui e em tokens.css. Páginas usam var(--nome) em CSS/estilo
+  // inline e MonitorMapas.cor('nome') onde precisam de um valor concreto (canvas do Chart.js).
+  const COR = { vazio:'#0E0F0D', abissal:'#15201A', musgo:'#2E3D30', argila:'#7C4A34', ambar:'#C9814B', bioluz:'#A8C99A',
+                sintetico:'#5E7C93', mineral:'#8FA5A8', areia:'#D6C4AC', 'osso-claro':'#F0F4F3', linha:'#C5CFCE',
+                'cinza-quente':'#66736F', 'sem-dado':'#DCE3E2', branco:'#FFFFFF', 'areia-escura':'#7A6A4F', zebra:'#E9EEEC',
+                muted:'#55645B', 'gauge-trilho':'#E7DECD', 'gauge-borda':'#CDBB9F', 'gauge-osso':'#F5F1E8', 'gauge-cinza':'#DDDED9',
+                'ambar-escuro':'#A87A50', 'sintetico-escuro':'#2A4457', preto:'#000000' };
+  function cor(nome) { return COR[nome] || nome; }   // tema técnico (05/09/2026): 'sem dado' em areia-clara sobre branco
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const tooltipEl = () => document.getElementById('mapTooltip');
   function showTip(html, evt) {
@@ -118,5 +126,5 @@
                    resposta: '#7C4A34', preparacao: '#2E3D30', neutra: '#DCE3E2',
                    serie: ['#2E3D30', '#5E7C93', '#C9814B', '#7C4A34', '#8FA5A8', '#7A6A4F', '#A8C99A', '#55645B'] };   // paleta da marca (Musgo, Sintético, Âmbar, Argila, Mineral)
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito };
 })(window);
