@@ -46,14 +46,8 @@
   <h1>Sinais oficiais de risco</h1>
   <p class="hint" style="margin-bottom:18px;">O resto do site mede o que os governos publicaram para se preparar. Esta página mostra o outro lado da conta: o risco a que essa preparação responde, estado por estado, tal como CEMADEN, INPE, ANA, INMET e NOAA já o publicaram. O Monitor não faz previsão climática — reproduz a de quem tem mandato para fazê-la, sempre com o documento e a data da consulta ao lado do número.</p>
 
-  <div class="panel" id="regras">
-    <h2 style="margin-top:0;">O que esta página é</h2>
-    <ul style="margin:0; padding-left:20px;">
-      <li><strong>Uma cópia com endereço de origem.</strong> Cada valor aqui saiu de um documento oficial identificado, e o crédito embaixo de cada figura diz qual e de quando. Quando o órgão usa escala própria — S0 a S4 no Monitor de Secas, os graus de aviso do INMET, o ONI em graus Celsius —, a escala que você vê é a dele.</li>
-      <li><strong>Uma página que não pontua.</strong> Nada do que está aqui <span id="pesoZero">não entra no índice MARÉ</span>: nem para subir, nem para descer nota de ninguém. Risco é característica do território; o índice mede conduta de quem governa. Misturar os dois faria um estado perder nota por causa do clima.</li>
-      <li><strong>Uma página que admite o que não tem.</strong> Fonte ainda não coletada aparece vazia e assim rotulada, com o link para você conferir na origem. Sobre uma ausência, o máximo que o Monitor afirma é que não localizou até o corte.</li>
-    </ul>
-  </div>
+    <p class="hint" style="margin:0 0 18px;">Esta página lê os sinais físicos do ciclo — oceano, previsão, seca, fogo, alertas — e cruza o risco projetado com o arcabouço público de cada estado. Os sinais não entram no índice MARÉ (peso zero). O Monitor não faz previsão climática nem substitui os avisos oficiais; as oito fontes e suas consultas estão em <a href="pesquisadores.html#fontes-sinais">Pesquisadores</a>.</p>
+
 
   <div class="panel" id="estadodociclo">
     <h2 style="margin-top:0;">Estado do ciclo</h2>
@@ -130,21 +124,9 @@
     </div>
   </div>
 
-  <div class="panel" id="fontes">
-    <h2 style="margin-top:0;">As oito fontes</h2>
-    <p class="hint">Organizadas em três camadas: o <strong>ciclo</strong> (o que se projeta para o período), o <strong>observado</strong> (o que os sistemas de monitoramento registram agora) e o <strong>ENOS</strong> (o estado do fenômeno no Pacífico). Cada linha diz o que a fonte informa, quando foi consultada e para onde ir conferir.</p>
-    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="max-height:none;"><table class="mun-table" id="tblFontes"><thead><tr><th>Fonte</th><th>Órgão</th><th>O que informa</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
-    <p class="note" style="margin-top:12px;">Imprensa e agregadores de terceiros não aparecem nesta tabela: no protocolo do Monitor eles servem para descobrir um documento, nunca para registrá-lo.</p>
-  </div>
+  
 
-  <div class="panel" id="limites">
-    <h2 style="margin-top:0;">O que esta página não faz</h2>
-    <ul style="margin:0; padding-left:20px;">
-      <li><strong>Não projeta impacto por conta própria.</strong> Nenhum percentual de perda, nenhuma nota de gravidade, nenhum rótulo de intensidade inventado pelo Monitor. Onde não há número oficial, fica o vazio.</li>
-      <li><strong>Não pontua.</strong> Um estado com muitos sinais de risco não perde nota, e um estado sem sinais não ganha. O índice mede o arcabouço público de preparação, e é isso que ele continua medindo.</li>
-      <li><strong>Não substitui o alerta oficial.</strong> Para decisão de emergência, a fonte é a Defesa Civil do seu município e o alerta do CEMADEN — os contatos estão em <a href="proteja-se.html">Proteja-se</a>. Esta página serve para entender o ciclo, não para agir dentro dele.</li>
-    </ul>
-  </div>
+  
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -353,14 +335,6 @@ credito('boxCruz', 'painel_el_nino',
 
 // =============================  Tabela de fontes  =============================
 const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};
-document.querySelector('#tblFontes tbody').innerHTML = Object.entries(SINAIS.fontes).map(([id, f]) => {
-  const situacao = f.status === 'coletado'
-    ? '<strong>Coletada</strong> em ' + esc(f.consultado_em) + '<br><span class="note">' + esc(f.documento || '') + '</span>'
-    : '<span class="note fonte-espera">Não localizamos coleta até o corte</span>';
-  return '<tr><td><a href="' + esc(f.url_publica) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a><br>' +
-    '<span class="note">Camada: ' + esc(CAMADA_ROTULO[f.camada]) + '</span></td><td>' + esc(f.orgao) + '</td><td>' +
-    esc(f.papel) + '</td><td>' + situacao + '</td></tr>';
-}).join('');
 }
 __load();
 </script>
