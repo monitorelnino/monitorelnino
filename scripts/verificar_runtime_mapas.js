@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Verificador de runtime da página de mapas e gráficos (mapas-e-graficos.html),
+/* Verificador de runtime da página de mapas e gráficos (defesa-civil.html),
  * separada de index.html em 31/08/2026. Mesmo padrão de scripts/verificar_runtime.js
  * (jsdom + d3 reais, Chart simulado, fetch local), cobrindo os 7 mapas, a tabela
  * risco×instrumento e os totais que migraram para cá.
@@ -14,7 +14,7 @@ const fs = require("fs");
 const path = require("path");
 
 const raiz = path.join(__dirname, "..");
-const html = fs.readFileSync(path.join(raiz, "mapas-e-graficos.html"), "utf-8");
+const html = fs.readFileSync(path.join(raiz, "defesa-civil.html"), "utf-8");
 const erros = [];
 const vc = new VirtualConsole();
 vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));
