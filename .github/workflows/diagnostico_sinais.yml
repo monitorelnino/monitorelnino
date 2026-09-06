@@ -33,6 +33,11 @@ jobs:
         run: |
           set -o pipefail
           python3 scripts/sondar_transferegov.py 2>&1 | tee /tmp/transferegov.log
+      - name: Diagnóstico do Querido Diário (resultado conhecido; PR-N0 §1.1)
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python3 scripts/diagnosticar_querido_diario.py 2>&1 | tee /tmp/qd.log
       - name: Testar endpoints candidatos
         run: |
           set -o pipefail
@@ -47,5 +52,7 @@ jobs:
           cp /tmp/diagnostico.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_sinais.txt"
           cp /tmp/portal.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portal_transparencia.txt" 2>/dev/null || true
           cp /tmp/transferegov.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_transferegov.txt" 2>/dev/null || true
+          cp /tmp/qd.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_querido_diario.txt" 2>/dev/null || true
+          mkdir -p /tmp/registro/leituras/querido_diario && cp -r leituras_qd/. "/tmp/registro/leituras/querido_diario/$(date -u +%Y-%m-%d_%H%M%S)/" 2>/dev/null || true
           cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com
           git add -A && git commit -q -m "diagnostico_sinais ${GITHUB_SHA::7}" && git push
