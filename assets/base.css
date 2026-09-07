@@ -170,7 +170,7 @@ button, .btn-pdf, input[type=submit]{min-height:40px;}
   /* v3.1 §14.3 — 390 px sem rolagem horizontal: contêineres de figura e tabela nunca excedem a viewport;
      canvas encolhe com o cartão; grades de prazo quebram em uma coluna; tabelas rolam dentro do próprio invólucro. */
   .map-box, .chart-box, .panel, .tbl-wrap{max-width:100%; min-width:0; box-sizing:border-box;}
-  .maps-grid, .charts-grid, .kpis, .mare-duas-metades{min-width:0;}
+  .maps-grid, .charts-grid, .kpis, .mare-metade{min-width:0;}
   .maps-grid > *, .charts-grid > *{min-width:0;}
   .canvas-wrap{max-width:100%; min-width:0;}
   .canvas-wrap canvas{max-width:100% !important;}
