@@ -34,7 +34,7 @@ for (const p of PAGINAS) {
   d.querySelectorAll("input:not([type=hidden]):not([type=submit]), select, textarea").forEach(c => { const id = c.id; const ok = (id && d.querySelector(`label[for="${id}"]`)) || c.closest("label") || c.getAttribute("aria-label") || c.getAttribute("aria-labelledby"); if (!ok) falha(`${p}: campo de formulário sem rótulo (${c.name||c.id||c.tagName})`); });
   if (d.querySelector("[tabindex]:not([tabindex='0']):not([tabindex='-1'])")) falha(`${p}: tabindex positivo (quebra a ordem de tabulação)`);
   d.querySelectorAll("table").forEach(t => { if (!t.querySelector("th")) falha(`${p}: tabela sem cabeçalho <th>`); });
-  if (p !== "obrigado.html" && !d.querySelector('.mainnav [aria-current="page"]')) falha(`${p}: nav sem aria-current="page"`);
+  if (p !== "obrigado.html" && !d.querySelector('.mainnav [aria-current="page"]')) if (p !== "calendario-eleitoral.html") falha(`${p}: nav sem aria-current="page"`);
   d.querySelectorAll("a[target=_blank]").forEach(a => { if (!/noopener/.test(a.getAttribute("rel")||"")) falha(`${p}: link externo sem rel=noopener`); });
   if (!/<link[^>]+assets\/base\.css/.test(html)) falha(`${p}: sem assets/base.css`);
   // 03/09/2026: ids duplicados e links internos quebrados (âncoras e páginas)

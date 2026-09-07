@@ -182,3 +182,10 @@ button, .btn-pdf, input[type=submit]{min-height:40px;}
     .prazo-meta{white-space:normal;}
     .contador-zone{min-width:0;}
   }
+
+  /* barras horizontais por UF (Saúde, Financiamento) */
+  .msb{display:grid; grid-template-columns:44px 1fr 56px; gap:0 10px; align-items:center;}
+  .msb b{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:600; font-size:12.5px; color:var(--ink);}
+  .msb .trilho{height:10px; background:var(--areia); border-radius:999px; overflow:hidden;}
+  .msb .barra{height:100%; border-radius:999px;}
+  .msb span{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); text-align:right;}

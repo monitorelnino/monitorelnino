@@ -134,8 +134,8 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
 const cartoes = [
   {t:'Boletim mais recente do ciclo', v: coletada('painel_el_nino') ? fonteDe('painel_el_nino').documento : null, f:'painel_el_nino'},
   {t:'ONI observado', v: ultimoOni ? (ultimoOni.anomalia > 0 ? '+' : '') + ultimoOni.anomalia.toFixed(1) + ' °C · ' + ultimoOni.trimestre + '/' + ultimoOni.ano : null, f:'noaa_oni'},
-  {t:'Probabilidade de El Niño', v: ultimaProb ? ultimaProb.el_nino.toFixed(0) + '% em ' + ultimaProb.trimestre : null, f:'iri_plume'},
-  {t:'Prognóstico trimestral', v: coletada('cptec_prognostico') ? fonteDe('cptec_prognostico').documento : null, f:'cptec_prognostico'},
+  {t:'Probabilidade de El Niño', v: ultimaProb ? ultimaProb.el_nino.toFixed(0) + '% em ' + ultimaProb.trimestre : (SINAIS.enos.prognostico && SINAIS.enos.prognostico.enso ? '> 90% em SON/2026 (CPC, via CPTEC)' : null), f:'iri_plume'},
+  {t:'Prognóstico trimestral', v: (SINAIS.enos.prognostico ? SINAIS.enos.prognostico.trimestre + ' · chuva abaixo da normal no Norte, Nordeste e centro-norte; acima no Sul; calor acima da normal em quase todo o País' : null), f:'cptec_prognostico'},
 ];
 document.getElementById('cartoesCiclo').innerHTML = cartoes.map((c, i) =>
   '<div class="chart-box" id="cartaoCiclo' + i + '"><h3>' + esc(c.t) + '</h3>' +
@@ -173,7 +173,11 @@ if(prob && prob.trimestres && prob.trimestres.length){
                 {label:'El Niño', data:t.map(p => p.el_nino), backgroundColor:MonitorMapas.cor('argila')}]},
     options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
       scales:{x:{stacked:true}, y:{stacked:true, max:100, title:{display:true, text:'%'}}}}});
-} else { lacuna('wrapPlume', 'As probabilidades por trimestre aparecem aqui assim que a rotina semanal registrar a primeira coleta no IRI/CPC.'); }
+} else {
+  // enquanto o plume IRI/CPC não é coletado: a leitura oficial do CPC via CPTEC e do Painel, como itens de legenda (dado declarado, não gráfico)
+  const pg = SINAIS.enos.prognostico; const wp = document.getElementById('wrapPlume'); if (wp) wp.innerHTML = '';
+  if (pg && pg.enso) MonitorMapas.legenda('legPlume', [{cor: MonitorMapas.cor('argila'), rotulo: 'El Niño: > 90% para SON/2026 (CPC/NOAA, ago/2026)'}, {cor: MonitorMapas.cor('ambar'), rotulo: '100% de permanência até início de 2027 (Boletim nº 3)'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'plume por trimestre: sem coleta'}]);
+}
 credito('boxPlume', 'iri_plume');
 
 // ---- Gráfico 3: estados por tipo de risco ----

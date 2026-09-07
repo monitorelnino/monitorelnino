@@ -45,7 +45,7 @@
   <header class="masthead masthead--mini">
     <div class="mast-top">
       <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
-      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Sinais</a><a href="calendario-eleitoral.html">Calendário</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Financiamento</span><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="imprensa.html">Imprensa</a><a href="pesquisadores.html">Pesquisadores</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Enviar dados</a></nav>
+      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="saude.html">Saúde</a><a href="defesa-civil.html">Defesa civil</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Financiamento</span><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="imprensa.html">Imprensa</a><a href="pesquisadores.html">Pesquisadores</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Enviar dados</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     <p class="site-title">Monitor <em>El Niño</em> Brasil</p>
@@ -56,12 +56,37 @@
 <main class="wrap" id="conteudo">
   <p class="selo">Financiamento · registro de transparência · peso zero no índice</p>
   <h1>Por onde o dinheiro chega</h1>
-  <p class="hint" id="subFin">Sete rotas por que o dinheiro público chega ao município — mais a rota estadual — sempre na mesma ordem e nas mesmas cores, cada uma rotulada pela chave que a abre: <strong>regra</strong>, <strong>decreto</strong>, <strong>discricionária</strong> ou <strong>direta</strong>. Cada figura diz o órgão, a consulta e a data. Separa o que vem <em>antes</em> do dano do que vem <em>depois</em>; nunca soma resposta a preparação. Nada aqui entra no índice MARÉ. Corte: <strong id="corteFin">—</strong>.</p>
+  <p class="hint">Sete rotas — mais a estadual — por que o dinheiro chega ao município, cada uma rotulada pela chave que a abre: <strong>regra</strong>, <strong>decreto</strong>, <strong>discricionária</strong> ou <strong>direta</strong>. Cada figura diz órgão, consulta e data; resposta nunca se soma a preparação. Nada aqui pontua no MARÉ. Corte: <strong id="corteFin">—</strong>.</p>
 
 
+
+  <div class="panel" id="dinheiroElNino" style="border-top:3px solid var(--rust);">
+    <h2 style="margin-top:0;">1 · O dinheiro do El Niño: como e onde está chegando</h2>
+    <p class="hint">MP 1.367 (incêndios) e MP 1.384 (alimentos): prazo, rota por órgão, parcela paga e onde o pagamento foi feito.</p>
+  <div class="charts-grid" style="grid-template-columns:1fr;">
+    <div class="chart-box" id="boxRotaMPs">
+      <h3 class="map-card-h">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
+      <div class="prazos-barras" id="mpsPrazos" style="margin:8px 0 14px;"></div>
+      <div id="rotaMPs" style="width:100%; min-height:300px;"></div>
+      <div class="map-legend" id="legRotaMPs"></div>
+    </div>
+  </div>
+    <div class="maps-grid" style="margin-top:12px;">
+      <div class="map-box" id="boxMpsUf">
+        <h3 class="map-card-h">Onde o pagamento foi feito · valor pago por UF da unidade gestora</h3>
+        <svg id="mapaMpsUf" role="img" aria-label="Mapa do Brasil: valor pago das ações reforçadas pelas MPs, por UF da unidade gestora; sedes nacionais aparecem como BR" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legMpsUf"></div>
+      </div>
+      <div class="chart-box" id="boxMpsUfBarras">
+        <h3 class="map-card-h">Pago por UF · sedes nacionais (BR) à parte</h3>
+        <div id="mpsUfBarras" class="prazos-barras" style="margin:6px 0 4px;"></div>
+        <div class="map-legend" id="legMpsUfBarras"></div>
+      </div>
+    </div>
+  </div>
 
   <div class="panel" id="comoler">
-    <h2 style="margin-top:0;">1 · Como ler: as sete rotas e o que o decreto destranca</h2>
+    <h2 style="margin-top:0;">2 · Como ler: as sete rotas e o que o decreto destranca</h2>
     <p class="hint">Este bloco descreve rotas existentes, com base legal citada; não recomenda desenho de política. Nenhuma rota pontua no índice (peso zero).</p>
     <div class="chart-box wide" id="boxRede">
       <h3 class="map-card-h">A rede do dinheiro: de quem vem, por qual rota, com que chave</h3>
@@ -98,7 +123,7 @@
   </div>
 
   <div class="panel" id="serie">
-    <h2 style="margin-top:0;">2 · Brasil, por semana</h2>
+    <h2 style="margin-top:0;">3 · Brasil, por semana</h2>
     <p class="hint">Transferências da União a municípios em 2026, empilhadas por rota, com a faixa do período eleitoral (04/07–25/10) sombreada — <em>suspensas por lei, não é inação</em>. A faixa permanece depois de 25/10, como memória do site.</p>
     <div class="chart-box wide" id="boxSerie">
       <h3 class="map-card-h">Série semanal 2026 por rota</h3>
@@ -108,7 +133,7 @@
   </div>
 
   <div class="panel" id="porestado">
-    <h2 style="margin-top:0;">3 · Por estado</h2>
+    <h2 style="margin-top:0;">4 · Por estado</h2>
     <p class="hint">Dois mapas: o fundo a fundo estadual <em>preventivo</em> (o precedente do Prepara RS) e, quando a coleta chegar, o coroplético em R$ por habitante com seletor de rota.</p>
     <div class="maps-grid">
       <div class="map-box" id="boxFundoEstadual">
@@ -127,7 +152,7 @@
   </div>
 
     <div class="panel" id="contadores">
-    <h2 style="margin-top:0;">3b · Quatro contadores por estado</h2>
+    <h2 style="margin-top:0;">5 · Quatro contadores por estado</h2>
     <p class="hint">Contagens e razões por estado — antes de 04/07 · período eleitoral · depois de 25/10 —, sem escala nem juízo; "sem coleta" onde a fonte ainda não entrega.</p>
     <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblContadores"><thead><tr><th>UF</th><th>R$/hab. voluntárias 2026 (r5)</th><th>Por período</th><th>Municípios com recurso preventivo</th><th>Municípios com recurso de resposta</th><th>Razão depois/antes</th><th>Represado</th></tr></thead><tbody></tbody></table></div>
     <div class="map-legend" id="legContadores"></div>
@@ -135,7 +160,7 @@
   </div>
 
 <div class="panel" id="resposta">
-    <h2 style="margin-top:0;">4 · Resposta por decreto</h2>
+    <h2 style="margin-top:0;">6 · Resposta por decreto</h2>
     <p class="hint">Reconhecimentos federais (S2iD/DOU) e transferências obrigatórias de resposta, na cor de resposta, nunca somados a preparação; ao lado, os repasses estaduais preventivos confirmados.</p>
     <div class="maps-grid">
       <div class="map-box" id="boxDinheiro">
@@ -151,9 +176,9 @@
   </div>
 
   <div class="panel" id="painel">
-    <h2 style="margin-top:0;">5 · Painel amostral</h2>
+    <h2 style="margin-top:0;">7 · Painel amostral</h2>
     <p class="hint">Só o agregado fica aqui; lista e fichas em <a href="pesquisadores.html#painel-amostral">Pesquisadores</a>.</p>
-    <p class="hint">Doze municípios por estado (324), sorteados com semente publicada antes da primeira verificação, reverificados toda semana: quanto chega por regra, por decreto, por discricionariedade e sem passar pelo caixa — e quantos têm instrumento publicado. Leitura por região × porte × risco, não por UF isolada.</p>
+    <p class="hint">Doze municípios por estado (324), sorteados com semente publicada e reverificados a cada rodada: só o agregado fica aqui; lista e fichas em <a href="pesquisadores.html#painel-amostral">Pesquisadores</a>.</p>
     <div class="chart-box wide" id="boxPainel">
       <h3 class="map-card-h">Lista e agregados do painel</h3>
       <div id="painelResumo"></div>
@@ -161,21 +186,14 @@
   </div>
 
   <div class="panel" id="programas">
-    <h2 style="margin-top:0;">7 · Programas permanentes no território (rota 7)</h2>
+    <h2 style="margin-top:0;">8 · Programas permanentes no território (rota 7)</h2>
     <p class="hint">Execução direta da União (Garantia-Safra, Cisternas, Carro-Pipa, CISC, Cemaden): transparência, sem crédito no índice.</p>
     <div class="charts-grid" id="programasCards"></div>
   </div>
 
   <div class="panel" id="compromissos">
-    <h2 style="margin-top:0;">6 · Compromissos federais com dinheiro e prazo</h2>
-<div class="charts-grid" style="grid-template-columns:1fr;">
-    <div class="chart-box" id="boxRotaMPs">
-      <h3 class="map-card-h">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
-      <div class="prazos-barras" id="mpsPrazos" style="margin:8px 0 14px;"></div>
-      <div id="rotaMPs" style="width:100%; min-height:300px;"></div>
-      <div class="map-legend" id="legRotaMPs"></div>
-    </div>
-  </div>
+    <h2 style="margin-top:0;">9 · Compromissos federais com dinheiro e prazo</h2>
+
   
 
     <p class="hint">O que foi prometido, com fonte e data, ao lado da execução correspondente no Portal da Transparência (aguardando coleta).</p>
