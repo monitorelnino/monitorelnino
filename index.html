@@ -346,7 +346,7 @@
 </style>
 </head>
 <body>
-<script src="assets/js/index.js?v=bf1ce4ca" defer></script>
+<script src="assets/js/index.js?v=f3d8727b" defer></script>
 <div class="map-tooltip" id="mapTooltip"></div>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
@@ -441,9 +441,8 @@
   </div>
 
   <div class="panel" style="margin-bottom:24px; border-left:4px solid var(--teal); background:var(--branco); box-shadow:0 1px 0 var(--zebra) inset;">
-    <div class="panel" id="blocoPosDefeso" style="margin:0 0 22px;">
+    <div class="panel" id="blocoPosDefeso" style="margin:0 0 22px;" hidden>
   <p class="selo" style="margin:0 0 6px;">O que o período eleitoral escondeu · publicado a partir de 26/10/2026</p>
-  <p class="hint" style="margin:0 0 8px;">Publicado a partir de 26/10, com contagens e datas. Até lá, o espaço fica visível de propósito — <a href="calendario-eleitoral.html">ver o Calendário</a>.</p>
   <p style="margin:0 0 4px;" id="pdFontes" hidden>—</p>
   <p style="margin:0 0 4px;" id="pdInstrumentos" hidden>—</p>
   <p style="margin:0;" id="pdVariacao" hidden>—</p>
@@ -453,9 +452,9 @@
 
 
 <h2 id="comoler">Como ler o MARÉ</h2>
-<p class="note" style="margin:4px 0 8px;"><strong>Por que a nota baixa importa:</strong> a lei define o lugar da preparação — diários oficiais e sítios de governo (Leis 12.608/2012 e 12.527/2011). O que não foi publicado ali não cumpriu o rito; o Monitor mede o que está público.</p>
-<p class="note" id="notaDefeso" style="margin:4px 0 12px;"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial, e alguns sítios públicos ficam com conteúdo fora do ar. Desde 05/09/2026, nenhuma regra que altere notas muda até 25/10 — a última mudança estrutural, a v3.0, foi em 04/09 (<a href="METODOLOGIA.pdf">ver errata</a>); as buscas sem resultado são provisórias até repetição após 25/10</span> (<a href="METODOLOGIA.pdf">metodologia, §24</a>).</p>
-    <p class="hint" style="margin-bottom:0;"><strong>O que mede:</strong> a antecipação é o índice — três componentes com pesos iguais (instrumento estadual, cobertura populacional, antecipação) — e a resposta é um contador de decretos, e as duas nunca se combinam num número. <strong>O que não mede:</strong> capacidade instalada, suficiência de recursos e execução no terreno. <strong>O teto da afirmação:</strong> "sem plano localizado" é o que não está público e verificável nas fontes que o Monitor alcança, nunca "sem plano" — o nível de verificação de cada município diz até onde chegamos (<a href="METODOLOGIA.pdf" target="_blank" rel="noopener">metodologia</a>).</p>  </div>
+  <p class="hint" style="margin:0 0 10px;"><strong>O que mede:</strong> a antecipação é o índice — três componentes com pesos iguais (instrumento estadual, cobertura populacional, antecipação) — e a resposta é um contador de decretos; as duas nunca se combinam num número.<br><strong>O que não mede:</strong> capacidade instalada, suficiência de recursos e execução no terreno.<br><strong>O teto da afirmação:</strong> "sem plano localizado" é o que não está público e verificável nos diários oficiais e sítios de governo — o lugar que a lei define para a preparação (Leis 12.608/2012 e 12.527/2011) —, nunca "sem plano"; o nível de verificação de cada município diz até onde chegamos.</p>
+  <p class="note" id="notaDefeso" style="margin:0;"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial; buscas sem resultado são provisórias até repetição após 25/10, e nenhuma regra que altere notas muda até lá (última mudança: v3.0, em 04/09)</span> — <a href="calendario-eleitoral.html">o que a lei deixa aberto</a> · <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">metodologia</a>.</p>
+</div>
 
   <div class="layout">
     <div class="panel">

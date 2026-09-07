@@ -13,6 +13,13 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Inicial: "Como ler o MARÉ" num bloco só; bloco pós-eleitoral oculto até ter dado (07/09/2026)
+- Saem as três notas empilhadas (nota baixa · período eleitoral · o que mede). Fica um bloco: as três
+  frases (o que mede · o que não mede · o teto da afirmação, que absorve "por que a nota baixa
+  importa") e uma linha do período eleitoral com os links "o que a lei deixa aberto" e "metodologia".
+- "O que o período eleitoral escondeu" deixa de ocupar a inicial vazio: aparece em 26/10, com dado.
+  Inicial em 671 palavras.
+
 ### Padrão de figuras, situação atual e vocabulário (07/09/2026; documento de UX da editoria)
 - **Toda figura de dado** nas cinco páginas de dados passa a ter: título; **subtítulo padronizado**
   (período · variável · unidade, uma linha, Archivo Narrow); legenda no padrão da casa; **crédito no
