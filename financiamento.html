@@ -66,6 +66,7 @@
   <div class="charts-grid" style="grid-template-columns:1fr;">
     <div class="chart-box" id="boxRotaMPs">
       <h3 class="map-card-h">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
+        <p class="map-card-sub">MPs de 15/06 e 12/08/2026 · dotação por órgão e uso; parcela paga · R$ (milhões)</p>
       <div class="prazos-barras" id="mpsPrazos" style="margin:8px 0 14px;"></div>
       <div id="rotaMPs" style="width:100%; min-height:300px;"></div>
       <div class="map-legend" id="legRotaMPs"></div>
@@ -74,11 +75,13 @@
     <div class="maps-grid" style="margin-top:12px;">
       <div class="map-box" id="boxMpsUf">
         <h3 class="map-card-h">Onde o pagamento foi feito · valor pago por UF da unidade gestora</h3>
+        <p class="map-card-sub">Execução mensal 06–09/2026 · valor pago das ações reforçadas pelas MPs, por UF da unidade gestora · R$</p>
         <svg id="mapaMpsUf" role="img" aria-label="Mapa do Brasil: valor pago das ações reforçadas pelas MPs, por UF da unidade gestora; sedes nacionais aparecem como BR" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legMpsUf"></div>
       </div>
       <div class="chart-box" id="boxMpsUfBarras">
         <h3 class="map-card-h">Pago por UF · sedes nacionais (BR) à parte</h3>
+        <p class="map-card-sub">Execução mensal 06–09/2026 · valor pago por UF; sedes nacionais como BR · R$</p>
         <div id="mpsUfBarras" class="prazos-barras" style="margin:6px 0 4px;"></div>
         <div class="map-legend" id="legMpsUfBarras"></div>
       </div>
@@ -90,6 +93,7 @@
     <p class="hint">Este bloco descreve rotas existentes, com base legal citada; não recomenda desenho de política. Nenhuma rota pontua no índice (peso zero).</p>
     <div class="chart-box wide" id="boxRede">
       <h3 class="map-card-h">A rede do dinheiro: de quem vem, por qual rota, com que chave</h3>
+        <p class="map-card-sub">Estrutura (não é série) · rotas do dinheiro público até o município · chave que abre cada rota</p>
       <svg id="redeRotas" role="img" aria-label="Diagrama de rede: origem do recurso, oito rotas e o município, com o tipo de chave de acesso de cada rota" viewBox="0 0 960 420" style="width:100%; height:auto;"></svg>
       <div class="map-legend" id="legRede"></div>
       <details style="margin-top:10px;" data-alternativa="dados"><summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Ver as rotas em texto</summary>
@@ -110,6 +114,7 @@
       </div>
       <div class="chart-box" id="boxSemDecretar">
         <h3 class="map-card-h">O que um município pode acessar sem decretar</h3>
+        <p class="map-card-sub">Estrutura (não é série) · o que um município acessa sem decretar · base legal por item</p>
         <ul style="font-size:13.5px; line-height:1.8; margin:0; padding-left:20px;">
           <li><strong>Transferência preventiva de defesa civil</strong> (rota 3, prevenção-obra) — Lei 12.340/2010 e Decreto 11.219/2022: área de risco mapeada e plano de trabalho de obra; sem ressarcimento de gasto já feito.</li>
           <li><strong>Garantia-Safra</strong> (rota 7) — Lei 10.420/2002: adesão municipal anual antes do plantio, cota municipal de 6%; pagamento por perda verificada, sem decreto.</li>
@@ -127,6 +132,7 @@
     <p class="hint">Transferências da União a municípios em 2026, empilhadas por rota, com a faixa do período eleitoral (04/07–25/10) sombreada — <em>suspensas por lei, não é inação</em>. A faixa permanece depois de 25/10, como memória do site.</p>
     <div class="chart-box wide" id="boxSerie">
       <h3 class="map-card-h">Série semanal 2026 por rota</h3>
+        <p class="map-card-sub">Semanas de 2026 · transferências da União a municípios por rota · R$ (milhões), faixa do período eleitoral</p>
       <svg id="svgSerie" role="img" aria-label="Série semanal de transferências da União a municípios em 2026, por rota, com a faixa do período eleitoral" viewBox="0 0 900 260" style="width:100%; height:auto;"></svg>
       <div class="map-legend" id="legSerie"></div>
     </div>
@@ -138,11 +144,13 @@
     <div class="maps-grid">
       <div class="map-box" id="boxFundoEstadual">
         <h3 class="map-card-h">Fundo a fundo estadual preventivo</h3>
+        <p class="map-card-sub">Corte da edição · fundo a fundo estadual preventivo localizado · R$ e nº de municípios</p>
         <svg id="mapaFundo" role="img" aria-label="Mapa do Brasil pelo status do fundo a fundo estadual preventivo de defesa civil" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legFundo"></div>
       </div>
       <div class="map-box" id="boxPorHab">
         <h3 class="map-card-h">Transferências da União por habitante, por rota</h3>
+        <p class="map-card-sub">Ano de 2026 · transferências da União por habitante, por rota · R$/hab.</p>
         <label class="sr-only" for="selRota">Rota</label>
         <select id="selRota" aria-label="Escolher a rota exibida no mapa" style="margin:0 0 8px; font-family:inherit; font-size:13.5px;"></select>
         <svg id="mapaHab" role="img" aria-label="Mapa do Brasil com transferências da União por habitante na rota escolhida" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
@@ -165,11 +173,13 @@
     <div class="maps-grid">
       <div class="map-box" id="boxDinheiro">
         <h3 class="map-card-h">Repasses preventivos confirmados e habilitação federal</h3>
+        <p class="map-card-sub">Corte da edição · repasses preventivos confirmados e habilitação federal por UF · R$</p>
         <svg id="mapDinheiro" role="img" aria-label="Mapa das transferências: repasses estaduais preventivos confirmados e municípios com reconhecimento federal" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legDinheiro"></div>
       </div>
       <div class="chart-box" id="boxResposta">
         <h3 class="map-card-h">Resposta: reconhecimentos e transferências obrigatórias</h3>
+        <p class="map-card-sub">Desde 29/06/2026 · reconhecimentos federais e transferências obrigatórias de resposta · contagem e R$</p>
         <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblResposta"><thead><tr><th>UF</th><th>Reconhecimentos</th><th>Municípios</th><th>Transferido (rota 3)</th></tr></thead><tbody></tbody></table></div>
       </div>
     </div>
@@ -181,6 +191,7 @@
     <p class="hint">Doze municípios por estado (324), sorteados com semente publicada e reverificados a cada rodada: só o agregado fica aqui; lista e fichas em <a href="pesquisadores.html#painel-amostral">Pesquisadores</a>.</p>
     <div class="chart-box wide" id="boxPainel">
       <h3 class="map-card-h">Lista e agregados do painel</h3>
+        <p class="map-card-sub">Painel amostral (313 municípios) · agregados por região × porte × risco · contagem</p>
       <div id="painelResumo"></div>
     </div>
   </div>
@@ -200,10 +211,12 @@
     <div class="charts-grid">
       <div class="chart-box" id="boxCompromissos">
         <h3 class="map-card-h">Compromissos verificados</h3>
+        <p class="map-card-sub">Ciclo 2026/2027 · compromissos federais verificados, com dinheiro e prazo · R$ e datas</p>
         <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCompromissos"><thead><tr><th>Compromisso</th><th>Esfera</th><th>Instrumento</th><th>Valor</th><th>Rota</th><th>Execução</th></tr></thead><tbody></tbody></table></div>
       </div>
       <div class="chart-box" id="boxFinance">
         <h3 class="map-card-h">Plano federal El Niño 2026/2027 por área (R$)</h3>
+        <p class="map-card-sub">Plano federal El Niño 2026/2027 · dotação por área · R$ (milhões)</p>
         <div class="canvas-wrap"><canvas id="chartFinance" aria-label="Gráfico de barras: financiamento federal anunciado por área"></canvas></div>
       </div>
     </div>

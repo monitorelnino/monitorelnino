@@ -3,6 +3,7 @@ let RESP, RESP_SERIE, RESP_Q;
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, MUN_REF, POP_CENSO, VRESUMO,
     MUN_COD = {}, MUN_LATLON = {}, POP_UF = {};
 async function __load(){
+  try { window.__metaCorte = (await fetch('data/meta.json').then(r => r.ok ? r.json() : null) || {}).corte; } catch(e) {}
   let __ref;
   [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, __ref, POP_CENSO, VRESUMO] = await Promise.all(
     ['geo_uf','percentual_uf','pontos_mapa','indice','estados','transferencias','consist','atos_resposta','municipios_ibge_referencia','populacao_censo2022','verificacao_resumo']
@@ -165,7 +166,7 @@ setTimeout(function(){
   MonitorMapas.legenda('legNiveis', Object.values(NIV_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
   // crédito DEPOIS do mapa (pedido editorial de 03/09/2026), fora do parágrafo-nota inicial
   const fonteFig = document.getElementById('fonteNiveis');
-  if (fonteFig) fonteFig.textContent = 'Fonte: verificação própria do Monitor (registro de verificação municipal, nos dados abertos) · malha e coordenadas IBGE.';
+  if (fonteFig) fonteFig.textContent = 'Fonte: verificação própria do Monitor (dados abertos) · malha IBGE · ' + ((window.__metaCorte) || 'corte da edição');
 }, 0);
 
 // ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada (31/08/2026) ----

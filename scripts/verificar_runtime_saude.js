@@ -81,7 +81,7 @@ setTimeout(() => {
     return d.querySelectorAll("#mapaMonitor path").length === 27 && /não verificado/.test(q("legMonitor").textContent)
       && d.querySelectorAll("#monitorBarras .msb").length === Math.max(1, ver) && d.querySelectorAll("#tblMonitor tbody tr").length === 27;
   })());
-  teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p").length === 0));
+  teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p:not(.map-card-sub):not(.map-card-h)").length === 0));
   // linguagem: "não localizamos" só como lacuna de coleta ("Não localizamos coleta"), nunca sobre instrumento não verificado
   const texto = d.body.textContent;
   const naoLocIndevido = /não localizamos (?!coleta)/i.test(texto);

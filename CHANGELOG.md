@@ -13,6 +13,21 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Padrão de figuras, situação atual e vocabulário (07/09/2026; documento de UX da editoria)
+- **Toda figura de dado** nas cinco páginas de dados passa a ter: título; **subtítulo padronizado**
+  (período · variável · unidade, uma linha, Archivo Narrow); legenda no padrão da casa; **crédito no
+  formato único** "Fonte(s): … · dd/mm/aaaa" (ou "sem coleta"). 50 subtítulos escritos; 9 créditos
+  ganharam data. Portão de figuras ampliado (título obrigatório, um subtítulo ≤ 140 caracteres,
+  crédito começando por "Fonte" e datado).
+- **Dimensões equivalentes por classe:** gráficos em 260 px (padrão) ou 340 px (`.h-alta`, para
+  dispersões), nada inline; mapas sempre 480×460.
+- **Nível 1 no Risco climático — "Situação atual":** estado do ENOS, intensidade (escala do CPC
+  sobre o ONI observado; projeção do Boletim nº 3), tendência (variação do ONI em dois trimestres),
+  indicador principal, probabilidade, última atualização por fonte, e o diagnóstico em três frases
+  com **observação, interpretação e projeção separadas** — tudo calculado dos dados.
+- **Vocabulário:** ENOS (El Niño–Oscilação Sul) e TSM em todo o site; decimais com vírgula.
+- Os subtítulos não contam como prosa no portão de palavras (são metadados de figura).
+
 ### Primeira série real de desfechos e primeira fila R7 (07/09/2026, rodada de 17h50)
 - **Desfechos:** 313 de 313 municípios do painel com série InfoDengue 2019–2026; última SE
   disponível 34/2026; últimas 4 vazadas → última consolidada SE 30. Painel na SE 30: 1.560 casos
