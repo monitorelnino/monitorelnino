@@ -60,21 +60,17 @@ const NIVEL_ROTULO = { nao_verificado: 'ainda não verificado individualmente',
 function renderContadorResposta(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const N = RESP && RESP.nacional; const box = document.getElementById('contadorResposta'); if (!box) return;
-  if (!N) { document.getElementById('respLinha').textContent = 'sem coleta até o corte'; document.getElementById('respFonte').textContent = 'Fonte: Monitor El Niño Brasil · sem coleta'; return; }
-  document.getElementById('respNum').textContent = N.n_municipios.toLocaleString('pt-BR');
-  document.getElementById('respDen').textContent = 'municípios (' + (100 * N.fracao_municipios).toFixed(1).replace('.', ',') + '%)';
-  document.getElementById('respLinha').innerHTML = (100 * N.fracao_populacao).toFixed(1).replace('.', ',') + '% da população sob decreto desde ' + esc(RESP.inicio_ciclo) + (N.primeiro_decreto ? ' · primeiro decreto em ' + esc(N.primeiro_decreto) : '') + '<br>' + N.reconhecidos + ' reconhecidos pela União · ' + N.decretados_sem_reconhecimento + ' decretados sem reconhecimento';
-  const S = (RESP_SERIE && RESP_SERIE.semanas) || []; const svg = document.getElementById('respSerie');
-  if (S.length && svg) {
-    const W = 320, H = 44, max = Math.max(1, ...S.map(x => x.municipios)), bw = W / S.length;
-    let g = '';
-    S.forEach((x, i) => { if (x.defeso) g += `<rect x="${(i*bw).toFixed(1)}" y="0" width="${bw.toFixed(1)}" height="${H}" fill="var(--areia)" opacity=".45"/>`; });
-    S.forEach((x, i) => { const h = H * x.municipios / max; g += `<rect x="${(i*bw+1).toFixed(1)}" y="${(H-h).toFixed(1)}" width="${Math.max(1, bw-2).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--rust)"><title>semana de ${x.semana}: ${x.municipios} município(s)</title></rect>`; });
-    svg.innerHTML = g;
-    document.getElementById('respFim').textContent = S[S.length-1].semana.split('-').reverse().slice(0,2).join('/');
-  }
-  MonitorMapas.legenda('legResp', [{cor: MonitorMapas.cor('argila'), rotulo: 'primeiro decreto na semana'}, {cor: MonitorMapas.cor('areia'), rotulo: 'período eleitoral (04/07–25/10)'}]);
-  document.getElementById('respFonte').textContent = 'Fonte: DOU/SEDEC (S2iD), diários oficiais estaduais e municipais · ' + esc(RESP.gerado_em);
+  const el = id => document.getElementById(id);
+  if (!N) { el('respLinha').textContent = 'sem coleta até o corte'; el('respFonte').textContent = 'Fonte: Monitor El Niño Brasil · sem coleta'; return; }
+  const fm = 100 * N.fracao_municipios, fp = 100 * N.fracao_populacao;
+  el('respNum').textContent = N.n_municipios.toLocaleString('pt-BR');
+  el('respDen').textContent = '/ ' + N.total_municipios.toLocaleString('pt-BR');
+  el('respBadge').innerHTML = '<span class="gfaixa-pill">' + esc(fm.toFixed(1).replace('.', ',')) + '% dos municípios</span>';
+  el('respCorte').textContent = (typeof META !== 'undefined' && META && META.corte) || '—';
+  el('respFill').style.width = Math.max(fm, N.n_municipios ? 0.6 : 0).toFixed(2) + '%';
+  el('respPopTick').style.left = fp.toFixed(2) + '%';
+  el('respLinha').innerHTML = esc(fp.toFixed(1).replace('.', ',')) + '% da população (traço) · ' + (N.primeiro_decreto ? 'primeiro decreto em ' + esc(N.primeiro_decreto) + ' · ' : '') + esc(N.reconhecidos) + ' reconhecidos pela União · ' + esc(N.decretados_sem_reconhecimento) + ' decretados sem reconhecimento';
+  el('respFonte').textContent = 'Fonte: DOU/SEDEC (S2iD), diários oficiais estaduais e municipais · ' + esc(RESP.gerado_em);
 }
 async function __load(){
   let __ref;
