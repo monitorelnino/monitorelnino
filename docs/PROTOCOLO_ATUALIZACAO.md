@@ -106,7 +106,7 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
 ### 3.3 Portões locais (ordem canônica, todos bloqueantes) — v2.3: dezessete portões
 
 ```
- 1. node   scripts/verificar_estrutura.js        (8 páginas; tokens.css; nav canônica; :root inline proibido)
+ 1. node   scripts/verificar_estrutura.js        (12 páginas; tokens.css; nav canônica; :root inline proibido)
  2. python verificar_consistencia.py             (vocabulário com nao_verificado; log v2; nada-localizado exige
                                                   nível completo; dicionário; fósseis; segredos)
  3. python recalcular_mare.py --check            (índice, robustez e os dois derivados de verificação, bit a bit)

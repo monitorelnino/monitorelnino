@@ -253,7 +253,7 @@ function selectUF(uf, tileEl){
   `;
 }
 
-// ---- Infraestrutura compartilhada com a página de mapas e gráficos: tooltip
+// ---- Infraestrutura compartilhada com a página Defesa civil (ex-mapas e gráficos): tooltip
 // (usado pela linha do tempo do herói) e HAB_SET (usado no cartão de cidade,
 // indicador de habilitação a recurso federal) — pequenas o bastante para
 // recalcular aqui em vez de depender da página que tem os mapas completos.

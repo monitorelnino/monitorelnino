@@ -26,22 +26,26 @@ TESTE = Path("/tmp/index_pdf_test.html")
 def montar_html_instrumentado():
     """Embute dados e jsPDF, expõe o gerador e captura o texto de cada PDF em memória."""
     html = ler_pagina(RAIZ / "index.html")
-    anc_ini, anc_fim = "async function __load(){", "  __init();\n}"
-    i = html.find(anc_ini); j = html.find(anc_fim, i) + len(anc_fim)
+    # v3.1 §14.6: o HTML de teste vive em /tmp — embutir todos os scripts locais (vendor, mapas.js, acesso.js)
+    html = re.sub(r'<script src="(assets/[^"?]+\.js)(?:\?v=[0-9a-f]+)?"[^>]*>\s*</script>',
+                  lambda m: "<script>" + (RAIZ / m.group(1)).read_text(encoding="utf-8") + "</script>" if (RAIZ / m.group(1)).exists() else m.group(0), html)
+    anc_ini = "async function __load(){"
+    i = html.find(anc_ini); k = html.find("  __init();", i); j = html.find("\n}\n", k) + 3   # fim do __load (v3.1: há chamadas depois de __init)
+    assert i > 0 and k > i and j > k, "âncoras do __load não encontradas"
     m = re.search(r"\[(BR_GEOJSON[^\]]*)\] = await Promise\.all\(\n\s*\[([^\]]*)\]", html, re.S)
     variaveis = [v.strip() for v in m.group(1).split(",")]
     arquivos = re.findall(r"'([^']+)'", m.group(2))
     partes = [f"{v} = " + json.dumps(json.load(open(DATA / f"{f}.json", encoding="utf-8")), ensure_ascii=False) + ";"
               for v, f in zip(variaveis, arquivos)]
-    bloco = ("async function __load(){\n  " + " ".join(partes) + "\n  MUN_REF = {};\n"
+    bloco = ("async function __load(){\n  await new Promise(r => document.readyState !== 'loading' ? r() : document.addEventListener('DOMContentLoaded', r));\n  " + " ".join(partes) + "\n  MUN_REF = {};\n"
              "  __ref.forEach(m => (MUN_REF[m.uf] = MUN_REF[m.uf] || []).push(m.nome));\n"
              "  __ref.forEach(m => {\n    const c = String(m.codigo_ibge).padStart(7, '0');\n"
              "    MUN_COD[m.uf + '|' + m.nome] = c;\n    MUN_LATLON[m.uf + '|' + m.nome] = [m.lon, m.lat];\n"
              "    POP_UF[m.uf] = (POP_UF[m.uf] || 0) + (POP_CENSO[c] || 0);\n  });\n"
              "  Object.values(MUN_REF).forEach(a => a.sort((x,y) => x.localeCompare(y)));\n  __init();\n}")
     html = html[:i] + bloco + html[j:]
-    jspdf = (RAIZ / "node_modules/jspdf/dist/jspdf.umd.min.js").read_text(encoding="utf-8")
-    html = re.sub(r'<script src="https://cdnjs\.cloudflare\.com/ajax/libs/jspdf/[^"]*"[^>]*>\s*</script>',
+    jspdf = (RAIZ / "assets/vendor/jspdf.umd.min.js").read_text(encoding="utf-8")   # v3.1 §14.6: vendor local
+    html = re.sub(r'<script src="assets/vendor/jspdf\.umd\.min\.js(?:\?v=[0-9a-f]+)?"[^>]*>\s*</script>',
                   lambda _: f"<script>{jspdf}</script>", html, flags=re.S)
     html = html.replace("function __init(){\n", "function __init(){\nwindow.__gerar = (uf, m) => gerarRelatorioCidadao(uf, m);\n", 1)
     hook = """<script>
