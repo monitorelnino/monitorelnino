@@ -131,11 +131,30 @@ credito('boxCemaden', 'cemaden_alertas');
 const oni = SINAIS.enos.oni, prob = SINAIS.enos.probabilidades;
 const ultimoOni = oni && oni.serie && oni.serie.length ? oni.serie[oni.serie.length - 1] : null;
 const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trimestres[0] : null;
+// ===== Situação atual (nível 1 — revisão de UX de 07/09/2026): tudo dos dados; observação, interpretação e projeção separadas =====
+(function situacaoAtual(){
+  const el = id => document.getElementById(id); if (!el('stEstado')) return;
+  const serie = (oni && oni.serie) || []; const u = serie[serie.length - 1]; const pg = SINAIS.enos.prognostico;
+  const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
+  const estado = u ? (u.anomalia >= 0.5 ? 'El Niño' : u.anomalia <= -0.5 ? 'La Niña' : 'Neutro') : '—';
+  el('stEstado').innerHTML = esc(estado) + (u ? ' <small>confirmado pelo Painel em 29/06/2026</small>' : '');
+  el('stIntensidade').innerHTML = u ? esc(cls(u.anomalia)) + ' <small>pelo ONI observado; projeção: muito forte (Boletim nº 3)</small>' : '—';
+  if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; el('stTendencia').innerHTML = esc(d > 0.15 ? 'fortalecendo' : d < -0.15 ? 'enfraquecendo' : 'estável') + ' <small>' + (d >= 0 ? '+' : '') + esc(d.toFixed(2).replace('.', ',')) + ' °C em dois trimestres</small>'; }
+  el('stOni').innerHTML = u ? esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C <small>' + esc(u.trimestre + '/' + u.ano) + ' · média móvel trimestral</small>' : '—';
+  el('stProb').innerHTML = ultimaProb ? esc(ultimaProb.el_nino.toFixed(0)) + '% <small>' + esc(ultimaProb.trimestre) + ' (IRI/CPC)</small>' : (pg && pg.enso ? '> 90% <small>SON/2026 · CPC/NOAA, ago/2026</small>' : '—');
+  el('stAtualizado').innerHTML = esc(SINAIS.gerado_em || '') + ' <small>ONI: ' + esc(fonteDe('noaa_oni').consultado_em || '—') + ' · Painel: ' + esc(fonteDe('painel_el_nino').consultado_em || '—') + '</small>';
+  const partes = [];
+  if (u) partes.push('<strong>Observação:</strong> o ONI está em ' + esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C (' + esc(u.trimestre + '/' + u.ano) + '), ' + esc(cls(u.anomalia)) + ' pela escala do CPC.');
+  if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; partes.push('<strong>Interpretação:</strong> a anomalia ' + (d > 0.15 ? 'vem subindo' : d < -0.15 ? 'vem caindo' : 'está estável') + ' nos últimos trimestres — o fenômeno ' + (d > 0.15 ? 'se fortalece' : d < -0.15 ? 'perde força' : 'persiste sem mudança de intensidade') + '.'); }
+  if (pg) partes.push('<strong>Projeção (Boletim nº 3, SON/2026):</strong> chuva abaixo da normal no Norte, Nordeste e centro-norte; acima no Sul; temperatura acima da normal em quase todo o País. Permanência do El Niño até o início de 2027 com alta probabilidade.');
+  el('stDiagnostico').innerHTML = partes.join(' ') || 'sem coleta até o corte';
+})();
+
 const cartoes = [
   {t:'Boletim mais recente do ciclo', v: coletada('painel_el_nino') ? fonteDe('painel_el_nino').documento : null, f:'painel_el_nino'},
-  {t:'ONI observado', v: ultimoOni ? (ultimoOni.anomalia > 0 ? '+' : '') + ultimoOni.anomalia.toFixed(1) + ' °C · ' + ultimoOni.trimestre + '/' + ultimoOni.ano : null, f:'noaa_oni'},
+  {t:'ONI observado', v: ultimoOni ? (ultimoOni.anomalia > 0 ? '+' : '') + ultimoOni.anomalia.toFixed(1).replace('.', ',') + ' °C · ' + ultimoOni.trimestre + '/' + ultimoOni.ano : null, f:'noaa_oni'},
   {t:'Probabilidade de El Niño', v: ultimaProb ? ultimaProb.el_nino.toFixed(0) + '% em ' + ultimaProb.trimestre : (SINAIS.enos.prognostico && SINAIS.enos.prognostico.enso ? '> 90% em SON/2026 (CPC, via CPTEC)' : null), f:'iri_plume'},
-  {t:'Prognóstico trimestral', v: (SINAIS.enos.prognostico ? SINAIS.enos.prognostico.trimestre + ' · chuva abaixo da normal no Norte, Nordeste e centro-norte; acima no Sul; calor acima da normal em quase todo o País' : null), f:'cptec_prognostico'},
+  {t:'Prognóstico trimestral', v: (SINAIS.enos.prognostico ? SINAIS.enos.prognostico.trimestre + ' · Boletim nº 3 (leitura humana)' : null), f:'cptec_prognostico'},
 ];
 document.getElementById('cartoesCiclo').innerHTML = cartoes.map((c, i) =>
   '<div class="chart-box" id="cartaoCiclo' + i + '"><h3>' + esc(c.t) + '</h3>' +
@@ -163,7 +182,7 @@ if(oni && oni.serie && oni.serie.length){
 } else { lacuna('wrapOni', 'A série do ONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
 credito('boxOni', 'noaa_oni');
 
-// ---- Gráfico 2: probabilidades ENSO ----
+// ---- Gráfico 2: probabilidades ENOS ----
 if(prob && prob.trimestres && prob.trimestres.length){
   const t = prob.trimestres.slice(0, 9);
   new Chart(canvasEm('wrapPlume', 'cPlume'), {type:'bar', data:{
