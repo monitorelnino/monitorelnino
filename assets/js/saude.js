@@ -1,5 +1,5 @@
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE;
+let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -9,7 +9,9 @@ async function __load(){
   [BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE] = await Promise.all(
     ['geo_uf','saude_uf','saude_federal','saude_sinais','sinais_risco','indice','monitor_saude'].map(f => fetch('data/' + f + '.json').then(r => {
       if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
+  try { [DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA] = await Promise.all(['data/saude_desfechos/serie_painel.json','data/saude_desfechos/canal_endemico.json','data/saude_desfechos/completude.json','data/municipios_ibge_referencia.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { DESF = DESF_CANAL = DESF_COMP = PAINEL_LISTA = null; }
   __init();
+  renderDesfechos();
 }
 
 const fonteFigura = MonitorMapas.credito;
@@ -125,3 +127,47 @@ function __init(){
 __load().catch(err => { const m = document.getElementById('subSaude'); if (m) m.insertAdjacentHTML('afterend', '<p class="note" style="color:var(--rust)">Erro ao carregar os dados: '+esc(err.message)+'</p>'); });
 
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
+
+
+// ===== 3 · O que aconteceu — desfechos em saúde (§8, 07/09/2026). Peso zero. O Monitor não atribui casos ao El Niño. =====
+function renderDesfechos(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const M = DESF && DESF.municipios; const semColeta = 'Fonte: InfoDengue (Fiocruz/FGV) · sem coleta até o corte · o Monitor não atribui casos ao El Niño';
+  if (!M || !Object.keys(M).length) { ['boxDesfSemanal','boxDesfAcum','boxDesfMapa'].forEach(id => fonteFigura(id, semColeta)); return; }
+  const credito = 'Fonte: modelo InfoDengue (Fiocruz/FGV), Sinan · painel amostral · ' + esc(DESF.gerado_em) + ' · o Monitor não atribui casos ao El Niño';
+  // soma do painel por SE de 2026 (consolidadas) + canal (soma das medianas/p75/p90) + nowcasting (soma das faixas)
+  const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
+  const soma = {casos: {}, med: {}, p75: {}, p90: {}, nmin: {}, nmax: {}};
+  Object.entries(M).forEach(([cod, m]) => { const c = (DESF_CANAL && DESF_CANAL.municipios && DESF_CANAL.municipios[cod]) || {};
+    semanas.forEach(ss => { const k = '2026-' + ss; const v = (m.semanas_2026 || {})[k];
+      if (v && v.casos != null) soma.casos[ss] = (soma.casos[ss] || 0) + v.casos;
+      if (c[ss]) { soma.med[ss] = (soma.med[ss] || 0) + c[ss].mediana; soma.p75[ss] = (soma.p75[ss] || 0) + c[ss].p75; soma.p90[ss] = (soma.p90[ss] || 0) + c[ss].p90; }
+      const n = (m.nowcasting || {})[k]; if (n && n.est_min != null) { soma.nmin[ss] = (soma.nmin[ss] || 0) + n.est_min; soma.nmax[ss] = (soma.nmax[ss] || 0) + n.est_max; } }); });
+  const ate = Math.max(...Object.keys(soma.casos).concat(Object.keys(soma.nmax)).map(Number)); const labels = semanas.slice(0, ate);
+  MonitorMapas.padraoGraficos(window.Chart);
+  new Chart(document.getElementById('cDesfSemanal'), {type: 'bar', data: {labels: labels.map(w => 'SE ' + w), datasets: [
+      {type: 'bar', label: '2026 (consolidado)', data: labels.map(w => soma.casos[w] ?? null), backgroundColor: MonitorMapas.cor('argila'), order: 3},
+      {type: 'line', label: 'nowcasting (máx.)', data: labels.map(w => soma.nmax[w] ?? null), borderColor: MonitorMapas.cor('argila'), borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
+      {type: 'line', label: 'nowcasting (mín.)', data: labels.map(w => soma.nmin[w] ?? null), borderColor: MonitorMapas.cor('argila'), borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
+      {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => soma.med[w] ?? null), borderColor: MonitorMapas.cor('musgo'), borderWidth: 2, pointRadius: 0, order: 1},
+      {type: 'line', label: 'p75', data: labels.map(w => soma.p75[w] ?? null), borderColor: MonitorMapas.cor('ambar'), borderWidth: 1.5, pointRadius: 0, order: 1},
+      {type: 'line', label: 'p90', data: labels.map(w => soma.p90[w] ?? null), borderColor: MonitorMapas.cor('sintetico'), borderWidth: 1.5, pointRadius: 0, order: 1}]},
+    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
+  MonitorMapas.legenda('legDesfSemanal', [{cor: MonitorMapas.cor('argila'), rotulo: '2026 consolidado (últimas 4 SE vazadas)'}, {cor: MonitorMapas.cor('argila'), opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'p75'}, {cor: MonitorMapas.cor('sintetico'), rotulo: 'p90'}]);
+  fonteFigura('boxDesfSemanal', credito);
+  // escada do acumulado
+  const acum = a => Object.values(M).reduce((s, m) => s + ((m.acumulado || {})[a] || 0), 0);
+  new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.cor('mineral'), MonitorMapas.cor('ambar'), MonitorMapas.cor('argila')]}]},
+    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
+  MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.cor('mineral'), rotulo: '2024 (ano epidêmico, fora do canal)'}, {cor: MonitorMapas.cor('ambar'), rotulo: '2025'}, {cor: MonitorMapas.cor('argila'), rotulo: '2026 parcial'}]);
+  fonteFigura('boxDesfAcum', credito);
+  // mapa: pontos do painel coloridos pelo nível da última SE consolidada
+  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
+  const NIV = {1: MonitorMapas.cor('bioluz'), 2: MonitorMapas.cor('ambar'), 3: MonitorMapas.cor('argila'), 4: MonitorMapas.cor('vazio')};
+  const ref = Array.isArray(PAINEL_LISTA) ? PAINEL_LISTA : Object.values(PAINEL_LISTA || {}); const coord = {}; ref.forEach(r => { coord[String(r.codigo_ibge).padStart(7, '0')] = r; });
+  const pontos = Object.entries(M).filter(([cod]) => coord[cod] && coord[cod].lat != null).map(([cod, d]) => ({lat: coord[cod].lat, lon: coord[cod].lon, nivel: d.nivel_ultima_se, nome: d.nome, uf: d.uf, ultima: d.ultima_se}));
+  MonitorMapas.ufs(ctx, 'mapaDesf', () => MonitorMapas.NEUTRA, uf => uf);
+  if (pontos.length) MonitorMapas.pontos(ctx, 'mapaDesf', pontos, {r: () => 4, cor: d => NIV[d.nivel] || MonitorMapas.NEUTRA, rotulo: d => esc(d.nome) + '/' + esc(d.uf) + ' · nível ' + esc(d.nivel ?? '—') + ' · ' + esc(d.ultima || '')});
+  MonitorMapas.legenda('legDesfMapa', [{cor: NIV[1], rotulo: 'nível 1 · verde'}, {cor: NIV[2], rotulo: 'nível 2 · amarelo'}, {cor: NIV[3], rotulo: 'nível 3 · laranja'}, {cor: NIV[4], rotulo: 'nível 4 · vermelho'}, {cor: MonitorMapas.NEUTRA, rotulo: (pontos.length ? pontos.length + ' municípios do painel' : 'painel sem coordenadas')}]);
+  fonteFigura('boxDesfMapa', credito);
+}

@@ -100,8 +100,30 @@
     </details>
   </div>
 
-  <div class="panel" id="observado">
-    <h2 style="margin-top:0;">3 · O que se observa</h2>
+    <div class="panel" id="desfechos" style="border-top:3px solid var(--sintetico);">
+    <h2 style="margin-top:0;">3 · O que aconteceu — desfechos em saúde</h2>
+    <p class="hint">Terceira coluna, ao lado do índice e do contador: a curva observada de dengue nos 313 municípios do painel amostral, semana a semana, sobre o canal endêmico das mesmas semanas de 2019–2025 (2024 à parte). Peso zero, sem nota. <strong>O Monitor não atribui casos ao El Niño.</strong></p>
+    <div class="maps-grid">
+      <div class="chart-box wide" id="boxDesfSemanal">
+        <h3 class="map-card-h">Casos notificados por semana · painel amostral · 2026 sobre o canal endêmico</h3>
+        <div class="canvas-wrap" style="height:280px;"><canvas id="cDesfSemanal" aria-label="Casos de dengue por semana epidemiológica de 2026 nos municípios do painel, com o canal endêmico (mediana, p75 e p90 de 2019–2025) e a faixa de nowcasting nas semanas incompletas"></canvas></div>
+        <div class="map-legend" id="legDesfSemanal"></div>
+      </div>
+      <div class="chart-box" id="boxDesfAcum">
+        <h3 class="map-card-h">Acumulado no ano · 2026 × 2025 × 2024 · painel amostral</h3>
+        <div class="canvas-wrap" style="height:240px;"><canvas id="cDesfAcum" aria-label="Escada do acumulado anual de casos no painel amostral, 2026, 2025 e 2024"></canvas></div>
+        <div class="map-legend" id="legDesfAcum"></div>
+      </div>
+      <div class="map-box" id="boxDesfMapa">
+        <h3 class="map-card-h">Nível de alerta por município · última semana consolidada</h3>
+        <svg id="mapaDesf" role="img" aria-label="Mapa do Brasil com os municípios do painel amostral coloridos pelo nível de alerta do InfoDengue na última semana consolidada" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+        <div class="map-legend" id="legDesfMapa"></div>
+      </div>
+    </div>
+  </div>
+
+<div class="panel" id="observado">
+    <h2 style="margin-top:0;">4 · O que se observa</h2>
     <p class="hint">Dado epidemiológico é observação, nunca juízo de preparo. Fonte não coletada aparece como lacuna declarada. <strong>Cadência:</strong> não é tempo real — o robô consulta as fontes oficiais todo dia na semana intensiva (06 a 13/09/2026) e toda segunda-feira depois; cada figura mostra a data da consulta. <span id="carimboSaude"></span></p>
     <div class="maps-grid">
       <div class="map-box" id="boxDengue">
@@ -123,7 +145,7 @@
   </div>
 
   <div class="panel" id="cruzamento">
-    <h2 style="margin-top:0;">4 · Defesa civil × saúde, por estado</h2>
+    <h2 style="margin-top:0;">5 · Defesa civil × saúde, por estado</h2>
     <p class="hint">Quadrantes: instrumento de defesa civil <em>e</em> de saúde localizados · só defesa civil · só saúde · nenhum localizado — ou ainda não verificado na camada de saúde. A página de mapas e gráficos apenas aponta para cá.</p>
     <div class="charts-grid">
       <div class="chart-box wide" id="boxQuadrantes">
