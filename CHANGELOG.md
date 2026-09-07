@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Rotina: fóssil `mapas-e-graficos.html` no `git add` do robô (07/09/2026)
+- A rodada de 17h coletou os 313 municípios do InfoDengue e não comitou: o passo de commit ainda
+  listava `mapas-e-graficos.html` (hoje `defesa-civil.html`) e o `git add` abortava. Corrigido.
+
 ### Leitura contínua de saúde nos planos (§10.1, 07/09/2026)
 - `preservar_evidencias.py --ler`: texto por página dos PDFs de planos (pypdf, pdfplumber de reserva),
   `evidencias/<sha256>.txt` + hash, cópia do binário só até 5 MB; 401/403 → "acesso recusado" (LAI).
