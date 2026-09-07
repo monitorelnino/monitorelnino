@@ -13,6 +13,13 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Inicial: índice primeiro, contador depois (07/09/2026, pedido da editoria)
+- As duas metades deixam de ficar lado a lado: primeiro o índice (medidor, régua do ciclo e a
+  descrição do MARÉ), depois o contador, cada um sob um selo ("1 · Antecipação · o índice",
+  "2 · Resposta · o contador"). O nome completo — MARÉ · Medida de Antecipação e Resposta ao El
+  Niño — aparece no título dos dois, com a metade em destaque. O bloco pós-eleitoral linka o
+  Calendário (já existe). Inicial em 797 palavras (teto 800).
+
 ### Navegação simples e contador com a anatomia do medidor (07/09/2026, pedido da editoria)
 - Os rótulos de grupo saíram da barra de navegação (confundiam mais do que orientavam); ficou
   uma linha simples na ordem do §6, com separadores finos entre os grupos e o botão "Enviar dados"
