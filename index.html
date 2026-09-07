@@ -16,7 +16,7 @@
 
 <script src="assets/acesso.js?v=d8738b3e"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=16d45d1e">
+<link rel="stylesheet" href="assets/base.css?v=5ce5d19a">
 <script src="assets/mapas.js?v=8e6310d1"></script>
 <style>
   *{box-sizing:border-box;}
@@ -108,8 +108,9 @@
   /* ===== Identidade: masthead, navegação e rodapé unificados ===== */
   .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
   /* v3.1 §4.3: medidor (antecipação) e contador (resposta) lado a lado, mesma altura */
-  .mare-duas-metades{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px; align-items:stretch;}
-  .contador-zone{display:flex; flex-direction:column; gap:6px; border-left:1px solid var(--line); padding-left:22px;}
+  .mare-metade{display:block;}
+  #metadeResposta{border-top:1px solid var(--line); margin-top:18px;}
+  .contador-zone{display:flex; flex-direction:column; gap:6px;}
   .contador-zone .gnum{color:var(--rust);}
   .contador-zone .resp-fill{background:var(--rust); background-size:auto; box-shadow:none;}
   .contador-zone .resp-fill::after, .contador-zone .resp-fill::before{display:none;}
@@ -118,7 +119,6 @@
   .contador-zone .fonte-figura{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); line-height:1.4; margin-top:6px;}
   .contador-zone .gauge-ends span{max-width:100%;}
   .contador-zone svg{width:100%; height:44px; display:block; margin-top:6px;}
-  @media (max-width:640px){ .contador-zone{border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:14px;} }
   .tile .tile-face{display:block; text-align:left; margin-top:6px; border-top:1px solid var(--line); padding-top:4px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:400; font-size:12px; line-height:1.35; color:var(--muted);}
   .tile .tile-face span{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .tile .tile-bar2{height:4px; background:var(--sem-dado); border-radius:2px; overflow:hidden; margin-top:3px; position:relative;}
@@ -374,14 +374,15 @@
 
   <div class="hero" id="hero">
     <h2>Como o Brasil está se preparando para o El Niño 2026/2027</h2>
-    <p class="hero-lede">O Monitor verifica, em fontes oficiais, o que estados e municípios publicaram antes do El Niño 2026/2027 e o que decretaram depois — as duas metades do MARÉ.</p>
+    <p class="hero-lede">O Monitor verifica, em fontes oficiais, o que estados e municípios publicaram antes do El Niño 2026/2027 e o que decretaram depois.</p>
     <p style="margin:0 0 14px;"><a class="btn-pdf" style="text-decoration:none; display:inline-block;" href="#minhacidade">Consultar seu município ↓</a></p>
-    <div class="mare-duas-metades">
+    <div class="mare-metade" id="metadeAntecipacao">
+    <p class="selo" style="margin:14px 0 6px;">1 · Antecipação · o índice</p>
     <div class="gauge-zone">
         <div class="gauge-head">
         <span class="gnum" id="gaugeNum">43,6</span><span class="gden">/ 100</span>
         <span class="gfaixa-badge" id="faixaMare"></span>
-        <span class="glabel">MARÉ · Medida de Antecipação e<br>Resposta ao El Niño<br>Média dos 27 estados · corte <span id="gaugeCorte">—</span></span>
+        <span class="glabel">MARÉ · Medida de Antecipação e<br>Resposta ao El Niño · <strong>antecipação</strong><br>média dos 27 estados · corte <span id="gaugeCorte">—</span></span>
       </div>
       <div class="gauge-track" role="img" aria-label="Barra de progresso: MARÉ nacional em 43,6 de 100">
         <div class="gauge-fill" id="gaugeFill" data-alvo="43.6" style="--galvo:43.6;"></div>
@@ -396,11 +397,26 @@
       </div>
       <div class="gauge-ends"><span>0 · estágio inicial</span><span>100</span></div>
     </div>
+    </div>
+
+    <div class="strip-wrap">
+      <p class="strip-title">Do primeiro ato estadual verificado à publicação: cada marca é um ato datado</p>
+      <div class="strip" id="heroStrip" role="img" aria-label="Linha do tempo dos atos verificados, de 1º de abril à publicação">
+        <div class="strip-line"></div>
+      </div>
+      <div class="strip-ends"><span>01/04/2026 · primeira resposta estadual</span><span><span id="stripCorte">—</span> · corte desta edição</span></div>
+    </div>
+
+    <p class="hero-scope">O MARÉ mede o <strong>arcabouço público da preparação</strong>: existência, natureza, alcance populacional e antecipação dos instrumentos ex-ante publicados por estados e municípios. Suficiência de recursos frente à necessidade não é pontuada; risco projetado × instrumento está em <a href="sinais-de-risco.html">Sinais</a>, e o dinheiro, em <a href="financiamento.html">Financiamento</a>; o cálculo completo e sua auditoria de robustez, no <a href="MARE_Indice_Documentacao.pdf" target="_blank" rel="noopener">documento do índice</a>.</p>
+    <p class="hero-links"><a href="#regions">Índice por estado ↓</a><a href="#minhacidade">Encontre sua cidade ↓</a></p>
+
+    <div class="mare-metade" id="metadeResposta">
+    <p class="selo" style="margin:22px 0 6px;">2 · Resposta · o contador</p>
     <div class="contador-zone" id="contadorResposta" role="group" aria-label="Resposta: municípios sob decreto de emergência no ciclo">
       <div class="gauge-head">
         <span class="gnum" id="respNum">—</span><span class="gden" id="respDen">/ 5.571</span>
         <span class="gfaixa-badge" id="respBadge"></span>
-        <span class="glabel">Resposta · o que foi<br>decretado depois<br>municípios sob decreto · corte <span id="respCorte">—</span></span>
+        <span class="glabel">MARÉ · Medida de Antecipação e<br>Resposta ao El Niño · <strong>resposta</strong><br>municípios sob decreto · corte <span id="respCorte">—</span></span>
       </div>
       <div class="gauge-track resp-track" role="img" aria-label="Barra: municípios sob decreto em relação aos 5.571; traço = fração da população">
         <div class="gauge-fill resp-fill" id="respFill" style="width:0%"></div>
@@ -419,24 +435,15 @@
       <div class="fonte-figura" id="respC18">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>).</div>
       <div class="fonte-figura" id="respFonte"></div>
     </div>
+    <p class="hero-scope">Municípios sob decreto de emergência desde 29/06/2026 — contagens e datas, sem nota. O índice mede preparo; o contador, resposta; nunca se somam.</p>
+    <p class="hero-links"><a href="defesa-civil.html#resposta">Resposta por estado →</a><a href="calendario-eleitoral.html">O que a lei deixa aberto →</a></p>
     </div>
-
-    <div class="strip-wrap">
-      <p class="strip-title">Do primeiro ato estadual verificado à publicação: cada marca é um ato datado</p>
-      <div class="strip" id="heroStrip" role="img" aria-label="Linha do tempo dos atos verificados, de 1º de abril à publicação">
-        <div class="strip-line"></div>
-      </div>
-      <div class="strip-ends"><span>01/04/2026 · primeira resposta estadual</span><span><span id="stripCorte">—</span> · corte desta edição</span></div>
-    </div>
-
-    <p class="hero-scope">O MARÉ mede o <strong>arcabouço público da preparação</strong>: existência, natureza, alcance populacional e antecipação dos instrumentos ex-ante publicados por estados e municípios. Suficiência de recursos frente à necessidade não é pontuada; risco projetado × instrumento está em <a href="sinais-de-risco.html">Sinais</a>, e o dinheiro, em <a href="financiamento.html">Financiamento</a>; o cálculo completo e sua auditoria de robustez, no <a href="MARE_Indice_Documentacao.pdf" target="_blank" rel="noopener">documento do índice</a>.</p>
-    <p class="hero-links"><a href="#regions">Índice por estado ↓</a><a href="#minhacidade">Encontre sua cidade ↓</a></p>
   </div>
 
   <div class="panel" style="margin-bottom:24px; border-left:4px solid var(--teal); background:var(--branco); box-shadow:0 1px 0 var(--zebra) inset;">
     <div class="panel" id="blocoPosDefeso" style="margin:0 0 22px;">
   <p class="selo" style="margin:0 0 6px;">O que o período eleitoral escondeu · publicado a partir de 26/10/2026</p>
-  <p class="hint" style="margin:0 0 8px;">Publicado a partir de 26/10, com contagens e datas. Até lá, o espaço fica visível de propósito — <a href="METODOLOGIA.pdf">ver metodologia, §24</a> (a página Calendário nasce na v3.1).</p>
+  <p class="hint" style="margin:0 0 8px;">Publicado a partir de 26/10, com contagens e datas. Até lá, o espaço fica visível de propósito — <a href="calendario-eleitoral.html">ver o Calendário</a>.</p>
   <p style="margin:0 0 4px;" id="pdFontes" hidden>—</p>
   <p style="margin:0 0 4px;" id="pdInstrumentos" hidden>—</p>
   <p style="margin:0;" id="pdVariacao" hidden>—</p>
@@ -446,7 +453,7 @@
 
 
 <h2 id="comoler">Como ler o MARÉ</h2>
-<p class="note" style="margin:4px 0 8px;"><strong>Por que a nota baixa importa:</strong> o Monitor busca nos canais que a lei define como o lugar da preparação — diários oficiais e sítios de governo (Lei 12.608/2012; Lei 12.527/2011). Preparação que não foi publicada ali não cumpriu o rito público e não pode ser conferida nem cobrada; nota baixa é evidência de preparação não tornada pública. Sobre a existência do plano, o teto continua o mesmo: "não localizamos até o corte".</p>
+<p class="note" style="margin:4px 0 8px;"><strong>Por que a nota baixa importa:</strong> a lei define o lugar da preparação — diários oficiais e sítios de governo (Leis 12.608/2012 e 12.527/2011). O que não foi publicado ali não cumpriu o rito; o Monitor mede o que está público.</p>
 <p class="note" id="notaDefeso" style="margin:4px 0 12px;"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial, e alguns sítios públicos ficam com conteúdo fora do ar. Desde 05/09/2026, nenhuma regra que altere notas muda até 25/10 — a última mudança estrutural, a v3.0, foi em 04/09 (<a href="METODOLOGIA.pdf">ver errata</a>); as buscas sem resultado são provisórias até repetição após 25/10</span> (<a href="METODOLOGIA.pdf">metodologia, §24</a>).</p>
     <p class="hint" style="margin-bottom:0;"><strong>O que mede:</strong> a antecipação é o índice — três componentes com pesos iguais (instrumento estadual, cobertura populacional, antecipação) — e a resposta é um contador de decretos, e as duas nunca se combinam num número. <strong>O que não mede:</strong> capacidade instalada, suficiência de recursos e execução no terreno. <strong>O teto da afirmação:</strong> "sem plano localizado" é o que não está público e verificável nas fontes que o Monitor alcança, nunca "sem plano" — o nível de verificação de cada município diz até onde chegamos (<a href="METODOLOGIA.pdf" target="_blank" rel="noopener">metodologia</a>).</p>  </div>
 
