@@ -10,7 +10,7 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=e2a4c865">
+<link rel="stylesheet" href="assets/base.css?v=11317d8a">
 <script src="assets/mapas.js?v=8e6310d1"></script>
 <style>
 /* --- sinais-de-risco.html: estilos próprios desta página (o compartilhado está na folha base) --- */
@@ -42,8 +42,21 @@
   <h1>Sinais oficiais de risco</h1>
   <p class="hint" style="margin-bottom:18px;">O resto do site mede o que os governos publicaram para se preparar. Esta página mostra o outro lado da conta: o risco a que essa preparação responde, estado por estado, tal como CEMADEN, INPE, ANA, INMET e NOAA já o publicaram. O Monitor não faz previsão climática — reproduz a de quem tem mandato para fazê-la, sempre com o documento e a data da consulta ao lado do número.</p>
 
-    <p class="hint" style="margin:0 0 18px;">Esta página lê os sinais físicos do ciclo — oceano, previsão, seca, fogo, alertas — e cruza o risco projetado com o arcabouço público de cada estado. Os sinais não entram no índice MARÉ (peso zero). O Monitor não faz previsão climática nem substitui os avisos oficiais; as oito fontes e suas consultas estão em <a href="pesquisadores.html#fontes-sinais">Pesquisadores</a>.</p>
+    <p class="hint" style="margin:0 0 18px;">Sinais físicos do ciclo — oceano, previsão, seca, fogo, alertas — cruzados com o arcabouço público de cada estado. Os sinais não entram no índice MARÉ (peso zero). O Monitor não faz previsão climática nem substitui os avisos oficiais; fontes em <a href="pesquisadores.html#fontes-sinais">Pesquisadores</a>.</p>
 
+
+  <div class="panel" id="situacao" style="border-top:3px solid var(--teal);">
+    <h2 style="margin-top:0;">Situação atual</h2>
+    <div class="situacao" id="situacaoGrade" role="group" aria-label="Situação atual do ciclo: estado do ENOS, intensidade, tendência, indicador principal, atualização">
+      <div><div class="k">Estado do ENOS</div><div class="v" id="stEstado">—</div></div>
+      <div><div class="k">Intensidade</div><div class="v" id="stIntensidade">—</div></div>
+      <div><div class="k">Tendência</div><div class="v" id="stTendencia">—</div></div>
+      <div><div class="k">ONI · Niño 3.4</div><div class="v" id="stOni">—</div></div>
+      <div><div class="k">Probabilidade de El Niño</div><div class="v" id="stProb">—</div></div>
+      <div><div class="k">Última atualização</div><div class="v" id="stAtualizado">—</div></div>
+    </div>
+    <p class="hint" id="stDiagnostico" style="margin:6px 0 0;">—</p>
+  </div>
 
   <div class="panel" id="estadodociclo">
     <h2 style="margin-top:0;">Estado do ciclo</h2>
@@ -58,6 +71,7 @@
 
       <div class="map-box" id="boxTipoRisco">
         <p class="map-card-h">1 · Tipo de risco projetado para o ciclo</p>
+        <p class="map-card-sub">Ciclo 2026/2027 (boletins) · tipo de risco projetado por UF · seca/calor/fogo · chuvas · mais de uma família</p>
         <svg id="mapaTipoRisco" role="img" aria-label="Mapa do Brasil por tipo de risco projetado nos boletins do Painel El Niño" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legTipoRisco"></div>
         <details><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
@@ -67,24 +81,28 @@
 
       <div class="map-box" id="boxSecas">
         <p class="map-card-h">2 · Seca observada — Monitor de Secas</p>
+        <p class="map-card-sub">Mapa mais recente (mensal) · categoria do Monitor de Secas (ANA) por UF · S0–S4</p>
         <svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legSecas"></div>
       </div>
 
       <div class="map-box" id="boxAvisos">
         <p class="map-card-h">3 · Avisos meteorológicos vigentes</p>
+        <p class="map-card-sub">Consulta mais recente · avisos meteorológicos vigentes do INMET por UF · contagem e severidade</p>
         <svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos vigentes do INMET" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legAvisos"></div>
       </div>
 
       <div class="map-box" id="boxFogo">
         <p class="map-card-h">4 · Focos ativos nas últimas 24 horas</p>
+        <p class="map-card-sub">Último dia disponível · focos de calor (INPE, satélite de referência) por UF · contagem em 24 h</p>
         <svg id="mapaFogo" role="img" aria-label="Mapa do Brasil pelo número de focos ativos nas últimas 24 horas segundo o INPE" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legFogo"></div>
       </div>
 
       <div class="map-box" id="boxCemaden">
         <p class="map-card-h">5 · Alertas de risco vigentes — CEMADEN</p>
+        <p class="map-card-sub">Consulta mais recente · alertas hidrológicos e geológicos vigentes (CEMADEN) por UF · contagem</p>
         <svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legCemaden"></div>
       </div>
@@ -99,22 +117,26 @@
 
       <div class="chart-box wide" id="boxOni">
         <h3>1 · Índice ONI: a série que define o fenômeno</h3>
+        <p class="map-card-sub">Trimestres móveis desde 1950 → último disponível · anomalia da TSM na região Niño 3.4 · °C</p>
         <div class="canvas-wrap" id="wrapOni"></div>
       </div>
 
       <div class="chart-box" id="boxPlume">
         <h3>2 · Probabilidade por trimestre</h3>
+        <p class="map-card-sub">Próximos trimestres · probabilidade de El Niño / neutro / La Niña · %</p>
         <div class="canvas-wrap" id="wrapPlume"></div>
         <div class="map-legend" id="legPlume"></div>
       </div>
 
       <div class="chart-box" id="boxTipos">
         <h3>3 · Estados por tipo de risco projetado</h3>
+        <p class="map-card-sub">Ciclo 2026/2027 (boletins do Painel) · família de risco projetado por UF · contagem de estados</p>
         <div class="canvas-wrap" id="wrapTipos"><canvas id="cTipos"></canvas></div>
       </div>
 
       <div class="chart-box wide" id="boxCruz">
         <h3>4 · Tipo de risco projetado × estágio do arcabouço público</h3>
+        <p class="map-card-sub">Corte da edição · tipo de risco projetado × estágio do arcabouço público · 27 UFs</p>
         <div class="canvas-wrap" id="wrapCruz"><canvas id="cCruz"></canvas></div>
       </div>
 
@@ -133,7 +155,7 @@
   </footer>
 </div>
 
-<script src="assets/js/sinais-de-risco.js?v=8bc35304" defer></script>
+<script src="assets/js/sinais-de-risco.js?v=463dbabf" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

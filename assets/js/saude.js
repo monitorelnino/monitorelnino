@@ -72,7 +72,7 @@ function __init(){
   desenharMapa('mapaRiscoSan','legRiscoSan', uf => fam(uf) ? FAM[fam(uf)][1] : NEUTRA,
     uf => { const u = SUF.uf[uf]||{}; return (u.risco_sanitario_projetado||['sem risco projetado registrado']).map(esc).join('<br>'); },
     Object.values(FAM).map(v => ({cor:v[1], rotulo:v[0]})));
-  fonteFigura('boxRiscoSan', 'Fonte: Painel El Niño 2026-2027 (CEMADEN/INPE), boletins nº 1 e 2');
+  fonteFigura('boxRiscoSan', 'Fonte: Painel El Niño 2026-2027 (CEMADEN/INPE), boletins nº 1 a 3 · derivado · ' + esc(SUF.corte || ''));
   document.querySelector('#tblUF tbody').innerHTML = UFS.map(uf => { const u = SUF.uf[uf]||{}; return '<tr><td><strong>'+uf+'</strong></td><td>'+esc(ST[st(uf)][0])+'</td><td>'+esc(u.doc||'—')+'</td><td>'+esc((u.risco_sanitario_projetado||[]).join('; '))+'</td><td>'+esc(u.data_verificacao||'—')+'</td></tr>'; }).join('');
 
   // 3 · observado
@@ -95,7 +95,7 @@ function __init(){
     [{cor:CAL[0],rotulo:'0'},{cor:CAL[1],rotulo:'1'},{cor:CAL[2],rotulo:'2'},{cor:CAL[3],rotulo:'3+'},{cor:NEUTRA,rotulo:'aguardando coleta'}]);
   fonteFigura('boxCalor', (SINAIS.fontes && SINAIS.fontes.inmet_avisos && SINAIS.fontes.inmet_avisos.status === 'coletado') ? 'Fonte: INMET · consultado em '+esc(SINAIS.fontes.inmet_avisos.consultado_em) : 'Fonte: INMET · sem coleta até o corte');
   desenharMapa('mapaEmerg','legEmerg', uf => NEUTRA, uf => 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento)', [{cor:NEUTRA, rotulo:'nenhuma registrada até o corte'}]);
-  fonteFigura('boxEmerg', 'Fonte: DOU e diários oficiais municipais');
+  fonteFigura('boxEmerg', 'Fonte: DOU e diários oficiais municipais · busca de 05/09/2026 · nenhuma localizada em 2026');
   (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => (v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
     const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes — ' + c.join(' · ') + '.'; })();
 

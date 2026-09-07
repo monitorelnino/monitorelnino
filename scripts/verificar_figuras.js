@@ -47,17 +47,26 @@ function renderizar(pagina) {
         const det = e.tagName === "DETAILS" ? e : e.closest("details");
         if (det && (det.querySelector("table") || det.dataset.alternativa === "dados")) return false;
         if (e.classList.contains("map-card-h")) return false;   // título do cartão escrito como <p>
+        if (e.classList.contains("map-card-sub")) return false;  // 07/09/2026: subtítulo padronizado (período · variável · unidade), uma linha
         return true;
       });
       if (ruins.length) {
         const amostra = Array.from(ruins).slice(0, 2).map(e => e.tagName.toLowerCase() + ": " + e.textContent.trim().replace(/\s+/g, " ").slice(0, 70));
         falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: ${ruins.length} elemento(s) proibido(s) — ${amostra.join(" | ")}`);
       }
+      // 07/09/2026 (revisão de UX): toda figura de dado tem título, subtítulo padronizado (≤ 140 caracteres, com "·") e crédito "Fonte(s): … · dd/mm/aaaa" ou "sem coleta"
+      const subs = c.querySelectorAll(".map-card-sub");
+      if (!c.querySelector(".map-card-h, h3")) falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: figura sem título`);
+      if (subs.length > 1) falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: ${subs.length} subtítulos (máximo 1)`);
+      subs.forEach(e => { const s = e.textContent.trim(); if (s.length > 140 || !s.includes("·")) falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: subtítulo fora do padrão (≤ 140 caracteres, separado por "·") — "${s.slice(0, 60)}"`); });
+      if (!subs.length && ["index.html", "sinais-de-risco.html", "saude.html", "defesa-civil.html", "financiamento.html"].includes(pagina) && c.querySelector("svg, canvas, table, .prazos-barras")) falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: figura sem subtítulo (período · variável · unidade)`);
       const cred = c.querySelectorAll(".fonte-figura");
       if (cred.length > 1) falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: ${cred.length} créditos (máximo 1)`);
       cred.forEach(e => {
         const t = e.textContent.trim();
         if (t.length > 160) falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: crédito longo demais (${t.length} caracteres) — "${t.slice(0, 60)}…"`);
+        if (!/^Fontes?:/.test(t)) falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: crédito não começa com "Fonte:" — "${t.slice(0, 60)}"`);
+        if (!/\d{2}\/\d{2}\/\d{4}|sem coleta|sem consulta|não localiz/i.test(t)) falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: crédito sem data (dd/mm/aaaa) nem "sem coleta" — "${t.slice(0, 60)}"`);
         if (/por que|confira|enquanto isso|lacuna declarada|contrariaria|regra de prova|aguard/i.test(t))
           falhas.push(`${pagina} › ${String(id).trim().slice(0, 50)}: crédito com explicação — "${t.slice(0, 80)}"`);
       });

@@ -133,7 +133,7 @@ setTimeout(() => {
   // Nenhum parágrafo/nota dentro de cartão (o portão scripts/verificar_figuras.js cobre as 5 páginas;
   // aqui fica a guarda local desta página).
   const cartoesComParagrafo = [...d.querySelectorAll(".map-box, .chart-box")]
-    .filter(c => [...c.querySelectorAll(".note, .hint, p")].some(e => !e.closest("details") && !e.classList.contains("map-card-h")));
+    .filter(c => [...c.querySelectorAll(".note, .hint, p")].some(e => !e.closest("details") && !e.classList.contains("map-card-h") && !e.classList.contains("map-card-sub")));
   teste("figuras: nenhum parágrafo ou nota dentro de cartão de mapa/gráfico", cartoesComParagrafo.length === 0);
 
 
