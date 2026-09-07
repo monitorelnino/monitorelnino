@@ -22,8 +22,7 @@ Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove P
   Versão nos rodapés das doze páginas, no "como citar" e nos PDFs: MARÉ v3.1. CHANGELOG fechado.
 - **Pendências declaradas ao fechar (§17 e não-feitos):** conferência do inciso 166-A (transferência
   especial no defeso; linha "a confirmar"); SICs das 27 secretarias de saúde e envio dos pedidos de LAI
-  (só com "sim" da editoria); adaptadores dos 26 DOEs e dos diários consorciados; teste a 390 px e
-  axe-core (exigem navegador); oito páginas acima da meta de palavras do §7 (abaixo do teto).
+  (só com "sim" da editoria); adaptadores dos 26 DOEs e dos diários consorciados; axe-core (§14.4); oito páginas acima da meta de palavras do §7 (abaixo do teto).
 
 ### PR-N8 — Segurança (06/09/2026; §14.4–14.10)
 - **CSP sem `'unsafe-inline'` em `script-src`:** todos os scripts inline das doze páginas foram
@@ -40,7 +39,10 @@ Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove P
 - **Proteção da `main` conferida pela API:** ruleset ativo (PR obrigatório, check `portoes`
   obrigatório, sem force-push nem exclusão; bypass só da deploy key do robô) — registrado no
   `PROTOCOLO_ATUALIZACAO.md`. LGPD: regra de retenção das submissões escrita (§14.9).
-- Não feito por falta de navegador no ambiente: axe-core no runtime e captura a 390 px (§14.3–14.4).
+- **Portão móvel** (`scripts/verificar_movel.js`, na suíte): cada página a 390 px num Chromium real
+  (Playwright), sem rolagem horizontal nem erro de JS, com capturas; quatro páginas estouravam a
+  largura (dispersão, tabela de contadores, barras de prazo, tabela do log) e foram corrigidas no
+  `base.css`. Não feito: axe-core (§14.4).
 - Portões em Python e em Node passaram a ler a página com o script embutido (`pagina_completa.py`,
   `scripts/_inline_js.js`), para inspecionar o JS que agora vive fora do HTML.
 
