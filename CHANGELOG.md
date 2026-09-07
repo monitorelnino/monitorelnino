@@ -13,6 +13,21 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### SEO (07/09/2026, pedido da editoria: referência nacional, fácil de encontrar)
+- **Cada página:** título único e descritivo (com "El Niño 2026/2027" e o tema), descrição única
+  (70–170 caracteres), canônica em monitorelnino.com.br, Open Graph e Twitter Card com um **cartão
+  social** de 1200×630 (logo, título, três números), `robots` "index, follow".
+- **Dados estruturados (JSON-LD):** WebPage em todas as páginas; na inicial, `Dataset` (índice MARÉ,
+  CC BY 4.0, CSV e datapackage como distribuições, cobertura temporal do ciclo) e `WebSite`, com a
+  organização (Futura Evidence Lab).
+- **`sitemap.xml`** (12 páginas + metodologia, documentação e datapackage) e **`robots.txt`** do
+  domínio (com a linha Sitemap; `data/` e `evidencias/` fora do índice). A **prévia** passa a sair
+  sempre com `X-Robots-Tag: noindex` e robots de bloqueio, para nunca competir com o domínio.
+- **Portão `verificar_seo.js`** na suíte: títulos e descrições únicos e no tamanho, canônica, OG,
+  Twitter, JSON-LD válido, um `<h1>`, sitemap completo, robots com sitemap, cartão presente.
+- **Pendente da editoria:** Google Search Console (verificação por DNS ou meta tag) e, no lançamento,
+  trocar o `Disallow: /` da cortina.
+
 ### Inicial: "Como ler o MARÉ" num bloco só; bloco pós-eleitoral oculto até ter dado (07/09/2026)
 - Saem as três notas empilhadas (nota baixa · período eleitoral · o que mede). Fica um bloco: as três
   frases (o que mede · o que não mede · o teto da afirmação, que absorve "por que a nota baixa
