@@ -115,7 +115,7 @@ button, .btn-pdf, input[type=submit]{min-height:40px;}
 .skip{position:absolute; left:-9999px; top:8px; background:var(--ink); color:#F5F1E8; padding:8px 14px; border-radius:6px; z-index:100;}
 .skip:focus{left:8px;}
 /* 03/09/2026 (editoria): navegação em UMA linha no desktop — sem quebra; em telas menores volta a quebrar */
-@media (min-width:1021px){ .mast-top{flex-wrap:wrap;} .mainnav{flex-wrap:wrap; flex-basis:100%; gap:5px;} .mainnav a, .mainnav span{padding:7px 10px; font-size:12px; letter-spacing:.04em;} }
+@media (min-width:1021px){ .mast-top{flex-wrap:wrap;} .mainnav{flex-wrap:wrap; flex-basis:100%; gap:4px;} .mainnav a, .mainnav span{padding:7px 8px; font-size:12px; letter-spacing:.02em;} .mainnav .nav-sep{margin:0 2px;} }   /* 07/09/2026: cabe numa linha com o CTA "Envie um plano ou decreto" */
 @media (max-width:1020px){
   .wrap{padding:24px 18px 40px;}
 }
