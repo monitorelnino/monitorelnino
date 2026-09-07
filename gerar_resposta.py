@@ -159,4 +159,12 @@ def autoteste() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(autoteste() if "--autoteste" in sys.argv else gerar())
+    sys.exit(autoteste() if "--autoteste" in sys.argv else gerar())def _hoje():
+    """Data determinística = 'atualizado_em' de data/meta.json (a última rodada que gravou dados), para que a
+    cadeia de derivados reproduza o arquivo byte a byte; 'hoje' só se o meta não existir."""
+    import datetime as _dt, json as _js, pathlib as _pl
+    try:
+        a = _js.load(open(_pl.Path(__file__).resolve().parent / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
+        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
+    except Exception:  # noqa: BLE001
+        return _dt.date.today()
