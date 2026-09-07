@@ -13,6 +13,21 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Navegação, fusão Gestores→Enviar dados e Pesquisadores sob demanda (07/09/2026, pedido da editoria)
+- **Ordem da barra:** O monitor · Risco climático · **Proteja-se** · Defesa civil · Saúde ·
+  Financiamento · **+ Enviar dados** · Pesquisadores · Imprensa.
+- **O CTA deixa de parecer "sempre marcado":** era o mesmo Musgo sólido do indicador de página
+  atual. Agora é contorno (preenche no hover e quando a página está aberta). Ganhou o "+" para
+  marcar que é ação, não seção.
+- **"Para gestores" fundiu-se em "Enviar dados"** (redirecionamento 301): a página abre com duas
+  portas — "Sou gestor público" e "Quero enviar um documento" — e o checklist de publicação e a
+  base legal viraram acordeões dentro da seção do gestor, antes do formulário, que serve aos dois
+  públicos. Título e descrição refeitos para as duas intenções de busca.
+- **Pesquisadores reconfigurada:** só Metodologia e Dados abertos ficam visíveis; log de
+  verificação, painel amostral, fontes dos sinais, fontes do financiamento, como usar e código
+  viraram sete acordeões fechados. Link com âncora abre sozinho o acordeão que contém o alvo.
+- Portões atualizados (ordem canônica, listas de páginas, orçamento de palavras da página fundida).
+
 ### Relógios de prazo, e-mails e o que "verificado" quer dizer (07/09/2026, pedido da editoria)
 - **"Prazos em curso" vira relógios:** anel SVG que esvazia da data-base ao vencimento (Âmbar; Argila
   abaixo de 30 %; Mineral apagado quando transcorrido), dias no centro, e para cada prazo **"O que se
