@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=d8738b3e"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=5c1b06df">
+<link rel="stylesheet" href="assets/base.css?v=2525905b">
 <style>
 /* --- envie-dados.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
@@ -117,42 +117,7 @@
     <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:imprensa@monitorelnino.com.br">imprensa@monitorelnino.com.br</a></span>
   </footer>
 </div>
-<script>
-(function(){
-  const p = new URLSearchParams(location.search);
-  const set = (id, v) => { const el = document.getElementById(id); if (el && v) el.value = v; };
-  set('cUF', (p.get('uf') || '').toUpperCase());
-  // Lista de municípios por UF (malha IBGE): carga preguiçosa, com degradação graciosa
-  let __refMun = null;
-  async function preencherMunicipios(){
-    const uf = document.getElementById('cUF').value;
-    const dl = document.getElementById('listaMunEnvio');
-    if (!uf){ dl.innerHTML = ''; return; }
-    try {
-      if (!__refMun){
-        __refMun = window.__MUN_REF__ || await fetch('data/municipios_ibge_referencia.json').then(r => r.json());
-      }
-      dl.innerHTML = __refMun.filter(m => m.uf === uf)
-        .map(m => m.nome).sort((a, b) => a.localeCompare(b))
-        .map(n => `<option value="${n}">`).join('');
-    } catch (e) { dl.innerHTML = ''; /* offline/prévia sem dados: campo segue como texto livre */ }
-  }
-  document.getElementById('cUF').addEventListener('change', preencherMunicipios);
-  preencherMunicipios();
-  set('cMunicipio', p.get('mun') || '');
-  set('cTipo', p.get('tipo') || '');
-  // Produção = domínio final OU o subdomínio temporário *.netlify.app (útil para testar
-  //   nas Partes 2-3 do guia de publicação, antes do DNS do domínio próprio propagar).
-  // Qualquer outro host (prévia local, file://, artefato de visualização) mantém o
-  //   formulário desativado — Netlify Forms só funciona quando hospedado de fato.
-  const ehProducao = /\.netlify\.app$/.test(location.hostname) || /(^|\.)monitorelnino\.com\.br$/.test(location.hostname);
-  if (!ehProducao){
-    document.getElementById('contribOffline').textContent = 'Nesta prévia local o envio fica desativado; na versão publicada, funciona.';
-    document.getElementById('formContrib').addEventListener('submit', (e) => { e.preventDefault();
-      alert('Prévia local: o envio do formulário funciona apenas na versão publicada do site.'); });
-  }
-})();
-</script>
+<script src="assets/js/envie-dados.js?v=bf51962b" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
@@ -163,6 +128,6 @@
   </div>
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
-<script>window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });</script>
+
 </body>
 </html>

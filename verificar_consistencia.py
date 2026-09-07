@@ -8,6 +8,7 @@ caminho absoluto fixo (/home/claude/build/...) que só existia no sandbox de
 edição e faria este portão BLOQUEANTE quebrar com FileNotFoundError em
 qualquer outro ambiente real (a Action do GitHub, a máquina de quem publica)."""
 import json, re, sys
+from pagina_completa import ler_pagina
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent
@@ -101,7 +102,7 @@ if not all("lat" in r for r in transf["repasses_rs"]): erro("repasse RS sem geoc
 # não faz parte do pacote publicado e não existe em CI nem na máquina de quem
 # publica. A checagem de paridade roda apenas quando ele existe (sessão de
 # edição); nos demais ambientes, é pulada com aviso, não falha o portão.
-pk = open(RAIZ / "index.html", encoding="utf-8").read()
+pk = ler_pagina(RAIZ / "index.html")
 ver = f"{media:.1f}".replace(".", ",")
 if f'id="gaugeNum">{ver}<' not in pk: erro(f"pacote: veredito (gaugeNum) ≠ média nacional {ver}")
 if "IPREN" in pk or "Águas Quentes" in pk: erro("pacote: resíduo de nome antigo")
@@ -137,7 +138,7 @@ for termo in ["v2.1", "declaração vale metade", "MARÉ", "canal", "0,4", "0,5"
 # página própria — CONSIST também deixou de ser JS embutido e virou data/consist.json,
 # fonte única compartilhada pelas duas páginas que ainda precisam dele.)
 import re as _re
-_h = open(RAIZ / "defesa-civil.html", encoding="utf-8").read()
+_h = ler_pagina(RAIZ / "defesa-civil.html")
 _est = json.load(open(RAIZ / "data" / "estados.json", encoding="utf-8"))
 _lac = {u["uf"] for u in _est["ufs"] if u["status"] == "LAC"}
 _nao_lac = {u["uf"] for u in _est["ufs"]} - _lac
@@ -164,7 +165,7 @@ else:
     for _n in _re.findall(r"(\d+) munic[íi]pios verificados", _h):
         if int(_n) != len(municipios):
             erro(f"figuras: contagem fóssil de municípios verificados: {_n} × banco {len(municipios)}")
-_p = open(RAIZ / "proteja-se.html", encoding="utf-8").read()
+_p = ler_pagina(RAIZ / "proteja-se.html")
 _mR = _re.search(r"const RISCO_UF\s*=\s*\{(.*?)\};", _p, _re.S)
 if _mR:
     _ufsR = set(_re.findall(r"['\"]?([A-Z]{2})['\"]?\s*:", _mR.group(1)))
@@ -228,7 +229,7 @@ FAIXAS = ["estágio inicial", "em construção", "consolidado", "avançado"]
 APOSENTADOS = ["ponto de partida", "caminho aberto", "avanço consistente", "referência nacional",
                "em desenvolvimento", "em consolidação"]
 _alvos = {
-    "index.html (pílula)": _re.search(r"var f = v < 25 \? \[(.*?)\];", _h_idx := open(RAIZ / "index.html", encoding="utf-8").read()).group(1).lower(),
+    "index.html (pílula)": _re.search(r"var f = v < 25 \? \[(.*?)\];", _h_idx := ler_pagina(RAIZ / "index.html")).group(1).lower(),
     "index.html (PDF)": _re.search(r"const fx = v\.total < 25 \? (.*?);", _h_idx).group(1).lower(),
     "index.html (régua)": _re.search(r'<div class="gauge-tick-labels">[\s\S]*?<div class="gauge-ends">[\s\S]*?</div>', _h_idx).group(0).lower(),
     # v3.1 §4: "Como ler" virou três frases sem a lista de faixas; a régua do medidor e o PDF seguem verificados
@@ -240,7 +241,7 @@ for _nome, _txt in _alvos.items():
     if _falta: erro(f"faixas: {_nome} sem {_falta}")
 _site_sem_script = _re.sub(r"<script[\s\S]*?</script>", "", _h_idx).lower()
 for _pag in ["defesa-civil.html", "proteja-se.html", "envie-dados.html", "obrigado.html"]:
-    _site_sem_script += _re.sub(r"<script[\s\S]*?</script>", "", open(RAIZ / _pag, encoding="utf-8").read()).lower()
+    _site_sem_script += _re.sub(r"<script[\s\S]*?</script>", "", ler_pagina(RAIZ / _pag)).lower()
 _velhos = [a for a in APOSENTADOS if a in _site_sem_script or a in _h_idx.lower()]
 if _velhos: erro(f"faixas: nomenclatura aposentada ainda no site: {_velhos}")
 

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /* Portão de runtime do contador de resposta (v3.1 §3.3): DOM das barras nos cartões de estado, contador
  * nacional ao lado do medidor com frase C18, dispersão e tabela em defesa-civil.html, navegação sem a galeria. */
-const { JSDOM } = require("jsdom"); const fs = require("fs"), path = require("path"); const raiz = path.join(__dirname, "..");
+const { JSDOM } = require("jsdom"); const { inlinePageJs } = require("./_inline_js"); const fs = require("fs"), path = require("path"); const raiz = path.join(__dirname, "..");
 const falhas = [];
 function render(pagina) {
-  const html = fs.readFileSync(path.join(raiz, pagina), "utf-8");
+  const html = inlinePageJs(fs.readFileSync(path.join(raiz, pagina), "utf-8"), raiz);
   return new JSDOM(html, { url: "https://localhost/", runScripts: "dangerously", beforeParse(w) {
     global.window = w; global.document = w.document; w.d3 = require("d3");
     try { w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8")); } catch (e) {}

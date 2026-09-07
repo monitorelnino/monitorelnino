@@ -11,6 +11,25 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N8 — Segurança (06/09/2026; §14.4–14.10)
+- **CSP sem `'unsafe-inline'` em `script-src`:** todos os scripts inline das doze páginas foram
+  extraídos para `assets/js/<página>.js` (um por página, ordem preservada, `defer`); o único handler
+  inline (`onclick`) virou listener; `cdnjs` saiu da CSP.
+- **Bibliotecas em `assets/vendor/`** (Chart.js 4.5.1, d3 7.9.0, jsPDF 2.5.1, do npm, versões
+  fixadas, hash no manifesto) no lugar do CDN — sem dependência externa além do VLibras.
+- **VLibras nas doze páginas** (faltava em três). Medida de leitura de 68 caracteres nos
+  parágrafos corridos (§14.10).
+- **Portão `scripts/verificar_seguranca.js`** (na suíte): nenhum `<script>` inline nem handler
+  `on*=`; CSP fechada; nenhum script externo além do VLibras; todo `innerHTML =` em `assets/js/`
+  escapa (`esc()` ou o sanitizador global da inicial); Actions fixadas por SHA. Nove pontos de
+  `innerHTML` sem escape foram corrigidos (datalists, tabelas, listas de fontes, feed).
+- **Proteção da `main` conferida pela API:** ruleset ativo (PR obrigatório, check `portoes`
+  obrigatório, sem force-push nem exclusão; bypass só da deploy key do robô) — registrado no
+  `PROTOCOLO_ATUALIZACAO.md`. LGPD: regra de retenção das submissões escrita (§14.9).
+- Não feito por falta de navegador no ambiente: axe-core no runtime e captura a 390 px (§14.3–14.4).
+- Portões em Python e em Node passaram a ler a página com o script embutido (`pagina_completa.py`,
+  `scripts/_inline_js.js`), para inspecionar o JS que agora vive fora do HTML.
+
 ### PR-N7 — Saúde em duas metades e contadores do financiamento (06/09/2026)
 - **Saúde (E17):** seção 0 vira "MARÉ · Saúde — antecipação e resposta": à esquerda o Monitor
   Saúde (mesmas faixas), à direita o contador de emergências sanitárias — **zero em 2026**, exibido

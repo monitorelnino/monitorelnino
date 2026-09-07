@@ -27,6 +27,7 @@ Uso:
   python3 verificar_links.py --self-test         # testa a lógica sem rede
 """
 import argparse
+from pagina_completa import ler_pagina
 import concurrent.futures
 import json
 import re
@@ -62,7 +63,7 @@ def extrair_links_js_e_estados():
     instrumentos estaduais em data/estados.json. Ampliação de 31/08/2026: Patricia
     perguntou se todos os links do site estavam conferidos — estes não estavam no escopo."""
     achados = {}
-    html = (RAIZ / "index.html").read_text(encoding="utf-8")
+    html = ler_pagina(RAIZ / "index.html")
     scripts = " ".join(re.findall(r"<script>([\s\S]*?)</script>", html))
     for m in re.finditer(r"'(https?://[^'\s]+)'", scripts):
         achados.setdefault(m.group(1), []).append(("index.html (JS: portais/diários/guias/PDF)", ""))

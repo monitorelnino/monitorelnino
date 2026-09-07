@@ -9,7 +9,7 @@
 // (4) masthead e rodapé unificados presentes e dentro do contêiner.
 const fs = require("fs");
 const path = require("path");
-const { JSDOM } = require("jsdom");
+const { JSDOM } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 
 const RAIZ = path.join(__dirname, "..");
 let __baseCss = null;
@@ -133,7 +133,7 @@ for (const arq of arquivos) {
   const foraEscala = [...(css + ";" + inline).matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1])
     .filter(v => !ESCALA.has(v) && !(nome === "index.html" && (v === 18 || v === 44)));   // medidor preservado (E14)
   if (foraEscala.length) falha(`${nome}: font-size fora da escala (12·12,5·13,5·15·17·19·23·28·38·52): ${[...new Set(foraEscala)].join(", ")}px`);
-  const bruto = fs.readFileSync(path.join(RAIZ, nome), "utf-8");
+  const bruto = inlinePageJs(fs.readFileSync(path.join(RAIZ, nome), "utf-8"), RAIZ);
   const hex = [...bruto.matchAll(/#[0-9A-Fa-f]{6}\b/g)].map(m => m[0]);
   if (hex.length) falha(`${nome}: cor em hex fora de tokens.css/mapas.js (${hex.length}): ${[...new Set(hex)].slice(0, 5).join(", ")}`);
   const bps = [...(css + baseCssParaBreakpoints()).matchAll(/@media[^{]*\((?:max|min)-width:\s*(\d+)px\)/g)].map(m => +m[1]).filter(v => ![640, 1020, 1021].includes(v));

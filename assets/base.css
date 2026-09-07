@@ -164,3 +164,6 @@ button, .btn-pdf, input[type=submit]{min-height:40px;}
   .mainnav .btn-nav{margin-left:auto; background:var(--green); color:var(--branco); border-color:var(--green);}
   .mainnav .btn-nav:hover{background:var(--ink); border-color:var(--ink);}
   @media (max-width:640px){ .mainnav .btn-nav{margin-left:0;} }
+
+  /* v3.1 §14.10: medida de leitura — parágrafos corridos até ~72 caracteres */
+  .panel > p, .panel .hint, .hero-lede, .bloco-citacao p{max-width:68ch;}

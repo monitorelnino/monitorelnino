@@ -7,12 +7,12 @@
 const N_PONTOS = require("../data/pontos_mapa.json").length;
 const INDICE = require("../data/indice.json");
 const INDICE_META = require("../data/meta.json");
-const { JSDOM, VirtualConsole } = require("jsdom");
+const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const fs = require("fs");
 const path = require("path");
 
 const raiz = path.join(__dirname, "..");
-const html = fs.readFileSync(path.join(raiz, "index.html"), "utf-8");
+const html = inlinePageJs(fs.readFileSync(path.join(raiz, "index.html"), "utf-8"), raiz);
 const erros = [];
 const vc = new VirtualConsole();
 vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));
@@ -112,7 +112,7 @@ setTimeout(() => {
   // gerador no código-fonte: as seis seções na ordem certa, e nenhuma das
   // frases de auditor que Patricia mandou tirar (metodologia/componentes/
   // camada declarada ficam em METODOLOGIA.pdf, não no PDF do usuário).
-  const fonte = fs.readFileSync(path.join(raiz, "index.html"), "utf-8");
+  const fonte = inlinePageJs(fs.readFileSync(path.join(raiz, "index.html"), "utf-8"), raiz);
   const ger = fonte.slice(fonte.indexOf("function gerarRelatorioCidadao("), fonte.indexOf("function gerarPDF(){"));
   const secoes = ["Em emergência, ligue", "Risco projetado para ", "O que já existe", "O que ainda falta", "Pedido de informação pronto", "Como se proteger", "Links úteis"];
   const posicoes = secoes.map(s => ger.indexOf("secao('" + s));
