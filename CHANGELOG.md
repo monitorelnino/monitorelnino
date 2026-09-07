@@ -13,6 +13,16 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Nome do envio: "Envie um plano ou decreto" (07/09/2026, escolha da editoria)
+- O CTA passa a nomear o que se entrega, e não a ação genérica: serve ao gestor ("meu plano") e ao
+  cidadão ("o decreto que vi no diário"), sem possessivo que exclua um dos dois. Título da página,
+  descrição e dados estruturados refeitos; as duas portas viram "Sou gestor: como publicar" e
+  "Encontrei um plano ou decreto: enviar".
+- Com o rótulo mais longo, o botão passa a **fechar a barra**, em linha própria: as nove seções
+  cabem numa linha na ordem da editoria (O monitor · Risco climático · Proteja-se · Defesa civil ·
+  Saúde · Financiamento · Pesquisadores · Imprensa) e a ação fica visualmente separada delas.
+  Densidade da barra ajustada em telas ≥ 1021 px.
+
 ### Navegação, fusão Gestores→Enviar dados e Pesquisadores sob demanda (07/09/2026, pedido da editoria)
 - **Ordem da barra:** O monitor · Risco climático · **Proteja-se** · Defesa civil · Saúde ·
   Financiamento · **+ Enviar dados** · Pesquisadores · Imprensa.
