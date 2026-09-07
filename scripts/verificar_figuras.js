@@ -5,7 +5,7 @@
  * Verifica as cinco páginas com figuras após a execução dos scripts (jsdom + d3 + fetch local).
  * Uso: node scripts/verificar_figuras.js
  */
-const { JSDOM, VirtualConsole } = require("jsdom");
+const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const fs = require("fs"), path = require("path");
 const raiz = path.join(__dirname, "..");
 const PAGINAS = ["index.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "sinais-de-risco.html", "saude.html", "financiamento.html"];
@@ -14,7 +14,7 @@ const PERMITIDOS_TEXTO = [".map-card-h", ".map-legend", ".fonte-figura", ".lacun
 const falhas = [];
 
 function renderizar(pagina) {
-  const html = fs.readFileSync(path.join(raiz, pagina), "utf-8");
+  const html = inlinePageJs(fs.readFileSync(path.join(raiz, pagina), "utf-8"), raiz);
   const vc = new VirtualConsole();
   const dom = new JSDOM(html, {
     url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc,

@@ -1,0 +1,283 @@
+// ===== financiamento.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
+let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, PAINEL, MPS, CONTADORES;
+
+// ===== 3b · Quatro contadores por estado (v3.1 §11) =====
+function renderContadores(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const C = (CONTADORES && CONTADORES.uf) || {}; const tb = document.querySelector('#tblContadores tbody'); if (!tb) return;
+  const brl = v => v == null ? '<span style="color:var(--muted);">sem coleta</span>' : 'R$ ' + v.toFixed(2).replace('.', ',');
+  tb.innerHTML = Object.keys(C).sort((a, b) => ((C[b].por_habitante_2026 || {}).r5 || 0) - ((C[a].por_habitante_2026 || {}).r5 || 0)).map(uf => { const c = C[uf], m = c.municipios_cobertos;
+    return '<tr><td><strong>' + uf + '</strong></td><td>' + brl((c.por_habitante_2026 || {}).r5) + '</td><td><span style="color:var(--muted);">sem coleta</span></td><td>' + (m.preventivo != null ? m.preventivo + (m.preventivo_valor ? ' · R$ ' + (m.preventivo_valor / 1e6).toFixed(1).replace('.', ',') + ' mi' : '') : '<span style="color:var(--muted);">não localizado</span>') + '</td><td><span style="color:var(--muted);">sem coleta</span></td><td>' + (c.razao_depois_antes != null ? c.razao_depois_antes : '<span style="color:var(--muted);">—</span>') + '</td><td><span style="color:var(--muted);">não disponível</span></td></tr>'; }).join('');
+  MonitorMapas.legenda('legContadores', [{cor: MonitorMapas.cor('sintetico'), rotulo: 'r5: TransfereGov, dados abertos'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'preventivo: fundo a fundo estadual localizado'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta / não disponível'}]);
+  fonteFigura('contadores', 'Fontes: TransfereGov (r5), atos estaduais (fundo a fundo preventivo), Censo 2022 · ' + esc((CONTADORES || {}).gerado_em || '') + ' · sem escala nem juízo');
+}
+
+// ===== 0 · Rota do dinheiro das MPs (05/09/2026): barras de prazo + fluxo MP → órgão → uso =====
+function renderRotaMPs(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const mps = (MPS && MPS.mps) || [];
+  const brl = v => 'R$ ' + (v >= 1e9 ? (v/1e9).toFixed(2).replace('.', ',') + ' bi' : (v/1e6).toFixed(1).replace('.', ',') + ' mi');
+  const dataBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  // barras de prazo (publicação → deliberação)
+  document.getElementById('mpsPrazos').innerHTML = mps.map(mp => {
+    const ini = dataBR(mp.publicada_em), fim = dataBR(mp.tramitacao.deliberacao_ate);
+    const dias = Math.round((fim - hoje) / 86400000), resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));
+    const vencido = dias < 0, cls = vencido ? 'vencido' : resta < 0.3 ? 'urgente' : '';
+    const quando = vencido ? `transcorrido há ${-dias} dia(s)` : dias === 0 ? 'vence hoje' : `${dias} dias`;
+    return `<div class="prazo ${vencido ? 'vencido' : ''}" role="group" aria-label="${esc(mp.numero)}">
+      <div class="prazo-titulo">${esc(mp.numero)} — ${brl(mp.valor)} · ${esc(mp.tema)}</div>
+      <div class="prazo-meta">deliberação · <strong>${quando}</strong></div>
+      <div class="prazo-trilho" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(resta*100)}" aria-valuetext="${Math.round(resta*100)}% do prazo restante"><div class="prazo-resta ${cls}" style="width:${(resta*100).toFixed(1)}%; background:${vencido ? '' : mp.cor}"></div></div>
+      <div class="prazo-datas"><span>publicada em ${esc(mp.publicada_em)}</span><span>${esc(mp.tramitacao.situacao)} · até ${esc(mp.tramitacao.deliberacao_ate)}</span></div>
+    </div>`; }).join('');
+  // fluxo MP → órgão → uso (SVG, três colunas; larguras proporcionais ao valor)
+  const box = document.getElementById('rotaMPs'); box.innerHTML = '';
+  const W = Math.max(640, box.clientWidth || 900), colW = 200, gapX = (W - 3*colW) / 2, H = 330, pad = 14;
+  const total = mps.reduce((s, m) => s + m.valor, 0), escala = (H - pad*(mps.length+1)) / total;
+  const svg = d3.select(box).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('width', '100%').attr('role', 'img')
+    .attr('aria-label', 'Fluxo: MP → órgão executor → uso, larguras proporcionais ao valor');
+  let y0 = pad;
+  mps.forEach(mp => {
+    const h = mp.valor * escala; const x0 = 0, x1 = colW + gapX, x2 = 2*(colW + gapX);
+    svg.append('rect').attr('x', x0).attr('y', y0).attr('width', colW).attr('height', h).attr('rx', 6).attr('fill', mp.cor);
+    svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x0 + 10).attr('y', y0 + Math.min(18, h/2 + 4)).text(mp.numero);
+    svg.append('text').attr('class', 'rota-mp-valor').attr('x', x0 + 10).attr('y', y0 + Math.min(34, h/2 + 20)).text(brl(mp.valor));
+    let yo = y0;
+    mp.orgaos.forEach(org => {
+      const ho = org.valor * escala;
+      svg.append('path').attr('d', `M${x0+colW},${yo} C${x0+colW+gapX/2},${yo} ${x1-gapX/2},${yo} ${x1},${yo} L${x1},${yo+ho} C${x1-gapX/2},${yo+ho} ${x0+colW+gapX/2},${y0+ (yo-y0) + ho} ${x0+colW},${yo+ho} Z`)
+        .attr('fill', mp.cor).attr('opacity', .35);
+      svg.append('rect').attr('x', x1).attr('y', yo).attr('width', colW).attr('height', ho).attr('rx', 6).attr('fill', mp.cor).attr('opacity', .85);
+      svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x1 + 10).attr('y', yo + Math.min(18, ho/2 + 4)).text(org.nome + ' · ' + brl(org.valor));
+      // execução (barra escura dentro do órgão) — só quando coletada
+      if (mp.execucao && mp.execucao.status === 'coletado' && mp.execucao.pago != null) {
+        const frac = Math.max(0, Math.min(1, (org.execucao_pago ?? mp.execucao.pago) / (org.execucao_pago != null ? org.valor : mp.valor)));
+        svg.append('rect').attr('x', x1).attr('y', yo).attr('width', colW * frac).attr('height', ho).attr('rx', 6).attr('fill', MonitorMapas.cor('abissal')).attr('opacity', .55);
+      }
+      let yu = yo;
+      org.usos.forEach(u => {
+        const hu = u.valor * escala;
+        svg.append('path').attr('d', `M${x1+colW},${yu} C${x1+colW+gapX/2},${yu} ${x2-gapX/2},${yu} ${x2},${yu} L${x2},${yu+hu} C${x2-gapX/2},${yu+hu} ${x1+colW+gapX/2},${yu+hu} ${x1+colW},${yu+hu} Z`)
+          .attr('fill', mp.cor).attr('opacity', .25);
+        svg.append('rect').attr('x', x2).attr('y', yu).attr('width', colW).attr('height', hu).attr('rx', 6).attr('fill', MonitorMapas.cor('osso-claro')).attr('stroke', mp.cor);
+        const linhas = u.nome.length > 34 ? [u.nome.slice(0, 34) + '…'] : [u.nome];
+        svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x2 + 10).attr('y', yu + Math.min(18, hu/2 + 4)).text(linhas[0]);
+        if (hu > 30) svg.append('text').attr('class', 'rota-mp-valor').attr('x', x2 + 10).attr('y', yu + Math.min(34, hu/2 + 20)).text(brl(u.valor));
+        yu += hu;
+      });
+      yo += ho;
+    });
+    y0 += h + pad;
+  });
+  ['MP', 'Órgão executor', 'Uso declarado'].forEach((t, i) => svg.append('text').attr('class', 'rota-mp-valor').attr('x', i*(colW+gapX)).attr('y', H - 2).text(t));
+  const exec = mps.map(mp => mp.execucao && mp.execucao.status === 'coletado' ? `${mp.numero}: ações reforçadas — pago ${brl(mp.execucao.pago)} de ${brl(mp.execucao.empenhado)} empenhado desde a MP (${mp.execucao.meses.join(', ')})` : `${mp.numero}: execução sem coleta até o corte`);
+  MonitorMapas.legenda('legRotaMPs', [
+    ...mps.map(mp => ({cor: mp.cor, rotulo: mp.numero + ' · ' + mp.tema})),
+    {cor: MonitorMapas.cor('abissal'), rotulo: 'parcela paga nas ações reforçadas (inclui dotação ordinária da ação — teto, não a execução do crédito)'},
+    ...exec.map(t => ({cor: MonitorMapas.cor('areia'), rotulo: t}))]);
+  fonteFigura('boxRotaMPs', mps.some(mp => mp.execucao && mp.execucao.status === 'coletado') ? 'Fontes: Congresso Nacional, Agência Gov, Câmara, Conab · execução: Portal da Transparência, arquivos mensais · ' + esc(mps[0].execucao.atualizado_em) : 'Fontes: Congresso Nacional, Agência Gov, Câmara, Conab · execução: Portal da Transparência · sem coleta até o corte');
+}
+const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
+const NEUTRA = MonitorMapas.cor('sem-dado');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const brl = v => (v == null) ? '—' : 'R$ ' + Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 0});
+const { showTip, hideTip } = MonitorMapas;
+const fonteFigura = MonitorMapas.credito;
+// Regra estrutural (portão): soma de PREPARAÇÃO só com rotas ex_ante; resposta (r3/r4) nunca entra.
+function somaPreparacao(valoresPorRota){
+  return ROTAS.rotas.filter(r => r.ex_ante).reduce((s, r) => s + (Number(valoresPorRota[r.id]) || 0), 0);
+}
+async function __load(){
+  const carregar = f => fetch(f).then(r => { if(!r.ok) throw new Error('Falha ao carregar ' + f); return r.json(); });
+  [BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES] = await Promise.all([
+    'data/geo_uf.json','data/financiamento/rotas.json','data/financiamento/por_uf.json','data/financiamento/compromissos_federais.json',
+    'data/financiamento/serie_nacional.json','data/financiamento/emendas.json','data/financiamento/consultas.json','data/transferencias.json',
+    'data/atos_resposta.json','data/populacao_censo2022.json','data/financiamento/mps_2026.json','data/financiamento/contadores_uf.json'].map(carregar));
+  renderContadores();
+  renderRotaMPs();
+  try { PAINEL = await carregar('data/painel/agregados.json'); } catch(e) { PAINEL = null; }
+  __init();
+}
+function __init(){
+  MonitorMapas.padraoGraficos(window.Chart);
+  document.getElementById('corteFin').textContent = ROTAS.corte || '—';
+  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
+  function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){ const svg = MonitorMapas.ufs(ctx, svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itens); return svg; }
+  // 1 · rede do dinheiro (decisão de design de 03/09/2026: rede em vez de cartões; cartões ficam em texto dobrável)
+  (function(){
+    const svg = d3.select('#redeRotas'), W = 960, H = 420;
+    const ORIG = [{id: 'uniao', nome: 'União', y: 130}, {id: 'estado', nome: 'Estado', y: 310}];
+    const rotas = ROTAS.rotas; const passo = (H - 40) / rotas.length;
+    const nos = rotas.map((r, i) => ({...r, x: 480, y: 30 + passo * i + passo / 2}));
+    const destino = {id: 'mun', nome: 'Município', x: 880, y: H / 2};
+    const arestas = [];
+    // Três níveis (03/09/2026): a União alcança o ESTADO pelas mesmas rotas (FPE, fundo a fundo
+    // estadual, defesa civil, emergência setorial, convênios, especiais); o estado alimenta a
+    // rota estadual e repassa cotas ao município. Aresta União→Estado desenhada como ramo curto
+    // na cor da rota, para cima do nó do estado.
+    rotas.forEach(r => {
+      if (r.id === 'rE') { arestas.push({de: 'estado', para: r.id}); }
+      else { arestas.push({de: 'uniao', para: r.id}); if (r.alcanca_estado) arestas.push({de: 'uniao', para: 'estado', rota: r.id, via: true}); }
+      arestas.push({de: r.id, para: 'mun'});
+    });
+    const pos = id => id === 'mun' ? destino : (ORIG.find(o => o.id === id) ? {x: 100, y: ORIG.find(o => o.id === id).y} : nos.find(n => n.id === id));
+    const dash = r => r.chave === 'decreto' ? '8,5' : r.chave === 'discricionária' ? '2,4' : r.chave === 'direta' ? '1,0' : null;
+    const curva = (p, q) => `M${p.x},${p.y} C${(p.x + q.x) / 2},${p.y} ${(p.x + q.x) / 2},${q.y} ${q.x},${q.y}`;
+    const gA = svg.append('g').attr('class', 'arestas');
+    arestas.forEach(a => {
+      const r = rotas.find(x => x.id === (a.rota || (a.de.startsWith('r') ? a.de : a.para))); const p = pos(a.de), q = pos(a.para);
+      if (a.via) { // União → Estado: feixe curto e discreto entre os dois nós de origem
+        const i = rotas.indexOf(r); const x = 100 - 48 + i * 14;
+        gA.append('path').attr('d', `M${x},${p.y + 22} L${x},${q.y - 22}`).attr('fill', 'none').attr('stroke', r.cor).attr('stroke-width', 2.5).attr('stroke-opacity', .7).attr('stroke-dasharray', dash(r)).attr('class', 'aresta via ' + r.id);
+        return;
+      }
+      gA.append('path').attr('d', curva({x: p.x + 88, y: p.y}, {x: q.x - 70, y: q.y})).attr('fill', 'none').attr('stroke', r.cor)
+        .attr('stroke-width', r.chave === 'direta' ? 5 : 3).attr('stroke-opacity', r.ex_ante ? .75 : .9).attr('stroke-dasharray', dash(r))
+        .attr('class', 'aresta ' + r.id);
+      if (r.chave === 'direta') gA.append('path').attr('d', curva({x: p.x + 88, y: p.y}, {x: q.x - 70, y: q.y})).attr('fill', 'none').attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.5);
+    });
+    const no = (g, n, w, h, cor, texto, sub) => {
+      g.append('rect').attr('x', n.x - w / 2).attr('y', n.y - h / 2).attr('width', w).attr('height', h).attr('rx', 8).attr('fill', cor).attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.2);
+      g.append('text').attr('x', n.x).attr('y', n.y - (sub ? 5 : 0)).attr('text-anchor', 'middle').attr('dominant-baseline', 'middle').attr('fill', MonitorMapas.cor('branco'))
+        .attr('font-family', "'Archivo', Arial, sans-serif").attr('font-size', 12.5).attr('font-weight', 600).text(texto);
+      if (sub) g.append('text').attr('x', n.x).attr('y', n.y + 11).attr('text-anchor', 'middle').attr('dominant-baseline', 'middle').attr('fill', MonitorMapas.cor('branco')).attr('fill-opacity', .9)
+        .attr('font-family', "'Archivo Narrow', Arial, sans-serif").attr('font-size', 11).text(sub);
+    };
+    const gN = svg.append('g').attr('class', 'nos');
+    ORIG.forEach(o => no(gN, {x: 100, y: o.y}, 176, 46, MonitorMapas.cor('abissal'), o.nome, o.id === 'estado' ? 'recebe e repassa' : 'origem federal'));
+    svg.append('text').attr('x', 100).attr('y', 352).attr('text-anchor', 'middle').attr('font-size', 10.5).attr('fill', MonitorMapas.cor('muted-token')).attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('as linhas verticais: o que a União repassa ao estado');
+    svg.append('text').attr('x', 100).attr('y', 366).attr('text-anchor', 'middle').attr('font-size', 10.5).attr('fill', MonitorMapas.cor('muted-token')).attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('(FPE · fundo a fundo · defesa civil · convênios)');
+    no(gN, destino, 130, 44, MonitorMapas.cor('abissal'), 'Município', null);
+    nos.forEach(n => {
+      const g = gN.append('g').attr('tabindex', 0).attr('role', 'img').attr('aria-label', n.n + ' · ' + n.nome + ' — chave: ' + n.chave + (n.ex_ante ? '' : ' (resposta)'))
+        .on('mouseenter', evt => showTip('<strong>' + n.n + ' · ' + esc(n.nome) + '</strong><br><em>chave: ' + esc(n.chave) + (n.ex_ante ? '' : ' · resposta') + '</em><br>' + esc(n.base_legal) + (n.base_estado ? '<br><em>Nível estadual:</em> ' + esc(n.base_estado) : '') + '<br><em>O decreto destranca:</em> ' + esc(n.decreto_destranca), evt))
+        .on('mousemove', evt => showTip('<strong>' + n.n + ' · ' + esc(n.nome) + '</strong><br><em>chave: ' + esc(n.chave) + '</em><br>' + esc(n.base_legal), evt))
+        .on('focus', () => showTip('<strong>' + n.n + ' · ' + esc(n.nome) + '</strong><br>' + esc(n.base_legal), {clientX: 24, clientY: 24}))
+        .on('mouseleave', hideTip).on('blur', hideTip)
+        .on('mouseenter.realce', () => svg.selectAll('.aresta').attr('stroke-opacity', .15).filter('.' + n.id).attr('stroke-opacity', 1))
+        .on('mouseleave.realce', () => svg.selectAll('.aresta').attr('stroke-opacity', .75));
+      no(g, n, 300, passo - 8, n.cor, n.n + ' · ' + n.nome, 'chave: ' + n.chave + (n.ex_ante ? '' : ' · resposta'));
+    });
+    MonitorMapas.legenda('legRede', [{cor: MonitorMapas.cor('musgo'), rotulo: 'contínuo: regra'}, {cor: MonitorMapas.cor('argila'), rotulo: 'tracejado: decreto (resposta)'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'pontilhado: discricionária'}, {cor: MonitorMapas.cor('mineral'), rotulo: 'duplo: execução direta'}]);
+    fonteFigura('boxRede', 'Fonte: Monitor El Niño Brasil');
+  })();
+  document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="chart-box" style="border-left:4px solid '+r.cor+'"><h3 class="map-card-h">'+r.n+' · '+esc(r.nome)+' <span style="font-weight:400; text-transform:none; letter-spacing:0;">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
+    + '</div>').join('');
+  // 2 · série (faixa do defeso sempre; barras só quando houver dados)
+  (function(){
+    const svg = d3.select('#svgSerie'), W = 900, H = 260, m = {t: 16, r: 16, b: 34, l: 60};
+    const x = d3.scaleTime().domain([new Date(2026,0,1), new Date(2026,11,31)]).range([m.l, W - m.r]);
+    const d0 = new Date(SERIE.defeso.inicio + 'T00:00:00'), d1 = new Date(SERIE.defeso.fim + 'T00:00:00');
+    svg.append('rect').attr('x', x(d0)).attr('y', m.t).attr('width', x(d1) - x(d0)).attr('height', H - m.t - m.b).attr('fill', MonitorMapas.cor('argila')).attr('fill-opacity', .13);
+    svg.append('text').attr('x', (x(d0) + x(d1)) / 2).attr('y', m.t + 16).attr('text-anchor','middle').attr('font-size', 12).attr('fill', MonitorMapas.cor('argila'))
+      .attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('Período eleitoral 04/07–25/10: voluntárias suspensas por lei (art. 73, VI, a) — não é inação');
+    const semanas = SERIE.semanas || [];
+    if (!semanas.length) {
+      svg.append('text').attr('x', W/2).attr('y', H/2 + 8).attr('text-anchor','middle').attr('font-size', 13).attr('fill', MonitorMapas.cor('muted-token')).text('Série ainda não coletada — lacuna declarada');
+    } else {
+      const y = d3.scaleLinear().domain([0, d3.max(semanas, s => ROTAS.rotas.reduce((a, r) => a + (s[r.id] || 0), 0))]).nice().range([H - m.b, m.t]);
+      const pilha = d3.stack().keys(ROTAS.rotas.map(r => r.id))(semanas.map(s => Object.assign({}, s)));
+      svg.selectAll('g.rota').data(pilha).join('g').attr('fill', d => ROTAS.rotas.find(r => r.id === d.key).cor)
+        .selectAll('rect').data(d => d).join('rect').attr('x', d => x(new Date(d.data.semana))).attr('width', 10)
+        .attr('y', d => y(d[1])).attr('height', d => y(d[0]) - y(d[1]));
+      svg.append('g').attr('transform', 'translate(' + m.l + ',0)').call(d3.axisLeft(y).ticks(5).tickFormat(v => 'R$ ' + (v/1e6).toFixed(0) + ' mi'));
+      (document.getElementById('notaSerie')||{}).textContent = 'Série semanal 2026 por rota; fonte: dados abertos do Portal da Transparência, consulta registrada no bloco 8.';
+    }
+    svg.append('g').attr('transform', 'translate(0,' + (H - m.b) + ')').call(d3.axisBottom(x).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat('%b')));
+    MonitorMapas.legenda('legSerie', ROTAS.rotas.map(r => ({cor: r.cor, rotulo: r.n + ' · ' + r.nome})).concat([{cor: MonitorMapas.cor('argila'), opacidade: .35, rotulo: 'faixa do defeso'}]));
+    fonteFigura('boxSerie', semanas.length ? 'Fonte: TransfereGov — Dados Abertos · carga ' + esc(SERIE.carga_da_fonte || SERIE.corte) : 'Fonte: TransfereGov — Dados Abertos · sem coleta até o corte');
+  })();
+  // 3 · por estado
+  const FUNDO = {localizado:['Localizado',MonitorMapas.cor('musgo')], em_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], nao_localizado:['Não localizado (bateria datada)',MonitorMapas.cor('argila')], nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')]};
+  const fundo = uf => ((PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}).status || 'nao_verificado';
+  desenharMapa('mapaFundo','legFundo', uf => (FUNDO[fundo(uf)] || FUNDO.nao_verificado)[1],
+    uf => { const f = (PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}; return '<em>' + esc((FUNDO[fundo(uf)] || FUNDO.nao_verificado)[0]) + '</em>' + (f.instrumento ? '<br>' + esc(f.instrumento) + (f.norma ? ' · ' + esc(f.norma) : '') : '') + (f.condicionalidade ? '<br>Condição: ' + esc(f.condicionalidade) : '') + (f.verificado_em ? '<br>verificado em ' + esc(f.verificado_em) : '<br>bateria estadual ainda não executada'); },
+    Object.values(FUNDO).map(v => ({cor: v[1], rotulo: v[0]})));
+  fonteFigura('boxFundoEstadual', 'Fonte: Monitor El Niño Brasil · corte ' + esc(PORUF.corte));
+  const sel = document.getElementById('selRota'); sel.innerHTML = ROTAS.rotas.map(r => '<option value="'+r.id+'">'+r.n+' · '+esc(r.nome)+'</option>').join('');
+  function valorHab(uf, rota){ const v = (((PORUF.uf[uf] || {}).rotas || {})[rota] || {}).valor_2026; const pop = UFS.includes(uf) ? Object.entries(POP).filter(([c]) => String(c).startsWith(String(UFS.indexOf(uf)))).length : 0; return (v == null) ? null : v; }
+  function desenharHab(){
+    const rota = sel.value; const vals = UFS.map(uf => valorHab(uf, rota)).filter(v => v != null);
+    const cor = d3.scaleSequential(d3.interpolateBlues).domain([0, d3.max(vals) || 1]);
+    desenharMapa('mapaHab','legHab', uf => { const v = valorHab(uf, rota); return v == null ? NEUTRA : cor(v); },
+      uf => { const v = valorHab(uf, rota); return v == null ? 'Aguardando coleta (rota ' + esc(rota) + ')' : brl(v); },
+      vals.length ? [{cor: cor(0), rotulo: 'menor'}, {cor: cor(d3.max(vals)), rotulo: 'maior'}] : [{cor: NEUTRA, rotulo: 'aguardando coleta'}]);
+  }
+  desenharHab(); sel.addEventListener('change', desenharHab);
+  fonteFigura('boxPorHab', 'Fontes: Portal da Transparência, Tesouro, FNS, FNAS · sem coleta até o corte · população: Censo 2022 (IBGE)');
+  // 4 · resposta por decreto
+  const svgDin = desenharMapa('mapDinheiro','legDinheiro', uf => NEUTRA, uf => 'Sem repasse ou reconhecimento nomeado até o corte',
+    [{cor:MonitorMapas.cor('musgo'), rotulo:'Repasse preventivo confirmado (Prepara RS)'}, {cor:MonitorMapas.cor('argila'), rotulo:'Reconhecimento federal (rota 3, resposta)'}]);
+  const repassesGeo = (TRANSF.repasses_rs || []).filter(r => r.lat);
+  const rEsc = d3.scaleSqrt().domain([0, d3.max(repassesGeo, r => r.valor) || 1]).range([1.5, 9]);
+  svgDin.append('g').selectAll('circle').data(repassesGeo).join('circle')
+    .attr('cx', r => projection([r.lon, r.lat])[0]).attr('cy', r => projection([r.lon, r.lat])[1]).attr('r', r => rEsc(r.valor))
+    .attr('fill', MonitorMapas.cor('musgo')).attr('fill-opacity', .75).attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', .6)
+    .on('mouseenter', (evt, r) => showTip('<strong>' + esc(r.municipio || r.nome) + ' (RS)</strong><br>' + brl(r.valor) + ' · Prepara RS', evt)).on('mouseleave', hideTip);
+  const recs = (ATOS.eventos || []).filter(e => e.causa === 'reconhecimento federal' && e.lat);
+  svgDin.append('g').selectAll('circle.rec').data(recs).join('circle').attr('class','rec')
+    .attr('cx', e => projection([e.lon, e.lat])[0]).attr('cy', e => projection([e.lon, e.lat])[1]).attr('r', 4).attr('fill', MonitorMapas.cor('argila')).attr('fill-opacity', .85);
+  // 04/09/2026: os totais são dado de legenda, não nota — entram na própria legenda do mapa.
+  MonitorMapas.legenda('legDinheiro', [
+    {cor:MonitorMapas.cor('musgo'), rotulo:'Repasse preventivo confirmado (Prepara RS): ' + brl(repassesGeo.reduce((s, r) => s + r.valor, 0)) + ' · ' + repassesGeo.length + ' municípios'},
+    {cor:MonitorMapas.cor('argila'), rotulo:'Reconhecimento federal (rota 3, resposta): ' + recs.length}]);
+  (document.getElementById('dinTotalRS')||{}).textContent = brl(repassesGeo.reduce((s, r) => s + r.valor, 0));
+  (document.getElementById('dinNumRS')||{}).textContent = repassesGeo.length;
+  (document.getElementById('dinNumFed')||{}).textContent = recs.length;
+  fonteFigura('boxDinheiro', 'Fontes: FUNDEC/RS · DOU (SEDEC/MIDR) · corte ' + esc(ROTAS.corte));
+  const porUF = {}; recs.forEach(e => { const p = porUF[e.uf] = porUF[e.uf] || {n: 0, m: new Set()}; p.n++; p.m.add(e.nome); });
+  document.querySelector('#tblResposta tbody').innerHTML = UFS.map(uf => '<tr><td><strong>' + uf + '</strong></td><td>' + (porUF[uf] ? porUF[uf].n : 0) + '</td><td>' + (porUF[uf] ? [...porUF[uf].m].map(esc).join(', ') : '—') + '</td><td>' + brl((((PORUF.uf[uf] || {}).rotas || {}).r3 || {}).valor_2026) + '</td></tr>').join('');
+  fonteFigura('boxResposta', recs.length ? 'Fonte: DOU (SEDEC/MIDR) · ' + esc(ROTAS.corte) : 'Fonte: DOU (SEDEC/MIDR) · sem coleta até o corte');
+  // 5 · painel
+  if (PAINEL && PAINEL.lista_publicada_em) {
+    (document.getElementById('notaPainel')||{}).textContent = 'Painel de ' + PAINEL.n + ' municípios; semente ' + PAINEL.semente + ', lista publicada em ' + PAINEL.lista_publicada_em + ' (hash ' + String(PAINEL.hash_lista).slice(0,12) + '…).';
+    document.getElementById('painelResumo').innerHTML = '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>Região × porte</th><th>Municípios</th><th>Com instrumento publicado</th><th>Ainda não verificados</th></tr></thead><tbody>'
+      + (PAINEL.agregados || []).map(a => '<tr><td>' + esc(a.regiao) + ' · ' + esc(a.porte) + '</td><td>' + a.n + '</td><td>' + a.com_instrumento + '</td><td>' + a.nao_verificados + '</td></tr>').join('') + '</tbody></table></div>';
+    fonteFigura('boxPainel', 'Fonte: Monitor El Niño Brasil');
+  } else {
+    fonteFigura('boxPainel', 'Fonte: Monitor El Niño Brasil · painel não publicado até o corte');
+  }
+  // 6 · programas permanentes
+  const PROG = [
+    {nome: 'Garantia-Safra', base: 'Lei 10.420/2002 · MDA', regra: 'adesão municipal anual antes do plantio; cota municipal 6%; pagamento por perda verificada — sem decreto', lista: 'relação de municípios aderentes: a coletar (MDA)'},
+    {nome: 'Programa Cisternas', base: 'MDS', regra: 'adesão e projeto; contínuo', lista: 'execução por município: a coletar (MDS)'},
+    {nome: 'Operação Carro-Pipa', base: 'Exército (CMNE) / MIDR', regra: 'inclusão condicionada, na maior parte dos casos, a reconhecimento federal', lista: 'LISTA NÃO PÚBLICA — portal do Exército bloqueou acesso automatizado em 02/09/2026; pedido de LAI gerado'},
+    {nome: 'CISC — Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal não localizada — não inventar'},
+    {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: em coleta'},
+  ];
+  document.getElementById('programasCards').innerHTML = PROG.map(p => '<div class="chart-box"><h3 class="map-card-h">' + esc(p.nome) + '</h3></div>').join('');
+  // 7 · compromissos + gráfico por área
+  document.querySelector('#tblCompromissos tbody').innerHTML = (COMP.itens || []).map(c => '<tr><td>' + esc(c.nome) + '</td><td>' + esc(c.esfera || '—') + '</td><td>' + esc(c.instrumento || '—') + (c.fonte ? ' <a href="' + esc(c.fonte) + '" target="_blank" rel="noopener">fonte</a>' : '') + '</td><td>' + brl(c.valor_total) + '</td><td>' + esc((ROTAS.rotas.find(r => r.id === c.rota) || {}).nome || c.rota) + '</td><td>' + esc((c.execucao || {}).status === 'aguardando_coleta' ? 'aguardando coleta' : (c.execucao || {}).status || '—') + '</td></tr>').join('');
+  fonteFigura('boxCompromissos', 'Fontes: as citadas em cada linha · execução: Portal da Transparência');
+  fonteFigura('boxSemDecretar', 'Fontes: as bases legais citadas em cada item');
+  const financeData = [
+  {label:'Segurança Hídrica', value:14217500000},
+  {label:'Saúde', value:1335000000},
+  {label:'Segurança Alimentar', value:1335000000},
+  {label:'Incêndios Florestais', value:858000000},
+];
+new Chart(document.getElementById('chartFinance'), {
+  type:'bar',
+  data:{ labels: financeData.map(d=>d.label),
+    datasets:[{ data: financeData.map(d=>d.value),
+      backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? MonitorMapas.cor('musgo')
+        : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? MonitorMapas.cor('argila')
+        : /aliment|agr[íi]cola|safra/i.test(d.label) ? MonitorMapas.cor('ambar')
+        : /sa[úu]de/i.test(d.label) ? MonitorMapas.cor('mineral') : MonitorMapas.cor('areia')),
+      borderRadius:4 }] },
+  options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{ legend:{display:false} },
+    scales:{ x:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{ callback:v => 'R$ '+(v/1e9).toFixed(1)+'bi' } }, y:{ grid:{display:false} } } }
+});
+
+
+  fonteFigura('boxFinance', 'Fonte: Plano federal El Niño 2026/2027 · valores anunciados');
+  // 8 · fontes e consultas
+  fonteFigura('boxFontesMonit', 'Fontes: as listadas · verificadas em 25/08/2026');
+  const cons = CONSULTAS.consultas || [];
+  if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
+  fonteFigura('boxConsultas', cons.length ? 'Fonte: Monitor El Niño Brasil' : 'Fonte: Monitor El Niño Brasil · sem consulta até o corte');
+}
+__load().catch(err => { const m = document.getElementById('subFin'); if (m) m.insertAdjacentHTML('afterend', '<p class="note" style="color:var(--rust)">Erro ao carregar os dados: ' + esc(err.message) + '</p>'); });
+
+window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });

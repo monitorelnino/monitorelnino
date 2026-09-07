@@ -1,0 +1,943 @@
+// ===== index.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
+(function(){
+  function banner(msg){
+    if(document.getElementById('errBanner')) return;
+    document.body.insertAdjacentHTML('afterbegin',
+      '<div id="errBanner" style="background:var(--argila);color:#fff;padding:12px 20px;font-family:Archivo, system-ui, sans-serif;font-size:13.5px;">'+msg+'</div>');
+  }
+  window.addEventListener('error', function(e){
+    banner('Erro ao renderizar: ' + (e.message||'desconhecido') + '. Recarregue a página; se persistir, verifique a conexão.');
+  });
+  window.addEventListener('DOMContentLoaded', function(){
+    if (typeof window.jspdf === 'undefined'){
+      banner('A biblioteca de geração de PDF (jsPDF) não carregou do CDN. É preciso conexão com a internet para baixar relatórios em PDF — o resto da página funciona normalmente.');
+    }
+  });
+})();
+
+// ===== index.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
+let VMUN, RESP, RESP_SERIE, RESP_MUN;
+// v3.1 §3/§5: contador de RESPOSTA — contagens e frações, nunca combinadas com o índice (C17)
+function respostaTile(uf){
+  const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
+  const fm = Math.round(100 * r.fracao_municipios), fp = Math.round(100 * r.fracao_populacao);
+  return `<div class="tile-bar2" title="Resposta: ${r.n_municipios} de ${r.total_municipios} municípios sob decreto · ${fp}% da população"><div class="tile-fill2" style="width:${Math.max(fm, r.n_municipios ? 1 : 0)}%"></div>${r.n_municipios ? `<span class="tile-pop2" style="left:${fp}%"></span>` : ''}</div>`;
+}
+// §5: campos 3–5 da face do cartão — nível de verificação da UF, instrumento estadual, capital (uma linha cada)
+function faceTile(uf){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const d = (DATA.ufs || []).find(u => u.uf === uf) || {};
+  const niv = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {};
+  const tot = Object.values(niv).reduce((a, b) => a + b, 0);
+  const acima = (niv.estadual || 0) + (niv.municipal_completo || 0) + (niv.municipal_parcial || 0);
+  const ST = {NOVO:'novo', READ:'readequado', VIG:'vigente', ELAB:'em elaboração', LAC:'não localizado'};
+  return `<div class="tile-face">
+    <span>${acima} de ${tot} verif. além do nacional</span>
+    <span>${esc(ST[d.status] || d.status)}${d.data && d.data !== 'Recorrente' ? ' · ' + esc(d.data) : d.data ? ' · recorrente' : ''}</span>
+    <span>${d.capital && d.capital.nome ? esc(d.capital.nome) + ' · ' + esc(String(d.capital.status || '').toLowerCase()) : 'capital —'}</span></div>`;
+}
+function barraResposta(uf){
+  const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
+  const fm = 100 * r.fracao_municipios, fp = 100 * r.fracao_populacao;
+  const rec = r.tons.reconhecido, dec = r.tons.decretado_sem_reconhecimento, n = r.n_municipios;
+  const wRec = n ? fm * rec / n : 0, wDec = n ? fm * dec / n : 0;
+  return `<div class="field"><div class="k">Resposta · decretos no ciclo</div><div class="v">
+    <div class="barra-resp" role="img" aria-label="${n} de ${r.total_municipios} municípios sob decreto; ${fp.toFixed(0)}% da população" title="tons: ${rec} reconhecido(s) · ${dec} decretado(s) sem reconhecimento · fatias: ${r.fatias.em_classificacao} em classificação (evento observado ainda não lido)">
+      <i class="rec" style="width:${wRec.toFixed(1)}%"></i><i class="dec" style="left:${wRec.toFixed(1)}%; width:${wDec.toFixed(1)}%"></i>${n ? `<b style="left:${fp.toFixed(1)}%"></b>` : ''}</div>
+    <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${fp.toFixed(0)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto em ' + r.primeiro_decreto : ''}<br>
+    <span class="fv" style="color:var(--muted);">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
+}
+let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
+function nivelVerificacao(uf, nome){
+  // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
+  const cod = MUN_COD[uf + '|' + nome];
+  if (!cod || !VRESUMO || !VRESUMO.niveis_acima_do_padrao) return 'nao_verificado';
+  return VRESUMO.niveis_acima_do_padrao[String(cod)] || 'nao_verificado';
+}
+const NIVEL_ROTULO = { nao_verificado: 'ainda não verificado individualmente',
+  nacional: 'verificado em fontes nacionais', estadual: 'verificado em fontes nacionais e estaduais',
+  municipal_completo: 'verificação completa' };
+function renderContadorResposta(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const N = RESP && RESP.nacional; const box = document.getElementById('contadorResposta'); if (!box) return;
+  if (!N) { document.getElementById('respLinha').textContent = 'sem coleta até o corte'; document.getElementById('respFonte').textContent = 'Fonte: Monitor El Niño Brasil · sem coleta'; return; }
+  document.getElementById('respNum').textContent = N.n_municipios.toLocaleString('pt-BR');
+  document.getElementById('respDen').textContent = 'municípios (' + (100 * N.fracao_municipios).toFixed(1).replace('.', ',') + '%)';
+  document.getElementById('respLinha').innerHTML = (100 * N.fracao_populacao).toFixed(1).replace('.', ',') + '% da população sob decreto desde ' + esc(RESP.inicio_ciclo) + (N.primeiro_decreto ? ' · primeiro decreto em ' + esc(N.primeiro_decreto) : '') + '<br>' + N.reconhecidos + ' reconhecidos pela União · ' + N.decretados_sem_reconhecimento + ' decretados sem reconhecimento';
+  const S = (RESP_SERIE && RESP_SERIE.semanas) || []; const svg = document.getElementById('respSerie');
+  if (S.length && svg) {
+    const W = 320, H = 44, max = Math.max(1, ...S.map(x => x.municipios)), bw = W / S.length;
+    let g = '';
+    S.forEach((x, i) => { if (x.defeso) g += `<rect x="${(i*bw).toFixed(1)}" y="0" width="${bw.toFixed(1)}" height="${H}" fill="var(--areia)" opacity=".45"/>`; });
+    S.forEach((x, i) => { const h = H * x.municipios / max; g += `<rect x="${(i*bw+1).toFixed(1)}" y="${(H-h).toFixed(1)}" width="${Math.max(1, bw-2).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--rust)"><title>semana de ${x.semana}: ${x.municipios} município(s)</title></rect>`; });
+    svg.innerHTML = g;
+    document.getElementById('respFim').textContent = S[S.length-1].semana.split('-').reverse().slice(0,2).join('/');
+  }
+  MonitorMapas.legenda('legResp', [{cor: MonitorMapas.cor('argila'), rotulo: 'primeiro decreto na semana'}, {cor: MonitorMapas.cor('areia'), rotulo: 'período eleitoral (04/07–25/10)'}]);
+  document.getElementById('respFonte').textContent = 'Fonte: DOU/SEDEC (S2iD), diários oficiais estaduais e municipais · ' + esc(RESP.gerado_em);
+}
+async function __load(){
+  let __ref;
+  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, __ref, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO] = await Promise.all(
+    ['geo_uf','percentual_uf','pontos_mapa','municipios','indice','estados','transferencias','municipios_ibge_referencia','meta','populacao_censo2022','recursos_uf','financiamento_uf','consist','atos_resposta','prazos_uf', 'verificacao_resumo']
+      .map(f => fetch('data/' + f + '.json').then(r => {
+        if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json');
+        return r.json();
+      }))
+  );
+  // AUD-02 (auditoria externa, 02/09/2026): todo texto vindo dos dados é escapado NA CARGA,
+  // antes de qualquer interpolação em innerHTML; URLs só sobrevivem se forem https://.
+  // Os dados não contêm marcação legítima (verificado em 02/09/2026), então escapar é neutro.
+  (function sanitizar(){
+    const esc = v => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const walk = (o, chave) => {
+      if (Array.isArray(o)) { for (let i = 0; i < o.length; i++) o[i] = walk(o[i], chave); return o; }
+      if (o && typeof o === 'object') { for (const k of Object.keys(o)) o[k] = walk(o[k], k); return o; }
+      if (typeof o === 'string') {
+        if (/^url/i.test(chave || '') || /_url$/i.test(chave || '')) return /^https:\/\//i.test(o.trim()) ? o.trim() : '';
+        return esc(o);
+      }
+      return o;
+    };
+    [TABELA_MUNICIPIOS, MAP_POINTS, DATA, ATOS_RESPOSTA, TRANSFERENCIAS, RECURSOS, FIN, PRAZOS, CONSIST].forEach(x => walk(x, ''));
+  })();
+  MUN_REF = {};
+  __ref.forEach(m => (MUN_REF[m.uf] = MUN_REF[m.uf] || []).push(m.nome));
+  __ref.forEach(m => {
+    const c = String(m.codigo_ibge).padStart(7, '0');
+    MUN_COD[m.uf + '|' + m.nome] = c;
+    MUN_LATLON[m.uf + '|' + m.nome] = [m.lon, m.lat];
+    POP_UF[m.uf] = (POP_UF[m.uf] || 0) + (POP_CENSO[c] || 0);  // município pós-Censo: 0
+  });
+  Object.values(MUN_REF).forEach(a => a.sort((x,y) => x.localeCompare(y)));
+  // v3.1 §3: contador de resposta (peso zero; arquivos próprios)
+  try {
+    [RESP, RESP_SERIE, RESP_MUN] = await Promise.all(['data/resposta/por_uf.json','data/resposta/serie_semanal.json','data/resposta/municipios_decretados.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null)));
+  } catch(e) { RESP = RESP_SERIE = RESP_MUN = null; }
+  __init();
+  renderContadorResposta();
+  // PR-N0 §1.2: cobertura do diário por município (arquivo pequeno; ausente = rótulo 'ainda não testada')
+  fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(d => {
+    VMUN = {}; Object.entries((d && d.municipios) || {}).forEach(([k, v]) => { VMUN[String(k).padStart(7, '0')] = v.cobertura_qd; });
+  }).catch(() => { VMUN = {}; });
+}
+function __init(){
+const MEDIA_NACIONAL = +(Object.values(MARE).reduce((s,v)=>s+v.total,0)/27).toFixed(1);
+const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VIG:"Vigente-recorrente", LAC:"Sem plano localizado"};
+
+// ---- A história em cinco números (v3.1 §4.8): sempre calculados dos dados carregados, nunca escritos à mão.
+const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 'LAC').map(([uf]) => uf);
+(function cincoNumeros(){
+  const el = id => document.getElementById(id); const fx = v => v < 25 ? 'estágio inicial' : v < 50 ? 'em construção' : v < 70 ? 'consolidado' : 'avançado';
+  el('n2Publicado').textContent = String(MEDIA_NACIONAL).replace('.', ',') + ' · ' + fx(MEDIA_NACIONAL);
+  fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).then(sr => { const oni = sr && sr.enos && sr.enos.oni && sr.enos.oni.serie; const u = oni && oni[oni.length - 1];
+    el('n1Anunciado').textContent = u ? 'ONI ' + (u.anomalia >= 0 ? '+' : '') + String(u.anomalia).replace('.', ',') + ' °C · ' + u.trimestre + '/' + u.ano : 'sem coleta'; }).catch(() => { el('n1Anunciado').textContent = 'sem coleta'; });
+  if (typeof RESP !== 'undefined' && RESP && RESP.nacional) el('n3Decretado').textContent = RESP.nacional.n_municipios.toLocaleString('pt-BR') + ' · ' + (100 * RESP.nacional.fracao_populacao).toFixed(1).replace('.', ',') + '% da pop.';
+  fetch('data/financiamento/serie_nacional.json').then(r => r.ok ? r.json() : null).then(sn => { const t = sn && sn.semanas ? sn.semanas.reduce((a, x) => a + (+x.r5 || 0), 0) : 0;
+    el('n4Chegou').textContent = t ? 'R$ ' + (t / 1e9).toFixed(1).replace('.', ',') + ' bi' : 'sem coleta'; }).catch(() => { el('n4Chegou').textContent = 'sem coleta'; });
+  const nv = (VRESUMO && VRESUMO.totais_por_nivel) || {}; const semInd = (nv.nacional || 0) + (nv.nao_verificado || 0);
+  el('n5NaoSabemos').textContent = semInd ? semInd.toLocaleString('pt-BR') + ' de 5.571' : '—';
+})();
+
+// Metadados do cabeçalho e do rodapé: nunca mais texto fixo (achado de Patricia,
+// 31/08/2026 — "Fonte: BD_El_Nino_2026_2027_Brasil.xlsx" era um nome de arquivo
+// que não existe em lugar nenhum do projeto; corrigido para apontar à seção real
+// de fontes verificadas, e os números/data passam a vir de META e MUN_REF.
+(function(){
+  const totalMun = Object.values(MUN_REF).reduce((s, arr) => s + arr.length, 0);
+  const elUfsMun = document.getElementById('metaUfsMun');
+  if (elUfsMun) elUfsMun.textContent = Object.keys(MARE).length + ' UFs · ' + totalMun.toLocaleString('pt-BR') + ' municípios cadastrados';
+  const dataRef = (META && META.atualizado_em) || (META && META.corte) || '';
+  const elVerif = document.getElementById('metaUltimaVerif');
+  if (elVerif && dataRef) elVerif.textContent = dataRef;
+  const elFooter = document.getElementById('metaAtualizado');
+  if (elFooter && dataRef) elFooter.textContent = dataRef;
+})();
+
+const regionsEl = document.getElementById('regions');
+DATA.regions.forEach(region=>{
+  const col = document.createElement('div');
+  col.className = 'region-col';
+  col.innerHTML = `<h3>${region}</h3><div class="tiles" id="tiles-${region}"></div>`;
+  regionsEl.appendChild(col);
+});
+
+DATA.ufs.forEach(item=>{
+  const container = document.getElementById('tiles-'+item.regiao);
+  const tile = document.createElement('div');
+  tile.className = `tile st-${item.status}`;
+  tile.dataset.uf = item.uf;
+  tile.style.background = MonitorMapas.cor('branco');
+  tile.style.color = 'var(--ink)';
+  const v = (typeof MARE !== 'undefined' && MARE[item.uf]) ? MARE[item.uf].total : null;
+  tile.title = `${item.uf} · MARÉ ${v == null ? 'sem dado' : String(v).replace('.', ',')} / 100`;
+  tile.innerHTML = `<span class="tile-uf">${item.uf}</span>` +
+    (v == null
+      ? '<span class="tile-score">·</span>'
+      : `<span class="tile-score" data-contar="${v}">0,0</span>
+         <div class="tile-bar"><div class="tile-fill" data-alvo="${v}" style="--galvo:${Math.max(v, 0.1)};"></div></div>`) +
+    respostaTile(item.uf) +
+    faceTile(item.uf) +
+    (item.capital ? '<span class="cap-dot"></span>' : '');
+  tile.addEventListener('click', ()=>{ selectUF(item.uf, tile); animarGauges(document.getElementById('detail')); });
+  container.appendChild(tile);
+});
+animarGauges(document.body); // 31/08/2026: corrigido de getElementById('regions') — o medidor principal do herói
+                              // fica FORA de #regions e nunca era animado; document.body cobre os dois.
+
+// ---- Cartão padrão: a média nacional preenche a coluna de detalhe ----
+function renderDetalhePadrao(){
+  const det = document.getElementById('detail');
+  if (!det || det.innerHTML.trim() || typeof MARE === 'undefined') return;
+  const mediaBR = +(Object.values(MARE).reduce((s, v) => s + v.total, 0) / 27).toFixed(1);
+  det.innerHTML = `
+    <div class="uf-name">Brasil <span style="color:var(--muted); font-weight:400; font-size:15px;">(média nacional)</span></div>
+    ${miniGauge(mediaBR, 'MARÉ · média dos 27')}
+    <p class="placeholder">Clique em um estado na grade para abrir o detalhe: componentes verificados, situação da capital e o que cobrar.</p>`;
+  det.hidden = false;
+  animarGauges(det);
+}
+setTimeout(renderDetalhePadrao, 0);
+
+
+function selectUF(uf, tileEl){
+  document.querySelectorAll('.tile').forEach(t=>t.classList.remove('active'));
+  tileEl.classList.add('active');
+  const d = DATA.ufs.find(x=>x.uf===uf);
+  const badgeClass = 'st-'+d.status;
+  // Link do documento da capital: buscado em TABELA_MUNICIPIOS (fonte única), nunca
+  // duplicado em DATA — mesma disciplina do resto do banco. Sem link, nomeado como
+  // não verificado (regra de ouro: nunca link presumido ou fabricado).
+  const capReg = d.capital ? TABELA_MUNICIPIOS.find(m => m.uf === uf && m.nome === d.capital.nome) : null;
+  const linkCapital = capReg && capReg.url
+    ? `<div class="card-link"><a href="${capReg.url}" target="_blank" rel="noopener">Ver fonte oficial →</a></div>`
+    : capReg && capReg.categoria === 'nao_localizado'
+      ? `<div class="card-note">Nenhum documento localizado até o corte dos dados.</div>`
+      : capReg && capReg.categoria === 'nao_verificado'
+        ? `<div class="card-note">Ainda não verificada individualmente com a bateria completa de fontes.</div>`
+        : `<div class="card-note">Documento nomeado; link oficial em verificação.</div>`;
+  const capitalBlock = d.capital ? `
+    <div class="capital-box">
+      <div class="card-kicker">Capital · verificação individual</div>
+      <div class="card-title">${d.capital.nome} <span class="sub">· ${d.capital.status}</span></div>
+      <div class="card-body">${d.capital.info}</div>
+      ${linkCapital}
+    </div>` : `<p class="placeholder" style="margin-top:10px;">Capital sem verificação individual até o corte.</p>`;
+
+  document.getElementById('detail').hidden = false;
+  document.getElementById('detail').innerHTML = `
+    <div class="uf-name">${d.nome} <span style="color:var(--muted); font-weight:400; font-size:15px;">(${d.uf})</span></div>
+    ${typeof MARE !== 'undefined' && MARE[d.uf] ? miniGauge(MARE[d.uf].total) : ''}
+    <div class="uf-region">${d.regiao}</div>
+    <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
+    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + d.estrutura.doc + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
+    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${d.doc}${d.data ? ' (' + d.data + ')' : ''}</div></div>
+    <div class="field"><div class="k">Órgão responsável</div><div class="v">${d.orgao}</div></div>
+    ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || d.adpf743.status) + '</span> intimado em ' + d.adpf743.intimado_em + ' · decisão de ' + d.adpf743.decisao + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' : '') + '</div></div>' : ''}
+    ${barraResposta(d.uf)}
+    ${typeof MARE !== 'undefined' && MARE[d.uf] && MARE[d.uf].estado_estrutura !== undefined ? '<div class="field"><div class="k">Componente estadual</div><div class="v">estrutura ' + MARE[d.uf].estado_estrutura + ' · instrumento ' + MARE[d.uf].estado_operacional + ' → média ' + MARE[d.uf].estado + ' (pesos iguais)</div></div>' : ''}
+    ${(function(){ // C12: instrumento publicado dentro da janela do defeso (04/07–25/10/2026) — fato datado, sem juízo
+        const m = String(d.data || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); if (!m) return '';
+        const dt = new Date(+m[3], +m[2]-1, +m[1]); const ini = new Date(2026,6,4), fim = new Date(2026,9,25);
+        return (dt >= ini && dt <= fim) ? `<div class="card-note">Publicado em ${d.data}, dentro do período eleitoral (04/07–25/10/2026), quando transferências voluntárias e publicidade institucional estão suspensas por lei — a publicação em diário oficial é ato oficial, não publicidade (METODOLOGIA §24).</div>` : '';
+      })()}
+    ${capitalBlock}
+    <button type="button" class="btn-pdf" id="btnPDFEstado" data-uf="${d.uf}">Baixar relatório do estado (PDF)</button>
+    ${htmlPedidoAcesso(d.uf, null)}
+    <details class="pedido-lai selo-embed"><summary>Selo para embutir no seu site</summary>
+      <p class="note" style="margin:8px 0;">Regravado a cada atualização com o número publicado. Quem embute mostra a própria faixa — e o link traz o leitor para a verificação.</p>
+      <img src="selos/mare-${d.uf}.svg" width="360" height="92" alt="Selo MARÉ de ${d.nome}: ${String(MARE[d.uf].total).replace('.', ',')} de 100" style="max-width:100%; height:auto; display:block; margin:0 0 8px;">
+      <textarea class="pedido-texto" readonly rows="3" aria-label="Código HTML do selo">&lt;a href="https://monitorelnino.com.br/#${d.uf}"&gt;&lt;img src="https://monitorelnino.com.br/selos/mare-${d.uf}.svg" width="360" height="92" alt="MARÉ, Monitor El Niño Brasil: ${d.nome}, preparação demonstrável publicamente"&gt;&lt;/a&gt;</textarea>
+      <button type="button" class="btn-pdf btn-copiar-pedido">Copiar código</button></details>
+    <p class="note" style="margin-top:10px;">Acompanhe ${d.nome} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
+  `;
+}
+
+// ---- Infraestrutura compartilhada com a página de mapas e gráficos: tooltip
+// (usado pela linha do tempo do herói) e HAB_SET (usado no cartão de cidade,
+// indicador de habilitação a recurso federal) — pequenas o bastante para
+// recalcular aqui em vez de depender da página que tem os mapas completos.
+const showTip = MonitorMapas.showTip, hideTip = MonitorMapas.hideTip;
+const habilitados = MAP_POINTS.filter(p => p.categoria === 'decreto');
+const HAB_SET = new Set(habilitados.map(p => (p.nome || '').toLowerCase() + '|' + p.uf));
+
+// =========================================================
+// Tabela pesquisável de municípios
+// =========================================================
+const CANAL_LABEL = {DOM:'Diário Oficial dos Municípios', DOU:'Diário Oficial da União',
+  repositorio_estadual:'repositório estadual de planos', orgao_estadual:'órgão estadual',
+  site_municipal:'site oficial do município', imprensa:'imprensa', '—':''};
+const CAT_LABEL_TBL = {
+  plano:['Plano preventivo',MonitorMapas.cor('musgo')], plano_antigo:['Plano desatualizado',MonitorMapas.cor('sintetico')],
+  plano_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], estrutura:['Estrutura de coordenação',MonitorMapas.cor('ambar')], decreto:['Decreto reativo',MonitorMapas.cor('argila')],
+  coberto_estadual:['Coberto pelo estado',MonitorMapas.cor('mineral')], nao_el_nino:['Não é El Niño',MonitorMapas.cor('areia')],
+  nao_localizado:['Nada localizado',MonitorMapas.cor('argila')],
+  nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')],
+};
+// Caixa "Prazos em curso" (31/08/2026): lê data/prazos_uf.json, que o vigia de
+// prazos regrava a cada atualização. Mostra o que vence daqui para a frente e o que
+// venceu nos últimos 60 dias (marcado), em ordem de data. Nunca pontua.
+function renderPrazos(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const box = document.getElementById('prazosLista'), vazio = document.getElementById('prazosVazio');
+  if (!box || !PRAZOS || !PRAZOS.marcos) return;
+  const dataBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const itens = PRAZOS.marcos.filter(m => m.vencimento && m.data_base && m.titulo_curto)
+    .map(m => { const ini = dataBR(m.data_base), fim = dataBR(m.vencimento);
+      const total = Math.max(1, (fim - ini) / 86400000), dias = Math.round((fim - hoje) / 86400000);
+      const resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));   // fração do prazo que ainda resta
+      return {...m, ini, fim, dias, resta}; })
+    .filter(m => m.dias >= -60).sort((x,y) => x.fim - y.fim);
+  box.innerHTML = itens.map(m => {
+    const vencido = m.dias < 0, urgente = !vencido && m.resta < 0.3;
+    const quando = vencido ? `transcorrido há ${-m.dias} dia(s)` : m.dias === 0 ? 'vence hoje' : m.dias === 1 ? 'vence amanhã' : `${m.dias} dias`;
+    const cls = vencido ? 'vencido' : urgente ? 'urgente' : '';
+    return `<div class="prazo ${vencido ? 'vencido' : ''}" role="group" aria-label="${esc(m.titulo_curto)}">
+      <div class="prazo-titulo">${esc(m.titulo_curto)}</div>
+      <div class="prazo-meta">${m.classe} · <strong>${quando}</strong></div>
+      <div class="prazo-trilho" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(m.resta*100)}" aria-valuetext="${Math.round(m.resta*100)}% do prazo restante"><div class="prazo-resta ${cls}" style="width:${(m.resta*100).toFixed(1)}%"></div></div>
+      <div class="prazo-datas"><span>${m.data_base}</span><span>${m.vencimento}</span></div>
+    </div>`; }).join('');
+  vazio.hidden = itens.length > 0;
+}
+renderPrazos();
+  (function(){
+    // E13 (decisão editorial de 02/09/2026): a nota do defeso é PERMANENTE — após
+    // 25/10/2026 ela muda de tempo verbal e vira memória do site, nunca é removida.
+    const fim = new Date(2026, 9, 26);
+    if (new Date() >= fim) {
+      const t = document.getElementById('notaDefesoTxt');
+      if (t) t.innerHTML = 'a lei suspendeu transferências voluntárias e parte da comunicação oficial, e sítios públicos ficaram com conteúdo fora do ar durante a janela crítica de preparação. As buscas do período foram marcadas provisórias e repetidas; os efeitos estão decompostos, só com contagens e datas, no bloco "O que o período eleitoral escondeu"';
+    }
+  })();
+  (function(){
+    // C14: visível somente a partir de 26/10/2026, por data — não por flag manual.
+    const lim = new Date(2026, 9, 26); const hoje = new Date();
+    if (hoje >= lim) {
+      const bl = document.getElementById('blocoPosDefeso');
+      if (bl && VRESUMO && VRESUMO.pos_defeso) {
+        ['pdFontes','pdInstrumentos','pdVariacao'].forEach(id => { const e = document.getElementById(id); if (e) e.hidden = false; });
+        document.getElementById('pdFontes').textContent = VRESUMO.pos_defeso.fontes_que_voltaram_txt || '—';
+        document.getElementById('pdInstrumentos').textContent = VRESUMO.pos_defeso.instrumentos_anteriores_txt || '—';
+        document.getElementById('pdVariacao').textContent = VRESUMO.pos_defeso.variacao_decomposta_txt || '—';
+      }
+    }
+  })();
+(function(){ const c = document.getElementById('citacaoCorte'); if (c && META && META.corte) c.textContent = META.corte; })();
+// Link direto para um estado (#SC): usado pelos selos embutidos em outros sites (31/08/2026).
+(function(){
+  const h = (location.hash || '').replace('#', '').toUpperCase();
+  if (/^[A-Z]{2}$/.test(h) && MARE[h]) {
+    const tile = document.querySelector('#regions .tile[data-uf="' + h + '"]');
+    if (tile) { selectUF(h, tile); document.getElementById('detail').scrollIntoView({block: 'start'}); }
+  }
+})();
+(document.getElementById('munCount')||{}).textContent = TABELA_MUNICIPIOS.length;
+
+// ---- Seção de fontes: derivada dos próprios dados (nenhum link não verificado) ----
+
+// Um item por FONTE (domínio), com contagem de registros — os links de cada
+// documento individual permanecem, linha a linha, na tabela de auditoria acima.
+
+// =========================================================
+// ENCONTRE SUA CIDADE — lente pessoal e comparação social
+// =========================================================
+const UF_NOME = {}; BR_GEOJSON.features.forEach(f => UF_NOME[f.properties.sigla] = f.properties.name);
+const __estArr = Array.isArray(DATA) ? DATA : Object.values(DATA).flat();
+const EST = Object.fromEntries(__estArr.map(e => [e.uf, e]));
+const DOM_LINKS = {PB:'https://www.diariomunicipal.com.br/famup', AL:'https://www.diariomunicipal.com.br/ama', RN:'https://www.diariomunicipal.com.br/femurn', PA:'https://www.diariomunicipal.com.br/famep', SE:'https://www.diariomunicipal.com.br/sergipe'};
+const EMAILS = {AC:'defesacivil.acre.cepdec@gmail.com', AL:'defesacivil@bombeiros.al.gov.br', AP:'secretaria@defesacivil.ap.gov.br', AM:'comadec@comadec.am.gov.br', BA:'defesa.civil@sudec.ba.gov.br', CE:'defesacivil@cb.ce.gov.br', DF:'defesa.civil@ssp.df.gov.br', ES:'defesacivil@bombeiros.es.gov.br', GO:'cbmgo.codec@gmail.com', MA:'cbmma@cbm.ma.gov.br', MT:'gabinete@defesacivil.mt.gov.br', MS:'cedec@defesacivil.ms.gov.br', MG:'defesacivil@defesacivil.mg.gov.br', PA:'chefiagabinete@bombeiros.pa.gov.br', PB:'defesacivil.pb@gmail.com', PR:'defesacivil@defesacivil.pr.gov.br', PE:'codecipe@camil.pe.gov.br', PI:'defesacivilpiaui@gmail.com', RJ:'suop@defesacivil.rj.gov.br', RN:'defesacivil@rn.gov.br', RS:'defesa-civil@casamilitar.rs.gov.br', RO:'gabcmd@cbm.ro.gov.br', RR:'comandocbmrr@hotmail.com', SC:'gabinete@defesacivil.sc.gov.br', SP:'defesacivil@sp.gov.br', SE:'defesacivil@defesacivil.se.gov.br', TO:'defesacivil@bombeiros.to.gov.br'};
+const PORTAIS_UF = {AC:['https://defesacivil.ac.gov.br','defesacivil.ac.gov.br'], AL:['https://defesacivil.al.gov.br','defesacivil.al.gov.br'], AM:['https://www.defesacivil.am.gov.br','www.defesacivil.am.gov.br'], AP:['https://defesacivil.ap.gov.br','defesacivil.ap.gov.br'], BA:['https://defesacivil.ba.gov.br','defesacivil.ba.gov.br'], CE:['https://defesacivil.ce.gov.br','defesacivil.ce.gov.br'], DF:['https://defesacivil.df.gov.br','defesacivil.df.gov.br'], ES:['https://defesacivil.es.gov.br','defesacivil.es.gov.br'], GO:['https://bombeiros.go.gov.br','bombeiros.go.gov.br'], MA:['https://defesacivil.ma.gov.br','defesacivil.ma.gov.br'], MG:['https://defesacivil.mg.gov.br','defesacivil.mg.gov.br'], MS:['https://defesacivil.ms.gov.br','defesacivil.ms.gov.br'], MT:['https://defesacivil.mt.gov.br','defesacivil.mt.gov.br'], PA:['https://defesacivil.pa.gov.br','defesacivil.pa.gov.br'], PB:['tel:+558332185743','(83) 3218-5743 (sem portal)'], PE:['https://defesacivil.pe.gov.br','defesacivil.pe.gov.br'], PI:['https://portal.pi.gov.br/defesacivil','portal.pi.gov.br'], PR:['https://www.defesacivil.pr.gov.br','www.defesacivil.pr.gov.br'], RJ:['https://cbmerj.rj.gov.br','cbmerj.rj.gov.br'], RN:['tel:+558432325153','(84) 3232-5153 (sem portal)'], RO:['https://cbm.ro.gov.br','cbm.ro.gov.br'], RR:['https://bombeiros.rr.gov.br','bombeiros.rr.gov.br'], RS:['https://defesacivil.rs.gov.br','defesacivil.rs.gov.br'], SC:['https://defesacivil.sc.gov.br','defesacivil.sc.gov.br'], SE:['https://defesacivil.se.gov.br','defesacivil.se.gov.br'], SP:['https://www.defesacivil.sp.gov.br','www.defesacivil.sp.gov.br'], TO:['https://defesacivil.to.gov.br','defesacivil.to.gov.br']};
+
+// ---- Conteúdo oficial reproduzido: guias de proteção por risco (fontes nomeadas) ----
+const GUIAS = {
+ chuvas: { t:'Chuvas intensas, enchentes e deslizamentos',
+  fonte:'Defesa Civil e Ministério da Saúde (cartilha oficial)',
+  urls:[['Guia da Defesa Civil (PR)','https://www.defesacivil.pr.gov.br/Noticia/O-que-fazer-em-desastres-Defesa-Civil-orienta-populacao-sobre-antes-durante-e-depois'],
+        ['Cartilha do Ministério da Saúde (PDF)','https://bvsms.saude.gov.br/bvs/publicacoes/cartilha_orientacao_populacao_chuvas_intensas.pdf']],
+  blocos:[
+   {h:'Antes', itens:['Guarde documentos e itens de valor em saco plástico fechado, em local alto',
+    'Combine com a família um ponto de encontro e uma rota de saída',
+    'Limpe calhas e não jogue lixo em córregos nem em encostas',
+    'Cadastre-se nos alertas por SMS: envie seu CEP para 40199']},
+   {h:'Durante', itens:['Nunca atravesse áreas alagadas: 15 cm de correnteza derrubam um adulto',
+    'Se a água entrar em casa, desligue a energia e o gás',
+    'Rachaduras, estalos, portas emperradas ou postes inclinados: saia imediatamente do local',
+    'Vá para um ponto alto e siga as orientações da Defesa Civil (199)']},
+   {h:'Depois', itens:['Beba apenas água filtrada ou fervida; não consuma alimentos que tocaram a água da enchente',
+    'Evite contato com água e lama; febre ou dores no corpo dias depois: procure a saúde',
+    'Não use equipamentos elétricos que foram molhados',
+    'Só retorne a área de deslizamento com liberação da Defesa Civil']}]},
+ fogo: { t:'Incêndios florestais e fumaça',
+  fonte:'Ministério da Saúde (orientações de julho/2026, ciclo El Niño)',
+  urls:[['Orientações do Ministério da Saúde','https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-monitora-impactos-dos-incendios-florestais-na-saude-e-orienta-populacao-sobre-exposicao-a-fumaca']],
+  blocos:[
+   {h:'Prevenção', itens:['Não queime lixo nem use fogo para limpar terrenos e pastagens',
+    'Não descarte bitucas de cigarro em vias e vegetação; mantenha terrenos limpos',
+    'Acompanhe boletins e alertas oficiais de queimadas e qualidade do ar']},
+   {h:'Durante a fumaça', itens:['Aumente a ingestão de água para proteger as vias respiratórias',
+    'Evite exercícios ao ar livre e mantenha portas e janelas fechadas nos horários de pico',
+    'Máscaras PFF2/N95 reduzem a inalação das partículas finas',
+    'Atenção redobrada: crianças menores de 5 anos, maiores de 60, gestantes e pessoas com doença cardíaca ou respiratória']},
+   {h:'Sinais de alerta', itens:['Falta de ar, tontura, dor no peito, confusão mental ou dor de cabeça intensa: procure atendimento imediato',
+    'Quem tem doença respiratória: mantenha os medicamentos de crise à mão']}]},
+ seca: { t:'Estiagem e calor',
+  fonte:'Ministério da Saúde e vigilâncias em saúde (ciclo El Niño 2026)',
+  urls:[['Recomendações oficiais (Agência Gov)','https://agenciagov.ebc.com.br/noticias/202607/15-estados-na-lista-de-focos-de-calor-veja-como-se-cuidar']],
+  blocos:[
+   {h:'Como se preparar', itens:['Reserve água tratada e acompanhe os comunicados e rodízios da sua cidade',
+    'Guarde à mão os contatos de emergência e acompanhe os boletins oficiais']},
+   {h:'Como se cuidar', itens:['Aumente a ingestão de água e procure locais frescos',
+    'Evite atividade física ao ar livre nas horas mais quentes',
+    'Atenção redobrada com crianças, idosos e gestantes: risco de desidratação']},
+   {h:'Sinais de alerta', itens:['Náusea, vômito, febre, tontura ou confusão: procure atendimento de saúde']}]}
+};
+function guiasDoEstado(uf){
+  const r = (typeof CONSIST !== 'undefined' && CONSIST[uf]) ? CONSIST[uf].risco : '';
+  const g = [];
+  if (/chuva|enchent/i.test(r)) g.push('chuvas');
+  if (/estiagem|seca|reservat|h[íi]dric|IIS/i.test(r)) g.push('seca');
+  if (/inc[êe]ndi|fogo/i.test(r)) g.push('fogo');
+  return g.length ? g : ['chuvas', 'seca', 'fogo'];
+}
+function htmlGuia(chave, compacto){
+  const g = GUIAS[chave];
+  const blocos = g.blocos.map(b => `<p style="margin:8px 0 3px;"><strong>${b.h}:</strong></p><ul style="margin:0 0 6px;">${b.itens.map(i => `<li>${i}</li>`).join('')}</ul>`).join('');
+  const fontes = g.urls.map(u => `<a href="${u[1]}" target="_blank" rel="noopener">${u[0]}</a>`).join(' · ');
+  return `<details style="margin:0 0 10px;"><summary style="cursor:pointer; color:var(--link); font-weight:600;">${g.t}</summary>
+    <div style="margin-top:6px;">${blocos}<p class="note" style="margin:4px 0 0;">Fonte: ${g.fonte} · ${fontes}</p></div></details>`;
+}
+
+const selUF = document.getElementById('ufSelect');
+Object.entries(UF_NOME).sort((a,b)=>a[1].localeCompare(b[1]))
+  .forEach(([sig,nome]) => selUF.insertAdjacentHTML('beforeend', `<option value="${sig}">${nome}</option>`));
+const ORDEM_MARE = Object.entries(MARE).sort((a,b)=>b[1].total-a[1].total).map(([u])=>u);
+function miniGauge(valor, rotulo){
+  const media = String(MEDIA_NACIONAL).replace('.', ',');
+  return `<div class="gauge-mini" style="margin:6px 0 16px;">
+    <div class="gauge-head" style="margin-bottom:6px;">
+      <span class="gnum" style="font-size:28px;" data-contar="${valor}">0,0</span><span class="gden">/ 100</span>
+      <span class="glabel">${rotulo || 'MARÉ do estado'}</span>
+    </div>
+    <div class="gauge-track" style="height:18px;">
+      <div class="gauge-fill" data-alvo="${valor}" style="--galvo:${valor};"></div>
+      <span class="gauge-avg" style="left:${MEDIA_NACIONAL}%;"></span>
+    </div>
+    <div class="gauge-ends" style="font-size:12px;">
+      <span>0</span>
+      <span style="position:absolute; left:${MEDIA_NACIONAL}%; transform:translateX(-50%);">média ${media}</span>
+      <span>100</span>
+    </div>
+  </div>`;
+}
+function animarGauges(root){
+  const reduz = (typeof matchMedia === 'function') && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const temRAF = (typeof requestAnimationFrame === 'function');
+  root.querySelectorAll('.gauge-fill[data-alvo], .tile-fill[data-alvo]').forEach(f => {
+    const set = () => { f.style.width = f.dataset.alvo + '%'; };
+    (!temRAF || reduz) ? set() : requestAnimationFrame(() => requestAnimationFrame(set));
+  });
+  root.querySelectorAll('[data-contar]').forEach(el => {
+    const alvo = parseFloat(el.dataset.contar);
+    const fmt = (x) => x.toFixed(1).replace('.', ',');
+    if (!temRAF || reduz){ el.textContent = fmt(alvo); return; }
+    const dur = 1200, t0 = performance.now();
+    const passo = (t) => {
+      const k = Math.min(1, (t - t0) / dur);
+      const e = 1 - Math.pow(1 - k, 3);
+      el.textContent = fmt(alvo * e);
+      if (k < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  });
+}
+const STATUS_HUMANO_ESTR = {NOVO:'órgão de coordenação criado para o ciclo', READ:'estrutura permanente ativada para o ciclo por ato', VIG:'mobilização recorrente anual do sistema', ELAB:'estrutura anunciada, ato não localizado', LAC:'nenhum ato do ciclo toca a estrutura'};
+const STATUS_HUMANO = {NOVO:'plano estadual novo, específico para o El Niño', READ:'plano recorrente readaptado para o ciclo',
+  VIG:'instrumento recorrente, sem menção nominal ao El Niño', ELAB:'plano estadual ainda em elaboração', LAC:'sem plano estadual nominal para o El Niño'};
+const nrm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+
+// Decretos de emergência do município (data/atos_resposta.json — registro, nunca
+// pontua). 31/08/2026: cartão e PDF diziam "nenhum decreto localizado" para Biguaçu
+// enquanto o mapa 6 mostrava o decreto de 30/08 — o cartão não lia esse arquivo.
+// Pedido de informação pronto (Lei 12.527/2011), 31/08/2026 — sugestão aceita por
+// Patricia: o site já dizia "peça pelo e-SIC"; agora entrega o texto. Linguagem
+// probatória preservada: "não localizou em fonte pública", nunca "não existe".
+// Quem assina é o cidadão: campos de identificação ficam em branco de propósito.
+function textoPedidoAcesso(uf, municipio){
+  const d = EST[uf], v = MARE[uf];
+  const corte = (typeof META !== 'undefined' && META && META.corte) ? META.corte : '';
+  const reg = municipio ? TABELA_MUNICIPIOS.find(m => m.uf === uf && nrm(m.nome) === nrm(municipio)) : null;
+  const cat = reg ? reg.categoria : null;
+  let destinatario, pedidos, contexto;
+  if (municipio) {
+    destinatario = `À Prefeitura Municipal de ${municipio} (${uf}) — Ouvidoria / Serviço de Informação ao Cidadão (SIC)`;
+    pedidos = [
+      'cópia, ou o endereço de publicação na internet, do Plano de Contingência de Proteção e Defesa Civil do município para o ciclo El Niño 2026/2027, previsto na Lei nº 12.608/2012 (art. 8º, XI) e na Lei nº 12.340/2010 (art. 3º-A);',
+      'a data da última revisão do plano e da audiência pública de prestação de contas correspondente;',
+      'o nome e o contato institucional do coordenador municipal de proteção e defesa civil designado.'
+    ];
+    const _niv = nivelVerificacao(uf, municipio);
+    if (cat === 'nao_localizado' && _niv === 'municipal_completo') contexto = `não localizou, após verificação individual completa em fontes públicas, plano de contingência do município para o ciclo`;
+    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') contexto = `ainda não verificou individualmente as fontes públicas deste município (verificação em andamento por níveis)`;
+    else if (cat === 'plano_antigo') contexto = `localizou apenas ${reg.documento} (${reg.data}), edição anterior ao ciclo`;
+    else if (cat === 'decreto') contexto = `localizou apenas decreto de emergência (${reg.documento}, ${reg.data}), ato de resposta, e não plano preventivo`;
+    else if (cat === 'plano_elaboracao') contexto = `localizou registro de que o plano está em elaboração (${reg.documento}, ${reg.data})`;
+    else if (cat === 'nao_el_nino') contexto = `localizou apenas ato que não trata do El Niño (${reg.documento}, ${reg.data})`;
+    else if (cat === 'coberto_estadual') contexto = `localizou apenas a cobertura pelo plano estadual, sem plano municipal próprio`;
+    else contexto = `localizou ${reg.documento} (${reg.data}); solicito confirmar se é a edição vigente para o ciclo`;
+  } else {
+    destinatario = `À ${d.orgao || 'Defesa Civil'} — ${d.nome} — Ouvidoria / Serviço de Informação ao Cidadão (SIC)`;
+    pedidos = [
+      'cópia, ou o endereço de publicação na internet, do Plano Estadual de Proteção e Defesa Civil ou do plano de contingência estadual para o ciclo El Niño 2026/2027 (Lei nº 12.608/2012, art. 7º);',
+      'a relação dos municípios do estado com plano de contingência vigente para o ciclo, conforme registro do órgão estadual;',
+      'as ações de apoio aos municípios sem plano próprio previstas para o ciclo.'
+    ];
+    contexto = v.status_estadual === 'LAC' ? 'não localizou, em fonte pública, plano estadual nominal para o El Niño 2026/2027'
+      : `localizou ${d.doc}${d.data ? ' (' + d.data + ')' : ''}; solicito confirmar se é o instrumento vigente para o ciclo`;
+  }
+  return [
+    destinatario, '',
+    'Com fundamento na Lei nº 12.527/2011 (Lei de Acesso à Informação, art. 10), solicito:', '',
+    ...pedidos.map((p, i) => `${i + 1}. ${p}`), '',
+    `Informo que, em consulta a fontes públicas realizada até ${corte}, o Monitor El Niño Brasil (monitorelnino.com.br) ${contexto}. Caso o documento exista e não esteja publicado, solicito sua disponibilização no sítio eletrônico oficial, nos termos do art. 8º da mesma lei (transparência ativa).`, '',
+    'Prazo legal de resposta: 20 dias, prorrogáveis por mais 10 (art. 11).', '',
+    'Nome: ______________________________', 'Documento de identificação (quando exigido pelo SIC): ______________', 'E-mail para resposta: ______________________________'
+  ].join('\n');
+}
+// Bloco HTML reutilizável: <details> com o texto e botão de copiar.
+function htmlPedidoAcesso(uf, municipio){
+  const txt = textoPedidoAcesso(uf, municipio).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  return `<details class="pedido-lai"><summary>Pedido de informação pronto (Lei de Acesso à Informação)</summary>
+    <p class="note" style="margin:8px 0;">Copie, preencha seu nome e envie pela ouvidoria ou pelo e-SIC do órgão. O texto cita a lei e o que a consulta localizou — nada além do que está publicado.</p>
+    <textarea class="pedido-texto" readonly rows="14" aria-label="Texto do pedido de informação">${txt}</textarea>
+    <button type="button" class="btn-pdf btn-copiar-pedido">Copiar texto</button></details>`;
+}
+function emergenciasDoMunicipio(nome, uf){
+  if (typeof ATOS_RESPOSTA === 'undefined' || !ATOS_RESPOSTA || !ATOS_RESPOSTA.eventos) return [];
+  return ATOS_RESPOSTA.eventos.filter(e => e.uf === uf && nrm(e.nome) === nrm(nome))
+    .sort((a,b) => (b.data||'').split('/').reverse().join('').localeCompare((a.data||'').split('/').reverse().join('')));
+}
+function popLinha(nome, uf){
+  const c = MUN_COD[uf + '|' + nome];
+  const p = c ? POP_CENSO[c] : null;
+  if (!p) return '';
+  const pct = POP_UF[uf] ? (100 * p / POP_UF[uf]) : 0;
+  return `<p class="fk">População (Censo 2022)</p>
+      <p class="fv">${p.toLocaleString('pt-BR')} habitantes <span style="color:var(--muted)">· ${pct.toFixed(1).replace('.', ',')}% do estado</span></p>`;
+}
+function renderMinha(){
+  const card = document.getElementById('meuCard');
+  const q = nrm(document.getElementById('cidadeInput').value);
+  const uf = selUF.value;
+  if (!q && !uf){ card.hidden = true; return; }
+  let matches = q ? TABELA_MUNICIPIOS.filter(m => nrm(m.nome) === q) : [];
+  if (uf && q) matches = matches.filter(m => m.uf === uf);
+  const ufFinal = uf || (matches.length === 1 ? matches[0].uf : '');
+  card.dataset.uf = ufFinal || '';  // usado por gerarPDF() quando o estado foi deduzido pela cidade
+  let html = '';
+
+  if (q && matches.length === 1){
+    const m = matches[0];
+    const [lbl, cor] = CAT_LABEL_TBL[m.categoria];
+    const fonte = m.url ? `<a href="${m.url}" target="_blank" rel="noopener">${m.fonte}</a>` : m.fonte;
+    html += `<p class="note" style="margin:0 0 4px;"><a href="#" id="trocarMun">← consultar outro município</a></p>
+      <h4>${m.nome} · ${m.uf}</h4>
+      <p style="margin:2px 0 8px;"><span class="cat-pill" style="background:${cor}">${lbl}</span></p>
+      <p class="fk">Documento verificado</p>
+      <p class="fv">${m.documento}${m.data && m.data !== '—' ? ` <span style="color:var(--muted)">· ${m.data}</span>` : ''}</p>
+      <p class="fk">Fonte</p>
+      <p class="fv">${fonte}${CANAL_LABEL[m.canal] ? ' <span style="color:var(--muted)">· via ' + CANAL_LABEL[m.canal] + '</span>' : ''}</p>
+      ${emergenciasDoMunicipio(m.nome, m.uf).map(e => `<p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('')}
+      ${popLinha(m.nome, m.uf)}
+      ${m.vigencia ? `<p class="fk">Vigência (regra automática)</p><p class="fv">${m.vigencia === 'ativo' ? 'Dentro do prazo típico de SE (180 dias)' : m.vigencia === 'prazo_tipico_vencido' ? 'Prazo típico de SE vencido; pode ter sido prorrogado' : 'Data insuficiente para aferir'}</p>` : ''}
+      ${m.marcador_decreto ? `<p class="fk">Conteúdo do decreto (leitura editorial · não altera a nota)</p><p class="fv">${m.marcador_decreto}</p>` : ''}
+      <hr class="card-sep">`;
+  } else if (q && matches.length > 1){
+    html += `<p style="margin:0 0 10px;">Há municípios com esse nome em mais de um estado (${[...new Set(matches.map(m=>m.uf))].join(', ')}); selecione o seu ao lado.</p>`;
+  } else if (q){
+    const naLista = ufFinal && MUN_REF[ufFinal] && MUN_REF[ufFinal].some(n => nrm(n) === q);
+    if (ufFinal && !naLista){
+      html += `<p style="margin:0 0 10px; color:var(--muted);">Não encontrei esse nome na lista oficial de municípios de ${UF_NOME[ufFinal]}; confira a grafia (a lista completa aparece enquanto você digita).</p>`;
+    } else {
+      const emergsSemReg = ufFinal ? emergenciasDoMunicipio(document.getElementById('cidadeInput').value.trim(), ufFinal) : [];
+      html += emergsSemReg.map(e => `<h4>${document.getElementById('cidadeInput').value.trim()} · ${ufFinal}</h4><p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('');
+      const _nivCard = ufFinal ? nivelVerificacao(ufFinal, document.getElementById('cidadeInput').value.trim()) : 'nao_verificado';
+      // PR-N0 §1.2 (06/09/2026): rótulo público da cobertura do diário oficial — "verificado em diário oficial" só
+      // para município coberto (coberto_sem_mencao/com_excerto); não indexado diz isso, nunca "nada localizado".
+      const _cob = (typeof VMUN !== 'undefined' && VMUN) ? VMUN[String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0')] : undefined;
+      { const _ib = String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0');
+        const _r = RESP_MUN && RESP_MUN.municipios && RESP_MUN.municipios[_ib];
+        html += `<p style="margin:0 0 6px;"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
+      if (_cob !== undefined) html += `<p style="margin:0 0 6px;" class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
+      html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
+      <p style="margin:6px 0 12px;"><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
+      ${ufFinal ? '' : '<p style="margin:0; color:var(--muted);">Selecione o estado para ver o retrato estadual.</p>'}<hr style="border:none; border-top:1px solid var(--line); margin:14px 0;">`;
+    }
+  }
+
+  if (ufFinal){
+    const v = MARE[ufFinal], i = PCT_POR_UF[ufFinal];
+    const pos = ORDEM_MARE.indexOf(ufFinal) + 1;
+    const acima = pos > 1 ? ORDEM_MARE[pos-2] : null;
+    const abaixo = pos < 27 ? ORDEM_MARE[pos] : null;
+    const delta = +(v.total - MEDIA_NACIONAL).toFixed(1);
+    const decl = (i.declarado_plano||0) + (i.declarado_antigo||0);
+    const acoes = [];
+    if (v.status_estadual === 'LAC') acoes.push('Seu estado ainda não publicou plano estadual nominal para o El Niño; este é o primeiro item a cobrar da Defesa Civil estadual.');
+    if (i.com_ato === 0) acoes.push('Nenhum ato municipal foi localizado no seu estado até o corte; verifique diretamente com a Defesa Civil municipal.');
+    else if (i.n_decreto > i.n_plano) acoes.push('A cobertura municipal do seu estado é majoritariamente reativa (decretos de emergência): pergunte à prefeitura se existe plano preventivo publicado, e onde.');
+    else acoes.push('Predominam planos preventivos no seu estado; verifique se o da sua cidade está atualizado para o ciclo 2026/2027.');
+    if (decl && 100*decl/i.total > 5*i.pct) acoes.push('Muitos municípios declaram ter plano a órgãos de controle, mas poucos documentos estão públicos: peça a publicação do PLANCON no site da prefeitura.');
+
+    html += `<h4>${UF_NOME[ufFinal]} no MARÉ</h4>
+      ${miniGauge(v.total)}
+      <p style="margin:0 0 8px; color:var(--muted); font-size:13.5px;">Confiança da verificação: ${v.confianca}</p>
+      <ul>
+        <li><strong>${delta >= 0 ? String(delta).replace('.',',') + ' pontos acima' : String(Math.abs(delta)).replace('.',',') + ' pontos abaixo'}</strong> da média nacional (${String(MEDIA_NACIONAL).replace('.',',')} / 100)</li>
+        <li>Instrumento operacional estadual: ${STATUS_HUMANO[v.status_estadual]}</li>
+        <li>Estrutura de coordenação estadual: ${STATUS_HUMANO_ESTR[v.estrutura_status] || v.estrutura_status}</li>
+        <li>Cobertura municipal documentada: <strong>${String(i.pct).replace('.',',')}%</strong> (${i.n_plano} plano(s) preventivo(s), ${i.n_decreto} decreto(s) reativo(s))${decl ? ` · declarada a órgãos de controle: ${(100*decl/i.total).toFixed(1).replace('.',',')}%` : ''}</li>
+      </ul>
+      <h4 style="margin-top:16px;">O que fazer e o que cobrar</h4>
+      <ul>
+        <li><strong>Emergência:</strong> Defesa Civil: ligue <strong>199</strong> · Corpo de Bombeiros, <strong>193</strong>.</li>
+        <li><strong>Alertas oficiais no celular:</strong> envie seu CEP por SMS para <strong>40199</strong> (cadastro gratuito de alertas da Defesa Civil Nacional).</li>
+        <li><strong>Órgão estadual responsável:</strong> ${EST[ufFinal] ? EST[ufFinal].orgao : 'Defesa Civil estadual'}${EMAILS[ufFinal] ? ` · <a href="mailto:${EMAILS[ufFinal]}">${EMAILS[ufFinal]}</a>` : ''}${DOM_LINKS[ufFinal] ? ` · decretos municipais publicados no <a href="${DOM_LINKS[ufFinal]}" target="_blank" rel="noopener">Diário Oficial dos Municípios</a>` : ''}.</li>
+        ${FIN && FIN[ufFinal] ? `<li><strong>Dinheiro:</strong> por onde o recurso chega ao seu estado — fundo estadual preventivo, rotas federais e o que o decreto destranca — está em <a href="financiamento.html#porestado">Por onde o dinheiro chega</a> (peso zero no índice).</li>` : ''}
+        <li style="color:var(--muted); font-size:13.5px;">Contatos estaduais conforme o diretório oficial do MIDR (atualizado pelo ministério em 11/09/2024); confirme no site do órgão antes de demandas formais.</li>
+        <li><strong>Peça o documento:</strong> solicite o PLANCON atualizado à prefeitura pela ouvidoria/e-SIC, citando a Lei de Acesso à Informação (Lei 12.527/2011): resposta obrigatória em até 20 dias.</li>
+        ${acoes.map(a => `<li>${a}</li>`).join('')}
+      </ul>
+      <button type="button" id="btnPDF" class="btn-pdf">Baixar relatório em PDF</button>
+      <p class="note" style="font-size:12.5px; color:var(--muted); margin:6px 0 0;">Relatório com os dados desta consulta, contatos e fontes, para guardar, imprimir ou encaminhar.</p>
+      ${htmlPedidoAcesso(ufFinal, document.getElementById('cidadeInput').value.trim())}
+      <h4>Como se proteger (${guiasDoEstado(ufFinal).length < 3 ? 'riscos projetados do seu estado' : 'guias gerais'})</h4>
+      ${guiasDoEstado(ufFinal).map(g => htmlGuia(g)).join('')}
+      ${(typeof HAB_SET !== 'undefined' && HAB_SET.has((document.getElementById('cidadeInput').value.trim().toLowerCase()) + '|' + ufFinal))
+        ? `<p style="margin:8px 0 0; background:var(--osso-claro); border-left:4px solid var(--musgo); border-radius:8px; padding:10px 12px;"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
+        : ''}
+      <p class="note" style="margin-top:4px;">Encontrou erro, atualização ou um documento que não temos? <a href="envie-dados.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
+  }
+  card.innerHTML = html;
+  animarGauges(card);
+  card.hidden = !html;
+}
+function popularLista(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const dl = document.getElementById('listaMun');
+  const uf = selUF.value;
+  dl.innerHTML = (uf && MUN_REF[uf] ? MUN_REF[uf] : []).map(n => `<option value="${esc(n)}">`).join('');
+}
+document.getElementById('cidadeInput').addEventListener('input', renderMinha);
+selUF.addEventListener('change', () => {
+  document.getElementById('cidadeInput').value = '';
+  popularLista();
+  renderMinha();
+});
+document.getElementById('cidadeInput').addEventListener('focus', (e) => e.target.select());
+document.getElementById('limparCidade').addEventListener('click', () => {
+  const inp = document.getElementById('cidadeInput');
+  inp.value = ''; renderMinha(); inp.focus();
+});
+document.getElementById('meuCard').addEventListener('click', (e) => {
+  if (e.target && e.target.id === 'trocarMun'){
+    e.preventDefault();
+    const inp = document.getElementById('cidadeInput');
+    inp.value = ''; renderMinha(); inp.focus(); inp.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+});
+
+if (typeof META !== 'undefined' && META && META.corte) {
+  const el = document.getElementById('corteDados');
+  if (el) el.textContent = META.corte;
+}
+
+// ---- Relatório em PDF (logo, marca d'água e rodapé institucionais) ----
+const LOGO_PDF = 'data:image/png;base64,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';
+// =========================================================
+// RELATÓRIO PARA O CIDADÃO — um único template para estado e município
+// (31/08/2026, pedido de Patricia: "esses PDFs são para usuários, não para
+// auditores"). Ordem do que importa para quem mora lá: contatos de
+// emergência → risco projetado → o que já existe → o que ainda falta →
+// como se proteger → links úteis. Metodologia, componentes e camada
+// declarada ficam fora — estão em METODOLOGIA.pdf.
+// =========================================================
+function gerarRelatorioCidadao(uf, municipio){
+  if (!window.jspdf || !window.jspdf.jsPDF){ alert('A geração de PDF requer conexão com a internet nesta versão.'); return; }
+  const v = MARE[uf], d = EST[uf], i = PCT_POR_UF[uf];
+  if (!v || !d || !i) return;
+  const reg = municipio ? TABELA_MUNICIPIOS.find(m => m.uf === uf && nrm(m.nome) === nrm(municipio)) : null;
+  const ehCapital = municipio && d.capital && nrm(d.capital.nome) === nrm(municipio);
+  const emergs = municipio ? emergenciasDoMunicipio(municipio, uf) : [];
+  const doc = new window.jspdf.jsPDF({unit:'pt', format:'a4'});
+  const W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight(), M = 52;
+  let y = 0;
+  const INK=[21,32,26], MUTED=[85,100,91], TERRA=[124,74,52], AZUL=[53,86,107];
+  const marca = () => { doc.saveGraphicsState(); doc.setGState(new doc.GState({opacity:0.07}));
+    doc.setFont('helvetica','bold'); doc.setFontSize(52); doc.setTextColor(60,60,60);
+    doc.text('FUTURA · EVIDENCE LAB', W/2, H/2, {angle:45, align:'center'}); doc.restoreGraphicsState(); };
+  const rod = () => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(120,110,95);
+    doc.text('Monitor El Niño Brasil · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
+    doc.text('© 2026 Futura Evidence Lab. Dados verificados em fontes oficiais.', M, H-18);
+    doc.text('Página ' + doc.internal.getNumberOfPages(), W-M, H-18, {align:'right'}); };
+  const nova = () => { rod(); doc.addPage(); marca(); y = M; };
+  const par = (txt, o) => {
+    o = Object.assign({tam:10.5, negrito:false, cor:INK, espaco:3, bullet:false, recuo:0}, o || {});
+    doc.setFont('helvetica', o.negrito ? 'bold' : 'normal'); doc.setFontSize(o.tam); doc.setTextColor(...o.cor);
+    const linhas = doc.splitTextToSize((o.bullet ? '•  ' : '') + txt, W - 2*M - o.recuo);
+    const alt = linhas.length * (o.tam * 1.38) + o.espaco;
+    if (y + alt > H - 60) nova();
+    doc.text(linhas, M + o.recuo, y); y += alt;
+  };
+  const secao = (t) => { y += 10; if (y > H - 110) nova(); par(t, {tam:12.5, negrito:true, cor:TERRA, espaco:6}); };
+  const item = (t) => par(t, {bullet:true, espaco:2});
+  const link = (rotulo, url) => { if (!url) { item(rotulo); return; }
+    const tx = rotulo + ': ' + url;
+    par(tx, {bullet:true, espaco:2, cor:AZUL});
+    // link clicável sobre a última linha renderizada
+    doc.link(M, y - 10.5*1.38 - 2, W - 2*M, 10.5*1.38, {url}); };
+  const fmt = n => String(n).replace('.', ',');
+
+  // ---- cabeçalho ----
+  marca();
+  doc.addImage(LOGO_PDF, 'PNG', M, 42, 150, 56);
+  doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.setTextColor(...INK);
+  doc.text('Monitor El Niño Brasil', M, 128);
+  doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(...MUTED);
+  const corte = (typeof META !== 'undefined' && META && META.corte) ? META.corte : '';
+  doc.text('El Niño 2026/2027 · Corte dos dados: ' + corte + ' · Gerado em ' + new Date().toLocaleDateString('pt-BR'), M, 143);
+  doc.setDrawColor(198,180,150); doc.line(M, 152, W-M, 152);
+  y = 180;
+  doc.setFont('helvetica','bold'); doc.setFontSize(22); doc.setTextColor(...AZUL);
+  doc.text(municipio ? (municipio + ' · ' + uf) : d.nome + ' (' + uf + ')', M, y); y += 30;
+
+  // ---- 1. Em emergência ----
+  secao('Em emergência, ligue');
+  par('199 — Defesa Civil     ·     193 — Corpo de Bombeiros     ·     192 — SAMU', {negrito:true, tam:12});
+  item('Alertas oficiais no celular: envie seu CEP por SMS para 40199 (gratuito). O Defesa Civil Alerta avisa automaticamente, sem cadastro, em aparelhos 4G/5G.');
+  const p = PORTAIS_UF[uf];
+  const orgao = d.orgao || 'Defesa Civil estadual';
+  item(orgao + (p ? ' — ' + p[1] : '') + (EMAILS[uf] ? ' — ' + EMAILS[uf] : ''));
+
+  // ---- 2. Risco projetado ----
+  secao('Risco projetado para ' + d.nome + ' neste ciclo');
+  const risco = (typeof CONSIST !== 'undefined' && CONSIST[uf]) ? CONSIST[uf].risco : '';
+  par((risco || 'Sem sinal elevado projetado para o trimestre') + '.');
+  par('Fonte: Boletins nº 1 e 2 do Painel El Niño 2026/2027 (Governo Federal). Os boletins são mensais; consulte o mais recente.', {tam:9.5, cor:MUTED});
+
+  // ---- 3. O que já existe ----
+  secao('O que já existe');
+  item('Estado: ' + STATUS_HUMANO[v.status_estadual] + (v.status_estadual !== 'LAC' && d.doc ? ' — ' + d.doc + (d.data ? ' (' + d.data + ')' : '') : '') + '.');
+  if (FIN && FIN[uf] && FIN[uf].status === 'localizado')
+    item('Recurso preventivo estadual: ' + FIN[uf].instrumento + ' (' + FIN[uf].norma + '), repassado antes do dano, condicionado a ' + FIN[uf].condicionalidade + '.');
+  if (municipio) {
+    if (reg && reg.categoria !== 'nao_localizado') {
+      const lbl = CAT_LABEL_TBL[reg.categoria][0];
+      const doc_ = (reg.documento && reg.documento !== '—') ? ' — ' + reg.documento : '';
+      const dat_ = (reg.data && reg.data !== '—') ? ' (' + reg.data + ')' : '';
+      const fon_ = (reg.fonte && reg.fonte !== '—') ? '. Fonte: ' + reg.fonte : '';
+      item(municipio + ': ' + lbl + doc_ + dat_ + fon_ + '.');
+    } else if (reg) {
+      item(municipio + ': verificado individualmente — nenhum ' + (emergs.length ? 'plano preventivo' : 'plano ou decreto') + ' localizado em fonte pública até o corte. Isso não significa que não exista; significa que não está publicado onde pudemos verificar.');
+    } else {
+      item(municipio + ': nenhum ' + (emergs.length ? 'plano preventivo' : 'plano ou decreto') + ' localizado em fonte pública até o corte. Isso não significa que não exista — significa que não está publicado onde pudemos verificar.');
+    }
+    if (typeof HAB_SET !== 'undefined' && HAB_SET.has(nrm(municipio) + '|' + uf))
+      item('Reconhecimento federal vigente: o município pode solicitar recursos de resposta pelo S2iD.');
+    emergs.forEach(e => item(municipio + ' decretou situação de emergência em ' + e.data + ' (' + e.causa + '). Ato de resposta a dano já ocorrido — não conta para o índice. Fonte: ' + e.fonte + '.'));
+  } else if (d.capital) {
+    item('Capital (' + d.capital.nome + '): ' + d.capital.status + '. ' + (d.capital.info || ''));
+  }
+  if (uf !== 'DF') item('Municípios do estado com algum ato localizado: ' + i.com_ato + ' de ' + i.total + ' (' + fmt(i.pct) + '%) — ' + i.n_plano + ' com plano preventivo, ' + i.n_decreto + ' com decreto de emergência.');  // DF: o único município é Brasília, já descrita como capital
+  const fx = v.total < 25 ? 'estágio inicial' : v.total < 50 ? 'em construção' : v.total < 70 ? 'consolidado' : 'avançado';
+  item('No índice MARÉ, ' + d.nome + ' está em ' + fmt(v.total) + '/100 (' + fx + '; média nacional ' + fmt(MEDIA_NACIONAL) + ').');
+
+  // ---- 4. O que ainda falta ----
+  secao('O que ainda falta — e o que cobrar');
+  const faltas = [];
+  if (v.status_estadual === 'LAC') faltas.push('O estado ainda não publicou plano estadual nominal para o El Niño. É o primeiro item a cobrar da Defesa Civil estadual.');
+  if (v.status_estadual === 'ELAB') faltas.push('O plano estadual está em elaboração e ainda não foi publicado. Pergunte a data prevista de publicação.');
+  if (v.status_estadual === 'VIG') faltas.push('O instrumento estadual é recorrente e não menciona o El Niño 2026/2027. Pergunte se haverá atualização específica para o ciclo.');
+  if (municipio) {
+    const cat = reg ? reg.categoria : null;
+    const _nivF = nivelVerificacao(uf, municipio);
+    if (cat === 'nao_localizado' && _nivF === 'municipal_completo') faltas.push('Após verificação individual completa, não localizamos plano de contingência da sua cidade. Peça à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011): resposta obrigatória em 20 dias.');
+    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') faltas.push('Ainda não verificamos sua cidade com a bateria completa de fontes. Isso não significa que não haja plano — você pode ajudar pedindo o documento à prefeitura (e-SIC, resposta em 20 dias) e enviando pelo formulário.');
+    else if (cat === 'plano_antigo') faltas.push('O plano da sua cidade é de edição anterior. Pergunte à prefeitura se há atualização para 2026/2027.');
+    else if (cat === 'decreto') faltas.push('Sua cidade tem decreto de emergência (resposta a dano ocorrido), mas não localizamos plano preventivo. Pergunte à prefeitura se existe e onde está publicado.');
+    else if (cat === 'plano_elaboracao') faltas.push('O plano da sua cidade está em elaboração. Pergunte a data prevista.');
+    else if (cat === 'nao_el_nino') faltas.push('O ato localizado na sua cidade não trata do El Niño. Pergunte se há plano específico para o ciclo.');
+    else if (cat === 'coberto_estadual') faltas.push('Sua cidade está coberta pelo plano estadual, sem plano próprio. Cobertura estadual é operacional: o dever de ter plano municipal continua (Lei 12.608, art. 8º).');
+    if (emergs.length && cat !== 'plano') faltas.push('Sua cidade já precisou decretar emergência neste ciclo. Um plano preventivo publicado reduz o improviso da próxima vez.');
+  } else if (d.capital && /elabora|não|nao/i.test(d.capital.status)) {
+    faltas.push('A capital ainda não tem plano publicado para o ciclo (' + d.capital.status + ').');
+  }
+  if (i.com_ato === 0) faltas.push('Nenhum ato municipal localizado no estado até o corte.');
+  else if (i.n_decreto > i.n_plano) faltas.push('No estado, predominam decretos de emergência sobre planos preventivos: a resposta vem depois do dano.');
+  if (!faltas.length) faltas.push('Nenhuma lacuna crítica localizada até o corte. Confirme se o plano está atualizado para 2026/2027 e conheça a rota de saída do seu bairro.');
+  par('Nível de verificação desta cidade: ' + NIVEL_ROTULO[nivelVerificacao(uf, municipio)] + '.', {tam:9.5, cor:MUTED, espaco:4});
+  faltas.forEach(item);
+  par('O planejamento federal de 29/07/2026 (Sala de Situação do El Niño, 24 ministérios) prevê a atualização dos planos de contingência, com identificação de áreas de risco e fortalecimento das estruturas locais de resposta — é um compromisso público, e vale como argumento ao cobrar o estado e a prefeitura.', {tam:9.5, cor:MUTED, espaco:4});
+
+  // ---- 4b. Pedido de informação pronto ----
+  secao('Pedido de informação pronto (Lei de Acesso à Informação)');
+  par('Copie, preencha seu nome e envie pela ouvidoria ou pelo e-SIC do órgão. O prazo legal de resposta é de 20 dias.', {tam:9.5, cor:MUTED, espaco:4});
+  textoPedidoAcesso(uf, municipio).split('\n').forEach(l => par(l || ' ', {tam:9.5, espaco:1, recuo:8}));
+
+  // ---- 5. Como se proteger ----
+  const chaves = guiasDoEstado(uf);
+  secao('Como se proteger' + (chaves.length < 3 ? ' — riscos projetados para o estado' : ''));
+  chaves.forEach(ch => {
+    const g = GUIAS[ch];
+    par(g.t, {negrito:true, tam:11, espaco:4});
+    g.blocos.forEach(b => { par(b.h + ':', {negrito:true, tam:10, cor:MUTED, espaco:1, recuo:8}); b.itens.forEach(it => par(it, {bullet:true, espaco:1, recuo:8})); });
+    par('Fonte: ' + g.fonte + '.', {tam:9, cor:MUTED, espaco:6, recuo:8});
+  });
+
+  // ---- 6. Links úteis ----
+  secao('Links úteis');
+  if (p && !/^tel:/.test(p[0])) link('Defesa Civil estadual', p[0]);
+  if (reg && reg.url) link('Documento localizado (' + reg.fonte + ')', reg.url);
+  if (DOM_LINKS[uf]) link('Diário Oficial dos Municípios', DOM_LINKS[uf]);
+  link('Defesa Civil Alerta (cadastro e informações)', 'https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-alerta');
+  link('Painel El Niño 2026/2027 — Boletim nº 2, 31/07/2026 (INPE, PDF)', 'https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf');
+  link('Painel El Niño 2026/2027 — Boletim nº 1, 29/06/2026 (CEMADEN)', 'https://www.gov.br/cemaden/pt-br/lancado-o-primeiro-boletim-do-painel-do-el-nino-2026-2027-apresentando-potenciais-impactos-e-orientacoes');
+  link('Este relatório atualizado, e os demais estados e cidades', 'https://monitorelnino.com.br');
+
+  rod();
+  doc.save(municipio ? 'relatorio-el-nino-' + uf + '-' + nrm(municipio).replace(/\s+/g,'-') + '.pdf' : 'relatorio-el-nino-' + uf + '.pdf');
+}
+function gerarPDF(){
+  const uf = selUF.value || (document.getElementById('meuCard').dataset.uf || '');
+  const cid = document.getElementById('cidadeInput').value.trim();
+  if (!uf) { alert('Selecione o estado.'); return; }
+  gerarRelatorioCidadao(uf, cid || null);
+}
+function gerarPDFEstado(uf){ gerarRelatorioCidadao(uf, null); }
+document.getElementById('meuCard').addEventListener('click', (e) => {
+  if (e.target && e.target.id === 'btnPDF') gerarPDF();
+});
+// Botão do relatório de ESTADO: mesmo padrão de delegação do botão municipal.
+// Bug de produção achado em 31/08/2026 ao gerar uma amostra de PDFs: o botão
+// usava onclick inline, que só enxerga escopo global — mas gerarPDFEstado é
+// declarada dentro de __init(), então o clique lançava "gerarPDFEstado is not
+// defined" e nenhum PDF saía. O portão de runtime não clicava nesse botão.
+document.getElementById('detail').addEventListener('click', (e) => {
+  const b = e.target && e.target.closest && e.target.closest('#btnPDFEstado');
+  if (b) gerarPDFEstado(b.dataset.uf);
+});
+// Copiar o pedido de informação (cartão da cidade e detalhe do estado).
+function copiarPedido(botao){
+  const ta = botao.parentElement.querySelector('.pedido-texto');
+  const feito = () => { const t0 = botao.textContent; botao.textContent = 'Copiado'; setTimeout(() => { botao.textContent = t0; }, 2000); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(feito, () => { ta.select(); document.execCommand('copy'); feito(); });
+  else { ta.select(); document.execCommand('copy'); feito(); }
+}
+['meuCard', 'detail'].forEach(id => document.getElementById(id).addEventListener('click', (e) => {
+  const b = e.target && e.target.closest && e.target.closest('.btn-copiar-pedido');
+  if (b) copiarPedido(b);
+}));
+
+// ---- Relatório de ESTADO em PDF (conteúdo próprio: veredito, componentes, capital, cobertura, cobranças) ----
+
+
+// ---- Herói: barra do MARÉ + faixa temporal ----
+(function(){
+  const fill = document.getElementById('gaugeFill');
+  // 03/09/2026: o alvo da barra e do contador vem do ÍNDICE calculado (data/indice.json), não do
+  // HTML — o valor gravado (data-alvo) é só fallback e é regravado por recalcular_mare.py --write.
+  try {
+    if (typeof MARE === 'object' && MARE) {
+      const tot = Object.keys(MARE).filter(k => k.length === 2 && MARE[k] && typeof MARE[k].total === 'number').map(k => MARE[k].total);
+      if (tot.length === 27) {
+        const media = Math.round((tot.reduce((a, b) => a + b, 0) / 27) * 10) / 10;
+        fill.dataset.alvo = String(media); fill.style.setProperty('--galvo', String(media));
+        const tr = fill.closest('.gauge-track'); if (tr) tr.setAttribute('aria-label', 'Barra de progresso: MARÉ nacional em ' + media.toLocaleString('pt-BR', {minimumFractionDigits: 1}) + ' de 100');
+        const nEl = document.getElementById('gaugeNum'); if (nEl) nEl.textContent = media.toLocaleString('pt-BR', {minimumFractionDigits: 1});
+      }
+    }
+  } catch (e) {}
+  const temRAF = (typeof requestAnimationFrame === 'function');
+  const raf = temRAF
+    ? (f) => requestAnimationFrame(() => requestAnimationFrame(f))
+    : (f) => setTimeout(f, 60);
+  raf(() => { fill.style.width = fill.dataset.alvo + '%'; });
+  // contador subindo em sincronia com a barra
+  const numEl = document.getElementById('gaugeNum');
+  const alvo = parseFloat(fill.dataset.alvo);
+  const reduz = (typeof matchMedia === 'function') && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!temRAF || reduz){
+    numEl.textContent = alvo.toFixed(1).replace('.', ',');
+  } else {
+    const dur = 1400, t0 = performance.now();
+    const passo = (t) => {
+      const k = Math.min(1, (t - t0) / dur);
+      const e = 1 - Math.pow(1 - k, 3);
+      numEl.textContent = (alvo * e).toFixed(1).replace('.', ',');
+      if (k < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  }
+  if (typeof META !== 'undefined' && META && META.corte){
+    const el = document.getElementById('gaugeCorte'); if (el) el.textContent = META.corte;
+  }
+  const strip = document.getElementById('heroStrip');
+  const d0 = -89;   // 01/04/2026, em dias relativos ao Boletim nº 1
+  const __corteParts = ((typeof META !== 'undefined' && META && META.corte) || '25/08/2026').split('/').map(Number);
+  const d1 = Math.round((new Date(__corteParts[2], __corteParts[1]-1, __corteParts[0]) - new Date(2026, 5, 29)) / 86400000);   // corte lido de meta.json
+  { const sc = document.getElementById('stripCorte'); if (sc && typeof META !== 'undefined' && META && META.corte) sc.textContent = META.corte; }
+  // faixa derivada dos dados vivos (27/08): Boletim nº 1 + datas reais dos instrumentos estaduais
+  const __MARCO = new Date(2026, 5, 29);
+  const timelineData = [{days: 0, label: 'Boletim nº 1 · Painel El Niño', quando: '29/06/2026', doc: ''}];
+  DATA.ufs.forEach(u => {
+    const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(u.data || '');
+    if (!m || u.status === 'LAC') return;
+    const dias = Math.round((new Date(+m[3], +m[2] - 1, +m[1]) - __MARCO) / 86400000);
+    if (dias >= d0 && dias <= d1) timelineData.push({days: dias, label: u.uf + ': instrumento estadual', quando: u.data, doc: u.doc || ''});
+  });
+  timelineData.forEach(ev => {
+    const t = document.createElement('span');
+    t.className = 'strip-tick' + (ev.days === 0 ? ' boletim' : '');
+    t.setAttribute('role', 'img');
+    t.style.left = (100 * (ev.days - d0) / (d1 - d0)).toFixed(2) + '%';
+    t.setAttribute('tabindex', '0');
+    t.setAttribute('aria-label', ev.label + (ev.quando ? ' · ' + ev.quando : ''));
+    const mostrar = (evt) => {
+      const b = t.getBoundingClientRect();
+      showTip(`<strong>${ev.label}</strong>${ev.quando ? '<br>' + ev.quando : ''}${ev.doc ? '<br>' + ev.doc : ''}`,
+        evt.clientX ? evt : {clientX: b.x + b.width/2, clientY: b.y});
+    };
+    t.addEventListener('mouseenter', mostrar);
+    t.addEventListener('focus', mostrar);
+    t.addEventListener('mouseleave', hideTip);
+    t.addEventListener('blur', hideTip);
+    strip.appendChild(t);
+  });
+})();
+
+
+}
+__load().catch(err => {
+  document.body.insertAdjacentHTML('afterbegin',
+    '<div style="background:var(--argila);color:#fff;padding:14px 20px;font-family:Archivo, system-ui, sans-serif;">' +
+    'Erro ao carregar os dados: ' + err.message +
+    '. Sirva a pasta via HTTP (ex.: <code>npx serve</code>) — abrir o arquivo diretamente bloqueia o fetch.</div>');
+});
+
+// Faixa interpretativa do MARÉ (cortes normativos declarados na Metodologia §5.6)
+// Selo visual (não mais palavra colorida solta em frase corrida) — os nomes e
+// limites de cada faixa já ficam explícitos nos marcos da barra logo abaixo,
+// então aqui só se declara em qual faixa o país está agora (31/08/2026).
+(function(){
+  var g = document.getElementById('gaugeNum'), el = document.getElementById('faixaMare');
+  if (!g || !el) return;
+  var v = parseFloat(g.textContent.replace(',', '.'));
+  // [rótulo, fundo, texto] — pares conferidos contra WCAG AA (4,5:1) em 31/08/2026:
+  // ferrugem/claro 6,45 · tan/escuro 6,65 · oliva escurecido/claro ≥4,5 · azul/claro 6,91
+  var f = v < 25 ? ['Estágio inicial', MonitorMapas.cor('argila'), MonitorMapas.cor('branco')] : v < 50 ? ['Em construção', MonitorMapas.cor('ambar'), MonitorMapas.cor('abissal')] : v < 70 ? ['Consolidado', MonitorMapas.cor('musgo'), MonitorMapas.cor('branco')] : ['Avançado', MonitorMapas.cor('musgo'), MonitorMapas.cor('branco')];
+  el.innerHTML = 'Preparação demonstrada<span class="gfaixa-pill" style="background:' + f[1] + '; color:' + f[2] + '">' + f[0] + '</span>';
+})();
+
+// ===== index.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
+window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });

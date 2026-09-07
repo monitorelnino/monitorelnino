@@ -7,7 +7,7 @@
  * e presença dos pontos de quebra canônicos e do foco visível na folha base.
  * Uso: node scripts/verificar_acessibilidade.js
  */
-const fs = require("fs"), path = require("path"); const { JSDOM } = require("jsdom");
+const fs = require("fs"), path = require("path"); const { JSDOM } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const RAIZ = path.join(__dirname, ".."); let falhas = 0;
 const falha = m => { console.log("  ✗ " + m); falhas++; };
 const PAGINAS = ["index.html", "pesquisadores.html", "calendario-eleitoral.html","defesa-civil.html","sinais-de-risco.html","saude.html","financiamento.html","proteja-se.html","envie-dados.html","para-gestores.html","obrigado.html","imprensa.html"];
@@ -23,7 +23,7 @@ for (const bp of ["max-width:1020px","max-width:640px"])   // v3.1 §14.3: dois 
 if (!/:focus-visible\{/.test(base)) falha("base.css sem foco visível (:focus-visible)");
 if (!/\.mainnav a, \.mainnav span\{[^}]*min-height:36px/.test(base)) falha("base.css sem alvo de toque mínimo na navegação");
 for (const p of PAGINAS) {
-  const html = fs.readFileSync(path.join(RAIZ, p), "utf-8"); const d = new JSDOM(html).window.document;
+  const html = inlinePageJs(fs.readFileSync(path.join(RAIZ, p), "utf-8"), RAIZ); const d = new JSDOM(html).window.document;
   if ((d.documentElement.getAttribute("lang") || "").toLowerCase() !== "pt-br") falha(`${p}: <html lang> ausente ou diferente de pt-BR`);
   if (!d.querySelector('meta[name="viewport"][content*="width=device-width"]')) falha(`${p}: sem meta viewport responsiva`);
   if (!d.querySelector("a.skip[href^='#']")) falha(`${p}: sem link 'pular para o conteúdo' (a.skip)`);
