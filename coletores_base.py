@@ -191,7 +191,7 @@ def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: 
               fonte_suspensa_defeso: bool = False, hash_evidencia=None):
     """Acrescenta uma execução ao log v2. `decisao` no vocabulário fechado:
     registro | pista | nada localizado | fonte suspensa (defeso) | erro."""
-    assert decisao.split(" ")[0] in ("registro", "pista", "nada", "fonte", "erro"), decisao
+    assert decisao.split(" ")[0] in ("registro", "pista", "nada", "fonte", "erro", "acesso", "sem_cobertura_qd", "coberto_sem_mencao", "com_excerto"), decisao   # "acesso recusado" (§10.1), decisões do §1.2
     if decisao.startswith("nada localizado"):
         assert nivel == "municipal_completo", "regra §2.1: 'nada localizado' exige bateria municipal completa"
     lg = ler("log_buscas.json")

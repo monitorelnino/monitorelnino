@@ -105,6 +105,8 @@ def main():
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
     rodar([sys.executable, "coletar_desfechos_saude.py"])               # 07/09/2026 (§8): desfechos — InfoDengue 2019–2026 para o painel; peso zero
+    rodar([sys.executable, "preservar_evidencias.py", "--ler", "--limite", "40"])   # 07/09/2026 (§10.1): texto por página dos PDFs de planos
+    rodar([sys.executable, "classificar_saude_no_plano.py"])            # 07/09/2026 (§10.1): leitura automática de saúde no plano → fila R7
     rodar([sys.executable, "gerar_monitor_saude.py"])                   # 05/09/2026: Monitor Saúde v0.1 (§31), derivado da camada de saúde; peso zero
     rodar([sys.executable, "gerar_resposta.py"])                        # 06/09/2026 (v3.1 §3): contador de resposta; peso zero (verificar_resposta.py)
     rodar([sys.executable, "gerar_contadores_financiamento.py"])       # 06/09/2026 (v3.1 §11): quatro contadores por UF; peso zero
