@@ -9,7 +9,7 @@ auditar e operar, e a documentação. Um único diretório serve aos três usos.
 ## Como usar, por papel
 
 **Para PUBLICAR** — o site é a própria raiz deste pacote: as 6 páginas
-(`index.html`, `mapas-e-graficos.html`, `proteja-se.html`, `envie-dados.html`,
+(`index.html`, `defesa-civil.html`, `proteja-se.html`, `envie-dados.html`,
 `obrigado.html`, `para-gestores.html`) e os diretórios que elas referenciam
 (`data/`, `selos/`, `feeds/`, `dados-abertos/`), mais os PDFs e o
 `netlify.toml`. Suba a raiz inteira para o Netlify (ou qualquer hospedagem

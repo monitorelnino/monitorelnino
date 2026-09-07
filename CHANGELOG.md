@@ -9,7 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
+## v3.1 — "edição narrativa" · 06/09/2026 · fechada (documentos de transferência REDESENHO_NARRATIVO_MARE_v3_1 e INSTRUCOES_diarios_defeso_LAI)
+
+Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
+
+### PR-N9 — Metodologia e versão (06/09/2026)
+- Cabeçalho da Metodologia declara a **v3.1 "edição narrativa"** (nenhuma alteração de método);
+  **§12.5** registra E13–E23 e C15–C25 e a trava da Errata C25; **§34** traz o inventário narrativo
+  (as doze páginas, a pergunta de cada uma, o ato que avança, palavras estáticas antes/depois, os
+  três testes). §§ 24, 26, 29, 32 e 33 já escritas nos PRs anteriores.
+- Fósseis removidos: "mapas-e-graficos" no README, LEIA-ME e comentários; "8 páginas" → 12.
+  Versão nos rodapés das doze páginas, no "como citar" e nos PDFs: MARÉ v3.1. CHANGELOG fechado.
+- **Pendências declaradas ao fechar (§17 e não-feitos):** conferência do inciso 166-A (transferência
+  especial no defeso; linha "a confirmar"); SICs das 27 secretarias de saúde e envio dos pedidos de LAI
+  (só com "sim" da editoria); adaptadores dos 26 DOEs e dos diários consorciados; axe-core (§14.4); oito páginas acima da meta de palavras do §7 (abaixo do teto).
 
 ### PR-N8 — Segurança (06/09/2026; §14.4–14.10)
 - **CSP sem `'unsafe-inline'` em `script-src`:** todos os scripts inline das doze páginas foram
@@ -26,7 +39,10 @@ não pontuados permanecem na versão corrente.
 - **Proteção da `main` conferida pela API:** ruleset ativo (PR obrigatório, check `portoes`
   obrigatório, sem force-push nem exclusão; bypass só da deploy key do robô) — registrado no
   `PROTOCOLO_ATUALIZACAO.md`. LGPD: regra de retenção das submissões escrita (§14.9).
-- Não feito por falta de navegador no ambiente: axe-core no runtime e captura a 390 px (§14.3–14.4).
+- **Portão móvel** (`scripts/verificar_movel.js`, na suíte): cada página a 390 px num Chromium real
+  (Playwright), sem rolagem horizontal nem erro de JS, com capturas; quatro páginas estouravam a
+  largura (dispersão, tabela de contadores, barras de prazo, tabela do log) e foram corrigidas no
+  `base.css`. Não feito: axe-core (§14.4).
 - Portões em Python e em Node passaram a ler a página com o script embutido (`pagina_completa.py`,
   `scripts/_inline_js.js`), para inspecionar o JS que agora vive fora do HTML.
 

@@ -10,14 +10,15 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=2525905b">
+<link rel="stylesheet" href="assets/base.css?v=a4a61ca0">
 <script src="assets/mapas.js?v=8e6310d1"></script>
 <style>
   /* Prazos das MPs (05/09/2026): mesmo desenho das barras da página inicial */
   .prazos-barras{display:flex; flex-direction:column; gap:12px;}
   .prazo{display:grid; grid-template-columns:1fr auto; gap:4px 14px; align-items:end;}
   .prazo-titulo{font-family:'Fraunces', Georgia, serif; font-weight:300; font-size:15px; line-height:1.3; color:var(--ink);}
-  .prazo-meta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); white-space:nowrap;}
+  .prazo-meta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); white-space:normal; min-width:0;}
+  @media (max-width:640px){ .prazo{grid-template-columns:1fr;} }
   .prazo-meta strong{color:var(--ink); font-weight:600;}
   .prazo-trilho{grid-column:1 / -1; height:10px; background:var(--areia); border-radius:999px; overflow:hidden; position:relative;}
   .prazo-resta{position:absolute; right:0; top:0; bottom:0; background:var(--ambar); border-radius:999px;}
@@ -196,7 +197,7 @@
 <footer class="site-footer">
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.0)</span>
+    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
     <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:imprensa@monitorelnino.com.br">imprensa@monitorelnino.com.br</a></span>
   </footer>
 </div>

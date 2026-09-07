@@ -6,7 +6,7 @@ FUTURA · EVIDENCE LAB
 
 Documento Técnico-Metodológico
 
-Edição 2026/2027 · Metodologia v3.0 (04/09/2026: componente estadual em dois sub-elementos — estrutura de coordenação e instrumento operacional — e categoria municipal `estrutura`; §30) · v2.3 (designação editorial de 02/09/2026 para o redesenho da verificação: níveis, defeso eleitoral, fontes nacionais e estaduais incorporadas, página setorial de saúde — §24 a §29; **motor de cálculo idêntico ao da v2.2.3: nenhum peso, crédito, componente ou régua alterado**) · Corte dos dados: 31/08/2026
+Edição 2026/2027 · Metodologia v3.1 "edição narrativa" (06/09/2026: nenhuma alteração de método — as duas metades do MARÉ na interface, contador de resposta, Calendário eleitoral, Pesquisadores, canal de diários com cobertura, detector de defeso, tema técnico e segurança; §§ 24, 26, 29, 32–34) · v3.0 (04/09/2026: componente estadual em dois sub-elementos — estrutura de coordenação e instrumento operacional — e categoria municipal `estrutura`; §30) · v2.3 (designação editorial de 02/09/2026 para o redesenho da verificação: níveis, defeso eleitoral, fontes nacionais e estaduais incorporadas, página setorial de saúde — §24 a §29; **motor de cálculo idêntico ao da v2.2.3: nenhum peso, crédito, componente ou régua alterado**) · Corte dos dados: 31/08/2026
 
 **Sumário**
 
@@ -519,6 +519,10 @@ Nenhuma destas regras altera nota antes de 26/10/2026 (§24). São declaradas ag
 2. **Citação incompleta — decisão C11.** A partir de 26/10/2026, registro pontuável sem número formal de ato **ou** sem data no padrão dd/mm/aaaa sai da pontuação. Fila pública `data/citacao_incompleta.json` (145 registros em 02/09/2026, contados a partir do dado), prazo de saneamento 25/10/2026; o tamanho da fila é exibido no contador público (§25).
 3. **Candidatos v2.4 (agenda, sem aplicação; designação corrigida em 02/09/2026 — a v2.3 é o redesenho da verificação):** alinhamento ao risco no crédito municipal (mesmo fator f_A do §12.4, em dois níveis); degrau próprio para "em elaboração" na régua de antecipação; instrumento estadual composto por camadas setoriais (defesa civil + saúde + …), cujo insumo é a camada estadual de saúde (§27). Decisão da editoria após a recontagem pós-defeso (§29).
 
+### 12.5 A v3.1 não altera o método (registro de 06/09/2026)
+
+A "edição narrativa" muda como o site conta o que o índice mede — não o que ele mede. Escada de status, créditos municipais, pesos, régua de antecipação, tabela de estrutura e Monte Carlo são os da v3.0, e estão trancados por portão até 25/10/2026 (Errata C25, §10.3). O que a v3.1 acrescenta é **peso zero**: o contador de resposta (§32), o Calendário eleitoral (§24), o Monitor Saúde em duas metades e os contadores do financiamento (§33), o canal de diários com as três decisões e o detector de defeso (§26, §24), o canal LAI pré-registrado (§29). Decisões da editoria registradas em 06/09/2026: **E13** (MARÉ = antecipação + resposta, nunca combinadas), **E14** (medidor preservado), **E15** (uma tela = uma pergunta), **E16** (cartão com cinco campos), **E17** (Saúde em duas metades), **E18** (financiamento em contadores), **E19** (nada vira nota: peso zero em tudo o que é novo), **E20** (Calendário nasce com o buraco à vista), **E21** (galeria dissolvida em Defesa civil), **E22** (Pesquisadores como página de provas), **E23** (design técnico, acessibilidade e segurança com portão para cada mudança). Convenções: **C15** (barra = fração de municípios; traço = fração da população), **C16** (fatias e tons; em classificação nunca imputado), **C17** (sem composto), **C18** (frase obrigatória do art. 73, VI, *a*), **C19** ("Resposta" par de "Antecipação"), **C20** (dispersão como única leitura conjunta), **C21** (galeria → Defesa civil, 301), **C22** (Pesquisadores), **C23** (navegação em grupos), **C24** ("sinal do ato" sai da interface, a doutrina fica), **C25** (errata da v3.0 no defeso).
+
 ## 13. Fim do ranking ordinal como produto público (v2.2.3, decisão de 29/08/2026)
 
 **Decisão.** A partir da v2.2.3, o MARÉ **não publica posição ordinal entre estados** em nenhuma superfície pública. O produto público por UF passa a ser exclusivamente: a **nota** (linear e geométrica com piso), a **faixa interpretativa** (§5.6) e a **confiança da verificação**. Os campos `rank_mediano`, `rank_p5` e `rank_p95` saem de `data/indice.json` e migram, integralmente computados e selados, para `data/robustez_mc.json` — artefato de evidência metodológica, reproduzido e conferido pelo portão 2 (`recalcular_mare.py --check`) a cada execução, e publicado como anexo de robustez (§5.8 da Documentação do Índice), sempre com o intervalo p5–p95 junto do rank mediano, nunca o ordinal isolado.
@@ -880,3 +884,25 @@ Três julgamentos ficam explicitamente como **pistas** até o ato em fonte ofici
 **Saúde (E17).** A página abre com as duas metades: **antecipação** = Monitor Saúde (§31), na interface "MARÉ · Saúde — antecipação", mesmas faixas do índice principal (a escada é a mesma: instrumento × antecipação); **resposta** = contador de emergências sanitárias do ciclo (ESPIN federal, decretos estaduais por arboviroses, créditos por portaria). Em 06/09/2026 o contador é **zero** — busca manual de 05/09 sem ESPIN nem decreto estadual por arboviroses em 2026 —, e o zero é exibido como dado, não como lacuna; a coleta automática do DOU segue pendente e está declarada. O bloco "Para você" saiu da página: os alertas vivem em Proteja-se, alimentados por `saude_sinais.json`. O cruzamento defesa civil × saúde (quadrantes) permanece.
 
 **Financiamento (E18).** Quatro contadores por UF em `data/financiamento/contadores_uf.json` (`gerar_contadores_financiamento.py`, cadeia de derivados), mesma gramática antes de 04/07 · período eleitoral · depois de 25/10, sem escala nem juízo: (1) R$ por rota por habitante — só a rota 5 (voluntárias, TransfereGov) está coletada por UF; a fatia por período exige a série por UF, ainda sem coleta; (2) municípios com recurso preventivo (fundo a fundo estadual localizado: hoje só o RS, 138 repasses, R$ 32,3 mi) × com recurso de resposta (rotas 3/4, sem coleta); (3) razão depois/antes, só quando os dois existirem; (4) represado — "não disponível" enquanto o Transferegov não expuser o status dos planos de trabalho (pedido de LAI). Estrutura da página: as MPs (ex-bloco 0) fundem-se aos compromissos federais; o painel amostral mantém só o agregado (lista em Pesquisadores); fontes em Pesquisadores. E10 permanece: nenhum autor de emenda é nomeado.
+
+## 34. Inventário narrativo do site (v3.1, 06/09/2026)
+
+**Os cinco atos** (a história que a inicial conta em cinco números): o que foi **anunciado** (ONI, probabilidade, Painel), o que foi **publicado** (índice), o que foi **decretado** (contador), o que **chegou** (financiamento), o que **ainda não sabemos** (níveis de verificação, fontes suspensas, municípios sem diário indexado). **Os três testes** de toda seção: avança um dos cinco atos? serve a um público em até três cliques? é o único lugar onde aparece? Três padrões cortados em todas as páginas: metatexto (uma linha + link para a metodologia), fontes na página (→ Pesquisadores; crédito por figura fica), andaime (§12 do documento de transferência).
+
+| Página | A pergunta que responde | Ato | Palavras estáticas antes | Depois (06/09) |
+|---|---|---|---|---|
+| index.html | O Brasil se preparou, e o que já foi decretado? | todos | 1589 | 767 |
+| sinais-de-risco.html | O que foi anunciado — e que risco isso projeta em cada estado? | 1 · anunciado | 732 | 402 |
+| calendario-eleitoral.html | O que a lei suspende, o que não suspende, e o que o Monitor mediu no período? | transversal (o que a lei fez) | 0 | 328 |
+| defesa-civil.html | O que cada estado publicou antes e o que decretou depois? | 2 · publicado e 3 · decretado | — | 346 |
+| saude.html | A saúde está preparada — e houve emergência sanitária? | 2 e 3 (saúde) | 554 | 394 |
+| financiamento.html | O dinheiro chegou — por qual rota, antes ou depois? | 4 · chegou | 760 | 704 |
+| proteja-se.html | O que eu faço, no meu estado, em cada cenário? | serviço ao leitor | 1251 | 1107 |
+| para-gestores.html | O que um gestor publica, e o que ainda pode fazer no período eleitoral? | serviço ao gestor | 1008 | 832 |
+| imprensa.html | Quais são os dois números, a frase citável e o que mudou esta semana? | síntese | 1564 | 1038 |
+| pesquisadores.html | Onde está a prova de tudo o que o site afirma? | 5 · o que não sabemos (provas) | 0 | 1333 |
+| envie-dados.html | Como um documento oficial entra no Monitor? | porta de entrada | 589 | 496 |
+| obrigado.html | O envio foi recebido. | — | — | 139 |
+
+Contagem fora de navegação e rodapé; "antes" é a auditoria de 06/09 (manhã), "depois" o estado ao fechar a v3.1. O portão `scripts/verificar_palavras.js` mantém a meta do §7 por página (avisa) e um teto (bloqueia). Onze páginas de conteúdo mais a de agradecimento; a galeria "Mapas e gráficos" dissolveu-se em Defesa civil (redirecionamento 301). Nenhuma informação foi perdida: o que saiu da vista vive nos dados, na metodologia ou em Pesquisadores.
+

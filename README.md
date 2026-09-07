@@ -50,7 +50,7 @@ variáveis no terminal antes de rodar `python3 atualizar.py`.
 ```
 monitor-el-nino/
 ├── index.html                 ← o monitor (mapa, índice, consulta municipal, PDFs)
-├── mapas-e-graficos.html      ← 7 mapas e 6 gráficos
+├── defesa-civil.html          ← antecipação (mapas e leituras) e resposta (contador); ex-"mapas-e-graficos" (301)
 ├── proteja-se.html            ← orientações oficiais, por risco projetado
 ├── envie-dados.html           ← formulário público de contribuição
 ├── obrigado.html              ← confirmação da contribuição
@@ -189,7 +189,7 @@ requisitos de rede em `docs/COMO_RODAR_E_PENDENCIAS.md`). Em resumo:
    Qualquer falha interrompe antes do commit.
 5. **Pós-portões:** PDFs regenerados, `verificar_links.py` (informativo, com
    artefato), `data/meta.json` carimbado, commit de `data/`, `index.html`,
-   `mapas-e-graficos.html` e `recalcular_mare.py`.
+   `defesa-civil.html` e `recalcular_mare.py`.
 
 **Quando a etapa 2 encontrar propostas:** revise `data/instrumentos_revisar.json` (apague o que não deve entrar) e rode `python3 aplicar_revisao.py --arquivo data/instrumentos_revisar.json` — esse script mescla a revisão aprovada em `municipios.json`/`pontos_mapa.json`, chama `recalcular_mare.py --write`, atualiza o corte e roda os três portões (4/5/7 acima) de ponta a ponta. Nada é publicado automaticamente sem essa aprovação.
 
