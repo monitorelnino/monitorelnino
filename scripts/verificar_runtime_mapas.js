@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Verificador de runtime da página de mapas e gráficos (defesa-civil.html),
+/* Verificador de runtime da página Defesa civil (defesa-civil.html; ex-mapas e gráficos),
  * separada de index.html em 31/08/2026. Mesmo padrão de scripts/verificar_runtime.js
  * (jsdom + d3 reais, Chart simulado, fetch local), cobrindo os 7 mapas, a tabela
  * risco×instrumento e os totais que migraram para cá.
