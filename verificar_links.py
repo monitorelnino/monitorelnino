@@ -36,7 +36,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
-ARQUIVOS_HTML = ["index.html", "defesa-civil.html", "proteja-se.html", "envie-dados.html", "obrigado.html", "para-gestores.html"]
+ARQUIVOS_HTML = ["index.html", "defesa-civil.html", "proteja-se.html", "envie-dados.html", "obrigado.html"]
 
 
 def extrair_links_marcacao():
