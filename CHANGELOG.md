@@ -13,6 +13,15 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Navegação simples e contador com a anatomia do medidor (07/09/2026, pedido da editoria)
+- Os rótulos de grupo saíram da barra de navegação (confundiam mais do que orientavam); ficou
+  uma linha simples na ordem do §6, com separadores finos entre os grupos e o botão "Enviar dados"
+  no fim. A barra quebra linha em qualquer largura (não estoura a 1024 px nem a 390 px).
+- O contador de resposta ganhou exatamente a anatomia do medidor: número grande, denominador
+  (/ 5.571), selo (% dos municípios), rótulo à direita, barra com marcas (10 · 25 · 50%) e extremos,
+  traço da fração da população na própria barra — em Argila, sem gradiente nem brilho. O medidor
+  permanece como está. A miniatura semanal saiu daqui (segue em Defesa civil).
+
 ### PR-N9 — Metodologia e versão (06/09/2026)
 - Cabeçalho da Metodologia declara a **v3.1 "edição narrativa"** (nenhuma alteração de método);
   **§12.5** registra E13–E23 e C15–C25 e a trava da Errata C25; **§34** traz o inventário narrativo
