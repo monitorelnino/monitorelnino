@@ -79,7 +79,9 @@ setTimeout(() => {
     const coletada = SINAIS.fontes[fonte].status === "coletado";
     const temCanvas = q(wrap) && q(wrap).querySelector("canvas");
     const temLacuna = q(wrap) && q(wrap).querySelector(".lacuna");
-    teste(`${wrap}: ${coletada ? "gráfico desenhado" : "lacuna declarada"}`, coletada ? !!temCanvas : !!temLacuna);
+    // 07/09/2026: o plume não coletado mostra a leitura oficial (CPC/Painel) como legenda, em vez de lacuna em parágrafo
+    const temLeitura = wrap === "wrapPlume" && q("legPlume") && /CPC|Boletim/.test(q("legPlume").textContent);
+    teste(`${wrap}: ${coletada ? "gráfico desenhado" : "lacuna declarada ou leitura oficial"}`, coletada ? !!temCanvas : (!!temLacuna || !!temLeitura));
     teste(`${wrap}: nunca gráfico e lacuna ao mesmo tempo`, !(temCanvas && temLacuna));
   }
 

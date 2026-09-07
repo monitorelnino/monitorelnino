@@ -20,6 +20,8 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
     await page.waitForTimeout(1200);
     const m = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth, bw: document.body.scrollWidth }));
     if (m.sw > m.iw + 1 || m.bw > m.iw + 1) falhas.push(`${p}: rolagem horizontal a 390 px (scrollWidth ${Math.max(m.sw, m.bw)} > ${m.iw})`);
+    const banner = await page.evaluate(() => { const b = [...document.querySelectorAll("div")].find(d => /Erro ao carregar os dados/.test(d.textContent || "") && d.children.length === 0); return b ? b.textContent.slice(0, 120) : null; });
+    if (banner) falhas.push(`${p}: banner de erro de carregamento — ${banner}`);
     const errosReais = erros.filter(e => !/jsPDF|VLibras|fonts/i.test(e));
     if (errosReais.length) falhas.push(`${p}: erro JS — ${errosReais[0].slice(0, 100)}`);
     await page.screenshot({ path: `/tmp/capturas_390/${p.replace(".html", "")}.png`, fullPage: false });
@@ -27,5 +29,5 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
   }
   await b.close(); srv.close();
   if (falhas.length) { console.log("✗ MÓVEL (390 px):"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
-  console.log(`✓ MÓVEL OK — ${PAGINAS.length} páginas a 390 px sem rolagem horizontal nem erro de JS (capturas em /tmp/capturas_390).`);
+  console.log(`✓ MÓVEL OK — ${PAGINAS.length} páginas a 390 px sem rolagem horizontal, sem erro de JS e sem banner de erro de carregamento (capturas em /tmp/capturas_390).`);
 })();

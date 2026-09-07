@@ -13,6 +13,28 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Navegação, Financiamento primeiro-com-o-El-Niño, gráficos vazios e a pergunta do defeso (07/09/2026, pedido da editoria)
+- **Três quebras de página que o jsdom não pegava** (Financiamento: `tblConsultas` órfão após a
+  migração para Pesquisadores; Pesquisadores: constante usada antes de declarar, `MonitorMapas` e
+  `CAMADA_ROTULO` ausentes) — eram a causa dos gráficos "zerados" no Financiamento. Corrigidas; o
+  portão móvel (Chromium real) agora falha em qualquer banner "Erro ao carregar os dados"; e um
+  portão novo em `verificar_estrutura.js` bloqueia JS que escreve em id inexistente sem guarda.
+- **Navegação:** "Sinais" vira **"Risco climático"** (título da página também); **Saúde antes de
+  Defesa civil**; o Calendário sai da barra (segue publicado e alcançável por links).
+- **Financiamento:** seção 1 passa a ser **"O dinheiro do El Niño: como e onde está chegando"** —
+  barras de prazo das MPs, rota por órgão com a parcela paga, e dois cartões novos: mapa e barras do
+  **valor pago por UF da unidade gestora** (96% nas sedes nacionais; PA, MT, RO e GO à frente).
+- **Gráficos vazios populados pelo que existe:** prognóstico trimestral SON/2026 (leitura humana do
+  Boletim nº 3 do Painel: chuva abaixo da normal no Norte, Nordeste e centro-norte, acima no Sul;
+  calor em quase todo o País) e a probabilidade de El Niño (> 90% para SON, CPC/NOAA via CPTEC; 100%
+  de permanência até início de 2027, Boletim nº 3) exibidos como leitura declarada até o plume ser
+  coletado — sonda de endpoints do IRI/CPC adicionada ao diagnóstico. O que segue vazio e por quê:
+  R$/hab. por rota (rotas 1–4, 6, 7 sem coleta por UF — TransfereGov fundo a fundo e especiais são
+  os próximos coletores); Calendário bloco 4 (só a partir de 26/10).
+- **§24:** registrada a pergunta-guia da editoria — "o período eleitoral prejudicou a resposta do
+  Brasil?" — e a lista do que fica guardado para respondê-la (dispositivos, fontes suspensas com datas,
+  log com o flag do defeso, série de decretos com a faixa, prazos das MPs, registros de reabertura).
+
 ### Inicial: o nome do MARÉ vai para o título (07/09/2026, pedido da editoria)
 - O título do herói passa a ser "MARÉ · Medida de Antecipação e Resposta ao El Niño 2026/2027";
   "Como o Brasil está se preparando" vira a primeira frase do lide. Os rótulos das duas metades
