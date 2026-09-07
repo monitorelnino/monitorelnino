@@ -9,7 +9,7 @@ const fs = require("fs"), path = require("path"); const RAIZ = path.join(__dirna
 const paginas = fs.readdirSync(RAIZ).filter(f => f.endsWith(".html"));
 for (const p of paginas) {
   const h = fs.readFileSync(path.join(RAIZ, p), "utf-8");
-  if (/<script>(?![\s\S]*?<\/script>\s*$)/.test(h) && /<script>[\s\S]*?<\/script>/.test(h)) falhas.push(`${p}: <script> inline`);
+  if (/<script>[\s\S]*?<\/script>/.test(h)) falhas.push(`${p}: <script> inline`);   // <script type="application/ld+json"> (dados estruturados, não executável) é permitido
   const m = h.match(/\son(?:click|change|input|submit|load|keyup|keydown|mouseover|focus|blur)\s*=/i); if (m) falhas.push(`${p}: handler inline (${m[0].trim()})`);
   for (const s of h.matchAll(/<script src="(https?:\/\/[^"]+)"/g)) if (!/^https:\/\/vlibras\.gov\.br\//.test(s[1])) falhas.push(`${p}: script externo ${s[1]}`);
 }
