@@ -32,7 +32,7 @@ function faceTile(uf){
   const acima = (niv.estadual || 0) + (niv.municipal_completo || 0) + (niv.municipal_parcial || 0);
   const ST = {NOVO:'novo', READ:'readequado', VIG:'vigente', ELAB:'em elaboração', LAC:'não localizado'};
   return `<div class="tile-face">
-    <span>${acima} de ${tot} verif. além do nacional</span>
+    <span>diário consultado: ${((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[uf] || 0} de ${tot}</span>
     <span>${esc(ST[d.status] || d.status)}${d.data && d.data !== 'Recorrente' ? ' · ' + esc(d.data) : d.data ? ' · recorrente' : ''}</span>
     <span>${d.capital && d.capital.nome ? esc(d.capital.nome) + ' · ' + esc(String(d.capital.status || '').toLowerCase()) : 'capital —'}</span></div>`;
 }
@@ -131,8 +131,8 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   if (typeof RESP !== 'undefined' && RESP && RESP.nacional) el('n3Decretado').textContent = RESP.nacional.n_municipios.toLocaleString('pt-BR') + ' · ' + (100 * RESP.nacional.fracao_populacao).toFixed(1).replace('.', ',') + '% da pop.';
   fetch('data/financiamento/serie_nacional.json').then(r => r.ok ? r.json() : null).then(sn => { const t = sn && sn.semanas ? sn.semanas.reduce((a, x) => a + (+x.r5 || 0), 0) : 0;
     el('n4Chegou').textContent = t ? 'R$ ' + (t / 1e9).toFixed(1).replace('.', ',') + ' bi' : 'sem coleta'; }).catch(() => { el('n4Chegou').textContent = 'sem coleta'; });
-  const nv = (VRESUMO && VRESUMO.totais_por_nivel) || {}; const semInd = (nv.nacional || 0) + (nv.nao_verificado || 0);
-  el('n5NaoSabemos').textContent = semInd ? semInd.toLocaleString('pt-BR') + ' de 5.571' : '—';
+  const vd = (VRESUMO && VRESUMO.varredura_diarios) || null; const semDiario = vd ? Math.max(0, (vd.total || 5571) - (vd.consultados || 0)) : null;
+  el('n5NaoSabemos').textContent = semDiario != null ? semDiario.toLocaleString('pt-BR') + ' de 5.571' : '—';
 })();
 
 // Metadados do cabeçalho e do rodapé: nunca mais texto fixo (achado de Patricia,
@@ -281,20 +281,19 @@ function renderPrazos(){
   const hoje = new Date(); hoje.setHours(0,0,0,0);
   const itens = PRAZOS.marcos.filter(m => m.vencimento && m.data_base && m.titulo_curto)
     .map(m => { const ini = dataBR(m.data_base), fim = dataBR(m.vencimento);
-      const total = Math.max(1, (fim - ini) / 86400000), dias = Math.round((fim - hoje) / 86400000);
-      const resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));   // fração do prazo que ainda resta
+      const dias = Math.round((fim - hoje) / 86400000), resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));
       return {...m, ini, fim, dias, resta}; })
     .filter(m => m.dias >= -60).sort((x,y) => x.fim - y.fim);
+  // 07/09/2026: relógio (anel que esvazia) + o que se espera no vencimento; ordem: vence antes primeiro
   box.innerHTML = itens.map(m => {
-    const vencido = m.dias < 0, urgente = !vencido && m.resta < 0.3;
-    const quando = vencido ? `transcorrido há ${-m.dias} dia(s)` : m.dias === 0 ? 'vence hoje' : m.dias === 1 ? 'vence amanhã' : `${m.dias} dias`;
-    const cls = vencido ? 'vencido' : urgente ? 'urgente' : '';
-    return `<div class="prazo ${vencido ? 'vencido' : ''}" role="group" aria-label="${esc(m.titulo_curto)}">
-      <div class="prazo-titulo">${esc(m.titulo_curto)}</div>
-      <div class="prazo-meta">${m.classe} · <strong>${quando}</strong></div>
-      <div class="prazo-trilho" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(m.resta*100)}" aria-valuetext="${Math.round(m.resta*100)}% do prazo restante"><div class="prazo-resta ${cls}" style="width:${(m.resta*100).toFixed(1)}%"></div></div>
-      <div class="prazo-datas"><span>${m.data_base}</span><span>${m.vencimento}</span></div>
-    </div>`; }).join('');
+    const vencido = m.dias < 0;
+    return `<div class="prazo-rel ${vencido ? 'vencido' : ''}" role="group" aria-label="${esc(m.titulo_curto)}">
+      ${MonitorMapas.relogio(m.resta, m.dias)}
+      <div class="prazo-rel-txt">
+        <div class="prazo-titulo">${esc(m.titulo_curto)}</div>
+        <div class="prazo-meta">${esc(m.classe)} · ${esc(m.data_base)} → <strong>${esc(m.vencimento)}</strong>${vencido ? ' · transcorrido' : ''}</div>
+        ${m.o_que_se_espera ? '<div class="prazo-espera"><span class="k">O que se espera:</span> ' + esc(m.o_que_se_espera) + '</div>' : ''}
+      </div></div>`; }).join('');
   vazio.hidden = itens.length > 0;
 }
 renderPrazos();
