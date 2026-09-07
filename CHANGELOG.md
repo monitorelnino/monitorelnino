@@ -13,6 +13,18 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Rotina: fóssil `mapas-e-graficos.html` no `git add` do robô (07/09/2026)
+- A rodada de 17h coletou os 313 municípios do InfoDengue e não comitou: o passo de commit ainda
+  listava `mapas-e-graficos.html` (hoje `defesa-civil.html`) e o `git add` abortava. Corrigido.
+
+### Leitura contínua de saúde nos planos (§10.1, 07/09/2026)
+- `preservar_evidencias.py --ler`: texto por página dos PDFs de planos (pypdf, pdfplumber de reserva),
+  `evidencias/<sha256>.txt` + hash, cópia do binário só até 5 MB; 401/403 → "acesso recusado" (LAI).
+  Os oito PDFs sem cópia desde 03/09 entram primeiro. Na rotina (40 por rodada).
+- `classificar_saude_no_plano.py` (6 autotestes): degraus 1/2/3/5 por regra com página citada, 4
+  nunca automático; saída "leitura automática" + fila R7 (`saude_no_plano_revisar.json`).
+- Portão (n) ampliado: confirmada só com `revisado_por` e data; degrau 4 só confirmado; motor não lê.
+
 ### Desfechos em saúde, saúde no defeso e `saude_no_plano` (07/09/2026; instruções §8–§10)
 - **§8 — terceira coluna, "o que aconteceu":** `coletar_desfechos_saude.py` (5 autotestes) lê o
   InfoDengue `alertcity` 2019–2026 para os 313 municípios do painel amostral e calcula o canal
