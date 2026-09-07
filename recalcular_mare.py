@@ -358,8 +358,11 @@ def _resumo_verificacao(out):
         _qd = {c: f for c, f in _qd.items() if f}
         _datas = sorted({f["data"] for fs in _qd.values() for f in fs if f.get("data")})
         _com_mencao = sum(1 for fs in _qd.values() if any(not str(f.get("resultado", "")).startswith("sem edições") for f in fs))
+        _uf_de = {str(v["ibge"]).zfill(7): v["uf"] for v in out}; _por_uf_qd = {}
+        for c in _qd: _u = _uf_de.get(str(c).zfill(7)); _por_uf_qd[_u] = _por_uf_qd.get(_u, 0) + 1
         varredura = {"fonte": _FQD, "consultados": len(_qd), "total": len(out), "com_mencao": _com_mencao,
-                     "sem_mencao": len(_qd) - _com_mencao, "desde": (_datas[0] if _datas else None), "ultima": (_datas[-1] if _datas else None)}
+                     "sem_mencao": len(_qd) - _com_mencao, "desde": (_datas[0] if _datas else None), "ultima": (_datas[-1] if _datas else None),
+                     "por_uf": _por_uf_qd}   # 07/09/2026: diário consultado por UF (face do cartão)
     except Exception:
         varredura = None
     resumo = {"gerado_de": "verificacao_municipal.json", "total_municipios": len(out), "lai": lai,
