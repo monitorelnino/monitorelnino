@@ -12,6 +12,17 @@ Lê data/financiamento/por_uf.json e data/populacao_censo2022.json; grava data/f
 import json, sys
 from datetime import date
 from coletores_base import ler, gravar, rodar_autoteste
+
+def _hoje():
+    """Data determinística = 'atualizado_em' de data/meta.json (a última rodada que gravou dados), para que a
+    cadeia de derivados reproduza o arquivo byte a byte em qualquer dia; 'hoje' só se o meta não existir."""
+    import datetime as _dt, json as _js, pathlib as _pl
+    try:
+        a = _js.load(open(_pl.Path(__file__).resolve().parent / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
+        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
+    except Exception:  # noqa: BLE001
+        return _dt._hoje()
+
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
 
 
@@ -38,7 +49,7 @@ def gerar() -> int:
     for r in vm:
         pop_uf[r["uf"]] = pop_uf.get(r["uf"], 0) + float(pop.get(str(r["ibge"]).zfill(7), 0) or 0)
     out = {uf: contadores_uf(uf, (por.get("uf") or {}).get(uf), pop_uf.get(uf, 0)) for uf in UFS}
-    gravar("financiamento/contadores_uf.json", {"_governanca": "Quatro contadores por UF (v3.1 §11): R$ por rota por habitante; municípios cobertos preventivo × resposta; razão depois/antes; represado. Contagens e razões, sem escala nem juízo; peso zero. Lacunas declaradas campo a campo.", "gerado_em": date.today().strftime("%d/%m/%Y"), "uf": out})
+    gravar("financiamento/contadores_uf.json", {"_governanca": "Quatro contadores por UF (v3.1 §11): R$ por rota por habitante; municípios cobertos preventivo × resposta; razão depois/antes; represado. Contagens e razões, sem escala nem juízo; peso zero. Lacunas declaradas campo a campo.", "gerado_em": _hoje().strftime("%d/%m/%Y"), "uf": out})
     n = sum(1 for u in out.values() if u["municipios_cobertos"]["preventivo"] is not None)
     print(f"contadores: 27 UFs; r5 por habitante em {sum(1 for u in out.values() if u['por_habitante_2026'].get('r5') is not None)}; preventivo localizado em {n}")
     return 0
