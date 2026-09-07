@@ -46,7 +46,9 @@ jobs:
             fi
             ALIAS=$(echo "${GITHUB_REF_NAME}" | tr '/_.' '---' | tr -cd 'a-zA-Z0-9-' | cut -c1-37 | sed 's/-*$//')
             # senha da prévia (03/09/2026): Basic-Auth via _headers gerado no deploy, a partir de segredo — nunca no repositório
-            if [ -n "$PREVIA_BASIC_AUTH" ]; then printf '/*\n  Basic-Auth: %s\n' "$PREVIA_BASIC_AUTH" > _headers; fi
+            # 07/09/2026 (SEO): a prévia nunca é indexada — noindex por cabeçalho e robots.txt de bloqueio só neste deploy
+            if [ -n "$PREVIA_BASIC_AUTH" ]; then printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers; else printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > _headers; fi
+            printf 'User-agent: *\nDisallow: /\n' > robots.txt
             npx --yes netlify-cli@17 deploy --alias="$ALIAS" --dir=. --message "Prévia de ${GITHUB_REF_NAME} ${GITHUB_SHA::7}"
             rm -f _headers > /tmp/deploy_out.txt 2>&1
             echo "codigo_saida=$?"

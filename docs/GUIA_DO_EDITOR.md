@@ -212,3 +212,13 @@ vazio" ou instrução de uso — o leitor não quer explicação sobre o que est
 dado (um total, uma contagem, "nenhum alerta vigente") entra como item de legenda. Tabela ou
 texto alternativo, por acessibilidade, fica num `<details>` fechado com resumo neutro
 ("Ver em tabela"). O portão `scripts/verificar_figuras.js` bloqueia a publicação se isso voltar.
+
+## SEO (07/09/2026)
+
+Cada página tem título e descrição únicos (título ≤ 110 caracteres; descrição 70–170), canônica no domínio,
+Open Graph e Twitter Card com o cartão `assets/social/card-monitor-el-nino.png` (1200×630), dados
+estruturados JSON-LD (WebPage em todas; Dataset e WebSite na inicial), um único `<h1>`. `sitemap.xml` e
+`robots.txt` valem para o domínio; a prévia sempre sai com `noindex` e robots de bloqueio. Portão
+`scripts/verificar_seo.js` na suíte. **A cargo da editoria, após o lançamento:** cadastrar o domínio no Google
+Search Console (verificação por DNS no registrador, ou pela meta tag que o console fornecer — nesse caso, avise
+para incluí-la no `<head>`), enviar o sitemap e, na cortina, trocar o `Disallow: /` pelo robots do site.
