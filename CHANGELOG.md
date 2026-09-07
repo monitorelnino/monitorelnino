@@ -11,6 +11,16 @@ não pontuados permanecem na versão corrente.
 
 ## v3.1 — "edição narrativa" (em execução a partir de 06/09/2026; documento de transferência REDESENHO_NARRATIVO_MARE_v3_1)
 
+### PR-N7 — Saúde em duas metades e contadores do financiamento (06/09/2026)
+- **Saúde (E17):** seção 0 vira "MARÉ · Saúde — antecipação e resposta": à esquerda o Monitor
+  Saúde (mesmas faixas), à direita o contador de emergências sanitárias — **zero em 2026**, exibido
+  como dado (ESPIN: nenhuma; decretos estaduais por arboviroses: nenhum; busca de 05/09; coleta do
+  DOU pendente). "Para você" sai (fica em Proteja-se, com os mesmos dados). Metodologia §33.
+- **Financiamento (E18):** `gerar_contadores_financiamento.py` → `contadores_uf.json`, quatro
+  contadores por UF com lacunas declaradas célula a célula (r5 por habitante nos 27; preventivo
+  localizado só no RS; período, resposta, razão e represado "sem coleta / não disponível"). Seção 3b
+  na página. MPs fundidas aos compromissos federais; painel amostral só com o agregado.
+
 ### PR-N6 — Cortes e Pesquisadores completo (06/09/2026)
 - **Sai da vista, fica nos dados ou em Pesquisadores:** "As oito fontes" e "o que esta página
   é/não faz" de Sinais (viram uma linha com a declaração de peso zero); "Fontes e consultas" de
