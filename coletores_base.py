@@ -77,6 +77,7 @@ PADROES_DEFESO = [
     r"conteudo temporariamente indisponivel(?=[\s\S]{0,400}(eleic|9\.?504))",   # só com contexto eleitoral: manutenção não é defeso
     r"indisponivel[^.]{0,80}eleic", r"defeso eleitoral", r"restricoes eleitorais",
     r"suspens[ao][^.]{0,80}legislacao eleitoral", r"em razao d[ao] (periodo|calendario) eleitoral", r"vedacoes eleitorais",
+    r"\(defeso\)", r"edicao (de )?defeso", r"versao (de )?defeso",   # §9 (07/09/2026): painéis em "edição de defeso" (ex.: Painel das Arboviroses do MS)
 ]
 _RE_DEFESO = [re.compile(p) for p in PADROES_DEFESO]
 _SUSPENSAS_SESSAO = {}   # url → padrão que casou (nesta execução)
@@ -106,6 +107,14 @@ def _dominio_publico(url: str) -> bool:
     return h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h
 
 
+def setor_da_url(url: str) -> str:
+    """§9: setor da fonte suspensa pela URL — saude | financiamento | defesa_civil."""
+    u = url.lower()
+    if any(x in u for x in ("saude", "sus.gov", "arbovir", "dengue", "vigil", "epidem")): return "saude"
+    if any(x in u for x in ("transparencia", "transferegov", "tesouro", "orcament")): return "financiamento"
+    return "defesa_civil"
+
+
 def registrar_fonte_suspensa(url: str, corpo: bytes, padrao: str) -> None:
     """Grava a detecção (hash + 500 primeiras letras) e a contagem por UF em data/calendario/fontes_suspensas.json."""
     import datetime as _dt
@@ -114,8 +123,8 @@ def registrar_fonte_suspensa(url: str, corpo: bytes, padrao: str) -> None:
     p = DATA / "calendario" / "fontes_suspensas.json"
     d = json.load(open(p, encoding="utf-8")) if p.exists() else {"_governanca": "Fontes oficiais que responderam com página de período eleitoral (detector de PR-N0 §1.5). Nunca 'nada localizado': fonte suspensa (defeso). A reabertura é o flag voltando a false, com data.", "fontes": {}}
     hoje = _dt.date.today().isoformat()
-    f = d["fontes"].setdefault(url, {"primeira_deteccao": hoje, "ultima_deteccao": hoje, "padrao": padrao, "hash": h, "amostra": corpo[:2000].decode("utf-8", "replace")[:500], "suspensa": True})
-    f.update({"ultima_deteccao": hoje, "padrao": padrao, "hash": h, "suspensa": True})
+    f = d["fontes"].setdefault(url, {"primeira_deteccao": hoje, "ultima_deteccao": hoje, "padrao": padrao, "hash": h, "amostra": corpo[:2000].decode("utf-8", "replace")[:500], "suspensa": True, "setor": setor_da_url(url)})
+    f.update({"ultima_deteccao": hoje, "padrao": padrao, "hash": h, "suspensa": True, "setor": f.get("setor") or setor_da_url(url)})
     json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1); open(p, "a").write("\n")
     (EVID).mkdir(parents=True, exist_ok=True)
     (EVID / f"defeso_{h[:16]}.txt").write_text(corpo[:20000].decode("utf-8", "replace"), encoding="utf-8")
@@ -130,7 +139,7 @@ def buscar(url: str, timeout: int = 40) -> bytes:
         corpo = r.read()
         ct = (r.headers.get("Content-Type") or "").lower()
     if _dominio_publico(url) and ("html" in ct or "text" in ct or corpo[:200].lstrip().lower().startswith(b"<!doctype") or b"<html" in corpo[:2000].lower()):
-        pad = detectar_defeso(corpo[:200000].decode("utf-8", "replace"))
+        pad = detectar_defeso(corpo[:200000].decode("utf-8", "replace")) or ("defeso" if "defeso" in url.lower() else None)
         if pad:
             _SUSPENSAS_SESSAO[url] = pad
             try:

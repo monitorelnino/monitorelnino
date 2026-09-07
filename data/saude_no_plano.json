@@ -1,0 +1,80 @@
+{
+ "_governanca": "Variável de leitura saude_no_plano (§10, 07/09/2026): como o plano de contingência trata a saúde. Categorias cumulativas 0–5: ausente · orgao_listado · resposta · vigilancia_pos · prevencao_epidemiologica · riscos_do_ciclo. Só com documento lido integralmente pela Action ler_documento, hash e página citada; nada imputado; peso zero (nunca lida pelo motor).",
+ "registrado_em": "07/09/2026",
+ "categorias": {
+  "0": "ausente",
+  "1": "orgao_listado",
+  "2": "resposta",
+  "3": "vigilancia_pos",
+  "4": "prevencao_epidemiologica",
+  "5": "riscos_do_ciclo"
+ },
+ "leituras": [
+  {
+   "nivel": "municipal",
+   "uf": "ES",
+   "municipio": "Afonso Cláudio",
+   "documento": "Plano de Contingência 2026 (162 pp.)",
+   "hash": "70407a3aaf",
+   "lido_em": "07/09/2026",
+   "categoria": 2,
+   "rotulo": "resposta",
+   "paginas": "estrutura de coordenação; tarefas de resposta",
+   "evidencia": "Secretaria de Saúde na estrutura de coordenação; imunização das equipes, fluxo para agravos prioritários, descentralização do primeiro atendimento em 4 unidades, vigilância 'intensificada'; 'elaborar plano de contingência contra a dengue' consta como pendência; 0 menções a calor, fumaça, leptospirose, El Niño",
+   "contagens": {
+    "dengue": null,
+    "calor": 0,
+    "fumaca": 0,
+    "leptospirose": 0,
+    "el_nino": 0
+   }
+  },
+  {
+   "nivel": "municipal",
+   "uf": "PE",
+   "municipio": "Recife",
+   "documento": "Plano de Contingência 2026 – Ação Inverno (162 pp.)",
+   "hash": "16dfb193fd",
+   "lido_em": "07/09/2026",
+   "categoria": 3,
+   "rotulo": "vigilancia_pos",
+   "paginas": "seção 6.2.9",
+   "evidencia": "SESAU e SAMU entre os 14 órgãos do Centro de Operações Integradas; inspeção sanitária de abrigos; vistoria da população abrigada pela Vigilância em Saúde com Vigidesastres nomeado; acompanhamento epidemiológico pós-desastre; 109 menções a SAMU, 110 a abrigo, 3 a dengue (incidentais), 0 a calor/fumaça/leptospirose/El Niño",
+   "contagens": {
+    "samu": 109,
+    "abrigo": 110,
+    "dengue": 3,
+    "calor": 0,
+    "fumaca": 0,
+    "leptospirose": 0,
+    "el_nino": 0
+   }
+  }
+ ],
+ "padrao_observado": "n=2 (municipal): saúde entra como logística de resposta (abrigo, atendimento, vigilância pós-desastre), não como preparação epidemiológica para os riscos do ciclo (arboviroses, calor, fumaça). Planos estaduais (SC, GO, MT, SE) ainda não lidos.",
+ "pendentes": [
+  {
+   "nivel": "estadual",
+   "uf": "SC"
+  },
+  {
+   "nivel": "estadual",
+   "uf": "GO"
+  },
+  {
+   "nivel": "estadual",
+   "uf": "MT"
+  },
+  {
+   "nivel": "estadual",
+   "uf": "SE",
+   "nota": "Sergipe recusou o robô duas vezes"
+  },
+  {
+   "nivel": "municipal",
+   "uf": "AM",
+   "municipio": "Manaus",
+   "nota": "falhou na 1ª rodada — reler"
+  }
+ ]
+}

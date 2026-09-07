@@ -1,4 +1,25 @@
 {
  "_governanca": "Fontes oficiais que responderam com página de período eleitoral (detector de PR-N0 §1.5). Nunca 'nada localizado': fonte suspensa (defeso). A reabertura é o flag voltando a false, com data.",
- "fontes": {}
+ "fontes": {
+  "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/aedes-aegypti/monitoramento-das-arboviroses/copy2_of_painel": {
+   "primeira_deteccao": "2026-09-07",
+   "ultima_deteccao": "2026-09-07",
+   "padrao": "(DEFESO) no título do painel (verificação humana, 07/09/2026)",
+   "hash": null,
+   "amostra": "Painel de Monitoramento das Arboviroses — edição intitulada (DEFESO), caminho copy2_of_painel, Power BI incorporado",
+   "suspensa": true,
+   "setor": "saude",
+   "verificacao": "humana"
+  },
+  "https://www.saude.mg.gov.br/aedes/painel-arboviroses": {
+   "primeira_deteccao": "2026-09-07",
+   "ultima_deteccao": "2026-09-07",
+   "padrao": "'temporariamente indisponível' em contexto eleitoral (busca de 07/09/2026)",
+   "hash": null,
+   "amostra": "Painel de arboviroses da SES-MG responde 'temporariamente' indisponível",
+   "suspensa": true,
+   "setor": "saude",
+   "verificacao": "humana"
+  }
+ }
 }

@@ -14,6 +14,10 @@ async function __load(){
   const f = await fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).catch(() => null);
   const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0;
   el('calSuspensas').textContent = n ? n + ' fonte(s), primeira detecção ' + Object.values(f.fontes).map(x => x.primeira_deteccao).sort()[0] : 'nenhuma detectada pelo robô até o corte (o detector passou a rodar em 06/09/2026; a página da SUDEC/BA foi achada à mão em 02/09)';
+  { const fs = f ? Object.values(f.fontes || {}).filter(x => x.suspensa) : []; const por = {}; fs.forEach(x => { por[x.setor || 'defesa_civil'] = (por[x.setor || 'defesa_civil'] || 0) + 1; });
+    el('calSetores').textContent = fs.length ? '(' + Object.entries(por).map(([k, v]) => ({defesa_civil: 'defesa civil', saude: 'saúde', financiamento: 'financiamento'}[k] || k) + ' ' + v).join(' · ') + ')' : '';
+    const ms = f && Object.entries(f.fontes || {}).find(([u]) => /monitoramento-das-arboviroses/.test(u));
+    el('calSaudeDefeso').textContent = ms ? 'painel epidemiológico federal (Painel das Arboviroses do MS) em edição de defeso desde ' + ms[1].primeira_deteccao.split('-').reverse().join('/') + (fs.filter(x => x.setor === 'saude').length > 1 ? ' · mais ' + (fs.filter(x => x.setor === 'saude').length - 1) + ' painel(is) estadual(is) indisponível(is)' : '') : 'nenhuma fonte de saúde suspensa detectada'; }
   const c = await fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).catch(() => null);
   const t = c ? Object.values(c.municipios || {}) : [];
   el('calSemCobertura').textContent = t.length ? t.filter(x => x.cobertura_qd === false).length + ' de ' + t.length + ' testados (' + (5571 - t.length) + ' ainda não testados)' : 'ainda não testado — a rotina preenche a partir da próxima rodada';
