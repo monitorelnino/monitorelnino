@@ -59,6 +59,10 @@ Nenhuma alteração de método; nenhum número muda. Classe **design + código**
 ### Páginas revisadas
 As 11: index · defesa-civil · sinais-de-risco · saude · financiamento · proteja-se · pesquisadores · envie-dados · imprensa · calendario-eleitoral · obrigado — masthead, navegação e rodapé gerados do mesmo molde; 24 portões verdes, portão móvel (390 px) verde, portão 18 verde nas três larguras.
 
+### Rebase sobre a main (PR #104, "Envie um plano ou decreto")
+- O ramo foi construído sobre `825bd24` e reaplicado sobre a `main` já com o PR #104: a navegação das 11 páginas mantém a ordem e o CTA "Envie um plano ou decreto" (último item), `envie-dados.html` mantém título, metadados e âncoras do #104, e `verificar_estrutura.js` continua exigindo essa ordem.
+- Para a navegação continuar numa linha só no desktop (regra da editoria de 03/09) com o CTA mais longo, o ajuste do #104 (`letter-spacing:.02em`, separadores com margem 2 px) entra pelo sistema de tokens: novo token `--ls-nav: .02em` em `tokens.css`, aplicado só a `.mainnav a/span`, e separadores sem margem própria (o espaçamento vem do `gap` da grade). Medido em Chromium a 1366 px: 1083 px necessários para 1132 px disponíveis, altura da navegação 36 px nas 11 páginas.
+
 ### O que ainda não pôde ser padronizado (declarado)
 - Numeração e créditos dependem de JavaScript (como todo o conteúdo do site, que é carregado de `data/`); sem JS a figura fica sem "Figura N".
 - O kicker do masthead ganhou o mesmo texto em todas as páginas ("… · Uma publicação Futura Evidence Lab"); se a editoria preferir a versão curta na inicial, é uma linha em `index.html`.

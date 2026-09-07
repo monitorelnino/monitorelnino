@@ -98,10 +98,10 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
 .mast-logo{display:block; line-height:0; text-decoration:none;}
 .logo-futura{height:26px; width:auto; display:block;}
 .mainnav{display:flex; gap:var(--sp-1); flex-wrap:wrap; flex-basis:100%;}
-.mainnav a, .mainnav span{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); text-decoration:none; white-space:nowrap; padding:0 var(--sp-2); border:1px solid var(--line); border-radius:var(--radius); min-height:36px; display:inline-flex; align-items:center; transition:color .15s, border-color .15s, background .15s;}
+.mainnav a, .mainnav span{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); letter-spacing:var(--ls-nav); text-transform:uppercase; color:var(--muted); text-decoration:none; white-space:nowrap; padding:0 var(--sp-2); border:1px solid var(--line); border-radius:var(--radius); min-height:36px; display:inline-flex; align-items:center; transition:color .15s, border-color .15s, background .15s;}
 .mainnav a:hover{color:var(--ink); border-color:var(--ink); text-decoration:none;}
 .mainnav .ativa, .mainnav .ativa:hover{background:var(--green); color:var(--branco); border-color:var(--green);}
-.mainnav .nav-sep{display:inline-block; width:1px; height:22px; background:var(--line); margin:0 var(--sp-1); align-self:center;}
+.mainnav .nav-sep{display:inline-block; width:1px; height:22px; background:var(--line); margin:0; align-self:center;}
 .mainnav .btn-nav{background:var(--branco); color:var(--green); border:1.5px solid var(--green);}
 .mainnav .btn-nav:hover{background:var(--green); color:var(--branco);}
 .mainnav .ativa.btn-nav{background:var(--green); color:var(--branco); border-color:var(--green); cursor:default;}
