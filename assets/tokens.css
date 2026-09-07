@@ -1,16 +1,21 @@
 /* ============================================================
-   tokens.css — fonte única dos tokens de design (v3.0-tema, 05/09/2026)
-   Tema TÉCNICO sobre fundo branco (decisão editorial de 05/09/2026):
-   base branca e osso-claro; tinta Vazio/Abissal; verde Musgo como cor de
-   ação (links, botões, "novo"); terracota Argila/Âmbar como calor de dado
-   (nunca protagonista); Sintético e Mineral como frios de dado; Areia
-   como linha. Sem gradientes, sem brilho — exceto o indicador do índice
-   (medidor do MARÉ), que permanece como está. Nenhuma página declara
-   :root inline; o portão verificar_estrutura.js verifica.
+   tokens.css — fonte única dos tokens de design (v3.1.1, 07/09/2026)
+   Regra (auditoria de consistência de 07/09/2026): todo valor de cor, tamanho
+   de fonte, entrelinha, espaçamento, raio, largura de grade e dimensão de
+   figura usado no site vem DESTE arquivo. Nenhuma página declara :root; nenhuma
+   folha usa px arbitrário. Portões: verificar_estrutura.js (escala e hex) e
+   verificar_consistencia_visual.js (estilo computado em 3 larguras).
+
+   Tema TÉCNICO sobre fundo branco (decisão editorial de 05/09/2026): base
+   branca e osso-claro; tinta Vazio/Abissal; verde Musgo como cor de ação;
+   terracota Argila/Âmbar como calor de dado; Sintético e Mineral como frios
+   de dado; Areia como linha. Sem gradientes, exceto o medidor do MARÉ (E14).
    Paleta da marca: Vazio #0E0F0D · Abissal #15201A · Musgo #2E3D30 ·
    Argila #7C4A34 · Âmbar #C9814B · Bioluz #A8C99A · Sintético #5E7C93 ·
    Mineral #8FA5A8 · Areia #D6C4AC · Osso #EDE6D8.
    ============================================================ */
+
+/* ---------- 1. Cor ---------- */
 :root{
   --bg: #FFFFFF;        /* branco técnico */
   --surface: #FFFFFF;   /* painéis brancos, delimitados por linha */
@@ -24,45 +29,84 @@
   --slate: #8FA5A8;     /* MINERAL — frio de dado, recorrente */
   --rust: #7C4A34;      /* ARGILA — nada localizado, urgente */
   --amber: #C9814B;     /* ÂMBAR — calor de dado (preenchimentos; texto só ≥18px) */
-  --radius: 6px;        /* cantos curtos: registro técnico */
   --link: #4F6B80;      /* sintético-escuro (5,4:1 sobre branco) */
   --terracota: #C04430; /* o "U" do logotipo — acento único, em dose mínima */
-
-  /* ausência de verificação ≠ ausência de documento (C7): cinza quente, 5,0:1 sobre branco */
-  --neutro: #66736F;    /* mineral-escuro, 5,3:1 sobre branco */
-  --bioluz: #A8C99A;    /* BIOLUZ — acento positivo, em dose mínima (coletado, ok) */
-  --areia: #D6C4AC;     /* AREIA — reservada aos trilhos das barras de prazo */
-
-  /* Aliases legados */
-  --osso: #F0F4F3;
-  --card: #FFFFFF;
-
-  /* Tríade de risco da página Proteja-se (famílias do ciclo) */
+  --neutro: #66736F;    /* ausência de verificação ≠ ausência de documento (C7); 5,3:1 sobre branco */
+  --bioluz: #A8C99A;    /* BIOLUZ — acento positivo, em dose mínima */
+  --areia: #D6C4AC;     /* AREIA — trilhos das barras de prazo */
+  --osso: #F0F4F3;      /* alias legado */
+  --card: #FFFFFF;      /* alias legado */
+  /* Tríade de risco (famílias do ciclo) */
   --chuva: #5E7C93;
   --seca: #C9814B;
   --fogo: #7C4A34;
-}
-
-/* Escala tipográfica (v3.1 §14.1, 06/09/2026): dez degraus; todo font-size em px fora da escala é
-   bloqueado por verificar_estrutura.js. */
-:root{
-  --fs-0: 12px;   /* mínimo (portão de estrutura) */
-  --fs-1: 12.5px; /* versaletes, créditos, legendas */
-  --fs-2: 13.5px; /* dados em tabela, notas */
-  --fs-3: 15px;   /* corpo */
-  --fs-4: 17px;   /* títulos de cartão */
-  --fs-5: 19px;   /* subtítulos */
-  --fs-6: 23px;   /* h3 grandes */
-  --fs-7: 28px;   /* h2 */
-  --fs-8: 38px;   /* h1 secundário */
-  --fs-9: 52px;   /* display (medidor, hero) */
-}
-
-/* Paleta nomeada (v3.1 §14.2): hex só aqui e em assets/mapas.js; páginas usam var(--…). */
-:root{
+  /* Paleta nomeada: hex só aqui e em assets/mapas.js; páginas usam var(--…). */
   --vazio:#0E0F0D; --abissal:#15201A; --musgo:#2E3D30; --argila:#7C4A34; --ambar:#C9814B;
-  --bioluz:#A8C99A; --sintetico:#5E7C93; --mineral:#8FA5A8; --areia:#D6C4AC; --osso-claro:#F0F4F3;
+  --bioluz:#A8C99A; --sintetico:#5E7C93; --mineral:#8FA5A8; --osso-claro:#F0F4F3;
   --linha:#C5CFCE; --cinza-quente:#66736F; --sem-dado:#DCE3E2; --branco:#FFFFFF; --areia-escura:#7A6A4F;
   --zebra:#E9EEEC; --preto:#000000; --muted-token:#55645B;
   --gauge-trilho:#E7DECD; --gauge-borda:#CDBB9F; --gauge-osso:#F5F1E8; --gauge-cinza:#DDDED9; --ambar-escuro:#A87A50; --sintetico-escuro:#2A4457;
+  --tooltip-bg:#141B16; --tooltip-ink:#EDE6D8;
+  --sombra: 0 1px 3px rgba(21,32,26,.10);
+}
+
+/* ---------- 2. Tipografia ----------
+   Escala fixa de oito degraus (auditoria de 07/09/2026). Todo font-size do site é um destes
+   tokens; 15 · 17 · 19 · 21 · 23 px etc. não existem. Cada degrau carrega a própria entrelinha. */
+:root{
+  --font-titulo: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-corpo: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-dado: 'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;
+
+  --fs-display: 48px;  --lh-display: 1.1;   /* título do site (inicial), número do medidor */
+  --fs-h1: 36px;       --lh-h1: 1.15;       /* título da página */
+  --fs-h2: 28px;       --lh-h2: 1.2;        /* título de seção */
+  --fs-h3: 22px;       --lh-h3: 1.3;        /* título de bloco / valor de indicador / nome do estado */
+  --fs-h4: 18px;       --lh-h4: 1.3;        /* título de figura e de cartão */
+  --fs-body: 16px;     --lh-body: 1.6;      /* corpo, apoio (.hint) */
+  --fs-small: 14px;    --lh-small: 1.5;     /* notas, células de tabela, campos, botões */
+  --fs-caption: 12px;  --lh-caption: 1.4;   /* versaletes, legendas, créditos, rótulos, navegação */
+
+  --peso-regular: 400; --peso-medio: 500; --peso-semibold: 600; --peso-bold: 700;
+  --ls-caps: .06em;       /* versaletes de dado, rótulos, cabeçalho de tabela, navegação */
+  --ls-caps-largo: .14em; /* kicker, selo, mast-sub */
+  --ls-titulo: -.012em;   /* display */
+}
+
+/* ---------- 3. Espaçamento ----------
+   Escala fixa: 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96. Margens, paddings e gaps só usam estes tokens. */
+:root{
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
+  /* papéis */
+  --esp-secao: var(--sp-5);        /* entre painéis/seções */
+  --esp-painel: var(--sp-5);       /* padding interno do painel */
+  --esp-figura: var(--sp-4);       /* padding interno da figura e do cartão */
+  --esp-grade: var(--sp-5);        /* gap entre figuras/cartões na grade */
+  --esp-titulo: var(--sp-2);       /* título → subtítulo / parágrafo seguinte */
+  --esp-figura-legenda: var(--sp-3); /* mídia → legenda; legenda → fonte */
+}
+
+/* ---------- 4. Grade e pontos de quebra ----------
+   Conteúdo até 1180 px, 12 colunas, gap 24 px, margens laterais 24 px (16 px no celular).
+   Pontos de quebra canônicos (portão): 1020 px (tablet) e 640 px (celular). */
+:root{
+  --grade-max: 1180px;
+  --grade-colunas: 12;
+  --grade-gap: var(--sp-5);
+  --grade-margem: var(--sp-5);
+  --grade-margem-celular: var(--sp-4);
+}
+
+/* ---------- 5. Formas e figuras ---------- */
+:root{
+  --radius: 6px;          /* cantos curtos: registro técnico (painéis, figuras, cartões, campos) */
+  --radius-pill: 999px;   /* pílulas, trilhos de barra */
+  --mapa-proporcao: 480 / 460;  /* viewBox único dos mapas */
+  --grafico-altura: 260px;      /* .figura--grafico padrão */
+  --grafico-altura-largo: 340px;/* .figura--largo (dispersões e séries em largura total) */
+  --tabela-altura-max: 480px;   /* .tbl-wrap rolável dentro da figura */
+  --diagrama-altura: 300px;     /* diagrama das MPs (rotas por órgão) */
+  --medida-leitura: 68ch;       /* parágrafos corridos */
+  --alvo-toque: 40px;           /* botões e itens de navegação no toque */
 }

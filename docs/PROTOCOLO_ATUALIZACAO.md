@@ -94,7 +94,7 @@ explícita naquela sessão.
 | Classe | Exemplos | Além da sequência 3.1 exige | Versão |
 |---|---|---|---|
 | **Texto/editorial** | frase do herói, legenda, rótulo, texto de página | auditoria de vocabulário controlado (`grep` contra frases-teto e frases proibidas; "não localizamos até o corte" é o teto) · paridade METODOLOGIA ↔ site onde o texto é espelhado | mantém |
-| **Design** | cores, layout, posição de figuras, cartões | prévia obrigatória (desktop, tablet e celular); componentes compartilhados só em `assets/base.css` e tokens só em `assets/tokens.css` — nenhuma página redefine o núcleo (portão 1); acessibilidade e responsividade pelo portão 11; nenhum rótulo de faixa ou legenda pode afirmar mais do que o índice mede (§2.2 da transferência conceitual) · os quatro `verificar_runtime_*.js` verdes | mantém |
+| **Design** | cores, layout, posição de figuras, cartões | prévia obrigatória (desktop, tablet e celular); **sistema de design de 07/09/2026**: nenhuma página tem `<style>` nem tipografia/espaçamento inline; todo tamanho vem da escala de 8 degraus e todo espaçamento da escala de 9 degraus de `assets/tokens.css`; mapa, gráfico, tabela, diagrama e barras usam o componente único `.figura` (título · subtítulo · mídia · legenda · crédito · número automático); cartões de texto usam `.cartao`; crédito sempre "Fonte: … · Atualização: dd/mm/aaaa" via `MonitorMapas.credito` (portões 1 e 18); acessibilidade e responsividade pelo portão 11; nenhum rótulo de faixa ou legenda pode afirmar mais do que o índice mede (§2.2 da transferência conceitual) · os quatro `verificar_runtime_*.js` verdes | mantém |
 | **Código** | scripts, workflow, dependências | portões completos (§3.3) · SBOM e `MANIFEST_SHA256.txt` regenerados (`scripts/gerar_manifesto.py`) · SRI recalculado se algum CDN mudar · `pip-audit`/`npm audit` sem CVE crítico novo | patch (v2.2.x) |
 | **Dados** | registrar instrumento, reclassificar ato, aplicar contribuição | entra **somente** por `aplicar_revisao.py` / `converter_contribuicao.py`, nunca por edição direta de `data/*.json` · citação completa (número + data do ato) · `recalcular_mare.py --write` seguido de `--check` · determinismo do PDF (`SOURCE_DATE_EPOCH` = corte) · errata se corrige registro anterior | mantém; novo corte em `data/meta.json` |
 | **Método** | pesos, créditos, componentes, faixas, régua | regra **declarada antes** de beneficiar alguém (§3.5 da transferência) · simulação antes/depois apresentada à editoria · teste de estresse · seção datada em METODOLOGIA · entrada em errata/governança | **maior** (v2.3, v3…) |
@@ -131,8 +131,13 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
 17. python scripts/verificar_robustez_atualizacao.py (só no CI: perturba 6 famílias de dados numa cópia, regenera
                                                   os derivados e exige todos os runtimes verdes — atualização não quebra
                                                   mapas, barras, indicadores nem legendas)
+18. node   scripts/verificar_consistencia_visual.js (07/09/2026, Chromium real em 1366 · 900 · 390 px: famílias de
+                                                  elementos equivalentes com UM só estilo computado; font-size só na escala
+                                                  de tokens; figuras lado a lado com mesma largura/altura e partes alinhadas;
+                                                  crédito no formato único "Fonte: … · Atualização: dd/mm/aaaa"; numeração
+                                                  de figuras e seções a partir de 1; sem rolagem horizontal)
 ```
-Critério: dezessete `✓` (o 17º roda no CI) (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
+Critério: dezoito `✓` (o 17º roda no CI; o 18º roda localmente com Playwright e entra em `portoes.yml` assim que um token com escopo `workflow` estiver em uso) (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
 tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
 Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 

@@ -25,7 +25,7 @@ CHAVE = re.compile(r'chave-api-dados["\']?\s*[:=]\s*["\'][0-9a-f]{20,}', re.I)
 def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
     e = []
     if CHAVE.search(html) or CHAVE.search(motor) or any(CHAVE.search(t) for t in arquivos_fin.values()): e.append("(a) chave de API em código ou dados")
-    for cid in ["boxSerie", "boxFundoEstadual", "boxPorHab", "boxDinheiro", "boxResposta", "boxPainel", "boxCompromissos", "boxFinance", "boxFontesMonit", "boxConsultas"]:
+    for cid in ["boxRotaMPs", "boxMpsUf", "boxMpsUfBarras", "boxRede", "boxSerie", "boxFundoEstadual", "boxPorHab", "boxContadores", "boxDinheiro", "boxResposta", "boxPainel", "boxCompromissos", "boxFinance"]:   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026)
         if f"fonteFigura('{cid}'" not in html: e.append(f"(b) figura sem crédito: #{cid}")
     ids = [r["id"] for r in rotas["rotas"]]
     for s in serie.get("semanas", []):

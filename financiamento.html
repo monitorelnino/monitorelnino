@@ -29,42 +29,17 @@
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=340c7bbc">
-<script src="assets/mapas.js?v=a30a521e"></script>
-<style>
-  /* Prazos das MPs (05/09/2026): mesmo desenho das barras da página inicial */
-  .prazos-barras{display:flex; flex-direction:column; gap:12px;}
-  .prazo{display:grid; grid-template-columns:1fr auto; gap:4px 14px; align-items:end;}
-  .prazo-titulo{font-family:'Fraunces', Georgia, serif; font-weight:300; font-size:15px; line-height:1.3; color:var(--ink);}
-  .prazo-meta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); white-space:normal; min-width:0;}
-  @media (max-width:640px){ .prazo{grid-template-columns:1fr;} }
-  .prazo-meta strong{color:var(--ink); font-weight:600;}
-  .prazo-trilho{grid-column:1 / -1; height:10px; background:var(--areia); border-radius:999px; overflow:hidden; position:relative;}
-  .prazo-resta{position:absolute; right:0; top:0; bottom:0; background:var(--ambar); border-radius:999px;}
-  .prazo-resta.urgente{background:var(--argila);}
-  .prazo-resta.vencido{background:var(--mineral); width:100% !important; opacity:.55;}
-  .prazo-datas{grid-column:1 / -1; display:flex; justify-content:space-between; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12px; color:var(--muted); letter-spacing:.04em;}
-  .rota-mp-rotulo{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; fill:var(--ink);}
-  .rota-mp-valor{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12px; fill:var(--muted);}
-
-/* --- financiamento.html: estilos próprios desta página (o compartilhado está na folha base) --- */
-  *{box-sizing:border-box;}
-  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
-  .lacuna{display:flex; align-items:center; justify-content:center; min-height:150px; height:100%; border:1px dashed var(--line); border-radius:8px; padding:16px; text-align:center; font-size:13.5px; line-height:1.5; color:var(--muted); background:rgba(0,0,0,.012);}
-  .uf-path:focus-visible{outline:2px solid var(--link); outline-offset:2px;}
-  .fonte-espera{color:var(--muted);}
-  .cartao-ciclo-valor{font-family:'Fraunces', Georgia, serif; font-size:28px; line-height:1.25; margin:6px 0 0; color:var(--ink);}
-  .cartao-ciclo-valor .lacuna{min-height:0; font-size:15px; border:0; background:none; padding:0; justify-content:flex-start; text-align:left;}
-</style>
+<link rel="stylesheet" href="assets/tokens.css?v=6d6819dc">
+<link rel="stylesheet" href="assets/base.css?v=04b20b5e">
+<script src="assets/mapas.js?v=6aad1ba0"></script>
 </head>
-<body>
+<body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead masthead--mini">
     <div class="mast-top">
-      <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
       <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Financiamento</span><i class="nav-sep" aria-hidden="true"></i><a href="pesquisadores.html">Pesquisadores</a><a href="imprensa.html">Imprensa</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Envie um plano ou decreto</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
@@ -72,58 +47,54 @@
     <p class="mast-sub">MARÉ · Medida de Antecipação e Resposta ao El Niño</p>
     <div class="grad-line"></div>
   </header>
-
-<main class="wrap" id="conteudo">
+<main id="conteudo">
   <p class="selo">Financiamento · registro de transparência · peso zero no índice</p>
   <h1>Por onde o dinheiro chega</h1>
   <p class="hint">Sete rotas — mais a estadual — por que o dinheiro chega ao município, cada uma rotulada pela chave que a abre: <strong>regra</strong>, <strong>decreto</strong>, <strong>discricionária</strong> ou <strong>direta</strong>. Cada figura diz órgão, consulta e data; resposta nunca se soma a preparação. Nada aqui pontua no MARÉ. Corte: <strong id="corteFin">—</strong>.</p>
 
-
-
-  <div class="panel" id="dinheiroElNino" style="border-top:3px solid var(--rust);">
-    <h2 style="margin-top:0;">1 · O dinheiro do El Niño: como e onde está chegando</h2>
+  <div class="panel panel--acento-rust" id="dinheiroElNino">
+    <h2>O dinheiro do El Niño: como e onde está chegando</h2>
     <p class="hint">MP 1.367 (incêndios) e MP 1.384 (alimentos): prazo, rota por órgão, parcela paga e onde o pagamento foi feito.</p>
-  <div class="charts-grid" style="grid-template-columns:1fr;">
-    <div class="chart-box" id="boxRotaMPs">
-      <h3 class="map-card-h">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
-        <p class="map-card-sub">MPs de 15/06 e 12/08/2026 · dotação por órgão e uso; parcela paga · R$ (milhões)</p>
-      <div class="prazos-barras" id="mpsPrazos" style="margin:8px 0 14px;"></div>
-      <div id="rotaMPs" style="width:100%; min-height:300px;"></div>
-      <div class="map-legend" id="legRotaMPs"></div>
-    </div>
-  </div>
-    <div class="maps-grid" style="margin-top:12px;">
-      <div class="map-box" id="boxMpsUf">
-        <h3 class="map-card-h">Onde o pagamento foi feito · valor pago por UF da unidade gestora</h3>
-        <p class="map-card-sub">Execução mensal 06–09/2026 · valor pago das ações reforçadas pelas MPs, por UF da unidade gestora · R$</p>
-        <svg id="mapaMpsUf" role="img" aria-label="Mapa do Brasil: valor pago das ações reforçadas pelas MPs, por UF da unidade gestora; sedes nacionais aparecem como BR" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+    <div class="grade-figuras">
+      <figure class="figura figura--diagrama figura--largo" id="boxRotaMPs">
+        <h3 class="figura-titulo">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
+        <p class="figura-sub">MPs de 15/06 e 12/08/2026 · dotação por órgão e uso; parcela paga · R$ (milhões)</p>
+        <div class="figura-midia"><div class="prazos-barras u-mb-4" id="mpsPrazos"></div><div id="rotaMPs" class="diagrama-mps"></div></div>
+        <div class="map-legend" id="legRotaMPs"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxMpsUf">
+        <h3 class="figura-titulo">Onde o pagamento foi feito · valor pago por UF da unidade gestora</h3>
+        <p class="figura-sub">Execução mensal 06–09/2026 · valor pago das ações reforçadas pelas MPs, por UF da unidade gestora · R$</p>
+        <div class="figura-midia"><svg id="mapaMpsUf" role="img" aria-label="Mapa do Brasil: valor pago das ações reforçadas pelas MPs, por UF da unidade gestora; sedes nacionais aparecem como BR" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legMpsUf"></div>
-      </div>
-      <div class="chart-box" id="boxMpsUfBarras">
-        <h3 class="map-card-h">Pago por UF · sedes nacionais (BR) à parte</h3>
-        <p class="map-card-sub">Execução mensal 06–09/2026 · valor pago por UF; sedes nacionais como BR · R$</p>
-        <div id="mpsUfBarras" class="prazos-barras" style="margin:6px 0 4px;"></div>
+      </figure>
+      <figure class="figura figura--barras" id="boxMpsUfBarras">
+        <h3 class="figura-titulo">Pago por UF · sedes nacionais (BR) à parte</h3>
+        <p class="figura-sub">Execução mensal 06–09/2026 · valor pago por UF; sedes nacionais como BR · R$</p>
+        <div class="figura-midia"><div id="mpsUfBarras" class="prazos-barras"></div></div>
         <div class="map-legend" id="legMpsUfBarras"></div>
-      </div>
+      </figure>
     </div>
   </div>
 
   <div class="panel" id="comoler">
-    <h2 style="margin-top:0;">2 · Como ler: as sete rotas e o que o decreto destranca</h2>
+    <h2>Como ler: as sete rotas e o que o decreto destranca</h2>
     <p class="hint">Este bloco descreve rotas existentes, com base legal citada; não recomenda desenho de política. Nenhuma rota pontua no índice (peso zero).</p>
-    <div class="chart-box wide" id="boxRede">
-      <h3 class="map-card-h">A rede do dinheiro: de quem vem, por qual rota, com que chave</h3>
-        <p class="map-card-sub">Estrutura (não é série) · rotas do dinheiro público até o município · chave que abre cada rota</p>
-      <svg id="redeRotas" role="img" aria-label="Diagrama de rede: origem do recurso, oito rotas e o município, com o tipo de chave de acesso de cada rota" viewBox="0 0 960 420" style="width:100%; height:auto;"></svg>
-      <div class="map-legend" id="legRede"></div>
-      <details style="margin-top:10px;" data-alternativa="dados"><summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Ver as rotas em texto</summary>
-        <div class="charts-grid" id="rotasCards" style="margin-top:10px;"></div>
-      </details>
+    <div class="grade-figuras">
+      <figure class="figura figura--diagrama figura--largo" id="boxRede">
+        <h3 class="figura-titulo">A rede do dinheiro: de quem vem, por qual rota, com que chave</h3>
+        <p class="figura-sub">Estrutura (não é série) · rotas do dinheiro público até o município · chave que abre cada rota</p>
+        <div class="figura-midia"><svg id="redeRotas" role="img" aria-label="Diagrama de rede: origem do recurso, oito rotas e o município, com o tipo de chave de acesso de cada rota" viewBox="0 0 960 420"></svg></div>
+        <div class="map-legend" id="legRede"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver as rotas em texto</summary>
+          <div class="grade-cartoes u-mt-2" id="rotasCards"></div>
+        </details>
+      </figure>
     </div>
-    <div class="charts-grid" style="margin-top:12px;">
-      <div class="chart-box">
-        <h3 class="map-card-h">O caminho do recurso federal de resposta (rota 3)</h3>
-        <ol style="font-size:13.5px; line-height:1.8; color:var(--ink); margin:0; padding-left:20px;">
+    <div class="grade-cartoes">
+      <div class="cartao" id="boxCaminho">
+        <h3 class="figura-titulo">O caminho do recurso federal de resposta (rota 3)</h3>
+        <ol class="fontes-list">
           <li>Município decreta situação de emergência/calamidade</li>
           <li>Registra o desastre no <strong>S2iD</strong> (FIDE + documentos)</li>
           <li><strong>SEDEC/MIDR reconhece</strong> por portaria no DOU: <em>é o gatilho do dinheiro</em></li>
@@ -132,10 +103,9 @@
           <li>Prestação de contas; reconstrução/prevenção seguem via Transferegov</li>
         </ol>
       </div>
-      <div class="chart-box" id="boxSemDecretar">
-        <h3 class="map-card-h">O que um município pode acessar sem decretar</h3>
-        <p class="map-card-sub">Estrutura (não é série) · o que um município acessa sem decretar · base legal por item</p>
-        <ul style="font-size:13.5px; line-height:1.8; margin:0; padding-left:20px;">
+      <div class="cartao" id="boxSemDecretar">
+        <h3 class="figura-titulo">O que um município pode acessar sem decretar</h3>
+        <ul class="fontes-list">
           <li><strong>Transferência preventiva de defesa civil</strong> (rota 3, prevenção-obra) — Lei 12.340/2010 e Decreto 11.219/2022: área de risco mapeada e plano de trabalho de obra; sem ressarcimento de gasto já feito.</li>
           <li><strong>Garantia-Safra</strong> (rota 7) — Lei 10.420/2002: adesão municipal anual antes do plantio, cota municipal de 6%; pagamento por perda verificada, sem decreto.</li>
           <li><strong>Programa Cisternas</strong> (rota 7) — MDS: adesão e projeto, contínuo.</li>
@@ -148,113 +118,120 @@
   </div>
 
   <div class="panel" id="serie">
-    <h2 style="margin-top:0;">3 · Brasil, por semana</h2>
+    <h2>Brasil, por semana</h2>
     <p class="hint">Transferências da União a municípios em 2026, empilhadas por rota, com a faixa do período eleitoral (04/07–25/10) sombreada — <em>suspensas por lei, não é inação</em>. A faixa permanece depois de 25/10, como memória do site.</p>
-    <div class="chart-box wide" id="boxSerie">
-      <h3 class="map-card-h">Série semanal 2026 por rota</h3>
-        <p class="map-card-sub">Semanas de 2026 · transferências da União a municípios por rota · R$ (milhões), faixa do período eleitoral</p>
-      <svg id="svgSerie" role="img" aria-label="Série semanal de transferências da União a municípios em 2026, por rota, com a faixa do período eleitoral" viewBox="0 0 900 260" style="width:100%; height:auto;"></svg>
-      <div class="map-legend" id="legSerie"></div>
+    <div class="grade-figuras">
+      <figure class="figura figura--diagrama figura--largo" id="boxSerie">
+        <h3 class="figura-titulo">Série semanal 2026 por rota</h3>
+        <p class="figura-sub">Semanas de 2026 · transferências da União a municípios por rota · R$ (milhões), faixa do período eleitoral</p>
+        <div class="figura-midia"><svg id="svgSerie" role="img" aria-label="Série semanal de transferências da União a municípios em 2026, por rota, com a faixa do período eleitoral" viewBox="0 0 900 260"></svg></div>
+        <div class="map-legend" id="legSerie"></div>
+      </figure>
     </div>
   </div>
 
   <div class="panel" id="porestado">
-    <h2 style="margin-top:0;">4 · Por estado</h2>
+    <h2>Por estado</h2>
     <p class="hint">Dois mapas: o fundo a fundo estadual <em>preventivo</em> (o precedente do Prepara RS) e, quando a coleta chegar, o coroplético em R$ por habitante com seletor de rota.</p>
-    <div class="maps-grid">
-      <div class="map-box" id="boxFundoEstadual">
-        <h3 class="map-card-h">Fundo a fundo estadual preventivo</h3>
-        <p class="map-card-sub">Corte da edição · fundo a fundo estadual preventivo localizado · R$ e nº de municípios</p>
-        <svg id="mapaFundo" role="img" aria-label="Mapa do Brasil pelo status do fundo a fundo estadual preventivo de defesa civil" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxFundoEstadual">
+        <h3 class="figura-titulo">Fundo a fundo estadual preventivo</h3>
+        <p class="figura-sub">Corte da edição · fundo a fundo estadual preventivo localizado · R$ e nº de municípios</p>
+        <div class="figura-midia"><svg id="mapaFundo" role="img" aria-label="Mapa do Brasil pelo status do fundo a fundo estadual preventivo de defesa civil" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legFundo"></div>
-      </div>
-      <div class="map-box" id="boxPorHab">
-        <h3 class="map-card-h">Transferências da União por habitante, por rota</h3>
-        <p class="map-card-sub">Ano de 2026 · transferências da União por habitante, por rota · R$/hab.</p>
-        <label class="sr-only" for="selRota">Rota</label>
-        <select id="selRota" aria-label="Escolher a rota exibida no mapa" style="margin:0 0 8px; font-family:inherit; font-size:13.5px;"></select>
-        <svg id="mapaHab" role="img" aria-label="Mapa do Brasil com transferências da União por habitante na rota escolhida" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxPorHab">
+        <h3 class="figura-titulo">Transferências da União por habitante, por rota</h3>
+        <p class="figura-sub">Ano de 2026 · transferências da União por habitante, por rota · R$/hab.</p>
+        <div class="figura-midia"><svg id="mapaHab" role="img" aria-label="Mapa do Brasil com transferências da União por habitante na rota escolhida" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legHab"></div>
-      </div>
+        <label class="sr-only" for="selRota">Rota</label>
+        <select id="selRota" class="seletor u-mt-3" aria-label="Escolher a rota exibida no mapa"></select>
+      </figure>
     </div>
   </div>
 
-    <div class="panel" id="contadores">
-    <h2 style="margin-top:0;">5 · Quatro contadores por estado</h2>
+  <div class="panel" id="contadores">
+    <h2>Quatro contadores por estado</h2>
     <p class="hint">Contagens e razões por estado — antes de 04/07 · período eleitoral · depois de 25/10 —, sem escala nem juízo; "sem coleta" onde a fonte ainda não entrega.</p>
-    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblContadores"><thead><tr><th>UF</th><th>R$/hab. voluntárias 2026 (r5)</th><th>Por período</th><th>Municípios com recurso preventivo</th><th>Municípios com recurso de resposta</th><th>Razão depois/antes</th><th>Represado</th></tr></thead><tbody></tbody></table></div>
-    <div class="map-legend" id="legContadores"></div>
-    <div class="fonte-figura" id="fonteContadores"></div>
+    <div class="grade-figuras">
+      <figure class="figura figura--tabela figura--largo" id="boxContadores">
+        <h3 class="figura-titulo">Contadores por estado</h3>
+        <p class="figura-sub">Corte da edição · R$/hab. voluntárias, municípios com recurso preventivo e de resposta, razão depois/antes · por UF</p>
+        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblContadores"><thead><tr><th>UF</th><th>R$/hab. voluntárias 2026 (r5)</th><th>Por período</th><th>Municípios com recurso preventivo</th><th>Municípios com recurso de resposta</th><th>Razão depois/antes</th><th>Represado</th></tr></thead><tbody></tbody></table></div></div>
+        <div class="map-legend" id="legContadores"></div>
+      </figure>
+    </div>
   </div>
 
-<div class="panel" id="resposta">
-    <h2 style="margin-top:0;">6 · Resposta por decreto</h2>
+  <div class="panel" id="resposta">
+    <h2>Resposta por decreto</h2>
     <p class="hint">Reconhecimentos federais (S2iD/DOU) e transferências obrigatórias de resposta, na cor de resposta, nunca somados a preparação; ao lado, os repasses estaduais preventivos confirmados.</p>
-    <div class="maps-grid">
-      <div class="map-box" id="boxDinheiro">
-        <h3 class="map-card-h">Repasses preventivos confirmados e habilitação federal</h3>
-        <p class="map-card-sub">Corte da edição · repasses preventivos confirmados e habilitação federal por UF · R$</p>
-        <svg id="mapDinheiro" role="img" aria-label="Mapa das transferências: repasses estaduais preventivos confirmados e municípios com reconhecimento federal" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxDinheiro">
+        <h3 class="figura-titulo">Repasses preventivos confirmados e habilitação federal</h3>
+        <p class="figura-sub">Corte da edição · repasses preventivos confirmados e habilitação federal por UF · R$</p>
+        <div class="figura-midia"><svg id="mapDinheiro" role="img" aria-label="Mapa das transferências: repasses estaduais preventivos confirmados e municípios com reconhecimento federal" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legDinheiro"></div>
-      </div>
-      <div class="chart-box" id="boxResposta">
-        <h3 class="map-card-h">Resposta: reconhecimentos e transferências obrigatórias</h3>
-        <p class="map-card-sub">Desde 29/06/2026 · reconhecimentos federais e transferências obrigatórias de resposta · contagem e R$</p>
-        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblResposta"><thead><tr><th>UF</th><th>Reconhecimentos</th><th>Municípios</th><th>Transferido (rota 3)</th></tr></thead><tbody></tbody></table></div>
-      </div>
+      </figure>
+      <figure class="figura figura--tabela" id="boxResposta">
+        <h3 class="figura-titulo">Resposta: reconhecimentos e transferências obrigatórias</h3>
+        <p class="figura-sub">Desde 29/06/2026 · reconhecimentos federais e transferências obrigatórias de resposta · contagem e R$</p>
+        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblResposta"><thead><tr><th>UF</th><th>Reconhecimentos</th><th>Municípios</th><th>Transferido (rota 3)</th></tr></thead><tbody></tbody></table></div></div>
+      </figure>
     </div>
   </div>
 
   <div class="panel" id="painel">
-    <h2 style="margin-top:0;">7 · Painel amostral</h2>
-    <p class="hint">Só o agregado fica aqui; lista e fichas em <a href="pesquisadores.html#painel-amostral">Pesquisadores</a>.</p>
+    <h2>Painel amostral</h2>
     <p class="hint">Doze municípios por estado (324), sorteados com semente publicada e reverificados a cada rodada: só o agregado fica aqui; lista e fichas em <a href="pesquisadores.html#painel-amostral">Pesquisadores</a>.</p>
-    <div class="chart-box wide" id="boxPainel">
-      <h3 class="map-card-h">Lista e agregados do painel</h3>
-        <p class="map-card-sub">Painel amostral (313 municípios) · agregados por região × porte × risco · contagem</p>
-      <div id="painelResumo"></div>
+    <div class="grade-figuras">
+      <figure class="figura figura--tabela figura--largo" id="boxPainel">
+        <h3 class="figura-titulo">Lista e agregados do painel</h3>
+        <p class="figura-sub">Painel amostral (313 municípios) · agregados por região × porte × risco · contagem</p>
+        <div class="figura-midia" id="painelResumo"></div>
+      </figure>
     </div>
   </div>
 
   <div class="panel" id="programas">
-    <h2 style="margin-top:0;">8 · Programas permanentes no território (rota 7)</h2>
+    <h2>Programas permanentes no território (rota 7)</h2>
     <p class="hint">Execução direta da União (Garantia-Safra, Cisternas, Carro-Pipa, CISC, Cemaden): transparência, sem crédito no índice.</p>
-    <div class="charts-grid" id="programasCards"></div>
+    <div class="grade-cartoes" id="programasCards"></div>
   </div>
 
   <div class="panel" id="compromissos">
-    <h2 style="margin-top:0;">9 · Compromissos federais com dinheiro e prazo</h2>
-
-  
-
+    <h2>Compromissos federais com dinheiro e prazo</h2>
     <p class="hint">O que foi prometido, com fonte e data, ao lado da execução correspondente no Portal da Transparência (aguardando coleta).</p>
-    <div class="charts-grid">
-      <div class="chart-box" id="boxCompromissos">
-        <h3 class="map-card-h">Compromissos verificados</h3>
-        <p class="map-card-sub">Ciclo 2026/2027 · compromissos federais verificados, com dinheiro e prazo · R$ e datas</p>
-        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCompromissos"><thead><tr><th>Compromisso</th><th>Esfera</th><th>Instrumento</th><th>Valor</th><th>Rota</th><th>Execução</th></tr></thead><tbody></tbody></table></div>
-      </div>
-      <div class="chart-box" id="boxFinance">
-        <h3 class="map-card-h">Plano federal El Niño 2026/2027 por área (R$)</h3>
-        <p class="map-card-sub">Plano federal El Niño 2026/2027 · dotação por área · R$ (milhões)</p>
-        <div class="canvas-wrap"><canvas id="chartFinance" aria-label="Gráfico de barras: financiamento federal anunciado por área"></canvas></div>
-      </div>
+    <div class="grade-figuras">
+      <figure class="figura figura--tabela" id="boxCompromissos">
+        <h3 class="figura-titulo">Compromissos verificados</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · compromissos federais verificados, com dinheiro e prazo · R$ e datas</p>
+        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCompromissos"><thead><tr><th>Compromisso</th><th>Esfera</th><th>Instrumento</th><th>Valor</th><th>Rota</th><th>Execução</th></tr></thead><tbody></tbody></table></div></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxFinance">
+        <h3 class="figura-titulo">Plano federal El Niño 2026/2027 por área (R$)</h3>
+        <p class="figura-sub">Plano federal El Niño 2026/2027 · dotação por área · R$ (milhões)</p>
+        <div class="figura-midia canvas-wrap"><canvas id="chartFinance" aria-label="Gráfico de barras: financiamento federal anunciado por área"></canvas></div>
+      </figure>
     </div>
   </div>
 
-    <p class="hint" style="margin:0 0 18px;">Fontes, consultas e proveniência de cada série estão em <a href="pesquisadores.html#fontes-financiamento">Pesquisadores</a>.</p>
-
+  <p class="hint">Fontes, consultas e proveniência de cada série estão em <a href="pesquisadores.html#fontes-financiamento">Pesquisadores</a>.</p>
 </main>
-<footer class="site-footer">
+  <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
-    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-linha">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
-<script src="assets/colunas.js?v=3afa08c5" defer></script>
-<script src="assets/js/financiamento.js?v=a1921629" defer></script>
+<script src="assets/colunas.js?v=247b398e" defer></script>
+<script src="assets/js/financiamento.js?v=7a9cc864" defer></script>
+<!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
+     (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
+     Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
   <div vw-plugin-wrapper>
@@ -262,5 +239,6 @@
   </div>
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+
 </body>
 </html>

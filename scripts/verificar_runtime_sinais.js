@@ -91,7 +91,7 @@ setTimeout(() => {
   // --- PROVENIÊNCIA VISÍVEL: regra própria desta página ---
   const creditos = [...d.querySelectorAll("[data-credito]")];
   const figuras = ["boxTipoRisco", "boxSecas", "boxAvisos", "boxFogo", "boxCemaden", "boxOni", "boxPlume", "boxTipos", "boxCruz",
-    "cartaoCiclo0", "cartaoCiclo1", "cartaoCiclo2", "cartaoCiclo3"];
+    "cartaoCiclo1", "cartaoCiclo2", "cartaoCiclo3", "cartaoCiclo4"]   // ids a partir de 1 (auditoria 07/09/2026);
   const semCredito = figuras.filter(id => !q(id) || !q(id).querySelector("[data-credito]"));
   teste(`toda figura tem crédito de fonte (${creditos.length} créditos)`, semCredito.length === 0);
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));
@@ -101,7 +101,7 @@ setTimeout(() => {
   teste("todo crédito aponta para fonte do catálogo", fonteDesconhecida.length === 0);
 
   const coletadasSemData = creditos.filter(p => SINAIS.fontes[p.dataset.credito].status === "coletado"
-    && !/consultado em \d{2}\/\d{2}\/\d{4}/.test(p.textContent));
+    && !/Atualização: \d{2}\/\d{2}\/\d{4}/.test(p.textContent));
   teste("crédito de fonte coletada traz a data de consulta", coletadasSemData.length === 0);
 
   const esperaSemTeto = creditos.filter(p => SINAIS.fontes[p.dataset.credito].status !== "coletado"
@@ -125,7 +125,7 @@ setTimeout(() => {
   // --- nenhuma pontuação vazando para esta página ---
   const texto = d.body.textContent;
   teste("página declara que não faz previsão climática", /não faz previsão climática/.test(texto));
-  teste("página declara peso zero no índice", /não entra no índice MARÉ/.test(texto));
+  teste("página declara peso zero no índice", /não entra(m)? no índice MARÉ/.test(texto));
 
 
   // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──
