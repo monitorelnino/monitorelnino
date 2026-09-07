@@ -13,6 +13,19 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Primeira série real de desfechos e primeira fila R7 (07/09/2026, rodada de 17h50)
+- **Desfechos:** 313 de 313 municípios do painel com série InfoDengue 2019–2026; última SE
+  disponível 34/2026; últimas 4 vazadas → última consolidada SE 30. Painel na SE 30: 1.560 casos
+  notificados contra mediana de 1.202 e p90 de 2.334 no canal endêmico — dentro do canal no
+  agregado, mas **64 municípios acima do p90** (epidêmicos na própria escala), concentrados em AC,
+  AL, AM, AP. Acumulado do painel: 2024 813.940 · 2025 261.457 · 2026 89.468 (até a SE 34).
+- **Leitura contínua:** 7 PDFs de planos ganharam texto por página; 7 pré-classificações na fila
+  R7 (5 "riscos do ciclo", 2 "resposta"). Correção do classificador: "2026/2027" sozinho era
+  rótulo de temporada, não risco do ciclo (falso positivo em Afonso Cláudio). A fila marca
+  **divergência** com leitura humana confirmada: Recife — humana 3, automática 5 ("ondas de
+  calor" na p. 24, em texto sem espaços que a leitura humana não achou). Fica para a sessão semanal.
+- Fóssil da galeria no `git add` do robô corrigido (a rodada das 17h não tinha comitado).
+
 ### Rotina: fóssil `mapas-e-graficos.html` no `git add` do robô (07/09/2026)
 - A rodada de 17h coletou os 313 municípios do InfoDengue e não comitou: o passo de commit ainda
   listava `mapas-e-graficos.html` (hoje `defesa-civil.html`) e o `git add` abortava. Corrigido.

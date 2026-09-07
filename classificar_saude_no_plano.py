@@ -28,7 +28,7 @@ REGRAS = {
     2: [r"\bsamu\b[^.]{0,120}(atendimento|acionamento|remocao|resgate|socorro)", r"(atendimento|remocao|socorro|inspecao sanitaria|assistencia)[^.]{0,80}(abrigo|desabrigad|feridos|vitimas)",
         r"inspecao sanitaria", r"(equipe|equipes) de saude[^.]{0,80}(abrigo|resposta|atendimento)"],
     3: [r"vigil(a|â)ncia (epidemiologica|ambiental)[^.]{0,120}(pos[- ]desastre|apos o desastre|desastre)", r"vigidesastres", r"acompanhamento epidemiologico[^.]{0,80}(pos|apos)"],
-    5: [r"onda(s)? de calor", r"fumaca", r"qualidade do ar", r"\bel ni[nñ]o\b", r"ciclo 2026[/-]20?27", r"2026[/-]2027"],
+    5: [r"onda(s)? de calor", r"fumaca", r"qualidade do ar", r"\bel ni[nñ]o\b", r"ciclo (do )?el ni[nñ]o"],   # 07/09: "2026/2027" sozinho é rótulo de temporada, não risco do ciclo (falso positivo em Afonso Cláudio)
 }
 _RX = {d: [re.compile(p) for p in pats] for d, pats in REGRAS.items()}
 
@@ -66,7 +66,10 @@ def rodar() -> int:
         paginas = [b.split("\n", 1)[1] if "\n" in b else "" for b in re.split(r"\n=== página \d+ ===\n", txt)[1:]] or [txt]
         c = classificar(paginas)
         saida.setdefault("itens", {})[h] = {**c, "url": it.get("url"), "texto_hash": it.get("texto_hash"), "paginas": len(paginas), "classificado_em": date.today().strftime("%d/%m/%Y"), "status": "leitura automática"}
-        fila.setdefault("fila", []).append({"hash": h, "url": it.get("url"), "degrau_auto": c["degrau"], "rotulo_auto": c["rotulo"], "pagina_citada": c["pagina_citada"], "entrou_em": date.today().strftime("%d/%m/%Y"), "status": "aguardando revisão"})
+        # divergência com leitura humana já confirmada (mesmo documento): fica marcada para a sessão semanal, nunca resolvida pela máquina
+        conf = next((l for l in (ler("saude_no_plano.json", {}) or {}).get("leituras", []) if l.get("hash") and h.startswith(l["hash"])), None)
+        div = ({"confirmada": conf.get("categoria"), "automatica": c["degrau"]} if conf and conf.get("categoria") != c["degrau"] else None)
+        fila.setdefault("fila", []).append({"hash": h, "url": it.get("url"), "degrau_auto": c["degrau"], "rotulo_auto": c["rotulo"], "pagina_citada": c["pagina_citada"], "entrou_em": date.today().strftime("%d/%m/%Y"), "status": "aguardando revisão", "divergencia": div})
         n += 1
     gravar("saude_no_plano_auto.json", saida); gravar("saude_no_plano_revisar.json", fila)
     print(f"saude_no_plano (auto): {n} documento(s) classificado(s) nesta rodada; {len(fila.get('fila', []))} na fila R7")
@@ -77,7 +80,7 @@ def autoteste() -> int:
     def t1(): return classificar(["Art. 1º Fica instituído o plano.", "Compõem o sistema: Secretaria de Saúde, SAMU, Defesa Civil."])["degrau"] == 1
     def t2(): c = classificar(["A Vigilância em Saúde fará a inspeção sanitária dos abrigos e o SAMU o atendimento das vítimas."]); return c["degrau"] == 2 and c["pagina_citada"] == 1
     def t3(): c = classificar(["x", "Vigidesastres acompanha a vigilância epidemiológica pós-desastre."]); return c["degrau"] == 3 and c["pagina_citada"] == 2
-    def t4(): return classificar(["Cenário do El Niño 2026-2027: ondas de calor e fumaça de queimadas."])["degrau"] == 5
+    def t4(): return classificar(["Cenário do El Niño 2026-2027: ondas de calor e fumaça de queimadas."])["degrau"] == 5 and classificar(["Plano de Contingência 2026/2027."])["degrau"] == 0
     def t5(): return classificar(["Nada sobre o tema."])["degrau"] == 0 and 4 not in REGRAS   # degrau 4 nunca automático
     def t6(): c = classificar(["Secretaria de Saúde na lista.", "Vigidesastres."]); return c["degrau"] == 3 and "1" in c["termos"] and "3" in c["termos"]
     return rodar_autoteste({"1 órgão listado": t1, "2 resposta com página": t2, "3 vigilância pós": t3, "5 riscos do ciclo": t4, "0 ausente e 4 nunca automático": t5, "maior degrau, termos por degrau": t6})
