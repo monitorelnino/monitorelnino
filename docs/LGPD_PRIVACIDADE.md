@@ -101,7 +101,7 @@ por definição: ele simplesmente não está lá.
 
 ## Retenção das submissões do formulário (v3.1 §14.9, 06/09/2026)
 
-As submissões de "Enviar dados" ficam armazenadas no Netlify Forms até serem apagadas manualmente no
+As submissões do formulário de envio ("Envie um plano ou decreto") ficam armazenadas no Netlify Forms até serem apagadas manualmente no
 painel do site — o Netlify não aplica prazo automático de retenção. Regra do Monitor: cada submissão é
 conferida pela editoria e, depois de registrada ou recusada, é **apagada do painel em até 90 dias**; o
 que fica é o registro público (documento, número, data, endereço), nunca o e-mail do remetente. Esta

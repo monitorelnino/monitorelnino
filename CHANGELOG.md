@@ -13,6 +13,13 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### O rótulo do envio nomeia o que se entrega (07/09/2026, decisão da editoria)
+- "Enviar dados" → **"Envie um plano ou decreto"** no menu e no título da página: nomeia as duas
+  espécies de ato que chegam ali, sem possessivo (que excluiria o cidadão) e sem jargão. As duas
+  portas no topo passam a ser "Sou gestor: como publicar" e "Encontrei um ato: enviar".
+- Título e descrição da página refeitos para as duas intenções de busca; ordem canônica da barra e
+  registro de privacidade atualizados.
+
 ### Navegação, fusão Gestores→Enviar dados e Pesquisadores sob demanda (07/09/2026, pedido da editoria)
 - **Ordem da barra:** O monitor · Risco climático · **Proteja-se** · Defesa civil · Saúde ·
   Financiamento · **+ Enviar dados** · Pesquisadores · Imprensa.

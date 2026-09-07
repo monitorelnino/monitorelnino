@@ -43,7 +43,7 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css(\?v=[0-9a-f]+)?"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["O monitor", "Risco climático", "Proteja-se", "Defesa civil", "Saúde", "Financiamento", "+ Enviar dados", "Pesquisadores", "Imprensa"];   // 07/09/2026
+  const NAV_ORDEM = ["O monitor", "Risco climático", "Proteja-se", "Defesa civil", "Saúde", "Financiamento", "Envie um plano ou decreto", "Pesquisadores", "Imprensa"];   // 07/09/2026: o rótulo nomeia o que se entrega, para gestor e para cidadão
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {
