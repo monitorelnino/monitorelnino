@@ -13,6 +13,12 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Inicial: o nome do MARÉ vai para o título (07/09/2026, pedido da editoria)
+- O título do herói passa a ser "MARÉ · Medida de Antecipação e Resposta ao El Niño 2026/2027";
+  "Como o Brasil está se preparando" vira a primeira frase do lide. Os rótulos das duas metades
+  ficam curtos: "Antecipação · o índice · média dos 27 estados · corte" e "Resposta · o contador
+  · municípios sob decreto · corte".
+
 ### Inicial: índice primeiro, contador depois (07/09/2026, pedido da editoria)
 - As duas metades deixam de ficar lado a lado: primeiro o índice (medidor, régua do ciclo e a
   descrição do MARÉ), depois o contador, cada um sob um selo ("1 · Antecipação · o índice",
