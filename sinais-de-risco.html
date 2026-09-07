@@ -29,27 +29,17 @@
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=340c7bbc">
-<script src="assets/mapas.js?v=a30a521e"></script>
-<style>
-/* --- sinais-de-risco.html: estilos próprios desta página (o compartilhado está na folha base) --- */
-  *{box-sizing:border-box;}
-  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
-  .lacuna{display:flex; align-items:center; justify-content:center; min-height:150px; height:100%; border:1px dashed var(--line); border-radius:8px; padding:16px; text-align:center; font-size:13.5px; line-height:1.5; color:var(--muted); background:rgba(0,0,0,.012);}
-  .uf-path:focus-visible{outline:2px solid var(--link); outline-offset:2px;}
-  .fonte-espera{color:var(--muted);}
-  .cartao-ciclo-valor{font-family:'Fraunces', Georgia, serif; font-size:28px; line-height:1.25; margin:6px 0 0; color:var(--ink);}
-  .cartao-ciclo-valor .lacuna{min-height:0; font-size:15px; border:0; background:none; padding:0; justify-content:flex-start; text-align:left;}
-</style>
+<link rel="stylesheet" href="assets/tokens.css?v=6d6819dc">
+<link rel="stylesheet" href="assets/base.css?v=04b20b5e">
+<script src="assets/mapas.js?v=6aad1ba0"></script>
 </head>
-<body>
+<body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead masthead--mini">
     <div class="mast-top">
-      <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
       <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Risco climático</span><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="pesquisadores.html">Pesquisadores</a><a href="imprensa.html">Imprensa</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Envie um plano ou decreto</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
@@ -60,13 +50,11 @@
 <main id="conteudo">
   <p class="selo">Sinais oficiais · o que os órgãos publicaram, com documento e data</p>
   <h1>Sinais oficiais de risco</h1>
-  <p class="hint" style="margin-bottom:18px;">O resto do site mede o que os governos publicaram para se preparar. Esta página mostra o outro lado da conta: o risco a que essa preparação responde, estado por estado, tal como CEMADEN, INPE, ANA, INMET e NOAA já o publicaram. O Monitor não faz previsão climática — reproduz a de quem tem mandato para fazê-la, sempre com o documento e a data da consulta ao lado do número.</p>
+  <p class="hint">O resto do site mede o que os governos publicaram para se preparar. Esta página mostra o outro lado da conta: o risco a que essa preparação responde, estado por estado, tal como CEMADEN, INPE, ANA, INMET e NOAA já o publicaram. O Monitor não faz previsão climática — reproduz a de quem tem mandato para fazê-la, sempre com o documento e a data da consulta ao lado do número.</p>
+  <p class="hint">Sinais físicos do ciclo — oceano, previsão, seca, fogo, alertas — cruzados com o arcabouço público de cada estado. Os sinais não entram no índice MARÉ (peso zero). O Monitor não faz previsão climática nem substitui os avisos oficiais; fontes em <a href="pesquisadores.html#fontes-sinais">Pesquisadores</a>.</p>
 
-    <p class="hint" style="margin:0 0 18px;">Sinais físicos do ciclo — oceano, previsão, seca, fogo, alertas — cruzados com o arcabouço público de cada estado. Os sinais não entram no índice MARÉ (peso zero). O Monitor não faz previsão climática nem substitui os avisos oficiais; fontes em <a href="pesquisadores.html#fontes-sinais">Pesquisadores</a>.</p>
-
-
-  <div class="panel" id="situacao" style="border-top:3px solid var(--teal);">
-    <h2 style="margin-top:0;">Situação atual</h2>
+  <div class="panel panel--acento-teal" id="situacao">
+    <h2>Situação atual</h2>
     <div class="situacao" id="situacaoGrade" role="group" aria-label="Situação atual do ciclo: estado do ENOS, intensidade, tendência, indicador principal, atualização">
       <div><div class="k">Estado do ENOS</div><div class="v" id="stEstado">—</div></div>
       <div><div class="k">Intensidade</div><div class="v" id="stIntensidade">—</div></div>
@@ -75,108 +63,93 @@
       <div><div class="k">Probabilidade de El Niño</div><div class="v" id="stProb">—</div></div>
       <div><div class="k">Última atualização</div><div class="v" id="stAtualizado">—</div></div>
     </div>
-    <p class="hint" id="stDiagnostico" style="margin:6px 0 0;">—</p>
+    <p class="hint u-mb-0" id="stDiagnostico">—</p>
   </div>
 
   <div class="panel" id="estadodociclo">
-    <h2 style="margin-top:0;">Estado do ciclo</h2>
+    <h2>Estado do ciclo</h2>
     <p class="hint">O quadro geral, segundo as quatro fontes que definem oficialmente o fenômeno e seus efeitos esperados no Brasil. Cada cartão traz o documento de origem e a data em que foi consultado.</p>
-    <div class="charts-grid" id="cartoesCiclo"></div>
+    <div class="grade-cartoes" id="cartoesCiclo"></div>
   </div>
 
   <div class="panel" id="mapas">
-    <h2 style="margin-top:0;">Mapas geográficos</h2>
+    <h2>Mapas geográficos</h2>
     <p class="hint">Cinco leituras dos sinais oficiais: o tipo de risco projetado para o ciclo inteiro e quatro medidas do que está acontecendo agora. Passe o mouse — ou navegue com Tab — sobre qualquer estado para ver o detalhe e a fonte. Mapa em cinza uniforme é fonte que ainda não foi coletada, e cada um explica o próprio vazio.</p>
-    <div class="maps-grid">
-
-      <div class="map-box" id="boxTipoRisco">
-        <p class="map-card-h">1 · Tipo de risco projetado para o ciclo</p>
-        <p class="map-card-sub">Ciclo 2026/2027 (boletins) · tipo de risco projetado por UF · seca/calor/fogo · chuvas · mais de uma família</p>
-        <svg id="mapaTipoRisco" role="img" aria-label="Mapa do Brasil por tipo de risco projetado nos boletins do Painel El Niño" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxTipoRisco">
+        <h3 class="figura-titulo">Tipo de risco projetado para o ciclo</h3>
+        <p class="figura-sub">Ciclo 2026/2027 (boletins) · tipo de risco projetado por UF · seca/calor/fogo · chuvas · mais de uma família</p>
+        <div class="figura-midia"><svg id="mapaTipoRisco" role="img" aria-label="Mapa do Brasil por tipo de risco projetado nos boletins do Painel El Niño" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legTipoRisco"></div>
-        <details><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="margin-top:10px;"><table class="mun-table" id="tblTipoRisco"><thead><tr><th>UF</th><th>Risco projetado no boletim</th><th>Tipo</th></tr></thead><tbody></tbody></table></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTipoRisco"><thead><tr><th>UF</th><th>Risco projetado no boletim</th><th>Tipo</th></tr></thead><tbody></tbody></table></div>
         </details>
-      </div>
-
-      <div class="map-box" id="boxSecas">
-        <p class="map-card-h">2 · Seca observada — Monitor de Secas</p>
-        <p class="map-card-sub">Mapa mais recente (mensal) · categoria do Monitor de Secas (ANA) por UF · S0–S4</p>
-        <svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxSecas">
+        <h3 class="figura-titulo">Seca observada — Monitor de Secas</h3>
+        <p class="figura-sub">Mapa mais recente (mensal) · categoria do Monitor de Secas (ANA) por UF · S0–S4</p>
+        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
-      </div>
-
-      <div class="map-box" id="boxAvisos">
-        <p class="map-card-h">3 · Avisos meteorológicos vigentes</p>
-        <p class="map-card-sub">Consulta mais recente · avisos meteorológicos vigentes do INMET por UF · contagem e severidade</p>
-        <svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos vigentes do INMET" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxAvisos">
+        <h3 class="figura-titulo">Avisos meteorológicos vigentes</h3>
+        <p class="figura-sub">Consulta mais recente · avisos meteorológicos vigentes do INMET por UF · contagem e severidade</p>
+        <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos vigentes do INMET" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAvisos"></div>
-      </div>
-
-      <div class="map-box" id="boxFogo">
-        <p class="map-card-h">4 · Focos ativos nas últimas 24 horas</p>
-        <p class="map-card-sub">Último dia disponível · focos de calor (INPE, satélite de referência) por UF · contagem em 24 h</p>
-        <svg id="mapaFogo" role="img" aria-label="Mapa do Brasil pelo número de focos ativos nas últimas 24 horas segundo o INPE" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxFogo">
+        <h3 class="figura-titulo">Focos ativos nas últimas 24 horas</h3>
+        <p class="figura-sub">Último dia disponível · focos de calor (INPE, satélite de referência) por UF · contagem em 24 h</p>
+        <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil pelo número de focos ativos nas últimas 24 horas segundo o INPE" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legFogo"></div>
-      </div>
-
-      <div class="map-box" id="boxCemaden">
-        <p class="map-card-h">5 · Alertas de risco vigentes — CEMADEN</p>
-        <p class="map-card-sub">Consulta mais recente · alertas hidrológicos e geológicos vigentes (CEMADEN) por UF · contagem</p>
-        <svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxCemaden">
+        <h3 class="figura-titulo">Alertas de risco vigentes — CEMADEN</h3>
+        <p class="figura-sub">Consulta mais recente · alertas hidrológicos e geológicos vigentes (CEMADEN) por UF · contagem</p>
+        <div class="figura-midia"><svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legCemaden"></div>
-      </div>
-
+      </figure>
     </div>
   </div>
 
-  <div class="panel analysis" id="graficos">
-    <h2 style="margin-top:0;">Gráficos analíticos</h2>
+  <div class="panel" id="graficos">
+    <h2>Gráficos analíticos</h2>
     <p class="hint">Duas leituras do fenômeno global — o índice que o define e as probabilidades por trimestre — e duas do que ele encontra no Brasil. O último gráfico é o único lugar do site onde risco e preparação aparecem no mesmo eixo.</p>
-    <div class="charts-grid">
-
-      <div class="chart-box wide" id="boxOni">
-        <h3>1 · Índice ONI: a série que define o fenômeno</h3>
-        <p class="map-card-sub">Trimestres móveis desde 1950 → último disponível · anomalia da TSM na região Niño 3.4 · °C</p>
-        <div class="canvas-wrap" id="wrapOni"></div>
-      </div>
-
-      <div class="chart-box" id="boxPlume">
-        <h3>2 · Probabilidade por trimestre</h3>
-        <p class="map-card-sub">Próximos trimestres · probabilidade de El Niño / neutro / La Niña · %</p>
-        <div class="canvas-wrap" id="wrapPlume"></div>
+    <div class="grade-figuras">
+      <figure class="figura figura--grafico figura--largo" id="boxOni">
+        <h3 class="figura-titulo">Índice ONI: a série que define o fenômeno</h3>
+        <p class="figura-sub">Trimestres móveis desde 1950 → último disponível · anomalia da TSM na região Niño 3.4 · °C</p>
+        <div class="figura-midia canvas-wrap" id="wrapOni"></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxPlume">
+        <h3 class="figura-titulo">Probabilidade por trimestre</h3>
+        <p class="figura-sub">Próximos trimestres · probabilidade de El Niño / neutro / La Niña · %</p>
+        <div class="figura-midia canvas-wrap" id="wrapPlume"></div>
         <div class="map-legend" id="legPlume"></div>
-      </div>
-
-      <div class="chart-box" id="boxTipos">
-        <h3>3 · Estados por tipo de risco projetado</h3>
-        <p class="map-card-sub">Ciclo 2026/2027 (boletins do Painel) · família de risco projetado por UF · contagem de estados</p>
-        <div class="canvas-wrap" id="wrapTipos"><canvas id="cTipos"></canvas></div>
-      </div>
-
-      <div class="chart-box wide" id="boxCruz">
-        <h3>4 · Tipo de risco projetado × estágio do arcabouço público</h3>
-        <p class="map-card-sub">Corte da edição · tipo de risco projetado × estágio do arcabouço público · 27 UFs</p>
-        <div class="canvas-wrap" id="wrapCruz"><canvas id="cCruz"></canvas></div>
-      </div>
-
+      </figure>
+      <figure class="figura figura--grafico" id="boxTipos">
+        <h3 class="figura-titulo">Estados por tipo de risco projetado</h3>
+        <p class="figura-sub">Ciclo 2026/2027 (boletins do Painel) · família de risco projetado por UF · contagem de estados</p>
+        <div class="figura-midia canvas-wrap" id="wrapTipos"><canvas id="cTipos"></canvas></div>
+      </figure>
+      <figure class="figura figura--grafico figura--largo" id="boxCruz">
+        <h3 class="figura-titulo">Tipo de risco projetado × estágio do arcabouço público</h3>
+        <p class="figura-sub">Corte da edição · tipo de risco projetado × estágio do arcabouço público · 27 UFs</p>
+        <div class="figura-midia canvas-wrap" id="wrapCruz"><canvas id="cCruz"></canvas></div>
+      </figure>
     </div>
   </div>
-
-  
-
-  
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
-    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-linha">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
-<script src="assets/colunas.js?v=3afa08c5" defer></script>
-<script src="assets/js/sinais-de-risco.js?v=463dbabf" defer></script>
+<script src="assets/colunas.js?v=247b398e" defer></script>
+<script src="assets/js/sinais-de-risco.js?v=0ad27c58" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

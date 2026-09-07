@@ -27,23 +27,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=340c7bbc">
-<style>
-/* --- imprensa.html: estilos próprios desta página (o compartilhado está na folha base) --- */
-  .kit-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px;}
-  .kit-grid .chart-box h3{margin-top:0;}
-  .bloco-citacao{background:var(--surface-2); border-left:4px solid var(--teal); border-radius:8px; padding:12px 14px; font-size:15px; line-height:1.6;}
-  .naodiga li{margin:6px 0;}
-</style>
+<link rel="stylesheet" href="assets/tokens.css?v=6d6819dc">
+<link rel="stylesheet" href="assets/base.css?v=04b20b5e">
 </head>
-<body>
-<div class="map-tooltip" id="mapTooltip"></div>
+<body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead masthead--mini">
     <div class="mast-top">
-      <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
       <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="pesquisadores.html">Pesquisadores</a><span class="ativa" aria-current="page">Imprensa</span><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Envie um plano ou decreto</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
@@ -51,16 +43,15 @@
     <p class="mast-sub">MARÉ · Medida de Antecipação e Resposta ao El Niño</p>
     <div class="grad-line"></div>
   </header>
-
-<main class="wrap" id="conteudo">
+<main id="conteudo">
   <p class="selo">Imprensa · kit de uso · contato: imprensa@futuraevidencelab.com.br</p>
   <h1>Para jornalistas</h1>
   <p class="hint">Tudo o que uma redação precisa para usar o Monitor El Niño Brasil com precisão: o que o índice MARÉ mede e o que não mede, como citar, onde estão os dados abertos, como embutir os selos, o release da edição e a quem escrever. Regra da casa: <strong>"não localizamos" nunca vira "não existe"</strong> — nem aqui, nem na sua matéria.</p>
 
   <div class="panel" id="release">
-    <h2 style="margin-top:0;">1 · Release da edição 2026/2027</h2>
-    <div class="chart-box wide">
-      <h3 class="map-card-h">El Niño anunciado, preparação publicada: o Brasil tem nota <span id="relMedia">—</span> em 100 — e o que não foi publicado não cumpriu o rito</h3>
+    <h2>Release da edição 2026/2027</h2>
+    <div class="cartao">
+      <h3 class="figura-titulo">El Niño anunciado, preparação publicada: o Brasil tem nota <span id="relMedia">—</span> em 100 — e o que não foi publicado não cumpriu o rito</h3>
       <p class="note">Texto pronto para uso, com a mesma cautela probatória do site; números lidos ao vivo dos dados publicados.</p>
       <div class="bloco-citacao" id="releaseTexto">
         <p><strong>Brasília, <span id="relData">—</span></strong> — O El Niño 2026/2027 foi confirmado pelo Painel El Niño em 29 de junho. O Monitor El Niño Brasil, do Futura Evidence Lab, mede duas coisas e não as mistura: o que estados e municípios <em>publicaram antes</em> e o que <em>decretaram depois</em>.</p>
@@ -72,39 +63,37 @@
   </div>
 
   <div class="panel" id="mede">
-    <h2 style="margin-top:0;">2 · O que o índice mede — e o que não mede</h2>
-    <div class="kit-grid">
-      <div class="chart-box"><h3 class="map-card-h">Mede</h3><p class="note">A <strong>preparação demonstrável publicamente</strong>: instrumentos oficiais de preparação publicados pelos governos, com número, data e fonte — em três componentes de pesos iguais.</p><details><summary style="cursor:pointer; color:var(--link); font-weight:600; font-size:13.5px;">Os três componentes</summary><p class="note" style="margin-top:6px;">Instrumento estadual (plano ou estrutura de coordenação para o ciclo); cobertura populacional dos municípios com instrumento; antecipação — quando o instrumento veio a público em relação ao aviso oficial do ciclo.</p></details></div>
-      <div class="chart-box"><h3 class="map-card-h">Não mede</h3><p class="note">Capacidade real de resposta, qualidade dos planos, obras executadas, dinheiro gasto, risco do território ou sofrimento previsto. Não pontua decretos de emergência (resposta a dano). Não pontua o que existe mas não foi publicado. Não é ranking: nenhum estado é apresentado por posição ordinal.</p></div>
-      <div class="chart-box"><h3 class="map-card-h">Como ler uma nota</h3><p class="note">0–25 estágio inicial · 25–50 em construção · 50–70 consolidado · 70–100 avançado. Nota baixa = preparação <em>não tornada pública</em> nos canais oficiais — e publicar é parte do dever legal (Leis 12.608/2012 e 12.527/2011). Diferença pequena entre estados não é diferença de preparo.</p></div>
-      <div class="chart-box"><h3 class="map-card-h">O teto da afirmação</h3><p class="note">"Não localizamos até o corte" é o máximo que o Monitor afirma sobre uma ausência. Nunca "não existe". Município que ainda não passou pela bateria completa de fontes aparece como <em>"ainda não verificado"</em>, e a matéria deve dizer o mesmo.</p></div>
+    <h2>O que o índice mede — e o que não mede</h2>
+    <div class="grade-cartoes">
+      <div class="cartao"><h3 class="figura-titulo">Mede</h3><p class="note">A <strong>preparação demonstrável publicamente</strong>: instrumentos oficiais de preparação publicados pelos governos, com número, data e fonte — em três componentes de pesos iguais.</p><details><summary>Os três componentes</summary><p class="note u-mt-2">Instrumento estadual (plano ou estrutura de coordenação para o ciclo); cobertura populacional dos municípios com instrumento; antecipação — quando o instrumento veio a público em relação ao aviso oficial do ciclo.</p></details></div>
+      <div class="cartao"><h3 class="figura-titulo">Não mede</h3><p class="note">Capacidade real de resposta, qualidade dos planos, obras executadas, dinheiro gasto, risco do território ou sofrimento previsto. Não pontua decretos de emergência (resposta a dano). Não pontua o que existe mas não foi publicado. Não é ranking: nenhum estado é apresentado por posição ordinal.</p></div>
+      <div class="cartao"><h3 class="figura-titulo">Como ler uma nota</h3><p class="note">0–25 estágio inicial · 25–50 em construção · 50–70 consolidado · 70–100 avançado. Nota baixa = preparação <em>não tornada pública</em> nos canais oficiais — e publicar é parte do dever legal (Leis 12.608/2012 e 12.527/2011). Diferença pequena entre estados não é diferença de preparo.</p></div>
+      <div class="cartao"><h3 class="figura-titulo">O teto da afirmação</h3><p class="note">"Não localizamos até o corte" é o máximo que o Monitor afirma sobre uma ausência. Nunca "não existe". Município que ainda não passou pela bateria completa de fontes aparece como <em>"ainda não verificado"</em>, e a matéria deve dizer o mesmo.</p></div>
     </div>
   </div>
 
   <div class="panel" id="citar">
-    <h2 style="margin-top:0;">3 · Como citar</h2>
-    <div class="kit-grid">
-      <div class="chart-box"><h3 class="map-card-h">Em texto</h3><p class="note">"Segundo o Monitor El Niño Brasil, plataforma independente do Futura Evidence Lab, [estado] tem nota [X] em 100 no índice MARÉ, que mede a preparação publicada para o El Niño 2026/2027 (dados até [corte])." Sempre com a data do corte: as notas mudam a cada atualização.</p></div>
-      <div class="chart-box"><h3 class="map-card-h">Referência bibliográfica</h3><p class="note"><span id="citBib">Futura Evidence Lab. Monitor El Niño Brasil — índice MARÉ, edição 2026/2027, versão e corte indicados no arquivo de citação. monitorelnino.com.br.</span> Um arquivo de citação legível por máquina (CITATION.cff) acompanha os dados abertos.</p></div>
-      <div class="chart-box"><h3 class="map-card-h">Licença</h3><p class="note">Dados, metodologia, feeds e selos: <strong>CC BY 4.0</strong> — uso livre com atribuição ao Monitor El Niño Brasil / Futura Evidence Lab. Código: MIT. Os documentos oficiais citados pertencem aos órgãos que os publicaram.</p></div>
-      <div class="chart-box"><h3 class="map-card-h">Imagens e gráficos</h3><p class="note">Mapas e gráficos do site podem ser reproduzidos com crédito "Monitor El Niño Brasil / Futura Evidence Lab" e a data do corte. Cada figura traz a fonte primária no rodapé — reproduza-a junto.</p></div>
+    <h2>Como citar</h2>
+    <div class="grade-cartoes">
+      <div class="cartao"><h3 class="figura-titulo">Em texto</h3><p class="note">"Segundo o Monitor El Niño Brasil, plataforma independente do Futura Evidence Lab, [estado] tem nota [X] em 100 no índice MARÉ, que mede a preparação publicada para o El Niño 2026/2027 (dados até [corte])." Sempre com a data do corte: as notas mudam a cada atualização.</p></div>
+      <div class="cartao"><h3 class="figura-titulo">Referência bibliográfica</h3><p class="note"><span id="citBib">Futura Evidence Lab. Monitor El Niño Brasil — índice MARÉ, edição 2026/2027, versão e corte indicados no arquivo de citação. monitorelnino.com.br.</span> Um arquivo de citação legível por máquina (CITATION.cff) acompanha os dados abertos.</p></div>
+      <div class="cartao"><h3 class="figura-titulo">Licença</h3><p class="note">Dados, metodologia, feeds e selos: <strong>CC BY 4.0</strong> — uso livre com atribuição ao Monitor El Niño Brasil / Futura Evidence Lab. Código: MIT. Os documentos oficiais citados pertencem aos órgãos que os publicaram.</p></div>
+      <div class="cartao"><h3 class="figura-titulo">Imagens e gráficos</h3><p class="note">Mapas e gráficos do site podem ser reproduzidos com crédito "Monitor El Niño Brasil / Futura Evidence Lab" e a data do corte. Cada figura traz a fonte primária no rodapé — reproduza-a junto.</p></div>
     </div>
   </div>
 
-  
-
-    <div class="panel" id="mudou">
-    <h2 style="margin-top:0;">4 · O que mudou esta semana</h2>
+  <div class="panel" id="mudou">
+    <h2>O que mudou esta semana</h2>
     <p class="hint">Lido do feed nacional: registros novos, decretos novos, mudanças de faixa e fontes reabertas nos últimos sete dias.</p>
     <ul class="fontes-list" id="listaMudou"><li>—</li></ul>
   </div>
 
-<div class="panel" id="faq">
-    <h2 style="margin-top:0;">5 · Perguntas frequentes</h2>
-    <div class="chart-box wide">
-      <h3 class="map-card-h">O que perguntam com mais frequência</h3>
+  <div class="panel" id="faq">
+    <h2>Perguntas frequentes</h2>
+    <div class="cartao">
+      <h3 class="figura-titulo">O que perguntam com mais frequência</h3>
       <p class="note">Respostas curtas, na linha do site.</p>
-      <ul class="naodiga" style="font-size:15px; line-height:1.7; margin:0; padding-left:20px;">
+      <ul class="fontes-list naodiga">
         <li><strong>Um estado com nota baixa está despreparado?</strong> Está com pouca preparação <em>publicada nos canais oficiais</em> — que é onde a lei manda que ela esteja e onde o cidadão e a defesa civil vizinha podem conferi-la. Preparação não publicada não cumpriu o rito e não é conferível; o Monitor diz isso sem afirmar que ela "não existe".</li>
         <li><strong>Posso dizer que tal município "não tem plano"?</strong> Não. O máximo é "o Monitor não localizou plano publicado até [corte]" — e, para município ainda não verificado, "ainda não foi verificado".</li>
         <li><strong>Por que decretos de emergência não contam?</strong> Porque medem resposta a dano ocorrido, não preparação. Eles aparecem em registro separado, com peso zero.</li>
@@ -118,22 +107,26 @@
   </div>
 
   <div class="panel" id="contato">
-    <h2 style="margin-top:0;">6 · Contato de imprensa</h2>
-    <div class="chart-box wide">
-      <h3 class="map-card-h">Entrevistas, dados sob demanda, correções</h3>
+    <h2>Contato de imprensa</h2>
+    <div class="cartao">
+      <h3 class="figura-titulo">Entrevistas, dados sob demanda, correções</h3>
       <p class="note">Escreva para <a href="mailto:imprensa@futuraevidencelab.com.br"><strong>imprensa@futuraevidencelab.com.br</strong></a>. Respondemos com fonte e data. Achou um erro? Mande o documento oficial que o corrige: entra na fila de análise e, se procede, vira errata pública. Para enviar um documento de prefeitura ou governo estadual, use também o <a href="envie-dados.html">formulário</a>.</p>
     </div>
   </div>
 </main>
-<footer class="site-footer">
+  <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
-    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a></span>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-linha">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
-<script src="assets/colunas.js?v=3afa08c5" defer></script>
+
+<script src="assets/colunas.js?v=247b398e" defer></script>
 <script src="assets/js/imprensa.js?v=8d7d5012" defer></script>
+<!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
+     (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
+     Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
   <div vw-plugin-wrapper>
@@ -141,5 +134,6 @@
   </div>
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+
 </body>
 </html>

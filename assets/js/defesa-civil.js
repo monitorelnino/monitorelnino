@@ -3,7 +3,7 @@ let RESP, RESP_SERIE, RESP_Q;
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, MUN_REF, POP_CENSO, VRESUMO,
     MUN_COD = {}, MUN_LATLON = {}, POP_UF = {};
 async function __load(){
-  try { window.__metaCorte = (await fetch('data/meta.json').then(r => r.ok ? r.json() : null) || {}).corte; } catch(e) {}
+  try { const __m = (await fetch('data/meta.json').then(r => r.ok ? r.json() : null) || {}); window.__metaCorte = __m.corte; window.__metaAtualizado = __m.atualizado_em || __m.corte; } catch(e) {}
   let __ref;
   [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, MARE, DATA, TRANSFERENCIAS, CONSIST, ATOS_RESPOSTA, __ref, POP_CENSO, VRESUMO] = await Promise.all(
     ['geo_uf','percentual_uf','pontos_mapa','indice','estados','transferencias','consist','atos_resposta','municipios_ibge_referencia','populacao_censo2022','verificacao_resumo']
@@ -165,8 +165,7 @@ setTimeout(function(){
   MonitorMapas.pontos(__ctx, 'mapNiveis', pts.filter(p=>p.niv!=='nao_verificado'), {r: () => 2.6, cor: d => NIV_STYLE[d.niv].cor, classe: 'acima'});
   MonitorMapas.legenda('legNiveis', Object.values(NIV_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
   // crédito DEPOIS do mapa (pedido editorial de 03/09/2026), fora do parágrafo-nota inicial
-  const fonteFig = document.getElementById('fonteNiveis');
-  if (fonteFig) fonteFig.textContent = 'Fonte: verificação própria do Monitor (dados abertos) · malha IBGE · ' + ((window.__metaCorte) || 'corte da edição');
+  MonitorMapas.credito('nivelverificacao', {fontes: ['Monitor El Niño Brasil (verificação própria)', 'malha IBGE'], data: window.__metaAtualizado});
 }, 0);
 
 // ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada (31/08/2026) ----
@@ -350,9 +349,9 @@ function renderTabelaConsistencia(){
   Object.keys(CONSIST_ROTULO).forEach(cat => {
     const linhas = (porCategoria[cat] || []).sort((a, b) => a[0].localeCompare(b[0]));
     if (!linhas.length) return;
-    html += `<tr><td colspan="3" style="padding-top:16px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink); border-bottom:3px solid ${CONSIST_COR_TABELA[cat]};">${CONSIST_ROTULO[cat]} · ${linhas.length} estado(s)</td></tr>`;
+    html += `<tr class="grupo"><td colspan="3" style="border-bottom-color:${CONSIST_COR_TABELA[cat]};">${CONSIST_ROTULO[cat]} · ${linhas.length} estado(s)</td></tr>`;
     linhas.forEach(([uf, v]) => {
-      html += `<tr><td style="white-space:nowrap;"><strong>${esc(uf)}</strong></td><td>${esc(v.risco)}</td><td>${esc(v.instr)}</td></tr>`;
+      html += `<tr><td class="nowrap"><strong>${esc(uf)}</strong></td><td>${esc(v.risco)}</td><td>${esc(v.instr)}</td></tr>`;
     });
   });
   corpo.innerHTML = html;
@@ -450,12 +449,23 @@ new Chart(document.getElementById('chartDeclarado'), {
 
   renderResposta();
 }
+// Auditoria de 07/09/2026: toda figura tem crédito no formato único; as de antecipação são verificação própria do Monitor.
+function creditosAntecipacao(){
+  const d = window.__metaAtualizado;
+  [['boxPoints', ['Monitor El Niño Brasil (verificação própria)', 'malha IBGE']], ['boxCobertura', ['Monitor El Niño Brasil (verificação própria)']],
+   ['boxNatureza', ['Monitor El Niño Brasil (verificação própria)']], ['riscoinstrumento', ['Monitor El Niño Brasil', 'Boletins nº 1–2 do Painel El Niño']],
+   ['boxPrioritarios', ['Monitor El Niño Brasil', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
+   ['boxDonut', ['Monitor El Niño Brasil', 'instrumentos estaduais verificados']], ['boxRegion', ['Monitor El Niño Brasil', 'instrumentos estaduais verificados']],
+   ['boxCapitals', ['Monitor El Niño Brasil', '27 capitais verificadas']], ['boxDeclarado', ['MUNIC/IBGE', 'ICM/SEDEC', 'Monitor El Niño Brasil']],
+   ['boxAreas', ['Monitor El Niño Brasil', 'classificação COBRADE']]].forEach(([id, fontes]) => MonitorMapas.credito(id, {fontes, data: d}));
+}
 function renderResposta(){
+  creditosAntecipacao();
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fF = id => (typeof fonteFigura === 'function' ? fonteFigura : (cid, t) => MonitorMapas.credito(cid, t));
   const N = RESP && RESP.nacional;
   const c18 = (RESP && RESP.frase_c18) || '';
-  if (!N) { ['boxDispersao','boxSerieResp','boxDecRec'].forEach(id => MonitorMapas.credito(id, 'Fonte: Monitor El Niño Brasil · sem coleta até o corte')); return; }
+  if (!N) { ['boxDispersao','boxSerieResp','boxDecRec'].forEach(id => MonitorMapas.credito(id, {fontes: 'Monitor El Niño Brasil', data: null})); return; }
   // dispersão (C20): x = antecipação (MARÉ), y = % municípios sob decreto; forma = evento observado (sem dado → círculo vazio)
   const pts = ((RESP_Q && RESP_Q.pontos) || []).filter(p => p.antecipacao != null);
   new Chart(document.getElementById('cDispersao'), {type: 'scatter', data: {datasets: [{label: 'UF', data: pts.map(p => ({x: p.antecipacao, y: +(100 * p.resposta).toFixed(1), uf: p.uf})),
@@ -463,24 +473,24 @@ function renderResposta(){
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}, tooltip: {callbacks: {label: c => c.raw.uf + ' · antecipação ' + c.raw.x + ' · ' + c.raw.y + '% dos municípios sob decreto'}}},
       scales: {x: {min: 0, max: 100, title: {display: true, text: 'Antecipação (MARÉ, 0–100)'}}, y: {min: 0, title: {display: true, text: '% dos municípios sob decreto'}}}}});
   MonitorMapas.legenda('legDispersao', [{cor: MonitorMapas.cor('argila'), rotulo: 'um ponto por UF'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'círculo vazio: evento sem dado'}]);
-  MonitorMapas.credito('boxDispersao', 'Fonte: Monitor El Niño Brasil · ' + esc(RESP.gerado_em));
+  MonitorMapas.credito('boxDispersao', {fontes: ['Monitor El Niño Brasil', 'índice MARÉ e contador de resposta'], data: RESP.gerado_em});
   // série semanal com faixa do defeso
   const S = (RESP_SERIE && RESP_SERIE.semanas) || [];
   new Chart(document.getElementById('cSerieResp'), {type: 'bar', data: {labels: S.map(x => x.semana.slice(5)), datasets: [
       {label: 'municípios', data: S.map(x => x.municipios), backgroundColor: S.map(x => MonitorMapas.cor(x.defeso ? 'argila' : 'ambar'))}]},
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 10}}, y: {beginAtZero: true, title: {display: true, text: 'municípios (primeiro decreto)'}}}}});
   MonitorMapas.legenda('legSerieResp', [{cor: MonitorMapas.cor('ambar'), rotulo: 'antes do período eleitoral'}, {cor: MonitorMapas.cor('argila'), rotulo: 'no período eleitoral'}]);
-  MonitorMapas.credito('boxSerieResp', 'Fonte: DOU/SEDEC (S2iD), diários oficiais · ' + esc(RESP.gerado_em));
+  MonitorMapas.credito('boxSerieResp', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais'], data: RESP.gerado_em});
   // tabela decretado × reconhecido
   const tb = document.querySelector('#tblDecRec tbody');
   tb.innerHTML = Object.keys(RESP.uf).sort((a, b) => RESP.uf[b].n_municipios - RESP.uf[a].n_municipios || a.localeCompare(b)).map(uf => { const r = RESP.uf[uf];
     return '<tr><td><strong>' + uf + '</strong></td><td>' + r.n_municipios + ' de ' + r.total_municipios + '</td><td>' + (100 * r.fracao_municipios).toFixed(1).replace('.', ',') + '%</td><td>' + (100 * r.fracao_populacao).toFixed(1).replace('.', ',') + '%</td><td>' + r.tons.reconhecido + '</td><td>' + r.tons.decretado_sem_reconhecimento + '</td><td>' + esc(r.primeiro_decreto || '—') + '</td></tr>'; }).join('');
   MonitorMapas.legenda('legDecRec', [{cor: MonitorMapas.cor('argila'), rotulo: 'reconhecido pela União (S2iD)'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'decretado sem reconhecimento'}]);
-  MonitorMapas.credito('boxDecRec', 'Fonte: DOU/SEDEC (S2iD), diários oficiais · ' + esc(RESP.gerado_em));
+  MonitorMapas.credito('boxDecRec', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais'], data: RESP.gerado_em});
 }
 __load().catch(err => {
   document.body.insertAdjacentHTML('afterbegin',
-    '<div id="errBanner" style="background:var(--argila);color:#fff;padding:14px 20px;font-family:Archivo, system-ui, sans-serif;">' +
+    '<div id="errBanner" class="erro-carga">' +
     'Erro ao carregar os dados: ' + err.message +
     '. Sirva a pasta via HTTP (ex.: <code>npx serve</code>) — abrir o arquivo diretamente bloqueia o fetch.</div>');
 });

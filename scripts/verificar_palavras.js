@@ -8,7 +8,7 @@ const LIMITES = { // [meta §7, teto]
   "imprensa.html": [700, 1060], "pesquisadores.html": [1500, 2200], "envie-dados.html": [900, 1300], "obrigado.html": [100, 160] };
 function palavras(f) {
   let t = fs.readFileSync(path.join(RAIZ, f), "utf-8");
-  t = t.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<style[\s\S]*?<\/style>/g, "").replace(/<nav class="mainnav"[\s\S]*?<\/nav>/g, "").replace(/<footer[\s\S]*?<\/footer>/g, "").replace(/<p class="map-card-sub">[\s\S]*?<\/p>/g, "");   // subtítulos de figura (período · variável · unidade) são metadados
+  t = t.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<style[\s\S]*?<\/style>/g, "").replace(/<nav class="mainnav"[\s\S]*?<\/nav>/g, "").replace(/<footer[\s\S]*?<\/footer>/g, "").replace(/<p class="figura-sub">[\s\S]*?<\/p>/g, "");   // subtítulos de figura (período · variável · unidade) são metadados
   return t.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
 }
 let falhas = 0, avisos = 0;

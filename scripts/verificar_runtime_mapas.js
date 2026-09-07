@@ -132,8 +132,8 @@ setTimeout(() => {
   // Decisão editorial de 04/09/2026: figuras trazem SÓ título, legenda e crédito de uma linha.
   // Nenhum parágrafo/nota dentro de cartão (o portão scripts/verificar_figuras.js cobre as 5 páginas;
   // aqui fica a guarda local desta página).
-  const cartoesComParagrafo = [...d.querySelectorAll(".map-box, .chart-box")]
-    .filter(c => [...c.querySelectorAll(".note, .hint, p")].some(e => !e.closest("details") && !e.classList.contains("map-card-h") && !e.classList.contains("map-card-sub")));
+  const cartoesComParagrafo = [...d.querySelectorAll(".figura")]
+    .filter(c => [...c.querySelectorAll(".note, .hint, p")].some(e => !e.closest("details") && !e.classList.contains("figura-titulo") && !e.classList.contains("figura-sub") && !e.classList.contains("figura-leitura")));
   teste("figuras: nenhum parágrafo ou nota dentro de cartão de mapa/gráfico", cartoesComParagrafo.length === 0);
 
 

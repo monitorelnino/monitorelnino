@@ -29,8 +29,8 @@
     return '<svg class="relogio" viewBox="0 0 ' + o.tam + ' ' + o.tam + '" width="' + o.tam + '" height="' + o.tam + '" role="img" aria-label="' + (vencido ? 'transcorrido há ' + Math.abs(dias) + ' dia(s)' : Math.round(f * 100) + '% do prazo restante, ' + dias + ' dia(s)') + '">'
       + '<circle cx="' + o.tam / 2 + '" cy="' + o.tam / 2 + '" r="' + r + '" fill="none" stroke="' + COR['sem-dado'] + '" stroke-width="' + o.espessura + '"/>'
       + '<circle cx="' + o.tam / 2 + '" cy="' + o.tam / 2 + '" r="' + r + '" fill="none" stroke="' + corAnel + '" stroke-width="' + o.espessura + '" stroke-linecap="butt" stroke-dasharray="' + (c * f).toFixed(1) + ' ' + c.toFixed(1) + '" transform="rotate(-90 ' + o.tam / 2 + ' ' + o.tam / 2 + ')"' + (vencido ? ' opacity=".55"' : '') + '/>'
-      + '<text x="' + o.tam / 2 + '" y="' + (o.tam / 2 + 2) + '" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="' + (o.tam * 0.3) + '" fill="' + (vencido ? COR.mineral : COR.vazio) + '">' + num + '</text>'
-      + '<text x="' + o.tam / 2 + '" y="' + (o.tam / 2 + o.tam * 0.2) + '" text-anchor="middle" font-family="Archivo Narrow, Arial Narrow, Arial, sans-serif" font-size="' + (o.tam * 0.12) + '" fill="' + COR.muted + '" letter-spacing=".06em">' + rot.toUpperCase().replace('<TSPAN> </TSPAN>', ' ') + '</text></svg>';
+      + '<text x="' + o.tam / 2 + '" y="' + (o.tam / 2 + 2) + '" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="' + (o.tam >= 88 ? 28 : 22) + '" fill="' + (vencido ? COR.mineral : COR.vazio) + '">' + num + '</text>'
+      + '<text x="' + o.tam / 2 + '" y="' + (o.tam / 2 + o.tam * 0.2) + '" text-anchor="middle" font-family="Archivo Narrow, Arial Narrow, Arial, sans-serif" font-size="12" fill="' + COR.muted + '" letter-spacing=".06em">' + rot.toUpperCase().replace('<TSPAN> </TSPAN>', ' ') + '</text></svg>';
   }   // tema técnico (05/09/2026): 'sem dado' em areia-clara sobre branco
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const tooltipEl = () => document.getElementById('mapTooltip');
@@ -69,7 +69,7 @@
     svg.append('g').attr('class', 'siglas').selectAll('text').data(ctx.geo.features).join('text')
       .attr('x', d => ctx.path.centroid(d)[0]).attr('y', d => ctx.path.centroid(d)[1])
       .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
-      .attr('font-family', "'Archivo Narrow', 'Arial Narrow', Arial, sans-serif").attr('font-size', 11).attr('font-weight', 600)
+      .attr('font-family', "'Archivo Narrow', 'Arial Narrow', Arial, sans-serif").attr('font-size', 12).attr('font-weight', 600)
       .attr('fill', '#2E3D30').attr('paint-order', 'stroke').attr('stroke', '#F5F1E8').attr('stroke-width', 2.6).attr('stroke-opacity', .75)
       .style('pointer-events', 'none').text(d => d.properties.sigla);
   }
@@ -104,19 +104,37 @@
   /** Escala contínua canônica (gradiente) + itens discretos opcionais. */
   function legendaContinua(elId, gradiente, rotuloMin, rotuloMax, itens) {
     const el = document.getElementById(elId); if (!el) return;
-    el.innerHTML = '<span class="escala" style="flex-basis:100%; max-width:360px; display:block;">'
-      + '<i style="display:block; width:100%; height:12px; border-radius:6px; border:1px solid #CDBB9F; background:' + gradiente + '"></i>'
-      + '<em style="display:flex; justify-content:space-between; font-style:normal; font-size:12.5px; color:var(--muted); margin-top:3px;"><span>' + esc(rotuloMin) + '</span><span>' + esc(rotuloMax) + '</span></em></span>'
+    el.innerHTML = '<span class="escala">'
+      + '<i style="background:' + gradiente + '"></i>'
+      + '<em><span>' + esc(rotuloMin) + '</span><span>' + esc(rotuloMax) + '</span></em></span>'
       + (itens || []).map(i => '<span><i style="background:' + i.cor + '"></i>' + esc(i.rotulo) + '</span>').join('');
   }
 
-  /** Crédito de figura (04/09/2026, decisão editorial): UMA linha curta ao pé do cartão —
-   *  "Fonte: … · data". Sem explicação, sem instrução, sem "por que está vazio". Figuras trazem
-   *  título, legenda e este crédito; nada mais. O portão verificar_figuras.js garante isso. */
-  function credito(caixaId, texto) {
+  /** Data no formato único do site (dd/mm/aaaa). Aceita dd/mm/aaaa (com hora ou texto ao redor), aaaa-mm-dd e Date. */
+  function dataBR(v) {
+    if (!v) return null;
+    if (v instanceof Date) return String(v.getDate()).padStart(2, '0') + '/' + String(v.getMonth() + 1).padStart(2, '0') + '/' + v.getFullYear();
+    const s = String(v); let m = s.match(/(\d{2})\/(\d{2})\/(\d{4})/); if (m) return m[1] + '/' + m[2] + '/' + m[3];
+    m = s.match(/(\d{4})-(\d{2})-(\d{2})/); if (m) return m[3] + '/' + m[2] + '/' + m[1];
+    return null;
+  }
+  /** Crédito de figura — formato ÚNICO do site (auditoria de 07/09/2026):
+   *    "Fonte: órgão · documento · Atualização: dd/mm/aaaa"   ou   "… · Atualização: sem coleta até o corte".
+   *  credito(caixaId, { fontes: 'INMET' | ['DOU', 'S2iD'], data: '07/09/2026' | null, url: 'https://…' (opcional, no 1º nome) })
+   *  Sem explicações, sem instruções, sem "por que está vazio". Uma linha por figura ou cartão; nunca duplica.
+   *  Portões: verificar_figuras.js (texto) e verificar_consistencia_visual.js (estilo computado). */
+  function credito(caixaId, spec) {
     const caixa = document.getElementById(caixaId);
     if (!caixa || caixa.querySelector('.fonte-figura')) return;
-    const d = document.createElement('div'); d.className = 'fonte-figura'; d.innerHTML = texto; caixa.appendChild(d);
+    if (typeof spec === 'string') throw new Error('MonitorMapas.credito: use {fontes, data}; texto livre não é aceito (' + caixaId + ')');
+    const fontes = (Array.isArray(spec.fontes) ? spec.fontes : [spec.fontes]).filter(Boolean).map(esc);
+    if (spec.url && fontes.length) fontes[0] = '<a href="' + esc(spec.url) + '" target="_blank" rel="noopener">' + fontes[0] + '</a>';
+    const data = dataBR(spec.data);
+    const d = document.createElement('div'); d.className = 'fonte-figura';
+    d.innerHTML = '<span class="fonte-k">Fonte:</span> ' + fontes.join(' · ') + ' · <span class="fonte-k">Atualização:</span> ' + (data || 'sem coleta até o corte');
+    let pe = caixa.querySelector(':scope > .figura-pe');
+    if (!pe) { pe = document.createElement('div'); pe.className = 'figura-pe'; caixa.appendChild(pe); }
+    pe.insertBefore(d, pe.firstChild);   // crédito antes do número da figura
   }
 
   /** Padrão único dos gráficos Chart.js (03/09/2026): tipografia, cores, grade, tooltip. */
@@ -124,7 +142,7 @@
     if (!Chart || !Chart.defaults) return;
     Chart.defaults.color = '#55645B';                      // --muted
     Chart.defaults.font.family = "'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif";
-    Chart.defaults.font.size = 11.5;
+    Chart.defaults.font.size = 12;                          // --fs-caption
     Chart.defaults.borderColor = '#D6C4AC';                // --line (grade)
     if (!Chart.defaults.font) Chart.defaults.font = {};
     if (Chart.defaults.plugins && Chart.defaults.plugins.legend && Chart.defaults.plugins.legend.labels) { Chart.defaults.plugins.legend.labels.boxWidth = 10; Chart.defaults.plugins.legend.labels.padding = 10; }
@@ -140,5 +158,5 @@
                    resposta: '#7C4A34', preparacao: '#2E3D30', neutra: '#DCE3E2',
                    serie: ['#2E3D30', '#5E7C93', '#C9814B', '#7C4A34', '#8FA5A8', '#7A6A4F', '#A8C99A', '#55645B'] };   // paleta da marca (Musgo, Sintético, Âmbar, Argila, Mineral)
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito, dataBR };
 })(window);

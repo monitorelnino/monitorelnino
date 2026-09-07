@@ -29,34 +29,17 @@
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=340c7bbc">
-<script src="assets/mapas.js?v=a30a521e"></script>
-<style>
-  .prazos-barras{display:flex; flex-direction:column; gap:8px;}
-  .msb{display:grid; grid-template-columns:44px 1fr 56px; gap:0 10px; align-items:center;}
-  .msb b{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:600; font-size:12.5px; color:var(--ink);}
-  .msb .trilho{height:10px; background:var(--areia); border-radius:999px; overflow:hidden;}
-  .msb .barra{height:100%; border-radius:999px;}
-  .msb span{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); text-align:right;}
-
-/* --- saude.html: estilos próprios desta página (o compartilhado está na folha base) --- */
-  *{box-sizing:border-box;}
-  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
-  .lacuna{display:flex; align-items:center; justify-content:center; min-height:150px; height:100%; border:1px dashed var(--line); border-radius:8px; padding:16px; text-align:center; font-size:13.5px; line-height:1.5; color:var(--muted); background:rgba(0,0,0,.012);}
-  .uf-path:focus-visible{outline:2px solid var(--link); outline-offset:2px;}
-  .fonte-espera{color:var(--muted);}
-  .cartao-ciclo-valor{font-family:'Fraunces', Georgia, serif; font-size:28px; line-height:1.25; margin:6px 0 0; color:var(--ink);}
-  .cartao-ciclo-valor .lacuna{min-height:0; font-size:15px; border:0; background:none; padding:0; justify-content:flex-start; text-align:left;}
-</style>
+<link rel="stylesheet" href="assets/tokens.css?v=6d6819dc">
+<link rel="stylesheet" href="assets/base.css?v=04b20b5e">
+<script src="assets/mapas.js?v=6aad1ba0"></script>
 </head>
-<body>
+<body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead masthead--mini">
     <div class="mast-top">
-      <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
       <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><span class="ativa" aria-current="page">Saúde</span><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="pesquisadores.html">Pesquisadores</a><a href="imprensa.html">Imprensa</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Envie um plano ou decreto</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
@@ -64,149 +47,149 @@
     <p class="mast-sub">MARÉ · Medida de Antecipação e Resposta ao El Niño</p>
     <div class="grad-line"></div>
   </header>
-
-<main class="wrap" id="conteudo">
+<main id="conteudo">
   <p class="selo">Saúde · registro de transparência · peso zero no índice</p>
   <h1>Saúde e <em>El Niño</em></h1>
   <p class="hint" id="subSaude">Três camadas separadas, cada figura com órgão, documento e data: o que a União publicou para a saúde no ciclo 2026/2027; o que cada secretaria estadual de saúde publicou, verificado com o protocolo do Monitor; e os sinais epidemiológicos observados, reproduzidos das fontes oficiais. Nada aqui pontua no MARÉ. Corte: <strong id="corteSaude">—</strong>.</p>
 
-  <div class="panel" id="monitorSaude" style="border-top:3px solid var(--ink);">
-    <h2 style="margin-top:0;">0 · MARÉ · Saúde — antecipação e resposta</h2>
-    <div class="maps-grid">
-      <div class="map-box" id="boxMonitor">
-        <h3 class="map-card-h">Antecipação · prontidão sanitária estadual (instrumento × antecipação)</h3>
-        <p class="map-card-sub">Corte da edição · prontidão sanitária (0–100) por UF verificada · faixas do site</p>
-        <svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil pela prontidão sanitária estadual (faixas) e UFs ainda não verificadas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+  <div class="panel panel--acento-ink" id="monitorSaude">
+    <h2>MARÉ · Saúde — antecipação e resposta</h2>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxMonitor">
+        <h3 class="figura-titulo">Antecipação · prontidão sanitária estadual (instrumento × antecipação)</h3>
+        <p class="figura-sub">Corte da edição · prontidão sanitária (0–100) por UF verificada · faixas do site</p>
+        <div class="figura-midia"><svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil pela prontidão sanitária estadual (faixas) e UFs ainda não verificadas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legMonitor"></div>
-        <details style="margin-top:8px;" data-alternativa="dados"><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Prontidão</th><th>Faixa</th><th>Instrumento</th><th>Antecipação</th><th>Dengue na capital</th><th>Risco projetado</th></tr></thead><tbody></tbody></table></div>
         </details>
-      </div>
-      <div class="chart-box" id="boxRespostaSanitaria">
-        <h3 class="map-card-h">Resposta · emergências sanitárias no ciclo</h3>
-        <p class="map-card-sub">Desde 29/06/2026 · emergências sanitárias declaradas (ESPIN e decretos estaduais) · contagem</p>
-        <div class="gauge-head" style="margin:8px 0 2px;"><span class="gnum" id="rsNum" style="color:var(--rust);">—</span><span class="gden">emergências localizadas em 2026</span></div>
+      </figure>
+      <figure class="figura figura--indicador" id="boxRespostaSanitaria">
+        <h3 class="figura-titulo">Resposta · emergências sanitárias no ciclo</h3>
+        <p class="figura-sub">Desde 29/06/2026 · emergências sanitárias declaradas (ESPIN e decretos estaduais) · contagem</p>
+        <div class="figura-midia"><div class="gauge-head"><span class="gnum u-rust" id="rsNum">—</span><span class="gden">emergências localizadas em 2026</span></div></div>
         <div class="map-legend" id="legRespostaSanitaria"></div>
-      </div>
-      <div class="chart-box" id="boxMonitorBarras">
-        <h3 class="map-card-h">Prontidão por estado verificado</h3>
-        <p class="map-card-sub">Corte da edição · prontidão sanitária por UF verificada · 0–100</p>
-        <div id="monitorBarras" class="prazos-barras" style="margin:6px 0 4px;"></div>
+      </figure>
+      <figure class="figura figura--barras" id="boxMonitorBarras">
+        <h3 class="figura-titulo">Prontidão por estado verificado</h3>
+        <p class="figura-sub">Corte da edição · prontidão sanitária por UF verificada · 0–100</p>
+        <div class="figura-midia"><div id="monitorBarras" class="prazos-barras"></div></div>
         <div class="map-legend" id="legMonitorBarras"></div>
-      </div>
+      </figure>
     </div>
   </div>
 
   <div class="panel" id="federal">
-    <h2 style="margin-top:0;">1 · O que a União publicou</h2>
+    <h2>O que a União publicou</h2>
     <p class="hint">Cartões reproduzem documentos oficiais. "Anunciado, não localizado até o corte" é uma linha própria — nunca um cartão inventado.</p>
-    <div class="charts-grid" id="cartoesFederal"></div>
+    <div class="grade-cartoes" id="cartoesFederal"></div>
   </div>
 
   <div class="panel" id="estadual">
-    <h2 style="margin-top:0;">2 · O que cada estado publicou (verificação em andamento)</h2>
+    <h2>O que cada estado publicou (verificação em andamento)</h2>
     <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE para os riscos sanitários do ciclo. "Ainda não verificado" significa exatamente isso: a bateria estadual desta camada não foi executada para a UF — não é ausência de documento. <strong id="contagemUF">—</strong></p>
-    <div class="maps-grid">
-      <div class="map-box" id="boxStatus">
-        <h3 class="map-card-h">Status do instrumento estadual de saúde</h3>
-        <p class="map-card-sub">Corte da edição · status do plano estadual de saúde para o ciclo · escada da §9</p>
-        <svg id="mapaStatus" role="img" aria-label="Mapa do Brasil pelo status do instrumento estadual de saúde para o ciclo" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxStatus">
+        <h3 class="figura-titulo">Status do instrumento estadual de saúde</h3>
+        <p class="figura-sub">Corte da edição · status do plano estadual de saúde para o ciclo · escada da §9</p>
+        <div class="figura-midia"><svg id="mapaStatus" role="img" aria-label="Mapa do Brasil pelo status do instrumento estadual de saúde para o ciclo" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legStatus"></div>
-      </div>
-      <div class="map-box" id="boxRiscoSan">
-        <h3 class="map-card-h">Risco sanitário projetado (derivado)</h3>
-        <p class="map-card-sub">Ciclo 2026/2027 · risco sanitário projetado por UF (derivado dos boletins) · família</p>
-        <svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil pela família de risco sanitário derivada do risco projetado" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxRiscoSan">
+        <h3 class="figura-titulo">Risco sanitário projetado (derivado)</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · risco sanitário projetado por UF (derivado dos boletins) · família</p>
+        <div class="figura-midia"><svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil pela família de risco sanitário derivada do risco projetado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legRiscoSan"></div>
-      </div>
+      </figure>
     </div>
-    <details style="margin-top:14px;"><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela: as 27 UFs</summary>
-      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="margin-top:10px;"><table class="mun-table" id="tblUF"><thead><tr><th>UF</th><th>Status</th><th>Documento</th><th>Riscos sanitários projetados</th><th>Verificado em</th></tr></thead><tbody></tbody></table></div>
+    <details class="figura-dados"><summary>Ver em tabela: as 27 UFs</summary>
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblUF"><thead><tr><th>UF</th><th>Status</th><th>Documento</th><th>Riscos sanitários projetados</th><th>Verificado em</th></tr></thead><tbody></tbody></table></div>
     </details>
   </div>
 
-    <div class="panel" id="desfechos" style="border-top:3px solid var(--sintetico);">
-    <h2 style="margin-top:0;">3 · O que aconteceu — desfechos em saúde</h2>
+  <div class="panel panel--acento-teal" id="desfechos">
+    <h2>O que aconteceu — desfechos em saúde</h2>
     <p class="hint">Terceira coluna, ao lado do índice e do contador: a curva observada de dengue nos 313 municípios do painel amostral, semana a semana, sobre o canal endêmico das mesmas semanas de 2019–2025 (2024 à parte). Peso zero, sem nota. <strong>O Monitor não atribui casos ao El Niño.</strong></p>
-    <div class="maps-grid">
-      <div class="chart-box wide" id="boxDesfSemanal">
-        <h3 class="map-card-h">Casos notificados por semana · painel amostral · 2026 sobre o canal endêmico</h3>
-        <p class="map-card-sub">SE 01–34/2026 (últimas 4 vazadas) · casos notificados de dengue · painel amostral · nº de casos</p>
-        <div class="canvas-wrap"><canvas id="cDesfSemanal" aria-label="Casos de dengue por semana epidemiológica de 2026 nos municípios do painel, com o canal endêmico (mediana, p75 e p90 de 2019–2025) e a faixa de nowcasting nas semanas incompletas"></canvas></div>
+    <div class="grade-figuras">
+      <figure class="figura figura--grafico figura--largo" id="boxDesfSemanal">
+        <h3 class="figura-titulo">Casos notificados por semana · painel amostral · 2026 sobre o canal endêmico</h3>
+        <p class="figura-sub">SE 01–34/2026 (últimas 4 vazadas) · casos notificados de dengue · painel amostral · nº de casos</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cDesfSemanal" aria-label="Casos de dengue por semana epidemiológica de 2026 nos municípios do painel, com o canal endêmico (mediana, p75 e p90 de 2019–2025) e a faixa de nowcasting nas semanas incompletas"></canvas></div>
         <div class="map-legend" id="legDesfSemanal"></div>
-      </div>
-      <div class="chart-box" id="boxDesfAcum">
-        <h3 class="map-card-h">Acumulado no ano · 2026 × 2025 × 2024 · painel amostral</h3>
-        <p class="map-card-sub">Anos 2024, 2025 e 2026 (parcial) · casos notificados de dengue acumulados · painel amostral</p>
-        <div class="canvas-wrap"><canvas id="cDesfAcum" aria-label="Escada do acumulado anual de casos no painel amostral, 2026, 2025 e 2024"></canvas></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxDesfAcum">
+        <h3 class="figura-titulo">Acumulado no ano · 2026 × 2025 × 2024 · painel amostral</h3>
+        <p class="figura-sub">Anos 2024, 2025 e 2026 (parcial) · casos notificados de dengue acumulados · painel amostral</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Escada do acumulado anual de casos no painel amostral, 2026, 2025 e 2024"></canvas></div>
         <div class="map-legend" id="legDesfAcum"></div>
-      </div>
-      <div class="map-box" id="boxDesfMapa">
-        <h3 class="map-card-h">Nível de alerta por município · última semana consolidada</h3>
-        <p class="map-card-sub">Última SE consolidada · nível de alerta InfoDengue (1–4) por município do painel</p>
-        <svg id="mapaDesf" role="img" aria-label="Mapa do Brasil com os municípios do painel amostral coloridos pelo nível de alerta do InfoDengue na última semana consolidada" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxDesfMapa">
+        <h3 class="figura-titulo">Nível de alerta por município · última semana consolidada</h3>
+        <p class="figura-sub">Última SE consolidada · nível de alerta InfoDengue (1–4) por município do painel</p>
+        <div class="figura-midia"><svg id="mapaDesf" role="img" aria-label="Mapa do Brasil com os municípios do painel amostral coloridos pelo nível de alerta do InfoDengue na última semana consolidada" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legDesfMapa"></div>
-      </div>
+      </figure>
     </div>
   </div>
 
-<div class="panel" id="observado">
-    <h2 style="margin-top:0;">4 · O que se observa</h2>
+  <div class="panel" id="observado">
+    <h2>O que se observa</h2>
     <p class="hint">Dado epidemiológico é observação, nunca juízo de preparo. Fonte não coletada aparece como lacuna declarada. <strong>Cadência:</strong> não é tempo real — o robô consulta as fontes oficiais todo dia na semana intensiva (06 a 13/09/2026) e toda segunda-feira depois; cada figura mostra a data da consulta. <span id="carimboSaude"></span></p>
-    <div class="maps-grid">
-      <div class="map-box" id="boxDengue">
-        <h3 class="map-card-h">Dengue nas capitais · última semana epidemiológica</h3>
-        <p class="map-card-sub">Última SE disponível · nível de alerta InfoDengue nas 27 capitais · 1–4</p>
-        <svg id="mapaDengue" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nas capitais" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxDengue">
+        <h3 class="figura-titulo">Dengue nas capitais · última semana epidemiológica</h3>
+        <p class="figura-sub">Última SE disponível · nível de alerta InfoDengue nas 27 capitais · 1–4</p>
+        <div class="figura-midia"><svg id="mapaDengue" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nas capitais" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legDengue"></div>
-      </div>
-      <div class="map-box" id="boxCalor">
-        <h3 class="map-card-h">Avisos de calor vigentes (INMET)</h3>
-        <p class="map-card-sub">Consulta mais recente · avisos de calor vigentes do INMET por UF · contagem</p>
-        <svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de avisos de calor do INMET" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxCalor">
+        <h3 class="figura-titulo">Avisos de calor vigentes (INMET)</h3>
+        <p class="figura-sub">Consulta mais recente · avisos de calor vigentes do INMET por UF · contagem</p>
+        <div class="figura-midia"><svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de avisos de calor do INMET" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legCalor"></div>
-      </div>
-      <div class="map-box" id="boxEmerg">
-        <h3 class="map-card-h">Emergências sanitárias declaradas (resposta)</h3>
-        <p class="map-card-sub">Desde 29/06/2026 · emergências sanitárias declaradas · lista</p>
-        <svg id="mapaEmerg" role="img" aria-label="Mapa do Brasil com emergências sanitárias declaradas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxEmerg">
+        <h3 class="figura-titulo">Emergências sanitárias declaradas (resposta)</h3>
+        <p class="figura-sub">Desde 29/06/2026 · emergências sanitárias declaradas · lista</p>
+        <div class="figura-midia"><svg id="mapaEmerg" role="img" aria-label="Mapa do Brasil com emergências sanitárias declaradas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legEmerg"></div>
-      </div>
+      </figure>
     </div>
   </div>
 
   <div class="panel" id="cruzamento">
-    <h2 style="margin-top:0;">5 · Defesa civil × saúde, por estado</h2>
+    <h2>Defesa civil × saúde, por estado</h2>
     <p class="hint">Quadrantes: instrumento de defesa civil <em>e</em> de saúde localizados · só defesa civil · só saúde · nenhum localizado — ou ainda não verificado na camada de saúde. A página de mapas e gráficos apenas aponta para cá.</p>
-    <div class="charts-grid">
-      <div class="chart-box wide" id="boxQuadrantes">
-        <h3 class="map-card-h">Quadrantes</h3>
-        <p class="map-card-sub">Corte da edição · prontidão sanitária × risco sanitário projetado · 27 UFs</p>
-        <div id="quadrantes" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:6px;"></div>
-      </div>
-      <div class="chart-box wide" id="boxSerie">
-        <h3 class="map-card-h">Série semanal de dengue · 2026 × 2025 × 2024</h3>
-        <p class="map-card-sub">SE 01–52 · casos estimados de dengue, soma das 27 capitais · 2026 × 2025 × 2024 · nº de casos</p>
-        <div class="canvas-wrap" id="serieWrap"><canvas id="serieDengue" aria-label="Série semanal de dengue — aguardando coleta"></canvas></div>
+    <div class="grade-figuras">
+      <figure class="figura figura--diagrama figura--largo" id="boxQuadrantes">
+        <h3 class="figura-titulo">Quadrantes</h3>
+        <p class="figura-sub">Corte da edição · prontidão sanitária × risco sanitário projetado · 27 UFs</p>
+        <div class="figura-midia"><div id="quadrantes" class="grade-quadrantes"></div></div>
+      </figure>
+      <figure class="figura figura--grafico figura--largo" id="boxSerie">
+        <h3 class="figura-titulo">Série semanal de dengue · 2026 × 2025 × 2024</h3>
+        <p class="figura-sub">SE 01–52 · casos estimados de dengue, soma das 27 capitais · 2026 × 2025 × 2024 · nº de casos</p>
+        <div class="figura-midia canvas-wrap" id="serieWrap"><canvas id="serieDengue" aria-label="Série semanal de dengue — aguardando coleta"></canvas></div>
         <div class="map-legend" id="legSerie"></div>
-      </div>
+      </figure>
     </div>
   </div>
 
-    <p class="hint">Os alertas e as orientações para a população estão em <a href="proteja-se.html#alertas-saude">Proteja-se</a>, alimentados pelos mesmos dados desta página.</p>
-
+  <p class="hint">Os alertas e as orientações para a população estão em <a href="proteja-se.html#alertas-saude">Proteja-se</a>, alimentados pelos mesmos dados desta página.</p>
 </main>
-<footer class="site-footer">
+  <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
-    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-linha">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
-
-<script src="assets/colunas.js?v=3afa08c5" defer></script>
-<script src="assets/js/saude.js?v=fb3217ef" defer></script>
+<script src="assets/colunas.js?v=247b398e" defer></script>
+<script src="assets/js/saude.js?v=4971f65c" defer></script>
+<!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
+     (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
+     Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
   <div vw-plugin-wrapper>
@@ -214,5 +197,6 @@
   </div>
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+
 </body>
 </html>
