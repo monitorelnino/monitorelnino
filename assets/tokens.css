@@ -68,7 +68,8 @@
   --fs-caption: 12px;  --lh-caption: 1.4;   /* versaletes, legendas, créditos, rótulos, navegação */
 
   --peso-regular: 400; --peso-medio: 500; --peso-semibold: 600; --peso-bold: 700;
-  --ls-caps: .06em;       /* versaletes de dado, rótulos, cabeçalho de tabela, navegação */
+  --ls-caps: .06em;       /* versaletes de dado, rótulos, cabeçalho de tabela */
+  --ls-nav: .02em;        /* navegação principal (07/09/2026, PR #104): nove seções + CTA "Envie um plano ou decreto" numa linha só no desktop */
   --ls-caps-largo: .14em; /* kicker, selo, mast-sub */
   --ls-titulo: -.012em;   /* display */
 }
