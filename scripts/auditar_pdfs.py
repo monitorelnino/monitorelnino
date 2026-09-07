@@ -15,6 +15,7 @@ Requer: node_modules com playwright, jspdf (npm i --no-save jspdf playwright).
 Uso: python3 scripts/auditar_pdfs.py
 """
 import json, re, subprocess, sys
+import sys as _s, pathlib as _p; _s.path.insert(0, str(_p.Path(__file__).resolve().parent.parent)); from pagina_completa import ler_pagina
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ TESTE = Path("/tmp/index_pdf_test.html")
 
 def montar_html_instrumentado():
     """Embute dados e jsPDF, expõe o gerador e captura o texto de cada PDF em memória."""
-    html = (RAIZ / "index.html").read_text(encoding="utf-8")
+    html = ler_pagina(RAIZ / "index.html")
     anc_ini, anc_fim = "async function __load(){", "  __init();\n}"
     i = html.find(anc_ini); j = html.find(anc_fim, i) + len(anc_fim)
     m = re.search(r"\[(BR_GEOJSON[^\]]*)\] = await Promise\.all\(\n\s*\[([^\]]*)\]", html, re.S)

@@ -14,6 +14,7 @@ Prova, bloqueando a publicação se falhar:
 Uso: python verificar_saude.py [--negativos] (os testes negativos quebram cópias em memória e exigem falha).
 """
 import json, pathlib, re, sys
+from pagina_completa import ler_pagina
 
 RAIZ = pathlib.Path(__file__).parent
 D = RAIZ / "data"
@@ -81,7 +82,7 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
 
 def carregar():
     j = lambda n: json.load(open(D / n, encoding="utf-8"))
-    return (open(RAIZ / "saude.html", encoding="utf-8").read(), j("saude_uf.json"), j("saude_sinais.json"),
+    return (ler_pagina(RAIZ / "saude.html"), j("saude_uf.json"), j("saude_sinais.json"),
             j("saude_federal.json"), open(RAIZ / "recalcular_mare.py", encoding="utf-8").read(), j("indice.json"), j("atos_resposta.json"))
 
 

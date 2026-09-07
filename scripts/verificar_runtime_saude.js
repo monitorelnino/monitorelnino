@@ -13,12 +13,12 @@
  * toda fonte não coletada precisa aparecer como lacuna declarada.
  * Uso: node scripts/verificar_runtime_sinais.js
  */
-const { JSDOM, VirtualConsole } = require("jsdom");
+const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const fs = require("fs");
 const path = require("path");
 
 const raiz = path.join(__dirname, "..");
-const html = fs.readFileSync(path.join(raiz, "saude.html"), "utf-8");
+const html = inlinePageJs(fs.readFileSync(path.join(raiz, "saude.html"), "utf-8"), raiz);
 const erros = [];
 const vc = new VirtualConsole();
 vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));

@@ -15,6 +15,7 @@ verificar_financiamento.py — portão 13 (v2.3, §7.8)
 Uso: python3 verificar_financiamento.py [--negativos]
 """
 import json, os, pathlib, re, shutil, sys, tempfile
+from pagina_completa import ler_pagina
 
 RAIZ = pathlib.Path(__file__).parent; FIN = RAIZ / "data" / "financiamento"
 AUTOR = re.compile(r'"(nomeAutor|codigoAutor|autor(?:_emenda)?|nomeParlamentar|autorEmenda)"', re.I)
@@ -48,7 +49,7 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
 def carregar():
     j = lambda p: json.load(open(p, encoding="utf-8"))
     arqs = {p.name: p.read_text(encoding="utf-8") for p in FIN.glob("*.json")}
-    return (open(RAIZ / "financiamento.html", encoding="utf-8").read(), j(FIN / "rotas.json"), j(FIN / "serie_nacional.json"), j(FIN / "por_uf.json"),
+    return (ler_pagina(RAIZ / "financiamento.html"), j(FIN / "rotas.json"), j(FIN / "serie_nacional.json"), j(FIN / "por_uf.json"),
             open(RAIZ / "recalcular_mare.py", encoding="utf-8").read(), arqs)
 
 

@@ -98,3 +98,12 @@ por definição: ele simplesmente não está lá.
   este documento e ao canal de exclusão.
 - Nomear formalmente um canal de contato para solicitações de titulares,
   hoje resolvido apenas pelos canais editoriais gerais do Observatório.
+
+## Retenção das submissões do formulário (v3.1 §14.9, 06/09/2026)
+
+As submissões de "Enviar dados" ficam armazenadas no Netlify Forms até serem apagadas manualmente no
+painel do site — o Netlify não aplica prazo automático de retenção. Regra do Monitor: cada submissão é
+conferida pela editoria e, depois de registrada ou recusada, é **apagada do painel em até 90 dias**; o
+que fica é o registro público (documento, número, data, endereço), nunca o e-mail do remetente. Esta
+regra foi escrita em 06/09/2026 e a conferência da configuração no painel do Netlify (plano, notificações
+por e-mail, exportações) é da editoria — registrar a data quando feita.

@@ -18,6 +18,7 @@ dela cria (METODOLOGIA §23.4):
 Saída 0 = pode publicar. Saída 1 = publicação bloqueada.
 """
 import json
+from pagina_completa import ler_pagina
 import pathlib
 import re
 import sys
@@ -118,7 +119,7 @@ def main():
 
     # ---- 4. linguagem da página ------------------------------------------
     if PAGINA.exists():
-        html = PAGINA.read_text(encoding="utf-8")
+        html = ler_pagina(PAGINA)
         visivel = re.sub(r"<script\b[\s\S]*?</script>|<style\b[\s\S]*?</style>|<!--[\s\S]*?-->", " ", html)
         texto = re.sub(r"<[^>]+>", " ", visivel)
         for padrao, motivo in PROIBIDAS:

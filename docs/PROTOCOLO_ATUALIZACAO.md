@@ -215,3 +215,12 @@ continua registrada em `METODOLOGIA.md` §5.5.
 
 ---
 *Protocolo de atualização · Futura Evidence Lab · 01/09/2026.*
+
+## Proteção da `main` — conferida em 06/09/2026 (v3.1 §14.7)
+
+Ruleset ativo "main protegida (AUD-06)": bloqueia exclusão e force-push; exige pull request; exige o
+check `portoes` verde; único bypass é a deploy key do robô (rodada automática de dados). Conferido pela
+API em 06/09/2026 (a API antiga de *branch protection* devolve 404 porque a proteção é por ruleset).
+Actions fixadas por SHA de commit; bibliotecas externas em `assets/vendor/` (versões fixadas, hash no
+manifesto); scripts das páginas em `assets/js/`; CSP sem `'unsafe-inline'` em `script-src`.
+Portão `scripts/verificar_seguranca.js` na suíte do PR.
