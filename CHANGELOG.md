@@ -13,6 +13,21 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Desfechos em saúde, saúde no defeso e `saude_no_plano` (07/09/2026; instruções §8–§10)
+- **§8 — terceira coluna, "o que aconteceu":** `coletar_desfechos_saude.py` (5 autotestes) lê o
+  InfoDengue `alertcity` 2019–2026 para os 313 municípios do painel amostral e calcula o canal
+  endêmico (mediana/p75/p90 das mesmas SE de 2019–2025, 2024 à parte), vaza as últimas 4 SE e guarda o
+  nowcasting como faixa; grava `data/saude_desfechos/*`. Saúde ganha a seção 3 com barras semanais
+  sobre o canal, escada do acumulado 2026 × 2025 × 2024 e mapa de nível por município. Ressalva "o
+  Monitor não atribui casos ao El Niño" em toda superfície; portão (d) em `verificar_saude.py`;
+  peso zero. Metodologia §35. A primeira coleta real roda na rotina (a rede deste ambiente bloqueia).
+- **§9 — saúde na medida do defeso:** detector ganha o padrão "defeso" (título/URL) e o campo
+  `setor` por fonte; registradas à mão o Painel das Arboviroses do MS em edição "(DEFESO)" e o painel
+  da SES-MG indisponível; Calendário mostra as contagens por setor e a linha do painel federal; §24.
+- **§10 — `saude_no_plano`:** `data/saude_no_plano.json` com as duas leituras (Afonso Cláudio/ES = 2
+  resposta; Recife/PE = 3 vigilância pós-desastre), padrão observado e pendências (SC, GO, MT, SE,
+  Manaus); portão (n). A exibição no cartão e no cruzamento entra com as leituras estaduais.
+
 ### Navegação, Financiamento primeiro-com-o-El-Niño, gráficos vazios e a pergunta do defeso (07/09/2026, pedido da editoria)
 - **Três quebras de página que o jsdom não pegava** (Financiamento: `tblConsultas` órfão após a
   migração para Pesquisadores; Pesquisadores: constante usada antes de declarar, `MonitorMapas` e
