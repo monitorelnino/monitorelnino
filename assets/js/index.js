@@ -313,6 +313,7 @@ renderPrazos();
     if (hoje >= lim) {
       const bl = document.getElementById('blocoPosDefeso');
       if (bl && VRESUMO && VRESUMO.pos_defeso) {
+        bl.hidden = false;   // 07/09/2026: o bloco fica oculto até ter dado (26/10); não ocupa a inicial vazio
         ['pdFontes','pdInstrumentos','pdVariacao'].forEach(id => { const e = document.getElementById(id); if (e) e.hidden = false; });
         document.getElementById('pdFontes').textContent = VRESUMO.pos_defeso.fontes_que_voltaram_txt || '—';
         document.getElementById('pdInstrumentos').textContent = VRESUMO.pos_defeso.instrumentos_anteriores_txt || '—';
