@@ -181,7 +181,7 @@ function __init(){
       no(g, n, 300, passo - 8, n.cor, n.n + ' · ' + n.nome, 'chave: ' + n.chave + (n.ex_ante ? '' : ' · resposta'));
     });
     MonitorMapas.legenda('legRede', [{cor: MonitorMapas.cor('musgo'), rotulo: 'contínuo: regra'}, {cor: MonitorMapas.cor('argila'), rotulo: 'tracejado: decreto (resposta)'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'pontilhado: discricionária'}, {cor: MonitorMapas.cor('mineral'), rotulo: 'duplo: execução direta'}]);
-    fonteFigura('boxRede', 'Fonte: Monitor El Niño Brasil');
+    fonteFigura('boxRede', 'Fonte: Monitor El Niño Brasil · base legal citada por rota · ' + esc(ROTAS.corte || ''));
   })();
   document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="chart-box" style="border-left:4px solid '+r.cor+'"><h3 class="map-card-h">'+r.n+' · '+esc(r.nome)+' <span style="font-weight:400; text-transform:none; letter-spacing:0;">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
     + '</div>').join('');
@@ -255,7 +255,7 @@ function __init(){
     (document.getElementById('notaPainel')||{}).textContent = 'Painel de ' + PAINEL.n + ' municípios; semente ' + PAINEL.semente + ', lista publicada em ' + PAINEL.lista_publicada_em + ' (hash ' + String(PAINEL.hash_lista).slice(0,12) + '…).';
     document.getElementById('painelResumo').innerHTML = '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>Região × porte</th><th>Municípios</th><th>Com instrumento publicado</th><th>Ainda não verificados</th></tr></thead><tbody>'
       + (PAINEL.agregados || []).map(a => '<tr><td>' + esc(a.regiao) + ' · ' + esc(a.porte) + '</td><td>' + a.n + '</td><td>' + a.com_instrumento + '</td><td>' + a.nao_verificados + '</td></tr>').join('') + '</tbody></table></div>';
-    fonteFigura('boxPainel', 'Fonte: Monitor El Niño Brasil');
+    fonteFigura('boxPainel', 'Fonte: Monitor El Niño Brasil · painel amostral · ' + esc((PAINEL && PAINEL.lista_publicada_em) || ROTAS.corte || ''));
   } else {
     fonteFigura('boxPainel', 'Fonte: Monitor El Niño Brasil · painel não publicado até o corte');
   }
@@ -270,8 +270,8 @@ function __init(){
   document.getElementById('programasCards').innerHTML = PROG.map(p => '<div class="chart-box"><h3 class="map-card-h">' + esc(p.nome) + '</h3></div>').join('');
   // 7 · compromissos + gráfico por área
   document.querySelector('#tblCompromissos tbody').innerHTML = (COMP.itens || []).map(c => '<tr><td>' + esc(c.nome) + '</td><td>' + esc(c.esfera || '—') + '</td><td>' + esc(c.instrumento || '—') + (c.fonte ? ' <a href="' + esc(c.fonte) + '" target="_blank" rel="noopener">fonte</a>' : '') + '</td><td>' + brl(c.valor_total) + '</td><td>' + esc((ROTAS.rotas.find(r => r.id === c.rota) || {}).nome || c.rota) + '</td><td>' + esc((c.execucao || {}).status === 'aguardando_coleta' ? 'aguardando coleta' : (c.execucao || {}).status || '—') + '</td></tr>').join('');
-  fonteFigura('boxCompromissos', 'Fontes: as citadas em cada linha · execução: Portal da Transparência');
-  fonteFigura('boxSemDecretar', 'Fontes: as bases legais citadas em cada item');
+  fonteFigura('boxCompromissos', 'Fontes: as citadas em cada linha · execução: Portal da Transparência · ' + esc(ROTAS.corte || ''));
+  fonteFigura('boxSemDecretar', 'Fontes: as bases legais citadas em cada item · ' + esc(ROTAS.corte || ''));
   const financeData = [
   {label:'Segurança Hídrica', value:14217500000},
   {label:'Saúde', value:1335000000},
@@ -292,7 +292,7 @@ new Chart(document.getElementById('chartFinance'), {
 });
 
 
-  fonteFigura('boxFinance', 'Fonte: Plano federal El Niño 2026/2027 · valores anunciados');
+  fonteFigura('boxFinance', 'Fonte: Plano federal El Niño 2026/2027 · valores anunciados · ' + esc(ROTAS.corte || ''));
   // 8 · fontes e consultas
   fonteFigura('boxFontesMonit', 'Fontes: as listadas · verificadas em 25/08/2026');
   const cons = CONSULTAS.consultas || [];

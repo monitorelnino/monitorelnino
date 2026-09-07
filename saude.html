@@ -10,7 +10,7 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=e2a4c865">
+<link rel="stylesheet" href="assets/base.css?v=11317d8a">
 <script src="assets/mapas.js?v=8e6310d1"></script>
 <style>
   .prazos-barras{display:flex; flex-direction:column; gap:8px;}
@@ -55,6 +55,7 @@
     <div class="maps-grid">
       <div class="map-box" id="boxMonitor">
         <h3 class="map-card-h">Antecipação · prontidão sanitária estadual (instrumento × antecipação)</h3>
+        <p class="map-card-sub">Corte da edição · prontidão sanitária (0–100) por UF verificada · faixas do site</p>
         <svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil pela prontidão sanitária estadual (faixas) e UFs ainda não verificadas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legMonitor"></div>
         <details style="margin-top:8px;" data-alternativa="dados"><summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
@@ -63,11 +64,13 @@
       </div>
       <div class="chart-box" id="boxRespostaSanitaria">
         <h3 class="map-card-h">Resposta · emergências sanitárias no ciclo</h3>
+        <p class="map-card-sub">Desde 29/06/2026 · emergências sanitárias declaradas (ESPIN e decretos estaduais) · contagem</p>
         <div class="gauge-head" style="margin:8px 0 2px;"><span class="gnum" id="rsNum" style="color:var(--rust);">—</span><span class="gden">emergências localizadas em 2026</span></div>
         <div class="map-legend" id="legRespostaSanitaria"></div>
       </div>
       <div class="chart-box" id="boxMonitorBarras">
         <h3 class="map-card-h">Prontidão por estado verificado</h3>
+        <p class="map-card-sub">Corte da edição · prontidão sanitária por UF verificada · 0–100</p>
         <div id="monitorBarras" class="prazos-barras" style="margin:6px 0 4px;"></div>
         <div class="map-legend" id="legMonitorBarras"></div>
       </div>
@@ -86,11 +89,13 @@
     <div class="maps-grid">
       <div class="map-box" id="boxStatus">
         <h3 class="map-card-h">Status do instrumento estadual de saúde</h3>
+        <p class="map-card-sub">Corte da edição · status do plano estadual de saúde para o ciclo · escada da §9</p>
         <svg id="mapaStatus" role="img" aria-label="Mapa do Brasil pelo status do instrumento estadual de saúde para o ciclo" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legStatus"></div>
       </div>
       <div class="map-box" id="boxRiscoSan">
         <h3 class="map-card-h">Risco sanitário projetado (derivado)</h3>
+        <p class="map-card-sub">Ciclo 2026/2027 · risco sanitário projetado por UF (derivado dos boletins) · família</p>
         <svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil pela família de risco sanitário derivada do risco projetado" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legRiscoSan"></div>
       </div>
@@ -106,16 +111,19 @@
     <div class="maps-grid">
       <div class="chart-box wide" id="boxDesfSemanal">
         <h3 class="map-card-h">Casos notificados por semana · painel amostral · 2026 sobre o canal endêmico</h3>
-        <div class="canvas-wrap" style="height:280px;"><canvas id="cDesfSemanal" aria-label="Casos de dengue por semana epidemiológica de 2026 nos municípios do painel, com o canal endêmico (mediana, p75 e p90 de 2019–2025) e a faixa de nowcasting nas semanas incompletas"></canvas></div>
+        <p class="map-card-sub">SE 01–34/2026 (últimas 4 vazadas) · casos notificados de dengue · painel amostral · nº de casos</p>
+        <div class="canvas-wrap"><canvas id="cDesfSemanal" aria-label="Casos de dengue por semana epidemiológica de 2026 nos municípios do painel, com o canal endêmico (mediana, p75 e p90 de 2019–2025) e a faixa de nowcasting nas semanas incompletas"></canvas></div>
         <div class="map-legend" id="legDesfSemanal"></div>
       </div>
       <div class="chart-box" id="boxDesfAcum">
         <h3 class="map-card-h">Acumulado no ano · 2026 × 2025 × 2024 · painel amostral</h3>
-        <div class="canvas-wrap" style="height:240px;"><canvas id="cDesfAcum" aria-label="Escada do acumulado anual de casos no painel amostral, 2026, 2025 e 2024"></canvas></div>
+        <p class="map-card-sub">Anos 2024, 2025 e 2026 (parcial) · casos notificados de dengue acumulados · painel amostral</p>
+        <div class="canvas-wrap"><canvas id="cDesfAcum" aria-label="Escada do acumulado anual de casos no painel amostral, 2026, 2025 e 2024"></canvas></div>
         <div class="map-legend" id="legDesfAcum"></div>
       </div>
       <div class="map-box" id="boxDesfMapa">
         <h3 class="map-card-h">Nível de alerta por município · última semana consolidada</h3>
+        <p class="map-card-sub">Última SE consolidada · nível de alerta InfoDengue (1–4) por município do painel</p>
         <svg id="mapaDesf" role="img" aria-label="Mapa do Brasil com os municípios do painel amostral coloridos pelo nível de alerta do InfoDengue na última semana consolidada" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legDesfMapa"></div>
       </div>
@@ -128,16 +136,19 @@
     <div class="maps-grid">
       <div class="map-box" id="boxDengue">
         <h3 class="map-card-h">Dengue nas capitais · última semana epidemiológica</h3>
+        <p class="map-card-sub">Última SE disponível · nível de alerta InfoDengue nas 27 capitais · 1–4</p>
         <svg id="mapaDengue" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nas capitais" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legDengue"></div>
       </div>
       <div class="map-box" id="boxCalor">
         <h3 class="map-card-h">Avisos de calor vigentes (INMET)</h3>
+        <p class="map-card-sub">Consulta mais recente · avisos de calor vigentes do INMET por UF · contagem</p>
         <svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de avisos de calor do INMET" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legCalor"></div>
       </div>
       <div class="map-box" id="boxEmerg">
         <h3 class="map-card-h">Emergências sanitárias declaradas (resposta)</h3>
+        <p class="map-card-sub">Desde 29/06/2026 · emergências sanitárias declaradas · lista</p>
         <svg id="mapaEmerg" role="img" aria-label="Mapa do Brasil com emergências sanitárias declaradas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
         <div class="map-legend" id="legEmerg"></div>
       </div>
@@ -150,10 +161,12 @@
     <div class="charts-grid">
       <div class="chart-box wide" id="boxQuadrantes">
         <h3 class="map-card-h">Quadrantes</h3>
+        <p class="map-card-sub">Corte da edição · prontidão sanitária × risco sanitário projetado · 27 UFs</p>
         <div id="quadrantes" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:6px;"></div>
       </div>
       <div class="chart-box wide" id="boxSerie">
         <h3 class="map-card-h">Série semanal de dengue · 2026 × 2025 × 2024</h3>
+        <p class="map-card-sub">SE 01–52 · casos estimados de dengue, soma das 27 capitais · 2026 × 2025 × 2024 · nº de casos</p>
         <div class="canvas-wrap" id="serieWrap"><canvas id="serieDengue" aria-label="Série semanal de dengue — aguardando coleta"></canvas></div>
         <div class="map-legend" id="legSerie"></div>
       </div>
@@ -172,7 +185,7 @@
 </div>
 
 
-<script src="assets/js/saude.js?v=c901651c" defer></script>
+<script src="assets/js/saude.js?v=fb3217ef" defer></script>
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
   <div vw-plugin-wrapper>
