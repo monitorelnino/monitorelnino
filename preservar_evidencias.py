@@ -10,8 +10,89 @@ declarada (o portão verificar_evidencias.py cobra depois). É a ÚNICA edição
 programática permitida em municipios.json fora de aplicar_revisao.py, porque
 não altera nenhum campo de julgamento — só acrescenta prova.
 """
-import mimetypes, sys
-from coletores_base import buscar, preservar_evidencia, ler, gravar, registrar_lacuna
+import hashlib, io, mimetypes, re, sys, urllib.error
+from pathlib import Path
+from coletores_base import buscar, preservar_evidencia, ler, gravar, registrar_lacuna, log_busca, EVID
+
+LIMITE_PDF_COPIA = 5 * 1024 * 1024   # cópia do binário só até 5 MB; o TEXTO extraído é guardado sempre
+
+
+def extrair_texto_por_pagina(pdf_bytes: bytes) -> list:
+    """Lista de textos, um por página (pypdf; pdfplumber como reserva na página vazia). Função pura."""
+    paginas = []
+    try:
+        from pypdf import PdfReader
+        rd = PdfReader(io.BytesIO(pdf_bytes))
+        for pg in rd.pages:
+            try: paginas.append((pg.extract_text() or "").strip())
+            except Exception: paginas.append("")  # noqa: BLE001
+    except Exception:  # noqa: BLE001
+        return []
+    if paginas and sum(len(t) for t in paginas) < 200:
+        try:
+            import pdfplumber
+            with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+                paginas = [(pg.extract_text() or "").strip() for pg in pdf.pages]
+        except Exception:  # noqa: BLE001
+            pass
+    return paginas
+
+
+def gravar_texto(h: str, paginas: list) -> str:
+    """evidencias/<sha256>.txt com marcador de página; devolve o hash do texto."""
+    EVID.mkdir(exist_ok=True)
+    txt = "".join(f"\n=== página {i+1} ===\n{t}\n" for i, t in enumerate(paginas))
+    (EVID / f"{h}.txt").write_text(txt, encoding="utf-8")
+    return hashlib.sha256(txt.encode("utf-8")).hexdigest()
+
+
+def ler_pdfs(limite: int = 40) -> int:
+    """§10.1 peça 1: para todo item do índice com URL de PDF sem texto (e para registros com URL de PDF ainda sem hash),
+    baixa com o UA do Monitor, extrai o texto por página, grava evidencias/<sha>.txt e indexa (texto_arquivo, paginas, texto_hash).
+    Sítio que recusa (401/403) → decisão 'acesso recusado' no log (candidato a pedido de LAI)."""
+    idx = ler("evidencias.json", {"itens": {}}); itens = idx.setdefault("itens", {})
+    alvos = [(h, it) for h, it in itens.items() if str(it.get("url", "")).lower().split("?")[0].endswith(".pdf") and not it.get("texto_arquivo")]
+    # registros estaduais/municipais com URL .pdf ainda sem hash
+    for reg, fonte in ((ler("estados.json", {}).get("ufs") or [], "estados"), (ler("municipios.json", []) or [], "municipios")):
+        for r in reg:
+            u = str(r.get("url") or ""); 
+            if u.lower().split("?")[0].endswith(".pdf") and not r.get("hash_evidencia") and all(it.get("url") != u for it in itens.values()):
+                alvos.append((None, {"url": u, "origem": f"ler_pdfs/{fonte}", "_reg": r}))
+    lidos = recusados = falhas = 0
+    for h, it in alvos[:limite]:
+        u = it["url"]
+        try:
+            bruto = buscar(u, timeout=90)
+        except urllib.error.HTTPError as e:
+            if e.code in (401, 403):
+                recusados += 1; log_busca("site_municipal", 2, [u], "acesso recusado", resultados=f"HTTP {e.code} ao ler PDF — candidato a pedido de LAI")
+            else:
+                falhas += 1; registrar_lacuna(f"leitura de PDF {u[:60]}", f"HTTP {e.code}", canal="DOM", camada=2, strings=[u])
+            continue
+        except Exception as e:  # noqa: BLE001
+            falhas += 1; registrar_lacuna(f"leitura de PDF {u[:60]}", type(e).__name__, canal="DOM", camada=2, strings=[u]); continue
+        if bruto[:4] != b"%PDF":
+            falhas += 1; registrar_lacuna(f"leitura de PDF {u[:60]}", "resposta não é PDF", canal="DOM", camada=2, strings=[u]); continue
+        h_novo = hashlib.sha256(bruto).hexdigest()
+        if h is None:
+            h = preservar_evidencia(bruto, u, "pdf", it["origem"]); it = itens.get(h, it)
+            if it.get("_reg") is not None: it["_reg"]["hash_evidencia"] = h
+        elif h_novo != h:
+            registrar_lacuna(f"leitura de PDF {u[:60]}", f"documento mudou desde o hash registrado ({h[:12]}… → {h_novo[:12]}…)", canal="DOM", camada=2, strings=[u])
+        paginas = extrair_texto_por_pagina(bruto)
+        if not paginas:
+            falhas += 1; registrar_lacuna(f"leitura de PDF {u[:60]}", "PDF sem texto extraível (imagem?)", canal="DOM", camada=2, strings=[u]); continue
+        th = gravar_texto(h, paginas)
+        item = itens.setdefault(h, {"url": u, "origem": it.get("origem"), "preservado_em": None, "tamanho": len(bruto), "arquivo": None, "wayback": None})
+        item.update({"texto_arquivo": f"evidencias/{h}.txt", "paginas": len(paginas), "texto_hash": th, "lido_em": __import__("datetime").date.today().isoformat(), "caracteres": sum(len(t) for t in paginas)})
+        if len(bruto) <= LIMITE_PDF_COPIA and not item.get("arquivo"):
+            (EVID / f"{h}.pdf").write_bytes(bruto); item["arquivo"] = f"evidencias/{h}.pdf"
+        lidos += 1
+    for it in itens.values(): it.pop("_reg", None)
+    gravar("evidencias.json", idx)
+    print(f"leitura de PDFs: {lidos} lido(s) com texto, {recusados} acesso recusado (LAI), {falhas} falha(s); {len(alvos)} alvo(s) na fila")
+    return 0
+
 
 PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estadual"}
 
@@ -74,4 +155,4 @@ def main(limite: int = 200) -> int:
 
 if __name__ == "__main__":
     lim = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else 200
-    sys.exit(reconferir(lim) if "--reconferir" in sys.argv else main(lim))
+    sys.exit(ler_pdfs(lim) if "--ler" in sys.argv else reconferir(lim) if "--reconferir" in sys.argv else main(lim))

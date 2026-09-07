@@ -62,6 +62,15 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
         # (n) §10 saude_no_plano: categoria só com documento, hash e página; vocabulário
         _np = json.load(open(RAIZ / "data" / "saude_no_plano.json", encoding="utf-8"))
         for l in _np.get("leituras", []):
+            if not (l.get("revisado_por") and l.get("lido_em")): erros.append(f"(n) saude_no_plano confirmada sem revisado_por/data: {l.get('municipio') or l.get('uf')}")
+        _auto_p = RAIZ / "data" / "saude_no_plano_auto.json"
+        if _auto_p.exists():
+            for h, a in (json.load(open(_auto_p, encoding="utf-8")).get("itens") or {}).items():
+                if a.get("degrau") == 4: erros.append(f"(n) leitura automática com degrau 4 (proibido): {h[:12]}")
+                if a.get("degrau", 0) > 0 and not a.get("pagina_citada"): erros.append(f"(n) leitura automática sem página citada: {h[:12]}")
+                if a.get("status") != "leitura automática": erros.append(f"(n) pré-classificação sem o rótulo 'leitura automática': {h[:12]}")
+        if re.search(r"saude_no_plano_auto|saude_no_plano_revisar", motor): erros.append("(n) recalcular_mare.py referencia a leitura automática (proibido)")
+        for l in _np.get("leituras", []):
             if l.get("categoria") not in range(0, 6): erros.append(f"(n) saude_no_plano: categoria fora de 0–5 em {l.get('municipio') or l.get('uf')}")
             if not (l.get("hash") and l.get("paginas") and l.get("documento")): erros.append(f"(n) saude_no_plano: leitura sem hash/página/documento em {l.get('municipio') or l.get('uf')}")
     except FileNotFoundError:
