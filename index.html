@@ -111,6 +111,12 @@
   .mare-duas-metades{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px; align-items:stretch;}
   .contador-zone{display:flex; flex-direction:column; gap:6px; border-left:1px solid var(--line); padding-left:22px;}
   .contador-zone .gnum{color:var(--rust);}
+  .contador-zone .resp-fill{background:var(--rust); background-size:auto; box-shadow:none;}
+  .contador-zone .resp-fill::after, .contador-zone .resp-fill::before{display:none;}
+  .contador-zone .gauge-avg{opacity:.9;}
+  .contador-zone .gfaixa-badge .gfaixa-pill{background:var(--rust);}
+  .contador-zone .fonte-figura{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); line-height:1.4; margin-top:6px;}
+  .contador-zone .gauge-ends span{max-width:100%;}
   .contador-zone svg{width:100%; height:44px; display:block; margin-top:6px;}
   @media (max-width:640px){ .contador-zone{border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:14px;} }
   .tile .tile-face{display:block; text-align:left; margin-top:6px; border-top:1px solid var(--line); padding-top:4px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:400; font-size:12px; line-height:1.35; color:var(--muted);}
@@ -348,7 +354,7 @@
   <header class="masthead">
     <div class="mast-top">
       <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
-      <nav class="mainnav" aria-label="Páginas do site"><span class="ativa" aria-current="page">O monitor</span><b class="nav-grupo">O ciclo</b><a href="sinais-de-risco.html">Sinais</a><a href="calendario-eleitoral.html">Calendário</a><b class="nav-grupo">Antecipação e resposta</b><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><b class="nav-grupo">O dinheiro</b><a href="financiamento.html">Financiamento</a><b class="nav-grupo">Para você</b><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="imprensa.html">Imprensa</a><a href="pesquisadores.html">Pesquisadores</a><a class="btn-nav" href="envie-dados.html">Enviar dados</a></nav>
+      <nav class="mainnav" aria-label="Páginas do site"><span class="ativa" aria-current="page">O monitor</span><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Sinais</a><a href="calendario-eleitoral.html">Calendário</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="imprensa.html">Imprensa</a><a href="pesquisadores.html">Pesquisadores</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Enviar dados</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente</p>
     <h1 class="site-title">Monitor <em>El Niño</em> Brasil</h1>
@@ -392,12 +398,24 @@
     </div>
     <div class="contador-zone" id="contadorResposta" role="group" aria-label="Resposta: municípios sob decreto de emergência no ciclo">
       <div class="gauge-head">
-        <span class="gnum" id="respNum">—</span><span class="gden" id="respDen">municípios</span>
-        <span class="glabel">Resposta · o que foi decretado depois<br><span id="respLinha">—</span></span>
+        <span class="gnum" id="respNum">—</span><span class="gden" id="respDen">/ 5.571</span>
+        <span class="gfaixa-badge" id="respBadge"></span>
+        <span class="glabel">Resposta · o que foi<br>decretado depois<br>municípios sob decreto · corte <span id="respCorte">—</span></span>
       </div>
-      <svg id="respSerie" viewBox="0 0 320 44" preserveAspectRatio="none" role="img" aria-label="Municípios com primeiro decreto por semana desde 29/06; faixa do defeso sombreada"></svg>
-      <div class="gauge-ends"><span id="respIni">29/06</span><span id="respFim">—</span></div>
-      <div class="map-legend" id="legResp"></div>
+      <div class="gauge-track resp-track" role="img" aria-label="Barra: municípios sob decreto em relação aos 5.571; traço = fração da população">
+        <div class="gauge-fill resp-fill" id="respFill" style="width:0%"></div>
+        <span class="gtick" style="left:10%"></span>
+        <span class="gtick" style="left:25%"></span>
+        <span class="gtick" style="left:50%"></span>
+        <span class="gauge-avg" id="respPopTick" style="left:0%" title="fração da população sob decreto"></span>
+      </div>
+      <div class="gauge-tick-labels">
+        <span style="left:10%">10%<b>dos municípios</b></span>
+        <span style="left:25%">25%</span>
+        <span style="left:50%">50%</span>
+      </div>
+      <div class="gauge-ends"><span>0 · nenhum decreto</span><span>5.571</span></div>
+      <div class="gauge-ends" style="margin-top:2px;"><span id="respLinha">—</span></div>
       <div class="fonte-figura" id="respC18">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>).</div>
       <div class="fonte-figura" id="respFonte"></div>
     </div>
