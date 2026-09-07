@@ -40,7 +40,7 @@ def montar_html_instrumentado():
              "    POP_UF[m.uf] = (POP_UF[m.uf] || 0) + (POP_CENSO[c] || 0);\n  });\n"
              "  Object.values(MUN_REF).forEach(a => a.sort((x,y) => x.localeCompare(y)));\n  __init();\n}")
     html = html[:i] + bloco + html[j:]
-    jspdf = (RAIZ / "node_modules/jspdf/dist/jspdf.umd.min.js").read_text(encoding="utf-8")
+    jspdf = (RAIZ / "assets/vendor/jspdf.umd.min.js").read_text(encoding="utf-8")   # v3.1 §14.6: vendor local
     html = re.sub(r'<script src="https://cdnjs\.cloudflare\.com/ajax/libs/jspdf/[^"]*"[^>]*>\s*</script>',
                   lambda _: f"<script>{jspdf}</script>", html, flags=re.S)
     html = html.replace("function __init(){\n", "function __init(){\nwindow.__gerar = (uf, m) => gerarRelatorioCidadao(uf, m);\n", 1)
