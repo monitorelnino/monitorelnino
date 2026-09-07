@@ -48,6 +48,22 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                 pi = (m.get("instrumento") or {}).get("pontos"); pa = (m.get("antecipacao") or {}).get("pontos")
                 if pi is None or pa is None or abs(m["prontidao"] - round(0.5 * pi + 0.5 * pa, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos sub-elementos")
         if "monitor_saude" in motor: erros.append("(m) recalcular_mare.py referencia monitor_saude (proibido)")
+        # (d) §8 desfechos: nunca lidos pelo motor; SE incompletas vazadas; ressalva de não-atribuição nas superfícies
+        if re.search(r"saude_desfechos|saude_no_plano", motor): erros.append("(d) recalcular_mare.py referencia desfechos/saude_no_plano (proibido)")
+        _sd = RAIZ / "data" / "saude_desfechos" / "serie_painel.json"
+        if _sd.exists():
+            _sp = json.load(open(_sd, encoding="utf-8")); _cp = json.load(open(RAIZ / "data" / "saude_desfechos" / "completude.json", encoding="utf-8"))
+            for cod, m in list((_sp.get("municipios") or {}).items())[:400]:
+                vaz = set((_cp.get("municipios") or {}).get(cod, {}).get("se_vazadas") or [])
+                for k in vaz:
+                    if (m.get("semanas_2026") or {}).get(k, {}).get("casos") is not None: erros.append(f"(d) {cod}: SE incompleta {k} preenchida na série consolidada")
+            if "não atribui casos ao El Niño" not in _sp.get("_governanca", ""): erros.append("(d) serie_painel sem a ressalva de não-atribuição")
+            if "não atribui casos ao El Niño" not in html: erros.append("(d) saude.html sem a ressalva de não-atribuição nas figuras de desfecho")
+        # (n) §10 saude_no_plano: categoria só com documento, hash e página; vocabulário
+        _np = json.load(open(RAIZ / "data" / "saude_no_plano.json", encoding="utf-8"))
+        for l in _np.get("leituras", []):
+            if l.get("categoria") not in range(0, 6): erros.append(f"(n) saude_no_plano: categoria fora de 0–5 em {l.get('municipio') or l.get('uf')}")
+            if not (l.get("hash") and l.get("paginas") and l.get("documento")): erros.append(f"(n) saude_no_plano: leitura sem hash/página/documento em {l.get('municipio') or l.get('uf')}")
     except FileNotFoundError:
         erros.append("(m) data/monitor_saude.json ausente")
         if u.get("consist") not in CONSIST: erros.append(f"(c) consist fora do vocabulário em {uf}: {u.get('consist')}")
