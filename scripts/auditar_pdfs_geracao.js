@@ -11,7 +11,7 @@ const RUIM = [/undefined/, /\bnull\b/, /\bNaN\b/, /— — \(—\)/, /\[object/,
 const foraWinAnsi = s => [...s].filter(c => { const k = c.codePointAt(0); return k > 255 && !"–—‘’“”…•€".includes(c); });
 (async () => {
   const b = await chromium.launch(); const page = await (await b.newContext()).newPage();
-  const jsErr = []; page.on('pageerror', e => jsErr.push(e.message)); page.on('dialog', d => { jsErr.push('ALERT ' + d.message()); d.dismiss(); });
+  const jsErr = []; page.on('pageerror', e => { jsErr.push(e.message); console.log('ERRO JS DA PÁGINA:', String(e.stack || e.message).split('\n').slice(0, 3).join(' | ')); }); page.on('dialog', d => { jsErr.push('ALERT ' + d.message()); d.dismiss(); });
   await page.goto('file:///tmp/index_pdf_test.html', { waitUntil: 'networkidle', timeout: 20000 }); await page.waitForTimeout(1200);
   const problemas = []; let n = 0; const paginas = {};
   const checa = (rot, out, titulo) => {
