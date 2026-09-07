@@ -117,6 +117,7 @@ def cruzar(reg, estados, corte):
             continue
         item["vencimento"] = venc.strftime("%d/%m/%Y")
         item["data_base"] = m.get("data_base")   # 05/09/2026: início do prazo (a barra do site esvazia de data_base a vencimento)
+        item["o_que_se_espera"] = m.get("o_que_se_espera")   # 07/09/2026: o que acontece no vencimento (texto curado)
         if m["prazo"]["tipo"] == "dias_uteis":
             item["limitacao"] = m["prazo"].get("limitacao_declarada", "dias úteis sem feriados")
         destinos = UFS if m["destinatarios"] == ["*UF"] else \
