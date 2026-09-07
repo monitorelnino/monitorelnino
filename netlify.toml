@@ -105,3 +105,13 @@
   from = "/mapas-e-graficos"
   to = "/defesa-civil.html"
   status = 301
+
+# v3.1 (07/09/2026): "Para gestores" fundiu-se em "Enviar dados" (condensação pedida pela editoria)
+[[redirects]]
+  from = "/para-gestores.html"
+  to = "/envie-dados.html#gestor"
+  status = 301
+[[redirects]]
+  from = "/para-gestores"
+  to = "/envie-dados.html#gestor"
+  status = 301

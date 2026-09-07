@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
 <link rel="stylesheet" href="assets/base.css?v=a00ed5c6">
 <style>
-/* --- para-gestores.html: estilos próprios desta página (o compartilhado está na folha base) --- */
+/* --- pesquisadores.html: estilos próprios desta página (o compartilhado está na folha base) --- */
   *{box-sizing:border-box;}
   ul{margin:4px 0 12px; padding-left:20px;}
   li{margin:0 0 6px; line-height:1.55;}
@@ -72,7 +72,7 @@
   <header class="masthead masthead--mini">
     <div class="mast-top">
       <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
-      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="saude.html">Saúde</a><a href="defesa-civil.html">Defesa civil</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><a href="para-gestores.html">Gestores</a><a href="imprensa.html">Imprensa</a><span class="ativa" aria-current="page">Pesquisadores</span><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Enviar dados</a></nav>
+      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">+ Enviar dados</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Pesquisadores</span><a href="imprensa.html">Imprensa</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     <p class="site-title">Monitor <em>El Niño</em> Brasil</p>
@@ -81,32 +81,36 @@
   </header>
 <main id="conteudo">
   <h1>Pesquisadores</h1>
-  <p class="hint">Tudo o que prova o resto: metodologia, dados abertos, log de verificação, fontes, feeds, selos, código. Sem gráficos — é a página de provas.</p>
+  <p class="hint" style="margin:0 0 18px;">O essencial primeiro: metodologia e dados abertos. Log de verificação, fontes por município, painel amostral e código ficam abaixo, sob demanda.</p>
   <div class="panel" id="metodologia">
-    <h2>1 · Metodologia e versões</h2>
+    <h2>Metodologia e versões</h2>
     <ul class="fontes-list">
       <li><a href="METODOLOGIA.pdf">Documento Técnico-Metodológico (PDF)</a> · <a href="METODOLOGIA.md">versão em Markdown</a> · <a href="MARE_Indice_Documentacao.pdf">Documentação do índice MARÉ (cálculo, escolhas normativas, auditoria de robustez)</a></li>
       <li><a href="CHANGELOG.md">Histórico de versões e erratas (CHANGELOG)</a> · corte <strong id="pqCorte">—</strong> · atualizado em <strong id="pqAtualizado">—</strong></li>
     </ul>
   </div>
   <div class="panel" id="dados-abertos">
-    <h2>2 · Dados abertos, feeds e selos</h2>
+    <h2>Dados abertos, feeds e selos</h2>
     <ul class="fontes-list">
       <li><a href="dados-abertos/datapackage.json">datapackage.json</a> (esquema Frictionless, dicionário de colunas) · <a href="dados-abertos/indice.csv">indice.csv</a> · <a href="dados-abertos/estados.csv">estados.csv</a> · <a href="dados-abertos/municipios.csv">municipios.csv</a> · <a href="data/indice.json">JSON brutos em data/</a> · contador de resposta em <a href="data/resposta/por_uf.json">data/resposta/</a></li>
       <li><a href="feeds/brasil.xml" type="application/atom+xml">Feed nacional (Atom)</a> · um por estado em <code>feeds/UF.xml</code> · <a href="feeds/saude.xml">feed de saúde</a></li>
       <li><a href="selos/README.md">Selos por estado</a> para embutir · <a href="docs/MANIFEST_SHA256.txt">manifesto SHA-256 dos arquivos publicados</a></li>
     </ul>
   </div>
-  <div class="panel" id="log">
-    <h2>3 · Log de verificação e cobertura</h2>
+  <details class="acc">
+  <summary class="acc-summary">Log de verificação: totais, por estado e por canal</summary>
+<div class="panel" id="log">
+    <h2>Log de verificação e cobertura</h2>
     <ul class="fontes-list">
       <li><a href="data/log_buscas.json">log_buscas.json</a> — <strong id="pqLog">—</strong> execuções registradas (data, canal, camada, string, decisão, executor); resumo em <a href="data/verificacao_resumo.json">verificacao_resumo.json</a> e <a href="data/verificacao_municipal.json">verificacao_municipal.json</a> (5.571 municípios × nível de verificação)</li>
       <li>Cobertura do Querido Diário por município (diário indexado ou não): <a href="data/cobertura_qd.json">cobertura_qd.json</a> — <strong id="pqCobertura">—</strong></li>
       <li>Fontes oficiais que responderam com página de período eleitoral: <a href="data/calendario/fontes_suspensas.json">fontes_suspensas.json</a> — <strong id="pqSuspensas">—</strong></li>
     </ul>
   </div>
-  <div class="panel" id="fontes" style="margin-bottom:24px;">
-    <h2>5 · Registros e fontes dos dados</h2>
+  <details class="acc">
+  <summary class="acc-summary">Registros e fontes dos dados</summary>
+<div class="panel" id="fontes" style="margin-bottom:24px;">
+    <h2>Registros e fontes dos dados</h2>
     <p class="hint">Todas as fontes utilizadas na coleta, em dois níveis: <strong>links diretos</strong> apenas para URLs citadas e verificadas na pesquisa; <strong>portais institucionais</strong> (DOU, Planalto, IBGE, gov.br/mdr) como porta de entrada oficial quando o ato tem número/data mas não URL própria verificada. Itens sem link têm a fonte nominal na tabela de municípios; regra metodológica: nenhum link sem verificação.</p>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:22px;">
       <div>
@@ -185,23 +189,33 @@
     
     </details>
   </div>
+</details>
   <div class="panel" id="log-detalhe">
-    <h2>3b · Log por estado, canal e nível</h2>
+    <h2>Log por estado, canal e nível</h2>
     <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblLog"><thead><tr><th>UF</th><th>Nacional</th><th>Estadual</th><th>Municipal parcial</th><th>Municipal completo</th><th>Não verificado</th></tr></thead><tbody></tbody></table></div>
     <p class="hint" style="margin:8px 0 0;">Por canal, na última rodada: <span id="pqCanais">—</span></p>
   </div>
-  <div class="panel" id="painel-amostral">
-    <h2>4 · Painel amostral</h2>
+</details>
+  <details class="acc">
+  <summary class="acc-summary">Painel amostral</summary>
+<div class="panel" id="painel-amostral">
+    <h2>Painel amostral</h2>
     <p class="hint" style="margin:0;">Universo dos 5.571 municípios, estratos por região e porte, semente registrada; lista, fichas e agregados em <a href="data/painel/lista.json">lista.json</a>, <a href="data/painel/fichas.json">fichas.json</a> e <a href="data/painel/agregados.json">agregados.json</a> e na seção 5 de <a href="financiamento.html#painel">Financiamento</a>.</p>
   </div>
+</details>
+<details class="acc">
+  <summary class="acc-summary">Fontes dos sinais de risco</summary>
 <div class="panel" id="fontes-sinais-painel">
-    <h2 id="fontes-sinais">6 · Fontes dos sinais de risco</h2>
+    <h2 id="fontes-sinais">Fontes dos sinais de risco</h2>
     <p class="hint">Organizadas em três camadas: o <strong>ciclo</strong> (o que se projeta para o período), o <strong>observado</strong> (o que os sistemas de monitoramento registram agora) e o <strong>ENOS</strong> (o estado do fenômeno no Pacífico). Cada linha diz o que a fonte informa, quando foi consultada e para onde ir conferir.</p>
     <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="max-height:none;"><table class="mun-table" id="tblFontes"><thead><tr><th>Fonte</th><th>Órgão</th><th>O que informa</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
     <p class="note" style="margin-top:12px;">Imprensa e agregadores de terceiros não aparecem nesta tabela: no protocolo do Monitor eles servem para descobrir um documento, nunca para registrá-lo.</p>
   </div>
+</details>
+<details class="acc">
+  <summary class="acc-summary">Fontes e consultas do financiamento</summary>
 <div class="panel" id="fontes-fin-painel">
-    <h2 id="fontes-financiamento">7 · Fontes e consultas do financiamento</h2>
+    <h2 id="fontes-financiamento">Fontes e consultas do financiamento</h2>
     <p class="hint">Toda figura alimentada por API tem a consulta reproduzível registrada: endpoint, parâmetros, data, hash da resposta e número de itens. CSV correspondente nos dados abertos.</p>
     <div class="charts-grid">
       <div class="chart-box" id="boxFontesMonit">
@@ -214,8 +228,11 @@
       </div>
     </div>
   </div>
+</details>
+<details class="acc">
+  <summary class="acc-summary">Como usar o site e os dados</summary>
 <div class="panel" id="usar">
-    <h2 id="como-usar">8 · Como usar o site e os dados</h2>
+    <h2 id="como-usar">Como usar o site e os dados</h2>
     <div class="kit-grid">
       <li><strong>Consulta rápida.</strong> Na página inicial, escolha o estado no mapa ou digite sua cidade em "Encontre sua cidade": o cartão diz o que foi localizado, com documento, data e fonte, e o que ainda não foi verificado. O botão de PDF gera um relatório do estado ou da cidade.</li>
       <li><strong>Dados abertos.</strong> Pasta <a href="dados-abertos/">dados-abertos/</a>: índice por estado, instrumentos estaduais, registros municipais, atos de resposta, histórico de mudanças, verificação municipal (5.571), painel amostral e saúde — em CSV com dicionário (datapackage.json). Tudo o que está no site sai daqui.</li>
@@ -225,14 +242,18 @@
       <li><strong>Cadência.</strong> Atualização automática semanal (segundas, 6h de Brasília), com uma semana de atualização diária logo após cada edição. Não é tempo real: cada figura mostra a data da consulta à fonte.</li>
     </div>
   </div>
-  <div class="panel" id="codigo">
-    <h2>9 · Código e replicação</h2>
+</details>
+  <details class="acc">
+  <summary class="acc-summary">Código e replicação</summary>
+<div class="panel" id="codigo">
+    <h2>Código e replicação</h2>
     <ul class="fontes-list">
       <li>Repositório público: <a href="https://github.com/monitorelnino/monitorelnino" target="_blank" rel="noopener">github.com/monitorelnino/monitorelnino</a> · <a href="docs/PROTOCOLO_ATUALIZACAO.md">protocolo de atualização</a> · <a href="docs/GUIA_DO_EDITOR.md">guia do editor</a></li>
       <li>Replicar o índice: <code>python3 recalcular_mare.py --write</code>; provar: <code>python3 recalcular_mare.py --check</code>; verificações: <code>bash scripts/verificar_derivados.sh</code></li>
       <li>Pedidos de acesso à informação: só contagens agregadas serão publicadas aqui, se a editoria confirmar; textos, protocolos e destinatários não vão ao site.</li>
     </ul>
   </div>
+</details>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -253,6 +274,7 @@
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
 <script src="assets/mapas.js?v=a30a521e" defer></script>
+<script src="assets/colunas.js" defer></script>
 <script src="assets/js/pesquisadores.js?v=eb94256f" defer></script>
 </body>
 </html>
