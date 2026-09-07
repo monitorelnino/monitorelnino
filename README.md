@@ -54,7 +54,6 @@ monitor-el-nino/
 ├── proteja-se.html            ← orientações oficiais, por risco projetado
 ├── envie-dados.html           ← formulário público de contribuição
 ├── obrigado.html              ← confirmação da contribuição
-├── para-gestores.html         ← checklist de publicação para prefeituras
 ├── data/                      ← ÚNICA fonte de verdade do site (28 arquivos)
 │   ├── estados.json           ← 27 UFs: status, órgão, documento, capital
 │   ├── municipios.json        ← registros municipais verificados (265)
