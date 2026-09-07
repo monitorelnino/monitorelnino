@@ -32,6 +32,17 @@ from pathlib import Path
 from coletores_base import ler, gravar, rodar_autoteste
 
 RAIZ = Path(__file__).resolve().parent
+
+def _hoje():
+    """Data determinística = 'atualizado_em' de data/meta.json (a última rodada que gravou dados), para que a
+    cadeia de derivados reproduza o arquivo byte a byte em qualquer dia; 'hoje' só se o meta não existir."""
+    import datetime as _dt, json as _js, pathlib as _pl
+    try:
+        a = _js.load(open(_pl.Path(__file__).resolve().parent / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
+        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
+    except Exception:  # noqa: BLE001
+        return _dt._hoje()
+
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
 PONTOS_STATUS = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
 PESO_INSTRUMENTO = 0.5   # pesos iguais, como no §30
@@ -98,7 +109,7 @@ def gerar() -> int:
                         "(peso zero no índice; nunca lida por recalcular_mare.py). Um componente pontuado (instrumento "
                         "operacional × antecipação, pesos iguais) e duas leituras de contexto (risco observado e projetado). "
                         "UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31."),
-        "versao": "0.1", "gerado_em": date.today().strftime("%d/%m/%Y"), "corte": su.get("corte"),
+        "versao": "0.1", "gerado_em": _hoje().strftime("%d/%m/%Y"), "corte": su.get("corte"),
         "metodo": {"pesos": {"instrumento": PESO_INSTRUMENTO, "antecipacao": 1 - PESO_INSTRUMENTO}, "escada": PONTOS_STATUS,
                    "antecipacao": {"2026/2027 antes de 01/10/2026": 100, "2025/2026": 45, "anterior": 20, "sem instrumento": 0},
                    "faixas": {"estágio inicial": "0–25", "em construção": "25–50", "consolidado": "50–70", "avançado": "70–100"}},

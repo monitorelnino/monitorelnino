@@ -23,6 +23,17 @@ from pathlib import Path
 from coletores_base import ler, gravar, rodar_autoteste
 
 RAIZ = Path(__file__).resolve().parent
+
+def _hoje():
+    """Data determinística = 'atualizado_em' de data/meta.json (a última rodada que gravou dados), para que a
+    cadeia de derivados reproduza o arquivo byte a byte em qualquer dia; 'hoje' só se o meta não existir."""
+    import datetime as _dt, json as _js, pathlib as _pl
+    try:
+        a = _js.load(open(_pl.Path(__file__).resolve().parent / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
+        return _dt.datetime.strptime(a, "%d/%m/%Y").date()
+    except Exception:  # noqa: BLE001
+        return _dt._hoje()
+
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
 INICIO_CICLO = date(2026, 6, 29)     # Boletim nº 1 do Painel El Niño
 DEFESO = (date(2026, 7, 4), date(2026, 10, 25))
@@ -96,7 +107,7 @@ def serie_semanal(municipios: dict) -> list:
     for m in municipios.values():
         d = data_br(m["primeiro_decreto"]) if m["primeiro_decreto"] else None
         if d and d >= INICIO_CICLO: cont[semana_de(d)] += 1
-    out = []; d = INICIO_CICLO - timedelta(days=INICIO_CICLO.weekday()); hoje = date.today(); acum = 0
+    out = []; d = INICIO_CICLO - timedelta(days=INICIO_CICLO.weekday()); hoje = _hoje(); acum = 0
     while d <= hoje:
         n = cont.get(d.isoformat(), 0); acum += n
         out.append({"semana": d.isoformat(), "municipios": n, "acumulado": acum, "defeso": DEFESO[0] <= d <= DEFESO[1]})
@@ -117,7 +128,7 @@ def gerar() -> int:
     indice = ler("indice.json", {}) or {}
     mun = consolidar_municipios(atos["eventos"], verificacao)
     por = agregar_uf(mun, pop); serie = serie_semanal(mun); quad = quadrantes(por, indice)
-    hoje = date.today().strftime("%d/%m/%Y")
+    hoje = _hoje().strftime("%d/%m/%Y")
     n_total = sum(v["n_municipios"] for v in por.values()); pop_total = sum(v["pop_uf"] for v in por.values()); pop_dec = sum(v["pop_sob_decreto"] for v in por.values())
     datas = [data_br(m["primeiro_decreto"]) for m in mun.values() if m["primeiro_decreto"] and data_br(m["primeiro_decreto"]) >= INICIO_CICLO]
     gov = ("Contador de RESPOSTA (v3.1 §3; Metodologia §32): contagens, frações e datas do que foi decretado depois. Sem fórmula, "
