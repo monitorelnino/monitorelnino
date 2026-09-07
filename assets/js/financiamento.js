@@ -12,6 +12,26 @@ function renderContadores(){
   fonteFigura('contadores', 'Fontes: TransfereGov (r5), atos estaduais (fundo a fundo preventivo), Censo 2022 · ' + esc((CONTADORES || {}).gerado_em || '') + ' · sem escala nem juízo');
 }
 
+// ===== 1 · Onde o pagamento foi feito: valor pago por UF da unidade gestora (mps_2026.json → destino) =====
+function renderMpsUf(ctx){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const mps = (MPS && MPS.mps) || []; const por = {}; let br = 0, tot = 0;
+  mps.forEach(mp => { const d = (mp.destino && mp.destino.por_uf_pago) || {}; Object.entries(d).forEach(([uf, v]) => { if (uf === 'BR') br += v; else por[uf] = (por[uf] || 0) + v; tot += v; }); });
+  const brl = v => 'R$ ' + (v >= 1e6 ? (v / 1e6).toFixed(1).replace('.', ',') + ' mi' : (v / 1e3).toFixed(0) + ' mil');
+  const max = Math.max(1, ...Object.values(por));
+  const cor = v => v == null ? MonitorMapas.NEUTRA : (v / max > .5 ? MonitorMapas.cor('argila') : v / max > .2 ? MonitorMapas.cor('ambar') : v / max > .05 ? MonitorMapas.cor('mineral') : MonitorMapas.cor('sem-dado'));
+  const svgEl = document.getElementById('mapaMpsUf');
+  if (svgEl) MonitorMapas.ufs(ctx, 'mapaMpsUf', uf => cor(por[uf]), uf => por[uf] != null ? '<em>' + brl(por[uf]) + '</em> pagos por unidade gestora sediada na UF' : '<em>sem pagamento por unidade gestora na UF</em>');
+  MonitorMapas.legenda('legMpsUf', [{cor: MonitorMapas.cor('argila'), rotulo: 'acima de 50% do maior valor'}, {cor: MonitorMapas.cor('ambar'), rotulo: '20–50%'}, {cor: MonitorMapas.cor('mineral'), rotulo: '5–20%'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'abaixo de 5% · sem pagamento'}]);
+  fonteFigura('boxMpsUf', 'Fonte: Portal da Transparência, execução mensal · UF da unidade gestora · ' + esc((MPS || {}).gerado_em || ''));
+  const bx = document.getElementById('mpsUfBarras');
+  if (bx) { const ufs = Object.entries(por).sort((a, b) => b[1] - a[1]).slice(0, 12);
+    bx.innerHTML = ufs.map(([uf, v]) => '<div class="msb" role="group" aria-label="' + esc(uf) + ': ' + esc(brl(v)) + '"><b>' + esc(uf) + '</b><div class="trilho"><div class="barra" style="width:' + (100 * v / max).toFixed(1) + '%; background:' + cor(v) + '"></div></div><span>' + esc(brl(v)) + '</span></div>').join('')
+      + '<div class="msb" role="group" aria-label="BR sedes nacionais: ' + esc(brl(br)) + '"><b>BR</b><div class="trilho"><div class="barra" style="width:100%; background:' + MonitorMapas.cor('linha') + '"></div></div><span>' + esc(brl(br)) + '</span></div>'; }
+  MonitorMapas.legenda('legMpsUfBarras', [{cor: MonitorMapas.cor('linha'), rotulo: 'BR = sedes nacionais: ' + (tot ? Math.round(100 * br / tot) : 0) + '% do pago'}]);
+  fonteFigura('boxMpsUfBarras', 'Fonte: Portal da Transparência, execução mensal · ' + esc((MPS || {}).gerado_em || ''));
+}
+
 // ===== 0 · Rota do dinheiro das MPs (05/09/2026): barras de prazo + fluxo MP → órgão → uso =====
 function renderRotaMPs(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -103,6 +123,7 @@ function __init(){
   MonitorMapas.padraoGraficos(window.Chart);
   document.getElementById('corteFin').textContent = ROTAS.corte || '—';
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
+  renderMpsUf(ctx);   // 07/09/2026: seção 1 — onde o pagamento das MPs foi feito (precisa do ctx do mapa)
   function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){ const svg = MonitorMapas.ufs(ctx, svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itens); return svg; }
   // 1 · rede do dinheiro (decisão de design de 03/09/2026: rede em vez de cartões; cartões ficam em texto dobrável)
   (function(){
@@ -275,7 +296,6 @@ new Chart(document.getElementById('chartFinance'), {
   // 8 · fontes e consultas
   fonteFigura('boxFontesMonit', 'Fontes: as listadas · verificadas em 25/08/2026');
   const cons = CONSULTAS.consultas || [];
-  if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
   fonteFigura('boxConsultas', cons.length ? 'Fonte: Monitor El Niño Brasil' : 'Fonte: Monitor El Niño Brasil · sem consulta até o corte');
 }
 __load().catch(err => { const m = document.getElementById('subFin'); if (m) m.insertAdjacentHTML('afterend', '<p class="note" style="color:var(--rust)">Erro ao carregar os dados: ' + esc(err.message) + '</p>'); });

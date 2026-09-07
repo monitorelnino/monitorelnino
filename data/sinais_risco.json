@@ -158,12 +158,12 @@
    "nome": "Prognóstico climático trimestral",
    "orgao": "INMET/CPTEC-INPE",
    "camada": "enos",
-   "url_publica": "https://portal.inmet.gov.br/boletinsagro",
+   "url_publica": "https://portal.inmet.gov.br/uploads/notastecnicas/Painel-El-Ni%C3%B1o-3-Edi%C3%A7%C3%A3o.pdf",
    "papel": "A leitura brasileira da mesma previsão, em português.",
-   "status": "aguardando_primeira_coleta",
-   "consultado_em": null,
-   "documento": null,
-   "detalhe": null
+   "status": "coletado",
+   "consultado_em": "07/09/2026",
+   "documento": "Painel El Niño 2026-2027 · Boletim nº 3 (INMET/INPE/ANA/CEMADEN/SGB/SEDEC), previsão sazonal por tercil para setembro-outubro-novembro de 2026 (método objetivo CPTEC/INPE, INMET e FUNCEME); leitura humana de 07/09/2026",
+   "detalhe": "Leitura humana do Boletim nº 3 (a figura por tercil não tem dado aberto); a rotina automática lê o índice do Painel e registra o boletim novo quando sai."
   }
  },
  "enos": {
@@ -974,7 +974,39 @@
    "documento": "ONI v5, último trimestre JJA/2026"
   },
   "probabilidades": null,
-  "prognostico": null
+  "prognostico": {
+   "trimestre": "SON/2026",
+   "fonte": "cptec_prognostico",
+   "documento": "Painel El Niño 2026-2027 · Boletim nº 3",
+   "leitura_em": "07/09/2026",
+   "chuva": [
+    {
+     "regiao": "Norte e Nordeste",
+     "tendencia": "abaixo da normal"
+    },
+    {
+     "regiao": "Centro-Oeste (grande parte) e centro-norte do País — atenção a MT, TO, norte de GO, MG e ES",
+     "tendencia": "abaixo da normal"
+    },
+    {
+     "regiao": "Sul, podendo estender-se ao sul de SP e de MS",
+     "tendencia": "acima da normal"
+    }
+   ],
+   "temperatura": [
+    {
+     "regiao": "praticamente todo o País",
+     "tendencia": "acima da normal · ondas de calor, baixa umidade e, com o déficit de chuva no centro-norte, maior risco de incêndios"
+    }
+   ],
+   "enso": {
+    "leitura": "El Niño confirmado em junho/2026; modelos indicam 100% de permanência até pelo menos o início de 2027, com alta probabilidade de El Niño muito forte (Boletim nº 3); CPC/NOAA (ago/2026): probabilidade superior a 90% para SON (leitura do CPTEC/INPE)",
+    "fontes": [
+     "https://portal.inmet.gov.br/uploads/notastecnicas/Painel-El-Ni%C3%B1o-3-Edi%C3%A7%C3%A3o.pdf",
+     "https://clima.cptec.inpe.br/enos"
+    ]
+   }
+  }
  },
  "uf": {
   "AC": {

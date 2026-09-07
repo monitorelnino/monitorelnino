@@ -2,10 +2,11 @@
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
 // ===== pesquisadores.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let DATA, TRANSFERENCIAS, META, TABELA_MUNICIPIOS, SINAIS;
+let DATA, TRANSFERENCIAS, META, TABELA_MUNICIPIOS, SINAIS, CONSULTAS;
+const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};   // tabela das oito fontes (migrada de Sinais)
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function __load(){
-  [DATA, TRANSFERENCIAS, META, TABELA_MUNICIPIOS, SINAIS] = await Promise.all(['estados','transferencias','meta','municipios','sinais_risco'].map(f => fetch('data/' + f + '.json').then(r => { if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
+  [DATA, TRANSFERENCIAS, META, TABELA_MUNICIPIOS, SINAIS, CONSULTAS] = await Promise.all(['estados','transferencias','meta','municipios','sinais_risco','financiamento/consultas'].map(f => fetch('data/' + f + '.json').then(r => { if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
 document.getElementById('fontesMonitoramento').innerHTML = TRANSFERENCIAS.fontes_monitoramento
   .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
   const ROTULO_HOST = {
@@ -35,6 +36,13 @@ document.getElementById('fontesVerificadas').innerHTML =
     .map(f => `<li><a href="${f.href}" target="_blank" rel="noopener">${f.nome}</a> <span style="color:var(--muted);">· ${f.n} registro${f.n > 1 ? 's' : ''}</span></li>`).join('');
 document.getElementById('fontesFederaisCount').textContent = document.querySelectorAll('#fontesFederais li').length;
 
+  const CAT_LABEL_TBL = {
+    plano:['Plano preventivo',MonitorMapas.cor('musgo')], plano_antigo:['Plano desatualizado',MonitorMapas.cor('sintetico')],
+    plano_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], estrutura:['Estrutura de coordenação',MonitorMapas.cor('ambar')], decreto:['Decreto reativo',MonitorMapas.cor('argila')],
+    coberto_estadual:['Coberto pelo estado',MonitorMapas.cor('mineral')], nao_el_nino:['Não é El Niño',MonitorMapas.cor('areia')],
+    nao_localizado:['Nada localizado',MonitorMapas.cor('argila')],
+    nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')],
+  };
 function renderTable(){
     const q = document.getElementById('tblSearch').value.toLowerCase();
     const cat = document.getElementById('tblCat').value;
@@ -54,13 +62,6 @@ function renderTable(){
   document.getElementById('tblCat').addEventListener('change', renderTable);
   renderTable();
   
-  const CAT_LABEL_TBL = {
-    plano:['Plano preventivo',MonitorMapas.cor('musgo')], plano_antigo:['Plano desatualizado',MonitorMapas.cor('sintetico')],
-    plano_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], estrutura:['Estrutura de coordenação',MonitorMapas.cor('ambar')], decreto:['Decreto reativo',MonitorMapas.cor('argila')],
-    coberto_estadual:['Coberto pelo estado',MonitorMapas.cor('mineral')], nao_el_nino:['Não é El Niño',MonitorMapas.cor('areia')],
-    nao_localizado:['Nada localizado',MonitorMapas.cor('argila')],
-    nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')],
-  };
   
   (document.getElementById('munCount')||{}).textContent = TABELA_MUNICIPIOS.length;
   if (document.querySelector('#tblFontes tbody') && SINAIS && SINAIS.fontes) {
@@ -74,6 +75,9 @@ function renderTable(){
   }).join('');
   }
   { const fm = document.getElementById('fontesMonit'); if (fm) fm.innerHTML = (TRANSFERENCIAS.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a></li>').join(''); }
+  { const cons = (CONSULTAS && CONSULTAS.consultas) || []; if (document.querySelector('#tblConsultas tbody')) {
+  if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
+  } }
   const el = id => document.getElementById(id);
   el('pqCorte').textContent = META.corte || '—'; el('pqAtualizado').textContent = META.atualizado_em || '—';
   fetch('data/log_buscas.json').then(r => r.ok ? r.json() : null).then(l => { if (!(l && l.execucoes)) return; el('pqLog').textContent = l.execucoes.length.toLocaleString('pt-BR');

@@ -43,14 +43,14 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css(\?v=[0-9a-f]+)?"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["O monitor", "Sinais", "Calendário", "Defesa civil", "Saúde", "Financiamento", "Proteja-se", "Gestores", "Imprensa", "Pesquisadores", "Enviar dados"];   // v3.1 §6 (06/09/2026): grupos como <b class="nav-grupo">, botão Enviar dados
+  const NAV_ORDEM = ["O monitor", "Risco climático", "Saúde", "Defesa civil", "Financiamento", "Proteja-se", "Gestores", "Imprensa", "Pesquisadores", "Enviar dados"];   // 07/09/2026: Sinais → Risco climático; Saúde antes de Defesa civil; Calendário fora da barra (alcançável por links)
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {
     const rotulos = [...navM[1].matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map(m => m[1].trim());
     if (JSON.stringify(rotulos) !== JSON.stringify(NAV_ORDEM))
       falha(`${nome}: nav fora da ordem canônica (${rotulos.join(" · ")})`);
-    const ativa = navM[1].match(/<span class="ativa(?: [^"]*)?"[^>]*>([^<]+)<\/span>/);
+    const ativa = navM[1].match(/<span class="ativa(?: [^"]*)?"[^>]*>([^<]+)<\/span>/) || (nome === "calendario-eleitoral.html" ? ["", "Calendário"] : null);
     if (nome !== "obrigado.html" && !ativa) falha(`${nome}: nav sem item ativo`);
   }
 
@@ -138,6 +138,14 @@ for (const arq of arquivos) {
   if (hex.length) falha(`${nome}: cor em hex fora de tokens.css/mapas.js (${hex.length}): ${[...new Set(hex)].slice(0, 5).join(", ")}`);
   const bps = [...(css + baseCssParaBreakpoints()).matchAll(/@media[^{]*\((?:max|min)-width:\s*(\d+)px\)/g)].map(m => +m[1]).filter(v => ![640, 1020, 1021].includes(v));
   if (bps.length) falha(`${nome}: breakpoint fora de 640/1020: ${[...new Set(bps)].join(", ")}px`);
+  // 07/09/2026: ids órfãos — o JS da página escreve num elemento que o HTML não tem (raiz de 3 quebras de página desde 04/09)
+  const jsPag = path.join(RAIZ, "assets", "js", nome.replace(".html", ".js"));
+  if (fs.existsSync(jsPag)) {
+    const js = fs.readFileSync(jsPag, "utf-8"); const orfaos = new Set();
+    for (const m of js.matchAll(/document\.getElementById\('([A-Za-z0-9_-]+)'\)\.(?:innerHTML|textContent|style|value|hidden|classList|setAttribute|addEventListener)/g)) if (!new RegExp(`id="${m[1]}"`).test(bruto)) orfaos.add(m[1]);
+    for (const m of js.matchAll(/document\.querySelector\('#([A-Za-z0-9_-]+)[^']*'\)\.(?:innerHTML|textContent|style|value)/g)) if (!new RegExp(`id="${m[1]}"`).test(bruto)) orfaos.add(m[1]);
+    if (orfaos.size) falha(`${nome}: JS escreve em id(s) inexistente(s) sem guarda: ${[...orfaos].join(", ")}`);
+  }
   const clampTitulo = css.match(/\.site-title\{[^}]*font-size:(clamp\([^)]*\))/);
   if (clampTitulo && clampTitulo[1] !== "clamp(33px, 5.4vw, 46px)") falha(`${nome}: .site-title com escala diferente das outras páginas: ${clampTitulo[1]}`);
   // v2.3: as regras compartilhadas vivem em assets/base.css; a página só precisa importá-la
