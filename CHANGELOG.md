@@ -13,6 +13,20 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Relógios de prazo, e-mails e o que "verificado" quer dizer (07/09/2026, pedido da editoria)
+- **"Prazos em curso" vira relógios:** anel SVG que esvazia da data-base ao vencimento (Âmbar; Argila
+  abaixo de 30 %; Mineral apagado quando transcorrido), dias no centro, e para cada prazo **"O que se
+  espera"** — texto curado em `marcos_prazos.json` (ADPF 743: decisão do relator sobre as correções;
+  MPs: caducam se não votadas, o empenhado fica). Mesmo desenho nas MPs do Financiamento.
+  Renderizador compartilhado `MonitorMapas.relogio()`.
+- **E-mails:** contato@futuraevidencelab.com.br nos rodapés e contatos gerais;
+  imprensa@futuraevidencelab.com.br na página de Imprensa.
+- **Verificação municipal, dito com clareza:** os 5.571 municípios passaram pelas fontes nacionais
+  (DOU/SEDEC, MUNIC/ICM); o que varia é a consulta ao próprio diário oficial (2.807 até agora). O
+  quinto número da inicial passa a ser "municípios cujo diário ainda não foi consultado" (2.764), e
+  a face dos cartões diz "diário consultado: X de N" — em vez de "0 verificados além do nacional".
+  `verificacao_resumo.json` ganha a varredura por UF.
+
 ### SEO (07/09/2026, pedido da editoria: referência nacional, fácil de encontrar)
 - **Cada página:** título único e descritivo (com "El Niño 2026/2027" e o tema), descrição única
   (70–170 caracteres), canônica em monitorelnino.com.br, Open Graph e Twitter Card com um **cartão

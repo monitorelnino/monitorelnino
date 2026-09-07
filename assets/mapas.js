@@ -17,7 +17,21 @@
                 'cinza-quente':'#66736F', 'sem-dado':'#DCE3E2', branco:'#FFFFFF', 'areia-escura':'#7A6A4F', zebra:'#E9EEEC',
                 muted:'#55645B', 'gauge-trilho':'#E7DECD', 'gauge-borda':'#CDBB9F', 'gauge-osso':'#F5F1E8', 'gauge-cinza':'#DDDED9',
                 'ambar-escuro':'#A87A50', 'sintetico-escuro':'#2A4457', preto:'#000000' };
-  function cor(nome) { return COR[nome] || nome; }   // tema técnico (05/09/2026): 'sem dado' em areia-clara sobre branco
+  function cor(nome) { return COR[nome] || nome; }
+  /** Relógio de prazo (07/09/2026): anel que esvazia de data_base a vencimento. resta ∈ [0,1]; dias < 0 = vencido.
+   *  Devolve o SVG (string). Cor: Âmbar > 30 % restante; Argila abaixo de 30 %; Mineral apagado quando vencido. */
+  function relogio(resta, dias, opts) {
+    const o = Object.assign({ tam: 88, espessura: 9, cor: null }, opts || {});
+    const r = (o.tam - o.espessura) / 2, c = 2 * Math.PI * r, vencido = dias < 0;
+    const f = vencido ? 0 : Math.max(0, Math.min(1, resta));
+    const corAnel = o.cor || (vencido ? COR.mineral : f < 0.3 ? COR.argila : COR.ambar);
+    const num = vencido ? Math.abs(dias) : dias, rot = vencido ? 'dias<tspan> </tspan>atrás' : dias === 0 ? 'hoje' : dias === 1 ? 'dia' : 'dias';
+    return '<svg class="relogio" viewBox="0 0 ' + o.tam + ' ' + o.tam + '" width="' + o.tam + '" height="' + o.tam + '" role="img" aria-label="' + (vencido ? 'transcorrido há ' + Math.abs(dias) + ' dia(s)' : Math.round(f * 100) + '% do prazo restante, ' + dias + ' dia(s)') + '">'
+      + '<circle cx="' + o.tam / 2 + '" cy="' + o.tam / 2 + '" r="' + r + '" fill="none" stroke="' + COR['sem-dado'] + '" stroke-width="' + o.espessura + '"/>'
+      + '<circle cx="' + o.tam / 2 + '" cy="' + o.tam / 2 + '" r="' + r + '" fill="none" stroke="' + corAnel + '" stroke-width="' + o.espessura + '" stroke-linecap="butt" stroke-dasharray="' + (c * f).toFixed(1) + ' ' + c.toFixed(1) + '" transform="rotate(-90 ' + o.tam / 2 + ' ' + o.tam / 2 + ')"' + (vencido ? ' opacity=".55"' : '') + '/>'
+      + '<text x="' + o.tam / 2 + '" y="' + (o.tam / 2 + 2) + '" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="' + (o.tam * 0.3) + '" fill="' + (vencido ? COR.mineral : COR.vazio) + '">' + num + '</text>'
+      + '<text x="' + o.tam / 2 + '" y="' + (o.tam / 2 + o.tam * 0.2) + '" text-anchor="middle" font-family="Archivo Narrow, Arial Narrow, Arial, sans-serif" font-size="' + (o.tam * 0.12) + '" fill="' + COR.muted + '" letter-spacing=".06em">' + rot.toUpperCase().replace('<TSPAN> </TSPAN>', ' ') + '</text></svg>';
+  }   // tema técnico (05/09/2026): 'sem dado' em areia-clara sobre branco
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const tooltipEl = () => document.getElementById('mapTooltip');
   function showTip(html, evt) {
@@ -126,5 +140,5 @@
                    resposta: '#7C4A34', preparacao: '#2E3D30', neutra: '#DCE3E2',
                    serie: ['#2E3D30', '#5E7C93', '#C9814B', '#7C4A34', '#8FA5A8', '#7A6A4F', '#A8C99A', '#55645B'] };   // paleta da marca (Musgo, Sintético, Âmbar, Argila, Mineral)
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito };
 })(window);

@@ -43,14 +43,11 @@ function renderRotaMPs(){
   document.getElementById('mpsPrazos').innerHTML = mps.map(mp => {
     const ini = dataBR(mp.publicada_em), fim = dataBR(mp.tramitacao.deliberacao_ate);
     const dias = Math.round((fim - hoje) / 86400000), resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));
-    const vencido = dias < 0, cls = vencido ? 'vencido' : resta < 0.3 ? 'urgente' : '';
-    const quando = vencido ? `transcorrido há ${-dias} dia(s)` : dias === 0 ? 'vence hoje' : `${dias} dias`;
-    return `<div class="prazo ${vencido ? 'vencido' : ''}" role="group" aria-label="${esc(mp.numero)}">
-      <div class="prazo-titulo">${esc(mp.numero)} — ${brl(mp.valor)} · ${esc(mp.tema)}</div>
-      <div class="prazo-meta">deliberação · <strong>${quando}</strong></div>
-      <div class="prazo-trilho" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(resta*100)}" aria-valuetext="${Math.round(resta*100)}% do prazo restante"><div class="prazo-resta ${cls}" style="width:${(resta*100).toFixed(1)}%; background:${vencido ? '' : mp.cor}"></div></div>
-      <div class="prazo-datas"><span>publicada em ${esc(mp.publicada_em)}</span><span>${esc(mp.tramitacao.situacao)} · até ${esc(mp.tramitacao.deliberacao_ate)}</span></div>
-    </div>`; }).join('');
+    const espera = mp.id === 'mp1367' ? 'Se o Senado não votar até ' + esc(mp.tramitacao.deliberacao_ate) + ', a MP caduca: o empenhado fica, o restante do crédito cai.' : 'Se o Congresso não votar até ' + esc(mp.tramitacao.deliberacao_ate) + ', a MP caduca — e a maior parte do crédito ainda não foi empenhada.';
+    return `<div class="prazo-rel" role="group" aria-label="${esc(mp.numero)}">${MonitorMapas.relogio(resta, dias, {cor: dias < 0 ? null : mp.cor})}
+      <div class="prazo-rel-txt"><div class="prazo-titulo">${esc(mp.numero)} — ${brl(mp.valor)} · ${esc(mp.tema)}</div>
+      <div class="prazo-meta">deliberação · publicada em ${esc(mp.publicada_em)} → <strong>${esc(mp.tramitacao.deliberacao_ate)}</strong> · ${esc(mp.tramitacao.situacao)}</div>
+      <div class="prazo-espera"><span class="k">O que se espera:</span> ${espera}</div></div></div>`; }).join('');
   // fluxo MP → órgão → uso (SVG, três colunas; larguras proporcionais ao valor)
   const box = document.getElementById('rotaMPs'); box.innerHTML = '';
   const W = Math.max(640, box.clientWidth || 900), colW = 200, gapX = (W - 3*colW) / 2, H = 330, pad = 14;
