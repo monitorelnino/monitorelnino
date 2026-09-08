@@ -100,12 +100,12 @@ for (const arq of arquivos) {
   // padrão — parágrafos dentro de <details> (fechado) não contam, são para quem
   // quiser aprofundar.
   const cartoesLongos = [];
-  d.querySelectorAll(".map-box, .chart-box").forEach(cartao => {
+  d.querySelectorAll(".figura, .cartao").forEach(cartao => {
     const paragrafosVisiveis = [...cartao.querySelectorAll(".note")]
       .filter(p => !p.closest("details"));
     const total = paragrafosVisiveis.reduce((s, p) => s + p.textContent.trim().length, 0);
     if (total > 320) {
-      const titulo = cartao.querySelector(".map-card-h")?.textContent.slice(0, 40) || "?";
+      const titulo = cartao.querySelector(".figura-titulo")?.textContent.slice(0, 40) || "?";
       cartoesLongos.push(`${titulo} (${total} caracteres)`);
     }
   });
@@ -129,10 +129,28 @@ for (const arq of arquivos) {
   const tamanhos = [...(css + ";" + inline).matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1]).filter(v => v < 12);
   if (tamanhos.length) falha(`${nome}: font-size abaixo de 12px no CSS: ${[...new Set(tamanhos)].join(", ")}px`);
   // v3.1 §14 (06/09/2026): escala tipográfica, hex proibido fora dos tokens, dois breakpoints
-  const ESCALA = new Set([12, 12.5, 13.5, 15, 17, 19, 23, 28, 38, 52]);
-  const foraEscala = [...(css + ";" + inline).matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1])
-    .filter(v => !ESCALA.has(v) && !(nome === "index.html" && (v === 18 || v === 44)));   // medidor preservado (E14)
-  if (foraEscala.length) falha(`${nome}: font-size fora da escala (12·12,5·13,5·15·17·19·23·28·38·52): ${[...new Set(foraEscala)].join(", ")}px`);
+  // Auditoria de consistência (07/09/2026): escala de 8 degraus (tokens.css); nenhuma página tem <style> nem
+  // font-size/font-weight/line-height/font-family em atributo style; componentes só em base.css.
+  const ESCALA = new Set([12, 14, 16, 18, 22, 28, 36, 48]);
+  const foraEscala = [...(css + ";" + inline).matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1]).filter(v => !ESCALA.has(v));
+  if (foraEscala.length) falha(`${nome}: font-size fora da escala (12·14·16·18·22·28·36·48): ${[...new Set(foraEscala)].join(", ")}px`);
+  if (d.querySelector("style")) falha(`${nome}: bloco <style> na página (todo estilo vive em assets/base.css e assets/tokens.css)`);
+  const inlineTipo = [...d.querySelectorAll("[style]")].map(el => el.getAttribute("style")).filter(v => /font-size|font-weight|line-height|font-family|letter-spacing|margin|padding/.test(v));
+  if (inlineTipo.length) falha(`${nome}: ${inlineTipo.length} atributo(s) style com tipografia ou espaçamento (usar classes de base.css): ${inlineTipo.slice(0, 3).join(" | ")}`);
+  const bruto0 = inlinePageJs(fs.readFileSync(path.join(RAIZ, nome), "utf-8"), RAIZ);
+  const jsTipo = [...bruto0.replace(/^[\s\S]*?<body/, "").matchAll(/style=\\?["'][^"']*(font-size|font-weight|line-height|font-family)/g)];
+  if (jsTipo.length) falha(`${nome}: script da página gera HTML com tipografia inline (${jsTipo.length})`);
+  // componente único de figura: toda .figura tem título, subtítulo e mídia; nenhum título de figura ou de seção começa com número à mão
+  d.querySelectorAll(".figura").forEach(f => {
+    const id = f.id || "(sem id)";
+    if (!f.querySelector(":scope > .figura-titulo")) falha(`${nome}: figura #${id} sem .figura-titulo`);
+    if (!f.querySelector(":scope > .figura-sub")) falha(`${nome}: figura #${id} sem .figura-sub`);
+    if (!f.querySelector(":scope > .figura-midia")) falha(`${nome}: figura #${id} sem .figura-midia`);
+    if (!/figura--(mapa|grafico|tabela|diagrama|barras|indicador)/.test(f.className)) falha(`${nome}: figura #${id} sem variante de mídia (figura--mapa|grafico|tabela|diagrama|barras|indicador)`);
+    if (f.tagName !== "FIGURE") falha(`${nome}: figura #${id} deve ser <figure>`);
+  });
+  [...d.querySelectorAll(".figura-titulo, main h2")].forEach(h => { if (/^\s*\d+[a-z]?\s*[·.)]/.test(h.textContent)) falha(`${nome}: numeração à mão em "${h.textContent.trim().slice(0, 40)}" (a numeração é automática: contadores CSS figura/secao, a partir de 1)`); });
+  for (const cls of ["map-box", "chart-box", "map-card-h", "map-card-sub", "maps-grid", "charts-grid", "card", "kpi", "tr-card", "wide", "h-alta"]) if (d.querySelector("." + cls)) falha(`${nome}: classe legada .${cls} (usar .figura / .cartao / .grade-figuras / .grade-cartoes)`);
   const bruto = inlinePageJs(fs.readFileSync(path.join(RAIZ, nome), "utf-8"), RAIZ);
   const hex = [...bruto.matchAll(/#[0-9A-Fa-f]{6}\b/g)].map(m => m[0]);
   if (hex.length) falha(`${nome}: cor em hex fora de tokens.css/mapas.js (${hex.length}): ${[...new Set(hex)].slice(0, 5).join(", ")}`);
@@ -146,14 +164,21 @@ for (const arq of arquivos) {
     for (const m of js.matchAll(/document\.querySelector\('#([A-Za-z0-9_-]+)[^']*'\)\.(?:innerHTML|textContent|style|value)/g)) if (!new RegExp(`id="${m[1]}"`).test(bruto)) orfaos.add(m[1]);
     if (orfaos.size) falha(`${nome}: JS escreve em id(s) inexistente(s) sem guarda: ${[...orfaos].join(", ")}`);
   }
-  const clampTitulo = css.match(/\.site-title\{[^}]*font-size:(clamp\([^)]*\))/);
-  if (clampTitulo && clampTitulo[1] !== "clamp(33px, 5.4vw, 46px)") falha(`${nome}: .site-title com escala diferente das outras páginas: ${clampTitulo[1]}`);
   // v2.3: as regras compartilhadas vivem em assets/base.css; a página só precisa importá-la
   const baseCss = fs.readFileSync(path.join(RAIZ, "assets", "base.css"), "utf-8");
+  if (nome === "index.html") {   // uma vez por execução: a folha base só usa tokens para fonte e espaçamento
+    const fsPx = [...baseCss.matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1]);
+    if (fsPx.length) falha(`base.css: font-size em px fora dos tokens (${[...new Set(fsPx)].join(", ")}px)`);
+    const espacos = [...baseCss.matchAll(/(?:^|[;{\s])(?:margin|padding|gap)(?:-top|-bottom|-left|-right|-block|-inline)?:\s*([^;}]+)/g)].map(m => m[1]).filter(v => /\d+px/.test(v) && !/var\(--sp-|var\(--esp-|var\(--grade-/.test(v) && !/^0(px)?$/.test(v.trim()));
+    const arbitrarios = espacos.map(v => v.match(/\d+(?:\.\d+)?px/g) || []).flat().map(v => parseFloat(v)).filter(v => ![0, 1, 2, 3].includes(v));
+    if (arbitrarios.length) falha(`base.css: espaçamento em px fora da escala de tokens (${[...new Set(arbitrarios)].join(", ")}px)`);
+    const tokensCss = fs.readFileSync(path.join(RAIZ, "assets", "tokens.css"), "utf-8");
+    for (const t of ["--fs-display: 48px", "--fs-h1: 36px", "--fs-h2: 28px", "--fs-h3: 22px", "--fs-h4: 18px", "--fs-body: 16px", "--fs-small: 14px", "--fs-caption: 12px", "--sp-1: 4px", "--sp-9: 96px", "--grade-max: 1180px"]) if (!tokensCss.includes(t)) falha(`tokens.css: token ausente ou alterado: ${t}`);
+  }
   const temBase = /<link[^>]+href="assets\/base\.css(\?v=[0-9a-f]+)?"/.test(html);   // ?v= = carimbo de cache (05/09/2026)
   if (!temBase) falha(`${nome}: sem <link> para assets/base.css`);
   if (!/prefers-reduced-motion/.test(css + (temBase ? baseCss : ""))) falha(`${nome}: sem @media (prefers-reduced-motion)`);
-  if (!/\.masthead--mini \.site-title\{[^}]*clamp\(24px, 3\.6vw, 30px\)/.test(baseCss)) falha(`${nome}: base.css sem a escala canônica do masthead compacto`);
+  if (!/\.masthead--mini \.site-title\{[^}]*var\(--fs-h2\)/.test(baseCss)) falha(`${nome}: base.css sem a escala canônica do masthead compacto (var(--fs-h2))`);
   // v2.3 (03/09/2026): motor único de mapas — assets/mapas.js
   const temMapa = /<svg id="map/.test(html) || /d3\.geoMercator/.test(html);
   if (temMapa && !/<script src="assets\/mapas\.js(\?v=[0-9a-f]+)?"><\/script>/.test(html)) falha(`${nome}: página com mapa sem assets/mapas.js`);

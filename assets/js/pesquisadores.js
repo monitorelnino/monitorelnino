@@ -33,7 +33,7 @@ document.getElementById('fontesVerificadas').innerHTML =
       return {nome, href, n: g.n};
     })
     .sort((a,b)=>b.n - a.n || a.nome.localeCompare(b.nome))
-    .map(f => `<li><a href="${f.href}" target="_blank" rel="noopener">${f.nome}</a> <span style="color:var(--muted);">· ${f.n} registro${f.n > 1 ? 's' : ''}</span></li>`).join('');
+    .map(f => `<li><a href="${f.href}" target="_blank" rel="noopener">${f.nome}</a> <span class="u-muted">· ${f.n} registro${f.n > 1 ? 's' : ''}</span></li>`).join('');
 document.getElementById('fontesFederaisCount').textContent = document.querySelectorAll('#fontesFederais li').length;
 
   const CAT_LABEL_TBL = {
@@ -55,7 +55,7 @@ function renderTable(){
       const fonte = m.url ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.fonte)}</a>` : esc(m.fonte);
       return `<tr><td><strong>${m.nome}</strong></td><td>${m.uf}</td>
         <td><span class="cat-pill" style="background:${cor}">${lbl}</span></td>
-        <td>${m.documento}</td><td style="white-space:nowrap;">${m.data}</td><td>${fonte}</td><td style="white-space:nowrap; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted);">${m.canal||'—'}</td></tr>`;
+        <td>${m.documento}</td><td class="nowrap">${m.data}</td><td>${fonte}</td><td class="nowrap dado">${m.canal||'—'}</td></tr>`;
     }).join('');
   }
   document.getElementById('tblSearch').addEventListener('input', renderTable);
@@ -77,7 +77,9 @@ function renderTable(){
   { const fm = document.getElementById('fontesMonit'); if (fm) fm.innerHTML = (TRANSFERENCIAS.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a></li>').join(''); }
   { const cons = (CONSULTAS && CONSULTAS.consultas) || []; if (document.querySelector('#tblConsultas tbody')) {
   if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
-  } }
+  }
+  MonitorMapas.credito('boxConsultas', {fontes: ['Monitor El Niño Brasil', 'consultas registradas'], data: cons.length ? (META.atualizado_em || META.corte) : null}); }
+  MonitorMapas.credito('boxFontesMonit', {fontes: 'as listadas', data: '25/08/2026'});
   const el = id => document.getElementById(id);
   el('pqCorte').textContent = META.corte || '—'; el('pqAtualizado').textContent = META.atualizado_em || '—';
   fetch('data/log_buscas.json').then(r => r.ok ? r.json() : null).then(l => { if (!(l && l.execucoes)) return; el('pqLog').textContent = l.execucoes.length.toLocaleString('pt-BR');
@@ -88,7 +90,7 @@ function renderTable(){
   fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(c => { const m = (c && c.municipios) || {}; const t = Object.values(m); el('pqCobertura').textContent = t.length ? t.filter(x => x.cobertura_qd === true).length + ' indexados · ' + t.filter(x => x.cobertura_qd === false).length + ' não indexados · ' + (5571 - t.length) + ' ainda não testados' : 'ainda não testada (a rotina preenche a partir da próxima rodada)'; });
   fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).then(f => { const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0; el('pqSuspensas').textContent = n + ' fonte(s) suspensa(s) detectada(s)'; });
 }
-__load().catch(err => { document.body.insertAdjacentHTML('afterbegin', '<div style="background:var(--argila);color:#fff;padding:14px 20px;">Erro ao carregar os dados: ' + err.message + '</div>'); });
+__load().catch(err => { document.body.insertAdjacentHTML('afterbegin', '<div class="erro-carga">Erro ao carregar os dados: ' + err.message + '</div>'); });
 
 // ===== pesquisadores.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });

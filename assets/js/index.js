@@ -3,7 +3,7 @@
   function banner(msg){
     if(document.getElementById('errBanner')) return;
     document.body.insertAdjacentHTML('afterbegin',
-      '<div id="errBanner" style="background:var(--argila);color:#fff;padding:12px 20px;font-family:Archivo, system-ui, sans-serif;font-size:13.5px;">'+msg+'</div>');
+      '<div id="errBanner" class="erro-carga">'+msg+'</div>');
   }
   window.addEventListener('error', function(e){
     banner('Erro ao renderizar: ' + (e.message||'desconhecido') + '. Recarregue a página; se persistir, verifique a conexão.');
@@ -45,7 +45,7 @@ function barraResposta(uf){
     <div class="barra-resp" role="img" aria-label="${n} de ${r.total_municipios} municípios sob decreto; ${fp.toFixed(0)}% da população" title="tons: ${rec} reconhecido(s) · ${dec} decretado(s) sem reconhecimento · fatias: ${r.fatias.em_classificacao} em classificação (evento observado ainda não lido)">
       <i class="rec" style="width:${wRec.toFixed(1)}%"></i><i class="dec" style="left:${wRec.toFixed(1)}%; width:${wDec.toFixed(1)}%"></i>${n ? `<b style="left:${fp.toFixed(1)}%"></b>` : ''}</div>
     <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${fp.toFixed(0)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto em ' + r.primeiro_decreto : ''}<br>
-    <span class="fv" style="color:var(--muted);">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
+    <span class="fv u-muted">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
 }
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
@@ -61,7 +61,7 @@ function renderContadorResposta(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const N = RESP && RESP.nacional; const box = document.getElementById('contadorResposta'); if (!box) return;
   const el = id => document.getElementById(id);
-  if (!N) { el('respLinha').textContent = 'sem coleta até o corte'; el('respFonte').textContent = 'Fonte: Monitor El Niño Brasil · sem coleta'; return; }
+  if (!N) { el('respLinha').textContent = 'sem coleta até o corte'; MonitorMapas.credito('respFonte', {fontes: 'Monitor El Niño Brasil', data: null}); return; }
   const fm = 100 * N.fracao_municipios, fp = 100 * N.fracao_populacao;
   el('respNum').textContent = N.n_municipios.toLocaleString('pt-BR');
   el('respDen').textContent = '/ ' + N.total_municipios.toLocaleString('pt-BR');
@@ -70,7 +70,7 @@ function renderContadorResposta(){
   el('respFill').style.width = Math.max(fm, N.n_municipios ? 0.6 : 0).toFixed(2) + '%';
   el('respPopTick').style.left = fp.toFixed(2) + '%';
   el('respLinha').innerHTML = esc(fp.toFixed(1).replace('.', ',')) + '% da população (traço) · ' + (N.primeiro_decreto ? 'primeiro decreto em ' + esc(N.primeiro_decreto) + ' · ' : '') + esc(N.reconhecidos) + ' reconhecidos pela União · ' + esc(N.decretados_sem_reconhecimento) + ' decretados sem reconhecimento';
-  el('respFonte').textContent = 'Fonte: DOU/SEDEC (S2iD), diários oficiais estaduais e municipais · ' + esc(RESP.gerado_em);
+  MonitorMapas.credito('respFonte', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais estaduais e municipais'], data: RESP.gerado_em});
 }
 async function __load(){
   let __ref;
@@ -187,7 +187,7 @@ function renderDetalhePadrao(){
   if (!det || det.innerHTML.trim() || typeof MARE === 'undefined') return;
   const mediaBR = +(Object.values(MARE).reduce((s, v) => s + v.total, 0) / 27).toFixed(1);
   det.innerHTML = `
-    <div class="uf-name">Brasil <span style="color:var(--muted); font-weight:400; font-size:15px;">(média nacional)</span></div>
+    <div class="uf-name">Brasil <span class="sub">(média nacional)</span></div>
     ${miniGauge(mediaBR, 'MARÉ · média dos 27')}
     <p class="placeholder">Clique em um estado na grade para abrir o detalhe: componentes verificados, situação da capital e o que cobrar.</p>`;
   det.hidden = false;
@@ -218,11 +218,11 @@ function selectUF(uf, tileEl){
       <div class="card-title">${d.capital.nome} <span class="sub">· ${d.capital.status}</span></div>
       <div class="card-body">${d.capital.info}</div>
       ${linkCapital}
-    </div>` : `<p class="placeholder" style="margin-top:10px;">Capital sem verificação individual até o corte.</p>`;
+    </div>` : `<p class="placeholder">Capital sem verificação individual até o corte.</p>`;
 
   document.getElementById('detail').hidden = false;
   document.getElementById('detail').innerHTML = `
-    <div class="uf-name">${d.nome} <span style="color:var(--muted); font-weight:400; font-size:15px;">(${d.uf})</span></div>
+    <div class="uf-name">${d.nome} <span class="sub">(${d.uf})</span></div>
     ${typeof MARE !== 'undefined' && MARE[d.uf] ? miniGauge(MARE[d.uf].total) : ''}
     <div class="uf-region">${d.regiao}</div>
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
@@ -241,11 +241,11 @@ function selectUF(uf, tileEl){
     <button type="button" class="btn-pdf" id="btnPDFEstado" data-uf="${d.uf}">Baixar relatório do estado (PDF)</button>
     ${htmlPedidoAcesso(d.uf, null)}
     <details class="pedido-lai selo-embed"><summary>Selo para embutir no seu site</summary>
-      <p class="note" style="margin:8px 0;">Regravado a cada atualização com o número publicado. Quem embute mostra a própria faixa — e o link traz o leitor para a verificação.</p>
-      <img src="selos/mare-${d.uf}.svg" width="360" height="92" alt="Selo MARÉ de ${d.nome}: ${String(MARE[d.uf].total).replace('.', ',')} de 100" style="max-width:100%; height:auto; display:block; margin:0 0 8px;">
+      <p class="note">Regravado a cada atualização com o número publicado. Quem embute mostra a própria faixa — e o link traz o leitor para a verificação.</p>
+      <img src="selos/mare-${d.uf}.svg" width="360" height="92" alt="Selo MARÉ de ${d.nome}: ${String(MARE[d.uf].total).replace('.', ',')} de 100" class="selo-img">
       <textarea class="pedido-texto" readonly rows="3" aria-label="Código HTML do selo">&lt;a href="https://monitorelnino.com.br/#${d.uf}"&gt;&lt;img src="https://monitorelnino.com.br/selos/mare-${d.uf}.svg" width="360" height="92" alt="MARÉ, Monitor El Niño Brasil: ${d.nome}, preparação demonstrável publicamente"&gt;&lt;/a&gt;</textarea>
       <button type="button" class="btn-pdf btn-copiar-pedido">Copiar código</button></details>
-    <p class="note" style="margin-top:10px;">Acompanhe ${d.nome} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
+    <p class="note">Acompanhe ${d.nome} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
   `;
 }
 
@@ -295,6 +295,7 @@ function renderPrazos(){
         ${m.o_que_se_espera ? '<div class="prazo-espera"><span class="k">O que se espera:</span> ' + esc(m.o_que_se_espera) + '</div>' : ''}
       </div></div>`; }).join('');
   vazio.hidden = itens.length > 0;
+  MonitorMapas.credito('prazosFonte', {fontes: ['registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384)'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
 }
 renderPrazos();
   (function(){
@@ -399,10 +400,10 @@ function guiasDoEstado(uf){
 }
 function htmlGuia(chave, compacto){
   const g = GUIAS[chave];
-  const blocos = g.blocos.map(b => `<p style="margin:8px 0 3px;"><strong>${b.h}:</strong></p><ul style="margin:0 0 6px;">${b.itens.map(i => `<li>${i}</li>`).join('')}</ul>`).join('');
+  const blocos = g.blocos.map(b => `<p class="u-mb-0"><strong>${b.h}:</strong></p><ul>${b.itens.map(i => `<li>${i}</li>`).join('')}</ul>`).join('');
   const fontes = g.urls.map(u => `<a href="${u[1]}" target="_blank" rel="noopener">${u[0]}</a>`).join(' · ');
-  return `<details style="margin:0 0 10px;"><summary style="cursor:pointer; color:var(--link); font-weight:600;">${g.t}</summary>
-    <div style="margin-top:6px;">${blocos}<p class="note" style="margin:4px 0 0;">Fonte: ${g.fonte} · ${fontes}</p></div></details>`;
+  return `<details class="pedido-lai"><summary>${g.t}</summary>
+    <div class="u-mt-2">${blocos}<p class="note">Fonte: ${g.fonte} · ${fontes}</p></div></details>`;
 }
 
 const selUF = document.getElementById('ufSelect');
@@ -411,18 +412,18 @@ Object.entries(UF_NOME).sort((a,b)=>a[1].localeCompare(b[1]))
 const ORDEM_MARE = Object.entries(MARE).sort((a,b)=>b[1].total-a[1].total).map(([u])=>u);
 function miniGauge(valor, rotulo){
   const media = String(MEDIA_NACIONAL).replace('.', ',');
-  return `<div class="gauge-mini" style="margin:6px 0 16px;">
-    <div class="gauge-head" style="margin-bottom:6px;">
-      <span class="gnum" style="font-size:28px;" data-contar="${valor}">0,0</span><span class="gden">/ 100</span>
+  return `<div class="gauge-mini">
+    <div class="gauge-head">
+      <span class="gnum" data-contar="${valor}">0,0</span><span class="gden">/ 100</span>
       <span class="glabel">${rotulo || 'MARÉ do estado'}</span>
     </div>
-    <div class="gauge-track" style="height:18px;">
+    <div class="gauge-track">
       <div class="gauge-fill" data-alvo="${valor}" style="--galvo:${valor};"></div>
       <span class="gauge-avg" style="left:${MEDIA_NACIONAL}%;"></span>
     </div>
-    <div class="gauge-ends" style="font-size:12px;">
+    <div class="gauge-ends">
       <span>0</span>
-      <span style="position:absolute; left:${MEDIA_NACIONAL}%; transform:translateX(-50%);">média ${media}</span>
+      <span class="marca-media" style="left:${MEDIA_NACIONAL}%;">média ${media}</span>
       <span>100</span>
     </div>
   </div>`;
@@ -505,7 +506,7 @@ function textoPedidoAcesso(uf, municipio){
 function htmlPedidoAcesso(uf, municipio){
   const txt = textoPedidoAcesso(uf, municipio).replace(/&/g,'&amp;').replace(/</g,'&lt;');
   return `<details class="pedido-lai"><summary>Pedido de informação pronto (Lei de Acesso à Informação)</summary>
-    <p class="note" style="margin:8px 0;">Copie, preencha seu nome e envie pela ouvidoria ou pelo e-SIC do órgão. O texto cita a lei e o que a consulta localizou — nada além do que está publicado.</p>
+    <p class="note">Copie, preencha seu nome e envie pela ouvidoria ou pelo e-SIC do órgão. O texto cita a lei e o que a consulta localizou — nada além do que está publicado.</p>
     <textarea class="pedido-texto" readonly rows="14" aria-label="Texto do pedido de informação">${txt}</textarea>
     <button type="button" class="btn-pdf btn-copiar-pedido">Copiar texto</button></details>`;
 }
@@ -520,7 +521,7 @@ function popLinha(nome, uf){
   if (!p) return '';
   const pct = POP_UF[uf] ? (100 * p / POP_UF[uf]) : 0;
   return `<p class="fk">População (Censo 2022)</p>
-      <p class="fv">${p.toLocaleString('pt-BR')} habitantes <span style="color:var(--muted)">· ${pct.toFixed(1).replace('.', ',')}% do estado</span></p>`;
+      <p class="fv">${p.toLocaleString('pt-BR')} habitantes <span class="u-muted">· ${pct.toFixed(1).replace('.', ',')}% do estado</span></p>`;
 }
 function renderMinha(){
   const card = document.getElementById('meuCard');
@@ -537,38 +538,38 @@ function renderMinha(){
     const m = matches[0];
     const [lbl, cor] = CAT_LABEL_TBL[m.categoria];
     const fonte = m.url ? `<a href="${m.url}" target="_blank" rel="noopener">${m.fonte}</a>` : m.fonte;
-    html += `<p class="note" style="margin:0 0 4px;"><a href="#" id="trocarMun">← consultar outro município</a></p>
+    html += `<p class="note"><a href="#" id="trocarMun">← consultar outro município</a></p>
       <h4>${m.nome} · ${m.uf}</h4>
-      <p style="margin:2px 0 8px;"><span class="cat-pill" style="background:${cor}">${lbl}</span></p>
+      <p class="u-mb-2"><span class="cat-pill" style="background:${cor}">${lbl}</span></p>
       <p class="fk">Documento verificado</p>
-      <p class="fv">${m.documento}${m.data && m.data !== '—' ? ` <span style="color:var(--muted)">· ${m.data}</span>` : ''}</p>
+      <p class="fv">${m.documento}${m.data && m.data !== '—' ? ` <span class="u-muted">· ${m.data}</span>` : ''}</p>
       <p class="fk">Fonte</p>
-      <p class="fv">${fonte}${CANAL_LABEL[m.canal] ? ' <span style="color:var(--muted)">· via ' + CANAL_LABEL[m.canal] + '</span>' : ''}</p>
-      ${emergenciasDoMunicipio(m.nome, m.uf).map(e => `<p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('')}
+      <p class="fv">${fonte}${CANAL_LABEL[m.canal] ? ' <span class="u-muted">· via ' + CANAL_LABEL[m.canal] + '</span>' : ''}</p>
+      ${emergenciasDoMunicipio(m.nome, m.uf).map(e => `<p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span class="u-muted"> · ${e.fonte}</span></p>`).join('')}
       ${popLinha(m.nome, m.uf)}
       ${m.vigencia ? `<p class="fk">Vigência (regra automática)</p><p class="fv">${m.vigencia === 'ativo' ? 'Dentro do prazo típico de SE (180 dias)' : m.vigencia === 'prazo_tipico_vencido' ? 'Prazo típico de SE vencido; pode ter sido prorrogado' : 'Data insuficiente para aferir'}</p>` : ''}
       ${m.marcador_decreto ? `<p class="fk">Conteúdo do decreto (leitura editorial · não altera a nota)</p><p class="fv">${m.marcador_decreto}</p>` : ''}
       <hr class="card-sep">`;
   } else if (q && matches.length > 1){
-    html += `<p style="margin:0 0 10px;">Há municípios com esse nome em mais de um estado (${[...new Set(matches.map(m=>m.uf))].join(', ')}); selecione o seu ao lado.</p>`;
+    html += `<p>Há municípios com esse nome em mais de um estado (${[...new Set(matches.map(m=>m.uf))].join(', ')}); selecione o seu ao lado.</p>`;
   } else if (q){
     const naLista = ufFinal && MUN_REF[ufFinal] && MUN_REF[ufFinal].some(n => nrm(n) === q);
     if (ufFinal && !naLista){
-      html += `<p style="margin:0 0 10px; color:var(--muted);">Não encontrei esse nome na lista oficial de municípios de ${UF_NOME[ufFinal]}; confira a grafia (a lista completa aparece enquanto você digita).</p>`;
+      html += `<p class="u-muted">Não encontrei esse nome na lista oficial de municípios de ${UF_NOME[ufFinal]}; confira a grafia (a lista completa aparece enquanto você digita).</p>`;
     } else {
       const emergsSemReg = ufFinal ? emergenciasDoMunicipio(document.getElementById('cidadeInput').value.trim(), ufFinal) : [];
-      html += emergsSemReg.map(e => `<h4>${document.getElementById('cidadeInput').value.trim()} · ${ufFinal}</h4><p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span style="color:var(--muted)"> · ${e.fonte}</span></p>`).join('');
+      html += emergsSemReg.map(e => `<h4>${document.getElementById('cidadeInput').value.trim()} · ${ufFinal}</h4><p class="fk">Decreto de emergência (ato de resposta · não pontua)</p><p class="fv">${e.data} · ${e.causa}${e.decreto ? ' · ' + e.decreto : ''}<span class="u-muted"> · ${e.fonte}</span></p>`).join('');
       const _nivCard = ufFinal ? nivelVerificacao(ufFinal, document.getElementById('cidadeInput').value.trim()) : 'nao_verificado';
       // PR-N0 §1.2 (06/09/2026): rótulo público da cobertura do diário oficial — "verificado em diário oficial" só
       // para município coberto (coberto_sem_mencao/com_excerto); não indexado diz isso, nunca "nada localizado".
       const _cob = (typeof VMUN !== 'undefined' && VMUN) ? VMUN[String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0')] : undefined;
       { const _ib = String(MUN_COD[ufFinal + '|' + document.getElementById('cidadeInput').value.trim()] || '').padStart(7, '0');
         const _r = RESP_MUN && RESP_MUN.municipios && RESP_MUN.municipios[_ib];
-        html += `<p style="margin:0 0 6px;"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
-      if (_cob !== undefined) html += `<p style="margin:0 0 6px;" class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
-      html += `<p style="margin:0 0 10px;"><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
-      <p style="margin:6px 0 12px;"><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
-      ${ufFinal ? '' : '<p style="margin:0; color:var(--muted);">Selecione o estado para ver o retrato estadual.</p>'}<hr style="border:none; border-top:1px solid var(--line); margin:14px 0;">`;
+        html += `<p class="u-mb-2"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
+      if (_cob !== undefined) html += `<p class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
+      html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
+      <p><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
+      ${ufFinal ? '' : '<p class="u-muted">Selecione o estado para ver o retrato estadual.</p>'}<hr class="card-sep">`;
     }
   }
 
@@ -588,32 +589,32 @@ function renderMinha(){
 
     html += `<h4>${UF_NOME[ufFinal]} no MARÉ</h4>
       ${miniGauge(v.total)}
-      <p style="margin:0 0 8px; color:var(--muted); font-size:13.5px;">Confiança da verificação: ${v.confianca}</p>
+      <p class="note">Confiança da verificação: ${v.confianca}</p>
       <ul>
         <li><strong>${delta >= 0 ? String(delta).replace('.',',') + ' pontos acima' : String(Math.abs(delta)).replace('.',',') + ' pontos abaixo'}</strong> da média nacional (${String(MEDIA_NACIONAL).replace('.',',')} / 100)</li>
         <li>Instrumento operacional estadual: ${STATUS_HUMANO[v.status_estadual]}</li>
         <li>Estrutura de coordenação estadual: ${STATUS_HUMANO_ESTR[v.estrutura_status] || v.estrutura_status}</li>
         <li>Cobertura municipal documentada: <strong>${String(i.pct).replace('.',',')}%</strong> (${i.n_plano} plano(s) preventivo(s), ${i.n_decreto} decreto(s) reativo(s))${decl ? ` · declarada a órgãos de controle: ${(100*decl/i.total).toFixed(1).replace('.',',')}%` : ''}</li>
       </ul>
-      <h4 style="margin-top:16px;">O que fazer e o que cobrar</h4>
+      <h4>O que fazer e o que cobrar</h4>
       <ul>
         <li><strong>Emergência:</strong> Defesa Civil: ligue <strong>199</strong> · Corpo de Bombeiros, <strong>193</strong>.</li>
         <li><strong>Alertas oficiais no celular:</strong> envie seu CEP por SMS para <strong>40199</strong> (cadastro gratuito de alertas da Defesa Civil Nacional).</li>
         <li><strong>Órgão estadual responsável:</strong> ${EST[ufFinal] ? EST[ufFinal].orgao : 'Defesa Civil estadual'}${EMAILS[ufFinal] ? ` · <a href="mailto:${EMAILS[ufFinal]}">${EMAILS[ufFinal]}</a>` : ''}${DOM_LINKS[ufFinal] ? ` · decretos municipais publicados no <a href="${DOM_LINKS[ufFinal]}" target="_blank" rel="noopener">Diário Oficial dos Municípios</a>` : ''}.</li>
         ${FIN && FIN[ufFinal] ? `<li><strong>Dinheiro:</strong> por onde o recurso chega ao seu estado — fundo estadual preventivo, rotas federais e o que o decreto destranca — está em <a href="financiamento.html#porestado">Por onde o dinheiro chega</a> (peso zero no índice).</li>` : ''}
-        <li style="color:var(--muted); font-size:13.5px;">Contatos estaduais conforme o diretório oficial do MIDR (atualizado pelo ministério em 11/09/2024); confirme no site do órgão antes de demandas formais.</li>
+        <li class="note">Contatos estaduais conforme o diretório oficial do MIDR (atualizado pelo ministério em 11/09/2024); confirme no site do órgão antes de demandas formais.</li>
         <li><strong>Peça o documento:</strong> solicite o PLANCON atualizado à prefeitura pela ouvidoria/e-SIC, citando a Lei de Acesso à Informação (Lei 12.527/2011): resposta obrigatória em até 20 dias.</li>
         ${acoes.map(a => `<li>${a}</li>`).join('')}
       </ul>
       <button type="button" id="btnPDF" class="btn-pdf">Baixar relatório em PDF</button>
-      <p class="note" style="font-size:12.5px; color:var(--muted); margin:6px 0 0;">Relatório com os dados desta consulta, contatos e fontes, para guardar, imprimir ou encaminhar.</p>
+      <p class="note">Relatório com os dados desta consulta, contatos e fontes, para guardar, imprimir ou encaminhar.</p>
       ${htmlPedidoAcesso(ufFinal, document.getElementById('cidadeInput').value.trim())}
       <h4>Como se proteger (${guiasDoEstado(ufFinal).length < 3 ? 'riscos projetados do seu estado' : 'guias gerais'})</h4>
       ${guiasDoEstado(ufFinal).map(g => htmlGuia(g)).join('')}
       ${(typeof HAB_SET !== 'undefined' && HAB_SET.has((document.getElementById('cidadeInput').value.trim().toLowerCase()) + '|' + ufFinal))
-        ? `<p style="margin:8px 0 0; background:var(--osso-claro); border-left:4px solid var(--musgo); border-radius:8px; padding:10px 12px;"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
+        ? `<p class="aviso-direito"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
         : ''}
-      <p class="note" style="margin-top:4px;">Encontrou erro, atualização ou um documento que não temos? <a href="envie-dados.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
+      <p class="note">Encontrou erro, atualização ou um documento que não temos? <a href="envie-dados.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
   }
   card.innerHTML = html;
   animarGauges(card);
@@ -916,7 +917,7 @@ function copiarPedido(botao){
 }
 __load().catch(err => {
   document.body.insertAdjacentHTML('afterbegin',
-    '<div style="background:var(--argila);color:#fff;padding:14px 20px;font-family:Archivo, system-ui, sans-serif;">' +
+    '<div class="erro-carga">' +
     'Erro ao carregar os dados: ' + err.message +
     '. Sirva a pasta via HTTP (ex.: <code>npx serve</code>) — abrir o arquivo diretamente bloqueia o fetch.</div>');
 });

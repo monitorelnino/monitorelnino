@@ -68,10 +68,10 @@ setTimeout(() => {
   teste("bloco 6: 5 programas permanentes", q("programasCards").children.length === 5);
   teste("bloco 7: compromissos listados", d.querySelectorAll("#tblCompromissos tbody tr").length >= 4);
   // v3.1 §7: as fontes do financiamento vivem em pesquisadores.html
-  const caixas = [...d.querySelectorAll(".map-box, .chart-box")].filter(c => c.querySelector("svg, canvas, table, ul"));
+  const caixas = [...d.querySelectorAll(".figura")].filter(c => c.querySelector("svg, canvas, table, ul"));
   const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura") && !c.closest("#rotasCards") && !c.closest("#programasCards") && !c.closest("#comoler"));
   teste(`toda figura tem crédito de fonte (${caixas.length - semCredito.length}/${caixas.length})`, semCredito.length === 0);
-  teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p:not(.map-card-sub):not(.map-card-h)").length === 0));
+  teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p:not(.figura-sub):not(.figura-cat):not(.figura-leitura)").length === 0));
   try { const p = q("mapaFundo").querySelector("path"); p.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true })); teste("gesto: tooltip", q("mapTooltip").style.display === "block"); } catch (e) { teste("gesto: tooltip", false); }
   // E10: nenhum nome de parlamentar / campo de autor na página renderizada
   const html = d.documentElement.outerHTML;

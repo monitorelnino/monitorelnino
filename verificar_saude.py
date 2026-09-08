@@ -26,7 +26,7 @@ PREDITIVAS = re.compile(r"\b(prevemos|projetamos|estimamos|acreditamos que (?:ha
 def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dict, atos: dict) -> list:
     erros = []
     # (a) crédito por figura: cada cartão com svg/canvas precisa de chamada fonteFigura(id)
-    caixas = re.findall(r'<div class="(?:map-box|chart-box)[^"]*" id="([^"]+)"', html)
+    caixas = re.findall(r'<figure class="figura[^"]*" id="([^"]+)"', html)
     for cid in caixas:
         if f"fonteFigura('{cid}'" not in html:
             erros.append(f"(a) figura sem crédito de fonte: #{cid}")

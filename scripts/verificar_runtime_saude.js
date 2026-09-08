@@ -72,7 +72,7 @@ setTimeout(() => {
     teste("gesto: tooltip abre ao passar o mouse", q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
   } catch (e) { teste("gesto: tooltip", false); }
   // crédito por figura: UMA linha .fonte-figura ao pé do cartão
-  const caixas = [...d.querySelectorAll(".map-box, .chart-box")].filter(c => c.querySelector("svg, canvas, #quadrantes"));
+  const caixas = [...d.querySelectorAll(".figura")].filter(c => c.querySelector("svg, canvas, #quadrantes"));
   const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura"));
   teste(`toda figura tem crédito de fonte (${caixas.length - semCredito.length}/${caixas.length})`, semCredito.length === 0);
   teste("Monitor Saúde: mapa com 27 UFs, legenda com contagens e barras só para verificadas", (() => {
@@ -81,7 +81,7 @@ setTimeout(() => {
     return d.querySelectorAll("#mapaMonitor path").length === 27 && /não verificado/.test(q("legMonitor").textContent)
       && d.querySelectorAll("#monitorBarras .msb").length === Math.max(1, ver) && d.querySelectorAll("#tblMonitor tbody tr").length === 27;
   })());
-  teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p:not(.map-card-sub):not(.map-card-h)").length === 0));
+  teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p:not(.figura-sub):not(.figura-cat):not(.figura-leitura)").length === 0));
   // linguagem: "não localizamos" só como lacuna de coleta ("Não localizamos coleta"), nunca sobre instrumento não verificado
   const texto = d.body.textContent;
   const naoLocIndevido = /não localizamos (?!coleta)/i.test(texto);

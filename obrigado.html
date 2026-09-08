@@ -27,28 +27,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=340c7bbc">
-<style>
-/* --- obrigado.html: estilos próprios desta página (o compartilhado está na folha base) --- */
-  *{box-sizing:border-box;}
-  ul{margin:4px 0 12px; padding-left:20px;}
-  li{margin:0 0 6px; line-height:1.55;}
-  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:0 0 18px;}
-  .destaque{background:var(--osso-claro); border:1px solid var(--line); border-left:4px solid var(--link); border-radius:10px; padding:14px 16px; margin:0 0 18px;}
-  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
-  .mast-body{display:flex; justify-content:space-between; align-items:flex-end; gap:18px 28px; flex-wrap:wrap; margin-bottom:20px;}
-  .mast-body .sub{flex:1 1 460px; margin:0;}
-  .masthead--mini .mast-sub{margin-bottom:0;}
-  .masthead--mini .grad-line{margin-top:16px;}
-</style>
+<link rel="stylesheet" href="assets/tokens.css?v=bf4569ad">
+<link rel="stylesheet" href="assets/base.css?v=1b66a961">
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead masthead--mini">
     <div class="mast-top">
-      <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
       <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="pesquisadores.html">Pesquisadores</a><a href="imprensa.html">Imprensa</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Envie um plano ou decreto</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
@@ -57,7 +44,6 @@
     <div class="grad-line"></div>
   </header>
 <main id="conteudo">
-
   <h1>Contribuição recebida. Obrigado.</h1>
   <p class="hint">Seu envio entrou na fila de verificação do Monitor El Niño Brasil. A conferência é <strong>automática, mas não imediata</strong>: roda na atualização semanal seguinte, e checa se a fonte é oficial, se o documento abre e se o conteúdo corresponde ao que você declarou.</p>
   <p>Aprovado, o documento entra na atualização seguinte do mapa e do índice — normalmente na segunda-feira — com fonte e canal registrados no banco público. Envios que não passam na verificação não são publicados, e o motivo fica registrado. Se você informou um e-mail e a conferência precisar de esclarecimento, escreveremos.</p>
@@ -65,12 +51,14 @@
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
-    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-linha">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
+<script src="assets/colunas.js?v=247b398e" defer></script>
+<script src="assets/js/obrigado.js?v=7b46659b" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
@@ -81,7 +69,6 @@
   </div>
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
-<script src="assets/colunas.js?v=3afa08c5" defer></script>
-<script src="assets/js/obrigado.js?v=7b46659b" defer></script>
+
 </body>
 </html>
