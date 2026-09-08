@@ -55,6 +55,7 @@ Nenhuma alteração de método; nenhum número muda. Classe **design + código**
 - **Portão 1 (`verificar_estrutura.js`) endurecido:** escala nova; proíbe `<style>` na página, tipografia/espaçamento em `style=` (HTML e HTML gerado por script), classes legadas (`map-box`, `chart-box`, `map-card-h`, `card`, `kpi`…), numeração à mão em títulos, `font-size` em px e espaçamento fora dos tokens em `base.css`; exige a estrutura completa de `.figura`. Teste negativo executado (h1 com `font-size:15px` → acusado).
 - `verificar_figuras.js` (formato único de crédito, nove páginas), `verificar_runtime_*`, `verificar_saude.py`, `verificar_financiamento.py`, `verificar_palavras.js` atualizados para o componente. `verificar_financiamento.py` deixa de exigir em Financiamento créditos de figuras que vivem em Pesquisadores.
 - `portoes.yml` não foi tocado (o token da sessão não tem escopo `workflow`): o portão 18 entra no CI quando o token clássico for usado; até lá roda localmente (`npm run verificar:visual`).
+- **08/09/2026 — regra de merge:** por decisão escrita da editoria, Claude passa a fazer o merge dos PRs que abre, condicionado aos 18 portões locais e à Action "Portões" verdes; lançamento e reversão do domínio seguem com a editoria (PROTOCOLO §3.1 e §5 atualizados).
 - **08/09/2026:** resolvido — o portão 18 entrou no `portoes.yml` (passo próprio, após o portão móvel, no mesmo Chromium), com token fine-grained que passou a ter a permissão Workflows.
 
 ### Páginas revisadas
