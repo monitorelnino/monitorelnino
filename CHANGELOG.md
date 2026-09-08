@@ -9,6 +9,65 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## v3.1.1 — auditoria de consistência visual e estrutural · 07/09/2026 · em publicação (PR)
+
+Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria: "nenhum elemento equivalente pode ter estilo próprio" — corrigir todas as inconsistências existentes antes de qualquer solução visual nova.
+
+### O que foi encontrado (medido num Chromium real, 11 páginas × 3 larguras, antes da correção)
+- **17 tamanhos de fonte computados** em uso (10,4 · 12 · 12,5 · 13,5 · 15 · 17 · 18 · 19 · 23 · 24 · 28 · 30 · 33 · 38 · 44 · 46 · 52 px) para oito papéis tipográficos.
+- Famílias equivalentes com estilos divergentes no desktop: H2 (4 estilos), título de figura (3), crédito de figura (3), `.hint` (9), `.note` (5), versalete (5), painel (2), cartão (3), navegação (2); no celular, ainda mais.
+- **47 créditos de figura em oito formatos** ("Fonte: X · 07/09/2026", "consultado em", "busca de", "corte", "carga", "Fontes:", com explicações anexas, e um vazio).
+- **16 pares de figuras lado a lado** com subtítulo ou mídia em posição vertical diferente (1 a 20 px), por `max-width` inline (560/640 px) e alturas de canvas inline (220/230 px).
+- **326 linhas de CSS local só em `index.html`** (redefinindo `body`, `h1`, `h2` com `!important`, `.wrap`, rodapé, tabela, botão) e mais 257 em outras dez páginas; **212 atributos `style=`** nas páginas (46 só na inicial), incluindo `font-size:12.5px`, `font-size:13.5px`, `font-size:15px` em texto.
+- Numeração: seção **"0 · MARÉ · Saúde"**; gráficos da Defesa civil numerados 1, 2, 4, 5, 6 (sem 3); mapas "1, 1b, 2…"; em Sinais, mapas e gráficos recomeçavam do 1 na mesma página; `cartaoCiclo0` como id.
+- Estrutura: `<main class="wrap">` dentro de `<div class="wrap">` (Saúde, Financiamento, Imprensa — conteúdo 48 px mais estreito que nas demais); acordeão "Registros e fontes" aninhado dentro do acordeão "Log" em Pesquisadores; `<li>` soltos numa `<div class="kit-grid">`; `</body></html>` e o bloco VLibras duplicados em Pesquisadores e Calendário; créditos de `#boxFontesMonit` e `#boxConsultas` chamados do script de Financiamento para figuras que vivem em Pesquisadores (nunca renderizavam); link "mapa 4 do monitor" de Proteja-se apontando para a inicial, onde não há mapas; kicker do masthead com texto diferente na inicial.
+
+### Design system (assets/tokens.css — fonte única)
+- **Tipografia (8 degraus, cada um com a própria entrelinha):** display 48 · h1 36 · h2 28 · h3 22 · h4 18 · corpo 16 · small 14 · caption 12. Fraunces peso regular para títulos (nunca bold), Archivo para corpo, Archivo Narrow para dado/versalete. Letter-spacing em dois tokens (`--ls-caps` .06em, `--ls-caps-largo` .14em).
+- **Espaçamento (9 degraus):** 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96, com papéis nomeados (`--esp-secao`, `--esp-painel`, `--esp-figura`, `--esp-grade`, `--esp-titulo`, `--esp-figura-legenda`).
+- **Grade:** 1180 px, 12 colunas, gap 24, margens 24 (16 no celular); pontos de quebra 1020 e 640 (os únicos).
+- **Figuras:** mapa sempre `aspect-ratio 480/460`; gráfico 260 px (340 px em largura total); tabela rolável até 480 px; diagrama das MPs 300 px.
+- Cores: sem mudança (tema técnico de 05/09); dois tokens novos para o tooltip e a sombra.
+
+### Componentes globais (assets/base.css — folha única, 510 linhas; todo CSS de página eliminado)
+- **`.figura`** — componente único de figura científica: `<figure class="figura figura--mapa|--grafico|--tabela|--diagrama|--barras|--indicador [figura--largo]">` com `.figura-cat` (opcional) · `.figura-titulo` · `.figura-sub` (período · variável · unidade) · `.figura-midia` · `.map-legend` · `.figura-leitura` (opcional) · `.figura-pe` (crédito `.fonte-figura` + `.figura-num`). Título e subtítulo reservam duas linhas, por isso mídia, legenda e crédito ficam na mesma altura em figuras vizinhas; o pé é ancorado embaixo. **Todas as 51 figuras do site** (Defesa civil 15 · Saúde 13 · Financiamento 13 · Sinais 9 · Pesquisadores 1) usam essa estrutura; o contador e os prazos da inicial usam o mesmo crédito.
+- **`.cartao`** — cartão de texto/indicador/documento (substitui `.card`, `.chart-box` usado como cartão, `.kpi`, `.tr-card`, `.export-box`), com variantes de acento por modificador.
+- **`.panel`** com acentos por modificador (`panel--acento-teal|rust|ink|link|musgo`, `panel--destaque`) em vez de `style="border-top:…"`.
+- **`.grade-figuras`** (2 colunas ≥ 1021 px, 1 abaixo) e **`.grade-cartoes`** substituem `.maps-grid`/`.charts-grid`/`.kit-grid`.
+- Medidor, contador, mosaico de estados, cartões de estado/cidade, relógios de prazo, barras por UF, situação atual, fichas do Proteja-se, checklist, acordeões, formulários, botões, tabelas, rodapé: cada um com uma única regra, tokenizada.
+- Utilitários mínimos (`u-mt-*`, `u-mb-*`, `u-muted`, `u-rust`, `nowrap`, `dado`) só com tokens, para as poucas exceções de ritmo.
+
+### Créditos, legendas e numeração
+- **Formato único de crédito**, gerado só por `MonitorMapas.credito(id, {fontes, data, url})`: "Fonte: órgão · documento · Atualização: dd/mm/aaaa" ou "… · Atualização: sem coleta até o corte". Texto livre é recusado pela função (lança erro). Todos os 60+ pontos de chamada nos seis scripts foram convertidos; datas normalizadas (aceita dd/mm/aaaa com hora e aaaa-mm-dd).
+- Toda figura passou a ter crédito — os 11 mapas e gráficos de antecipação da Defesa civil não tinham nenhum.
+- **Legenda:** um estilo (`.map-legend`), inclusive a escala contínua, que tinha `font-size:12.5px` inline no motor de mapas.
+- **Numeração automática, índice + 1:** `assets/colunas.js` escreve "Figura N" em toda `.figura` e "N · " nos H2 das páginas de dados (`body.pagina-dados`: Defesa civil, Sinais, Saúde, Financiamento, Imprensa, Calendário) na ordem do documento. Nenhum número fica escrito à mão no HTML (portão 1 bloqueia). Ids internos `cartaoCiclo1…4`.
+- Motor de gráficos e mapas: fonte dos rótulos em 12 px (era 11,5 e 11); textos do diagrama de rotas em 12/14 (eram 10,5 · 11 · 12,5 · 13); relógio de prazo em 28/12.
+
+### Exceções eliminadas
+- 11 blocos `<style>` de página (583 linhas), incluindo as regras `h2{font-size:28px !important}`, `h3{19px !important}`, `.hint{15px !important}`, `.note{13.5px !important}`, `h1{font-weight:500 !important}`, `#meuCard h4{margin:18px 0 8px !important; font-size:17px !important}` da inicial.
+- 197 atributos `style=` de tipografia, espaçamento, cor e largura (restam 15 na inicial, todos posicionais e dirigidos por dado: `left:25%`, `--galvo`, `width:0%`).
+- `max-width:560px`/`640px` em três mapas; `height:230px`/`220px` em dois gráficos; `margin-top:6px` num crédito; `font-size:15px` no botão "×"; `font-size:12.5px` em rodapés e notas; `flex:1 1 460px`, `line-height:0` e `display:block; text-decoration:none` inline em logotipos.
+- Tamanhos 12,5 · 13,5 · 15 · 17 · 19 · 23 · 38 · 52 · 44 · `clamp(...)` — todos mapeados para a escala.
+
+### Portões
+- **Novo portão 18 — `scripts/verificar_consistencia_visual.js`** (Playwright, 1366 · 900 · 390 px): falha se uma família de elementos equivalentes tiver mais de um estilo computado, se algum `font-size` computado estiver fora da escala, se figuras lado a lado tiverem largura, altura ou posição de título/subtítulo/mídia diferentes, se algum crédito fugir do formato único, se a numeração não for 1, 2, 3… ou se houver rolagem horizontal. Teste negativo executado (token `--fs-h3` alterado para 21 px → acusado; restaurado → verde).
+- **Portão 1 (`verificar_estrutura.js`) endurecido:** escala nova; proíbe `<style>` na página, tipografia/espaçamento em `style=` (HTML e HTML gerado por script), classes legadas (`map-box`, `chart-box`, `map-card-h`, `card`, `kpi`…), numeração à mão em títulos, `font-size` em px e espaçamento fora dos tokens em `base.css`; exige a estrutura completa de `.figura`. Teste negativo executado (h1 com `font-size:15px` → acusado).
+- `verificar_figuras.js` (formato único de crédito, nove páginas), `verificar_runtime_*`, `verificar_saude.py`, `verificar_financiamento.py`, `verificar_palavras.js` atualizados para o componente. `verificar_financiamento.py` deixa de exigir em Financiamento créditos de figuras que vivem em Pesquisadores.
+- `portoes.yml` não foi tocado (o token da sessão não tem escopo `workflow`): o portão 18 entra no CI quando o token clássico for usado; até lá roda localmente (`npm run verificar:visual`).
+
+### Páginas revisadas
+As 11: index · defesa-civil · sinais-de-risco · saude · financiamento · proteja-se · pesquisadores · envie-dados · imprensa · calendario-eleitoral · obrigado — masthead, navegação e rodapé gerados do mesmo molde; 24 portões verdes, portão móvel (390 px) verde, portão 18 verde nas três larguras.
+
+### Rebase sobre a main (PR #104, "Envie um plano ou decreto")
+- O ramo foi construído sobre `825bd24` e reaplicado sobre a `main` já com o PR #104: a navegação das 11 páginas mantém a ordem e o CTA "Envie um plano ou decreto" (último item), `envie-dados.html` mantém título, metadados e âncoras do #104, e `verificar_estrutura.js` continua exigindo essa ordem.
+- Para a navegação continuar numa linha só no desktop (regra da editoria de 03/09) com o CTA mais longo, o ajuste do #104 (`letter-spacing:.02em`, separadores com margem 2 px) entra pelo sistema de tokens: novo token `--ls-nav: .02em` em `tokens.css`, aplicado só a `.mainnav a/span`, e separadores sem margem própria (o espaçamento vem do `gap` da grade). Medido em Chromium a 1366 px: 1083 px necessários para 1132 px disponíveis, altura da navegação 36 px nas 11 páginas.
+
+### O que ainda não pôde ser padronizado (declarado)
+- Numeração e créditos dependem de JavaScript (como todo o conteúdo do site, que é carregado de `data/`); sem JS a figura fica sem "Figura N".
+- O kicker do masthead ganhou o mesmo texto em todas as páginas ("… · Uma publicação Futura Evidence Lab"); se a editoria preferir a versão curta na inicial, é uma linha em `index.html`.
+- Cores de dado em `style="background:…"` nas legendas e barras continuam inline por serem dirigidas pelo dado (a paleta vem de `MonitorMapas.cor`, nunca de hex solto — portão 1).
+
 ## v3.1 — "edição narrativa" · 06/09/2026 · fechada (documentos de transferência REDESENHO_NARRATIVO_MARE_v3_1 e INSTRUCOES_diarios_defeso_LAI)
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).

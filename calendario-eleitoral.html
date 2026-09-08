@@ -27,51 +27,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=340c7bbc">
-<style>
-/* --- calendario-eleitoral.html: estilos próprios desta página (o compartilhado está na folha base) --- */
-  *{box-sizing:border-box;}
-  ul{margin:4px 0 12px; padding-left:20px;}
-  li{margin:0 0 6px; line-height:1.55;}
-  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:0 0 18px;}
-  .destaque{background:var(--osso-claro); border:1px solid var(--line); border-left:4px solid var(--link); border-radius:10px; padding:14px 16px; margin:0 0 18px;}
-  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
-  .mast-body{display:flex; justify-content:space-between; align-items:flex-end; gap:18px 28px; flex-wrap:wrap; margin-bottom:20px;}
-  .mast-body .sub{flex:1 1 460px; margin:0;}
-  .masthead--mini .mast-sub{margin-bottom:0;}
-  .masthead--mini .grad-line{margin-top:16px;}
-  .check{list-style:none; padding:0; margin:12px 0 0;}
-  .check li{position:relative; padding:9px 0 9px 34px; border-top:1px solid var(--line); font-size:15px; line-height:1.55;}
-  .check li:first-child{border-top:0;}
-  .check li::before{content:""; position:absolute; left:2px; top:13px; width:18px; height:18px; border:2px solid var(--link); border-radius:5px; background:var(--card);}
-  .check li b{display:block; font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:600; font-size:15px;}
-  .categorias{width:100%; border-collapse:collapse; font-size:15px; margin:12px 0 0;}
-  .categorias th,.categorias td{text-align:left; vertical-align:top; padding:8px 10px 8px 0; border-top:1px solid var(--line);}
-  .categorias th{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); border-top:0;}
-  .categorias td:first-child{white-space:nowrap; font-weight:600;}
-  .conta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; padding:2px 8px; border-radius:999px; white-space:nowrap;}
-  .conta.sim{background:var(--musgo); color:var(--branco);}
-  .conta.parcial{background:var(--ambar); color:var(--abissal);}
-  .conta.nao{background:var(--argila); color:var(--branco);}
-  .grid2{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:18px; margin-top:14px;}
-  .categorias{table-layout:fixed;}
-  .categorias th:nth-child(1),.categorias td:nth-child(1){width:26%;}
-  .categorias th:nth-child(3),.categorias td:nth-child(3){width:22%;}
-  .categorias td,.categorias th{overflow-wrap:anywhere;}
-  @media (max-width:640px){ .categorias td:first-child{white-space:normal;} }
-  @media (max-width:640px){ .categorias{font-size:13.5px;} }
-  @media (max-width:640px){ .conta{white-space:normal;} }
-  @media (max-width:640px){ .categorias th:nth-child(1),.categorias td:nth-child(1){width:30%;} }
-  @media (max-width:640px){ .categorias th:nth-child(3),.categorias td:nth-child(3){width:26%;} }
-</style>
+<link rel="stylesheet" href="assets/tokens.css?v=bf4569ad">
+<link rel="stylesheet" href="assets/base.css?v=1b66a961">
 </head>
-<body>
+<body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead masthead--mini">
     <div class="mast-top">
-      <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
       <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="pesquisadores.html">Pesquisadores</a><a href="imprensa.html">Imprensa</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Envie um plano ou decreto</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
@@ -83,20 +47,20 @@
   <h1>O calendário eleitoral</h1>
   <p class="hint">A lei está citada; os números são contagens e comparações; a conclusão fica com o leitor. Peso zero no índice.</p>
   <div class="panel" id="bloco1">
-    <h2>1 · O que a lei suspende e o que não suspende (04/07–25/10/2026)</h2>
+    <h2>O que a lei suspende e o que não suspende (04/07–25/10/2026)</h2>
     <p class="hint">Cada linha foi conferida no texto legal em <span id="calConferido">—</span>: o trecho lido abre ao clicar em "trecho". Janela dos três meses: <strong>04/07 a 04/10/2026</strong> (primeiro turno); para os efeitos deste site, o período vai até o segundo turno, <strong>25/10</strong>.</p>
     <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblDispositivos"><thead><tr><th>Dispositivo</th><th>O que bloqueia</th><th>Exceção</th><th>O que significa para a preparação</th><th>Trecho e fonte</th></tr></thead><tbody></tbody></table></div>
   </div>
   <div class="panel" id="bloco2">
-    <h2>2 · O que não é suspenso</h2>
+    <h2>O que não é suspenso</h2>
     <p class="hint">O diário oficial não é publicidade: publicar atos é dever legal. O que a lei deixa aberto, com a base conferida em cada linha:</p>
     <ul class="fontes-list" id="listaNaoSuspenso"></ul>
   </div>
   <div class="panel" id="bloco3">
-    <h2>3 · O que o Monitor mediu</h2>
+    <h2>O que o Monitor mediu</h2>
     <p class="hint">Duas medidas, sempre separadas: <strong>o que fica invisível pelo defeso</strong> (a divulgação e, com ela, parte dos documentos) e <strong>o que fica invisível pelo nosso alcance</strong> (municípios sem diário indexado). Só a primeira é atribuível à lei.</p>
     <ul class="fontes-list">
-      <li>Fontes oficiais que responderam com página de período eleitoral: <strong id="calSuspensas">—</strong> <span id="calSetores" style="color:var(--muted);"></span></li>
+      <li>Fontes oficiais que responderam com página de período eleitoral: <strong id="calSuspensas">—</strong> <span id="calSetores" class="u-muted"></span></li>
       <li>Vigilância em saúde em edição eleitoral: <strong id="calSaudeDefeso">—</strong></li>
       <li>Municípios sem diário indexado no Querido Diário (buraco do Monitor, não da lei): <strong id="calSemCobertura">—</strong></li>
       <li>Decretos no período eleitoral: <strong id="calDecretos">—</strong> · fatia "antes de evento, com previsão": em classificação até o adaptador municipal existir</li>
@@ -105,33 +69,23 @@
     </ul>
   </div>
   <div class="panel" id="bloco4">
-    <h2>4 · A reabertura (a partir de 26/10)</h2>
-    <p class="hint">Publicado a partir de 26/10/2026, com contagens e datas: fontes que voltaram; instrumentos localizados com data anterior a 25/10; transferências represadas que saíram; variação da média decomposta por causa. Até lá, o espaço fica visível de propósito.</p>
+    <h2>A reabertura (a partir de 26/10)</h2>
+    <p class="hint u-mb-0">Publicado a partir de 26/10/2026, com contagens e datas: fontes que voltaram; instrumentos localizados com data anterior a 25/10; transferências represadas que saíram; variação da média decomposta por causa. Até lá, o espaço fica visível de propósito.</p>
   </div>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
-    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-linha">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
+<script src="assets/colunas.js?v=247b398e" defer></script>
+<script src="assets/js/calendario-eleitoral.js?v=a9d7b87e" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
-<div vw class="enabled">
-  <div vw-access-button class="active"></div>
-  <div vw-plugin-wrapper>
-    <div class="vw-plugin-top-wrapper"></div>
-  </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
-<script src="assets/colunas.js?v=3afa08c5" defer></script>
-<script src="assets/js/calendario-eleitoral.js?v=0c4f6f72" defer></script>
-</body>
-</html>
-
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
   <div vw-plugin-wrapper>

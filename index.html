@@ -35,389 +35,59 @@
 <script src="assets/vendor/jspdf.umd.min.js?v=98ccf17a"></script>
 
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=340c7bbc">
-<script src="assets/mapas.js?v=a30a521e"></script>
-<style>
-  *{box-sizing:border-box;}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:1180px; margin:0 auto; padding:36px 28px 80px;}
-
-  header{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:28px;}
-  .eyebrow{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); margin:0 0 8px;}
-  h1{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:600; font-size:clamp(26px,3.4vw,38px); margin:0; line-height:1.1;}
-  .site-sub{color:var(--muted); font-size:15px; max-width:60ch; margin-top:8px;}
-  .meta{text-align:right; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:13.5px; color:var(--muted); line-height:1.7;}
-  .meta strong{color:var(--ink); font-weight:500;}
-
-  .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:32px;}
-  .kpi{background:var(--branco); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;}
-  .kpi .n{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:28px; font-weight:600;}
-  .kpi .l{font-size:13.5px; color:var(--muted); margin-top:4px;}
-
-  .layout{display:grid; grid-template-columns:1.55fr 1fr; gap:24px; align-items:start;}
-  /* (.panel h2 removida em 31/08/2026 — era código morto: a regra global h2{font-size:28px !important} sempre venceria) */
-  .panel .hint{font-size:15px; color:var(--muted); margin-bottom:18px;}
-
-  .regions{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
-    .region-col{position:relative; padding-top:56px;}
-  .region-col h3{position:absolute; top:0; left:0; right:0; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0; text-align:center; line-height:1.45; word-break:normal; hyphens:none;}
-  .tiles{display:flex; flex-direction:column; gap:6px;}
-  .tile{
-    border-radius:7px; padding:9px 8px; cursor:pointer; text-align:center;
-    font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:13.5px; font-weight:500;
-    border:1px solid var(--line); transition:transform .12s ease, box-shadow .12s ease;
-    position:relative; color:var(--branco); background:var(--branco);
-  }
-  .tile:hover{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); border-color:var(--teal);}
-  .tile.active{outline:2px solid var(--ink); outline-offset:2px;}
-  .tile .cap-dot{position:absolute; top:5px; right:6px; width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.6;}
-  .tile .tile-uf{display:block; font-weight:700;}
-  .tile .tile-score{display:block; font-size:12px; font-weight:600; opacity:.85; margin-top:1px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; letter-spacing:.02em; font-variant-numeric:tabular-nums;}
-  .tile .tile-bar{height:6px; background:var(--sem-dado); border-radius:3px; overflow:hidden; margin-top:4px;}
-  .tile .tile-fill{height:100%; width:0;
-    background:linear-gradient(90deg,var(--argila) 0%,var(--ambar) 20%,var(--mineral) 48%,var(--musgo) 88%);
-    background-size:calc(10000%/var(--galvo,1)) 100%; background-repeat:no-repeat;
-    border-radius:3px; transition:width 1.2s cubic-bezier(.2,.7,.3,1);}
-  @media (prefers-reduced-motion: reduce){ .tile .tile-fill{transition:none;} }
-
-  /* ===== Barra principal: textura de corrente quente (El Niño) ===== */
-  #hero .gauge-fill::after{content:''; position:absolute; inset:0; border-radius:inherit;
-    background:
-      radial-gradient(72px 2.5px at 36px 26%, rgba(255,255,255,.17) 55%, transparent 62%) repeat-x,
-      radial-gradient(98px 3px at 60px 52%, rgba(21,32,26,.09) 55%, transparent 62%) repeat-x,
-      radial-gradient(58px 2px at 20px 76%, rgba(255,255,255,.12) 55%, transparent 62%) repeat-x,
-      linear-gradient(180deg, transparent 30%, rgba(255,255,255,.06) 31%, rgba(255,255,255,.06) 32%, transparent 33%,
-        transparent 62%, rgba(255,255,255,.05) 63%, rgba(255,255,255,.05) 64%, transparent 65%);
-    background-size: 156px 100%, 214px 100%, 132px 100%, 100% 100%;
-    animation: correnteQuente 7.5s linear infinite;}
-  @keyframes correnteQuente{to{background-position: 156px 0, 214px 0, 132px 0, 0 0;}}
-  #hero .gauge-fill::before{content:''; position:absolute; top:0; bottom:0; right:0; width:26px;
-    border-radius:inherit;
-    background:radial-gradient(ellipse at right, rgba(255,255,255,.85), transparent 70%);
-    animation: cristaQuente 3.6s ease-in-out infinite;}
-  @keyframes cristaQuente{0%,100%{transform:translateY(0); opacity:.85;} 50%{transform:translateY(1px); opacity:1;}}
-  @media (prefers-reduced-motion: reduce){
-    #hero .gauge-fill::after, #hero .gauge-fill::before{animation:none;}
-  }
-
-  /* oceano gradeado + calor irradiante + Brasil em marca d'água (referência TSM El Niño) */
-  #hero{position:relative; overflow:hidden;}
-  #hero .gauge-track{background-image:
-    repeating-linear-gradient(90deg, transparent 0 46px, rgba(46,61,48,.12) 46px 47px),
-    repeating-linear-gradient(0deg, transparent 0 12px, rgba(46,61,48,.09) 12px 13px);}
-  #hero .gauge-fill{box-shadow: 0 0 16px rgba(166,95,63,.30), 0 0 34px rgba(198,155,114,.16);}
-
-  .st-NOVO{background:var(--musgo);}
-  .st-READ{background:var(--sintetico);}
-  .st-ELAB{background:var(--ambar); color:var(--abissal);}
-  .st-VIG{background:var(--ambar); color:var(--abissal);}
-  .st-LAC{background:var(--argila); color:#fff;}
-
-  .legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:20px; padding-top:16px; border-top:1px solid var(--line);}
-  .legend span{display:flex; align-items:center; gap:7px; font-size:13.5px; color:var(--muted);}
-  .legend i{width:10px; height:10px; border-radius:3px; display:inline-block;}
-
-  .detail{min-height:420px; display:flex; flex-direction:column;}
-  .detail[hidden]{display:none;}
-  .panel.analysis{border-top:3px solid var(--link); margin-bottom:24px;}
-  /* ===== Identidade: masthead, navegação e rodapé unificados ===== */
-  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
-  /* v3.1 §4.3: medidor (antecipação) e contador (resposta) lado a lado, mesma altura */
-  .mare-metade{display:block;}
-  #metadeResposta{border-top:1px solid var(--line); margin-top:18px;}
-  .contador-zone{display:flex; flex-direction:column; gap:6px;}
-  .contador-zone .gnum{color:var(--rust);}
-  .contador-zone .resp-fill{background:var(--rust); background-size:auto; box-shadow:none;}
-  .contador-zone .resp-fill::after, .contador-zone .resp-fill::before{display:none;}
-  .contador-zone .gauge-avg{opacity:.9;}
-  .contador-zone .gfaixa-badge .gfaixa-pill{background:var(--rust);}
-  .contador-zone .fonte-figura{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); line-height:1.4; margin-top:6px;}
-  .contador-zone .gauge-ends span{max-width:100%;}
-  .contador-zone svg{width:100%; height:44px; display:block; margin-top:6px;}
-  .tile .tile-face{display:block; text-align:left; margin-top:6px; border-top:1px solid var(--line); padding-top:4px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:400; font-size:12px; line-height:1.35; color:var(--muted);}
-  .tile .tile-face span{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-  .tile .tile-bar2{height:4px; background:var(--sem-dado); border-radius:2px; overflow:hidden; margin-top:3px; position:relative;}
-  .tile .tile-fill2{height:100%; background:var(--rust); border-radius:2px;}
-  .tile .tile-pop2{position:absolute; top:-2px; width:2px; height:8px; background:var(--ink);}
-  .barra-resp{position:relative; height:10px; background:var(--sem-dado); border-radius:999px; overflow:visible; margin:4px 0 2px;}
-  .barra-resp i{position:absolute; left:0; top:0; height:100%; background:var(--rust); border-radius:999px;}
-  .barra-resp i.rec{background:var(--rust);} .barra-resp i.dec{background:var(--ambar);}
-  .barra-resp b{position:absolute; top:-3px; width:2px; height:16px; background:var(--ink);}
-  h1.site-title{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:400;
-    font-size:clamp(33px, 5.4vw, 46px); line-height:1.08; letter-spacing:-.012em;
-    color:var(--ink); margin:0 0 6px;}
-  h1.site-title em{font-style:italic; font-weight:500;}
-  .mast-sub{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; font-weight:600;
-    letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:0 0 16px;}
-  .mast-body{display:flex; justify-content:space-between; align-items:flex-end;
-    gap:18px 28px; flex-wrap:wrap; margin-bottom:20px;}
-  .mast-body .site-sub{flex:1 1 460px; margin:0;}
-  footer.site-footer .grad-line{margin:0 0 20px;}
-  footer.site-footer svg, footer.site-footer img{height:24px; width:auto; display:block; margin:0 auto 10px;}
-
-  .btn-pdf{margin-top:16px; padding:9px 16px; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px; font-weight:600;
-    color:var(--branco); background:var(--musgo); border:none; border-radius:8px; cursor:pointer;}
-  .btn-pdf:hover{background:var(--abissal);}
-  .hero{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-    padding:26px 28px 22px; margin:26px 0 24px; box-shadow:0 1px 3px rgba(21,32,26,.10);}
-  .hero h2{margin:0 0 6px;} /* font-size:28px removido em 31/08/2026 — código morto, h2{27px !important} sempre vencia */
-  .hero .hero-sub{margin:0 0 20px; color:var(--muted); font-size:15px;}
-  /* Lede: único parágrafo em Fraunces fora dos títulos (abertura editorial). 19px é o
-     degrau h3 da escala; 68ch mantém 60-75 caracteres por linha; 17px no celular evita
-     12 linhas de 30 caracteres (medição de 31/08/2026). */
-  .hero-lede{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:19px; line-height:1.55; max-width:68ch; margin:10px 0 4px;}
-  @media (max-width:640px){ .hero-lede{font-size:17px; line-height:1.5;} }
-  .gauge-head{display:flex; align-items:baseline; gap:10px; margin-bottom:8px;}
-  .gauge-head .gnum{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:52px; font-weight:600; color:var(--ink); line-height:1;}
-  .gauge-head .gden{font-size:18px; color:var(--muted);}   /* medidor: preservado (E14) */
-  .gauge-head .glabel{margin-left:auto; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px;
-    text-transform:uppercase; letter-spacing:.07em; color:var(--muted); text-align:right;}
-  .gauge-track{position:relative; height:26px; background:var(--gauge-trilho); border:1px solid var(--gauge-borda);
-    border-radius:13px; overflow:hidden;}
-  .gauge-fill{position:relative; height:100%; width:0;
-    background:linear-gradient(90deg,var(--argila) 0%,var(--ambar) 20%,var(--mineral) 48%,var(--musgo) 88%);
-    background-size:calc(10000%/var(--galvo,1)) 100%; background-repeat:no-repeat;
-    border-radius:13px 0 0 13px; transition:width 1.4s cubic-bezier(.2,.7,.3,1);}
-  .gauge-fill::after{content:''; position:absolute; inset:0; border-radius:inherit;
-    background:repeating-linear-gradient(-55deg, rgba(255,255,255,.13) 0 9px, transparent 9px 22px);
-    animation:gflow 1.8s linear infinite;}
-  .gauge-fill::before{content:''; position:absolute; right:-2px; top:-2px; bottom:-2px; width:14px;
-    background:radial-gradient(ellipse at right, rgba(255,255,255,.75), transparent 72%);}
-  @keyframes gflow{ to{ background-position:31px 0; } }
-  .gtick{position:absolute; top:0; bottom:0; width:1px; background:rgba(21,32,26,.22);}
-  .gauge-tick-labels{position:relative; height:24px; margin-top:3px;}
-  .gauge-tick-labels span{position:absolute; top:0; transform:translateX(-50%);
-    font-size:12px; color:var(--muted); text-align:center; white-space:nowrap;}
-  .gauge-tick-labels span b{display:block; font-weight:400; font-size:12px; margin-top:1px;}
-  .gauge-avg{position:absolute; top:0; bottom:0; width:2px; background:var(--ink); opacity:.5;}
-  .gauge-mini .gauge-ends{position:relative;}
-  /* ritmo tipográfico dos cartões de cidade e de estado */
-  #meuCard h4, #detail h4{margin:18px 0 8px !important; font-size:17px !important; font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:600;}
-  #meuCard p, #detail p{margin:0 0 10px !important;}
-  #meuCard ul, #detail ul{margin:4px 0 12px !important; padding-left:20px !important;}
-  #meuCard li, #detail li{margin:0 0 7px !important; line-height:1.55;}
-  #meuCard hr{border:none !important; border-top:1px solid var(--line) !important; margin:16px 0 !important;}
-  #meuCard .gauge-mini, #detail .gauge-mini{margin:8px 0 18px !important;}
-  #meuCard .btn-pdf{margin-top:14px;}
-  /* (regra específica de #meuCard h4 removida em 31/08/2026 — unificada com #detail h4 acima, mesmo papel tipográfico) */
-  #meuCard .fk{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin:10px 0 2px !important;}
-  #meuCard .fv{margin:0 0 4px !important; font-size:13.5px; line-height:1.55;}
-  .contrib-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px 16px;}
-  .fld{display:flex; flex-direction:column; gap:5px; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;
-    font-size:13.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);}
-  .fld input, .fld select, .fld textarea{font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:15px; color:var(--ink);
-    background:var(--surface-2, var(--osso-claro)); border:1px solid var(--line); border-radius:8px; padding:9px 11px;
-    text-transform:none; letter-spacing:0;}
-  .fld input:focus, .fld select:focus, .fld textarea:focus{outline:2px solid var(--link); outline-offset:1px;}
-  .fld-full{grid-column:1 / -1;}
-  @media (max-width:640px){ .contrib-grid{grid-template-columns:1fr;} }
-  /* ritmo do painel Proteja-se, alinhado aos cartões */
-  #protejase h3{margin:18px 0 8px !important; font-size:17px !important;}
-  #protejase li{margin:0 0 6px; line-height:1.55; font-size:15px;}
-  #protejase .note{margin:4px 0 0;}
-  .gfaixa-badge{display:inline-flex; align-items:center; gap:6px; margin-top:6px;
-    font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted);}
-  .gfaixa-pill{font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:12.5px; font-weight:600; color:var(--gauge-osso);
-    padding:3px 11px; border-radius:999px; white-space:nowrap;}
-  .gauge-ends{display:flex; justify-content:space-between; font-size:12.5px; color:var(--muted); margin-top:4px;}
-  .strip-wrap{margin-top:22px;}
-  .strip-title{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; text-transform:uppercase;
-    letter-spacing:.07em; color:var(--muted); margin:0 0 8px;}
-  .strip{position:relative; height:34px;}
-  .strip-line{position:absolute; left:0; right:0; top:16px; height:2px; background:var(--line);}
-  .strip-tick{position:absolute; top:8px; width:2.5px; height:18px; background:var(--musgo); border-radius:2px; cursor:default;}
-  .strip-tick.boletim{background:var(--musgo); width:4px; top:5px; height:24px;}
-  .strip-tick:hover, .strip-tick:focus-visible{background:var(--argila); outline:none;}
-  .strip-ends{display:flex; justify-content:space-between; font-size:12.5px; color:var(--muted); margin-top:2px;}
-  .hero-scope{margin:18px 0 0; font-size:13.5px; color:var(--muted); line-height:1.55;}
-  .hero-links{margin:12px 0 0; font-size:15px;}
-  .hero-links a{margin-right:18px;}
-  @media (prefers-reduced-motion: reduce){ .gauge-fill{transition:none;} .gauge-fill::after{animation:none;} }
-
-  /* ===== Sistema de design: tipografia padronizada (duas cores: ink e muted) ===== */
-  h2{font-family:'Fraunces', Georgia, 'Times New Roman', serif !important; font-size:28px !important; font-weight:500 !important; color:var(--ink) !important;}
-  h3{font-size:19px !important; color:var(--ink) !important;}
-  .hint{font-size:15px !important; color:var(--muted) !important;}
-  .note{font-size:13.5px !important; color:var(--muted) !important;}
-  .map-card-h{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-weight:600; font-size:13.5px; margin:0 0 6px;
-    color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
-  /* ===== Sistema responsivo (fonte única · ordem descendente de largura) ===== */
-  img, svg{max-width:100%;}
-  canvas{max-width:100% !important;}
-  .layout > *, .regions > *, .charts-grid > *, .maps-grid > *, .mast-body > *{min-width:0;}
-  .canvas-wrap{width:100%; max-width:100%;}
-  #riscoinstrumento details, .map-box details{overflow-x:auto;}
-
-  @media (max-width:1020px){
-    .layout{grid-template-columns:1fr;}
-    .regions{grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));}
-  }
-  @media (max-width:1020px){
-    .charts-grid{grid-template-columns:1fr;}
-    .maps-grid{grid-template-columns:1fr;}
-    .wrap{padding:26px 18px 60px;}
-  }
-  @media (max-width:640px){
-    .wrap{padding:20px 14px 48px;}
-    h2{font-size:23px !important;}
-    .regions{grid-template-columns:repeat(auto-fill, minmax(124px, 1fr)); gap:10px;}
-    .gauge-head{flex-wrap:wrap;}
-    .gauge-head .gnum{font-size:44px;}   /* medidor: preservado (E14) */
-    .gauge-head .glabel{flex-basis:100%; margin-left:0; text-align:left; margin-top:4px;}
-    .detail{min-height:0;}
-    .strip-tick span{display:none;}
-    .kpi .n{font-size:23px;}
-    .mast-body{margin-bottom:14px;}
-  }
-  @media print{ .btn-pdf{display:none;} }
-  .detail .placeholder{color:var(--muted); font-size:15px; margin-top:8px;}
-  .detail .uf-name{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:23px; font-weight:600;}
-  .detail .uf-region{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:16px;}
-  .badge{display:inline-block; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; padding:4px 10px; border-radius:20px; font-weight:600; margin-bottom:14px;}
-  .field{margin-bottom:14px;}
-  .field .k{font-size:12.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px;}
-  .field .v{font-size:13.5px; line-height:1.5;}
-  .capital-box{background:var(--surface-2); border-radius:8px; padding:14px 16px; margin-top:6px; border:1px solid var(--line);}
-  .capital-box .k{color:var(--rust);}
-
-  footer{margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
-  footer a{color:var(--link);}
-
-
-  .tbl-controls{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;}
-  .tbl-controls input, .tbl-controls select{background:var(--surface-2); border:1px solid var(--line);
-    border-radius:7px; color:var(--ink); padding:8px 12px; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px;}
-  .tbl-controls input{flex:1; min-width:180px;}
-  .mun-table{width:100%; border-collapse:collapse; font-size:15px;}
-  .mun-table th{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.06em;
-    color:var(--muted); text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--surface);}
-  .mun-table td{padding:8px 10px; border-bottom:1px solid var(--areia); vertical-align:top;}
-  .mun-table a{color:var(--link);}
-  .cat-pill{display:inline-block; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; padding:2px 8px; border-radius:12px; color:var(--branco); font-weight:600; white-space:nowrap;}
-  .tbl-wrap{max-height:480px; overflow:auto; border:1px solid var(--line); border-radius:8px;}
-
-  /* — Legibilidade e acessibilidade (WCAG AA) — */
-  body{line-height:1.6;}
-  h1{font-weight:500 !important; letter-spacing:.005em;}
-  h2, .map-box h3{font-weight:500 !important;}
-  .sub{font-size:13.5px; color:var(--muted); font-weight:500;}
-  .kpi .n{font-weight:400 !important;}
-  .eyebrow{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; text-transform:uppercase; letter-spacing:.16em;}
-  a{text-decoration:underline; text-underline-offset:2px;}
-  a:hover{color:var(--link);}
-  :focus-visible{outline:2px solid var(--link); outline-offset:2px;}
-  /* .uf-path: herdado de assets/base.css (contorno único dos mapas nas 12 páginas) */
-  .uf-path:focus-visible{stroke:var(--link); stroke-width:2; outline:none;}
-  a.kpi{display:block; color:inherit; text-decoration:none !important; transition:outline .15s;}
-  a.kpi:hover{outline:1.5px solid var(--link); outline-offset:2px; border-radius:8px;}
-  .panel, .map-box, .meu-card, a.kpi{box-shadow:0 1px 3px rgba(21,32,26,.10);}
-  .fontes-list{font-size:13.5px; line-height:1.9; margin:0; padding-left:18px; color:var(--ink);}
-  .pedido-lai{margin-top:12px;}
-  .pedido-lai summary{cursor:pointer; color:var(--link); font-weight:600;}
-  .pedido-texto{width:100%; min-width:0; box-sizing:border-box; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink); background:var(--osso-claro); border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:0 0 8px; resize:vertical;}
-  /* Prazos em curso (05/09/2026): barras que esvaziam de data-base a vencimento. */
-  .prazos-barras{display:flex; flex-direction:column; gap:14px; margin:4px 0 10px;}
-  .prazo{display:grid; grid-template-columns:1fr auto; gap:4px 14px; align-items:end;}
-  .prazo-titulo{font-family:'Fraunces', Georgia, serif; font-weight:300; font-size:17px; line-height:1.3; color:var(--ink);}
-  .prazo-meta{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); white-space:normal; min-width:0;}
-  @media (max-width:640px){ .prazo{grid-template-columns:1fr;} .prazo-meta strong{white-space:normal;} }
-  .prazo-meta strong{color:var(--ink); font-weight:600;}
-  .prazo-trilho{grid-column:1 / -1; height:10px; background:var(--areia); border-radius:999px; overflow:hidden; position:relative;}
-  .prazo-resta{position:absolute; right:0; top:0; bottom:0; background:var(--ambar); border-radius:999px; transition:width .6s ease;}
-  .prazo-resta.urgente{background:var(--argila);}
-  .prazo-resta.vencido{background:var(--mineral); width:100% !important; opacity:.55;}
-  .prazo-datas{grid-column:1 / -1; display:flex; justify-content:space-between; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12px; color:var(--muted); letter-spacing:.04em;}
-  .prazo.vencido .prazo-titulo{color:var(--muted);}
-  @media (prefers-reduced-motion:reduce){.prazo-resta{transition:none;}}
-  .prazos-list{list-style:none; padding-left:0; line-height:1.55;}
-  .prazos-list li{padding:8px 0; border-top:1px solid var(--line);}
-  .prazos-list li:first-child{border-top:0;}
-  .prazo-classe{display:inline-block; font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:1px 8px; margin-right:6px; vertical-align:middle;}
-  .prazo-dias{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; color:var(--muted);}
-  .prazo-dias.vencido{color:var(--rust);}
-  /* — Acessibilidade e leitura humana — */
-  a{color:var(--link);}
-  .mun-table a, .fontes-list a{color:var(--link);}
-  .skip:focus{left:0;}
-  .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
-  @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important; scroll-behavior:auto !important;} }
-  .meu-card{background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-top:14px;}
-  .meu-card h4{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:500; font-size:17px; margin:0 0 8px;}
-  .meu-num{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-size:38px; font-weight:400; line-height:1;}
-  .meu-card ul{margin:10px 0 0; padding-left:18px;}
-  .meu-card li{margin-bottom:6px; line-height:1.6;}
-
-  /* Cards padronizados (capital e cidade) — uma linguagem só */
-  .card-kicker{font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:0 0 6px;}
-  .card-title{font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:600; font-size:17px; margin:0 0 4px;}
-  .card-title .sub{color:var(--muted); font-weight:400; font-size:13.5px;}
-  .card-body{font-size:13.5px; color:var(--ink); line-height:1.55; margin:0 0 4px;}
-  .card-src{font-size:13.5px; color:var(--muted); margin:0;}
-  .card-link{margin-top:8px; font-size:13.5px; font-weight:600;}
-  .card-note{margin-top:8px; font-size:12.5px; color:var(--muted);}
-  .pill-nivel{display:inline-block; font-family:'Archivo Narrow','Arial Narrow',Arial,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--branco); background:var(--neutro); border-radius:999px; padding:3px 10px; margin-right:6px;}
-  .card-sep{border:none; border-top:1px solid var(--line); margin:14px 0;}
-  details > summary{padding:6px 0; min-height:24px; box-sizing:border-box;}  /* alvo de toque ≥24px (WCAG 2.5.8) */
-</style>
+<link rel="stylesheet" href="assets/tokens.css?v=bf4569ad">
+<link rel="stylesheet" href="assets/base.css?v=1b66a961">
+<script src="assets/mapas.js?v=6aad1ba0"></script>
 </head>
 <body>
-<script src="assets/colunas.js?v=3afa08c5" defer></script>
-<script src="assets/js/index.js?v=b69e334a" defer></script>
 <div class="map-tooltip" id="mapTooltip"></div>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
-
   <header class="masthead">
     <div class="mast-top">
-      <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
       <nav class="mainnav" aria-label="Páginas do site"><span class="ativa" aria-current="page">O monitor</span><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="pesquisadores.html">Pesquisadores</a><a href="imprensa.html">Imprensa</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Envie um plano ou decreto</a></nav>
     </div>
-    <p class="kicker">2026/2027 · Monitoramento independente</p>
+    <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     <h1 class="site-title">Monitor <em>El Niño</em> Brasil</h1>
     <p class="mast-sub">MARÉ · Medida de Antecipação e Resposta ao El Niño</p>
     <div class="mast-body">
       <p class="site-sub">Como estados e municípios estão se preparando para o El Niño 2026/2027: verificação independente dos planos de contingência nos três níveis de governo, com fontes primárias, metodologia aberta e transparência sobre o que falta.</p>
       <div class="meta">
-      Fonte: <a href="pesquisadores.html#fontes" style="color:inherit;">registros verificados individualmente, com fonte e data citadas ↓</a><br>
-      <span id="metaUfsMun">27 estados verificados · verificação municipal por níveis (contador abaixo)</span><br>
-      Última verificação: <strong id="metaUltimaVerif">—</strong>
-    </div>
+        Fonte: <a href="pesquisadores.html#fontes">registros verificados individualmente, com fonte e data citadas ↓</a><br>
+        <span id="metaUfsMun">27 estados verificados · verificação municipal por níveis (contador abaixo)</span><br>
+        Última verificação: <strong id="metaUltimaVerif">—</strong>
+      </div>
     </div>
     <div class="grad-line"></div>
   </header>
-
 <main id="conteudo">
 
   <div class="hero" id="hero">
     <h2>MARÉ · Medida de Antecipação e Resposta ao El Niño 2026/2027</h2>
     <p class="hero-lede">Como o Brasil está se preparando: o Monitor verifica, em fontes oficiais, o que estados e municípios publicaram antes e o que decretaram depois.</p>
-    <p style="margin:0 0 14px;"><a class="btn-pdf" style="text-decoration:none; display:inline-block;" href="#minhacidade">Consultar seu município ↓</a></p>
+    <p><a class="btn-pdf" href="#minhacidade">Consultar seu município ↓</a></p>
     <div class="mare-metade" id="metadeAntecipacao">
-    <p class="selo" style="margin:14px 0 6px;">1 · Antecipação · o índice</p>
-    <div class="gauge-zone">
+      <p class="selo u-mt-4">1 · Antecipação · o índice</p>
+      <div class="gauge-zone">
         <div class="gauge-head">
-        <span class="gnum" id="gaugeNum">43,6</span><span class="gden">/ 100</span>
-        <span class="gfaixa-badge" id="faixaMare"></span>
-        <span class="glabel"><strong>Antecipação</strong> · o índice<br>média dos 27 estados<br>corte <span id="gaugeCorte">—</span></span>
+          <span class="gnum" id="gaugeNum">43,6</span><span class="gden">/ 100</span>
+          <span class="gfaixa-badge" id="faixaMare"></span>
+          <span class="glabel"><strong>Antecipação</strong> · o índice<br>média dos 27 estados<br>corte <span id="gaugeCorte">—</span></span>
+        </div>
+        <div class="gauge-track" role="img" aria-label="Barra de progresso: MARÉ nacional em 43,6 de 100">
+          <div class="gauge-fill" id="gaugeFill" data-alvo="43.6" style="--galvo:43.6;"></div>
+          <span class="gtick" style="left:25%"></span>
+          <span class="gtick" style="left:50%"></span>
+          <span class="gtick" style="left:70%"></span>
+        </div>
+        <div class="gauge-tick-labels">
+          <span style="left:25%">25<b>em construção</b></span>
+          <span style="left:50%">50<b>consolidado</b></span>
+          <span style="left:70%">70<b>avançado</b></span>
+        </div>
+        <div class="gauge-ends"><span>0 · estágio inicial</span><span>100</span></div>
       </div>
-      <div class="gauge-track" role="img" aria-label="Barra de progresso: MARÉ nacional em 43,6 de 100">
-        <div class="gauge-fill" id="gaugeFill" data-alvo="43.6" style="--galvo:43.6;"></div>
-        <span class="gtick" style="left:25%"></span>
-        <span class="gtick" style="left:50%"></span>
-        <span class="gtick" style="left:70%"></span>
-      </div>
-      <div class="gauge-tick-labels">
-        <span style="left:25%">25<b>em construção</b></span>
-        <span style="left:50%">50<b>consolidado</b></span>
-        <span style="left:70%">70<b>avançado</b></span>
-      </div>
-      <div class="gauge-ends"><span>0 · estágio inicial</span><span>100</span></div>
-    </div>
     </div>
 
     <div class="strip-wrap">
@@ -432,115 +102,102 @@
     <p class="hero-links"><a href="#regions">Índice por estado ↓</a><a href="#minhacidade">Encontre sua cidade ↓</a></p>
 
     <div class="mare-metade" id="metadeResposta">
-    <p class="selo" style="margin:22px 0 6px;">2 · Resposta · o contador</p>
-    <div class="contador-zone" id="contadorResposta" role="group" aria-label="Resposta: municípios sob decreto de emergência no ciclo">
-      <div class="gauge-head">
-        <span class="gnum" id="respNum">—</span><span class="gden" id="respDen">/ 5.571</span>
-        <span class="gfaixa-badge" id="respBadge"></span>
-        <span class="glabel"><strong>Resposta</strong> · o contador<br>municípios sob decreto<br>corte <span id="respCorte">—</span></span>
+      <p class="selo u-mt-4">2 · Resposta · o contador</p>
+      <div class="contador-zone" id="contadorResposta" role="group" aria-label="Resposta: municípios sob decreto de emergência no ciclo">
+        <div class="gauge-head">
+          <span class="gnum" id="respNum">—</span><span class="gden" id="respDen">/ 5.571</span>
+          <span class="gfaixa-badge" id="respBadge"></span>
+          <span class="glabel"><strong>Resposta</strong> · o contador<br>municípios sob decreto<br>corte <span id="respCorte">—</span></span>
+        </div>
+        <div class="gauge-track resp-track" role="img" aria-label="Barra: municípios sob decreto em relação aos 5.571; traço = fração da população">
+          <div class="gauge-fill resp-fill" id="respFill" style="width:0%"></div>
+          <span class="gtick" style="left:10%"></span>
+          <span class="gtick" style="left:25%"></span>
+          <span class="gtick" style="left:50%"></span>
+          <span class="gauge-avg" id="respPopTick" style="left:0%" title="fração da população sob decreto"></span>
+        </div>
+        <div class="gauge-tick-labels">
+          <span style="left:10%">10%<b>dos municípios</b></span>
+          <span style="left:25%">25%</span>
+          <span style="left:50%">50%</span>
+        </div>
+        <div class="gauge-ends"><span>0 · nenhum decreto</span><span>5.571</span></div>
+        <div class="gauge-ends"><span id="respLinha">—</span></div>
+        <p class="note" id="respC18">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>).</p>
+        <div id="respFonte"></div>
       </div>
-      <div class="gauge-track resp-track" role="img" aria-label="Barra: municípios sob decreto em relação aos 5.571; traço = fração da população">
-        <div class="gauge-fill resp-fill" id="respFill" style="width:0%"></div>
-        <span class="gtick" style="left:10%"></span>
-        <span class="gtick" style="left:25%"></span>
-        <span class="gtick" style="left:50%"></span>
-        <span class="gauge-avg" id="respPopTick" style="left:0%" title="fração da população sob decreto"></span>
-      </div>
-      <div class="gauge-tick-labels">
-        <span style="left:10%">10%<b>dos municípios</b></span>
-        <span style="left:25%">25%</span>
-        <span style="left:50%">50%</span>
-      </div>
-      <div class="gauge-ends"><span>0 · nenhum decreto</span><span>5.571</span></div>
-      <div class="gauge-ends" style="margin-top:2px;"><span id="respLinha">—</span></div>
-      <div class="fonte-figura" id="respC18">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>).</div>
-      <div class="fonte-figura" id="respFonte"></div>
-    </div>
-    <p class="hero-scope">Municípios sob decreto de emergência desde 29/06/2026 — contagens e datas, sem nota. O índice mede preparo; o contador, resposta; nunca se somam.</p>
-    <p class="hero-links"><a href="defesa-civil.html#resposta">Resposta por estado →</a><a href="calendario-eleitoral.html">O que a lei deixa aberto →</a></p>
+      <p class="hero-scope">Municípios sob decreto de emergência desde 29/06/2026 — contagens e datas, sem nota. O índice mede preparo; o contador, resposta; nunca se somam.</p>
+      <p class="hero-links"><a href="defesa-civil.html#resposta">Resposta por estado →</a><a href="calendario-eleitoral.html">O que a lei deixa aberto →</a></p>
     </div>
   </div>
 
-  <div class="panel" style="margin-bottom:24px; border-left:4px solid var(--teal); background:var(--branco); box-shadow:0 1px 0 var(--zebra) inset;">
-    <div class="panel" id="blocoPosDefeso" style="margin:0 0 22px;" hidden>
-  <p class="selo" style="margin:0 0 6px;">O que o período eleitoral escondeu · publicado a partir de 26/10/2026</p>
-  <p style="margin:0 0 4px;" id="pdFontes" hidden>—</p>
-  <p style="margin:0 0 4px;" id="pdInstrumentos" hidden>—</p>
-  <p style="margin:0;" id="pdVariacao" hidden>—</p>
-  <p class="note" style="margin:6px 0 0;">Somente contagens e datas, decompostas por causa (<a href="METODOLOGIA.pdf">ver metodologia</a>).</p>
-</div>
-
-
-
-<h2 id="comoler">Como ler o MARÉ</h2>
-  <div class="comoler-grid">
-    <p class="hint" style="margin:0 0 10px;"><strong>O que mede:</strong> a antecipação é o índice — três componentes com pesos iguais (instrumento estadual, cobertura populacional, antecipação) — e a resposta é um contador de decretos; as duas nunca se combinam num número.</p>
-    <p class="hint" style="margin:0 0 10px;"><strong>O que não mede:</strong> capacidade instalada, suficiência de recursos e execução no terreno.</p>
-    <p class="hint" style="margin:0 0 10px;"><strong>O teto da afirmação:</strong> "sem plano localizado" é o que não está público e verificável nos diários oficiais e sítios de governo — o lugar que a lei define para a preparação (Leis 12.608/2012 e 12.527/2011) —, nunca "sem plano"; o nível de verificação de cada município diz até onde chegamos.</p>
+  <div class="panel panel--destaque" id="comoler-painel">
+    <div class="panel" id="blocoPosDefeso" hidden>
+      <p class="selo">O que o período eleitoral escondeu · publicado a partir de 26/10/2026</p>
+      <p id="pdFontes" hidden>—</p>
+      <p id="pdInstrumentos" hidden>—</p>
+      <p id="pdVariacao" hidden>—</p>
+      <p class="note">Somente contagens e datas, decompostas por causa (<a href="METODOLOGIA.pdf">ver metodologia</a>).</p>
+    </div>
+    <h2 id="comoler">Como ler o MARÉ</h2>
+    <div class="comoler-grid">
+      <p class="hint"><strong>O que mede:</strong> a antecipação é o índice — três componentes com pesos iguais (instrumento estadual, cobertura populacional, antecipação) — e a resposta é um contador de decretos; as duas nunca se combinam num número.</p>
+      <p class="hint"><strong>O que não mede:</strong> capacidade instalada, suficiência de recursos e execução no terreno.</p>
+      <p class="hint"><strong>O teto da afirmação:</strong> "sem plano localizado" é o que não está público e verificável nos diários oficiais e sítios de governo — o lugar que a lei define para a preparação (Leis 12.608/2012 e 12.527/2011) —, nunca "sem plano"; o nível de verificação de cada município diz até onde chegamos.</p>
+    </div>
+    <p class="note u-mb-0" id="notaDefeso"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial; buscas sem resultado são provisórias até repetição após 25/10, e nenhuma regra que altere notas muda até lá (última mudança: v3.0, em 04/09)</span> — <a href="calendario-eleitoral.html">o que a lei deixa aberto</a> · <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">metodologia</a>.</p>
   </div>
-  <p class="note" id="notaDefeso" style="margin:0;"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial; buscas sem resultado são provisórias até repetição após 25/10, e nenhuma regra que altere notas muda até lá (última mudança: v3.0, em 04/09)</span> — <a href="calendario-eleitoral.html">o que a lei deixa aberto</a> · <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">metodologia</a>.</p>
-</div>
 
   <div class="layout">
     <div class="panel">
       <h2>MARÉ por estado, agrupado por região</h2>
       <p class="hint">Onde cada estado está no índice — e o que sustenta cada nota. Clique em uma UF para abrir o detalhe; o ponto no canto marca estados cuja capital foi verificada individualmente.</p>
       <div class="regions" id="regions"></div>
-      <p class="note" style="margin:12px 0 0;">A micro-barra de cada estado mostra a posição do seu MARÉ no mesmo degradê do índice nacional (0 → 100).</p>
+      <p class="note u-mt-3 u-mb-0">A micro-barra de cada estado mostra a posição do seu MARÉ no mesmo degradê do índice nacional (0 → 100).</p>
     </div>
-
     <div class="panel detail" id="detail"></div>
   </div>
 
-  <div class="panel" style="margin-bottom:24px;">
+  <div class="panel">
     <h2 id="minhacidade">Encontre sua cidade</h2>
     <p class="hint">Escolha o estado e digite (ou selecione) o município: <strong>todos os 5.571 da lista oficial do IBGE</strong> estão aqui. Você verá tudo o que esta verificação sabe sobre ele, como o estado se compara, e o que fazer e cobrar.</p>
     <div class="tbl-controls">
       <select id="ufSelect" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
-      <input id="cidadeInput" type="text" list="listaMun" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off"><button type="button" id="limparCidade" aria-label="Limpar e escolher outro município" title="Trocar de município" style="margin-left:6px; padding:6px 11px; font-family:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size:15px; font-weight:600; background:transparent; color:var(--link); border:1px solid var(--line); border-radius:8px; cursor:pointer;">×</button>
+      <input id="cidadeInput" type="text" list="listaMun" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off"><button type="button" id="limparCidade" class="btn-limpar" aria-label="Limpar e escolher outro município" title="Trocar de município">×</button>
       <datalist id="listaMun"></datalist>
     </div>
     <div id="meuCard" class="meu-card" aria-live="polite" hidden></div>
   </div>
 
-
-
-  <div class="panel" id="prazos" style="margin-bottom:24px;">
+  <div class="panel" id="prazos">
     <h2>Prazos em curso</h2>
     <div class="prazos-barras" id="prazosLista" aria-live="polite"></div>
     <p class="note" id="prazosVazio" hidden>Nenhum prazo em curso até o corte.</p>
-    <div class="fonte-figura">Fonte: registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384) · nenhum prazo pontua no índice</div>
+    <div id="prazosFonte"></div>
   </div>
 
-  <div class="panel" id="cinco" style="margin-bottom:24px;">
+  <div class="panel" id="cinco">
     <h2>A história em cinco números</h2>
-    <div class="kpis" style="margin-bottom:0;">
-      <a class="kpi" href="sinais-de-risco.html"><div class="n" id="n1Anunciado">—</div><div class="l">O que foi anunciado · ONI e probabilidade do El Niño</div></a>
-      <a class="kpi" href="defesa-civil.html"><div class="n" id="n2Publicado">—</div><div class="l">O que foi publicado · MARÉ, média dos 27 estados</div></a>
-      <a class="kpi" style="border-left:4px solid var(--argila);" href="defesa-civil.html#resposta"><div class="n" style="color:var(--argila);" id="n3Decretado">—</div><div class="l">O que foi decretado · municípios sob decreto no ciclo</div></a>
-      <a class="kpi" href="financiamento.html"><div class="n" id="n4Chegou">—</div><div class="l">O que chegou · voluntárias assinadas com municípios em 2026</div></a>
-      <a class="kpi" style="border-left:4px solid var(--neutro);" href="pesquisadores.html#log"><div class="n" style="color:var(--neutro);" id="n5NaoSabemos">—</div><div class="l">O que ainda não sabemos · municípios cujo diário oficial ainda não foi consultado (os 5.571 passaram pelas fontes nacionais)</div></a>
+    <div class="kpis">
+      <a class="cartao cartao--kpi" href="sinais-de-risco.html"><div class="n" id="n1Anunciado">—</div><div class="l">O que foi anunciado · ONI e probabilidade do El Niño</div></a>
+      <a class="cartao cartao--kpi" href="defesa-civil.html"><div class="n" id="n2Publicado">—</div><div class="l">O que foi publicado · MARÉ, média dos 27 estados</div></a>
+      <a class="cartao cartao--kpi cartao--acento-argila" href="defesa-civil.html#resposta"><div class="n argila" id="n3Decretado">—</div><div class="l">O que foi decretado · municípios sob decreto no ciclo</div></a>
+      <a class="cartao cartao--kpi" href="financiamento.html"><div class="n" id="n4Chegou">—</div><div class="l">O que chegou · voluntárias assinadas com municípios em 2026</div></a>
+      <a class="cartao cartao--kpi cartao--acento-neutro" href="pesquisadores.html#log"><div class="n neutro" id="n5NaoSabemos">—</div><div class="l">O que ainda não sabemos · municípios cujo diário oficial ainda não foi consultado (os 5.571 passaram pelas fontes nacionais)</div></a>
     </div>
   </div>
 
-
-
-
 </main>
-
-
-
   <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1) · Última atualização: <span id="metaAtualizado">—</span> · Corte dos dados: <span id="corteDados">26/08/2026</span></span>
-        <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-linha">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1) · Última atualização: <span id="metaAtualizado">—</span> · Corte dos dados: <span id="corteDados">26/08/2026</span></span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
-
-
-
+<script src="assets/colunas.js?v=247b398e" defer></script>
+<script src="assets/js/index.js?v=7805fdc6" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

@@ -85,7 +85,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   el('asEmerg').textContent = (fE.status === 'coletado' && (SSIN.emergencias || []).length)
     ? (SSIN.emergencias.length + ' emergência(s) sanitária(s) registrada(s) — atos de resposta, registro à parte, peso zero.')
     : 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento).';
-  el('asFonte').textContent = 'Fontes: modelo InfoDengue (Fiocruz/FGV) para a série municipal; Painel de Arboviroses (MS) como número primário; INMET (avisos); DOU e diários municipais (ESPIN). Estado das fontes e datas de consulta na página de Saúde.';
+  MonitorMapas.credito('asFonte', {fontes: ['modelo InfoDengue (Fiocruz/FGV)', 'Painel de Arboviroses (MS)', 'INMET', 'DOU e diários municipais (ESPIN)'], data: [fD.ultima_coleta_ok, fD.consultado_em, fI.consultado_em, (SSIN || {}).gerado_em, (SINAIS || {}).gerado_em].find(Boolean) || null});
 })();
 
 // handler do botão de PDF (era onclick inline; CSP sem unsafe-inline)

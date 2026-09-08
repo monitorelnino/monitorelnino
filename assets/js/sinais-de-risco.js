@@ -36,14 +36,10 @@ const fonteDe = id => (SINAIS.fontes || {})[id] || {};
 const coletada = id => fonteDe(id).status === 'coletado';
 
 /* Crédito de UMA linha ao pé do cartão (04/09/2026): "Fonte: nome · data" ou "· sem coleta até o corte". */
-function credito(caixaId, fonteId, extra){
-  const f = fonteDe(fonteId), caixa = document.getElementById(caixaId);
-  if(!caixa || caixa.querySelector('.fonte-figura')) return;
-  const d = document.createElement('div');
-  d.className = 'fonte-figura'; d.dataset.credito = fonteId;
-  d.innerHTML = 'Fonte: <a href="' + esc(f.url_publica) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a> · ' +
-    (coletada(fonteId) ? 'consultado em ' + esc(f.consultado_em) : 'sem coleta até o corte');
-  caixa.appendChild(d);
+function credito(caixaId, fonteId){
+  const f = fonteDe(fonteId);
+  MonitorMapas.credito(caixaId, {fontes: f.nome, url: f.url_publica, data: coletada(fonteId) ? f.consultado_em : null});
+  const d = document.querySelector('#' + caixaId + ' .fonte-figura'); if (d) d.dataset.credito = fonteId;
 }
 
 /* Marca visualmente uma figura que espera a primeira coleta. */
@@ -157,11 +153,11 @@ const cartoes = [
   {t:'Prognóstico trimestral', v: (SINAIS.enos.prognostico ? SINAIS.enos.prognostico.trimestre + ' · Boletim nº 3 (leitura humana)' : null), f:'cptec_prognostico'},
 ];
 document.getElementById('cartoesCiclo').innerHTML = cartoes.map((c, i) =>
-  '<div class="chart-box" id="cartaoCiclo' + i + '"><h3>' + esc(c.t) + '</h3>' +
+  '<div class="cartao cartao--indicador" id="cartaoCiclo' + (i + 1) + '"><h3 class="figura-titulo">' + esc(c.t) + '</h3>' +
   '<div class="cartao-ciclo-valor">' +
   (c.v ? esc(c.v) : '<span class="lacuna">sem coleta até o corte</span>') +
   '</div></div>').join('');
-cartoes.forEach((c, i) => credito('cartaoCiclo' + i, c.f));
+cartoes.forEach((c, i) => credito('cartaoCiclo' + (i + 1), c.f));
 
 // =============================  Gráficos  =============================
 const SEM_ANIM = {animation:false, responsive:true, maintainAspectRatio:false};
@@ -215,8 +211,7 @@ const dados = FAIXAS.map(fx => ({label:fx.nome, backgroundColor:fx.cor, data: or
 new Chart(document.getElementById('cCruz'), {type:'bar', data:{labels: ordemTipos.map(t => TIPO_CURTO[t]), datasets:dados},
   options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
     scales:{x:{stacked:true}, y:{stacked:true, title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
-credito('boxCruz', 'painel_el_nino',
-  'O estágio do arcabouço público vem do índice MARÉ; o tipo de risco, do boletim. O cruzamento é de leitura, e não entra no índice MARÉ.');
+credito('boxCruz', 'painel_el_nino');
 
 // =============================  Tabela de fontes  =============================
 const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};

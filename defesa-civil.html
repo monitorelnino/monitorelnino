@@ -29,22 +29,17 @@
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=2cc12218">
-<link rel="stylesheet" href="assets/base.css?v=340c7bbc">
-<script src="assets/mapas.js?v=a30a521e"></script>
-<style>
-/* --- defesa-civil.html: estilos próprios desta página (o compartilhado está na folha base) --- */
-  *{box-sizing:border-box;}
-  .grad-line{height:2px; border-radius:0; border:none; margin:0; background:var(--green);}
-</style>
+<link rel="stylesheet" href="assets/tokens.css?v=bf4569ad">
+<link rel="stylesheet" href="assets/base.css?v=1b66a961">
+<script src="assets/mapas.js?v=6aad1ba0"></script>
 </head>
-<body>
+<body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead masthead--mini">
     <div class="mast-top">
-      <a href="./" style="line-height:0;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
+      <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
       <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">O monitor</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Risco climático</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Defesa civil</span><a href="saude.html">Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a href="pesquisadores.html">Pesquisadores</a><a href="imprensa.html">Imprensa</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="envie-dados.html">Envie um plano ou decreto</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
@@ -55,147 +50,129 @@
 <main id="conteudo">
   <p class="selo">Dados vivos · atualizados na mesma rotina semanal do resto do site</p>
   <h1>Defesa civil</h1>
-  <p class="hint" style="margin-bottom:22px;">O que cada estado publicou antes (antecipação) e o que decretou depois (resposta), estado a estado. As duas metades nunca se combinam num número.</p>
+  <p class="hint">O que cada estado publicou antes (antecipação) e o que decretou depois (resposta), estado a estado. As duas metades nunca se combinam num número.</p>
 
-  <div class="panel" style="margin-top:24px;">
-    <h2>1 · Antecipação — o que foi publicado</h2>
+  <div class="panel">
+    <h2>Antecipação — o que foi publicado</h2>
     <p class="hint">Sete leituras geográficas dos mesmos registros: verificação municipal, cobertura, natureza dos atos, risco projetado, municípios prioritários, cidades que decretaram emergência e transferências de recursos. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe.</p>
-    <div class="maps-grid">
-      <div class="map-box">
-        <h3 class="map-card-h">1 · Verificação municipal: atos localizados</h3>
-        <p class="map-card-sub">Corte da edição · municípios com ato localizado (plano ou decreto) · pontos no mapa</p>
-        <svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto;"></svg>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxPoints">
+        <h3 class="figura-titulo">Verificação municipal: atos localizados</h3>
+        <p class="figura-sub">Corte da edição · municípios com ato localizado (plano ou decreto) · pontos no mapa</p>
+        <div class="figura-midia"><svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="pointsLegend"></div>
-      </div>
-      <div class="map-box" id="nivelverificacao">
-        <h3 class="map-card-h">1b · Nível de verificação municipal (todos os 5.571)</h3>
-        <p class="map-card-sub">Corte da edição · nível de verificação por município · 5.571 municípios · categorias</p>
-        <svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="nivelverificacao">
+        <h3 class="figura-titulo">Nível de verificação municipal (todos os 5.571)</h3>
+        <p class="figura-sub">Corte da edição · nível de verificação por município · 5.571 municípios · categorias</p>
+        <div class="figura-midia"><svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legNiveis"></div>
-        <div class="fonte-figura" id="fonteNiveis" style="font-size:12.5px; color:var(--muted); margin-top:6px;"></div>
-      </div>
-      <div class="map-box">
-        <h3 class="map-card-h">2 · Cobertura: % de municípios com ato</h3>
-        <p class="map-card-sub">Corte da edição · % dos municípios de cada UF com ato localizado · %</p>
-        <svg id="mapCobertura" role="img" aria-label="Mapa do Brasil: percentual de municípios de cada estado com algum ato formal" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxCobertura">
+        <h3 class="figura-titulo">Cobertura: % de municípios com ato</h3>
+        <p class="figura-sub">Corte da edição · % dos municípios de cada UF com ato localizado · %</p>
+        <div class="figura-midia"><svg id="mapCobertura" role="img" aria-label="Mapa do Brasil: percentual de municípios de cada estado com algum ato formal" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legCobertura"></div>
-      </div>
-      <div class="map-box">
-        <h3 class="map-card-h">3 · Natureza dos atos: decretos reativos ou planos preventivos?</h3>
-        <p class="map-card-sub">Corte da edição · natureza do ato por município · decreto reativo × plano preventivo</p>
-        <svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxNatureza">
+        <h3 class="figura-titulo">Natureza dos atos: decretos reativos ou planos preventivos?</h3>
+        <p class="figura-sub">Corte da edição · natureza do ato por município · decreto reativo × plano preventivo</p>
+        <div class="figura-midia"><svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legNatureza"></div>
-      </div>
-      <div class="map-box" id="riscoinstrumento">
-        <h3 class="map-card-h">4 · Risco projetado × instrumento estadual</h3>
-        <p class="map-card-sub">Corte da edição · risco projetado × instrumento estadual · 27 UFs</p>
-        <svg id="mapConsistencia" role="img" aria-label="Mapa do Brasil: relação entre o risco projetado pelos boletins federais e a área coberta pelo instrumento de cada estado, com o risco abrangendo suas consequências diretas" viewBox="0 0 480 460" style="width:100%; height:auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="riscoinstrumento">
+        <h3 class="figura-titulo">Risco projetado × instrumento estadual</h3>
+        <p class="figura-sub">Corte da edição · risco projetado × instrumento estadual · 27 UFs</p>
+        <div class="figura-midia"><svg id="mapConsistencia" role="img" aria-label="Mapa do Brasil: relação entre o risco projetado pelos boletins federais e a área coberta pelo instrumento de cada estado, com o risco abrangendo suas consequências diretas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legConsist"></div>
-        <details style="margin-top:14px;">
-      <summary style="cursor:pointer; color:var(--link); font-weight:600;">Ver em tabela</summary>
-      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente" style="margin-top:10px;">
-        <table class="mun-table">
-          <thead><tr><th style="width:52px;">UF</th><th>Risco projetado (Boletins nº 1–2)</th><th>Área do instrumento estadual</th></tr></thead>
-          <tbody id="tblConsistencia"></tbody>
-        </table>
-      </div>
-    </details>
-      </div>
-<div class="map-box">
-        <h3 class="map-card-h">5 · Municípios prioritários — quem já publicou, quem ainda não</h3>
-        <p class="map-card-sub">Corte da edição · municípios prioritários (Painel/SEDEC) com e sem ato · pontos</p>
-        <svg id="mapPrioritarios" role="img"
-      aria-label="Mapa do Brasil com os municípios prioritários do Cadastro Nacional (aproximação por população), distinguindo os que já têm instrumento localizado dos que ainda não"
-      viewBox="0 0 480 460" style="width:100%; max-width:640px; height:auto; display:block; margin:0 auto;"></svg>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">
+            <table class="mun-table"><thead><tr><th>UF</th><th>Risco projetado (Boletins nº 1–2)</th><th>Área do instrumento estadual</th></tr></thead><tbody id="tblConsistencia"></tbody></table>
+          </div>
+        </details>
+      </figure>
+      <figure class="figura figura--mapa" id="boxPrioritarios">
+        <h3 class="figura-titulo">Municípios prioritários — quem já publicou, quem ainda não</h3>
+        <p class="figura-sub">Corte da edição · municípios prioritários (Painel/SEDEC) com e sem ato · pontos</p>
+        <div class="figura-midia"><svg id="mapPrioritarios" role="img" aria-label="Mapa do Brasil com os municípios prioritários do Cadastro Nacional (aproximação por população), distinguindo os que já têm instrumento localizado dos que ainda não" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legPrioritarios"></div>
-  </div>
-<div class="map-box">
-        <h3 class="map-card-h">6 · Cidades que decretaram emergência</h3>
-        <p class="map-card-sub">Desde 29/06/2026 · municípios com decreto de emergência no ciclo · pontos</p>
-        <svg id="mapAtosResposta" role="img"
-      aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, atos de resposta que não pontuam no índice"
-      viewBox="0 0 480 460" style="width:100%; max-width:640px; height:auto; display:block; margin:0 auto;"></svg>
+      </figure>
+      <figure class="figura figura--mapa" id="boxAtosResposta">
+        <h3 class="figura-titulo">Cidades que decretaram emergência</h3>
+        <p class="figura-sub">Desde 29/06/2026 · municípios com decreto de emergência no ciclo · pontos</p>
+        <div class="figura-midia"><svg id="mapAtosResposta" role="img" aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, atos de resposta que não pontuam no índice" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAtosResposta"></div>
-  </div>
-
-      </div>
-    </div>
-  
-
-  <div class="panel analysis">
-    <h2>2 · Antecipação — leituras</h2>
-    <p class="hint">Seis leituras cruzadas dos 27 registros estaduais e das 27 capitais verificadas. Todos os valores vêm dos registros publicados nas fontes citadas. Passe o mouse para ver quais estados compõem cada categoria.</p>
-    <div class="charts-grid">
-      <div class="chart-box">
-        <h3 class="map-card-h">1 · Status geral dos planos estaduais</h3>
-        <p class="map-card-sub">Corte da edição · status do instrumento estadual (escada da §7) · 27 UFs</p>
-        <div class="canvas-wrap"><canvas id="chartDonut"></canvas></div>
-      </div>
-      <div class="chart-box">
-        <h3 class="map-card-h">2 · Status por região</h3>
-        <p class="map-card-sub">Corte da edição · status estadual agregado por região · contagem de UFs</p>
-        <div class="canvas-wrap"><canvas id="chartRegion"></canvas></div>
-      </div>
-
-      <div class="chart-box">
-        <h3 class="map-card-h">4 · Status das 27 capitais</h3>
-        <p class="map-card-sub">Corte da edição · categoria do instrumento da capital · 27 capitais</p>
-        <div class="canvas-wrap"><canvas id="chartCapitals"></canvas></div>
-      </div>
-      <div class="chart-box">
-        <h3 class="map-card-h">5 · O vão da prova: municípios com plano, declarado × documentado (PR · SC · RS)</h3>
-        <p class="map-card-sub">Corte da edição · municípios com plano declarado (MUNIC/ICM) × plano documentado · PR, SC, RS · contagem</p>
-        <div style="position:relative; height:230px;"><canvas id="chartDeclarado"></canvas></div>
-      </div>
-      <div class="chart-box">
-        <h3 class="map-card-h">6 · Áreas temáticas dos instrumentos estaduais (COBRADE)</h3>
-        <p class="map-card-sub">Corte da edição · áreas temáticas citadas nos instrumentos estaduais · classificação COBRADE · contagem</p>
-        <div style="position:relative; height:220px;"><canvas id="chartAreas"></canvas></div>
-      </div>
+      </figure>
     </div>
   </div>
 
+  <div class="panel">
+    <h2>Antecipação — leituras</h2>
+    <p class="hint">Cinco leituras cruzadas dos 27 registros estaduais e das 27 capitais verificadas. Todos os valores vêm dos registros publicados nas fontes citadas. Passe o mouse para ver quais estados compõem cada categoria.</p>
+    <div class="grade-figuras">
+      <figure class="figura figura--grafico" id="boxDonut">
+        <h3 class="figura-titulo">Status geral dos planos estaduais</h3>
+        <p class="figura-sub">Corte da edição · status do instrumento estadual (escada da §7) · 27 UFs</p>
+        <div class="figura-midia canvas-wrap"><canvas id="chartDonut"></canvas></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxRegion">
+        <h3 class="figura-titulo">Status por região</h3>
+        <p class="figura-sub">Corte da edição · status estadual agregado por região · contagem de UFs</p>
+        <div class="figura-midia canvas-wrap"><canvas id="chartRegion"></canvas></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxCapitals">
+        <h3 class="figura-titulo">Status das 27 capitais</h3>
+        <p class="figura-sub">Corte da edição · categoria do instrumento da capital · 27 capitais</p>
+        <div class="figura-midia canvas-wrap"><canvas id="chartCapitals"></canvas></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxDeclarado">
+        <h3 class="figura-titulo">O vão da prova: municípios com plano, declarado × documentado (PR · SC · RS)</h3>
+        <p class="figura-sub">Corte da edição · municípios com plano declarado (MUNIC/ICM) × plano documentado · PR, SC, RS · contagem</p>
+        <div class="figura-midia canvas-wrap"><canvas id="chartDeclarado"></canvas></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxAreas">
+        <h3 class="figura-titulo">Áreas temáticas dos instrumentos estaduais (COBRADE)</h3>
+        <p class="figura-sub">Corte da edição · áreas temáticas citadas nos instrumentos estaduais · classificação COBRADE · contagem</p>
+        <div class="figura-midia canvas-wrap"><canvas id="chartAreas"></canvas></div>
+      </figure>
+    </div>
+  </div>
 
-
-
-
-  
-  <div class="panel" id="resposta" style="border-top:3px solid var(--rust);">
-    <h2>3 · Resposta — o que foi decretado depois</h2>
+  <div class="panel panel--acento-rust" id="resposta">
+    <h2>Resposta — o que foi decretado depois</h2>
     <p class="hint">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>). As duas metades nunca se combinam num número.</p>
-    <div class="maps-grid">
-      <div class="chart-box wide" id="boxDispersao">
-        <h3 class="map-card-h">Antecipação × resposta · 27 estados</h3>
-        <p class="map-card-sub">Corte da edição · antecipação (MARÉ 0–100) × resposta (% dos municípios sob decreto) · 27 UFs</p>
-        <div class="canvas-wrap h-alta"><canvas id="cDispersao" aria-label="Dispersão: nota de antecipação (MARÉ) no eixo horizontal; fração de municípios sob decreto no eixo vertical; um ponto por estado"></canvas></div>
+    <div class="grade-figuras">
+      <figure class="figura figura--grafico figura--largo" id="boxDispersao">
+        <h3 class="figura-titulo">Antecipação × resposta · 27 estados</h3>
+        <p class="figura-sub">Corte da edição · antecipação (MARÉ 0–100) × resposta (% dos municípios sob decreto) · 27 UFs</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cDispersao" aria-label="Dispersão: nota de antecipação (MARÉ) no eixo horizontal; fração de municípios sob decreto no eixo vertical; um ponto por estado"></canvas></div>
         <div class="map-legend" id="legDispersao"></div>
-      </div>
-      <div class="chart-box" id="boxSerieResp">
-        <h3 class="map-card-h">Municípios com primeiro decreto, por semana</h3>
-        <p class="map-card-sub">Semanas desde 29/06/2026 · municípios com primeiro decreto de emergência · contagem</p>
-        <div class="canvas-wrap"><canvas id="cSerieResp" aria-label="Série semanal de municípios com primeiro decreto desde 29/06, com a faixa do período eleitoral"></canvas></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxSerieResp">
+        <h3 class="figura-titulo">Municípios com primeiro decreto, por semana</h3>
+        <p class="figura-sub">Semanas desde 29/06/2026 · municípios com primeiro decreto de emergência · contagem</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cSerieResp" aria-label="Série semanal de municípios com primeiro decreto desde 29/06, com a faixa do período eleitoral"></canvas></div>
         <div class="map-legend" id="legSerieResp"></div>
-      </div>
-      <div class="chart-box" id="boxDecRec">
-        <h3 class="map-card-h">Decretado × reconhecido, por estado</h3>
-        <p class="map-card-sub">Desde 29/06/2026 · municípios sob decreto por UF, reconhecidos × não reconhecidos · contagem e %</p>
-        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblDecRec"><thead><tr><th>UF</th><th>Municípios sob decreto</th><th>% municípios</th><th>% população</th><th>Reconhecidos (União)</th><th>Decretados sem reconhecimento</th><th>Primeiro decreto</th></tr></thead><tbody></tbody></table></div>
+      </figure>
+      <figure class="figura figura--tabela" id="boxDecRec">
+        <h3 class="figura-titulo">Decretado × reconhecido, por estado</h3>
+        <p class="figura-sub">Desde 29/06/2026 · municípios sob decreto por UF, reconhecidos × não reconhecidos · contagem e %</p>
+        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblDecRec"><thead><tr><th>UF</th><th>Municípios sob decreto</th><th>% municípios</th><th>% população</th><th>Reconhecidos (União)</th><th>Decretados sem reconhecimento</th><th>Primeiro decreto</th></tr></thead><tbody></tbody></table></div></div>
         <div class="map-legend" id="legDecRec"></div>
-      </div>
+      </figure>
     </div>
   </div>
-
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" style="display:block; text-decoration:none;"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span style="display:block;">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
-    <span style="display:block; margin-top:4px; font-size:12.5px;">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
+    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-linha">Monitor El Niño Brasil · Dados verificados em fontes primárias · Metodologia aberta (MARÉ v3.1)</span>
+    <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
-<script src="assets/colunas.js?v=3afa08c5" defer></script>
-<script src="assets/js/defesa-civil.js?v=1379ab3c" defer></script>
+<script src="assets/colunas.js?v=247b398e" defer></script>
+<script src="assets/js/defesa-civil.js?v=f11ec513" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
