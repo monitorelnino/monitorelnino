@@ -130,11 +130,19 @@ def registrar_fonte_suspensa(url: str, corpo: bytes, padrao: str) -> None:
     (EVID / f"defeso_{h[:16]}.txt").write_text(corpo[:20000].decode("utf-8", "replace"), encoding="utf-8")
 
 
+def url_ascii(url: str) -> str:
+    """IRI → URI (RFC 3987 §3.1): codifica em percent-encoding os caracteres fora do ASCII que
+    sobraram no endereço, preservando os escapes já existentes. Achado de 08/09/2026: 69 URLs do
+    repositório estadual do ES trazem "Contingência" com o "ê" cru no caminho; http.client só
+    envia ASCII e levantava UnicodeEncodeError — a falha era do nosso cliente, não do sítio."""
+    return urllib.parse.quote(url, safe=":/?&=%#+~@!$,;'()*[]")
+
+
 def buscar(url: str, timeout: int = 40) -> bytes:
     """GET simples com User-Agent do projeto. Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
     contra os padrões de página de defeso e registra a fonte como suspensa (PR-N0 §1.5)."""
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+    req = urllib.request.Request(url_ascii(url), headers={"User-Agent": UA, "Accept": "*/*"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         corpo = r.read()
         ct = (r.headers.get("Content-Type") or "").lower()

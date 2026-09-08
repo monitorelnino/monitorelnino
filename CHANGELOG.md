@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## Errata e correção · evidências do ES · 08/09/2026 · em publicação (ramo `edicao/2026-09-08-evidencias-es-url`)
+
+- **Achado da rotina diária:** 71 de 90 registros pontuáveis com URL estavam sem evidência preservada, 69 deles do repositório estadual do ES (`defesacivil.es.gov.br`). O log de buscas mostra a causa: **`UnicodeEncodeError` no nosso próprio cliente HTTP** (`coletores_base.buscar`) — as 69 URLs trazem "Contingência" com o "ê" cru no caminho, e `http.client` só envia ASCII. O sítio do ES não bloqueou nada; a lacuna era nossa.
+- **Correção:** `coletores_base.url_ascii()` converte IRI → URI (percent-encoding do que sobrou fora do ASCII, preservando os escapes existentes) antes de toda requisição; `verificar_evidencias.py` ganha teste permanente (URL de exemplo do ES; URL já codificada intacta; toda URL de `municipios.json` ASCII após a conversão). Reproduzido e provado com servidor local: antes, `UnicodeEncodeError`; depois, download normal.
+- **Errata de prazo, declarada:** o portão 6 passaria a bloquear em 10/09/2026, mas a primeira rodada do robô com a correção é **segunda 14/09** (fora da semana intensiva o robô só publica às segundas). Bloqueio adiado para **15/09/2026** — a regra continua a mesma; só a data de vigência muda, pelo motivo acima. Registrado aqui e em `docs/PROTOCOLO_ATUALIZACAO.md` §3.3.
+- Restam 2 registros com `URLError` na Action (Itajaí/SC: a URL é a página inicial da Defesa Civil de SC, não um documento; São Gonçalo/RJ): se a rodada de 14/09 não os preservar, entram como pista para a editoria (documento a localizar ou snapshot no Wayback), não como mudança de regra.
+- Como antecipar (opcional, sem tocar no código): definir as variáveis de repositório `INTENSIVO_DE` e `INTENSIVO_ATE` como `2026-09-10` faz a rodada de quinta publicar como dia intensivo; depois apagar as duas.
+
 ## v3.1.1 — auditoria de consistência visual e estrutural · 07/09/2026 · publicada em 08/09/2026 (PR #105, `d0c1e84`, endereço reservado)
 
 Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria: "nenhum elemento equivalente pode ter estilo próprio" — corrigir todas as inconsistências existentes antes de qualquer solução visual nova.

@@ -119,7 +119,7 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
  3. python recalcular_mare.py --check            (índice, robustez e os dois derivados de verificação, bit a bit)
  4. python verificar_sinais.py                   (sinais de risco: peso zero, proveniência)
  5. python verificar_saude.py                    (saúde: peso zero provado no motor e no índice, vocabulário, créditos)
- 6. python verificar_evidencias.py               (evidência preservada: aviso até 09/09/2026, bloqueante depois)
+ 6. python verificar_evidencias.py               (evidência preservada: aviso até 14/09/2026, bloqueante a partir de 15/09 — errata de 08/09)
  7. node   scripts/verificar_runtime.js          (+ portão de linguagem: "não localizamos" só com verificação completa)
  8. node   scripts/verificar_runtime_mapas.js
  9. node   scripts/verificar_runtime_sinais.js
@@ -144,7 +144,7 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
                                                   crédito no formato único "Fonte: … · Atualização: dd/mm/aaaa"; numeração
                                                   de figuras e seções a partir de 1; sem rolagem horizontal)
 ```
-Critério: dezoito `✓` (o 17º roda no CI; o 18º roda localmente com Playwright e entra em `portoes.yml` assim que um token com escopo `workflow` estiver em uso) (o 6º admite `⚠` até 09/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
+Critério: dezoito `✓` (o 17º e o 18º rodam no CI desde 08/09/2026, PR #106) (o 6º admite `⚠` até 14/09/2026 — prazo original 09/09, adiado com errata em 08/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
 tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
 Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 
