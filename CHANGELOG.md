@@ -74,6 +74,18 @@ As 11: index · defesa-civil · sinais-de-risco · saude · financiamento · pro
 
 Nenhuma alteração de método (§12.5); tudo o que entrou tem peso zero. Nove PRs na ordem do §16, mais o PR-N0 (instruções complementares, com precedência) e o N0b (diagnóstico). Média nacional inalterada: 43,6 (v3.0, corte 31/08/2026).
 
+### Correção: data impressa no PDF do índice e manifesto obsoleto (08/09/2026, rotina diária)
+- **Achado:** o portão 12 (`scripts/verificar_derivados.sh`) ficou vermelho na `main` após o
+  commit automático de 08/09 (`54dd91f`): `MARE_Indice_Documentacao.pdf` mudou (só a frase
+  "gerado programaticamente em dd/mm/aaaa", que lia o relógio da máquina) e
+  `docs/MANIFEST_SHA256.txt` não foi regenerado, porque `atualizar.py` encerra por cadência
+  fora da semana intensiva e a etapa do workflow que regenera o PDF roda mesmo assim.
+- **Correção mecânica:** `gerar_pdf_indice.py` passa a imprimir a data de `atualizado_em`
+  de `data/meta.json` (a última atualização publicada dos dados), não o dia da geração — o
+  PDF volta a ser função só dos dados publicados (R1 da auditoria de 29/08/2026), e o
+  manifesto deixa de envelhecer nos dias sem atualização. PDF e manifesto regenerados.
+- **Sem mudança** de método, de dado ou de número; a frase mantém a redação.
+
 ### Nome do envio: "Envie um plano ou decreto" (07/09/2026, escolha da editoria)
 - O CTA passa a nomear o que se entrega, e não a ação genérica: serve ao gestor ("meu plano") e ao
   cidadão ("o decreto que vi no diário"), sem possessivo que exclua um dos dois. Título da página,

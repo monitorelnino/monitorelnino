@@ -87,7 +87,11 @@ def construir():
     R = an.rodar()
     idx, ufs = R["idx"], R["ufs"]
     meta = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8"))
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    # 08/09/2026 (rotina diária): a data impressa era o relógio da máquina, o que fazia o PDF
+    # mudar a cada rodada mesmo sem dado novo (determinismo R1 quebrado no texto, não nos metadados)
+    # e deixava docs/MANIFEST_SHA256.txt obsoleto nos dias em que o robô encerra por cadência.
+    # Passa a ser a data da última atualização publicada dos dados (data/meta.json).
+    hoje = meta.get("atualizado_em") or meta["corte"]
     nomes = ["Instrumento estadual", "Cobertura populacional", "Antecipação"]
 
     E = []
