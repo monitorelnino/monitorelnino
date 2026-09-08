@@ -78,16 +78,23 @@ espera a pista B. Isso é a governança automático × humano do projeto
    resumo em linguagem simples · lista de arquivos · saída dos portões ·
    o que a editoria deve olhar na prévia.
 8. Netlify gera a prévia (Deploy Preview) do PR.
-9. Editoria abre a prévia, confere e decide: aprovar (Merge) ou pedir ajuste.
-10. Merge na main ⇒ Netlify publica em ~1 min.
+9. Claude aguarda a Action "Portões" ficar verde no PR e faz o merge
+    (regra de 08/09/2026, abaixo); a editoria confere a prévia quando quiser
+    e pede ajuste por PR novo se algo estiver errado.
+10. Merge na main ⇒ o robô publica no endereço reservado em ~2 min.
 11. Claude (ou a editoria) confere o site vivo; CHANGELOG muda de
     "em publicação" para a data.
 ```
 
-**O clique de Merge é da editoria.** Claude não faz merge por conta própria
-de nenhum PR da pista B, mesmo com autorização genérica prévia — cada PR é
-uma decisão. Exceção única: correção de emergência (§5), com autorização
-explícita naquela sessão.
+**Merge (regra em vigor desde 08/09/2026, por decisão escrita da editoria no
+chat).** Claude faz o merge dos PRs que ele mesmo abre, sem consultar a
+editoria, desde que (a) os 18 portões locais tenham passado na árvore final do
+ramo, (b) a Action "Portões" do PR esteja verde e (c) o PR não seja de
+lançamento ou reversão do domínio (§7), que continua exigindo merge pela
+editoria. Se a Action falhar, o PR fica aberto e o problema é relatado — nunca
+merge no vermelho. *Regra anterior (01/09–07/09/2026): o clique de Merge era da
+editoria em todo PR da pista B, com exceção única da correção de emergência
+(§5).*
 
 ### 3.2 Classes de mudança e o que cada uma exige
 
@@ -172,8 +179,7 @@ mesclado sem a designação de versão.
 Definição: erro **público e material** no site vivo (número errado no
 medidor, afirmação que ultrapassa o teto probatório, link malicioso, dado
 pessoal exposto). Fluxo: rollback pelo Netlify **primeiro** (§4), depois PR
-normal com a correção. Nesse caso, e só nele, a editoria pode autorizar
-Claude a fazer o merge na mesma sessão, por escrito no chat.
+normal com a correção, mesclado por Claude segundo a regra de merge de §3.1.
 
 ## 6. Acessos e segredos
 
