@@ -65,6 +65,32 @@ Nenhuma alteração de método; nenhum número muda. Classe **design + código**
 
 Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria: "nenhum elemento equivalente pode ter estilo próprio" — corrigir todas as inconsistências existentes antes de qualquer solução visual nova.
 
+### Coletor de SRAG e síndrome gripal (09/09/2026)
+- `coletar_srag_gripe.py` (6 autotestes): série InfoGripe (Fiocruz/FGV) nacional e por UF, leitura
+  **defensiva** de colunas (por padrão, não por nome fixo — o formato não pôde ser conferido fora da
+  rotina; falha alto em vez de adivinhar). Mesmo tratamento do §35: canal endêmico 2019–2025, 4 SE
+  vazadas, ressalva de não-atribuição. Grava `data/saude_desfechos/srag_serie.json`; portão (p).
+- Catálogo (§36): `srag` e `sg` passam de candidato a **coletado**. Card novo em Saúde: "SRAG por
+  semana · Brasil, sobre o canal endêmico". Na rotina; primeira coleta real na próxima rodada.
+
+### Estrutura de informação dos desfechos em saúde: instrumentos, catálogo, gatilhos, fontes por UF (09/09/2026)
+- **O instrumento localizado e lido na íntegra:** Plano de Contingência para Emergências em Saúde
+  Pública por Seca e Estiagem (MS/SVSA/DEMSP, 1ª ed. 2026, 92 pp., ISBN 978-85-334-2936-9) — Quadro 2
+  (efeitos sobre a saúde), Quadro 5 (cenários e indicadores por estágio, com gatilhos numéricos),
+  relatórios quinzenais de DDA/desnutrição/respiratórios, SSClima, dashboards com dados dos estados.
+  Espelho estadual localizado: Sala de Situação em Saúde e Clima da SES-MT (DOE 13/08/2026, 40
+  municípios, até 31/05/2027). Não localizados: documento integral do Plano El Niño (apresentado em
+  26/08), portaria do painel de especialistas, plano federal de inundação (2019).
+- **Quatro arquivos em `data/saude_desfechos/`**, peso zero, nunca lidos pelo motor (portão (o)):
+  `instrumentos.json` (5 federais + 27 vagas estaduais), `catalogo.json` (20 desfechos com sistema,
+  periodicidade, fonte aberta e status: 1 coletado, 18 candidatos, 1 sem fonte), `gatilhos.json`
+  (17 gatilhos do Quadro 5 com o que o Monitor computa: o de decretos lê o contador — 4,3% vs
+  limiar 8%), `fontes_uf.json` (onde cada SES publica; semeado com 17 instrumentos verificados).
+- **Saúde:** seção "O que o plano nacional manda acompanhar" — catálogo e gatilhos renderizados dos
+  JSONs, valor atual ao lado do limiar, sem semáforo próprio (o Monitor não declara estágio).
+  Metodologia §36 com a ordem de construção: portarias estaduais → coletores (InfoGripe, Sivep-DDA,
+  SIH por CID, Painel de Calor) → canal endêmico e ressalva para cada desfecho → gatilhos na página.
+
 ### O que foi encontrado (medido num Chromium real, 11 páginas × 3 larguras, antes da correção)
 - **17 tamanhos de fonte computados** em uso (10,4 · 12 · 12,5 · 13,5 · 15 · 17 · 18 · 19 · 23 · 24 · 28 · 30 · 33 · 38 · 44 · 46 · 52 px) para oito papéis tipográficos.
 - Famílias equivalentes com estilos divergentes no desktop: H2 (4 estilos), título de figura (3), crédito de figura (3), `.hint` (9), `.note` (5), versalete (5), painel (2), cartão (3), navegação (2); no celular, ainda mais.
