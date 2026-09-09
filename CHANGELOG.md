@@ -9,6 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## Varredura integral concluída e correção de workflow · 09/09/2026
+
+**Varredura municipal — encerrada.** A rodada de 08–09/09 (execução manual com `finalizar_varredura_hoje`, janela intensiva estendida até 10/09) consultou 2.765 municípios num só ciclo, fechando a varredura aberta em 03/09: 2.852 execuções no log (2.765 DOM, 46 DOU, 28 repositórios estaduais, 10 sítios municipais, 3 órgãos estaduais). Resultado: 83 achados com excerto para a fila humana, 81 municípios cobertos sem menção, 34 registros e 20 pistas; 2.128 municípios sem cobertura no Querido Diário — lacuna de fonte, declarada, não de consulta.
+- **Restam 440 municípios sem diário consultado** (SP 188, PR 186, SE 39, RR 15, RN 11, AC 1), todos por erro de consulta na rodada (506 execuções com erro, concentradas nas mesmas UFs) — provável limite de taxa do provedor sob carga. Serão retomados nas rodadas de 09 e 10/09, ainda dentro da janela intensiva. No painel dos 313, 27 municípios seguem nessa condição.
+- **Evidências:** a correção IRI→URI (PR #108) fez efeito — o portão 6 caiu de 71 para 3 registros sem evidência preservada.
+
+## Correção de workflow · manifesto selado após os PDFs · 08/09/2026 · (ramo `edicao/2026-09-08-manifesto-no-workflow`)
+
+- **Causa-raiz do portão 12 vermelho em dias de cadência:** em `atualizar.yml`, a etapa que regenera os PDFs roda mesmo quando `atualizar.py` encerra sem coletar, e o commit entrava sem regenerar `docs/MANIFEST_SHA256.txt`. O sintoma foi eliminado em 08/09 (PR #107: o PDF passou a ser determinístico); esta correção fecha a causa: `scripts/gerar_manifesto.py` roda sempre após a etapa dos PDFs, antes do commit, como manda o próprio cabeçalho do manifesto (portões → PDFs → manifesto).
+- Nenhuma página, dado ou número muda.
+
 ## Errata e correção · evidências do ES · 08/09/2026 · em publicação (ramo `edicao/2026-09-08-evidencias-es-url`)
 
 - **Achado da rotina diária:** 71 de 90 registros pontuáveis com URL estavam sem evidência preservada, 69 deles do repositório estadual do ES (`defesacivil.es.gov.br`). O log de buscas mostra a causa: **`UnicodeEncodeError` no nosso próprio cliente HTTP** (`coletores_base.buscar`) — as 69 URLs trazem "Contingência" com o "ê" cru no caminho, e `http.client` só envia ASCII. O sítio do ES não bloqueou nada; a lacuna era nossa.
