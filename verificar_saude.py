@@ -81,6 +81,16 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
         if (_sd / "instrumentos.json").exists():
             for i in json.load(open(_sd / "instrumentos.json", encoding="utf-8")).get("federais", []):
                 if str(i.get("status", "")).startswith("localizado e lido") and not (i.get("url") and i.get("lido_em")): erros.append(f"(o) instrumento lido sem url/data: {i.get('id')}")
+        _srag = RAIZ / "data" / "saude_desfechos" / "srag_serie.json"
+        if _srag.exists():
+            _sj = json.load(open(_srag, encoding="utf-8"))
+            if re.search(r"srag_serie\.json", motor): erros.append("(p) recalcular_mare.py referencia srag_serie.json (proibido)")
+            if "não atribui casos ao El Niño" not in _sj.get("_governanca", ""): erros.append("(p) srag_serie.json sem a ressalva de não-atribuição")
+            se = _sj.get("se_incompletas", 4)
+            for loc, s2 in (_sj.get("serie") or {}).items():
+                chaves2026 = sorted(k for k in s2 if k.startswith(str(_sj.get("ano_corrente", 2026))))
+                for k in chaves2026[-se:]:
+                    if s2.get(k) is not None: erros.append(f"(p) srag_serie {loc}: SE incompleta {k} preenchida na série consolidada")
         if (_sd / "gatilhos.json").exists():
             for g in json.load(open(_sd / "gatilhos.json", encoding="utf-8")).get("gatilhos", []):
                 if g.get("status_monitor") not in ("computavel", "computavel_parcial", "leitura_humana", "sem_coleta", "nao_publico"): erros.append(f"(o) gatilho com status fora do vocabulário: {g.get('id')}")

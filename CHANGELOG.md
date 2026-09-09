@@ -32,6 +32,14 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria: "nenhum elemento equivalente pode ter estilo próprio" — corrigir todas as inconsistências existentes antes de qualquer solução visual nova.
 
+### Coletor de SRAG e síndrome gripal (09/09/2026)
+- `coletar_srag_gripe.py` (6 autotestes): série InfoGripe (Fiocruz/FGV) nacional e por UF, leitura
+  **defensiva** de colunas (por padrão, não por nome fixo — o formato não pôde ser conferido fora da
+  rotina; falha alto em vez de adivinhar). Mesmo tratamento do §35: canal endêmico 2019–2025, 4 SE
+  vazadas, ressalva de não-atribuição. Grava `data/saude_desfechos/srag_serie.json`; portão (p).
+- Catálogo (§36): `srag` e `sg` passam de candidato a **coletado**. Card novo em Saúde: "SRAG por
+  semana · Brasil, sobre o canal endêmico". Na rotina; primeira coleta real na próxima rodada.
+
 ### Estrutura de informação dos desfechos em saúde: instrumentos, catálogo, gatilhos, fontes por UF (09/09/2026)
 - **O instrumento localizado e lido na íntegra:** Plano de Contingência para Emergências em Saúde
   Pública por Seca e Estiagem (MS/SVSA/DEMSP, 1ª ed. 2026, 92 pp., ISBN 978-85-334-2936-9) — Quadro 2

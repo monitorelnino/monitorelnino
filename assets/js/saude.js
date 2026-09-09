@@ -1,5 +1,5 @@
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, CATALOGO, GATILHOS, RESP_NAC;
+let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, CATALOGO, GATILHOS, RESP_NAC, SRAG;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -10,10 +10,11 @@ async function __load(){
     ['geo_uf','saude_uf','saude_federal','saude_sinais','sinais_risco','indice','monitor_saude'].map(f => fetch('data/' + f + '.json').then(r => {
       if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
   try { [DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA] = await Promise.all(['data/saude_desfechos/serie_painel.json','data/saude_desfechos/canal_endemico.json','data/saude_desfechos/completude.json','data/municipios_ibge_referencia.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { DESF = DESF_CANAL = DESF_COMP = PAINEL_LISTA = null; }
-  try { [CATALOGO, GATILHOS, RESP_NAC] = await Promise.all(['data/saude_desfechos/catalogo.json','data/saude_desfechos/gatilhos.json','data/resposta/por_uf.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { CATALOGO = GATILHOS = RESP_NAC = null; }
+  try { [CATALOGO, GATILHOS, RESP_NAC, SRAG] = await Promise.all(['data/saude_desfechos/catalogo.json','data/saude_desfechos/gatilhos.json','data/resposta/por_uf.json','data/saude_desfechos/srag_serie.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { CATALOGO = GATILHOS = RESP_NAC = SRAG = null; }
   __init();
   renderDesfechos();
   renderEstrutura();
+  renderSRAG();
 }
 
 const fonteFigura = MonitorMapas.credito;
@@ -197,4 +198,25 @@ function renderEstrutura(){
     MonitorMapas.legenda('legGatilhos', [{cor: MonitorMapas.cor('musgo'), rotulo: 'computável agora: ' + (c.computavel || 0)}, {cor: MonitorMapas.cor('ambar'), rotulo: 'parcial: ' + (c.computavel_parcial || 0)}, {cor: MonitorMapas.cor('sintetico'), rotulo: 'leitura humana: ' + (c.leitura_humana || 0)}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta / não público: ' + ((c.sem_coleta || 0) + (c.nao_publico || 0))}]);
     fonteFigura('boxGatilhos', {fontes: ['MS/SVSA, Plano de Contingência por Seca e Estiagem (2026), Quadro 5', 'valores do Monitor no corte'], data: (GATILHOS.fonte || {}).lido_em || null, url: (GATILHOS.fonte || {}).url});
   } else fonteFigura('boxGatilhos', {fontes: ['MS/SVSA'], data: null});
+}
+
+
+// ===== SRAG por semana, Brasil (§36; InfoGripe). Peso zero. O Monitor não atribui casos ao El Niño. =====
+function renderSRAG(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const br = SRAG && SRAG.serie && SRAG.serie.BR;
+  if (!br) { fonteFigura('boxSRAG', {fontes: ['InfoGripe (Fiocruz/FGV)'], data: null}); return; }
+  const canal = (SRAG.canal_endemico || {}).BR || {}; const now = (SRAG.nowcasting || {}).BR || {};
+  const ano = SRAG.ano_corrente; const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
+  const ate = Math.max(...Object.keys(br).concat(Object.keys(now)).filter(k => k.startsWith(String(ano))).map(k => +k.split('-')[1]));
+  const labels = semanas.slice(0, ate);
+  MonitorMapas.padraoGraficos(window.Chart);
+  new Chart(document.getElementById('cSRAG'), {data: {labels: labels.map(w => 'SE ' + w), datasets: [
+      {type: 'bar', label: 'consolidado', data: labels.map(w => (br[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.cor('sintetico'), order: 2},
+      {type: 'bar', label: 'nowcasting', data: labels.map(w => (now[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.cor('mineral'), order: 2},
+      {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => (canal[w] || {}).mediana ?? null), borderColor: MonitorMapas.cor('musgo'), borderWidth: 2, pointRadius: 0, order: 1},
+      {type: 'line', label: 'p90', data: labels.map(w => (canal[w] || {}).p90 ?? null), borderColor: MonitorMapas.cor('argila'), borderWidth: 1.5, pointRadius: 0, order: 1}]},
+    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos SRAG · Brasil'}}}}});
+  MonitorMapas.legenda('legSRAG', [{cor: MonitorMapas.cor('sintetico'), rotulo: 'consolidado'}, {cor: MonitorMapas.cor('mineral'), rotulo: 'nowcasting (últimas 4 SE)'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'mediana 2019–2025'}, {cor: MonitorMapas.cor('argila'), rotulo: 'p90'}]);
+  fonteFigura('boxSRAG', {fontes: ['InfoGripe (Fiocruz/FGV), Sivep-Gripe'], data: SRAG.gerado_em, url: SRAG.fonte});
 }
