@@ -1,5 +1,5 @@
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA;
+let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, CATALOGO, GATILHOS, RESP_NAC;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -10,8 +10,10 @@ async function __load(){
     ['geo_uf','saude_uf','saude_federal','saude_sinais','sinais_risco','indice','monitor_saude'].map(f => fetch('data/' + f + '.json').then(r => {
       if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
   try { [DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA] = await Promise.all(['data/saude_desfechos/serie_painel.json','data/saude_desfechos/canal_endemico.json','data/saude_desfechos/completude.json','data/municipios_ibge_referencia.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { DESF = DESF_CANAL = DESF_COMP = PAINEL_LISTA = null; }
+  try { [CATALOGO, GATILHOS, RESP_NAC] = await Promise.all(['data/saude_desfechos/catalogo.json','data/saude_desfechos/gatilhos.json','data/resposta/por_uf.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { CATALOGO = GATILHOS = RESP_NAC = null; }
   __init();
   renderDesfechos();
+  renderEstrutura();
 }
 
 const fonteFigura = MonitorMapas.credito;
@@ -170,4 +172,29 @@ function renderDesfechos(){
   if (pontos.length) MonitorMapas.pontos(ctx, 'mapaDesf', pontos, {r: () => 4, cor: d => NIV[d.nivel] || MonitorMapas.NEUTRA, rotulo: d => esc(d.nome) + '/' + esc(d.uf) + ' · nível ' + esc(d.nivel ?? '—') + ' · ' + esc(d.ultima || '')});
   MonitorMapas.legenda('legDesfMapa', [{cor: NIV[1], rotulo: 'nível 1 · verde'}, {cor: NIV[2], rotulo: 'nível 2 · amarelo'}, {cor: NIV[3], rotulo: 'nível 3 · laranja'}, {cor: NIV[4], rotulo: 'nível 4 · vermelho'}, {cor: MonitorMapas.NEUTRA, rotulo: (pontos.length ? pontos.length + ' municípios do painel' : 'painel sem coordenadas')}]);
   fonteFigura('boxDesfMapa', credito);
+}
+
+
+// ===== O que o plano nacional manda acompanhar (§36, 09/09/2026): catálogo e gatilhos, dos JSONs; peso zero =====
+function renderEstrutura(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const ROT = {coletado: 'coletado', candidato: 'candidato (fonte aberta identificada)', 'sem fonte aberta identificada': 'sem fonte aberta'};
+  const COR = {coletado: MonitorMapas.cor('musgo'), candidato: MonitorMapas.cor('ambar'), 'sem fonte aberta identificada': MonitorMapas.cor('sem-dado')};
+  const tb = document.querySelector('#tblCatalogo tbody');
+  if (tb && CATALOGO && CATALOGO.desfechos) {
+    tb.innerHTML = CATALOGO.desfechos.map(d => '<tr><td><strong>' + esc(d.nome) + '</strong></td><td>' + esc(d.comprometimento) + '</td><td>' + esc(d.sistema) + '</td><td>' + esc(d.fonte_aberta) + '</td><td><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + COR[d.status_coleta] + ';margin-right:6px;"></span>' + esc(ROT[d.status_coleta] || d.status_coleta) + '</td></tr>').join('');
+    const n = {}; CATALOGO.desfechos.forEach(d => { n[d.status_coleta] = (n[d.status_coleta] || 0) + 1; });
+    MonitorMapas.legenda('legCatalogo', Object.keys(COR).map(k => ({cor: COR[k], rotulo: (ROT[k] || k) + ': ' + (n[k] || 0)})));
+    fonteFigura('boxCatalogo', {fontes: ['MS/SVSA, Plano de Contingência por Seca e Estiagem (2026), Quadro 2'], data: (CATALOGO.fonte || {}).lido_em || null, url: (CATALOGO.fonte || {}).url});
+  } else fonteFigura('boxCatalogo', {fontes: ['MS/SVSA'], data: null});
+  const tg = document.querySelector('#tblGatilhos tbody');
+  if (tg && GATILHOS && GATILHOS.gatilhos) {
+    const N = RESP_NAC && RESP_NAC.nacional; const pct = N ? (100 * N.fracao_municipios).toFixed(1).replace('.', ',') + '% dos municípios sob decreto (todas as causas) · limiar 8%' : null;
+    const valor = g => g.id === 'eme_decretos' && pct ? pct : g.id === 'cri_decretos' && N ? 'por região e causa: a filtrar · limiar 50%' : g.status_monitor === 'computavel_parcial' ? 'parcial — ' + esc(g.nota) : g.status_monitor === 'leitura_humana' ? 'leitura humana — ' + esc(g.nota) : g.status_monitor === 'nao_publico' ? 'não público (só por LAI)' : 'sem coleta' + (g.nota ? ' — ' + esc(g.nota) : '');
+    const ORD = {computavel: 0, computavel_parcial: 1, leitura_humana: 2, sem_coleta: 3, nao_publico: 4};
+    tg.innerHTML = GATILHOS.gatilhos.slice().sort((a, b) => ORD[a.status_monitor] - ORD[b.status_monitor]).map(g => '<tr><td>' + esc(g.estagio) + '</td><td>' + esc(g.texto) + '</td><td>' + esc(g.fonte_oficial) + '</td><td>' + valor(g) + '</td></tr>').join('');
+    const c = {}; GATILHOS.gatilhos.forEach(g => { c[g.status_monitor] = (c[g.status_monitor] || 0) + 1; });
+    MonitorMapas.legenda('legGatilhos', [{cor: MonitorMapas.cor('musgo'), rotulo: 'computável agora: ' + (c.computavel || 0)}, {cor: MonitorMapas.cor('ambar'), rotulo: 'parcial: ' + (c.computavel_parcial || 0)}, {cor: MonitorMapas.cor('sintetico'), rotulo: 'leitura humana: ' + (c.leitura_humana || 0)}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta / não público: ' + ((c.sem_coleta || 0) + (c.nao_publico || 0))}]);
+    fonteFigura('boxGatilhos', {fontes: ['MS/SVSA, Plano de Contingência por Seca e Estiagem (2026), Quadro 5', 'valores do Monitor no corte'], data: (GATILHOS.fonte || {}).lido_em || null, url: (GATILHOS.fonte || {}).url});
+  } else fonteFigura('boxGatilhos', {fontes: ['MS/SVSA'], data: null});
 }

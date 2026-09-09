@@ -70,6 +70,20 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                 if a.get("degrau", 0) > 0 and not a.get("pagina_citada"): erros.append(f"(n) leitura automática sem página citada: {h[:12]}")
                 if a.get("status") != "leitura automática": erros.append(f"(n) pré-classificação sem o rótulo 'leitura automática': {h[:12]}")
         if re.search(r"saude_no_plano_auto|saude_no_plano_revisar", motor): erros.append("(n) recalcular_mare.py referencia a leitura automática (proibido)")
+        # (o) §36 estrutura de desfechos: instrumentos, catálogo, gatilhos e fontes por UF — nunca lidos pelo motor; completude mínima
+        _sd = RAIZ / "data" / "saude_desfechos"
+        if re.search(r"instrumentos\.json|catalogo\.json|gatilhos\.json|fontes_uf\.json", motor): erros.append("(o) recalcular_mare.py referencia a estrutura de desfechos (proibido)")
+        for _f in ("instrumentos.json", "catalogo.json", "gatilhos.json", "fontes_uf.json"):
+            if not (_sd / _f).exists(): erros.append(f"(o) falta data/saude_desfechos/{_f}")
+        if (_sd / "catalogo.json").exists():
+            for d in json.load(open(_sd / "catalogo.json", encoding="utf-8")).get("desfechos", []):
+                if not (d.get("id") and d.get("sistema") and d.get("periodicidade") and d.get("status_coleta")): erros.append(f"(o) catálogo: desfecho incompleto {d.get('id')}")
+        if (_sd / "instrumentos.json").exists():
+            for i in json.load(open(_sd / "instrumentos.json", encoding="utf-8")).get("federais", []):
+                if str(i.get("status", "")).startswith("localizado e lido") and not (i.get("url") and i.get("lido_em")): erros.append(f"(o) instrumento lido sem url/data: {i.get('id')}")
+        if (_sd / "gatilhos.json").exists():
+            for g in json.load(open(_sd / "gatilhos.json", encoding="utf-8")).get("gatilhos", []):
+                if g.get("status_monitor") not in ("computavel", "computavel_parcial", "leitura_humana", "sem_coleta", "nao_publico"): erros.append(f"(o) gatilho com status fora do vocabulário: {g.get('id')}")
         for l in _np.get("leituras", []):
             if l.get("categoria") not in range(0, 6): erros.append(f"(n) saude_no_plano: categoria fora de 0–5 em {l.get('municipio') or l.get('uf')}")
             if not (l.get("hash") and l.get("paginas") and l.get("documento")): erros.append(f"(n) saude_no_plano: leitura sem hash/página/documento em {l.get('municipio') or l.get('uf')}")
