@@ -229,8 +229,9 @@ FAIXAS = ["estágio inicial", "em construção", "consolidado", "avançado"]
 APOSENTADOS = ["ponto de partida", "caminho aberto", "avanço consistente", "referência nacional",
                "em desenvolvimento", "em consolidação"]
 _alvos = {
-    "index.html (pílula)": _re.search(r"var f = v < 25 \? \[(.*?)\];", _h_idx := ler_pagina(RAIZ / "index.html")).group(1).lower(),
-    "index.html (PDF)": _re.search(r"const fx = v\.total < 25 \? (.*?);", _h_idx).group(1).lower(),
+    # 09/09/2026: a pílula da inicial lê nome e cor de MonitorMapas.PALETA.faixaRotulo/faixas (paleta semântica única)
+    "assets/mapas.js (faixaRotulo)": _re.search(r"faixaRotulo:\s*\{(.*?)\}", open(RAIZ / "assets" / "mapas.js", encoding="utf-8").read()).group(1).lower(),
+    "index.html (PDF)": _re.search(r"const fx = v\.total < 25 \? (.*?);", _h_idx := ler_pagina(RAIZ / "index.html")).group(1).lower(),
     "index.html (régua)": _re.search(r'<div class="gauge-tick-labels">[\s\S]*?<div class="gauge-ends">[\s\S]*?</div>', _h_idx).group(0).lower(),
     # v3.1 §4: "Como ler" virou três frases sem a lista de faixas; a régua do medidor e o PDF seguem verificados
     "METODOLOGIA.md": _re.search(r"Quarta renomeação[^\n]*", open(RAIZ / "METODOLOGIA.md", encoding="utf-8").read()).group(0).lower(),

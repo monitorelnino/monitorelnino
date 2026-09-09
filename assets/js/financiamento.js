@@ -8,7 +8,7 @@ function renderContadores(){
   const brl = v => v == null ? '<span class="u-muted">sem coleta</span>' : 'R$ ' + v.toFixed(2).replace('.', ',');
   tb.innerHTML = Object.keys(C).sort((a, b) => ((C[b].por_habitante_2026 || {}).r5 || 0) - ((C[a].por_habitante_2026 || {}).r5 || 0)).map(uf => { const c = C[uf], m = c.municipios_cobertos;
     return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + brl((c.por_habitante_2026 || {}).r5) + '</td><td><span class="u-muted">sem coleta</span></td><td>' + (m.preventivo != null ? m.preventivo + (m.preventivo_valor ? ' · R$ ' + (m.preventivo_valor / 1e6).toFixed(1).replace('.', ',') + ' mi' : '') : '<span class="u-muted">não localizado</span>') + '</td><td><span class="u-muted">sem coleta</span></td><td>' + (c.razao_depois_antes != null ? c.razao_depois_antes : '<span class="u-muted">—</span>') + '</td><td><span class="u-muted">não disponível</span></td></tr>'; }).join('');
-  MonitorMapas.legenda('legContadores', [{cor: MonitorMapas.cor('sintetico'), rotulo: 'r5: TransfereGov, dados abertos'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'preventivo: fundo a fundo estadual localizado'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta / não disponível'}]);
+  MonitorMapas.legenda('legContadores', [{cor: MonitorMapas.PALETA.rotas.r5, rotulo: 'r5: TransfereGov, dados abertos'}, {cor: MonitorMapas.PALETA.rotas.rE, rotulo: 'preventivo: fundo a fundo estadual localizado'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'sem coleta / não disponível'}]);
   fonteFigura('boxContadores', {fontes: ['TransfereGov (r5)', 'atos estaduais (fundo a fundo preventivo)', 'Censo 2022'], data: (CONTADORES || {}).gerado_em});
 }
 
@@ -19,10 +19,10 @@ function renderMpsUf(ctx){
   mps.forEach(mp => { const d = (mp.destino && mp.destino.por_uf_pago) || {}; Object.entries(d).forEach(([uf, v]) => { if (uf === 'BR') br += v; else por[uf] = (por[uf] || 0) + v; tot += v; }); });
   const brl = v => 'R$ ' + (v >= 1e6 ? (v / 1e6).toFixed(1).replace('.', ',') + ' mi' : (v / 1e3).toFixed(0) + ' mil');
   const max = Math.max(1, ...Object.values(por));
-  const cor = v => v == null ? MonitorMapas.NEUTRA : (v / max > .5 ? MonitorMapas.cor('argila') : v / max > .2 ? MonitorMapas.cor('ambar') : v / max > .05 ? MonitorMapas.cor('mineral') : MonitorMapas.cor('sem-dado'));
+  const O4 = MonitorMapas.PALETA.ordinal4; const cor = v => v == null ? MonitorMapas.NEUTRA : (v / max > .5 ? O4[3] : v / max > .2 ? O4[2] : v / max > .05 ? O4[1] : O4[0]);
   const svgEl = document.getElementById('mapaMpsUf');
   if (svgEl) MonitorMapas.ufs(ctx, 'mapaMpsUf', uf => cor(por[uf]), uf => por[uf] != null ? '<em>' + brl(por[uf]) + '</em> pagos por unidade gestora sediada na UF' : '<em>sem pagamento por unidade gestora na UF</em>');
-  MonitorMapas.legenda('legMpsUf', [{cor: MonitorMapas.cor('argila'), rotulo: 'acima de 50% do maior valor'}, {cor: MonitorMapas.cor('ambar'), rotulo: '20–50%'}, {cor: MonitorMapas.cor('mineral'), rotulo: '5–20%'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'abaixo de 5% · sem pagamento'}]);
+  MonitorMapas.legenda('legMpsUf', [{cor: O4[3], rotulo: 'acima de 50% do maior valor'}, {cor: O4[2], rotulo: '20–50%'}, {cor: O4[1], rotulo: '5–20%'}, {cor: O4[0], rotulo: 'abaixo de 5% · sem pagamento'}]);
   fonteFigura('boxMpsUf', {fontes: ['Portal da Transparência', 'execução mensal por UF da unidade gestora'], data: (MPS || {}).gerado_em});
   const bx = document.getElementById('mpsUfBarras');
   if (bx) { const ufs = Object.entries(por).sort((a, b) => b[1] - a[1]).slice(0, 12);
@@ -111,6 +111,9 @@ async function __load(){
     'data/geo_uf.json','data/financiamento/rotas.json','data/financiamento/por_uf.json','data/financiamento/compromissos_federais.json',
     'data/financiamento/serie_nacional.json','data/financiamento/emendas.json','data/financiamento/consultas.json','data/transferencias.json',
     'data/atos_resposta.json','data/populacao_censo2022.json','data/financiamento/mps_2026.json','data/financiamento/contadores_uf.json'].map(carregar));
+  // Cor das rotas e das MPs vem da paleta semântica única (assets/mapas.js), não do JSON:
+  // o dado carrega a ordem e a chave; a cor é decisão de design e vale igual em todas as figuras.
+  (ROTAS.rotas || []).forEach(r => { r.cor = MonitorMapas.PALETA.rotas[r.id] || r.cor; });
   renderContadores();
   renderRotaMPs();
   try { PAINEL = await carregar('data/painel/agregados.json'); } catch(e) { PAINEL = null; }
@@ -164,8 +167,8 @@ function __init(){
     };
     const gN = svg.append('g').attr('class', 'nos');
     ORIG.forEach(o => no(gN, {x: 100, y: o.y}, 176, 46, MonitorMapas.cor('abissal'), o.nome, o.id === 'estado' ? 'recebe e repassa' : 'origem federal'));
-    svg.append('text').attr('x', 100).attr('y', 352).attr('text-anchor', 'middle').attr('font-size', 12).attr('fill', MonitorMapas.cor('muted-token')).attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('as linhas verticais: o que a União repassa ao estado');
-    svg.append('text').attr('x', 100).attr('y', 368).attr('text-anchor', 'middle').attr('font-size', 12).attr('fill', MonitorMapas.cor('muted-token')).attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('(FPE · fundo a fundo · defesa civil · convênios)');
+    svg.append('text').attr('x', 100).attr('y', 352).attr('text-anchor', 'middle').attr('font-size', 12).attr('fill', MonitorMapas.cor('muted')).attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('as linhas verticais: o que a União repassa ao estado');
+    svg.append('text').attr('x', 100).attr('y', 368).attr('text-anchor', 'middle').attr('font-size', 12).attr('fill', MonitorMapas.cor('muted')).attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('(FPE · fundo a fundo · defesa civil · convênios)');
     no(gN, destino, 130, 44, MonitorMapas.cor('abissal'), 'Município', null);
     nos.forEach(n => {
       const g = gN.append('g').attr('tabindex', 0).attr('role', 'img').attr('aria-label', n.n + ' · ' + n.nome + ' — chave: ' + n.chave + (n.ex_ante ? '' : ' (resposta)'))
@@ -177,7 +180,7 @@ function __init(){
         .on('mouseleave.realce', () => svg.selectAll('.aresta').attr('stroke-opacity', .75));
       no(g, n, 300, passo - 8, n.cor, n.n + ' · ' + n.nome, 'chave: ' + n.chave + (n.ex_ante ? '' : ' · resposta'));
     });
-    MonitorMapas.legenda('legRede', [{cor: MonitorMapas.cor('musgo'), rotulo: 'contínuo: regra'}, {cor: MonitorMapas.cor('argila'), rotulo: 'tracejado: decreto (resposta)'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'pontilhado: discricionária'}, {cor: MonitorMapas.cor('mineral'), rotulo: 'duplo: execução direta'}]);
+    MonitorMapas.legenda('legRede', [{cor: MonitorMapas.PALETA.chaves.regra, rotulo: 'contínuo: regra'}, {cor: MonitorMapas.PALETA.chaves.decreto, rotulo: 'tracejado: decreto (resposta)'}, {cor: MonitorMapas.PALETA.chaves.discricionaria, rotulo: 'pontilhado: discricionária'}, {cor: MonitorMapas.PALETA.chaves.direta, rotulo: 'duplo: execução direta'}]);
     fonteFigura('boxRede', {fontes: ['Monitor El Niño Brasil', 'base legal citada por rota'], data: ROTAS.corte});
   })();
   document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="cartao" style="border-left:4px solid '+r.cor+'"><h3 class="figura-titulo">'+r.n+' · '+esc(r.nome)+' <span class="sub">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
@@ -187,12 +190,12 @@ function __init(){
     const svg = d3.select('#svgSerie'), W = 900, H = 260, m = {t: 16, r: 16, b: 34, l: 60};
     const x = d3.scaleTime().domain([new Date(2026,0,1), new Date(2026,11,31)]).range([m.l, W - m.r]);
     const d0 = new Date(SERIE.defeso.inicio + 'T00:00:00'), d1 = new Date(SERIE.defeso.fim + 'T00:00:00');
-    svg.append('rect').attr('x', x(d0)).attr('y', m.t).attr('width', x(d1) - x(d0)).attr('height', H - m.t - m.b).attr('fill', MonitorMapas.cor('argila')).attr('fill-opacity', .13);
-    svg.append('text').attr('x', (x(d0) + x(d1)) / 2).attr('y', m.t + 16).attr('text-anchor','middle').attr('font-size', 12).attr('fill', MonitorMapas.cor('argila'))
+    svg.append('rect').attr('x', x(d0)).attr('y', m.t).attr('width', x(d1) - x(d0)).attr('height', H - m.t - m.b).attr('fill', MonitorMapas.PALETA.defeso).attr('fill-opacity', .13);
+    svg.append('text').attr('x', (x(d0) + x(d1)) / 2).attr('y', m.t + 16).attr('text-anchor','middle').attr('font-size', 12).attr('fill', MonitorMapas.PALETA.defeso)
       .attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('Período eleitoral 04/07–25/10: voluntárias suspensas por lei (art. 73, VI, a) — não é inação');
     const semanas = SERIE.semanas || [];
     if (!semanas.length) {
-      svg.append('text').attr('x', W/2).attr('y', H/2 + 8).attr('text-anchor','middle').attr('font-size', 14).attr('fill', MonitorMapas.cor('muted-token')).text('Série ainda não coletada — lacuna declarada');
+      svg.append('text').attr('x', W/2).attr('y', H/2 + 8).attr('text-anchor','middle').attr('font-size', 14).attr('fill', MonitorMapas.cor('muted')).text('Série ainda não coletada — lacuna declarada');
     } else {
       const y = d3.scaleLinear().domain([0, d3.max(semanas, s => ROTAS.rotas.reduce((a, r) => a + (s[r.id] || 0), 0))]).nice().range([H - m.b, m.t]);
       const pilha = d3.stack().keys(ROTAS.rotas.map(r => r.id))(semanas.map(s => Object.assign({}, s)));
@@ -203,11 +206,11 @@ function __init(){
       (document.getElementById('notaSerie')||{}).textContent = 'Série semanal 2026 por rota; fonte: dados abertos do Portal da Transparência, consulta registrada no bloco 8.';
     }
     svg.append('g').attr('transform', 'translate(0,' + (H - m.b) + ')').call(d3.axisBottom(x).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat('%b')));
-    MonitorMapas.legenda('legSerie', ROTAS.rotas.map(r => ({cor: r.cor, rotulo: r.n + ' · ' + r.nome})).concat([{cor: MonitorMapas.cor('argila'), opacidade: .35, rotulo: 'faixa do defeso'}]));
+    MonitorMapas.legenda('legSerie', ROTAS.rotas.map(r => ({cor: r.cor, rotulo: r.n + ' · ' + r.nome})).concat([{cor: MonitorMapas.PALETA.defeso, opacidade: .35, rotulo: 'faixa do defeso'}]));
     fonteFigura('boxSerie', {fontes: 'TransfereGov — Dados Abertos', data: semanas.length ? (SERIE.carga_da_fonte || SERIE.corte) : null});
   })();
   // 3 · por estado
-  const FUNDO = {localizado:['Localizado',MonitorMapas.cor('musgo')], em_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], nao_localizado:['Não localizado (bateria datada)',MonitorMapas.cor('argila')], nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')]};
+  const FUNDO = {localizado:['Localizado',MonitorMapas.PALETA.status.NOVO], em_elaboracao:['Em elaboração',MonitorMapas.PALETA.status.ELAB], nao_localizado:['Não localizado (bateria datada)',MonitorMapas.PALETA.status.LAC], nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.status.NAO_VERIFICADO]};
   const fundo = uf => ((PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}).status || 'nao_verificado';
   desenharMapa('mapaFundo','legFundo', uf => (FUNDO[fundo(uf)] || FUNDO.nao_verificado)[1],
     uf => { const f = (PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}; return '<em>' + esc((FUNDO[fundo(uf)] || FUNDO.nao_verificado)[0]) + '</em>' + (f.instrumento ? '<br>' + esc(f.instrumento) + (f.norma ? ' · ' + esc(f.norma) : '') : '') + (f.condicionalidade ? '<br>Condição: ' + esc(f.condicionalidade) : '') + (f.verificado_em ? '<br>verificado em ' + esc(f.verificado_em) : '<br>bateria estadual ainda não executada'); },
@@ -226,20 +229,20 @@ function __init(){
   fonteFigura('boxPorHab', {fontes: ['Portal da Transparência', 'Tesouro', 'FNS', 'FNAS', 'Censo 2022 (IBGE)'], data: null});
   // 4 · resposta por decreto
   const svgDin = desenharMapa('mapDinheiro','legDinheiro', uf => NEUTRA, uf => 'Sem repasse ou reconhecimento nomeado até o corte',
-    [{cor:MonitorMapas.cor('musgo'), rotulo:'Repasse preventivo confirmado (Prepara RS)'}, {cor:MonitorMapas.cor('argila'), rotulo:'Reconhecimento federal (rota 3, resposta)'}]);
+    [{cor:MonitorMapas.PALETA.preparacao, rotulo:'Repasse preventivo confirmado (Prepara RS)'}, {cor:MonitorMapas.PALETA.resposta, rotulo:'Reconhecimento federal (rota 3, resposta)'}]);
   const repassesGeo = (TRANSF.repasses_rs || []).filter(r => r.lat);
   const rEsc = d3.scaleSqrt().domain([0, d3.max(repassesGeo, r => r.valor) || 1]).range([1.5, 9]);
   svgDin.append('g').selectAll('circle').data(repassesGeo).join('circle')
     .attr('cx', r => projection([r.lon, r.lat])[0]).attr('cy', r => projection([r.lon, r.lat])[1]).attr('r', r => rEsc(r.valor))
-    .attr('fill', MonitorMapas.cor('musgo')).attr('fill-opacity', .75).attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', .6)
+    .attr('fill', MonitorMapas.PALETA.preparacao).attr('fill-opacity', .75).attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', .6)
     .on('mouseenter', (evt, r) => showTip('<strong>' + esc(r.municipio || r.nome) + ' (RS)</strong><br>' + brl(r.valor) + ' · Prepara RS', evt)).on('mouseleave', hideTip);
   const recs = (ATOS.eventos || []).filter(e => e.causa === 'reconhecimento federal' && e.lat);
   svgDin.append('g').selectAll('circle.rec').data(recs).join('circle').attr('class','rec')
-    .attr('cx', e => projection([e.lon, e.lat])[0]).attr('cy', e => projection([e.lon, e.lat])[1]).attr('r', 4).attr('fill', MonitorMapas.cor('argila')).attr('fill-opacity', .85);
+    .attr('cx', e => projection([e.lon, e.lat])[0]).attr('cy', e => projection([e.lon, e.lat])[1]).attr('r', 4).attr('fill', MonitorMapas.PALETA.resposta).attr('fill-opacity', .85);
   // 04/09/2026: os totais são dado de legenda, não nota — entram na própria legenda do mapa.
   MonitorMapas.legenda('legDinheiro', [
-    {cor:MonitorMapas.cor('musgo'), rotulo:'Repasse preventivo confirmado (Prepara RS): ' + brl(repassesGeo.reduce((s, r) => s + r.valor, 0)) + ' · ' + repassesGeo.length + ' municípios'},
-    {cor:MonitorMapas.cor('argila'), rotulo:'Reconhecimento federal (rota 3, resposta): ' + recs.length}]);
+    {cor:MonitorMapas.PALETA.preparacao, rotulo:'Repasse preventivo confirmado (Prepara RS): ' + brl(repassesGeo.reduce((s, r) => s + r.valor, 0)) + ' · ' + repassesGeo.length + ' municípios'},
+    {cor:MonitorMapas.PALETA.resposta, rotulo:'Reconhecimento federal (rota 3, resposta): ' + recs.length}]);
   (document.getElementById('dinTotalRS')||{}).textContent = brl(repassesGeo.reduce((s, r) => s + r.valor, 0));
   (document.getElementById('dinNumRS')||{}).textContent = repassesGeo.length;
   (document.getElementById('dinNumFed')||{}).textContent = recs.length;
@@ -279,10 +282,10 @@ new Chart(document.getElementById('chartFinance'), {
   type:'bar',
   data:{ labels: financeData.map(d=>d.label),
     datasets:[{ data: financeData.map(d=>d.value),
-      backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? MonitorMapas.cor('musgo')
-        : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? MonitorMapas.cor('argila')
-        : /aliment|agr[íi]cola|safra/i.test(d.label) ? MonitorMapas.cor('ambar')
-        : /sa[úu]de/i.test(d.label) ? MonitorMapas.cor('mineral') : MonitorMapas.cor('areia')),
+      backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? MonitorMapas.PALETA.temas.hidrico
+        : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? MonitorMapas.PALETA.temas.fogo
+        : /aliment|agr[íi]cola|safra/i.test(d.label) ? MonitorMapas.PALETA.temas.alimentar
+        : /sa[úu]de/i.test(d.label) ? MonitorMapas.PALETA.temas.saude : MonitorMapas.PALETA.temas.outro),
       borderRadius:4 }] },
   options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{ legend:{display:false} },
     scales:{ x:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{ callback:v => 'R$ '+(v/1e9).toFixed(1)+'bi' } }, y:{ grid:{display:false} } } }

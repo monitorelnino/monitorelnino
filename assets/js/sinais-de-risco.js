@@ -6,12 +6,12 @@
 let BR_GEOJSON, SINAIS, MARE;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
-const TIPO_COR = {estiagem:MonitorMapas.cor('ambar'), chuvas:MonitorMapas.cor('musgo'), incendios:MonitorMapas.cor('argila'), misto:MonitorMapas.cor('mineral'), sem_sinal:MonitorMapas.cor('areia')};
+const TIPO_COR = {estiagem:MonitorMapas.PALETA.risco.seca, chuvas:MonitorMapas.PALETA.risco.chuvas, incendios:MonitorMapas.PALETA.risco.fogo, misto:MonitorMapas.PALETA.risco.multi, sem_sinal:MonitorMapas.PALETA.risco.sem_sinal};   // paleta semântica única
 const FAIXAS = [
-  {nome:'Estágio inicial', cor:MonitorMapas.cor('argila'), teste:v => v < 25},
-  {nome:'Em construção',   cor:MonitorMapas.cor('ambar'), teste:v => v < 50},
-  {nome:'Consolidado',     cor:MonitorMapas.cor('musgo'), teste:v => v < 70},
-  {nome:'Avançado',        cor:MonitorMapas.cor('musgo'), teste:v => true},
+  {nome:'Estágio inicial', cor:MonitorMapas.PALETA.faixas.inicial, teste:v => v < 25},
+  {nome:'Em construção',   cor:MonitorMapas.PALETA.faixas.construcao, teste:v => v < 50},
+  {nome:'Consolidado',     cor:MonitorMapas.PALETA.faixas.consolidado, teste:v => v < 70},
+  {nome:'Avançado',        cor:MonitorMapas.PALETA.faixas.avancado, teste:v => true},
 ];
 const faixaDe = v => FAIXAS.find(f => f.teste(v));
 
@@ -75,7 +75,7 @@ corpoTipo.innerHTML = UFS.map(uf => { const r = RISCO(uf);
          '</td><td>' + esc(r ? TIPO_ROTULO[r.tipo] : '—') + '</td></tr>'; }).join('');
 
 // ---- Mapa 2: seca observada ----
-const SECA_COR = {S0:MonitorMapas.cor('zebra'), S1:MonitorMapas.cor('ambar'), S2:MonitorMapas.cor('ambar'), S3:MonitorMapas.cor('ambar-escuro'), S4:MonitorMapas.cor('argila')};
+const SECA_COR = {S0:MonitorMapas.PALETA.zero, S1:MonitorMapas.PALETA.ordinal4[0], S2:MonitorMapas.PALETA.ordinal4[1], S3:MonitorMapas.PALETA.ordinal4[2], S4:MonitorMapas.PALETA.ordinal4[3]};   // ordinal único de intensidade
 const seca = uf => (SINAIS.uf[uf] || {}).secas;
 desenharMapa('mapaSecas', 'legSecas',
   uf => { const s = seca(uf); return s ? (SECA_COR[s.categoria] || NEUTRA) : NEUTRA; },
@@ -86,40 +86,40 @@ credito('boxSecas', 'monitor_secas');
 // ---- Mapa 3: avisos INMET ----
 const aviso = uf => (SINAIS.uf[uf] || {}).avisos_inmet;
 const maxAvisos = Math.max(1, ...UFS.map(uf => (aviso(uf) || {}).total || 0));
-const escalaAviso = d3.scaleLinear().domain([0, maxAvisos]).range([MonitorMapas.cor('zebra'), MonitorMapas.cor('musgo')]);
+const escalaAviso = d3.scaleLinear().domain([0, maxAvisos]).range(MonitorMapas.PALETA.rampaPerigo);   // perigo = rampa quente (era verde)
 desenharMapa('mapaAvisos', 'legAvisos',
   uf => { const a = aviso(uf); return a ? escalaAviso(a.total) : NEUTRA; },
   uf => { const a = aviso(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
     const graus = Object.entries(a.graus || {}).map(([g, n]) => esc(g) + ': ' + n).join(' · ');
     return a.total + ' aviso(s) vigente(s)' + (graus ? '<br>' + graus : ''); },
-  [{cor:MonitorMapas.cor('zebra'), rotulo:'Menos avisos'}, {cor:MonitorMapas.cor('musgo'), rotulo:'Mais avisos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'Menos avisos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:'Mais avisos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxAvisos', 'inmet_avisos');
 
 // ---- Mapa 4: focos ativos ----
 const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
 const maxFogo = Math.max(1, ...UFS.map(uf => (fogo(uf) || {}).focos_24h || 0));
-const escalaFogo = d3.scaleSqrt().domain([0, maxFogo]).range([MonitorMapas.cor('osso-claro'), MonitorMapas.cor('argila')]);
+const escalaFogo = d3.scaleSqrt().domain([0, maxFogo]).range(MonitorMapas.PALETA.rampaPerigo);
 desenharMapa('mapaFogo', 'legFogo',
   uf => { const f = fogo(uf); return f ? escalaFogo(f.focos_24h) : NEUTRA; },
   uf => { const f = fogo(uf); return f ? f.focos_24h + ' foco(s) nas últimas 24 h' : 'Aguardando a primeira coleta desta fonte'; },
-  [{cor:MonitorMapas.cor('osso-claro'), rotulo:'Menos focos'}, {cor:MonitorMapas.cor('argila'), rotulo:'Mais focos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'Menos focos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:'Mais focos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxFogo', 'inpe_fogo');
 
 // ---- Mapa 5: alertas vigentes do CEMADEN ----
 const alerta = uf => (SINAIS.uf[uf] || {}).alertas_cemaden;
 const maxAlerta = Math.max(1, ...UFS.map(uf => (alerta(uf) || {}).total || 0));
-const escalaAlerta = d3.scaleLinear().domain([0, maxAlerta]).range([MonitorMapas.cor('zebra'), MonitorMapas.cor('musgo')]);
+const escalaAlerta = d3.scaleLinear().domain([0, maxAlerta]).range(MonitorMapas.PALETA.rampaPerigo);
 desenharMapa('mapaCemaden', 'legCemaden',
   uf => { const a = alerta(uf); return a ? escalaAlerta(a.total) : NEUTRA; },
   uf => { const a = alerta(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
     const niveis = Object.entries(a.niveis || {}).map(([n, q]) => esc(n) + ': ' + q).join(' · ');
     return a.total + ' alerta(s) vigente(s)' + (niveis ? '<br>' + niveis : ''); },
-  [{cor:MonitorMapas.cor('zebra'), rotulo:'Menos alertas'}, {cor:MonitorMapas.cor('musgo'), rotulo:'Mais alertas'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'Menos alertas'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:'Mais alertas'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 // CEMADEN: "nenhum alerta vigente" é informação da fonte, não lacuna — vai na LEGENDA, não em parágrafo.
 (function(){
   const temAlerta = Object.values((SINAIS && SINAIS.uf) || {}).some(u => u.alertas_cemaden && u.alertas_cemaden.total);
   const leg = document.getElementById('legCemaden');
-  if (leg && coletada('cemaden_alertas') && !temAlerta) MonitorMapas.legenda('legCemaden', [{cor:MonitorMapas.cor('sem-dado'), rotulo:'nenhum alerta vigente na consulta'}, {cor:MonitorMapas.cor('musgo'), rotulo:'com alertas (quando houver)'}]);
+  if (leg && coletada('cemaden_alertas') && !temAlerta) MonitorMapas.legenda('legCemaden', [{cor:MonitorMapas.PALETA.semDado, rotulo:'nenhum alerta vigente na consulta'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:'com alertas (quando houver)'}]);
 })();
 credito('boxCemaden', 'cemaden_alertas');
 
@@ -171,7 +171,7 @@ function canvasEm(wrapId, canvasId){
 if(oni && oni.serie && oni.serie.length){
   new Chart(canvasEm('wrapOni', 'cOni'), {type:'line', data:{
       labels: oni.serie.map(p => p.trimestre + '/' + String(p.ano).slice(2)),
-      datasets:[{label:'ONI (°C)', data: oni.serie.map(p => p.anomalia), borderColor:MonitorMapas.cor('musgo'),
+      datasets:[{label:'ONI (°C)', data: oni.serie.map(p => p.anomalia), borderColor:MonitorMapas.PALETA.serie[0],
                  backgroundColor:'rgba(46,61,48,.12)', borderWidth:2, pointRadius:0, fill:true, tension:.25}]},
     options:{...SEM_ANIM, plugins:{legend:{display:false}}, scales:{
       x:{ticks:{maxTicksLimit:12}}, y:{title:{display:true, text:'°C'}}}}});
@@ -183,15 +183,15 @@ if(prob && prob.trimestres && prob.trimestres.length){
   const t = prob.trimestres.slice(0, 9);
   new Chart(canvasEm('wrapPlume', 'cPlume'), {type:'bar', data:{
       labels: t.map(p => p.trimestre),
-      datasets:[{label:'La Niña', data:t.map(p => p.la_nina), backgroundColor:MonitorMapas.cor('sintetico')},
-                {label:'Neutro',  data:t.map(p => p.neutro),  backgroundColor:MonitorMapas.cor('areia')},
-                {label:'El Niño', data:t.map(p => p.el_nino), backgroundColor:MonitorMapas.cor('argila')}]},
+      datasets:[{label:'La Niña', data:t.map(p => p.la_nina), backgroundColor:MonitorMapas.PALETA.enso.la_nina},
+                {label:'Neutro',  data:t.map(p => p.neutro),  backgroundColor:MonitorMapas.PALETA.enso.neutro},
+                {label:'El Niño', data:t.map(p => p.el_nino), backgroundColor:MonitorMapas.PALETA.enso.el_nino}]},
     options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
       scales:{x:{stacked:true}, y:{stacked:true, max:100, title:{display:true, text:'%'}}}}});
 } else {
   // enquanto o plume IRI/CPC não é coletado: a leitura oficial do CPC via CPTEC e do Painel, como itens de legenda (dado declarado, não gráfico)
   const pg = SINAIS.enos.prognostico; const wp = document.getElementById('wrapPlume'); if (wp) wp.innerHTML = '';
-  if (pg && pg.enso) MonitorMapas.legenda('legPlume', [{cor: MonitorMapas.cor('argila'), rotulo: 'El Niño: > 90% para SON/2026 (CPC/NOAA, ago/2026)'}, {cor: MonitorMapas.cor('ambar'), rotulo: '100% de permanência até início de 2027 (Boletim nº 3)'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'plume por trimestre: sem coleta'}]);
+  if (pg && pg.enso) MonitorMapas.legenda('legPlume', [{cor: MonitorMapas.PALETA.enso.el_nino, rotulo: 'El Niño: > 90% para SON/2026 (CPC/NOAA, ago/2026)'}, {cor: MonitorMapas.PALETA.enso.el_nino, opacidade: .55, rotulo: '100% de permanência até início de 2027 (Boletim nº 3)'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'plume por trimestre: sem coleta'}]);
 }
 credito('boxPlume', 'iri_plume');
 
