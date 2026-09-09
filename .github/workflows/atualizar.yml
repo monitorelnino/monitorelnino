@@ -183,6 +183,10 @@ jobs:
           export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd)).timestamp()))")"
           python gerar_pdf_indice.py
           python gerar_pdf_metodologia.py
+          # 08/09/2026 (causa-raiz do portão 12 vermelho em dias de cadência): o manifesto
+          # sela o pacote DEPOIS de qualquer regeneração de PDF — sem isso, um PDF regenerado
+          # aqui sem atualização de dados deixava docs/MANIFEST_SHA256.txt obsoleto no commit.
+          python scripts/gerar_manifesto.py
         # Roda DEPOIS dos quatro portões (dentro de atualizar.py): o PDF é
         # documentação computada ao vivo dos dados vigentes — regenerá-lo a
         # cada atualização garante que o documento público nunca envelhece
