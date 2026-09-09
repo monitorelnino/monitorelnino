@@ -27,8 +27,9 @@ SAIDA = RAIZ / "selos"
 SITE = "https://monitorelnino.com.br"
 
 # [rótulo, fundo, texto] — idêntico ao index.html (pílula do medidor)
-FAIXAS = [(25, "Estágio inicial", "#7C4A34", "#F5F1E8"), (50, "Em construção", "#C69B72", "#15201A"),
-          (70, "Consolidado", "#6B6A44", "#F5F1E8"), (101, "Avançado", "#35566B", "#F5F1E8")]
+# Mesmas cores de PALETA.faixas em assets/mapas.js (paleta semântica única, 09/09/2026): argila · âmbar · sintético · musgo
+FAIXAS = [(25, "Estágio inicial", "#7C4A34", "#FFFFFF"), (50, "Em construção", "#C9814B", "#15201A"),
+          (70, "Consolidado", "#5E7C93", "#FFFFFF"), (101, "Avançado", "#2E3D30", "#FFFFFF")]
 
 
 def faixa(v):

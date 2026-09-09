@@ -37,11 +37,11 @@ document.getElementById('fontesVerificadas').innerHTML =
 document.getElementById('fontesFederaisCount').textContent = document.querySelectorAll('#fontesFederais li').length;
 
   const CAT_LABEL_TBL = {
-    plano:['Plano preventivo',MonitorMapas.cor('musgo')], plano_antigo:['Plano desatualizado',MonitorMapas.cor('sintetico')],
-    plano_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], estrutura:['Estrutura de coordenação',MonitorMapas.cor('ambar')], decreto:['Decreto reativo',MonitorMapas.cor('argila')],
-    coberto_estadual:['Coberto pelo estado',MonitorMapas.cor('mineral')], nao_el_nino:['Não é El Niño',MonitorMapas.cor('areia')],
-    nao_localizado:['Nada localizado',MonitorMapas.cor('argila')],
-    nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')],
+    plano:['Plano preventivo',MonitorMapas.PALETA.categorias.plano], plano_antigo:['Plano desatualizado',MonitorMapas.PALETA.categorias.plano_antigo],
+    plano_elaboracao:['Em elaboração',MonitorMapas.PALETA.categorias.plano_elaboracao], estrutura:['Estrutura de coordenação',MonitorMapas.PALETA.categorias.estrutura], decreto:['Decreto reativo',MonitorMapas.PALETA.categorias.decreto],
+    coberto_estadual:['Coberto pelo estado',MonitorMapas.PALETA.categorias.coberto_estadual], nao_el_nino:['Não é El Niño',MonitorMapas.PALETA.categorias.nao_el_nino],
+    nao_localizado:['Nada localizado',MonitorMapas.PALETA.categorias.nao_localizado],
+    nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.categorias.nao_verificado],
   };
 function renderTable(){
     const q = document.getElementById('tblSearch').value.toLowerCase();

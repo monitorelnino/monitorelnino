@@ -9,6 +9,33 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## v3.1.2 — paleta semântica única de figuras e mapas · 09/09/2026 · em publicação (PR)
+
+Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria (09/09/2026): "figuras e mapas em páginas distintas têm esquemas de cores distintas" — reconferir e corrigir.
+
+### O que foi encontrado (11 páginas, legendas lidas num Chromium real)
+- **Faixas do MARÉ**: "Consolidado" era Musgo na pílula da inicial e Sintético no mapa de prontidão sanitária (Saúde); os selos em `selos/` ainda usavam a paleta anterior à v3 (`#C69B72`, `#6B6A44`, `#35566B`).
+- **Status do instrumento estadual**: "Vigente, sem menção ao ciclo" era Âmbar na Defesa civil e Mineral na Saúde; "Em elaboração" e "Não localizado" alternavam entre Âmbar/Argila e Argila/Cinza conforme a página.
+- **Famílias de risco**: "Chuvas" era Musgo nos Sinais de risco e Sintético na Saúde e na folha de estilo (`--chuva`); "Seca" alternava Âmbar, Argila e Mineral; "Fogo" Argila ou Âmbar.
+- **Rampas contínuas de perigo** (avisos INMET, focos INPE, alertas CEMADEN): verde (Musgo) nos Sinais de risco, enquanto tudo o que é perigo/resposta no resto do site é quente (Argila).
+- **Ordinais de intensidade** (dengue 1–4, calor 1–3+, seca S1–S4, quartis de MPs): quatro escalas diferentes para a mesma ideia "do brando ao grave"; o mapa de dengue do painel usava Bioluz/Âmbar/Argila/Vazio e a tabela por UF outra sequência.
+- **Rotas do dinheiro** (Financiamento): as oito cores vinham do JSON com a paleta pré-v3 (`#35566B`, `#A65F3F`, `#C69B72`, `#87855C`, `#647A7E`, `#4F7D48`) — únicas figuras do site fora da paleta da marca.
+- **Séries por ano**: 2024/2025/2026 com cores trocadas entre o gráfico semanal e o acumulado.
+- Bug lateral: `MonitorMapas.cor('muted-token')` (nome inexistente) deixava três textos do diagrama de rotas sem cor válida.
+
+### O que mudou
+- **`MonitorMapas.PALETA`** (assets/mapas.js) passa a ser o único mapa conceito → cor: `faixas` (+ `faixasTexto`, `faixaDe`, `faixaRotulo`), `status`, `categorias`, `verificacao`, `risco` (= tríade `--chuva/--seca/--fogo` da folha), `consistencia`, `enso`, `preparacao`/`resposta`/`defeso`, `rampaPerigo` (quente) e `rampaPreparo` (verde), `ordinal4` (Mineral → Âmbar → Âmbar-escuro → Argila), `anos`, `rotas` (oito cores da marca, por família da chave de acesso), `chaves`, `temas`, `serie`.
+- Todos os scripts de página (index, defesa-civil, sinais-de-risco, saude, financiamento, pesquisadores) leem cores de dado só da PALETA. A cor das rotas no JSON (`data/financiamento/rotas.json`) vira informativa: a página aplica `PALETA.rotas[id]`; `coletar_financiamento.py` grava as mesmas cores na próxima coleta.
+- `gerar_selos.py` usa as cores de `PALETA.faixas` (Argila · Âmbar · Sintético · Musgo); 28 selos regenerados.
+- Rótulos dos níveis de dengue do painel unificados com a tabela por UF ("nível 1 (baixa atividade)" … "nível 4 (emergência)").
+
+### Portões
+- **Portão 1 (`verificar_estrutura.js`)**: nos scripts de página, hex cru é proibido; `MonitorMapas.cor()` só aceita nomes existentes na paleta e só cores estruturais (traço, fundo, tinta, ausência de dado) — toda cor de dado tem de vir de `PALETA.*`; os blocos da PALETA são obrigatórios; a tríade de risco de `tokens.css` e a de `mapas.js` têm de ser a mesma cor. Testes negativos feitos.
+- `verificar_consistencia.py` (nomes das faixas) lê `PALETA.faixaRotulo`; `verificar_runtime_financiamento.js` confere cartões, rede e série nas cores de `PALETA.rotas`, oito e distintas.
+
+### Para decisão editorial (colisões dentro de uma mesma legenda, mantidas como estavam)
+- Defesa civil, mapa municipal: "Plano em elaboração" e "Estrutura de coordenação" partilham Âmbar; "Decreto de emergência" e "Nenhum ato localizado" partilham Argila. A paleta tem só sete cores de dado distinguíveis; separar exige uma cor nova ou textura.
+
 ## Varredura integral concluída e correção de workflow · 09/09/2026
 
 **Varredura municipal — encerrada.** A rodada de 08–09/09 (execução manual com `finalizar_varredura_hoje`, janela intensiva estendida até 10/09) consultou 2.765 municípios num só ciclo, fechando a varredura aberta em 03/09: 2.852 execuções no log (2.765 DOM, 46 DOU, 28 repositórios estaduais, 10 sítios municipais, 3 órgãos estaduais). Resultado: 83 achados com excerto para a fila humana, 81 municípios cobertos sem menção, 34 registros e 20 pistas; 2.128 municípios sem cobertura no Querido Diário — lacuna de fonte, declarada, não de consulta.
@@ -27,6 +54,12 @@ não pontuados permanecem na versão corrente.
 - **Errata de prazo, declarada:** o portão 6 passaria a bloquear em 10/09/2026, mas a primeira rodada do robô com a correção é **segunda 14/09** (fora da semana intensiva o robô só publica às segundas). Bloqueio adiado para **15/09/2026** — a regra continua a mesma; só a data de vigência muda, pelo motivo acima. Registrado aqui e em `docs/PROTOCOLO_ATUALIZACAO.md` §3.3.
 - Restam 2 registros com `URLError` na Action (Itajaí/SC: a URL é a página inicial da Defesa Civil de SC, não um documento; São Gonçalo/RJ): se a rodada de 14/09 não os preservar, entram como pista para a editoria (documento a localizar ou snapshot no Wayback), não como mudança de regra.
 - Como antecipar (opcional, sem tocar no código): definir as variáveis de repositório `INTENSIVO_DE` e `INTENSIVO_ATE` como `2026-09-10` faz a rodada de quinta publicar como dia intensivo; depois apagar as duas.
+
+
+## Correção · data impressa no PDF do índice e manifesto obsoleto · 08/09/2026 · em publicação (mesmo lote da v3.1.2)
+
+- **Achado (rotina diária):** o portão 12 (`scripts/verificar_derivados.sh`) ficou vermelho na `main` após o commit automático de 08/09 (`54dd91f`): `MARE_Indice_Documentacao.pdf` mudou (só a frase "gerado programaticamente em dd/mm/aaaa", que lia o relógio da máquina) e `docs/MANIFEST_SHA256.txt` não foi regenerado, porque `atualizar.py` encerra por cadência fora da semana intensiva e a etapa do workflow que regenera o PDF roda mesmo assim.
+- **Correção mecânica:** `gerar_pdf_indice.py` passa a imprimir a data de `atualizado_em` de `data/meta.json` (a última atualização publicada dos dados), não o dia da geração — o PDF volta a ser função só dos dados publicados (R1 da auditoria de 29/08/2026), e o manifesto deixa de envelhecer nos dias sem atualização. PDF e manifesto regenerados. Sem mudança de método, de dado ou de número; a frase mantém a redação.
 
 ## v3.1.1 — auditoria de consistência visual e estrutural · 07/09/2026 · publicada em 08/09/2026 (PR #105, `d0c1e84`, endereço reservado)
 

@@ -202,6 +202,40 @@ for (const arq of arquivos) {
     falha(`${nome}: aria-label em span/div/path sem role (aria-prohibited-attr)`);
 }
 
+// 09/09/2026: paleta semântica única. Toda cor DE DADO (faixa do MARÉ, status, categoria de ato, família de risco,
+// ordinal de intensidade, ano da série, rota do dinheiro, ENOS, antecipação × resposta) vem de MonitorMapas.PALETA.
+// Nos scripts de página, MonitorMapas.cor('nome') só pode nomear cores estruturais (traço, fundo, tinta, ausência de dado);
+// hex cru é proibido fora de assets/mapas.js e assets/tokens.css. Assim, o mesmo conceito tem a mesma cor em todas as páginas.
+{
+  const ESTRUTURAIS = new Set(["branco", "linha", "abissal", "vazio", "osso-claro", "sem-dado", "zebra", "preto", "muted", "areia", "cinza-quente"]);
+  const mapas0 = fs.readFileSync(path.join(RAIZ, "assets", "mapas.js"), "utf-8");
+  const dirJs = path.join(RAIZ, "assets", "js");
+  const scripts = fs.readdirSync(dirJs).filter(f => f.endsWith(".js")).map(f => path.join("assets", "js", f)).concat(["assets/colunas.js"]);
+  for (const rel of scripts) {
+    const src = fs.readFileSync(path.join(RAIZ, rel), "utf-8");
+    const hex = src.match(/#[0-9a-fA-F]{6}\b/g) || [];
+    if (hex.length) falha(`${rel}: ${hex.length} cor(es) em hex cru (${[...new Set(hex)].slice(0, 5).join(", ")}) — usar MonitorMapas.PALETA`);
+    const conhecidas = new Set([...mapas0.matchAll(/(?:^|[\s{,])'?([a-z][a-z-]*)'?\s*:\s*'#[0-9A-Fa-f]{6}'/g)].map(m => m[1]));
+    const desconhecidas = [...src.matchAll(/MonitorMapas\.cor\('([a-z-]+)'\)/g)].map(m => m[1]).filter(n => !conhecidas.has(n));
+    if (desconhecidas.length) falha(`${rel}: MonitorMapas.cor() com nome inexistente na paleta (${[...new Set(desconhecidas)].join(", ")})`);
+    const semanticas = [...src.matchAll(/MonitorMapas\.cor\('([a-z-]+)'\)/g)].map(m => m[1]).filter(n => !ESTRUTURAIS.has(n));
+    if (semanticas.length) falha(`${rel}: ${semanticas.length} cor(es) semântica(s) fora da paleta única (${[...new Set(semanticas)].join(", ")}) — usar MonitorMapas.PALETA.*`);
+  }
+  const mapas = fs.readFileSync(path.join(RAIZ, "assets", "mapas.js"), "utf-8");
+  for (const chave of ["faixas:", "status:", "categorias:", "verificacao:", "risco:", "consistencia:", "enso:", "rampaPerigo:", "rampaPreparo:", "ordinal4:", "anos:", "rotas:", "chaves:", "temas:"])
+    if (!mapas.includes(chave)) falha(`assets/mapas.js: PALETA sem o bloco '${chave.replace(":", "")}'`);
+  // a tríade de risco da folha (tokens.css) e a do motor (mapas.js) precisam ser a mesma cor
+  const tk = fs.readFileSync(path.join(RAIZ, "assets", "tokens.css"), "utf-8");
+  const tok = n => (tk.match(new RegExp("--" + n + ":\\s*(#[0-9A-Fa-f]{6})")) || [])[1];
+  const corMotor = n => (mapas.match(new RegExp("\\b" + n + ":'(#[0-9A-Fa-f]{6})'")) || [])[1];
+  const risco = (mapas.match(/risco:\s*\{([^}]*)\}/) || [])[1] || "";
+  const nomeRisco = fam => (risco.match(new RegExp(fam + ":\\s*COR(?:\\.(\\w+)|\\['([\\w-]+)'\\])")) || []).slice(1).find(Boolean);
+  for (const [tkn, fam] of [["chuva", "chuvas"], ["seca", "seca"], ["fogo", "fogo"]]) {
+    const nome = nomeRisco(fam); const cm = nome && corMotor(nome);
+    if (!tok(tkn) || !cm || tok(tkn).toUpperCase() !== cm.toUpperCase()) falha(`tríade de risco divergente: --${tkn} (${tok(tkn)}) × PALETA.risco.${fam} (${nome} = ${cm})`);
+  }
+}
+
 if (falhas) {
   console.log(`\n✗ ESTRUTURA: ${falhas} problema(s) em ${arquivos.length} página(s). Publicação bloqueada.`);
   process.exit(1);
