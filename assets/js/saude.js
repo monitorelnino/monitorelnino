@@ -27,7 +27,7 @@ function __init(){
   // 0 · Monitor Saúde (v0.1, Metodologia §31): prontidão = média (instrumento, antecipação); não verificada = cinza, sem número
   (function(){
     const M = (MSAUDE && MSAUDE.ufs) || {};
-    const FX = {'estágio inicial': MonitorMapas.cor('argila'), 'em construção': MonitorMapas.cor('ambar'), 'consolidado': MonitorMapas.cor('sintetico'), 'avançado': MonitorMapas.cor('musgo'), 'não verificado': MonitorMapas.cor('cinza-quente')};
+    const FX = {'estágio inicial': MonitorMapas.PALETA.faixas.inicial, 'em construção': MonitorMapas.PALETA.faixas.construcao, 'consolidado': MonitorMapas.PALETA.faixas.consolidado, 'avançado': MonitorMapas.PALETA.faixas.avancado, 'não verificado': MonitorMapas.PALETA.faixas.nao_verificado};
     const ST_H = {NOVO:'novo, do ciclo', READ:'readequado', VIG:'vigente, recorrente', ELAB:'em elaboração', LAC:'não localizado', NAO_VERIFICADO:'ainda não verificado'};
     desenharMapa('mapaMonitor', 'legMonitor', uf => FX[(M[uf] || {}).faixa] || FX['não verificado'],
       uf => { const m = M[uf] || {}; if (!m.verificado) return '<em>ainda não verificado</em> — sem número'; const i = m.instrumento || {}, a = m.antecipacao || {};
@@ -47,11 +47,11 @@ function __init(){
     const bx = document.getElementById('monitorBarras');
     if (bx) bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; background:' + FX[m.faixa] + '"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
       : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
-    MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.cor('areia'), rotulo: 'trilho 0–100'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'cor = faixa'}, {cor: MonitorMapas.cor('cinza-quente'), rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
+    MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.cor('areia'), rotulo: 'trilho 0–100'}, {cor: MonitorMapas.PALETA.faixas.avancado, rotulo: 'cor = faixa'}, {cor: MonitorMapas.PALETA.faixas.nao_verificado, rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
     fonteFigura('boxMonitorBarras', {fontes: ['Monitor El Niño Brasil', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
     // Resposta sanitária (E17): ESPIN federal, decretos estaduais por arboviroses, créditos por portaria — contador, hoje zero de verdade
     const em = (SSIN && SSIN.emergencias) || []; const rn = document.getElementById('rsNum'); if (rn) rn.textContent = String(em.length);
-    MonitorMapas.legenda('legRespostaSanitaria', [{cor: MonitorMapas.cor('argila'), rotulo: 'ESPIN federal: nenhuma em 2026'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'decretos estaduais por arboviroses: nenhum'}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'busca manual de 05/09; coleta do DOU pendente'}]);
+    MonitorMapas.legenda('legRespostaSanitaria', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'ESPIN federal: nenhuma em 2026'}, {cor: MonitorMapas.PALETA.status.ELAB, rotulo: 'decretos estaduais por arboviroses: nenhum'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'busca manual de 05/09; coleta do DOU pendente'}]);
     fonteFigura('boxRespostaSanitaria', {fontes: ['DOU (ESPIN)', 'diários estaduais'], data: '05/09/2026'});
   })();
 
@@ -61,8 +61,8 @@ function __init(){
     + '</div>').join('');
 
   // 2 · estadual
-  const ST = {NOVO:['Novo, específico para o ciclo',MonitorMapas.cor('musgo')], READ:['Recorrente readaptado',MonitorMapas.cor('sintetico')], VIG:['Vigente, sem menção ao ciclo',MonitorMapas.cor('mineral')],
-              ELAB:['Em elaboração',MonitorMapas.cor('ambar')], LAC:['Não localizado (bateria datada)',MonitorMapas.cor('argila')], NAO_VERIFICADO:['Ainda não verificado',MonitorMapas.cor('cinza-quente')]};
+  const ST = {NOVO:['Novo, específico para o ciclo',MonitorMapas.PALETA.status.NOVO], READ:['Recorrente readaptado',MonitorMapas.PALETA.status.READ], VIG:['Vigente, sem menção ao ciclo',MonitorMapas.PALETA.status.VIG],
+              ELAB:['Em elaboração',MonitorMapas.PALETA.status.ELAB], LAC:['Não localizado (bateria datada)',MonitorMapas.PALETA.status.LAC], NAO_VERIFICADO:['Ainda não verificado',MonitorMapas.PALETA.status.NAO_VERIFICADO]};
   const st = uf => (SUF.uf[uf] || {}).status || 'NAO_VERIFICADO';
   desenharMapa('mapaStatus','legStatus', uf => ST[st(uf)][1],
     uf => { const u = SUF.uf[uf]||{}; return '<em>'+esc(ST[st(uf)][0])+'</em>' + (u.doc ? '<br>'+esc(u.doc)+(u.data?' · '+esc(u.data):'') : '') + (u.data_verificacao ? '<br>verificado em '+esc(u.data_verificacao) : '<br>bateria estadual ainda não executada'); },
@@ -70,7 +70,7 @@ function __init(){
   const nv = UFS.filter(u => st(u)==='NAO_VERIFICADO').length;
   document.getElementById('contagemUF').textContent = nv + ' de 27 UFs ainda não verificadas na camada de saúde · ' + (27-nv) + ' verificada(s).';
   fonteFigura('boxStatus', {fontes: 'Monitor El Niño Brasil', data: SUF.corte});
-  const FAM = {seca:['Seca / calor / fogo',MonitorMapas.cor('argila')], chuvas:['Chuvas extremas',MonitorMapas.cor('musgo')], multi:['Mais de uma família',MonitorMapas.cor('areia-escura')]};
+  const FAM = {seca:['Seca / calor / fogo',MonitorMapas.PALETA.risco.seca], chuvas:['Chuvas extremas',MonitorMapas.PALETA.risco.chuvas], multi:['Mais de uma família',MonitorMapas.PALETA.risco.multi]};
   const fam = uf => { const r = ((SUF.uf[uf]||{}).risco_sanitario_projetado||[]).join(' ').toLowerCase(); const s = /calor|queimad|arbovir|estiagem/.test(r), c = /leptospir|diarre|hepatite/.test(r); return s&&c?'multi':s?'seca':c?'chuvas':null; };
   desenharMapa('mapaRiscoSan','legRiscoSan', uf => fam(uf) ? FAM[fam(uf)][1] : NEUTRA,
     uf => { const u = SUF.uf[uf]||{}; return (u.risco_sanitario_projetado||['sem risco projetado registrado']).map(esc).join('<br>'); },
@@ -79,7 +79,7 @@ function __init(){
   document.querySelector('#tblUF tbody').innerHTML = UFS.map(uf => { const u = SUF.uf[uf]||{}; return '<tr><td><strong>'+uf+'</strong></td><td>'+esc(ST[st(uf)][0])+'</td><td>'+esc(u.doc||'—')+'</td><td>'+esc((u.risco_sanitario_projetado||[]).join('; '))+'</td><td>'+esc(u.data_verificacao||'—')+'</td></tr>'; }).join('');
 
   // 3 · observado
-  const NIV_DENGUE = {1:['Nível 1 (baixa atividade)',MonitorMapas.cor('mineral')], 2:['Nível 2 (atenção)',MonitorMapas.cor('ambar')], 3:['Nível 3 (alerta)',MonitorMapas.cor('argila')], 4:['Nível 4 (emergência)',MonitorMapas.cor('argila')]};
+  const NIV_DENGUE = {1:['Nível 1 (baixa atividade)',MonitorMapas.PALETA.ordinal4[0]], 2:['Nível 2 (atenção)',MonitorMapas.PALETA.ordinal4[1]], 3:['Nível 3 (alerta)',MonitorMapas.PALETA.ordinal4[2]], 4:['Nível 4 (emergência)',MonitorMapas.PALETA.ordinal4[3]]};
   const svgD = desenharMapa('mapaDengue','legDengue', uf => NEUTRA, uf => { const d = (SSIN.dengue_capitais||{})[uf]; return d ? esc(d.municipio)+': nível '+esc(d.nivel)+' · SE '+esc(d.se)+'<br>'+esc(d.fonte) : 'Capital: aguardando primeira coleta'; },
     Object.values(NIV_DENGUE).map(v => ({cor:v[1], rotulo:v[0]})).concat([{cor:NEUTRA, rotulo:'aguardando coleta'}]));
   const capitais = Object.entries(SSIN.dengue_capitais||{});
@@ -92,7 +92,7 @@ function __init(){
   fonteFigura('boxDengue', {fontes: 'InfoDengue (Fiocruz/FGV)', data: fD.status === 'coletado' ? (fD.ultima_coleta_ok || fD.consultado_em) : null});
   const avisos = uf => (SINAIS.uf && SINAIS.uf[uf] && SINAIS.uf[uf].avisos_inmet) || null;
   const nCalor = uf => { const a = avisos(uf); if(!a) return null; const lista = a.lista || a.avisos || []; return lista.filter(x => /calor/i.test(JSON.stringify(x))).length; };
-  const CAL = [MonitorMapas.cor('zebra'),MonitorMapas.cor('ambar'),MonitorMapas.cor('ambar'),MonitorMapas.cor('argila')];
+  const CAL = [MonitorMapas.PALETA.zero, MonitorMapas.PALETA.ordinal4[1], MonitorMapas.PALETA.ordinal4[2], MonitorMapas.PALETA.ordinal4[3]];
   desenharMapa('mapaCalor','legCalor', uf => { const n = nCalor(uf); return n == null ? NEUTRA : CAL[Math.min(3, n)]; },
     uf => { const n = nCalor(uf); return n == null ? 'Aguardando coleta do INMET' : n + ' aviso(s) de calor vigente(s)'; },
     [{cor:CAL[0],rotulo:'0'},{cor:CAL[1],rotulo:'1'},{cor:CAL[2],rotulo:'2'},{cor:CAL[3],rotulo:'3+'},{cor:NEUTRA,rotulo:'aguardando coleta'}]);
@@ -114,9 +114,9 @@ function __init(){
   if (SER && SER.anos && Object.keys(SER.anos).length && typeof Chart !== 'undefined') {
     MonitorMapas.padraoGraficos(window.Chart);
     const semanas = Array.from({length: 52}, (_, i) => String(i + 1).padStart(2, '0'));
-    const cores = {'2026': MonitorMapas.cor('argila'), '2025': MonitorMapas.cor('ambar'), '2024': MonitorMapas.cor('mineral')};
+    const cores = MonitorMapas.PALETA.anos;
     const ds = Object.keys(SER.anos).sort().reverse().map(ano => ({label: ano, data: semanas.map(w => SER.anos[ano][w] ?? null),
-      borderColor: cores[ano] || MonitorMapas.cor('sintetico'), backgroundColor: 'transparent', borderWidth: ano === '2026' ? 2.5 : 1.5, pointRadius: 0, tension: .25, spanGaps: false}));
+      borderColor: cores[ano] || MonitorMapas.PALETA.serie[1], backgroundColor: 'transparent', borderWidth: ano === '2026' ? 2.5 : 1.5, pointRadius: 0, tension: .25, spanGaps: false}));
     new Chart(document.getElementById('serieDengue'), {type: 'line', data: {labels: semanas.map(w => 'SE ' + w), datasets: ds},
       options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}},
                 scales: {x: {ticks: {maxTicksLimit: 13}}, y: {title: {display: true, text: 'casos estimados · 27 capitais'}}}}});
@@ -149,29 +149,29 @@ function renderDesfechos(){
   const ate = Math.max(...Object.keys(soma.casos).concat(Object.keys(soma.nmax)).map(Number)); const labels = semanas.slice(0, ate);
   MonitorMapas.padraoGraficos(window.Chart);
   new Chart(document.getElementById('cDesfSemanal'), {type: 'bar', data: {labels: labels.map(w => 'SE ' + w), datasets: [
-      {type: 'bar', label: '2026 (consolidado)', data: labels.map(w => soma.casos[w] ?? null), backgroundColor: MonitorMapas.cor('argila'), order: 3},
-      {type: 'line', label: 'nowcasting (máx.)', data: labels.map(w => soma.nmax[w] ?? null), borderColor: MonitorMapas.cor('argila'), borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
-      {type: 'line', label: 'nowcasting (mín.)', data: labels.map(w => soma.nmin[w] ?? null), borderColor: MonitorMapas.cor('argila'), borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
-      {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => soma.med[w] ?? null), borderColor: MonitorMapas.cor('musgo'), borderWidth: 2, pointRadius: 0, order: 1},
-      {type: 'line', label: 'p75', data: labels.map(w => soma.p75[w] ?? null), borderColor: MonitorMapas.cor('ambar'), borderWidth: 1.5, pointRadius: 0, order: 1},
-      {type: 'line', label: 'p90', data: labels.map(w => soma.p90[w] ?? null), borderColor: MonitorMapas.cor('sintetico'), borderWidth: 1.5, pointRadius: 0, order: 1}]},
+      {type: 'bar', label: '2026 (consolidado)', data: labels.map(w => soma.casos[w] ?? null), backgroundColor: MonitorMapas.PALETA.anos['2026'], order: 3},
+      {type: 'line', label: 'nowcasting (máx.)', data: labels.map(w => soma.nmax[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
+      {type: 'line', label: 'nowcasting (mín.)', data: labels.map(w => soma.nmin[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
+      {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => soma.med[w] ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
+      {type: 'line', label: 'p75', data: labels.map(w => soma.p75[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p75, borderWidth: 1.5, pointRadius: 0, order: 1},
+      {type: 'line', label: 'p90', data: labels.map(w => soma.p90[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
-  MonitorMapas.legenda('legDesfSemanal', [{cor: MonitorMapas.cor('argila'), rotulo: '2026 consolidado (últimas 4 SE vazadas)'}, {cor: MonitorMapas.cor('argila'), opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.cor('ambar'), rotulo: 'p75'}, {cor: MonitorMapas.cor('sintetico'), rotulo: 'p90'}]);
+  MonitorMapas.legenda('legDesfSemanal', [{cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 consolidado (últimas 4 SE vazadas)'}, {cor: MonitorMapas.PALETA.anos['2026'], opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.PALETA.anos.p75, rotulo: 'p75'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
   fonteFigura('boxDesfSemanal', credito);
   // escada do acumulado
   const acum = a => Object.values(M).reduce((s, m) => s + ((m.acumulado || {})[a] || 0), 0);
-  new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.cor('mineral'), MonitorMapas.cor('ambar'), MonitorMapas.cor('argila')]}]},
+  new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.PALETA.anos['2024'], MonitorMapas.PALETA.anos['2025'], MonitorMapas.PALETA.anos['2026']]}]},
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
-  MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.cor('mineral'), rotulo: '2024 (ano epidêmico, fora do canal)'}, {cor: MonitorMapas.cor('ambar'), rotulo: '2025'}, {cor: MonitorMapas.cor('argila'), rotulo: '2026 parcial'}]);
+  MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: '2024 (ano epidêmico, fora do canal)'}, {cor: MonitorMapas.PALETA.anos['2025'], rotulo: '2025'}, {cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 parcial'}]);
   fonteFigura('boxDesfAcum', credito);
   // mapa: pontos do painel coloridos pelo nível da última SE consolidada
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
-  const NIV = {1: MonitorMapas.cor('bioluz'), 2: MonitorMapas.cor('ambar'), 3: MonitorMapas.cor('argila'), 4: MonitorMapas.cor('vazio')};
+  const NIV = {1: MonitorMapas.PALETA.ordinal4[0], 2: MonitorMapas.PALETA.ordinal4[1], 3: MonitorMapas.PALETA.ordinal4[2], 4: MonitorMapas.PALETA.ordinal4[3]};   // mesmo ordinal do mapa de dengue por UF (Figura acima)
   const ref = Array.isArray(PAINEL_LISTA) ? PAINEL_LISTA : Object.values(PAINEL_LISTA || {}); const coord = {}; ref.forEach(r => { coord[String(r.codigo_ibge).padStart(7, '0')] = r; });
   const pontos = Object.entries(M).filter(([cod]) => coord[cod] && coord[cod].lat != null).map(([cod, d]) => ({lat: coord[cod].lat, lon: coord[cod].lon, nivel: d.nivel_ultima_se, nome: d.nome, uf: d.uf, ultima: d.ultima_se}));
   MonitorMapas.ufs(ctx, 'mapaDesf', () => MonitorMapas.NEUTRA, uf => uf);
   if (pontos.length) MonitorMapas.pontos(ctx, 'mapaDesf', pontos, {r: () => 4, cor: d => NIV[d.nivel] || MonitorMapas.NEUTRA, rotulo: d => esc(d.nome) + '/' + esc(d.uf) + ' · nível ' + esc(d.nivel ?? '—') + ' · ' + esc(d.ultima || '')});
-  MonitorMapas.legenda('legDesfMapa', [{cor: NIV[1], rotulo: 'nível 1 · verde'}, {cor: NIV[2], rotulo: 'nível 2 · amarelo'}, {cor: NIV[3], rotulo: 'nível 3 · laranja'}, {cor: NIV[4], rotulo: 'nível 4 · vermelho'}, {cor: MonitorMapas.NEUTRA, rotulo: (pontos.length ? pontos.length + ' municípios do painel' : 'painel sem coordenadas')}]);
+  MonitorMapas.legenda('legDesfMapa', [{cor: NIV[1], rotulo: 'nível 1 (baixa atividade)'}, {cor: NIV[2], rotulo: 'nível 2 (atenção)'}, {cor: NIV[3], rotulo: 'nível 3 (alerta)'}, {cor: NIV[4], rotulo: 'nível 4 (emergência)'}, {cor: MonitorMapas.NEUTRA, rotulo: (pontos.length ? pontos.length + ' municípios do painel' : 'painel sem coordenadas')}]);
   fonteFigura('boxDesfMapa', credito);
 }
 

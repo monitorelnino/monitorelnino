@@ -151,12 +151,46 @@
     if (el.bar) el.bar.borderRadius = 3; if (el.line) el.line.borderWidth = 2; if (el.point) el.point.radius = 2.5;
     Chart.defaults.maintainAspectRatio = false;
   }
-  /** Paleta ordinal e categórica do site (tokens), para uso nos gráficos. */
-  const PALETA = { status: { NOVO: '#2E3D30', READ: '#5E7C93', ELAB: '#C9814B', VIG: '#8FA5A8', LAC: '#7C4A34', NAO_VERIFICADO: '#66736F' },
-                   faixas: { inicial: '#7C4A34', construcao: '#C9814B', consolidado: '#5E7C93', avancado: '#2E3D30' },
-                   risco: { seca: '#C9814B', chuvas: '#5E7C93', multi: '#2E3D30' },
-                   resposta: '#7C4A34', preparacao: '#2E3D30', neutra: '#DCE3E2',
-                   serie: ['#2E3D30', '#5E7C93', '#C9814B', '#7C4A34', '#8FA5A8', '#7A6A4F', '#A8C99A', '#55645B'] };   // paleta da marca (Musgo, Sintético, Âmbar, Argila, Mineral)
+  /** PALETA SEMÂNTICA ÚNICA (auditoria de 09/09/2026): toda figura do site colore o MESMO significado com a MESMA
+   *  cor, em qualquer página. As páginas leem daqui; nenhuma define mapa próprio de significado → cor
+   *  (portão verificar_estrutura.js). Regras: verde Musgo = preparação/publicado; Sintético = frio de dado;
+   *  Âmbar/Argila = calor de dado, resposta e perigo; Mineral = intermediário/recorrente; Areia = neutro/sem sinal;
+   *  cinza-quente = ainda não verificado; sem-dado = fonte não coletada. */
+  const PALETA = {
+    // faixas do MARÉ (e da prontidão sanitária): fundo e cor do texto da pílula
+    faixas: { inicial: COR.argila, construcao: COR.ambar, consolidado: COR.sintetico, avancado: COR.musgo, nao_verificado: COR['cinza-quente'] },
+    faixasTexto: { inicial: COR.branco, construcao: COR.abissal, consolidado: COR.branco, avancado: COR.branco, nao_verificado: COR.branco },
+    faixaDe: v => v == null ? 'nao_verificado' : v < 25 ? 'inicial' : v < 50 ? 'construcao' : v < 70 ? 'consolidado' : 'avancado',
+    faixaRotulo: { inicial: 'Estágio inicial', construcao: 'Em construção', consolidado: 'Consolidado', avancado: 'Avançado', nao_verificado: 'Ainda não verificado' },
+    // status do instrumento estadual (defesa civil e saúde) e das capitais
+    status: { NOVO: COR.musgo, READ: COR.sintetico, ELAB: COR.ambar, VIG: COR.mineral, LAC: COR.argila, NAO_VERIFICADO: COR['cinza-quente'] },
+    // categoria do ato municipal (mapa de pontos, tabelas, cartão da cidade)
+    categorias: { plano: COR.musgo, plano_antigo: COR.sintetico, plano_elaboracao: COR.ambar, estrutura: COR.ambar, decreto: COR.argila,
+                  coberto_estadual: COR.mineral, nao_el_nino: COR.areia, nao_localizado: COR.argila, nao_verificado: COR['cinza-quente'] },
+    // nível de verificação municipal
+    verificacao: { nao_verificado: COR['cinza-quente'], nacional: COR.mineral, estadual: COR.sintetico, municipal_completo: COR.musgo, fonte_suspensa: COR.argila },
+    // famílias de risco do ciclo — a tríade de tokens.css (--chuva, --seca, --fogo) vale em todas as páginas
+    risco: { chuvas: COR.sintetico, seca: COR.ambar, fogo: COR.argila, multi: COR['areia-escura'], sem_sinal: COR.areia },
+    // consistência risco × instrumento (mapa 5 da Defesa civil)
+    consistencia: { COBRE: COR.musgo, PARCIAL: COR.mineral, DIFERE: COR.argila, SEM: COR.argila, NEUTRO: COR.areia },
+    // ENOS
+    enso: { el_nino: COR.argila, neutro: COR.areia, la_nina: COR.sintetico },
+    // antecipação × resposta (índice × contador); defeso
+    preparacao: COR.musgo, resposta: COR.argila, defeso: COR.argila, antes_defeso: COR.ambar,
+    // rampas contínuas: perigo/intensidade (quente) e preparação/cobertura (verde)
+    rampaPerigo: [COR['osso-claro'], COR.argila], rampaPreparo: [COR.zebra, COR.musgo],
+    // ordinal de 4 degraus para intensidade (dengue 1–4, calor 1–3+, quartis de valor pago): do mais brando ao mais grave
+    ordinal4: [COR.mineral, COR.ambar, COR['ambar-escuro'], COR.argila],
+    // séries por ano (o ano corrente sempre em Argila)
+    anos: { '2026': COR.argila, '2025': COR.ambar, '2024': COR.mineral, canal: COR.musgo, p75: COR.ambar, p90: COR.sintetico },
+    // rotas do dinheiro (Financiamento): família da chave de acesso — regra em frios, decreto em quentes,
+    // discricionária em âmbar/areia, execução direta em mineral, rota estadual em musgo. Oito cores distintas.
+    // chave de acesso das rotas (legenda da rede) e temas dos compromissos federais
+    chaves: { regra: COR.sintetico, decreto: COR.argila, discricionaria: COR.ambar, direta: COR.mineral, estadual: COR.musgo },
+    temas: { hidrico: COR.sintetico, fogo: COR.argila, alimentar: COR.ambar, saude: COR.mineral, outro: COR.areia },
+    rotas: { r1: COR['sintetico-escuro'], r2: COR.sintetico, r3: COR.argila, r4: COR['ambar-escuro'], r5: COR.ambar, r6: COR['areia-escura'], r7: COR.mineral, rE: COR.musgo },
+    neutra: NEUTRA, semDado: COR['sem-dado'], zero: COR.zebra,
+    serie: [COR.musgo, COR.sintetico, COR.ambar, COR.argila, COR.mineral, COR['areia-escura'], COR.bioluz, COR.muted] };
 
   global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito, dataBR };
 })(window);
