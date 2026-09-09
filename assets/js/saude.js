@@ -180,7 +180,7 @@ function renderDesfechos(){
 function renderEstrutura(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const ROT = {coletado: 'coletado', candidato: 'candidato (fonte aberta identificada)', 'sem fonte aberta identificada': 'sem fonte aberta'};
-  const COR = {coletado: MonitorMapas.cor('musgo'), candidato: MonitorMapas.cor('ambar'), 'sem fonte aberta identificada': MonitorMapas.cor('sem-dado')};
+  const COR = {coletado: MonitorMapas.PALETA.coleta.coletado, candidato: MonitorMapas.PALETA.coleta.candidato, 'sem fonte aberta identificada': MonitorMapas.PALETA.coleta.sem_fonte};
   const tb = document.querySelector('#tblCatalogo tbody');
   if (tb && CATALOGO && CATALOGO.desfechos) {
     tb.innerHTML = CATALOGO.desfechos.map(d => '<tr><td><strong>' + esc(d.nome) + '</strong></td><td>' + esc(d.comprometimento) + '</td><td>' + esc(d.sistema) + '</td><td>' + esc(d.fonte_aberta) + '</td><td><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + COR[d.status_coleta] + ';margin-right:6px;"></span>' + esc(ROT[d.status_coleta] || d.status_coleta) + '</td></tr>').join('');
@@ -195,7 +195,7 @@ function renderEstrutura(){
     const ORD = {computavel: 0, computavel_parcial: 1, leitura_humana: 2, sem_coleta: 3, nao_publico: 4};
     tg.innerHTML = GATILHOS.gatilhos.slice().sort((a, b) => ORD[a.status_monitor] - ORD[b.status_monitor]).map(g => '<tr><td>' + esc(g.estagio) + '</td><td>' + esc(g.texto) + '</td><td>' + esc(g.fonte_oficial) + '</td><td>' + valor(g) + '</td></tr>').join('');
     const c = {}; GATILHOS.gatilhos.forEach(g => { c[g.status_monitor] = (c[g.status_monitor] || 0) + 1; });
-    MonitorMapas.legenda('legGatilhos', [{cor: MonitorMapas.cor('musgo'), rotulo: 'computável agora: ' + (c.computavel || 0)}, {cor: MonitorMapas.cor('ambar'), rotulo: 'parcial: ' + (c.computavel_parcial || 0)}, {cor: MonitorMapas.cor('sintetico'), rotulo: 'leitura humana: ' + (c.leitura_humana || 0)}, {cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta / não público: ' + ((c.sem_coleta || 0) + (c.nao_publico || 0))}]);
+    MonitorMapas.legenda('legGatilhos', [{cor: MonitorMapas.PALETA.coleta.coletado, rotulo: 'computável agora: ' + (c.computavel || 0)}, {cor: MonitorMapas.PALETA.coleta.candidato, rotulo: 'parcial: ' + (c.computavel_parcial || 0)}, {cor: MonitorMapas.PALETA.enso.la_nina, rotulo: 'leitura humana: ' + (c.leitura_humana || 0)}, {cor: MonitorMapas.PALETA.coleta.sem_fonte, rotulo: 'sem coleta / não público: ' + ((c.sem_coleta || 0) + (c.nao_publico || 0))}]);
     fonteFigura('boxGatilhos', {fontes: ['MS/SVSA, Plano de Contingência por Seca e Estiagem (2026), Quadro 5', 'valores do Monitor no corte'], data: (GATILHOS.fonte || {}).lido_em || null, url: (GATILHOS.fonte || {}).url});
   } else fonteFigura('boxGatilhos', {fontes: ['MS/SVSA'], data: null});
 }
@@ -212,11 +212,11 @@ function renderSRAG(){
   const labels = semanas.slice(0, ate);
   MonitorMapas.padraoGraficos(window.Chart);
   new Chart(document.getElementById('cSRAG'), {data: {labels: labels.map(w => 'SE ' + w), datasets: [
-      {type: 'bar', label: 'consolidado', data: labels.map(w => (br[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.cor('sintetico'), order: 2},
-      {type: 'bar', label: 'nowcasting', data: labels.map(w => (now[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.cor('mineral'), order: 2},
-      {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => (canal[w] || {}).mediana ?? null), borderColor: MonitorMapas.cor('musgo'), borderWidth: 2, pointRadius: 0, order: 1},
-      {type: 'line', label: 'p90', data: labels.map(w => (canal[w] || {}).p90 ?? null), borderColor: MonitorMapas.cor('argila'), borderWidth: 1.5, pointRadius: 0, order: 1}]},
+      {type: 'bar', label: 'consolidado', data: labels.map(w => (br[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, order: 2},
+      {type: 'bar', label: 'nowcasting', data: labels.map(w => (now[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2024'], order: 2},
+      {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => (canal[w] || {}).mediana ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
+      {type: 'line', label: 'p90', data: labels.map(w => (canal[w] || {}).p90 ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos SRAG · Brasil'}}}}});
-  MonitorMapas.legenda('legSRAG', [{cor: MonitorMapas.cor('sintetico'), rotulo: 'consolidado'}, {cor: MonitorMapas.cor('mineral'), rotulo: 'nowcasting (últimas 4 SE)'}, {cor: MonitorMapas.cor('musgo'), rotulo: 'mediana 2019–2025'}, {cor: MonitorMapas.cor('argila'), rotulo: 'p90'}]);
+  MonitorMapas.legenda('legSRAG', [{cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, rotulo: 'consolidado'}, {cor: MonitorMapas.PALETA.anos['2024'], rotulo: 'nowcasting (últimas 4 SE)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
   fonteFigura('boxSRAG', {fontes: ['InfoGripe (Fiocruz/FGV), Sivep-Gripe'], data: SRAG.gerado_em, url: SRAG.fonte});
 }
