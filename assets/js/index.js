@@ -264,11 +264,11 @@ const CANAL_LABEL = {DOM:'Diário Oficial dos Municípios', DOU:'Diário Oficial
   repositorio_estadual:'repositório estadual de planos', orgao_estadual:'órgão estadual',
   site_municipal:'site oficial do município', imprensa:'imprensa', '—':''};
 const CAT_LABEL_TBL = {
-  plano:['Plano preventivo',MonitorMapas.cor('musgo')], plano_antigo:['Plano desatualizado',MonitorMapas.cor('sintetico')],
-  plano_elaboracao:['Em elaboração',MonitorMapas.cor('ambar')], estrutura:['Estrutura de coordenação',MonitorMapas.cor('ambar')], decreto:['Decreto reativo',MonitorMapas.cor('argila')],
-  coberto_estadual:['Coberto pelo estado',MonitorMapas.cor('mineral')], nao_el_nino:['Não é El Niño',MonitorMapas.cor('areia')],
-  nao_localizado:['Nada localizado',MonitorMapas.cor('argila')],
-  nao_verificado:['Ainda não verificado',MonitorMapas.cor('cinza-quente')],
+  plano:['Plano preventivo',MonitorMapas.PALETA.categorias.plano], plano_antigo:['Plano desatualizado',MonitorMapas.PALETA.categorias.plano_antigo],
+  plano_elaboracao:['Em elaboração',MonitorMapas.PALETA.categorias.plano_elaboracao], estrutura:['Estrutura de coordenação',MonitorMapas.PALETA.categorias.estrutura], decreto:['Decreto reativo',MonitorMapas.PALETA.categorias.decreto],
+  coberto_estadual:['Coberto pelo estado',MonitorMapas.PALETA.categorias.coberto_estadual], nao_el_nino:['Não é El Niño',MonitorMapas.PALETA.categorias.nao_el_nino],
+  nao_localizado:['Nada localizado',MonitorMapas.PALETA.categorias.nao_localizado],
+  nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.categorias.nao_verificado],
 };
 // Caixa "Prazos em curso" (31/08/2026): lê data/prazos_uf.json, que o vigia de
 // prazos regrava a cada atualização. Mostra o que vence daqui para a frente e o que
@@ -932,7 +932,7 @@ __load().catch(err => {
   var v = parseFloat(g.textContent.replace(',', '.'));
   // [rótulo, fundo, texto] — pares conferidos contra WCAG AA (4,5:1) em 31/08/2026:
   // ferrugem/claro 6,45 · tan/escuro 6,65 · oliva escurecido/claro ≥4,5 · azul/claro 6,91
-  var f = v < 25 ? ['Estágio inicial', MonitorMapas.cor('argila'), MonitorMapas.cor('branco')] : v < 50 ? ['Em construção', MonitorMapas.cor('ambar'), MonitorMapas.cor('abissal')] : v < 70 ? ['Consolidado', MonitorMapas.cor('musgo'), MonitorMapas.cor('branco')] : ['Avançado', MonitorMapas.cor('musgo'), MonitorMapas.cor('branco')];
+  var fx = MonitorMapas.PALETA.faixaDe(v); var f = [MonitorMapas.PALETA.faixaRotulo[fx], MonitorMapas.PALETA.faixas[fx], MonitorMapas.PALETA.faixasTexto[fx]];
   el.innerHTML = 'Preparação demonstrada<span class="gfaixa-pill" style="background:' + f[1] + '; color:' + f[2] + '">' + f[0] + '</span>';
 })();
 

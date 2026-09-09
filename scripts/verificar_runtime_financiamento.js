@@ -57,7 +57,11 @@ setTimeout(() => {
   teste("zero erros de runtime", erros.length === 0); erros.slice(0, 4).forEach(e => console.log("     ", e));
   teste("bloco 1: rede com 8 rotas, 3 nós de origem/destino e arestas coloridas", q("redeRotas").querySelectorAll("g.nos g[role=img]").length === 8 && q("redeRotas").querySelectorAll("g.nos rect").length === 11 && q("redeRotas").querySelectorAll("path.aresta").length >= 16);
   teste("bloco 1: rede reage ao gesto (tooltip ao passar o mouse numa rota)", (() => { const g = q("redeRotas").querySelector("g.nos g[role=img]"); g.dispatchEvent(new dom.window.MouseEvent("mouseenter", {bubbles: true, clientX: 10, clientY: 10})); return q("mapTooltip").style.display === "block" && /chave/.test(q("mapTooltip").innerHTML); })());
-  teste("bloco 1: 8 cartões de rota em texto (dobrável), na ordem e nas cores do modelo", q("rotasCards").children.length === 8 && [...q("rotasCards").children].every((c, i) => c.getAttribute("style").includes(ROTAS[i].cor)));
+  // 09/09/2026: a cor da rota é a da paleta semântica única (MonitorMapas.PALETA.rotas), igual em todas as figuras; o JSON guarda a ordem
+  const PAL_ROTAS = (dom.window.MonitorMapas && dom.window.MonitorMapas.PALETA && dom.window.MonitorMapas.PALETA.rotas) || {};
+  const corRota = r => PAL_ROTAS[r.id] || r.cor;
+  teste("bloco 1: 8 cartões de rota em texto (dobrável), na ordem e nas cores do modelo", q("rotasCards").children.length === 8 && [...q("rotasCards").children].every((c, i) => c.getAttribute("style").includes(corRota(ROTAS[i]))));
+  teste("bloco 1: rotas com 8 cores distintas da paleta única (rede, cartões e série usam a mesma)", new Set(ROTAS.map(corRota)).size === 8 && ROTAS.every(r => PAL_ROTAS[r.id]));
   teste("bloco 2: faixa do defeso desenhada", q("svgSerie").querySelector("rect") && q("svgSerie").textContent.includes("04/07–25/10"));
   for (const id of ["mapaFundo", "mapaHab", "mapDinheiro"]) teste(`${id}: 27 estados`, q(id).querySelectorAll("path").length === 27);
   teste("mapa do dinheiro: um círculo por repasse do Prepara RS", q("mapDinheiro").querySelectorAll("circle:not(.rec)").length === TR.repasses_rs.filter(r => r.lat).length);
