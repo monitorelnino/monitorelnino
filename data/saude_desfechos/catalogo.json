@@ -1,0 +1,191 @@
+{
+ "_governanca": "Catálogo de desfechos em saúde do ciclo (09/09/2026), derivado do Quadro 2 do Plano de Contingência por Seca e Estiagem (MS/SVSA 2026, pp. 15–17) e das ações por estágio (pp. 39–52). Cada desfecho: comprometimento de origem no plano, sistema oficial, periodicidade, fonte aberta candidata e status de coleta no Monitor. Peso zero; nunca lido pelo motor; nenhum desfecho é atribuído ao El Niño.",
+ "fonte": {
+  "documento": "Plano de Contingência para Emergências em Saúde Pública por Seca e Estiagem",
+  "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf",
+  "quadro": "Quadro 2 (pp. 15–17)",
+  "lido_em": "09/09/2026"
+ },
+ "desfechos": [
+  {
+   "id": "dda",
+   "nome": "Doenças diarreicas agudas (DDA)",
+   "comprometimento": "água; saneamento",
+   "sistema": "Sivep-DDA / Sinan (surtos DTHA); SISAB (atendimentos APS)",
+   "periodicidade": "semanal",
+   "fonte_aberta": "OpenDataSUS (Sivep-DDA: agregado semanal por município) · TabNet",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "dtha",
+   "nome": "Doenças de transmissão hídrica e alimentar (surtos)",
+   "comprometimento": "água; alimentos",
+   "sistema": "Sinan (surto DTHA)",
+   "periodicidade": "semanal",
+   "fonte_aberta": "OpenDataSUS Sinan",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "dengue",
+   "nome": "Dengue (e outras arboviroses)",
+   "comprometimento": "vetores",
+   "sistema": "Sinan",
+   "periodicidade": "semanal",
+   "fonte_aberta": "InfoDengue (alertcity) — em coleta para o painel amostral (§35)",
+   "status_coleta": "coletado"
+  },
+  {
+   "id": "chik",
+   "nome": "Chikungunya",
+   "comprometimento": "vetores",
+   "sistema": "Sinan",
+   "periodicidade": "semanal",
+   "fonte_aberta": "InfoDengue (disease=chikungunya)",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "malaria",
+   "nome": "Malária (áreas de risco na seca)",
+   "comprometimento": "vetores",
+   "sistema": "Sivep-Malária",
+   "periodicidade": "semanal",
+   "fonte_aberta": "Sivep-Malária (BI público)",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "lepto",
+   "nome": "Leptospirose (chuvas no Sul)",
+   "comprometimento": "água",
+   "sistema": "Sinan",
+   "periodicidade": "semanal",
+   "fonte_aberta": "OpenDataSUS Sinan",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "desidratacao",
+   "nome": "Desidratação",
+   "comprometimento": "água; calor",
+   "sistema": "SISAB (APS) / SIH",
+   "periodicidade": "semanal",
+   "fonte_aberta": "TabNet SIH (CID E86) · e-SUS APS",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "desnutricao",
+   "nome": "Desnutrição (crianças, gestantes, idosos)",
+   "comprometimento": "segurança alimentar",
+   "sistema": "SISVAN / SIH",
+   "periodicidade": "mensal",
+   "fonte_aberta": "SISVAN público (estado nutricional) · TabNet SIH",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "sg",
+   "nome": "Síndrome gripal (SG)",
+   "comprometimento": "ar",
+   "sistema": "e-SUS Notifica",
+   "periodicidade": "semanal",
+   "fonte_aberta": "InfoGripe (Fiocruz) / OpenDataSUS",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "srag",
+   "nome": "Síndrome respiratória aguda grave (SRAG)",
+   "comprometimento": "ar",
+   "sistema": "Sivep-Gripe",
+   "periodicidade": "semanal",
+   "fonte_aberta": "InfoGripe (Fiocruz) / OpenDataSUS Sivep-Gripe",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "ira",
+   "nome": "Infecção respiratória aguda / internações respiratórias",
+   "comprometimento": "ar; fumaça",
+   "sistema": "SIH/SUS (CID J)",
+   "periodicidade": "mensal",
+   "fonte_aberta": "TabNet SIH",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "intox_fumaca",
+   "nome": "Intoxicação exógena por fumaça (CO)",
+   "comprometimento": "fumaça",
+   "sistema": "Sinan (intoxicação exógena) / CIATox",
+   "periodicidade": "semanal",
+   "fonte_aberta": "OpenDataSUS Sinan",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "cardio",
+   "nome": "Doenças cardiovasculares (internações)",
+   "comprometimento": "calor; fumaça",
+   "sistema": "SIH/SUS (CID I)",
+   "periodicidade": "mensal",
+   "fonte_aberta": "TabNet SIH",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "renal",
+   "nome": "Doenças renais (internações)",
+   "comprometimento": "água; calor",
+   "sistema": "SIH/SUS (CID N)",
+   "periodicidade": "mensal",
+   "fonte_aberta": "TabNet SIH",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "calor_agravo",
+   "nome": "Agravos por calor (efeitos do calor e da luz, CID T67; óbitos)",
+   "comprometimento": "calor",
+   "sistema": "SIH / SIM / Painel Nacional de Excesso de Calor",
+   "periodicidade": "semanal",
+   "fonte_aberta": "Painel de Excesso de Calor (MS) · TabNet SIH/SIM",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "pele_olhos",
+   "nome": "Doenças infecciosas de pele e olhos (dermatites, conjuntivite, tracoma)",
+   "comprometimento": "água; higiene",
+   "sistema": "SISAB / Sinan (tracoma)",
+   "periodicidade": "mensal",
+   "fonte_aberta": "e-SUS APS",
+   "status_coleta": "sem fonte aberta identificada"
+  },
+  {
+   "id": "saude_mental",
+   "nome": "Saúde mental (transtornos, uso de álcool/drogas, ideação suicida, suicídio)",
+   "comprometimento": "psicossocial",
+   "sistema": "SIH / SIM / Sinan (violência autoprovocada)",
+   "periodicidade": "mensal",
+   "fonte_aberta": "TabNet SIM/SIH · OpenDataSUS Sinan",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "obitos",
+   "nome": "Mortalidade geral (gatilho do plano: ≥ 20% acima da série histórica)",
+   "comprometimento": "todos",
+   "sistema": "SIM",
+   "periodicidade": "mensal (preliminar)",
+   "fonte_aberta": "OpenDataSUS SIM preliminar · Portal da Transparência do Registro Civil",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "icsap",
+   "nome": "Internações por condições sensíveis à atenção primária (ICSAP)",
+   "comprometimento": "serviços",
+   "sistema": "SIH/SUS",
+   "periodicidade": "mensal",
+   "fonte_aberta": "TabNet SIH",
+   "status_coleta": "candidato"
+  },
+  {
+   "id": "tb_continuidade",
+   "nome": "Continuidade do tratamento de tuberculose e outras DCT",
+   "comprometimento": "serviços",
+   "sistema": "Sinan-TB",
+   "periodicidade": "mensal",
+   "fonte_aberta": "OpenDataSUS Sinan",
+   "status_coleta": "candidato"
+  }
+ ]
+}

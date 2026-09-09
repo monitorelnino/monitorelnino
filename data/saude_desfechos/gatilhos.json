@@ -1,0 +1,153 @@
+{
+ "_governanca": "Gatilhos por estágio operacional do Plano de Contingência por Seca e Estiagem (Quadro 5, pp. 36–38), com o que o Monitor já consegue computar (09/09/2026). Estágio operacional NÃO é declarado pelo Monitor — só o MS/SES o declaram; aqui fica o dado que alimenta cada gatilho. Peso zero.",
+ "fonte": {
+  "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf",
+  "quadro": "Quadro 5 (pp. 36–38)",
+  "lido_em": "09/09/2026"
+ },
+ "estagios": [
+  "Normalidade",
+  "Mobilização",
+  "Alerta",
+  "Situação de emergência",
+  "Crise"
+ ],
+ "gatilhos": [
+  {
+   "id": "mob_alertas",
+   "estagio": "Mobilização",
+   "texto": "Um ou mais alertas de seca/estiagem na mesma região com classificação 2/3 (Inmet, Cenad, SGB)",
+   "fonte_oficial": "INMET avisos; Cemaden",
+   "status_monitor": "computavel_parcial",
+   "nota": "avisos INMET por UF já coletados (Risco climático); classificação 2/3 a mapear"
+  },
+  {
+   "id": "mob_prognostico",
+   "estagio": "Mobilização",
+   "texto": "Prognóstico do Inpe indicando estiagem por mais de 30 dias em estados da mesma região",
+   "fonte_oficial": "CPTEC/INPE prognóstico",
+   "status_monitor": "leitura_humana",
+   "nota": "prognóstico SON/2026 registrado (Boletim nº 3): abaixo da normal no N, NE e centro-norte"
+  },
+  {
+   "id": "mob_bacia",
+   "estagio": "Mobilização",
+   "texto": "Uma bacia com cota de estiagem abaixo da permanência anual de 90% (ANA)",
+   "fonte_oficial": "ANA",
+   "status_monitor": "sem_coleta",
+   "nota": "adaptador ANA pendente"
+  },
+  {
+   "id": "mob_incidencia",
+   "estagio": "Mobilização",
+   "texto": "Aumento da incidência de agravos associados à escassez de água",
+   "fonte_oficial": "Sivep-DDA / SISAB",
+   "status_monitor": "sem_coleta",
+   "nota": "depende do catálogo (dda)"
+  },
+  {
+   "id": "ale_focos",
+   "estagio": "Alerta",
+   "texto": "Concentração de focos de calor em 3+ estados da mesma região e/ou violação do padrão de qualidade do ar por 2 dias seguidos em 3+ estados",
+   "fonte_oficial": "INPE focos; VigiAR/CETESB ar",
+   "status_monitor": "computavel_parcial",
+   "nota": "focos por UF já coletados (Risco climático); qualidade do ar a coletar"
+  },
+  {
+   "id": "ale_aps",
+   "estagio": "Alerta",
+   "texto": "Aumento de atendimentos da APS por desidratação, IRA, DTHA vs ano anterior/série histórica",
+   "fonte_oficial": "SISAB",
+   "status_monitor": "sem_coleta",
+   "nota": "e-SUS APS agregado — a localizar"
+  },
+  {
+   "id": "ale_temp",
+   "estagio": "Alerta",
+   "texto": "Temperatura 5 °C acima da média do local por mais de 3 dias",
+   "fonte_oficial": "INMET estações",
+   "status_monitor": "sem_coleta",
+   "nota": "INMET dados abertos horários — coletor a escrever"
+  },
+  {
+   "id": "ale_pedidos",
+   "estagio": "Alerta",
+   "texto": "Aumento de pedidos de apoio à saúde de municípios/estados ao nível federal",
+   "fonte_oficial": "MS (não público)",
+   "status_monitor": "nao_publico",
+   "nota": "só por LAI"
+  },
+  {
+   "id": "eme_bacias",
+   "estagio": "Situação de emergência",
+   "texto": "Ao menos 5 bacias com cota abaixo da permanência de 90%",
+   "fonte_oficial": "ANA",
+   "status_monitor": "sem_coleta",
+   "nota": ""
+  },
+  {
+   "id": "eme_surtos",
+   "estagio": "Situação de emergência",
+   "texto": "2+ surtos de doenças relacionadas ao evento em UFs/Dsei diferentes",
+   "fonte_oficial": "Cievs/Sinan",
+   "status_monitor": "sem_coleta",
+   "nota": "informes Cievs estaduais a localizar"
+  },
+  {
+   "id": "eme_decretos",
+   "estagio": "Situação de emergência",
+   "texto": "Decretos de emergência/calamidade por seca e estiagem em 25% das UFs e/ou 8% dos municípios",
+   "fonte_oficial": "S2iD/DOU",
+   "status_monitor": "computavel",
+   "nota": "o contador de resposta do Monitor: hoje 4,2% dos municípios sob decreto (todas as causas); por causa 'seca/estiagem' a filtrar"
+  },
+  {
+   "id": "eme_alertas_cievs",
+   "estagio": "Situação de emergência",
+   "texto": "Emissão consecutiva de alertas de saúde pelo Cievs/Dsei",
+   "fonte_oficial": "Cievs",
+   "status_monitor": "sem_coleta",
+   "nota": ""
+  },
+  {
+   "id": "eme_isolamento",
+   "estagio": "Situação de emergência",
+   "texto": "Localidades isoladas ou com restrição importante de transporte",
+   "fonte_oficial": "Defesa civil/SES",
+   "status_monitor": "leitura_humana",
+   "nota": ""
+  },
+  {
+   "id": "cri_decretos",
+   "estagio": "Crise",
+   "texto": "50% dos estados ou 50% dos municípios de uma região com decreto reconhecido por seca/estiagem",
+   "fonte_oficial": "S2iD",
+   "status_monitor": "computavel",
+   "nota": "contador de resposta por região e causa"
+  },
+  {
+   "id": "cri_mortalidade",
+   "estagio": "Crise",
+   "texto": "Taxa de mortalidade geral ≥ 20% acima da série histórica",
+   "fonte_oficial": "SIM",
+   "status_monitor": "sem_coleta",
+   "nota": "SIM preliminar / Registro Civil — coletor a escrever"
+  },
+  {
+   "id": "cri_sistemas",
+   "estagio": "Crise",
+   "texto": "Não atualização de SISAB e Sinan por mais de 15 dias",
+   "fonte_oficial": "SISAB/Sinan",
+   "status_monitor": "sem_coleta",
+   "nota": "observável pela completude das séries (InfoDengue já expõe atraso)"
+  },
+  {
+   "id": "cri_desassistencia",
+   "estagio": "Crise",
+   "texto": "≥ 30% dos municípios com pedido formal de apoio por desassistência, ou unidades que suspenderam serviços",
+   "fonte_oficial": "MS/SES",
+   "status_monitor": "nao_publico",
+   "nota": "só por LAI"
+  }
+ ]
+}
