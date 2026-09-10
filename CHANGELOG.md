@@ -9,6 +9,26 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 10/09/2026 — Julgamento de pistas, lote 1: Ouro Branco/AL promovido a `plano`
+
+- **Lidas:** 1 pista (cobrindo 2 cópias relogadas do mesmo achado, `hash` único).
+  **Promovidas:** 1. Ouro Branco/AL sobe de `decreto` para **`plano`** — Decreto Municipal
+  nº 021, de 10/07/2026, lido **na íntegra** (texto integral preservado em `evidencias/`):
+  institui o PLACOM, Plano de Contingência Municipal para Estiagem e Seca, **elaborado**
+  pela Coordenadoria Municipal de Proteção e Defesa Civil, com competências, Gabinete de
+  Crise e revisão bienal. O registro anterior (`decreto`) apoiava-se em fonte secundária e
+  citava o Decreto 22 — que é a **declaração de emergência**, não ato preventivo; a leitura
+  integral corrige a base documental do registro. Ressalva anotada: o conteúdo do PLACOM
+  não está impresso no diário; o ato que o institui, sim, com número e data.
+- **Efeito na nota:** nenhum. AL segue 12 atos / 102 municípios (11,76%); composição muda
+  de 1 `plano` + 11 `decreto` para 2 `plano` + 10 `decreto`. Sem errata, portanto.
+- **Mapa de transparência (resposta, peso zero):** entra o Decreto Municipal nº 022, de
+  10/07/2026 — Situação de Emergência por Estiagem em Ouro Branco/AL (S2iD
+  AL-F-2706109-14110-20260708; reconhecimento federal em 27/07/2026). Achado pela
+  leitura do texto integral: o excerto da API só trazia o PLACOM — exatamente a cegueira
+  que a mudança de 10/09 (evidência com texto integral) elimina.
+- Julgamento humano registrado nas duas cópias da pista em `data/pistas_imprensa.json`.
+
 ## 10/09/2026 — Evidência passa a incluir o texto integral da edição (infraestrutura)
 
 - **O que muda:** toda pista de diário municipal (Querido Diário) passa a preservar,
