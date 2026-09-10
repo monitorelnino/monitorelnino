@@ -5203,7 +5203,7 @@ endstream
 endobj
 105 0 obj
 <<
-/Length 9511
+/Length 9473
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -5242,7 +5242,7 @@ Q
 q
 1 0 0 1 57.02362 77.53543 cm
 q
-BT 1 0 0 1 0 78.9 Tm 2.41613 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Build reprodut\355vel de verdade \(10/09/2026\) \227 um bug de infraestrutura, n\343o de conte\372do.) Tj /F1 9.3 Tf ( O port\343o de) Tj T* 0 Tw .516139 Tw (derivados \(\24712, verifica\347\343o 12\) garantia bytes id\352nticos numa segunda regenera\347\343o ) Tj /F3 9.3 Tf (no mesmo ambiente) Tj /F1 9.3 Tf (, mas n\343o) Tj T* 0 Tw .089737 Tw (garantia isso ) Tj /F3 9.3 Tf (entre) Tj /F1 9.3 Tf ( ambientes diferentes \(este sandbox de edi\347\343o \327 o runner do CI\): os dois t\352m a mesma vers\343o do) Tj T* 0 Tw .187677 Tw (reportlab e do pypdf, mas geravam hashes diferentes para METODOLOGIA.pdf e MARE_Indice_Documentacao.pdf) Tj T* 0 Tw .000572 Tw (a partir do mesmo conte\372do. Causa mais prov\341vel: a compress\343o interna dos fluxos do PDF \(FlateDecode\) depende) Tj T* 0 Tw .851762 Tw (da vers\343o do zlib do sistema, que pode produzir bytes comprimidos diferentes para o mesmo conte\372do em builds) Tj T* 0 Tw .89899 Tw (diferentes de zlib \227 mesmo com SOURCE_DATE_EPOCH fixado \(reportlab j\341 honra essa vari\341vel para as datas) Tj T* 0 Tw ET
+BT 1 0 0 1 0 78.9 Tm 3.492137 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Terceiro coletor estadual: arboviroses em Pernambuco \(10/09/2026\) \227 e o primeiro limite estrutural) Tj T* 0 Tw 4.713016 Tw (encontrado.) Tj /F1 9.3 Tf ( coletar_boletim_pe_arboviroses.py l\352 o ) Tj /F2 9.3 Tf (Informe Epidemiol\363gico | Arboviroses) Tj /F1 9.3 Tf ( semanal do) Tj T* 0 Tw .26039 Tw (CIEVS-PE \(Sinan Online e Sinan Net; dengue, chikungunya, Zika\), \355ntegra conferida em 10/09/2026 no informe "SE) Tj T* 0 Tw .393529 Tw (01 a 34 \(04/01 a 29/08/2026\)", dados captados em 31/08, publicado 03/09. A leitura real mudou o que se esperava) Tj T* 0 Tw 1.14225 Tw (desse estado. O documento de transfer\352ncia dizia que PE "parece estruturado por SE de um jeito parecido com) Tj T* 0 Tw 1.37835 Tw (MS"; n\343o \351. O informe de PE \351 um ) Tj /F2 9.3 Tf (PDF-infogr\341fico) Tj /F1 9.3 Tf (: os n\372meros ficam soltos no layout, longe dos r\363tulos, em) Tj T* 0 Tw 1.479208 Tw (ordem que varia de p\341gina para p\341gina \(na de dengue o n\372mero precede o r\363tulo; na de chikungunya, "Casos) Tj T* 0 Tw ET
 Q
 Q
  
@@ -5250,7 +5250,7 @@ endstream
 endobj
 106 0 obj
 <<
-/Length 1381
+/Length 5374
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -5263,9 +5263,15 @@ BT 1 0 0 1 511.312 34.01575 Tm (p\341gina 48) Tj T* ET
 n 51.02362 45.35433 m 544.252 45.35433 l S
 Q
 q
-1 0 0 1 57.02362 702.3354 cm
+1 0 0 1 57.02362 576.3354 cm
 q
-BT 1 0 0 1 0 78.9 Tm 7.134015 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (vis\355veis, isso n\343o estava em causa\). Corrigido em gerar_pdf_metodologia.py e gerar_pdf_indice.py:) Tj T* 0 Tw .857915 Tw (pageCompression=0 \(tira a depend\352ncia do zlib do sistema \227 os PDFs saem maiores, sem compacta\347\343o, mas o) Tj T* 0 Tw .340022 Tw (mesmo conte\372do produz os mesmos bytes em qualquer ambiente\) e invariant=1 \(fixa a impress\343o digital interna do) Tj T* 0 Tw 1.632496 Tw (PDF, em vez de deix\341-la depender da ordem de montagem\). Verificado com bash scripts/verificar_derivados.sh) Tj T* 0 Tw 2.78498 Tw (--idempotencia \(segunda regenera\347\343o, mesmo processo, sem diferen\347a \227 j\341 valia\) e por tr\352s regenera\347\365es) Tj T* 0 Tw 1.006458 Tw (seguidas neste sandbox \(mesmo hash\); a prova real \351 o CI aceitar o hash committado sem reclamar na pr\363xima) Tj T* 0 Tw (verifica\347\343o.) Tj T* ET
+BT 1 0 0 1 0 204.9 Tm .048558 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (notificados" precede o n\372mero\) \227 e, decisivo, ) Tj /F2 9.3 Tf (a Tabela 1, a \372nica com dado por munic\355pio, est\341 embutida como) Tj T* 0 Tw .026858 Tw (imagem) Tj /F1 9.3 Tf (: a extra\347\343o de texto devolve o t\355tulo e nenhuma linha. Portanto este coletor entrega ) Tj /F2 9.3 Tf (s\363 os totais estaduais) Tj /F1 9.3 Tf  T* 0 Tw .754719 Tw (por agravo \(notificados, descartados, prov\341veis, confirmados, graves de dengue, \363bitos por arboviroses, LIRAa do) Tj T* 0 Tw .803925 Tw (ciclo\), n\343o a granularidade municipal que MS e DF t\352m; a granularidade municipal de PE existe apenas no painel) Tj T* 0 Tw .257291 Tw (Power BI do CIEVS, que n\343o \351 lido por m\341quina com confiabilidade. A limita\347\343o est\341 declarada em fontes_uf.json e) Tj T* 0 Tw -0.088875 Tw (no pr\363prio arquivo de dados \(escopo: totais_estaduais\). O parser foi constru\355do para esse tipo de fonte: a unidade de) Tj T* 0 Tw .379823 Tw (leitura \351 a ) Tj /F2 9.3 Tf (p\341gina) Tj /F1 9.3 Tf ( \(p1 dengue, p2 chikungunya, p3 Zika, p4 controle vetorial\), est\341vel seja qual for a ordem interna;) Tj T* 0 Tw 1.307462 Tw (para cada r\363tulo s\363 entram n\372meros ) Tj /F2 9.3 Tf (adjacentes) Tj /F1 9.3 Tf ( \(colados, sem outro texto no meio \227 um n\372mero separado do) Tj T* 0 Tw .433176 Tw (r\363tulo por outro texto pertence a outro r\363tulo\), antes ou depois; e a escolha entre candidatos \351 feita por ) Tj /F2 9.3 Tf (identidade) Tj T* 0 Tw 1.725722 Tw (cont\341bil) Tj /F1 9.3 Tf (: notificados = prov\341veis + descartados, que fechou exatamente nos tr\352s agravos da SE 34 \(45.017 =) Tj T* 0 Tw .351532 Tw (22.281 + 22.736; 6.292 = 2.187 + 4.105; 1.128 = 104 + 1.024\), mais confirmados ) Tj /F4 9.3 Tf 12.6 TL (\243) Tj /F1 9.3 Tf 12.6 TL ( prov\341veis e graves ) Tj /F4 9.3 Tf 12.6 TL (\243) Tj /F1 9.3 Tf 12.6 TL ( prov\341veis.) Tj T* 0 Tw .044802 Tw (Se a identidade n\343o fechar de forma \372nica, o coletor ) Tj /F2 9.3 Tf (recusa e declara lacuna) Tj /F1 9.3 Tf ( \227 e a lacuna leva um trecho do texto) Tj T* 0 Tw 1.335909 Tw (extra\355do pelo pdfplumber, porque o parser foi afinado contra outra ferramenta de extra\347\343o e a ordem interna do) Tj T* 0 Tw 1.96353 Tw (infogr\341fico pode diferir no runner; se diferir, o desfecho \351 lacuna diagnostic\341vel, nunca n\372mero mal associado) Tj T* 0 Tw .451031 Tw (publicado. Grava data/saude_desfechos/ses_pe_arboviroses.json; port\343o \(s\) em verificar_saude.py. Dez autotestes) Tj T* 0 Tw .406745 Tw (contra o texto real, um de recusa por identidade quebrada. Li\347\343o para os pr\363ximos estados \(BA, CE, PB\): antes de) Tj T* 0 Tw (prometer granularidade municipal, verificar se a tabela \351 texto ou imagem \227 \351 a primeira pergunta, n\343o a \372ltima.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 394.9354 cm
+q
+BT 1 0 0 1 0 167.1 Tm 2.41613 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Build reprodut\355vel de verdade \(10/09/2026\) \227 um bug de infraestrutura, n\343o de conte\372do.) Tj /F1 9.3 Tf ( O port\343o de) Tj T* 0 Tw .516139 Tw (derivados \(\24712, verifica\347\343o 12\) garantia bytes id\352nticos numa segunda regenera\347\343o ) Tj /F3 9.3 Tf (no mesmo ambiente) Tj /F1 9.3 Tf (, mas n\343o) Tj T* 0 Tw .089737 Tw (garantia isso ) Tj /F3 9.3 Tf (entre) Tj /F1 9.3 Tf ( ambientes diferentes \(este sandbox de edi\347\343o \327 o runner do CI\): os dois t\352m a mesma vers\343o do) Tj T* 0 Tw .187677 Tw (reportlab e do pypdf, mas geravam hashes diferentes para METODOLOGIA.pdf e MARE_Indice_Documentacao.pdf) Tj T* 0 Tw .000572 Tw (a partir do mesmo conte\372do. Causa mais prov\341vel: a compress\343o interna dos fluxos do PDF \(FlateDecode\) depende) Tj T* 0 Tw .851762 Tw (da vers\343o do zlib do sistema, que pode produzir bytes comprimidos diferentes para o mesmo conte\372do em builds) Tj T* 0 Tw .89899 Tw (diferentes de zlib \227 mesmo com SOURCE_DATE_EPOCH fixado \(reportlab j\341 honra essa vari\341vel para as datas) Tj T* 0 Tw 7.134015 Tw (vis\355veis, isso n\343o estava em causa\). Corrigido em gerar_pdf_metodologia.py e gerar_pdf_indice.py:) Tj T* 0 Tw .857915 Tw (pageCompression=0 \(tira a depend\352ncia do zlib do sistema \227 os PDFs saem maiores, sem compacta\347\343o, mas o) Tj T* 0 Tw .340022 Tw (mesmo conte\372do produz os mesmos bytes em qualquer ambiente\) e invariant=1 \(fixa a impress\343o digital interna do) Tj T* 0 Tw 1.632496 Tw (PDF, em vez de deix\341-la depender da ordem de montagem\). Verificado com bash scripts/verificar_derivados.sh) Tj T* 0 Tw 2.78498 Tw (--idempotencia \(segunda regenera\347\343o, mesmo processo, sem diferen\347a \227 j\341 valia\) e por tr\352s regenera\347\365es) Tj T* 0 Tw 1.006458 Tw (seguidas neste sandbox \(mesmo hash\); a prova real \351 o CI aceitar o hash committado sem reclamar na pr\363xima) Tj T* 0 Tw (verifica\347\343o.) Tj T* ET
 Q
 Q
  
@@ -5379,7 +5385,7 @@ xref
 0000411844 00000 n 
 0000420993 00000 n 
 0000430464 00000 n 
-0000440028 00000 n 
+0000439990 00000 n 
 trailer
 <<
 /ID 
@@ -5391,5 +5397,5 @@ trailer
 /Size 107
 >>
 startxref
-441462
+445417
 %%EOF
