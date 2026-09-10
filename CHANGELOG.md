@@ -54,6 +54,19 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria (09/09/2026): "figuras e mapas em páginas distintas têm esquemas de cores distintas" — reconferir e corrigir.
 
+### Coletor real: dengue por município a partir do boletim da SES-MS (10/09/2026)
+- **Primeira fonte estadual efetivamente coletada** (não só catalogada): `coletar_boletim_ms_dengue.py`
+  (7 autotestes, validado contra o texto real do boletim de SE 30/2026) lê o boletim semanal da
+  SES-MS — tabela completa por município (IBGE, casos, população, incidência), totais estaduais e
+  data de referência. Defensivo: localiza o post da semana por permalink, extrai o PDF de dentro da
+  página, recusa publicar se vierem menos de 70 dos 79 municípios. Constrói a própria série semanal
+  a partir de agora (a SES só dá o instantâneo + total anual). `data/saude_desfechos/ses_ms_dengue.json`;
+  portão (q). Não pôde rodar de verdade neste ambiente (rede restrita); roda na rotina semanal.
+- Catálogo: `dengue` ganha a segunda fonte (InfoDengue + boletim MS). `fontes_uf.json`: MS marcado
+  como "coletor ativo".
+- Levantamento de 8 estados com boletim/painel confirmado (SP, MG, CE, BA, DF, PB, PE, MS) — base
+  para repetir o coletor, um parser por estado, já que cada SES publica num formato próprio.
+
 ### Varredura das 26 portarias estaduais restantes (10/09/2026)
 - **Três instrumentos novos localizados, com data e número onde existe:** RJ (Comitê Estadual +
   Sala de Situação do El Niño, decreto de 03/07/2026, com câmara técnica de Saúde) e SC (Decreto

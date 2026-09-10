@@ -1,6 +1,6 @@
 {
- "_governanca": "Onde cada Secretaria Estadual de Saúde publica os desfechos do ciclo (boletim/painel/informe Cievs), com URL, periodicidade e status (máquina/leitura humana/defeso). Semeado em 09/09/2026 com os instrumentos já verificados na bateria estadual; cada linha a confirmar uma a uma. Peso zero.",
- "registrado_em": "09/09/2026",
+ "_governanca": "Onde cada Secretaria Estadual de Saúde publica os desfechos do ciclo (boletim/painel/informe Cievs), com URL, periodicidade e status (máquina/leitura humana/defeso). Semeado em 09/09/2026 com os instrumentos já verificados na bateria estadual; cada linha a confirmar uma a uma. Peso zero. Varredura de 10/09/2026: 8 UFs com fonte confirmada e ativa (SP, MG[defeso], CE, BA, DF, PB, PE, MS); MS é a mais forte — boletim semanal por município, estruturado, atualizado até a SE corrente.",
+ "registrado_em": "10/09/2026",
  "uf": {
   "AC": {
    "orgao": null,
@@ -50,33 +50,33 @@
    "orgao": "SESAB/SUVISA/DIVEP",
    "instrumento_verificado": "Plano Estadual de Contingência das Arboviroses Urbanas — atualização 2025-2026 (reedição para o biênio, em conformidade com as Diretrizes Nacionais)",
    "url_instrumento": "https://www.saude.ba.gov.br/wp-content/uploads/2025/05/Atualizacao-Plano-de-Contingencia-veesao-2025_20261.pdf",
-   "boletim_epidemiologico": null,
-   "painel": null,
+   "boletim_epidemiologico": "https://www.saude.ba.gov.br/wp-content/uploads/2026/02/3%C2%B0-RDQA-2025_DIVEP_11_02.pdf",
+   "painel": "https://www.saude.ba.gov.br/agravo/arboviroses/",
    "cievs": null,
-   "periodicidade": null,
-   "status": "a localizar",
-   "defeso": null
+   "periodicidade": "quadrimestral (relatório) + boletins pontuais",
+   "status": "Observatório de Vigilância Epidemiológica por agravo (inclui DTHA, arboviroses, leptospirose); PDF",
+   "defeso": false
   },
   "CE": {
    "orgao": "SESA-CE / SEVIR",
    "instrumento_verificado": "Plano Estadual de Enfrentamento das Arboviroses 2025/2026 (apresentado em 01/07/2025 na oficina de emergências com o MS)",
    "url_instrumento": "https://www.saude.ce.gov.br/wp-content/uploads/sites/9/2022/02/2025_PLANO-ESTADUAL_ENFRENTAMENTO-ARBOVIROSES.pptx.pdf",
-   "boletim_epidemiologico": null,
+   "boletim_epidemiologico": "https://www.saude.ce.gov.br/download/boletins/",
    "painel": null,
    "cievs": null,
-   "periodicidade": null,
-   "status": "a localizar",
-   "defeso": null
+   "periodicidade": "irregular (por agravo: arboviroses, DDA, leptospirose, imunopreveníveis)",
+   "status": "boletins ativos por agravo — repositório central, PDF, sem periodicidade fixa por tipo; mais recente localizado: 25/02/2026",
+   "defeso": false
   },
   "DF": {
    "orgao": "SES-DF",
    "instrumento_verificado": "Plano de Enfrentamento das Arboviroses do Distrito Federal (PDF no portal oficial, versão de 22/12/2023 — edição mais recente localizada)",
    "url_instrumento": "https://www.saude.df.gov.br/documents/37101/0/Plano-de-enfrentamento-arboviroses_231222_161225+(1).pdf/3061d8c1-7d45-cb9b-7584-5f49f9f73aff?t=1703339749606",
-   "boletim_epidemiologico": null,
+   "boletim_epidemiologico": "https://www.saude.df.gov.br/informes-dengue-chikungunya-zika-febre-amarela",
    "painel": null,
    "cievs": null,
-   "periodicidade": null,
-   "status": "a localizar",
+   "periodicidade": "mensal (última sexta-feira do mês)",
+   "status": "série numerada e contínua, PDF, confirmada até 2024 na busca (a checar 2026)",
    "defeso": null
   },
   "ES": {
@@ -127,12 +127,12 @@
    "orgao": "SES-MS",
    "instrumento_verificado": "Plano de Contingência Estadual Arboviroses 2025-2026 (guias e manuais da SES)",
    "url_instrumento": "https://www.saude.ms.gov.br/informativos/guias-e-manuais/plano-de-contingencia-estadual-arboviroses-2025-2026/",
-   "boletim_epidemiologico": null,
+   "boletim_epidemiologico": "https://www.saude.ms.gov.br/informativos/boletins/",
    "painel": null,
    "cievs": null,
-   "periodicidade": null,
-   "status": "a localizar",
-   "defeso": null
+   "periodicidade": "semanal",
+   "status": "COLETOR ATIVO — boletim semanal por município (coletar_boletim_ms_dengue.py), lido em 10/09/2026 na íntegra (SE 30/2026: 79 municípios, tabela IBGE/casos/população/incidência); série própria do Monitor acumulando a partir de agora",
+   "defeso": false
   },
   "MT": {
    "orgao": null,
@@ -160,23 +160,23 @@
    "orgao": "SES-PB / Vigilância em Saúde",
    "instrumento_verificado": "Plano Estadual de Contingência para Controle das Arboviroses (PDF no portal oficial, 15/02/2024)",
    "url_instrumento": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/plano_contingencia_arboviroses_15_02_2024.pdf",
-   "boletim_epidemiologico": null,
+   "boletim_epidemiologico": "https://paraiba.pb.gov.br/diretas/saude/consultas/vigilancia-em-saude/boletins-epidemiologicos",
    "painel": null,
    "cievs": null,
-   "periodicidade": null,
-   "status": "a localizar",
-   "defeso": null
+   "periodicidade": "mensal/quinzenal (nº 01, 02/2026 confirmados)",
+   "status": "boletim de arboviroses urbanas, PDF, ativo em 2026",
+   "defeso": false
   },
   "PE": {
    "orgao": "SES-PE",
    "instrumento_verificado": "Plano de Enfrentamento das Arboviroses 2025/2026 (divulgado em 22/01/2025; capítulo específico de Oropouche)",
    "url_instrumento": "https://portal.saude.pe.gov.br/pernambuco-divulga-plano-de-enfrentamento-das-arboviroses-2025-2026/",
-   "boletim_epidemiologico": null,
+   "boletim_epidemiologico": "https://portalcievs.saude.pe.gov.br/noticias/INFORMES/arbovirose",
    "painel": null,
    "cievs": null,
-   "periodicidade": null,
-   "status": "a localizar",
-   "defeso": null
+   "periodicidade": "por faixa de SE (ex.: SE 01 a 10)",
+   "status": "Portal CIEVS-PE dedicado; informe com tabelas e gráficos por SE, PDF; confirmado até SE10/2026",
+   "defeso": false
   },
   "PI": {
    "orgao": null,
