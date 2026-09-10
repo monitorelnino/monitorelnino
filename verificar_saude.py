@@ -117,6 +117,19 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                     _soma = sum(v.get("casos_provaveis", 0) for v in _pr.values()) + int(_r.get("ignorado") or 0)
                     if _soma != _r.get("total_declarado"): erros.append(f"(r) ses_df_arboviroses {_se} {_ag}: soma das regiões ({_soma}) ≠ N declarado ({_r.get('total_declarado')}) — não deveria ter sido publicado")
                     if _r.get("total_declarado") != (_snap.get(_ag) or {}).get("provaveis"): erros.append(f"(r) ses_df_arboviroses {_se} {_ag}: N da tabela ≠ card de prováveis")
+        _ped = RAIZ / "data" / "saude_desfechos" / "ses_pe_arboviroses.json"
+        if _ped.exists():
+            # (s) 10/09/2026: PE — só TOTAIS ESTADUAIS (a tabela municipal do informe é imagem). Nunca lido pelo motor;
+            # ressalva presente; cada leitura fecha a identidade notificados = prováveis + descartados nos 3 agravos.
+            if re.search(r"ses_pe_arboviroses\.json", motor): erros.append("(s) recalcular_mare.py referencia ses_pe_arboviroses.json (proibido)")
+            _pj = json.load(open(_ped, encoding="utf-8"))
+            if "não atribui casos ao El Niño" not in _pj.get("_governanca", ""): erros.append("(s) ses_pe_arboviroses.json sem a ressalva de não-atribuição")
+            for _se, _snap in (_pj.get("serie") or {}).items():
+                if _snap.get("escopo") != "totais_estaduais": erros.append(f"(s) ses_pe_arboviroses {_se}: escopo deve ser 'totais_estaduais' (tabela municipal é imagem)")
+                for _ag in ("dengue", "chikungunya", "zika"):
+                    _a = _snap.get(_ag) or {}
+                    if _a.get("notificados") != (_a.get("provaveis") or 0) + (_a.get("descartados") or 0): erros.append(f"(s) ses_pe_arboviroses {_se} {_ag}: notificados ≠ prováveis + descartados — não deveria ter sido publicado")
+                    if (_a.get("confirmados") or 0) > (_a.get("provaveis") or 0): erros.append(f"(s) ses_pe_arboviroses {_se} {_ag}: confirmados > prováveis")
         if (_sd / "gatilhos.json").exists():
             for g in json.load(open(_sd / "gatilhos.json", encoding="utf-8")).get("gatilhos", []):
                 if g.get("status_monitor") not in ("computavel", "computavel_parcial", "leitura_humana", "sem_coleta", "nao_publico"): erros.append(f"(o) gatilho com status fora do vocabulário: {g.get('id')}")
