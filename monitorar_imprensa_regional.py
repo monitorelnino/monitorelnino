@@ -244,6 +244,17 @@ def registrar(fila, novas):
         if p["hash"] in vistos:
             continue
         p["fonte_provavel_oficial"] = parece_fonte_oficial(p["url"])
+        # 10/09/2026: preserva a própria página no ato do registro (proteção contra
+        # link rot e portais que bloqueiem acesso depois). Best-effort: falha não
+        # impede a pista — o valor dela é o lead; a prova continua sendo o documento
+        # primário, exigido na promoção.
+        if not p.get("hash_evidencia"):
+            try:
+                from coletores_base import buscar as _buscar, preservar_evidencia as _pe
+                p["hash_evidencia"] = _pe(_buscar(p["url"], timeout=30), p["url"], "html",
+                                          "monitorar_imprensa_regional")
+            except Exception:  # noqa: BLE001
+                p["hash_evidencia"] = None
         p["documento_oficial_confirmado"] = None   # só um humano preenche
         p["promovivel"] = False                    # nunca setado por código
         p["status"] = "pendente_confirmacao_documento"
