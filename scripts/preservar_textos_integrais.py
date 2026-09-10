@@ -20,6 +20,44 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 from coletores_base import EVID, preservar_texto_integral  # noqa: E402
+from coletores_base import RAIZ as _RAIZ, buscar, ler, gravar, hoje, sha256  # noqa: E402
+
+
+def _recuperar_pela_url(h: str):
+    """Evidência indexada mas sem arquivo no disco (ex.: cópia perdida antes do commit da
+    rodada, caso Serra/ES de 03/09/2026): re-busca a URL original do índice.
+    - sha256 idêntico ao hash → restaura o .json (é o mesmo conteúdo) e baixa o .txt.
+    - sha256 diferente (janela da API trouxe edições novas) → NUNCA grava .json sob o hash
+      antigo (seria atestar identidade que não existe); grava só o .txt das edições atuais,
+      com nota de divergência no índice — o texto do diário em si é estável e é o que se lê.
+    Best-effort: qualquer falha devolve None e a pendência continua declarada."""
+    idx = ler("evidencias.json", {"itens": {}})
+    item = idx.get("itens", {}).get(h) or {}
+    url = item.get("url") or ""
+    if not url:
+        return None
+    try:
+        bruto = buscar(url, timeout=60)
+        dados = json.loads(bruto.decode("utf-8", errors="replace"))
+    except Exception:  # noqa: BLE001
+        return None
+    identico = sha256(bruto) == h
+    if identico:
+        EVID.mkdir(exist_ok=True)
+        (EVID / f"{h}.json").write_bytes(bruto)
+        item["arquivo"] = f"evidencias/{h}.json"
+        item["nota"] = (item.get("nota") or "") + f" | re-preservada em {hoje()} (sha256 idêntico)"
+    else:
+        item["nota"] = (item.get("nota") or "") + (f" | {hoje()}: resposta atual da API difere do hash "
+                                                   "original (janela trouxe edições novas); .json não "
+                                                   "restaurado — texto integral preservado a partir da "
+                                                   "resposta atual, com URLs de origem no arquivo")
+    idx["itens"][h] = item
+    gravar("evidencias.json", idx)
+    r = preservar_texto_integral(h, dados.get("gazettes", []), "preservar_textos_integrais/recuperacao")
+    return ("restaurada (.json + .txt)" if identico and r else
+            ".txt preservado (com nota de divergência)" if r else
+            ".json restaurado, sem txt_url alcançável" if identico else None)
 
 
 def main() -> int:
@@ -46,8 +84,12 @@ def main() -> int:
             break
         cam = EVID / f"{h}.json"
         if not cam.exists():
-            print(f"  - {h[:12]}…: sem .json no disco (evidência nunca preservada) — fora do alcance deste script")
-            sem_json += 1
+            r = _recuperar_pela_url(h)
+            print(f"  {'✓' if r else '-'} {h[:12]}…: evidência-base ausente — {r or 'irrecuperável pela URL indexada'}")
+            if r:
+                ok += 1
+            else:
+                sem_json += 1
             continue
         try:
             dados = json.load(open(cam, encoding="utf-8"))

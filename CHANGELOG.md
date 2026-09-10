@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 10/09/2026 — Texto integral em TODAS as buscas (extensão do PR #114)
+
+- A preservação do documento inteiro no momento da coleta, criada no PR #114 para o
+  coletor municipal, passa a valer em **todos os canais de descoberta**: `coletar_doe.py`
+  (braço Querido Diário dos DOEs), `consultar_querido_diario.py` (varredura ad hoc — cada
+  achado ganha evidência própria: `.json` do registro + `.txt` integral) e os três vigias
+  de imprensa via `registrar()` compartilhado (`monitorar_imprensa_regional.py`,
+  `monitorar_atos_resposta.py`, `monitorar_politica_por_inteiro.py`), que agora preservam
+  a própria página no ato do registro (proteção contra link rot e portais que bloqueiem
+  acesso automatizado depois).
+- `scripts/preservar_textos_integrais.py` ganha **recuperação por URL indexada**: evidência
+  com arquivo perdido (caso Serra/ES, 03/09) é re-buscada; `.json` só é restaurado se o
+  sha256 bater com o hash original — divergência vira nota declarada no índice e o texto
+  integral é preservado a partir da resposta atual, com URLs de origem no arquivo.
+- Nada muda em pista, registro, categoria ou nota; a regra de prova segue idêntica.
+
 ## 10/09/2026 — Julgamento de pistas, lote 1: Ouro Branco/AL promovido a `plano`
 
 - **Lidas:** 1 pista (cobrindo 2 cópias relogadas do mesmo achado, `hash` único).

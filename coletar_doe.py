@@ -21,7 +21,7 @@ USO
 """
 import json, re, sys, urllib.parse
 from datetime import date
-from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
+from coletores_base import (buscar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso)
 
@@ -95,7 +95,11 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         f["status"] = "fonte suspensa (defeso)"; return "suspensa"
     if f["adaptador"] == "querido_diario":
         try:
-            itens = parse_querido_diario(json.loads(texto))
+            _dados_qd = json.loads(texto)
+            # 10/09/2026: além do excerto da API, o texto integral da edição (mesma regra do
+            # coletor municipal) — quem julga lê o documento inteiro offline.
+            preservar_texto_integral(h, _dados_qd.get("gazettes", []), "coletar_doe")
+            itens = parse_querido_diario(_dados_qd)
         except json.JSONDecodeError:
             registrar_lacuna(f"DOE/{uf}", "resposta não é JSON", canal="repositorio_estadual", camada=1, uf=uf, hash_evidencia=h)
             f["status"] = "erro: formato"; return "erro"
