@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §36 · segundo coletor estadual de desfechos: arboviroses no DF (SES-DF), com correção de registro · 10/09/2026
+
+Nenhuma alteração de método (§12.5); nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). Peso zero; nunca lido pelo motor.
+
+- **Novo:** `coletar_boletim_df_arboviroses.py` lê o Informativo Epidemiológico semanal da SES-DF (dengue, chikungunya, Zika, febre amarela; por Região de Saúde). Íntegra conferida no Nº 34 (SE 34/2026, extraído em 31/08, publicado em 03/09/2026). Grava `data/saude_desfechos/ses_df_arboviroses.json`; ligado em `atualizar.py` logo após o coletor de MS.
+- **Portão (r)** em `verificar_saude.py`: motor não referencia o arquivo; ressalva de não-atribuição presente; cada leitura tem as 7 Regiões de Saúde, soma fecha com o N declarado, IBGE = 5300108.
+- **Correção de registro** em `fontes_uf.json`: a fonte do DF é **semanal**, não "mensal (última sexta-feira do mês)" como anotado em 09/09 — o texto mensal na página é resíduo de 2022. A confusão vinha de a página ser truncada pela busca automática antes do painel de 2026; navegador real mostrou 34 informes semanais em 2026.
+- **Catálogo:** `chik` passa de *candidato* a *coletado*; `dengue` ganha a SES-DF como fonte (ao lado de InfoDengue e SES-MS).
+- **Defensivo:** recusa (e declara lacuna) se faltar região ou se a soma das regiões não fechar com o N — 11 autotestes contra o texto real, 2 deles de recusa. Fica FORA do escopo: série histórica (o informe traz só o acumulado do ano; a série é construída daqui em diante).
+
 ## Portão 6 · São Gonçalo/RJ resolvido com o documento real (correção sobre a entrada anterior) · 10/09/2026
 
 Nenhuma alteração de método; nenhum número muda. Classe **dado** (PROTOCOLO §3.2).
