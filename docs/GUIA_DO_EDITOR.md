@@ -65,13 +65,36 @@ estados por região; dias 4–7 diários municipais em lotes. O que você faz:
 1. Cada manhã, a mesma olhada da rotina de segunda (abaixo): cor da bolinha.
 2. Com bolinha amarela, haverá **pistas** para julgar (documentos que o robô
    achou mas que só um humano pode promover a registro) — abra uma conversa
-   e diga "há pistas para julgar".
+   e diga "há pistas para julgar" — a sessão roda por botões (ver §4a-quater).
 3. O fim da semana intensiva é automático: a data está numa variável do
    repositório (`INTENSIVO_ATE`); depois dela o robô volta ao ritmo semanal
    sozinho. Se quiser esticar ou encurtar, diga ao Claude a data nova.
 4. Quatro fontes nascem marcadas "a verificar" (S2iD, MUNIC, ICM e a cobertura
    dos diários estaduais): o robô tenta, e o que não confirmar aparece como
    lacuna declarada — nunca como dado inventado.
+
+
+## 4a-quater. Sessão semanal de julgamento de pistas (10–15 minutos, por botões)
+
+Decisão da editoria em 10/09/2026. Uma vez por semana, no dia que preferir:
+
+1. Abra uma conversa no projeto e diga **"pistas"** (ou "há pistas para julgar" —
+   qualquer variação serve). Esse é o único gesto manual da semana.
+2. O Claude confere sozinho o estado do repositório, monta o lote (10–15 pistas,
+   deduplicado, sem as C10) e apresenta **uma pista por vez**: município, data,
+   trecho com os termos destacados, link do diário e o **documento inteiro já
+   lido** (a evidência integral fica preservada no repositório desde 10/09).
+3. Você responde **clicando num botão** — as cinco opções da rotina:
+   `registro` · `resposta` · `descartar` · `pista` · `buscar`.
+   Em caso de `registro`, um segundo clique escolhe a categoria.
+4. Ao fim do lote, o Claude aplica tudo sem perguntar: `--dry-run` registrado,
+   aplicação, recálculo, portões, PR, merge com Action verde, CHANGELOG — e o
+   `julgamento_humano` de cada pista fica gravado com seu nome e a decisão.
+5. Regras que não mudam: dúvida = `pista`; nota só muda com efeito declarado;
+   as 12 pistas C10 são sempre um lote separado, nunca misturado.
+
+A rotina completa (para o Claude) está em
+`robo-registro/notas/TRANSFERENCIA_ROTINA_JULGAMENTO_DE_PISTAS.md`.
 
 ## 4. Rotina de segunda-feira (5 minutos)
 
