@@ -32,6 +32,7 @@ Contrato da API validado ao vivo em 27/08/2026 (schema: total_gazettes,
 gazettes[{territory_id,date,url,territory_name,state_code,excerpts,edition,txt_url}]).
 """
 import json, pathlib, sys, time, urllib.parse, urllib.request
+from coletores_base import preservar_evidencia, preservar_texto_integral
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "pistas_querido_diario.json"
@@ -55,6 +56,20 @@ def _get(params):
 
 
 UFS_LAC = ["AL", "AP", "DF", "PA", "PB", "RN", "SE"]  # estados sem plano estadual nominal
+
+
+
+def _preservar_achado(g):
+    """Evidência por achado (10/09/2026): grava o registro da edição retornado pela API
+    (.json) e o texto integral (.txt) sob um hash próprio; devolve o hash para a pista.
+    Best-effort: falha vira None e a pista segue valendo pelo excerto."""
+    try:
+        bruto = json.dumps(g, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        h = preservar_evidencia(bruto, g.get("url") or g.get("txt_url") or "", "json", "consultar_querido_diario")
+        preservar_texto_integral(h, [g], "consultar_querido_diario")
+        return h
+    except Exception:  # noqa: BLE001
+        return None
 
 
 def _lote(territorios, termo):
@@ -84,6 +99,7 @@ def varrer_uf(uf, ref, pistas):
                            "termo": termo, "data_diario": g.get("date"),
                            "edicao": g.get("edition"), "url_pdf": g.get("url"),
                            "excerto": (g.get("excerpts") or [""])[0][:400],
+                           "hash_evidencia": _preservar_achado(g),
                            "status_triagem": "pendente_julgamento_humano"})
 
 
@@ -113,6 +129,7 @@ def rodar(alvos=None, ufs=None):
                                "termo": termo, "data_diario": g.get("date"),
                                "edicao": g.get("edition"), "url_pdf": g.get("url"),
                                "excerto": (g.get("excerpts") or [""])[0][:400],
+                               "hash_evidencia": _preservar_achado(g),
                                "status_triagem": "pendente_julgamento_humano"})
     for uf in (ufs if ufs is not None else UFS_LAC):
         varrer_uf(uf, ref, pistas)
