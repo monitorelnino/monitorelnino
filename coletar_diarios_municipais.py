@@ -23,8 +23,9 @@ USO
 """
 import json, math, re, sys, time, urllib.parse, urllib.error
 from datetime import date
-from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
-                            marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste)
+from coletores_base import (buscar, preservar_evidencia, preservar_texto_integral, log_busca,
+                            registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar,
+                            rodar_autoteste)
 from classificar_pista_civil import triagem_completa
 
 FONTE_QD = "Querido Diário (diário municipal)"
@@ -194,6 +195,9 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
                           n_resultados=0, resultados="Querido Diário: 0 resultados e teste de cobertura sem resposta")
             n_ok += 1; continue
         h = preservar_evidencia(bruto, url, "json", "coletar_diarios_municipais")
+        # 10/09/2026: além do excerto, o texto integral da edição — o julgamento humano lê o
+        # documento inteiro offline, sem depender de portal que bloqueie acesso depois.
+        preservar_texto_integral(h, (dados or {}).get("gazettes", []), "coletar_diarios_municipais")
         decretos, pist = classificar_trechos(parse_qd(dados))
         for d in decretos:
             dbr = iso_para_br(d["data"]); chave = (ref["nome"], ref["uf"], dbr, d["tipo"])

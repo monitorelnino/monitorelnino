@@ -9,6 +9,27 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 10/09/2026 — Evidência passa a incluir o texto integral da edição (infraestrutura)
+
+- **O que muda:** toda pista de diário municipal (Querido Diário) passa a preservar,
+  além do excerto da API, o **texto integral da edição** em `evidencias/<hash>.txt`,
+  baixado no momento da coleta — o único momento garantidamente sem bloqueio de
+  acesso (portais municipais podem recusar acesso automatizado depois; caso real:
+  Ouro Branco/AL, 10/09). Novo `preservar_texto_integral()` em `coletores_base.py`,
+  chamado por `coletar_diarios_municipais.py`.
+- **Backfill:** `scripts/preservar_textos_integrais.py` + Action manual
+  "Preservar textos integrais das evidências" completam as evidências já na fila
+  (32 edições únicas cobrindo as 78 pistas de diário). Idempotente; só toca
+  `evidencias/` e `data/evidencias.json`.
+- **Caderno de pistas:** `scripts/caderno_de_pistas.py` entra no repositório
+  (antes só na rotina de transferência), com três correções: mostra o nome real do
+  arquivo de evidência (não assume `.html`), sinaliza se o texto integral existe,
+  deduplica achados relogados (mesmo `hash_evidencia`) e exclui pistas C10 por
+  padrão (§5 da rotina de julgamento — só entram com `--origem` explícito).
+- **O que NÃO muda:** nenhuma pista, registro, categoria ou nota. A regra de prova
+  (documento primário lido por humano) segue idêntica; isto só garante que o
+  documento esteja sempre ao alcance de quem julga.
+
 ## v3.1.2 — paleta semântica única de figuras e mapas · 09/09/2026 · em publicação (PR)
 
 Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria (09/09/2026): "figuras e mapas em páginas distintas têm esquemas de cores distintas" — reconferir e corrigir.
