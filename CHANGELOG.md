@@ -13,6 +13,16 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria (09/09/2026): "figuras e mapas em páginas distintas têm esquemas de cores distintas" — reconferir e corrigir.
 
+### Sala Nacional de Emergências Climáticas em Saúde localizada (09/09/2026)
+- Preenchida a lacuna do §36: a peça de "governança federativa" do Plano El Niño é a **Portaria
+  GM/MS nº 6.918/2025**, que institui a Sala de Situação Nacional de Emergências Climáticas em
+  Saúde (COBRADE, DVSAT/SVSA, relatórios mensais, transferência ao DEMSP em calamidade de larga
+  escala). Página institucional lida; DOU original não encontrado, só espelho de terceiro (registrado
+  como tal, nunca como a fonte oficial).
+- Dois "painéis de indicadores" da própria página do MS registrados com honestidade sobre o que são:
+  **Seca na Amazônia** (Fiocruz) é agregador de links, não fonte própria; **VigiAr** é Power BI —
+  mesma classe de obstáculo do Painel de Arboviroses (§9): não é fonte de máquina.
+
 ### O que foi encontrado (11 páginas, legendas lidas num Chromium real)
 - **Faixas do MARÉ**: "Consolidado" era Musgo na pílula da inicial e Sintético no mapa de prontidão sanitária (Saúde); os selos em `selos/` ainda usavam a paleta anterior à v3 (`#C69B72`, `#6B6A44`, `#35566B`).
 - **Status do instrumento estadual**: "Vigente, sem menção ao ciclo" era Âmbar na Defesa civil e Mineral na Saúde; "Em elaboração" e "Não localizado" alternavam entre Âmbar/Argila e Argila/Cinza conforme a página.

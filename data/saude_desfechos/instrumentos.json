@@ -52,6 +52,36 @@
    "ano": 2019,
    "status": "citado no plano de seca (p. 31); a localizar (relevante para o Sul no ciclo)",
    "url": null
+  },
+  {
+   "id": "ms_portaria_6918_2025",
+   "titulo": "Portaria GM/MS nº 6.918, de 7 de maio de 2025 — institui a Sala de Situação Nacional de Emergências Climáticas em Saúde",
+   "orgao": "Ministério da Saúde · SVSA · DVSAT",
+   "ano": 2025,
+   "url": "https://www.gov.br/saude/pt-br/composicao/svsa/resposta-a-emergencias/sala-nacional-de-emergencias-climaticas-em-saude/sala-nacional-de-emergencias-climaticas-em-saude",
+   "url_dou_espelho": "https://cdn.medblog.estrategiaeducacional.com.br/wp-content/uploads/2025/05/Portaria-GM_MS-No-6.918-DE-7-DE-maio-DE-2025-Portaria-GM_MS-No-6.918-DE-7-DE-maio-DE-2025-DOU-Imprensa-Nacional.pdf",
+   "lido_em": "09/09/2026",
+   "status": "localizado — página institucional lida; DOU original a conferir (só espelho de terceiro localizado)",
+   "papel": "É o instrumento da 'governança federativa' do eixo 1 do Plano El Niño 2026-2027 (a peça que faltava). Base na COBRADE; coordenação pelo DVSAT, com transferência ao DEMSP em calamidade de larga escala ou indicadores críticos; reuniões semanais; relatórios técnicos MENSAIS à Secretaria-Executiva, com recomendação de repasse de recursos aos entes.",
+   "trechos": {
+    "relatorio_mensal": "Monitoramento e avaliação: Encaminhar relatórios técnicos mensais à Secretaria-Executiva do Ministério da Saúde e propor ações de mitigação, inclusive com recomendação de repasse de recursos aos entes federativos.",
+    "transferencia_demsp": "Em situações de calamidade pública em larga escala ou indicadores epidemiológicos/ambientais críticos, o gerenciamento é transferido para o Departamento de Emergências em Saúde Pública, mantendo-se a coordenação conjunta."
+   },
+   "composicao": [
+    "SVSA",
+    "Secretaria Executiva",
+    "APS",
+    "SAES",
+    "SECTICS",
+    "SGTES",
+    "SEIDIGI",
+    "SESAI",
+    "Fiocruz",
+    "Funasa",
+    "CNS",
+    "Conass",
+    "Conasems"
+   ]
   }
  ],
  "estaduais": {
@@ -218,5 +248,23 @@
    "url": null,
    "data": null
   }
- }
+ },
+ "paineis_federais": [
+  {
+   "id": "seca_amazonia_obs",
+   "nome": "Seca na Amazônia — Observatório Clima e Saúde (ICICT/Fiocruz)",
+   "url": "https://rfsaldanha.github.io/seca_amazonia/",
+   "tipo": "agregador de links (GOES/NOAA, Copernicus CAMS, S2iD, SGB, BRAMS/INPE)",
+   "maquina": false,
+   "nota": "Não é fonte própria — reúne visualizações de fontes que o Monitor já usa (S2iD) ou pode usar (SGB, CAMS); útil como referência, não como coletor."
+  },
+  {
+   "id": "vigiar",
+   "nome": "VigiAr — Poluição Atmosférica e Saúde Humana",
+   "url": "https://app.powerbi.com/view?r=eyJrIjoiNmRhODQwNzItNThlOS00ZmQ4LWJjZmItZDYxOTNhOTRmYmFhIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9",
+   "tipo": "Power BI incorporado",
+   "maquina": false,
+   "nota": "Mesma classe de problema já registrada no §9 para o Painel de Arboviroses do MS: Power BI não é fonte de máquina. Candidato à leitura periódica manual (captura de tela com data) se a editoria priorizar qualidade do ar."
+  }
+ ]
 }
