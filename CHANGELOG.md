@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## Portão 6 · São Gonçalo/RJ resolvido com o documento real (correção sobre a entrada anterior) · 10/09/2026
+
+Nenhuma alteração de método; nenhum número muda. Classe **dado** (PROTOCOLO §3.2).
+
+A entrada anterior deste CHANGELOG (mesma data) registrava São Gonçalo/RJ como bloqueado por `robots.txt`, com um pedido de LAI preparado como saída. Antes de enviá-lo, a editoria pediu para não usar bloqueio de robô como motivo do pedido — a LAI não exige justificativa, e citar isso seria enganoso se o documento já estivesse público. Verificação humana confirmou: **o PDF do PLAMCON estava, e sempre esteve, disponível para download direto** em `pmsg.rj.gov.br` (domínio distinto do bloqueado); a página descritiva em `saogoncalo.rj.gov.br` só não linkava para lá de forma óbvia.
+
+- **Correção.** Localizado e preservado o PLAMCON 2025/2026 completo (aprovado 16/12/2025, válido até 30/11/2026), navegação real via extensão Claude para Chrome — não fetch automatizado. `url`, `documento`, `data`, `fonte` e `hash_evidencia` atualizados no registro; texto de 107 páginas preservado em `evidencias/`.
+- **Sem LAI enviada.** O rascunho preparado para a Ouvidoria de São Gonçalo foi descartado sem envio.
+- **Lição registrada:** antes de qualquer pedido de LAI motivado por "acesso automatizado bloqueado", verificar por navegação humana real se o documento já está público — um bloqueio ao robô não é o mesmo que o documento estar indisponível ao cidadão, e a LAI é para o segundo caso.
+
 ## Portão 6 · evidência de 3 registros investigada (§2.5 do redesenho, decisão da editoria 10/09/2026) · em publicação (PR)
 
 Nenhuma alteração de método; nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). A editoria autorizou duas saídas para os 3 registros sem evidência preservada apontados no portão 6 (bloqueante a partir de 15/09/2026): localizar o documento em outra fonte oficial, ou gravar snapshot no Wayback. Resultado, registro a registro:
