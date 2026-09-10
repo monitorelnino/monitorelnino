@@ -91,6 +91,15 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                 chaves2026 = sorted(k for k in s2 if k.startswith(str(_sj.get("ano_corrente", 2026))))
                 for k in chaves2026[-se:]:
                     if s2.get(k) is not None: erros.append(f"(p) srag_serie {loc}: SE incompleta {k} preenchida na série consolidada")
+        _msd = RAIZ / "data" / "saude_desfechos" / "ses_ms_dengue.json"
+        if _msd.exists():
+            if re.search(r"ses_ms_dengue\.json", motor): erros.append("(q) recalcular_mare.py referencia ses_ms_dengue.json (proibido)")
+            _mj = json.load(open(_msd, encoding="utf-8"))
+            if "não atribui casos ao El Niño" not in _mj.get("_governanca", ""): erros.append("(q) ses_ms_dengue.json sem a ressalva de não-atribuição")
+            for _se, _snap in (_mj.get("serie") or {}).items():
+                if len(_snap.get("municipios") or {}) < 70: erros.append(f"(q) ses_ms_dengue {_se}: menos de 70 municípios — não deveria ter sido publicado")
+                for _ibge in (_snap.get("municipios") or {}):
+                    if not re.match(r"^\d{7}$", _ibge): erros.append(f"(q) ses_ms_dengue {_se}: código IBGE inválido {_ibge}")
         if (_sd / "gatilhos.json").exists():
             for g in json.load(open(_sd / "gatilhos.json", encoding="utf-8")).get("gatilhos", []):
                 if g.get("status_monitor") not in ("computavel", "computavel_parcial", "leitura_humana", "sem_coleta", "nao_publico"): erros.append(f"(o) gatilho com status fora do vocabulário: {g.get('id')}")

@@ -136,7 +136,12 @@ def construir():
                             leftMargin=18 * mm, rightMargin=18 * mm,
                             topMargin=16 * mm, bottomMargin=22 * mm,
                             title=f"Monitor El Niño Brasil — Metodologia {versao}",
-                            author="Futura Evidence Lab · Monitor El Niño Brasil")
+                            author="Futura Evidence Lab · Monitor El Niño Brasil",
+                            # 10/09/2026: build reprodutível de verdade — pageCompression=0 tira a dependência da
+                            # versão do zlib do sistema (comprimir o mesmo conteúdo pode gerar bytes diferentes
+                            # em zlib diferentes, mesmo com SOURCE_DATE_EPOCH igual); invariant=1 fixa o
+                            # fingerprint/ID do PDF em vez de deixá-lo depender da ordem de montagem interna.
+                            pageCompression=0, invariant=1)
     n_blocos = len(E)  # doc.build consome a lista — capturar antes
     doc.build(E, onFirstPage=rodape, onLaterPages=rodape)
     print(f"METODOLOGIA.pdf gerado ({versao}) — renderizado de METODOLOGIA.md, {n_blocos} blocos")
