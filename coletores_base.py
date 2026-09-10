@@ -194,6 +194,45 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
     return h
 
 
+def preservar_texto_integral(h: str, gazettes, origem: str):
+    """Baixa o texto integral (txt_url) das edições cuja resposta da API já foi preservada
+    sob o hash h, gravando em evidencias/<h>.txt (decisão editorial de 10/09/2026: o excerto
+    localiza a menção, mas quem julga precisa do documento inteiro, legível offline — a coleta
+    é o único momento garantidamente sem bloqueio de acesso). Idempotente e best-effort:
+    falha de rede não derruba a coleta; a pista continua valendo com o excerto (regra 1)."""
+    destino = EVID / f"{h}.txt"
+    if destino.exists():
+        return str(destino.relative_to(RAIZ))
+    partes, total = [], 0
+    for g in (gazettes or []):
+        u = g.get("txt_url") or ""
+        if not u:
+            continue
+        try:
+            corpo = buscar(u, timeout=60)
+        except Exception as e:  # noqa: BLE001 — best effort; a falha fica declarada no arquivo
+            partes.append(f"=== {g.get('date', '')} · {u} ===\n[texto integral indisponível nesta coleta: {type(e).__name__}]")
+            continue
+        texto = corpo.decode("utf-8", errors="replace")
+        total += len(corpo)
+        if total > LIMITE_EVIDENCIA:
+            corte = max(0, len(texto) - (total - LIMITE_EVIDENCIA))
+            partes.append(f"=== {g.get('date', '')} · {u} ===\n{texto[:corte]}\n[truncado no limite de evidência de {LIMITE_EVIDENCIA} bytes]")
+            break
+        partes.append(f"=== {g.get('date', '')} · {u} ===\n{texto}")
+    if not partes:
+        return None
+    EVID.mkdir(exist_ok=True)
+    destino.write_text("\n\n".join(partes) + "\n", encoding="utf-8")
+    idx = ler("evidencias.json", {"itens": {}})
+    if h in idx.get("itens", {}):
+        idx["itens"][h]["texto_integral"] = str(destino.relative_to(RAIZ))
+        idx["itens"][h]["texto_integral_em"] = hoje()
+        idx["itens"][h]["texto_integral_origem"] = origem
+        gravar("evidencias.json", idx)
+    return str(destino.relative_to(RAIZ))
+
+
 def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: str = "",
               uf=None, municipio=None, ibge=None, nivel=None, n_resultados=None,
               fonte_suspensa_defeso: bool = False, hash_evidencia=None):
