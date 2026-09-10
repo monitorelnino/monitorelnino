@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## METODOLOGIA §37 (ex-§36) — fundamento jurídico da publicação, ADPF 743 e padrão de conteúdo do ciclo · 07/09/2026, rebaseado e renumerado em 10/09/2026 (em revisão editorial, ramo `edicao/2026-09-07-metodologia-adpf743`)
+
+Nenhuma alteração de método (§12.5); nenhum número muda. Classe **conteúdo de metodologia** — decisão editorial, não correção mecânica.
+
+- **Renumeração.** Este PR nasceu em 07/09/2026 escrevendo `## 36. Por que o objeto é a publicação...`, mas o número §36 foi ocupado depois, direto na `main`, pela estrutura de desfechos em saúde (PR mesclado em 09/09/2026, "Estrutura de informação dos desfechos em saúde: instrumentos, catálogo, gatilhos e fontes"). Ao rebasear este ramo sobre a `main` de 10/09/2026, o texto original foi preservado integralmente e renumerado para **§37**; nenhuma outra alteração de conteúdo em relação ao ramo original, além da que já estava no próprio ramo (commit de 07/09 removendo a declaração de "documento não lido" para o plano de SC).
+- **Conteúdo (inalterado desde 07/09/2026).** Fundamento jurídico de medir instrumentos publicados (CF art. 37; Lei 12.608/2012; Lei 12.527/2011); ADPF 743 (despacho de 25/05/2026, dez estados intimados); Nota Técnica CNM nº 12/2026 como checklist de leitura de conteúdo (`conteudo_ciclo`, peso zero); Decreto SC nº 1.530/2026 como exemplo de limiar observacional.
+- **Pendente da editoria antes do merge** (§17 do redesenho v3.1, decisão dela): esta é seção de metodologia com fundamentação jurídica — não mesclada; ramo rebaseado, portões verdes, pronto para leitura.
+
 ## Correção · carimbo `gerado_em` dos derivados após a rodada automática · 10/09/2026
 
 Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCOLO §3.2). Rotina diária: portão 12 (`verificar_derivados.sh`) ficava vermelho na `main` a cada rodada que avançava `data/meta.json.atualizado_em`, exigindo regeneração manual (como em `dfc7940`, `229d28c`).
