@@ -334,7 +334,9 @@ def construir():
                             leftMargin=18 * mm, rightMargin=18 * mm,
                             topMargin=16 * mm, bottomMargin=22 * mm,
                             title="MARÉ v3.1 — Documentação do Índice",
-                            author="Futura Evidence Lab · Monitor El Niño Brasil")
+                            author="Futura Evidence Lab · Monitor El Niño Brasil",
+                            # 10/09/2026: build reprodutível de verdade — ver a mesma nota em gerar_pdf_metodologia.py
+                            pageCompression=0, invariant=1)
     doc.build(E, onFirstPage=rodape, onLaterPages=rodape)
     print(f"MARE_Indice_Documentacao.pdf gerado · média nacional {R['media']:.1f} · corte {meta['corte']}")
 
