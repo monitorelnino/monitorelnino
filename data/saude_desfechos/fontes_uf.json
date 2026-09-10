@@ -172,10 +172,10 @@
    "instrumento_verificado": "Plano de Enfrentamento das Arboviroses 2025/2026 (divulgado em 22/01/2025; capítulo específico de Oropouche)",
    "url_instrumento": "https://portal.saude.pe.gov.br/pernambuco-divulga-plano-de-enfrentamento-das-arboviroses-2025-2026/",
    "boletim_epidemiologico": "https://portalcievs.saude.pe.gov.br/noticias/INFORMES/arbovirose",
-   "painel": null,
+   "painel": "https://app.powerbi.com/view?r=eyJrIjoiNzAyNzJlNjItM2JkYy00ZjRjLTk4OWEtZjE3NTY2OWQzZjQzIiwidCI6ImQ1ZTU0MGZmLTkzNzAtNGNhMi04YmVmLWQwMzcyMWQxM2MwNSJ9",
    "cievs": null,
-   "periodicidade": "por faixa de SE (ex.: SE 01 a 10)",
-   "status": "Portal CIEVS-PE dedicado; informe com tabelas e gráficos por SE, PDF; confirmado até SE10/2026",
+   "periodicidade": "semanal (informe acumulado 'SE 01 a NN'; nº 34 publicado 03/09/2026, nº 35 noticiado em 09/09)",
+   "status": "COLETOR ATIVO (TOTAIS ESTADUAIS) — informe semanal de arboviroses do CIEVS-PE (coletar_boletim_pe_arboviroses.py), lido em 10/09/2026 na íntegra (SE 01 a 34/2026: dengue 22.281 prováveis / 10.848 confirmados / 649 graves, chik 2.187, zika 104; 3 óbitos confirmados por arboviroses). LIMITAÇÃO: é PDF-infográfico e a Tabela 1 (por município) é IMAGEM — não lida por máquina; granularidade municipal só no painel Power BI (não automatizável). Série própria do Monitor a partir de agora.",
    "defeso": false
   },
   "PI": {

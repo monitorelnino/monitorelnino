@@ -9,6 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §36 · terceiro coletor estadual: arboviroses em PE (CIEVS-PE) — só totais estaduais, tabela municipal é imagem · 10/09/2026
+
+Nenhuma alteração de método (§12.5); nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). Peso zero; nunca lido pelo motor.
+
+- **Novo:** `coletar_boletim_pe_arboviroses.py` lê o Informe Epidemiológico semanal do CIEVS-PE (dengue, chikungunya, Zika; óbitos por arboviroses; LIRAa). Íntegra conferida no informe "SE 01 a 34" (captado 31/08, publicado 03/09/2026). Grava `data/saude_desfechos/ses_pe_arboviroses.json`; ligado em `atualizar.py` após o de DF.
+- **Limitação declarada (a primeira estrutural desta frente):** o informe é PDF-infográfico e a **Tabela 1 por município é imagem** — não lida por máquina. O coletor entrega **só totais estaduais**; a granularidade municipal de PE fica no painel Power BI, não automatizável. Registrado em `fontes_uf.json` e no campo `escopo` do arquivo de dados. O documento de transferência esperava "parecido com MS"; não é.
+- **Parser para infográfico:** página como unidade; só números adjacentes ao rótulo; escolha por identidade `notificados = prováveis + descartados` (fechou nos 3 agravos); recusa se não fechar de forma única. Rótulos sensíveis a maiúsculas (legendas de gráfico são minúsculas e enganavam a leitura).
+- **Portão (s)** em `verificar_saude.py`: motor não referencia; ressalva presente; `escopo = totais_estaduais`; identidade fecha em cada leitura; `confirmados ≤ prováveis`.
+- **Risco assumido e contido:** parser afinado contra a extração do `web_fetch`; o runner usa `pdfplumber`. Se a ordem interna diferir, o resultado é lacuna com amostra do texto extraído (diagnosticável na próxima sessão), nunca número mal associado. Primeira leitura real: próxima rodada da Action.
+- **Catálogo:** `dengue` e `chik` ganham o CIEVS-PE como fonte (totais estaduais); não há id próprio para Zika no catálogo (fica dentro de arboviroses).
+
 ## §36 · segundo coletor estadual de desfechos: arboviroses no DF (SES-DF), com correção de registro · 10/09/2026
 
 Nenhuma alteração de método (§12.5); nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). Peso zero; nunca lido pelo motor.
