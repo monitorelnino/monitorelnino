@@ -107,6 +107,7 @@ def main():
     rodar([sys.executable, "coletar_desfechos_saude.py"])               # 07/09/2026 (§8): desfechos — InfoDengue 2019–2026 para o painel; peso zero
     rodar([sys.executable, "coletar_srag_gripe.py"])                      # 09/09/2026 (§36): SRAG/SG nacional e por UF, InfoGripe; peso zero
     rodar([sys.executable, "coletar_boletim_ms_dengue.py"])           # 10/09/2026 (§36): dengue por município, boletim semanal da SES-MS; peso zero
+    rodar([sys.executable, "coletar_boletim_df_arboviroses.py"])      # 10/09/2026 (§36): arboviroses por Região de Saúde, informe semanal da SES-DF; peso zero
     rodar([sys.executable, "preservar_evidencias.py", "--ler", "--limite", "40"])   # 07/09/2026 (§10.1): texto por página dos PDFs de planos
     rodar([sys.executable, "classificar_saude_no_plano.py"])            # 07/09/2026 (§10.1): leitura automática de saúde no plano → fila R7
     rodar([sys.executable, "gerar_monitor_saude.py"])                   # 05/09/2026: Monitor Saúde v0.1 (§31), derivado da camada de saúde; peso zero
