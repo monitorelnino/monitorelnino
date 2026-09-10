@@ -7,7 +7,7 @@
 # evidencias/ (cópias de documentos-fonte, indexadas por hash em data/evidencias.json), node_modules/ e arquivos de imagem. Tudo o mais versionado está selado (AUD-09).
 # (ferramenta de sessão — inventário em docs/AUDITORIA_CODIGO.md §2). Conferência: sha256sum -c
 e7b36936250d82483b3277c3bff749a3d98ef7f5092efbb5b5943b1e11ada877  .env.example
-7ca369b3d348c50b1942b88572eaa83b9273dff8a99714595d1efd1bbecb7de9  .github/workflows/atualizar.yml
+73ff57dda032bd5088188658c1d895516adc3ab18ec6458bbfc2cb35f97f8850  .github/workflows/atualizar.yml
 139ec8be5de3a05c02f0595cc0f42874de448a452db9e6b70b33d870bbfc34df  .github/workflows/diagnostico_sinais.yml
 f4bcec5d09fd6bb4378bfc4b741d479a5d520685af9ce0eecb26cc831b2abe8e  .github/workflows/portoes.yml
 82bfc91cb68618d794929f0d631e7742ca4520344b164982a95ebae2d90b9869  .github/workflows/preservar_evidencias.yml
@@ -204,7 +204,7 @@ d7784de3c0910495fcfc8ce3486744a6a10ef66957333051cb5c199d9aacc6f7  scripts/comita
 38cbb47d86348b6e60b33de875808ea20ccb46fa6f7a400ab10c0c2050e39902  scripts/diagnosticar_fontes_sinais.py
 16b55c59b62ee11ae3b826fd276007db15d84c524749dcf448d9532640d9c55b  scripts/diagnosticar_querido_diario.py
 2b6fd0ba1f11f7c64d24fefb2527c80ef6f98ebecf2b8ca358cf07eef9819f73  scripts/gerar_manifesto.py
-4cb2186daadfbe88e29b4920c070828c862e19015291cc5e97121333545ff2a2  scripts/preservar_textos_integrais.py
+4fa6c9b0015bf83f5fe8543bcdc715723b7501fef1619e0c7f74d195b84ef07c  scripts/preservar_textos_integrais.py
 2e4e0be00649df9d79d00ef63755408da7e8bd67e915fe4a2b3caad896b27361  scripts/sincronizar_single_file.py
 710dfcf5d7057037d7a8f951c35775769340f3761be79fc92513e9c1b9d118b2  scripts/sondar_enso_probabilidades.py
 3642a2498a164f53997ae73e2b584ad2fdb7862979dcd3fec9b9c2f38a742172  scripts/sondar_portal_transparencia.py

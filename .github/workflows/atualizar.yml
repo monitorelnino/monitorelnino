@@ -224,6 +224,12 @@ jobs:
           path: links_relatorio.txt
           retention-days: 30
 
+      - name: Completar evidências com texto integral (autocura, 10/09/2026)
+        # Pistas antigas sem .txt (inclusive evidência perdida, via recuperação por URL)
+        # são completadas a cada rodada; o commit abaixo já inclui evidencias/.
+        continue-on-error: true
+        run: python3 scripts/preservar_textos_integrais.py
+
       - name: Commit das alterações de dados
         if: github.event.inputs.ensaio != 'true'
         run: |

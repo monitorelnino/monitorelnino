@@ -36,8 +36,21 @@ def _recuperar_pela_url(h: str):
     url = item.get("url") or ""
     if not url:
         return None
+    # 10/09/2026: a API do QD atende em dois hosts equivalentes; tenta ambos, com retry —
+    # a primeira rodada da recuperação falhou numa única tentativa sem fallback.
+    alternativa = (url.replace("https://queridodiario.ok.org.br/api/", "https://api.queridodiario.ok.org.br/")
+                   if "queridodiario.ok.org.br/api/" in url
+                   else url.replace("https://api.queridodiario.ok.org.br/", "https://queridodiario.ok.org.br/api/"))
+    bruto = None
+    for tentativa, u in enumerate([url, url, alternativa, alternativa], 1):
+        try:
+            bruto = buscar(u, timeout=60)
+            break
+        except Exception:  # noqa: BLE001
+            time.sleep(3 * tentativa)
+    if bruto is None:
+        return None
     try:
-        bruto = buscar(url, timeout=60)
         dados = json.loads(bruto.decode("utf-8", errors="replace"))
     except Exception:  # noqa: BLE001
         return None
