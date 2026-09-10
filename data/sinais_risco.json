@@ -19,7 +19,7 @@
   },
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "09/09/2026",
+ "gerado_em": "10/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -39,7 +39,7 @@
    "url_publica": "https://monitordesecas.ana.gov.br/",
    "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "status": "coletado",
-   "consultado_em": "09/09/2026",
+   "consultado_em": "10/09/2026",
    "documento": "Monitor de Secas (ANA) — mapas até 2026-07-31",
    "detalhe": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "recurso": {
@@ -128,7 +128,7 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
    "papel": "Alertas vigentes emitidos aos municípios monitorados.",
    "status": "coletado",
-   "consultado_em": "09/09/2026",
+   "consultado_em": "10/09/2026",
    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
    "detalhe": "Alertas vigentes emitidos aos municípios monitorados."
   },
@@ -139,7 +139,7 @@
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
-   "consultado_em": "09/09/2026",
+   "consultado_em": "10/09/2026",
    "documento": "ONI v5, último trimestre JJA/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
@@ -1525,7 +1525,18 @@
     "documento": "Focos do dia — focos_diario_br_20260909.csv",
     "consultado_em": "09/09/2026"
    },
-   "alertas_cemaden": null
+   "alertas_cemaden": {
+    "total": 1,
+    "niveis": {
+     "Moderado": 1
+    },
+    "municipios": [
+     "XANXERÊ"
+    ],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "10/09/2026"
+   }
   },
   "SE": {
    "risco_projetado": {
