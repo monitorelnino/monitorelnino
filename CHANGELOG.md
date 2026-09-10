@@ -13,6 +13,19 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria (09/09/2026): "figuras e mapas em páginas distintas têm esquemas de cores distintas" — reconferir e corrigir.
 
+### Varredura das 26 portarias estaduais restantes (10/09/2026)
+- **Três instrumentos novos localizados, com data e número onde existe:** RJ (Comitê Estadual +
+  Sala de Situação do El Niño, decreto de 03/07/2026, com câmara técnica de Saúde) e SC (Decreto
+  nº 1.530/2026, "estado de alerta climático", com gatilhos numéricos que citam a saúde) — ambos
+  liderados pela Defesa Civil, não pela Secretaria de Saúde. MT permanece o único liderado pela
+  própria SES. `data/saude_desfechos/instrumentos.json`: 3 de 27 estaduais localizados.
+- Nenhum instrumento novo achado para os outros 23 estados apesar da busca; para ES, registrado
+  reforço operacional sem decreto/portaria nova (tentativa documentada, não achado).
+- **Trilha nova e distinta registrada:** `planos_adaptasus` — status dos 27 Planos Estaduais de
+  Adaptação do Setor Saúde às Mudanças Climáticas (AdaptaSUS, medida de médio prazo, não o ciclo
+  2026/2027): BA/PA/PI concluído · MG/MA/RJ/MS em elaboração · demais 20 em fase inicial — fonte
+  única (declaração ministerial na COP30, 30/06/2026), a confirmar estado a estado.
+
 ### Sala Nacional de Emergências Climáticas em Saúde localizada (09/09/2026)
 - Preenchida a lacuna do §36: a peça de "governança federativa" do Plano El Niño é a **Portaria
   GM/MS nº 6.918/2025**, que institui a Sala de Situação Nacional de Emergências Climáticas em
