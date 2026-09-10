@@ -128,9 +128,9 @@
    "data": null
   },
   "ES": {
-   "status": "a localizar",
+   "status": "a localizar — busca de 10/09/2026 achou reforço operacional da Defesa Civil (sem decreto/portaria nova nomeada) via SEAMA/Defesa Civil-ES",
    "instrumento": null,
-   "url": null,
+   "url": "https://seama.es.gov.br/governo-do-estado-reforca-acoes-preventivas-e-monitora-cenario-do-el-nino-2026-2027-no-espirito-santo",
    "data": null
   },
   "GO": {
@@ -195,10 +195,12 @@
    "data": null
   },
   "RJ": {
-   "status": "a localizar",
-   "instrumento": null,
-   "url": null,
-   "data": null
+   "status": "localizado por notícia — decreto de 03/07/2026; número do decreto e DOERJ original não conferidos (só matérias oficiais do governo, replicadas pela imprensa)",
+   "instrumento": "Comitê Estadual de Enfrentamento aos Efeitos do El Niño + Sala de Situação do El Niño (decreto assinado em 03/07/2026 pelo governador em exercício, desembargador Ricardo Couto)",
+   "url": "https://www.acessa.com/noticias/2026/07/333253-rio-de-janeiro-cria-comite-para-enfrentar-efeitos-do-el-nino-no-estado.html",
+   "data": "03/07/2026",
+   "detalhe": "Coordenado pela Secretaria de Defesa Civil; integra o Siepdec; 18 órgãos e 4 câmaras técnicas permanentes (Defesa Civil; Saúde; Ambiente e Sustentabilidade; Agricultura/Pecuária/Pesca/Abastecimento e Desenvolvimento do Interior). A Sala de Situação do El Niño produz boletins técnicos e é consolidada pelo Núcleo Interinstitucional de Inteligência da Força Especializada da Sedec-RJ. Integra o programa estadual 'Antecipar e Reagir — Impactos do El Niño', lançado em 20/08/2026 na UERJ.",
+   "pendente": "número do decreto; publicação no DOERJ; atas ou boletins já emitidos pela Sala de Situação do El Niño; o que a Câmara Técnica de Saúde já produziu"
   },
   "RN": {
    "status": "a localizar",
@@ -225,10 +227,15 @@
    "data": null
   },
   "SC": {
-   "status": "a localizar",
-   "instrumento": null,
-   "url": null,
-   "data": null
+   "status": "localizado — decreto numerado e datado (18/05/2026); DOE original não conferido, só matérias oficiais da SDC-SC replicadas pela imprensa",
+   "instrumento": "Decreto nº 1.530, de 18 de maio de 2026 — institui o 'estado de alerta climático' em Santa Catarina",
+   "url": "https://www.defesacivil.sc.gov.br/2026/05/21/decreto-de-alerta-climatico-o-que-muda-na-pratica-para-santa-catarina/",
+   "data": "18/05/2026",
+   "detalhe": "Coordenado pela Secretaria de Estado da Proteção e Defesa Civil (SDC); convoca o Comitê Estadual de Proteção e Defesa Civil e o Comitê de Gestão de Crise; intensifica o monitoramento 24h; autoriza contratação preventiva; SDC reporta semanalmente ao governador. Estabelece pela primeira vez CRITÉRIOS NUMÉRICOS OBJETIVOS para decretar situação de emergência em até 24h — entre eles, 'funcionamento de unidade de saúde de referência regional' interrompido junto de outro serviço essencial em município com mais de 5 mil habitantes. Não é um instrumento liderado pela Secretaria de Saúde (é da Defesa Civil), mas nomeia a saúde como gatilho.",
+   "trechos": {
+    "gatilho_saude": "Interrupção de dois ou mais serviços essenciais em área com mais de 5 mil habitantes: fornecimento de energia elétrica por 48 horas; abastecimento de água potável por 24 horas; tráfego em estrada estadual ou federal que representa único acesso à cidade; funcionamento de unidade de saúde de referência regional [...]. Caso qualquer um desses gatilhos seja confirmado [...], o Governo do Estado deverá decretar situação de emergência em até 24 horas."
+   },
+   "pendente": "número de artigo exato; publicação no DOE-SC; se a Secretaria de Estado da Saúde tem instrumento próprio (Sala de Situação em Saúde) além deste decreto de Defesa Civil"
   },
   "SE": {
    "status": "a localizar",
@@ -266,5 +273,42 @@
    "maquina": false,
    "nota": "Mesma classe de problema já registrada no §9 para o Painel de Arboviroses do MS: Power BI não é fonte de máquina. Candidato à leitura periódica manual (captura de tela com data) se a editoria priorizar qualidade do ar."
   }
- ]
+ ],
+ "planos_adaptasus": {
+  "_governanca": "Status dos Planos Estaduais de Adaptação do Setor Saúde às Mudanças Climáticas — trilha distinta da Sala de Situação/Comitê: é o desdobramento estadual do AdaptaSUS (Plano Nacional de Adaptação do Setor Saúde às Mudanças Climáticas, apresentado na COP30; 27 metas, 93 ações até 2035, R$ 9,8 bi). Não confundir com a Sala de Situação Saúde e Clima (governança operacional do ciclo El Niño 2026/2027, registrada em 'estaduais'). Fonte única até agora — uma nota de imprensa relatando declaração ministerial, não um documento por estado; cada status pede confirmação estado a estado.",
+  "fonte": {
+   "url": "https://midiamax.com.br/cotidiano/2026/ms-elabora-plano-estadual-fortalecer-saude-diante-mudancas-climaticas-extremas/",
+   "data_da_declaracao": "30/06/2026",
+   "quem": "ministro da Saúde, Alexandre Padilha"
+  },
+  "status_por_uf": {
+   "AC": "fase_inicial",
+   "AL": "fase_inicial",
+   "AM": "fase_inicial",
+   "AP": "fase_inicial",
+   "BA": "concluido",
+   "CE": "fase_inicial",
+   "DF": "fase_inicial",
+   "ES": "fase_inicial",
+   "GO": "fase_inicial",
+   "MA": "em_elaboracao",
+   "MG": "em_elaboracao",
+   "MS": "em_elaboracao",
+   "MT": "fase_inicial",
+   "PA": "concluido",
+   "PB": "fase_inicial",
+   "PE": "fase_inicial",
+   "PI": "concluido",
+   "PR": "fase_inicial",
+   "RJ": "em_elaboracao",
+   "RN": "fase_inicial",
+   "RO": "fase_inicial",
+   "RR": "fase_inicial",
+   "RS": "fase_inicial",
+   "SC": "fase_inicial",
+   "SE": "fase_inicial",
+   "SP": "fase_inicial",
+   "TO": "fase_inicial"
+  }
+ }
 }
