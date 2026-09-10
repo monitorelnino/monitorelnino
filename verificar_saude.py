@@ -100,6 +100,23 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                 if len(_snap.get("municipios") or {}) < 70: erros.append(f"(q) ses_ms_dengue {_se}: menos de 70 municípios — não deveria ter sido publicado")
                 for _ibge in (_snap.get("municipios") or {}):
                     if not re.match(r"^\d{7}$", _ibge): erros.append(f"(q) ses_ms_dengue {_se}: código IBGE inválido {_ibge}")
+        _dfd = RAIZ / "data" / "saude_desfechos" / "ses_df_arboviroses.json"
+        if _dfd.exists():
+            # (r) 10/09/2026: DF é município-estado (IBGE 5300108) — granularidade por Região de Saúde (7 + Ignorado).
+            # Nunca lido pelo motor; ressalva presente; cada leitura tem as 7 regiões e a soma fecha com o N declarado.
+            if re.search(r"ses_df_arboviroses\.json", motor): erros.append("(r) recalcular_mare.py referencia ses_df_arboviroses.json (proibido)")
+            _dj = json.load(open(_dfd, encoding="utf-8"))
+            if "não atribui casos ao El Niño" not in _dj.get("_governanca", ""): erros.append("(r) ses_df_arboviroses.json sem a ressalva de não-atribuição")
+            _REG = {"Leste", "Sul", "Norte", "Oeste", "Sudoeste", "Centro-Sul", "Central"}
+            for _se, _snap in (_dj.get("serie") or {}).items():
+                if _snap.get("ibge") != "5300108": erros.append(f"(r) ses_df_arboviroses {_se}: IBGE do DF deve ser 5300108")
+                for _ag in ("dengue", "chikungunya"):
+                    _r = (_snap.get(_ag) or {}).get("regioes") or {}
+                    _pr = _r.get("por_regiao") or {}
+                    if set(_pr) != _REG: erros.append(f"(r) ses_df_arboviroses {_se} {_ag}: regiões ≠ as 7 Regiões de Saúde")
+                    _soma = sum(v.get("casos_provaveis", 0) for v in _pr.values()) + int(_r.get("ignorado") or 0)
+                    if _soma != _r.get("total_declarado"): erros.append(f"(r) ses_df_arboviroses {_se} {_ag}: soma das regiões ({_soma}) ≠ N declarado ({_r.get('total_declarado')}) — não deveria ter sido publicado")
+                    if _r.get("total_declarado") != (_snap.get(_ag) or {}).get("provaveis"): erros.append(f"(r) ses_df_arboviroses {_se} {_ag}: N da tabela ≠ card de prováveis")
         if (_sd / "gatilhos.json").exists():
             for g in json.load(open(_sd / "gatilhos.json", encoding="utf-8")).get("gatilhos", []):
                 if g.get("status_monitor") not in ("computavel", "computavel_parcial", "leitura_humana", "sem_coleta", "nao_publico"): erros.append(f"(o) gatilho com status fora do vocabulário: {g.get('id')}")
