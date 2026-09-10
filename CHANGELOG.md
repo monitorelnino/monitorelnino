@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## Correção · carimbo `gerado_em` dos derivados após a rodada automática · 10/09/2026
+
+Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCOLO §3.2). Rotina diária: portão 12 (`verificar_derivados.sh`) ficava vermelho na `main` a cada rodada que avançava `data/meta.json.atualizado_em`, exigindo regeneração manual (como em `dfc7940`, `229d28c`).
+
+- **Causa-raiz.** Em `atualizar.py`, `gerar_monitor_saude.py`, `gerar_resposta.py` e `gerar_contadores_financiamento.py` carimbam `gerado_em` com o `atualizado_em` de `data/meta.json` (data determinística, para o portão 12 reproduzir byte a byte), mas rodavam **antes** de `meta["atualizado_em"] = hoje` ser gravado. Toda rodada que avançava a data deixava esses derivados um dia atrás.
+- **Correção.** `atualizar.py` reexecuta os três geradores logo após gravar `data/meta.json` (idempotente: função pura dos dados da rodada; só o carimbo muda). PDFs e manifesto continuam selados depois, no workflow.
+- **Teste.** `bash scripts/verificar_derivados.sh` em árvore limpa não altera nenhum arquivo de dados — só o hash de `atualizar.py` no manifesto, refletindo esta mudança.
+
 ## 10/09/2026 — Texto integral em TODAS as buscas (extensão do PR #114)
 
 - A preservação do documento inteiro no momento da coleta, criada no PR #114 para o

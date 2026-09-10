@@ -185,6 +185,14 @@ def main():
         meta["corte"] = hoje
         print(f"\nTransferências alteradas → corte dos dados atualizado para {hoje}.")
     json.dump(meta, open(meta_p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    # 10/09/2026 (causa-raiz do portão 12 vermelho na main após cada rodada): os três geradores
+    # abaixo carimbam `gerado_em` com o `atualizado_em` de data/meta.json (data determinística),
+    # mas rodaram ANTES deste carimbo e ficavam um dia atrás. Reexecutá-los aqui é idempotente
+    # (função pura dos dados desta rodada, provada por verificar_derivados.sh --idempotencia);
+    # só o carimbo muda. O manifesto é selado depois, no workflow, após os PDFs.
+    rodar([sys.executable, "gerar_monitor_saude.py"], obrigatorio=True)
+    rodar([sys.executable, "gerar_resposta.py"], obrigatorio=True)
+    rodar([sys.executable, "gerar_contadores_financiamento.py"], obrigatorio=True)
     print(f"\n✓ Atualização concluída ({hoje}). Corte vigente: {meta['corte']}.")
 
 if __name__ == "__main__":
