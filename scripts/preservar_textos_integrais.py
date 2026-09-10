@@ -23,6 +23,28 @@ from coletores_base import EVID, preservar_texto_integral  # noqa: E402
 from coletores_base import RAIZ as _RAIZ, buscar, ler, gravar, hoje, sha256  # noqa: E402
 
 
+def _consulta_minima_pela_pista(h: str):
+    """Monta a menor consulta possível à API do QD a partir das pistas que carregam o hash:
+    territory_ids=<ibge> na data exata da edição. Devolve os bytes da resposta, ou None."""
+    try:
+        pistas = json.load(open(_RAIZ / "data" / "pistas_imprensa.json", encoding="utf-8"))["pistas"]
+        alvo = next((p for p in pistas if p.get("hash_evidencia") == h and p.get("ibge") and p.get("data")), None)
+        if not alvo:
+            return None
+        d, m_, a_ = alvo["data"].split("/")
+        dia = f"{a_}-{m_}-{d}"
+        for base in ("https://queridodiario.ok.org.br/api/gazettes",
+                     "https://api.queridodiario.ok.org.br/gazettes"):
+            u = f"{base}?territory_ids={str(alvo['ibge']).zfill(7)}&published_since={dia}&published_until={dia}&size=10"
+            try:
+                return buscar(u, timeout=60)
+            except Exception:  # noqa: BLE001
+                time.sleep(2)
+        return None
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def _recuperar_pela_url(h: str):
     """Evidência indexada mas sem arquivo no disco (ex.: cópia perdida antes do commit da
     rodada, caso Serra/ES de 03/09/2026): re-busca a URL original do índice.
@@ -48,6 +70,11 @@ def _recuperar_pela_url(h: str):
             break
         except Exception:  # noqa: BLE001
             time.sleep(3 * tentativa)
+    if bruto is None:
+        # Fallback final (10/09/2026, 2ª rodada): a consulta original pode ter expirado ou
+        # mudado de contrato; a EDIÇÃO é estável. Reconstrói uma consulta mínima pela
+        # própria pista (IBGE + data) e busca só aquele dia.
+        bruto = _consulta_minima_pela_pista(h)
     if bruto is None:
         return None
     try:
