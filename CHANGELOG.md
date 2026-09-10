@@ -70,6 +70,15 @@ não pontuados permanecem na versão corrente.
 
 Nenhuma alteração de método; nenhum número muda. Classe **design + código** (PROTOCOLO §3.2). Pedido da editoria (09/09/2026): "figuras e mapas em páginas distintas têm esquemas de cores distintas" — reconferir e corrigir.
 
+### Correção: PDFs deixam de depender da versão do zlib do ambiente (10/09/2026)
+- O portão de derivados falhou pela primeira vez nesta sessão — não por conteúdo, por
+  **infraestrutura**: `METODOLOGIA.pdf` e `MARE_Indice_Documentacao.pdf` saíam com hash diferente
+  no sandbox de edição e no runner do CI, mesmo com reportlab e pypdf idênticos nos dois. Causa
+  identificada: compressão interna (FlateDecode) sensível à versão do zlib do sistema.
+- Corrigido: `pageCompression=0` (sem depender do zlib do sistema; PDFs maiores, sem compactação)
+  e `invariant=1` (fingerprint interno fixo) em `gerar_pdf_metodologia.py` e `gerar_pdf_indice.py`.
+  Verificado por `--idempotencia` e três regenerações seguidas com hash estável.
+
 ### Coletor real: dengue por município a partir do boletim da SES-MS (10/09/2026)
 - **Primeira fonte estadual efetivamente coletada** (não só catalogada): `coletar_boletim_ms_dengue.py`
   (7 autotestes, validado contra o texto real do boletim de SE 30/2026) lê o boletim semanal da
