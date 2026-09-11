@@ -40,6 +40,22 @@ DEFASAGEM_ALERTA = 4  # acima disso, a lacuna deixa de ser "atraso normal" e vir
 RESSALVA = "O Monitor não atribui casos ao El Niño; dados da SES-MS (SINAN Online), extraídos do boletim semanal em PDF — dados parciais, sujeitos a alteração pelos municípios."
 
 
+def _texto_paginas(bruto: bytes) -> list:
+    """Texto por página. pdfplumber PRIMEIRO (11/09/2026): nestes PDFs-infográfico o pypdf extrai com espaço
+    entre caracteres ("1 1 . 2 4 1"), e nenhum padrão numérico casa; pdfplumber preserva o texto como os
+    parsers foram afinados. pypdf fica como reserva, para a leitura nunca depender de uma só biblioteca."""
+    try:
+        import io as _io, pdfplumber
+        with pdfplumber.open(_io.BytesIO(bruto)) as pdf:
+            pgs = [(pg.extract_text() or "") for pg in pdf.pages]
+        if sum(len(t) for t in pgs) > 200:
+            return pgs
+    except Exception:  # noqa: BLE001
+        pass
+    from preservar_evidencias import extrair_texto_por_pagina
+    return extrair_texto_por_pagina(bruto)
+
+
 def _hoje():
     import datetime as _dt, json as _js
     try:
@@ -141,8 +157,7 @@ def coletar() -> int:
         # 11/09/2026 (achado da rodada de 22h): pdfplumber NÃO está em requirements.txt — o coletor chegava
         # a localizar o PDF e morria com ModuleNotFoundError. A função canônica do projeto usa pypdf
         # (instalado) e só cai para pdfplumber se a extração vier vazia: funciona com ou sem o opcional.
-        from preservar_evidencias import extrair_texto_por_pagina
-        texto = "\n".join(extrair_texto_por_pagina(bruto)[:3])   # os dados-chave estão nas 3 primeiras páginas
+        texto = "\n".join(_texto_paginas(bruto)[:3])   # os dados-chave estão nas 3 primeiras páginas
     except Exception as e:  # noqa: BLE001
         registrar_lacuna(f"SES-MS boletim {pdf_url[:60]}", type(e).__name__, canal="site_estadual", camada=2, strings=[pdf_url]); print("boletim MS: falha ao ler o PDF — lacuna declarada"); return 0
     try:
