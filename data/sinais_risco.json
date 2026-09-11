@@ -19,7 +19,7 @@
   },
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "10/09/2026",
+ "gerado_em": "11/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -39,7 +39,7 @@
    "url_publica": "https://monitordesecas.ana.gov.br/",
    "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "status": "coletado",
-   "consultado_em": "10/09/2026",
+   "consultado_em": "11/09/2026",
    "documento": "Monitor de Secas (ANA) — mapas até 2026-07-31",
    "detalhe": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "recurso": {
@@ -106,7 +106,7 @@
    "url_publica": "https://alertas2.inmet.gov.br/",
    "papel": "Avisos vigentes por área, com grau e vigência declarados pelo INMET.",
    "status": "coletado",
-   "consultado_em": "09/09/2026",
+   "consultado_em": "11/09/2026",
    "documento": "Avisos ativos no momento da consulta",
    "detalhe": "Avisos vigentes por área, com grau e vigência declarados pelo INMET."
   },
@@ -117,8 +117,8 @@
    "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
-   "consultado_em": "09/09/2026",
-   "documento": "Focos do dia — focos_diario_br_20260909.csv",
+   "consultado_em": "11/09/2026",
+   "documento": "Focos do dia — focos_diario_br_20260911.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -128,7 +128,7 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
    "papel": "Alertas vigentes emitidos aos municípios monitorados.",
    "status": "coletado",
-   "consultado_em": "10/09/2026",
+   "consultado_em": "11/09/2026",
    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
    "detalhe": "Alertas vigentes emitidos aos municípios monitorados."
   },
@@ -139,7 +139,7 @@
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
-   "consultado_em": "10/09/2026",
+   "consultado_em": "11/09/2026",
    "documento": "ONI v5, último trimestre JJA/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
@@ -1022,10 +1022,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 38,
+    "focos_24h": 126,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1042,10 +1042,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 12,
+    "focos_24h": 5,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1062,10 +1062,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 871,
+    "focos_24h": 1050,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1082,10 +1082,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 127,
+    "focos_24h": 81,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1102,10 +1102,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 1633,
+    "focos_24h": 358,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1122,10 +1122,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 223,
+    "focos_24h": 15,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1182,10 +1182,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 70,
+    "focos_24h": 198,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1202,10 +1202,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 1276,
+    "focos_24h": 262,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1222,22 +1222,23 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 111,
+    "focos_24h": 62,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
+    "total": 2,
     "niveis": {
-     "Moderado": 1
+     "Moderado": 2
     },
     "municipios": [
-     "CARANGOLA"
+     "CAMANDUCAIA",
+     "POUSO ALEGRE"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "07/09/2026"
+    "consultado_em": "11/09/2026"
    }
   },
   "MS": {
@@ -1253,10 +1254,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 18,
+    "focos_24h": 111,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1273,10 +1274,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 279,
+    "focos_24h": 218,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1293,10 +1294,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 1544,
+    "focos_24h": 1001,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1313,10 +1314,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 51,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1333,10 +1334,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 67,
+    "focos_24h": 7,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": {
     "total": 3,
@@ -1366,10 +1367,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 809,
+    "focos_24h": 332,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1391,7 +1392,21 @@
     "documento": "Focos do dia — focos_diario_br_20260909.csv",
     "consultado_em": "09/09/2026"
    },
-   "alertas_cemaden": null
+   "alertas_cemaden": {
+    "total": 4,
+    "niveis": {
+     "Moderado": 4
+    },
+    "municipios": [
+     "ITAPERUÇU",
+     "RIO BRANCO DO SUL",
+     "RIO NEGRO",
+     "UNIÃO DA VITÓRIA"
+    ],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "11/09/2026"
+   }
   },
   "RJ": {
    "risco_projetado": {
@@ -1412,19 +1427,17 @@
     "consultado_em": "09/09/2026"
    },
    "alertas_cemaden": {
-    "total": 4,
+    "total": 3,
     "niveis": {
-     "Cessar": 4
+     "Moderado": 3
     },
     "municipios": [
      "ANGRA DOS REIS",
-     "MANGARATIBA",
-     "PETRÓPOLIS",
-     "RIO DE JANEIRO"
+     "PARATY"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "08/09/2026"
+    "consultado_em": "11/09/2026"
    }
   },
   "RN": {
@@ -1440,10 +1453,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 30,
+    "focos_24h": 5,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1460,10 +1473,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 290,
+    "focos_24h": 507,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1480,10 +1493,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 47,
+    "focos_24h": 25,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   },
@@ -1500,12 +1513,24 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 64,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
-   "alertas_cemaden": null
+   "alertas_cemaden": {
+    "total": 3,
+    "niveis": {
+     "Moderado": 3
+    },
+    "municipios": [
+     "GRAMADO",
+     "TRÊS COROAS"
+    ],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "11/09/2026"
+   }
   },
   "SC": {
    "risco_projetado": {
@@ -1526,16 +1551,45 @@
     "consultado_em": "09/09/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
+    "total": 38,
     "niveis": {
-     "Moderado": 1
+     "Moderado": 38
     },
     "municipios": [
-     "XANXERÊ"
+     "APIÚNA",
+     "BALNEÁRIO CAMBORIÚ",
+     "BIGUAÇU",
+     "CAXAMBU DO SUL",
+     "CONCÓRDIA",
+     "CORONEL FREITAS",
+     "DONA EMMA",
+     "ERVAL VELHO",
+     "FAXINAL DOS GUEDES",
+     "FRAIBURGO",
+     "GOVERNADOR CELSO RAMOS",
+     "HERVAL D'OESTE",
+     "IBIRAMA",
+     "ILHOTA",
+     "ITAJAÍ",
+     "ITÁ",
+     "LAGES",
+     "LONTRAS",
+     "MAFRA",
+     "PALMITOS",
+     "PRESIDENTE GETÚLIO",
+     "RIO NEGRINHO",
+     "RODEIO",
+     "SANTA CECÍLIA",
+     "SEARA",
+     "SÃO CARLOS",
+     "VIDEIRA",
+     "WITMARSUM",
+     "XANXERÊ",
+     "ÁGUAS DE CHAPECÓ"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "10/09/2026"
+    "consultado_em": "11/09/2026"
    }
   },
   "SE": {
@@ -1577,16 +1631,44 @@
     "consultado_em": "09/09/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
+    "total": 32,
     "niveis": {
-     "Cessar": 1
+     "Moderado": 31,
+     "Alto": 1
     },
     "municipios": [
-     "SÃO SEBASTIÃO"
+     "AMPARO",
+     "ATIBAIA",
+     "BARRA DO TURVO",
+     "BRAGANÇA PAULISTA",
+     "CAMPINAS",
+     "CAMPOS DO JORDÃO",
+     "CARAGUATATUBA",
+     "CUBATÃO",
+     "GUARUJÁ",
+     "GUARULHOS",
+     "ILHABELA",
+     "IPORANGA",
+     "ITAPECERICA DA SERRA",
+     "ITATIBA",
+     "ITAÓCA",
+     "MAUÁ",
+     "PIRACICABA",
+     "PRAIA GRANDE",
+     "RIBEIRA",
+     "SANTA BÁRBARA D'OESTE",
+     "SANTO ANDRÉ",
+     "SANTOS",
+     "SUMARÉ",
+     "SÃO JOSÉ DOS CAMPOS",
+     "SÃO PAULO",
+     "SÃO SEBASTIÃO",
+     "UBATUBA",
+     "ÁGUAS DA PRATA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "08/09/2026"
+    "consultado_em": "11/09/2026"
    }
   },
   "TO": {
@@ -1602,10 +1684,10 @@
    "secas": null,
    "avisos_inmet": null,
    "fogo": {
-    "focos_24h": 419,
+    "focos_24h": 236,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260911.csv",
+    "consultado_em": "11/09/2026"
    },
    "alertas_cemaden": null
   }
