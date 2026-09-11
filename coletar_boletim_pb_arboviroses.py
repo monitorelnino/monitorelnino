@@ -193,9 +193,11 @@ def coletar() -> int:
         registrar_lacuna("SES-PB (boletim de arboviroses)", detalhe, canal="site_estadual", camada=2, strings=[PADRAO_URL.format(n=1, ano=ano)])
         print("boletim PB: nenhum número respondeu — lacuna declarada"); return 0
     try:
-        import pdfplumber
-        with pdfplumber.open(io.BytesIO(bruto)) as pdf:
-            texto = "\n".join((pg.extract_text() or "") for pg in pdf.pages)
+        # 11/09/2026 (achado da rodada de 22h): pdfplumber NÃO está em requirements.txt — o coletor chegava
+        # a localizar o PDF e morria com ModuleNotFoundError. A função canônica do projeto usa pypdf
+        # (instalado) e só cai para pdfplumber se a extração vier vazia: funciona com ou sem o opcional.
+        from preservar_evidencias import extrair_texto_por_pagina
+        texto = "\n".join(extrair_texto_por_pagina(bruto))
     except Exception as e:  # noqa: BLE001
         registrar_lacuna(f"SES-PB boletim {pdf_url[-30:]}", type(e).__name__, canal="site_estadual", camada=2, strings=[pdf_url])
         print("boletim PB: falha ao ler o PDF — lacuna declarada"); return 0
