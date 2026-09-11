@@ -38,6 +38,7 @@ from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rod
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://portalcievs.saude.pe.gov.br"
 LISTAGEM = BASE + "/noticias/INFORMES/arbovirose"
+TENTATIVAS_SE = 4   # edições mais recentes a tentar, da mais nova para a mais antiga (a listagem anuncia antes de publicar)
 CABECALHO = "INFORME EPIDEMIOLÓGICO| ARBOVIROSES"   # cabeçalho corrente que separa as páginas no texto extraído
 RESSALVA = ("O Monitor não atribui casos ao El Niño; dados da SES-PE / CIEVS-PE (Sinan Online e Sinan Net), extraídos do "
             "Informe Epidemiológico semanal em PDF — dados parciais, sujeitos a alteração. Só totais estaduais: a tabela "
@@ -65,10 +66,29 @@ def extrair_link_mais_recente(html: str, ano: int) -> tuple:
     if not achados:
         return None, None
     href, se = max(achados, key=lambda t: int(t[1]))
+    return _url_canonica(href), int(se)
+
+
+def _url_canonica(href: str) -> str:
+    """Normaliza para o host canônico (a listagem linka em http://) e percent-encode espaços e não-ASCII."""
     url = urljoin(BASE + "/", href)
-    # normaliza para o host canônico (a listagem linka em http://) e percent-encode espaços e não-ASCII do caminho
     m = re.match(r"^https?://[^/]+(/.*)$", url)
-    return (BASE + quote(m.group(1), safe="/%_.-") if m else url), int(se)
+    return BASE + quote(m.group(1), safe="/%_.-") if m else url
+
+
+def candidatos_por_se(html: str, ano: int) -> list:
+    """Todos os informes 'SE 01 a NN' do ano, do mais recente ao mais antigo. Função pura.
+    11/09/2026 (achado da 1ª rodada real): a listagem anuncia a edição nova ANTES de o PDF existir — o coletor
+    pediu a SE 35 e levou HTTPError, embora o PDF da SE 34 baixasse normalmente do runner. Tentar em ordem
+    decrescente resolve sem inventar nada: fica com a edição mais recente que realmente responde."""
+    html = _norm(html)
+    achados = re.findall(r'href="([^"]*Informe Epidemiol[óo]gico Arboviroses_SE ?0?1 a (\d{1,2})_' + str(ano) + r'\.pdf)"', html, re.I)
+    vistos, saida = set(), []
+    for href, se in sorted(achados, key=lambda t: int(t[1]), reverse=True):
+        if int(se) in vistos:
+            continue
+        vistos.add(int(se)); saida.append((_url_canonica(href), int(se)))
+    return saida
 
 
 def _n(s: str) -> int:
@@ -212,19 +232,30 @@ def coletar() -> int:
     except Exception as e:  # noqa: BLE001
         registrar_lacuna("CIEVS-PE (listagem de informes de arboviroses)", type(e).__name__, canal="site_estadual", camada=2, strings=[LISTAGEM])
         print("informe PE: listagem inacessível — lacuna declarada"); return 0
-    pdf_url, se = extrair_link_mais_recente(html, hoje.year)
-    if not pdf_url:
+    candidatos = candidatos_por_se(html, hoje.year)
+    if not candidatos:
         registrar_lacuna("CIEVS-PE (listagem de informes de arboviroses)", f"nenhum link 'SE 01 a NN_{hoje.year}.pdf' na listagem", canal="site_estadual", camada=2, strings=[LISTAGEM])
         print("informe PE: nenhum link reconhecido na listagem — lacuna declarada"); return 0
-    try:
-        bruto = buscar(pdf_url, timeout=90)
-        import pdfplumber
-        with pdfplumber.open(io.BytesIO(bruto)) as pdf:
-            paginas = [_norm(pg.extract_text() or "") for pg in pdf.pages]
-        texto = "\n".join(paginas)
-    except Exception as e:  # noqa: BLE001
-        registrar_lacuna(f"CIEVS-PE informe SE {se}", type(e).__name__, canal="site_estadual", camada=2, strings=[pdf_url])
-        print("informe PE: falha ao ler o PDF — lacuna declarada"); return 0
+    pdf_url = se = paginas = None
+    anunciados_sem_arquivo = []
+    for url_c, se_c in candidatos[:TENTATIVAS_SE]:
+        try:
+            bruto = buscar(url_c, timeout=90)
+            if bruto[:4] != b"%PDF":
+                anunciados_sem_arquivo.append(f"SE {se_c}: resposta não é PDF"); continue
+            import pdfplumber
+            with pdfplumber.open(io.BytesIO(bruto)) as pdf:
+                paginas = [_norm(pg.extract_text() or "") for pg in pdf.pages]
+            pdf_url, se = url_c, se_c; break
+        except Exception as e:  # noqa: BLE001
+            anunciados_sem_arquivo.append(f"SE {se_c}: {type(e).__name__}"); continue
+    if not pdf_url:
+        registrar_lacuna("CIEVS-PE (informe de arboviroses)", f"nenhuma das {min(TENTATIVAS_SE, len(candidatos))} edições mais recentes respondeu com PDF ({'; '.join(anunciados_sem_arquivo)})", canal="site_estadual", camada=2, strings=[LISTAGEM])
+        print("informe PE: nenhuma edição baixável — lacuna declarada"); return 0
+    if anunciados_sem_arquivo:
+        # a listagem anunciou edição mais nova sem arquivo no ar: fato da fonte, registrado sem interromper a leitura
+        registrar_lacuna("CIEVS-PE (edição anunciada sem arquivo)", f"a listagem anuncia edição(ões) ainda sem PDF publicado ({'; '.join(anunciados_sem_arquivo)}); lido o informe da SE {se}", canal="site_estadual", camada=2, strings=[pdf_url])
+    texto = "\n".join(paginas)
     try:
         dados = parse_texto(texto, paginas=paginas)
     except ValueError as e:
@@ -385,6 +416,14 @@ def autoteste() -> int:
         # a mesma leitura por lista de páginas (caminho do pdfplumber) dá o mesmo resultado
         pgs = _paginas(_norm(TEXTO_REAL_SE34))
         return parse_texto(TEXTO_REAL_SE34, paginas=pgs) == parse_texto(TEXTO_REAL_SE34)
+    def t8b():
+        # 11/09/2026: listagem anuncia SE 35 sem arquivo; candidatos vêm do mais novo ao mais antigo, sem repetir
+        html = ('<a href="/docs/Informe Epidemiológico Arboviroses_SE 01 a 33_2026.pdf">x</a>'
+                '<a href="/docs/Informe Epidemiológico Arboviroses_SE 01 a 35_2026.pdf">x</a>'
+                '<a href="/docs/Informe Epidemiológico Arboviroses_SE 01 a 34_2026.pdf">x</a>'
+                '<a href="/docs/Informe Epidemiológico Arboviroses_SE 01 a 34_2026.pdf">dup</a>')
+        c = candidatos_por_se(html, 2026)
+        return [se for _, se in c] == [35, 34, 33] and all(u.startswith("https://portalcievs") and " " not in u for u, _ in c) and candidatos_por_se("<p>nada</p>", 2026) == []
     def t8():
         html = ('<a href="http://portalcievs.saude.pe.gov.br/docs/Informe Epidemiolo\u0301gico Arboviroses_SE 01 a 33_2026.pdf">x</a>'
                 '<a href="http://portalcievs.saude.pe.gov.br/docs/Informe Epidemiológico Arboviroses_SE 01 a 34_2026.pdf">x</a>'
@@ -403,6 +442,7 @@ def autoteste() -> int:
                             "óbitos por arboviroses + LIRAa fecha 100%": t5, "identidade contábil quebrada → recusa": t6,
                             "leitura por páginas ≡ leitura por cabeçalho": t7,
                             "link mais recente (acento combinante, espaços, anos misturados)": t8,
+                            "candidatos por SE, do mais novo ao mais antigo (edição anunciada sem arquivo)": t8b,
                             "formato inesperado nunca adivinha": t9, "ressalva e limitação declaradas": t10})
 
 
