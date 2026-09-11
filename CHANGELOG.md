@@ -9,6 +9,19 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §36 · três coletores estaduais corrigidos pelo que a 1ª rodada real mostrou (MS, PE, PB) · 11/09/2026
+
+Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCOLO §3.2). Peso zero.
+
+Na primeira rodada real, os quatro coletores declararam lacuna. A hipótese inicial — bloqueio geográfico ao runner — foi **medida e descartada** por `scripts/diagnostico_fontes_saude.py`: MS, PE e PB respondem **HTTP 200** do runner, e o User-Agent não altera nada. As causas eram três, distintas:
+
+- **MS — a fonte parou.** Permalink correto, listagem 200, mas o último boletim publicado é o da **SE 25 (10/07/2026)**; a semana corrente é a ~37. O recuo de 3 semanas tornava isso indistinguível de erro do coletor. Agora recua até 14 semanas e **declara a defasagem** quando o boletim mais recente é antigo. Interrupção da publicação é achado do §36, como BA e CE.
+- **PE — edição anunciada antes de existir.** A listagem já trazia a **SE 35**, cujo PDF ainda não estava no ar (o da SE 34 baixa normalmente). O coletor pedia só a mais recente e falhava. Agora tenta as 4 mais recentes em ordem decrescente e registra as anunciadas sem arquivo.
+- **PB — interstício HTML.** O portal responde 200 com `text/html` (página de espera do Plone, `Pragma: no-cache`) no lugar do arquivo. O coletor recusava corretamente o que não começa com `%PDF`; agora **segue o destino declarado** nessa página (meta refresh, `window.location` ou link `.pdf`) — e continua sem adivinhar URL alguma.
+- **DF e SP — obstáculo real de rede**, não corrigível por parser: *timeout* de handshake TLS (~45 s), idêntico com os dois User-Agents. O Querido Diário responde 200 no mesmo runner, o que descarta rede ruim. Fica registrado para decisão editorial.
+
+Três autotestes novos, um por correção. Nenhum coletor publicou dado parcial em nenhum momento: o desenho defensivo entregou lacuna auditável, que foi o que permitiu diagnosticar.
+
 ## Correção · evidências de texto preservadas à mão colidiam com `preservar_evidencias --ler` · 11/09/2026
 
 Nenhuma alteração de método; nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). **Achado por ensaio** (`workflow_dispatch` com `ensaio=true`), antes de qualquer publicação — é exatamente o que o modo ensaio existe para pegar.

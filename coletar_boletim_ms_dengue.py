@@ -28,6 +28,8 @@ RAIZ = Path(__file__).resolve().parent
 LISTAGEM = "https://www.saude.ms.gov.br/informativos/boletins/"
 PERMALINK = "https://www.saude.ms.gov.br/informativos/boletins/boletim-epidemiologico-dengue-semana-{se:02d}-{ano}/"
 MIN_MUNICIPIOS = 70   # MS tem 79; abaixo disso, a tabela não veio inteira — recusar, nunca publicar parcial
+RECUO_MAX = 14        # semanas para trás na busca do último boletim publicado (11/09/2026: a série parou na SE 25)
+DEFASAGEM_ALERTA = 4  # acima disso, a lacuna deixa de ser "atraso normal" e vira defasagem declarada da fonte
 RESSALVA = "O Monitor não atribui casos ao El Niño; dados da SES-MS (SINAN Online), extraídos do boletim semanal em PDF — dados parciais, sujeitos a alteração pelos municípios."
 
 
@@ -81,7 +83,12 @@ def parse_texto(texto: str) -> dict:
 def coletar() -> int:
     hoje = _hoje(); ano, se_atual = se_epidemiologica(hoje)
     pdf_url = None; tentativas = []
-    for delta in range(0, 4):   # semana corrente e até 3 semanas antes (o boletim sai com atraso)
+    # 11/09/2026 (achado da 1ª rodada real): o recuo de 3 semanas era curto demais. A listagem da SES-MS
+    # responde 200 normalmente do runner — o padrão de permalink está certo —, mas o último boletim publicado
+    # é o da SE 25 (10/07/2026): a secretaria interrompeu a série. Com recuo curto, isso chegava como
+    # "nenhum permalink respondeu", indistinguível de erro do coletor. Recuo até RECUO_MAX para localizar o
+    # último realmente publicado e DECLARAR A DEFASAGEM — interrupção da fonte é achado do §36, não falha da coleta.
+    for delta in range(0, RECUO_MAX):
         se = se_atual - delta; a = ano
         if se < 1:
             a -= 1; se += 52
@@ -95,8 +102,12 @@ def coletar() -> int:
         if pdf_url:
             se_achada = se; break
     if not pdf_url:
-        registrar_lacuna("SES-MS (boletim semanal de dengue)", f"nenhum permalink respondeu com PDF nas últimas 4 semanas ({tentativas[0]}…{tentativas[-1]})", canal="site_estadual", camada=2)
-        print("boletim MS: não localizado — lacuna declarada"); return 0
+        registrar_lacuna("SES-MS (boletim semanal de dengue)", f"nenhum permalink respondeu com PDF nas últimas {RECUO_MAX} semanas (SE {se_atual} a {se_atual - RECUO_MAX + 1}) — série possivelmente interrompida pela secretaria", canal="site_estadual", camada=2, strings=[tentativas[0], tentativas[-1]])
+        print(f"boletim MS: não localizado em {RECUO_MAX} semanas — lacuna declarada"); return 0
+    defasagem = se_atual - se_achada
+    if defasagem >= DEFASAGEM_ALERTA:
+        # o boletim existe, mas é antigo: registrar a defasagem como fato da fonte, além de seguir com a leitura
+        registrar_lacuna("SES-MS (boletim semanal de dengue)", f"último boletim publicado é o da SE {se_achada}; a semana corrente é a {se_atual} — {defasagem} semanas de defasagem na fonte", canal="site_estadual", camada=2, strings=[pdf_url])
     try:
         bruto = buscar(pdf_url, timeout=90)
         import pdfplumber
