@@ -27,6 +27,13 @@ from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rod
 RAIZ = Path(__file__).resolve().parent
 LISTAGEM = "https://www.saude.ms.gov.br/informativos/boletins/"
 PERMALINK = "https://www.saude.ms.gov.br/informativos/boletins/boletim-epidemiologico-dengue-semana-{se:02d}-{ano}/"
+LISTAGEM = "https://www.saude.ms.gov.br/informativos/boletins/"
+# 11/09/2026 (verificado em navegador real): a listagem expõe os PDFs DIRETO, sem passar por post.
+# Padrão observado: /wp-content/uploads/<ano>/<mes>/Boletim-Epidemiologico-Dengue-–-Semana-NN-–-AAAA.pdf
+# (o separador é travessão U+2013, não hífen). A SE 34/2026 está publicada — o que derrubava a coleta
+# não era a fonte ter parado, era o coletor procurar um permalink de post que a listagem não usa.
+RE_PDF_LISTAGEM = re.compile(
+    r'href="(https?://[^"]*?/wp-content/uploads/\d{4}/\d{2}/Boletim-Epidemiologico-Dengue-[^"]*?Semana-(\d{1,2})-[^"]*?(\d{4})\.pdf)"', re.I)
 MIN_MUNICIPIOS = 70   # MS tem 79; abaixo disso, a tabela não veio inteira — recusar, nunca publicar parcial
 RECUO_MAX = 14        # semanas para trás na busca do último boletim publicado (11/09/2026: a série parou na SE 25)
 DEFASAGEM_ALERTA = 4  # acima disso, a lacuna deixa de ser "atraso normal" e vira defasagem declarada da fonte
@@ -80,15 +87,36 @@ def parse_texto(texto: str) -> dict:
     return {"referencia": {"ano": data_ref.year, "se": se_ref, "data": data_ref.strftime("%d/%m/%Y")}, "totais_estaduais": totais, "municipios": municipios}
 
 
+def extrair_pdfs_da_listagem(html: str, ano: int) -> list:
+    """Boletins de dengue do ano na listagem, do mais recente ao mais antigo: [(url, se), ...]. Função pura."""
+    achados = [(u, int(se)) for u, se, a in RE_PDF_LISTAGEM.findall(html) if int(a) == ano]
+    vistos, saida = set(), []
+    for u, se in sorted(achados, key=lambda t: t[1], reverse=True):
+        if se not in vistos:
+            vistos.add(se); saida.append((u, se))
+    return saida
+
+
 def coletar() -> int:
     hoje = _hoje(); ano, se_atual = se_epidemiologica(hoje)
-    pdf_url = None; tentativas = []
+    pdf_url = None; tentativas = []; se_achada = None
+    # 11/09/2026: caminho primário — a LISTAGEM, que expõe os PDFs direto (verificado em navegador real).
+    # O permalink de post fica como segundo caminho, para o caso de a listagem mudar de forma.
+    try:
+        html_lst = buscar(LISTAGEM, timeout=45).decode("utf-8", "replace")
+        for u, se in extrair_pdfs_da_listagem(html_lst, ano):
+            pdf_url, se_achada = u, se
+            break
+    except Exception:  # noqa: BLE001
+        pass
+    if pdf_url:
+        tentativas.append(LISTAGEM)
     # 11/09/2026 (achado da 1ª rodada real): o recuo de 3 semanas era curto demais. A listagem da SES-MS
     # responde 200 normalmente do runner — o padrão de permalink está certo —, mas o último boletim publicado
     # é o da SE 25 (10/07/2026): a secretaria interrompeu a série. Com recuo curto, isso chegava como
     # "nenhum permalink respondeu", indistinguível de erro do coletor. Recuo até RECUO_MAX para localizar o
     # último realmente publicado e DECLARAR A DEFASAGEM — interrupção da fonte é achado do §36, não falha da coleta.
-    for delta in range(0, RECUO_MAX):
+    for delta in (range(0, RECUO_MAX) if not pdf_url else ()):
         se = se_atual - delta; a = ano
         if se < 1:
             a -= 1; se += 52
@@ -153,6 +181,16 @@ Ranking IBGE Município Casos Prováveis População Incidência
 26 5008404 Vicentina 13 6.336 205,2
 79 5007802 Selvíria 0 8.142 0,0 Sem notificação
 """
+    def t_listagem():
+        # HTML real observado em 11/09/2026 na listagem da SES-MS (navegador): travessão U+2013 no nome
+        html = ('<a href="https://www.saude.ms.gov.br/wp-content/uploads/2026/09/Boletim-Epidemiologico-Chikungunya-\u2013-Semana-34-\u2013-2026.pdf">x</a>'
+                '<a href="https://www.saude.ms.gov.br/wp-content/uploads/2026/09/Boletim-Epidemiologico-Dengue-\u2013-Semana-33-\u2013-2026.pdf">x</a>'
+                '<a href="https://www.saude.ms.gov.br/wp-content/uploads/2026/09/Boletim-Epidemiologico-Dengue-\u2013-Semana-34-\u2013-2026.pdf">x</a>'
+                '<a href="https://www.saude.ms.gov.br/wp-content/uploads/2025/09/Boletim-Epidemiologico-Dengue-\u2013-Semana-40-\u2013-2025.pdf">ano anterior</a>')
+        r = extrair_pdfs_da_listagem(html, 2026)
+        # só dengue, só 2026, mais recente primeiro, sem repetir SE
+        return r and r[0][1] == 34 and r[0][0].endswith("Semana-34-\u2013-2026.pdf") and [se for _, se in r] == [34, 33] and extrair_pdfs_da_listagem(html, 2027) == []
+
     def t1():
         d = parse_texto(TXT); return d["referencia"] == {"ano": 2026, "se": 30, "data": "03/08/2026"}
     def t2():
@@ -171,7 +209,7 @@ Ranking IBGE Município Casos Prováveis População Incidência
         return extrair_pdf_do_post(html) is not None and extrair_pdf_do_post("<p>nada</p>") is None
     def t7():
         return "não atribui casos ao El Niño" in RESSALVA and MIN_MUNICIPIOS < 79
-    return rodar_autoteste({"referência SE e data": t1, "totais estaduais (4 números antes dos rótulos)": t2,
+    return rodar_autoteste({"listagem: PDFs de dengue do ano, mais recente primeiro": t_listagem,"referência SE e data": t1, "totais estaduais (4 números antes dos rótulos)": t2,
                             "linha municipal completa": t3, "classificação ausente/tolerada": t4,
                             "formato inesperado nunca adivinha": t5, "extração do link do PDF no post": t6, "ressalva e limiar de segurança": t7})
 
