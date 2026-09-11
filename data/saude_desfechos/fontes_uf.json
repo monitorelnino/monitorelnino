@@ -53,8 +53,8 @@
    "boletim_epidemiologico": "https://www.saude.ba.gov.br/wp-content/uploads/2026/02/3%C2%B0-RDQA-2025_DIVEP_11_02.pdf",
    "painel": "https://www.saude.ba.gov.br/agravo/arboviroses/",
    "cievs": null,
-   "periodicidade": "quadrimestral (relatório) + boletins pontuais",
-   "status": "Observatório de Vigilância Epidemiológica por agravo (inclui DTHA, arboviroses, leptospirose); PDF",
+   "periodicidade": "SEM SÉRIE ATIVA — repositório de boletins de arboviroses parado em 2021 (mais recente: SE 24/2021); DTHA é anual (nº 01, ago/2025)",
+   "status": "SEM FONTE COLETÁVEL (verificado em 10/09/2026) — o Observatório de arboviroses da SESAB lista ~140 boletins, o último de 2021; os números de 2026 circulam só por notícias da assessoria (SE 18, maio/2026), sem documento periódico. O boletim de DTHA é anual, não série. Não escrever coletor: não há o que coletar. Reavaliar se a SESAB retomar publicação periódica.",
    "defeso": false
   },
   "CE": {
@@ -64,8 +64,8 @@
    "boletim_epidemiologico": "https://www.saude.ce.gov.br/download/boletins/",
    "painel": null,
    "cievs": null,
-   "periodicidade": "irregular (por agravo: arboviroses, DDA, leptospirose, imunopreveníveis)",
-   "status": "boletins ativos por agravo — repositório central, PDF, sem periodicidade fixa por tipo; mais recente localizado: 25/02/2026",
+   "periodicidade": "SEM SÉRIE ATIVA de desfecho — repositório central com boletins esparsos por agravo; o mais recente de arboviroses (25/02/2026) é ENTOMOLÓGICO (vetor, não desfecho); DDA/DTHA de 2018 e 2022",
+   "status": "SEM FONTE COLETÁVEL DE DESFECHO (verificado em 10/09/2026) — o repositório saude.ce.gov.br/download/boletins é central e ativo, mas sem série epidemiológica regular de arboviroses; o item recente é vigilância entomológica. Não escrever coletor de desfecho por ora.",
    "defeso": false
   },
   "DF": {
@@ -160,11 +160,11 @@
    "orgao": "SES-PB / Vigilância em Saúde",
    "instrumento_verificado": "Plano Estadual de Contingência para Controle das Arboviroses (PDF no portal oficial, 15/02/2024)",
    "url_instrumento": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/plano_contingencia_arboviroses_15_02_2024.pdf",
-   "boletim_epidemiologico": "https://paraiba.pb.gov.br/diretas/saude/consultas/vigilancia-em-saude/boletins-epidemiologicos",
-   "painel": null,
+   "boletim_epidemiologico": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-0N_2026.pdf (numerado sequencialmente, cadência irregular)",
+   "painel": "https://paraiba.pb.gov.br/diretas/saude/consultas/vigilancia-em-saude-1/paineis-de-monitoramento-01",
    "cievs": null,
-   "periodicidade": "mensal/quinzenal (nº 01, 02/2026 confirmados)",
-   "status": "boletim de arboviroses urbanas, PDF, ativo em 2026",
+   "periodicidade": "irregular — boletins NUMERADOS (nº 02 ≈ SE 05, nº 03 = SE 08); a numeração não acompanha a SE",
+   "status": "COLETOR ATIVO — boletim de arboviroses por Região de Saúde (coletar_boletim_pb_arboviroses.py), lido em 10/09/2026 na íntegra (nº 03/2026, SE 08: Quadro 01 com as 16 Regiões de Saúde, população, prováveis de dengue/chik/zika/Oropouche e 5 incidências; Fluxograma por agravo). Melhor formato depois de MS: tabela em texto, somas fecham. Correção de registro: o padrão real de URL não é 'no_01_2026.pdf' como suposto em 09/09.",
    "defeso": false
   },
   "PE": {

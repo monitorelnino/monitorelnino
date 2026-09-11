@@ -9,6 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §36 · quarto coletor estadual (PB, por Região de Saúde) e dois estados sem fonte coletável (BA, CE) · 10/09/2026
+
+Nenhuma alteração de método (§12.5); nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). Peso zero; nunca lido pelo motor.
+
+- **Novo — PB:** `coletar_boletim_pb_arboviroses.py` lê o Boletim de Arboviroses Urbanas da SES-PB. Quadro 01 em texto com as **16 Regiões de Saúde** (população, prováveis de dengue/chik/zika/Oropouche, 5 incidências) + Fluxograma por agravo. Íntegra conferida no nº 03/2026 (SE 08). Portão (t). Melhor formato depois de MS.
+- **Correção de registro (PB):** a numeração é sequencial e **irregular** (nº 02 ≈ SE 05, nº 03 = SE 08) — não acompanha a SE; e o padrão de URL real não é `no_01_2026.pdf`, como suposto em 09/09. O coletor tenta números decrescentes e lê a SE do texto.
+- **Divergência da fonte registrada, não corrigida:** no nº 03 o texto corrido diz 739 prováveis de arboviroses e o Quadro 01 totaliza 738. Publicado o do Quadro (auditável linha a linha), com a divergência anotada em `divergencia_fonte`.
+- **BA — SEM FONTE COLETÁVEL:** boletins de arboviroses da SESAB param na **SE 24/2021**; os números de 2026 só aparecem em notícias, sem documento periódico. DTHA é anual, não série.
+- **CE — SEM FONTE COLETÁVEL DE DESFECHO:** repositório ativo, mas sem série regular de arboviroses; o item recente (25/02/2026) é **entomológico** (vetor), não desfecho. DDA/DTHA de 2018 e 2022.
+- Ambos marcados em `fontes_uf.json` com data e motivo da verificação, para a próxima sessão não repetir a busca. Ausência de publicação periódica é achado do §36, não falha da coleta.
+
 ## §36 · terceiro coletor estadual: arboviroses em PE (CIEVS-PE) — só totais estaduais, tabela municipal é imagem · 10/09/2026
 
 Nenhuma alteração de método (§12.5); nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). Peso zero; nunca lido pelo motor.
