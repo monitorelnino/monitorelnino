@@ -49,6 +49,22 @@ def _hoje():
         return _dt.date.today()
 
 
+def destino_do_intersticio(corpo: bytes) -> str:
+    """Destino declarado numa página intermediária do portal (meta refresh, window.location ou link .pdf direto).
+    Função pura; None se a página não declarar destino — o coletor nunca adivinha uma URL de arquivo."""
+    try:
+        html = corpo.decode("utf-8", "replace")
+    except Exception:  # noqa: BLE001
+        return None
+    for padrao in (r'<meta[^>]+http-equiv=["\']?refresh["\']?[^>]+content=["\'][^"\']*url=([^"\'>\s]+)',
+                   r'(?:window\.location(?:\.href)?|location\.replace\()\s*=?\s*["\']([^"\']+)["\']',
+                   r'href="([^"]+\.pdf(?:\?[^"]*)?)"'):
+        m = re.search(padrao, html, re.I)
+        if m:
+            return m.group(1).strip()
+    return None
+
+
 def _n(s: str) -> int:
     return int(s.replace(".", ""))
 
@@ -134,6 +150,7 @@ def parse_texto(texto: str) -> dict:
 def coletar() -> int:
     hoje = _hoje(); ano = hoje.year
     pdf_url = bruto = None
+    interstícios = []
     for num in range(TETO_NUMERO, 0, -1):
         url = PADRAO_URL.format(n=num, ano=ano)
         try:
@@ -142,8 +159,26 @@ def coletar() -> int:
             continue
         if b[:4] == b"%PDF":
             pdf_url, bruto = url, b; break
+        # 11/09/2026 (achado da 1ª rodada real): o portal responde HTTP 200 com text/html — uma página de
+        # espera do Plone ("Pragma: no-cache", meta refresh / redirecionamento por JS) em vez do arquivo.
+        # O coletor recusava, corretamente, tudo que não começasse com %PDF. Agora segue o destino declarado
+        # DENTRO dessa página (meta refresh, window.location ou link .pdf) — sem adivinhar URL nenhuma.
+        destino = destino_do_intersticio(b)
+        if destino:
+            try:
+                b2 = buscar(destino if destino.startswith("http") else BASE + destino, timeout=60)
+            except Exception:  # noqa: BLE001
+                interstícios.append(f"nº {num:02d}: destino do interstício não respondeu"); continue
+            if b2[:4] == b"%PDF":
+                pdf_url, bruto = (destino if destino.startswith("http") else BASE + destino), b2; break
+            interstícios.append(f"nº {num:02d}: destino do interstício não é PDF")
+        elif b[:15].lower().startswith(b"<!doctype html") or b[:5].lower() == b"<html":
+            interstícios.append(f"nº {num:02d}: HTML sem destino declarado")
     if not pdf_url:
-        registrar_lacuna("SES-PB (boletim de arboviroses)", f"nenhum boletim nº 01–{TETO_NUMERO} de {ano} respondeu com PDF", canal="site_estadual", camada=2, strings=[PADRAO_URL.format(n=1, ano=ano)])
+        detalhe = f"nenhum boletim nº 01–{TETO_NUMERO} de {ano} respondeu com PDF"
+        if interstícios:
+            detalhe += f" — o portal devolveu HTML em vez do arquivo ({'; '.join(interstícios[:4])})"
+        registrar_lacuna("SES-PB (boletim de arboviroses)", detalhe, canal="site_estadual", camada=2, strings=[PADRAO_URL.format(n=1, ano=ano)])
         print("boletim PB: nenhum número respondeu — lacuna declarada"); return 0
     try:
         import pdfplumber
@@ -262,6 +297,14 @@ def autoteste() -> int:
             parse_texto("\n".join(linhas)); return False
         except ValueError as e:
             return "regiões reconhecidas" in str(e) or "soma das regiões" in str(e)
+    def t8b():
+        # 11/09/2026: portal devolve HTML (interstício) em vez do PDF — seguir o destino declarado, nunca adivinhar
+        meta = b'<!DOCTYPE html><html><head><meta http-equiv="Pragma" content="no-cache"/>'
+        a = destino_do_intersticio(meta + b'<meta http-equiv="refresh" content="0;url=/arquivos/bol.pdf"/></head></html>')
+        b = destino_do_intersticio(meta + b'<script>window.location="https://x.gov.br/b.pdf";</script></head></html>')
+        c = destino_do_intersticio(meta + b'<body><a href="/d/boletim_03.pdf">baixar</a></body></html>')
+        d = destino_do_intersticio(meta + b'<body>sem destino</body></html>')
+        return a == "/arquivos/bol.pdf" and b == "https://x.gov.br/b.pdf" and c == "/d/boletim_03.pdf" and d is None
     def t9():
         try:
             parse_texto("nada aqui bate com o padrão esperado"); return False
@@ -273,7 +316,8 @@ def autoteste() -> int:
                             "Quadro 01: linha Total e incidências": t3, "Fluxograma 01 por agravo": t4,
                             "divergência da fonte registrada (739 × 738)": t5,
                             "soma das regiões ≠ Total → recusa": t6, "identidade do fluxograma quebrada → recusa": t7,
-                            "tabela parcial → recusa": t8, "formato inesperado nunca adivinha": t9,
+                            "tabela parcial → recusa": t8,
+                            "interstício HTML: segue destino declarado, nunca adivinha": t8b, "formato inesperado nunca adivinha": t9,
                             "ressalva, limiar e padrão de URL": t10})
 
 
