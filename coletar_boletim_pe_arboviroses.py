@@ -80,10 +80,14 @@ def extrair_link_mais_recente(html: str, ano: int) -> tuple:
 
 
 def _url_canonica(href: str) -> str:
-    """Normaliza para o host canônico (a listagem linka em http://) e percent-encode espaços e não-ASCII."""
+    """Host canônico (a listagem linka em http://) + percent-encode de espaços e não-ASCII.
+    11/09/2026 (achado da rodada de 22h): o caminho no servidor usa acento COMBINANTE (NFD: "e"+U+0301).
+    Normalizar para NFC gera outro byte-a-byte e o servidor devolve HTTPError — foi por isso que SE 35, 34
+    e 33 falharam na mesma rodada em que a sonda baixou o PDF da SE 34 com 200 usando a forma NFD.
+    O href é usado como veio do HTML; a normalização NFC fica só para CASAR o regex, nunca para montar a URL."""
     url = urljoin(BASE + "/", href)
     m = re.match(r"^https?://[^/]+(/.*)$", url)
-    return BASE + quote(m.group(1), safe="/%_.-") if m else url
+    return BASE + quote(unicodedata.normalize("NFD", m.group(1)), safe="/%_.-") if m else url
 
 
 def candidatos_por_se(html: str, ano: int) -> list:
@@ -255,9 +259,11 @@ def coletar() -> int:
             bruto = buscar(url_c, timeout=25)
             if bruto[:4] != b"%PDF":
                 anunciados_sem_arquivo.append(f"SE {se_c}: resposta não é PDF"); continue
-            import pdfplumber
-            with pdfplumber.open(io.BytesIO(bruto)) as pdf:
-                paginas = [_norm(pg.extract_text() or "") for pg in pdf.pages]
+            # 11/09/2026 (achado da rodada de 22h): pdfplumber NÃO está em requirements.txt — o coletor chegava
+            # a localizar o PDF e morria com ModuleNotFoundError. A função canônica do projeto usa pypdf
+            # (instalado) e só cai para pdfplumber se a extração vier vazia: funciona com ou sem o opcional.
+            from preservar_evidencias import extrair_texto_por_pagina
+            paginas = [_norm(t) for t in extrair_texto_por_pagina(bruto)]
             pdf_url, se = url_c, se_c; break
         except Exception as e:  # noqa: BLE001
             anunciados_sem_arquivo.append(f"SE {se_c}: {type(e).__name__}"); continue
@@ -442,6 +448,13 @@ def autoteste() -> int:
                 '<a href="http://portalcievs.saude.pe.gov.br/docs/Informe Epidemiológico Arboviroses_SE10-2025.pdf">2025</a>')
         url, se = extrair_link_mais_recente(html, 2026)
         return se == 34 and url.startswith("https://portalcievs.saude.pe.gov.br/docs/Informe%20Epidemiol") and url.endswith("34_2026.pdf") and " " not in url and extrair_link_mais_recente("<p>nada</p>", 2026) == (None, None)
+    def t_nfd():
+        # 11/09/2026: a URL montada tem de sair em NFD (acento combinante), exatamente como a sonda baixou
+        # com HTTP 200 no runner. Em NFC o servidor devolve HTTPError.
+        html = '<a href="http://portalcievs.saude.pe.gov.br/docs/Informe Epidemiol\u00f3gico Arboviroses_SE 01 a 34_2026.pdf">x</a>'
+        u, se = candidatos_por_se(html, 2026)[0]
+        return se == 34 and u == "https://portalcievs.saude.pe.gov.br/docs/Informe%20Epidemiolo%CC%81gico%20Arboviroses_SE%2001%20a%2034_2026.pdf"
+
     def t9():
         try:
             parse_texto("nada aqui bate com o padrão esperado"); return False
@@ -449,7 +462,7 @@ def autoteste() -> int:
             return True
     def t10():
         return "não atribui casos ao El Niño" in RESSALVA and "tabela municipal" in RESSALVA
-    return rodar_autoteste({"referência SE/período/data de captação": t1, "dengue (número antes do rótulo)": t2,
+    return rodar_autoteste({"URL do PDF em NFD (forma que o servidor aceita)": t_nfd,"referência SE/período/data de captação": t1, "dengue (número antes do rótulo)": t2,
                             "chikungunya (rótulo antes do número — ordem tolerada)": t3, "zika + gestantes": t4,
                             "óbitos por arboviroses + LIRAa fecha 100%": t5, "identidade contábil quebrada → recusa": t6,
                             "leitura por páginas ≡ leitura por cabeçalho": t7,
