@@ -9,6 +9,15 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## Figura "SRAG por semana · Brasil" — lacuna passa a ser declarada na própria figura · 11/09/2026
+
+Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCOLO §3.2). Peso zero.
+
+- **Sintoma relatado pela editoria:** a figura não aparecia no site. Causa: `data/saude_desfechos/srag_serie.json` **nunca foi criado**. `coletar_srag_gripe.py` roda em toda atualização, mas registra `URLError` desde **09/09** (três rodadas). Sem o arquivo, o JS saía no início e deixava só a moldura do cartão — sem gráfico e **sem dizer nada a quem lê**, o pior desfecho para um índice que se propõe auditável.
+- **Fonte fora do ar, não erro do coletor.** Verificado em navegador no Brasil: `gitlab.procc.fiocruz.br` (host do CSV canônico do InfoGripe, `serie_temporal_com_estimativas_recentes.csv`) devolve `ERR_CONNECTION_TIMED_OUT`. Não é bloqueio ao runner: não responde de lugar nenhum.
+- **Pista de migração, ainda não confirmada:** o InfoGripe aparece agora em `gitlab.fiocruz.br/marcelo.gomes/infogripe`, mas esse host **exige login** — não serve para coleta anônima. Por isso a URL **não** foi trocada às cegas; quatro endereços (host antigo e novo, raiz e CSV) entraram na sonda `scripts/diagnostico_fontes_saude.py` para medir antes de decidir.
+- **Correção visível agora:** a ausência de série é **declarada dentro da figura** ("Série ainda não coletada — lacuna declarada", com a razão), no mesmo padrão já usado em `financiamento.js`. A mensagem vai na mídia, não como parágrafo no cartão, porque o portão de figuras só admite título, legenda e crédito.
+
 ## §36 · por que os coletores estaduais não baixaram, medido e corrigido · 11/09/2026
 
 Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCOLO §3.2). Peso zero.
