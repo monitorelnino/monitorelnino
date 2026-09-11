@@ -36,6 +36,7 @@ BASE = "https://paraiba.pb.gov.br"
 PADRAO_URL = BASE + "/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-{n:02d}_{ano}.pdf"
 TETO_NUMERO = 24          # teto de tentativas por ano (cadência irregular; 2026 tinha nº 03 em março)
 MIN_REGIOES = 14          # PB tem 16 Regiões de Saúde; abaixo disso a tabela não veio inteira
+ANO_ESPERADO = [2026]     # ajustado em tempo de execução por coletar(); lista para o parse_texto enxergar
 RESSALVA = ("O Monitor não atribui casos ao El Niño; dados da SES-PB (Sinan Net, Sinan Online, e-SUS Sinan e GAL), "
             "extraídos do Boletim Epidemiológico de Arboviroses Urbanas em PDF — dados sujeitos a alteração.")
 
@@ -136,6 +137,13 @@ def parse_texto(texto: str) -> dict:
     man = re.search(r"^\s*(\d{2})/(\d{4})\s*$", texto, re.M)
     numero = int(man.group(1)) if man else None
     ano = int(man.group(2)) if man else None
+    # 11/09/2026 (achado grave da verificação em navegador real): a URL adivinhada
+    # .../boletim-epidemiologico-arboviroses-urbanas-no-03_2026.pdf serviu, no acesso público, o boletim
+    # "Nº 05 — 20.04.2023". Ou seja, o nome do arquivo NÃO garante a edição: o padrão de URL é inferido, não
+    # publicado. Sem esta guarda, uma rodada gravaria dado de 2023 como leitura corrente. O ano lido DENTRO do
+    # documento manda; divergência do ano corrente = recusa.
+    if ano is not None and ano != ANO_ESPERADO[0]:
+        raise ValueError(f"ano do documento ({ano}) ≠ ano corrente ({ANO_ESPERADO[0]}): a URL pode ter servido edição antiga — recusado")
     quadro = parse_quadro01(texto)
     flux = parse_fluxograma(texto)
     if quadro["total"]["dengue_provaveis"] != flux["provaveis"].get("dengue"):
@@ -149,6 +157,7 @@ def parse_texto(texto: str) -> dict:
 
 def coletar() -> int:
     hoje = _hoje(); ano = hoje.year
+    ANO_ESPERADO[0] = ano
     pdf_url = bruto = None
     interstícios = []
     for num in range(TETO_NUMERO, 0, -1):
@@ -305,6 +314,16 @@ def autoteste() -> int:
         c = destino_do_intersticio(meta + b'<body><a href="/d/boletim_03.pdf">baixar</a></body></html>')
         d = destino_do_intersticio(meta + b'<body>sem destino</body></html>')
         return a == "/arquivos/bol.pdf" and b == "https://x.gov.br/b.pdf" and c == "/d/boletim_03.pdf" and d is None
+    def t_ano_antigo():
+        # 11/09/2026: a URL pública de "no-03_2026.pdf" serviu o boletim "Nº 05 — 20.04.2023".
+        # Documento de ano diferente do corrente tem de ser RECUSADO, nunca gravado como leitura atual.
+        antigo = TEXTO_REAL_N03.replace("03/2026", "05/2023")
+        ANO_ESPERADO[0] = 2026
+        try:
+            parse_texto(antigo); return False
+        except ValueError as e:
+            return "ano do documento" in str(e)
+
     def t9():
         try:
             parse_texto("nada aqui bate com o padrão esperado"); return False
@@ -312,7 +331,7 @@ def autoteste() -> int:
             return True
     def t10():
         return "não atribui casos ao El Niño" in RESSALVA and MIN_REGIOES < 16 and "{n:02d}" in PADRAO_URL
-    return rodar_autoteste({"referência (nº do boletim, ano, SE)": t1, "Quadro 01: 16 Regiões de Saúde": t2,
+    return rodar_autoteste({"documento de ano antigo servido pela URL → recusa": t_ano_antigo,"referência (nº do boletim, ano, SE)": t1, "Quadro 01: 16 Regiões de Saúde": t2,
                             "Quadro 01: linha Total e incidências": t3, "Fluxograma 01 por agravo": t4,
                             "divergência da fonte registrada (739 × 738)": t5,
                             "soma das regiões ≠ Total → recusa": t6, "identidade do fluxograma quebrada → recusa": t7,
