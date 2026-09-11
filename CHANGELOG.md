@@ -9,6 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §36 · SP — quarto instrumento estadual de governança do ciclo, lido na íntegra · 10/09/2026
+
+Nenhuma alteração de método (§12.5); nenhum número do índice muda. Classe **dado** (PROTOCOLO §3.2). Peso zero.
+
+- **Localizado e lido:** Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño 2026-2027 (SES-SP, 31/08/2026, 43 páginas). Preservado como evidência com hash; registrado em `instrumentos.json` e `fontes_uf.json`.
+- **Placar de instrumentos de governança do ciclo: 3 → 4 de 27** (RJ, SC, MT, SP). SP é o **primeiro plano de contingência de saúde** do ciclo — os outros são comitê/decreto (RJ, SC) ou Sala de Situação (MT).
+- **Conteúdo verificável:** estágios mobilização/alerta/emergência + desmobilização/recuperação; 11 de 17 regiões de saúde prioritárias para arboviroses; 7 áreas prioritárias para chuvas extremas; CIEVS 24h; continuidade de cuidado nomeada para diálise, oncologia, oxigenoterapia domiciliar e gestantes.
+- **Regra de robots.txt confirmada pela segunda vez no dia:** o portal recusa robô, mas o PDF é público e abre no navegador — lido por navegação real. Bloqueio a robô não é evidência de indisponibilidade ao cidadão.
+- **Cautela registrada:** um recurso do CVE-SP devolveu `Blocked country: [Brazil]` em acesso automatizado; o runner da Action pode ver conteúdo diferente do navegador local.
+- **Coletor de desfecho de SP não escrito**, com motivo declarado: os dados abertos por município/SE do CVE estavam marcados "atualizados em abril/2026", defasados frente ao boletim semanal. Conferir a fonte corrente antes de codar.
+
 ## §36 · quarto coletor estadual (PB, por Região de Saúde) e dois estados sem fonte coletável (BA, CE) · 10/09/2026
 
 Nenhuma alteração de método (§12.5); nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). Peso zero; nunca lido pelo motor.
