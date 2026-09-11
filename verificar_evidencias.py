@@ -59,6 +59,14 @@ def main() -> int:
                 corrompidos.append(f"{h[:12]}… arquivo ausente ({arq})")
             elif hashlib.sha256(p.read_bytes()).hexdigest() != h:
                 corrompidos.append(f"{h[:12]}… conteúdo não bate com o hash ({arq})")
+    # 11/09/2026 (achado do ensaio): teste negativo permanente. Um item cuja `arquivo` é um .txt e cuja URL de origem
+    # é um .pdf tem a chave = sha256 do TEXTO, não do binário. Sem a marca `texto_manual`, `preservar_evidencias --ler`
+    # o elege como alvo, reextrai o PDF e regrava evidencias/<h>.txt sob o mesmo nome — o conteúdo deixa de bater com a
+    # chave e este portão fica vermelho na rodada (foi o que derrubou o job em 10/09 21h e o ensaio de 11/09).
+    for h, it in itens.items():
+        arq = str(it.get("arquivo") or "")
+        if arq.endswith(".txt") and str(it.get("url", "")).lower().split("?")[0].endswith(".pdf") and not it.get("texto_manual"):
+            corrompidos.append(f"{h[:12]}… evidência de texto com URL .pdf sem `texto_manual: true` — seria sobrescrita por preservar_evidencias --ler ({arq})")
     if corrompidos:
         print("✗ EVIDÊNCIAS: integridade violada:"); [print("   ", c) for c in corrompidos]; return 1
     total = sum(1 for m in mun if m.get("categoria") in PONT and str(m.get("url", "")).startswith("http"))

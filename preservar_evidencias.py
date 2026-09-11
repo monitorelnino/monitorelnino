@@ -51,7 +51,10 @@ def ler_pdfs(limite: int = 40) -> int:
     baixa com o UA do Monitor, extrai o texto por página, grava evidencias/<sha>.txt e indexa (texto_arquivo, paginas, texto_hash).
     Sítio que recusa (401/403) → decisão 'acesso recusado' no log (candidato a pedido de LAI)."""
     idx = ler("evidencias.json", {"itens": {}}); itens = idx.setdefault("itens", {})
-    alvos = [(h, it) for h, it in itens.items() if str(it.get("url", "")).lower().split("?")[0].endswith(".pdf") and not it.get("texto_arquivo")]
+    # 11/09/2026: `not it.get("texto_arquivo")` já exclui itens de texto manual (texto_manual), que registram
+    # texto_arquivo apontando para o próprio arquivo preservado — reextrair sobrescreveria evidencias/<h>.txt sob
+    # o mesmo nome e violaria o portão de integridade (sha256(arquivo) == chave). Explicitado por segurança.
+    alvos = [(h, it) for h, it in itens.items() if str(it.get("url", "")).lower().split("?")[0].endswith(".pdf") and not it.get("texto_arquivo") and not it.get("texto_manual")]
     # registros estaduais/municipais com URL .pdf ainda sem hash
     for reg, fonte in ((ler("estados.json", {}).get("ufs") or [], "estados"), (ler("municipios.json", []) or [], "municipios")):
         for r in reg:
@@ -107,6 +110,11 @@ def reconferir(limite: int = 200) -> int:
     for m in mun:
         h = m.get("hash_evidencia")
         if not h or not str(m.get("url", "")).startswith("http") or n + falhas >= limite: continue
+        if (idx.get("itens") or {}).get(h, {}).get("texto_manual"):
+            # 11/09/2026: item cuja chave é o sha256 do TEXTO preservado (extração manual), não do binário de origem.
+            # Comparar com o hash do PDF rebaixado divergiria SEMPRE e publicaria um evento falso de
+            # "documento-fonte alterado". Alteração desses itens é reconferida por leitura humana.
+            continue
         try:
             bruto = buscar(m["url"], timeout=45)
         except Exception as e:  # noqa: BLE001
