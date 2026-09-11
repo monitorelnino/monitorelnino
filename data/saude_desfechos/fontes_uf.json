@@ -76,7 +76,7 @@
    "painel": null,
    "cievs": null,
    "periodicidade": "semanal (informativo epidemiológico Nº 1 a Nº 34 de 2026 até 03/09/2026; o texto 'uma vez por mês' na página é resíduo de 2022)",
-   "status": "COLETOR ATIVO — informativo semanal de arboviroses por Região de Saúde (coletar_boletim_df_arboviroses.py), lido em 10/09/2026 na íntegra (Nº 34, SE 34/2026: dengue 3.264 prováveis / 195 confirmados, chikungunya 240 prováveis, Zika 12 notif., febre amarela 4 notif.; 7 Regiões de Saúde + Ignorado, somas conferidas); série própria do Monitor acumulando a partir de agora. Correção de 10/09/2026: a fonte é SEMANAL, não mensal como registrado em 09/09.",
+   "status": "COLETOR ATIVO — informativo semanal de arboviroses por Região de Saúde (coletar_boletim_df_arboviroses.py), lido em 10/09/2026 na íntegra (Nº 34, SE 34/2026: dengue 3.264 prováveis / 195 confirmados, chikungunya 240 prováveis, Zika 12 notif., febre amarela 4 notif.; 7 Regiões de Saúde + Ignorado, somas conferidas); série própria do Monitor acumulando a partir de agora. Correção de 10/09/2026: a fonte é SEMANAL, não mensal como registrado em 09/09. BLOQUEIO MEDIDO (11/09/2026): o portal não completa handshake TLS com o runner do Actions (_ssl.c:993, ~45s, igual com UA do Monitor e de navegador), enquanto outras fontes respondem 200 do mesmo runner. Do navegador no Brasil abre normalmente. Nenhum ajuste de parser resolve.",
    "defeso": false
   },
   "ES": {
@@ -131,7 +131,7 @@
    "painel": null,
    "cievs": null,
    "periodicidade": "semanal",
-   "status": "COLETOR ATIVO, MAS FONTE INTERROMPIDA (verificado no runner em 11/09/2026) — a listagem da SES-MS responde normalmente e o padrão de permalink está correto, porém o último boletim semanal de dengue publicado é o da SE 25 (10/07/2026): a secretaria parou a série há ~10 semanas. O coletor passa a recuar até 14 semanas e a DECLARAR a defasagem quando o boletim mais recente for antigo. Interrupção da fonte é achado do §36.",
+   "status": "COLETOR ATIVO, MAS FONTE INTERROMPIDA (verificado no runner em 11/09/2026) — a listagem da SES-MS responde normalmente e o padrão de permalink está correto, porém o último boletim semanal de dengue publicado é o da SE 25 (10/07/2026): a secretaria parou a série há ~10 semanas. O coletor passa a recuar até 14 semanas e a DECLARAR a defasagem quando o boletim mais recente for antigo. Interrupção da fonte é achado do §36. CORREÇÃO (11/09/2026): a série NÃO está interrompida — a SE 34/2026 está publicada; o coletor procurava permalink de post em vez da listagem, onde os PDFs estão expostos direto.",
    "defeso": false
   },
   "MT": {
@@ -164,7 +164,7 @@
    "painel": "https://paraiba.pb.gov.br/diretas/saude/consultas/vigilancia-em-saude-1/paineis-de-monitoramento-01",
    "cievs": null,
    "periodicidade": "irregular — boletins NUMERADOS (nº 02 ≈ SE 05, nº 03 = SE 08); a numeração não acompanha a SE",
-   "status": "COLETOR ATIVO — boletim de arboviroses por Região de Saúde (coletar_boletim_pb_arboviroses.py), lido em 10/09/2026 na íntegra (nº 03/2026, SE 08: Quadro 01 com as 16 Regiões de Saúde, população, prováveis de dengue/chik/zika/Oropouche e 5 incidências; Fluxograma por agravo). Melhor formato depois de MS: tabela em texto, somas fecham. Correção de registro: o padrão real de URL não é 'no_01_2026.pdf' como suposto em 09/09. · 11/09/2026 (1ª rodada real): o portal responde HTTP 200 com text/html — página intermediária do Plone — em vez do PDF. O coletor passa a seguir o destino declarado nessa página (meta refresh, window.location ou link .pdf), sem jamais adivinhar URL de arquivo.",
+   "status": "COLETOR ATIVO — boletim de arboviroses por Região de Saúde (coletar_boletim_pb_arboviroses.py), lido em 10/09/2026 na íntegra (nº 03/2026, SE 08: Quadro 01 com as 16 Regiões de Saúde, população, prováveis de dengue/chik/zika/Oropouche e 5 incidências; Fluxograma por agravo). Melhor formato depois de MS: tabela em texto, somas fecham. Correção de registro: o padrão real de URL não é 'no_01_2026.pdf' como suposto em 09/09. · 11/09/2026 (1ª rodada real): o portal responde HTTP 200 com text/html — página intermediária do Plone — em vez do PDF. O coletor passa a seguir o destino declarado nessa página (meta refresh, window.location ou link .pdf), sem jamais adivinhar URL de arquivo. ATENÇÃO (11/09/2026): o acesso público passa por interstício HTML (cookie) e a URL 'no-03_2026.pdf' chegou a servir o boletim 'Nº 05 — 20.04.2023' — o nome do arquivo NÃO garante a edição. O coletor recusa documento cujo ano interno difira do ano corrente.",
    "defeso": false
   },
   "PE": {
@@ -175,7 +175,7 @@
    "painel": "https://app.powerbi.com/view?r=eyJrIjoiNzAyNzJlNjItM2JkYy00ZjRjLTk4OWEtZjE3NTY2OWQzZjQzIiwidCI6ImQ1ZTU0MGZmLTkzNzAtNGNhMi04YmVmLWQwMzcyMWQxM2MwNSJ9",
    "cievs": null,
    "periodicidade": "semanal (informe acumulado 'SE 01 a NN'; nº 34 publicado 03/09/2026, nº 35 noticiado em 09/09)",
-   "status": "COLETOR ATIVO (TOTAIS ESTADUAIS) — informe semanal de arboviroses do CIEVS-PE (coletar_boletim_pe_arboviroses.py), lido em 10/09/2026 na íntegra (SE 01 a 34/2026: dengue 22.281 prováveis / 10.848 confirmados / 649 graves, chik 2.187, zika 104; 3 óbitos confirmados por arboviroses). LIMITAÇÃO: é PDF-infográfico e a Tabela 1 (por município) é IMAGEM — não lida por máquina; granularidade municipal só no painel Power BI (não automatizável). Série própria do Monitor a partir de agora. · 11/09/2026 (1ª rodada real): a listagem anuncia a edição nova ANTES de publicar o arquivo (SE 35 anunciada, PDF ausente; o da SE 34 baixa normalmente do runner). O coletor passa a tentar as 4 edições mais recentes em ordem decrescente e registra as anunciadas sem arquivo.",
+   "status": "COLETOR ATIVO (TOTAIS ESTADUAIS) — informe semanal de arboviroses do CIEVS-PE (coletar_boletim_pe_arboviroses.py), lido em 10/09/2026 na íntegra (SE 01 a 34/2026: dengue 22.281 prováveis / 10.848 confirmados / 649 graves, chik 2.187, zika 104; 3 óbitos confirmados por arboviroses). LIMITAÇÃO: é PDF-infográfico e a Tabela 1 (por município) é IMAGEM — não lida por máquina; granularidade municipal só no painel Power BI (não automatizável). Série própria do Monitor a partir de agora. · 11/09/2026 (1ª rodada real): a listagem anuncia a edição nova ANTES de publicar o arquivo (SE 35 anunciada, PDF ausente; o da SE 34 baixa normalmente do runner). O coletor passa a tentar as 4 edições mais recentes em ordem decrescente e registra as anunciadas sem arquivo. CORREÇÃO (11/09/2026): a listagem anuncia edição (SE 35) antes de publicar o arquivo; o coletor passa a descer até a edição mais recente que responda com PDF.",
    "defeso": false
   },
   "PI": {
