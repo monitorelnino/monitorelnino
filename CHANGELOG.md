@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## Correção · evidências de texto preservadas à mão colidiam com `preservar_evidencias --ler` · 11/09/2026
+
+Nenhuma alteração de método; nenhum número muda. Classe **código + dado** (PROTOCOLO §3.2). **Achado por ensaio** (`workflow_dispatch` com `ensaio=true`), antes de qualquer publicação — é exatamente o que o modo ensaio existe para pegar.
+
+- **Sintoma.** Portão 6 vermelho na rodada real com "conteúdo não bate com o hash" para a evidência de Itajaí/SC. Invisível localmente: sem rede, nenhum PDF é rebaixado e o hash bate.
+- **Causa-raiz.** As três evidências criadas manualmente em 10/09 (Itajaí/SC, São Gonçalo/RJ e o plano estadual de SP) registraram `arquivo: evidencias/<h>.txt` com `h` = sha256 **do texto** que foi redigido a partir do PDF. Mas a convenção do projeto é outra: `evidencias/<h>.txt` é o texto extraído do documento cujo **binário** tem hash `h`. Como a URL de origem termina em `.pdf` e o item não tinha `texto_arquivo`, `preservar_evidencias.py --ler` elegia o item como alvo, rebaixava o PDF e regravava `evidencias/<h>.txt` sob o mesmo nome — o conteúdo deixava de bater com a chave e o portão fechava o job **antes do commit**.
+- **Consequência já ocorrida:** foi isto que derrubou a rodada agendada de **10/09 às 21h** (39,5 min, falha no passo de relatório após o portão) e o ensaio de 11/09. Em ambas, os dados foram coletados mas **não foram gravados**.
+- **Correção.** Os três itens ganham `texto_arquivo`, `texto_hash` e a marca **`texto_manual: true`**, com a convenção explicada na própria nota do item. `preservar_evidencias.py`: `--ler` exclui explicitamente itens `texto_manual` (não reextrai) e `--reconferir` os pula (comparar com o hash do binário divergiria sempre e publicaria **evento falso** de "documento-fonte alterado" no feed).
+- **Teste negativo permanente** em `verificar_evidencias.py`: item com `arquivo` `.txt` + URL `.pdf` **sem** `texto_manual` é erro de integridade. Verificado nos dois sentidos — reintroduzindo a falha o portão fica vermelho; com a correção, verde.
+
 ## §36 · SP — quarto instrumento estadual de governança do ciclo, lido na íntegra · 10/09/2026
 
 Nenhuma alteração de método (§12.5); nenhum número do índice muda. Classe **dado** (PROTOCOLO §3.2). Peso zero.
