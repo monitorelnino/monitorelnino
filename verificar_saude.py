@@ -130,6 +130,24 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                     _a = _snap.get(_ag) or {}
                     if _a.get("notificados") != (_a.get("provaveis") or 0) + (_a.get("descartados") or 0): erros.append(f"(s) ses_pe_arboviroses {_se} {_ag}: notificados ≠ prováveis + descartados — não deveria ter sido publicado")
                     if (_a.get("confirmados") or 0) > (_a.get("provaveis") or 0): erros.append(f"(s) ses_pe_arboviroses {_se} {_ag}: confirmados > prováveis")
+        _pbd = RAIZ / "data" / "saude_desfechos" / "ses_pb_arboviroses.json"
+        if _pbd.exists():
+            # (t) 10/09/2026: PB — Quadro 01 por Região de Saúde (16) + Fluxograma por agravo. Nunca lido pelo motor;
+            # ressalva presente; soma das regiões fecha com o Total; identidade do fluxograma fecha.
+            if re.search(r"ses_pb_arboviroses\.json", motor): erros.append("(t) recalcular_mare.py referencia ses_pb_arboviroses.json (proibido)")
+            _bj = json.load(open(_pbd, encoding="utf-8"))
+            if "não atribui casos ao El Niño" not in _bj.get("_governanca", ""): erros.append("(t) ses_pb_arboviroses.json sem a ressalva de não-atribuição")
+            for _se, _snap in (_bj.get("serie") or {}).items():
+                _q = _snap.get("quadro_por_regiao") or {}
+                _pr, _tt = _q.get("por_regiao") or {}, _q.get("total") or {}
+                if len(_pr) < 14: erros.append(f"(t) ses_pb_arboviroses {_se}: só {len(_pr)} regiões de saúde — não deveria ter sido publicado")
+                for _campo in ("dengue_provaveis", "chik_provaveis", "arbo_provaveis"):
+                    _soma = sum((r.get(_campo) or 0) for r in _pr.values())
+                    if _soma != _tt.get(_campo): erros.append(f"(t) ses_pb_arboviroses {_se}: soma das regiões em {_campo} ({_soma}) ≠ Total ({_tt.get(_campo)})")
+                _fx = _snap.get("fluxograma") or {}
+                for _ag in ("dengue", "chikungunya"):
+                    _n2 = (_fx.get("notificados") or {}).get(_ag); _p2 = (_fx.get("provaveis") or {}).get(_ag); _d2 = (_fx.get("descartados") or {}).get(_ag)
+                    if None not in (_n2, _p2, _d2) and _n2 != _p2 + _d2: erros.append(f"(t) ses_pb_arboviroses {_se} {_ag}: notificados ≠ prováveis + descartados")
         if (_sd / "gatilhos.json").exists():
             for g in json.load(open(_sd / "gatilhos.json", encoding="utf-8")).get("gatilhos", []):
                 if g.get("status_monitor") not in ("computavel", "computavel_parcial", "leitura_humana", "sem_coleta", "nao_publico"): erros.append(f"(o) gatilho com status fora do vocabulário: {g.get('id')}")
