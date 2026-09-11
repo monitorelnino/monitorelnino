@@ -33,6 +33,15 @@ ALVOS = [
     ("PE · PDF do informe (SE 34)", "https://portalcievs.saude.pe.gov.br/docs/Informe%20Epidemiolo%CC%81gico%20Arboviroses_SE%2001%20a%2034_2026.pdf"),
     ("PB · boletim nº 03/2026", "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-03_2026.pdf"),
     ("SP · portal CVE (controle)", "https://portal.saude.sp.gov.br/"),
+    # 11/09/2026: a figura "SRAG por semana · Brasil" está sem gráfico no site porque
+    # data/saude_desfechos/srag_serie.json nunca foi criado — coletar_srag_gripe.py registra URLError
+    # desde 09/09. Verificado em navegador no Brasil: gitlab.procc.fiocruz.br dá ERR_CONNECTION_TIMED_OUT.
+    # Medir aqui separa "servidor fora do ar" de "migrou de endereço": o InfoGripe aparece agora também em
+    # gitlab.fiocruz.br/marcelo.gomes/infogripe, mas esse host pede login (não serve para coleta anônima).
+    ("InfoGripe · CSV canônico (host antigo)", "https://gitlab.procc.fiocruz.br/mave/repo/-/raw/master/Dados/InfoGripe/serie_temporal_com_estimativas_recentes.csv"),
+    ("InfoGripe · host antigo, raiz", "https://gitlab.procc.fiocruz.br/"),
+    ("InfoGripe · host novo, raiz", "https://gitlab.fiocruz.br/"),
+    ("InfoGripe · host novo, CSV equivalente", "https://gitlab.fiocruz.br/marcelo.gomes/infogripe/-/raw/master/Dados/InfoGripe/serie_temporal_com_estimativas_recentes.csv"),
     ("controle: fonte que já funciona", "https://queridodiario.ok.org.br/"),
 ]
 
