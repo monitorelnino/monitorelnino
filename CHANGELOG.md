@@ -9,6 +9,19 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §36 · por que os coletores estaduais não baixaram, medido e corrigido · 11/09/2026
+
+Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCOLO §3.2). Peso zero.
+
+Na primeira rodada real os quatro coletores (MS, DF, PE, PB) declararam lacuna. A suposição inicial — bloqueio geográfico ao runner — foi **medida e descartada** por `scripts/diagnostico_fontes_saude.py` (dois User-Agents por alvo, com controles). O UA não influi em nenhum caso. As causas são quatro, distintas:
+
+- **MS — erro do coletor.** A listagem responde 200 do runner; o que falhava era procurar um **permalink de post** que a listagem não usa. Verificado em navegador real: os PDFs estão expostos direto, em `/wp-content/uploads/<ano>/<mês>/Boletim-Epidemiologico-Dengue-–-Semana-NN-–-AAAA.pdf` (separador é travessão U+2013), e a **SE 34/2026 está publicada**. A série não foi interrompida, como se supunha. Passa a raspar a listagem, com o permalink como segundo caminho.
+- **PE — erro do coletor.** Listagem e PDF respondem 200. O coletor pediu a **SE 35**, anunciada na listagem antes de o arquivo existir, levou `HTTPError` e desistiu sem tentar a SE 34, que estava no ar. Agora desce a lista das edições mais recentes até uma responder com PDF, e **registra** que houve edição anunciada sem arquivo — fato da fonte, não erro silencioso.
+- **PB — risco sério evitado.** Responde 200, mas com `text/html`: um interstício que só entrega o PDF depois do cookie. Pior: no acesso público, a URL `...no-03_2026.pdf` serviu o boletim **"Nº 05 — 20.04.2023"**. O padrão de URL é inferido, não publicado — o nome do arquivo **não garante a edição**. Sem guarda, uma rodada gravaria dado de 2023 como leitura corrente. Passa a valer o ano lido **dentro** do documento: divergir do ano corrente é recusa, com autoteste dedicado.
+- **DF (e SP) — obstáculo real de rede.** `_ssl.c:993: handshake timed out`, ~45 s, idêntico com os dois UAs, enquanto o Querido Diário responde 200 do mesmo runner. Não é parser, não é UA: esses dois portais não completam TLS com o runner. Fica declarado; nenhum ajuste de código resolve.
+
+O desenho defensivo se confirmou: nas quatro fontes, o desfecho foi lacuna auditável — em nenhum momento entrou dado parcial ou de ano errado.
+
 ## §36 · três coletores estaduais corrigidos pelo que a 1ª rodada real mostrou (MS, PE, PB) · 11/09/2026
 
 Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCOLO §3.2). Peso zero.

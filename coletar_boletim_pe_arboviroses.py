@@ -59,14 +59,24 @@ def _norm(s: str) -> str:
     return unicodedata.normalize("NFC", s)
 
 
-def extrair_link_mais_recente(html: str, ano: int) -> tuple:
-    """Acha na listagem o link do informe 'SE 01 a NN' de maior NN do ano. Função pura. (None, None) se não achar."""
+def extrair_links(html: str, ano: int) -> list:
+    """Todos os informes 'SE 01 a NN' do ano, do mais recente ao mais antigo, como [(url, se), ...].
+    11/09/2026: antes devolvia só o mais recente. O portal anuncia a edição nova na listagem ANTES de o PDF
+    existir — na primeira rodada real o coletor pediu a SE 35, levou HTTPError e desistiu, sem tentar a SE 34,
+    que estava no ar e responde 200. Agora coletar() desce a lista até uma que responda com PDF."""
     html = _norm(html)
     achados = re.findall(r'href="([^"]*Informe Epidemiol[óo]gico Arboviroses_SE ?0?1 a (\d{1,2})_' + str(ano) + r'\.pdf)"', html, re.I)
-    if not achados:
-        return None, None
-    href, se = max(achados, key=lambda t: int(t[1]))
-    return _url_canonica(href), int(se)
+    vistos, saida = set(), []
+    for href, se in sorted(achados, key=lambda t: int(t[1]), reverse=True):
+        if se not in vistos:
+            vistos.add(se); saida.append((_url_canonica(href), int(se)))
+    return saida
+
+
+def extrair_link_mais_recente(html: str, ano: int) -> tuple:
+    """Compatibilidade: só o mais recente. (None, None) se não achar."""
+    links = extrair_links(html, ano)
+    return links[0] if links else (None, None)
 
 
 def _url_canonica(href: str) -> str:
