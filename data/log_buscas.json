@@ -345657,6 +345657,1648 @@
    "fonte_suspensa_defeso": false,
    "executor": "robo",
    "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.gov.br/mdr/pt-br/noticias-midr/RSS"
+   ],
+   "n_resultados": null,
+   "resultados": "MIDR — RSS de /noticias-midr: resposta não é RSS (HTML/login); usando a listagem HTML",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RS",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-21-cidades-afetadas-por-desastres"
+   ],
+   "n_resultados": null,
+   "resultados": "MIDR: município não casou com IBGE: Por fim/RS",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "86ba6352c659d3c53ebbd3d76084b9543b8290ef1d6adf4f886fe3a160681f46"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MG",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-14-cidades-afetadas-por-desastres"
+   ],
+   "n_resultados": null,
+   "resultados": "MIDR: município não casou com IBGE: Beruzal/MG",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "8a147302d0fde468375b1cb09dfc38de50081f9211e5a874db9f43880e81102b"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PR",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-14-cidades-afetadas-por-desastres"
+   ],
+   "n_resultados": null,
+   "resultados": "MIDR: município não casou com IBGE: Cândido Abreu/PR",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "8a147302d0fde468375b1cb09dfc38de50081f9211e5a874db9f43880e81102b"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RS",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-14-cidades-afetadas-por-desastres"
+   ],
+   "n_resultados": null,
+   "resultados": "MIDR: município não casou com IBGE: Por fim/RS",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "8a147302d0fde468375b1cb09dfc38de50081f9211e5a874db9f43880e81102b"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RO",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-na-cidade-de-guajara-mirim-em-rondonia-afetada-por-erosao-de-margem-fluvial"
+   ],
+   "n_resultados": null,
+   "resultados": "MIDR: município não casou com IBGE: Guajar\\u00e1-Mirim/RO",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "d91aa0678bdcb9181c69d7d8fbafdaf2497cdd438a24518095e5553875bba87e"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RO",
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-na-cidade-de-guajara-mirim-em-rondonia-afetada-por-erosao-de-margem-fluvial"
+   ],
+   "n_resultados": null,
+   "resultados": "MIDR: município não casou com IBGE: Rond\\u00f4nia/RO",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "d91aa0678bdcb9181c69d7d8fbafdaf2497cdd438a24518095e5553875bba87e"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://www.gov.br/mdr/pt-br/noticias-midr"
+   ],
+   "n_resultados": 39,
+   "resultados": "MIDR (listagem HTML): 39 notícias de reconhecimento, 59 municípios lidos, 0 novos",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "452f2675d3ebd0efe7febd1edf9218daf9beed5904a32afc7e883739f13b768f"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "S2iD — Sistema Integrado de Informações sobre Desastres"
+   ],
+   "n_resultados": null,
+   "resultados": "S2iD — Sistema Integrado de Informações sobre Desastres: sem API pública confirmada (§15)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=11-09-2026"
+   ],
+   "n_resultados": 0,
+   "resultados": "0 itens, 0 novos",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "1fd649c5bb1bc29f1b8f530de510a1b198bf0c1be420ad8cd6657f6fefd63ad6"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "MUNIC/IBGE — bloco Gestão de riscos e desastres"
+   ],
+   "n_resultados": null,
+   "resultados": "MUNIC/IBGE — bloco Gestão de riscos e desastres: url/edição não confirmada (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "ICM/SEDEC — Indicador de Capacidade Municipal"
+   ],
+   "n_resultados": null,
+   "resultados": "ICM/SEDEC — Indicador de Capacidade Municipal: url/edição não confirmada (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "AC",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/AC"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/AC: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "AM",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/AM"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/AM: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "AP",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/AP"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/AP: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "PA",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/PA"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/PA: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "RO",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/RO"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/RO: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "RR",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/RR"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/RR: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "TO",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/TO"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/TO: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "AL",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/AL"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/AL: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "BA",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/BA"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/BA: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "CE",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/CE"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/CE: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "MA",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/MA"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/MA: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "PB",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/PB"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/PB: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "PE",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/PE"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/PE: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "PI",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/PI"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/PI: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "RN",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/RN"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/RN: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "SE",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/SE"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/SE: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "DF",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/DF"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/DF: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "GO",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/GO"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/GO: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "MS",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/MS"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/MS: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "MT",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/MT"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/MT: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "ES",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/ES"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/ES: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "MG",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/MG"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/MG: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "RJ",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/RJ"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/RJ: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "SP",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/SP"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/SP: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "PR",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/PR"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/PR: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "RS",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/RS"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/RS: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "repositorio_estadual",
+   "camada": 1,
+   "uf": "SC",
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "DOE/SC"
+   ],
+   "n_resultados": null,
+   "resultados": "DOE/SC: adaptador não confirmado (a_verificar)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOM",
+   "camada": 1,
+   "uf": "AC",
+   "municipio": "Jordão",
+   "ibge": "1200328",
+   "nivel": null,
+   "strings": [
+    "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1200328&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50"
+   ],
+   "n_resultados": null,
+   "resultados": "Querido Diário/Jordão-AC: TimeoutError",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOM",
+   "camada": 2,
+   "uf": "AL",
+   "municipio": "Ouro Branco",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://data.queridodiario.ok.org.br/2706109/2026-07-15/d36309fed9474b73af88d06702945be2aaaae903.pdf"
+   ],
+   "n_resultados": null,
+   "resultados": "evidência Ouro Branco/AL: HTTPError",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "AL",
+   "municipio": "Maceió",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://maceio.al.gov.br/noticias/defesa-civil/defesa-civil-intensifica-acoes-preventivas-para-o-periodo-chuvoso-em-maceio"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash a50386d66d7a… → 5626b8f8d237… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "BA",
+   "municipio": "Salvador",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://codesal.salvador.ba.gov.br/noticias/"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash a9b795dee062… → 30d93a3a5765… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "CE",
+   "municipio": "Fortaleza",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-anuncia-acoes-da-operacao-quadra-chuvosa-de-2026"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash f303ded4df0d… → 075a62f11a60… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "MA",
+   "municipio": "São Luís",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.saoluis.ma.gov.br/portal/noticias/0/3/2902/defesa-civil-de-sao-luis-conclui-mapeamento-de-areas-com-riscos-de-alagamentos"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash ff58e7ee82ed… → 76759cd0a2e8… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "PR",
+   "municipio": "Curitiba",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.agoraparana.com.br/curitiba/curitiba-e-municipios-da-rmc-estao-juntos-para-enfrentar-o-maior-el-nino-dos-ultimos-140-anos/"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash 16d9f790be79… → f8eec9aabb12… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "orgao_estadual",
+   "camada": 2,
+   "uf": "RJ",
+   "municipio": "Rio de Janeiro",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash 0bec3f334a68… → 7851c7c41620… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "orgao_estadual",
+   "camada": 2,
+   "uf": "SP",
+   "municipio": "São Paulo",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://prefeitura.sp.gov.br/web/secretaria_executiva_de_mudancas_climaticas/participacao_social/conselhos_e_orgaos_colegiados/plano_preventivo_de_chuva_de_verao"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash afb98559630a… → 6cf440fac6b6… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "RS",
+   "municipio": "Porto Alegre",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://prefeitura.poa.br/defesa-civil/plano-de-contingencias-de-protecao-e-defesa-civil"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash d8fc1606b3d4… → 3562151fab20… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "SP",
+   "municipio": "Guarulhos",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.guarulhos.sp.leg.br/noticia/plano-da-defesa-civil-para-o-verao-e-apresentado-na-camara-323"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash 919eb327cbfd… → b9b63b93c585… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "RJ",
+   "municipio": "Duque de Caxias",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.cmdc.rj.gov.br/?p=32729"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash 14e67b27edde… → 98b84f326a8e… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": "RJ",
+   "municipio": "Macaé",
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.macae.rj.gov.br/noticias/leitura/noticia/macae-participa-de-encontro-estadual-para-tracar-estrategias-de-resposta-aos-impactos-do-el-nino"
+   ],
+   "n_resultados": null,
+   "resultados": "documento-fonte alterado em 11/09/2026: hash 39063a2d1f77… → c79f4a2fa38d… (categoria mantida; julgamento humano)",
+   "decisao": "pista",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "AC",
+   "municipio": "Rio Branco",
+   "ibge": "1200401",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1200401&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 119.0, 'casos_notif': 14, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "36287ff91fe83bf247a1f9ad0d33c4358328a8b5371968b3fd24d4e01e13bb07"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "AL",
+   "municipio": "Maceió",
+   "ibge": "2704302",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2704302&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 69.0, 'casos_notif': 20, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "58d659353f569f253807296a9c8137644334556730666420a59614cf8cf929e4"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "AM",
+   "municipio": "Manaus",
+   "ibge": "1302603",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1302603&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 86.0, 'casos_notif': 25, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "5e7d86e2693c14be2135766c6c132c5e9a67928c12a795b9900a7357ef7cefa9"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "AP",
+   "municipio": "Macapá",
+   "ibge": "1600303",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1600303&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 174.0, 'casos_notif': 3, 'nivel': 2, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "c3ba2039edd8d22ee7bd75ec00a382ac861c0c76864bb46a3667c5d1741c5e13"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "BA",
+   "municipio": "Salvador",
+   "ibge": "2927408",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2927408&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 247.0, 'casos_notif': 44, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "b4663e2d97ba7d7aca0ca3ffa7704405a316624277963131d437b289490e751d"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "CE",
+   "municipio": "Fortaleza",
+   "ibge": "2304400",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2304400&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 183.5, 'casos_notif': 13, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "09a3a877bcca85709fe20151f714278db2d3684300fb3c05e8d0cd5e258560d5"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "DF",
+   "municipio": "Brasília",
+   "ibge": "5300108",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=5300108&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 248.0, 'casos_notif': 126, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "553110ce1a616c4fc3f56e2553709f2fb9cabda40cdce064688e0879819731ca"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "ES",
+   "municipio": "Vitória",
+   "ibge": "3205309",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=3205309&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 53.0, 'casos_notif': 36, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "5f3a47ada8e7ebbcfb56de96c65a95007b53328729bf4ad44d649fcac29da2ed"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "GO",
+   "municipio": "Goiânia",
+   "ibge": "5208707",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=5208707&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 369.5, 'casos_notif': 135, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "afc7b381a2127b0d47b825d7afc4b8026d7007fcdd22f79b0a6633b9bd33ef19"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MA",
+   "municipio": "São Luís",
+   "ibge": "2111300",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2111300&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 31.0, 'casos_notif': 0, 'nivel': 2, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "7db49ad139a1da88bf92b60d36d4aaccd81e3f1e9d7358c4cab9e814be7bd9ea"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MG",
+   "municipio": "Belo Horizonte",
+   "ibge": "3106200",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=3106200&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 735.0, 'casos_notif': 54, 'nivel': 3, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "64f479049a4f31152243b390199e501654a5f354d2c9518a4c812b1bdb157838"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MS",
+   "municipio": "Campo Grande",
+   "ibge": "5002704",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=5002704&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 24.0, 'casos_notif': 0, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "c9c86c626dd1a21517cad47f822b5aed704f652681119858457e746368456066"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MT",
+   "municipio": "Cuiabá",
+   "ibge": "5103403",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=5103403&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 4.0, 'casos_notif': 0, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "353924a1483190a79b7e1463ae2ce1d29c72935ca432497bac5b4ed813efa3f4"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PA",
+   "municipio": "Belém",
+   "ibge": "1501402",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1501402&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 71.0, 'casos_notif': 3, 'nivel': 2, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "c7172c0fecaa93b9421f7244564f9e9e8d0bf0a1f0bcc73876de139c69217224"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PB",
+   "municipio": "João Pessoa",
+   "ibge": "2507507",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2507507&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 156.0, 'casos_notif': 52, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "28be6accde8b946d9df8ad79696ae87d9eccddeb06a985d04f521e01835e81b1"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PE",
+   "municipio": "Recife",
+   "ibge": "2611606",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2611606&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 350.0, 'casos_notif': 33, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "c262bb5573a91b0f5b73ac4880b3dcfaa9be9d79f81e839f67a238cac5e2b582"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PI",
+   "municipio": "Teresina",
+   "ibge": "2211001",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2211001&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 32.0, 'casos_notif': 0, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "e5ed28ce04f4b4beb8bc73584f1425ef6a4b79e0e233cb1d9631ef5dcd774ee3"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PR",
+   "municipio": "Curitiba",
+   "ibge": "4106902",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=4106902&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 5.0, 'casos_notif': 5, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "aa49073ce466c984c6afecbdc6367b2aad8524cf581b26c1ea0da9786f448aa6"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RJ",
+   "municipio": "Rio de Janeiro",
+   "ibge": "3304557",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=3304557&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 248.0, 'casos_notif': 104, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "59daffd67f0ad1cd16315974e49950fc1e79193cfd40a362825503a6977ba417"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RN",
+   "municipio": "Natal",
+   "ibge": "2408102",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2408102&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 68.0, 'casos_notif': 21, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "9447e2a933b930f3de69f59c1fdd8105c0bd76d6829c0b2548a9e71700f553e0"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RO",
+   "municipio": "Porto Velho",
+   "ibge": "1100205",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1100205&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 20.0, 'casos_notif': 0, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "d6e4146a7cd091df4a3315ba91cbc8f110679f9950bff05fa38c0e219c8802ca"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RR",
+   "municipio": "Boa Vista",
+   "ibge": "1400100",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1400100&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 34.0, 'casos_notif': 7, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "62fbf210dcc466afbcfbf7f5d84ee2207029a5fb40e8b2418d0a81b46817c5d3"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RS",
+   "municipio": "Porto Alegre",
+   "ibge": "4314902",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=4314902&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 0.0, 'casos_notif': 0, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "bb2c08caf2b30b8f8e9515477d202133d86005d2d66409b1c4f9154dbfbf087b"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "SC",
+   "municipio": "Florianópolis",
+   "ibge": "4205407",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=4205407&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 28.0, 'casos_notif': 10, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "664080b4a2848ebf49b1c7ff82160c8c074a21175658fd2516b6699f01e740ea"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "SE",
+   "municipio": "Aracaju",
+   "ibge": "2800308",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2800308&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 72.0, 'casos_notif': 7, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "1404f0a510af87656469a80f52d0a4b2973e727e5311e72054f40843c2974f30"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "SP",
+   "municipio": "São Paulo",
+   "ibge": "3550308",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=3550308&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 260.0, 'casos_notif': 260, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "4cd0a4ddac9899797cb91d89886394dd62386ff6ca94f1c5354df4a0282ed6da"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "TO",
+   "municipio": "Palmas",
+   "ibge": "1721000",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1721000&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 35,
+   "resultados": "InfoDengue: {'se': 202635, 'casos_est': 192.0, 'casos_notif': 108, 'nivel': 1, 'data_iniSE': 1788048000000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": "d813bfbee83baf4972b1b18417bb1a287ae427e114669f0156432832bbd29c89"
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=<ibge>&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2019&ey_end=2026"
+   ],
+   "n_resultados": 313,
+   "resultados": "Desfechos em saúde: 313 municípios do painel com série InfoDengue 2019–2026; canal endêmico e nowcasting calculados",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "InfoGripe (série SRAG)"
+   ],
+   "n_resultados": null,
+   "resultados": "InfoGripe (série SRAG): URLError",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_estadual",
+   "camada": 2,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.saude.ms.gov.br/wp-content/uploads/2026/09/Boletim-Epidemiologico-Dengue-–-Semana-34-–-2026.pdf"
+   ],
+   "n_resultados": null,
+   "resultados": "SES-MS boletim https://www.saude.ms.gov.br/wp-content/uploads/2026/09/Bolet: ModuleNotFoundError",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_estadual",
+   "camada": 2,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://www.saude.df.gov.br/informes-dengue-chikungunya-zika-febre-amarela"
+   ],
+   "n_resultados": null,
+   "resultados": "SES-DF (listagem de informes de arboviroses): URLError",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_estadual",
+   "camada": 2,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://portalcievs.saude.pe.gov.br/noticias/INFORMES/arbovirose"
+   ],
+   "n_resultados": null,
+   "resultados": "CIEVS-PE (informe de arboviroses): nenhuma das 3 edições mais recentes respondeu com PDF (SE 35: HTTPError; SE 34: HTTPError; SE 33: HTTPError)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_estadual",
+   "camada": 2,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-01_2026.pdf"
+   ],
+   "n_resultados": null,
+   "resultados": "SES-PB (boletim de arboviroses): nenhum boletim nº 01–24 de 2026 respondeu com PDF — o portal devolveu HTML em vez do arquivo (nº 24: HTML sem destino declarado; nº 23: HTML sem destino declarado; nº 22: HTML sem destino declarado; nº 21: HTML sem destino declarado)",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOM",
+   "camada": 2,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plancon-edicao-2026.pdf"
+   ],
+   "n_resultados": null,
+   "resultados": "leitura de PDF https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Pla: URLError",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "site_municipal",
+   "camada": 2,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://data.queridodiario.ok.org.br/2706109/2026-07-15/d36309fed9474b73af88d06702945be2aaaae903.pdf"
+   ],
+   "n_resultados": null,
+   "resultados": "HTTP 403 ao ler PDF — candidato a pedido de LAI",
+   "decisao": "acesso recusado",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": "5200050",
+   "nivel": null,
+   "strings": [
+    "Portal/5200050"
+   ],
+   "n_resultados": null,
+   "resultados": "Portal/5200050: HTTPError 403",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "Portal da Transparência"
+   ],
+   "n_resultados": null,
+   "resultados": "Portal da Transparência: chave recusada (HTTP 403); demais consultas puladas",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://repositorio.dados.gov.br/seges/detru/",
+    "https://api.transferegov.gestao.gov.br/fundoafundo/programa?ano_programa=eq.2026&limit=500"
+   ],
+   "n_resultados": 180,
+   "resultados": "TransfereGov: 82,379 propostas municipais ≥2025; r5 2026 em 28 semanas; 180 instrumentos com objeto do ciclo (fila de revisão); carga 17/07/2026 06:30:47",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-11",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": "nacional",
+   "strings": [
+    "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/202606",
+    "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/202607",
+    "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/202608",
+    "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/202609"
+   ],
+   "n_resultados": 4,
+   "resultados": "Execução das ações das MPs 1.367 e 1.384: MP 1.367/2026 pago R$ 225,978,666 (202606, 202607, 202608, 202609); MP 1.384/2026 pago R$ 44,233,631 (202608, 202609)",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "robo",
+   "hash_evidencia": null
   }
  ]
 }
