@@ -205,7 +205,32 @@ function renderEstrutura(){
 function renderSRAG(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const br = SRAG && SRAG.serie && SRAG.serie.BR;
-  if (!br) { fonteFigura('boxSRAG', {fontes: ['InfoGripe (Fiocruz/FGV)'], data: null}); return; }
+  if (!br) {
+    // 11/09/2026: sem srag_serie.json a figura ficava como moldura vazia, sem dizer nada a quem lê — o pior
+    // desfecho possível. O arquivo não existe porque coletar_srag_gripe.py acusa URLError desde 09/09:
+    // gitlab.procc.fiocruz.br (CSV canônico do InfoGripe) não responde nem do runner nem de um navegador no
+    // Brasil (ERR_CONNECTION_TIMED_OUT). Ausência de dado passa a ser DECLARADA na própria figura.
+    const cv = document.getElementById('cSRAG');
+    if (cv && cv.parentElement) {
+      // a lacuna vai DENTRO da mídia (como em financiamento.js), não como parágrafo ao lado:
+      // o portão de figuras só admite título, legenda e crédito no cartão.
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 900 220'); svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-label', 'Série de SRAG ainda não coletada — lacuna declarada; a fonte InfoGripe não respondeu nas últimas tentativas de coleta');
+      const t1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      t1.setAttribute('x', '450'); t1.setAttribute('y', '100'); t1.setAttribute('text-anchor', 'middle');
+      t1.setAttribute('font-size', '15'); t1.setAttribute('fill', MonitorMapas.cor('muted'));
+      t1.textContent = 'Série ainda não coletada — lacuna declarada';
+      const t2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      t2.setAttribute('x', '450'); t2.setAttribute('y', '126'); t2.setAttribute('text-anchor', 'middle');
+      t2.setAttribute('font-size', '12.5'); t2.setAttribute('fill', MonitorMapas.cor('muted'));
+      t2.textContent = 'A fonte (InfoGripe/Fiocruz) não respondeu nas últimas tentativas de coleta.';
+      svg.appendChild(t1); svg.appendChild(t2);
+      cv.parentElement.replaceChild(svg, cv);
+    }
+    fonteFigura('boxSRAG', {fontes: ['InfoGripe (Fiocruz/FGV)'], data: null});
+    return;
+  }
   const canal = (SRAG.canal_endemico || {}).BR || {}; const now = (SRAG.nowcasting || {}).BR || {};
   const ano = SRAG.ano_corrente; const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
   const ate = Math.max(...Object.keys(br).concat(Object.keys(now)).filter(k => k.startsWith(String(ano))).map(k => +k.split('-')[1]));
