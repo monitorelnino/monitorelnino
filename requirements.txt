@@ -5,4 +5,10 @@ numpy==2.4.4
 openpyxl==3.1.5
 reportlab==4.4.10
 pypdf==5.9.0
+# 11/09/2026: pdfplumber era IMPORTADO pelos quatro coletores de boletim estadual (MS, DF, PE, PB)
+# sem nunca constar aqui — no runner eles morriam com ModuleNotFoundError, e nenhum jamais entregou série.
+# Trocar por pypdf não resolve: nos PDFs-infográfico das SES o pypdf extrai com espaço entre caracteres
+# ("1 1 . 2 4 1", "S E  0 1  a  3 5"), e nenhum padrão numérico casa. pdfplumber preserva o texto como os
+# parsers foram afinados. Versão travada, como todo o resto (docs/SBOM.md).
+pdfplumber==0.11.9
 PyYAML==6.0.3

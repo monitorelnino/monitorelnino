@@ -45,6 +45,22 @@ RESSALVA = ("O Monitor não atribui casos ao El Niño; dados da SES-PE / CIEVS-P
             "municipal do informe é imagem e não é lida por máquina.")
 
 
+def _texto_paginas(bruto: bytes) -> list:
+    """Texto por página. pdfplumber PRIMEIRO (11/09/2026): nestes PDFs-infográfico o pypdf extrai com espaço
+    entre caracteres ("1 1 . 2 4 1"), e nenhum padrão numérico casa; pdfplumber preserva o texto como os
+    parsers foram afinados. pypdf fica como reserva, para a leitura nunca depender de uma só biblioteca."""
+    try:
+        import io as _io, pdfplumber
+        with pdfplumber.open(_io.BytesIO(bruto)) as pdf:
+            pgs = [(pg.extract_text() or "") for pg in pdf.pages]
+        if sum(len(t) for t in pgs) > 200:
+            return pgs
+    except Exception:  # noqa: BLE001
+        pass
+    from preservar_evidencias import extrair_texto_por_pagina
+    return extrair_texto_por_pagina(bruto)
+
+
 def _hoje():
     import datetime as _dt, json as _js
     try:
@@ -181,8 +197,14 @@ def parse_texto(texto: str, paginas: list = None) -> dict:
     m = re.search(r"SE\s*E?\s*0?(\d{1,2}) a (\d{1,2}) \((\d{2}/\d{2}/\d{4}) a (\d{2}/\d{2}/\d{4})\)", texto)
     if not m:
         raise ValueError("referência 'SE 01 a NN (dd/mm/aaaa a dd/mm/aaaa)' não encontrada")
+    # 11/09/2026: o ano vem do INÍCIO do período, não do fim. O informe da SE 35 traz
+    # "SE 01 a 35 (04/01/2026 a 05/09/2027)" — erro de digitação da própria fonte no ano final. Tirar o ano do
+    # fim gravaria a leitura como 2027. O início é o ano do ciclo; a incoerência é registrada, não corrigida.
     ref = {"se_inicio": int(m.group(1)), "se": int(m.group(2)), "periodo_inicio": m.group(3), "periodo_fim": m.group(4),
-           "ano": int(m.group(4)[-4:])}
+           "ano": int(m.group(3)[-4:])}
+    if m.group(4)[-4:] != m.group(3)[-4:]:
+        ref["incoerencia_fonte"] = (f"o informe declara período de {m.group(3)} a {m.group(4)} — anos diferentes; "
+                                    f"adotado o ano do início ({ref['ano']}) para a chave da série")
     mc = re.search(r"Dados captados em (\d{2}/\d{2}/\d{4})", texto)
     if not mc:
         raise ValueError("'Dados captados em' não encontrado")
@@ -262,8 +284,7 @@ def coletar() -> int:
             # 11/09/2026 (achado da rodada de 22h): pdfplumber NÃO está em requirements.txt — o coletor chegava
             # a localizar o PDF e morria com ModuleNotFoundError. A função canônica do projeto usa pypdf
             # (instalado) e só cai para pdfplumber se a extração vier vazia: funciona com ou sem o opcional.
-            from preservar_evidencias import extrair_texto_por_pagina
-            paginas = [_norm(t) for t in extrair_texto_por_pagina(bruto)]
+            paginas = [_norm(t) for t in _texto_paginas(bruto)]
             pdf_url, se = url_c, se_c; break
         except Exception as e:  # noqa: BLE001
             anunciados_sem_arquivo.append(f"SE {se_c}: {type(e).__name__}"); continue
@@ -455,6 +476,12 @@ def autoteste() -> int:
         u, se = candidatos_por_se(html, 2026)[0]
         return se == 34 and u == "https://portalcievs.saude.pe.gov.br/docs/Informe%20Epidemiolo%CC%81gico%20Arboviroses_SE%2001%20a%2034_2026.pdf"
 
+    def t_ano_incoerente():
+        # informe real da SE 35 traz "(04/01/2026 a 05/09/2027)" — erro da fonte no ano final.
+        ruim = TEXTO_REAL_SE34.replace("(04/01/2026 a 29/08/2026)", "(04/01/2026 a 05/09/2027)")
+        d = parse_texto(ruim)
+        return d["referencia"]["ano"] == 2026 and "incoerencia_fonte" in d["referencia"]
+
     def t9():
         try:
             parse_texto("nada aqui bate com o padrão esperado"); return False
@@ -462,7 +489,7 @@ def autoteste() -> int:
             return True
     def t10():
         return "não atribui casos ao El Niño" in RESSALVA and "tabela municipal" in RESSALVA
-    return rodar_autoteste({"URL do PDF em NFD (forma que o servidor aceita)": t_nfd,"referência SE/período/data de captação": t1, "dengue (número antes do rótulo)": t2,
+    return rodar_autoteste({"ano incoerente na fonte → usa o do início e registra": t_ano_incoerente,"URL do PDF em NFD (forma que o servidor aceita)": t_nfd,"referência SE/período/data de captação": t1, "dengue (número antes do rótulo)": t2,
                             "chikungunya (rótulo antes do número — ordem tolerada)": t3, "zika + gestantes": t4,
                             "óbitos por arboviroses + LIRAa fecha 100%": t5, "identidade contábil quebrada → recusa": t6,
                             "leitura por páginas ≡ leitura por cabeçalho": t7,
