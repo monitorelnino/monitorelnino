@@ -250,7 +250,9 @@ def coletar() -> int:
     anunciados_sem_arquivo = []
     for url_c, se_c in candidatos[:TENTATIVAS_SE]:
         try:
-            bruto = buscar(url_c, timeout=90)
+            # 11/09/2026: até TENTATIVAS_SE=4 pedidos nesta busca; diagnóstico mostrou resposta em <1s quando
+            # o portal responde — 25s é folgado sem represar a rodada se uma edição específica não existir.
+            bruto = buscar(url_c, timeout=25)
             if bruto[:4] != b"%PDF":
                 anunciados_sem_arquivo.append(f"SE {se_c}: resposta não é PDF"); continue
             import pdfplumber

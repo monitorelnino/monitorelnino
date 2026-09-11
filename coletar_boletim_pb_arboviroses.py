@@ -163,7 +163,10 @@ def coletar() -> int:
     for num in range(TETO_NUMERO, 0, -1):
         url = PADRAO_URL.format(n=num, ano=ano)
         try:
-            b = buscar(url, timeout=60)
+            # 11/09/2026 (achado da rodada de 22h): timeout de 60s x 24 tentativas x até 2 pedidos por tentativa
+            # podia levar quase 50 min no pior caso. O diagnóstico mostrou resposta em ~1s quando o portal
+            # responde; 12s é folgado sem represar a rodada quando não responde.
+            b = buscar(url, timeout=12)
         except Exception:  # noqa: BLE001
             continue
         if b[:4] == b"%PDF":
@@ -175,7 +178,7 @@ def coletar() -> int:
         destino = destino_do_intersticio(b)
         if destino:
             try:
-                b2 = buscar(destino if destino.startswith("http") else BASE + destino, timeout=60)
+                b2 = buscar(destino if destino.startswith("http") else BASE + destino, timeout=12)
             except Exception:  # noqa: BLE001
                 interstícios.append(f"nº {num:02d}: destino do interstício não respondeu"); continue
             if b2[:4] == b"%PDF":
