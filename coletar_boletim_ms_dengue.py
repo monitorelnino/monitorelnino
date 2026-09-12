@@ -163,7 +163,10 @@ def coletar() -> int:
     try:
         dados = parse_texto(texto)
     except ValueError as e:
-        registrar_lacuna("SES-MS (formato do boletim)", str(e)[:180], canal="site_estadual", camada=2, strings=[pdf_url])
+        # 12/09/2026: leva uma amostra do texto REAL extraído — foi o que permitiu corrigir o coletor de PE
+        # sem rede no ambiente de edição. Sem isso, a lacuna diz que o formato mudou mas não em quê.
+        amostra = texto[:600].replace("\n", "⏎")
+        registrar_lacuna("SES-MS (formato do boletim)", str(e)[:180], canal="site_estadual", camada=2, strings=[pdf_url, "amostra: " + amostra])
         print(f"boletim MS: {e} — coletor não adivinha; corrigir o parser e reexecutar"); return 0
     if len(dados["municipios"]) < MIN_MUNICIPIOS:
         registrar_lacuna("SES-MS (tabela municipal incompleta)", f"só {len(dados['municipios'])} de ~79 municípios reconhecidos — resultado recusado", canal="site_estadual", camada=2, strings=[pdf_url])

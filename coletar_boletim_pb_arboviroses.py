@@ -219,7 +219,10 @@ def coletar() -> int:
     try:
         dados = parse_texto(texto)
     except ValueError as e:
-        registrar_lacuna("SES-PB (formato do boletim)", str(e)[:180], canal="site_estadual", camada=2, strings=[pdf_url])
+        # 12/09/2026: leva uma amostra do texto REAL extraído — foi o que permitiu corrigir o coletor de PE
+        # sem rede no ambiente de edição. Sem isso, a lacuna diz que o formato mudou mas não em quê.
+        amostra = texto[:600].replace("\n", "⏎")
+        registrar_lacuna("SES-PB (formato do boletim)", str(e)[:180], canal="site_estadual", camada=2, strings=[pdf_url, "amostra: " + amostra])
         print(f"boletim PB: {e} — coletor não adivinha; nada publicado"); return 0
     serie = ler("saude_desfechos/ses_pb_arboviroses.json", {"_governanca": "Arboviroses na Paraíba (dengue, chikungunya, Zika, Oropouche) por Região de Saúde — lido do Boletim Epidemiológico de Arboviroses Urbanas da SES-PB. " + RESSALVA + " Cada leitura é o ACUMULADO do ano até a SE do boletim; a série é construída pelo próprio Monitor a partir de 10/09/2026. Boletins numerados sequencialmente, cadência irregular. Peso zero; nunca lido pelo motor.", "serie": {}})
     chave = f"{dados['referencia']['ano'] or ano}-{dados['referencia']['se']:02d}"
