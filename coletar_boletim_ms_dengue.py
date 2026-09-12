@@ -94,11 +94,20 @@ def parse_texto(texto: str) -> dict:
     # mesmo PDF. Casa numa cópia com todo espaço em branco (incluindo quebra de linha) normalizado para um
     # espaço; a posição na string original é recuperada, então totais e municípios continuam do mesmo texto.
     _flat = re.sub(r"\s+", " ", texto)
-    m2 = re.search(r"([\d.]+) ([\d.]+) (\d+) (\d+) Casos +prov[áa]veis Casos ?confirmados [ÓO]bitos em +investiga[çc][ãa]o [ÓO]bitos +confirmados", _flat, re.I)
-    if not m2:
+    # 12/09/2026: a SES-MS não usa um layout fixo — a SE 30 trazia NÚMEROS antes dos rótulos; a SE 34, na
+    # mesma posição do boletim, trazia os RÓTULOS antes dos números (verificado com os dois PDFs reais).
+    # Casa as duas ordens; None nos grupos que não existirem na ordem escolhida.
+    ROTULOS = r"Casos +Casos +[ÓO]bitos em +[ÓO]bitos +prov[áa]veis +confirmados +investiga[çc][ãa]o +confirmados"
+    m2 = re.search(r"(" + ROTULOS + r") ([\d.]+) ([\d.]+) (\d+) (\d+)", _flat, re.I)  # rótulos → números
+    if m2:
+        g = (m2.group(2), m2.group(3), m2.group(4), m2.group(5))
+    else:
+        m2 = re.search(r"([\d.]+) ([\d.]+) (\d+) (\d+) Casos +prov[áa]veis Casos ?confirmados [ÓO]bitos em +investiga[çc][ãa]o [ÓO]bitos +confirmados", _flat, re.I)  # números → rótulos
+        g = m2.groups() if m2 else None
+    if not g:
         raise ValueError("bloco de totais estaduais (casos prováveis/confirmados/óbitos) não encontrado")
-    totais = {"casos_provaveis": int(m2.group(1).replace(".", "")), "casos_confirmados": int(m2.group(2).replace(".", "")),
-              "obitos_investigacao": int(m2.group(3)), "obitos_confirmados": int(m2.group(4))}
+    totais = {"casos_provaveis": int(g[0].replace(".", "")), "casos_confirmados": int(g[1].replace(".", "")),
+              "obitos_investigacao": int(g[2]), "obitos_confirmados": int(g[3])}
     linhas = re.findall(r"^\s*\d{1,3}\s+(\d{7})\s+([A-Za-zÀ-ÿ' .\-]+?)\s+(\d[\d.]*)\s+(\d[\d.]*)\s+([\d.,]+)\s*(Alta|M[ée]dia|Baixa|Sem\s*notifica[çc][ãa]o)?\s*$",
                          texto, re.M)
     municipios = {}
@@ -217,6 +226,16 @@ Ranking IBGE Município Casos Prováveis População Incidência
         # só dengue, só 2026, mais recente primeiro, sem repetir SE
         return r and r[0][1] == 34 and r[0][0].endswith("Semana-34-\u2013-2026.pdf") and [se for _, se in r] == [34, 33] and extrair_pdfs_da_listagem(html, 2027) == []
 
+    def t_ordem_invertida():
+        # 12/09/2026: a SES-MS não usa layout fixo — a SE 30 trazia números antes dos rótulos; a SE 34,
+        # na mesma seção, trazia os rótulos ANTES dos números. Ambos vieram de PDFs reais.
+        se34 = ("BOLETIM EPIDEMIOLOGICO\nDENGUE\nSemana Epidemiológica 34/2026\n"
+                "Data de publicação: 04 de setembro de 2026\nCENÁRIO EM MATO GROSSO DO SUL, 2026\n"
+                "Casos Casos Óbitos em Óbitos\nprováveis confirmados investigação\nconfirmados\n4.465 2.081 2 1\n"
+                "Fonte: SINAN Online – Dados parciais, sujeitos a alterações pelos municípios. "
+                "Atualizado até SE 34, 29 de agosto de 2026.")
+        return parse_texto(se34)["totais_estaduais"] == {"casos_provaveis": 4465, "casos_confirmados": 2081, "obitos_investigacao": 2, "obitos_confirmados": 1}
+
     def t_normalizacao():
         # 12/09/2026: o bloco de totais tem de bater não importa como o extrator quebra linha —
         # verificado localmente contra o texto de verdade do boletim SE 30/2026 (fetch fora do sandbox).
@@ -246,7 +265,7 @@ Ranking IBGE Município Casos Prováveis População Incidência
         return extrair_pdf_do_post(html) is not None and extrair_pdf_do_post("<p>nada</p>") is None
     def t7():
         return "não atribui casos ao El Niño" in RESSALVA and MIN_MUNICIPIOS < 79
-    return rodar_autoteste({"totais estaduais robusto a qualquer quebra de linha (texto real da SE 30)": t_normalizacao,"listagem: PDFs de dengue do ano, mais recente primeiro": t_listagem,"referência SE e data": t1, "totais estaduais (4 números antes dos rótulos)": t2,
+    return rodar_autoteste({"totais com rótulos ANTES dos números (texto real da SE 34)": t_ordem_invertida,"totais estaduais robusto a qualquer quebra de linha (texto real da SE 30)": t_normalizacao,"listagem: PDFs de dengue do ano, mais recente primeiro": t_listagem,"referência SE e data": t1, "totais estaduais (4 números antes dos rótulos)": t2,
                             "linha municipal completa": t3, "classificação ausente/tolerada": t4,
                             "formato inesperado nunca adivinha": t5, "extração do link do PDF no post": t6, "ressalva e limiar de segurança": t7})
 
