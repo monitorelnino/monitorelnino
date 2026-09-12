@@ -204,7 +204,10 @@ def coletar() -> int:
     try:
         dados = parse_texto(texto)
     except ValueError as e:
-        registrar_lacuna("SES-DF (formato do informe)", str(e)[:180], canal="site_estadual", camada=2, strings=[pdf_url])
+        # 12/09/2026: leva uma amostra do texto REAL extraído — foi o que permitiu corrigir o coletor de PE
+        # sem rede no ambiente de edição. Sem isso, a lacuna diz que o formato mudou mas não em quê.
+        amostra = texto[:600].replace("\n", "⏎")
+        registrar_lacuna("SES-DF (formato do informe)", str(e)[:180], canal="site_estadual", camada=2, strings=[pdf_url, "amostra: " + amostra])
         print(f"informe DF: {e} — coletor não adivinha; corrigir o parser e reexecutar"); return 0
     serie = ler("saude_desfechos/ses_df_arboviroses.json", {"_governanca": "Arboviroses no Distrito Federal (dengue, chikungunya, Zika, febre amarela), por Região de Saúde — lido do Informativo Epidemiológico semanal da SES-DF (Sinan Online / Sinan Net). " + RESSALVA + " Cada leitura é o ACUMULADO do ano até a SE do informe; a série semanal é construída pelo próprio Monitor a partir de 10/09/2026. DF é município-estado (IBGE 5300108): não há tabela municipal. Peso zero; nunca lido pelo motor.", "serie": {}})
     chave = f"{dados['referencia']['ano']}-{dados['referencia']['se']:02d}"
