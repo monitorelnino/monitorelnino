@@ -332,6 +332,7 @@ def coletar() -> int:
         # leva um trecho do texto extraído pelo pdfplumber: se a ordem do infográfico diferir da que afinou o parser
         # (afinado em 10/09/2026 contra outra ferramenta de extração), a próxima sessão vê o porquê sem precisar de rede
         amostra = " | ".join((p[:220].replace("\n", "⏎")) for p in paginas[:3])
+        print("AMOSTRA:", amostra)  # 12/09/2026: debug do diagnóstico isolado, que não comita log_buscas.json
         registrar_lacuna("CIEVS-PE (formato do informe / identidade contábil)", str(e)[:180], canal="site_estadual", camada=2, strings=[pdf_url, "amostra pdfplumber: " + amostra])
         print(f"informe PE: {e} — coletor não adivinha; nada publicado"); return 0
     serie = ler("saude_desfechos/ses_pe_arboviroses.json", {"_governanca": "Arboviroses em Pernambuco (dengue, chikungunya, Zika) — TOTAIS ESTADUAIS lidos do Informe Epidemiológico semanal do CIEVS-PE (Sinan Online / Sinan Net). " + RESSALVA + " Cada leitura é o ACUMULADO do ano até a SE do informe; a série é construída pelo próprio Monitor a partir de 10/09/2026. Peso zero; nunca lido pelo motor.", "serie": {}})
