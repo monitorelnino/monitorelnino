@@ -34,7 +34,9 @@ from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rod
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://paraiba.pb.gov.br"
 PADRAO_URL = BASE + "/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-{n:02d}_{ano}.pdf"
-TETO_NUMERO = 24          # teto de tentativas por ano (cadência irregular; 2026 tinha nº 03 em março)
+TETO_NUMERO = 6           # 12/09/2026: reduzido de 24. Confirmado em duas rodadas reais que o portal
+# devolve HTML (não PDF) para TODO número tentado — adivinhar mais não muda o resultado, só consome até
+# ~9 min por rodada (24 tentativas x 2 pedidos x 12s). Falhar em 6 é tão conclusivo quanto falhar em 24.
 MIN_REGIOES = 14          # PB tem 16 Regiões de Saúde; abaixo disso a tabela não veio inteira
 ANO_ESPERADO = [2026]     # ajustado em tempo de execução por coletar(); lista para o parse_texto enxergar
 RESSALVA = ("O Monitor não atribui casos ao El Niño; dados da SES-PB (Sinan Net, Sinan Online, e-SUS Sinan e GAL), "
