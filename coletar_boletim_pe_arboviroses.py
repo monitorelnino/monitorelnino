@@ -246,11 +246,16 @@ def parse_texto(texto: str, paginas: list = None) -> dict:
         n, dsc, pr = _resolver_por_identidade(nome, cn, cd, cp)
         d = {"notificados": n, "descartados": dsc, "provaveis": pr}
         # confirmados: candidatos vizinhos, excluindo números já consumidos por outro campo (o infográfico põe o
-        # rótulo entre dois números; um deles costuma ser o próprio 'prováveis'); depois exige <= prováveis
+        # rótulo entre dois números; um deles costuma ser o próprio 'prováveis'); depois exige <= prováveis.
+        # 12/09/2026: reportagens que citam o mesmo informe (duas fontes independentes, mesmo número) confirmam
+        # que o confirmados de dengue da SE 35 fica bem mais longe do rótulo do que a janela de 40 caracteres
+        # alcançava — a frase "Casos confirmados +\ncasos em investigação" (explicando o que compõe prováveis)
+        # fica entre o rótulo e o número de verdade. Janela alargada para 200; a identidade "≤ prováveis" e a
+        # exigência de candidato único continuam sendo o que evita aceitar o número errado.
         if "confirmados" in par:
             cc = [par["confirmados"]]
         else:
-            cc = [c for c in _candidatos(p, r"Casos\s*\n?\s*confirmados(?! \+)") if c not in (n, dsc, pr)]
+            cc = [c for c in _candidatos(p, r"Casos\s*\n?\s*confirmados(?! \+)", janela=200) if c not in (n, dsc, pr)]
         cc = [c for c in cc if c <= pr]
         if len(cc) != 1:
             raise ValueError(f"{nome}: 'Casos confirmados' ambíguo ou ausente (candidatos válidos: {cc})")
