@@ -127,6 +127,39 @@ def extrair_pdfs_da_listagem(html: str, ano: int) -> list:
     return saida
 
 
+def extrair_municipios_por_tabela(bruto: bytes) -> dict:
+    """12/09/2026: caminho alternativo para a tabela municipal, usando extract_tables() do pdfplumber (células
+    já separadas pela grade do PDF) em vez de regex sobre texto corrido. Existe porque, na rodada real, o
+    texto corrido só rendeu 35 das 79 linhas — a segunda metade da tabela cai numa página com gráfico/mapa ao
+    lado, e a extração de texto por posição intercala as duas colunas de forma imprevisível. extract_tables()
+    lê a grade da própria tabela, imune a esse problema. Função pura no sentido de nunca inventar: linha cuja
+    forma não reconhece é ignorada, não adivinhada. [] ou erro de importação → {} (quem chama decide o que
+    fazer com uma tabela vazia; não é este ponto que decide publicar ou recusar)."""
+    municipios = {}
+    try:
+        import io as _io, pdfplumber
+        with pdfplumber.open(_io.BytesIO(bruto)) as pdf:
+            for pg in pdf.pages:
+                for tabela in (pg.extract_tables() or []):
+                    for linha in tabela:
+                        celulas = [(c or "").strip() for c in linha]
+                        # forma esperada: [ranking?, IBGE(7 díg.), nome, casos, pop, incidência, classificação?]
+                        idx_ibge = next((i for i, c in enumerate(celulas) if re.fullmatch(r"\d{7}", c)), None)
+                        if idx_ibge is None or idx_ibge + 4 >= len(celulas):
+                            continue
+                        ibge, nome, casos, pop, inc = celulas[idx_ibge:idx_ibge + 5]
+                        if not re.fullmatch(r"\d[\d.]*", casos) or not re.fullmatch(r"\d[\d.]*", pop) or not re.fullmatch(r"[\d.,]+", inc):
+                            continue
+                        classe = celulas[idx_ibge + 5] if idx_ibge + 5 < len(celulas) else ""
+                        municipios[ibge] = {"nome": nome, "casos_provaveis": int(casos.replace(".", "")),
+                                            "populacao": int(pop.replace(".", "")),
+                                            "incidencia": float(inc.replace(".", "").replace(",", ".")),
+                                            "classificacao": classe or None}
+    except Exception:  # noqa: BLE001
+        return {}
+    return municipios
+
+
 def coletar() -> int:
     hoje = _hoje(); ano, se_atual = se_epidemiologica(hoje)
     pdf_url = None; tentativas = []; se_achada = None
@@ -184,7 +217,17 @@ def coletar() -> int:
         registrar_lacuna("SES-MS (formato do boletim)", str(e)[:180], canal="site_estadual", camada=2, strings=[pdf_url, "amostra: " + amostra])
         print(f"boletim MS: {e} — coletor não adivinha; corrigir o parser e reexecutar"); return 0
     if len(dados["municipios"]) < MIN_MUNICIPIOS:
-        registrar_lacuna("SES-MS (tabela municipal incompleta)", f"só {len(dados['municipios'])} de ~79 municípios reconhecidos — resultado recusado", canal="site_estadual", camada=2, strings=[pdf_url])
+        # 12/09/2026: antes de recusar, tenta extract_tables() do pdfplumber sobre o PDF completo — não só as
+        # 3 primeiras páginas de texto. Achado real: o texto corrido rendeu 35/79 porque a 2ª metade da tabela
+        # cai numa página com gráfico ao lado, e a extração por posição intercala as colunas fora de ordem;
+        # extract_tables() lê a grade da própria tabela, imune a isso. Só substitui se vier MAIOR — nunca troca
+        # um resultado bom por um pior, e continua recusando se nenhum dos dois caminhos chegar ao limiar.
+        por_tabela = extrair_municipios_por_tabela(bruto)
+        if len(por_tabela) > len(dados["municipios"]):
+            print(f"boletim MS: texto corrido só achou {len(dados['municipios'])} vs {len(por_tabela)} por extract_tables() — usando o maior")
+            dados["municipios"] = por_tabela
+    if len(dados["municipios"]) < MIN_MUNICIPIOS:
+        registrar_lacuna("SES-MS (tabela municipal incompleta)", f"só {len(dados['municipios'])} de ~79 municípios reconhecidos (texto e extract_tables()) — resultado recusado", canal="site_estadual", camada=2, strings=[pdf_url])
         print(f"boletim MS: tabela municipal incompleta ({len(dados['municipios'])} municípios) — recusado, nada publicado"); return 0
     # acumula a série própria do Monitor (o boletim da SES só dá o instantâneo da semana + totais anuais, não a série semanal histórica)
     serie = ler("saude_desfechos/ses_ms_dengue.json", {"_governanca": "Dengue por município, Mato Grosso do Sul — lido do boletim semanal da SES-MS (SINAN Online). " + RESSALVA + " Série semanal construída pelo próprio Monitor a partir de 10/09/2026 (a SES só publica o instantâneo da semana e o total anual, não a série semanal histórica). Peso zero; nunca lido pelo motor.", "serie": {}})
@@ -226,6 +269,27 @@ Ranking IBGE Município Casos Prováveis População Incidência
         # só dengue, só 2026, mais recente primeiro, sem repetir SE
         return r and r[0][1] == 34 and r[0][0].endswith("Semana-34-\u2013-2026.pdf") and [se for _, se in r] == [34, 33] and extrair_pdfs_da_listagem(html, 2027) == []
 
+    def t_extract_tables():
+        # 12/09/2026: gera um PDF real (reportlab) com uma tabela no mesmo formato da SES-MS e confere que
+        # extract_tables() do pdfplumber recupera as linhas certas — inclusive os dois casos difíceis: sem
+        # classificação (Vicentina) e "Sem notificação" com vírgula na incidência (Selvíria). PDF real, não
+        # texto sintético: prova que o caminho de bytes -> pdfplumber -> células funciona de ponta a ponta.
+        import io as _io
+        from reportlab.lib.pagesizes import A4
+        from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+        from reportlab.lib import colors
+        linhas = [["Ranking", "IBGE", "Município", "Casos Prováveis", "População", "Incidência", ""],
+                  ["1", "5007554", "Santa Rita do Pardo", "144", "7.027", "2.049,2", "Alta"],
+                  ["26", "5008404", "Vicentina", "13", "6.336", "205,2", ""],
+                  ["79", "5007802", "Selvíria", "0", "8.142", "0,0", "Sem notificação"]]
+        buf = _io.BytesIO()
+        doc = SimpleDocTemplate(buf, pagesize=A4)
+        t = Table(linhas); t.setStyle(TableStyle([("GRID", (0, 0), (-1, -1), 0.5, colors.black)]))
+        doc.build([t])
+        m = extrair_municipios_por_tabela(buf.getvalue())
+        return (len(m) == 3 and m["5007554"] == {"nome": "Santa Rita do Pardo", "casos_provaveis": 144, "populacao": 7027, "incidencia": 2049.2, "classificacao": "Alta"}
+                and m["5008404"]["classificacao"] is None and m["5007802"]["incidencia"] == 0.0 and m["5007802"]["classificacao"] == "Sem notificação")
+
     def t_ordem_invertida():
         # 12/09/2026: a SES-MS não usa layout fixo — a SE 30 trazia números antes dos rótulos; a SE 34,
         # na mesma seção, trazia os rótulos ANTES dos números. Ambos vieram de PDFs reais.
@@ -265,7 +329,7 @@ Ranking IBGE Município Casos Prováveis População Incidência
         return extrair_pdf_do_post(html) is not None and extrair_pdf_do_post("<p>nada</p>") is None
     def t7():
         return "não atribui casos ao El Niño" in RESSALVA and MIN_MUNICIPIOS < 79
-    return rodar_autoteste({"totais com rótulos ANTES dos números (texto real da SE 34)": t_ordem_invertida,"totais estaduais robusto a qualquer quebra de linha (texto real da SE 30)": t_normalizacao,"listagem: PDFs de dengue do ano, mais recente primeiro": t_listagem,"referência SE e data": t1, "totais estaduais (4 números antes dos rótulos)": t2,
+    return rodar_autoteste({"tabela municipal via extract_tables() (PDF real gerado)": t_extract_tables,"totais com rótulos ANTES dos números (texto real da SE 34)": t_ordem_invertida,"totais estaduais robusto a qualquer quebra de linha (texto real da SE 30)": t_normalizacao,"listagem: PDFs de dengue do ano, mais recente primeiro": t_listagem,"referência SE e data": t1, "totais estaduais (4 números antes dos rótulos)": t2,
                             "linha municipal completa": t3, "classificação ausente/tolerada": t4,
                             "formato inesperado nunca adivinha": t5, "extração do link do PDF no post": t6, "ressalva e limiar de segurança": t7})
 
