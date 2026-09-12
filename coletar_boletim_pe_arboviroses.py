@@ -125,12 +125,35 @@ def _n(s: str) -> int:
     return int(s.replace(".", ""))
 
 
+# rótulos do infográfico → chave interna. Ordem importa só para o regex; o casamento é posicional.
+_ROTULOS = ((r"Casos notificados", "notificados"), (r"Casos prov[áa]veis", "provaveis"),
+            (r"Casos descartados", "descartados"), (r"Casos confirmados", "confirmados"),
+            (r"Casos graves", "graves"))
+
+
 def _pareados(texto: str) -> dict:
-    """Padrão de coluna do infográfico: uma linha com dois números e a linha seguinte com dois rótulos, na mesma
-    ordem ('45.017 22.736' / 'Casos notificados Casos descartados'). Mapeia posicionalmente. Função pura."""
+    """Padrão de coluna do infográfico: uma linha SÓ com números e a linha seguinte SÓ com rótulos, na mesma
+    ordem, mapeados posicionalmente. Função pura.
+
+    11/09/2026: era fixo em dois ("45.017 22.736" / "Casos notificados Casos descartados"), como no informe da
+    SE 34 lido em 10/09. O informe da SE 35, lido pelo pdfplumber no runner, traz TRÊS por linha
+    ("46.225 22.732 23.493" / "Casos notificados Casos prováveis Casos descartados") — o layout da fonte
+    mudou. Agora aceita qualquer quantidade, desde que números e rótulos venham na mesma contagem; se não
+    baterem, devolve vazio e quem chama cai nos candidatos adjacentes + identidade contábil."""
     out = {}
-    for m in re.finditer(r"^\s*(\d{1,3}(?:\.\d{3})+|\d{1,6})\s+(\d{1,3}(?:\.\d{3})+|\d{1,6})\s*\n\s*(Casos notificados)\s+(Casos descartados)", texto, re.M | re.I):
-        out["notificados"] = _n(m.group(1)); out["descartados"] = _n(m.group(2))
+    NUM = r"\d{1,3}(?:\.\d{3})+|\d{1,6}"
+    # a linha de rótulos pode ter sufixo (na SE 34 vinha "… Casos descartados Incidência **01 óbito…"):
+    # conta só a sequência de "Casos X" no começo da linha e ignora o resto.
+    for m in re.finditer(r"^[ \t]*((?:" + NUM + r")(?:[ \t]+(?:" + NUM + r"))*)[ \t]*\n[ \t]*((?:Casos [A-Za-zÁÂÃÉÊÍÓÔÕÚÇáâãéêíóôõúç]+)(?:[ \t]+Casos [A-Za-zÁÂÃÉÊÍÓÔÕÚÇáâãéêíóôõúç]+)*)", texto, re.M):
+        nums = [_n(x) for x in re.findall(NUM, m.group(1))]
+        crus = re.findall(r"Casos [A-Za-zÁÂÃÉÊÍÓÔÕÚÇáâãéêíóôõúç]+", m.group(2))
+        if len(nums) != len(crus) or len(nums) < 2:
+            continue
+        for valor, rotulo in zip(nums, crus):
+            for padrao, chave in _ROTULOS:
+                if re.fullmatch(padrao, rotulo, re.I):
+                    out.setdefault(chave, valor)
+                    break
     return out
 
 
@@ -214,12 +237,15 @@ def parse_texto(texto: str, paginas: list = None) -> dict:
         par = _pareados(p)   # linha 'N1 N2' / 'Casos notificados Casos descartados': mapeamento posicional, sem ambiguidade
         cn = [par["notificados"]] if "notificados" in par else _candidatos(p, r"Casos notificados")
         cd = [par["descartados"]] if "descartados" in par else _candidatos(p, r"Casos\s*\n?\s*descartados")
-        cp = _candidatos(p, r"Casos prováveis(?!\*| por)")
+        cp = [par["provaveis"]] if "provaveis" in par else _candidatos(p, r"Casos prováveis(?!\*| por)")
         n, dsc, pr = _resolver_por_identidade(nome, cn, cd, cp)
         d = {"notificados": n, "descartados": dsc, "provaveis": pr}
         # confirmados: candidatos vizinhos, excluindo números já consumidos por outro campo (o infográfico põe o
         # rótulo entre dois números; um deles costuma ser o próprio 'prováveis'); depois exige <= prováveis
-        cc = [c for c in _candidatos(p, r"Casos\s*\n?\s*confirmados(?! \+)") if c not in (n, dsc, pr)]
+        if "confirmados" in par:
+            cc = [par["confirmados"]]
+        else:
+            cc = [c for c in _candidatos(p, r"Casos\s*\n?\s*confirmados(?! \+)") if c not in (n, dsc, pr)]
         cc = [c for c in cc if c <= pr]
         if len(cc) != 1:
             raise ValueError(f"{nome}: 'Casos confirmados' ambíguo ou ausente (candidatos válidos: {cc})")
@@ -482,6 +508,18 @@ def autoteste() -> int:
         d = parse_texto(ruim)
         return d["referencia"]["ano"] == 2026 and "incoerencia_fonte" in d["referencia"]
 
+    def t_layout_se35():
+        # layout REAL da SE 35 lido pelo pdfplumber no runner (11/09/2026): três números por linha, três
+        # rótulos na seguinte. O da SE 34 tinha dois. Os dois têm de funcionar.
+        p35 = _pareados("46.225 22.732 23.493\nCasos notificados Casos prováveis Casos descartados")
+        p34 = _pareados("45.017 22.736\nCasos notificados Casos descartados Incidência **01 óbito")
+        pz = _pareados("1.209 108 1.101 0\nCasos notificados Casos prováveis Casos descartados Casos confirmados")
+        return (p35 == {"notificados": 46225, "provaveis": 22732, "descartados": 23493}
+                and p35["provaveis"] + p35["descartados"] == p35["notificados"]     # identidade fecha
+                and p34 == {"notificados": 45017, "descartados": 22736}
+                and pz["confirmados"] == 0 and pz["provaveis"] == 108
+                and _pareados("46.225 22.732\nCasos notificados Casos prováveis Casos descartados") == {})  # contagem diferente → vazio
+
     def t9():
         try:
             parse_texto("nada aqui bate com o padrão esperado"); return False
@@ -489,7 +527,7 @@ def autoteste() -> int:
             return True
     def t10():
         return "não atribui casos ao El Niño" in RESSALVA and "tabela municipal" in RESSALVA
-    return rodar_autoteste({"ano incoerente na fonte → usa o do início e registra": t_ano_incoerente,"URL do PDF em NFD (forma que o servidor aceita)": t_nfd,"referência SE/período/data de captação": t1, "dengue (número antes do rótulo)": t2,
+    return rodar_autoteste({"layout de 3 colunas da SE 35 e de 2 da SE 34": t_layout_se35,"ano incoerente na fonte → usa o do início e registra": t_ano_incoerente,"URL do PDF em NFD (forma que o servidor aceita)": t_nfd,"referência SE/período/data de captação": t1, "dengue (número antes do rótulo)": t2,
                             "chikungunya (rótulo antes do número — ordem tolerada)": t3, "zika + gestantes": t4,
                             "óbitos por arboviroses + LIRAa fecha 100%": t5, "identidade contábil quebrada → recusa": t6,
                             "leitura por páginas ≡ leitura por cabeçalho": t7,
