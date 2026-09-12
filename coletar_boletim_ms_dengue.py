@@ -89,7 +89,12 @@ def parse_texto(texto: str) -> dict:
     if mes is None:
         raise ValueError(f"mês não reconhecido: {m.group(3)}")
     data_ref = date(int(m.group(4)), mes, int(m.group(2)))
-    m2 = re.search(r"([\d.]+)\s+([\d.]+)\s+(\d+)\s+(\d+)\s*\n?\s*Casos\s*\n?\s*prov[áa]veis\s*\n?\s*Casos\s*\n?\s*confirmados\s*\n?\s*[ÓO]bitos\s*em\s*\n?\s*investiga[çc][ãa]o\s*\n?\s*[ÓO]bitos\s*\n?\s*confirmados", texto, re.I)
+    # 12/09/2026: casar direto no texto com \n? explícito é frágil — depende de exatamente onde CADA
+    # extrator de PDF decide quebrar linha, e isso muda entre pdfplumber e outras ferramentas mesmo para o
+    # mesmo PDF. Casa numa cópia com todo espaço em branco (incluindo quebra de linha) normalizado para um
+    # espaço; a posição na string original é recuperada, então totais e municípios continuam do mesmo texto.
+    _flat = re.sub(r"\s+", " ", texto)
+    m2 = re.search(r"([\d.]+) ([\d.]+) (\d+) (\d+) Casos +prov[áa]veis Casos ?confirmados [ÓO]bitos em +investiga[çc][ãa]o [ÓO]bitos +confirmados", _flat, re.I)
     if not m2:
         raise ValueError("bloco de totais estaduais (casos prováveis/confirmados/óbitos) não encontrado")
     totais = {"casos_provaveis": int(m2.group(1).replace(".", "")), "casos_confirmados": int(m2.group(2).replace(".", "")),
@@ -211,6 +216,17 @@ Ranking IBGE Município Casos Prováveis População Incidência
         # só dengue, só 2026, mais recente primeiro, sem repetir SE
         return r and r[0][1] == 34 and r[0][0].endswith("Semana-34-\u2013-2026.pdf") and [se for _, se in r] == [34, 33] and extrair_pdfs_da_listagem(html, 2027) == []
 
+    def t_normalizacao():
+        # 12/09/2026: o bloco de totais tem de bater não importa como o extrator quebra linha —
+        # verificado localmente contra o texto de verdade do boletim SE 30/2026 (fetch fora do sandbox).
+        variantes = [
+            "4.669 1.873 1 1\nCasos \nprováveis\nCasos\nconfirmados\nÓbitos em \ninvestigação\nÓbitos \nconfirmados",
+            "4.669 1.873 1 1 Casos prováveis Casos confirmados Óbitos em investigação Óbitos confirmados",
+            "4.669 1.873 1 1\nCasos prováveis Casos confirmados\nÓbitos em investigação Óbitos confirmados",
+        ]
+        base = "Atualizado até SE 30, 03 de agosto de 2026.\n"
+        return all(parse_texto(base + v)["totais_estaduais"] == {"casos_provaveis": 4669, "casos_confirmados": 1873, "obitos_investigacao": 1, "obitos_confirmados": 1} for v in variantes)
+
     def t1():
         d = parse_texto(TXT); return d["referencia"] == {"ano": 2026, "se": 30, "data": "03/08/2026"}
     def t2():
@@ -229,7 +245,7 @@ Ranking IBGE Município Casos Prováveis População Incidência
         return extrair_pdf_do_post(html) is not None and extrair_pdf_do_post("<p>nada</p>") is None
     def t7():
         return "não atribui casos ao El Niño" in RESSALVA and MIN_MUNICIPIOS < 79
-    return rodar_autoteste({"listagem: PDFs de dengue do ano, mais recente primeiro": t_listagem,"referência SE e data": t1, "totais estaduais (4 números antes dos rótulos)": t2,
+    return rodar_autoteste({"totais estaduais robusto a qualquer quebra de linha (texto real da SE 30)": t_normalizacao,"listagem: PDFs de dengue do ano, mais recente primeiro": t_listagem,"referência SE e data": t1, "totais estaduais (4 números antes dos rótulos)": t2,
                             "linha municipal completa": t3, "classificação ausente/tolerada": t4,
                             "formato inesperado nunca adivinha": t5, "extração do link do PDF no post": t6, "ressalva e limiar de segurança": t7})
 
