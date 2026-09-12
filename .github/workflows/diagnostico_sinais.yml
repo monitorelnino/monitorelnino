@@ -66,16 +66,18 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
-          for c in coletar_boletim_ms_dengue coletar_boletim_df_arboviroses coletar_boletim_pe_arboviroses coletar_boletim_pb_arboviroses; do
-            echo "=== $c ==="
-            python3 "$c.py" || true
-          done
-          echo "=== arquivos gerados ==="
-          ls -la data/saude_desfechos/ses_*.json 2>&1 || echo "(nenhum)"
-          echo "=== conteúdo (se houver) ==="
-          for f in data/saude_desfechos/ses_ms_dengue.json data/saude_desfechos/ses_df_arboviroses.json data/saude_desfechos/ses_pe_arboviroses.json data/saude_desfechos/ses_pb_arboviroses.json; do
-            if [ -f "$f" ]; then echo "--- $f ---"; python3 -c "import json;d=json.load(open('$f'));print(json.dumps(list((d.get('serie') or {}).values())[-1] if d.get('serie') else d, ensure_ascii=False, indent=1)[:3000])"; fi
-          done 2>&1 | tee /tmp/coletores_saude.log
+          {
+            for c in coletar_boletim_ms_dengue coletar_boletim_df_arboviroses coletar_boletim_pe_arboviroses coletar_boletim_pb_arboviroses; do
+              echo "=== $c ==="
+              python3 "$c.py" || true
+            done
+            echo "=== arquivos gerados ==="
+            ls -la data/saude_desfechos/ses_*.json 2>&1 || echo "(nenhum)"
+            echo "=== conteúdo (se houver) ==="
+            for f in data/saude_desfechos/ses_ms_dengue.json data/saude_desfechos/ses_df_arboviroses.json data/saude_desfechos/ses_pe_arboviroses.json data/saude_desfechos/ses_pb_arboviroses.json; do
+              if [ -f "$f" ]; then echo "--- $f ---"; python3 -c "import json;d=json.load(open('$f'));print(json.dumps(list((d.get('serie') or {}).values())[-1] if d.get('serie') else d, ensure_ascii=False, indent=1)[:3000])"; fi
+            done
+          } 2>&1 | tee /tmp/coletores_saude.log
       - name: Publicar resultado no repositório privado
         if: always()
         env:
