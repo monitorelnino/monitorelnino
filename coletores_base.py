@@ -168,14 +168,23 @@ def buscar_com_reserva_wayback(url: str, timeout: int = 40) -> bytes:
     try:
         return buscar(url, timeout=timeout)
     except Exception as e_direto:  # noqa: BLE001
+        # 12/09/2026: numa rodada real o DF falhou nos dois caminhos, e a mensagem só mostrava o erro
+        # direto de novo — sem dizer se foi o PEDIDO de captura que falhou (arquivo.org pode demorar mais
+        # que nosso timeout para capturar um site lento) ou a LEITURA da captura. Timeout maior para o
+        # Wayback (capturar um site difícil pode ser mais lento que ler um já capturado) e mensagem que
+        # preserva qual dos dois passos falhou.
+        erro_salvar = erro_ler = None
         try:
-            try:
-                buscar("https://web.archive.org/save/" + url, timeout=timeout)  # corpo da resposta não importa
-            except Exception:  # noqa: BLE001
-                pass
-            return buscar(f"https://web.archive.org/web/20301231000000/{url}", timeout=timeout)
-        except Exception:  # noqa: BLE001
-            raise e_direto  # nenhum dos dois funcionou: propaga o erro original (mais informativo que o do Wayback)
+            buscar("https://web.archive.org/save/" + url, timeout=max(timeout, 90))
+        except Exception as e:  # noqa: BLE001
+            erro_salvar = e
+        try:
+            return buscar(f"https://web.archive.org/web/20301231000000/{url}", timeout=max(timeout, 60))
+        except Exception as e:  # noqa: BLE001
+            erro_ler = e
+        raise RuntimeError(f"direto: {type(e_direto).__name__}: {e_direto} | wayback/save: "
+                           f"{type(erro_salvar).__name__ if erro_salvar else 'ok'} | wayback/ler: "
+                           f"{type(erro_ler).__name__}: {erro_ler}") from e_direto
 
 
 def fonte_esta_suspensa(urls) -> bool:
