@@ -167,11 +167,17 @@ def coletar() -> int:
     # O permalink de post fica como segundo caminho, para o caso de a listagem mudar de forma.
     try:
         html_lst = buscar(LISTAGEM, timeout=45).decode("utf-8", "replace")
-        for u, se in extrair_pdfs_da_listagem(html_lst, ano):
+        _achados = extrair_pdfs_da_listagem(html_lst, ano)
+        # 12/09/2026: debug do diagnóstico isolado — se a listagem carregou mas não achou nada do ano
+        # corrente, precisamos saber se é a listagem vazia, um HTML de erro, ou o padrão mudando nas
+        # rodadas (a mesma busca achou SE 33/34 horas antes, e desta vez não achou nada).
+        if not _achados:
+            print(f"MS: listagem carregou ({len(html_lst)} car.) mas 0 PDFs de {ano} — trecho:", html_lst[:300].replace("\n", "⏎"))
+        for u, se in _achados:
             pdf_url, se_achada = u, se
             break
-    except Exception:  # noqa: BLE001
-        pass
+    except Exception as _e_lst:  # noqa: BLE001
+        print(f"MS: exceção ao buscar a listagem: {type(_e_lst).__name__}: {_e_lst}")
     if pdf_url:
         tentativas.append(LISTAGEM)
     # 11/09/2026 (achado da 1ª rodada real): o recuo de 3 semanas era curto demais. A listagem da SES-MS

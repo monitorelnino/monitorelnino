@@ -31,7 +31,7 @@ um link. Se a listagem não trouxer nenhum link nesse padrão, lacuna declarada.
 import io, re, sys
 from datetime import date
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste
+from coletores_base import ler, gravar, buscar, buscar_com_reserva_wayback, registrar_lacuna, log_busca, rodar_autoteste
 
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://www.saude.df.gov.br"
@@ -44,30 +44,9 @@ MESES = {"janeiro": 1, "fevereiro": 2, "março": 3, "marco": 3, "abril": 4, "mai
          "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12}
 
 # 12/09/2026: saude.df.gov.br não completa handshake TLS com o runner do Actions (medido: ~45s de timeout,
-# igual com dois User-Agents, enquanto outras fontes respondem 200 do mesmo runner — não é bloqueio por UA
-# nem instabilidade geral de rede). web.archive.org, ao contrário, respondeu 200 em ~1s do mesmo runner: é
-# um CDN global, não um site pequeno de governo estadual. Usado como intermediário — o archive.org tem rede
-# própria para buscar a página; o runner só precisa falar com o archive.org, não com o DF.
-WAYBACK_SAVE = "https://web.archive.org/save/"
-WAYBACK_LATEST = "https://web.archive.org/web/20301231000000/{url}"  # timestamp bem no futuro = captura mais recente disponível
-
-
-def buscar_com_reserva_wayback(url: str, timeout: int = 60) -> bytes:
-    """Busca direta; se falhar (é o caso conhecido do DF), busca via Wayback: primeiro pede ao archive.org
-    para capturar a página AGORA (ele busca com a própria rede, sem depender do runner alcançar a fonte),
-    depois lê a captura mais recente. Se o pedido de captura falhar ou for limitado, ainda tenta ler uma
-    captura já existente — pode não ser da mesma hora, mas é melhor que lacuna quando a fonte é semanal."""
-    try:
-        return buscar(url, timeout=timeout)
-    except Exception as e_direto:  # noqa: BLE001
-        try:
-            try:
-                buscar(WAYBACK_SAVE + url, timeout=timeout)  # dispara a captura; corpo da resposta não importa
-            except Exception:  # noqa: BLE001
-                pass  # segue tentando ler uma captura existente mesmo se o pedido de captura falhar/for limitado
-            return buscar(WAYBACK_LATEST.format(url=url), timeout=timeout)
-        except Exception:  # noqa: BLE001
-            raise e_direto  # nenhum dos dois caminhos funcionou: propaga o erro original (mais informativo)
+# igual com dois User-Agents, enquanto web.archive.org respondeu 200 em ~1s do mesmo runner). Usa
+# buscar_com_reserva_wayback() de coletores_base.py — o archive.org como intermediário quando a busca direta
+# falha.
 
 
 def _texto_paginas(bruto: bytes) -> list:
@@ -216,6 +195,11 @@ def coletar() -> int:
         print("informe DF: listagem inacessível (direto e via Wayback) — lacuna declarada"); return 0
     pdf_url, se = extrair_link_mais_recente(html)
     if not pdf_url:
+        # 12/09/2026: debug do diagnóstico isolado — mostra o que a busca (direta ou via Wayback) realmente
+        # devolveu, para saber se é o Wayback servindo uma cópia velha/sem os informes de 2026, ou alguma
+        # reescrita de URL do próprio archive.org atrapalhando o regex.
+        print("HTML recebido:", len(html), "caracteres | contém 'informativo_epidemiologico':", "informativo_epidemiologico" in html,
+              "| contém 'archive.org':", "archive.org" in html, "| trecho:", html[:400].replace("\n", "⏎"))
         registrar_lacuna("SES-DF (listagem de informes de arboviroses)", "nenhum link no padrão informativo_epidemiologico_seNN…-pdf", canal="site_estadual", camada=2, strings=[LISTAGEM])
         print("informe DF: nenhum link reconhecido na listagem — lacuna declarada"); return 0
     try:
@@ -367,12 +351,10 @@ Expediente
 
 
 def _t_wayback_url() -> bool:
-    # 12/09/2026: confere só a CONSTRUÇÃO da URL (rede real não é testável no ambiente de edição — foi
-    # medida no runner via scripts/diagnostico_fontes_saude.py, que confirmou web.archive.org respondendo
-    # 200 em ~1s onde o site direto trava ~45s). O timestamp bem no futuro é o truque para pegar a captura
-    # mais recente disponível, não a mais antiga.
-    url = WAYBACK_LATEST.format(url=LISTAGEM)
-    return url.startswith("https://web.archive.org/web/2030") and url.endswith(LISTAGEM) and WAYBACK_SAVE == "https://web.archive.org/save/"
+    # 12/09/2026: confere que o DF usa a função compartilhada de coletores_base.py — rede real não é
+    # testável no ambiente de edição; foi medida no runner via scripts/diagnostico_fontes_saude.py, que
+    # confirmou web.archive.org respondendo 200 em ~1s onde o site direto trava ~45s.
+    return buscar_com_reserva_wayback.__module__ == "coletores_base"
 
 
 def autoteste() -> int:
