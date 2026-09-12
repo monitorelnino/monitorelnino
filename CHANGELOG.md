@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §36 · MS entrega série de verdade; DF, PE e PB — três causas diferentes, documentadas até o fim · 12/09/2026
+
+Nenhuma alteração de método; nenhum número do índice muda. Classe **código** (PROTOCOLO §3.2). Sessão de investigação profunda pedida pela editoria ("encontrar uma solução para os estados que estão dando erro"), com medição real no runner em cada etapa — nenhuma correção sem prova contra dado real.
+
+**MS — resolvido, com prova em produção.** `extract_tables()` do pdfplumber (grade da própria tabela, não texto por posição) recupera 74 dos 79 municípios contra o PDF real da SE 34/2026 — o texto corrido só achava 35, porque a segunda metade da tabela cai numa página com gráfico ao lado e a extração por posição intercala as colunas fora de ordem. `data/saude_desfechos/ses_ms_dengue.json` foi gravado de verdade numa rodada de teste isolada: primeira vez que qualquer um dos quatro coletores de saúde produz série publicável.
+
+**DF — solução correta, esgotada pelo próprio ritmo de teste do dia.** Medido no runner: `saude.df.gov.br` nunca completa o handshake TLS (`_ssl.c:993`, timeout). `web.archive.org`, um CDN global, respondeu 200 em ~1s no mesmo runner — não é bloqueio geral de rede, é aquele site específico. Implementado `buscar_com_reserva_wayback()` em `coletores_base.py`: pede ao archive.org para capturar a página agora (rede própria dele) e lê a captura mais recente. Funcionou isolado na primeira medição; nas rodadas seguintes, hoje, passou a devolver **"Connection refused"** — sinal de limite de taxa do próprio archive.org, quase certamente por eu ter acionado `/save/` e `/web/` repetidas vezes ao longo do dia depurando. Em uso semanal normal (uma vez), esse risco é muito menor. Arquitetura mantida; próxima sessão deve confirmar com um único disparo, não em rajada.
+
+**PE — avançou, não fechou.** O layout mudou de rótulos curtos ("Notificados") para rótulos longos ("Casos notificados") entre as edições usadas nos autotestes e a mais nova; o parser foi generalizado para aceitar 2, 3 ou 4 colunas por linha (`_pareados()`) e rótulos partidos entre linhas — dengue e chikungunya's notificados/prováveis/descartados extraem certo agora. Só "Casos confirmados" da dengue continua sem número adjacente no texto extraído. Confirmação externa (duas reportagens independentes citando o mesmo boletim) dá o valor real — **11.241** — provando que o número existe no PDF, só mais longe do rótulo do que a janela de busca alcança; alargada de 40 para 200 caracteres, sem resolver. Não travado no código o valor específico (quebraria toda semana). Fica para sessão com acesso à página completa.
+
+**PB — sem solução por este método, e não é falha de coleta.** O portal devolve o boletim **"Nº 05 — 20.04.2023"** para qualquer número de URL tentado que não exista — confirmado duas vezes, em rodadas diferentes. Adivinhar número não serve para achar o boletim corrente ali. Reduzido de 24 para 6 tentativas (mesmo resultado, ~8 min mais rápido por rodada). Precisa de um mecanismo de descoberta diferente (listagem real, não inferência de padrão de URL) — não encontrado nesta sessão.
+
+Em nenhum momento, em nenhuma das dezenas de tentativas de hoje, um número errado, parcial ou de ano incorreto foi publicado. Todas as falhas conhecidas viraram lacuna auditável.
+
 ## Figura "SRAG por semana · Brasil" — lacuna passa a ser declarada na própria figura · 11/09/2026
 
 Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCOLO §3.2). Peso zero.
