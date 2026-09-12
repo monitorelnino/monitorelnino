@@ -157,6 +157,27 @@ def buscar(url: str, timeout: int = 40) -> bytes:
     return corpo
 
 
+def buscar_com_reserva_wayback(url: str, timeout: int = 40) -> bytes:
+    """12/09/2026: reserva para fontes que o runner não alcança diretamente (medido: alguns portais estaduais
+    pequenos não completam handshake TLS/conexão com o runner do Actions, enquanto web.archive.org — um CDN
+    global — responde em ~1s no mesmo runner). Tenta buscar() direto primeiro; se falhar, pede ao archive.org
+    para capturar a página AGORA (rede própria dele, não passa pelo runner) e lê a captura mais recente
+    (timestamp bem no futuro é o truque para pegar a mais nova, não a mais antiga disponível). Se o pedido de
+    captura falhar ou for limitado, ainda tenta ler uma captura já existente antes de desistir — pode não ser
+    da mesma hora, mas é melhor que lacuna para fonte semanal."""
+    try:
+        return buscar(url, timeout=timeout)
+    except Exception as e_direto:  # noqa: BLE001
+        try:
+            try:
+                buscar("https://web.archive.org/save/" + url, timeout=timeout)  # corpo da resposta não importa
+            except Exception:  # noqa: BLE001
+                pass
+            return buscar(f"https://web.archive.org/web/20301231000000/{url}", timeout=timeout)
+        except Exception:  # noqa: BLE001
+            raise e_direto  # nenhum dos dois funcionou: propaga o erro original (mais informativo que o do Wayback)
+
+
 def fonte_esta_suspensa(urls) -> bool:
     """True se alguma URL desta execução casou o detector de defeso."""
     return any(u in _SUSPENSAS_SESSAO for u in (urls or []))
