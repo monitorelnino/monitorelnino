@@ -43,6 +43,11 @@ ALVOS = [
     ("InfoGripe · host novo, raiz", "https://gitlab.fiocruz.br/"),
     ("InfoGripe · host novo, CSV equivalente", "https://gitlab.fiocruz.br/marcelo.gomes/infogripe/-/raw/master/Dados/InfoGripe/serie_temporal_com_estimativas_recentes.csv"),
     ("controle: fonte que já funciona", "https://queridodiario.ok.org.br/"),
+    # 12/09/2026: hipótese a testar — web.archive.org é um CDN global; se o runner o alcançar mesmo sem
+    # alcançar saude.df.gov.br diretamente, dá pra usar o Wayback como intermediário: o próprio archive.org
+    # busca o site (de onde ele conseguir) e devolve a cópia arquivada, sem o runner precisar falar com a
+    # fonte original.
+    ("web.archive.org (candidato a intermediário para o DF)", "https://web.archive.org/web/2/https://www.saude.df.gov.br/informes-dengue-chikungunya-zika-febre-amarela"),
 ]
 
 
