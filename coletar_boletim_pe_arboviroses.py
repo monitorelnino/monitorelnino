@@ -141,6 +141,11 @@ def _pareados(texto: str) -> dict:
     mudou. Agora aceita qualquer quantidade, desde que números e rótulos venham na mesma contagem; se não
     baterem, devolve vazio e quem chama cai nos candidatos adjacentes + identidade contábil."""
     out = {}
+    # 12/09/2026: no informe da SE 35 o último rótulo vem PARTIDO entre linhas
+    # ("… Casos prováveis Casos\ndescartados"), então a linha tinha 3 números e só 2 rótulos inteiros e o
+    # pareamento era descartado. Emenda o rótulo partido antes de casar; não altera linhas já completas.
+    texto = re.sub(r"Casos[ \t]*\n[ \t]*(notificados|prov[áa]veis|descartados|confirmados|graves)\b",
+                   r"Casos \1", texto, flags=re.I)
     NUM = r"\d{1,3}(?:\.\d{3})+|\d{1,6}"
     # a linha de rótulos pode ter sufixo (na SE 34 vinha "… Casos descartados Incidência **01 óbito…"):
     # conta só a sequência de "Casos X" no começo da linha e ignora o resto.
@@ -514,6 +519,10 @@ def autoteste() -> int:
         p35 = _pareados("46.225 22.732 23.493\nCasos notificados Casos prováveis Casos descartados")
         p34 = _pareados("45.017 22.736\nCasos notificados Casos descartados Incidência **01 óbito")
         pz = _pareados("1.209 108 1.101 0\nCasos notificados Casos prováveis Casos descartados Casos confirmados")
+        # rótulo PARTIDO entre linhas, como veio de verdade no PDF da SE 35
+        p35p = _pareados("46.225 22.732 23.493\nCasos notificados Casos prováveis Casos\ndescartados")
+        if p35p != {"notificados": 46225, "provaveis": 22732, "descartados": 23493}:
+            return False
         return (p35 == {"notificados": 46225, "provaveis": 22732, "descartados": 23493}
                 and p35["provaveis"] + p35["descartados"] == p35["notificados"]     # identidade fecha
                 and p34 == {"notificados": 45017, "descartados": 22736}
