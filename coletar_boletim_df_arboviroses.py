@@ -191,8 +191,12 @@ def coletar() -> int:
     try:
         html = buscar_com_reserva_wayback(LISTAGEM, timeout=60).decode("utf-8", "replace")
     except Exception as e:  # noqa: BLE001
-        registrar_lacuna("SES-DF (listagem de informes de arboviroses)", type(e).__name__, canal="site_estadual", camada=2, strings=[LISTAGEM])
-        print("informe DF: listagem inacessível (direto e via Wayback) — lacuna declarada"); return 0
+        # 12/09/2026: type(e).__name__ sozinho virou só "RuntimeError" — sem a mensagem, escondendo qual dos
+        # três estágios (direto/wayback-save/wayback-ler) falhou. str(e) carrega o detalhe que coletores_base
+        # monta; ambos vão à lacuna, e a mensagem é impressa também para o diagnóstico isolado, que não comita.
+        detalhe = f"{type(e).__name__}: {e}"
+        registrar_lacuna("SES-DF (listagem de informes de arboviroses)", detalhe, canal="site_estadual", camada=2, strings=[LISTAGEM])
+        print(f"informe DF: listagem inacessível (direto e via Wayback) — {detalhe}"); return 0
     pdf_url, se = extrair_link_mais_recente(html)
     if not pdf_url:
         # 12/09/2026: debug do diagnóstico isolado — mostra o que a busca (direta ou via Wayback) realmente
