@@ -33,7 +33,7 @@ adivinha o link.
 import io, re, sys, unicodedata
 from pathlib import Path
 from urllib.parse import quote, urljoin
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste
+from coletores_base import ler, gravar, buscar, buscar_com_reserva_wayback, registrar_lacuna, log_busca, rodar_autoteste
 
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://portalcievs.saude.pe.gov.br"
@@ -295,7 +295,10 @@ def parse_texto(texto: str, paginas: list = None) -> dict:
 def coletar() -> int:
     hoje = _hoje()
     try:
-        html = buscar(LISTAGEM, timeout=60).decode("utf-8", "replace")
+        # 12/09/2026: a listagem deu URLError numa rodada real, o mesmo tipo de falha que o DF tinha — usa a
+        # mesma reserva via Wayback (coletores_base.py) para não depender de uma conexão direta que pode
+        # falhar de forma intermitente.
+        html = buscar_com_reserva_wayback(LISTAGEM, timeout=60).decode("utf-8", "replace")
     except Exception as e:  # noqa: BLE001
         registrar_lacuna("CIEVS-PE (listagem de informes de arboviroses)", type(e).__name__, canal="site_estadual", camada=2, strings=[LISTAGEM])
         print("informe PE: listagem inacessível — lacuna declarada"); return 0
