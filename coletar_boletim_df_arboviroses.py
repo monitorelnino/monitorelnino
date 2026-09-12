@@ -43,6 +43,32 @@ RESSALVA = ("O Monitor não atribui casos ao El Niño; dados da SES-DF (Sinan On
 MESES = {"janeiro": 1, "fevereiro": 2, "março": 3, "marco": 3, "abril": 4, "maio": 5, "junho": 6, "julho": 7,
          "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12}
 
+# 12/09/2026: saude.df.gov.br não completa handshake TLS com o runner do Actions (medido: ~45s de timeout,
+# igual com dois User-Agents, enquanto outras fontes respondem 200 do mesmo runner — não é bloqueio por UA
+# nem instabilidade geral de rede). web.archive.org, ao contrário, respondeu 200 em ~1s do mesmo runner: é
+# um CDN global, não um site pequeno de governo estadual. Usado como intermediário — o archive.org tem rede
+# própria para buscar a página; o runner só precisa falar com o archive.org, não com o DF.
+WAYBACK_SAVE = "https://web.archive.org/save/"
+WAYBACK_LATEST = "https://web.archive.org/web/20301231000000/{url}"  # timestamp bem no futuro = captura mais recente disponível
+
+
+def buscar_com_reserva_wayback(url: str, timeout: int = 60) -> bytes:
+    """Busca direta; se falhar (é o caso conhecido do DF), busca via Wayback: primeiro pede ao archive.org
+    para capturar a página AGORA (ele busca com a própria rede, sem depender do runner alcançar a fonte),
+    depois lê a captura mais recente. Se o pedido de captura falhar ou for limitado, ainda tenta ler uma
+    captura já existente — pode não ser da mesma hora, mas é melhor que lacuna quando a fonte é semanal."""
+    try:
+        return buscar(url, timeout=timeout)
+    except Exception as e_direto:  # noqa: BLE001
+        try:
+            try:
+                buscar(WAYBACK_SAVE + url, timeout=timeout)  # dispara a captura; corpo da resposta não importa
+            except Exception:  # noqa: BLE001
+                pass  # segue tentando ler uma captura existente mesmo se o pedido de captura falhar/for limitado
+            return buscar(WAYBACK_LATEST.format(url=url), timeout=timeout)
+        except Exception:  # noqa: BLE001
+            raise e_direto  # nenhum dos dois caminhos funcionou: propaga o erro original (mais informativo)
+
 
 def _texto_paginas(bruto: bytes) -> list:
     """Texto por página. pdfplumber PRIMEIRO (11/09/2026): nestes PDFs-infográfico o pypdf extrai com espaço
@@ -184,16 +210,16 @@ def _tabela_regioes(sec: str, rotulo_tabela: str) -> dict:
 def coletar() -> int:
     hoje = _hoje()
     try:
-        html = buscar(LISTAGEM, timeout=60).decode("utf-8", "replace")
+        html = buscar_com_reserva_wayback(LISTAGEM, timeout=60).decode("utf-8", "replace")
     except Exception as e:  # noqa: BLE001
         registrar_lacuna("SES-DF (listagem de informes de arboviroses)", type(e).__name__, canal="site_estadual", camada=2, strings=[LISTAGEM])
-        print("informe DF: listagem inacessível — lacuna declarada"); return 0
+        print("informe DF: listagem inacessível (direto e via Wayback) — lacuna declarada"); return 0
     pdf_url, se = extrair_link_mais_recente(html)
     if not pdf_url:
         registrar_lacuna("SES-DF (listagem de informes de arboviroses)", "nenhum link no padrão informativo_epidemiologico_seNN…-pdf", canal="site_estadual", camada=2, strings=[LISTAGEM])
         print("informe DF: nenhum link reconhecido na listagem — lacuna declarada"); return 0
     try:
-        bruto = buscar(pdf_url, timeout=90)
+        bruto = buscar_com_reserva_wayback(pdf_url, timeout=90)
         # 11/09/2026 (achado da rodada de 22h): pdfplumber NÃO está em requirements.txt — o coletor chegava
         # a localizar o PDF e morria com ModuleNotFoundError. A função canônica do projeto usa pypdf
         # (instalado) e só cai para pdfplumber se a extração vier vazia: funciona com ou sem o opcional.
@@ -340,6 +366,15 @@ Expediente
 """
 
 
+def _t_wayback_url() -> bool:
+    # 12/09/2026: confere só a CONSTRUÇÃO da URL (rede real não é testável no ambiente de edição — foi
+    # medida no runner via scripts/diagnostico_fontes_saude.py, que confirmou web.archive.org respondendo
+    # 200 em ~1s onde o site direto trava ~45s). O timestamp bem no futuro é o truque para pegar a captura
+    # mais recente disponível, não a mais antiga.
+    url = WAYBACK_LATEST.format(url=LISTAGEM)
+    return url.startswith("https://web.archive.org/web/2030") and url.endswith(LISTAGEM) and WAYBACK_SAVE == "https://web.archive.org/save/"
+
+
 def autoteste() -> int:
     def t1():
         d = parse_texto(TEXTO_REAL_SE34); r = d["referencia"]
@@ -387,7 +422,7 @@ def autoteste() -> int:
             return True
     def t11():
         return "não atribui casos ao El Niño" in RESSALVA and len(REGIOES) == 7 and IBGE_DF == "5300108"
-    return rodar_autoteste({"referência (Nº, SE, ano, datas)": t1, "cards de dengue (texto real SE 34)": t2,
+    return rodar_autoteste({"URL do Wayback como intermediário (timestamp futuro = captura mais recente)": _t_wayback_url,"referência (Nº, SE, ano, datas)": t1, "cards de dengue (texto real SE 34)": t2,
                             "Tabela 1 por Região de Saúde fecha com N": t3, "chikungunya cards + Tabela 2": t4,
                             "zika e febre amarela": t5, "monitoramento laboratorial e sorotipos": t6,
                             "soma das regiões ≠ N → recusa": t7, "região ausente → recusa": t8,
