@@ -1,6 +1,8 @@
 name: Portões (pull request)
 
-# Checagem obrigatória para mesclar na main (ruleset): os 12 portões do protocolo §3.3
+# Checagem obrigatória para mesclar na main (ruleset): a suíte completa do protocolo §3.3
+# (13/09/2026: comentário corrigido — a contagem exata muda conforme portões são adicionados;
+# scripts/auditoria_seguranca.py confere semanalmente que este número não fica desatualizado de novo.)
 # rodam em árvore limpa a cada pull request. Falhou = não mescla.
 on:
   pull_request:
