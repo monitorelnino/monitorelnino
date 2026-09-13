@@ -1,5 +1,5 @@
 // ===== financiamento.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, PAINEL, MPS, CONTADORES;
+let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES;
 
 // ===== 3b · Contadores por estado (v3.1 §11; redesenhado 13/09/2026 — auditoria de visualizações) =====
 function renderContadores(){
@@ -141,7 +141,6 @@ async function __load(){
   (ROTAS.rotas || []).forEach(r => { r.cor = MonitorMapas.PALETA.rotas[r.id] || r.cor; });
   renderContadores();
   renderRotaMPs();
-  try { PAINEL = await carregar('data/painel/agregados.json'); } catch(e) { PAINEL = null; }
   __init();
 }
 function __init(){
@@ -295,15 +294,8 @@ function __init(){
   const porUF = {}; recs.forEach(e => { const p = porUF[e.uf] = porUF[e.uf] || {n: 0, m: new Set()}; p.n++; p.m.add(e.nome); });
   document.querySelector('#tblResposta tbody').innerHTML = UFS.map(uf => '<tr><td><strong>' + uf + '</strong></td><td>' + (porUF[uf] ? porUF[uf].n : 0) + '</td><td>' + (porUF[uf] ? [...porUF[uf].m].map(esc).join(', ') : '—') + '</td><td>' + brl((((PORUF.uf[uf] || {}).rotas || {}).r3 || {}).valor_2026) + '</td></tr>').join('');
   fonteFigura('boxResposta', {fontes: 'DOU (SEDEC/MIDR)', data: recs.length ? ROTAS.corte : null});
-  // 5 · painel
-  if (PAINEL && PAINEL.lista_publicada_em) {
-    (document.getElementById('notaPainel')||{}).textContent = 'Painel de ' + PAINEL.n + ' municípios; semente ' + PAINEL.semente + ', lista publicada em ' + PAINEL.lista_publicada_em + ' (hash ' + String(PAINEL.hash_lista).slice(0,12) + '…).';
-    document.getElementById('painelResumo').innerHTML = '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>Região × porte</th><th>Municípios</th><th>Com instrumento publicado</th><th>Ainda não verificados</th></tr></thead><tbody>'
-      + (PAINEL.agregados || []).map(a => '<tr><td>' + esc(a.regiao) + ' · ' + esc(a.porte) + '</td><td>' + a.n + '</td><td>' + a.com_instrumento + '</td><td>' + a.nao_verificados + '</td></tr>').join('') + '</tbody></table></div>';
-    fonteFigura('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: (PAINEL && PAINEL.lista_publicada_em) || ROTAS.corte});
-  } else {
-    fonteFigura('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: null});
-  }
+  // 5 · painel amostral: migrou para pesquisadores.html em 13/09/2026 (proposta de enxugamento,
+  // Manus AI) — "não responde quem pediu ou não pediu no universo monitorado".
   // 6 · programas permanentes
   const PROG = [
     {nome: 'Garantia-Safra', base: 'Lei 10.420/2002 · MDA', regra: 'adesão municipal anual antes do plantio; cota municipal 6%; pagamento por perda verificada — sem decreto', lista: 'relação de municípios aderentes: a coletar (MDA)'},

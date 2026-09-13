@@ -7,6 +7,20 @@ const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};   // 
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function __load(){
   [DATA, TRANSFERENCIAS, META, TABELA_MUNICIPIOS, SINAIS, CONSULTAS] = await Promise.all(['estados','transferencias','meta','municipios','sinais_risco','financiamento/consultas'].map(f => fetch('data/' + f + '.json').then(r => { if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
+  // 13/09/2026 (proposta de enxugamento, Manus AI): agregados do painel amostral migraram de
+  // Financiamento para cá — a lista/fichas completas já viviam só em JSON; agora o resumo por
+  // região × porte também tem uma leitura na página, não só o link pro arquivo cru.
+  try {
+    const PAINEL = await fetch('data/painel/agregados.json').then(r => r.ok ? r.json() : null);
+    if (PAINEL && PAINEL.lista_publicada_em) {
+      (document.getElementById('notaPainel')||{}).textContent = 'Painel de ' + PAINEL.n + ' municípios; semente ' + PAINEL.semente + ', lista publicada em ' + PAINEL.lista_publicada_em + ' (hash ' + String(PAINEL.hash_lista).slice(0,12) + '…).';
+      document.getElementById('painelResumo').innerHTML = '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>Região × porte</th><th>Municípios</th><th>Com instrumento publicado</th><th>Ainda não verificados</th></tr></thead><tbody>'
+        + (PAINEL.agregados || []).map(a => '<tr><td>' + esc(a.regiao) + ' · ' + esc(a.porte) + '</td><td>' + a.n + '</td><td>' + a.com_instrumento + '</td><td>' + a.nao_verificados + '</td></tr>').join('') + '</tbody></table></div>';
+      MonitorMapas.credito('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: PAINEL.lista_publicada_em});
+    } else {
+      MonitorMapas.credito('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: null});
+    }
+  } catch(e) { MonitorMapas.credito('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: null}); }
 document.getElementById('fontesMonitoramento').innerHTML = TRANSFERENCIAS.fontes_monitoramento
   .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
   const ROTULO_HOST = {
