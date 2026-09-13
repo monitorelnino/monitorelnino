@@ -84,13 +84,13 @@ setTimeout(() => {
     teste(`${wrap}: nunca gráfico e lacuna ao mesmo tempo`, !(temCanvas && temLacuna));
   }
 
-  // --- cartões do estado do ciclo ---
-  teste("quatro cartões de estado do ciclo", q("cartoesCiclo") && q("cartoesCiclo").children.length === 4);
+  // --- cartões do estado do ciclo removidos em 13/09/2026 (unificados em 'Situação atual', pedido
+  //     de Patricia): três dos quatro duplicavam valores já no painel; verificação virou parte do
+  //     bloco de crédito abaixo (id 'situacao').
 
   // --- PROVENIÊNCIA VISÍVEL: regra própria desta página ---
   const creditos = [...d.querySelectorAll("[data-credito]")];
-  const figuras = ["boxTipoRisco", "boxSecas", "boxAvisos", "boxFogo", "boxCemaden", "boxOni", "boxTipos", "boxCruz",
-    "cartaoCiclo1", "cartaoCiclo2", "cartaoCiclo3", "cartaoCiclo4"]   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura
+  const figuras = ["boxTipoRisco", "boxSecas", "boxAvisos", "boxFogo", "boxCemaden", "boxOni", "boxTipos", "boxCruz", "situacao"]   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
   const semCredito = figuras.filter(id => !q(id) || !q(id).querySelector("[data-credito]"));
   teste(`toda figura tem crédito de fonte (${creditos.length} créditos)`, semCredito.length === 0);
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));
