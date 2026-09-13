@@ -68,8 +68,8 @@ setTimeout(() => {
   // 'O que a União publicou' migrou para pesquisadores.html em 13/09/2026 (proposta de
   // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   teste("tabela das 27 UFs", d.querySelectorAll("#tblUF tbody tr").length === 27);
-  teste("quadrantes: 5 blocos e soma 27", q("quadrantes").children.length === 5 &&
-    [...q("quadrantes").querySelectorAll("strong")].reduce((s, e) => s + Number(e.textContent), 0) === 27);
+  // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
+  // teste de renderização correspondente removido daqui.
   // gesto: tooltip ao passar o mouse num estado
   try {
     const p = q("mapaStatus").querySelector("path");
@@ -77,7 +77,7 @@ setTimeout(() => {
     teste("gesto: tooltip abre ao passar o mouse", q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
   } catch (e) { teste("gesto: tooltip", false); }
   // crédito por figura: UMA linha .fonte-figura ao pé do cartão
-  const caixas = [...d.querySelectorAll(".figura")].filter(c => c.querySelector("svg, canvas, #quadrantes"));
+  const caixas = [...d.querySelectorAll(".figura")].filter(c => c.querySelector("svg, canvas"));
   const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura"));
   teste(`toda figura tem crédito de fonte (${caixas.length - semCredito.length}/${caixas.length})`, semCredito.length === 0);
   teste("Monitor Saúde: mapa com 27 UFs, legenda com contagens e tabela alternativa completa", (() => {
@@ -99,6 +99,6 @@ setTimeout(() => {
   teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com siglas das 27 UFs`, mapasSvg.length > 0 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato canônico`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I" && /background:/.test(c.firstElementChild.getAttribute("style") || ""))) && c.textContent.trim().length > 0)));
-  console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, quadrantes, tooltip, créditos e lacunas declaradas.");
+  console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, tooltip, créditos e lacunas declaradas.");
   process.exit(falhas.length ? 1 : 0);
 }, 900);
