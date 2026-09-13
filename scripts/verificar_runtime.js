@@ -114,9 +114,9 @@ setTimeout(() => {
   // camada declarada ficam em METODOLOGIA.pdf, não no PDF do usuário).
   const fonte = inlinePageJs(fs.readFileSync(path.join(raiz, "index.html"), "utf-8"), raiz);
   const ger = fonte.slice(fonte.indexOf("function gerarRelatorioCidadao("), fonte.indexOf("function gerarPDF(){"));
-  const secoes = ["Em emergência, ligue", "Risco projetado para ", "O que já existe", "O que ainda falta", "Pedido de informação pronto", "Como se proteger", "Links úteis"];
+  const secoes = ["Em emergência, ligue", "Risco projetado para ", "O que já existe", "O que ainda falta", "Como se proteger", "Links úteis"];   // 'Pedido de informação pronto' retirada em 13/09/2026 (pedido de Patricia)
   const posicoes = secoes.map(s => ger.indexOf("secao('" + s));
-  teste("PDF do cidadão: as 7 seções existem, na ordem", posicoes.every((p, k) => p > 0 && (k === 0 || p > posicoes[k-1])));
+  teste("PDF do cidadão: as 6 seções existem, na ordem", posicoes.every((p, k) => p > 0 && (k === 0 || p > posicoes[k-1])));
   const jargao = ["posição ordinal", "pesos iguais", "peso aritmético", "camada declarada", "Confiança da verificação", "Pendências de verificação"];
   teste("PDF do cidadão: sem jargão de auditoria", !jargao.some(j => ger.includes(j)));
   // 31/08/2026: cartão e PDF diziam "nenhum decreto localizado" para Biguaçu enquanto o
@@ -137,11 +137,9 @@ setTimeout(() => {
   teste(`prazos em curso: ${esperados} item(ns) renderizados a partir de prazos_uf.json`, q("prazosLista").querySelectorAll(".prazo-rel").length === esperados && esperados > 0);   // 07/09/2026: relógios
   teste("prazos em curso: cada relógio tem anel, número e o que se espera",
     [...q("prazosLista").querySelectorAll(".prazo-rel")].every(p => p.querySelector("svg.relogio circle") && /\d/.test(p.querySelector("svg.relogio text").textContent) && p.querySelector(".prazo-espera")));
-  // Pedido de informação pronto (31/08/2026): presente no cartão da cidade e no detalhe do estado,
-  // com linguagem probatória ("não localizou") e sem afirmação de inexistência.
-  const pedidoCard = q("meuCard").querySelector(".pedido-texto"), pedidoUF = q("detail").querySelector(".pedido-texto");
-  teste("pedido de informação pronto: cartão da cidade e detalhe do estado", !!pedidoCard && !!pedidoUF && /Lei nº 12\.527\/2011/.test(pedidoCard.value) && /Lei nº 12\.527\/2011/.test(pedidoUF.value));
-  teste("pedido de informação: nunca afirma inexistência", ![pedidoCard, pedidoUF].some(p => p && /não existe|inexist/i.test(p.value)));
+  // 13/09/2026 (pedido de Patricia): gerador de pedido de LAI pronto (31/08/2026–13/09/2026)
+  // retirado da parte visível do site — pedidos de LAI passam a ser feitos por e-mail, de forma
+  // privada. Testes correspondentes (cartão da cidade e detalhe do estado) removidos junto.
   teste("PDF do cidadão: estado e município usam o mesmo gerador",
     /function gerarPDFEstado\(uf\)\{ ?gerarRelatorioCidadao\(uf, null\)/.test(fonte) && /gerarRelatorioCidadao\(uf, cid \|\| null\)/.test(fonte));
 

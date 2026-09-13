@@ -253,7 +253,6 @@ button, input[type=submit]{min-height:var(--alvo-toque);}
 .btn, .btn-pdf{display:inline-block; padding:0 var(--sp-4); min-height:var(--alvo-toque); line-height:var(--alvo-toque); font-family:var(--font-corpo); font-size:var(--fs-small); font-weight:var(--peso-semibold); background:var(--green); color:var(--branco); border:none; border-radius:var(--radius); cursor:pointer; text-decoration:none; margin-top:var(--sp-3);}
 .btn:hover, .btn-pdf:hover{background:var(--ink); color:var(--branco);}
 select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:var(--fs-small); min-height:var(--alvo-toque); border:1px solid var(--line); border-radius:var(--radius); background:var(--surface-2); color:var(--ink); padding:0 var(--sp-2);}
-.pedido-lai{margin-top:var(--sp-3);}
 .pedido-texto{width:100%; min-width:0; font-family:var(--font-corpo); font-size:var(--fs-small); line-height:var(--lh-small); color:var(--ink); background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3); margin:0 0 var(--sp-2); resize:vertical;}
 
 /* ===== 10. Medidor (antecipação) e contador (resposta) — página inicial =====
@@ -366,6 +365,7 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .card-link{margin-top:var(--sp-2); font-size:var(--fs-small); font-weight:var(--peso-semibold);}
 .card-note{margin-top:var(--sp-2); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 .aviso-direito{margin:var(--sp-2) 0 0; background:var(--surface-2); border-left:4px solid var(--musgo); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3);}
+.selo-embed{margin-top:var(--sp-3);}
 .selo-embed img, .selo-img{max-width:100%; height:auto; display:block; margin:0 0 var(--sp-2);}
 
 /* ===== 12. Prazos (relógios) e barras por UF ===== */
