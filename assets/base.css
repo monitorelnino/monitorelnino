@@ -365,8 +365,6 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .card-link{margin-top:var(--sp-2); font-size:var(--fs-small); font-weight:var(--peso-semibold);}
 .card-note{margin-top:var(--sp-2); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 .aviso-direito{margin:var(--sp-2) 0 0; background:var(--surface-2); border-left:4px solid var(--musgo); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3);}
-.selo-embed{margin-top:var(--sp-3);}
-.selo-embed img, .selo-img{max-width:100%; height:auto; display:block; margin:0 0 var(--sp-2);}
 
 /* ===== 12. Prazos (relógios) e barras por UF ===== */
 .prazos-grade{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:var(--sp-4); margin:0;}
