@@ -1,5 +1,5 @@
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, CATALOGO, GATILHOS, RESP_NAC, SRAG;
+let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, CATALOGO, GATILHOS, RESP_NAC, SRAG;
 let desenharComparadorSemanal = null;   // 13/09/2026 (auditoria de visualizações, consolidação): fechamento com o desenho do comparador "semanal por capitais", preenchido em __init(), chamado pelo seletor em renderDesfechos()
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');
@@ -7,8 +7,8 @@ const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;
 const { showTip, hideTip } = MonitorMapas;
 
 async function __load(){
-  [BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE] = await Promise.all(
-    ['geo_uf','saude_uf','saude_federal','saude_sinais','sinais_risco','indice','monitor_saude'].map(f => fetch('data/' + f + '.json').then(r => {
+  [BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE] = await Promise.all(
+    ['geo_uf','saude_uf','saude_sinais','sinais_risco','indice','monitor_saude'].map(f => fetch('data/' + f + '.json').then(r => {
       if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
   try { [DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA] = await Promise.all(['data/saude_desfechos/serie_painel.json','data/saude_desfechos/canal_endemico.json','data/saude_desfechos/completude.json','data/municipios_ibge_referencia.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { DESF = DESF_CANAL = DESF_COMP = PAINEL_LISTA = null; }
   try { [CATALOGO, GATILHOS, RESP_NAC, SRAG] = await Promise.all(['data/saude_desfechos/catalogo.json','data/saude_desfechos/gatilhos.json','data/resposta/por_uf.json','data/saude_desfechos/srag_serie.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { CATALOGO = GATILHOS = RESP_NAC = SRAG = null; }
@@ -59,11 +59,8 @@ function __init(){
     fonteFigura('boxRespostaSanitaria', {fontes: ['DOU (ESPIN)', 'diários estaduais'], data: '05/09/2026'});
   })();
 
-  // 1 · federal
-  const STATUS_FED = {localizado:'localizado', anunciado_nao_localizado:'anunciado, não localizado até o corte'};
-  document.getElementById('cartoesFederal').innerHTML = SFED.cartoes.map(c => '<div class="cartao"><h3 class="figura-titulo">'+esc(c.titulo)+'</h3>'
-    + '</div>').join('');
-
+  // 13/09/2026 (proposta de enxugamento, Manus AI): 'O que a União publicou' (8 cartões federais)
+  // migrou para pesquisadores.html — documentos de referência, não narrativa principal da página.
   // 2 · estadual
   const ST = {NOVO:['Novo, específico para o ciclo',MonitorMapas.PALETA.status.NOVO], READ:['Recorrente readaptado',MonitorMapas.PALETA.status.READ], VIG:['Vigente, sem menção ao ciclo',MonitorMapas.PALETA.status.VIG],
               ELAB:['Em elaboração',MonitorMapas.PALETA.status.ELAB], LAC:['Não localizado (bateria datada)',MonitorMapas.PALETA.status.LAC], NAO_VERIFICADO:['Ainda não verificado',MonitorMapas.PALETA.status.NAO_VERIFICADO]};
