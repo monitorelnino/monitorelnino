@@ -12,8 +12,12 @@ para decidir o padrão certo com prova, em vez de adivinhar.
 """
 import re
 import sys
+from pathlib import Path
 
-from coletores_base import buscar_com_reserva_wayback
+# os coletores vivem na raiz do repositório; esta sonda vive em scripts/
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from coletores_base import buscar_com_reserva_wayback  # noqa: E402
 
 BASE = "https://www.saude.df.gov.br"
 LISTAGEM = BASE + "/informes-dengue-chikungunya-zika-febre-amarela"
