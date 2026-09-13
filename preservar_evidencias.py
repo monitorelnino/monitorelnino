@@ -12,7 +12,7 @@ não altera nenhum campo de julgamento — só acrescenta prova.
 """
 import hashlib, io, mimetypes, re, sys, urllib.error
 from pathlib import Path
-from coletores_base import buscar, preservar_evidencia, ler, gravar, registrar_lacuna, log_busca, EVID
+from coletores_base import buscar, preservar_evidencia, ler, gravar, registrar_lacuna, log_busca, EVID, redigir_dados_pessoais
 
 LIMITE_PDF_COPIA = 5 * 1024 * 1024   # cópia do binário só até 5 MB; o TEXTO extraído é guardado sempre
 
@@ -39,9 +39,16 @@ def extrair_texto_por_pagina(pdf_bytes: bytes) -> list:
 
 
 def gravar_texto(h: str, paginas: list) -> str:
-    """evidencias/<sha256>.txt com marcador de página; devolve o hash do texto."""
+    """evidencias/<sha256>.txt com marcador de página; devolve o hash do texto.
+    12/09/2026 (achado de auditoria): redige CPF antes de gravar E antes de calcular o hash — o
+    documento fonte pode trazer CPF de quem assina (prática comum em atos oficiais brasileiros), e
+    o Monitor não precisa dessa informação para nada do que mede. Ver redigir_dados_pessoais() em
+    coletores_base.py para a fundamentação (LGPD art. 6º, III)."""
     EVID.mkdir(exist_ok=True)
     txt = "".join(f"\n=== página {i+1} ===\n{t}\n" for i, t in enumerate(paginas))
+    txt, n_cpfs = redigir_dados_pessoais(txt)
+    if n_cpfs:
+        print(f"  [redação] {n_cpfs} CPF(s) removido(s) do texto antes de preservar")
     (EVID / f"{h}.txt").write_text(txt, encoding="utf-8")
     return hashlib.sha256(txt.encode("utf-8")).hexdigest()
 

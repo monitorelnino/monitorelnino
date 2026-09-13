@@ -138,6 +138,25 @@ def url_ascii(url: str) -> str:
     return urllib.parse.quote(url, safe=":/?&=%#+~@!$,;'()*[]")
 
 
+def redigir_dados_pessoais(texto: str) -> tuple:
+    """12/09/2026 (achado de auditoria): edições inteiras de Diário Oficial preservadas por
+    coletar_diarios_municipais.py às vezes trazem, na mesma edição do plano de contingência que
+    motivou a busca, atos completamente não relacionados — despachos tributários, decisões de
+    pessoal — citando CPF de terceiros (contribuintes, servidores) que nada têm a ver com o objeto
+    do Monitor. A fonte original (o Diário Oficial do município) já é pública por lei; mas
+    preservar e publicar o texto INTEIRO, pesquisável e indexado no domínio do projeto, quando só
+    o trecho do plano de contingência interessa, viola o princípio de minimização de dados da LGPD
+    (art. 6º, III) — facilita achar o que na fonte original exigiria vasculhar a edição inteira.
+
+    Redige (não extrai seletivamente: extrair só o trecho relevante é um problema de NLP separado,
+    arriscado de acertar sem falsos negativos) o padrão de CPF (NNN.NNN.NNN-NN) por [CPF REDIGIDO].
+    Devolve (texto_redigido, quantidade_redigida) — a contagem vai ao log, para nunca esconder que
+    a redação aconteceu."""
+    padrao = re.compile(r"\d{3}\.\d{3}\.\d{3}-\d{2}")
+    n = len(padrao.findall(texto))
+    return padrao.sub("[CPF REDIGIDO]", texto), n
+
+
 def buscar(url: str, timeout: int = 40) -> bytes:
     """GET simples com User-Agent do projeto. Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
@@ -252,8 +271,17 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
         partes.append(f"=== {g.get('date', '')} · {u} ===\n{texto}")
     if not partes:
         return None
+    texto_final = "\n\n".join(partes) + "\n"
+    # 12/09/2026 (achado de auditoria): a edição INTEIRA do diário vem junto, e diários oficiais
+    # brasileiros publicam dezenas de atos não relacionados na mesma edição — inclusive CPF de
+    # contribuintes e servidores em despachos tributários e de pessoal que nada têm a ver com o
+    # objeto do Monitor. Ver redigir_dados_pessoais() para a fundamentação (LGPD art. 6º, III).
+    texto_final, n_cpfs = redigir_dados_pessoais(texto_final)
     EVID.mkdir(exist_ok=True)
-    destino.write_text("\n\n".join(partes) + "\n", encoding="utf-8")
+    destino.write_text(texto_final, encoding="utf-8")
+    if n_cpfs:
+        log_busca("site_estadual", 2, [str(destino.relative_to(RAIZ))], "registro", nivel="municipal",
+                  resultados=f"redação de dados pessoais: {n_cpfs} CPF(s) removido(s) do texto integral preservado ({origem})")
     idx = ler("evidencias.json", {"itens": {}})
     if h in idx.get("itens", {}):
         idx["itens"][h]["texto_integral"] = str(destino.relative_to(RAIZ))
