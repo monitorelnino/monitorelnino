@@ -52,7 +52,9 @@ setTimeout(() => {
   teste(`mapa fase 1: ${N_PONTOS} pontos`, q("mapPoints") && q("mapPoints").querySelectorAll("circle").length === N_PONTOS);
   teste("mapa cobertura: 27 estados", q("mapCobertura") && q("mapCobertura").querySelectorAll("path").length === 27);
   teste("mapa natureza: 27 estados", q("mapNatureza") && q("mapNatureza").querySelectorAll("path").length === 27);
-  teste("mapa consistência: 27 estados", q("mapConsistencia") && q("mapConsistencia").querySelectorAll("path").length === 27);
+  // mapConsistencia/tblConsistencia retirados de defesa-civil.html em 13/09/2026 (auditoria de
+  // visualizações, consolidação) — versão principal do cruzamento risco×instrumento fica em
+  // sinais-de-risco.html (boxCruz); aqui sobrou um resumo compacto com link, testado abaixo.
   // (financiamento — mapa do dinheiro, totais e fontes — migrou para financiamento.html, E9; testado em verificar_runtime_financiamento.js)
   teste("mapa de municípios prioritários: 2.095 pontos", q("mapPrioritarios") && q("mapPrioritarios").querySelectorAll("circle").length === 2095);
 
@@ -60,24 +62,11 @@ setTimeout(() => {
   hover.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
   teste("tooltip de mapa exibe conteúdo", q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
 
-  // Tabela "risco × instrumento" gerada de CONSIST (achado de 31/08/2026 — a cópia
-  // estática anterior tinha divergido de verdade: PE aparecia em 2 categorias ao
-  // mesmo tempo). Confere: sem duplicata de UF, contagem por categoria bate com
-  // CONSIST, e as 27 UFs aparecem exatamente uma vez cada, no total.
-  const linhasTabela = Array.from(q("tblConsistencia").querySelectorAll("tr"))
-    .filter(tr => !tr.querySelector('td[colspan]'));
-  const ufsNaTabela = linhasTabela.map(tr => tr.querySelector("strong").textContent);
-  teste("tabela risco×instrumento: 27 UFs, sem duplicata", ufsNaTabela.length === 27 && new Set(ufsNaTabela).size === 27);
-  const contagemReal = {};
-  Object.values(CONSIST).forEach(v => { contagemReal[v.cat] = (contagemReal[v.cat] || 0) + 1; });
-  const cabecalhos = Array.from(q("tblConsistencia").querySelectorAll("tr"))
-    .filter(tr => tr.querySelector('td[colspan]'))
-    .map(tr => tr.textContent);
-  const contagemNaoBate = cabecalhos.some(txt => {
-    const m = txt.match(/· (\d+) estado/);
-    return m && !Object.values(contagemReal).includes(+m[1]);
-  });
-  teste("tabela risco×instrumento: cabeçalhos batem com a contagem real de CONSIST", !contagemNaoBate);
+  // Tabela "risco × instrumento" (tblConsistencia) retirada de defesa-civil.html em 13/09/2026 —
+  // ver comentário acima. O teste de proveniência (soma de CONSIST bate com a fonte) segue coberto
+  // em verificar_runtime_sinais.js (boxCruz), que agora é a única superfície com essa tabela.
+  teste("resumo risco×instrumento em Defesa Civil: link para a versão completa em Risco",
+    q("riscoinstrumentoResumo") && /sinais-de-risco\.html#boxCruz/.test(q("riscoinstrumentoResumo").innerHTML));
 
   // Mapa de atos de resposta (decretos de emergência) — pedido de Patricia, 31/08/2026,
   // motivado pelo temporal de granizo em SC.
@@ -100,10 +89,10 @@ setTimeout(() => {
   // legendas fora do padrão dos mapas 1-4: sem siglas de UF, opacidade reduzida nos
   // pontos, legenda centralizada em vez de alinhada à esquerda). Todo mapa categórico
   // precisa ter as 27 siglas, e nenhuma legenda pode sobrescrever o alinhamento padrão.
-  const MAPAS_COM_SIGLA = ["mapPoints", "mapCobertura", "mapNatureza", "mapConsistencia",
-    "mapPrioritarios", "mapAtosResposta"];
+  const MAPAS_COM_SIGLA = ["mapPoints", "mapCobertura", "mapNatureza",
+    "mapPrioritarios", "mapAtosResposta"];   // mapConsistencia retirado em 13/09/2026 (auditoria de visualizações)
   const semSiglaCompleta = MAPAS_COM_SIGLA.filter(id => q(id).querySelectorAll("text").length !== 27);
-  teste("harmonização: todos os 7 mapas têm as 27 siglas de UF", semSiglaCompleta.length === 0);
+  teste("harmonização: todos os 6 mapas têm as 27 siglas de UF", semSiglaCompleta.length === 0);
   const legendasDesalinhadas = [...d.querySelectorAll(".map-legend")]
     .filter(el => el.getAttribute("style") && /justify-content/.test(el.getAttribute("style")));
   teste("harmonização: nenhuma legenda de mapa sobrescreve o alinhamento padrão", legendasDesalinhadas.length === 0);

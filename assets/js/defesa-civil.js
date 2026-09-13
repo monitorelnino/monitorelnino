@@ -357,34 +357,46 @@ function renderTabelaConsistencia(){
   corpo.innerHTML = html;
 }
 const svgConsist = d3.select('#mapConsistencia');
-const __defsC = svgConsist.append('defs');
-const __patC = __defsC.append('pattern').attr('id','hatchSemInstr')
-  .attr('width', 6).attr('height', 6)
-  .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
-__patC.append('rect').attr('width', 6).attr('height', 6).attr('fill', MonitorMapas.cor('osso-claro'));
-__patC.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
-  .attr('stroke', MonitorMapas.PALETA.resposta).attr('stroke-width', 1.4).attr('stroke-opacity', .55);
-svgConsist.append('g').selectAll('path')
-  .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen)
-  .attr('class', 'uf-path')
-  .attr('fill', d => CONSIST_COR[CONSIST[d.properties.sigla].cat])
-  .attr('tabindex', 0)
-  .attr('role', 'img').attr('aria-label', d => { const c = CONSIST[d.properties.sigla]; return `${d.properties.name}: ${CONSIST_ROTULO[c.cat]}. Risco projetado: ${c.risco}. Instrumento: ${c.instr}`; })
-  .on('mouseenter', (evt,d) => { const c = CONSIST[d.properties.sigla];
-    showTip(`<strong>${d.properties.name}</strong><br><em>${CONSIST_ROTULO[c.cat]}</em><br>Risco projetado: ${c.risco}<br>Instrumento estadual: ${c.instr}`, evt); })
-  .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip)
-  .on('focus', function(evt,d) { const b = this.getBoundingClientRect(); const c = CONSIST[d.properties.sigla];
-    showTip(`<strong>${d.properties.name}</strong><br><em>${CONSIST_ROTULO[c.cat]}</em><br>Risco: ${c.risco}<br>Instrumento: ${c.instr}`, {clientX: b.x + b.width/2, clientY: b.y}); })
-  .on('blur', hideTip);
-addSiglas(svgConsist);
-const __contC = {};
-Object.values(CONSIST).forEach(c => __contC[c.cat] = (__contC[c.cat]||0) + 1);
-document.getElementById('legConsist').innerHTML =
-  ['COBRE','PARCIAL','DIFERE','SEM','NEUTRO'].map(k =>
-    `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
-renderTabelaConsistencia();
+if (document.getElementById('mapConsistencia')) {
+  const __defsC = svgConsist.append('defs');
+  const __patC = __defsC.append('pattern').attr('id','hatchSemInstr')
+    .attr('width', 6).attr('height', 6)
+    .attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)');
+  __patC.append('rect').attr('width', 6).attr('height', 6).attr('fill', MonitorMapas.cor('osso-claro'));
+  __patC.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
+    .attr('stroke', MonitorMapas.PALETA.resposta).attr('stroke-width', 1.4).attr('stroke-opacity', .55);
+  svgConsist.append('g').selectAll('path')
+    .data(BR_GEOJSON.features).join('path')
+    .attr('d', pathGen)
+    .attr('class', 'uf-path')
+    .attr('fill', d => CONSIST_COR[CONSIST[d.properties.sigla].cat])
+    .attr('tabindex', 0)
+    .attr('role', 'img').attr('aria-label', d => { const c = CONSIST[d.properties.sigla]; return `${d.properties.name}: ${CONSIST_ROTULO[c.cat]}. Risco projetado: ${c.risco}. Instrumento: ${c.instr}`; })
+    .on('mouseenter', (evt,d) => { const c = CONSIST[d.properties.sigla];
+      showTip(`<strong>${d.properties.name}</strong><br><em>${CONSIST_ROTULO[c.cat]}</em><br>Risco projetado: ${c.risco}<br>Instrumento estadual: ${c.instr}`, evt); })
+    .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
+    .on('mouseleave', hideTip)
+    .on('focus', function(evt,d) { const b = this.getBoundingClientRect(); const c = CONSIST[d.properties.sigla];
+      showTip(`<strong>${d.properties.name}</strong><br><em>${CONSIST_ROTULO[c.cat]}</em><br>Risco: ${c.risco}<br>Instrumento: ${c.instr}`, {clientX: b.x + b.width/2, clientY: b.y}); })
+    .on('blur', hideTip);
+  addSiglas(svgConsist);
+  const __contC = {};
+  Object.values(CONSIST).forEach(c => __contC[c.cat] = (__contC[c.cat]||0) + 1);
+  const __legConsist = document.getElementById('legConsist');
+  if (__legConsist) __legConsist.innerHTML =
+    ['COBRE','PARCIAL','DIFERE','SEM','NEUTRO'].map(k =>
+      `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
+  renderTabelaConsistencia();
+}
+// 13/09/2026: resumo compacto (consolidação — versão principal do cruzamento fica em sinais-de-risco.html)
+(function(){
+  const el = document.getElementById('riscoinstrumentoResumo');
+  if (!el || typeof CONSIST === 'undefined') return;
+  const cont = {};
+  Object.values(CONSIST).forEach(c => cont[c.cat] = (cont[c.cat]||0) + 1);
+  const partes = ['COBRE','PARCIAL','DIFERE','SEM'].filter(k => cont[k]).map(k => (cont[k]) + ' ' + CONSIST_ROTULO[k].toLowerCase());
+  el.innerHTML = 'Risco projetado × instrumento estadual, 27 UFs: ' + partes.join(' · ') + '. <a href="sinais-de-risco.html#boxCruz">Ver o cruzamento completo, com mapa e tabela, na página de Risco →</a>';
+})();
 
 // =========================================================
 // MARE — ranking com componentes ponderados
