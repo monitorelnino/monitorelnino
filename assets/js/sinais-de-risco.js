@@ -179,21 +179,26 @@ if(oni && oni.serie && oni.serie.length){
 credito('boxOni', 'noaa_oni');
 
 // ---- Gráfico 2: probabilidades ENOS ----
-if(prob && prob.trimestres && prob.trimestres.length){
-  const t = prob.trimestres.slice(0, 9);
-  new Chart(canvasEm('wrapPlume', 'cPlume'), {type:'bar', data:{
-      labels: t.map(p => p.trimestre),
-      datasets:[{label:'La Niña', data:t.map(p => p.la_nina), backgroundColor:MonitorMapas.PALETA.enso.la_nina},
-                {label:'Neutro',  data:t.map(p => p.neutro),  backgroundColor:MonitorMapas.PALETA.enso.neutro},
-                {label:'El Niño', data:t.map(p => p.el_nino), backgroundColor:MonitorMapas.PALETA.enso.el_nino}]},
-    options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
-      scales:{x:{stacked:true}, y:{stacked:true, max:100, title:{display:true, text:'%'}}}}});
-} else {
-  // enquanto o plume IRI/CPC não é coletado: a leitura oficial do CPC via CPTEC e do Painel, como itens de legenda (dado declarado, não gráfico)
-  const pg = SINAIS.enos.prognostico; const wp = document.getElementById('wrapPlume'); if (wp) wp.innerHTML = '';
-  if (pg && pg.enso) MonitorMapas.legenda('legPlume', [{cor: MonitorMapas.PALETA.enso.el_nino, rotulo: 'El Niño: > 90% para SON/2026 (CPC/NOAA, ago/2026)'}, {cor: MonitorMapas.PALETA.enso.el_nino, opacidade: .55, rotulo: '100% de permanência até início de 2027 (Boletim nº 3)'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'plume por trimestre: sem coleta'}]);
+// 13/09/2026: figura "Probabilidade por trimestre" retirada do HTML (ver comentário em
+// sinais-de-risco.html, painel #graficos) — só mostrava "sem coleta". Bloco mantido desativado
+// (guarda por ausência de #wrapPlume), não apagado, para reativar quando o IRI/CPC for coletado.
+if (document.getElementById('wrapPlume')) {
+  if(prob && prob.trimestres && prob.trimestres.length){
+    const t = prob.trimestres.slice(0, 9);
+    new Chart(canvasEm('wrapPlume', 'cPlume'), {type:'bar', data:{
+        labels: t.map(p => p.trimestre),
+        datasets:[{label:'La Niña', data:t.map(p => p.la_nina), backgroundColor:MonitorMapas.PALETA.enso.la_nina},
+                  {label:'Neutro',  data:t.map(p => p.neutro),  backgroundColor:MonitorMapas.PALETA.enso.neutro},
+                  {label:'El Niño', data:t.map(p => p.el_nino), backgroundColor:MonitorMapas.PALETA.enso.el_nino}]},
+      options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
+        scales:{x:{stacked:true}, y:{stacked:true, max:100, title:{display:true, text:'%'}}}}});
+  } else {
+    // enquanto o plume IRI/CPC não é coletado: a leitura oficial do CPC via CPTEC e do Painel, como itens de legenda (dado declarado, não gráfico)
+    const pg = SINAIS.enos.prognostico; const wp = document.getElementById('wrapPlume'); if (wp) wp.innerHTML = '';
+    if (pg && pg.enso) MonitorMapas.legenda('legPlume', [{cor: MonitorMapas.PALETA.enso.el_nino, rotulo: 'El Niño: > 90% para SON/2026 (CPC/NOAA, ago/2026)'}, {cor: MonitorMapas.PALETA.enso.el_nino, opacidade: .55, rotulo: '100% de permanência até início de 2027 (Boletim nº 3)'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'plume por trimestre: sem coleta'}]);
+  }
+  credito('boxPlume', 'iri_plume');
 }
-credito('boxPlume', 'iri_plume');
 
 // ---- Gráfico 3: estados por tipo de risco ----
 const ordemTipos = Object.keys(TIPO_ROTULO).filter(t => UFS.some(uf => RISCO(uf) && RISCO(uf).tipo === t));

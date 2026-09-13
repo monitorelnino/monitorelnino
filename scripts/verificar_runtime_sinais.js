@@ -75,13 +75,12 @@ setTimeout(() => {
   const somaCruz = cruz ? cruz.cfg.data.datasets.reduce((s, ds) => s + ds.data.reduce((a, b) => a + b, 0), 0) : 0;
   teste(`cruzamento soma exatamente as 27 UFs (somou ${somaCruz})`, somaCruz === Object.keys(MARE).length);
 
-  for (const [wrap, fonte] of [["wrapOni", "noaa_oni"], ["wrapPlume", "iri_plume"]]) {
+  // wrapPlume/iri_plume retirado do loop em 13/09/2026 (auditoria de visualizações) — figura sem cobertura, trocada por cartão compacto fora do componente .figura
+  for (const [wrap, fonte] of [["wrapOni", "noaa_oni"]]) {
     const coletada = SINAIS.fontes[fonte].status === "coletado";
     const temCanvas = q(wrap) && q(wrap).querySelector("canvas");
     const temLacuna = q(wrap) && q(wrap).querySelector(".lacuna");
-    // 07/09/2026: o plume não coletado mostra a leitura oficial (CPC/Painel) como legenda, em vez de lacuna em parágrafo
-    const temLeitura = wrap === "wrapPlume" && q("legPlume") && /CPC|Boletim/.test(q("legPlume").textContent);
-    teste(`${wrap}: ${coletada ? "gráfico desenhado" : "lacuna declarada ou leitura oficial"}`, coletada ? !!temCanvas : (!!temLacuna || !!temLeitura));
+    teste(`${wrap}: ${coletada ? "gráfico desenhado" : "lacuna declarada ou leitura oficial"}`, coletada ? !!temCanvas : !!temLacuna);
     teste(`${wrap}: nunca gráfico e lacuna ao mesmo tempo`, !(temCanvas && temLacuna));
   }
 
@@ -90,8 +89,8 @@ setTimeout(() => {
 
   // --- PROVENIÊNCIA VISÍVEL: regra própria desta página ---
   const creditos = [...d.querySelectorAll("[data-credito]")];
-  const figuras = ["boxTipoRisco", "boxSecas", "boxAvisos", "boxFogo", "boxCemaden", "boxOni", "boxPlume", "boxTipos", "boxCruz",
-    "cartaoCiclo1", "cartaoCiclo2", "cartaoCiclo3", "cartaoCiclo4"]   // ids a partir de 1 (auditoria 07/09/2026);
+  const figuras = ["boxTipoRisco", "boxSecas", "boxAvisos", "boxFogo", "boxCemaden", "boxOni", "boxTipos", "boxCruz",
+    "cartaoCiclo1", "cartaoCiclo2", "cartaoCiclo3", "cartaoCiclo4"]   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura
   const semCredito = figuras.filter(id => !q(id) || !q(id).querySelector("[data-credito]"));
   teste(`toda figura tem crédito de fonte (${creditos.length} créditos)`, semCredito.length === 0);
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));
