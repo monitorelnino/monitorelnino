@@ -138,26 +138,28 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
   if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; el('stTendencia').innerHTML = esc(d > 0.15 ? 'fortalecendo' : d < -0.15 ? 'enfraquecendo' : 'estável') + ' <small>' + (d >= 0 ? '+' : '') + esc(d.toFixed(2).replace('.', ',')) + ' °C em dois trimestres</small>'; }
   el('stOni').innerHTML = u ? esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C <small>' + esc(u.trimestre + '/' + u.ano) + ' · média móvel trimestral</small>' : '—';
   el('stProb').innerHTML = ultimaProb ? esc(ultimaProb.el_nino.toFixed(0)) + '% <small>' + esc(ultimaProb.trimestre) + ' (IRI/CPC)</small>' : (pg && pg.enso ? '> 90% <small>SON/2026 · CPC/NOAA, ago/2026</small>' : '—');
+  el('stDocumento').innerHTML = coletada('painel_el_nino') ? esc(fonteDe('painel_el_nino').documento) : '<span class="lacuna">sem coleta até o corte</span>';
   el('stAtualizado').innerHTML = esc(SINAIS.gerado_em || '') + ' <small>ONI: ' + esc(fonteDe('noaa_oni').consultado_em || '—') + ' · Painel: ' + esc(fonteDe('painel_el_nino').consultado_em || '—') + '</small>';
   const partes = [];
   if (u) partes.push('<strong>Observação:</strong> o ONI está em ' + esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C (' + esc(u.trimestre + '/' + u.ano) + '), ' + esc(cls(u.anomalia)) + ' pela escala do CPC.');
   if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; partes.push('<strong>Interpretação:</strong> a anomalia ' + (d > 0.15 ? 'vem subindo' : d < -0.15 ? 'vem caindo' : 'está estável') + ' nos últimos trimestres — o fenômeno ' + (d > 0.15 ? 'se fortalece' : d < -0.15 ? 'perde força' : 'persiste sem mudança de intensidade') + '.'); }
   if (pg) partes.push('<strong>Projeção (Boletim nº 3, SON/2026):</strong> chuva abaixo da normal no Norte, Nordeste e centro-norte; acima no Sul; temperatura acima da normal em quase todo o País. Permanência do El Niño até o início de 2027 com alta probabilidade.');
   el('stDiagnostico').innerHTML = partes.join(' ') || 'sem coleta até o corte';
+  // 13/09/2026 (pedido de Patricia: unificar com 'Estado do ciclo'): citação combinada das fontes
+  // que alimentam este painel — antes, cada uma tinha um cartão próprio em outra seção. A fonte da
+  // Probabilidade é dinâmica (mesma condicional da linha acima): 'iri_plume' quando coletado, senão
+  // 'cptec_prognostico' (o prognóstico já usado no Boletim) — a citação segue a mesma fonte no ar.
+  const fontesSituacao = ['Painel El Niño 2026-2027 (CEMADEN/INPE)', 'NOAA/CPC — Índice ONI'];
+  fontesSituacao.push(ultimaProb ? 'IRI/CPC — probabilidades trimestrais' : 'CPTEC/INPE — prognóstico trimestral');
+  MonitorMapas.credito('situacao', {fontes: fontesSituacao, data: SINAIS.gerado_em});
+  const __situacaoFonte = document.querySelector('#situacao .fonte-figura');
+  if (__situacaoFonte) __situacaoFonte.dataset.credito = ultimaProb ? 'iri_plume' : 'cptec_prognostico';
 })();
 
-const cartoes = [
-  {t:'Boletim mais recente do ciclo', v: coletada('painel_el_nino') ? fonteDe('painel_el_nino').documento : null, f:'painel_el_nino'},
-  {t:'ONI observado', v: ultimoOni ? (ultimoOni.anomalia > 0 ? '+' : '') + ultimoOni.anomalia.toFixed(1).replace('.', ',') + ' °C · ' + ultimoOni.trimestre + '/' + ultimoOni.ano : null, f:'noaa_oni'},
-  {t:'Probabilidade de El Niño', v: ultimaProb ? ultimaProb.el_nino.toFixed(0) + '% em ' + ultimaProb.trimestre : (SINAIS.enos.prognostico && SINAIS.enos.prognostico.enso ? '> 90% em SON/2026 (CPC, via CPTEC)' : null), f:'iri_plume'},
-  {t:'Prognóstico trimestral', v: (SINAIS.enos.prognostico ? SINAIS.enos.prognostico.trimestre + ' · Boletim nº 3 (leitura humana)' : null), f:'cptec_prognostico'},
-];
-document.getElementById('cartoesCiclo').innerHTML = cartoes.map((c, i) =>
-  '<div class="cartao cartao--indicador" id="cartaoCiclo' + (i + 1) + '"><h3 class="figura-titulo">' + esc(c.t) + '</h3>' +
-  '<div class="cartao-ciclo-valor">' +
-  (c.v ? esc(c.v) : '<span class="lacuna">sem coleta até o corte</span>') +
-  '</div></div>').join('');
-cartoes.forEach((c, i) => credito('cartaoCiclo' + (i + 1), c.f));
+// 13/09/2026: cartoesCiclo/cartaoCiclo1-4 removidos — três dos quatro cartões duplicavam valores já
+// no painel Situação Atual (ONI, Probabilidade, Prognóstico/Boletim nº 3); só 'Boletim mais recente
+// do ciclo' trazia informação nova (o nome do documento), agora em stDocumento acima, com a citação
+// combinada das três fontes substituindo os quatro créditos individuais.
 
 // =============================  Gráficos  =============================
 const SEM_ANIM = {animation:false, responsive:true, maintainAspectRatio:false};
