@@ -153,13 +153,7 @@
     <p class="hint">Onde cada estado está no índice — e o que sustenta cada nota. Clique em uma UF para abrir o detalhe numa janela; o ponto no canto marca estados cuja capital foi verificada individualmente.</p>
     <div class="regions" id="regions"></div>
     <p class="note u-mt-3 u-mb-0">A micro-barra de cada estado mostra a posição do seu MARÉ no mesmo degradê do índice nacional (0 → 100).</p>
-  </div>
-  <dialog class="detail" id="detail" aria-label="Detalhe do estado">
-    <button type="button" class="detail-fechar" id="detailFechar" aria-label="Fechar">×</button>
-    <div id="detailConteudo"></div>
-  </dialog>
-
-  <div class="panel">
+    <hr class="card-sep">
     <h2 id="minhacidade">Encontre sua cidade</h2>
     <p class="hint">Escolha o estado e digite (ou selecione) o município: <strong>todos os 5.571 da lista oficial do IBGE</strong> estão aqui. Você verá tudo o que esta verificação sabe sobre ele, como o estado se compara, e o que fazer e cobrar.</p>
     <div class="tbl-controls">
@@ -169,6 +163,10 @@
     </div>
     <div id="meuCard" class="meu-card" aria-live="polite" hidden></div>
   </div>
+  <dialog class="detail" id="detail" aria-label="Detalhe do estado">
+    <button type="button" class="detail-fechar" id="detailFechar" aria-label="Fechar">×</button>
+    <div id="detailConteudo"></div>
+  </dialog>
 
   <div class="panel" id="prazos">
     <h2>Prazos em curso</h2>
