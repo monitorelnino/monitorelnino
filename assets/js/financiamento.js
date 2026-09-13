@@ -41,6 +41,14 @@ function renderMpsUf(ctx){
   if (svgEl) MonitorMapas.ufs(ctx, 'mapaMpsUf', uf => cor(por[uf]), uf => por[uf] != null ? '<em>' + brl(por[uf]) + '</em> pagos por unidade gestora sediada na UF' : '<em>sem pagamento por unidade gestora na UF</em>');
   MonitorMapas.legenda('legMpsUf', [{cor: O4[3], rotulo: 'acima de 50% do maior valor'}, {cor: O4[2], rotulo: '20–50%'}, {cor: O4[1], rotulo: '5–20%'}, {cor: O4[0], rotulo: 'abaixo de 5% · sem pagamento'}]);
   fonteFigura('boxMpsUf', {fontes: ['Portal da Transparência', 'execução mensal por UF da unidade gestora'], data: (MPS || {}).gerado_em});
+  // 13/09/2026 (auditoria de visualizações, consolidação): BR × UFs destacado primeiro (indicador
+  // compacto); o mapa acima, com a mesma informação em detalhe geográfico, vem depois na ordem do DOM.
+  const brPct = document.getElementById('mpsBrPct');
+  if (brPct) brPct.textContent = tot ? Math.round(100 * br / tot) + '%' : '—';
+  const brDen = document.getElementById('mpsBrDen');
+  if (brDen) brDen.textContent = 'do pago (' + brl(br) + ') vai para sedes nacionais (BR); ' + brl(tot - br) + ' se distribuem pelas ' + Object.keys(por).length + ' UFs com execução';
+  MonitorMapas.legenda('legMpsBrUf', [{cor: MonitorMapas.cor('linha'), rotulo: 'BR: sedes nacionais'}, {cor: O4[2], rotulo: 'UFs: unidade gestora local'}]);
+  fonteFigura('boxMpsBrUf', {fontes: ['Portal da Transparência', 'execução mensal'], data: (MPS || {}).gerado_em});
   const bx = document.getElementById('mpsUfBarras');
   if (bx) { const ufs = Object.entries(por).sort((a, b) => b[1] - a[1]).slice(0, 12);
     bx.innerHTML = ufs.map(([uf, v]) => '<div class="msb" role="group" aria-label="' + esc(uf) + ': ' + esc(brl(v)) + '"><b>' + esc(uf) + '</b><div class="trilho"><div class="barra" style="width:' + (100 * v / max).toFixed(1) + '%; background:' + cor(v) + '"></div></div><span>' + esc(brl(v)) + '</span></div>').join('')
