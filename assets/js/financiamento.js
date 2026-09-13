@@ -210,6 +210,20 @@ function __init(){
   })();
   document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="cartao" style="border-left:4px solid '+r.cor+'"><h3 class="figura-titulo">'+r.n+' · '+esc(r.nome)+' <span class="sub">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
     + '</div>').join('');
+  // 13/09/2026 (proposta de enxugamento, Manus AI): agrupamento legível das 8 rotas em 4 famílias,
+  // acima do diagrama — não substitui as distinções jurídicas (nome e chave seguem por rota, nunca
+  // digitados à mão: vêm de ROTAS.rotas). Família é mapeada por id (estrutura estável); nome e chave
+  // de cada rota, e a legenda de família, vêm sempre do registro.
+  const FAMILIA_POR_ROTA = {r1:'Automáticas e regulares', r2:'Automáticas e regulares', r3:'Emergência e resposta', r4:'Emergência e resposta',
+    r5:'Discricionárias', r6:'Discricionárias', r7:'Execução no território', rE:'Execução no território'};
+  const ORDEM_FAMILIA = ['Automáticas e regulares', 'Emergência e resposta', 'Discricionárias', 'Execução no território'];
+  const porFamilia = {}; ROTAS.rotas.forEach(r => { const f = FAMILIA_POR_ROTA[r.id] || 'Outras'; (porFamilia[f] = porFamilia[f] || []).push(r); });
+  const tbFam = document.querySelector('#tblFamiliasRotas tbody');
+  if (tbFam) tbFam.innerHTML = ORDEM_FAMILIA.filter(f => porFamilia[f]).map(f => {
+    const rs = porFamilia[f];
+    const chaves = [...new Set(rs.map(r => r.chave))].join(' · ');
+    return '<tr><td><strong>' + esc(f) + '</strong></td><td>' + rs.map(r => esc(r.n + ' · ' + r.nome)).join('<br>') + '</td><td>' + esc(chaves) + '</td></tr>';
+  }).join('');
   // 2 · série (faixa do defeso sempre; barras só quando houver dados)
   (function(){
     const svg = d3.select('#svgSerie'), W = 900, H = 260, m = {t: 16, r: 16, b: 34, l: 60};
