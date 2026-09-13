@@ -68,7 +68,8 @@ setTimeout(() => {
   teste("totais RS na legenda do mapa", /R\$/.test(q("legDinheiro").textContent) && /\d+ municípios/.test(q("legDinheiro").textContent));   // 04/09/2026
   // seletor de rota / mapaHab retirados do HTML em 13/09/2026 (auditoria de visualizações) — teste correspondente removido junto
   teste("tabela de resposta: 27 UFs", d.querySelectorAll("#tblResposta tbody tr").length === 27);
-  teste("bloco 5: painel publicado renderizado", d.querySelectorAll("#painelResumo table tbody tr").length > 10);   // 04/09/2026: a nota em texto saiu do cartão
+  // Painel amostral (agregados) migrou para pesquisadores.html em 13/09/2026 (proposta de
+  // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   teste("bloco 6: 5 programas listados como exemplos da rota 7", q("programasLista").children.length === 5);
   teste("bloco 7: compromissos listados", d.querySelectorAll("#tblCompromissos tbody tr").length >= 4);
   // v3.1 §7: as fontes do financiamento vivem em pesquisadores.html
