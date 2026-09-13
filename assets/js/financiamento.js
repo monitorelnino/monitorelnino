@@ -1,5 +1,5 @@
 // ===== financiamento.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let BR_GEOJSON, ROTAS, PORUF, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES;
+let BR_GEOJSON, ROTAS, PORUF, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES;
 
 // ===== 3b · Contadores por estado (v3.1 §11; redesenhado 13/09/2026 — auditoria de visualizações) =====
 function renderContadores(){
@@ -132,9 +132,9 @@ function somaPreparacao(valoresPorRota){
 }
 async function __load(){
   const carregar = f => fetch(f).then(r => { if(!r.ok) throw new Error('Falha ao carregar ' + f); return r.json(); });
-  [BR_GEOJSON, ROTAS, PORUF, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES] = await Promise.all([
+  [BR_GEOJSON, ROTAS, PORUF, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES] = await Promise.all([
     'data/geo_uf.json','data/financiamento/rotas.json','data/financiamento/por_uf.json',
-    'data/financiamento/serie_nacional.json','data/financiamento/emendas.json','data/financiamento/consultas.json','data/transferencias.json',
+    'data/financiamento/emendas.json','data/financiamento/consultas.json','data/transferencias.json',
     'data/atos_resposta.json','data/populacao_censo2022.json','data/financiamento/mps_2026.json','data/financiamento/contadores_uf.json'].map(carregar));
   // Cor das rotas e das MPs vem da paleta semântica única (assets/mapas.js), não do JSON:
   // o dado carrega a ordem e a chave; a cor é decisão de design e vale igual em todas as figuras.
@@ -223,30 +223,9 @@ function __init(){
     const chaves = [...new Set(rs.map(r => r.chave))].join(' · ');
     return '<tr><td><strong>' + esc(f) + '</strong></td><td>' + rs.map(r => esc(r.n + ' · ' + r.nome)).join('<br>') + '</td><td>' + esc(chaves) + '</td></tr>';
   }).join('');
-  // 2 · série (faixa do defeso sempre; barras só quando houver dados)
-  (function(){
-    const svg = d3.select('#svgSerie'), W = 900, H = 260, m = {t: 16, r: 16, b: 34, l: 60};
-    const x = d3.scaleTime().domain([new Date(2026,0,1), new Date(2026,11,31)]).range([m.l, W - m.r]);
-    const d0 = new Date(SERIE.defeso.inicio + 'T00:00:00'), d1 = new Date(SERIE.defeso.fim + 'T00:00:00');
-    svg.append('rect').attr('x', x(d0)).attr('y', m.t).attr('width', x(d1) - x(d0)).attr('height', H - m.t - m.b).attr('fill', MonitorMapas.PALETA.defeso).attr('fill-opacity', .13);
-    svg.append('text').attr('x', (x(d0) + x(d1)) / 2).attr('y', m.t + 16).attr('text-anchor','middle').attr('font-size', 12).attr('fill', MonitorMapas.PALETA.defeso)
-      .attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('Período eleitoral 04/07–25/10: voluntárias suspensas por lei (art. 73, VI, a) — não é inação');
-    const semanas = SERIE.semanas || [];
-    if (!semanas.length) {
-      svg.append('text').attr('x', W/2).attr('y', H/2 + 8).attr('text-anchor','middle').attr('font-size', 14).attr('fill', MonitorMapas.cor('muted')).text('Série ainda não coletada — lacuna declarada');
-    } else {
-      const y = d3.scaleLinear().domain([0, d3.max(semanas, s => ROTAS.rotas.reduce((a, r) => a + (s[r.id] || 0), 0))]).nice().range([H - m.b, m.t]);
-      const pilha = d3.stack().keys(ROTAS.rotas.map(r => r.id))(semanas.map(s => Object.assign({}, s)));
-      svg.selectAll('g.rota').data(pilha).join('g').attr('fill', d => ROTAS.rotas.find(r => r.id === d.key).cor)
-        .selectAll('rect').data(d => d).join('rect').attr('x', d => x(new Date(d.data.semana))).attr('width', 10)
-        .attr('y', d => y(d[1])).attr('height', d => y(d[0]) - y(d[1]));
-      svg.append('g').attr('transform', 'translate(' + m.l + ',0)').call(d3.axisLeft(y).ticks(5).tickFormat(v => 'R$ ' + (v/1e6).toFixed(0) + ' mi'));
-      (document.getElementById('notaSerie')||{}).textContent = 'Série semanal 2026 por rota; fonte: dados abertos do Portal da Transparência, consulta registrada no bloco 8.';
-    }
-    svg.append('g').attr('transform', 'translate(0,' + (H - m.b) + ')').call(d3.axisBottom(x).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat('%b')));
-    MonitorMapas.legenda('legSerie', ROTAS.rotas.map(r => ({cor: r.cor, rotulo: r.n + ' · ' + r.nome})).concat([{cor: MonitorMapas.PALETA.defeso, opacidade: .35, rotulo: 'faixa do defeso'}]));
-    fonteFigura('boxSerie', {fontes: 'TransfereGov — Dados Abertos', data: semanas.length ? (SERIE.carga_da_fonte || SERIE.corte) : null});
-  })();
+  // 13/09/2026 (proposta de enxugamento, Manus AI): 'Brasil, por semana' (série semanal por rota)
+  // migrou para pesquisadores.html — "é monitoramento temporal de execução, não explicação de rota
+  // nem de solicitação".
   // 3 · por estado
   const FUNDO = {localizado:['Localizado',MonitorMapas.PALETA.status.NOVO], em_elaboracao:['Em elaboração',MonitorMapas.PALETA.status.ELAB], nao_localizado:['Não localizado (bateria datada)',MonitorMapas.PALETA.status.LAC], nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.status.NAO_VERIFICADO]};
   const fundo = uf => ((PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}).status || 'nao_verificado';

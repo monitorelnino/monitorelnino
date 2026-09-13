@@ -62,7 +62,8 @@ setTimeout(() => {
   const corRota = r => PAL_ROTAS[r.id] || r.cor;
   teste("bloco 1: 8 cartões de rota em texto (dobrável), na ordem e nas cores do modelo", q("rotasCards").children.length === 8 && [...q("rotasCards").children].every((c, i) => c.getAttribute("style").includes(corRota(ROTAS[i]))));
   teste("bloco 1: rotas com 8 cores distintas da paleta única (rede, cartões e série usam a mesma)", new Set(ROTAS.map(corRota)).size === 8 && ROTAS.every(r => PAL_ROTAS[r.id]));
-  teste("bloco 2: faixa do defeso desenhada", q("svgSerie").querySelector("rect") && q("svgSerie").textContent.includes("04/07–25/10"));
+  // 'Brasil, por semana' (bloco 2, faixa do defeso) migrou para pesquisadores.html em 13/09/2026
+  // (proposta de enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   for (const id of ["mapaFundo", "mapDinheiro"]) teste(`${id}: 27 estados`, q(id).querySelectorAll("path").length === 27);   // mapaHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima
   teste("mapa do dinheiro: um círculo por repasse do Prepara RS", q("mapDinheiro").querySelectorAll("circle:not(.rec)").length === TR.repasses_rs.filter(r => r.lat).length);
   teste("totais RS na legenda do mapa", /R\$/.test(q("legDinheiro").textContent) && /\d+ municípios/.test(q("legDinheiro").textContent));   // 04/09/2026
