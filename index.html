@@ -36,7 +36,7 @@
 
 <script src="assets/acesso.js?v=d8738b3e"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bf4569ad">
-<link rel="stylesheet" href="assets/base.css?v=fc7bcee4">
+<link rel="stylesheet" href="assets/base.css?v=26160ba6">
 <script src="assets/mapas.js?v=cf3e61ca"></script>
 </head>
 <body>
@@ -148,15 +148,16 @@
     <p class="note u-mb-0" id="notaDefeso"><strong>Período eleitoral (04/07–25/10/2026):</strong> <span id="notaDefesoTxt">a lei suspende transferências voluntárias e parte da comunicação oficial; buscas sem resultado são provisórias até repetição após 25/10, e nenhuma regra que altere notas muda até lá (última mudança: v3.0, em 04/09)</span> — <a href="calendario-eleitoral.html">o que a lei deixa aberto</a> · <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">metodologia</a>.</p>
   </div>
 
-  <div class="layout">
-    <div class="panel">
-      <h2>MARÉ por estado, agrupado por região</h2>
-      <p class="hint">Onde cada estado está no índice — e o que sustenta cada nota. Clique em uma UF para abrir o detalhe; o ponto no canto marca estados cuja capital foi verificada individualmente.</p>
-      <div class="regions" id="regions"></div>
-      <p class="note u-mt-3 u-mb-0">A micro-barra de cada estado mostra a posição do seu MARÉ no mesmo degradê do índice nacional (0 → 100).</p>
-    </div>
-    <div class="panel detail" id="detail"></div>
+  <div class="panel">
+    <h2>MARÉ por estado, agrupado por região</h2>
+    <p class="hint">Onde cada estado está no índice — e o que sustenta cada nota. Clique em uma UF para abrir o detalhe numa janela; o ponto no canto marca estados cuja capital foi verificada individualmente.</p>
+    <div class="regions" id="regions"></div>
+    <p class="note u-mt-3 u-mb-0">A micro-barra de cada estado mostra a posição do seu MARÉ no mesmo degradê do índice nacional (0 → 100).</p>
   </div>
+  <dialog class="detail" id="detail" aria-label="Detalhe do estado">
+    <button type="button" class="detail-fechar" id="detailFechar" aria-label="Fechar">×</button>
+    <div id="detailConteudo"></div>
+  </dialog>
 
   <div class="panel">
     <h2 id="minhacidade">Encontre sua cidade</h2>
@@ -197,7 +198,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/index.js?v=b4ebf9f6" defer></script>
+<script src="assets/js/index.js?v=8408ce47" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

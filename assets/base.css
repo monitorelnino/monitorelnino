@@ -43,8 +43,6 @@ main{display:block;}
 .grade-cartoes{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--esp-grade);}
 .grade-cartoes > *{min-width:0;}
 .grade-figuras + .grade-figuras, .grade-cartoes + .grade-figuras, .grade-figuras + .grade-cartoes{margin-top:var(--esp-grade);}
-.layout{display:grid; grid-template-columns:1.55fr 1fr; gap:var(--esp-grade); align-items:start;}
-.layout > *{min-width:0;}
 .comoler-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:0 var(--sp-6);}
 .comoler-grid p{margin:0 0 var(--sp-2);}
 .cols{column-count:2; column-gap:var(--sp-6); max-width:none !important; column-fill:balance;}
@@ -338,10 +336,15 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 [hidden]{display:none !important;}
 .legend span{display:flex; align-items:center; gap:var(--sp-2);}
 .legend i{width:10px; height:10px; border-radius:2px; display:inline-block;}
-.detail{min-height:420px; display:flex; flex-direction:column;}
-.detail[hidden]{display:none;}
+/* 13/09/2026 (pedido de Patricia: quadro dos estados ocupa a página inteira, detalhe vira janela
+   popup): .detail era .panel lado a lado com a grade (.layout, removida); agora é <dialog>, sem a
+   classe .panel (regras próprias abaixo, mesma linguagem visual: fundo, borda, raio, sombra). */
+.detail{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:var(--esp-painel); box-shadow:0 12px 36px rgba(0,0,0,.22); max-width:min(560px, 92vw); max-height:85vh; overflow:auto; margin:auto;}
+.detail::backdrop{background:rgba(20,20,18,.5);}
+.detail-fechar{position:sticky; top:0; float:right; margin:calc(var(--esp-painel) * -1) calc(var(--esp-painel) * -1) 0 0; width:var(--alvo-toque); height:var(--alvo-toque); border:0; border-radius:0 var(--radius) 0 var(--radius); background:var(--surface); color:var(--muted); font-family:var(--font-titulo); font-size:var(--fs-h3); line-height:1; cursor:pointer;}
+.detail-fechar:hover, .detail-fechar:focus-visible{color:var(--ink); background:var(--osso-claro);}
 .placeholder{color:var(--muted); font-size:var(--fs-body);}
-.detail .uf-name{font-family:var(--font-titulo); font-size:var(--fs-h3); line-height:var(--lh-h3); font-weight:var(--peso-regular);}
+.detail .uf-name{font-family:var(--font-titulo); font-size:var(--fs-h3); line-height:var(--lh-h3); font-weight:var(--peso-regular); clear:both;}
 .detail .uf-name .sub{font-size:var(--fs-body);}
 .detail .uf-region{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps); margin-bottom:var(--sp-4);}
 .field{margin-bottom:var(--sp-3);}
@@ -480,7 +483,6 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .wrap{padding:var(--sp-5) var(--grade-margem) var(--sp-7);}
   .grade-figuras{grid-template-columns:minmax(0, 1fr);}
   .figura--largo{grid-column:auto;}
-  .layout{grid-template-columns:1fr;}
   .regions{grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));}
   .comoler-grid{grid-template-columns:1fr;}
   .cols{column-count:1;}
@@ -495,13 +497,12 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .mainnav{gap:var(--sp-2);}
   .mainnav a, .mainnav span{min-height:var(--alvo-toque);}
   .mainnav .btn-nav{margin-left:0;}
-  .panel, .hero, .ficha, .emerg-bar{padding:var(--sp-4);}
+  .panel, .hero, .ficha, .emerg-bar, .detail{padding:var(--sp-4);}
   .figura, .cartao{padding:var(--sp-3);}
   .figura-titulo, .figura-sub{min-height:0;}
   .mun-table th, .mun-table td{font-size:var(--fs-caption); padding:var(--sp-2);}
   .regions{grid-template-columns:repeat(auto-fill, minmax(124px, 1fr)); gap:var(--sp-2);}
   .gauge-head .glabel{flex-basis:100%; margin-left:0; text-align:left; margin-top:var(--sp-1);}
-  .detail{min-height:0;}
   .strip-tick span{display:none;}
   .contrib-grid, .ficha-cols{grid-template-columns:1fr;}
   .prazo-rel{grid-template-columns:56px 1fr;}

@@ -90,7 +90,7 @@ setTimeout(() => {
   try {
     const tile = d.querySelector('#regions .tile[data-uf="SC"]');
     tile.click();
-    teste("detalhe do estado abre ao clique", !q("detail").hidden && q("detail").innerHTML.includes("Santa Catarina"));
+    teste("detalhe do estado abre ao clique", q("detail").open && q("detail").innerHTML.includes("Santa Catarina"));
   } catch (e) { teste("clique no estado", false); }
 
   // Botões de PDF: clicar de verdade e exigir que nenhum erro de runtime apareça.
