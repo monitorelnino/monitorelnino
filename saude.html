@@ -70,12 +70,10 @@
         <div class="figura-midia"><div class="gauge-head"><span class="gnum u-rust" id="rsNum">—</span><span class="gden">emergências localizadas em 2026</span></div></div>
         <div class="map-legend" id="legRespostaSanitaria"></div>
       </figure>
-      <figure class="figura figura--barras" id="boxMonitorBarras">
-        <h3 class="figura-titulo">Prontidão por estado verificado</h3>
-        <p class="figura-sub">Corte da edição · prontidão sanitária por UF verificada · 0–100</p>
-        <div class="figura-midia"><div id="monitorBarras" class="prazos-barras"></div></div>
-        <div class="map-legend" id="legMonitorBarras"></div>
-      </figure>
+      <!-- 13/09/2026 (auditoria de visualizações, consolidação): 'Prontidão por estado verificado'
+           (barras) retirada — duplicava boxMonitor acima, que já alterna mapa/tabela (Ver em tabela)
+           com a mesma prontidão por UF e mais colunas (instrumento, antecipação, dengue, risco). JS
+           correspondente (monitorBarras) guardado por ausência do elemento, não apagado. -->
     </div>
   </div>
 
@@ -113,13 +111,18 @@
     <div class="grade-figuras">
       <figure class="figura figura--grafico figura--largo" id="boxDesfSemanal">
         <h3 class="figura-titulo">Casos notificados por semana · painel amostral · 2026 sobre o canal endêmico</h3>
-        <p class="figura-sub">SE 01–34/2026 (últimas 4 vazadas) · casos notificados de dengue · painel amostral · nº de casos</p>
+        <p class="figura-sub">Semanas 01–34/2026 (últimas 4 excluídas) · casos notificados de dengue · painel amostral · nº de casos</p>
         <div class="figura-midia canvas-wrap"><canvas id="cDesfSemanal" aria-label="Casos de dengue por semana epidemiológica de 2026 nos municípios do painel, com o canal endêmico (mediana, p75 e p90 de 2019–2025) e a faixa de nowcasting nas semanas incompletas"></canvas></div>
         <div class="map-legend" id="legDesfSemanal"></div>
       </figure>
-      <figure class="figura figura--grafico" id="boxDesfAcum">
-        <h3 class="figura-titulo">Acumulado no ano · 2026 × 2025 × 2024 · painel amostral</h3>
-        <p class="figura-sub">Anos 2024, 2025 e 2026 (parcial) · casos notificados de dengue acumulados · painel amostral</p>
+      <figure class="figura figura--grafico figura--largo" id="boxDesfAcum">
+        <h3 class="figura-titulo">Comparador anual · 2026 × 2025 × 2024</h3>
+        <p class="figura-sub">Casos de dengue, 2026 × 2025 × 2024 · acumulado (painel amostral) ou semanal (27 capitais) · nº de casos</p>
+        <label class="sr-only" for="selComparadorDengue">Visualização</label>
+        <select id="selComparadorDengue" class="seletor u-mb-2" aria-label="Escolher a visualização do comparador anual">
+          <option value="acum">Acumulado no ano · painel amostral</option>
+          <option value="semanal">Semanal por capitais · 27 capitais</option>
+        </select>
         <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Escada do acumulado anual de casos no painel amostral, 2026, 2025 e 2024"></canvas></div>
         <div class="map-legend" id="legDesfAcum"></div>
       </figure>
@@ -191,12 +194,9 @@
         <p class="figura-sub">Corte da edição · instrumento de defesa civil × instrumento de saúde localizados · 27 UFs</p>
         <div class="figura-midia"><div id="quadrantes" class="grade-quadrantes"></div></div>
       </figure>
-      <figure class="figura figura--grafico figura--largo" id="boxSerie">
-        <h3 class="figura-titulo">Série semanal de dengue · 2026 × 2025 × 2024</h3>
-        <p class="figura-sub">SE 01–52 · casos estimados de dengue, soma das 27 capitais · 2026 × 2025 × 2024 · nº de casos</p>
-        <div class="figura-midia canvas-wrap" id="serieWrap"><canvas id="serieDengue" aria-label="Série semanal de dengue — aguardando coleta"></canvas></div>
-        <div class="map-legend" id="legSerie"></div>
-      </figure>
+      <!-- 13/09/2026 (auditoria de visualizações, consolidação): 'Série semanal de dengue' (boxSerie,
+           27 capitais) retirada — virou a opção 'semanal' do comparador único em #cDesfAcum, seção
+           'O que aconteceu' acima. desenharComparadorSemanal (assets/js/saude.js) guarda o desenho. -->
     </div>
   </div>
 
@@ -211,7 +211,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/saude.js?v=778d4be8" defer></script>
+<script src="assets/js/saude.js?v=f703dd6c" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

@@ -1,5 +1,6 @@
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, SUF, SFED, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, CATALOGO, GATILHOS, RESP_NAC, SRAG;
+let desenharComparadorSemanal = null;   // 13/09/2026 (auditoria de visualizações, consolidação): fechamento com o desenho do comparador "semanal por capitais", preenchido em __init(), chamado pelo seletor em renderDesfechos()
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -42,13 +43,16 @@ function __init(){
     const tb = document.querySelector('#tblMonitor tbody');
     if (tb) tb.innerHTML = UFS.map(uf => { const m = M[uf] || {}, i = m.instrumento || {}, a = m.antecipacao || {}, r = m.risco_atual || {};
       return '<tr><td><strong>' + uf + '</strong></td><td>' + (m.verificado ? esc(m.prontidao) : '—') + '</td><td>' + esc(m.faixa || '') + '</td><td>' + esc(ST_H[i.status] || '') + (i.data ? ' · ' + esc(i.data) : '') + '</td><td>' + (a.pontos ?? '—') + (i.temporada ? ' · ' + esc(i.temporada) : '') + '</td><td>' + (r.dengue_capital_nivel ? 'nível ' + esc(r.dengue_capital_nivel) + ' (' + esc(r.dengue_capital) + ')' : '—') + '</td><td>' + esc((m.risco_projetado || []).join('; ')) + '</td></tr>'; }).join('');
-    // barras por UF verificada
+    // 13/09/2026 (auditoria de visualizações, consolidação): #monitorBarras retirado do HTML —
+    // duplicava a tabela alternativa de boxMonitor. Bloco guardado por ausência do elemento.
     const ver = UFS.filter(uf => (M[uf] || {}).verificado).sort((x, y) => (M[y].prontidao - M[x].prontidao) || x.localeCompare(y));
     const bx = document.getElementById('monitorBarras');
-    if (bx) bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; background:' + FX[m.faixa] + '"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
-      : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
-    MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.cor('areia'), rotulo: 'trilho 0–100'}, {cor: MonitorMapas.PALETA.faixas.avancado, rotulo: 'cor = faixa'}, {cor: MonitorMapas.PALETA.faixas.nao_verificado, rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
-    fonteFigura('boxMonitorBarras', {fontes: ['Monitor El Niño Brasil', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
+    if (bx) {
+      bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; background:' + FX[m.faixa] + '"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
+        : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
+      MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.cor('areia'), rotulo: 'trilho 0–100'}, {cor: MonitorMapas.PALETA.faixas.avancado, rotulo: 'cor = faixa'}, {cor: MonitorMapas.PALETA.faixas.nao_verificado, rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
+      fonteFigura('boxMonitorBarras', {fontes: ['Monitor El Niño Brasil', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
+    }
     // Resposta sanitária (E17): ESPIN federal, decretos estaduais por arboviroses, créditos por portaria — contador, hoje zero de verdade
     const em = (SSIN && SSIN.emergencias) || []; const rn = document.getElementById('rsNum'); if (rn) rn.textContent = String(em.length);
     MonitorMapas.legenda('legRespostaSanitaria', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'ESPIN federal: nenhuma em 2026'}, {cor: MonitorMapas.PALETA.status.ELAB, rotulo: 'decretos estaduais por arboviroses: nenhum'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'busca manual de 05/09; coleta do DOU pendente'}]);
@@ -116,21 +120,23 @@ function __init(){
   desenharMapa('mapaEmerg','legEmerg', uf => NEUTRA, uf => 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento)', [{cor:NEUTRA, rotulo:'nenhuma registrada até o corte'}]);
   fonteFigura('boxEmerg', {fontes: ['DOU', 'diários oficiais municipais'], data: '05/09/2026'});
   // Série semanal 2026 × 2025 × 2024 (05/09/2026): soma das 27 capitais no InfoDengue — não é o total nacional.
+  // 13/09/2026 (consolidação): não desenha mais direto — vira a opção "semanal" do comparador único
+  // em #cDesfAcum (ver renderDesfechos). Guarda o crédito e o closure de desenho.
   const SER = SSIN.serie_capitais;
   if (SER && SER.anos && Object.keys(SER.anos).length && typeof Chart !== 'undefined') {
-    MonitorMapas.padraoGraficos(window.Chart);
-    const semanas = Array.from({length: 52}, (_, i) => String(i + 1).padStart(2, '0'));
-    const cores = MonitorMapas.PALETA.anos;
-    const ds = Object.keys(SER.anos).sort().reverse().map(ano => ({label: ano, data: semanas.map(w => SER.anos[ano][w] ?? null),
-      borderColor: cores[ano] || MonitorMapas.PALETA.serie[1], backgroundColor: 'transparent', borderWidth: ano === '2026' ? 2.5 : 1.5, pointRadius: 0, tension: .25, spanGaps: false}));
-    new Chart(document.getElementById('serieDengue'), {type: 'line', data: {labels: semanas.map(w => 'SE ' + w), datasets: ds},
-      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}},
-                scales: {x: {ticks: {maxTicksLimit: 13}}, y: {title: {display: true, text: 'casos estimados · 27 capitais'}}}}});
-    document.getElementById('serieDengue').setAttribute('aria-label', 'Série semanal de dengue, soma das 27 capitais, 2024 a 2026');
-    MonitorMapas.legenda('legSerie', Object.keys(cores).map(a => ({cor: cores[a], rotulo: a})));
-    fonteFigura('boxSerie', {fontes: ['InfoDengue (Fiocruz/FGV)', 'soma das 27 capitais'], data: SER.coletado_em});
-  } else {
-    fonteFigura('boxSerie', {fontes: ['InfoDengue (Fiocruz/FGV)', '27 capitais'], data: null});
+    desenharComparadorSemanal = function(){
+      MonitorMapas.padraoGraficos(window.Chart);
+      const semanas = Array.from({length: 52}, (_, i) => String(i + 1).padStart(2, '0'));
+      const cores = MonitorMapas.PALETA.anos;
+      const ds = Object.keys(SER.anos).sort().reverse().map(ano => ({label: ano, data: semanas.map(w => SER.anos[ano][w] ?? null),
+        borderColor: cores[ano] || MonitorMapas.PALETA.serie[1], backgroundColor: 'transparent', borderWidth: ano === '2026' ? 2.5 : 1.5, pointRadius: 0, tension: .25, spanGaps: false}));
+      const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'line', data: {labels: semanas.map(w => 'SE ' + w), datasets: ds},
+        options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}},
+                  scales: {x: {ticks: {maxTicksLimit: 13}}, y: {title: {display: true, text: 'casos estimados · 27 capitais'}}}}});
+      MonitorMapas.legenda('legDesfAcum', Object.keys(cores).map(a => ({cor: cores[a], rotulo: a})));
+      fonteFigura('boxDesfAcum', {fontes: ['InfoDengue (Fiocruz/FGV)', 'soma das 27 capitais'], data: SER.coletado_em});
+      return chart;
+    };
   }
 }
 __load().catch(err => { const m = document.getElementById('subSaude'); if (m) m.insertAdjacentHTML('afterend', '<p class="note u-rust">Erro ao carregar os dados: '+esc(err.message)+'</p>'); });
@@ -164,12 +170,27 @@ function renderDesfechos(){
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
   MonitorMapas.legenda('legDesfSemanal', [{cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 consolidado (últimas 4 semanas excluídas)'}, {cor: MonitorMapas.PALETA.anos['2026'], opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.PALETA.anos.p75, rotulo: 'p75'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
   fonteFigura('boxDesfSemanal', credito);
-  // escada do acumulado
+  // escada do acumulado — vira a opção "acum" (padrão) do comparador único em #cDesfAcum
   const acum = a => Object.values(M).reduce((s, m) => s + ((m.acumulado || {})[a] || 0), 0);
-  new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.PALETA.anos['2024'], MonitorMapas.PALETA.anos['2025'], MonitorMapas.PALETA.anos['2026']]}]},
-    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
-  MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: '2024 (ano epidêmico, fora do canal)'}, {cor: MonitorMapas.PALETA.anos['2025'], rotulo: '2025'}, {cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 parcial'}]);
-  fonteFigura('boxDesfAcum', credito);
+  function desenharComparadorAcum(){
+    const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.PALETA.anos['2024'], MonitorMapas.PALETA.anos['2025'], MonitorMapas.PALETA.anos['2026']]}]},
+      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
+    MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: '2024 (ano epidêmico, fora do canal)'}, {cor: MonitorMapas.PALETA.anos['2025'], rotulo: '2025'}, {cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 parcial'}]);
+    fonteFigura('boxDesfAcum', credito);
+    return chart;
+  }
+  // 13/09/2026 (auditoria de visualizações, consolidação): comparador único — "acumulado" (painel
+  // amostral) e "semanal por capitais" (27 capitais, ex-boxSerie) alternam no mesmo #cDesfAcum em vez
+  // de duas figuras fixas. Escopos diferentes (painel × capitais); por isso permanecem como opções
+  // explícitas, nunca combinadas num só número.
+  let __comparadorChart = null;
+  function mostrarComparador(modo){
+    if (__comparadorChart) { __comparadorChart.destroy(); __comparadorChart = null; }
+    __comparadorChart = (modo === 'semanal' && desenharComparadorSemanal) ? desenharComparadorSemanal() : desenharComparadorAcum();
+  }
+  const selComparador = document.getElementById('selComparadorDengue');
+  if (selComparador) selComparador.addEventListener('change', () => mostrarComparador(selComparador.value));
+  mostrarComparador(selComparador ? selComparador.value : 'acum');
   // mapa: pontos do painel coloridos pelo nível da última SE consolidada
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
   const NIV = {1: MonitorMapas.PALETA.ordinal4[0], 2: MonitorMapas.PALETA.ordinal4[1], 3: MonitorMapas.PALETA.ordinal4[2], 4: MonitorMapas.PALETA.ordinal4[3]};   // mesmo ordinal do mapa de dengue por UF (Figura acima)
