@@ -62,17 +62,23 @@
         <div class="figura-midia"><div class="prazos-barras u-mb-4" id="mpsPrazos"></div><div id="rotaMPs" class="diagrama-mps"></div></div>
         <div class="map-legend" id="legRotaMPs"></div>
       </figure>
-      <figure class="figura figura--mapa" id="boxMpsUf">
-        <h3 class="figura-titulo">Onde o pagamento foi feito · valor pago por UF da unidade gestora</h3>
-        <p class="figura-sub">Execução mensal 06–09/2026 · valor pago das ações reforçadas pelas MPs, por UF da unidade gestora · R$</p>
-        <div class="figura-midia"><svg id="mapaMpsUf" role="img" aria-label="Mapa do Brasil: valor pago das ações reforçadas pelas MPs, por UF da unidade gestora; sedes nacionais aparecem como BR" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legMpsUf"></div>
+      <figure class="figura figura--indicador" id="boxMpsBrUf">
+        <h3 class="figura-titulo">BR (sedes nacionais) × UFs, no pagamento das MPs</h3>
+        <p class="figura-sub">Execução mensal 06–09/2026 · fração paga por unidade gestora sediada em Brasília (BR) vs. nas UFs · %</p>
+        <div class="figura-midia"><div class="gauge-head"><span class="gnum u-rust" id="mpsBrPct">—</span><span class="gden" id="mpsBrDen">do pago vai para sedes nacionais (BR); o resto se distribui pelas UFs com execução</span></div></div>
+        <div class="map-legend" id="legMpsBrUf"></div>
       </figure>
       <figure class="figura figura--barras" id="boxMpsUfBarras">
-        <h3 class="figura-titulo">Pago por UF · sedes nacionais (BR) à parte</h3>
-        <p class="figura-sub">Execução mensal 06–09/2026 · valor pago por UF; sedes nacionais como BR · R$</p>
+        <h3 class="figura-titulo">Pago por UF, sedes nacionais (BR) à parte</h3>
+        <p class="figura-sub">Execução mensal 06–09/2026 · ranking por UF da unidade gestora; BR ao final · R$</p>
         <div class="figura-midia"><div id="mpsUfBarras" class="prazos-barras"></div></div>
         <div class="map-legend" id="legMpsUfBarras"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxMpsUf">
+        <h3 class="figura-titulo">Detalhe geográfico · valor pago por UF da unidade gestora</h3>
+        <p class="figura-sub">Execução mensal 06–09/2026 · valor pago das ações reforçadas pelas MPs, por UF · R$</p>
+        <div class="figura-midia"><svg id="mapaMpsUf" role="img" aria-label="Mapa do Brasil: valor pago das ações reforçadas pelas MPs, por UF da unidade gestora; sedes nacionais aparecem como BR" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legMpsUf"></div>
       </figure>
     </div>
   </div>
@@ -227,7 +233,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/financiamento.js?v=f74356ef" defer></script>
+<script src="assets/js/financiamento.js?v=51df49e1" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
