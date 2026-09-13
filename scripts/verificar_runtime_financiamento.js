@@ -69,11 +69,11 @@ setTimeout(() => {
   // seletor de rota / mapaHab retirados do HTML em 13/09/2026 (auditoria de visualizações) — teste correspondente removido junto
   teste("tabela de resposta: 27 UFs", d.querySelectorAll("#tblResposta tbody tr").length === 27);
   teste("bloco 5: painel publicado renderizado", d.querySelectorAll("#painelResumo table tbody tr").length > 10);   // 04/09/2026: a nota em texto saiu do cartão
-  teste("bloco 6: 5 programas permanentes", q("programasCards").children.length === 5);
+  teste("bloco 6: 5 programas listados como exemplos da rota 7", q("programasLista").children.length === 5);
   teste("bloco 7: compromissos listados", d.querySelectorAll("#tblCompromissos tbody tr").length >= 4);
   // v3.1 §7: as fontes do financiamento vivem em pesquisadores.html
   const caixas = [...d.querySelectorAll(".figura")].filter(c => c.querySelector("svg, canvas, table, ul"));
-  const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura") && !c.closest("#rotasCards") && !c.closest("#programasCards") && !c.closest("#comoler"));
+  const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura") && !c.closest("#rotasCards") && !c.closest("#comoler"));
   teste(`toda figura tem crédito de fonte (${caixas.length - semCredito.length}/${caixas.length})`, semCredito.length === 0);
   teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p:not(.figura-sub):not(.figura-cat):not(.figura-leitura)").length === 0));
   try { const p = q("mapaFundo").querySelector("path"); p.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true })); teste("gesto: tooltip", q("mapTooltip").style.display === "block"); } catch (e) { teste("gesto: tooltip", false); }

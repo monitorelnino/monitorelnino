@@ -312,7 +312,7 @@ function __init(){
     {nome: 'CISC — Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal não localizada — não inventar'},
     {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: em coleta'},
   ];
-  document.getElementById('programasCards').innerHTML = PROG.map(p => '<div class="cartao"><h3 class="figura-titulo">' + esc(p.nome) + '</h3></div>').join('');
+  document.getElementById('programasLista').innerHTML = PROG.map(p => '<li><strong>' + esc(p.nome) + '</strong> — ' + esc(p.base) + ': ' + esc(p.regra) + ' <span class="u-muted">· ' + esc(p.lista) + '</span></li>').join('');
   // 7 · compromissos + gráfico por área
   document.querySelector('#tblCompromissos tbody').innerHTML = (COMP.itens || []).map(c => '<tr><td>' + esc(c.nome) + '</td><td>' + esc(c.esfera || '—') + '</td><td>' + esc(c.instrumento || '—') + (c.fonte ? ' <a href="' + esc(c.fonte) + '" target="_blank" rel="noopener">fonte</a>' : '') + '</td><td>' + brl(c.valor_total) + '</td><td>' + esc((ROTAS.rotas.find(r => r.id === c.rota) || {}).nome || c.rota) + '</td><td>' + esc((c.execucao || {}).status === 'aguardando_coleta' ? 'aguardando coleta' : (c.execucao || {}).status || '—') + '</td></tr>').join('');
   fonteFigura('boxCompromissos', {fontes: ['as citadas em cada linha', 'Portal da Transparência (execução)'], data: ROTAS.corte});
