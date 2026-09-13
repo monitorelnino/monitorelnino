@@ -215,9 +215,6 @@ a.cartao--kpi:hover{outline:1.5px solid var(--link); outline-offset:2px; color:i
 .cartao .cartao-s{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); display:block; margin:0 0 var(--sp-2);}
 .cartao .cartao-a{font-size:var(--fs-small); font-weight:var(--peso-semibold);}
 .bloco-citacao{background:var(--surface-2); border-left:4px solid var(--teal); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); font-size:var(--fs-body); line-height:var(--lh-body);}
-.quadrante{border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-3);}
-.quadrante .lista-uf{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted); margin:0;}
-.grade-quadrantes{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:var(--sp-3); margin-top:var(--sp-2);}
 
 /* ===== 8. Tabelas ===== */
 table{border-collapse:collapse; width:100%;}

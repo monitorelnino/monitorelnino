@@ -101,13 +101,8 @@ function __init(){
   (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => (v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
     const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes — ' + c.join(' · ') + '.'; })();
 
-  // 4 · quadrantes DC × saúde
-  const dcLoc = uf => ['NOVO','READ','VIG'].includes(((MARE[uf]||{}).status_estadual||'').toUpperCase());
-  const q = {ambos:[], so_dc:[], so_saude:[], nenhum:[], nv:[]};
-  UFS.forEach(uf => { const s = st(uf); if (s === 'NAO_VERIFICADO') { q.nv.push(uf); return; } const sl = ['NOVO','READ','VIG'].includes(s); const d = dcLoc(uf); (d&&sl ? q.ambos : d ? q.so_dc : sl ? q.so_saude : q.nenhum).push(uf); });
-  const ROT = {ambos:'Defesa civil e saúde', so_dc:'Só defesa civil', so_saude:'Só saúde', nenhum:'Nenhum localizado', nv:'Saúde ainda não verificada'};
-  document.getElementById('quadrantes').innerHTML = Object.keys(ROT).map(k => '<div class="quadrante"><div class="rotulo">'+ROT[k]+' · <strong>'+q[k].length+'</strong></div><div class="lista-uf">'+(q[k].join(' · ')||'—')+'</div></div>').join('');
-  fonteFigura('boxQuadrantes', {fontes: 'Monitor El Niño Brasil', data: SUF.corte});
+  // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
+  // "mistura prontidão documental com risco projetado e não mede efeito na população".
   // 13/09/2026 (auditoria de visualizações, consolidação): mapa/lista de emergências só aparece
   // quando há ocorrência — o contador nacional (boxRespostaSanitaria, acima) já é a leitura
   // completa enquanto for zero; duplicar como mapa sempre cinza era redundante.
