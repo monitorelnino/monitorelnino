@@ -1,0 +1,41 @@
+name: Auditoria semanal — segurança e integridade
+
+# Criado em 13/09/2026, a partir de uma auditoria adversarial manual que encontrou uma exposição
+# real de dados pessoais (CPF de terceiros em evidências de Diário Oficial preservadas — ver
+# CHANGELOG, seção "LGPD", 12-13/09/2026). Automatiza as checagens que são mecanicamente
+# verificáveis sem julgamento humano (scripts/auditoria_seguranca.py). Não substitui uma nova
+# auditoria manual completa — cobre só a fatia que dá pra rodar sem um leitor humano/IA.
+#
+# Não faz parte do pipeline de dados (atualizar.yml): não lê fontes externas, não recalcula o
+# índice, não publica nada. Puramente diagnóstico — nunca falha o job, o valor está no relatório.
+on:
+  schedule:
+    - cron: "0 8 * * 1"  # segundas 08h UTC (antes da atualização semanal de dados, que é 09h UTC)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+      - name: Rodar a auditoria e gravar no repositório privado de registro
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          set -o pipefail
+          python3 scripts/auditoria_seguranca.py 2>&1 | tee /tmp/auditoria.txt
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
+          mkdir -p /tmp/registro/relatorios
+          cp /tmp/auditoria.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_auditoria_seguranca.txt"
+          cd /tmp/registro
+          git config user.name monitor-el-nino-bot
+          git config user.email bot@users.noreply.github.com
+          git add -A
+          git commit -q -m "auditoria semanal de segurança e integridade" || echo "nada novo para registrar"
+          git push -q
