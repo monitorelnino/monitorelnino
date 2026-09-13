@@ -114,19 +114,20 @@
 
   <div class="panel" id="graficos">
     <h2>Gráficos analíticos</h2>
-    <p class="hint">Duas leituras do fenômeno global — o índice que o define e as probabilidades por trimestre — e duas do que ele encontra no Brasil. O último gráfico é o único lugar do site onde risco e preparação aparecem no mesmo eixo.</p>
+    <p class="hint">O índice que define o fenômeno globalmente e duas leituras do que ele encontra no Brasil. O último gráfico é o único lugar do site onde risco e preparação aparecem no mesmo eixo.</p>
     <div class="grade-figuras">
       <figure class="figura figura--grafico figura--largo" id="boxOni">
         <h3 class="figura-titulo">Índice ONI: a série que define o fenômeno</h3>
         <p class="figura-sub">Trimestres móveis desde 1950 → último disponível · anomalia da TSM na região Niño 3.4 · °C</p>
         <div class="figura-midia canvas-wrap" id="wrapOni"></div>
       </figure>
-      <figure class="figura figura--grafico" id="boxPlume">
-        <h3 class="figura-titulo">Probabilidade por trimestre</h3>
-        <p class="figura-sub">Próximos trimestres · probabilidade de El Niño / neutro / La Niña · %</p>
-        <div class="figura-midia canvas-wrap" id="wrapPlume"></div>
-        <div class="map-legend" id="legPlume"></div>
-      </figure>
+      <!-- 13/09/2026 (auditoria de visualizações, ação recomendada): a figura "Probabilidade por
+           trimestre" foi trocada por este cartão compacto — a própria figura só informava que a
+           série por trimestre (IRI/CPC) não foi coletada; a probabilidade do trimestre corrente já
+           aparece, com fonte, no painel "Situação atual" acima. Critério para reintroduzir como
+           figura: coleta da série completa por trimestre. JS correspondente (renderPlume, em
+           sinais-de-risco.js) fica desativado até então (guarda por ausência de #wrapPlume). -->
+      <div class="card-note">Probabilidade por trimestre (IRI/CPC): sem coleta até o corte. A probabilidade do trimestre corrente aparece, com fonte, em "Situação atual" no topo da página.</div>
       <figure class="figura figura--grafico" id="boxTipos">
         <h3 class="figura-titulo">Estados por tipo de risco projetado</h3>
         <p class="figura-sub">Ciclo 2026/2027 (boletins do Painel) · família de risco projetado por UF · contagem de estados</p>
@@ -149,7 +150,7 @@
 </div>
 
 <script src="assets/colunas.js?v=247b398e" defer></script>
-<script src="assets/js/sinais-de-risco.js?v=230a208f" defer></script>
+<script src="assets/js/sinais-de-risco.js?v=2b2cd52a" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

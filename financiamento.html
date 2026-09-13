@@ -132,7 +132,7 @@
 
   <div class="panel" id="porestado">
     <h2>Por estado</h2>
-    <p class="hint">Dois mapas: o fundo a fundo estadual <em>preventivo</em> (o precedente do Prepara RS) e, quando a coleta chegar, o coroplético em R$ por habitante com seletor de rota.</p>
+    <p class="hint">Fundo a fundo estadual <em>preventivo</em> (o precedente do Prepara RS).</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxFundoEstadual">
         <h3 class="figura-titulo">Fundo a fundo estadual preventivo</h3>
@@ -140,27 +140,26 @@
         <div class="figura-midia"><svg id="mapaFundo" role="img" aria-label="Mapa do Brasil pelo status do fundo a fundo estadual preventivo de defesa civil" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legFundo"></div>
       </figure>
-      <figure class="figura figura--mapa" id="boxPorHab">
-        <h3 class="figura-titulo">Transferências da União por habitante, por rota</h3>
-        <p class="figura-sub">Ano de 2026 · transferências da União por habitante, por rota · R$/hab.</p>
-        <div class="figura-midia"><svg id="mapaHab" role="img" aria-label="Mapa do Brasil com transferências da União por habitante na rota escolhida" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legHab"></div>
-        <label class="sr-only" for="selRota">Rota</label>
-        <select id="selRota" class="seletor u-mt-3" aria-label="Escolher a rota exibida no mapa"></select>
-      </figure>
+      <!-- 13/09/2026 (auditoria de visualizações, ação recomendada): o coroplético "Transferências da
+           União por habitante, por rota" foi retirado — só a rota 5 (voluntárias/emendas) tinha dado
+           real (27 de 216 células = 1 de 8 rotas); as outras 7 sempre mostravam "Aguardando coleta",
+           o mapa inteiro em cinza. Critério para reintroduzir: cobertura mínima em pelo menos 2-3 rotas.
+           Marcação #boxPorHab/#mapaHab/#legHab/#selRota removida de propósito; JS correspondente em
+           financiamento.js (bloco "Mapa por habitante") fica desativado até então, não apagado. -->
     </div>
   </div>
 
   <div class="panel" id="contadores">
-    <h2>Quatro contadores por estado</h2>
-    <p class="hint">Contagens e razões por estado — antes de 04/07 · período eleitoral · depois de 25/10 —, sem escala nem juízo; "sem coleta" onde a fonte ainda não entrega.</p>
+    <h2>Contadores por estado</h2>
+    <p class="hint">R$/hab. em transferências voluntárias (rota 5) por UF — a única métrica com cobertura nas 27 UFs até o corte; "sem escala nem juízo", só o valor. As demais métricas planejadas (municípios com recurso preventivo e de resposta, razão depois/antes, represado) seguem abaixo, resumidas, porque a cobertura ainda é pontual — mostrá-las como tabela de 27 linhas majoritariamente vazias seria menos claro que o resumo.</p>
     <div class="grade-figuras">
       <figure class="figura figura--tabela figura--largo" id="boxContadores">
-        <h3 class="figura-titulo">Contadores por estado</h3>
-        <p class="figura-sub">Corte da edição · R$/hab. voluntárias, municípios com recurso preventivo e de resposta, razão depois/antes · por UF</p>
-        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblContadores"><thead><tr><th>UF</th><th>R$/hab. voluntárias 2026 (rota 5)</th><th>Por período</th><th>Municípios com recurso preventivo</th><th>Municípios com recurso de resposta</th><th>Razão depois/antes</th><th>Represado</th></tr></thead><tbody></tbody></table></div></div>
+        <h3 class="figura-titulo">R$/hab. em transferências voluntárias (rota 5), por UF</h3>
+        <p class="figura-sub">Corte da edição · valor per capita das transferências voluntárias (TransfereGov) · R$/hab. · 27 UFs</p>
+        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblContadores"><thead><tr><th>UF</th><th>R$/hab. voluntárias 2026 (rota 5)</th></tr></thead><tbody></tbody></table></div></div>
         <div class="map-legend" id="legContadores"></div>
       </figure>
+      <p class="note" id="notaContadoresCobertura"></p>
     </div>
   </div>
 
@@ -228,7 +227,7 @@
 </div>
 
 <script src="assets/colunas.js?v=247b398e" defer></script>
-<script src="assets/js/financiamento.js?v=8a43247f" defer></script>
+<script src="assets/js/financiamento.js?v=f74356ef" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

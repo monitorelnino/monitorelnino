@@ -1,15 +1,32 @@
 // ===== financiamento.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, PAINEL, MPS, CONTADORES;
 
-// ===== 3b · Quatro contadores por estado (v3.1 §11) =====
+// ===== 3b · Contadores por estado (v3.1 §11; redesenhado 13/09/2026 — auditoria de visualizações) =====
 function renderContadores(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const C = (CONTADORES && CONTADORES.uf) || {}; const tb = document.querySelector('#tblContadores tbody'); if (!tb) return;
   const brl = v => v == null ? '<span class="u-muted">sem coleta</span>' : 'R$ ' + v.toFixed(2).replace('.', ',');
-  tb.innerHTML = Object.keys(C).sort((a, b) => ((C[b].por_habitante_2026 || {}).r5 || 0) - ((C[a].por_habitante_2026 || {}).r5 || 0)).map(uf => { const c = C[uf], m = c.municipios_cobertos;
-    return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + brl((c.por_habitante_2026 || {}).r5) + '</td><td><span class="u-muted">sem coleta</span></td><td>' + (m.preventivo != null ? m.preventivo + (m.preventivo_valor ? ' · R$ ' + (m.preventivo_valor / 1e6).toFixed(1).replace('.', ',') + ' mi' : '') : '<span class="u-muted">não localizado</span>') + '</td><td><span class="u-muted">sem coleta</span></td><td>' + (c.razao_depois_antes != null ? c.razao_depois_antes : '<span class="u-muted">—</span>') + '</td><td><span class="u-muted">não disponível</span></td></tr>'; }).join('');
-  MonitorMapas.legenda('legContadores', [{cor: MonitorMapas.PALETA.rotas.r5, rotulo: 'r5: TransfereGov, dados abertos'}, {cor: MonitorMapas.PALETA.rotas.rE, rotulo: 'preventivo: fundo a fundo estadual localizado'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'sem coleta / não disponível'}]);
-  fonteFigura('boxContadores', {fontes: ['TransfereGov (r5)', 'atos estaduais (fundo a fundo preventivo)', 'Censo 2022'], data: (CONTADORES || {}).gerado_em});
+  const ufsComR5 = Object.keys(C).filter(uf => (C[uf].por_habitante_2026 || {}).r5 != null);
+  tb.innerHTML = Object.keys(C).sort((a, b) => ((C[b].por_habitante_2026 || {}).r5 || 0) - ((C[a].por_habitante_2026 || {}).r5 || 0)).map(uf =>
+    '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + brl((C[uf].por_habitante_2026 || {}).r5) + '</td></tr>').join('');
+  MonitorMapas.legenda('legContadores', [{cor: MonitorMapas.PALETA.rotas.r5, rotulo: 'rota 5: TransfereGov, dados abertos'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'sem coleta'}]);
+  fonteFigura('boxContadores', {fontes: ['TransfereGov (r5)', 'Censo 2022'], data: (CONTADORES || {}).gerado_em});
+  // resumo de cobertura das métricas planejadas com dado pontual (não viram coluna — ver hint do painel)
+  const preventivo = Object.entries(C).filter(([, c]) => (c.municipios_cobertos || {}).preventivo != null);
+  const notaEl = document.getElementById('notaContadoresCobertura');
+  if (notaEl) {
+    let partes = [esc(ufsComR5.length) + ' de 27 UFs com R$/hab. de rota 5 coletado.'];
+    if (preventivo.length) {
+      partes.push(preventivo.map(([uf, c]) => {
+        const m = c.municipios_cobertos;
+        return esc(uf) + ': ' + esc(m.preventivo) + ' município(s) com recurso preventivo' + (m.preventivo_valor ? ' (R$ ' + esc((m.preventivo_valor / 1e6).toFixed(1).replace('.', ',')) + ' mi)' : '');
+      }).join(' · '));
+    } else {
+      partes.push('Municípios com recurso preventivo: sem coleta em nenhuma UF até o corte.');
+    }
+    partes.push('Municípios com recurso de resposta, razão depois/antes e represado: métricas planejadas, ainda sem fonte aberta com cobertura — não entram como coluna para não sugerir uma tabela majoritariamente vazia.');
+    notaEl.innerHTML = partes.join(' ');
+  }
 }
 
 // ===== 1 · Onde o pagamento foi feito: valor pago por UF da unidade gestora (mps_2026.json → destino) =====
@@ -216,17 +233,23 @@ function __init(){
     uf => { const f = (PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}; return '<em>' + esc((FUNDO[fundo(uf)] || FUNDO.nao_verificado)[0]) + '</em>' + (f.instrumento ? '<br>' + esc(f.instrumento) + (f.norma ? ' · ' + esc(f.norma) : '') : '') + (f.condicionalidade ? '<br>Condição: ' + esc(f.condicionalidade) : '') + (f.verificado_em ? '<br>verificado em ' + esc(f.verificado_em) : '<br>bateria estadual ainda não executada'); },
     Object.values(FUNDO).map(v => ({cor: v[1], rotulo: v[0]})));
   fonteFigura('boxFundoEstadual', {fontes: 'Monitor El Niño Brasil', data: PORUF.corte});
-  const sel = document.getElementById('selRota'); sel.innerHTML = ROTAS.rotas.map(r => '<option value="'+r.id+'">'+r.n+' · '+esc(r.nome)+'</option>').join('');
-  function valorHab(uf, rota){ const v = (((PORUF.uf[uf] || {}).rotas || {})[rota] || {}).valor_2026; const pop = UFS.includes(uf) ? Object.entries(POP).filter(([c]) => String(c).startsWith(String(UFS.indexOf(uf)))).length : 0; return (v == null) ? null : v; }
-  function desenharHab(){
-    const rota = sel.value; const vals = UFS.map(uf => valorHab(uf, rota)).filter(v => v != null);
-    const cor = d3.scaleSequential(d3.interpolateBlues).domain([0, d3.max(vals) || 1]);
-    desenharMapa('mapaHab','legHab', uf => { const v = valorHab(uf, rota); return v == null ? NEUTRA : cor(v); },
-      uf => { const v = valorHab(uf, rota); return v == null ? 'Aguardando coleta (rota ' + esc(rota) + ')' : brl(v); },
-      vals.length ? [{cor: cor(0), rotulo: 'menor'}, {cor: cor(d3.max(vals)), rotulo: 'maior'}] : [{cor: NEUTRA, rotulo: 'aguardando coleta'}]);
+  // 13/09/2026: mapa "por habitante, por rota" retirado do HTML (ver comentário em financiamento.html,
+  // painel #porestado) — só a rota 5 tinha cobertura real. Bloco mantido desativado (guarda por
+  // ausência do <select>), não apagado, para reativar assim que outras rotas tiverem dado.
+  const sel = document.getElementById('selRota');
+  if (sel) {
+    sel.innerHTML = ROTAS.rotas.map(r => '<option value="'+r.id+'">'+r.n+' · '+esc(r.nome)+'</option>').join('');
+    function valorHab(uf, rota){ const v = (((PORUF.uf[uf] || {}).rotas || {})[rota] || {}).valor_2026; const pop = UFS.includes(uf) ? Object.entries(POP).filter(([c]) => String(c).startsWith(String(UFS.indexOf(uf)))).length : 0; return (v == null) ? null : v; }
+    function desenharHab(){
+      const rota = sel.value; const vals = UFS.map(uf => valorHab(uf, rota)).filter(v => v != null);
+      const cor = d3.scaleSequential(d3.interpolateBlues).domain([0, d3.max(vals) || 1]);
+      desenharMapa('mapaHab','legHab', uf => { const v = valorHab(uf, rota); return v == null ? NEUTRA : cor(v); },
+        uf => { const v = valorHab(uf, rota); return v == null ? 'Aguardando coleta (rota ' + esc(rota) + ')' : brl(v); },
+        vals.length ? [{cor: cor(0), rotulo: 'menor'}, {cor: cor(d3.max(vals)), rotulo: 'maior'}] : [{cor: NEUTRA, rotulo: 'aguardando coleta'}]);
+    }
+    desenharHab(); sel.addEventListener('change', desenharHab);
+    fonteFigura('boxPorHab', {fontes: ['Portal da Transparência', 'Tesouro', 'FNS', 'FNAS', 'Censo 2022 (IBGE)'], data: null});
   }
-  desenharHab(); sel.addEventListener('change', desenharHab);
-  fonteFigura('boxPorHab', {fontes: ['Portal da Transparência', 'Tesouro', 'FNS', 'FNAS', 'Censo 2022 (IBGE)'], data: null});
   // 4 · resposta por decreto
   const svgDin = desenharMapa('mapDinheiro','legDinheiro', uf => NEUTRA, uf => 'Sem repasse ou reconhecimento nomeado até o corte',
     [{cor:MonitorMapas.PALETA.preparacao, rotulo:'Repasse preventivo confirmado (Prepara RS)'}, {cor:MonitorMapas.PALETA.resposta, rotulo:'Reconhecimento federal (rota 3, resposta)'}]);
