@@ -109,6 +109,23 @@ const CAT_STYLE = {
   nao_verificado:   {cor:MonitorMapas.PALETA.categorias.nao_verificado, r:4.5, label:'Ainda não verificado'},
 };
 
+// 13/09/2026 (auditoria de visualizações, consolidação): quatro mapas municipais viram dois pares
+// com seletor de camada — renderiza as duas camadas do par uma vez (sem custo extra de redesenho a
+// cada troca; mapNiveis em especial é caro, 5.571 pontos) e alterna a visibilidade por [hidden].
+function ligarSeletorDeCamada(selId, pares){
+  const sel = document.getElementById(selId);
+  if (!sel) return;
+  function aplicar(){
+    pares.forEach(p => {
+      const ativo = p.valor === sel.value;
+      const svg = document.getElementById(p.svg); if (svg) svg.hidden = !ativo;
+      const leg = document.getElementById(p.legenda); if (leg) leg.hidden = !ativo;
+    });
+  }
+  sel.addEventListener('change', aplicar);
+  aplicar();
+}
+
 const svgPoints = d3.select('#mapPoints');
 svgPoints.append('g').selectAll('path')
   .data(BR_GEOJSON.features).join('path')
@@ -138,6 +155,20 @@ svgPoints.append('g').selectAll('circle')
   .on('mouseleave', hideTip);
 
 MonitorMapas.legenda('pointsLegend', Object.values(CAT_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
+ligarSeletorDeCamada('selVerificacao', [{valor:'pontos', svg:'mapPoints', legenda:'pointsLegend'}, {valor:'niveis', svg:'mapNiveis', legenda:'legNiveis'}]);
+// tabela acessível (equivalente aos dois mapas do seletor acima) — soma por UF, sem esperar o setTimeout do mapa de níveis
+(function(){
+  const tb = document.querySelector('#tblVerificacao tbody');
+  if (!tb) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const contAto = {};
+  MAP_POINTS.forEach(p => { if (['plano','plano_antigo','decreto'].includes(p.categoria)) contAto[p.uf] = (contAto[p.uf]||0) + 1; });
+  const ufsOrdenadas = DATA.ufs.map(u => u.uf).sort();
+  tb.innerHTML = ufsOrdenadas.map(uf => {
+    const niv = (VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {};
+    return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + esc(contAto[uf] || 0) + '</td><td>' + esc(niv.municipal_completo || 0) + '</td><td>' + esc(niv.estadual || 0) + '</td><td>' + esc(niv.nacional || 0) + '</td><td>' + esc(niv.nao_verificado || 0) + '</td></tr>';
+  }).join('');
+})();
 
 // ---- 1b. Nível de verificação municipal (v2.2.4, §7.3/C8) ----
 // Desenho adiado (setTimeout 0) e camada padrão em UM único <path>: 5.571 nós
@@ -164,8 +195,8 @@ setTimeout(function(){
   MonitorMapas.pontosDensos(__ctx, 'mapNiveis', pts.filter(p=>p.niv==='nao_verificado'), NIV_STYLE.nao_verificado.cor, 1.4, .55);
   MonitorMapas.pontos(__ctx, 'mapNiveis', pts.filter(p=>p.niv!=='nao_verificado'), {r: () => 2.6, cor: d => NIV_STYLE[d.niv].cor, classe: 'acima'});
   MonitorMapas.legenda('legNiveis', Object.values(NIV_STYLE).map(v => ({cor: v.cor, rotulo: v.label})));
-  // crédito DEPOIS do mapa (pedido editorial de 03/09/2026), fora do parágrafo-nota inicial
-  MonitorMapas.credito('nivelverificacao', {fontes: ['Monitor El Niño Brasil (verificação própria)', 'malha IBGE'], data: window.__metaAtualizado});
+  // 13/09/2026: crédito único de boxVerificacao já sai de creditosAntecipacao() (mesmas fontes) —
+  // chamada redundante removida daqui (era 'nivelverificacao', figura própria antes da consolidação).
 }, 0);
 
 // ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada (31/08/2026) ----
@@ -325,6 +356,20 @@ __pat.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
 document.getElementById('legCobertura').innerHTML =
   `<span><i style="background:linear-gradient(90deg,var(--zebra),var(--musgo)); width:44px;"></i>0% → 100% dos municípios com ato</span>`;
 MonitorMapas.legendaContinua('legNatureza', 'linear-gradient(90deg, var(--argila) 0%, var(--ambar) 20%, var(--sem-dado) 50%, var(--mineral) 80%, var(--musgo) 100%)', 'só decretos reativos', 'só planos preventivos', [{cor: 'repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--areia) 3px,var(--areia) 4px)', rotulo: 'sem atos identificados'}]);
+ligarSeletorDeCamada('selCoberturaNatureza', [{valor:'cobertura', svg:'mapCobertura', legenda:'legCobertura'}, {valor:'natureza', svg:'mapNatureza', legenda:'legNatureza'}]);
+// tabela acessível (equivalente aos dois mapas do seletor acima)
+(function(){
+  const tb = document.querySelector('#tblCoberturaNatureza tbody');
+  if (!tb) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const ufsOrdenadas = DATA.ufs.map(u => u.uf).sort();
+  tb.innerHTML = ufsOrdenadas.map(uf => {
+    const i = PCT_POR_UF[uf] || {};
+    const atos = (i.n_plano || 0) + (i.n_decreto || 0);
+    const pctPrev = atos ? Math.round(100 * i.n_plano / atos) + '%' : '—';
+    return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + esc((i.com_ato ?? 0) + ' de ' + (i.total ?? '—')) + '</td><td>' + esc((i.pct ?? 0) + '%') + '</td><td>' + esc(i.n_plano ?? 0) + '</td><td>' + esc(i.n_decreto ?? 0) + '</td><td>' + esc(pctPrev) + '</td></tr>';
+  }).join('');
+})();
 
 // ---- Mapa: risco projetado × instrumento estadual ----
 const CONSIST_ROTULO = {COBRE:'Cobre o risco projetado', PARCIAL:'Cobre parte do risco', DIFERE:'Risco difere do instrumento', SEM:'Sem instrumento estadual', NEUTRO:'Sem sinal elevado no trimestre'};
@@ -464,8 +509,7 @@ new Chart(document.getElementById('chartDeclarado'), {
 // Auditoria de 07/09/2026: toda figura tem crédito no formato único; as de antecipação são verificação própria do Monitor.
 function creditosAntecipacao(){
   const d = window.__metaAtualizado;
-  [['boxPoints', ['Monitor El Niño Brasil (verificação própria)', 'malha IBGE']], ['boxCobertura', ['Monitor El Niño Brasil (verificação própria)']],
-   ['boxNatureza', ['Monitor El Niño Brasil (verificação própria)']], ['riscoinstrumento', ['Monitor El Niño Brasil', 'Boletins nº 1–2 do Painel El Niño']],
+  [['boxVerificacao', ['Monitor El Niño Brasil (verificação própria)', 'malha IBGE']], ['boxCoberturaNatureza', ['Monitor El Niño Brasil (verificação própria)']],
    ['boxPrioritarios', ['Monitor El Niño Brasil', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
    ['boxDonut', ['Monitor El Niño Brasil', 'instrumentos estaduais verificados']], ['boxRegion', ['Monitor El Niño Brasil', 'instrumentos estaduais verificados']],
    ['boxCapitals', ['Monitor El Niño Brasil', '27 capitais verificadas']], ['boxDeclarado', ['MUNIC/IBGE', 'ICM/SEDEC', 'Monitor El Niño Brasil']],

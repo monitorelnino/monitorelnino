@@ -333,6 +333,11 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .barra-resp i.dec{background:var(--ambar);}
 .barra-resp b{position:absolute; top:-3px; width:2px; height:16px; background:var(--ink);}
 .legend{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-3); margin-top:var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
+/* 13/09/2026: regra global — qualquer componente com display: explícito (flex/block/grid) sobrepõe
+   [hidden] da UA stylesheet à mesma especificidade; !important garante que 'hidden' sempre esconda,
+   sem precisar de uma regra [seletor][hidden] nova a cada componente novo (ver .detail[hidden] e
+   .figura[hidden], mantidas como estavam). */
+[hidden]{display:none !important;}
 .legend span{display:flex; align-items:center; gap:var(--sp-2);}
 .legend i{width:10px; height:10px; border-radius:2px; display:inline-block;}
 .detail{min-height:420px; display:flex; flex-direction:column;}
