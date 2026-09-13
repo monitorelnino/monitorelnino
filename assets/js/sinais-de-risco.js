@@ -92,7 +92,7 @@ desenharMapa('mapaAvisos', 'legAvisos',
   uf => { const a = aviso(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
     const graus = Object.entries(a.graus || {}).map(([g, n]) => esc(g) + ': ' + n).join(' · ');
     return a.total + ' aviso(s) vigente(s)' + (graus ? '<br>' + graus : ''); },
-  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'Menos avisos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:'Mais avisos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 avisos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:maxAvisos + ' aviso(s)'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxAvisos', 'inmet_avisos');
 
 // ---- Mapa 4: focos ativos ----
@@ -102,7 +102,7 @@ const escalaFogo = d3.scaleSqrt().domain([0, maxFogo]).range(MonitorMapas.PALETA
 desenharMapa('mapaFogo', 'legFogo',
   uf => { const f = fogo(uf); return f ? escalaFogo(f.focos_24h) : NEUTRA; },
   uf => { const f = fogo(uf); return f ? f.focos_24h + ' foco(s) nas últimas 24 h' : 'Aguardando a primeira coleta desta fonte'; },
-  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'Menos focos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:'Mais focos'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 focos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:maxFogo + ' foco(s)'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxFogo', 'inpe_fogo');
 
 // ---- Mapa 5: alertas vigentes do CEMADEN ----
@@ -114,7 +114,7 @@ desenharMapa('mapaCemaden', 'legCemaden',
   uf => { const a = alerta(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
     const niveis = Object.entries(a.niveis || {}).map(([n, q]) => esc(n) + ': ' + q).join(' · ');
     return a.total + ' alerta(s) vigente(s)' + (niveis ? '<br>' + niveis : ''); },
-  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'Menos alertas'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:'Mais alertas'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 alertas'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:maxAlerta + ' alerta(s)'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 // CEMADEN: "nenhum alerta vigente" é informação da fonte, não lacuna — vai na LEGENDA, não em parágrafo.
 (function(){
   const temAlerta = Object.values((SINAIS && SINAIS.uf) || {}).some(u => u.alertas_cemaden && u.alertas_cemaden.total);
