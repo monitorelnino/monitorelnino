@@ -366,15 +366,19 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .selo-embed img, .selo-img{max-width:100%; height:auto; display:block; margin:0 0 var(--sp-2);}
 
 /* ===== 12. Prazos (relógios) e barras por UF ===== */
-.prazos-barras{display:flex; flex-direction:column; gap:var(--sp-3); margin:0;}
-.prazo-rel{display:grid; grid-template-columns:88px 1fr; gap:var(--sp-2) var(--sp-4); align-items:start; padding:var(--sp-3) 0; border-top:1px solid var(--line); min-width:0;}
-.prazo-rel:first-child{border-top:none;}
-.prazo-rel .relogio{display:block;}
+.prazos-grade{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:var(--sp-4); margin:0;}
+.prazo-rel{display:grid; grid-template-columns:64px 1fr; gap:var(--sp-2) var(--sp-3); align-items:start; padding:var(--sp-3); border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:var(--sombra); min-width:0;}
+.prazo-rel .relogio{display:block; width:64px; height:64px;}
 .prazo-rel .prazo-titulo{font-family:var(--font-titulo); font-weight:var(--peso-regular); font-size:var(--fs-h4); line-height:var(--lh-h4); color:var(--ink);}
 .prazo-rel .prazo-meta{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); margin-top:2px; white-space:normal; min-width:0;}
 .prazo-rel .prazo-meta strong{color:var(--ink);}
 .prazo-rel .prazo-espera{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--ink); margin-top:var(--sp-2); max-width:var(--medida-leitura);}
 .prazo-rel .prazo-espera .k{font-family:var(--font-dado); font-size:var(--fs-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--teal);}
+.prazo-rel .prazo-espera summary{cursor:pointer; list-style:none;}
+.prazo-rel .prazo-espera summary::-webkit-details-marker{display:none;}
+.prazo-rel .prazo-espera summary::after{content:' →'; color:var(--teal);}
+.prazo-rel .prazo-espera[open] summary::after{content:' ↑';}
+.prazo-rel .prazo-espera[open] summary{margin-bottom:var(--sp-1);}
 .prazo-rel.vencido .prazo-titulo{color:var(--muted);}
 .msb{display:grid; grid-template-columns:44px 1fr auto; gap:0 var(--sp-2); align-items:center;}
 .msb b{font-family:var(--font-dado); font-weight:var(--peso-semibold); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--ink);}
@@ -500,8 +504,8 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .detail{min-height:0;}
   .strip-tick span{display:none;}
   .contrib-grid, .ficha-cols{grid-template-columns:1fr;}
-  .prazo-rel{grid-template-columns:72px 1fr;}
-  .prazo-rel .relogio{width:72px; height:72px;}
+  .prazo-rel{grid-template-columns:56px 1fr;}
+  .prazo-rel .relogio{width:56px; height:56px;}
   .mast-body{margin-bottom:var(--sp-3);}
 }
 

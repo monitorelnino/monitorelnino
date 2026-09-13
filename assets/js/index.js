@@ -297,7 +297,7 @@ function renderPrazos(){
       <div class="prazo-rel-txt">
         <div class="prazo-titulo">${esc(m.titulo_curto)}</div>
         <div class="prazo-meta">${esc(m.classe)} · ${esc(m.data_base)} → <strong>${esc(m.vencimento)}</strong>${vencido ? ' · transcorrido' : ''}</div>
-        ${m.o_que_se_espera ? '<div class="prazo-espera"><span class="k">O que se espera:</span> ' + esc(m.o_que_se_espera) + '</div>' : ''}
+        ${m.o_que_se_espera ? '<details class="prazo-espera"><summary><span class="k">O que se espera</span></summary>' + esc(m.o_que_se_espera) + '</details>' : ''}
       </div></div>`; }).join('');
   vazio.hidden = itens.length > 0;
   MonitorMapas.credito('prazosFonte', {fontes: ['registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384)'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
