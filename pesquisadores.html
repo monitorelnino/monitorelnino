@@ -26,6 +26,7 @@
 <title>Dados abertos do El Niño 2026/2027: metodologia, log de verificação, feeds e código</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bf4569ad">
 <link rel="stylesheet" href="assets/base.css?v=96eadba1">
@@ -200,6 +201,26 @@
   </details>
 
   <details class="acc">
+    <summary class="acc-summary">Compromissos federais com dinheiro e prazo</summary>
+    <div class="panel" id="compromissos-painel">
+      <h2 id="compromissos-federais">Compromissos federais com dinheiro e prazo</h2>
+      <p class="hint">O que foi prometido, com fonte e data, ao lado da execução correspondente no Portal da Transparência (aguardando coleta). Migrou de Financiamento em 13/09/2026 (proposta de enxugamento, Manus AI) — a página principal fica com as rotas e quem já acionou cada uma; compromissos anunciados e planos por área são apêndice metodológico.</p>
+      <div class="grade-figuras">
+        <figure class="figura figura--tabela" id="boxCompromissos">
+          <h3 class="figura-titulo">Compromissos verificados</h3>
+          <p class="figura-sub">Ciclo 2026/2027 · compromissos federais verificados, com dinheiro e prazo · R$ e datas</p>
+          <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCompromissos"><thead><tr><th>Compromisso</th><th>Esfera</th><th>Instrumento</th><th>Valor</th><th>Rota</th><th>Execução</th></tr></thead><tbody></tbody></table></div></div>
+        </figure>
+        <figure class="figura figura--grafico" id="boxFinance">
+          <h3 class="figura-titulo">Plano federal El Niño 2026/2027 por área (R$)</h3>
+          <p class="figura-sub">Plano federal El Niño 2026/2027 · dotação por área · R$ (milhões)</p>
+          <div class="figura-midia canvas-wrap"><canvas id="chartFinance" aria-label="Gráfico de barras: financiamento federal anunciado por área"></canvas></div>
+        </figure>
+      </div>
+    </div>
+  </details>
+
+  <details class="acc">
     <summary class="acc-summary">Como usar o site e os dados</summary>
     <div class="panel" id="usar">
       <h2 id="como-usar">Como usar o site e os dados</h2>
@@ -235,7 +256,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/pesquisadores.js?v=fa9d5752" defer></script>
+<script src="assets/js/pesquisadores.js?v=0694d6e7" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

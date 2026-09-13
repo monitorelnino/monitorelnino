@@ -21,6 +21,35 @@ async function __load(){
       MonitorMapas.credito('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: null});
     }
   } catch(e) { MonitorMapas.credito('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: null}); }
+  // 13/09/2026 (proposta de enxugamento, Manus AI): 'Compromissos federais' migrou de
+  // financiamento.html — apêndice metodológico, não narrativa principal de rotas.
+  try {
+    const brl = v => (v == null) ? '—' : 'R$ ' + Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 0});
+    const [ROTAS_FIN, COMP] = await Promise.all(['data/financiamento/rotas.json', 'data/financiamento/compromissos_federais.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null)));
+    if (COMP) {
+      document.querySelector('#tblCompromissos tbody').innerHTML = (COMP.itens || []).map(c => '<tr><td>' + esc(c.nome) + '</td><td>' + esc(c.esfera || '—') + '</td><td>' + esc(c.instrumento || '—') + (c.fonte ? ' <a href="' + esc(c.fonte) + '" target="_blank" rel="noopener">fonte</a>' : '') + '</td><td>' + brl(c.valor_total) + '</td><td>' + esc(((ROTAS_FIN && ROTAS_FIN.rotas || []).find(r => r.id === c.rota) || {}).nome || c.rota) + '</td><td>' + esc((c.execucao || {}).status === 'aguardando_coleta' ? 'aguardando coleta' : (c.execucao || {}).status || '—') + '</td></tr>').join('');
+      MonitorMapas.credito('boxCompromissos', {fontes: ['as citadas em cada linha', 'Portal da Transparência (execução)'], data: (ROTAS_FIN && ROTAS_FIN.corte) || null});
+    }
+    const financeData = [
+      {label:'Segurança Hídrica', value:14217500000},
+      {label:'Saúde', value:1335000000},
+      {label:'Segurança Alimentar', value:1335000000},
+      {label:'Incêndios Florestais', value:858000000},
+    ];
+    new Chart(document.getElementById('chartFinance'), {
+      type:'bar',
+      data:{ labels: financeData.map(d=>d.label),
+        datasets:[{ data: financeData.map(d=>d.value),
+          backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? MonitorMapas.PALETA.temas.hidrico
+            : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? MonitorMapas.PALETA.temas.fogo
+            : /aliment|agr[íi]cola|safra/i.test(d.label) ? MonitorMapas.PALETA.temas.alimentar
+            : /sa[úu]de/i.test(d.label) ? MonitorMapas.PALETA.temas.saude : MonitorMapas.PALETA.temas.outro),
+          borderRadius:4 }] },
+      options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{ legend:{display:false} },
+        scales:{ x:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{ callback:v => 'R$ '+(v/1e9).toFixed(1)+'bi' } }, y:{ grid:{display:false} } } }
+    });
+    MonitorMapas.credito('boxFinance', {fontes: ['Plano federal El Niño 2026/2027', 'valores anunciados'], data: (ROTAS_FIN && ROTAS_FIN.corte) || null});
+  } catch(e) {}
 document.getElementById('fontesMonitoramento').innerHTML = TRANSFERENCIAS.fontes_monitoramento
   .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
   const ROTULO_HOST = {

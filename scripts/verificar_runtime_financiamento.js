@@ -71,7 +71,8 @@ setTimeout(() => {
   // Painel amostral (agregados) migrou para pesquisadores.html em 13/09/2026 (proposta de
   // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   teste("bloco 6: 5 programas listados como exemplos da rota 7", q("programasLista").children.length === 5);
-  teste("bloco 7: compromissos listados", d.querySelectorAll("#tblCompromissos tbody tr").length >= 4);
+  // 'Compromissos federais' (bloco 7) migrou para pesquisadores.html em 13/09/2026 (proposta de
+  // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   // v3.1 §7: as fontes do financiamento vivem em pesquisadores.html
   const caixas = [...d.querySelectorAll(".figura")].filter(c => c.querySelector("svg, canvas, table, ul"));
   const semCredito = caixas.filter(c => !c.querySelector(".fonte-figura") && !c.closest("#rotasCards") && !c.closest("#comoler"));
