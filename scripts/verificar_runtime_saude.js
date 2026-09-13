@@ -65,7 +65,8 @@ setTimeout(() => {
   teste("boxEmerg: oculto enquanto não há emergência registrada (contador em boxRespostaSanitaria cobre o zero)", q("boxEmerg") && q("boxEmerg").hidden === true);
   const nNV = Object.values(SUF.uf).filter(u => u.status === "NAO_VERIFICADO").length;
   teste(`contagem de UFs não verificadas renderizada = arquivo (${nNV})`, (q("contagemUF").textContent || "").includes(nNV + " de 27"));
-  teste("cartões federais renderizados", q("cartoesFederal") && q("cartoesFederal").children.length >= 4);
+  // 'O que a União publicou' migrou para pesquisadores.html em 13/09/2026 (proposta de
+  // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   teste("tabela das 27 UFs", d.querySelectorAll("#tblUF tbody tr").length === 27);
   teste("quadrantes: 5 blocos e soma 27", q("quadrantes").children.length === 5 &&
     [...q("quadrantes").querySelectorAll("strong")].reduce((s, e) => s + Number(e.textContent), 0) === 27);

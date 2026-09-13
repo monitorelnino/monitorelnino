@@ -267,6 +267,22 @@ function renderTable(){
       renderMpsUf(ctx);
     }
   } catch(e) {}
+  // 13/09/2026 (proposta de enxugamento, Manus AI): 'O que a União publicou' (saúde) migrou de
+  // saude.html — documentos de referência, não sinal de saúde observado na população. Renderização
+  // completa (órgão, data, status, nota, link) — o original só mostrava o título.
+  try {
+    const SFED = await fetch('data/saude_federal.json').then(r => r.ok ? r.json() : null);
+    const alvo = document.getElementById('cartoesFederalSaude');
+    if (SFED && alvo) {
+      const STATUS_FED = {localizado: 'localizado', anunciado_nao_localizado: 'anunciado, não localizado até o corte'};
+      alvo.innerHTML = (SFED.cartoes || []).map(c => '<div class="cartao"><h3 class="figura-titulo">' + esc(c.titulo) + '</h3>'
+        + '<p class="figura-sub">' + esc(c.orgao || '—') + (c.data ? ' · ' + esc(c.data) : '') + '</p>'
+        + '<p class="card-body">' + esc(c.nota || '') + '</p>'
+        + '<p class="note">' + esc(STATUS_FED[c.status] || c.status || '—') + '</p>'
+        + (c.url ? '<div class="card-link"><a href="' + esc(c.url) + '" target="_blank" rel="noopener">Ver fonte oficial →</a></div>' : '')
+        + '</div>').join('');
+    }
+  } catch(e) {}
 }
 __load().catch(err => { document.body.insertAdjacentHTML('afterbegin', '<div class="erro-carga">Erro ao carregar os dados: ' + err.message + '</div>'); });
 
