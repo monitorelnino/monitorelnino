@@ -225,8 +225,7 @@ function selectUF(uf, tileEl){
       ${linkCapital}
     </div>` : `<p class="placeholder">Capital sem verificação individual até o corte.</p>`;
 
-  document.getElementById('detail').hidden = false;
-  document.getElementById('detail').innerHTML = `
+  document.getElementById('detailConteudo').innerHTML = `
     <div class="uf-name">${d.nome} <span class="sub">(${d.uf})</span></div>
     ${typeof MARE !== 'undefined' && MARE[d.uf] ? miniGauge(MARE[d.uf].total) : ''}
     <div class="uf-region">${d.regiao}</div>
@@ -252,7 +251,23 @@ function selectUF(uf, tileEl){
       <button type="button" class="btn-pdf btn-copiar-pedido">Copiar código</button></details>
     <p class="note">Acompanhe ${d.nome} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
   `;
+  const __dialogDetail = document.getElementById('detail');
+  // jsdom (suíte de testes) não implementa showModal()/close() do <dialog>, só a propriedade 'open'
+  // refletida — no navegador real, showModal() é o caminho certo (bloqueia scroll do fundo, foco).
+  if (__dialogDetail && !__dialogDetail.open) {
+    if (typeof __dialogDetail.showModal === 'function') __dialogDetail.showModal(); else __dialogDetail.open = true;
+  }
 }
+// 13/09/2026 (pedido de Patricia: quadro dos estados ocupa a página inteira, detalhe vira janela
+// popup): fechar pelo botão ×, por clique no fundo (::backdrop) ou por Esc (nativo do <dialog>).
+(function(){
+  const dlg = document.getElementById('detail');
+  if (!dlg) return;
+  const fechar = document.getElementById('detailFechar');
+  const fecharDialog = () => { if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false; };
+  if (fechar) fechar.addEventListener('click', fecharDialog);
+  dlg.addEventListener('click', (evt) => { if (evt.target === dlg) fecharDialog(); });   // clique fora do conteúdo (::backdrop não recebe click em todo navegador)
+})();
 
 // ---- Infraestrutura compartilhada com a página Defesa civil (ex-mapas e gráficos): tooltip
 // (usado pela linha do tempo do herói) e HAB_SET (usado no cartão de cidade,
@@ -332,7 +347,7 @@ renderPrazos();
   const h = (location.hash || '').replace('#', '').toUpperCase();
   if (/^[A-Z]{2}$/.test(h) && MARE[h]) {
     const tile = document.querySelector('#regions .tile[data-uf="' + h + '"]');
-    if (tile) { selectUF(h, tile); document.getElementById('detail').scrollIntoView({block: 'start'}); }
+    if (tile) selectUF(h, tile);
   }
 })();
 (document.getElementById('munCount')||{}).textContent = TABELA_MUNICIPIOS.length;
