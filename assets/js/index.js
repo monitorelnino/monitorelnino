@@ -30,10 +30,10 @@ function faceTile(uf){
   const niv = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[uf]) || {};
   const tot = Object.values(niv).reduce((a, b) => a + b, 0);
   const acima = (niv.estadual || 0) + (niv.municipal_completo || 0) + (niv.municipal_parcial || 0);
-  const ST = {NOVO:'novo', READ:'readequado', VIG:'vigente', ELAB:'em elaboração', LAC:'não localizado'};
+  const ST = {NOVO:'novo', READ:'readaptado', VIG:'vigente-recorrente', ELAB:'em elaboração', LAC:'não localizado'};
   return `<div class="tile-face">
     <span>diário consultado: ${((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[uf] || 0} de ${tot}</span>
-    <span>${esc(ST[d.status] || d.status)}${d.data && d.data !== 'Recorrente' ? ' · ' + esc(d.data) : d.data ? ' · recorrente' : ''}</span>
+    <span>${esc(ST[d.status] || d.status)}${d.data && d.data !== 'Recorrente' ? ' · ' + esc(d.data) : ''}</span>
     <span>${d.capital && d.capital.nome ? esc(d.capital.nome) + ' · ' + esc(String(d.capital.status || '').toLowerCase()) : 'capital —'}</span></div>`;
 }
 function barraResposta(uf){
@@ -803,7 +803,7 @@ function gerarRelatorioCidadao(uf, municipio){
   if (reg && reg.url) link('Documento localizado (' + reg.fonte + ')', reg.url);
   if (DOM_LINKS[uf]) link('Diário Oficial dos Municípios', DOM_LINKS[uf]);
   link('Defesa Civil Alerta (cadastro e informações)', 'https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-alerta');
-  link('Painel El Niño 2026/2027 — Boletim nº 2, 31/07/2026 (INPE, PDF)', 'https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf');
+  link('Painel El Niño 2026/2027 — Boletim nº 3, 01/09/2026 (INPE/Cemaden, PDF)', 'https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/el-nino/boletim-do-painel-el-nino-ndeg-03-agosto-de-2026-potenciais-impactos-e-orientacoes/painel-el-nino-3-edicao.pdf');
   link('Painel El Niño 2026/2027 — Boletim nº 1, 29/06/2026 (CEMADEN)', 'https://www.gov.br/cemaden/pt-br/lancado-o-primeiro-boletim-do-painel-do-el-nino-2026-2027-apresentando-potenciais-impactos-e-orientacoes');
   link('Este relatório atualizado, e os demais estados e cidades', 'https://monitorelnino.com.br');
 
