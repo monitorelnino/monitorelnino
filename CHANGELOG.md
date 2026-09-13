@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §37 · Fundamento jurídico da publicação, ADPF 743 e padrão de conteúdo do ciclo · 07/09/2026, rebaseado e mesclado em 13/09/2026
+
+Nenhuma alteração de método (§12.5); nenhum número do índice muda. Classe **conteúdo de metodologia** — decisão editorial, não correção mecânica. Conteúdo escrito e aprovado para leitura em 07/09/2026 (PR #96); a PR original ficou presa a uma base anterior à reescrita de histórico de segurança de 13/09/2026 (ver §LGPD abaixo) e divergiu 498 arquivos da `main` atual. Em vez de reabrir aquele diff, os três commits de conteúdo foram recuperados por cherry-pick sobre a `main` corrente, num ramo novo; a PR #96 original foi fechada sem merge.
+
+- **Por que o objeto é a publicação.** Publicidade como condição de eficácia do ato administrativo (CF art. 37, *caput*); um plano não publicado não vincula nem pode ser cobrado — por isso o índice conta o instrumento **publicado**, não o "plano existente" (§5.0).
+- **Base legal com prazo e prestação de contas.** Lei 12.608/2012 art. 8º VI/XI; Lei 12.527/2011 art. 8º (transparência ativa); consequência para a régua de antecipação (§24): publicar o ato é dever, não publicidade.
+- **ADPF 743.** Despacho de 25/05/2026 (Min. Flávio Dino) intima União e dez estados da Amazônia Legal/Pantanal a informar preparação para o 2º semestre de 2026; marca factual `adpf743_intimado`, peso zero.
+- **Nota Técnica CNM nº 12/2026** como checklist de leitura de conteúdo (`conteudo_ciclo`, peso zero, mesma governança do §35); Decreto SC nº 1.530/2026 como exemplo de limiar observacional.
+- A numeração final é **§37** (o §36 já estava ocupado, desde 09/09/2026, pela estrutura de informação dos desfechos em saúde) — resolvida automaticamente pelo merge de três vias no cherry-pick, sem edição manual de número.
+
 ## §36 · MS entrega série de verdade; DF, PE e PB — três causas diferentes, documentadas até o fim · 12/09/2026
 
 Nenhuma alteração de método; nenhum número do índice muda. Classe **código** (PROTOCOLO §3.2). Sessão de investigação profunda pedida pela editoria ("encontrar uma solução para os estados que estão dando erro"), com medição real no runner em cada etapa — nenhuma correção sem prova contra dado real.
