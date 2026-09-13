@@ -283,6 +283,31 @@ function renderTable(){
         + '</div>').join('');
     }
   } catch(e) {}
+  // 13/09/2026 (proposta de enxugamento, Manus AI): catálogo de 20 desfechos e tabela de gatilhos
+  // migraram de saude.html — "é backlog metodológico; pertence a Pesquisadores". Código adaptado
+  // de renderEstrutura() (removida de assets/js/saude.js), com fetch próprio.
+  try {
+    const [CATALOGO, GATILHOS, RESP_NAC] = await Promise.all(['data/saude_desfechos/catalogo.json','data/saude_desfechos/gatilhos.json','data/resposta/por_uf.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null)));
+    const ROT = {coletado: 'coletado', candidato: 'candidato (fonte aberta identificada)', 'sem fonte aberta identificada': 'sem fonte aberta'};
+    const COR = {coletado: MonitorMapas.PALETA.coleta.coletado, candidato: MonitorMapas.PALETA.coleta.candidato, 'sem fonte aberta identificada': MonitorMapas.PALETA.coleta.sem_fonte};
+    const tb = document.querySelector('#tblCatalogo tbody');
+    if (tb && CATALOGO && CATALOGO.desfechos) {
+      tb.innerHTML = CATALOGO.desfechos.map(d => '<tr><td><strong>' + esc(d.nome) + '</strong></td><td>' + esc(d.comprometimento) + '</td><td>' + esc(d.sistema) + '</td><td>' + esc(d.fonte_aberta) + '</td><td><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + COR[d.status_coleta] + ';margin-right:6px;"></span>' + esc(ROT[d.status_coleta] || d.status_coleta) + '</td></tr>').join('');
+      const n = {}; CATALOGO.desfechos.forEach(d => { n[d.status_coleta] = (n[d.status_coleta] || 0) + 1; });
+      MonitorMapas.legenda('legCatalogo', Object.keys(COR).map(k => ({cor: COR[k], rotulo: (ROT[k] || k) + ': ' + (n[k] || 0)})));
+      MonitorMapas.credito('boxCatalogo', {fontes: ['MS/SVSA, Plano de Contingência por Seca e Estiagem (2026), Quadro 2'], data: (CATALOGO.fonte || {}).lido_em || null, url: (CATALOGO.fonte || {}).url});
+    } else MonitorMapas.credito('boxCatalogo', {fontes: ['MS/SVSA'], data: null});
+    const tg = document.querySelector('#tblGatilhos tbody');
+    if (tg && GATILHOS && GATILHOS.gatilhos) {
+      const N = RESP_NAC && RESP_NAC.nacional; const pct = N ? (100 * N.fracao_municipios).toFixed(1).replace('.', ',') + '% dos municípios sob decreto (todas as causas) · limiar 8%' : null;
+      const valor = g => g.id === 'eme_decretos' && pct ? pct : g.id === 'cri_decretos' && N ? 'por região e causa: a filtrar · limiar 50%' : g.status_monitor === 'computavel_parcial' ? 'parcial — ' + esc(g.nota) : g.status_monitor === 'leitura_humana' ? 'leitura humana — ' + esc(g.nota) : g.status_monitor === 'nao_publico' ? 'não público (só por LAI)' : 'sem coleta' + (g.nota ? ' — ' + esc(g.nota) : '');
+      const ORD = {computavel: 0, computavel_parcial: 1, leitura_humana: 2, sem_coleta: 3, nao_publico: 4};
+      tg.innerHTML = GATILHOS.gatilhos.slice().sort((a, b) => ORD[a.status_monitor] - ORD[b.status_monitor]).map(g => '<tr><td>' + esc(g.estagio) + '</td><td>' + esc(g.texto) + '</td><td>' + esc(g.fonte_oficial) + '</td><td>' + valor(g) + '</td></tr>').join('');
+      const c = {}; GATILHOS.gatilhos.forEach(g => { c[g.status_monitor] = (c[g.status_monitor] || 0) + 1; });
+      MonitorMapas.legenda('legGatilhos', [{cor: MonitorMapas.PALETA.coleta.coletado, rotulo: 'computável agora: ' + (c.computavel || 0)}, {cor: MonitorMapas.PALETA.coleta.candidato, rotulo: 'parcial: ' + (c.computavel_parcial || 0)}, {cor: MonitorMapas.PALETA.enso.la_nina, rotulo: 'leitura humana: ' + (c.leitura_humana || 0)}, {cor: MonitorMapas.PALETA.coleta.sem_fonte, rotulo: 'sem coleta / não público: ' + ((c.sem_coleta || 0) + (c.nao_publico || 0))}]);
+      MonitorMapas.credito('boxGatilhos', {fontes: ['MS/SVSA, Plano de Contingência por Seca e Estiagem (2026), Quadro 5', 'valores do Monitor no corte'], data: (GATILHOS.fonte || {}).lido_em || null, url: (GATILHOS.fonte || {}).url});
+    } else MonitorMapas.credito('boxGatilhos', {fontes: ['MS/SVSA'], data: null});
+  } catch(e) {}
 }
 __load().catch(err => { document.body.insertAdjacentHTML('afterbegin', '<div class="erro-carga">Erro ao carregar os dados: ' + err.message + '</div>'); });
 
