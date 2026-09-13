@@ -195,6 +195,19 @@ function __init(){
   const porUF = {}; recs.forEach(e => { const p = porUF[e.uf] = porUF[e.uf] || {n: 0, m: new Set()}; p.n++; p.m.add(e.nome); });
   document.querySelector('#tblResposta tbody').innerHTML = UFS.map(uf => '<tr><td><strong>' + uf + '</strong></td><td>' + (porUF[uf] ? porUF[uf].n : 0) + '</td><td>' + (porUF[uf] ? [...porUF[uf].m].map(esc).join(', ') : '—') + '</td><td>' + brl((((PORUF.uf[uf] || {}).rotas || {}).r3 || {}).valor_2026) + '</td></tr>').join('');
   fonteFigura('boxResposta', {fontes: 'DOU (SEDEC/MIDR)', data: recs.length ? ROTAS.corte : null});
+  // 13/09/2026 (proposta de enxugamento, Manus AI, Bloco 4): visão por rota, nos 27 estados, a
+  // partir do registro central (por_uf.json) — honesto sobre o que está de fato coletado ali. r3
+  // (resposta) e rE (fundo estadual preventivo) têm dado real mostrado nas figuras acima, mas por um
+  // pipeline mais específico (atos_resposta.json / financiamento_uf.json) que este registro central
+  // ainda não reflete — por isso a nota abaixo da tabela, em vez de sobrepor o status.
+  (function(){
+    const tb = document.querySelector('#tblAcionamento tbody'); if (!tb) return;
+    tb.innerHTML = ROTAS.rotas.map(r => {
+      const porRota = UFS.filter(uf => (((PORUF.uf[uf] || {}).rotas || {})[r.id] || {}).status === 'coletado');
+      const situacao = porRota.length ? porRota.length + '/27 UFs' : 'aguardando coleta';
+      return '<tr><td>' + r.n + ' · ' + esc(r.nome) + '</td><td>' + porRota.length + '</td><td>' + esc(situacao) + '</td></tr>';
+    }).join('');
+  })();
   // 5 · painel amostral: migrou para pesquisadores.html em 13/09/2026 (proposta de enxugamento,
   // Manus AI) — "não responde quem pediu ou não pediu no universo monitorado".
   // 6 · programas permanentes
