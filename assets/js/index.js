@@ -197,6 +197,11 @@ setTimeout(renderDetalhePadrao, 0);
 
 
 function selectUF(uf, tileEl){
+  // P2 (auditoria 07/09/2026): d.doc, d.orgao, d.estrutura.doc, d.capital.info e
+  // d.capital.nome são texto editorial (resumo humano de documento oficial), não
+  // HTML bruto raspado — mas entram direto em innerHTML abaixo sem escape, ao
+  // contrário do resto do módulo (ver financiamento.js). Corrigido aqui.
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   document.querySelectorAll('.tile').forEach(t=>t.classList.remove('active'));
   tileEl.classList.add('active');
   const d = DATA.ufs.find(x=>x.uf===uf);
@@ -215,8 +220,8 @@ function selectUF(uf, tileEl){
   const capitalBlock = d.capital ? `
     <div class="capital-box">
       <div class="card-kicker">Capital · verificação individual</div>
-      <div class="card-title">${d.capital.nome} <span class="sub">· ${d.capital.status}</span></div>
-      <div class="card-body">${d.capital.info}</div>
+      <div class="card-title">${esc(d.capital.nome)} <span class="sub">· ${d.capital.status}</span></div>
+      <div class="card-body">${esc(d.capital.info)}</div>
       ${linkCapital}
     </div>` : `<p class="placeholder">Capital sem verificação individual até o corte.</p>`;
 
@@ -226,9 +231,9 @@ function selectUF(uf, tileEl){
     ${typeof MARE !== 'undefined' && MARE[d.uf] ? miniGauge(MARE[d.uf].total) : ''}
     <div class="uf-region">${d.regiao}</div>
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
-    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + d.estrutura.doc + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
-    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${d.doc}${d.data ? ' (' + d.data + ')' : ''}</div></div>
-    <div class="field"><div class="k">Órgão responsável</div><div class="v">${d.orgao}</div></div>
+    <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
+    <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}</div></div>
+    <div class="field"><div class="k">Órgão responsável</div><div class="v">${esc(d.orgao)}</div></div>
     ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || d.adpf743.status) + '</span> intimado em ' + d.adpf743.intimado_em + ' · decisão de ' + d.adpf743.decisao + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' : '') + '</div></div>' : ''}
     ${barraResposta(d.uf)}
     ${typeof MARE !== 'undefined' && MARE[d.uf] && MARE[d.uf].estado_estrutura !== undefined ? '<div class="field"><div class="k">Componente estadual</div><div class="v">estrutura ' + MARE[d.uf].estado_estrutura + ' · instrumento ' + MARE[d.uf].estado_operacional + ' → média ' + MARE[d.uf].estado + ' (pesos iguais)</div></div>' : ''}
