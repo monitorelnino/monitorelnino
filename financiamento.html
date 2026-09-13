@@ -54,33 +54,7 @@
 
   <div class="panel panel--acento-rust" id="dinheiroElNino">
     <h2>O dinheiro do El Niño: como e onde está chegando</h2>
-    <p class="hint">MP 1.367 (incêndios) e MP 1.384 (alimentos): prazo, rota por órgão, parcela paga e onde o pagamento foi feito.</p>
-    <div class="grade-figuras">
-      <figure class="figura figura--diagrama figura--largo" id="boxRotaMPs">
-        <h3 class="figura-titulo">Créditos extraordinários de 2026: MP 1.367 (incêndios) e MP 1.384 (alimentos)</h3>
-        <p class="figura-sub">MPs de 15/06 e 12/08/2026 · dotação por órgão e uso; parcela paga · R$ (milhões)</p>
-        <div class="figura-midia"><div class="prazos-barras u-mb-4" id="mpsPrazos"></div><div id="rotaMPs" class="diagrama-mps"></div></div>
-        <div class="map-legend" id="legRotaMPs"></div>
-      </figure>
-      <figure class="figura figura--indicador" id="boxMpsBrUf">
-        <h3 class="figura-titulo">BR (sedes nacionais) × UFs, no pagamento das MPs</h3>
-        <p class="figura-sub">Execução mensal 06–09/2026 · fração paga por unidade gestora sediada em Brasília (BR) vs. nas UFs · %</p>
-        <div class="figura-midia"><div class="gauge-head"><span class="gnum u-rust" id="mpsBrPct">—</span><span class="gden" id="mpsBrDen">do pago vai para sedes nacionais (BR); o resto se distribui pelas UFs com execução</span></div></div>
-        <div class="map-legend" id="legMpsBrUf"></div>
-      </figure>
-      <figure class="figura figura--barras" id="boxMpsUfBarras">
-        <h3 class="figura-titulo">Pago por UF, sedes nacionais (BR) à parte</h3>
-        <p class="figura-sub">Execução mensal 06–09/2026 · ranking por UF da unidade gestora; BR ao final · R$</p>
-        <div class="figura-midia"><div id="mpsUfBarras" class="prazos-barras"></div></div>
-        <div class="map-legend" id="legMpsUfBarras"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxMpsUf">
-        <h3 class="figura-titulo">Detalhe geográfico · valor pago por UF da unidade gestora</h3>
-        <p class="figura-sub">Execução mensal 06–09/2026 · valor pago das ações reforçadas pelas MPs, por UF · R$</p>
-        <div class="figura-midia"><svg id="mapaMpsUf" role="img" aria-label="Mapa do Brasil: valor pago das ações reforçadas pelas MPs, por UF da unidade gestora; sedes nacionais aparecem como BR" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legMpsUf"></div>
-      </figure>
-    </div>
+    <p class="hint" id="notaMPs">MP 1.367 (incêndios) e MP 1.384 (alimentos): carregando…</p>
   </div>
 
   <div class="panel" id="comoler">
@@ -190,7 +164,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/financiamento.js?v=d7621ce6" defer></script>
+<script src="assets/js/financiamento.js?v=b9b22d81" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

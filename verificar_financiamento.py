@@ -25,7 +25,7 @@ CHAVE = re.compile(r'chave-api-dados["\']?\s*[:=]\s*["\'][0-9a-f]{20,}', re.I)
 def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
     e = []
     if CHAVE.search(html) or CHAVE.search(motor) or any(CHAVE.search(t) for t in arquivos_fin.values()): e.append("(a) chave de API em código ou dados")
-    for cid in ["boxRotaMPs", "boxMpsBrUf", "boxMpsUf", "boxMpsUfBarras", "boxRede", "boxFundoEstadual", "boxContadores", "boxDinheiro", "boxResposta"]:   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026); boxPorHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima (1/8 rotas), JS mantido desativado; boxMpsBrUf adicionado em 13/09/2026 (consolidação: BR × UFs destacado primeiro); boxPainel, boxCompromissos, boxFinance e boxSerie migraram para pesquisadores.html em 13/09/2026 (proposta de enxugamento, Manus AI)
+    for cid in ["boxRede", "boxFundoEstadual", "boxContadores", "boxDinheiro", "boxResposta"]:   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026); boxPorHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima (1/8 rotas), JS mantido desativado; boxPainel, boxCompromissos, boxFinance, boxSerie, boxRotaMPs, boxMpsBrUf, boxMpsUf e boxMpsUfBarras migraram para pesquisadores.html em 13/09/2026 (proposta de enxugamento, Manus AI)
         if f"fonteFigura('{cid}'" not in html: e.append(f"(b) figura sem crédito: #{cid}")
     ids = [r["id"] for r in rotas["rotas"]]
     for s in serie.get("semanas", []):

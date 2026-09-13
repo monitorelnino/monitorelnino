@@ -29,97 +29,20 @@ function renderContadores(){
   }
 }
 
-// ===== 1 · Onde o pagamento foi feito: valor pago por UF da unidade gestora (mps_2026.json → destino) =====
-function renderMpsUf(ctx){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const mps = (MPS && MPS.mps) || []; const por = {}; let br = 0, tot = 0;
-  mps.forEach(mp => { const d = (mp.destino && mp.destino.por_uf_pago) || {}; Object.entries(d).forEach(([uf, v]) => { if (uf === 'BR') br += v; else por[uf] = (por[uf] || 0) + v; tot += v; }); });
-  const brl = v => 'R$ ' + (v >= 1e6 ? (v / 1e6).toFixed(1).replace('.', ',') + ' mi' : (v / 1e3).toFixed(0) + ' mil');
-  const max = Math.max(1, ...Object.values(por));
-  const O4 = MonitorMapas.PALETA.ordinal4; const cor = v => v == null ? MonitorMapas.NEUTRA : (v / max > .5 ? O4[3] : v / max > .2 ? O4[2] : v / max > .05 ? O4[1] : O4[0]);
-  const svgEl = document.getElementById('mapaMpsUf');
-  if (svgEl) MonitorMapas.ufs(ctx, 'mapaMpsUf', uf => cor(por[uf]), uf => por[uf] != null ? '<em>' + brl(por[uf]) + '</em> pagos por unidade gestora sediada na UF' : '<em>sem pagamento por unidade gestora na UF</em>');
-  MonitorMapas.legenda('legMpsUf', [{cor: O4[3], rotulo: 'acima de 50% do maior valor'}, {cor: O4[2], rotulo: '20–50%'}, {cor: O4[1], rotulo: '5–20%'}, {cor: O4[0], rotulo: 'abaixo de 5% · sem pagamento'}]);
-  fonteFigura('boxMpsUf', {fontes: ['Portal da Transparência', 'execução mensal por UF da unidade gestora'], data: (MPS || {}).gerado_em});
-  // 13/09/2026 (auditoria de visualizações, consolidação): BR × UFs destacado primeiro (indicador
-  // compacto); o mapa acima, com a mesma informação em detalhe geográfico, vem depois na ordem do DOM.
-  const brPct = document.getElementById('mpsBrPct');
-  if (brPct) brPct.textContent = tot ? Math.round(100 * br / tot) + '%' : '—';
-  const brDen = document.getElementById('mpsBrDen');
-  if (brDen) brDen.textContent = 'do pago (' + brl(br) + ') vai para sedes nacionais (BR); ' + brl(tot - br) + ' se distribuem pelas ' + Object.keys(por).length + ' UFs com execução';
-  MonitorMapas.legenda('legMpsBrUf', [{cor: MonitorMapas.cor('linha'), rotulo: 'BR: sedes nacionais'}, {cor: O4[2], rotulo: 'UFs: unidade gestora local'}]);
-  fonteFigura('boxMpsBrUf', {fontes: ['Portal da Transparência', 'execução mensal'], data: (MPS || {}).gerado_em});
-  const bx = document.getElementById('mpsUfBarras');
-  if (bx) { const ufs = Object.entries(por).sort((a, b) => b[1] - a[1]).slice(0, 12);
-    bx.innerHTML = ufs.map(([uf, v]) => '<div class="msb" role="group" aria-label="' + esc(uf) + ': ' + esc(brl(v)) + '"><b>' + esc(uf) + '</b><div class="trilho"><div class="barra" style="width:' + (100 * v / max).toFixed(1) + '%; background:' + cor(v) + '"></div></div><span>' + esc(brl(v)) + '</span></div>').join('')
-      + '<div class="msb" role="group" aria-label="BR sedes nacionais: ' + esc(brl(br)) + '"><b>BR</b><div class="trilho"><div class="barra" style="width:100%; background:' + MonitorMapas.cor('linha') + '"></div></div><span>' + esc(brl(br)) + '</span></div>'; }
-  MonitorMapas.legenda('legMpsUfBarras', [{cor: MonitorMapas.cor('linha'), rotulo: 'BR = sedes nacionais: ' + (tot ? Math.round(100 * br / tot) : 0) + '% do pago'}]);
-  fonteFigura('boxMpsUfBarras', {fontes: ['Portal da Transparência', 'execução mensal'], data: (MPS || {}).gerado_em});
-}
-
-// ===== 0 · Rota do dinheiro das MPs (05/09/2026): barras de prazo + fluxo MP → órgão → uso =====
-function renderRotaMPs(){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// 13/09/2026 (proposta de enxugamento, Manus AI): detalhamento completo das MPs (fluxo MP → órgão →
+// uso, BR × UFs, mapa geográfico) migrou para pesquisadores.html — "na página principal, no máximo
+// um aviso curto quando a MP alterar uma rota". renderMpsUf/renderRotaMPs viraram esta nota curta.
+function renderNotaMPs(){
   const mps = (MPS && MPS.mps) || [];
   const brl = v => 'R$ ' + (v >= 1e9 ? (v/1e9).toFixed(2).replace('.', ',') + ' bi' : (v/1e6).toFixed(1).replace('.', ',') + ' mi');
-  const dataBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
-  const hoje = new Date(); hoje.setHours(0,0,0,0);
-  // barras de prazo (publicação → deliberação)
-  document.getElementById('mpsPrazos').innerHTML = mps.map(mp => {
-    const ini = dataBR(mp.publicada_em), fim = dataBR(mp.tramitacao.deliberacao_ate);
-    const dias = Math.round((fim - hoje) / 86400000), resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));
-    const espera = mp.id === 'mp1367' ? 'Se o Senado não votar até ' + esc(mp.tramitacao.deliberacao_ate) + ', a MP caduca: o empenhado fica, o restante do crédito cai.' : 'Se o Congresso não votar até ' + esc(mp.tramitacao.deliberacao_ate) + ', a MP caduca — e a maior parte do crédito ainda não foi empenhada.';
-    return `<div class="prazo-rel" role="group" aria-label="${esc(mp.numero)}">${MonitorMapas.relogio(resta, dias, {cor: dias < 0 ? null : mp.cor})}
-      <div class="prazo-rel-txt"><div class="prazo-titulo">${esc(mp.numero)} — ${brl(mp.valor)} · ${esc(mp.tema)}</div>
-      <div class="prazo-meta">deliberação · publicada em ${esc(mp.publicada_em)} → <strong>${esc(mp.tramitacao.deliberacao_ate)}</strong> · ${esc(mp.tramitacao.situacao)}</div>
-      <div class="prazo-espera"><span class="k">O que se espera:</span> ${espera}</div></div></div>`; }).join('');
-  // fluxo MP → órgão → uso (SVG, três colunas; larguras proporcionais ao valor)
-  const box = document.getElementById('rotaMPs'); box.innerHTML = '';
-  const W = Math.max(640, box.clientWidth || 900), colW = 200, gapX = (W - 3*colW) / 2, H = 330, pad = 14;
-  const total = mps.reduce((s, m) => s + m.valor, 0), escala = (H - pad*(mps.length+1)) / total;
-  const svg = d3.select(box).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('width', '100%').attr('role', 'img')
-    .attr('aria-label', 'Fluxo: MP → órgão executor → uso, larguras proporcionais ao valor');
-  let y0 = pad;
-  mps.forEach(mp => {
-    const h = mp.valor * escala; const x0 = 0, x1 = colW + gapX, x2 = 2*(colW + gapX);
-    svg.append('rect').attr('x', x0).attr('y', y0).attr('width', colW).attr('height', h).attr('rx', 6).attr('fill', mp.cor);
-    svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x0 + 10).attr('y', y0 + Math.min(18, h/2 + 4)).text(mp.numero);
-    svg.append('text').attr('class', 'rota-mp-valor').attr('x', x0 + 10).attr('y', y0 + Math.min(34, h/2 + 20)).text(brl(mp.valor));
-    let yo = y0;
-    mp.orgaos.forEach(org => {
-      const ho = org.valor * escala;
-      svg.append('path').attr('d', `M${x0+colW},${yo} C${x0+colW+gapX/2},${yo} ${x1-gapX/2},${yo} ${x1},${yo} L${x1},${yo+ho} C${x1-gapX/2},${yo+ho} ${x0+colW+gapX/2},${y0+ (yo-y0) + ho} ${x0+colW},${yo+ho} Z`)
-        .attr('fill', mp.cor).attr('opacity', .35);
-      svg.append('rect').attr('x', x1).attr('y', yo).attr('width', colW).attr('height', ho).attr('rx', 6).attr('fill', mp.cor).attr('opacity', .85);
-      svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x1 + 10).attr('y', yo + Math.min(18, ho/2 + 4)).text(org.nome + ' · ' + brl(org.valor));
-      // execução (barra escura dentro do órgão) — só quando coletada
-      if (mp.execucao && mp.execucao.status === 'coletado' && mp.execucao.pago != null) {
-        const frac = Math.max(0, Math.min(1, (org.execucao_pago ?? mp.execucao.pago) / (org.execucao_pago != null ? org.valor : mp.valor)));
-        svg.append('rect').attr('x', x1).attr('y', yo).attr('width', colW * frac).attr('height', ho).attr('rx', 6).attr('fill', MonitorMapas.cor('abissal')).attr('opacity', .55);
-      }
-      let yu = yo;
-      org.usos.forEach(u => {
-        const hu = u.valor * escala;
-        svg.append('path').attr('d', `M${x1+colW},${yu} C${x1+colW+gapX/2},${yu} ${x2-gapX/2},${yu} ${x2},${yu} L${x2},${yu+hu} C${x2-gapX/2},${yu+hu} ${x1+colW+gapX/2},${yu+hu} ${x1+colW},${yu+hu} Z`)
-          .attr('fill', mp.cor).attr('opacity', .25);
-        svg.append('rect').attr('x', x2).attr('y', yu).attr('width', colW).attr('height', hu).attr('rx', 6).attr('fill', MonitorMapas.cor('osso-claro')).attr('stroke', mp.cor);
-        const linhas = u.nome.length > 34 ? [u.nome.slice(0, 34) + '…'] : [u.nome];
-        svg.append('text').attr('class', 'rota-mp-rotulo').attr('x', x2 + 10).attr('y', yu + Math.min(18, hu/2 + 4)).text(linhas[0]);
-        if (hu > 30) svg.append('text').attr('class', 'rota-mp-valor').attr('x', x2 + 10).attr('y', yu + Math.min(34, hu/2 + 20)).text(brl(u.valor));
-        yu += hu;
-      });
-      yo += ho;
-    });
-    y0 += h + pad;
-  });
-  ['MP', 'Órgão executor', 'Uso declarado'].forEach((t, i) => svg.append('text').attr('class', 'rota-mp-valor').attr('x', i*(colW+gapX)).attr('y', H - 2).text(t));
-  const exec = mps.map(mp => mp.execucao && mp.execucao.status === 'coletado' ? `${mp.numero}: ações reforçadas — pago ${brl(mp.execucao.pago)} de ${brl(mp.execucao.empenhado)} empenhado desde a MP (${mp.execucao.meses.join(', ')})` : `${mp.numero}: execução sem coleta até o corte`);
-  MonitorMapas.legenda('legRotaMPs', [
-    ...mps.map(mp => ({cor: mp.cor, rotulo: mp.numero + ' · ' + mp.tema})),
-    {cor: MonitorMapas.cor('abissal'), rotulo: 'parcela paga nas ações reforçadas (inclui dotação ordinária da ação — teto, não a execução do crédito)'},
-    ...exec.map(t => ({cor: MonitorMapas.cor('areia'), rotulo: t}))]);
-  fonteFigura('boxRotaMPs', {fontes: ['Congresso Nacional', 'Agência Gov', 'Câmara', 'Conab', 'Portal da Transparência (execução)'], data: mps.some(mp => mp.execucao && mp.execucao.status === 'coletado') ? mps[0].execucao.atualizado_em : null});
+  const el = document.getElementById('notaMPs');
+  if (!el) return;
+  if (!mps.length) { el.textContent = 'MP 1.367 (incêndios) e MP 1.384 (alimentos): sem coleta até o corte.'; return; }
+  el.innerHTML = mps.map(mp => '<strong>' + mp.numero + '</strong> (' + mp.tema + ', ' + brl(mp.valor) + ')'
+    + (mp.execucao && mp.execucao.status === 'coletado' ? ': ' + brl(mp.execucao.pago) + ' pagos até ' + esc(mp.execucao.atualizado_em) : ': execução sem coleta até o corte')).join(' · ')
+    + ' — detalhamento completo (fluxo por órgão, execução por UF) em <a href="pesquisadores.html#mps-federais">Pesquisadores</a>.';
 }
+
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -140,14 +63,13 @@ async function __load(){
   // o dado carrega a ordem e a chave; a cor é decisão de design e vale igual em todas as figuras.
   (ROTAS.rotas || []).forEach(r => { r.cor = MonitorMapas.PALETA.rotas[r.id] || r.cor; });
   renderContadores();
-  renderRotaMPs();
+  renderNotaMPs();
   __init();
 }
 function __init(){
   MonitorMapas.padraoGraficos(window.Chart);
   document.getElementById('corteFin').textContent = ROTAS.corte || '—';
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
-  renderMpsUf(ctx);   // 07/09/2026: seção 1 — onde o pagamento das MPs foi feito (precisa do ctx do mapa)
   function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){ const svg = MonitorMapas.ufs(ctx, svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itens); return svg; }
   // 1 · rede do dinheiro (decisão de design de 03/09/2026: rede em vez de cartões; cartões ficam em texto dobrável)
   (function(){
