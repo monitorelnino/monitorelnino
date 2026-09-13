@@ -30,7 +30,7 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=d8738b3e"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bf4569ad">
-<link rel="stylesheet" href="assets/base.css?v=b1c07f25">
+<link rel="stylesheet" href="assets/base.css?v=e25fbc09">
 <script src="assets/mapas.js?v=cf3e61ca"></script>
 </head>
 <body class="pagina-dados">
@@ -54,31 +54,43 @@
 
   <div class="panel">
     <h2>Antecipação — o que foi publicado</h2>
-    <p class="hint">Cinco leituras geográficas dos mesmos registros: verificação municipal, cobertura, natureza dos atos, municípios prioritários e cidades que decretaram emergência. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe. O cruzamento com o risco projetado está resumido abaixo, com link para o cruzamento completo na página de Risco.</p>
+    <p class="hint">Cinco leituras geográficas dos mesmos registros — verificação municipal, cobertura, natureza dos atos, municípios prioritários e cidades que decretaram emergência — em três figuras; as duas primeiras alternam camada por um seletor, com tabela acessível equivalente. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe. O cruzamento com o risco projetado está resumido abaixo, com link para o cruzamento completo na página de Risco.</p>
     <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxPoints">
-        <h3 class="figura-titulo">Verificação municipal: atos localizados</h3>
-        <p class="figura-sub">Corte da edição · municípios com ato localizado (plano ou decreto) · pontos no mapa</p>
-        <div class="figura-midia"><svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460"></svg></div>
+      <figure class="figura figura--mapa" id="boxVerificacao">
+        <h3 class="figura-titulo">Verificação municipal</h3>
+        <p class="figura-sub">Corte da edição · atos localizados ou nível de verificação alcançado · pontos</p>
+        <label class="sr-only" for="selVerificacao">Camada</label>
+        <select id="selVerificacao" class="seletor u-mb-2" aria-label="Escolher a camada do mapa">
+          <option value="pontos">Atos localizados · municípios com plano ou decreto</option>
+          <option value="niveis">Nível de verificação · todos os 5.571 municípios</option>
+        </select>
+        <div class="figura-midia">
+          <svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460"></svg>
+          <svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460" hidden></svg>
+        </div>
         <div class="map-legend" id="pointsLegend"></div>
+        <div class="map-legend" id="legNiveis" hidden></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblVerificacao"><thead><tr><th>UF</th><th>Com ato localizado</th><th>Verificação completa</th><th>Fontes nacionais e estaduais</th><th>Fontes nacionais</th><th>Ainda não verificado</th></tr></thead><tbody></tbody></table></div>
+        </details>
       </figure>
-      <figure class="figura figura--mapa" id="nivelverificacao">
-        <h3 class="figura-titulo">Nível de verificação municipal (todos os 5.571)</h3>
-        <p class="figura-sub">Corte da edição · nível de verificação por município · 5.571 municípios · categorias</p>
-        <div class="figura-midia"><svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legNiveis"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxCobertura">
-        <h3 class="figura-titulo">Cobertura: % de municípios com ato</h3>
-        <p class="figura-sub">Corte da edição · % dos municípios de cada UF com ato localizado · %</p>
-        <div class="figura-midia"><svg id="mapCobertura" role="img" aria-label="Mapa do Brasil: percentual de municípios de cada estado com algum ato formal" viewBox="0 0 480 460"></svg></div>
+      <figure class="figura figura--mapa" id="boxCoberturaNatureza">
+        <h3 class="figura-titulo">Cobertura e natureza dos atos, por UF</h3>
+        <p class="figura-sub">Corte da edição · % de municípios com ato, ou natureza predominante · por UF</p>
+        <label class="sr-only" for="selCoberturaNatureza">Camada</label>
+        <select id="selCoberturaNatureza" class="seletor u-mb-2" aria-label="Escolher a camada do mapa">
+          <option value="cobertura">Cobertura · % de municípios com ato</option>
+          <option value="natureza">Natureza · decreto reativo × plano preventivo</option>
+        </select>
+        <div class="figura-midia">
+          <svg id="mapCobertura" role="img" aria-label="Mapa do Brasil: percentual de municípios de cada estado com algum ato formal" viewBox="0 0 480 460"></svg>
+          <svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460" hidden></svg>
+        </div>
         <div class="map-legend" id="legCobertura"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxNatureza">
-        <h3 class="figura-titulo">Natureza dos atos: decretos reativos ou planos preventivos?</h3>
-        <p class="figura-sub">Corte da edição · natureza do ato por município · decreto reativo × plano preventivo</p>
-        <div class="figura-midia"><svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legNatureza"></div>
+        <div class="map-legend" id="legNatureza" hidden></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCoberturaNatureza"><thead><tr><th>UF</th><th>Municípios com ato</th><th>Cobertura</th><th>Planos preventivos</th><th>Decretos reativos</th><th>% preventivo</th></tr></thead><tbody></tbody></table></div>
+        </details>
       </figure>
       <!-- 13/09/2026 (auditoria de visualizações, consolidação recomendada): "Risco projetado ×
            instrumento estadual" cruzava a mesma pergunta que a figura "Tipo de risco projetado ×
@@ -168,7 +180,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/defesa-civil.js?v=57b8ca31" defer></script>
+<script src="assets/js/defesa-civil.js?v=66efe2fa" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
