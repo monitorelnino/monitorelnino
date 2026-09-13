@@ -97,8 +97,6 @@ function __init(){
     uf => { const n = nCalor(uf); return n == null ? 'Aguardando coleta do INMET' : n + ' aviso(s) de calor vigente(s)'; },
     [{cor:CAL[0],rotulo:'0'},{cor:CAL[1],rotulo:'1'},{cor:CAL[2],rotulo:'2'},{cor:CAL[3],rotulo:'3+'},{cor:NEUTRA,rotulo:'aguardando coleta'}]);
   fonteFigura('boxCalor', {fontes: 'INMET', data: (SINAIS.fontes && SINAIS.fontes.inmet_avisos && SINAIS.fontes.inmet_avisos.status === 'coletado') ? SINAIS.fontes.inmet_avisos.consultado_em : null});
-  desenharMapa('mapaEmerg','legEmerg', uf => NEUTRA, uf => 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento)', [{cor:NEUTRA, rotulo:'nenhuma registrada até o corte'}]);
-  fonteFigura('boxEmerg', {fontes: ['DOU', 'diários oficiais municipais'], data: '05/09/2026'});
   (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => (v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
     const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes — ' + c.join(' · ') + '.'; })();
 
@@ -109,6 +107,14 @@ function __init(){
   const ROT = {ambos:'Defesa civil e saúde', so_dc:'Só defesa civil', so_saude:'Só saúde', nenhum:'Nenhum localizado', nv:'Saúde ainda não verificada'};
   document.getElementById('quadrantes').innerHTML = Object.keys(ROT).map(k => '<div class="quadrante"><div class="rotulo">'+ROT[k]+' · <strong>'+q[k].length+'</strong></div><div class="lista-uf">'+(q[k].join(' · ')||'—')+'</div></div>').join('');
   fonteFigura('boxQuadrantes', {fontes: 'Monitor El Niño Brasil', data: SUF.corte});
+  // 13/09/2026 (auditoria de visualizações, consolidação): mapa/lista de emergências só aparece
+  // quando há ocorrência — o contador nacional (boxRespostaSanitaria, acima) já é a leitura
+  // completa enquanto for zero; duplicar como mapa sempre cinza era redundante.
+  const emergenciasResposta = (SSIN && SSIN.emergencias) || [];
+  const boxEmergEl = document.getElementById('boxEmerg');
+  if (boxEmergEl) boxEmergEl.hidden = emergenciasResposta.length === 0;
+  desenharMapa('mapaEmerg','legEmerg', uf => NEUTRA, uf => 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento)', [{cor:NEUTRA, rotulo:'nenhuma registrada até o corte'}]);
+  fonteFigura('boxEmerg', {fontes: ['DOU', 'diários oficiais municipais'], data: '05/09/2026'});
   // Série semanal 2026 × 2025 × 2024 (05/09/2026): soma das 27 capitais no InfoDengue — não é o total nacional.
   const SER = SSIN.serie_capitais;
   if (SER && SER.anos && Object.keys(SER.anos).length && typeof Chart !== 'undefined') {

@@ -55,10 +55,14 @@ setTimeout(() => {
   const SUF = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_uf.json"), "utf-8"));
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
-  for (const id of ["mapaStatus", "mapaRiscoSan", "mapaDengue", "mapaCalor", "mapaEmerg"]) {
+  for (const id of ["mapaStatus", "mapaRiscoSan", "mapaDengue", "mapaCalor"]) {
     teste(`${id}: 27 estados desenhados`, q(id) && q(id).querySelectorAll("path").length === 27);
     teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 1);
   }
+  // 13/09/2026 (auditoria de visualizações, consolidação): boxEmerg só aparece quando há
+  // ocorrência (SSIN.emergencias.length > 0) — hoje é sempre 0, então o esperado é oculto,
+  // não um mapa cinza redundante com o contador de boxRespostaSanitaria.
+  teste("boxEmerg: oculto enquanto não há emergência registrada (contador em boxRespostaSanitaria cobre o zero)", q("boxEmerg") && q("boxEmerg").hidden === true);
   const nNV = Object.values(SUF.uf).filter(u => u.status === "NAO_VERIFICADO").length;
   teste(`contagem de UFs não verificadas renderizada = arquivo (${nNV})`, (q("contagemUF").textContent || "").includes(nNV + " de 27"));
   teste("cartões federais renderizados", q("cartoesFederal") && q("cartoesFederal").children.length >= 4);

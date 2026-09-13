@@ -14,7 +14,7 @@
   /* Numeração (auditoria de 07/09/2026): toda figura recebe "Figura N" e, nas páginas de dados (body.pagina-dados),
      toda seção recebe "N · " — sempre índice + 1, na ordem do documento; nenhum número é escrito à mão no HTML. */
   function numerar() {
-    var figs = document.querySelectorAll('.figura');
+    var figs = document.querySelectorAll('.figura:not([hidden])');   // 13/09/2026: figura oculta (ex.: sem cobertura mínima) não consome número nem aparece como "Figura N"
     for (var i = 0; i < figs.length; i++) {
       var f = figs[i], pe = f.querySelector(':scope > .figura-pe');
       if (!pe) { pe = document.createElement('div'); pe.className = 'figura-pe'; f.appendChild(pe); }

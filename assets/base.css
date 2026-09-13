@@ -152,6 +152,7 @@ details.acc > .panel > h2:first-of-type{display:none;}   /* já mostrado no <sum
    O número ("Figura N") é gerado pelo contador CSS `figura`, reiniciado por página, a partir de 1.
    `map-box` / `chart-box` são apenas ganchos dos portões (tipo de mídia); não têm estilo próprio. */
 .figura{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:var(--esp-figura); margin:0; box-shadow:var(--sombra); display:flex; flex-direction:column; max-width:100%; min-width:0;}
+.figura[hidden]{display:none;}   /* 13/09/2026: .figura força display:flex, que sobrepõe [hidden] da UA stylesheet — precisa da regra explícita (mesmo padrão de .detail[hidden] acima) */
 .figura--largo{grid-column:1 / -1;}
 .figura-cat{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--teal); margin:0 0 var(--sp-1);}
 .figura-titulo{font-family:var(--font-titulo); font-size:var(--fs-h4); line-height:var(--lh-h4); font-weight:var(--peso-regular); color:var(--ink); margin:0 0 var(--sp-1); min-height:calc(2 * var(--fs-h4) * var(--lh-h4));}
