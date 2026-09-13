@@ -50,6 +50,33 @@ async function __load(){
     });
     MonitorMapas.credito('boxFinance', {fontes: ['Plano federal El Niño 2026/2027', 'valores anunciados'], data: (ROTAS_FIN && ROTAS_FIN.corte) || null});
   } catch(e) {}
+  // 13/09/2026 (proposta de enxugamento, Manus AI): 'Brasil, por semana' migrou de
+  // financiamento.html — monitoramento temporal de execução, não explicação de rota.
+  try {
+    const [ROTAS_SER, SERIE] = await Promise.all(['data/financiamento/rotas.json', 'data/financiamento/serie_nacional.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null)));
+    if (ROTAS_SER && SERIE) {
+      const svg = d3.select('#svgSerie'), W = 900, H = 260, m = {t: 16, r: 16, b: 34, l: 60};
+      const x = d3.scaleTime().domain([new Date(2026,0,1), new Date(2026,11,31)]).range([m.l, W - m.r]);
+      const d0 = new Date(SERIE.defeso.inicio + 'T00:00:00'), d1 = new Date(SERIE.defeso.fim + 'T00:00:00');
+      svg.append('rect').attr('x', x(d0)).attr('y', m.t).attr('width', x(d1) - x(d0)).attr('height', H - m.t - m.b).attr('fill', MonitorMapas.PALETA.defeso).attr('fill-opacity', .13);
+      svg.append('text').attr('x', (x(d0) + x(d1)) / 2).attr('y', m.t + 16).attr('text-anchor','middle').attr('font-size', 12).attr('fill', MonitorMapas.PALETA.defeso)
+        .attr('font-family', "'Archivo Narrow', Arial, sans-serif").text('Período eleitoral 04/07–25/10: voluntárias suspensas por lei (art. 73, VI, a) — não é inação');
+      const semanas = SERIE.semanas || [];
+      if (!semanas.length) {
+        svg.append('text').attr('x', W/2).attr('y', H/2 + 8).attr('text-anchor','middle').attr('font-size', 14).attr('fill', MonitorMapas.cor('muted')).text('Série ainda não coletada — lacuna declarada');
+      } else {
+        const y = d3.scaleLinear().domain([0, d3.max(semanas, s => ROTAS_SER.rotas.reduce((a, r) => a + (s[r.id] || 0), 0))]).nice().range([H - m.b, m.t]);
+        const pilha = d3.stack().keys(ROTAS_SER.rotas.map(r => r.id))(semanas.map(s => Object.assign({}, s)));
+        svg.selectAll('g.rota').data(pilha).join('g').attr('fill', d => ROTAS_SER.rotas.find(r => r.id === d.key).cor)
+          .selectAll('rect').data(d => d).join('rect').attr('x', d => x(new Date(d.data.semana))).attr('width', 10)
+          .attr('y', d => y(d[1])).attr('height', d => y(d[0]) - y(d[1]));
+        svg.append('g').attr('transform', 'translate(' + m.l + ',0)').call(d3.axisLeft(y).ticks(5).tickFormat(v => 'R$ ' + (v/1e6).toFixed(0) + ' mi'));
+      }
+      svg.append('g').attr('transform', 'translate(0,' + (H - m.b) + ')').call(d3.axisBottom(x).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat('%b')));
+      MonitorMapas.legenda('legSerie', ROTAS_SER.rotas.map(r => ({cor: r.cor, rotulo: r.n + ' · ' + r.nome})).concat([{cor: MonitorMapas.PALETA.defeso, opacidade: .35, rotulo: 'faixa do defeso'}]));
+      MonitorMapas.credito('boxSerie', {fontes: 'TransfereGov — Dados Abertos', data: semanas.length ? (SERIE.carga_da_fonte || SERIE.corte) : null});
+    }
+  } catch(e) {}
 document.getElementById('fontesMonitoramento').innerHTML = TRANSFERENCIAS.fontes_monitoramento
   .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
   const ROTULO_HOST = {

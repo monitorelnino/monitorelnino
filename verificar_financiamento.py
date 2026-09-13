@@ -25,7 +25,7 @@ CHAVE = re.compile(r'chave-api-dados["\']?\s*[:=]\s*["\'][0-9a-f]{20,}', re.I)
 def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
     e = []
     if CHAVE.search(html) or CHAVE.search(motor) or any(CHAVE.search(t) for t in arquivos_fin.values()): e.append("(a) chave de API em código ou dados")
-    for cid in ["boxRotaMPs", "boxMpsBrUf", "boxMpsUf", "boxMpsUfBarras", "boxRede", "boxSerie", "boxFundoEstadual", "boxContadores", "boxDinheiro", "boxResposta"]:   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026); boxPorHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima (1/8 rotas), JS mantido desativado; boxMpsBrUf adicionado em 13/09/2026 (consolidação: BR × UFs destacado primeiro); boxPainel, boxCompromissos e boxFinance migraram para pesquisadores.html em 13/09/2026 (proposta de enxugamento, Manus AI)
+    for cid in ["boxRotaMPs", "boxMpsBrUf", "boxMpsUf", "boxMpsUfBarras", "boxRede", "boxFundoEstadual", "boxContadores", "boxDinheiro", "boxResposta"]:   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026); boxPorHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima (1/8 rotas), JS mantido desativado; boxMpsBrUf adicionado em 13/09/2026 (consolidação: BR × UFs destacado primeiro); boxPainel, boxCompromissos, boxFinance e boxSerie migraram para pesquisadores.html em 13/09/2026 (proposta de enxugamento, Manus AI)
         if f"fonteFigura('{cid}'" not in html: e.append(f"(b) figura sem crédito: #{cid}")
     ids = [r["id"] for r in rotas["rotas"]]
     for s in serie.get("semanas", []):
@@ -69,7 +69,7 @@ def negativos() -> int:
     html, rotas, serie, poruf, motor, arqs = carregar(); import copy
     casos = {
         "chave de API no motor": lambda: checar(html, rotas, serie, poruf, motor + '\nchave-api-dados = "0123456789abcdef0123456789abcdef"', arqs),
-        "figura sem crédito": lambda: checar(html.replace("fonteFigura('boxSerie'", "fonteFigura('boxX'"), rotas, serie, poruf, motor, arqs),
+        "figura sem crédito": lambda: checar(html.replace("fonteFigura('boxRede'", "fonteFigura('boxX'"), rotas, serie, poruf, motor, arqs),
         "reconciliação quebrada": lambda: checar(html, rotas, {**serie, "semanas": [{"semana": "2026-01-05", "r1": 10, "total": 99}]}, poruf, motor, arqs),
         "valor imputado": lambda: checar(html, rotas, serie, {**poruf, "uf": {**poruf["uf"], "SC": {**poruf["uf"]["SC"], "rotas": {**poruf["uf"]["SC"]["rotas"], "r1": {"valor_2026": 5, "status": "aguardando_coleta"}}}}}, motor, arqs),
         "motor lendo financiamento": lambda: checar(html, rotas, serie, poruf, motor + "\nx = 'data/financiamento/x.json'", arqs),
