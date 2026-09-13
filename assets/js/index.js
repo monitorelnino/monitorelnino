@@ -243,8 +243,7 @@ function selectUF(uf, tileEl){
       })()}
     ${capitalBlock}
     <button type="button" class="btn-pdf" id="btnPDFEstado" data-uf="${d.uf}">Baixar relatório do estado (PDF)</button>
-    ${htmlPedidoAcesso(d.uf, null)}
-    <details class="pedido-lai selo-embed"><summary>Selo para embutir no seu site</summary>
+    <details class="selo-embed"><summary>Selo para embutir no seu site</summary>
       <p class="note">Regravado a cada atualização com o número publicado. Quem embute mostra a própria faixa — e o link traz o leitor para a verificação.</p>
       <img src="selos/mare-${d.uf}.svg" width="360" height="92" alt="Selo MARÉ de ${d.nome}: ${String(MARE[d.uf].total).replace('.', ',')} de 100" class="selo-img">
       <textarea class="pedido-texto" readonly rows="3" aria-label="Código HTML do selo">&lt;a href="https://monitorelnino.com.br/#${d.uf}"&gt;&lt;img src="https://monitorelnino.com.br/selos/mare-${d.uf}.svg" width="360" height="92" alt="MARÉ, Monitor El Niño Brasil: ${d.nome}, preparação demonstrável publicamente"&gt;&lt;/a&gt;</textarea>
@@ -477,59 +476,11 @@ const nrm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
 // Decretos de emergência do município (data/atos_resposta.json — registro, nunca
 // pontua). 31/08/2026: cartão e PDF diziam "nenhum decreto localizado" para Biguaçu
 // enquanto o mapa 6 mostrava o decreto de 30/08 — o cartão não lia esse arquivo.
-// Pedido de informação pronto (Lei 12.527/2011), 31/08/2026 — sugestão aceita por
-// Patricia: o site já dizia "peça pelo e-SIC"; agora entrega o texto. Linguagem
-// probatória preservada: "não localizou em fonte pública", nunca "não existe".
-// Quem assina é o cidadão: campos de identificação ficam em branco de propósito.
-function textoPedidoAcesso(uf, municipio){
-  const d = EST[uf], v = MARE[uf];
-  const corte = (typeof META !== 'undefined' && META && META.corte) ? META.corte : '';
-  const reg = municipio ? TABELA_MUNICIPIOS.find(m => m.uf === uf && nrm(m.nome) === nrm(municipio)) : null;
-  const cat = reg ? reg.categoria : null;
-  let destinatario, pedidos, contexto;
-  if (municipio) {
-    destinatario = `À Prefeitura Municipal de ${municipio} (${uf}) — Ouvidoria / Serviço de Informação ao Cidadão (SIC)`;
-    pedidos = [
-      'cópia, ou o endereço de publicação na internet, do Plano de Contingência de Proteção e Defesa Civil do município para o ciclo El Niño 2026/2027, previsto na Lei nº 12.608/2012 (art. 8º, XI) e na Lei nº 12.340/2010 (art. 3º-A);',
-      'a data da última revisão do plano e da audiência pública de prestação de contas correspondente;',
-      'o nome e o contato institucional do coordenador municipal de proteção e defesa civil designado.'
-    ];
-    const _niv = nivelVerificacao(uf, municipio);
-    if (cat === 'nao_localizado' && _niv === 'municipal_completo') contexto = `não localizou, após verificação individual completa em fontes públicas, plano de contingência do município para o ciclo`;
-    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') contexto = `ainda não verificou individualmente as fontes públicas deste município (verificação em andamento por níveis)`;
-    else if (cat === 'plano_antigo') contexto = `localizou apenas ${reg.documento} (${reg.data}), edição anterior ao ciclo`;
-    else if (cat === 'decreto') contexto = `localizou apenas decreto de emergência (${reg.documento}, ${reg.data}), ato de resposta, e não plano preventivo`;
-    else if (cat === 'plano_elaboracao') contexto = `localizou registro de que o plano está em elaboração (${reg.documento}, ${reg.data})`;
-    else if (cat === 'nao_el_nino') contexto = `localizou apenas ato que não trata do El Niño (${reg.documento}, ${reg.data})`;
-    else if (cat === 'coberto_estadual') contexto = `localizou apenas a cobertura pelo plano estadual, sem plano municipal próprio`;
-    else contexto = `localizou ${reg.documento} (${reg.data}); solicito confirmar se é a edição vigente para o ciclo`;
-  } else {
-    destinatario = `À ${d.orgao || 'Defesa Civil'} — ${d.nome} — Ouvidoria / Serviço de Informação ao Cidadão (SIC)`;
-    pedidos = [
-      'cópia, ou o endereço de publicação na internet, do Plano Estadual de Proteção e Defesa Civil ou do plano de contingência estadual para o ciclo El Niño 2026/2027 (Lei nº 12.608/2012, art. 7º);',
-      'a relação dos municípios do estado com plano de contingência vigente para o ciclo, conforme registro do órgão estadual;',
-      'as ações de apoio aos municípios sem plano próprio previstas para o ciclo.'
-    ];
-    contexto = v.status_estadual === 'LAC' ? 'não localizou, em fonte pública, plano estadual nominal para o El Niño 2026/2027'
-      : `localizou ${d.doc}${d.data ? ' (' + d.data + ')' : ''}; solicito confirmar se é o instrumento vigente para o ciclo`;
-  }
-  return [
-    destinatario, '',
-    'Com fundamento na Lei nº 12.527/2011 (Lei de Acesso à Informação, art. 10), solicito:', '',
-    ...pedidos.map((p, i) => `${i + 1}. ${p}`), '',
-    `Informo que, em consulta a fontes públicas realizada até ${corte}, o Monitor El Niño Brasil (monitorelnino.com.br) ${contexto}. Caso o documento exista e não esteja publicado, solicito sua disponibilização no sítio eletrônico oficial, nos termos do art. 8º da mesma lei (transparência ativa).`, '',
-    'Prazo legal de resposta: 20 dias, prorrogáveis por mais 10 (art. 11).', '',
-    'Nome: ______________________________', 'Documento de identificação (quando exigido pelo SIC): ______________', 'E-mail para resposta: ______________________________'
-  ].join('\n');
-}
-// Bloco HTML reutilizável: <details> com o texto e botão de copiar.
-function htmlPedidoAcesso(uf, municipio){
-  const txt = textoPedidoAcesso(uf, municipio).replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  return `<details class="pedido-lai"><summary>Pedido de informação pronto (Lei de Acesso à Informação)</summary>
-    <p class="note">Copie, preencha seu nome e envie pela ouvidoria ou pelo e-SIC do órgão. O texto cita a lei e o que a consulta localizou — nada além do que está publicado.</p>
-    <textarea class="pedido-texto" readonly rows="14" aria-label="Texto do pedido de informação">${txt}</textarea>
-    <button type="button" class="btn-pdf btn-copiar-pedido">Copiar texto</button></details>`;
-}
+// 13/09/2026 (pedido de Patricia): o gerador de pedido de LAI pronto para o cidadão
+// copiar e enviar (textoPedidoAcesso/htmlPedidoAcesso, ativo desde 31/08/2026) foi
+// retirado da parte visível do site — pedidos de LAI passam a ser feitos por e-mail,
+// de forma privada e centralizada pela equipe (ver gerar_lai.py e o fluxo já existente
+// via monitorelnino@gmail.com), não mais pelo visitante a partir do site.
 function emergenciasDoMunicipio(nome, uf){
   if (typeof ATOS_RESPOSTA === 'undefined' || !ATOS_RESPOSTA || !ATOS_RESPOSTA.eventos) return [];
   return ATOS_RESPOSTA.eventos.filter(e => e.uf === uf && nrm(e.nome) === nrm(nome))
@@ -623,12 +574,10 @@ function renderMinha(){
         <li><strong>Órgão estadual responsável:</strong> ${EST[ufFinal] ? EST[ufFinal].orgao : 'Defesa Civil estadual'}${EMAILS[ufFinal] ? ` · <a href="mailto:${EMAILS[ufFinal]}">${EMAILS[ufFinal]}</a>` : ''}${DOM_LINKS[ufFinal] ? ` · decretos municipais publicados no <a href="${DOM_LINKS[ufFinal]}" target="_blank" rel="noopener">Diário Oficial dos Municípios</a>` : ''}.</li>
         ${FIN && FIN[ufFinal] ? `<li><strong>Dinheiro:</strong> por onde o recurso chega ao seu estado — fundo estadual preventivo, rotas federais e o que o decreto destranca — está em <a href="financiamento.html#porestado">Por onde o dinheiro chega</a> (peso zero no índice).</li>` : ''}
         <li class="note">Contatos estaduais conforme o diretório oficial do MIDR (atualizado pelo ministério em 11/09/2024); confirme no site do órgão antes de demandas formais.</li>
-        <li><strong>Peça o documento:</strong> solicite o PLANCON atualizado à prefeitura pela ouvidoria/e-SIC, citando a Lei de Acesso à Informação (Lei 12.527/2011): resposta obrigatória em até 20 dias.</li>
         ${acoes.map(a => `<li>${a}</li>`).join('')}
       </ul>
       <button type="button" id="btnPDF" class="btn-pdf">Baixar relatório em PDF</button>
       <p class="note">Relatório com os dados desta consulta, contatos e fontes, para guardar, imprimir ou encaminhar.</p>
-      ${htmlPedidoAcesso(ufFinal, document.getElementById('cidadeInput').value.trim())}
       <h4>Como se proteger (${guiasDoEstado(ufFinal).length < 3 ? 'riscos projetados do seu estado' : 'guias gerais'})</h4>
       ${guiasDoEstado(ufFinal).map(g => htmlGuia(g)).join('')}
       ${(typeof HAB_SET !== 'undefined' && HAB_SET.has((document.getElementById('cidadeInput').value.trim().toLowerCase()) + '|' + ufFinal))
@@ -797,10 +746,9 @@ function gerarRelatorioCidadao(uf, municipio){
   faltas.forEach(item);
   par('O planejamento federal de 29/07/2026 (Sala de Situação do El Niño, 24 ministérios) prevê a atualização dos planos de contingência, com identificação de áreas de risco e fortalecimento das estruturas locais de resposta — é um compromisso público, e vale como argumento ao cobrar o estado e a prefeitura.', {tam:9.5, cor:MUTED, espaco:4});
 
-  // ---- 4b. Pedido de informação pronto ----
-  secao('Pedido de informação pronto (Lei de Acesso à Informação)');
-  par('Copie, preencha seu nome e envie pela ouvidoria ou pelo e-SIC do órgão. O prazo legal de resposta é de 20 dias.', {tam:9.5, cor:MUTED, espaco:4});
-  textoPedidoAcesso(uf, municipio).split('\n').forEach(l => par(l || ' ', {tam:9.5, espaco:1, recuo:8}));
+  // 13/09/2026 (pedido de Patricia): seção 'Pedido de informação pronto' (Lei de Acesso à
+  // Informação) retirada do PDF do cidadão — pedidos de LAI passam a ser feitos por e-mail,
+  // de forma privada, não mais gerados para o visitante copiar e enviar.
 
   // ---- 5. Como se proteger ----
   const chaves = guiasDoEstado(uf);
