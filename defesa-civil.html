@@ -54,7 +54,7 @@
 
   <div class="panel">
     <h2>Antecipação — o que foi publicado</h2>
-    <p class="hint">Seis leituras geográficas dos mesmos registros: verificação municipal, cobertura, natureza dos atos, risco projetado, municípios prioritários e cidades que decretaram emergência. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe.</p>
+    <p class="hint">Cinco leituras geográficas dos mesmos registros: verificação municipal, cobertura, natureza dos atos, municípios prioritários e cidades que decretaram emergência. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe. O cruzamento com o risco projetado está resumido abaixo, com link para o cruzamento completo na página de Risco.</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxPoints">
         <h3 class="figura-titulo">Verificação municipal: atos localizados</h3>
@@ -80,17 +80,13 @@
         <div class="figura-midia"><svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legNatureza"></div>
       </figure>
-      <figure class="figura figura--mapa" id="riscoinstrumento">
-        <h3 class="figura-titulo">Risco projetado × instrumento estadual</h3>
-        <p class="figura-sub">Corte da edição · risco projetado × instrumento estadual · 27 UFs</p>
-        <div class="figura-midia"><svg id="mapConsistencia" role="img" aria-label="Mapa do Brasil: relação entre o risco projetado pelos boletins federais e a área coberta pelo instrumento de cada estado, com o risco abrangendo suas consequências diretas" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legConsist"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">
-            <table class="mun-table"><thead><tr><th>UF</th><th>Risco projetado (Boletins nº 1–2)</th><th>Área do instrumento estadual</th></tr></thead><tbody id="tblConsistencia"></tbody></table>
-          </div>
-        </details>
-      </figure>
+      <!-- 13/09/2026 (auditoria de visualizações, consolidação recomendada): "Risco projetado ×
+           instrumento estadual" cruzava a mesma pergunta que a figura "Tipo de risco projetado ×
+           estágio do arcabouço público" em sinais-de-risco.html — mantida ali como versão principal
+           (é a página de Risco). Aqui fica um resumo compacto com link. Mapa/tabela/legenda originais
+           (#mapConsistencia/#tblConsistencia/#legConsist) saíram do HTML; JS correspondente em
+           defesa-civil.js guardado por ausência do elemento, não apagado. -->
+      <div class="card-note" id="riscoinstrumentoResumo">Risco projetado × instrumento estadual: carregando resumo… — <a href="sinais-de-risco.html#boxCruz">ver o cruzamento completo, com mapa e tabela, na página de Risco →</a></div>
       <figure class="figura figura--mapa" id="boxPrioritarios">
         <h3 class="figura-titulo">Municípios prioritários — quem já publicou, quem ainda não</h3>
         <p class="figura-sub">Corte da edição · municípios prioritários (Painel/SEDEC) com e sem ato · pontos</p>
@@ -172,7 +168,7 @@
 </div>
 
 <script src="assets/colunas.js?v=247b398e" defer></script>
-<script src="assets/js/defesa-civil.js?v=d9c10c16" defer></script>
+<script src="assets/js/defesa-civil.js?v=57b8ca31" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
