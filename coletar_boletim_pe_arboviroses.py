@@ -247,19 +247,34 @@ def parse_texto(texto: str, paginas: list = None) -> dict:
         d = {"notificados": n, "descartados": dsc, "provaveis": pr}
         # confirmados: candidatos vizinhos, excluindo números já consumidos por outro campo (o infográfico põe o
         # rótulo entre dois números; um deles costuma ser o próprio 'prováveis'); depois exige <= prováveis.
-        # 12/09/2026: reportagens que citam o mesmo informe (duas fontes independentes, mesmo número) confirmam
-        # que o confirmados de dengue da SE 35 fica bem mais longe do rótulo do que a janela de 40 caracteres
-        # alcançava — a frase "Casos confirmados +\ncasos em investigação" (explicando o que compõe prováveis)
-        # fica entre o rótulo e o número de verdade. Janela alargada para 200; a identidade "≤ prováveis" e a
-        # exigência de candidato único continuam sendo o que evita aceitar o número errado.
+        # 13/09/2026 — CORREÇÃO DE DIAGNÓSTICO. A hipótese de 12/09 (o número existe, só mais longe do rótulo
+        # do que a janela alcançava) foi medida contra o texto real e está ERRADA: o infográfico da dengue traz
+        # TRÊS números e três rótulos ("46.225 22.732 23.493 / Casos notificados Casos prováveis Casos
+        # descartados") — não há campo 'Casos confirmados' ali. O de zika traz quatro ("1.209 108 1.101 0"),
+        # com confirmados = 0. Ou seja, alargar a janela nunca resolveria; o valor de 11.241 que as reportagens
+        # citam vem de outra seção do PDF, não desta tabela. A janela de 200 fica (é inofensiva sob as duas
+        # travas abaixo), mas a ausência passa a ser LACUNA DECLARADA no campo, não erro que derruba o estado
+        # inteiro: notificados, prováveis e descartados das três doenças extraem corretamente e são publicáveis.
+        # Regra que continua valendo: nunca publicar número adivinhado — confirmados só entra com candidato
+        # ÚNICO e <= prováveis; qualquer ambiguidade vira None com o motivo registrado.
         if "confirmados" in par:
             cc = [par["confirmados"]]
         else:
-            cc = [c for c in _candidatos(p, r"Casos\s*\n?\s*confirmados(?! \+)", janela=200) if c not in (n, dsc, pr)]
+            try:
+                cc = [c for c in _candidatos(p, r"Casos\s*\n?\s*confirmados(?! \+)", janela=200)
+                      if c not in (n, dsc, pr)]
+            except ValueError:
+                cc = []            # rótulo ausente do infográfico (layout da SE 35) — é lacuna, não erro
         cc = [c for c in cc if c <= pr]
-        if len(cc) != 1:
-            raise ValueError(f"{nome}: 'Casos confirmados' ambíguo ou ausente (candidatos válidos: {cc})")
-        d["confirmados"] = cc[0]
+        if len(cc) == 1:
+            d["confirmados"] = cc[0]
+        else:
+            d["confirmados"] = None
+            d["confirmados_lacuna"] = (
+                f"'Casos confirmados' não publicado para {nome}: o infográfico do informe não traz esse campo "
+                f"(candidatos válidos encontrados: {cc}). Os demais números desta doença vêm do próprio informe "
+                f"e fecham a identidade contábil."
+            )
         if com_graves:
             d["graves"] = _perto(p, r"Casos graves")
         try:
@@ -269,7 +284,7 @@ def parse_texto(texto: str, paginas: list = None) -> dict:
         # identidades contábeis — se não fecham, o número está mal associado: recusar
         if d["notificados"] != d["provaveis"] + d["descartados"]:
             raise ValueError(f"{nome}: notificados ({d['notificados']}) ≠ prováveis ({d['provaveis']}) + descartados ({d['descartados']})")
-        if d["confirmados"] > d["provaveis"]:
+        if d["confirmados"] is not None and d["confirmados"] > d["provaveis"]:
             raise ValueError(f"{nome}: confirmados ({d['confirmados']}) > prováveis ({d['provaveis']})")
         if com_graves and d["graves"] > d["provaveis"]:
             raise ValueError(f"{nome}: graves ({d['graves']}) > prováveis ({d['provaveis']})")
@@ -538,6 +553,31 @@ def autoteste() -> int:
                 and pz["confirmados"] == 0 and pz["provaveis"] == 108
                 and _pareados("46.225 22.732\nCasos notificados Casos prováveis Casos descartados") == {})  # contagem diferente → vazio
 
+    def t_confirmados_ausente_vira_lacuna():
+        # 13/09/2026: o layout MUDOU da SE 34 para a SE 35. Na SE 34 (fixture real) o infográfico
+        # da dengue traz 'Casos confirmados' (10.848). Na SE 35, medida no runner, o mesmo bloco
+        # traz TRÊS números e três rótulos ("46.225 22.732 23.493 / Casos notificados Casos
+        # prováveis Casos descartados") — sem o campo. Antes isso derrubava o estado inteiro por
+        # ValueError; agora vira lacuna declarada NO CAMPO, preservando os números que o informe traz.
+        # Fixture: a SE 34 real com o bloco de confirmados da dengue removido, reproduzindo a SE 35.
+        sem = TEXTO_REAL_SE34.replace(
+            "10.848\nCasos confirmados Casos confirmados +\ncasos em investigação\n", "")
+        assert "10.848" not in sem, "fixture não removeu o bloco de confirmados"
+        dg = parse_texto(sem)["dengue"]
+        if dg["confirmados"] is not None:
+            return False
+        if "confirmados_lacuna" not in dg:
+            return False                                   # ausência tem de vir explicada
+        # o que o informe traz de verdade continua publicado e fechando a identidade
+        return (dg["notificados"] == dg["provaveis"] + dg["descartados"]
+                and dg["notificados"] == 45017 and dg["provaveis"] == 22281)
+
+    def t_confirmados_presente_ainda_publica():
+        # a SE 34 real TEM o campo nas três doenças: tem de continuar publicando, não virar lacuna.
+        d = parse_texto(TEXTO_REAL_SE34)
+        return (d["dengue"]["confirmados"] == 10848 and "confirmados_lacuna" not in d["dengue"]
+                and d["zika"]["confirmados"] == 0 and "confirmados_lacuna" not in d["zika"])
+
     def t9():
         try:
             parse_texto("nada aqui bate com o padrão esperado"); return False
@@ -551,6 +591,8 @@ def autoteste() -> int:
                             "leitura por páginas ≡ leitura por cabeçalho": t7,
                             "link mais recente (acento combinante, espaços, anos misturados)": t8,
                             "candidatos por SE, do mais novo ao mais antigo (edição anunciada sem arquivo)": t8b,
+                            "confirmados ausente → lacuna no campo, não queda do estado": t_confirmados_ausente_vira_lacuna,
+                            "confirmados presente (zika) → segue publicado": t_confirmados_presente_ainda_publica,
                             "formato inesperado nunca adivinha": t9, "ressalva e limitação declaradas": t10})
 
 
