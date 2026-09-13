@@ -1,5 +1,5 @@
 // ===== financiamento.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES;
+let BR_GEOJSON, ROTAS, PORUF, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES;
 
 // ===== 3b · Contadores por estado (v3.1 §11; redesenhado 13/09/2026 — auditoria de visualizações) =====
 function renderContadores(){
@@ -132,8 +132,8 @@ function somaPreparacao(valoresPorRota){
 }
 async function __load(){
   const carregar = f => fetch(f).then(r => { if(!r.ok) throw new Error('Falha ao carregar ' + f); return r.json(); });
-  [BR_GEOJSON, ROTAS, PORUF, COMP, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES] = await Promise.all([
-    'data/geo_uf.json','data/financiamento/rotas.json','data/financiamento/por_uf.json','data/financiamento/compromissos_federais.json',
+  [BR_GEOJSON, ROTAS, PORUF, SERIE, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTADORES] = await Promise.all([
+    'data/geo_uf.json','data/financiamento/rotas.json','data/financiamento/por_uf.json',
     'data/financiamento/serie_nacional.json','data/financiamento/emendas.json','data/financiamento/consultas.json','data/transferencias.json',
     'data/atos_resposta.json','data/populacao_censo2022.json','data/financiamento/mps_2026.json','data/financiamento/contadores_uf.json'].map(carregar));
   // Cor das rotas e das MPs vem da paleta semântica única (assets/mapas.js), não do JSON:
@@ -305,31 +305,9 @@ function __init(){
     {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: em coleta'},
   ];
   document.getElementById('programasLista').innerHTML = PROG.map(p => '<li><strong>' + esc(p.nome) + '</strong> — ' + esc(p.base) + ': ' + esc(p.regra) + ' <span class="u-muted">· ' + esc(p.lista) + '</span></li>').join('');
-  // 7 · compromissos + gráfico por área
-  document.querySelector('#tblCompromissos tbody').innerHTML = (COMP.itens || []).map(c => '<tr><td>' + esc(c.nome) + '</td><td>' + esc(c.esfera || '—') + '</td><td>' + esc(c.instrumento || '—') + (c.fonte ? ' <a href="' + esc(c.fonte) + '" target="_blank" rel="noopener">fonte</a>' : '') + '</td><td>' + brl(c.valor_total) + '</td><td>' + esc((ROTAS.rotas.find(r => r.id === c.rota) || {}).nome || c.rota) + '</td><td>' + esc((c.execucao || {}).status === 'aguardando_coleta' ? 'aguardando coleta' : (c.execucao || {}).status || '—') + '</td></tr>').join('');
-  fonteFigura('boxCompromissos', {fontes: ['as citadas em cada linha', 'Portal da Transparência (execução)'], data: ROTAS.corte});
   fonteFigura('boxSemDecretar', {fontes: 'as bases legais citadas em cada item', data: ROTAS.corte});
-  const financeData = [
-  {label:'Segurança Hídrica', value:14217500000},
-  {label:'Saúde', value:1335000000},
-  {label:'Segurança Alimentar', value:1335000000},
-  {label:'Incêndios Florestais', value:858000000},
-];
-new Chart(document.getElementById('chartFinance'), {
-  type:'bar',
-  data:{ labels: financeData.map(d=>d.label),
-    datasets:[{ data: financeData.map(d=>d.value),
-      backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? MonitorMapas.PALETA.temas.hidrico
-        : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? MonitorMapas.PALETA.temas.fogo
-        : /aliment|agr[íi]cola|safra/i.test(d.label) ? MonitorMapas.PALETA.temas.alimentar
-        : /sa[úu]de/i.test(d.label) ? MonitorMapas.PALETA.temas.saude : MonitorMapas.PALETA.temas.outro),
-      borderRadius:4 }] },
-  options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{ legend:{display:false} },
-    scales:{ x:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{ callback:v => 'R$ '+(v/1e9).toFixed(1)+'bi' } }, y:{ grid:{display:false} } } }
-});
-
-
-  fonteFigura('boxFinance', {fontes: ['Plano federal El Niño 2026/2027', 'valores anunciados'], data: ROTAS.corte});
+  // 13/09/2026 (proposta de enxugamento, Manus AI): 'Compromissos federais' (tabela + gráfico por
+  // área) migrou para pesquisadores.html — apêndice metodológico, não narrativa principal de rotas.
   // 8 · fontes e consultas
   const cons = CONSULTAS.consultas || [];
 }
