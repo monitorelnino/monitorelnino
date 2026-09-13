@@ -50,54 +50,7 @@
 <main id="conteudo">
   <p class="selo">Saúde · registro de transparência · peso zero no índice</p>
   <h1>Saúde e <em>El Niño</em></h1>
-  <p class="hint" id="subSaude">Três camadas separadas, cada figura com órgão, documento e data: o que a União publicou para a saúde no ciclo 2026/2027; o que cada secretaria estadual de saúde publicou, verificado com o protocolo do Monitor; e os sinais epidemiológicos observados, reproduzidos das fontes oficiais. Nada aqui pontua no MARÉ. Corte: <strong id="corteSaude">—</strong>.</p>
-
-  <div class="panel panel--acento-ink" id="monitorSaude">
-    <h2>MARÉ · Saúde — antecipação e resposta</h2>
-    <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxMonitor">
-        <h3 class="figura-titulo">Antecipação · prontidão sanitária estadual (instrumento × antecipação)</h3>
-        <p class="figura-sub">Corte da edição · prontidão sanitária (0–100) por UF verificada · faixas do site</p>
-        <div class="figura-midia"><svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil pela prontidão sanitária estadual (faixas) e UFs ainda não verificadas" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legMonitor"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Prontidão</th><th>Faixa</th><th>Instrumento</th><th>Antecipação</th><th>Dengue na capital</th><th>Risco projetado</th></tr></thead><tbody></tbody></table></div>
-        </details>
-      </figure>
-      <figure class="figura figura--indicador" id="boxRespostaSanitaria">
-        <h3 class="figura-titulo">Resposta · emergências sanitárias no ciclo</h3>
-        <p class="figura-sub">Desde 29/06/2026 · emergências sanitárias declaradas (<abbr title="Emergência em Saúde Pública de Importância Nacional">ESPIN</abbr> e decretos estaduais) · contagem</p>
-        <div class="figura-midia"><div class="gauge-head"><span class="gnum u-rust" id="rsNum">—</span><span class="gden">emergências localizadas em 2026</span></div></div>
-        <div class="map-legend" id="legRespostaSanitaria"></div>
-      </figure>
-      <!-- 13/09/2026 (auditoria de visualizações, consolidação): 'Prontidão por estado verificado'
-           (barras) retirada — duplicava boxMonitor acima, que já alterna mapa/tabela (Ver em tabela)
-           com a mesma prontidão por UF e mais colunas (instrumento, antecipação, dengue, risco). JS
-           correspondente (monitorBarras) guardado por ausência do elemento, não apagado. -->
-    </div>
-  </div>
-
-  <div class="panel" id="estadual">
-    <h2>O que cada estado publicou (verificação em andamento)</h2>
-    <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE para os riscos sanitários do ciclo. "Ainda não verificado" significa exatamente isso: a bateria estadual desta camada não foi executada para a UF — não é ausência de documento. <strong id="contagemUF">—</strong></p>
-    <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxStatus">
-        <h3 class="figura-titulo">Status do instrumento estadual de saúde</h3>
-        <p class="figura-sub">Corte da edição · status do plano estadual de saúde para o ciclo · escada da §9</p>
-        <div class="figura-midia"><svg id="mapaStatus" role="img" aria-label="Mapa do Brasil pelo status do instrumento estadual de saúde para o ciclo" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legStatus"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxRiscoSan">
-        <h3 class="figura-titulo">Risco sanitário projetado (derivado)</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · risco sanitário projetado por UF (derivado dos boletins) · família</p>
-        <div class="figura-midia"><svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil pela família de risco sanitário derivada do risco projetado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legRiscoSan"></div>
-      </figure>
-    </div>
-    <details class="figura-dados"><summary>Ver em tabela: as 27 UFs</summary>
-      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblUF"><thead><tr><th>UF</th><th>Status</th><th>Documento</th><th>Riscos sanitários projetados</th><th>Verificado em</th></tr></thead><tbody></tbody></table></div>
-    </details>
-  </div>
+  <p class="hint" id="subSaude">Sinais de saúde observados na população vêm primeiro — casos notificados, alertas e emergências, reproduzidos das fontes oficiais; peso zero, sem juízo de preparo. O que cada estado publicou e o índice de prontidão institucional (MARÉ · Saúde) vêm depois, como contexto secundário: medem documento e antecipação, não o estado de saúde da população. Corte: <strong id="corteSaude">—</strong>.</p>
 
   <div class="panel panel--acento-teal" id="desfechos">
     <h2>O que aconteceu — desfechos em saúde</h2>
@@ -161,6 +114,53 @@
   </div>
 
   <p class="hint">Os alertas e as orientações para a população estão em <a href="proteja-se.html#alertas-saude">Proteja-se</a>, alimentados pelos mesmos dados desta página.</p>
+  <div class="panel" id="estadual">
+    <h2>O que cada estado publicou (verificação em andamento)</h2>
+    <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE para os riscos sanitários do ciclo. "Ainda não verificado" significa exatamente isso: a bateria estadual desta camada não foi executada para a UF — não é ausência de documento. <strong id="contagemUF">—</strong></p>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxStatus">
+        <h3 class="figura-titulo">Status do instrumento estadual de saúde</h3>
+        <p class="figura-sub">Corte da edição · status do plano estadual de saúde para o ciclo · escada da §9</p>
+        <div class="figura-midia"><svg id="mapaStatus" role="img" aria-label="Mapa do Brasil pelo status do instrumento estadual de saúde para o ciclo" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legStatus"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxRiscoSan">
+        <h3 class="figura-titulo">Risco sanitário projetado (derivado)</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · risco sanitário projetado por UF (derivado dos boletins) · família</p>
+        <div class="figura-midia"><svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil pela família de risco sanitário derivada do risco projetado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legRiscoSan"></div>
+      </figure>
+    </div>
+    <details class="figura-dados"><summary>Ver em tabela: as 27 UFs</summary>
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblUF"><thead><tr><th>UF</th><th>Status</th><th>Documento</th><th>Riscos sanitários projetados</th><th>Verificado em</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </div>
+
+  <div class="panel panel--acento-ink" id="monitorSaude">
+    <h2>MARÉ · Saúde — antecipação e resposta</h2>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxMonitor">
+        <h3 class="figura-titulo">Antecipação · prontidão sanitária estadual (instrumento × antecipação)</h3>
+        <p class="figura-sub">Corte da edição · prontidão sanitária (0–100) por UF verificada · faixas do site</p>
+        <div class="figura-midia"><svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil pela prontidão sanitária estadual (faixas) e UFs ainda não verificadas" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legMonitor"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Prontidão</th><th>Faixa</th><th>Instrumento</th><th>Antecipação</th><th>Dengue na capital</th><th>Risco projetado</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      </figure>
+      <figure class="figura figura--indicador" id="boxRespostaSanitaria">
+        <h3 class="figura-titulo">Resposta · emergências sanitárias no ciclo</h3>
+        <p class="figura-sub">Desde 29/06/2026 · emergências sanitárias declaradas (<abbr title="Emergência em Saúde Pública de Importância Nacional">ESPIN</abbr> e decretos estaduais) · contagem</p>
+        <div class="figura-midia"><div class="gauge-head"><span class="gnum u-rust" id="rsNum">—</span><span class="gden">emergências localizadas em 2026</span></div></div>
+        <div class="map-legend" id="legRespostaSanitaria"></div>
+      </figure>
+      <!-- 13/09/2026 (auditoria de visualizações, consolidação): 'Prontidão por estado verificado'
+           (barras) retirada — duplicava boxMonitor acima, que já alterna mapa/tabela (Ver em tabela)
+           com a mesma prontidão por UF e mais colunas (instrumento, antecipação, dengue, risco). JS
+           correspondente (monitorBarras) guardado por ausência do elemento, não apagado. -->
+    </div>
+  </div>
+
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
