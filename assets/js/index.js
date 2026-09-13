@@ -243,11 +243,6 @@ function selectUF(uf, tileEl){
       })()}
     ${capitalBlock}
     <button type="button" class="btn-pdf" id="btnPDFEstado" data-uf="${d.uf}">Baixar relatório do estado (PDF)</button>
-    <details class="selo-embed"><summary>Selo para embutir no seu site</summary>
-      <p class="note">Regravado a cada atualização com o número publicado. Quem embute mostra a própria faixa — e o link traz o leitor para a verificação.</p>
-      <img src="selos/mare-${d.uf}.svg" width="360" height="92" alt="Selo MARÉ de ${d.nome}: ${String(MARE[d.uf].total).replace('.', ',')} de 100" class="selo-img">
-      <textarea class="pedido-texto" readonly rows="3" aria-label="Código HTML do selo">&lt;a href="https://monitorelnino.com.br/#${d.uf}"&gt;&lt;img src="https://monitorelnino.com.br/selos/mare-${d.uf}.svg" width="360" height="92" alt="MARÉ, Monitor El Niño Brasil: ${d.nome}, preparação demonstrável publicamente"&gt;&lt;/a&gt;</textarea>
-      <button type="button" class="btn-pdf btn-copiar-pedido">Copiar código</button></details>
     <p class="note">Acompanhe ${d.nome} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
   `;
   const __dialogDetail = document.getElementById('detail');
