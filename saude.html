@@ -52,6 +52,13 @@
   <h1>Saúde e <em>El Niño</em></h1>
   <p class="hint" id="subSaude">Sinais de saúde observados na população vêm primeiro — casos notificados, alertas e emergências, reproduzidos das fontes oficiais; peso zero, sem juízo de preparo. O que cada estado publicou e o índice de prontidão institucional (MARÉ · Saúde) vêm depois, como contexto secundário: medem documento e antecipação, não o estado de saúde da população. Corte: <strong id="corteSaude">—</strong>.</p>
 
+  <div class="panel" id="escolhaEstado">
+    <h2>Escolha um estado</h2>
+    <p class="hint">Veja o retrato de um estado antes de entrar nas tabelas e mapas nacionais abaixo.</p>
+    <select id="selEstadoSaude" class="seletor" aria-label="Escolher um estado"><option value="">Selecione um estado…</option></select>
+    <div id="perfilEstadoSaude" class="grade-cartoes u-mt-3" hidden></div>
+  </div>
+
   <div class="panel panel--acento-teal" id="desfechos">
     <h2>O que aconteceu — desfechos em saúde</h2>
     <p class="hint">Terceira coluna, ao lado do índice e do contador: a curva observada de dengue nos 313 municípios do painel amostral, semana a semana, sobre o canal endêmico das mesmas semanas de 2019–2025 (2024 à parte). Peso zero, sem nota. <strong>O Monitor não atribui casos ao El Niño.</strong></p>
@@ -171,7 +178,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/saude.js?v=5c2c8951" defer></script>
+<script src="assets/js/saude.js?v=50aeab53" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
