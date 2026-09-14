@@ -6,7 +6,7 @@
 // verificar_estrutura.js. Pré-requisito: as páginas de teste em /tmp (ver auditar_pdfs.py).
 // Uso: node scripts/auditar_ux.js
 const { chromium } = require('playwright'); const { AxeBuilder } = require('@axe-core/playwright');
-const PAGS = [['index','file:///tmp/index_pdf_test.html'],['mapas','file:///tmp/mapas_com_libs_embutidas.html'],['proteja-se','file:///home/claude/audit/pacote/proteja-se.html'],['envie-dados','file:///mnt/user-data/outputs/pagina_3_envie-dados.html'],['obrigado','file:///home/claude/audit/pacote/obrigado.html'],['para-gestores','file:///home/claude/audit/pacote/para-gestores.html']];
+const PAGS = [['index','file:///tmp/index_pdf_test.html'],['mapas','file:///tmp/mapas_com_libs_embutidas.html'],['proteja-se','file:///home/claude/audit/pacote/proteja-se.html'],['envie-dados','file:///mnt/user-data/outputs/pagina_3_prefeituras.html'],['obrigado','file:///home/claude/audit/pacote/obrigado.html'],['para-gestores','file:///home/claude/audit/pacote/para-gestores.html']];
 const VIEWS = [['celular',375,812],['tablet',768,1024],['desktop',1280,900]];
 (async () => {
   const b = await chromium.launch(); const rel = {};
