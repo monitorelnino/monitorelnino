@@ -9,6 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §43 · MARÉ · Saúde v0.2: régua do índice principal, duas camadas de objeto, medidor idêntico ao da home · 14/09/2026
+
+Nenhuma alteração de método do índice principal (peso zero mantido e provado por `verificar_saude.py`). Classe **medida separada (v0.x)** + **código** + **página**. Decisão editorial de Patricia em 14/09/2026 ("construa o MARÉ Saúde da forma como você sugeriu e faça uma representação gráfica igual ao do MARÉ principal"). Fundamentação e errata de efeito em `METODOLOGIA.md` §31 (v0.2).
+
+- `gerar_monitor_saude.py`: régua de antecipação com as âncoras do §5.2 (antes de 29/06 → 100; até 29/07 → 60; até 30/09 → 50; depois ou sem data → 30; recorrente 2025/26 que cobre o risco → 40; anterior → 20; ELAB → 20); campo `camada` (`ciclo` | `adaptacao`) — plano decenal nunca pontua; `versao: 0.2`; nove autotestes (dois novos: âncoras; plano decenal).
+- Efeito (17 UFs verificadas): GO 100 → 75,0; 14 UFs recorrentes 45 → 42,5; AM 100; média das verificadas 49,0 → 44,0; nenhuma faixa muda.
+- `saude.html`: medidor com a mesma anatomia do índice principal (`.gauge-zone`, marcas 25/50/70, badge de faixa), alvo = média das UFs verificadas, legenda "não é um número nacional" com contagem das não verificadas; linha de versão "0.2 · dois sub-elementos · não comparável ao MARÉ".
+- `assets/js/saude.js`: preenche e anima o medidor a partir de `data/monitor_saude.json` (mesmo padrão do `index.js`).
+- `scripts/verificar_runtime_saude.js`: teste novo (alvo = média; legenda; contagem; três marcas; badge). Teste negativo executado: legenda trocada → ✗ e exit 1; restaurada → verde.
+- Portões: `verificar_saude.py` ✓ · `verificar_consistencia.py` ✓ · `recalcular_mare.py --check` ✓ (43,6 inalterado) · `verificar_estrutura.js` ✓ · `verificar_runtime_saude.js` ✓. `METODOLOGIA.pdf` regenerado.
+
 ## §42-b · Verificador reconhece o "Netlify HUD" · 14/09/2026
 
 Com `skip_processing` ligado, o 2º ensaio (15h56 UTC) mostrou que a divergência restante não era pós-processamento: o Netlify **injeta** `<script async src="/.netlify/scripts/hud?variant=public">` em todas as páginas ao servir (recurso de painel, "Netlify HUD") e reserializa um atributo com aspas simples. `verificar_publicado.js` passa a reconhecer essa injeção pelo nome, compará-la à parte (páginas idênticas ao manifesto depois de removê-la) e reportá-la como achado próprio: aviso no ensaio, **bloqueante no lançamento**. Desligar é ação no painel do Netlify (não há como pelo repositório).

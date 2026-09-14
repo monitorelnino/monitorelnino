@@ -130,6 +130,17 @@ setTimeout(() => {
     return d.querySelectorAll("#mapaMonitor path").length === 27 && /não verificado/.test(q("legMonitor").textContent)
       && d.querySelectorAll("#tblMonitor tbody tr").length === 27;
   })());
+  // 14/09/2026 (v0.2): medidor MARÉ · Saúde com a mesma anatomia do medidor da home; alvo = média das UFs verificadas;
+  // legenda diz "não é um número nacional"; contagem de não verificadas preenchida; badge de faixa presente.
+  teste("MARÉ · Saúde: medidor idêntico ao da home, alvo = média das verificadas, 'não é um número nacional'", (() => {
+    const fill = q("gaugeSaudeFill"), num = q("gaugeSaudeNum"), nota = q("gaugeSaudeNota"), nv = q("gaugeSaudeNV");
+    if (!fill || !num || !nota || !nv) return false;
+    const mon = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
+    const media = mon.resumo && mon.resumo.media_das_verificadas;
+    return Math.abs(parseFloat(fill.dataset.alvo) - media) < 0.05 && /não é um número nacional/.test(nota.textContent)
+      && nv.textContent.trim() === String(mon.resumo.nao_verificadas) && fill.closest(".gauge-track") !== null
+      && d.querySelectorAll("#metadeSaude .gtick").length === 3 && !!q("faixaSaude");
+  })());
   teste("figuras: nenhum parágrafo ou nota dentro de cartão (decisão editorial 04/09/2026)", caixas.every(c => c.querySelectorAll(":scope > .note, :scope > .hint, :scope > p:not(.figura-sub):not(.figura-cat):not(.figura-leitura)").length === 0));
   // linguagem: "não localizamos" só como lacuna de coleta ("Não localizamos coleta"), nunca sobre instrumento não verificado
   const texto = d.body.textContent;
