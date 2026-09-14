@@ -9,6 +9,15 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §44 · Home na espinha narrativa (auditoria editorial 14/09, onda E1 §1.3, §1.6 e o texto de §2.1–§2.4, §2.7, §2.8) · 14/09/2026
+
+Nenhuma alteração de método; nenhum número muda. Classe **conteúdo/estrutura de página**.
+
+- Ordem nova da home: cabeçalho com **título-fato** ("Anunciado em 29 de junho: o que o poder público publicou antes — e decretou depois"; linha com nº de municípios verificados e corte, do dado) → régua → os dois medidores, cada um com **uma frase de interpretação calculada do dado** (estados por categoria do plano: feito para o ciclo / de todo ano / sem plano localizável; municípios, milhões de pessoas, primeiro decreto, aceitos pelo governo federal) → **três números** (anunciado · chegou por habitante · ainda não sabemos; "publicado" e "decretado" saíram porque são os medidores) → **Sua cidade** em painel próprio, na primeira dobra → 27 cartões ("Onde cada estado está — e o que sustenta a nota") → **"O que vem"** (marcos fixos do ciclo em `data/marcos_ciclo.json`, só os futuros, nunca vazio; mais os prazos do vigia) → "O que o período eleitoral escondeu", visível com a linha fixa de §2.8.
+- Parágrafo do método ("arcabouço público…") saiu da tela e foi para a ficha "Como ler o MARÉ" (§2.2). Frase de contextualização do decreto sob o art. 73 (§2.15).
+- Portas para o calendário (§1.6): no contador, na nota do período eleitoral e no bloco "escondeu" — sempre "por que há páginas fora do ar →"; o antigo atalho "o que a lei deixa aberto" continua fora da home.
+- Runtime da home cobre título-fato, interpretações (contagens somam 27), três números, ordem das seções, "O que vem" não vazio e as três portas. Bateria completa verde, Portão 18 incluído.
+
 ## §43 · Pré-condição de publicação: noindex em todo deploy até o lançamento (auditoria editorial 14/09, §1.1) · 14/09/2026
 
 Nenhuma alteração de método. Classe **infra/conteúdo**. Onda E1 da `AUDITORIA_EDITORIAL_e_HANDOVER_14-09-2026.md`, item 1.1 (crítico).

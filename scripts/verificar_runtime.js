@@ -66,7 +66,8 @@ setTimeout(() => {
     teste("clique abre a ficha 'Como ler o MARÉ' no dialog", q("detail").open && /Como ler o MARÉ/.test(q("detailConteudo").textContent) && /O que não mede/.test(q("detailConteudo").textContent));
     q("detailFechar").dispatchEvent(new dom.window.Event("click", { bubbles: true }));
     teste("fechar pelo × devolve o estado inicial", !q("detail").open);
-    teste("'o que a lei deixa aberto' saiu da página principal", !/calendario-eleitoral\.html/.test(d.body.innerHTML));
+    // 14/09 (auditoria §1.6): o calendário volta à home só como "porta" explicativa, nunca como o antigo atalho "o que a lei deixa aberto"
+    teste("'o que a lei deixa aberto' saiu da página principal (só as portas 'por que há páginas fora do ar')", ![...d.querySelectorAll("a")].some(a => /o que a lei deixa aberto/i.test(a.textContent)));
   } catch (e) { teste("ficha 'Como ler o MARÉ' (" + e.message + ")", false); }
 
   try {
@@ -162,11 +163,16 @@ setTimeout(() => {
   // KPIs do topo: sempre calculados a partir dos dados carregados (nunca texto fixo) —
   // guarda-corpo contra o card ficar desatualizado silenciosamente (achado de 31/08/2026).
   const nLAC = Object.values(INDICE).filter(v => v.status_estadual === "LAC").length;
-  // v3.1 §4.8: a história em cinco números, calculados dos dados
-  { const MARE_IDX = JSON.parse(fs.readFileSync(path.join(raiz, "data", "indice.json"), "utf-8")); const _tot = Object.keys(MARE_IDX).filter(k => k.length === 2).map(k => MARE_IDX[k].total); const _media = Math.round(_tot.reduce((a, b) => a + b, 0) / 27 * 10) / 10;
-    teste("cinco números: 'publicado' = média do índice com faixa", q("n2Publicado").textContent.startsWith(String(_media).replace(".", ","))); }
-  teste("cinco números: 'decretado' = contador de resposta", /^\d/.test(q("n3Decretado").textContent));
-  teste("cinco números: 'não sabemos' é numérico e cita 5.571", /de 5\.571/.test(q("n5NaoSabemos").textContent));
+  // 14/09/2026 (auditoria §2.1–§2.4, §2.7): título-fato, interpretações com números do dado, três números, "O que vem"
+  teste("home: H2 é título-fato ('Anunciado em 29 de junho')", /Anunciado em 29 de junho/.test(d.querySelector(".hero h2").textContent));
+  teste("home: linha do cabeçalho com nº de municípios e corte do dado", /\d/.test(q("heroVerifFederal").textContent) && /\d{2}\/\d{2}\/\d{4}/.test(q("heroCorte").textContent));
+  teste("medidor: interpretação com 3 contagens de estados (soma 27)", (() => { const m = q("interpAntecipacao").textContent.match(/(\d+) estados publicaram.*?(\d+) reeditaram.*?(\d+) não têm/); return !!m && (+m[1] + +m[2] + +m[3]) === 27; })());
+  teste("contador: interpretação com municípios, milhões, primeiro decreto e aceitos", /municípios, [\d,]+ milhões.*Primeiro decreto do ciclo: \d{2}\/\d{2}\/\d{4}.*aceitos pelo governo federal/.test(q("interpResposta").textContent));
+  teste("três números: 'anunciado', 'chegou' e 'não sabemos' presentes; 'publicado'/'decretado' não duplicam os medidores", !!q("n1Anunciado") && !!q("n4Chegou") && !!q("n5NaoSabemos") && !q("n2Publicado") && !q("n3Decretado"));
+  teste("três números: 'não sabemos' é numérico e cita 5.571", /de 5\.571/.test(q("n5NaoSabemos").textContent));
+  teste("ordem da home: medidores → três números → sua cidade → estados → o que vem → escondeu", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("tres") < pos("cidade") && pos("cidade") < pos("prazos") && pos("prazos") < pos("blocoPosDefeso") && pos("tres") > -1; })());
+  teste("'O que vem' nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll("li").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
+  teste("portas para o calendário: contador, nota do defeso e bloco 'escondeu'", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 3);
   teste("cartões de estado: cinco campos na face (barras + nível + instrumento + capital)", d.querySelectorAll(".tile .tile-face").length === 27 && [...d.querySelectorAll(".tile .tile-face")].every(f => f.querySelectorAll("span").length === 3));
 
   // Medidor principal do herói: a barra de progresso precisa de fato preencher

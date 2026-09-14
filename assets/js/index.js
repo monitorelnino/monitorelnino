@@ -121,18 +121,45 @@ function __init(){
 const MEDIA_NACIONAL = +(Object.values(MARE).reduce((s,v)=>s+v.total,0)/27).toFixed(1);
 const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VIG:"Vigente-recorrente", LAC:"Sem plano localizado"};
 
-// ---- A história em cinco números (v3.1 §4.8): sempre calculados dos dados carregados, nunca escritos à mão.
+// ---- Três números (auditoria editorial 14/09/2026, §2.4; antes eram cinco — "publicado" e "decretado" já são os dois
+// medidores acima). Sempre calculados dos dados carregados, nunca escritos à mão.
 const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 'LAC').map(([uf]) => uf);
-(function cincoNumeros(){
-  const el = id => document.getElementById(id); const fx = v => v < 25 ? 'estágio inicial' : v < 50 ? 'em construção' : v < 70 ? 'consolidado' : 'avançado';
-  el('n2Publicado').textContent = String(MEDIA_NACIONAL).replace('.', ',') + ' · ' + fx(MEDIA_NACIONAL);
+(function tresNumeros(){
+  const el = id => document.getElementById(id);
   fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).then(sr => { const oni = sr && sr.enos && sr.enos.oni && sr.enos.oni.serie; const u = oni && oni[oni.length - 1];
-    el('n1Anunciado').textContent = u ? 'ONI ' + (u.anomalia >= 0 ? '+' : '') + String(u.anomalia).replace('.', ',') + ' °C · ' + u.trimestre + '/' + u.ano : 'sem coleta'; }).catch(() => { el('n1Anunciado').textContent = 'sem coleta'; });
-  if (typeof RESP !== 'undefined' && RESP && RESP.nacional) el('n3Decretado').textContent = RESP.nacional.n_municipios.toLocaleString('pt-BR') + ' · ' + (100 * RESP.nacional.fracao_populacao).toFixed(1).replace('.', ',') + '% da pop.';
+    if (el('n1Anunciado')) el('n1Anunciado').textContent = u ? 'ONI ' + (u.anomalia >= 0 ? '+' : '') + String(u.anomalia).replace('.', ',') + ' °C · ' + u.trimestre + '/' + u.ano : 'sem coleta'; }).catch(() => { if (el('n1Anunciado')) el('n1Anunciado').textContent = 'sem coleta'; });
   fetch('data/financiamento/serie_nacional.json').then(r => r.ok ? r.json() : null).then(sn => { const t = sn && sn.semanas ? sn.semanas.reduce((a, x) => a + (+x.r5 || 0), 0) : 0;
-    el('n4Chegou').textContent = t ? 'R$ ' + (t / 1e9).toFixed(1).replace('.', ',') + ' bi' : 'sem coleta'; }).catch(() => { el('n4Chegou').textContent = 'sem coleta'; });
+    const pop = (typeof RESP !== 'undefined' && RESP && RESP.nacional && RESP.nacional.pop_total) || 0;
+    if (el('n4Chegou')) el('n4Chegou').textContent = t && pop ? 'R$ ' + (t / pop).toFixed(2).replace('.', ',') + '/hab.' : 'sem coleta'; }).catch(() => { if (el('n4Chegou')) el('n4Chegou').textContent = 'sem coleta'; });
   const vd = (VRESUMO && VRESUMO.varredura_diarios) || null; const semDiario = vd ? Math.max(0, (vd.total || 5571) - (vd.consultados || 0)) : null;
-  el('n5NaoSabemos').textContent = semDiario != null ? semDiario.toLocaleString('pt-BR') + ' de 5.571' : '—';
+  if (el('n5NaoSabemos')) el('n5NaoSabemos').textContent = semDiario != null ? semDiario.toLocaleString('pt-BR') + ' de 5.571' : '—';
+})();
+
+// ---- Cabeçalho e interpretações dos medidores (auditoria editorial 14/09/2026, §2.1–§2.3): uma frase por medidor,
+// com os números do dado. Nenhum número digitado. O que "publicaram antes" = estados por categoria do plano estadual.
+(function interpretacoes(){
+  const el = id => document.getElementById(id); const n = v => Number(v).toLocaleString('pt-BR');
+  const total = (VRESUMO && VRESUMO.total_municipios) || 5571;
+  if (el('heroVerifFederal')) el('heroVerifFederal').textContent = n(total);
+  if (el('heroCorte')) el('heroCorte').textContent = (META && META.corte) || '—';
+  const st = Object.values(MARE).map(v => v.status_estadual);
+  const c = k => st.filter(x => k.includes(x)).length;
+  const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), elabLac = c(['ELAB', 'LAC']);
+  if (el('interpAntecipacao')) el('interpAntecipacao').innerHTML = `<strong>${novo}</strong> estados publicaram plano feito para este ciclo; <strong>${readVig}</strong> reeditaram ou mantêm o plano de todo ano; <strong>${elabLac}</strong> não têm plano localizável. Não mede capacidade instalada nem dinheiro executado.`;
+  const N = (typeof RESP !== 'undefined' && RESP && RESP.nacional) || null;
+  if (el('interpResposta') && N) el('interpResposta').innerHTML = `<strong>${n(N.n_municipios)}</strong> municípios, <strong>${(N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')}</strong> milhões de pessoas. Primeiro decreto do ciclo: <strong>${N.primeiro_decreto || '—'}</strong>. ${n(N.reconhecidos)} aceitos pelo governo federal · ${n(N.decretados_sem_reconhecimento)} ainda não. Desde 04/07 a lei eleitoral suspende as transferências voluntárias e mantém abertas as de emergência.`;
+})();
+
+// ---- "O que vem" (auditoria §2.7): marcos fixos do ciclo (data/marcos_ciclo.json), só os que ainda não passaram.
+(function oQueVem(){
+  const ul = document.getElementById('marcosCiclo'); if (!ul) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const dBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
+  fetch('data/marcos_ciclo.json').then(r => r.ok ? r.json() : null).then(M => {
+    const hoje = new Date(); hoje.setHours(0,0,0,0);
+    const itens = ((M && M.marcos) || []).filter(m => dBR(m.ate || m.data) >= hoje).sort((a, b) => dBR(a.data) - dBR(b.data));
+    ul.innerHTML = itens.map(m => `<li><strong>${esc(m.data)}${m.ate ? ' – ' + esc(m.ate) : ''}</strong> — ${esc(m.titulo)} <span class="u-muted">(${esc(m.fonte)})</span></li>`).join('') || '<li class="u-muted">Marcos do ciclo não carregados.</li>';
+  }).catch(() => { ul.innerHTML = '<li class="u-muted">Marcos do ciclo não carregados.</li>'; });
 })();
 
 // Metadados do cabeçalho e do rodapé: nunca mais texto fixo (achado de Patricia,
@@ -340,7 +367,7 @@ renderPrazos();
     if (hoje >= lim) {
       const bl = document.getElementById('blocoPosDefeso');
       if (bl && VRESUMO && VRESUMO.pos_defeso) {
-        bl.hidden = false;   // 07/09/2026: o bloco fica oculto até ter dado (26/10); não ocupa a inicial vazio
+        // 14/09/2026 (§2.8): o bloco é visível desde já, com a linha fixa; os dados só aparecem a partir de 26/10 (C14)
         ['pdFontes','pdInstrumentos','pdVariacao'].forEach(id => { const e = document.getElementById(id); if (e) e.hidden = false; });
         document.getElementById('pdFontes').textContent = VRESUMO.pos_defeso.fontes_que_voltaram_txt || '—';
         document.getElementById('pdInstrumentos').textContent = VRESUMO.pos_defeso.instrumentos_anteriores_txt || '—';
