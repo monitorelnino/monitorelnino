@@ -174,29 +174,34 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 function renderDesfechos(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const M = DESF && DESF.municipios; const semColeta = {fontes: ['InfoDengue (Fiocruz/FGV)', 'painel amostral'], data: null};
-  if (!M || !Object.keys(M).length) { ['boxDesfSemanal','boxDesfAcum','boxDesfMapa'].forEach(id => fonteFigura(id, semColeta)); return; }
+  if (!M || !Object.keys(M).length) { ['boxDesfAcum','boxDesfMapa'].forEach(id => fonteFigura(id, semColeta)); return; }
   const credito = {fontes: ['modelo InfoDengue (Fiocruz/FGV)', 'Sinan', 'painel amostral'], data: DESF.gerado_em};
-  // soma do painel por SE de 2026 (consolidadas) + canal (soma das medianas/p75/p90) + nowcasting (soma das faixas)
-  const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
-  const soma = {casos: {}, med: {}, p75: {}, p90: {}, nmin: {}, nmax: {}};
-  Object.entries(M).forEach(([cod, m]) => { const c = (DESF_CANAL && DESF_CANAL.municipios && DESF_CANAL.municipios[cod]) || {};
-    semanas.forEach(ss => { const k = '2026-' + ss; const v = (m.semanas_2026 || {})[k];
-      if (v && v.casos != null) soma.casos[ss] = (soma.casos[ss] || 0) + v.casos;
-      if (c[ss]) { soma.med[ss] = (soma.med[ss] || 0) + c[ss].mediana; soma.p75[ss] = (soma.p75[ss] || 0) + c[ss].p75; soma.p90[ss] = (soma.p90[ss] || 0) + c[ss].p90; }
-      const n = (m.nowcasting || {})[k]; if (n && n.est_min != null) { soma.nmin[ss] = (soma.nmin[ss] || 0) + n.est_min; soma.nmax[ss] = (soma.nmax[ss] || 0) + n.est_max; } }); });
-  const ate = Math.max(...Object.keys(soma.casos).concat(Object.keys(soma.nmax)).map(Number)); const labels = semanas.slice(0, ate);
   MonitorMapas.padraoGraficos(window.Chart);
-  new Chart(document.getElementById('cDesfSemanal'), {type: 'bar', data: {labels: labels.map(w => 'SE ' + w), datasets: [
-      {type: 'bar', label: '2026 (consolidado)', data: labels.map(w => soma.casos[w] ?? null), backgroundColor: MonitorMapas.PALETA.anos['2026'], order: 3},
-      {type: 'line', label: 'nowcasting (máx.)', data: labels.map(w => soma.nmax[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
-      {type: 'line', label: 'nowcasting (mín.)', data: labels.map(w => soma.nmin[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
-      {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => soma.med[w] ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
-      {type: 'line', label: 'p75', data: labels.map(w => soma.p75[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p75, borderWidth: 1.5, pointRadius: 0, order: 1},
-      {type: 'line', label: 'p90', data: labels.map(w => soma.p90[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
-    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
-  MonitorMapas.legenda('legDesfSemanal', [{cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 consolidado (últimas 4 semanas excluídas)'}, {cor: MonitorMapas.PALETA.anos['2026'], opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.PALETA.anos.p75, rotulo: 'p75'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
-  fonteFigura('boxDesfSemanal', credito);
-  // escada do acumulado — vira a opção "acum" (padrão) do comparador único em #cDesfAcum
+  // 13/09/2026 (proposta de enxugamento, Manus AI): 'Casos notificados por semana' (boxDesfSemanal,
+  // painel × canal endêmico) deixou de ser figura própria — vira a 3ª opção do comparador único em
+  // #cDesfAcum ('Semanal · painel × canal endêmico'), ao lado de 'Acumulado' e 'Semanal por capitais'.
+  function desenharComparadorPainel(){
+    const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
+    const soma = {casos: {}, med: {}, p75: {}, p90: {}, nmin: {}, nmax: {}};
+    Object.entries(M).forEach(([cod, m]) => { const c = (DESF_CANAL && DESF_CANAL.municipios && DESF_CANAL.municipios[cod]) || {};
+      semanas.forEach(ss => { const k = '2026-' + ss; const v = (m.semanas_2026 || {})[k];
+        if (v && v.casos != null) soma.casos[ss] = (soma.casos[ss] || 0) + v.casos;
+        if (c[ss]) { soma.med[ss] = (soma.med[ss] || 0) + c[ss].mediana; soma.p75[ss] = (soma.p75[ss] || 0) + c[ss].p75; soma.p90[ss] = (soma.p90[ss] || 0) + c[ss].p90; }
+        const n = (m.nowcasting || {})[k]; if (n && n.est_min != null) { soma.nmin[ss] = (soma.nmin[ss] || 0) + n.est_min; soma.nmax[ss] = (soma.nmax[ss] || 0) + n.est_max; } }); });
+    const ate = Math.max(...Object.keys(soma.casos).concat(Object.keys(soma.nmax)).map(Number)); const labels = semanas.slice(0, ate);
+    const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: labels.map(w => 'SE ' + w), datasets: [
+        {type: 'bar', label: '2026 (consolidado)', data: labels.map(w => soma.casos[w] ?? null), backgroundColor: MonitorMapas.PALETA.anos['2026'], order: 3},
+        {type: 'line', label: 'nowcasting (máx.)', data: labels.map(w => soma.nmax[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
+        {type: 'line', label: 'nowcasting (mín.)', data: labels.map(w => soma.nmin[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
+        {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => soma.med[w] ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
+        {type: 'line', label: 'p75', data: labels.map(w => soma.p75[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p75, borderWidth: 1.5, pointRadius: 0, order: 1},
+        {type: 'line', label: 'p90', data: labels.map(w => soma.p90[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
+      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
+    MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 consolidado (últimas 4 semanas excluídas)'}, {cor: MonitorMapas.PALETA.anos['2026'], opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.PALETA.anos.p75, rotulo: 'p75'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
+    fonteFigura('boxDesfAcum', credito);
+    return chart;
+  }
+  // escada do acumulado — opção "acum" (padrão) do comparador único em #cDesfAcum
   const acum = a => Object.values(M).reduce((s, m) => s + ((m.acumulado || {})[a] || 0), 0);
   function desenharComparadorAcum(){
     const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.PALETA.anos['2024'], MonitorMapas.PALETA.anos['2025'], MonitorMapas.PALETA.anos['2026']]}]},
@@ -206,17 +211,19 @@ function renderDesfechos(){
     return chart;
   }
   // 13/09/2026 (auditoria de visualizações, consolidação): comparador único — "acumulado" (painel
-  // amostral) e "semanal por capitais" (27 capitais, ex-boxSerie) alternam no mesmo #cDesfAcum em vez
-  // de duas figuras fixas. Escopos diferentes (painel × capitais); por isso permanecem como opções
-  // explícitas, nunca combinadas num só número.
+  // amostral), "semanal por capitais" (27 capitais, ex-boxSerie) e "semanal · painel × canal endêmico"
+  // (ex-boxDesfSemanal) alternam no mesmo #cDesfAcum em vez de figuras fixas. Escopos diferentes
+  // (painel × capitais); por isso permanecem como opções explícitas, nunca combinadas num só número.
   let __comparadorChart = null;
   function mostrarComparador(modo){
     if (__comparadorChart) { __comparadorChart.destroy(); __comparadorChart = null; }
-    __comparadorChart = (modo === 'semanal' && desenharComparadorSemanal) ? desenharComparadorSemanal() : desenharComparadorAcum();
+    __comparadorChart = modo === 'semanal' && desenharComparadorSemanal ? desenharComparadorSemanal()
+      : modo === 'semanal_painel' ? desenharComparadorPainel()
+      : desenharComparadorAcum();
   }
   const selComparador = document.getElementById('selComparadorDengue');
   if (selComparador) selComparador.addEventListener('change', () => mostrarComparador(selComparador.value));
-  mostrarComparador(selComparador ? selComparador.value : 'acum');
+  mostrarComparador(selComparador ? selComparador.value : 'semanal_painel');
   // mapa: pontos do painel coloridos pelo nível da última SE consolidada
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
   const NIV = {1: MonitorMapas.PALETA.ordinal4[0], 2: MonitorMapas.PALETA.ordinal4[1], 3: MonitorMapas.PALETA.ordinal4[2], 4: MonitorMapas.PALETA.ordinal4[3]};   // mesmo ordinal do mapa de dengue por UF (Figura acima)
