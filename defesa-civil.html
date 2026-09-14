@@ -53,9 +53,19 @@
   <p class="hint">O que cada estado publicou antes (antecipação) e o que decretou depois (resposta), estado a estado. As duas metades nunca se combinam num número.</p>
 
   <div class="panel">
-    <h2>Antecipação — o que foi publicado</h2>
+    <h2>Antes — o que foi publicado</h2>
     <p class="hint">Cinco leituras geográficas dos mesmos registros — verificação municipal, cobertura, natureza dos atos, municípios prioritários e cidades que decretaram emergência — em três figuras; as duas primeiras alternam camada por um seletor, com tabela acessível equivalente. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe. O cruzamento com o risco projetado está resumido abaixo, com link para o cruzamento completo na página de Risco.</p>
     <div class="grade-figuras">
+      <figure class="figura figura--grafico" id="boxRegion">
+        <h3 class="figura-titulo">Status dos planos estaduais, por região</h3>
+        <p class="figura-sub">Corte da edição · status do plano estadual (escada da §7) agregado por região · 27 UFs</p>
+        <div class="figura-midia canvas-wrap"><canvas id="chartRegion"></canvas></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxDeclarado">
+        <h3 class="figura-titulo">O vão da prova: municípios com plano, declarado × documentado (PR · SC · RS)</h3>
+        <p class="figura-sub">Corte da edição · municípios com plano declarado (MUNIC/ICM) × plano documentado · PR, SC, RS · contagem</p>
+        <div class="figura-midia canvas-wrap"><canvas id="chartDeclarado"></canvas></div>
+      </figure>
       <figure class="figura figura--mapa" id="boxVerificacao">
         <h3 class="figura-titulo">Verificação municipal</h3>
         <p class="figura-sub">Corte da edição · atos localizados ou nível de verificação alcançado · pontos</p>
@@ -92,62 +102,35 @@
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCoberturaNatureza"><thead><tr><th>UF</th><th>Municípios com ato</th><th>Cobertura</th><th>Planos preventivos</th><th>Decretos reativos</th><th>% preventivo</th></tr></thead><tbody></tbody></table></div>
         </details>
       </figure>
-      <!-- 13/09/2026 (auditoria de visualizações, consolidação recomendada): "Risco projetado ×
-           instrumento estadual" cruzava a mesma pergunta que a figura "Tipo de risco projetado ×
-           estágio do arcabouço público" em sinais-de-risco.html — mantida ali como versão principal
-           (é a página de Risco). Aqui fica um resumo compacto com link. Mapa/tabela/legenda originais
-           (#mapConsistencia/#tblConsistencia/#legConsist) saíram do HTML; JS correspondente em
-           defesa-civil.js guardado por ausência do elemento, não apagado. -->
-      <div class="card-note" id="riscoinstrumentoResumo">Risco projetado × instrumento estadual: carregando resumo… — <a href="sinais-de-risco.html#boxCruz">ver o cruzamento completo, com mapa e tabela, na página de Risco →</a></div>
       <figure class="figura figura--mapa" id="boxPrioritarios">
         <h3 class="figura-titulo">Municípios prioritários — quem já publicou, quem ainda não</h3>
         <p class="figura-sub">Corte da edição · municípios prioritários (Painel/SEDEC) com e sem ato · pontos</p>
         <div class="figura-midia"><svg id="mapPrioritarios" role="img" aria-label="Mapa do Brasil com os municípios prioritários do Cadastro Nacional (aproximação por população), distinguindo os que já têm instrumento localizado dos que ainda não" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legPrioritarios"></div>
       </figure>
-      <figure class="figura figura--mapa" id="boxAtosResposta">
-        <h3 class="figura-titulo">Cidades que decretaram emergência</h3>
-        <p class="figura-sub">Desde 29/06/2026 · municípios com decreto de emergência no ciclo · pontos</p>
-        <div class="figura-midia"><svg id="mapAtosResposta" role="img" aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, atos de resposta que não pontuam no índice" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legAtosResposta"></div>
-      </figure>
     </div>
-  </div>
-
-  <div class="panel">
-    <h2>Antecipação — leituras</h2>
-    <p class="hint">Cinco leituras cruzadas dos 27 registros estaduais e das 27 capitais verificadas. Todos os valores vêm dos registros publicados nas fontes citadas. Passe o mouse para ver quais estados compõem cada categoria.</p>
-    <div class="grade-figuras">
+    <div class="card-note" id="riscoinstrumentoResumo">Risco projetado × plano do estado: carregando resumo… — <a href="sinais-de-risco.html#boxCruz">ver o cruzamento completo, com mapa e tabela, na página de Risco →</a></div>
+    <details class="acc" id="antesVerMais">
+      <summary class="acc-summary">Ver mais: status geral (27 UFs) e status das capitais</summary>
+      <div class="panel">
+        <div class="grade-figuras">
       <figure class="figura figura--grafico" id="boxDonut">
         <h3 class="figura-titulo">Status geral dos planos estaduais</h3>
         <p class="figura-sub">Corte da edição · status do instrumento estadual (escada da §7) · 27 UFs</p>
         <div class="figura-midia canvas-wrap"><canvas id="chartDonut"></canvas></div>
-      </figure>
-      <figure class="figura figura--grafico" id="boxRegion">
-        <h3 class="figura-titulo">Status por região</h3>
-        <p class="figura-sub">Corte da edição · status estadual agregado por região · contagem de UFs</p>
-        <div class="figura-midia canvas-wrap"><canvas id="chartRegion"></canvas></div>
       </figure>
       <figure class="figura figura--grafico" id="boxCapitals">
         <h3 class="figura-titulo">Status das 27 capitais</h3>
         <p class="figura-sub">Corte da edição · categoria do instrumento da capital · 27 capitais</p>
         <div class="figura-midia canvas-wrap"><canvas id="chartCapitals"></canvas></div>
       </figure>
-      <figure class="figura figura--grafico" id="boxDeclarado">
-        <h3 class="figura-titulo">O vão da prova: municípios com plano, declarado × documentado (PR · SC · RS)</h3>
-        <p class="figura-sub">Corte da edição · municípios com plano declarado (MUNIC/ICM) × plano documentado · PR, SC, RS · contagem</p>
-        <div class="figura-midia canvas-wrap"><canvas id="chartDeclarado"></canvas></div>
-      </figure>
-      <figure class="figura figura--grafico" id="boxAreas">
-        <h3 class="figura-titulo">Áreas temáticas dos instrumentos estaduais (COBRADE)</h3>
-        <p class="figura-sub">Corte da edição · áreas temáticas citadas nos instrumentos estaduais · classificação COBRADE · contagem</p>
-        <div class="figura-midia canvas-wrap"><canvas id="chartAreas"></canvas></div>
-      </figure>
-    </div>
+        </div>
+      </div>
+    </details>
   </div>
 
   <div class="panel panel--acento-rust" id="resposta">
-    <h2>Resposta — o que foi decretado depois</h2>
+    <h2>Depois — o que foi decretado</h2>
     <p class="hint">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>). As duas metades nunca se combinam num número. A tabela abaixo agrega por UF os mesmos municípios que aparecem como pontos em "Cidades que decretaram emergência" (seção anterior), acrescentando o reconhecimento federal — tarefas distintas: lá, geografia; aqui, contagem e reconciliação por estado.</p>
     <div class="grade-figuras">
       <figure class="figura figura--grafico figura--largo" id="boxDispersao">
@@ -156,20 +139,34 @@
         <div class="figura-midia canvas-wrap"><canvas id="cDispersao" aria-label="Dispersão: nota de antecipação (MARÉ) no eixo horizontal; fração de municípios sob decreto no eixo vertical; um ponto por estado"></canvas></div>
         <div class="map-legend" id="legDispersao"></div>
       </figure>
+      <figure class="figura figura--mapa" id="boxAtosResposta">
+        <h3 class="figura-titulo">Cidades que decretaram emergência</h3>
+        <p class="figura-sub">Desde 29/06/2026 · municípios com decreto de emergência no ciclo · pontos</p>
+        <div class="figura-midia"><svg id="mapAtosResposta" role="img" aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, atos de resposta que não pontuam no índice" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legAtosResposta"></div>
+      </figure>
       <figure class="figura figura--grafico" id="boxSerieResp">
         <h3 class="figura-titulo">Municípios com primeiro decreto, por semana</h3>
         <p class="figura-sub">Semanas desde 29/06/2026 · municípios com primeiro decreto de emergência · contagem</p>
         <div class="figura-midia canvas-wrap"><canvas id="cSerieResp" aria-label="Série semanal de municípios com primeiro decreto desde 29/06, com a faixa do período eleitoral"></canvas></div>
         <div class="map-legend" id="legSerieResp"></div>
       </figure>
+    </div>
+    <details class="acc" id="depoisVerMais">
+      <summary class="acc-summary">Ver mais: decretado × reconhecido, por estado (tabela)</summary>
+      <div class="panel">
+        <div class="grade-figuras">
       <figure class="figura figura--tabela" id="boxDecRec">
         <h3 class="figura-titulo">Decretado × reconhecido, por estado</h3>
         <p class="figura-sub">Desde 29/06/2026 · municípios sob decreto por UF, reconhecidos × não reconhecidos · contagem e %</p>
         <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblDecRec"><thead><tr><th>UF</th><th>Municípios sob decreto</th><th>% municípios</th><th>% população</th><th>Reconhecidos (União)</th><th>Decretados sem reconhecimento</th><th>Primeiro decreto</th></tr></thead><tbody></tbody></table></div></div>
         <div class="map-legend" id="legDecRec"></div>
       </figure>
-    </div>
+        </div>
+      </div>
+    </details>
   </div>
+
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -179,8 +176,8 @@
   </footer>
 </div>
 
-<script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/defesa-civil.js?v=66efe2fa" defer></script>
+<script src="assets/colunas.js?v=ee47c943" defer></script>
+<script src="assets/js/defesa-civil.js?v=876b5aa9" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

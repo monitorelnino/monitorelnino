@@ -313,3 +313,19 @@ __load().catch(err => { document.body.insertAdjacentHTML('afterbegin', '<div cla
 
 // ===== pesquisadores.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
+
+// 14/09/2026 (auditoria editorial §1.4 / Anexo A #17): áreas temáticas COBRADE dos planos estaduais — saiu da face de
+// Defesa civil e vive aqui como tabela de prova. (Observação registrada: a lista de UFs por área é constante no código,
+// não dado em data/ — candidata a migrar para o registro estadual.)
+(function(){
+  const tb = document.getElementById('tblAreas'); if (!tb) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const AREAS = [
+  {label:'Grupo Seca (COBRADE 1.4.1): estiagem, seca e segurança hídrica', cor:MonitorMapas.PALETA.risco.seca, ufs:['AC','AL','AM','AP','BA','CE','DF','GO','PA','PE','PI','SE']},
+  {label:'Grupo Seca · frente de incêndio florestal (1.4.1.3)', cor:MonitorMapas.PALETA.risco.fogo, ufs:['BA','GO','MA','MS','MT','RO','RR','TO']},
+  {label:'Família das chuvas (1.2-1.3): chuvas intensas e enchentes', cor:MonitorMapas.PALETA.risco.chuvas, ufs:['ES','MG','PR','RJ','RS','SP']},
+  {label:'Multirrisco integrado', cor:MonitorMapas.PALETA.risco.multi, ufs:['SC']},
+];
+  tb.querySelector('tbody').innerHTML = AREAS.map(a => `<tr><td>${esc(a.label)}</td><td>${a.ufs.length}</td><td>${esc(a.ufs.join(', '))}</td></tr>`).join('');
+  MonitorMapas.credito('boxAreas', {fontes: ['Monitor El Niño Brasil', 'classificação COBRADE'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
+})();

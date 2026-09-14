@@ -9,6 +9,15 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §46 · Defesa civil: "Antes" e "Depois", 12 → 8 figuras na face (auditoria editorial 14/09, onda E1 §1.4) · 14/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página**.
+
+- Dois blocos, na ordem da narrativa. **Antes — o que foi publicado:** status dos planos estaduais por região (absorve o "status geral" como leitura principal) · o vão da prova (declarado × documentado) · verificação municipal · cobertura e natureza por UF · municípios prioritários; abaixo, o resumo risco × plano do estado (link para o cruzamento completo em Risco) e um expandido "Ver mais" com o status geral (rosca) e o status das capitais. **Depois — o que foi decretado:** dispersão antecipação × resposta (primeira), mapa das cidades que decretaram (veio do bloco Antes), primeiro decreto por semana; expandido "Ver mais" com decretado × reconhecido (tabela).
+- **Áreas COBRADE** saíram de Defesa civil e viraram tabela de prova em Pesquisadores (`#boxAreas`; o portão de consistência passou a conferir a união das áreas lá). Registro: a lista de UFs por área é constante no código, não dado em `data/` — candidata a migrar para o registro estadual.
+- Contagem na face: 8 (a Parte 4 lista 7 e o Anexo A mantém o mapa de cobertura/natureza; ficou o Anexo, por preservar informação — a editoria decide se o mapa de cobertura vai ao expandido). Nada foi apagado: o que saiu da face está no expandido ou em Pesquisadores.
+- `assets/colunas.js`: figura dentro de um `<details>` fechado não consome número; ao abrir, renumera na ordem do documento (o Portão 18 exige sequência contínua no que está visível).
+
 ## §45 · Prefeituras: a página do gestor, e a barra na ordem final (auditoria editorial 14/09, onda E1 §1.2 e §1.8; §2.15) · 14/09/2026
 
 Nenhuma alteração de método. Classe **conteúdo/estrutura de página**.
