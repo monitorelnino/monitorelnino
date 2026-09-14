@@ -87,9 +87,14 @@
         <div class="map-legend" id="legDesfMapa"></div>
       </figure>
       <figure class="figura figura--grafico figura--largo" id="boxSRAG">
-        <h3 class="figura-titulo">SRAG por semana · Brasil, sobre o canal endêmico</h3>
-        <p class="figura-sub">Últimas 4 semanas epidemiológicas excluídas do consolidado (notificação ainda incompleta) · casos notificados de SRAG · nº de casos</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cSRAG" aria-label="Casos de SRAG por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas></div>
+        <h3 class="figura-titulo">Respiratórias por semana · Brasil, sobre o canal endêmico</h3>
+        <p class="figura-sub">Semanas de 2026 (últimas 4 excluídas do consolidado) · SRAG ou síndrome gripal · Brasil · nº de casos</p>
+        <label class="sr-only" for="selIndicadorSRAG">Indicador</label>
+        <select id="selIndicadorSRAG" class="seletor u-mb-2" aria-label="Escolher o indicador respiratório">
+          <option value="srag" selected>SRAG · síndrome respiratória aguda grave</option>
+          <option value="sg">Síndrome gripal (SG)</option>
+        </select>
+        <div class="figura-midia canvas-wrap"><canvas id="cSRAG" aria-label="Casos do indicador respiratório escolhido por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas><svg id="svgSRAGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSRAGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSRAGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
         <div class="map-legend" id="legSRAG"></div>
       </figure>
     </div>
@@ -178,7 +183,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/saude.js?v=32d6b2a1" defer></script>
+<script src="assets/js/saude.js?v=98e8790c" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

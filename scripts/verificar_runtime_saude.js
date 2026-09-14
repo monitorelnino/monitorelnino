@@ -95,6 +95,20 @@ setTimeout(() => {
     sd.value = "dengue"; sd.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
     teste("volta para dengue: mapa do painel redesenhado com pontos", q("mapaDesf").querySelectorAll("circle").length > 0 && opSem.hidden === false);
   } catch (e) { teste("seletor de doença", false); console.log("     ", e && e.message); }
+  // 14/09/2026: figura respiratória SRAG | SG — sem arquivo, lacuna declarada visível (SVG) e canvas escondido; nunca moldura vazia
+  try {
+    const si = q("selIndicadorSRAG");
+    teste("seletor respiratório: srag e sg", si && [...si.options].map(o => o.value).join(",") === "srag,sg");
+    const temSRAG = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "srag_serie.json"));
+    const temSG = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "sg_serie.json"));
+    const estado = () => ({svg: !q("svgSRAGLacuna").hidden, cv: !q("cSRAG").hidden, txt: q("svgSRAGLacuna").textContent});
+    let e0 = estado();
+    teste("SRAG: " + (temSRAG ? "canvas visível com dado" : "lacuna declarada visível"), temSRAG ? (e0.cv && !e0.svg) : (e0.svg && !e0.cv && /SRAG.*lacuna declarada/.test(e0.txt)));
+    si.value = "sg"; si.dispatchEvent(new dom.window.Event("change", { bubbles: true })); let e1 = estado();
+    teste("SG: " + (temSG ? "canvas visível com dado" : "lacuna declarada visível"), temSG ? (e1.cv && !e1.svg) : (e1.svg && !e1.cv && /síndrome gripal.*lacuna declarada/.test(e1.txt)));
+    si.value = "srag"; si.dispatchEvent(new dom.window.Event("change", { bubbles: true })); let e2 = estado();
+    teste("volta para SRAG: estado idêntico ao inicial", e2.cv === e0.cv && e2.svg === e0.svg);
+  } catch (e) { teste("seletor respiratório", false); console.log("     ", e && e.message); }
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
   // teste de renderização correspondente removido daqui.
   // gesto: tooltip ao passar o mouse num estado
