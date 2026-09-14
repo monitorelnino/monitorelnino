@@ -156,9 +156,33 @@
 
   <div class="panel panel--acento-ink" id="monitorSaude">
     <h2>MARÉ · Saúde — antecipação e resposta</h2>
+    <p class="hint">Versão 0.2 · dois sub-elementos (plano estadual de saúde para o ciclo × quando foi publicado), mesma régua de tempo do índice principal · <strong>não comparável ao MARÉ</strong> nem somado a ele · só planos de preparação para o ciclo contam; planos de adaptação decenais são estrutura, não pontuam (<a href="pesquisadores.html#metodologia">metodologia §31</a>).</p>
+    <div class="mare-metade" id="metadeSaude">
+      <p class="selo u-mt-4">1 · Antecipação · MARÉ · Saúde</p>
+      <div class="gauge-zone">
+        <div class="gauge-head">
+          <span class="gnum" id="gaugeSaudeNum">—</span><span class="gden">/ 100</span>
+          <span class="gfaixa-badge" id="faixaSaude"></span>
+          <span class="glabel"><strong>Antecipação</strong> · saúde<br>média de <span id="gaugeSaudeN">—</span> estados verificados<br>corte <span id="gaugeSaudeCorte">—</span></span>
+        </div>
+        <div class="gauge-track" role="img" aria-label="Barra de progresso: MARÉ · Saúde, média dos estados verificados">
+          <div class="gauge-fill" id="gaugeSaudeFill" data-alvo="0" style="--galvo:0.1;"></div>
+          <span class="gtick" style="left:25%"></span>
+          <span class="gtick" style="left:50%"></span>
+          <span class="gtick" style="left:70%"></span>
+        </div>
+        <div class="gauge-tick-labels">
+          <span style="left:25%">25<b>em construção</b></span>
+          <span style="left:50%">50<b>consolidado</b></span>
+          <span style="left:70%">70<b>avançado</b></span>
+        </div>
+        <div class="gauge-ends"><span>0 · estágio inicial</span><span>100</span></div>
+        <p class="note u-mt-2 u-mb-0" id="gaugeSaudeNota">Média das UFs verificadas; <strong>não é um número nacional</strong>: <span id="gaugeSaudeNV">—</span> estados ainda não verificados aparecem em cinza no mapa.</p>
+      </div>
+    </div>
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxMonitor">
-        <h3 class="figura-titulo">Antecipação · prontidão sanitária estadual (instrumento × antecipação)</h3>
+        <h3 class="figura-titulo">Antecipação por estado · plano de saúde para o ciclo × quando foi publicado</h3>
         <p class="figura-sub">Corte da edição · prontidão sanitária (0–100) por UF verificada · faixas do site</p>
         <div class="figura-midia"><svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil pela prontidão sanitária estadual (faixas) e UFs ainda não verificadas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legMonitor"></div>
@@ -189,7 +213,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/saude.js?v=b1dd41ad" defer></script>
+<script src="assets/js/saude.js?v=52cae7e6" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
