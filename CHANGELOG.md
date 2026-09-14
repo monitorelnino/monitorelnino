@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §38 · Trava de concorrência na rodada de atualização · 14/09/2026
+
+Nenhuma alteração de método; nenhum número do índice muda. Classe **código** (PROTOCOLO §3.2), correção de risco operacional.
+
+- `.github/workflows/atualizar.yml` tinha dois `cron` que caem no mesmo minuto toda segunda-feira: a rodada SEMANAL (`0 9 * * 1`) e a primeira rodada DIÁRIA (`0 9 * * *`, 06h Brasília). Sem trava, os dois jobs corriam em paralelo e podiam commitar/dar push ao mesmo tempo — risco real de colisão, observado em produção às 09h15–09h17 UTC de 14/09/2026 (dois runs `schedule` simultâneos, `run_id` 34826940245 e 34827134682).
+- Adicionado bloco `concurrency` (`group: atualizar-dados`, `cancel-in-progress: false`): qualquer sobreposição futura (segunda-feira ou não) faz o segundo run esperar o primeiro terminar, em vez de rodar em paralelo ou cancelar um commit válido.
+- Portões `verificar_estrutura.js` e `verificar_robustez_atualizacao.py` verdes; mudança isolada ao workflow, sem tocar dados ou site publicado.
+
 ## §37 · Fundamento jurídico da publicação, ADPF 743 e padrão de conteúdo do ciclo · 07/09/2026, rebaseado e mesclado em 13/09/2026
 
 Nenhuma alteração de método (§12.5); nenhum número do índice muda. Classe **conteúdo de metodologia** — decisão editorial, não correção mecânica. Conteúdo escrito e aprovado para leitura em 07/09/2026 (PR #96); a PR original ficou presa a uma base anterior à reescrita de histórico de segurança de 13/09/2026 (ver §LGPD abaixo) e divergiu 498 arquivos da `main` atual. Em vez de reabrir aquele diff, os três commits de conteúdo foram recuperados por cherry-pick sobre a `main` corrente, num ramo novo; a PR #96 original foi fechada sem merge.
