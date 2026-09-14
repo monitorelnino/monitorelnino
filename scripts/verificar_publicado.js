@@ -63,7 +63,8 @@ async function get(url, tentativas = 3) {
     const linhas = fs.readFileSync(manifesto, "utf8").split("\n").map(l => l.trim()).filter(Boolean);
     const entradas = linhas.map(l => { const m = l.match(/^([0-9a-f]{64})\s+\*?(.+)$/); return m ? { hash: m[1], arq: m[2].replace(/^\.\//, "") } : null; }).filter(Boolean);
     // robots.txt fica de fora no ensaio (é trocado de propósito); .github, scripts, docs e node não são servidos ao público
-    const servidos = entradas.filter(e => !/^(\.github|scripts|docs|node_modules|tests?|leituras_qd)\//.test(e.arq) && !/^(robots\.txt|package.*\.json|requirements\.txt|.*\.py|README\.md|CHANGELOG\.md|METODOLOGIA\.md|LICENSE.*)$/.test(e.arq));
+    // fora da amostra: o que o Netlify não serve (dotfiles, netlify.toml) e o que não é do site público
+    const servidos = entradas.filter(e => !/^(\.github|scripts|docs|node_modules|tests?|leituras_qd)\//.test(e.arq) && !/^\./.test(e.arq) && !/^(robots\.txt|netlify\.toml|package.*\.json|requirements\.txt|.*\.py|README\.md|CHANGELOG\.md|METODOLOGIA\.md|LICENSE.*)$/.test(e.arq));
     const prioridade = servidos.filter(e => /\.(html|pdf|xml)$|^data\/(meta|indice|sinais_risco|saude_sinais|monitor_saude)\.json$|^data\/saude_desfechos\/(serie_painel|dda_serie|chik_serie_painel|srag_serie)\.json$|^assets\/js\/|^assets\/.*\.css$/.test(e.arq));
     const resto = servidos.filter(e => !prioridade.includes(e));
     const amostra = prioridade.concat(resto.slice(0, Math.max(0, AMOSTRA - prioridade.length)));
@@ -72,7 +73,16 @@ async function get(url, tentativas = 3) {
       const r = await get(`${BASE}/${e.arq.split("/").map(encodeURIComponent).join("/")}`);
       if (r.status !== 200) { ausentes.push(`${e.arq} (${r.status})`); continue; }
       const h = crypto.createHash("sha256").update(r.buf).digest("hex");
-      if (h === e.hash) iguais++; else diferentes.push(e.arq);
+      if (h === e.hash) { iguais++; continue; }
+      diferentes.push(e.arq);
+      // prova da divergência: tamanho e primeiro trecho diferente (para distinguir pós-processamento do Netlify de conteúdo trocado)
+      const local = fs.existsSync(path.join(raiz, e.arq)) ? fs.readFileSync(path.join(raiz, e.arq)) : null;
+      if (local) {
+        let i = 0; while (i < local.length && i < r.buf.length && local[i] === r.buf[i]) i++;
+        console.log(`    · ${e.arq}: repositório=${local.length} B · servido=${r.buf.length} B · diverge no byte ${i}`);
+        console.log(`      repo:    ${JSON.stringify(local.toString("utf8", Math.max(0, i - 60), i + 160))}`);
+        console.log(`      servido: ${JSON.stringify(r.buf.toString("utf8", Math.max(0, i - 60), i + 160))}`);
+      }
     }
     ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto`, diferentes.length === 0 && ausentes.length === 0,
        (diferentes.length ? "diferentes: " + diferentes.slice(0, 8).join(", ") : "") + (ausentes.length ? " · ausentes: " + ausentes.slice(0, 8).join(", ") : ""));

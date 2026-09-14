@@ -1,0 +1,43 @@
+name: Verificar o site publicado (domínio real)
+
+# 14/09/2026: camada pós-deploy. Roda por botão (modo escolhido) e todo dia às 10h UTC
+# em modo neutro (sem exigir robots): páginas do sitemap em 200, cabeçalhos, integridade
+# SHA-256 contra o manifesto da main, canários. Só relata — nunca publica nem reverte.
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: 'noindex (ensaio) · index (lançamento) · neutro'
+        type: choice
+        options: [noindex, index, neutro]
+        default: neutro
+  schedule:
+    - cron: "0 10 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: "20" }
+      - name: Verificar
+        continue-on-error: true
+        run: |
+          M="${{ inputs.modo || 'neutro' }}"; F=""
+          [ "$M" = "noindex" ] && F="--esperar-noindex"; [ "$M" = "index" ] && F="--esperar-index"
+          node scripts/verificar_publicado.js --base https://monitorelnino.com.br $F 2>&1 | tee /tmp/verificar_publicado.txt
+      - name: Registrar relatório no repositório privado
+        if: always()
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
+          mkdir -p /tmp/registro/relatorios
+          cp /tmp/verificar_publicado.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado.txt"
+          cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
+          git add -A && git commit -q -m "verificar_publicado ${GITHUB_SHA::7}" && git push -q
