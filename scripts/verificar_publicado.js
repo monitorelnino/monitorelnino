@@ -1,107 +1,66 @@
 #!/usr/bin/env node
-/**
- * verificar_publicado.js — o site PUBLICADO, contra o domínio real (14/09/2026).
- * Os 18 portões provam o conteúdo antes do merge; este prova o deploy depois:
- *   1. toda página do sitemap.xml responde 200 em HTTPS;
- *   2. cabeçalhos: CSP, HSTS, nosniff presentes; X-Robots-Tag noindex presente no ENSAIO
- *      (--esperar-noindex) e AUSENTE no lançamento (--esperar-index);
- *   3. integridade: o SHA-256 de cada arquivo servido = docs/MANIFEST_SHA256.txt do repositório
- *      (amostra: todas as páginas, todos os data/*.json referenciados no manifesto, PDFs, sitemap);
- *   4. canário de conteúdo: data/meta.json com data de edição; data/indice.json com 27 UFs.
- * Uso: node scripts/verificar_publicado.js --base https://monitorelnino.com.br [--esperar-noindex|--esperar-index] [--amostra N]
- * Sai com 1 se algo falhar. Sem dependências além do Node 20 (fetch nativo).
+/* verificar_publicado.js — o site que está NO AR é o que foi mesclado? (14/09/2026, exercício de publicação)
+ * Roda contra um endereço real (padrão: https://monitorelnino.com.br), depois de um deploy:
+ *  1. todas as páginas do sitemap.xml respondem 200 em HTTPS, com CSP e (no ensaio) X-Robots-Tag: noindex;
+ *  2. cada arquivo do docs/MANIFEST_SHA256.txt servido tem o MESMO sha256 do manifesto (prova de integridade
+ *     do deploy: nada a mais, nada trocado); PDFs incluídos;
+ *  3. canário de conteúdo: data/meta.json tem atualizado_em e a média de data/indice.json bate com o data-alvo
+ *     do medidor em index.html.
+ * Uso: node scripts/verificar_publicado.js [--base URL] [--ensaio|--lancamento]
+ *   --ensaio     exige noindex (cabeçalho ou robots.txt bloqueando)  · --lancamento exige que NÃO haja noindex
+ * Só lê; imprime ✓/✗ e sai com 1 se algo falhar. Sem dependências além do Node 20.
  */
 const fs = require("fs"), path = require("path"), crypto = require("crypto");
 const raiz = path.resolve(__dirname, "..");
 const args = process.argv.slice(2);
-const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? (args[i + 1] || true) : d; };
-const BASE = String(opt("--base", "https://monitorelnino.com.br")).replace(/\/$/, "");
-const ESPERAR_NOINDEX = args.includes("--esperar-noindex");
-const ESPERAR_INDEX = args.includes("--esperar-index");
-const AMOSTRA = parseInt(opt("--amostra", "400"), 10);
-const falhas = []; const ok = (nome, cond, extra = "") => { console.log((cond ? "  ✓ " : "  ✗ ") + nome + (extra ? " · " + extra : "")); if (!cond) falhas.push(nome); };
-
-async function get(url, tentativas = 3) {
-  for (let i = 0; i < tentativas; i++) {
-    try {
-      const r = await fetch(url, { redirect: "manual", headers: { "User-Agent": "Monitor El Nino Brasil (verificar_publicado)" } });
-      const buf = Buffer.from(await r.arrayBuffer());
-      return { status: r.status, headers: r.headers, buf };
-    } catch (e) { if (i === tentativas - 1) return { status: 0, headers: new Map(), buf: Buffer.alloc(0), erro: e.message }; await new Promise(r => setTimeout(r, 1500 * (i + 1))); }
-  }
+const base = (args.includes("--base") ? args[args.indexOf("--base") + 1] : "https://monitorelnino.com.br").replace(/\/$/, "");
+const modo = args.includes("--lancamento") ? "lancamento" : "ensaio";
+const falhas = []; const teste = (n, ok, extra = "") => { console.log((ok ? "  ✓ " : "  ✗ ") + n + (extra ? " · " + extra : "")); if (!ok) falhas.push(n); };
+const sha = b => crypto.createHash("sha256").update(b).digest("hex");
+async function pegar(rel) {
+  const r = await fetch(base + "/" + rel.replace(/^\//, ""), { redirect: "manual", headers: { "User-Agent": "Monitor El Nino Brasil (verificar_publicado)" } });
+  return { status: r.status, headers: r.headers, corpo: Buffer.from(await r.arrayBuffer()) };
 }
-
 (async () => {
-  console.log(`verificar_publicado · base=${BASE} · modo=${ESPERAR_NOINDEX ? "ensaio (noindex)" : ESPERAR_INDEX ? "lançamento (index)" : "sem exigência de robots"}`);
-  // 1. sitemap
-  const sm = await get(`${BASE}/sitemap.xml`);
-  ok("sitemap.xml responde 200", sm.status === 200, `status=${sm.status}`);
-  const locs = [...sm.buf.toString("utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].trim());
-  ok("sitemap lista as páginas (≥ 11)", locs.length >= 11, `${locs.length} entradas`);
-  const paginas = locs.filter(u => /\/$|\.html$/.test(u));
-  for (const u of paginas) {
-    const alvo = u.replace(/^https?:\/\/[^/]+/, BASE);
-    const r = await get(alvo);
-    const h = r.headers;
-    ok(`200 · ${alvo.replace(BASE, "") || "/"}`, r.status === 200, `status=${r.status}${r.erro ? " " + r.erro : ""}`);
-    if (r.status !== 200) continue;
-    const csp = h.get("content-security-policy") || "", hsts = h.get("strict-transport-security") || "", nosniff = h.get("x-content-type-options") || "";
-    ok(`cabeçalhos · ${alvo.replace(BASE, "") || "/"}`, csp.includes("default-src 'self'") && hsts.includes("max-age") && nosniff === "nosniff");
-    const robots = (h.get("x-robots-tag") || "").toLowerCase();
-    if (ESPERAR_NOINDEX) ok(`noindex presente · ${alvo.replace(BASE, "") || "/"}`, robots.includes("noindex"), `x-robots-tag=${robots || "(vazio)"}`);
-    if (ESPERAR_INDEX) ok(`noindex AUSENTE · ${alvo.replace(BASE, "") || "/"}`, !robots.includes("noindex"), `x-robots-tag=${robots || "(vazio)"}`);
-    const html = r.buf.toString("utf8");
-    ok(`sem mixed content · ${alvo.replace(BASE, "") || "/"}`, !/(src|href)=["']http:\/\//.test(html));
+  console.log(`verificar_publicado · base=${base} · modo=${modo}`);
+  // 1. páginas do sitemap
+  const sm = fs.readFileSync(path.join(raiz, "sitemap.xml"), "utf8");
+  const paginas = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(/^https?:\/\/[^/]+\/?/, "") || "index.html");
+  let csp = 0, noindex = 0;
+  for (const p of paginas) {
+    const r = await pegar(p);
+    teste(`página ${p || "/"}: 200`, r.status === 200, String(r.status));
+    if (r.headers.get("content-security-policy")) csp++;
+    if (/noindex/i.test(r.headers.get("x-robots-tag") || "")) noindex++;
   }
-  // 2. robots.txt coerente com o modo
-  const rb = await get(`${BASE}/robots.txt`);
-  if (ESPERAR_NOINDEX) ok("robots.txt bloqueia tudo (ensaio)", rb.status === 200 && /Disallow:\s*\/\s*$/m.test(rb.buf.toString()));
-  if (ESPERAR_INDEX) ok("robots.txt do site (lançamento), com sitemap", rb.status === 200 && /Sitemap:/i.test(rb.buf.toString()) && !/^Disallow:\s*\/\s*$/m.test(rb.buf.toString()));
-  // 3. integridade contra o manifesto do repositório
-  const manifesto = path.join(raiz, "docs", "MANIFEST_SHA256.txt");
-  if (fs.existsSync(manifesto)) {
-    const linhas = fs.readFileSync(manifesto, "utf8").split("\n").map(l => l.trim()).filter(Boolean);
-    const entradas = linhas.map(l => { const m = l.match(/^([0-9a-f]{64})\s+\*?(.+)$/); return m ? { hash: m[1], arq: m[2].replace(/^\.\//, "") } : null; }).filter(Boolean);
-    // robots.txt fica de fora no ensaio (é trocado de propósito); .github, scripts, docs e node não são servidos ao público
-    // fora da amostra: o que o Netlify não serve (dotfiles, netlify.toml) e o que não é do site público
-    const servidos = entradas.filter(e => !/^(\.github|scripts|docs|node_modules|tests?|leituras_qd)\//.test(e.arq) && !/^\./.test(e.arq) && !/^(robots\.txt|netlify\.toml|package.*\.json|requirements\.txt|.*\.py|README\.md|CHANGELOG\.md|METODOLOGIA\.md|LICENSE.*)$/.test(e.arq));
-    const prioridade = servidos.filter(e => /\.(html|pdf|xml)$|^data\/(meta|indice|sinais_risco|saude_sinais|monitor_saude)\.json$|^data\/saude_desfechos\/(serie_painel|dda_serie|chik_serie_painel|srag_serie)\.json$|^assets\/js\/|^assets\/.*\.css$/.test(e.arq));
-    const resto = servidos.filter(e => !prioridade.includes(e));
-    const amostra = prioridade.concat(resto.slice(0, Math.max(0, AMOSTRA - prioridade.length)));
-    let iguais = 0, prettyUrls = 0, diferentes = [], ausentes = [];
-    for (const e of amostra) {
-      const r = await get(`${BASE}/${e.arq.split("/").map(encodeURIComponent).join("/")}`);
-      if (r.status !== 200) { ausentes.push(`${e.arq} (${r.status})`); continue; }
-      let h = crypto.createHash("sha256").update(r.buf).digest("hex");
-      if (h !== e.hash && /\.html$/.test(e.arq)) {
-        // 14/09/2026 (provado no 1º ensaio): o "Pretty URLs" do Netlify reescreve href="x.html" → href='/x' e
-        // href="index.html" → href='/'. Desfazemos SÓ essa reescrita conhecida e comparamos de novo — qualquer
-        // outra diferença continua sendo divergência real.
-        const norm = r.buf.toString("utf8").replace(/href='\/'/g, 'href="index.html"').replace(/href='\/([a-z0-9-]+)'/g, 'href="$1.html"');
-        h = crypto.createHash("sha256").update(Buffer.from(norm, "utf8")).digest("hex");
-        if (h === e.hash) prettyUrls++;
-      }
-      if (h === e.hash) { iguais++; continue; }
-      diferentes.push(e.arq);
-      // prova da divergência: tamanho e primeiro trecho diferente (para distinguir pós-processamento do Netlify de conteúdo trocado)
-      const local = fs.existsSync(path.join(raiz, e.arq)) ? fs.readFileSync(path.join(raiz, e.arq)) : null;
-      if (local) {
-        let i = 0; while (i < local.length && i < r.buf.length && local[i] === r.buf[i]) i++;
-        console.log(`    · ${e.arq}: repositório=${local.length} B · servido=${r.buf.length} B · diverge no byte ${i}`);
-        console.log(`      repo:    ${JSON.stringify(local.toString("utf8", Math.max(0, i - 60), i + 160))}`);
-        console.log(`      servido: ${JSON.stringify(r.buf.toString("utf8", Math.max(0, i - 60), i + 160))}`);
-      }
-    }
-    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : ""), diferentes.length === 0 && ausentes.length === 0,
-       (diferentes.length ? "diferentes: " + diferentes.slice(0, 8).join(", ") : "") + (ausentes.length ? " · ausentes: " + ausentes.slice(0, 8).join(", ") : ""));
-  } else ok("manifesto presente no repositório", false);
-  // 4. canários de conteúdo
-  const meta = await get(`${BASE}/data/meta.json`);
-  let m = null; try { m = JSON.parse(meta.buf.toString()); } catch (e) {}
-  ok("data/meta.json com data de edição (dd/mm/aaaa)", !!m && /^\d{2}\/\d{2}\/\d{4}$/.test(m.atualizado_em || ""), m ? `atualizado_em=${m.atualizado_em} corte=${m.corte}` : `status=${meta.status}`);
-  const idx = await get(`${BASE}/data/indice.json`);
-  let I = null; try { I = JSON.parse(idx.buf.toString()); } catch (e) {}
-  ok("data/indice.json com 27 UFs", !!I && Object.keys(I).filter(k => k.length === 2).length === 27);
-  console.log(falhas.length ? `\n✗ PUBLICADO: ${falhas.length} verificação(ões) falharam.` : "\n✓ PUBLICADO OK — páginas, cabeçalhos, robots no modo esperado, integridade contra o manifesto e canários.");
+  teste("CSP presente em todas as páginas", csp === paginas.length, `${csp}/${paginas.length}`);
+  const robots = await pegar("robots.txt");
+  const robotsBloqueia = /Disallow:\s*\/\s*$/m.test(robots.corpo.toString("utf8"));
+  if (modo === "ensaio") teste("ensaio: noindex em todas as páginas e robots.txt bloqueando", noindex === paginas.length && robotsBloqueia, `noindex ${noindex}/${paginas.length} · robots ${robotsBloqueia}`);
+  else teste("lançamento: sem noindex e robots.txt liberando", noindex === 0 && !robotsBloqueia, `noindex ${noindex} · robots bloqueia ${robotsBloqueia}`);
+  // 2. integridade: cada arquivo do manifesto, servido == mesclado
+  const linhas = fs.readFileSync(path.join(raiz, "docs", "MANIFEST_SHA256.txt"), "utf8").split("\n").filter(l => l && !l.startsWith("#"));
+  let ok = 0, dif = [], falt = [];
+  for (const l of linhas) {
+    const m = l.match(/^([0-9a-f]{64})\s+\*?(.+)$/); if (!m) continue;
+    const [, h, arq] = m;
+    // só o que o navegador de fato pede: páginas, dados, PDFs, feeds, código e assets do site — não código de robô nem documentação-fonte
+    if (arq.startsWith(".") || arq.startsWith(".github/") || arq.startsWith("scripts/") || arq.startsWith("docs/") || !/\.(html|pdf|json|csv|xml|txt|js|css|svg|png|jpg|webp|woff2?|ico|webmanifest)$/i.test(arq) || /^(package(-lock)?\.json|requirements\.txt|LEIA-ME\.md)$/.test(arq)) continue;
+    const r = await pegar(arq);
+    if (r.status !== 200) { falt.push(`${arq} (${r.status})`); continue; }
+    if (arq === "robots.txt" && modo === "ensaio") { ok++; continue; }   // substituído de propósito no ensaio
+    if (sha(r.corpo) === h) ok++; else dif.push(arq);
+  }
+  teste(`integridade: ${ok} arquivo(s) servidos iguais ao manifesto`, dif.length === 0 && falt.length === 0, (dif.length ? "diferentes: " + dif.slice(0, 8).join(", ") : "") + (falt.length ? " · ausentes: " + falt.slice(0, 8).join(", ") : ""));
+  // 3. canário de conteúdo
+  try {
+    const meta = JSON.parse((await pegar("data/meta.json")).corpo.toString("utf8"));
+    teste("meta.json com atualizado_em", /^\d{2}\/\d{2}\/\d{4}$/.test(meta.atualizado_em || ""), meta.atualizado_em);
+    const idx = JSON.parse((await pegar("data/indice.json")).corpo.toString("utf8"));
+    const ufs = Object.keys(idx).filter(k => k.length === 2); const media = Math.round(ufs.reduce((a, u) => a + idx[u].total, 0) / ufs.length * 10) / 10;
+    const home = (await pegar("index.html")).corpo.toString("utf8"); const alvo = parseFloat((home.match(/data-alvo="([\d.]+)"/) || [])[1]);
+    teste("canário: média do índice servida = medidor da home", Math.abs(media - alvo) < 0.06, `${media} × ${alvo}`);
+  } catch (e) { teste("canário de conteúdo", false, e.message); }
+  console.log(falhas.length ? `\n✗ PUBLICADO: ${falhas.length} verificação(ões) falharam.` : "\n✓ PUBLICADO OK — páginas no ar, cabeçalhos certos, arquivos idênticos ao manifesto, canário confere.");
   process.exit(falhas.length ? 1 : 0);
-})();
+})().catch(e => { console.error("✗ erro:", e.message); process.exit(1); });

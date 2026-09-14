@@ -1,0 +1,71 @@
+name: Publicar a main no domínio — ENSAIO (noindex, por botão)
+
+# 14/09/2026 (exercício de publicação, pedido de Patricia): publica o conteúdo da main DESTE momento como
+# deploy de PRODUÇÃO em monitorelnino.com.br, com noindex (cabeçalho + robots.txt de bloqueio), sem
+# alterar a configuração do Netlify nem o ramo "publico". Nada dispara sozinho: só "Run workflow".
+# VOLTAR À CORTINA "Em atualização": Actions → ramo publico → "Publicar este ramo no domínio (produção)"
+# → Run workflow (~1 min); ou, no painel do Netlify, "Publish deploy" no deploy anterior (segundos).
+# Depois do deploy roda scripts/verificar_publicado.js contra o domínio (páginas, cabeçalhos, integridade
+# = MANIFEST_SHA256, canário). Relatórios no repositório privado. Lançamento definitivo continua sendo o
+# do PROTOCOLO §7 (PR + merge pela editoria) — este workflow é só o ensaio reversível.
+on:
+  workflow_dispatch:
+    inputs:
+      confirmar:
+        description: 'Digite PUBLICAR para publicar a main no domínio (ensaio, noindex)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dominio
+  cancel-in-progress: false
+
+jobs:
+  ensaio:
+    if: ${{ github.event.inputs.confirmar == 'PUBLICAR' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: "20" }
+      - name: Deploy de produção da main com noindex (ensaio)
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          set +e
+          {
+            echo "workflow=publicar_ensaio ramo=${GITHUB_REF_NAME} commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) modo=noindex"
+            printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > _headers
+            printf 'User-agent: *\nDisallow: /\n' > robots.txt
+            npx --yes netlify-cli@17 deploy --prod --dir=. --message "ENSAIO noindex da main ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1
+            echo "codigo_saida=$?"
+            grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "Error|error|422|Deploy is live|Website URL|Unique deploy" | head -c 1500
+          } > /tmp/relatorio.txt 2>&1
+          rm -f _headers; git checkout -- robots.txt
+          sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/relatorio.txt
+          grep -q "Deploy is live" /tmp/relatorio.txt && echo "DEPLOY_OK=1" >> $GITHUB_ENV || echo "DEPLOY_OK=0" >> $GITHUB_ENV
+      - name: Verificar o site publicado (páginas, cabeçalhos, integridade = manifesto, canário)
+        if: env.DEPLOY_OK == '1'
+        continue-on-error: true
+        run: |
+          sleep 20
+          node scripts/verificar_publicado.js --base https://monitorelnino.com.br --ensaio 2>&1 | tee /tmp/publicado.txt
+      - name: Registrar relatórios no repositório privado
+        if: always()
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
+          mkdir -p /tmp/registro/relatorios
+          cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_publicar_ensaio.txt"
+          cp /tmp/publicado.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado.txt" 2>/dev/null || true
+          cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
+          git add -A && git commit -q -m "publicar_ensaio ${GITHUB_SHA::7}" && git push -q
+      - name: Resultado
+        run: |
+          [ "$DEPLOY_OK" = "1" ] && echo "Ensaio publicado no domínio (noindex). Para voltar à cortina: ramo publico → Publicar este ramo no domínio → Run workflow." || { echo "::error::Deploy do ensaio falhou — ver robo-registro"; exit 1; }

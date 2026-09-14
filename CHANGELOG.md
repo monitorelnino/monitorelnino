@@ -16,6 +16,13 @@ Nenhuma alteração de método nem de conteúdo. Classe **infraestrutura** (PROT
 - `publicar_dominio_ensaio.yml`: `workflow_dispatch` na `main`, confirmação digitada, deploy de produção do retrato da `main` com `X-Robots-Tag: noindex` + `robots.txt` de bloqueio só nesse deploy; nunca por push (a rodada semanal segue só na prévia). Reversão: `publicar_dominio.yml` do ramo `publico` por botão, ou "Publish deploy" da cortina no Netlify.
 - `scripts/verificar_publicado.js`: camada pós-deploy que faltava — roda contra o domínio real: 200 em toda página do sitemap, CSP/HSTS/nosniff, `noindex` presente (ensaio) ou ausente (lançamento), sem mixed content, **SHA-256 de cada arquivo servido = `MANIFEST_SHA256.txt`**, canários (`meta.json` com data de edição; `indice.json` com 27 UFs). Sem dependências além do Node 20. Roda no próprio workflow do ensaio; falha só relata (no ensaio).
 
+## §41 · Ensaio de publicação no domínio (noindex, por botão) e verificação do site publicado · 14/09/2026
+
+Nenhuma alteração de método. Classe **código/infra** (PROTOCOLO §3.2, §7). Pedido de Patricia: exercitar a publicação do site completo no domínio podendo voltar à cortina quando quiser.
+
+- `.github/workflows/publicar_ensaio.yml` (só `workflow_dispatch`, exige digitar PUBLICAR): deploy de produção da `main` com `noindex` (cabeçalho `X-Robots-Tag` + `robots.txt` de bloqueio, só nesse deploy), sem tocar na configuração do Netlify nem no ramo `publico`. Reversão: "Run workflow" do `publicar_dominio.yml` (ramo `publico`) ou "Publish deploy" no painel do Netlify.
+- `scripts/verificar_publicado.js`: roda contra o domínio real — todas as páginas do `sitemap.xml` em 200 com CSP; `noindex` em todas (ensaio) ou em nenhuma (`--lancamento`); **sha256 de cada arquivo servido igual ao `MANIFEST_SHA256.txt`** (páginas, dados, PDFs, feeds, assets); canário: média do `indice.json` servido = medidor da home. Relatório em `robo-registro`.
+
 ## §40 · "Como ler o MARÉ" vira ficha popup; "O que a lei deixa aberto" vira nota para a imprensa · 14/09/2026
 
 Nenhuma alteração de método; nenhum número muda. Classe **conteúdo/estrutura de página** — pedidos editoriais de Patricia em 13/09/2026, executados com o "vai" de 14/09.

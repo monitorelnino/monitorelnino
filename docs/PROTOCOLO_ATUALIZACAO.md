@@ -219,6 +219,14 @@ sitemap em 200, cabeçalhos, robots no modo esperado, SHA-256 de cada arquivo se
 **Reversão do ensaio** = "Run workflow" de `publicar_dominio.yml` no ramo `publico` (~1 min) ou
 "Publish deploy" no deploy anterior da cortina, no painel do Netlify. O ensaio não é o lançamento.
 
+**Ensaio de publicação (14/09/2026)** = `publicar_ensaio.yml` na `main`, só por botão
+("Run workflow", digitando PUBLICAR): deploy de produção da `main` daquele momento com
+`noindex` (cabeçalho e `robots.txt` de bloqueio), sem mexer no Netlify nem no ramo `publico`;
+em seguida `scripts/verificar_publicado.js` confere no domínio páginas, cabeçalhos,
+integridade (sha256 servido = `MANIFEST_SHA256.txt`) e canário. **Voltar à cortina** = "Run
+workflow" do `publicar_dominio.yml` no ramo `publico` (~1 min) ou "Publish deploy" no deploy
+anterior, no painel do Netlify. Nada publica sozinho no domínio.
+
 **Lançamento** = PR no `main` que copie `publicar_dominio.yml` (ajustado para
 `branches: [main]`) e remova `publicar_previa.yml`; merge pela editoria.
 **Reversão** = o inverso. O ramo `publico` nunca recebe merge de `main`.
