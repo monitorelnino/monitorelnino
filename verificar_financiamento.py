@@ -37,6 +37,26 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
     resp = {r["id"] for r in rotas["rotas"] if not r["ex_ante"]}
     if resp != {"r3", "r4"}: e.append(f"(e) rotas de resposta devem ser exatamente r3 e r4; achou {sorted(resp)}")
     if "somaPreparacao" not in html or "filter(r => r.ex_ante)" not in html: e.append("(e) página sem somaPreparacao restrita a rotas ex_ante")
+    # 14/09/2026 (rota preventiva do fogo): (f) toda rota tem `objeto` ∈ {preventivo, resposta, livre}; (g) rotas_preventivas.json:
+    # toda linha com lei, artigo, fonte e hash, objeto válido; frase de não-existência para seca/chuva só enquanto não houver linha
+    # com esses riscos; (h) o motor do índice nunca lê financiamento/fogo nem rotas_preventivas.
+    for r in rotas["rotas"]:
+        if r.get("objeto") not in {"preventivo", "resposta", "livre"}: e.append(f"(f) rota {r.get('id')} sem `objeto` válido")
+    import hashlib as _hl
+    try:
+        rp = json.loads((FIN / "rotas_preventivas.json").read_text(encoding="utf-8"))
+        for l in rp.get("rotas", []):
+            for k in ("lei", "artigo", "fonte", "hash", "objeto", "risco"):
+                if not l.get(k): e.append(f"(g) rotas_preventivas: linha {l.get('id')} sem {k}")
+            if l.get("objeto") not in {"preventivo", "resposta", "livre"}: e.append(f"(g) rotas_preventivas: objeto inválido em {l.get('id')}")
+            h = _hl.sha256(json.dumps({k: v for k, v in l.items() if k != "hash"}, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:16]
+            if h != l.get("hash"): e.append(f"(g) rotas_preventivas: hash não confere em {l.get('id')} — conteúdo alterado sem recalcular")
+        riscos = {l.get("risco") for l in rp.get("rotas", []) if l.get("objeto") == "preventivo"}
+        if riscos != set(rp.get("riscos_com_rota_preventiva", [])): e.append(f"(g) rotas_preventivas: riscos_com_rota_preventiva={rp.get('riscos_com_rota_preventiva')} ≠ riscos das linhas preventivas {sorted(riscos)}")
+    except FileNotFoundError:
+        e.append("(g) rotas_preventivas.json ausente")
+    motor = (RAIZ / "recalcular_mare.py").read_text(encoding="utf-8")
+    if "rotas_preventivas" in motor or "financiamento/fogo" in motor: e.append("(h) motor do índice lê dados da rota preventiva do fogo")
     if re.search(r"financiamento/", motor): e.append("(f) recalcular_mare.py referencia data/financiamento/")
     d = serie.get("defeso", {})
     if not (d.get("inicio") == "2026-07-04" and d.get("fim") == "2026-10-25" and "73" in str(d.get("base", ""))): e.append("(g) faixa do defeso ausente ou incompleta na série")

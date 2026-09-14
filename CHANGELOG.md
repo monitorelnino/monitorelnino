@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §48 · Rota preventiva do fogo: dimensão `objeto` nas rotas, rotas preventivas com prova, bloco em Financiamento (handover de 14/09) · 14/09/2026
+
+Nenhuma nota muda (peso zero provado por portão). Classe **dados + conteúdo**. Passos 1 e 2 do handover "Rota preventiva do fogo"; os coletores (áreas declaradas no DOU, transferências no Portal) são o passo 3.
+
+- `data/financiamento/rotas.json`: cada rota ganha `objeto` (preventivo | resposta | livre) — a rota classifica a natureza jurídica; o objeto, o que o dinheiro paga. Enquanto os fluxos não trazem objeto próprio, vale o padrão da rota; as exceções nominais do fogo vivem em `rotas_preventivas.json`.
+- `data/financiamento/rotas_preventivas.json`: cinco linhas (edital FNMA/FDD 2025; transferência direta do FNMA — Lei 15.143/2025, art. 16 → Lei 7.797, art. 3º-A; brigadas federais; Fundo Amazônia; Lei 15.143, art. 2º como resposta), cada uma com lei, artigo, condições, quem pode, o que paga, situação no período eleitoral (**em verificação**), fonte e hash do conteúdo. `url: null` onde o endereço ainda vai ser conferido (§7 do handover); nada foi inventado para preencher.
+- Financiamento, bloco **"Dinheiro preventivo que existe — e para quem"** antes de "Por estado": título-fato calculado do dado (elegíveis e contemplados do edital; Fundo Amazônia; frase "não existe rota equivalente para seca nem para chuva" só enquanto o dado só tiver incêndio), interpretação fixa (ADPF 743), tabela das rotas em linguagem da tela e o **mapa em três camadas declarando a lacuna** até os coletores existirem. "Sem decretar" ganha a linha do fogo com a base legal.
+- METODOLOGIA §28 (acréscimo: não há rota federal **regular**; a exceção é setorial, com a base legal) e §38 novo (as três condições, o que conta e o que não conta, as três camadas e por que "requereu" é sempre parcial, situação no defeso em verificação). Portão de financiamento: (f) objeto válido em toda rota; (g) toda linha preventiva com lei/artigo/fonte/hash e hash conferido; riscos declarados = riscos das linhas; (h) motor do índice nunca lê os dados do fogo. Runtime cobre título, tabela, lacuna e créditos. Teto de palavras de Financiamento 720 → 820 (a auditoria devolve o dinheiro a esta página).
 ## §47 · Saúde aberta pelas duas metades, 11 → 5 figuras na face (auditoria editorial 14/09, onda E1 §1.5) · 14/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página**.
