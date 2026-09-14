@@ -47,6 +47,12 @@ UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB
 PONTOS_STATUS = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
 PESO_INSTRUMENTO = 0.5   # pesos iguais, como no §30
 JANELA_CRITICA_INICIO = "01/10/2026"
+# v0.2 (14/09/2026, §31): a régua de antecipação da saúde passa a usar as MESMAS âncoras do índice
+# principal (Boletim nº 1 do Painel El Niño, 29/06/2026; +30 dias = 29/07/2026), com a janela crítica
+# do MS (01/10/2026) como segundo marco — para que os quadrantes defesa civil × saúde leiam o mesmo tempo.
+BOLETIM_1 = "29/06/2026"
+BOLETIM_1_MAIS_30 = "29/07/2026"
+VERSAO = "0.2"
 
 
 def faixa(v):
@@ -68,17 +74,49 @@ def temporada_da_edicao(doc: str, data: str) -> str:
     return "desconhecida"
 
 
-def pontos_antecipacao(status: str, doc: str, data: str) -> int:
-    """Régua de antecipação da saúde (v0.1). Função pura."""
+def _data_ordinal(data: str):
+    """dd/mm/aaaa → ordinal; mm/aaaa → 1º do mês (piso da faixa, regra iii do §5.2 do MARÉ); senão None. Pura."""
+    import datetime as _dt
+    m = re.match(r"^(\d{2})/(\d{2})/(\d{4})$", (data or "").strip())
+    if m: return _dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1))).toordinal()
+    m = re.match(r"^(\d{2})/(\d{4})$", (data or "").strip())
+    if m: return _dt.date(int(m.group(2)), int(m.group(1)), 1).toordinal()
+    return None
+
+
+def pontos_antecipacao(status: str, doc: str, data: str, camada: str = "ciclo") -> int:
+    """Régua de antecipação da saúde — v0.2 (14/09/2026), mesmas âncoras do índice principal. Função pura.
+
+    NOVO / READ (instrumento feito ou reeditado para o ciclo), pela data do ato:
+      antes de 29/06/2026 (Boletim nº 1)                     → 100
+      de 29/06 a 29/07/2026 (até 30 dias após o boletim)       → 60
+      de 30/07 a 30/09/2026 (antes da janela crítica do MS)    → 50
+      de 01/10/2026 em diante, ou data só no ano/desconhecida  → 30 (tardio / piso da faixa)
+    VIG (plano recorrente de arboviroses/clima, sem menção ao ciclo):
+      edição 2025/2026 vigente (estrutura recorrente que cobre o risco projetado) → 40
+      edição anterior a 2025                                                     → 20
+    ELAB → 20 · LAC / não verificado → 0.
+    Plano de adaptação decenal (camada 'adaptacao', p.ex. AdaptaSUS-UF) NUNCA pontua aqui: é estrutura."""
     if status in ("LAC", "NAO_VERIFICADO", None): return 0
-    temp = temporada_da_edicao(doc, data)
-    return {"2026/2027": 100, "2025/2026": 45, "anterior": 20}.get(temp, 20 if status == "ELAB" else 45)
+    if camada == "adaptacao": return 0
+    if status == "ELAB": return 20
+    if status in ("NOVO", "READ"):
+        o = _data_ordinal(data)
+        if o is None: return 30
+        if o < _data_ordinal(BOLETIM_1): return 100
+        if o <= _data_ordinal(BOLETIM_1_MAIS_30): return 60
+        if o < _data_ordinal(JANELA_CRITICA_INICIO): return 50
+        return 30
+    temp = temporada_da_edicao(doc, data)   # VIG
+    return {"2026/2027": 40, "2025/2026": 40, "anterior": 20}.get(temp, 20)
 
 
-def prontidao(status: str, doc: str, data: str):
-    """(prontidão, pontos_instrumento, pontos_antecipacao) ou (None, None, None) se não verificado. Função pura."""
+def prontidao(status: str, doc: str, data: str, camada: str = "ciclo"):
+    """(prontidão, pontos_instrumento, pontos_antecipacao) ou (None, None, None) se não verificado. Função pura.
+    v0.2: instrumento da camada 'adaptacao' (plano decenal) não é instrumento do ciclo — não pontua (estrutura)."""
     if status not in PONTOS_STATUS: return None, None, None
-    pi = PONTOS_STATUS[status]; pa = pontos_antecipacao(status, doc, data)
+    if camada == "adaptacao": return None, None, None
+    pi = PONTOS_STATUS[status]; pa = pontos_antecipacao(status, doc, data, camada)
     return round(PESO_INSTRUMENTO * pi + (1 - PESO_INSTRUMENTO) * pa, 1), pi, pa
 
 
@@ -87,7 +125,8 @@ def gerar() -> int:
     ufs = {}
     for uf in UFS:
         u = (su.get("uf") or {}).get(uf, {}); st = u.get("status", "NAO_VERIFICADO")
-        p, pi, pa = prontidao(st, u.get("doc") or "", u.get("data") or "")
+        camada = u.get("camada") or "ciclo"   # 'ciclo' (contingência/preparação) | 'adaptacao' (plano decenal → estrutura)
+        p, pi, pa = prontidao(st, u.get("doc") or "", u.get("data") or "", camada)
         deng = (ss.get("dengue_capitais") or {}).get(uf) or {}
         sig = ((sr.get("uf") or {}).get(uf) or {})
         avisos = (sig.get("avisos_inmet") or {}); lista = avisos.get("lista") or avisos.get("avisos") or []
@@ -95,7 +134,8 @@ def gerar() -> int:
             "verificado": st != "NAO_VERIFICADO", "prontidao": p, "faixa": faixa(p),
             "instrumento": {"status": st, "pontos": pi, "doc": u.get("doc"), "data": u.get("data"), "orgao": u.get("orgao"), "url": u.get("url"),
                             "temporada": temporada_da_edicao(u.get("doc") or "", u.get("data") or "") if st in PONTOS_STATUS else None},
-            "antecipacao": {"pontos": pa, "janela_critica_inicio": JANELA_CRITICA_INICIO},
+            "antecipacao": {"pontos": pa, "boletim_1": BOLETIM_1, "janela_critica_inicio": JANELA_CRITICA_INICIO},
+            "camada": camada,
             "risco_atual": {"dengue_capital_nivel": deng.get("nivel"), "dengue_capital": deng.get("municipio"), "dengue_se": deng.get("se"),
                             "avisos_calor": sum(1 for x in lista if re.search(r"calor", json.dumps(x, ensure_ascii=False), re.I)),
                             "focos_24h": ((sig.get("fogo") or {}).get("focos_24h"))},
@@ -105,13 +145,17 @@ def gerar() -> int:
     por_faixa = {}
     for uf in verificadas: por_faixa[ufs[uf]["faixa"]] = por_faixa.get(ufs[uf]["faixa"], 0) + 1
     saida = {
-        "_governanca": ("Monitor Saúde v0.1 (05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ "
+        "_governanca": ("MARÉ · Saúde v0.2 (14/09/2026; v0.1 em 05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ "
                         "(peso zero no índice; nunca lida por recalcular_mare.py). Um componente pontuado (instrumento "
                         "operacional × antecipação, pesos iguais) e duas leituras de contexto (risco observado e projetado). "
                         "UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31."),
-        "versao": "0.1", "gerado_em": _hoje().strftime("%d/%m/%Y"), "corte": su.get("corte"),
+        "versao": VERSAO, "gerado_em": _hoje().strftime("%d/%m/%Y"), "corte": su.get("corte"),
         "metodo": {"pesos": {"instrumento": PESO_INSTRUMENTO, "antecipacao": 1 - PESO_INSTRUMENTO}, "escada": PONTOS_STATUS,
-                   "antecipacao": {"2026/2027 antes de 01/10/2026": 100, "2025/2026": 45, "anterior": 20, "sem instrumento": 0},
+                   "antecipacao": {"NOVO/READ antes de 29/06/2026": 100, "NOVO/READ até 29/07/2026": 60, "NOVO/READ até 30/09/2026": 50,
+                                   "NOVO/READ de 01/10/2026 em diante ou sem data": 30, "VIG edição 2025/2026 (recorrente que cobre o risco)": 40,
+                                   "VIG edição anterior": 20, "ELAB": 20, "sem instrumento": 0,
+                                   "plano de adaptação decenal (AdaptaSUS-UF)": "não pontua — estrutura"},
+                   "ancoras": {"boletim_1": BOLETIM_1, "boletim_1_mais_30": BOLETIM_1_MAIS_30, "janela_critica_ms": JANELA_CRITICA_INICIO},
                    "faixas": {"estágio inicial": "0–25", "em construção": "25–50", "consolidado": "50–70", "avançado": "70–100"}},
         "resumo": {"verificadas": len(verificadas), "nao_verificadas": 27 - len(verificadas), "por_faixa": por_faixa,
                    "media_das_verificadas": (round(sum(ufs[u]["prontidao"] for u in verificadas) / len(verificadas), 1) if verificadas else None),
@@ -126,15 +170,22 @@ def gerar() -> int:
 def autoteste() -> int:
     def t1(): return temporada_da_edicao("Plano 2025/2026", "01/07/2025") == "2025/2026" and temporada_da_edicao("Plano 2026-2027", "") == "2026/2027"
     def t2(): return temporada_da_edicao("Plano de Enfrentamento", "22/12/2023") == "anterior" and temporada_da_edicao("Atualização 2024 a 2026", "05/2025") == "2025/2026"
-    def t3(): return prontidao("VIG", "Plano 2025/2026", "01/07/2025") == (45.0, 45, 45) and prontidao("NOVO", "Plano El Niño 2026-2027", "27/08/2026") == (100.0, 100, 100)
+    def t3(): return prontidao("VIG", "Plano 2025/2026", "01/07/2025") == (42.5, 45, 40) and prontidao("NOVO", "Plano El Niño 2026-2027", "27/08/2026") == (75.0, 100, 50)
     def t4(): return prontidao("VIG", "Plano de Enfrentamento", "22/12/2023") == (32.5, 45, 20) and prontidao("LAC", "", "") == (0.0, 0, 0)
+    def t8():  # v0.2: âncoras do índice principal — antes do boletim 100; até +30 dias 60; antes da janela do MS 50; depois 30; data só no ano 30
+        return (pontos_antecipacao("NOVO", "", "08/06/2026") == 100 and pontos_antecipacao("NOVO", "", "29/07/2026") == 60
+                and pontos_antecipacao("NOVO", "", "30/07/2026") == 50 and pontos_antecipacao("READ", "", "01/10/2026") == 30
+                and pontos_antecipacao("NOVO", "", "2026") == 30 and pontos_antecipacao("NOVO", "", "06/2026") == 100)
+    def t9():  # v0.2: plano de adaptação decenal (camada 'adaptacao') nunca pontua — é estrutura
+        return prontidao("NOVO", "Plano Estadual de Adaptação do Setor Saúde", "01/04/2026", "adaptacao") == (None, None, None)
     def t5(): return prontidao("NAO_VERIFICADO", "", "") == (None, None, None) and faixa(None) == "não verificado"
     def t6(): return faixa(24.9) == "estágio inicial" and faixa(25) == "em construção" and faixa(50) == "consolidado" and faixa(70) == "avançado"
     def t7():  # negativo: status fora do vocabulário não vira número
         return prontidao("TALVEZ", "x", "2026") == (None, None, None)
-    return rodar_autoteste({"temporada pelo título": t1, "temporada pela data": t2, "prontidão: VIG 2025/26 = 45; NOVO 2026/27 = 100": t3,
+    return rodar_autoteste({"temporada pelo título": t1, "temporada pela data": t2, "prontidão: VIG 2025/26 = 42,5; NOVO 27/08 = 75": t3,
                             "prontidão: edição antiga = 32,5; LAC = 0": t4, "não verificado não recebe número": t5,
-                            "faixas nos limites": t6, "negativo: status inválido não pontua": t7})
+                            "faixas nos limites": t6, "negativo: status inválido não pontua": t7,
+                            "v0.2: âncoras do índice principal": t8, "v0.2: plano decenal não pontua": t9})
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 {
- "_governanca": "Monitor Saúde v0.1 (05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Um componente pontuado (instrumento operacional × antecipação, pesos iguais) e duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31.",
- "versao": "0.1",
+ "_governanca": "MARÉ · Saúde v0.2 (14/09/2026; v0.1 em 05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Um componente pontuado (instrumento operacional × antecipação, pesos iguais) e duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31.",
+ "versao": "0.2",
  "gerado_em": "14/09/2026",
  "corte": "05/09/2026",
  "metodo": {
@@ -16,10 +16,20 @@
    "LAC": 0
   },
   "antecipacao": {
-   "2026/2027 antes de 01/10/2026": 100,
-   "2025/2026": 45,
-   "anterior": 20,
-   "sem instrumento": 0
+   "NOVO/READ antes de 29/06/2026": 100,
+   "NOVO/READ até 29/07/2026": 60,
+   "NOVO/READ até 30/09/2026": 50,
+   "NOVO/READ de 01/10/2026 em diante ou sem data": 30,
+   "VIG edição 2025/2026 (recorrente que cobre o risco)": 40,
+   "VIG edição anterior": 20,
+   "ELAB": 20,
+   "sem instrumento": 0,
+   "plano de adaptação decenal (AdaptaSUS-UF)": "não pontua — estrutura"
+  },
+  "ancoras": {
+   "boletim_1": "29/06/2026",
+   "boletim_1_mais_30": "29/07/2026",
+   "janela_critica_ms": "01/10/2026"
   },
   "faixas": {
    "estágio inicial": "0–25",
@@ -35,7 +45,7 @@
    "avançado": 2,
    "em construção": 15
   },
-  "media_das_verificadas": 49.0,
+  "media_das_verificadas": 44.0,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -54,8 +64,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Rio Branco",
@@ -85,8 +97,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Maceió",
@@ -116,8 +130,10 @@
    },
    "antecipacao": {
     "pontos": 100,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Manaus",
@@ -147,8 +163,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 2,
     "dengue_capital": "Macapá",
@@ -165,7 +183,7 @@
   },
   "BA": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -177,9 +195,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Salvador",
@@ -196,7 +216,7 @@
   },
   "CE": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -208,9 +228,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Fortaleza",
@@ -240,8 +262,10 @@
    },
    "antecipacao": {
     "pontos": 20,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Brasília",
@@ -258,7 +282,7 @@
   },
   "ES": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 32.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -270,9 +294,11 @@
     "temporada": "desconhecida"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 20,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Vitória",
@@ -289,7 +315,7 @@
   },
   "GO": {
    "verificado": true,
-   "prontidao": 100.0,
+   "prontidao": 75.0,
    "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
@@ -301,9 +327,11 @@
     "temporada": "2026/2027"
    },
    "antecipacao": {
-    "pontos": 100,
+    "pontos": 50,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Goiânia",
@@ -333,8 +361,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 2,
     "dengue_capital": "São Luís",
@@ -351,7 +381,7 @@
   },
   "MG": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -363,9 +393,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 3,
     "dengue_capital": "Belo Horizonte",
@@ -382,7 +414,7 @@
   },
   "MS": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -394,9 +426,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Campo Grande",
@@ -426,8 +460,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Cuiabá",
@@ -444,7 +480,7 @@
   },
   "PA": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -456,9 +492,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 2,
     "dengue_capital": "Belém",
@@ -488,8 +526,10 @@
    },
    "antecipacao": {
     "pontos": 20,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "João Pessoa",
@@ -506,7 +546,7 @@
   },
   "PE": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -518,9 +558,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Recife",
@@ -550,8 +592,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Teresina",
@@ -581,8 +625,10 @@
    },
    "antecipacao": {
     "pontos": 20,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Curitiba",
@@ -599,7 +645,7 @@
   },
   "RJ": {
    "verificado": true,
-   "prontidao": 40.0,
+   "prontidao": 27.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
@@ -611,9 +657,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 20,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Rio de Janeiro",
@@ -643,8 +691,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Natal",
@@ -674,8 +724,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Porto Velho",
@@ -705,8 +757,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Boa Vista",
@@ -723,7 +777,7 @@
   },
   "RS": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -735,9 +789,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Porto Alegre",
@@ -754,7 +810,7 @@
   },
   "SC": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -766,9 +822,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Florianópolis",
@@ -785,7 +843,7 @@
   },
   "SE": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 32.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -797,9 +855,11 @@
     "temporada": "desconhecida"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 20,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Aracaju",
@@ -816,7 +876,7 @@
   },
   "SP": {
    "verificado": true,
-   "prontidao": 45.0,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -828,9 +888,11 @@
     "temporada": "2025/2026"
    },
    "antecipacao": {
-    "pontos": 45,
+    "pontos": 40,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "São Paulo",
@@ -860,8 +922,10 @@
    },
    "antecipacao": {
     "pontos": null,
+    "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
+   "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
     "dengue_capital": "Palmas",

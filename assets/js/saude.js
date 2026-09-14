@@ -92,6 +92,28 @@ function __init(){
       return '<tr><td><strong>' + uf + '</strong></td><td>' + (m.verificado ? esc(m.prontidao) : '—') + '</td><td>' + esc(m.faixa || '') + '</td><td>' + esc(ST_H[i.status] || '') + (i.data ? ' · ' + esc(i.data) : '') + '</td><td>' + (a.pontos ?? '—') + (i.temporada ? ' · ' + esc(i.temporada) : '') + '</td><td>' + (r.dengue_capital_nivel ? 'nível ' + esc(r.dengue_capital_nivel) + ' (' + esc(r.dengue_capital) + ')' : '—') + '</td><td>' + esc((m.risco_projetado || []).join('; ')) + '</td></tr>'; }).join('');
     // 13/09/2026 (auditoria de visualizações, consolidação): #monitorBarras retirado do HTML —
     // duplicava a tabela alternativa de boxMonitor. Bloco guardado por ausência do elemento.
+    // ---- Medidor MARÉ · Saúde (v0.2, 14/09/2026): mesma anatomia do medidor da home; alvo = média das UFs verificadas ----
+    (function(){
+      const MON = (typeof MSAUDE !== "undefined" && MSAUDE) || {}; const res = MON.resumo || {}; const media = res.media_das_verificadas;
+      const fill = document.getElementById('gaugeSaudeFill'), nEl = document.getElementById('gaugeSaudeNum');
+      if (!fill || !nEl || media == null) return;
+      fill.dataset.alvo = String(media); fill.style.setProperty('--galvo', String(Math.max(media, 0.1)));
+      const tr = fill.closest('.gauge-track'); if (tr) tr.setAttribute('aria-label', 'Barra de progresso: MARÉ · Saúde em ' + media.toLocaleString('pt-BR', {minimumFractionDigits: 1}) + ' de 100 (média de ' + res.verificadas + ' estados verificados)');
+      const el = (id) => document.getElementById(id);
+      if (el('gaugeSaudeN')) el('gaugeSaudeN').textContent = String(res.verificadas ?? '—');
+      if (el('gaugeSaudeNV')) el('gaugeSaudeNV').textContent = String(res.nao_verificadas ?? '—');
+      if (el('gaugeSaudeCorte')) el('gaugeSaudeCorte').textContent = (MON.corte || (typeof META !== 'undefined' && META && META.corte) || '—');
+      const temRAF = (typeof requestAnimationFrame === 'function');
+      const reduz = (typeof matchMedia === 'function') && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const raf = temRAF ? (f) => requestAnimationFrame(() => requestAnimationFrame(f)) : (f) => setTimeout(f, 60);
+      raf(() => { fill.style.width = media + '%'; });
+      if (!temRAF || reduz) { nEl.textContent = media.toFixed(1).replace('.', ','); }
+      else { const dur = 1400, t0 = performance.now(); const passo = (t) => { const k = Math.min(1, (t - t0) / dur); const e = 1 - Math.pow(1 - k, 3); nEl.textContent = (media * e).toFixed(1).replace('.', ','); if (k < 1) requestAnimationFrame(passo); }; requestAnimationFrame(passo); }
+      try {
+        const fx = MonitorMapas.PALETA.faixaDe(media); const b = document.getElementById('faixaSaude');
+        if (b) b.innerHTML = 'Preparação demonstrada (saúde)<span class="gfaixa-pill" style="background:' + MonitorMapas.PALETA.faixas[fx] + '; color:' + MonitorMapas.PALETA.faixasTexto[fx] + '">' + esc(MonitorMapas.PALETA.faixaRotulo[fx]) + '</span>';
+      } catch (e) {}
+    })();
     const ver = UFS.filter(uf => (M[uf] || {}).verificado).sort((x, y) => (M[y].prontidao - M[x].prontidao) || x.localeCompare(y));
     const bx = document.getElementById('monitorBarras');
     if (bx) {
