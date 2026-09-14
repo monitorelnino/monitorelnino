@@ -12,10 +12,9 @@ const falhas = []; const ok = (n, c, x = "") => { console.log((c ? "  ✓ " : " 
   const cred = process.env.PREVIA_BASIC_AUTH ? { username: process.env.PREVIA_BASIC_AUTH.split(":")[0], password: process.env.PREVIA_BASIC_AUTH.split(":").slice(1).join(":") } : undefined;
   const browser = await chromium.launch(); const ctx = await browser.newContext({ httpCredentials: cred, viewport: { width: 1280, height: 900 } });
   // o véu do navegador (acesso.js) pede senha por prompt: respondemos com a mesma senha do Basic-Auth
-  ctx.on("page", p => p.on("dialog", d => d.accept(cred ? cred.password : "")));
   for (const pg of PAGINAS) {
     const page = await ctx.newPage(); const console_ = []; const csp = [];
-    page.on("dialog", d => d.accept(cred ? cred.password : ""));
+    page.on("dialog", d => d.accept(cred ? cred.password : "").catch(() => {}));   // véu do navegador: responde uma única vez
     page.on("console", m => { if (m.type() === "error") console_.push(m.text()); });
     page.on("requestfailed", r => { if (/Content Security Policy|blocked/i.test(r.failure() ? r.failure().errorText : "")) csp.push(r.url()); });
     try { await page.goto(`${BASE}/${pg}`, { waitUntil: "networkidle", timeout: 45000 }); } catch (e) { ok(`${pg}: carregou`, false, e.message.split("\n")[0]); await page.close(); continue; }
