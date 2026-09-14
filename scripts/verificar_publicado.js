@@ -68,7 +68,12 @@ async function get(url, tentativas = 3) {
     const prioridade = servidos.filter(e => /\.(html|pdf|xml)$|^data\/(meta|indice|sinais_risco|saude_sinais|monitor_saude)\.json$|^data\/saude_desfechos\/(serie_painel|dda_serie|chik_serie_painel|srag_serie)\.json$|^assets\/js\/|^assets\/.*\.css$/.test(e.arq));
     const resto = servidos.filter(e => !prioridade.includes(e));
     const amostra = prioridade.concat(resto.slice(0, Math.max(0, AMOSTRA - prioridade.length)));
-    let iguais = 0, prettyUrls = 0, diferentes = [], ausentes = [];
+    let iguais = 0, prettyUrls = 0, hud = 0, diferentes = [], ausentes = [];
+    // 14/09/2026 (2º ensaio, já com skip_processing): o que restava não era pós-processamento — é o "Netlify HUD",
+    // recurso de painel do site que INJETA <script async src="/.netlify/scripts/hud?..."> em toda página ao servir e,
+    // ao reserializar, troca aspas de atributos (class="x" → class='x'). Só se desliga no painel do Netlify. Aqui ele
+    // é reconhecido pelo nome, removido para a comparação e reportado como achado próprio — nunca escondido.
+    const semHud = (txt) => { const antes = txt; txt = txt.replace(/<script[^>]*\/\.netlify\/scripts\/hud[^>]*><\/script>\s*/g, "").replace(/(<[a-z][^>]*?\s[a-z-]+=)'([^']*)'/g, '$1"$2"'); return [txt, txt !== antes]; };
     for (const e of amostra) {
       const r = await get(`${BASE}/${e.arq.split("/").map(encodeURIComponent).join("/")}`);
       if (r.status !== 200) { ausentes.push(`${e.arq} (${r.status})`); continue; }
@@ -82,6 +87,10 @@ async function get(url, tentativas = 3) {
         comparado = Buffer.from(norm, "utf8");
         h = crypto.createHash("sha256").update(comparado).digest("hex");
         if (h === e.hash) prettyUrls++;
+        if (h !== e.hash) {
+          const [txtHud, tinhaHud] = semHud(comparado.toString("utf8"));
+          if (tinhaHud) { const h2 = crypto.createHash("sha256").update(Buffer.from(txtHud, "utf8")).digest("hex"); if (h2 === e.hash) { hud++; h = h2; comparado = Buffer.from(txtHud, "utf8"); } }
+        }
       }
       if (h === e.hash) { iguais++; continue; }
       diferentes.push(e.arq);
@@ -94,8 +103,12 @@ async function get(url, tentativas = 3) {
         console.log(`      servido: ${JSON.stringify(comparado.toString("utf8", Math.max(0, i - 60), i + 160))}`);
       }
     }
-    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : ""), diferentes.length === 0 && ausentes.length === 0,
+    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : "") + (hud ? ` (${hud} HTML idênticos depois de remover o script do Netlify HUD)` : ""), diferentes.length === 0 && ausentes.length === 0,
        (diferentes.length ? "diferentes: " + diferentes.slice(0, 8).join(", ") : "") + (ausentes.length ? " · ausentes: " + ausentes.slice(0, 8).join(", ") : ""));
+    // O HUD é um script de terceiro não pedido, em todas as páginas de um site de interesse público: no lançamento é
+    // bloqueante; no ensaio, aviso com a instrução. Desligar: painel do Netlify → Site configuration → (Build & deploy /
+    // Post processing ou "Netlify HUD") → desativar; não há como pelo repositório.
+    if (hud) ok(`Netlify HUD ${ESPERAR_INDEX ? "precisa estar DESLIGADO no lançamento" : "detectado"}: ${hud} página(s) com script injetado pelo Netlify — desligar no painel do site`, !ESPERAR_INDEX);
   } else ok("manifesto presente no repositório", false);
   // 4. canários de conteúdo
   const meta = await get(`${BASE}/data/meta.json`);
