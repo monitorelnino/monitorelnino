@@ -68,11 +68,19 @@ async function get(url, tentativas = 3) {
     const prioridade = servidos.filter(e => /\.(html|pdf|xml)$|^data\/(meta|indice|sinais_risco|saude_sinais|monitor_saude)\.json$|^data\/saude_desfechos\/(serie_painel|dda_serie|chik_serie_painel|srag_serie)\.json$|^assets\/js\/|^assets\/.*\.css$/.test(e.arq));
     const resto = servidos.filter(e => !prioridade.includes(e));
     const amostra = prioridade.concat(resto.slice(0, Math.max(0, AMOSTRA - prioridade.length)));
-    let iguais = 0, diferentes = [], ausentes = [];
+    let iguais = 0, prettyUrls = 0, diferentes = [], ausentes = [];
     for (const e of amostra) {
       const r = await get(`${BASE}/${e.arq.split("/").map(encodeURIComponent).join("/")}`);
       if (r.status !== 200) { ausentes.push(`${e.arq} (${r.status})`); continue; }
-      const h = crypto.createHash("sha256").update(r.buf).digest("hex");
+      let h = crypto.createHash("sha256").update(r.buf).digest("hex");
+      if (h !== e.hash && /\.html$/.test(e.arq)) {
+        // 14/09/2026 (provado no 1º ensaio): o "Pretty URLs" do Netlify reescreve href="x.html" → href='/x' e
+        // href="index.html" → href='/'. Desfazemos SÓ essa reescrita conhecida e comparamos de novo — qualquer
+        // outra diferença continua sendo divergência real.
+        const norm = r.buf.toString("utf8").replace(/href='\/'/g, 'href="index.html"').replace(/href='\/([a-z0-9-]+)'/g, 'href="$1.html"');
+        h = crypto.createHash("sha256").update(Buffer.from(norm, "utf8")).digest("hex");
+        if (h === e.hash) prettyUrls++;
+      }
       if (h === e.hash) { iguais++; continue; }
       diferentes.push(e.arq);
       // prova da divergência: tamanho e primeiro trecho diferente (para distinguir pós-processamento do Netlify de conteúdo trocado)
@@ -84,7 +92,7 @@ async function get(url, tentativas = 3) {
         console.log(`      servido: ${JSON.stringify(r.buf.toString("utf8", Math.max(0, i - 60), i + 160))}`);
       }
     }
-    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto`, diferentes.length === 0 && ausentes.length === 0,
+    ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : ""), diferentes.length === 0 && ausentes.length === 0,
        (diferentes.length ? "diferentes: " + diferentes.slice(0, 8).join(", ") : "") + (ausentes.length ? " · ausentes: " + ausentes.slice(0, 8).join(", ") : ""));
   } else ok("manifesto presente no repositório", false);
   // 4. canários de conteúdo
