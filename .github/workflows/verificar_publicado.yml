@@ -27,6 +27,8 @@ jobs:
         with: { node-version: "20" }
       - name: Verificar
         continue-on-error: true
+        env:
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
         run: |
           # 14/09/2026 (§1.1): sem input, o modo vem de data/publicacao.json (indexar=false → noindex OBRIGATÓRIO, cabeçalho e meta).
           M="${{ inputs.modo || 'flag' }}"; F=""

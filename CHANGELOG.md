@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §49 · Domínio com senha, não com página de rosto (decisão da editoria, 14/09) · 14/09/2026
+
+Nenhuma alteração de método. Classe **infra/publicação**.
+
+- `data/publicacao.json` ganha `dominio: "senha"`: o domínio passa a servir o site completo atrás da **mesma senha da prévia** — Basic-Auth no servidor (segredo `PREVIA_BASIC_AUTH`, o mesmo do `publicar_previa.yml`) e véu no navegador (`assets/acesso.js`, que agora ativa no domínio quando a flag diz "senha"; nunca em localhost nem nos portões). Continua `noindex`.
+- `publicar_dominio_ensaio.yml`: input `senha` (padrão true) grava o cabeçalho `Basic-Auth` só nesse deploy; o segredo é mascarado no relatório. `verificar_publicado.js` envia a credencial (env) e, em modo senha, **exige** que a home sem credencial responda 401 — se o plano do Netlify ignorar o cabeçalho, a verificação falha, de propósito.
+- Voltar à página de rosto continua sendo o "Run workflow" do `publicar_dominio.yml` no ramo `publico`.
+
 ## §48 · Rota preventiva do fogo: dimensão `objeto` nas rotas, rotas preventivas com prova, bloco em Financiamento (handover de 14/09) · 14/09/2026
 
 Nenhuma nota muda (peso zero provado por portão). Classe **dados + conteúdo**. Passos 1 e 2 do handover "Rota preventiva do fogo"; os coletores (áreas declaradas no DOU, transferências no Portal) são o passo 3.
