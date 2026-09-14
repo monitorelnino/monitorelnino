@@ -27,8 +27,15 @@ import urllib.parse
 import urllib.request
 
 UA = "Monitor El Nino Brasil (monitorelnino.com.br; contato@futuraevidencelab.com.br)"
-BASE = "https://opendatasus.saude.gov.br"
+# 14/09/2026 (2ª rodada): opendatasus.saude.gov.br redireciona para o portal novo dadosabertos.saude.gov.br
+# (Next.js, busca só por JS). Pelos caminhos de imagem do portal, o CKAN de bastidor é ckan-dadosabertos.saude.gov.br,
+# e há uma "API de Dados Abertos" em apidadosabertos.saude.gov.br. Testa os candidatos em ordem e usa o primeiro que
+# devolver JSON de CKAN; registra o que cada um respondeu.
+BASES = ["https://ckan-dadosabertos.saude.gov.br", "https://dadosabertos.saude.gov.br", "https://opendatasus.saude.gov.br"]
+BASE = BASES[0]
+API_NOVA = "https://apidadosabertos.saude.gov.br"
 TERMOS = [
+    ("sinan", "sinan"),
     ("dda", "diarreica"),
     ("dda", "diarréicas"),
     ("dda", "sivep-dda"),
@@ -102,12 +109,25 @@ def main() -> int:
     print("=== SONDA DDA / LEPTOSPIROSE — OpenDataSUS (CKAN) — 14/09/2026 ===")
     print("Nada é coletado nem gravado; só medição do que a fonte devolve de verdade.\n")
 
-    # 0. a API responde?
-    r = _get(f"{BASE}/api/3/action/site_read")
-    print(f"-- {BASE}/api/3/action/site_read → {({k: v for k, v in r.items() if k != '_corpo'})}")
-    if "erro" in r:
-        print("!! A API CKAN não respondeu; nada a sondar além disto.")
+    # 0. qual host responde como CKAN de verdade (JSON com "success")?
+    global BASE
+    escolhido = None
+    for b in BASES:
+        r = _get(f"{b}/api/3/action/site_read")
+        resumo = {k: v for k, v in r.items() if k != "_corpo"}
+        corpo = r.get("_corpo", b"")
+        eh_json = corpo[:1] == b"{"
+        print(f"-- {b}/api/3/action/site_read → {resumo} · JSON={eh_json}")
+        if eh_json and not escolhido:
+            escolhido = b
+    for u in (f"{API_NOVA}/", f"{API_NOVA}/docs", f"{API_NOVA}/openapi.json", f"{API_NOVA}/swagger.json"):
+        r = _get(u, timeout=30)
+        print(f"-- {u} → {({k: v for k, v in r.items() if k != '_corpo'})} · início={r.get('_corpo', b'')[:160]!r}")
+    if not escolhido:
+        print("!! Nenhum host respondeu como CKAN; nada a sondar além disto.")
         return 1
+    BASE = escolhido
+    print(f"\n→ CKAN escolhido: {BASE}")
 
     vistos: dict[str, dict] = {}
     for tema, termo in TERMOS:
