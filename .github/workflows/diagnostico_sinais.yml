@@ -31,6 +31,13 @@ jobs:
         run: |
           set -o pipefail
           python3 scripts/sondar_portal_transparencia.py 2>&1 | tee /tmp/portal.log
+      # 14/09/2026 (handovers fogo e saúde, passo 3): o que a execução mensal do Portal (CSV aberto) diz sobre FNMA → entes e FNS → vigilância/arboviroses
+      - name: Sondar o Portal — FNMA (fogo) e FNS (vigilância/arboviroses), meses de 2025-01 ao corrente
+        continue-on-error: true
+        timeout-minutes: 25
+        run: |
+          set -o pipefail
+          python3 scripts/sondar_portal_fogo_saude.py 2>&1 | tee /tmp/portal_fogo_saude.log
       - name: Sondar o TransfereGov (repositório de CSVs e APIs sem chave)
         continue-on-error: true
         run: |
@@ -147,6 +154,7 @@ jobs:
           cp /tmp/saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_fontes_saude.txt" 2>/dev/null || true
           cp /tmp/listagem_df.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_listagem_df.txt" 2>/dev/null || true
           cp /tmp/boletim_infogripe.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_boletim_infogripe.txt" 2>/dev/null || true
+          cp /tmp/portal_fogo_saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portal_fogo_saude.txt" 2>/dev/null || true
           cp /tmp/coletor_dda.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_coletor_dda_isolado.txt" 2>/dev/null || true
           cp /tmp/dda_zenodo.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_zenodo.txt" 2>/dev/null || true
           cp /tmp/dda_opendatasus.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_opendatasus.txt" 2>/dev/null || true
