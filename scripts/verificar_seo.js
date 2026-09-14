@@ -23,6 +23,15 @@ const sm = fs.existsSync(path.join(RAIZ, "sitemap.xml")) ? fs.readFileSync(path.
 for (const p of paginas) if (p !== "obrigado.html" && !sm.includes(BASE + (p === "index.html" ? "" : p) + "<")) falhas.push(`sitemap.xml sem ${p}`);
 const rb = fs.existsSync(path.join(RAIZ, "robots.txt")) ? fs.readFileSync(path.join(RAIZ, "robots.txt"), "utf-8") : "";
 if (!/Sitemap: https:\/\/monitorelnino\.com\.br\/sitemap\.xml/.test(rb)) falhas.push("robots.txt sem a linha Sitemap");
+// 14/09/2026 (§1.1 da auditoria editorial): até o lançamento (data/publicacao.json · indexar=false) TODA página leva
+// <meta name="robots" content="noindex, nofollow">; quando a editoria mudar a flag, o portão passa a exigir o contrário.
+const pub = JSON.parse(fs.readFileSync(path.join(RAIZ, "data", "publicacao.json"), "utf-8"));
+for (const pg of paginas) {
+  const html = fs.readFileSync(path.join(RAIZ, pg), "utf-8");
+  const temNoindex = /<meta name="robots" content="noindex[^"]*">/.test(html);
+  if (!pub.indexar && !temNoindex) falhas.push(`${pg}: sem <meta name="robots" content="noindex"> (publicacao.json: indexar=false)`);
+  if (pub.indexar && temNoindex) falhas.push(`${pg}: ainda com noindex (publicacao.json: indexar=true)`);
+}
 if (!fs.existsSync(path.join(RAIZ, "assets", "social", "card-monitor-el-nino.png"))) falhas.push("cartão social ausente");
 if (falhas.length) { console.log("✗ SEO:"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
 console.log(`✓ SEO OK — ${paginas.length} páginas com título e descrição únicos, canônica, Open Graph, Twitter, JSON-LD, um h1; sitemap e robots.`);

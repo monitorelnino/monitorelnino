@@ -16,8 +16,11 @@ const raiz = path.resolve(__dirname, "..");
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? (args[i + 1] || true) : d; };
 const BASE = String(opt("--base", "https://monitorelnino.com.br")).replace(/\/$/, "");
-const ESPERAR_NOINDEX = args.includes("--esperar-noindex");
-const ESPERAR_INDEX = args.includes("--esperar-index");
+// 14/09/2026 (§1.1): o modo padrão vem de data/publicacao.json — indexar=false exige noindex em toda página servida
+// (cabeçalho E meta); indexar=true exige o contrário. As flags de linha de comando só sobrepõem para diagnóstico.
+const PUB = (() => { try { return JSON.parse(fs.readFileSync(path.join(raiz, "data", "publicacao.json"), "utf8")); } catch (e) { return { indexar: false }; } })();
+const ESPERAR_NOINDEX = args.includes("--esperar-noindex") || (!args.includes("--esperar-index") && !args.includes("--neutro") && !PUB.indexar);
+const ESPERAR_INDEX = args.includes("--esperar-index") || (!args.includes("--esperar-noindex") && !args.includes("--neutro") && !!PUB.indexar);
 const AMOSTRA = parseInt(opt("--amostra", "400"), 10);
 const falhas = []; const ok = (nome, cond, extra = "") => { console.log((cond ? "  ✓ " : "  ✗ ") + nome + (extra ? " · " + extra : "")); if (!cond) falhas.push(nome); };
 
@@ -48,7 +51,7 @@ async function get(url, tentativas = 3) {
     const csp = h.get("content-security-policy") || "", hsts = h.get("strict-transport-security") || "", nosniff = h.get("x-content-type-options") || "";
     ok(`cabeçalhos · ${alvo.replace(BASE, "") || "/"}`, csp.includes("default-src 'self'") && hsts.includes("max-age") && nosniff === "nosniff");
     const robots = (h.get("x-robots-tag") || "").toLowerCase();
-    if (ESPERAR_NOINDEX) ok(`noindex presente · ${alvo.replace(BASE, "") || "/"}`, robots.includes("noindex"), `x-robots-tag=${robots || "(vazio)"}`);
+    if (ESPERAR_NOINDEX) ok(`noindex presente · ${alvo.replace(BASE, "") || "/"}`, robots.includes("noindex") && /<meta name="robots" content="noindex/.test(r.buf.toString("utf8")), `x-robots-tag=${robots || "(vazio)"} · meta=${/<meta name="robots" content="noindex/.test(r.buf.toString("utf8"))}`);
     if (ESPERAR_INDEX) ok(`noindex AUSENTE · ${alvo.replace(BASE, "") || "/"}`, !robots.includes("noindex"), `x-robots-tag=${robots || "(vazio)"}`);
     const html = r.buf.toString("utf8");
     ok(`sem mixed content · ${alvo.replace(BASE, "") || "/"}`, !/(src|href)=["']http:\/\//.test(html));
