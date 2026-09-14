@@ -72,24 +72,26 @@ async function get(url, tentativas = 3) {
     for (const e of amostra) {
       const r = await get(`${BASE}/${e.arq.split("/").map(encodeURIComponent).join("/")}`);
       if (r.status !== 200) { ausentes.push(`${e.arq} (${r.status})`); continue; }
-      let h = crypto.createHash("sha256").update(r.buf).digest("hex");
+      let comparado = r.buf; let h = crypto.createHash("sha256").update(r.buf).digest("hex");
       if (h !== e.hash && /\.html$/.test(e.arq)) {
         // 14/09/2026 (provado no 1º ensaio): o "Pretty URLs" do Netlify reescreve href="x.html" → href='/x' e
         // href="index.html" → href='/'. Desfazemos SÓ essa reescrita conhecida e comparamos de novo — qualquer
         // outra diferença continua sendo divergência real.
-        const norm = r.buf.toString("utf8").replace(/href='\/'/g, 'href="index.html"').replace(/href='\/([a-z0-9-]+)'/g, 'href="$1.html"');
-        h = crypto.createHash("sha256").update(Buffer.from(norm, "utf8")).digest("hex");
+        // cobre também âncoras e consultas: href='/#x' → "index.html#x"; href='/pagina#x' → "pagina.html#x"
+        const norm = r.buf.toString("utf8").replace(/href='\/([a-z0-9-]*)((?:[#?][^']*)?)'/g, (m, pag, resto) => `href="${pag ? pag + ".html" : "index.html"}${resto}"`);
+        comparado = Buffer.from(norm, "utf8");
+        h = crypto.createHash("sha256").update(comparado).digest("hex");
         if (h === e.hash) prettyUrls++;
       }
       if (h === e.hash) { iguais++; continue; }
       diferentes.push(e.arq);
-      // prova da divergência: tamanho e primeiro trecho diferente (para distinguir pós-processamento do Netlify de conteúdo trocado)
+      // prova da divergência (depois da normalização): tamanho e primeiro trecho diferente
       const local = fs.existsSync(path.join(raiz, e.arq)) ? fs.readFileSync(path.join(raiz, e.arq)) : null;
       if (local) {
-        let i = 0; while (i < local.length && i < r.buf.length && local[i] === r.buf[i]) i++;
-        console.log(`    · ${e.arq}: repositório=${local.length} B · servido=${r.buf.length} B · diverge no byte ${i}`);
+        let i = 0; while (i < local.length && i < comparado.length && local[i] === comparado[i]) i++;
+        console.log(`    · ${e.arq}: repositório=${local.length} B · servido(normalizado)=${comparado.length} B · diverge no byte ${i}`);
         console.log(`      repo:    ${JSON.stringify(local.toString("utf8", Math.max(0, i - 60), i + 160))}`);
-        console.log(`      servido: ${JSON.stringify(r.buf.toString("utf8", Math.max(0, i - 60), i + 160))}`);
+        console.log(`      servido: ${JSON.stringify(comparado.toString("utf8", Math.max(0, i - 60), i + 160))}`);
       }
     }
     ok(`integridade: ${iguais}/${amostra.length} arquivo(s) servidos batem com o manifesto` + (prettyUrls ? ` (${prettyUrls} HTML só com a reescrita "Pretty URLs" do Netlify)` : ""), diferentes.length === 0 && ausentes.length === 0,
