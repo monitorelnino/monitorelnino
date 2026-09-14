@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       modo:
-        description: 'noindex (ensaio) · index (lançamento) · neutro'
+        description: 'flag (padrão: data/publicacao.json) · noindex · index · neutro'
         type: choice
         options: [noindex, index, neutro]
         default: neutro
@@ -28,8 +28,9 @@ jobs:
       - name: Verificar
         continue-on-error: true
         run: |
-          M="${{ inputs.modo || 'neutro' }}"; F=""
-          [ "$M" = "noindex" ] && F="--esperar-noindex"; [ "$M" = "index" ] && F="--esperar-index"
+          # 14/09/2026 (§1.1): sem input, o modo vem de data/publicacao.json (indexar=false → noindex OBRIGATÓRIO, cabeçalho e meta).
+          M="${{ inputs.modo || 'flag' }}"; F=""
+          [ "$M" = "noindex" ] && F="--esperar-noindex"; [ "$M" = "index" ] && F="--esperar-index"; [ "$M" = "neutro" ] && F="--neutro"
           node scripts/verificar_publicado.js --base https://monitorelnino.com.br $F 2>&1 | tee /tmp/verificar_publicado.txt
       - name: Registrar relatório no repositório privado
         if: always()
