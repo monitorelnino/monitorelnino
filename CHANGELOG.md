@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §47 · Saúde aberta pelas duas metades, 11 → 5 figuras na face (auditoria editorial 14/09, onda E1 §1.5) · 14/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página**.
+
+- Ordem nova: (1) **MARÉ · Saúde** — as duas metades (medidor v0.2 + prontidão por estado; emergências sanitárias, a metade "depois", visível mesmo em zero); (2) **O que cada estado publicou** — o filtro "Escolha um estado" virou o cabeçalho desta seção (perfil de cartões logo abaixo), mapa de status e tabela das 27 UFs; risco sanitário derivado no expandido; (3) **O que se observa** — dengue por nível de alerta (mapa, com o seletor Dengue | Chikungunya) e avisos de calor; (4) expandido **"outros desfechos"**: casos no painel amostral, respiratórias (SRAG | SG), diarreicas (DDA) e dengue nas capitais. Texto de abertura reescrito para a nova ordem, com o corte da edição.
+- Nada apagado: quatro figuras foram para o expandido; os seletores e os testes de runtime seguem cobrindo todas.
+
 ## §46 · Defesa civil: "Antes" e "Depois", 12 → 8 figuras na face (auditoria editorial 14/09, onda E1 §1.4) · 14/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página**.
