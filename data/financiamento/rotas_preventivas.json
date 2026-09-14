@@ -1,0 +1,127 @@
+{
+ "_governanca": "Rota preventiva do fogo (handover de 14/09/2026; METODOLOGIA §28 e §38). Peso zero: nada aqui pontua o MARÉ. Cada linha traz lei, artigo, condições, fonte e hash do conteúdo; `url: null` = endereço ainda a conferir (§7 do handover). `situacao_defeso: em verificação` até a posição do TSE. As camadas do mapa (áreas declaradas, requerimentos, transferências) só existem com coleta própria — ausentes, o mapa declara lacuna. Não existe linha para seca nem para chuva: a frase de não-existência na tela só vale enquanto isso for verdade (portão).",
+ "corte": "14/09/2026",
+ "riscos_com_rota_preventiva": [
+  "incendio"
+ ],
+ "rotas": [
+  {
+   "id": "fogo_edital_2025",
+   "rota": "r5",
+   "objeto": "preventivo",
+   "risco": "incendio",
+   "nome": "Edital FNMA/FDD 2025 — planos operativos municipais de prevenção e combate a incêndios (PPCIF)",
+   "lei": "Lei 7.797/1989 (FNMA); Lei 9.008/1995 (FDD)",
+   "artigo": "chamamento público FNMA/FDD 2025",
+   "quem_pode": "municípios (proponentes selecionados)",
+   "condicoes": [
+    "projeto submetido ao chamamento público",
+    "seleção pelo MMA"
+   ],
+   "o_que_paga": "elaboração e execução de planos operativos municipais (PPCIF)",
+   "valores": {
+    "total_reais": 32000000,
+    "elegiveis": 81,
+    "contemplados": 31
+   },
+   "situacao_defeso": "em verificação",
+   "fonte": "MMA, resultado do edital FNMA/FDD (26/08/2025)",
+   "url": null,
+   "verificado_em": "14/09/2026",
+   "hash": "f14eeeb31f172015"
+  },
+  {
+   "id": "fogo_fnma_3a",
+   "rota": "r5",
+   "subrota": "r5-direta",
+   "objeto": "preventivo",
+   "risco": "incendio",
+   "nome": "Transferência direta do FNMA a estados e municípios, sem convênio",
+   "lei": "Lei 15.143/2025, art. 16 → Lei 7.797/1989, art. 3º-A; decreto regulamentador de 11/06/2026",
+   "artigo": "Lei 7.797, art. 3º-A",
+   "quem_pode": "estados e municípios em área de emergência ambiental declarada pelo MMA",
+   "condicoes": [
+    "requerimento do ente",
+    "emergência ambiental declarada pelo MMA na região sob risco",
+    "plano operativo de prevenção e combate aprovado (Lei 14.944/2024, PNMIF)"
+   ],
+   "o_que_paga": "prevenção e combate a incêndios florestais, em conta específica",
+   "valores": null,
+   "situacao_defeso": "em verificação",
+   "fonte": "Lei 15.143/2025; Lei 7.797/1989; decreto de 11/06/2026 (número a confirmar)",
+   "url": null,
+   "verificado_em": "14/09/2026",
+   "hash": "9355eb3bd386e7fe"
+  },
+  {
+   "id": "fogo_brigadas_federais",
+   "rota": "r7",
+   "objeto": "preventivo",
+   "risco": "incendio",
+   "nome": "Brigadas federais (Prevfogo/IBAMA e ICMCBio) nos municípios",
+   "lei": "Lei 14.944/2024 (PNMIF)",
+   "artigo": "execução direta; portaria de emergência ambiental viabiliza a contratação",
+   "quem_pode": "municípios selecionados pela União",
+   "condicoes": [
+    "seleção federal (área prioritária)"
+   ],
+   "o_que_paga": "brigadistas e estrutura de combate na temporada",
+   "valores": null,
+   "situacao_defeso": "não é transferência",
+   "fonte": "MMA/IBAMA/ICMBio (temporada 2026)",
+   "url": null,
+   "verificado_em": "14/09/2026",
+   "hash": "9ba7b6ebbac354b8"
+  },
+  {
+   "id": "fogo_fundo_amazonia",
+   "rota": "rF",
+   "objeto": "preventivo",
+   "risco": "incendio",
+   "nome": "Fundo Amazônia — bombeiros e brigadas estaduais",
+   "lei": "Decreto 6.527/2008 (Fundo Amazônia, BNDES)",
+   "artigo": "projeto do estado aprovado pelo BNDES",
+   "quem_pode": "estados (bombeiros militares e brigadas)",
+   "condicoes": [
+    "projeto do estado aprovado pelo BNDES"
+   ],
+   "o_que_paga": "estruturação de bombeiros e brigadas estaduais",
+   "valores": {
+    "total_reais": 150000000,
+    "ufs_citadas": [
+     "MS",
+     "MG",
+     "GO",
+     "BA",
+     "PI",
+     "DF"
+    ]
+   },
+   "situacao_defeso": "não é transferência da União",
+   "fonte": "BNDES / Fundo Amazônia (2025–2026)",
+   "url": null,
+   "verificado_em": "14/09/2026",
+   "hash": "4273693beb40ffbb"
+  },
+  {
+   "id": "fogo_lei_15143_art2",
+   "rota": "r3",
+   "objeto": "resposta",
+   "risco": "incendio",
+   "nome": "Lei 15.143/2025, art. 2º — colaboração financeira da União para resposta",
+   "lei": "Lei 15.143/2025",
+   "artigo": "art. 2º",
+   "quem_pode": "União, estados e DF",
+   "condicoes": [
+    "situação de emergência ou calamidade reconhecida pelo Executivo federal"
+   ],
+   "o_que_paga": "resposta ao dano",
+   "valores": null,
+   "situacao_defeso": "exceção do art. 73, VI, a (emergência)",
+   "fonte": "Lei 15.143/2025",
+   "url": null,
+   "verificado_em": "14/09/2026",
+   "hash": "98b00ba369c9a7dd"
+  }
+ ]
+}

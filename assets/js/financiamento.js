@@ -215,3 +215,33 @@ function __init(){
 __load().catch(err => { const m = document.getElementById('subFin'); if (m) m.insertAdjacentHTML('afterend', '<p class="note u-rust">Erro ao carregar os dados: ' + esc(err.message) + '</p>'); });
 
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
+
+// 14/09/2026 — Rota preventiva do fogo (handover; METODOLOGIA §28/§38). Peso zero. Tudo vem de data/financiamento/rotas_preventivas.json;
+// nenhum número é digitado aqui. As camadas do mapa exigem coleta própria (áreas declaradas no DOU, transferências no Portal,
+// requerimentos só por LAI/MMA): sem os arquivos, o mapa DECLARA a lacuna em vez de fingir dado.
+(function rotaPreventivaFogo(){
+  const tt = document.getElementById('fogoTitulo'); if (!tt) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmtR = v => v == null ? '—' : 'R$ ' + (v >= 1e6 ? (v / 1e6).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ' mi' : v.toLocaleString('pt-BR'));
+  const lacuna = (t1, t2) => { const a = document.getElementById('txtFogoLacuna1'), b = document.getElementById('txtFogoLacuna2');
+    if (a) { a.textContent = t1; a.setAttribute('fill', MonitorMapas.cor('muted')); } if (b) { b.textContent = t2; b.setAttribute('fill', MonitorMapas.cor('muted')); }
+    MonitorMapas.legenda('legFogoMapa', [{cor: MonitorMapas.NEUTRA, rotulo: 'camadas sem coleta até o corte'}]); };
+  Promise.all(['data/financiamento/rotas_preventivas.json', 'data/financiamento/fogo/areas_declaradas.json', 'data/financiamento/fogo/transferencias.json', 'data/financiamento/fogo/requerimentos.json']
+    .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null))).then(([RP, AREAS, TRANSF, REQ]) => {
+    if (!RP || !Array.isArray(RP.rotas)) { tt.textContent = 'Rotas preventivas ainda não carregadas.'; lacuna('Dados não carregados', ''); fonteFigura('boxFogoRotas', {fontes: 'Monitor El Niño Brasil', data: null}); fonteFigura('boxFogoMapa', {fontes: 'Monitor El Niño Brasil', data: null}); return; }
+    const edital = RP.rotas.find(r => r.id === 'fogo_edital_2025'), fa = RP.rotas.find(r => r.id === 'fogo_fundo_amazonia');
+    const riscos = RP.riscos_com_rota_preventiva || []; const soFogo = riscos.length === 1 && riscos[0] === 'incendio';
+    const nAreas = AREAS && Array.isArray(AREAS.municipios) ? AREAS.municipios.length : null, nRec = TRANSF && Array.isArray(TRANSF.transferencias) ? new Set(TRANSF.transferencias.map(t => t.ibge || t.ente)).size : null;
+    tt.innerHTML = 'Dinheiro preventivo federal existe para o fogo' + (edital && edital.valores ? ': edital de 2025 com <strong>' + edital.valores.elegiveis + '</strong> municípios elegíveis e <strong>' + edital.valores.contemplados + '</strong> contemplados (' + esc(fmtR(edital.valores.total_reais)) + ')' : '') +
+      (nAreas != null ? '; <strong>' + nAreas.toLocaleString('pt-BR') + '</strong> municípios em área de emergência ambiental declarada' : '') + (nRec != null ? '; <strong>' + nRec.toLocaleString('pt-BR') + '</strong> com transferência do FNMA' : '') +
+      (fa && fa.valores ? '; Fundo Amazônia com ' + esc(fmtR(fa.valores.total_reais)) + ' para bombeiros e brigadas estaduais' : '') + (soFogo ? ' — e não existe rota equivalente para seca nem para chuva.' : '.');
+    // tabela: uma linha por rota, em linguagem da tela
+    const NOME = {r1: 'rota 1', r2: 'rota 2', r3: 'rota 3', r4: 'rota 4', r5: 'rota 5', r6: 'rota 6', r7: 'rota 7', rE: 'rota estadual', rF: 'fundos extraorçamentários'};
+    document.querySelector('#tblFogoRotas tbody').innerHTML = RP.rotas.map(r => '<tr><td><strong>' + esc(r.nome) + '</strong><br><span class="u-muted">' + esc(NOME[r.rota] || r.rota) + (r.subrota ? ' · ' + esc(r.subrota) : '') + ' · objeto: ' + esc(r.objeto) + '</span></td><td>' + esc(r.quem_pode) + '</td><td>' + (r.condicoes || []).map(esc).join('; ') + '</td><td>' + esc(r.o_que_paga) + '</td><td>' + esc(r.situacao_defeso) + '</td><td>' + esc(r.lei) + (r.artigo ? ' · ' + esc(r.artigo) : '') + '<br><span class="u-muted">' + esc(r.fonte) + '</span></td></tr>').join('');
+    fonteFigura('boxFogoRotas', {fontes: ['leis e portarias citadas em cada linha', 'Monitor El Niño Brasil'], data: RP.corte});
+    if (!AREAS && !TRANSF) { lacuna('Camadas ainda não coletadas — lacuna declarada', 'Áreas declaradas (DOU/MMA) e transferências (Portal da Transparência) dependem de coleta própria; requerimentos só chegam por LAI/MMA.'); fonteFigura('boxFogoMapa', {fontes: ['DOU/MMA', 'Portal da Transparência', 'LAI/MMA'], data: null}); return; }
+    // quando houver dado: mapa em três camadas (a implementar junto do coletor; até lá, contagens na legenda)
+    MonitorMapas.legenda('legFogoMapa', [{cor: MonitorMapas.PALETA.verificacao.nacional, rotulo: 'área declarada' + (nAreas != null ? ' · ' + nAreas : '')}, {cor: MonitorMapas.PALETA.categorias.decreto, rotulo: 'recebeu' + (nRec != null ? ' · ' + nRec : '')}, {cor: MonitorMapas.NEUTRA, rotulo: 'requereu: ' + (REQ ? 'conhecidos por LAI/MMA' : 'sem informação')}]);
+    fonteFigura('boxFogoMapa', {fontes: ['DOU/MMA', 'Portal da Transparência', 'LAI/MMA'], data: (AREAS && AREAS.gerado_em) || (TRANSF && TRANSF.gerado_em) || null});
+  });
+})();

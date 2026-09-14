@@ -94,6 +94,16 @@ setTimeout(() => {
   teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com siglas das 27 UFs`, mapasSvg.length > 0 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato canônico`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I" && /background:/.test(c.firstElementChild.getAttribute("style") || ""))) && c.textContent.trim().length > 0)));
+  // 14/09/2026: rota preventiva do fogo — título-fato do dado, tabela por linha, mapa como lacuna declarada sem os arquivos de fogo/
+  try {
+    const rp = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "rotas_preventivas.json"), "utf8"));
+    teste("fogo: título-fato traz os números do edital (do dado)", new RegExp(String(rp.rotas.find(r => r.id === "fogo_edital_2025").valores.elegiveis) + ".*" + String(rp.rotas.find(r => r.id === "fogo_edital_2025").valores.contemplados)).test(q("fogoTitulo").textContent));
+    teste("fogo: frase de não-existência só porque só há linha de incêndio", /não existe rota equivalente para seca nem para chuva/.test(q("fogoTitulo").textContent) === (rp.riscos_com_rota_preventiva.length === 1 && rp.riscos_com_rota_preventiva[0] === "incendio"));
+    teste("fogo: tabela com uma linha por rota", q("tblFogoRotas").querySelectorAll("tbody tr").length === rp.rotas.length);
+    const temFogo = fs.existsSync(path.join(raiz, "data", "financiamento", "fogo", "areas_declaradas.json"));
+    teste("fogo: mapa " + (temFogo ? "com camadas" : "declara lacuna sem coleta"), temFogo ? true : /lacuna declarada/.test(q("svgFogoLacuna").textContent));
+    teste("fogo: créditos das duas figuras", /Fonte:/.test(q("boxFogoRotas").textContent) && /Fonte:/.test(q("boxFogoMapa").textContent));
+  } catch (e) { teste("fogo: bloco (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (financiamento) OK — rotas, faixa do defeso, mapas, resposta, compromissos, fontes, E10 e soma de preparação.");
   process.exit(falhas.length ? 1 : 0);
 }, 1200);
