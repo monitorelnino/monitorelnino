@@ -37,6 +37,8 @@ ANO_CORRENTE = 2026
 ANOS = list(range(2019, ANO_CORRENTE + 1))
 ARQUIVO = "saude_desfechos/dda_serie.json"
 ARQUIVO_PAINEL = "saude_desfechos/dda_serie_painel.json"
+ARQUIVO_CACHE = "saude_desfechos/dda_cache.json"   # anos históricos lidos (MD5 + série completa); NÃO é baixado pela página
+ANOS_PUBLICOS = (ANO_CORRENTE - 1, ANO_CORRENTE)   # o arquivo que a página baixa só leva o ano corrente e o anterior; o canal já resume 2019–2025
 API = "https://zenodo.org/api/records/{id}"
 LAI = "25072.030308202612"
 RESSALVA = ("O Monitor não atribui casos ao El Niño; a série é a do Sivep-DDA (Ministério da Saúde) obtida por LAI "
@@ -147,8 +149,7 @@ def _painel() -> set:
 
 def coletar() -> int:
     hoje = _hoje().strftime("%d/%m/%Y")
-    anterior = ler(ARQUIVO) or {}
-    cache = anterior.get("arquivos") or {}
+    cache = (ler(ARQUIVO_CACHE) or {}).get("arquivos") or {}
     try:
         recs = {chave: _registro(id_) for chave, id_ in REGISTROS.items()}
     except Exception as e:  # noqa: BLE001
@@ -197,16 +198,21 @@ def coletar() -> int:
         consolidada[loc] = cons; parcial[loc] = {k: s[k] for k in vaz if k in s}; canal[loc] = canal_endemico(s)
     pre = recs["preliminar"]
     gov = (f"Peso zero (§31/§35). {RESSALVA} Semanas de 2026 até a última presente no depósito; as {SE_INCOMPLETAS} últimas são "
-           "'parciais' (atraso de digitação; a fonte não publica nowcasting). Anos históricos reaproveitados enquanto o MD5 publicado não muda.")
+           "'parciais' (atraso de digitação; a fonte não publica nowcasting). Anos históricos reaproveitados enquanto o MD5 publicado não muda (dda_cache.json).")
     gravar(ARQUIVO, {"_governanca": gov, "gerado_em": hoje, "fonte": f"https://doi.org/10.5281/zenodo.{REGISTROS['preliminar']}",
                      "fonte_primaria": f"Sivep-DDA / Ministério da Saúde, resposta LAI {LAI}",
                      "deposito_publicado_em": (pre.get("metadata") or {}).get("publication_date"), "indicador": "dda",
                      "ano_corrente": ANO_CORRENTE, "anos_canal": ANOS_CANAL, "se_incompletas": SE_INCOMPLETAS,
-                     "serie": consolidada, "parcial": parcial, "canal_endemico": canal, "cobertura": dict(cobertura),
-                     "arquivos": arquivos})
+                     "anos_publicados": list(ANOS_PUBLICOS),
+                     "serie": {loc: {k: v for k, v in s.items() if int(k[:4]) in ANOS_PUBLICOS} for loc, s in consolidada.items()},
+                     "parcial": parcial, "canal_endemico": canal,
+                     "cobertura": {loc: {k: v for k, v in c.items() if int(k[:4]) in ANOS_PUBLICOS} for loc, c in cobertura.items()}})
+    gravar(ARQUIVO_CACHE, {"_governanca": "Cache de leitura do Sivep-DDA (14/09/2026): MD5 publicado e série completa por ano, para não baixar de novo o que não mudou. Série integral 2019–2026 (BR + UFs) fica aqui; a página só baixa dda_serie.json.",
+                           "gerado_em": hoje, "arquivos": arquivos})
     gravar(ARQUIVO_PAINEL, {"_governanca": gov + " Só os municípios do painel amostral (casamento por prefixo IBGE de 6 dígitos).",
                             "gerado_em": hoje, "fonte": f"https://doi.org/10.5281/zenodo.{REGISTROS['preliminar']}",
-                            "municipios": {m: {"semanas": dict(sorted(s.items()))} for m, s in pain.items()}})
+                            "anos_publicados": list(ANOS_PUBLICOS),
+                            "municipios": {m: {"semanas": {k: v for k, v in sorted(s.items()) if int(k[:4]) in ANOS_PUBLICOS}} for m, s in pain.items()}})
     log_busca("DOU", 1, urls or [API.format(id=REGISTROS['preliminar'])], "registro", nivel="nacional",
               n_resultados=len(serie), resultados=f"DDA: {len(serie)} localidade(s) (BR + UFs), {len(pain)} município(s) do painel, anos {ANOS[0]}–{ANOS[-1]}")
     print(f"✓ DDA: BR + {len(serie) - 1} UF(s), {len(pain)}/{len(painel)} município(s) do painel")
@@ -251,7 +257,9 @@ def autoteste() -> int:
                 _csv_do_zip(buf.getvalue()); return False
             except ValueError:
                 return True
-    return rodar_autoteste({"detecção de colunas por padrão": t1, "coluna ausente falha alto (nunca adivinha)": t2,
+    def t9():
+        return ANOS_PUBLICOS == (2025, 2026) and ARQUIVO_CACHE != ARQUIVO and all(int(k[:4]) in ANOS_PUBLICOS for k in {"2025-01", "2026-23"})
+    return rodar_autoteste({"arquivo público só com ano corrente e anterior; cache separado": t9, "detecção de colunas por padrão": t1, "coluna ausente falha alto (nunca adivinha)": t2,
                             "parse: BR e UF, soma das faixas, cobertura, UF inválida ignorada": t3,
                             "painel: casamento por prefixo de 6 dígitos": t4, "canal endêmico 2019–2025": t5,
                             "últimas 4 SE do ano corrente vazadas": t6, "ressalva, LAI e registro": t7,
