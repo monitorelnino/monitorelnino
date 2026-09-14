@@ -105,6 +105,7 @@ def main():
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
     rodar([sys.executable, "coletar_desfechos_saude.py"])               # 07/09/2026 (§8): desfechos — InfoDengue 2019–2026 para o painel; peso zero
+    rodar([sys.executable, "coletar_desfechos_saude.py", "--doenca", "chikungunya"])   # 14/09/2026: mesmo coletor, disease=chikungunya → chik_*.json; peso zero
     rodar([sys.executable, "coletar_srag_gripe.py"])                      # 09/09/2026 (§36): SRAG/SG nacional e por UF, InfoGripe; peso zero
     rodar([sys.executable, "coletar_boletim_ms_dengue.py"])           # 10/09/2026 (§36): dengue por município, boletim semanal da SES-MS; peso zero
     rodar([sys.executable, "coletar_boletim_df_arboviroses.py"])      # 10/09/2026 (§36): arboviroses por Região de Saúde, informe semanal da SES-DF; peso zero

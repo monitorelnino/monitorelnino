@@ -79,6 +79,22 @@ setTimeout(() => {
     sel.value = ""; sel.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
     teste("perfil do estado: some ao limpar a seleção", perfil.hidden === true);
   } catch (e) { teste("seletor de estado", false); }
+  // 14/09/2026: seletor de doença do comparador/mapa — chikungunya sem arquivo chik_* deve virar lacuna declarada, nunca gráfico inventado
+  try {
+    const sd = q("selDoencaDesf");
+    teste("seletor de doença: dengue e chikungunya", sd && [...sd.options].map(o => o.value).join(",") === "dengue,chikungunya");
+    const temChik = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "chik_serie_painel.json"));
+    sd.value = "chikungunya"; sd.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
+    const opSem = q("selComparadorDengue").querySelector('option[value="semanal"]');
+    teste("chikungunya: opção 'semanal por capitais' some (sem série por capitais)", opSem && opSem.hidden === true);
+    if (!temChik) {
+      teste("chikungunya sem coleta: legenda declara lacuna, mapa sem pontos", /ainda não coletada/.test(q("legDesfAcum").textContent) && q("mapaDesf").querySelectorAll("circle").length === 0);
+    } else {
+      teste("chikungunya coletada: mapa com pontos do painel", q("mapaDesf").querySelectorAll("circle").length > 0);
+    }
+    sd.value = "dengue"; sd.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
+    teste("volta para dengue: mapa do painel redesenhado com pontos", q("mapaDesf").querySelectorAll("circle").length > 0 && opSem.hidden === false);
+  } catch (e) { teste("seletor de doença", false); console.log("     ", e && e.message); }
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
   // teste de renderização correspondente removido daqui.
   // gesto: tooltip ao passar o mouse num estado
