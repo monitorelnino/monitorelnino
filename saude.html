@@ -63,21 +63,16 @@
     <h2>O que aconteceu — desfechos em saúde</h2>
     <p class="hint">Terceira coluna, ao lado do índice e do contador: a curva observada de dengue nos 313 municípios do painel amostral, semana a semana, sobre o canal endêmico das mesmas semanas de 2019–2025 (2024 à parte). Peso zero, sem nota. <strong>O Monitor não atribui casos ao El Niño.</strong></p>
     <div class="grade-figuras">
-      <figure class="figura figura--grafico figura--largo" id="boxDesfSemanal">
-        <h3 class="figura-titulo">Casos notificados por semana · painel amostral · 2026 sobre o canal endêmico</h3>
-        <p class="figura-sub">Semanas 01–34/2026 (últimas 4 excluídas) · casos notificados de dengue · painel amostral · nº de casos</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cDesfSemanal" aria-label="Casos de dengue por semana epidemiológica de 2026 nos municípios do painel, com o canal endêmico (mediana, p75 e p90 de 2019–2025) e a faixa de nowcasting nas semanas incompletas"></canvas></div>
-        <div class="map-legend" id="legDesfSemanal"></div>
-      </figure>
       <figure class="figura figura--grafico figura--largo" id="boxDesfAcum">
-        <h3 class="figura-titulo">Comparador anual · 2026 × 2025 × 2024</h3>
-        <p class="figura-sub">Casos de dengue, 2026 × 2025 × 2024 · acumulado (painel amostral) ou semanal (27 capitais) · nº de casos</p>
+        <h3 class="figura-titulo">Casos de dengue: painel amostral e capitais</h3>
+        <p class="figura-sub">Painel amostral (313 municípios) e 27 capitais · semanal, sobre o canal endêmico, ou acumulado anual · nº de casos</p>
         <label class="sr-only" for="selComparadorDengue">Visualização</label>
-        <select id="selComparadorDengue" class="seletor u-mb-2" aria-label="Escolher a visualização do comparador anual">
+        <select id="selComparadorDengue" class="seletor u-mb-2" aria-label="Escolher a visualização">
+          <option value="semanal_painel" selected>Semanal · painel amostral, sobre o canal endêmico</option>
           <option value="acum">Acumulado no ano · painel amostral</option>
           <option value="semanal">Semanal por capitais · 27 capitais</option>
         </select>
-        <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Escada do acumulado anual de casos no painel amostral, 2026, 2025 e 2024"></canvas></div>
+        <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Casos de dengue, conforme a visualização escolhida: semanal no painel amostral sobre o canal endêmico, acumulado anual no painel amostral, ou semanal nas 27 capitais"></canvas></div>
         <div class="map-legend" id="legDesfAcum"></div>
       </figure>
       <figure class="figura figura--mapa" id="boxDesfMapa">
@@ -178,7 +173,7 @@
 </div>
 
 <script src="assets/colunas.js?v=81563b62" defer></script>
-<script src="assets/js/saude.js?v=50aeab53" defer></script>
+<script src="assets/js/saude.js?v=8221d18b" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
