@@ -6,6 +6,11 @@
 
 [build]
   publish = "."
+  # 14/09/2026 (1º ensaio de publicação): o pós-processamento do Netlify reescrevia o HTML ao servir
+  # (Pretty URLs, aspas de atributos), e o site no ar deixava de bater byte a byte com o manifesto.
+  # Site estático já otimizado no repositório: nada a pós-processar. Servido = mesclado, sempre.
+[build.processing]
+  skip_processing = true
   # Sem comando de build: os arquivos data/*.json já vêm prontos no
   # repositório (gerados pelo pipeline Python/Node antes do commit,
   # tipicamente pela Action semanal). Não há passo de compilação do site.

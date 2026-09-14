@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §42 · Netlify sem pós-processamento: o servido é byte a byte o mesclado · 14/09/2026
+
+Nenhuma alteração de método. Classe **infra**. No 1º ensaio de publicação (15h25 UTC), `verificar_publicado.js` provou que o Netlify reescrevia o HTML ao servir (Pretty URLs; aspas de atributos `"`→`'`), e 8 páginas deixavam de bater com `MANIFEST_SHA256.txt`. Em vez de normalizar cada reescrita, `netlify.toml` passa a declarar `[build.processing] skip_processing = true` — o site já é estático e otimizado no repositório; servir exatamente o que foi mesclado é o que a verificação de integridade exige. Vale para prévia, ensaio e lançamento.
+
 ## §41 · Ensaio de publicação no domínio (noindex, por botão) e verificador do site publicado · 14/09/2026
 
 Nenhuma alteração de método nem de conteúdo. Classe **infraestrutura** (PROTOCOLO §7, complemento). Pedido de Patricia: "exercício de publicar o site" com volta à cortina quando quiser.
