@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §39 · Doenças diarreicas agudas (DDA): coletor, figura e correção do catálogo · 14/09/2026
+
+Nenhuma alteração de método; nenhum número do índice muda (peso zero, §31/§35). Classe **código** (PROTOCOLO §3.2), item 1 do §5 das instruções de 14/09.
+
+- **A fonte do catálogo não existia.** Sondagem no runner (relatório `dda_opendatasus`): o OpenDataSUS deixou de ser CKAN (`/api/3/…` devolve HTML) e não hospeda o Sivep-DDA. O catálogo dizia "OpenDataSUS (Sivep-DDA)" sem prova — corrigido para o que é verdade; a entrada de leptospirose ganhou a mesma ressalva (a verificar).
+- **Fonte real, com proveniência:** resposta do Ministério da Saúde a pedido LAI (processo 25072.030308202612) redistribuída no Zenodo por Raphael Saldanha (Fiocruz / Observatório de Clima e Saúde), CC BY 4.0, com MD5 publicado, codebook e manifesto — histórico 2008–2024 (registro 20752238) e preliminar 2025–2026 (registro 20752301, atualização mensal). Formato verificado no runner (relatório `dda_zenodo`): CSV, 26 colunas, agregado semanal por município (IBGE de 6 dígitos), 291 dos 313 municípios do painel presentes, semanas 1–23 de 2026.
+- `coletar_dda.py`: segue `links.latest` de cada registro, confere o MD5 de cada arquivo (diferente = lacuna, nunca dado), localiza colunas por padrão e falha alto se um papel obrigatório não casar; casos = soma das cinco faixas etárias (atendimentos em unidades sentinela, e o rótulo do eixo diz isso); série BR + 27 UFs e série do painel (`dda_serie.json`, `dda_serie_painel.json`); canal endêmico 2019–2025 e últimas 4 semanas do ano corrente vazadas como "parciais" — a fonte não publica nowcasting, e a legenda nunca usa a palavra. Anos históricos reaproveitados enquanto o MD5 não muda. Autoteste com 8 casos.
+- `saude.html`: figura "Diarreicas agudas por semana · Brasil" no mesmo componente da respiratória; `assets/js/saude.js` ganhou um renderizador único de série nacional (SRAG/SG e DDA são configurações dele — nada duplicado), com o crédito de cada figura ainda declarado literalmente (o portão de saúde procura o literal).
+- `atualizar.py` chama o coletor após o SRAG. `diagnostico_sinais.yml` ganha um passo que roda o coletor isolado, sem commit, para conferir a primeira leitura real. Runtime de saúde cobre a figura nos dois estados (sem arquivo → lacuna declarada visível; com arquivo → canvas). Bateria local completa verde, Portão 18 incluído.
+
 ## §38 · Trava de concorrência na rodada de atualização · 14/09/2026
 
 Nenhuma alteração de método; nenhum número do índice muda. Classe **código** (PROTOCOLO §3.2), correção de risco operacional.

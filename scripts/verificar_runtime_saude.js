@@ -108,6 +108,11 @@ setTimeout(() => {
     teste("SG: " + (temSG ? "canvas visível com dado" : "lacuna declarada visível"), temSG ? (e1.cv && !e1.svg) : (e1.svg && !e1.cv && /síndrome gripal.*lacuna declarada/.test(e1.txt)));
     si.value = "srag"; si.dispatchEvent(new dom.window.Event("change", { bubbles: true })); let e2 = estado();
     teste("volta para SRAG: estado idêntico ao inicial", e2.cv === e0.cv && e2.svg === e0.svg);
+    // 14/09/2026: figura de DDA — mesmo componente e renderizador da respiratória; sem dda_serie.json, lacuna declarada visível
+    const temDDA = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "dda_serie.json"));
+    const eD = {svg: !q("svgDDALacuna").hidden, cv: !q("cDDA").hidden, txt: q("svgDDALacuna").textContent};
+    teste("DDA: " + (temDDA ? "canvas visível com dado" : "lacuna declarada visível"), temDDA ? (eD.cv && !eD.svg) : (eD.svg && !eD.cv && /DDA.*lacuna declarada/.test(eD.txt)));
+    teste("DDA: legenda nunca fala em nowcasting (a fonte não estima)", !/nowcasting/.test(q("legDDA").textContent));
   } catch (e) { teste("seletor respiratório", false); console.log("     ", e && e.message); }
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
   // teste de renderização correspondente removido daqui.

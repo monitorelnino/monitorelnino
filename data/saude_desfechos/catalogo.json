@@ -13,8 +13,8 @@
    "comprometimento": "água; saneamento",
    "sistema": "Sivep-DDA / Sinan (surtos DTHA); SISAB (atendimentos APS)",
    "periodicidade": "semanal",
-   "fonte_aberta": "OpenDataSUS (Sivep-DDA: agregado semanal por município) · TabNet",
-   "status_coleta": "candidato"
+   "fonte_aberta": "Sem publicação aberta do MS (o OpenDataSUS não hospeda o Sivep-DDA — verificado em 14/09/2026). Resposta LAI do MS (processo 25072.030308202612) redistribuída no Zenodo por R. Saldanha/Fiocruz, CC BY 4.0, MD5 publicado — coletado em 14/09/2026 (semanal por município, unidades sentinela; depósito preliminar, atualização mensal)",
+   "status_coleta": "coletado"
   },
   {
    "id": "dtha",
@@ -58,7 +58,7 @@
    "comprometimento": "água",
    "sistema": "Sinan",
    "periodicidade": "semanal",
-   "fonte_aberta": "OpenDataSUS Sinan",
+   "fonte_aberta": "OpenDataSUS Sinan (a verificar: o portal deixou de ser CKAN em 2026 — descobrir a API nova antes do coletor)",
    "status_coleta": "candidato"
   },
   {

@@ -107,6 +107,7 @@ def main():
     rodar([sys.executable, "coletar_desfechos_saude.py"])               # 07/09/2026 (§8): desfechos — InfoDengue 2019–2026 para o painel; peso zero
     rodar([sys.executable, "coletar_desfechos_saude.py", "--doenca", "chikungunya"])   # 14/09/2026: mesmo coletor, disease=chikungunya → chik_*.json; peso zero
     rodar([sys.executable, "coletar_srag_gripe.py"])                      # 09/09/2026 (§36): SRAG/SG nacional e por UF, InfoGripe; peso zero
+    rodar([sys.executable, "coletar_dda.py"])                             # 14/09/2026 (§39): DDA nacional e por UF, Sivep-DDA via LAI (Zenodo); peso zero
     rodar([sys.executable, "coletar_boletim_ms_dengue.py"])           # 10/09/2026 (§36): dengue por município, boletim semanal da SES-MS; peso zero
     rodar([sys.executable, "coletar_boletim_df_arboviroses.py"])      # 10/09/2026 (§36): arboviroses por Região de Saúde, informe semanal da SES-DF; peso zero
     rodar([sys.executable, "coletar_boletim_pe_arboviroses.py"])      # 10/09/2026 (§36): arboviroses, TOTAIS ESTADUAIS, informe semanal do CIEVS-PE (tabela municipal é imagem); peso zero

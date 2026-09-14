@@ -119,6 +119,19 @@ jobs:
               if [ -f "$f" ]; then echo "--- $f ---"; python3 -c "import json;d=json.load(open('$f'));print(json.dumps(list((d.get('serie') or {}).values())[-1] if d.get('serie') else d, ensure_ascii=False, indent=1)[:3000])"; fi
             done
           } 2>&1 | tee /tmp/coletores_saude.log
+      # 14/09/2026 (§39): primeira execução REAL do coletor de DDA (Zenodo, MD5 conferido), isolada e sem
+      # commit — mostra o que ele lê e grava, para conferir antes da rodada semanal.
+      - name: Rodar coletar_dda.py isolado (sem commit)
+        continue-on-error: true
+        timeout-minutes: 15
+        run: |
+          set -o pipefail
+          { python3 coletar_dda.py || true
+            echo "=== arquivos gerados ==="; ls -la data/saude_desfechos/dda_*.json 2>&1 || echo "(nenhum)"
+            for f in data/saude_desfechos/dda_serie.json; do
+              [ -f "$f" ] && python3 -c "import json;d=json.load(open('$f'));br=d['serie']['BR'];print('semanas BR:',len(br));print('2026:',{k:v for k,v in sorted(br.items()) if k.startswith('2026')});print('parcial:',d['parcial']['BR']);print('canal SE10:',d['canal_endemico']['BR'].get('10'));print('UFs:',sorted(k for k in d['serie'] if k!='BR'))"
+            done
+          } 2>&1 | tee /tmp/coletor_dda.log
       - name: Publicar resultado no repositório privado
         if: always()
         env:
@@ -134,6 +147,7 @@ jobs:
           cp /tmp/saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_fontes_saude.txt" 2>/dev/null || true
           cp /tmp/listagem_df.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_listagem_df.txt" 2>/dev/null || true
           cp /tmp/boletim_infogripe.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_boletim_infogripe.txt" 2>/dev/null || true
+          cp /tmp/coletor_dda.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_coletor_dda_isolado.txt" 2>/dev/null || true
           cp /tmp/dda_zenodo.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_zenodo.txt" 2>/dev/null || true
           cp /tmp/dda_opendatasus.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_opendatasus.txt" 2>/dev/null || true
           cp /tmp/coletores_saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_coletores_saude_isolado.txt" 2>/dev/null || true
