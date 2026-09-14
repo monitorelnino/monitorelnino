@@ -447,24 +447,6 @@ if (document.getElementById('mapConsistencia')) {
 // MARE — ranking com componentes ponderados
 // =========================================================
 
-// =========================================================
-// Áreas temáticas cobertas pelos instrumentos estaduais
-// =========================================================
-const AREAS = [
-  {label:'Grupo Seca (COBRADE 1.4.1): estiagem, seca e segurança hídrica', cor:MonitorMapas.PALETA.risco.seca, ufs:['AC','AL','AM','AP','BA','CE','DF','GO','PA','PE','PI','SE']},
-  {label:'Grupo Seca · frente de incêndio florestal (1.4.1.3)', cor:MonitorMapas.PALETA.risco.fogo, ufs:['BA','GO','MA','MS','MT','RO','RR','TO']},
-  {label:'Família das chuvas (1.2-1.3): chuvas intensas e enchentes', cor:MonitorMapas.PALETA.risco.chuvas, ufs:['ES','MG','PR','RJ','RS','SP']},
-  {label:'Multirrisco integrado', cor:MonitorMapas.PALETA.risco.multi, ufs:['SC']},
-];
-new Chart(document.getElementById('chartAreas'), {
-  type:'bar',
-  data:{ labels: AREAS.map(a=>a.label),
-    datasets:[{ data: AREAS.map(a=>a.ufs.length), backgroundColor: AREAS.map(a=>a.cor), borderRadius:4 }] },
-  options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{legend:{display:false},
-      tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(AREAS[ctx.dataIndex].ufs) } }},
-    scales:{ x:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{stepSize:2}, title:{display:true, text:'nº de UFs', color:MonitorMapas.cor('muted'), font:{size:12}} },
-      y:{ grid:{display:false}, ticks:{font:{size:12.5}} } } }
-});
 
 // (financiamento e transferências — mapa do dinheiro e fontes de monitoramento — migraram para financiamento.html, E9)
 
@@ -513,7 +495,7 @@ function creditosAntecipacao(){
    ['boxPrioritarios', ['Monitor El Niño Brasil', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
    ['boxDonut', ['Monitor El Niño Brasil', 'instrumentos estaduais verificados']], ['boxRegion', ['Monitor El Niño Brasil', 'instrumentos estaduais verificados']],
    ['boxCapitals', ['Monitor El Niño Brasil', '27 capitais verificadas']], ['boxDeclarado', ['MUNIC/IBGE', 'ICM/SEDEC', 'Monitor El Niño Brasil']],
-   ['boxAreas', ['Monitor El Niño Brasil', 'classificação COBRADE']]].forEach(([id, fontes]) => MonitorMapas.credito(id, {fontes, data: d}));
+   ].forEach(([id, fontes]) => MonitorMapas.credito(id, {fontes, data: d}));
 }
 function renderResposta(){
   creditosAntecipacao();
