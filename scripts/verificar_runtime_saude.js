@@ -68,6 +68,17 @@ setTimeout(() => {
   // 'O que a União publicou' migrou para pesquisadores.html em 13/09/2026 (proposta de
   // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   teste("tabela das 27 UFs", d.querySelectorAll("#tblUF tbody tr").length === 27);
+  // 13/09/2026 (proposta de enxugamento, Manus AI): seletor de estado logo após o título
+  try {
+    const sel = q("selEstadoSaude");
+    teste("seletor de estado: 27 opções (+ 1 em branco)", sel && sel.options.length === 28);
+    sel.value = "SC";
+    sel.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
+    const perfil = q("perfilEstadoSaude");
+    teste("perfil do estado: aparece ao selecionar, com 4 cartões", perfil && !perfil.hidden && perfil.querySelectorAll(".cartao").length === 4);
+    sel.value = ""; sel.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
+    teste("perfil do estado: some ao limpar a seleção", perfil.hidden === true);
+  } catch (e) { teste("seletor de estado", false); }
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
   // teste de renderização correspondente removido daqui.
   // gesto: tooltip ao passar o mouse num estado
