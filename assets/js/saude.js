@@ -4,6 +4,7 @@ let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PA
 // Nulos enquanto o coletor não rodar: o comparador e o mapa declaram lacuna, nunca preenchem.
 let DESF_CHIK = null, DESF_CANAL_CHIK = null;
 let SG = null;   // 14/09/2026: síndrome gripal (sg_serie.json, mesmo coletor do SRAG); nulo = lacuna declarada
+let DDA = null;  // 14/09/2026: doenças diarreicas agudas (dda_serie.json, Sivep-DDA via LAI/Zenodo); nulo = lacuna declarada
 const DOENCAS_DESF = {
   dengue:      {rotulo: 'dengue',      dados: () => ({serie: DESF,      canal: DESF_CANAL}),      capitais: true},
   chikungunya: {rotulo: 'chikungunya', dados: () => ({serie: DESF_CHIK, canal: DESF_CANAL_CHIK}), capitais: false}   // sem série por capitais ainda (coletar_saude.py é só dengue)
@@ -26,9 +27,11 @@ async function __load(){
   // continua aqui: alimenta o gráfico 'SRAG por semana', mantido na página principal.
   try { SRAG = await fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { SRAG = null; }
   try { SG = await fetch('data/saude_desfechos/sg_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { SG = null; }
+  try { DDA = await fetch('data/saude_desfechos/dda_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { DDA = null; }
   __init();
   renderDesfechos((document.getElementById('selDoencaDesf') || {}).value || 'dengue');
   renderSRAG((document.getElementById('selIndicadorSRAG') || {}).value || 'srag');
+  renderDDA();
 }
 
 const fonteFigura = MonitorMapas.credito;
@@ -272,42 +275,54 @@ function renderDesfechos(doenca){
 
 // ===== SRAG por semana, Brasil (§36; InfoGripe). Peso zero. O Monitor não atribui casos ao El Niño. =====
 // 14/09/2026: parametrizada por indicador (SRAG | SG) — mesmo CSV do InfoGripe, mesmo desenho; sem arquivo = lacuna declarada
-let __sragChart = null;
+const __serieCharts = {};
 const INDICADORES_RESP = {
-  srag: {rotulo: 'SRAG', eixo: 'casos SRAG · Brasil', fonte: ['InfoGripe (Fiocruz/FGV), Sivep-Gripe'], dados: () => SRAG},
-  sg:   {rotulo: 'síndrome gripal', eixo: 'casos de síndrome gripal · Brasil', fonte: ['InfoGripe (Fiocruz/FGV)'], dados: () => SG}
+  srag: {rotulo: 'SRAG', eixo: 'casos SRAG · Brasil', fonte: ['InfoGripe (Fiocruz/FGV), Sivep-Gripe'], dados: () => SRAG, motivo: 'A fonte (InfoGripe/Fiocruz) não respondeu nas últimas tentativas de coleta.', segunda: 'nowcasting (últimas 4 semanas)', chaveSegunda: 'nowcasting'},
+  sg:   {rotulo: 'síndrome gripal', eixo: 'casos de síndrome gripal · Brasil', fonte: ['InfoGripe (Fiocruz/FGV)'], dados: () => SG, motivo: 'A fonte (InfoGripe/Fiocruz) não respondeu nas últimas tentativas de coleta.', segunda: 'nowcasting (últimas 4 semanas)', chaveSegunda: 'nowcasting'}
 };
-function renderSRAG(ind){
-  ind = INDICADORES_RESP[ind] ? ind : 'srag'; const cfg = INDICADORES_RESP[ind]; const D = cfg.dados();
-  const cv = document.getElementById('cSRAG'), svg = document.getElementById('svgSRAGLacuna');
-  if (__sragChart) { if (typeof __sragChart.destroy === 'function') __sragChart.destroy(); __sragChart = null; }
+// 14/09/2026: DDA usa o MESMO componente e o mesmo renderizador da figura respiratória (série nacional sobre o canal
+// endêmico); só mudam os textos e a segunda barra — a fonte não publica nowcasting, então as últimas 4 semanas são
+// mostradas como 'parciais' (valor bruto, atraso de digitação), nunca como estimativa.
+const INDICADOR_DDA = {rotulo: 'DDA', eixo: 'atendimentos de DDA em unidades sentinela · Brasil', fonte: ['Sivep-DDA (Ministério da Saúde) via LAI, depósito Zenodo (Saldanha/Fiocruz)'], dados: () => DDA,
+  motivo: 'A fonte (Sivep-DDA via LAI, depósito Zenodo) não pôde ser lida nas últimas tentativas de coleta.', segunda: 'parciais (últimas 4 semanas — sem estimativa)', chaveSegunda: 'parcial'};
+function renderSerieNacional(cfg, ids){
+  const D = cfg.dados();
+  const cv = document.getElementById(ids.canvas), svg = document.getElementById(ids.svg);
+  if (__serieCharts[ids.canvas]) { if (typeof __serieCharts[ids.canvas].destroy === 'function') __serieCharts[ids.canvas].destroy(); __serieCharts[ids.canvas] = null; }
   const br = D && D.serie && D.serie.BR;
   if (!br) {
     // 11/09/2026: sem arquivo a figura ficava como moldura vazia, sem dizer nada a quem lê — o pior desfecho possível.
-    // A fonte InfoGripe não responde desde 09/09 (ver scripts/diagnostico_fontes_saude.py). Ausência é DECLARADA na
-    // própria mídia (o portão de figuras só admite título, legenda e crédito no cartão): canvas some, SVG de lacuna aparece.
+    // Ausência é DECLARADA na própria mídia (o portão de figuras só admite título, legenda e crédito no cartão): canvas some, SVG de lacuna aparece.
     if (cv) cv.hidden = true;
-    if (svg) { svg.hidden = false; svg.setAttribute('aria-label', 'Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada; a fonte InfoGripe não respondeu nas últimas tentativas de coleta');
-      const t1 = document.getElementById('txtSRAGLacuna1'), t2 = document.getElementById('txtSRAGLacuna2');
+    if (svg) { svg.hidden = false; svg.setAttribute('aria-label', 'Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada; ' + cfg.motivo);
+      const t1 = document.getElementById(ids.txt1), t2 = document.getElementById(ids.txt2);
       if (t1) { t1.textContent = 'Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada'; t1.setAttribute('fill', MonitorMapas.cor('muted')); }
-      if (t2) { t2.textContent = 'A fonte (InfoGripe/Fiocruz) não respondeu nas últimas tentativas de coleta.'; t2.setAttribute('fill', MonitorMapas.cor('muted')); } }
-    MonitorMapas.legenda('legSRAG', [{cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta de ' + cfg.rotulo + ' até o corte'}]);
-    fonteFigura('boxSRAG', {fontes: cfg.fonte, data: null});
+      if (t2) { t2.textContent = cfg.motivo; t2.setAttribute('fill', MonitorMapas.cor('muted')); } }
+    MonitorMapas.legenda(ids.leg, [{cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta de ' + cfg.rotulo + ' até o corte'}]);
+    ids.credito({fontes: cfg.fonte, data: null});
     return;
   }
   if (svg) svg.hidden = true; if (cv) cv.hidden = false;
-  const canal = (D.canal_endemico || {}).BR || {}; const now = (D.nowcasting || {}).BR || {};
+  const canal = (D.canal_endemico || {}).BR || {}; const seg = (D[cfg.chaveSegunda] || {}).BR || {};
   const ano = D.ano_corrente; const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
-  const ate = Math.max(...Object.keys(br).concat(Object.keys(now)).filter(k => k.startsWith(String(ano))).map(k => +k.split('-')[1]));
+  const ate = Math.max(...Object.keys(br).concat(Object.keys(seg)).filter(k => k.startsWith(String(ano))).map(k => +k.split('-')[1]));
   const labels = semanas.slice(0, ate);
   MonitorMapas.padraoGraficos(window.Chart);
-  __sragChart = new Chart(cv, {data: {labels: labels.map(w => 'SE ' + w), datasets: [
+  __serieCharts[ids.canvas] = new Chart(cv, {data: {labels: labels.map(w => 'SE ' + w), datasets: [
       {type: 'bar', label: 'consolidado', data: labels.map(w => (br[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, order: 2},
-      {type: 'bar', label: 'nowcasting', data: labels.map(w => (now[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2024'], order: 2},
+      {type: 'bar', label: cfg.segunda, data: labels.map(w => (seg[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2024'], order: 2},
       {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => (canal[w] || {}).mediana ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
       {type: 'line', label: 'p90', data: labels.map(w => (canal[w] || {}).p90 ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: cfg.eixo}}}}});
-  MonitorMapas.legenda('legSRAG', [{cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, rotulo: 'consolidado'}, {cor: MonitorMapas.PALETA.anos['2024'], rotulo: 'nowcasting (últimas 4 semanas)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
-  fonteFigura('boxSRAG', {fontes: cfg.fonte, data: D.gerado_em, url: D.fonte});
+  MonitorMapas.legenda(ids.leg, [{cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, rotulo: 'consolidado'}, {cor: MonitorMapas.PALETA.anos['2024'], rotulo: cfg.segunda}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
+  ids.credito({fontes: cfg.fonte, data: D.gerado_em, url: D.fonte});
+}
+function renderSRAG(ind){
+  ind = INDICADORES_RESP[ind] ? ind : 'srag';
+  renderSerieNacional(INDICADORES_RESP[ind], {credito: p => fonteFigura('boxSRAG', p), canvas: 'cSRAG', svg: 'svgSRAGLacuna', txt1: 'txtSRAGLacuna1', txt2: 'txtSRAGLacuna2', leg: 'legSRAG'});
+}
+function renderDDA(){
+  if (!document.getElementById('boxDDA')) return;
+  renderSerieNacional(INDICADOR_DDA, {credito: p => fonteFigura('boxDDA', p), canvas: 'cDDA', svg: 'svgDDALacuna', txt1: 'txtDDALacuna1', txt2: 'txtDDALacuna2', leg: 'legDDA'});
 }
 (function(){ const sel = document.getElementById('selIndicadorSRAG'); if (sel) sel.addEventListener('change', () => renderSRAG(sel.value)); })();
