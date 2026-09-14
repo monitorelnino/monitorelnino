@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §42-b · Verificador reconhece o "Netlify HUD" · 14/09/2026
+
+Com `skip_processing` ligado, o 2º ensaio (15h56 UTC) mostrou que a divergência restante não era pós-processamento: o Netlify **injeta** `<script async src="/.netlify/scripts/hud?variant=public">` em todas as páginas ao servir (recurso de painel, "Netlify HUD") e reserializa um atributo com aspas simples. `verificar_publicado.js` passa a reconhecer essa injeção pelo nome, compará-la à parte (páginas idênticas ao manifesto depois de removê-la) e reportá-la como achado próprio: aviso no ensaio, **bloqueante no lançamento**. Desligar é ação no painel do Netlify (não há como pelo repositório).
+
 ## §42 · Netlify sem pós-processamento: o servido é byte a byte o mesclado · 14/09/2026
 
 Nenhuma alteração de método. Classe **infra**. No 1º ensaio de publicação (15h25 UTC), `verificar_publicado.js` provou que o Netlify reescrevia o HTML ao servir (Pretty URLs; aspas de atributos `"`→`'`), e 8 páginas deixavam de bater com `MANIFEST_SHA256.txt`. Em vez de normalizar cada reescrita, `netlify.toml` passa a declarar `[build.processing] skip_processing = true` — o site já é estático e otimizado no repositório; servir exatamente o que foi mesclado é o que a verificação de integridade exige. Vale para prévia, ensaio e lançamento.
