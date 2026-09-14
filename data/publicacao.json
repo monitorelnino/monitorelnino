@@ -2,5 +2,7 @@
  "_governanca": "Flag de lançamento (AUDITORIA_EDITORIAL 14/09/2026, §1.1). Enquanto indexar=false, todas as páginas levam <meta name=robots noindex>, todo deploy leva X-Robots-Tag: noindex e o verificador do domínio FALHA se o noindex faltar. Só a editoria muda para true (PR).",
  "indexar": false,
  "decidido_em": "14/09/2026",
- "decidido_por": "editoria"
+ "decidido_por": "editoria",
+ "dominio": "senha",
+ "dominio_nota": "14/09/2026 (editoria): o domínio serve o site completo atrás de senha (Basic-Auth no servidor + véu no navegador, a mesma senha da prévia), em vez da página de rosto. Continua noindex. \"cortina\" = página de rosto (ramo publico); \"aberto\" = lançamento (indexar=true)."
 }

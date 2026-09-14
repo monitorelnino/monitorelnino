@@ -27,7 +27,9 @@ const falhas = []; const ok = (nome, cond, extra = "") => { console.log((cond ? 
 async function get(url, tentativas = 3) {
   for (let i = 0; i < tentativas; i++) {
     try {
-      const r = await fetch(url, { redirect: "manual", headers: { "User-Agent": "Monitor El Nino Brasil (verificar_publicado)" } });
+      const cab = { "User-Agent": "Monitor El Nino Brasil (verificar_publicado)" };
+      if (process.env.PREVIA_BASIC_AUTH) cab["Authorization"] = "Basic " + Buffer.from(process.env.PREVIA_BASIC_AUTH).toString("base64");   // 14/09: domínio com senha
+      const r = await fetch(url, { redirect: "manual", headers: cab });
       const buf = Buffer.from(await r.arrayBuffer());
       return { status: r.status, headers: r.headers, buf };
     } catch (e) { if (i === tentativas - 1) return { status: 0, headers: new Map(), buf: Buffer.alloc(0), erro: e.message }; await new Promise(r => setTimeout(r, 1500 * (i + 1))); }
@@ -60,6 +62,12 @@ async function get(url, tentativas = 3) {
   const rb = await get(`${BASE}/robots.txt`);
   if (ESPERAR_NOINDEX) ok("robots.txt bloqueia tudo (ensaio)", rb.status === 200 && /Disallow:\s*\/\s*$/m.test(rb.buf.toString()));
   if (ESPERAR_INDEX) ok("robots.txt do site (lançamento), com sitemap", rb.status === 200 && /Sitemap:/i.test(rb.buf.toString()) && !/^Disallow:\s*\/\s*$/m.test(rb.buf.toString()));
+  // 2b. 14/09/2026: quando a editoria publica o domínio em modo "senha" (data/publicacao.json · dominio), a home SEM credencial
+  // tem de responder 401 (Basic-Auth do servidor). Se o plano do Netlify ignorar o cabeçalho, isto falha — e é para falhar.
+  if (PUB.dominio === "senha") {
+    try { const semAuth = await fetch(BASE + "/", { redirect: "manual", headers: { "User-Agent": "Monitor El Nino Brasil (verificar_publicado)" } });
+      ok("modo senha: a home sem credencial responde 401 (Basic-Auth ativo no servidor)", semAuth.status === 401, `status=${semAuth.status}`); } catch (e) { ok("modo senha: teste sem credencial", false, e.message); }
+  }
   // 3. integridade contra o manifesto do repositório
   const manifesto = path.join(raiz, "docs", "MANIFEST_SHA256.txt");
   if (fs.existsSync(manifesto)) {
