@@ -574,7 +574,7 @@ function renderMinha(){
         html += `<p class="u-mb-2"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
       if (_cob !== undefined) html += `<p class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
       html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
-      <p><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="envie-dados.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
+      <p><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="prefeituras.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
       ${ufFinal ? '' : '<p class="u-muted">Selecione o estado para ver o retrato estadual.</p>'}<hr class="card-sep">`;
     }
   }
@@ -618,7 +618,7 @@ function renderMinha(){
       ${(typeof HAB_SET !== 'undefined' && HAB_SET.has((document.getElementById('cidadeInput').value.trim().toLowerCase()) + '|' + ufFinal))
         ? `<p class="aviso-direito"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
         : ''}
-      <p class="note">Encontrou erro, atualização ou um documento que não temos? <a href="envie-dados.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
+      <p class="note">Encontrou erro, atualização ou um documento que não temos? <a href="prefeituras.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
   }
   card.innerHTML = html;
   animarGauges(card);

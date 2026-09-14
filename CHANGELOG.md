@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §45 · Prefeituras: a página do gestor, e a barra na ordem final (auditoria editorial 14/09, onda E1 §1.2 e §1.8; §2.15) · 14/09/2026
+
+Nenhuma alteração de método. Classe **conteúdo/estrutura de página**.
+
+- `envie-dados.html` → **`prefeituras.html`** (redirecionamentos 301 de `/envie-dados.html`, `/envie-dados`, `/para-gestores*`); `assets/js/envie-dados.js` → `prefeituras.js`; sitemap, canônica, Open Graph e portões atualizados. Barra de navegação nas 11 páginas na ordem final: **O monitor · Risco climático · Proteja-se · Defesa civil · Saúde · Financiamento · Prefeituras · Imprensa · Pesquisadores** (o portão de estrutura passa a exigir exatamente isso).
+- Página com um só público (o gestor) e quatro blocos, ~530 palavras estáticas (antes 1.101 e dois públicos): **O que conta** (três frases, com a de §2.15 sobre decreto de alerta/mobilização × decreto de emergência); **Como publicar** (três passos + base legal em uma linha); **O que ainda é possível no período eleitoral** (lista vinda de `data/calendario/dispositivos.json`, o mesmo dado do calendário e da nota da Imprensa; porta "por que há páginas fora do ar →" e link "Sem decretar" para Financiamento); **Envie um documento** (o mesmo formulário Netlify, com a regra de conferência em duas frases). O checklist de sete itens e a base legal longa saíram da face (a metodologia e o calendário os guardam).
+
 ## §44 · Home na espinha narrativa (auditoria editorial 14/09, onda E1 §1.3, §1.6 e o texto de §2.1–§2.4, §2.7, §2.8) · 14/09/2026
 
 Nenhuma alteração de método; nenhum número muda. Classe **conteúdo/estrutura de página**.

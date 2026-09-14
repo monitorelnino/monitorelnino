@@ -20,7 +20,7 @@
   to = "/obrigado.html"
   status = 200
 
-# --- Formulário público (envie-dados.html) ---
+# --- Formulário público (prefeituras.html) ---
 # O formulário usa Netlify Forms (atributo data-netlify="true" na marcação),
 # detectado automaticamente pelo Netlify no build — nenhuma configuração
 # adicional é necessária aqui. As submissões ficam disponíveis no painel
@@ -111,12 +111,21 @@
   to = "/defesa-civil.html"
   status = 301
 
-# v3.1 (07/09/2026): "Para gestores" fundiu-se em "Enviar dados" (condensação pedida pela editoria)
+# v3.1 (07/09/2026): "Para gestores" fundiu-se em "Enviar dados"; 14/09/2026 (auditoria editorial §1.2): "Envie um plano
+# ou decreto" virou a página "Prefeituras" — os endereços antigos redirecionam.
 [[redirects]]
   from = "/para-gestores.html"
-  to = "/envie-dados.html#gestor"
+  to = "/prefeituras.html"
   status = 301
 [[redirects]]
   from = "/para-gestores"
-  to = "/envie-dados.html#gestor"
+  to = "/prefeituras.html"
+  status = 301
+[[redirects]]
+  from = "/envie-dados.html"
+  to = "/prefeituras.html"
+  status = 301
+[[redirects]]
+  from = "/envie-dados"
+  to = "/prefeituras.html"
   status = 301

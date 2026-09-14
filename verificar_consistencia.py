@@ -241,7 +241,7 @@ for _nome, _txt in _alvos.items():
     _falta = [f for f in FAIXAS if f not in _txt]
     if _falta: erro(f"faixas: {_nome} sem {_falta}")
 _site_sem_script = _re.sub(r"<script[\s\S]*?</script>", "", _h_idx).lower()
-for _pag in ["defesa-civil.html", "proteja-se.html", "envie-dados.html", "obrigado.html"]:
+for _pag in ["defesa-civil.html", "proteja-se.html", "prefeituras.html", "obrigado.html"]:
     _site_sem_script += _re.sub(r"<script[\s\S]*?</script>", "", ler_pagina(RAIZ / _pag)).lower()
 _velhos = [a for a in APOSENTADOS if a in _site_sem_script or a in _h_idx.lower()]
 if _velhos: erro(f"faixas: nomenclatura aposentada ainda no site: {_velhos}")
