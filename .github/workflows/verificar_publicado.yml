@@ -34,6 +34,34 @@ jobs:
           M="${{ inputs.modo || 'flag' }}"; F=""
           [ "$M" = "noindex" ] && F="--esperar-noindex"; [ "$M" = "index" ] && F="--esperar-index"; [ "$M" = "neutro" ] && F="--neutro"
           node scripts/verificar_publicado.js --base https://monitorelnino.com.br $F 2>&1 | tee /tmp/verificar_publicado.txt
+      # 14/09/2026: o verificador vê um script /.netlify/scripts/hud injetado em toda página. A editoria não acha o interruptor
+      # ("Collaboration tools" pode não existir num projeto sem Git ligado). Pergunta ao Netlify, pela API, quais campos do
+      # projeto falam de HUD/colaboração/injeção de snippet — só leitura; valores mascarados; nunca imprime o token.
+      - name: Sondar as configurações do projeto no Netlify (HUD, snippets, colaboração) — só leitura
+        continue-on-error: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          {
+            echo "=== getSite: chaves e valores ligados a HUD / drawer / snippet / collab / processing ==="
+            npx --yes netlify-cli@17 api getSite --data "{\"site_id\":\"$NETLIFY_SITE_ID\"}" 2>/dev/null | python3 -c '
+          import json,sys
+          d=json.load(sys.stdin)
+          def walk(o,pre=""):
+              if isinstance(o,dict):
+                  for k,v in o.items(): walk(v,pre+"."+k)
+              elif isinstance(o,list):
+                  for i,v in enumerate(o[:20]): walk(v,pre+"[%d]"%i)
+              else:
+                  if any(t in pre.lower() for t in ("hud","drawer","snippet","collab","processing","pretty","inject","script")): print(pre, "=", str(o)[:120])
+          walk(d)
+          print("(chaves de 1º nível:", ", ".join(sorted(d.keys()))[:1500], ")")'
+            echo; echo "=== snippets do projeto (injeção de script pelo painel) ==="
+            npx --yes netlify-cli@17 api listSiteSnippets --data "{\"site_id\":\"$NETLIFY_SITE_ID\"}" 2>/dev/null | head -c 2000
+          } > /tmp/netlify_config.txt 2>&1
+          sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g; s/${NETLIFY_SITE_ID}/[SITE_ID]/g" /tmp/netlify_config.txt
+          cat /tmp/netlify_config.txt
       - name: Registrar relatório no repositório privado
         if: always()
         env:
@@ -41,6 +69,7 @@ jobs:
         run: |
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
           mkdir -p /tmp/registro/relatorios
+          cp /tmp/netlify_config.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_netlify_config.txt" 2>/dev/null || true
           cp /tmp/verificar_publicado.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado.txt"
           cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
           git add -A && git commit -q -m "verificar_publicado ${GITHUB_SHA::7}" && git push -q
