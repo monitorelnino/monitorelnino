@@ -15,11 +15,13 @@ const falhas = []; const ok = (n, c, x = "") => { console.log((c ? "  ✓ " : " 
   for (const pg of PAGINAS) {
     const page = await ctx.newPage(); const console_ = []; const csp = [];
     page.on("dialog", d => d.accept(cred ? cred.password : "").catch(() => {}));   // véu do navegador: responde uma única vez
-    page.on("console", m => { if (m.type() === "error") console_.push(m.text()); });
+    // 404 de dado opcional (lacuna declarada: srag/sg, fogo/, saude/…) não é erro: o JS trata a ausência; só conta erro de JS mesmo
+    page.on("console", m => { if (m.type() === "error" && !(/Failed to load resource/.test(m.text()) && /\/data\//.test((m.location() || {}).url || ""))) console_.push(m.text()); });
     page.on("requestfailed", r => { if (/Content Security Policy|blocked/i.test(r.failure() ? r.failure().errorText : "")) csp.push(r.url()); });
     try { await page.goto(`${BASE}/${pg}`, { waitUntil: "networkidle", timeout: 45000 }); } catch (e) { ok(`${pg}: carregou`, false, e.message.split("\n")[0]); await page.close(); continue; }
-    const temMapas = await page.evaluate(() => typeof window.MonitorMapas !== "undefined");
-    ok(`${pg}: nossos scripts executam sob a CSP (MonitorMapas presente)`, temMapas);
+    // marcador de que o script da página executou: MonitorMapas nas páginas com mapas; em Prefeituras, a lista do período eleitoral preenchida pelo JS
+    const executou = await page.evaluate(() => typeof window.MonitorMapas !== "undefined" || document.querySelectorAll("#listaNaoSuspenso li").length > 0);
+    ok(`${pg}: nossos scripts executam sob a CSP`, executou);
     const cspErrosNossos = console_.filter(t => /Content Security Policy/i.test(t) && !/\.netlify\/scripts\/hud/.test(t));
     ok(`${pg}: nenhuma violação de CSP nos nossos scripts`, cspErrosNossos.length === 0, cspErrosNossos.slice(0, 2).join(" | "));
     const outros = console_.filter(t => !/Content Security Policy/i.test(t) && !/vlibras/i.test(t));
