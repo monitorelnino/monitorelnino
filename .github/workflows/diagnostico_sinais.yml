@@ -16,6 +16,9 @@ permissions:
 jobs:
   diagnosticar:
     runs-on: ubuntu-latest
+    # 14/09/2026: teto explícito — a sonda do DF já segurou o runner minutos a fio em timeouts
+    # de TLS; sem isto um passo travado poderia ocupar o runner por até 6 h.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
@@ -62,6 +65,7 @@ jobs:
       # Esta sonda mostra os links que existem de fato, para corrigir o padrão com prova.
       - name: Sondar a listagem de informes da SES-DF (quais links existem de verdade)
         continue-on-error: true
+        timeout-minutes: 8
         run: |
           set -o pipefail
           python3 scripts/sondar_listagem_df.py 2>&1 | tee /tmp/listagem_df.log
@@ -84,6 +88,15 @@ jobs:
         run: |
           set -o pipefail
           python3 scripts/sondar_dda_opendatasus.py 2>&1 | tee /tmp/dda_opendatasus.log
+      # 14/09/2026 (2ª etapa): o OpenDataSUS não é mais CKAN nem hospeda o Sivep-DDA. A fonte
+      # real é a resposta LAI do MS redistribuída no Zenodo (Saldanha/Fiocruz, CC BY 4.0, MD5
+      # publicado). Esta sonda baixa o CSV de 2026 + codebook, confere MD5 e mostra as colunas.
+      - name: Sondar o Sivep-DDA no Zenodo (colunas, semanas, municípios do painel)
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          set -o pipefail
+          python3 scripts/sondar_dda_zenodo.py 2>&1 | tee /tmp/dda_zenodo.log
       # 12/09/2026: as rodadas completas de atualizar.py levam 35-90 min (varredura municipal +
       # DOEs + os 4 coletores de saúde), caras demais só para testar os coletores de saúde depois
       # de cada correção. Este passo roda SÓ os quatro, com dependências reais, sem a varredura.
@@ -121,6 +134,7 @@ jobs:
           cp /tmp/saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_fontes_saude.txt" 2>/dev/null || true
           cp /tmp/listagem_df.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_listagem_df.txt" 2>/dev/null || true
           cp /tmp/boletim_infogripe.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_boletim_infogripe.txt" 2>/dev/null || true
+          cp /tmp/dda_zenodo.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_zenodo.txt" 2>/dev/null || true
           cp /tmp/dda_opendatasus.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_opendatasus.txt" 2>/dev/null || true
           cp /tmp/coletores_saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_coletores_saude_isolado.txt" 2>/dev/null || true
           mkdir -p /tmp/registro/leituras/querido_diario && cp -r leituras_qd/. "/tmp/registro/leituras/querido_diario/$(date -u +%Y-%m-%d_%H%M%S)/" 2>/dev/null || true
