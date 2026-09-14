@@ -13,8 +13,15 @@ marcado à parte, por ser o ano epidêmico recorde), calculado sobre os notifica
 Semanas incompletas (últimas 4 SE disponíveis) ficam VAZADAS na série consolidada; o nowcasting entra como faixa creditada.
 Ciclo: SE 27/2026 → SE 13/2027. "Acima do esperado" = > p75 por 2 SE seguidas; "epidêmico" = > p90.
 
-Produz data/saude_desfechos/{serie_painel,serie_uf,canal_endemico,completude}.json.
+14/09/2026 — parametrizado por doença (pedido de Patricia: "faça o mesmo para todas as doenças do plano
+nacional"). O mesmo endpoint `alertcity` serve dengue e chikungunya (parâmetro `disease`); a lógica de canal
+endêmico, vazamento e classificação é idêntica — um só código, para não derivar. Dengue mantém os nomes de
+arquivo originais (compatibilidade com saude.js e com o gate verificar_saude.py); chikungunya escreve os
+mesmos quatro arquivos com prefixo `chik_`.
+  python coletar_desfechos_saude.py                        # dengue (padrão, o que atualizar.py chama)
+  python coletar_desfechos_saude.py --doenca chikungunya
   python coletar_desfechos_saude.py --autoteste
+Produz data/saude_desfechos/{,chik_}{serie_painel,serie_uf,canal_endemico,completude}.json.
 """
 import json, statistics, sys, time, urllib.parse
 from collections import defaultdict
@@ -23,10 +30,22 @@ from pathlib import Path
 from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, preservar_evidencia
 
 RAIZ = Path(__file__).resolve().parent
-API = "https://info.dengue.mat.br/api/alertcity?geocode={geocode}&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2019&ey_end=2026"
+# Doenças que o mesmo endpoint alertcity do InfoDengue serve com o parâmetro `disease`. A escolha vem da
+# linha de comando (--doenca); o padrão é dengue para que a chamada sem argumento em atualizar.py não mude.
+DOENCAS = {
+    "dengue":      {"prefixo": "",      "rotulo": "dengue",      "arboviroses": "dengue"},
+    "chikungunya": {"prefixo": "chik_", "rotulo": "chikungunya", "arboviroses": "chikungunya"},
+}
+DOENCA = "dengue"
+def _config(): return DOENCAS[DOENCA]
+API_TEMPLATE = "https://info.dengue.mat.br/api/alertcity?geocode={geocode}&disease={disease}&format=json&ew_start=1&ew_end=53&ey_start=2019&ey_end=2026"
+def API_URL(geocode: str) -> str: return API_TEMPLATE.format(geocode=geocode, disease=DOENCA)
 ANOS_CANAL = [2019, 2020, 2021, 2022, 2023, 2025]     # 2024 à parte
 SE_INCOMPLETAS = 4
-RESSALVA = "O Monitor não atribui casos ao El Niño; a série é a do InfoDengue (Fiocruz/FGV), notificações do Sinan com estimativa de nowcasting nas semanas recentes."
+def RESSALVA_TXT() -> str:
+    return (f"O Monitor não atribui casos ao El Niño; a série de {_config()['rotulo']} é a do InfoDengue (Fiocruz/FGV), "
+            "notificações do Sinan com estimativa de nowcasting nas semanas recentes.")
+RESSALVA = RESSALVA_TXT()   # mantido como constante de módulo para o autoteste e para quem importa
 
 
 def _hoje():
@@ -90,14 +109,15 @@ def vazar_incompletas(serie: dict, n: int = SE_INCOMPLETAS) -> tuple:
 
 
 def coletar() -> int:
+    cfg = _config(); pre = cfg["prefixo"]; rot = cfg["rotulo"]
     lista = ler("painel/lista.json", {}) or {}
     mun = lista.get("municipios") if isinstance(lista, dict) else lista
     if not mun:
-        print("desfechos: painel amostral ausente"); return 0
+        print(f"desfechos ({rot}): painel amostral ausente"); return 0
     hoje = _hoje().strftime("%d/%m/%Y"); serie_painel = {}; canal = {}; completude = {}; por_uf = defaultdict(lambda: defaultdict(lambda: {"casos": 0.0, "est": 0.0, "n": 0}))
     ok = 0; falhas = []
     for m in mun:
-        cod = str(m["ibge"]).zfill(7); url = API.format(geocode=cod)
+        cod = str(m["ibge"]).zfill(7); url = API_URL(cod)
         try:
             time.sleep(0.25)
             bruto = buscar(url, timeout=60); dados = json.loads(bruto.decode("utf-8", "replace"))
@@ -118,19 +138,20 @@ def coletar() -> int:
             if k.startswith(("2024-", "2025-", "2026-")) and v.get("casos") is not None:
                 por_uf[m["uf"]][k]["casos"] += float(v["casos"]); por_uf[m["uf"]][k]["est"] += float(v.get("est") or 0); por_uf[m["uf"]][k]["n"] += 1
     if falhas:   # uma lacuna por rodada, não uma por município (o log não é lugar de ruído de rede)
-        registrar_lacuna("InfoDengue (painel amostral)", f"{len(falhas)} município(s) sem resposta — ex.: {falhas[0]}", canal="DOU", camada=1)
+        registrar_lacuna(f"InfoDengue (painel amostral, {rot})", f"{len(falhas)} município(s) sem resposta — ex.: {falhas[0]}", canal="DOU", camada=1)
     if not ok:
-        print("desfechos: nenhuma série coletada — lacuna declarada"); return 0
+        print(f"desfechos ({rot}): nenhuma série coletada — lacuna declarada"); return 0
     (RAIZ / "data" / "saude_desfechos").mkdir(parents=True, exist_ok=True)
-    gov = ("Monitor de desfechos em saúde (§8, 07/09/2026): terceira coluna — observado. Peso zero, sem nota, sem faixa. " + RESSALVA +
+    gov = (f"Monitor de desfechos em saúde (§8, 07/09/2026), {rot}: terceira coluna — observado. Peso zero, sem nota, sem faixa. " + RESSALVA_TXT() +
            " Canal endêmico: mediana/p75/p90 das mesmas SE de 2019–2025 (2024 à parte). Últimas 4 SE vazadas na série consolidada; nowcasting como faixa.")
-    gravar("saude_desfechos/serie_painel.json", {"_governanca": gov, "gerado_em": hoje, "fonte": "InfoDengue (Fiocruz/FGV), alertcity", "municipios": serie_painel})
-    gravar("saude_desfechos/canal_endemico.json", {"_governanca": gov, "gerado_em": hoje, "anos_canal": ANOS_CANAL, "ano_a_parte": 2024, "municipios": canal})
-    gravar("saude_desfechos/completude.json", {"_governanca": gov, "gerado_em": hoje, "se_incompletas": SE_INCOMPLETAS, "municipios": completude})
-    gravar("saude_desfechos/serie_uf.json", {"_governanca": gov + " Soma dos municípios do painel amostral por UF — não é o total da UF.", "gerado_em": hoje,
+    fonte = f"InfoDengue (Fiocruz/FGV), alertcity, disease={DOENCA}"
+    gravar(f"saude_desfechos/{pre}serie_painel.json", {"_governanca": gov, "gerado_em": hoje, "doenca": DOENCA, "fonte": fonte, "municipios": serie_painel})
+    gravar(f"saude_desfechos/{pre}canal_endemico.json", {"_governanca": gov, "gerado_em": hoje, "doenca": DOENCA, "anos_canal": ANOS_CANAL, "ano_a_parte": 2024, "municipios": canal})
+    gravar(f"saude_desfechos/{pre}completude.json", {"_governanca": gov, "gerado_em": hoje, "doenca": DOENCA, "se_incompletas": SE_INCOMPLETAS, "municipios": completude})
+    gravar(f"saude_desfechos/{pre}serie_uf.json", {"_governanca": gov + " Soma dos municípios do painel amostral por UF — não é o total da UF.", "gerado_em": hoje, "doenca": DOENCA,
                                               "uf": {uf: {k: {"casos": round(v["casos"], 1), "est": round(v["est"], 1), "n_municipios": v["n"]} for k, v in sorted(d.items())} for uf, d in por_uf.items()}})
-    log_busca("DOU", 1, [API.format(geocode="<ibge>")], "registro", nivel="nacional", n_resultados=ok, resultados=f"Desfechos em saúde: {ok} municípios do painel com série InfoDengue 2019–2026; canal endêmico e nowcasting calculados")
-    print(f"desfechos: {ok}/{len(mun)} municípios do painel com série; última SE disponível: {max((v['ultima_se'] or '') for v in serie_painel.values())}")
+    log_busca("DOU", 1, [API_TEMPLATE.format(geocode="<ibge>", disease=DOENCA)], "registro", nivel="nacional", n_resultados=ok, resultados=f"Desfechos em saúde ({rot}): {ok} municípios do painel com série InfoDengue 2019–2026; canal endêmico e nowcasting calculados")
+    print(f"desfechos ({rot}): {ok}/{len(mun)} municípios do painel com série; última SE disponível: {max((v['ultima_se'] or '') for v in serie_painel.values())}")
     return 0
 
 
@@ -145,9 +166,28 @@ def autoteste() -> int:
     def t3(): return cons["2026-06"]["casos"] is None and cons["2026-02"]["casos"] == 30 and set(now) == {"2026-03", "2026-04", "2026-05", "2026-06"} and now["2026-06"]["est_max"] == 45
     def t4(): return cls["2026-01"] == "epidemico" and cls["2026-02"] == "sem_canal" and all(v == "sem_canal" for k, v in cls.items() if k >= "2026-02")   # só a SE 01 tem canal na fixture
     def t5(): return "não atribui casos ao El Niño" in RESSALVA and 2024 not in ANOS_CANAL
+    # 14/09/2026: parametrização por doença — a URL muda só no `disease`, dengue sem prefixo, chikungunya com `chik_`
+    def t6():
+        global DOENCA
+        antes = DOENCA
+        try:
+            DOENCA = "dengue";      ud = API_URL("4205407"); pd = _config()["prefixo"]; rd = RESSALVA_TXT()
+            DOENCA = "chikungunya"; uc = API_URL("4205407"); pc = _config()["prefixo"]; rc = RESSALVA_TXT()
+        finally:
+            DOENCA = antes
+        return ("disease=dengue" in ud and "disease=chikungunya" in uc
+                and ud.replace("disease=dengue", "disease=X") == uc.replace("disease=chikungunya", "disease=X")   # só o parâmetro muda (o domínio também diz "dengue")
+                and pd == "" and pc == "chik_" and "dengue" in rd and "chikungunya" in rc and "não atribui casos ao El Niño" in rc)
     return rodar_autoteste({"parse: SE AAAASS → chave; 2018 fora": t1, "canal: 6 anos, 2024 à parte, p90 ≥ p75 ≥ mediana": t2,
-                            "últimas 4 SE vazadas; nowcasting como faixa": t3, "classificação: epidêmico > p90; sem canal declarado": t4, "ressalva e 2024 fora do canal": t5})
+                            "últimas 4 SE vazadas; nowcasting como faixa": t3, "classificação: epidêmico > p90; sem canal declarado": t4, "ressalva e 2024 fora do canal": t5,
+                            "doença: mesma URL salvo `disease`; dengue sem prefixo, chikungunya com chik_": t6})
 
 
 if __name__ == "__main__":
+    if "--doenca" in sys.argv:
+        escolha = sys.argv[sys.argv.index("--doenca") + 1] if sys.argv.index("--doenca") + 1 < len(sys.argv) else ""
+        if escolha not in DOENCAS:
+            print(f"--doenca: valor inválido {escolha!r}; use um de {sorted(DOENCAS)}"); sys.exit(2)
+        DOENCA = escolha
+        RESSALVA = RESSALVA_TXT()
     sys.exit(autoteste() if "--autoteste" in sys.argv else coletar())

@@ -1,5 +1,12 @@
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, SRAG;
+// 14/09/2026: chikungunya — mesmos quatro arquivos do painel, com prefixo chik_ (coletar_desfechos_saude.py --doenca chikungunya).
+// Nulos enquanto o coletor não rodar: o comparador e o mapa declaram lacuna, nunca preenchem.
+let DESF_CHIK = null, DESF_CANAL_CHIK = null;
+const DOENCAS_DESF = {
+  dengue:      {rotulo: 'dengue',      dados: () => ({serie: DESF,      canal: DESF_CANAL}),      capitais: true},
+  chikungunya: {rotulo: 'chikungunya', dados: () => ({serie: DESF_CHIK, canal: DESF_CANAL_CHIK}), capitais: false}   // sem série por capitais ainda (coletar_saude.py é só dengue)
+};
 let desenharComparadorSemanal = null;   // 13/09/2026 (auditoria de visualizações, consolidação): fechamento com o desenho do comparador "semanal por capitais", preenchido em __init(), chamado pelo seletor em renderDesfechos()
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NOME_UF = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
@@ -12,12 +19,13 @@ async function __load(){
     ['geo_uf','saude_uf','saude_sinais','sinais_risco','indice','monitor_saude'].map(f => fetch('data/' + f + '.json').then(r => {
       if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
   try { [DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA] = await Promise.all(['data/saude_desfechos/serie_painel.json','data/saude_desfechos/canal_endemico.json','data/saude_desfechos/completude.json','data/municipios_ibge_referencia.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { DESF = DESF_CANAL = DESF_COMP = PAINEL_LISTA = null; }
+  try { [DESF_CHIK, DESF_CANAL_CHIK] = await Promise.all(['data/saude_desfechos/chik_serie_painel.json','data/saude_desfechos/chik_canal_endemico.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { DESF_CHIK = DESF_CANAL_CHIK = null; }
   // 13/09/2026 (proposta de enxugamento, Manus AI): catálogo de 20 desfechos e tabela de gatilhos
   // migraram para pesquisadores.html — "é backlog metodológico; pertence a Pesquisadores". SRAG
   // continua aqui: alimenta o gráfico 'SRAG por semana', mantido na página principal.
   try { SRAG = await fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { SRAG = null; }
   __init();
-  renderDesfechos();
+  renderDesfechos((document.getElementById('selDoencaDesf') || {}).value || 'dengue');
   renderSRAG();
 }
 
@@ -171,11 +179,28 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 
 
 // ===== 3 · O que aconteceu — desfechos em saúde (§8, 07/09/2026). Peso zero. O Monitor não atribui casos ao El Niño. =====
-function renderDesfechos(){
+// 14/09/2026: parametrizada por doença (pedido de Patricia). Um só código para dengue e chikungunya —
+// o conjunto de dados muda, a lógica (canal endêmico, vazamento, acumulado, mapa por nível) é a mesma.
+let __comparadorChart = null;
+function renderDesfechos(doenca){
+  doenca = (doenca && DOENCAS_DESF[doenca]) ? doenca : 'dengue';
+  const cfg = DOENCAS_DESF[doenca]; const {serie: S, canal: C} = cfg.dados();
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const M = DESF && DESF.municipios; const semColeta = {fontes: ['InfoDengue (Fiocruz/FGV)', 'painel amostral'], data: null};
-  if (!M || !Object.keys(M).length) { ['boxDesfAcum','boxDesfMapa'].forEach(id => fonteFigura(id, semColeta)); return; }
-  const credito = {fontes: ['modelo InfoDengue (Fiocruz/FGV)', 'Sinan', 'painel amostral'], data: DESF.gerado_em};
+  const selComparador = document.getElementById('selComparadorDengue');
+  // opção 'semanal por capitais' só existe para dengue (coletar_saude.py); para chikungunya some, e o valor cai para o painel
+  if (selComparador) { const op = selComparador.querySelector('option[value="semanal"]'); if (op) op.hidden = !cfg.capitais;
+    if (!cfg.capitais && selComparador.value === 'semanal') selComparador.value = 'semanal_painel'; }
+  if (__comparadorChart) { if (typeof __comparadorChart.destroy === 'function') __comparadorChart.destroy(); __comparadorChart = null; }
+  const svgMapa = document.getElementById('mapaDesf'); if (svgMapa) while (svgMapa.firstChild) svgMapa.removeChild(svgMapa.firstChild);
+  const M = S && S.municipios; const semColeta = {fontes: ['InfoDengue (Fiocruz/FGV), ' + cfg.rotulo, 'painel amostral'], data: null};
+  if (!M || !Object.keys(M).length) {
+    // lacuna declarada para ESTA doença: gráfico e mapa vazios, legenda e crédito dizem que não há coleta
+    const cv = document.getElementById('cDesfAcum'); if (cv && cv.getContext) { const g = cv.getContext('2d'); g && g.clearRect && g.clearRect(0, 0, cv.width, cv.height); }
+    MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.NEUTRA, rotulo: 'série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada'}]);
+    MonitorMapas.legenda('legDesfMapa', [{cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta de ' + cfg.rotulo + ' até o corte'}]);
+    ['boxDesfAcum','boxDesfMapa'].forEach(id => fonteFigura(id, semColeta)); return;
+  }
+  const credito = {fontes: ['modelo InfoDengue (Fiocruz/FGV), ' + cfg.rotulo, 'Sinan', 'painel amostral'], data: S.gerado_em};
   MonitorMapas.padraoGraficos(window.Chart);
   // 13/09/2026 (proposta de enxugamento, Manus AI): 'Casos notificados por semana' (boxDesfSemanal,
   // painel × canal endêmico) deixou de ser figura própria — vira a 3ª opção do comparador único em
@@ -183,7 +208,7 @@ function renderDesfechos(){
   function desenharComparadorPainel(){
     const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
     const soma = {casos: {}, med: {}, p75: {}, p90: {}, nmin: {}, nmax: {}};
-    Object.entries(M).forEach(([cod, m]) => { const c = (DESF_CANAL && DESF_CANAL.municipios && DESF_CANAL.municipios[cod]) || {};
+    Object.entries(M).forEach(([cod, m]) => { const c = (C && C.municipios && C.municipios[cod]) || {};
       semanas.forEach(ss => { const k = '2026-' + ss; const v = (m.semanas_2026 || {})[k];
         if (v && v.casos != null) soma.casos[ss] = (soma.casos[ss] || 0) + v.casos;
         if (c[ss]) { soma.med[ss] = (soma.med[ss] || 0) + c[ss].mediana; soma.p75[ss] = (soma.p75[ss] || 0) + c[ss].p75; soma.p90[ss] = (soma.p90[ss] || 0) + c[ss].p90; }
@@ -196,16 +221,16 @@ function renderDesfechos(){
         {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => soma.med[w] ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
         {type: 'line', label: 'p75', data: labels.map(w => soma.p75[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p75, borderWidth: 1.5, pointRadius: 0, order: 1},
         {type: 'line', label: 'p90', data: labels.map(w => soma.p90[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
-      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
+      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados de ' + cfg.rotulo + ' · painel'}}}}});
     MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 consolidado (últimas 4 semanas excluídas)'}, {cor: MonitorMapas.PALETA.anos['2026'], opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.PALETA.anos.p75, rotulo: 'p75'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
     fonteFigura('boxDesfAcum', credito);
     return chart;
   }
-  // escada do acumulado — opção "acum" (padrão) do comparador único em #cDesfAcum
+  // escada do acumulado — opção "acum" do comparador único em #cDesfAcum
   const acum = a => Object.values(M).reduce((s, m) => s + ((m.acumulado || {})[a] || 0), 0);
   function desenharComparadorAcum(){
     const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.PALETA.anos['2024'], MonitorMapas.PALETA.anos['2025'], MonitorMapas.PALETA.anos['2026']]}]},
-      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, title: {display: true, text: 'casos notificados · painel'}}}}});
+      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, title: {display: true, text: 'casos notificados de ' + cfg.rotulo + ' · painel'}}}}});
     MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: '2024 (ano epidêmico, fora do canal)'}, {cor: MonitorMapas.PALETA.anos['2025'], rotulo: '2025'}, {cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 parcial'}]);
     fonteFigura('boxDesfAcum', credito);
     return chart;
@@ -214,15 +239,13 @@ function renderDesfechos(){
   // amostral), "semanal por capitais" (27 capitais, ex-boxSerie) e "semanal · painel × canal endêmico"
   // (ex-boxDesfSemanal) alternam no mesmo #cDesfAcum em vez de figuras fixas. Escopos diferentes
   // (painel × capitais); por isso permanecem como opções explícitas, nunca combinadas num só número.
-  let __comparadorChart = null;
   function mostrarComparador(modo){
-    if (__comparadorChart) { __comparadorChart.destroy(); __comparadorChart = null; }
-    __comparadorChart = modo === 'semanal' && desenharComparadorSemanal ? desenharComparadorSemanal()
+    if (__comparadorChart) { if (typeof __comparadorChart.destroy === 'function') __comparadorChart.destroy(); __comparadorChart = null; }
+    __comparadorChart = modo === 'semanal' && cfg.capitais && desenharComparadorSemanal ? desenharComparadorSemanal()
       : modo === 'semanal_painel' ? desenharComparadorPainel()
       : desenharComparadorAcum();
   }
-  const selComparador = document.getElementById('selComparadorDengue');
-  if (selComparador) selComparador.addEventListener('change', () => mostrarComparador(selComparador.value));
+  if (selComparador && !selComparador.__ligado) { selComparador.__ligado = true; selComparador.addEventListener('change', () => mostrarComparador(selComparador.value)); }
   mostrarComparador(selComparador ? selComparador.value : 'semanal_painel');
   // mapa: pontos do painel coloridos pelo nível da última SE consolidada
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
@@ -234,6 +257,11 @@ function renderDesfechos(){
   MonitorMapas.legenda('legDesfMapa', [{cor: NIV[1], rotulo: 'nível 1 (baixa atividade)'}, {cor: NIV[2], rotulo: 'nível 2 (atenção)'}, {cor: NIV[3], rotulo: 'nível 3 (alerta)'}, {cor: NIV[4], rotulo: 'nível 4 (emergência)'}, {cor: MonitorMapas.NEUTRA, rotulo: (pontos.length ? pontos.length + ' municípios do painel' : 'painel sem coordenadas')}]);
   fonteFigura('boxDesfMapa', credito);
 }
+// seletor de doença (14/09/2026): redesenha comparador e mapa com o conjunto escolhido
+(function(){
+  const sel = document.getElementById('selDoencaDesf'); if (!sel) return;
+  sel.addEventListener('change', () => renderDesfechos(sel.value));
+})();
 
 
 // 13/09/2026 (proposta de enxugamento, Manus AI): renderEstrutura() (catálogo de 20 desfechos e
