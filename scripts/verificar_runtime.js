@@ -59,6 +59,15 @@ setTimeout(() => {
   erros.slice(0, 4).forEach(e => console.log("     ", e));
   // v3.1 §4: a tabela de auditoria vive em pesquisadores.html (verificada lá pelo runtime de resposta/pesquisadores)
   teste("seletor de UF populado", q("ufSelect") && q("ufSelect").children.length === 28);
+  // 14/09/2026: "Como ler o MARÉ" é ficha popup no mesmo <dialog> do estado, aberta pelo link abaixo da barra do índice
+  try {
+    teste("home sem atalhos .hero-links; link 'como ler o MARÉ' abaixo da barra", d.querySelectorAll(".hero-links").length === 0 && !!d.querySelector(".gauge-zone #linkComoLer") && q("linkComoLer").textContent === "como ler o MARÉ");
+    q("linkComoLer").dispatchEvent(new dom.window.MouseEvent("click", { bubbles: true, cancelable: true }));
+    teste("clique abre a ficha 'Como ler o MARÉ' no dialog", q("detail").open && /Como ler o MARÉ/.test(q("detailConteudo").textContent) && /O que não mede/.test(q("detailConteudo").textContent));
+    q("detailFechar").dispatchEvent(new dom.window.Event("click", { bubbles: true }));
+    teste("fechar pelo × devolve o estado inicial", !q("detail").open);
+    teste("'o que a lei deixa aberto' saiu da página principal", !/calendario-eleitoral\.html/.test(d.body.innerHTML));
+  } catch (e) { teste("ficha 'Como ler o MARÉ' (" + e.message + ")", false); }
 
   try {
     q("ufSelect").value = "SC";

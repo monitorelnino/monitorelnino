@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §40 · "Como ler o MARÉ" vira ficha popup; "O que a lei deixa aberto" vira nota para a imprensa · 14/09/2026
+
+Nenhuma alteração de método; nenhum número muda. Classe **conteúdo/estrutura de página** — pedidos editoriais de Patricia em 13/09/2026, executados com o "vai" de 14/09.
+
+- Home: os dois grupos de atalhos `.hero-links` ("Índice por estado", "Encontre sua cidade", "Resposta por estado", "O que a lei deixa aberto") saíram. Logo abaixo da barra do índice entra um único link, "como ler o MARÉ", que abre o texto de leitura como ficha no **mesmo `<dialog>`** do detalhe do estado (fecha por ×, fundo ou Esc). O texto vive oculto em `#comoler`; a nota do período eleitoral e o bloco pós-defeso ficam onde estavam.
+- "O que a lei deixa aberto" deixa de ser referido na página principal e passa a ser **nota para a imprensa** em `imprensa.html` (mesma fonte `data/calendario/dispositivos.json`, campo `nao_suspenso`, mesmo desenho de linha do calendário; a página do calendário continua publicada, fora da barra). Trecho encurtado para caber no teto de palavras da página.
+- Runtime da home cobre: sem `.hero-links`, link no lugar certo, clique abre a ficha, × fecha, nenhuma referência ao calendário na home. Bateria local completa verde, Portão 18 incluído.
+
 ## §39 · Doenças diarreicas agudas (DDA): coletor, figura e correção do catálogo · 14/09/2026
 
 Nenhuma alteração de método; nenhum número do índice muda (peso zero, §31/§35). Classe **código** (PROTOCOLO §3.2), item 1 do §5 das instruções de 14/09.

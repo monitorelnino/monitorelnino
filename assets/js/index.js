@@ -246,12 +246,25 @@ function selectUF(uf, tileEl){
     <p class="note">Acompanhe ${d.nome} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
   `;
   const __dialogDetail = document.getElementById('detail');
+  if (__dialogDetail) __dialogDetail.setAttribute('aria-label', 'Detalhe do estado');
   // jsdom (suíte de testes) não implementa showModal()/close() do <dialog>, só a propriedade 'open'
   // refletida — no navegador real, showModal() é o caminho certo (bloqueia scroll do fundo, foco).
   if (__dialogDetail && !__dialogDetail.open) {
     if (typeof __dialogDetail.showModal === 'function') __dialogDetail.showModal(); else __dialogDetail.open = true;
   }
 }
+// 14/09/2026 (pedido de Patricia, 13/09): "Como ler o MARÉ" vira ficha popup no MESMO <dialog> do detalhe do estado,
+// aberta pelo link "como ler o MARÉ" logo abaixo da barra do índice; o conteúdo vive oculto em #comoler.
+(function(){
+  const link = document.getElementById('linkComoLer'), fonte = document.getElementById('comoler'), dlg = document.getElementById('detail');
+  if (!link || !fonte || !dlg) return;
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('detailConteudo').innerHTML = fonte.innerHTML;
+    dlg.setAttribute('aria-label', 'Como ler o MARÉ');
+    if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
+  });
+})();
 // 13/09/2026 (pedido de Patricia: quadro dos estados ocupa a página inteira, detalhe vira janela
 // popup): fechar pelo botão ×, por clique no fundo (::backdrop) ou por Esc (nativo do <dialog>).
 (function(){
