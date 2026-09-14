@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §50 · CSP sem 'self' em script-src: a injeção do Netlify deixa de executar; canário em navegador real contra o domínio · 14/09/2026
+
+Nenhuma alteração de método. Classe **segurança/infra**.
+
+- A API do Netlify prova que o Heads-up Display configurável já está desligado (`hud_enabled = false`, nenhum snippet), e mesmo assim `/.netlify/scripts/hud?variant=public` é injetado em toda página servida. Com `script-src 'self'`, esse script de terceiro executava. `netlify.toml` passa a permitir só `https://monitorelnino.com.br/assets/`, `https://*.netlify.app/assets/` (onde vivem todos os nossos scripts) e o VLibras — o navegador recusa a injeção. O texto continua no HTML (o verificador já o reconhece); o código não roda.
+- `scripts/verificar_publicado_navegador.js` (Playwright, contra o domínio, com a credencial): nossos scripts executam sob a CSP servida, nenhuma violação de CSP fora da injeção do Netlify, sem erro de JS, medidor da home preenchido. Passo novo no `verificar_publicado.yml`, com relatório no repositório privado.
+
 ## §49 · Domínio com senha, não com página de rosto (decisão da editoria, 14/09) · 14/09/2026
 
 Nenhuma alteração de método. Classe **infra/publicação**.

@@ -37,6 +37,16 @@ jobs:
       # 14/09/2026: o verificador vê um script /.netlify/scripts/hud injetado em toda página. A editoria não acha o interruptor
       # ("Collaboration tools" pode não existir num projeto sem Git ligado). Pergunta ao Netlify, pela API, quais campos do
       # projeto falam de HUD/colaboração/injeção de snippet — só leitura; valores mascarados; nunca imprime o token.
+      # 14/09/2026: canário em Chromium real contra o domínio — nossos scripts rodam sob a CSP por caminho; só a injeção do Netlify é bloqueada
+      - name: Canário no navegador (Playwright) contra o domínio
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+        run: |
+          npm ci --silent 2>/dev/null || npm install --silent
+          npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+          node scripts/verificar_publicado_navegador.js --base https://monitorelnino.com.br 2>&1 | tee /tmp/publicado_navegador.txt
       - name: Sondar as configurações do projeto no Netlify (HUD, snippets, colaboração) — só leitura
         continue-on-error: true
         env:
@@ -69,6 +79,7 @@ jobs:
         run: |
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
           mkdir -p /tmp/registro/relatorios
+          cp /tmp/publicado_navegador.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado_navegador.txt" 2>/dev/null || true
           cp /tmp/netlify_config.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_netlify_config.txt" 2>/dev/null || true
           cp /tmp/verificar_publicado.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado.txt"
           cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
