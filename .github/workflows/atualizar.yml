@@ -16,6 +16,17 @@ on:
         type: boolean
         default: false
 
+concurrency:
+  # 14/09/2026: a rodada SEMANAL ("0 9 * * 1") e a DIARIA ("0 9 * * *") caem no
+  # mesmo minuto toda segunda-feira — sem essa trava, os dois jobs commitam e
+  # dao push ao mesmo tempo, correndo risco real de colisao de commit/push.
+  # cancel-in-progress: false faz o segundo esperar o primeiro terminar em vez
+  # de cancelar um dos dois, ja que ambos podem ter trabalho valido a commitar
+  # (o daily so encerra sem commit se estiver fora da semana intensiva E nao
+  # for segunda — na propria segunda ele roda por completo).
+  group: atualizar-dados
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
