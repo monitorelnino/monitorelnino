@@ -25,6 +25,16 @@ from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rod
 
 RAIZ = Path(__file__).resolve().parent
 URL_SERIE = "https://gitlab.procc.fiocruz.br/mave/repo/-/raw/master/Dados/InfoGripe/serie_temporal_com_estimativas_recentes.csv"
+# 14/09/2026: o host canônico (gitlab.procc) dá timeout desde 09/09 (ver scripts/diagnostico_fontes_saude.py); o InfoGripe
+# passou a aparecer também em gitlab.fiocruz.br — a interface pede login, mas o endpoint /-/raw/ pode servir anônimo.
+# Tenta em ordem e REGISTRA qual respondeu; nunca mistura as duas.
+URLS_SERIE = [URL_SERIE, "https://gitlab.fiocruz.br/marcelo.gomes/infogripe/-/raw/master/Dados/InfoGripe/serie_temporal_com_estimativas_recentes.csv"]
+# Indicadores extraídos do mesmo CSV, pela coluna `dado` (rótulos casados por padrão, sem literal fixo). SRAG obrigatório;
+# SG (síndrome gripal) só sai se o CSV trouxer um rótulo que case — senão vira lacuna declarada, nunca série vazia/inventada.
+INDICADORES = {
+    "srag": {"padroes": [r"^srag$", r"^sragflu$"], "arquivo": "saude_desfechos/srag_serie.json", "rotulo": "SRAG", "obrigatorio": True},
+    "sg":   {"padroes": [r"^sg$", r"sindrome.*gripal", r"^ili$"],  "arquivo": "saude_desfechos/sg_serie.json",   "rotulo": "síndrome gripal (SG)", "obrigatorio": False},
+}
 ANOS_CANAL = list(range(2019, 2026))   # 2019–2025; 2024 tratado à parte só quando houver sinal de excepcionalidade nacional (ver nota no §35)
 SE_INCOMPLETAS = 4
 RESSALVA = "O Monitor não atribui casos ao El Niño; a série é a do InfoGripe (Fiocruz/FGV/GT-Influenza, SVS/MS), notificações do Sivep-Gripe com estimativa de dados recentes."
@@ -64,18 +74,38 @@ def detectar_colunas(cabecalho: list) -> dict:
     return achado
 
 
-def parse_serie_longa(texto: str) -> dict:
-    """{'BR'|UF: {'AAAA-SS': valor}} para dado='srag' (ou 'sragflu' se 'srag' ausente), escala='casos'.
+def dados_disponiveis(texto: str) -> tuple:
+    """(cabeçalho, delimitador, {valores distintos da coluna `dado`}) — para diagnóstico e para escolher o alvo. Função pura."""
+    delim = ";" if texto.split("\n", 1)[0].count(";") >= texto.split("\n", 1)[0].count(",") else ","
+    linhas = list(csv.reader(io.StringIO(texto), delimiter=delim))
+    if not linhas:
+        return [], delim, set()
+    col = detectar_colunas(linhas[0])
+    return linhas[0], delim, {_plano(r[col["dado"]]) for r in linhas[1:] if len(r) > col["dado"]}
+
+
+def escolher_alvo(disponiveis: set, padroes: list):
+    """Primeiro valor de `dado` que casa com algum padrão (na ordem dos padrões); None se nenhum. Função pura."""
+    for pat in padroes:
+        for d in sorted(disponiveis):
+            if re.search(pat, d):
+                return d
+    return None
+
+
+def parse_serie_longa(texto: str, padroes: list = None) -> dict:
+    """{'BR'|UF: {'AAAA-SS': valor}} para o `dado` que casar com `padroes` (padrão: SRAG), escala='casos'.
     Delimitador autodetectado (';' ou ','). Função pura."""
+    padroes = padroes or INDICADORES["srag"]["padroes"]
     delim = ";" if texto.split("\n", 1)[0].count(";") >= texto.split("\n", 1)[0].count(",") else ","
     linhas = list(csv.reader(io.StringIO(texto), delimiter=delim))
     if not linhas:
         return {}
     col = detectar_colunas(linhas[0])
-    dados_disponiveis = {_plano(r[col["dado"]]) for r in linhas[1:] if len(r) > col["dado"]}
-    alvo = "srag" if "srag" in dados_disponiveis else ("sragflu" if "sragflu" in dados_disponiveis else None)
+    disponiveis = {_plano(r[col["dado"]]) for r in linhas[1:] if len(r) > col["dado"]}
+    alvo = escolher_alvo(disponiveis, padroes)
     if alvo is None:
-        raise ValueError(f"nenhum dado 'srag'/'sragflu' encontrado; disponíveis: {sorted(dados_disponiveis)[:10]}")
+        raise ValueError(f"nenhum dado casando {padroes} encontrado; disponíveis: {sorted(disponiveis)[:12]}")
     out = defaultdict(dict)
     for r in linhas[1:]:
         if len(r) <= max(col.values()):
@@ -119,35 +149,64 @@ def vazar_incompletas(serie: dict, ano: int, n: int = SE_INCOMPLETAS) -> tuple:
     return cons, sorted(inc)
 
 
+def _gravar_diagnostico(url_ok, cabecalho, disponiveis, erro_por_url):
+    """Guarda o que a rodada VIU (host que respondeu, cabeçalho real, rótulos de `dado`) — para a próxima sessão
+    ajustar padrões sem precisar de rede. Nunca contém dado epidemiológico."""
+    gravar("saude_desfechos/infogripe_diagnostico.json", {
+        "_governanca": "Diagnóstico de formato do InfoGripe (14/09/2026): registro do que o coletor encontrou; sem dado epidemiológico.",
+        "gerado_em": _hoje().strftime("%d/%m/%Y"), "url_que_respondeu": url_ok, "cabecalho": cabecalho,
+        "valores_de_dado": sorted(disponiveis)[:60], "erro_por_url": erro_por_url})
+
+
 def coletar() -> int:
+    bruto = None; url_ok = None; erro_por_url = {}
+    for url in URLS_SERIE:
+        try:
+            bruto = buscar(url, timeout=90).decode("utf-8", "replace"); url_ok = url; break
+        except Exception as e:  # noqa: BLE001
+            erro_por_url[url] = type(e).__name__
+    if bruto is None:
+        _gravar_diagnostico(None, [], set(), erro_por_url)
+        registrar_lacuna("InfoGripe (série SRAG)", " · ".join(f"{u.split('/')[2]}: {e}" for u, e in erro_por_url.items()), canal="DOU", camada=1)
+        print("srag/sg: falha de rede em todos os hosts — lacuna declarada"); return 0
     try:
-        bruto = buscar(URL_SERIE, timeout=90).decode("utf-8", "replace")
-    except Exception as e:  # noqa: BLE001
-        registrar_lacuna("InfoGripe (série SRAG)", type(e).__name__, canal="DOU", camada=1); print("srag/sg: falha de rede — lacuna declarada"); return 0
-    try:
-        serie = parse_serie_longa(bruto)
+        cabecalho, _delim, disponiveis = dados_disponiveis(bruto)
     except ValueError as e:
+        _gravar_diagnostico(url_ok, bruto.split("\n", 1)[0].split(";")[:20], set(), erro_por_url)
         registrar_lacuna("InfoGripe (formato da série SRAG)", str(e)[:180], canal="DOU", camada=1)
-        print(f"srag/sg: {e} — coletor não adivinha; corrigir o mapeamento de colunas e reexecutar")
+        print(f"srag/sg: {e} — coletor não adivinha; ver data/saude_desfechos/infogripe_diagnostico.json")
         return 0
-    if not serie:
-        registrar_lacuna("InfoGripe (série SRAG)", "série vazia após leitura", canal="DOU", camada=1); print("srag/sg: série vazia — lacuna declarada"); return 0
+    _gravar_diagnostico(url_ok, list(cabecalho), disponiveis, erro_por_url)
     hoje = _hoje().strftime("%d/%m/%Y"); ano_corrente = _hoje().year
-    canal = {loc: canal_endemico(s) for loc, s in serie.items()}
-    consolidada = {}; nowcasting = {}
-    for loc, s in serie.items():
-        cons, vaz = vazar_incompletas(s, ano_corrente)
-        consolidada[loc] = cons
-        nowcasting[loc] = {k: s[k] for k in vaz if k in s}
-    gov = ("SRAG/SG — nacional e por UF (§36, catálogo). Peso zero, sem nota, sem faixa. " + RESSALVA +
-           " Canal endêmico: mediana/p75/p90 de " + f"{min(ANOS_CANAL)}–{max(ANOS_CANAL)}" + ". Últimas " + str(SE_INCOMPLETAS) +
-           " SE vazadas (dado laboratorial incompleto); nowcasting = valor bruto do InfoGripe nessas semanas, sem faixa de incerteza própria (a fonte não publica min/max nesta série).")
-    (RAIZ / "data" / "saude_desfechos").mkdir(parents=True, exist_ok=True)
-    gravar("saude_desfechos/srag_serie.json", {"_governanca": gov, "gerado_em": hoje, "fonte": URL_SERIE, "ano_corrente": ano_corrente,
-                                               "anos_canal": ANOS_CANAL, "se_incompletas": SE_INCOMPLETAS, "serie": consolidada, "nowcasting": nowcasting, "canal_endemico": canal})
-    log_busca("DOU", 1, [URL_SERIE], "registro", nivel="nacional", n_resultados=len(serie), resultados=f"SRAG/SG: série lida para {len(serie)} localidade(s) (BR + UFs); colunas detectadas por padrão")
-    ult_br = max((k for k in serie.get("BR", {})), default=None)
-    print(f"srag/sg: {len(serie)} localidade(s); última SE (BR): {ult_br or '—'}")
+    escritos = 0
+    for chave, ind in INDICADORES.items():
+        alvo = escolher_alvo(disponiveis, ind["padroes"])
+        if alvo is None:
+            registrar_lacuna(f"InfoGripe ({ind['rotulo']})", f"nenhum rótulo de `dado` casou {ind['padroes']}; disponíveis: {sorted(disponiveis)[:12]}", canal="DOU", camada=1)
+            print(f"{chave}: rótulo não encontrado no CSV — lacuna declarada (ver infogripe_diagnostico.json)")
+            if ind["obrigatorio"]: return 0
+            continue
+        serie = parse_serie_longa(bruto, ind["padroes"])
+        if not serie:
+            registrar_lacuna(f"InfoGripe ({ind['rotulo']})", "série vazia após leitura", canal="DOU", camada=1); print(f"{chave}: série vazia — lacuna declarada")
+            if ind["obrigatorio"]: return 0
+            continue
+        canal = {loc: canal_endemico(s_) for loc, s_ in serie.items()}
+        consolidada = {}; nowcasting = {}
+        for loc, s_ in serie.items():
+            cons, vaz = vazar_incompletas(s_, ano_corrente)
+            consolidada[loc] = cons
+            nowcasting[loc] = {k: s_[k] for k in vaz if k in s_}
+        gov = (f"{ind['rotulo']} — nacional e por UF (§36, catálogo). Peso zero, sem nota, sem faixa. " + RESSALVA +
+               " Canal endêmico: mediana/p75/p90 de " + f"{min(ANOS_CANAL)}–{max(ANOS_CANAL)}" + ". Últimas " + str(SE_INCOMPLETAS) +
+               " SE vazadas (dado laboratorial incompleto); nowcasting = valor bruto do InfoGripe nessas semanas, sem faixa de incerteza própria (a fonte não publica min/max nesta série).")
+        (RAIZ / "data" / "saude_desfechos").mkdir(parents=True, exist_ok=True)
+        gravar(ind["arquivo"], {"_governanca": gov, "gerado_em": hoje, "fonte": url_ok, "indicador": chave, "rotulo_dado": alvo, "ano_corrente": ano_corrente,
+                                "anos_canal": ANOS_CANAL, "se_incompletas": SE_INCOMPLETAS, "serie": consolidada, "nowcasting": nowcasting, "canal_endemico": canal})
+        log_busca("DOU", 1, [url_ok], "registro", nivel="nacional", n_resultados=len(serie), resultados=f"{ind['rotulo']}: série lida para {len(serie)} localidade(s) (BR + UFs); dado='{alvo}'; colunas detectadas por padrão")
+        ult_br = max((k for k in serie.get("BR", {})), default=None)
+        print(f"{chave}: {len(serie)} localidade(s); dado='{alvo}'; última SE (BR): {ult_br or '—'}")
+        escritos += 1
     return 0
 
 
@@ -177,9 +236,24 @@ def autoteste() -> int:
         return set(vaz) == {"2026-32", "2026-33", "2026-34", "2026-35"} and cons["2026-32"] is None and cons["2026-30"] == 300
     def t6():
         return "não atribui casos ao El Niño" in RESSALVA and SIGLA["sao paulo"] == "SP" and SIGLA["pais"] == "BR"
+    # 14/09/2026: SRAG e SG do mesmo CSV; SG só quando o rótulo existe; dois hosts em ordem
+    def t7():
+        _, _, disp = dados_disponiveis(csv_txt)
+        return escolher_alvo(disp, INDICADORES["srag"]["padroes"]) == "srag" and escolher_alvo(disp, INDICADORES["sg"]["padroes"]) is None
+    def t8():
+        com_sg = csv_txt + "País;casos;sg;2026;30;900\n"
+        _, _, disp = dados_disponiveis(com_sg)
+        return escolher_alvo(disp, INDICADORES["sg"]["padroes"]) == "sg" and parse_serie_longa(com_sg, INDICADORES["sg"]["padroes"])["BR"]["2026-30"] == 900
+    def t9():
+        try:
+            parse_serie_longa(csv_txt, INDICADORES["sg"]["padroes"]); return False
+        except ValueError:
+            return len(URLS_SERIE) == 2 and URLS_SERIE[0] == URL_SERIE and "gitlab.fiocruz.br" in URLS_SERIE[1]
     return rodar_autoteste({"detecção de colunas por padrão": t1, "coluna ausente falha alto (nunca adivinha)": t2,
                             "parse: BR e UF, escala 'casos' filtrada": t3, "canal endêmico: 6 anos, ordenado": t4,
-                            "últimas 4 SE vazadas": t5, "ressalva e siglas": t6})
+                            "últimas 4 SE vazadas": t5, "ressalva e siglas": t6,
+                            "alvo: srag casa, sg ausente → None": t7, "sg extraído só quando o rótulo existe": t8,
+                            "sg ausente falha alto; dois hosts em ordem": t9})
 
 
 if __name__ == "__main__":

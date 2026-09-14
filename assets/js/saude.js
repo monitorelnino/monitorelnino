@@ -3,6 +3,7 @@ let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PA
 // 14/09/2026: chikungunya — mesmos quatro arquivos do painel, com prefixo chik_ (coletar_desfechos_saude.py --doenca chikungunya).
 // Nulos enquanto o coletor não rodar: o comparador e o mapa declaram lacuna, nunca preenchem.
 let DESF_CHIK = null, DESF_CANAL_CHIK = null;
+let SG = null;   // 14/09/2026: síndrome gripal (sg_serie.json, mesmo coletor do SRAG); nulo = lacuna declarada
 const DOENCAS_DESF = {
   dengue:      {rotulo: 'dengue',      dados: () => ({serie: DESF,      canal: DESF_CANAL}),      capitais: true},
   chikungunya: {rotulo: 'chikungunya', dados: () => ({serie: DESF_CHIK, canal: DESF_CANAL_CHIK}), capitais: false}   // sem série por capitais ainda (coletar_saude.py é só dengue)
@@ -24,9 +25,10 @@ async function __load(){
   // migraram para pesquisadores.html — "é backlog metodológico; pertence a Pesquisadores". SRAG
   // continua aqui: alimenta o gráfico 'SRAG por semana', mantido na página principal.
   try { SRAG = await fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { SRAG = null; }
+  try { SG = await fetch('data/saude_desfechos/sg_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { SG = null; }
   __init();
   renderDesfechos((document.getElementById('selDoencaDesf') || {}).value || 'dengue');
-  renderSRAG();
+  renderSRAG((document.getElementById('selIndicadorSRAG') || {}).value || 'srag');
 }
 
 const fonteFigura = MonitorMapas.credito;
@@ -269,46 +271,43 @@ function renderDesfechos(doenca){
 
 
 // ===== SRAG por semana, Brasil (§36; InfoGripe). Peso zero. O Monitor não atribui casos ao El Niño. =====
-function renderSRAG(){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const br = SRAG && SRAG.serie && SRAG.serie.BR;
+// 14/09/2026: parametrizada por indicador (SRAG | SG) — mesmo CSV do InfoGripe, mesmo desenho; sem arquivo = lacuna declarada
+let __sragChart = null;
+const INDICADORES_RESP = {
+  srag: {rotulo: 'SRAG', eixo: 'casos SRAG · Brasil', fonte: ['InfoGripe (Fiocruz/FGV), Sivep-Gripe'], dados: () => SRAG},
+  sg:   {rotulo: 'síndrome gripal', eixo: 'casos de síndrome gripal · Brasil', fonte: ['InfoGripe (Fiocruz/FGV)'], dados: () => SG}
+};
+function renderSRAG(ind){
+  ind = INDICADORES_RESP[ind] ? ind : 'srag'; const cfg = INDICADORES_RESP[ind]; const D = cfg.dados();
+  const cv = document.getElementById('cSRAG'), svg = document.getElementById('svgSRAGLacuna');
+  if (__sragChart) { if (typeof __sragChart.destroy === 'function') __sragChart.destroy(); __sragChart = null; }
+  const br = D && D.serie && D.serie.BR;
   if (!br) {
-    // 11/09/2026: sem srag_serie.json a figura ficava como moldura vazia, sem dizer nada a quem lê — o pior
-    // desfecho possível. O arquivo não existe porque coletar_srag_gripe.py acusa URLError desde 09/09:
-    // gitlab.procc.fiocruz.br (CSV canônico do InfoGripe) não responde nem do runner nem de um navegador no
-    // Brasil (ERR_CONNECTION_TIMED_OUT). Ausência de dado passa a ser DECLARADA na própria figura.
-    const cv = document.getElementById('cSRAG');
-    if (cv && cv.parentElement) {
-      // a lacuna vai DENTRO da mídia (como em financiamento.js), não como parágrafo ao lado:
-      // o portão de figuras só admite título, legenda e crédito no cartão.
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('viewBox', '0 0 900 220'); svg.setAttribute('role', 'img');
-      svg.setAttribute('aria-label', 'Série de SRAG ainda não coletada — lacuna declarada; a fonte InfoGripe não respondeu nas últimas tentativas de coleta');
-      const t1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      t1.setAttribute('x', '450'); t1.setAttribute('y', '100'); t1.setAttribute('text-anchor', 'middle');
-      t1.setAttribute('font-size', '15'); t1.setAttribute('fill', MonitorMapas.cor('muted'));
-      t1.textContent = 'Série ainda não coletada — lacuna declarada';
-      const t2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      t2.setAttribute('x', '450'); t2.setAttribute('y', '126'); t2.setAttribute('text-anchor', 'middle');
-      t2.setAttribute('font-size', '12.5'); t2.setAttribute('fill', MonitorMapas.cor('muted'));
-      t2.textContent = 'A fonte (InfoGripe/Fiocruz) não respondeu nas últimas tentativas de coleta.';
-      svg.appendChild(t1); svg.appendChild(t2);
-      cv.parentElement.replaceChild(svg, cv);
-    }
-    fonteFigura('boxSRAG', {fontes: ['InfoGripe (Fiocruz/FGV)'], data: null});
+    // 11/09/2026: sem arquivo a figura ficava como moldura vazia, sem dizer nada a quem lê — o pior desfecho possível.
+    // A fonte InfoGripe não responde desde 09/09 (ver scripts/diagnostico_fontes_saude.py). Ausência é DECLARADA na
+    // própria mídia (o portão de figuras só admite título, legenda e crédito no cartão): canvas some, SVG de lacuna aparece.
+    if (cv) cv.hidden = true;
+    if (svg) { svg.hidden = false; svg.setAttribute('aria-label', 'Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada; a fonte InfoGripe não respondeu nas últimas tentativas de coleta');
+      const t1 = document.getElementById('txtSRAGLacuna1'), t2 = document.getElementById('txtSRAGLacuna2');
+      if (t1) { t1.textContent = 'Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada'; t1.setAttribute('fill', MonitorMapas.cor('muted')); }
+      if (t2) { t2.textContent = 'A fonte (InfoGripe/Fiocruz) não respondeu nas últimas tentativas de coleta.'; t2.setAttribute('fill', MonitorMapas.cor('muted')); } }
+    MonitorMapas.legenda('legSRAG', [{cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta de ' + cfg.rotulo + ' até o corte'}]);
+    fonteFigura('boxSRAG', {fontes: cfg.fonte, data: null});
     return;
   }
-  const canal = (SRAG.canal_endemico || {}).BR || {}; const now = (SRAG.nowcasting || {}).BR || {};
-  const ano = SRAG.ano_corrente; const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
+  if (svg) svg.hidden = true; if (cv) cv.hidden = false;
+  const canal = (D.canal_endemico || {}).BR || {}; const now = (D.nowcasting || {}).BR || {};
+  const ano = D.ano_corrente; const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
   const ate = Math.max(...Object.keys(br).concat(Object.keys(now)).filter(k => k.startsWith(String(ano))).map(k => +k.split('-')[1]));
   const labels = semanas.slice(0, ate);
   MonitorMapas.padraoGraficos(window.Chart);
-  new Chart(document.getElementById('cSRAG'), {data: {labels: labels.map(w => 'SE ' + w), datasets: [
+  __sragChart = new Chart(cv, {data: {labels: labels.map(w => 'SE ' + w), datasets: [
       {type: 'bar', label: 'consolidado', data: labels.map(w => (br[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, order: 2},
       {type: 'bar', label: 'nowcasting', data: labels.map(w => (now[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2024'], order: 2},
       {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => (canal[w] || {}).mediana ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
       {type: 'line', label: 'p90', data: labels.map(w => (canal[w] || {}).p90 ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
-    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos SRAG · Brasil'}}}}});
+    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: cfg.eixo}}}}});
   MonitorMapas.legenda('legSRAG', [{cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, rotulo: 'consolidado'}, {cor: MonitorMapas.PALETA.anos['2024'], rotulo: 'nowcasting (últimas 4 semanas)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
-  fonteFigura('boxSRAG', {fontes: ['InfoGripe (Fiocruz/FGV), Sivep-Gripe'], data: SRAG.gerado_em, url: SRAG.fonte});
+  fonteFigura('boxSRAG', {fontes: cfg.fonte, data: D.gerado_em, url: D.fonte});
 }
+(function(){ const sel = document.getElementById('selIndicadorSRAG'); if (sel) sel.addEventListener('change', () => renderSRAG(sel.value)); })();
