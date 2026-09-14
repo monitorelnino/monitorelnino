@@ -50,109 +50,7 @@
 <main id="conteudo">
   <p class="selo">Saúde · registro de transparência · peso zero no índice</p>
   <h1>Saúde e <em>El Niño</em></h1>
-  <p class="hint" id="subSaude">Sinais de saúde observados na população vêm primeiro — casos notificados, alertas e emergências, reproduzidos das fontes oficiais; peso zero, sem juízo de preparo. O que cada estado publicou e o índice de prontidão institucional (MARÉ · Saúde) vêm depois, como contexto secundário: medem documento e antecipação, não o estado de saúde da população. Corte: <strong id="corteSaude">—</strong>.</p>
-
-  <div class="panel" id="escolhaEstado">
-    <h2>Escolha um estado</h2>
-    <p class="hint">Veja o retrato de um estado antes de entrar nas tabelas e mapas nacionais abaixo.</p>
-    <select id="selEstadoSaude" class="seletor" aria-label="Escolher um estado"><option value="">Selecione um estado…</option></select>
-    <div id="perfilEstadoSaude" class="grade-cartoes u-mt-3" hidden></div>
-  </div>
-
-  <div class="panel panel--acento-teal" id="desfechos">
-    <h2>O que aconteceu — desfechos em saúde</h2>
-    <p class="hint">Terceira coluna, ao lado do índice e do contador: a curva observada nos 313 municípios do painel amostral, semana a semana, sobre o canal endêmico das mesmas semanas de 2019–2025 (2024 à parte). Peso zero, sem nota. <strong>O Monitor não atribui casos ao El Niño.</strong></p>
-    <label class="sr-only" for="selDoencaDesf">Doença</label>
-    <select id="selDoencaDesf" class="seletor" aria-label="Escolher a doença do comparador e do mapa">
-      <option value="dengue" selected>Dengue</option>
-      <option value="chikungunya">Chikungunya</option>
-    </select>
-    <div class="grade-figuras">
-      <figure class="figura figura--grafico figura--largo" id="boxDesfAcum">
-        <h3 class="figura-titulo">Casos notificados: painel amostral e capitais</h3>
-        <p class="figura-sub">Painel amostral (313 municípios) e 27 capitais · semanal, sobre o canal endêmico, ou acumulado anual · nº de casos</p>
-        <label class="sr-only" for="selComparadorDengue">Visualização</label>
-        <select id="selComparadorDengue" class="seletor u-mb-2" aria-label="Escolher a visualização">
-          <option value="semanal_painel" selected>Semanal · painel amostral, sobre o canal endêmico</option>
-          <option value="acum">Acumulado no ano · painel amostral</option>
-          <option value="semanal">Semanal por capitais · 27 capitais</option>
-        </select>
-        <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Casos notificados da doença escolhida (dengue ou chikungunya), conforme a visualização: semanal no painel amostral sobre o canal endêmico, acumulado anual no painel amostral, ou semanal nas 27 capitais"></canvas></div>
-        <div class="map-legend" id="legDesfAcum"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxDesfMapa">
-        <h3 class="figura-titulo">Nível de alerta por município · última semana consolidada</h3>
-        <p class="figura-sub">Última SE consolidada · nível de alerta InfoDengue (1–4) por município do painel</p>
-        <div class="figura-midia"><svg id="mapaDesf" role="img" aria-label="Mapa do Brasil com os municípios do painel amostral coloridos pelo nível de alerta do InfoDengue na última semana consolidada" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legDesfMapa"></div>
-      </figure>
-      <figure class="figura figura--grafico figura--largo" id="boxSRAG">
-        <h3 class="figura-titulo">Respiratórias por semana · Brasil, sobre o canal endêmico</h3>
-        <p class="figura-sub">Semanas de 2026 (últimas 4 excluídas do consolidado) · SRAG ou síndrome gripal · Brasil · nº de casos</p>
-        <label class="sr-only" for="selIndicadorSRAG">Indicador</label>
-        <select id="selIndicadorSRAG" class="seletor u-mb-2" aria-label="Escolher o indicador respiratório">
-          <option value="srag" selected>SRAG · síndrome respiratória aguda grave</option>
-          <option value="sg">Síndrome gripal (SG)</option>
-        </select>
-        <div class="figura-midia canvas-wrap"><canvas id="cSRAG" aria-label="Casos do indicador respiratório escolhido por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas><svg id="svgSRAGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSRAGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSRAGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
-        <div class="map-legend" id="legSRAG"></div>
-      </figure>
-      <figure class="figura figura--grafico figura--largo" id="boxDDA">
-        <h3 class="figura-titulo">Diarreicas agudas por semana · Brasil, sobre o canal endêmico</h3>
-        <p class="figura-sub">Semanas de 2026 (últimas 4 parciais) · atendimentos de DDA em unidades sentinela (MDDA) · Brasil · nº de atendimentos</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cDDA" aria-label="Atendimentos de doenças diarreicas agudas em unidades sentinela por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas><svg id="svgDDALacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtDDALacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtDDALacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
-        <div class="map-legend" id="legDDA"></div>
-      </figure>
-    </div>
-  </div>
-
-<div class="panel" id="observado">
-    <h2>O que se observa</h2>
-    <p class="hint">Dado epidemiológico é observação, nunca juízo de preparo. Fonte não coletada aparece como lacuna declarada. <strong>Cadência:</strong> não é tempo real — o robô consulta as fontes oficiais todo dia na semana intensiva (06 a 13/09/2026) e toda segunda-feira depois; cada figura mostra a data da consulta. <span id="carimboSaude"></span></p>
-    <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxDengue">
-        <h3 class="figura-titulo">Dengue nas capitais · última semana epidemiológica</h3>
-        <p class="figura-sub">Última SE disponível · nível de alerta InfoDengue nas 27 capitais · 1–4</p>
-        <div class="figura-midia"><svg id="mapaDengue" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nas capitais" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legDengue"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxCalor">
-        <h3 class="figura-titulo">Avisos de calor vigentes (INMET)</h3>
-        <p class="figura-sub">Consulta mais recente · avisos de calor vigentes do INMET por UF · contagem</p>
-        <div class="figura-midia"><svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de avisos de calor do INMET" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legCalor"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxEmerg" hidden>
-        <h3 class="figura-titulo">Emergências sanitárias declaradas (resposta)</h3>
-        <p class="figura-sub">Desde 29/06/2026 · emergências sanitárias declaradas · lista</p>
-        <div class="figura-midia"><svg id="mapaEmerg" role="img" aria-label="Mapa do Brasil com emergências sanitárias declaradas" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legEmerg"></div>
-      </figure>
-    </div>
-  </div>
-
-  <p class="hint">Os alertas e as orientações para a população estão em <a href="proteja-se.html#alertas-saude">Proteja-se</a>, alimentados pelos mesmos dados desta página.</p>
-  <div class="panel" id="estadual">
-    <h2>O que cada estado publicou (verificação em andamento)</h2>
-    <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE para os riscos sanitários do ciclo. "Ainda não verificado" significa exatamente isso: a bateria estadual desta camada não foi executada para a UF — não é ausência de documento. <strong id="contagemUF">—</strong></p>
-    <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxStatus">
-        <h3 class="figura-titulo">Status do instrumento estadual de saúde</h3>
-        <p class="figura-sub">Corte da edição · status do plano estadual de saúde para o ciclo · escada da §9</p>
-        <div class="figura-midia"><svg id="mapaStatus" role="img" aria-label="Mapa do Brasil pelo status do instrumento estadual de saúde para o ciclo" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legStatus"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxRiscoSan">
-        <h3 class="figura-titulo">Risco sanitário projetado (derivado)</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · risco sanitário projetado por UF (derivado dos boletins) · família</p>
-        <div class="figura-midia"><svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil pela família de risco sanitário derivada do risco projetado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legRiscoSan"></div>
-      </figure>
-    </div>
-    <details class="figura-dados"><summary>Ver em tabela: as 27 UFs</summary>
-      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblUF"><thead><tr><th>UF</th><th>Status</th><th>Documento</th><th>Riscos sanitários projetados</th><th>Verificado em</th></tr></thead><tbody></tbody></table></div>
-    </details>
-  </div>
+  <p class="hint" id="subSaude">Primeiro, as duas metades do MARÉ · Saúde — o que os estados publicaram antes e o que declararam depois; em seguida, o que cada estado publicou, um a um; depois, o que se observa na população (dengue, calor), reproduzido das fontes oficiais, com peso zero e sem juízo de preparo. Os demais desfechos ficam no expandido. Corte desta edição: <span id="corteSaude">—</span>.</p>
 
   <div class="panel panel--acento-ink" id="monitorSaude">
     <h2>MARÉ · Saúde — antecipação e resposta</h2>
@@ -201,6 +99,111 @@
            com a mesma prontidão por UF e mais colunas (instrumento, antecipação, dengue, risco). JS
            correspondente (monitorBarras) guardado por ausência do elemento, não apagado. -->
     </div>
+  </div>
+
+  <div class="panel" id="estadual">
+    <h2>O que cada estado publicou (verificação em andamento)</h2>
+    <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE para os riscos sanitários do ciclo. "Ainda não verificado" significa exatamente isso: a bateria estadual desta camada não foi executada para a UF — não é ausência de documento. <strong id="contagemUF">—</strong></p>
+    <select id="selEstadoSaude" class="seletor" aria-label="Escolher um estado"><option value="">Selecione um estado…</option></select>
+    <div id="perfilEstadoSaude" class="grade-cartoes u-mt-3" hidden></div>
+    <div class="grade-figuras u-mt-3">
+      <figure class="figura figura--mapa" id="boxStatus">
+        <h3 class="figura-titulo">Status do instrumento estadual de saúde</h3>
+        <p class="figura-sub">Corte da edição · status do plano estadual de saúde para o ciclo · escada da §9</p>
+        <div class="figura-midia"><svg id="mapaStatus" role="img" aria-label="Mapa do Brasil pelo status do instrumento estadual de saúde para o ciclo" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legStatus"></div>
+      </figure>
+    </div>
+    <details class="figura-dados"><summary>Ver em tabela: as 27 UFs</summary>
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblUF"><thead><tr><th>UF</th><th>Status</th><th>Documento</th><th>Riscos sanitários projetados</th><th>Verificado em</th></tr></thead><tbody></tbody></table></div>
+    </details>
+    <details class="acc" id="estadualVerMais">
+      <summary class="acc-summary">Ver mais: risco sanitário projetado por estado (derivado)</summary>
+      <div class="panel">
+        <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxRiscoSan">
+        <h3 class="figura-titulo">Risco sanitário projetado (derivado)</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · risco sanitário projetado por UF (derivado dos boletins) · família</p>
+        <div class="figura-midia"><svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil pela família de risco sanitário derivada do risco projetado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legRiscoSan"></div>
+      </figure>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="panel panel--acento-teal" id="observado">
+    <h2>O que se observa</h2>
+    <p class="hint">Dado epidemiológico é observação, nunca juízo de preparo. Fonte não coletada aparece como lacuna declarada. <strong>Cadência:</strong> não é tempo real — o robô consulta as fontes oficiais todo dia na semana intensiva (06 a 13/09/2026) e toda segunda-feira depois; cada figura mostra a data da consulta. <span id="carimboSaude"></span></p>
+    <label class="sr-only" for="selDoencaDesf">Doença</label>
+    <select id="selDoencaDesf" class="seletor" aria-label="Escolher a doença do comparador e do mapa">
+      <option value="dengue" selected>Dengue</option>
+      <option value="chikungunya">Chikungunya</option>
+    </select>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa" id="boxDesfMapa">
+        <h3 class="figura-titulo">Nível de alerta por município · última semana consolidada</h3>
+        <p class="figura-sub">Última SE consolidada · nível de alerta InfoDengue (1–4) por município do painel</p>
+        <div class="figura-midia"><svg id="mapaDesf" role="img" aria-label="Mapa do Brasil com os municípios do painel amostral coloridos pelo nível de alerta do InfoDengue na última semana consolidada" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legDesfMapa"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxCalor">
+        <h3 class="figura-titulo">Avisos de calor vigentes (INMET)</h3>
+        <p class="figura-sub">Consulta mais recente · avisos de calor vigentes do INMET por UF · contagem</p>
+        <div class="figura-midia"><svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de avisos de calor do INMET" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legCalor"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxEmerg" hidden>
+        <h3 class="figura-titulo">Emergências sanitárias declaradas (resposta)</h3>
+        <p class="figura-sub">Desde 29/06/2026 · emergências sanitárias declaradas · lista</p>
+        <div class="figura-midia"><svg id="mapaEmerg" role="img" aria-label="Mapa do Brasil com emergências sanitárias declaradas" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legEmerg"></div>
+      </figure>
+    </div>
+  <p class="hint">Os alertas e as orientações para a população estão em <a href="proteja-se.html#alertas-saude">Proteja-se</a>, alimentados pelos mesmos dados desta página.</p>
+    <details class="acc" id="outrosDesfechos">
+      <summary class="acc-summary">Ver mais: outros desfechos — casos no painel amostral, respiratórias, diarreicas e dengue nas capitais</summary>
+      <div class="panel">
+    <p class="hint">Terceira coluna, ao lado do índice e do contador: a curva observada nos 313 municípios do painel amostral, semana a semana, sobre o canal endêmico das mesmas semanas de 2019–2025 (2024 à parte). Peso zero, sem nota. <strong>O Monitor não atribui casos ao El Niño.</strong></p>
+        <div class="grade-figuras">
+      <figure class="figura figura--grafico figura--largo" id="boxDesfAcum">
+        <h3 class="figura-titulo">Casos notificados: painel amostral e capitais</h3>
+        <p class="figura-sub">Painel amostral (313 municípios) e 27 capitais · semanal, sobre o canal endêmico, ou acumulado anual · nº de casos</p>
+        <label class="sr-only" for="selComparadorDengue">Visualização</label>
+        <select id="selComparadorDengue" class="seletor u-mb-2" aria-label="Escolher a visualização">
+          <option value="semanal_painel" selected>Semanal · painel amostral, sobre o canal endêmico</option>
+          <option value="acum">Acumulado no ano · painel amostral</option>
+          <option value="semanal">Semanal por capitais · 27 capitais</option>
+        </select>
+        <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Casos notificados da doença escolhida (dengue ou chikungunya), conforme a visualização: semanal no painel amostral sobre o canal endêmico, acumulado anual no painel amostral, ou semanal nas 27 capitais"></canvas></div>
+        <div class="map-legend" id="legDesfAcum"></div>
+      </figure>
+      <figure class="figura figura--grafico figura--largo" id="boxSRAG">
+        <h3 class="figura-titulo">Respiratórias por semana · Brasil, sobre o canal endêmico</h3>
+        <p class="figura-sub">Semanas de 2026 (últimas 4 excluídas do consolidado) · SRAG ou síndrome gripal · Brasil · nº de casos</p>
+        <label class="sr-only" for="selIndicadorSRAG">Indicador</label>
+        <select id="selIndicadorSRAG" class="seletor u-mb-2" aria-label="Escolher o indicador respiratório">
+          <option value="srag" selected>SRAG · síndrome respiratória aguda grave</option>
+          <option value="sg">Síndrome gripal (SG)</option>
+        </select>
+        <div class="figura-midia canvas-wrap"><canvas id="cSRAG" aria-label="Casos do indicador respiratório escolhido por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas><svg id="svgSRAGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSRAGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSRAGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
+        <div class="map-legend" id="legSRAG"></div>
+      </figure>
+      <figure class="figura figura--grafico figura--largo" id="boxDDA">
+        <h3 class="figura-titulo">Diarreicas agudas por semana · Brasil, sobre o canal endêmico</h3>
+        <p class="figura-sub">Semanas de 2026 (últimas 4 parciais) · atendimentos de DDA em unidades sentinela (MDDA) · Brasil · nº de atendimentos</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cDDA" aria-label="Atendimentos de doenças diarreicas agudas em unidades sentinela por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas><svg id="svgDDALacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtDDALacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtDDALacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
+        <div class="map-legend" id="legDDA"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxDengue">
+        <h3 class="figura-titulo">Dengue nas capitais · última semana epidemiológica</h3>
+        <p class="figura-sub">Última SE disponível · nível de alerta InfoDengue nas 27 capitais · 1–4</p>
+        <div class="figura-midia"><svg id="mapaDengue" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nas capitais" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legDengue"></div>
+      </figure>
+        </div>
+      </div>
+    </details>
   </div>
 
 </main>
