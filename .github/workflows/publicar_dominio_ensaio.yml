@@ -1,0 +1,80 @@
+name: Publicar a main no domínio — ENSAIO (noindex, por botão)
+
+# 14/09/2026 (pedido de Patricia): exercício de publicação do site completo no
+# domínio monitorelnino.com.br, reversível a qualquer momento. Só roda por botão
+# ("Run workflow"); nunca por push — a rodada semanal continua publicando apenas na
+# prévia. Publica o retrato da main daquele momento como deploy de PRODUÇÃO, com
+# `noindex` (cabeçalho X-Robots-Tag + robots.txt de bloqueio, só neste deploy): o
+# Google não indexa uma versão que vai voltar a ser cortina. Nada visível muda para
+# quem abre o site.
+#
+# VOLTAR À CORTINA "Em atualização": (a) no ramo `publico`, Actions → "Publicar este
+# ramo no domínio (produção)" → Run workflow (~1 min); ou (b) no painel do Netlify,
+# Deploys → deploy anterior da cortina → "Publish deploy" (segundos).
+#
+# O lançamento definitivo continua sendo o do PROTOCOLO §7 (workflow por push na main,
+# sem noindex) — este ensaio não o substitui.
+on:
+  workflow_dispatch:
+    inputs:
+      confirmar:
+        description: 'Digite PUBLICAR para confirmar o deploy de produção em ensaio (noindex)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dominio-ensaio
+  cancel-in-progress: false
+
+jobs:
+  ensaio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Confirmação explícita
+        run: |
+          [ "${{ inputs.confirmar }}" = "PUBLICAR" ] || { echo "::error::Confirmação ausente — digite PUBLICAR no campo."; exit 1; }
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: "20" }
+      - name: Deploy de PRODUÇÃO (ensaio, noindex) no Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          set +e
+          {
+            echo "workflow=publicar_dominio_ensaio ramo=main commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) modo=noindex"
+            # noindex só neste deploy: cabeçalho para tudo e robots.txt de bloqueio (o robots.txt real do site fica no repositório)
+            printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > _headers
+            printf 'User-agent: *\nDisallow: /\n' > robots.txt
+            npx --yes netlify-cli@17 deploy --prod --dir=. --message "ENSAIO noindex da main ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1
+            echo "codigo_saida=$?"
+            rm -f _headers; git checkout -- robots.txt 2>/dev/null
+            grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "Error|error|422|Deploy is live|Website URL|Unique deploy" | head -c 1500
+          } > /tmp/relatorio.txt 2>&1
+          sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/relatorio.txt
+          grep -q "Deploy is live" /tmp/relatorio.txt && echo "DEPLOY_OK=1" >> $GITHUB_ENV || echo "DEPLOY_OK=0" >> $GITHUB_ENV
+      - name: Verificar o site publicado (contra o domínio real)
+        if: env.DEPLOY_OK == '1'
+        continue-on-error: true
+        run: |
+          sleep 20
+          node scripts/verificar_publicado.js --base https://monitorelnino.com.br --esperar-noindex 2>&1 | tee /tmp/verificar_publicado.txt
+      - name: Registrar relatório no repositório privado
+        if: always()
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
+          mkdir -p /tmp/registro/relatorios
+          cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_publicar_dominio_ensaio.txt"
+          cp /tmp/verificar_publicado.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado.txt" 2>/dev/null || true
+          cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
+          git add -A && git commit -q -m "publicar_dominio_ensaio ${GITHUB_SHA::7}" && git push -q
+      - name: Resultado
+        run: |
+          [ "$DEPLOY_OK" = "1" ] && echo "Domínio publicado em ENSAIO (noindex). Para voltar à cortina: ramo publico → Run workflow." || { echo "::error::Deploy falhou — ver robo-registro"; exit 1; }
