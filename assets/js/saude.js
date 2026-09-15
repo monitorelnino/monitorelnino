@@ -30,6 +30,7 @@ async function __load(){
   try { DDA = await fetch('data/saude_desfechos/dda_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { DDA = null; }
   __init();
   renderDesfechos((document.getElementById('selDoencaDesf') || {}).value || 'dengue');
+  try { titulosFatoSaude(); } catch (e) {}   // 15/09/2026 (§2.10): depois de tudo carregado
   renderSRAG((document.getElementById('selIndicadorSRAG') || {}).value || 'srag');
   renderDDA();
 }
@@ -349,3 +350,28 @@ function renderDDA(){
   renderSerieNacional(INDICADOR_DDA, {credito: p => fonteFigura('boxDDA', p), canvas: 'cDDA', svg: 'svgDDALacuna', txt1: 'txtDDALacuna1', txt2: 'txtDDALacuna2', leg: 'legDDA'});
 }
 (function(){ const sel = document.getElementById('selIndicadorSRAG'); if (sel) sel.addEventListener('change', () => renderSRAG(sel.value)); })();
+
+// 15/09/2026 (auditoria editorial §2.10): títulos-fato calculados dos dados já carregados — nunca digitados.
+function titulosFatoSaude(){
+  const titulo = (box, txt) => { const h = document.querySelector('#' + box + ' .figura-titulo'); if (h && txt) h.textContent = txt; };
+  const n = v => Number(v || 0).toLocaleString('pt-BR');
+  try {   // MARÉ · Saúde: estados por categoria do plano de saúde
+    const UFS = Object.keys(SUF.uf || {}); const st = uf => (SUF.uf[uf] || {}).status || 'NAO_VERIFICADO';
+    const c = k => UFS.filter(u => k.includes(st(u))).length;
+    titulo('boxMonitor', `Saúde: ${c(['NOVO'])} estados com plano para o ciclo, ${c(['VIG','READ'])} com o de todo ano, ${c(['ELAB'])} em elaboração, ${c(['NAO_VERIFICADO'])} não verificados` + (c(['LAC']) ? `, ${c(['LAC'])} sem plano` : ''));
+    titulo('boxStatus', `Plano de saúde por estado: ${c(['NOVO'])} para o ciclo, ${c(['VIG','READ'])} de todo ano, ${c(['NAO_VERIFICADO'])} não verificados`);
+  } catch (e) {}
+  try {   // contador de emergências sanitárias
+    const em = (SSIN && SSIN.emergencias) || []; const corte = (SUF && SUF.corte) || '—';
+    titulo('boxRespostaSanitaria', `Emergências sanitárias declaradas no ciclo: ${em.length}` + (em.length ? '' : ` — nenhuma localizada até ${corte}`));
+  } catch (e) {}
+  // dengue: municípios em alerta laranja/vermelho na última semana consolidada (nível 3 = laranja, 4 = vermelho no InfoDengue)
+  const tituloDengue = () => { try {
+    const doenca = (document.getElementById('selDoencaDesf') || {}).value || 'dengue'; const M = (DESF && DESF.municipios) || {};
+    if (!Object.keys(M).length) return; const se = Object.values(M).map(m => m.ultima_se).filter(Boolean).sort().pop();
+    const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
+    const rot = doenca === 'chikungunya' ? 'Chikungunya' : 'Dengue';
+    titulo('boxDesfMapa', `${rot}: ${n(alto)} municípios em alerta laranja ou vermelho na semana ${String(se || '').replace('2026-', 'SE ')} de 2026 (painel amostral)`);
+  } catch (e) {} };
+  tituloDengue(); const sel = document.getElementById('selDoencaDesf'); if (sel && !sel.__tituloFato) { sel.__tituloFato = true; sel.addEventListener('change', () => setTimeout(tituloDengue, 50)); }
+}
