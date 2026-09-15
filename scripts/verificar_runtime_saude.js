@@ -156,6 +156,17 @@ setTimeout(() => {
   teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com siglas das 27 UFs`, mapasSvg.length > 0 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato canônico`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I" && /background:/.test(c.firstElementChild.getAttribute("style") || ""))) && c.textContent.trim().length > 0)));
+  // 15/09/2026 (§2.10): títulos-fato de Saúde vêm do dado
+  try {
+    const SUFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_uf.json"), "utf8")); const UFS = Object.keys(SUFd.uf); const st = u => (SUFd.uf[u] || {}).status || "NAO_VERIFICADO";
+    const c = k => UFS.filter(u => k.includes(st(u))).length;
+    teste("saúde: título-fato do MARÉ · Saúde com as contagens do dado", new RegExp(`^Saúde: ${c(["NOVO"])} estados com plano para o ciclo, ${c(["VIG","READ"])} com o de todo ano, ${c(["ELAB"])} em elaboração, ${c(["NAO_VERIFICADO"])} não verificados`).test(q("boxMonitor").querySelector(".figura-titulo").textContent));
+    teste("saúde: contador de emergências com número e 'nenhuma localizada até' quando zero", /^Emergências sanitárias declaradas no ciclo: \d+/.test(q("boxRespostaSanitaria").querySelector(".figura-titulo").textContent));
+    const DESFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "serie_painel.json"), "utf8")); const M = DESFd.municipios; const se = Object.values(M).map(m => m.ultima_se).sort().pop();
+    const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
+    teste("saúde: dengue — municípios em alerta laranja/vermelho na última semana, do dado", new RegExp(`^Dengue: ${alto} municípios em alerta laranja ou vermelho na semana SE ${se.split("-")[1]} de 2026`).test(q("boxDesfMapa").querySelector(".figura-titulo").textContent));
+    teste("saúde: interpretação fixa do InfoDengue fora da figura", /não atribui casos ao El Niño/.test(q("interpObservado").textContent));
+  } catch (e) { teste("saúde: títulos-fato (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, tooltip, créditos e lacunas declaradas.");
   process.exit(falhas.length ? 1 : 0);
 }, 900);
