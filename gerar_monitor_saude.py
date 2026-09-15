@@ -189,6 +189,19 @@ def gerar() -> int:
                             "focos_24h": ((sig.get("fogo") or {}).get("focos_24h"))},
             "risco_projetado": u.get("risco_sanitario_projetado") or [],
         }
+    # 15/09/2026 (MARÉ Saúde espelha o MARÉ Legal): RESPOSTA sanitária como índice 0–100 = 100 × população (Censo 2022)
+    # dos estados com emergência sanitária declarada no ciclo (ESPIN federal ou decreto estadual, saude_sinais.emergencias)
+    # sobre a população do país; contagem ao lado. Zero de verdade enquanto nenhuma for localizada — nunca imputado.
+    pop_censo = ler("populacao_censo2022.json", {}) or {}
+    pop_uf = {}
+    for m in (ler("municipios_ibge_referencia.json", []) or []):
+        pop_uf[m["uf"]] = pop_uf.get(m["uf"], 0) + float(pop_censo.get(f"{int(m['codigo_ibge']):07d}", 0) or 0)
+    emergencias = [e for e in ((ss.get("emergencias") or []) if isinstance(ss.get("emergencias"), list) else []) if isinstance(e, dict)]
+    ufs_em = sorted({e.get("uf") for e in emergencias if e.get("uf") in UFS})
+    pop_total = sum(pop_uf.values()); pop_em = sum(pop_uf.get(u, 0) for u in ufs_em)
+    resposta = {"emergencias": len(emergencias), "ufs": ufs_em, "pop_sob_emergencia": int(pop_em), "pop_total": int(pop_total),
+                "indice": round(100.0 * pop_em / pop_total, 1) if pop_total else 0.0, "desde": "29/06/2026",
+                "fontes": ["DOU (ESPIN)", "diários oficiais estaduais"], "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"}
     verificadas = [uf for uf in UFS if ufs[uf]["verificado"]]
     por_faixa = {}
     for uf in verificadas: por_faixa[ufs[uf]["faixa"]] = por_faixa.get(ufs[uf]["faixa"], 0) + 1
@@ -210,6 +223,7 @@ def gerar() -> int:
                                    "plano de adaptação decenal (AdaptaSUS-UF)": "não pontua — estrutura"},
                    "ancoras": {"boletim_1": BOLETIM_1, "boletim_1_mais_30": BOLETIM_1_MAIS_30, "janela_critica_ms": JANELA_CRITICA_INICIO},
                    "faixas": {"estágio inicial": "0–25", "em construção": "25–50", "consolidado": "50–70", "avançado": "70–100"}},
+        "resposta": resposta,
         "resumo": {"verificadas": len(verificadas), "nao_verificadas": 27 - len(verificadas), "por_faixa": por_faixa,
                    "planos_municipais_lidos": sum(v["planos_lidos"] for v in cob.values()), "planos_municipais_sem_leitura": sum(v["planos_sem_leitura"] for v in cob.values()),
                    "media_das_verificadas": (round(sum(ufs[u]["prontidao"] for u in verificadas) / len(verificadas), 1) if verificadas else None),
