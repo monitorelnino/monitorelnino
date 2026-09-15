@@ -4,7 +4,7 @@ let BR_GEOJSON, ROTAS, PORUF, EMENDAS, CONSULTAS, TRANSF, ATOS, POP, MPS, CONTAD
 // ===== 3b · Contadores por estado (v3.1 §11; redesenhado 13/09/2026 — auditoria de visualizações) =====
 function renderContadores(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const C = (CONTADORES && CONTADORES.uf) || {}; if (!document.getElementById('mapaContadores')) return;
+  const C = (CONTADORES && CONTADORES.uf) || {}; if (!document.getElementById('mapaContadores')) return;   // 15/09/2026: figura retirada (pedido da editoria)
   const brl = v => v == null ? 'sem coleta' : 'R$ ' + v.toFixed(2).replace('.', ',');
   const ufsComR5 = Object.keys(C).filter(uf => (C[uf].por_habitante_2026 || {}).r5 != null);
   const r5 = uf => ((C[uf] || {}).por_habitante_2026 || {}).r5;
@@ -156,10 +156,10 @@ function __init(){
   // 3 · por estado
   const FUNDO = {localizado:['Localizado',MonitorMapas.PALETA.status.NOVO], em_elaboracao:['Em elaboração',MonitorMapas.PALETA.status.ELAB], nao_localizado:['Não localizado (bateria datada)',MonitorMapas.PALETA.status.LAC], nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.status.NAO_VERIFICADO]};
   const fundo = uf => ((PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}).status || 'nao_verificado';
-  desenharMapa('mapaFundo','legFundo', uf => (FUNDO[fundo(uf)] || FUNDO.nao_verificado)[1],
+  if (document.getElementById('mapaFundo')) desenharMapa('mapaFundo','legFundo', uf => (FUNDO[fundo(uf)] || FUNDO.nao_verificado)[1],
     uf => { const f = (PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}; return '<em>' + esc((FUNDO[fundo(uf)] || FUNDO.nao_verificado)[0]) + '</em>' + (f.instrumento ? '<br>' + esc(f.instrumento) + (f.norma ? ' · ' + esc(f.norma) : '') : '') + (f.condicionalidade ? '<br>Condição: ' + esc(f.condicionalidade) : '') + (f.verificado_em ? '<br>verificado em ' + esc(f.verificado_em) : '<br>bateria estadual ainda não executada'); },
     Object.values(FUNDO).map(v => ({cor: v[1], rotulo: v[0]})));
-  fonteFigura('boxFundoEstadual', {fontes: 'MARÉ', data: PORUF.corte});
+  if (document.getElementById('boxFundoEstadual')) fonteFigura('boxFundoEstadual', {fontes: 'MARÉ', data: PORUF.corte});   // 15/09/2026: mapa retirado da página (pedido da editoria)
   // 13/09/2026: mapa "por habitante, por rota" retirado do HTML (ver comentário em financiamento.html,
   // painel #porestado) — só a rota 5 tinha cobertura real. Bloco mantido desativado (guarda por
   // ausência do <select>), não apagado, para reativar assim que outras rotas tiverem dado.
@@ -177,6 +177,8 @@ function __init(){
     desenharHab(); sel.addEventListener('change', desenharHab);
     fonteFigura('boxPorHab', {fontes: ['Portal da Transparência', 'Tesouro', 'FNS', 'FNAS', 'Censo 2022 (IBGE)'], data: null});
   }
+  // 15/09/2026: painel 'Por estado' (mapa do dinheiro, R$/hab., barras de resposta) retirado da página (pedido da editoria); bloco guardado por ausência do elemento
+  if (document.getElementById('mapDinheiro')) {
   // 4 · resposta por decreto
   const svgDin = desenharMapa('mapDinheiro','legDinheiro', uf => NEUTRA, uf => 'Sem repasse ou reconhecimento nomeado até o corte',
     [{cor:MonitorMapas.PALETA.preparacao, rotulo:'Repasse preventivo confirmado (Prepara RS)'}, {cor:MonitorMapas.PALETA.resposta, rotulo:'Reconhecimento federal (rota 3, resposta)'}]);
@@ -210,6 +212,7 @@ function __init(){
     MonitorMapas.legenda('legResposta', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'reconhecidos pela União (S2iD/DOU)'}, {cor: MonitorMapas.PALETA.status.ELAB, rotulo: 'decretados sem reconhecimento'}]);
   })();
   fonteFigura('boxResposta', {fontes: 'DOU (SEDEC/MIDR)', data: recs.length ? ROTAS.corte : null});
+  }
   // 5 · painel amostral: migrou para pesquisadores.html em 13/09/2026 (proposta de enxugamento,
   // Manus AI) — "não responde quem pediu ou não pediu no universo monitorado".
   // 6 · programas permanentes
@@ -238,12 +241,12 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const tt = document.getElementById('fogoTitulo'); if (!tt) return;
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmtR = v => v == null ? '—' : 'R$ ' + (v >= 1e6 ? (v / 1e6).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ' mi' : v.toLocaleString('pt-BR'));
-  const lacuna = (t1, t2) => { const a = document.getElementById('txtFogoLacuna1'), b = document.getElementById('txtFogoLacuna2');
+  const lacuna = (t1, t2) => { if (!document.getElementById('legFogoMapa')) return; const a = document.getElementById('txtFogoLacuna1'), b = document.getElementById('txtFogoLacuna2');
     if (a) { a.textContent = t1; a.setAttribute('fill', MonitorMapas.cor('muted')); } if (b) { b.textContent = t2; b.setAttribute('fill', MonitorMapas.cor('muted')); }
     MonitorMapas.legenda('legFogoMapa', [{cor: MonitorMapas.NEUTRA, rotulo: 'camadas sem coleta até o corte'}]); };
   Promise.all(['data/financiamento/rotas_preventivas.json', 'data/financiamento/fogo/areas_declaradas.json', 'data/financiamento/fogo/transferencias.json', 'data/financiamento/fogo/requerimentos.json']
     .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null))).then(([RP, AREAS, TRANSF, REQ]) => {
-    if (!RP || !Array.isArray(RP.rotas)) { tt.textContent = 'Rotas preventivas ainda não carregadas.'; lacuna('Dados não carregados', ''); fonteFigura('boxFogoMapa', {fontes: 'MARÉ', data: null}); return; }
+    if (!RP || !Array.isArray(RP.rotas)) { tt.textContent = 'Rotas preventivas ainda não carregadas.'; lacuna('Dados não carregados', ''); if (document.getElementById('boxFogoMapa')) fonteFigura('boxFogoMapa', {fontes: 'MARÉ', data: null}); return; }
     const edital = RP.rotas.find(r => r.id === 'fogo_edital_2025'), fa = RP.rotas.find(r => r.id === 'fogo_fundo_amazonia');
     const riscos = RP.riscos_com_rota_preventiva || []; const soFogo = riscos.length === 1 && riscos[0] === 'incendio';
     const nAreas = AREAS && Array.isArray(AREAS.municipios) ? AREAS.municipios.length : null, nRec = TRANSF && Array.isArray(TRANSF.transferencias) ? new Set(TRANSF.transferencias.map(t => t.ibge || t.ente)).size : null;
@@ -261,8 +264,8 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const fr = document.getElementById('fogoRotasFonte'); if (fr && !fr.querySelector('.fonte-figura')) fr.innerHTML = '<p class="note u-mb-0">Fonte: leis e portarias citadas em cada cartão · MARÉ · Atualização: ' + esc(RP.corte || '—') + '</p>';
     if (!AREAS && !TRANSF) { lacuna('Camadas ainda não coletadas — lacuna declarada', 'Áreas declaradas (DOU/MMA) e transferências (Portal da Transparência) dependem de coleta própria; requerimentos só chegam por LAI/MMA.'); fonteFigura('boxFogoMapa', {fontes: ['DOU/MMA', 'Portal da Transparência', 'LAI/MMA'], data: null}); return; }
     // quando houver dado: mapa em três camadas (a implementar junto do coletor; até lá, contagens na legenda)
-    MonitorMapas.legenda('legFogoMapa', [{cor: MonitorMapas.PALETA.verificacao.nacional, rotulo: 'área declarada' + (nAreas != null ? ' · ' + nAreas : '')}, {cor: MonitorMapas.PALETA.categorias.decreto, rotulo: 'recebeu' + (nRec != null ? ' · ' + nRec : '')}, {cor: MonitorMapas.NEUTRA, rotulo: 'requereu: ' + (REQ ? 'conhecidos por LAI/MMA' : 'sem informação')}]);
-    fonteFigura('boxFogoMapa', {fontes: ['DOU/MMA', 'Portal da Transparência', 'LAI/MMA'], data: (AREAS && AREAS.gerado_em) || (TRANSF && TRANSF.gerado_em) || null});
+    if (document.getElementById('legFogoMapa')) MonitorMapas.legenda('legFogoMapa', [{cor: MonitorMapas.PALETA.verificacao.nacional, rotulo: 'área declarada' + (nAreas != null ? ' · ' + nAreas : '')}, {cor: MonitorMapas.PALETA.categorias.decreto, rotulo: 'recebeu' + (nRec != null ? ' · ' + nRec : '')}, {cor: MonitorMapas.NEUTRA, rotulo: 'requereu: ' + (REQ ? 'conhecidos por LAI/MMA' : 'sem informação')}]);
+    if (document.getElementById('boxFogoMapa')) fonteFigura('boxFogoMapa', {fontes: ['DOU/MMA', 'Portal da Transparência', 'LAI/MMA'], data: (AREAS && AREAS.gerado_em) || (TRANSF && TRANSF.gerado_em) || null});
   });
 })();
 
@@ -279,17 +282,17 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       (function(){ const cv = document.getElementById('cCompromissos'); if (!cv || typeof Chart === 'undefined') return;
         const mps = (MPS && MPS.mps) || []; const itens = (COMP.itens || []).slice();
         // os dois créditos extraordinários (MPs) entram na mesma leitura, com execução do Portal
-        const linhas = mps.map(m => ({nome: m.numero + ' · ' + m.tema, anunciado: m.valor, empenhado: (m.execucao || {}).empenhado, pago: (m.execucao || {}).pago, status: (m.execucao || {}).status}))
+        const linhas = mps.map(m => ({nome: m.numero + ' · ' + (m.tema || '').split(' e ')[0], anunciado: m.valor, empenhado: (m.execucao || {}).empenhado, pago: (m.execucao || {}).pago, status: (m.execucao || {}).status}))
           .concat(itens.map(c => ({nome: c.nome, anunciado: c.valor_total, empenhado: (c.execucao || {}).empenhado, pago: (c.execucao || {}).pago, status: (c.execucao || {}).status})));
         const mi = v => v == null ? null : +(v / 1e6).toFixed(1);
         MonitorMapas.padraoGraficos(window.Chart);
-        new Chart(cv, {type: 'bar', data: {labels: linhas.map(l => l.nome.length > 58 ? l.nome.slice(0, 56) + '…' : l.nome), datasets: [
-            {label: 'anunciado', data: linhas.map(l => mi(l.anunciado)), backgroundColor: MonitorMapas.PALETA.status.VIG},
-            {label: 'empenhado', data: linhas.map(l => mi(l.empenhado)), backgroundColor: MonitorMapas.PALETA.status.READ},
-            {label: 'pago', data: linhas.map(l => mi(l.pago)), backgroundColor: MonitorMapas.PALETA.preparacao}]},
+        new Chart(cv, {type: 'bar', data: {labels: linhas.map(l => l.nome.replace(/ — .*$/, '').length > 34 ? l.nome.replace(/ — .*$/, '').slice(0, 32) + '…' : l.nome.replace(/ — .*$/, '')), datasets: [
+            {label: 'anunciado', data: linhas.map(l => mi(l.anunciado)), backgroundColor: MonitorMapas.PALETA.serie[4]},
+            {label: 'empenhado', data: linhas.map(l => mi(l.empenhado)), backgroundColor: MonitorMapas.PALETA.serie[2]},
+            {label: 'pago', data: linhas.map(l => mi(l.pago)), backgroundColor: MonitorMapas.PALETA.serie[0]}]},
           options: {indexAxis: 'y', animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}, tooltip: {callbacks: {afterBody: items => { const l = linhas[items[0].dataIndex]; return l.status === 'coletado' ? 'execução: Portal da Transparência' : 'execução: ' + (l.status || 'aguardando coleta').replace(/_/g, ' '); }}}},
             scales: {x: {beginAtZero: true, title: {display: true, text: 'R$ milhões'}}, y: {ticks: {font: {size: 11}}}}}});
-        MonitorMapas.legenda('legCompromissos', [{cor: MonitorMapas.PALETA.status.VIG, rotulo: 'anunciado'}, {cor: MonitorMapas.PALETA.status.READ, rotulo: 'empenhado (Portal)'}, {cor: MonitorMapas.PALETA.preparacao, rotulo: 'pago (Portal)'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'sem barra de execução: aguardando coleta'}]);
+        MonitorMapas.legenda('legCompromissos', [{cor: MonitorMapas.PALETA.serie[4], rotulo: 'anunciado'}, {cor: MonitorMapas.PALETA.serie[2], rotulo: 'empenhado (Portal)'}, {cor: MonitorMapas.PALETA.serie[0], rotulo: 'pago (Portal)'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'sem barra de execução: aguardando coleta'}]);
         MonitorMapas.credito('boxCompromissosGrafico', {fontes: ['as citadas em cada compromisso', 'Portal da Transparência (execução)'], data: (MPS && MPS.gerado_em) || (ROTAS_FIN && ROTAS_FIN.corte) || null});
         // mapas: onde o pagamento chegou (valor pago por UF da unidade gestora), uma MP por mapa
         const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const fmt = v => 'R$ ' + (v >= 1e6 ? (v / 1e6).toFixed(1).replace('.', ',') + ' mi' : (v / 1e3).toFixed(0) + ' mil');
