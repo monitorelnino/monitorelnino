@@ -32,7 +32,8 @@ async function __load(){
   renderDesfechos('dengue', IDS_DENGUE);
   renderDesfechos('chikungunya', IDS_CHIK);
   try { titulosFatoSaude(); } catch (e) {}   // 15/09/2026 (§2.10): depois de tudo carregado
-  renderSRAG((document.getElementById('selIndicadorSRAG') || {}).value || 'srag');
+  renderSRAG('srag');
+  renderSG();
   renderDDA();
 }
 
@@ -404,6 +405,10 @@ function renderSerieNacional(cfg, ids){
 function renderSRAG(ind){
   ind = INDICADORES_RESP[ind] ? ind : 'srag';
   renderSerieNacional(INDICADORES_RESP[ind], {credito: p => fonteFigura('boxSRAG', p), canvas: 'cSRAG', svg: 'svgSRAGLacuna', txt1: 'txtSRAGLacuna1', txt2: 'txtSRAGLacuna2', leg: 'legSRAG'});
+}
+function renderSG(){
+  if (!document.getElementById('boxSG')) return;
+  renderSerieNacional(INDICADORES_RESP.sg, {credito: p => fonteFigura('boxSG', p), canvas: 'cSG', svg: 'svgSGLacuna', txt1: 'txtSGLacuna1', txt2: 'txtSGLacuna2', leg: 'legSG'});
 }
 function renderDDA(){
   if (!document.getElementById('boxDDA')) return;
