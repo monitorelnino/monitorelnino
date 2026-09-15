@@ -15,6 +15,15 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §57 · Proteja-se humanizado com contatos oficiais por estado; cartão social com o nome novo; subtítulo em largura total · 15/09/2026
+
+Nenhuma alteração de método. Classe **serviço ao leitor + arte + estrutura de página**.
+
+- **Quem chamar no seu estado**: novo `data/contatos_uf.json` com os 27 órgãos estaduais de Defesa Civil — telefones, plantão 24 h, e-mail, expediente e portal — transcritos do diretório oficial do MIDR ("Defesa Civil nos Estados", atualizado pelo órgão em 11/09/2024, consultado em 15/09/2026). Cartão por estado (seletor em destaque + grade dos 27), telefones tocáveis (`tel:`), fonte no pé. Portais testados do runner: 17 com resposta 200; MS (endereço sem DNS) passa ao portal oficial do estado, PE e RR às formas com www do diretório, PB ganha a página oficial do governo, RJ passa a defesacivil.rj.gov.br; AM, DF, PA, RO, SC e TO não respondem ao runner fora do Brasil (bloqueio, não erro de endereço) e ficam como estão; RN segue sem portal dedicado. A lista de portais do cartão da cidade (inicial) passa a espelhar o mesmo arquivo.
+- **Barra de emergência** com os cinco números nacionais (190 · 192 · 193 · 199 · 40199), tocáveis, numa só cor; o código de cores da página fica só com as três famílias de risco (chuvas · estiagem/calor · incêndios), nos mesmos tons do índice; saem as cores por região. Portão de runtime cobre os 27 cartões, o telefone de cada UF contra o dado e a barra.
+- **Cartão social** (Open Graph/Twitter) regenerado por `scripts/gerar_cartao_social.js` com o nome MARÉ · Medida de Antecipação e Resposta ao El Niño e números lidos dos dados.
+- **Cabeçalho**: subtítulo em largura total; o bloco "Fonte · UFs · Última verificação" desce para a linha seguinte.
+
 ## §56 · Nome do site, textos explicativos objetivos e em largura total, cortes na inicial, Monitor de risco reordenado · 15/09/2026
 
 Nenhuma alteração de método. Classe **nome/texto/estrutura de página** (decisões da editoria, 15/09).

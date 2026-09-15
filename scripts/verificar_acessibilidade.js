@@ -41,7 +41,7 @@ for (const p of PAGINAS) {
   const ids = [...d.querySelectorAll("[id]")].map(e => e.id); const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
   if (dup.length) falha(`${p}: id(s) duplicado(s): ${[...new Set(dup)].slice(0, 5).join(", ")}`);
   d.querySelectorAll("a[href]").forEach(a => {
-    const h = a.getAttribute("href"); if (!h || /^(https?:|mailto:|tel:|#$)/.test(h)) return;
+    const h = a.getAttribute("href"); if (!h || /^(https?:|mailto:|tel:|sms:|#$)/.test(h)) return;   // sms: aceito desde 15/09/2026 (alertas 40199)
     const [arq0, anc] = h.split("#"); const arq = arq0.split("?")[0]; const alvo = arq ? path.join(RAIZ, arq) : path.join(RAIZ, p);
     if (arq && !fs.existsSync(alvo)) { falha(`${p}: link interno para arquivo inexistente: ${h}`); return; }
     if (anc && arq === "" && !d.getElementById(anc)) falha(`${p}: âncora inexistente na própria página: #${anc}`);

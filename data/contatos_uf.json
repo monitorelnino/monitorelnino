@@ -1,0 +1,414 @@
+{
+ "_governanca": "Contatos oficiais das Defesas Civis estaduais para a página Proteja-se (15/09/2026). Telefones, plantões, e-mails e expediente transcritos do diretório oficial do MIDR (fonte abaixo, sem alteração); portal = endereço público do órgão, verificado por verificar_links.py em cada rodada. Números nacionais: serviços públicos de emergência (190, 192, 193, 199) e alerta por SMS (40199). Peso zero; nunca lido pelo motor. UF sem portal dedicado no diretório fica com telefone e e-mail.",
+ "fonte": {
+  "nome": "MIDR — Defesa Civil nos Estados (diretório oficial)",
+  "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-no-brasil-e-no-mundo-1/defesa-civil-no-brasil",
+  "publicado_em": "24/06/2021",
+  "atualizado_pelo_orgao_em": "11/09/2024",
+  "consultado_em": "15/09/2026",
+  "portais_verificados_em": "15/09/2026",
+  "portais_nota": "Portais testados do runner (GitHub Actions) em 15/09/2026: 200 para AC, AL, AP, BA, CE, ES, GO, MA, MG, MT, PB, PI, PR, RJ, RS, SE, SP; sem resposta ao runner fora do Brasil (bloqueio ou tempo esgotado, não erro de endereço) para AM, DF, PA, RO, SC, TO; endereço sem DNS trocado pelo do portal oficial do estado para MS e pelas formas com www listadas no MIDR para PE e RR; RN sem portal dedicado."
+ },
+ "nacionais": [
+  {
+   "numero": "190",
+   "servico": "Polícia Militar"
+  },
+  {
+   "numero": "192",
+   "servico": "SAMU"
+  },
+  {
+   "numero": "193",
+   "servico": "Corpo de Bombeiros"
+  },
+  {
+   "numero": "199",
+   "servico": "Defesa Civil"
+  },
+  {
+   "numero": "40199",
+   "servico": "Alertas por SMS (envie o CEP)"
+  }
+ ],
+ "uf": {
+  "AC": {
+   "nome": "Acre",
+   "regiao": "Norte",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Acre",
+   "telefones": [
+    "(68) 3215-4736",
+    "(68) 3215-4718"
+   ],
+   "plantao_24h": [],
+   "email": "defesacivil.acre.cepdec@gmail.com",
+   "portal": "https://defesacivil.ac.gov.br",
+   "expediente": "7h às 15h"
+  },
+  "AL": {
+   "nome": "Alagoas",
+   "regiao": "Nordeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil de Alagoas",
+   "telefones": [
+    "(82) 3315-2843",
+    "(82) 3315-2822"
+   ],
+   "plantao_24h": [],
+   "email": "defesacivil@bombeiros.al.gov.br",
+   "portal": "https://defesacivil.al.gov.br",
+   "expediente": "7h às 13h"
+  },
+  "AM": {
+   "nome": "Amazonas",
+   "regiao": "Norte",
+   "orgao": "Subcomando de Ações de Defesa Civil do Estado do Amazonas",
+   "telefones": [
+    "(92) 3343-5316"
+   ],
+   "plantao_24h": [],
+   "email": "comadec@comadec.am.gov.br",
+   "portal": "https://www.defesacivil.am.gov.br",
+   "expediente": "8h às 16h"
+  },
+  "AP": {
+   "nome": "Amapá",
+   "regiao": "Norte",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Amapá",
+   "telefones": [
+    "(96) 4009-9195",
+    "(96) 2101-2188"
+   ],
+   "plantao_24h": [],
+   "email": "secretaria@defesacivil.ap.gov.br",
+   "portal": "https://defesacivil.ap.gov.br",
+   "expediente": "7h às 17h"
+  },
+  "BA": {
+   "nome": "Bahia",
+   "regiao": "Nordeste",
+   "orgao": "Superintendência Estadual de Proteção e Defesa Civil da Bahia",
+   "telefones": [
+    "(71) 3115-3000",
+    "(71) 3115-3002"
+   ],
+   "plantao_24h": [],
+   "email": "defesa.civil@sudec.ba.gov.br",
+   "portal": "https://defesacivil.ba.gov.br",
+   "expediente": "8h30 às 18h"
+  },
+  "CE": {
+   "nome": "Ceará",
+   "regiao": "Nordeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Ceará",
+   "telefones": [
+    "(85) 3101-2221",
+    "(85) 3101-2118",
+    "(85) 3101-4619"
+   ],
+   "plantao_24h": [
+    "(85) 98899-1128"
+   ],
+   "email": "defesacivil@cb.ce.gov.br",
+   "portal": "https://defesacivil.ce.gov.br",
+   "expediente": "8h às 17h"
+  },
+  "DF": {
+   "nome": "Distrito Federal",
+   "regiao": "Centro-Oeste",
+   "orgao": "Subsecretaria de Estado de Proteção e Defesa Civil do Distrito Federal",
+   "telefones": [
+    "(61) 3441-8248",
+    "(61) 3441-8235",
+    "(61) 3441-8253"
+   ],
+   "plantao_24h": [],
+   "email": "defesa.civil@ssp.df.gov.br",
+   "portal": "https://defesacivil.df.gov.br",
+   "expediente": "8h às 18h"
+  },
+  "ES": {
+   "nome": "Espírito Santo",
+   "regiao": "Sudeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Espírito Santo",
+   "telefones": [
+    "(27) 3194-3696",
+    "(27) 3194-3698",
+    "(27) 3194-3652"
+   ],
+   "plantao_24h": [
+    "(27) 3194-3652",
+    "(27) 99975-2075"
+   ],
+   "email": "defesacivil@bombeiros.es.gov.br",
+   "portal": "https://defesacivil.es.gov.br",
+   "expediente": "8h às 17h"
+  },
+  "GO": {
+   "nome": "Goiás",
+   "regiao": "Centro-Oeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil de Goiás",
+   "telefones": [
+    "(62) 3201-2000",
+    "(62) 3201-2201",
+    "(62) 3201-2202"
+   ],
+   "plantao_24h": [],
+   "email": "cbmgo.codec@gmail.com",
+   "portal": "https://bombeiros.go.gov.br",
+   "expediente": "7h às 19h"
+  },
+  "MA": {
+   "nome": "Maranhão",
+   "regiao": "Nordeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Maranhão",
+   "telefones": [
+    "(98) 3212-1521",
+    "(98) 3212-1501",
+    "(98) 3212-1515"
+   ],
+   "plantao_24h": [],
+   "email": "cbmma@cbm.ma.gov.br",
+   "portal": "https://defesacivil.ma.gov.br",
+   "expediente": "8h às 14h"
+  },
+  "MG": {
+   "nome": "Minas Gerais",
+   "regiao": "Sudeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil de Minas Gerais",
+   "telefones": [
+    "(31) 3915-2912",
+    "(31) 3915-0274"
+   ],
+   "plantao_24h": [
+    "(31) 3915-0199",
+    "(31) 99818-2400"
+   ],
+   "email": "defesacivil@defesacivil.mg.gov.br",
+   "portal": "https://defesacivil.mg.gov.br",
+   "expediente": "9h às 18h"
+  },
+  "MS": {
+   "nome": "Mato Grosso do Sul",
+   "regiao": "Centro-Oeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil de Mato Grosso do Sul",
+   "telefones": [
+    "(67) 3318-3835",
+    "(67) 3318-3862",
+    "(67) 3318-3819"
+   ],
+   "plantao_24h": [],
+   "email": "cedec@defesacivil.ms.gov.br",
+   "portal": "https://www.ms.gov.br/Geral/defesa-civil/",
+   "expediente": "7h30 às 17h30"
+  },
+  "MT": {
+   "nome": "Mato Grosso",
+   "regiao": "Centro-Oeste",
+   "orgao": "Secretaria Adjunta de Proteção e Defesa Civil do Estado de Mato Grosso",
+   "telefones": [
+    "(65) 3613-8401",
+    "(65) 3613-8406",
+    "(65) 3613-8414"
+   ],
+   "plantao_24h": [],
+   "email": "gabinete@defesacivil.mt.gov.br",
+   "portal": "https://defesacivil.mt.gov.br",
+   "expediente": "8h às 18h"
+  },
+  "PA": {
+   "nome": "Pará",
+   "regiao": "Norte",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Pará",
+   "telefones": [
+    "(91) 4006-8313",
+    "(91) 4006-8352"
+   ],
+   "plantao_24h": [
+    "(91) 98899-6323"
+   ],
+   "email": "chefiagabinete@bombeiros.pa.gov.br",
+   "portal": "https://defesacivil.pa.gov.br",
+   "expediente": "8h às 18h"
+  },
+  "PB": {
+   "nome": "Paraíba",
+   "regiao": "Nordeste",
+   "orgao": "Gerência Executiva Estadual de Proteção e Defesa Civil da Paraíba",
+   "telefones": [
+    "(83) 3218-5743",
+    "(83) 99818-8343"
+   ],
+   "plantao_24h": [],
+   "email": "defesacivil.pb@gmail.com",
+   "portal": "https://paraiba.pb.gov.br/diretas/defesa-civil",
+   "expediente": "8h às 16h30"
+  },
+  "PE": {
+   "nome": "Pernambuco",
+   "regiao": "Nordeste",
+   "orgao": "Secretaria Executiva Estadual de Proteção e Defesa Civil de Pernambuco",
+   "telefones": [
+    "(81) 3081-2400",
+    "(81) 3081-2428"
+   ],
+   "plantao_24h": [
+    "(81) 3181-2490"
+   ],
+   "email": "codecipe@camil.pe.gov.br",
+   "portal": "https://www.defesacivil.pe.gov.br/",
+   "expediente": "8h às 12h e 13h às 17h"
+  },
+  "PI": {
+   "nome": "Piauí",
+   "regiao": "Nordeste",
+   "orgao": "Secretaria Estadual de Defesa Civil do Piauí",
+   "telefones": [
+    "(86) 9495-9620"
+   ],
+   "plantao_24h": [],
+   "email": "defesacivilpiaui@gmail.com",
+   "portal": "https://portal.pi.gov.br/defesacivil",
+   "expediente": "7h30 às 13h30"
+  },
+  "PR": {
+   "nome": "Paraná",
+   "regiao": "Sul",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Paraná",
+   "telefones": [
+    "(41) 3281-2526",
+    "(41) 3281-2506",
+    "(41) 3281-2500"
+   ],
+   "plantao_24h": [
+    "(41) 3281-2513"
+   ],
+   "email": "defesacivil@defesacivil.pr.gov.br",
+   "portal": "https://www.defesacivil.pr.gov.br",
+   "expediente": "8h30 às 18h"
+  },
+  "RJ": {
+   "nome": "Rio de Janeiro",
+   "regiao": "Sudeste",
+   "orgao": "Secretaria de Estado da Defesa Civil do Rio de Janeiro",
+   "telefones": [
+    "(21) 2333-2901",
+    "(21) 2333-2902",
+    "(21) 2333-3123"
+   ],
+   "plantao_24h": [],
+   "email": "suop@defesacivil.rj.gov.br",
+   "portal": "https://www.defesacivil.rj.gov.br/",
+   "expediente": "8h às 17h"
+  },
+  "RN": {
+   "nome": "Rio Grande do Norte",
+   "regiao": "Nordeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Rio Grande do Norte",
+   "telefones": [
+    "(84) 3232-5153",
+    "(84) 3232-5155",
+    "(84) 3232-5160"
+   ],
+   "plantao_24h": [],
+   "email": "defesacivil@rn.gov.br",
+   "portal": null,
+   "expediente": "8h às 17h"
+  },
+  "RO": {
+   "nome": "Rondônia",
+   "regiao": "Norte",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil de Rondônia",
+   "telefones": [
+    "(69) 3216-8952",
+    "(69) 3218-5100"
+   ],
+   "plantao_24h": [
+    "(69) 98473-2112",
+    "(69) 98146-0700"
+   ],
+   "email": "gabcmd@cbm.ro.gov.br",
+   "portal": "https://cbm.ro.gov.br",
+   "expediente": null
+  },
+  "RR": {
+   "nome": "Roraima",
+   "regiao": "Norte",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil de Roraima",
+   "telefones": [
+    "(95) 2121-7621",
+    "(95) 99144-6976",
+    "(95) 99121-1983"
+   ],
+   "plantao_24h": [],
+   "email": "comandocbmrr@hotmail.com",
+   "portal": "https://www.bombeiros.rr.gov.br/",
+   "expediente": "7h30 às 13h30"
+  },
+  "RS": {
+   "nome": "Rio Grande do Sul",
+   "regiao": "Sul",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil do Rio Grande do Sul",
+   "telefones": [
+    "(51) 98585-2239"
+   ],
+   "plantao_24h": [],
+   "email": "defesa-civil@casamilitar.rs.gov.br",
+   "portal": "https://defesacivil.rs.gov.br",
+   "expediente": null
+  },
+  "SC": {
+   "nome": "Santa Catarina",
+   "regiao": "Sul",
+   "orgao": "Secretaria de Estado da Defesa Civil de Santa Catarina",
+   "telefones": [
+    "(48) 3664-7001",
+    "(48) 3664-7002"
+   ],
+   "plantao_24h": [],
+   "email": "gabinete@defesacivil.sc.gov.br",
+   "portal": "https://defesacivil.sc.gov.br",
+   "expediente": "13h às 19h"
+  },
+  "SE": {
+   "nome": "Sergipe",
+   "regiao": "Nordeste",
+   "orgao": "Departamento Estadual de Proteção e Defesa Civil de Sergipe",
+   "telefones": [
+    "(79) 3179-3760",
+    "(79) 3179-4255"
+   ],
+   "plantao_24h": [],
+   "email": "defesacivil@defesacivil.se.gov.br",
+   "portal": "https://defesacivil.se.gov.br",
+   "expediente": "7h às 17h"
+  },
+  "SP": {
+   "nome": "São Paulo",
+   "regiao": "Sudeste",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil de São Paulo",
+   "telefones": [
+    "(11) 2193-8303",
+    "(11) 2193-8379",
+    "(11) 2193-8697"
+   ],
+   "plantao_24h": [],
+   "email": "defesacivil@sp.gov.br",
+   "portal": "https://www.defesacivil.sp.gov.br",
+   "expediente": "9h às 18h"
+  },
+  "TO": {
+   "nome": "Tocantins",
+   "regiao": "Norte",
+   "orgao": "Coordenadoria Estadual de Proteção e Defesa Civil de Tocantins",
+   "telefones": [
+    "(63) 3218-4718",
+    "(63) 3218-4732",
+    "(63) 3218-4733"
+   ],
+   "plantao_24h": [],
+   "email": "defesacivil@bombeiros.to.gov.br",
+   "portal": "https://defesacivil.to.gov.br",
+   "expediente": "7h às 13h"
+  }
+ }
+}
