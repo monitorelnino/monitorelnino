@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gerar_dados_abertos.py — exportação citável dos dados do Monitor El Niño Brasil.
+gerar_dados_abertos.py — exportação citável dos dados do MARÉ.
 
 Sugestão aceita por Patricia em 31/08/2026: os JSON de `data/` já são públicos,
 mas pesquisador cita dataset, não site. Este script gera, em `dados-abertos/`:
@@ -99,7 +99,7 @@ def tabelas(dados):
 def datapackage(tabs, corte):
     """Descritor Frictionless com um recurso por CSV e o esquema de campos."""
     return {
-        "name": "monitor-el-nino-brasil-mare", "title": "Monitor El Niño Brasil — índice MARÉ e registros verificados",
+        "name": "monitor-el-nino-brasil-mare", "title": "MARÉ · Medida de Antecipação e Resposta ao El Niño — índice e registros verificados",
         "version": VERSAO, "homepage": SITE, "created": _iso(corte),  # AUD-10: ISO 8601
         "corte_dos_dados": corte,
         "description": "Preparação demonstrável publicamente de estados e municípios brasileiros para o El Niño 2026/2027: instrumentos localizados em fontes oficiais, categorizados por vocabulário controlado, e o índice MARÉ (0–100). Metodologia aberta em METODOLOGIA.md.",
@@ -115,8 +115,8 @@ def citation(corte):
     """CITATION.cff (Citation File Format 1.2.0). DOI só depois do depósito."""
     dd, mm, aa = corte.split("/")
     return f"""cff-version: 1.2.0
-message: "Se usar estes dados, cite o Monitor El Niño Brasil (índice MARÉ). Após o depósito no Zenodo, substitua o identificador abaixo pelo DOI emitido."
-title: "Monitor El Niño Brasil — índice MARÉ (Medida de Antecipação e Resposta ao El Niño), dados verificados"
+message: "Se usar estes dados, cite o MARÉ · Medida de Antecipação e Resposta ao El Niño. Após o depósito no Zenodo, substitua o identificador abaixo pelo DOI emitido."
+title: "MARÉ · Medida de Antecipação e Resposta ao El Niño, dados verificados"
 version: "{VERSAO}"
 date-released: "{aa}-{mm}-{dd}"
 url: "{SITE}"

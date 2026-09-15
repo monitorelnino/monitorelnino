@@ -54,7 +54,7 @@ def svg_selo(nome, uf, valor, corte, nacional=False):
     """Um selo 360×92, projetado para fontes de sistema (Georgia/Arial): marca à esquerda, lugar + nota + faixa à direita."""
     rot, bg, fg = faixa(valor)
     titulo = "Brasil · média nacional" if nacional else f"{nome} ({uf})"
-    aria = f"MARÉ, Monitor El Niño Brasil: {titulo}, {fmt(valor)} de 100, faixa {rot.lower()}, dados até {corte}"
+    aria = f"MARÉ: {titulo}, {fmt(valor)} de 100, faixa {rot.lower()}, dados até {corte}"
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="360" height="92" viewBox="0 0 360 92" role="img" aria-labelledby="t">
 <title id="t">{esc(aria)}</title>
 <rect x="0.5" y="0.5" width="359" height="91" rx="10" fill="#F5F1E8" stroke="#D6C4AC"/>
@@ -90,7 +90,7 @@ Para embutir no seu site, cole:
 
 ```html
 <a href="{SITE}/#SC"><img src="{SITE}/selos/mare-SC.svg" width="360" height="92"
-   alt="MARÉ, Monitor El Niño Brasil: Santa Catarina, preparação demonstrável publicamente"></a>
+   alt="MARÉ: Santa Catarina, preparação demonstrável publicamente"></a>
 ```
 
 O selo diz o que o índice mede — preparação *demonstrável publicamente* — e

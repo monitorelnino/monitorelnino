@@ -491,10 +491,10 @@ new Chart(document.getElementById('chartDeclarado'), {
 // Auditoria de 07/09/2026: toda figura tem crédito no formato único; as de antecipação são verificação própria do Monitor.
 function creditosAntecipacao(){
   const d = window.__metaAtualizado;
-  [['boxVerificacao', ['Monitor El Niño Brasil (verificação própria)', 'malha IBGE']], ['boxCoberturaNatureza', ['Monitor El Niño Brasil (verificação própria)']],
-   ['boxPrioritarios', ['Monitor El Niño Brasil', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
-   ['boxDonut', ['Monitor El Niño Brasil', 'instrumentos estaduais verificados']], ['boxRegion', ['Monitor El Niño Brasil', 'instrumentos estaduais verificados']],
-   ['boxCapitals', ['Monitor El Niño Brasil', '27 capitais verificadas']], ['boxDeclarado', ['MUNIC/IBGE', 'ICM/SEDEC', 'Monitor El Niño Brasil']],
+  [['boxVerificacao', ['MARÉ (verificação própria)', 'malha IBGE']], ['boxCoberturaNatureza', ['MARÉ (verificação própria)']],
+   ['boxPrioritarios', ['MARÉ', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
+   ['boxDonut', ['MARÉ', 'instrumentos estaduais verificados']], ['boxRegion', ['MARÉ', 'instrumentos estaduais verificados']],
+   ['boxCapitals', ['MARÉ', '27 capitais verificadas']], ['boxDeclarado', ['MUNIC/IBGE', 'ICM/SEDEC', 'MARÉ']],
    ].forEach(([id, fontes]) => MonitorMapas.credito(id, {fontes, data: d}));
 }
 function renderResposta(){
@@ -503,7 +503,7 @@ function renderResposta(){
   const fF = id => (typeof fonteFigura === 'function' ? fonteFigura : (cid, t) => MonitorMapas.credito(cid, t));
   const N = RESP && RESP.nacional;
   const c18 = (RESP && RESP.frase_c18) || '';
-  if (!N) { ['boxDispersao','boxSerieResp','boxDecRec'].forEach(id => MonitorMapas.credito(id, {fontes: 'Monitor El Niño Brasil', data: null})); return; }
+  if (!N) { ['boxDispersao','boxSerieResp','boxDecRec'].forEach(id => MonitorMapas.credito(id, {fontes: 'MARÉ', data: null})); return; }
   // dispersão (C20): x = antecipação (MARÉ), y = % municípios sob decreto; forma = evento observado (sem dado → círculo vazio)
   const pts = ((RESP_Q && RESP_Q.pontos) || []).filter(p => p.antecipacao != null);
   new Chart(document.getElementById('cDispersao'), {type: 'scatter', data: {datasets: [{label: 'UF', data: pts.map(p => ({x: p.antecipacao, y: +(100 * p.resposta).toFixed(1), uf: p.uf})),
@@ -511,7 +511,7 @@ function renderResposta(){
     options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}, tooltip: {callbacks: {label: c => c.raw.uf + ' · antecipação ' + c.raw.x + ' · ' + c.raw.y + '% dos municípios sob decreto'}}},
       scales: {x: {min: 0, max: 100, title: {display: true, text: 'Antecipação (MARÉ, 0–100)'}}, y: {min: 0, title: {display: true, text: '% dos municípios sob decreto'}}}}});
   MonitorMapas.legenda('legDispersao', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'um ponto por UF'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'círculo vazio: evento sem dado'}]);
-  MonitorMapas.credito('boxDispersao', {fontes: ['Monitor El Niño Brasil', 'índice MARÉ e contador de resposta'], data: RESP.gerado_em});
+  MonitorMapas.credito('boxDispersao', {fontes: ['MARÉ', 'índice MARÉ e contador de resposta'], data: RESP.gerado_em});
   // série semanal com faixa do defeso
   const S = (RESP_SERIE && RESP_SERIE.semanas) || [];
   new Chart(document.getElementById('cSerieResp'), {type: 'bar', data: {labels: S.map(x => x.semana.slice(5)), datasets: [

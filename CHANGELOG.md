@@ -15,6 +15,15 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §56 · Nome do site, textos explicativos objetivos e em largura total, cortes na inicial, Monitor de risco reordenado · 15/09/2026
+
+Nenhuma alteração de método. Classe **nome/texto/estrutura de página** (decisões da editoria, 15/09).
+
+- **Nome**: o site passa a se chamar **MARÉ · Medida de Antecipação e Resposta ao El Niño** em todo lugar onde antes dizia "Monitor El Niño Brasil" — cabeçalho (h1 "MARÉ"), títulos, Open Graph, JSON-LD, rodapé, créditos de figura, PDFs, feeds Atom, dados abertos (datapackage/CITATION), selos e pedidos de LAI. Domínio, repositório e nomes de arquivo inalterados. O cartão social (`assets/social/card-monitor-el-nino.png`) ainda traz a arte antiga — pendência de arte.
+- **Inicial**: saem a linha do tempo do herói, a linha de interpretação do medidor (contagens por categoria), a frase do art. 73 e o crédito da resposta (ambos passam para a ficha "Como ler o MARÉ", onde o portão os exige), a nota de escopo do índice de resposta e o complemento "— e o que sustenta a nota" do título dos estados.
+- **Textos explicativos** (`.hint` e parágrafos de painel) em todas as páginas: largura total do painel (a medida de leitura de 68ch fica só na citação) e reescrita objetiva — descrevem o que a figura mostra, sem comentário sobre o site, instrução de uso ("clique", "passe o mouse") nem nota interna (as menções a migrações de 13/09 e à "proposta de enxugamento" saem do texto público).
+- **Monitor de risco**: ordem 1 · Situação atual (ONI e prognóstico) · 2 · O risco projetado, estado a estado · 3 · O que está acontecendo agora; o gráfico "Estados por tipo de risco projetado" entra no mesmo quadro do mapa (figura dupla `.figura--dupla`: mapa e gráfico lado a lado, uma legenda, um crédito); o painel "Gráficos" deixa de existir.
+
 ## §55 · Correções da editoria de 15/09: nomes das páginas, página inicial, uma só arte de barra, resposta como índice, MARÉ · Saúde v0.3, coletores de sinais · 15/09/2026
 
 Classe **método (peso zero) + estrutura de página + coletores**. Constantes do motor do MARÉ inalteradas (congelamento C25 mantido; `recalcular_mare.py --check` reproduz a média nacional). Metodologia §39, §32.4 e §31 (v0.3).

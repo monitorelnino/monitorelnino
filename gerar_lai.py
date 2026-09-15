@@ -26,7 +26,7 @@ UF_NOME = {"AC": "Acre", "AL": "Alagoas", "AM": "Amazonas", "AP": "Amapá", "BA"
            "ES": "Espírito Santo", "GO": "Goiás", "MA": "Maranhão", "MG": "Minas Gerais", "MS": "Mato Grosso do Sul", "MT": "Mato Grosso",
            "PA": "Pará", "PB": "Paraíba", "PE": "Pernambuco", "PI": "Piauí", "PR": "Paraná", "RJ": "Rio de Janeiro", "RN": "Rio Grande do Norte",
            "RO": "Rondônia", "RR": "Roraima", "RS": "Rio Grande do Sul", "SC": "Santa Catarina", "SE": "Sergipe", "SP": "São Paulo", "TO": "Tocantins"}
-ASSINATURA = "Futura Evidence Lab — Monitor El Niño Brasil (monitorelnino.com.br)"
+ASSINATURA = "Futura Evidence Lab — MARÉ · Medida de Antecipação e Resposta ao El Niño (monitorelnino.com.br)"
 
 MODELO_DC = """À {orgao} ({uf})
 Serviço de Informação ao Cidadão — pedido com fundamento na Lei nº 12.527/2011 (Lei de Acesso à Informação)
@@ -38,7 +38,7 @@ Com fundamento na Lei nº 12.527/2011, solicito ao órgão estadual de proteçã
 (3) o plano estadual de contingência vigente para o mesmo ciclo, com número, data e endereço eletrônico;
 (4) a relação dos municípios cujos decretos de situação de emergência ou estado de calamidade pública foram homologados pelo estado desde 29/06/2026, com número e data.
 
-Solicito resposta em formato aberto (CSV ou planilha). Informo que as respostas serão publicadas, com crédito ao órgão, no registro de transparência do Monitor El Niño Brasil, como fonte de nível estadual da verificação.
+Solicito resposta em formato aberto (CSV ou planilha). Informo que as respostas serão publicadas, com crédito ao órgão, no registro de transparência do MARÉ, como fonte de nível estadual da verificação.
 
 {assinatura}
 Data do envio: ____/____/2026 · Protocolo: ________________
@@ -53,7 +53,7 @@ Com fundamento na Lei nº 12.527/2011, solicito à Secretaria de Estado da Saúd
 (2) a relação dos municípios com plano municipal de contingência correspondente, se a Secretaria a mantiver, com número e data do ato e, quando disponível, o endereço eletrônico;
 (3) a indicação do órgão ou estrutura responsável (CIEVS, COE, sala de situação) e a data de sua ativação para o ciclo, se houver.
 
-Solicito resposta em formato aberto (CSV ou planilha). As respostas serão publicadas, com crédito ao órgão, na página "Saúde e El Niño" do Monitor El Niño Brasil — registro de transparência sem peso no índice.
+Solicito resposta em formato aberto (CSV ou planilha). As respostas serão publicadas, com crédito ao órgão, na página "Saúde e El Niño" do MARÉ — registro de transparência sem peso no índice.
 
 {assinatura}
 Data do envio: ____/____/2026 · Protocolo: ________________
@@ -64,7 +64,7 @@ Serviço de Informação ao Cidadão — pedido com fundamento na Lei nº 12.527
 
 Com fundamento na Lei nº 12.527/2011, solicito a relação NOMINAL dos municípios atendidos pela Operação Carro-Pipa (OCP) em 2026, por unidade da federação, com: data de inclusão no programa, número de carros-pipa e volume contratado por mês, e a base normativa da inclusão (portaria ou ato equivalente, com número e data). Solicito também a relação dos municípios cuja inclusão está condicionada a reconhecimento federal de situação de emergência, com a identificação do ato de reconhecimento.
 
-Motivo: o portal do Exército bloqueou o acesso automatizado à relação em 02/09/2026 e o portal da Defesa Civil da Bahia estava fora do ar por período eleitoral; a lista nominal não é obtida por busca pública. Solicito resposta em formato aberto (CSV ou planilha). As respostas serão publicadas com crédito ao órgão no Monitor El Niño Brasil, como registro de transparência (programa permanente; sem crédito no índice nesta versão).
+Motivo: o portal do Exército bloqueou o acesso automatizado à relação em 02/09/2026 e o portal da Defesa Civil da Bahia estava fora do ar por período eleitoral; a lista nominal não é obtida por busca pública. Solicito resposta em formato aberto (CSV ou planilha). As respostas serão publicadas com crédito ao órgão no MARÉ, como registro de transparência (programa permanente; sem crédito no índice nesta versão).
 
 {assinatura}
 Data do envio: ____/____/2026 · Protocolo: ________________

@@ -91,7 +91,7 @@ setTimeout(() => {
 
   // --- PROVENIÊNCIA VISÍVEL: regra própria desta página ---
   const creditos = [...d.querySelectorAll("[data-credito]")];
-  const figuras = ["boxTipoRisco", "boxSecas", "boxAvisos", "boxFogo", "boxCemaden", "boxOni", "boxTipos", "situacao"]   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
+  const figuras = ["boxTipoRisco", "boxSecas", "boxAvisos", "boxFogo", "boxCemaden", "boxOni", "situacao"]   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
   const semCredito = figuras.filter(id => !q(id) || !q(id).querySelector("[data-credito]"));
   teste(`toda figura tem crédito de fonte (${creditos.length} créditos)`, semCredito.length === 0);
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));

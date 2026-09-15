@@ -127,7 +127,7 @@ function __init(){
       no(g, n, 300, passo - 8, n.cor, n.n + ' · ' + n.nome, 'chave: ' + n.chave + (n.ex_ante ? '' : ' · resposta'));
     });
     MonitorMapas.legenda('legRede', [{cor: MonitorMapas.PALETA.chaves.regra, rotulo: 'contínuo: regra'}, {cor: MonitorMapas.PALETA.chaves.decreto, rotulo: 'tracejado: decreto (resposta)'}, {cor: MonitorMapas.PALETA.chaves.discricionaria, rotulo: 'pontilhado: discricionária'}, {cor: MonitorMapas.PALETA.chaves.direta, rotulo: 'duplo: execução direta'}]);
-    fonteFigura('boxRede', {fontes: ['Monitor El Niño Brasil', 'base legal citada por rota'], data: ROTAS.corte});
+    fonteFigura('boxRede', {fontes: ['MARÉ', 'base legal citada por rota'], data: ROTAS.corte});
   })();
   document.getElementById('rotasCards').innerHTML = ROTAS.rotas.map(r => '<div class="cartao" style="border-left:4px solid '+r.cor+'"><h3 class="figura-titulo">'+r.n+' · '+esc(r.nome)+' <span class="sub">— chave: <em>'+esc(r.chave)+'</em>'+(r.ex_ante ? '' : ' · resposta')+'</span></h3>'
     + '</div>').join('');
@@ -154,7 +154,7 @@ function __init(){
   desenharMapa('mapaFundo','legFundo', uf => (FUNDO[fundo(uf)] || FUNDO.nao_verificado)[1],
     uf => { const f = (PORUF.uf[uf] || {}).fundo_a_fundo_preventivo || {}; return '<em>' + esc((FUNDO[fundo(uf)] || FUNDO.nao_verificado)[0]) + '</em>' + (f.instrumento ? '<br>' + esc(f.instrumento) + (f.norma ? ' · ' + esc(f.norma) : '') : '') + (f.condicionalidade ? '<br>Condição: ' + esc(f.condicionalidade) : '') + (f.verificado_em ? '<br>verificado em ' + esc(f.verificado_em) : '<br>bateria estadual ainda não executada'); },
     Object.values(FUNDO).map(v => ({cor: v[1], rotulo: v[0]})));
-  fonteFigura('boxFundoEstadual', {fontes: 'Monitor El Niño Brasil', data: PORUF.corte});
+  fonteFigura('boxFundoEstadual', {fontes: 'MARÉ', data: PORUF.corte});
   // 13/09/2026: mapa "por habitante, por rota" retirado do HTML (ver comentário em financiamento.html,
   // painel #porestado) — só a rota 5 tinha cobertura real. Bloco mantido desativado (guarda por
   // ausência do <select>), não apagado, para reativar assim que outras rotas tiverem dado.
@@ -228,7 +228,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     MonitorMapas.legenda('legFogoMapa', [{cor: MonitorMapas.NEUTRA, rotulo: 'camadas sem coleta até o corte'}]); };
   Promise.all(['data/financiamento/rotas_preventivas.json', 'data/financiamento/fogo/areas_declaradas.json', 'data/financiamento/fogo/transferencias.json', 'data/financiamento/fogo/requerimentos.json']
     .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null))).then(([RP, AREAS, TRANSF, REQ]) => {
-    if (!RP || !Array.isArray(RP.rotas)) { tt.textContent = 'Rotas preventivas ainda não carregadas.'; lacuna('Dados não carregados', ''); fonteFigura('boxFogoRotas', {fontes: 'Monitor El Niño Brasil', data: null}); fonteFigura('boxFogoMapa', {fontes: 'Monitor El Niño Brasil', data: null}); return; }
+    if (!RP || !Array.isArray(RP.rotas)) { tt.textContent = 'Rotas preventivas ainda não carregadas.'; lacuna('Dados não carregados', ''); fonteFigura('boxFogoRotas', {fontes: 'MARÉ', data: null}); fonteFigura('boxFogoMapa', {fontes: 'MARÉ', data: null}); return; }
     const edital = RP.rotas.find(r => r.id === 'fogo_edital_2025'), fa = RP.rotas.find(r => r.id === 'fogo_fundo_amazonia');
     const riscos = RP.riscos_com_rota_preventiva || []; const soFogo = riscos.length === 1 && riscos[0] === 'incendio';
     const nAreas = AREAS && Array.isArray(AREAS.municipios) ? AREAS.municipios.length : null, nRec = TRANSF && Array.isArray(TRANSF.transferencias) ? new Set(TRANSF.transferencias.map(t => t.ibge || t.ente)).size : null;
@@ -238,7 +238,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     // tabela: uma linha por rota, em linguagem da tela
     const NOME = {r1: 'rota 1', r2: 'rota 2', r3: 'rota 3', r4: 'rota 4', r5: 'rota 5', r6: 'rota 6', r7: 'rota 7', rE: 'rota estadual', rF: 'fundos extraorçamentários'};
     document.querySelector('#tblFogoRotas tbody').innerHTML = RP.rotas.map(r => '<tr><td><strong>' + esc(r.nome) + '</strong><br><span class="u-muted">' + esc(NOME[r.rota] || r.rota) + (r.subrota ? ' · ' + esc(r.subrota) : '') + ' · objeto: ' + esc(r.objeto) + '</span></td><td>' + esc(r.quem_pode) + '</td><td>' + (r.condicoes || []).map(esc).join('; ') + '</td><td>' + esc(r.o_que_paga) + '</td><td>' + esc(r.situacao_defeso) + '</td><td>' + esc(r.lei) + (r.artigo ? ' · ' + esc(r.artigo) : '') + '<br><span class="u-muted">' + esc(r.fonte) + '</span></td></tr>').join('');
-    fonteFigura('boxFogoRotas', {fontes: ['leis e portarias citadas em cada linha', 'Monitor El Niño Brasil'], data: RP.corte});
+    fonteFigura('boxFogoRotas', {fontes: ['leis e portarias citadas em cada linha', 'MARÉ'], data: RP.corte});
     if (!AREAS && !TRANSF) { lacuna('Camadas ainda não coletadas — lacuna declarada', 'Áreas declaradas (DOU/MMA) e transferências (Portal da Transparência) dependem de coleta própria; requerimentos só chegam por LAI/MMA.'); fonteFigura('boxFogoMapa', {fontes: ['DOU/MMA', 'Portal da Transparência', 'LAI/MMA'], data: null}); return; }
     // quando houver dado: mapa em três camadas (a implementar junto do coletor; até lá, contagens na legenda)
     MonitorMapas.legenda('legFogoMapa', [{cor: MonitorMapas.PALETA.verificacao.nacional, rotulo: 'área declarada' + (nAreas != null ? ' · ' + nAreas : '')}, {cor: MonitorMapas.PALETA.categorias.decreto, rotulo: 'recebeu' + (nRec != null ? ' · ' + nRec : '')}, {cor: MonitorMapas.NEUTRA, rotulo: 'requereu: ' + (REQ ? 'conhecidos por LAI/MMA' : 'sem informação')}]);

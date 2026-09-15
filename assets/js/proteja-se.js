@@ -9,14 +9,14 @@ function gerarPDFGuia(){
     doc.setFont('helvetica','bold'); doc.setFontSize(52); doc.setTextColor(60,60,60);
     doc.text('FUTURA · EVIDENCE LAB', W/2, H/2, {angle:45, align:'center'}); doc.restoreGraphicsState(); };
   const rod = () => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(120,110,95);
-    doc.text('Monitor El Niño Brasil · Proteja-se · Guia de proteção para o ciclo 2026/2027', M, H-30);
+    doc.text('MARÉ · Proteja-se · Guia de proteção para o ciclo 2026/2027', M, H-30);
     doc.text('© 2026 Futura Evidence Lab. Todos os direitos reservados.', M, H-18);
     doc.text('Página ' + doc.internal.getNumberOfPages(), W-M, H-18, {align:'right'}); };
   const nova = () => { rod(); doc.addPage(); marca(); y = M; };
   marca();
   doc.addImage(LOGO_PDF, 'PNG', M, 42, 150, 56);
   doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.setTextColor(21,32,26);
-  doc.text('Proteja-se · Monitor El Niño Brasil', M, 128);
+  doc.text('Proteja-se · MARÉ', M, 128);
   doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(85,100,91);
   doc.text('Guia de proteção da população · El Niño 2026/2027 · Gerado em ' + new Date().toLocaleDateString('pt-BR'), M, 143);
   doc.setDrawColor(198,180,150); doc.line(M, 152, W-M, 152);

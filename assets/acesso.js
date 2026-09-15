@@ -19,7 +19,7 @@
   document.documentElement.style.visibility = "hidden";
   function sha256(t) { return crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)).then(function (b) { return Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, "0"); }).join(""); }); }
   function pedir() {
-    var s = window.prompt("Prévia restrita do Monitor El Niño Brasil — informe a senha de acesso:");
+    var s = window.prompt("Prévia restrita do MARÉ — informe a senha de acesso:");
     if (s === null) { document.documentElement.innerHTML = "<body style=\"font-family:sans-serif;padding:40px\">Acesso restrito.</body>"; document.documentElement.style.visibility = "visible"; return; }
     sha256(s).then(function (x) { if (x === HASH) { try { localStorage.setItem("mare_previa_ok", HASH); } catch (e) {} document.documentElement.style.visibility = "visible"; } else pedir(); });
   }
