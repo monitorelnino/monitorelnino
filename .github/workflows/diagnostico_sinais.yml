@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # 15/09/2026: só para devolver ao PRÓPRIO ramo a evidência preservada (portão 6); nunca escreve na main
 
 jobs:
   diagnosticar:
