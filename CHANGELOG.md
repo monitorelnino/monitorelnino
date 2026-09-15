@@ -15,6 +15,14 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §63 · Financiamento: cortes da editoria, gráfico dos compromissos no padrão, documento interno das rotas · 15/09/2026
+
+Nenhuma alteração de método (peso zero). Classe **estrutura de página**.
+
+- Saem: o painel "Por estado" inteiro (mapa de R$/hab. da rota 5, mapa de repasses/habilitação, barras de resposta por decreto), o mapa "Fundo a fundo estadual preventivo, por estado" (o gráfico do RS fica) e o mapa "Rota preventiva do fogo: área declarada · requereu · recebeu" — depende de resposta do MMA a pedido de acesso à informação; uma nota diz que o mapa entra quando ela vier; os cartões das rotas do fogo ficam.
+- Gráfico "Compromissos federais para o ciclo" (título encurtado) na paleta de série das demais páginas, rótulos curtos; sai a nota sobre a execução do Portal. Texto de "As rotas do dinheiro" reduzido ao pedido pela editoria.
+- Documento interno `notas/FINANCIAMENTO_rotas_do_dinheiro_interno.md` (robo-registro, anexo ao arcabouço legal): as oito rotas com base legal e o que o decreto destranca, a rota do fogo (PNMIF), o caminho antes/agora/depois, MPs e compromissos com execução, o caso do RS e a fila de pedidos.
+
 ## §62 · Financiamento elucidativo: rastreio dos compromissos, rotas em ficha com glossário, caminho antes/agora/depois, PNMIF como rota, o caso do RS, tabelas viram figuras · 15/09/2026
 
 Nenhuma alteração de método (peso zero). Classe **estrutura de página + visualização** (pedido da editoria).

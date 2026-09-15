@@ -57,7 +57,7 @@
     <p class="hint" id="notaMPs">MP 1.367 (incêndios) e MP 1.384 (alimentos): carregando…</p>
     <div class="grade-figuras">
       <figure class="figura figura--grafico figura--largo" id="boxCompromissosGrafico">
-        <h3 class="figura-titulo">Compromissos federais para o ciclo: duas MPs e cinco anúncios — anunciado, empenhado e pago</h3>
+        <h3 class="figura-titulo">Compromissos federais para o ciclo</h3>
         <p class="figura-sub">Ciclo 2026/2027 · duas MPs e cinco compromissos verificados · R$ milhões anunciados, empenhados e pagos (Portal)</p>
         <div class="figura-midia canvas-wrap"><canvas id="cCompromissos" aria-label="Barras por compromisso federal: valor anunciado, empenhado e pago em reais"></canvas></div>
         <div class="map-legend" id="legCompromissos"></div>
@@ -75,12 +75,11 @@
         <div class="map-legend" id="legMP1384UF"></div>
       </figure>
     </div>
-    <p class="note u-mb-0" id="notaExecucao">Execução lida dos arquivos mensais abertos do Portal da Transparência (ações orçamentárias reforçadas pelas MPs, desde o mês de publicação — teto, não a execução isolada do crédito). Compromissos sem série de execução aparecem só com o valor anunciado, declarados como "aguardando coleta".</p>
   </div>
 
   <div class="panel" id="comoler">
     <h2>As rotas do dinheiro</h2>
-    <p class="hint">Estrutura, não série: de quem vem, por qual rota e com que chave o dinheiro chega ao município. Cada rota está definida na ficha "Como ler as rotas", com a base legal e o que o decreto destranca.</p>
+    <p class="hint">De quem vem, por qual rota e com que chave o dinheiro chega ao município. Cada rota está definida na ficha "Como ler as rotas", com a base legal e o que o decreto destranca.</p>
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--diagrama figura--largo" id="boxRede">
         <h3 class="figura-titulo">Rotas do dinheiro público até o município: de quem vem, por qual rota, com que chave</h3>
@@ -135,14 +134,7 @@
     <h2>Rota preventiva do fogo (PNMIF)</h2>
     <p class="hint" id="fogoTitulo" aria-live="polite">—</p>
     <p class="note">Lei 14.944/2024 (Política Nacional de Manejo Integrado do Fogo) e Lei 15.143/2025 (FNMA, art. 3º-A): abre com área declarada de risco pelo MMA e plano operativo aprovado, sem decreto de calamidade — a única rota que paga preparação antes do dano. Nasceu em 2025 no cumprimento da ADPF 743 (STF).</p>
-    <div class="grade-figuras grade-figuras--1">
-      <figure class="figura figura--mapa figura--largo" id="boxFogoMapa">
-        <h3 class="figura-titulo">Rota preventiva do fogo: área declarada · requereu · recebeu</h3>
-        <p class="figura-sub">Ciclo 2026 · área declarada (MMA) · requereu (LAI) · recebeu (Portal) · municípios · três camadas</p>
-        <div class="figura-midia"><svg id="svgFogoLacuna" viewBox="0 0 900 220" role="img" aria-label="Camadas ainda não coletadas — lacuna declarada"><text id="txtFogoLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtFogoLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
-        <div class="map-legend" id="legFogoMapa"></div>
-      </figure>
-    </div>
+    <p class="note" id="notaFogoMapa">O mapa "área declarada · requereu · recebeu" entra quando o MMA responder ao pedido de acesso à informação sobre os requerimentos ao FNMA; as áreas declaradas (DOU) e as transferências (Portal) já têm coleta própria e serão cruzadas com ele.</p>
     <div class="grade-cartoes u-mt-3" id="fogoRotasCards"></div>
     <div id="fogoRotasFonte"></div>
   </div>
@@ -164,47 +156,15 @@
   <div class="panel panel--acento-teal" id="rs">
     <h2>O caso do Rio Grande do Sul</h2>
     <p class="hint">Único estado com fundo a fundo preventivo localizado no ciclo: o Prepara RS (Resolução nº 008/FUNDEC, 12/06/2026) repassa R$ 32,3 milhões a 138 municípios com plano de contingência atualizado, coordenador designado e plano de aplicação — dinheiro estadual antes do dano, sem decreto. No mesmo estado, a resposta federal por decreto corre em paralelo.</p>
-    <div class="grade-figuras">
-      <figure class="figura figura--grafico" id="boxRSGrafico">
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--grafico figura--largo" id="boxRSGrafico">
         <h3 class="figura-titulo">RS: repasse preventivo × resposta por decreto</h3>
         <p class="figura-sub">Ciclo 2026/2027 · municípios do RS com repasse preventivo (Prepara RS), sob decreto e reconhecidos pela União · contagem</p>
         <div class="figura-midia canvas-wrap"><canvas id="cRS" aria-label="Barras: municípios do Rio Grande do Sul com repasse preventivo, sob decreto de emergência e reconhecidos pela União"></canvas></div>
         <div class="map-legend" id="legRS"></div>
       </figure>
-      <figure class="figura figura--mapa" id="boxFundoEstadual">
-        <h3 class="figura-titulo">Fundo a fundo estadual preventivo, por estado</h3>
-        <p class="figura-sub">Corte da edição · fundo a fundo estadual preventivo localizado · R$ e nº de municípios</p>
-        <div class="figura-midia"><svg id="mapaFundo" role="img" aria-label="Mapa do Brasil pelo status do fundo a fundo estadual preventivo de defesa civil" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legFundo"></div>
-      </figure>
     </div>
     <p class="note u-mb-0" id="notaRS">Onde cada real do Prepara RS foi aplicado, município a município: a lista nominal dos 138 repasses e os planos de aplicação não estão publicados na fonte consultada; o Monitor mantém a lacuna declarada e a relação entra na fila de pedidos de LAI à Defesa Civil do RS.</p>
-  </div>
-
-  <div class="panel" id="porestado">
-    <h2>Por estado: o que chegou por habitante e a resposta por decreto</h2>
-    <p class="hint">Transferências voluntárias (rota 5) por habitante em 2026, a única rota com cobertura nas 27 UFs até o corte; reconhecimentos federais e repasses preventivos confirmados por estado.</p>
-    <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxContadores">
-        <h3 class="figura-titulo">Transferências voluntárias por habitante (rota 5), por UF</h3>
-        <p class="figura-sub">2026 até a última carga · transferências voluntárias (TransfereGov) por habitante · R$/hab. · 27 UFs</p>
-        <div class="figura-midia"><svg id="mapaContadores" role="img" aria-label="Mapa do Brasil com as transferências voluntárias por habitante em 2026, por estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legContadores"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxDinheiro">
-        <h3 class="figura-titulo">Repasses preventivos confirmados e habilitação federal</h3>
-        <p class="figura-sub">Corte da edição · repasses preventivos confirmados e habilitação federal por UF · R$</p>
-        <div class="figura-midia"><svg id="mapDinheiro" role="img" aria-label="Mapa das transferências: repasses estaduais preventivos confirmados e municípios com reconhecimento federal" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legDinheiro"></div>
-      </figure>
-      <figure class="figura figura--grafico figura--largo" id="boxResposta">
-        <h3 class="figura-titulo">Resposta por decreto: reconhecimentos federais por estado</h3>
-        <p class="figura-sub">Desde 29/06/2026 · municípios reconhecidos pela União (S2iD/DOU) e decretados sem reconhecimento, por UF · contagem</p>
-        <div class="figura-midia canvas-wrap"><canvas id="cResposta" aria-label="Barras por estado: municípios reconhecidos pela União e decretados sem reconhecimento"></canvas></div>
-        <div class="map-legend" id="legResposta"></div>
-      </figure>
-    </div>
-    <p class="note u-mb-0" id="notaContadoresCobertura"></p>
   </div>
 
   <p class="hint">Fontes, consultas e proveniência de cada série estão em <a href="pesquisadores.html#fontes-financiamento">Pesquisadores</a>.</p>
@@ -219,7 +179,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/financiamento.js?v=50777664" defer></script>
+<script src="assets/js/financiamento.js?v=20469c1c" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
