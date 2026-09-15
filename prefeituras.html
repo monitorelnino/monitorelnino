@@ -55,10 +55,12 @@
   <div class="panel" id="prioritarios">
     <h2>Descubra se seu município é prioritário</h2>
     <p class="hint">Cadastro Nacional de Municípios com Áreas Suscetíveis a Desastres (MIDR/SEDEC): maior risco de desastre. A lista exige acesso autenticado; a busca usa uma <strong>aproximação por população</strong>, nunca a lista oficial.</p>
-    <label class="sr-only" for="selUFPrior">Escolha o seu estado</label>
-    <select id="selUFPrior" class="seletor" aria-label="Escolha o seu estado"><option value="">1 · Seu estado…</option></select>
-    <input id="inputMunPrior" type="text" list="listaMunPrior" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
-    <datalist id="listaMunPrior"></datalist>
+    <div class="tbl-controls">
+      <label class="sr-only" for="selUFPrior">Escolha o seu estado</label>
+      <select id="selUFPrior" aria-label="Escolha o seu estado"><option value="">1 · Seu estado…</option></select>
+      <input id="inputMunPrior" type="text" list="listaMunPrior" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="listaMunPrior"></datalist>
+    </div>
     <div id="resultadoPrior" class="card-note" aria-live="polite" hidden></div>
     <div id="fontePrior"></div>
   </div>

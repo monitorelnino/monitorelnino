@@ -438,6 +438,7 @@ addSiglas(svgPoints); addSiglas(svgCob); addSiglas(svgNat); addSiglas(svgResp); 
 
 
   renderResposta();
+  titulosFato();
 }
 // Auditoria de 07/09/2026: toda figura tem crédito no formato único; as de antecipação são verificação própria do Monitor.
 function creditosAntecipacao(){
@@ -474,7 +475,9 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 
 // 15/09/2026 (auditoria editorial §2.9): títulos-fato das figuras e interpretações fora das figuras (portão 19), todos
 // calculados dos dados já carregados nesta página — nunca digitados. Falta de dado = título original mantido.
-(function titulosFato(){
+// 15/09/2026 (correção): antes era uma IIFE executada no carregamento do script, ANTES dos dados chegarem — os títulos ficavam
+// sempre no texto original (e o portão que os checava nunca bloqueava, por outro bug, corrigido junto). Agora é chamada ao fim de __init().
+function titulosFato(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const n = v => Number(v || 0).toLocaleString('pt-BR');
   const titulo = (box, txt) => { const h = document.querySelector('#' + box + ' .figura-titulo'); if (h && txt) h.textContent = txt; };
@@ -514,4 +517,4 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     if (N) { const maior = porUf.sort((a, b) => (b[1].fracao_municipios || 0) - (a[1].fracao_municipios || 0))[0];
       titulo('boxAtosResposta', `Decretos: ${n(N.n_municipios)} municípios` + (maior ? ` · ${maior[0]} decretou em ${maior[1].n_municipios} de ${maior[1].total_municipios}` : '')); }
   } catch (e) {}
-})();
+}
