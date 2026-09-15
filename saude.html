@@ -30,7 +30,7 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
-<link rel="stylesheet" href="assets/base.css?v=fd8196ab">
+<link rel="stylesheet" href="assets/base.css?v=418a567c">
 <script src="assets/mapas.js?v=3170c2ac"></script>
 </head>
 <body class="pagina-dados">
@@ -120,7 +120,7 @@
   <div class="panel panel--acento-teal" id="dengue">
     <h2>Dengue</h2>
     <p class="hint">Nível de alerta no painel amostral (313 municípios) e nas 27 capitais; casos por semana sobre o canal endêmico 2019–2025. Peso zero; o Monitor não atribui casos ao El Niño.</p>
-    <div class="grade-figuras">
+    <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxDesfMapa">
         <h3 class="figura-titulo">Nível de alerta por município · última semana consolidada</h3>
         <p class="figura-sub">Última SE consolidada · nível de alerta InfoDengue (1–4) por município do painel · dengue</p>
@@ -133,17 +133,17 @@
         <div class="figura-midia"><svg id="mapaDengue" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nas 27 capitais" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legDengue"></div>
       </figure>
-      <figure class="figura figura--grafico figura--largo" id="boxDesfAcum">
+      <figure class="figura figura--grafico" id="boxDesfAcum">
         <h3 class="figura-titulo">Casos notificados de dengue: painel amostral e capitais</h3>
         <p class="figura-sub">Painel amostral (313 municípios) e 27 capitais · semanal, sobre o canal endêmico, ou acumulado anual · nº de casos</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Casos notificados de dengue, conforme a visualização: semanal no painel amostral sobre o canal endêmico, acumulado anual no painel amostral, ou semanal nas 27 capitais"></canvas></div>
+        <div class="map-legend" id="legDesfAcum"></div>
         <label class="sr-only" for="selComparadorDengue">Visualização</label>
-        <select id="selComparadorDengue" class="seletor u-mb-2" aria-label="Escolher a visualização">
+        <select id="selComparadorDengue" class="seletor u-mt-2" aria-label="Escolher a visualização">
           <option value="semanal_painel" selected>Semanal · painel amostral, sobre o canal endêmico</option>
           <option value="acum">Acumulado no ano · painel amostral</option>
           <option value="semanal">Semanal por capitais · 27 capitais</option>
         </select>
-        <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Casos notificados de dengue, conforme a visualização: semanal no painel amostral sobre o canal endêmico, acumulado anual no painel amostral, ou semanal nas 27 capitais"></canvas></div>
-        <div class="map-legend" id="legDesfAcum"></div>
       </figure>
     </div>
     <p class="note u-mb-0" id="interpObservado">Nível de alerta: estimativa do InfoDengue (Fiocruz/FGV); as últimas semanas ainda recebem notificações.</p>
@@ -159,16 +159,16 @@
         <div class="figura-midia"><svg id="mapaChik" role="img" aria-label="Mapa do Brasil com o nível de alerta de chikungunya nos municípios do painel amostral" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legChikMapa"></div>
       </figure>
-      <figure class="figura figura--grafico figura--largo" id="boxChikSerie">
+      <figure class="figura figura--grafico" id="boxChikSerie">
         <h3 class="figura-titulo">Casos notificados de chikungunya: painel amostral</h3>
         <p class="figura-sub">Painel amostral (313 municípios) · semanal, sobre o canal endêmico, ou acumulado anual · nº de casos</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cChikSerie" aria-label="Casos notificados de chikungunya no painel amostral: semanal sobre o canal endêmico ou acumulado anual"></canvas></div>
+        <div class="map-legend" id="legChikSerie"></div>
         <label class="sr-only" for="selComparadorChik">Visualização</label>
-        <select id="selComparadorChik" class="seletor u-mb-2" aria-label="Escolher a visualização">
+        <select id="selComparadorChik" class="seletor u-mt-2" aria-label="Escolher a visualização">
           <option value="semanal_painel" selected>Semanal · painel amostral, sobre o canal endêmico</option>
           <option value="acum">Acumulado no ano · painel amostral</option>
         </select>
-        <div class="figura-midia canvas-wrap"><canvas id="cChikSerie" aria-label="Casos notificados de chikungunya no painel amostral: semanal sobre o canal endêmico ou acumulado anual"></canvas></div>
-        <div class="map-legend" id="legChikSerie"></div>
       </figure>
     </div>
   </div>
@@ -189,17 +189,18 @@
   <div class="panel panel--acento-teal" id="respiratorias">
     <h2>Doenças respiratórias</h2>
     <p class="hint">SRAG e síndrome gripal por semana no Brasil, sobre o canal endêmico (InfoGripe); fonte não coletada aparece como lacuna. Peso zero.</p>
-    <div class="grade-figuras grade-figuras--1">
-      <figure class="figura figura--grafico figura--largo" id="boxSRAG">
-        <h3 class="figura-titulo">Respiratórias por semana · Brasil, sobre o canal endêmico</h3>
-        <p class="figura-sub">Semanas de 2026 (últimas 4 excluídas do consolidado) · SRAG ou síndrome gripal · Brasil · nº de casos</p>
-        <label class="sr-only" for="selIndicadorSRAG">Indicador</label>
-        <select id="selIndicadorSRAG" class="seletor u-mb-2" aria-label="Escolher o indicador respiratório">
-          <option value="srag" selected>SRAG · síndrome respiratória aguda grave</option>
-          <option value="sg">Síndrome gripal (SG)</option>
-        </select>
-        <div class="figura-midia canvas-wrap"><canvas id="cSRAG" aria-label="Casos do indicador respiratório escolhido por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas><svg id="svgSRAGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSRAGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSRAGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
+    <div class="grade-figuras">
+      <figure class="figura figura--grafico" id="boxSRAG">
+        <h3 class="figura-titulo">SRAG por semana · Brasil, sobre o canal endêmico</h3>
+        <p class="figura-sub">Semanas de 2026 (últimas 4 excluídas do consolidado) · síndrome respiratória aguda grave · Brasil · nº de casos</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cSRAG" aria-label="Casos de SRAG por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas><svg id="svgSRAGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSRAGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSRAGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
         <div class="map-legend" id="legSRAG"></div>
+      </figure>
+      <figure class="figura figura--grafico" id="boxSG">
+        <h3 class="figura-titulo">Síndrome gripal por semana · Brasil, sobre o canal endêmico</h3>
+        <p class="figura-sub">Semanas de 2026 (últimas 4 excluídas do consolidado) · síndrome gripal · Brasil · nº de casos</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cSG" aria-label="Casos de síndrome gripal por semana epidemiológica no Brasil, com o canal endêmico 2019–2025"></canvas><svg id="svgSGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
+        <div class="map-legend" id="legSG"></div>
       </figure>
     </div>
   </div>
@@ -228,7 +229,7 @@
   <div class="panel" id="estadual">
     <h2>O que cada estado publicou</h2>
     <p class="hint">Instrumento <em>ex-ante</em> da secretaria estadual de saúde, do CIEVS ou do COE, e o risco sanitário projetado nos boletins do Painel El Niño.</p>
-    <div class="grade-figuras">
+    <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxMonitor">
         <h3 class="figura-titulo">Antecipação por estado · plano de saúde para o ciclo × quando foi publicado</h3>
         <p class="figura-sub">Corte da edição · prontidão sanitária (0–100) por UF verificada · faixas do site</p>
@@ -266,7 +267,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/saude.js?v=afb5f3e3" defer></script>
+<script src="assets/js/saude.js?v=8cef91a0" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

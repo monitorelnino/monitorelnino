@@ -92,17 +92,15 @@ setTimeout(() => {
   } catch (e) { teste("seções de doença", false); console.log("     ", e && e.message); }
   // 14/09/2026: figura respiratória SRAG | SG — sem arquivo, lacuna declarada visível (SVG) e canvas escondido; nunca moldura vazia
   try {
-    const si = q("selIndicadorSRAG");
-    teste("seletor respiratório: srag e sg", si && [...si.options].map(o => o.value).join(",") === "srag,sg");
+    // 15/09/2026: SRAG e SG em figuras próprias, lado a lado, sem seletor
+    teste("respiratórias: duas figuras (SRAG e SG) lado a lado, sem seletor", !q("selIndicadorSRAG") && !!q("boxSRAG") && !!q("boxSG"));
     const temSRAG = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "srag_serie.json"));
     const temSG = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "sg_serie.json"));
-    const estado = () => ({svg: !q("svgSRAGLacuna").hidden, cv: !q("cSRAG").hidden, txt: q("svgSRAGLacuna").textContent});
-    let e0 = estado();
+    const e0 = {svg: !q("svgSRAGLacuna").hidden, cv: !q("cSRAG").hidden, txt: q("svgSRAGLacuna").textContent};
     teste("SRAG: " + (temSRAG ? "canvas visível com dado" : "lacuna declarada visível"), temSRAG ? (e0.cv && !e0.svg) : (e0.svg && !e0.cv && /SRAG.*lacuna declarada/.test(e0.txt)));
-    si.value = "sg"; si.dispatchEvent(new dom.window.Event("change", { bubbles: true })); let e1 = estado();
+    const e1 = {svg: !q("svgSGLacuna").hidden, cv: !q("cSG").hidden, txt: q("svgSGLacuna").textContent};
     teste("SG: " + (temSG ? "canvas visível com dado" : "lacuna declarada visível"), temSG ? (e1.cv && !e1.svg) : (e1.svg && !e1.cv && /síndrome gripal.*lacuna declarada/.test(e1.txt)));
-    si.value = "srag"; si.dispatchEvent(new dom.window.Event("change", { bubbles: true })); let e2 = estado();
-    teste("volta para SRAG: estado idêntico ao inicial", e2.cv === e0.cv && e2.svg === e0.svg);
+    teste("lado a lado: dengue com três figuras numa linha; item 'O que cada estado publicou' com três mapas numa linha", d.querySelectorAll("#dengue .grade-figuras--3 > .figura").length === 3 && d.querySelectorAll("#estadual .grade-figuras--3 > .figura").length === 3);
     // 14/09/2026: figura de DDA — mesmo componente e renderizador da respiratória; sem dda_serie.json, lacuna declarada visível
     const temDDA = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "dda_serie.json"));
     const eD = {svg: !q("svgDDALacuna").hidden, cv: !q("cDDA").hidden, txt: q("svgDDALacuna").textContent};

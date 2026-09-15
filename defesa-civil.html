@@ -30,7 +30,7 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
-<link rel="stylesheet" href="assets/base.css?v=fd8196ab">
+<link rel="stylesheet" href="assets/base.css?v=418a567c">
 <script src="assets/mapas.js?v=3170c2ac"></script>
 </head>
 <body class="pagina-dados">
@@ -56,26 +56,28 @@
     <h2>Antes — o que foi publicado</h2>
     <p class="hint">Verificação municipal, cobertura, natureza dos atos e municípios prioritários.</p>
     <p class="hint" id="interpAntes" aria-live="polite">—</p>
-    <div class="grade-figuras">
+    <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--grafico figura--largo" id="boxRegion">
         <h3 class="figura-titulo">Status dos planos estaduais, por região</h3>
         <p class="figura-sub">Corte da edição · status do plano estadual (escada da §7) agregado por região · 27 UFs</p>
         <div class="figura-midia canvas-wrap"><canvas id="chartRegion"></canvas></div>
       </figure>
+    </div>
+    <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxVerificacao">
         <h3 class="figura-titulo">Verificação municipal</h3>
         <p class="figura-sub">Corte da edição · atos localizados ou nível de verificação alcançado · pontos</p>
-        <label class="sr-only" for="selVerificacao">Camada</label>
-        <select id="selVerificacao" class="seletor u-mb-2" aria-label="Escolher a camada do mapa">
-          <option value="pontos">Atos localizados · municípios com plano ou decreto</option>
-          <option value="niveis">Nível de verificação · todos os 5.571 municípios</option>
-        </select>
         <div class="figura-midia">
           <svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460"></svg>
           <svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460" hidden></svg>
         </div>
         <div class="map-legend" id="pointsLegend"></div>
         <div class="map-legend" id="legNiveis" hidden></div>
+        <label class="sr-only" for="selVerificacao">Camada</label>
+        <select id="selVerificacao" class="seletor u-mt-2" aria-label="Escolher a camada do mapa">
+          <option value="pontos">Atos localizados · municípios com plano ou decreto</option>
+          <option value="niveis">Nível de verificação · todos os 5.571 municípios</option>
+        </select>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblVerificacao"><thead><tr><th>UF</th><th>Com ato localizado</th><th>Verificação completa</th><th>Fontes nacionais e estaduais</th><th>Fontes nacionais</th><th>Ainda não verificado</th></tr></thead><tbody></tbody></table></div>
         </details>
@@ -83,22 +85,22 @@
       <figure class="figura figura--mapa" id="boxCoberturaNatureza">
         <h3 class="figura-titulo">Cobertura e natureza dos atos, por UF</h3>
         <p class="figura-sub">Corte da edição · % de municípios com ato, ou natureza predominante · por UF</p>
-        <label class="sr-only" for="selCoberturaNatureza">Camada</label>
-        <select id="selCoberturaNatureza" class="seletor u-mb-2" aria-label="Escolher a camada do mapa">
-          <option value="cobertura">Cobertura · % de municípios com ato</option>
-          <option value="natureza">Natureza · decreto reativo × plano preventivo</option>
-        </select>
         <div class="figura-midia">
           <svg id="mapCobertura" role="img" aria-label="Mapa do Brasil: percentual de municípios de cada estado com algum ato formal" viewBox="0 0 480 460"></svg>
           <svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460" hidden></svg>
         </div>
         <div class="map-legend" id="legCobertura"></div>
         <div class="map-legend" id="legNatureza" hidden></div>
+        <label class="sr-only" for="selCoberturaNatureza">Camada</label>
+        <select id="selCoberturaNatureza" class="seletor u-mt-2" aria-label="Escolher a camada do mapa">
+          <option value="cobertura">Cobertura · % de municípios com ato</option>
+          <option value="natureza">Natureza · decreto reativo × plano preventivo</option>
+        </select>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCoberturaNatureza"><thead><tr><th>UF</th><th>Municípios com ato</th><th>Cobertura</th><th>Planos preventivos</th><th>Decretos reativos</th><th>% preventivo</th></tr></thead><tbody></tbody></table></div>
         </details>
       </figure>
-      <figure class="figura figura--mapa figura--largo" id="boxPrioritarios">
+      <figure class="figura figura--mapa" id="boxPrioritarios">
         <h3 class="figura-titulo">Municípios prioritários: com e sem instrumento localizado</h3>
         <p class="figura-sub">Corte da edição · municípios prioritários (Painel/SEDEC) com e sem ato localizado · pontos</p>
         <div class="figura-midia"><svg id="mapPrioritarios" role="img" aria-label="Mapa do Brasil com os municípios prioritários do Cadastro Nacional (aproximação por população), distinguindo os que já têm instrumento localizado dos que ainda não" viewBox="0 0 480 460"></svg></div>

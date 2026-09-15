@@ -15,6 +15,15 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §64 · Figuras lado a lado: grade de três colunas na Saúde e na Defesa civil; SRAG e SG em figuras próprias · 15/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página** (pedido da editoria: otimizar o espaço, mapas e gráficos lado a lado).
+
+- Nova grade `grade-figuras--3` (três colunas; uma no celular), com reserva de três linhas para título e subtítulo para que as três figuras alinhem.
+- MARÉ Saúde: Dengue com as três figuras numa linha (mapa do painel, capitais, comparador); Chikungunya com mapa e comparador lado a lado; **Doenças respiratórias sem seletor: SRAG e síndrome gripal em figuras próprias, lado a lado** (mesmo renderizador, lacuna declarada quando a fonte não responde); "O que cada estado publicou" com os três mapas numa linha. Seletores dos comparadores passam para baixo da legenda (mídias alinhadas).
+- Defesa civil: "Status dos planos estaduais" em largura total e os três mapas (verificação, cobertura/natureza, prioritários) numa linha; seletores de camada abaixo da legenda.
+- Financiamento já estava no padrão (gráfico largo + dois mapas lado a lado); Monitor de risco idem (dois mapas lado a lado).
+
 ## §63 · Financiamento: cortes da editoria, gráfico dos compromissos no padrão, documento interno das rotas · 15/09/2026
 
 Nenhuma alteração de método (peso zero). Classe **estrutura de página**.
