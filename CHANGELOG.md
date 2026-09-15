@@ -9,6 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §53 · Correções da editoria de 15/09: nomes das páginas, página inicial, uma só arte de barra, resposta como índice, MARÉ · Saúde v0.3, coletores de sinais · 15/09/2026
+
+Classe **método (peso zero) + estrutura de página + coletores**. Constantes do motor do MARÉ inalteradas (congelamento C25 mantido; `recalcular_mare.py --check` reproduz a média nacional). Metodologia §39, §32.4 e §31 (v0.3).
+
+- **Nomes**: MARÉ Legal · Monitor de risco · MARÉ Saúde · Para prefeitos (arquivos e URLs iguais; `<title>`, Open Graph, JSON-LD e `<h1>` acompanham; portão de estrutura com a nova ordem canônica).
+- **Página inicial**: subtítulo único com contagem e corte vindos dos dados; saem título-fato, botão "Consultar seu município", nota do período eleitoral, os três cartões e o bloco "O que o período eleitoral escondeu"; "O que vem" → **Calendário** em colunas (data · marco · fonte; marcos do ciclo + prazos legais em curso); o gráfico **risco projetado × estágio do arcabouço** mudou do Monitor de risco para o fim da inicial (Chart.js volta à inicial; a página de risco linka para cá; Defesa civil idem).
+- **Resposta vira índice** (§32.4): 100 × fração da população em município sob decreto (`indice` em `data/resposta/por_uf.json`, recomputado pelo portão); pílula com nº e % de municípios; cartões de estado e ficha do estado com a mesma barra; a barra empilhada de tons sai (tons seguem como texto).
+- **Uma arte para toda barra**: dois degradês em `tokens.css` (`--degrade-indice`, `--degrade-resposta`); medidores, micro-barras e barras por UF da Saúde com o mesmo trilho, degradê e corrente animada; `prefers-reduced-motion` respeitado.
+- **MARÉ · Saúde v0.3** (§31): terceiro componente **cobertura populacional sanitária** (população em município cujo plano localizado trata a saúde × crédito municipal do MARÉ × degrau/5 de `saude_no_plano`; plano sem leitura = 0 e contado). **Errata de efeito**: média das 17 verificadas 44,0 → 31,8 (AM 84,1 · GO 50,0 · ES 39,6 · PE 31,6 · 10 UFs em 28,3 · DF/PB/PR/SE 21,7 · RJ 21,3). Tabela e tooltip da Saúde ganham a coluna; portão (m) exige a média dos três.
+- **Monitor de risco**: ONI logo abaixo de "Situação atual", com leitura descritiva na figura e interpretação/projeção no parágrafo do painel; **coletores corrigidos** após sonda com rede real — INMET (nomes por extenso e geocodes), Monitor de Secas (RPC de dados tabulares, frações cumulativas → exclusivas, categoria mediana no mapa), zero-fill para CEMADEN/INMET/INPE. Primeira coleta completa dos quatro mapas em 15/09/2026 (dado real neste PR).
+
 ## §51 · O dinheiro volta para Financiamento; quarta porta para o calendário (auditoria editorial 14/09, onda E1 §1.7 e §1.6) · 15/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página**.

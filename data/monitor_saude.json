@@ -1,12 +1,13 @@
 {
- "_governanca": "MARÉ · Saúde v0.2 (14/09/2026; v0.1 em 05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Um componente pontuado (instrumento operacional × antecipação, pesos iguais) e duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31.",
- "versao": "0.2",
+ "_governanca": "MARÉ · Saúde v0.3 (15/09/2026; v0.2 em 14/09; v0.1 em 05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Três componentes com pesos iguais (1/3), como no índice principal: instrumento estadual × cobertura populacional sanitária (população em município cujo plano localizado trata a saúde, crédito municipal do MARÉ × degrau/5 da leitura saude_no_plano; plano sem leitura = 0, contado) × antecipação. Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31.",
+ "versao": "0.3",
  "gerado_em": "14/09/2026",
  "corte": "05/09/2026",
  "metodo": {
   "pesos": {
-   "instrumento": 0.5,
-   "antecipacao": 0.5
+   "instrumento": 0.3333333333333333,
+   "cobertura": 0.3333333333333333,
+   "antecipacao": 0.3333333333333333
   },
   "escada": {
    "NOVO": 100,
@@ -14,6 +15,24 @@
    "VIG": 45,
    "ELAB": 35,
    "LAC": 0
+  },
+  "cobertura": {
+   "formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF",
+   "creditos_municipais": {
+    "plano": 1.0,
+    "plano_antigo": 0.6,
+    "plano_elaboracao": 0.45,
+    "estrutura": 0.45
+   },
+   "degraus_saude_no_plano": {
+    "0": "ausente",
+    "1": "orgao_listado",
+    "2": "resposta",
+    "3": "vigilancia_pos",
+    "4": "prevencao_epidemiologica",
+    "5": "riscos_do_ciclo"
+   },
+   "plano_sem_leitura": "0 (contado em planos_sem_leitura)"
   },
   "antecipacao": {
    "NOVO/READ antes de 29/06/2026": 100,
@@ -42,10 +61,14 @@
   "verificadas": 17,
   "nao_verificadas": 10,
   "por_faixa": {
-   "avançado": 2,
-   "em construção": 15
+   "avançado": 1,
+   "em construção": 10,
+   "estágio inicial": 5,
+   "consolidado": 1
   },
-  "media_das_verificadas": 44.0,
+  "planos_municipais_lidos": 78,
+  "planos_municipais_sem_leitura": 54,
+  "media_das_verificadas": 31.8,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -62,6 +85,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -73,7 +103,7 @@
     "dengue_capital": "Rio Branco",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 220
+    "focos_24h": 0
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -95,6 +125,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 2
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -106,7 +143,7 @@
     "dengue_capital": "Maceió",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 2
+    "focos_24h": 6
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -117,7 +154,7 @@
   },
   "AM": {
    "verificado": true,
-   "prontidao": 100.0,
+   "prontidao": 84.1,
    "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
@@ -127,6 +164,13 @@
     "orgao": "SES-AM / FVS-RCP",
     "url": "https://www.fvs.am.gov.br",
     "temporada": "2026/2027"
+   },
+   "cobertura": {
+    "pontos": 52.4,
+    "cobertura_pct": 52.4,
+    "pop_coberta": 2063547,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 0
    },
    "antecipacao": {
     "pontos": 100,
@@ -139,7 +183,7 @@
     "dengue_capital": "Manaus",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 1112
+    "focos_24h": 796
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -161,6 +205,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -172,7 +223,7 @@
     "dengue_capital": "Macapá",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 3
+    "focos_24h": 6
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -183,7 +234,7 @@
   },
   "BA": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 28.3,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -193,6 +244,13 @@
     "orgao": "SESAB/SUVISA/DIVEP",
     "url": "https://www.saude.ba.gov.br/wp-content/uploads/2025/05/Atualizacao-Plano-de-Contingencia-veesao-2025_20261.pdf",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
    },
    "antecipacao": {
     "pontos": 40,
@@ -205,7 +263,7 @@
     "dengue_capital": "Salvador",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 194
+    "focos_24h": 652
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -216,7 +274,7 @@
   },
   "CE": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 28.3,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -226,6 +284,13 @@
     "orgao": "SESA-CE / SEVIR",
     "url": "https://www.saude.ce.gov.br/wp-content/uploads/sites/9/2022/02/2025_PLANO-ESTADUAL_ENFRENTAMENTO-ARBOVIROSES.pptx.pdf",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
    },
    "antecipacao": {
     "pontos": 40,
@@ -238,7 +303,7 @@
     "dengue_capital": "Fortaleza",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 16
+    "focos_24h": 62
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -249,8 +314,8 @@
   },
   "DF": {
    "verificado": true,
-   "prontidao": 32.5,
-   "faixa": "em construção",
+   "prontidao": 21.7,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -259,6 +324,13 @@
     "orgao": "SES-DF",
     "url": "https://www.saude.df.gov.br/documents/37101/0/Plano-de-enfrentamento-arboviroses_231222_161225+(1).pdf/3061d8c1-7d45-cb9b-7584-5f49f9f73aff?t=1703339749606",
     "temporada": "anterior"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
    },
    "antecipacao": {
     "pontos": 20,
@@ -271,7 +343,7 @@
     "dengue_capital": "Brasília",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 3
+    "focos_24h": 4
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -282,7 +354,7 @@
   },
   "ES": {
    "verificado": true,
-   "prontidao": 32.5,
+   "prontidao": 39.6,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -292,6 +364,13 @@
     "orgao": "SESA-ES",
     "url": "https://mosquito.saude.es.gov.br/Media/dengue/Notas-Tecnicas-Alertas-Epidemiologicos/Plano%20Conting%C3%AAncia%20Arboviroses.pdf",
     "temporada": "desconhecida"
+   },
+   "cobertura": {
+    "pontos": 53.8,
+    "cobertura_pct": 53.8,
+    "pop_coberta": 2062265,
+    "planos_lidos": 72,
+    "planos_sem_leitura": 0
    },
    "antecipacao": {
     "pontos": 20,
@@ -304,7 +383,7 @@
     "dengue_capital": "Vitória",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 42
+    "focos_24h": 0
    },
    "risco_projetado": [
     "leptospirose",
@@ -315,8 +394,8 @@
   },
   "GO": {
    "verificado": true,
-   "prontidao": 75.0,
-   "faixa": "avançado",
+   "prontidao": 50.0,
+   "faixa": "consolidado",
    "instrumento": {
     "status": "NOVO",
     "pontos": 100,
@@ -325,6 +404,13 @@
     "orgao": "SES-GO / SUVISA",
     "url": "https://www.saude.go.gov.br/unidades-de-saude/outras-unidades",
     "temporada": "2026/2027"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
    },
    "antecipacao": {
     "pontos": 50,
@@ -337,7 +423,7 @@
     "dengue_capital": "Goiânia",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 375
+    "focos_24h": 738
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -359,6 +445,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -370,7 +463,7 @@
     "dengue_capital": "São Luís",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 280
+    "focos_24h": 672
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -381,7 +474,7 @@
   },
   "MG": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 28.3,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -391,6 +484,13 @@
     "orgao": "SES-MG",
     "url": "https://www.saude.mg.gov.br/aedes/orientacoes/",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
    },
    "antecipacao": {
     "pontos": 40,
@@ -403,7 +503,7 @@
     "dengue_capital": "Belo Horizonte",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 98
+    "focos_24h": 295
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -414,7 +514,7 @@
   },
   "MS": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 28.3,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -424,6 +524,13 @@
     "orgao": "SES-MS",
     "url": "https://www.saude.ms.gov.br/informativos/guias-e-manuais/plano-de-contingencia-estadual-arboviroses-2025-2026/",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
    },
    "antecipacao": {
     "pontos": 40,
@@ -436,7 +543,7 @@
     "dengue_capital": "Campo Grande",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 12
+    "focos_24h": 0
    },
    "risco_projetado": [
     "arboviroses",
@@ -458,6 +565,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -469,7 +583,7 @@
     "dengue_capital": "Cuiabá",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 897
+    "focos_24h": 702
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -480,7 +594,7 @@
   },
   "PA": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 28.3,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -490,6 +604,13 @@
     "orgao": "SESPA / Coordenação Estadual de Arboviroses",
     "url": "http://www.saude.pa.gov.br/casos-de-dengue-caem-quase-60-no-para-em-janeiro-de-2025/",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 0
    },
    "antecipacao": {
     "pontos": 40,
@@ -502,7 +623,7 @@
     "dengue_capital": "Belém",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 2730
+    "focos_24h": 1967
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -513,8 +634,8 @@
   },
   "PB": {
    "verificado": true,
-   "prontidao": 32.5,
-   "faixa": "em construção",
+   "prontidao": 21.7,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -523,6 +644,13 @@
     "orgao": "SES-PB / Vigilância em Saúde",
     "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/plano_contingencia_arboviroses_15_02_2024.pdf",
     "temporada": "anterior"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 2
    },
    "antecipacao": {
     "pontos": 20,
@@ -535,7 +663,7 @@
     "dengue_capital": "João Pessoa",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 1
+    "focos_24h": 6
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -546,7 +674,7 @@
   },
   "PE": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 31.6,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -556,6 +684,13 @@
     "orgao": "SES-PE",
     "url": "https://portal.saude.pe.gov.br/pernambuco-divulga-plano-de-enfrentamento-das-arboviroses-2025-2026/",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 9.9,
+    "cobertura_pct": 9.9,
+    "pop_coberta": 893352,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 0
    },
    "antecipacao": {
     "pontos": 40,
@@ -568,7 +703,7 @@
     "dengue_capital": "Recife",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 7
+    "focos_24h": 18
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -590,6 +725,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -601,7 +743,7 @@
     "dengue_capital": "Teresina",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 341
+    "focos_24h": 748
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -612,8 +754,8 @@
   },
   "PR": {
    "verificado": true,
-   "prontidao": 32.5,
-   "faixa": "em construção",
+   "prontidao": 21.7,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -622,6 +764,13 @@
     "orgao": "SESA-PR",
     "url": "https://www.saude.pr.gov.br/Noticia/Parana-intensifica-combate-dengue-com-Comite-Intersetorial-e-acoes-integradas",
     "temporada": "anterior"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 10
    },
    "antecipacao": {
     "pontos": 20,
@@ -634,7 +783,7 @@
     "dengue_capital": "Curitiba",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 2
+    "focos_24h": 0
    },
    "risco_projetado": [
     "leptospirose",
@@ -645,8 +794,8 @@
   },
   "RJ": {
    "verificado": true,
-   "prontidao": 27.5,
-   "faixa": "em construção",
+   "prontidao": 21.3,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -655,6 +804,13 @@
     "orgao": "SES-RJ",
     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzY0ODg,",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 8.8,
+    "cobertura_pct": 8.8,
+    "pop_coberta": 1408396,
+    "planos_lidos": 3,
+    "planos_sem_leitura": 3
    },
    "antecipacao": {
     "pontos": 20,
@@ -667,7 +823,7 @@
     "dengue_capital": "Rio de Janeiro",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 7
+    "focos_24h": 0
    },
    "risco_projetado": [
     "leptospirose",
@@ -689,6 +845,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -700,7 +863,7 @@
     "dengue_capital": "Natal",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 7
+    "focos_24h": 1
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -722,6 +885,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -733,7 +903,7 @@
     "dengue_capital": "Porto Velho",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 3
+    "focos_24h": 125
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -755,6 +925,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 2
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -766,7 +943,7 @@
     "dengue_capital": "Boa Vista",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 20
+    "focos_24h": 55
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -777,7 +954,7 @@
   },
   "RS": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 28.3,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -787,6 +964,13 @@
     "orgao": "SES-RS / CEVS",
     "url": "https://saude.rs.gov.br/plano-de-contingencia",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 2
    },
    "antecipacao": {
     "pontos": 40,
@@ -810,7 +994,7 @@
   },
   "SC": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 28.3,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -820,6 +1004,13 @@
     "orgao": "SES-SC / DIVE",
     "url": "https://www.dive.sc.gov.br/index.php/noticias-todas/843-saude-atualiza-plano-de-contingencia-para-o-enfrentamento-das-arboviroses-em-santa-catarina",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 1,
+    "planos_sem_leitura": 4
    },
    "antecipacao": {
     "pontos": 40,
@@ -832,7 +1023,7 @@
     "dengue_capital": "Florianópolis",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 10
+    "focos_24h": 2
    },
    "risco_projetado": [
     "leptospirose",
@@ -843,8 +1034,8 @@
   },
   "SE": {
    "verificado": true,
-   "prontidao": 32.5,
-   "faixa": "em construção",
+   "prontidao": 21.7,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -853,6 +1044,13 @@
     "orgao": "SES-SE",
     "url": "https://saude.se.gov.br/arboviroses-dengue-chikungunya-e-zika/",
     "temporada": "desconhecida"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 19
    },
    "antecipacao": {
     "pontos": 20,
@@ -865,7 +1063,7 @@
     "dengue_capital": "Aracaju",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 8
+    "focos_24h": 1
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -876,7 +1074,7 @@
   },
   "SP": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 28.3,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -886,6 +1084,13 @@
     "orgao": "SES-SP / CVE",
     "url": "https://dengue.saude.sp.gov.br/",
     "temporada": "2025/2026"
+   },
+   "cobertura": {
+    "pontos": 0.0,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 2
    },
    "antecipacao": {
     "pontos": 40,
@@ -898,7 +1103,7 @@
     "dengue_capital": "São Paulo",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 2
+    "focos_24h": 0
    },
    "risco_projetado": [
     "leptospirose",
@@ -920,6 +1125,13 @@
     "url": null,
     "temporada": null
    },
+   "cobertura": {
+    "pontos": null,
+    "cobertura_pct": 0.0,
+    "pop_coberta": 0,
+    "planos_lidos": 0,
+    "planos_sem_leitura": 1
+   },
    "antecipacao": {
     "pontos": null,
     "boletim_1": "29/06/2026",
@@ -931,7 +1143,7 @@
     "dengue_capital": "Palmas",
     "dengue_se": 202635,
     "avisos_calor": 0,
-    "focos_24h": 334
+    "focos_24h": 561
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",

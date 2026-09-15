@@ -45,8 +45,10 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
             st = (m.get("instrumento") or {}).get("status")
             if st == "NAO_VERIFICADO" and m.get("prontidao") is not None: erros.append(f"(m) monitor_saude: {uf} não verificada com número")
             if st != "NAO_VERIFICADO" and m.get("prontidao") is not None:
-                pi = (m.get("instrumento") or {}).get("pontos"); pa = (m.get("antecipacao") or {}).get("pontos")
-                if pi is None or pa is None or abs(m["prontidao"] - round(0.5 * pi + 0.5 * pa, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos sub-elementos")
+                pi = (m.get("instrumento") or {}).get("pontos"); pa = (m.get("antecipacao") or {}).get("pontos"); pc = (m.get("cobertura") or {}).get("pontos")
+                # v0.3 (15/09/2026): três componentes com pesos iguais (instrumento, cobertura populacional sanitária, antecipação)
+                if pi is None or pa is None or pc is None or abs(m["prontidao"] - round((pi + pc + pa) / 3.0, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos três componentes")
+                if not (0 <= pc <= 100): erros.append(f"(m) monitor_saude: {uf} cobertura sanitária fora de 0–100")
         if "monitor_saude" in motor: erros.append("(m) recalcular_mare.py referencia monitor_saude (proibido)")
         # (d) §8 desfechos: nunca lidos pelo motor; SE incompletas vazadas; ressalva de não-atribuição nas superfícies
         if re.search(r"saude_desfechos|saude_no_plano", motor): erros.append("(d) recalcular_mare.py referencia desfechos/saude_no_plano (proibido)")
