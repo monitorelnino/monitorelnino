@@ -43,6 +43,14 @@ main{display:block;}
 .grade-figuras--3{grid-template-columns:repeat(3, minmax(0, 1fr));}   /* 15/09/2026: mapas e gráficos lado a lado quando cabem três */
 .grade-figuras--3 .figura-titulo{min-height:calc(3 * var(--fs-h4) * var(--lh-h4));}   /* a um terço da largura, títulos-fato ocupam até três linhas: reserva fixa para as três figuras alinharem */
 .grade-figuras--3 .figura-sub{min-height:calc(3 * var(--fs-caption) * var(--lh-caption));}
+/* 15/09/2026 (Para gestores): passos numerados do caminho até o plano publicado; checklist com caixa */
+.passos{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:var(--sp-3);}
+.passos li{display:flex; gap:var(--sp-3); align-items:flex-start; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:var(--sp-3) var(--sp-4); font-size:var(--fs-small); line-height:var(--lh-small);}
+.passos li b{flex:none; width:32px; height:32px; border-radius:50%; background:var(--musgo); color:var(--branco); font-family:var(--font-dado); font-weight:var(--peso-bold); display:flex; align-items:center; justify-content:center;}
+.passos li strong{display:block; margin-bottom:2px;}
+.checklist{list-style:none; margin:0; padding:0; columns:1; font-size:var(--fs-small); line-height:var(--lh-small);}
+.checklist li{position:relative; padding-left:var(--sp-5); margin:0 0 var(--sp-2);}
+.checklist li::before{content:"☐"; position:absolute; left:0; top:0; color:var(--muted);}
 .lista-definicao{margin:var(--sp-2) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
 .lista-definicao dt{font-weight:var(--peso-semibold); margin-top:var(--sp-2);}
 .lista-definicao dd{margin:0; color:var(--muted);}
@@ -498,6 +506,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 @media (max-width:1020px){
   .wrap{padding:var(--sp-5) var(--grade-margem) var(--sp-7);}
   .grade-figuras, .grade-figuras--3{grid-template-columns:minmax(0, 1fr);}
+  .passos{grid-template-columns:minmax(0, 1fr);}
   .figura--largo{grid-column:auto;}
   .regions{grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));}
   .comoler-grid{grid-template-columns:1fr;}
