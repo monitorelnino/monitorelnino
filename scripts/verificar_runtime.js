@@ -141,11 +141,11 @@ setTimeout(() => {
       const ufChuva = Object.keys(S.uf).find(u => (S.uf[u].risco_projetado || {}).tipo === "chuvas");
       if (ufChuva && selP) { selP.value = ufChuva; selP.dispatchEvent(new domP.window.Event("change", { bubbles: true }));
         teste("proteja-se: escolher um estado de chuvas abre o guia de chuvas e mostra a classificação", qP("acc-guia-chuvas").open && !qP("acc-guia-fogo").open && !qP("riscoDoEstado").hidden && /Chuva/i.test(qP("riscoDoEstado").textContent)); }
-      // 15/09/2026: "Quem chamar" — 27 cartões do dado (contatos_uf.json), cada um com telefone tocável; a UF escolhida no seletor de risco preenche o cartão em destaque
+      // 15/09/2026: "Defesa Civil do seu estado" — 27 cartões do dado (contatos_uf.json), cada um com telefone tocável; a UF escolhida no seletor de risco preenche o cartão em destaque
       const C = JSON.parse(fs.readFileSync(path.join(raiz, "data", "contatos_uf.json"), "utf8"));
       teste("proteja-se: 27 cartões de contato, todos com telefone (tel:) e órgão", qP("contatoGrade").querySelectorAll(".contato").length === 27 && [...qP("contatoGrade").querySelectorAll(".contato")].every(c => c.querySelector('a[href^="tel:"]') && c.querySelector(".contato-orgao").textContent.length > 10));
       teste("proteja-se: telefone do cartão bate com o dado (primeiro telefone de cada UF)", Object.keys(C.uf).every(uf => { const c = dP.getElementById("contato-" + uf); return c && c.textContent.includes(C.uf[uf].telefones[0]); }));
-      if (ufChuva) teste("proteja-se: o estado escolhido aparece em destaque em 'Quem chamar'", !qP("contatoDestaque").hidden && qP("contatoDestaque").textContent.includes(C.uf[ufChuva].nome));
+      if (ufChuva) teste("proteja-se: o estado escolhido aparece em destaque em 'Defesa Civil do seu estado'", !qP("contatoDestaque").hidden && qP("contatoDestaque").textContent.includes(C.uf[ufChuva].nome));
       teste("proteja-se: barra de emergência com 190 · 192 · 193 · 199 e 40199, tocáveis", ["190","192","193","199","40199"].every(n => [...dP.querySelectorAll("#emergNums a")].some(a => a.textContent.includes(n))));
       fim();
     }, 400);

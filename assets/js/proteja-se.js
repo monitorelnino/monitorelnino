@@ -115,7 +115,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   }).catch(() => {});
 })();
 
-// 15/09/2026 (pedido da editoria): "Quem chamar no seu estado" — um cartão por UF, com telefones, plantão, e-mail, portal
+// 15/09/2026 (pedido da editoria): "Defesa Civil do seu estado" — um cartão por UF, com telefones, plantão, e-mail, portal
 // e expediente lidos de data/contatos_uf.json (transcrição do diretório oficial do MIDR). Nada digitado aqui.
 (function(){
   const sel = document.getElementById('selUFContato'), dest = document.getElementById('contatoDestaque'), grade = document.getElementById('contatoGrade'); if (!sel || !grade) return;
