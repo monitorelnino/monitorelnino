@@ -485,7 +485,7 @@ function titulosFato(){
   try {
     const st = (DATA.ufs || []).map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
     const novo = c(['NOVO']), readVig = c(['READ','VIG']), elabLac = c(['ELAB','LAC']);
-    titulo('boxRegion', `${novo} estados publicaram plano feito para o ciclo; ${readVig} reeditaram ou mantêm o de todo ano; ${elabLac} sem plano localizável`);
+    titulo('boxRegion', `${novo} estados com plano para o ciclo; ${readVig} com plano de todo ano; ${elabLac} sem plano localizado`);
     // por região: onde se concentram os planos específicos (NOVO)
     const porReg = {}; (DATA.ufs || []).forEach(u => { if (u.status === 'NOVO') porReg[u.regiao || u.region || '—'] = (porReg[u.regiao || u.region || '—'] || 0) + 1; });
     const maior = Object.entries(porReg).sort((a, b) => b[1] - a[1])[0];
@@ -501,7 +501,7 @@ function titulosFato(){
     // correta é PCT_POR_UF.n_plano (percentual_uf.json), a mesma fonte do índice (recalcular_mare.py), nunca divergente dela.
     const vd = (VRESUMO && VRESUMO.varredura_diarios) || {}; const nDiario = vd.consultados || vd.municipios_consultados || null;
     const nPlanos = Object.values(PCT_POR_UF || {}).reduce((a, i) => a + (i.n_plano || 0), 0);
-    titulo('boxVerificacao', `5.571 cidades passaram pelo registro federal${nDiario != null ? `; ${n(nDiario)} pelo diário oficial` : ''}; ${n(nPlanos)} planos municipais localizados`);
+    titulo('boxVerificacao', `5.571 municípios no registro federal${nDiario != null ? `; ${n(nDiario)} no diário oficial` : ''}; ${n(nPlanos)} planos municipais localizados`);
   } catch (e) {}
   try {   // (e) quadrante crítico (índice < 50 e > 5% dos municípios sob decreto) + (g) semana do primeiro decreto —
     // narrativa fora de figura desde 15/09/2026 (as figuras de dispersão e série semanal saíram da página)

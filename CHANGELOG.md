@@ -23,6 +23,7 @@ Classe **estrutura de página + errata + fonte única**. Método inalterado; C20
 - **Errata**: o título "5.571 cidades passaram pelo registro federal; … 0 planos municipais localizados" somava um campo inexistente em `consist.json`; passa a somar `n_plano` de `percentual_uf.json` (157).
 - Municípios prioritários: explicação abaixo do mapa (o que são; a lista do Cadastro é aproximação por população, não a oficial); `gerar_prioritarios.py` grava `data/municipios_prioritarios.json` (cadeia de derivados e rotina de atualização), lido pelo mapa e pela nova busca **"Descubra se seu município é prioritário"** em Para prefeitos (estado → município → está ou não na aproximação; com ou sem instrumento localizado).
 - A tabela "Decretado × reconhecido" no "Ver mais" passa a ocupar a largura toda do painel.
+- **Correção de dois bugs pré-existentes** achados ao testar: os títulos-fato de Defesa civil (§54) eram calculados antes de os dados chegarem (IIFE no carregamento) e nunca mudavam do texto original; e o portão que os checava fazia a contagem final antes desses testes, então nunca bloqueava. Agora os títulos são calculados ao fim de `__init()`, o portão cobre todos os testes, e os títulos foram encurtados ao teto de 100 caracteres da regra de legendas ("sem plano localizado", nunca "localizável").
 
 ## §58 · Proteja-se: cada número de emergência diz para que serve; a seção do órgão estadual deixa de se chamar "Quem chamar" · 15/09/2026
 
