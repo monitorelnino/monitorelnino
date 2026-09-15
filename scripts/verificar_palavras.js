@@ -4,8 +4,8 @@
 const fs = require("fs"), path = require("path"); const RAIZ = path.join(__dirname, "..");
 const LIMITES = { // [meta §7, teto]
   "index.html": [500, 800], "sinais-de-risco.html": [350, 420], "calendario-eleitoral.html": [600, 900], "defesa-civil.html": [400, 450],
-  "saude.html": [700, 900]   /* 15/09/2026: a página passou a espelhar a inicial (ficha "Como ler", dois medidores, cinco desfechos com seção própria) */, "financiamento.html": [900, 1300]   /* 15/09/2026: a página ganhou a ficha "Como ler as rotas" (chaves, termos, rota do fogo) e o caminho antes/agora/depois, a pedido da editoria */, "proteja-se.html": [800, 1150],
-  "imprensa.html": [700, 1060], "pesquisadores.html": [1500, 2200], "prefeituras.html": [300, 560], "obrigado.html": [100, 160] };
+  "saude.html": [700, 900]   /* 15/09/2026: a página passou a espelhar a inicial (ficha "Como ler", dois medidores, cinco desfechos com seção própria) */, "financiamento.html": [1000, 1600]   /* 15/09/2026: a página ganhou a ficha "Como ler as rotas" (chaves, termos, rota do fogo) e o caminho antes/agora/depois, a pedido da editoria */, "proteja-se.html": [800, 1150],
+  "imprensa.html": [700, 1100]   /* 15/09/2026: FAQ ganhou MARÉ Saúde e dinheiro preventivo */, "pesquisadores.html": [1500, 2200], "prefeituras.html": [300, 560], "obrigado.html": [100, 160] };
 function palavras(f) {
   let t = fs.readFileSync(path.join(RAIZ, f), "utf-8");
   t = t.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<style[\s\S]*?<\/style>/g, "").replace(/<nav class="mainnav"[\s\S]*?<\/nav>/g, "").replace(/<footer[\s\S]*?<\/footer>/g, "").replace(/<p class="figura-sub">[\s\S]*?<\/p>/g, "");   // subtítulos de figura (período · variável · unidade) são metadados

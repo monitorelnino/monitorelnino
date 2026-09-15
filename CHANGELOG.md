@@ -15,6 +15,16 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §65 · Financiamento: figura "Dinheiro para se preparar, por setor" (saúde · fogo · seca), com glifos de chave, nó de ausência e ficha · 15/09/2026
+
+Executa o handover editorial "Dinheiro preventivo por setor" (§2.20). Nenhuma alteração de método (peso zero; portão impede o motor de ler o dado). Classe **figura + dado + ficha + portões**.
+
+- Novo `data/financiamento/preventivo_setores.json`: 12 rotas em três faixas (saúde 3, fogo 4, seca 5) com origem (União · Estado · Fundos e doações), destino (Município · Pessoas · Obras e serviços), chave (regra · decreto · discricionária · direta), glifos (plano · risco · calendário · obra · crédito), base legal, situação no período eleitoral, objeto; as rotas do fogo reusam fonte e hash de `rotas_preventivas.json`; as demais ficam "fonte a verificar" até a leitura documental (sem fonte/hash inventados). Nó de ausência da seca: "(nenhuma) rota ao município ligada a plano e a nível de risco".
+- Figura `#boxPreventivoSetor`: rede D3 com a gramática de `#boxRede` (traço = chave, glifos na aresta, tooltip com base legal e defeso, realce, teclado), título-fato do dado, alternativa acessível em lista de definição ("Ver em lista"), sem tabela. Paleta: `PALETA.setores`.
+- Ficha "Como ler o dinheiro preventivo" (três chaves, três destinos, saúde, fogo, seca, o que a figura não diz), no mesmo popup das fichas da página. Os três mapas por setor entram quando os coletores tiverem dado (nota na página).
+- Portões: `verificar_financiamento.py` (i)–(m) — campos obrigatórios por rota, chave/objeto válidos, fonte+hash quando verificada, zero `<table>`, `<dl>` presente, nó de ausência com enunciado restrito, motor não lê o arquivo; runtime — nós, ausência sem aresta, glifos na legenda, tooltip, lista, título-fato, ficha.
+- METODOLOGIA §38-bis; FAQ da Imprensa ("Há dinheiro federal para se preparar sem decretar?"); Prefeituras aponta para a figura. Tetos de palavras: Financiamento 1.600, Imprensa 1.100.
+
 ## §64 · Figuras lado a lado: grade de três colunas na Saúde e na Defesa civil; SRAG e SG em figuras próprias · 15/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página** (pedido da editoria: otimizar o espaço, mapas e gráficos lado a lado).

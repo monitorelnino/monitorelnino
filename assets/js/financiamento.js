@@ -314,7 +314,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         new Chart(cv, {type: 'bar', data: {labels: dados.map(d => d.r), datasets: [{data: dados.map(d => d.v), backgroundColor: dados.map(d => d.c)}]},
           options: {indexAxis: 'y', animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {beginAtZero: true, max: 497, title: {display: true, text: 'municípios (de 497)'}}}}});
         MonitorMapas.legenda('legRS', [{cor: MonitorMapas.PALETA.preparacao, rotulo: 'repasse preventivo: ' + (rs.valor_total ? 'R$ ' + (rs.valor_total / 1e6).toFixed(1).replace('.', ',') + ' mi · ' : '') + (rs.repasses || 0) + ' municípios'}, {cor: MonitorMapas.PALETA.resposta, rotulo: 'sob decreto: ' + (r ? r.n_municipios : 0)}, {cor: MonitorMapas.PALETA.status.ELAB, rotulo: 'reconhecidos: ' + (r ? r.tons.reconhecido : 0)}]);
-        MonitorMapas.credito('boxRSGrafico', {fontes: ['FUNDEC/RS (Resolução 008/2026)', 'DOU/SEDEC (S2iD)'], data: (RESP_FIN && RESP_FIN.gerado_em) || null});
+        fonteFigura('boxRSGrafico', {fontes: ['FUNDEC/RS (Resolução 008/2026)', 'DOU/SEDEC (S2iD)'], data: (RESP_FIN && RESP_FIN.gerado_em) || null});
       })();
     }
   } catch(e) {}
@@ -359,4 +359,84 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const fechar = () => { if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false; };
   link.addEventListener('click', e => { e.preventDefault(); document.getElementById('detailFinConteudo').innerHTML = fonte.innerHTML; if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
   const bt = document.getElementById('detailFinFechar'); if (bt) bt.addEventListener('click', fechar); dlg.addEventListener('click', evt => { if (evt.target === dlg) fechar(); });
+})();
+
+// 15/09/2026 (handover "Dinheiro preventivo por setor"): rede D3 com a mesma gramática de #boxRede — origens à esquerda,
+// três faixas (saúde, fogo, seca) ao centro, três destinos à direita; traço = chave; glifos de chave no meio da aresta;
+// nó de ausência da seca desenhado como ausência (contorno tracejado, sem aresta). Lê data/financiamento/preventivo_setores.json.
+(function preventivoPorSetor(){
+  const svg = d3.select('#preventivoSetor'); if (svg.empty()) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const { showTip, hideTip } = MonitorMapas;
+  fetch('data/financiamento/preventivo_setores.json').then(r => r.ok ? r.json() : null).then(P => {
+    if (!P) { MonitorMapas.legenda('legPreventivoSetor', [{cor: MonitorMapas.NEUTRA, rotulo: 'dado não carregado'}]); fonteFigura('boxPreventivoSetor', {fontes: 'MARÉ', data: null}); return; }
+    const CH = MonitorMapas.PALETA.chaves, SET = MonitorMapas.PALETA.setores;
+    const dash = ch => ch === 'decreto' ? '8,5' : ch === 'discricionaria' ? '2,4' : null;
+    const curva = (p, q) => `M${p.x},${p.y} C${(p.x + q.x) / 2},${p.y} ${(p.x + q.x) / 2},${q.y} ${q.x},${q.y}`;
+    const no = (g, n, w, h, cor, texto, sub, tracejado) => {
+      g.append('rect').attr('x', n.x - w / 2).attr('y', n.y - h / 2).attr('width', w).attr('height', h).attr('rx', 8).attr('fill', tracejado ? 'none' : cor).attr('stroke', tracejado ? MonitorMapas.cor('muted') : MonitorMapas.cor('branco')).attr('stroke-width', 1.2).attr('stroke-dasharray', tracejado ? '5,4' : null);
+      g.append('text').attr('x', n.x).attr('y', n.y - (sub ? 5 : 0)).attr('text-anchor', 'middle').attr('dominant-baseline', 'middle').attr('fill', tracejado ? MonitorMapas.cor('muted') : MonitorMapas.cor('branco')).attr('font-family', "'Archivo', Arial, sans-serif").attr('font-size', 11.5).attr('font-weight', 600).text(texto);
+      if (sub) g.append('text').attr('x', n.x).attr('y', n.y + 10).attr('text-anchor', 'middle').attr('dominant-baseline', 'middle').attr('fill', tracejado ? MonitorMapas.cor('muted') : MonitorMapas.cor('branco')).attr('fill-opacity', .9).attr('font-family', "'Archivo Narrow', Arial, sans-serif").attr('font-size', 11).text(sub);
+    };
+    // glifos de chave, monocromáticos, 14 px, centrados em (0,0)
+    const glifo = (g, tipo, cor) => {
+      const s = g.append('g').attr('class', 'glifo').attr('fill', 'none').attr('stroke', cor).attr('stroke-width', 1.4).attr('stroke-linejoin', 'round');
+      s.append('circle').attr('r', 9).attr('fill', MonitorMapas.cor('branco')).attr('stroke', cor);
+      if (tipo === 'plano') { s.append('path').attr('d', 'M-4,-5 H2 L4,-3 V5 H-4 Z'); s.append('path').attr('d', 'M2,-5 V-3 H4'); }
+      else if (tipo === 'risco') { s.append('path').attr('d', 'M-5,2 A5,5 0 0 1 5,2'); s.append('path').attr('d', 'M0,2 L3,-2'); }
+      else if (tipo === 'calendario') { s.append('rect').attr('x', -5).attr('y', -4).attr('width', 10).attr('height', 9).attr('rx', 1); s.append('path').attr('d', 'M-5,-1 H5 M-3,-6 V-3 M3,-6 V-3'); }
+      else if (tipo === 'obra') { s.append('path').attr('d', 'M-5,4 H5 M-3,4 V-2 H3 V4 M0,-2 V-5'); }
+      else if (tipo === 'credito') { s.append('path').attr('d', 'M2,-3 C0,-5 -3,-4 -3,-2 C-3,1 3,0 3,2 C3,4 0,5 -2,3 M0,-5 V5'); }
+      return s;
+    };
+    const rotas = P.setores.flatMap(s => s.rotas.map(r => Object.assign({setor: s.id}, r)));
+    const ausencia = (P.setores.find(s => s.ausencia) || {}).ausencia;
+    // posições
+    const ORIG = P.origens.map((o, i) => Object.assign({y: 120 + i * 150}, o));
+    const DEST = P.destinos.map((d, i) => Object.assign({y: 120 + i * 150}, d));
+    const nos = []; let y = 44;
+    P.setores.forEach(s => {
+      svg.append('text').attr('x', 480).attr('y', y).attr('text-anchor', 'middle').attr('font-size', 11).attr('letter-spacing', 1.5).attr('fill', SET[s.id]).attr('font-family', "'Archivo Narrow', Arial, sans-serif").attr('font-weight', 700).text(s.nome.toUpperCase());
+      y += 12;
+      s.rotas.forEach(r => { nos.push(Object.assign({x: 480, y: y + 14, setor: s.id}, r)); y += 32; });
+      if (s.ausencia) { nos.push({x: 480, y: y + 14, setor: s.id, ausencia: true, id: s.ausencia.id, nome: s.ausencia.rotulo, nota: s.ausencia.nota}); y += 32; }
+      y += 12;
+    });
+    const gA = svg.append('g').attr('class', 'arestas'), gN = svg.append('g').attr('class', 'nos');
+    const byO = Object.fromEntries(ORIG.map(o => [o.id, o])), byD = Object.fromEntries(DEST.map(d => [d.id, d]));
+    nos.filter(n => !n.ausencia).forEach(n => {
+      const cor = n.objeto === 'resposta' ? CH.decreto : (CH[n.chave] || SET[n.setor]); n.cor = cor;
+      const o = byO[n.origem] || byO.uniao, d = byD[n.destino] || byD.mun;
+      const p1 = {x: 100 + 88, y: o.y}, p2 = {x: 480 - 160, y: n.y}, p3 = {x: 480 + 160, y: n.y}, p4 = {x: 880 - 65, y: d.y};
+      [[p1, p2], [p3, p4]].forEach(([a, b]) => {
+        gA.append('path').attr('d', curva(a, b)).attr('fill', 'none').attr('stroke', cor).attr('stroke-width', n.chave === 'direta' ? 5 : 3).attr('stroke-opacity', n.objeto === 'resposta' ? .9 : .75).attr('stroke-dasharray', dash(n.chave)).attr('class', 'aresta ' + n.id);
+        if (n.chave === 'direta') gA.append('path').attr('d', curva(a, b)).attr('fill', 'none').attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.5).attr('class', 'aresta ' + n.id);
+      });
+      (n.glifos || []).forEach((t, i) => { const g = gA.append('g').attr('class', 'aresta ' + n.id).attr('transform', `translate(${p3.x + 22 + i * 24},${n.y})`); glifo(g, t, cor); });
+    });
+    ORIG.forEach(o => no(gN, {x: 100, y: o.y}, 176, 46, MonitorMapas.cor('abissal'), o.nome, o.sub));
+    DEST.forEach(d => no(gN, {x: 880, y: d.y}, 150, 46, MonitorMapas.cor('abissal'), d.nome, d.sub));
+    nos.forEach(n => {
+      const g = gN.append('g').attr('tabindex', 0).attr('role', 'img').attr('aria-label', n.ausencia ? n.nome : n.nome + ' — chave: ' + n.chave + ' · destino: ' + (byD[n.destino] || {}).nome + (n.objeto === 'resposta' ? ' (resposta)' : ''));
+      const tip = n.ausencia ? '<strong>' + esc(n.nome) + '</strong><br>' + esc(n.nota)
+        : '<strong>' + esc(n.nome) + '</strong><br><em>chave: ' + esc(n.chave) + (n.glifos && n.glifos.length ? ' (' + n.glifos.map(esc).join(' + ') + ')' : '') + ' · destino: ' + esc((byD[n.destino] || {}).nome) + ' · ' + esc(n.objeto) + '</em><br>' + esc(n.base_legal) + (n.nota ? '<br>' + esc(n.nota) : '') + '<br>Período eleitoral: ' + esc(n.defeso) + (n.verificado_em ? '<br>fonte verificada em ' + esc(n.verificado_em) : '<br><em>fonte a verificar</em>');
+      g.on('mouseenter', evt => showTip(tip, evt)).on('mousemove', evt => showTip(tip, evt)).on('focus', () => showTip(tip, {clientX: 24, clientY: 24})).on('mouseleave', hideTip).on('blur', hideTip)
+        .on('mouseenter.realce', () => svg.selectAll('.aresta').attr('stroke-opacity', .15).filter('.' + n.id).attr('stroke-opacity', 1)).on('mouseleave.realce', () => svg.selectAll('.aresta').attr('stroke-opacity', .75));
+      no(g, n, 320, 26, n.ausencia ? null : n.cor, n.nome, null, n.ausencia);
+    });
+    MonitorMapas.legenda('legPreventivoSetor', [
+      {cor: CH.regra, rotulo: 'contínuo: regra'}, {cor: CH.decreto, rotulo: 'tracejado: decreto (resposta)'}, {cor: CH.discricionaria, rotulo: 'pontilhado: discricionária'}, {cor: CH.direta, rotulo: 'duplo: execução direta'},
+      ...Object.entries(P.glifos || {}).map(([k, v]) => ({cor: MonitorMapas.cor('abissal'), rotulo: 'glifo ' + k + ': ' + v})),
+      {cor: MonitorMapas.NEUTRA, rotulo: 'contorno tracejado: ausência de rota'}]);
+    // alternativa acessível: lista de definição
+    const dl = document.getElementById('dlPreventivoSetor');
+    if (dl) dl.innerHTML = P.setores.map(s => '<dt>' + esc(s.nome) + '</dt>' + s.rotas.map(r => '<dd><strong>' + esc(r.nome) + '</strong> — de ' + esc((byO[r.origem] || {}).nome) + ' para ' + esc((byD[r.destino] || {}).nome) + '; chave: ' + esc(r.chave) + (r.glifos && r.glifos.length ? ' (' + r.glifos.join(' + ') + ')' : '') + '; ' + esc(r.base_legal) + '; ' + esc(r.objeto) + '.</dd>').join('') + (s.ausencia ? '<dd><em>' + esc(s.ausencia.rotulo) + '</em> — ' + esc(s.ausencia.nota) + '</dd>' : '')).join('');
+    // título-fato do dado
+    const n = id => (P.setores.find(s => s.id === id) || {rotas: []}).rotas;
+    const h = document.querySelector('#boxPreventivoSetor .figura-titulo');
+    if (h) h.textContent = 'Saúde: ' + n('saude').filter(r => r.destino === 'mun').length + ' rotas ao município · Fogo: ' + n('fogo').length + ', uma por risco e plano · Seca: ' + n('seca').length + ', nenhuma por plano ou risco';
+    fonteFigura('boxPreventivoSetor', {fontes: ['MARÉ', 'base legal citada por rota'], data: P.corte});
+    const link = document.getElementById('linkComoLerPreventivo'), fonte = document.getElementById('comolerPreventivo'), dlg = document.getElementById('detailFin');
+    if (link && fonte && dlg) link.addEventListener('click', e => { e.preventDefault(); document.getElementById('detailFinConteudo').innerHTML = fonte.innerHTML; if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
+  }).catch(() => { MonitorMapas.legenda('legPreventivoSetor', [{cor: MonitorMapas.NEUTRA, rotulo: 'dado não carregado'}]); fonteFigura('boxPreventivoSetor', {fontes: 'MARÉ', data: null}); });
 })();

@@ -187,6 +187,7 @@
     // discricionária em âmbar/areia, execução direta em mineral, rota estadual em musgo. Oito cores distintas.
     // chave de acesso das rotas (legenda da rede) e temas dos compromissos federais
     chaves: { regra: COR.sintetico, decreto: COR.argila, discricionaria: COR.ambar, direta: COR.mineral, estadual: COR.musgo },
+    setores: { saude: COR.sintetico, fogo: COR.argila, seca: COR.ambar },   // 15/09/2026: faixas da figura 'dinheiro preventivo por setor' (mesmos tons das famílias de risco)
     temas: { hidrico: COR.sintetico, fogo: COR.argila, alimentar: COR.ambar, saude: COR.mineral, outro: COR.areia },
     rotas: { r1: COR['sintetico-escuro'], r2: COR.sintetico, r3: COR.argila, r4: COR['ambar-escuro'], r5: COR.ambar, r6: COR['areia-escura'], r7: COR.mineral, rE: COR.musgo },
     // status de coleta de um desfecho no catálogo do Monitor (Saúde, §36): mesma lógica de 'faixas', vocabulário próprio

@@ -25,7 +25,7 @@ CHAVE = re.compile(r'chave-api-dados["\']?\s*[:=]\s*["\'][0-9a-f]{20,}', re.I)
 def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
     e = []
     if CHAVE.search(html) or CHAVE.search(motor) or any(CHAVE.search(t) for t in arquivos_fin.values()): e.append("(a) chave de API em código ou dados")
-    for cid in ["boxRede", "boxFundoEstadual", "boxContadores", "boxDinheiro", "boxResposta"]:   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026); boxPorHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima (1/8 rotas), JS mantido desativado; boxPainel, boxCompromissos, boxFinance, boxSerie, boxRotaMPs, boxMpsBrUf, boxMpsUf e boxMpsUfBarras migraram para pesquisadores.html em 13/09/2026 (proposta de enxugamento, Manus AI)
+    for cid in ["boxRede", "boxPreventivoSetor", "boxRSGrafico"]:   # 15/09/2026: figuras vivas na página (Fundo estadual, contadores, dinheiro e resposta saíram a pedido da editoria)   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026); boxPorHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima (1/8 rotas), JS mantido desativado; boxPainel, boxCompromissos, boxFinance, boxSerie, boxRotaMPs, boxMpsBrUf, boxMpsUf e boxMpsUfBarras migraram para pesquisadores.html em 13/09/2026 (proposta de enxugamento, Manus AI)
         if f"fonteFigura('{cid}'" not in html: e.append(f"(b) figura sem crédito: #{cid}")
     ids = [r["id"] for r in rotas["rotas"]]
     for s in serie.get("semanas", []):
@@ -58,6 +58,28 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
     motor = (RAIZ / "recalcular_mare.py").read_text(encoding="utf-8")
     if "rotas_preventivas" in motor or "financiamento/fogo" in motor: e.append("(h) motor do índice lê dados da rota preventiva do fogo")
     if re.search(r"financiamento/", motor): e.append("(f) recalcular_mare.py referencia data/financiamento/")
+    # 15/09/2026 (handover "dinheiro preventivo por setor"): (i) preventivo_setores.json — toda rota com base_legal, chave, destino e objeto válidos;
+    # fonte/hash obrigatórios quando verificado_em está preenchido; (j) zero <table> em financiamento.html; (k) alternativa <dl> da figura;
+    # (l) nó de ausência da seca presente e com o enunciado restrito; (m) o motor nunca lê preventivo_setores.
+    try:
+        ps = json.loads((FIN / "preventivo_setores.json").read_text(encoding="utf-8"))
+        for st in ps.get("setores", []):
+            for r in st.get("rotas", []):
+                for k in ("id", "nome", "origem", "destino", "chave", "objeto", "base_legal", "defeso"):
+                    if not r.get(k): e.append(f"(i) preventivo_setores: rota {r.get('id')} sem {k}")
+                if r.get("chave") not in {"regra", "decreto", "discricionaria", "direta"}: e.append(f"(i) preventivo_setores: chave inválida em {r.get('id')}")
+                if r.get("objeto") not in {"preventivo", "resposta"}: e.append(f"(i) preventivo_setores: objeto inválido em {r.get('id')}")
+                if r.get("verificado_em") and not (r.get("fonte") and r.get("hash_evidencia")): e.append(f"(i) preventivo_setores: {r.get('id')} verificada sem fonte/hash")
+                for g in r.get("glifos", []):
+                    if g not in ps.get("glifos", {}): e.append(f"(i) preventivo_setores: glifo desconhecido {g} em {r.get('id')}")
+        seca = next((st for st in ps.get("setores", []) if st.get("id") == "seca"), {})
+        aus = (seca.get("ausencia") or {}).get("rotulo", "")
+        if "rota ao município ligada a plano e a nível de risco" not in aus: e.append("(l) preventivo_setores: nó de ausência da seca ausente ou com enunciado diferente do restrito")
+    except FileNotFoundError:
+        e.append("(i) preventivo_setores.json ausente")
+    if re.search(r"<table\b", html): e.append("(j) financiamento.html contém <table> — a página não tem tabelas (decisão editorial de 15/09/2026)")
+    if 'id="dlPreventivoSetor"' not in html: e.append("(k) figura do dinheiro preventivo sem alternativa <dl>")
+    if "preventivo_setores" in motor: e.append("(m) motor do índice lê preventivo_setores.json")
     d = serie.get("defeso", {})
     if not (d.get("inicio") == "2026-07-04" and d.get("fim") == "2026-10-25" and "73" in str(d.get("base", ""))): e.append("(g) faixa do defeso ausente ou incompleta na série")
     for nome, t in arquivos_fin.items():
