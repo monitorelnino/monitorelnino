@@ -139,6 +139,26 @@ jobs:
               [ -f "$f" ] && python3 -c "import json;d=json.load(open('$f'));br=d['serie']['BR'];print('semanas BR:',len(br));print('2026:',{k:v for k,v in sorted(br.items()) if k.startswith('2026')});print('parcial:',d['parcial']['BR']);print('canal SE10:',d['canal_endemico']['BR'].get('10'));print('UFs:',sorted(k for k in d['serie'] if k!='BR'))"
             done
           } 2>&1 | tee /tmp/coletor_dda.log
+      # 15/09/2026: Ouro Branco/AL — por que a evidência não é preservada? API nova do Querido Diário + download + preservar com saída completa
+      - name: Sondar Ouro Branco/AL no Querido Diário e rodar preservar_evidencias com saída completa
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          {
+            echo "=== registro atual ==="; python3 -c "
+          import json; m=json.load(open('data/municipios.json')); recs=m if isinstance(m,list) else m.get('municipios',m)
+          r=[x for x in (recs if isinstance(recs,list) else recs.values()) if x.get('nome')=='Ouro Branco' and x.get('uf')=='AL'][0]; print({k:r.get(k) for k in ('url','hash_evidencia','data','fonte')})"
+            for U in "https://api.queridodiario.org.br/gazettes?territory_ids=2706109&published_since=2026-07-15&published_until=2026-07-15&size=5" "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2706109&published_since=2026-07-15&published_until=2026-07-15&size=5"; do
+              echo "=== $U"; curl -sS -L --max-time 40 -o /tmp/qd.json -w "http=%{http_code} final=%{url_effective}\n" "$U"; python3 -c "
+          import json; d=json.load(open('/tmp/qd.json')); print('total', d.get('total_gazettes')); [print(' ', g.get('date'), g.get('edition'), g.get('url'), g.get('txt_url')) for g in d.get('gazettes',[])[:5]]" 2>/dev/null || head -c 300 /tmp/qd.json; echo
+            done
+            for P in "https://data.queridodiario.ok.org.br/2700000/2026-07-15/d36309fed9474b73af88d06702945be2aaaae903.pdf" "https://data.queridodiario.ok.org.br/2706109/2026-07-15/d36309fed9474b73af88d06702945be2aaaae903.pdf"; do
+              echo "=== HEAD $P"; curl -sS -I -L --max-time 40 "$P" | head -5
+            done
+            echo "=== preservar_evidencias.py --limite 5 (saída completa) ==="; python3 preservar_evidencias.py --limite 5 2>&1 | tail -40
+            echo "=== portão 6 ==="; python3 verificar_evidencias.py 2>&1 | tail -3
+            echo "=== o que mudou ==="; git status --short | head -10
+          } > /tmp/ouro_branco.txt 2>&1; cat /tmp/ouro_branco.txt
       - name: Publicar resultado no repositório privado
         if: always()
         env:
@@ -154,6 +174,7 @@ jobs:
           cp /tmp/saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_fontes_saude.txt" 2>/dev/null || true
           cp /tmp/listagem_df.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_listagem_df.txt" 2>/dev/null || true
           cp /tmp/boletim_infogripe.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_boletim_infogripe.txt" 2>/dev/null || true
+          cp /tmp/ouro_branco.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_ouro_branco_qd.txt" 2>/dev/null || true
           cp /tmp/portal_fogo_saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portal_fogo_saude.txt" 2>/dev/null || true
           cp /tmp/coletor_dda.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_coletor_dda_isolado.txt" 2>/dev/null || true
           cp /tmp/dda_zenodo.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_zenodo.txt" 2>/dev/null || true
