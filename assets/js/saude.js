@@ -29,7 +29,8 @@ async function __load(){
   try { SG = await fetch('data/saude_desfechos/sg_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { SG = null; }
   try { DDA = await fetch('data/saude_desfechos/dda_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { DDA = null; }
   __init();
-  renderDesfechos((document.getElementById('selDoencaDesf') || {}).value || 'dengue');
+  renderDesfechos('dengue', IDS_DENGUE);
+  renderDesfechos('chikungunya', IDS_CHIK);
   try { titulosFatoSaude(); } catch (e) {}   // 15/09/2026 (§2.10): depois de tudo carregado
   renderSRAG((document.getElementById('selIndicadorSRAG') || {}).value || 'srag');
   renderDDA();
@@ -52,7 +53,7 @@ function __init(){
     UFS.slice().sort((a, b) => (NOME_UF[a] || a).localeCompare(NOME_UF[b] || b)).forEach(uf => {
       const o = document.createElement('option'); o.value = uf; o.textContent = (NOME_UF[uf] || uf) + ' (' + uf + ')'; sel.appendChild(o);
     });
-    sel.addEventListener('change', () => renderPerfilEstado(sel.value));
+    sel.addEventListener('change', () => renderPerfilEstado(sel.value));   // (seletor retirado do HTML em 15/09/2026; cartões por estado no lugar)
   })();
   function renderPerfilEstado(uf){
     const alvo = document.getElementById('perfilEstadoSaude');
@@ -87,7 +88,7 @@ function __init(){
     MonitorMapas.legenda('legMonitor', [
       ...['avançado', 'consolidado', 'em construção', 'estágio inicial'].map(f => ({cor: FX[f], rotulo: f + ' · ' + (pf[f] || 0) + ' UF' + ((pf[f] || 0) === 1 ? '' : 's')})),
       {cor: FX['não verificado'], rotulo: 'ainda não verificado · ' + (R.nao_verificadas ?? '—') + ' UFs (sem número)'}]);
-    fonteFigura('boxMonitor', {fontes: ['MARÉ', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
+    fonteFigura('boxMonitor', {fontes: ['MARÉ', 'MARÉ Saúde v0.3'], data: (MSAUDE || {}).gerado_em});
     // tabela alternativa
     const tb = document.querySelector('#tblMonitor tbody');
     if (tb) tb.innerHTML = UFS.map(uf => { const m = M[uf] || {}, i = m.instrumento || {}, a = m.antecipacao || {}, r = m.risco_atual || {};
@@ -122,12 +123,19 @@ function __init(){
       bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; --galvo:' + Math.max(m.prontidao, 0.1) + ';"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
         : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
       MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.PALETA.trilho, rotulo: 'trilho 0–100'}, {cor: MonitorMapas.PALETA.faixas.avancado, rotulo: 'cor = posição no degradê do índice (0 → 100)'}, {cor: MonitorMapas.PALETA.faixas.nao_verificado, rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
-      fonteFigura('boxMonitorBarras', {fontes: ['MARÉ', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
+      fonteFigura('boxMonitorBarras', {fontes: ['MARÉ', 'MARÉ Saúde v0.3'], data: (MSAUDE || {}).gerado_em});
     }
     // Resposta sanitária (E17): ESPIN federal, decretos estaduais por arboviroses, créditos por portaria — contador, hoje zero de verdade
-    const em = (SSIN && SSIN.emergencias) || []; const rn = document.getElementById('rsNum'); if (rn) rn.textContent = String(em.length);
-    MonitorMapas.legenda('legRespostaSanitaria', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'ESPIN federal: nenhuma em 2026'}, {cor: MonitorMapas.PALETA.status.ELAB, rotulo: 'decretos estaduais por arboviroses: nenhum'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'busca manual de 05/09; coleta do DOU pendente'}]);
-    fonteFigura('boxRespostaSanitaria', {fontes: ['DOU (ESPIN)', 'diários estaduais'], data: '05/09/2026'});
+    (function respostaSanitaria(){
+      const RS = (MSAUDE && MSAUDE.resposta) || {emergencias: 0, indice: 0, pop_sob_emergencia: 0, fontes: ['DOU (ESPIN)', 'diários oficiais estaduais']};
+      const el = id => document.getElementById(id); if (!el('rsNum')) return;
+      const ir = +(RS.indice || 0);
+      el('rsNum').textContent = ir.toFixed(1).replace('.', ',');
+      el('rsBadge').innerHTML = '<span class="gfaixa-pill">' + esc(String(RS.emergencias || 0)) + ' emergência' + ((RS.emergencias || 0) === 1 ? '' : 's') + ' sanitária' + ((RS.emergencias || 0) === 1 ? '' : 's') + ' declarada' + ((RS.emergencias || 0) === 1 ? '' : 's') + '</span>';
+      el('rsCorte').textContent = (MSAUDE && MSAUDE.corte) || '—';
+      const fill = el('rsFill'); fill.dataset.alvo = String(Math.max(ir, RS.emergencias ? 0.6 : 0)); fill.style.setProperty('--galvo', String(Math.max(ir, 0.1))); fill.style.width = fill.dataset.alvo + '%';
+      el('interpRespostaSaude').innerHTML = '<strong>' + esc(String(RS.emergencias || 0)) + '</strong> emergência(s) sanitária(s) declarada(s) desde ' + esc(RS.desde || '29/06/2026') + ' — ESPIN federal e decretos estaduais —, <strong>' + esc(((RS.pop_sob_emergencia || 0) / 1e6).toFixed(1).replace('.', ',')) + '</strong> milhões de pessoas nos estados que as declararam' + (RS.ufs && RS.ufs.length ? ' (' + RS.ufs.join(', ') + ')' : '') + '. Antecipação mede preparo; resposta mede o que foi declarado depois; os dois números nunca se somam.';
+    })();
   })();
 
   // 13/09/2026 (proposta de enxugamento, Manus AI): 'O que a União publicou' (8 cartões federais)
@@ -177,11 +185,7 @@ function __init(){
   // 13/09/2026 (auditoria de visualizações, consolidação): mapa/lista de emergências só aparece
   // quando há ocorrência — o contador nacional (boxRespostaSanitaria, acima) já é a leitura
   // completa enquanto for zero; duplicar como mapa sempre cinza era redundante.
-  const emergenciasResposta = (SSIN && SSIN.emergencias) || [];
-  const boxEmergEl = document.getElementById('boxEmerg');
-  if (boxEmergEl) boxEmergEl.hidden = emergenciasResposta.length === 0;
-  desenharMapa('mapaEmerg','legEmerg', uf => NEUTRA, uf => 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento)', [{cor:NEUTRA, rotulo:'nenhuma registrada até o corte'}]);
-  fonteFigura('boxEmerg', {fontes: ['DOU', 'diários oficiais municipais'], data: '05/09/2026'});
+  // 15/09/2026: mapa/lista de emergências (boxEmerg) retirado — a resposta sanitária é o segundo medidor do topo (MSAUDE.resposta).
   // Série semanal 2026 × 2025 × 2024 (05/09/2026): soma das 27 capitais no InfoDengue — não é o total nacional.
   // 13/09/2026 (consolidação): não desenha mais direto — vira a opção "semanal" do comparador único
   // em #cDesfAcum (ver renderDesfechos). Guarda o crédito e o closure de desenho.
@@ -202,7 +206,51 @@ function __init(){
     };
   }
 }
-__load().catch(err => { const m = document.getElementById('subSaude'); if (m) m.insertAdjacentHTML('afterend', '<p class="note u-rust">Erro ao carregar os dados: '+esc(err.message)+'</p>'); });
+// 15/09/2026 (MARÉ Saúde espelha o MARÉ Legal): "Como ler" em ficha popup; um cartão por estado (mesma anatomia da inicial:
+// micro-barra do índice no degradê único, segunda barra de resposta, face com plano · data · dengue na capital); clique abre o detalhe.
+function cartoesEstadosSaude(){
+  const wrap = document.getElementById('regionsSaude'), dlg = document.getElementById('detailSaude'); if (!wrap || !dlg) return;
+  const M = (MSAUDE && MSAUDE.ufs) || {}; const REG = {}; const NOMES = {};
+  fetch('data/estados.json').then(r => r.ok ? r.json() : null).then(E => {
+    const regions = (E && E.regions) || ['Norte','Nordeste','Centro-Oeste','Sudeste','Sul']; (E && E.ufs || []).forEach(u => { REG[u.uf] = u.regiao; NOMES[u.uf] = u.nome; });
+    const ST_H = {NOVO:'plano do ciclo', READ:'readaptado', VIG:'plano de todo ano', ELAB:'em elaboração', LAC:'não localizado', NAO_VERIFICADO:'ainda não verificado'};
+    const RS = (MSAUDE && MSAUDE.resposta) || {ufs: []};
+    wrap.innerHTML = regions.map(r => '<div class="region-col"><h3>' + esc(r) + '</h3><div class="tiles" id="tilesSaude-' + esc(r) + '"></div></div>').join('');
+    UFS.filter(uf => REG[uf]).forEach(uf => {
+      const m = M[uf] || {}; const i = m.instrumento || {}; const dc = m.risco_atual || {}; const v = m.verificado ? m.prontidao : null;
+      const resp = (RS.ufs || []).includes(uf) ? 100 : 0;
+      const t = document.createElement('div'); t.className = 'tile'; t.dataset.uf = uf; t.style.background = MonitorMapas.cor('branco'); t.style.color = 'var(--ink)';
+      t.title = uf + ' · MARÉ Saúde ' + (v == null ? 'sem número (não verificado)' : String(v).replace('.', ',') + ' / 100');
+      t.innerHTML = '<span class="tile-uf">' + uf + '</span>' + (v == null ? '<span class="tile-score">·</span>' : '<span class="tile-score">' + String(v).replace('.', ',') + '</span><div class="tile-bar"><div class="tile-fill" style="--galvo:' + Math.max(v, 0.1) + '; width:' + v + '%"></div></div>')
+        + '<div class="tile-bar tile-bar--resposta" title="Resposta sanitária ' + resp + ' / 100"><div class="tile-fill tile-fill--resposta" style="--galvo:' + Math.max(resp, 0.1) + '; width:' + resp + '%"></div></div>'
+        + '<div class="tile-face"><span>' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + (i.data ? ' · ' + esc(i.data) : '') + '</span><span>' + (m.camada === 'adaptacao' ? 'plano decenal: estrutura' : 'cobertura sanitária ' + esc((m.cobertura || {}).pontos ?? '—')) + '</span><span>' + (dc.dengue_capital_nivel != null ? 'dengue na capital: nível ' + esc(dc.dengue_capital_nivel) : 'dengue na capital: sem coleta') + '</span></div>';
+      t.addEventListener('click', () => abrirDetalheSaude(uf));
+      const col = document.getElementById('tilesSaude-' + REG[uf]); if (col) col.appendChild(t);
+    });
+    function abrirDetalheSaude(uf){
+      const m = M[uf] || {}; const i = m.instrumento || {}; const c = m.cobertura || {}; const a = m.antecipacao || {}; const dc = m.risco_atual || {}; const u = (SUF.uf || {})[uf] || {};
+      const linha = (k, v) => '<div class="field"><div class="k">' + k + '</div><div class="v">' + v + '</div></div>';
+      document.getElementById('detailSaudeConteudo').innerHTML = '<div class="uf-name">' + esc(NOMES[uf] || uf) + ' <span class="sub">(' + uf + ')</span></div>'
+        + (m.verificado ? '<div class="gauge-mini gauge-zone"><div class="gauge-head"><span class="gnum">' + String(m.prontidao).replace('.', ',') + '</span><span class="gden">/ 100 · ' + esc(m.faixa) + '</span></div><div class="gauge-track"><div class="gauge-fill" style="--galvo:' + Math.max(m.prontidao, 0.1) + '; width:' + m.prontidao + '%"></div></div></div>' : '<p class="placeholder">Ainda não verificado nesta camada: a bateria de busca de saúde não foi executada para o estado — não é ausência de documento.</p>')
+        + '<div class="uf-region">' + esc(REG[uf] || '') + '</div>'
+        + linha('Instrumento estadual de saúde', '<span class="pill-nivel">' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + '</span> ' + esc(i.doc || u.doc || '—') + (i.data ? ' (' + esc(i.data) + ')' : '') + (i.orgao || u.orgao ? ' · ' + esc(i.orgao || u.orgao) : '') + (i.url ? ' · <a href="' + esc(i.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : ''))
+        + (m.verificado ? linha('Componentes', 'instrumento ' + esc(i.pontos) + ' · cobertura sanitária ' + esc(c.pontos ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + ' plano(s) municipal(is) lido(s), ' + esc(c.planos_sem_leitura ?? 0) + ' sem leitura) · antecipação ' + esc(a.pontos) + ' → média ' + String(m.prontidao).replace('.', ',') + ' (pesos iguais)') : '')
+        + (m.camada === 'adaptacao' ? linha('Plano decenal de adaptação', 'registrado como estrutura; não pontua') : '')
+        + linha('Resposta sanitária', ((MSAUDE.resposta || {}).ufs || []).includes(uf) ? 'emergência sanitária declarada no ciclo' : 'nenhuma emergência sanitária declarada localizada desde 29/06/2026')
+        + linha('Risco sanitário projetado', (m.risco_projetado || []).length ? (m.risco_projetado || []).map(esc).join('; ') : 'sem registro')
+        + linha('Dengue na capital', dc.dengue_capital_nivel != null ? 'nível ' + esc(dc.dengue_capital_nivel) + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + ', SE ' + esc(String(dc.dengue_se || '—')) : 'sem coleta')
+        + (u.data_verificacao ? '<p class="note">Bateria estadual executada em ' + esc(u.data_verificacao) + '.</p>' : '');
+      dlg.setAttribute('aria-label', 'Detalhe do estado');
+      if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
+    }
+    const link = document.getElementById('linkComoLerSaude'), fonte = document.getElementById('comolerSaude');
+    if (link && fonte) link.addEventListener('click', e => { e.preventDefault(); document.getElementById('detailSaudeConteudo').innerHTML = fonte.innerHTML; dlg.setAttribute('aria-label', 'Como ler o MARÉ Saúde'); if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
+    const fechar = () => { if (typeof dlg.close === 'function') dlg.close(); else dlg.open = false; };
+    const bt = document.getElementById('detailSaudeFechar'); if (bt) bt.addEventListener('click', fechar); dlg.addEventListener('click', evt => { if (evt.target === dlg) fechar(); });
+    const h = (location.hash || '').replace('#', '').toUpperCase(); if (/^[A-Z]{2}$/.test(h) && M[h]) abrirDetalheSaude(h);
+  }).catch(() => {});
+}
+__load().then(cartoesEstadosSaude).catch(err => { const m = document.getElementById('subSaude'); if (m) m.insertAdjacentHTML('afterend', '<p class="note u-rust">Erro ao carregar os dados: '+esc(err.message)+'</p>'); });
 
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
@@ -210,26 +258,38 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 // ===== 3 · O que aconteceu — desfechos em saúde (§8, 07/09/2026). Peso zero. O Monitor não atribui casos ao El Niño. =====
 // 14/09/2026: parametrizada por doença (pedido de Patricia). Um só código para dengue e chikungunya —
 // o conjunto de dados muda, a lógica (canal endêmico, vazamento, acumulado, mapa por nível) é a mesma.
-let __comparadorChart = null;
-function renderDesfechos(doenca){
+// 15/09/2026: cada doença tem a própria seção (pedido da editoria: nenhum desfecho escondido, nenhum seletor de doença);
+// os ids de canvas/mapa/legenda/crédito entram por parâmetro e um só código desenha as duas.
+const IDS_DENGUE = {canvas: 'cDesfAcum', mapa: 'mapaDesf', legSerie: 'legDesfAcum', legMapa: 'legDesfMapa', boxSerie: 'boxDesfAcum', boxMapa: 'boxDesfMapa', sel: 'selComparadorDengue'};
+const IDS_CHIK = {canvas: 'cChikSerie', mapa: 'mapaChik', legSerie: 'legChikSerie', legMapa: 'legChikMapa', boxSerie: 'boxChikSerie', boxMapa: 'boxChikMapa', sel: 'selComparadorChik'};
+const __comparadorCharts = {};
+// crédito das figuras de cada doença (ids literais: o portão verificar_saude.py confere um fonteFigura por figura)
+function creditoDesfecho(doenca, c){
+  if (doenca === 'chikungunya') { fonteFigura('boxChikMapa', c); fonteFigura('boxChikSerie', c); }
+  else { fonteFigura('boxDesfMapa', c); fonteFigura('boxDesfAcum', c); }
+}
+function renderDesfechos(doenca, ids){
+  ids = ids || IDS_DENGUE;
   doenca = (doenca && DOENCAS_DESF[doenca]) ? doenca : 'dengue';
   const cfg = DOENCAS_DESF[doenca]; const {serie: S, canal: C} = cfg.dados();
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const selComparador = document.getElementById('selComparadorDengue');
+  const selComparador = document.getElementById(ids.sel);
   // opção 'semanal por capitais' só existe para dengue (coletar_saude.py); para chikungunya some, e o valor cai para o painel
   if (selComparador) { const op = selComparador.querySelector('option[value="semanal"]'); if (op) op.hidden = !cfg.capitais;
     if (!cfg.capitais && selComparador.value === 'semanal') selComparador.value = 'semanal_painel'; }
-  if (__comparadorChart) { if (typeof __comparadorChart.destroy === 'function') __comparadorChart.destroy(); __comparadorChart = null; }
-  const svgMapa = document.getElementById('mapaDesf'); if (svgMapa) while (svgMapa.firstChild) svgMapa.removeChild(svgMapa.firstChild);
+  if (__comparadorCharts[ids.canvas]) { if (typeof __comparadorCharts[ids.canvas].destroy === 'function') __comparadorCharts[ids.canvas].destroy(); __comparadorCharts[ids.canvas] = null; }
+  const svgMapa = document.getElementById(ids.mapa); if (svgMapa) while (svgMapa.firstChild) svgMapa.removeChild(svgMapa.firstChild);
   const M = S && S.municipios; const semColeta = {fontes: ['InfoDengue (Fiocruz/FGV), ' + cfg.rotulo, 'painel amostral'], data: null};
   if (!M || !Object.keys(M).length) {
     // lacuna declarada para ESTA doença: gráfico e mapa vazios, legenda e crédito dizem que não há coleta
-    const cv = document.getElementById('cDesfAcum'); if (cv && cv.getContext) { const g = cv.getContext('2d'); g && g.clearRect && g.clearRect(0, 0, cv.width, cv.height); }
-    MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.NEUTRA, rotulo: 'série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada'}]);
-    MonitorMapas.legenda('legDesfMapa', [{cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta de ' + cfg.rotulo + ' até o corte'}]);
-    ['boxDesfAcum','boxDesfMapa'].forEach(id => fonteFigura(id, semColeta)); return;
+    const cv = document.getElementById(ids.canvas); if (cv && cv.getContext) { const g = cv.getContext('2d'); g && g.clearRect && g.clearRect(0, 0, cv.width, cv.height); }
+    MonitorMapas.legenda(ids.legSerie, [{cor: MonitorMapas.NEUTRA, rotulo: 'série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada'}]);
+    MonitorMapas.legenda(ids.legMapa, [{cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta de ' + cfg.rotulo + ' até o corte'}]);
+    MonitorMapas.ufs(MonitorMapas.contexto(BR_GEOJSON, 480, 460), ids.mapa, () => MonitorMapas.NEUTRA, uf => uf);
+    creditoDesfecho(doenca, semColeta); return;
   }
   const credito = {fontes: ['modelo InfoDengue (Fiocruz/FGV), ' + cfg.rotulo, 'Sinan', 'painel amostral'], data: S.gerado_em};
+  creditoDesfecho(doenca, credito);
   MonitorMapas.padraoGraficos(window.Chart);
   // 13/09/2026 (proposta de enxugamento, Manus AI): 'Casos notificados por semana' (boxDesfSemanal,
   // painel × canal endêmico) deixou de ser figura própria — vira a 3ª opção do comparador único em
@@ -243,7 +303,7 @@ function renderDesfechos(doenca){
         if (c[ss]) { soma.med[ss] = (soma.med[ss] || 0) + c[ss].mediana; soma.p75[ss] = (soma.p75[ss] || 0) + c[ss].p75; soma.p90[ss] = (soma.p90[ss] || 0) + c[ss].p90; }
         const n = (m.nowcasting || {})[k]; if (n && n.est_min != null) { soma.nmin[ss] = (soma.nmin[ss] || 0) + n.est_min; soma.nmax[ss] = (soma.nmax[ss] || 0) + n.est_max; } }); });
     const ate = Math.max(...Object.keys(soma.casos).concat(Object.keys(soma.nmax)).map(Number)); const labels = semanas.slice(0, ate);
-    const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: labels.map(w => 'SE ' + w), datasets: [
+    const chart = new Chart(document.getElementById(ids.canvas), {type: 'bar', data: {labels: labels.map(w => 'SE ' + w), datasets: [
         {type: 'bar', label: '2026 (consolidado)', data: labels.map(w => soma.casos[w] ?? null), backgroundColor: MonitorMapas.PALETA.anos['2026'], order: 3},
         {type: 'line', label: 'nowcasting (máx.)', data: labels.map(w => soma.nmax[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
         {type: 'line', label: 'nowcasting (mín.)', data: labels.map(w => soma.nmin[w] ?? null), borderColor: MonitorMapas.PALETA.anos['2026'], borderDash: [4, 3], borderWidth: 1, pointRadius: 0, order: 2, spanGaps: false},
@@ -251,17 +311,17 @@ function renderDesfechos(doenca){
         {type: 'line', label: 'p75', data: labels.map(w => soma.p75[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p75, borderWidth: 1.5, pointRadius: 0, order: 1},
         {type: 'line', label: 'p90', data: labels.map(w => soma.p90[w] ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
       options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 13}}, y: {beginAtZero: true, title: {display: true, text: 'casos notificados de ' + cfg.rotulo + ' · painel'}}}}});
-    MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 consolidado (últimas 4 semanas excluídas)'}, {cor: MonitorMapas.PALETA.anos['2026'], opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.PALETA.anos.p75, rotulo: 'p75'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
-    fonteFigura('boxDesfAcum', credito);
+    MonitorMapas.legenda(ids.legSerie, [{cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 consolidado (últimas 4 semanas excluídas)'}, {cor: MonitorMapas.PALETA.anos['2026'], opacidade: .5, rotulo: 'faixa de nowcasting (tracejado)'}, {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'mediana 2019–2025 (2024 à parte)'}, {cor: MonitorMapas.PALETA.anos.p75, rotulo: 'p75'}, {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'p90'}]);
+    fonteFigura(ids.boxSerie, credito);
     return chart;
   }
   // escada do acumulado — opção "acum" do comparador único em #cDesfAcum
   const acum = a => Object.values(M).reduce((s, m) => s + ((m.acumulado || {})[a] || 0), 0);
   function desenharComparadorAcum(){
-    const chart = new Chart(document.getElementById('cDesfAcum'), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.PALETA.anos['2024'], MonitorMapas.PALETA.anos['2025'], MonitorMapas.PALETA.anos['2026']]}]},
+    const chart = new Chart(document.getElementById(ids.canvas), {type: 'bar', data: {labels: ['2024', '2025', '2026 (até a última SE consolidada)'], datasets: [{data: [acum('2024'), acum('2025'), acum('2026')], backgroundColor: [MonitorMapas.PALETA.anos['2024'], MonitorMapas.PALETA.anos['2025'], MonitorMapas.PALETA.anos['2026']]}]},
       options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, title: {display: true, text: 'casos notificados de ' + cfg.rotulo + ' · painel'}}}}});
-    MonitorMapas.legenda('legDesfAcum', [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: '2024 (ano epidêmico, fora do canal)'}, {cor: MonitorMapas.PALETA.anos['2025'], rotulo: '2025'}, {cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 parcial'}]);
-    fonteFigura('boxDesfAcum', credito);
+    MonitorMapas.legenda(ids.legSerie, [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: '2024 (ano epidêmico, fora do canal)'}, {cor: MonitorMapas.PALETA.anos['2025'], rotulo: '2025'}, {cor: MonitorMapas.PALETA.anos['2026'], rotulo: '2026 parcial'}]);
+    fonteFigura(ids.boxSerie, credito);
     return chart;
   }
   // 13/09/2026 (auditoria de visualizações, consolidação): comparador único — "acumulado" (painel
@@ -269,8 +329,8 @@ function renderDesfechos(doenca){
   // (ex-boxDesfSemanal) alternam no mesmo #cDesfAcum em vez de figuras fixas. Escopos diferentes
   // (painel × capitais); por isso permanecem como opções explícitas, nunca combinadas num só número.
   function mostrarComparador(modo){
-    if (__comparadorChart) { if (typeof __comparadorChart.destroy === 'function') __comparadorChart.destroy(); __comparadorChart = null; }
-    __comparadorChart = modo === 'semanal' && cfg.capitais && desenharComparadorSemanal ? desenharComparadorSemanal()
+    if (__comparadorCharts[ids.canvas]) { if (typeof __comparadorCharts[ids.canvas].destroy === 'function') __comparadorCharts[ids.canvas].destroy(); __comparadorCharts[ids.canvas] = null; }
+    __comparadorCharts[ids.canvas] = modo === 'semanal' && cfg.capitais && desenharComparadorSemanal ? desenharComparadorSemanal()
       : modo === 'semanal_painel' ? desenharComparadorPainel()
       : desenharComparadorAcum();
   }
@@ -281,16 +341,12 @@ function renderDesfechos(doenca){
   const NIV = {1: MonitorMapas.PALETA.ordinal4[0], 2: MonitorMapas.PALETA.ordinal4[1], 3: MonitorMapas.PALETA.ordinal4[2], 4: MonitorMapas.PALETA.ordinal4[3]};   // mesmo ordinal do mapa de dengue por UF (Figura acima)
   const ref = Array.isArray(PAINEL_LISTA) ? PAINEL_LISTA : Object.values(PAINEL_LISTA || {}); const coord = {}; ref.forEach(r => { coord[String(r.codigo_ibge).padStart(7, '0')] = r; });
   const pontos = Object.entries(M).filter(([cod]) => coord[cod] && coord[cod].lat != null).map(([cod, d]) => ({lat: coord[cod].lat, lon: coord[cod].lon, nivel: d.nivel_ultima_se, nome: d.nome, uf: d.uf, ultima: d.ultima_se}));
-  MonitorMapas.ufs(ctx, 'mapaDesf', () => MonitorMapas.NEUTRA, uf => uf);
-  if (pontos.length) MonitorMapas.pontos(ctx, 'mapaDesf', pontos, {r: () => 4, cor: d => NIV[d.nivel] || MonitorMapas.NEUTRA, rotulo: d => esc(d.nome) + '/' + esc(d.uf) + ' · nível ' + esc(d.nivel ?? '—') + ' · ' + esc(d.ultima || '')});
-  MonitorMapas.legenda('legDesfMapa', [{cor: NIV[1], rotulo: 'nível 1 (baixa atividade)'}, {cor: NIV[2], rotulo: 'nível 2 (atenção)'}, {cor: NIV[3], rotulo: 'nível 3 (alerta)'}, {cor: NIV[4], rotulo: 'nível 4 (emergência)'}, {cor: MonitorMapas.NEUTRA, rotulo: (pontos.length ? pontos.length + ' municípios do painel' : 'painel sem coordenadas')}]);
-  fonteFigura('boxDesfMapa', credito);
+  MonitorMapas.ufs(ctx, ids.mapa, () => MonitorMapas.NEUTRA, uf => uf);
+  if (pontos.length) MonitorMapas.pontos(ctx, ids.mapa, pontos, {r: () => 4, cor: d => NIV[d.nivel] || MonitorMapas.NEUTRA, rotulo: d => esc(d.nome) + '/' + esc(d.uf) + ' · nível ' + esc(d.nivel ?? '—') + ' · ' + esc(d.ultima || '')});
+  MonitorMapas.legenda(ids.legMapa, [{cor: NIV[1], rotulo: 'nível 1 (baixa atividade)'}, {cor: NIV[2], rotulo: 'nível 2 (atenção)'}, {cor: NIV[3], rotulo: 'nível 3 (alerta)'}, {cor: NIV[4], rotulo: 'nível 4 (emergência)'}, {cor: MonitorMapas.NEUTRA, rotulo: (pontos.length ? pontos.length + ' municípios do painel' : 'painel sem coordenadas')}]);
+  fonteFigura(ids.boxMapa, credito);
 }
 // seletor de doença (14/09/2026): redesenha comparador e mapa com o conjunto escolhido
-(function(){
-  const sel = document.getElementById('selDoencaDesf'); if (!sel) return;
-  sel.addEventListener('change', () => renderDesfechos(sel.value));
-})();
 
 
 // 13/09/2026 (proposta de enxugamento, Manus AI): renderEstrutura() (catálogo de 20 desfechos e
@@ -361,17 +417,13 @@ function titulosFatoSaude(){
     titulo('boxMonitor', `Saúde: ${c(['NOVO'])} estados com plano para o ciclo, ${c(['VIG','READ'])} com o de todo ano, ${c(['ELAB'])} em elaboração, ${c(['NAO_VERIFICADO'])} não verificados` + (c(['LAC']) ? `, ${c(['LAC'])} sem plano` : ''));
     titulo('boxStatus', `Plano de saúde por estado: ${c(['NOVO'])} para o ciclo, ${c(['VIG','READ'])} de todo ano, ${c(['NAO_VERIFICADO'])} não verificados`);
   } catch (e) {}
-  try {   // contador de emergências sanitárias
-    const em = (SSIN && SSIN.emergencias) || []; const corte = (SUF && SUF.corte) || '—';
-    titulo('boxRespostaSanitaria', `Emergências sanitárias declaradas no ciclo: ${em.length}` + (em.length ? '' : ` — nenhuma localizada até ${corte}`));
-  } catch (e) {}
   // dengue: municípios em alerta laranja/vermelho na última semana consolidada (nível 3 = laranja, 4 = vermelho no InfoDengue)
-  const tituloDengue = () => { try {
-    const doenca = (document.getElementById('selDoencaDesf') || {}).value || 'dengue'; const M = (DESF && DESF.municipios) || {};
+  const tituloDoenca = (doenca, box) => { try {
+    const S = DOENCAS_DESF[doenca].dados().serie; const M = (S && S.municipios) || {};
     if (!Object.keys(M).length) return; const se = Object.values(M).map(m => m.ultima_se).filter(Boolean).sort().pop();
     const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
     const rot = doenca === 'chikungunya' ? 'Chikungunya' : 'Dengue';
-    titulo('boxDesfMapa', `${rot}: ${n(alto)} municípios em alerta laranja ou vermelho na semana ${String(se || '').replace('2026-', 'SE ')} de 2026 (painel amostral)`);
+    titulo(box, `${rot}: ${n(alto)} municípios em alerta laranja ou vermelho na semana ${String(se || '').replace('2026-', 'SE ')} de 2026 (painel amostral)`);
   } catch (e) {} };
-  tituloDengue(); const sel = document.getElementById('selDoencaDesf'); if (sel && !sel.__tituloFato) { sel.__tituloFato = true; sel.addEventListener('change', () => setTimeout(tituloDengue, 50)); }
+  tituloDoenca('dengue', 'boxDesfMapa'); tituloDoenca('chikungunya', 'boxChikMapa');
 }

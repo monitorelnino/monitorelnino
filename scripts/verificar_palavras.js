@@ -4,7 +4,7 @@
 const fs = require("fs"), path = require("path"); const RAIZ = path.join(__dirname, "..");
 const LIMITES = { // [meta §7, teto]
   "index.html": [500, 800], "sinais-de-risco.html": [350, 420], "calendario-eleitoral.html": [600, 900], "defesa-civil.html": [400, 450],
-  "saude.html": [554, 600], "financiamento.html": [550, 820], "proteja-se.html": [800, 1150],
+  "saude.html": [700, 900]   /* 15/09/2026: a página passou a espelhar a inicial (ficha "Como ler", dois medidores, cinco desfechos com seção própria) */, "financiamento.html": [550, 820], "proteja-se.html": [800, 1150],
   "imprensa.html": [700, 1060], "pesquisadores.html": [1500, 2200], "prefeituras.html": [300, 560], "obrigado.html": [100, 160] };
 function palavras(f) {
   let t = fs.readFileSync(path.join(RAIZ, f), "utf-8");

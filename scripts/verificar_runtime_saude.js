@@ -55,46 +55,40 @@ setTimeout(() => {
   const SUF = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_uf.json"), "utf-8"));
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
-  for (const id of ["mapaStatus", "mapaRiscoSan", "mapaDengue", "mapaCalor"]) {
+  for (const id of ["mapaStatus", "mapaRiscoSan", "mapaDengue", "mapaCalor", "mapaMonitor"]) {
     teste(`${id}: 27 estados desenhados`, q(id) && q(id).querySelectorAll("path").length === 27);
     teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 1);
   }
-  // 13/09/2026 (auditoria de visualizações, consolidação): boxEmerg só aparece quando há
-  // ocorrência (SSIN.emergencias.length > 0) — hoje é sempre 0, então o esperado é oculto,
-  // não um mapa cinza redundante com o contador de boxRespostaSanitaria.
-  teste("boxEmerg: oculto enquanto não há emergência registrada (contador em boxRespostaSanitaria cobre o zero)", q("boxEmerg") && q("boxEmerg").hidden === true);
+  // 15/09/2026 (MARÉ Saúde espelha o MARÉ Legal): dois medidores no topo, ficha "Como ler", cartões por estado com detalhe em <dialog>,
+  // uma seção por desfecho (dengue, chikungunya, calor, respiratórias, diarreicas) — nenhum desfecho em acordeão, nenhum seletor de doença.
   const nNV = Object.values(SUF.uf).filter(u => u.status === "NAO_VERIFICADO").length;
   teste(`contagem de UFs não verificadas renderizada = arquivo (${nNV})`, (q("contagemUF").textContent || "").includes(nNV + " de 27"));
-  // 'O que a União publicou' migrou para pesquisadores.html em 13/09/2026 (proposta de
-  // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   teste("tabela das 27 UFs", d.querySelectorAll("#tblUF tbody tr").length === 27);
-  // 13/09/2026 (proposta de enxugamento, Manus AI): seletor de estado logo após o título
+  teste("mapas do painel (dengue e chikungunya): 27 estados e legenda", ["mapaDesf", "mapaChik"].every(id => q(id).querySelectorAll("path").length === 27) && q("legDesfMapa").children.length >= 1 && q("legChikMapa").children.length >= 1);
+  teste("sem acordeão escondendo desfecho, sem seletor de doença", !q("outrosDesfechos") && !q("selDoencaDesf") && !q("boxEmerg") && !q("boxRespostaSanitaria"));
+  teste("seções próprias: dengue, chikungunya, calor, respiratórias, diarreicas, na ordem, antes dos estados", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("heroSaude") < pos("dengue") && pos("dengue") < pos("chikungunya") && pos("chikungunya") < pos("calor") && pos("calor") < pos("respiratorias") && pos("respiratorias") < pos("diarreicas") && pos("diarreicas") < pos("estados") && pos("estados") < pos("estadual"); })());
+  const MSAUDE = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
+  teste("medidor de resposta sanitária: índice do dado (MSAUDE.resposta.indice), arte única, contagem na pílula", q("rsNum").textContent === MSAUDE.resposta.indice.toFixed(1).replace(".", ",") && !!d.querySelector("#contadorRespostaSaude .gauge-fill--resposta") && new RegExp(MSAUDE.resposta.emergencias + " emergência").test(q("rsBadge").textContent));
+  teste("interpretação da resposta fora do medidor, com contagem e milhões", /emergência\(s\) sanitária\(s\) declarada\(s\) desde 29\/06\/2026/.test(q("interpRespostaSaude").textContent));
+  teste("cartões por estado: 27, com face de três linhas e barra de resposta na arte única", d.querySelectorAll("#regionsSaude .tile").length === 27 && [...d.querySelectorAll("#regionsSaude .tile .tile-face")].every(f => f.querySelectorAll("span").length === 3) && d.querySelectorAll("#regionsSaude .tile .tile-fill--resposta").length === 27);
+  teste("cartões por estado: micro-barra do índice só nos verificados", d.querySelectorAll("#regionsSaude .tile .tile-bar:not(.tile-bar--resposta)").length === MSAUDE.resumo.verificadas);
   try {
-    const sel = q("selEstadoSaude");
-    teste("seletor de estado: 27 opções (+ 1 em branco)", sel && sel.options.length === 28);
-    sel.value = "SC";
-    sel.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
-    const perfil = q("perfilEstadoSaude");
-    teste("perfil do estado: aparece ao selecionar, com 4 cartões", perfil && !perfil.hidden && perfil.querySelectorAll(".cartao").length === 4);
-    sel.value = ""; sel.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
-    teste("perfil do estado: some ao limpar a seleção", perfil.hidden === true);
-  } catch (e) { teste("seletor de estado", false); }
-  // 14/09/2026: seletor de doença do comparador/mapa — chikungunya sem arquivo chik_* deve virar lacuna declarada, nunca gráfico inventado
+    const go = [...d.querySelectorAll("#regionsSaude .tile")].find(t => t.dataset.uf === "GO"); go.click();
+    const det = q("detailSaudeConteudo").textContent;
+    teste("detalhe do estado (GO): instrumento, componentes, resposta, risco e dengue na capital", /Instrumento estadual de saúde/.test(det) && /Componentes/.test(det) && /Resposta sanitária/.test(det) && /Risco sanitário projetado/.test(det) && /Dengue na capital/.test(det) && q("detailSaude").open === true);
+    const nv = [...d.querySelectorAll("#regionsSaude .tile")].find(t => t.dataset.uf === Object.keys(SUF.uf).find(u => SUF.uf[u].status === "NAO_VERIFICADO")); if (nv) { nv.click(); teste("detalhe de UF não verificada: declara a bateria não executada, sem número", /bateria de busca de saúde não foi executada/.test(q("detailSaudeConteudo").textContent)); }
+    q("linkComoLerSaude").click();
+    teste("ficha 'Como ler o MARÉ Saúde' abre no mesmo dialog, com O que mede / não mede / teto / resposta", /O que mede:/.test(q("detailSaudeConteudo").textContent) && /O que não mede:/.test(q("detailSaudeConteudo").textContent) && /teto da afirmação/.test(q("detailSaudeConteudo").textContent) && /Resposta:/.test(q("detailSaudeConteudo").textContent));
+  } catch (e) { teste("cartões/detalhe (" + e.message + ")", false); }
+  // chikungunya em seção própria: com arquivo, pontos no mapa; sem arquivo, lacuna declarada
   try {
-    const sd = q("selDoencaDesf");
-    teste("seletor de doença: dengue e chikungunya", sd && [...sd.options].map(o => o.value).join(",") === "dengue,chikungunya");
     const temChik = fs.existsSync(path.join(raiz, "data", "saude_desfechos", "chik_serie_painel.json"));
-    sd.value = "chikungunya"; sd.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
-    const opSem = q("selComparadorDengue").querySelector('option[value="semanal"]');
-    teste("chikungunya: opção 'semanal por capitais' some (sem série por capitais)", opSem && opSem.hidden === true);
-    if (!temChik) {
-      teste("chikungunya sem coleta: legenda declara lacuna, mapa sem pontos", /ainda não coletada/.test(q("legDesfAcum").textContent) && q("mapaDesf").querySelectorAll("circle").length === 0);
-    } else {
-      teste("chikungunya coletada: mapa com pontos do painel", q("mapaDesf").querySelectorAll("circle").length > 0);
-    }
-    sd.value = "dengue"; sd.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
-    teste("volta para dengue: mapa do painel redesenhado com pontos", q("mapaDesf").querySelectorAll("circle").length > 0 && opSem.hidden === false);
-  } catch (e) { teste("seletor de doença", false); console.log("     ", e && e.message); }
+    const opSem = q("selComparadorChik").querySelector('option[value="semanal"]');
+    teste("chikungunya: sem opção 'semanal por capitais' (sem série por capitais)", !opSem);
+    if (!temChik) teste("chikungunya sem coleta: legenda declara lacuna, mapa sem pontos", /ainda não coletada/.test(q("legChikSerie").textContent) && q("mapaChik").querySelectorAll("circle").length === 0);
+    else teste("chikungunya coletada: mapa com pontos do painel", q("mapaChik").querySelectorAll("circle").length > 0);
+    teste("dengue: mapa do painel com pontos e comparador com opção por capitais", q("mapaDesf").querySelectorAll("circle").length > 0 && !!q("selComparadorDengue").querySelector('option[value="semanal"]'));
+  } catch (e) { teste("seções de doença", false); console.log("     ", e && e.message); }
   // 14/09/2026: figura respiratória SRAG | SG — sem arquivo, lacuna declarada visível (SVG) e canvas escondido; nunca moldura vazia
   try {
     const si = q("selIndicadorSRAG");
@@ -161,11 +155,10 @@ setTimeout(() => {
     const SUFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_uf.json"), "utf8")); const UFS = Object.keys(SUFd.uf); const st = u => (SUFd.uf[u] || {}).status || "NAO_VERIFICADO";
     const c = k => UFS.filter(u => k.includes(st(u))).length;
     teste("saúde: título-fato do MARÉ · Saúde com as contagens do dado", new RegExp(`^Saúde: ${c(["NOVO"])} estados com plano para o ciclo, ${c(["VIG","READ"])} com o de todo ano, ${c(["ELAB"])} em elaboração, ${c(["NAO_VERIFICADO"])} não verificados`).test(q("boxMonitor").querySelector(".figura-titulo").textContent));
-    teste("saúde: contador de emergências com número e 'nenhuma localizada até' quando zero", /^Emergências sanitárias declaradas no ciclo: \d+/.test(q("boxRespostaSanitaria").querySelector(".figura-titulo").textContent));
     const DESFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "serie_painel.json"), "utf8")); const M = DESFd.municipios; const se = Object.values(M).map(m => m.ultima_se).sort().pop();
     const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
     teste("saúde: dengue — municípios em alerta laranja/vermelho na última semana, do dado", new RegExp(`^Dengue: ${alto} municípios em alerta laranja ou vermelho na semana SE ${se.split("-")[1]} de 2026`).test(q("boxDesfMapa").querySelector(".figura-titulo").textContent));
-    teste("saúde: interpretação fixa do InfoDengue fora da figura", /não atribui casos ao El Niño/.test(q("interpObservado").textContent));
+    teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
   } catch (e) { teste("saúde: títulos-fato (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, tooltip, créditos e lacunas declaradas.");
   process.exit(falhas.length ? 1 : 0);

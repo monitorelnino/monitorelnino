@@ -15,6 +15,17 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §60 · MARÉ Saúde espelha o MARÉ Legal: dois medidores, ficha "Como ler", uma seção por desfecho, cartões por estado · 15/09/2026
+
+Classe **estrutura de página + método (peso zero)**. Metodologia §31 (ficha "Como ler o MARÉ Saúde"); FAQ da Imprensa ganha a pergunta "O que é o MARÉ Saúde?".
+
+- Cabeçalho da página com a mesma definição da inicial, aplicada à saúde; sai o texto "Antecipação (o que os estados publicaram antes)…".
+- **Dois medidores no topo**, na arte única: antecipação (média das UFs verificadas) e **resposta sanitária como índice** (`resposta` em `monitor_saude.json`: 100 × população dos estados com emergência sanitária declarada — ESPIN ou decreto estadual — sobre a população do país; hoje 0,0, com "0 emergências" na pílula). Sai a figura "Emergências sanitárias declaradas no ciclo" (era só um contador em cartão).
+- **Ficha "Como ler o MARÉ Saúde"** em popup, com os mesmos campos da ficha da inicial (o que mede · o que não mede · teto da afirmação · resposta · o que o índice é).
+- **Cada desfecho em seção própria, antes dos estados** — Dengue (mapa do painel, capitais, comparador semanal/acumulado/por capitais), Chikungunya (mapa e comparador próprios), Calor, Doenças respiratórias (SRAG/SG), Doenças diarreicas — nenhum em acordeão, sem seletor de doença; `renderDesfechos` parametrizada por contêiner.
+- **Onde cada estado está**: 27 cartões como na inicial (micro-barra do índice no degradê único, barra de resposta, face com plano · cobertura · dengue na capital); clique abre o detalhe em janela (instrumento, componentes, resposta, risco projetado, dengue na capital). Sai o seletor "Escolha um estado" com os quatro cartões.
+- Mapas de antecipação, status do instrumento e risco sanitário projetado seguem em "O que cada estado publicou", todos visíveis. Teto de palavras da página passa a 900 (a ficha e as cinco seções entram no texto estático).
+
 ## §59 · Defesa civil: três figuras a menos, errata do título-fato, municípios prioritários com fonte única e busca em Para prefeitos · 15/09/2026
 
 Classe **estrutura de página + errata + fonte única**. Método inalterado; C20 (dispersão como única leitura conjunta) revogada — METODOLOGIA §32.5.
