@@ -65,6 +65,7 @@ setTimeout(() => {
   teste(`contagem de UFs não verificadas renderizada = arquivo (${nNV})`, (q("contagemUF").textContent || "").includes(nNV + " de 27"));
   teste("tabela das 27 UFs", d.querySelectorAll("#tblUF tbody tr").length === 27);
   teste("mapas do painel (dengue e chikungunya): 27 estados e legenda", ["mapaDesf", "mapaChik"].every(id => q(id).querySelectorAll("path").length === 27) && q("legDesfMapa").children.length >= 1 && q("legChikMapa").children.length >= 1);
+  teste("dengue nas capitais: 27 pontos dentro do mapa (coordenadas pela malha IBGE)", (() => { const c = [...d.querySelectorAll("#mapaDengue circle")]; return c.length === 27 && c.every(x => +x.getAttribute("cx") > 0 && +x.getAttribute("cx") < 480 && +x.getAttribute("cy") > 0 && +x.getAttribute("cy") < 460); })());
   teste("sem acordeão escondendo desfecho, sem seletor de doença", !q("outrosDesfechos") && !q("selDoencaDesf") && !q("boxEmerg") && !q("boxRespostaSanitaria"));
   teste("seções próprias: dengue, chikungunya, calor, respiratórias, diarreicas, na ordem, antes dos estados", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("heroSaude") < pos("dengue") && pos("dengue") < pos("chikungunya") && pos("chikungunya") < pos("calor") && pos("calor") < pos("respiratorias") && pos("respiratorias") < pos("diarreicas") && pos("diarreicas") < pos("estados") && pos("estados") < pos("estadual"); })());
   const MSAUDE = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));

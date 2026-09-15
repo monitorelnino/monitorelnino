@@ -162,11 +162,15 @@ function __init(){
   const NIV_DENGUE = {1:['Nível 1 (baixa atividade)',MonitorMapas.PALETA.ordinal4[0]], 2:['Nível 2 (atenção)',MonitorMapas.PALETA.ordinal4[1]], 3:['Nível 3 (alerta)',MonitorMapas.PALETA.ordinal4[2]], 4:['Nível 4 (emergência)',MonitorMapas.PALETA.ordinal4[3]]};
   const svgD = desenharMapa('mapaDengue','legDengue', uf => NEUTRA, uf => { const d = (SSIN.dengue_capitais||{})[uf]; return d ? esc(d.municipio)+': nível '+esc(d.nivel)+' · SE '+esc(d.se)+'<br>'+esc(d.fonte) : 'Capital: aguardando primeira coleta'; },
     Object.values(NIV_DENGUE).map(v => ({cor:v[1], rotulo:v[0]})).concat([{cor:NEUTRA, rotulo:'aguardando coleta'}]));
-  const capitais = Object.entries(SSIN.dengue_capitais||{});
-  if (capitais.length && SINAIS && SINAIS.uf) {
+  // 15/09/2026 (correção): o registro das capitais traz o código IBGE, não coordenadas — os pontos eram projetados em (0,0) e
+  // ficavam fora do mapa. Coordenadas vêm da malha IBGE já carregada (municipios_ibge_referencia.json), por código.
+  const coordIBGE = {}; (Array.isArray(PAINEL_LISTA) ? PAINEL_LISTA : Object.values(PAINEL_LISTA || {})).forEach(r => { coordIBGE[String(r.codigo_ibge).padStart(7, '0')] = r; });
+  const capitais = Object.entries(SSIN.dengue_capitais||{}).map(([uf, d]) => { const c = coordIBGE[String(d.ibge || '').padStart(7, '0')] || {}; return [uf, {...d, lat: d.lat ?? c.lat, lon: d.lon ?? c.lon}]; }).filter(([uf, d]) => d.lat != null && d.lon != null);
+  if (capitais.length) {
     svgD.append('g').selectAll('circle').data(capitais).join('circle')
-      .attr('cx', ([uf,d]) => projection([d.lon||0, d.lat||0])[0]).attr('cy', ([uf,d]) => projection([d.lon||0, d.lat||0])[1])
-      .attr('r', 5).attr('fill', ([uf,d]) => (NIV_DENGUE[d.nivel]||['',NEUTRA])[1]);
+      .attr('cx', ([uf,d]) => projection([d.lon, d.lat])[0]).attr('cy', ([uf,d]) => projection([d.lon, d.lat])[1])
+      .attr('r', 5).attr('fill', ([uf,d]) => (NIV_DENGUE[d.nivel]||['',NEUTRA])[1]).attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.2)
+      .on('mouseenter', (evt, [uf, d]) => showTip('<strong>' + esc(d.municipio) + ' (' + uf + ')</strong><br>nível ' + esc(d.nivel) + ' · SE ' + esc(d.se) + '<br>' + esc(d.fonte), evt)).on('mousemove', evt => showTip(document.getElementById('mapTooltip').innerHTML, evt)).on('mouseleave', hideTip);
   }
   const fD = SSIN.fontes.infodengue;
   fonteFigura('boxDengue', {fontes: 'InfoDengue (Fiocruz/FGV)', data: fD.status === 'coletado' ? (fD.ultima_coleta_ok || fD.consultado_em) : null});
