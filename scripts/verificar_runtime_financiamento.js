@@ -68,7 +68,15 @@ setTimeout(() => {
   teste("mapa do dinheiro: um círculo por repasse do Prepara RS", q("mapDinheiro").querySelectorAll("circle:not(.rec)").length === TR.repasses_rs.filter(r => r.lat).length);
   teste("totais RS na legenda do mapa", /R\$/.test(q("legDinheiro").textContent) && /\d+ municípios/.test(q("legDinheiro").textContent));   // 04/09/2026
   // seletor de rota / mapaHab retirados do HTML em 13/09/2026 (auditoria de visualizações) — teste correspondente removido junto
-  teste("tabela de resposta: 27 UFs", d.querySelectorAll("#tblResposta tbody tr").length === 27);
+  // 15/09/2026 (Financiamento elucidativo): tabelas viraram figuras — mapa por habitante, barras de resposta por UF, gráfico dos compromissos, mapas das MPs, gráfico do RS
+  teste("por estado: mapa de R$/hab. (rota 5) com 27 UFs e legenda", q("mapaContadores").querySelectorAll("path").length === 27 && q("legContadores").children.length >= 2);
+  teste("por estado: barras de resposta por UF (reconhecidos × sem reconhecimento)", graficos.some(g => g.ctx && g.ctx.id === "cResposta") && q("legResposta").children.length === 2);
+  teste("compromissos: gráfico anunciado × empenhado × pago com legenda e crédito", q("legCompromissos").children.length === 4 && graficos.some(g => g.ctx && g.ctx.id === "cCompromissos") && /Fonte:/.test(q("boxCompromissosGrafico").textContent));
+  for (const id of ["mapaMPsUF", "mapaMP1384UF"]) teste(`${id}: 27 estados, legenda com a unidade nacional à parte`, q(id).querySelectorAll("path").length === 27 && /unidade nacional/.test(q(id.replace("mapa", "leg")).textContent));
+  teste("RS: gráfico repasse preventivo × decreto × reconhecidos, com os números do dado na legenda", graficos.some(g => g.ctx && g.ctx.id === "cRS") && /138 municípios/.test(q("legRS").textContent) && /sob decreto: \d+/.test(q("legRS").textContent));
+  teste("caminho do município: três momentos com chips de chave", d.querySelectorAll("#caminho .cartao").length === 3 && d.querySelectorAll("#caminho .chip-chave").length >= 12);
+  teste("ficha 'Como ler as rotas': chaves, termos, 8 cartões e a rota do fogo (PNMIF)", /Chaves de acesso/.test(q("comolerRotas").textContent) && /PNMIF/.test(q("comolerRotas").textContent) && q("rotasCards").children.length === 8);
+  teste("nenhuma tabela na página (só figuras, mapas, rotas e fichas)", d.querySelectorAll("main table").length === 0);
   // Painel amostral (agregados) migrou para pesquisadores.html em 13/09/2026 (proposta de
   // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.
   teste("bloco 6: 5 programas listados como exemplos da rota 7", q("programasLista").children.length === 5);
@@ -99,16 +107,15 @@ setTimeout(() => {
     const rp = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "rotas_preventivas.json"), "utf8"));
     teste("fogo: título-fato traz os números do edital (do dado)", new RegExp(String(rp.rotas.find(r => r.id === "fogo_edital_2025").valores.elegiveis) + ".*" + String(rp.rotas.find(r => r.id === "fogo_edital_2025").valores.contemplados)).test(q("fogoTitulo").textContent));
     teste("fogo: frase de não-existência só porque só há linha de incêndio", /não existe rota equivalente para seca nem para chuva/.test(q("fogoTitulo").textContent) === (rp.riscos_com_rota_preventiva.length === 1 && rp.riscos_com_rota_preventiva[0] === "incendio"));
-    teste("fogo: tabela com uma linha por rota", q("tblFogoRotas").querySelectorAll("tbody tr").length === rp.rotas.length);
+    teste("fogo: um cartão por rota preventiva", q("fogoRotasCards").children.length === rp.rotas.length);
     const temFogo = fs.existsSync(path.join(raiz, "data", "financiamento", "fogo", "areas_declaradas.json"));
     teste("fogo: mapa " + (temFogo ? "com camadas" : "declara lacuna sem coleta"), temFogo ? true : /lacuna declarada/.test(q("svgFogoLacuna").textContent));
-    teste("fogo: créditos das duas figuras", /Fonte:/.test(q("boxFogoRotas").textContent) && /Fonte:/.test(q("boxFogoMapa").textContent));
+    teste("fogo: crédito do mapa e dos cartões", /Fonte:/.test(q("fogoRotasFonte").textContent) && /Fonte:/.test(q("boxFogoMapa").textContent));
   } catch (e) { teste("fogo: bloco (" + e.message + ")", false); }
   // 15/09/2026 (§1.7/§1.6): "O que a União prometeu — e o que pagou" de volta a Financiamento, com a quarta porta para o calendário
   try {
     teste("prometeu: título-fato com nº de compromissos (do dado)", /\d+ compromissos federais verificados/.test(q("prometeuTitulo").textContent));
-    teste("prometeu: tabela de compromissos preenchida", q("tblCompromissos").querySelectorAll("tbody tr").length > 0);
-    teste("prometeu: série semanal com a faixa do período eleitoral e a porta 'por que há páginas fora do ar'", !!q("svgSerie").querySelector("rect") && !![...q("prometeu").querySelectorAll("a")].find(a => /por que há páginas fora do ar/i.test(a.textContent)));
+    teste("prometeu: série semanal com a faixa do período eleitoral e a porta para o calendário eleitoral", !!q("svgSerie").querySelector("rect") && !![...q("prometeu").querySelectorAll("a")].find(a => /calendario-eleitoral\.html/.test(a.getAttribute("href") || "")));
   } catch (e) { teste("prometeu: bloco (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (financiamento) OK — rotas, faixa do defeso, mapas, resposta, compromissos, fontes, E10 e soma de preparação.");
   process.exit(falhas.length ? 1 : 0);
