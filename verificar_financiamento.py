@@ -55,7 +55,7 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
         if riscos != set(rp.get("riscos_com_rota_preventiva", [])): e.append(f"(g) rotas_preventivas: riscos_com_rota_preventiva={rp.get('riscos_com_rota_preventiva')} ≠ riscos das linhas preventivas {sorted(riscos)}")
     except FileNotFoundError:
         e.append("(g) rotas_preventivas.json ausente")
-    motor = (RAIZ / "recalcular_mare.py").read_text(encoding="utf-8")
+    # 15/09/2026 (correção do portão): o texto do motor vem do parâmetro `motor` — reler do disco aqui anulava o teste negativo "motor lendo financiamento"
     if "rotas_preventivas" in motor or "financiamento/fogo" in motor: e.append("(h) motor do índice lê dados da rota preventiva do fogo")
     if re.search(r"financiamento/", motor): e.append("(f) recalcular_mare.py referencia data/financiamento/")
     # 15/09/2026 (handover "dinheiro preventivo por setor"): (i) preventivo_setores.json — toda rota com base_legal, chave, destino e objeto válidos;

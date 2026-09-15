@@ -24,6 +24,7 @@ Executa o handover editorial "Dinheiro preventivo por setor" (§2.20). Nenhuma a
 - Ficha "Como ler o dinheiro preventivo" (três chaves, três destinos, saúde, fogo, seca, o que a figura não diz), no mesmo popup das fichas da página. Os três mapas por setor entram quando os coletores tiverem dado (nota na página).
 - Portões: `verificar_financiamento.py` (i)–(m) — campos obrigatórios por rota, chave/objeto válidos, fonte+hash quando verificada, zero `<table>`, `<dl>` presente, nó de ausência com enunciado restrito, motor não lê o arquivo; runtime — nós, ausência sem aresta, glifos na legenda, tooltip, lista, título-fato, ficha.
 - METODOLOGIA §38-bis; FAQ da Imprensa ("Há dinheiro federal para se preparar sem decretar?"); Prefeituras aponta para a figura. Tetos de palavras: Financiamento 1.600, Imprensa 1.100.
+- **Correção de portão pré-existente**: em `verificar_financiamento.py`, `checar()` relia o motor do disco e ignorava o texto injetado — o teste negativo "motor lendo financiamento" nunca acusava; passa a usar o parâmetro.
 
 ## §64 · Figuras lado a lado: grade de três colunas na Saúde e na Defesa civil; SRAG e SG em figuras próprias · 15/09/2026
 
