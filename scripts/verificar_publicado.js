@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * verificar_publicado.js — o site PUBLICADO, contra o domínio real (14/09/2026).
- * Os 18 portões provam o conteúdo antes do merge; este prova o deploy depois:
+ * Os 19 portões provam o conteúdo antes do merge; este prova o deploy depois:
  *   1. toda página do sitemap.xml responde 200 em HTTPS;
  *   2. cabeçalhos: CSP, HSTS, nosniff presentes; X-Robots-Tag noindex presente no ENSAIO
  *      (--esperar-noindex) e AUSENTE no lançamento (--esperar-index);
