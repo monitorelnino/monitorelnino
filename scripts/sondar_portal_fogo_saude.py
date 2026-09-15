@@ -16,7 +16,7 @@ PADROES = {
   "fogo_fdd": {"ug": re.compile(r"DIREITOS DIFUSOS|FDD", re.I), "acao": re.compile(r"INC[EÊ]NDIO|FOGO|BRIGAD", re.I)},
   "saude_vigilancia": {"ug": re.compile(r"FUNDO NACIONAL DE SA[UÚ]DE|FNS", re.I), "acao": re.compile(r"VIGIL[AÂ]NCIA EM SA[UÚ]DE|ARBOVIROS|DENGUE|CHIKUNGUNYA", re.I)},
 }
-ENTE = re.compile(r"^(MUNICIPIO|PREFEITURA|FUNDO MUNICIPAL|GOVERNO DO ESTADO|ESTADO D[EOA]|FUNDO ESTADUAL|SECRETARIA DE ESTADO)", re.I)
+ENTE = re.compile(r"^(MUNICIPIO|PREFEITURA|FUNDO MUNICIPAL|GOVERNO DO ESTADO|ESTADO D[EOA]|FUNDO ESTADUAL|SECRETARIA DE ESTADO)|.+", re.I)   # no conjunto de transferências o favorecido/município já é o ente
 
 
 def meses():
@@ -29,7 +29,9 @@ def meses():
 
 
 def baixar(mes):
-    url = f"https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/{mes}"
+    # 15/09/2026: o CSV de EXECUÇÃO é agregado por classificação (sem favorecido). O de TRANSFERÊNCIAS traz UF, município,
+    # órgão subordinado, ação e valor transferido — é o grão do mapa "recebeu".
+    url = f"https://portaldatransparencia.gov.br/download-de-dados/transferencias/{mes}"
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=180) as r:
         return r.read()
@@ -56,8 +58,9 @@ def main():
             rd = csv.reader(io.TextIOWrapper(f, encoding="latin-1", errors="replace", newline=""), delimiter=";")
             cab = next(rd)
             ci = {c: i for i, c in enumerate(cab)}
-            iug = next((ci[c] for c in cab if "Nome Unidade Gestora" in c), None); iac = next((ci[c] for c in cab if c.startswith("Nome Ação") or "Ação" in c and "Nome" in c), None)
-            ifav = next((ci[c] for c in cab if "Nome Favorecido" in c), None); ival = next((ci[c] for c in cab if "Valor Pago" in c), None); iel = next((ci[c] for c in cab if "Elemento" in c and "Nome" in c), None)
+            if mes == meses()[0]: print("   colunas:", cab)
+            iug = next((ci[c] for c in cab if "Nome Órgão Subordinado" in c or "Nome Unidade Gestora" in c), None); iac = next((ci[c] for c in cab if "Nome Ação" in c or ("Ação" in c and "Nome" in c)), None)
+            ifav = next((ci[c] for c in cab if "Nome Favorecido" in c or "Nome Município" in c), None); ival = next((ci[c] for c in cab if "Valor Transferido" in c or "Valor Pago" in c), None); iel = next((ci[c] for c in cab if "Tipo Transferência" in c or "Linguagem Cidadã" in c), None)
             if None in (iug, iac, ifav, ival):
                 print(f"-- {mes}: colunas não localizadas: ug={iug} acao={iac} fav={ifav} valor={ival} · cabeçalho={cab}"); continue
             n = 0
