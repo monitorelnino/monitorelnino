@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## §53 · Correções da editoria de 15/09: nomes das páginas, página inicial, uma só arte de barra, resposta como índice, MARÉ · Saúde v0.3, coletores de sinais · 15/09/2026
+## §55 · Correções da editoria de 15/09: nomes das páginas, página inicial, uma só arte de barra, resposta como índice, MARÉ · Saúde v0.3, coletores de sinais · 15/09/2026
 
 Classe **método (peso zero) + estrutura de página + coletores**. Constantes do motor do MARÉ inalteradas (congelamento C25 mantido; `recalcular_mare.py --check` reproduz a média nacional). Metodologia §39, §32.4 e §31 (v0.3).
 
@@ -19,6 +19,24 @@ Classe **método (peso zero) + estrutura de página + coletores**. Constantes do
 - **Uma arte para toda barra**: dois degradês em `tokens.css` (`--degrade-indice`, `--degrade-resposta`); medidores, micro-barras e barras por UF da Saúde com o mesmo trilho, degradê e corrente animada; `prefers-reduced-motion` respeitado.
 - **MARÉ · Saúde v0.3** (§31): terceiro componente **cobertura populacional sanitária** (população em município cujo plano localizado trata a saúde × crédito municipal do MARÉ × degrau/5 de `saude_no_plano`; plano sem leitura = 0 e contado). **Errata de efeito**: média das 17 verificadas 44,0 → 31,8 (AM 84,1 · GO 50,0 · ES 39,6 · PE 31,6 · 10 UFs em 28,3 · DF/PB/PR/SE 21,7 · RJ 21,3). Tabela e tooltip da Saúde ganham a coluna; portão (m) exige a média dos três.
 - **Monitor de risco**: ONI logo abaixo de "Situação atual", com leitura descritiva na figura e interpretação/projeção no parágrafo do painel; **coletores corrigidos** após sonda com rede real — INMET (nomes por extenso e geocodes), Monitor de Secas (RPC de dados tabulares, frações cumulativas → exclusivas, categoria mediana no mapa), zero-fill para CEMADEN/INMET/INPE. Primeira coleta completa dos quatro mapas em 15/09/2026 (dado real neste PR).
+## §54 · Defesa civil: títulos-fato e interpretações do dado (auditoria editorial 14/09, onda E2 §2.9) · 15/09/2026
+
+Nenhuma alteração de método. Classe **conteúdo**. Abre a onda E2 (narrativa).
+
+- H1 "Defesa civil" com o subtítulo "Antes e depois, estado a estado e cidade a cidade". Seis figuras ganham **título-fato calculado dos dados carregados** (nunca digitado): (a) estados por categoria do plano (as três contagens somam 27); (b) o vão da prova — nos estados com camada declarada, municípios que declaram ter plano × que publicaram o documento; (c) verificação — 5.571 pelo registro federal, os consultados no diário oficial, planos municipais localizados; (e) dispersão — quantos estados têm índice abaixo de 50 e mais de 5% dos municípios sob decreto, e onde; (f) mapa — nº de municípios com decreto e o estado com maior fração; (g) semana — data do primeiro decreto e quantos caíram dentro do período eleitoral.
+- As **interpretações** ("Por região: … concentra os planos feitos para o ciclo"; "Acima de 50 e mais de 5%: …; o que a figura não mostra: se houve dano") ficam no texto dos blocos, fora das figuras, como manda a regra das legendas neutras (portão 19). Sem dado, o título original permanece. Runtime de mapas confere cada título contra o dado.
+
+## §53 · Risco climático na ordem da narrativa (auditoria editorial 14/09, onda E1 §1.10) · 15/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página**. Fecha a onda E1.
+
+- Ordem nova: (1) **O risco projetado, estado a estado** — o mapa do tipo de risco primeiro, largo; (2) **Situação atual** com uma linha destacada composta dos campos do painel ("El Niño {intensidade} · probabilidade {p} · tendência: {t}", nunca digitada) e o ONI como miniatura; (3) **O que está acontecendo agora** — seca observada e avisos vigentes na face, focos de calor e alertas do Cemaden no expandido; (4) **Risco projetado × plano do estado** — o cruzamento, com "estados por tipo de risco" no expandido. Nada apagado.
+
+## §52 · Proteja-se: escolha o estado, e o guia do seu risco se abre (auditoria editorial 14/09, onda E1 §1.9) · 15/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página**. (PR #223, mesclado em 15/09; a entrada ficou de fora do PR por engano e entra aqui.)
+
+- Seletor de estado no bloco "Qual é o risco projetado no seu estado" — a lista vem de `data/sinais_risco.json`. Ao escolher, a página mostra a classificação da UF com a fonte e **abre o guia correspondente** (chuvas, incêndios/fumaça, estiagem/calor; "misto" abre mais de um; "sem sinal elevado" não abre nenhum e diz isso). Os três guias viraram acordeões fechados por padrão; a impressão em PDF continua lendo todos. Runtime próprio da página.
 
 ## §51 · O dinheiro volta para Financiamento; quarta porta para o calendário (auditoria editorial 14/09, onda E1 §1.7 e §1.6) · 15/09/2026
 

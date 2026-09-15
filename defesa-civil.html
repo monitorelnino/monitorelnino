@@ -50,11 +50,12 @@
 <main id="conteudo">
   <p class="selo">Dados vivos · atualizados na mesma rotina semanal do resto do site</p>
   <h1>Defesa civil</h1>
-  <p class="hint">O que cada estado publicou antes (antecipação) e o que decretou depois (resposta), estado a estado. As duas metades nunca se combinam num número.</p>
+  <p class="hint">Antes e depois, estado a estado e cidade a cidade.</p>
 
   <div class="panel">
     <h2>Antes — o que foi publicado</h2>
     <p class="hint">Cinco leituras geográficas dos mesmos registros — verificação municipal, cobertura, natureza dos atos, municípios prioritários e cidades que decretaram emergência — em três figuras; as duas primeiras alternam camada por um seletor, com tabela acessível equivalente. Passe o mouse (ou navegue com Tab) sobre qualquer estado ou ponto para o detalhe. O cruzamento com o risco projetado está resumido abaixo, com link para o cruzamento completo na página de Risco.</p>
+    <p class="hint" id="interpAntes" aria-live="polite">—</p>
     <div class="grade-figuras">
       <figure class="figura figura--grafico" id="boxRegion">
         <h3 class="figura-titulo">Status dos planos estaduais, por região</h3>
@@ -132,6 +133,7 @@
   <div class="panel panel--acento-rust" id="resposta">
     <h2>Depois — o que foi decretado</h2>
     <p class="hint">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>). As duas metades nunca se combinam num número. A tabela abaixo agrega por UF os mesmos municípios que aparecem como pontos em "Cidades que decretaram emergência" (seção anterior), acrescentando o reconhecimento federal — tarefas distintas: lá, geografia; aqui, contagem e reconciliação por estado.</p>
+    <p class="hint" id="interpDepois" aria-live="polite">—</p>
     <div class="grade-figuras">
       <figure class="figura figura--grafico figura--largo" id="boxDispersao">
         <h3 class="figura-titulo">Antecipação × resposta · 27 estados</h3>
@@ -177,7 +179,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/defesa-civil.js?v=8c7eba59" defer></script>
+<script src="assets/js/defesa-civil.js?v=ed78e16e" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

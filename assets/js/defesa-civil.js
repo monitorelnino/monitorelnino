@@ -535,3 +535,46 @@ __load().catch(err => {
 
 // ===== defesa-civil.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
+
+// 15/09/2026 (auditoria editorial §2.9): títulos-fato das figuras e interpretações fora das figuras (portão 19), todos
+// calculados dos dados já carregados nesta página — nunca digitados. Falta de dado = título original mantido.
+(function titulosFato(){
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const n = v => Number(v || 0).toLocaleString('pt-BR');
+  const titulo = (box, txt) => { const h = document.querySelector('#' + box + ' .figura-titulo'); if (h && txt) h.textContent = txt; };
+  const interp = (id, html) => { const el = document.getElementById(id); if (el && html) el.innerHTML = html; };
+  try {
+    const st = (DATA.ufs || []).map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
+    const novo = c(['NOVO']), readVig = c(['READ','VIG']), elabLac = c(['ELAB','LAC']);
+    titulo('boxRegion', `${novo} estados publicaram plano feito para o ciclo; ${readVig} reeditaram ou mantêm o de todo ano; ${elabLac} sem plano localizável`);
+    // por região: onde se concentram os planos específicos (NOVO)
+    const porReg = {}; (DATA.ufs || []).forEach(u => { if (u.status === 'NOVO') porReg[u.regiao || u.region || '—'] = (porReg[u.regiao || u.region || '—'] || 0) + 1; });
+    const maior = Object.entries(porReg).sort((a, b) => b[1] - a[1])[0];
+    interp('interpAntes', maior ? `Por região: <strong>${esc(maior[0])}</strong> concentra os planos feitos para o ciclo (${maior[1]} de ${novo}).` : `Nenhum estado com plano feito para o ciclo até o corte.`);
+  } catch (e) {}
+  try {   // (b) vão da prova: UFs com camada declarada (TCE/sistema estadual) × documentos publicados
+    const ufsDecl = Object.entries(CONSIST || {}).filter(([uf, i]) => ((i.declarado_plano || 0) + (i.declarado_antigo || 0)) > 0);
+    if (ufsDecl.length) { const nDecl = ufsDecl.reduce((a, [, i]) => a + (i.declarado_plano || 0) + (i.declarado_antigo || 0), 0); const nDoc = ufsDecl.reduce((a, [, i]) => a + (i.n_plano || 0), 0);
+      titulo('boxDeclarado', `Declarado não é documentado: em ${ufsDecl.map(([uf]) => uf).join(', ')}, ${n(nDecl)} municípios declaram ter plano e ${n(nDoc)} publicaram o documento`); }
+  } catch (e) {}
+  try {   // (c) verificação: registro federal (todos), diário oficial (varredura), planos municipais localizados
+    const vd = (VRESUMO && VRESUMO.varredura_diarios) || {}; const nDiario = vd.consultados || vd.municipios_consultados || null;
+    const nPlanos = Object.values(CONSIST || {}).reduce((a, i) => a + (i.n_plano || 0), 0);
+    titulo('boxVerificacao', `5.571 cidades passaram pelo registro federal${nDiario != null ? `; ${n(nDiario)} pelo diário oficial` : ''}; ${n(nPlanos)} planos municipais localizados`);
+  } catch (e) {}
+  try {   // (e) dispersão: quadrante crítico (índice < 50 e > 5% dos municípios sob decreto)
+    const P = (RESP_Q && RESP_Q.pontos) || []; const crit = P.filter(p => p.antecipacao < 50 && p.resposta > 0.05).map(p => p.uf).sort();
+    const alto = P.filter(p => p.antecipacao >= 50 && p.resposta > 0.05).map(p => p.uf).sort();
+    const REG = {}; (DATA.ufs || []).forEach(u => REG[u.uf] = u.regiao || u.region);
+    const regs = [...new Set(crit.map(u => REG[u]).filter(Boolean))];
+    if (P.length) { titulo('boxDispersao', `Índice abaixo de 50 e mais de 5% dos municípios sob decreto: ${crit.length} estado${crit.length === 1 ? '' : 's'}${regs.length === 1 ? ', todos no ' + regs[0] : ''}${crit.length ? ' — ' + crit.join(', ') : ''}`);
+      interp('interpDepois', `Acima de 50 e mais de 5%: ${alto.length ? alto.join(', ') : 'nenhum'}. O que a figura não mostra: se houve dano — o marcador de evento observado está em classificação.`); }
+  } catch (e) {}
+  try {   // (f) mapa dos decretos; (g) semana do primeiro decreto e quantos caíram no período eleitoral
+    const N = RESP && RESP.nacional; const porUf = RESP && RESP.uf ? Object.entries(RESP.uf) : [];
+    if (N) { const maior = porUf.sort((a, b) => (b[1].fracao_municipios || 0) - (a[1].fracao_municipios || 0))[0];
+      titulo('boxAtosResposta', `Decretos: ${n(N.n_municipios)} municípios` + (maior ? ` · ${maior[0]} decretou em ${maior[1].n_municipios} de ${maior[1].total_municipios}` : '')); }
+    const S = (RESP_SERIE && RESP_SERIE.semanas) || []; const tot = S.reduce((a, x) => a + (x.municipios || 0), 0); const noDefeso = S.filter(x => x.defeso).reduce((a, x) => a + (x.municipios || 0), 0);
+    if (N && S.length) titulo('boxSerieResp', `Primeiro decreto em ${N.primeiro_decreto || '—'}; ${n(noDefeso)} dos ${n(tot)} decretos são de dentro do período eleitoral`);
+  } catch (e) {}
+})();

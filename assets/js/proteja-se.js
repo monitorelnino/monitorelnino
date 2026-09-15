@@ -90,3 +90,27 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 
 // handler do botão de PDF (era onclick inline; CSP sem unsafe-inline)
 { const b = document.getElementById('btnPdfGuia'); if (b && typeof gerarPDFGuia === 'function') b.addEventListener('click', gerarPDFGuia); }
+
+// 15/09/2026 (auditoria editorial §1.9): seletor de estado (lista vinda do dado) → abre o guia do risco projetado da UF e
+// mostra a classificação com a fonte. Sem escolha, os guias ficam fechados (acordeões); a impressão em PDF lê todos.
+(function(){
+  const sel = document.getElementById('selUFProteja'), nota = document.getElementById('riscoDoEstado'); if (!sel) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const NOMES = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
+  const guiasDe = rp => { if (!rp || rp.tipo === 'sem_sinal') return []; const t = (rp.texto || '').toLowerCase(); const g = new Set();
+    if (rp.tipo === 'chuvas' || /chuva|enchente/.test(t)) g.add('guia-chuvas'); if (rp.tipo === 'incendios' || /inc[eê]ndio|fogo|fuma/.test(t)) g.add('guia-fogo');
+    if (rp.tipo === 'estiagem' || /estiag|seca|h[ií]drica|reservat/.test(t)) g.add('guia-seca'); return [...g]; };
+  fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).then(S => {
+    if (!S || !S.uf) return;
+    Object.keys(S.uf).sort().forEach(uf => { const o = document.createElement('option'); o.value = uf; o.textContent = NOMES[uf] || uf; sel.appendChild(o); });
+    sel.addEventListener('change', () => {
+      const uf = sel.value; document.querySelectorAll('details[id^="acc-guia-"]').forEach(d => { d.open = false; });
+      if (!uf) { nota.hidden = true; return; }
+      const rp = (S.uf[uf] || {}).risco_projetado; const gs = guiasDe(rp);
+      gs.forEach(id => { const d = document.getElementById('acc-' + id); if (d) d.open = true; });
+      nota.innerHTML = rp ? '<strong>' + esc(NOMES[uf] || uf) + ':</strong> ' + esc(rp.texto) + (gs.length ? ' — guia' + (gs.length > 1 ? 's' : '') + ' aberto' + (gs.length > 1 ? 's' : '') + ' abaixo' : ' — nenhum guia específico; vale a orientação geral') + ' <span class="u-muted">(' + esc(rp.documento || rp.fonte || '') + ')</span>' : 'Sem classificação para este estado.';
+      nota.hidden = false;
+      const primeiro = gs.length ? document.getElementById('acc-' + gs[0]) : null; if (primeiro && typeof primeiro.scrollIntoView === 'function') primeiro.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  }).catch(() => {});
+})();

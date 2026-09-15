@@ -247,3 +247,15 @@ __load();
 
 // ===== sinais-de-risco.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
+
+// 15/09/2026 (auditoria editorial §1.10): "Situação atual" com uma linha destacada composta dos mesmos campos do painel —
+// "El Niño {intensidade} · probabilidade {p} · {tendência}" — nunca digitada; espera os campos serem preenchidos.
+(function(){
+  const el = document.getElementById('stDestaque'); if (!el) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const t = id => esc((document.getElementById(id) || {}).textContent || '—');
+  const monta = () => { const est = t('stEstado'), inten = t('stIntensidade'), prob = t('stProb'), tend = t('stTendencia');
+    if (est === '—' && prob === '—') return false;
+    el.innerHTML = '<strong>' + est + (inten !== '—' ? ' ' + inten : '') + '</strong>' + (prob !== '—' ? ' · probabilidade ' + prob : '') + (tend !== '—' ? ' · tendência: ' + tend : '') + ' <span class="u-muted">(' + t('stDocumento') + ')</span>'; return true; };
+  if (!monta()) { let n = 0; const iv = setInterval(() => { if (monta() || ++n > 40) clearInterval(iv); }, 150); }
+})();
