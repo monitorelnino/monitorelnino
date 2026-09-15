@@ -53,8 +53,25 @@
   <p class="hint">O resto do site mede o que os governos publicaram para se preparar. Esta página mostra o outro lado da conta: o risco a que essa preparação responde, estado por estado, tal como CEMADEN, INPE, ANA, INMET e NOAA já o publicaram. O Monitor não faz previsão climática — reproduz a de quem tem mandato para fazê-la, sempre com o documento e a data da consulta ao lado do número.</p>
   <p class="hint">Sinais físicos do ciclo — oceano, previsão, seca, fogo, alertas — cruzados com o arcabouço público de cada estado. Os sinais não entram no índice MARÉ (peso zero). O Monitor não faz previsão climática nem substitui os avisos oficiais; fontes em <a href="pesquisadores.html#fontes-sinais">Pesquisadores</a>.</p>
 
+  <div class="panel" id="projetado">
+    <h2>O risco projetado, estado a estado</h2>
+    <p class="hint">Uma leitura para o ciclo inteiro: a família de risco que os boletins do Painel El Niño projetam para cada estado. Passe o mouse — ou navegue com Tab — sobre um estado para ver a classificação e a fonte.</p>
+    <div class="grade-figuras">
+      <figure class="figura figura--mapa figura--largo" id="boxTipoRisco">
+        <h3 class="figura-titulo">Tipo de risco projetado para o ciclo</h3>
+        <p class="figura-sub">Ciclo 2026/2027 (boletins) · tipo de risco projetado por UF · seca/calor/fogo · chuvas · mais de uma família</p>
+        <div class="figura-midia"><svg id="mapaTipoRisco" role="img" aria-label="Mapa do Brasil por tipo de risco projetado nos boletins do Painel El Niño" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legTipoRisco"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTipoRisco"><thead><tr><th>UF</th><th>Risco projetado no boletim</th><th>Tipo</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      </figure>
+    </div>
+  </div>
+
   <div class="panel panel--acento-teal" id="situacao">
     <h2>Situação atual</h2>
+    <p class="hint" id="stDestaque" aria-live="polite">—</p>
     <div class="situacao" id="situacaoGrade" role="group" aria-label="Situação atual do ciclo: estado do ENOS, intensidade, tendência, indicador principal, documento de referência, atualização">
       <div><div class="k">Estado do ENOS</div><div class="v" id="stEstado">—</div></div>
       <div><div class="k">Intensidade</div><div class="v" id="stIntensidade">—</div></div>
@@ -64,22 +81,21 @@
       <div><div class="k">Documento de referência</div><div class="v" id="stDocumento">—</div></div>
       <div><div class="k">Última atualização</div><div class="v" id="stAtualizado">—</div></div>
     </div>
-    <p class="hint u-mb-0" id="stDiagnostico">—</p>
+    <p class="hint" id="stDiagnostico">—</p>
+    <div class="grade-figuras">
+      <figure class="figura figura--grafico figura--largo" id="boxOni">
+        <h3 class="figura-titulo">ONI (Oceanic Niño Index) desde 1950 — miniatura</h3>
+        <p class="figura-sub">Trimestres móveis desde 1950 → último disponível · anomalia da TSM na região Niño 3.4 · °C</p>
+        <div class="figura-midia canvas-wrap" id="wrapOni"></div>
+      </figure>
+    </div>
+    <div class="card-note u-mb-0">Probabilidade por trimestre (IRI/CPC): sem coleta até o corte. A probabilidade do trimestre corrente aparece, com fonte, em "Situação atual" no topo da página.</div>
   </div>
 
-  <div class="panel" id="mapas">
-    <h2>Mapas geográficos</h2>
-    <p class="hint">Cinco leituras dos sinais oficiais: o tipo de risco projetado para o ciclo inteiro e quatro medidas do que está acontecendo agora. Passe o mouse — ou navegue com Tab — sobre qualquer estado para ver o detalhe e a fonte. Mapa em cinza uniforme é fonte que ainda não foi coletada, e cada um explica o próprio vazio.</p>
+  <div class="panel" id="agora">
+    <h2>O que está acontecendo agora</h2>
+    <p class="hint">Duas medidas oficiais do presente na face — seca observada e avisos meteorológicos vigentes —; focos de calor e alertas do Cemaden no expandido.</p>
     <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxTipoRisco">
-        <h3 class="figura-titulo">Tipo de risco projetado para o ciclo</h3>
-        <p class="figura-sub">Ciclo 2026/2027 (boletins) · tipo de risco projetado por UF · seca/calor/fogo · chuvas · mais de uma família</p>
-        <div class="figura-midia"><svg id="mapaTipoRisco" role="img" aria-label="Mapa do Brasil por tipo de risco projetado nos boletins do Painel El Niño" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legTipoRisco"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTipoRisco"><thead><tr><th>UF</th><th>Risco projetado no boletim</th><th>Tipo</th></tr></thead><tbody></tbody></table></div>
-        </details>
-      </figure>
       <figure class="figura figura--mapa" id="boxSecas">
         <h3 class="figura-titulo">Seca observada — Monitor de Secas</h3>
         <p class="figura-sub">Mapa mais recente (mensal) · categoria do Monitor de Secas (ANA) por UF · S0–S4</p>
@@ -92,6 +108,11 @@
         <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos vigentes do INMET" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAvisos"></div>
       </figure>
+    </div>
+    <details class="acc" id="agoraVerMais">
+      <summary class="acc-summary">Ver mais: focos de calor (INPE) e alertas do Cemaden</summary>
+      <div class="panel">
+        <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxFogo">
         <h3 class="figura-titulo">Focos ativos nas últimas 24 horas</h3>
         <p class="figura-sub">Último dia disponível · focos de calor (INPE, satélite de referência) por UF · contagem em 24 h</p>
@@ -104,37 +125,35 @@
         <div class="figura-midia"><svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legCemaden"></div>
       </figure>
-    </div>
+        </div>
+      </div>
+    </details>
   </div>
 
-  <div class="panel" id="graficos">
-    <h2>Gráficos analíticos</h2>
-    <p class="hint">O índice que define o fenômeno globalmente e duas leituras do que ele encontra no Brasil. O último gráfico é o único lugar do site onde risco e preparação aparecem no mesmo eixo.</p>
+  <div class="panel" id="cruzamento">
+    <h2>Risco projetado × plano do estado</h2>
+    <p class="hint">O único lugar do site onde risco e preparação aparecem no mesmo eixo: o tipo de risco projetado contra o estágio do arcabouço público de cada estado.</p>
     <div class="grade-figuras">
-      <figure class="figura figura--grafico figura--largo" id="boxOni">
-        <h3 class="figura-titulo">Índice ONI (Oceanic Niño Index), série desde 1950</h3>
-        <p class="figura-sub">Trimestres móveis desde 1950 → último disponível · anomalia da TSM na região Niño 3.4 · °C</p>
-        <div class="figura-midia canvas-wrap" id="wrapOni"></div>
-      </figure>
-      <!-- 13/09/2026 (auditoria de visualizações, ação recomendada): a figura "Probabilidade por
-           trimestre" foi trocada por este cartão compacto — a própria figura só informava que a
-           série por trimestre (IRI/CPC) não foi coletada; a probabilidade do trimestre corrente já
-           aparece, com fonte, no painel "Situação atual" acima. Critério para reintroduzir como
-           figura: coleta da série completa por trimestre. JS correspondente (renderPlume, em
-           sinais-de-risco.js) fica desativado até então (guarda por ausência de #wrapPlume). -->
-      <div class="card-note">Probabilidade por trimestre (IRI/CPC): sem coleta até o corte. A probabilidade do trimestre corrente aparece, com fonte, em "Situação atual" no topo da página.</div>
-      <figure class="figura figura--grafico" id="boxTipos">
-        <h3 class="figura-titulo">Estados por tipo de risco projetado</h3>
-        <p class="figura-sub">Ciclo 2026/2027 (boletins do Painel) · família de risco projetado por UF · contagem de estados</p>
-        <div class="figura-midia canvas-wrap" id="wrapTipos"><canvas id="cTipos"></canvas></div>
-      </figure>
       <figure class="figura figura--grafico figura--largo" id="boxCruz">
         <h3 class="figura-titulo">Tipo de risco projetado × estágio do arcabouço público</h3>
         <p class="figura-sub">Corte da edição · tipo de risco projetado × estágio do arcabouço público · 27 UFs</p>
         <div class="figura-midia canvas-wrap" id="wrapCruz"><canvas id="cCruz"></canvas></div>
       </figure>
     </div>
+    <details class="acc" id="cruzVerMais">
+      <summary class="acc-summary">Ver mais: estados por tipo de risco projetado (contagem)</summary>
+      <div class="panel">
+        <div class="grade-figuras">
+      <figure class="figura figura--grafico" id="boxTipos">
+        <h3 class="figura-titulo">Estados por tipo de risco projetado</h3>
+        <p class="figura-sub">Ciclo 2026/2027 (boletins do Painel) · família de risco projetado por UF · contagem de estados</p>
+        <div class="figura-midia canvas-wrap" id="wrapTipos"><canvas id="cTipos"></canvas></div>
+      </figure>
+        </div>
+      </div>
+    </details>
   </div>
+
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -145,7 +164,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/sinais-de-risco.js?v=a1de1ab6" defer></script>
+<script src="assets/js/sinais-de-risco.js?v=e881bac2" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

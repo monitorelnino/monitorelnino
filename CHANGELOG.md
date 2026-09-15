@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §53 · Risco climático na ordem da narrativa (auditoria editorial 14/09, onda E1 §1.10) · 15/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página**. Fecha a onda E1.
+
+- Ordem nova: (1) **O risco projetado, estado a estado** — o mapa do tipo de risco primeiro, largo; (2) **Situação atual** com uma linha destacada composta dos campos do painel ("El Niño {intensidade} · probabilidade {p} · tendência: {t}", nunca digitada) e o ONI como miniatura; (3) **O que está acontecendo agora** — seca observada e avisos vigentes na face, focos de calor e alertas do Cemaden no expandido; (4) **Risco projetado × plano do estado** — o cruzamento, com "estados por tipo de risco" no expandido. Nada apagado.
+
+## §52 · Proteja-se: escolha o estado, e o guia do seu risco se abre (auditoria editorial 14/09, onda E1 §1.9) · 15/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página**. (PR #223, mesclado em 15/09; a entrada ficou de fora do PR por engano e entra aqui.)
+
+- Seletor de estado no bloco "Qual é o risco projetado no seu estado" — a lista vem de `data/sinais_risco.json`. Ao escolher, a página mostra a classificação da UF com a fonte e **abre o guia correspondente** (chuvas, incêndios/fumaça, estiagem/calor; "misto" abre mais de um; "sem sinal elevado" não abre nenhum e diz isso). Os três guias viraram acordeões fechados por padrão; a impressão em PDF continua lendo todos. Runtime próprio da página.
+
 ## §51 · O dinheiro volta para Financiamento; quarta porta para o calendário (auditoria editorial 14/09, onda E1 §1.7 e §1.6) · 15/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página**.
