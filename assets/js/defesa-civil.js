@@ -491,11 +491,7 @@ function titulosFato(){
     const maior = Object.entries(porReg).sort((a, b) => b[1] - a[1])[0];
     interp('interpAntes', maior ? `Por região: <strong>${esc(maior[0])}</strong> concentra os planos feitos para o ciclo (${maior[1]} de ${novo}).` : `Nenhum estado com plano feito para o ciclo até o corte.`);
   } catch (e) {}
-  try {   // (b) vão da prova: UFs com camada declarada (TCE/sistema estadual) × documentos publicados
-    const ufsDecl = Object.entries(CONSIST || {}).filter(([uf, i]) => ((i.declarado_plano || 0) + (i.declarado_antigo || 0)) > 0);
-    if (ufsDecl.length) { const nDecl = ufsDecl.reduce((a, [, i]) => a + (i.declarado_plano || 0) + (i.declarado_antigo || 0), 0); const nDoc = ufsDecl.reduce((a, [, i]) => a + (i.n_plano || 0), 0);
-      titulo('boxDeclarado', `Declarado não é documentado: em ${ufsDecl.map(([uf]) => uf).join(', ')}, ${n(nDecl)} municípios declaram ter plano e ${n(nDoc)} publicaram o documento`); }
-  } catch (e) {}
+  // (b) 'declarado × documentado' (boxDeclarado) saiu da página em 15/09/2026 (§59) — bloco removido.
   try {   // (c) verificação: registro federal (todos), diário oficial (varredura), planos municipais localizados
     // 15/09/2026 (correção): a contagem vinha de CONSIST (risco estadual), que não tem n_plano — sempre somava 0. A contagem
     // correta é PCT_POR_UF.n_plano (percentual_uf.json), a mesma fonte do índice (recalcular_mare.py), nunca divergente dela.
