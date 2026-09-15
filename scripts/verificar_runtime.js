@@ -127,6 +127,23 @@ setTimeout(() => {
   const secoes = ["Em emergência, ligue", "Risco projetado para ", "O que já existe", "O que ainda falta", "Como se proteger", "Links úteis"];   // 'Pedido de informação pronto' retirada em 13/09/2026 (pedido de Patricia)
   const posicoes = secoes.map(s => ger.indexOf("secao('" + s));
   teste("PDF do cidadão: as 6 seções existem, na ordem", posicoes.every((p, k) => p > 0 && (k === 0 || p > posicoes[k-1])));
+  // 15/09/2026 (§1.9): Proteja-se num JSDOM próprio — seletor de estado vindo do dado; guias em acordeões; a UF escolhida abre o guia do seu risco
+  try {
+    const htmlP = inlinePageJs(fs.readFileSync(path.join(raiz, "proteja-se.html"), "utf-8"), raiz);
+    const domP = new JSDOM(htmlP, { url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc, beforeParse(w) {
+      w.d3 = require("d3"); w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8")); class Chart { constructor() {} } Chart.defaults = { font: {}, color: "" }; w.Chart = Chart;
+      w.fetch = (rel) => { try { const txt = fs.readFileSync(path.join(raiz, rel), "utf-8"); return Promise.resolve({ ok: true, json: () => Promise.resolve(JSON.parse(txt)) }); } catch (e) { return Promise.resolve({ ok: false }); } }; } });
+    setTimeout(() => {
+      const dP = domP.window.document, qP = id => dP.getElementById(id);
+      const selP = qP("selUFProteja"); teste("proteja-se: seletor com 27 estados (do dado)", !!selP && selP.options.length === 28);
+      teste("proteja-se: guias em acordeões fechados por padrão", ["acc-guia-chuvas","acc-guia-fogo","acc-guia-seca"].every(id => qP(id) && !qP(id).open));
+      const S = JSON.parse(fs.readFileSync(path.join(raiz, "data", "sinais_risco.json"), "utf8"));
+      const ufChuva = Object.keys(S.uf).find(u => (S.uf[u].risco_projetado || {}).tipo === "chuvas");
+      if (ufChuva && selP) { selP.value = ufChuva; selP.dispatchEvent(new domP.window.Event("change", { bubbles: true }));
+        teste("proteja-se: escolher um estado de chuvas abre o guia de chuvas e mostra a classificação", qP("acc-guia-chuvas").open && !qP("acc-guia-fogo").open && !qP("riscoDoEstado").hidden && /Chuva/i.test(qP("riscoDoEstado").textContent)); }
+      fim();
+    }, 400);
+  } catch (e) { teste("proteja-se: seletor/acordeões (" + e.message + ")", false); fim(); }
   const jargao = ["posição ordinal", "pesos iguais", "peso aritmético", "camada declarada", "Confiança da verificação", "Pendências de verificação"];
   teste("PDF do cidadão: sem jargão de auditoria", !jargao.some(j => ger.includes(j)));
   // 31/08/2026: cartão e PDF diziam "nenhum decreto localizado" para Biguaçu enquanto o
@@ -192,7 +209,12 @@ setTimeout(() => {
   teste("data de última verificação bate com META", q("metaUltimaVerif").textContent === INDICE_META.atualizado_em);
   teste("rodapé 'última atualização' bate com META", q("metaAtualizado").textContent === INDICE_META.atualizado_em);
 
+  // 15/09/2026: o fim é chamado pelo bloco assíncrono de Proteja-se (acima), depois que ele terminar
+  fim.falhas = falhas;
+}, 600);
+function fim() {
+  const falhas = fim.falhas || [];
   if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
   console.log("\n✓ RUNTIME OK — todas as verificações passaram.");
   process.exit(0);
-}, 600);
+}
