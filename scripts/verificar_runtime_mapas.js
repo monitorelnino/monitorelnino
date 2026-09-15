@@ -132,6 +132,17 @@ setTimeout(() => {
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I")) && /background:/.test(c.firstElementChild.getAttribute("style") || "") && c.textContent.trim().length > 0)));
   if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
+  // 15/09/2026 (§2.9): títulos-fato das figuras de Defesa civil vêm do dado; interpretações fora das figuras
+  try {
+    const DATA = JSON.parse(fs.readFileSync(path.join(raiz, "data", "estados.json"), "utf8")), RESP = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "por_uf.json"), "utf8"));
+    const st = DATA.ufs.map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
+    const tR = d.querySelector("#boxRegion .figura-titulo").textContent;
+    teste("defesa civil (a): título-fato com as três contagens (somam 27)", new RegExp(`^${c(["NOVO"])} estados publicaram plano feito para o ciclo; ${c(["READ","VIG"])} reeditaram`).test(tR) && (c(["NOVO"]) + c(["READ","VIG"]) + c(["ELAB","LAC"])) === 27);
+    teste("defesa civil (c): verificação com 5.571 e planos municipais localizados", /^5\.571 cidades passaram pelo registro federal.*planos municipais localizados$/.test(d.querySelector("#boxVerificacao .figura-titulo").textContent));
+    teste("defesa civil (f): mapa com nº de municípios do dado", new RegExp("^Decretos: " + String(RESP.nacional.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " municípios").test(d.querySelector("#boxAtosResposta .figura-titulo").textContent));
+    teste("defesa civil (g): primeiro decreto do dado e contagem no período eleitoral", new RegExp("^Primeiro decreto em " + RESP.nacional.primeiro_decreto + "; \\d").test(d.querySelector("#boxSerieResp .figura-titulo").textContent));
+    teste("defesa civil: interpretações fora das figuras preenchidas", /Por região:|Nenhum estado/.test(q("interpAntes").textContent) && /Acima de 50/.test(q("interpDepois").textContent));
+  } catch (e) { teste("defesa civil: títulos-fato (" + e.message + ")", false); }
   console.log("\n✓ RUNTIME (mapas e gráficos) OK — todas as verificações passaram.");
   process.exit(0);
 }, 600);

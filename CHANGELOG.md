@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §54 · Defesa civil: títulos-fato e interpretações do dado (auditoria editorial 14/09, onda E2 §2.9) · 15/09/2026
+
+Nenhuma alteração de método. Classe **conteúdo**. Abre a onda E2 (narrativa).
+
+- H1 "Defesa civil" com o subtítulo "Antes e depois, estado a estado e cidade a cidade". Seis figuras ganham **título-fato calculado dos dados carregados** (nunca digitado): (a) estados por categoria do plano (as três contagens somam 27); (b) o vão da prova — nos estados com camada declarada, municípios que declaram ter plano × que publicaram o documento; (c) verificação — 5.571 pelo registro federal, os consultados no diário oficial, planos municipais localizados; (e) dispersão — quantos estados têm índice abaixo de 50 e mais de 5% dos municípios sob decreto, e onde; (f) mapa — nº de municípios com decreto e o estado com maior fração; (g) semana — data do primeiro decreto e quantos caíram dentro do período eleitoral.
+- As **interpretações** ("Por região: … concentra os planos feitos para o ciclo"; "Acima de 50 e mais de 5%: …; o que a figura não mostra: se houve dano") ficam no texto dos blocos, fora das figuras, como manda a regra das legendas neutras (portão 19). Sem dado, o título original permanece. Runtime de mapas confere cada título contra o dado.
+
 ## §53 · Risco climático na ordem da narrativa (auditoria editorial 14/09, onda E1 §1.10) · 15/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página**. Fecha a onda E1.
