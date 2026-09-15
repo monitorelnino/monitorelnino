@@ -59,8 +59,13 @@ def main():
             cab = next(rd)
             ci = {c: i for i, c in enumerate(cab)}
             if mes == meses()[0]: print("   colunas:", cab)
-            iug = next((ci[c] for c in cab if "Nome Órgão Subordinado" in c or "Nome Unidade Gestora" in c), None); iac = next((ci[c] for c in cab if "Nome Ação" in c or ("Ação" in c and "Nome" in c)), None)
-            ifav = next((ci[c] for c in cab if "Nome Favorecido" in c or "Nome Município" in c), None); ival = next((ci[c] for c in cab if "Valor Transferido" in c or "Valor Pago" in c), None); iel = next((ci[c] for c in cab if "Tipo Transferência" in c or "Linguagem Cidadã" in c), None)
+            # 15/09/2026: o conjunto de Transferências traz os nomes em MAIÚSCULAS — comparação sem caixa e sem acento
+            import unicodedata as _ud
+            _n = lambda t: "".join(ch for ch in _ud.normalize("NFD", t.lower()) if _ud.category(ch) != "Mn")
+            cn = {_n(c): i for i, c in enumerate(cab)}
+            achar = lambda *pads: next((i for k, i in cn.items() if any(p in k for p in pads)), None)
+            iug = achar("nome orgao subordinado", "nome unidade gestora", "nome orgao"); iac = achar("nome acao")
+            ifav = achar("nome favorecido", "nome municipio"); ival = achar("valor transferido", "valor pago", "valor"); iel = achar("tipo transferencia", "linguagem cidada")
             if None in (iug, iac, ifav, ival):
                 print(f"-- {mes}: colunas não localizadas: ug={iug} acao={iac} fav={ifav} valor={ival} · cabeçalho={cab}"); continue
             n = 0
