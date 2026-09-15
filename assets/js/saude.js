@@ -120,7 +120,7 @@ function __init(){
     if (bx) {
       bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; --galvo:' + Math.max(m.prontidao, 0.1) + ';"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
         : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
-      MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.cor('gauge-trilho'), rotulo: 'trilho 0–100'}, {cor: MonitorMapas.PALETA.faixas.avancado, rotulo: 'cor = posição no degradê do índice (0 → 100)'}, {cor: MonitorMapas.PALETA.faixas.nao_verificado, rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
+      MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.PALETA.trilho, rotulo: 'trilho 0–100'}, {cor: MonitorMapas.PALETA.faixas.avancado, rotulo: 'cor = posição no degradê do índice (0 → 100)'}, {cor: MonitorMapas.PALETA.faixas.nao_verificado, rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
       fonteFigura('boxMonitorBarras', {fontes: ['Monitor El Niño Brasil', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
     }
     // Resposta sanitária (E17): ESPIN federal, decretos estaduais por arboviroses, créditos por portaria — contador, hoje zero de verdade

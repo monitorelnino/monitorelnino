@@ -191,7 +191,7 @@ if(oni && oni.serie && oni.serie.length){
     const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
     const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
     let txt = 'ONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na escala do CPC';
-    if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + fmt(d) + ' °C em dois trimestres'; }
+    if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + (d >= 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' °C em dois trimestres'; }
     el.textContent = txt + '.'; el.hidden = false;
   })();
 } else { lacuna('wrapOni', 'A série do ONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }

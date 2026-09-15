@@ -70,7 +70,7 @@ function renderContadorResposta(){
   el('respCorte').textContent = (typeof META !== 'undefined' && META && META.corte) || '—';
   const fill = el('respFill'); fill.dataset.alvo = Math.max(ir, N.n_municipios ? 0.6 : 0).toFixed(2); fill.style.setProperty('--galvo', String(Math.max(ir, 0.1)));
   fill.style.width = fill.dataset.alvo + '%';
-  el('respLinha').innerHTML = esc((N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')) + ' milhões de pessoas em municípios sob decreto · ' + (N.primeiro_decreto ? 'primeiro decreto em ' + esc(N.primeiro_decreto) + ' · ' : '') + esc(N.reconhecidos) + ' reconhecidos pela União · ' + esc(N.decretados_sem_reconhecimento) + ' decretados sem reconhecimento';
+  el('respLinha').textContent = '';   // 15/09/2026: a linha de contagens vive só na interpretação abaixo (sem repetir milhões/primeiro decreto/tons)
   MonitorMapas.credito('respFonte', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais estaduais e municipais'], data: RESP.gerado_em});
 }
 async function __load(){
