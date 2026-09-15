@@ -199,58 +199,38 @@ setTimeout(function(){
   // chamada redundante removida daqui (era 'nivelverificacao', figura própria antes da consolidação).
 }, 0);
 
-// ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada (31/08/2026) ----
-// LIMITAÇÃO DECLARADA: a lista NOMINAL dos 2.095 municípios do Cadastro Nacional de
-// Municípios Suscetíveis (Nota Técnica 1/2025/SADJ-VI/SEPAC/CC/PR) exige login no
-// portal do MDR e não é publicamente acessível (verificado em 31/08/2026). Este mapa
-// usa uma PROXY documentada: em cada UF, os N municípios de MAIOR POPULAÇÃO, onde N é
-// a contagem OFICIAL de municípios prioritários daquela UF (fonte: mesma nota técnica,
-// Tabela 2 — pública). Não é a lista real nome a nome; é a aproximação mais defensável
-// disponível sem acesso autenticado, e está rotulada como tal na página e no tooltip.
-const CADASTRO_UF_N = {AC:20,AL:47,AM:59,AP:14,BA:144,CE:80,DF:1,ES:71,GO:25,MA:113,
-  MG:306,MS:33,MT:40,PA:97,PB:43,PE:108,PI:47,PR:84,RJ:76,RN:32,RO:14,RR:5,RS:206,
-  SC:218,SE:17,SP:177,TO:18};
-const CATS_PUBLICADO = new Set(['plano','plano_antigo','plano_elaboracao','estrutura','decreto','coberto_estadual']);
-const publicadosSet = new Set(MAP_POINTS.filter(p => CATS_PUBLICADO.has(p.categoria)).map(p => p.uf+'|'+p.nome));
-const prioritariosProxy = [];
-Object.entries(CADASTRO_UF_N).forEach(([uf, n]) => {
-  const candidatos = (MUN_REF[uf] || []).map(nome => {
-    const cod = MUN_COD[uf+'|'+nome];
-    return {nome, uf, pop: POP_CENSO[cod] || 0, latlon: MUN_LATLON[uf+'|'+nome]};
-  }).filter(x => x.latlon).sort((a,b) => b.pop - a.pop).slice(0, n);
-  candidatos.forEach(x => prioritariosProxy.push({
-    nome: x.nome, uf: x.uf, lon: x.latlon[0], lat: x.latlon[1],
-    publicado: publicadosSet.has(x.uf+'|'+x.nome),
-  }));
-});
-const nPublicados = prioritariosProxy.filter(x => x.publicado).length;
-(document.getElementById('countPrioritariosPublicados')||{}).textContent = nPublicados;
-(document.getElementById('countPrioritariosTotal')||{}).textContent = prioritariosProxy.length;
-
+// ---- Mapa dos municípios prioritários (Cadastro Nacional) — publicados vs sem nada ----
+// 15/09/2026: fonte única é data/municipios_prioritarios.json (gerar_prioritarios.py) — a mesma
+// aproximação populacional (documentada no arquivo) que alimenta a busca "Descubra se seu
+// município é prioritário" em prefeituras.html; nunca mais recomputada em dois lugares.
 const svgPrior = d3.select('#mapPrioritarios');
-svgPrior.append('g').selectAll('path')
-  .data(BR_GEOJSON.features).join('path')
-  .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-const prioridadeOrdenada = [...prioritariosProxy].sort((a,b) => (a.publicado?1:0) - (b.publicado?1:0)); // não-publicados desenhados por baixo
-svgPrior.append('g').selectAll('circle')
-  .data(prioridadeOrdenada).join('circle')
-  .attr('cx', d => projection([d.lon, d.lat])[0])
-  .attr('cy', d => projection([d.lon, d.lat])[1])
-  .attr('r', d => d.publicado ? 4 : 3)
-  .attr('fill', d => d.publicado ? MonitorMapas.PALETA.preparacao : MonitorMapas.PALETA.zero)
-  .attr('stroke', d => d.publicado ? MonitorMapas.cor('branco') : MonitorMapas.PALETA.resposta)
-  .attr('stroke-width', d => d.publicado ? 1.6 : 1)
-  .attr('stroke-dasharray', d => d.publicado ? null : '1.5,1.2')
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>Município prioritário (proxy populacional) — `
-    + (d.publicado ? 'instrumento localizado' : 'nenhum instrumento localizado até o corte'), evt))
-  .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
-  .on('mouseleave', hideTip);
-document.getElementById('legPrioritarios').innerHTML =
-  `<span><i style="background:var(--musgo)"></i>Com instrumento</span>`
-  + `<span><i style="background:repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)"></i>Sem instrumento localizado</span>`;
+fetch('data/municipios_prioritarios.json').then(r => r.ok ? r.json() : null).then(PRIOR => {
+  if (!PRIOR) return;
+  svgPrior.append('g').selectAll('path')
+    .data(BR_GEOJSON.features).join('path')
+    .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
+    .on('mouseenter', (evt,d)=> showTip(`<strong>${d.properties.name}</strong>`, evt))
+    .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+    .on('mouseleave', hideTip);
+  addSiglas(svgPrior);
+  const prioridadeOrdenada = [...PRIOR.municipios].sort((a,b) => (a.publicado?1:0) - (b.publicado?1:0)); // não-publicados desenhados por baixo
+  svgPrior.append('g').selectAll('circle')
+    .data(prioridadeOrdenada).join('circle')
+    .attr('cx', d => projection([d.lon, d.lat])[0])
+    .attr('cy', d => projection([d.lon, d.lat])[1])
+    .attr('r', d => d.publicado ? 4 : 3)
+    .attr('fill', d => d.publicado ? MonitorMapas.PALETA.preparacao : MonitorMapas.PALETA.zero)
+    .attr('stroke', d => d.publicado ? MonitorMapas.cor('branco') : MonitorMapas.PALETA.resposta)
+    .attr('stroke-width', d => d.publicado ? 1.6 : 1)
+    .attr('stroke-dasharray', d => d.publicado ? null : '1.5,1.2')
+    .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>Município prioritário (aproximação populacional) — `
+      + (d.publicado ? 'instrumento localizado' : 'nenhum instrumento localizado até o corte'), evt))
+    .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
+    .on('mouseleave', hideTip);
+  document.getElementById('legPrioritarios').innerHTML =
+    `<span><i style="background:var(--musgo)"></i>Com instrumento</span>`
+    + `<span><i style="background:repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)"></i>Sem instrumento localizado</span>`;
+});
 
 // ===========================================================
 // Mapa de atos de resposta (decretos de emergência) — NUNCA pontuam no
@@ -452,36 +432,7 @@ if (document.getElementById('mapConsistencia')) {
 
 // ---- Siglas das UFs sobre os três mapas ----
 function addSiglas(svg){ MonitorMapas.siglas(MonitorMapas.contexto(BR_GEOJSON, 480, 460), svg); }
-addSiglas(svgPoints); addSiglas(svgCob); addSiglas(svgNat); addSiglas(svgPrior); addSiglas(svgResp);
-
-// ---- Declarada × Documentada ----
-const UFS_DECL = ['PR','SC','RS'];
-new Chart(document.getElementById('chartDeclarado'), {
-  type:'bar',
-  data:{ labels: UFS_DECL.map(uf => {
-      const i = PCT_POR_UF[uf];
-      return `${uf} · ${i.fonte_declarada.split('—')[0].split(',')[0].trim()}`;
-    }),
-    datasets:[
-      {label:'Declarada (a TCE / sistema estadual)', data: UFS_DECL.map(uf => {
-        const i = PCT_POR_UF[uf];
-        return +(100*((i.declarado_plano||0)+(i.declarado_antigo||0))/i.total).toFixed(1);
-      }), backgroundColor:MonitorMapas.PALETA.status.VIG, borderRadius:4},
-      {label:'Documentada (esta verificação)', data: UFS_DECL.map(uf => PCT_POR_UF[uf].pct), backgroundColor:MonitorMapas.PALETA.preparacao, borderRadius:4},
-    ]},
-  options:{ indexAxis:'y', maintainAspectRatio:false,
-    plugins:{ legend:{position:'bottom'},
-      tooltip:{ callbacks:{ footer:(items)=>{
-        const uf = items[0].label.slice(0,2);
-        const i = PCT_POR_UF[uf];
-        return [
-          `${i.declarado_plano||0} municípios com plano declarado${i.declarado_antigo?` + ${i.declarado_antigo} com plano declarado desatualizado`:''}`,
-          `${i.com_ato} com documento localizado, de ${i.total} municípios`,
-          `Fonte da camada declarada: ${i.fonte_declarada}`,
-        ];
-      }}}},
-    scales:{ x:{max:100, grid:{color:MonitorMapas.cor('areia')}, ticks:{callback:v=>v+'%'}}, y:{grid:{display:false}} } }
-});
+addSiglas(svgPoints); addSiglas(svgCob); addSiglas(svgNat); addSiglas(svgResp);   // svgPrior: siglas desenhadas dentro do .then() acima
 
 
 
@@ -494,7 +445,7 @@ function creditosAntecipacao(){
   [['boxVerificacao', ['MARÉ (verificação própria)', 'malha IBGE']], ['boxCoberturaNatureza', ['MARÉ (verificação própria)']],
    ['boxPrioritarios', ['MARÉ', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
    ['boxDonut', ['MARÉ', 'instrumentos estaduais verificados']], ['boxRegion', ['MARÉ', 'instrumentos estaduais verificados']],
-   ['boxCapitals', ['MARÉ', '27 capitais verificadas']], ['boxDeclarado', ['MUNIC/IBGE', 'ICM/SEDEC', 'MARÉ']],
+   ['boxCapitals', ['MARÉ', '27 capitais verificadas']],
    ].forEach(([id, fontes]) => MonitorMapas.credito(id, {fontes, data: d}));
 }
 function renderResposta(){
@@ -503,22 +454,7 @@ function renderResposta(){
   const fF = id => (typeof fonteFigura === 'function' ? fonteFigura : (cid, t) => MonitorMapas.credito(cid, t));
   const N = RESP && RESP.nacional;
   const c18 = (RESP && RESP.frase_c18) || '';
-  if (!N) { ['boxDispersao','boxSerieResp','boxDecRec'].forEach(id => MonitorMapas.credito(id, {fontes: 'MARÉ', data: null})); return; }
-  // dispersão (C20): x = antecipação (MARÉ), y = % municípios sob decreto; forma = evento observado (sem dado → círculo vazio)
-  const pts = ((RESP_Q && RESP_Q.pontos) || []).filter(p => p.antecipacao != null);
-  new Chart(document.getElementById('cDispersao'), {type: 'scatter', data: {datasets: [{label: 'UF', data: pts.map(p => ({x: p.antecipacao, y: +(100 * p.resposta).toFixed(1), uf: p.uf})),
-      pointStyle: 'circle', pointRadius: 6, borderColor: MonitorMapas.PALETA.resposta, backgroundColor: 'transparent', borderWidth: 2}]},
-    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}, tooltip: {callbacks: {label: c => c.raw.uf + ' · antecipação ' + c.raw.x + ' · ' + c.raw.y + '% dos municípios sob decreto'}}},
-      scales: {x: {min: 0, max: 100, title: {display: true, text: 'Antecipação (MARÉ, 0–100)'}}, y: {min: 0, title: {display: true, text: '% dos municípios sob decreto'}}}}});
-  MonitorMapas.legenda('legDispersao', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'um ponto por UF'}, {cor: MonitorMapas.PALETA.semDado, rotulo: 'círculo vazio: evento sem dado'}]);
-  MonitorMapas.credito('boxDispersao', {fontes: ['MARÉ', 'índice MARÉ e contador de resposta'], data: RESP.gerado_em});
-  // série semanal com faixa do defeso
-  const S = (RESP_SERIE && RESP_SERIE.semanas) || [];
-  new Chart(document.getElementById('cSerieResp'), {type: 'bar', data: {labels: S.map(x => x.semana.slice(5)), datasets: [
-      {label: 'municípios', data: S.map(x => x.municipios), backgroundColor: S.map(x => x.defeso ? MonitorMapas.PALETA.defeso : MonitorMapas.PALETA.antes_defeso)}]},
-    options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {ticks: {maxTicksLimit: 10}}, y: {beginAtZero: true, title: {display: true, text: 'municípios (primeiro decreto)'}}}}});
-  MonitorMapas.legenda('legSerieResp', [{cor: MonitorMapas.PALETA.antes_defeso, rotulo: 'antes do período eleitoral'}, {cor: MonitorMapas.PALETA.defeso, rotulo: 'no período eleitoral'}]);
-  MonitorMapas.credito('boxSerieResp', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais'], data: RESP.gerado_em});
+  if (!N) { MonitorMapas.credito('boxDecRec', {fontes: 'MARÉ', data: null}); return; }
   // tabela decretado × reconhecido
   const tb = document.querySelector('#tblDecRec tbody');
   tb.innerHTML = Object.keys(RESP.uf).sort((a, b) => RESP.uf[b].n_municipios - RESP.uf[a].n_municipios || a.localeCompare(b)).map(uf => { const r = RESP.uf[uf];
@@ -558,23 +494,24 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       titulo('boxDeclarado', `Declarado não é documentado: em ${ufsDecl.map(([uf]) => uf).join(', ')}, ${n(nDecl)} municípios declaram ter plano e ${n(nDoc)} publicaram o documento`); }
   } catch (e) {}
   try {   // (c) verificação: registro federal (todos), diário oficial (varredura), planos municipais localizados
+    // 15/09/2026 (correção): a contagem vinha de CONSIST (risco estadual), que não tem n_plano — sempre somava 0. A contagem
+    // correta é PCT_POR_UF.n_plano (percentual_uf.json), a mesma fonte do índice (recalcular_mare.py), nunca divergente dela.
     const vd = (VRESUMO && VRESUMO.varredura_diarios) || {}; const nDiario = vd.consultados || vd.municipios_consultados || null;
-    const nPlanos = Object.values(CONSIST || {}).reduce((a, i) => a + (i.n_plano || 0), 0);
+    const nPlanos = Object.values(PCT_POR_UF || {}).reduce((a, i) => a + (i.n_plano || 0), 0);
     titulo('boxVerificacao', `5.571 cidades passaram pelo registro federal${nDiario != null ? `; ${n(nDiario)} pelo diário oficial` : ''}; ${n(nPlanos)} planos municipais localizados`);
   } catch (e) {}
-  try {   // (e) dispersão: quadrante crítico (índice < 50 e > 5% dos municípios sob decreto)
-    const P = (RESP_Q && RESP_Q.pontos) || []; const crit = P.filter(p => p.antecipacao < 50 && p.resposta > 0.05).map(p => p.uf).sort();
+  try {   // (e) quadrante crítico (índice < 50 e > 5% dos municípios sob decreto) + (g) semana do primeiro decreto —
+    // narrativa fora de figura desde 15/09/2026 (as figuras de dispersão e série semanal saíram da página)
+    const P = (RESP_Q && RESP_Q.pontos) || [];
     const alto = P.filter(p => p.antecipacao >= 50 && p.resposta > 0.05).map(p => p.uf).sort();
-    const REG = {}; (DATA.ufs || []).forEach(u => REG[u.uf] = u.regiao || u.region);
-    const regs = [...new Set(crit.map(u => REG[u]).filter(Boolean))];
-    if (P.length) { titulo('boxDispersao', `Índice abaixo de 50 e mais de 5% dos municípios sob decreto: ${crit.length} estado${crit.length === 1 ? '' : 's'}${regs.length === 1 ? ', todos no ' + regs[0] : ''}${crit.length ? ' — ' + crit.join(', ') : ''}`);
-      interp('interpDepois', `Acima de 50 e mais de 5%: ${alto.length ? alto.join(', ') : 'nenhum'}. O que a figura não mostra: se houve dano — o marcador de evento observado está em classificação.`); }
+    const N = RESP && RESP.nacional; const S = (RESP_SERIE && RESP_SERIE.semanas) || [];
+    const tot = S.reduce((a, x) => a + (x.municipios || 0), 0); const noDefeso = S.filter(x => x.defeso).reduce((a, x) => a + (x.municipios || 0), 0);
+    if (P.length) interp('interpDepois', `Acima de 50 no índice e mais de 5% dos municípios sob decreto: ${alto.length ? alto.join(', ') : 'nenhum estado'}.`
+      + (N && S.length ? ` Primeiro decreto do ciclo em ${N.primeiro_decreto || '—'}; ${n(noDefeso)} de ${n(tot)} decretos até aqui são de dentro do período eleitoral.` : ''));
   } catch (e) {}
-  try {   // (f) mapa dos decretos; (g) semana do primeiro decreto e quantos caíram no período eleitoral
+  try {   // (f) mapa dos decretos
     const N = RESP && RESP.nacional; const porUf = RESP && RESP.uf ? Object.entries(RESP.uf) : [];
     if (N) { const maior = porUf.sort((a, b) => (b[1].fracao_municipios || 0) - (a[1].fracao_municipios || 0))[0];
       titulo('boxAtosResposta', `Decretos: ${n(N.n_municipios)} municípios` + (maior ? ` · ${maior[0]} decretou em ${maior[1].n_municipios} de ${maior[1].total_municipios}` : '')); }
-    const S = (RESP_SERIE && RESP_SERIE.semanas) || []; const tot = S.reduce((a, x) => a + (x.municipios || 0), 0); const noDefeso = S.filter(x => x.defeso).reduce((a, x) => a + (x.municipios || 0), 0);
-    if (N && S.length) titulo('boxSerieResp', `Primeiro decreto em ${N.primeiro_decreto || '—'}; ${n(noDefeso)} dos ${n(tot)} decretos são de dentro do período eleitoral`);
   } catch (e) {}
 })();
