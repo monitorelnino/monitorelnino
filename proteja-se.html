@@ -29,7 +29,7 @@
 <script src="assets/vendor/jspdf.umd.min.js?v=98ccf17a"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
-<link rel="stylesheet" href="assets/base.css?v=ff853630">
+<link rel="stylesheet" href="assets/base.css?v=87169a62">
 <script src="assets/mapas.js?v=3170c2ac"></script>
 </head>
 <body>
@@ -51,12 +51,15 @@
   <p class="hint">Orientações de órgãos oficiais, com a fonte em cada ficha. Não substituem as instruções da Defesa Civil local.</p>
 
   <div class="emerg-bar" id="emergencia">
-    <div class="emerg-nums">
-      <div class="emerg-num"><b>193</b><span>Bombeiros</span></div>
-      <div class="emerg-num"><b>199</b><span>Defesa Civil</span></div>
-      <div class="emerg-num sms"><b>40199</b><span>SMS · seu CEP</span></div>
+    <p class="selo">Em uma emergência, ligue</p>
+    <div class="emerg-nums" id="emergNums">
+      <a class="emerg-num" href="tel:190"><b>190</b><span>Polícia Militar</span></a>
+      <a class="emerg-num" href="tel:192"><b>192</b><span>SAMU</span></a>
+      <a class="emerg-num" href="tel:193"><b>193</b><span>Bombeiros</span></a>
+      <a class="emerg-num" href="tel:199"><b>199</b><span>Defesa Civil</span></a>
+      <a class="emerg-num emerg-num--sms" href="sms:40199"><b>40199</b><span>Alertas por SMS · envie seu CEP</span></a>
     </div>
-    <p class="emerg-alertas">Envie o CEP por SMS para <strong>40199</strong> e cadastre-se nos alertas oficiais da sua região. Mantenha também os <strong>alertas de emergência ativados</strong> nas configurações do celular — o <a href="https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-alerta" target="_blank" rel="noopener">Defesa Civil Alerta</a> avisa automaticamente, sem cadastro, em aparelhos 4G/5G de 2020 em diante.</p>
+    <p class="emerg-alertas">Ligações gratuitas, 24 horas, de qualquer telefone. Para receber alertas da Defesa Civil, envie o CEP por SMS para <strong>40199</strong> e mantenha os <strong>alertas de emergência ativados</strong> no celular — o <a href="https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-alerta" target="_blank" rel="noopener">Defesa Civil Alerta</a> avisa sem cadastro em aparelhos 4G/5G de 2020 em diante.</p>
   </div>
 
   <nav class="subnav" aria-label="Ir direto para">
@@ -88,9 +91,15 @@
 
   <div class="panel" id="quem-chamar">
     <h2>Quem chamar no seu estado</h2>
-    <p class="hint">O <strong>199</strong> atende Defesa Civil em todo o país. O portal estadual abaixo traz contato direto, boletins locais e canais de denúncia — verificado individualmente para cada estado; dois (PB, RN) não têm portal dedicado, e mostram o telefone oficial em vez de link.</p>
-    <p class="legenda-regioes"><span><i class="reg-n"></i>Norte</span><span><i class="reg-ne"></i>Nordeste</span><span><i class="reg-co"></i>Centro-Oeste</span><span><i class="reg-se"></i>Sudeste</span><span><i class="reg-s"></i>Sul</span></p>
-    <div class="dc-grid"><div class="dc-item reg-n"><span class="uf">AC</span><a href="https://defesacivil.ac.gov.br" target="_blank" rel="noopener">defesacivil.ac.gov.br</a></div><div class="dc-item reg-ne"><span class="uf">AL</span><a href="https://defesacivil.al.gov.br" target="_blank" rel="noopener">defesacivil.al.gov.br</a></div><div class="dc-item reg-n"><span class="uf">AM</span><a href="https://www.defesacivil.am.gov.br" target="_blank" rel="noopener">www.defesacivil.am.gov.br</a></div><div class="dc-item reg-n"><span class="uf">AP</span><a href="https://defesacivil.ap.gov.br" target="_blank" rel="noopener">defesacivil.ap.gov.br</a></div><div class="dc-item reg-ne"><span class="uf">BA</span><a href="https://defesacivil.ba.gov.br" target="_blank" rel="noopener">defesacivil.ba.gov.br</a></div><div class="dc-item reg-ne"><span class="uf">CE</span><a href="https://defesacivil.ce.gov.br" target="_blank" rel="noopener">defesacivil.ce.gov.br</a></div><div class="dc-item reg-co"><span class="uf">DF</span><a href="https://defesacivil.df.gov.br" target="_blank" rel="noopener">defesacivil.df.gov.br</a></div><div class="dc-item reg-se"><span class="uf">ES</span><a href="https://defesacivil.es.gov.br" target="_blank" rel="noopener">defesacivil.es.gov.br</a></div><div class="dc-item reg-co"><span class="uf">GO</span><a href="https://bombeiros.go.gov.br" target="_blank" rel="noopener">bombeiros.go.gov.br</a></div><div class="dc-item reg-ne"><span class="uf">MA</span><a href="https://defesacivil.ma.gov.br" target="_blank" rel="noopener">defesacivil.ma.gov.br</a></div><div class="dc-item reg-se"><span class="uf">MG</span><a href="https://defesacivil.mg.gov.br" target="_blank" rel="noopener">defesacivil.mg.gov.br</a></div><div class="dc-item reg-co"><span class="uf">MS</span><a href="https://defesacivil.ms.gov.br" target="_blank" rel="noopener">defesacivil.ms.gov.br</a></div><div class="dc-item reg-co"><span class="uf">MT</span><a href="https://defesacivil.mt.gov.br" target="_blank" rel="noopener">defesacivil.mt.gov.br</a></div><div class="dc-item reg-n"><span class="uf">PA</span><a href="https://defesacivil.pa.gov.br" target="_blank" rel="noopener">defesacivil.pa.gov.br</a></div><div class="dc-item reg-ne"><span class="uf">PB</span><a href="tel:+558332185743">(83) 3218-5743 (sem portal)</a></div><div class="dc-item reg-ne"><span class="uf">PE</span><a href="https://defesacivil.pe.gov.br" target="_blank" rel="noopener">defesacivil.pe.gov.br</a></div><div class="dc-item reg-ne"><span class="uf">PI</span><a href="https://portal.pi.gov.br/defesacivil" target="_blank" rel="noopener">portal.pi.gov.br</a></div><div class="dc-item reg-s"><span class="uf">PR</span><a href="https://www.defesacivil.pr.gov.br" target="_blank" rel="noopener">www.defesacivil.pr.gov.br</a></div><div class="dc-item reg-se"><span class="uf">RJ</span><a href="https://cbmerj.rj.gov.br" target="_blank" rel="noopener">cbmerj.rj.gov.br</a></div><div class="dc-item reg-ne"><span class="uf">RN</span><a href="tel:+558432325153">(84) 3232-5153 (sem portal)</a></div><div class="dc-item reg-n"><span class="uf">RO</span><a href="https://cbm.ro.gov.br" target="_blank" rel="noopener">cbm.ro.gov.br</a></div><div class="dc-item reg-n"><span class="uf">RR</span><a href="https://bombeiros.rr.gov.br" target="_blank" rel="noopener">bombeiros.rr.gov.br</a></div><div class="dc-item reg-s"><span class="uf">RS</span><a href="https://defesacivil.rs.gov.br" target="_blank" rel="noopener">defesacivil.rs.gov.br</a></div><div class="dc-item reg-s"><span class="uf">SC</span><a href="https://defesacivil.sc.gov.br" target="_blank" rel="noopener">defesacivil.sc.gov.br</a></div><div class="dc-item reg-ne"><span class="uf">SE</span><a href="https://defesacivil.se.gov.br" target="_blank" rel="noopener">defesacivil.se.gov.br</a></div><div class="dc-item reg-se"><span class="uf">SP</span><a href="https://www.defesacivil.sp.gov.br" target="_blank" rel="noopener">www.defesacivil.sp.gov.br</a></div><div class="dc-item reg-n"><span class="uf">TO</span><a href="https://defesacivil.to.gov.br" target="_blank" rel="noopener">defesacivil.to.gov.br</a></div></div>
+    <p class="hint">Defesa Civil estadual de cada unidade da federação: telefones, plantão 24 horas, e-mail, portal e horário de expediente, transcritos do diretório oficial do Ministério da Integração e do Desenvolvimento Regional. Em emergência, os números nacionais acima atendem em todo o país.</p>
+    <label class="sr-only" for="selUFContato">Escolha o seu estado</label>
+    <select id="selUFContato" class="seletor" aria-label="Escolha o seu estado para ver os contatos"><option value="">Escolha o seu estado…</option></select>
+    <div class="contato-destaque" id="contatoDestaque" aria-live="polite" hidden></div>
+    <details class="acc" id="accTodosContatos" open>
+      <summary class="acc-summary">Todos os estados</summary>
+      <div class="contato-grade" id="contatoGrade"></div>
+    </details>
+    <div id="contatoFonte"></div>
   </div>
 
   <h2 id="como-se-proteger">Como se proteger em cada cenário</h2>
@@ -150,7 +159,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/proteja-se.js?v=73d9ab2c" defer></script>
+<script src="assets/js/proteja-se.js?v=e7567f03" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

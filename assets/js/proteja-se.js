@@ -114,3 +114,33 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     });
   }).catch(() => {});
 })();
+
+// 15/09/2026 (pedido da editoria): "Quem chamar no seu estado" — um cartão por UF, com telefones, plantão, e-mail, portal
+// e expediente lidos de data/contatos_uf.json (transcrição do diretório oficial do MIDR). Nada digitado aqui.
+(function(){
+  const sel = document.getElementById('selUFContato'), dest = document.getElementById('contatoDestaque'), grade = document.getElementById('contatoGrade'); if (!sel || !grade) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const tel = t => '<a href="tel:+55' + String(t).replace(/\D/g, '') + '">' + esc(t) + '</a>';
+  const cartao = (uf, c, grande) => {
+    const host = c.portal ? c.portal.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
+    return '<article class="contato' + (grande ? ' contato--grande' : '') + '" id="contato-' + uf + '">' +
+      '<div class="contato-topo"><span class="contato-uf">' + esc(uf) + '</span><span class="contato-nome">' + esc(c.nome) + '</span></div>' +
+      '<p class="contato-orgao">' + esc(c.orgao) + '</p>' +
+      '<dl class="contato-lista">' +
+      '<dt>Telefone' + (c.telefones.length > 1 ? 's' : '') + '</dt><dd>' + c.telefones.map(tel).join(' · ') + (c.expediente ? ' <span class="u-muted">(' + esc(c.expediente) + ')</span>' : '') + '</dd>' +
+      (c.plantao_24h && c.plantao_24h.length ? '<dt>Plantão 24 h</dt><dd>' + c.plantao_24h.map(tel).join(' · ') + '</dd>' : '') +
+      (c.email ? '<dt>E-mail</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></dd>' : '') +
+      '<dt>Portal</dt><dd>' + (c.portal ? '<a href="' + esc(c.portal) + '" target="_blank" rel="noopener">' + esc(host) + '</a>' : 'sem portal dedicado no diretório oficial · use telefone e e-mail') + '</dd>' +
+      '</dl></article>';
+  };
+  fetch('data/contatos_uf.json').then(r => r.ok ? r.json() : null).then(D => {
+    if (!D || !D.uf) { grade.innerHTML = '<p class="note">Contatos não carregados.</p>'; return; }
+    const ufs = Object.keys(D.uf).sort();
+    ufs.forEach(uf => { const o = document.createElement('option'); o.value = uf; o.textContent = D.uf[uf].nome; sel.appendChild(o); });
+    grade.innerHTML = ufs.map(uf => cartao(uf, D.uf[uf], false)).join('');
+    sel.addEventListener('change', () => { const uf = sel.value; if (!uf) { dest.hidden = true; dest.innerHTML = ''; return; } dest.innerHTML = cartao(uf, D.uf[uf], true); dest.hidden = false; });
+    // o seletor de risco (acima) também preenche o cartão de contato do mesmo estado
+    const selRisco = document.getElementById('selUFProteja'); if (selRisco) selRisco.addEventListener('change', () => { if (selRisco.value && D.uf[selRisco.value]) { sel.value = selRisco.value; sel.dispatchEvent(new Event('change')); } });
+    const f = D.fonte || {}; if (window.MonitorMapas) MonitorMapas.credito('contatoFonte', {fontes: [(f.nome || 'MIDR') + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + f.atualizado_pelo_orgao_em : ''), 'números nacionais de emergência'], url: f.url, data: f.consultado_em});
+  }).catch(() => { grade.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
+})();
