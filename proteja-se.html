@@ -29,7 +29,7 @@
 <script src="assets/vendor/jspdf.umd.min.js?v=98ccf17a"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
-<link rel="stylesheet" href="assets/base.css?v=87169a62">
+<link rel="stylesheet" href="assets/base.css?v=374e18a1">
 <script src="assets/mapas.js?v=3170c2ac"></script>
 </head>
 <body>
@@ -51,15 +51,15 @@
   <p class="hint">Orientações de órgãos oficiais, com a fonte em cada ficha. Não substituem as instruções da Defesa Civil local.</p>
 
   <div class="emerg-bar" id="emergencia">
-    <p class="selo">Em uma emergência, ligue</p>
+    <p class="selo">Em uma emergência, ligue — cada número atende um tipo de situação</p>
     <div class="emerg-nums" id="emergNums">
-      <a class="emerg-num" href="tel:190"><b>190</b><span>Polícia Militar</span></a>
-      <a class="emerg-num" href="tel:192"><b>192</b><span>SAMU</span></a>
-      <a class="emerg-num" href="tel:193"><b>193</b><span>Bombeiros</span></a>
-      <a class="emerg-num" href="tel:199"><b>199</b><span>Defesa Civil</span></a>
-      <a class="emerg-num emerg-num--sms" href="sms:40199"><b>40199</b><span>Alertas por SMS · envie seu CEP</span></a>
+      <a class="emerg-num" href="tel:193"><b>193</b><span>Bombeiros</span><small>incêndio · resgate · afogamento · desabamento · pessoa presa ou ilhada</small></a>
+      <a class="emerg-num" href="tel:192"><b>192</b><span>SAMU</span><small>emergência médica: desmaio, falta de ar, mal-estar grave por calor ou fumaça</small></a>
+      <a class="emerg-num" href="tel:199"><b>199</b><span>Defesa Civil</span><small>risco antes do dano: rachadura, encosta cedendo, alagamento subindo, árvore ou poste prestes a cair, vistoria e abrigo</small></a>
+      <a class="emerg-num" href="tel:190"><b>190</b><span>Polícia Militar</span><small>segurança das pessoas e do patrimônio durante e depois do evento</small></a>
+      <a class="emerg-num emerg-num--sms" href="sms:40199"><b>40199</b><span>Alertas por SMS</span><small>envie o CEP uma vez e receba os avisos da Defesa Civil da sua região</small></a>
     </div>
-    <p class="emerg-alertas">Ligações gratuitas, 24 horas, de qualquer telefone. Para receber alertas da Defesa Civil, envie o CEP por SMS para <strong>40199</strong> e mantenha os <strong>alertas de emergência ativados</strong> no celular — o <a href="https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-alerta" target="_blank" rel="noopener">Defesa Civil Alerta</a> avisa sem cadastro em aparelhos 4G/5G de 2020 em diante.</p>
+    <p class="emerg-alertas">Ligações gratuitas, 24 horas, de qualquer telefone. O 199 chama a Defesa Civil <strong>do seu município</strong>, que é quem atende no local. Mantenha os <strong>alertas de emergência ativados</strong> no celular — o <a href="https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-alerta" target="_blank" rel="noopener">Defesa Civil Alerta</a> avisa sem cadastro em aparelhos 4G/5G de 2020 em diante.</p>
   </div>
 
   <nav class="subnav" aria-label="Ir direto para">
@@ -67,7 +67,7 @@
     <a href="#guia-chuvas">Chuvas</a>
     <a href="#guia-seca">Estiagem/calor</a>
     <a href="#guia-fogo">Incêndios</a>
-    <a href="#quem-chamar">Quem chamar</a>
+    <a href="#quem-chamar">Defesa Civil do estado</a>
     <a href="#direitos">Seus direitos</a>
   </nav>
 
@@ -90,8 +90,8 @@
   </div>
 
   <div class="panel" id="quem-chamar">
-    <h2>Quem chamar no seu estado</h2>
-    <p class="hint">Defesa Civil estadual de cada unidade da federação: telefones, plantão 24 horas, e-mail, portal e horário de expediente, transcritos do diretório oficial do Ministério da Integração e do Desenvolvimento Regional. Em emergência, os números nacionais acima atendem em todo o país.</p>
+    <h2>Defesa Civil do seu estado: para que serve e como falar</h2>
+    <p class="hint">O órgão estadual coordena as Defesas Civis municipais: informa sobre alertas e boletins do estado, planos de contingência, abrigos, ajuda humanitária e decretos de emergência, e recebe pedidos de informação. <strong>Não é o número para socorro imediato</strong> — em situação de risco, ligue 199 (Defesa Civil do município), 193 (Bombeiros) ou 192 (SAMU). Onde há plantão 24 horas, ele aparece no cartão. Dados transcritos do diretório oficial do Ministério da Integração e do Desenvolvimento Regional.</p>
     <label class="sr-only" for="selUFContato">Escolha o seu estado</label>
     <select id="selUFContato" class="seletor" aria-label="Escolha o seu estado para ver os contatos"><option value="">Escolha o seu estado…</option></select>
     <div class="contato-destaque" id="contatoDestaque" aria-live="polite" hidden></div>
@@ -159,7 +159,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/proteja-se.js?v=e7567f03" defer></script>
+<script src="assets/js/proteja-se.js?v=501dfe07" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

@@ -401,8 +401,9 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 
 /* ===== 14. Proteja-se ===== */
 .emerg-bar{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-5); display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 0 var(--esp-secao); scroll-margin-top:var(--sp-7); box-shadow:var(--sombra);}
-.emerg-nums{display:flex; justify-content:center; gap:var(--sp-5); flex-wrap:wrap; margin:0 0 var(--sp-4);}
-.emerg-num{display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-3) var(--sp-5); min-width:118px; text-decoration:none; color:inherit;}
+.emerg-nums{display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:var(--sp-3); width:100%; margin:0 0 var(--sp-4);}
+.emerg-num{display:flex; flex-direction:column; align-items:center; justify-content:flex-start; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-3) var(--sp-3); min-width:0; text-decoration:none; color:inherit; text-align:center;}
+.emerg-num small{display:block; font-family:var(--font-corpo); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin-top:var(--sp-2); text-transform:none; letter-spacing:0;}
 .emerg-num:hover{text-decoration:none; border-color:var(--musgo);}
 .emerg-num b{font-family:var(--font-titulo); font-size:var(--fs-display); font-weight:var(--peso-regular); color:var(--ink); line-height:1; display:block;}
 .emerg-num--sms b{font-size:var(--fs-h1); line-height:var(--lh-h1);}
@@ -495,6 +496,8 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .mast-top{gap:var(--sp-3) var(--sp-4);}
 }
 @media (max-width:640px){
+  .emerg-nums{grid-template-columns:repeat(2, minmax(0, 1fr));}
+  .emerg-num--sms{grid-column:1 / -1;}
   .figura--dupla .figura-midia{grid-template-columns:minmax(0, 1fr);}
   .wrap{padding:var(--sp-4) var(--grade-margem-celular) var(--sp-7);}
   h1, .site-title{font-size:var(--fs-h2); line-height:var(--lh-h2);}

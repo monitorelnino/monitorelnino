@@ -15,6 +15,13 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §58 · Proteja-se: cada número de emergência diz para que serve; a seção do órgão estadual deixa de se chamar "Quem chamar" · 15/09/2026
+
+Nenhuma alteração de método. Classe **texto/serviço ao leitor** (correção da editoria: o cartão do órgão estadual não é número de socorro).
+
+- Barra de emergência: sob cada número, a situação que ele atende — 193 Bombeiros (incêndio, resgate, afogamento, desabamento, pessoa presa ou ilhada) · 192 SAMU (emergência médica) · 199 Defesa Civil (risco antes do dano: rachadura, encosta, alagamento subindo, árvore ou poste prestes a cair, vistoria e abrigo) · 190 Polícia Militar (segurança das pessoas e do patrimônio) · 40199 alertas por SMS. A nota explica que o 199 aciona a Defesa Civil do município.
+- A seção "Quem chamar no seu estado" passa a **"Defesa Civil do seu estado: para que serve e como falar"**: coordena as Defesas Civis municipais, informa alertas, boletins, planos, abrigos, ajuda humanitária e decretos, recebe pedidos de informação; não é socorro imediato — com a instrução explícita de ligar 199/193/192 em risco. Plantão 24 h continua no cartão onde o diretório o lista.
+
 ## §57 · Proteja-se humanizado com contatos oficiais por estado; cartão social com o nome novo; subtítulo em largura total · 15/09/2026
 
 Nenhuma alteração de método. Classe **serviço ao leitor + arte + estrutura de página**.
