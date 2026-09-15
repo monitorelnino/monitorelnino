@@ -88,7 +88,7 @@ espera a pista B. Isso é a governança automático × humano do projeto
 
 **Merge (regra em vigor desde 08/09/2026, por decisão escrita da editoria no
 chat).** Claude faz o merge dos PRs que ele mesmo abre, sem consultar a
-editoria, desde que (a) os 18 portões locais tenham passado na árvore final do
+editoria, desde que (a) os 19 portões locais tenham passado na árvore final do
 ramo, (b) a Action "Portões" do PR esteja verde e (c) o PR não seja de
 lançamento ou reversão do domínio (§7), que continua exigindo merge pela
 editoria. Se a Action falhar, o PR fica aberto e o problema é relatado — nunca
@@ -100,7 +100,7 @@ editoria em todo PR da pista B, com exceção única da correção de emergênci
 
 | Classe | Exemplos | Além da sequência 3.1 exige | Versão |
 |---|---|---|---|
-| **Texto/editorial** | frase do herói, legenda, rótulo, texto de página | auditoria de vocabulário controlado (`grep` contra frases-teto e frases proibidas; "não localizamos até o corte" é o teto) · paridade METODOLOGIA ↔ site onde o texto é espelhado | mantém |
+| **Texto/editorial** | frase do herói, legenda, rótulo, texto de página | auditoria de vocabulário controlado (`grep` contra frases-teto e frases proibidas; "não localizamos até o corte" é o teto) · política de legendas (portão 19: legenda descreve, nunca interpreta — interpretação vai ao texto narrativo) · paridade METODOLOGIA ↔ site onde o texto é espelhado | mantém |
 | **Design** | cores, layout, posição de figuras, cartões | prévia obrigatória (desktop, tablet e celular); **sistema de design de 07/09/2026**: nenhuma página tem `<style>` nem tipografia/espaçamento inline; todo tamanho vem da escala de 8 degraus e todo espaçamento da escala de 9 degraus de `assets/tokens.css`; mapa, gráfico, tabela, diagrama e barras usam o componente único `.figura` (título · subtítulo · mídia · legenda · crédito · número automático); cartões de texto usam `.cartao`; crédito sempre "Fonte: … · Atualização: dd/mm/aaaa" via `MonitorMapas.credito` (portões 1 e 18); **paleta semântica única (09/09/2026)**: toda cor de dado (faixa, status, categoria, família de risco, ordinal, ano, rota, ENOS, preparação × resposta) vem de `MonitorMapas.PALETA` em `assets/mapas.js` — o mesmo conceito tem a mesma cor em todas as páginas; hex cru e `MonitorMapas.cor('musgo'|'argila'|…)` nos scripts de página são bloqueados pelo portão 1; acessibilidade e responsividade pelo portão 11; nenhum rótulo de faixa ou legenda pode afirmar mais do que o índice mede (§2.2 da transferência conceitual) · os quatro `verificar_runtime_*.js` verdes | mantém |
 | **Código** | scripts, workflow, dependências | portões completos (§3.3) · SBOM e `MANIFEST_SHA256.txt` regenerados (`scripts/gerar_manifesto.py`) · SRI recalculado se algum CDN mudar · `pip-audit`/`npm audit` sem CVE crítico novo | patch (v2.2.x) |
 | **Dados** | registrar instrumento, reclassificar ato, aplicar contribuição | entra **somente** por `aplicar_revisao.py` / `converter_contribuicao.py`, nunca por edição direta de `data/*.json` · citação completa (número + data do ato) · `recalcular_mare.py --write` seguido de `--check` · determinismo do PDF (`SOURCE_DATE_EPOCH` = corte) · errata se corrige registro anterior | mantém; novo corte em `data/meta.json` |
@@ -143,8 +143,12 @@ e são a única reserva de julgamento humano que Claude **nunca** executa sozinh
                                                   de tokens; figuras lado a lado com mesma largura/altura e partes alinhadas;
                                                   crédito no formato único "Fonte: … · Atualização: dd/mm/aaaa"; numeração
                                                   de figuras e seções a partir de 1; sem rolagem horizontal)
+19. node   scripts/verificar_legendas.js         (15/09/2026, regra editorial permanente: título, subtítulo, item de
+                                                  legenda, crédito, rótulo de tooltip e cartão-indicador descrevem, nunca
+                                                  avaliam, interpretam nem atribuem causa; teto probatório dentro da
+                                                  figura; título ≤ 100 caracteres, leitura ≤ 2 frases; sem caixa alta)
 ```
-Critério: dezoito `✓` (o 17º e o 18º rodam no CI desde 08/09/2026, PR #106) (o 6º admite `⚠` até 14/09/2026 — prazo original 09/09, adiado com errata em 08/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
+Critério: dezenove `✓` (o 17º e o 18º rodam no CI desde 08/09/2026, PR #106) (o 6º admite `⚠` até 14/09/2026 — prazo original 09/09, adiado com errata em 08/09/2026) e média nacional reproduzida bit a bit. Os coletores têm `--autoteste` próprio (fixtures + testes negativos), rodado antes de qualquer PR que os toque. Todo portão novo entra com teste negativo (quebra proposital acusada, restauração verde). Se a mudança
 tocou dados: antes disso, `recalcular_mare.py --write` e regeneração dos PDFs.
 Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 

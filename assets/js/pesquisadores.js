@@ -49,7 +49,7 @@ function renderRotaMPs(){
   document.getElementById('mpsPrazos').innerHTML = mps.map(mp => {
     const ini = dataBR(mp.publicada_em), fim = dataBR(mp.tramitacao.deliberacao_ate);
     const dias = Math.round((fim - hoje) / 86400000), resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));
-    const espera = mp.id === 'mp1367' ? 'Se o Senado não votar até ' + esc(mp.tramitacao.deliberacao_ate) + ', a MP caduca: o empenhado fica, o restante do crédito cai.' : 'Se o Congresso não votar até ' + esc(mp.tramitacao.deliberacao_ate) + ', a MP caduca — e a maior parte do crédito ainda não foi empenhada.';
+    const espera = mp.id === 'mp1367' ? 'Se o Senado não votar até ' + esc(mp.tramitacao.deliberacao_ate) + ', a MP caduca: o empenhado fica, o restante do crédito cai.' : 'Se o Congresso não votar até ' + esc(mp.tramitacao.deliberacao_ate) + ', a MP caduca: o empenhado fica, o restante do crédito cai.';
     return `<div class="prazo-rel" role="group" aria-label="${esc(mp.numero)}">${MonitorMapas.relogio(resta, dias, {cor: dias < 0 ? null : mp.cor})}
       <div class="prazo-rel-txt"><div class="prazo-titulo">${esc(mp.numero)} — ${brl(mp.valor)} · ${esc(mp.tema)}</div>
       <div class="prazo-meta">deliberação · publicada em ${esc(mp.publicada_em)} → <strong>${esc(mp.tramitacao.deliberacao_ate)}</strong> · ${esc(mp.tramitacao.situacao)}</div>
@@ -295,12 +295,13 @@ function renderTable(){
       tb.innerHTML = CATALOGO.desfechos.map(d => '<tr><td><strong>' + esc(d.nome) + '</strong></td><td>' + esc(d.comprometimento) + '</td><td>' + esc(d.sistema) + '</td><td>' + esc(d.fonte_aberta) + '</td><td><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + COR[d.status_coleta] + ';margin-right:6px;"></span>' + esc(ROT[d.status_coleta] || d.status_coleta) + '</td></tr>').join('');
       const n = {}; CATALOGO.desfechos.forEach(d => { n[d.status_coleta] = (n[d.status_coleta] || 0) + 1; });
       MonitorMapas.legenda('legCatalogo', Object.keys(COR).map(k => ({cor: COR[k], rotulo: (ROT[k] || k) + ': ' + (n[k] || 0)})));
+      const nCol = document.getElementById('nDesfechosColetados'); if (nCol) nCol.textContent = String(n.coletado || 0);
       MonitorMapas.credito('boxCatalogo', {fontes: ['MS/SVSA, Plano de Contingência por Seca e Estiagem (2026), Quadro 2'], data: (CATALOGO.fonte || {}).lido_em || null, url: (CATALOGO.fonte || {}).url});
     } else MonitorMapas.credito('boxCatalogo', {fontes: ['MS/SVSA'], data: null});
     const tg = document.querySelector('#tblGatilhos tbody');
     if (tg && GATILHOS && GATILHOS.gatilhos) {
       const N = RESP_NAC && RESP_NAC.nacional; const pct = N ? (100 * N.fracao_municipios).toFixed(1).replace('.', ',') + '% dos municípios sob decreto (todas as causas) · limiar 8%' : null;
-      const valor = g => g.id === 'eme_decretos' && pct ? pct : g.id === 'cri_decretos' && N ? 'por região e causa: a filtrar · limiar 50%' : g.status_monitor === 'computavel_parcial' ? 'parcial — ' + esc(g.nota) : g.status_monitor === 'leitura_humana' ? 'leitura humana — ' + esc(g.nota) : g.status_monitor === 'nao_publico' ? 'não público (só por LAI)' : 'sem coleta' + (g.nota ? ' — ' + esc(g.nota) : '');
+      const valor = g => g.id === 'eme_decretos' && pct ? pct : g.id === 'cri_decretos' && N ? 'por região e causa: sem coleta · limiar 50%' : g.status_monitor === 'computavel_parcial' ? 'parcial — ' + esc(g.nota) : g.status_monitor === 'leitura_humana' ? 'leitura humana — ' + esc(g.nota) : g.status_monitor === 'nao_publico' ? 'não público (só por LAI)' : 'sem coleta' + (g.nota ? ' — ' + esc(g.nota) : '');
       const ORD = {computavel: 0, computavel_parcial: 1, leitura_humana: 2, sem_coleta: 3, nao_publico: 4};
       tg.innerHTML = GATILHOS.gatilhos.slice().sort((a, b) => ORD[a.status_monitor] - ORD[b.status_monitor]).map(g => '<tr><td>' + esc(g.estagio) + '</td><td>' + esc(g.texto) + '</td><td>' + esc(g.fonte_oficial) + '</td><td>' + valor(g) + '</td></tr>').join('');
       const c = {}; GATILHOS.gatilhos.forEach(g => { c[g.status_monitor] = (c[g.status_monitor] || 0) + 1; });

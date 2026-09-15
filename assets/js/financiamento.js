@@ -199,10 +199,10 @@ function __init(){
   // Manus AI) — "não responde quem pediu ou não pediu no universo monitorado".
   // 6 · programas permanentes
   const PROG = [
-    {nome: 'Garantia-Safra', base: 'Lei 10.420/2002 · MDA', regra: 'adesão municipal anual antes do plantio; cota municipal 6%; pagamento por perda verificada — sem decreto', lista: 'relação de municípios aderentes: a coletar (MDA)'},
-    {nome: 'Programa Cisternas', base: 'MDS', regra: 'adesão e projeto; contínuo', lista: 'execução por município: a coletar (MDS)'},
-    {nome: 'Operação Carro-Pipa', base: 'Exército (CMNE) / MIDR', regra: 'inclusão condicionada, na maior parte dos casos, a reconhecimento federal', lista: 'LISTA NÃO PÚBLICA — portal do Exército bloqueou acesso automatizado em 02/09/2026; pedido de LAI gerado'},
-    {nome: 'CISC — Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal não localizada — não inventar'},
+    {nome: 'Garantia-Safra', base: 'Lei 10.420/2002 · MDA', regra: 'adesão municipal anual antes do plantio; cota municipal 6%; pagamento por perda verificada — sem decreto', lista: 'relação de municípios aderentes: sem coleta até o corte (MDA)'},
+    {nome: 'Programa Cisternas', base: 'MDS', regra: 'adesão e projeto; contínuo', lista: 'execução por município: sem coleta até o corte (MDS)'},
+    {nome: 'Operação Carro-Pipa', base: 'Exército (CMNE) / MIDR', regra: 'inclusão condicionada, na maior parte dos casos, a reconhecimento federal', lista: 'relação de municípios atendidos não publicada pelo Exército; sem coleta até o corte'},
+    {nome: 'CISC — Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal das cidades não localizada até o corte'},
     {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: em coleta'},
   ];
   document.getElementById('programasLista').innerHTML = PROG.map(p => '<li><strong>' + esc(p.nome) + '</strong> — ' + esc(p.base) + ': ' + esc(p.regra) + ' <span class="u-muted">· ' + esc(p.lista) + '</span></li>').join('');

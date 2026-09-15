@@ -236,6 +236,32 @@ dado (um total, uma contagem, "nenhum alerta vigente") entra como item de legend
 texto alternativo, por acessibilidade, fica num `<details>` fechado com resumo neutro
 ("Ver em tabela"). O portão `scripts/verificar_figuras.js` bloqueia a publicação se isso voltar.
 
+## Legendas: descrever, nunca interpretar (regra editorial permanente de 15/09/2026)
+
+Legenda, título auxiliar, subtítulo, item de legenda, crédito, rótulo de tooltip e cartão com
+número dizem **o que está sendo mostrado** (variável, período, território, unidade) e, quando
+ajuda, **o fato principal que a figura permite ler** — em uma frase, no máximo duas. Não avaliam,
+não dramatizam, não explicam causa, não dizem ao leitor o que sentir. Vale para toda figura
+existente e para toda figura nova.
+
+- Adjetivo vira número: não "aumento expressivo", mas "de 12 mil (2020) para 18 mil (2024)".
+- Sem juízo: nada de "preocupante", "alarmante", "grave", "crítico", "positivo", "insuficiente",
+  "avanço importante", "chama atenção", "fica evidente", "os números mostram que…".
+- Sem causa que o dado não demonstra: "X e Y aumentaram no período", nunca "X provocou Y".
+- Teto probatório também dentro da figura: "sem plano **localizado**", nunca "sem plano".
+- Interpretação existe, mas mora fora da figura: no parágrafo narrativo, no insight ou na ficha —
+  nunca na legenda. Duas camadas: a figura diz o que os dados mostram; o texto diz o que isso
+  significa na história que o site conta.
+- Hierarquia: título (o que se vê) · subtítulo (período · variável · unidade) · figura · legenda ·
+  fonte e data · texto narrativo (só aqui, quando couber, a interpretação).
+
+O portão `scripts/verificar_legendas.js` (19º) bloqueia a publicação se isso voltar: léxico
+avaliativo, aberturas interpretativas, conectivos causais, "sem plano/instrumento" sem
+"localizado", caixa alta de ênfase, título acima de 100 caracteres, leitura com mais de duas
+frases — nas figuras renderizadas, nos cartões-indicador e nas strings de tooltip dos scripts.
+Termos técnicos com essas palavras ("síndrome respiratória aguda grave", "janela crítica" do
+Ministério da Saúde, "nível 3 (alerta)") estão na lista de exceções do portão.
+
 ## SEO (07/09/2026)
 
 Cada página tem título e descrição únicos (título ≤ 110 caracteres; descrição 70–170), canônica no domínio,

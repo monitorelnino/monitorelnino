@@ -245,12 +245,12 @@ svgPrior.append('g').selectAll('circle')
   .attr('stroke-width', d => d.publicado ? 1.6 : 1)
   .attr('stroke-dasharray', d => d.publicado ? null : '1.5,1.2')
   .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>Município prioritário (proxy populacional) — `
-    + (d.publicado ? 'JÁ TEM instrumento localizado' : 'nenhum instrumento localizado ainda'), evt))
+    + (d.publicado ? 'instrumento localizado' : 'nenhum instrumento localizado até o corte'), evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
 document.getElementById('legPrioritarios').innerHTML =
   `<span><i style="background:var(--musgo)"></i>Com instrumento</span>`
-  + `<span><i style="background:repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)"></i>Sem instrumento ainda</span>`;
+  + `<span><i style="background:repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)"></i>Sem instrumento localizado</span>`;
 
 // ===========================================================
 // Mapa de atos de resposta (decretos de emergência) — NUNCA pontuam no
@@ -372,7 +372,7 @@ ligarSeletorDeCamada('selCoberturaNatureza', [{valor:'cobertura', svg:'mapCobert
 })();
 
 // ---- Mapa: risco projetado × instrumento estadual ----
-const CONSIST_ROTULO = {COBRE:'Cobre o risco projetado', PARCIAL:'Cobre parte do risco', DIFERE:'Risco difere do instrumento', SEM:'Sem instrumento estadual', NEUTRO:'Sem sinal elevado no trimestre'};
+const CONSIST_ROTULO = {COBRE:'Cobre o risco projetado', PARCIAL:'Cobre parte do risco', DIFERE:'Risco difere do instrumento', SEM:'Instrumento estadual não localizado', NEUTRO:'Sem sinal elevado no trimestre'};
 const CONSIST_COR = {COBRE:MonitorMapas.PALETA.consistencia.COBRE, PARCIAL:MonitorMapas.PALETA.consistencia.PARCIAL, DIFERE:MonitorMapas.PALETA.consistencia.DIFERE, SEM:'url(#hatchSemInstr)', NEUTRO:MonitorMapas.PALETA.consistencia.NEUTRO};
 // Cor de borda plana para a TABELA (SEM usa padrão de hachura no mapa SVG, que não
 // é uma cor CSS válida para border — aqui precisa de um tom sólido equivalente).

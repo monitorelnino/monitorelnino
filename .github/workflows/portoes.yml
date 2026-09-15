@@ -44,6 +44,7 @@ jobs:
           python3 verificar_painel.py
           node scripts/verificar_runtime_financiamento.js
           node scripts/verificar_figuras.js
+          node scripts/verificar_legendas.js
           python3 scripts/testar_detector_defeso.py
           python3 verificar_resposta.py
           node scripts/verificar_runtime_resposta.js

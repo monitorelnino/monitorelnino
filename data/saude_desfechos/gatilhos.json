@@ -19,7 +19,7 @@
    "texto": "Um ou mais alertas de seca/estiagem na mesma região com classificação 2/3 (Inmet, Cenad, SGB)",
    "fonte_oficial": "INMET avisos; Cemaden",
    "status_monitor": "computavel_parcial",
-   "nota": "avisos INMET por UF já coletados (Risco climático); classificação 2/3 a mapear"
+   "nota": "avisos INMET por UF já coletados (Risco climático); classificação 2/3 sem coleta"
   },
   {
    "id": "mob_prognostico",
@@ -35,7 +35,7 @@
    "texto": "Uma bacia com cota de estiagem abaixo da permanência anual de 90% (ANA)",
    "fonte_oficial": "ANA",
    "status_monitor": "sem_coleta",
-   "nota": "adaptador ANA pendente"
+   "nota": "Monitor de Secas (ANA), leitura por bacia"
   },
   {
    "id": "mob_incidencia",
@@ -51,7 +51,7 @@
    "texto": "Concentração de focos de calor em 3+ estados da mesma região e/ou violação do padrão de qualidade do ar por 2 dias seguidos em 3+ estados",
    "fonte_oficial": "INPE focos; VigiAR/CETESB ar",
    "status_monitor": "computavel_parcial",
-   "nota": "focos por UF já coletados (Risco climático); qualidade do ar a coletar"
+   "nota": "focos por UF já coletados (Risco climático); qualidade do ar sem coleta"
   },
   {
    "id": "ale_aps",
@@ -59,7 +59,7 @@
    "texto": "Aumento de atendimentos da APS por desidratação, IRA, DTHA vs ano anterior/série histórica",
    "fonte_oficial": "SISAB",
    "status_monitor": "sem_coleta",
-   "nota": "e-SUS APS agregado — a localizar"
+   "nota": "e-SUS APS agregado"
   },
   {
    "id": "ale_temp",
@@ -67,7 +67,7 @@
    "texto": "Temperatura 5 °C acima da média do local por mais de 3 dias",
    "fonte_oficial": "INMET estações",
    "status_monitor": "sem_coleta",
-   "nota": "INMET dados abertos horários — coletor a escrever"
+   "nota": "INMET, dados abertos horários"
   },
   {
    "id": "ale_pedidos",
@@ -91,7 +91,7 @@
    "texto": "2+ surtos de doenças relacionadas ao evento em UFs/Dsei diferentes",
    "fonte_oficial": "Cievs/Sinan",
    "status_monitor": "sem_coleta",
-   "nota": "informes Cievs estaduais a localizar"
+   "nota": "informes dos Cievs estaduais"
   },
   {
    "id": "eme_decretos",
@@ -99,7 +99,7 @@
    "texto": "Decretos de emergência/calamidade por seca e estiagem em 25% das UFs e/ou 8% dos municípios",
    "fonte_oficial": "S2iD/DOU",
    "status_monitor": "computavel",
-   "nota": "o contador de resposta do Monitor: hoje 4,2% dos municípios sob decreto (todas as causas); por causa 'seca/estiagem' a filtrar"
+   "nota": "o contador de resposta do Monitor (todas as causas); por causa 'seca/estiagem' sem coleta"
   },
   {
    "id": "eme_alertas_cievs",
@@ -131,7 +131,7 @@
    "texto": "Taxa de mortalidade geral ≥ 20% acima da série histórica",
    "fonte_oficial": "SIM",
    "status_monitor": "sem_coleta",
-   "nota": "SIM preliminar / Registro Civil — coletor a escrever"
+   "nota": "SIM preliminar / Registro Civil"
   },
   {
    "id": "cri_sistemas",
