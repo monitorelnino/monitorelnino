@@ -1,0 +1,266 @@
+{
+ "_governanca": "Dinheiro para se preparar, por setor (saúde, fogo, seca): rotas preventivas federais e extraorçamentárias com origem, destino, chave de acesso e glifos (plano · risco · calendário · obra · crédito), base legal e situação no período eleitoral. Fonte da figura #boxPreventivoSetor em financiamento.html e da ficha 'Como ler o dinheiro preventivo'. Peso zero; nunca lido pelo motor (recalcular_mare.py, gerar_monitor_saude.py). Rotas com verificado_em nulo trazem base legal do handover editorial de 15/09/2026 e ficam marcadas 'fonte a verificar' na página até a leitura documental; fonte/hash só quando verificados.",
+ "corte": "06/09/2026",
+ "chaves": {
+  "regra": "o dinheiro flui por lei, sem pedido e sem decreto",
+  "decreto": "abre depois do dano, com emergência declarada e reconhecida (resposta)",
+  "discricionaria": "depende de decisão do governo: edital, convênio, crédito",
+  "direta": "a União executa no território, sem transferir ao ente"
+ },
+ "glifos": {
+  "plano": "exige plano aprovado",
+  "risco": "abre quando um órgão declara risco na região",
+  "calendario": "adesão em prazo anual",
+  "obra": "obra em área de risco",
+  "credito": "crédito ou seguro"
+ },
+ "origens": [
+  {
+   "id": "uniao",
+   "nome": "União",
+   "sub": "orçamento federal"
+  },
+  {
+   "id": "estado",
+   "nome": "Estado",
+   "sub": "recebe e repassa"
+  },
+  {
+   "id": "fundos",
+   "nome": "Fundos e doações",
+   "sub": "fora do orçamento (Fundo Amazônia)"
+  }
+ ],
+ "destinos": [
+  {
+   "id": "mun",
+   "nome": "Município",
+   "sub": "caixa do ente"
+  },
+  {
+   "id": "pessoas",
+   "nome": "Pessoas",
+   "sub": "famílias e produtores"
+  },
+  {
+   "id": "obras",
+   "nome": "Obras e serviços",
+   "sub": "no território, sem passar pelo ente"
+  }
+ ],
+ "setores": [
+  {
+   "id": "saude",
+   "nome": "Saúde",
+   "rotas": [
+    {
+     "id": "s1",
+     "nome": "Piso da vigilância em saúde",
+     "origem": "uniao",
+     "destino": "mun",
+     "chave": "regra",
+     "glifos": [],
+     "objeto": "preventivo",
+     "base_legal": "Lei 8.142/1990; LC 141/2012; PRC GM/MS 6/2017",
+     "defeso": "não suspenso — fundo a fundo do SUS não é transferência voluntária (LRF art. 25, a confirmar)",
+     "fonte": null,
+     "hash_evidencia": null,
+     "verificado_em": null
+    },
+    {
+     "id": "s2",
+     "nome": "Incentivo sazonal de arboviroses",
+     "origem": "uniao",
+     "destino": "mun",
+     "chave": "regra",
+     "glifos": [
+      "plano"
+     ],
+     "objeto": "preventivo",
+     "base_legal": "Portaria GM/MS 2.298/2023 e sucessoras (financia planos de contingência de arboviroses)",
+     "defeso": "não suspenso — fundo a fundo do SUS (a confirmar)",
+     "fonte": null,
+     "hash_evidencia": null,
+     "verificado_em": null
+    },
+    {
+     "id": "s3",
+     "nome": "Recurso emergencial do SUS",
+     "origem": "uniao",
+     "destino": "mun",
+     "chave": "decreto",
+     "glifos": [
+      "plano"
+     ],
+     "objeto": "resposta",
+     "base_legal": "Portaria GM/MS 6.495/2024 — declaração de emergência pelo próprio ente e plano de ação",
+     "defeso": "exceção de emergência (art. 73, VI, a)",
+     "fonte": null,
+     "hash_evidencia": null,
+     "verificado_em": null,
+     "nota": "chave: declaração do ente + plano de ação — é resposta"
+    }
+   ]
+  },
+  {
+   "id": "fogo",
+   "nome": "Fogo",
+   "rotas": [
+    {
+     "id": "f1",
+     "nome": "FNMA: transferência direta, sem convênio",
+     "origem": "uniao",
+     "destino": "mun",
+     "chave": "regra",
+     "glifos": [
+      "risco",
+      "plano"
+     ],
+     "objeto": "preventivo",
+     "base_legal": "Lei 15.143/2025, art. 16 → Lei 7.797/1989, art. 3º-A; decreto regulamentador de 11/06/2026 (Lei 7.797, art. 3º-A); decreto regulamentador de 11/06/2026; portaria MMA de emergência ambiental",
+     "defeso": "em verificação",
+     "fonte": "Lei 15.143/2025; Lei 7.797/1989; decreto de 11/06/2026 (número a confirmar)",
+     "hash_evidencia": "9355eb3bd386e7fe",
+     "verificado_em": "14/09/2026",
+     "nota": "chave: risco declarado pelo MMA + plano operativo aprovado (PNMIF)"
+    },
+    {
+     "id": "f2",
+     "nome": "Edital FNMA/FDD 2025 — planos operativos",
+     "origem": "uniao",
+     "destino": "mun",
+     "chave": "discricionaria",
+     "glifos": [
+      "plano"
+     ],
+     "objeto": "preventivo",
+     "base_legal": "Lei 7.797/1989 (FNMA); Lei 9.008/1995 (FDD) (chamamento público FNMA/FDD 2025); 81 elegíveis, 31 contemplados",
+     "defeso": "em verificação",
+     "fonte": "MMA, resultado do edital FNMA/FDD (26/08/2025)",
+     "hash_evidencia": "f14eeeb31f172015",
+     "verificado_em": "14/09/2026"
+    },
+    {
+     "id": "f3",
+     "nome": "Fundo Amazônia: bombeiros e brigadas",
+     "origem": "fundos",
+     "destino": "obras",
+     "chave": "discricionaria",
+     "glifos": [
+      "plano"
+     ],
+     "objeto": "preventivo",
+     "base_legal": "Decreto 6.527/2008 (Fundo Amazônia, BNDES) (projeto do estado aprovado pelo BNDES); R$ 150 mi para MS, MG, GO, BA, PI, DF",
+     "defeso": "não é transferência da União",
+     "fonte": "BNDES / Fundo Amazônia (2025–2026)",
+     "hash_evidencia": "4273693beb40ffbb",
+     "verificado_em": "14/09/2026",
+     "nota": "chave: projeto do estado aprovado pelo BNDES"
+    },
+    {
+     "id": "f4",
+     "nome": "Brigadas federais (Prevfogo/IBAMA, ICMBio)",
+     "origem": "uniao",
+     "destino": "pessoas",
+     "chave": "direta",
+     "glifos": [],
+     "objeto": "preventivo",
+     "base_legal": "Lei 14.944/2024 (PNMIF) (execução direta; portaria de emergência ambiental viabiliza a contratação)",
+     "defeso": "não é transferência",
+     "fonte": "MMA/IBAMA/ICMBio (temporada 2026)",
+     "hash_evidencia": "9ba7b6ebbac354b8",
+     "verificado_em": "14/09/2026"
+    }
+   ]
+  },
+  {
+   "id": "seca",
+   "nome": "Seca",
+   "rotas": [
+    {
+     "id": "d1",
+     "nome": "Cisternas (P1MC) e Água Doce",
+     "origem": "uniao",
+     "destino": "pessoas",
+     "chave": "direta",
+     "glifos": [],
+     "objeto": "preventivo",
+     "base_legal": "Lei 12.873/2013 (MDS); Programa Água Doce (MIDR); Funasa 2026",
+     "defeso": "programa em execução — continua",
+     "fonte": null,
+     "hash_evidencia": null,
+     "verificado_em": null
+    },
+    {
+     "id": "d2",
+     "nome": "Garantia-Safra",
+     "origem": "uniao",
+     "destino": "pessoas",
+     "chave": "regra",
+     "glifos": [
+      "calendario"
+     ],
+     "objeto": "preventivo",
+     "base_legal": "Lei 10.420/2002 — adesão anual antes do plantio; município paga cota",
+     "defeso": "programa em execução — continua",
+     "fonte": null,
+     "hash_evidencia": null,
+     "verificado_em": null,
+     "nota": "preventivo com pagamento pós-perda; nenhum decreto"
+    },
+    {
+     "id": "d3",
+     "nome": "Segurança hídrica: adutoras, barragens, obras",
+     "origem": "uniao",
+     "destino": "obras",
+     "chave": "regra",
+     "glifos": [
+      "obra"
+     ],
+     "objeto": "preventivo",
+     "base_legal": "Lei 12.340/2010, art. 8º; Decreto 11.219/2022, arts. 6–8 (prevenção = obra em área de risco); Novo PAC",
+     "defeso": "obras com cronograma continuam",
+     "fonte": null,
+     "hash_evidencia": null,
+     "verificado_em": null
+    },
+    {
+     "id": "d4",
+     "nome": "Crédito e seguro rural (Pronaf, FNE, PSR)",
+     "origem": "uniao",
+     "destino": "pessoas",
+     "chave": "discricionaria",
+     "glifos": [
+      "credito"
+     ],
+     "objeto": "preventivo",
+     "base_legal": "Plano Safra; FNE (Lei 7.827/1989)",
+     "defeso": "programa em execução — continua",
+     "fonte": null,
+     "hash_evidencia": null,
+     "verificado_em": null
+    },
+    {
+     "id": "d5",
+     "nome": "Carro-Pipa",
+     "origem": "uniao",
+     "destino": "pessoas",
+     "chave": "decreto",
+     "glifos": [],
+     "objeto": "resposta",
+     "base_legal": "Operação Carro-Pipa (Exército/MIDR) — exige situação de emergência reconhecida",
+     "defeso": "exceção de emergência (art. 73, VI, a)",
+     "fonte": null,
+     "hash_evidencia": null,
+     "verificado_em": null,
+     "nota": "desenhada para o contraste: é resposta"
+    }
+   ],
+   "ausencia": {
+    "id": "d0",
+    "rotulo": "(nenhuma) rota ao município ligada a plano e a nível de risco",
+    "nota": "O Monitor de Secas (ANA) classifica a seca todo mês — fraca, moderada, grave, extrema, excepcional — e não destrava nenhuma transferência."
+   }
+  }
+ ]
+}

@@ -73,6 +73,18 @@ setTimeout(() => {
   teste("caminho do município: três momentos com chips de chave", d.querySelectorAll("#caminho .cartao").length === 3 && d.querySelectorAll("#caminho .chip-chave").length >= 12);
   teste("ficha 'Como ler as rotas': chaves, termos, 8 cartões e a rota do fogo (PNMIF)", /Chaves de acesso/.test(q("comolerRotas").textContent) && /PNMIF/.test(q("comolerRotas").textContent) && q("rotasCards").children.length === 8);
   teste("nenhuma tabela na página (só figuras, mapas, rotas e fichas)", d.querySelectorAll("main table").length === 0);
+  // 15/09/2026: figura "dinheiro preventivo por setor" — 3 faixas, 3 destinos, nó de ausência d0 sem aresta, glifos na legenda, tooltip, <dl>
+  try {
+    const PS = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "preventivo_setores.json"), "utf8")); const nRotas = PS.setores.reduce((a, s) => a + s.rotas.length, 0);
+    teste("preventivo por setor: um nó por rota + nó de ausência, 3 origens e 3 destinos", q("preventivoSetor").querySelectorAll("g.nos g[role=img]").length === nRotas + 1 && q("preventivoSetor").querySelectorAll("g.nos > g:not([role])").length === 0);
+    teste("preventivo por setor: nó de ausência da seca sem aresta", q("preventivoSetor").querySelectorAll(".aresta.d0").length === 0 && [...q("preventivoSetor").querySelectorAll("g.nos g[role=img]")].some(g => /nenhuma\) rota ao município/.test(g.getAttribute("aria-label"))));
+    teste("preventivo por setor: glifos desenhados e explicados na legenda", q("preventivoSetor").querySelectorAll(".glifo").length >= 5 && /glifo plano/.test(q("legPreventivoSetor").textContent) && /ausência de rota/.test(q("legPreventivoSetor").textContent));
+    const g1 = [...q("preventivoSetor").querySelectorAll("g.nos g[role=img]")].find(g => /FNMA/.test(g.getAttribute("aria-label"))); g1.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
+    teste("preventivo por setor: tooltip do nó com chave, base legal e período eleitoral", /chave: regra \(risco \+ plano\)/.test(q("mapTooltip").innerHTML) && /Período eleitoral/.test(q("mapTooltip").innerHTML));
+    teste("preventivo por setor: alternativa em lista de definição com uma entrada por rota", q("dlPreventivoSetor").querySelectorAll("dd").length === nRotas + 1);
+    teste("preventivo por setor: título-fato do dado", /^Saúde: \d+ rotas ao município · Fogo: \d+, uma por risco e plano · Seca: \d+, nenhuma por plano ou risco$/.test(q("boxPreventivoSetor").querySelector(".figura-titulo").textContent));
+    teste("ficha 'Como ler o dinheiro preventivo': três chaves, três destinos, saúde, fogo, seca, o que não diz", ["Três chaves de preparação", "Três destinos", "Saúde.", "Fogo.", "Seca.", "O que a figura não diz"].every(k => q("comolerPreventivo").textContent.includes(k)));
+  } catch (e) { teste("preventivo por setor (" + e.message + ")", false); }
   teste("painéis retirados a pedido da editoria não voltaram", !q("porestado") && !q("boxFundoEstadual") && !q("notaExecucao"));
   // Painel amostral (agregados) migrou para pesquisadores.html em 13/09/2026 (proposta de
   // enxugamento, Manus AI) — teste de renderização correspondente removido daqui.

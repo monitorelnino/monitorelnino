@@ -43,6 +43,9 @@ main{display:block;}
 .grade-figuras--3{grid-template-columns:repeat(3, minmax(0, 1fr));}   /* 15/09/2026: mapas e gráficos lado a lado quando cabem três */
 .grade-figuras--3 .figura-titulo{min-height:calc(3 * var(--fs-h4) * var(--lh-h4));}   /* a um terço da largura, títulos-fato ocupam até três linhas: reserva fixa para as três figuras alinharem */
 .grade-figuras--3 .figura-sub{min-height:calc(3 * var(--fs-caption) * var(--lh-caption));}
+.lista-definicao{margin:var(--sp-2) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
+.lista-definicao dt{font-weight:var(--peso-semibold); margin-top:var(--sp-2);}
+.lista-definicao dd{margin:0; color:var(--muted);}
 .grade-cartoes{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--esp-grade);}
 .grade-cartoes > *{min-width:0;}
 .grade-figuras + .grade-figuras, .grade-cartoes + .grade-figuras, .grade-figuras + .grade-cartoes{margin-top:var(--esp-grade);}
