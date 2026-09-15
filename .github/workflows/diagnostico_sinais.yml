@@ -159,6 +159,12 @@ jobs:
             echo "=== portão 6 ==="; python3 verificar_evidencias.py 2>&1 | tail -3
             echo "=== o que mudou ==="; git status --short | head -10
           } > /tmp/ouro_branco.txt 2>&1; cat /tmp/ouro_branco.txt
+          # se preservou (hash no registro + arquivo em evidencias/), devolve ao ramo — é o que o portão 6 exige do PR
+          if python3 verificar_evidencias.py >/dev/null 2>&1; then
+            git config user.name "monitor-el-nino-bot"; git config user.email "bot@users.noreply.github.com"
+            git add data/municipios.json data/evidencias.json evidencias/ && python3 scripts/gerar_manifesto.py >/dev/null 2>&1; git add docs/MANIFEST_SHA256.txt
+            git commit -m "Evidência de Ouro Branco/AL preservada no runner (URL informada pela API do Querido Diário) — portão 6" && git push origin HEAD:${GITHUB_REF_NAME} && echo "DEVOLVIDO AO RAMO"
+          fi
       - name: Publicar resultado no repositório privado
         if: always()
         env:
