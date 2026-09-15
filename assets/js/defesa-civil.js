@@ -440,7 +440,7 @@ if (document.getElementById('mapConsistencia')) {
   const cont = {};
   Object.values(CONSIST).forEach(c => cont[c.cat] = (cont[c.cat]||0) + 1);
   const partes = ['COBRE','PARCIAL','DIFERE','SEM'].filter(k => cont[k]).map(k => (cont[k]) + ' ' + CONSIST_ROTULO[k].toLowerCase());
-  el.innerHTML = 'Risco projetado × instrumento estadual, 27 UFs: ' + partes.join(' · ') + '. <a href="sinais-de-risco.html#boxCruz">Ver o cruzamento completo, com mapa e tabela, na página de Risco →</a>';
+  el.innerHTML = 'Risco projetado × instrumento estadual, 27 UFs: ' + partes.join(' · ') + '. <a href="index.html#boxCruz">Ver o cruzamento completo na página inicial →</a>';
 })();
 
 // =========================================================

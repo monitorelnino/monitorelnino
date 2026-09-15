@@ -24,7 +24,7 @@ const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento
 const EXCECOES = [/síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
   /alerta[s]? (?:hidrológic|geológic|meteorológic|vigente|de risco|nacional|laranja|vermelh)/gi, /nível de alerta/gi, /em alerta/gi, /avisos? meteorológic/gi, /alertas? (?:do|de) CEMADEN/gi,
   /restrição importante de transporte/gi, /grau de urgência/gi, /situação de emergência|estado de emergência|emergência sanitária|emergências sanitárias|decreto de emergência|decretos de emergência/gi,
-  /grave e urgente necessidade pública/gi, /matéria urgente, relevante/gi, /risco de fogo/gi, /pior desfecho/gi, /melhor(?:es)? (?:esforços|estimativa)/gi];
+  /grave e urgente necessidade pública/gi, /seca (?:fraca|moderada|grave|extrema|excepcional)/gi,   /* categorias S0–S4 do Monitor de Secas (ANA), vocabulário da fonte */ /matéria urgente, relevante/gi, /risco de fogo/gi, /pior desfecho/gi, /melhor(?:es)? (?:esforços|estimativa)/gi];
 const AVALIATIVO = [/preocupant/i, /alarmant/i, /alarmism/i, /impressionant/i, /\bsignificativ[oa]s?\b/i, /\bgrave(s|mente)?\b/i, /\bcrític[oa]s?\b/i, /\bexpressiv[oa]s?\b/i,
   /chocant/i, /surpreendent/i, /lamentav/i, /\bfelizmente\b/i, /\binfelizmente\b/i, /\bdramátic/i, /\bassustador/i, /\benorme/i, /\bgigantesc/i, /\bdrástic/i,
   /\bfrágil\b|\bfragilidade/i, /\bdespreparad/i, /\bfracass/i, /\binsuficient/i, /\bprecári/i, /\binaceitáv/i, /\bescandal/i, /\burgent(e|íssim)/i, /\bpior(es)?\b/i, /\bmelhor(es)?\b/i,

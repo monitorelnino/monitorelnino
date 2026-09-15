@@ -75,12 +75,21 @@ corpoTipo.innerHTML = UFS.map(uf => { const r = RISCO(uf);
          '</td><td>' + esc(r ? TIPO_ROTULO[r.tipo] : '—') + '</td></tr>'; }).join('');
 
 // ---- Mapa 2: seca observada ----
-const SECA_COR = {S0:MonitorMapas.PALETA.zero, S1:MonitorMapas.PALETA.ordinal4[0], S2:MonitorMapas.PALETA.ordinal4[1], S3:MonitorMapas.PALETA.ordinal4[2], S4:MonitorMapas.PALETA.ordinal4[3]};   // ordinal único de intensidade
+// 15/09/2026: a fonte passou a ser o RPC de dados tabulares da ANA (fração cumulativa da área da UF em cada categoria
+// S0–S4, mapa mensal). O mapa mostra a categoria MEDIANA da área — a mais severa que cobre pelo menos metade da UF
+// ('sem seca' quando a seca não chega à metade); o tooltip traz a distribuição completa. Nunca uma média.
+const SECA_COR = {'sem seca':MonitorMapas.PALETA.zero, S0:MonitorMapas.PALETA.ordinal4[0], S1:MonitorMapas.PALETA.ordinal4[1], S2:MonitorMapas.PALETA.ordinal4[2], S3:MonitorMapas.PALETA.ordinal4[3], S4:MonitorMapas.cor('abissal')};   // ordinal único de intensidade; S4 no tom mais escuro da marca
+const SECA_ROTULO = {'sem seca':'sem seca em metade ou mais da área', S0:'S0 · seca fraca', S1:'S1 · seca moderada', S2:'S2 · seca grave', S3:'S3 · seca extrema', S4:'S4 · seca excepcional'};   // vocabulário do Monitor de Secas
 const seca = uf => (SINAIS.uf[uf] || {}).secas;
+const secaCat = s => s ? (s.categoria_mediana || s.categoria) : null;
+const pct1 = v => String(Math.round(v * 10) / 10).replace('.', ',') + '%';
 desenharMapa('mapaSecas', 'legSecas',
-  uf => { const s = seca(uf); return s ? (SECA_COR[s.categoria] || NEUTRA) : NEUTRA; },
-  uf => { const s = seca(uf); return s ? 'Categoria ' + esc(s.categoria) : 'Aguardando a primeira coleta desta fonte'; },
-  Object.keys(SECA_COR).map(c => ({cor:SECA_COR[c], rotulo:c})).concat([{cor:NEUTRA, rotulo:'Sem coleta até o corte'}]));
+  uf => { const s = seca(uf); const c = secaCat(s); return c ? (SECA_COR[c] || NEUTRA) : NEUTRA; },
+  uf => { const s = seca(uf); if (!s) return 'Aguardando a primeira coleta desta fonte';
+    const c = secaCat(s); const cob = s.cobertura_pct || {};
+    const dist = ['sem seca','S0','S1','S2','S3','S4'].filter(k => (cob[k] || 0) >= 0.05).map(k => esc(k) + ' ' + pct1(cob[k])).join(' · ');
+    return '<em>' + esc(SECA_ROTULO[c] || c) + '</em>' + (s.mapa ? '<br>mapa ' + esc(s.mapa) : '') + (dist ? '<br>área da UF: ' + dist : ''); },
+  ['sem seca','S0','S1','S2','S3','S4'].map(c => ({cor:SECA_COR[c], rotulo:SECA_ROTULO[c]})).concat([{cor:NEUTRA, rotulo:'Sem coleta até o corte'}]));
 credito('boxSecas', 'monitor_secas');
 
 // ---- Mapa 3: avisos INMET ----
@@ -177,6 +186,14 @@ if(oni && oni.serie && oni.serie.length){
                  backgroundColor:'rgba(46,61,48,.12)', borderWidth:2, pointRadius:0, fill:true, tension:.25}]},
     options:{...SEM_ANIM, plugins:{legend:{display:false}}, scales:{
       x:{ticks:{maxTicksLimit:12}}, y:{title:{display:true, text:'°C'}}}}});
+  (function leituraOni(){   // 15/09/2026: a observação vive junto do gráfico; interpretação e projeção ficam no parágrafo abaixo da figura (portão 19)
+    const el = document.getElementById('oniLeitura'); const s = oni.serie; const u = s[s.length - 1]; if (!el || !u) return;
+    const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
+    const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
+    let txt = 'ONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na escala do CPC';
+    if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + fmt(d) + ' °C em dois trimestres'; }
+    el.textContent = txt + '.'; el.hidden = false;
+  })();
 } else { lacuna('wrapOni', 'A série do ONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
 credito('boxOni', 'noaa_oni');
 
@@ -212,13 +229,16 @@ new Chart(document.getElementById('cTipos'), {type:'bar', data:{
     scales:{x:{title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
 credito('boxTipos', 'painel_el_nino');
 
-// ---- Gráfico 4: tipo de risco × faixa MARÉ ----
-const dados = FAIXAS.map(fx => ({label:fx.nome, backgroundColor:fx.cor, data: ordemTipos.map(t =>
-  UFS.filter(uf => RISCO(uf) && RISCO(uf).tipo === t && MARE[uf] && faixaDe(MARE[uf].total).nome === fx.nome).length)}));
-new Chart(document.getElementById('cCruz'), {type:'bar', data:{labels: ordemTipos.map(t => TIPO_CURTO[t]), datasets:dados},
-  options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
-    scales:{x:{stacked:true}, y:{stacked:true, title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
-credito('boxCruz', 'painel_el_nino');
+// ---- Gráfico "tipo de risco × estágio do arcabouço público": desde 15/09/2026 mora no fim da página inicial
+//      (assets/js/index.js, mesma fórmula); aqui só desenha se algum HTML antigo ainda tiver #cCruz.
+if (document.getElementById('cCruz')) {
+  const dados = FAIXAS.map(fx => ({label:fx.nome, backgroundColor:fx.cor, data: ordemTipos.map(t =>
+    UFS.filter(uf => RISCO(uf) && RISCO(uf).tipo === t && MARE[uf] && faixaDe(MARE[uf].total).nome === fx.nome).length)}));
+  new Chart(document.getElementById('cCruz'), {type:'bar', data:{labels: ordemTipos.map(t => TIPO_CURTO[t]), datasets:dados},
+    options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
+      scales:{x:{stacked:true}, y:{stacked:true, title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
+  credito('boxCruz', 'painel_el_nino');
+}
 
 // =============================  Tabela de fontes  =============================
 const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};

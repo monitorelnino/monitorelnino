@@ -17,11 +17,14 @@
 
 // ===== index.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let VMUN, RESP, RESP_SERIE, RESP_MUN;
-// v3.1 §3/§5: contador de RESPOSTA — contagens e frações, nunca combinadas com o índice (C17)
+// 15/09/2026 (decisão editorial): a RESPOSTA passa a ser um ÍNDICE 0–100 ponderado por população — a parcela da
+// população (Censo 2022) que vive em município sob decreto de emergência no ciclo (gerar_resposta.py: campo
+// `indice`, = 100 × fracao_populacao). Mesma arte do medidor de antecipação; nunca somado a ele (C17).
+const indiceResposta = r => r ? (typeof r.indice === 'number' ? r.indice : +(100 * (r.fracao_populacao || 0)).toFixed(1)) : null;
 function respostaTile(uf){
   const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
-  const fm = Math.round(100 * r.fracao_municipios), fp = Math.round(100 * r.fracao_populacao);
-  return `<div class="tile-bar2" title="Resposta: ${r.n_municipios} de ${r.total_municipios} municípios sob decreto · ${fp}% da população"><div class="tile-fill2" style="width:${Math.max(fm, r.n_municipios ? 1 : 0)}%"></div>${r.n_municipios ? `<span class="tile-pop2" style="left:${fp}%"></span>` : ''}</div>`;
+  const ir = indiceResposta(r);
+  return `<div class="tile-bar tile-bar--resposta" title="Resposta ${String(ir).replace('.', ',')} / 100 · ${r.n_municipios} de ${r.total_municipios} municípios sob decreto"><div class="tile-fill tile-fill--resposta" data-alvo="${ir}" style="--galvo:${Math.max(ir, 0.1)};"></div></div>`;
 }
 // §5: campos 3–5 da face do cartão — nível de verificação da UF, instrumento estadual, capital (uma linha cada)
 function faceTile(uf){
@@ -38,13 +41,10 @@ function faceTile(uf){
 }
 function barraResposta(uf){
   const r = RESP && RESP.uf && RESP.uf[uf]; if (!r) return '';
-  const fm = 100 * r.fracao_municipios, fp = 100 * r.fracao_populacao;
-  const rec = r.tons.reconhecido, dec = r.tons.decretado_sem_reconhecimento, n = r.n_municipios;
-  const wRec = n ? fm * rec / n : 0, wDec = n ? fm * dec / n : 0;
-  return `<div class="field"><div class="k">Resposta · decretos no ciclo</div><div class="v">
-    <div class="barra-resp" role="img" aria-label="${n} de ${r.total_municipios} municípios sob decreto; ${fp.toFixed(0)}% da população" title="tons: ${rec} reconhecido(s) · ${dec} decretado(s) sem reconhecimento · fatias: ${r.fatias.em_classificacao} em classificação (evento observado ainda não lido)">
-      <i class="rec" style="width:${wRec.toFixed(1)}%"></i><i class="dec" style="left:${wRec.toFixed(1)}%; width:${wDec.toFixed(1)}%"></i>${n ? `<b style="left:${fp.toFixed(1)}%"></b>` : ''}</div>
-    <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${fp.toFixed(0)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto em ' + r.primeiro_decreto : ''}<br>
+  const ir = indiceResposta(r), rec = r.tons.reconhecido, dec = r.tons.decretado_sem_reconhecimento, n = r.n_municipios;
+  return `<div class="field"><div class="k">Resposta · o índice</div><div class="v">
+    ${typeof window.__miniGauge === 'function' ? window.__miniGauge(ir, 'Resposta · população sob decreto', 'resposta') : ''}
+    <strong>${n}</strong> de ${r.total_municipios} municípios · <strong>${Math.round(100 * r.fracao_populacao)}%</strong> da população${r.primeiro_decreto ? ' · primeiro decreto em ' + r.primeiro_decreto : ''}<br>
     <span class="fv u-muted">${rec} reconhecido(s) pela União · ${dec} decretado(s) sem reconhecimento · evento observado: em classificação</span></div></div>`;
 }
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, PRAZOS, VRESUMO, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
@@ -62,14 +62,15 @@ function renderContadorResposta(){
   const N = RESP && RESP.nacional; const box = document.getElementById('contadorResposta'); if (!box) return;
   const el = id => document.getElementById(id);
   if (!N) { el('respLinha').textContent = 'sem coleta até o corte'; MonitorMapas.credito('respFonte', {fontes: 'Monitor El Niño Brasil', data: null}); return; }
-  const fm = 100 * N.fracao_municipios, fp = 100 * N.fracao_populacao;
-  el('respNum').textContent = N.n_municipios.toLocaleString('pt-BR');
-  el('respDen').textContent = '/ ' + N.total_municipios.toLocaleString('pt-BR');
-  el('respBadge').innerHTML = '<span class="gfaixa-pill">' + esc(fm.toFixed(1).replace('.', ',')) + '% dos municípios</span>';
+  const fm = 100 * N.fracao_municipios, ir = indiceResposta(N);
+  el('respNum').textContent = ir.toFixed(1).replace('.', ',');
+  el('respNum').setAttribute('data-contar', ir);
+  el('respDen').textContent = '/ 100';
+  el('respBadge').innerHTML = '<span class="gfaixa-pill">' + esc(N.n_municipios.toLocaleString('pt-BR')) + ' municípios · ' + esc(fm.toFixed(1).replace('.', ',')) + '% dos municípios</span>';
   el('respCorte').textContent = (typeof META !== 'undefined' && META && META.corte) || '—';
-  el('respFill').style.width = Math.max(fm, N.n_municipios ? 0.6 : 0).toFixed(2) + '%';
-  el('respPopTick').style.left = fp.toFixed(2) + '%';
-  el('respLinha').innerHTML = esc(fp.toFixed(1).replace('.', ',')) + '% da população (traço) · ' + (N.primeiro_decreto ? 'primeiro decreto em ' + esc(N.primeiro_decreto) + ' · ' : '') + esc(N.reconhecidos) + ' reconhecidos pela União · ' + esc(N.decretados_sem_reconhecimento) + ' decretados sem reconhecimento';
+  const fill = el('respFill'); fill.dataset.alvo = Math.max(ir, N.n_municipios ? 0.6 : 0).toFixed(2); fill.style.setProperty('--galvo', String(Math.max(ir, 0.1)));
+  fill.style.width = fill.dataset.alvo + '%';
+  el('respLinha').innerHTML = esc((N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')) + ' milhões de pessoas em municípios sob decreto · ' + (N.primeiro_decreto ? 'primeiro decreto em ' + esc(N.primeiro_decreto) + ' · ' : '') + esc(N.reconhecidos) + ' reconhecidos pela União · ' + esc(N.decretados_sem_reconhecimento) + ' decretados sem reconhecimento';
   MonitorMapas.credito('respFonte', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais estaduais e municipais'], data: RESP.gerado_em});
 }
 async function __load(){
@@ -121,18 +122,30 @@ function __init(){
 const MEDIA_NACIONAL = +(Object.values(MARE).reduce((s,v)=>s+v.total,0)/27).toFixed(1);
 const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VIG:"Vigente-recorrente", LAC:"Sem plano localizado"};
 
-// ---- Três números (auditoria editorial 14/09/2026, §2.4; antes eram cinco — "publicado" e "decretado" já são os dois
-// medidores acima). Sempre calculados dos dados carregados, nunca escritos à mão.
+// 15/09/2026 (pedido da editoria): os três cartões (ONI · R$/hab. · "o que ainda não sabemos") saíram da página inicial;
+// os mesmos valores seguem no Monitor de risco, em Financiamento e em Pesquisadores.
 const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 'LAC').map(([uf]) => uf);
-(function tresNumeros(){
-  const el = id => document.getElementById(id);
-  fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).then(sr => { const oni = sr && sr.enos && sr.enos.oni && sr.enos.oni.serie; const u = oni && oni[oni.length - 1];
-    if (el('n1Anunciado')) el('n1Anunciado').textContent = u ? 'ONI ' + (u.anomalia >= 0 ? '+' : '') + String(u.anomalia).replace('.', ',') + ' °C · ' + u.trimestre + '/' + u.ano : 'sem coleta'; }).catch(() => { if (el('n1Anunciado')) el('n1Anunciado').textContent = 'sem coleta'; });
-  fetch('data/financiamento/serie_nacional.json').then(r => r.ok ? r.json() : null).then(sn => { const t = sn && sn.semanas ? sn.semanas.reduce((a, x) => a + (+x.r5 || 0), 0) : 0;
-    const pop = (typeof RESP !== 'undefined' && RESP && RESP.nacional && RESP.nacional.pop_total) || 0;
-    if (el('n4Chegou')) el('n4Chegou').textContent = t && pop ? 'R$ ' + (t / pop).toFixed(2).replace('.', ',') + '/hab.' : 'sem coleta'; }).catch(() => { if (el('n4Chegou')) el('n4Chegou').textContent = 'sem coleta'; });
-  const vd = (VRESUMO && VRESUMO.varredura_diarios) || null; const semDiario = vd ? Math.max(0, (vd.total || 5571) - (vd.consultados || 0)) : null;
-  if (el('n5NaoSabemos')) el('n5NaoSabemos').textContent = semDiario != null ? semDiario.toLocaleString('pt-BR') + ' de 5.571' : '—';
+
+// ---- Cruzamento risco projetado × estágio do arcabouço público (15/09/2026: veio da página de risco para o fim desta).
+//      Mesma fórmula de sempre: para cada tipo de risco dos boletins do Painel, quantos estados em cada faixa do MARÉ.
+(function cruzamento(){
+  const canvas = document.getElementById('cCruz'); if (!canvas || typeof Chart === 'undefined') return;
+  fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).then(SR => {
+    if (!SR || !SR.uf) { canvas.parentNode.innerHTML = '<div class="lacuna">Sinais de risco sem coleta até o corte.</div>'; return; }
+    MonitorMapas.padraoGraficos(window.Chart);
+    const P = MonitorMapas.PALETA; const CURTO = (SR._formato && SR._formato.tipos_de_risco_curto) || {};
+    const RISCO = uf => (SR.uf[uf] || {}).risco_projetado; const UFS = Object.keys(MARE);
+    const FAIXAS = [{nome:'Estágio inicial', chave:'inicial'}, {nome:'Em construção', chave:'construcao'}, {nome:'Consolidado', chave:'consolidado'}, {nome:'Avançado', chave:'avancado'}];
+    const ordemTipos = Object.keys(SR._formato.tipos_de_risco).filter(t => UFS.some(uf => RISCO(uf) && RISCO(uf).tipo === t));
+    const datasets = FAIXAS.map(fx => ({label: fx.nome, backgroundColor: P.faixas[fx.chave], data: ordemTipos.map(t =>
+      UFS.filter(uf => RISCO(uf) && RISCO(uf).tipo === t && MARE[uf] && P.faixaDe(MARE[uf].total) === fx.chave).length)}));
+    new Chart(canvas, {type:'bar', data:{labels: ordemTipos.map(t => CURTO[t] || t), datasets},
+      options:{animation:false, responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}},
+        scales:{x:{stacked:true}, y:{stacked:true, title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
+    const f = (SR.fontes || {}).painel_el_nino || {};
+    MonitorMapas.credito('boxCruz', {fontes: [f.nome || 'Painel El Niño 2026-2027 (CEMADEN/INPE)', 'MARÉ (Monitor El Niño Brasil)'], url: f.url_publica, data: f.consultado_em || null});
+    const d = document.querySelector('#boxCruz .fonte-figura'); if (d) d.dataset.credito = 'painel_el_nino';
+  }).catch(() => { canvas.parentNode.innerHTML = '<div class="lacuna">Sinais de risco sem coleta até o corte.</div>'; });
 })();
 
 // ---- Cabeçalho e interpretações dos medidores (auditoria editorial 14/09/2026, §2.1–§2.3): uma frase por medidor,
@@ -150,16 +163,28 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   if (el('interpResposta') && N) el('interpResposta').innerHTML = `<strong>${n(N.n_municipios)}</strong> municípios, <strong>${(N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')}</strong> milhões de pessoas. Primeiro decreto do ciclo: <strong>${N.primeiro_decreto || '—'}</strong>. ${n(N.reconhecidos)} aceitos pelo governo federal · ${n(N.decretados_sem_reconhecimento)} ainda não. Desde 04/07 a lei eleitoral suspende as transferências voluntárias e mantém abertas as de emergência.`;
 })();
 
-// ---- "O que vem" (auditoria §2.7): marcos fixos do ciclo (data/marcos_ciclo.json), só os que ainda não passaram.
-(function oQueVem(){
-  const ul = document.getElementById('marcosCiclo'); if (!ul) return;
+// ---- Calendário (15/09/2026, pedido da editoria: "O que vem" condensado em colunas): marcos fixos do ciclo
+//      (data/marcos_ciclo.json, só os que ainda não passaram) e prazos legais em curso (data/prazos_uf.json, vencendo
+//      daqui para a frente ou vencidos há até 60 dias), numa só grade data · marco · fonte, em ordem de data.
+(function calendario(){
+  const box = document.getElementById('marcosCiclo'); if (!box) return;
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const dBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
-  fetch('data/marcos_ciclo.json').then(r => r.ok ? r.json() : null).then(M => {
-    const hoje = new Date(); hoje.setHours(0,0,0,0);
-    const itens = ((M && M.marcos) || []).filter(m => dBR(m.ate || m.data) >= hoje).sort((a, b) => dBR(a.data) - dBR(b.data));
-    ul.innerHTML = itens.map(m => `<li><strong>${esc(m.data)}${m.ate ? ' – ' + esc(m.ate) : ''}</strong> — ${esc(m.titulo)} <span class="u-muted">(${esc(m.fonte)})</span></li>`).join('') || '<li class="u-muted">Marcos do ciclo não carregados.</li>';
-  }).catch(() => { ul.innerHTML = '<li class="u-muted">Marcos do ciclo não carregados.</li>'; });
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const linhas = [];
+  fetch('data/marcos_ciclo.json').then(r => r.ok ? r.json() : null).catch(() => null).then(M => {
+    ((M && M.marcos) || []).filter(m => dBR(m.ate || m.data) >= hoje).forEach(m => linhas.push({
+      ord: dBR(m.data), data: m.data + (m.ate ? ' – ' + m.ate : ''), marco: m.titulo, fonte: m.fonte, classe: 'marco'}));
+    ((PRAZOS && PRAZOS.marcos) || []).filter(m => m.vencimento && m.data_base && m.titulo_curto).forEach(m => {
+      const fim = dBR(m.vencimento), dias = Math.round((fim - hoje) / 86400000); if (dias < -60) return;
+      linhas.push({ord: fim, data: m.vencimento, marco: m.titulo_curto + (dias < 0 ? ' · transcorrido' : dias === 0 ? ' · vence hoje' : ' · em ' + dias + ' dia' + (dias === 1 ? '' : 's')),
+        fonte: m.classe + ' · desde ' + m.data_base, classe: dias < 0 ? 'prazo vencido' : 'prazo'});
+    });
+    linhas.sort((a, b) => a.ord - b.ord);
+    const cab = box.querySelector('.cal-cabecalho');
+    box.innerHTML = (cab ? cab.outerHTML : '') + (linhas.map(l => `<div class="cal-linha ${l.classe}" role="row"><span class="cal-data" role="cell">${esc(l.data)}</span><span class="cal-marco" role="cell">${esc(l.marco)}</span><span class="cal-fonte" role="cell">${esc(l.fonte)}</span></div>`).join('')
+      || '<div class="cal-linha" role="row"><span class="cal-data" role="cell">—</span><span class="cal-marco u-muted" role="cell">Marcos do ciclo não carregados.</span><span class="cal-fonte" role="cell"></span></div>');
+  });
 })();
 
 // Metadados do cabeçalho e do rodapé: nunca mais texto fixo (achado de Patricia,
@@ -324,57 +349,9 @@ const CAT_LABEL_TBL = {
   nao_localizado:['Nada localizado',MonitorMapas.PALETA.categorias.nao_localizado],
   nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.categorias.nao_verificado],
 };
-// Caixa "Prazos em curso" (31/08/2026): lê data/prazos_uf.json, que o vigia de
-// prazos regrava a cada atualização. Mostra o que vence daqui para a frente e o que
-// venceu nos últimos 60 dias (marcado), em ordem de data. Nunca pontua.
-function renderPrazos(){
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const box = document.getElementById('prazosLista'), vazio = document.getElementById('prazosVazio');
-  if (!box || !PRAZOS || !PRAZOS.marcos) return;
-  const dataBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
-  const hoje = new Date(); hoje.setHours(0,0,0,0);
-  const itens = PRAZOS.marcos.filter(m => m.vencimento && m.data_base && m.titulo_curto)
-    .map(m => { const ini = dataBR(m.data_base), fim = dataBR(m.vencimento);
-      const dias = Math.round((fim - hoje) / 86400000), resta = Math.max(0, Math.min(1, (fim - hoje) / (fim - ini)));
-      return {...m, ini, fim, dias, resta}; })
-    .filter(m => m.dias >= -60).sort((x,y) => x.fim - y.fim);
-  // 07/09/2026: relógio (anel que esvazia) + o que se espera no vencimento; ordem: vence antes primeiro
-  box.innerHTML = itens.map(m => {
-    const vencido = m.dias < 0;
-    return `<div class="prazo-rel ${vencido ? 'vencido' : ''}" role="group" aria-label="${esc(m.titulo_curto)}">
-      ${MonitorMapas.relogio(m.resta, m.dias)}
-      <div class="prazo-rel-txt">
-        <div class="prazo-titulo">${esc(m.titulo_curto)}</div>
-        <div class="prazo-meta">${esc(m.classe)} · ${esc(m.data_base)} → <strong>${esc(m.vencimento)}</strong>${vencido ? ' · transcorrido' : ''}</div>
-        ${m.o_que_se_espera ? '<details class="prazo-espera"><summary><span class="k">O que se espera</span></summary>' + esc(m.o_que_se_espera) + '</details>' : ''}
-      </div></div>`; }).join('');
-  vazio.hidden = itens.length > 0;
-  MonitorMapas.credito('prazosFonte', {fontes: ['registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384)'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
-}
-renderPrazos();
-  (function(){
-    // E13 (decisão editorial de 02/09/2026): a nota do defeso é PERMANENTE — após
-    // 25/10/2026 ela muda de tempo verbal e vira memória do site, nunca é removida.
-    const fim = new Date(2026, 9, 26);
-    if (new Date() >= fim) {
-      const t = document.getElementById('notaDefesoTxt');
-      if (t) t.innerHTML = 'a lei suspendeu transferências voluntárias e parte da comunicação oficial, e sítios públicos ficaram com conteúdo fora do ar durante a janela crítica de preparação. As buscas do período foram marcadas provisórias e repetidas; os efeitos estão decompostos, só com contagens e datas, no bloco "O que o período eleitoral escondeu"';
-    }
-  })();
-  (function(){
-    // C14: visível somente a partir de 26/10/2026, por data — não por flag manual.
-    const lim = new Date(2026, 9, 26); const hoje = new Date();
-    if (hoje >= lim) {
-      const bl = document.getElementById('blocoPosDefeso');
-      if (bl && VRESUMO && VRESUMO.pos_defeso) {
-        // 14/09/2026 (§2.8): o bloco é visível desde já, com a linha fixa; os dados só aparecem a partir de 26/10 (C14)
-        ['pdFontes','pdInstrumentos','pdVariacao'].forEach(id => { const e = document.getElementById(id); if (e) e.hidden = false; });
-        document.getElementById('pdFontes').textContent = VRESUMO.pos_defeso.fontes_que_voltaram_txt || '—';
-        document.getElementById('pdInstrumentos').textContent = VRESUMO.pos_defeso.instrumentos_anteriores_txt || '—';
-        document.getElementById('pdVariacao').textContent = VRESUMO.pos_defeso.variacao_decomposta_txt || '—';
-      }
-    }
-  })();
+// 15/09/2026: os relógios de prazo (renderPrazos) e a nota do período eleitoral saíram da página inicial; os prazos
+// vivem no Calendário acima e o período eleitoral na página calendario-eleitoral.html (bloco pós-defeso incluído).
+MonitorMapas.credito('prazosFonte', {fontes: ['registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384, calendário do TSE, boletins do Painel El Niño)'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
 (function(){ const c = document.getElementById('citacaoCorte'); if (c && META && META.corte) c.textContent = META.corte; })();
 // Link direto para um estado (#SC): usado pelos selos embutidos em outros sites (31/08/2026).
 (function(){
@@ -464,24 +441,28 @@ const selUF = document.getElementById('ufSelect');
 Object.entries(UF_NOME).sort((a,b)=>a[1].localeCompare(b[1]))
   .forEach(([sig,nome]) => selUF.insertAdjacentHTML('beforeend', `<option value="${sig}">${nome}</option>`));
 const ORDEM_MARE = Object.entries(MARE).sort((a,b)=>b[1].total-a[1].total).map(([u])=>u);
-function miniGauge(valor, rotulo){
-  const media = String(MEDIA_NACIONAL).replace('.', ',');
-  return `<div class="gauge-mini">
+function miniGauge(valor, rotulo, variante){
+  // 15/09/2026: uma só arte para toda barra do site; `variante` = 'resposta' usa o preenchimento frio→quente
+  const resposta = variante === 'resposta';
+  const ref = resposta ? indiceResposta(RESP && RESP.nacional) : MEDIA_NACIONAL;
+  const media = ref == null ? null : String(ref).replace('.', ',');
+  return `<div class="gauge-mini gauge-zone${resposta ? ' gauge-zone--resposta' : ''}">
     <div class="gauge-head">
       <span class="gnum" data-contar="${valor}">0,0</span><span class="gden">/ 100</span>
       <span class="glabel">${rotulo || 'MARÉ do estado'}</span>
     </div>
     <div class="gauge-track">
-      <div class="gauge-fill" data-alvo="${valor}" style="--galvo:${valor};"></div>
-      <span class="gauge-avg" style="left:${MEDIA_NACIONAL}%;"></span>
+      <div class="gauge-fill${resposta ? ' gauge-fill--resposta' : ''}" data-alvo="${valor}" style="--galvo:${Math.max(valor, 0.1)};"></div>
+      ${ref == null ? '' : `<span class="gauge-avg" style="left:${ref}%;"></span>`}
     </div>
     <div class="gauge-ends">
       <span>0</span>
-      <span class="marca-media" style="left:${MEDIA_NACIONAL}%;">média ${media}</span>
+      ${ref == null ? '' : `<span class="marca-media" style="left:${ref}%;">${resposta ? 'Brasil' : 'média'} ${media}</span>`}
       <span>100</span>
     </div>
   </div>`;
 }
+window.__miniGauge = miniGauge;   // barraResposta (escopo de módulo) reutiliza o mesmo medidor do detalhe do estado
 function animarGauges(root){
   const reduz = (typeof matchMedia === 'function') && matchMedia('(prefers-reduced-motion: reduce)').matches;
   const temRAF = (typeof requestAnimationFrame === 'function');

@@ -66,7 +66,7 @@ setTimeout(() => {
   // ver comentário acima. O teste de proveniência (soma de CONSIST bate com a fonte) segue coberto
   // em verificar_runtime_sinais.js (boxCruz), que agora é a única superfície com essa tabela.
   teste("resumo risco×instrumento em Defesa Civil: link para a versão completa em Risco",
-    q("riscoinstrumentoResumo") && /sinais-de-risco\.html#boxCruz/.test(q("riscoinstrumentoResumo").innerHTML));
+    q("riscoinstrumentoResumo") && /index\.html#boxCruz/.test(q("riscoinstrumentoResumo").innerHTML));
 
   // Mapa de atos de resposta (decretos de emergência) — pedido de Patricia, 31/08/2026,
   // motivado pelo temporal de granizo em SC.

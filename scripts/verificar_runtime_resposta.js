@@ -15,12 +15,17 @@ function render(pagina) {
 (async () => {
   const por = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "por_uf.json"), "utf-8"));
   const ix = render("index.html"); await new Promise(r => setTimeout(r, 2500)); const d = ix.window.document;
-  if (d.getElementById("respNum").textContent.replace(/\./g, "") !== String(por.nacional.n_municipios)) falhas.push("contador nacional ≠ por_uf.json");
+  // 15/09/2026: a resposta é um ÍNDICE 0–100 (100 × fração da população em município sob decreto), com a mesma arte do medidor
+  const indNac = por.nacional.indice.toFixed(1).replace(".", ",");
+  if (d.getElementById("respNum").textContent !== indNac) falhas.push(`índice nacional de resposta na página (${d.getElementById("respNum").textContent}) ≠ por_uf.json (${indNac})`);
+  if (!new RegExp(String(por.nacional.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, "\\.") + " municípios").test(d.getElementById("respBadge").textContent)) falhas.push("pílula da resposta sem a contagem de municípios");
+  if (!d.querySelector("#contadorResposta .gauge-fill.gauge-fill--resposta") || d.querySelector("#contadorResposta .resp-fill")) falhas.push("resposta não usa a arte única do medidor (.gauge-fill--resposta)");
   if (!/art\. 73, VI/.test(d.getElementById("respC18").textContent)) falhas.push("frase C18 ausente no contador da inicial");
-  if (d.querySelectorAll(".tile .tile-bar2").length !== 27) falhas.push("cartões de estado sem a segunda barra (resposta)");
+  if (d.querySelectorAll(".tile .tile-bar--resposta .tile-fill--resposta").length !== 27) falhas.push("cartões de estado sem a segunda barra (resposta) na arte única");
   const rs = [...d.querySelectorAll(".tile")].find(t => t.dataset.uf === "RS"); rs.click(); await new Promise(r => setTimeout(r, 300));
   const det = d.getElementById("detail").textContent; const m = det.match(/(\d+) de (\d+) municípios · (\d+)% da população/);
   if (!m || +m[1] !== por.uf.RS.n_municipios) falhas.push("barra de resposta do cartão RS ≠ por_uf.json");
+  if (!d.querySelector("#detail .gauge-mini.gauge-zone--resposta .gauge-fill--resposta")) falhas.push("cartão RS: resposta sem o medidor na arte única");
   if (/nota\s*[-−]\s*decret|contradi[çc][ãa]o/i.test(det)) falhas.push("cartão combina antecipação e resposta (C17)");
   if (d.querySelector('a[href="mapas-e-graficos.html"]')) falhas.push("navegação ainda aponta para a galeria");
   const dc = render("defesa-civil.html"); await new Promise(r => setTimeout(r, 2500)); const d2 = dc.window.document;
