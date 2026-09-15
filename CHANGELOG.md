@@ -9,6 +9,15 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §51 · Errata: URL da evidência de Ouro Branco/AL restaurada ao caminho informado pela API do Querido Diário (portão 6) · 15/09/2026
+
+Nenhuma alteração de método; nenhum número do índice muda. Classe **dados** (PROTOCOLO §3.2), correção de registro anterior — errata da entrada de 10/09/2026. Preparada em 14/09 (ramo ficou em `ramos_pendentes/` por bloqueio de rede) e refeita sobre a `main` de 15/09.
+
+- **O que estava errado.** Em 10/09/2026 a URL do Decreto Municipal nº 021/2026 de Ouro Branco/AL foi trocada de `data.queridodiario.ok.org.br/2700000/…` para `…/2706109/…`, na hipótese de que `2700000` era um erro de digitação do código IBGE. A hipótese não se sustenta: a resposta da API do Querido Diário preservada em 03/09/2026 (`evidencias/d1fe5dd2…json`, busca por `territory_ids=2706109`) informa, para essa mesma edição (nº 2849, 15/07/2026), `url` sob o caminho `2700000/…d36309fe….pdf` e `txt_url` sob `2706109/…a34fb862….txt`. O Diário Oficial dos Municípios do Estado de Alagoas (AMA) é uma edição estadual única, e o Querido Diário guarda o PDF sob o identificador agregado.
+- **Sintoma.** Desde a troca, `preservar_evidencias.py` registrou `HTTPError` na URL `2706109/….pdf` em todas as rodadas (11, 12 e 14/09 — `data/log_buscas.json`, executor `robo`, rede irrestrita do runner). Antes de 10/09 a URL original nunca chegou a ser tentada pelo robô. É o único registro pontuável sem evidência preservada; o portão 6 (`verificar_evidencias.py`) é bloqueante desde 15/09/2026 — e por isso derruba a Action "Portões" de todo PR até a evidência ser preservada.
+- **Correção.** URL restaurada para o caminho informado pela própria API (`2700000/…`), aplicada por `aplicar_revisao.py` (ação `atualizar`, demais campos idênticos); derivados regenerados (`dados-abertos/municipios.csv`, manifesto). `corte` de `data/meta.json` mantido, como no precedente de 10/09 (correção de registro, não dado novo). A preservação do binário continua a cargo de `preservar_evidencias.py` na rodada automática seguinte ao merge — a rede do ambiente de edição não alcança o Querido Diário, e a Action `ler_documento` do registro privado recusou o disparo nesta sessão (HTTP 500).
+- **Se a rodada seguinte ainda registrar `HTTPError`** na URL restaurada, a hipótese restante é que o arquivo foi removido ou renomeado no armazenamento do Querido Diário; nesse caso a evidência deve ser buscada na fonte primária (Diário Oficial dos Municípios da AMA, ed. 2849) ou no Wayback, e a decisão volta à editoria.
+
 ## §50 · CSP sem 'self' em script-src: a injeção do Netlify deixa de executar; canário em navegador real contra o domínio · 14/09/2026
 
 Nenhuma alteração de método. Classe **segurança/infra**.
