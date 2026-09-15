@@ -52,6 +52,19 @@
     <p class="hint u-mb-0">Decreto de alerta ou de mobilização, sem pedido de reconhecimento federal: conta como preparação (categoria "estrutura"). Decreto de situação de emergência: conta como resposta — nunca como falha, nunca como preparação.</p>
   </div>
 
+  <div class="panel" id="prioritarios">
+    <h2>Descubra se seu município é prioritário</h2>
+    <p class="hint">Cadastro Nacional de Municípios com Áreas Suscetíveis a Desastres (MIDR/SEDEC): maior risco de desastre. A lista exige acesso autenticado; a busca usa uma <strong>aproximação por população</strong>, nunca a lista oficial.</p>
+    <div class="tbl-controls">
+      <label class="sr-only" for="selUFPrior">Escolha o seu estado</label>
+      <select id="selUFPrior" aria-label="Escolha o seu estado"><option value="">1 · Seu estado…</option></select>
+      <input id="inputMunPrior" type="text" list="listaMunPrior" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="listaMunPrior"></datalist>
+    </div>
+    <div id="resultadoPrior" class="card-note" aria-live="polite" hidden></div>
+    <div id="fontePrior"></div>
+  </div>
+
   <div class="panel" id="publicar">
     <h2>Como publicar</h2>
     <ol class="fontes-list">
@@ -59,7 +72,7 @@
       <li><strong>2 · Publique em endereço estável</strong> — diário oficial ou página do domínio oficial, em PDF com texto pesquisável, nomeando o El Niño 2026/2027 ou o risco projetado para o estado.</li>
       <li><strong>3 · Envie o link</strong> — pelo formulário ao fim da página; com fonte oficial e citação completa, o documento entra no mapa.</li>
     </ol>
-    <p class="note u-mb-0">Base legal: Lei 12.608/2012, art. 8º, XI (plano de contingência e simulados a cargo do município); Lei 12.340/2010, art. 3º-A (conteúdo mínimo, prazo de um ano, prestação de contas anual em audiência pública).</p>
+    <p class="note u-mb-0">Base legal: Lei 12.608/2012, art. 8º, XI; Lei 12.340/2010, art. 3º-A (conteúdo mínimo, prazo de um ano, audiência pública anual).</p>
   </div>
 
   <div class="panel" id="periodo-eleitoral">
@@ -111,7 +124,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/prefeituras.js?v=f5846272" defer></script>
+<script src="assets/js/prefeituras.js?v=45930515" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

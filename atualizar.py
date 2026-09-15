@@ -116,6 +116,7 @@ def main():
     rodar([sys.executable, "classificar_saude_no_plano.py"])            # 07/09/2026 (§10.1): leitura automática de saúde no plano → fila R7
     rodar([sys.executable, "gerar_monitor_saude.py"])                   # 05/09/2026: Monitor Saúde v0.1 (§31), derivado da camada de saúde; peso zero
     rodar([sys.executable, "gerar_resposta.py"])                        # 06/09/2026 (v3.1 §3): contador de resposta; peso zero (verificar_resposta.py)
+    rodar([sys.executable, "gerar_prioritarios.py"])                    # 15/09/2026: municípios prioritários (aproximação populacional), fonte única do mapa e da busca
     rodar([sys.executable, "gerar_contadores_financiamento.py"])       # 06/09/2026 (v3.1 §11): quatro contadores por UF; peso zero
     rodar([sys.executable, "coletar_financiamento.py"])                 # §7.8: Portal (chave), rotas; peso zero
     rodar([sys.executable, "coletar_transferegov.py"])                  # 04/09/2026: transferências sem chave (TransfereGov dados abertos); r5 na série
@@ -197,6 +198,7 @@ def main():
     # só o carimbo muda. O manifesto é selado depois, no workflow, após os PDFs.
     rodar([sys.executable, "gerar_monitor_saude.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_resposta.py"], obrigatorio=True)
+    rodar([sys.executable, "gerar_prioritarios.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_contadores_financiamento.py"], obrigatorio=True)
     print(f"\n✓ Atualização concluída ({hoje}). Corte vigente: {meta['corte']}.")
 

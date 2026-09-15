@@ -30,7 +30,7 @@ function render(pagina) {
   if (/nota\s*[-−]\s*decret|contradi[çc][ãa]o/i.test(det)) falhas.push("cartão combina antecipação e resposta (C17)");
   if (d.querySelector('a[href="mapas-e-graficos.html"]')) falhas.push("navegação ainda aponta para a galeria");
   const dc = render("defesa-civil.html"); await new Promise(r => setTimeout(r, 2500)); const d2 = dc.window.document;
-  if (!(dc.window.__charts || []).includes("scatter")) falhas.push("defesa-civil: dispersão antecipação × resposta não desenhada (C20)");
+  // 15/09/2026: a dispersão antecipação × resposta (C20) saiu da página (pedido da editoria) — C20 revogada, ver METODOLOGIA §32.4
   if (d2.querySelectorAll("#tblDecRec tbody tr").length !== 27) falhas.push("defesa-civil: tabela decretado × reconhecido sem 27 UFs");
   if (!/art\. 73, VI/.test(d2.getElementById("resposta").textContent)) falhas.push("defesa-civil: frase C18 ausente na seção do contador");
   if (falhas.length) { console.log("✗ RUNTIME (resposta):"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
