@@ -75,7 +75,7 @@ def rodape(canvas, doc):
     canvas.saveState()
     canvas.setFont("Helvetica", 7.5)
     canvas.setFillColor(CINZA)
-    canvas.drawString(18 * mm, 12 * mm, "Monitor El Niño Brasil · Futura Evidence Lab — MARÉ v3.1: documentação e auditoria do índice")
+    canvas.drawString(18 * mm, 12 * mm, "MARÉ · Futura Evidence Lab — v3.1: documentação e auditoria do índice")
     canvas.drawRightString(A4[0] - 18 * mm, 12 * mm, f"página {doc.page}")
     canvas.setStrokeColor(TERRA); canvas.setLineWidth(0.6)
     canvas.line(18 * mm, 16 * mm, A4[0] - 18 * mm, 16 * mm)
@@ -96,7 +96,7 @@ def construir():
 
     E = []
     E.append(Paragraph("MARÉ v3.1 — Documentação do Índice", S_TIT))
-    E.append(Paragraph("Medida de Antecipação e Resposta ao El Niño · Monitor El Niño Brasil (monitorelnino.com.br) · Futura Evidence Lab", S_SUB))
+    E.append(Paragraph("Medida de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Futura Evidence Lab", S_SUB))
     E.append(Paragraph(
         f"Documento gerado programaticamente em {hoje} a partir dos dados publicados (corte {meta['corte']}); "
         f"todos os valores são computados na geração — nenhum foi digitado à mão. Média nacional vigente: "
@@ -334,7 +334,7 @@ def construir():
                             leftMargin=18 * mm, rightMargin=18 * mm,
                             topMargin=16 * mm, bottomMargin=22 * mm,
                             title="MARÉ v3.1 — Documentação do Índice",
-                            author="Futura Evidence Lab · Monitor El Niño Brasil",
+                            author="Futura Evidence Lab · MARÉ",
                             # 10/09/2026: build reprodutível de verdade — ver a mesma nota em gerar_pdf_metodologia.py
                             pageCompression=0, invariant=1)
     doc.build(E, onFirstPage=rodape, onLaterPages=rodape)

@@ -113,11 +113,11 @@ async function __load(){
       (document.getElementById('notaPainel')||{}).textContent = 'Painel de ' + PAINEL.n + ' municípios; semente ' + PAINEL.semente + ', lista publicada em ' + PAINEL.lista_publicada_em + ' (hash ' + String(PAINEL.hash_lista).slice(0,12) + '…).';
       document.getElementById('painelResumo').innerHTML = '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>Região × porte</th><th>Municípios</th><th>Com instrumento publicado</th><th>Ainda não verificados</th></tr></thead><tbody>'
         + (PAINEL.agregados || []).map(a => '<tr><td>' + esc(a.regiao) + ' · ' + esc(a.porte) + '</td><td>' + a.n + '</td><td>' + a.com_instrumento + '</td><td>' + a.nao_verificados + '</td></tr>').join('') + '</tbody></table></div>';
-      MonitorMapas.credito('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: PAINEL.lista_publicada_em});
+      MonitorMapas.credito('boxPainel', {fontes: ['MARÉ', 'painel amostral'], data: PAINEL.lista_publicada_em});
     } else {
-      MonitorMapas.credito('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: null});
+      MonitorMapas.credito('boxPainel', {fontes: ['MARÉ', 'painel amostral'], data: null});
     }
-  } catch(e) { MonitorMapas.credito('boxPainel', {fontes: ['Monitor El Niño Brasil', 'painel amostral'], data: null}); }
+  } catch(e) { MonitorMapas.credito('boxPainel', {fontes: ['MARÉ', 'painel amostral'], data: null}); }
   // 15/09/2026 (auditoria editorial §1.7): compromissos e série semanal voltaram a financiamento.js; aqui fica só o plano por área
   try {
     const ROTAS_FIN = await fetch('data/financiamento/rotas.json').then(r => r.ok ? r.json() : null);
@@ -212,7 +212,7 @@ function renderTable(){
   { const cons = (CONSULTAS && CONSULTAS.consultas) || []; if (document.querySelector('#tblConsultas tbody')) {
   if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
   }
-  MonitorMapas.credito('boxConsultas', {fontes: ['Monitor El Niño Brasil', 'consultas registradas'], data: cons.length ? (META.atualizado_em || META.corte) : null}); }
+  MonitorMapas.credito('boxConsultas', {fontes: ['MARÉ', 'consultas registradas'], data: cons.length ? (META.atualizado_em || META.corte) : null}); }
   MonitorMapas.credito('boxFontesMonit', {fontes: 'as listadas', data: '25/08/2026'});
   const el = id => document.getElementById(id);
   el('pqCorte').textContent = META.corte || '—'; el('pqAtualizado').textContent = META.atualizado_em || '—';
@@ -295,5 +295,5 @@ const AREAS = [
   {label:'Multirrisco integrado', cor:MonitorMapas.PALETA.risco.multi, ufs:['SC']},
 ];
   tb.querySelector('tbody').innerHTML = AREAS.map(a => `<tr><td>${esc(a.label)}</td><td>${a.ufs.length}</td><td>${esc(a.ufs.join(', '))}</td></tr>`).join('');
-  MonitorMapas.credito('boxAreas', {fontes: ['Monitor El Niño Brasil', 'classificação COBRADE'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
+  MonitorMapas.credito('boxAreas', {fontes: ['MARÉ', 'classificação COBRADE'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
 })();

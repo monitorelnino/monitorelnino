@@ -6,7 +6,7 @@ Para embutir no seu site, cole:
 
 ```html
 <a href="https://monitorelnino.com.br/#SC"><img src="https://monitorelnino.com.br/selos/mare-SC.svg" width="360" height="92"
-   alt="MARÉ, Monitor El Niño Brasil: Santa Catarina, preparação demonstrável publicamente"></a>
+   alt="MARÉ: Santa Catarina, preparação demonstrável publicamente"></a>
 ```
 
 O selo diz o que o índice mede — preparação *demonstrável publicamente* — e

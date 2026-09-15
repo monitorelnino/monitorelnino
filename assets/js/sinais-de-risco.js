@@ -227,7 +227,7 @@ new Chart(document.getElementById('cTipos'), {type:'bar', data:{
     datasets:[{data:contagem, backgroundColor:ordemTipos.map(t => TIPO_COR[t]), borderWidth:0}]},
   options:{...SEM_ANIM, indexAxis:'y', plugins:{legend:{display:false}},
     scales:{x:{title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
-credito('boxTipos', 'painel_el_nino');
+// 15/09/2026: a contagem por família mora na figura dupla boxTipoRisco (mapa + gráfico, uma legenda) — o crédito é o da figura.
 
 // ---- Gráfico "tipo de risco × estágio do arcabouço público": desde 15/09/2026 mora no fim da página inicial
 //      (assets/js/index.js, mesma fórmula); aqui só desenha se algum HTML antigo ainda tiver #cCruz.

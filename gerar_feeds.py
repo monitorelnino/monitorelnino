@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gerar_feeds.py — histórico de mudanças e feeds Atom do Monitor El Niño Brasil.
+gerar_feeds.py — histórico de mudanças e feeds Atom do MARÉ.
 
 Sugestão aceita por Patricia em 31/08/2026: quem acompanha um estado (jornalista,
 Defesa Civil, controle externo) assina `feeds/UF.xml` e recebe "SC: novo
@@ -159,7 +159,7 @@ def atom(titulo, arquivo, eventos, atualizado):
   <link rel="self" href="{SITE}/feeds/{arquivo}"/>
   <id>tag:monitorelnino.com.br,2026:feed:{arquivo}</id>
   <updated>{_rfc3339(atualizado)}</updated>
-  <author><name>Monitor El Niño Brasil · Futura Evidence Lab</name></author>
+  <author><name>MARÉ · Medida de Antecipação e Resposta ao El Niño · Futura Evidence Lab</name></author>
 {itens}
 </feed>
 """
@@ -169,14 +169,14 @@ def renderizar(historico, nomes, data):
     """Escreve feeds/brasil.xml, feeds/UF.xml (27) e feeds/index.json."""
     FEEDS.mkdir(exist_ok=True)
     eventos = sorted(historico["eventos"], key=lambda x: (x["data"].split("/")[::-1], x["titulo"]), reverse=True)
-    (FEEDS / "brasil.xml").write_text(atom("Monitor El Niño Brasil — atualizações", "brasil.xml", eventos[:100], eventos[0]["data"] if eventos else data), encoding="utf-8")
+    (FEEDS / "brasil.xml").write_text(atom("MARÉ — atualizações", "brasil.xml", eventos[:100], eventos[0]["data"] if eventos else data), encoding="utf-8")
     for uf, nome in sorted(nomes.items()):
         ev = [x for x in eventos if x["uf"] == uf][:50]
-        (FEEDS / f"{uf}.xml").write_text(atom(f"Monitor El Niño Brasil — {nome}", f"{uf}.xml", ev, ev[0]["data"] if ev else data), encoding="utf-8")
+        (FEEDS / f"{uf}.xml").write_text(atom(f"MARÉ — {nome}", f"{uf}.xml", ev, ev[0]["data"] if ev else data), encoding="utf-8")
     # v2.2.4 (§7.7): feed próprio de saúde — eventos dos tipos novos (instrumento_saude,
     # verificacao_ampliada, decreto_reconhecido). Nasce válido mesmo sem eventos.
     ev_saude = [x for x in eventos if x.get("tipo") in ("instrumento_saude", "verificacao_ampliada", "decreto_reconhecido")][:100]
-    (FEEDS / "saude.xml").write_text(atom("Monitor El Niño Brasil — saúde e El Niño (registro de transparência, peso zero)", "saude.xml",
+    (FEEDS / "saude.xml").write_text(atom("MARÉ — saúde e El Niño (registro de transparência, peso zero)", "saude.xml",
                                           ev_saude, ev_saude[0]["data"] if ev_saude else data), encoding="utf-8")
     (FEEDS / "index.json").write_text(json.dumps({"brasil": f"{SITE}/feeds/brasil.xml", "saude": f"{SITE}/feeds/saude.xml",
                                                   "ufs": {uf: f"{SITE}/feeds/{uf}.xml" for uf in sorted(nomes)}}, ensure_ascii=False, indent=1), encoding="utf-8")

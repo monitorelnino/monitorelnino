@@ -61,7 +61,7 @@ function renderContadorResposta(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const N = RESP && RESP.nacional; const box = document.getElementById('contadorResposta'); if (!box) return;
   const el = id => document.getElementById(id);
-  if (!N) { el('respLinha').textContent = 'sem coleta até o corte'; MonitorMapas.credito('respFonte', {fontes: 'Monitor El Niño Brasil', data: null}); return; }
+  if (!N) { el('respLinha').textContent = 'sem coleta até o corte'; MonitorMapas.credito('respFonte', {fontes: 'MARÉ', data: null}); return; }
   const fm = 100 * N.fracao_municipios, ir = indiceResposta(N);
   el('respNum').textContent = ir.toFixed(1).replace('.', ',');
   el('respNum').setAttribute('data-contar', ir);
@@ -143,7 +143,7 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
       options:{animation:false, responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}},
         scales:{x:{stacked:true}, y:{stacked:true, title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
     const f = (SR.fontes || {}).painel_el_nino || {};
-    MonitorMapas.credito('boxCruz', {fontes: [f.nome || 'Painel El Niño 2026-2027 (CEMADEN/INPE)', 'MARÉ (Monitor El Niño Brasil)'], url: f.url_publica, data: f.consultado_em || null});
+    MonitorMapas.credito('boxCruz', {fontes: [f.nome || 'Painel El Niño 2026-2027 (CEMADEN/INPE)', 'MARÉ'], url: f.url_publica, data: f.consultado_em || null});
     const d = document.querySelector('#boxCruz .fonte-figura'); if (d) d.dataset.credito = 'painel_el_nino';
   }).catch(() => { canvas.parentNode.innerHTML = '<div class="lacuna">Sinais de risco sem coleta até o corte.</div>'; });
 })();
@@ -660,7 +660,7 @@ function gerarRelatorioCidadao(uf, municipio){
     doc.setFont('helvetica','bold'); doc.setFontSize(52); doc.setTextColor(60,60,60);
     doc.text('FUTURA · EVIDENCE LAB', W/2, H/2, {angle:45, align:'center'}); doc.restoreGraphicsState(); };
   const rod = () => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(120,110,95);
-    doc.text('Monitor El Niño Brasil · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
+    doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
     doc.text('© 2026 Futura Evidence Lab. Dados verificados em fontes oficiais.', M, H-18);
     doc.text('Página ' + doc.internal.getNumberOfPages(), W-M, H-18, {align:'right'}); };
   const nova = () => { rod(); doc.addPage(); marca(); y = M; };
@@ -685,7 +685,7 @@ function gerarRelatorioCidadao(uf, municipio){
   marca();
   doc.addImage(LOGO_PDF, 'PNG', M, 42, 150, 56);
   doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.setTextColor(...INK);
-  doc.text('Monitor El Niño Brasil', M, 128);
+  doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño', M, 128);
   doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(...MUTED);
   const corte = (typeof META !== 'undefined' && META && META.corte) ? META.corte : '';
   doc.text('El Niño 2026/2027 · Corte dos dados: ' + corte + ' · Gerado em ' + new Date().toLocaleDateString('pt-BR'), M, 143);
@@ -864,6 +864,7 @@ function copiarPedido(botao){
     const el = document.getElementById('gaugeCorte'); if (el) el.textContent = META.corte;
   }
   const strip = document.getElementById('heroStrip');
+  if (!strip) return;   // 15/09/2026: a linha do tempo saiu da inicial (pedido da editoria); código guardado para reuso
   const d0 = -89;   // 01/04/2026, em dias relativos ao Boletim nº 1
   const __corteParts = ((typeof META !== 'undefined' && META && META.corte) || '25/08/2026').split('/').map(Number);
   const d1 = Math.round((new Date(__corteParts[2], __corteParts[1]-1, __corteParts[0]) - new Date(2026, 5, 29)) / 86400000);   // corte lido de meta.json

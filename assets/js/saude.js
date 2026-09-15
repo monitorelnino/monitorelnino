@@ -87,7 +87,7 @@ function __init(){
     MonitorMapas.legenda('legMonitor', [
       ...['avançado', 'consolidado', 'em construção', 'estágio inicial'].map(f => ({cor: FX[f], rotulo: f + ' · ' + (pf[f] || 0) + ' UF' + ((pf[f] || 0) === 1 ? '' : 's')})),
       {cor: FX['não verificado'], rotulo: 'ainda não verificado · ' + (R.nao_verificadas ?? '—') + ' UFs (sem número)'}]);
-    fonteFigura('boxMonitor', {fontes: ['Monitor El Niño Brasil', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
+    fonteFigura('boxMonitor', {fontes: ['MARÉ', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
     // tabela alternativa
     const tb = document.querySelector('#tblMonitor tbody');
     if (tb) tb.innerHTML = UFS.map(uf => { const m = M[uf] || {}, i = m.instrumento || {}, a = m.antecipacao || {}, r = m.risco_atual || {};
@@ -122,7 +122,7 @@ function __init(){
       bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; --galvo:' + Math.max(m.prontidao, 0.1) + ';"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
         : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
       MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.PALETA.trilho, rotulo: 'trilho 0–100'}, {cor: MonitorMapas.PALETA.faixas.avancado, rotulo: 'cor = posição no degradê do índice (0 → 100)'}, {cor: MonitorMapas.PALETA.faixas.nao_verificado, rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
-      fonteFigura('boxMonitorBarras', {fontes: ['Monitor El Niño Brasil', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
+      fonteFigura('boxMonitorBarras', {fontes: ['MARÉ', 'Monitor Saúde v0.1'], data: (MSAUDE || {}).gerado_em});
     }
     // Resposta sanitária (E17): ESPIN federal, decretos estaduais por arboviroses, créditos por portaria — contador, hoje zero de verdade
     const em = (SSIN && SSIN.emergencias) || []; const rn = document.getElementById('rsNum'); if (rn) rn.textContent = String(em.length);
@@ -141,7 +141,7 @@ function __init(){
     Object.values(ST).map(v => ({cor:v[1], rotulo:v[0]})));
   const nv = UFS.filter(u => st(u)==='NAO_VERIFICADO').length;
   document.getElementById('contagemUF').textContent = nv + ' de 27 UFs ainda não verificadas na camada de saúde · ' + (27-nv) + ' verificada(s).';
-  fonteFigura('boxStatus', {fontes: 'Monitor El Niño Brasil', data: SUF.corte});
+  fonteFigura('boxStatus', {fontes: 'MARÉ', data: SUF.corte});
   const FAM = {seca:['Seca / calor / fogo',MonitorMapas.PALETA.risco.seca], chuvas:['Chuvas extremas',MonitorMapas.PALETA.risco.chuvas], multi:['Mais de uma família',MonitorMapas.PALETA.risco.multi]};
   const fam = uf => { const r = ((SUF.uf[uf]||{}).risco_sanitario_projetado||[]).join(' ').toLowerCase(); const s = /calor|queimad|arbovir|estiagem/.test(r), c = /leptospir|diarre|hepatite/.test(r); return s&&c?'multi':s?'seca':c?'chuvas':null; };
   desenharMapa('mapaRiscoSan','legRiscoSan', uf => fam(uf) ? FAM[fam(uf)][1] : NEUTRA,

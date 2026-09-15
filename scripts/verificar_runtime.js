@@ -173,12 +173,7 @@ setTimeout(() => {
   teste("PDF do cidadão: estado e município usam o mesmo gerador",
     /function gerarPDFEstado\(uf\)\{ ?gerarRelatorioCidadao\(uf, null\)/.test(fonte) && /gerarRelatorioCidadao\(uf, cid \|\| null\)/.test(fonte));
 
-  // Tooltip compartilhado (usado pela linha do tempo do herói desde que os mapas
-  // saíram para defesa-civil.html, 31/08/2026) — alvo de hover trocado de
-  // #mapCobertura (mudou de página) para um tick da linha do tempo, que continua aqui.
-  const hover = d.querySelector(".strip-tick");
-  hover.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
-  teste("tooltip da linha do tempo exibe conteúdo", q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
+  // 15/09/2026: a linha do tempo do herói saiu da inicial (pedido da editoria); o tooltip compartilhado é testado nas páginas de mapas.
 
   // KPIs do topo: sempre calculados a partir dos dados carregados (nunca texto fixo) —
   // guarda-corpo contra o card ficar desatualizado silenciosamente (achado de 31/08/2026).
@@ -186,12 +181,12 @@ setTimeout(() => {
   // 14/09/2026 (auditoria §2.1–§2.4, §2.7): título-fato, interpretações com números do dado, três números, "O que vem"
   // 15/09/2026 (pedido da editoria): sem h2 no herói, sem botão "Consultar seu município"; o subtítulo do cabeçalho traz o escopo e o corte
   teste("home: herói sem h2 e sem botão de consulta; subtítulo único com municípios e corte", !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]') && /27 estados e de [\d.]+ municípios\. Dados até \d{2}\/\d{2}\/\d{4}\./.test(d.querySelector(".site-sub").textContent));
-  teste("medidor: interpretação com 3 contagens de estados (soma 27)", (() => { const m = q("interpAntecipacao").textContent.match(/(\d+) estados publicaram.*?(\d+) reeditaram.*?(\d+) não têm/); return !!m && (+m[1] + +m[2] + +m[3]) === 27; })());
+  // 15/09/2026: a linha de interpretação do medidor (contagens por categoria) saiu da inicial (pedido da editoria).
   teste("contador: interpretação com municípios, milhões, primeiro decreto e aceitos", /municípios, [\d,]+ milhões.*Primeiro decreto do ciclo: \d{2}\/\d{2}\/\d{4}.*aceitos pelo governo federal/.test(q("interpResposta").textContent));
   teste("home sem os três cartões, sem a nota do período eleitoral e sem o bloco 'escondeu' (15/09/2026)", !q("tres") && !q("notaDefeso") && !q("blocoPosDefeso") && !q("n1Anunciado"));
   teste("ordem da home: medidores → sua cidade → estados → calendário → cruzamento risco × estágio", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("prazos") && pos("prazos") < pos("cruzamento") && pos("cruzamento") === ids.length - 1; })());
   teste("calendário nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
-  teste("porta para o calendário eleitoral segue na frase C18 do índice de resposta", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
+  teste("porta para o calendário eleitoral segue na inicial (ficha Como ler o MARÉ)", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
   teste("cruzamento risco × estágio: figura no fim da inicial, gráfico com as 27 UFs", (() => { const g = (dom.window.__charts || []).find(c => c.ctx && c.ctx.id === "cCruz"); const soma = g ? g.cfg.data.datasets.reduce((s, ds) => s + ds.data.reduce((a, b) => a + b, 0), 0) : -1; return !!q("boxCruz") && q("boxCruz").classList.contains("figura") && soma === Object.keys(INDICE).length; })());
   teste("todas as barras usam a arte única do medidor (nenhum .resp-fill / .tile-fill2 / .barra-resp)", !d.querySelector(".resp-fill, .tile-fill2, .barra-resp") && d.querySelectorAll("#hero .gauge-fill").length === 2 && !!d.querySelector("#hero .gauge-fill--resposta"));
   teste("cartões de estado: cinco campos na face (barras + nível + instrumento + capital)", d.querySelectorAll(".tile .tile-face").length === 27 && [...d.querySelectorAll(".tile .tile-face")].every(f => f.querySelectorAll("span").length === 3));

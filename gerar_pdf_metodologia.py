@@ -84,7 +84,7 @@ def construir():
     corpo_ini = 0
     cab = [l for l in linhas[:12] if l.strip()]
     E.append(Paragraph(_inline(cab[0]), S_KICK))                      # FUTURA · EVIDENCE LAB
-    E.append(Paragraph(_inline(re.sub(r"\*\*", "", cab[1])), S_TIT))  # Monitor El Niño Brasil
+    E.append(Paragraph(_inline(re.sub(r"\*\*", "", cab[1])), S_TIT))  # MARÉ
     E.append(Paragraph(_inline(re.sub(r"\*", "", cab[2])), S_SUB))    # MARÉ — ...
     E.append(Paragraph(_inline(cab[3]), S_META))                      # Documento Técnico-Metodológico
     E.append(Paragraph(_inline(cab[4]), S_META))                      # Edição · versão · corte
@@ -126,7 +126,7 @@ def construir():
         canvas.setFont("Helvetica", 7.5)
         canvas.setFillColor(CINZA)
         canvas.drawString(18 * mm, 12 * mm,
-                          f"Monitor El Niño Brasil · Futura Evidence Lab — Documento Técnico-Metodológico ({versao}, renderizado do METODOLOGIA.md vigente)")
+                          f"MARÉ · Futura Evidence Lab — Documento Técnico-Metodológico ({versao}, renderizado do METODOLOGIA.md vigente)")
         canvas.drawRightString(A4[0] - 18 * mm, 12 * mm, f"página {doc.page}")
         canvas.setStrokeColor(colors.HexColor("#D8CFC2"))
         canvas.line(18 * mm, 16 * mm, A4[0] - 18 * mm, 16 * mm)
@@ -135,8 +135,8 @@ def construir():
     doc = SimpleDocTemplate(str(RAIZ / "METODOLOGIA.pdf"), pagesize=A4,
                             leftMargin=18 * mm, rightMargin=18 * mm,
                             topMargin=16 * mm, bottomMargin=22 * mm,
-                            title=f"Monitor El Niño Brasil — Metodologia {versao}",
-                            author="Futura Evidence Lab · Monitor El Niño Brasil",
+                            title=f"MARÉ — Metodologia {versao}",
+                            author="Futura Evidence Lab · MARÉ",
                             # 10/09/2026: build reprodutível de verdade — pageCompression=0 tira a dependência da
                             # versão do zlib do sistema (comprimir o mesmo conteúdo pode gerar bytes diferentes
                             # em zlib diferentes, mesmo com SOURCE_DATE_EPOCH igual); invariant=1 fixa o

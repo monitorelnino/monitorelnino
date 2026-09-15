@@ -1,5 +1,5 @@
 /* ============================================================
-   base.css — folha ÚNICA de componentes do Monitor El Niño Brasil (v3.1.1, 07/09/2026)
+   base.css — folha ÚNICA de componentes do MARÉ (v3.1.1, 07/09/2026)
    Regras da auditoria de consistência de 07/09/2026:
    · nenhuma página tem <style> próprio nem font-size / font-weight / line-height inline;
    · todo valor vem de assets/tokens.css (escala tipográfica de 8 degraus, escala de
@@ -76,12 +76,14 @@ code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-
 .mast-sub{color:var(--muted); margin:0 0 var(--sp-4);}
 .rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted);}
 .dado{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
-.panel > p, .panel .hint, .hero-lede, .bloco-citacao p{max-width:var(--medida-leitura);}
+/* 15/09/2026 (pedido da editoria): textos explicativos ocupam a largura toda do painel — a medida de leitura (68ch) fica só para a citação e para o texto de prazos. */
+.panel > p, .panel .hint, .hero-lede{max-width:none;}
+.bloco-citacao p{max-width:var(--medida-leitura);}
 .hero-lede{font-family:var(--font-titulo); font-size:var(--fs-h3); line-height:var(--lh-h3); margin:var(--sp-3) 0 var(--sp-3);}
 .hero-scope{margin:var(--sp-4) 0 0; font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted);}
 .hero-links{margin:var(--sp-3) 0 0; font-size:var(--fs-body);}
 .hero-links a{margin-right:var(--sp-4);}
-.site-sub{color:var(--muted); font-size:var(--fs-body); max-width:var(--medida-leitura); margin:0;}
+.site-sub{color:var(--muted); font-size:var(--fs-body); max-width:none; margin:0;}
 .meta{text-align:right; font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-body); color:var(--muted);}
 .meta strong{color:var(--ink); font-weight:var(--peso-medio);}
 .meta a{color:inherit;}
@@ -158,6 +160,11 @@ details.acc > .panel > h2:first-of-type{display:none;}   /* já mostrado no <sum
 .figura-midia{width:100%; min-width:0; position:relative;}
 .figura--mapa .figura-midia{aspect-ratio:var(--mapa-proporcao);}
 .figura--mapa .figura-midia > svg{width:100%; height:100%; display:block;}
+/* 15/09/2026: figura dupla (mapa + gráfico no mesmo quadro, uma legenda) — duas colunas a partir do tablet, uma no celular */
+.figura--dupla .figura-midia{aspect-ratio:auto; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--esp-grade); align-items:center;}
+.figura--dupla .midia-mapa{aspect-ratio:var(--mapa-proporcao); min-width:0;}
+.figura--dupla .midia-mapa > svg{width:100%; height:100%; display:block;}
+.figura--dupla .canvas-wrap{height:var(--grafico-altura); min-width:0;}
 .figura--grafico .figura-midia, .figura--grafico .canvas-wrap{height:var(--grafico-altura);}
 .figura--grafico.figura--largo .figura-midia, .figura--grafico.figura--largo .canvas-wrap{height:var(--grafico-altura-largo);}
 .figura--grafico .figura-midia > canvas, .canvas-wrap > canvas{max-width:100% !important;}
@@ -484,6 +491,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .mast-top{gap:var(--sp-3) var(--sp-4);}
 }
 @media (max-width:640px){
+  .figura--dupla .figura-midia{grid-template-columns:minmax(0, 1fr);}
   .wrap{padding:var(--sp-4) var(--grade-margem-celular) var(--sp-7);}
   h1, .site-title{font-size:var(--fs-h2); line-height:var(--lh-h2);}
   h2{font-size:var(--fs-h3); line-height:var(--lh-h3);}
