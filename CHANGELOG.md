@@ -9,6 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §51 · O dinheiro volta para Financiamento; quarta porta para o calendário (auditoria editorial 14/09, onda E1 §1.7 e §1.6) · 15/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página**.
+
+- Financiamento ganha o bloco **"O que a União prometeu — e o que pagou"** (antes de "Por estado"): título-fato do dado (nº de compromissos verificados; R$ transferidos a municípios em 2026 até a última semana da série), a série semanal por rota como **miniatura** com a faixa do período eleitoral, e a tabela de compromissos verificados. A faixa vem com a **quarta porta** ("a faixa sombreada é a lei, não a inação… a única porta aberta é o decreto — por que há páginas fora do ar →").
+- Em Pesquisadores fica só o gráfico do plano federal por área (valores anunciados), com a nota de que o resto voltou. Renderizadores movidos de `pesquisadores.js` para `financiamento.js` sem mudança de lógica; runtime cobre título, tabela, faixa e porta.
 ## §52 · Legendas neutras: auditoria de todas as figuras e portão 19 (regra editorial permanente da editoria, 15/09) · 15/09/2026
 
 Nenhuma alteração de método, dado, cálculo ou fonte. Classe **texto/editorial + portão**. A editoria fixou uma regra permanente: legenda, título auxiliar, subtítulo, item de legenda, crédito, tooltip e cartão com número **descrevem** (variável, período, território, unidade, fato principal) e **nunca** avaliam, dramatizam, interpretam ou atribuem causa; interpretação vive no texto narrativo, fora da figura.

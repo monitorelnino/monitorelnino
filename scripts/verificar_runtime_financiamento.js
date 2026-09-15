@@ -104,6 +104,12 @@ setTimeout(() => {
     teste("fogo: mapa " + (temFogo ? "com camadas" : "declara lacuna sem coleta"), temFogo ? true : /lacuna declarada/.test(q("svgFogoLacuna").textContent));
     teste("fogo: créditos das duas figuras", /Fonte:/.test(q("boxFogoRotas").textContent) && /Fonte:/.test(q("boxFogoMapa").textContent));
   } catch (e) { teste("fogo: bloco (" + e.message + ")", false); }
+  // 15/09/2026 (§1.7/§1.6): "O que a União prometeu — e o que pagou" de volta a Financiamento, com a quarta porta para o calendário
+  try {
+    teste("prometeu: título-fato com nº de compromissos (do dado)", /\d+ compromissos federais verificados/.test(q("prometeuTitulo").textContent));
+    teste("prometeu: tabela de compromissos preenchida", q("tblCompromissos").querySelectorAll("tbody tr").length > 0);
+    teste("prometeu: série semanal com a faixa do período eleitoral e a porta 'por que há páginas fora do ar'", !!q("svgSerie").querySelector("rect") && !![...q("prometeu").querySelectorAll("a")].find(a => /por que há páginas fora do ar/i.test(a.textContent)));
+  } catch (e) { teste("prometeu: bloco (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (financiamento) OK — rotas, faixa do defeso, mapas, resposta, compromissos, fontes, E10 e soma de preparação.");
   process.exit(falhas.length ? 1 : 0);
 }, 1200);
