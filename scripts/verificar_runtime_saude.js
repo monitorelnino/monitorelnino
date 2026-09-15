@@ -149,7 +149,7 @@ setTimeout(() => {
   teste("crédito InfoDengue visível na página", texto.includes("InfoDengue (Fiocruz/FGV)"));
   // nav canônica com Saúde ativa
   const ativa = d.querySelector(".mainnav .ativa");
-  teste("nav: 'Saúde' é o item ativo", ativa && ativa.textContent.trim() === "Saúde");
+  teste("nav: 'MARÉ Saúde' é o item ativo", ativa && ativa.textContent.trim() === "MARÉ Saúde");
 
   // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──
   const mapasSvg = [...d.querySelectorAll('svg[id^="map"], svg[id^="mapa"]')].filter(s => s.querySelector("path.uf-path") || s.querySelector("path"));

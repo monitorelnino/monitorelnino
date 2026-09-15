@@ -95,6 +95,8 @@ def agregar_uf(municipios: dict, populacao: dict) -> dict:
         datas = [data_br(m["primeiro_decreto"]) for m in com if m["primeiro_decreto"]]
         por[uf] = {"n_municipios": len(com), "total_municipios": len(ms), "fracao_municipios": round(len(com) / len(ms), 4) if ms else 0.0,
                    "pop_sob_decreto": int(pop_dec), "pop_uf": int(pop_uf), "fracao_populacao": round(pop_dec / pop_uf, 4) if pop_uf else 0.0,
+                   # 15/09/2026 (decisão editorial, §32.4): ÍNDICE de resposta 0–100 = 100 × fração da população em município sob decreto
+                   "indice": round(100.0 * pop_dec / pop_uf, 1) if pop_uf else 0.0,
                    "primeiro_decreto": min(datas).strftime("%d/%m/%Y") if datas else None,
                    "fatias": {"apos_evento": 0, "antes_com_previsao": 0, "em_classificacao": len(com)},
                    "tons": {"reconhecido": sum(1 for m in com if m["reconhecido"]), "decretado_sem_reconhecimento": sum(1 for m in com if m["decretado"] and not m["reconhecido"])}}
@@ -131,14 +133,16 @@ def gerar() -> int:
     hoje = _hoje().strftime("%d/%m/%Y")
     n_total = sum(v["n_municipios"] for v in por.values()); pop_total = sum(v["pop_uf"] for v in por.values()); pop_dec = sum(v["pop_sob_decreto"] for v in por.values())
     datas = [data_br(m["primeiro_decreto"]) for m in mun.values() if m["primeiro_decreto"] and data_br(m["primeiro_decreto"]) >= INICIO_CICLO]
-    gov = ("Contador de RESPOSTA (v3.1 §3; Metodologia §32): contagens, frações e datas do que foi decretado depois. Sem fórmula, "
-           "sem faixa, sem peso; nunca combinado com o índice (C17). Peso zero no MARÉ (portão verificar_resposta.py). "
+    gov = ("RESPOSTA (v3.1 §3; Metodologia §32): contagens, frações e datas do que foi decretado depois, e — desde 15/09/2026 (§32.4) — "
+           "o ÍNDICE de resposta 0–100, igual a 100 × fração da população (Censo 2022) em município sob decreto no ciclo. Sem faixa, "
+           "sem peso; nunca combinado com o índice de antecipação (C17). Peso zero no MARÉ (portão verificar_resposta.py). "
            "Fatia 'evento observado' em_classificacao até o adaptador municipal existir (C16). " + FRASE_C18)
     (RAIZ / "data" / "resposta").mkdir(parents=True, exist_ok=True)
     gravar("resposta/municipios.json", {"_governanca": gov, "gerado_em": hoje, "frase_c18": FRASE_C18, "municipios": mun})
     gravar("resposta/por_uf.json", {"_governanca": gov, "gerado_em": hoje, "frase_c18": FRASE_C18, "inicio_ciclo": INICIO_CICLO.strftime("%d/%m/%Y"),
                                     "nacional": {"n_municipios": n_total, "total_municipios": len(mun), "fracao_municipios": round(n_total / len(mun), 4) if mun else 0,
                                                  "pop_sob_decreto": pop_dec, "pop_total": pop_total, "fracao_populacao": round(pop_dec / pop_total, 4) if pop_total else 0,
+                                                 "indice": round(100.0 * pop_dec / pop_total, 1) if pop_total else 0.0,
                                                  "primeiro_decreto": min(datas).strftime("%d/%m/%Y") if datas else None,
                                                  "reconhecidos": sum(v["tons"]["reconhecido"] for v in por.values()), "decretados_sem_reconhecimento": sum(v["tons"]["decretado_sem_reconhecimento"] for v in por.values())},
                                     "uf": por})
@@ -159,7 +163,7 @@ def autoteste() -> int:
     m = consolidar_municipios(E, V); por = agregar_uf(m, P)
     def t1(): return m["0000001"]["decreto"] and m["0000001"]["reconhecido"] and m["0000001"]["decretado"] and m["0000001"]["primeiro_decreto"] == "10/07/2026"
     def t2(): return m["0000002"]["decreto"] and m["0000002"]["reconhecido"] and not m["0000002"]["decretado"] and not m["0000003"]["decreto"]
-    def t3(): return por["RS"]["n_municipios"] == 2 and por["RS"]["fracao_municipios"] == round(2/3, 4) and por["RS"]["fracao_populacao"] == 0.4 and por["BA"]["n_municipios"] == 0
+    def t3(): return por["RS"]["n_municipios"] == 2 and por["RS"]["fracao_municipios"] == round(2/3, 4) and por["RS"]["fracao_populacao"] == 0.4 and por["RS"]["indice"] == 40.0 and por["BA"]["n_municipios"] == 0 and por["BA"]["indice"] == 0.0
     def t4(): return por["RS"]["fatias"]["em_classificacao"] == 2 and por["RS"]["fatias"]["apos_evento"] == 0 and por["RS"]["tons"] == {"reconhecido": 2, "decretado_sem_reconhecimento": 0}
     def t5(): s = serie_semanal(m); return sum(x["municipios"] for x in s) == 1 and any(x["defeso"] for x in s) and s[0]["semana"] == "2026-06-29"
     def t6(): return all(m2["evento_observado"] == "em_classificacao" for m2 in m.values() if m2["decreto"])   # C16: nunca imputado

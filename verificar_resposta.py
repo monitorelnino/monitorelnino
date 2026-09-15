@@ -55,6 +55,11 @@ try:
         pu = sum(float(pop.get(m["ibge"], 0) or 0) for m in ms); pd = sum(float(pop.get(m["ibge"], 0) or 0) for m in com)
         fp = round(pd / pu, 4) if pu else 0
         if fm != v["fracao_municipios"] or fp != v["fracao_populacao"]: erro(f"(f) {uf}: fração publicada ≠ recomputada ({v['fracao_municipios']}/{fm}, {v['fracao_populacao']}/{fp})")
+        # (f-bis, 15/09/2026): índice de resposta = 100 × fração da população, uma casa decimal
+        ind = round(100.0 * pd / pu, 1) if pu else 0.0
+        if v.get("indice") != ind: erro(f"(f) {uf}: índice de resposta publicado ≠ recomputado ({v.get('indice')}/{ind})")
+    npop = sum(float(pop.get(m["ibge"], 0) or 0) for m in mun.values()); ndec = sum(float(pop.get(m["ibge"], 0) or 0) for m in mun.values() if m["decreto"])
+    if por["nacional"].get("indice") != (round(100.0 * ndec / npop, 1) if npop else 0.0): erro("(f) índice nacional de resposta ≠ recomputado")
     # (g)
     atos = json.load(open(D / "atos_resposta.json", encoding="utf-8"))["eventos"]
     sem = [e for e in atos if not (e.get("fonte") and e.get("data") and (e.get("url") or e.get("hash_evidencia")))]

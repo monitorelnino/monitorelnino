@@ -48,6 +48,11 @@
   --gauge-trilho:#E7DECD; --gauge-borda:#CDBB9F; --gauge-osso:#F5F1E8; --gauge-cinza:#DDDED9; --ambar-escuro:#A87A50; --sintetico-escuro:#2A4457;
   --tooltip-bg:#141B16; --tooltip-ink:#EDE6D8;
   --sombra: 0 1px 3px rgba(21,32,26,.10);
+  /* 15/09/2026: os DOIS únicos degradês do site (arte única de toda barra — medidores, micro-barras dos estados,
+     barras por UF do MARÉ · Saúde). Índices de antecipação (MARÉ, MARÉ · Saúde): Argila → Âmbar → Mineral → Musgo;
+     índice de resposta: Mineral → Sintético → Âmbar → Argila (frio → quente). Nenhuma folha redeclara um degradê. */
+  --degrade-indice: linear-gradient(90deg, var(--argila) 0%, var(--ambar) 20%, var(--mineral) 48%, var(--musgo) 88%);
+  --degrade-resposta: linear-gradient(90deg, var(--mineral) 0%, var(--sintetico) 30%, var(--ambar) 65%, var(--argila) 100%);
 }
 
 /* ---------- 2. Tipografia ----------

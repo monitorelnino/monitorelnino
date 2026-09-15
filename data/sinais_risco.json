@@ -19,7 +19,7 @@
   },
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "14/09/2026",
+ "gerado_em": "15/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -39,9 +39,9 @@
    "url_publica": "https://monitordesecas.ana.gov.br/",
    "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "status": "coletado",
-   "consultado_em": "14/09/2026",
-   "documento": "Monitor de Secas (ANA) — mapas até 2026-07-31",
-   "detalhe": "Categoria de seca observada (S0 a S4) por município, mensal.",
+   "consultado_em": "15/09/2026",
+   "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+   "detalhe": "Fração da área de cada UF em cada categoria de seca (S0 a S4), no mapa mensal mais recente.",
    "recurso": {
     "arquivos": [
      "data/change-maps-div/2026/07/drought-monitor_change-maps_br-neb_2026-07-31_121m.png",
@@ -106,7 +106,7 @@
    "url_publica": "https://alertas2.inmet.gov.br/",
    "papel": "Avisos vigentes por área, com grau e vigência declarados pelo INMET.",
    "status": "coletado",
-   "consultado_em": "14/09/2026",
+   "consultado_em": "15/09/2026",
    "documento": "Avisos ativos no momento da consulta",
    "detalhe": "Avisos vigentes por área, com grau e vigência declarados pelo INMET."
   },
@@ -117,8 +117,8 @@
    "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
-   "consultado_em": "14/09/2026",
-   "documento": "Focos do dia — focos_diario_br_20260914.csv",
+   "consultado_em": "15/09/2026",
+   "documento": "Focos do dia — focos_diario_br_20260915.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -128,7 +128,7 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
    "papel": "Alertas vigentes emitidos aos municípios monitorados.",
    "status": "coletado",
-   "consultado_em": "14/09/2026",
+   "consultado_em": "15/09/2026",
    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
    "detalhe": "Alertas vigentes emitidos aos municípios monitorados."
   },
@@ -139,7 +139,7 @@
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
-   "consultado_em": "14/09/2026",
+   "consultado_em": "15/09/2026",
    "documento": "ONI v5, último trimestre JJA/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
@@ -1019,15 +1019,54 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 220,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260912.csv",
-    "consultado_em": "12/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 0.0,
+     "S0": 100.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 100.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S0",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 0,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "AL": {
    "risco_projetado": {
@@ -1039,15 +1078,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 2,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 33.94,
+     "S0": 36.12,
+     "S1": 29.94,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 66.06,
+     "S1": 29.94,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 6,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "AM": {
    "risco_projetado": {
@@ -1059,15 +1141,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 1112,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 40.43,
+     "S0": 51.71,
+     "S1": 7.86,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 59.57,
+     "S1": 7.86,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Chuvas Intensas"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 796,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "AP": {
    "risco_projetado": {
@@ -1079,15 +1204,54 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 3,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 100.0,
+     "S0": 0.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 0.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "sem seca",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 6,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "BA": {
    "risco_projetado": {
@@ -1099,15 +1263,59 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 194,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 10.12,
+     "S0": 18.27,
+     "S1": 71.61,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 89.88,
+     "S1": 71.61,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S1",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 652,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "CE": {
    "risco_projetado": {
@@ -1119,15 +1327,59 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 16,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 70.28,
+     "S0": 26.92,
+     "S1": 2.8,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 29.72,
+     "S1": 2.8,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 62,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "DF": {
    "risco_projetado": {
@@ -1139,15 +1391,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 3,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 100.0,
+     "S0": 0.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 0.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "sem seca",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 4,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "ES": {
    "risco_projetado": {
@@ -1159,15 +1454,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 42,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260912.csv",
-    "consultado_em": "12/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 0.0,
+     "S0": 8.34,
+     "S1": 91.66,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 100.0,
+     "S1": 91.66,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S1",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 0,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "GO": {
    "risco_projetado": {
@@ -1179,15 +1517,60 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 375,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 12.76,
+     "S0": 64.96,
+     "S1": 22.28,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 87.24,
+     "S1": 22.28,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 3,
+    "graus": {
+     "Perigo Potencial": 2,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Tempestade",
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 738,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "MA": {
    "risco_projetado": {
@@ -1199,15 +1582,59 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 280,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 54.69,
+     "S0": 45.31,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 45.31,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "S0",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 672,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "MG": {
    "risco_projetado": {
@@ -1219,13 +1646,51 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 0.02,
+     "S0": 68.17,
+     "S1": 31.81,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 99.98,
+     "S1": 31.81,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
+   },
+   "avisos_inmet": {
+    "total": 3,
+    "graus": {
+     "Perigo Potencial": 2,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Tempestade",
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
    "fogo": {
-    "focos_24h": 98,
+    "focos_24h": 295,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
    },
    "alertas_cemaden": {
     "total": 1,
@@ -1237,7 +1702,7 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "14/09/2026"
+    "consultado_em": "15/09/2026"
    }
   },
   "MS": {
@@ -1250,25 +1715,53 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 66.19,
+     "S0": 21.97,
+     "S1": 11.84,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 33.81,
+     "S1": 11.84,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
+   },
+   "avisos_inmet": {
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
    "fogo": {
-    "focos_24h": 12,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260912.csv",
-    "consultado_em": "12/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
-    "niveis": {
-     "Cessar": 1
-    },
-    "municipios": [
-     "CAMPO GRANDE"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "14/09/2026"
+    "consultado_em": "15/09/2026"
    }
   },
   "MT": {
@@ -1281,15 +1774,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 897,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 93.02,
+     "S0": 6.98,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 6.98,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "S0",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 702,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "PA": {
    "risco_projetado": {
@@ -1301,15 +1837,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 2730,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 71.44,
+     "S0": 28.56,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 28.56,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "S0",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 1967,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "PB": {
    "risco_projetado": {
@@ -1321,15 +1900,59 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 1,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 15.2,
+     "S0": 39.59,
+     "S1": 45.21,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 84.8,
+     "S1": 45.21,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 6,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "PE": {
    "risco_projetado": {
@@ -1341,27 +1964,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 9.47,
+     "S0": 13.56,
+     "S1": 76.97,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 90.53,
+     "S1": 76.97,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S1",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
+   },
+   "avisos_inmet": {
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
    "fogo": {
-    "focos_24h": 7,
+    "focos_24h": 18,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
    },
    "alertas_cemaden": {
-    "total": 3,
-    "niveis": {
-     "Cessar": 3
-    },
-    "municipios": [
-     "JABOATÃO DOS GUARARAPES",
-     "PALMARES",
-     "RECIFE"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "07/09/2026"
+    "consultado_em": "15/09/2026"
    }
   },
   "PI": {
@@ -1374,15 +2028,59 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 341,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 11.69,
+     "S0": 23.24,
+     "S1": 65.07,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 88.31,
+     "S1": 65.07,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S1",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 748,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "PR": {
    "risco_projetado": {
@@ -1394,38 +2092,67 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 89.47,
+     "S0": 10.53,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 10.53,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "S0",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
+   },
+   "avisos_inmet": {
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
    },
    "alertas_cemaden": {
-    "total": 13,
+    "total": 9,
     "niveis": {
-     "Moderado": 9,
-     "Alto": 3,
-     "Cessar": 1
+     "Moderado": 6,
+     "Alto": 1,
+     "Cessar": 2
     },
     "municipios": [
      "ALMIRANTE TAMANDARÉ",
      "ANTONINA",
-     "CAMPO LARGO",
      "CERRO AZUL",
      "CURITIBA",
      "GUARAQUEÇABA",
-     "ITAPERUÇU",
      "MORRETES",
-     "RIO BRANCO DO SUL",
      "RIO NEGRO",
      "SÃO MATEUS DO SUL",
      "UNIÃO DA VITÓRIA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "14/09/2026"
+    "consultado_em": "15/09/2026"
    }
   },
   "RJ": {
@@ -1438,26 +2165,64 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 23.83,
+     "S0": 33.94,
+     "S1": 42.23,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 76.17,
+     "S1": 42.23,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
+   },
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
    "fogo": {
-    "focos_24h": 7,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260912.csv",
-    "consultado_em": "12/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
    },
    "alertas_cemaden": {
-    "total": 2,
+    "total": 4,
     "niveis": {
-     "Moderado": 2
+     "Moderado": 4
     },
     "municipios": [
      "ANGRA DOS REIS",
-     "PARATY"
+     "MANGARATIBA",
+     "PARATY",
+     "PETRÓPOLIS"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "14/09/2026"
+    "consultado_em": "15/09/2026"
    }
   },
   "RN": {
@@ -1470,15 +2235,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 7,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 20.73,
+     "S0": 64.35,
+     "S1": 14.92,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 79.27,
+     "S1": 14.92,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 1,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "RO": {
    "risco_projetado": {
@@ -1490,15 +2298,54 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 3,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 36.55,
+     "S0": 39.79,
+     "S1": 23.66,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 63.45,
+     "S1": 23.66,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 125,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "RR": {
    "risco_projetado": {
@@ -1510,15 +2357,54 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 20,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 49.94,
+     "S0": 50.06,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 50.06,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S0",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 55,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "RS": {
    "risco_projetado": {
@@ -1530,27 +2416,57 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 100.0,
+     "S0": 0.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 0.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "sem seca",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
+   },
+   "avisos_inmet": {
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
    "fogo": {
     "focos_24h": 2,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260911.csv",
-    "consultado_em": "11/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
    },
    "alertas_cemaden": {
-    "total": 2,
+    "total": 1,
     "niveis": {
-     "Moderado": 1,
-     "Cessar": 1
+     "Moderado": 1
     },
     "municipios": [
-     "PORTO MAUÁ",
      "SÃO BORJA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "14/09/2026"
+    "consultado_em": "15/09/2026"
    }
   },
   "SC": {
@@ -1563,46 +2479,63 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 100.0,
+     "S0": 0.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 0.0,
+     "S1": 0.0,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "sem seca",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
+   },
+   "avisos_inmet": {
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
    "fogo": {
-    "focos_24h": 10,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260909.csv",
-    "consultado_em": "09/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
    },
    "alertas_cemaden": {
-    "total": 25,
+    "total": 5,
     "niveis": {
-     "Moderado": 3,
-     "Alto": 2,
-     "Cessar": 20
+     "Moderado": 2,
+     "Alto": 1,
+     "Cessar": 2
     },
     "municipios": [
-     "APIÚNA",
-     "BALNEÁRIO CAMBORIÚ",
-     "BENEDITO NOVO",
-     "BLUMENAU",
      "BOM RETIRO",
-     "BRUSQUE",
-     "DONA EMMA",
-     "IBIRAMA",
-     "ILHOTA",
-     "ITAJAÍ",
-     "JOSÉ BOITEUX",
-     "LONTRAS",
      "MAFRA",
      "OTACÍLIO COSTA",
      "PORTO UNIÃO",
-     "PRESIDENTE GETÚLIO",
-     "RIO NEGRINHO",
-     "RODEIO",
-     "TIMBÓ",
-     "WITMARSUM"
+     "RIO NEGRINHO"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "14/09/2026"
+    "consultado_em": "15/09/2026"
    }
   },
   "SE": {
@@ -1615,15 +2548,58 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 8,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260912.csv",
-    "consultado_em": "12/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 51.25,
+     "S0": 38.1,
+     "S1": 10.65,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 48.75,
+     "S1": 10.65,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "sem seca",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 1,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   },
   "SP": {
    "risco_projetado": {
@@ -1635,19 +2611,56 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 35.17,
+     "S0": 27.44,
+     "S1": 30.85,
+     "S2": 6.54,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 64.83,
+     "S1": 37.39,
+     "S2": 6.54,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S2",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
+   },
+   "avisos_inmet": {
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
    },
    "alertas_cemaden": {
-    "total": 69,
+    "total": 68,
     "niveis": {
-     "Moderado": 64,
-     "Alto": 5
+     "Moderado": 61,
+     "Alto": 3,
+     "Cessar": 4
     },
     "municipios": [
      "AMPARO",
@@ -1657,6 +2670,7 @@
      "BRAGANÇA PAULISTA",
      "CABREÚVA",
      "CAMPINAS",
+     "CAMPO LIMPO PAULISTA",
      "CAMPOS DO JORDÃO",
      "CARAGUATATUBA",
      "CARAPICUÍBA",
@@ -1688,12 +2702,11 @@
      "MOGI DAS CRUZES",
      "MONTE MOR",
      "OSASCO",
-     "PARAIBUNA",
-     "PIRACICABA"
+     "PARAIBUNA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "14/09/2026"
+    "consultado_em": "15/09/2026"
    }
   },
   "TO": {
@@ -1706,15 +2719,59 @@
     "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
-   "secas": null,
-   "avisos_inmet": null,
-   "fogo": {
-    "focos_24h": 334,
-    "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260914.csv",
-    "consultado_em": "14/09/2026"
+   "secas": {
+    "mapa": "Julho de 2026",
+    "ano": 2026,
+    "mes": 7,
+    "final": true,
+    "cobertura_pct": {
+     "sem seca": 4.64,
+     "S0": 61.79,
+     "S1": 33.57,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "cumulativa_pct": {
+     "S0": 95.36,
+     "S1": 33.57,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 0.0
+    },
+    "categoria_mediana": "S0",
+    "categoria_maxima": "S1",
+    "fonte": "monitor_secas",
+    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Julho de 2026",
+    "consultado_em": "15/09/2026"
    },
-   "alertas_cemaden": null
+   "avisos_inmet": {
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade"
+    ],
+    "fonte": "inmet_avisos",
+    "documento": "Avisos ativos no momento da consulta",
+    "consultado_em": "15/09/2026"
+   },
+   "fogo": {
+    "focos_24h": 561,
+    "fonte": "inpe_fogo",
+    "documento": "Focos do dia — focos_diario_br_20260915.csv",
+    "consultado_em": "15/09/2026"
+   },
+   "alertas_cemaden": {
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
+    "fonte": "cemaden_alertas",
+    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
+    "consultado_em": "15/09/2026"
+   }
   }
  }
 }

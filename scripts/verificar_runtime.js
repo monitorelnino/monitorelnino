@@ -24,7 +24,7 @@ const dom = new JSDOM(html, {
     w.d3 = require("d3");
     // módulo único de mapas (o <script src> externo não é carregado pelo jsdom sem resources)
     w.eval(fs.readFileSync(path.join(raiz, "assets", "mapas.js"), "utf-8"));
-    class Chart { constructor() {} } Chart.defaults = { font: {}, color: "" };
+    class Chart { constructor(ctx, cfg) { w.__charts = (w.__charts || []).concat([{ ctx, cfg }]); } } Chart.defaults = { font: {}, color: "", plugins: { legend: { labels: {} }, tooltip: {} }, elements: {} };
     w.Chart = Chart;
     w.fetch = (rel) => {
       const p = path.join(raiz, rel);
@@ -161,9 +161,12 @@ setTimeout(() => {
   const _d = s => { const [dd, mm, aa] = s.split("/").map(Number); return new Date(aa, mm - 1, dd); };
   const _hoje = new Date(); _hoje.setHours(0, 0, 0, 0);
   const esperados = prazos.filter(m => m.vencimento && m.data_base && m.titulo_curto && Math.round((_d(m.vencimento) - _hoje) / 86400000) >= -60).length;   // 05/09/2026: barra exige data_base
-  teste(`prazos em curso: ${esperados} item(ns) renderizados a partir de prazos_uf.json`, q("prazosLista").querySelectorAll(".prazo-rel").length === esperados && esperados > 0);   // 07/09/2026: relógios
-  teste("prazos em curso: cada relógio tem anel, número e o que se espera",
-    [...q("prazosLista").querySelectorAll(".prazo-rel")].every(p => p.querySelector("svg.relogio circle") && /\d/.test(p.querySelector("svg.relogio text").textContent) && p.querySelector(".prazo-espera")));
+  // 15/09/2026: os relógios saíram; os prazos em curso entram no Calendário em colunas, junto dos marcos do ciclo
+  const marcosCiclo = JSON.parse(fs.readFileSync(path.join(raiz, "data", "marcos_ciclo.json"), "utf-8")).marcos.filter(m => _d(m.ate || m.data) >= _hoje).length;
+  const linhasCal = [...q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)")];
+  teste(`calendário: ${esperados} prazo(s) + ${marcosCiclo} marco(s) do ciclo em linhas data · marco · fonte`, linhasCal.length === esperados + marcosCiclo && linhasCal.every(l => l.querySelectorAll(".cal-data, .cal-marco, .cal-fonte").length === 3));
+  teste("calendário: prazos em curso marcados e com contagem de dias ou 'transcorrido'", linhasCal.filter(l => l.classList.contains("prazo")).length === esperados && linhasCal.filter(l => l.classList.contains("prazo")).every(l => /em \d+ dias?|vence hoje|transcorrido/.test(l.textContent)));
+  teste("calendário: linhas em ordem de data", (() => { const ds = linhasCal.map(l => { const m = l.querySelector(".cal-data").textContent.match(/(\d{2})\/(\d{2})\/(\d{4})/); return m ? +m[3] * 10000 + +m[2] * 100 + +m[1] : 0; }); return ds.every((v, i) => i === 0 || v >= ds[i - 1]); })());
   // 13/09/2026 (pedido de Patricia): gerador de pedido de LAI pronto (31/08/2026–13/09/2026)
   // retirado da parte visível do site — pedidos de LAI passam a ser feitos por e-mail, de forma
   // privada. Testes correspondentes (cartão da cidade e detalhe do estado) removidos junto.
@@ -181,15 +184,16 @@ setTimeout(() => {
   // guarda-corpo contra o card ficar desatualizado silenciosamente (achado de 31/08/2026).
   const nLAC = Object.values(INDICE).filter(v => v.status_estadual === "LAC").length;
   // 14/09/2026 (auditoria §2.1–§2.4, §2.7): título-fato, interpretações com números do dado, três números, "O que vem"
-  teste("home: H2 é título-fato ('Anunciado em 29 de junho')", /Anunciado em 29 de junho/.test(d.querySelector(".hero h2").textContent));
-  teste("home: linha do cabeçalho com nº de municípios e corte do dado", /\d/.test(q("heroVerifFederal").textContent) && /\d{2}\/\d{2}\/\d{4}/.test(q("heroCorte").textContent));
+  // 15/09/2026 (pedido da editoria): sem h2 no herói, sem botão "Consultar seu município"; o subtítulo do cabeçalho traz o escopo e o corte
+  teste("home: herói sem h2 e sem botão de consulta; subtítulo único com municípios e corte", !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]') && /27 estados e de [\d.]+ municípios\. Dados até \d{2}\/\d{2}\/\d{4}\./.test(d.querySelector(".site-sub").textContent));
   teste("medidor: interpretação com 3 contagens de estados (soma 27)", (() => { const m = q("interpAntecipacao").textContent.match(/(\d+) estados publicaram.*?(\d+) reeditaram.*?(\d+) não têm/); return !!m && (+m[1] + +m[2] + +m[3]) === 27; })());
   teste("contador: interpretação com municípios, milhões, primeiro decreto e aceitos", /municípios, [\d,]+ milhões.*Primeiro decreto do ciclo: \d{2}\/\d{2}\/\d{4}.*aceitos pelo governo federal/.test(q("interpResposta").textContent));
-  teste("três números: 'anunciado', 'chegou' e 'não sabemos' presentes; 'publicado'/'decretado' não duplicam os medidores", !!q("n1Anunciado") && !!q("n4Chegou") && !!q("n5NaoSabemos") && !q("n2Publicado") && !q("n3Decretado"));
-  teste("três números: 'não sabemos' é numérico e cita 5.571", /de 5\.571/.test(q("n5NaoSabemos").textContent));
-  teste("ordem da home: medidores → três números → sua cidade → estados → o que vem → escondeu", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("tres") < pos("cidade") && pos("cidade") < pos("prazos") && pos("prazos") < pos("blocoPosDefeso") && pos("tres") > -1; })());
-  teste("'O que vem' nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll("li").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
-  teste("portas para o calendário: contador, nota do defeso e bloco 'escondeu'", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 3);
+  teste("home sem os três cartões, sem a nota do período eleitoral e sem o bloco 'escondeu' (15/09/2026)", !q("tres") && !q("notaDefeso") && !q("blocoPosDefeso") && !q("n1Anunciado"));
+  teste("ordem da home: medidores → sua cidade → estados → calendário → cruzamento risco × estágio", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("prazos") && pos("prazos") < pos("cruzamento") && pos("cruzamento") === ids.length - 1; })());
+  teste("calendário nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
+  teste("porta para o calendário eleitoral segue na frase C18 do índice de resposta", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
+  teste("cruzamento risco × estágio: figura no fim da inicial, gráfico com as 27 UFs", (() => { const g = (dom.window.__charts || []).find(c => c.ctx && c.ctx.id === "cCruz"); const soma = g ? g.cfg.data.datasets.reduce((s, ds) => s + ds.data.reduce((a, b) => a + b, 0), 0) : -1; return !!q("boxCruz") && q("boxCruz").classList.contains("figura") && soma === Object.keys(INDICE).length; })());
+  teste("todas as barras usam a arte única do medidor (nenhum .resp-fill / .tile-fill2 / .barra-resp)", !d.querySelector(".resp-fill, .tile-fill2, .barra-resp") && d.querySelectorAll("#hero .gauge-fill").length === 2 && !!d.querySelector("#hero .gauge-fill--resposta"));
   teste("cartões de estado: cinco campos na face (barras + nível + instrumento + capital)", d.querySelectorAll(".tile .tile-face").length === 27 && [...d.querySelectorAll(".tile .tile-face")].every(f => f.querySelectorAll("span").length === 3));
 
   // Medidor principal do herói: a barra de progresso precisa de fato preencher

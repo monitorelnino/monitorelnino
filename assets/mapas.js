@@ -191,7 +191,7 @@
     rotas: { r1: COR['sintetico-escuro'], r2: COR.sintetico, r3: COR.argila, r4: COR['ambar-escuro'], r5: COR.ambar, r6: COR['areia-escura'], r7: COR.mineral, rE: COR.musgo },
     // status de coleta de um desfecho no catálogo do Monitor (Saúde, §36): mesma lógica de 'faixas', vocabulário próprio
     coleta: { coletado: COR.musgo, candidato: COR.ambar, sem_fonte: COR['cinza-quente'] },
-    neutra: NEUTRA, semDado: COR['sem-dado'], zero: COR.zebra,
+    neutra: NEUTRA, semDado: COR['sem-dado'], zero: COR.zebra, trilho: COR['gauge-trilho'],   // trilho = fundo das barras do medidor (15/09/2026: arte única)
     serie: [COR.musgo, COR.sintetico, COR.ambar, COR.argila, COR.mineral, COR['areia-escura'], COR.bioluz, COR.muted] };
 
   global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito, dataBR };

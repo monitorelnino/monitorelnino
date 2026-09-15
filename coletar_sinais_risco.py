@@ -51,6 +51,23 @@ BOLETINS = RAIZ / "data" / "boletins.json"
 UFS = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT",
        "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
 TEMPO_LIMITE = 25
+# Código IBGE de cada UF (2 dígitos) — usado pelo RPC de dados tabulares do Monitor de Secas
+# (parâmetro `area`) e para ler os `geocodes` (7 dígitos) dos avisos do INMET.
+IBGE_UF = {"RO": 11, "AC": 12, "AM": 13, "RR": 14, "PA": 15, "AP": 16, "TO": 17, "MA": 21, "PI": 22, "CE": 23, "RN": 24,
+           "PB": 25, "PE": 26, "AL": 27, "SE": 28, "BA": 29, "MG": 31, "ES": 32, "RJ": 33, "SP": 35, "PR": 41, "SC": 42,
+           "RS": 43, "MS": 50, "MT": 51, "GO": 52, "DF": 53}
+UF_POR_IBGE = {v: k for k, v in IBGE_UF.items()}
+NOME_PARA_SIGLA = {
+    "ACRE": "AC", "ALAGOAS": "AL", "AMAZONAS": "AM", "AMAPÁ": "AP", "AMAPA": "AP",
+    "BAHIA": "BA", "CEARÁ": "CE", "CEARA": "CE", "DISTRITO FEDERAL": "DF",
+    "ESPÍRITO SANTO": "ES", "ESPIRITO SANTO": "ES", "GOIÁS": "GO", "GOIAS": "GO",
+    "MARANHÃO": "MA", "MARANHAO": "MA", "MINAS GERAIS": "MG", "MATO GROSSO DO SUL": "MS",
+    "MATO GROSSO": "MT", "PARÁ": "PA", "PARA": "PA", "PARAÍBA": "PB", "PARAIBA": "PB",
+    "PERNAMBUCO": "PE", "PIAUÍ": "PI", "PIAUI": "PI", "PARANÁ": "PR", "PARANA": "PR",
+    "RIO DE JANEIRO": "RJ", "RIO GRANDE DO NORTE": "RN", "RONDÔNIA": "RO", "RONDONIA": "RO",
+    "RORAIMA": "RR", "RIO GRANDE DO SUL": "RS", "SANTA CATARINA": "SC", "SERGIPE": "SE",
+    "SÃO PAULO": "SP", "SAO PAULO": "SP", "TOCANTINS": "TO",
+}
 CABECALHO = {"User-Agent": "MonitorElNinoBrasil/2.2 (+https://monitorelnino.com.br; contato via site)"}
 
 # ---------------------------------------------------------------------------
@@ -69,8 +86,13 @@ FONTES = {
         "nome": "Monitor de Secas", "orgao": "ANA e parceiros estaduais", "camada": "observado",
         "url_publica": "https://monitordesecas.ana.gov.br/",
         # 04/09/2026: catálogo antigo responde 404. API real: apimsbr.ana.gov.br/rpc/v1/<recurso>.
-        "endpoint": "https://apimsbr.ana.gov.br/rpc/v1/change_maps",
-        "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
+        # 15/09/2026 (sonda com rede real): o RPC que alimenta a página "Dados tabulares" do
+        # Monitor é dados-tabulares-monitor?tipo_area=1&area=<código IBGE da UF> — devolve, por
+        # mapa mensal, a área em cada categoria S0–S4 da UF. change_maps (só PNGs) fica como
+        # inventário de mapas; o valor por UF vem daqui.
+        "endpoint": "https://apimsbr.ana.gov.br/rpc/v1/dados-tabulares-monitor?tipo_area=1&area=",
+        "endpoint_mapas": "https://apimsbr.ana.gov.br/rpc/v1/change_maps",
+        "papel": "Fração da área de cada UF em cada categoria de seca (S0 a S4), no mapa mensal mais recente.",
     },
     "inmet_avisos": {
         "nome": "Avisos meteorológicos", "orgao": "INMET", "camada": "observado",
@@ -206,17 +228,6 @@ def parse_focos_inpe(texto: str) -> dict:
     coluna = campos.get("uf") or campos.get("estado") or campos.get("sigla_uf")
     if not coluna:
         return {}
-    NOME_PARA_SIGLA = {
-        "ACRE": "AC", "ALAGOAS": "AL", "AMAZONAS": "AM", "AMAPÁ": "AP", "AMAPA": "AP",
-        "BAHIA": "BA", "CEARÁ": "CE", "CEARA": "CE", "DISTRITO FEDERAL": "DF",
-        "ESPÍRITO SANTO": "ES", "ESPIRITO SANTO": "ES", "GOIÁS": "GO", "GOIAS": "GO",
-        "MARANHÃO": "MA", "MARANHAO": "MA", "MINAS GERAIS": "MG", "MATO GROSSO DO SUL": "MS",
-        "MATO GROSSO": "MT", "PARÁ": "PA", "PARA": "PA", "PARAÍBA": "PB", "PARAIBA": "PB",
-        "PERNAMBUCO": "PE", "PIAUÍ": "PI", "PIAUI": "PI", "PARANÁ": "PR", "PARANA": "PR",
-        "RIO DE JANEIRO": "RJ", "RIO GRANDE DO NORTE": "RN", "RONDÔNIA": "RO", "RONDONIA": "RO",
-        "RORAIMA": "RR", "RIO GRANDE DO SUL": "RS", "SANTA CATARINA": "SC", "SERGIPE": "SE",
-        "SÃO PAULO": "SP", "SAO PAULO": "SP", "TOCANTINS": "TO",
-    }
     contagem = {}
     for linha in linhas:
         bruto = (linha.get(coluna) or "").strip().upper()
@@ -273,8 +284,21 @@ def parse_avisos_inmet(dados) -> dict:
             continue
         grau = (aviso.get("severidade") or aviso.get("aviso_cor") or aviso.get("grau") or "").strip()
         descricao = (aviso.get("descricao") or aviso.get("aviso") or "").strip()
+        # 15/09/2026 (sonda com rede real): `estados` vem por extenso ("Minas Gerais,Espírito Santo");
+        # `geocodes` traz os códigos IBGE dos municípios (7 dígitos). Aceita sigla, nome ou geocode.
         estados = aviso.get("estados") or aviso.get("uf") or ""
-        siglas = [s for s in re.split(r"[,;/\s]+", str(estados).upper()) if s in UFS]
+        siglas = set()
+        for parte in re.split(r"[,;/]+", str(estados)):
+            nome = parte.strip().upper()
+            if nome in UFS:
+                siglas.add(nome)
+            elif nome in NOME_PARA_SIGLA:
+                siglas.add(NOME_PARA_SIGLA[nome])
+        for cod in re.findall(r"\d{7}", str(aviso.get("geocodes") or "")):
+            uf = UF_POR_IBGE.get(int(cod[:2]))
+            if uf:
+                siglas.add(uf)
+        siglas = sorted(siglas)
         for sigla in siglas:
             reg = saida.setdefault(sigla, {"total": 0, "graus": {}, "exemplos": []})
             reg["total"] += 1
@@ -301,6 +325,56 @@ def parse_alertas_cemaden(dados) -> dict:
         reg["total"] += 1
         reg["niveis"][nivel] = reg["niveis"].get(nivel, 0) + 1
     return saida
+
+
+def parse_dados_tabulares_secas(dados) -> dict:
+    """Lê o RPC dados-tabulares-monitor da ANA para UMA UF e devolve o mapa mensal mais recente. Formato real
+    (sonda de 15/09/2026, conferido com o código do site da ANA): `area` de cada categoria é a fração CUMULATIVA
+    da área da UF naquela categoria OU PIOR, em centésimos de ponto percentual (S0 = 10000 → 100 % da UF em seca
+    fraca ou pior; sem seca = 100 − S0/100). Devolve {'mapa','ano','mes','final','cobertura_pct':{'sem seca',S0..S4}
+    (exclusivas, em %), 'cumulativa_pct':{S0..S4} (% na categoria ou pior), 'categoria_mediana' (categoria que
+    cobre pelo menos metade da área da UF; 'sem seca' se a seca não chega à metade), 'categoria_maxima'
+    (mais severa com pelo menos 1 % da área)}. {} se nada casar. Função pura."""
+    lista = ((dados or {}).get("data") or {}).get("list") or []
+    melhor = None
+    for item in lista:
+        mapa = item.get("mapa") or {}
+        areas = item.get("areas") or []
+        if not areas or not mapa.get("ano") or not mapa.get("mes"):
+            continue
+        chave = (int(mapa["ano"]), int(mapa["mes"]), 1 if mapa.get("final") else 0)
+        if melhor is None or chave > melhor[0]:
+            melhor = (chave, mapa, areas)
+    if not melhor:
+        return {}
+    _, mapa, areas = melhor
+    cum = {}
+    for a in areas:
+        c = str(a.get("categoria") or "").strip().upper()
+        if re.fullmatch(r"S[0-4]", c):
+            try:
+                cum[c] = max(0.0, min(100.0, float(a.get("area") or 0) / 100.0))
+            except (TypeError, ValueError):
+                cum[c] = 0.0
+    if not cum:
+        return {}
+    ordem = ["S0", "S1", "S2", "S3", "S4"]
+    cumulativa = {c: round(cum.get(c, 0.0), 2) for c in ordem}
+    # cumulativa é não crescente por construção da fonte; garante-o para dados inconsistentes
+    for i in range(1, len(ordem)):
+        cumulativa[ordem[i]] = min(cumulativa[ordem[i]], cumulativa[ordem[i - 1]])
+    excl = {"sem seca": round(100.0 - cumulativa["S0"], 2)}
+    for i, c in enumerate(ordem):
+        seguinte = cumulativa[ordem[i + 1]] if i + 1 < len(ordem) else 0.0
+        excl[c] = round(cumulativa[c] - seguinte, 2)
+    mediana = "sem seca"
+    for c in ordem:
+        if cumulativa[c] >= 50.0:
+            mediana = c
+    com_area = [c for c in reversed(ordem) if cumulativa[c] >= 1.0]
+    return {"mapa": mapa.get("nome"), "ano": int(mapa["ano"]), "mes": int(mapa["mes"]), "final": bool(mapa.get("final")),
+            "cobertura_pct": excl, "cumulativa_pct": cumulativa,
+            "categoria_mediana": mediana, "categoria_maxima": com_area[0] if com_area else "sem seca"}
 
 
 def parse_catalogo_secas(dados) -> dict:
@@ -330,7 +404,7 @@ def coletar_fonte(chave: str):
     fonte = FONTES[chave]
     if not fonte["endpoint"]:
         raise RuntimeError("fonte sem endpoint automático — entra por leitura humana (--semear)")
-    bruto = _buscar(fonte["endpoint"])
+    bruto = _buscar(fonte["endpoint"] + (str(IBGE_UF["RO"]) if chave == "monitor_secas" else ""))
     if chave == "noaa_oni":
         serie = parse_oni(bruto)
         if len(serie) < 12:
@@ -357,10 +431,25 @@ def coletar_fonte(chave: str):
         alertas = parse_alertas_wfs_cemaden(json.loads(bruto))
         return {"por_uf": alertas}, "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)"
     if chave == "monitor_secas":
-        recurso = parse_change_maps_ana(json.loads(bruto))
-        if not recurso.get("datas"):
-            raise ValueError("recurso da ANA sem datas reconhecíveis — recusado")
-        return {"recurso": recurso}, f"Monitor de Secas (ANA) — mapas até {recurso['ultima_data']}"
+        # `bruto` é a resposta da UF de menor código (RO) — só prova que o RPC responde; abaixo, as 27.
+        por_uf, falhas = {}, []
+        for uf in UFS:
+            try:
+                lido = parse_dados_tabulares_secas(json.loads(_buscar(fonte["endpoint"] + str(IBGE_UF[uf]))))
+            except (urllib.error.URLError, TimeoutError, OSError, ValueError, json.JSONDecodeError) as e:
+                falhas.append(f"{uf}:{e.__class__.__name__}")
+                continue
+            if lido:
+                por_uf[uf] = lido
+        if len(por_uf) < 20:
+            raise ValueError(f"dados tabulares da ANA cobriram só {len(por_uf)} UF(s) ({', '.join(falhas)[:200]}) — recusados")
+        mapas = sorted({(v["ano"], v["mes"], v["mapa"]) for v in por_uf.values()})
+        recurso = {}
+        try:
+            recurso = parse_change_maps_ana(json.loads(_buscar(fonte["endpoint_mapas"])))
+        except (urllib.error.URLError, TimeoutError, OSError, ValueError, json.JSONDecodeError):
+            pass
+        return {"por_uf": por_uf, "recurso": recurso, "falhas": falhas}, f"Monitor de Secas (ANA) — dados tabulares por UF, mapa {mapas[-1][2]}"
     raise RuntimeError(f"adaptador ausente para {chave}")
 
 
@@ -444,20 +533,30 @@ def coletar(registro: dict, camadas) -> dict:
             registro["enos"]["oni"] = {**payload, "fonte": chave, "documento": documento}
         elif chave == "iri_plume":
             registro["enos"]["probabilidades"] = {**payload, "fonte": chave, "documento": documento}
+        # 15/09/2026: INPE, INMET e CEMADEN respondem pelo país inteiro — UF ausente da resposta é ZERO
+        # (nenhum foco, aviso ou alerta), não lacuna. Zero ≠ ausência de dado: só a fonte não coletada
+        # fica nula (cinza no mapa). Sonda de 15/09: CEMADEN tinha 88 alertas em 6 UFs; as outras 21 eram zero.
         elif chave == "inpe_fogo":
-            for uf, n in payload["focos_por_uf"].items():
-                registro["uf"][uf]["fogo"] = {"focos_24h": n, "fonte": chave,
+            for uf in UFS:
+                registro["uf"][uf]["fogo"] = {"focos_24h": payload["focos_por_uf"].get(uf, 0), "fonte": chave,
                                               "documento": documento, "consultado_em": hoje()}
         elif chave == "inmet_avisos":
-            for uf, dados in payload["por_uf"].items():
+            for uf in UFS:
+                dados = payload["por_uf"].get(uf) or {"total": 0, "graus": {}, "exemplos": []}
                 registro["uf"][uf]["avisos_inmet"] = {**dados, "fonte": chave,
                                                       "documento": documento, "consultado_em": hoje()}
         elif chave == "cemaden_alertas":
-            for uf, dados in payload["por_uf"].items():
+            for uf in UFS:
+                dados = payload["por_uf"].get(uf) or {"total": 0, "niveis": {}, "municipios": []}
                 registro["uf"][uf]["alertas_cemaden"] = {**dados, "fonte": chave,
                                                          "documento": documento, "consultado_em": hoje()}
         elif chave == "monitor_secas":
-            registro["fontes"][chave]["recurso"] = payload["recurso"]
+            if payload.get("recurso"):
+                registro["fontes"][chave]["recurso"] = payload["recurso"]
+            for uf in UFS:
+                lido = payload["por_uf"].get(uf)
+                registro["uf"][uf]["secas"] = ({**lido, "fonte": chave, "documento": documento, "consultado_em": hoje()}
+                                               if lido else None)   # UF que o RPC não devolveu fica nula (lacuna), nunca zero
         print(f"  ✓ {chave}: {documento}")
     return registro
 
@@ -500,6 +599,8 @@ def autoteste() -> int:
         {"severidade": "Perigo", "descricao": "Baixa umidade", "estados": "GO"},
     ]}})
     checar("avisos INMET: espalha por todas as UFs citadas", set(avisos) == {"BA", "SE", "GO"})
+    _real = parse_avisos_inmet({"hoje": [{"severidade": "Perigo", "descricao": "Tempestade", "estados": "Minas Gerais,Espírito Santo,", "geocodes": "3100104,3200102,5200209"}], "futuro": []})
+    checar("avisos INMET: nomes por extenso e geocodes (formato real, 15/09/2026)", set(_real) == {"MG", "ES", "GO"} and _real["MG"]["total"] == 1)
     checar("avisos INMET: preserva o grau do próprio INMET", avisos["BA"]["graus"] == {"Perigo Potencial": 1})
     checar("avisos negativo: payload vazio não quebra", parse_avisos_inmet({}) == {})
 
@@ -541,6 +642,18 @@ def autoteste() -> int:
            _ana["ultima_data"] == "2026-08-31" and len(_ana["arquivos"]) == 2)
     checar("ANA negativo: recurso vazio não quebra",
            parse_change_maps_ana({})["ultima_data"] is None)
+    _tab = parse_dados_tabulares_secas({"data": {"list": [
+        {"areas": [{"categoria": "S0", "area": 1000}, {"categoria": "S1", "area": 0}], "mapa": {"nome": "Junho de 2026", "ano": 2026, "mes": 6, "final": True}},
+        {"areas": [{"categoria": "S0", "area": 8988}, {"categoria": "S1", "area": 7161}, {"categoria": "S2", "area": 0}], "mapa": {"nome": "Julho de 2026", "ano": 2026, "mes": 7, "final": True}}]}})
+    checar("ANA dados tabulares: escolhe o mapa mais recente; frações cumulativas viram exclusivas (BA jul/2026: 10,12 % sem seca · 18,27 % S0 · 71,61 % S1)",
+           _tab.get("mapa") == "Julho de 2026" and _tab["cobertura_pct"] == {"sem seca": 10.12, "S0": 18.27, "S1": 71.61, "S2": 0.0, "S3": 0.0, "S4": 0.0}
+           and _tab["categoria_mediana"] == "S1" and _tab["categoria_maxima"] == "S1")
+    _sp = parse_dados_tabulares_secas({"data": {"list": [{"areas": [{"categoria": "S0", "area": 6483}, {"categoria": "S1", "area": 3739}, {"categoria": "S2", "area": 654}], "mapa": {"nome": "Julho de 2026", "ano": 2026, "mes": 7, "final": True}}]}})
+    checar("ANA dados tabulares: mediana é a categoria que cobre metade da área (SP jul/2026: 64,8 % S0+, 37,4 % S1+ → S0); máxima com ≥1 % é S2",
+           _sp["categoria_mediana"] == "S0" and _sp["categoria_maxima"] == "S2" and _sp["cobertura_pct"]["sem seca"] == 35.17)
+    checar("ANA dados tabulares: tudo zero vira 'sem seca'",
+           parse_dados_tabulares_secas({"data": {"list": [{"areas": [{"categoria": "S0", "area": 0}], "mapa": {"nome": "x", "ano": 2026, "mes": 7, "final": True}}]}})["categoria_mediana"] == "sem seca")
+    checar("ANA dados tabulares negativo: resposta vazia devolve {}", parse_dados_tabulares_secas({"data": {"list": []}}) == {} and parse_dados_tabulares_secas({}) == {})
 
     esq = esqueleto()
     checar("esqueleto: 27 UFs", len(esq["uf"]) == 27)
