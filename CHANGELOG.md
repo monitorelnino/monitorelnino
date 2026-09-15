@@ -15,6 +15,17 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §62 · Financiamento elucidativo: rastreio dos compromissos, rotas em ficha com glossário, caminho antes/agora/depois, PNMIF como rota, o caso do RS, tabelas viram figuras · 15/09/2026
+
+Nenhuma alteração de método (peso zero). Classe **estrutura de página + visualização** (pedido da editoria).
+
+- **Rastreio dos compromissos federais**: gráfico "anunciado × empenhado × pago" para as duas MPs (1.367 incêndios; 1.384 alimentos, com execução lida dos arquivos mensais do Portal) e os cinco compromissos verificados (sem série de execução ainda: só a barra do anunciado, declarados "aguardando coleta"); dois mapas "onde o pagamento chegou" (valor pago por UF da unidade gestora, unidade nacional à parte). Atualiza a cada rodada com a carga do Portal.
+- **Como ler as rotas** vira ficha em popup ao lado do diagrama: as cinco chaves de acesso definidas (regra · decreto · discricionária · direta · estadual), glossário (S2iD, FIDE, CPDC, ESPIN, FNMA, PNMIF, TransfereGov, MP), os oito cartões de rota com base legal e o que o decreto destranca, e a **rota preventiva do fogo (PNMIF)** como nona entrada (Lei 14.944/2024 + Lei 15.143/2025, FNMA art. 3º-A; edital FNMA/FDD; Fundo Amazônia).
+- **O caminho do município: antes, agora e depois** — três cartões (antes de 04/07 · período eleitoral/início da janela do El Niño · depois de 25/10) com chips de chave por rota; substitui a tabela de coexistência, o "caminho da rota 3" e o "sem decretar".
+- **Rota preventiva do fogo (PNMIF)** com seção própria: mapa em três camadas e um cartão por rota (quem pode, o que precisa, o que paga, valores, situação no defeso) no lugar da tabela.
+- **O caso do Rio Grande do Sul**: gráfico "repasse preventivo (Prepara RS, 138 municípios, R$ 32,3 mi) × sob decreto × reconhecidos" ao lado do mapa do fundo a fundo; lacuna declarada — a aplicação município a município não está publicada na fonte, e a relação entra na fila de LAI à Defesa Civil do RS.
+- Tabelas restantes viram figuras: R$/hab. da rota 5 vira mapa coroplético; resposta por decreto vira barras por UF (reconhecidos × sem reconhecimento); a tabela de compromissos sai (gráfico acima). Teto de palavras da página passa a 1.300 (ficha e caminho são texto estático).
+
 ## §61 · Errata: dengue nas capitais aparecia sem pontos (coordenadas ausentes); Pesquisadores aponta o MARÉ Saúde · 15/09/2026
 
 - **Errata**: o mapa "Dengue nas capitais" projetava os 27 pontos em (0,0) — o registro das capitais traz código IBGE, não latitude/longitude — e ficava vazio. As coordenadas passam a vir da malha IBGE já carregada; pontos com tooltip (capital, nível, SE, fonte). Portão de runtime da Saúde exige os 27 pontos dentro do mapa.

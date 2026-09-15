@@ -30,7 +30,7 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
-<link rel="stylesheet" href="assets/base.css?v=374e18a1">
+<link rel="stylesheet" href="assets/base.css?v=fd8196ab">
 <script src="assets/mapas.js?v=3170c2ac"></script>
 </head>
 <body class="pagina-dados">
@@ -50,165 +50,165 @@
 <main id="conteudo">
   <p class="selo">Financiamento · registro de transparência · peso zero no índice</p>
   <h1>Por onde o dinheiro chega</h1>
-  <p class="hint">Sete rotas — mais a estadual — por que o dinheiro chega ao município, cada uma rotulada pela chave que a abre: <strong>regra</strong>, <strong>decreto</strong>, <strong>discricionária</strong> ou <strong>direta</strong>. Cada figura diz órgão, consulta e data; resposta nunca se soma a preparação. Nada aqui pontua no MARÉ. Corte: <strong id="corteFin">—</strong>.</p>
+  <p class="hint">Oito rotas — sete federais e a estadual — por onde o dinheiro público chega ao município, cada uma aberta por uma chave: <strong>regra</strong>, <strong>decreto</strong>, <strong>discricionária</strong> ou <strong>direta</strong>; e a rota preventiva do fogo, nascida da PNMIF. O que a União prometeu para o El Niño, o que já empenhou e pagou, e o que um município pode acessar agora, no período eleitoral, e depois dele. Nada aqui pontua no MARÉ. Corte: <strong id="corteFin">—</strong>.</p>
 
   <div class="panel panel--acento-rust" id="dinheiroElNino">
-    <h2>O dinheiro do El Niño: como e onde está chegando</h2>
+    <h2>O dinheiro do El Niño agora: anunciado, empenhado, pago</h2>
     <p class="hint" id="notaMPs">MP 1.367 (incêndios) e MP 1.384 (alimentos): carregando…</p>
+    <div class="grade-figuras">
+      <figure class="figura figura--grafico figura--largo" id="boxCompromissosGrafico">
+        <h3 class="figura-titulo">Compromissos federais para o ciclo: duas MPs e cinco anúncios — anunciado, empenhado e pago</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · MPs 1.367 e 1.384 e cinco compromissos verificados · R$ (milhões) anunciados, empenhados e pagos até a última carga do Portal</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cCompromissos" aria-label="Barras por compromisso federal: valor anunciado, empenhado e pago em reais"></canvas></div>
+        <div class="map-legend" id="legCompromissos"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxMPsUF">
+        <h3 class="figura-titulo">MP 1.367 (incêndios): onde o pagamento chegou</h3>
+        <p class="figura-sub">Desde jun/2026 · valor pago por UF da unidade gestora (Ibama, ICMBio) · R$; unidade nacional à parte</p>
+        <div class="figura-midia"><svg id="mapaMPsUF" role="img" aria-label="Mapa do Brasil com o valor pago da MP 1.367 por UF da unidade gestora" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legMPsUF"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxMP1384UF">
+        <h3 class="figura-titulo">MP 1.384 (alimentos): onde o pagamento chegou</h3>
+        <p class="figura-sub">Desde jun/2026 · valor pago por UF da unidade gestora (MDA/Conab, MDS) · R$; unidade nacional à parte</p>
+        <div class="figura-midia"><svg id="mapaMP1384UF" role="img" aria-label="Mapa do Brasil com o valor pago da MP 1.384 por UF da unidade gestora" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legMP1384UF"></div>
+      </figure>
+    </div>
+    <p class="note u-mb-0" id="notaExecucao">Execução lida dos arquivos mensais abertos do Portal da Transparência (ações orçamentárias reforçadas pelas MPs, desde o mês de publicação — teto, não a execução isolada do crédito). Compromissos sem série de execução aparecem só com o valor anunciado, declarados como "aguardando coleta".</p>
   </div>
 
   <div class="panel" id="comoler">
-    <h2>Como ler: as oito rotas e o que o decreto destranca</h2>
-    <p class="hint">Rotas existentes, com base legal citada. Nenhuma pontua no índice (peso zero).</p>
-    <div class="tbl-wrap u-mb-4" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFamiliasRotas"><thead><tr><th>Família</th><th>Rotas</th><th>Chave de acesso</th></tr></thead><tbody></tbody></table></div>
-    <div class="grade-figuras">
+    <h2>As rotas do dinheiro</h2>
+    <p class="hint">Estrutura, não série: de quem vem, por qual rota e com que chave o dinheiro chega ao município. Cada rota está definida na ficha "Como ler as rotas", com a base legal e o que o decreto destranca.</p>
+    <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--diagrama figura--largo" id="boxRede">
         <h3 class="figura-titulo">Rotas do dinheiro público até o município: de quem vem, por qual rota, com que chave</h3>
         <p class="figura-sub">Estrutura (não é série) · rotas do dinheiro público até o município · chave que abre cada rota</p>
         <div class="figura-midia"><svg id="redeRotas" role="img" aria-label="Diagrama de rede: origem do recurso, oito rotas e o município, com o tipo de chave de acesso de cada rota" viewBox="0 0 960 420"></svg></div>
         <div class="map-legend" id="legRede"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver as rotas em texto</summary>
-          <div class="grade-cartoes u-mt-2" id="rotasCards"></div>
-        </details>
       </figure>
     </div>
-    <div class="grade-cartoes">
-      <div class="cartao" id="boxCaminho">
-        <h3 class="figura-titulo">O caminho do recurso federal de resposta (rota 3)</h3>
-        <ol class="fontes-list">
-          <li>Município decreta situação de emergência/calamidade</li>
-          <li>Registra o desastre no <strong>S2iD</strong> (FIDE + documentos)</li>
-          <li><strong>SEDEC/MIDR reconhece</strong> por portaria no DOU: <em>é o gatilho do dinheiro</em></li>
-          <li>Município solicita recursos de resposta pelo S2iD (plano de trabalho)</li>
-          <li>Recurso liberado no <strong>Cartão de Pagamento de Defesa Civil (CPDC)</strong>, sem convênio</li>
-          <li>Prestação de contas; reconstrução/prevenção seguem via Transferegov</li>
-        </ol>
-      </div>
-      <div class="cartao" id="boxSemDecretar">
-        <h3 class="figura-titulo">O que um município pode acessar sem decretar</h3>
-        <ul class="fontes-list">
-          <li><strong>Transferência preventiva de defesa civil</strong> (rota 3, prevenção-obra) — Lei 12.340/2010 e Decreto 11.219/2022: área de risco mapeada e plano de trabalho de obra; sem ressarcimento de gasto já feito.</li>
-          <li><strong>Garantia-Safra</strong> (rota 7) — Lei 10.420/2002: adesão municipal anual antes do plantio, cota municipal de 6%; pagamento por perda verificada, sem decreto.</li>
-          <li><strong>Programa Cisternas</strong> (rota 7) — MDS: adesão e projeto, contínuo.</li>
-          <li><strong>Repasses fundo a fundo do SUS e do SUAS</strong> (rota 2) — por regra.</li>
-          <li><strong>Voluntárias e emendas</strong> (rotas 5 e 6) — suspensas até 25/10/2026 (art. 73, VI, "a"), salvo emergência e obrigações preexistentes.</li>
-          <li><strong>Fundo estadual preventivo</strong> (rota estadual), onde existir — Prepara RS como precedente.</li>
-          <li><strong>Prevenção de incêndios — FNMA sem convênio</strong> (rota 5) — Lei 15.143/2025 (Lei 7.797, art. 3º-A): área declarada pelo MMA, requerimento e plano operativo aprovado; brigadas federais (rota 7). <a href="#preventivoFogo">Ver a rota preventiva do fogo ↓</a></li>
-        </ul>
-      </div>
-      <div class="cartao" id="boxProgramasExemplos">
-        <h3 class="figura-titulo">Rota 7 (execução direta): exemplos no território</h3>
-        <ul class="fontes-list" id="programasLista"></ul>
-      </div>
+    <p class="note u-mb-0"><a href="#comolerRotas" id="linkComoLerRotas">como ler as rotas: as oito rotas, a rota do fogo e cada chave de acesso</a></p>
+    <div id="comolerRotas" hidden>
+      <h2>Como ler as rotas</h2>
+      <p class="hint"><strong>Chaves de acesso.</strong> <em>Regra</em>: o dinheiro flui por lei, sem pedido e sem decreto (FPM, fundo a fundo do SUS e do SUAS). <em>Decreto</em>: só abre com situação de emergência ou calamidade decretada pelo município e reconhecida pela União (portaria no DOU); é a única porta nova aberta no período eleitoral. <em>Discricionária</em>: depende de decisão do governo — convênio, emenda, edital — e está suspensa por lei entre 04/07 e 25/10/2026, salvo emergência. <em>Direta</em>: a União executa no território, sem transferir ao município (brigadas, Carro-Pipa, Cisternas). <em>Estadual</em>: fundo a fundo do estado para o município, onde existir (Prepara RS).</p>
+      <p class="hint"><strong>Termos.</strong> <em>S2iD</em>: sistema onde o município registra o desastre e pede o reconhecimento. <em>FIDE</em>: formulário de informações do desastre, dentro do S2iD. <em>CPDC</em>: cartão de pagamento da defesa civil, por onde o recurso de resposta chega sem convênio. <em>ESPIN</em>: emergência em saúde pública de importância nacional, declarada pelo Ministério da Saúde. <em>FNMA</em>: Fundo Nacional do Meio Ambiente, que passou a transferir sem convênio para prevenção de incêndios (Lei 15.143/2025). <em>PNMIF</em>: Política Nacional de Manejo Integrado do Fogo (Lei 14.944/2024), base da rota preventiva do fogo. <em>TransfereGov</em>: plataforma das transferências voluntárias e especiais. <em>MP</em>: medida provisória que abre crédito extraordinário.</p>
+      <div class="grade-cartoes u-mt-2" id="rotasCards"></div>
+      <div class="cartao cartao--acento-musgo u-mt-2"><h3 class="figura-titulo">Rota preventiva do fogo (PNMIF) <span class="sub">— chave: risco declarado + plano operativo</span></h3><p class="card-body">Lei 14.944/2024 (PNMIF) organiza o manejo integrado do fogo; a Lei 15.143/2025 (FNMA, art. 3º-A) abre a transferência sem convênio para prevenção em área que o MMA declara de risco, mediante requerimento e plano operativo aprovado; o edital FNMA/FDD 2025 (planos operativos municipais) e o Fundo Amazônia (brigadas estaduais) completam a rota. É a única que paga preparação antes do dano, sem decreto. Nasceu do cumprimento da ADPF 743 (STF).</p></div>
+      <div class="cartao u-mt-2" id="boxProgramasExemplos"><h3 class="figura-titulo">Rota da execução direta da União: exemplos no território</h3><ul class="fontes-list" id="programasLista"></ul></div>
     </div>
   </div>
+  <dialog class="detail" id="detailFin" aria-label="Como ler as rotas">
+    <button type="button" class="detail-fechar" id="detailFinFechar" aria-label="Fechar">×</button>
+    <div id="detailFinConteudo"></div>
+  </dialog>
 
-  <div class="panel" id="coexistencia">
-    <h2>Quais recursos podem coexistir</h2>
-    <p class="hint">Uma rota não substitui a outra: o mesmo município pode receber recursos regulares, preventivos, discricionários e emergenciais no mesmo período. A situação institucional do município define o que já está destrancado.</p>
-    <div class="tbl-wrap u-mb-0" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">
-      <table class="mun-table" id="tblCoexistencia">
-        <thead><tr><th>Situação do município</th><th>Famílias que coexistem</th><th>Observação</th></tr></thead>
-        <tbody>
-          <tr><td>Sem emergência declarada</td><td>Automáticas · Discricionárias · Execução direta</td><td>Prevenção não depende de decreto.</td></tr>
-          <tr><td>Com decreto, sem reconhecimento federal</td><td>+ mecanismos estaduais</td><td>Decreto ≠ recurso federal pago.</td></tr>
-          <tr><td>Com reconhecimento federal</td><td>+ defesa civil obrigatória</td><td>Abre a via; falta distinguir pedido, aprovação e pagamento.</td></tr>
-          <tr><td>Com emergência setorial</td><td>+ instrumento do setor</td><td>Chave sanitária, agrícola ou hídrica, conforme a política.</td></tr>
-        </tbody>
-      </table>
+  <div class="panel" id="caminho">
+    <h2>O caminho do município: antes, agora e depois</h2>
+    <p class="hint">O que um município pode acessar em cada momento do ciclo, com a chave de cada rota. O período eleitoral (04/07–25/10/2026) fecha as rotas discricionárias por lei (art. 73, VI, <em>a</em>) e deixa aberta a do decreto; a janela crítica do El Niño começa em 01/10.</p>
+    <div class="grade-cartoes">
+      <div class="cartao cartao--acento-neutro-topo"><h3 class="figura-titulo">Antes de 04/07 · preparação</h3><ul class="fontes-list">
+        <li><span class="chip-chave chave-regra">regra</span> FPM e cotas (rota 1); fundo a fundo do SUS e do SUAS (rota 2).</li>
+        <li><span class="chip-chave chave-discricionaria">discricionária</span> Voluntárias e emendas com finalidade (rota 5); transferências especiais (rota 6); edital FNMA/FDD para planos operativos de fogo.</li>
+        <li><span class="chip-chave chave-decreto">decreto</span> Prevenção-obra da defesa civil (rota 3): área de risco mapeada e plano de trabalho, sem decreto.</li>
+        <li><span class="chip-chave chave-estadual">estadual</span> Fundo a fundo preventivo, onde existir: Prepara RS, 138 municípios, condição = plano de contingência atualizado.</li>
+        <li><span class="chip-chave chave-direta">direta</span> Garantia-Safra (adesão anual antes do plantio), Cisternas, brigadas federais.</li>
+      </ul></div>
+      <div class="cartao cartao--acento-fogo"><h3 class="figura-titulo">Agora · 04/07 a 25/10 · período eleitoral e início da janela do El Niño</h3><ul class="fontes-list">
+        <li><span class="chip-chave chave-regra">regra</span> Rotas 1 e 2 seguem fluindo: a lei não as suspende.</li>
+        <li><span class="chip-chave chave-decreto">decreto</span> Única porta federal e estadual nova: decreto de emergência → S2iD → reconhecimento no DOU → CPDC (rota 3); emergência setorial da saúde (rota 4) com ESPIN ou decreto estadual.</li>
+        <li><span class="chip-chave chave-discricionaria">discricionária</span> Suspensas por lei (rotas 5 e 6), salvo emergência e obrigações preexistentes; o que já estava contratado antes de 04/07 pode ser pago.</li>
+        <li><span class="chip-chave chave-direta">direta</span> Execução da União no território continua (brigadas, Carro-Pipa, Cisternas, ações das MPs 1.367 e 1.384).</li>
+        <li><span class="chip-chave chave-fogo">PNMIF</span> FNMA sem convênio (Lei 15.143/2025) para área declarada de risco com plano operativo aprovado — preparação sem decreto.</li>
+      </ul></div>
+      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Depois de 25/10 · janela crítica até 31/03/2027</h3><ul class="fontes-list">
+        <li><span class="chip-chave chave-discricionaria">discricionária</span> Voluntárias, emendas e transferências especiais reabrem; o Monitor publica a partir de 26/10 o que ficou represado.</li>
+        <li><span class="chip-chave chave-decreto">decreto</span> Rota 3 segue para resposta e recuperação; reconstrução e prevenção-obra via TransfereGov.</li>
+        <li><span class="chip-chave chave-regra">regra</span> Rotas 1 e 2 inalteradas.</li>
+        <li><span class="chip-chave chave-fogo">PNMIF</span> Rota preventiva do fogo continua aberta enquanto a área estiver declarada.</li>
+      </ul></div>
     </div>
   </div>
 
   <div class="panel panel--acento-musgo" id="preventivoFogo">
-    <h2>Dinheiro preventivo que existe — e para quem</h2>
+    <h2>Rota preventiva do fogo (PNMIF)</h2>
     <p class="hint" id="fogoTitulo" aria-live="polite">—</p>
-    <p class="note">Nasceu em 2025 no cumprimento da ADPF 743 (STF): abre com risco declarado e plano operativo aprovado, sem decreto de calamidade — a única que paga preparação antes do dano.</p>
-    <div class="grade-figuras">
+    <p class="note">Lei 14.944/2024 (Política Nacional de Manejo Integrado do Fogo) e Lei 15.143/2025 (FNMA, art. 3º-A): abre com área declarada de risco pelo MMA e plano operativo aprovado, sem decreto de calamidade — a única rota que paga preparação antes do dano. Nasceu em 2025 no cumprimento da ADPF 743 (STF).</p>
+    <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--mapa figura--largo" id="boxFogoMapa">
         <h3 class="figura-titulo">Rota preventiva do fogo: área declarada · requereu · recebeu</h3>
         <p class="figura-sub">Ciclo 2026 · área declarada (MMA) · requereu (LAI) · recebeu (Portal) · municípios · três camadas</p>
         <div class="figura-midia"><svg id="svgFogoLacuna" viewBox="0 0 900 220" role="img" aria-label="Camadas ainda não coletadas — lacuna declarada"><text id="txtFogoLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtFogoLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
         <div class="map-legend" id="legFogoMapa"></div>
       </figure>
-      <figure class="figura figura--tabela figura--largo" id="boxFogoRotas">
-        <h3 class="figura-titulo">As rotas preventivas do fogo: quem pode, o que precisa, o que paga</h3>
-        <p class="figura-sub">Ciclo 2026 · rotas com objeto preventivo · lei, condições e fonte por linha</p>
-        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFogoRotas"><thead><tr><th>Rota</th><th>Quem pode</th><th>O que precisa</th><th>O que paga</th><th>Período eleitoral</th><th>Fonte</th></tr></thead><tbody></tbody></table></div></div>
-      </figure>
     </div>
+    <div class="grade-cartoes u-mt-3" id="fogoRotasCards"></div>
+    <div id="fogoRotasFonte"></div>
   </div>
 
   <div class="panel" id="prometeu">
-    <h2>O que a União prometeu — e o que pagou</h2>
+    <h2>O que a União transferiu, semana a semana</h2>
     <p class="hint" id="prometeuTitulo" aria-live="polite">—</p>
-    <p class="note">A faixa sombreada é a lei, não a inação: entre 04/07 e 25/10 as transferências voluntárias ficam suspensas (art. 73, VI, <em>a</em>) e a única porta aberta é o decreto de emergência. <a href="calendario-eleitoral.html">Por que há páginas fora do ar →</a></p>
-    <div class="grade-figuras">
+    <p class="note">A faixa sombreada é a lei, não a inação: entre 04/07 e 25/10 as transferências voluntárias ficam suspensas (art. 73, VI, <em>a</em>) e a única porta aberta é o decreto de emergência. <a href="calendario-eleitoral.html">Calendário eleitoral →</a></p>
+    <div class="grade-figuras grade-figuras--1">
         <figure class="figura figura--diagrama figura--largo" id="boxSerie">
           <h3 class="figura-titulo">Transferências da União a municípios, por semana e por rota</h3>
           <p class="figura-sub">Semanas de 2026 · transferências da União a municípios por rota · R$ (milhões), faixa do período eleitoral</p>
           <div class="figura-midia"><svg id="svgSerie" role="img" aria-label="Série semanal de transferências da União a municípios em 2026, por rota, com a faixa do período eleitoral" viewBox="0 0 900 180"></svg></div>
           <div class="map-legend" id="legSerie"></div>
         </figure>
-        <figure class="figura figura--tabela" id="boxCompromissos">
-          <h3 class="figura-titulo">Compromissos verificados</h3>
-          <p class="figura-sub">Ciclo 2026/2027 · compromissos federais verificados, com dinheiro e prazo · R$ e datas</p>
-          <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCompromissos"><thead><tr><th>Compromisso</th><th>Esfera</th><th>Instrumento</th><th>Valor</th><th>Rota</th><th>Execução</th></tr></thead><tbody></tbody></table></div></div>
-        </figure>
     </div>
   </div>
 
-  <div class="panel" id="porestado">
-    <h2>Por estado</h2>
-    <p class="hint">Fundo a fundo estadual <em>preventivo</em> (o precedente do Prepara RS).</p>
+  <div class="panel panel--acento-teal" id="rs">
+    <h2>O caso do Rio Grande do Sul</h2>
+    <p class="hint">Único estado com fundo a fundo preventivo localizado no ciclo: o Prepara RS (Resolução nº 008/FUNDEC, 12/06/2026) repassa R$ 32,3 milhões a 138 municípios com plano de contingência atualizado, coordenador designado e plano de aplicação — dinheiro estadual antes do dano, sem decreto. No mesmo estado, a resposta federal por decreto corre em paralelo.</p>
     <div class="grade-figuras">
+      <figure class="figura figura--grafico" id="boxRSGrafico">
+        <h3 class="figura-titulo">RS: repasse preventivo × resposta por decreto</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · municípios do RS com repasse preventivo (Prepara RS), sob decreto e reconhecidos pela União · contagem</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cRS" aria-label="Barras: municípios do Rio Grande do Sul com repasse preventivo, sob decreto de emergência e reconhecidos pela União"></canvas></div>
+        <div class="map-legend" id="legRS"></div>
+      </figure>
       <figure class="figura figura--mapa" id="boxFundoEstadual">
-        <h3 class="figura-titulo">Fundo a fundo estadual preventivo</h3>
+        <h3 class="figura-titulo">Fundo a fundo estadual preventivo, por estado</h3>
         <p class="figura-sub">Corte da edição · fundo a fundo estadual preventivo localizado · R$ e nº de municípios</p>
         <div class="figura-midia"><svg id="mapaFundo" role="img" aria-label="Mapa do Brasil pelo status do fundo a fundo estadual preventivo de defesa civil" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legFundo"></div>
       </figure>
-      <!-- 13/09/2026 (auditoria de visualizações, ação recomendada): o coroplético "Transferências da
-           União por habitante, por rota" foi retirado — só a rota 5 (voluntárias/emendas) tinha dado
-           real (27 de 216 células = 1 de 8 rotas); as outras 7 sempre mostravam "Aguardando coleta",
-           o mapa inteiro em cinza. Critério para reintroduzir: cobertura mínima em pelo menos 2-3 rotas.
-           Marcação #boxPorHab/#mapaHab/#legHab/#selRota removida de propósito; JS correspondente em
-           financiamento.js (bloco "Mapa por habitante") fica desativado até então, não apagado. -->
     </div>
+    <p class="note u-mb-0" id="notaRS">Onde cada real do Prepara RS foi aplicado, município a município: a lista nominal dos 138 repasses e os planos de aplicação não estão publicados na fonte consultada; o Monitor mantém a lacuna declarada e a relação entra na fila de pedidos de LAI à Defesa Civil do RS.</p>
   </div>
 
-  <div class="panel" id="contadores">
-    <h2>Contadores por estado</h2>
-    <p class="hint">R$/hab. em transferências voluntárias (rota 5) por UF, a única métrica com cobertura nas 27 UFs até o corte. As demais (municípios com recurso preventivo e de resposta, razão depois/antes, represado) aparecem resumidas abaixo, com cobertura ainda pontual.</p>
+  <div class="panel" id="porestado">
+    <h2>Por estado: o que chegou por habitante e a resposta por decreto</h2>
+    <p class="hint">Transferências voluntárias (rota 5) por habitante em 2026, a única rota com cobertura nas 27 UFs até o corte; reconhecimentos federais e repasses preventivos confirmados por estado.</p>
     <div class="grade-figuras">
-      <figure class="figura figura--tabela figura--largo" id="boxContadores">
-        <h3 class="figura-titulo">R$/hab. em transferências voluntárias (rota 5), por UF</h3>
-        <p class="figura-sub">Corte da edição · valor per capita das transferências voluntárias (TransfereGov) · R$/hab. · 27 UFs</p>
-        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblContadores"><thead><tr><th>UF</th><th>R$/hab. voluntárias 2026 (rota 5)</th></tr></thead><tbody></tbody></table></div></div>
+      <figure class="figura figura--mapa" id="boxContadores">
+        <h3 class="figura-titulo">Transferências voluntárias por habitante (rota 5), por UF</h3>
+        <p class="figura-sub">2026 até a última carga · transferências voluntárias (TransfereGov) por habitante · R$/hab. · 27 UFs</p>
+        <div class="figura-midia"><svg id="mapaContadores" role="img" aria-label="Mapa do Brasil com as transferências voluntárias por habitante em 2026, por estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legContadores"></div>
       </figure>
-      <p class="note" id="notaContadoresCobertura"></p>
-    </div>
-  </div>
-
-  <div class="panel" id="resposta">
-    <h2>Resposta por decreto</h2>
-    <p class="hint">Reconhecimentos federais (S2iD/DOU) e transferências obrigatórias de resposta, na cor de resposta, nunca somados a preparação; ao lado, os repasses estaduais preventivos confirmados.</p>
-    <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxDinheiro">
         <h3 class="figura-titulo">Repasses preventivos confirmados e habilitação federal</h3>
         <p class="figura-sub">Corte da edição · repasses preventivos confirmados e habilitação federal por UF · R$</p>
         <div class="figura-midia"><svg id="mapDinheiro" role="img" aria-label="Mapa das transferências: repasses estaduais preventivos confirmados e municípios com reconhecimento federal" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legDinheiro"></div>
       </figure>
-      <figure class="figura figura--tabela" id="boxResposta">
-        <h3 class="figura-titulo">Resposta: reconhecimentos e transferências obrigatórias</h3>
-        <p class="figura-sub">Desde 29/06/2026 · reconhecimentos federais e transferências obrigatórias de resposta · contagem e R$</p>
-        <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblResposta"><thead><tr><th>UF</th><th>Reconhecimentos</th><th>Municípios</th><th>Transferido (rota 3)</th></tr></thead><tbody></tbody></table></div></div>
+      <figure class="figura figura--grafico figura--largo" id="boxResposta">
+        <h3 class="figura-titulo">Resposta por decreto: reconhecimentos federais por estado</h3>
+        <p class="figura-sub">Desde 29/06/2026 · municípios reconhecidos pela União (S2iD/DOU) e decretados sem reconhecimento, por UF · contagem</p>
+        <div class="figura-midia canvas-wrap"><canvas id="cResposta" aria-label="Barras por estado: municípios reconhecidos pela União e decretados sem reconhecimento"></canvas></div>
+        <div class="map-legend" id="legResposta"></div>
       </figure>
     </div>
+    <p class="note u-mb-0" id="notaContadoresCobertura"></p>
   </div>
 
   <p class="hint">Fontes, consultas e proveniência de cada série estão em <a href="pesquisadores.html#fontes-financiamento">Pesquisadores</a>.</p>
+
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -219,7 +219,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/financiamento.js?v=d6483ac4" defer></script>
+<script src="assets/js/financiamento.js?v=50777664" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
