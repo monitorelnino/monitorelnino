@@ -15,6 +15,17 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §66 · "Para prefeitos" vira "Para gestores": o caminho até o plano publicado, o que o plano precisa conter, como pedir recursos; o formulário de indicação migra para Pesquisadores · 15/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página + texto** (pedido da editoria: orientar o gestor na decisão; achar planos é tarefa do Monitor, não atribuição legal do município).
+
+- Nome da página e do menu: **Para gestores** (prefeitos, secretários, coordenadores de proteção e defesa civil). Some o pedido para "enviar o plano ao Monitor".
+- **O caminho até o plano publicado**: seis passos gráficos — ler o risco projetado; elaborar/atualizar o plano (Lei 12.608, art. 8º, XI); aprovar por ato numerado; publicar em endereço estável (dever legal, a lei eleitoral não suspende); manter o cadastro no S2iD; pedir o recurso pela rota certa.
+- **O que o plano precisa conter**: conteúdo mínimo da Lei 12.340/2010 (art. 3º-A) e o que o Monitor verifica no documento (número/data/ato, menção ao ciclo ou ao risco, endereço estável, coordenador, saúde no plano), em duas listas de verificação.
+- **Como pedir recursos**: antes do dano (regra, plano, PNMIF, estadual, direta) e depois do dano (decreto → S2iD → reconhecimento → pedido → CPDC; emergência setorial do SUS), com chips de chave e links para as rotas, o dinheiro preventivo por setor e a Defesa Civil do estado.
+- Mantidos: "O que ainda é possível no período eleitoral" (do dado) e "Descubra se seu município é prioritário".
+- O formulário "Envie um documento" (Netlify, `contribuicao`) migra para Pesquisadores como **"Indique um documento publicado"** — qualquer pessoa pode indicar; JS migra junto. Teto de palavras da página: 950.
+
 ## §65 · Financiamento: figura "Dinheiro para se preparar, por setor" (saúde · fogo · seca), com glifos de chave, nó de ausência e ficha · 15/09/2026
 
 Executa o handover editorial "Dinheiro preventivo por setor" (§2.20). Nenhuma alteração de método (peso zero; portão impede o motor de ler o dado). Classe **figura + dado + ficha + portões**.
