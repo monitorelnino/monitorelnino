@@ -6,7 +6,11 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
     const fx = v => v < 25 ? 'estágio inicial' : v < 50 ? 'em construção' : v < 70 ? 'consolidado' : 'avançado';
     const rf = document.getElementById('relFaixa'); if (rf) rf.textContent = fx(+String(txt).replace(',', '.'));
     fetch('data/resposta/por_uf.json').then(r => r.ok ? r.json() : null).then(R => { if (!R) return; const N = R.nacional;
-      document.getElementById('relDecretados').textContent = N.n_municipios.toLocaleString('pt-BR'); document.getElementById('relPop').textContent = (100 * N.fracao_populacao).toFixed(1).replace('.', ',') + '%'; }).catch(() => {});
+      document.getElementById('relDecretados').textContent = N.n_municipios.toLocaleString('pt-BR'); const rr = document.getElementById('relReconhecidos'); if (rr) rr.textContent = (N.reconhecidos ?? '—').toLocaleString('pt-BR'); document.getElementById('relPop').textContent = (100 * N.fracao_populacao).toFixed(1).replace('.', ',') + '%'; }).catch(() => {});
+    // 15/09/2026: mais números do release lidos do dado — planos municipais (percentual_uf.n_plano), estados com plano do ciclo (estados.json), MARÉ Saúde (monitor_saude.resumo), reconhecidos (resposta)
+    fetch('data/percentual_uf.json').then(r => r.ok ? r.json() : null).then(P => { const el = document.getElementById('relPlanosMun'); if (el && P) el.textContent = Object.values(P).reduce((a, i) => a + (i.n_plano || 0), 0).toLocaleString('pt-BR'); }).catch(() => {});
+    fetch('data/estados.json').then(r => r.ok ? r.json() : null).then(E => { const el = document.getElementById('relNovo'); if (el && E) el.textContent = String((E.ufs || []).filter(u => u.status === 'NOVO').length); }).catch(() => {});
+    fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(M => { const a = document.getElementById('relSaude'), b = document.getElementById('relSaudeN'); if (a && M && M.resumo && M.resumo.media_das_verificadas != null) a.textContent = M.resumo.media_das_verificadas.toFixed(1).replace('.', ','); if (b && M && M.resumo) b.textContent = String(M.resumo.verificadas); }).catch(() => {});
     const av=ufs.filter(u=>idx[u].total>=70).length, ini=ufs.filter(u=>idx[u].total<25).length;
     (document.getElementById('relEstados')||{}).textContent=av+' estado(s) estão na faixa avançada (70 ou mais) e '+ini+' na faixa inicial (abaixo de 25).'; }).catch(()=>{});
   fetch('feeds/brasil.xml').then(r => r.ok ? r.text() : '').then(x => { const ul = document.getElementById('listaMudou'); if (!ul || !x) return;

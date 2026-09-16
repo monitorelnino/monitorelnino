@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
-<link rel="stylesheet" href="assets/base.css?v=00a6ebff">
+<link rel="stylesheet" href="assets/base.css?v=0a0d62aa">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -46,43 +46,110 @@
 <main id="conteudo">
   <p class="selo">Imprensa · kit de uso · contato: imprensa@futuraevidencelab.com.br</p>
   <h1>Para jornalistas</h1>
-  <p class="hint">O que o índice MARÉ mede e não mede, como citar, dados abertos, selos, release da edição e contato. <strong>"Não localizamos" nunca vira "não existe."</strong></p>
+  <p class="hint">Release da edição, o que o MARÉ traz de novo, perguntas na ordem em que o site conta a história, como citar e contato. Números lidos ao vivo dos dados publicados. <strong>"Não localizamos" nunca vira "não existe."</strong></p>
 
-  <div class="panel" id="release">
+  <div class="panel panel--acento-musgo" id="release">
     <h2>Release da edição 2026/2027</h2>
     <div class="cartao">
-      <h3 class="figura-titulo">El Niño anunciado, preparação publicada: o Brasil tem nota <span id="relMedia">—</span> em 100 — e o que não foi publicado não cumpriu o rito</h3>
-      <p class="note">Texto pronto para uso, com a mesma cautela probatória do site; números lidos ao vivo dos dados publicados.</p>
+      <h3 class="figura-titulo">O El Niño tem data. A preparação do Brasil, agora, tem medida: <span id="relMedia">—</span> em 100</h3>
+      <p class="note">Texto pronto para uso, com a mesma cautela probatória do site; números lidos ao vivo dos dados. Dados até <span id="relCorte">—</span>.</p>
       <div class="bloco-citacao" id="releaseTexto">
-        <p><strong>Brasília, <span id="relData">—</span></strong> — O El Niño 2026/2027 foi confirmado pelo Painel El Niño em 29 de junho. O MARÉ, do Futura Evidence Lab, mede duas coisas e não as mistura: o que estados e municípios <em>publicaram antes</em> e o que <em>decretaram depois</em>.</p>
-        <p><strong>Antecipação:</strong> a média dos 27 estados no índice MARÉ é <strong><span id="relMedia2">—</span> em 100</strong> — <span id="relFaixa">—</span>. <strong>Resposta:</strong> <strong><span id="relDecretados">—</span> municípios</strong> (<span id="relPop">—</span> da população) estão sob decreto de emergência reconhecido desde o início do ciclo. Nenhum dos dois números corrige o outro.</p>
-        <p><strong>A frase citável:</strong> "Entre 4 de julho e 25 de outubro, o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta — e o Monitor conta quantos municípios a abriram." Tudo o que o índice mede vem de fonte oficial verificada, com número, data e endereço; o que não está público e verificável entra como "não localizado", nunca como "sem plano".</p>
-        <p>Dados, metodologia e código são abertos (CC BY 4.0 e MIT). Contato: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>.</p>
+        <p><strong>Brasília, <span id="relData">—</span></strong> — Pela primeira vez, a preparação pública do país para um El Niño anunciado tem uma medida independente, verificável e aberta. O <strong>MARÉ · Medida de Antecipação e Resposta ao El Niño</strong>, do Futura Evidence Lab, leu um a um os documentos que os 27 estados e os 5.571 municípios publicaram — ou não — desde que o Painel El Niño confirmou o ciclo 2026/2027, em 29 de junho. O resultado: a média dos estados na antecipação é <strong><span id="relMedia2">—</span> em 100</strong>, faixa "<span id="relFaixa">—</span>"; <strong><span id="relNovo">—</span> estados</strong> publicaram plano feito para este ciclo; <strong><span id="relPlanosMun">—</span> planos municipais</strong> foram localizados em fonte oficial.</p>
+        <p>O MARÉ faz o que nenhum painel oficial faz: <strong>separa preparação de resposta e nunca soma as duas</strong>. De um lado, o que foi publicado antes — plano, decreto de mobilização, estrutura de coordenação, com número, data e endereço. De outro, o que foi decretado depois: <strong><span id="relDecretados">—</span> municípios</strong> (<span id="relPop">—</span> da população) sob decreto de emergência desde o início do ciclo, <span id="relReconhecidos">—</span> deles reconhecidos pela União. Um número não corrige o outro.</p>
+        <p>Cada afirmação tem documento, data e endereço; o que não está público e verificável entra como "não localizado até o corte" — nunca como "sem plano". O período eleitoral (04/07–25/10) está na conta: a lei suspende transferências voluntárias e tira sítios do ar, e o Monitor registra o que ficou provisório. A mesma medida se aplica à saúde (MARÉ Saúde: <span id="relSaude">—</span> em 100 nas <span id="relSaudeN">—</span> secretarias estaduais verificadas), e a página Financiamento mostra por onde o dinheiro chega — e qual chave abre cada rota. Tudo é atualizado por rotina automática, com histórico e erratas públicas; dados, metodologia e código são abertos (CC BY 4.0 e MIT).</p>
+        <p><strong>A frase citável:</strong> "Preparação que não foi publicada não cumpriu o rito e não pode ser conferida — o MARÉ mede exatamente isso, sem afirmar que ela não existe."</p>
+        <p>Contato: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>.</p>
       </div>
     </div>
   </div>
 
-  <div class="panel" id="mede">
-    <h2 id="leideixaaberto">O que a lei deixa aberto (04/07–25/10/2026)</h2>
-    <p class="hint">Publicar atos é dever legal, não publicidade. Base conferida em cada linha; tabela completa no <a href="calendario-eleitoral.html">calendário eleitoral</a>.</p>
-    <ul class="fontes-list" id="listaNaoSuspenso"></ul>
-    <hr class="card-sep">
-    <h2>O que o índice mede — e o que não mede</h2>
+  <div class="panel" id="novidade">
+    <h2>O que o MARÉ traz de novo</h2>
     <div class="grade-cartoes">
-      <div class="cartao"><h3 class="figura-titulo">Mede</h3><p class="note">A <strong>preparação demonstrável publicamente</strong>: instrumentos oficiais de preparação publicados pelos governos, com número, data e fonte — em três componentes de pesos iguais.</p><details><summary>Os três componentes</summary><p class="note u-mt-2">Instrumento estadual (plano ou estrutura de coordenação para o ciclo); cobertura populacional dos municípios com instrumento; antecipação — quando o instrumento veio a público em relação ao aviso oficial do ciclo.</p></details></div>
-      <div class="cartao"><h3 class="figura-titulo">Não mede</h3><p class="note">Capacidade real de resposta, qualidade dos planos, obras executadas, dinheiro gasto, risco do território ou sofrimento previsto. Não pontua decretos de emergência (resposta a dano). Não pontua o que existe mas não foi publicado. Não é ranking: nenhum estado é apresentado por posição ordinal.</p></div>
-      <div class="cartao"><h3 class="figura-titulo">Como ler uma nota</h3><p class="note">0–25 estágio inicial · 25–50 em construção · 50–70 consolidado · 70–100 avançado. Nota baixa = preparação <em>não tornada pública</em> nos canais oficiais — e publicar é parte do dever legal (Leis 12.608/2012 e 12.527/2011). Diferença pequena entre estados não é diferença de preparo.</p></div>
-      <div class="cartao"><h3 class="figura-titulo">O teto da afirmação</h3><p class="note">"Não localizamos até o corte" é o máximo que o Monitor afirma sobre uma ausência. Nunca "não existe". Município que ainda não passou pela bateria completa de fontes aparece como <em>"ainda não verificado"</em>, e a matéria deve dizer o mesmo.</p></div>
+      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Mede o que é conferível</h3><p class="note">Só conta o que está publicado em canal oficial, com número, data e endereço. Publicar é dever legal (Leis 12.608/2012 e 12.527/2011); o índice mede o cumprimento desse dever, não a intenção.</p></div>
+      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Dois números, nunca um</h3><p class="note">Antecipação (o que veio antes) e resposta (o que veio depois) são medidos e mostrados separados, na mesma arte, sem soma nem "nota final". É o que impede que um decreto de emergência vire "preparação".</p></div>
+      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Todo o país, um a um</h3><p class="note">27 estados e 5.571 municípios passaram pelo registro federal; a verificação municipal avança por baterias de fontes e diz, para cada cidade, em que nível está — nunca preenche lacuna com zero.</p></div>
+      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Reproduzível e aberto</h3><p class="note">Dados, metodologia, código e feeds abertos; rotina automática semanal; cada mudança de nota com data e motivo; erratas públicas. Qualquer redação pode refazer a conta.</p></div>
+    </div>
+  </div>
+
+  <div class="panel" id="faq">
+    <h2>Perguntas frequentes, na ordem do site</h2>
+    <p class="hint">Da primeira página à última: cada bloco responde o que a página correspondente mostra, e o que se pode ou não afirmar a partir dela.</p>
+    <div class="grade-cartoes grade-cartoes--1">
+    <div class="cartao cartao--acento-neutro-topo" id="faq-mare">
+      <h3 class="figura-titulo">MARÉ Legal — a página inicial</h3>
+      <ul class="fontes-list">
+        <li><strong>O que é o MARÉ?</strong> Uma medida de 0 a 100 da preparação <em>publicada</em> de cada estado para o El Niño 2026/2027: três componentes com pesos iguais — instrumento estadual (plano ou estrutura para o ciclo), cobertura populacional dos municípios com instrumento e antecipação (quando veio a público em relação ao aviso oficial).</li>
+        <li><strong>O que significa a nota?</strong> 0–25 estágio inicial · 25–50 em construção · 50–70 consolidado · 70–100 avançado. Nota baixa é pouca preparação <em>tornada pública</em>, que é onde a lei manda que ela esteja. Diferença pequena entre estados não é diferença de preparo.</li>
+        <li><strong>O que é o "índice de resposta" ao lado?</strong> A parcela da população em municípios sob decreto de emergência desde 29/06. É a outra metade da medida — e nunca se soma à antecipação.</li>
+        <li><strong>Um estado com nota baixa está despreparado?</strong> Está com pouca preparação publicada nos canais oficiais. O Monitor diz isso sem afirmar que ela "não existe".</li>
+        <li><strong>Há ranking?</strong> Não. Nenhum estado aparece por posição ordinal; comparam-se faixas e componentes, com a cautela de cada faixa.</li>
+        <li><strong>O que o índice não mede?</strong> Capacidade real, qualidade dos planos, obras, dinheiro gasto, risco do território. Não pontua decretos de emergência nem o que existe e não foi publicado.</li>
+      </ul>
+    </div>
+
+    <div class="cartao cartao--acento-neutro-topo" id="faq-risco">
+      <h3 class="figura-titulo">Monitor de risco</h3>
+      <ul class="fontes-list">
+        <li><strong>De onde vem o risco projetado por estado?</strong> Dos boletins do Painel El Niño (CEMADEN/INPE e parceiros), classificados em três famílias — chuvas, estiagem/calor, incêndios — e do que se observa agora: avisos do INMET, alertas do CEMADEN, Monitor de Secas da ANA e focos do INPE, coletados por rotina.</li>
+        <li><strong>O Monitor prevê o El Niño?</strong> Não. Reproduz o ONI e o prognóstico oficial, com a data de cada boletim, e cruza o risco projetado com o estágio do arcabouço público de cada estado.</li>
+      </ul>
+    </div>
+
+    <div class="cartao cartao--acento-neutro-topo" id="faq-proteja">
+      <h3 class="figura-titulo">Proteja-se</h3>
+      <ul class="fontes-list">
+        <li><strong>O que há para o cidadão?</strong> Os números de emergência com a situação que cada um atende (193, 192, 199, 190, alertas por SMS no 40199), os guias oficiais por risco, com a fonte em cada ficha, os contatos da Defesa Civil de cada estado (diretório oficial do MIDR) e o que fazer quando o município é reconhecido (Saque Calamidade do FGTS).</li>
+      </ul>
+    </div>
+
+    <div class="cartao cartao--acento-neutro-topo" id="faq-dc">
+      <h3 class="figura-titulo">Defesa civil</h3>
+      <ul class="fontes-list">
+        <li><strong>Posso dizer que tal município "não tem plano"?</strong> Não. O máximo é "o Monitor não localizou plano publicado até [corte]"; para município ainda não verificado, "ainda não foi verificado".</li>
+        <li><strong>O que são os municípios prioritários?</strong> Os do Cadastro Nacional de Municípios com Áreas Suscetíveis a Desastres (MIDR). A lista nominal exige acesso autenticado; o Monitor usa uma aproximação por população, declarada como tal, e uma busca em Para gestores.</li>
+        <li><strong>Por que decretos de emergência não contam?</strong> Medem resposta a dano ocorrido, não preparação; ficam em registro separado, com peso zero, e aparecem na metade "resposta".</li>
+      </ul>
+    </div>
+
+    <div class="cartao cartao--acento-neutro-topo" id="faq-saude">
+      <h3 class="figura-titulo">MARÉ Saúde</h3>
+      <ul class="fontes-list">
+        <li><strong>O que é o MARÉ Saúde?</strong> A mesma medida aplicada às secretarias estaduais de saúde: antecipação (plano de contingência de saúde para o ciclo × cobertura populacional sanitária × antecipação) e resposta (população em estado com emergência sanitária declarada). Peso zero no MARÉ Legal; estado não verificado fica sem número.</li>
+        <li><strong>Os casos de dengue entram na nota?</strong> Não. Dengue, chikungunya, calor, respiratórias e diarreicas são observação, com peso zero, sobre o canal endêmico; o Monitor não atribui casos ao El Niño.</li>
+      </ul>
+    </div>
+
+    <div class="cartao cartao--acento-neutro-topo" id="faq-fin">
+      <h3 class="figura-titulo">Financiamento</h3>
+      <ul class="fontes-list">
+        <li><strong>Por onde o dinheiro chega ao município?</strong> Por oito rotas, cada uma aberta por uma chave — regra, decreto, discricionária, direta ou estadual — mais a rota preventiva do fogo (PNMIF). A página mostra o que a União prometeu, empenhou e pagou, e o caminho antes, durante e depois do período eleitoral.</li>
+        <li><strong>Há dinheiro federal para se preparar sem decretar?</strong> Sim: na saúde, por regra, todo mês; no fogo, desde 2025, com risco declarado e plano aprovado; na seca, chega às pessoas e às obras, não ao município. <a href="financiamento.html#preventivo">Por setor →</a></li>
+        <li><strong>O período eleitoral afeta os dados?</strong> Sim, e o site declara: transferências voluntárias suspensas por lei e sítios públicos com conteúdo fora do ar entre 04/07 e 25/10/2026 — buscas sem resultado nesse intervalo são provisórias. O que a lei deixa aberto:</li>
+      </ul>
+      <ul class="fontes-list" id="listaNaoSuspenso"></ul>
+    </div>
+
+    <div class="cartao cartao--acento-neutro-topo" id="faq-gestores">
+      <h3 class="figura-titulo">Para gestores e Pesquisadores</h3>
+      <ul class="fontes-list">
+        <li><strong>O que um gestor encontra?</strong> O caminho até o plano publicado, o que o plano precisa conter e como pedir recursos antes e depois do dano. Achar os planos publicados é tarefa do Monitor; qualquer pessoa pode indicar um documento em Pesquisadores.</li>
+        <li><strong>De onde vêm os dados e como conferir?</strong> De fontes oficiais citadas em cada figura — diários oficiais, sítios de defesa civil e de saúde, boletins do Painel, DOU, Portal da Transparência. Nada estimado; lacuna aparece como lacuna. Dados abertos, metodologia, feeds e histórico estão em Pesquisadores.</li>
+        <li><strong>Por que a nota mudou?</strong> Toda mudança está no histórico e no feed, com data e motivo; correções de dado vêm com errata pública.</li>
+        <li><strong>Quem faz?</strong> O Futura Evidence Lab, laboratório independente; não recebe recursos dos governos monitorados. Nomes de parlamentares não aparecem no site.</li>
+      </ul>
+    </div>
     </div>
   </div>
 
   <div class="panel" id="citar">
     <h2>Como citar</h2>
     <div class="grade-cartoes">
-      <div class="cartao"><h3 class="figura-titulo">Em texto</h3><p class="note">"Segundo o MARÉ, medida independente do Futura Evidence Lab, [estado] tem nota [X] em 100 no índice MARÉ, que mede a preparação publicada para o El Niño 2026/2027 (dados até [corte])." Sempre com a data do corte: as notas mudam a cada atualização.</p></div>
+      <div class="cartao"><h3 class="figura-titulo">Em texto</h3><p class="note">"Segundo o MARÉ, medida independente do Futura Evidence Lab, [estado] tem nota [X] em 100 na preparação publicada para o El Niño 2026/2027 (dados até [corte])." Sempre com a data do corte: as notas mudam a cada atualização.</p></div>
       <div class="cartao"><h3 class="figura-titulo">Referência bibliográfica</h3><p class="note"><span id="citBib">Futura Evidence Lab. MARÉ · Medida de Antecipação e Resposta ao El Niño, edição 2026/2027, versão e corte indicados no arquivo de citação. monitorelnino.com.br.</span> Um arquivo de citação legível por máquina (CITATION.cff) acompanha os dados abertos.</p></div>
       <div class="cartao"><h3 class="figura-titulo">Licença</h3><p class="note">Dados, metodologia, feeds e selos: <strong>CC BY 4.0</strong> — uso livre com atribuição ao MARÉ / Futura Evidence Lab. Código: MIT. Os documentos oficiais citados pertencem aos órgãos que os publicaram.</p></div>
-      <div class="cartao"><h3 class="figura-titulo">Imagens e gráficos</h3><p class="note">Mapas e gráficos do site podem ser reproduzidos com crédito "MARÉ / Futura Evidence Lab" e a data do corte. Cada figura traz a fonte primária no rodapé — reproduza-a junto.</p></div>
+      <div class="cartao"><h3 class="figura-titulo">Imagens e gráficos</h3><p class="note">Mapas e gráficos podem ser reproduzidos com crédito "MARÉ / Futura Evidence Lab" e a data do corte. Cada figura traz a fonte primária no rodapé — reproduza-a junto.</p></div>
     </div>
   </div>
 
@@ -90,26 +157,6 @@
     <h2>O que mudou esta semana</h2>
     <p class="hint">Lido do feed nacional: registros novos, decretos novos, mudanças de faixa e fontes reabertas nos últimos sete dias.</p>
     <ul class="fontes-list" id="listaMudou"><li>—</li></ul>
-  </div>
-
-  <div class="panel" id="faq">
-    <h2>Perguntas frequentes</h2>
-    <div class="cartao">
-      <h3 class="figura-titulo">O que perguntam com mais frequência</h3>
-      <p class="note">Respostas curtas, na linha do site.</p>
-      <ul class="fontes-list naodiga">
-        <li><strong>Um estado com nota baixa está despreparado?</strong> Está com pouca preparação <em>publicada nos canais oficiais</em> — que é onde a lei manda que ela esteja e onde o cidadão e a defesa civil vizinha podem conferi-la. Preparação não publicada não cumpriu o rito e não é conferível; o Monitor diz isso sem afirmar que ela "não existe".</li>
-        <li><strong>Posso dizer que tal município "não tem plano"?</strong> Não. O máximo é "o Monitor não localizou plano publicado até [corte]" — e, para município ainda não verificado, "ainda não foi verificado".</li>
-        <li><strong>Por que decretos de emergência não contam?</strong> Medem resposta a dano ocorrido, não preparação; ficam em registro separado, com peso zero.</li>
-        <li><strong>Há ranking?</strong> Não. O site não apresenta posição ordinal; as notas são comparáveis pela faixa e pela régua, com a cautela de cada faixa.</li>
-        <li><strong>De onde vêm os dados?</strong> De fontes oficiais citadas em cada figura: diários oficiais, sítios de defesa civil, boletins do Painel El Niño, DOU, órgãos federais. Nada estimado; lacuna aparece como lacuna.</li>
-        <li><strong>Por que a nota mudou?</strong> Toda mudança está no histórico e no feed, com data e motivo; correções de dado vêm com errata pública.</li>
-        <li><strong>O período eleitoral afeta os dados?</strong> Sim, e o site declara: transferências voluntárias suspensas por lei e sítios públicos com conteúdo fora do ar entre 04/07 e 25/10/2026 — buscas sem resultado nesse intervalo são provisórias.</li>
-        <li><strong>O que é o MARÉ Saúde?</strong> A mesma medida do MARÉ Legal nas secretarias estaduais de saúde: antecipação (plano para o ciclo × cobertura × antecipação) e resposta (população em estado com emergência sanitária). Peso zero no MARÉ Legal.</li>
-        <li><strong>Há dinheiro federal para se preparar sem decretar?</strong> Sim: na saúde, por regra, todo mês; no fogo, desde 2025, com risco declarado e plano aprovado; na seca, chega às pessoas e às obras, não ao município. <a href="financiamento.html#preventivo">Por setor →</a></li>
-        <li><strong>Quem faz?</strong> O Futura Evidence Lab, laboratório independente; não recebe recursos dos governos monitorados. Nomes de parlamentares não aparecem no site.</li>
-      </ul>
-    </div>
   </div>
 
   <div class="panel" id="contato">
@@ -129,7 +176,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/imprensa.js?v=637cdc4c" defer></script>
+<script src="assets/js/imprensa.js?v=035adb16" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

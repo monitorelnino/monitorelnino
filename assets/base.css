@@ -56,6 +56,8 @@ main{display:block;}
 .lista-definicao dd{margin:0; color:var(--muted);}
 .grade-cartoes{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--esp-grade);}
 .grade-cartoes > *{min-width:0;}
+.grade-cartoes--1{grid-template-columns:minmax(0, 1fr);}   /* 15/09/2026: cartões empilhados em coluna única (FAQ da Imprensa) */
+#releaseTexto{columns:1; max-width:none;}   /* 15/09/2026: o release lê-se em coluna única */
 .grade-figuras + .grade-figuras, .grade-cartoes + .grade-figuras, .grade-figuras + .grade-cartoes{margin-top:var(--esp-grade);}
 .comoler-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:0 var(--sp-6);}
 .comoler-grid p{margin:0 0 var(--sp-2);}
