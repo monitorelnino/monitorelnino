@@ -118,14 +118,9 @@ function __init(){
         if (b) b.innerHTML = 'Preparação demonstrada (saúde)<span class="gfaixa-pill" style="background:' + MonitorMapas.PALETA.faixas[fx] + '; color:' + MonitorMapas.PALETA.faixasTexto[fx] + '">' + esc(MonitorMapas.PALETA.faixaRotulo[fx]) + '</span>';
       } catch (e) {}
     })();
-    const ver = UFS.filter(uf => (M[uf] || {}).verificado).sort((x, y) => (M[y].prontidao - M[x].prontidao) || x.localeCompare(y));
-    const bx = document.getElementById('monitorBarras');
-    if (bx) {
-      bx.innerHTML = ver.length ? ver.map(uf => { const m = M[uf]; return '<div class="msb" role="group" aria-label="' + uf + ': ' + esc(m.prontidao) + '"><b>' + uf + '</b><div class="trilho"><div class="barra" style="width:' + m.prontidao + '%; --galvo:' + Math.max(m.prontidao, 0.1) + ';"></div></div><span>' + esc(m.prontidao) + '</span></div>'; }).join('')
-        : '<div class="msb"><b>—</b><div class="trilho"></div><span>nenhuma UF verificada</span></div>';
-      MonitorMapas.legenda('legMonitorBarras', [{cor: MonitorMapas.PALETA.trilho, rotulo: 'trilho 0–100'}, {cor: MonitorMapas.PALETA.faixas.avancado, rotulo: 'cor = posição no degradê do índice (0 → 100)'}, {cor: MonitorMapas.PALETA.faixas.nao_verificado, rotulo: (R.nao_verificadas ?? '—') + ' UFs sem número'}]);
-      fonteFigura('boxMonitorBarras', {fontes: ['MARÉ', 'MARÉ Saúde v0.3'], data: (MSAUDE || {}).gerado_em});
-    }
+    // 13/09/2026: #monitorBarras já não existe no HTML (bloco morto, nunca executava — se existisse,
+    // seria uma lista de UFs ordenada por nota, ranking exatamente do tipo que a editoria veta em
+    // 16/09/2026). Removido por inteiro, não só guardado.
     // Resposta sanitária (E17): ESPIN federal, decretos estaduais por arboviroses, créditos por portaria — contador, hoje zero de verdade
     (function respostaSanitaria(){
       const RS = (MSAUDE && MSAUDE.resposta) || {emergencias: 0, indice: 0, pop_sob_emergencia: 0, fontes: ['DOU (ESPIN)', 'diários oficiais estaduais']};

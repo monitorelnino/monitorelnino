@@ -30,12 +30,9 @@ function renderMpsUf(ctx){
   if (brDen) brDen.textContent = 'do pago (' + brl(br) + ') vai para sedes nacionais (BR); ' + brl(tot - br) + ' se distribuem pelas ' + Object.keys(por).length + ' UFs com execução';
   MonitorMapas.legenda('legMpsBrUf', [{cor: MonitorMapas.cor('linha'), rotulo: 'BR: sedes nacionais'}, {cor: O4[2], rotulo: 'UFs: unidade gestora local'}]);
   fonteFigura('boxMpsBrUf', {fontes: ['Portal da Transparência', 'execução mensal'], data: (MPS || {}).gerado_em});
-  const bx = document.getElementById('mpsUfBarras');
-  if (bx) { const ufs = Object.entries(por).sort((a, b) => b[1] - a[1]).slice(0, 12);
-    bx.innerHTML = ufs.map(([uf, v]) => '<div class="msb" role="group" aria-label="' + esc(uf) + ': ' + esc(brl(v)) + '"><b>' + esc(uf) + '</b><div class="trilho"><div class="barra" style="width:' + (100 * v / max).toFixed(1) + '%; background:' + cor(v) + '"></div></div><span>' + esc(brl(v)) + '</span></div>').join('')
-      + '<div class="msb" role="group" aria-label="BR sedes nacionais: ' + esc(brl(br)) + '"><b>BR</b><div class="trilho"><div class="barra" style="width:100%; background:' + MonitorMapas.cor('linha') + '"></div></div><span>' + esc(brl(br)) + '</span></div>'; }
-  MonitorMapas.legenda('legMpsUfBarras', [{cor: MonitorMapas.cor('linha'), rotulo: 'BR = sedes nacionais: ' + (tot ? Math.round(100 * br / tot) : 0) + '% do pago'}]);
-  fonteFigura('boxMpsUfBarras', {fontes: ['Portal da Transparência', 'execução mensal'], data: (MPS || {}).gerado_em});
+  // 16/09/2026 (pedido da editoria): a lista de barras "Pago por UF" — ordenada do maior para o menor
+  // valor, rotulada "ranking" — foi removida; o mapa acima (boxMpsUf) mostra o mesmo dado geográfico
+  // sem ordenar estados por posição.
 }
 
 // ===== 0 · Rota do dinheiro das MPs (05/09/2026): barras de prazo + fluxo MP → órgão → uso =====

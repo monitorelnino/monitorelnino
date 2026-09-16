@@ -199,19 +199,8 @@ function __init(){
   (document.getElementById('dinNumRS')||{}).textContent = repassesGeo.length;
   (document.getElementById('dinNumFed')||{}).textContent = recs.length;
   fonteFigura('boxDinheiro', {fontes: ['FUNDEC/RS', 'DOU (SEDEC/MIDR)'], data: ROTAS.corte});
-  const porUF = {}; recs.forEach(e => { const p = porUF[e.uf] = porUF[e.uf] || {n: 0, m: new Set()}; p.n++; p.m.add(e.nome); });
-  (function(){ const cv = document.getElementById('cResposta'); if (!cv || typeof Chart === 'undefined') return;
-    const resp = (typeof RESP_FIN !== 'undefined' && RESP_FIN && RESP_FIN.uf) || null;
-    const ufs = UFS.slice().sort((a, b) => ((resp ? resp[b].n_municipios : (porUF[b] ? porUF[b].n : 0)) - (resp ? resp[a].n_municipios : (porUF[a] ? porUF[a].n : 0))) || a.localeCompare(b));
-    MonitorMapas.padraoGraficos(window.Chart);
-    new Chart(cv, {type: 'bar', data: {labels: ufs, datasets: resp ? [
-        {label: 'reconhecidos pela União', data: ufs.map(uf => resp[uf].tons.reconhecido), backgroundColor: MonitorMapas.PALETA.resposta},
-        {label: 'decretados sem reconhecimento', data: ufs.map(uf => resp[uf].tons.decretado_sem_reconhecimento), backgroundColor: MonitorMapas.PALETA.status.ELAB}] :
-        [{label: 'reconhecimentos', data: ufs.map(uf => porUF[uf] ? porUF[uf].n : 0), backgroundColor: MonitorMapas.PALETA.resposta}]},
-      options: {animation: false, responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {stacked: true, ticks: {autoSkip: false, maxRotation: 0, font: {size: 10}}}, y: {stacked: true, beginAtZero: true, title: {display: true, text: 'municípios'}, ticks: {precision: 0}}}}});
-    MonitorMapas.legenda('legResposta', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'reconhecidos pela União (S2iD/DOU)'}, {cor: MonitorMapas.PALETA.status.ELAB, rotulo: 'decretados sem reconhecimento'}]);
-  })();
-  fonteFigura('boxResposta', {fontes: 'DOU (SEDEC/MIDR)', data: recs.length ? ROTAS.corte : null});
+  // 16/09/2026: bloco morto removido — cResposta e boxResposta não existem mais no HTML desde os
+  // cortes de 15/09 (§70); o gráfico ordenava estados por municípios sob decreto, do maior ao menor.
   }
   // 5 · painel amostral: migrou para pesquisadores.html em 13/09/2026 (proposta de enxugamento,
   // Manus AI) — "não responde quem pediu ou não pediu no universo monitorado".

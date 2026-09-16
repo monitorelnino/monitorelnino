@@ -4,8 +4,8 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
   fetch('data/indice.json').then(r=>r.json()).then(idx=>{ const ufs=Object.keys(idx).filter(k=>k.length===2); const tot=ufs.map(u=>idx[u].total); const media=Math.round(tot.reduce((a,b)=>a+b,0)/27*10)/10; const txt=media.toLocaleString('pt-BR',{minimumFractionDigits:1});
     document.getElementById('relMedia').textContent=txt; document.getElementById('relMedia2').textContent=txt;
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = String(v); };
-    const ord = ufs.slice().sort((a, b) => idx[b].total - idx[a].total); const f1 = v => v.toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
-    set('relTopo', ord.slice(0, 2).map(u => u + ' ' + f1(idx[u].total)).join(' e ')); set('relBase', ord.slice(-2).reverse().map(u => u + ' ' + f1(idx[u].total)).join(' e '));
+    // 16/09/2026 (pedido da editoria): o site não ranqueia nem compara estados entre si — o release não
+    // nomeia mais os dois primeiros e os dois últimos por nota (removido: ord/relTopo/relBase).
     const fx = v => v < 25 ? 'estágio inicial' : v < 50 ? 'em construção' : v < 70 ? 'consolidado' : 'avançado';
     const rf = document.getElementById('relFaixa'); if (rf) rf.textContent = fx(+String(txt).replace(',', '.'));
     fetch('data/resposta/por_uf.json').then(r => r.ok ? r.json() : null).then(R => { if (!R) return; const N = R.nacional;
