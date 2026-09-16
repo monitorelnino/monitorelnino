@@ -15,6 +15,35 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §73 · Removida toda comparação/ranking entre municípios e estados — nota, saúde, resposta e financiamento · 16/09/2026
+
+A pedido da editoria, no MARÉ Legal e em qualquer outra página que comparasse um município ou estado contra outro ou contra uma média: o índice mede o que cada um publicou, sozinho — nunca a posição que ocupa frente aos demais.
+
+**MARÉ Legal (assets/js/index.js):**
+- Removida a frase "X pontos acima/abaixo da média nacional (Y/100)" do card de busca de cidade, e a equivalente no relatório em PDF baixável.
+- Removido o traço e o rótulo que marcavam a média nacional em cima da barra de **todo** medidor do site (`miniGauge()`, usado no herói, no detalhe do estado, na busca de cidade e no índice de resposta) — CSS morto (`.gauge-avg`, `.marca-media`) também removido.
+- Removido o cálculo de posição no ranking e dos estados vizinhos (`ORDEM_MARE`), nunca renderizado mas presente no código.
+- O cartão "Brasil (média nacional)", que ocupava o lugar do detalhe do estado antes do clique, virou só a instrução — sem nota nacional na mesma coluna onde um estado é mostrado.
+- Quatro mensagens de resultado vazio ("X pontos abaixo/acima", "não significa que X") reescritas como afirmações diretas (ver §72).
+
+**Defesa civil:**
+- O título do mapa de decretos não nomeia mais o estado com a maior fração de municípios sob decreto.
+- A tabela "Decretado × reconhecido, por estado" passa a ordem alfabética (era por número de municípios sob decreto).
+- Removido o trecho de texto ("quadrante crítico") que cruzava a nota do índice com a fração sob decreto para nomear estados especificamente.
+- `data/resposta/quadrantes.json` parou de ser gerado — existia só para essas duas comparações (e para um gráfico de dispersão já removido em 15/09, §59); `gerar_resposta.py` limpo.
+
+**Imprensa:**
+- O release não nomeia mais os dois estados com maior e os dois com menor nota ("As notas vão de X a Y"); cálculo removido de `imprensa.js`.
+- FAQ "Há ranking?": resposta reescrita — "Não. Cada estado mostra a própria nota e os próprios componentes; não há lista por posição nem comparação entre estados."
+
+**Pesquisadores e Financiamento:**
+- Removido o gráfico de barras "Pago por UF" (rotulado "ranking por UF da unidade gestora") em Pesquisadores — o mapa geográfico ao lado mostra o mesmo dado sem ordenar por posição.
+- Removido código morto em `financiamento.js` e `saude.js` que também ordenava estados por valor (decretos, prontidão sanitária) sem nunca renderizar — mesmo tipo de comparação, mesmo risco latente.
+
+**Documentação técnica (`MARE_Indice_Documentacao.pdf`):** o anexo de robustez (§5.8) tinha uma tabela UF a UF com "rank mediano" e intervalo — mesmo rotulada "não é produto público", ainda seria uma posição extraível de um PDF público. Substituída por um achado agregado (amplitude média e máxima da posição sob perturbação, nenhuma UF nomeada), que sustenta a mesma conclusão metodológica (a v2.2.3 não publica ordinal) sem expor posição de nenhum estado.
+
+Peso e cálculo do índice inalterados; nada muda na nota de nenhum estado ou município. Escopo é onde e como essas notas são mostradas.
+
 ## §72 · Voz editorial revisada no site inteiro: legendas descrevem, não corrigem o leitor; regra fixada em docs/VOZ_EDITORIAL.md · 16/09/2026
 
 A pedido da editoria, na sequência do §71: a mesma pergunta feita sobre uma legenda específica ("por que isso está aqui?") aplicada ao site inteiro — HTML e JavaScript.

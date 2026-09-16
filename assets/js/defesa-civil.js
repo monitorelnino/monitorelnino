@@ -456,9 +456,10 @@ function renderResposta(){
   const N = RESP && RESP.nacional;
   const c18 = (RESP && RESP.frase_c18) || '';
   if (!N) { MonitorMapas.credito('boxDecRec', {fontes: 'MARÉ', data: null}); return; }
-  // tabela decretado × reconhecido
+  // tabela decretado × reconhecido — 16/09/2026: ordem alfabética por UF, não mais por quantidade
+  // de municípios sob decreto (a ordenação por valor revelava posição/comparação entre estados)
   const tb = document.querySelector('#tblDecRec tbody');
-  tb.innerHTML = Object.keys(RESP.uf).sort((a, b) => RESP.uf[b].n_municipios - RESP.uf[a].n_municipios || a.localeCompare(b)).map(uf => { const r = RESP.uf[uf];
+  tb.innerHTML = Object.keys(RESP.uf).sort().map(uf => { const r = RESP.uf[uf];
     return '<tr><td><strong>' + uf + '</strong></td><td>' + r.n_municipios + ' de ' + r.total_municipios + '</td><td>' + (100 * r.fracao_municipios).toFixed(1).replace('.', ',') + '%</td><td>' + (100 * r.fracao_populacao).toFixed(1).replace('.', ',') + '%</td><td>' + r.tons.reconhecido + '</td><td>' + r.tons.decretado_sem_reconhecimento + '</td><td>' + esc(r.primeiro_decreto || '—') + '</td></tr>'; }).join('');
   MonitorMapas.legenda('legDecRec', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'reconhecido pela União (S2iD)'}, {cor: MonitorMapas.PALETA.status.ELAB, rotulo: 'decretado sem reconhecimento'}]);
   MonitorMapas.credito('boxDecRec', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais'], data: RESP.gerado_em});
@@ -499,18 +500,16 @@ function titulosFato(){
     const nPlanos = Object.values(PCT_POR_UF || {}).reduce((a, i) => a + (i.n_plano || 0), 0);
     titulo('boxVerificacao', `5.571 municípios no registro federal${nDiario != null ? `; ${n(nDiario)} no diário oficial` : ''}; ${n(nPlanos)} planos municipais localizados`);
   } catch (e) {}
-  try {   // (e) quadrante crítico (índice < 50 e > 5% dos municípios sob decreto) + (g) semana do primeiro decreto —
-    // narrativa fora de figura desde 15/09/2026 (as figuras de dispersão e série semanal saíram da página)
-    const P = (RESP_Q && RESP_Q.pontos) || [];
-    const alto = P.filter(p => p.antecipacao >= 50 && p.resposta > 0.05).map(p => p.uf).sort();
+  try {   // (g) semana do primeiro decreto — 16/09/2026: o "quadrante crítico" (estados com índice ≥ 50
+    // e mais de 5% dos municípios sob decreto, nomeados) saiu — cruzava a nota de cada estado com
+    // resposta para apontar estados específicos, exatamente o tipo de comparação que a editoria veta.
     const N = RESP && RESP.nacional; const S = (RESP_SERIE && RESP_SERIE.semanas) || [];
     const tot = S.reduce((a, x) => a + (x.municipios || 0), 0); const noDefeso = S.filter(x => x.defeso).reduce((a, x) => a + (x.municipios || 0), 0);
-    if (P.length) interp('interpDepois', `Acima de 50 no índice e mais de 5% dos municípios sob decreto: ${alto.length ? alto.join(', ') : 'nenhum estado'}.`
-      + (N && S.length ? ` Primeiro decreto do ciclo em ${N.primeiro_decreto || '—'}; ${n(noDefeso)} de ${n(tot)} decretos até aqui são de dentro do período eleitoral.` : ''));
+    if (N && S.length) interp('interpDepois', `Primeiro decreto do ciclo em ${N.primeiro_decreto || '—'}; ${n(noDefeso)} de ${n(tot)} decretos até aqui são de dentro do período eleitoral.`);
   } catch (e) {}
-  try {   // (f) mapa dos decretos
-    const N = RESP && RESP.nacional; const porUf = RESP && RESP.uf ? Object.entries(RESP.uf) : [];
-    if (N) { const maior = porUf.sort((a, b) => (b[1].fracao_municipios || 0) - (a[1].fracao_municipios || 0))[0];
-      titulo('boxAtosResposta', `Decretos: ${n(N.n_municipios)} municípios` + (maior ? ` · ${maior[0]} decretou em ${maior[1].n_municipios} de ${maior[1].total_municipios}` : '')); }
+  try {   // (f) mapa dos decretos — 16/09/2026: título-fato não nomeia mais o estado com a maior fração
+    // (revelava posição/comparação entre estados; ver pedido da editoria)
+    const N = RESP && RESP.nacional;
+    if (N) titulo('boxAtosResposta', `Decretos: ${n(N.n_municipios)} municípios`);
   } catch (e) {}
 }

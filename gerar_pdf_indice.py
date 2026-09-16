@@ -280,20 +280,22 @@ def construir():
                      ["Teste de estresse §12.1 (27 decretos simultâneos)", "Δ = 0 em todas as casas decimais, todos os campos, todas as UFs (reimplementado de forma independente na auditoria)"]],
                     larguras=[88 * mm, 86 * mm]))
 
-    E.append(Paragraph("5.8 Anexo de robustez: posições sob perturbação de pesos (não é produto público)", S_H2))
+    E.append(Paragraph("5.8 Anexo de robustez: estabilidade da posição relativa sob perturbação de pesos", S_H2))
     rob = json.load(open(RAIZ / "data" / "robustez_mc.json", encoding="utf-8"))
-    linhas_rob = [[u, f"{idx[u]['total']:.1f}".replace(".", ","), str(rob[u]["rank_mediano"]),
-                   f"{rob[u]['rank_p5']}–{rob[u]['rank_p95']}", str(rob[u]["amplitude"])]
-                  for u in ufs if u in rob]
-    E.append(tabela(["UF", "Nota", "Rank mediano", "Intervalo p5–p95", "Amplitude"], linhas_rob,
-                    larguras=[20 * mm, 26 * mm, 34 * mm, 48 * mm, 30 * mm]))
-    E.append(Paragraph("Leitura: este anexo é a evidência que fundamenta a decisão da v2.2.3 de não publicar "
-                       "posição ordinal por UF (METODOLOGIA §13). A nota de cada UF é determinística e estável; "
-                       "a posição relativa no pelotão intermediário não é — a amplitude correlaciona r = 0,74 com "
-                       "a dispersão interna dos componentes (auditoria de 29/08/2026), e os extremos são os únicos "
-                       "protegidos. O intervalo p5–p95 acompanha o rank mediano em toda superfície onde ele "
-                       "aparecer (recomendação acatada da mesma auditoria); nenhuma superfície pública exibe o "
-                       "ordinal isolado.", S_NOTA))
+    # 16/09/2026 (pedido da editoria): a tabela UF-a-UF de rank mediano/intervalo/amplitude foi removida —
+    # mesmo rotulada "não é produto público", ainda seria uma comparação de posição entre estados extraível
+    # de um PDF público. Fica só o achado agregado (nunca nomeia UF) que sustenta a decisão de não publicar
+    # ordinal: computado sobre robustez_mc.json, nunca hard-coded.
+    amplitudes = [rob[u]["amplitude"] for u in ufs if u in rob]
+    amp_media = sum(amplitudes) / len(amplitudes) if amplitudes else 0
+    amp_max = max(amplitudes) if amplitudes else 0
+    extremos_estaveis = sum(1 for u in ufs if u in rob and rob[u]["amplitude"] <= 2)
+    E.append(Paragraph(f"Achado agregado (nenhuma UF nomeada; números computados de robustez_mc.json, não fixos no código): sob "
+                       f"perturbação de pesos, a amplitude de posição relativa entre as 27 UFs tem média {amp_media:.1f} e máxima "
+                       f"{amp_max} posições; {extremos_estaveis} das 27 UFs têm amplitude ≤ 2 (posição estável). "
+                       "A nota de cada UF é determinística e estável; a posição relativa no pelotão intermediário não é — é essa "
+                       "instabilidade, e não a nota em si, que fundamenta a decisão da v2.2.3 de não publicar posição ordinal por "
+                       "UF (METODOLOGIA §13) em nenhuma superfície, pública ou deste anexo.", S_NOTA))
 
     E.append(Paragraph("6. Escolhas normativas declaradas (síntese)", S_H1))
     E.append(Paragraph(

@@ -119,7 +119,8 @@ async function __load(){
   }).catch(() => { VMUN = {}; });
 }
 function __init(){
-const MEDIA_NACIONAL = +(Object.values(MARE).reduce((s,v)=>s+v.total,0)/27).toFixed(1);
+// 16/09/2026: MEDIA_NACIONAL (média dos 27 estados) foi removida — servia só para comparar
+// um estado aberto contra ela (traço no medidor, "X pontos acima/abaixo"); ver miniGauge().
 const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VIG:"Vigente-recorrente", LAC:"Sem plano localizado"};
 
 // 15/09/2026 (pedido da editoria): os três cartões (ONI · R$/hab. · "o que ainda não sabemos") saíram da página inicial;
@@ -233,17 +234,15 @@ DATA.ufs.forEach(item=>{
 animarGauges(document.body); // 31/08/2026: corrigido de getElementById('regions') — o medidor principal do herói
                               // fica FORA de #regions e nunca era animado; document.body cobre os dois.
 
-// ---- Cartão padrão: a média nacional preenche a coluna de detalhe ----
+// ---- Cartão padrão: instrução, sem nota nacional na mesma faixa dos estados ----
+// 16/09/2026 (pedido da editoria): mostrar "Brasil (média nacional)" no exato lugar onde o
+// detalhe de um estado aparece convidava a comparação; a nota nacional já está no medidor
+// do topo da página. Aqui fica só a instrução.
 function renderDetalhePadrao(){
   const det = document.getElementById('detail');
-  if (!det || det.innerHTML.trim() || typeof MARE === 'undefined') return;
-  const mediaBR = +(Object.values(MARE).reduce((s, v) => s + v.total, 0) / 27).toFixed(1);
-  det.innerHTML = `
-    <div class="uf-name">Brasil <span class="sub">(média nacional)</span></div>
-    ${miniGauge(mediaBR, 'MARÉ · média dos 27')}
-    <p class="placeholder">Clique em um estado na grade para abrir o detalhe: componentes verificados, situação da capital e o que cobrar.</p>`;
+  if (!det || det.innerHTML.trim()) return;
+  det.innerHTML = `<p class="placeholder">Clique em um estado na grade para abrir o detalhe: componentes verificados, situação da capital e o que cobrar.</p>`;
   det.hidden = false;
-  animarGauges(det);
 }
 setTimeout(renderDetalhePadrao, 0);
 
@@ -440,12 +439,14 @@ function htmlGuia(chave, compacto){
 const selUF = document.getElementById('ufSelect');
 Object.entries(UF_NOME).sort((a,b)=>a[1].localeCompare(b[1]))
   .forEach(([sig,nome]) => selUF.insertAdjacentHTML('beforeend', `<option value="${sig}">${nome}</option>`));
-const ORDEM_MARE = Object.entries(MARE).sort((a,b)=>b[1].total-a[1].total).map(([u])=>u);
+// 16/09/2026 (pedido da editoria): o site não ranqueia nem compara municípios/estados entre
+// si nem contra a média nacional — ORDEM_MARE (posição no ranking) e a comparação com
+// MEDIA_NACIONAL foram removidas. Cada estado mostra só a própria nota, no medidor.
 function miniGauge(valor, rotulo, variante){
   // 15/09/2026: uma só arte para toda barra do site; `variante` = 'resposta' usa o preenchimento frio→quente
+  // 16/09/2026 (pedido da editoria): o traço e o rótulo que marcavam a média nacional no trilho — uma
+  // comparação visual entre o estado aberto e os demais — foram removidos; a barra mostra só a nota do estado.
   const resposta = variante === 'resposta';
-  const ref = resposta ? indiceResposta(RESP && RESP.nacional) : MEDIA_NACIONAL;
-  const media = ref == null ? null : String(ref).replace('.', ',');
   return `<div class="gauge-mini gauge-zone${resposta ? ' gauge-zone--resposta' : ''}">
     <div class="gauge-head">
       <span class="gnum" data-contar="${valor}">0,0</span><span class="gden">/ 100</span>
@@ -453,11 +454,9 @@ function miniGauge(valor, rotulo, variante){
     </div>
     <div class="gauge-track">
       <div class="gauge-fill${resposta ? ' gauge-fill--resposta' : ''}" data-alvo="${valor}" style="--galvo:${Math.max(valor, 0.1)};"></div>
-      ${ref == null ? '' : `<span class="gauge-avg" style="left:${ref}%;"></span>`}
     </div>
     <div class="gauge-ends">
       <span>0</span>
-      ${ref == null ? '' : `<span class="marca-media" style="left:${ref}%;">${resposta ? 'Brasil' : 'média'} ${media}</span>`}
       <span>100</span>
     </div>
   </div>`;
@@ -562,10 +561,6 @@ function renderMinha(){
 
   if (ufFinal){
     const v = MARE[ufFinal], i = PCT_POR_UF[ufFinal];
-    const pos = ORDEM_MARE.indexOf(ufFinal) + 1;
-    const acima = pos > 1 ? ORDEM_MARE[pos-2] : null;
-    const abaixo = pos < 27 ? ORDEM_MARE[pos] : null;
-    const delta = +(v.total - MEDIA_NACIONAL).toFixed(1);
     const decl = (i.declarado_plano||0) + (i.declarado_antigo||0);
     const acoes = [];
     if (v.status_estadual === 'LAC') acoes.push('Seu estado ainda não publicou plano estadual nominal para o El Niño; este é o primeiro item a cobrar da Defesa Civil estadual.');
@@ -578,7 +573,6 @@ function renderMinha(){
       ${miniGauge(v.total)}
       <p class="note">Confiança da verificação: ${v.confianca}</p>
       <ul>
-        <li><strong>${delta >= 0 ? String(delta).replace('.',',') + ' pontos acima' : String(Math.abs(delta)).replace('.',',') + ' pontos abaixo'}</strong> da média nacional (${String(MEDIA_NACIONAL).replace('.',',')} / 100)</li>
         <li>Instrumento operacional estadual: ${STATUS_HUMANO[v.status_estadual]}</li>
         <li>Estrutura de coordenação estadual: ${STATUS_HUMANO_ESTR[v.estrutura_status] || v.estrutura_status}</li>
         <li>Cobertura municipal documentada: <strong>${String(i.pct).replace('.',',')}%</strong> (${i.n_plano} plano(s) preventivo(s), ${i.n_decreto} decreto(s) reativo(s))${decl ? ` · declarada a órgãos de controle: ${(100*decl/i.total).toFixed(1).replace('.',',')}%` : ''}</li>
@@ -733,7 +727,7 @@ function gerarRelatorioCidadao(uf, municipio){
   }
   if (uf !== 'DF') item('Municípios do estado com algum ato localizado: ' + i.com_ato + ' de ' + i.total + ' (' + fmt(i.pct) + '%) — ' + i.n_plano + ' com plano preventivo, ' + i.n_decreto + ' com decreto de emergência.');  // DF: o único município é Brasília, já descrita como capital
   const fx = v.total < 25 ? 'estágio inicial' : v.total < 50 ? 'em construção' : v.total < 70 ? 'consolidado' : 'avançado';
-  item('No índice MARÉ, ' + d.nome + ' está em ' + fmt(v.total) + '/100 (' + fx + '; média nacional ' + fmt(MEDIA_NACIONAL) + ').');
+  item('No índice MARÉ, ' + d.nome + ' está em ' + fmt(v.total) + '/100 (' + fx + ').');
 
   // ---- 4. O que ainda falta ----
   secao('O que ainda falta — e o que cobrar');

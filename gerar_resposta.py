@@ -10,7 +10,7 @@ Fontes: data/atos_resposta.json (decretos e reconhecimentos: DOU/SEDEC, DOE, di�
 imprensa oficial) + data/verificacao_municipal.json (decreto_reconhecido, nível nacional via S2iD).
 Ponderação: data/populacao_censo2022.json; universo por UF: verificacao_municipal.json.
 
-Produz data/resposta/{municipios,por_uf,serie_semanal,quadrantes}.json.
+Produz data/resposta/{municipios,por_uf,serie_semanal}.json.
 Fatia "evento observado" (C16): até existir o adaptador municipal (Cemaden por município, INMET por
 área, INPE por município, ANA), TODO decreto fica em `em_classificacao` — nunca imputado.
 Frase C18 obrigatória em toda superfície: FRASE_C18.
@@ -117,19 +117,12 @@ def serie_semanal(municipios: dict) -> list:
     return out
 
 
-def quadrantes(por_uf: dict, indice: dict) -> list:
-    """27 pontos: antecipação (nota MARÉ) × resposta (fração de municípios); forma = evento observado (sem dado até o adaptador)."""
-    return [{"uf": uf, "antecipacao": (indice.get(uf) or {}).get("total"), "resposta": por_uf[uf]["fracao_municipios"],
-             "fracao_populacao": por_uf[uf]["fracao_populacao"], "evento_observado": "sem_dado"} for uf in UFS]
-
-
 def gerar() -> int:
     atos = ler("atos_resposta.json", {"eventos": []}) or {"eventos": []}
     verificacao = ler("verificacao_municipal.json", []) or []
     pop = ler("populacao_censo2022.json", {}) or {}
-    indice = ler("indice.json", {}) or {}
     mun = consolidar_municipios(atos["eventos"], verificacao)
-    por = agregar_uf(mun, pop); serie = serie_semanal(mun); quad = quadrantes(por, indice)
+    por = agregar_uf(mun, pop); serie = serie_semanal(mun)
     hoje = _hoje().strftime("%d/%m/%Y")
     n_total = sum(v["n_municipios"] for v in por.values()); pop_total = sum(v["pop_uf"] for v in por.values()); pop_dec = sum(v["pop_sob_decreto"] for v in por.values())
     datas = [data_br(m["primeiro_decreto"]) for m in mun.values() if m["primeiro_decreto"] and data_br(m["primeiro_decreto"]) >= INICIO_CICLO]
@@ -148,7 +141,9 @@ def gerar() -> int:
                                     "uf": por})
     gravar("resposta/municipios_decretados.json", {"_governanca": gov + " Arquivo reduzido para a página: só municípios sob decreto; ausência = 'não consta decreto reconhecido no ciclo' (S2iD completo; DOE/DOM parcial).", "gerado_em": hoje, "frase_c18": FRASE_C18, "municipios": {k: v for k, v in mun.items() if v["decreto"]}})
     gravar("resposta/serie_semanal.json", {"_governanca": gov, "gerado_em": hoje, "frase_c18": FRASE_C18, "defeso": [DEFESO[0].strftime("%d/%m/%Y"), DEFESO[1].strftime("%d/%m/%Y")], "semanas": serie})
-    gravar("resposta/quadrantes.json", {"_governanca": gov + " Dispersão antecipação × resposta (C20): forma do ponto = evento observado (sem dado até o adaptador).", "gerado_em": hoje, "frase_c18": FRASE_C18, "pontos": quad})
+    # 16/09/2026 (pedido da editoria): resposta/quadrantes.json foi removido — existia só para o gráfico de
+    # dispersão antecipação × resposta (C20, já revogado em 15/09) e para nomear estados no "quadrante
+    # crítico" (índice alto + resposta alta), a mesma comparação entre estados que este pedido elimina.
     print(f"resposta: {n_total} municípios sob decreto ({100*n_total/len(mun):.1f}%) · {100*pop_dec/pop_total:.1f}% da população · primeiro decreto {min(datas).strftime('%d/%m/%Y') if datas else '—'}")
     return 0
 

@@ -309,10 +309,8 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .gauge-tick-labels{position:relative; height:var(--sp-6); margin-top:var(--sp-1);}
 .gauge-tick-labels span{position:absolute; top:0; transform:translateX(-50%); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-align:center; white-space:nowrap;}
 .gauge-tick-labels span b{display:block; font-weight:var(--peso-regular);}
-.gauge-avg{position:absolute; top:0; bottom:0; width:2px; background:var(--ink); opacity:.5;}
 .gauge-ends{display:flex; justify-content:space-between; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin-top:var(--sp-1); position:relative;}
 .gauge-ends > span{max-width:100%;}
-.gauge-ends .marca-media{position:absolute; transform:translateX(-50%);}
 .gfaixa-badge{display:inline-flex; align-items:center; gap:var(--sp-2); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 .gfaixa-pill{font-family:var(--font-corpo); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); color:var(--gauge-osso); padding:var(--sp-1) var(--sp-3); border-radius:var(--radius-pill); white-space:nowrap;}
 .gauge-zone--resposta .gnum{color:var(--rust);}

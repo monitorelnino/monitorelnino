@@ -141,7 +141,7 @@ setTimeout(() => {
     teste("defesa civil (f): mapa com nº de municípios do dado", new RegExp("^Decretos: " + String(RESP.nacional.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " municípios").test(d.querySelector("#boxAtosResposta .figura-titulo").textContent));
     // 15/09/2026: a figura da série semanal saiu da página — o fato (primeiro decreto e contagem no período eleitoral) migrou para interpDepois
     teste("defesa civil (g): primeiro decreto do dado e contagem no período eleitoral, fora de figura", new RegExp("Primeiro decreto do ciclo em " + RESP.nacional.primeiro_decreto + "; \\d").test(q("interpDepois").textContent));
-    teste("defesa civil: interpretações fora das figuras preenchidas", /Por região:|Nenhum estado/.test(q("interpAntes").textContent) && /Acima de 50/.test(q("interpDepois").textContent));
+    teste("defesa civil: interpretação fora da figura preenchida", /Por região:|Nenhum estado/.test(q("interpAntes").textContent));
   } catch (e) { teste("defesa civil: títulos-fato (" + e.message + ")", false); }
   // 15/09/2026: correção do portão — o teste que checava `falhas` rodava ANTES destes testes de
   // Defesa civil (bug pré-existente, §2.9): quaisquer falhas aqui nunca bloqueavam a publicação.
