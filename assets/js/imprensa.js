@@ -28,16 +28,9 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
     fetch('data/estados.json').then(r => r.ok ? r.json() : null).then(E => { if (!E) return; const c = k => (E.ufs || []).filter(u => k.includes(u.status)); const ufsDe = k => c(k).map(u => u.uf).sort().join(', ');
       ['relNovo', 'relNovo2'].forEach(i => set(i, c(['NOVO']).length)); set('relNovoUFs', ufsDe(['NOVO'])); set('relTodoAno', c(['VIG']).length); set('relElab', c(['ELAB']).length); set('relLacUFs', ufsDe(['LAC']) || 'nenhum'); }).catch(() => {});
   }).catch(()=>{});
-  fetch('feeds/brasil.xml').then(r => r.ok ? r.text() : '').then(x => { const ul = document.getElementById('listaMudou'); if (!ul || !x) return;
-    const doc = new DOMParser().parseFromString(x, 'application/xml'); const lim = new Date(Date.now() - 7 * 86400000);
-    const itens = [...doc.getElementsByTagName('entry')].map(e => ({t: (e.getElementsByTagName('title')[0] || {}).textContent || '', d: (e.getElementsByTagName('updated')[0] || {}).textContent || '', l: (e.getElementsByTagName('link')[0] || {}).getAttribute ? e.getElementsByTagName('link')[0].getAttribute('href') : ''}))
-      .filter(i => new Date(i.d) >= lim).slice(0, 12);
-    ul.innerHTML = itens.length ? itens.map(i => '<li>' + i.d.slice(0, 10).split('-').reverse().join('/') + ' · ' + (i.l ? '<a href="' + i.l + '">' : '') + esc(i.t) + (i.l ? '</a>' : '') + '</li>').join('') : '<li>Nenhuma mudança verificada nos últimos sete dias.</li>'; }).catch(() => {});
+  // 16/09/2026 (pedido da editoria): "O que mudou" (feed + relDataAnterior) saiu da página — bloco removido.
   fetch('data/meta.json').then(r=>r.json()).then(m=>{ (document.getElementById('relCorte')||{}).textContent=m.corte||'—'; document.getElementById('relData').textContent=(m.atualizado_em||m.corte||'');
     (document.getElementById('relCorte2')||{}).textContent=m.corte||'—'; (document.getElementById('relData2')||{}).textContent=(m.atualizado_em||m.corte||'');
-    // relDataAnterior: sete dias antes do corte (não há registro do corte da edição anterior; proxy declarado)
-    const el = document.getElementById('relDataAnterior'); if (el && m.corte) { const [dd, mm, aa] = m.corte.split('/').map(Number); const d = new Date(aa, mm - 1, dd); d.setDate(d.getDate() - 7);
-      el.textContent = String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + d.getFullYear(); }
   }).catch(()=>{});
 })();
 
