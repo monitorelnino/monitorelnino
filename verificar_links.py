@@ -10,8 +10,16 @@ Para cada link, faz uma requisição HTTP e classifica:
   OK           — resposta 200-299
   REDIRECIONA  — 300-399 (registra o destino final)
   QUEBRADO     — 400-599 ou erro de conexão/timeout
-  (link nunca é removido automaticamente — só reportado; a regra de ouro
-   continua exigindo decisão humana sobre o que fazer com um link quebrado)
+  (o relatório nunca remove um link por conta própria — mas a partir de
+   15/09/2026 a decisão sobre o que fazer com cada QUEBRADO não fica mais
+   parada à espera de revisão humana por padrão: quem lê o relatório busca
+   confirmação independente — diretório oficial, busca, uma segunda fonte —
+   antes de agir. Muito QUEBRADO aqui é bloqueio de robô em cima de site vivo
+   (.gov.br costuma devolver 403/erro de SSL/timeout só para tráfego
+   automatizado, mesmo com User-Agent educado); ação só quando a evidência é
+   forte — domínio que não resolve, 404 num documento específico, domínio
+   comprovadamente abandonado ou substituído — nunca por um único QUEBRADO
+   isolado. Decidir com evidência é o trabalho; represar a decisão não é.)
 
 LIMITAÇÃO DE AMBIENTE (mesma de todo o resto do pipeline): o sandbox de edição
 tem rede restrita a um allowlist de pacotes; a maioria dos domínios aqui
@@ -248,8 +256,9 @@ def main():
             print(f"[FALHA] não foi possível verificar a rede: {e}")
 
     if todos_quebrados:
-        print(f"\n[ATENÇÃO] {len(todos_quebrados)} link(s) quebrado(s) — decisão humana necessária "
-              "(remover, substituir por link novo, ou manter nomeado sem link).")
+        print(f"\n[ATENÇÃO] {len(todos_quebrados)} link(s) quebrado(s) — confirme com uma fonte independente "
+              "antes de agir (muito .gov.br bloqueia tráfego automatizado sem estar fora do ar); com evidência "
+              "real, decida e corrija (substituir, remover, ou manter nomeado sem link).")
         return 1
     return 0
 

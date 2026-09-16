@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §70 · Três portais estaduais corrigidos com evidência, não deixados como "decisão humana pendente" · 15/09/2026
+
+Continuação do §69: a rodada de `verificar_links.py` sinalizou ~35 portais e documentos possivelmente quebrados; checar cada um contra uma fonte independente (diretório oficial do MIDR, busca) mostrou que a maioria é bloqueio de robô em site vivo (.gov.br devolve 403/erro de SSL/timeout a tráfego automatizado com frequência, confirmado comparando com sondas anteriores desta sessão que alcançaram os mesmos domínios). Três, porém, tinham evidência real — corrigidos em `data/contatos_uf.json` (fonte única; propaga a Proteja-se, Pesquisadores e ao mapa da inicial):
+
+- **RR**: `bombeiros.rr.gov.br` estava fora do ar — um resultado de busca mostra o domínio devolvendo conteúdo alheio (spam), sinal de domínio expirado. A Defesa Civil de Roraima está hoje no site do Corpo de Bombeiros Militar: `cbm.rr.gov.br`.
+- **PA**: o diretório oficial do MIDR nunca listou portal para o Pará; a URL usada (`defesacivil.pa.gov.br`) não existe. A Defesa Civil estadual está hospedada no site do Corpo de Bombeiros: `bombeiros.pa.gov.br/defesacivil/`.
+- **MS**: `defesacivil.ms.gov.br` voltou a responder — revertida a URL alternativa (`ms.gov.br/Geral/defesa-civil/`) usada quando o domínio original falhava numa checagem anterior.
+
+Erratas também: `assets/js/index.js` tinha um bug pré-existente na formatação do `tel:` de fallback (não removia parênteses/espaços do telefone quando a UF não tem portal — hoje só o RN).
+
+**Mudança de critério, a pedido da editoria**: `verificar_links.py` não trata mais "link quebrado" como decisão automaticamente parada para revisão humana — o padrão agora é buscar confirmação independente e decidir; a intervenção humana continua reservada para os casos em que a evidência disponível não permite uma decisão segura.
+
 ## §69 · Auditoria editorial de Pesquisadores e Para gestores: dado inventado removido, duas listas de portais viram uma, verificador de links corrigido · 15/09/2026
 
 Mesma pergunta feita para a Imprensa (§67–§68) — ordem, qualidade, links, atualidade — agora em Pesquisadores e em Para gestores.
