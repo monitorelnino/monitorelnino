@@ -15,6 +15,14 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §67 · Imprensa reformulada: release da edição, o que o MARÉ traz de novo, FAQ na ordem do site · 15/09/2026
+
+Nenhuma alteração de método. Classe **texto** (pedido da editoria).
+
+- **Release** reescrito para a edição 2026/2027 — pela primeira vez a preparação pública para um El Niño anunciado tem medida independente, verificável e aberta; dois números que nunca se somam; todo o país um a um; período eleitoral na conta; MARÉ Saúde e Financiamento. Números lidos ao vivo do dado: média e faixa, estados com plano do ciclo, planos municipais localizados, municípios sob decreto e reconhecidos, MARÉ Saúde e UFs verificadas, corte. Frase citável nova. Lê-se em coluna única.
+- **O que o MARÉ traz de novo**: quatro cartões (mede o que é conferível; dois números, nunca um; todo o país, um a um; reproduzível e aberto).
+- **Perguntas frequentes na ordem do site**: um cartão por página — MARÉ Legal, Monitor de risco, Proteja-se, Defesa civil, MARÉ Saúde, Financiamento (com "o que a lei deixa aberto", do dado), Para gestores e Pesquisadores — explicando pouco a pouco; substitui os cartões "Mede / Não mede / Como ler / Teto" e a lista única de perguntas. Como citar, O que mudou e Contato mantidos. Teto de palavras: 1.700.
+
 ## §66 · "Para prefeitos" vira "Para gestores": o caminho até o plano publicado, o que o plano precisa conter, como pedir recursos; o formulário de indicação migra para Pesquisadores · 15/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página + texto** (pedido da editoria: orientar o gestor na decisão; achar planos é tarefa do Monitor, não atribuição legal do município).
