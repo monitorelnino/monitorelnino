@@ -42,11 +42,19 @@ try:
     # (e) frase C18: arquivos e páginas com superfície do contador
     for p in (D / "resposta").glob("*.json"):
         if "art. 73, VI, a" not in p.read_text(encoding="utf-8"): erro(f"(e) frase C18 ausente em {p.name}")
-    for pg in ("index.html", "defesa-civil.html"):
+    # 16/09/2026 (handover da voz editorial): o ARTIGO de lei sai da narrativa das páginas — o FATO que a
+    # C18 protege (no período eleitoral as voluntárias param, as por decreto continuam) segue obrigatório
+    # em toda superfície do contador. Nos arquivos de dados (acima) o dispositivo continua citado, porque
+    # ali é governança, não tela. A frase da inicial é montada pelo JS da página, então o par HTML+JS conta.
+    FRASE_C18_TELA = "transferências voluntárias ficam suspensas"
+    for pg, js in (("index.html", "assets/js/index.js"), ("defesa-civil.html", "assets/js/defesa-civil.js")):
         f = RAIZ / pg
         if f.exists():
             t = f.read_text(encoding="utf-8")
-            if ("contadorResposta" in t or "resposta/por_uf" in t) and "art. 73, VI" not in t: erro(f"(e) {pg} exibe o contador sem a frase C18")
+            fjs = RAIZ / js
+            t_total = t + (fjs.read_text(encoding="utf-8") if fjs.exists() else "")
+            if ("contadorResposta" in t or "resposta/por_uf" in t) and FRASE_C18_TELA not in t_total:
+                erro(f"(e) {pg} exibe o contador sem a frase do defeso (C18)")
     # (f) frações
     pop = json.load(open(D / "populacao_censo2022.json", encoding="utf-8"))
     for uf, v in por["uf"].items():
