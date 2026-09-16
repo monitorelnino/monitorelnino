@@ -15,6 +15,24 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §74 · Imprensa reconstruída na voz descritiva; portão de voz cobre a prosa da página; duas correções de atualização · 16/09/2026
+
+A pedido do handover de 16/09: a página estava tecnicamente correta mas editorialmente errada — abria com juízo, explicava a política do site, avisava o leitor sobre o que não concluir. Reconstruída ponto a ponto na regra de `docs/VOZ_EDITORIAL.md`.
+
+**Release**: quatro parágrafos, todos os números lidos do dado (nenhuma contagem escrita à mão, além de 27, 5.571, 29 de junho e 26 de outubro), sem adjetivo, sem "só/apenas", sem interrogação, sem artigo de lei, sem frase que explique o site. Campo vazio omite a frase inteira, nunca imprime "—".
+
+**Campos novos em `assets/js/imprensa.js`**: `relReconhecidos`, `relPrimeiroDecreto`, `relPopMilhoes`, `relSuspensas` (`calendario/fontes_suspensas.json`), `relDataAnterior` (sete dias antes do corte — proxy declarado, não há registro do corte anterior). `relQ1`/`relQ3` (estados com índice ≥ 50 ou < 50, e mais de 5% dos municípios sob decreto) **ficam como contagem agregada, nunca nomeando qual estado** — o handover original media índice × decreto por UF como o `resposta/quadrantes.json` já removido em §73; mantive o espírito (o cruzamento) sob a regra que já vale para o resto do site (§73): sem posição nomeada.
+
+**Estrutura**: "O que mudou" retitulado com a data da edição anterior; "O que o MARÉ mostra" (capacidade, sem "inédito"/"pela primeira vez"); "Como ler" com uma linha e link para a ficha da home (a lista antiga de ressalvas saiu — mora na ficha); FAQ reduzido a seis perguntas de fato sobre a lei (única parte da página onde citar artigo é o próprio conteúdo); "Como citar" simplificado a uma frase-modelo + licença; "Calendário" compacto (`marcos_ciclo.json`); "O que a lei deixa aberto" em duas colunas — não suspenso e suspenso, este último novo, lido de `dispositivos.json` (itens sem descrição de bloqueio na fonte ficam de fora da lista, não aparecem como traço vazio).
+
+**Duas correções de atualização encontradas na conferência:**
+- O `aria-label` do medidor do herói (`index.html`) já era reescrito por `recalcular_mare.py` desde 03/09 — o handover estava desatualizado nesse ponto. Reforcei mesmo assim: `verificar_runtime.js` ganha um teste de paridade entre `aria-label` e `data-alvo`.
+- `data/marcos_ciclo.json` citava "Monitor El Niño Brasil" (nome anterior à troca de marca de 06/09, §56) num campo `fonte`; corrigido para "MARÉ".
+
+**Portão novo — `verificar_legendas.js`, prosa da Imprensa**: a mesma regra das legendas (léxico avaliativo, interpretativo, causal, teto probatório) mais quatro checagens da prosa corrida — "só/apenas" como juízo, interrogação, artigo de lei fora do FAQ e da nota do defeso, "denuncia/expõe". Teste negativo executado e restaurado. No caminho, um bug real: a checagem de "só/apenas" usava `\b`, que não reconhece fronteira de palavra em "só" (o "ó" não é `\w` em regex JavaScript sem a flag Unicode) — nunca teria pego o próprio caso que a motivou; corrigido.
+
+Pendente para a rodada seguinte (explicitamente adiado pelo handover): cartão social por página (§2.2).
+
 ## §73 · Removida toda comparação/ranking entre municípios e estados — nota, saúde, resposta e financiamento · 16/09/2026
 
 A pedido da editoria, no MARÉ Legal e em qualquer outra página que comparasse um município ou estado contra outro ou contra uma média: o índice mede o que cada um publicou, sozinho — nunca a posição que ocupa frente aos demais.

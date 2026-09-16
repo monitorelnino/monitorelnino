@@ -93,6 +93,14 @@ setTimeout(() => {
     const alvo = parseFloat(q("gaugeFill").dataset.alvo); const num = (q("gaugeNum").textContent || "").replace(",", ".");
     return Math.abs(alvo - media) < 0.05 && q("gaugeFill").style.width === alvo + "%";
   })());
+  // 16/09/2026 (handover §2.1): recalcular_mare.py reescreve gaugeNum e data-alvo desde 03/09 — este
+  // teste garante que o aria-label (paridade de acessibilidade) nunca fica para trás dos dois.
+  teste("medidor do herói: aria-label com o mesmo número de data-alvo (paridade de acessibilidade)", (() => {
+    const alvo = q("gaugeFill").dataset.alvo; const alvoFmt = parseFloat(alvo).toFixed(1).replace(".", ",");
+    const trilho = q("gaugeFill").closest(".gauge-track");
+    const rotulo = trilho && trilho.getAttribute("aria-label");
+    return !!rotulo && rotulo.includes(`em ${alvoFmt} de 100`);
+  })());
   teste("linguagem: município não verificado diz 'Ainda não verificamos'", cardNV.includes("Ainda não verificamos"));
     teste("linguagem: município não verificado NÃO diz 'Não localizamos'", !/[Nn]ão localizamos/.test(cardNV));
   } catch (e) { teste("portão de linguagem v2.2.4", false); }
