@@ -39,7 +39,7 @@
   <header class="masthead masthead--mini">
     <div class="mast-top">
       <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
-      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">MARÉ Legal</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Monitor de risco</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">MARÉ Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="prefeituras.html">Para gestores</a><i class="nav-sep" aria-hidden="true"></i><a href="imprensa.html">Imprensa</a><span class="ativa" aria-current="page">Pesquisadores</span></nav>
+      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">MARÉ · Defesa civil</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Monitor de risco</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><a href="defesa-civil.html">Defesa civil</a><a href="saude.html">MARÉ Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="prefeituras.html">Para gestores</a><i class="nav-sep" aria-hidden="true"></i><a href="imprensa.html">Imprensa</a><span class="ativa" aria-current="page">Pesquisadores</span></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     <p class="site-title">MARÉ</p>
@@ -55,7 +55,7 @@
         <li><strong>Consulta rápida.</strong> Na página inicial, escolha o estado no mapa ou digite sua cidade em "Encontre sua cidade": o cartão diz o que foi localizado, com documento, data e fonte, e o que ainda não foi verificado. O botão de PDF gera um relatório do estado ou da cidade.</li>
         <li><strong>Dados abertos.</strong> Pasta <a href="dados-abertos/">dados-abertos/</a>: índice por estado, instrumentos estaduais, registros municipais, atos de resposta, histórico de mudanças, verificação municipal (5.571), painel amostral e saúde — em CSV com dicionário (datapackage.json). Tudo o que está no site sai daqui.</li>
         <li><strong>Feeds.</strong> Atom por estado e nacional (<a href="feeds/">feeds/</a>): cada mudança verificada vira um evento datado — instrumento novo, reclassificação com errata, reconhecimento federal. Assine o do seu estado para receber o que muda.</li>
-        <li><strong>Selos embutíveis.</strong> Um selo SVG por estado e um nacional (<a href="selos/">selos/</a>), gerados a partir do índice a cada atualização — embuta com o link para o site; ele nunca mostra número diferente do publicado.</li>
+        <li><strong>Selos embutíveis.</strong> Um selo SVG por estado e um nacional (<a href="selos/">selos/</a>), gerados a partir do índice a cada atualização — embuta com o link para o site; ele mostra o número publicado.</li>
         <li><strong>Metodologia e código.</strong> A metodologia completa (<a href="METODOLOGIA.pdf">PDF</a>) e a documentação do índice (<a href="MARE_Indice_Documentacao.pdf">PDF</a>) são públicas; o código e os dados estão em repositório aberto com histórico de toda mudança e errata pública.</li>
         <li><strong>Cadência.</strong> Atualização automática semanal (segundas, 6h de Brasília), com uma semana de atualização diária logo após cada edição. Não é tempo real: cada figura mostra a data da consulta à fonte.</li>
       </ul>
@@ -133,7 +133,7 @@
           <p class="note">Os <span id="fontesFederaisCount">—</span> registros federais completos constam do banco de dados do projeto e do documento metodológico.</p>
         </div>
         <div>
-          <p class="note"><strong>Fontes oficiais consultadas pela rotina automática:</strong> DOU — portarias SEDEC/MIDR de reconhecimento (atos de resposta, peso zero) · diários oficiais dos 27 estados e diários municipais (via Querido Diário, cobertura declarada por UF) · MUNIC/IBGE e ICM/SEDEC (camada declarada, simulada; vigência 26/10/2026) · Painel de Arboviroses/MS e modelo InfoDengue (Fiocruz/FGV), INMET e INPE (página de Saúde) · pedidos de acesso à informação (registro público em Para gestores). Fonte não confirmada aparece como lacuna, nunca como número.</p>
+          <p class="note"><strong>Fontes oficiais consultadas pela rotina automática:</strong> DOU — portarias SEDEC/MIDR de reconhecimento (atos de resposta, peso zero) · diários oficiais dos 27 estados e diários municipais (via Querido Diário, cobertura declarada por UF) · MUNIC/IBGE e ICM/SEDEC (camada declarada, simulada; vigência 26/10/2026) · Painel de Arboviroses/MS e modelo InfoDengue (Fiocruz/FGV), INMET e INPE (página de Saúde) · pedidos de acesso à informação (registro público em Para gestores). Fonte não confirmada aparece como lacuna.</p>
           <h3>Plataformas oficiais de monitoramento</h3>
           <ul class="fontes-list" id="fontesMonitoramento"></ul>
         </div>
@@ -192,7 +192,7 @@
       <h2 id="fontes-sinais">Fontes dos sinais de risco</h2>
       <p class="hint">Organizadas em três camadas: o <strong>ciclo</strong> (o que se projeta para o período), o <strong>observado</strong> (o que os sistemas de monitoramento registram agora) e o <strong>ENOS</strong> (o estado do fenômeno no Pacífico). Cada linha diz o que a fonte informa, quando foi consultada e para onde ir conferir.</p>
       <div class="tbl-wrap tbl-wrap--livre" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFontes"><thead><tr><th>Fonte</th><th>Órgão</th><th>O que informa</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
-      <p class="note u-mt-3 u-mb-0">Imprensa e agregadores de terceiros não aparecem nesta tabela: servem para descobrir um documento; o registro é sempre a fonte oficial.</p>
+      <p class="note u-mt-3 u-mb-0">Imprensa e agregadores de terceiros não aparecem nesta tabela: servem para descobrir um documento; o registro é a fonte oficial.</p>
     </div>
   </details>
 
@@ -293,7 +293,7 @@
   <footer class="site-footer">
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span class="rodape-linha">MARÉ · Medida de Antecipação e Resposta ao El Niño · Dados verificados em fontes primárias · Metodologia aberta (v3.1)</span>
+    <span class="rodape-linha">MARÉ · Medida de Antecipação e Resposta ao El Niño</span>
     <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>

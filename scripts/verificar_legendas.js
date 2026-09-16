@@ -93,25 +93,48 @@ function renderizar(pagina) {
       if (a.length) falhas.push(`assets/js/${f} › tooltip: ${a.join(" · ")} — "${literais.replace(/\s+/g, " ").trim().slice(0, 90)}"`);
     }
   }
-  // 16/09/2026 (handover §2.3): a prosa da Imprensa (release, "o que o MARÉ mostra", "kit e contato") segue a
-  // MESMA regra das legendas — descreve, não avalia nem interpreta — mais quatro checagens próprias desse
-  // texto corrido: "só/apenas" como juízo diminutivo, interrogação (a prosa não faz pergunta ao leitor),
-  // "denuncia/expõe" (revela já está no léxico interpretativo), e artigo de lei fora do FAQ e da nota "O que a
-  // lei deixa aberto" (únicos lugares da página onde citar a lei é o próprio conteúdo, não explicação de tela).
+  // 16/09/2026 (handover da voz editorial, §10): a regra sai das legendas e passa a valer para TODA a prosa
+  // das páginas de dados — p, li, dd, summary e o conteúdo das fichas/dialogs. A prosa descreve o que a
+  // página mostra; não explica a política do site, não corrige uma leitura que o leitor não fez, não narra
+  // o processo. Além do léxico das legendas (avaliativo/interpretativo/causal/teto), sete checagens próprias
+  // do texto corrido. Duas exceções por atributo, declaradas no HTML:
+  //   data-voz="ficha" — a ficha "Como ler" de cada página: é o lugar onde a ressalva metodológica mora.
+  //   data-voz="lei"   — blocos cujo conteúdo É a lei (FAQ da Imprensa, blocos legais do Calendário).
   {
-    const domImp = renderizar("imprensa.html"); await new Promise(r => setTimeout(r, 2200)); const dImp = domImp.window.document;
+    const PAGINAS_PROSA = ["index.html", "sinais-de-risco.html", "defesa-civil.html", "saude.html",
+      "financiamento.html", "calendario-eleitoral.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
     // "\bsó\b" não funciona: "ó" não é \w em regex JS sem a flag Unicode, então a fronteira de palavra depois
     // de "só" não fecha — nunca teria pego o próprio caso ("Só — dos 27 estados…") que motivou esta checagem.
-    const SO_APENAS = /(?:^|[^a-zà-ÿ])(só|apenas)(?:[^a-zà-ÿ]|$)/i, INTERR = /\?/, LEI = /\bLei\s+\d|\bart\.\s?\d|\bDecreto\s+\d|\bADPF\s+\d/i, DENUNCIA = /\bdenuncia(m)?\b|\bexpõe(m)?\b/i;
-    dImp.querySelectorAll("#release p, #mostra li, #kit p, #citar p").forEach(e => {
-      const s = t(e); if (!s) return; elementos++;
-      const a = classificar(s);
-      if (SO_APENAS.test(s)) a.push('"só/apenas"');
-      if (INTERR.test(s)) a.push("interrogação");
-      if (LEI.test(s)) a.push("artigo de lei fora do FAQ/nota do defeso");
-      if (DENUNCIA.test(s)) a.push('"denuncia/expõe"');
-      if (a.length) falhas.push(`imprensa.html › prosa (${e.closest("[id]").id}): ${a.join(" · ")} — "${s.slice(0, 90)}"`);
-    });
+    const ENFASE = /(?:^|[^a-zà-ÿ])(só|apenas|única|único|nunca|sempre)(?:[^a-zà-ÿ]|$)/i;
+    const INTERR = /\?/;
+    const LEI = /\bLei\s+\d|\bart\.\s?\d|\bDecreto\s+\d|\bADPF\s+\d/i;
+    const DENUNCIA = /\bdenuncia(m)?\b|\bexpõe(m)?\b/i;
+    const AUTORREF = /\bo Monitor não\b|\bo site não\b|não é um ranking|não comparável|não atribui|peso zero/i;
+    const PROCESSO = /carregando/i;
+    // traço-VAZIO (valor que não carregou), não travessão entre palavras: "—" no fim ou só com pontuação
+    // depois. "Avisou — El Niño forte — com seca" passa; "Corte dos dados: —" falha.
+    const TRACO = /(?:^|[\s:(])—\s*(?:[.,;)]|$)/;
+    const GLOSSARIO = [/arcabouço público/i, /instrumentos? ex-ante/i, /escada da §/i, /faixas do site/i,
+      /canal endêmico/i, /painel amostral/i, /última SE\b/i, /MARÉ Legal/i, /\bLAI\b/i];
+    for (const pagina of PAGINAS_PROSA) {
+      const domP = renderizar(pagina); await new Promise(r => setTimeout(r, 2200)); const dP = domP.window.document;
+      dP.querySelectorAll("main p, main li, main dd, main summary, dialog p, dialog li").forEach(e => {
+        if (e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]')) return;   // exceções declaradas
+        if (e.closest(".figura")) return;                                                // já coberto acima
+        if (e.querySelector("p, li")) return;                                            // só as folhas
+        const s = t(e); if (!s || s.length < 12) return; elementos++;
+        const a = classificar(s);
+        if (ENFASE.test(s)) a.push('ênfase "só/única/nunca/sempre"');
+        if (INTERR.test(s)) a.push("interrogação");
+        if (LEI.test(s)) a.push("artigo de lei fora da ficha/bloco legal");
+        if (DENUNCIA.test(s)) a.push('"denuncia/expõe"');
+        if (AUTORREF.test(s)) a.push("o site falando de si (vai para a ficha)");
+        if (PROCESSO.test(s)) a.push('processo narrado ("carregando")');
+        if (TRACO.test(s)) a.push('"—" em frase corrida (use "sem coleta até {corte}")');
+        for (const re of GLOSSARIO) { const m = s.match(re); if (m) a.push(`glossário: "${m[0]}"`); }
+        if (a.length) { const alvo = e.closest("[id]"); falhas.push(`${pagina} › prosa (${alvo ? alvo.id : "?"}): ${a.join(" · ")} — "${s.slice(0, 90)}"`); }
+      });
+    }
   }
   if (listar) console.log(`  ${figuras} figuras · ${elementos} textos verificados`);
   if (falhas.length) {

@@ -189,7 +189,7 @@ def gerar() -> int:
                             "focos_24h": ((sig.get("fogo") or {}).get("focos_24h"))},
             "risco_projetado": u.get("risco_sanitario_projetado") or [],
         }
-    # 15/09/2026 (MARÉ Saúde espelha o MARÉ Legal): RESPOSTA sanitária como índice 0–100 = 100 × população (Censo 2022)
+    # 15/09/2026 (MARÉ Saúde espelha o MARÉ · Defesa civil): RESPOSTA sanitária como índice 0–100 = 100 × população (Censo 2022)
     # dos estados com emergência sanitária declarada no ciclo (ESPIN federal ou decreto estadual, saude_sinais.emergencias)
     # sobre a população do país; contagem ao lado. Zero de verdade enquanto nenhuma for localizada — nunca imputado.
     pop_censo = ler("populacao_censo2022.json", {}) or {}

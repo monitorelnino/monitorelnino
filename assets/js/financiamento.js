@@ -74,6 +74,9 @@ async function __load(){
 function __init(){
   MonitorMapas.padraoGraficos(window.Chart);
   document.getElementById('corteFin').textContent = ROTAS.corte || '—';
+  // 16/09/2026 (handover da voz, D3): o mapa por município do fogo ainda não tem coleta — a frase diz
+  // "sem coleta até {corte}" com a data real, em vez de um traço solto no meio do texto.
+  { const e = document.getElementById('notaFogoCorte'); if (e) e.textContent = ROTAS.corte || 'o corte'; }
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
   function desenharMapa(svgId, legendaId, corDe, rotuloDe, itens){ const svg = MonitorMapas.ufs(ctx, svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itens); return svg; }
   // 1 · rede do dinheiro (decisão de design de 03/09/2026: rede em vez de cartões; cartões ficam em texto dobrável)

@@ -63,7 +63,7 @@ setTimeout(() => {
   try {
     teste("home sem atalhos .hero-links; link 'como ler o MARÉ' abaixo da barra", d.querySelectorAll(".hero-links").length === 0 && !!d.querySelector(".gauge-zone #linkComoLer") && q("linkComoLer").textContent === "como ler o MARÉ");
     q("linkComoLer").dispatchEvent(new dom.window.MouseEvent("click", { bubbles: true, cancelable: true }));
-    teste("clique abre a ficha 'Como ler o MARÉ' no dialog", q("detail").open && /Como ler o MARÉ/.test(q("detailConteudo").textContent) && /O que não mede/.test(q("detailConteudo").textContent));
+    teste("clique abre a ficha 'Como ler o MARÉ' no dialog", q("detail").open && /Como ler o MARÉ/.test(q("detailConteudo").textContent) && /O que o índice não conta/.test(q("detailConteudo").textContent));
     q("detailFechar").dispatchEvent(new dom.window.Event("click", { bubbles: true }));
     teste("fechar pelo × devolve o estado inicial", !q("detail").open);
     // 14/09 (auditoria §1.6): o calendário volta à home só como "porta" explicativa, nunca como o antigo atalho "o que a lei deixa aberto"
@@ -194,7 +194,10 @@ setTimeout(() => {
   const nLAC = Object.values(INDICE).filter(v => v.status_estadual === "LAC").length;
   // 14/09/2026 (auditoria §2.1–§2.4, §2.7): título-fato, interpretações com números do dado, três números, "O que vem"
   // 15/09/2026 (pedido da editoria): sem h2 no herói, sem botão "Consultar seu município"; o subtítulo do cabeçalho traz o escopo e o corte
-  teste("home: herói sem h2 e sem botão de consulta; subtítulo único com municípios e corte", !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]') && /27 estados e de [\d.]+ municípios\. Dados até \d{2}\/\d{2}\/\d{4}\./.test(d.querySelector(".site-sub").textContent));
+  // 16/09/2026 (handover da voz editorial, §2.1/D2): o subtítulo foi reescrito — a identidade
+  // ("verificação independente, em fontes oficiais") aparece uma única vez, aqui, e a frase segue
+  // trazendo os 27 estados, o total de municípios e o corte.
+  teste("home: herói sem h2 e sem botão de consulta; subtítulo único com municípios e corte", !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]') && /27 estados e os [\d.]+ municípios/.test(d.querySelector(".site-sub").textContent) && /Dados até \d{2}\/\d{2}\/\d{4}\./.test(d.querySelector(".site-sub").textContent));
   // 15/09/2026: a linha de interpretação do medidor (contagens por categoria) saiu da inicial (pedido da editoria).
   teste("contador: interpretação com municípios, milhões, primeiro decreto e aceitos", /municípios, [\d,]+ milhões.*Primeiro decreto do ciclo: \d{2}\/\d{2}\/\d{4}.*aceitos pelo governo federal/.test(q("interpResposta").textContent));
   teste("home sem os três cartões, sem a nota do período eleitoral e sem o bloco 'escondeu' (15/09/2026)", !q("tres") && !q("notaDefeso") && !q("blocoPosDefeso") && !q("n1Anunciado"));

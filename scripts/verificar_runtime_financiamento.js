@@ -118,7 +118,10 @@ setTimeout(() => {
     teste("fogo: frase de não-existência só porque só há linha de incêndio", /não existe rota equivalente para seca nem para chuva/.test(q("fogoTitulo").textContent) === (rp.riscos_com_rota_preventiva.length === 1 && rp.riscos_com_rota_preventiva[0] === "incendio"));
     teste("fogo: um cartão por rota preventiva", q("fogoRotasCards").children.length === rp.rotas.length);
     const temFogo = fs.existsSync(path.join(raiz, "data", "financiamento", "fogo", "areas_declaradas.json"));
-    teste("fogo: sem mapa até a resposta da LAI — nota no lugar", !q("boxFogoMapa") && /pedido de acesso à informação/.test(q("notaFogoMapa").textContent));
+    // 16/09/2026 (handover da voz editorial, §6 + D3): o mapa por município do fogo continua ausente e a nota
+    // continua obrigatória no lugar dele — mas sem mencionar o pedido de acesso à informação (decisão de
+    // 03/09: LAI não aparece no site) e sem traço solto: a frase declara a lacuna com a data do corte.
+    teste("fogo: sem mapa, com a lacuna declarada no lugar", !q("boxFogoMapa") && /sem coleta até \d{2}\/\d{2}\/\d{4}/.test(q("notaFogoMapa").textContent));
     teste("fogo: crédito dos cartões", /Fonte:/.test(q("fogoRotasFonte").textContent));
   } catch (e) { teste("fogo: bloco (" + e.message + ")", false); }
   // 15/09/2026 (§1.7/§1.6): "O que a União prometeu — e o que pagou" de volta a Financiamento, com a quarta porta para o calendário
