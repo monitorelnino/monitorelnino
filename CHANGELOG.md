@@ -15,6 +15,14 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §71 · "Indique um documento publicado" migra para o fim do MARÉ Legal, com legenda que diz para que serve · 16/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página** (pedido da editoria).
+
+- O formulário sai de Pesquisadores e vira a última seção da página inicial (depois de "Risco projetado × estágio do arcabouço público", antes do rodapé) — mecanismo (Netlify Forms, lista de municípios por UF, degradação em prévia local) migrado inteiro, sem reescrever.
+- **Legenda reescrita** para dizer com clareza o que o campo é e quando usá-lo: "Sabe de um município ou estado que tem plano publicado e o Monitor ainda não encontrou? Envie o documento oficial — com número, data e endereço em sítio público ou diário oficial — e ele entra na fila de verificação (...). Achar os planos publicados é tarefa do Monitor, não das prefeituras — mas qualquer pessoa pode ajudar a encontrar um que ainda esteja fora do nosso radar."
+- Para gestores aponta para o novo endereço (`index.html#formulario`); portão de ordem da home (`verificar_runtime.js`) passa a exigir "indique um documento" como a última seção, depois do cruzamento risco × estágio. Teto de palavras da inicial: 950.
+
 ## §70 · Três portais estaduais corrigidos com evidência, não deixados como "decisão humana pendente" · 15/09/2026
 
 Continuação do §69: a rodada de `verificar_links.py` sinalizou ~35 portais e documentos possivelmente quebrados; checar cada um contra uma fonte independente (diretório oficial do MIDR, busca) mostrou que a maioria é bloqueio de robô em site vivo (.gov.br devolve 403/erro de SSL/timeout a tráfego automatizado com frequência, confirmado comparando com sondas anteriores desta sessão que alcançaram os mesmos domínios). Três, porém, tinham evidência real — corrigidos em `data/contatos_uf.json` (fonte única; propaga a Proteja-se, Pesquisadores e ao mapa da inicial):

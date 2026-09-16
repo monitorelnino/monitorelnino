@@ -172,6 +172,39 @@
     </div>
   </div>
 
+
+  <div class="panel" id="formulario">
+    <h2>Indique um documento publicado</h2>
+    <p class="hint">Sabe de um município ou estado que tem plano publicado e o Monitor ainda não encontrou? Envie o documento oficial — com número, data e endereço em sítio público ou diário oficial — e ele entra na fila de verificação: cada indicação é conferida contra a fonte antes de entrar no banco, na atualização seguinte. Achar os planos publicados é tarefa do Monitor, não das prefeituras — mas qualquer pessoa pode ajudar a encontrar um que ainda esteja fora do nosso radar.</p>
+    <form name="contribuicao" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" id="formContrib">
+      <input type="hidden" name="form-name" value="contribuicao">
+      <p hidden aria-hidden="true"><label>Não preencha este campo: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="contrib-grid">
+        <label class="fld">Estado<select name="uf" id="cUF" required><option value="">Selecione…</option>
+          <option value="AC">Acre (AC)</option><option value="AL">Alagoas (AL)</option><option value="AP">Amapá (AP)</option><option value="AM">Amazonas (AM)</option><option value="BA">Bahia (BA)</option><option value="CE">Ceará (CE)</option><option value="DF">Distrito Federal (DF)</option><option value="ES">Espírito Santo (ES)</option><option value="GO">Goiás (GO)</option><option value="MA">Maranhão (MA)</option><option value="MT">Mato Grosso (MT)</option><option value="MS">Mato Grosso do Sul (MS)</option><option value="MG">Minas Gerais (MG)</option><option value="PR">Paraná (PR)</option><option value="PB">Paraíba (PB)</option><option value="PA">Pará (PA)</option><option value="PE">Pernambuco (PE)</option><option value="PI">Piauí (PI)</option><option value="RN">Rio Grande do Norte (RN)</option><option value="RS">Rio Grande do Sul (RS)</option><option value="RJ">Rio de Janeiro (RJ)</option><option value="RO">Rondônia (RO)</option><option value="RR">Roraima (RR)</option><option value="SC">Santa Catarina (SC)</option><option value="SE">Sergipe (SE)</option><option value="SP">São Paulo (SP)</option><option value="TO">Tocantins (TO)</option>
+        </select></label>
+        <label class="fld">Município<input type="text" name="municipio" id="cMunicipio" list="listaMunEnvio" required autocomplete="off" placeholder="Selecione o estado para ver a lista"></label><datalist id="listaMunEnvio"></datalist>
+        <label class="fld">O que você está enviando<select name="tipo" id="cTipo" required>
+          <option value="plano">Plano de contingência publicado (deste ciclo)</option>
+          <option value="plano_elaboracao">Plano em elaboração (anúncio ou minuta oficial)</option>
+          <option value="plano_antigo">Plano de ciclos anteriores ainda vigente</option>
+          <option value="ato_antecipatorio">Decreto ou ato antecipatório (alerta, mobilização, operação sazonal)</option>
+          <option value="decreto">Decreto de emergência ou calamidade (resposta)</option>
+          <option value="plano_saude">Plano de contingência de saúde (arboviroses, calor, emergências sanitárias)</option>
+          <option value="outro_ato">Portaria, levantamento oficial ou outro ato</option>
+          <option value="correcao">Correção de um dado já publicado</option>
+        </select></label>
+        <p class="hint fld-full u-mb-0">Decreto publicado antes do dano, com base em previsão ou boletim: antecipatório. Decreto que declara emergência por dano ocorrido: resposta.</p>
+        <label class="fld">Número e data do ato<input type="text" name="numero_data" placeholder="Ex.: Decreto nº 123, de 15/07/2026"></label>
+        <label class="fld fld-full">Link do documento em fonte oficial<input type="url" name="link_oficial" required placeholder="https://…"></label>
+        <label class="fld fld-full">Observações (opcional)<textarea name="observacoes" rows="3"></textarea></label>
+        <label class="fld fld-full">Seu e-mail (opcional, nunca publicado)<input type="email" name="email_contato"></label>
+        <p class="note fld-full u-mb-0">Dados pessoais: fluxo descrito no registro público de privacidade do repositório (docs/LGPD_PRIVACIDADE.md).</p>
+      </div>
+      <button type="submit" class="btn">Enviar para a fila de verificação</button>
+      <p class="note u-mt-2 u-mb-0" id="contribOffline"></p>
+    </form>
+  </div>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -182,7 +215,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/index.js?v=d7a1e942" defer></script>
+<script src="assets/js/index.js?v=62cd9264" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
