@@ -93,6 +93,26 @@ function renderizar(pagina) {
       if (a.length) falhas.push(`assets/js/${f} › tooltip: ${a.join(" · ")} — "${literais.replace(/\s+/g, " ").trim().slice(0, 90)}"`);
     }
   }
+  // 16/09/2026 (handover §2.3): a prosa da Imprensa (release, "o que o MARÉ mostra", "kit e contato") segue a
+  // MESMA regra das legendas — descreve, não avalia nem interpreta — mais quatro checagens próprias desse
+  // texto corrido: "só/apenas" como juízo diminutivo, interrogação (a prosa não faz pergunta ao leitor),
+  // "denuncia/expõe" (revela já está no léxico interpretativo), e artigo de lei fora do FAQ e da nota "O que a
+  // lei deixa aberto" (únicos lugares da página onde citar a lei é o próprio conteúdo, não explicação de tela).
+  {
+    const domImp = renderizar("imprensa.html"); await new Promise(r => setTimeout(r, 2200)); const dImp = domImp.window.document;
+    // "\bsó\b" não funciona: "ó" não é \w em regex JS sem a flag Unicode, então a fronteira de palavra depois
+    // de "só" não fecha — nunca teria pego o próprio caso ("Só — dos 27 estados…") que motivou esta checagem.
+    const SO_APENAS = /(?:^|[^a-zà-ÿ])(só|apenas)(?:[^a-zà-ÿ]|$)/i, INTERR = /\?/, LEI = /\bLei\s+\d|\bart\.\s?\d|\bDecreto\s+\d|\bADPF\s+\d/i, DENUNCIA = /\bdenuncia(m)?\b|\bexpõe(m)?\b/i;
+    dImp.querySelectorAll("#release p, #mostra li, #kit p, #citar p").forEach(e => {
+      const s = t(e); if (!s) return; elementos++;
+      const a = classificar(s);
+      if (SO_APENAS.test(s)) a.push('"só/apenas"');
+      if (INTERR.test(s)) a.push("interrogação");
+      if (LEI.test(s)) a.push("artigo de lei fora do FAQ/nota do defeso");
+      if (DENUNCIA.test(s)) a.push('"denuncia/expõe"');
+      if (a.length) falhas.push(`imprensa.html › prosa (${e.closest("[id]").id}): ${a.join(" · ")} — "${s.slice(0, 90)}"`);
+    });
+  }
   if (listar) console.log(`  ${figuras} figuras · ${elementos} textos verificados`);
   if (falhas.length) {
     console.log("✗ LEGENDAS: texto de figura com juízo, interpretação, causa não demonstrada, afirmação acima do teto ou fora do tamanho:");
