@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
-<link rel="stylesheet" href="assets/base.css?v=0a0d62aa">
+<link rel="stylesheet" href="assets/base.css?v=7ba62840">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -46,30 +46,52 @@
 <main id="conteudo">
   <p class="selo">Imprensa · kit de uso · contato: imprensa@futuraevidencelab.com.br</p>
   <h1>Para jornalistas</h1>
-  <p class="hint">Release da edição, o que o MARÉ traz de novo, perguntas na ordem em que o site conta a história, como citar e contato. Números lidos ao vivo dos dados publicados. <strong>"Não localizamos" nunca vira "não existe."</strong></p>
+  <p class="hint">Release da edição, o que se aprende com o Monitor e o que ele entrega, perguntas na ordem em que o site conta a história, como citar e contato. Números lidos ao vivo dos dados publicados. <strong>"Não localizamos" nunca vira "não existe."</strong></p>
 
   <div class="panel panel--acento-musgo" id="release">
     <h2>Release da edição 2026/2027</h2>
-    <div class="cartao">
-      <h3 class="figura-titulo">O El Niño tem data. A preparação do Brasil, agora, tem medida: <span id="relMedia">—</span> em 100</h3>
-      <p class="note">Texto pronto para uso, com a mesma cautela probatória do site; números lidos ao vivo dos dados. Dados até <span id="relCorte">—</span>.</p>
-      <div class="bloco-citacao" id="releaseTexto">
-        <p><strong>Brasília, <span id="relData">—</span></strong> — Pela primeira vez, a preparação pública do país para um El Niño anunciado tem uma medida independente, verificável e aberta. O <strong>MARÉ · Medida de Antecipação e Resposta ao El Niño</strong>, do Futura Evidence Lab, leu um a um os documentos que os 27 estados e os 5.571 municípios publicaram — ou não — desde que o Painel El Niño confirmou o ciclo 2026/2027, em 29 de junho. O resultado: a média dos estados na antecipação é <strong><span id="relMedia2">—</span> em 100</strong>, faixa "<span id="relFaixa">—</span>"; <strong><span id="relNovo">—</span> estados</strong> publicaram plano feito para este ciclo; <strong><span id="relPlanosMun">—</span> planos municipais</strong> foram localizados em fonte oficial.</p>
-        <p>O MARÉ faz o que nenhum painel oficial faz: <strong>separa preparação de resposta e nunca soma as duas</strong>. De um lado, o que foi publicado antes — plano, decreto de mobilização, estrutura de coordenação, com número, data e endereço. De outro, o que foi decretado depois: <strong><span id="relDecretados">—</span> municípios</strong> (<span id="relPop">—</span> da população) sob decreto de emergência desde o início do ciclo, <span id="relReconhecidos">—</span> deles reconhecidos pela União. Um número não corrige o outro.</p>
-        <p>Cada afirmação tem documento, data e endereço; o que não está público e verificável entra como "não localizado até o corte" — nunca como "sem plano". O período eleitoral (04/07–25/10) está na conta: a lei suspende transferências voluntárias e tira sítios do ar, e o Monitor registra o que ficou provisório. A mesma medida se aplica à saúde (MARÉ Saúde: <span id="relSaude">—</span> em 100 nas <span id="relSaudeN">—</span> secretarias estaduais verificadas), e a página Financiamento mostra por onde o dinheiro chega — e qual chave abre cada rota. Tudo é atualizado por rotina automática, com histórico e erratas públicas; dados, metodologia e código são abertos (CC BY 4.0 e MIT).</p>
-        <p><strong>A frase citável:</strong> "Preparação que não foi publicada não cumpriu o rito e não pode ser conferida — o MARÉ mede exatamente isso, sem afirmar que ela não existe."</p>
-        <p>Contato: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>.</p>
-      </div>
+    <div class="release" id="releaseTexto">
+      <p class="selo">Brasília, <span id="relData">—</span> · dados até <span id="relCorte">—</span> · texto pronto para uso, números lidos ao vivo do dado</p>
+      <h3 class="release-titulo">Só <span id="relNovo">—</span> dos 27 estados publicaram um plano feito para o El Niño 2026/2027 — e a lei eleitoral fechou a torneira das transferências antes que a maioria se preparasse</h3>
+      <p class="release-sub">Primeira medida independente da preparação pública do país para um El Niño anunciado lê um a um os documentos dos 27 estados e dos 5.571 municípios: média de <span id="relMedia2">—</span> em 100, <span id="relPlanosMun">—</span> planos municipais localizados, <span id="relDecretados">—</span> municípios já sob decreto de emergência — e um período eleitoral que suspendeu as transferências voluntárias justamente na janela de preparação.</p>
+      <p><strong>O que aconteceu.</strong> O Painel El Niño confirmou o ciclo 2026/2027 em 29 de junho. Desde então, o <strong>MARÉ · Medida de Antecipação e Resposta ao El Niño</strong>, do Futura Evidence Lab, verifica toda semana o que estados e municípios publicaram em diário oficial e sítios oficiais — plano de contingência, decreto de mobilização, estrutura de coordenação — e o que decretaram depois do dano. Nesta edição, a média dos 27 estados na antecipação é <strong><span id="relMedia">—</span> em 100</strong> ("<span id="relFaixa">—</span>"). <strong><span id="relNovo2">—</span> estados</strong> publicaram plano feito para este ciclo (<span id="relNovoUFs">—</span>); <span id="relTodoAno">—</span> mantêm o plano de todo ano sem mencioná-lo; <span id="relElab">—</span> estão em elaboração; em <span id="relLacUFs">—</span>, nenhum plano foi localizado. As notas vão de <span id="relTopo">—</span> a <span id="relBase">—</span>.</p>
+      <p><strong>O que o país aprende.</strong> Preparação existe, mas quase não é publicada: dos 5.571 municípios, <strong><span id="relPlanosMun2">—</span></strong> têm plano localizado em fonte oficial — mesmo depois de uma varredura em <span id="relDiarios">—</span> diários municipais. Onde o plano existe, o dinheiro preventivo chega: o Rio Grande do Sul é o único estado com fundo a fundo preventivo no ciclo (Prepara RS: R$ 32,3 milhões para 138 municípios, condicionados a plano atualizado). Na saúde, o MARÉ Saúde mede <strong><span id="relSaude">—</span> em 100</strong> nas <span id="relSaudeN">—</span> secretarias estaduais verificadas. E o desenho legal tem um buraco: para a seca — o risco projetado para a maior parte dos estados — não existe rota federal preventiva que chegue ao município por plano ou por nível de risco; só o fogo tem essa rota, criada em 2025.</p>
+      <p><strong>O período eleitoral tem impacto — e é medível.</strong> Entre 04/07 e 25/10 a lei (art. 73, VI, "a") suspende transferências voluntárias e tira sítios públicos do ar. Nas 27 semanas até 04/07, a União transferiu <strong>R$ <span id="relAntesDefeso">—</span> bilhões</strong> a municípios pela rota voluntária; nas duas semanas seguintes, R$ <span id="relDuranteDefeso">—</span> milhões — e a base pública do TransfereGov não recebe carga nova desde <span id="relCarga">—</span>. A única porta que fica aberta é o decreto de emergência: <strong><span id="relDecretados2">—</span> municípios</strong> (<span id="relPop">—</span> da população) já a abriram, <span id="relReconhecidos">—</span> com reconhecimento federal; o primeiro decreto do ciclo é de <span id="relPrimeiro">—</span>. O Monitor registra sítios que respondem "período eleitoral" como fonte suspensa — nunca como ausência de plano.</p>
+      <p><strong>O que a União prometeu.</strong> Duas medidas provisórias abriram crédito extraordinário: MP 1.367 (incêndios), R$ 337,5 milhões, com R$ <span id="relMP1367">—</span> milhões pagos; MP 1.384 (alimentos), R$ 925 milhões, com R$ <span id="relMP1384">—</span> milhões pagos — execução lida dos arquivos abertos do Portal da Transparência. Os outros cinco compromissos federais verificados ainda não têm série de execução pública.</p>
+      <p><strong>Como é feito.</strong> Cada afirmação tem documento, número, data e endereço; o que não está público e verificável entra como "não localizado até o corte" — nunca como "sem plano". Preparação e resposta são medidas em separado e nunca se somam. Rotina automática semanal, histórico e erratas públicos; dados, metodologia e código abertos (CC BY 4.0 e MIT). Qualquer redação pode refazer a conta.</p>
+      <p><strong>Frase citável:</strong> "Preparação que não foi publicada não cumpriu o rito e não pode ser conferida — o MARÉ mede exatamente isso, sem afirmar que ela não existe."</p>
+      <p class="note">Serviço: monitorelnino.com.br · dados abertos e metodologia em Pesquisadores · contato: <a href="mailto:imprensa@futuraevidencelab.com.br">imprensa@futuraevidencelab.com.br</a>.</p>
     </div>
   </div>
 
   <div class="panel" id="novidade">
-    <h2>O que o MARÉ traz de novo</h2>
+    <h2>O que se aprende com o Monitor — e o que ele entrega</h2>
     <div class="grade-cartoes">
-      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Mede o que é conferível</h3><p class="note">Só conta o que está publicado em canal oficial, com número, data e endereço. Publicar é dever legal (Leis 12.608/2012 e 12.527/2011); o índice mede o cumprimento desse dever, não a intenção.</p></div>
-      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Dois números, nunca um</h3><p class="note">Antecipação (o que veio antes) e resposta (o que veio depois) são medidos e mostrados separados, na mesma arte, sem soma nem "nota final". É o que impede que um decreto de emergência vire "preparação".</p></div>
-      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Todo o país, um a um</h3><p class="note">27 estados e 5.571 municípios passaram pelo registro federal; a verificação municipal avança por baterias de fontes e diz, para cada cidade, em que nível está — nunca preenche lacuna com zero.</p></div>
-      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Reproduzível e aberto</h3><p class="note">Dados, metodologia, código e feeds abertos; rotina automática semanal; cada mudança de nota com data e motivo; erratas públicas. Qualquer redação pode refazer a conta.</p></div>
+      <div class="cartao cartao--acento-musgo"><h3 class="figura-titulo">Cinco achados desta edição</h3><ul class="fontes-list">
+        <li><span id="achNovo">—</span> dos 27 estados publicaram plano feito para o ciclo; <span id="achTodoAno">—</span> seguem com o de todo ano, sem mencioná-lo.</li>
+        <li>Só <span id="achPlanosMun">—</span> dos 5.571 municípios têm plano localizado em fonte oficial; a lacuna é de publicação, não necessariamente de preparo.</li>
+        <li>O decreto de emergência já é a porta principal: <span id="achDecretados">—</span> municípios, <span id="achPop">—</span> da população.</li>
+        <li>Na saúde, <span id="achSaudeNovo">—</span> estados têm plano sanitário para o ciclo; média <span id="achSaude">—</span> em 100 nas verificadas.</li>
+        <li>Para a seca, não há rota federal preventiva ao município por plano ou risco; só o fogo tem (Lei 15.143/2025). O RS é o único estado com fundo preventivo.</li>
+      </ul></div>
+      <div class="cartao cartao--acento-fogo"><h3 class="figura-titulo">O período eleitoral, em números</h3><ul class="fontes-list">
+        <li>R$ <span id="achAntes">—</span> bi em transferências voluntárias nas 27 semanas até 04/07; R$ <span id="achDurante">—</span> mi nas duas seguintes; base sem carga nova desde <span id="achCarga">—</span>.</li>
+        <li>Sítios que respondem "período eleitoral" viram fonte suspensa, e a verificação fica provisória até 26/10.</li>
+        <li>A partir de 26/10 o Monitor publica o que ficou represado — e quem publicou o plano durante o período, porque publicar atos é dever legal, não publicidade.</li>
+      </ul></div>
+      <div class="cartao cartao--acento-neutro-topo"><h3 class="figura-titulo">As entregas</h3><ul class="fontes-list">
+        <li><a href="index.html">MARÉ Legal</a>: dois medidores (antecipação e resposta), 27 cartões de estado, consulta por cidade, relatórios em PDF por estado e município.</li>
+        <li><a href="sinais-de-risco.html">Monitor de risco</a>: ONI, prognóstico e quatro mapas do que acontece agora (INMET, CEMADEN, ANA, INPE).</li>
+        <li><a href="saude.html">MARÉ Saúde</a>: a mesma medida na saúde, com dengue, chikungunya, calor, respiratórias e diarreicas.</li>
+        <li><a href="financiamento.html">Financiamento</a>: as rotas e as chaves, o que a União prometeu e pagou, o dinheiro preventivo por setor.</li>
+        <li><a href="prefeituras.html">Para gestores</a> e <a href="proteja-se.html">Proteja-se</a>: o que fazer, como pedir recursos, quem chamar.</li>
+      </ul></div>
+      <div class="cartao cartao--acento-neutro-topo"><h3 class="figura-titulo">Por que abrir o Monitor</h3><ul class="fontes-list">
+        <li><strong>Leitor:</strong> vê, para o seu estado e a sua cidade, o que foi publicado e o que não foi — com o documento.</li>
+        <li><strong>Gestor:</strong> descobre em que faixa está, o que falta publicar, que rota de recurso está aberta agora e se o município é prioritário.</li>
+        <li><strong>Jornalista:</strong> compara 27 estados na mesma régua, com fonte por figura, feed semanal do que mudou e erratas públicas.</li>
+        <li><strong>Pesquisador:</strong> baixa dados, metodologia e código e refaz a conta.</li>
+      </ul></div>
     </div>
   </div>
 
@@ -176,7 +198,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/imprensa.js?v=035adb16" defer></script>
+<script src="assets/js/imprensa.js?v=ac99e318" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
