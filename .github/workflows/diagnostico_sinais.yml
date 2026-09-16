@@ -1,164 +1,27 @@
 name: Diagnóstico pontual — fontes de sinais de risco
-
-# 04/09/2026: ferramenta de uma vez para testar, com rede real, os endpoints
-# candidatos das fontes que nunca coletaram (monitor_secas, inpe_fogo,
-# cemaden_alertas, iri_plume). Não faz parte do pipeline regular; roda só
-# sob disparo manual e não grava nada em data/. Resultado vai para o
-# repositório privado (mesmo padrão dos relatórios do robô) em vez de
-# artefato do Actions — o artefato fica em blob storage externo, inacessível
-# ao ambiente de edição.
+# 15/09/2026: ferramenta reaproveitada, só neste ramo (mesmo workflow id), para uma
+# checagem pontual de verificar_links.py com rede real (ver histórico do arquivo para
+# os usos anteriores — nunca faz parte do pipeline regular).
 on:
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
-  diagnosticar:
+  sondar:
     runs-on: ubuntu-latest
-    # 14/09/2026: teto explícito — a sonda do DF já segurou o runner minutos a fio em timeouts
-    # de TLS; sem isto um passo travado poderia ocupar o runner por até 6 h.
-    timeout-minutes: 60
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-        with:
-          python-version: "3.12"
-      - name: Sondar o Portal da Transparência (por que a chave é recusada)
-        continue-on-error: true
-        env:
-          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
-        run: |
-          set -o pipefail
-          python3 scripts/sondar_portal_transparencia.py 2>&1 | tee /tmp/portal.log
-      # 14/09/2026 (handovers fogo e saúde, passo 3): o que a execução mensal do Portal (CSV aberto) diz sobre FNMA → entes e FNS → vigilância/arboviroses
-      - name: Sondar o Portal — FNMA (fogo) e FNS (vigilância/arboviroses), meses de 2025-01 ao corrente
-        continue-on-error: true
-        timeout-minutes: 25
-        run: |
-          set -o pipefail
-          python3 scripts/sondar_portal_fogo_saude.py 2>&1 | tee /tmp/portal_fogo_saude.log
-      - name: Sondar o TransfereGov (repositório de CSVs e APIs sem chave)
-        continue-on-error: true
-        run: |
-          set -o pipefail
-          python3 scripts/sondar_transferegov.py 2>&1 | tee /tmp/transferegov.log
-      - name: Sonda das probabilidades ENSO (IRI/CPC) — candidatos de endpoint
-        continue-on-error: true
-        run: |
-          python3 scripts/sondar_enso_probabilidades.py 2>&1 | tee /tmp/enso.log
-      - name: Diagnóstico do Querido Diário (resultado conhecido; PR-N0 §1.1)
-        continue-on-error: true
-        run: |
-          set -o pipefail
-          python3 scripts/diagnosticar_querido_diario.py 2>&1 | tee /tmp/qd.log
-      - name: Testar endpoints candidatos
-        run: |
-          set -o pipefail
-          python3 scripts/diagnosticar_fontes_sinais.py 2>&1 | tee /tmp/diagnostico.log
-      # 11/09/2026: na primeira rodada real com os quatro coletores estaduais de saúde
-      # (MS, DF, PE, PB) TODOS declararam lacuna, enquanto os mesmos documentos abrem do
-      # ambiente de edição e de um navegador no Brasil. Esta sonda mede código HTTP, tipo e
-      # início do corpo de cada fonte com dois User-Agents, para separar bloqueio por IP do
-      # runner (fora do Brasil) de bloqueio por UA. Não coleta nem grava nada.
-      - name: Sondar as fontes estaduais de saúde (por que os coletores não baixam)
-        continue-on-error: true
-        run: |
-          set -o pipefail
-          python3 scripts/diagnostico_fontes_saude.py 2>&1 | tee /tmp/saude.log
-      # 13/09/2026: a reserva Wayback do DF voltou a funcionar (era rate-limit da rajada
-      # de depuração de 12/09, não uso normal), mas nenhum link foi reconhecido na
-      # listagem — o padrão 'informativo_epidemiologico_seNN…-pdf' não aparece na captura.
-      # Esta sonda mostra os links que existem de fato, para corrigir o padrão com prova.
-      - name: Sondar a listagem de informes da SES-DF (quais links existem de verdade)
-        continue-on-error: true
-        timeout-minutes: 8
-        run: |
-          set -o pipefail
-          python3 scripts/sondar_listagem_df.py 2>&1 | tee /tmp/listagem_df.log
-      # 14/09/2026: o CSV do InfoGripe no GitLab da Fiocruz está atrás de login (confirmado
-      # por dois caminhos de rede fora deste runner). Os PDFs "Resumo do Boletim" são
-      # públicos mas não têm série numérica por UF, só texto categórico — precisamos achar
-      # onde o site aponta para o boletim mais recente antes de decidir se dá para usar como
-      # fonte (nunca adivinhar o número da SE no nome do arquivo, mesmo erro do PB).
-      - name: Sondar o boletim InfoGripe (listagem e janela de nomes de arquivo)
-        continue-on-error: true
-        run: |
-          set -o pipefail
-          python3 scripts/sondar_boletim_infogripe.py 2>&1 | tee /tmp/boletim_infogripe.log
-      # 14/09/2026: item 1 do §5 — DDA. O catálogo aponta OpenDataSUS (Sivep-DDA) como fonte
-      # aberta, mas ela nunca foi aberta pelo projeto; o sandbox de edição bloqueia o host
-      # (403 host_not_allowed). Esta sonda lista datasets/recursos via API CKAN e espia o
-      # cabeçalho dos CSVs (Range) para decidir o grão do coletor com prova. Não grava nada.
-      - name: Sondar DDA e leptospirose no OpenDataSUS (API CKAN e cabeçalho dos CSVs)
-        continue-on-error: true
-        run: |
-          set -o pipefail
-          python3 scripts/sondar_dda_opendatasus.py 2>&1 | tee /tmp/dda_opendatasus.log
-      # 14/09/2026 (2ª etapa): o OpenDataSUS não é mais CKAN nem hospeda o Sivep-DDA. A fonte
-      # real é a resposta LAI do MS redistribuída no Zenodo (Saldanha/Fiocruz, CC BY 4.0, MD5
-      # publicado). Esta sonda baixa o CSV de 2026 + codebook, confere MD5 e mostra as colunas.
-      - name: Sondar o Sivep-DDA no Zenodo (colunas, semanas, municípios do painel)
-        continue-on-error: true
-        timeout-minutes: 10
-        run: |
-          set -o pipefail
-          python3 scripts/sondar_dda_zenodo.py 2>&1 | tee /tmp/dda_zenodo.log
-      # 12/09/2026: as rodadas completas de atualizar.py levam 35-90 min (varredura municipal +
-      # DOEs + os 4 coletores de saúde), caras demais só para testar os coletores de saúde depois
-      # de cada correção. Este passo roda SÓ os quatro, com dependências reais, sem a varredura.
-      # Não comita nada: só mostra se cada um lê a série real e qual o conteúdo, para depurar rápido.
-      - name: Instalar dependências (para testar os coletores de saúde isoladamente)
-        run: pip install -r requirements.txt --break-system-packages -q
-      - name: Rodar só os 4 coletores estaduais de saúde (sem a varredura municipal)
-        continue-on-error: true
-        run: |
-          set -o pipefail
-          {
-            for c in coletar_boletim_ms_dengue coletar_boletim_df_arboviroses coletar_boletim_pe_arboviroses coletar_boletim_pb_arboviroses; do
-              echo "=== $c ==="
-              python3 "$c.py" || true
-            done
-            echo "=== arquivos gerados ==="
-            ls -la data/saude_desfechos/ses_*.json 2>&1 || echo "(nenhum)"
-            echo "=== conteúdo (se houver) ==="
-            for f in data/saude_desfechos/ses_ms_dengue.json data/saude_desfechos/ses_df_arboviroses.json data/saude_desfechos/ses_pe_arboviroses.json data/saude_desfechos/ses_pb_arboviroses.json; do
-              if [ -f "$f" ]; then echo "--- $f ---"; python3 -c "import json;d=json.load(open('$f'));print(json.dumps(list((d.get('serie') or {}).values())[-1] if d.get('serie') else d, ensure_ascii=False, indent=1)[:3000])"; fi
-            done
-          } 2>&1 | tee /tmp/coletores_saude.log
-      # 14/09/2026 (§39): primeira execução REAL do coletor de DDA (Zenodo, MD5 conferido), isolada e sem
-      # commit — mostra o que ele lê e grava, para conferir antes da rodada semanal.
-      - name: Rodar coletar_dda.py isolado (sem commit)
-        continue-on-error: true
-        timeout-minutes: 15
-        run: |
-          set -o pipefail
-          { python3 coletar_dda.py || true
-            echo "=== arquivos gerados ==="; ls -la data/saude_desfechos/dda_*.json 2>&1 || echo "(nenhum)"
-            for f in data/saude_desfechos/dda_serie.json; do
-              [ -f "$f" ] && python3 -c "import json;d=json.load(open('$f'));br=d['serie']['BR'];print('semanas BR:',len(br));print('2026:',{k:v for k,v in sorted(br.items()) if k.startswith('2026')});print('parcial:',d['parcial']['BR']);print('canal SE10:',d['canal_endemico']['BR'].get('10'));print('UFs:',sorted(k for k in d['serie'] if k!='BR'))"
-            done
-          } 2>&1 | tee /tmp/coletor_dda.log
-      - name: Publicar resultado no repositório privado
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5
+        with: { python-version: "3.12" }
+      - run: pip install --quiet requests
+      - name: Rodar verificar_links.py (rede real, 11 páginas + JS externo)
+        run: python3 verificar_links.py > /tmp/links_relatorio.txt 2>&1 || true
+      - name: Publicar
         if: always()
         env:
           ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
         run: |
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
-          mkdir -p /tmp/registro/relatorios
-          cp /tmp/diagnostico.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_sinais.txt"
-          cp /tmp/portal.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portal_transparencia.txt" 2>/dev/null || true
-          cp /tmp/transferegov.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_transferegov.txt" 2>/dev/null || true
-          cp /tmp/qd.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_querido_diario.txt" 2>/dev/null || true
-          cp /tmp/enso.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_enso_probabilidades.txt" 2>/dev/null || true
-          cp /tmp/saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_fontes_saude.txt" 2>/dev/null || true
-          cp /tmp/listagem_df.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_listagem_df.txt" 2>/dev/null || true
-          cp /tmp/boletim_infogripe.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_boletim_infogripe.txt" 2>/dev/null || true
-          cp /tmp/portal_fogo_saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portal_fogo_saude.txt" 2>/dev/null || true
-          cp /tmp/coletor_dda.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_coletor_dda_isolado.txt" 2>/dev/null || true
-          cp /tmp/dda_zenodo.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_zenodo.txt" 2>/dev/null || true
-          cp /tmp/dda_opendatasus.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_dda_opendatasus.txt" 2>/dev/null || true
-          cp /tmp/coletores_saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_coletores_saude_isolado.txt" 2>/dev/null || true
-          mkdir -p /tmp/registro/leituras/querido_diario && cp -r leituras_qd/. "/tmp/registro/leituras/querido_diario/$(date -u +%Y-%m-%d_%H%M%S)/" 2>/dev/null || true
-          cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com
-          git add -A && git commit -q -m "diagnostico_sinais ${GITHUB_SHA::7}" && git push
+          cp /tmp/links_relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_links_completo.txt"
+          cd /tmp/registro && git -c user.name=monitor-el-nino-bot -c user.email=bot@users.noreply.github.com add -A && git -c user.name=monitor-el-nino-bot -c user.email=bot@users.noreply.github.com commit -q -m "verificar_links_completo" && git push
