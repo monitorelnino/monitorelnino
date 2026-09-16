@@ -15,6 +15,23 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §69 · Auditoria editorial de Pesquisadores e Para gestores: dado inventado removido, duas listas de portais viram uma, verificador de links corrigido · 15/09/2026
+
+Mesma pergunta feita para a Imprensa (§67–§68) — ordem, qualidade, links, atualidade — agora em Pesquisadores e em Para gestores.
+
+**Pesquisadores — três achados de conteúdo:**
+- **Errata: dado inventado.** O gráfico "Plano federal El Niño 2026/2027 por área" somava R$ 17,75 bi em quatro áreas digitadas direto no JavaScript, sem arquivo de origem — 13× o valor de todo o plano federal (R$ 1,335 bi) citado em qualquer outro lugar do site. Removido; os compromissos verificados, com fonte por linha, seguem em Financiamento.
+- **Duas listas de portais das Defesas Civis, uma desatualizada.** A lista fixa em Pesquisadores dizia que AC, AM, PA, PB, RN e SP não tinham portal — defasada desde a correção de `contatos_uf.json` em Proteja-se (§57), que hoje só deixa o RN sem portal. Pesquisadores passa a ler o mesmo arquivo; as duas páginas nunca mais podem divergir do mesmo diretório oficial.
+- **Reordenada** para começar pela orientação: "Como usar o site e os dados" sai do acordeão no fim da página e vira a primeira seção, visível; metodologia, dados abertos e código ficam agrupados logo depois; o material de referência mais denso (log de verificação, fontes, painel amostral) segue como estava.
+
+**Para gestores:** auditoria não encontrou pendência — ordem (caminho → conteúdo do plano → recursos → período eleitoral → prioritários), links internos e atualidade conferem.
+
+**`verificar_links.py` — dois bugs de cobertura corrigidos** (o portão só roda com rede real, fora do sandbox de edição; não fazia parte da pergunta de conteúdo, mas é o que sustenta a resposta a "os links funcionam"):
+- Checava só 5 das 11 páginas — Saúde, Financiamento, Pesquisadores, Imprensa, Monitor de risco e Calendário eleitoral nunca tiveram os links externos verificados.
+- A extração de URLs em JavaScript (portais, diários, guias) procurava `<script>` inline; a refatoração de CSP de 06/09/2026 moveu todo o JS para arquivos externos — a extração vinha devolvendo zero URLs, sem ninguém perceber, porque nada distinguia "nenhuma achada" de "nenhuma quebrada".
+- User-Agent do verificador trocado por um formato educado (`Mozilla/5.0 (compatible; …)`) e GET como segunda tentativa: o formato anterior disparava bloqueio de robô (403/erro de SSL) em vários `.gov.br` que respondem normalmente a um navegador — confirmado comparando com uma sonda anterior desta mesma sessão.
+- Rodada de verificação real, pós-correção: a maioria dos links confere; um punhado de portais estaduais e documentos municipais específicos segue instável entre rodadas (timeout ou erro de SSL, típico de servidores estaduais pequenos) — inclusive um caso com falha de DNS persistente (bombeiros.rr.gov.br). Regra do projeto: link nunca é removido automaticamente, decisão humana; a lista completa fica no relatório da rodada, para revisão.
+
 ## §68 · Imprensa: release jornalístico com os achados da edição, o período eleitoral em números, entregas e razões para abrir o Monitor; texto corrido, sem caixa · 15/09/2026
 
 Nenhuma alteração de método. Classe **texto + estética** (pedido da editoria).

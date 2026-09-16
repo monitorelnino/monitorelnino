@@ -48,7 +48,19 @@
   </header>
 <main id="conteudo">
   <h1>Pesquisadores</h1>
-  <p class="hint">Metodologia e dados abertos; log de verificação, fontes por município, painel amostral e código abaixo.</p>
+  <p class="hint">Como usar o site e os dados, metodologia e versões, dados abertos e código — e, abaixo, o detalhe reprodutível: log de verificação, fontes por município e por tema, e o painel amostral.</p>
+  <div class="panel" id="usar">
+      <h2 id="como-usar">Como usar o site e os dados</h2>
+      <ul class="fontes-list">
+        <li><strong>Consulta rápida.</strong> Na página inicial, escolha o estado no mapa ou digite sua cidade em "Encontre sua cidade": o cartão diz o que foi localizado, com documento, data e fonte, e o que ainda não foi verificado. O botão de PDF gera um relatório do estado ou da cidade.</li>
+        <li><strong>Dados abertos.</strong> Pasta <a href="dados-abertos/">dados-abertos/</a>: índice por estado, instrumentos estaduais, registros municipais, atos de resposta, histórico de mudanças, verificação municipal (5.571), painel amostral e saúde — em CSV com dicionário (datapackage.json). Tudo o que está no site sai daqui.</li>
+        <li><strong>Feeds.</strong> Atom por estado e nacional (<a href="feeds/">feeds/</a>): cada mudança verificada vira um evento datado — instrumento novo, reclassificação com errata, reconhecimento federal. Assine o do seu estado para receber o que muda.</li>
+        <li><strong>Selos embutíveis.</strong> Um selo SVG por estado e um nacional (<a href="selos/">selos/</a>), gerados a partir do índice a cada atualização — embuta com o link para o site; ele nunca mostra número diferente do publicado.</li>
+        <li><strong>Metodologia e código.</strong> A metodologia completa (<a href="METODOLOGIA.pdf">PDF</a>) e a documentação do índice (<a href="MARE_Indice_Documentacao.pdf">PDF</a>) são públicas; o código e os dados estão em repositório aberto com histórico de toda mudança e errata pública.</li>
+        <li><strong>Cadência.</strong> Atualização automática semanal (segundas, 6h de Brasília), com uma semana de atualização diária logo após cada edição. Não é tempo real: cada figura mostra a data da consulta à fonte.</li>
+      </ul>
+    </div>
+
   <div class="panel" id="metodologia">
     <h2>Metodologia e versões</h2>
     <ul class="fontes-list">
@@ -66,6 +78,17 @@
     </ul>
   </div>
 
+  <details class="acc">
+    <summary class="acc-summary">Código e replicação</summary>
+    <div class="panel" id="codigo">
+      <h2>Código e replicação</h2>
+      <ul class="fontes-list">
+        <li>Repositório público: <a href="https://github.com/monitorelnino/monitorelnino" target="_blank" rel="noopener">github.com/monitorelnino/monitorelnino</a> · <a href="docs/PROTOCOLO_ATUALIZACAO.md">protocolo de atualização</a> · <a href="docs/GUIA_DO_EDITOR.md">guia do editor</a></li>
+        <li>Replicar o índice: <code>python3 recalcular_mare.py --write</code>; provar: <code>python3 recalcular_mare.py --check</code>; verificações: <code>bash scripts/verificar_derivados.sh</code></li>
+        <li>Pedidos de acesso à informação: só contagens agregadas serão publicadas aqui, se a editoria confirmar; textos, protocolos e destinatários não vão ao site.</li>
+      </ul>
+    </div>
+  </details>
   <details class="acc">
     <summary class="acc-summary">Log de verificação: totais, por estado e por canal</summary>
     <div class="panel" id="log">
@@ -130,8 +153,8 @@
         </div>
         <div>
           <h3>Portais oficiais das Defesas Civis estaduais</h3>
-          <p class="hint u-mb-2">Conforme o diretório oficial do MIDR (11/09/2024). Estados sem portal listado no diretório: AC, AM, PA, PB, RN e SP.</p>
-          <p class="lista-inline"><a href="https://defesacivil.al.gov.br" target="_blank" rel="noopener">AL</a> · <a href="https://defesacivil.ap.gov.br" target="_blank" rel="noopener">AP</a> · <a href="https://defesacivil.ba.gov.br" target="_blank" rel="noopener">BA</a> · <a href="https://defesacivil.ce.gov.br" target="_blank" rel="noopener">CE</a> · <a href="https://defesacivil.df.gov.br" target="_blank" rel="noopener">DF</a> · <a href="https://defesacivil.es.gov.br" target="_blank" rel="noopener">ES</a> · <a href="https://bombeiros.go.gov.br" target="_blank" rel="noopener">GO</a> · <a href="https://defesacivil.ma.gov.br" target="_blank" rel="noopener">MA</a> · <a href="https://defesacivil.mg.gov.br" target="_blank" rel="noopener">MG</a> · <a href="https://defesacivil.ms.gov.br" target="_blank" rel="noopener">MS</a> · <a href="https://defesacivil.mt.gov.br" target="_blank" rel="noopener">MT</a> · <a href="https://defesacivil.pe.gov.br" target="_blank" rel="noopener">PE</a> · <a href="https://portal.pi.gov.br/defesacivil" target="_blank" rel="noopener">PI</a> · <a href="https://defesacivil.pr.gov.br" target="_blank" rel="noopener">PR</a> · <a href="https://cbmerj.rj.gov.br" target="_blank" rel="noopener">RJ</a> · <a href="https://cbm.ro.gov.br" target="_blank" rel="noopener">RO</a> · <a href="https://bombeiros.rr.gov.br" target="_blank" rel="noopener">RR</a> · <a href="https://defesacivil.rs.gov.br" target="_blank" rel="noopener">RS</a> · <a href="https://defesacivil.sc.gov.br" target="_blank" rel="noopener">SC</a> · <a href="https://defesacivil.se.gov.br" target="_blank" rel="noopener">SE</a> · <a href="https://defesacivil.to.gov.br" target="_blank" rel="noopener">TO</a></p>
+          <p class="hint u-mb-2" id="portaisDCHint">Conforme o diretório oficial do MIDR. Carregando…</p>
+          <p class="lista-inline" id="portaisDCLista"></p>
         </div>
       </div>
       <details class="figura-dados">
@@ -164,16 +187,6 @@
   </details>
 
   <details class="acc">
-    <summary class="acc-summary">Painel amostral</summary>
-    <div class="panel" id="painel-amostral">
-      <h2>Painel amostral</h2>
-      <p class="hint u-mb-0">Universo dos 5.571 municípios, estratos por região e porte, semente registrada; lista e fichas completas em <a href="data/painel/lista.json">lista.json</a> e <a href="data/painel/fichas.json">fichas.json</a>. <span id="notaPainel"></span></p>
-      <div id="painelResumo" class="u-mt-3"></div>
-      <div id="boxPainel"></div>
-    </div>
-  </details>
-
-  <details class="acc">
     <summary class="acc-summary">Fontes dos sinais de risco</summary>
     <div class="panel" id="fontes-sinais-painel">
       <h2 id="fontes-sinais">Fontes dos sinais de risco</h2>
@@ -197,21 +210,6 @@
           <h3 class="figura-titulo">Consultas registradas</h3>
           <p class="figura-sub">Rodadas do robô · endpoint, parâmetros, data, itens e hash da resposta · uma linha por consulta</p>
           <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblConsultas"><thead><tr><th>Endpoint</th><th>Parâmetros</th><th>Data</th><th>Itens</th><th>Hash</th></tr></thead><tbody></tbody></table></div></div>
-        </figure>
-      </div>
-    </div>
-  </details>
-
-  <details class="acc">
-    <summary class="acc-summary">Plano federal El Niño 2026/2027 por área (valores anunciados)</summary>
-    <div class="panel" id="compromissos-painel">
-      <h2 id="compromissos-federais">Plano federal por área</h2>
-      <p class="hint">Dotação anunciada por área. Os compromissos verificados, com dinheiro e prazo, e a série semanal de transferências voltaram para <a href="financiamento.html#prometeu">Financiamento</a> em 15/09/2026.</p>
-      <div class="grade-figuras">
-        <figure class="figura figura--grafico" id="boxFinance">
-          <h3 class="figura-titulo">Plano federal El Niño 2026/2027 por área (R$)</h3>
-          <p class="figura-sub">Plano federal El Niño 2026/2027 · dotação por área · R$ (milhões)</p>
-          <div class="figura-midia canvas-wrap"><canvas id="chartFinance" aria-label="Gráfico de barras: financiamento federal anunciado por área"></canvas></div>
         </figure>
       </div>
     </div>
@@ -288,31 +286,15 @@
   </details>
 
   <details class="acc">
-    <summary class="acc-summary">Como usar o site e os dados</summary>
-    <div class="panel" id="usar">
-      <h2 id="como-usar">Como usar o site e os dados</h2>
-      <ul class="fontes-list">
-        <li><strong>Consulta rápida.</strong> Na página inicial, escolha o estado no mapa ou digite sua cidade em "Encontre sua cidade": o cartão diz o que foi localizado, com documento, data e fonte, e o que ainda não foi verificado. O botão de PDF gera um relatório do estado ou da cidade.</li>
-        <li><strong>Dados abertos.</strong> Pasta <a href="dados-abertos/">dados-abertos/</a>: índice por estado, instrumentos estaduais, registros municipais, atos de resposta, histórico de mudanças, verificação municipal (5.571), painel amostral e saúde — em CSV com dicionário (datapackage.json). Tudo o que está no site sai daqui.</li>
-        <li><strong>Feeds.</strong> Atom por estado e nacional (<a href="feeds/">feeds/</a>): cada mudança verificada vira um evento datado — instrumento novo, reclassificação com errata, reconhecimento federal. Assine o do seu estado para receber o que muda.</li>
-        <li><strong>Selos embutíveis.</strong> Um selo SVG por estado e um nacional (<a href="selos/">selos/</a>), gerados a partir do índice a cada atualização — embuta com o link para o site; ele nunca mostra número diferente do publicado.</li>
-        <li><strong>Metodologia e código.</strong> A metodologia completa (<a href="METODOLOGIA.pdf">PDF</a>) e a documentação do índice (<a href="MARE_Indice_Documentacao.pdf">PDF</a>) são públicas; o código e os dados estão em repositório aberto com histórico de toda mudança e errata pública.</li>
-        <li><strong>Cadência.</strong> Atualização automática semanal (segundas, 6h de Brasília), com uma semana de atualização diária logo após cada edição. Não é tempo real: cada figura mostra a data da consulta à fonte.</li>
-      </ul>
+    <summary class="acc-summary">Painel amostral</summary>
+    <div class="panel" id="painel-amostral">
+      <h2>Painel amostral</h2>
+      <p class="hint u-mb-0">Universo dos 5.571 municípios, estratos por região e porte, semente registrada; lista e fichas completas em <a href="data/painel/lista.json">lista.json</a> e <a href="data/painel/fichas.json">fichas.json</a>. <span id="notaPainel"></span></p>
+      <div id="painelResumo" class="u-mt-3"></div>
+      <div id="boxPainel"></div>
     </div>
   </details>
 
-  <details class="acc">
-    <summary class="acc-summary">Código e replicação</summary>
-    <div class="panel" id="codigo">
-      <h2>Código e replicação</h2>
-      <ul class="fontes-list">
-        <li>Repositório público: <a href="https://github.com/monitorelnino/monitorelnino" target="_blank" rel="noopener">github.com/monitorelnino/monitorelnino</a> · <a href="docs/PROTOCOLO_ATUALIZACAO.md">protocolo de atualização</a> · <a href="docs/GUIA_DO_EDITOR.md">guia do editor</a></li>
-        <li>Replicar o índice: <code>python3 recalcular_mare.py --write</code>; provar: <code>python3 recalcular_mare.py --check</code>; verificações: <code>bash scripts/verificar_derivados.sh</code></li>
-        <li>Pedidos de acesso à informação: só contagens agregadas serão publicadas aqui, se a editoria confirmar; textos, protocolos e destinatários não vão ao site.</li>
-      </ul>
-    </div>
-  </details>
   <div class="panel" id="formulario">
     <h2>Indique um documento publicado</h2>
     <p class="hint">Achar os planos publicados é tarefa do Monitor, não das prefeituras. Qualquer pessoa que encontre um documento oficial — com número, data e endereço em sítio público ou diário oficial — pode indicá-lo aqui; cada indicação é conferida contra a fonte antes de entrar no banco, na atualização seguinte.</p>
@@ -356,7 +338,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/pesquisadores.js?v=2858bba0" defer></script>
+<script src="assets/js/pesquisadores.js?v=64518bc2" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
