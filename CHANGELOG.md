@@ -15,6 +15,10 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §75 · "O que mudou" sai da Imprensa · 16/09/2026
+
+A pedido da editoria: a seção "O que mudou desde [data]" (lista do feed nacional, `listaMudou`) saiu da página. Código morto correspondente removido de `assets/js/imprensa.js` — a leitura de `feeds/brasil.xml` e o cálculo de `relDataAnterior` (que só alimentavam essa seção).
+
 ## §74 · Imprensa reconstruída na voz descritiva; portão de voz cobre a prosa da página; duas correções de atualização · 16/09/2026
 
 A pedido do handover de 16/09: a página estava tecnicamente correta mas editorialmente errada — abria com juízo, explicava a política do site, avisava o leitor sobre o que não concluir. Reconstruída ponto a ponto na regra de `docs/VOZ_EDITORIAL.md`.
