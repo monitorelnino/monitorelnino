@@ -118,29 +118,10 @@ async function __load(){
       MonitorMapas.credito('boxPainel', {fontes: ['MARÉ', 'painel amostral'], data: null});
     }
   } catch(e) { MonitorMapas.credito('boxPainel', {fontes: ['MARÉ', 'painel amostral'], data: null}); }
-  // 15/09/2026 (auditoria editorial §1.7): compromissos e série semanal voltaram a financiamento.js; aqui fica só o plano por área
-  try {
-    const ROTAS_FIN = await fetch('data/financiamento/rotas.json').then(r => r.ok ? r.json() : null);
-    const financeData = [
-      {label:'Segurança Hídrica', value:14217500000},
-      {label:'Saúde', value:1335000000},
-      {label:'Segurança Alimentar', value:1335000000},
-      {label:'Incêndios Florestais', value:858000000},
-    ];
-    new Chart(document.getElementById('chartFinance'), {
-      type:'bar',
-      data:{ labels: financeData.map(d=>d.label),
-        datasets:[{ data: financeData.map(d=>d.value),
-          backgroundColor: financeData.map(d => /h[íi]dric/i.test(d.label) ? MonitorMapas.PALETA.temas.hidrico
-            : /inc[êe]ndi|fogo|queimad/i.test(d.label) ? MonitorMapas.PALETA.temas.fogo
-            : /aliment|agr[íi]cola|safra/i.test(d.label) ? MonitorMapas.PALETA.temas.alimentar
-            : /sa[úu]de/i.test(d.label) ? MonitorMapas.PALETA.temas.saude : MonitorMapas.PALETA.temas.outro),
-          borderRadius:4 }] },
-      options:{ indexAxis:'y', maintainAspectRatio:false, plugins:{ legend:{display:false} },
-        scales:{ x:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{ callback:v => 'R$ '+(v/1e9).toFixed(1)+'bi' } }, y:{ grid:{display:false} } } }
-    });
-    MonitorMapas.credito('boxFinance', {fontes: ['Plano federal El Niño 2026/2027', 'valores anunciados'], data: (ROTAS_FIN && ROTAS_FIN.corte) || null});
-  } catch(e) {}
+  // 15/09/2026 (auditoria editorial, errata): o gráfico "Plano federal por área" que ficava aqui somava R$ 17,75 bi em
+  // quatro áreas com valores digitados direto no JS (nunca lidos de um arquivo) — 13x o valor de TODO o plano federal
+  // (R$ 1,335 bi) citado em toda a documentação do site. Sem fonte real por trás, a figura foi removida; os compromissos
+  // verificados e a série semanal, com fonte por linha, estão em financiamento.html#prometeu.
 document.getElementById('fontesMonitoramento').innerHTML = TRANSFERENCIAS.fontes_monitoramento
   .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
   const ROTULO_HOST = {
@@ -335,3 +316,20 @@ const AREAS = [
   }
 })();
 
+
+// 15/09/2026 (auditoria editorial, errata): a lista de portais das Defesas Civis estava digitada à mão aqui e
+// desatualizada desde a correção de 15/09 em proteja-se.html — faltavam AC, AM, MS, PA, PB e SP, e RJ apontava
+// para uma URL antiga. Passa a ler data/contatos_uf.json, a mesma fonte de "Quem chamar no seu estado" — nunca
+// mais duas listas divergentes do mesmo diretório oficial.
+(function(){
+  const lista = document.getElementById('portaisDCLista'), hint = document.getElementById('portaisDCHint'); if (!lista) return;
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  fetch('data/contatos_uf.json').then(r => r.ok ? r.json() : null).then(D => {
+    if (!D || !D.uf) { hint.textContent = 'Lista não carregada.'; return; }
+    const ufs = Object.keys(D.uf).sort();
+    const comPortal = ufs.filter(uf => D.uf[uf].portal);
+    const semPortal = ufs.filter(uf => !D.uf[uf].portal);
+    hint.innerHTML = 'Conforme o diretório oficial do MIDR' + (D.fonte && D.fonte.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + esc(D.fonte.atualizado_pelo_orgao_em) : '') + '. ' + (semPortal.length ? 'Estados sem portal listado no diretório: ' + esc(semPortal.join(', ')) + '.' : 'Todos os 27 estados têm portal listado no diretório.');
+    lista.innerHTML = comPortal.map(uf => '<a href="' + esc(D.uf[uf].portal) + '" target="_blank" rel="noopener">' + uf + '</a>').join(' · ');
+  }).catch(() => { hint.textContent = 'Lista não carregada.'; });
+})();

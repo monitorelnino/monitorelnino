@@ -109,14 +109,23 @@ def classificar_status(codigo: int) -> str:
 
 def verificar_um(url: str, timeout=15):
     """Faz a requisição real. Isolado nesta função para poder ser substituído
-    por uma versão-fixture em --self-test."""
+    por uma versão-fixture em --self-test.
+    15/09/2026 (auditoria editorial): a rodada de 15/09 mostrou muitos .gov.br devolvendo
+    403/erro de SSL/timeout só com HEAD e um User-Agent de robô explícito ("MonitorElNinoBrasil/1.0…")
+    — os MESMOS domínios (CE, RS, SE, entre outros) tinham respondido 200 minutos antes, na sonda de
+    portais desta sessão, com GET e um User-Agent no formato padrão de robô educado ("Mozilla/5.0
+    (compatible; …)"). Assinatura de bloqueio por WAF a HEAD/UA de robô, não de site fora do ar.
+    Agora tenta GET com esse formato antes de declarar QUEBRADO — HEAD nunca é a palavra final."""
     import requests
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; MonitorElNinoBrasil/1.0; +https://monitorelnino.com.br; verificacao-de-links)"}
     try:
-        resp = requests.head(url, timeout=timeout, allow_redirects=True,
-                              headers={"User-Agent": "MonitorElNinoBrasil/1.0 (Futura Evidence Lab; verificacao-de-links)"})
-        if resp.status_code == 405:  # alguns servidores recusam HEAD; tenta GET
-            resp = requests.get(url, timeout=timeout, allow_redirects=True,
-                                 headers={"User-Agent": "MonitorElNinoBrasil/1.0"})
+        resp = requests.head(url, timeout=timeout, allow_redirects=True, headers=headers)
+        if resp.status_code < 400:
+            return classificar_status(resp.status_code), resp.status_code, resp.url
+    except Exception:
+        pass
+    try:  # HEAD ausente, recusado (403/405) ou com erro de conexão: GET é o teste que decide
+        resp = requests.get(url, timeout=timeout, allow_redirects=True, headers=headers)
         return classificar_status(resp.status_code), resp.status_code, resp.url
     except Exception as e:
         return "QUEBRADO", None, str(e)
