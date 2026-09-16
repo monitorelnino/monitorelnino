@@ -20,8 +20,10 @@ function render(pagina) {
   if (d.getElementById("respNum").textContent !== indNac) falhas.push(`índice nacional de resposta na página (${d.getElementById("respNum").textContent}) ≠ por_uf.json (${indNac})`);
   if (!new RegExp(String(por.nacional.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, "\\.") + " municípios").test(d.getElementById("respBadge").textContent)) falhas.push("pílula da resposta sem a contagem de municípios");
   if (!d.querySelector("#contadorResposta .gauge-fill.gauge-fill--resposta") || d.querySelector("#contadorResposta .resp-fill")) falhas.push("resposta não usa a arte única do medidor (.gauge-fill--resposta)");
-  // 15/09/2026: a frase C18 saiu da face do contador (pedido da editoria) e vive na ficha "Como ler o MARÉ" da mesma página
-  if (!/art\. 73, VI/.test(d.getElementById("comoler").textContent)) falhas.push("frase C18 ausente na ficha 'Como ler o MARÉ' da inicial");
+  // 15/09: a frase C18 saiu da face do contador e passou à ficha "Como ler o MARÉ". 16/09 (handover da voz
+  // editorial): o ARTIGO de lei sai da narrativa — o fato que a C18 protege (no período eleitoral as
+  // voluntárias param, as por decreto continuam) continua obrigatório, agora sem citar o dispositivo.
+  if (!/transferências voluntárias ficam suspensas/.test(d.getElementById("conteudo").textContent)) falhas.push("frase C18 (defeso) ausente na inicial");
   if (d.querySelectorAll(".tile .tile-bar--resposta .tile-fill--resposta").length !== 27) falhas.push("cartões de estado sem a segunda barra (resposta) na arte única");
   const rs = [...d.querySelectorAll(".tile")].find(t => t.dataset.uf === "RS"); rs.click(); await new Promise(r => setTimeout(r, 300));
   const det = d.getElementById("detail").textContent; const m = det.match(/(\d+) de (\d+) municípios · (\d+)% da população/);
@@ -32,7 +34,7 @@ function render(pagina) {
   const dc = render("defesa-civil.html"); await new Promise(r => setTimeout(r, 2500)); const d2 = dc.window.document;
   // 15/09/2026: a dispersão antecipação × resposta (C20) saiu da página (pedido da editoria) — C20 revogada, ver METODOLOGIA §32.4
   if (d2.querySelectorAll("#tblDecRec tbody tr").length !== 27) falhas.push("defesa-civil: tabela decretado × reconhecido sem 27 UFs");
-  if (!/art\. 73, VI/.test(d2.getElementById("resposta").textContent)) falhas.push("defesa-civil: frase C18 ausente na seção do contador");
+  if (!/transferências voluntárias ficam suspensas/.test(d2.getElementById("resposta").textContent)) falhas.push("defesa-civil: frase C18 (defeso) ausente na seção do contador");
   if (falhas.length) { console.log("✗ RUNTIME (resposta):"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
   console.log("✓ RUNTIME (resposta) OK — contador nacional, barras nos 27 cartões, cartão do estado, dispersão, tabela e frase C18.");
 })();

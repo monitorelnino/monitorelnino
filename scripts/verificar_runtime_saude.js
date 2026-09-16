@@ -59,7 +59,7 @@ setTimeout(() => {
     teste(`${id}: 27 estados desenhados`, q(id) && q(id).querySelectorAll("path").length === 27);
     teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 1);
   }
-  // 15/09/2026 (MARÉ Saúde espelha o MARÉ Legal): dois medidores no topo, ficha "Como ler", cartões por estado com detalhe em <dialog>,
+  // 15/09/2026 (MARÉ Saúde espelha o MARÉ · Defesa civil): dois medidores no topo, ficha "Como ler", cartões por estado com detalhe em <dialog>,
   // uma seção por desfecho (dengue, chikungunya, calor, respiratórias, diarreicas) — nenhum desfecho em acordeão, nenhum seletor de doença.
   const nNV = Object.values(SUF.uf).filter(u => u.status === "NAO_VERIFICADO").length;
   teste(`contagem de UFs não verificadas renderizada = arquivo (${nNV})`, (q("contagemUF").textContent || "").includes(nNV + " de 27"));
@@ -79,7 +79,14 @@ setTimeout(() => {
     teste("detalhe do estado (GO): instrumento, componentes, resposta, risco e dengue na capital", /Instrumento estadual de saúde/.test(det) && /Componentes/.test(det) && /Resposta sanitária/.test(det) && /Risco sanitário projetado/.test(det) && /Dengue na capital/.test(det) && q("detailSaude").open === true);
     const nv = [...d.querySelectorAll("#regionsSaude .tile")].find(t => t.dataset.uf === Object.keys(SUF.uf).find(u => SUF.uf[u].status === "NAO_VERIFICADO")); if (nv) { nv.click(); teste("detalhe de UF não verificada: declara a bateria não executada, sem número", /bateria de busca de saúde não foi executada/.test(q("detailSaudeConteudo").textContent)); }
     q("linkComoLerSaude").click();
-    teste("ficha 'Como ler o MARÉ Saúde' abre no mesmo dialog, com O que mede / não mede / teto / resposta", /O que mede:/.test(q("detailSaudeConteudo").textContent) && /O que não mede:/.test(q("detailSaudeConteudo").textContent) && /teto da afirmação/.test(q("detailSaudeConteudo").textContent) && /Resposta:/.test(q("detailSaudeConteudo").textContent));
+    teste("ficha 'Como ler o MARÉ · Saúde' abre no mesmo dialog, com O que conta / não conta / emergências / sem plano localizado / casos", (() => {
+      // 16/09/2026 (handover da voz editorial, §5.3): a ficha foi reescrita — as seções passam a ser
+      // "O que conta", "O que não conta", "Emergências declaradas", "Um estado sem plano localizado" e
+      // "Sobre os casos". O teste segue exigindo que TODAS estejam no mesmo dialog, só com os rótulos novos.
+      const t = q("detailSaudeConteudo").textContent;
+      return /O que conta\./.test(t) && /O que não conta\./.test(t) && /Emergências declaradas\./.test(t)
+        && /sem plano localizado/.test(t) && /Sobre os casos\./.test(t);
+    })());
   } catch (e) { teste("cartões/detalhe (" + e.message + ")", false); }
   // chikungunya em seção própria: com arquivo, pontos no mapa; sem arquivo, lacuna declarada
   try {

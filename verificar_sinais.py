@@ -126,10 +126,13 @@ def main():
             achado = re.search(padrao, texto, re.I)
             if achado:
                 falha(f"sinais-de-risco.html: '{achado.group(0)}' — {motivo}")
-        if "não faz previsão climática" not in texto:
-            falha("sinais-de-risco.html: falta a declaração de que o Monitor não faz previsão climática")
-        if "não entra no índice" not in texto and "não entram no índice" not in texto:
-            falha("sinais-de-risco.html: falta a declaração de peso zero no índice MARÉ")
+        # 16/09/2026 (handover da voz editorial, §3): as duas ressalvas saíram do subtítulo e do corpo e
+        # passaram a morar UMA vez, na nota "O que esta página não diz". Continuam obrigatórias — mudou
+        # a redação ("reproduzidos dos órgãos", "não entram na nota") e o lugar, não a exigência.
+        if "reproduzidos dos órgãos" not in texto:
+            falha("sinais-de-risco.html: falta a declaração de que os sinais são reproduzidos dos órgãos")
+        if "não entram na nota" not in texto:
+            falha("sinais-de-risco.html: falta a declaração de que os sinais não entram na nota")
         # O crédito é montado em tempo de execução a partir do registro (função
         # `credito`), então o que se verifica aqui é o que É estático: a chamada
         # existe para cada fonte do catálogo. Que o crédito renderize com link,

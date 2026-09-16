@@ -124,8 +124,11 @@ setTimeout(() => {
 
   // --- nenhuma pontuação vazando para esta página ---
   const texto = d.body.textContent;
-  teste("página declara que não faz previsão climática", /não faz previsão climática/.test(texto));
-  teste("página declara peso zero no índice", /não entra(m)? no índice MARÉ/.test(texto));
+  // 16/09/2026 (handover da voz editorial, §3): as duas ressalvas saíram do subtítulo e do corpo e passaram
+  // a morar UMA vez, na nota "O que esta página não diz". Os testes seguem exigindo que ambas estejam na
+  // página — só mudou a redação e o lugar.
+  teste("página declara que reproduz os órgãos (não prevê)", /reproduzidos dos órgãos/.test(texto));
+  teste("página declara que os sinais não entram na nota", /não entram na nota/.test(texto));
 
 
   // ── padrão único de mapas (03/09/2026): siglas das 27 UFs em todo mapa; legendas canônicas ──

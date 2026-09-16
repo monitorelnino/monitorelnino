@@ -159,9 +159,9 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   const st = Object.values(MARE).map(v => v.status_estadual);
   const c = k => st.filter(x => k.includes(x)).length;
   const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), elabLac = c(['ELAB', 'LAC']);
-  if (el('interpAntecipacao')) el('interpAntecipacao').innerHTML = `<strong>${novo}</strong> estados publicaram plano feito para este ciclo; <strong>${readVig}</strong> reeditaram ou mantêm o plano de todo ano; <strong>${elabLac}</strong> não têm plano localizável. Não mede capacidade instalada nem dinheiro executado.`;
+  if (el('interpAntecipacao')) el('interpAntecipacao').innerHTML = `<strong>${novo}</strong> estados publicaram plano feito para este ciclo; <strong>${readVig}</strong> reeditaram ou mantêm o plano de todo ano; <strong>${elabLac}</strong> não têm plano localizado.`;
   const N = (typeof RESP !== 'undefined' && RESP && RESP.nacional) || null;
-  if (el('interpResposta') && N) el('interpResposta').innerHTML = `<strong>${n(N.n_municipios)}</strong> municípios, <strong>${(N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')}</strong> milhões de pessoas. Primeiro decreto do ciclo: <strong>${N.primeiro_decreto || '—'}</strong>. ${n(N.reconhecidos)} aceitos pelo governo federal · ${n(N.decretados_sem_reconhecimento)} ainda não. Desde 04/07 a lei eleitoral suspende as transferências voluntárias e mantém abertas as de emergência.`;
+  if (el('interpResposta') && N) el('interpResposta').innerHTML = `<strong>${n(N.n_municipios)}</strong> municípios, <strong>${(N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')}</strong> milhões de pessoas. Primeiro decreto do ciclo: <strong>${N.primeiro_decreto || '—'}</strong>. ${n(N.reconhecidos)} aceitos pelo governo federal · ${n(N.decretados_sem_reconhecimento)} ainda não. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas; transferências por regra e por decreto de emergência continuam (<a href="calendario-eleitoral.html">calendário →</a>).`;
 })();
 
 // ---- Calendário (15/09/2026, pedido da editoria: "O que vem" condensado em colunas): marcos fixos do ciclo
@@ -918,7 +918,7 @@ __load().catch(err => {
 // ===== index.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
-// ===== formulário "Indique um documento publicado" (migrou de pesquisadores.html para o fim do MARÉ Legal em 16/09/2026) =====
+// ===== formulário "Indique um documento publicado" (migrou de pesquisadores.html para o fim do MARÉ · Defesa civil em 16/09/2026) =====
 (function(){
   const p = new URLSearchParams(location.search); if (!document.getElementById('cUF')) return;
   const set = (id, v) => { const el = document.getElementById(id); if (el && v) el.value = v; };

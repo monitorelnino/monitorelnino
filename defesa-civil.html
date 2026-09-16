@@ -40,7 +40,7 @@
   <header class="masthead masthead--mini">
     <div class="mast-top">
       <a href="./" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="122" height="26"></a>
-      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">MARÉ Legal</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Monitor de risco</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Defesa civil</span><a href="saude.html">MARÉ Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="prefeituras.html">Para gestores</a><i class="nav-sep" aria-hidden="true"></i><a href="imprensa.html">Imprensa</a><a href="pesquisadores.html">Pesquisadores</a></nav>
+      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">MARÉ · Defesa civil</a><i class="nav-sep" aria-hidden="true"></i><a href="sinais-de-risco.html">Monitor de risco</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Defesa civil</span><a href="saude.html">MARÉ Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="prefeituras.html">Para gestores</a><i class="nav-sep" aria-hidden="true"></i><a href="imprensa.html">Imprensa</a><a href="pesquisadores.html">Pesquisadores</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     <p class="site-title">MARÉ</p>
@@ -48,7 +48,6 @@
     <div class="grad-line"></div>
   </header>
 <main id="conteudo">
-  <p class="selo">Dados vivos · atualizados na mesma rotina semanal do resto do site</p>
   <h1>Defesa civil</h1>
   <p class="hint">Planos publicados antes e decretos publicados depois, por estado e por município.</p>
 
@@ -59,14 +58,14 @@
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--grafico figura--largo" id="boxRegion">
         <h3 class="figura-titulo">Status dos planos estaduais, por região</h3>
-        <p class="figura-sub">Corte da edição · status do plano estadual (escada da §7) agregado por região · 27 UFs</p>
+        <p class="figura-sub">Corte da edição · categoria do plano estadual, agregada por região · 27 UFs</p>
         <div class="figura-midia canvas-wrap"><canvas id="chartRegion"></canvas></div>
       </figure>
     </div>
     <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxVerificacao">
         <h3 class="figura-titulo">Verificação municipal</h3>
-        <p class="figura-sub">Corte da edição · atos localizados ou nível de verificação alcançado · pontos</p>
+        <p class="figura-sub">Corte da edição · plano localizado, ou até onde a verificação chegou · pontos</p>
         <div class="figura-midia">
           <svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460"></svg>
           <svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460" hidden></svg>
@@ -114,7 +113,7 @@
         <div class="grade-figuras">
       <figure class="figura figura--grafico" id="boxDonut">
         <h3 class="figura-titulo">Status geral dos planos estaduais</h3>
-        <p class="figura-sub">Corte da edição · status do instrumento estadual (escada da §7) · 27 UFs</p>
+        <p class="figura-sub">Corte da edição · categoria do plano estadual · 27 UFs</p>
         <div class="figura-midia canvas-wrap"><canvas id="chartDonut"></canvas></div>
       </figure>
       <figure class="figura figura--grafico" id="boxCapitals">
@@ -129,13 +128,13 @@
 
   <div class="panel panel--acento-rust" id="resposta">
     <h2>Depois — o que foi decretado</h2>
-    <p class="hint">Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, <em>a</em>). As duas metades são mostradas separadamente. A tabela abaixo agrega por UF os mesmos municípios que aparecem como pontos em "Cidades que decretaram emergência" (seção anterior), acrescentando o reconhecimento federal — tarefas distintas: lá, geografia; aqui, contagem e reconciliação por estado.</p>
+    <p class="hint">Municípios com decreto de emergência desde 29 de junho, a população que vive neles e quantos decretos foram reconhecidos pelo governo federal. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas; as por decreto continuam (<a href="calendario-eleitoral.html">calendário →</a>). A tabela abaixo agrega por estado os mesmos municípios que aparecem como pontos em "Cidades que decretaram emergência".</p>
     <p class="hint" id="interpDepois" aria-live="polite">—</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa figura--largo" id="boxAtosResposta">
         <h3 class="figura-titulo">Cidades que decretaram emergência</h3>
         <p class="figura-sub">Desde 29/06/2026 · municípios com decreto de emergência no ciclo · pontos</p>
-        <div class="figura-midia"><svg id="mapAtosResposta" role="img" aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, atos de resposta que não pontuam no índice" viewBox="0 0 480 460"></svg></div>
+        <div class="figura-midia"><svg id="mapAtosResposta" role="img" aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, mostrados à parte da nota" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAtosResposta"></div>
       </figure>
     </div>
@@ -158,7 +157,7 @@
   <footer class="site-footer">
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span class="rodape-linha">MARÉ · Medida de Antecipação e Resposta ao El Niño · Dados verificados em fontes primárias · Metodologia aberta (v3.1)</span>
+    <span class="rodape-linha">MARÉ · Medida de Antecipação e Resposta ao El Niño</span>
     <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="imprensa.html">Imprensa</a>: <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>

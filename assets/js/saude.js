@@ -130,7 +130,7 @@ function __init(){
       el('rsBadge').innerHTML = '<span class="gfaixa-pill">' + esc(String(RS.emergencias || 0)) + ' emergência' + ((RS.emergencias || 0) === 1 ? '' : 's') + ' sanitária' + ((RS.emergencias || 0) === 1 ? '' : 's') + ' declarada' + ((RS.emergencias || 0) === 1 ? '' : 's') + '</span>';
       el('rsCorte').textContent = (MSAUDE && MSAUDE.corte) || '—';
       const fill = el('rsFill'); fill.dataset.alvo = String(Math.max(ir, RS.emergencias ? 0.6 : 0)); fill.style.setProperty('--galvo', String(Math.max(ir, 0.1))); fill.style.width = fill.dataset.alvo + '%';
-      el('interpRespostaSaude').innerHTML = '<strong>' + esc(String(RS.emergencias || 0)) + '</strong> emergência(s) sanitária(s) declarada(s) desde ' + esc(RS.desde || '29/06/2026') + ' — ESPIN federal e decretos estaduais —, <strong>' + esc(((RS.pop_sob_emergencia || 0) / 1e6).toFixed(1).replace('.', ',')) + '</strong> milhões de pessoas nos estados que as declararam' + (RS.ufs && RS.ufs.length ? ' (' + RS.ufs.join(', ') + ')' : '') + '. Antecipação mede preparo; resposta mede o que foi declarado depois, mostrados em separado.';
+      el('interpRespostaSaude').innerHTML = '<strong>' + esc(String(RS.emergencias || 0)) + '</strong> emergência(s) sanitária(s) declarada(s) desde ' + esc(RS.desde || '29/06/2026') + ' (ESPIN federal e decretos estaduais), <strong>' + esc(((RS.pop_sob_emergencia || 0) / 1e6).toFixed(1).replace('.', ',')) + '</strong> milhões de pessoas nos estados que as declararam' + (RS.ufs && RS.ufs.length ? ' (' + RS.ufs.join(', ') + ')' : '') + '. Antecipação mede preparo; resposta mede o que foi declarado depois, mostrados em separado.';
     })();
   })();
 
@@ -206,7 +206,7 @@ function __init(){
     };
   }
 }
-// 15/09/2026 (MARÉ Saúde espelha o MARÉ Legal): "Como ler" em ficha popup; um cartão por estado (mesma anatomia da inicial:
+// 15/09/2026 (MARÉ Saúde espelha o MARÉ · Defesa civil): "Como ler" em ficha popup; um cartão por estado (mesma anatomia da inicial:
 // micro-barra do índice no degradê único, segunda barra de resposta, face com plano · data · dengue na capital); clique abre o detalhe.
 function cartoesEstadosSaude(){
   const wrap = document.getElementById('regionsSaude'), dlg = document.getElementById('detailSaude'); if (!wrap || !dlg) return;
