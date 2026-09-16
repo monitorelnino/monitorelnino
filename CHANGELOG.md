@@ -15,6 +15,16 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §77 · Fichas "Como ler" saem de duas colunas quebradas ao meio; parágrafos reordenados para leitura humana · 16/09/2026
+
+A pedido da editoria: as fichas ("Como ler o MARÉ", "Como ler o MARÉ · Saúde", "Como ler as rotas", "Como ler o dinheiro preventivo") tinham parágrafos longos o bastante para acionar o colunamento automático (`assets/colunas.js`, regra de 07/09: texto com 320+ caracteres vira duas colunas em telas largas) — e uma frase quebrada ao meio entre duas colunas atrapalha a leitura, ainda mais numa ficha que existe para explicar o site.
+
+**Duas correções, não uma só:**
+- `assets/colunas.js` não aplica mais a regra dentro de `dialog` nem de `[data-voz="ficha"]` — as fichas ficam sempre em coluna única, qualquer que seja o tamanho do texto.
+- Os parágrafos mais densos foram reordenados, não só encurtados: "O que o índice conta" (home) e "O que conta" (Saúde) viraram dois parágrafos curtos cada, um por ideia. Os dois glossários de Financiamento ("Chaves de acesso", "Termos" e as "Três chaves de preparação") viraram listas de definição (`<dl class="lista-definicao">`) — um termo, uma explicação, sem disputar linha com os vizinhos.
+
+Nenhum conteúdo mudou; só a ordem e a moldura. Suíte de portões inteira verde; cadeia de derivados regenerada em árvore limpa.
+
 ## §76 · A voz editorial fora das legendas: fichas, subtítulos, aberturas e notas em todo o site · 16/09/2026
 
 A regra de `docs/VOZ_EDITORIAL.md` valia para legendas de figura; o handover de 16/09 a estende ao resto da prosa das páginas de dados. Três decisões da editoria, por delegação:
