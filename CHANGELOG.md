@@ -15,6 +15,24 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §72 · Voz editorial revisada no site inteiro: legendas descrevem, não corrigem o leitor; regra fixada em docs/VOZ_EDITORIAL.md · 16/09/2026
+
+A pedido da editoria, na sequência do §71: a mesma pergunta feita sobre uma legenda específica ("por que isso está aqui?") aplicada ao site inteiro — HTML e JavaScript.
+
+**O padrão corrigido, em três formas:** (1) legendas que explicavam a política editorial do site ("achar os planos é tarefa do Monitor, não das prefeituras") em vez do conteúdo; (2) avisos preventivos sobre o que o leitor não deve concluir, repetidos em cada legenda ("peso zero; o Monitor não atribui casos ao El Niño", 5× em saude.html); (3) "nunca"/"sempre" usados como ênfase retórica onde a frase já era clara sem eles.
+
+**Imprensa** — reescrita ponto a ponto: hero, release, os 7 cartões do FAQ, frase citável, contato. Nenhuma resposta abre negando ("Não.") antes de informar; cada uma diz o fato direto.
+
+**MARÉ Legal e MARÉ Saúde** — fichas "Como ler" e "O que mede" com a mesma ressalva dita uma vez, não repetida; a legenda do formulário "Indique um documento publicado" reescrita sem a frase de divisão de responsabilidade. Nos dois lados (MARÉ Legal e MARÉ Saúde), "as duas [antecipação e resposta] nunca se combinam num número" vira "mostradas separadamente" — mesma informação, sem tom de regra.
+
+**JavaScript** — quatro mensagens de resultado vazio (busca por cidade, município prioritário) que diziam "isso não significa que X" viram afirmações diretas do que foi ou não publicado, sem a moldura de correção.
+
+**Defesa civil, Para gestores, Pesquisadores, Proteja-se** — cada trecho identificado reescrito; a exceção documentada é instrução de segurança/ação nessas duas primeiras páginas, que é o conteúdo delas, não o vício.
+
+**Fica documentado e verificado automaticamente:**
+- `docs/VOZ_EDITORIAL.md` — a regra, os três hábitos a evitar, exemplos antes/depois, a exceção de Proteja-se/Para gestores, e o teste de uma frase antes de publicar. Linkado em Pesquisadores.
+- `scripts/verificar_voz_editorial.js` — portão novo: se a mesma ressalva aparecer 3+ vezes nas legendas/notas de uma página, o portão bloqueia e aponta onde consolidar. Ligado ao workflow de PR.
+
 ## §71 · "Indique um documento publicado" migra para o fim do MARÉ Legal, com legenda que diz para que serve · 16/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página** (pedido da editoria).

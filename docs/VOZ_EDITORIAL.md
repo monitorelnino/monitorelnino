@@ -1,0 +1,67 @@
+# Voz editorial · como o site descreve o que mostra (16/09/2026)
+
+Regra fixada com a editoria depois de uma revisão do site inteiro: as legendas,
+notas e fichas do MARÉ tinham o hábito de fazer três coisas que não são
+tarefa delas.
+
+## O que uma legenda faz
+
+Diz **o que a figura ou seção é**: fonte, período, unidade, escopo. Só isso.
+Se o leitor perguntasse "o que estou vendo?", a legenda é a resposta — nada
+além dela.
+
+## Os três hábitos a evitar
+
+**1. Explicar a política editorial do site em vez do conteúdo.**
+Errado: *"Achar os planos publicados é tarefa do Monitor, não das
+prefeituras — mas qualquer pessoa pode ajudar."*
+Certo: diga o que a seção faz ("envie um documento que ainda não está no
+banco"). Se o leitor não pediu para saber de quem é a responsabilidade,
+não é conteúdo da legenda.
+
+**2. Avisar o leitor sobre o que ele não deve concluir.**
+Errado: *"Peso zero; o Monitor não atribui casos ao El Niño."* repetido em
+cinco legendas da mesma página.
+Certo: a ressalva metodológica real (peso zero, resposta ≠ preparação, o
+que uma figura não mede) aparece **uma vez por página**, no lugar
+apropriado — a ficha "Como ler", ou uma nota "O que a figura não diz" — e
+as legendas individuais ficam limpas.
+
+**3. Categórico por hábito, não por necessidade.**
+"Nunca", "sempre", "jamais" usados como ênfase retórica, quando a frase já
+era clara sem eles. "As duas metades nunca se combinam num número" vira
+"As duas metades são mostradas separadamente" — mesma informação, sem o
+tom de regra sendo aplicada.
+
+## Por que isso acontecia
+
+Rigor e voz são coisas diferentes. Não inventar dado, separar fato de
+interpretação, nunca deixar uma afirmação sem lastro — isso é como o texto
+é *escrito*, e continua valendo integralmente. O erro era deixar esse
+cuidado vazar para dentro do texto como frase, fazendo o site narrar a
+própria cautela a cada parágrafo. O leitor não precisa ver o processo;
+precisa ver o resultado, dito com clareza.
+
+## Onde a ressalva metodológica mora
+
+Toda página com método a explicar tem (ou deveria ter) **um** lugar
+para isso — a ficha "Como ler o MARÉ" (ou "Como ler as rotas", "Como ler o
+dinheiro preventivo"), ou uma nota "O que a figura não diz" dedicada.
+Esse é o único lugar onde vale explicar o que algo não significa, o que não
+é medido, ou como uma categoria é definida. Fora dali, a legenda descreve.
+
+## Exceção: Proteja-se e Para gestores
+
+Instruções de segurança ("ligue 199, não o número da coordenação
+estadual") e passos de ação ("registre no S2iD em até 10 dias") não são
+o padrão que este guia corrige — são o conteúdo em si dessas duas
+páginas, cujo propósito é dizer ao leitor o que fazer. A regra vale para
+legendas de figura, fichas metodológicas e cartões informativos nas
+páginas de dados e na Imprensa.
+
+## Como testar uma frase antes de publicar
+
+Pergunte: essa frase descreve o que a figura mostra, ou está corrigindo
+uma leitura que o leitor ainda nem fez? Se for a segunda, ou ela vira uma
+frase descritiva, ou ela sai — e, se for uma ressalva real, vai para a
+ficha da página, uma vez.

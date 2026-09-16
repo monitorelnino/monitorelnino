@@ -721,9 +721,9 @@ function gerarRelatorioCidadao(uf, municipio){
       const fon_ = (reg.fonte && reg.fonte !== '—') ? '. Fonte: ' + reg.fonte : '';
       item(municipio + ': ' + lbl + doc_ + dat_ + fon_ + '.');
     } else if (reg) {
-      item(municipio + ': verificado individualmente — nenhum ' + (emergs.length ? 'plano preventivo' : 'plano ou decreto') + ' localizado em fonte pública até o corte. Isso não significa que não exista; significa que não está publicado onde pudemos verificar.');
+      item(municipio + ': verificado individualmente — nenhum ' + (emergs.length ? 'plano preventivo' : 'plano ou decreto') + ' publicado em fonte pública até o corte.');
     } else {
-      item(municipio + ': nenhum ' + (emergs.length ? 'plano preventivo' : 'plano ou decreto') + ' localizado em fonte pública até o corte. Isso não significa que não exista — significa que não está publicado onde pudemos verificar.');
+      item(municipio + ': nenhum ' + (emergs.length ? 'plano preventivo' : 'plano ou decreto') + ' publicado em fonte pública até o corte.');
     }
     if (typeof HAB_SET !== 'undefined' && HAB_SET.has(nrm(municipio) + '|' + uf))
       item('Reconhecimento federal vigente: o município pode solicitar recursos de resposta pelo S2iD.');
@@ -745,7 +745,7 @@ function gerarRelatorioCidadao(uf, municipio){
     const cat = reg ? reg.categoria : null;
     const _nivF = nivelVerificacao(uf, municipio);
     if (cat === 'nao_localizado' && _nivF === 'municipal_completo') faltas.push('Após verificação individual completa, não localizamos plano de contingência da sua cidade. Peça à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011): resposta obrigatória em 20 dias.');
-    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') faltas.push('Ainda não verificamos sua cidade com a bateria completa de fontes. Isso não significa que não haja plano — você pode ajudar pedindo o documento à prefeitura (e-SIC, resposta em 20 dias) e enviando pelo formulário.');
+    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') faltas.push('Ainda não verificamos sua cidade com a bateria completa de fontes. Peça o documento à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011, resposta em até 20 dias) e envie pelo formulário no fim desta página.');
     else if (cat === 'plano_antigo') faltas.push('O plano da sua cidade é de edição anterior. Pergunte à prefeitura se há atualização para 2026/2027.');
     else if (cat === 'decreto') faltas.push('Sua cidade tem decreto de emergência (resposta a dano ocorrido), mas não localizamos plano preventivo. Pergunte à prefeitura se existe e onde está publicado.');
     else if (cat === 'plano_elaboracao') faltas.push('O plano da sua cidade está em elaboração. Pergunte a data prevista.');
