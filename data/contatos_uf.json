@@ -7,7 +7,7 @@
   "atualizado_pelo_orgao_em": "11/09/2024",
   "consultado_em": "15/09/2026",
   "portais_verificados_em": "15/09/2026",
-  "portais_nota": "Portais testados do runner (GitHub Actions) em 15/09/2026: 200 para AC, AL, AP, BA, CE, ES, GO, MA, MG, MT, PB, PI, PR, RJ, RS, SE, SP; sem resposta ao runner fora do Brasil (bloqueio ou tempo esgotado, não erro de endereço) para AM, DF, PA, RO, SC, TO; endereço sem DNS trocado pelo do portal oficial do estado para MS e pelas formas com www listadas no MIDR para PE e RR; RN sem portal dedicado."
+  "portais_nota": "Correções de 15/09/2026, confirmadas por busca independente: RR — bombeiros.rr.gov.br estava fora do ar (domínio expirado/sequestrado por conteúdo alheio); a Defesa Civil de Roraima está hoje no site do Corpo de Bombeiros Militar (cbm.rr.gov.br). MS — defesacivil.ms.gov.br voltou a responder; revertida a URL alternativa usada quando o domínio falhava. PA — o diretório do MIDR não lista portal para o Pará; a Defesa Civil estadual está hospedada no site do Corpo de Bombeiros (bombeiros.pa.gov.br/defesacivil/), não em um domínio próprio. Demais portais sinalizados como fora do ar por uma sonda automatizada (AP, CE, DF, SC, SE, TO, PE, RO, AM) foram confirmados no ar por busca independente com conteúdo datado de 2026; a falha era bloqueio automático a robôs, não o site fora do ar."
  },
  "nacionais": [
   {
@@ -198,7 +198,7 @@
    ],
    "plantao_24h": [],
    "email": "cedec@defesacivil.ms.gov.br",
-   "portal": "https://www.ms.gov.br/Geral/defesa-civil/",
+   "portal": "https://www.defesacivil.ms.gov.br/",
    "expediente": "7h30 às 17h30"
   },
   "MT": {
@@ -227,7 +227,7 @@
     "(91) 98899-6323"
    ],
    "email": "chefiagabinete@bombeiros.pa.gov.br",
-   "portal": "https://defesacivil.pa.gov.br",
+   "portal": "https://www.bombeiros.pa.gov.br/defesacivil/",
    "expediente": "8h às 18h"
   },
   "PB": {
@@ -341,7 +341,7 @@
    ],
    "plantao_24h": [],
    "email": "comandocbmrr@hotmail.com",
-   "portal": "https://www.bombeiros.rr.gov.br/",
+   "portal": "https://www.cbm.rr.gov.br/",
    "expediente": "7h30 às 13h30"
   },
   "RS": {
