@@ -83,7 +83,7 @@
     <div class="panel" id="codigo">
       <h2>Código e replicação</h2>
       <ul class="fontes-list">
-        <li>Repositório público: <a href="https://github.com/monitorelnino/monitorelnino" target="_blank" rel="noopener">github.com/monitorelnino/monitorelnino</a> · <a href="docs/PROTOCOLO_ATUALIZACAO.md">protocolo de atualização</a> · <a href="docs/GUIA_DO_EDITOR.md">guia do editor</a></li>
+        <li>Repositório público: <a href="https://github.com/monitorelnino/monitorelnino" target="_blank" rel="noopener">github.com/monitorelnino/monitorelnino</a> · <a href="docs/PROTOCOLO_ATUALIZACAO.md">protocolo de atualização</a> · <a href="docs/GUIA_DO_EDITOR.md">guia do editor</a> · <a href="docs/VOZ_EDITORIAL.md">voz editorial</a></li>
         <li>Replicar o índice: <code>python3 recalcular_mare.py --write</code>; provar: <code>python3 recalcular_mare.py --check</code>; verificações: <code>bash scripts/verificar_derivados.sh</code></li>
         <li>Pedidos de acesso à informação: só contagens agregadas serão publicadas aqui, se a editoria confirmar; textos, protocolos e destinatários não vão ao site.</li>
       </ul>
@@ -129,7 +129,7 @@
             <li><a href="MARE_Indice_Documentacao.pdf" target="_blank" rel="noopener">Documentação do Índice MARÉ · cálculo, escolhas normativas e auditoria de robustez, em PDF (regenerado a cada atualização de dados)</a></li>
             <li><a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Documento Técnico-Metodológico da plataforma · MARÉ v3.1, íntegra em PDF</a></li>
           </ul>
-          <p class="note u-mt-2">Fonte de descoberta (agregador terceiro — pista, nunca registro): painel El Niño 2026/2027 da Política Por Inteiro / Instituto Talanoa · <a href="https://politicaporinteiro.org/el-nino/" target="_blank" rel="noopener">politicaporinteiro.org/el-nino</a>.</p>
+          <p class="note u-mt-2">Fonte de descoberta (agregador terceiro, usado como pista, não como registro): painel El Niño 2026/2027 da Política Por Inteiro / Instituto Talanoa · <a href="https://politicaporinteiro.org/el-nino/" target="_blank" rel="noopener">politicaporinteiro.org/el-nino</a>.</p>
           <p class="note">Os <span id="fontesFederaisCount">—</span> registros federais completos constam do banco de dados do projeto e do documento metodológico.</p>
         </div>
         <div>
@@ -192,7 +192,7 @@
       <h2 id="fontes-sinais">Fontes dos sinais de risco</h2>
       <p class="hint">Organizadas em três camadas: o <strong>ciclo</strong> (o que se projeta para o período), o <strong>observado</strong> (o que os sistemas de monitoramento registram agora) e o <strong>ENOS</strong> (o estado do fenômeno no Pacífico). Cada linha diz o que a fonte informa, quando foi consultada e para onde ir conferir.</p>
       <div class="tbl-wrap tbl-wrap--livre" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFontes"><thead><tr><th>Fonte</th><th>Órgão</th><th>O que informa</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
-      <p class="note u-mt-3 u-mb-0">Imprensa e agregadores de terceiros não aparecem nesta tabela: no protocolo do Monitor eles servem para descobrir um documento, nunca para registrá-lo.</p>
+      <p class="note u-mt-3 u-mb-0">Imprensa e agregadores de terceiros não aparecem nesta tabela: servem para descobrir um documento; o registro é sempre a fonte oficial.</p>
     </div>
   </details>
 
@@ -253,7 +253,7 @@
     <summary class="acc-summary">O que a União publicou (saúde)</summary>
     <div class="panel" id="saude-federal-painel">
       <h2 id="saude-federal-h2">O que a União publicou</h2>
-      <p class="hint">Cartões reproduzem documentos oficiais. "Anunciado, não localizado até o corte" é uma linha própria — nunca um cartão inventado. Documentos de referência, não sinal de saúde observado na população.</p>
+      <p class="hint">Cartões reproduzem documentos oficiais; o que foi anunciado mas não localizado até o corte aparece como linha própria, não como cartão. Documentos de referência, não sinal de saúde observado na população.</p>
       <div class="grade-cartoes" id="cartoesFederalSaude"></div>
     </div>
   </details>
@@ -262,7 +262,7 @@
     <summary class="acc-summary">Backlog de fontes de saúde: catálogo de desfechos e gatilhos do plano</summary>
     <div class="panel" id="saude-backlog-painel">
       <h2 id="saude-backlog-h2">Backlog de fontes · o que o plano nacional manda acompanhar</h2>
-      <p class="hint">Roteiro metodológico, não painel operacional: o Plano de Contingência por Seca e Estiagem (MS, 2026) lista 20 desfechos e gatilhos por estágio; o Monitor coleta <span id="nDesfechosColetados">—</span> até o corte, os demais ficam no backlog de fontes. O Monitor não declara estágio; só o MS e as SES declaram.</p>
+      <p class="hint">Roteiro metodológico, não painel operacional: o Plano de Contingência por Seca e Estiagem (MS, 2026) lista 20 desfechos e gatilhos por estágio; o Monitor coleta <span id="nDesfechosColetados">—</span> até o corte, os demais ficam no backlog de fontes. O estágio é declarado pelo MS e pelas SES.</p>
       <div class="grade-figuras">
         <figure class="figura figura--tabela" id="boxAreas">
         <h3 class="figura-titulo">Áreas temáticas dos planos estaduais (COBRADE)</h3>

@@ -40,7 +40,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       if (!uf || !nome) { out.hidden = true; return; }
       const m = (porUF[uf] || []).find(x => x.nome.toLowerCase() === nome.toLowerCase());
       out.hidden = false;
-      if (!m) { out.innerHTML = '<strong>' + esc(nome) + ' (' + uf + ')</strong> não está na aproximação de municípios prioritários desta edição — o que não significa risco baixo: é a aproximação populacional, não a lista oficial completa.'; return; }
+      if (!m) { out.innerHTML = '<strong>' + esc(nome) + ' (' + uf + ')</strong> não está na aproximação de municípios prioritários desta edição — a aproximação populacional, não a lista oficial completa.'; return; }
       out.innerHTML = '<strong>' + esc(m.nome) + ' (' + uf + ')</strong> está na aproximação de municípios prioritários. '
         + (m.publicado ? 'Instrumento (plano, decreto ou estrutura) já localizado até o corte — ' : 'Nenhum instrumento localizado até o corte — ')
         + '<a href="index.html#' + esc(uf) + '">ver o estado na página inicial →</a>';

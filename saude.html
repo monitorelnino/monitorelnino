@@ -105,9 +105,9 @@
   <div class="panel panel--destaque" id="comoler-saude-painel" hidden>
     <div id="comolerSaude" hidden>
       <h2>Como ler o MARÉ Saúde</h2>
-      <p class="hint"><strong>O que mede:</strong> a antecipação é o índice — três componentes com pesos iguais, os mesmos do MARÉ Legal: instrumento estadual (plano de contingência de saúde para o ciclo), cobertura populacional sanitária (população em município cujo plano localizado trata a saúde) e antecipação (quando o plano foi publicado, na mesma régua de tempo do índice principal) — e a resposta é a parcela da população em estado com emergência sanitária declarada (ESPIN ou decreto estadual); as duas nunca se combinam num número.</p>
+      <p class="hint"><strong>O que mede:</strong> a antecipação é o índice — três componentes com pesos iguais, os mesmos do MARÉ Legal: instrumento estadual (plano de contingência de saúde para o ciclo), cobertura populacional sanitária (população em município cujo plano localizado trata a saúde) e antecipação (quando o plano foi publicado, na mesma régua de tempo do índice principal) — e a resposta é a parcela da população em estado com emergência sanitária declarada (ESPIN ou decreto estadual), mostradas separadamente.</p>
       <p class="hint"><strong>O que não mede:</strong> o estado de saúde da população, capacidade instalada, suficiência de recursos e execução no terreno. Casos de dengue, chikungunya, doenças respiratórias e diarreicas e avisos de calor são observação, com peso zero.</p>
-      <p class="hint"><strong>O teto da afirmação:</strong> "sem plano localizado" é o que não está público e verificável nos diários oficiais e sítios das secretarias estaduais de saúde, do CIEVS ou do COE — nunca "sem plano"; "ainda não verificado" significa que a bateria de busca desta camada não foi executada para o estado, não que falte documento.</p>
+      <p class="hint"><strong>O teto da afirmação:</strong> "sem plano localizado" é o que não está público e verificável nos diários oficiais e sítios das secretarias estaduais de saúde, do CIEVS ou do COE. "Ainda não verificado" significa que a bateria de busca desta camada não foi executada para o estado.</p>
       <p class="hint"><strong>Resposta:</strong> emergências sanitárias declaradas desde 29/06/2026 (ESPIN federal e decretos estaduais), ponderadas pela população (Censo 2022). Fontes: DOU e diários oficiais estaduais.</p>
       <p class="hint">O MARÉ Saúde mede o <strong>arcabouço público da preparação sanitária</strong>: existência, natureza, alcance populacional e antecipação dos instrumentos publicados pelas secretarias estaduais de saúde. Só planos de preparação para o ciclo pontuam; planos decenais de adaptação (AdaptaSUS-UF) são estrutura, não pontuam. Peso zero no MARÉ Legal; não comparável a ele nem somado a ele. O cálculo completo está na <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">metodologia (§31)</a>.</p>
     </div>
@@ -119,7 +119,8 @@
 
   <div class="panel panel--acento-teal" id="dengue">
     <h2>Dengue</h2>
-    <p class="hint">Nível de alerta no painel amostral (313 municípios) e nas 27 capitais; casos por semana sobre o canal endêmico 2019–2025. Peso zero; o Monitor não atribui casos ao El Niño.</p>
+    <p class="note u-mb-0">Dengue, chikungunya, calor, respiratórias e diarreicas: observação sobre a população; não entram na nota do MARÉ Saúde.</p>
+    <p class="hint">Nível de alerta no painel amostral (313 municípios) e nas 27 capitais; casos por semana sobre o canal endêmico 2019–2025.</p>
     <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxDesfMapa">
         <h3 class="figura-titulo">Nível de alerta por município · última semana consolidada</h3>
@@ -151,7 +152,7 @@
 
   <div class="panel panel--acento-teal" id="chikungunya">
     <h2>Chikungunya</h2>
-    <p class="hint">Nível de alerta no painel amostral e casos por semana sobre o canal endêmico. Peso zero.</p>
+    <p class="hint">Nível de alerta no painel amostral e casos por semana sobre o canal endêmico.</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxChikMapa">
         <h3 class="figura-titulo">Nível de alerta por município · última semana consolidada</h3>
@@ -175,7 +176,7 @@
 
   <div class="panel panel--acento-teal" id="calor">
     <h2>Calor</h2>
-    <p class="hint">Avisos de calor vigentes do INMET por estado, na consulta mais recente. Peso zero.</p>
+    <p class="hint">Avisos de calor vigentes do INMET por estado, na consulta mais recente.</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxCalor">
         <h3 class="figura-titulo">Avisos de calor vigentes (INMET)</h3>
@@ -188,7 +189,7 @@
 
   <div class="panel panel--acento-teal" id="respiratorias">
     <h2>Doenças respiratórias</h2>
-    <p class="hint">SRAG e síndrome gripal por semana no Brasil, sobre o canal endêmico (InfoGripe); fonte não coletada aparece como lacuna. Peso zero.</p>
+    <p class="hint">SRAG e síndrome gripal por semana no Brasil, sobre o canal endêmico (InfoGripe); fonte não coletada aparece como lacuna.</p>
     <div class="grade-figuras">
       <figure class="figura figura--grafico" id="boxSRAG">
         <h3 class="figura-titulo">SRAG por semana · Brasil, sobre o canal endêmico</h3>
@@ -207,7 +208,7 @@
 
   <div class="panel panel--acento-teal" id="diarreicas">
     <h2>Doenças diarreicas agudas</h2>
-    <p class="hint">Atendimentos em unidades sentinela (MDDA) por semana no Brasil, sobre o canal endêmico (Sivep-DDA via LAI). Peso zero.</p>
+    <p class="hint">Atendimentos em unidades sentinela (MDDA) por semana no Brasil, sobre o canal endêmico (Sivep-DDA via LAI).</p>
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--grafico figura--largo" id="boxDDA">
         <h3 class="figura-titulo">Diarreicas agudas por semana · Brasil, sobre o canal endêmico</h3>
@@ -267,7 +268,7 @@
 </div>
 
 <script src="assets/colunas.js?v=ee47c943" defer></script>
-<script src="assets/js/saude.js?v=8cef91a0" defer></script>
+<script src="assets/js/saude.js?v=3ad44716" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
