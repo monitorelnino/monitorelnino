@@ -36,7 +36,12 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
-ARQUIVOS_HTML = ["index.html", "defesa-civil.html", "proteja-se.html", "prefeituras.html", "obrigado.html"]
+ARQUIVOS_HTML = ["index.html", "defesa-civil.html", "proteja-se.html", "prefeituras.html", "obrigado.html",
+                  # 15/09/2026 (auditoria editorial): faltavam 6 das 11 páginas — nenhuma tinha os links externos
+                  # verificados desde que ganharam suas próprias (sinais-de-risco em 31/08, saúde e financiamento
+                  # em 06/09, pesquisadores e imprensa desde sempre). Cobertura agora é a árvore inteira do site.
+                  "sinais-de-risco.html", "saude.html", "financiamento.html", "pesquisadores.html",
+                  "imprensa.html", "calendario-eleitoral.html"]
 
 
 def extrair_links_marcacao():
@@ -58,15 +63,22 @@ def extrair_links_marcacao():
 
 
 def extrair_links_js_e_estados():
-    """URLs que não estão em href= mas o usuário recebe do mesmo jeito: constantes JS de
-    index.html (PORTAIS_UF, DOM_LINKS, GUIAS, os link() do PDF do cidadão) e as urls dos
-    instrumentos estaduais em data/estados.json. Ampliação de 31/08/2026: Patricia
-    perguntou se todos os links do site estavam conferidos — estes não estavam no escopo."""
+    """URLs que não estão em href= mas o usuário recebe do mesmo jeito: constantes JS
+    (PORTAIS_UF, DOM_LINKS, GUIAS, os link() do PDF do cidadão) e as urls dos instrumentos
+    estaduais em data/estados.json. Ampliação de 31/08/2026: Patricia perguntou se todos os
+    links do site estavam conferidos — estes não estavam no escopo.
+    Correção de 15/09/2026: a extração original só olhava <script>…</script> INLINE em
+    index.html; a refatoração de CSP de 06/09/2026 moveu todo JS para arquivos externos em
+    assets/js/*.js — desde então esta função devolvia sempre {} (nenhuma URL), sem ninguém
+    perceber, porque o portão não distingue "zero links achados" de "zero links quebrados".
+    Agora varre todo assets/js/*.js, não um arquivo por nome (o mesmo tipo de lista que
+    ficou desatualizada aqui já ficou desatualizada demais em ARQUIVOS_HTML acima)."""
     achados = {}
-    html = ler_pagina(RAIZ / "index.html")
-    scripts = " ".join(re.findall(r"<script>([\s\S]*?)</script>", html))
-    for m in re.finditer(r"'(https?://[^'\s]+)'", scripts):
-        achados.setdefault(m.group(1), []).append(("index.html (JS: portais/diários/guias/PDF)", ""))
+    for js in sorted((RAIZ / "assets" / "js").glob("*.js")):
+        texto = js.read_text(encoding="utf-8")
+        for aspas, padrao in (("'", r"'(https?://[^'\s]+)'"), ('"', r'"(https?://[^"\s]+)"')):
+            for m in re.finditer(padrao, texto):
+                achados.setdefault(m.group(1), []).append((f"assets/js/{js.name}", ""))
     est = json.load(open(DATA / "estados.json", encoding="utf-8"))
     for u in est.get("ufs", []):
         for campo in ("url", "doc_url", "fonte_url"):
