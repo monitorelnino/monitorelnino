@@ -57,7 +57,12 @@ main{display:block;}
 .grade-cartoes{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--esp-grade);}
 .grade-cartoes > *{min-width:0;}
 .grade-cartoes--1{grid-template-columns:minmax(0, 1fr);}   /* 15/09/2026: cartões empilhados em coluna única (FAQ da Imprensa) */
-#releaseTexto{columns:1; max-width:none;}   /* 15/09/2026: o release lê-se em coluna única */
+/* 15/09/2026: release em coluna única, sem caixa — texto corrido como o resto da página */
+.release{columns:1; max-width:none;}
+.release p:not(.note):not(.selo){columns:1; max-width:none; margin:0 0 var(--sp-3); font-size:var(--fs-body); line-height:var(--lh-body);}
+.release .selo{margin-bottom:var(--sp-2);}
+.release-titulo{font-family:var(--font-titulo); font-size:var(--fs-h2); line-height:var(--lh-h2); font-weight:var(--peso-regular); margin:0 0 var(--sp-2);}
+.release-sub{font-size:var(--fs-lead, 18px); line-height:1.5; color:var(--muted); margin:0 0 var(--sp-4) !important;}
 .grade-figuras + .grade-figuras, .grade-cartoes + .grade-figuras, .grade-figuras + .grade-cartoes{margin-top:var(--esp-grade);}
 .comoler-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:0 var(--sp-6);}
 .comoler-grid p{margin:0 0 var(--sp-2);}

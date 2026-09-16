@@ -15,6 +15,14 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §68 · Imprensa: release jornalístico com os achados da edição, o período eleitoral em números, entregas e razões para abrir o Monitor; texto corrido, sem caixa · 15/09/2026
+
+Nenhuma alteração de método. Classe **texto + estética** (pedido da editoria).
+
+- **Release** reescrito a partir da notícia, não do projeto: título-fato ("Só N dos 27 estados publicaram um plano feito para o ciclo — e a lei eleitoral fechou a torneira…"), subtítulo com dimensão, e blocos "o que aconteceu", "o que o país aprende", "o período eleitoral tem impacto — e é medível", "o que a União prometeu", "como é feito", frase citável e serviço. Todos os números vêm do dado, ao vivo: média e faixa; estados por status (com siglas) e extremos da régua; planos municipais e diários varridos; MARÉ Saúde; transferências voluntárias antes do defeso (R$ bi) e nas semanas seguintes (R$ mi), data da última carga do TransfereGov; decretados, reconhecidos, primeiro decreto; pago das MPs.
+- **O que se aprende com o Monitor — e o que ele entrega**: quatro cartões — cinco achados da edição (do dado), o período eleitoral em números, as entregas página a página, por que abrir o Monitor (leitor, gestor, jornalista, pesquisador). Substitui "O que o MARÉ traz de novo".
+- **Estética**: sai a caixa azul de citação; o release é texto corrido em coluna única, com título e subtítulo próprios (`.release`, `.release-titulo`, `.release-sub`). Teto de palavras: 2.300.
+
 ## §67 · Imprensa reformulada: release da edição, o que o MARÉ traz de novo, FAQ na ordem do site · 15/09/2026
 
 Nenhuma alteração de método. Classe **texto** (pedido da editoria).
