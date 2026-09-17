@@ -73,7 +73,7 @@ jobs:
               console.log("trecho:", i >= 0 ? r.corpo.slice(Math.max(0,i-80), i+220) : "(NAO ENCONTRADO)");
             }
           })();
-          '
+          ' | tee /tmp/diagnostico_conteudo.txt
       - name: Sondar as configurações do projeto no Netlify (HUD, snippets, colaboração) — só leitura
         continue-on-error: true
         env:
@@ -109,5 +109,6 @@ jobs:
           cp /tmp/publicado_navegador.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado_navegador.txt" 2>/dev/null || true
           cp /tmp/netlify_config.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_netlify_config.txt" 2>/dev/null || true
           cp /tmp/verificar_publicado.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado.txt"
+          cp /tmp/diagnostico_conteudo.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_conteudo.txt" 2>/dev/null || true
           cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
           git add -A && git commit -q -m "verificar_publicado ${GITHUB_SHA::7}" && git push -q
