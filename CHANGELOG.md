@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §83 · Calendário vai para o fim da home; ponderação populacional citada na abertura; frase solta some do medidor; ficha explica o índice de resposta · 17/09/2026
+
+Pedido direto da editoria, quatro partes.
+
+**Calendário e "Indique um documento publicado" trocam de lugar.** Calendário passa a ser a última seção de `<main>`. Portão de ordem da home atualizado para a sequência nova.
+
+**Abertura**: "Cada plano encontrado soma ao índice abaixo" perde o "abaixo" e ganha "com ponderação pela população coberta" — conferido contra `recalcular_mare.py`: cobertura populacional é de fato um dos três componentes de peso igual do índice (instrumento estadual, cobertura populacional, antecipação), não uma explicação nova.
+
+**A frase "5 estados publicaram plano feito para este ciclo. 16 mantêm o plano de todo ano. 2 sem plano localizado." sai do medidor "Antes"** — HTML e a lógica JS que a calculava, removidos (as três variáveis não eram usadas em mais nenhum lugar).
+
+**Ficha "Como ler o MARÉ Legal": a seção "O índice de resposta" ganha a explicação direta do número** — "O número vai de 0 a 100 e é a parcela da população nos municípios sob decreto de emergência desde 29 de junho", no mesmo padrão explícito que a seção da antecipação já tinha ("A nota vai de 0 a 100, em quatro faixas..."). Antes, a seção dizia o que o índice contava, mas não dizia explicitamente o que o número em si significa.
+
+Suíte inteira verde de primeira (21 verificações); cadeia de derivados regenerada em árvore limpa; conferido visualmente, sem erro de JavaScript.
+
 ## §82 · Limpeza da home: cruzamento removido, glabels e contador de tempo saem, legendas descritivas, fontes do calendário com link · 17/09/2026
 
 Pedido direto da editoria, com nove partes.

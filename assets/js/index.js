@@ -125,17 +125,12 @@ const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VI
 // os mesmos valores seguem no Monitor de risco, em Financiamento e em Pesquisadores.
 const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 'LAC').map(([uf]) => uf);
 
-// ---- Cabeçalho e interpretações dos medidores (auditoria editorial 14/09/2026, §2.1–§2.3): uma frase por medidor,
-// com os números do dado. Nenhum número digitado. O que "publicaram antes" = estados por categoria do plano estadual.
+// ---- Cabeçalho: contadores do herói (auditoria editorial 14/09/2026, §2.1–§2.3).
 (function interpretacoes(){
   const el = id => document.getElementById(id); const n = v => Number(v).toLocaleString('pt-BR');
   const total = (VRESUMO && VRESUMO.total_municipios) || 5571;
   if (el('heroVerifFederal')) el('heroVerifFederal').textContent = n(total);
   if (el('heroCorte')) el('heroCorte').textContent = (META && META.corte) || '—';
-  const st = Object.values(MARE).map(v => v.status_estadual);
-  const c = k => st.filter(x => k.includes(x)).length;
-  const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), semPlano = c(['LAC']);
-  if (el('interpAntecipacao')) el('interpAntecipacao').innerHTML = `<strong>${novo}</strong> estados publicaram plano feito para este ciclo. <strong>${readVig}</strong> mantêm o plano de todo ano. <strong>${semPlano}</strong> sem plano localizado.`;
 })();
 
 // ---- Calendário (15/09/2026, pedido da editoria: "O que vem" condensado em colunas): marcos fixos do ciclo
