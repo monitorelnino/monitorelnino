@@ -50,8 +50,7 @@
 <main id="conteudo">
   <p class="selo">Sinais oficiais · o que os órgãos publicaram, com documento e data</p>
   <h1>Monitor de riscos</h1>
-  <p class="hint">O risco projetado para o ciclo e o risco observado agora, estado a estado, tal como publicado por NOAA, CEMADEN, INPE, ANA e INMET, com documento e data. Fontes em <a href="pesquisadores.html#fontes-sinais">Pesquisadores</a>.</p>
-  <p class="note" data-voz="ficha"><strong>O que esta página não diz.</strong> Os sinais são reproduzidos dos órgãos; não entram na nota; os avisos oficiais valem sobre qualquer leitura daqui.</p>
+  <p class="hint">Riscos projetados e observados para o ciclo, estado a estado, tal como publicado por <a href="https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php" target="_blank" rel="noopener">NOAA</a>, <a href="https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes" target="_blank" rel="noopener">CEMADEN</a>, <a href="https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/" target="_blank" rel="noopener">INPE</a>, <a href="https://monitordesecas.ana.gov.br/" target="_blank" rel="noopener">ANA</a> e <a href="https://alertas2.inmet.gov.br/" target="_blank" rel="noopener">INMET</a>; são sinais reproduzidos dos órgãos, que não entram na nota do MARÉ Legal.</p>
 
   <div class="panel panel--acento-teal" id="situacao">
     <h2>Situação atual</h2>
@@ -72,14 +71,12 @@
         <p class="figura-leitura" id="oniLeitura" hidden></p>
       </figure>
     </div>
-    <p class="note u-mb-0" id="oniAtualizado"></p>
     <p class="hint u-mt-4" id="stDiagnostico">—</p>
-    <div class="card-note u-mb-0">Probabilidade por trimestre (IRI/CPC): sem coleta até o corte. A probabilidade do trimestre corrente aparece, com fonte, em "Situação atual" no topo da página.</div>
   </div>
 
   <div class="panel" id="projetado">
     <h2>O risco projetado, estado a estado</h2>
-    <p class="hint">Família de risco projetada para cada estado nos boletins do Painel El Niño 2026/2027, no mapa e na contagem de estados por família.</p>
+    <p class="hint">Família de risco projetada para cada estado nos boletins do Painel El Niño 2026/2027.</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa figura--largo figura--dupla" id="boxTipoRisco">
         <h3 class="figura-titulo">Tipo de risco projetado para o ciclo — mapa e contagem de estados</h3>
@@ -98,31 +95,31 @@
 
   <div class="panel" id="agora">
     <h2>O que está acontecendo agora</h2>
-    <p class="hint">Seca observada (Monitor de Secas, ANA), avisos meteorológicos vigentes (INMET), focos de calor (INPE) e alertas do CEMADEN, por estado.</p>
+    <p class="hint">Avisos meteorológicos vigentes (INMET) e alertas do CEMADEN, seca observada (Monitor de Secas, ANA) e focos de calor (INPE), por estado.</p>
     <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxSecas">
-        <h3 class="figura-titulo">Seca observada — Monitor de Secas</h3>
-        <p class="figura-sub">Mapa mensal mais recente · categoria de seca em pelo menos metade da área da UF (Monitor de Secas, ANA) · sem seca · S0–S4</p>
-        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legSecas"></div>
-      </figure>
       <figure class="figura figura--mapa" id="boxAvisos">
         <h3 class="figura-titulo">Avisos meteorológicos vigentes</h3>
         <p class="figura-sub">Consulta mais recente · avisos meteorológicos vigentes do INMET por UF · contagem e severidade</p>
         <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos vigentes do INMET" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAvisos"></div>
       </figure>
+      <figure class="figura figura--mapa" id="boxCemaden">
+        <h3 class="figura-titulo">Alertas de risco vigentes, CEMADEN</h3>
+        <p class="figura-sub">Consulta mais recente · alertas hidrológicos e geológicos vigentes (CEMADEN) por UF · contagem</p>
+        <div class="figura-midia"><svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legCemaden"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxSecas">
+        <h3 class="figura-titulo">Seca observada, Monitor de Secas</h3>
+        <p class="figura-sub">Mapa mensal mais recente · categoria de seca em pelo menos metade da área da UF (Monitor de Secas, ANA) · sem seca · S0–S4</p>
+        <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legSecas"></div>
+      </figure>
       <figure class="figura figura--mapa" id="boxFogo">
         <h3 class="figura-titulo">Focos ativos nas últimas 24 horas</h3>
         <p class="figura-sub">Último dia disponível · focos de calor (INPE, satélite de referência) por UF · contagem em 24 h</p>
         <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil pelo número de focos ativos nas últimas 24 horas segundo o INPE" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legFogo"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxCemaden">
-        <h3 class="figura-titulo">Alertas de risco vigentes — CEMADEN</h3>
-        <p class="figura-sub">Consulta mais recente · alertas hidrológicos e geológicos vigentes (CEMADEN) por UF · contagem</p>
-        <div class="figura-midia"><svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legCemaden"></div>
       </figure>
     </div>
   </div>
@@ -137,7 +134,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=c5aebb4b" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=0450cfb1" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

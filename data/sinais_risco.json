@@ -19,7 +19,7 @@
   },
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "15/09/2026",
+ "gerado_em": "17/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -28,8 +28,8 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br",
    "papel": "Risco projetado por região e a largada pública do ciclo.",
    "status": "coletado",
-   "consultado_em": "01/09/2026",
-   "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+   "consultado_em": "17/09/2026",
+   "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
    "detalhe": "Risco projetado por UF conforme registro curado em data/consist.json, derivado da leitura humana dos boletins do Painel."
   },
   "monitor_secas": {
@@ -1013,10 +1013,14 @@
    "risco_projetado": {
     "texto": "Estiagem; incêndios",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Hidrológico (estiagem)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1072,10 +1076,13 @@
    "risco_projetado": {
     "texto": "Estiagem prolongada; pressão sobre reservatórios",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "Comitê El Niño (monitoramento e plano de ação)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1135,10 +1142,14 @@
    "risco_projetado": {
     "texto": "Estiagem severa; incêndios no sul do estado",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Hidrológico (estiagem)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1198,10 +1209,13 @@
    "risco_projetado": {
     "texto": "Estiagem",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "PPCDAP + Comitê Estiagem/Incêndios (recorrente)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1257,10 +1271,14 @@
    "risco_projetado": {
     "texto": "Estiagem; incêndios (MATOPIBA)",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Hidrológico + incêndios",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1321,10 +1339,13 @@
    "risco_projetado": {
     "texto": "Estiagem prolongada; pressão sobre reservatórios",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "Hidrológico (seca)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1385,10 +1406,13 @@
    "risco_projetado": {
     "texto": "Incêndios; deficiência hídrica",
     "tipo": "incendios",
+    "componentes": [
+     "incendios"
+    ],
     "instrumento_estadual": "PPCIF/Operação Verde Vivo (recorrente)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1448,10 +1472,11 @@
    "risco_projetado": {
     "texto": "Sem sinal elevado no trimestre",
     "tipo": "sem_sinal",
+    "componentes": [],
     "instrumento_estadual": "Hidrológico (chuvas, recorrente)",
     "relacao_com_instrumento": "NEUTRO",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1511,10 +1536,14 @@
    "risco_projetado": {
     "texto": "Incêndios; seca em intensificação (IIS-3)",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Hidrológico + incêndios",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1576,10 +1605,14 @@
    "risco_projetado": {
     "texto": "Estiagem; incêndios (MATOPIBA)",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Incêndios florestais",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1640,10 +1673,13 @@
    "risco_projetado": {
     "texto": "Seca em intensificação (IIS-3)",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "Hidrológico (chuvas, recorrente)",
     "relacao_com_instrumento": "DIFERE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1709,10 +1745,14 @@
    "risco_projetado": {
     "texto": "Incêndios; chuvas acima da média no sul do estado",
     "tipo": "misto",
+    "componentes": [
+     "chuvas",
+     "incendios"
+    ],
     "instrumento_estadual": "Incêndios florestais",
     "relacao_com_instrumento": "PARCIAL",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1768,10 +1808,13 @@
    "risco_projetado": {
     "texto": "Incêndios florestais; deficiência hídrica",
     "tipo": "incendios",
+    "componentes": [
+     "incendios"
+    ],
     "instrumento_estadual": "Incêndios florestais",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1831,10 +1874,14 @@
    "risco_projetado": {
     "texto": "Estiagem; incêndios no sul do estado",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Alerta Climático e Ambiental preventivo",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1894,10 +1941,13 @@
    "risco_projetado": {
     "texto": "Estiagem prolongada; pressão sobre reservatórios",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "Nenhum instrumento estadual",
     "relacao_com_instrumento": "SEM",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -1958,10 +2008,13 @@
    "risco_projetado": {
     "texto": "Estiagem prolongada; pressão sobre reservatórios",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "PEAR-PE (em elaboração)",
     "relacao_com_instrumento": "DIFERE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2022,10 +2075,14 @@
    "risco_projetado": {
     "texto": "Estiagem; incêndios (MATOPIBA)",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Hidrológico + agrícola",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2086,10 +2143,13 @@
    "risco_projetado": {
     "texto": "Chuvas extremas e enchentes",
     "tipo": "chuvas",
+    "componentes": [
+     "chuvas"
+    ],
     "instrumento_estadual": "Hidrológico (contingência)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2159,10 +2219,11 @@
    "risco_projetado": {
     "texto": "Sem sinal elevado no trimestre",
     "tipo": "sem_sinal",
+    "componentes": [],
     "instrumento_estadual": "Hidrológico (chuvas, recorrente)",
     "relacao_com_instrumento": "NEUTRO",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2229,10 +2290,13 @@
    "risco_projetado": {
     "texto": "Estiagem prolongada; pressão sobre reservatórios",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "Nenhum instrumento estadual",
     "relacao_com_instrumento": "SEM",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2292,10 +2356,14 @@
    "risco_projetado": {
     "texto": "Estiagem; incêndios",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Incêndios florestais",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2351,10 +2419,13 @@
    "risco_projetado": {
     "texto": "Estiagem",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "Incêndios florestais",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2410,10 +2481,13 @@
    "risco_projetado": {
     "texto": "Chuvas extremas e enchentes",
     "tipo": "chuvas",
+    "componentes": [
+     "chuvas"
+    ],
     "instrumento_estadual": "Hidrológico (enchentes)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2473,10 +2547,13 @@
    "risco_projetado": {
     "texto": "Chuvas extremas e enchentes",
     "tipo": "chuvas",
+    "componentes": [
+     "chuvas"
+    ],
     "instrumento_estadual": "Multirrisco integrado",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2542,10 +2619,13 @@
    "risco_projetado": {
     "texto": "Estiagem prolongada; pressão sobre reservatórios",
     "tipo": "estiagem",
+    "componentes": [
+     "estiagem"
+    ],
     "instrumento_estadual": "Plano de Contingência Estadual (Cegec)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2605,10 +2685,13 @@
    "risco_projetado": {
     "texto": "Chuvas acima da média no sul do estado",
     "tipo": "chuvas",
+    "componentes": [
+     "chuvas"
+    ],
     "instrumento_estadual": "Hidrológico (chuvas, recorrente)",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {
@@ -2713,10 +2796,14 @@
    "risco_projetado": {
     "texto": "Estiagem; incêndios (MATOPIBA)",
     "tipo": "misto",
+    "componentes": [
+     "estiagem",
+     "incendios"
+    ],
     "instrumento_estadual": "Incêndios florestais",
     "relacao_com_instrumento": "COBRE",
     "fonte": "painel_el_nino",
-    "documento": "Boletins nº 1 e 2 do Painel El Niño 2026-2027",
+    "documento": "Boletins nº 1 e 3 do Painel El Niño 2026-2027",
     "url": "https://www.gov.br/cemaden/pt-br"
    },
    "secas": {

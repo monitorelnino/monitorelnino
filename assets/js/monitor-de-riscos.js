@@ -63,14 +63,21 @@ const TIPO_ROTULO = SINAIS._formato.tipos_de_risco;
 const TIPO_CURTO = SINAIS._formato.tipos_de_risco_curto;
 desenharMapa('mapaTipoRisco', 'legTipoRisco',
   uf => { const r = RISCO(uf); return r ? TIPO_COR[r.tipo] : NEUTRA; },
-  uf => { const r = RISCO(uf); return r ? '<em>' + esc(TIPO_ROTULO[r.tipo]) + '</em><br>' + esc(r.texto) : 'Sem registro localizado até o corte'; },
+  uf => { const r = RISCO(uf); if (!r) return 'Sem registro localizado até o corte';
+    // 17/09/2026 (pedido da editoria): "misto" nomeia os riscos que o compõem, não só a categoria —
+    // o mouse sobre o mapa é onde o leitor descobre do que o "misto" daquele estado é feito.
+    const rotulo = r.tipo === 'misto' && r.componentes && r.componentes.length
+      ? r.componentes.map(c => TIPO_CURTO[c]).join(' + ')
+      : TIPO_ROTULO[r.tipo];
+    return '<em>' + esc(rotulo) + '</em><br>' + esc(r.texto); },
   Object.keys(TIPO_COR).map(t => ({cor:TIPO_COR[t], rotulo:TIPO_ROTULO[t]})));
 credito('boxTipoRisco', 'painel_el_nino');
 
 const corpoTipo = document.querySelector('#tblTipoRisco tbody');
 corpoTipo.innerHTML = UFS.map(uf => { const r = RISCO(uf);
+  const tipoCel = r ? (r.tipo === 'misto' && r.componentes && r.componentes.length ? r.componentes.map(c => TIPO_CURTO[c]).join(' + ') : TIPO_ROTULO[r.tipo]) : '—';
   return '<tr><td><strong>' + uf + '</strong></td><td>' + esc(r ? r.texto : 'não localizado até o corte') +
-         '</td><td>' + esc(r ? TIPO_ROTULO[r.tipo] : '—') + '</td></tr>'; }).join('');
+         '</td><td>' + esc(tipoCel) + '</td></tr>'; }).join('');
 
 // ---- Mapa 2: seca observada ----
 // 15/09/2026: a fonte passou a ser o RPC de dados tabulares da ANA (fração cumulativa da área da UF em cada categoria
@@ -142,13 +149,21 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
   const estado = u ? (u.anomalia >= 0.5 ? 'El Niño' : u.anomalia <= -0.5 ? 'La Niña' : 'Neutro') : '—';
   el('stEstado').innerHTML = esc(estado) + (u ? ' <small>confirmado pelo Painel em 29/06/2026</small>' : '');
   el('stIntensidade').innerHTML = u ? esc(cls(u.anomalia)) + ' <small>pelo ONI observado; projeção: muito forte (Boletim nº 3)</small>' : '—';
-  if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; el('stTendencia').innerHTML = esc(d > 0.15 ? 'fortalecendo' : d < -0.15 ? 'enfraquecendo' : 'estável') + ' <small>' + (d >= 0 ? '+' : '') + esc(d.toFixed(2).replace('.', ',')) + ' °C em dois trimestres</small>'; }
+  let d = null;
+  if (serie.length >= 3) { d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; el('stTendencia').innerHTML = esc(d > 0.15 ? 'fortalecendo' : d < -0.15 ? 'enfraquecendo' : 'estável') + ' <small>' + (d >= 0 ? '+' : '') + esc(d.toFixed(2).replace('.', ',')) + ' °C em dois trimestres</small>'; }
   el('stOni').innerHTML = u ? esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C <small>' + esc(u.trimestre + '/' + u.ano) + ' · média móvel trimestral</small>' : '—';
   el('stProb').innerHTML = ultimaProb ? esc(ultimaProb.el_nino.toFixed(0)) + '% <small>' + esc(ultimaProb.trimestre) + ' (IRI/CPC)</small>' : (pg && pg.enso ? '> 90% <small>SON/2026 · CPC/NOAA, ago/2026</small>' : '—');
   el('stDocumento').innerHTML = coletada('painel_el_nino') ? esc(fonteDe('painel_el_nino').documento) : '<span class="lacuna">sem coleta até o corte</span>';
-  // 17/09/2026 (pedido da editoria): "Última atualização" sai da grade de Situação atual e passa a
-  // viver abaixo da Figura 1 (o ONI), em letra menor — é sobre as duas fontes que alimentam a figura.
-  if (el('oniAtualizado')) el('oniAtualizado').innerHTML = 'Última atualização: ' + esc(SINAIS.gerado_em || '') + ' <small>· ONI: ' + esc(fonteDe('noaa_oni').consultado_em || '—') + ' · Painel: ' + esc(fonteDe('painel_el_nino').consultado_em || '—') + '</small>';
+  // 17/09/2026 (pedido da editoria): "Situação atual" virava justaposição de fragmentos ("· · ·"), não
+  // frase — trocado por prosa corrida, priorizando a leitura já escrita e coerente que o próprio
+  // prognóstico traz (SINAIS.enos.prognostico.enso.leitura), com a tendência do ONI observado ao final.
+  if (el('stDestaque')) {
+    const destaque = [];
+    if (pg && pg.enso && pg.enso.leitura) destaque.push(esc(pg.enso.leitura) + '.');
+    else if (u) destaque.push('<strong>' + esc(estado) + '</strong> confirmado pelo Painel em 29/06/2026, ' + esc(cls(u.anomalia)) + ' pelo ONI observado.');
+    if (d !== null) destaque.push('Tendência ' + esc(d > 0.15 ? 'de fortalecimento' : d < -0.15 ? 'de enfraquecimento' : 'estável') + ': ' + (d >= 0 ? '+' : '') + esc(d.toFixed(2).replace('.', ',')) + ' °C em dois trimestres, pelo ONI observado.');
+    el('stDestaque').innerHTML = destaque.join(' ') || '—';
+  }
   const partes = [];
   if (u) partes.push('<strong>Observação:</strong> o ONI está em ' + esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C (' + esc(u.trimestre + '/' + u.ano) + '), ' + esc(cls(u.anomalia)) + ' pela escala do CPC.');
   if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; partes.push('<strong>Interpretação:</strong> a anomalia ' + (d > 0.15 ? 'vem subindo' : d < -0.15 ? 'vem caindo' : 'está estável') + ' nos últimos trimestres; o fenômeno ' + (d > 0.15 ? 'se fortalece' : d < -0.15 ? 'perde força' : 'persiste sem mudança de intensidade') + '.'); }
@@ -158,7 +173,9 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
   // que alimentam este painel — antes, cada uma tinha um cartão próprio em outra seção. A fonte da
   // Probabilidade é dinâmica (mesma condicional da linha acima): 'iri_plume' quando coletado, senão
   // 'cptec_prognostico' (o prognóstico já usado no Boletim) — a citação segue a mesma fonte no ar.
-  const fontesSituacao = ['Painel El Niño 2026-2027 (CEMADEN/INPE)', 'NOAA/CPC — Índice ONI'];
+  // 17/09/2026 (achado, pedido da editoria): "NOAA/CPC — Índice ONI" saiu daqui — a Figura 1 (o ONI)
+  // já credita a mesma fonte logo abaixo; citar duas vezes na mesma tela era redundância, não reforço.
+  const fontesSituacao = ['Painel El Niño 2026-2027 (CEMADEN/INPE)'];
   fontesSituacao.push(ultimaProb ? 'IRI/CPC — probabilidades trimestrais' : 'CPTEC/INPE — prognóstico trimestral');
   MonitorMapas.credito('situacao', {fontes: fontesSituacao, data: SINAIS.gerado_em});
   const __situacaoFonte = document.querySelector('#situacao .fonte-figura');
@@ -235,13 +252,27 @@ if (document.getElementById('wrapPlume')) {
 }
 
 // ---- Gráfico 3: estados por tipo de risco ----
-const ordemTipos = Object.keys(TIPO_ROTULO).filter(t => UFS.some(uf => RISCO(uf) && RISCO(uf).tipo === t));
-const contagem = ordemTipos.map(t => UFS.filter(uf => RISCO(uf) && RISCO(uf).tipo === t).length);
+// 17/09/2026 (pedido da editoria): a barra "Misto" só informava uma contagem, sem dizer do quê — o
+// gráfico não comunicava nada além de "N estados têm mais de um risco". Cada estado com risco misto
+// passa a contar em CADA risco que o compõe (um estado com estiagem + incêndios soma nas duas barras),
+// não numa categoria à parte. A soma das barras pode passar de 27 — é o esperado, não um erro: um
+// mesmo estado pode aparecer em mais de uma barra. O mapa não muda (mesma cor "misto" nos estados com
+// mais de um risco); só o gráfico ao lado e o texto do mouse sobre o mapa mudam.
+const TIPOS_CONTAVEIS = ['estiagem', 'chuvas', 'incendios', 'sem_sinal'];
+const contagemPorTipo = {};
+TIPOS_CONTAVEIS.forEach(t => contagemPorTipo[t] = 0);
+UFS.forEach(uf => {
+  const r = RISCO(uf); if (!r) return;
+  if (r.tipo === 'misto' && r.componentes && r.componentes.length) r.componentes.forEach(c => { if (c in contagemPorTipo) contagemPorTipo[c]++; });
+  else if (r.tipo in contagemPorTipo) contagemPorTipo[r.tipo]++;
+});
+const ordemTipos = TIPOS_CONTAVEIS.filter(t => contagemPorTipo[t] > 0);
+const contagem = ordemTipos.map(t => contagemPorTipo[t]);
 new Chart(document.getElementById('cTipos'), {type:'bar', data:{
     labels: ordemTipos.map(t => TIPO_CURTO[t]),
     datasets:[{data:contagem, backgroundColor:ordemTipos.map(t => TIPO_COR[t]), borderWidth:0}]},
   options:{...SEM_ANIM, indexAxis:'y', plugins:{legend:{display:false}},
-    scales:{x:{title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
+    scales:{x:{title:{display:true, text:'estados (um estado com mais de um risco conta em cada um)'}, ticks:{precision:0}}}}});
 // 15/09/2026: a contagem por família mora na figura dupla boxTipoRisco (mapa + gráfico, uma legenda) — o crédito é o da figura.
 // 17/09/2026: o cruzamento "tipo de risco × estágio" (que morava na home, #cCruz) saiu do site — pedido da editoria.
 
@@ -252,15 +283,3 @@ __load();
 
 // ===== monitor-de-riscos.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
-
-// 15/09/2026 (auditoria editorial §1.10): "Situação atual" com uma linha destacada composta dos mesmos campos do painel —
-// "El Niño {intensidade} · probabilidade {p} · {tendência}" — nunca digitada; espera os campos serem preenchidos.
-(function(){
-  const el = document.getElementById('stDestaque'); if (!el) return;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const t = id => esc((document.getElementById(id) || {}).textContent || '—');
-  const monta = () => { const est = t('stEstado'), inten = t('stIntensidade'), prob = t('stProb'), tend = t('stTendencia');
-    if (est === '—' && prob === '—') return false;
-    el.innerHTML = '<strong>' + est + (inten !== '—' ? ' ' + inten : '') + '</strong>' + (prob !== '—' ? ' · probabilidade ' + prob : '') + (tend !== '—' ? ' · tendência: ' + tend : '') + ' <span class="u-muted">(' + t('stDocumento') + ')</span>'; return true; };
-  if (!monta()) { let n = 0; const iv = setInterval(() => { if (monta() || ++n > 40) clearInterval(iv); }, 150); }
-})();
