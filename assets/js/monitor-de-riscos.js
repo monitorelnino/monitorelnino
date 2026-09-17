@@ -252,7 +252,9 @@ if (roni && roni.serie && roni.serie.length) {
     const el = document.getElementById('roniLeitura'); const s = roni.serie; const u = s[s.length - 1]; if (!el || !u) return;
     const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
     const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
-    let txt = 'O RONI mede a mesma anomalia do ONI, descontado o aquecimento médio do oceano tropical; é a medida oficial da NOAA desde agosto de 2026. ';
+    // 17/09/2026 (pedido da editoria): a nota deste gráfico precisa se explicar sozinha, sem depender
+    // de o leitor ter lido a nota do ONI ao lado — cada figura carrega sua própria explicação completa.
+    let txt = 'O RONI mede a mesma anomalia do ONI, descontando o aquecimento do oceano tropical; é a medida oficial da NOAA desde agosto de 2026. ';
     txt += 'RONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na mesma escala do CPC';
     if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + (d >= 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' °C em dois trimestres'; }
     el.textContent = txt + '.'; el.hidden = false;
@@ -273,7 +275,9 @@ if (nino34Mensal && nino34Mensal.serie && nino34Mensal.serie.length) {
   (function leituraAnomalia(){
     const el = document.getElementById('anomaliaLeitura'); const s = nino34Mensal.serie; const u = s[s.length - 1]; if (!el || !u) return;
     const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(2).replace('.', ',');
-    el.textContent = 'Anomalia de ' + fmt(u.anomalia) + ' °C em ' + MES_CURTO[u.mes - 1] + '/' + u.ano + ', antes da suavização de três meses que o ONI e o RONI aplicam.';
+    // 17/09/2026 (pedido da editoria): mesmo padrão das outras duas notas — explica o que o gráfico
+    // mede antes do número, sem depender de o leitor ter lido as notas do ONI ou do RONI antes.
+    el.textContent = 'Este gráfico mostra a mesma temperatura da região Niño 3.4, mês a mês, sem a suavização de três meses do ONI e do RONI. Anomalia de ' + fmt(u.anomalia) + ' °C em ' + MES_CURTO[u.mes - 1] + '/' + u.ano + '.';
     el.hidden = false;
   })();
 } else { lacuna('wrapAnomalia', 'A anomalia mensal aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
