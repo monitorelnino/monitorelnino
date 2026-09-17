@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Verificador de runtime da página de sinais oficiais de risco
- * (sinais-de-risco.html, criada em 01/09/2026 — METODOLOGIA §23).
+ * (monitor-de-riscos.html, criada em 01/09/2026 — METODOLOGIA §23).
  * Mesmo padrão de scripts/verificar_runtime_mapas.js: jsdom + d3 reais,
  * Chart simulado, fetch local. Cobre os 4 mapas, os 4 gráficos, os cartões
  * do ciclo, a tabela de fontes e — o que é próprio desta página — a
@@ -15,7 +15,7 @@ const fs = require("fs");
 const path = require("path");
 
 const raiz = path.join(__dirname, "..");
-const html = inlinePageJs(fs.readFileSync(path.join(raiz, "sinais-de-risco.html"), "utf-8"), raiz);
+const html = inlinePageJs(fs.readFileSync(path.join(raiz, "monitor-de-riscos.html"), "utf-8"), raiz);
 const erros = [];
 const vc = new VirtualConsole();
 vc.on("jsdomError", e => erros.push(e.detail && e.detail.stack ? e.detail.stack.split("\n")[0] : e.message));

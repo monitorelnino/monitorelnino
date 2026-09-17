@@ -16,7 +16,7 @@ let __baseCss = null;
 function baseCssParaBreakpoints() { if (__baseCss === null) __baseCss = fs.readFileSync(path.join(RAIZ, "assets", "base.css"), "utf-8"); return __baseCss; }
 // 03/09/2026: YAML dos workflows sem chave duplicada (o GitHub recusa o arquivo inteiro)
 try { require("child_process").execSync("python3 scripts/validar_workflows.py", { cwd: RAIZ, stdio: "pipe" }); } catch (e) { console.log("  ✗ workflows inválidos: " + String(e.stdout || "")); process.exit(1); }
-const PADRAO = ["index.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "sinais-de-risco.html", "saude.html", "financiamento.html", "imprensa.html"]
+const PADRAO = ["index.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "imprensa.html"]
   .map(a => path.join(RAIZ, a));
 const arquivos = process.argv.length > 2 ? process.argv.slice(2) : PADRAO;
 
@@ -43,7 +43,7 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css(\?v=[0-9a-f]+)?"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["MARÉ Legal", "Monitor de risco", "Proteja-se", "Defesa civil", "MARÉ Saúde", "Financiamento", "Para gestores", "Imprensa", "Pesquisadores"];   // 16/09/2026 (handover de identidade): MARÉ Legal restaurado (era MARÉ · Defesa civil); ordem de 14/09 mantida
+  const NAV_ORDEM = ["MARÉ Legal", "Monitor de riscos", "Proteja-se", "Defesa civil", "MARÉ Saúde", "Financiamento", "Para gestores", "Imprensa", "Pesquisadores"];   // 17/09/2026: Monitor de riscos (plural) e monitor-de-riscos.html; era Monitor de risco / sinais-de-risco.html
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {
@@ -249,7 +249,7 @@ for (const arq of arquivos) {
 // (17/09/2026) O próprio cabeçalho de assets/mapas.js declara que nenhuma página redefine
 // desenharMapa/siglas/showTip/legenda localmente — essa checagem passou a existir de fato
 // depois de achar três cópias divergentes de desenharMapa (financiamento.js, saude.js,
-// sinais-de-risco.js) que este portão não pegava.
+// sinais-de-risco.js, renomeado a monitor-de-riscos.js em 17/09/2026) que este portão não pegava.
 {
   const jsDir = path.join(RAIZ, "assets", "js");
   const RESERVADAS = ["desenharMapa", "siglas", "showTip", "legenda"];

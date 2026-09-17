@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §86 · "Monitor de risco" vira "Monitor de riscos"; sinais-de-risco.html vira monitor-de-riscos.html · 17/09/2026
+
+Pedido direto da editoria: o endereço da página (`sinais-de-risco.html`) e o nome exibido (`Monitor de risco`) estavam divergentes; os dois passam a se chamar "Monitor de riscos".
+
+Renomeados os dois arquivos por trás da página (`sinais-de-risco.html` → `monitor-de-riscos.html`; `assets/js/sinais-de-risco.js` → `assets/js/monitor-de-riscos.js`, mesmo padrão de nome usado pelas demais páginas do site). Atualizado em cada um dos onze links de navegação do site, no `<h1>`, título, meta tags (canônica, Open Graph, Twitter, JSON-LD), `sitemap.xml`, e nos geradores e portões que citavam o nome de arquivo ou o rótulo antigos (nove scripts de portão, três geradores Python).
+
+Redirecionamento 301 adicionado em `netlify.toml` (`/sinais-de-risco.html` e `/sinais-de-risco` → `/monitor-de-riscos.html`), no mesmo padrão já usado para as renomeações anteriores do site (`mapas-e-graficos.html`, `para-gestores.html`), para quem tiver o endereço antigo salvo ou linkado.
+
+Varredura final, sem tags, confirmou que não sobrou nenhuma menção ao nome ou ao endereço antigos fora dos comentários que documentam a própria mudança e do redirecionamento (que precisa citar o endereço antigo para funcionar).
+
+Suíte inteira verde de primeira (21 verificações); cadeia de derivados regenerada em árvore limpa; conferido visualmente na URL nova, sem erro de JavaScript.
+
 ## §85 · Monitor de risco: "Última atualização" sai da grade, ONI explicado, mapas de fogo e CEMADEN sem clique · 17/09/2026
 
 Pedido direto da editoria, cinco partes.

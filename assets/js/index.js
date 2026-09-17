@@ -122,7 +122,7 @@ function __init(){
 const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VIG:"Vigente-recorrente", LAC:"Sem plano localizado"};
 
 // 15/09/2026 (pedido da editoria): os três cartões (ONI · R$/hab. · "o que ainda não sabemos") saíram da página inicial;
-// os mesmos valores seguem no Monitor de risco, em Financiamento e em Pesquisadores.
+// os mesmos valores seguem no Monitor de riscos, em Financiamento e em Pesquisadores.
 const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 'LAC').map(([uf]) => uf);
 
 // ---- Cabeçalho: contadores do herói (auditoria editorial 14/09/2026, §2.1–§2.3).

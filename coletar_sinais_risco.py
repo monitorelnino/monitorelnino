@@ -3,7 +3,7 @@
 coletar_sinais_risco.py
 =======================
 Coletor das três camadas de SINAIS OFICIAIS DE RISCO exibidas em
-`sinais-de-risco.html` (METODOLOGIA §23).
+`monitor-de-riscos.html` (METODOLOGIA §23).
 
 ESTATUTO DESTE MÓDULO — leia antes de mexer
 -------------------------------------------

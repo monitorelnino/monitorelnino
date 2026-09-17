@@ -3,7 +3,7 @@
  * "teto" bloqueia a publicação; "meta" (§7) é o alvo da edição — acima da meta o portão avisa, não bloqueia. */
 const fs = require("fs"), path = require("path"); const RAIZ = path.join(__dirname, "..");
 const LIMITES = { // [meta §7, teto]
-  "index.html": [500, 950]   /* 16/09/2026: formulário "Indique um documento publicado" migrou de Pesquisadores para o fim da inicial */, "sinais-de-risco.html": [350, 420], "calendario-eleitoral.html": [600, 900], "defesa-civil.html": [400, 450],
+  "index.html": [500, 950]   /* 16/09/2026: formulário "Indique um documento publicado" migrou de Pesquisadores para o fim da inicial */, "monitor-de-riscos.html": [350, 420], "calendario-eleitoral.html": [600, 900], "defesa-civil.html": [400, 450],
   "saude.html": [700, 900]   /* 15/09/2026: a página passou a espelhar a inicial (ficha "Como ler", dois medidores, cinco desfechos com seção própria) */, "financiamento.html": [1000, 1600]   /* 15/09/2026: a página ganhou a ficha "Como ler as rotas" (chaves, termos, rota do fogo) e o caminho antes/agora/depois, a pedido da editoria */, "proteja-se.html": [800, 1150],
   "imprensa.html": [1500, 2300] /* 15/09/2026: kit de imprensa — release, achados, entregas e FAQ */, "pesquisadores.html": [1500, 2200], "prefeituras.html": [600, 950]   /* 15/09/2026: página "Para gestores" — caminho, conteúdo do plano e rotas de recurso */, "obrigado.html": [100, 160] };
 function palavras(f) {
