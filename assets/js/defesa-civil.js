@@ -413,15 +413,7 @@ if (document.getElementById('mapConsistencia')) {
       `<span><i style="background:${k==='SEM' ? 'repeating-linear-gradient(45deg,var(--osso-claro),var(--osso-claro) 3px,var(--argila) 3px,var(--argila) 4px)' : CONSIST_COR[k]}"></i>${CONSIST_ROTULO[k]} (${__contC[k]})</span>`).join('');
   renderTabelaConsistencia();
 }
-// 13/09/2026: resumo compacto (consolidação — versão principal do cruzamento fica em sinais-de-risco.html)
-(function(){
-  const el = document.getElementById('riscoinstrumentoResumo');
-  if (!el || typeof CONSIST === 'undefined') return;
-  const cont = {};
-  Object.values(CONSIST).forEach(c => cont[c.cat] = (cont[c.cat]||0) + 1);
-  const partes = ['COBRE','PARCIAL','DIFERE','SEM'].filter(k => cont[k]).map(k => (cont[k]) + ' ' + CONSIST_ROTULO[k].toLowerCase());
-  el.innerHTML = 'Risco projetado × instrumento estadual, 27 UFs: ' + partes.join(' · ') + '. <a href="index.html#boxCruz">Ver o cruzamento completo na página inicial →</a>';
-})();
+// 17/09/2026: resumo compacto removido — o cruzamento que ele resumia saiu da inicial (pedido da editoria).
 
 // =========================================================
 // MARE — ranking com componentes ponderados

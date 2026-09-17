@@ -49,18 +49,6 @@ def preencher_index():
     h = sub_id(h, "metaAtualizado", atualizado, n)
     h = sub_id(h, "corteDados", corte, n)   # 16/09/2026: tirado o literal 26/08/2026 hardcoded
 
-    # §4.5 (handover de identidade): contador de tempo, semana desde o primeiro boletim (29/06/2026)
-    import datetime
-    try:
-        dd, mm, aa = [int(x) for x in corte.split("/")]
-        semana = (datetime.date(aa, mm, dd) - datetime.date(2026, 6, 29)).days // 7 + 1
-        h = sub_id(h, "ctSemana", str(max(1, semana)), n)
-    except Exception:
-        pass
-    indice = ler("indice.json", {}) or {}
-    n_novo = sum(1 for v in indice.values() if isinstance(v, dict) and v.get("status_estadual") == "NOVO")
-    h = sub_id(h, "ctNovo", str(n_novo), n)
-
     resp = ler("resposta/por_uf.json", {}) or {}
     N = resp.get("nacional")
     if N:
@@ -74,18 +62,11 @@ def preencher_index():
         alvo = max(ir, 0.6 if n_mun else 0)
 
         h = sub_id(h, "respNum", ir_fmt, n)
-        h = sub_id(h, "respCorte", corte, n)
         badge = f'<span class="gfaixa-pill">{n_mun_fmt} municípios · {fmt(fm)}% dos municípios</span>'
         h = re.sub(r'(<span class="gfaixa-badge" id="respBadge">)[^<]*(</span>)', lambda m: m.group(1) + badge + m.group(2), h, count=1)
         h = re.sub(r'(id="respFill" data-alvo=")[\d.]+(" style="--galvo:)[\d.]+(;")', rf'\g<1>{alvo:.2f}\g<2>{max(ir, 0.1):.2f}\g<3>', h, count=1)
         rotulo = f"Barra de progresso: índice de resposta em {ir_fmt} de 100 (população em municípios sob decreto)"
         h = re.sub(r'aria-label="Barra de progresso: índice de resposta[^"]*"', f'aria-label="{rotulo}"', h, count=1)
-        h = sub_id(h, "respLinha", "", n)   # 15/09/2026: JS também deixa vazio — a contagem vive só na interpretação
-        interp = (f'<strong>{n_mun_fmt}</strong> municípios, <strong>{fmt((N.get("pop_sob_decreto") or 0) / 1e6)}</strong> milhões de pessoas, desde '
-                  f'<strong>{N.get("primeiro_decreto") or "—"}</strong>. <strong>{N.get("reconhecidos") or 0}</strong> reconhecidos pelo governo federal. '
-                  f'Entre 04/07 e 25/10, transferências voluntárias ficam suspensas. Por regra e por decreto continuam. '
-                  f'<a href="calendario-eleitoral.html">Calendário</a>.')
-        h = re.sub(r'(<p class="note" id="interpResposta"[^>]*>)[^<]*(</p>)', lambda m: m.group(1) + interp + m.group(2), h, count=1)
         n[0] += 1
 
     if h != h0:
