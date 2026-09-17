@@ -132,6 +132,16 @@ function __init(){
       const fill = el('rsFill'); fill.dataset.alvo = String(Math.max(ir, RS.emergencias ? 0.6 : 0)); fill.style.setProperty('--galvo', String(Math.max(ir, 0.1))); fill.style.width = fill.dataset.alvo + '%';
       el('interpRespostaSaude').innerHTML = '<strong>' + esc(String(RS.emergencias || 0)) + '</strong> emergência(s) sanitária(s) declarada(s) desde ' + esc(RS.desde || '29/06/2026') + ' (ESPIN federal e decretos estaduais), <strong>' + esc(((RS.pop_sob_emergencia || 0) / 1e6).toFixed(1).replace('.', ',')) + '</strong> milhões de pessoas nos estados que as declararam' + (RS.ufs && RS.ufs.length ? ' (' + RS.ufs.join(', ') + ')' : '') + '. Antecipação mede preparo; resposta mede o que foi declarado depois, mostrados em separado.';
     })();
+    // 17/09/2026 (paridade com a home, handover de identidade §4.5): contador de tempo, semana desde
+    // o primeiro boletim (29/06/2026) — mesmo cálculo, mesma variante Leve da home.
+    (function contadorTempoSaude(){
+      const el = id => document.getElementById(id); if (!el('ctSemanaSaude') || !MSAUDE || !MSAUDE.corte) return;
+      const [dd, mm, aa] = MSAUDE.corte.split('/').map(Number); const corte = new Date(aa, mm - 1, dd);
+      const boletim1 = new Date(2026, 5, 29);
+      el('ctSemanaSaude').textContent = String(Math.max(1, Math.floor((corte - boletim1) / 86400000 / 7) + 1));
+      const novo = Object.values(MSAUDE.ufs || {}).filter(v => v.instrumento && v.instrumento.status === 'NOVO').length;
+      el('ctNovoSaude').textContent = String(novo);
+    })();
   })();
 
   // 13/09/2026 (proposta de enxugamento, Manus AI): 'O que a União publicou' (8 cartões federais)

@@ -15,6 +15,21 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §80 · Paridade de Saúde com a home: medidor "Depois" compacto e contador de tempo · 17/09/2026
+
+Patricia perguntou por que não via o marcador temporal nem as mudanças da Saúde depois do §79. Conferido: o handover de identidade (§79) tinha o §4, com o texto exato do contador de tempo e do medidor compacto, escrito só para `index.html` ("A página inicial, texto completo e definitivo") — não pedia essas duas peças para `saude.html`, e por isso não foram implementadas lá. A instrução "os dois têm a mesma anatomia" do §2 falava do nome (MARÉ Legal / MARÉ Saúde), não das duas peças visuais novas.
+
+Como o princípio de paridade é real e a página de Saúde já espelha a home em quase tudo (dois medidores, mesma estrutura), levei as duas peças novas para lá agora:
+
+- Selos "1 · Antecipação · o índice" / "2 · Resposta · o índice" viram "Antes: preparação publicada" / "Depois: emergências declaradas", no mesmo padrão da home.
+- Medidor de resposta sanitária ganha a variante `.gauge-zone--compacta`; rótulo "Resposta, um índice separado. Não soma ao de antecipação."
+- Contador de tempo (variante Leve, mesma da home): "Semana {n} desde a publicação do primeiro boletim. {n} secretarias de saúde publicaram plano feito para este ciclo desde então" — calculado de `monitor_saude.json`, não escrito à mão. A semana sai 10 na Saúde e 11 na home porque os cortes das duas fontes são datas diferentes (05/09 e 10/09); não é inconsistência, é o corte de cada fonte.
+- Fallback estático (§78) estendido aos dois campos novos (`ctSemanaSaude`, `ctNovoSaude`), e o portão que evita "—" no HTML sem JavaScript passa a cobrir os dois.
+
+Sobre o marcador temporal não aparecer na home: verifiquei o elemento (`#contadorTempo`) na árvore local — está presente, visível, com o texto correto, sem erro de JavaScript. Não consegui inspecionar o domínio publicado diretamente (fora da lista de rede permitida); se ainda não aparecer depois de um recarregamento forçado (Ctrl+Shift+R), pode ser cache do navegador — aviso se persistir.
+
+Suíte de portões verde de primeira depois da mudança; cadeia de derivados regenerada em árvore limpa.
+
 ## §79 · Nome vira Monitor, MARÉ Legal restaurado, travessão sai da prosa; home reescrita por inteiro · 16/09/2026
 
 Handover de identidade e linguagem, que **substitui** a decisão D1 de §76 (que tinha removido "MARÉ Legal") e **estende** `docs/VOZ_EDITORIAL.md` com um quarto hábito a evitar.

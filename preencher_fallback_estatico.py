@@ -103,6 +103,18 @@ def preencher_saude():
 
     h = sub_id(h, "corteSaude", corte_saude, n)
 
+    # §4.5 (paridade com a home, 17/09/2026): contador de tempo da Saúde
+    import datetime
+    try:
+        dd, mm, aa = [int(x) for x in (mon.get("corte") or corte_saude).split("/")]
+        semana = (datetime.date(aa, mm, dd) - datetime.date(2026, 6, 29)).days // 7 + 1
+        h = sub_id(h, "ctSemanaSaude", str(max(1, semana)), n)
+    except Exception:
+        pass
+    ufs_saude = mon.get("ufs") or {}
+    n_novo_saude = sum(1 for v in ufs_saude.values() if isinstance(v, dict) and (v.get("instrumento") or {}).get("status") == "NOVO")
+    h = sub_id(h, "ctNovoSaude", str(n_novo_saude), n)
+
     res = mon.get("resumo") or {}
     media = res.get("media_das_verificadas")
     if media is not None:
