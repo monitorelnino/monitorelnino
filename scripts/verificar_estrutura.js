@@ -236,6 +236,16 @@ for (const arq of arquivos) {
   }
 }
 
+// 17/09/2026 (achado real: "Medida de Antecipação" sobrevivia em 10/11 páginas, quebrada pela tag
+// <em> em torno de "El Niño" — grep simples não pega string partida por tag no meio; aqui remove-se
+// toda tag primeiro, para o texto contar como o leitor realmente vê, não como o HTML está dividido.
+for (const arq of arquivos) {
+  const nome = path.basename(arq); if (!fs.existsSync(arq)) continue;
+  const bruto = fs.readFileSync(arq, "utf-8"); const semTags = bruto.replace(/<[^>]+>/g, " ");
+  if (semTags.includes("Medida de Antecipação")) falha(`${nome}: "Medida de Antecipação" sobrevive (nome antigo; ver §79) — pode estar partido por tag`);
+  if (semTags.includes("MARÉ · Defesa civil")) falha(`${nome}: "MARÉ · Defesa civil" sobrevive (nome revogado; MARÉ Legal, ver §79)`);
+}
+
 if (falhas) {
   console.log(`\n✗ ESTRUTURA: ${falhas} problema(s) em ${arquivos.length} página(s). Publicação bloqueada.`);
   process.exit(1);

@@ -47,33 +47,6 @@ jobs:
           npm ci --silent 2>/dev/null || npm install --silent
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
           node scripts/verificar_publicado_navegador.js --base https://monitorelnino.com.br 2>&1 | tee /tmp/publicado_navegador.txt
-      - name: DIAGNOSTICO_TEMP_conferir_texto_especifico
-        continue-on-error: true
-        env:
-          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
-        run: |
-          node -e '
-          const https = require("https");
-          function buscar(url) {
-            return new Promise((resolve, reject) => {
-              const cab = {};
-              if (process.env.PREVIA_BASIC_AUTH) cab["Authorization"] = "Basic " + Buffer.from(process.env.PREVIA_BASIC_AUTH).toString("base64");
-              https.get(url, { headers: cab }, res => { let d = ""; res.on("data", c => d += c); res.on("end", () => resolve({status: res.statusCode, corpo: d})); }).on("error", reject);
-            });
-          }
-          (async () => {
-            for (const pagina of ["", "saude.html"]) {
-              const r = await buscar("https://monitorelnino.com.br/" + pagina);
-              console.log("=== " + (pagina || "index.html") + " status " + r.status + " " + r.corpo.length + " bytes ===");
-              console.log("tem contadorTempo:", r.corpo.includes("contadorTempo"));
-              console.log("tem Monitor de Antecipacao:", r.corpo.includes("Monitor de Antecipa\u00e7\u00e3o"));
-              console.log("tem Medida de Antecipacao (deveria ser false):", r.corpo.includes("Medida de Antecipa\u00e7\u00e3o"));
-              console.log("tem MARE Legal:", r.corpo.includes("MAR\u00c9 Legal"));
-              const i = r.corpo.indexOf("contadorTempo");
-              console.log("trecho:", i >= 0 ? r.corpo.slice(Math.max(0,i-80), i+220) : "(NAO ENCONTRADO)");
-            }
-          })();
-          ' | tee /tmp/diagnostico_conteudo.txt
       - name: Sondar as configurações do projeto no Netlify (HUD, snippets, colaboração) — só leitura
         continue-on-error: true
         env:
