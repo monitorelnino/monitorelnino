@@ -177,13 +177,25 @@ function canvasEm(wrapId, canvasId){
 }
 
 // ---- Gráfico 1: série ONI ----
+// 17/09/2026 (pedido da editoria): padrão dos sites oficiais — fundo preto (CSS, #wrapOni), barras
+// vermelhas acima da média e azuis abaixo, com transparência que cresce com a intensidade da anomalia
+// (mesma lógica de transição contínua dos medidores do MARÉ, adaptada a uma série histórica: aqui a
+// "transição" é a opacidade de cada barra, não a largura de uma barra só). Movimento: animação ligada
+// (as demais figuras da página não animam, SEM_ANIM; esta é a exceção deliberada).
 if(oni && oni.serie && oni.serie.length){
-  new Chart(canvasEm('wrapOni', 'cOni'), {type:'line', data:{
+  const ONI_VERMELHO = [220, 38, 38], ONI_AZUL = [37, 99, 235];
+  const alphaOni = v => Math.min(.92, .28 + .64 * Math.min(1, Math.abs(v) / 2.0));
+  const corOni = v => { const [r,g,b] = v >= 0 ? ONI_VERMELHO : ONI_AZUL; return `rgba(${r},${g},${b},${alphaOni(v).toFixed(2)})`; };
+  new Chart(canvasEm('wrapOni', 'cOni'), {type:'bar', data:{
       labels: oni.serie.map(p => p.trimestre + '/' + String(p.ano).slice(2)),
-      datasets:[{label:'ONI (°C)', data: oni.serie.map(p => p.anomalia), borderColor:MonitorMapas.PALETA.serie[0],
-                 backgroundColor:'rgba(46,61,48,.12)', borderWidth:2, pointRadius:0, fill:true, tension:.25}]},
-    options:{...SEM_ANIM, plugins:{legend:{display:false}}, scales:{
-      x:{ticks:{maxTicksLimit:12}}, y:{title:{display:true, text:'°C'}}}}});
+      datasets:[{label:'ONI (°C)', data: oni.serie.map(p => p.anomalia),
+                 backgroundColor: ctx => corOni(ctx.raw), borderWidth:0, borderRadius:2,
+                 categoryPercentage:.9, barPercentage:.95}]},
+    options:{responsive:true, maintainAspectRatio:false, animation:{duration:900, easing:'easeOutCubic'},
+      plugins:{legend:{display:false}, tooltip:{backgroundColor:'#000', titleColor:'#fff', bodyColor:'#fff', borderColor:'rgba(255,255,255,.25)', borderWidth:1}},
+      scales:{
+        x:{ticks:{maxTicksLimit:12, color:'rgba(255,255,255,.75)'}, grid:{color:'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}},
+        y:{title:{display:true, text:'°C', color:'rgba(255,255,255,.75)'}, ticks:{color:'rgba(255,255,255,.75)'}, grid:{color:ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.45)' : 'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}}}}});
   (function leituraOni(){   // 15/09/2026: a observação vive junto do gráfico; interpretação e projeção ficam no parágrafo abaixo da figura (portão 19)
     const el = document.getElementById('oniLeitura'); const s = oni.serie; const u = s[s.length - 1]; if (!el || !u) return;
     const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
