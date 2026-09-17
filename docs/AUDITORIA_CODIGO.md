@@ -13,10 +13,21 @@ na raiz do repositório, com o histórico de versões.
 
 ## 1. Escopo e arquitetura
 
+**Nota de 17/09/2026:** esta seção descrevia um estado de 27/08/2026 (três
+páginas). O site cresceu desde então; a lista abaixo foi corrigida para
+refletir o número real de páginas, mas o restante deste documento (seções
+2-7) ainda reflete o pacote de 27/08 e precisa de uma auditoria completa —
+tratar como referência histórica do desenho original, não como inventário
+atual do pipeline ou dos portões (ver `scripts/` e `.github/workflows/portoes.yml`
+no repositório para a lista corrente).
+
 Plataforma estática (HTML/CSS/JS) servida diretamente de arquivos, sem
-backend próprio e sem passo de build: as três páginas (`index.html`,
-`proteja-se.html`, `envie-dados.html`, mais `obrigado.html` de retorno do
-formulário) buscam `data/*.json` (14 arquivos) em runtime via `fetch`.
+backend próprio e sem passo de build: onze páginas (`index.html`,
+`proteja-se.html`, `para gestores` (arquivo `prefeituras.html`),
+`obrigado.html`, `pesquisadores.html`, `calendario-eleitoral.html`,
+`defesa-civil.html`, `sinais-de-risco.html`, `saude.html`,
+`financiamento.html`, `imprensa.html`) buscam `data/*.json` em runtime via
+`fetch`.
 Bibliotecas de terceiros (D3, Chart.js, jsPDF) são carregadas pelo
 navegador do visitante via CDN (`cdnjs.cloudflare.com`), fora do escopo do
 SBOM deste repositório — ver `docs/SBOM.md`, seção de dependências diretas.

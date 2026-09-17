@@ -1,7 +1,10 @@
 /* ============================================================
    assets/mapas.js — motor único de mapas, legendas e tooltips (v2.3, 03/09/2026)
    Toda página com mapa usa ESTE módulo. Nenhuma página define localmente
-   desenharMapa / addSiglas / showTip / legenda (portão verificar_estrutura.js).
+   desenharMapa / siglas / showTip / legenda (portão verificar_estrutura.js;
+   corrigido 17/09/2026 — o nome exportado sempre foi "siglas", não "addSiglas";
+   uma página pode ter um wrapper de uma linha que só passa o contexto, como
+   `const addSiglas = svg => MonitorMapas.siglas(ctx, svg)`, isso não é duplicação).
    Regras visuais fixas: viewBox 480×460, contorno .uf-path (base.css), siglas das
    27 UFs sobre todo mapa, legenda <span><i style="background:…"></i>rótulo</span>,
    tooltip #mapTooltip, crédito de figura dentro do parágrafo-nota único do cartão.
@@ -101,6 +104,15 @@
     el.innerHTML = itens.map(i => '<span><i style="background:' + i.cor + (i.opacidade != null ? ';opacity:' + i.opacidade : '') + '"></i>' + esc(i.rotulo) + '</span>').join('');
   }
 
+  /** Mapa coroplético por UF + legenda, num só passo (consolidado 17/09/2026 — antes
+   *  reimplementado à parte em financiamento.js, saude.js e sinais-de-risco.js; nenhuma
+   *  página deve mais definir desenharMapa localmente, ver aviso no topo do arquivo). */
+  function desenharMapa(ctx, svgId, legendaId, corDe, rotuloDe, itens) {
+    const svg = ufs(ctx, svgId, corDe, rotuloDe);
+    legenda(legendaId, itens);
+    return svg;
+  }
+
   /** Escala contínua canônica (gradiente) + itens discretos opcionais. */
   function legendaContinua(elId, gradiente, rotuloMin, rotuloMax, itens) {
     const el = document.getElementById(elId); if (!el) return;
@@ -195,5 +207,5 @@
     neutra: NEUTRA, semDado: COR['sem-dado'], zero: COR.zebra, trilho: COR['gauge-trilho'],   // trilho = fundo das barras do medidor (15/09/2026: arte única)
     serie: [COR.musgo, COR.sintetico, COR.ambar, COR.argila, COR.mineral, COR['areia-escura'], COR.bioluz, COR.muted] };
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, credito, dataBR };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, credito, dataBR };
 })(window);
