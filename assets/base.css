@@ -434,27 +434,24 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 /* ===== 14. Proteja-se ===== */
 .emerg-bar{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-5); display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 0 var(--esp-secao); scroll-margin-top:var(--sp-7); box-shadow:var(--sombra);}
 .emerg-nums{display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:var(--sp-3); width:100%; margin:0 0 var(--sp-4);}
-.emerg-num{display:flex; flex-direction:column; align-items:center; justify-content:flex-start; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-3) var(--sp-3); min-width:0; text-decoration:none; color:inherit; text-align:center;}
+/* 17/09/2026 (pedido da editoria): cartões "sem vida" — fundo branco de verdade (era o cinza claro de
+   trilho de tabela), borda superior grossa e colorida por número (mesmo sistema de acento que o site já
+   usa em painel--acento-* e cartao--acento-*, uma cor por natureza do número), sombra própria para
+   destacar do fundo já sombreado da barra, e elevação ao passar o mouse — um cartão por número de
+   emergência, não uma lista discreta. */
+.emerg-num{display:flex; flex-direction:column; align-items:center; justify-content:flex-start; background:var(--surface); border:1px solid var(--line); border-top:5px solid var(--mineral); border-radius:var(--radius); padding:var(--sp-4) var(--sp-3); min-width:0; text-decoration:none; color:inherit; text-align:center; box-shadow:var(--sombra); transition:transform .15s ease, box-shadow .15s ease;}
 .emerg-num small{display:block; font-family:var(--font-corpo); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin-top:var(--sp-2); text-transform:none; letter-spacing:0;}
-.emerg-num:hover{text-decoration:none; border-color:var(--musgo);}
+.emerg-num:hover{text-decoration:none; transform:translateY(-2px); box-shadow:0 6px 16px rgba(14,15,13,.14);}
 .emerg-num b{font-family:var(--font-titulo); font-size:var(--fs-display); font-weight:var(--peso-regular); color:var(--ink); line-height:1; display:block;}
 .emerg-num--sms b{font-size:var(--fs-h1); line-height:var(--lh-h1);}
 .emerg-num span{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--ink); margin-top:var(--sp-2); display:block; white-space:nowrap;}
+.emerg-num--fogo{border-top-color:var(--rust);}
+.emerg-num--saude{border-top-color:var(--ambar);}
+.emerg-num--defesa{border-top-color:var(--teal);}
+.emerg-num--seguranca{border-top-color:var(--ink);}
+.emerg-num--sms{border-top-color:var(--musgo);}
 .emerg-alertas{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--ink); margin:0; max-width:520px; padding-top:var(--sp-4); border-top:1px solid var(--line);}
 .emerg-alertas strong{color:var(--link);}
-.chip-risco{display:inline-flex; align-items:center; border-radius:var(--radius); padding:2px var(--sp-2); margin:2px var(--sp-1) 2px 0; font-family:var(--font-dado); font-weight:var(--peso-semibold); font-size:var(--fs-small); line-height:var(--lh-small); border:1px solid; background:var(--surface);}
-.chip-risco.r-chuva{color:var(--chuva); border-color:var(--chuva);}
-.chip-risco.r-seca{color:var(--seca); border-color:var(--seca);}
-.chip-risco.r-fogo{color:var(--fogo); border-color:var(--fogo);}
-.chip-risco.r-nenhum{color:var(--muted); border-color:var(--line);}
-.risco-grupo{margin:0 0 var(--sp-3);}
-.risco-grupo h3{display:flex; align-items:center; gap:var(--sp-2); font-family:var(--font-corpo); font-size:var(--fs-body); line-height:var(--lh-body); font-weight:var(--peso-semibold); margin:0 0 var(--sp-2);}
-.risco-grupo h3 svg{flex:none;}
-.risco-grupo.g-chuva h3{color:var(--chuva);}
-.risco-grupo.g-seca h3{color:var(--seca);}
-.risco-grupo.g-fogo h3{color:var(--fogo);}
-.risco-grupo.g-nenhum h3{color:var(--muted);}
-.risco-grupo p{margin:0;}
 .ficha{border:1px solid var(--line); border-radius:var(--radius); padding:var(--esp-painel); margin:0 0 var(--esp-secao); scroll-margin-top:var(--sp-7); background:var(--surface-2);}
 .ficha:target{border-color:var(--ink); box-shadow:0 0 0 3px rgba(21,32,26,.07);}
 .ficha-head{display:flex; align-items:center; gap:var(--sp-3); margin:0 0 var(--sp-1);}

@@ -91,30 +91,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 // handler do botão de PDF (era onclick inline; CSP sem unsafe-inline)
 { const b = document.getElementById('btnPdfGuia'); if (b && typeof gerarPDFGuia === 'function') b.addEventListener('click', gerarPDFGuia); }
 
-// 15/09/2026 (auditoria editorial §1.9): seletor de estado (lista vinda do dado) → abre o guia do risco projetado da UF e
-// mostra a classificação com a fonte. Sem escolha, os guias ficam fechados (acordeões); a impressão em PDF lê todos.
-(function(){
-  const sel = document.getElementById('selUFProteja'), nota = document.getElementById('riscoDoEstado'); if (!sel) return;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const NOMES = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
-  const guiasDe = rp => { if (!rp || rp.tipo === 'sem_sinal') return []; const t = (rp.texto || '').toLowerCase(); const g = new Set();
-    if (rp.tipo === 'chuvas' || /chuva|enchente/.test(t)) g.add('guia-chuvas'); if (rp.tipo === 'incendios' || /inc[eê]ndio|fogo|fuma/.test(t)) g.add('guia-fogo');
-    if (rp.tipo === 'estiagem' || /estiag|seca|h[ií]drica|reservat/.test(t)) g.add('guia-seca'); return [...g]; };
-  fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).then(S => {
-    if (!S || !S.uf) return;
-    Object.keys(S.uf).sort().forEach(uf => { const o = document.createElement('option'); o.value = uf; o.textContent = NOMES[uf] || uf; sel.appendChild(o); });
-    sel.addEventListener('change', () => {
-      const uf = sel.value; document.querySelectorAll('details[id^="acc-guia-"]').forEach(d => { d.open = false; });
-      if (!uf) { nota.hidden = true; return; }
-      const rp = (S.uf[uf] || {}).risco_projetado; const gs = guiasDe(rp);
-      gs.forEach(id => { const d = document.getElementById('acc-' + id); if (d) d.open = true; });
-      nota.innerHTML = rp ? '<strong>' + esc(NOMES[uf] || uf) + ':</strong> ' + esc(rp.texto) + (gs.length ? ' — guia' + (gs.length > 1 ? 's' : '') + ' aberto' + (gs.length > 1 ? 's' : '') + ' abaixo' : ' — nenhum guia específico; vale a orientação geral') + ' <span class="u-muted">(' + esc(rp.documento || rp.fonte || '') + ')</span>' : 'Sem classificação para este estado.';
-      nota.hidden = false;
-      const primeiro = gs.length ? document.getElementById('acc-' + gs[0]) : null; if (primeiro && typeof primeiro.scrollIntoView === 'function') primeiro.scrollIntoView({behavior: 'smooth', block: 'start'});
-    });
-  }).catch(() => {});
-})();
-
 // 15/09/2026 (pedido da editoria): "Defesa Civil do seu estado" — um cartão por UF, com telefones, plantão, e-mail, portal
 // e expediente lidos de data/contatos_uf.json (transcrição do diretório oficial do MIDR). Nada digitado aqui.
 (function(){
@@ -139,8 +115,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     ufs.forEach(uf => { const o = document.createElement('option'); o.value = uf; o.textContent = D.uf[uf].nome; sel.appendChild(o); });
     grade.innerHTML = ufs.map(uf => cartao(uf, D.uf[uf], false)).join('');
     sel.addEventListener('change', () => { const uf = sel.value; if (!uf) { dest.hidden = true; dest.innerHTML = ''; return; } dest.innerHTML = cartao(uf, D.uf[uf], true); dest.hidden = false; });
-    // o seletor de risco (acima) também preenche o cartão de contato do mesmo estado
-    const selRisco = document.getElementById('selUFProteja'); if (selRisco) selRisco.addEventListener('change', () => { if (selRisco.value && D.uf[selRisco.value]) { sel.value = selRisco.value; sel.dispatchEvent(new Event('change')); } });
     const f = D.fonte || {}; if (window.MonitorMapas) MonitorMapas.credito('contatoFonte', {fontes: [(f.nome || 'MIDR') + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + f.atualizado_pelo_orgao_em : ''), 'números nacionais de emergência'], url: f.url, data: f.consultado_em});
   }).catch(() => { grade.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
 })();
