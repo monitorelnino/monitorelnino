@@ -17,6 +17,8 @@ Etapas:
   7c. verificar_runtime_sinais.js — sinais-de-risco.html roda em navegador simulado
      (obrigatória; falha bloqueia; página própria desde 31/08/2026)
   8. data/meta.json — carimbo de atualização (e novo corte, se a etapa 3 alterou dados)
+  9. preencher_fallback_estatico.py — medidor de resposta e datas de corte no HTML estático
+     (sem JavaScript) de index.html, saude.html e financiamento.html (16/09/2026)
 
 Quando o passo 2 gerar propostas: revise data/instrumentos_revisar.json, apague o que
 não deve entrar, e rode `python3 aplicar_revisao.py --arquivo data/instrumentos_revisar.json`
@@ -200,6 +202,10 @@ def main():
     rodar([sys.executable, "gerar_resposta.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_prioritarios.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_contadores_financiamento.py"], obrigatorio=True)
+    # 16/09/2026 (handover urgente): o medidor de resposta e as datas de corte ficavam "—" no HTML
+    # estático (sem JavaScript) de index.html, saude.html e financiamento.html. Roda por último,
+    # depois que meta.json e os quatro geradores acima já têm os dados finais desta rodada.
+    rodar([sys.executable, "preencher_fallback_estatico.py"], obrigatorio=True)
     print(f"\n✓ Atualização concluída ({hoje}). Corte vigente: {meta['corte']}.")
 
 if __name__ == "__main__":
