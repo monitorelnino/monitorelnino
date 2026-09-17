@@ -15,6 +15,12 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §90 · ONI, RONI e anomalia mensal lado a lado, num grid só, mesmo design · 17/09/2026
+
+Pedido direto da editoria: os três gráficos viviam em dois blocos (ONI e RONI juntos, anomalia mensal sozinha embaixo, largura cheia). Unificados num único `grade-figuras--3` (classe que já existia no site, "lado a lado quando cabem três") — os três em uma linha só, cada um a um terço da largura. A classe `figura--largo` saiu da anomalia (forçava largura total, incompatível com caber em um terço). Os três já compartilhavam a mesma paleta e as mesmas opções de gráfico desde o §88; a diferença agora é só de disposição.
+
+Suíte inteira verde; derivados regenerados em árvore limpa; conferido visualmente, os três lado a lado.
+
 ## §89 · A nota de cada gráfico volta para debaixo dele mesmo, não uma nota só no fim dos três · 17/09/2026
 
 Correção direta: o §88 tinha juntado a explicação dos três gráficos (ONI, RONI, anomalia mensal) numa nota só, depois dos três. Cada um precisa da sua própria nota, logo abaixo de si — não uma nota comum ao final.
