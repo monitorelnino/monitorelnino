@@ -47,35 +47,6 @@ jobs:
           npm ci --silent 2>/dev/null || npm install --silent
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
           node scripts/verificar_publicado_navegador.js --base https://monitorelnino.com.br 2>&1 | tee /tmp/publicado_navegador.txt
-      - name: DIAGNOSTICO_TEMP_confirmar_correcao_11_paginas
-        continue-on-error: true
-        env:
-          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
-        run: |
-          node -e '
-          const https = require("https");
-          function buscar(url) {
-            return new Promise((resolve, reject) => {
-              const cab = {};
-              if (process.env.PREVIA_BASIC_AUTH) cab["Authorization"] = "Basic " + Buffer.from(process.env.PREVIA_BASIC_AUTH).toString("base64");
-              https.get(url, { headers: cab }, res => { let d = ""; res.on("data", c => d += c); res.on("end", () => resolve({status: res.statusCode, corpo: d})); }).on("error", reject);
-            });
-          }
-          const paginas = ["", "sinais-de-risco.html", "proteja-se.html", "defesa-civil.html", "saude.html", "financiamento.html", "prefeituras.html", "imprensa.html", "pesquisadores.html", "calendario-eleitoral.html", "obrigado.html"];
-          (async () => {
-            let semErro = true;
-            for (const pagina of paginas) {
-              const r = await buscar("https://monitorelnino.com.br/" + pagina);
-              const semTags = r.corpo.replace(/<[^>]+>/g, " ");
-              const temNomeAntigo = semTags.includes("Medida de Antecipa\u00e7\u00e3o");
-              const temNomeNovo = semTags.includes("Monitor de Antecipa\u00e7\u00e3o");
-              console.log((temNomeAntigo ? "FALHA " : "ok    ") + (pagina || "index.html") + " status=" + r.status + " nomeAntigo=" + temNomeAntigo + " nomeNovo=" + temNomeNovo);
-              if (temNomeAntigo) semErro = false;
-            }
-            console.log(semErro ? "RESULTADO FINAL: TODAS AS 11 PAGINAS OK, SEM NOME ANTIGO" : "RESULTADO FINAL: AINDA HA NOME ANTIGO EM ALGUMA PAGINA");
-          })();
-          ' | tee /tmp/diagnostico_conteudo.txt
-
       - name: Sondar as configurações do projeto no Netlify (HUD, snippets, colaboração) — só leitura
         continue-on-error: true
         env:
@@ -111,7 +82,6 @@ jobs:
           cp /tmp/publicado_navegador.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado_navegador.txt" 2>/dev/null || true
           cp /tmp/netlify_config.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_netlify_config.txt" 2>/dev/null || true
           cp /tmp/verificar_publicado.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado.txt"
-          cp /tmp/diagnostico_conteudo.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_conteudo.txt" 2>/dev/null || true
           cp /tmp/diagnostico_conteudo.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_conteudo.txt" 2>/dev/null || true
           cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
           git add -A && git commit -q -m "verificar_publicado ${GITHUB_SHA::7}" && git push -q
