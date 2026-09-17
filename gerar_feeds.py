@@ -159,7 +159,7 @@ def atom(titulo, arquivo, eventos, atualizado):
   <link rel="self" href="{SITE}/feeds/{arquivo}"/>
   <id>tag:monitorelnino.com.br,2026:feed:{arquivo}</id>
   <updated>{_rfc3339(atualizado)}</updated>
-  <author><name>MARÉ · Medida de Antecipação e Resposta ao El Niño · Futura Evidence Lab</name></author>
+  <author><name>MARÉ · Monitor de Antecipação e Resposta ao El Niño · Futura Evidence Lab</name></author>
 {itens}
 </feed>
 """

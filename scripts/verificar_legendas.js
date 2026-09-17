@@ -114,28 +114,49 @@ function renderizar(pagina) {
     // traço-VAZIO (valor que não carregou), não travessão entre palavras: "—" no fim ou só com pontuação
     // depois. "Avisou — El Niño forte — com seca" passa; "Corte dos dados: —" falha.
     const TRACO = /(?:^|[\s:(])—\s*(?:[.,;)]|$)/;
+    // 16/09/2026 (handover de identidade): travessão como pontuação de frase — palavra, espaço, "—",
+    // espaço, palavra — é o quarto hábito a evitar (docs/VOZ_EDITORIAL.md). Não pega "·" (ponto médio,
+    // separador de metadado) nem "–"/"-" sem espaço (intervalo numérico, palavra composta).
+    const TRAVESSAO_PONTUACAO = /[^\s]\s—\s[^\s]/;
     const GLOSSARIO = [/arcabouço público/i, /instrumentos? ex-ante/i, /escada da §/i, /faixas do site/i,
-      /canal endêmico/i, /painel amostral/i, /última SE\b/i, /MARÉ Legal/i, /\bLAI\b/i];
+      /canal endêmico/i, /painel amostral/i, /última SE\b/i, /\bLAI\b/i];
     for (const pagina of PAGINAS_PROSA) {
       const domP = renderizar(pagina); await new Promise(r => setTimeout(r, 2200)); const dP = domP.window.document;
-      dP.querySelectorAll("main p, main li, main dd, main summary, dialog p, dialog li").forEach(e => {
-        if (e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]')) return;   // exceções declaradas
+      dP.querySelectorAll("main p, main li, main dd, main summary, main figcaption, dialog p, dialog li, dialog dd").forEach(e => {
+        const dentroFichaOuLei = e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]');   // exceções declaradas
         if (e.closest(".figura")) return;                                                // já coberto acima
         if (e.querySelector("p, li")) return;                                            // só as folhas
         const s = t(e); if (!s || s.length < 12) return; elementos++;
-        const a = classificar(s);
-        if (ENFASE.test(s)) a.push('ênfase "só/única/nunca/sempre"');
-        if (INTERR.test(s)) a.push("interrogação");
-        if (LEI.test(s)) a.push("artigo de lei fora da ficha/bloco legal");
-        if (DENUNCIA.test(s)) a.push('"denuncia/expõe"');
-        if (AUTORREF.test(s)) a.push("o site falando de si (vai para a ficha)");
-        if (PROCESSO.test(s)) a.push('processo narrado ("carregando")');
-        if (TRACO.test(s)) a.push('"—" em frase corrida (use "sem coleta até {corte}")');
-        for (const re of GLOSSARIO) { const m = s.match(re); if (m) a.push(`glossário: "${m[0]}"`); }
+        const a = [];
+        // 16/09/2026: o travessão-como-pontuação é regra geral de escrita, vale mesmo dentro de ficha/bloco
+        // legal (que só ficam de fora das checagens de conteúdo, não das de estilo de frase).
+        if (TRAVESSAO_PONTUACAO.test(s)) a.push('travessão como pontuação de frase (reescreva com vírgula, ponto, ou duas frases)');
+        if (!dentroFichaOuLei) {
+          a.push(...classificar(s));
+          if (ENFASE.test(s)) a.push('ênfase "só/única/nunca/sempre"');
+          if (INTERR.test(s)) a.push("interrogação");
+          if (LEI.test(s)) a.push("artigo de lei fora da ficha/bloco legal");
+          if (DENUNCIA.test(s)) a.push('"denuncia/expõe"');
+          if (AUTORREF.test(s)) a.push("o site falando de si (vai para a ficha)");
+          if (PROCESSO.test(s)) a.push('processo narrado ("carregando")');
+          if (TRACO.test(s)) a.push('"—" em frase corrida (use "sem coleta até {corte}")');
+          for (const re of GLOSSARIO) { const m = s.match(re); if (m) a.push(`glossário: "${m[0]}"`); }
+        }
         if (a.length) { const alvo = e.closest("[id]"); falhas.push(`${pagina} › prosa (${alvo ? alvo.id : "?"}): ${a.join(" · ")} — "${s.slice(0, 90)}"`); }
       });
     }
   }
+  // 16/09/2026 (handover de identidade): "MARÉ Legal" volta a existir como nome do índice principal,
+  // em contraste com "MARÉ Saúde" — os dois têm a mesma anatomia. O portão passa a EXIGIR (não mais
+  // proibir) o termo: a navegação de toda página de dados precisa trazer "MARÉ Legal" como item.
+  {
+    const domNav = renderizar("index.html"); await new Promise(r => setTimeout(r, 600));
+    const nav = domNav.window.document.querySelector(".mainnav");
+    if (!nav || !/MARÉ Legal/.test(nav.textContent)) falhas.push('nav de index.html não traz "MARÉ Legal" (identidade do índice principal)');
+    const domSaude = renderizar("saude.html"); await new Promise(r => setTimeout(r, 600));
+    if (!/MARÉ.*Saúde/.test((domSaude.window.document.querySelector("h1") || {}).textContent || "")) falhas.push('saude.html: h1 não traz "MARÉ Saúde"');
+  }
+
   if (listar) console.log(`  ${figuras} figuras · ${elementos} textos verificados`);
   if (falhas.length) {
     console.log("✗ LEGENDAS: texto de figura com juízo, interpretação, causa não demonstrada, afirmação acima do teto ou fora do tamanho:");

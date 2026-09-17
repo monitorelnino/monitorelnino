@@ -102,7 +102,7 @@ def semear():
                                  "regra_divergencia": "divergência com o painel do MS → exibe o MS e loga a diferença (C2)"},
                   "inmet_calor": {"nome": "Avisos de calor", "orgao": "INMET", "papel": "reuso do adaptador do PR #3 (sinais_risco.json → avisos_inmet)", "status": "reuso", "consultado_em": None},
                   "inpe_focos": {"nome": "Focos de queimada (proxy respiratório)", "orgao": "INPE", "papel": "reuso (sinais_risco.json → fogo)", "status": "reuso", "consultado_em": None},
-                  "sisagua": {"nome": "SISAGUA — água/intermitência em estiagem", "orgao": "Ministério da Saúde", "url_publica": None, "status": "a_verificar", "consultado_em": None},
+                  "sisagua": {"nome": "SISAGUA (água/intermitência em estiagem)", "orgao": "Ministério da Saúde", "url_publica": None, "status": "a_verificar", "consultado_em": None},
                   "espin": {"nome": "ESPIN e decretos de emergência sanitária", "orgao": "DOU / diários municipais", "papel": "RESPOSTA, peso zero", "status": "aguardando_primeira_coleta", "consultado_em": None},
               },
               "dengue_capitais": {}, "gerado_em": hoje}

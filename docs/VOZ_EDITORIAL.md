@@ -10,7 +10,7 @@ Diz **o que a figura ou seção é**: fonte, período, unidade, escopo. Só isso
 Se o leitor perguntasse "o que estou vendo?", a legenda é a resposta — nada
 além dela.
 
-## Os três hábitos a evitar
+## Os quatro hábitos a evitar
 
 **1. Explicar a política editorial do site em vez do conteúdo.**
 Errado: *"Achar os planos publicados é tarefa do Monitor, não das
@@ -65,3 +65,20 @@ Pergunte: essa frase descreve o que a figura mostra, ou está corrigindo
 uma leitura que o leitor ainda nem fez? Se for a segunda, ou ela vira uma
 frase descritiva, ou ela sai — e, se for uma ressalva real, vai para a
 ficha da página, uma vez.
+
+## Adendo de 16/09/2026 — quarto hábito: travessão como muleta de escrita
+
+**4. Travessão como muleta de escrita.**
+Errado: *"O índice mede preparação, o decreto, resposta."* com travessões
+separando os apostos.
+Certo: reescrever a frase de modo que ela não precise da pausa gráfica,
+quase sempre com vírgula, ponto, ou dividindo em duas frases.
+Motivo: travessão em série é como texto gerado por máquina soa; frase
+corrida é como uma pessoa escreve.
+
+Nenhuma prosa do site usa travessão (—) como pontuação de frase, em
+`p`, `li`, `dd`, `figcaption`, `summary`, texto de `dialog` e strings de
+prosa renderizadas por JS, nas páginas de dados e na Imprensa. A regra
+não afeta o ponto médio "·" (separador de metadado, já padrão do site),
+nem o hífen curto em intervalos numéricos ("2019–2025"), nem o hífen em
+palavras compostas ("pós-evento").

@@ -178,7 +178,7 @@ function __init(){
     [{cor:CAL[0],rotulo:'0'},{cor:CAL[1],rotulo:'1'},{cor:CAL[2],rotulo:'2'},{cor:CAL[3],rotulo:'3+'},{cor:NEUTRA,rotulo:'aguardando coleta'}]);
   fonteFigura('boxCalor', {fontes: 'INMET', data: (SINAIS.fontes && SINAIS.fontes.inmet_avisos && SINAIS.fontes.inmet_avisos.status === 'coletado') ? SINAIS.fontes.inmet_avisos.consultado_em : null});
   (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => (v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
-    const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes — ' + c.join(' · ') + '.'; })();
+    const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes: ' + c.join(' · ') + '.'; })();
 
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
   // "mistura prontidão documental com risco projetado e não mede efeito na população".
@@ -206,7 +206,7 @@ function __init(){
     };
   }
 }
-// 15/09/2026 (MARÉ Saúde espelha o MARÉ · Defesa civil): "Como ler" em ficha popup; um cartão por estado (mesma anatomia da inicial:
+// 15/09/2026 (MARÉ Saúde espelha o MARÉ Legal): "Como ler" em ficha popup; um cartão por estado (mesma anatomia da inicial:
 // micro-barra do índice no degradê único, segunda barra de resposta, face com plano · data · dengue na capital); clique abre o detalhe.
 function cartoesEstadosSaude(){
   const wrap = document.getElementById('regionsSaude'), dlg = document.getElementById('detailSaude'); if (!wrap || !dlg) return;

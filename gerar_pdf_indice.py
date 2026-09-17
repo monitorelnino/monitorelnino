@@ -96,7 +96,7 @@ def construir():
 
     E = []
     E.append(Paragraph("MARÉ v3.1 — Documentação do Índice", S_TIT))
-    E.append(Paragraph("Medida de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Futura Evidence Lab", S_SUB))
+    E.append(Paragraph("Monitor de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Futura Evidence Lab", S_SUB))
     E.append(Paragraph(
         f"Documento gerado programaticamente em {hoje} a partir dos dados publicados (corte {meta['corte']}); "
         f"todos os valores são computados na geração — nenhum foi digitado à mão. Média nacional vigente: "

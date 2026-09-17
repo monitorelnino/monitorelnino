@@ -158,10 +158,19 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   if (el('heroCorte')) el('heroCorte').textContent = (META && META.corte) || '—';
   const st = Object.values(MARE).map(v => v.status_estadual);
   const c = k => st.filter(x => k.includes(x)).length;
-  const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), elabLac = c(['ELAB', 'LAC']);
-  if (el('interpAntecipacao')) el('interpAntecipacao').innerHTML = `<strong>${novo}</strong> estados publicaram plano feito para este ciclo; <strong>${readVig}</strong> reeditaram ou mantêm o plano de todo ano; <strong>${elabLac}</strong> não têm plano localizado.`;
+  const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), semPlano = c(['LAC']);
+  if (el('interpAntecipacao')) el('interpAntecipacao').innerHTML = `<strong>${novo}</strong> estados publicaram plano feito para este ciclo. <strong>${readVig}</strong> mantêm o plano de todo ano. <strong>${semPlano}</strong> sem plano localizado.`;
+  // 16/09/2026 (handover de identidade, §4.5): contador de tempo, semana desde o primeiro boletim
+  // (29/06/2026), variante "Leve" — só a linha de texto, sem elemento gráfico.
+  if (el('ctSemana') && META && META.corte) {
+    const [dd, mm, aa] = META.corte.split('/').map(Number); const corte = new Date(aa, mm - 1, dd);
+    const boletim1 = new Date(2026, 5, 29);
+    const semana = Math.floor((corte - boletim1) / 86400000 / 7) + 1;
+    el('ctSemana').textContent = String(Math.max(1, semana));
+    if (el('ctNovo')) el('ctNovo').textContent = String(novo);
+  }
   const N = (typeof RESP !== 'undefined' && RESP && RESP.nacional) || null;
-  if (el('interpResposta') && N) el('interpResposta').innerHTML = `<strong>${n(N.n_municipios)}</strong> municípios, <strong>${(N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')}</strong> milhões de pessoas. Primeiro decreto do ciclo: <strong>${N.primeiro_decreto || '—'}</strong>. ${n(N.reconhecidos)} aceitos pelo governo federal · ${n(N.decretados_sem_reconhecimento)} ainda não. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas; transferências por regra e por decreto de emergência continuam (<a href="calendario-eleitoral.html">calendário →</a>).`;
+  if (el('interpResposta') && N) el('interpResposta').innerHTML = `<strong>${n(N.n_municipios)}</strong> municípios, <strong>${(N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')}</strong> milhões de pessoas, desde <strong>${N.primeiro_decreto || '—'}</strong>. <strong>${n(N.reconhecidos)}</strong> reconhecidos pelo governo federal. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas. Por regra e por decreto continuam. <a href="calendario-eleitoral.html">Calendário</a>.`;
 })();
 
 // ---- Calendário (15/09/2026, pedido da editoria: "O que vem" condensado em colunas): marcos fixos do ciclo
@@ -654,7 +663,7 @@ function gerarRelatorioCidadao(uf, municipio){
     doc.setFont('helvetica','bold'); doc.setFontSize(52); doc.setTextColor(60,60,60);
     doc.text('FUTURA · EVIDENCE LAB', W/2, H/2, {angle:45, align:'center'}); doc.restoreGraphicsState(); };
   const rod = () => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(120,110,95);
-    doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
+    doc.text('MARÉ · Monitor de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
     doc.text('© 2026 Futura Evidence Lab. Dados verificados em fontes oficiais.', M, H-18);
     doc.text('Página ' + doc.internal.getNumberOfPages(), W-M, H-18, {align:'right'}); };
   const nova = () => { rod(); doc.addPage(); marca(); y = M; };
@@ -679,7 +688,7 @@ function gerarRelatorioCidadao(uf, municipio){
   marca();
   doc.addImage(LOGO_PDF, 'PNG', M, 42, 150, 56);
   doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.setTextColor(...INK);
-  doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño', M, 128);
+  doc.text('MARÉ · Monitor de Antecipação e Resposta ao El Niño', M, 128);
   doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(...MUTED);
   const corte = (typeof META !== 'undefined' && META && META.corte) ? META.corte : '';
   doc.text('El Niño 2026/2027 · Corte dos dados: ' + corte + ' · Gerado em ' + new Date().toLocaleDateString('pt-BR'), M, 143);
@@ -918,7 +927,7 @@ __load().catch(err => {
 // ===== index.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
-// ===== formulário "Indique um documento publicado" (migrou de pesquisadores.html para o fim do MARÉ · Defesa civil em 16/09/2026) =====
+// ===== formulário "Indique um documento publicado" (migrou de pesquisadores.html para o fim do MARÉ Legal em 16/09/2026) =====
 (function(){
   const p = new URLSearchParams(location.search); if (!document.getElementById('cUF')) return;
   const set = (id, v) => { const el = document.getElementById(id); if (el && v) el.value = v; };

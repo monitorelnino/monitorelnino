@@ -26,7 +26,7 @@ UF_NOME = {"AC": "Acre", "AL": "Alagoas", "AM": "Amazonas", "AP": "Amapá", "BA"
            "ES": "Espírito Santo", "GO": "Goiás", "MA": "Maranhão", "MG": "Minas Gerais", "MS": "Mato Grosso do Sul", "MT": "Mato Grosso",
            "PA": "Pará", "PB": "Paraíba", "PE": "Pernambuco", "PI": "Piauí", "PR": "Paraná", "RJ": "Rio de Janeiro", "RN": "Rio Grande do Norte",
            "RO": "Rondônia", "RR": "Roraima", "RS": "Rio Grande do Sul", "SC": "Santa Catarina", "SE": "Sergipe", "SP": "São Paulo", "TO": "Tocantins"}
-ASSINATURA = "Futura Evidence Lab — MARÉ · Medida de Antecipação e Resposta ao El Niño (monitorelnino.com.br)"
+ASSINATURA = "Futura Evidence Lab — MARÉ · Monitor de Antecipação e Resposta ao El Niño (monitorelnino.com.br)"
 
 MODELO_DC = """À {orgao} ({uf})
 Serviço de Informação ao Cidadão — pedido com fundamento na Lei nº 12.527/2011 (Lei de Acesso à Informação)

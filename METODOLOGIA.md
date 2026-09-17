@@ -2,7 +2,7 @@ FUTURA · EVIDENCE LAB
 
 **Monitor El Niño Brasil**
 
-*MARÉ --- Medida de Antecipação e Resposta ao El Niño*
+*MARÉ --- Monitor de Antecipação e Resposta ao El Niño*
 
 Documento Técnico-Metodológico
 
@@ -189,7 +189,7 @@ O que o repositório já contém que serve a uma futura medição nessa direçã
 
 **5.1 Nome e histórico**
 
-MARÉ --- Medida de Antecipação e Resposta ao El Niño. Histórico de nomenclatura: IPEN (descartado por colisão com o Instituto de Pesquisas Energéticas e Nucleares) → IPREN (provisório) → MARÉ (definitivo, 25/08/2026). No código, o identificador é MARE, sem acento.
+MARÉ --- Monitor de Antecipação e Resposta ao El Niño. Histórico de nomenclatura: IPEN (descartado por colisão com o Instituto de Pesquisas Energéticas e Nucleares) → IPREN (provisório) → MARÉ (definitivo, 25/08/2026); a palavra que a sigla abre mudou de "Medida" para "Monitor" em 16/09/2026, decisão editorial. No código, o identificador é MARE, sem acento.
 
 **O que o índice mede — e o que não mede.** O MARÉ é um índice do **arcabouço público da preparação** (a preparação demonstrável publicamente, na delimitação do §5.0, que tem precedência interpretativa): existência, natureza, alcance populacional e antecipação dos instrumentos ex-ante publicados por estados e municípios. Atos de resposta não pontuam (Correção B). Ele não mede suficiência material — se os recursos mobilizados bastam frente à necessidade —, porque não existe parâmetro público de necessidade por estado que sustente essa pontuação com rigor. As dimensões complementares são publicadas lado a lado: a adequação legal (risco projetado × instrumento, seção 7) e o financiamento rastreável (seção 8). A promoção da adequação instrumento×risco a componente do índice é estudada para uma futura versão 3.
 
@@ -875,7 +875,7 @@ Três julgamentos ficam explicitamente como **pistas** até o ato em fonte ofici
 
 ## 32. Contador de resposta — a outra metade do MARÉ (v3.1, decisão editorial de 06/09/2026)
 
-**Definição (E13).** MARÉ é Medida de Antecipação *e Resposta*. Cada eixo tem duas metades: **antecipação = índice** (o que foi publicado antes; 0–100, três componentes, faixas, Monte Carlo) e **resposta = contador** (o que foi decretado depois; contagens, frações e datas — sem fórmula, sem faixa, sem peso). Nome na interface: "Resposta", par de "Antecipação" (C19). Nenhum acrônimo novo, nenhum "índice de calamidade".
+**Definição (E13).** MARÉ é Monitor de Antecipação *e Resposta*. Cada eixo tem duas metades: **antecipação = índice** (o que foi publicado antes; 0–100, três componentes, faixas, Monte Carlo) e **resposta = contador** (o que foi decretado depois; contagens, frações e datas — sem fórmula, sem faixa, sem peso). Nome na interface: "Resposta", par de "Antecipação" (C19). Nenhum acrônimo novo, nenhum "índice de calamidade".
 
 **Escala (C15).** Por UF: comprimento da barra = fração dos municípios da UF sob decreto no ciclo (desde 29/06/2026, Boletim nº 1); um traço vertical na mesma barra = fração da população da UF sob decreto (Censo 2022). Sem fórmula que combine os dois; algarismos ao lado ("31 de 417 municípios · 12% da população"). Nacional: N municípios (x%) · y% da população · primeiro decreto em dd/mm.
 

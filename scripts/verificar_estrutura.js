@@ -43,7 +43,7 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css(\?v=[0-9a-f]+)?"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["MARÉ · Defesa civil", "Monitor de risco", "Proteja-se", "Defesa civil", "MARÉ Saúde", "Financiamento", "Para gestores", "Imprensa", "Pesquisadores"];   // 15/09/2026 (pedido da editoria): O monitor → MARÉ · Defesa civil · Risco climático → Monitor de risco · Saúde → MARÉ Saúde · Prefeituras → Para prefeitos (arquivos e URLs inalterados); ordem de 14/09 mantida
+  const NAV_ORDEM = ["MARÉ Legal", "Monitor de risco", "Proteja-se", "Defesa civil", "MARÉ Saúde", "Financiamento", "Para gestores", "Imprensa", "Pesquisadores"];   // 16/09/2026 (handover de identidade): MARÉ Legal restaurado (era MARÉ · Defesa civil); ordem de 14/09 mantida
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {
