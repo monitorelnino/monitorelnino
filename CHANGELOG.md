@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §81 · "Medida de Antecipação" sobrevivia em 10 das 11 páginas; confirmado direto no domínio publicado; portão novo · 17/09/2026
+
+Patricia disse, pela segunda vez, que não via o marcador temporal nem os ajustes de linguagem nas demais páginas. Da primeira vez, verifiquei só localmente e assumi que estava tudo certo — dessa vez fui direto ao domínio publicado buscar prova, e a prova encontrou um erro real.
+
+**Como confirmei**: sem acesso de rede direto a monitorelnino.com.br daqui, usei o mecanismo que já existe (`verificar_publicado.yml`, que tem a senha do domínio como segredo do GitHub Actions) para buscar o HTML publicado de verdade e procurar pelos textos específicos. Descoberta: o marcador temporal **está** publicado, correto, nas duas páginas (home e Saúde) — mas `saude.html` ainda trazia **"Medida de Antecipação"** no subtítulo do cabeçalho.
+
+**A causa**: o §79 (busca e substituição do nome) usava correspondência de string simples — e o subtítulo do masthead é `<p class="mast-sub">Medida de Antecipação e Resposta ao <em>El Niño</em></p>`, com uma tag `<em>` bem no meio da frase. Uma busca simples não vê a string como o leitor vê; só achei e corrigi esse padrão na home, quando reescrevi aquele trecho por inteiro no §4 — nunca apliquei a mesma correção, com essa mesma tag, às outras 10 páginas, que compartilham o mesmo masthead. Uma varredura sem remover as tags primeiro não pega esse tipo de erro; foi assim que passou pelas minhas checagens de antes.
+
+**Corrigido**: as 10 páginas restantes. Conferência final, ampla, removendo tags antes de buscar, em três frentes (nome antigo, "MARÉ · Defesa civil", "aviso federal", travessão no cabeçalho) — nada mais sobrou.
+
+**Portão novo, em `verificar_estrutura.js`**: para toda página do pacote, remove as tags e confere que "Medida de Antecipação" e "MARÉ · Defesa civil" não sobrevivem — pega exatamente esse tipo de erro (string partida por tag), que uma busca ingênua deixa passar. Teste negativo executado (reintroduzido o padrão exato que causou o bug) e revertido com segurança.
+
+Lição registrada: quando alguém relata, pela segunda vez, que não vê uma mudança que eu já verifiquei, o próximo passo é ir buscar prova direto na fonte, não checar de novo do mesmo jeito e confiar de novo.
+
 ## §80 · Paridade de Saúde com a home: medidor "Depois" compacto e contador de tempo · 17/09/2026
 
 Patricia perguntou por que não via o marcador temporal nem as mudanças da Saúde depois do §79. Conferido: o handover de identidade (§79) tinha o §4, com o texto exato do contador de tempo e do medidor compacto, escrito só para `index.html` ("A página inicial, texto completo e definitivo") — não pedia essas duas peças para `saude.html`, e por isso não foram implementadas lá. A instrução "os dois têm a mesma anatomia" do §2 falava do nome (MARÉ Legal / MARÉ Saúde), não das duas peças visuais novas.
