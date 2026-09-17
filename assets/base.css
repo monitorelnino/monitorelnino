@@ -179,6 +179,9 @@ details.acc > .panel > h2:first-of-type{display:none;}   /* já mostrado no <sum
 .figura-cat{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--teal); margin:0 0 var(--sp-1);}
 .figura-titulo{font-family:var(--font-titulo); font-size:var(--fs-h4); line-height:var(--lh-h4); font-weight:var(--peso-regular); color:var(--ink); margin:0 0 var(--sp-1); min-height:calc(2 * var(--fs-h4) * var(--lh-h4));}
 .figura-sub{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--esp-figura-legenda); min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
+/* 17/09/2026 (pedido da editoria): gráfico do ONI no padrão dos sites oficiais — fundo preto,
+   vermelho acima da média, azul abaixo, com transparência. Escopado só a essa figura. */
+#wrapOni{background:#000; border-radius:var(--radius); padding:var(--sp-3);}
 .figura-midia{width:100%; min-width:0; position:relative;}
 .figura--mapa .figura-midia{aspect-ratio:var(--mapa-proporcao);}
 .figura--mapa .figura-midia > svg{width:100%; height:100%; display:block;}

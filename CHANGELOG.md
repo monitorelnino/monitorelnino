@@ -15,6 +15,14 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §84 · Gráfico do ONI no padrão dos sites oficiais: fundo preto, vermelho e azul com transição · 17/09/2026
+
+Pedido direto da editoria: o gráfico da série ONI, no Monitor de risco, virou uma linha única numa cor só, sem contraste com El Niño (vermelho) e La Niña (azul), sem lembrar o padrão que os sites oficiais (NOAA/CPC) usam.
+
+Reescrito: virou gráfico de barras (uma por trimestre), fundo preto (`#wrapOni`, escopado só a essa figura — o resto do site continua claro), vermelho acima da média e azul abaixo, com a opacidade de cada barra crescendo com a intensidade da anomalia — mais transparente perto de zero, mais saturada nos picos. É a mesma lógica de transição contínua por valor que os medidores do MARÉ já usam (o degradê da barra de progresso), adaptada de "largura de uma barra só" para "opacidade de cada barra de uma série". Animação ligada nesta figura especificamente (as demais da página não animam, por padrão de performance) para dar o movimento pedido.
+
+Cores e leitura do parágrafo abaixo do gráfico não mudaram. Suíte inteira verde (20 verificações); cadeia de derivados regenerada em árvore limpa; conferido visualmente, sem erro de JavaScript.
+
 ## §83 · Calendário vai para o fim da home; ponderação populacional citada na abertura; frase solta some do medidor; ficha explica o índice de resposta · 17/09/2026
 
 Pedido direto da editoria, quatro partes.
