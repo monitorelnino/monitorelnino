@@ -53,7 +53,7 @@
     <p class="mast-sub">Monitor de Antecipação e Resposta ao <em>El Niño</em></p>
     <div class="mast-body">
       <p class="site-sub">Um painel de órgãos técnicos federais publicou em 29 de junho de 2026 o primeiro boletim do El Niño 2026/2027, projetando seca e fogo no Norte e no Nordeste, chuva intensa no Sul e calor no Sudeste até março de 2027. A partir dele, a lei determina que estados e municípios adaptem seus planos de contingência ao risco indicado.</p>
-      <p class="site-sub">O MARÉ Legal verifica em fontes oficiais quais dos 27 estados e dos <span id="heroVerifFederal">5.571</span> municípios publicaram esse plano. Cada plano encontrado soma ao índice abaixo. Um segundo índice, separado do primeiro, mostra quantos municípios decretaram emergência desde então.</p>
+      <p class="site-sub">O MARÉ Legal verifica em fontes oficiais quais dos 27 estados e dos <span id="heroVerifFederal">5.571</span> municípios publicaram esse plano. Cada plano encontrado soma ao índice, com ponderação pela população coberta. Um segundo índice, separado do primeiro, mostra quantos municípios decretaram emergência desde então.</p>
       <div class="meta">
         Fonte: <a href="pesquisadores.html#fontes">registros verificados individualmente, com fonte e data citadas</a><br>
         <span id="metaUfsMun">27 estados verificados. Verificação municipal por níveis, no contador abaixo.</span><br>
@@ -84,7 +84,6 @@
           <span style="left:70%">70<b>avançado</b></span>
         </div>
         <div class="gauge-ends"><span>0 · estágio inicial</span><span>100</span></div>
-        <p class="note u-mt-2 u-mb-0" id="interpAntecipacao" aria-live="polite">—</p>
         <p class="note u-mt-2 u-mb-0"><a href="#comoler" id="linkComoLer">como ler o MARÉ Legal</a></p>
       </div>
     </div>
@@ -114,7 +113,7 @@
       <p class="hint"><strong>O que o índice conta.</strong> O que estados e municípios publicaram antes do ciclo: se há um plano; se foi feito para este El Niño, é o de todo ano atualizado ou é o de todo ano sem atualização; e quando o plano foi publicado em relação ao primeiro boletim, de 29 de junho.</p>
       <p class="hint">Quanta gente vive em cidade com plano. Os três pesam igual. A nota vai de 0 a 100 e tem quatro faixas: estágio inicial, em construção, consolidado, avançado.</p>
       <p class="hint"><strong>O que o índice não conta.</strong> Dinheiro, equipamento, pessoal e a execução no terreno. Decretos de emergência ficam no contador ao lado, separados da nota.</p>
-      <p class="hint"><strong>O índice de resposta.</strong> Municípios sob decreto de emergência desde 29 de junho, e a parcela da população que vive neles. Mostra também quantos decretos foram reconhecidos pelo governo federal e quando foi o primeiro do ciclo. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas; por regra e por decreto continuam.</p>
+      <p class="hint"><strong>O índice de resposta.</strong> O número vai de 0 a 100 e é a parcela da população nos municípios sob decreto de emergência desde 29 de junho. Mostra também quantos decretos foram reconhecidos pelo governo federal e quando foi o primeiro do ciclo. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas; por regra e por decreto continuam.</p>
       <p class="hint"><strong>Um município sem plano localizado</strong> é um município em que não encontramos plano publicado nos diários oficiais nem nos sítios de governo. <strong>"Ainda não verificado"</strong> é um município em que ainda não procuramos com todas as fontes.</p>
       <p class="hint">Cada cidade mostra até onde a procura chegou: registros federais, diário do estado, diário e sítio da cidade.</p>
       <p class="hint"><strong>Um plano publicado durante o ciclo</strong> entra na semana seguinte.</p>
@@ -143,18 +142,6 @@
     <button type="button" class="detail-fechar" id="detailFechar" aria-label="Fechar">×</button>
     <div id="detailConteudo"></div>
   </dialog>
-
-  <div class="panel" id="prazos">
-    <h2>Calendário</h2>
-    <p class="hint">Marcos públicos do ciclo e prazos legais em curso, em ordem de data, cada um com sua fonte. O que a lei suspende e o que não suspende no período eleitoral está detalhado no <a href="calendario-eleitoral.html">calendário eleitoral</a>.</p>
-    <div class="calendario" id="marcosCiclo" role="table" aria-label="Calendário do ciclo: data, marco e fonte">
-      <div class="cal-linha cal-cabecalho" role="row"><span role="columnheader">Data</span><span role="columnheader">Marco</span><span role="columnheader">Fonte</span></div>
-    </div>
-    <div id="prazosLista" hidden></div>
-    <p class="note" id="prazosVazio" hidden>Nenhum prazo estadual ou federal com vencimento em curso até o corte.</p>
-    <div id="prazosFonte"></div>
-  </div>
-
 
   <div class="panel" id="formulario">
     <h2>Indique um documento publicado</h2>
@@ -188,6 +175,19 @@
       <p class="note u-mt-2 u-mb-0" id="contribOffline"></p>
     </form>
   </div>
+
+  <div class="panel" id="prazos">
+    <h2>Calendário</h2>
+    <p class="hint">Marcos públicos do ciclo e prazos legais em curso, em ordem de data, cada um com sua fonte. O que a lei suspende e o que não suspende no período eleitoral está detalhado no <a href="calendario-eleitoral.html">calendário eleitoral</a>.</p>
+    <div class="calendario" id="marcosCiclo" role="table" aria-label="Calendário do ciclo: data, marco e fonte">
+      <div class="cal-linha cal-cabecalho" role="row"><span role="columnheader">Data</span><span role="columnheader">Marco</span><span role="columnheader">Fonte</span></div>
+    </div>
+    <div id="prazosLista" hidden></div>
+    <p class="note" id="prazosVazio" hidden>Nenhum prazo estadual ou federal com vencimento em curso até o corte.</p>
+    <div id="prazosFonte"></div>
+  </div>
+
+
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -198,7 +198,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/index.js?v=9cbea2ab" defer></script>
+<script src="assets/js/index.js?v=0a634a2d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

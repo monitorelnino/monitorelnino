@@ -209,7 +209,8 @@ setTimeout(() => {
   // 17/09/2026 (pedido da editoria): o parágrafo de interpretação da resposta e o contador de tempo saíram do
   // "Depois" — os dois glabels dos medidores também saíram; o corte passa a aparecer uma única vez, no cabeçalho.
   teste("home sem os três cartões, sem a nota do período eleitoral e sem o bloco 'escondeu' (15/09/2026)", !q("tres") && !q("notaDefeso") && !q("blocoPosDefeso") && !q("n1Anunciado"));
-  teste("ordem da home: medidores → sua cidade → estados → calendário → indique um documento", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("prazos") && pos("prazos") < pos("formulario") && pos("formulario") === ids.length - 1; })());
+  // 17/09/2026 (pedido da editoria): Calendário passa para o fim da main, trocando de lugar com "Indique um documento".
+  teste("ordem da home: medidores → sua cidade → estados → indique um documento → calendário", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("formulario") && pos("formulario") < pos("prazos") && pos("prazos") === ids.length - 1; })());
   teste("calendário nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
   teste("porta para o calendário eleitoral segue na inicial (seção Calendário)", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
   teste("cruzamento risco × estágio (#cCruz/#boxCruz) não existe mais na inicial (17/09/2026, pedido da editoria)", !q("cCruz") && !q("boxCruz") && !q("cruzamento"));
