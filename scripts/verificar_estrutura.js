@@ -246,6 +246,23 @@ for (const arq of arquivos) {
   if (semTags.includes("MARÉ · Defesa civil")) falha(`${nome}: "MARÉ · Defesa civil" sobrevive (nome revogado; MARÉ Legal, ver §79)`);
 }
 
+// (17/09/2026) O próprio cabeçalho de assets/mapas.js declara que nenhuma página redefine
+// desenharMapa/siglas/showTip/legenda localmente — essa checagem passou a existir de fato
+// depois de achar três cópias divergentes de desenharMapa (financiamento.js, saude.js,
+// sinais-de-risco.js) que este portão não pegava.
+{
+  const jsDir = path.join(RAIZ, "assets", "js");
+  const RESERVADAS = ["desenharMapa", "siglas", "showTip", "legenda"];
+  for (const arq of fs.readdirSync(jsDir).filter(f => f.endsWith(".js"))) {
+    const src = fs.readFileSync(path.join(jsDir, arq), "utf-8");
+    for (const nome of RESERVADAS) {
+      if (new RegExp(`\\bfunction\\s+${nome}\\s*\\(`).test(src)) {
+        falha(`assets/js/${arq}: redefine ${nome}() localmente — usar MonitorMapas.${nome} (motor único em assets/mapas.js)`);
+      }
+    }
+  }
+}
+
 if (falhas) {
   console.log(`\n✗ ESTRUTURA: ${falhas} problema(s) em ${arquivos.length} página(s). Publicação bloqueada.`);
   process.exit(1);

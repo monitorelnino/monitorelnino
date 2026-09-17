@@ -53,10 +53,8 @@ function lacuna(alvoId, texto){
 }
 
 
-/* ---------- desenho genérico de mapa coroplético por UF ---------- */
-function desenharMapa(svgId, legendaId, corDe, rotuloDe, itensLegenda){
-  const svg = MonitorMapas.ufs(__ctx(), svgId, corDe, rotuloDe); MonitorMapas.legenda(legendaId, itensLegenda); return svg;
-}
+/* ---------- desenho genérico de mapa coroplético por UF (motor único em assets/mapas.js) ---------- */
+const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itensLegenda) => MonitorMapas.desenharMapa(__ctx(), svgId, legendaId, corDe, rotuloDe, itensLegenda);
 function __ctx(){ if (!window.__ctxCache) window.__ctxCache = MonitorMapas.contexto(BR_GEOJSON, 480, 460); return window.__ctxCache; }
 
 // ---- Mapa 1: tipo de risco projetado (dado coletado) ----

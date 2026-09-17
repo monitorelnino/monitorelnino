@@ -33,6 +33,24 @@ era clara sem eles. "As duas metades nunca se combinam num número" vira
 "As duas metades são mostradas separadamente" — mesma informação, sem o
 tom de regra sendo aplicada.
 
+## Léxico e teto probatório (antes só em `docs/GUIA_DO_EDITOR.md`, integrado aqui 17/09/2026)
+
+Além dos quatro hábitos acima, nenhuma legenda, ficha ou prosa de dado usa:
+
+- **Léxico avaliativo**: "preocupante", "alarmante", "grave", "crítico", "positivo",
+  "insuficiente", "avanço importante", "chama atenção", "fica evidente".
+- **Abertura interpretativa**: "revela", "demonstra", "os números mostram que…".
+- **Causalidade não demonstrada**: "X e Y aumentaram no período", nunca "X provocou Y".
+- **Teto probatório**: "sem plano **localizado**", nunca "sem plano" nem "não existe".
+
+Adjetivo vira número: não "aumento expressivo", mas "de 12 mil (2020) para 18 mil (2024)".
+Interpretação mora fora da figura — no parágrafo narrativo, no insight ou na ficha — nunca na
+legenda. Hierarquia: título (o que se vê) · subtítulo (período · variável · unidade) · figura ·
+legenda · fonte e data · texto narrativo (só aqui, quando couber, a interpretação). Termos
+técnicos que contêm essas palavras ("síndrome respiratória aguda grave", "janela crítica" do
+Ministério da Saúde, "nível 3 (alerta)") estão na lista de exceções do portão, por serem
+vocabulário oficial da fonte, não juízo do site.
+
 ## Por que isso acontecia
 
 Rigor e voz são coisas diferentes. Não inventar dado, separar fato de

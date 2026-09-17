@@ -29,6 +29,34 @@ Patricia disse, pela segunda vez, que não via o marcador temporal nem os ajuste
 
 Lição registrada: quando alguém relata, pela segunda vez, que não vê uma mudança que eu já verifiquei, o próximo passo é ir buscar prova direto na fonte, não checar de novo do mesmo jeito e confiar de novo.
 
+## §82 · Consolidação estrutural: duplicações de código e documentação achadas em auditoria · 17/09/2026
+
+A pedido da editoria, depois de uma auditoria de código (não só do CHANGELOG) que apontou onde
+o site duplica lógica e texto em vez de ter uma fonte única. Classe **manutenção** — nenhuma
+mudança visível de conteúdo ou de método.
+
+- **`desenharMapa()` unificado**: `financiamento.js`, `saude.js` e `sinais-de-risco.js`
+  reimplementavam a própria versão da função, apesar do cabeçalho de `assets/mapas.js` já
+  declarar que nenhuma página deveria fazer isso. Agora existe uma única `MonitorMapas.desenharMapa()`
+  em `assets/mapas.js`; as três páginas só passam o próprio contexto para ela.
+- **Portão de estrutura ganhou dentes**: `scripts/verificar_estrutura.js` agora falha de verdade
+  se alguma página redefinir `desenharMapa`/`siglas`/`showTip`/`legenda` localmente — antes a
+  regra só existia como comentário, sem checagem. No caminho, o comentário também citava um nome
+  errado (`addSiglas`, que nunca foi o nome exportado — é `siglas`); corrigido. Mesclado sem
+  atrito com a checagem de string-partida-por-tag do §81, adicionada em paralelo.
+- **Arquivo órfão removido**: `assets/js/para-gestores.js` não era carregado por nenhuma página
+  desde a renomeação de Prefeituras para Para gestores (PR #240, 15/09) — sobrou sem uso.
+- **Regra de voz editorial consolidada num só documento**: `docs/GUIA_DO_EDITOR.md` e
+  `docs/VOZ_EDITORIAL.md` descreviam parcialmente a mesma regra, de formas diferentes.
+  `docs/VOZ_EDITORIAL.md` passa a ser o único documento canônico (léxico avaliativo/causal/teto
+  probatório, antes só no guia, foi incorporado lá); o guia agora só aponta para ele.
+- **`docs/AUDITORIA_CODIGO.md` sinalizado como desatualizado**: a seção de escopo ainda descrevia
+  o pacote de 27/08/2026 (três páginas); corrigida a contagem de páginas e adicionado aviso de que
+  o restante do documento precisa de uma auditoria completa própria — não é este PR.
+
+Suíte de portões (todos, incluindo os dois de tom) verde; cadeia de derivados regenerada em
+árvore limpa; `recalcular_mare.py --check` reproduz a média nacional bit a bit (43.6, inalterada).
+
 ## §80 · Paridade de Saúde com a home: medidor "Depois" compacto e contador de tempo · 17/09/2026
 
 Patricia perguntou por que não via o marcador temporal nem as mudanças da Saúde depois do §79. Conferido: o handover de identidade (§79) tinha o §4, com o texto exato do contador de tempo e do medidor compacto, escrito só para `index.html` ("A página inicial, texto completo e definitivo") — não pedia essas duas peças para `saude.html`, e por isso não foram implementadas lá. A instrução "os dois têm a mesma anatomia" do §2 falava do nome (MARÉ Legal / MARÉ Saúde), não das duas peças visuais novas.
