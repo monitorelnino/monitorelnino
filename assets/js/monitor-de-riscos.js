@@ -196,7 +196,8 @@ function canvasEm(wrapId, canvasId){
 }
 
 // ---- Gráfico 1: série ONI ----
-// 17/09/2026 (pedido da editoria): padrão dos sites oficiais — fundo preto (CSS, #wrapOni), barras
+// 17/09/2026 (pedido da editoria): padrão dos sites oficiais — fundo preto (CSS, classe .grafico-preto,
+// compartilhada pelos três wrappers deste bloco, não mais um id só), barras
 // vermelhas acima da média e azuis abaixo, com transparência que cresce com a intensidade da anomalia
 // (mesma lógica de transição contínua dos medidores do MARÉ, adaptada a uma série histórica: aqui a
 // "transição" é a opacidade de cada barra, não a largura de uma barra só). Movimento: animação ligada

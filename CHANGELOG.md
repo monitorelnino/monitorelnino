@@ -15,6 +15,14 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §91 · RONI e anomalia mensal ganham o mesmo fundo preto do ONI (achado: CSS preso a um id só) · 17/09/2026
+
+Patricia notou que RONI e a anomalia mensal não pareciam iguais ao ONI, apesar do código já compartilhar cor e animação entre os três desde o §88. Causa real: o fundo preto vinha de uma regra CSS por id (`#wrapOni{background:#000;...}`), que por definição só vale para aquele elemento — nunca se aplicou aos outros dois, que ficavam com fundo branco por trás das mesmas barras vermelhas e azuis.
+
+Regra trocada de seletor de id para uma classe (`.grafico-preto`), aplicada nos três wrappers (`#wrapOni`, `#wrapRoni`, `#wrapAnomalia`). A animação já era, de fato, igual nos três desde o §88 (mesma função `opcoesGraficoAnom` já compartilhada) — não havia nada a corrigir ali, só o fundo.
+
+Suíte inteira verde; derivados regenerados em árvore limpa; conferido visualmente, os três agora idênticos em design.
+
 ## §90 · ONI, RONI e anomalia mensal lado a lado, num grid só, mesmo design · 17/09/2026
 
 Pedido direto da editoria: os três gráficos viviam em dois blocos (ONI e RONI juntos, anomalia mensal sozinha embaixo, largura cheia). Unificados num único `grade-figuras--3` (classe que já existia no site, "lado a lado quando cabem três") — os três em uma linha só, cada um a um terço da largura. A classe `figura--largo` saiu da anomalia (forçava largura total, incompatível com caber em um terço). Os três já compartilhavam a mesma paleta e as mesmas opções de gráfico desde o §88; a diferença agora é só de disposição.
