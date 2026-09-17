@@ -241,7 +241,7 @@ setTimeout(() => {
   {
     const IDS_DADO = {
       "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "respCorte", "respLinha", "interpResposta", "heroCorte", "metaAtualizado", "corteDados", "ctSemana", "ctNovo"],
-      "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte"],
+      "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte", "ctSemanaSaude", "ctNovoSaude"],
       "financiamento.html": ["corteFin", "notaFogoCorte"],
     };
     const CORTES_IGUAIS = { "index.html": [["heroCorte", "respCorte", "corteDados"], ["metaUltimaVerif", "metaAtualizado"]] };
