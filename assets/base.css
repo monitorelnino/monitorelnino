@@ -315,6 +315,13 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .gfaixa-pill{font-family:var(--font-corpo); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); color:var(--gauge-osso); padding:var(--sp-1) var(--sp-3); border-radius:var(--radius-pill); white-space:nowrap;}
 .gauge-zone--resposta .gnum{color:var(--rust);}
 .gauge-zone--resposta .gfaixa-badge .gfaixa-pill{background:var(--rust);}
+/* 16/09/2026 (handover de identidade, §4.4): variante compacta do medidor "Depois" — mesma
+   família visual e largura do medidor "Antes", corpo tipográfico menor, menos destaque de leitura. */
+.gauge-zone--compacta{gap:var(--sp-1);}
+.gauge-zone--compacta .gauge-head .gnum{font-size:var(--fs-h4);}
+.gauge-zone--compacta .gauge-head .gden{font-size:var(--fs-small);}
+.gauge-zone--compacta .gauge-track{height:10px; border-radius:5px;}
+.gauge-zone--compacta .gauge-tick-labels{display:none;}
 .gauge-mini{margin:var(--sp-2) 0 var(--sp-4);}
 .gauge-mini .gauge-head .gnum{font-size:var(--fs-h2); line-height:var(--lh-h2);}
 .gauge-mini .gauge-track{height:18px;}

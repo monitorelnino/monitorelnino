@@ -197,9 +197,18 @@ setTimeout(() => {
   // 16/09/2026 (handover da voz editorial, §2.1/D2): o subtítulo foi reescrito — a identidade
   // ("verificação independente, em fontes oficiais") aparece uma única vez, aqui, e a frase segue
   // trazendo os 27 estados, o total de municípios e o corte.
-  teste("home: herói sem h2 e sem botão de consulta; subtítulo único com municípios e corte", !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]') && /27 estados e os [\d.]+ municípios/.test(d.querySelector(".site-sub").textContent) && /Dados até \d{2}\/\d{2}\/\d{4}\./.test(d.querySelector(".site-sub").textContent));
+  // 16/09/2026 (handover de identidade, §4.2): a abertura virou dois parágrafos .site-sub (o texto
+  // "27 estados e os municípios" ficou no segundo); "Dados até" saiu do site-sub e foi para o .meta,
+  // ao lado de "Última verificação". O teste passa a olhar o masthead inteiro, não só o primeiro nó.
+  teste("home: herói sem h2 e sem botão de consulta; abertura com municípios e corte", (() => {
+    const mast = d.querySelector(".mast-body"); const txt = mast ? mast.textContent : "";
+    return !d.querySelector(".hero h2") && !d.querySelector('.hero a[href="#minhacidade"]')
+      && /27 estados e (os|dos) [\d.]+ municípios/.test(txt) && /Dados até \d{2}\/\d{2}\/\d{4}\./.test(txt);
+  })());
   // 15/09/2026: a linha de interpretação do medidor (contagens por categoria) saiu da inicial (pedido da editoria).
-  teste("contador: interpretação com municípios, milhões, primeiro decreto e aceitos", /municípios, [\d,]+ milhões.*Primeiro decreto do ciclo: \d{2}\/\d{2}\/\d{4}.*aceitos pelo governo federal/.test(q("interpResposta").textContent));
+  // 16/09/2026 (handover de identidade, §4.4): "Primeiro decreto do ciclo: X. N aceitos... M ainda não"
+  // virou "desde X. N reconhecidos pelo governo federal." — mesma informação, frase mais curta.
+  teste("contador: interpretação com municípios, milhões, data e reconhecidos", /municípios, [\d,]+ milhões de pessoas, desde \d{2}\/\d{2}\/\d{4}.*reconhecidos pelo governo federal/.test(q("interpResposta").textContent));
   teste("home sem os três cartões, sem a nota do período eleitoral e sem o bloco 'escondeu' (15/09/2026)", !q("tres") && !q("notaDefeso") && !q("blocoPosDefeso") && !q("n1Anunciado"));
   teste("ordem da home: medidores → sua cidade → estados → calendário → cruzamento risco × estágio → indique um documento", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("prazos") && pos("prazos") < pos("cruzamento") && pos("cruzamento") < pos("formulario") && pos("formulario") === ids.length - 1; })());
   teste("calendário nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
@@ -231,7 +240,7 @@ setTimeout(() => {
   // as três páginas com medidor/corte no cabeçalho.
   {
     const IDS_DADO = {
-      "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "respCorte", "respLinha", "interpResposta", "heroCorte", "metaAtualizado", "corteDados"],
+      "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "respCorte", "respLinha", "interpResposta", "heroCorte", "metaAtualizado", "corteDados", "ctSemana", "ctNovo"],
       "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte"],
       "financiamento.html": ["corteFin", "notaFogoCorte"],
     };

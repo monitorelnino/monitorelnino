@@ -158,10 +158,19 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   if (el('heroCorte')) el('heroCorte').textContent = (META && META.corte) || '—';
   const st = Object.values(MARE).map(v => v.status_estadual);
   const c = k => st.filter(x => k.includes(x)).length;
-  const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), elabLac = c(['ELAB', 'LAC']);
-  if (el('interpAntecipacao')) el('interpAntecipacao').innerHTML = `<strong>${novo}</strong> estados publicaram plano feito para este ciclo; <strong>${readVig}</strong> reeditaram ou mantêm o plano de todo ano; <strong>${elabLac}</strong> não têm plano localizado.`;
+  const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), semPlano = c(['LAC']);
+  if (el('interpAntecipacao')) el('interpAntecipacao').innerHTML = `<strong>${novo}</strong> estados publicaram plano feito para este ciclo. <strong>${readVig}</strong> mantêm o plano de todo ano. <strong>${semPlano}</strong> sem plano localizado.`;
+  // 16/09/2026 (handover de identidade, §4.5): contador de tempo, semana desde o primeiro boletim
+  // (29/06/2026), variante "Leve" — só a linha de texto, sem elemento gráfico.
+  if (el('ctSemana') && META && META.corte) {
+    const [dd, mm, aa] = META.corte.split('/').map(Number); const corte = new Date(aa, mm - 1, dd);
+    const boletim1 = new Date(2026, 5, 29);
+    const semana = Math.floor((corte - boletim1) / 86400000 / 7) + 1;
+    el('ctSemana').textContent = String(Math.max(1, semana));
+    if (el('ctNovo')) el('ctNovo').textContent = String(novo);
+  }
   const N = (typeof RESP !== 'undefined' && RESP && RESP.nacional) || null;
-  if (el('interpResposta') && N) el('interpResposta').innerHTML = `<strong>${n(N.n_municipios)}</strong> municípios, <strong>${(N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')}</strong> milhões de pessoas. Primeiro decreto do ciclo: <strong>${N.primeiro_decreto || '—'}</strong>. ${n(N.reconhecidos)} aceitos pelo governo federal · ${n(N.decretados_sem_reconhecimento)} ainda não. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas; transferências por regra e por decreto de emergência continuam (<a href="calendario-eleitoral.html">calendário →</a>).`;
+  if (el('interpResposta') && N) el('interpResposta').innerHTML = `<strong>${n(N.n_municipios)}</strong> municípios, <strong>${(N.pop_sob_decreto / 1e6).toFixed(1).replace('.', ',')}</strong> milhões de pessoas, desde <strong>${N.primeiro_decreto || '—'}</strong>. <strong>${n(N.reconhecidos)}</strong> reconhecidos pelo governo federal. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas. Por regra e por decreto continuam. <a href="calendario-eleitoral.html">Calendário</a>.`;
 })();
 
 // ---- Calendário (15/09/2026, pedido da editoria: "O que vem" condensado em colunas): marcos fixos do ciclo

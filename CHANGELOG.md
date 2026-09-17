@@ -15,6 +15,28 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §79 · Nome vira Monitor, MARÉ Legal restaurado, travessão sai da prosa; home reescrita por inteiro · 16/09/2026
+
+Handover de identidade e linguagem, que **substitui** a decisão D1 de §76 (que tinha removido "MARÉ Legal") e **estende** `docs/VOZ_EDITORIAL.md` com um quarto hábito a evitar.
+
+**§1 — o nome por extenso.** "Medida de Antecipação e Resposta ao El Niño" vira "Monitor de Antecipação e Resposta ao El Niño" — 64 ocorrências em 11 páginas, JS, seis geradores Python, `CITATION.cff`. Em `METODOLOGIA.md`, só as seções de definição corrente mudaram; o "Complemento de 15/09/2026", que registra uma troca de nome anterior, ficou intacto — é histórico datado, não definição viva — e ganhou uma linha nova no próprio "Histórico de nomenclatura" registrando a mudança de hoje.
+
+**§2 — MARÉ Legal volta a existir.** Reverte só o D1 de §76; as demais reescritas daquele handover (fichas, glossário, remoções de lei e de LAI) continuam valendo. O portão de voz (`verificar_legendas.js`) parou de proibir e passa a **exigir** o termo na navegação e "MARÉ Saúde" no h1 da Saúde.
+
+**§3 — travessão sai da prosa.** Quarto hábito documentado em `docs/VOZ_EDITORIAL.md`: nenhuma prosa do site usa "—" como pontuação de frase (vírgula, ponto ou duas frases, no lugar). Não afeta "·" nem o hífen sem espaço em intervalos ("2019–2025") ou palavras compostas. 41 ocorrências corrigidas em todo o site — a maior parte em templates JS compartilhados por várias páginas (a lista "O que a lei deixa aberto", usada em três páginas ao mesmo tempo, valia 14 sozinha) e no conjunto de Financiamento (12, incluindo dois escondidos dentro de dados, não de template: `assets/js/financiamento.js` e `data/calendario/dispositivos.json`). Onde o travessão morava no PRÓPRIO dado gerado (`data/saude_sinais.json`), corrigido também na fonte (`coletar_saude.py`), para não voltar na próxima coleta. Portão estendido: cobre `figcaption`/`dd` além do que já verificava, e vale mesmo dentro de ficha/bloco legal (que só ficam de fora das checagens de conteúdo, não das de estilo de frase). Teste negativo executado dentro de uma ficha e revertido.
+
+**§4 — a home, reescrita por inteiro:**
+- Abertura em dois parágrafos com o texto exato do handover; no caminho, achei e corrigi uma última menção a "Medida" que tinha escapado do §1 por estar quebrada por uma tag `<em>` no meio.
+- Medidor "Antes": rótulo "o índice do MARÉ Legal"; uma função JavaScript **órfã** (`interpAntecipacao`) que já existia no código mas não tinha elemento correspondente no HTML, e por isso nunca executava, ganhou o elemento e o texto exato do handover (três números: plano feito para o ciclo, mantêm o plano de todo ano, sem plano localizado).
+- Medidor "Depois": variante compacta nova (`.gauge-zone--compacta`, em `assets/base.css`) — mesma largura do medidor de cima, número e barra menores, sem marcações de faixa. Texto e interpretação reescritos.
+- Contador de tempo, componente novo: "Semana {n} desde a publicação do primeiro boletim. {n} estados publicaram plano feito para este ciclo desde então", calculado de `meta.json` e `indice.json`, sem número escrito à mão. Variante **Leve** é a que foi ao ar; protótipo da variante **Média** (número da semana em corpo maior) foi construído, testado e comparado por screenshot, não ficou no ar. A variante "Com traço" (miniatura de série semanal) fica de fora por ora — reconstruir o histórico a partir do feed é trabalho de dados que não confirmei ser viável nesta rodada.
+- Ficha "Como ler o MARÉ Legal": "O contador de decretos" renomeado para "O índice de resposta" (nome do handover); a lista de órgãos que publicam os boletins (Inmet, Cemaden, Inpe, ANA, SGB, Sedec) entrou no fim da ficha, onde não estava.
+- Rodapé com o nome completo atualizado.
+
+**§5 — propagação.** "Aviso federal"/"aviso" em referência ao Boletim nº 1 corrigido para "boletim"/"primeiro boletim" em Saúde e Imprensa, além da home.
+
+Dois portões quebraram no caminho por dependerem de texto exato que mudou hoje — a ordem canônica da navegação (`verificar_estrutura.js` ainda citava "MARÉ · Defesa civil") e um teste de maiúscula em financiamento — os dois corrigidos. Suíte inteira verde (21 verificações); cadeia de derivados regenerada em árvore limpa; screenshots de desktop e 390px conferidos visualmente.
+
 ## §78 · Fallback estático completo: medidor de resposta e datas de corte sem JavaScript · 16/09/2026, prioridade crítica
 
 Handover urgente: o medidor de **antecipação** de `index.html` era preenchido no HTML estático a cada rodada (`recalcular_mare.py`), mas o medidor de **resposta**, o corte no cabeçalho, a data de última verificação e uma das duas datas do rodapé não eram — ficavam `—`, ou pior, com uma data velha (`26/08/2026`, hardcoded, um mês desatualizada). Qualquer leitor sem JavaScript, leitor de tela ou indexador recebia isso. Verificado antes de corrigir: achado confirmado, lendo `main` sem JS.
