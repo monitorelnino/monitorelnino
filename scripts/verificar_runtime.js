@@ -61,7 +61,7 @@ setTimeout(() => {
   teste("seletor de UF populado", q("ufSelect") && q("ufSelect").children.length === 28);
   // 14/09/2026: "Como ler o MARÉ" é ficha popup no mesmo <dialog> do estado, aberta pelo link abaixo da barra do índice
   try {
-    teste("home sem atalhos .hero-links; link 'como ler o MARÉ' abaixo da barra", d.querySelectorAll(".hero-links").length === 0 && !!d.querySelector(".gauge-zone #linkComoLer") && q("linkComoLer").textContent === "como ler o MARÉ");
+    teste("home sem atalhos .hero-links; link 'como ler o MARÉ Legal' abaixo da barra", d.querySelectorAll(".hero-links").length === 0 && !!d.querySelector(".gauge-zone #linkComoLer") && q("linkComoLer").textContent === "como ler o MARÉ Legal");
     q("linkComoLer").dispatchEvent(new dom.window.MouseEvent("click", { bubbles: true, cancelable: true }));
     teste("clique abre a ficha 'Como ler o MARÉ' no dialog", q("detail").open && /Como ler o MARÉ/.test(q("detailConteudo").textContent) && /O que o índice não conta/.test(q("detailConteudo").textContent));
     q("detailFechar").dispatchEvent(new dom.window.Event("click", { bubbles: true }));
@@ -206,14 +206,13 @@ setTimeout(() => {
       && /27 estados e (os|dos) [\d.]+ municípios/.test(txt) && /Dados até \d{2}\/\d{2}\/\d{4}\./.test(txt);
   })());
   // 15/09/2026: a linha de interpretação do medidor (contagens por categoria) saiu da inicial (pedido da editoria).
-  // 16/09/2026 (handover de identidade, §4.4): "Primeiro decreto do ciclo: X. N aceitos... M ainda não"
-  // virou "desde X. N reconhecidos pelo governo federal." — mesma informação, frase mais curta.
-  teste("contador: interpretação com municípios, milhões, data e reconhecidos", /municípios, [\d,]+ milhões de pessoas, desde \d{2}\/\d{2}\/\d{4}.*reconhecidos pelo governo federal/.test(q("interpResposta").textContent));
+  // 17/09/2026 (pedido da editoria): o parágrafo de interpretação da resposta e o contador de tempo saíram do
+  // "Depois" — os dois glabels dos medidores também saíram; o corte passa a aparecer uma única vez, no cabeçalho.
   teste("home sem os três cartões, sem a nota do período eleitoral e sem o bloco 'escondeu' (15/09/2026)", !q("tres") && !q("notaDefeso") && !q("blocoPosDefeso") && !q("n1Anunciado"));
-  teste("ordem da home: medidores → sua cidade → estados → calendário → cruzamento risco × estágio → indique um documento", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("prazos") && pos("prazos") < pos("cruzamento") && pos("cruzamento") < pos("formulario") && pos("formulario") === ids.length - 1; })());
+  teste("ordem da home: medidores → sua cidade → estados → calendário → indique um documento", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("prazos") && pos("prazos") < pos("formulario") && pos("formulario") === ids.length - 1; })());
   teste("calendário nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
-  teste("porta para o calendário eleitoral segue na inicial (ficha Como ler o MARÉ)", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
-  teste("cruzamento risco × estágio: figura no fim da inicial, gráfico com as 27 UFs", (() => { const g = (dom.window.__charts || []).find(c => c.ctx && c.ctx.id === "cCruz"); const soma = g ? g.cfg.data.datasets.reduce((s, ds) => s + ds.data.reduce((a, b) => a + b, 0), 0) : -1; return !!q("boxCruz") && q("boxCruz").classList.contains("figura") && soma === Object.keys(INDICE).length; })());
+  teste("porta para o calendário eleitoral segue na inicial (seção Calendário)", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
+  teste("cruzamento risco × estágio (#cCruz/#boxCruz) não existe mais na inicial (17/09/2026, pedido da editoria)", !q("cCruz") && !q("boxCruz") && !q("cruzamento"));
   teste("todas as barras usam a arte única do medidor (nenhum .resp-fill / .tile-fill2 / .barra-resp)", !d.querySelector(".resp-fill, .tile-fill2, .barra-resp") && d.querySelectorAll("#hero .gauge-fill").length === 2 && !!d.querySelector("#hero .gauge-fill--resposta"));
   teste("cartões de estado: cinco campos na face (barras + nível + instrumento + capital)", d.querySelectorAll(".tile .tile-face").length === 27 && [...d.querySelectorAll(".tile .tile-face")].every(f => f.querySelectorAll("span").length === 3));
 
@@ -240,22 +239,21 @@ setTimeout(() => {
   // as três páginas com medidor/corte no cabeçalho.
   {
     const IDS_DADO = {
-      "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "respCorte", "respLinha", "interpResposta", "heroCorte", "metaAtualizado", "corteDados", "ctSemana", "ctNovo"],
+      "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "heroCorte", "metaAtualizado", "corteDados"],
       "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte", "ctSemanaSaude", "ctNovoSaude"],
       "financiamento.html": ["corteFin", "notaFogoCorte"],
     };
-    const CORTES_IGUAIS = { "index.html": [["heroCorte", "respCorte", "corteDados"], ["metaUltimaVerif", "metaAtualizado"]] };
+    const CORTES_IGUAIS = { "index.html": [["heroCorte", "corteDados"], ["metaUltimaVerif", "metaAtualizado"]] };
     for (const [pagina, ids] of Object.entries(IDS_DADO)) {
       const bruto = fs.readFileSync(path.join(raiz, pagina), "utf-8");
       const valorDe = (id) => {
         // captura da tag com o id até o PRIMEIRO fechamento de p/span/strong/div depois dela — cobre
-        // conteúdo com HTML aninhado (ex.: interpResposta começa com <strong>280</strong> ...), não só texto puro
+        // conteúdo com HTML aninhado, não só texto puro
         const m = bruto.match(new RegExp('<[a-z]+[^>]*id="' + id + '"[^>]*>([\\s\\S]*?)</(?:p|span|strong|div)>'));
         return m ? m[1].replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim() : null;
       };
       for (const id of ids) {
         const valor = valorDe(id);
-        if (id === "respLinha") continue;   // JS também deixa vazio de propósito (15/09) — não é lacuna
         teste(`${pagina}: #${id} sem "—"/vazio no HTML estático (sem JS)`, valor !== null && valor !== "" && valor !== "—" && valor.toLowerCase() !== "null");
       }
       for (const grupo of (CORTES_IGUAIS[pagina] || [])) {

@@ -226,17 +226,7 @@ new Chart(document.getElementById('cTipos'), {type:'bar', data:{
   options:{...SEM_ANIM, indexAxis:'y', plugins:{legend:{display:false}},
     scales:{x:{title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
 // 15/09/2026: a contagem por família mora na figura dupla boxTipoRisco (mapa + gráfico, uma legenda) — o crédito é o da figura.
-
-// ---- Gráfico "tipo de risco × estágio do arcabouço público": desde 15/09/2026 mora no fim da página inicial
-//      (assets/js/index.js, mesma fórmula); aqui só desenha se algum HTML antigo ainda tiver #cCruz.
-if (document.getElementById('cCruz')) {
-  const dados = FAIXAS.map(fx => ({label:fx.nome, backgroundColor:fx.cor, data: ordemTipos.map(t =>
-    UFS.filter(uf => RISCO(uf) && RISCO(uf).tipo === t && MARE[uf] && faixaDe(MARE[uf].total).nome === fx.nome).length)}));
-  new Chart(document.getElementById('cCruz'), {type:'bar', data:{labels: ordemTipos.map(t => TIPO_CURTO[t]), datasets:dados},
-    options:{...SEM_ANIM, plugins:{legend:{position:'bottom'}},
-      scales:{x:{stacked:true}, y:{stacked:true, title:{display:true, text:'estados'}, ticks:{precision:0}}}}});
-  credito('boxCruz', 'painel_el_nino');
-}
+// 17/09/2026: o cruzamento "tipo de risco × estágio" (que morava na home, #cCruz) saiu do site — pedido da editoria.
 
 // =============================  Tabela de fontes  =============================
 const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};

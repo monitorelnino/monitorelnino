@@ -63,10 +63,9 @@ setTimeout(() => {
   teste("tooltip de mapa exibe conteúdo", q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);
 
   // Tabela "risco × instrumento" (tblConsistencia) retirada de defesa-civil.html em 13/09/2026 —
-  // ver comentário acima. O teste de proveniência (soma de CONSIST bate com a fonte) segue coberto
-  // em verificar_runtime_sinais.js (boxCruz), que agora é a única superfície com essa tabela.
-  teste("resumo risco×instrumento em Defesa Civil: link para a versão completa em Risco",
-    q("riscoinstrumentoResumo") && /index\.html#boxCruz/.test(q("riscoinstrumentoResumo").innerHTML));
+  // ver comentário acima. O resumo compacto (#riscoinstrumentoResumo) e o cruzamento completo que
+  // ele linkava (index.html#boxCruz) saíram do site em 17/09/2026 (pedido da editoria).
+  teste("Defesa Civil sem o resumo risco×instrumento (removido junto com o cruzamento)", !q("riscoinstrumentoResumo"));
 
   // Mapa de atos de resposta (decretos de emergência) — pedido de Patricia, 31/08/2026,
   // motivado pelo temporal de granizo em SC.

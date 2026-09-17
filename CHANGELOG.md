@@ -15,6 +15,28 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §82 · Limpeza da home: cruzamento removido, glabels e contador de tempo saem, legendas descritivas, fontes do calendário com link · 17/09/2026
+
+Pedido direto da editoria, com nove partes.
+
+**Removida a figura "Risco projetado × o que cada estado publicou"** (painel inteiro) da home. Rastreei as três outras páginas que dependiam dela: `defesa-civil.html` tinha um card resumo apontando para lá (removido, estático + JS); `proteja-se.html` tinha um link para lá dentro de uma frase (reescrita sem o link); `assets/js/sinais-de-risco.js` tinha um resto de código morto de uma migração de 15/09 (removido).
+
+**"como ler o MARÉ" → "como ler o MARÉ Legal"**, em todo lugar (link, `<h2>` da ficha, `aria-label`). Conferido em Saúde: já dizia "MARÉ Saúde" em todo lugar equivalente.
+
+**Os dois glabels dos medidores removidos** ("Antecipação · o índice do MARÉ Legal / média.../ corte..." e o da Resposta) — o corte passa a aparecer uma única vez, no cabeçalho.
+
+**O parágrafo de interpretação e o contador de tempo saíram do medidor "Depois".** A frase sobre a suspensão eleitoral de transferências (exigência de conformidade já estabelecida no site, "frase C18") não podia simplesmente sumir da home — movida para a ficha "Como ler o MARÉ Legal", na seção "O índice de resposta", onde a informação continua acessível.
+
+**Três legendas reescritas** para descrever o que o leitor encontra: "Sua cidade" (o que a busca retorna: documento, data e fonte se houver plano; decreto se houver; nível de verificação se não), "Onde cada estado está" → **"O MARÉ Legal por estado"** (o que cada cartão mostra), "Calendário" (idem, com o link de volta para `calendario-eleitoral.html` reintroduzido — tinha sumido junto com o parágrafo removido do medidor "Depois", e um portão já cobria essa porta).
+
+**As fontes do calendário viram link de verdade.** Descoberta no caminho: dois dos quatro prazos que aparecem na tabela (as MPs 1.367 e 1.384) já tinham URL de fonte registrada em `data/marcos_prazos.json` — só nunca eram usadas pela função que desenha a tabela. Completei os dois que faltavam (as duas entradas da ADPF 743, com o link oficial de acompanhamento processual do STF) e reescrevi a função em `assets/js/index.js` para virar link sempre que houver URL, texto puro quando não houver. Os quatro marcos fixos (`data/marcos_ciclo.json`) ganharam URL pela primeira vez: TSE, Planalto (Lei 9.504/1997) e o Boletim nº 1 do Painel El Niño no INMET.
+
+**Achado no caminho: erro factual no calendário.** "Primeiro turno das eleições municipais" em 04/10/2026 estava errado — 2026 é ano de eleição geral (presidente, governadores, senadores, deputados), não municipal. Corrigido.
+
+**Referências metodológicas usam "MARÉ Legal"/"MARÉ Saúde", não "MARÉ" solto**, conforme já valia no resto do site (proteja-se.html corrigido no mesmo lote).
+
+Cinco portões quebraram no caminho — todos por dependerem de elementos ou textos que este pedido removeu ou renomeou de propósito (o link "como ler o MARÉ", a própria figura de cruzamento, o card resumo em Defesa Civil, a ordem de painéis da home, as listas do fallback estático §78) — todos corrigidos para refletir a nova realidade da página, não revertidos. Suíte inteira verde (21 verificações); cadeia de derivados regenerada em árvore limpa; conferido visualmente em tela cheia, sem erro de JavaScript.
+
 ## §81 · "Medida de Antecipação" sobrevivia em 10 das 11 páginas; confirmado direto no domínio publicado; portão novo · 17/09/2026
 
 Patricia disse, pela segunda vez, que não via o marcador temporal nem os ajustes de linguagem nas demais páginas. Da primeira vez, verifiquei só localmente e assumi que estava tudo certo — dessa vez fui direto ao domínio publicado buscar prova, e a prova encontrou um erro real.
