@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §92 · Proteja-se: risco por estado sai (já mora no mapa de riscos), cartões de emergência redesenhados · 17/09/2026
+
+Pedido direto da editoria.
+
+**"Qual é o risco projetado no seu estado" removida por inteiro.** O mesmo mapa já mora em monitor-de-riscos.html; manter os dois era redundância, não reforço. Achado ao remover: o seletor dessa seção também abria o guia certo (chuvas/fogo/seca) e preenchia o cartão de "Defesa Civil do seu estado" automaticamente — comportamento preservado redirecionando o preenchimento automático para o seletor de contato, que já existia separadamente; o auto-abrir-guia por estado não tinha substituto direto e foi embora com a seção (os guias continuam abertos manualmente, como acordeões). Dois portões que dependiam do seletor removido, ajustados; um teste novo cobre o comportamento equivalente pelo seletor que ficou.
+
+**Cartões de emergência (193/192/199/190/40199) redesenhados** — estavam com fundo cinza uniforme, sem hierarquia visual, "sem vida". Agora: fundo branco de verdade, borda superior grossa e colorida por número (mesmo sistema de acento que o site já usa em painel--acento-* e cartao--acento-*, uma cor por natureza do número: Bombeiros em terracota, SAMU em âmbar, Defesa Civil em azul, Polícia Militar em preto, SMS em verde), sombra própria e elevação ao passar o mouse.
+
+**Achado no caminho, maior que o pedido**: `proteja-se.html` nunca esteve na lista de páginas cobertas pelo portão de travessão e voz editorial (`verificar_legendas.js`) — a página inteira ficou fora dessa rede de segurança desde que a regra existe, mesmo já coberta pelos outros portões de voz. Adicionada à lista; 10 violações reais apareceram (a maioria travessão, revertido em toda parte; três fichas de orientação oficial e o bloco de direitos ao FGTS Calamidade marcados com o mesmo atributo que o resto do site usa para reprodução oficial, isentando ênfase/interrogação legítimas de instrução — "beba apenas água tratada", "água entrando em casa?" — sem isentar o travessão, que é regra de estilo, não de conteúdo).
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente, sem erro de JavaScript.
+
 ## §91 · RONI e anomalia mensal ganham o mesmo fundo preto do ONI (achado: CSS preso a um id só) · 17/09/2026
 
 Patricia notou que RONI e a anomalia mensal não pareciam iguais ao ONI, apesar do código já compartilhar cor e animação entre os três desde o §88. Causa real: o fundo preto vinha de uma regra CSS por id (`#wrapOni{background:#000;...}`), que por definição só vale para aquele elemento — nunca se aplicou aos outros dois, que ficavam com fundo branco por trás das mesmas barras vermelhas e azuis.

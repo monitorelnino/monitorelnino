@@ -102,7 +102,7 @@ function renderizar(pagina) {
   //   data-voz="lei"   — blocos cujo conteúdo É a lei (FAQ da Imprensa, blocos legais do Calendário).
   {
     const PAGINAS_PROSA = ["index.html", "monitor-de-riscos.html", "defesa-civil.html", "saude.html",
-      "financiamento.html", "calendario-eleitoral.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+      "financiamento.html", "calendario-eleitoral.html", "imprensa.html", "proteja-se.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
     // "\bsó\b" não funciona: "ó" não é \w em regex JS sem a flag Unicode, então a fronteira de palavra depois
     // de "só" não fecha — nunca teria pego o próprio caso ("Só — dos 27 estados…") que motivou esta checagem.
     const ENFASE = /(?:^|[^a-zà-ÿ])(só|apenas|única|único|nunca|sempre)(?:[^a-zà-ÿ]|$)/i;
