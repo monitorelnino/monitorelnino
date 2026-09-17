@@ -100,6 +100,21 @@ def main():
                 falha(f"{uf}.{campo}: sem data de consulta")
             if campo == "risco_projetado" and valor.get("tipo") not in TIPOS:
                 falha(f"{uf}.risco_projetado: tipo fora do vocabulário ({valor.get('tipo')})")
+            # 17/09/2026 (pedido da editoria): componentes precisa concordar com o tipo, sempre —
+            # é o dado que alimenta a recontagem do gráfico e o texto do mouse sobre o mapa.
+            if campo == "risco_projetado":
+                comps = valor.get("componentes")
+                tipo = valor.get("tipo")
+                if not isinstance(comps, list):
+                    falha(f"{uf}.risco_projetado: 'componentes' ausente ou não é lista")
+                elif tipo == "misto" and len(comps) < 2:
+                    falha(f"{uf}.risco_projetado: tipo 'misto' com menos de 2 componentes ({comps})")
+                elif tipo not in ("misto", "sem_sinal") and comps != [tipo]:
+                    falha(f"{uf}.risco_projetado: tipo único '{tipo}' não bate com os componentes ({comps})")
+                elif tipo == "sem_sinal" and comps:
+                    falha(f"{uf}.risco_projetado: tipo 'sem_sinal' não deveria ter componentes ({comps})")
+                elif comps and any(c not in TIPOS or c in ("misto", "sem_sinal") for c in comps):
+                    falha(f"{uf}.risco_projetado: componente fora do vocabulário de riscos individuais ({comps})")
     for nome, bloco in (reg.get("enos") or {}).items():
         if bloco is None:
             continue

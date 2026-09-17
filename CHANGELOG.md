@@ -15,6 +15,30 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §87 · Monitor de riscos: coleta diária de verdade, textos coerentes, fontes linkadas, riscos mistos decompostos · 17/09/2026
+
+Pedido direto da editoria, a rodada mais densa desta página até agora.
+
+**Achado ao checar a frequência de atualização (pedido explícito): a coleta que alimenta esta página inteira só rodava às segundas-feiras.** `coletar_sinais_risco.py` (ONI, avisos do INMET, focos do INPE, alertas do CEMADEN) vivia depois do portão de cadência semanal do índice — mesmo o próprio módulo já se declarando "peso zero, nunca pontua, independente do índice". A chamada, em `atualizar.py`, sai de dentro do portão e passa a rodar todo dia, incondicional.
+
+**"O que esta página não diz" removido** — as duas declarações de conformidade que ele carregava (sinais reproduzidos dos órgãos; não entram na nota) são exigidas por portão (`verificar_sinais.py`); integradas à frase principal da página, não perdidas.
+
+**Frase principal reescrita, com link real em cada órgão** (NOAA, CEMADEN, INPE, ANA, INMET), cada um apontando para a mesma URL que o próprio coletor já usa como fonte daquele dado especificamente — não a home genérica de cada órgão.
+
+**"Situação atual" parou de ser fragmentos juntados por "·" e virou prosa.** A causa: a frase vinha de raspar o `textContent` de outros campos já renderizados, sem conectivo nenhum. Reescrita a partir dos dados diretamente — e por sorte um campo já existente (`prognostico.enso.leitura`) já trazia a mesma informação como narrativa coerente e pronta, só não estava sendo usada aqui. Uma segunda função, antiga e esquecida, que reconstruía a versão fragmentada num evento de `load` separado, foi removida — ela teria desfeito a correção assim que a página carregasse.
+
+**Removidos**: a linha "Última atualização" abaixo da Figura 1 (voltando atrás do pedido da sessão anterior, a pedido desta), e o aviso "Probabilidade por trimestre: sem coleta até o corte".
+
+**Redundância na linha de fontes resolvida**: o crédito do ONI aparecia duas vezes na mesma tela (a Figura 1 já credita); tirada a repetição.
+
+**Riscos mistos, decompostos.** A barra "Misto" só informava uma contagem sem dizer do quê. `classificar_tipo()`, em `coletar_sinais_risco.py`, já detectava os riscos individuais antes de colapsar em "misto" — só não expunha essa lista. Nova função `componentes_de_risco()` expõe os componentes (ex.: Acre vira `estiagem + incêndios`, não só `misto`); novo campo `componentes` em `data/sinais_risco.json`, populado rodando `--semear` uma vez. O gráfico de tipos de risco recontou: um estado com risco misto agora soma em CADA risco que o compõe, não numa barra à parte — a soma das barras pode passar de 27, de propósito. O mapa não mudou (mesma cor "misto"); o texto ao passar o mouse nele passou a nomear os riscos que compõem o misto daquele estado, em vez de só repetir a categoria.
+
+**Dois portões novos**: autoteste do coletor cobrindo `componentes_de_risco()` (inclusive a concordância entre `len(componentes) > 1` e `tipo == "misto"`), e um teste de integridade em `verificar_sinais.py` sobre o dado real gerado (todo "misto" com pelo menos 2 componentes; todo tipo único com exatamente 1; nenhum componente fora do vocabulário). Teste negativo executado (componente incompleto num estado misto) e revertido com segurança.
+
+**Mapas reordenados**: avisos meteorológicos e alertas do CEMADEN agora vêm antes de seca e fogo, como pedido; legenda do painel ajustada; um travessão encontrado no título de um dos cartões, corrigido no caminho.
+
+Suíte inteira verde (21 verificações); cadeia de derivados regenerada em árvore limpa; conferido visualmente, sem erro de JavaScript.
+
 ## §86 · "Monitor de risco" vira "Monitor de riscos"; sinais-de-risco.html vira monitor-de-riscos.html · 17/09/2026
 
 Pedido direto da editoria: o endereço da página (`sinais-de-risco.html`) e o nome exibido (`Monitor de risco`) estavam divergentes; os dois passam a se chamar "Monitor de riscos".

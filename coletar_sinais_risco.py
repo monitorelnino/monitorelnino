@@ -168,6 +168,17 @@ def classificar_tipo(texto: str) -> str:
     return achados[0] if len(achados) == 1 else "misto"
 
 
+def componentes_de_risco(texto: str) -> list:
+    """17/09/2026 (pedido da editoria): quando classificar_tipo(texto) devolve 'misto', o gráfico de
+    tipos de risco precisa recontar cada estado nos riscos que de fato o compõem (não numa categoria
+    'misto' à parte, que só informa uma contagem sem dizer do quê), e o mapa precisa dizer, ao passar
+    o mouse, quais riscos compõem o misto daquele estado. Mesma detecção de classificar_tipo — só que
+    devolve a LISTA de achados, sem colapsar em 'misto' quando há mais de um eixo."""
+    if not texto or re.search(r"sem sinal|sem anomalia|neutr", texto, re.I):
+        return []
+    return [nome for nome, padrao in _PADROES if padrao.search(texto)]
+
+
 def hoje() -> str:
     """Data de hoje no formato dd/mm/aaaa usado em todo o repositório."""
     return date.today().strftime("%d/%m/%Y")
@@ -498,6 +509,7 @@ def semear(registro: dict) -> dict:
         registro["uf"][uf]["risco_projetado"] = {
             "texto": texto,
             "tipo": classificar_tipo(texto),
+            "componentes": componentes_de_risco(texto),   # 17/09/2026: riscos individuais que compõem o tipo, mesmo quando "misto"
             "instrumento_estadual": consist[uf]["instr"],
             "relacao_com_instrumento": consist[uf]["cat"],
             "fonte": "painel_el_nino",
@@ -622,6 +634,14 @@ def autoteste() -> int:
     checar("tipo: misto", classificar_tipo("Incêndios; seca em intensificação (IIS-3)") == "misto")
     checar("tipo: sem sinal", classificar_tipo("Sem sinal elevado no trimestre") == "sem_sinal")
     checar("tipo negativo: vazio não vira categoria de risco", classificar_tipo("") == "sem_sinal")
+
+    # 17/09/2026: componentes_de_risco() é a mesma detecção de classificar_tipo(), sem colapsar em
+    # "misto" — todo "misto" precisa render pelo menos 2 componentes; todo tipo único, exatamente 1.
+    checar("componentes: misto vira dois componentes", componentes_de_risco("Estiagem; incêndios") == ["estiagem", "incendios"])
+    checar("componentes: tipo único vira um componente", componentes_de_risco("Chuvas extremas e enchentes") == ["chuvas"])
+    checar("componentes: sem sinal não vira componente", componentes_de_risco("Sem sinal elevado no trimestre") == [])
+    checar("componentes e tipo concordam: len(componentes) > 1 sse tipo é misto",
+           (len(componentes_de_risco("Incêndios; seca em intensificação (IIS-3)")) > 1) == (classificar_tipo("Incêndios; seca em intensificação (IIS-3)") == "misto"))
 
     # --- endpoints reais (04/09/2026) ---
     checar("INPE: escolhe o CSV diário mais recente",

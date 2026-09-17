@@ -20,6 +20,10 @@ Etapas:
   9. preencher_fallback_estatico.py — medidor de resposta e datas de corte no HTML estático
      (sem JavaScript) de index.html, saude.html e financiamento.html (16/09/2026)
 
+Nota (17/09/2026): coletar_sinais_risco.py (ONI, avisos do INMET, focos do INPE, alertas do
+CEMADEN) roda TODO DIA, incondicional — está fora do portão de cadência semanal do índice
+(peso zero, nunca pontua; sempre foi independente do índice, só não tinha frequência própria).
+
 Quando o passo 2 gerar propostas: revise data/instrumentos_revisar.json, apague o que
 não deve entrar, e rode `python3 aplicar_revisao.py --arquivo data/instrumentos_revisar.json`
 — esse script mescla a revisão aprovada, recalcula o índice e roda os três portões.
@@ -62,16 +66,22 @@ def main():
     if os.environ.get("ENSAIO"):
         print("[ensaio] execução de ensaio: tudo roda como no dia da semana intensiva; NADA será comitado nem publicado.")
         em_intensivo = True
+
+    # Sinais oficiais de risco (01/09/2026, METODOLOGIA §23): coleta as três camadas
+    # para monitor-de-riscos.html. NÃO é bloqueante e NÃO toca no índice — fonte fora do
+    # ar permanece como lacuna declarada na página, nunca como valor estimado.
+    # 17/09/2026 (achado ao checar a frequência da página, pedido da editoria): esta coleta é
+    # independente do índice desde a origem (peso zero, nunca pontua) — mas vivia PRESA à mesma
+    # cadência semanal do índice, então "o que está acontecendo agora" só se atualizava às
+    # segundas. Sinais como ONI, avisos do INMET e focos do INPE mudam todo dia na fonte; a
+    # chamada sai daqui de dentro do portão semanal e roda incondicionalmente, todo dia.
+    rodar([sys.executable, "coletar_sinais_risco.py"])
+
     if not em_intensivo and dia_semana != 0:
         print("[cadência] fora da semana intensiva e não é segunda-feira: execução diária encerra sem coletar nem comitar.")
         return 0
 
     rodar([sys.executable, "atualizar_boletins.py"])
-
-    # Sinais oficiais de risco (01/09/2026, METODOLOGIA §23): coleta as três camadas
-    # para monitor-de-riscos.html. NÃO é bloqueante e NÃO toca no índice — fonte fora do
-    # ar permanece como lacuna declarada na página, nunca como valor estimado.
-    rodar([sys.executable, "coletar_sinais_risco.py"])
 
     # v2.2.4 (PR-C, doc de redesenho §4): coletores da Pista A. Nenhum é bloqueante e
     # nenhum toca a nota: escrevem atos de resposta (peso zero), pistas e o livro de
