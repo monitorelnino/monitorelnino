@@ -15,6 +15,16 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §89 · A nota de cada gráfico volta para debaixo dele mesmo, não uma nota só no fim dos três · 17/09/2026
+
+Correção direta: o §88 tinha juntado a explicação dos três gráficos (ONI, RONI, anomalia mensal) numa nota só, depois dos três. Cada um precisa da sua própria nota, logo abaixo de si — não uma nota comum ao final.
+
+Removida a nota combinada. As três notas que já existiam (`oniLeitura`, `roniLeitura`, `anomaliaLeitura`, uma dentro de cada `<figure>`, no mesmo padrão de sempre) passam a carregar sozinhas a explicação inteira de cada gráfico — reforçadas para não depender de o leitor ter lido as outras duas antes. A do RONI ganhou a frase sobre ser a medida oficial da NOAA desde agosto de 2026 (que estava só na nota combinada); a da anomalia mensal ganhou a frase que faltava dizendo o que ela mede.
+
+Duas notas passaram do teto de 240 caracteres e do limite de duas frases que o portão de legendas já aplicava — encurtadas mantendo o essencial.
+
+Suíte inteira verde; derivados regenerados em árvore limpa; conferido visualmente, cada nota no card certo.
+
 ## §88 · RONI ao lado do ONI, mais o gráfico de anomalia mensal, com nota explicando os três · 17/09/2026
 
 Patricia perguntou se o ONI estava mesmo em +1,8 °C, achando que deveria estar mais alto. Fui checar direto na NOAA. A resposta tinha duas partes: o número está certo (confirmado em três produtos oficiais independentes: PSL, `oni.ascii.txt` do CPC e a tabela ERSSTv6 do CPC), mas a NOAA trocou de índice oficial em agosto de 2026 — o **RONI** (Relative Oceanic Niño Index) substituiu o ONI clássico como métrica de classificação, e para o mesmo trimestre (JJA/2026) o RONI está em +1,4 °C, mais baixo, não mais alto (ele desconta o aquecimento médio de todo o oceano tropical). Pedido resultante: os dois lado a lado, mais um terceiro gráfico com a anomalia mensal (sem a suavização de três meses que ONI e RONI aplicam), e uma nota explicando os três para um leitor leigo.
