@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Cartão social (Open Graph/Twitter, 1200×630) — 15/09/2026: nome MARÉ · Medida de Antecipação e Resposta ao El Niño.
+/* Cartão social (Open Graph/Twitter, 1200×630) — 15/09/2026: nome MARÉ · Monitor de Antecipação e Resposta ao El Niño.
  * Renderiza um HTML mínimo com os tokens do site e captura com Playwright. Números lidos dos dados (nunca digitados).
  * Uso: node scripts/gerar_cartao_social.js  →  assets/social/card-monitor-el-nino.png */
 const { chromium } = require("playwright"); const fs = require("fs"); const path = require("path");
@@ -24,7 +24,7 @@ body{margin:0;width:1200px;height:630px;background:#FFFFFF;font-family:Georgia,'
 .barra{position:absolute;right:72px;bottom:52px;width:360px;height:16px;background:var(--trilho);border:1px solid var(--borda);border-radius:8px;overflow:hidden}
 .barra i{display:block;height:100%;width:${media.replace(",", ".")}%;background:linear-gradient(90deg,var(--argila) 0%,var(--ambar) 20%,var(--mineral) 48%,var(--musgo) 88%);background-size:calc(10000%/${media.replace(",", ".")}) 100%;border-radius:8px 0 0 8px}
 </style></head><body><div class="topo"></div><img class="logo" src="${logo}" alt="">
-<div class="mare">MARÉ</div><div class="sub">Medida de Antecipação e Resposta ao <em>El Niño</em></div>
+<div class="mare">MARÉ</div><div class="sub">Monitor de Antecipação e Resposta ao <em>El Niño</em></div>
 <div class="linha">Como o país se prepara para o ciclo 2026/2027 · dados verificados em fontes oficiais</div>
 <div class="nums"><div class="n"><b>27</b><span>estados verificados um a um</span></div><div class="n"><b>5.571</b><span>municípios por nível de verificação</span></div><div class="n"><b>${media}</b><span>média nacional do índice · ${faixa} · dados até ${meta.corte}</span></div></div>
 <div class="rodape">monitorelnino.com.br · Futura Evidence Lab · metodologia aberta, dados abertos</div><div class="barra"><i></i></div></body></html>`;

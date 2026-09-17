@@ -9,7 +9,7 @@ async function __load(){
   if (D) {
     el('calConferido').textContent = D.conferido_em;
     document.querySelector('#tblDispositivos tbody').innerHTML = D.dispositivos.map(x => '<tr><td><strong>' + esc(x.dispositivo) + '</strong></td><td>' + esc(x.bloqueia) + '</td><td>' + esc(x.excecao) + '</td><td>' + esc(x.significa) + '</td><td><details><summary>trecho</summary><p class="note">' + esc(x.trecho) + '</p><a href="' + esc(x.fonte) + '" target="_blank" rel="noopener">fonte lida</a></details></td></tr>').join('');
-    el('listaNaoSuspenso').innerHTML = D.nao_suspenso.map(x => '<li><strong>' + esc(x.item) + '</strong> — ' + esc(x.base) + ' <span class="u-muted">(' + esc(x.status) + ')</span></li>').join('');
+    el('listaNaoSuspenso').innerHTML = D.nao_suspenso.map(x => '<li><strong>' + esc(x.item) + ':</strong> ' + esc(x.base) + ' <span class="u-muted">(' + esc(x.status) + ')</span></li>').join('');
   }
   const f = await fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).catch(() => null);
   const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0;

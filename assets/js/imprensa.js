@@ -42,10 +42,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const ul = document.getElementById('listaNaoSuspenso'); const ul2 = document.getElementById('listaSuspenso'); if (!ul && !ul2) return;
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   fetch('data/calendario/dispositivos.json').then(r => r.ok ? r.json() : null).then(D => {
-    if (!D || !Array.isArray(D.nao_suspenso)) { if (ul) ul.innerHTML = '<li class="u-muted">Lista não carregada — ver o calendário eleitoral.</li>'; if (ul2) ul2.innerHTML = '<li class="u-muted">Lista não carregada.</li>'; return; }
-    if (ul) ul.innerHTML = D.nao_suspenso.map(x => '<li><strong>' + esc(x.item) + '</strong> — ' + esc(x.base) + ' <span class="u-muted">(' + esc(x.status) + ')</span></li>').join('');
-    if (ul2 && Array.isArray(D.dispositivos)) ul2.innerHTML = D.dispositivos.filter(x => x.bloqueia && x.bloqueia !== '—').map(x => '<li><strong>' + esc(x.bloqueia.split('.')[0].split(' — ')[0].split(', nos')[0]) + '</strong> <span class="u-muted">(' + esc(x.dispositivo) + ')</span></li>').join('');
-  }).catch(() => { if (ul) ul.innerHTML = '<li class="u-muted">Lista não carregada — ver o calendário eleitoral.</li>'; if (ul2) ul2.innerHTML = '<li class="u-muted">Lista não carregada.</li>'; });
+    if (!D || !Array.isArray(D.nao_suspenso)) { if (ul) ul.innerHTML = '<li class="u-muted">Lista não carregada; ver o calendário eleitoral.</li>'; if (ul2) ul2.innerHTML = '<li class="u-muted">Lista não carregada.</li>'; return; }
+    if (ul) ul.innerHTML = D.nao_suspenso.map(x => '<li><strong>' + esc(x.item) + ':</strong> ' + esc(x.base) + ' <span class="u-muted">(' + esc(x.status) + ')</span></li>').join('');
+    if (ul2 && Array.isArray(D.dispositivos)) ul2.innerHTML = D.dispositivos.filter(x => x.bloqueia && x.bloqueia !== '—').map(x => '<li><strong>' + esc(x.bloqueia.split('.')[0].split(', nos')[0]) + '</strong> <span class="u-muted">(' + esc(x.dispositivo) + ')</span></li>').join('');
+  }).catch(() => { if (ul) ul.innerHTML = '<li class="u-muted">Lista não carregada; ver o calendário eleitoral.</li>'; if (ul2) ul2.innerHTML = '<li class="u-muted">Lista não carregada.</li>'; });
 })();
 
 // 16/09/2026 (handover §1.8): calendário compacto para a imprensa — reusa data/marcos_ciclo.json (mesma
@@ -58,7 +58,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const hoje = new Date(); hoje.setHours(0, 0, 0, 0);
     const dBR = s => { const [d, m, a] = s.split('/').map(Number); return new Date(a, m - 1, d); };
     const vindos = M.marcos.filter(m => dBR(m.ate || m.data) >= hoje);
-    ul.innerHTML = vindos.length ? vindos.map(m => '<li><strong>' + esc(m.data) + (m.ate ? '–' + esc(m.ate) : '') + '</strong> — ' + esc(m.titulo) + ' <span class="u-muted">(' + esc(m.fonte) + ')</span></li>').join('')
+    ul.innerHTML = vindos.length ? vindos.map(m => '<li><strong>' + esc(m.data) + (m.ate ? '–' + esc(m.ate) : '') + ':</strong> ' + esc(m.titulo) + ' <span class="u-muted">(' + esc(m.fonte) + ')</span></li>').join('')
       : '<li class="u-muted">Nenhum marco futuro registrado.</li>';
   }).catch(() => { ul.innerHTML = '<li class="u-muted">Calendário não carregado.</li>'; });
 })();

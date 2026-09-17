@@ -8,9 +8,9 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const ul = document.getElementById('listaNaoSuspenso'); if (!ul) return;
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   fetch('data/calendario/dispositivos.json').then(r => r.ok ? r.json() : null).then(D => {
-    if (!D || !Array.isArray(D.nao_suspenso)) { ul.innerHTML = '<li class="u-muted">Lista não carregada — ver o calendário eleitoral.</li>'; return; }
-    ul.innerHTML = D.nao_suspenso.map(x => '<li><strong>' + esc(x.item) + '</strong> — ' + esc(x.base) + '</li>').join('');
-  }).catch(() => { ul.innerHTML = '<li class="u-muted">Lista não carregada — ver o calendário eleitoral.</li>'; });
+    if (!D || !Array.isArray(D.nao_suspenso)) { ul.innerHTML = '<li class="u-muted">Lista não carregada; ver o calendário eleitoral.</li>'; return; }
+    ul.innerHTML = D.nao_suspenso.map(x => '<li><strong>' + esc(x.item) + ':</strong> ' + esc(x.base) + '</li>').join('');
+  }).catch(() => { ul.innerHTML = '<li class="u-muted">Lista não carregada; ver o calendário eleitoral.</li>'; });
 })();
 
 // 15/09/2026 (pedido da editoria): "Descubra se seu município é prioritário" — busca na aproximação

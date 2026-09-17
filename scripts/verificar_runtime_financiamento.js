@@ -115,7 +115,7 @@ setTimeout(() => {
   try {
     const rp = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "rotas_preventivas.json"), "utf8"));
     teste("fogo: título-fato traz os números do edital (do dado)", new RegExp(String(rp.rotas.find(r => r.id === "fogo_edital_2025").valores.elegiveis) + ".*" + String(rp.rotas.find(r => r.id === "fogo_edital_2025").valores.contemplados)).test(q("fogoTitulo").textContent));
-    teste("fogo: frase de não-existência só porque só há linha de incêndio", /não existe rota equivalente para seca nem para chuva/.test(q("fogoTitulo").textContent) === (rp.riscos_com_rota_preventiva.length === 1 && rp.riscos_com_rota_preventiva[0] === "incendio"));
+    teste("fogo: frase de não-existência só porque só há linha de incêndio", /não existe rota equivalente para seca nem para chuva/i.test(q("fogoTitulo").textContent) === (rp.riscos_com_rota_preventiva.length === 1 && rp.riscos_com_rota_preventiva[0] === "incendio"));
     teste("fogo: um cartão por rota preventiva", q("fogoRotasCards").children.length === rp.rotas.length);
     const temFogo = fs.existsSync(path.join(raiz, "data", "financiamento", "fogo", "areas_declaradas.json"));
     // 16/09/2026 (handover da voz editorial, §6 + D3): o mapa por município do fogo continua ausente e a nota

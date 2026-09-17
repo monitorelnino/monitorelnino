@@ -654,7 +654,7 @@ function gerarRelatorioCidadao(uf, municipio){
     doc.setFont('helvetica','bold'); doc.setFontSize(52); doc.setTextColor(60,60,60);
     doc.text('FUTURA · EVIDENCE LAB', W/2, H/2, {angle:45, align:'center'}); doc.restoreGraphicsState(); };
   const rod = () => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(120,110,95);
-    doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
+    doc.text('MARÉ · Monitor de Antecipação e Resposta ao El Niño · monitorelnino.com.br · Não substitui as orientações da Defesa Civil da sua cidade.', M, H-30);
     doc.text('© 2026 Futura Evidence Lab. Dados verificados em fontes oficiais.', M, H-18);
     doc.text('Página ' + doc.internal.getNumberOfPages(), W-M, H-18, {align:'right'}); };
   const nova = () => { rod(); doc.addPage(); marca(); y = M; };
@@ -679,7 +679,7 @@ function gerarRelatorioCidadao(uf, municipio){
   marca();
   doc.addImage(LOGO_PDF, 'PNG', M, 42, 150, 56);
   doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.setTextColor(...INK);
-  doc.text('MARÉ · Medida de Antecipação e Resposta ao El Niño', M, 128);
+  doc.text('MARÉ · Monitor de Antecipação e Resposta ao El Niño', M, 128);
   doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(...MUTED);
   const corte = (typeof META !== 'undefined' && META && META.corte) ? META.corte : '';
   doc.text('El Niño 2026/2027 · Corte dos dados: ' + corte + ' · Gerado em ' + new Date().toLocaleDateString('pt-BR'), M, 143);
@@ -918,7 +918,7 @@ __load().catch(err => {
 // ===== index.html · bloco 3 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
-// ===== formulário "Indique um documento publicado" (migrou de pesquisadores.html para o fim do MARÉ · Defesa civil em 16/09/2026) =====
+// ===== formulário "Indique um documento publicado" (migrou de pesquisadores.html para o fim do MARÉ Legal em 16/09/2026) =====
 (function(){
   const p = new URLSearchParams(location.search); if (!document.getElementById('cUF')) return;
   const set = (id, v) => { const el = document.getElementById(id); if (el && v) el.value = v; };

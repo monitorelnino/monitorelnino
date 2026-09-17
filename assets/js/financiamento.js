@@ -44,7 +44,7 @@ function renderNotaMPs(){
   if (!mps.length) { el.textContent = 'MP 1.367 (incêndios) e MP 1.384 (alimentos): sem coleta até o corte.'; return; }
   el.innerHTML = mps.map(mp => '<strong>' + mp.numero + '</strong> (' + mp.tema + ', ' + brl(mp.valor) + ')'
     + (mp.execucao && mp.execucao.status === 'coletado' ? ': ' + brl(mp.execucao.pago) + ' pagos até ' + esc(mp.execucao.atualizado_em) : ': execução sem coleta até o corte')).join(' · ')
-    + ' — detalhamento completo (fluxo por órgão, execução por UF) em <a href="pesquisadores.html#mps-federais">Pesquisadores</a>.';
+    + '. Detalhamento completo (fluxo por órgão, execução por UF) em <a href="pesquisadores.html#mps-federais">Pesquisadores</a>.';
 }
 
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
@@ -209,13 +209,13 @@ function __init(){
   // Manus AI) — "não responde quem pediu ou não pediu no universo monitorado".
   // 6 · programas permanentes
   const PROG = [
-    {nome: 'Garantia-Safra', base: 'Lei 10.420/2002 · MDA', regra: 'adesão municipal anual antes do plantio; cota municipal 6%; pagamento por perda verificada — sem decreto', lista: 'relação de municípios aderentes: sem coleta até o corte (MDA)'},
+    {nome: 'Garantia-Safra', base: 'Lei 10.420/2002 · MDA', regra: 'adesão municipal anual antes do plantio; cota municipal 6%; pagamento por perda verificada, sem decreto', lista: 'relação de municípios aderentes: sem coleta até o corte (MDA)'},
     {nome: 'Programa Cisternas', base: 'MDS', regra: 'adesão e projeto; contínuo', lista: 'execução por município: sem coleta até o corte (MDS)'},
     {nome: 'Operação Carro-Pipa', base: 'Exército (CMNE) / MIDR', regra: 'inclusão condicionada, na maior parte dos casos, a reconhecimento federal', lista: 'relação de municípios atendidos não publicada pelo Exército; sem coleta até o corte'},
-    {nome: 'CISC — Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal das cidades não localizada até o corte'},
+    {nome: 'CISC · Centros Integrados de Saúde e Clima', base: 'Ministério da Saúde', regra: '8 cidades-piloto em 5 regiões', lista: 'relação nominal das cidades não localizada até o corte'},
     {nome: 'Monitoramento do Cemaden', base: 'MCTI/Cemaden', regra: '1.037 municípios monitorados', lista: 'lista: em coleta'},
   ];
-  document.getElementById('programasLista').innerHTML = PROG.map(p => '<li><strong>' + esc(p.nome) + '</strong> — ' + esc(p.base) + ': ' + esc(p.regra) + ' <span class="u-muted">· ' + esc(p.lista) + '</span></li>').join('');
+  document.getElementById('programasLista').innerHTML = PROG.map(p => '<li><strong>' + esc(p.nome) + ':</strong> ' + esc(p.base) + '. ' + esc(p.regra) + ' <span class="u-muted">· ' + esc(p.lista) + '</span></li>').join('');
   fonteFigura('boxSemDecretar', {fontes: 'as bases legais citadas em cada item', data: ROTAS.corte});
   // 13/09/2026 (proposta de enxugamento, Manus AI): 'Compromissos federais' (tabela + gráfico por
   // área) migrou para pesquisadores.html — apêndice metodológico, não narrativa principal de rotas.
@@ -244,7 +244,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const nAreas = AREAS && Array.isArray(AREAS.municipios) ? AREAS.municipios.length : null, nRec = TRANSF && Array.isArray(TRANSF.transferencias) ? new Set(TRANSF.transferencias.map(t => t.ibge || t.ente)).size : null;
     tt.innerHTML = 'Dinheiro preventivo federal existe para o fogo' + (edital && edital.valores ? ': edital de 2025 com <strong>' + edital.valores.elegiveis + '</strong> municípios elegíveis e <strong>' + edital.valores.contemplados + '</strong> contemplados (' + esc(fmtR(edital.valores.total_reais)) + ')' : '') +
       (nAreas != null ? '; <strong>' + nAreas.toLocaleString('pt-BR') + '</strong> municípios em área de emergência ambiental declarada' : '') + (nRec != null ? '; <strong>' + nRec.toLocaleString('pt-BR') + '</strong> com transferência do FNMA' : '') +
-      (fa && fa.valores ? '; Fundo Amazônia com ' + esc(fmtR(fa.valores.total_reais)) + ' para bombeiros e brigadas estaduais' : '') + (soFogo ? ' — e não existe rota equivalente para seca nem para chuva.' : '.');
+      (fa && fa.valores ? '; Fundo Amazônia com ' + esc(fmtR(fa.valores.total_reais)) + ' para bombeiros e brigadas estaduais' : '') + (soFogo ? '. Não existe rota equivalente para seca nem para chuva.' : '.');
     // tabela: uma linha por rota, em linguagem da tela
     const NOME = {r1: 'rota 1', r2: 'rota 2', r3: 'rota 3', r4: 'rota 4', r5: 'rota 5', r6: 'rota 6', r7: 'rota 7', rE: 'rota estadual', rF: 'fundos extraorçamentários'};
     // 15/09/2026: cartões em vez de tabela — quem pode, o que precisa, o que paga, valores e situação no defeso
