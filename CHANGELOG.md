@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §78 · Fallback estático completo: medidor de resposta e datas de corte sem JavaScript · 16/09/2026, prioridade crítica
+
+Handover urgente: o medidor de **antecipação** de `index.html` era preenchido no HTML estático a cada rodada (`recalcular_mare.py`), mas o medidor de **resposta**, o corte no cabeçalho, a data de última verificação e uma das duas datas do rodapé não eram — ficavam `—`, ou pior, com uma data velha (`26/08/2026`, hardcoded, um mês desatualizada). Qualquer leitor sem JavaScript, leitor de tela ou indexador recebia isso. Verificado antes de corrigir: achado confirmado, lendo `main` sem JS.
+
+**`preencher_fallback_estatico.py`** (novo): lê os mesmos arquivos que `assets/js/*.js` já lê em runtime (`data/resposta/por_uf.json`, `data/monitor_saude.json`, `data/saude_uf.json`, `data/financiamento/rotas_preventivas.json`, `data/meta.json`) e escreve os mesmos números e frases no HTML estático, com a mesma fórmula — não reinventa texto. Preenche 8 campos em `index.html` (medidor de resposta completo: número, barra, selo, `aria-label`, interpretação; corte do herói; as duas datas do rodapé, incluindo a remoção do `26/08/2026` fixo), 9 em `saude.html` (os dois medidores, antecipação e resposta sanitária, por inteiro) e 2 em `financiamento.html`. Idempotente — testado rodando duas vezes seguidas, hash idêntico na segunda. Chamado por `atualizar.py` como último passo antes da regeneração dos PDFs.
+
+**Defesa civil e Calendário eleitoral**: conferidos e não têm campo equivalente no cabeçalho (usam mapas e tabelas para a resposta nacional, não medidor; nenhum "corte" solto no masthead) — nada para corrigir nessas duas.
+
+**Portão novo, em `verificar_runtime.js`**: lê o arquivo bruto, sem jsdom nem JavaScript — os testes de runtime existentes conferem o DOM *depois* que o JS já rodou, o que não prova nada sobre o fallback estático (o próprio JS já teria sobrescrito um "—" àquela altura). Confere, nas três páginas: nenhum campo de dado com "—"/vazio/`null`; os grupos de datas que representam o mesmo corte são iguais entre si; `respFill` não fica em zero a menos que o índice de resposta seja mesmo zero. Teste negativo executado (forçar `respNum` de volta a "—", confirmar que o portão barra) e revertido com segurança.
+
+Suíte inteira de portões verde (20 verificações); cadeia de derivados regenerada em árvore limpa.
+
 ## §77 · Fichas "Como ler" saem de duas colunas quebradas ao meio; parágrafos reordenados para leitura humana · 16/09/2026
 
 A pedido da editoria: as fichas ("Como ler o MARÉ", "Como ler o MARÉ · Saúde", "Como ler as rotas", "Como ler o dinheiro preventivo") tinham parágrafos longos o bastante para acionar o colunamento automático (`assets/colunas.js`, regra de 07/09: texto com 320+ caracteres vira duas colunas em telas largas) — e uma frase quebrada ao meio entre duas colunas atrapalha a leitura, ainda mais numa ficha que existe para explicar o site.

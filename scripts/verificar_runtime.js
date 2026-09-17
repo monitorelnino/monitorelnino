@@ -225,6 +225,49 @@ setTimeout(() => {
   teste("data de última verificação bate com META", q("metaUltimaVerif").textContent === INDICE_META.atualizado_em);
   teste("rodapé 'última atualização' bate com META", q("metaAtualizado").textContent === INDICE_META.atualizado_em);
 
+  // 16/09/2026 (handover urgente): os testes acima conferem o DOM depois que assets/js/index.js já
+  // rodou — não provam nada sobre o fallback estático (o que um leitor sem JavaScript recebe), porque
+  // o JS já teria sobrescrito um "—" essa altura. Este bloco lê o ARQUIVO cru, sem jsdom nem JS, para
+  // as três páginas com medidor/corte no cabeçalho.
+  {
+    const IDS_DADO = {
+      "index.html": ["heroVerifFederal", "metaUltimaVerif", "respNum", "respCorte", "respLinha", "interpResposta", "heroCorte", "metaAtualizado", "corteDados"],
+      "saude.html": ["corteSaude", "gaugeSaudeNum", "gaugeSaudeN", "gaugeSaudeNV", "gaugeSaudeCorte", "rsNum", "rsCorte"],
+      "financiamento.html": ["corteFin", "notaFogoCorte"],
+    };
+    const CORTES_IGUAIS = { "index.html": [["heroCorte", "respCorte", "corteDados"], ["metaUltimaVerif", "metaAtualizado"]] };
+    for (const [pagina, ids] of Object.entries(IDS_DADO)) {
+      const bruto = fs.readFileSync(path.join(raiz, pagina), "utf-8");
+      const valorDe = (id) => {
+        // captura da tag com o id até o PRIMEIRO fechamento de p/span/strong/div depois dela — cobre
+        // conteúdo com HTML aninhado (ex.: interpResposta começa com <strong>280</strong> ...), não só texto puro
+        const m = bruto.match(new RegExp('<[a-z]+[^>]*id="' + id + '"[^>]*>([\\s\\S]*?)</(?:p|span|strong|div)>'));
+        return m ? m[1].replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim() : null;
+      };
+      for (const id of ids) {
+        const valor = valorDe(id);
+        if (id === "respLinha") continue;   // JS também deixa vazio de propósito (15/09) — não é lacuna
+        teste(`${pagina}: #${id} sem "—"/vazio no HTML estático (sem JS)`, valor !== null && valor !== "" && valor !== "—" && valor.toLowerCase() !== "null");
+      }
+      for (const grupo of (CORTES_IGUAIS[pagina] || [])) {
+        const valores = grupo.map(valorDe);
+        teste(`${pagina}: ${grupo.join(" = ")} (mesmo corte, mesmo valor no estático)`, valores.every(v => v === valores[0]));
+      }
+      // 16/09/2026: a versão ampla ("nenhuma data solta fora de um id") pegava falso positivo demais —
+      // comentário HTML, placeholder de formulário, conteúdo já dinâmico sem id no <strong> interno,
+      // e datas de calendário fixas e legítimas (29/06, 04/07, 25/10 do período eleitoral). O que o
+      // handover queria evitar de verdade é o bug específico já visto: um corte antigo hardcoded no
+      // lugar de um campo dinâmico. Trava só esse caso, que é testável sem ambiguidade.
+      teste(`${pagina}: não repete o corte hardcoded antigo (26/08/2026) fora de um campo dinâmico`,
+        !/Corte dos dados: 26\/08\/2026|corte 26\/08\/2026|em 26\/08\/2026/i.test(bruto));
+    }
+    const respostaNacional = require("../data/resposta/por_uf.json").nacional;
+    const brutoIndex = fs.readFileSync(path.join(raiz, "index.html"), "utf-8");
+    const mAlvo = brutoIndex.match(/id="respFill" data-alvo="([\d.]+)"/);
+    teste("index.html: #respFill data-alvo ≠ \"0\" a menos que o índice de resposta seja mesmo zero",
+      !!mAlvo && (parseFloat(mAlvo[1]) > 0 || (respostaNacional && (respostaNacional.indice || 0) === 0)));
+  }
+
   // 15/09/2026: o fim é chamado pelo bloco assíncrono de Proteja-se (acima), depois que ele terminar
   fim.falhas = falhas;
 }, 600);
