@@ -200,11 +200,18 @@ function canvasEm(wrapId, canvasId){
 // vermelhas acima da média e azuis abaixo, com transparência que cresce com a intensidade da anomalia
 // (mesma lógica de transição contínua dos medidores do MARÉ, adaptada a uma série histórica: aqui a
 // "transição" é a opacidade de cada barra, não a largura de uma barra só). Movimento: animação ligada
-// (as demais figuras da página não animam, SEM_ANIM; esta é a exceção deliberada).
+// (as demais figuras da página não animam, SEM_ANIM; esta é a exceção deliberada). Mesma paleta e
+// opções compartilhadas com os gráficos de RONI e anomalia mensal logo abaixo (mesma linguagem visual).
+const ANOM_VERMELHO = [220, 38, 38], ANOM_AZUL = [37, 99, 235];
+const alphaAnom = v => Math.min(.92, .28 + .64 * Math.min(1, Math.abs(v) / 2.0));
+const corAnom = v => { const [r,g,b] = v >= 0 ? ANOM_VERMELHO : ANOM_AZUL; return `rgba(${r},${g},${b},${alphaAnom(v).toFixed(2)})`; };
+const corOni = corAnom;   // nome antigo mantido no resto do bloco do ONI, mesma função
+const opcoesGraficoAnom = (rotuloEixoY) => ({responsive:true, maintainAspectRatio:false, animation:{duration:900, easing:'easeOutCubic'},
+  plugins:{legend:{display:false}, tooltip:{backgroundColor:'#000', titleColor:'#fff', bodyColor:'#fff', borderColor:'rgba(255,255,255,.25)', borderWidth:1}},
+  scales:{
+    x:{ticks:{maxTicksLimit:12, color:'rgba(255,255,255,.75)'}, grid:{color:'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}},
+    y:{title:{display:true, text: rotuloEixoY, color:'rgba(255,255,255,.75)'}, ticks:{color:'rgba(255,255,255,.75)'}, grid:{color:ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.45)' : 'rgba(255,255,255,.10)'}, border:{color:'rgba(255,255,255,.25)'}}}});
 if(oni && oni.serie && oni.serie.length){
-  const ONI_VERMELHO = [220, 38, 38], ONI_AZUL = [37, 99, 235];
-  const alphaOni = v => Math.min(.92, .28 + .64 * Math.min(1, Math.abs(v) / 2.0));
-  const corOni = v => { const [r,g,b] = v >= 0 ? ONI_VERMELHO : ONI_AZUL; return `rgba(${r},${g},${b},${alphaOni(v).toFixed(2)})`; };
   new Chart(canvasEm('wrapOni', 'cOni'), {type:'bar', data:{
       labels: oni.serie.map(p => p.trimestre + '/' + String(p.ano).slice(2)),
       datasets:[{label:'ONI (°C)', data: oni.serie.map(p => p.anomalia),
@@ -228,6 +235,49 @@ if(oni && oni.serie && oni.serie.length){
   })();
 } else { lacuna('wrapOni', 'A série do ONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
 credito('boxOni', 'noaa_oni');
+
+// ---- Gráfico 1b: série RONI (17/09/2026, achado ao checar o valor do ONI atual, pedido da editoria) ----
+// Mesmo padrão visual do ONI (fundo preto, vermelho/azul, transição por opacidade, animação ligada) —
+// são duas medidas da mesma coisa, lado a lado, então precisam se ler como duas versões de uma
+// mesma família de gráfico, não como duas figuras diferentes.
+const roni = SINAIS.enos.roni;
+if (roni && roni.serie && roni.serie.length) {
+  new Chart(canvasEm('wrapRoni', 'cRoni'), {type:'bar', data:{
+      labels: roni.serie.map(p => p.trimestre + '/' + String(p.ano).slice(2)),
+      datasets:[{label:'RONI (°C)', data: roni.serie.map(p => p.anomalia),
+                 backgroundColor: ctx => corAnom(ctx.raw), borderWidth:0, borderRadius:2,
+                 categoryPercentage:.9, barPercentage:.95}]},
+    options: opcoesGraficoAnom('°C')});
+  (function leituraRoni(){
+    const el = document.getElementById('roniLeitura'); const s = roni.serie; const u = s[s.length - 1]; if (!el || !u) return;
+    const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
+    const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
+    let txt = 'O RONI mede a mesma anomalia do ONI, descontado o aquecimento médio do oceano tropical; é a medida oficial da NOAA desde agosto de 2026. ';
+    txt += 'RONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na mesma escala do CPC';
+    if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + (d >= 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' °C em dois trimestres'; }
+    el.textContent = txt + '.'; el.hidden = false;
+  })();
+} else { lacuna('wrapRoni', 'A série do RONI aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
+credito('boxRoni', 'noaa_roni');
+
+// ---- Gráfico 1c: anomalia mensal (sem suavização), mesmo pedido de 17/09/2026 ----
+const nino34Mensal = SINAIS.enos.nino34_mensal;
+const MES_CURTO = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+if (nino34Mensal && nino34Mensal.serie && nino34Mensal.serie.length) {
+  new Chart(canvasEm('wrapAnomalia', 'cAnomalia'), {type:'bar', data:{
+      labels: nino34Mensal.serie.map(p => MES_CURTO[p.mes - 1] + '/' + String(p.ano).slice(2)),
+      datasets:[{label:'Anomalia mensal (°C)', data: nino34Mensal.serie.map(p => p.anomalia),
+                 backgroundColor: ctx => corAnom(ctx.raw), borderWidth:0, borderRadius:2,
+                 categoryPercentage:.9, barPercentage:.95}]},
+    options: opcoesGraficoAnom('°C')});
+  (function leituraAnomalia(){
+    const el = document.getElementById('anomaliaLeitura'); const s = nino34Mensal.serie; const u = s[s.length - 1]; if (!el || !u) return;
+    const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(2).replace('.', ',');
+    el.textContent = 'Anomalia de ' + fmt(u.anomalia) + ' °C em ' + MES_CURTO[u.mes - 1] + '/' + u.ano + ', antes da suavização de três meses que o ONI e o RONI aplicam.';
+    el.hidden = false;
+  })();
+} else { lacuna('wrapAnomalia', 'A anomalia mensal aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }
+credito('boxAnomalia', 'noaa_nino34_mensal');
 
 // ---- Gráfico 2: probabilidades ENOS ----
 // 13/09/2026: figura "Probabilidade por trimestre" retirada do HTML (ver comentário em

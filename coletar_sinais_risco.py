@@ -122,6 +122,21 @@ FONTES = {
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt",
         "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
     },
+    "noaa_roni": {
+        # 17/09/2026 (achado ao checar o valor do ONI, pedido da editoria): desde agosto/2026 a NOAA
+        # usa o RONI, não mais o ONI clássico, como métrica oficial de classificação — o RONI desconta
+        # o aquecimento médio de todo o oceano tropical, então fica mais conservador em clima mais quente.
+        "nome": "Relative Oceanic Niño Index (RONI)", "orgao": "NOAA/CPC", "camada": "enos",
+        "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+        "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/RONI.ascii.txt",
+        "papel": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico.",
+    },
+    "noaa_nino34_mensal": {
+        "nome": "Anomalia mensal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC", "camada": "enos",
+        "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
+        "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
+        "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
+    },
     "iri_plume": {
         "nome": "Probabilidades ENSO (plume IRI/CPC)", "orgao": "IRI/Columbia", "camada": "enos",
         "url_publica": "https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/",
@@ -206,6 +221,40 @@ def parse_oni(texto: str) -> list:
         except ValueError:
             continue
     return serie
+
+
+def parse_roni(texto: str) -> list:
+    """17/09/2026 (pedido da editoria, achado ao checar o ONI atual): a NOAA passou a usar o RONI
+    (Relative Oceanic Niño Index) como métrica oficial de classificação desde agosto/2026 (o ONI
+    clássico segue existindo e é o que a página já mostrava). Mesmo formato de parse_oni, mas o
+    arquivo do RONI não tem a coluna TOTAL (só SEAS YR ANOM)."""
+    serie = []
+    for linha in texto.splitlines():
+        partes = linha.split()
+        if len(partes) != 3 or partes[0] == "SEAS":
+            continue
+        try:
+            serie.append({"trimestre": partes[0], "ano": int(partes[1]), "anomalia": float(partes[2])})
+        except ValueError:
+            continue
+    return serie
+
+
+def parse_nino34_mensal(texto: str) -> list:
+    """17/09/2026: leitura mensal, não suavizada em três meses, da anomalia de temperatura na região
+    Niño 3.4 (arquivo 'detrend.nino34.ascii.txt' do CPC, colunas YR MON TOTAL ClimAdjust ANOM) — a
+    matéria-prima mensal da qual tanto o ONI quanto o RONI derivam a média móvel trimestral. Só os
+    últimos ~48 meses interessam à página (tendência recente), não a série inteira desde 1949."""
+    serie = []
+    for linha in texto.splitlines():
+        partes = linha.split()
+        if len(partes) != 5 or partes[0] == "YR":
+            continue
+        try:
+            serie.append({"ano": int(partes[0]), "mes": int(partes[1]), "anomalia": float(partes[4])})
+        except ValueError:
+            continue
+    return serie[-48:]
 
 
 def parse_plume_iri(texto: str) -> list:
@@ -422,6 +471,18 @@ def coletar_fonte(chave: str):
             raise ValueError(f"série ONI curta demais ({len(serie)} pontos) — recusada")
         ultimo = serie[-1]
         return {"serie": serie[-160:]}, f"ONI v5, último trimestre {ultimo['trimestre']}/{ultimo['ano']}"
+    if chave == "noaa_roni":
+        serie = parse_roni(bruto)
+        if len(serie) < 12:
+            raise ValueError(f"série RONI curta demais ({len(serie)} pontos) — recusada")
+        ultimo = serie[-1]
+        return {"serie": serie[-160:]}, f"RONI, último trimestre {ultimo['trimestre']}/{ultimo['ano']}"
+    if chave == "noaa_nino34_mensal":
+        serie = parse_nino34_mensal(bruto)
+        if len(serie) < 6:
+            raise ValueError(f"série mensal Niño 3.4 curta demais ({len(serie)} pontos) — recusada")
+        ultimo = serie[-1]
+        return {"serie": serie}, f"Niño 3.4 mensal, último mês {ultimo['mes']:02d}/{ultimo['ano']}"
     if chave == "iri_plume":
         plume = parse_plume_iri(bruto)
         if not plume:
@@ -489,7 +550,7 @@ def esqueleto() -> dict:
                     "documento": None, "detalhe": None}
             for chave, dados in FONTES.items()
         },
-        "enos": {"oni": None, "probabilidades": None, "prognostico": None},
+        "enos": {"oni": None, "roni": None, "nino34_mensal": None, "probabilidades": None, "prognostico": None},
         "uf": {uf: {"risco_projetado": None, "secas": None, "avisos_inmet": None,
                     "fogo": None, "alertas_cemaden": None} for uf in UFS},
     }
@@ -543,6 +604,10 @@ def coletar(registro: dict, camadas) -> dict:
         })
         if chave == "noaa_oni":
             registro["enos"]["oni"] = {**payload, "fonte": chave, "documento": documento}
+        elif chave == "noaa_roni":
+            registro["enos"]["roni"] = {**payload, "fonte": chave, "documento": documento}
+        elif chave == "noaa_nino34_mensal":
+            registro["enos"]["nino34_mensal"] = {**payload, "fonte": chave, "documento": documento}
         elif chave == "iri_plume":
             registro["enos"]["probabilidades"] = {**payload, "fonte": chave, "documento": documento}
         # 15/09/2026: INPE, INMET e CEMADEN respondem pelo país inteiro — UF ausente da resposta é ZERO
@@ -634,6 +699,18 @@ def autoteste() -> int:
     checar("tipo: misto", classificar_tipo("Incêndios; seca em intensificação (IIS-3)") == "misto")
     checar("tipo: sem sinal", classificar_tipo("Sem sinal elevado no trimestre") == "sem_sinal")
     checar("tipo negativo: vazio não vira categoria de risco", classificar_tipo("") == "sem_sinal")
+
+    # 17/09/2026: parse_roni e parse_nino34_mensal, mesmo padrão de checagem que parse_oni já tinha.
+    _roni_teste = parse_roni("SEAS   YR  ANOM\nDJF  2026 -0.91\nJFM  2026 -0.76\nJJA  2026  1.36\n")
+    checar("RONI: lê três colunas (sem TOTAL)", _roni_teste == [
+        {"trimestre": "DJF", "ano": 2026, "anomalia": -0.91},
+        {"trimestre": "JFM", "ano": 2026, "anomalia": -0.76},
+        {"trimestre": "JJA", "ano": 2026, "anomalia": 1.36},
+    ])
+    checar("RONI negativo: cabeçalho não vira ponto de série", parse_roni("SEAS   YR  ANOM\n") == [])
+    _mensal_teste = parse_nino34_mensal(" YR   MON  TOTAL ClimAdjust ANOM\n2026   7   29.07   27.29    1.78\n2026   8   29.04   26.87    2.17\n")
+    checar("Niño 3.4 mensal: lê a 5ª coluna (ANOM), não a 3ª (TOTAL)", _mensal_teste == [
+        {"ano": 2026, "mes": 7, "anomalia": 1.78}, {"ano": 2026, "mes": 8, "anomalia": 2.17}])
 
     # 17/09/2026: componentes_de_risco() é a mesma detecção de classificar_tipo(), sem colapsar em
     # "misto" — todo "misto" precisa render pelo menos 2 componentes; todo tipo único, exatamente 1.
