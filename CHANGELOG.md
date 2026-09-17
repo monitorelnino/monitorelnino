@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §85 · Monitor de risco: "Última atualização" sai da grade, ONI explicado, mapas de fogo e CEMADEN sem clique · 17/09/2026
+
+Pedido direto da editoria, cinco partes.
+
+**"Última atualização" sai da grade de "Situação atual"** e passa a viver abaixo da Figura 1 (o ONI), fora da moldura da figura (regra estrutural do site: uma `<figure>` só carrega título, legenda e crédito — o texto novo mora logo depois dela), em letra menor (`.note`).
+
+**A observação da Figura 1 explica o que é o ONI**, não só o número do trimestre: "O ONI mede a anomalia da temperatura do mar na região Niño 3.4: valores acima de zero indicam El Niño, abaixo indicam La Niña." antes dos números do dado. No caminho, dois ajustes por causa dos portões: a frase original ("valores positivos/negativos") disparava o léxico avaliativo do portão de voz (que trata "positivo/negativo" como juízo, não como sinal matemático) — reescrita para "acima de zero / abaixo de zero"; e o texto passou de 243 para 206 caracteres, dentro do teto de 240 que o portão de legendas já impunha.
+
+**Mapas de foco de calor (INPE) e alertas do CEMADEN saem do "Ver mais"** — a página tinha os dois atrás de um `<details>`/clique; agora ficam na mesma grade dos outros dois mapas ("Seca observada" e "Avisos meteorológicos"), os quatro visíveis de uma vez.
+
+**Conferido, não alterado — mapas e cores já estavam corretos.** Os cinco mapas da página têm dado real nos 27 estados na fonte (`data/sinais_risco.json`); o que parece "vazio" em alguns estados é o extremo baixo da escala de cor (0 focos, 0 alertas), não a cor distinta de "sem coleta até o corte" — nenhum estado cai nessa categoria hoje. As cores de todos os gráficos (exceto o ONI, que é deliberadamente vermelho/azul/preto para imitar os sites oficiais, pedido de sessão anterior) já vêm de `MonitorMapas.PALETA`, a paleta semântica única do site.
+
+Suíte inteira verde (21 verificações) depois dos dois ajustes; cadeia de derivados regenerada em árvore limpa; conferido visualmente, sem erro de JavaScript.
+
 ## §84 · Gráfico do ONI no padrão dos sites oficiais: fundo preto, vermelho e azul com transição · 17/09/2026
 
 Pedido direto da editoria: o gráfico da série ONI, no Monitor de risco, virou uma linha única numa cor só, sem contraste com El Niño (vermelho) e La Niña (azul), sem lembrar o padrão que os sites oficiais (NOAA/CPC) usam.
