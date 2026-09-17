@@ -47,6 +47,28 @@ jobs:
           npm ci --silent 2>/dev/null || npm install --silent
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
           node scripts/verificar_publicado_navegador.js --base https://monitorelnino.com.br 2>&1 | tee /tmp/publicado_navegador.txt
+      - name: DIAGNOSTICO_TEMP_redirect_monitor_riscos
+        continue-on-error: true
+        env:
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+        run: |
+          node -e '
+          const https = require("https");
+          function buscar(url) {
+            return new Promise((resolve, reject) => {
+              const cab = {};
+              if (process.env.PREVIA_BASIC_AUTH) cab["Authorization"] = "Basic " + Buffer.from(process.env.PREVIA_BASIC_AUTH).toString("base64");
+              https.get(url, { headers: cab }, res => { let d = ""; res.on("data", c => d += c); res.on("end", () => resolve({status: res.statusCode, corpo: d, location: res.headers.location})); }).on("error", reject);
+            });
+          }
+          (async () => {
+            const nova = await buscar("https://monitorelnino.com.br/monitor-de-riscos.html");
+            console.log("nova pagina: status=" + nova.status + " len=" + nova.corpo.length + " temTitulo=" + nova.corpo.includes("Monitor de riscos"));
+            const antiga = await buscar("https://monitorelnino.com.br/sinais-de-risco.html");
+            console.log("pagina antiga: status=" + antiga.status + " location=" + antiga.location + " corpoTemMonitorDeRiscos=" + (antiga.corpo||"").includes("Monitor de riscos"));
+          })();
+          ' | tee /tmp/diagnostico_conteudo.txt
+
       - name: Sondar as configurações do projeto no Netlify (HUD, snippets, colaboração) — só leitura
         continue-on-error: true
         env:
@@ -82,6 +104,7 @@ jobs:
           cp /tmp/publicado_navegador.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado_navegador.txt" 2>/dev/null || true
           cp /tmp/netlify_config.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_netlify_config.txt" 2>/dev/null || true
           cp /tmp/verificar_publicado.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_verificar_publicado.txt"
+          cp /tmp/diagnostico_conteudo.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_conteudo.txt" 2>/dev/null || true
           cp /tmp/diagnostico_conteudo.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_diagnostico_conteudo.txt" 2>/dev/null || true
           cd /tmp/registro && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com"
           git add -A && git commit -q -m "verificar_publicado ${GITHUB_SHA::7}" && git push -q
