@@ -146,7 +146,9 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
   el('stOni').innerHTML = u ? esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C <small>' + esc(u.trimestre + '/' + u.ano) + ' · média móvel trimestral</small>' : '—';
   el('stProb').innerHTML = ultimaProb ? esc(ultimaProb.el_nino.toFixed(0)) + '% <small>' + esc(ultimaProb.trimestre) + ' (IRI/CPC)</small>' : (pg && pg.enso ? '> 90% <small>SON/2026 · CPC/NOAA, ago/2026</small>' : '—');
   el('stDocumento').innerHTML = coletada('painel_el_nino') ? esc(fonteDe('painel_el_nino').documento) : '<span class="lacuna">sem coleta até o corte</span>';
-  el('stAtualizado').innerHTML = esc(SINAIS.gerado_em || '') + ' <small>ONI: ' + esc(fonteDe('noaa_oni').consultado_em || '—') + ' · Painel: ' + esc(fonteDe('painel_el_nino').consultado_em || '—') + '</small>';
+  // 17/09/2026 (pedido da editoria): "Última atualização" sai da grade de Situação atual e passa a
+  // viver abaixo da Figura 1 (o ONI), em letra menor — é sobre as duas fontes que alimentam a figura.
+  if (el('oniAtualizado')) el('oniAtualizado').innerHTML = 'Última atualização: ' + esc(SINAIS.gerado_em || '') + ' <small>· ONI: ' + esc(fonteDe('noaa_oni').consultado_em || '—') + ' · Painel: ' + esc(fonteDe('painel_el_nino').consultado_em || '—') + '</small>';
   const partes = [];
   if (u) partes.push('<strong>Observação:</strong> o ONI está em ' + esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C (' + esc(u.trimestre + '/' + u.ano) + '), ' + esc(cls(u.anomalia)) + ' pela escala do CPC.');
   if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; partes.push('<strong>Interpretação:</strong> a anomalia ' + (d > 0.15 ? 'vem subindo' : d < -0.15 ? 'vem caindo' : 'está estável') + ' nos últimos trimestres; o fenômeno ' + (d > 0.15 ? 'se fortalece' : d < -0.15 ? 'perde força' : 'persiste sem mudança de intensidade') + '.'); }
@@ -200,7 +202,10 @@ if(oni && oni.serie && oni.serie.length){
     const el = document.getElementById('oniLeitura'); const s = oni.serie; const u = s[s.length - 1]; if (!el || !u) return;
     const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
     const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
-    let txt = 'ONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na escala do CPC';
+    // 17/09/2026 (pedido da editoria): a observação precisa dizer o que o leitor está vendo e o que o
+    // ONI mede, não só o número do trimestre corrente — a frase fixa vem antes dos números do dado.
+    let txt = 'O ONI mede a anomalia da temperatura do mar na região Niño 3.4: valores acima de zero indicam El Niño, abaixo indicam La Niña. ';
+    txt += 'ONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na escala do CPC';
     if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + (d >= 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' °C em dois trimestres'; }
     el.textContent = txt + '.'; el.hidden = false;
   })();
