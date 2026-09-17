@@ -25,7 +25,7 @@ import sys
 
 RAIZ = pathlib.Path(__file__).parent
 REGISTRO = RAIZ / "data" / "sinais_risco.json"
-PAGINA = RAIZ / "sinais-de-risco.html"
+PAGINA = RAIZ / "monitor-de-riscos.html"
 INDICE = RAIZ / "data" / "indice.json"
 MOTOR = RAIZ / "recalcular_mare.py"
 UFS = {"AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT",
@@ -125,23 +125,23 @@ def main():
         for padrao, motivo in PROIBIDAS:
             achado = re.search(padrao, texto, re.I)
             if achado:
-                falha(f"sinais-de-risco.html: '{achado.group(0)}' — {motivo}")
+                falha(f"monitor-de-riscos.html: '{achado.group(0)}' — {motivo}")
         # 16/09/2026 (handover da voz editorial, §3): as duas ressalvas saíram do subtítulo e do corpo e
         # passaram a morar UMA vez, na nota "O que esta página não diz". Continuam obrigatórias — mudou
         # a redação ("reproduzidos dos órgãos", "não entram na nota") e o lugar, não a exigência.
         if "reproduzidos dos órgãos" not in texto:
-            falha("sinais-de-risco.html: falta a declaração de que os sinais são reproduzidos dos órgãos")
+            falha("monitor-de-riscos.html: falta a declaração de que os sinais são reproduzidos dos órgãos")
         if "não entram na nota" not in texto:
-            falha("sinais-de-risco.html: falta a declaração de que os sinais não entram na nota")
+            falha("monitor-de-riscos.html: falta a declaração de que os sinais não entram na nota")
         # O crédito é montado em tempo de execução a partir do registro (função
         # `credito`), então o que se verifica aqui é o que É estático: a chamada
         # existe para cada fonte do catálogo. Que o crédito renderize com link,
         # documento e data é verificado por scripts/verificar_runtime_sinais.js.
         for chave in reg["fontes"]:
             if f"'{chave}'" not in html:
-                falha(f"sinais-de-risco.html: fonte '{chave}' catalogada mas nunca creditada na página")
+                falha(f"monitor-de-riscos.html: fonte '{chave}' catalogada mas nunca creditada na página")
     else:
-        avisos.append("sinais-de-risco.html ainda não existe — checagem de linguagem pulada")
+        avisos.append("monitor-de-riscos.html ainda não existe — checagem de linguagem pulada")
 
     # ---- 5. lacuna honesta ------------------------------------------------
     for chave, fonte in reg["fontes"].items():

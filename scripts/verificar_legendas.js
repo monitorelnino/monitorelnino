@@ -17,7 +17,7 @@
 const fs = require("fs"), path = require("path");
 const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("--listar");
-const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento.html", "sinais-de-risco.html", "calendario-eleitoral.html",
+const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento.html", "monitor-de-riscos.html", "calendario-eleitoral.html",
   "pesquisadores.html", "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 
 // Exceções: colocações técnicas ou oficiais que contêm uma palavra da lista, mas não são juízo.
@@ -101,7 +101,7 @@ function renderizar(pagina) {
   //   data-voz="ficha" — a ficha "Como ler" de cada página: é o lugar onde a ressalva metodológica mora.
   //   data-voz="lei"   — blocos cujo conteúdo É a lei (FAQ da Imprensa, blocos legais do Calendário).
   {
-    const PAGINAS_PROSA = ["index.html", "sinais-de-risco.html", "defesa-civil.html", "saude.html",
+    const PAGINAS_PROSA = ["index.html", "monitor-de-riscos.html", "defesa-civil.html", "saude.html",
       "financiamento.html", "calendario-eleitoral.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
     // "\bsó\b" não funciona: "ó" não é \w em regex JS sem a flag Unicode, então a fronteira de palavra depois
     // de "só" não fecha — nunca teria pego o próprio caso ("Só — dos 27 estados…") que motivou esta checagem.

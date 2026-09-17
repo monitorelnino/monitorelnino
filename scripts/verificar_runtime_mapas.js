@@ -54,7 +54,7 @@ setTimeout(() => {
   teste("mapa natureza: 27 estados", q("mapNatureza") && q("mapNatureza").querySelectorAll("path").length === 27);
   // mapConsistencia/tblConsistencia retirados de defesa-civil.html em 13/09/2026 (auditoria de
   // visualizações, consolidação) — versão principal do cruzamento risco×instrumento fica em
-  // sinais-de-risco.html (boxCruz); aqui sobrou um resumo compacto com link, testado abaixo.
+  // monitor-de-riscos.html (boxCruz); aqui sobrou um resumo compacto com link, testado abaixo.
   // (financiamento — mapa do dinheiro, totais e fontes — migrou para financiamento.html, E9; testado em verificar_runtime_financiamento.js)
   teste("mapa de municípios prioritários: 2.095 pontos", q("mapPrioritarios") && q("mapPrioritarios").querySelectorAll("circle").length === 2095);
 

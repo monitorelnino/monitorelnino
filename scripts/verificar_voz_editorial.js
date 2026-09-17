@@ -13,7 +13,7 @@ const { inlinePageJs } = require("./_inline_js");
 const RAIZ = path.join(__dirname, "..");
 const listar = process.argv.includes("--listar");
 const PAGINAS = ["index.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html",
-  "sinais-de-risco.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html",
+  "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html",
   "obrigado.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 
 // Frases-marcador de ressalva metodológica que só devem aparecer uma vez por página (na

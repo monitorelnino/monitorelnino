@@ -1,4 +1,4 @@
-// ===== sinais-de-risco.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
+// ===== monitor-de-riscos.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 /* Sinais oficiais de risco — camada de apresentação.
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
@@ -214,7 +214,7 @@ credito('boxOni', 'noaa_oni');
 
 // ---- Gráfico 2: probabilidades ENOS ----
 // 13/09/2026: figura "Probabilidade por trimestre" retirada do HTML (ver comentário em
-// sinais-de-risco.html, painel #graficos) — só mostrava "sem coleta". Bloco mantido desativado
+// monitor-de-riscos.html, painel #graficos) — só mostrava "sem coleta". Bloco mantido desativado
 // (guarda por ausência de #wrapPlume), não apagado, para reativar quando o IRI/CPC for coletado.
 if (document.getElementById('wrapPlume')) {
   if(prob && prob.trimestres && prob.trimestres.length){
@@ -250,7 +250,7 @@ const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};
 }
 __load();
 
-// ===== sinais-de-risco.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
+// ===== monitor-de-riscos.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
 // 15/09/2026 (auditoria editorial §1.10): "Situação atual" com uma linha destacada composta dos mesmos campos do painel —

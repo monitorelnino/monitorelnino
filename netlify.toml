@@ -134,3 +134,14 @@
   from = "/envie-dados"
   to = "/prefeituras.html"
   status = 301
+
+# 17/09/2026: "Monitor de risco" (singular) virou "Monitor de riscos" (plural); o endereço
+# sinais-de-risco.html virou monitor-de-riscos.html — o antigo redireciona.
+[[redirects]]
+  from = "/sinais-de-risco.html"
+  to = "/monitor-de-riscos.html"
+  status = 301
+[[redirects]]
+  from = "/sinais-de-risco"
+  to = "/monitor-de-riscos.html"
+  status = 301
