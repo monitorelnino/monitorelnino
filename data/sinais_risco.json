@@ -19,7 +19,7 @@
   },
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "17/09/2026",
+ "gerado_em": "18/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -39,7 +39,7 @@
    "url_publica": "https://monitordesecas.ana.gov.br/",
    "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "status": "coletado",
-   "consultado_em": "17/09/2026",
+   "consultado_em": "18/09/2026",
    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
    "detalhe": "Fração da área de cada UF em cada categoria de seca (S0 a S4), no mapa mensal mais recente.",
    "recurso": {
@@ -106,7 +106,7 @@
    "url_publica": "https://alertas2.inmet.gov.br/",
    "papel": "Avisos vigentes por área, com grau e vigência declarados pelo INMET.",
    "status": "coletado",
-   "consultado_em": "17/09/2026",
+   "consultado_em": "18/09/2026",
    "documento": "Avisos ativos no momento da consulta",
    "detalhe": "Avisos vigentes por área, com grau e vigência declarados pelo INMET."
   },
@@ -117,8 +117,8 @@
    "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
-   "consultado_em": "17/09/2026",
-   "documento": "Focos do dia — focos_diario_br_20260917.csv",
+   "consultado_em": "18/09/2026",
+   "documento": "Focos do dia — focos_diario_br_20260918.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -128,7 +128,7 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
    "papel": "Alertas vigentes emitidos aos municípios monitorados.",
    "status": "coletado",
-   "consultado_em": "17/09/2026",
+   "consultado_em": "18/09/2026",
    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
    "detalhe": "Alertas vigentes emitidos aos municípios monitorados."
   },
@@ -139,7 +139,7 @@
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
-   "consultado_em": "17/09/2026",
+   "consultado_em": "18/09/2026",
    "documento": "ONI v5, último trimestre JJA/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
@@ -172,7 +172,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
    "papel": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico.",
    "status": "coletado",
-   "consultado_em": "17/09/2026",
+   "consultado_em": "18/09/2026",
    "documento": "RONI, último trimestre JJA/2026",
    "detalhe": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico."
   },
@@ -183,7 +183,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
    "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
    "status": "coletado",
-   "consultado_em": "17/09/2026",
+   "consultado_em": "18/09/2026",
    "documento": "Niño 3.4 mensal, último mês 08/2026",
    "detalhe": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam."
   }
@@ -1032,3801 +1032,6 @@
   "roni": {
    "serie": [
     {
-     "trimestre": "DJF",
-     "ano": 1950,
-     "anomalia": -1.19
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1950,
-     "anomalia": -1.08
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1950,
-     "anomalia": -0.96
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1950,
-     "anomalia": -1.0
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1950,
-     "anomalia": -0.99
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1950,
-     "anomalia": -0.75
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1950,
-     "anomalia": -0.38
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1950,
-     "anomalia": -0.32
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1950,
-     "anomalia": -0.29
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1950,
-     "anomalia": -0.38
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1950,
-     "anomalia": -0.36
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1950,
-     "anomalia": -0.5
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1951,
-     "anomalia": -0.28
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1951,
-     "anomalia": 0.09
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1951,
-     "anomalia": 0.48
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1951,
-     "anomalia": 0.63
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1951,
-     "anomalia": 0.59
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1951,
-     "anomalia": 0.69
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1951,
-     "anomalia": 0.79
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1951,
-     "anomalia": 0.97
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1951,
-     "anomalia": 1.04
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1951,
-     "anomalia": 0.98
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1951,
-     "anomalia": 0.94
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1951,
-     "anomalia": 0.71
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1952,
-     "anomalia": 0.65
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1952,
-     "anomalia": 0.33
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1952,
-     "anomalia": 0.46
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1952,
-     "anomalia": 0.24
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1952,
-     "anomalia": -0.03
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1952,
-     "anomalia": -0.45
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1952,
-     "anomalia": -0.41
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1952,
-     "anomalia": -0.14
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1952,
-     "anomalia": 0.08
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1952,
-     "anomalia": 0.04
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1952,
-     "anomalia": -0.1
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1952,
-     "anomalia": 0.1
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1953,
-     "anomalia": 0.4
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1953,
-     "anomalia": 0.67
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1953,
-     "anomalia": 0.68
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1953,
-     "anomalia": 0.72
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1953,
-     "anomalia": 0.94
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1953,
-     "anomalia": 0.84
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1953,
-     "anomalia": 0.68
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1953,
-     "anomalia": 0.73
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1953,
-     "anomalia": 0.65
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1953,
-     "anomalia": 0.84
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1953,
-     "anomalia": 0.57
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1953,
-     "anomalia": 0.66
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1954,
-     "anomalia": 0.63
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1954,
-     "anomalia": 0.63
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1954,
-     "anomalia": 0.31
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1954,
-     "anomalia": -0.02
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1954,
-     "anomalia": -0.24
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1954,
-     "anomalia": -0.21
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1954,
-     "anomalia": -0.45
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1954,
-     "anomalia": -0.62
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1954,
-     "anomalia": -0.54
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1954,
-     "anomalia": -0.31
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1954,
-     "anomalia": -0.09
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1954,
-     "anomalia": -0.18
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1955,
-     "anomalia": -0.12
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1955,
-     "anomalia": -0.14
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1955,
-     "anomalia": -0.13
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1955,
-     "anomalia": -0.38
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1955,
-     "anomalia": -0.36
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1955,
-     "anomalia": -0.52
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1955,
-     "anomalia": -0.4
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1955,
-     "anomalia": -0.7
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1955,
-     "anomalia": -0.9
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1955,
-     "anomalia": -1.31
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1955,
-     "anomalia": -1.4
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1955,
-     "anomalia": -1.31
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1956,
-     "anomalia": -0.81
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1956,
-     "anomalia": -0.4
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1956,
-     "anomalia": -0.12
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1956,
-     "anomalia": -0.09
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1956,
-     "anomalia": -0.03
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1956,
-     "anomalia": -0.01
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1956,
-     "anomalia": -0.15
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1956,
-     "anomalia": -0.18
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1956,
-     "anomalia": -0.12
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1956,
-     "anomalia": -0.14
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1956,
-     "anomalia": -0.14
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1956,
-     "anomalia": -0.17
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1957,
-     "anomalia": 0.0
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1957,
-     "anomalia": 0.22
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1957,
-     "anomalia": 0.53
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1957,
-     "anomalia": 0.83
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1957,
-     "anomalia": 0.88
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1957,
-     "anomalia": 0.9
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1957,
-     "anomalia": 1.03
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1957,
-     "anomalia": 1.05
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1957,
-     "anomalia": 1.14
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1957,
-     "anomalia": 1.16
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1957,
-     "anomalia": 1.45
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1957,
-     "anomalia": 1.75
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1958,
-     "anomalia": 1.89
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1958,
-     "anomalia": 1.79
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1958,
-     "anomalia": 1.31
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1958,
-     "anomalia": 0.95
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1958,
-     "anomalia": 0.66
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1958,
-     "anomalia": 0.56
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1958,
-     "anomalia": 0.45
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1958,
-     "anomalia": 0.26
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1958,
-     "anomalia": 0.23
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1958,
-     "anomalia": 0.24
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1958,
-     "anomalia": 0.36
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1958,
-     "anomalia": 0.64
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1959,
-     "anomalia": 0.77
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1959,
-     "anomalia": 0.83
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1959,
-     "anomalia": 0.64
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1959,
-     "anomalia": 0.48
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1959,
-     "anomalia": 0.33
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1959,
-     "anomalia": 0.09
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1959,
-     "anomalia": -0.11
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1959,
-     "anomalia": -0.23
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1959,
-     "anomalia": -0.07
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1959,
-     "anomalia": 0.04
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1959,
-     "anomalia": 0.24
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1959,
-     "anomalia": 0.22
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1960,
-     "anomalia": 0.2
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1960,
-     "anomalia": 0.19
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1960,
-     "anomalia": 0.21
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1960,
-     "anomalia": 0.25
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1960,
-     "anomalia": 0.16
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1960,
-     "anomalia": 0.06
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1960,
-     "anomalia": 0.12
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1960,
-     "anomalia": 0.2
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1960,
-     "anomalia": 0.26
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1960,
-     "anomalia": 0.08
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1960,
-     "anomalia": -0.07
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1960,
-     "anomalia": -0.09
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1961,
-     "anomalia": 0.03
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1961,
-     "anomalia": 0.08
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1961,
-     "anomalia": 0.03
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1961,
-     "anomalia": 0.06
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1961,
-     "anomalia": 0.24
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1961,
-     "anomalia": 0.3
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1961,
-     "anomalia": 0.2
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1961,
-     "anomalia": -0.07
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1961,
-     "anomalia": -0.23
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1961,
-     "anomalia": -0.16
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1961,
-     "anomalia": -0.06
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1961,
-     "anomalia": 0.02
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1962,
-     "anomalia": -0.01
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1962,
-     "anomalia": -0.01
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1962,
-     "anomalia": 0.0
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1962,
-     "anomalia": -0.16
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1962,
-     "anomalia": -0.17
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1962,
-     "anomalia": -0.14
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1962,
-     "anomalia": 0.01
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1962,
-     "anomalia": -0.1
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1962,
-     "anomalia": -0.15
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1962,
-     "anomalia": -0.3
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1962,
-     "anomalia": -0.29
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1962,
-     "anomalia": -0.37
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1963,
-     "anomalia": -0.29
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1963,
-     "anomalia": -0.12
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1963,
-     "anomalia": 0.04
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1963,
-     "anomalia": 0.06
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1963,
-     "anomalia": 0.01
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1963,
-     "anomalia": 0.37
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1963,
-     "anomalia": 0.73
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1963,
-     "anomalia": 1.08
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1963,
-     "anomalia": 1.07
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1963,
-     "anomalia": 1.06
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1963,
-     "anomalia": 1.11
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1963,
-     "anomalia": 1.07
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1964,
-     "anomalia": 1.0
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1964,
-     "anomalia": 0.6
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1964,
-     "anomalia": 0.1
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1964,
-     "anomalia": -0.37
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1964,
-     "anomalia": -0.66
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1964,
-     "anomalia": -0.66
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1964,
-     "anomalia": -0.59
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1964,
-     "anomalia": -0.55
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1964,
-     "anomalia": -0.53
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1964,
-     "anomalia": -0.64
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1964,
-     "anomalia": -0.58
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1964,
-     "anomalia": -0.48
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1965,
-     "anomalia": -0.16
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1965,
-     "anomalia": 0.1
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1965,
-     "anomalia": 0.22
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1965,
-     "anomalia": 0.36
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1965,
-     "anomalia": 0.64
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1965,
-     "anomalia": 1.01
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1965,
-     "anomalia": 1.33
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1965,
-     "anomalia": 1.49
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1965,
-     "anomalia": 1.76
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1965,
-     "anomalia": 1.86
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1965,
-     "anomalia": 1.99
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1965,
-     "anomalia": 1.81
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1966,
-     "anomalia": 1.53
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1966,
-     "anomalia": 1.29
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1966,
-     "anomalia": 1.04
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1966,
-     "anomalia": 0.59
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1966,
-     "anomalia": 0.31
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1966,
-     "anomalia": 0.22
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1966,
-     "anomalia": 0.32
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1966,
-     "anomalia": 0.19
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1966,
-     "anomalia": 0.0
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1966,
-     "anomalia": -0.03
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1966,
-     "anomalia": -0.12
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1966,
-     "anomalia": -0.22
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1967,
-     "anomalia": -0.26
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1967,
-     "anomalia": -0.24
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1967,
-     "anomalia": -0.35
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1967,
-     "anomalia": -0.31
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1967,
-     "anomalia": -0.09
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1967,
-     "anomalia": 0.21
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1967,
-     "anomalia": 0.25
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1967,
-     "anomalia": -0.01
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1967,
-     "anomalia": -0.11
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1967,
-     "anomalia": -0.08
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1967,
-     "anomalia": 0.01
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1967,
-     "anomalia": -0.03
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1968,
-     "anomalia": -0.23
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1968,
-     "anomalia": -0.36
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1968,
-     "anomalia": -0.32
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1968,
-     "anomalia": -0.26
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1968,
-     "anomalia": 0.07
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1968,
-     "anomalia": 0.32
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1968,
-     "anomalia": 0.56
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1968,
-     "anomalia": 0.46
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1968,
-     "anomalia": 0.39
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1968,
-     "anomalia": 0.56
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1968,
-     "anomalia": 0.74
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1968,
-     "anomalia": 1.02
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1969,
-     "anomalia": 1.07
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1969,
-     "anomalia": 1.0
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1969,
-     "anomalia": 0.67
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1969,
-     "anomalia": 0.44
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1969,
-     "anomalia": 0.37
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1969,
-     "anomalia": 0.3
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1969,
-     "anomalia": 0.28
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1969,
-     "anomalia": 0.34
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1969,
-     "anomalia": 0.57
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1969,
-     "anomalia": 0.67
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1969,
-     "anomalia": 0.81
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1969,
-     "anomalia": 0.68
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1970,
-     "anomalia": 0.46
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1970,
-     "anomalia": 0.21
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1970,
-     "anomalia": 0.24
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1970,
-     "anomalia": 0.24
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1970,
-     "anomalia": 0.12
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1970,
-     "anomalia": -0.23
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1970,
-     "anomalia": -0.47
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1970,
-     "anomalia": -0.64
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1970,
-     "anomalia": -0.55
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1970,
-     "anomalia": -0.57
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1970,
-     "anomalia": -0.55
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1970,
-     "anomalia": -0.85
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1971,
-     "anomalia": -0.95
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1971,
-     "anomalia": -1.0
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1971,
-     "anomalia": -0.78
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1971,
-     "anomalia": -0.57
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1971,
-     "anomalia": -0.48
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1971,
-     "anomalia": -0.37
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1971,
-     "anomalia": -0.3
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1971,
-     "anomalia": -0.25
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1971,
-     "anomalia": -0.3
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1971,
-     "anomalia": -0.4
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1971,
-     "anomalia": -0.41
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1971,
-     "anomalia": -0.38
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1972,
-     "anomalia": -0.21
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1972,
-     "anomalia": 0.03
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1972,
-     "anomalia": 0.32
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1972,
-     "anomalia": 0.51
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1972,
-     "anomalia": 0.66
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1972,
-     "anomalia": 0.87
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1972,
-     "anomalia": 1.14
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1972,
-     "anomalia": 1.4
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1972,
-     "anomalia": 1.64
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1972,
-     "anomalia": 1.82
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1972,
-     "anomalia": 1.97
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1972,
-     "anomalia": 1.88
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1973,
-     "anomalia": 1.69
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1973,
-     "anomalia": 1.25
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1973,
-     "anomalia": 0.58
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1973,
-     "anomalia": -0.17
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1973,
-     "anomalia": -0.73
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1973,
-     "anomalia": -0.98
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1973,
-     "anomalia": -1.1
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1973,
-     "anomalia": -1.19
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1973,
-     "anomalia": -1.3
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1973,
-     "anomalia": -1.63
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1973,
-     "anomalia": -1.86
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1973,
-     "anomalia": -1.91
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1974,
-     "anomalia": -1.6
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1974,
-     "anomalia": -1.28
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1974,
-     "anomalia": -0.97
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1974,
-     "anomalia": -0.84
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1974,
-     "anomalia": -0.57
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1974,
-     "anomalia": -0.5
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1974,
-     "anomalia": -0.27
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1974,
-     "anomalia": -0.21
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1974,
-     "anomalia": -0.24
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1974,
-     "anomalia": -0.45
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1974,
-     "anomalia": -0.59
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1974,
-     "anomalia": -0.35
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1975,
-     "anomalia": -0.12
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1975,
-     "anomalia": -0.13
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1975,
-     "anomalia": -0.29
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1975,
-     "anomalia": -0.42
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1975,
-     "anomalia": -0.61
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1975,
-     "anomalia": -0.73
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1975,
-     "anomalia": -0.87
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1975,
-     "anomalia": -0.88
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1975,
-     "anomalia": -0.98
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1975,
-     "anomalia": -0.95
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1975,
-     "anomalia": -1.02
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1975,
-     "anomalia": -1.11
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1976,
-     "anomalia": -1.0
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1976,
-     "anomalia": -0.65
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1976,
-     "anomalia": -0.26
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1976,
-     "anomalia": -0.14
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1976,
-     "anomalia": 0.01
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1976,
-     "anomalia": 0.27
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1976,
-     "anomalia": 0.52
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1976,
-     "anomalia": 0.72
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1976,
-     "anomalia": 0.89
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1976,
-     "anomalia": 1.04
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1976,
-     "anomalia": 1.05
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1976,
-     "anomalia": 1.08
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1977,
-     "anomalia": 0.96
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1977,
-     "anomalia": 0.89
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1977,
-     "anomalia": 0.46
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1977,
-     "anomalia": 0.32
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1977,
-     "anomalia": 0.25
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1977,
-     "anomalia": 0.51
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1977,
-     "anomalia": 0.48
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1977,
-     "anomalia": 0.48
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1977,
-     "anomalia": 0.62
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1977,
-     "anomalia": 0.89
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1977,
-     "anomalia": 1.1
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1977,
-     "anomalia": 1.05
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1978,
-     "anomalia": 0.96
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1978,
-     "anomalia": 0.71
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1978,
-     "anomalia": 0.26
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1978,
-     "anomalia": -0.07
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1978,
-     "anomalia": -0.33
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1978,
-     "anomalia": -0.25
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1978,
-     "anomalia": -0.32
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1978,
-     "anomalia": -0.27
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1978,
-     "anomalia": -0.27
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1978,
-     "anomalia": -0.08
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1978,
-     "anomalia": 0.15
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1978,
-     "anomalia": 0.27
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1979,
-     "anomalia": 0.35
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1979,
-     "anomalia": 0.3
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1979,
-     "anomalia": 0.3
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1979,
-     "anomalia": 0.23
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1979,
-     "anomalia": 0.13
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1979,
-     "anomalia": 0.03
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1979,
-     "anomalia": 0.04
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1979,
-     "anomalia": 0.26
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1979,
-     "anomalia": 0.41
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1979,
-     "anomalia": 0.52
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1979,
-     "anomalia": 0.52
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1979,
-     "anomalia": 0.64
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1980,
-     "anomalia": 0.65
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1980,
-     "anomalia": 0.45
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1980,
-     "anomalia": 0.25
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1980,
-     "anomalia": 0.14
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1980,
-     "anomalia": 0.27
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1980,
-     "anomalia": 0.28
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1980,
-     "anomalia": 0.14
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1980,
-     "anomalia": -0.1
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1980,
-     "anomalia": -0.18
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1980,
-     "anomalia": -0.06
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1980,
-     "anomalia": 0.14
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1980,
-     "anomalia": 0.09
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1981,
-     "anomalia": -0.03
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1981,
-     "anomalia": -0.18
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1981,
-     "anomalia": -0.28
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1981,
-     "anomalia": -0.24
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1981,
-     "anomalia": -0.3
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1981,
-     "anomalia": -0.26
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1981,
-     "anomalia": -0.23
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1981,
-     "anomalia": -0.16
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1981,
-     "anomalia": -0.02
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1981,
-     "anomalia": -0.17
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1981,
-     "anomalia": -0.21
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1981,
-     "anomalia": -0.08
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1982,
-     "anomalia": 0.11
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1982,
-     "anomalia": 0.22
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1982,
-     "anomalia": 0.23
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1982,
-     "anomalia": 0.46
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1982,
-     "anomalia": 0.74
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1982,
-     "anomalia": 0.84
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1982,
-     "anomalia": 0.89
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1982,
-     "anomalia": 1.14
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1982,
-     "anomalia": 1.64
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1982,
-     "anomalia": 2.03
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1982,
-     "anomalia": 2.24
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1982,
-     "anomalia": 2.36
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1983,
-     "anomalia": 2.4
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1983,
-     "anomalia": 2.15
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1983,
-     "anomalia": 1.67
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1983,
-     "anomalia": 1.3
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1983,
-     "anomalia": 0.87
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1983,
-     "anomalia": 0.47
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1983,
-     "anomalia": 0.03
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1983,
-     "anomalia": -0.23
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1983,
-     "anomalia": -0.59
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1983,
-     "anomalia": -0.9
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1983,
-     "anomalia": -1.1
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1983,
-     "anomalia": -0.96
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1984,
-     "anomalia": -0.63
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1984,
-     "anomalia": -0.52
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1984,
-     "anomalia": -0.45
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1984,
-     "anomalia": -0.59
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1984,
-     "anomalia": -0.62
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1984,
-     "anomalia": -0.51
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1984,
-     "anomalia": -0.32
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1984,
-     "anomalia": -0.17
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1984,
-     "anomalia": -0.28
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1984,
-     "anomalia": -0.61
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1984,
-     "anomalia": -0.88
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1984,
-     "anomalia": -0.93
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1985,
-     "anomalia": -0.83
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1985,
-     "anomalia": -0.68
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1985,
-     "anomalia": -0.75
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1985,
-     "anomalia": -0.76
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1985,
-     "anomalia": -0.77
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1985,
-     "anomalia": -0.55
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1985,
-     "anomalia": -0.33
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1985,
-     "anomalia": -0.2
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1985,
-     "anomalia": -0.16
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1985,
-     "anomalia": -0.18
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1985,
-     "anomalia": -0.14
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1985,
-     "anomalia": -0.21
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1986,
-     "anomalia": -0.26
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1986,
-     "anomalia": -0.27
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1986,
-     "anomalia": -0.19
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1986,
-     "anomalia": -0.14
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1986,
-     "anomalia": -0.11
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1986,
-     "anomalia": -0.01
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1986,
-     "anomalia": 0.26
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1986,
-     "anomalia": 0.57
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1986,
-     "anomalia": 0.79
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1986,
-     "anomalia": 1.0
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1986,
-     "anomalia": 1.22
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1986,
-     "anomalia": 1.42
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1987,
-     "anomalia": 1.46
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1987,
-     "anomalia": 1.35
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1987,
-     "anomalia": 1.14
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1987,
-     "anomalia": 0.93
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1987,
-     "anomalia": 0.85
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1987,
-     "anomalia": 0.94
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1987,
-     "anomalia": 1.11
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1987,
-     "anomalia": 1.3
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1987,
-     "anomalia": 1.34
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1987,
-     "anomalia": 1.2
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1987,
-     "anomalia": 0.98
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1987,
-     "anomalia": 0.8
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1988,
-     "anomalia": 0.45
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1988,
-     "anomalia": 0.11
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1988,
-     "anomalia": -0.4
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1988,
-     "anomalia": -0.91
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1988,
-     "anomalia": -1.49
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1988,
-     "anomalia": -1.74
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1988,
-     "anomalia": -1.64
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1988,
-     "anomalia": -1.36
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1988,
-     "anomalia": -1.44
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1988,
-     "anomalia": -1.71
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1988,
-     "anomalia": -1.95
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1988,
-     "anomalia": -1.94
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1989,
-     "anomalia": -1.64
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1989,
-     "anomalia": -1.37
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1989,
-     "anomalia": -1.11
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1989,
-     "anomalia": -0.89
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1989,
-     "anomalia": -0.65
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1989,
-     "anomalia": -0.43
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1989,
-     "anomalia": -0.41
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1989,
-     "anomalia": -0.38
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1989,
-     "anomalia": -0.31
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1989,
-     "anomalia": -0.23
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1989,
-     "anomalia": -0.08
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1989,
-     "anomalia": 0.06
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1990,
-     "anomalia": 0.32
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1990,
-     "anomalia": 0.3
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1990,
-     "anomalia": 0.32
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1990,
-     "anomalia": 0.26
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1990,
-     "anomalia": 0.19
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1990,
-     "anomalia": 0.2
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1990,
-     "anomalia": 0.21
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1990,
-     "anomalia": 0.33
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1990,
-     "anomalia": 0.33
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1990,
-     "anomalia": 0.27
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1990,
-     "anomalia": 0.3
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1990,
-     "anomalia": 0.43
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1991,
-     "anomalia": 0.57
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1991,
-     "anomalia": 0.53
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1991,
-     "anomalia": 0.42
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1991,
-     "anomalia": 0.42
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1991,
-     "anomalia": 0.56
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1991,
-     "anomalia": 0.7
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1991,
-     "anomalia": 0.86
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1991,
-     "anomalia": 0.83
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1991,
-     "anomalia": 1.01
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1991,
-     "anomalia": 1.2
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1991,
-     "anomalia": 1.66
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1991,
-     "anomalia": 1.97
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1992,
-     "anomalia": 2.12
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1992,
-     "anomalia": 2.08
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1992,
-     "anomalia": 1.94
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1992,
-     "anomalia": 1.76
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1992,
-     "anomalia": 1.4
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1992,
-     "anomalia": 0.93
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1992,
-     "anomalia": 0.52
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1992,
-     "anomalia": 0.3
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1992,
-     "anomalia": 0.13
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1992,
-     "anomalia": 0.1
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1992,
-     "anomalia": 0.12
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1992,
-     "anomalia": 0.35
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1993,
-     "anomalia": 0.55
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1993,
-     "anomalia": 0.7
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1993,
-     "anomalia": 0.86
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1993,
-     "anomalia": 1.06
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1993,
-     "anomalia": 1.0
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1993,
-     "anomalia": 0.77
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1993,
-     "anomalia": 0.45
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1993,
-     "anomalia": 0.46
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1993,
-     "anomalia": 0.48
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1993,
-     "anomalia": 0.46
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1993,
-     "anomalia": 0.44
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1993,
-     "anomalia": 0.42
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1994,
-     "anomalia": 0.33
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1994,
-     "anomalia": 0.24
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1994,
-     "anomalia": 0.23
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1994,
-     "anomalia": 0.32
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1994,
-     "anomalia": 0.4
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1994,
-     "anomalia": 0.41
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1994,
-     "anomalia": 0.53
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1994,
-     "anomalia": 0.6
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1994,
-     "anomalia": 0.79
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1994,
-     "anomalia": 0.97
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1994,
-     "anomalia": 1.23
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1994,
-     "anomalia": 1.28
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1995,
-     "anomalia": 1.17
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1995,
-     "anomalia": 0.86
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1995,
-     "anomalia": 0.55
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1995,
-     "anomalia": 0.2
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1995,
-     "anomalia": -0.07
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1995,
-     "anomalia": -0.23
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1995,
-     "anomalia": -0.41
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1995,
-     "anomalia": -0.57
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1995,
-     "anomalia": -0.76
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1995,
-     "anomalia": -0.93
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1995,
-     "anomalia": -1.02
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1995,
-     "anomalia": -0.99
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1996,
-     "anomalia": -0.87
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1996,
-     "anomalia": -0.75
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1996,
-     "anomalia": -0.58
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1996,
-     "anomalia": -0.37
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1996,
-     "anomalia": -0.25
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1996,
-     "anomalia": -0.24
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1996,
-     "anomalia": -0.2
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1996,
-     "anomalia": -0.2
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1996,
-     "anomalia": -0.2
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1996,
-     "anomalia": -0.25
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1996,
-     "anomalia": -0.3
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1996,
-     "anomalia": -0.29
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1997,
-     "anomalia": -0.21
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1997,
-     "anomalia": -0.03
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1997,
-     "anomalia": 0.17
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1997,
-     "anomalia": 0.47
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1997,
-     "anomalia": 0.83
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1997,
-     "anomalia": 1.2
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1997,
-     "anomalia": 1.5
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1997,
-     "anomalia": 1.84
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1997,
-     "anomalia": 2.07
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1997,
-     "anomalia": 2.22
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1997,
-     "anomalia": 2.25
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1997,
-     "anomalia": 2.28
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1998,
-     "anomalia": 2.13
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1998,
-     "anomalia": 1.82
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1998,
-     "anomalia": 1.22
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1998,
-     "anomalia": 0.81
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1998,
-     "anomalia": 0.07
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1998,
-     "anomalia": -0.46
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1998,
-     "anomalia": -1.05
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1998,
-     "anomalia": -1.14
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1998,
-     "anomalia": -1.24
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1998,
-     "anomalia": -1.33
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1998,
-     "anomalia": -1.51
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1998,
-     "anomalia": -1.61
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 1999,
-     "anomalia": -1.56
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 1999,
-     "anomalia": -1.28
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 1999,
-     "anomalia": -0.99
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 1999,
-     "anomalia": -0.88
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 1999,
-     "anomalia": -0.81
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 1999,
-     "anomalia": -0.82
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 1999,
-     "anomalia": -0.83
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 1999,
-     "anomalia": -0.86
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 1999,
-     "anomalia": -0.87
-    },
-    {
-     "trimestre": "SON",
-     "ano": 1999,
-     "anomalia": -1.06
-    },
-    {
-     "trimestre": "OND",
-     "ano": 1999,
-     "anomalia": -1.33
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 1999,
-     "anomalia": -1.56
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2000,
-     "anomalia": -1.5
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2000,
-     "anomalia": -1.31
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2000,
-     "anomalia": -1.06
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2000,
-     "anomalia": -0.88
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2000,
-     "anomalia": -0.68
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2000,
-     "anomalia": -0.54
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2000,
-     "anomalia": -0.35
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2000,
-     "anomalia": -0.29
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2000,
-     "anomalia": -0.36
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2000,
-     "anomalia": -0.55
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2000,
-     "anomalia": -0.79
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2000,
-     "anomalia": -0.82
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2001,
-     "anomalia": -0.79
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2001,
-     "anomalia": -0.62
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2001,
-     "anomalia": -0.55
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2001,
-     "anomalia": -0.41
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2001,
-     "anomalia": -0.28
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2001,
-     "anomalia": -0.08
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2001,
-     "anomalia": 0.01
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2001,
-     "anomalia": -0.02
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2001,
-     "anomalia": -0.05
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2001,
-     "anomalia": -0.18
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2001,
-     "anomalia": -0.27
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2001,
-     "anomalia": -0.32
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2002,
-     "anomalia": -0.16
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2002,
-     "anomalia": 0.01
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2002,
-     "anomalia": 0.03
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2002,
-     "anomalia": 0.05
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2002,
-     "anomalia": 0.22
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2002,
-     "anomalia": 0.44
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2002,
-     "anomalia": 0.64
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2002,
-     "anomalia": 0.8
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2002,
-     "anomalia": 0.97
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2002,
-     "anomalia": 1.18
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2002,
-     "anomalia": 1.33
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2002,
-     "anomalia": 1.13
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2003,
-     "anomalia": 0.85
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2003,
-     "anomalia": 0.47
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2003,
-     "anomalia": 0.23
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2003,
-     "anomalia": -0.19
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2003,
-     "anomalia": -0.34
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2003,
-     "anomalia": -0.24
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2003,
-     "anomalia": 0.04
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2003,
-     "anomalia": 0.09
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2003,
-     "anomalia": 0.17
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2003,
-     "anomalia": 0.17
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2003,
-     "anomalia": 0.25
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2003,
-     "anomalia": 0.22
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2004,
-     "anomalia": 0.23
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2004,
-     "anomalia": 0.12
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2004,
-     "anomalia": 0.07
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2004,
-     "anomalia": 0.09
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2004,
-     "anomalia": 0.18
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2004,
-     "anomalia": 0.36
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2004,
-     "anomalia": 0.54
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2004,
-     "anomalia": 0.69
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2004,
-     "anomalia": 0.71
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2004,
-     "anomalia": 0.7
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2004,
-     "anomalia": 0.7
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2004,
-     "anomalia": 0.69
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2005,
-     "anomalia": 0.54
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2005,
-     "anomalia": 0.4
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2005,
-     "anomalia": 0.26
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2005,
-     "anomalia": 0.25
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2005,
-     "anomalia": 0.2
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2005,
-     "anomalia": 0.05
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2005,
-     "anomalia": -0.06
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2005,
-     "anomalia": -0.11
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2005,
-     "anomalia": -0.04
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2005,
-     "anomalia": -0.18
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2005,
-     "anomalia": -0.5
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2005,
-     "anomalia": -0.81
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2006,
-     "anomalia": -0.9
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2006,
-     "anomalia": -0.87
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2006,
-     "anomalia": -0.69
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2006,
-     "anomalia": -0.49
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2006,
-     "anomalia": -0.19
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2006,
-     "anomalia": -0.05
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2006,
-     "anomalia": 0.15
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2006,
-     "anomalia": 0.36
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2006,
-     "anomalia": 0.57
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2006,
-     "anomalia": 0.73
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2006,
-     "anomalia": 0.91
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2006,
-     "anomalia": 0.89
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2007,
-     "anomalia": 0.6
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2007,
-     "anomalia": 0.16
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2007,
-     "anomalia": -0.15
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2007,
-     "anomalia": -0.33
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2007,
-     "anomalia": -0.36
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2007,
-     "anomalia": -0.44
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2007,
-     "anomalia": -0.5
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2007,
-     "anomalia": -0.79
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2007,
-     "anomalia": -1.04
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2007,
-     "anomalia": -1.33
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2007,
-     "anomalia": -1.49
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2007,
-     "anomalia": -1.65
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2008,
-     "anomalia": -1.73
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2008,
-     "anomalia": -1.62
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2008,
-     "anomalia": -1.39
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2008,
-     "anomalia": -1.04
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2008,
-     "anomalia": -0.8
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2008,
-     "anomalia": -0.46
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2008,
-     "anomalia": -0.24
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2008,
-     "anomalia": -0.17
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2008,
-     "anomalia": -0.26
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2008,
-     "anomalia": -0.38
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2008,
-     "anomalia": -0.6
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2008,
-     "anomalia": -0.86
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2009,
-     "anomalia": -0.96
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2009,
-     "anomalia": -0.92
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2009,
-     "anomalia": -0.7
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2009,
-     "anomalia": -0.43
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2009,
-     "anomalia": -0.05
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2009,
-     "anomalia": 0.24
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2009,
-     "anomalia": 0.35
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2009,
-     "anomalia": 0.42
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2009,
-     "anomalia": 0.53
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2009,
-     "anomalia": 0.86
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2009,
-     "anomalia": 1.29
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2009,
-     "anomalia": 1.5
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2010,
-     "anomalia": 1.44
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2010,
-     "anomalia": 1.11
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2010,
-     "anomalia": 0.69
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2010,
-     "anomalia": 0.1
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2010,
-     "anomalia": -0.5
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2010,
-     "anomalia": -0.97
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2010,
-     "anomalia": -1.21
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2010,
-     "anomalia": -1.39
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2010,
-     "anomalia": -1.54
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2010,
-     "anomalia": -1.61
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2010,
-     "anomalia": -1.63
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2010,
-     "anomalia": -1.55
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2011,
-     "anomalia": -1.42
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2011,
-     "anomalia": -1.21
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2011,
-     "anomalia": -0.97
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2011,
-     "anomalia": -0.76
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2011,
-     "anomalia": -0.52
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2011,
-     "anomalia": -0.29
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2011,
-     "anomalia": -0.29
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2011,
-     "anomalia": -0.41
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2011,
-     "anomalia": -0.7
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2011,
-     "anomalia": -0.91
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2011,
-     "anomalia": -1.02
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2011,
-     "anomalia": -0.96
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2012,
-     "anomalia": -0.77
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2012,
-     "anomalia": -0.6
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2012,
-     "anomalia": -0.5
-    },
-    {
-     "trimestre": "MAM",
-     "ano": 2012,
-     "anomalia": -0.42
-    },
-    {
-     "trimestre": "AMJ",
-     "ano": 2012,
-     "anomalia": -0.26
-    },
-    {
-     "trimestre": "MJJ",
-     "ano": 2012,
-     "anomalia": 0.01
-    },
-    {
-     "trimestre": "JJA",
-     "ano": 2012,
-     "anomalia": 0.33
-    },
-    {
-     "trimestre": "JAS",
-     "ano": 2012,
-     "anomalia": 0.43
-    },
-    {
-     "trimestre": "ASO",
-     "ano": 2012,
-     "anomalia": 0.37
-    },
-    {
-     "trimestre": "SON",
-     "ano": 2012,
-     "anomalia": 0.21
-    },
-    {
-     "trimestre": "OND",
-     "ano": 2012,
-     "anomalia": -0.03
-    },
-    {
-     "trimestre": "NDJ",
-     "ano": 2012,
-     "anomalia": -0.27
-    },
-    {
-     "trimestre": "DJF",
-     "ano": 2013,
-     "anomalia": -0.55
-    },
-    {
-     "trimestre": "JFM",
-     "ano": 2013,
-     "anomalia": -0.57
-    },
-    {
-     "trimestre": "FMA",
-     "ano": 2013,
-     "anomalia": -0.49
-    },
-    {
      "trimestre": "MAM",
      "ano": 2013,
      "anomalia": -0.44
@@ -5634,46 +1839,6 @@
    "serie": [
     {
      "ano": 2022,
-     "mes": 1,
-     "anomalia": -0.64
-    },
-    {
-     "ano": 2022,
-     "mes": 2,
-     "anomalia": -0.66
-    },
-    {
-     "ano": 2022,
-     "mes": 3,
-     "anomalia": -0.73
-    },
-    {
-     "ano": 2022,
-     "mes": 4,
-     "anomalia": -0.9
-    },
-    {
-     "ano": 2022,
-     "mes": 5,
-     "anomalia": -0.93
-    },
-    {
-     "ano": 2022,
-     "mes": 6,
-     "anomalia": -0.66
-    },
-    {
-     "ano": 2022,
-     "mes": 7,
-     "anomalia": -0.59
-    },
-    {
-     "ano": 2022,
-     "mes": 8,
-     "anomalia": -0.82
-    },
-    {
-     "ano": 2022,
      "mes": 9,
      "anomalia": -0.91
     },
@@ -5956,7 +2121,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -5964,13 +2129,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 40,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -5978,7 +2143,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "AL": {
@@ -6018,7 +2183,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -6026,13 +2191,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 13,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6040,7 +2205,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "AM": {
@@ -6081,7 +2246,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -6089,13 +2254,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 1511,
+    "focos_24h": 287,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6103,7 +2268,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "AP": {
@@ -6143,7 +2308,7 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -6151,13 +2316,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 272,
+    "focos_24h": 70,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6165,7 +2330,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "BA": {
@@ -6206,26 +2371,25 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 1936,
+    "focos_24h": 362,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6233,7 +2397,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "CE": {
@@ -6273,25 +2437,21 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 380,
+    "focos_24h": 67,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6299,7 +2459,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "DF": {
@@ -6339,7 +2499,7 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -6347,13 +2507,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6361,7 +2521,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "ES": {
@@ -6399,7 +2559,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -6407,13 +2567,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6421,7 +2581,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "GO": {
@@ -6462,26 +2622,25 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 400,
+    "focos_24h": 408,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6489,7 +2648,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "MA": {
@@ -6530,26 +2689,25 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 2049,
+    "focos_24h": 1141,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6557,7 +2715,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "MG": {
@@ -6597,7 +2755,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6605,17 +2763,17 @@
      "Perigo Potencial": 1
     },
     "exemplos": [
-     "Baixa Umidade"
+     "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 219,
+    "focos_24h": 303,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6623,7 +2781,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "MS": {
@@ -6664,21 +2822,25 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 13,
+    "focos_24h": 16,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6686,7 +2848,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "MT": {
@@ -6726,7 +2888,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6738,13 +2900,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 2791,
+    "focos_24h": 1063,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6752,7 +2914,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "PA": {
@@ -6793,7 +2955,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6805,13 +2967,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 3553,
+    "focos_24h": 2147,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6819,7 +2981,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "PB": {
@@ -6859,25 +3021,21 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 52,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6885,7 +3043,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "PE": {
@@ -6925,25 +3083,21 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 66,
+    "focos_24h": 3,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6951,7 +3105,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "PI": {
@@ -6992,26 +3146,25 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 4183,
+    "focos_24h": 1227,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7019,7 +3172,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "PR": {
@@ -7059,21 +3212,25 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 44,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7081,7 +3238,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "RJ": {
@@ -7119,7 +3276,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -7127,13 +3284,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7141,7 +3298,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "RN": {
@@ -7181,25 +3338,21 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 16,
+    "focos_24h": 13,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7207,7 +3360,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "RO": {
@@ -7248,7 +3401,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -7256,13 +3409,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 209,
+    "focos_24h": 99,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7270,7 +3423,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "RR": {
@@ -7310,7 +3463,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -7318,13 +3471,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 130,
+    "focos_24h": 11,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7332,7 +3485,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "RS": {
@@ -7372,21 +3525,25 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 202,
+    "focos_24h": 12,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7394,7 +3551,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "SC": {
@@ -7434,21 +3591,25 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 193,
+    "focos_24h": 3,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7456,7 +3617,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "SE": {
@@ -7496,7 +3657,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -7504,13 +3665,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7518,7 +3679,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "SP": {
@@ -7558,34 +3719,33 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 35,
+    "focos_24h": 47,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
-    "total": 2,
-    "niveis": {
-     "Cessar": 2
-    },
-    "municipios": [
-     "REGISTRO",
-     "SETE BARRAS"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   },
   "TO": {
@@ -7626,26 +3786,25 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    },
    "fogo": {
-    "focos_24h": 2298,
+    "focos_24h": 1481,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260917.csv",
-    "consultado_em": "17/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260918.csv",
+    "consultado_em": "18/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7653,7 +3812,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "17/09/2026"
+    "consultado_em": "18/09/2026"
    }
   }
  }
