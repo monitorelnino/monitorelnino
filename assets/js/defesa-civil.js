@@ -52,19 +52,6 @@ new Chart(document.getElementById('chartDonut'), {
     scales:{ x:{ min:0, max:27, ticks:{stepSize:9}, title:{display:true, text:'nº de UFs (de 27)'} }, y:{ grid:{display:false} } } }
 });
 
-// ---- 2. Status por região (stacked horizontal) ----
-const regionData = STATUS_ORDER.map(s => DATA.regions.map(r =>
-  DATA.ufs.filter(u=>u.regiao===r && u.status===s).length));
-new Chart(document.getElementById('chartRegion'), {
-  type:'bar',
-  data:{ labels: DATA.regions,
-    datasets: STATUS_ORDER.map((s,i)=>({ label: LABELS[s], data: regionData[i], backgroundColor: PALETTE[s] })) },
-  options:{ indexAxis:'y', maintainAspectRatio:false,
-    plugins:{ legend:{ position:'bottom', labels:{boxWidth:10, padding:8, font:{size:12}} },
-      tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(DATA.ufs.filter(u => u.regiao === ctx.label && u.status === STATUS_ORDER[ctx.datasetIndex]).map(u => u.uf)) } } },
-    scales:{ x:{ stacked:true, grid:{color:MonitorMapas.cor('areia')}, ticks:{stepSize:1} }, y:{ stacked:true, grid:{display:false} } } }
-});
-
 // ---- 3. Financiamento federal por área (R$ reais, calculados a partir de Registro_Federal) ----
 // (gráfico 3 — financiamento federal por área — migrou para financiamento.html, E9)
 
@@ -437,7 +424,7 @@ function creditosAntecipacao(){
   const d = window.__metaAtualizado;
   [['boxVerificacao', ['MARÉ (verificação própria)', 'malha IBGE']], ['boxCoberturaNatureza', ['MARÉ (verificação própria)']],
    ['boxPrioritarios', ['MARÉ', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
-   ['boxDonut', ['MARÉ', 'instrumentos estaduais verificados']], ['boxRegion', ['MARÉ', 'instrumentos estaduais verificados']],
+   ['boxDonut', ['MARÉ', 'instrumentos estaduais verificados']],
    ['boxCapitals', ['MARÉ', '27 capitais verificadas']],
    ].forEach(([id, fontes]) => MonitorMapas.credito(id, {fontes, data: d}));
 }
@@ -447,14 +434,7 @@ function renderResposta(){
   const fF = id => (typeof fonteFigura === 'function' ? fonteFigura : (cid, t) => MonitorMapas.credito(cid, t));
   const N = RESP && RESP.nacional;
   const c18 = (RESP && RESP.frase_c18) || '';
-  if (!N) { MonitorMapas.credito('boxDecRec', {fontes: 'MARÉ', data: null}); return; }
-  // tabela decretado × reconhecido — 16/09/2026: ordem alfabética por UF, não mais por quantidade
-  // de municípios sob decreto (a ordenação por valor revelava posição/comparação entre estados)
-  const tb = document.querySelector('#tblDecRec tbody');
-  tb.innerHTML = Object.keys(RESP.uf).sort().map(uf => { const r = RESP.uf[uf];
-    return '<tr><td><strong>' + uf + '</strong></td><td>' + r.n_municipios + ' de ' + r.total_municipios + '</td><td>' + (100 * r.fracao_municipios).toFixed(1).replace('.', ',') + '%</td><td>' + (100 * r.fracao_populacao).toFixed(1).replace('.', ',') + '%</td><td>' + r.tons.reconhecido + '</td><td>' + r.tons.decretado_sem_reconhecimento + '</td><td>' + esc(r.primeiro_decreto || '—') + '</td></tr>'; }).join('');
-  MonitorMapas.legenda('legDecRec', [{cor: MonitorMapas.PALETA.resposta, rotulo: 'reconhecido pela União (S2iD)'}, {cor: MonitorMapas.PALETA.status.ELAB, rotulo: 'decretado sem reconhecimento'}]);
-  MonitorMapas.credito('boxDecRec', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais'], data: RESP.gerado_em});
+  if (!N) return;
 }
 __load().catch(err => {
   document.body.insertAdjacentHTML('afterbegin',
@@ -475,15 +455,11 @@ function titulosFato(){
   const n = v => Number(v || 0).toLocaleString('pt-BR');
   const titulo = (box, txt) => { const h = document.querySelector('#' + box + ' .figura-titulo'); if (h && txt) h.textContent = txt; };
   const interp = (id, html) => { const el = document.getElementById(id); if (el && html) el.innerHTML = html; };
-  try {
-    const st = (DATA.ufs || []).map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
-    const novo = c(['NOVO']), readVig = c(['READ','VIG']), elabLac = c(['ELAB','LAC']);
-    titulo('boxRegion', `${novo} estados com plano para o ciclo; ${readVig} com plano de todo ano; ${elabLac} sem plano localizado`);
-    // por região: onde se concentram os planos específicos (NOVO)
-    const porReg = {}; (DATA.ufs || []).forEach(u => { if (u.status === 'NOVO') porReg[u.regiao || u.region || '—'] = (porReg[u.regiao || u.region || '—'] || 0) + 1; });
-    const maior = Object.entries(porReg).sort((a, b) => b[1] - a[1])[0];
-    interp('interpAntes', maior ? `Por região: <strong>${esc(maior[0])}</strong> concentra os planos feitos para o ciclo (${maior[1]} de ${novo}).` : `Nenhum estado com plano feito para o ciclo até o corte.`);
-  } catch (e) {}
+  // interp() nunca escapa sozinha — cada chamador precisa envolver texto de dado em esc(...) antes de
+  // interpolar (só um chamador resta abaixo, "interpDepois"; usa esc(N.primeiro_decreto) por isso).
+  // 18/09/2026 (pedido da editoria): o resumo "N estados com plano para o ciclo..." e "Por região: X
+  // concentra..." saiu daqui — mora como contador na home, abaixo do índice MARÉ Legal (mesmo cálculo,
+  // mesma fonte data/estados.json, ver assets/js/index.js).
   // (b) 'declarado × documentado' (boxDeclarado) saiu da página em 15/09/2026 (§59) — bloco removido.
   try {   // (c) verificação: registro federal (todos), diário oficial (varredura), planos municipais localizados
     // 15/09/2026 (correção): a contagem vinha de CONSIST (risco estadual), que não tem n_plano — sempre somava 0. A contagem
@@ -497,7 +473,7 @@ function titulosFato(){
     // resposta para apontar estados específicos, exatamente o tipo de comparação que a editoria veta.
     const N = RESP && RESP.nacional; const S = (RESP_SERIE && RESP_SERIE.semanas) || [];
     const tot = S.reduce((a, x) => a + (x.municipios || 0), 0); const noDefeso = S.filter(x => x.defeso).reduce((a, x) => a + (x.municipios || 0), 0);
-    if (N && S.length) interp('interpDepois', `Primeiro decreto do ciclo em ${N.primeiro_decreto || '—'}; ${n(noDefeso)} de ${n(tot)} decretos até aqui são de dentro do período eleitoral.`);
+    if (N && S.length) interp('interpDepois', `Primeiro decreto do ciclo em ${esc(N.primeiro_decreto || '—')}; ${n(noDefeso)} de ${n(tot)} decretos até aqui são de dentro do período eleitoral.`);
   } catch (e) {}
   try {   // (f) mapa dos decretos — 16/09/2026: título-fato não nomeia mais o estado com a maior fração
     // (revelava posição/comparação entre estados; ver pedido da editoria)

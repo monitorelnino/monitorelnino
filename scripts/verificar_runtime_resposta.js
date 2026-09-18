@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Portão de runtime do contador de resposta (v3.1 §3.3): DOM das barras nos cartões de estado, contador
- * nacional ao lado do medidor com frase C18, dispersão e tabela em defesa-civil.html, navegação sem a galeria. */
+ * nacional ao lado do medidor com frase C18, cobertura de 27 UFs em defesa-civil.html, navegação sem a galeria. */
 const { JSDOM } = require("jsdom"); const { inlinePageJs } = require("./_inline_js"); const fs = require("fs"), path = require("path"); const raiz = path.join(__dirname, "..");
 const falhas = [];
 function render(pagina) {
@@ -32,9 +32,14 @@ function render(pagina) {
   if (/nota\s*[-−]\s*decret|contradi[çc][ãa]o/i.test(det)) falhas.push("cartão combina antecipação e resposta (C17)");
   if (d.querySelector('a[href="mapas-e-graficos.html"]')) falhas.push("navegação ainda aponta para a galeria");
   const dc = render("defesa-civil.html"); await new Promise(r => setTimeout(r, 2500)); const d2 = dc.window.document;
-  // 15/09/2026: a dispersão antecipação × resposta (C20) saiu da página (pedido da editoria) — C20 revogada, ver METODOLOGIA §32.4
-  if (d2.querySelectorAll("#tblDecRec tbody tr").length !== 27) falhas.push("defesa-civil: tabela decretado × reconhecido sem 27 UFs");
+  // 18/09/2026 (pedido da editoria): a tabela "decretado × reconhecido" saiu da página — o teste de
+  // cobertura das 27 UFs passa a checar o dado carregado (RESP.uf) diretamente, não mais o elemento.
+  // 18/09/2026 (pedido da editoria): a tabela "decretado × reconhecido" saiu da página — o teste de
+  // cobertura das 27 UFs passa a ler o dado direto do arquivo (RESP é `let` de módulo, não vira
+  // propriedade enumerável de window — ler o JSON de novo é mais simples e robusto que window.eval).
+  const respArquivo = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "por_uf.json"), "utf-8"));
+  if (Object.keys(respArquivo.uf || {}).length !== 27) falhas.push("defesa-civil: RESP.uf sem 27 UFs");
   if (!/transferências voluntárias ficam suspensas/.test(d2.getElementById("resposta").textContent)) falhas.push("defesa-civil: frase C18 (defeso) ausente na seção do contador");
   if (falhas.length) { console.log("✗ RUNTIME (resposta):"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
-  console.log("✓ RUNTIME (resposta) OK — contador nacional, barras nos 27 cartões, cartão do estado, dispersão, tabela e frase C18.");
+  console.log("✓ RUNTIME (resposta) OK — contador nacional, barras nos 27 cartões, cartão do estado, cobertura de 27 UFs e frase C18.");
 })();

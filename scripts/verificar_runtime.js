@@ -93,12 +93,22 @@ setTimeout(() => {
     const alvo = parseFloat(q("gaugeFill").dataset.alvo); const num = (q("gaugeNum").textContent || "").replace(",", ".");
     return Math.abs(alvo - media) < 0.05 && q("gaugeFill").style.width === alvo + "%";
   })());
+  // 18/09/2026 (pedido da editoria): "N estados com plano para o ciclo" e "Por região: X concentra..."
+  // saíram de defesa-civil.html (boxRegion/interpAntes) — moram aqui, abaixo dos dois medidores
+  // (#resumoPreparacao), mesmo cálculo, mesma fonte (data/estados.json).
+  teste("resumo de preparação: três contagens somam 27 e a região mais frequente aparece", (() => {
+    const DATA = JSON.parse(fs.readFileSync(path.join(raiz, "data", "estados.json"), "utf-8"));
+    const st = DATA.ufs.map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
+    const novo = c(["NOVO"]), readVig = c(["READ", "VIG"]), elabLac = c(["ELAB", "LAC"]);
+    const txt = q("resumoPreparacao").textContent;
+    return new RegExp(`^${novo} estados com plano para o ciclo; ${readVig} com plano de todo ano; ${elabLac} sem plano localizado`).test(txt)
+      && (novo + readVig + elabLac) === 27 && /Por região:|Nenhum estado/.test(txt);
+  })());
   // 16/09/2026 (handover §2.1): recalcular_mare.py reescreve gaugeNum e data-alvo desde 03/09 — este
   // teste garante que o aria-label (paridade de acessibilidade) nunca fica para trás dos dois.
   teste("medidor do herói: aria-label com o mesmo número de data-alvo (paridade de acessibilidade)", (() => {
     const alvo = q("gaugeFill").dataset.alvo; const alvoFmt = parseFloat(alvo).toFixed(1).replace(".", ",");
-    const trilho = q("gaugeFill").closest(".gauge-track");
-    const rotulo = trilho && trilho.getAttribute("aria-label");
+    const trilho = q("gaugeFill").closest(".gauge-track");    const rotulo = trilho && trilho.getAttribute("aria-label");
     return !!rotulo && rotulo.includes(`em ${alvoFmt} de 100`);
   })());
   teste("linguagem: município não verificado diz 'Ainda não verificamos'", cardNV.includes("Ainda não verificamos"));
