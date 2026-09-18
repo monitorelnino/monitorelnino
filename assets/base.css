@@ -159,6 +159,24 @@ details.acc .acc-summary::after{content:"+"; font-family:var(--font-corpo); font
 details.acc[open] .acc-summary::after{content:"–";}
 details.acc .acc-summary:hover{color:var(--teal);}
 details.acc > .panel > h2:first-of-type{display:none;}   /* já mostrado no <summary> */
+/* 17/09/2026 (pedido da editoria): os três guias de cenário ("Como se proteger") ficavam idênticos aos
+   demais acordeões do site (linha fina, "+", sem cor) no estado fechado — que é o que a maioria vê
+   primeiro, antes de abrir. Reaproveita a mesma cor de risco que a ficha já usa quando aberta (não
+   inventa paleta nova), com ícone, para o resumo já comunicar do que se trata antes do clique.
+   Sobrescreve details.acc genérico (usado em "Ver em tabela", contatos etc.), que continua igual. */
+details.acc.r-chuva, details.acc.r-seca, details.acc.r-fogo{border-top:none; margin:0 0 var(--sp-3);}
+details.acc.r-chuva:last-of-type, details.acc.r-seca:last-of-type, details.acc.r-fogo:last-of-type{border-bottom:none;}
+details.acc.r-chuva > .acc-summary, details.acc.r-seca > .acc-summary, details.acc.r-fogo > .acc-summary{gap:var(--sp-3); padding:var(--sp-4); background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--mineral); border-radius:var(--radius); box-shadow:var(--sombra); font-size:var(--fs-h4); line-height:var(--lh-h4);}
+details.acc.r-chuva[open] > .acc-summary, details.acc.r-seca[open] > .acc-summary, details.acc.r-fogo[open] > .acc-summary{border-radius:var(--radius) var(--radius) 0 0; box-shadow:none; margin-bottom:0;}
+details.acc.r-chuva > .acc-summary{border-left-color:var(--chuva);}
+details.acc.r-seca > .acc-summary{border-left-color:var(--seca);}
+details.acc.r-fogo > .acc-summary{border-left-color:var(--fogo);}
+details.acc.r-chuva .ficha, details.acc.r-seca .ficha, details.acc.r-fogo .ficha{border-radius:0 0 var(--radius) var(--radius); border-top:none; margin-top:0;}
+.acc-icone{flex:none; display:flex; color:inherit;}
+.acc-titulo{display:flex; align-items:center; gap:var(--sp-3); text-align:left;}
+details.acc.r-chuva .acc-icone{color:var(--chuva);}
+details.acc.r-seca .acc-icone{color:var(--seca);}
+details.acc.r-fogo .acc-icone{color:var(--fogo);}
 
 /* ===== 6. Figura científica (componente único) =====
    Estrutura obrigatória, nesta ordem:
