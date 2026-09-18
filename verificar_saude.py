@@ -38,6 +38,19 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
     # (c) vocabulário
     for uf, u in suf.get("uf", {}).items():
         if u.get("status") not in VOCAB: erros.append(f"(c) status fora do vocabulário em {uf}: {u.get('status')}")
+    # (u) 18/09/2026 (handover ponto cego saúde, §3.2): instrumentos[] é a fonte de verdade — cada UF
+    # tem ao menos um item, e o status/doc do topo bate com o melhor item (nunca diverge em silêncio).
+    from migrar_saude_instrumentos import melhor_instrumento
+    for uf, u in suf.get("uf", {}).items():
+        instrumentos = u.get("instrumentos")
+        if not instrumentos:
+            erros.append(f"(u) {uf}: sem 'instrumentos' ou lista vazia")
+            continue
+        melhor = melhor_instrumento(instrumentos)
+        if u.get("status") != melhor.get("status"):
+            erros.append(f"(u) {uf}: status do topo ({u.get('status')}) diverge do melhor instrumento ({melhor.get('status')})")
+        if u.get("doc") != melhor.get("doc"):
+            erros.append(f"(u) {uf}: doc do topo diverge do melhor instrumento")
     # (m) Monitor Saúde v0.1 (§31): número só para UF verificada; prontidão = média dos dois sub-elementos; motor não o lê
     try:
         _ms = json.load(open(RAIZ / "data" / "monitor_saude.json", encoding="utf-8"))

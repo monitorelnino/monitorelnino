@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §102 · saude_uf.json migrado para instrumentos[]; LAI da Bahia enviada · 18/09/2026
+
+Handover da editoria, §3.2 e conclusão do §4.
+
+**LAI da Bahia enviada.** Localizei o canal oficial (Ouvidoria da Sesab, confirmado em duas fontes independentes do governo do estado) e enviei o pedido específico sobre o "Plano de Ações de Saúde para o Enfrentamento ao El Niño 2026/2027" (R$ 30,5 mi), pedindo também a data de envio ao Ministério da Saúde. Entregue sem bounce; registrado no repositório privado.
+
+**Esquema de saúde migrado para `instrumentos: []`**, mesmo padrão de `data/estados.json` (defesa civil), pedido no handover. Achado ao investigar antes de escrever: defesa civil não tem, de fato, uma função "escolher o melhor entre N instrumentos" para reaproveitar — o campo de topo de cada UF ali é um espelho fixo de um tipo específico (`instrumento_operacional`), confirmado nas 27 UFs; não existia nada para reusar. Para saúde, com três tipos formando uma escala de força real (documento específico do ciclo > plano recorrente de arboviroses > só uma estrutura de coordenação), a lógica de escolha é nova: `melhor_instrumento()`, em `migrar_saude_instrumentos.py`.
+
+**Migração testada e provada sem regressão**: o autoteste do script de migração roda a migração contra o dado real antes de gravar, e recusa gravar se qualquer valor de topo mudaria — passou. Depois de aplicada, o gerador do índice (`gerar_monitor_saude.py`) foi atualizado para calcular os campos de topo a partir de `instrumentos[]` a cada rodada, em vez de lê-los direto (assim uma futura LAI ou pista de imprensa aplicada só na lista já vale no índice na rodada seguinte, sem precisar reescrever o topo à mão). Comparação campo a campo entre a saída de antes e de depois da mudança inteira: nenhuma diferença.
+
+**Portão novo** em `verificar_saude.py` (item "u"): cada UF precisa de ao menos um item em `instrumentos`, e o status/doc do topo não pode divergir do melhor item em silêncio. Teste negativo executado (status do topo divergindo do instrumento) e revertido com segurança.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente na página de saúde, sem erro de JavaScript. Restante do handover (monitor de imprensa dedicado, descoberta automática via wp-json, resserragem manual das 26 UFs restantes, gatilho por marco federal) segue em rodadas futuras, na ordem que a editoria definiu.
+
 ## §101 · Ponto cego do dicionário de busca em saúde fechado (achado via handover, caso Bahia) · 18/09/2026
 
 Handover da editoria: uma matéria de imprensa (18/09) revelou que o "Plano de Ações de Saúde para o Enfrentamento ao El Niño 2026/2027" da Sesab (R$ 30,5 mi, enviado ao MS em agosto, confirmado em oito veículos independentes) não estava em `data/saude_uf.json` — a Bahia seguia classificada pelo plano recorrente de arboviroses (2025), verificado em 05/09/2026, sem o documento mais específico e mais forte do ciclo.
