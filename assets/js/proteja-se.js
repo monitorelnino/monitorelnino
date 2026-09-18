@@ -20,15 +20,56 @@ function gerarPDFGuia(){
   doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(85,100,91);
   doc.text('Guia de proteção da população · El Niño 2026/2027 · Gerado em ' + new Date().toLocaleDateString('pt-BR'), M, 143);
   doc.setDrawColor(198,180,150); doc.line(M, 152, W-M, 152);
-  y = 176;
-  document.querySelectorAll('.wrap h2, .wrap h3, .wrap p, .wrap li').forEach(el => {
-    if (el.closest('nav') || el.closest('.mast') || el.closest('footer') || el.closest('.export-box') || el.closest('.mainnav')) return;
+  y = 172;
+  // 17/09/2026 (pedido da editoria, "isso é fundamental"): o PDF nunca incluía os números de emergência —
+  // o walk abaixo só lê h2/h3/p/li, e a barra de emergência é feita de <a><b><span><small>, que não bate
+  // com nenhum desses. Desenhados à mão, com as mesmas cores dos cartões na página (mesmo sistema de
+  // acento: Bombeiros em terracota, SAMU em âmbar, Defesa Civil em azul, PM em preto, SMS em verde).
+  const EMERG = [
+    {num:'193', nome:'BOMBEIROS', cor:[124,74,52]},
+    {num:'192', nome:'SAMU', cor:[201,129,75]},
+    {num:'199', nome:'DEFESA CIVIL', cor:[94,124,147]},
+    {num:'190', nome:'POL. MILITAR', cor:[14,15,13]},
+    {num:'40199', nome:'SMS DE ALERTA', cor:[46,61,48]},
+  ];
+  doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(85,100,91);
+  doc.text('EM UMA EMERGÊNCIA, LIGUE: GRATUITO, 24 HORAS', M, y); y += 12;
+  const gapCx = 7, boxW = (W - 2*M - 4*gapCx) / 5, boxH = 46;
+  let bx = M;
+  EMERG.forEach(e => {
+    doc.setFillColor(e.cor[0], e.cor[1], e.cor[2]);
+    doc.roundedRect(bx, y, boxW, boxH, 5, 5, 'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(15); doc.setTextColor(255,255,255);
+    doc.text(e.num, bx + boxW/2, y + 21, {align:'center'});
+    doc.setFont('helvetica','bold'); doc.setFontSize(6.3); doc.setTextColor(255,255,255);
+    doc.text(e.nome, bx + boxW/2, y + 34, {align:'center'});
+    bx += boxW + gapCx;
+  });
+  y += boxH + 22;
+  // 17/09/2026 (pedido da editoria): o PDF puxava TUDO em .wrap (h2/h3/p/li) — incluía os 27 cartões de
+  // contato da Defesa Civil, "Alertas de saúde" e "Direitos", que não são nem telefone de emergência nem
+  // dica de proteção. Escopo restrito ao título "Como se proteger" + só o que está dentro de .ficha (as
+  // três fichas de orientação); o resto da página (contatos, alertas, direitos) fica de fora do PDF.
+  const introComoSeProteger = document.querySelector('#como-se-proteger');
+  if (introComoSeProteger) {
+    doc.setFont('helvetica','bold'); doc.setFontSize(13.5); doc.setTextColor(21,32,26);
+    doc.text(introComoSeProteger.textContent.trim(), M, y); y += 17;
+    const hintCsp = document.querySelector('#como-se-proteger + p.hint');
+    if (hintCsp) { doc.setFont('helvetica','normal'); doc.setFontSize(10.5); doc.setTextColor(40,52,44);
+      const linhasHint = doc.splitTextToSize(hintCsp.textContent.replace(/\s+/g,' ').trim(), W - 2*M);
+      doc.text(linhasHint, M, y); y += linhasHint.length * 14.5 + 8; }
+  }
+  const CORES_RISCO = {'r-chuva':[94,124,147], 'r-seca':[201,129,75], 'r-fogo':[124,74,52]};
+  document.querySelectorAll('.wrap .ficha h2, .wrap .ficha h3, .wrap .ficha p, .wrap .ficha li').forEach(el => {
     const txt = el.textContent.replace(/\s+/g,' ').trim();
     if (!txt) return;
     const nivel = el.tagName === 'H2' ? 2 : el.tagName === 'H3' ? 3 : 0;
+    const ficha = el.closest('.ficha');
+    const corRisco = ficha && Object.keys(CORES_RISCO).find(c => ficha.classList.contains(c));
     doc.setFont('helvetica', nivel ? 'bold' : 'normal');
     doc.setFontSize(nivel === 2 ? 13.5 : nivel === 3 ? 11.5 : 10.5);
-    if (nivel === 2) doc.setTextColor(166,95,63); else if (nivel === 3) doc.setTextColor(53,86,107); else doc.setTextColor(40,52,44);
+    if (nivel === 2) doc.setTextColor(...(corRisco ? CORES_RISCO[corRisco] : [166,95,63]));
+    else if (nivel === 3) doc.setTextColor(53,86,107); else doc.setTextColor(40,52,44);
     const linhas = doc.splitTextToSize((el.tagName === 'LI' ? '•  ' : '') + txt, W - 2*M);
     const alt = linhas.length * (nivel ? 17 : 14.5) + (nivel ? 10 : 3);
     if (y + alt > H - 60) nova();

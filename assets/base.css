@@ -284,6 +284,15 @@ table th, .mun-table thead th{font-family:var(--font-dado); font-size:var(--fs-c
 button, input[type=submit]{min-height:var(--alvo-toque);}
 .btn, .btn-pdf{display:inline-block; padding:0 var(--sp-4); min-height:var(--alvo-toque); line-height:var(--alvo-toque); font-family:var(--font-corpo); font-size:var(--fs-small); font-weight:var(--peso-semibold); background:var(--green); color:var(--branco); border:none; border-radius:var(--radius); cursor:pointer; text-decoration:none; margin-top:var(--sp-3);}
 .btn:hover, .btn-pdf:hover{background:var(--ink); color:var(--branco);}
+/* 17/09/2026 (pedido da editoria, "isso é fundamental"): o botão de baixar o PDF era um link-botão
+   discreto entre parágrafos — a ação mais importante da seção precisava de mais peso que isso. Ícone,
+   corpo maior, sombra própria e elevação no hover; layout da seção vira texto + botão lado a lado. */
+.export-box{display:flex; align-items:center; justify-content:space-between; gap:var(--sp-5); flex-wrap:wrap; border-left-color:var(--musgo);}
+.export-texto{flex:1 1 320px; min-width:0;}
+.export-texto p:last-child{margin-bottom:0;}
+.btn-pdf{display:inline-flex; align-items:center; gap:var(--sp-2); flex:none; margin-top:0; padding:0 var(--sp-5); min-height:56px; line-height:normal; font-size:var(--fs-body); border-radius:calc(var(--radius) * 1.4); box-shadow:0 4px 14px rgba(46,61,48,.28); transition:transform .15s ease, box-shadow .15s ease, background .15s ease;}
+.btn-pdf:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(14,15,13,.3);}
+.btn-pdf svg{flex:none;}
 select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:var(--fs-small); min-height:var(--alvo-toque); border:1px solid var(--line); border-radius:var(--radius); background:var(--surface-2); color:var(--ink); padding:0 var(--sp-2);}
 .pedido-texto{width:100%; min-width:0; font-family:var(--font-corpo); font-size:var(--fs-small); line-height:var(--lh-small); color:var(--ink); background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3); margin:0 0 var(--sp-2); resize:vertical;}
 
@@ -452,10 +461,17 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .emerg-num--sms{border-top-color:var(--musgo);}
 .emerg-alertas{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--ink); margin:0; max-width:520px; padding-top:var(--sp-4); border-top:1px solid var(--line);}
 .emerg-alertas strong{color:var(--link);}
-.ficha{border:1px solid var(--line); border-radius:var(--radius); padding:var(--esp-painel); margin:0 0 var(--esp-secao); scroll-margin-top:var(--sp-7); background:var(--surface-2);}
+/* 17/09/2026 (pedido da editoria): fichas "sem vida" — fundo cinza uniforme (mesmo tom de trilho de
+   tabela), sem hierarquia. Mesmo tratamento dos cartões de emergência: fundo branco de verdade, borda
+   superior grossa na cor do risco (reaproveita --chuva/--seca/--fogo, já usadas no selo e no h2 da
+   própria ficha — não é cor nova), sombra própria para separar do fundo da página. */
+.ficha{border:1px solid var(--line); border-top:5px solid var(--mineral); border-radius:var(--radius); padding:var(--esp-painel); margin:0 0 var(--esp-secao); scroll-margin-top:var(--sp-7); background:var(--surface); box-shadow:var(--sombra);}
+.ficha.r-chuva{border-top-color:var(--chuva);}
+.ficha.r-seca{border-top-color:var(--seca);}
+.ficha.r-fogo{border-top-color:var(--fogo);}
 .ficha:target{border-color:var(--ink); box-shadow:0 0 0 3px rgba(21,32,26,.07);}
 .ficha-head{display:flex; align-items:center; gap:var(--sp-3); margin:0 0 var(--sp-1);}
-.ficha-selo{flex:none; width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--surface);}
+.ficha-selo{flex:none; width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--surface-2);}
 .ficha.r-chuva .ficha-selo{color:var(--chuva);}
 .ficha.r-seca .ficha-selo{color:var(--seca);}
 .ficha.r-fogo .ficha-selo{color:var(--fogo);}
@@ -468,15 +484,23 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .ficha-col ul{list-style:none; margin:0; padding:0;}
 .ficha-col li{position:relative; padding-left:var(--sp-5); margin:0 0 var(--sp-2); font-size:var(--fs-small); line-height:var(--lh-small);}
 .ficha-col li::before{content:"☐"; position:absolute; left:0; top:0; color:var(--muted); font-size:var(--fs-body);}
-.ficha-alerta{background:var(--surface); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
+/* .ficha-alerta era branco dentro de um card que também era branco (cinza antes) — sem contraste próprio
+   para um aviso que precisa se destacar. Vira caixa com fundo neutro e borda esquerda na cor do risco. */
+.ficha-alerta{background:var(--surface-2); border-left:4px solid var(--mineral); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
+.ficha.r-chuva .ficha-alerta{border-left-color:var(--chuva);}
+.ficha.r-seca .ficha-alerta{border-left-color:var(--seca);}
+.ficha.r-fogo .ficha-alerta{border-left-color:var(--fogo);}
 .ficha-alerta b{display:block; font-family:var(--font-dado); text-transform:uppercase; font-size:var(--fs-caption); letter-spacing:var(--ls-caps); margin:0 0 var(--sp-1); color:var(--ink);}
 .ficha-fonte{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:var(--sp-3) 0 0; padding-top:var(--sp-3); border-top:1px solid var(--line);}
 .separador-onda{width:100%; height:12px; margin:0 0 var(--esp-secao); color:var(--line); display:block;}
 /* 15/09/2026: "Quem chamar" — cartão por estado (sem cor por região; a única cor da página é a família de risco) */
 .contato-destaque{margin:var(--sp-3) 0 var(--sp-4);}
 .contato-grade{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:var(--sp-3); margin-top:var(--sp-3);}
-.contato{border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:var(--sp-3) var(--sp-4); min-width:0; break-inside:avoid;}
-.contato--grande{border-color:var(--musgo); box-shadow:0 0 0 3px rgba(46,61,48,.08);}
+/* 17/09/2026 (pedido da editoria): cartões de contato eram brancos mas sem elevação nem identidade —
+   mesmo tratamento das fichas e dos números de emergência: borda superior colorida (musgo, a mesma cor
+   já usada no selo da UF em cada cartão) e sombra própria. */
+.contato{border:1px solid var(--line); border-top:4px solid var(--musgo); border-radius:var(--radius); background:var(--surface); padding:var(--sp-4); min-width:0; break-inside:avoid; box-shadow:var(--sombra);}
+.contato--grande{border-color:var(--musgo); border-top-width:5px; box-shadow:0 0 0 3px rgba(46,61,48,.08), var(--sombra);}
 .contato-topo{display:flex; align-items:baseline; gap:var(--sp-2); margin:0 0 var(--sp-1);}
 .contato-uf{font-family:var(--font-dado); font-weight:var(--peso-bold); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); color:var(--branco); background:var(--musgo); border-radius:var(--radius); padding:2px var(--sp-2);}
 .contato-nome{font-family:var(--font-titulo); font-size:var(--fs-h4); line-height:var(--lh-h4); color:var(--ink);}
