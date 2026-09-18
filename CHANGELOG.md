@@ -15,6 +15,24 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §100 · Resumo de preparação migra para a home; "Antes/Depois" vira "Preparação publicada/Decretos de emergência" · 18/09/2026
+
+Pedido direto da editoria, em `defesa-civil.html` e `index.html`.
+
+**Gráfico "Status dos planos estaduais, por região" removido** de `defesa-civil.html`, com o resumo que ele gerava ("N estados com plano para o ciclo; M com plano de todo ano; P sem plano localizado" e "Por região: X concentra os planos feitos para o ciclo") migrado para a home, como um parágrafo abaixo dos dois medidores (índice MARÉ Legal + contador de decretos) — mesmo cálculo, mesma fonte (`data/estados.json`), que a home já carregava para outra finalidade.
+
+**Tabela "Decretado × reconhecido, por estado" removida** por inteiro (estava dentro de um acordeão "Ver mais").
+
+**Linguagem "Antes"/"Depois" trocada por "Preparação publicada"/"Decretos de emergência"** — nos dois `<h2>` de `defesa-civil.html` (que também tinham travessão, corrigido de quebra), no hint do topo da página, nas meta descriptions (4 lugares), e nos dois selos da home.
+
+**Mapas reorganizados de três para duas colunas** ("dois a dois") no painel de preparação.
+
+**Dois erros cometidos e corrigidos no próprio trabalho**: ao remover o bloco da tabela no JS, uma chave de fechamento de função foi apagada por engano — sintaxe quebrada, achada e corrigida antes de publicar. E o portão de segurança passou a reclamar de uma função auxiliar (`interp`, já existente, não escrita nesta rodada) por `innerHTML` sem `esc()` nas proximidades — não por uma falha nova, mas porque a única chamada que "mascarava" o alarme (por estar fisicamente perto o bastante do texto) foi removida junto com o gráfico; a chamada remanescente já tinha dado seguro (campo `esc()`-ado), documentado o contrato de segurança da função ao lado da definição para o portão (e qualquer leitor humano) reconhecer.
+
+Dois portões atualizados para refletir a mudança sem perder cobertura: `verificar_runtime_resposta.js` (cobertura de 27 UFs passa a checar o dado, não o elemento removido) e `verificar_runtime.js` (novo teste do resumo na home, mesma regra que existia em `defesa-civil.html`).
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente em ambas as páginas.
+
 ## §99 · Dicas por risco na imagem, logo antes do menu, descrição da página atualizada · 18/09/2026
 
 Três correções diretas da editoria, sobre o trabalho do §96–98.

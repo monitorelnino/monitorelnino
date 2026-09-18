@@ -805,6 +805,23 @@ function copiarPedido(botao){
       }
     }
   } catch (e) {}
+  // 18/09/2026 (pedido da editoria): resumo embutido abaixo dos dois medidores — mesmo cálculo que
+  // morava em defesa-civil.html (titulosFato/boxRegion, removido de lá), mesma fonte (data/estados.json,
+  // já carregado como DATA). "N estados com plano para o ciclo" = status NOVO; "com plano de todo ano" =
+  // READ+VIG (readaptado ou vigente recorrente); "sem plano localizado" = ELAB+LAC (em elaboração ou lacuna).
+  try {
+    const elResumo = document.getElementById('resumoPreparacao');
+    if (elResumo && typeof DATA === 'object' && DATA && DATA.ufs) {
+      const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      const st = DATA.ufs.map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
+      const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), elabLac = c(['ELAB', 'LAC']);
+      const porReg = {}; DATA.ufs.forEach(u => { if (u.status === 'NOVO') porReg[u.regiao || u.region || '—'] = (porReg[u.regiao || u.region || '—'] || 0) + 1; });
+      const maior = Object.entries(porReg).sort((a, b) => b[1] - a[1])[0];
+      const partes = [`${novo} estados com plano para o ciclo; ${readVig} com plano de todo ano; ${elabLac} sem plano localizado.`];
+      if (maior) partes.push(`Por região: <strong>${esc(maior[0])}</strong> concentra os planos feitos para o ciclo (${maior[1]} de ${novo}).`);
+      elResumo.innerHTML = partes.join(' ');
+    }
+  } catch (e) {}
   const temRAF = (typeof requestAnimationFrame === 'function');
   const raf = temRAF
     ? (f) => requestAnimationFrame(() => requestAnimationFrame(f))

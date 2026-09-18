@@ -130,17 +130,15 @@ setTimeout(() => {
   teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com siglas das 27 UFs`, mapasSvg.length > 0 && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`, legendas.every(l => [...l.children].every(c => c.tagName === "SPAN" && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I")) && /background:/.test(c.firstElementChild.getAttribute("style") || "") && c.textContent.trim().length > 0)));
-  // 15/09/2026 (§2.9): títulos-fato das figuras de Defesa civil vêm do dado; interpretações fora das figuras
+  // 18/09/2026 (pedido da editoria): "N estados com plano para o ciclo" e "Por região: ..." saíram de
+  // defesa-civil.html (boxRegion/interpAntes removidos) — moraram na home (#resumoPreparacao), mesmo
+  // dado (data/estados.json). Teste equivalente agora em verificar_runtime.js (index.html).
   try {
-    const DATA = JSON.parse(fs.readFileSync(path.join(raiz, "data", "estados.json"), "utf8")), RESP = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "por_uf.json"), "utf8"));
-    const st = DATA.ufs.map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
-    const tR = d.querySelector("#boxRegion .figura-titulo").textContent;
-    teste("defesa civil (a): título-fato com as três contagens (somam 27)", new RegExp(`^${c(["NOVO"])} estados com plano para o ciclo; ${c(["READ","VIG"])} com plano de todo ano`).test(tR) && (c(["NOVO"]) + c(["READ","VIG"]) + c(["ELAB","LAC"])) === 27);
+    const RESP = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "por_uf.json"), "utf8"));
     teste("defesa civil (c): verificação com 5.571 e planos municipais localizados", /^5\.571 municípios no registro federal.*[1-9]\d* planos municipais localizados$/.test(d.querySelector("#boxVerificacao .figura-titulo").textContent));
     teste("defesa civil (f): mapa com nº de municípios do dado", new RegExp("^Decretos: " + String(RESP.nacional.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " municípios").test(d.querySelector("#boxAtosResposta .figura-titulo").textContent));
     // 15/09/2026: a figura da série semanal saiu da página — o fato (primeiro decreto e contagem no período eleitoral) migrou para interpDepois
     teste("defesa civil (g): primeiro decreto do dado e contagem no período eleitoral, fora de figura", new RegExp("Primeiro decreto do ciclo em " + RESP.nacional.primeiro_decreto + "; \\d").test(q("interpDepois").textContent));
-    teste("defesa civil: interpretação fora da figura preenchida", /Por região:|Nenhum estado/.test(q("interpAntes").textContent));
   } catch (e) { teste("defesa civil: títulos-fato (" + e.message + ")", false); }
   // 15/09/2026: correção do portão — o teste que checava `falhas` rodava ANTES destes testes de
   // Defesa civil (bug pré-existente, §2.9): quaisquer falhas aqui nunca bloqueavam a publicação.
