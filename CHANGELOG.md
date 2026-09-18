@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §95 · "Leve estas informações" e "Como se proteger" viram um bloco só, chamado Proteja-se · 17/09/2026
+
+Pedido direto da editoria.
+
+**As duas seções (painel do PDF + título dos guias) viram um bloco único**, sem moldura, formatado como o próprio cabeçalho da página (selo + título grande, no mesmo tamanho do `<h1>` "Proteja-se: orientações oficiais e alertas" + texto): selo "Leve estas informações com você", título "Proteja-se", um parágrafo cobrindo os dois assuntos (o guia em PDF e o que vem a seguir), e o botão de baixar centralizado abaixo do texto — não mais lado a lado dentro de um painel com borda. O `<h2 id="como-se-proteger">` que separava as duas seções saiu; os três acordeões de cenário passam a vir direto abaixo do bloco único.
+
+**Portão de consistência visual pegou a mudança corretamente** (h2 com dois tamanhos diferentes) — exceção adicionada ao seletor da família "h2 (seção)", mesmo padrão já usado para excluir `.ficha h2` (que também varia de propósito), com comentário explicando que é deliberado, não drift.
+
+**Gerador de PDF corrigido**: ele lia o título e a descrição da seção removida (`#como-se-proteger`) para escrever a primeira página do PDF; sem esse elemento, ficaria mudo. Texto fixado diretamente no gerador — o PDF é um documento à parte da página viva e não precisa espelhar o HTML linha a linha.
+
+**Geração de PDF testada de ponta a ponta de novo** (jsPDF real, PDF de verdade lido de volta): título, os cinco números de emergência e as três fichas completas aparecem; contatos da Defesa Civil, alertas de saúde e FGTS Calamidade continuam fora do escopo, como já estava.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente.
+
 ## §94 · Guias de cenário ganham cor e ícone também fechados, não só abertos · 17/09/2026
 
 Ao conferir o pedido do §93 (já publicado quando esta sessão começou — feito em paralelo, achado ao investigar), sobrou uma lacuna real: as três fichas de cenário (chuvas/incêndios/estiagem) ficaram com visual elaborado quando abertas, mas no estado fechado — o que a maioria vê primeiro, antes de clicar — continuavam como qualquer acordeão genérico do site: linha fina, "+", sem cor. A maior parte de uma visita nunca chega a abrir os três.

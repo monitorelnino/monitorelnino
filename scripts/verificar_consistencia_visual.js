@@ -20,7 +20,10 @@ const RELATORIO = process.argv.includes("--relatorio");
 // famílias de elementos equivalentes (seletor → nome). Cada família deve ter UM só estilo computado por largura.
 const FAMILIAS = {
   "h1 (página)": "main h1",
-  "h2 (seção)": "main h2:not(.ficha h2)",
+  // 17/09/2026 (pedido da editoria): .proteja-cta-titulo é uma exceção deliberada, mesmo padrão de
+  // .ficha h2 logo abaixo — um único h2 (o "Proteja-se" que abre o guia em proteja-se.html) formatado
+  // de propósito como o h1 da própria página, não um estilo solto por engano.
+  "h2 (seção)": "main h2:not(.ficha h2):not(.proteja-cta-titulo)",
   "h3 (título de figura/cartão)": ".figura-titulo",
   "subtítulo de figura": ".figura-sub",
   "legenda de figura": ".map-legend",
