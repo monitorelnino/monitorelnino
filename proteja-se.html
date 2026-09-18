@@ -29,7 +29,7 @@
 <script src="assets/vendor/jspdf.umd.min.js?v=98ccf17a"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
-<link rel="stylesheet" href="assets/base.css?v=05304211">
+<link rel="stylesheet" href="assets/base.css?v=bb5a678b">
 <script src="assets/mapas.js?v=ddaceb55"></script>
 </head>
 <body>
@@ -71,7 +71,10 @@
   <div class="proteja-cta">
     <h2 class="proteja-cta-titulo">Leve estas informações com você</h2>
     <p class="hint">Saiba o que fazer, como se proteger e quais são os telefones de contato em caso de emergência. Um arquivo para salvar, imprimir, enviar por e-mail e nos grupos do WhatsApp. O relatório do seu estado e o do seu município saem da <a href="index.html">página principal</a>.</p>
-    <button type="button" class="btn-pdf" id="btnPdfGuia"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg><span>Baixar este guia em PDF</span></button>
+    <div class="proteja-cta-botoes">
+      <button type="button" class="btn-pdf" id="btnPdfGuia"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg><span>Baixar este guia em PDF</span></button>
+      <button type="button" class="btn-pdf btn-pdf--secundario" id="btnImagemGuia"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Baixar imagem para compartilhar</span></button>
+    </div>
   </div>
 
   <details class="acc r-chuva" id="acc-guia-chuvas">
@@ -146,7 +149,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/proteja-se.js?v=2b0b923b" defer></script>
+<script src="assets/js/proteja-se.js?v=8593902e" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

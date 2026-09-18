@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §98 · Imagem para compartilhar por WhatsApp; PDF e imagem ganham o logotipo do MARÉ · 18/09/2026
+
+Pedido direto da editoria ("isso é fundamental").
+
+**Achado ao abrir o gerador de PDF antes de mexer**: ele usava o logotipo do Futura (não o do MARÉ) como imagem de cabeçalho e como marca d'água diagonal em toda página. Trocado pelo novo logotipo (a mesma imagem usada no site, rasterizada uma vez a 900×342px para caber no PDF sem pesar); a marca d'água passou a dizer "MARÉ", não mais "FUTURA · EVIDENCE LAB" — o Futura segue creditado no rodapé de cada página do PDF, no mesmo tamanho discreto que já tinha, espelhando o tratamento que o próprio site já dá a ele desde o §96.
+
+**Botão novo, "Baixar imagem para compartilhar", ao lado do de PDF** (contorno em vez de preenchido, para o PDF continuar sendo a ação principal). Gera uma imagem JPEG única — 1080×1180, quase quadrada, dentro do que o WhatsApp aceita como foto sem recomprimir agressivamente — com o logotipo do MARÉ, título, e os cinco números de emergência em caixas coloridas (mesma paleta dos cartões da página e do PDF). Desenhada em `<canvas>`, não em HTML: o PDF já usava esse tipo de desenho para as caixas de emergência, e um `<canvas>` consegue herdar as fontes da própria marca (Fraunces, Archivo) que um `<img>` não conseguiria.
+
+Testado de ponta a ponta de verdade (clique no botão, captura do arquivo baixado, não só o código): ~110 KB, 1080×1180px, sem espaço sobrando — a primeira versão tinha uma altura de canvas maior que o conteúdo real; ajustada.
+
+**Achado no meio do trabalho**: as cores do canvas, em hex, bateram de frente com o portão que proíbe hex fora da paleta — convertidas para `rgb()`, o mesmo formato que o gerador de PDF já usava para evitar esse problema (arrays de RGB, não hex).
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente e com a imagem real gerada.
+
 ## §97 · "Leve estas informações com você" volta a ser o título; ficha da Defesa Civil ao lado do seletor · 18/09/2026
 
 Pedido direto da editoria.
