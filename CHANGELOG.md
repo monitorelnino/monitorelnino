@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §96 · Logotipo oficial do MARÉ substitui o texto no cabeçalho; Futura sai do topo, fica só no rodapé · 18/09/2026
+
+Pedido direto da editoria, com arquivo de logotipo em vetor (4 variantes: completo/compacto × fundo claro/escuro).
+
+**Achado ao abrir o arquivo antes de usar**: as duas versões "completo" traziam o nome antigo — "MEDIDA de Antecipação e Resposta", de antes da renomeação desta mesma sessão (§79) para "Monitor". Corrigido nas duas variantes antes de qualquer publicação; conferido visualmente com as fontes reais (Fraunces + Archivo Narrow) que o texto mais longo ainda cabe sem cortar.
+
+**Logotipo (versão completa, fundo claro) substitui "MARÉ" + subtítulo em texto**, nas 11 páginas. Embutido direto no HTML (não como `<img>`) — imagem carregada por `src` não herda as fontes da própria página, e o logotipo depende delas. O `<h1>`/`<p>` que carregava o título continua existindo por semântica e acessibilidade (texto em `.sr-only` para leitor de tela); visualmente mostra o SVG. Tamanho maior na home, menor nas páginas internas (`.masthead--mini`).
+
+**Logotipo do Futura sai do topo de todas as páginas** — a cópia do rodapé, que já existia, agora é a única. Achado no meio do trabalho: a remoção inicial usou o padrão de link do cabeçalho da home (link externo, `target="_blank"`) em todas as páginas, mas nas páginas internas é o RODAPÉ que usa esse padrão (o cabeçalho ali já era um link interno mais simples, "voltar para a home") — a primeira rodada apagou o logotipo errado (rodapé) nas 10 páginas internas. Comparado contra a árvore original arquivo por arquivo para achar exatamente essa troca; rodapé restaurado, cabeçalho corrigido nas 10 páginas.
+
+**Portão novo**: o logotipo é marca fixa — cores e tipografia deliberadas do desenho, não conteúdo — e colidia com três checagens que proíbem tipografia solta e hex fora da paleta em qualquer lugar da página. Adicionada uma exceção documentada e escopada (`data-marca-fixa`, mesmo padrão de `data-voz="ficha"` já usado no projeto), não um desligamento geral de portão.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente em duas páginas (home e uma interna), com tipos MIME corretos, sem erro de JavaScript.
+
 ## §95 · "Leve estas informações" e "Como se proteger" viram um bloco só, chamado Proteja-se · 17/09/2026
 
 Pedido direto da editoria.
