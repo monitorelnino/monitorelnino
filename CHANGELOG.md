@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §99 · Dicas por risco na imagem, logo antes do menu, descrição da página atualizada · 18/09/2026
+
+Três correções diretas da editoria, sobre o trabalho do §96–98.
+
+**Imagem para compartilhar ganha as dicas, não só os telefones.** Três dicas por risco (chuva, incêndio, estiagem), em bullet points, com um traço colorido por família — mesma cor da ficha correspondente na página. As dicas são o texto das próprias fichas já publicadas, as mais urgentes de cada uma ("durante"/"sinais de alerta"), não reescritas. A imagem cresceu de ~110 KB para ~180 KB e de 1080×1180 para 1080×~1570px (a altura real do conteúdo, calculada depois de desenhar, para não sobrar nem faltar espaço) — segue bem abaixo do que o WhatsApp recomprime.
+
+**Logotipo do MARÉ volta para o topo do cabeçalho, antes do menu** — vivia depois da navegação (entre o menu e a faixa "2026/2027 · Monitoramento..."); passa a ser o primeiro elemento do cabeçalho, nas 11 páginas.
+
+**Descrição de `proteja-se.html` atualizada** — a antiga descrevia a página de antes da rodada §92–98 (tinha até um travessão, contra a regra do §3) e não mencionava telefone de emergência, PDF nem imagem para baixar. Trocada nos quatro lugares que carregam essa descrição (`<title>`, meta description, Open Graph, Twitter, JSON-LD) — a primeira versão passou do teto de 170 caracteres do portão de SEO, encurtada.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente e com a imagem real gerada.
+
 ## §98 · Imagem para compartilhar por WhatsApp; PDF e imagem ganham o logotipo do MARÉ · 18/09/2026
 
 Pedido direto da editoria ("isso é fundamental").
