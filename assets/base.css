@@ -304,10 +304,14 @@ button, input[type=submit]{min-height:var(--alvo-toque);}
 .btn:hover, .btn-pdf:hover{background:var(--ink); color:var(--branco);}
 /* 17/09/2026 (pedido da editoria, "isso é fundamental"): o botão de baixar o PDF era um link-botão
    discreto entre parágrafos — a ação mais importante da seção precisava de mais peso que isso. Ícone,
-   corpo maior, sombra própria e elevação no hover; layout da seção vira texto + botão lado a lado. */
-.export-box{display:flex; align-items:center; justify-content:space-between; gap:var(--sp-5); flex-wrap:wrap; border-left-color:var(--musgo);}
-.export-texto{flex:1 1 320px; min-width:0;}
-.export-texto p:last-child{margin-bottom:0;}
+   corpo maior, sombra própria e elevação no hover.
+   17/09/2026 (segundo pedido): a seção "Leve estas informações com você" e o título "Como se proteger
+   em cada cenário" viram um bloco só, chamado Proteja-se, formatado como o cabeçalho da própria
+   página (selo + título grande + texto, sem caixa com borda) — não mais um painel com moldura, texto e
+   botão lado a lado. Botão centralizado abaixo do texto, único e em destaque.  */
+.proteja-cta{text-align:center; margin:0 0 var(--esp-secao); padding:var(--sp-4) 0 var(--sp-5);}
+.proteja-cta-titulo{font-size:var(--fs-h1); line-height:var(--lh-h1); margin:0 0 var(--esp-titulo);}
+.proteja-cta .hint{max-width:640px; margin:0 auto var(--sp-4);}
 .btn-pdf{display:inline-flex; align-items:center; gap:var(--sp-2); flex:none; margin-top:0; padding:0 var(--sp-5); min-height:56px; line-height:normal; font-size:var(--fs-body); border-radius:calc(var(--radius) * 1.4); box-shadow:0 4px 14px rgba(46,61,48,.28); transition:transform .15s ease, box-shadow .15s ease, background .15s ease;}
 .btn-pdf:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(14,15,13,.3);}
 .btn-pdf svg{flex:none;}
@@ -597,7 +601,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 
 /* ===== 19. Impressão ===== */
 @media print{
-  .mainnav, .btn-pdf, .btn, .skip, .map-tooltip, .subnav, .export-box, footer.site-footer .grad-line, header .mast-top{display:none !important;}
+  .mainnav, .btn-pdf, .btn, .skip, .map-tooltip, .subnav, footer.site-footer .grad-line, header .mast-top{display:none !important;}
   body{background:var(--branco); color:var(--preto);}
   .panel, .figura, .cartao, .ficha, .emerg-bar, .contato{border-color:var(--mineral); break-inside:avoid; box-shadow:none;}
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:var(--fs-caption); color:var(--muted);}

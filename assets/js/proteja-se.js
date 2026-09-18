@@ -50,15 +50,14 @@ function gerarPDFGuia(){
   // contato da Defesa Civil, "Alertas de saúde" e "Direitos", que não são nem telefone de emergência nem
   // dica de proteção. Escopo restrito ao título "Como se proteger" + só o que está dentro de .ficha (as
   // três fichas de orientação); o resto da página (contatos, alertas, direitos) fica de fora do PDF.
-  const introComoSeProteger = document.querySelector('#como-se-proteger');
-  if (introComoSeProteger) {
-    doc.setFont('helvetica','bold'); doc.setFontSize(13.5); doc.setTextColor(21,32,26);
-    doc.text(introComoSeProteger.textContent.trim(), M, y); y += 17;
-    const hintCsp = document.querySelector('#como-se-proteger + p.hint');
-    if (hintCsp) { doc.setFont('helvetica','normal'); doc.setFontSize(10.5); doc.setTextColor(40,52,44);
-      const linhasHint = doc.splitTextToSize(hintCsp.textContent.replace(/\s+/g,' ').trim(), W - 2*M);
-      doc.text(linhasHint, M, y); y += linhasHint.length * 14.5 + 8; }
-  }
+  // 17/09/2026: a página juntou "Leve estas informações" e "Como se proteger" num bloco só (Proteja-se) —
+  // o PDF mantém o título e a descrição de "Como se proteger" como texto fixo, já que o documento é
+  // independente da página e esses dois parágrafos ainda descrevem exatamente o que vem a seguir.
+  doc.setFont('helvetica','bold'); doc.setFontSize(13.5); doc.setTextColor(21,32,26);
+  doc.text('Como se proteger em cada cenário', M, y); y += 17;
+  doc.setFont('helvetica','normal'); doc.setFontSize(10.5); doc.setTextColor(40,52,44);
+  const linhasHint = doc.splitTextToSize('Recomendações de segurança para os três riscos do ciclo, válidas em todo o país, antes, durante e depois do evento.', W - 2*M);
+  doc.text(linhasHint, M, y); y += linhasHint.length * 14.5 + 8;
   const CORES_RISCO = {'r-chuva':[94,124,147], 'r-seca':[201,129,75], 'r-fogo':[124,74,52]};
   document.querySelectorAll('.wrap .ficha h2, .wrap .ficha h3, .wrap .ficha p, .wrap .ficha li').forEach(el => {
     const txt = el.textContent.replace(/\s+/g,' ').trim();
