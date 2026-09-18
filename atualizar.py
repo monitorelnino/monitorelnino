@@ -77,6 +77,17 @@ def main():
     # chamada sai daqui de dentro do portão semanal e roda incondicionalmente, todo dia.
     rodar([sys.executable, "coletar_sinais_risco.py"])
 
+    # 18/09/2026 (rotina diária, portão 12 vermelho na main): gerar_monitor_saude.py copia
+    # sinais.uf[UF].fogo.focos_24h de data/sinais_risco.json para data/monitor_saude.json
+    # (campo "focos_24h" de cada UF, §31). Como a chamada acima passou a rodar todo dia
+    # (17/09/2026) mas esta continuava só no bloco semanal, abaixo do "return" de cadência,
+    # o derivado ficava um a seis dias atrás do sinal bruto em qualquer dia que não fosse
+    # segunda — mesma classe de bug do carimbo `gerado_em` de 10/09/2026 (derivado não
+    # regravado quando a fonte muda). Regenerar aqui, todo dia, mantém o derivado
+    # sincronizado com o sinal que ele copia; a chamada do bloco semanal (mais abaixo)
+    # continua — é idempotente sobre os mesmos dados quando nada mudou.
+    rodar([sys.executable, "gerar_monitor_saude.py"])
+
     if not em_intensivo and dia_semana != 0:
         print("[cadência] fora da semana intensiva e não é segunda-feira: execução diária encerra sem coletar nem comitar.")
         return 0
