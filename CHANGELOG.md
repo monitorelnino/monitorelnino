@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §101 · Ponto cego do dicionário de busca em saúde fechado (achado via handover, caso Bahia) · 18/09/2026
+
+Handover da editoria: uma matéria de imprensa (18/09) revelou que o "Plano de Ações de Saúde para o Enfrentamento ao El Niño 2026/2027" da Sesab (R$ 30,5 mi, enviado ao MS em agosto, confirmado em oito veículos independentes) não estava em `data/saude_uf.json` — a Bahia seguia classificada pelo plano recorrente de arboviroses (2025), verificado em 05/09/2026, sem o documento mais específico e mais forte do ciclo.
+
+**Causa confirmada em código**: `data/dicionario_busca.json`, grupo `saude`, não tinha os termos que os estados passaram a usar depois de 02/09/2026 — o padrão de nome espelha o que o próprio Ministério da Saúde deu ao seu programa federal, e é mais recente que o dicionário.
+
+**Corrigido nesta rodada**: seis termos novos acrescentados ao grupo `saude` do dicionário, cada um com a origem registrada (achado de 18/09/2026, caso Bahia). Isso é o primeiro de seis itens de um handover maior (schema de `instrumentos: []` para saúde, monitor de imprensa dedicado, descoberta automática via wp-json, reverificação por marco federal, resserragem manual dos 27 estados) — os demais seguem em andamento, não cabem numa única rodada.
+
+**Apuração do caso Bahia em si**: busca direta pelo PDF (3 tentativas: busca geral, busca restrita ao domínio oficial, leitura da matéria original) não localizou um link público direto ao documento integral — só cobertura de imprensa, ainda que de fontes robustas (o próprio site oficial do estado, bahia.ba, entre outras). Rascunho de pedido LAI específico preparado (registro privado, `notas/lai/textos/BA_saude.txt`), pedindo o documento integral e a data de envio ao MS — aguardando aprovação para envio. Reverificado também `estados.json` BA (defesa civil): o comitê para o "Plano Estadual de Ações de Enfrentamento aos Impactos do El Niño 2026/2027" (`estrutura_coordenacao`, LAC desde 04/09) segue sem ato publicado no DOE-BA em nenhuma cobertura encontrada — status mantido, nenhuma mudança de dado aplicada sem fonte primária.
+
+O achado da imprensa sobre "52% dos estados" enviaram plano ao MS não foi tratado como fato confirmado (nota oficial do MS não cita o percentual; só duas matérias, mesma origem aparente, o mencionam) — registrado como não confirmado no registro privado, não entra em nenhuma superfície pública.
+
+Suíte relevante verde; nenhum arquivo público (HTML/JS/CSS) alterado nesta rodada — só o dicionário de busca interno, usado pelos coletores.
+
 ## §100 · Resumo de preparação migra para a home; "Antes/Depois" vira "Preparação publicada/Decretos de emergência" · 18/09/2026
 
 Pedido direto da editoria, em `defesa-civil.html` e `index.html`.
