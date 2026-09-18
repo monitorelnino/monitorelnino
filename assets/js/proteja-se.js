@@ -160,80 +160,106 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   }).catch(() => { grade.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
 })();
 
-// 18/09/2026 (pedido da editoria, "isso é fundamental"): imagem única para compartilhar por WhatsApp/e-mail
-// — o PDF não é feito para isso (várias páginas, formato de impressão). Canvas em vez de <img> porque
-// precisa desenhar texto com as fontes da marca (herdadas da página, já carregadas) e exportar como
-// arquivo. Tamanho de post (1080×1180, quase quadrado) — cabe na tela sem cortar, dentro do que o WhatsApp aceita
-// como foto sem recomprimir agressivamente; te ao redor de 300–500 KB em JPEG qualidade 0.9.
+// 18/09/2026 (pedido da editoria): a imagem só tinha os telefones — precisa das dicas por risco também.
+// Três dicas por risco, escolhidas das próprias fichas já publicadas (o mesmo texto, não reescrito) —
+// as mais urgentes de cada ("durante"/"sinais de alerta"), já que o espaço da imagem é limitado.
 function gerarImagemGuia(){
   const btn = document.getElementById('btnImagemGuia');
   const rotuloOriginal = btn ? btn.querySelector('span').textContent : '';
   if (btn) { btn.disabled = true; btn.querySelector('span').textContent = 'Gerando…'; }
   const concluir = () => { if (btn) { btn.disabled = false; btn.querySelector('span').textContent = rotuloOriginal; } };
 
-  const W = 1080, H = 1180;
+  const W = 1080, H = 1780;
   const canvas = document.createElement('canvas'); canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext('2d');
 
   const EMERG = [
-    {num:'193', nome:'Bombeiros', desc:'incêndio · resgate · afogamento', cor:'rgb(124,74,52)'},
-    {num:'192', nome:'SAMU', desc:'emergência médica', cor:'rgb(201,129,75)'},
-    {num:'199', nome:'Defesa Civil', desc:'risco antes do dano', cor:'rgb(94,124,147)'},
-    {num:'190', nome:'Polícia Militar', desc:'segurança', cor:'rgb(14,15,13)'},
-    {num:'40199', nome:'Alertas por SMS', desc:'envie seu CEP', cor:'rgb(46,61,48)'},
+    {num:'193', nome:'Bombeiros', cor:'rgb(124,74,52)'},
+    {num:'192', nome:'SAMU', cor:'rgb(201,129,75)'},
+    {num:'199', nome:'Defesa Civil', cor:'rgb(94,124,147)'},
+    {num:'190', nome:'Polícia Militar', cor:'rgb(14,15,13)'},
+    {num:'40199', nome:'Alertas por SMS', cor:'rgb(46,61,48)'},
+  ];
+  const RISCOS = [
+    {nome:'Chuvas intensas, enchentes e deslizamentos', cor:'rgb(94,124,147)', dicas:[
+      'Não atravesse água em movimento: 15 cm de correnteza derrubam um adulto',
+      'Vá para um local alto e siga a Defesa Civil (199)',
+      'Beba apenas água tratada ou fervida depois da enchente',
+    ]},
+    {nome:'Incêndios e fumaça', cor:'rgb(124,74,52)', dicas:[
+      'Mantenha portas e janelas fechadas nos dias de fumaça densa',
+      'Máscara PFF2/N95 reduz a inalação de partículas finas',
+      'Falta de ar, dor no peito ou confusão mental: atendimento imediato',
+    ]},
+    {nome:'Estiagem, seca e calor', cor:'rgb(201,129,75)', dicas:[
+      'Aumente a ingestão de água e procure locais frescos',
+      'Evite atividade física ao ar livre nas horas mais quentes',
+      'Náusea, vômito, febre ou confusão: procure atendimento de saúde',
+    ]},
   ];
 
   const carregarImagem = src => new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; });
   const roundRect = (x, y, w, h, r) => { if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); return; }
     ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); };
+  // quebra de linha simples: devolve as linhas que cabem em maxW com a fonte já selecionada em ctx
+  const quebrar = (texto, maxW) => { const palavras = texto.split(' '); const linhas = []; let atual = '';
+    palavras.forEach(p => { const teste = atual ? atual + ' ' + p : p; if (ctx.measureText(teste).width > maxW && atual) { linhas.push(atual); atual = p; } else atual = teste; });
+    if (atual) linhas.push(atual); return linhas; };
 
   Promise.all([
     carregarImagem(typeof LOGO_MARE_PDF !== 'undefined' ? LOGO_MARE_PDF : ''),
-    document.fonts ? document.fonts.load('600 40px Fraunces').then(() => document.fonts.load('400 28px "Archivo Narrow"')).then(() => document.fonts.load('700 40px Archivo')).catch(() => {}) : Promise.resolve(),
+    document.fonts ? document.fonts.load('600 40px Fraunces').then(() => document.fonts.load('400 24px "Archivo Narrow"')).then(() => document.fonts.load('700 26px Archivo')).catch(() => {}) : Promise.resolve(),
   ]).then(([logo]) => {
-    // fundo
     ctx.fillStyle = 'rgb(255,255,255)'; ctx.fillRect(0, 0, W, H);
-    const M = 70; let y = 70;
+    const M = 70; let y = 60;
 
-    // logotipo (mesma imagem do PDF — já tem as fontes da marca desenhadas)
-    const logoW = 380, logoH = logoW * (logo.height / logo.width);
+    const logoW = 300, logoH = logoW * (logo.height / logo.width);
     ctx.drawImage(logo, (W - logoW) / 2, y, logoW, logoH);
-    y += logoH + 26;
+    y += logoH + 22;
 
-    // linha divisória com o gradiente da marca (mesmas cores do logotipo)
     const grad = ctx.createLinearGradient(M, 0, W - M, 0);
     grad.addColorStop(0, 'rgb(192,68,48)'); grad.addColorStop(1, 'rgb(94,124,147)');
     ctx.strokeStyle = grad; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(M, y); ctx.lineTo(W - M, y); ctx.stroke();
-    y += 44;
+    y += 40;
 
-    // título
-    ctx.fillStyle = 'rgb(14,15,13)'; ctx.textAlign = 'center'; ctx.font = '600 46px Fraunces, Georgia, serif';
-    ctx.fillText('Proteja-se', W / 2, y); y += 44;
-    ctx.font = '400 24px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(85,100,85)';
-    ctx.fillText('Orientações oficiais e telefones de emergência', W / 2, y); y += 54;
+    ctx.fillStyle = 'rgb(14,15,13)'; ctx.textAlign = 'center'; ctx.font = '600 42px Fraunces, Georgia, serif';
+    ctx.fillText('Proteja-se', W / 2, y); y += 36;
+    ctx.font = '400 22px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(85,100,85)';
+    ctx.fillText('Orientações oficiais e telefones de emergência', W / 2, y); y += 46;
 
-    // cabeçalho da lista de emergência
-    ctx.textAlign = 'left'; ctx.font = '700 22px "Archivo Narrow", Arial Narrow, sans-serif'; ctx.fillStyle = 'rgb(85,100,85)';
-    ctx.fillText('EM UMA EMERGÊNCIA, LIGUE: GRATUITO, 24 HORAS', M, y); y += 26;
-
-    // caixas de emergência (uma por linha, número grande + rótulo)
-    const boxH = 108, gap = 18, boxW = W - 2 * M;
+    // números de emergência (compactos, para caber as dicas abaixo)
+    ctx.textAlign = 'left'; ctx.font = '700 20px "Archivo Narrow", Arial Narrow, sans-serif'; ctx.fillStyle = 'rgb(85,100,85)';
+    ctx.fillText('EM UMA EMERGÊNCIA, LIGUE: GRATUITO, 24 HORAS', M, y); y += 24;
+    const boxH = 84, gap = 14, boxW = W - 2 * M;
     EMERG.forEach(e => {
-      ctx.fillStyle = e.cor; roundRect(M, y, boxW, boxH, 16); ctx.fill();
+      ctx.fillStyle = e.cor; roundRect(M, y, boxW, boxH, 14); ctx.fill();
       ctx.fillStyle = 'rgb(255,255,255)'; ctx.textAlign = 'left';
-      ctx.font = '600 52px Fraunces, Georgia, serif';
-      ctx.fillText(e.num, M + 34, y + 66);
+      ctx.font = '600 40px Fraunces, Georgia, serif';
+      ctx.fillText(e.num, M + 28, y + 52);
       const numW = ctx.measureText(e.num).width;
-      ctx.font = '700 28px Archivo, Arial, sans-serif';
-      ctx.fillText(e.nome, M + 34 + numW + 36, y + 46);
-      ctx.font = '400 20px "Archivo Narrow", Arial Narrow, sans-serif'; ctx.globalAlpha = .85;
-      ctx.fillText(e.desc, M + 34 + numW + 36, y + 76);
-      ctx.globalAlpha = 1;
+      ctx.font = '700 24px Archivo, Arial, sans-serif';
+      ctx.fillText(e.nome, M + 28 + numW + 30, y + 50);
       y += boxH + gap;
     });
-    y += 14;
+    y += 30;
 
-    // rodapé
+    // dicas por risco, em bullet points, uma seção colorida por família
+    ctx.textAlign = 'left';
+    RISCOS.forEach(r => {
+      ctx.fillStyle = r.cor; roundRect(M, y, 8, 34, 4); ctx.fill();
+      ctx.font = '700 27px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(14,15,13)';
+      ctx.fillText(r.nome, M + 24, y + 26); y += 50;
+      ctx.font = '400 23px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(30,30,28)';
+      r.dicas.forEach(d => {
+        ctx.fillStyle = r.cor; ctx.beginPath(); ctx.arc(M + 14, y - 8, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = 'rgb(30,30,28)';
+        const linhas = quebrar(d, boxW - 46);
+        linhas.forEach((linha, i) => { ctx.fillText(linha, M + 34, y + i * 30); });
+        y += linhas.length * 30 + 12;
+      });
+      y += 20;
+    });
+
     ctx.strokeStyle = 'rgb(216,211,200)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(M, y); ctx.lineTo(W - M, y); ctx.stroke();
     y += 34;
     ctx.textAlign = 'center'; ctx.font = '400 20px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(85,100,85)';
@@ -241,7 +267,11 @@ function gerarImagemGuia(){
     ctx.font = '400 17px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(138,132,120)';
     ctx.fillText('Gerado em ' + new Date().toLocaleDateString('pt-BR') + ' · © 2026 Futura Evidence Lab', W / 2, y);
 
-    canvas.toBlob(blob => {
+    const alturaReal = Math.ceil(y + 60);
+    const canvasFinal = alturaReal < H ? (() => { const c2 = document.createElement('canvas'); c2.width = W; c2.height = alturaReal;
+      c2.getContext('2d').drawImage(canvas, 0, 0); return c2; })() : canvas;
+
+    canvasFinal.toBlob(blob => {
       const a = document.createElement('a'); const url = URL.createObjectURL(blob);
       a.href = url; a.download = 'mare-proteja-se-emergencia.jpg'; document.body.appendChild(a); a.click();
       document.body.removeChild(a); setTimeout(() => URL.revokeObjectURL(url), 4000);
@@ -250,3 +280,4 @@ function gerarImagemGuia(){
   }).catch(() => { alert('Não foi possível gerar a imagem agora.'); concluir(); });
 }
 { const b = document.getElementById('btnImagemGuia'); if (b) b.addEventListener('click', gerarImagemGuia); }
+
