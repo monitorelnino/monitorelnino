@@ -15,6 +15,14 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §94 · Guias de cenário ganham cor e ícone também fechados, não só abertos · 17/09/2026
+
+Ao conferir o pedido do §93 (já publicado quando esta sessão começou — feito em paralelo, achado ao investigar), sobrou uma lacuna real: as três fichas de cenário (chuvas/incêndios/estiagem) ficaram com visual elaborado quando abertas, mas no estado fechado — o que a maioria vê primeiro, antes de clicar — continuavam como qualquer acordeão genérico do site: linha fina, "+", sem cor. A maior parte de uma visita nunca chega a abrir os três.
+
+Resumo de cada acordeão ganhou: o mesmo ícone e a mesma cor de risco que a ficha já usa por dentro (chuva/seca/fogo, nada novo inventado), fundo branco, sombra, cantos arredondados — e quando aberto, o resumo colorido e a ficha branca se encaixam como um bloco só (cantos que se completam, sem borda dupla no meio). Os acordeões genéricos do site (contatos, "Ver em tabela") não foram tocados — a mudança é restrita à classe nova, não ao seletor geral de acordeão.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente fechado, aberto e em mobile.
+
 ## §93 · Proteja-se: guias sobem na página, fichas e contatos redesenhados, PDF reescopado · 17/09/2026
 
 Pedido direto da editoria, quatro frentes na mesma página.
