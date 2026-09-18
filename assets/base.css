@@ -525,6 +525,12 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .separador-onda{width:100%; height:12px; margin:0 0 var(--esp-secao); color:var(--line); display:block;}
 /* 15/09/2026: "Quem chamar" — cartão por estado (sem cor por região; a única cor da página é a família de risco) */
 .contato-destaque{margin:var(--sp-3) 0 var(--sp-4);}
+/* 18/09/2026 (pedido da editoria): a ficha do estado escolhido aparece ao lado do seletor, não abaixo
+   — melhor uso do espaço horizontal do painel que a grade dos 27 estados (agora fechada por padrão,
+   ver accTodosContatos no HTML) deixava de sobra. */
+.contato-selecao{display:grid; grid-template-columns:minmax(220px, 300px) minmax(0, 1fr); gap:var(--sp-4); align-items:start; margin:var(--sp-3) 0 var(--sp-4);}
+.contato-selecao .contato-destaque{margin:0;}
+.contato-vazio{grid-column:2; margin:0; padding:var(--sp-4); border:1px dashed var(--line); border-radius:var(--radius); color:var(--muted); display:flex; align-items:center; min-height:120px;}
 .contato-grade{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:var(--sp-3); margin-top:var(--sp-3);}
 /* 17/09/2026 (pedido da editoria): cartões de contato eram brancos mas sem elevação nem identidade —
    mesmo tratamento das fichas e dos números de emergência: borda superior colorida (musgo, a mesma cor
@@ -593,6 +599,8 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .mainnav .btn-nav{margin-left:0;}
   .panel, .hero, .ficha, .emerg-bar, .detail{padding:var(--sp-4);}
   .figura, .cartao{padding:var(--sp-3);}
+  .contato-selecao{grid-template-columns:minmax(0, 1fr);}
+  .contato-vazio{grid-column:1;}
   .figura-titulo, .figura-sub{min-height:0;}
   .mun-table th, .mun-table td{font-size:var(--fs-caption); padding:var(--sp-2);}
   .regions{grid-template-columns:repeat(auto-fill, minmax(124px, 1fr)); gap:var(--sp-2);}

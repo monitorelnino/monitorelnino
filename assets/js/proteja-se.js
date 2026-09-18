@@ -154,7 +154,8 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     const ufs = Object.keys(D.uf).sort();
     ufs.forEach(uf => { const o = document.createElement('option'); o.value = uf; o.textContent = D.uf[uf].nome; sel.appendChild(o); });
     grade.innerHTML = ufs.map(uf => cartao(uf, D.uf[uf], false)).join('');
-    sel.addEventListener('change', () => { const uf = sel.value; if (!uf) { dest.hidden = true; dest.innerHTML = ''; return; } dest.innerHTML = cartao(uf, D.uf[uf], true); dest.hidden = false; });
+    const vazio = document.getElementById('contatoVazio');
+    sel.addEventListener('change', () => { const uf = sel.value; if (!uf) { dest.hidden = true; dest.innerHTML = ''; if (vazio) vazio.hidden = false; return; } dest.innerHTML = cartao(uf, D.uf[uf], true); dest.hidden = false; if (vazio) vazio.hidden = true; });
     const f = D.fonte || {}; if (window.MonitorMapas) MonitorMapas.credito('contatoFonte', {fontes: [(f.nome || 'MIDR') + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + f.atualizado_pelo_orgao_em : ''), 'números nacionais de emergência'], url: f.url, data: f.consultado_em});
   }).catch(() => { grade.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
 })();

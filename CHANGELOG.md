@@ -15,6 +15,16 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §97 · "Leve estas informações com você" volta a ser o título; ficha da Defesa Civil ao lado do seletor · 18/09/2026
+
+Pedido direto da editoria.
+
+**Título do bloco único volta a ser "Leve estas informações com você"**, formatado com o mesmo destaque que "Proteja-se" tinha (tamanho do `<h1>` da página) — o selo separado saiu, já que agora é o único título do bloco, não um rótulo acima de outro título. Texto do parágrafo reescrito: o que o guia cobre (o que fazer, como se proteger, telefones de emergência) e os formatos de uso (salvar, imprimir, enviar por e-mail, compartilhar em grupos de WhatsApp), mantendo o link para o relatório do estado/município na página principal.
+
+**Cartões da Defesa Civil por estado deixam de aparecer todos de uma vez.** A grade dos 27 estados ("Ver todos os estados") passa a vir fechada por padrão — só quem quiser navegar por todos os estados a abre manualmente. A ficha do estado escolhido no seletor passa a aparecer ao lado dele (grid de duas colunas), não abaixo em largura total; um aviso discreto ocupa o espaço à direita antes de qualquer escolha, para o espaço não parecer quebrado. Em telas estreitas, as duas colunas empilham como antes.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente nos dois estados (vazio e com estado escolhido).
+
 ## §96 · Logotipo oficial do MARÉ substitui o texto no cabeçalho; Futura sai do topo, fica só no rodapé · 18/09/2026
 
 Pedido direto da editoria, com arquivo de logotipo em vetor (4 variantes: completo/compacto × fundo claro/escuro).
