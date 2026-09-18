@@ -21,6 +21,7 @@ import json, os, pathlib, random, shutil, subprocess, sys, tempfile
 from datetime import date
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ))  # migrar_saude_instrumentos.py mora na raiz, não em scripts/
 
 
 def j(p): return json.load(open(p, encoding="utf-8"))
@@ -56,10 +57,27 @@ def perturbar(T: pathlib.Path):
         r = por[c]; atos["eventos"].append({"nome": r["nome"], "uf": r["uf"], "ibge": c, "data": "05/09/2026", "causa": "reconhecimento federal", "decreto": "Portaria SEDEC/MIDR nº 9.999",
                                             "fonte": "DOU (portaria SEDEC/MIDR)", "url": "https://www.in.gov.br/web/dou/-/teste", "lat": r["lat"], "lon": r["lon"], "canal": "DOU"})
     w(D / "atos_resposta.json", atos)
-    # 4. saúde
+    # 4. saúde — 18/09/2026: saude_uf.json passou a ter instrumentos[] (handover ponto cego saúde,
+    # §3.2); a perturbação simula um instrumento NOVO chegando — precisa entrar na lista, não só no
+    # topo, ou o portão (u) de verificar_saude.py acusa divergência entre topo e instrumentos[].
+    from migrar_saude_instrumentos import melhor_instrumento, classificar_tipo
     su = j(D / "saude_uf.json")
-    su["uf"]["SC"].update({"status": "NOVO", "orgao": "SES/SC", "doc": "Plano de contingência para arboviroses 2026/2027", "numero": "Portaria nº 1/2026", "data": "20/08/2026", "url": "https://www.saude.sc.gov.br/teste", "natureza_doc": "ex_ante", "consist": "COBRE", "data_verificacao": "06/09/2026", "log_ref": "lote1"})
-    su["uf"]["BA"].update({"status": "READ", "orgao": "SESAB", "doc": "Plano de contingência 2025 readaptado", "data": "10/07/2026", "natureza_doc": "ex_ante", "consist": "PARCIAL", "data_verificacao": "06/09/2026", "log_ref": "lote1"})
+    perturbacoes = {
+        "SC": {"status": "NOVO", "orgao": "SES/SC", "doc": "Plano de contingência para arboviroses 2026/2027", "numero": "Portaria nº 1/2026", "data": "20/08/2026", "url": "https://www.saude.sc.gov.br/teste", "natureza_doc": "ex_ante", "consist": "COBRE", "data_verificacao": "06/09/2026", "log_ref": "lote1"},
+        "BA": {"status": "READ", "orgao": "SESAB", "doc": "Plano de contingência 2025 readaptado", "data": "10/07/2026", "natureza_doc": "ex_ante", "consist": "PARCIAL", "data_verificacao": "06/09/2026", "log_ref": "lote1"},
+    }
+    for uf, perturb in perturbacoes.items():
+        campos_uf = {"consist", "data_verificacao", "log_ref"}
+        for c in campos_uf:
+            if c in perturb: su["uf"][uf][c] = perturb[c]
+        item = {"status": perturb.get("status"), "orgao": perturb.get("orgao"), "doc": perturb.get("doc"),
+                "numero": perturb.get("numero"), "data": perturb.get("data"), "url": perturb.get("url"),
+                "hash_evidencia": None, "natureza_doc": perturb.get("natureza_doc")}
+        item["tipo"] = classificar_tipo(item)
+        su["uf"][uf].setdefault("instrumentos", []).append(item)
+        melhor = melhor_instrumento(su["uf"][uf]["instrumentos"])
+        for c in ("status", "orgao", "doc", "numero", "data", "url", "hash_evidencia", "natureza_doc"):
+            su["uf"][uf][c] = melhor.get(c)
     w(D / "saude_uf.json", su)
     # 5. financiamento
     F = D / "financiamento"; ser = j(F / "serie_nacional.json"); rotas = [r["id"] for r in j(F / "rotas.json")["rotas"]]

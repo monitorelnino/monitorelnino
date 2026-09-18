@@ -27,7 +27,9 @@ Handover da editoria, §3.2 e conclusão do §4.
 
 **Portão novo** em `verificar_saude.py` (item "u"): cada UF precisa de ao menos um item em `instrumentos`, e o status/doc do topo não pode divergir do melhor item em silêncio. Teste negativo executado (status do topo divergindo do instrumento) e revertido com segurança.
 
-Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente na página de saúde, sem erro de JavaScript. Restante do handover (monitor de imprensa dedicado, descoberta automática via wp-json, resserragem manual das 26 UFs restantes, gatilho por marco federal) segue em rodadas futuras, na ordem que a editoria definiu.
+**Achado no CI, corrigido**: o portão 17 (robustez a atualização de dados) simula uma "cópia perturbada" do repositório para provar que uma atualização real de dados não quebra o site — e sua simulação para saúde escrevia só nos campos de topo de duas UFs, sem saber que agora precisa manter `instrumentos[]` sincronizado; o próprio portão novo do item anterior pegou a divergência. Corrigido para a perturbação também inserir o item na lista e recomputar o topo do melhor instrumento, como a rotina real passa a fazer. No caminho, um erro de processo: o trabalho desta rodada foi commitado por engano direto em `main` local (esqueci de entrar na branch de feature antes de editar) — corrigido sem `git checkout` destrutivo, movendo o commit para a branch certa e devolvendo `main` local ao estado publicado.
+
+Suíte inteira verde (22 verificações, incluindo o portão de robustez); derivados regenerados em árvore limpa; conferido visualmente na página de saúde, sem erro de JavaScript. Restante do handover (monitor de imprensa dedicado, descoberta automática via wp-json, resserragem manual das 26 UFs restantes, gatilho por marco federal) segue em rodadas futuras, na ordem que a editoria definiu.
 
 ## §101 · Ponto cego do dicionário de busca em saúde fechado (achado via handover, caso Bahia) · 18/09/2026
 
