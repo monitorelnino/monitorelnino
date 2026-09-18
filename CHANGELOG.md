@@ -15,6 +15,22 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §93 · Proteja-se: guias sobem na página, fichas e contatos redesenhados, PDF reescopado · 17/09/2026
+
+Pedido direto da editoria, quatro frentes na mesma página.
+
+**"Como se proteger em cada cenário" agora vem logo após "Leve estas informações com você".** Na prática, "Defesa Civil do seu estado" (que ficava entre as duas) desceu para depois dos guias — mesmo efeito visual, sem duplicar as três fichas de orientação. O subnav já refletia essa ordem.
+
+**Fichas de chuvas/incêndios/estiagem redesenhadas** — fundo cinza uniforme virou fundo branco com borda superior colorida por risco (reaproveita `--chuva`/`--seca`/`--fogo`, já usadas no selo e no h2 de cada ficha), sombra própria. O quadro "Sinais de alerta" dentro de cada ficha ganhou a mesma borda esquerda colorida, para não ficar branco dentro de um card que também é branco agora.
+
+**Cartões de "Defesa Civil do seu estado" (as 27 UFs) redesenhados** — mesma lógica: borda superior colorida (musgo), sombra própria.
+
+**Botão de baixar o PDF, redesenhado** — ganhou ícone, corpo maior, sombra e elevação no hover; a seção virou texto + botão lado a lado, para a ação mais importante não ficar perdida como um link discreto entre parágrafos.
+
+**PDF: escopo corrigido e cores atualizadas.** Achado real: o gerador varria TODO o conteúdo textual da página (h2/h3/p/li), então o PDF incluía os 27 cartões de contato estadual da Defesa Civil, "Alertas de saúde" e "Direitos ao FGTS Calamidade" — nada disso é telefone de emergência nem dica de proteção. Escopo restrito ao título "Como se proteger" e ao conteúdo dentro das três fichas; o resto fica de fora. Os números de emergência, que o PDF nunca tinha incluído (a barra é feita de `<a><b><span>`, uma estrutura que o antigo varredor de h2/h3/p/li não lia), agora são desenhados à mão como caixas coloridas, mesma paleta dos cartões da página. Os títulos de cada ficha no PDF também passam a usar a cor do risco correspondente (antes, todos saíam na mesma cor, uma inconsistência com a página). Geração real testada de ponta a ponta (jsPDF real rodando em navegador simulado, PDF de verdade lido de volta): confirmado que os 27 contatos, alertas de saúde e direitos não aparecem mais, e que as três fichas completas aparecem no PDF gerado.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente e a geração de PDF testada de ponta a ponta.
+
 ## §92 · Proteja-se: risco por estado sai (já mora no mapa de riscos), cartões de emergência redesenhados · 17/09/2026
 
 Pedido direto da editoria.
