@@ -164,22 +164,28 @@ def cobertura_sanitaria(municipios: list, referencia: list, populacao: dict, aut
 
 
 def gerar() -> int:
+    from migrar_saude_instrumentos import melhor_instrumento   # 18/09/2026: instrumentos[] é a fonte de
+    # verdade agora (handover ponto cego saúde §3.2) — o campo de topo de cada UF deixa de ser lido
+    # direto; é recalculado do melhor item da lista a cada geração, para que uma LAI ou pista aplicada
+    # só na lista (sem reescrever o topo à mão) já valha no índice na próxima rodada.
     su = ler("saude_uf.json", {}) or {}; ss = ler("saude_sinais.json", {}) or {}; sr = ler("sinais_risco.json", {}) or {}
     from recalcular_mare import CRED_POP   # créditos municipais do MARÉ (§5) — a mesma escada, nunca outra
     cob = cobertura_sanitaria(ler("municipios.json", []) or [], ler("municipios_ibge_referencia.json", []) or [], ler("populacao_censo2022.json", {}) or {},
                               (ler("saude_no_plano_auto.json", {}) or {}).get("itens") or {}, (ler("saude_no_plano.json", {}) or {}).get("leituras") or [], CRED_POP)
     ufs = {}
     for uf in UFS:
-        u = (su.get("uf") or {}).get(uf, {}); st = u.get("status", "NAO_VERIFICADO")
+        u = (su.get("uf") or {}).get(uf, {})
+        melhor = melhor_instrumento(u.get("instrumentos") or []) or u   # sem instrumentos[] (dado velho, não migrado): usa o topo como sempre
+        st = melhor.get("status", "NAO_VERIFICADO")
         camada = u.get("camada") or "ciclo"   # 'ciclo' (contingência/preparação) | 'adaptacao' (plano decenal → estrutura)
-        p, pi, pc, pa = prontidao_v03(st, u.get("doc") or "", u.get("data") or "", cob[uf]["cobertura"], camada)
+        p, pi, pc, pa = prontidao_v03(st, melhor.get("doc") or "", melhor.get("data") or "", cob[uf]["cobertura"], camada)
         deng = (ss.get("dengue_capitais") or {}).get(uf) or {}
         sig = ((sr.get("uf") or {}).get(uf) or {})
         avisos = (sig.get("avisos_inmet") or {}); lista = avisos.get("lista") or avisos.get("avisos") or []
         ufs[uf] = {
             "verificado": st != "NAO_VERIFICADO", "prontidao": p, "faixa": faixa(p),
-            "instrumento": {"status": st, "pontos": pi, "doc": u.get("doc"), "data": u.get("data"), "orgao": u.get("orgao"), "url": u.get("url"),
-                            "temporada": temporada_da_edicao(u.get("doc") or "", u.get("data") or "") if st in PONTOS_STATUS else None},
+            "instrumento": {"status": st, "pontos": pi, "doc": melhor.get("doc"), "data": melhor.get("data"), "orgao": melhor.get("orgao"), "url": melhor.get("url"),
+                            "temporada": temporada_da_edicao(melhor.get("doc") or "", melhor.get("data") or "") if st in PONTOS_STATUS else None},
             "cobertura": {"pontos": pc if st in PONTOS_STATUS and camada != "adaptacao" else None, "cobertura_pct": cob[uf]["cobertura"], "pop_coberta": cob[uf]["pop_coberta"],
                           "planos_lidos": cob[uf]["planos_lidos"], "planos_sem_leitura": cob[uf]["planos_sem_leitura"]},
             "antecipacao": {"pontos": pa, "boletim_1": BOLETIM_1, "janela_critica_inicio": JANELA_CRITICA_INICIO},
