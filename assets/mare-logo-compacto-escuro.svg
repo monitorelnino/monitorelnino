@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="130" viewBox="0 0 400 130">
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Archivo+Narrow:wght@400&display=swap');
+    ]]></style>
+    <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#C9814B"/>
+      <stop offset="100%" stop-color="#8FA5A8"/>
+    </linearGradient>
+  </defs>
+  <!-- Fundo -->
+  <rect width="400" height="130" fill="#0E0F0D"/>
+  <!-- Régua -->
+  <line x1="28" y1="18" x2="28" y2="92" stroke="#8FA5A8" stroke-width="0.75"/>
+  <line x1="28" y1="26" x2="38" y2="26" stroke="#8FA5A8" stroke-width="1.2"/>
+  <line x1="28" y1="41" x2="33" y2="41" stroke="#8FA5A8" stroke-width="0.7"/>
+  <line x1="28" y1="55" x2="38" y2="55" stroke="#8FA5A8" stroke-width="1.2"/>
+  <line x1="28" y1="69" x2="33" y2="69" stroke="#8FA5A8" stroke-width="0.7"/>
+  <line x1="28" y1="84" x2="38" y2="84" stroke="#8FA5A8" stroke-width="1.2"/>
+  <!-- Logotipo -->
+  <text x="56" y="92"
+    style="font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:76px;letter-spacing:-1.14px;fill:#EDE6D8;font-optical-sizing:auto">MARÉ</text>
+  <!-- Linha d’água -->
+  <path d="M22 106 C45.7 102.5,69.5 102.5,93.2 106 C116.9 109.5,140.7 109.5,164.4 106 C188.1 102.5,211.9 102.5,235.6 106 C259.3 109.5,283.1 109.5,306.8 106 C330.5 102.5,354.3 102.5,378.0 106"
+    fill="none" stroke="url(#wg)" stroke-width="1.15" stroke-linecap="round"/>
+</svg>

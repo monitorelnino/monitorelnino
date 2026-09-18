@@ -125,7 +125,7 @@ for (const arq of arquivos) {
   const css = [...d.querySelectorAll("style")].map(s => s.textContent).join("\n");
   if (/'Archivo Narrow'\s*,\s*(monospace|sans-serif)\b/.test(css) || /'Fraunces'\s*,\s*sans-serif/.test(css))
     falha(`${nome}: pilha de fallback de fonte fora do padrão (Fraunces→Georgia,serif; Archivo Narrow→Arial Narrow,Arial)`);
-  const inline = [...d.querySelectorAll("[style]")].map(el => el.getAttribute("style")).join(";");
+  const inline = [...d.querySelectorAll("[style]")].filter(el => !el.closest('[data-marca-fixa]')).map(el => el.getAttribute("style")).join(";");
   const tamanhos = [...(css + ";" + inline).matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1]).filter(v => v < 12);
   if (tamanhos.length) falha(`${nome}: font-size abaixo de 12px no CSS: ${[...new Set(tamanhos)].join(", ")}px`);
   // v3.1 §14 (06/09/2026): escala tipográfica, hex proibido fora dos tokens, dois breakpoints
@@ -135,10 +135,11 @@ for (const arq of arquivos) {
   const foraEscala = [...(css + ";" + inline).matchAll(/font-size:\s*([\d.]+)px/g)].map(m => +m[1]).filter(v => !ESCALA.has(v));
   if (foraEscala.length) falha(`${nome}: font-size fora da escala (12·14·16·18·22·28·36·48): ${[...new Set(foraEscala)].join(", ")}px`);
   if (d.querySelector("style")) falha(`${nome}: bloco <style> na página (todo estilo vive em assets/base.css e assets/tokens.css)`);
-  const inlineTipo = [...d.querySelectorAll("[style]")].map(el => el.getAttribute("style")).filter(v => /font-size|font-weight|line-height|font-family|letter-spacing|margin|padding/.test(v));
+  const inlineTipo = [...d.querySelectorAll("[style]")].filter(el => !el.closest('[data-marca-fixa]')).map(el => el.getAttribute("style")).filter(v => /font-size|font-weight|line-height|font-family|letter-spacing|margin|padding/.test(v));
   if (inlineTipo.length) falha(`${nome}: ${inlineTipo.length} atributo(s) style com tipografia ou espaçamento (usar classes de base.css): ${inlineTipo.slice(0, 3).join(" | ")}`);
   const bruto0 = inlinePageJs(fs.readFileSync(path.join(RAIZ, nome), "utf-8"), RAIZ);
-  const jsTipo = [...bruto0.replace(/^[\s\S]*?<body/, "").matchAll(/style=\\?["'][^"']*(font-size|font-weight|line-height|font-family)/g)];
+  const semLogo0 = bruto0.replace(/<svg[^>]*data-marca-fixa="1"[^>]*>[\s\S]*?<\/svg>/g, "");
+  const jsTipo = [...semLogo0.replace(/^[\s\S]*?<body/, "").matchAll(/style=\\?["'][^"']*(font-size|font-weight|line-height|font-family)/g)];
   if (jsTipo.length) falha(`${nome}: script da página gera HTML com tipografia inline (${jsTipo.length})`);
   // componente único de figura: toda .figura tem título, subtítulo e mídia; nenhum título de figura ou de seção começa com número à mão
   d.querySelectorAll(".figura").forEach(f => {
@@ -152,7 +153,11 @@ for (const arq of arquivos) {
   [...d.querySelectorAll(".figura-titulo, main h2")].forEach(h => { if (/^\s*\d+[a-z]?\s*[·.)]/.test(h.textContent)) falha(`${nome}: numeração à mão em "${h.textContent.trim().slice(0, 40)}" (a numeração é automática: contadores CSS figura/secao, a partir de 1)`); });
   for (const cls of ["map-box", "chart-box", "map-card-h", "map-card-sub", "maps-grid", "charts-grid", "card", "kpi", "tr-card", "wide", "h-alta"]) if (d.querySelector("." + cls)) falha(`${nome}: classe legada .${cls} (usar .figura / .cartao / .grade-figuras / .grade-cartoes)`);
   const bruto = inlinePageJs(fs.readFileSync(path.join(RAIZ, nome), "utf-8"), RAIZ);
-  const hex = [...bruto.matchAll(/#[0-9A-Fa-f]{6}\b/g)].map(m => m[0]);
+  // 18/09/2026 (pedido da editoria): o logotipo do MARÉ é uma marca fixa (cores e tipografia
+  // deliberadas do desenho, não conteúdo) — mesmo tratamento de exceção documentada que data-voz
+  // já dá a fichas/leis, aqui para o portão de hex fora de tokens.css.
+  const semLogo = bruto.replace(/<svg[^>]*data-marca-fixa="1"[^>]*>[\s\S]*?<\/svg>/g, "");
+  const hex = [...semLogo.matchAll(/#[0-9A-Fa-f]{6}\b/g)].map(m => m[0]);
   if (hex.length) falha(`${nome}: cor em hex fora de tokens.css/mapas.js (${hex.length}): ${[...new Set(hex)].slice(0, 5).join(", ")}`);
   const bps = [...(css + baseCssParaBreakpoints()).matchAll(/@media[^{]*\((?:max|min)-width:\s*(\d+)px\)/g)].map(m => +m[1]).filter(v => ![640, 1020, 1021].includes(v));
   if (bps.length) falha(`${nome}: breakpoint fora de 640/1020: ${[...new Set(bps)].join(", ")}px`);
