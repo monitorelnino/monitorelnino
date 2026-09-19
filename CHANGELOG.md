@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §106 · Resserragem manual de saúde, rodada 2: Piauí verificado (handover ponto cego saúde, §3.6) · 18/09/2026
+
+Segunda rodada da resserragem manual (MT, PI verificados nesta vez; RN, RO, RR, TO seguem pendentes).
+
+**Piauí: instrumento específico do ciclo localizado.** "Plano de contingência para o enfrentamento do fenômeno El Niño", coordenado com o ADAPTASUS-PI, em fase final de elaboração — confirmado em três fontes independentes, nenhuma com data de conclusão ou link do documento ainda. `data/saude_uf.json` atualizado: PI passa de `NAO_VERIFICADO` para `ELAB` (não `NOVO`: o próprio coordenador do plano descreve como "fase final", não publicado). Índice de saúde: 18 → 19 de 27 UFs verificadas.
+
+**Mato Grosso: pista achada, não aplicada.** Duas fontes descrevem uma "Sala de Situação em Saúde" da SES-MT — uma de agosto de 2026, citando explicitamente "El Niño 2026-2027" e uma portaria no Diário Oficial; outra, da própria SES-MT, com descrição quase idêntica mas datada de outubro de 2024, sem menção nominal ao ciclo atual. Sem acesso direto ao Diário Oficial do Estado (o site da matéria de 2026 bloqueou o fetch), não foi possível confirmar se é a mesma estrutura reativada ou algo novo — por isso o status de MT não mudou; a pista fica registrada para confirmação na próxima rodada, com o teste de robustez em mente: não aplicar sem confirmação de fonte primária, mesmo com boa evidência secundária.
+
+Registro completo de cada busca no repositório privado, `notas/lai/respostas/PI_MT_saude_resserragem_2026-09-18.md`.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa.
+
 ## §105 · Resserragem manual de saúde: Alagoas verificada (handover ponto cego saúde, §3.6) · 18/09/2026
 
 Início da resserragem manual das 10 UFs de saúde nunca verificadas, priorizadas pelo handover. Nesta rodada: AC, AL, AP, MA (6 UFs — MT, PI, RN, RO, RR, TO — seguem para a próxima).

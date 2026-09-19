@@ -71,17 +71,17 @@
   "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"
  },
  "resumo": {
-  "verificadas": 18,
-  "nao_verificadas": 9,
+  "verificadas": 19,
+  "nao_verificadas": 8,
   "por_faixa": {
    "em construção": 11,
    "avançado": 1,
-   "estágio inicial": 5,
+   "estágio inicial": 6,
    "consolidado": 1
   },
   "planos_municipais_lidos": 78,
   "planos_municipais_sem_leitura": 54,
-  "media_das_verificadas": 31.6,
+  "media_das_verificadas": 30.9,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -726,27 +726,27 @@
    ]
   },
   "PI": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 18.3,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
+    "status": "ELAB",
+    "pontos": 35,
+    "doc": "Plano de contingência para o enfrentamento do El Niño (coordenado com o ADAPTASUS-PI — Plano Estadual de Adaptação do Setor Saúde às Alterações Climáticas), em fase final de elaboração",
     "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "orgao": "Sesapi",
+    "url": "https://piauihoje.com/noticias/saude/piaui-prepara-sus-para-possiveis-impactos-do-el-nino-na-saude-da-populacao-464649.html",
+    "temporada": "desconhecida"
    },
    "cobertura": {
-    "pontos": null,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 1
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 20,
     "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
