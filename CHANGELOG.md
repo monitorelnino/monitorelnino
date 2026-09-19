@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §105 · Resserragem manual de saúde: Alagoas verificada (handover ponto cego saúde, §3.6) · 18/09/2026
+
+Início da resserragem manual das 10 UFs de saúde nunca verificadas, priorizadas pelo handover. Nesta rodada: AC, AL, AP, MA (6 UFs — MT, PI, RN, RO, RR, TO — seguem para a próxima).
+
+**Alagoas: instrumento novo localizado e aplicado.** "Plano de Enfrentamento das Arboviroses 2026", lançado pela Sesau em 10/02/2026, confirmado em três fontes independentes. `data/saude_uf.json` atualizado: AL passa de `NAO_VERIFICADO` para `VIG`, tipo `recorrente_arboviroses`, mesmo padrão da maioria das UFs já verificadas. Índice de saúde passa de 17 para 18 de 27 UFs verificadas (média das verificadas: 31,8 → 31,6 — a nota mais baixa de AL puxa a média um pouco, o índice não filtra pra cima).
+
+**AC, AP, MA: busca real, sem instrumento específico publicado** — status mantido `NAO_VERIFICADO`, mas `data_verificacao` registrada (18/09/2026), para a próxima rodada não repetir a mesma busca sem necessidade. Achado lateral em MA: o portal da SES está com publicações suspensas desde 04/07/2026 por período eleitoral (aviso explícito na própria página) — mesmo padrão que o detector `fonte_suspensa_defeso` já existente no projeto reconhece automaticamente.
+
+Registro completo de cada busca (fontes, datas, o que foi e não foi encontrado) no repositório privado, `notas/lai/respostas/AL_saude_resserragem_2026-09-18.md`.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa; conferido visualmente na página de saúde, sem erro de JavaScript.
+
 ## §104 · Descoberta automática de planos via API WordPress (handover ponto cego saúde, §3.4) · 18/09/2026
 
 `descobrir_planos.py`, novo — a fonte 1 de 6 especificadas em `INSTRUCOES_diarios_defeso_LAI_06-09-2026.md` §11 ("achar o plano de SC e todos os demais, sem verificação humana"), decisão editorial de 07/09/2026, ainda não implementada até hoje. Estendida desde o início a saúde (o handover que motivou esta rodada é exatamente sobre esse ponto cego não coberto pela decisão original).
