@@ -15,6 +15,14 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §107 · Resserragem manual de saúde, rodada 3: RN verificado, sem achado sólido o bastante · 18/09/2026
+
+Continuação do handover ponto cego saúde (§3.6). Rio Grande do Norte buscado a fundo — o estado claramente já usa um "plano de contingência para as arboviroses" (foi a base para abrir o 1º Centro de Operações de Emergência em Saúde do Brasil, em janeiro/2025), mas nenhuma fonte encontrada traz data de publicação, número do ato ou link direto, nem confirma se é a versão vigente para o ciclo 2026/2027. `status` mantido `NAO_VERIFICADO`; `data_verificacao` registrada, para a próxima rodada ir direto à fonte oficial em vez de repetir a mesma busca.
+
+Registro completo no privado, `notas/lai/respostas/RN_saude_resserragem_2026-09-18.md`.
+
+Suíte relevante verde; nenhuma mudança no índice de saúde nesta rodada (só o registro de auditoria).
+
 ## §106 · Resserragem manual de saúde, rodada 2: Piauí verificado (handover ponto cego saúde, §3.6) · 18/09/2026
 
 Segunda rodada da resserragem manual (MT, PI verificados nesta vez; RN, RO, RR, TO seguem pendentes).
