@@ -1,4 +1,4 @@
-# MANIFEST_SHA256 · Monitor El Niño Brasil · selado em 19/09/2026 por scripts/gerar_manifesto.py
+# MANIFEST_SHA256 · Monitor El Niño Brasil · selado em 20/09/2026 por scripts/gerar_manifesto.py
 # Escopo: código, páginas, dados, documentação-fonte, configuração E os dois PDFs publicados
 # (METODOLOGIA.pdf, MARE_Indice_Documentacao.pdf — C7 da auditoria de 29/08/2026; os PDFs são
 # regenerados com números vivos; desde a v2.2.3 são bit-deterministicos via SOURCE_DATE_EPOCH,
@@ -15,7 +15,7 @@ e7b36936250d82483b3277c3bff749a3d98ef7f5092efbb5b5943b1e11ada877  .env.example
 c98b2eb496ee1b432cbf57f268b96bdd1de8723960ab16979ae90fdbcd718945  .github/workflows/publicar_dominio_ensaio.yml
 551778c6897707eba190f75c59c97dce025c595a780800613d148ed4a78016f2  .github/workflows/publicar_previa.yml
 dd1b375db57064e39589b8d2dceb85a3efed7dd6774446239e195a6f1b95f633  .github/workflows/verificar_publicado.yml
-d77da6fa38ff6cdfcd99fda2c2f296049a2cb62645e6dd381c9d6b7ae54e4d38  CHANGELOG.md
+05ed71f3778dcf342d3f8e2d7735ed3384a907e3aca0c7f49868082b26e9f838  CHANGELOG.md
 3dd9a8696f04a5c313314b500a2e6651820316e75ed91b481acfb736ca13cfae  CITATION.cff
 e6c1176d410a74a35d953cb48152a31648ad898faaed68adc7867d4ff45cd86f  CONTRIBUTING.md
 e2908f089bd09eacd6c5175b29eebb7d4196452c8a047dbe772dcadf491ed244  DOCUMENTACAO_TECNICA.md
@@ -61,7 +61,7 @@ aec95c58c75dc80a75fa04005c8c216a99b95a7765d4aa7f170a884402359845  coletar_saude.
 f8ef894cbdb59c240a97948baac3199efa404b1c0e7cd150f0566c93a9364ba9  coletar_sinais_risco.py
 06784ba34a6820cc281c082b061466ae97485372fb86afd1e00ce1af02f6775c  coletar_srag_gripe.py
 514c92aa7180bd835510bfaaf05d5a7ac32c4f518965b7b94cc710426177f2e9  coletar_transferegov.py
-455ad864317f87bd6622847ba991c108a9e8dbb9dcf6a6d7a797f07662cbb0db  coletores_base.py
+29d43c02c97c1aab9ae916bfbbcb74025f834306127715005553308ba9a75d2c  coletores_base.py
 cdbfc1bed44188a8ad9874890e276de2c17fa2b3b4e64228438e15105188784b  consultar_querido_diario.py
 c40d8437874feae1a2055fbb86b1e8e8ac3720bac647bbb7d0ba7a64ea017acd  converter_contribuicao.py
 a0b35312b1e4ff756476501cc11bb6970c2ec3ca189e6202504923c375964600  dados-abertos/atos_resposta.csv
@@ -245,6 +245,7 @@ e310aa74ef4630194c6fe51f80693de40e46a8f8245bb89c17717d48a3526aa9  scripts/sondar
 3642a2498a164f53997ae73e2b584ad2fdb7862979dcd3fec9b9c2f38a742172  scripts/sondar_portal_transparencia.py
 48fc31b514700ecc6fb74dc4fd6de17d16b16c59845fd8b93ca6a3b6a16239e3  scripts/sondar_transferegov.py
 0b841216e3c17aaf688d4afe57eaad547ade912a9ef2d236931f830d802f8df1  scripts/testar_detector_defeso.py
+35c6a733e563a9df3e62ab787c1bc7008c09d48c488361f00096af0774b7da8f  scripts/testar_nivel_log_buscas.py
 6143477f6ea2bfa19aea5f9d126956e8bd71082080627cf6a448d116d2b3b215  scripts/validar_dicionario.py
 bf6fd7f28386f2c242e07536a71b2eb3b2d6ab3d23378506146d92a5d390f481  scripts/validar_workflows.py
 c3b3784c00e16118ef05767c84713556731089f9fbea7fc1d4c36de987557916  scripts/verificar_acessibilidade.js

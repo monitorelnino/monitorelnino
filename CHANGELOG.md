@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## Correção · `nivel` fora do vocabulário derrubava a rodada completa ao preservar diário com CPF · 19/09/2026
+
+Achado do **ensaio da rodada antecipada** (`workflow_dispatch` com `ensaio=1`, execução #83): o portão obrigatório `verificar_consistencia.py` caiu com `log_buscas[22208]: nivel inválido: municipal`, interrompendo `atualizar.py` antes do commit. Nenhuma alteração de método; nenhuma nota muda. Classe **código** (PROTOCOLO §3.2).
+
+- **Causa-raiz.** `coletores_base.py` registra em `log_buscas.json` a redação de dados pessoais feita no texto integral de um documento preservado (`redigir_dados_pessoais()`, LGPD art. 6º, III, introduzida em 12/09/2026). Essa chamada passava `nivel="municipal"` — valor que **nunca existiu** no vocabulário controlado do portão (`_NIVEIS = {None, "nacional", "estadual", "municipal_completo"}`). Bug latente: só dispara quando o documento preservado contém CPF a redigir, e por isso não aparece nos portões rodados sobre o dado já commitado — só numa coleta fresca.
+- **Impacto evitado.** A rodada de **segunda 21/09, 09h UTC** roda a mesma varredura municipal e teria falhado do mesmo modo, sem publicar. As rodadas completas de 14–15/09 (#66, #68, #69, #71–#74) falharam com assinatura compatível.
+- **Correção.** `nivel=None` — o valor honesto para um registro que documenta uma redação, não uma busca territorial, e que não tem município/UF estruturados no ponto da chamada. **Não** se usou `municipal_completo`: esse valor tem sentido próprio no §2.1 (bateria municipal completa) e o portão exige `municipio` e `uf` junto dele. O vocabulário controlado **não** foi afrouxado para acomodar o bug.
+- **Teste negativo.** `scripts/testar_nivel_log_buscas.py`, novo: confere por AST que nenhuma chamada de `log_busca()` em `coletores_base.py` passa nível fora do vocabulário, que a chamada da redação usa `nivel=None`, e que `_NIVEIS` não foi ampliado. Reintroduzindo `nivel="municipal"`, duas das três verificações falham.
 ## Correção · `data/monitor_saude.json` (focos_24h) ficava atrás da coleta diária de sinais · 18/09/2026
 
 Achado da rotina diária: portão 12 (`scripts/verificar_derivados.sh`) vermelho na `main` (`7fda5a9`). Nenhuma alteração de método; nenhuma nota muda (peso zero, como sempre — Monitor Saúde nunca é lido por `recalcular_mare.py`). Classe **código** (PROTOCOLO §3.2).
