@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §104 · Descoberta automática de planos via API WordPress (handover ponto cego saúde, §3.4) · 18/09/2026
+
+`descobrir_planos.py`, novo — a fonte 1 de 6 especificadas em `INSTRUCOES_diarios_defeso_LAI_06-09-2026.md` §11 ("achar o plano de SC e todos os demais, sem verificação humana"), decisão editorial de 07/09/2026, ainda não implementada até hoje. Estendida desde o início a saúde (o handover que motivou esta rodada é exatamente sobre esse ponto cego não coberto pela decisão original).
+
+**Mecanismo**: consulta a API WordPress padrão dos sítios oficiais (`/wp-json/wp/v2/media?search=...&mime_type=application/pdf`) — muitos sítios estaduais são WordPress; onde não são, a API simplesmente não responde como esperado e o alvo não produz achado (perda de recall, nunca invenção). Reaproveita a infraestrutura já madura de `coletores_base.py` (cliente HTTP com detecção automática de página de defeso, preservação de evidência com hash, índice único `data/evidencias.json`) em vez de duplicá-la.
+
+**Mesma trava absoluta dos monitores de imprensa** (§101–103): nunca escreve em nenhum dos cinco arquivos que alimentam o índice; todo achado nasce com `documento_oficial_confirmado: null` e `promovivel: false`; fila própria (`data/pistas_descobertas.json`) para triagem humana — promoção a instrumento pontuável é sempre manual (regra R7).
+
+**Lista de domínios**: declarada como incompleta desde a primeira versão — alguns confirmados nesta sessão (`saude.ba.gov.br`, achado no caso Bahia), os demais usam o padrão mais comum como primeira tentativa (`saude.<uf>.gov.br` / `defesacivil.<uf>.gov.br`), precisando de curadoria contínua. Um domínio errado só reduz recall, nunca produz um resultado inventado.
+
+**Erro de teste corrigido antes de publicar**: o primeiro autoteste tentava simular (`mock.patch`) uma resposta de rede, mas usava o nome do módulo como string fixa (`"descobrir_planos.buscar"`) — que não bate quando o script roda diretamente (o Python o chama `__main__`, não `descobrir_planos`, nesse caso). Dois testes rodaram contra a rede de verdade em vez do mock; um deles só "passou" por coincidência (a falha de rede real também caiu no mesmo caminho de tratamento de erro que o teste esperava). Corrigido para resolver o nome do módulo em tempo de execução (`__name__`).
+
+Registrado na Pista A, logo após os dois monitores de imprensa. Self-test completo (domínio conhecido e padrão de fallback, parsing do wp-json isolando só PDFs, tolerância a falha de rede, deduplicação, trava absoluta por inspeção do código-fonte) verde. Nenhum arquivo público alterado.
+
 ## §103 · Monitor de imprensa dedicado à saúde (handover ponto cego saúde, §3.3) · 18/09/2026
 
 `monitorar_imprensa_saude.py`, novo, espelhando `monitorar_imprensa_regional.py` (defesa civil) — mesma trava absoluta (nenhuma pista entra no banco sem confirmação humana em documento primário: três camadas independentes de garantia, verificadas por self-test), mesmo mecanismo de busca (Google News RSS, sem chave de API), mesma fila (`data/pistas_imprensa_saude.json`, cursor próprio em `data/imprensa_saude_cursor.json`, isolados dos de defesa civil).
