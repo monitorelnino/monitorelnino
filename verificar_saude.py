@@ -62,6 +62,10 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
                 # v0.3 (15/09/2026): três componentes com pesos iguais (instrumento, cobertura populacional sanitária, antecipação)
                 if pi is None or pa is None or pc is None or abs(m["prontidao"] - round((pi + pc + pa) / 3.0, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos três componentes")
                 if not (0 <= pc <= 100): erros.append(f"(m) monitor_saude: {uf} cobertura sanitária fora de 0–100")
+            # (v) 18/09/2026 (handover ponto cego saúde, §3.5): requer_reverificacao/motivo_reverificacao
+            # são sinalizadores internos (gatilho por marco federal) — nunca podem vazar ao índice público.
+            if "requer_reverificacao" in m or "motivo_reverificacao" in m:
+                erros.append(f"(v) {uf}: sinalizador interno de reverificação vazou para monitor_saude.json")
         if "monitor_saude" in motor: erros.append("(m) recalcular_mare.py referencia monitor_saude (proibido)")
         # (d) §8 desfechos: nunca lidos pelo motor; SE incompletas vazadas; ressalva de não-atribuição nas superfícies
         if re.search(r"saude_desfechos|saude_no_plano", motor): erros.append("(d) recalcular_mare.py referencia desfechos/saude_no_plano (proibido)")

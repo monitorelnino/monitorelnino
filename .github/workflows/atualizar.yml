@@ -128,6 +128,15 @@ jobs:
         continue-on-error: true
         run: python3 descobrir_planos.py --limite 20
 
+      # 18/09/2026 (handover ponto cego saúde, §3.5 — prioridade MÉDIA, o que evita a próxima
+      # defasagem de duas semanas, não o que fecha a lacuna de hoje): após cada marco federal
+      # relevante (assembleia do Conass, coletiva de imprensa, oficina), marca as 27 UFs com
+      # requer_reverificacao=true — sinalizador interno em saude_uf.json, nunca público
+      # (verificado por self-test que gerar_monitor_saude.py nunca o propaga).
+      - name: Marcar reverificação por marco federal de saúde (interno; informativa)
+        continue-on-error: true
+        run: python3 detectar_marcos_federais.py
+
       # 31/08/2026 (pedido de Patricia, motivado pelo temporal de granizo em SC):
       # vigia de atos de RESPOSTA (decretos de emergência/calamidade pública) —
       # varre as 27 UFs em rodízio simples, sem priorização (um temporal pode
