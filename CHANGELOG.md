@@ -15,6 +15,20 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §108 · Resserragem manual de saúde, rodada 4: Rondônia verificado — fecha as 10 UFs nunca verificadas · 18/09/2026
+
+Última rodada da priorização original do handover ponto cego saúde (§3.6): as 10 UFs que nunca tinham sido verificadas foram todas tocadas ao longo de quatro rodadas nesta sessão.
+
+**Rondônia: instrumento específico do ciclo localizado.** "Plano Operacional Integrado de Contingência Climática em Saúde", da Sesau, confirmado em oito fontes de imprensa independentes com texto quase idêntico (nota oficial, ~03/09/2026) — considera explicitamente a experiência de 2024 (menor cota do Rio Madeira, recorde de queimadas) e o novo ciclo do El Niño 2026-2027. Uma das fontes precisa: o plano está "concluído" mas "em processo de validação e discussão com os municípios" — por isso `data/saude_uf.json` registra RO como `ELAB`, não `NOVO`. Índice de saúde: 19 → 20 de 27 UFs verificadas.
+
+**Roraima: pista em andamento, não aplicada.** Uma missão do Ministério da Saúde está em Roraima nestes dias para apoiar a elaboração de um plano diante da seca e do El Niño — recente e conjunta demais com o federal para render um documento próprio da Sesau-RR já nomeado e publicável com confiança. Fica para reverificar em 2-3 semanas.
+
+**Tocantins**: único documento estadual encontrado cobre dados até 2020/2021 — versão claramente desatualizada de um plano recorrente, sem sinal de atualização para o ciclo atual.
+
+**Cobertura final das 10 UFs nunca verificadas**: 3 achados aplicados (AL, PI, RO), 6 buscadas sem achado sólido o bastante para aplicar (AC, AP, MA, RN, RR, TO), 1 pista ambígua não confirmada de uma UF já verificada (MT, rodada 2) — tabela completa no registro privado, `notas/lai/respostas/RO_RR_TO_saude_resserragem_2026-09-18.md`.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa.
+
 ## §107 · Resserragem manual de saúde, rodada 3: RN verificado, sem achado sólido o bastante · 18/09/2026
 
 Continuação do handover ponto cego saúde (§3.6). Rio Grande do Norte buscado a fundo — o estado claramente já usa um "plano de contingência para as arboviroses" (foi a base para abrir o 1º Centro de Operações de Emergência em Saúde do Brasil, em janeiro/2025), mas nenhuma fonte encontrada traz data de publicação, número do ato ou link direto, nem confirma se é a versão vigente para o ciclo 2026/2027. `status` mantido `NAO_VERIFICADO`; `data_verificacao` registrada, para a próxima rodada ir direto à fonte oficial em vez de repetir a mesma busca.

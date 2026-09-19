@@ -71,17 +71,17 @@
   "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"
  },
  "resumo": {
-  "verificadas": 19,
-  "nao_verificadas": 8,
+  "verificadas": 20,
+  "nao_verificadas": 7,
   "por_faixa": {
    "em construção": 11,
    "avançado": 1,
-   "estágio inicial": 6,
+   "estágio inicial": 7,
    "consolidado": 1
   },
   "planos_municipais_lidos": 78,
   "planos_municipais_sem_leitura": 54,
-  "media_das_verificadas": 30.9,
+  "media_das_verificadas": 30.2,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -886,27 +886,27 @@
    ]
   },
   "RO": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 18.3,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
+    "status": "ELAB",
+    "pontos": 35,
+    "doc": "Plano Operacional Integrado de Contingência Climática em Saúde",
     "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "orgao": "Sesau/RO",
+    "url": "https://www.rondoniagora.com/geral/sesau-cria-plano-para-enfrentar-impactos-das-mudancas-climaticas-na-saude-em-rondonia",
+    "temporada": "desconhecida"
    },
    "cobertura": {
-    "pontos": null,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 1
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 20,
     "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
