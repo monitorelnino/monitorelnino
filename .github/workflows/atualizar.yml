@@ -120,6 +120,14 @@ jobs:
         continue-on-error: true
         run: python3 monitorar_imprensa_saude.py --limite 27
 
+      # 18/09/2026 (handover ponto cego saúde, §3.4; especificado em
+      # INSTRUCOES_diarios_defeso_LAI_06-09-2026.md §11): fonte 1 de 6 ("achar o plano de SC
+      # e todos os demais, sem verificação humana") — API WordPress dos sítios oficiais,
+      # defesa civil e saúde desde o início. 100% descoberta: nunca promove sozinho (R7).
+      - name: Descobrir planos via API WordPress (descoberta; informativa)
+        continue-on-error: true
+        run: python3 descobrir_planos.py --limite 20
+
       # 31/08/2026 (pedido de Patricia, motivado pelo temporal de granizo em SC):
       # vigia de atos de RESPOSTA (decretos de emergência/calamidade pública) —
       # varre as 27 UFs em rodízio simples, sem priorização (um temporal pode
