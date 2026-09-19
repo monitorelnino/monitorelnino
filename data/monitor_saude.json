@@ -74,14 +74,14 @@
   "verificadas": 20,
   "nao_verificadas": 7,
   "por_faixa": {
-   "em construção": 11,
+   "em construção": 10,
    "avançado": 1,
    "estágio inicial": 7,
-   "consolidado": 1
+   "consolidado": 2
   },
   "planos_municipais_lidos": 78,
   "planos_municipais_sem_leitura": 54,
-  "media_das_verificadas": 30.2,
+  "media_das_verificadas": 31.3,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -1087,16 +1087,16 @@
   },
   "SP": {
    "verificado": true,
-   "prontidao": 28.3,
-   "faixa": "em construção",
+   "prontidao": 50.0,
+   "faixa": "consolidado",
    "instrumento": {
-    "status": "VIG",
-    "pontos": 45,
-    "doc": "Plano de Contingência das Arboviroses Urbanas: Dengue, Chikungunya e Zika 2025/2026 (apresentado em 15/01/2025; nova metodologia de estágios)",
-    "data": "15/01/2025",
-    "orgao": "SES-SP / CVE",
-    "url": "https://dengue.saude.sp.gov.br/",
-    "temporada": "2025/2026"
+    "status": "NOVO",
+    "pontos": 100,
+    "doc": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño",
+    "data": "31/08/2026",
+    "orgao": "SES-SP",
+    "url": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/super-el-nino-faz-sao-paulo-lancar-plano-para-antecipar-cenarios-de-risco/",
+    "temporada": "2026/2027"
    },
    "cobertura": {
     "pontos": 0.0,
@@ -1106,7 +1106,7 @@
     "planos_sem_leitura": 2
    },
    "antecipacao": {
-    "pontos": 40,
+    "pontos": 50,
     "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },

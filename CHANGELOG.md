@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §109 · Padrão Bahia confirmado em São Paulo — primeiro achado da segunda passada · 18/09/2026
+
+A intenção original do handover ponto cego saúde, ainda não feita até aqui: procurar, nas UFs já verificadas, um instrumento mais específico do que o registrado — exatamente o que aconteceu com a Bahia. Primeiro achado desse tipo.
+
+**São Paulo tinha só o plano recorrente de arboviroses registrado** (15/01/2025). Achado: "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño", lançado pela SES-SP em 31/08/2026, cobrindo quatro cenários — chuvas extremas/enchentes/deslizamentos, ondas de calor/queimadas, arboviroses e um quarto eixo — não só arboviroses. Confirmado em seis fontes de imprensa independentes.
+
+**Aplicado sem apagar o instrumento anterior**: o plano recorrente de 2025 continua na lista `instrumentos[]#s; o novo entra como segundo item. `melhor_instrumento()` (escrito no §102) escolheu automaticamente o mais forte — a primeira vez que esse mecanismo roda com dois instrumentos reais da mesma UF, confirmando que a lógica funciona como projetado. SP passa de `VIG` para `NOVO`; a faixa do estado sobe de "em construção" para "consolidado".
+
+**Minas Gerais**, buscado com o mesmo critério, não teve achado — só atividade federal genérica e o planejamento anual de saúde (documento diferente de um plano de contingência). Status mantido.
+
+Suíte inteira verde (21 verificações); derivados regenerados em árvore limpa. Registro completo no privado, `notas/lai/respostas/SP_saude_padrao_bahia_2026-09-18.md` — inclui a lista de UFs que ainda faltam nessa segunda passada.
+
 ## §108 · Resserragem manual de saúde, rodada 4: Rondônia verificado — fecha as 10 UFs nunca verificadas · 18/09/2026
 
 Última rodada da priorização original do handover ponto cego saúde (§3.6): as 10 UFs que nunca tinham sido verificadas foram todas tocadas ao longo de quatro rodadas nesta sessão.

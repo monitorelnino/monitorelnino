@@ -875,8 +875,8 @@
     "abrigos e continuidade de serviços"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "18/09/2026",
+   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_padrao_bahia_segunda_passada",
    "instrumentos": [
     {
      "status": "VIG",
@@ -889,17 +889,29 @@
      "natureza_doc": "ex-ante",
      "justificativa_ex_ante": "plano sazonal recorrente; localizado via Conass (agregador de secretarias) + portal oficial dengue.saude.sp.gov.br",
      "tipo": "recorrente_arboviroses"
+    },
+    {
+     "status": "NOVO",
+     "orgao": "SES-SP",
+     "doc": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño",
+     "numero": null,
+     "data": "31/08/2026",
+     "url": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/super-el-nino-faz-sao-paulo-lancar-plano-para-antecipar-cenarios-de-risco/",
+     "hash_evidencia": null,
+     "natureza_doc": "ex-ante",
+     "justificativa_ex_ante": "plano específico do ciclo El Niño 2026/2027, lançado em 31/08/2026, cobrindo 4 cenários (chuvas extremas/enchentes/deslizamentos, ondas de calor/queimadas, arboviroses, e um quarto eixo) — mais abrangente que o plano recorrente de arboviroses já registrado; confirmado em 6 fontes de imprensa independentes (CNN Brasil, Agência Brasil, Jornal Guarulhos em Destaque, Diário do Litoral, thmais.com.br)",
+     "tipo": "especifico_ciclo"
     }
    ],
-   "status": "VIG",
-   "orgao": "SES-SP / CVE",
-   "doc": "Plano de Contingência das Arboviroses Urbanas: Dengue, Chikungunya e Zika 2025/2026 (apresentado em 15/01/2025; nova metodologia de estágios)",
+   "status": "NOVO",
+   "orgao": "SES-SP",
+   "doc": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño",
    "numero": null,
-   "data": "15/01/2025",
-   "url": "https://dengue.saude.sp.gov.br/",
+   "data": "31/08/2026",
+   "url": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/super-el-nino-faz-sao-paulo-lancar-plano-para-antecipar-cenarios-de-risco/",
    "hash_evidencia": null,
    "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano sazonal recorrente; localizado via Conass (agregador de secretarias) + portal oficial dengue.saude.sp.gov.br"
+   "justificativa_ex_ante": "plano específico do ciclo El Niño 2026/2027, lançado em 31/08/2026, cobrindo 4 cenários (chuvas extremas/enchentes/deslizamentos, ondas de calor/queimadas, arboviroses, e um quarto eixo) — mais abrangente que o plano recorrente de arboviroses já registrado; confirmado em 6 fontes de imprensa independentes (CNN Brasil, Agência Brasil, Jornal Guarulhos em Destaque, Diário do Litoral, thmais.com.br)"
   },
   "TO": {
    "risco_sanitario_projetado": [
