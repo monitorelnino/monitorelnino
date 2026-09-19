@@ -15,6 +15,18 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §103 · Monitor de imprensa dedicado à saúde (handover ponto cego saúde, §3.3) · 18/09/2026
+
+`monitorar_imprensa_saude.py`, novo, espelhando `monitorar_imprensa_regional.py` (defesa civil) — mesma trava absoluta (nenhuma pista entra no banco sem confirmação humana em documento primário: três camadas independentes de garantia, verificadas por self-test), mesmo mecanismo de busca (Google News RSS, sem chave de API), mesma fila (`data/pistas_imprensa_saude.json`, cursor próprio em `data/imprensa_saude_cursor.json`, isolados dos de defesa civil).
+
+**Diferença deliberada**: os termos de busca são os do dicionário ampliado no §101 (achado do caso Bahia — nomes que espelham o programa federal do MS, não mais só "arboviroses"), combinados a "secretaria de saúde"/"Sesab"/"Ses&lt;UF&gt;". Priorização em três camadas: UFs nunca verificadas primeiro, depois as com verificação anterior a setembro de 2026, depois as demais em busca ampla (para pescar o próprio padrão Bahia: UF já com instrumento registrado, mas um mais específico ainda não descoberto).
+
+**Erro cometido e corrigido antes de publicar**: a primeira versão da priorização comparava datas no formato `dd/mm/aaaa` como texto puro — o que não ordena por data real, já que o dia vem primeiro (`"05/09/2026" > "01/09/2026"` como string, mas isso não significa o que parece). Corrigido para comparar por `aaaa-mm` depois de decompor a data; o self-test que pegou o erro original foi mantido, com um caso adicional para não deixar essa classe de bug repetir.
+
+Registrado na Pista A (`atualizar.yml`), logo após a vigia de imprensa de defesa civil, mesmo padrão (`continue-on-error: true`, informativa, nunca bloqueante).
+
+Self-test completo (parser RSS, heurística de fonte provável, deduplicação, trava absoluta por inspeção do próprio código-fonte, priorização em camadas, cursor) verde. Nenhum arquivo público (HTML/JS/CSS) alterado — só um coletor novo e o workflow que o agenda.
+
 ## §102 · saude_uf.json migrado para instrumentos[]; LAI da Bahia enviada · 18/09/2026
 
 Handover da editoria, §3.2 e conclusão do §4.
