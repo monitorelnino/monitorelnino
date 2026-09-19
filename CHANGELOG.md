@@ -21,7 +21,7 @@ A intenção original do handover ponto cego saúde, ainda não feita até aqui:
 
 **São Paulo tinha só o plano recorrente de arboviroses registrado** (15/01/2025). Achado: "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño", lançado pela SES-SP em 31/08/2026, cobrindo quatro cenários — chuvas extremas/enchentes/deslizamentos, ondas de calor/queimadas, arboviroses e um quarto eixo — não só arboviroses. Confirmado em seis fontes de imprensa independentes.
 
-**Aplicado sem apagar o instrumento anterior**: o plano recorrente de 2025 continua na lista `instrumentos[]#s; o novo entra como segundo item. `melhor_instrumento()` (escrito no §102) escolheu automaticamente o mais forte — a primeira vez que esse mecanismo roda com dois instrumentos reais da mesma UF, confirmando que a lógica funciona como projetado. SP passa de `VIG` para `NOVO`; a faixa do estado sobe de "em construção" para "consolidado".
+**Aplicado sem apagar o instrumento anterior**: o plano recorrente de 2025 continua na lista `instrumentos[]`; o novo entra como segundo item. `melhor_instrumento()` (escrito no §102) escolheu automaticamente o mais forte — a primeira vez que esse mecanismo roda com dois instrumentos reais da mesma UF, confirmando que a lógica funciona como projetado. SP passa de `VIG` para `NOVO`; a faixa do estado sobe de "em construção" para "consolidado".
 
 **Minas Gerais**, buscado com o mesmo critério, não teve achado — só atividade federal genérica e o planejamento anual de saúde (documento diferente de um plano de contingência). Status mantido.
 
