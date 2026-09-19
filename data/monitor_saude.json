@@ -71,17 +71,17 @@
   "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"
  },
  "resumo": {
-  "verificadas": 17,
-  "nao_verificadas": 10,
+  "verificadas": 18,
+  "nao_verificadas": 9,
   "por_faixa": {
+   "em construção": 11,
    "avançado": 1,
-   "em construção": 10,
    "estágio inicial": 5,
    "consolidado": 1
   },
   "planos_municipais_lidos": 78,
   "planos_municipais_sem_leitura": 54,
-  "media_das_verificadas": 31.8,
+  "media_das_verificadas": 31.6,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -126,27 +126,27 @@
    ]
   },
   "AL": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 28.3,
+   "faixa": "em construção",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "VIG",
+    "pontos": 45,
+    "doc": "Plano de Enfrentamento das Arboviroses 2026",
+    "data": "10/02/2026",
+    "orgao": "Sesau/AL",
+    "url": "https://www.saude.al.gov.br/secretaria-de-estado-da-saude-lanca-plano-de-enfrentamento-das-arboviroses-para-2026/",
+    "temporada": "2026/2027"
    },
    "cobertura": {
-    "pontos": null,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 2
    },
    "antecipacao": {
-    "pontos": null,
+    "pontos": 40,
     "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
