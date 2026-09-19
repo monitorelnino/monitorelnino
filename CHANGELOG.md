@@ -15,6 +15,22 @@ Nenhuma alteração de método. Classe **conteúdo**.
 
 - MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
+## §110 · Gatilho de reverificação por marco federal (handover ponto cego saúde, §3.5 — fecha o handover) · 18/09/2026
+
+Último item do handover, prioridade média por definição da própria editoria: não fecha a lacuna de hoje, mas evita a próxima defasagem de duas semanas — o mecanismo que faltava para o sistema perguntar sozinho "algo mudou desde a última verificação?" depois de um marco como a Assembleia do Conass que motivou boa parte das descobertas de hoje.
+
+`detectar_marcos_federais.py`, novo: lê o feed RSS do Ministério da Saúde (`gov.br/saude`, Plone — RSS padrão em `<pasta>/RSS`), filtra por palavras-chave de marco relevante (Conass, coletiva, oficina, El Niño, AdaptaSUS), e compara contra `data/marcos_federais_saude.json` (marcos já processados). Marco novo → as 27 UFs de `saude_uf.json` recebem `requer_reverificacao: true` e `motivo_reverificacao`, sinalizadores internos até a rotina semanal confirmar ou atualizar cada UF.
+
+**Semeados os três marcos já identificados nesta sessão** (lançamento do AdaptaSUS em junho, apresentação às secretarias estaduais em agosto, coletiva de imprensa em setembro) como já processados, sem marcar as UFs — a resserragem manual desta mesma sessão (§105–109) já fez esse trabalho; o gatilho não deveria repeti-lo.
+
+**Erro cometido e corrigido antes de publicar**: o primeiro portão de segurança que escrevi (garantindo que os sinalizadores nunca vazam ao índice público) testava o parâmetro errado — `indice` em `verificar_saude.py` é `data/indice.json` (o índice de defesa civil), não `data/monitor_saude.json` (saúde). O teste negativo com o arquivo errado "passou" mesmo com um vazamento injetado de propósito — um alarme falso de segurança. Corrigido para usar `_ms`, a variável que o próprio arquivo já carrega de `monitor_saude.json`; o teste negativo, refeito contra o arquivo certo, pegou o vazamento como devia.
+
+Suíte inteira verde (21 verificações, mais o self-test do novo script); derivados regenerados em árvore limpa.
+
+---
+
+**Isto fecha o handover do ponto cego de saúde por inteiro**: os cinco itens de código (§101–104, §110), a resserragem manual das 10 UFs nunca verificadas (§105–108), e o início da segunda passada nas UFs já verificadas — a intenção original por trás de todo o handover (§109, e mais rodadas registradas só no privado). Pistas ainda pendentes: Mato Grosso (ambígua) e Roraima (missão federal em curso).
+
 ## §109 · Padrão Bahia confirmado em São Paulo — primeiro achado da segunda passada · 18/09/2026
 
 A intenção original do handover ponto cego saúde, ainda não feita até aqui: procurar, nas UFs já verificadas, um instrumento mais específico do que o registrado — exatamente o que aconteceu com a Bahia. Primeiro achado desse tipo.
