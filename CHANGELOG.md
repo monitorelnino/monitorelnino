@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §111 · Minas Gerais: plano específico do ciclo localizado pela descoberta automática · 19/09/2026
+
+Primeiro achado aplicado vindo do fluxo de **descoberta automática via API WordPress** (§11), e não de busca manual. Nenhuma alteração de método. Classe **conteúdo**.
+
+**O §109 (18/09) registrou MG sem achado** — "só atividade federal genérica e o planejamento anual de saúde". A rodada automática de 19/09 encontrou, no portal oficial `saude.mg.gov.br`, o **"Plano de Enfrentamento ao El Niño do Estado de Minas Gerais: Preparação, Monitoramento e Resposta do Setor Saúde"** (SES-MG / Subsecretaria de Vigilância em Saúde, 127 páginas, publicado em 08/09/2026).
+
+**Triagem feita sobre o documento primário, não sobre notícia a respeito dele.** O PDF foi preservado pelo robô (`hash_evidencia`) e conferido nesta sessão: quadros datados "Minas Gerais, 2026/2027" (ciclo corrente); seis estágios operacionais por cor (normalidade, mobilização, alerta, situação de emergência, crise) para os cenários de período chuvoso e de seca/estiagem, cada um com cenário, indicadores, ações e setores responsáveis; e estrutura de ativação e desativação de COE. Evidência mais forte que a do padrão Bahia aplicado em SP (§109), que se apoiou em seis fontes de imprensa com `hash_evidencia` nulo.
+
+**Aplicado sem apagar o instrumento anterior**, como em SP: o plano recorrente de arboviroses (PEC-ARBO, Resolução SES/MG nº 10.440, 17/09/2025) permanece em `instrumentos[]`; o novo entra como segundo item, `tipo: especifico_ciclo`. `melhor_instrumento()` promoveu sozinho — MG passa de `VIG` para `NOVO` e a faixa do estado sobe de "em construção" para "consolidado". Índice de saúde: média das verificadas 31,3 → 32,4.
+
+**Nota do MARÉ inalterada** (média nacional 43,6, reproduzida bit a bit por `recalcular_mare.py --check`): a camada de saúde é peso zero e nunca é lida pelo motor do índice.
+
+As duas entradas correspondentes em `data/pistas_descobertas.json` saem de `pendente_confirmacao_documento` para aplicadas; decisão registrada em `data/log_buscas.json` (`nivel: "estadual"`).
+
 ## Correção · `nivel` fora do vocabulário derrubava a rodada completa ao preservar diário com CPF · 19/09/2026
 
 Achado do **ensaio da rodada antecipada** (`workflow_dispatch` com `ensaio=1`, execução #83): o portão obrigatório `verificar_consistencia.py` caiu com `log_buscas[22208]: nivel inválido: municipal`, interrompendo `atualizar.py` antes do commit. Nenhuma alteração de método; nenhuma nota muda. Classe **código** (PROTOCOLO §3.2).

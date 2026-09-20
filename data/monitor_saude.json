@@ -74,14 +74,14 @@
   "verificadas": 20,
   "nao_verificadas": 7,
   "por_faixa": {
-   "em construção": 10,
+   "em construção": 9,
    "avançado": 1,
    "estágio inicial": 7,
-   "consolidado": 2
+   "consolidado": 3
   },
   "planos_municipais_lidos": 78,
   "planos_municipais_sem_leitura": 54,
-  "media_das_verificadas": 31.3,
+  "media_das_verificadas": 32.4,
   "nota": "a média cobre só as UFs verificadas e não é um número nacional"
  },
  "ufs": {
@@ -487,16 +487,16 @@
   },
   "MG": {
    "verificado": true,
-   "prontidao": 28.3,
-   "faixa": "em construção",
+   "prontidao": 50.0,
+   "faixa": "consolidado",
    "instrumento": {
-    "status": "VIG",
-    "pontos": 45,
-    "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC-ARBO), instituído por resolução",
-    "data": "17/09/2025",
-    "orgao": "SES-MG",
-    "url": "https://www.saude.mg.gov.br/aedes/orientacoes/",
-    "temporada": "2025/2026"
+    "status": "NOVO",
+    "pontos": 100,
+    "doc": "Plano de Enfrentamento ao El Niño do Estado de Minas Gerais: Preparação, Monitoramento e Resposta do Setor Saúde",
+    "data": "08/09/2026",
+    "orgao": "SES-MG / Subsecretaria de Vigilância em Saúde",
+    "url": "https://www.saude.mg.gov.br/wp-content/uploads/2026/08/Plano-de-Enfrentamento-ao-El-Nino-correcao.pdf",
+    "temporada": "2026/2027"
    },
    "cobertura": {
     "pontos": 0.0,
@@ -506,7 +506,7 @@
     "planos_sem_leitura": 0
    },
    "antecipacao": {
-    "pontos": 40,
+    "pontos": 50,
     "boletim_1": "29/06/2026",
     "janela_critica_inicio": "01/10/2026"
    },
