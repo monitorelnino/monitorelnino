@@ -326,3 +326,52 @@ jobs:
           rm -f "$RUNNER_TEMP/robo_cortina"
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+
+      - name: Repor o site completo no domínio (quando publicacao.json = senha)
+        # 20/09/2026 (§120). Defeito estrutural, não acidente de uma rodada: o ramo `publico`
+        # tem workflow próprio que dispara A CADA PUSH nele, e o passo anterior empurra o
+        # contador da cortina. Resultado: toda rodada semanal republicava a cortina por cima
+        # do site completo, e o domínio perdia o modo senha até alguém repor à mão.
+        # Aqui a rodada termina restaurando o estado declarado em data/publicacao.json:
+        #   dominio: "senha"   -> site completo, Basic-Auth + noindex (este passo)
+        #   dominio: "cortina" -> cortina do ramo publico (nada a fazer: já é o que ficou)
+        #   dominio: "aberto"  -> lançamento; fora do escopo deste passo, que sempre põe noindex
+        # A ordem importa: este passo vem DEPOIS do push da cortina e espera o deploy dela
+        # assentar, senão os dois deploys correm e o vencedor vira sorteio.
+        if: always()
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          MODO=$(python3 -c "import json;print(json.load(open('data/publicacao.json')).get('dominio',''))" 2>/dev/null || echo "")
+          echo "modo declarado em data/publicacao.json: '${MODO}'"
+          if [ "$MODO" != "senha" ]; then
+            echo "Domínio não está em modo senha — nada a repor."; exit 0
+          fi
+          if [ -z "$PREVIA_BASIC_AUTH" ] || [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo "::warning::Segredo ausente (PREVIA_BASIC_AUTH ou NETLIFY_AUTH_TOKEN) — domínio fica na cortina; repor pelo workflow de ensaio."; exit 0
+          fi
+          # Espera o deploy disparado pelo push na cortina assentar, para não correr com ele.
+          sleep 120
+          set +e
+          {
+            echo "passo=repor_dominio commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) modo=${MODO}"
+            printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers
+            printf 'User-agent: *\nDisallow: /\n' > robots.txt
+            npx --yes netlify-cli@17 deploy --prod --dir=. --message "Reposição do site no domínio apos rodada ${GITHUB_SHA::7}" > /tmp/repor_out.txt 2>&1
+            echo "codigo_saida=$?"
+            rm -f _headers; git checkout -- robots.txt 2>/dev/null
+            grep -vE "npm warn" /tmp/repor_out.txt | grep -E "Error|error|422|Deploy is live|Website URL" | head -c 1200
+          } > /tmp/repor_relatorio.txt 2>&1
+          sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/repor_relatorio.txt
+          [ -n "$PREVIA_BASIC_AUTH" ] && sed -i "s/${PREVIA_BASIC_AUTH}/[SENHA]/g" /tmp/repor_relatorio.txt
+          if grep -q "Deploy is live" /tmp/repor_relatorio.txt; then
+            echo "Domínio reposto com o site completo, atrás de senha."
+          else
+            echo "::warning::Reposição falhou — o domínio pode ter ficado na cortina. Ver robo-registro."
+          fi
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg_repor 2>/dev/null
+          mkdir -p /tmp/reg_repor/relatorios && cp /tmp/repor_relatorio.txt "/tmp/reg_repor/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_repor_dominio.txt"
+          cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio ${GITHUB_SHA::7}" && git push -q
