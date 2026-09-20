@@ -4079,3 +4079,18 @@ aceito apenas se exatamente zero) que validou cada correção abaixo.
 - **v3**: promoção do instrumento de financiamento preventivo a
   subcritério do componente de instrumento estadual, condicionada à
   bateria negativa completa nas 27 UFs.
+
+## §127 · Autotestes das sondas de ENSO (IRI) e MUNIC (IBGE) ligados ao portão de regressão · 20/09/2026
+
+Classe **código**. Não altera pesos, créditos, componentes ou régua.
+
+Os dois autotestes existentes — `sondar_enso_probabilidades.py --autoteste` (§125) e
+`sondar_munic_ibge.py --autoteste` (§126) — passam a rodar no bloco **Portões de regressão
+(testes negativos dedicados)** de `portoes.yml`. Não foram incluídos nos PRs originais para
+evitar conflito com o §123, que criou o bloco. Ambos verdes na `main` atual.
+
+`pip install openpyxl==3.1.5 --break-system-packages -q` foi adicionado antes da sonda
+MUNIC: o workflow `portoes.yml` não instala `requirements.txt` (usa só a biblioteca padrão
+para todo o resto), mas a sonda MUNIC chama `openpyxl` no autoteste quando a biblioteca está
+presente e o pula (com aviso) se não estiver — o portão precisa da instalação explícita para
+que o caso de xlsx seja efetivamente testado e não silenciosamente omitido.
