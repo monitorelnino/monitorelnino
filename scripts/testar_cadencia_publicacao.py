@@ -107,6 +107,15 @@ def main():
     if re.search(r"dia_semana\s*=\s*datetime\.date\.today\(\)", fonte):
         falhas.append("dia_semana ainda vem de datetime.date.today() (UTC no runner) — use hoje_editorial()")
 
+    # 5b. Nenhuma data do pipeline pode vir de UTC: a rodada de sábado 22h40 começa
+    #     no domingo em UTC e cruza a meia-noite, então date.today() erra dia em dois
+    #     lugares — a data da edição (atualizado_em/corte) e o lote da varredura.
+    for linha_n, linha in enumerate(fonte.splitlines(), 1):
+        codigo = linha.split("#", 1)[0]
+        if "datetime.date.today()" in codigo:
+            falhas.append(f"atualizar.py:{linha_n} usa datetime.date.today() (UTC no runner) "
+                          f"fora de comentário — use hoje_editorial(): {codigo.strip()[:70]}")
+
     # 6. O cron semanal do workflow cai no dia prometido, convertido para o fuso da redação.
     wf = RAIZ / ".github" / "workflows" / "atualizar.yml"
     if not wf.exists():
