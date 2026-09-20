@@ -9,7 +9,19 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## §112 · Triagem das filas de descoberta automática, e um defeito no monitor de imprensa de saúde · 19/09/2026
+## §116 · Filtro de UF em `monitorar_imprensa_saude.py` — rejeita atribuição cruzada de RSS nacional · 20/09/2026
+
+Bug detectado em 19/09 (§112) e corrigido nesta rotina. Nenhuma alteração de método; **nenhuma nota muda**; nenhum dado de `data/*.json` tocado. Classe **código** (PROTOCOLO §3.2).
+
+**Causa-raiz.** O Google News RSS devolve resultado de cobertura nacional para queries por UF, e o coletor registrava todos os itens como pistas da UF-alvo sem verificar se a notícia mencionava de fato aquele estado. No lote de 19/09, 20 das 25 pistas coletadas não mencionavam a UF-alvo: "Secretaria de Saúde de Cuiabá divulga Plano de Contingência" ficou fichada como pista de AC, AP, CE, DF, MS, RO e SE. Aplicar qualquer uma creditaria a um estado um instrumento que é de outro (falsa atribuição, risco de distorção do índice de saúde no próximo ciclo em que a camada de saúde ganhar peso).
+
+**Correção.** Nova função `_menciona_uf_alvo(titulo, url, uf)` filtra cada item do RSS antes do registro. Âncoras verificadas: nome do estado (com acento, evitando confundir a preposição "para" com o estado "Pará"), capital estadual, padrão `SES-{UF}` e domínio `.uf.gov.br`. A filtragem ocorre no loop principal, antes de chamar `registrar()`. Contador de `[FILTRADAS]` adicionado ao relatório de execução.
+
+**Testes.** 13 casos adicionados ao `--self-test`: aceitam pistas que mencionam estado/capital/SES, rejeitam atribuições cruzadas (Cuiabá → AC, Bahia → CE, MS → SP), e verificam explicitamente que a preposição "para" (sem acento) não aciona o filtro do estado "Pará". Todos os 30 portões da suíte: verdes no ramo, incluindo `verificar_derivados.sh` (árvore limpa após commit) e `--idempotencia`. Nenhum arquivo de `.github/workflows/` tocado.
+
+**Pistas existentes em `data/pistas_imprensa_saude.json`.** As 19 pistas de atribuição cruzada do lote de 19/09 permanecem na fila em `pendente_confirmacao_documento` — inofensivas (a trava absoluta impede aplicação sem documento oficial) e úteis para a triagem humana confirmar a eliminação. As 6 pistas de Bahia (4 com título correto, 2 cruzadas) aguardam busca manual do documento primário da SES-BA.
+
+
 
 Triagem das duas filas criadas pela rodada de 19/09. Nenhuma alteração de método; **nenhuma nota muda**; nenhum instrumento aplicado além do de MG (§111). Classe **conteúdo**.
 
