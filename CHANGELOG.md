@@ -9,6 +9,42 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §125 · Por que a fonte do IRI está em branco: o arquivo saiu do ar, a fonte não · 22/09/2026
+
+**Diagnóstico.** `iri_plume` é a única das dez fontes de sinais em
+`aguardando_primeira_coleta`. A causa não era rede: o relatório
+`2026-09-15_153058_enso_probabilidades.txt` (sonda rodada na Action, com rede aberta)
+mostra **HTTP 404** nas três variantes do arquivo tabular
+`iri.columbia.edu/~forecast/ensofcst/Data/ensofcst_*`, enquanto as páginas públicas do IRI
+respondem 200. A fonte segue publicando o Quick Look mensal; o que saiu do ar foi o arquivo
+de dados.
+
+**O que NÃO mudou.** O endpoint do coletor continua o mesmo e a fonte continua aparecendo no
+site como lacuna declarada. Trocar o endpoint exigiria escrever um parser de HTML sem ter o
+HTML real em mãos — `iri.columbia.edu` está fora da allowlist do contêiner e não há amostra
+preservada em `evidencias/`. Afirmar que um parser não testado funciona é exatamente o erro
+que a sessão de 21/09 registrou. Nenhum peso, crédito, componente ou régua foi tocado;
+nenhum dado foi imputado.
+
+**O que mudou.** `scripts/sondar_enso_probabilidades.py` passa a procurar a **tabela** de
+probabilidades, e não o percentual solto. A sonda antiga só casava `El Niño … N%`, formato
+que o Quick Look não usa: por isso reportava `percentuais vistos: []` numa página que
+responde 200 — resultado indistinguível de uma página sem os dados. Agora ela limpa a
+marcação, procura linhas `RÓTULO nina neutro nino` (o mesmo formato que `parse_plume_iri()`
+já lê) e imprime o trecho em volta do primeiro acerto. A próxima execução na Action dirá,
+com HTML real, se a tabela está na página e em que forma — e só então o endpoint pode ser
+corrigido com parser testado contra evidência.
+
+**Guardas, cada uma com teste negativo verificado.** `--autoteste` roda sem rede e cobre:
+tag vira espaço e não string vazia (sem isso `<td>MJJ</td><td>5</td>` colaria em `MJJ5`); só
+rótulo de trimestre real conta (`PDF 10 20 70` é ignorado); os três números têm de somar
+perto de 100; e cada um tem de estar em 0–100. As quatro foram revertidas uma a uma e o
+autoteste ficou **vermelho** em cada reversão.
+
+**Código morto removido.** A primeira versão tinha dois caminhos redundantes inserindo espaço
+entre células — por isso quebrar qualquer um isoladamente deixava o teste verde, embora o
+defeito fosse real. Sobrou um caminho, com o caso negativo que de fato o cobre.
+
 ## §124 · Querido Diário mudou de domínio; e o relatório da rodada escondia as falhas de coleta · 21/09/2026
 
 Classe **código**. Nenhuma nota muda; nenhum peso, crédito, componente ou régua tocado; nenhum dado de `data/*.json` editado. Média nacional segue 43,6.
