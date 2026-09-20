@@ -196,7 +196,7 @@ requisitos de rede em `docs/COMO_RODAR_E_PENDENCIAS.md`). Em resumo:
 
 **Execução local:** `python atualizar.py` (os três portões já rodam dentro dele).
 
-**Execução automática:** o workflow `.github/workflows/atualizar.yml` roda todo sábado (e sob demanda). Node/jsdom são instalados **antes** de `atualizar.py` (corrigido em 26/08/2026 — a ordem antiga rodava o Python primeiro e quebraria com "Cannot find module 'jsdom'" na primeira execução real, já que os dois portões em Node ficaram internos ao orquestrador). Cadastre a chave da API como *secret* `PORTAL_TRANSPARENCIA_API_KEY` no repositório. Em Vercel/Netlify, o push do bot dispara o redeploy automaticamente.
+**Execução automática:** o workflow `.github/workflows/atualizar.yml` roda todo domingo (e sob demanda). Node/jsdom são instalados **antes** de `atualizar.py` (corrigido em 26/08/2026 — a ordem antiga rodava o Python primeiro e quebraria com "Cannot find module 'jsdom'" na primeira execução real, já que os dois portões em Node ficaram internos ao orquestrador). Cadastre a chave da API como *secret* `PORTAL_TRANSPARENCIA_API_KEY` no repositório. Em Vercel/Netlify, o push do bot dispara o redeploy automaticamente.
 
 ## Contribuições de leitores (retroalimentação)
 

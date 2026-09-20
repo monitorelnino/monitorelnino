@@ -39,16 +39,19 @@ RAIZ = pathlib.Path(__file__).parent
 # Cadência semanal de publicação — dia único de verdade para toda a rotina.
 #
 # 20/09/2026 (decisão da editoria): a publicação semanal passa de SEGUNDA para
-# SÁBADO, 22h40 de Brasília. Duas armadilhas resolvidas aqui:
+# DOMINGO, 0h de Brasília (cron `0 3 * * 0` = domingo 03h UTC). A rodada leva
+# 75–105 min e agora cabe inteira dentro do domingo, sem cruzar a meia-noite.
+# Duas armadilhas resolvidas aqui:
 #
-#  1. FUSO. O runner do GitHub roda em UTC, e sábado 22h40 de Brasília é
-#     DOMINGO 01h40 em UTC. Usar datetime.date.today().weekday() (UTC) faria a
-#     rodada de "sábado" cair na sexta-feira à noite para o leitor brasileiro.
+#  1. FUSO. O runner do GitHub roda em UTC, e a meia-noite de Brasília é 03h
+#     em UTC do mesmo dia. Usar datetime.date.today() (UTC) para a data da
+#     edição ou para o dia da semana desalinha o que o site promete do que ele
+#     executa — ver §118, quando a cadência de sábado 22h40 carimbava domingo.
 #     A cadência é, por isso, ancorada em America/Sao_Paulo — o fuso do leitor,
 #     do texto público e da redação —, não no fuso do runner.
 #  2. DUPLICIDADE. O cron diário das 09h UTC também cai no dia de publicação
-#     (06h de Brasília). Sem guarda, o sábado teria DUAS rodadas completas com
-#     16 horas de intervalo. `ja_publicou_hoje()` abaixo encerra a segunda.
+#     (06h de Brasília, com a rodada semanal já encerrada). Sem guarda, o
+#     domingo teria DUAS rodadas completas. `ja_publicou_hoje()` encerra a segunda.
 #
 # Ao alterar o dia aqui, altere também: o cron do workflow, o texto público
 # (obrigado.html, pesquisadores.html) e a documentação. O portão
@@ -56,8 +59,8 @@ RAIZ = pathlib.Path(__file__).parent
 # é compromisso declarado ao leitor, não detalhe interno.
 # ---------------------------------------------------------------------------
 FUSO_EDITORIAL = ZoneInfo("America/Sao_Paulo")
-DIA_PUBLICACAO = 5            # weekday(): 0 = segunda … 5 = sábado, 6 = domingo
-NOME_DIA_PUBLICACAO = "sábado"
+DIA_PUBLICACAO = 6            # weekday(): 0 = segunda … 5 = sábado, 6 = domingo
+NOME_DIA_PUBLICACAO = "domingo"
 
 
 def hoje_editorial():

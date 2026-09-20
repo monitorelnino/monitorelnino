@@ -126,7 +126,7 @@ for s in gerar_selos gerar_feeds gerar_dados_abertos monitorar_politica_por_inte
 
 ### 4.1 Automática (recomendado)
 
-`.github/workflows/atualizar.yml` roda **sábados 22h40 de Brasília** (cron `40 1 * * 0`, domingo 01h40 UTC), e sob demanda
+`.github/workflows/atualizar.yml` roda **domingos 0h de Brasília** (cron `0 3 * * 0`, 03h UTC), e sob demanda
 (*Run workflow*). São 21 etapas: descoberta → julgamento automático → dados
 oficiais → **os cinco portões** → PDFs → links → commit. Falha em portão
 interrompe **antes** do commit: o site publicado nunca fica inconsistente.

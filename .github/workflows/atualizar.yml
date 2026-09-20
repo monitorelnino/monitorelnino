@@ -2,12 +2,13 @@ name: Atualização semanal de dados
 
 on:
   schedule:
-    - cron: "40 1 * * 0"  # atualizacao SEMANAL (compromisso publico do site): SABADO 22h40 de Brasilia.
-                          # ATENCAO AO FUSO: o cron do GitHub e UTC, e sabado 22h40 em Brasilia e
-                          # DOMINGO 01h40 em UTC -- por isso o campo de dia da semana e 0 (domingo),
-                          # nao 6 (sabado). O portao de cadencia em atualizar.py decide pelo dia no
-                          # fuso America/Sao_Paulo, entao ele ve "sabado" e libera a rodada completa.
-                          # Alterado em 20/09/2026 (decisao da editoria); antes: "0 9 * * 1" (segundas 09h UTC).
+    - cron: "0 3 * * 0"  # atualizacao SEMANAL (compromisso publico do site): DOMINGO 0h de Brasilia.
+                         # ATENCAO AO FUSO: o cron do GitHub e UTC; meia-noite de Brasilia e 03h UTC
+                         # do MESMO dia, entao o campo de dia da semana e 0 (domingo) e bate com o
+                         # domingo brasileiro. O portao de cadencia em atualizar.py decide pelo dia
+                         # no fuso America/Sao_Paulo. A rodada (75-105 min) termina por volta de
+                         # 01h20 de Brasilia, ainda no domingo -- nao cruza a meia-noite.
+                         # 20/09/2026 (editoria): segundas 09h UTC -> sabado 22h40 -> domingo 0h.
     - cron: "0 9 * * *"  # v2.2.4 (E4): execucao DIARIA (06h Brasília); atualizar.py encerra sem comitar fora da semana intensiva (INTENSIVO_ATE) se nao for o dia de publicacao
     - cron: "0 21 * * *"  # 03/09/2026: 2a rodada DIARIA (18h Brasília), so para acelerar a varredura integral (03-10/09); mesma regra de cadencia
   workflow_dispatch:       # execução manual pelo botão "Run workflow"

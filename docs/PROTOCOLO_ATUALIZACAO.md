@@ -20,7 +20,7 @@ Duas pistas levam à `main`, com regras diferentes:
 
 | Pista | Quem executa | O que pode tocar | Portão |
 |---|---|---|---|
-| **A — automática** (Action `atualizar.yml`: semanal aos sábados; diária durante a semana intensiva, controlada por `INTENSIVO_ATE`) | robô, sem intervenção | apenas `data/` (inclui `data/sinais_risco.json`), o número do medidor em `index.html`, `mapas-e-graficos.html`, o dicionário `ESTADOS` em `recalcular_mare.py`, PDFs, `selos/`, `feeds/`, `dados-abertos/` — e só via funções com rollback de `julgar_e_aplicar_descobertas.py` | os **sete** portões bloqueantes de `atualizar.py`; falha ⇒ nenhum commit |
+| **A — automática** (Action `atualizar.yml`: semanal aos domingos; diária durante a semana intensiva, controlada por `INTENSIVO_ATE`) | robô, sem intervenção | apenas `data/` (inclui `data/sinais_risco.json`), o número do medidor em `index.html`, `mapas-e-graficos.html`, o dicionário `ESTADOS` em `recalcular_mare.py`, PDFs, `selos/`, `feeds/`, `dados-abertos/` — e só via funções com rollback de `julgar_e_aplicar_descobertas.py` | os **sete** portões bloqueantes de `atualizar.py`; falha ⇒ nenhum commit |
 | **B — editorial** (sessão Claude + editoria) | Claude prepara; editoria aprova | qualquer arquivo | ramo + pull request + prévia + aprovação humana + portões |
 
 A pista A **executa regras**; nunca as cria. Tudo que a regra não cobre vai
@@ -42,7 +42,7 @@ espera a pista B. Isso é a governança automático × humano do projeto
 > (monitorelnino.com.br), sem precisar da prévia com senha. Script:
 > `scripts/atualizar_contador_cortina.py`.
 
-- **Gatilho:** sábados, 22h40 de Brasília (domingo 01h40 UTC — o cron é UTC) — compromisso semanal fora da
+- **Gatilho:** domingos, 0h de Brasília (03h UTC — o cron é UTC) — compromisso semanal fora da
   semana intensiva; durante a semana intensiva em curso (03–06/09/2026), **duas rodadas
   por dia**, 06h e 18h Brasília (03/09/2026, decisão editorial: acelerar a varredura
   integral); ou botão *Run workflow* na aba Actions a qualquer momento.
@@ -156,7 +156,7 @@ Se tocou código ou dependências: também `scripts/gerar_manifesto.py`.
 
 O robô só toca os arquivos listados em §1. Um ramo da pista B que edite
 qualquer um deles deve ser **rebaseado na `main`** imediatamente antes do
-merge (a Action pode ter comitado no sábado). Conflito em
+merge (a Action pode ter comitado no domingo). Conflito em
 `data/*.json` nunca é resolvido "à mão": refaz-se a alteração por
 `aplicar_revisao.py` sobre a base nova.
 

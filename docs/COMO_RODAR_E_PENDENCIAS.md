@@ -58,7 +58,7 @@ nunca publicar dado não confirmado.
    pacote.
 
 ## Produção (GitHub Actions)
-Workflow `.github/workflows/atualizar.yml`, semanal (sábados 22h40 de Brasília = domingo 01h40 UTC) e
+Workflow `.github/workflows/atualizar.yml`, semanal (domingos 0h de Brasília = 03h UTC) e
 sob demanda (`workflow_dispatch`). Instala as dependências Python e Node
 antes de rodar `atualizar.py`; os quatro portões são etapas obrigatórias
 do próprio job — uma falha para a Action antes de qualquer commit.
