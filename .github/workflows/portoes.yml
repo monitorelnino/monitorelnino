@@ -87,6 +87,11 @@ jobs:
           python3 scripts/testar_nivel_log_buscas.py
           python3 scripts/testar_reposicao_dominio.py
           python3 scripts/testar_ordem_prioridade_ufs.py
+          # §127 (20/09/2026): sondas passam a ter autoteste bloqueante.
+          # Não incluídos nos PRs #305/#306 para não conflitar com #303 (§123).
+          pip install openpyxl==3.1.5 --break-system-packages -q
+          python3 scripts/sondar_enso_probabilidades.py --autoteste
+          python3 scripts/sondar_munic_ibge.py --autoteste
       - name: Autotestes dos coletores
         run: |
           for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_saude coletar_financiamento gerar_lai gerar_painel; do python3 $c.py --autoteste; done
