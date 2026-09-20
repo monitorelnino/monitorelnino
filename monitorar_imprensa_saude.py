@@ -42,6 +42,7 @@ import pathlib
 import re
 import sys
 import time
+import unicodedata
 import urllib.parse
 import urllib.request
 
@@ -126,6 +127,60 @@ NOMES_UF = {
     "RO": "Rondônia", "RR": "Roraima", "SC": "Santa Catarina", "SP": "São Paulo",
     "SE": "Sergipe", "TO": "Tocantins",
 }
+
+# Capitais estaduais — usadas como segunda âncora na filtragem por UF (bug 19/09/2026:
+# Google News RSS retorna resultados nacionais; o coletor precisa descartar achados que
+# não mencionam nem o estado nem a capital da UF-alvo no título ou na URL).
+CAPITAIS_UF = {
+    "AC": "Rio Branco",      "AL": "Maceió",        "AM": "Manaus",
+    "AP": "Macapá",          "BA": "Salvador",       "CE": "Fortaleza",
+    "DF": "Brasília",        "ES": "Vitória",        "GO": "Goiânia",
+    "MA": "São Luís",        "MG": "Belo Horizonte", "MS": "Campo Grande",
+    "MT": "Cuiabá",          "PA": "Belém",          "PB": "João Pessoa",
+    "PE": "Recife",          "PI": "Teresina",       "PR": "Curitiba",
+    "RJ": "Rio de Janeiro",  "RN": "Natal",          "RO": "Porto Velho",
+    "RR": "Boa Vista",       "RS": "Porto Alegre",   "SC": "Florianópolis",
+    "SE": "Aracaju",         "SP": "São Paulo",      "TO": "Palmas",
+}
+
+
+def _menciona_uf_alvo(titulo, url, uf):
+    """Retorna True se o título ou a URL menciona a UF-alvo (estado, capital ou SES-UF).
+
+    FILTRO DE INTEGRIDADE — bug detectado em 19/09/2026: o Google News RSS devolve
+    resultado de cobertura nacional para queries por UF e o coletor atribuía o achado à
+    UF-alvo sem confirmar relevância. "Secretaria de Saúde de Cuiabá" apareceu como pista
+    de AC, AP, CE, DF, MS, RO e SE. 20 das 25 pistas não mencionavam a UF-alvo; aplicar
+    qualquer uma creditaria a um estado um instrumento de outro.
+
+    Regra: pelo menos uma das âncoras (nome do estado, capital ou padrão SES/domínio gov.br
+    da UF) deve aparecer no título ou na URL da notícia — sem essa evidência mínima, a pista
+    é descartada antes de entrar na fila.
+
+    Nota: a comparação usa case-insensitive com acentos preservados (re.IGNORECASE +
+    re.UNICODE), de modo que "Pará" nunca casa com a preposição "para" — ausência de acento
+    é a diferença relevante, e este filtro a preserva.
+    """
+    nome_estado = NOMES_UF.get(uf, "")
+    capital = CAPITAIS_UF.get(uf, "")
+
+    # Âncoras: nome do estado, capital, "SES-UF" (org. estadual de saúde), e domínio .uf.gov.br
+    ancoras = [t for t in [nome_estado, capital, f"SES-{uf}"] if t]
+    padrao_dominio = re.compile(
+        r'(?:\.|/|-|_)' + re.escape(uf.lower()) + r'(?:\.|/)gov\.br', re.IGNORECASE
+    )
+
+    para_checar = [titulo, url]
+    for ancora in ancoras:
+        padrao = re.compile(re.escape(ancora), re.IGNORECASE | re.UNICODE)
+        if any(padrao.search(texto) for texto in para_checar if texto):
+            return True
+
+    # Verificação de domínio (.ba.gov.br, /ba.gov.br, etc.)
+    if any(padrao_dominio.search(texto) for texto in para_checar if texto):
+        return True
+
+    return False
 
 
 def montar_universo(saude_json):
@@ -272,6 +327,39 @@ def self_test():
     print("✓ garantia estrutural: saude_uf.json é lido (necessário à priorização), "
           "mas nunca escrito; monitor_saude.json e indice.json nem lidos nem escritos")
 
+    # Teste do filtro _menciona_uf_alvo (bug 19/09/2026)
+    # Casos devem passar (mencionam a UF-alvo)
+    assert _menciona_uf_alvo("Bahia prepara rede de saúde para El Niño", "", "BA"), \
+        "BA: título com 'Bahia' deveria passar"
+    assert _menciona_uf_alvo("Secretaria de Saúde de Cuiabá divulga plano", "", "MT"), \
+        "MT: título com 'Cuiabá' (capital) deveria passar"
+    assert _menciona_uf_alvo("SES-MG anuncia plano de contingência", "", "MG"), \
+        "MG: título com 'SES-MG' deveria passar"
+    assert _menciona_uf_alvo("Plano de ações", "https://saude.ba.gov.br/plano/123", "BA"), \
+        "BA: URL com .ba.gov.br deveria passar mesmo sem estado no título"
+    assert _menciona_uf_alvo("Amapá reforça vigilância para El Niño", "", "AP"), \
+        "AP: título com 'Amapá' deveria passar"
+    assert _menciona_uf_alvo("Ceará elabora plano de saúde", "", "CE"), \
+        "CE: título com 'Ceará' deveria passar (acento preservado)"
+    # Casos devem falhar (não mencionam a UF-alvo — bug de atribuição)
+    assert not _menciona_uf_alvo("Secretaria de Saúde de Cuiabá divulga plano", "", "AC"), \
+        "AC: título sobre Cuiabá/MT NÃO deveria passar como pista de AC"
+    assert not _menciona_uf_alvo("Secretaria de Saúde de Cuiabá divulga plano", "", "AP"), \
+        "AP: título sobre Cuiabá/MT NÃO deveria passar como pista de AP"
+    assert not _menciona_uf_alvo("Secretaria de Saúde de Cuiabá divulga plano", "", "SE"), \
+        "SE: título sobre Cuiabá/MT NÃO deveria passar como pista de SE"
+    assert not _menciona_uf_alvo("MS lança campanha de enfrentamento à dengue", "", "SP"), \
+        "SP: título sobre MS NÃO deveria passar como pista de SP"
+    # Caso especial: 'para' (preposição) não deve ser confundida com 'Pará' (estado)
+    assert not _menciona_uf_alvo("Plano de ações para arboviroses no Nordeste", "", "PA"), \
+        "PA: preposição 'para' sem acento NÃO deve ser confundida com o estado Pará"
+    assert _menciona_uf_alvo("Secretaria do Pará lança plano El Niño", "", "PA"), \
+        "PA: 'Pará' com acento deveria passar"
+    assert _menciona_uf_alvo("Prefeitura de Belém anuncia contingência", "", "PA"), \
+        "PA: capital Belém deveria passar como âncora para PA"
+    print("✓ filtro _menciona_uf_alvo: aceita pistas da UF-alvo, rejeita atribuições cruzadas, "
+          "distingue preposição 'para' do estado 'Pará'")
+
     print("✓ TODOS OS TESTES PASSARAM")
     return 0
 
@@ -289,6 +377,7 @@ def main():
     pos = carregar_cursor(len(universo))
     fila = carregar_fila()
     total_novas = 0
+    total_filtradas = 0
 
     for i in range(limite):
         idx = (pos + i) % len(universo)
@@ -297,7 +386,14 @@ def main():
             xml = _get(montar_url(q))
             if not xml:
                 continue
-            itens = [{"alvo": f"{rotulo}/{uf}", "query": q, **it} for it in extrair_itens_rss(xml)]
+            itens_brutos = extrair_itens_rss(xml)
+            # Filtro de integridade (bug 19/09/2026): descarta resultados do RSS nacional
+            # que não mencionam a UF-alvo no título ou na URL — evita atribuir a um estado
+            # um instrumento de outro.
+            itens_ok = [it for it in itens_brutos
+                        if _menciona_uf_alvo(it.get("titulo", ""), it.get("url", ""), uf)]
+            total_filtradas += len(itens_brutos) - len(itens_ok)
+            itens = [{"alvo": f"{rotulo}/{uf}", "query": q, **it} for it in itens_ok]
             novas = registrar(fila, itens)
             total_novas += len(novas)
             time.sleep(1.0)  # cortesia de taxa, mesmo padrão das outras rotinas do pipeline
@@ -307,6 +403,9 @@ def main():
 
     print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C); "
           f"{limite} consultados nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")
+    if total_filtradas:
+        print(f"[FILTRADAS] {total_filtradas} notícias descartadas por não mencionar a UF-alvo "
+              f"(título/URL): resultado nacional do RSS atribuído erroneamente à UF.")
     if total_novas:
         print(f"[PISTAS NOVAS] {total_novas} para triagem humana (status pendente_confirmacao_documento):")
         for p in fila["pistas"][-total_novas:]:
