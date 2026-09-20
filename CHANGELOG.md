@@ -9,6 +9,23 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §128 · MUNIC/IBGE: coletor lia CSV inexistente e coluna errada; edição e campo reais confirmados por download · 20/09/2026
+
+Classe **código**. Não altera pesos, créditos, componentes ou régua; a camada declarada nacional continua sem entrar na nota (vigência 26/10/2026, §3.9).
+
+**O que a sonda §126 deixou pendente.** `coletar_declarado_nacional.py` chamava `parse_munic_csv()` (`csv.DictReader`) contra uma URL nunca preenchida (`url: null`), e o nome de coluna registrado, `MGRD_PlanoContingencia`, nunca foi conferido contra arquivo — só suposto. A sonda §126 mostrou que a MUNIC distribui `.xlsx`, não CSV, mas rodava num contêiner sem acesso a `ftp.ibge.gov.br` (fora da allowlist do sandbox de edição), então não conseguiu ler o cabeçalho real na sessão em que foi escrita.
+
+**Descoberta desta sessão: os domínios do IBGE (`ftp.ibge.gov.br`, `servicodados.ibge.gov.br`, `www.ibge.gov.br`) respondem diretamente no sandbox de edição** — testado e confirmado (HTTP 200 nos três). Os handouts anteriores registravam bloqueio; não procede mais (ou nunca procedeu para este conjunto de domínios). Isso elimina a necessidade de disparar a Action para diagnósticos deste tipo.
+
+**O que o download real mostrou.**
+1. A MUNIC roda módulos temáticos **rotativos**: cada edição cobre um conjunto diferente de temas. `Gestão de riscos e de desastres` só apareceu, entre 2017–2024, nas edições **2017 e 2020** — não em 2019, 2021, 2023 ou 2024. As "colunas de risco" que a sonda §126 via nessas quatro edições eram falso-positivo: vinham das abas `Recursos humanos`/`Recursos para gestão`/`Gestão migratória` (a função de leitura só verificava as 3 primeiras abas do arquivo; a aba de risco, quando existe, normalmente vem depois).
+2. A edição mais recente com o bloco é, portanto, **2020** — não por escolha editorial, mas porque é a única disponível no recorte temporal considerado.
+3. Dentro da aba `Gestão de riscos`, o dicionário de variáveis (aba `Dicionário` do próprio arquivo) mostra que a coluna do plano de contingência é **`Mgrd184`** ("Plano de Contingência", item 6.6 Gerenciamento de riscos) — não `MGRD_PlanoContingencia`, que nunca existiu. Existe também `Mgrd05` ("possui Plano de Contingência e/ou Preservação para a seca", item 6.1), campo distinto e mais específico ao padrão de impacto do El Niño no Nordeste.
+
+**Correção.** `parse_munic_csv()` → `parse_munic_xlsx()` (openpyxl, aba nomeada explicitamente, não posicional). `data/fontes_declarado.json` ganha a URL real, `edicao: 2020`, `aba: "Gestão de riscos"` e as duas colunas confirmadas. O coletor grava `munic_plano_contingencia` (de `Mgrd184`, campo usado na simulação de nota) e `munic_plano_contingencia_seca` (de `Mgrd05`, registrado em paralelo, sem entrar na simulação — usar ou não como sinal específico de seca é decisão da editoria).
+
+**Teste.** Autoteste com fixture `.xlsx` (não mais CSV): parser confirma cabeçalho por nome de coluna, ignora código IBGE inválido, dois casos negativos novos (aba inexistente → vazio, sem exceção; coluna do plano ausente → casa por IBGE sem o campo). Rodado também contra o arquivo `.xlsx` real da MUNIC 2020: **5.570 de 5.571 municípios casados** com a referência IBGE; `Mgrd184`: 1.407 "sim" / 4.054 "não" / 109 "NA"; `Mgrd05`: 1.230 "sim" / 3.814 "não" — distribuição plausível, sem outliers. `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §126 · Sonda da MUNIC/IBGE: qual edição traz o bloco de riscos e o nome real das colunas · 22/09/2026
 
 Classe **diagnóstico** — não toca dados, pesos, créditos, componentes ou régua. Cria
