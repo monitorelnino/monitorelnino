@@ -280,7 +280,18 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
     EVID.mkdir(exist_ok=True)
     destino.write_text(texto_final, encoding="utf-8")
     if n_cpfs:
-        log_busca("site_estadual", 2, [str(destino.relative_to(RAIZ))], "registro", nivel="municipal",
+        # 19/09/2026 (ensaio da rodada antecipada, portão bloqueante vermelho): este registro
+        # documenta uma REDAÇÃO de dados pessoais num documento preservado — não é uma busca
+        # territorial, e não tem município/UF estruturados no ponto da chamada. O valor
+        # "municipal" que estava aqui nunca existiu no vocabulário controlado de
+        # verificar_consistencia.py (_NIVEIS = {None, "nacional", "estadual",
+        # "municipal_completo"}), então toda vez que um diário com CPF era preservado o
+        # portão obrigatório caía com "nivel inválido: municipal" e a rodada inteira parava
+        # antes do commit. Bug latente desde 12/09/2026: só dispara quando há CPF a redigir.
+        # nivel=None é o valor honesto (sem nível territorial declarado) e já aceito; não usar
+        # "municipal_completo", que tem sentido próprio no §2.1 (bateria municipal completa) e
+        # exige municipio e uf estruturados.
+        log_busca("site_estadual", 2, [str(destino.relative_to(RAIZ))], "registro", nivel=None,
                   resultados=f"redação de dados pessoais: {n_cpfs} CPF(s) removido(s) do texto integral preservado ({origem})")
     idx = ler("evidencias.json", {"itens": {}})
     if h in idx.get("itens", {}):
