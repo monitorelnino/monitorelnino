@@ -17,7 +17,7 @@ Classe **código**; nenhuma nota muda; média nacional segue 43,6, reproduzida b
 
 **Alcance.** O erro ficava em `data/verificacao_resumo.json`. A cortina do domínio publica apenas `consultados`/`total` ("3.180 municípios consultados nos diários oficiais (57%) — consultar não é verificar"), afirmação correta e já ressalvada; `com_mencao` nunca chegou ao público.
 
-**Correção.** Classificação pelos quatro estados que o coletor de fato grava, agora publicados separadamente em `varredura_diarios`: `com_mencao` 153, `coberto_sem_mencao` 198, `sem_cobertura_qd` 2.824, `cobertura_indefinida` 5 — soma 3.180, igual a `consultados`. `indexados` (151+198 = 351) passa a existir como campo próprio.
+**Correção.** Classificação pelos quatro estados que o coletor de fato grava, agora publicados separadamente em `varredura_diarios`: `com_mencao` 153, `coberto_sem_mencao` 198, `sem_cobertura_qd` 2.824, `cobertura_indefinida` 5 — soma 3.180, igual a `consultados`. `indexados` (153 + 198 = 351) passa a existir como campo próprio.
 
 **A distinção que não pode ser perdida.** `sem_mencao` passa a valer só para diário efetivamente lido, e nunca inclui os não indexados. Onde não há diário indexado não há o que ler: somar os dois faria o projeto afirmar ausência de plano onde existe apenas ausência de fonte — o que §4.1.2 proíbe e o que a linguagem-teto do projeto ("não localizamos até o corte", nunca "não existe") existe para impedir.
 
