@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §112 · Triagem das filas de descoberta automática, e um defeito no monitor de imprensa de saúde · 19/09/2026
+
+Triagem das duas filas criadas pela rodada de 19/09. Nenhuma alteração de método; **nenhuma nota muda**; nenhum instrumento aplicado além do de MG (§111). Classe **conteúdo**.
+
+**`pistas_descobertas.json` — 13 restantes, nenhuma aplicada.** Onze fora do escopo do índice (plano de comunicação institucional, POP de coleta de amostra, manual de sistema, tutorial de painel do fundo estadual, Plano Diretor de Regionalização revisão 2023, boletim de campanha, diligência administrativa, guia de vigilância de Covid-19 e influenza, demonstrativos orçamentários). As três intituladas "Plano Estadual de Contingência para Enfrentamento aos Vírus Respiratórios" foram **abertas e conferidas**: são de "Minas Gerais – 2025", sazonais recorrentes, não específicas do ciclo El Niño nem do ciclo corrente. Cada item carrega agora a razão da não aplicação.
+
+**`pistas_imprensa_saude.json` — 25 pistas, nenhuma aplicada, e um defeito localizado.** Nenhuma das 25 é `fonte_provavel_oficial` (são veículos de imprensa e sites de prefeitura, não domínio oficial de secretaria estadual), então nenhuma passa no portão de fonte do projeto. Além disso, **20 das 25 não mencionam a UF-alvo**: a consulta é por UF, mas o feed RSS do Google News devolve resultado de alcance nacional e o coletor o atribui à UF consultada. "Secretaria de Saúde de Cuiabá divulga Plano de Contingência" está fichada como pista de AC, AP, CE, DF, MS, RO e SE. Aplicar qualquer uma creditaria a um estado um instrumento que é de outro — risco de falsa atribuição, registrado item a item. **A correção do coletor fica para decisão da editoria** (exigir menção à UF-alvo no título ou no corpo antes de fichar, ou rebaixar o campo `alvo` a "consulta de origem" em vez de atribuição).
+
+**Pista quente, não aplicada: Bahia.** Quatro veículos independentes noticiam que a Bahia preparou a rede estadual de saúde para o El Niño, enquanto a BA consta no índice **só com o plano recorrente de arboviroses** (`VIG`, `recorrente_arboviroses`). O padrão que leva o nome da Bahia pode estar subaplicado na própria Bahia. Não aplicado por ora: falta o documento primário da SES-BA em domínio oficial — imprensa sozinha não passa no portão de fonte, e o precedente de SP (§109) foi decisão humana registrada, não regra.
+
 ## §111 · Minas Gerais: plano específico do ciclo localizado pela descoberta automática · 19/09/2026
 
 Primeiro achado aplicado vindo do fluxo de **descoberta automática via API WordPress** (§11), e não de busca manual. Nenhuma alteração de método. Classe **conteúdo**.
