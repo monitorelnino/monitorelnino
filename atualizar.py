@@ -97,7 +97,15 @@ def hash_arquivo(p):
 
 def main():
     """Executa as oito etapas do pipeline canônico em ordem, na sequência declarada no docstring do módulo."""
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    # Data da EDIÇÃO, fixada aqui no início da rodada e no fuso da redação.
+    # Duas razões, ambas descobertas na primeira rodada de sábado (20/09/2026):
+    #  · Fuso: datetime.date.today() é UTC no runner. A rodada de sábado 22h40 de
+    #    Brasília começa às 01h40 de DOMINGO em UTC, e carimbava `atualizado_em`
+    #    com domingo — o site prometendo sábado e datando domingo toda semana.
+    #  · Meia-noite: a rodada leva 75–105 min e sempre cruza a virada do dia. A data
+    #    é fixada no início, então a edição inteira leva a data do dia em que foi
+    #    publicada, não a do minuto em que a última etapa terminou.
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     transf = RAIZ / "data" / "transferencias.json"
     antes = hash_arquivo(transf)
 
@@ -157,9 +165,11 @@ def main():
     lote = os.environ.get("LOTE_DIARIOS") or ""
     if not lote:
         # lote rotativo: 1 no primeiro dia da semana intensiva, subindo até o último dia (D1..D7);
-        # fora do intensivo (segunda-feira semanal) usa o lote 1 — os lotes seguintes são pós-defeso (§13)
+        # fora do intensivo (rodada semanal de sábado) usa o lote 1 — os lotes seguintes são pós-defeso (§13)
         if em_intensivo:
-            decorridos = (datetime.date.today() - datetime.date.fromisoformat(intensivo_de)).days
+            # no fuso da redação, como hoje_iso e o portão de cadência: em UTC a rodada
+            # noturna cairia no dia seguinte e adiantaria o lote em um.
+            decorridos = (hoje_editorial() - datetime.date.fromisoformat(intensivo_de)).days
             lote = str(max(1, min(7, decorridos + 1)))  # D0 = lote 1 … D6+ = lote 7
         else:
             lote = "1"

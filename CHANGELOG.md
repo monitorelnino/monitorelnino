@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §118 · Data da edição no fuso da redação — a rodada de sábado carimbava domingo · 20/09/2026
+
+Defeito introduzido pelo §117 e detectado na primeira rodada de sábado, antes de completar um ciclo. Classe **código**; nenhuma nota muda; nenhum peso, crédito ou régua tocado.
+
+**O que acontecia.** A rodada semanal começa às 22h40 de sábado em Brasília, que é 01h40 de **domingo** em UTC, e leva 75–105 min — cruza a virada do dia toda semana. `atualizar.py` calculava a data da edição com `datetime.date.today()`, que no runner é UTC: a rodada de sábado 19/09 carimbou `atualizado_em: 20/09/2026`, um domingo. O site declara publicar aos sábados e dataria domingo em todas as semanas seguintes. O mesmo valor alimenta `corte` quando as transferências mudam.
+
+**Correção.** A data da edição passa a vir de `hoje_editorial()`, fixada no início da rodada: a edição inteira leva a data do dia em que foi publicada, não a do minuto em que a última etapa terminou. O contador de lote da varredura intensiva (D1..D7) tinha o mesmo defeito — em UTC a rodada noturna adiantaria o lote em um dia — e foi corrigido junto.
+
+**Portão.** `testar_cadencia_publicacao.py` passa a rejeitar qualquer `datetime.date.today()` fora de comentário em `atualizar.py`: no fuso do runner, toda data do pipeline erra o dia na janela noturna. Teste negativo cobre a regressão.
+
+**Pendência de uma semana.** `data/meta.json` ficou com `atualizado_em: 20/09/2026` (domingo) da rodada já publicada. Não foi editado à mão — `data/*.json` é escrito só pelo pipeline. A rodada de sábado 26/09 grava a data correta.
+
 ## §117 · Cadência semanal passa de segunda-feira para sábado, 22h40 de Brasília · 20/09/2026
 
 Decisão da editoria, tomada e autorizada em sessão de 20/09/2026 — incluindo autorização explícita e permanente para editar `.github/workflows/` quando o pedido exigir (a restrição anterior era de protocolo, não de escopo do token: o push com alteração de workflow passou de primeira). Nenhuma alteração de método; **nenhuma nota muda**; nenhum peso, crédito, componente ou régua tocado; congelamento do defeso (C6, Errata C25) intacto. Classe **código**.
