@@ -204,6 +204,14 @@ jobs:
         run: |
           { echo "workflow=atualizar evento=${{ github.event_name }} ensaio=${ENSAIO:-0} commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) resultado=${{ steps.atualizar.outcome }}"
             echo "--- arquivos alterados ---"; git status --short | head -40
+            # 21/09/2026 (§124): avisos e erros PRIMEIRO, antes do trecho truncado. O relatório
+            # guardava só as últimas 220 linhas, que são sempre as dos portões finais — qualquer
+            # "[aviso] fonte: rede indisponível" emitido no começo da rodada caía fora e a falha
+            # de coleta ficava invisível semana após semana. Este bloco é o diagnóstico de coleta.
+            echo "--- avisos e erros da rodada (todos) ---"
+            grep -nE "^\[(aviso|erro)\]|recusada|indisponível|sem trimestres|Traceback" /tmp/atualizar.log 2>/dev/null | head -60 || echo "(nenhum)"
+            echo "--- etapas executadas ---"
+            grep -c "^=== " /tmp/atualizar.log 2>/dev/null || echo "?"
             echo "--- log (últimas 220 linhas) ---"; tail -220 /tmp/atualizar.log 2>/dev/null
           } > /tmp/relatorio.txt 2>&1
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro

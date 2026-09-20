@@ -9,6 +9,27 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §124 · Querido Diário mudou de domínio; e o relatório da rodada escondia as falhas de coleta · 21/09/2026
+
+Classe **código**. Nenhuma nota muda; nenhum peso, crédito, componente ou régua tocado; nenhum dado de `data/*.json` editado. Média nacional segue 43,6.
+
+**1. O Querido Diário migrou de endereço.** `coletar_diarios_municipais.py` chamava `queridodiario.ok.org.br/api/gazettes`. Esse host **ainda resolve, mas não serve mais a API**: responde `302` para `api.queridodiario.org.br` a cada chamada — verificado nesta data e coerente com a configuração de produção publicada pelo próprio projeto. A coleta não estava quebrada, porque `urllib` segue redirecionamento por padrão; mas cada uma das 5.571 consultas da varredura pagava uma viagem extra, e a varredura inteira dependia de um redirect que pode ser desligado sem aviso.
+
+**Correção.** O coletor passa a chamar o domínio de produção direto, com o antigo como **reserva**: falha de rede ou 5xx no domínio novo faz a consulta ser repetida no antigo antes de virar lacuna. 4xx **não** aciona a reserva — 404 significa consulta errada, não host caído; repetir só dobraria a carga sobre uma API pública que pede moderação (referência de 60 requisições/minuto) e mascararia o defeito. Teste negativo cobre os três caminhos.
+
+**2. O relatório da rodada tornava invisível qualquer falha de coleta.** Dois defeitos somados, e a evidência é concreta: a fonte `iri_plume` (probabilidades ENSO do IRI/Columbia) está em `aguardando_primeira_coleta` **desde sempre** e ninguém viu, porque:
+
+- **Buffer.** `atualizar.py` imprimia `=== etapa ===` sem `flush`. Fora de um terminal o stdout do Python é bufferizado em blocos, mas os subprocessos escrevem direto no descritor — os cabeçalhos saíam todos juntos no fim da rodada, separados da saída que cada etapa produziu. No relatório de 20/09, as 20 etapas de coleta aparecem enfileiradas e **vazias**, embora `coletar_sinais_risco.py` imprima uma linha obrigatória logo na entrada.
+- **Truncamento.** O relatório guardava apenas as últimas 220 linhas do log, que são invariavelmente as dos portões finais. Todo `[aviso]` emitido durante a coleta, no começo da rodada, caía fora do arquivo.
+
+O coletor de sinais **já registrava** a falha corretamente (`[aviso] <fonte>: rede indisponível — registro anterior mantido`) e nunca derrubou o pipeline, como manda o desenho. O defeito era só de observabilidade — e bastou para uma fonte ficar meses sem coletar sem ninguém notar.
+
+**Correção.** `flush=True` nos cabeçalhos e um `sys.stdout.flush()` após cada subprocesso, religando cada etapa à sua saída; etapa não obrigatória que falha passa a imprimir um `[aviso]` com o código de saída, em vez de seguir em silêncio. No relatório, um bloco novo — **avisos e erros da rodada (todos)** — vem **antes** do trecho truncado e varre o log inteiro por `[aviso]`, `[erro]`, `Traceback` e recusas de resposta, mais a contagem de etapas executadas.
+
+**O que isto não resolve.** Por que o endpoint do IRI falha continua **não diagnosticado**: `iri.columbia.edu` está fora da allowlist do contêiner, então não foi possível testar daqui. A página pública da fonte está ativa. A próxima rodada dirá, agora que o aviso chega ao relatório. Nenhum texto público mudou: a fonte já aparece como lacuna declarada, que é o comportamento correto.
+
+Edição de `.github/workflows/atualizar.yml` sob a autorização permanente registrada pela editoria em 20/09/2026. `validar_workflows.py` verde.
+
 ## §123 · Piauí no fim da fila da varredura por omissão na lista de prioridade; cinco portões escritos que não bloqueavam nada · 21/09/2026
 
 Dois achados da rotina, ambos de classe **código**. Nenhuma nota muda; nenhum peso, crédito, componente ou régua tocado; nenhum dado de `data/*.json` editado.

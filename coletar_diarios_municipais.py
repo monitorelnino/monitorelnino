@@ -31,7 +31,15 @@ from classificar_pista_civil import triagem_completa
 FONTE_QD = "Querido Diário (diário municipal)"
 PAUSA_ENTRE_CONSULTAS = 0.25   # segundos; cortesia com a API pública
 
-QD_API = "https://queridodiario.ok.org.br/api/gazettes?{params}"
+# 21/09/2026: o Querido Diário migrou de domínio. O host antigo (queridodiario.ok.org.br/api)
+# ainda resolve, mas responde 302 para api.queridodiario.org.br a cada chamada — verificado nesta
+# data, e confirmado pela configuração de produção do próprio projeto (okfn-brasil/querido-diario-
+# deployment). Depender do redirect custa uma viagem extra em cada uma das 5.571 consultas da
+# varredura e quebra no dia em que o host antigo deixar de redirecionar. Passamos a chamar o
+# domínio novo direto, com o antigo como RESERVA: se o novo falhar por rede, a consulta é repetida
+# no antigo antes de virar lacuna, para que uma troca de endereço nunca derrube a varredura inteira.
+QD_API = "https://api.queridodiario.org.br/gazettes?{params}"
+QD_API_RESERVA = "https://queridodiario.ok.org.br/api/gazettes?{params}"
 TERMOS_RESPOSTA = ['"situação de emergência"', '"estado de calamidade pública"']
 TERMOS_PISTA = ['"plano de contingência"', '"El Niño"', '"plano de ação"']
 PAD_DECRETO = re.compile(r"decreto\s+(?:municipal\s+)?n[ºo°\.]?\s*([\d\.\/-]+)[^.]{0,200}?(situa[çc][ãa]o de emerg[êe]ncia|estado de calamidade p[úu]blica)", re.I)
@@ -87,6 +95,25 @@ def buscar_com_espera(url: str, timeout: int = 30) -> bytes:
         raise
 
 
+def consultar_qd(params: str, timeout: int = 30) -> bytes:
+    """Consulta a API do Querido Diário no domínio de produção; se ele falhar por rede ou por erro
+    do servidor, repete no domínio antigo antes de desistir (21/09/2026 — ver nota em QD_API).
+
+    A reserva cobre indisponibilidade e troca de endereço, não resposta ruim: 404 e 4xx em geral
+    sobem na hora, porque significam que a consulta está errada, não que o host caiu — repetir só
+    dobraria a carga sobre a API pública e mascararia o defeito."""
+    try:
+        return buscar_com_espera(QD_API.format(params=params), timeout=timeout)
+    except urllib.error.HTTPError as e:
+        if e.code < 500:
+            raise
+        motivo = f"HTTP {e.code}"
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
+        motivo = e.__class__.__name__
+    print(f"[aviso] Querido Diário: domínio de produção indisponível ({motivo}) — repetindo no domínio de reserva.", flush=True)
+    return buscar_com_espera(QD_API_RESERVA.format(params=params), timeout=timeout)
+
+
 def decisao_para_vazio(coberto) -> str:
     """Função pura: decisão do log para resposta sem edições, dada a cobertura (True/False/None)."""
     return "coberto_sem_mencao" if coberto is True else "sem_cobertura_qd" if coberto is False else "erro"
@@ -108,7 +135,7 @@ def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
     else:
         try:
             time.sleep(PAUSA_ENTRE_CONSULTAS)
-            d = json.loads(buscar_com_espera(QD_API.format(params=urllib.parse.urlencode({"territory_ids": cod, "size": 1})), timeout=30).decode("utf-8", "replace"))
+            d = json.loads(consultar_qd(urllib.parse.urlencode({"territory_ids": cod, "size": 1}), timeout=30).decode("utf-8", "replace"))
             mun[cod] = {"cobertura_qd": (d.get("total_gazettes", 0) or 0) > 0, "data_teste": hoje}
         except Exception:  # noqa: BLE001
             mun[cod] = {"cobertura_qd": None, "data_teste": hoje}
@@ -181,7 +208,7 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
         url = QD_API.format(params=params)
         time.sleep(PAUSA_ENTRE_CONSULTAS)
         try:
-            bruto = buscar_com_espera(url, timeout=30)
+            bruto = consultar_qd(params, timeout=30)
             dados = json.loads(bruto.decode("utf-8", "replace"))
         except Exception as e:  # noqa: BLE001
             registrar_lacuna(f"Querido Diário/{ref['nome']}-{ref['uf']}", f"{type(e).__name__}", canal="DOM", camada=1,
@@ -257,6 +284,31 @@ def autoteste() -> int:
         cad = {"ordem_prioridade_uf_por_percentual": ["SC", "RS"],
                "por_uf": {"SC": {"pct": 73.9}, "RS": {"pct": 41.4}, "GO": {"pct": 10.2}, "PI": {"pct": 21.0}}}
         return ordem_prioridade(por, cad, {}) == ["1", "4", "3", "2"]
+    def t3c():  # §124: reserva de domínio do QD. 5xx/rede cai no domínio antigo; 4xx sobe na hora.
+        import urllib.error as ue
+        chamadas = []
+        def falso(url, timeout=30):
+            chamadas.append(url)
+            if url.startswith("https://api.queridodiario.org.br") and modo[0] != "ok":
+                if modo[0] == "http4":
+                    raise ue.HTTPError(url, 404, "nao encontrado", None, None)
+                raise ue.URLError("host caiu")
+            return b'{"total_gazettes": 0}'
+        real = globals()["buscar_com_espera"]
+        globals()["buscar_com_espera"] = falso
+        try:
+            modo = ["ok"]; chamadas.clear(); consultar_qd("x=1")
+            so_producao = len(chamadas) == 1 and chamadas[0].startswith("https://api.queridodiario.org.br")
+            modo = ["rede"]; chamadas.clear(); consultar_qd("x=1")
+            caiu_na_reserva = len(chamadas) == 2 and chamadas[1].startswith("https://queridodiario.ok.org.br")
+            modo = ["http4"]; chamadas.clear()
+            try:
+                consultar_qd("x=1"); quatro_xx_sobe = False
+            except ue.HTTPError:
+                quatro_xx_sobe = len(chamadas) == 1   # não repetiu: 404 é consulta errada, não host caído
+            return so_producao and caiu_na_reserva and quatro_xx_sobe
+        finally:
+            globals()["buscar_com_espera"] = real
     def t4(): return parse_qd(None) == [] and parse_qd({}) == []
     def t5():  # varredura integral: quem já foi consultado na janela sai da fila; quem foi antes da janela volta
         livro = {"municipios": {"0000001": {"fontes": [{"fonte": FONTE_QD, "data": "2026-09-03"}]},
@@ -276,6 +328,9 @@ def autoteste() -> int:
     return rodar_autoteste({"classifica decreto com nº e pista de plano": t1, "negativo: decreto sem número": t2,
                             "prioridade: UF do cadastro, depois população": t3,
                             "negativo: UF fora da lista curada entra por percentual, não em balde indefinido": t3b,
+                            "negativo: resposta nula": t4,
+                            "prioridade: UF do cadastro, depois população": t3,
+                            "reserva de domínio do QD: 5xx/rede repete no antigo, 4xx sobe na hora": t3c,
                             "negativo: resposta nula": t4,
                             "varredura integral: fila de pendentes na janela": t5,
                             "varredura integral: tamanho para cobrir até a data-fim": t6,

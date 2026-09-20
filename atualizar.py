@@ -83,12 +83,21 @@ def ja_publicou_hoje():
 
 def rodar(cmd, obrigatorio=False, env_extra=None):
     """Executa um subprocesso do pipeline; se obrigatorio=True, aborta o processo com o mesmo código de saída em caso de falha."""
-    print(f"\n=== {' '.join(cmd)} ===")
+    # 21/09/2026 (§124): flush obrigatório. Fora de um terminal, o stdout do Python é
+    # bufferizado em blocos, mas os subprocessos escrevem direto no descritor. Sem o flush,
+    # os cabeçalhos "=== etapa ===" saíam todos juntos no fim da rodada, enquanto a saída de
+    # cada coletor saía na hora — o relatório ficava com os cabeçalhos separados do que cada
+    # etapa imprimiu, e era impossível atribuir uma falha à etapa que a produziu. Foi assim
+    # que "[aviso] iri_plume: ..." passou despercebido rodada após rodada.
+    print(f"\n=== {' '.join(cmd)} ===", flush=True)
     env = {**os.environ, **(env_extra or {})}
     r = subprocess.run(cmd, cwd=RAIZ, env=env)
+    sys.stdout.flush()
     if r.returncode != 0 and obrigatorio:
-        print(f"[erro] etapa obrigatória falhou: {' '.join(cmd)}")
+        print(f"[erro] etapa obrigatória falhou: {' '.join(cmd)}", flush=True)
         sys.exit(r.returncode)
+    if r.returncode != 0:
+        print(f"[aviso] etapa não obrigatória falhou (código {r.returncode}): {' '.join(cmd)}", flush=True)
     return r.returncode == 0
 
 def hash_arquivo(p):
