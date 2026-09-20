@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §120 · A rodada semanal derrubava o modo senha do domínio · 20/09/2026
+
+Defeito estrutural, anterior às mudanças de hoje, encontrado porque o domínio passou sete horas servindo a cortina "Em atualização" no lugar do site completo. Classe **código**; nenhuma nota muda; nenhum dado de `data/*.json` tocado.
+
+**Por que ninguém via.** O ramo `publico` carrega um workflow próprio, `publicar_dominio.yml`, que dispara **a cada push naquele ramo** e faz deploy de PRODUÇÃO. O passo final da rodada semanal empurra o contador da cortina para lá. Logo, toda rodada republicava a cortina por cima do site completo e derrubava o modo senha declarado em `data/publicacao.json` (`dominio: "senha"`, decisão da editoria de 14/09). A Action ficava verde do começo ao fim — do ponto de vista dela nada falhou; os dois workflows estão certos isoladamente, e o defeito só existe na interação entre eles. Desde 14/09 toda rodada repetia isso, e o domínio só voltava ao ar quando alguém republicava à mão.
+
+**Correção.** Passo final em `atualizar.yml`: lê `data/publicacao.json` e, quando o modo for `senha`, republica a `main` no domínio com Basic-Auth (segredo `PREVIA_BASIC_AUTH`) e `noindex`. Vem depois do push da cortina e espera 120 s o deploy dela assentar — sem a espera, os dois deploys de produção correm e o vencedor é sorteio. Se um segredo faltar, avisa e sai sem publicar, em vez de deixar o domínio num estado indefinido. Em modo `cortina` não faz nada, que já é o estado correto.
+
+**Efeito colateral desejado.** A cortina continua aparecendo durante a rodada, como a editoria pediu — o que muda é que ela deixa de ser o estado final.
+
+**Portão.** `scripts/testar_reposicao_dominio.py` exige o passo de reposição, que ele consulte a declaração em vez de fixar o modo no workflow, que venha depois do push da cortina, que espere pelo menos 60 s, e que a credencial venha de segredo e nunca literal (o repositório é público). Três testes negativos.
+
+**Nota sobre o acesso.** O login e a senha do domínio são o Basic-Auth do segredo `PREVIA_BASIC_AUTH` mais o véu de navegador em `assets/acesso.js` — nada a ver com os controles de acesso do Netlify (senha de visitante ou SSO de equipe), que permanecem como estavam: sem senha de visitante, SSO só em não-produção.
+
 ## §119 · Cadência semanal ajustada para domingo, 0h de Brasília · 20/09/2026
 
 Decisão da editoria, no mesmo dia do §117. Substitui o sábado 22h40 por **domingo à 0h de Brasília** (cron `0 3 * * 0` = 03h UTC). Classe **código**; nenhuma nota muda; nenhum peso, crédito ou régua tocado.
