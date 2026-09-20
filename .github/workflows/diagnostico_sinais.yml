@@ -47,6 +47,17 @@ jobs:
         continue-on-error: true
         run: |
           python3 scripts/sondar_enso_probabilidades.py 2>&1 | tee /tmp/enso.log
+      # 22/09/2026: a camada declarada nacional (MUNIC/ICM) está vazia porque
+      # data/fontes_declarado.json tem url: null desde 02/09, e ela entra na nota em
+      # 26/10. Sem ela, o único canal que pergunta a TODOS os 5.570 municípios não existe.
+      # O sandbox de edição responde 403 host_not_allowed para o IBGE; só a Action alcança.
+      # Não grava nada: mostra quais edições trazem o bloco de riscos e o nome REAL das colunas.
+      - name: Sondar a MUNIC/IBGE (qual edição traz o bloco de riscos; nomes reais das colunas)
+        continue-on-error: true
+        timeout-minutes: 15
+        run: |
+          set -o pipefail
+          python3 scripts/sondar_munic_ibge.py 2>&1 | tee /tmp/munic.log
       - name: Diagnóstico do Querido Diário (resultado conhecido; PR-N0 §1.1)
         continue-on-error: true
         run: |
@@ -151,6 +162,7 @@ jobs:
           cp /tmp/transferegov.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_transferegov.txt" 2>/dev/null || true
           cp /tmp/qd.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_querido_diario.txt" 2>/dev/null || true
           cp /tmp/enso.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_enso_probabilidades.txt" 2>/dev/null || true
+          cp /tmp/munic.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_munic_ibge.txt" 2>/dev/null || true
           cp /tmp/saude.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_fontes_saude.txt" 2>/dev/null || true
           cp /tmp/listagem_df.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_listagem_df.txt" 2>/dev/null || true
           cp /tmp/boletim_infogripe.log "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_boletim_infogripe.txt" 2>/dev/null || true

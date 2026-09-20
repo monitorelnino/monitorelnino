@@ -9,6 +9,41 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §126 · Sonda da MUNIC/IBGE: qual edição traz o bloco de riscos e o nome real das colunas · 22/09/2026
+
+Classe **diagnóstico** — não toca dados, pesos, créditos, componentes ou régua. Cria
+`scripts/sondar_munic_ibge.py` e adiciona a sonda ao workflow `diagnostico_sinais.yml`
+(autorização permanente de 20/09/2026).
+
+**Por que esta sonda existe.** `data/declarado_nacional.json` está zerado
+(`"municipios": {}`) desde 02/09/2026, porque `data/fontes_declarado.json` tem `url: null`
+e `status: "a_verificar"` para MUNIC e ICM. Esse canal entrará na nota em 26/10/2026 e é o
+único que consultaria os 5.570 municípios de forma direta — a varredura pelo Querido Diário
+cobre ~9,5% do país, por limite de acervo. Os nomes de coluna em `fontes_declarado.json`
+(`MGRD_PlanoContingencia`, `CodMun`) eram suposições, nunca conferidas contra o arquivo real.
+
+**O que a sonda faz.** Lista as edições disponíveis no FTP-HTTP do IBGE, identifica a
+subpasta da base (`Base_de_Dados` ou `Tabelas_de_Resultados`), baixa o arquivo de dados
+(`.xlsx` ou `.csv`) e classifica as colunas em: chave do município, plano de contingência
+e contexto de risco/desastre. Imprime quais edições têm o bloco — e com quais nomes reais —
+para que a escolha da edição seja decisão editorial com o arquivo à vista.
+
+**Por que a edição mais recente pode não ser a certa.** A MUNIC 2024 (21ª edição) anuncia
+oito temas; gestão de riscos e desastres **não está entre eles**. O bloco existe na 2017 e
+na 2020. A sonda confirma isso, em vez de supor. Não foi decidido aqui qual edição usar —
+essa decisão muda o ano de referência do que o site afirma e é registrada como pendência.
+
+**O que a 1ª execução real revelou.** Dois defeitos de parsing, corrigidos nos testes
+negativos do autoteste: (1) suplementos com ano no nome (e.g., `Saneamento_Basico_2017/`)
+eram tomados por edições da pesquisa; (2) a sonda não descia em `Base_de_Dados`, só em
+`Tabelas_de_Resultados`. Ambos foram observados no diretório real e tornaram os testes
+negativos. Adicionalmente: a base é `.xlsx`, não CSV — suporte adicionado com `openpyxl`,
+incluindo lógica de pulo de linhas de título antes do cabeçalho real (formato padrão do IBGE).
+
+**Autoteste.** Roda sem rede; cobre listagem de diretório, extração de cabeçalho (CSV e xlsx),
+classificação de colunas (incluindo variações de grafia e o caso negativo da MUNIC 2024 que
+não tem o bloco), e os dois defeitos de parsing acima. `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §125 · Por que a fonte do IRI está em branco: o arquivo saiu do ar, a fonte não · 22/09/2026
 
 **Diagnóstico.** `iri_plume` é a única das dez fontes de sinais em
