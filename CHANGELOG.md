@@ -9,6 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §129 · Diários consorciados (SIGPub/associações estaduais): fonte de alto potencial mapeada, motor construído e testado, coleta automatizada BLOQUEADA por token JS · 20/09/2026
+
+Classe **investigação + código, sem ativação em produção**. Não entra em `portoes.yml` nem `atualizar.yml` — não produz dado nenhum hoje, só lacunas declaradas de bloqueio.
+
+**Origem.** Pedido editorial de aprofundar a busca por planos de contingência municipais, com ceticismo justificado sobre a fração pequena de municípios com plano encontrado (153 de 5.571 até aqui). Investigação, não suposição: por que a cobertura do Querido Diário é tão desigual por UF (AL 94,1% vs. MG/PI/SC/GO/AC/MT entre 0% e 2,5%)?
+
+**Achado 1 — causa real da desigualdade, verificada no código-fonte aberto do QD** (`okfn-brasil/querido-diario`): existe uma plataforma nacional, SIGPub (`diariomunicipal.com.br`, Vox Tecnologia), usada por associações/federações municipais de pelo menos MG, CE, PR, RS, RN, GO e BA (confirmado por navegação real, não suposto para os demais estados). O QD só tem UM raspador integrado a essa plataforma em todo o país — Alagoas — e é justamente AL quem lidera a cobertura. Não é ausência de plano; é lacuna de raspagem.
+
+**Achado 2 — evidência de planos reais não capturados.** Busca aberta trouxe, só de setembro/2026, cinco municípios com atividade documentada de plano de contingência para El Niño (Belo Horizonte/MG, Vila Velha/ES, Palotina/PR, Cabo Frio/RJ, Erechim/RS) — nenhum necessariamente no banco ainda.
+
+**Construído.** `coletar_diarios_consorciados.py`: reproduz o mecanismo real do SIGPub (widget de calendário → JSON → PDF cobrindo todos os municípios da associação naquela data), copiado do próprio raspador-base do QD (`gazette/spiders/base/sigpub.py`) — a "Busca Avançada" por palavra-chave tem ReCaptcha (nota do próprio QD), não é caminho viável. Extrai texto do PDF (pdfplumber), localiza decreto/plano, atribui por proximidade ao cabeçalho de entidade mais próximo ("PREFEITURA DE X", "MUNICÍPIO DE X") contra a referência IBGE da UF. Nunca classifica sozinho: toda saída é pista (nível `nao_verificado`), nunca registro; quando nenhum cabeçalho é localizado, a pista fica em nível UF em vez de descartada. Só entram os 7 estados com slug **verificado por navegação real** (MG, GO×2, BA×2, CE, PR, RS, RN) — nenhum slug foi suposto para os demais.
+
+**Achado 3 — bloqueio real, verificado duas vezes contra produção.** O token do widget de calendário (`id="calendar__token"`) é preenchido por JavaScript no navegador (`data-controller="csrf-protection"`, um controller Stimulus). O HTML servido traz só um placeholder estático — a string literal `"csrf-token"` — sem `<meta name="csrf-token">` nem outra fonte estática de onde copiar o valor real. Verificado byte a byte contra o HTML real de produção (amm-mg), com sessão de cookies persistente (afastando a hipótese de token inválido por falta de sessão) e checagem de todos os 11 arquivos JS referenciados pela página em busca de um mini-endpoint alternativo — nenhum encontrado. Todo POST feito com o placeholder volta `{"error":"Ocorreu um erro inesperado!"}`.
+
+**Decisão** (22/09/2026, autonomia decisória — pedido explícito de terminar a rotina sem abrir mais uma dependência nova a depurar): NÃO implementar navegador headless (Selenium/Playwright) agora — é uma dependência de infraestrutura nova e desproporcional ao pedido de fechar a rotina. `coletar_fonte()` detecta o placeholder e para ANTES de gastar qualquer requisição de calendário (testado: `t12`, mocka a rede e confirma zero POSTs). O motor de PDF → texto → atribuição de município fica pronto e testado (13 casos, incluindo ponta a ponta com PDF sintético) para quando uma fonte de token funcional existir — desbloquear exige só trocar a aquisição do token, não reescrever o resto.
+
+**Teste.** Autoteste hermético — achado e corrigido nesta sessão: a primeira versão do teste de bloqueio chamava `coletar_fonte()` de verdade, que gravava uma lacuna real em `data/log_buscas.json` a cada rodada de `--autoteste`; corrigido mockando `registrar_lacuna` também, não só a rede. `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §128 · MUNIC/IBGE: coletor lia CSV inexistente e coluna errada; edição e campo reais confirmados por download · 20/09/2026
 
 Classe **código**. Não altera pesos, créditos, componentes ou régua; a camada declarada nacional continua sem entrar na nota (vigência 26/10/2026, §3.9).
