@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §122 · `--autoteste` de `coletar_financiamento.py` e `gerar_painel.py` sobrescrevia dados reais sem restaurar · 21/09/2026
+
+Achado ao rodar a suíte completa de portões localmente (rotina diária, fora da Action — checkout descartável). Nenhuma alteração de método; nenhuma nota muda. Classe **código** (PROTOCOLO §3.2).
+
+**Causa-raiz.** `coletar_financiamento.py --autoteste` chama `semear()`, que escreve os seis registros de exemplo direto em `data/financiamento/*.json` (registros reais da página `financiamento.html`); `gerar_painel.py --autoteste` chama `sortear()` e `fichas()`, que escrevem em `data/painel/lista.json` (a lista **imutável** do painel amostral publicado, E11), `fichas.json` e `agregados.json`. Nenhum dos dois restaurava os arquivos depois do teste. Na Action (`portoes.yml`), isso é inofensivo — cada execução usa um checkout novo, descartado ao final. Rodando localmente sobre o clone de trabalho (exatamente o que a rotina diária faz para validar a `main`), o efeito é apagar dado real. **`coletar_saude.py` já tinha o mesmo bug, corrigido em 03/09/2026** (comentário no próprio código: "autoteste NUNCA toca os dados reais"); esta correção aplica o mesmo padrão aos outros dois coletores que faltavam.
+
+**Correção.** Em ambos, o teste que semeia dados agora faz backup dos arquivos reais antes (bytes, se existirem) e restaura no `finally`, tenha o teste passado ou não — mesmo padrão de `coletar_saude.py`. Cada arquivo ganhou um teste negativo novo que confere, ao final da suíte do próprio script, que o arquivo real ficou byte a byte igual ao que era antes de `--autoteste` rodar.
+
+**Teste.** 7/7 testes em cada script; confirmado que `git status` não mostra nenhum arquivo de `data/` alterado após os dois `--autoteste`. `docs/MANIFEST_SHA256.txt` regenerado. Nenhum arquivo de `.github/workflows/` tocado.
+
 ## §121 · O contador da varredura media outra coisa: "não indexado" contado como "com menção" · 20/09/2026
 
 Classe **código**; nenhuma nota muda; média nacional segue 43,6, reproduzida bit a bit. Nada do que o público vê estava errado — o defeito era interno, e é registrado aqui porque corrompia o instrumento usado para julgar a cobertura da varredura.
