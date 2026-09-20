@@ -19,7 +19,7 @@ para clicar.
 
 ## 2. Os dois jeitos de o site mudar
 
-**Sozinho, toda segunda-feira às 6h (horário de Brasília).** Um robô busca
+**Sozinho, todo sábado às 22h40 (horário de Brasília).** Um robô busca
 boletins, instrumentos novos, transferências e contribuições do formulário;
 aplica só o que as regras já aprovadas permitem; roda cinco verificações; e,
 se tudo passar, publica. Se qualquer verificação falhar, **nada é
@@ -96,7 +96,7 @@ Decisão da editoria em 10/09/2026. Uma vez por semana, no dia que preferir:
 A rotina completa (para o Claude) está em
 `robo-registro/notas/TRANSFERENCIA_ROTINA_JULGAMENTO_DE_PISTAS.md`.
 
-## 4. Rotina de segunda-feira (5 minutos)
+## 4. Rotina de sábado (5 minutos)
 
 1. Abra github.com/monitorelnino/monitorelnino e clique na aba **Actions**.
 2. Veja a execução mais recente de *Atualização semanal de dados*:
@@ -200,7 +200,7 @@ isso existe no Netlify como recurso pago — é só pedir.
 - **Testar:** abra o endereço reservado. É o site completo, sempre na
   versão atual do `main`.
 - **Prévias de PR** continuam funcionando normalmente.
-- **A rotina de segunda-feira** continua atuando no `main`; o domínio em
+- **A rotina de sábado** continua atuando no `main`; o domínio em
   branco não é tocado.
 - **Quem publica é o robô do repositório**, não o painel do Netlify: cada
   mudança aprovada no `main` vai sozinha para o endereço reservado, e o

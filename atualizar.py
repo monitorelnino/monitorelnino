@@ -31,8 +31,52 @@ não deve entrar, e rode `python3 aplicar_revisao.py --arquivo data/instrumentos
 Uso: python atualizar.py
 """
 import datetime, hashlib, json, os, pathlib, subprocess, sys
+from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent
+
+# ---------------------------------------------------------------------------
+# Cadência semanal de publicação — dia único de verdade para toda a rotina.
+#
+# 20/09/2026 (decisão da editoria): a publicação semanal passa de SEGUNDA para
+# SÁBADO, 22h40 de Brasília. Duas armadilhas resolvidas aqui:
+#
+#  1. FUSO. O runner do GitHub roda em UTC, e sábado 22h40 de Brasília é
+#     DOMINGO 01h40 em UTC. Usar datetime.date.today().weekday() (UTC) faria a
+#     rodada de "sábado" cair na sexta-feira à noite para o leitor brasileiro.
+#     A cadência é, por isso, ancorada em America/Sao_Paulo — o fuso do leitor,
+#     do texto público e da redação —, não no fuso do runner.
+#  2. DUPLICIDADE. O cron diário das 09h UTC também cai no dia de publicação
+#     (06h de Brasília). Sem guarda, o sábado teria DUAS rodadas completas com
+#     16 horas de intervalo. `ja_publicou_hoje()` abaixo encerra a segunda.
+#
+# Ao alterar o dia aqui, altere também: o cron do workflow, o texto público
+# (obrigado.html, pesquisadores.html) e a documentação. O portão
+# scripts/testar_cadencia_publicacao.py bloqueia se algum deles divergir — o dia
+# é compromisso declarado ao leitor, não detalhe interno.
+# ---------------------------------------------------------------------------
+FUSO_EDITORIAL = ZoneInfo("America/Sao_Paulo")
+DIA_PUBLICACAO = 5            # weekday(): 0 = segunda … 5 = sábado, 6 = domingo
+NOME_DIA_PUBLICACAO = "sábado"
+
+
+def hoje_editorial():
+    """Data de hoje no fuso da redação (America/Sao_Paulo), não no fuso do runner."""
+    return datetime.datetime.now(FUSO_EDITORIAL).date()
+
+
+def ja_publicou_hoje():
+    """True se data/meta.json já registra atualização na data editorial de hoje.
+
+    Guarda contra rodada completa duplicada no mesmo dia: o cron diário e o cron
+    semanal caem ambos no dia de publicação, e sem isto a cadeia inteira (75–105 min)
+    rodaria duas vezes, gerando dois commits para a mesma edição.
+    """
+    try:
+        meta = json.loads((RAIZ / "data" / "meta.json").read_text(encoding="utf-8"))
+        return meta.get("atualizado_em", "") == hoje_editorial().strftime("%d/%m/%Y")
+    except Exception:  # noqa: BLE001 — meta ilegível nunca bloqueia a rodada
+        return False
 
 def rodar(cmd, obrigatorio=False, env_extra=None):
     """Executa um subprocesso do pipeline; se obrigatorio=True, aborta o processo com o mesmo código de saída em caso de falha."""
@@ -60,8 +104,8 @@ def main():
     # v2.2.4 (E4/§13): cadência ANTES de qualquer coleta — em dia não publicável nada muda.
     intensivo = os.environ.get("INTENSIVO_ATE", "")
     intensivo_de = os.environ.get("INTENSIVO_DE", "") or intensivo  # sem início declarado, vale só o fim
-    hoje_iso = datetime.date.today().isoformat()
-    dia_semana = datetime.date.today().weekday()  # 0 = segunda
+    hoje_iso = hoje_editorial().isoformat()
+    dia_semana = hoje_editorial().weekday()  # no fuso da redação, nunca no do runner (ver topo)
     em_intensivo = bool(intensivo) and intensivo_de <= hoje_iso <= intensivo
     if os.environ.get("ENSAIO"):
         print("[ensaio] execução de ensaio: tudo roda como no dia da semana intensiva; NADA será comitado nem publicado.")
@@ -88,8 +132,17 @@ def main():
     # continua — é idempotente sobre os mesmos dados quando nada mudou.
     rodar([sys.executable, "gerar_monitor_saude.py"])
 
-    if not em_intensivo and dia_semana != 0:
-        print("[cadência] fora da semana intensiva e não é segunda-feira: execução diária encerra sem coletar nem comitar.")
+    if not em_intensivo and dia_semana != DIA_PUBLICACAO:
+        print(f"[cadência] fora da semana intensiva e não é {NOME_DIA_PUBLICACAO} "
+              f"(hoje é {hoje_editorial():%d/%m/%Y} no fuso da redação): "
+              f"execução diária encerra sem coletar nem comitar.")
+        return 0
+
+    # Guarda contra rodada completa duplicada no mesmo dia editorial (ver topo):
+    # o cron diário e o cron semanal caem ambos no dia de publicação.
+    if not em_intensivo and not os.environ.get("ENSAIO") and ja_publicou_hoje():
+        print(f"[cadência] a edição de {hoje_editorial():%d/%m/%Y} já foi publicada nesta "
+              f"data (data/meta.json); execução encerra sem recoletar nem comitar.")
         return 0
 
     rodar([sys.executable, "atualizar_boletins.py"])

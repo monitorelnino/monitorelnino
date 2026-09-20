@@ -36,7 +36,7 @@ O pipeline de dados é Python 3 (quatro dependências externas, todas
 travadas em versão exata em `requirements.txt`; ver `docs/SBOM.md`) mais
 dois portões em Node.js (`jsdom`, `d3`, listados em `package.json`),
 executado pela Action semanal do GitHub (`.github/workflows/atualizar.yml`,
-segundas 09h UTC, e sob demanda) e localmente por qualquer editor. O
+sábados 22h40 de Brasília, e sob demanda) e localmente por qualquer editor. O
 formulário público usa Netlify Forms com detecção de ambiente (o envio real
 só é habilitado no domínio publicado, nunca em prévia local).
 
