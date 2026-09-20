@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §117 · Cadência semanal passa de segunda-feira para sábado, 22h40 de Brasília · 20/09/2026
+
+Decisão da editoria, tomada e autorizada em sessão de 20/09/2026 — incluindo autorização explícita e permanente para editar `.github/workflows/` quando o pedido exigir (a restrição anterior era de protocolo, não de escopo do token: o push com alteração de workflow passou de primeira). Nenhuma alteração de método; **nenhuma nota muda**; nenhum peso, crédito, componente ou régua tocado; congelamento do defeso (C6, Errata C25) intacto. Classe **código**.
+
+**O que mudou.** A rodada completa semanal — a que recoleta todas as fontes, recalcula o MARÉ, regenera PDFs, selos, feeds e dados abertos, e publica — deixa de acontecer às segundas-feiras às 09h UTC e passa a acontecer aos **sábados, 22h40 de Brasília**. As execuções diárias (sinais de risco, derivado de saúde) continuam inalteradas.
+
+**Armadilha de fuso, resolvida antes de publicar.** O runner do GitHub roda em UTC, e sábado 22h40 de Brasília é **domingo 01h40 em UTC**. O portão de cadência usava `datetime.date.today().weekday()`, que no runner é UTC: com `DIA_PUBLICACAO = 5` (sábado) a rodada teria caído na **sexta-feira à noite** para o leitor brasileiro. A cadência passa a ser medida em `America/Sao_Paulo` (`hoje_editorial()`), o fuso do leitor e do texto público, e o cron semanal é `40 1 * * 0` — domingo em UTC, sábado no Brasil.
+
+**Guarda contra rodada duplicada.** O cron diário das 09h UTC também cai no dia de publicação (06h de Brasília). Sem guarda, o sábado teria duas rodadas completas de 75–105 min com 16 horas de intervalo e dois commits para a mesma edição. `ja_publicou_hoje()` compara `data/meta.json` com a data editorial e encerra a segunda. A cadência anterior já tinha a mesma duplicidade às segundas, contida só por `concurrency`; esta guarda a elimina de fato.
+
+**Texto público alinhado.** `obrigado.html` prometia a quem envia documento que ele entraria no ar "normalmente na segunda-feira", e `pesquisadores.html` declarava a cadência do banco como segundas. Ambos passam a dizer sábado — o dia é compromisso declarado ao leitor, não detalhe interno. `METODOLOGIA.md` (cadência E4 e ficha/reverificação do §29), `PROTOCOLO_ATUALIZACAO.md`, `GUIA_DO_EDITOR.md`, `README.md`, `INSTALACAO_E_AUDITORIA.md`, `DOCUMENTACAO_TECNICA.md`, `AUDITORIA_CODIGO.md` e `COMO_RODAR_E_PENDENCIAS.md` atualizados. A série semanal permanece comparável: o intervalo entre observações continua de sete dias.
+
+**Portão novo.** `scripts/testar_cadencia_publicacao.py` exige que o código, o cron do workflow e o texto público nomeiem o mesmo dia, e que a medição seja feita no fuso da redação. Quatro testes negativos (texto público divergente; literal no lugar da constante; cron em sábado UTC, que é sexta no Brasil; medição em UTC). O portão pegou um erro real de conversão de cron durante a própria implementação.
+
 ## §116 · Filtro de UF em `monitorar_imprensa_saude.py` — rejeita atribuição cruzada de RSS nacional · 20/09/2026
 
 Bug detectado em 19/09 (§112) e corrigido nesta rotina. Nenhuma alteração de método; **nenhuma nota muda**; nenhum dado de `data/*.json` tocado. Classe **código** (PROTOCOLO §3.2).
@@ -21,8 +35,7 @@ Bug detectado em 19/09 (§112) e corrigido nesta rotina. Nenhuma alteração de 
 
 **Pistas existentes em `data/pistas_imprensa_saude.json`.** As 19 pistas de atribuição cruzada do lote de 19/09 permanecem na fila em `pendente_confirmacao_documento` — inofensivas (a trava absoluta impede aplicação sem documento oficial) e úteis para a triagem humana confirmar a eliminação. As 6 pistas de Bahia (4 com título correto, 2 cruzadas) aguardam busca manual do documento primário da SES-BA.
 
-
-
+## §112 · Triagem das filas de descoberta automática, e um defeito no monitor de imprensa de saúde · 19/09/2026
 Triagem das duas filas criadas pela rodada de 19/09. Nenhuma alteração de método; **nenhuma nota muda**; nenhum instrumento aplicado além do de MG (§111). Classe **conteúdo**.
 
 **`pistas_descobertas.json` — 13 restantes, nenhuma aplicada.** Onze fora do escopo do índice (plano de comunicação institucional, POP de coleta de amostra, manual de sistema, tutorial de painel do fundo estadual, Plano Diretor de Regionalização revisão 2023, boletim de campanha, diligência administrativa, guia de vigilância de Covid-19 e influenza, demonstrativos orçamentários). As três intituladas "Plano Estadual de Contingência para Enfrentamento aos Vírus Respiratórios" foram **abertas e conferidas**: são de "Minas Gerais – 2025", sazonais recorrentes, não específicas do ciclo El Niño nem do ciclo corrente. Cada item carrega agora a razão da não aplicação.
