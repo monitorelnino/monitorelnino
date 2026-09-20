@@ -180,15 +180,35 @@ FIX_T = [{"codigoIBGE": "4202404", "valor": "1500.50", "ano": 2026, "objeto": "C
 FIX_E = [{"tipoEmenda": "Transferência Especial", "valorEmpenhado": 100000, "valorPago": 0, "ano": 2026, "uf": "SC", "funcao": "Saúde", "codigoEmenda": "2026X", "nomeAutor": "BELTRANO"}]
 
 
+_NOMES_SEMEADOS = ("rotas.json", "por_uf.json", "compromissos_federais.json", "serie_nacional.json", "emendas.json", "consultas.json")
+
+
 def autoteste():
-    def t1(): semear(); return all((FIN / n).exists() for n in ("rotas.json", "por_uf.json", "compromissos_federais.json", "serie_nacional.json", "emendas.json", "consultas.json"))
+    def t1():
+        # 20/09/2026 (rotina diária, achado ao rodar a suíte localmente, mesma classe do bug
+        # corrigido em coletar_saude.py em 03/09): semear() escreve em data/financiamento/*.json
+        # de verdade — fora da Action (checkout descartável), --autoteste sobrescrevia os seis
+        # registros reais com o exemplo, sem restaurar. Autoteste NUNCA toca os dados reais.
+        antes = {n: (FIN / n).read_bytes() if (FIN / n).exists() else None for n in _NOMES_SEMEADOS}
+        try:
+            semear()
+            return all((FIN / n).exists() for n in _NOMES_SEMEADOS)
+        finally:
+            for n, b in antes.items():
+                if b is not None:
+                    (FIN / n).write_bytes(b)
+                elif (FIN / n).exists():
+                    (FIN / n).unlink()
     def t2(): r = _l("rotas.json")["rotas"]; return [x["n"] for x in r] == list(range(1, 9)) and len({x["cor"] for x in r}) == 8
     def t3(): p = parse_transferencias(FIX_T); return len(p) == 1 and p[0]["valor"] == 1500.5 and p[0]["municipio_ibge"] == "4202404" and "nomeAutor" not in json.dumps(p)
     def t4(): p = parse_emendas(FIX_E); return p[0]["rota"] == "r6" and "BELTRANO" not in json.dumps(p) and "nomeAutor" not in json.dumps(p)
     def t5(): return parse_transferencias(None) == [] and parse_emendas([]) == []
     def t6(): u = _l("por_uf.json")["uf"]; return len(u) == 27 and u["RS"]["fundo_a_fundo_preventivo"].get("precedente_E12") is True
-    return rodar_autoteste({"semear cria os 6 registros": t1, "8 rotas em ordem, cores únicas": t2, "parser transferências descarta autor (E10)": t3,
-                            "parser emendas descarta autor (E10)": t4, "negativo: resposta nula": t5, "por_uf: 27 UFs, Prepara RS como precedente": t6})
+    def t7(): return (FIN / "consultas.json").read_bytes() == _SNAP if _SNAP else True
+    _SNAP = (FIN / "consultas.json").read_bytes() if (FIN / "consultas.json").exists() else b""
+    return rodar_autoteste({"semear cria os 6 registros, sem tocar dados reais": t1, "8 rotas em ordem, cores únicas": t2, "parser transferências descarta autor (E10)": t3,
+                            "parser emendas descarta autor (E10)": t4, "negativo: resposta nula": t5, "por_uf: 27 UFs, Prepara RS como precedente": t6,
+                            "negativo: autoteste não altera dados reais": t7})
 
 
 if __name__ == "__main__":

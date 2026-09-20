@@ -141,14 +141,35 @@ def fichas():
     print(f"fichas: {len(out)} · agregados: {len(agg)} células")
 
 
+_NOMES_PAINEL = ("lista.json", "fichas.json", "agregados.json")
+
+
 def autoteste():
     from coletores_base import rodar_autoteste
+
+    def _backup():
+        return {n: (P / n).read_bytes() if (P / n).exists() else None for n in _NOMES_PAINEL}
+
+    def _restaurar(antes):
+        for n, b in antes.items():
+            if b is not None:
+                (P / n).write_bytes(b)
+            elif (P / n).exists():
+                (P / n).unlink()
+
     def t1(): u, d = universo(); return len(u) == 5571 and sum(1 for m in u if m["capital"]) == 27
     def t2(): return [porte(p) for p in (0, 19999, 20000, 49999, 50000, 99999, 100000, 899999, 900000)] == ["pequeno_I", "pequeno_I", "pequeno_II", "pequeno_II", "medio", "medio", "grande", "grande", "metropole"]
     def t3():
-        import copy, tempfile, shutil
-        h1 = sortear(20260902); l1 = j(P / "lista.json"); h2 = sortear(20260902); l2 = j(P / "lista.json")
-        return h1 == h2 and l1["municipios"] == l2["municipios"] and l1["n"] == 313 and all(sum(1 for m in l1["municipios"] if m["uf"] == u) == (1 if u == "DF" else 12) for u in UFS)
+        # 20/09/2026 (rotina diária, achado ao rodar a suíte localmente, mesma classe do bug
+        # corrigido em coletar_saude.py em 03/09): sortear() escreve em P / "lista.json" de
+        # verdade — fora da Action (checkout descartável), --autoteste sobrescrevia a lista
+        # IMUTÁVEL do painel publicado sem restaurar. Autoteste NUNCA toca os dados reais.
+        antes = _backup()
+        try:
+            h1 = sortear(20260902); l1 = j(P / "lista.json"); h2 = sortear(20260902); l2 = j(P / "lista.json")
+            return h1 == h2 and l1["municipios"] == l2["municipios"] and l1["n"] == 313 and all(sum(1 for m in l1["municipios"] if m["uf"] == u) == (1 if u == "DF" else 12) for u in UFS)
+        finally:
+            _restaurar(antes)
     def t4():
         l = j(P / "lista.json"); caps = {(u["capital"]["nome"] if isinstance(u.get("capital"), dict) else u.get("capital"), u["uf"]) for u in j(D / "estados.json")["ufs"]}
         return all((m["nome"], m["uf"]) not in caps or m.get("excecao") for m in l["municipios"]) and any(m["ibge"] == "4213401" for m in l["municipios"])
@@ -159,9 +180,19 @@ def autoteste():
             ms = [m for m in l["municipios"] if m["uf"] == u]
             ok &= sum(1 for m in ms if "geo_hidrologico" in m["marcadores"]) >= 2 and sum(1 for m in ms if m["controle"]) >= 1
         return ok
-    def t6(): fichas(); f = j(P / "fichas.json")["fichas"]; return len(f) == 313 and all(x["fontes"] and x["data_ficha"] for x in f)
-    return rodar_autoteste({"universo: 5.571 e 27 capitais": t1, "faixas de porte": t2, "sorteio determinístico: 313 (12 por UF; DF = 1), mesma lista para a mesma semente": t3,
-                            "sem capitais; Ponte Serrada presente": t4, "mín. 2 no marcador dominante e 1 controle por UF": t5, "fichas: 313 com fonte e data": t6})
+    def t6():
+        # mesma correção: fichas() reescreve fichas.json e agregados.json de verdade.
+        antes = _backup()
+        try:
+            fichas(); f = j(P / "fichas.json")["fichas"]; return len(f) == 313 and all(x["fontes"] and x["data_ficha"] for x in f)
+        finally:
+            _restaurar(antes)
+    def t7():
+        return (P / "lista.json").read_bytes() == _SNAP if _SNAP else True
+    _SNAP = (P / "lista.json").read_bytes() if (P / "lista.json").exists() else b""
+    return rodar_autoteste({"universo: 5.571 e 27 capitais": t1, "faixas de porte": t2, "sorteio determinístico: 313 (12 por UF; DF = 1), mesma lista para a mesma semente, sem tocar dados reais": t3,
+                            "sem capitais; Ponte Serrada presente": t4, "mín. 2 no marcador dominante e 1 controle por UF": t5, "fichas: 313 com fonte e data, sem tocar dados reais": t6,
+                            "negativo: autoteste não altera a lista publicada": t7})
 
 
 if __name__ == "__main__":
