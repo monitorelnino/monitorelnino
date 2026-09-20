@@ -45,6 +45,9 @@ RAIZ_FTP = "https://ftp.ibge.gov.br/Perfil_Municipios/"
 # A sonda confirma contra o arquivo; esta lista só decide a ordem de tentativa.
 EDICOES_PRIORITARIAS = ["2020", "2017", "2024", "2023", "2021", "2019", "2018"]
 
+# Onde a base realmente mora dentro de cada edição (visto na execução de 20/09).
+SUBPASTAS = {"Base_de_Dados", "Tabelas_de_Resultados"}
+
 # O que caracteriza a coluna que interessa. Casa com variações de caixa e separador.
 PADRAO_PLANO = re.compile(r"(plano.*coting|plano.*conting|conting.*plano|plancont)", re.I)
 PADRAO_RISCO = re.compile(r"(risco|desastre|defesa\s*civil|mgrd|protecao\s*civil|prote\u00e7\u00e3o)", re.I)
@@ -83,10 +86,42 @@ def classificar_colunas(colunas: list) -> dict:
     }
 
 
+def colunas_de_xlsx(bruto: bytes) -> list:
+    """Cabeçalho da primeira linha de um .xlsx, sem carregar a planilha inteira na memória.
+
+    22/09/2026 — a execução real mostrou que a MUNIC não distribui CSV: tudo é .xlsx/.ods.
+    `parse_munic_csv()` em coletar_declarado_nacional.py é csv.DictReader e NÃO lê este
+    formato. A sonda precisa ler para dizer os nomes de coluna; o coletor precisará da
+    mesma mudança antes da primeira coleta real.
+    """
+    import openpyxl
+    wb = openpyxl.load_workbook(io.BytesIO(bruto), read_only=True, data_only=True)
+    try:
+        ws = wb[wb.sheetnames[0]]
+        for linha in ws.iter_rows(min_row=1, max_row=8, values_only=True):
+            celulas = [str(c).strip() for c in linha if c is not None and str(c).strip()]
+            # O IBGE costuma abrir a planilha com título/nota antes do cabeçalho:
+            # o cabeçalho é a primeira linha com várias células preenchidas.
+            if len(celulas) >= 4:
+                return celulas
+        return []
+    finally:
+        wb.close()
+
+
 def _relatar_tabela(nome: str, bruto: bytes) -> None:
     """Imprime o veredito de um arquivo tabular: colunas-chave achadas e amostra."""
-    texto = bruto[:2_000_000].decode("latin-1", "replace")
-    colunas = colunas_de_csv(texto)
+    if nome.lower().endswith(".xlsx"):
+        try:
+            colunas = colunas_de_xlsx(bruto)
+        except Exception as e:  # noqa: BLE001
+            print(f"      {nome}: ERR ao abrir xlsx — {type(e).__name__}: {e}")
+            return
+    elif nome.lower().endswith(".ods"):
+        print(f"      {nome}: .ods — equivalente ao .xlsx irmão; sondando só o .xlsx")
+        return
+    else:
+        colunas = colunas_de_csv(bruto[:2_000_000].decode("latin-1", "replace"))
     if not colunas:
         print(f"      {nome}: sem cabeçalho legível")
         return
@@ -111,7 +146,11 @@ def sondar() -> int:
         print(f"  ERR {type(e).__name__}: {e}")
         dirs = []
 
-    candidatos = [d for e in EDICOES_PRIORITARIAS for d in dirs if e in d] or \
+    # 22/09/2026 — defeito achado na 1ª execução real: `if e in d` casava
+    # "Gestao_do_Saneamento_Basico_2017/" e "Seguranca_Alimentar_2024/" como se fossem
+    # edições da MUNIC, e os suplementos consumiram as 6 vagas da sonda. A edição é o
+    # diretório cujo nome é SÓ o ano.
+    candidatos = [f"{e}/" for e in EDICOES_PRIORITARIAS if f"{e}/" in dirs] or \
                  [f"{e}/" for e in EDICOES_PRIORITARIAS]
 
     for d in candidatos[:6]:
@@ -127,6 +166,25 @@ def sondar() -> int:
             continue
         arquivos = links_de_listagem(sub)
         print("  arquivos:", arquivos[:25])
+
+        # 22/09/2026 — defeito achado na 1ª execução real: a base não fica na raiz da
+        # edição, e sim em Base_de_Dados/. A sonda via só "Base_de_Dados/" e
+        # "Tabelas_de_Resultados/", não achava zip nenhum e desistia da edição.
+        for sub_dir in [a for a in arquivos if a.rstrip("/").split("/")[-1] in SUBPASTAS]:
+            suburl = url + sub_dir.lstrip("/")
+            print(f"  >> {sub_dir}")
+            try:
+                dentro = links_de_listagem(baixar(suburl).decode("latin-1", "replace"))
+            except Exception as e:
+                print(f"     ERR {type(e).__name__}: {e}")
+                continue
+            print("     arquivos:", [a for a in dentro if not a.startswith("http")][:15])
+            for a in [a for a in dentro if a.lower().endswith((".xlsx", ".ods", ".csv"))][:4]:
+                try:
+                    _relatar_tabela(a, baixar(suburl + a.lstrip("/")))
+                except Exception as e:
+                    print(f"     ERR {a}: {type(e).__name__}: {e}")
+            arquivos = arquivos + [sub_dir + a.lstrip("/") for a in dentro if a.lower().endswith(".zip")]
 
         # Um .zip da base costuma conter os CSV/ODS por bloco temático.
         zips = [a for a in arquivos if a.lower().endswith(".zip")]
@@ -195,6 +253,32 @@ def autoteste() -> int:
            len(colunas_de_csv("Fonte: IBGE, 2024\n")) == 1)
     checar("linha sem separador nenhum devolve uma coluna",
            len(colunas_de_csv("texto solto qualquer\n")) == 1)
+
+    # NEGATIVO (22/09) — os dois defeitos que a 1ª execução real revelou.
+    dirs_reais = ["2017/", "2020/", "2024/", "Saneamento_Basico_2017/",
+                  "Gestao_do_Saneamento_Basico_2017/", "Seguranca_Alimentar_2024/"]
+    so_edicoes = [f"{e}/" for e in EDICOES_PRIORITARIAS if f"{e}/" in dirs_reais]
+    checar("NEGATIVO: suplemento com ano no nome não é tomado por edição",
+           so_edicoes == ["2020/", "2017/", "2024/"])
+    checar("Base_de_Dados é reconhecida como subpasta da base",
+           "Base_de_Dados" in SUBPASTAS and "Tabelas_de_Resultados" in SUBPASTAS)
+
+    # NEGATIVO — cabeçalho de .xlsx com linhas de título antes (formato do IBGE).
+    try:
+        import openpyxl
+        from openpyxl import Workbook
+        wb = Workbook(); ws = wb.active
+        ws.append(["Pesquisa de Informações Básicas Municipais 2020"])
+        ws.append([])
+        ws.append(["CodMun", "UF", "Mgrd01", "MGRD_PlanoContingencia", "Mgrd03"])
+        buf = io.BytesIO(); wb.save(buf)
+        cols_x = colunas_de_xlsx(buf.getvalue())
+        checar("xlsx: pula linha de título e acha o cabeçalho real",
+               cols_x == ["CodMun", "UF", "Mgrd01", "MGRD_PlanoContingencia", "Mgrd03"])
+        checar("xlsx: a coluna de plano é classificada",
+               classificar_colunas(cols_x)["plano_contingencia"] == ["MGRD_PlanoContingencia"])
+    except ImportError:
+        print("  (openpyxl ausente — casos de xlsx pulados)")
 
     if falhas:
         print(f"✗ AUTOTESTE DA SONDA MUNIC: {len(falhas)} caso(s) falharam")
