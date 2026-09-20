@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §119 · Cadência semanal ajustada para domingo, 0h de Brasília · 20/09/2026
+
+Decisão da editoria, no mesmo dia do §117. Substitui o sábado 22h40 por **domingo à 0h de Brasília** (cron `0 3 * * 0` = 03h UTC). Classe **código**; nenhuma nota muda; nenhum peso, crédito ou régua tocado.
+
+**Por que é melhor que o sábado 22h40.** A rodada leva 75–105 min. Começando às 22h40 de sábado, terminava por volta de 00h05 de domingo — cruzava a virada do dia toda semana, o que exigiu o §118 para que a edição não fosse datada com o dia seguinte. Começando à 0h de domingo, ela termina por volta de 01h20 do **mesmo** domingo: a edição inteira, da coleta ao carimbo, acontece dentro de um único dia civil. A correção do §118 permanece — é a garantia estrutural de que nenhuma data do pipeline volte a vir de UTC — mas deixa de ser exercitada toda semana.
+
+**Fuso.** Meia-noite de Brasília é 03h UTC do mesmo dia, então o campo de dia da semana do cron (0 = domingo) coincide com o domingo brasileiro. Sem a coincidência, valeria a regra do §117: o portão de cadência decide pelo dia em `America/Sao_Paulo`, nunca pelo do runner.
+
+**Texto público e documentação** atualizados junto — `obrigado.html` (promessa a quem envia documento), `pesquisadores.html`, `METODOLOGIA.md`, `PROTOCOLO_ATUALIZACAO.md`, `GUIA_DO_EDITOR.md`, `README.md`, `INSTALACAO_E_AUDITORIA.md`, `DOCUMENTACAO_TECNICA.md`, `AUDITORIA_CODIGO.md`, `COMO_RODAR_E_PENDENCIAS.md`. O portão `testar_cadencia_publicacao.py` bloqueia se algum deles divergir.
+
 ## §118 · Data da edição no fuso da redação — a rodada de sábado carimbava domingo · 20/09/2026
 
 Defeito introduzido pelo §117 e detectado na primeira rodada de sábado, antes de completar um ciclo. Classe **código**; nenhuma nota muda; nenhum peso, crédito ou régua tocado.

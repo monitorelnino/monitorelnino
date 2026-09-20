@@ -73,7 +73,7 @@ Linguagens: Python 3.12 (pipeline; única dependência de cálculo é NumPy), Ja
 | `gerar_tese.js` | Ferramenta de sessão: gera o DOCX da tese a partir do código vivo (dep. `docx` via `npm install --no-save docx`) — fora do pipeline, da selagem e do CI (C8). | não |
 
 ### 2.4 CI e configuração
-`.github/workflows/atualizar.yml` (cron `40 1 * * 0` = sábados 22h40 de Brasília, mais execuções diárias; portão de cadência em `atualizar.py` decide no fuso America/Sao_Paulo + disparo manual) · `requirements.txt` (`requests`, `numpy`, `openpyxl`, `reportlab`) · `.gitignore` (inclui `fila_contribuicoes/` — dados pessoais nunca entram no Git).
+`.github/workflows/atualizar.yml` (cron `0 3 * * 0` = domingos 0h de Brasília, mais execuções diárias; portão de cadência em `atualizar.py` decide no fuso America/Sao_Paulo + disparo manual) · `requirements.txt` (`requests`, `numpy`, `openpyxl`, `reportlab`) · `.gitignore` (inclui `fila_contribuicoes/` — dados pessoais nunca entram no Git).
 
 ---
 
