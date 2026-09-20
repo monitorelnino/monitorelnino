@@ -1,18 +1,18 @@
 {
  "_governanca": "RESPOSTA (v3.1 §3; Metodologia §32): contagens, frações e datas do que foi decretado depois, e — desde 15/09/2026 (§32.4) — o ÍNDICE de resposta 0–100, igual a 100 × fração da população (Censo 2022) em município sob decreto no ciclo. Sem faixa, sem peso; nunca combinado com o índice de antecipação (C17). Peso zero no MARÉ (portão verificar_resposta.py). Fatia 'evento observado' em_classificacao até o adaptador municipal existir (C16). Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a).",
- "gerado_em": "14/09/2026",
+ "gerado_em": "20/09/2026",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a).",
  "inicio_ciclo": "29/06/2026",
  "nacional": {
-  "n_municipios": 280,
+  "n_municipios": 340,
   "total_municipios": 5571,
-  "fracao_municipios": 0.0503,
-  "pop_sob_decreto": 7385287,
+  "fracao_municipios": 0.061,
+  "pop_sob_decreto": 9518851,
   "pop_total": 203062512,
-  "fracao_populacao": 0.0364,
-  "indice": 3.6,
+  "fracao_populacao": 0.0469,
+  "indice": 4.7,
   "primeiro_decreto": "06/07/2026",
-  "reconhecidos": 268,
+  "reconhecidos": 328,
   "decretados_sem_reconhecimento": 12
  },
  "uf": {
@@ -36,40 +36,40 @@
    }
   },
   "AL": {
-   "n_municipios": 12,
+   "n_municipios": 15,
    "total_municipios": 102,
-   "fracao_municipios": 0.1176,
-   "pop_sob_decreto": 177763,
+   "fracao_municipios": 0.1471,
+   "pop_sob_decreto": 214641,
    "pop_uf": 3127511,
-   "fracao_populacao": 0.0568,
-   "indice": 5.7,
+   "fracao_populacao": 0.0686,
+   "indice": 6.9,
    "primeiro_decreto": "10/07/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 12
+    "em_classificacao": 15
    },
    "tons": {
-    "reconhecido": 10,
+    "reconhecido": 13,
     "decretado_sem_reconhecimento": 2
    }
   },
   "AM": {
-   "n_municipios": 8,
+   "n_municipios": 9,
    "total_municipios": 62,
-   "fracao_municipios": 0.129,
-   "pop_sob_decreto": 158660,
+   "fracao_municipios": 0.1452,
+   "pop_sob_decreto": 196308,
    "pop_uf": 3941175,
-   "fracao_populacao": 0.0403,
-   "indice": 4.0,
+   "fracao_populacao": 0.0498,
+   "indice": 5.0,
    "primeiro_decreto": "06/08/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 8
+    "em_classificacao": 9
    },
    "tons": {
-    "reconhecido": 8,
+    "reconhecido": 9,
     "decretado_sem_reconhecimento": 0
    }
   },
@@ -93,40 +93,40 @@
    }
   },
   "BA": {
-   "n_municipios": 30,
+   "n_municipios": 31,
    "total_municipios": 417,
-   "fracao_municipios": 0.0719,
-   "pop_sob_decreto": 945173,
+   "fracao_municipios": 0.0743,
+   "pop_sob_decreto": 962331,
    "pop_uf": 14136417,
-   "fracao_populacao": 0.0669,
-   "indice": 6.7,
+   "fracao_populacao": 0.0681,
+   "indice": 6.8,
    "primeiro_decreto": "29/07/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 30
+    "em_classificacao": 31
    },
    "tons": {
-    "reconhecido": 28,
+    "reconhecido": 29,
     "decretado_sem_reconhecimento": 2
    }
   },
   "CE": {
-   "n_municipios": 7,
+   "n_municipios": 8,
    "total_municipios": 184,
-   "fracao_municipios": 0.038,
-   "pop_sob_decreto": 141104,
+   "fracao_municipios": 0.0435,
+   "pop_sob_decreto": 159283,
    "pop_uf": 8791688,
-   "fracao_populacao": 0.016,
-   "indice": 1.6,
+   "fracao_populacao": 0.0181,
+   "indice": 1.8,
    "primeiro_decreto": "31/07/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 7
+    "em_classificacao": 8
    },
    "tons": {
-    "reconhecido": 7,
+    "reconhecido": 8,
     "decretado_sem_reconhecimento": 0
    }
   },
@@ -188,59 +188,59 @@
    }
   },
   "MA": {
-   "n_municipios": 0,
+   "n_municipios": 1,
    "total_municipios": 217,
-   "fracao_municipios": 0.0,
-   "pop_sob_decreto": 0,
+   "fracao_municipios": 0.0046,
+   "pop_sob_decreto": 18984,
    "pop_uf": 6775152,
-   "fracao_populacao": 0.0,
-   "indice": 0.0,
-   "primeiro_decreto": null,
+   "fracao_populacao": 0.0028,
+   "indice": 0.3,
+   "primeiro_decreto": "16/09/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 0
+    "em_classificacao": 1
    },
    "tons": {
-    "reconhecido": 0,
+    "reconhecido": 1,
     "decretado_sem_reconhecimento": 0
    }
   },
   "MG": {
-   "n_municipios": 27,
+   "n_municipios": 30,
    "total_municipios": 853,
-   "fracao_municipios": 0.0317,
-   "pop_sob_decreto": 1155004,
+   "fracao_municipios": 0.0352,
+   "pop_sob_decreto": 1748948,
    "pop_uf": 20538718,
-   "fracao_populacao": 0.0562,
-   "indice": 5.6,
+   "fracao_populacao": 0.0852,
+   "indice": 8.5,
    "primeiro_decreto": "06/07/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 27
+    "em_classificacao": 30
    },
    "tons": {
-    "reconhecido": 24,
+    "reconhecido": 27,
     "decretado_sem_reconhecimento": 3
    }
   },
   "MS": {
-   "n_municipios": 0,
+   "n_municipios": 1,
    "total_municipios": 79,
-   "fracao_municipios": 0.0,
-   "pop_sob_decreto": 0,
+   "fracao_municipios": 0.0127,
+   "pop_sob_decreto": 897938,
    "pop_uf": 2756700,
-   "fracao_populacao": 0.0,
-   "indice": 0.0,
-   "primeiro_decreto": null,
+   "fracao_populacao": 0.3257,
+   "indice": 32.6,
+   "primeiro_decreto": "15/09/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 0
+    "em_classificacao": 1
    },
    "tons": {
-    "reconhecido": 0,
+    "reconhecido": 1,
     "decretado_sem_reconhecimento": 0
    }
   },
@@ -283,21 +283,21 @@
    }
   },
   "PB": {
-   "n_municipios": 23,
+   "n_municipios": 25,
    "total_municipios": 223,
-   "fracao_municipios": 0.1031,
-   "pop_sob_decreto": 272622,
+   "fracao_municipios": 0.1121,
+   "pop_sob_decreto": 287923,
    "pop_uf": 3974495,
-   "fracao_populacao": 0.0686,
-   "indice": 6.9,
+   "fracao_populacao": 0.0724,
+   "indice": 7.2,
    "primeiro_decreto": "03/08/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 23
+    "em_classificacao": 25
    },
    "tons": {
-    "reconhecido": 23,
+    "reconhecido": 25,
     "decretado_sem_reconhecimento": 0
    }
   },
@@ -321,40 +321,40 @@
    }
   },
   "PI": {
-   "n_municipios": 13,
+   "n_municipios": 37,
    "total_municipios": 224,
-   "fracao_municipios": 0.058,
-   "pop_sob_decreto": 102562,
+   "fracao_municipios": 0.1652,
+   "pop_sob_decreto": 252573,
    "pop_uf": 3269200,
-   "fracao_populacao": 0.0314,
-   "indice": 3.1,
+   "fracao_populacao": 0.0773,
+   "indice": 7.7,
    "primeiro_decreto": "12/08/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 13
+    "em_classificacao": 37
    },
    "tons": {
-    "reconhecido": 13,
+    "reconhecido": 37,
     "decretado_sem_reconhecimento": 0
    }
   },
   "PR": {
-   "n_municipios": 13,
+   "n_municipios": 19,
    "total_municipios": 399,
-   "fracao_municipios": 0.0326,
-   "pop_sob_decreto": 351900,
+   "fracao_municipios": 0.0476,
+   "pop_sob_decreto": 403745,
    "pop_uf": 11443208,
-   "fracao_populacao": 0.0308,
-   "indice": 3.1,
+   "fracao_populacao": 0.0353,
+   "indice": 3.5,
    "primeiro_decreto": "31/07/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 13
+    "em_classificacao": 19
    },
    "tons": {
-    "reconhecido": 13,
+    "reconhecido": 19,
     "decretado_sem_reconhecimento": 0
    }
   },
@@ -435,78 +435,78 @@
    }
   },
   "RS": {
-   "n_municipios": 88,
+   "n_municipios": 99,
    "total_municipios": 497,
-   "fracao_municipios": 0.1771,
-   "pop_sob_decreto": 1841615,
+   "fracao_municipios": 0.1992,
+   "pop_sob_decreto": 2009633,
    "pop_uf": 10880506,
-   "fracao_populacao": 0.1693,
-   "indice": 16.9,
+   "fracao_populacao": 0.1847,
+   "indice": 18.5,
    "primeiro_decreto": "23/07/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 88
+    "em_classificacao": 99
    },
    "tons": {
-    "reconhecido": 86,
+    "reconhecido": 97,
     "decretado_sem_reconhecimento": 2
    }
   },
   "SC": {
-   "n_municipios": 9,
+   "n_municipios": 13,
    "total_municipios": 295,
-   "fracao_municipios": 0.0305,
-   "pop_sob_decreto": 684518,
+   "fracao_municipios": 0.0441,
+   "pop_sob_decreto": 711769,
    "pop_uf": 7609601,
-   "fracao_populacao": 0.09,
-   "indice": 9.0,
+   "fracao_populacao": 0.0935,
+   "indice": 9.4,
    "primeiro_decreto": "03/08/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 9
+    "em_classificacao": 13
    },
    "tons": {
-    "reconhecido": 9,
+    "reconhecido": 13,
     "decretado_sem_reconhecimento": 0
    }
   },
   "SE": {
-   "n_municipios": 4,
-   "total_municipios": 75,
-   "fracao_municipios": 0.0533,
-   "pop_sob_decreto": 107168,
-   "pop_uf": 2209558,
-   "fracao_populacao": 0.0485,
-   "indice": 4.9,
-   "primeiro_decreto": "12/08/2026",
-   "fatias": {
-    "apos_evento": 0,
-    "antes_com_previsao": 0,
-    "em_classificacao": 4
-   },
-   "tons": {
-    "reconhecido": 4,
-    "decretado_sem_reconhecimento": 0
-   }
-  },
-  "SP": {
    "n_municipios": 5,
-   "total_municipios": 645,
-   "fracao_municipios": 0.0078,
-   "pop_sob_decreto": 347116,
-   "pop_uf": 44420459,
-   "fracao_populacao": 0.0078,
-   "indice": 0.8,
-   "primeiro_decreto": "13/07/2026",
+   "total_municipios": 75,
+   "fracao_municipios": 0.0667,
+   "pop_sob_decreto": 140607,
+   "pop_uf": 2209558,
+   "fracao_populacao": 0.0636,
+   "indice": 6.4,
+   "primeiro_decreto": "12/08/2026",
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
     "em_classificacao": 5
    },
    "tons": {
-    "reconhecido": 2,
+    "reconhecido": 5,
+    "decretado_sem_reconhecimento": 0
+   }
+  },
+  "SP": {
+   "n_municipios": 6,
+   "total_municipios": 645,
+   "fracao_municipios": 0.0093,
+   "pop_sob_decreto": 414086,
+   "pop_uf": 44420459,
+   "fracao_populacao": 0.0093,
+   "indice": 0.9,
+   "primeiro_decreto": "13/07/2026",
+   "fatias": {
+    "apos_evento": 0,
+    "antes_com_previsao": 0,
+    "em_classificacao": 6
+   },
+   "tons": {
+    "reconhecido": 3,
     "decretado_sem_reconhecimento": 3
    }
   },
