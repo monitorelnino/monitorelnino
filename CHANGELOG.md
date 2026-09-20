@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §121 · O contador da varredura media outra coisa: "não indexado" contado como "com menção" · 20/09/2026
+
+Classe **código**; nenhuma nota muda; média nacional segue 43,6, reproduzida bit a bit. Nada do que o público vê estava errado — o defeito era interno, e é registrado aqui porque corrompia o instrumento usado para julgar a cobertura da varredura.
+
+**O defeito.** `recalcular_mare.py` classificava como "sem menção" o município cujo resultado começasse com `"sem edições"`. `coletar_diarios_municipais.py` nunca gravou essa string. Os prefixos reais são `sem_cobertura_qd:`, `coberto_sem_mencao:` e `cobertura a confirmar`. Consequência: `sem_mencao` era sempre 0 e `com_mencao` sempre igualava `consultados` — 3.180, quando o número real de municípios com menção localizada era **153**. A suíte ficava verde: nada falhava, a conta apenas media outra coisa.
+
+**Alcance.** O erro ficava em `data/verificacao_resumo.json`. A cortina do domínio publica apenas `consultados`/`total` ("3.180 municípios consultados nos diários oficiais (57%) — consultar não é verificar"), afirmação correta e já ressalvada; `com_mencao` nunca chegou ao público.
+
+**Correção.** Classificação pelos quatro estados que o coletor de fato grava, agora publicados separadamente em `varredura_diarios`: `com_mencao` 153, `coberto_sem_mencao` 198, `sem_cobertura_qd` 2.824, `cobertura_indefinida` 5 — soma 3.180, igual a `consultados`. `indexados` (153 + 198 = 351) passa a existir como campo próprio.
+
+**A distinção que não pode ser perdida.** `sem_mencao` passa a valer só para diário efetivamente lido, e nunca inclui os não indexados. Onde não há diário indexado não há o que ler: somar os dois faria o projeto afirmar ausência de plano onde existe apenas ausência de fonte — o que §4.1.2 proíbe e o que a linguagem-teto do projeto ("não localizamos até o corte", nunca "não existe") existe para impedir.
+
+**Portão.** `scripts/testar_contador_varredura.py` rejeita a volta da string fantasma no código (ignorando comentários, que a citam de propósito), exige os quatro campos, exige que as classes somem `consultados`, e trava as duas assinaturas do defeito: `com_mencao == consultados` e `sem_mencao` absorvendo os não indexados. Três testes negativos.
+
+**O que isto NÃO estabelece.** Os 2.824 "sem diário indexado" vêm do mesmo teste de cobertura cuja confiabilidade está em aberto (`data/cobertura_qd.json`, janela de 29/06/2026). É o que o repositório registra, não uma medição confirmada contra a API viva do Querido Diário — pendência aberta, ver handout.
+
 ## §120 · A rodada semanal derrubava o modo senha do domínio · 20/09/2026
 
 Defeito estrutural, anterior às mudanças de hoje, encontrado porque o domínio passou sete horas servindo a cortina "Em atualização" no lugar do site completo. Classe **código**; nenhuma nota muda; nenhum dado de `data/*.json` tocado.

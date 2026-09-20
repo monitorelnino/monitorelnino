@@ -357,11 +357,43 @@ def _resumo_verificacao(out):
         _qd = {c: [f for f in m.get("fontes", []) if f.get("fonte") == _FQD] for c, m in _fc.items()}
         _qd = {c: f for c, f in _qd.items() if f}
         _datas = sorted({f["data"] for fs in _qd.values() for f in fs if f.get("data")})
-        _com_mencao = sum(1 for fs in _qd.values() if any(not str(f.get("resultado", "")).startswith("sem edições") for f in fs))
+        # 20/09/2026 (§121): classificação pelos prefixos REAIS que coletar_diarios_municipais.py
+        # grava. Até aqui a conta procurava resultados começando com "sem edições", string que
+        # nunca existiu: nenhum município caía em sem_mencao, com_mencao igualava consultados, e
+        # a cortina pública afirmava que 3.180 municípios tinham menção a El Niño quando eram 153.
+        # Os quatro estados são distintos e não podem ser colapsados:
+        #   sem_cobertura_qd   — o município NÃO tem diário indexado; nada foi ou pode ser lido
+        #   coberto_sem_mencao — indexado e lido; nenhum excerto sobre o tema
+        #   (conteúdo)         — indexado, lido, com decreto ou pista localizada
+        #   cobertura a confirmar — o teste de cobertura falhou; estado desconhecido
+        # "Não indexado" NÃO é "sem menção": no primeiro caso não há o que ler, e tratar os dois
+        # como a mesma coisa é afirmar ausência onde só há ausência de fonte (§4.1.2).
+        def _classificar(fs):
+            marcas = [str(f.get("resultado", "")) for f in fs]
+            if any(not m.startswith(("sem_cobertura_qd", "coberto_sem_mencao", "cobertura a confirmar")) for m in marcas):
+                return "com_mencao"
+            if any(m.startswith("coberto_sem_mencao") for m in marcas):
+                return "coberto_sem_mencao"
+            if any(m.startswith("sem_cobertura_qd") for m in marcas):
+                return "sem_cobertura_qd"
+            return "cobertura_indefinida"
+
+        _estado = {c: _classificar(fs) for c, fs in _qd.items()}
+        _com_mencao = sum(1 for e in _estado.values() if e == "com_mencao")
+        _coberto_sem_mencao = sum(1 for e in _estado.values() if e == "coberto_sem_mencao")
+        _sem_cobertura = sum(1 for e in _estado.values() if e == "sem_cobertura_qd")
+        _indefinido = sum(1 for e in _estado.values() if e == "cobertura_indefinida")
         _uf_de = {str(v["ibge"]).zfill(7): v["uf"] for v in out}; _por_uf_qd = {}
         for c in _qd: _u = _uf_de.get(str(c).zfill(7)); _por_uf_qd[_u] = _por_uf_qd.get(_u, 0) + 1
         varredura = {"fonte": _FQD, "consultados": len(_qd), "total": len(out), "com_mencao": _com_mencao,
-                     "sem_mencao": len(_qd) - _com_mencao, "desde": (_datas[0] if _datas else None), "ultima": (_datas[-1] if _datas else None),
+                     "coberto_sem_mencao": _coberto_sem_mencao, "sem_cobertura_qd": _sem_cobertura,
+                     "cobertura_indefinida": _indefinido,
+                     # sem_mencao = lidos e sem excerto. NÃO inclui os não indexados: onde não há
+                     # diário não há leitura, e somar os dois afirmaria ausência de plano onde só
+                     # há ausência de fonte.
+                     "sem_mencao": _coberto_sem_mencao,
+                     "indexados": _com_mencao + _coberto_sem_mencao,
+                     "desde": (_datas[0] if _datas else None), "ultima": (_datas[-1] if _datas else None),
                      "por_uf": _por_uf_qd}   # 07/09/2026: diário consultado por UF (face do cartão)
     except Exception:
         varredura = None
