@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## Correção · `data/monitor_saude.json` (focos_24h) ficava atrás da coleta diária de sinais · 18/09/2026
+
+Achado da rotina diária: portão 12 (`scripts/verificar_derivados.sh`) vermelho na `main` (`7fda5a9`). Nenhuma alteração de método; nenhuma nota muda (peso zero, como sempre — Monitor Saúde nunca é lido por `recalcular_mare.py`). Classe **código** (PROTOCOLO §3.2).
+
+- **Causa-raiz.** Em 17/09/2026 (§87) `coletar_sinais_risco.py` passou a rodar incondicionalmente todo dia, antes do corte de cadência semanal do índice — para que ONI, avisos do INMET e focos do INPE em `data/sinais_risco.json` deixassem de esperar até segunda-feira. `gerar_monitor_saude.py`, que copia `focos_24h` por UF de `sinais_risco.json` para `data/monitor_saude.json` (campo lido pela página `saude.html`), continuou só no bloco semanal, depois do corte de cadência — então nos dias 17 e 18/09 o robô atualizou o sinal bruto mas não o derivado, que ficou parado com os focos de 31/08.
+- **Correção.** `gerar_monitor_saude.py` passa a rodar também logo após `coletar_sinais_risco.py`, incondicionalmente, todo dia — chamada idempotente (mesma função pura já usada no bloco semanal, provada por `--idempotencia`). `data/monitor_saude.json` e `docs/MANIFEST_SHA256.txt` regenerados nesta correção para a `main` ficar verde já hoje.
+- **Teste.** `scripts/verificar_derivados.sh` (árvore limpa, com a correção) e `--idempotencia` (segunda regeneração não altera nada) verdes. Nenhum arquivo de `.github/workflows/` tocado.
+
 ## §55 · Saúde: títulos-fato do dado (auditoria editorial 14/09, onda E2 §2.10) · 15/09/2026
 
 Nenhuma alteração de método. Classe **conteúdo**.
