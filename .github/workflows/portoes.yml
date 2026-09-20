@@ -87,6 +87,10 @@ jobs:
           python3 scripts/testar_nivel_log_buscas.py
           python3 scripts/testar_reposicao_dominio.py
           python3 scripts/testar_ordem_prioridade_ufs.py
+          # §127 — autotestes das sondas ligados aqui após §123 entrar (não foram incluídos
+          # nos PRs das sondas para evitar conflito com #303 em portoes.yml)
+          python3 scripts/sondar_enso_probabilidades.py --autoteste
+          python3 scripts/sondar_munic_ibge.py --autoteste
       - name: Autotestes dos coletores
         run: |
           for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_saude coletar_financiamento gerar_lai gerar_painel; do python3 $c.py --autoteste; done
