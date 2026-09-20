@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §123 · Piauí no fim da fila da varredura por omissão na lista de prioridade; cinco portões escritos que não bloqueavam nada · 21/09/2026
+
+Dois achados da rotina, ambos de classe **código**. Nenhuma nota muda; nenhum peso, crédito, componente ou régua tocado; nenhum dado de `data/*.json` editado.
+
+**1. A fila da varredura tinha uma UF em posição acidental.** `data/cadastro_prioritarios.json` traz duas estruturas: `por_uf`, com os 27 estados e o percentual de municípios no Cadastro Nacional de Municípios Suscetíveis, e `ordem_prioridade_uf_por_percentual`, a lista curada que decide em que UF a varredura de diários entra primeiro. A lista tem 26 entradas: **PI está em `por_uf` com pct 21,0 e ficou fora da ordem**. `ordem_prioridade()` resolvia a ausência com um rank fixo (99), o que punha o Piauí atrás de todos os 26 estados nomeados — inclusive de GO (10,2%) e TO (12,9%), ambos com percentual menor. Efeito medido: dos 3.180 municípios já consultados na varredura (57% do país), **nenhum dos 224 municípios do Piauí**. Não houve perda de dado — a varredura é integral e chegará lá —, mas a posição era consequência de implementação, não de método, e não aparecia em lugar nenhum: a Action rodava verde.
+
+**Correção.** UFs presentes em `por_uf` e ausentes da lista curada passam a entrar **logo após** as nomeadas, entre si por percentual decrescente do próprio cadastro. A lista curada não é reordenada: nenhuma das 26 UFs que ela nomeia muda de posição. A posição definitiva do Piauí dentro da lista curada **não** foi decidida aqui — a lista vigente não é monotônica em percentual (DF 100% aparece em 6º, MT 28,4% antes de MS 41,8%), logo o critério é misto e a inserção é decisão editorial, registrada como pendência no relatório do dia.
+
+**Portão.** `scripts/testar_ordem_prioridade_ufs.py` exige que a fila seja **total e determinística**: as 27 UFs do cadastro presentes, cada uma num bloco contíguo (bloco partido denuncia rank empatado entre estados), duas execuções sobre o mesmo dado idênticas, e uma UF omitida da lista curada posicionada pelo percentual. O teste negativo usa duas ausentes em ordem de inserção **inversa** ao percentual — com o rank fixo antigo o empate se resolvia pela ordem de iteração do dicionário e passaria despercebido. Conferido que o portão fica vermelho sem a correção e verde com ela. O autoteste de `coletar_diarios_municipais.py` ganhou o mesmo caso (9/9).
+
+**2. Cinco portões existiam sem estar ligados a nenhum workflow.** `testar_cadencia_publicacao.py` (§117), `testar_contador_varredura.py` (§121), `testar_nivel_log_buscas.py`, `testar_reposicao_dominio.py` (§120) e o portão novo acima estavam escritos e verdes, mas fora de `portoes.yml` — nenhum deles bloqueava pull request. O §117 descrevia o de cadência como "portão novo" que "exige que o código, o cron do workflow e o texto público nomeiem o mesmo dia"; ele nunca foi executado automaticamente. Os cinco entram agora num passo próprio, **Portões de regressão (testes negativos dedicados)**. Os cinco rodam verdes na `main` atual — a ligação não muda o veredito de nenhum PR existente, só passa a travar a regressão que cada um descreve.
+
+Edição de `.github/workflows/portoes.yml` feita sob a autorização permanente registrada pela editoria em 20/09/2026. `validar_workflows.py` verde.
+
 ## §122 · `--autoteste` de `coletar_financiamento.py` e `gerar_painel.py` sobrescrevia dados reais sem restaurar · 21/09/2026
 
 Achado ao rodar a suíte completa de portões localmente (rotina diária, fora da Action — checkout descartável). Nenhuma alteração de método; nenhuma nota muda. Classe **código** (PROTOCOLO §3.2).

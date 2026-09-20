@@ -79,6 +79,14 @@ jobs:
           exit 1
       - name: Portão 17 — robustez a atualização de dados (cópia perturbada)
         run: python3 scripts/verificar_robustez_atualizacao.py
+      - name: Portões de regressão (testes negativos dedicados)
+        run: |
+          set -e
+          python3 scripts/testar_cadencia_publicacao.py
+          python3 scripts/testar_contador_varredura.py
+          python3 scripts/testar_nivel_log_buscas.py
+          python3 scripts/testar_reposicao_dominio.py
+          python3 scripts/testar_ordem_prioridade_ufs.py
       - name: Autotestes dos coletores
         run: |
           for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_saude coletar_financiamento gerar_lai gerar_painel; do python3 $c.py --autoteste; done

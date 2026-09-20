@@ -39,9 +39,19 @@ PAD_PLANO = re.compile(r"plano\s+(?:municipal\s+)?de\s+conting[êe]ncia[^.]{0,16
 
 
 def ordem_prioridade(por_cod: dict, cadastro: dict, pop: dict) -> list:
-    ufs = cadastro.get("ordem_prioridade_uf_por_percentual") or sorted({r["uf"] for r in por_cod.values()})
+    # 21/09/2026 (§123): a lista curada em data/cadastro_prioritarios.json pode omitir uma UF —
+    # PI está em por_uf (pct 21,0) mas ficou fora de ordem_prioridade_uf_por_percentual. Com o
+    # rank fixo 99, toda UF ausente empatava num balde único e a ordem entre elas ficava
+    # indefinida (dependia da ordem de iteração do dict). Agora as ausentes entram logo após a
+    # lista curada, entre si por percentual decrescente do próprio cadastro: posição
+    # determinística e derivada do dado, sem reordenar as UFs que a lista já nomeia.
+    ufs = list(cadastro.get("ordem_prioridade_uf_por_percentual") or sorted({r["uf"] for r in por_cod.values()}))
+    por_uf = cadastro.get("por_uf") or {}
+    ausentes = sorted((u for u in por_uf if u not in ufs), key=lambda u: -(por_uf[u].get("pct") or 0))
+    ufs += ausentes
     rank_uf = {uf: i for i, uf in enumerate(ufs)}
-    return sorted(por_cod, key=lambda c: (rank_uf.get(por_cod[c]["uf"], 99), -int(pop.get(c, 0) or 0)))
+    fim = len(ufs)
+    return sorted(por_cod, key=lambda c: (rank_uf.get(por_cod[c]["uf"], fim), -int(pop.get(c, 0) or 0)))
 
 
 def pendentes_na_janela(ordem: list, livro: dict, desde_janela: str) -> list:
@@ -240,6 +250,13 @@ def autoteste() -> int:
         por = {"1": {"uf": "SC"}, "2": {"uf": "RS"}, "3": {"uf": "SC"}}
         o = ordem_prioridade(por, {"ordem_prioridade_uf_por_percentual": ["SC", "RS"]}, {"1": 10, "3": 500})
         return o == ["3", "1", "2"]
+    def t3b():  # negativo (§123): UF que está em por_uf mas fora da lista curada entra depois dela,
+        # entre as ausentes por percentual decrescente — nunca num balde de ordem indefinida.
+        # GO (10,2) entra no dict antes de PI (21,0): com o rank fixo antigo sairia GO, PI.
+        por = {"1": {"uf": "SC"}, "2": {"uf": "GO"}, "3": {"uf": "PI"}, "4": {"uf": "RS"}}
+        cad = {"ordem_prioridade_uf_por_percentual": ["SC", "RS"],
+               "por_uf": {"SC": {"pct": 73.9}, "RS": {"pct": 41.4}, "GO": {"pct": 10.2}, "PI": {"pct": 21.0}}}
+        return ordem_prioridade(por, cad, {}) == ["1", "4", "3", "2"]
     def t4(): return parse_qd(None) == [] and parse_qd({}) == []
     def t5():  # varredura integral: quem já foi consultado na janela sai da fila; quem foi antes da janela volta
         livro = {"municipios": {"0000001": {"fontes": [{"fonte": FONTE_QD, "data": "2026-09-03"}]},
@@ -257,7 +274,9 @@ def autoteste() -> int:
         pend = pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03")
         return pend == ["1", "2", "3"]  # os três pendentes; --tudo (testado no fluxo real) os consultaria todos, não só um fatiamento
     return rodar_autoteste({"classifica decreto com nº e pista de plano": t1, "negativo: decreto sem número": t2,
-                            "prioridade: UF do cadastro, depois população": t3, "negativo: resposta nula": t4,
+                            "prioridade: UF do cadastro, depois população": t3,
+                            "negativo: UF fora da lista curada entra por percentual, não em balde indefinido": t3b,
+                            "negativo: resposta nula": t4,
                             "varredura integral: fila de pendentes na janela": t5,
                             "varredura integral: tamanho para cobrir até a data-fim": t6,
                             "--tudo: fila completa de pendentes (não fatiada)": t7,
