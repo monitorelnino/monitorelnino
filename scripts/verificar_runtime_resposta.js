@@ -31,15 +31,10 @@ function render(pagina) {
   if (!d.querySelector("#detail .gauge-mini.gauge-zone--resposta .gauge-fill--resposta")) falhas.push("cartão RS: resposta sem o medidor na arte única");
   if (/nota\s*[-−]\s*decret|contradi[çc][ãa]o/i.test(det)) falhas.push("cartão combina antecipação e resposta (C17)");
   if (d.querySelector('a[href="mapas-e-graficos.html"]')) falhas.push("navegação ainda aponta para a galeria");
-  const dc = render("defesa-civil.html"); await new Promise(r => setTimeout(r, 2500)); const d2 = dc.window.document;
-  // 18/09/2026 (pedido da editoria): a tabela "decretado × reconhecido" saiu da página — o teste de
-  // cobertura das 27 UFs passa a checar o dado carregado (RESP.uf) diretamente, não mais o elemento.
-  // 18/09/2026 (pedido da editoria): a tabela "decretado × reconhecido" saiu da página — o teste de
-  // cobertura das 27 UFs passa a ler o dado direto do arquivo (RESP é `let` de módulo, não vira
-  // propriedade enumerável de window — ler o JSON de novo é mais simples e robusto que window.eval).
   const respArquivo = JSON.parse(fs.readFileSync(path.join(raiz, "data", "resposta", "por_uf.json"), "utf-8"));
   if (Object.keys(respArquivo.uf || {}).length !== 27) falhas.push("defesa-civil: RESP.uf sem 27 UFs");
-  if (!/transferências voluntárias ficam suspensas/.test(d2.getElementById("resposta").textContent)) falhas.push("defesa-civil: frase C18 (defeso) ausente na seção do contador");
+  // 21/09/2026 (pedido editorial): #resposta saiu de defesa-civil.html por completo — a frase C18
+  // continua verificada na home (linha acima), que é onde ela mora agora.
   if (falhas.length) { console.log("✗ RUNTIME (resposta):"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
   console.log("✓ RUNTIME (resposta) OK — contador nacional, barras nos 27 cartões, cartão do estado, cobertura de 27 UFs e frase C18.");
 })();
