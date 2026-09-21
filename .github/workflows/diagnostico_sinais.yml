@@ -33,16 +33,7 @@ jobs:
           cp data/fontes_declarado.json /tmp/fd_backup.json
           python3 coletar_declarado_nacional.py > /tmp/declarado_out.log 2>&1
           echo "=== saida ===" >> /tmp/declarado_out.log
-          python3 -c "
-import json
-d = json.load(open('data/declarado_nacional.json'))
-m = d['municipios']
-com_icm = sum(1 for x in m.values() if 'icm_var8_plano_contingencia' in x)
-print(f'municipios com icm_var8: {com_icm}')
-sim = sum(1 for x in m.values() if x.get('icm_var8_plano_contingencia')=='sim')
-nao = sum(1 for x in m.values() if x.get('icm_var8_plano_contingencia')=='nao')
-print(f'sim={sim} nao={nao}')
-" >> /tmp/declarado_out.log 2>&1
+          python3 scripts_diag/inspecionar_declarado.py >> /tmp/declarado_out.log 2>&1
           cat /tmp/declarado_out.log
           cp /tmp/fc_backup.json data/fontes_consultadas.json
           cp /tmp/dn_backup.json data/declarado_nacional.json
