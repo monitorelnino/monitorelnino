@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §147 · Causa raiz real de "os mapas não aparecem": cache-busting nunca rodou em §145/§146 — corrigido; texto de #resposta removido por completo · 21/09/2026
+
+Classe **bug real de processo, achado em produção** — mais importante que o conteúdo em si.
+
+**O que a pessoa via.** Depois de duas rodadas de correção (§145, §146), publicadas e confirmadas por teste local com Chromium real, o site em produção continuava sem mostrar os mapas, e o texto de `#interpDepois` continuava mostrando o placeholder "—" em vez do valor calculado.
+
+**Causa raiz — não era o código, era o processo.** `/assets/*` tem `Cache-Control: max-age=86400` (netlify.toml) — 24h de cache no navegador. `scripts/carimbar_assets.py` existe exatamente para isso: reescreve `?v=<hash>` em cada referência a asset toda vez que o conteúdo muda, forçando o navegador a buscar de novo. Editei `assets/js/defesa-civil.js` duas vezes hoje (§145, §146) e rodei `gerar_manifesto.py` nas duas — mas nunca `carimbar_assets.py`. Confirmado o descompasso: o HTML apontava para `?v=8b21b8da`, mas o hash real do arquivo já era outro. Navegadores que já tinham visitado a página continuavam servindo o JavaScript de ANTES de qualquer mudança de hoje — código que tenta manipular elementos removidos (`chartDonut`, `chartCapitals`), o tipo de erro que trava a execução do script antes de chegar no código que desenha os mapas. Meus testes locais (Playwright contra servidor limpo, sem cache) nunca reproduziriam isso — não havia cache para reproduzir.
+
+**Corrigido.** `carimbar_assets.py` rodado — hash agora bate com o conteúdo real (confirmado por conferência direta: sha256 do arquivo = hash na URL). `/*.html` tem `max-age=0, must-revalidate` (sem cache) — um recarregamento normal da página já basta, não precisa de cache limpo manualmente.
+
+**Texto removido, pedido direto.** O bloco `#resposta` que sobrou depois de §146 (frase C18 + interpDepois) foi identificado como sobrando e removido por completo. Os dois portões que verificavam esse texto especificamente em `defesa-civil.html` foram ajustados: `verificar_runtime_resposta.js` mantém a checagem da frase C18 na home (onde ela já também vivia — não desaparece do site, só sai desta página); `verificar_runtime_mapas.js` teve o teste (g), específico de `interpDepois`, removido.
+
+**Teste.** Suíte completa de derivados confirmada idempotente (`verificar_derivados.sh --idempotencia`) — incluindo, desta vez, o carimbamento de assets. Reconfirmação visual com Chromium real: 4 mapas com conteúdo SVG, 0 erros de JavaScript, 1 painel só, `#resposta`/`#interpDepois` ausentes.
+
 ## §146 · Defesa civil: removido o painel "Decretos de emergência" que sobrou vazio depois do mapa subir · 21/09/2026
 
 Classe **correção de página, mesmo dia**. Achado real ao testar §145 na prática: a página numera painéis automaticamente ("1 · ", "2 · " — `assets/colunas.js`, pelo índice na página), e o segundo painel apareceu como "2 · Decretos de emergência" sem nenhum elemento visual — só texto, já que o mapa tinha subido pra grade principal. Pedido direto: esse quadro tem que sair.
