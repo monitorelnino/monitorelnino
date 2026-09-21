@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §139 · LAI ao SEDEC/MDR sobre o Cadastro Nacional de Municípios; base legal completa da obrigação de Plano de Contingência documentada na METODOLOGIA · 21/09/2026
+
+Classe **transparência + documentação pública**. Nenhuma mudança de dado ou de nota.
+
+**Origem.** Continuação direta da conversa sobre por que o desconto de 50% existe: pedido de registrar a base legal completa na metodologia pública e de tentar obter, via LAI, a lista real de municípios com a obrigação formal de Plano de Contingência.
+
+**LAI gerada** (`gerar_lai.py`, novo modelo `MODELO_CADASTRO_NACIONAL`, mesmo padrão federal já usado para o pedido do Carro-Pipa): solicita à SEDEC/MDR a relação nominal dos municípios inscritos no Cadastro Nacional de Municípios com Áreas Suscetíveis (Decreto 10.692/2021), a publicação anual prevista no próprio decreto (não localizada até hoje), e se os planos existentes já passaram pela prestação de contas em audiência pública exigida por lei. Texto publicado no repositório privado, pronto para envio humano via Fala.BR (mesma regra de todo pedido de LAI do projeto — exige pessoa física identificada). Total de pedidos do projeto: 55 → 56.
+
+**METODOLOGIA.md** ganha dois parágrafos novos dentro do item já existente sobre a camada declarada (C5): a distinção legal entre o dever geral (Lei 12.608/2012, arts. 2º e 8º — todo município) e a obrigação específica do documento formal (art. 3º-A, §2º — só municípios inscritos no cadastro do Decreto 10.692/2021, com atualização bienal e audiência pública anual exigidas pela Lei 14.750/2023); e a declaração explícita de que os "2.095 municípios prioritários" já usados pelo projeto (base Cemaden) são um proxy da população de risco, não uma confirmação de quem de fato completou a inscrição formal — corrigível quando a LAI responder.
+
+**Teste.** `gerar_lai.py --autoteste`: 4 casos (56 textos, 56 registros, citação correta da lei em cada modelo, e novo caso específico confirmando que o pedido do Cadastro Nacional cita o Decreto 10.692 e a Lei 14.750 corretamente). Suíte de estrutura e consistência verde. PDF da metodologia e MANIFEST regenerados.
+
 ## §138 · Achado real pelo Portão 17: média nacional divergia entre "valores crus" e "valores publicados" — corrigido para a fonte mais defensável · 21/09/2026
 
 Classe **correção de bug, achado só porque a nota mudou de verdade pela primeira vez**. Não altera o valor de hoje (45,1 nos dois métodos, coincidência dos dados atuais) — corrige a fórmula para não divergir quando a nota variar de novo.
