@@ -24,16 +24,34 @@ jobs:
         with: { node-version: "22" }
       - run: pip install -r requirements.txt --quiet
       - run: npm ci --silent
-      - name: Portões 1–11
+      - name: Detectar se a mudança envolve dado/coleta (evita rodar portões de dado em edição só de página)
+        id: diff
+        run: |
+          # 21/09/2026 (pedido editorial: PRs de texto/gráfico/estrutura demoravam o mesmo que PRs
+          # de dado — a suíte inteira sempre rodava, sem olhar o que mudou de fato). Convenção já
+          # em uso no projeto: .py na raiz/scripts é coleta/verificação de DADO; .js em scripts/ é
+          # verificação de PÁGINA (roda a página em jsdom/Chromium). data/, requirements.txt e o
+          # workflow semanal também sinalizam dado. Falso positivo (marcar como "mudou dado" um PR
+          # que na verdade só mexeu em página) é seguro — só roda a suíte inteira à toa; falso
+          # negativo seria o risco real, por isso o padrão é amplo de propósito.
+          BASE="${{ github.event.pull_request.base.sha }}"
+          if [ -z "$BASE" ]; then
+            echo "sem contexto de PR (disparo manual) — suíte completa por segurança"
+            echo "dado_mudou=true" >> "$GITHUB_OUTPUT"
+          else
+            ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
+            echo "arquivos alterados:"; echo "$ARQUIVOS"
+            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$'; then
+              echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
+            else
+              echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
+            fi
+          fi
+      - name: Portões — página e estrutura (sempre)
         run: |
           set -e
           python3 scripts/validar_workflows.py
           node scripts/verificar_estrutura.js
-          python3 verificar_consistencia.py
-          python3 recalcular_mare.py --check
-          python3 verificar_sinais.py
-          python3 verificar_saude.py
-          python3 verificar_evidencias.py
           node scripts/verificar_runtime.js
           node scripts/verificar_runtime_mapas.js
           node scripts/verificar_runtime_sinais.js
@@ -41,18 +59,27 @@ jobs:
           node scripts/verificar_acessibilidade.js
           node scripts/verificar_vocabulario_publico.js
           node scripts/verificar_voz_editorial.js
-          python3 verificar_financiamento.py
-          python3 verificar_painel.py
           node scripts/verificar_runtime_financiamento.js
           node scripts/verificar_figuras.js
           node scripts/verificar_legendas.js
-          python3 scripts/testar_detector_defeso.py
-          python3 verificar_resposta.py
           node scripts/verificar_runtime_resposta.js
           node scripts/verificar_calendario.js
           node scripts/verificar_palavras.js
           node scripts/verificar_seguranca.js
           node scripts/verificar_seo.js
+      - name: Portões — dado e coleta (só se dado mudou)
+        if: steps.diff.outputs.dado_mudou == 'true'
+        run: |
+          set -e
+          python3 verificar_consistencia.py
+          python3 recalcular_mare.py --check
+          python3 verificar_sinais.py
+          python3 verificar_saude.py
+          python3 verificar_evidencias.py
+          python3 verificar_financiamento.py
+          python3 verificar_painel.py
+          python3 scripts/testar_detector_defeso.py
+          python3 verificar_resposta.py
       - name: Portão móvel (390 px, Chromium real — v3.1 §14.3)
         run: |
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
@@ -61,10 +88,11 @@ jobs:
         run: node scripts/verificar_consistencia_visual.js
       - name: Portão 12 — derivados em árvore limpa
         id: p12
+        if: steps.diff.outputs.dado_mudou == 'true'
         continue-on-error: true
         run: bash scripts/verificar_derivados.sh
       - name: Diagnóstico do portão 12 (relatório no repositório privado)
-        if: steps.p12.outcome == 'failure'
+        if: steps.diff.outputs.dado_mudou == 'true' && steps.p12.outcome == 'failure'
         env:
           ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
         run: |
@@ -78,8 +106,10 @@ jobs:
           cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -q -m "portoes p12 diagnostico" && git push -q
           exit 1
       - name: Portão 17 — robustez a atualização de dados (cópia perturbada)
+        if: steps.diff.outputs.dado_mudou == 'true'
         run: python3 scripts/verificar_robustez_atualizacao.py
       - name: Portões de regressão (testes negativos dedicados)
+        if: steps.diff.outputs.dado_mudou == 'true'
         run: |
           set -e
           python3 scripts/testar_cadencia_publicacao.py
@@ -93,6 +123,7 @@ jobs:
           python3 scripts/sondar_enso_probabilidades.py --autoteste
           python3 scripts/sondar_munic_ibge.py --autoteste
       - name: Autotestes dos coletores
+        if: steps.diff.outputs.dado_mudou == 'true'
         run: |
           for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_saude coletar_financiamento gerar_lai gerar_painel; do python3 $c.py --autoteste; done
           python3 gerar_feeds.py --self-test
