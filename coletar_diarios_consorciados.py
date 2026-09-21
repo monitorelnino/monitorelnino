@@ -223,7 +223,7 @@ def sessao_post(opener, url: str, campos: dict, timeout: int = 40) -> bytes:
 CAMINHO_SCRIPT_TOKEN = str(pathlib.Path(__file__).parent / "scripts" / "obter_token_sigpub.js")
 
 
-def obter_token_via_navegador(url: str, timeout: int = 45) -> dict:
+def obter_token_via_navegador(url: str, timeout: int = 60) -> dict:
     """§130 (20/09/2026): o token é preenchido por JS (ver bloqueio documentado no topo do
     módulo) — chama scripts/obter_token_sigpub.js, que abre a página num Chromium real
     (Playwright, já dependência do projeto para os portões visuais — não é dependência nova) e
@@ -306,7 +306,11 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
     else:
         resultado_nav = obter_token_via_navegador(BASE.format(slug=slug))
         if not resultado_nav.get("ok"):
-            registrar_lacuna(nome_fonte, f"token via navegador: {resultado_nav.get('erro', 'falha desconhecida')}",
+            diag = resultado_nav.get("diagnostico") or {}
+            detalhe_diag = (f" [tentativas={diag.get('tentativas')} tempo_ms={diag.get('tempo_ms')} "
+                            f"console_erros={diag.get('console_erros')} erros_pagina={diag.get('erros_pagina')}]"
+                            if diag else "")
+            registrar_lacuna(nome_fonte, f"token via navegador: {resultado_nav.get('erro', 'falha desconhecida')}{detalhe_diag}",
                              canal="DOM-consorciado", camada=2, uf=uf)
             return {"pistas": [], "decretos": [], "dias_com_edicao": 0, "dias_com_erro": 0, "erro_fatal": True,
                     "bloqueio_js": True}
