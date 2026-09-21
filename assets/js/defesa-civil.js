@@ -26,51 +26,17 @@ async function __load(){
   __init();
 }
 function __init(){
-const STATUS_LABEL = {NOVO:"Novo", READ:"Readaptado", ELAB:"Em elaboração", VIG:"Vigente-recorrente", LAC:"Sem plano localizado"};
 // =========================================================
-// ANÁLISES — 6 gráficos derivados do mesmo objeto DATA
+// ANÁLISES — gráficos derivados do mesmo objeto DATA
 // =========================================================
-const PALETTE = MonitorMapas.PALETA.status;   // VIG era Âmbar aqui (igual a ELAB) e Mineral na Saúde — paleta única desde 09/09/2026
-const LABELS  = {NOVO:'Novo', READ:'Readaptado', ELAB:'Em elaboração', VIG:'Vigente-recorrente', LAC:'Nenhum localizado'};
-const STATUS_ORDER = ['NOVO','READ','ELAB','VIG','LAC'];
-
 MonitorMapas.padraoGraficos(window.Chart);
 
-// ---- 1. Donut nacional ----
-const donutCounts = STATUS_ORDER.map(s => DATA.ufs.filter(u=>u.status===s).length);
-const UFS_POR_STATUS = {}; DATA.ufs.forEach(u => (UFS_POR_STATUS[u.status] = UFS_POR_STATUS[u.status] || []).push(u.uf));
-const CAP_POR_STATUS = {}; DATA.ufs.forEach(u => { const s = u.capital.status; (CAP_POR_STATUS[s] = CAP_POR_STATUS[s] || []).push(u.uf); });
-const quebraLinhas = arr => { const o = []; for (let i = 0; i < arr.length; i += 9) o.push(arr.slice(i, i+9).join(' · ')); return o; };
-// 03/09/2026: barras horizontais no lugar da rosca — contagem de UFs por categoria compara-se
-// melhor em comprimento do que em ângulo; a soma (27) fica explícita no eixo.
-new Chart(document.getElementById('chartDonut'), {
-  type: 'bar',
-  data: { labels: STATUS_ORDER.map(s=>LABELS[s]),
-    datasets:[{ data: donutCounts, backgroundColor: STATUS_ORDER.map(s=>PALETTE[s]) }] },
-  options: { indexAxis:'y', plugins:{ legend:{display:false},
-    tooltip:{ callbacks:{ label: ctx => ctx.parsed.x + ' de 27 UFs', afterLabel: ctx => quebraLinhas(UFS_POR_STATUS[STATUS_ORDER[ctx.dataIndex]] || []) } } },
-    scales:{ x:{ min:0, max:27, ticks:{stepSize:9}, title:{display:true, text:'nº de UFs (de 27)'} }, y:{ grid:{display:false} } } }
-});
+// ---- 1. (donut nacional removido da página em 21/09/2026 — pedido editorial: consolidar mapas, ver seção "Ver mais" removida) ----
 
 // ---- 3. Financiamento federal por área (R$ reais, calculados a partir de Registro_Federal) ----
 // (gráfico 3 — financiamento federal por área — migrou para financiamento.html, E9)
 
-// ---- 4. Status das 27 capitais ----
-const capStatusCounts = {};
-DATA.ufs.forEach(u=>{ const s=u.capital.status; capStatusCounts[s]=(capStatusCounts[s]||0)+1; });
-const capLabels = Object.keys(capStatusCounts);
-const CAP_COLOR = {'Novo':MonitorMapas.PALETA.status.NOVO,'Readaptado':MonitorMapas.PALETA.status.READ,'Em elaboração':MonitorMapas.PALETA.status.ELAB,
-  'Vigente-recorrente':MonitorMapas.PALETA.status.VIG,'Coberto pelo estadual':MonitorMapas.PALETA.categorias.coberto_estadual,'Coberto pelo estado':MonitorMapas.PALETA.categorias.coberto_estadual,
-  'Não é de El Niño':MonitorMapas.PALETA.categorias.nao_el_nino,'Não localizado':MonitorMapas.PALETA.status.LAC};
-new Chart(document.getElementById('chartCapitals'), {
-  type:'bar',
-  data:{ labels: capLabels,
-    datasets:[{ data: capLabels.map(l=>capStatusCounts[l]),
-      backgroundColor: capLabels.map(l => CAP_COLOR[l] || MonitorMapas.cor('areia')), borderRadius:4}] },
-  options:{ maintainAspectRatio:false, plugins:{legend:{display:false},
-      tooltip:{ callbacks:{ afterLabel: ctx => quebraLinhas(CAP_POR_STATUS[ctx.label] || []) } }},
-    scales:{ x:{ grid:{display:false}, ticks:{font:{size:9.5}, maxRotation:35, minRotation:35} }, y:{ grid:{color:MonitorMapas.cor('areia')}, ticks:{stepSize:1} } } }
-});
+// ---- 4. (status das 27 capitais removido da página em 21/09/2026 — mesmo pedido do item 1 acima) ----
 
 // ---- 5. Timeline de reatividade (dias em relação ao Boletim nº1, 29/06/2026) ----
 
@@ -424,8 +390,6 @@ function creditosAntecipacao(){
   const d = window.__metaAtualizado;
   [['boxVerificacao', ['MARÉ (verificação própria)', 'malha IBGE']], ['boxCoberturaNatureza', ['MARÉ (verificação própria)']],
    ['boxPrioritarios', ['MARÉ', 'Cadastro Nacional (SEDEC), aproximação por população']], ['boxAtosResposta', ['DOU/SEDEC (S2iD)', 'diários oficiais']],
-   ['boxDonut', ['MARÉ', 'instrumentos estaduais verificados']],
-   ['boxCapitals', ['MARÉ', '27 capitais verificadas']],
    ].forEach(([id, fontes]) => MonitorMapas.credito(id, {fontes, data: d}));
 }
 function renderResposta(){

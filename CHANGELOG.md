@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §145 · Defesa civil: 4 mapas juntos no topo, removida a seção "Ver mais" (dois gráficos de status) · 21/09/2026
+
+Classe **edição de página, pontual**. Pedido editorial direto.
+
+**O que mudou.** O mapa "Cidades que decretaram emergência" (antes sozinho, mais abaixo, num painel próprio) subiu para a primeira grade de figuras, junto aos outros três mapas (Verificação municipal, Cobertura e natureza, Municípios prioritários) — agora 4 mapas juntos, 2×2. A seção `<details>` "Ver mais: status geral (27 UFs) e status das capitais", que escondia dois gráficos (donut de status estadual, barras de status das capitais), foi removida por completo.
+
+**O que ficou.** O texto explicativo sobre decretos de emergência (desde quando conta, regra de transferências suspensas 04/07–25/10, link para o calendário eleitoral) continua na página, no mesmo painel de antes — só sem a grade que continha apenas o mapa, que já subiu. Um trecho do texto ("a tabela abaixo agrega...") referenciava algo que não existe mais nessa posição — corrigido para "o mapa acima", refletindo a nova estrutura.
+
+**Limpeza no JS** (`assets/js/defesa-civil.js`): removidas as duas chamadas `new Chart(...)` (donut, capitais) cujos elementos não existem mais na página, e as 7 variáveis que ficaram sem uso depois disso (`UFS_POR_STATUS`, `CAP_POR_STATUS`, `quebraLinhas`, `PALETTE`, `LABELS`, `STATUS_ORDER` — órfãs pela remoção; `STATUS_LABEL` já estava órfã antes, achada ao limpar essa área). Removidas as duas entradas correspondentes na lista de créditos/fontes. `MonitorMapas.padraoGraficos(window.Chart)` mantida — configura padrões possivelmente compartilhados com outros scripts da mesma página, sem custo real em mantê-la mesmo sem uso local direto.
+
+**Teste.** Varredura em todo o projeto confirma zero referências residuais aos elementos removidos. Sintaxe JS válida. Portões de estrutura, runtime, acessibilidade, figuras, legendas, vocabulário, voz editorial, SEO, palavras e segurança — todos verdes.
+
 ## §144 · Busca web já roda 2x/dia via cadência existente (achado, não construído); lote aumentado de 60 para 150 · 21/09/2026
 
 Classe **achado de infraestrutura já existente + ajuste de velocidade**. Pedido editorial: "temos que rodar mais de uma vez por semana, precisamos começar agora".
