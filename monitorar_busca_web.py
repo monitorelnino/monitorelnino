@@ -63,8 +63,7 @@ def relevante(resultado: dict, nome_municipio: str) -> bool:
 
 
 def rodar(lote: str, tamanho: int) -> int:
-    ref = referencia_ibge()
-    por_cod = {str(r["codigo_ibge"]).zfill(7): r for r in ref}
+    por_cod, _ = referencia_ibge()
     cadastro = ler("cadastro_prioritarios.json") or {}
     pop = ler("populacao_censo2022.json") or {}
     ordem = ordem_prioridade(por_cod, cadastro, pop)

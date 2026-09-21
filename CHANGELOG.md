@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §141 · SearXNG testado de ponta a ponta contra uma Action real — bug real achado e corrigido (uso errado de referencia_ibge()) · 21/09/2026
+
+Classe **correção de bug, achada só ao testar com rede real** (não hermético — o autoteste não pega isso, já que não bate na função de verdade contra dado real).
+
+**Teste real.** Dois disparos isolados contra `diagnostico_sinais.yml` (workflow já existente, não um novo — `workflow_dispatch` não fica visível pra disparo em arquivo que só existe fora de `main`). Primeiro disparo: SearXNG subiu corretamente via Docker (worker iniciado, respondendo em `/search?format=json` em menos de 30s), mas o coletor quebrou: `KeyError: 'codigo_ibge'`.
+
+**Causa raiz.** `coletores_base.referencia_ibge()` já retorna a tupla `(por_cod, por_nome)` pronta — não uma lista crua de registros. `monitorar_busca_web.py` tratava o retorno como se fosse a lista, tentando reconstruir `por_cod` por cima de um dict que já era `por_cod`, iterando sobre as CHAVES (strings de 7 dígitos) como se fossem registros. `coletar_diarios_municipais.py` usa a função corretamente (`por_cod, _ = referencia_ibge()`) — bastava seguir o mesmo padrão.
+
+**Segundo disparo, mesmo teste**: funcionou de ponta a ponta — 1 município consultado, 0 lacunas, 2 pistas novas na fila. Os avisos no log do Docker (engines `ahmia`/`torch` falhando ao carregar, `duckduckgo` com CAPTCHA, `wikidata` com timeout) são o comportamento normal de um metabuscador tentando vários motores ao mesmo tempo — o resultado final confirma que o conjunto funciona o suficiente para produzir pistas reais.
+
+**Teste.** Autoteste hermético (5/5) continua verde — não pegou este bug porque não chama `referencia_ibge()` contra dado real, só testa a peneira/vocabulário/dedup isoladamente; é exatamente por isso que o teste via Action real, além do autoteste, continua necessário para qualquer coletor novo. Suíte de consistência verde. `docs/MANIFEST_SHA256.txt` regenerado. Workflow de diagnóstico temporário usado para o teste será revertido (nunca mesclado a `main`).
+
 ## §140 · Busca web aberta (SearXNG efêmero) finalmente entregue — trabalho testado numa sessão anterior nunca tinha chegado ao repositório; rotina diária separada descontinuada, absorvida no relatório semanal · 21/09/2026
 
 Classe **código + processo**, duas correções na mesma entrada.
