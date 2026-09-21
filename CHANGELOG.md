@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §143 · Busca web: priorização por município prioritário (93 → ~35 semanas); investigação da peneira testada em escala e revertida por segurança · 21/09/2026
+
+Classe **melhoria de velocidade confirmada + tentativa de melhoria de precisão testada e revertida**. Documentado com honestidade — nem tudo que foi tentado funcionou.
+
+**Origem.** Pergunta editorial direta: "93 semanas é tempo demais, e por que Marília/SP — que sabemos ter um plano — não aparece nas buscas? O dicionário está bom?"
+
+**Confirmado, com teste ao vivo real.** Marília estava na posição 3.421/5.571 (lote 58) — nunca tinha sido tentada, não é falha de algoritmo. Testando a query real contra o SearXNG: o sistema **encontra e aceita corretamente** a notícia real sobre o plano de Marília (fonte local, título já dizia "Marília prepara plano de contingência"). O algoritmo funciona para o caso principal.
+
+**Implementado e mantido — priorização.** `ordem_prioridade()` tratava os 5.571 municípios igualmente dentro do ranking por UF/população. Os 2.095 municípios prioritários (mesmo proxy populacional já usado no resto do site, `data/municipios_prioritarios.json`) agora vêm todos primeiro, partição estável (mesma ordem relativa preservada nos dois grupos). Ciclo dos que mais importam: ~93 → ~35 semanas. Cobertura total inalterada — ninguém é descartado, só reordenado.
+
+**Tentado e revertido — expandir a peneira para o trecho do resultado, não só o título.** Um resultado real da busca de Marília (fonte oficial do Governo de SP) foi rejeitado porque só o TRECHO, não o título, mencionava o plano — motivou uma primeira correção (aceitar termo de plano também no trecho) e depois uma segunda, mais ampla (aceitar também o nome do município no trecho). Testado em escala real (200 municípios, depois 30 com amostra de conteúdo inspecionada): a versão ampla gerou ruído grave — documentos extensos (relatórios estaduais, PDFs com tabela de muitos municípios) onde nome e termo aparecem no mesmo texto longo sem relação real entre si. Caso real: um documento sobre "MUNICÍPIO DE ANITA GARIBALDI/SC" foi rotulado como pista de Ipixuna/AM só porque "Ipixuna" aparecia em algum lugar da mesma tabela. Uma correção intermediária (restringir de volta o nome do município a título/URL, manter só o termo de plano no trecho) foi tentada e testada de novo contra os mesmos 30 municípios — **resultado quase idêntico, o ruído não veio de onde eu tinha diagnosticado**: os documentos problemáticos já tinham o nome do município genuinamente no título (por serem listas/tabelas), não só no trecho. Revertido por completo para o critério original (só título, para os dois lados) — testado, preciso, e o único que já rodou em produção sem sinal de ruído.
+
+**Por que parar aqui.** Resolver isso direito (por exemplo, exigir proximidade entre os dois termos dentro do texto, ou filtrar por tipo de fonte) é trabalho novo, não um ajuste rápido — e arriscar a qualidade da fila por uma melhoria de recall não testada o suficiente é pior do que manter o critério mais estrito, que já é comprovadamente preciso.
+
+**Teste.** `monitorar_busca_web.py --autoteste`: 7/7, incluindo o novo caso de priorização (partição estável, sem perda de cobertura). Suíte de consistência verde. Dois ciclos de teste em escala real via Action, com amostra de conteúdo inspecionada manualmente — não só a contagem.
+
 ## §142 · Busca web (SearXNG): rotação real de lotes — sem isto, a rodada semanal batia sempre nos mesmos 60 primeiros municípios, para sempre · 21/09/2026
 
 Classe **correção de lacuna conhecida** — já registrada como pendência na entrega original (§140): "atualmente só lote 1 (60 municípios). Cobrir os 5.571 ao longo de semanas exige configuração de rotação." Corrigida no mesmo dia, a pedido direto (pergunta editorial: "por que 60 municípios apenas?").
