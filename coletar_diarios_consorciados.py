@@ -41,23 +41,51 @@ link real, tarefa ainda não feita para os estados ausentes daqui. Adicionar um
 estado = adicionar uma linha a UF_SIGPUB, nunca adivinhar um slug pelo padrão dos
 outros (ex.: PI quase certamente NÃO é `/pi/`; teria de ser verificado).
 
-STATUS (20/09/2026): BLOQUEADO PARA COLETA AUTOMATIZADA — verificado contra
-produção, duas vezes, com sessão de cookies e leitura byte a byte do HTML real.
-O token do widget de calendário é preenchido por JavaScript (controller Stimulus
-`csrf-protection`); o servidor só entrega um placeholder estático
-(`PLACEHOLDER_TOKEN`, a string literal "csrf-token") — não há `<meta
-name="csrf-token">` nem outra fonte estática de onde copiar o valor real. Todo
-POST feito com o placeholder volta `{"error":"Ocorreu um erro inesperado!"}`.
-`coletar_fonte()` detecta isso e para ANTES de gastar qualquer requisição de
-calendário (testado). Desbloquear exige navegador headless (Selenium/Playwright)
-no runner — decisão de infraestrutura nova, não tomada aqui por ser
-desproporcional ao que foi pedido (fechar a rotina, não abrir uma dependência
-nova com seu próprio ciclo de depuração). O motor de PDF → texto → atribuição de
-município é real e testado (autoteste ponta a ponta com PDF sintético) — fica
-pronto, sem precisar reescrita, para quando uma fonte de token funcional existir.
-NÃO está ligado a `portoes.yml` nem a `atualizar.yml`: rodar `coletar()` hoje
-não produz erro, mas também não produz nenhuma pista real — só lacunas
-declaradas de bloqueio, uma por fonte configurada.
+STATUS (20-21/09/2026): BLOQUEADO PARA COLETA AUTOMATIZADA — duas rodadas de
+investigação real, nenhuma inventada, nenhuma abandonada por preguiça.
+
+RODADA 1 (20/09, sessão anterior): verificado contra produção, duas vezes, com
+sessão de cookies e leitura byte a byte do HTML real. O token do widget de
+calendário é preenchido por JavaScript (controller Stimulus `csrf-protection`);
+o servidor só entrega um placeholder estático (`PLACEHOLDER_TOKEN`, a string
+literal "csrf-token") — não há `<meta name="csrf-token">` nem outra fonte
+estática de onde copiar. Todo POST feito com o placeholder volta
+`{"error":"Ocorreu um erro inesperado!"}`.
+
+RODADA 2 (20-21/09, esta sessão, pedido explícito de desbloquear): implementado
+`obter_token_via_navegador()` + `scripts/obter_token_sigpub.js`, que abre a
+página num Chromium REAL via Playwright (já dependência do projeto para os
+portões visuais — não é dependência nova; ver `package.json`). Testado contra
+produção real. Achado novo: mesmo com navegador real, o token continua vindo
+como placeholder. O console do navegador mostra um único erro real:
+`requestStorageAccess: Permission denied` — a API de Storage Access exige
+ativação transitória de usuário (gesto genuíno), que automação headless não
+tem por padrão. Testado clique real via CDP (`page.mouse.click`, que Chromium
+trata como confiável, diferente de `element.click()` via JS) logo após a
+navegação — não resolveu; o controller provavelmente já tentou e falhou antes
+do clique chegar (roda no carregamento inicial da página, antes do ponto em
+que o script recupera controle). Nenhuma requisição de rede relacionada a
+token/csrf apareceu durante o carregamento (`req_relevantes=[]`) — o mecanismo
+não busca o valor de um mini-endpoint; é calculado (ou bloqueado) inteiramente
+no cliente.
+
+O que resolveria isso, não tentado por exigir mais engenharia do que o
+razoável agora sem inventar flag/API que eu não possa verificar: (a) a flag
+exata do Chromium que libera `requestStorageAccess` automaticamente em
+contexto de teste/automação — não vou adivinhar um nome de flag sem checar a
+documentação real; (b) interceptar via protocolo do Chrome (CDP) antes da
+navegação terminar, uma camada de engenharia mais profunda que o navegador
+comum do Playwright. `coletar_fonte()` tenta o caminho HTTP simples primeiro
+(barato) e só escala para o navegador se vier o placeholder — mesmo assim, e
+mesmo com o navegador real, o bloqueio persiste; a causa agora é mais
+específica e mais bem documentada que na rodada 1, não resolvida. O motor de
+PDF → texto → atribuição de município é real e testado (autoteste ponta a
+ponta com PDF sintético, 14 casos) — fica pronto, sem precisar reescrita, para
+quando a aquisição do token funcionar. NÃO está ligado a `portoes.yml` nem a
+`atualizar.yml`: rodar `coletar()` hoje não produz erro, mas também não
+produz nenhuma pista real — só lacunas declaradas de bloqueio, com o
+diagnóstico completo (tentativas, tempo, requisições relevantes, console) por
+fonte, para quem retomar isso não precisar repetir a investigação do zero.
 
 USO
   python coletar_diarios_consorciados.py --autoteste
