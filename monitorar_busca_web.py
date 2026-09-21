@@ -62,18 +62,38 @@ def relevante(resultado: dict, nome_municipio: str) -> bool:
     return tem_municipio and tem_termo_plano
 
 
-def rodar(lote: str, tamanho: int) -> int:
+def proximo_lote_automatico(total_lotes: int) -> int:
+    """21/09/2026: sem isto, a rodada semanal batia sempre nos mesmos 60 primeiros
+    municípios (lote 1 fixo no workflow) — nunca avançava, nunca cobria os outros
+    5.511. Estado mínimo persistido em data/busca_web_estado.json: só o número do
+    PRÓXIMO lote. Cada rodada automática avança um; ao passar do último, volta ao 1
+    (cobertura cíclica: depois de ~93 semanas, todos os municípios já foram tentados
+    pelo menos uma vez, e o ciclo recomeça)."""
+    estado = ler("busca_web_estado.json") or {"proximo_lote": 1}
+    lote = ((estado.get("proximo_lote", 1) - 1) % total_lotes) + 1
+    gravar("busca_web_estado.json", {"proximo_lote": (lote % total_lotes) + 1,
+                                     "ultimo_lote_rodado": lote,
+                                     "atualizado_em": date.today().isoformat()})
+    return lote
+
+
+def rodar(lote: str | None, tamanho: int) -> int:
     por_cod, _ = referencia_ibge()
     cadastro = ler("cadastro_prioritarios.json") or {}
     pop = ler("populacao_censo2022.json") or {}
     ordem = ordem_prioridade(por_cod, cadastro, pop)
+    total_lotes = max(1, -(-len(ordem) // tamanho))  # arredonda para cima
 
-    try:
-        lote_n = int(lote)
-        alvo = ordem[(lote_n - 1) * tamanho: lote_n * tamanho]
-    except ValueError:
-        registrar_lacuna(FONTE_BUSCA_WEB, f"--lote inválido: {lote!r}", canal="busca_web", camada=4)
-        return 1
+    if lote is None:
+        lote_n = proximo_lote_automatico(total_lotes)  # rotação automática, avança o estado
+    else:
+        try:
+            lote_n = int(lote)  # override manual/teste — não mexe no estado da rotação
+        except ValueError:
+            registrar_lacuna(FONTE_BUSCA_WEB, f"--lote inválido: {lote!r}", canal="busca_web", camada=4)
+            return 1
+
+    alvo = ordem[(lote_n - 1) * tamanho: lote_n * tamanho]
 
     pistas = ler("pistas_imprensa.json") or {"pistas": []}
     vistos_pistas = {(p.get("ibge"), p.get("url"), p.get("trecho")) for p in pistas["pistas"]}
@@ -116,7 +136,7 @@ def rodar(lote: str, tamanho: int) -> int:
         n_ok += 1
 
     gravar("pistas_imprensa.json", pistas)
-    print(f"busca web lote {lote}: {n_ok} municípios consultados, {n_lac} lacunas, {npist} pistas novas")
+    print(f"busca web lote {lote_n}/{total_lotes}: {n_ok} municípios consultados, {n_lac} lacunas, {npist} pistas novas")
     return 0
 
 
@@ -154,12 +174,32 @@ def autoteste():
         chave = ("0000001", "https://x.gov.br/a", "trecho x")
         return chave in vistos
 
+    def t6_rotacao_avanca_e_da_a_volta():
+        # 21/09/2026: mesmo padrão de mock já usado em coletar_diarios_municipais.py
+        # (trocar ler/gravar globalmente, testar, restaurar) — sem isto, o teste
+        # tocaria data/busca_web_estado.json de verdade.
+        estado_falso = {}
+        def ler_falso(nome, padrao=None): return estado_falso.get(nome, padrao)
+        def gravar_falso(nome, obj): estado_falso[nome] = obj
+        globals_mod = sys.modules[__name__]
+        real_ler, real_gravar = globals_mod.ler, globals_mod.gravar
+        globals_mod.ler, globals_mod.gravar = ler_falso, gravar_falso
+        try:
+            l1 = proximo_lote_automatico(3)  # total_lotes=3, estado vazio => começa em 1
+            l2 = proximo_lote_automatico(3)
+            l3 = proximo_lote_automatico(3)
+            l4 = proximo_lote_automatico(3)  # depois do 3º, deve voltar pro 1º
+            return [l1, l2, l3, l4] == [1, 2, 3, 1]
+        finally:
+            globals_mod.ler, globals_mod.gravar = real_ler, real_gravar
+
     return rodar_autoteste({
         "relevante(): aceita nome do município + termo de plano no título": t1_relevante_aceita,
         "relevante(): rejeita termo de plano sem o nome do município": t2_relevante_rejeita_sem_municipio,
         "relevante(): rejeita nome do município sem termo de plano": t3_relevante_rejeita_sem_termo_plano,
         "vocabulário de decisao usado aqui existe de fato em log_busca()": t4_vocabulario_log_busca_bate_com_o_codigo,
         "dedup: mesma chave (ibge,url,trecho) é reconhecida como vista": t5_dedup_mesma_chave,
+        "rotação automática: avança 1→2→3 e volta para 1 (cobertura cíclica)": t6_rotacao_avanca_e_da_a_volta,
     })
 
 
@@ -167,6 +207,6 @@ if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(autoteste())
     args = sys.argv[1:]
-    lote = args[args.index("--lote") + 1] if "--lote" in args else "1"
+    lote = args[args.index("--lote") + 1] if "--lote" in args else None  # None => rotação automática
     tamanho = int(args[args.index("--tamanho") + 1]) if "--tamanho" in args else 60
     sys.exit(rodar(lote, tamanho))
