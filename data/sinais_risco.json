@@ -2132,7 +2132,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 10,
+    "focos_24h": 87,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -2186,13 +2186,9 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
     "consultado_em": "21/09/2026"
@@ -2253,19 +2249,15 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Tempestade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 918,
+    "focos_24h": 1870,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -2327,7 +2319,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 30,
+    "focos_24h": 48,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -2382,9 +2374,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -2448,9 +2441,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -2514,9 +2508,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -2641,9 +2636,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -2653,7 +2649,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 374,
+    "focos_24h": 384,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -2708,9 +2704,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -2720,7 +2717,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 421,
+    "focos_24h": 430,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -2774,13 +2771,14 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 3,
     "graus": {
-     "Perigo Potencial": 2
+     "Perigo Potencial": 2,
+     "Perigo": 1
     },
     "exemplos": [
-     "Baixa Umidade",
-     "Tempestade"
+     "Tempestade",
+     "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
@@ -2842,14 +2840,14 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 3,
+    "total": 4,
     "graus": {
      "Perigo Potencial": 2,
-     "Perigo": 1
+     "Perigo": 2
     },
     "exemplos": [
-     "Baixa Umidade",
-     "Tempestade"
+     "Tempestade",
+     "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
@@ -2910,20 +2908,21 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 3,
     "graus": {
-     "Perigo Potencial": 2
+     "Perigo Potencial": 2,
+     "Perigo": 1
     },
     "exemplos": [
-     "Baixa Umidade",
-     "Tempestade"
+     "Tempestade",
+     "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 1752,
+    "focos_24h": 2190,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -2990,7 +2989,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 2148,
+    "focos_24h": 2912,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -3044,9 +3043,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -3110,9 +3110,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -3177,9 +3178,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -3189,7 +3191,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 899,
+    "focos_24h": 927,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -3375,9 +3377,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -3454,7 +3457,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 143,
+    "focos_24h": 337,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -3516,7 +3519,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 23,
+    "focos_24h": 81,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
@@ -3590,15 +3593,35 @@
     "consultado_em": "21/09/2026"
    },
    "alertas_cemaden": {
-    "total": 5,
+    "total": 28,
     "niveis": {
-     "Moderado": 5
+     "Moderado": 24,
+     "Alto": 3,
+     "Muito Alto": 1
     },
     "municipios": [
+     "ARROIO DO MEIO",
      "CAXIAS DO SUL",
+     "CRUZEIRO DO SUL",
+     "ENCANTADO",
+     "ESTRELA",
+     "GRAMADO",
+     "IGREJINHA",
+     "LAJEADO",
+     "MAQUINÉ",
+     "MUÇUM",
+     "NOVA HARTZ",
+     "PAROBÉ",
      "PELOTAS",
      "PORTO ALEGRE",
-     "SANTA MARIA"
+     "ROLANTE",
+     "SANTA CRUZ DO SUL",
+     "SANTA MARIA",
+     "SOLEDADE",
+     "SÃO SEBASTIÃO DO CAÍ",
+     "TEUTÔNIA",
+     "TRÊS COROAS",
+     "VENÂNCIO AIRES"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
@@ -3665,17 +3688,22 @@
     "consultado_em": "21/09/2026"
    },
    "alertas_cemaden": {
-    "total": 6,
+    "total": 12,
     "niveis": {
-     "Moderado": 6
+     "Moderado": 12
     },
     "municipios": [
      "BLUMENAU",
      "BOM RETIRO",
      "BRUSQUE",
+     "CRICIÚMA",
      "GASPAR",
+     "MELEIRO",
+     "MORRO GRANDE",
      "SANTO AMARO DA IMPERATRIZ",
-     "SÃO PEDRO DE ALCÂNTARA"
+     "SÃO PEDRO DE ALCÂNTARA",
+     "TIMBÉ DO SUL",
+     "TURVO"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
@@ -3722,13 +3750,9 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
     "consultado_em": "21/09/2026"
@@ -3788,9 +3812,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Tempestade"
@@ -3859,9 +3884,10 @@
     "consultado_em": "21/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Baixa Umidade"
@@ -3871,7 +3897,7 @@
     "consultado_em": "21/09/2026"
    },
    "fogo": {
-    "focos_24h": 1302,
+    "focos_24h": 1429,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20260921.csv",
     "consultado_em": "21/09/2026"
