@@ -9,6 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §132 · Revisão da fila de pistas: bug real de deduplicação achado e corrigido em dois coletores; fila real cai de 113 para 60 pistas únicas · 21/09/2026
+
+Classe **correção de bug + limpeza de dado**. Nenhuma pista foi promovida a registro — promoção continua exclusivamente humana, por desenho do sistema (`monitorar_imprensa_regional.py`: "nada entra sem ser documento oficial", três camadas independentes). Esta seção corrige o pipeline que ALIMENTA a fila, não decide o que está nela.
+
+**Origem.** Pedido direto de revisar a fila de pistas e corrigir o que fosse necessário.
+
+**Achado.** `coletar_diarios_municipais.py` anexava pista com `pistas["pistas"].append(...)` sem nenhuma deduplicação — diferente de `atos_resposta.json`, que já tinha proteção (`vistos`) desde sempre. Toda rodada que tocasse uma data já coberta por uma rodada anterior duplicava a mesma menção na fila. Verificado por varredura sistemática da fila real: **53 de 113 pistas eram duplicatas exatas** (mesmo ibge/município + url + trecho) — quase metade.
+
+**Achado mais sério dentro do achado:** três cópias da mesma pista de Ouro Branco/AL (decreto 021/2026). Duas já tinham sido revisadas e aplicadas por Patricia em 10/09/2026 (`julgamento_humano` preenchido). A terceira cópia foi **registrada em 12/09 — dois dias DEPOIS da revisão** — e ficaria na fila parecendo pendente, quando o fato já tinha sido julgado. Isso teria custado tempo de revisão real em cima de uma decisão já tomada.
+
+**Correção no código (fonte do bug).** `coletar_diarios_municipais.py`: `vistos_pistas` — mesmo padrão já usado para `atos_resposta.json` — checa `(ibge, url, trecho)` antes de anexar. `coletar_diarios_consorciados.py` (§129/§130): tinha o mesmo bug, ainda não manifestado porque o canal está bloqueado — corrigido preventivamente antes de entrar em produção. Confirmado que os OUTROS dois produtores de pista (`monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`) já tinham dedup correta desde a origem (`vistos = {p["hash"] for p in fila["pistas"]}`) — o bug era isolado aos dois coletores de diário.
+
+**Correção no dado.** Deduplicação real da fila: para cada grupo de duplicatas, mantida a entrada com `julgamento_humano` preenchido quando existir (nunca a mais recente por padrão — a revisão humana tem prioridade sobre a data de registro); nos 52 grupos restantes (sem revisão em nenhuma cópia), mantida a mais antiga. Verificado programaticamente que nenhuma remoção descartou um `julgamento_humano` que a entrada mantida não tivesse — comparação campo a campo antes de aplicar. **113 → 60 pistas.**
+
+**O que NÃO foi tocado, por desenho.** As 12 entradas `rebaixamento C10` (correção de 02/09/2026: registro apoiado só em imprensa, sem documento primário, rebaixado a pista) — estado correto, não é bug. 6 pistas sem `municipio` (nível estadual, `categoria_candidata` começando com `estadual_`) — estrutura esperada. 5 pistas `rebaixamento C10` sem `url` — natureza da categoria (documento primário ainda não localizado). Nenhuma pista foi promovida, nenhum `julgamento_humano` foi criado ou alterado.
+
+**Teste.** Dois testes de regressão novos, ambos rodando o fluxo real (não uma simulação da lógica) com rede/arquivos mockados: `coletar_diarios_municipais.py` (`t9`) roda `coletar_lote` duas vezes sobre o mesmo achado, confirma 1 pista nas duas rodadas; `coletar_diarios_consorciados.py` (`t15`) mesmo padrão para `coletar()`. Ambos hermético — verificado que `data/log_buscas.json` e outros arquivos reais não são tocados pelo autoteste. `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §131 · Corrupção real de dados achada e corrigida rodando a coleta MUNIC pela primeira vez; camada declarada nacional populada (5.570 municípios); simulação real do índice · 21/09/2026
 
 Classe **correção de bug + dado real coletado**. Não altera `data/indice.json` (a camada declarada segue travada até 26/10/2026, §3.9) — resultado verificado por `--check` reproduzindo a mesma média 43,6 de antes.
