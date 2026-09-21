@@ -418,6 +418,9 @@ function titulosFato(){
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const n = v => Number(v || 0).toLocaleString('pt-BR');
   const titulo = (box, txt) => { const h = document.querySelector('#' + box + ' .figura-titulo'); if (h && txt) h.textContent = txt; };
+  const interp = (id, html) => { const el = document.getElementById(id); if (el && html) el.innerHTML = html; };
+  // interp() nunca escapa sozinha — cada chamador precisa envolver texto de dado em esc(...) antes de
+  // interpolar (só um chamador resta abaixo, "interpDepois"; usa esc(N.primeiro_decreto) por isso).
   // 18/09/2026 (pedido da editoria): o resumo "N estados com plano para o ciclo..." e "Por região: X
   // concentra..." saiu daqui — mora como contador na home, abaixo do índice MARÉ Legal (mesmo cálculo,
   // mesma fonte data/estados.json, ver assets/js/index.js).
@@ -428,6 +431,13 @@ function titulosFato(){
     const vd = (VRESUMO && VRESUMO.varredura_diarios) || {}; const nDiario = vd.consultados || vd.municipios_consultados || null;
     const nPlanos = Object.values(PCT_POR_UF || {}).reduce((a, i) => a + (i.n_plano || 0), 0);
     titulo('boxVerificacao', `5.571 municípios no registro federal${nDiario != null ? `; ${n(nDiario)} no diário oficial` : ''}; ${n(nPlanos)} planos municipais localizados`);
+  } catch (e) {}
+  try {   // (g) semana do primeiro decreto — 16/09/2026: o "quadrante crítico" (estados com índice ≥ 50
+    // e mais de 5% dos municípios sob decreto, nomeados) saiu — cruzava a nota de cada estado com
+    // resposta para apontar estados específicos, exatamente o tipo de comparação que a editoria veta.
+    const N = RESP && RESP.nacional; const S = (RESP_SERIE && RESP_SERIE.semanas) || [];
+    const tot = S.reduce((a, x) => a + (x.municipios || 0), 0); const noDefeso = S.filter(x => x.defeso).reduce((a, x) => a + (x.municipios || 0), 0);
+    if (N && S.length) interp('interpDepois', `Primeiro decreto do ciclo em ${esc(N.primeiro_decreto || '—')}; ${n(noDefeso)} de ${n(tot)} decretos até aqui são de dentro do período eleitoral.`);
   } catch (e) {}
   try {   // (f) mapa dos decretos — 16/09/2026: título-fato não nomeia mais o estado com a maior fração
     // (revelava posição/comparação entre estados; ver pedido da editoria)
