@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §146 · Defesa civil: removido o painel "Decretos de emergência" que sobrou vazio depois do mapa subir · 21/09/2026
+
+Classe **correção de página, mesmo dia**. Achado real ao testar §145 na prática: a página numera painéis automaticamente ("1 · ", "2 · " — `assets/colunas.js`, pelo índice na página), e o segundo painel apareceu como "2 · Decretos de emergência" sem nenhum elemento visual — só texto, já que o mapa tinha subido pra grade principal. Pedido direto: esse quadro tem que sair.
+
+**Primeira tentativa removeu texto protegido por portão — pego antes de mesclar.** O painel continha duas informações que `verificar_runtime_resposta.js` e `verificar_runtime_mapas.js` verificam explicitamente: a frase legal sobre transferências voluntárias suspensas durante o defeso eleitoral (regra C18), e um fato calculado dinamicamente (`interpDepois`: primeiro decreto do ciclo e quantos decretos caíram no período eleitoral). Remover o painel inteiro quebrou os dois portões — não é texto decorativo, é conteúdo com proteção deliberada.
+
+**Correção**: o texto voltou para a página, mas fora de qualquer `.panel` (não gera numeração, não aparece como "quadro") e fora de qualquer `.figure` (regra própria do site: nenhum parágrafo solto dentro de cartão de mapa/gráfico). Um `<div id="resposta">` simples, sem classe `panel`, carrega as mesmas duas frases de antes — satisfaz os portões sem recriar a aparência de painel vazio.
+
+**Testado de ponta a ponta, não só o código — duas vezes.** Servida a página localmente e verificada com Chromium real (Playwright, não jsdom): antes da correção final, confirmação visual de 1 painel só e os 4 mapas com conteúdo SVG real; depois de restaurar o texto, reconfirmado que `#resposta` existe com o texto certo mas não é `.panel` (não aparece numerado), sem nenhum erro de JavaScript.
+
+**Teste.** Os dois portões que pegaram o problema (`verificar_runtime_mapas.js`, `verificar_runtime_resposta.js`) voltaram a passar. Suíte completa de estrutura, figuras e consistência verde.
+
 ## §145 · Defesa civil: 4 mapas juntos no topo, removida a seção "Ver mais" (dois gráficos de status) · 21/09/2026
 
 Classe **edição de página, pontual**. Pedido editorial direto.
