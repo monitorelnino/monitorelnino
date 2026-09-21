@@ -57,7 +57,7 @@ USO
 import csv, io, sys
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
-                            marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
+                            marcar_fonte_consultada, referencia_ibge,
                             ler, gravar, rodar_autoteste)
 
 FONTES_PADRAO = {
@@ -139,6 +139,15 @@ def parse_icm_csv(texto: str, col_ibge: str, col_faixa: str, col_var8: str, edic
     return out
 
 
+def marcar_fato_municipal_em_memoria(livro: dict, ibge, campo: str, valor) -> None:
+    """Mesma lógica de `coletores_base.marcar_fato_municipal`, mas contra um `livro` já
+    carregado em memória — sem ler/gravar o arquivo a cada chamada (ver nota em coletar()).
+    Mantida em sincronia deliberada com a função original; se ela mudar, esta acompanha."""
+    m = livro["municipios"].setdefault(str(ibge).zfill(7), {"nivel_verificacao": "nao_verificado",
+                                                             "ultima_verificacao": None, "fontes": []})
+    m[campo] = valor
+
+
 def coletar() -> int:
     cfg = ler("fontes_declarado.json", None) or FONTES_PADRAO
     por_cod, _ = referencia_ibge()
@@ -146,6 +155,16 @@ def coletar() -> int:
                                           "SIMULADA desde 02/09/2026; entra na nota só em 26/10/2026. "
                                           "Declarar ≠ publicar: desconto de 50% quando ativada.",
                                           "vigencia_na_nota": "2026-10-26", "municipios": {}})
+    # 21/09/2026 (achado real, rodando pela primeira vez contra a rede): marcar_fato_municipal()
+    # faz UMA leitura + escrita completa de fontes_consultadas.json (368 mil linhas) POR
+    # CHAMADA — correto para coletar_doe.py/coletar_s2id.py (dezenas de municípios com decreto),
+    # mas aqui são até 5.570 chamadas na mesma rodada (todos os municípios da base MUNIC/ICM).
+    # Isso e a falta de escrita atômica (corrigida em coletores_base.py na mesma sessão) juntas
+    # corromperam o arquivo quando a rodada foi interrompida por timeout. Corrigido: uma leitura
+    # antes do loop, atualização em memória (mesma lógica de marcar_fato_municipal, sem chamar a
+    # função por item), uma escrita no final — mesmo resultado, 5.570× menos I/O.
+    livro_fatos = ler("fontes_consultadas.json", {"_governanca": "Livro de fontes consultadas por "
+                      "município (v2.2.4).", "municipios": {}})
     for chave in ("munic", "icm"):
         f = cfg[chave]
         if not f.get("url"):
@@ -171,13 +190,14 @@ def coletar() -> int:
             if cod in por_cod:
                 reg["municipios"].setdefault(cod, {}).update(d); casados += 1
                 if d.get(campo) in ("sim", "nao"):
-                    marcar_fato_municipal(cod, fato, d[campo] == "sim")
+                    marcar_fato_municipal_em_memoria(livro_fatos, cod, fato, d[campo] == "sim")
         marcar_fonte_consultada([c for c in dados if c in por_cod], f["nome"], "nacional",
                                 resultado=f"{casados} municípios na base")
         log_busca("DOU", 1, [f["url"]], "registro", nivel="nacional", n_resultados=casados,
                   resultados=f"{f['nome']}: {casados} municípios casados com IBGE", hash_evidencia=h)
         f["status"] = "ok"; f["ultima_coleta"] = date.today().isoformat()
         print(f"{f['nome']}: {casados} municípios")
+    gravar("fontes_consultadas.json", livro_fatos)
     gravar("fontes_declarado.json", cfg); gravar("declarado_nacional.json", reg)
     return 0
 
@@ -224,10 +244,23 @@ def autoteste() -> int:
         buf = io.BytesIO(); wb.save(buf)
         d = parse_munic_xlsx(buf.getvalue(), "Gestão de riscos", "CodMun", "Mgrd184", "Mgrd05", 2020)
         return d == {"4202404": {"munic_edicao": 2020}}
+    def t6():  # 21/09/2026: marcar_fato_municipal_em_memoria replica a lógica da função
+        # original (mesmos defaults, cria o registro se não existir) sem I/O — testado contra
+        # um livro em memória, dois municípios, um já existente e um novo.
+        livro = {"municipios": {"1100015": {"nivel_verificacao": "estadual", "ultima_verificacao": "2026-09-01",
+                                            "fontes": ["x"]}}}
+        marcar_fato_municipal_em_memoria(livro, "1100015", "plano_declarado_munic", True)
+        marcar_fato_municipal_em_memoria(livro, 3106200, "plano_declarado_munic", False)  # int, não string
+        existente_preservado = (livro["municipios"]["1100015"]["nivel_verificacao"] == "estadual"
+                                and livro["municipios"]["1100015"]["plano_declarado_munic"] is True)
+        novo_criado = (livro["municipios"]["3106200"]["nivel_verificacao"] == "nao_verificado"
+                      and livro["municipios"]["3106200"]["plano_declarado_munic"] is False)
+        return existente_preservado and novo_criado
     return rodar_autoteste({"parser MUNIC (xlsx, aba nomeada)": t1, "parser ICM": t2,
                             "valores fora do vocabulário viram NA": t3,
                             "negativo: aba inexistente": t4,
-                            "negativo: coluna do plano ausente": t5})
+                            "negativo: coluna do plano ausente": t5,
+                            "marcar_fato_municipal_em_memoria: preserva registro existente e cria novo": t6})
 
 
 if __name__ == "__main__":
