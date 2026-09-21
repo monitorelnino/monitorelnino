@@ -95,38 +95,19 @@
         <div class="figura-midia"><svg id="mapPrioritarios" role="img" aria-label="Mapa do Brasil com os municípios prioritários do Cadastro Nacional (aproximação por população), distinguindo os que já têm instrumento localizado dos que ainda não" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legPrioritarios"></div>
       </figure>
-    </div>
-    <details class="acc" id="antesVerMais">
-      <summary class="acc-summary">Ver mais: status geral (27 UFs) e status das capitais</summary>
-      <div class="panel">
-        <div class="grade-figuras">
-      <figure class="figura figura--grafico" id="boxDonut">
-        <h3 class="figura-titulo">Status geral dos planos estaduais</h3>
-        <p class="figura-sub">Corte da edição · categoria do plano estadual · 27 UFs</p>
-        <div class="figura-midia canvas-wrap"><canvas id="chartDonut"></canvas></div>
-      </figure>
-      <figure class="figura figura--grafico" id="boxCapitals">
-        <h3 class="figura-titulo">Status das 27 capitais</h3>
-        <p class="figura-sub">Corte da edição · categoria do instrumento da capital · 27 capitais</p>
-        <div class="figura-midia canvas-wrap"><canvas id="chartCapitals"></canvas></div>
-      </figure>
-        </div>
-      </div>
-    </details>
-  </div>
-
-  <div class="panel panel--acento-rust" id="resposta">
-    <h2>Decretos de emergência</h2>
-    <p class="hint">Municípios com decreto de emergência desde 29 de junho, a população que vive neles e quantos decretos foram reconhecidos pelo governo federal. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas; as por decreto continuam (<a href="calendario-eleitoral.html">calendário →</a>). A tabela abaixo agrega por estado os mesmos municípios que aparecem como pontos em "Cidades que decretaram emergência".</p>
-    <p class="hint" id="interpDepois" aria-live="polite">—</p>
-    <div class="grade-figuras">
-      <figure class="figura figura--mapa figura--largo" id="boxAtosResposta">
+      <figure class="figura figura--mapa" id="boxAtosResposta">
         <h3 class="figura-titulo">Cidades que decretaram emergência</h3>
         <p class="figura-sub">Desde 29/06/2026 · municípios com decreto de emergência no ciclo · pontos</p>
         <div class="figura-midia"><svg id="mapAtosResposta" role="img" aria-label="Mapa do Brasil com as cidades que decretaram situação de emergência ou calamidade pública, mostrados à parte da nota" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAtosResposta"></div>
       </figure>
     </div>
+  </div>
+
+  <div class="panel panel--acento-rust" id="resposta">
+    <h2>Decretos de emergência</h2>
+    <p class="hint">Municípios com decreto de emergência desde 29 de junho, a população que vive neles e quantos decretos foram reconhecidos pelo governo federal. Entre 04/07 e 25/10, transferências voluntárias ficam suspensas; as por decreto continuam (<a href="calendario-eleitoral.html">calendário →</a>). O mapa acima, em "Cidades que decretaram emergência", mostra os mesmos municípios.</p>
+    <p class="hint" id="interpDepois" aria-live="polite">—</p>
   </div>
 
 </main>
