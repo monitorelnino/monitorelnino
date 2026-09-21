@@ -9,6 +9,34 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §131 · Corrupção real de dados achada e corrigida rodando a coleta MUNIC pela primeira vez; camada declarada nacional populada (5.570 municípios); simulação real do índice · 21/09/2026
+
+Classe **correção de bug + dado real coletado**. Não altera `data/indice.json` (a camada declarada segue travada até 26/10/2026, §3.9) — resultado verificado por `--check` reproduzindo a mesma média 43,6 de antes.
+
+**Origem.** Pedido direto: "existe um sistema de coleta saudável, que esgota as possibilidades?" A resposta é não (inventário completo abaixo, sem invenção). Pedido de teste real hoje: rodar a coleta MUNIC (§128, nunca executada contra a rede desde a correção do parser) e ver se o índice se modifica.
+
+**Inventário do que existe de fato, camada por camada do protocolo (não suposto — cada linha verificada nesta sessão):**
+- Camada 1 (bases estruturadas): S2iD/DOU funciona. MUNIC — corrigida aqui. ICM/SEDEC — nunca conectada, URL segue `null`.
+- Camada 2 (diários): DOE funciona. Querido Diário funciona, mas alcança 351 de 5.571 municípios (6,3%) com diário indexado. Diários consorciados (SIGPub, §129-§130): construído, testado, bloqueado por `requestStorageAccess`.
+- Camada 3 (sites de prefeitura, roteiro fixo): não existe nenhum coletor.
+- Camada 4 (busca web aberta): não existe coletor automatizado.
+- Camada 5 (LAI): `gerar_lai.py` só gera o texto do pedido; envio e resposta são manuais.
+- Camada 6 (imprensa): `monitorar_imprensa_regional.py` e `monitorar_imprensa_saude.py` existem e rodam toda semana via `atualizar.yml` — funcionando de verdade.
+
+**Achado adicional, fora do escopo da pergunta original mas com impacto direto no teste pedido:** a fila de pistas (`pistas_imprensa.json`) tinha 113 pistas esperando revisão, zero promovidas — o gargalo do sistema hoje não é achar pistas, é revisá-las.
+
+**Bug 1 — `gravar()` não era atômica** (`coletores_base.py`). Escrevia direto no arquivo final; qualquer interrupção no meio (timeout, Action cancelada) deixava JSON truncado e inválido. Reproduzido de verdade: rodar `coletar_declarado_nacional.py` sob `timeout 200` corrompeu `data/fontes_consultadas.json` (368.019 → 166.961 linhas, `JSONDecodeError`). Corrigido: escreve em arquivo temporário no mesmo diretório e substitui via `os.replace()` — atômico em POSIX, o arquivo final é sempre a versão antiga completa ou a nova completa, nunca uma mistura truncada. Afeta todo coletor do projeto (função compartilhada), risco real dado que rodadas longas (35-90 min documentadas) e cancelamentos de Action aconteceram várias vezes nesta mesma sessão.
+
+**Bug 2 — causa raiz da interrupção que expôs o Bug 1** (`coletar_declarado_nacional.py`). `marcar_fato_municipal()` faz uma leitura + escrita completa de `fontes_consultadas.json` a cada chamada — correto para `coletar_doe.py`/`coletar_s2id.py` (dezenas de municípios com decreto), mas o coletor MUNIC chama isso até 5.570 vezes na mesma rodada. Corrigido com `marcar_fato_municipal_em_memoria()`: uma leitura antes do loop, atualização em memória, uma escrita no final — mesmo resultado, 5.570× menos I/O. Rodada completa: **de indeterminado (matava por timeout) para 8 segundos.**
+
+**Resultado real da coleta, rodada até o fim pela primeira vez:** MUNIC/IBGE 2020 — 5.570 municípios casados com a referência IBGE. `Mgrd184` (plano de contingência geral): 1.407 sim / 4.054 não / 109 NA. ICM/SEDEC: lacuna declarada (URL segue não confirmada — pendência editorial, não bug).
+
+**Simulação real do efeito no índice** (`recalcular_mare.py --simular-declarado-nacional`, gravada em `data/simulacao_declarado_nacional.json`): média nacional **43,6 → 45,1** (+1,5). UFs com maior variação: DF +16,6 (1 município, alto peso individual), PE +2,7 (69 municípios), RJ +2,6 (73 municípios), AM +2,4 (25 municípios). 4 de 27 UFs sem nenhuma mudança. MG é quem mais contribui em volume: 204 municípios, +1,3.
+
+**Derivados regenerados.** `data/fontes_consultadas.json` ganhou `plano_declarado_munic` para 5.461 municípios. `recalcular_mare.py --write` regenerou `verificacao_municipal.json` a partir disso (nível de verificação, não a nota — nota pública confirmada inalterada em 43,6 por `--check` logo depois). `docs/MANIFEST_SHA256.txt` regenerado.
+
+**Teste.** `coletar_declarado_nacional.py --autoteste`: 6 casos, 1 novo (`marcar_fato_municipal_em_memoria` preserva registro existente e cria novo corretamente). Suíte completa verde: consistência, evidências, estrutura, legendas, MARÉ reproduzido.
+
 ## §130 · Diários consorciados: navegador real (Playwright/Chromium) implementado e testado contra produção — bloqueio persiste, causa mais específica agora documentada · 21/09/2026
 
 Classe **investigação + código, ainda sem ativação em produção**. Continuação direta do §129, a pedido explícito de "desbloquear o que for preciso" (20-21/09/2026).

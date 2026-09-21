@@ -57,11 +57,20 @@ def _indent_de(p) -> int:
 
 
 def gravar(nome, obj):
+    """Escrita ATÔMICA (achado real, 21/09/2026): a versão anterior escrevia direto no arquivo
+    final — qualquer interrupção no meio (timeout, Action cancelada, OOM) deixava um JSON
+    truncado e inválido. Reproduzido de verdade: coletar_declarado_nacional.py rodando sob
+    `timeout 200` corrompeu data/fontes_consultadas.json (368.019 → 166.961 linhas, JSON
+    inválido). Corrigido: grava num arquivo temporário no mesmo diretório e substitui via
+    os.replace(), que em POSIX é atômico — o arquivo final é sempre a versão antiga completa
+    ou a nova completa, nunca uma mistura truncada."""
     p = DATA / nome
     ind = _indent_de(p)
-    with open(p, "w", encoding="utf-8") as f:
+    tmp = p.with_name(f"{p.name}.tmp{os.getpid()}")
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=ind)
         f.write("\n")
+    os.replace(tmp, p)
 
 
 # ---------------------------------------------------------------------------------
