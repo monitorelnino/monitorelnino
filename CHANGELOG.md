@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §133 · URGENTE: guarda booleana de apenas_repor_dominio nunca funcionou (comparação com literal `true` falha contra input de workflow_dispatch); portão de ordem dava falso positivo · 21/09/2026
+
+Classe **correção de bug de infraestrutura, sem alteração de dado ou nota**.
+
+**Origem.** Pedido editorial urgente: repor a senha do domínio, e fazer o ciclo cortina ("em atualização") ↔ senha funcionar de verdade nas rodadas.
+
+**Achado 1 — a guarda do job `repor_dominio_manual` (criado mais cedo hoje) nunca isolou o disparo urgente da rodada semanal inteira.** `if: inputs.apenas_repor_dominio == true` compara o input contra o literal booleano `true`; inputs de `workflow_dispatch` frequentemente chegam como string, e a comparação string-contra-booleano do motor de expressões do GitHub Actions nunca bate (confirmado contra relato de terceiros e um caso idêntico documentado no próprio GitHub Actions runner). Evidência real: o run #87 (dispatch com `apenas_repor_dominio`) disparou os DOIS jobs — o `repor_dominio_manual` E a rodada `atualizar` inteira — quando só o primeiro deveria rodar. Corrigido: `if: inputs.apenas_repor_dominio` (contexto de verdade direto, sem comparação — padrão documentado do próprio GitHub Actions).
+
+**Achado 2 — o portão `testar_reposicao_dominio.py` dava falso positivo depois do achado 1 ser corrigido no código, mas antes de o próprio portão ser ajustado.** Ele busca a primeira ocorrência de "Repor o site completo no domínio" no ARQUIVO INTEIRO — e o novo job `repor_dominio_manual` (criado mais cedo hoje, antes do job `atualizar:` no arquivo) tem um passo com o mesmo nome. A ordem DENTRO do job semanal real sempre esteve correta (cortina antes, reposição depois, com espera de 120s) — o portão só não sabia disso porque comparava contra a ocorrência errada. Corrigido: a busca agora é restrita ao corpo do job `atualizar:`.
+
+**O que isso não explica sozinho.** O run #87, mesmo com o defeito da guarda, teve o passo de reposição (dentro do job `atualizar`, `if: always()`) e o job `repor_dominio_manual` bem-sucedidos — os dois deveriam ter deixado o domínio em modo senha. Não tenho como verificar o estado ao vivo do domínio a partir deste ambiente (fora da lista de acesso da rede) — pedido à editoria: confirmar em janela anônima depois deste PR.
+
+**Ação imediata.** Cancelado o run #88 (rodando com o código com o defeito da guarda, potencialmente disparando a rodada semanal inteira por engano) e redisparado `apenas_repor_dominio=true` assim que este PR mesclar, agora isolado corretamente ao job rápido.
+
+**Teste.** `scripts/testar_reposicao_dominio.py` roda verde. `scripts/validar_workflows.py` confirma YAML válido.
+
 ## §132 · Revisão da fila de pistas: bug real de deduplicação achado e corrigido em dois coletores; fila real cai de 113 para 60 pistas únicas · 21/09/2026
 
 Classe **correção de bug + limpeza de dado**. Nenhuma pista foi promovida a registro — promoção continua exclusivamente humana, por desenho do sistema (`monitorar_imprensa_regional.py`: "nada entra sem ser documento oficial", três camadas independentes). Esta seção corrige o pipeline que ALIMENTA a fila, não decide o que está nela.

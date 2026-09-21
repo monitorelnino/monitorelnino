@@ -50,7 +50,17 @@ def main() -> int:
     if not WF.exists():
         print("✗ .github/workflows/atualizar.yml não existe")
         return 1
-    wf = WF.read_text(encoding="utf-8")
+    wf_completo = WF.read_text(encoding="utf-8")
+    # 21/09/2026 (achado real): o job `repor_dominio_manual` (disparo urgente e independente,
+    # fora da rodada semanal) tem um passo com o MESMO nome "Repor o site completo no domínio".
+    # Buscar a primeira ocorrência no arquivo inteiro pega esse passo — que vem ANTES do job
+    # `atualizar:` no arquivo — e acusa ordem errada mesmo quando a ordem DENTRO do job real
+    # está correta. Escopo restrito ao corpo do job `atualizar:`.
+    i_job = wf_completo.find("\n  atualizar:")
+    if i_job == -1:
+        print("✗ job `atualizar:` não encontrado em atualizar.yml")
+        return 1
+    wf = wf_completo[i_job:]
 
     # 2. Existe o passo de reposição, e ele consulta a declaração em vez de
     #    assumir um modo fixo.

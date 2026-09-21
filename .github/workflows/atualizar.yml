@@ -47,7 +47,7 @@ jobs:
     # Faz exatamente o que o passo "Repor o site completo no domínio" de dentro da rodada
     # semanal faz, mas isolado: checkout do main atual, cabeçalho Basic-Auth, deploy Netlify.
     # Não toca em data/, não comita nada, não roda coleta.
-    if: github.event_name == 'workflow_dispatch' && inputs.apenas_repor_dominio == true
+    if: github.event_name == 'workflow_dispatch' && inputs.apenas_repor_dominio
     runs-on: ubuntu-latest
     concurrency:
       group: repor-dominio-manual
@@ -92,6 +92,11 @@ jobs:
           cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio manual ${GITHUB_SHA::7}" && git push -q
 
   atualizar:
+    # 21/09/2026 (achado real, mesmo dia): disparar apenas_repor_dominio=true SEM esta guarda
+    # também disparou este job inteiro — só o job novo tinha `if:`, o schedule/workflow_dispatch
+    # do topo do arquivo aciona TODOS os jobs por padrão, salvo restrição própria. Corrigido para
+    # não repetir: pula quando o disparo foi explicitamente só para repor o domínio.
+    if: "!(github.event_name == 'workflow_dispatch' && inputs.apenas_repor_dominio)"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
