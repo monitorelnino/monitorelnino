@@ -27,6 +27,20 @@ const POLL_MS = 400, TIMEOUT_TOKEN_MS = 12000;
   try {
     b = await chromium.launch();
     const ctx = await b.newContext();
+    // 21/09/2026: playwright atualizado de 1.56 para 1.63 especificamente por causa disto —
+    // 'storage-access' só é concedível via grantPermissions() a partir da 1.59 (verificado no
+    // arquivo de tipos do pacote instalado, node_modules/playwright-core/types/types.d.ts, não
+    // suposto). Tentativa real de destravar requestStorageAccess (achado 20/09/2026) pela API de
+    // permissões do navegador, complementar ao clique real (mais abaixo) — não se sabe qual dos
+    // dois mecanismos (ou se algum) o controller Stimulus realmente respeita; nunca crítico se
+    // falhar, o restante do fluxo segue e o diagnóstico registra o resultado de cada tentativa.
+    let concedeu_permissao = false, erro_permissao = null;
+    try {
+      await ctx.grantPermissions(["storage-access"], { origin: new URL(url).origin });
+      concedeu_permissao = true;
+    } catch (e) {
+      erro_permissao = `${e.name}: ${e.message}`.slice(0, 200);
+    }
     const page = await ctx.newPage();
     page.on("console", m => consoleMsgs.push(`[${m.type()}] ${m.text()}`.slice(0, 200)));
     page.on("pageerror", e => pageErrors.push(String(e.message || e).slice(0, 200)));
@@ -64,7 +78,8 @@ const POLL_MS = 400, TIMEOUT_TOKEN_MS = 12000;
     const reqsRelevantes = requisicoes.filter(r => /token|csrf|calendar/i.test(r));
     const diagBase = { tentativas, tempo_ms, total_requisicoes: requisicoes.length,
       requisicoes_relevantes: reqsRelevantes.slice(0, 10),
-      console: consoleMsgs.slice(0, 10), erros_pagina: pageErrors.slice(0, 5) };
+      console: consoleMsgs.slice(0, 10), erros_pagina: pageErrors.slice(0, 5),
+      concedeu_permissao_storage_access: concedeu_permissao, erro_permissao };
     if (!token) {
       console.log(JSON.stringify({ ok: false, erro: "input #calendar__token não encontrado na página renderizada",
         diagnostico: diagBase }));
@@ -76,7 +91,8 @@ const POLL_MS = 400, TIMEOUT_TOKEN_MS = 12000;
         diagnostico: diagBase }));
       process.exit(1);
     }
-    console.log(JSON.stringify({ ok: true, token, cookies, diagnostico: { tentativas, tempo_ms } }));
+    console.log(JSON.stringify({ ok: true, token, cookies,
+      diagnostico: { tentativas, tempo_ms, concedeu_permissao_storage_access: concedeu_permissao } }));
   } catch (e) {
     if (b) await b.close().catch(() => {});
     console.log(JSON.stringify({ ok: false, erro: `${e.name}: ${e.message}`.slice(0, 300),

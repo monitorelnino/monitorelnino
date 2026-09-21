@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §136 · SIGPub: tentativa real de destravar via Storage Access API (Playwright 1.63, grantPermissions) — bloqueio confirmado, não é mais questão de esforço · 21/09/2026
+
+Classe **investigação técnica, resultado negativo documentado**. Nenhum dado produzido, nenhuma alteração de nota.
+
+**Origem.** Pedido direto: reconsiderar se o bloqueio de §130 (`requestStorageAccess: Permission denied`) era genuinamente intransponível ou só falta de esforço, independente de custo computacional.
+
+**Ação real, não suposição.** `playwright` atualizado de 1.56.0 para 1.63.0 (verificado no changelog do pacote: `'storage-access'` só é concedível via `context.grantPermissions()` a partir da 1.59). `scripts/obter_token_sigpub.js` passou a conceder essa permissão explicitamente antes de navegar, complementar ao clique real (CDP) já tentado em §130.
+
+**Resultado, testado contra produção real (não simulado):** `grantPermissions(['storage-access'])` retornou sucesso — mas o console da página continuou mostrando `requestStorageAccess: Permission denied`. A concessão de permissão do Playwright não satisfaz o que o navegador real exige internamente (o mecanismo provavelmente checa ativação transitória do usuário como condição separada, não só o estado da permissão — consistente com a especificação do Storage Access API).
+
+**Conclusão.** Duas abordagens reais testadas (clique via CDP em §130; concessão de permissão aqui), nenhuma funcionou. Isto não é mais um caso de "não tentamos o suficiente" — é um mecanismo de segurança do navegador funcionando como projetado contra automação. Desbloquear exigiria intervenção no nível do binário do Chromium, fora do escopo razoável deste projeto. Mantido documentado para não repetir a tentativa.
+
+**Teste.** `coletar_diarios_consorciados.py --autoteste` (14 casos) e suíte completa verdes — a dependência atualizada não quebrou nada em uso (visual, coletores). `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §135 · ICM/SEDEC: fonte real encontrada, esquema confirmado por download, coletor reescrito — 5.570 municípios coletados de verdade · 21/09/2026
 
 Classe **código + fonte nova**. Não altera `data/indice.json` (camada declarada travada até 26/10/2026, §3.9) — `--check` confirma média inalterada.
