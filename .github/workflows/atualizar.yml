@@ -224,7 +224,7 @@ jobs:
             sleep 2
           done
           [ -n "$ok" ] && echo "pronto=1" >> "$GITHUB_OUTPUT" || echo "SearXNG não respondeu a tempo — busca web pulada nesta rodada"
-      - name: Busca web por plano de contingência (SearXNG efêmero, 60 municípios/rodada)
+      - name: Busca web por plano de contingência (SearXNG efêmero, 150 municípios/rodada, 2x ao dia)
         if: steps.searxng.outputs.pronto == '1'
         continue-on-error: true
         run: python3 monitorar_busca_web.py --tamanho 150
