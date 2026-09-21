@@ -406,6 +406,19 @@ jobs:
         continue-on-error: true
         run: python3 scripts/preservar_textos_integrais.py
 
+      # 21/09/2026 (achado real: main ficou com verificacao_municipal.json divergente do
+      # recomputado depois de uma rodada real — 60 registros com "ultima_verificacao"/fontes
+      # atualizados pela busca web, sem um --write final capturando essa mudança antes do
+      # commit). Causa exata não isolada com certeza (candidato: algum step entre "Atualizar
+      # dados" e aqui ainda toca fontes_consultadas.json) — em vez de caçar linha por linha,
+      # esta garantia estrutural resolve para qualquer step futuro que também mude os arquivos-
+      # fonte do verificacao_municipal.json: idempotente e rápida (função pura dos dados desta
+      # rodada), então rodar de novo aqui não tem custo real mesmo quando já está sincronizado.
+      - name: Sincronizar índice antes do commit (garantia contra derivado desatualizado)
+        run: |
+          python3 recalcular_mare.py --write
+          python3 recalcular_mare.py --check
+
       - name: Commit das alterações de dados
         if: github.event.inputs.ensaio != 'true'
         run: |
