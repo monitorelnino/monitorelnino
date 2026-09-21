@@ -40,6 +40,11 @@ const POLL_MS = 400, TIMEOUT_TOKEN_MS = 12000;
       requisicoes.push(`${req.method()} ${req.url().slice(0, 120)} -> FALHOU (${req.failure()?.errorText || "?"})`);
     });
     await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
+    // Achado 20/09/2026: console mostrou "requestStorageAccess: Permission denied" — essa API
+    // exige ativação transitória de usuário (gesto real, não element.click() via JS). Um clique
+    // do Playwright via CDP conta como confiável (Input.dispatchMouseEvent); testar se isso
+    // libera o preenchimento do token pelo controller Stimulus.
+    try { await page.mouse.click(10, 10); } catch (_) { /* clique é só uma tentativa de ativação, nunca crítico */ }
     // Polling em vez de espera fixa (achado 20/09/2026: 800ms não bastou contra produção real —
     // o mecanismo que preenche o token pode ser assíncrono, ex. uma chamada de rede própria).
     const inicio = Date.now();
