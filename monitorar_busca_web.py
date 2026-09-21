@@ -22,8 +22,9 @@ num só lugar. Dedup por (ibge, url, trecho) — mesmo padrão do achado de
 duas entradas só porque a rodada rodou de novo.
 
 Prioridade dos lotes: reusa `ordem_prioridade()` de `coletar_diarios_municipais.py`
-— mesmo proxy (UF por percentual do cadastro, população decrescente dentro da UF)
-— para não duplicar a lógica de priorização em dois lugares.
+(UF por percentual do cadastro, população decrescente dentro da UF), com os 2.095
+municípios prioritários (mesmo proxy do resto do site, data/municipios_prioritarios.json)
+adiantados para o início — ciclo dos que mais importam: ~93 → ~35 semanas.
 
 USO
   python monitorar_busca_web.py --autoteste
@@ -81,7 +82,19 @@ def rodar(lote: str | None, tamanho: int) -> int:
     por_cod, _ = referencia_ibge()
     cadastro = ler("cadastro_prioritarios.json") or {}
     pop = ler("populacao_censo2022.json") or {}
-    ordem = ordem_prioridade(por_cod, cadastro, pop)
+    ordem_base = ordem_prioridade(por_cod, cadastro, pop)
+
+    # 21/09/2026 (pedido editorial: "não temos 93 semanas, precisamos de algo mais veloz"):
+    # ordem_prioridade() trata os 5.571 municípios igualmente dentro do ranking por UF/população
+    # — um município grande sem risco mapeado podia furar a fila de um município prioritário
+    # menor. Município prioritário (proxy populacional, fonte data/municipios_prioritarios.json
+    # — mesmos 2.095 já usados no resto do site) vai todo para o início, na MESMA ordem relativa
+    # de ordem_prioridade(); os demais vêm depois, também na mesma ordem relativa entre si —
+    # partição estável, não uma reordenação nova. Ciclo dos 2.095 que mais importam: ~93 → ~35
+    # semanas. Cobertura total continua a mesma no fim (nenhum município é descartado).
+    prioritarios_cod = {str(m["codigo_ibge"]).zfill(7) for m in (ler("municipios_prioritarios.json") or {}).get("municipios", [])}
+    ordem = [c for c in ordem_base if c in prioritarios_cod] + [c for c in ordem_base if c not in prioritarios_cod]
+
     total_lotes = max(1, -(-len(ordem) // tamanho))  # arredonda para cima
 
     if lote is None:
@@ -193,6 +206,21 @@ def autoteste():
         finally:
             globals_mod.ler, globals_mod.gravar = real_ler, real_gravar
 
+    def t7_prioritarios_vem_primeiro_e_ninguem_some():
+        # 21/09/2026 (pedido editorial de velocidade): contra o dado real — é só leitura,
+        # sem mock necessário. Confirma partição estável: todo prioritário antes de todo
+        # não-prioritário, e a cobertura total não perde ninguém (mesmo conjunto, nova ordem).
+        por_cod, _ = referencia_ibge()
+        cadastro = ler("cadastro_prioritarios.json") or {}
+        pop = ler("populacao_censo2022.json") or {}
+        ordem_base = ordem_prioridade(por_cod, cadastro, pop)
+        prioritarios_cod = {str(m["codigo_ibge"]).zfill(7) for m in (ler("municipios_prioritarios.json") or {}).get("municipios", [])}
+        ordem = [c for c in ordem_base if c in prioritarios_cod] + [c for c in ordem_base if c not in prioritarios_cod]
+        if set(ordem) != set(ordem_base) or len(ordem) != len(ordem_base):
+            return False  # ninguém pode sumir nem duplicar
+        primeiro_nao_prioritario = next((i for i, c in enumerate(ordem) if c not in prioritarios_cod), len(ordem))
+        return all(c in prioritarios_cod for c in ordem[:primeiro_nao_prioritario])
+
     return rodar_autoteste({
         "relevante(): aceita nome do município + termo de plano no título": t1_relevante_aceita,
         "relevante(): rejeita termo de plano sem o nome do município": t2_relevante_rejeita_sem_municipio,
@@ -200,6 +228,7 @@ def autoteste():
         "vocabulário de decisao usado aqui existe de fato em log_busca()": t4_vocabulario_log_busca_bate_com_o_codigo,
         "dedup: mesma chave (ibge,url,trecho) é reconhecida como vista": t5_dedup_mesma_chave,
         "rotação automática: avança 1→2→3 e volta para 1 (cobertura cíclica)": t6_rotacao_avanca_e_da_a_volta,
+        "prioritários vêm primeiro, cobertura total preservada (nada some)": t7_prioritarios_vem_primeiro_e_ninguem_some,
     })
 
 
