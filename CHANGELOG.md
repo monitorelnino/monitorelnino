@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §144 · Busca web já roda 2x/dia via cadência existente (achado, não construído); lote aumentado de 60 para 150 · 21/09/2026
+
+Classe **achado de infraestrutura já existente + ajuste de velocidade**. Pedido editorial: "temos que rodar mais de uma vez por semana, precisamos começar agora".
+
+**Achado.** `atualizar.yml` já tem dois crons diários (09h e 21h UTC) além do semanal — construídos em setembro para a "semana intensiva" de coleta de diários municipais, controlada por `INTENSIVO_ATE`/`INTENSIVO_DE`. Os steps de busca web (subir SearXNG + `monitorar_busca_web.py`) ficam fora dessa lógica condicional — rodam incondicionalmente em todo disparo do workflow, scheduled ou manual. Confirmado no histórico real: o run `#96` (cron das 21h de hoje) já rodou a busca web com sucesso. Ou seja, **a busca web já roda 2x/dia — 14x por semana — sem precisar de nenhum workflow novo.** `concurrency: group: atualizar-dados, cancel-in-progress: false` já garante que disparos concorrentes esperam na fila em vez de se cancelar ou colidir.
+
+**Ajuste.** Tamanho do lote por rodada aumentado de 60 para 150 — dentro da faixa já testada com segurança (200 municípios, 494s, zero falhas, §143). Com 2x/dia, isso dá até 300 municípios/dia — os 2.095 prioritários (já na frente da fila desde §143) cobertos em pouco mais de uma semana, ante os ~35 dias que a conta de 60/semana única sugeria.
+
+**Nota**: o estado real de hoje (`data/busca_web_estado.json`) mostra só um avanço de lote persistido apesar de várias execuções ao longo do dia — provavelmente porque nem toda ação de hoje foi um disparo completo do `atualizar.yml` real (vários foram testes isolados via `diagnostico_sinais.yml`, ou rodadas em modo ensaio, que não persistem avanço). Não investigado a fundo; comportamento do mecanismo de rotação em si (fila FIFO via concurrency) está correto por desenho.
+
 ## §143 · Busca web: priorização por município prioritário (93 → ~35 semanas); investigação da peneira testada em escala e revertida por segurança · 21/09/2026
 
 Classe **melhoria de velocidade confirmada + tentativa de melhoria de precisão testada e revertida**. Documentado com honestidade — nem tudo que foi tentado funcionou.
