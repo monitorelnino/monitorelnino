@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §146 · Defesa civil: removido o painel "Decretos de emergência" que sobrou vazio depois do mapa subir · 21/09/2026
+
+Classe **correção de página, mesmo dia**. Achado real ao testar §145 na prática: a página numera painéis automaticamente ("1 · ", "2 · " — `assets/colunas.js`, pelo índice na página), e o segundo painel apareceu como "2 · Decretos de emergência" sem nenhum elemento visual — só texto, já que o mapa tinha subido pra grade principal. Removido por completo, a pedido direto.
+
+**Testado de ponta a ponta, não só o código.** Servida a página localmente (não jsdom — Playwright, Chromium real) e confirmado com Chromium real: antes da correção, 2 painéis; depois, 1 só. Os 4 mapas — incluindo o de decretos, que subiu em §145 — seguem renderizando com conteúdo SVG real e dimensões corretas, na grade 2×2. Os únicos erros de console vistos (VLibras, Google Fonts, um arquivo de dado) são limitações do ambiente de teste local (rede restrita, arquivo não copiado), não relacionados à página.
+
+**Limpeza no JS**: a chamada que preenchia o texto do painel removido (`interpDepois`) já não tinha efeito (elemento não existe mais) — removida, junto com a função auxiliar `interp()`, que ficou sem nenhum outro uso.
+
+**Teste.** Sintaxe válida, portões de estrutura/runtime/figuras verdes. Confirmação visual real via Chromium: 1 painel, 4 mapas com conteúdo.
+
 ## §145 · Defesa civil: 4 mapas juntos no topo, removida a seção "Ver mais" (dois gráficos de status) · 21/09/2026
 
 Classe **edição de página, pontual**. Pedido editorial direto.
