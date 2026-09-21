@@ -21,6 +21,10 @@ on:
         description: "Encerrar a varredura HOJE: consulta todos os municípios pendentes numa rodada só, ignorando o ritmo por dias restantes (pedido editorial pontual)"
         type: boolean
         default: false
+      apenas_repor_dominio:
+        description: "Só repor o domínio com senha sobre o main atual, sem rodar a coleta semanal inteira (pedido editorial urgente — ver job separado repor_dominio_manual)"
+        type: boolean
+        default: false
 
 concurrency:
   # 14/09/2026: a rodada SEMANAL ("0 9 * * 1") e a DIARIA ("0 9 * * *") caem no
@@ -37,7 +41,62 @@ permissions:
   contents: write
 
 jobs:
+  repor_dominio_manual:
+    # 21/09/2026: pedido editorial urgente (o domínio estava aberto). Job independente,
+    # concorrência própria — não espera nem bloqueia a rodada semanal (job `atualizar` abaixo).
+    # Faz exatamente o que o passo "Repor o site completo no domínio" de dentro da rodada
+    # semanal faz, mas isolado: checkout do main atual, cabeçalho Basic-Auth, deploy Netlify.
+    # Não toca em data/, não comita nada, não roda coleta.
+    if: github.event_name == 'workflow_dispatch' && inputs.apenas_repor_dominio
+    runs-on: ubuntu-latest
+    concurrency:
+      group: repor-dominio-manual
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Repor o site completo no domínio (main atual), atrás de senha
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          MODO=$(python3 -c "import json;print(json.load(open('data/publicacao.json')).get('dominio',''))" 2>/dev/null || echo "")
+          echo "modo declarado em data/publicacao.json: '${MODO}'"
+          if [ "$MODO" != "senha" ]; then
+            echo "::error::Domínio não está declarado como 'senha' em data/publicacao.json — abortando para não reforçar um estado que a editoria não pediu."; exit 1
+          fi
+          if [ -z "$PREVIA_BASIC_AUTH" ] || [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo "::error::Segredo ausente (PREVIA_BASIC_AUTH ou NETLIFY_AUTH_TOKEN) — não é possível repor."; exit 1
+          fi
+          set +e
+          {
+            echo "passo=repor_dominio_manual commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) modo=${MODO}"
+            printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers
+            printf 'User-agent: *\nDisallow: /\n' > robots.txt
+            npx --yes netlify-cli@17 deploy --prod --dir=. --message "Reposição URGENTE do site no domínio (pedido editorial 21/09) — commit ${GITHUB_SHA::7}" > /tmp/repor_out.txt 2>&1
+            echo "codigo_saida=$?"
+            rm -f _headers; git checkout -- robots.txt 2>/dev/null
+            grep -vE "npm warn" /tmp/repor_out.txt | grep -E "Error|error|422|Deploy is live|Website URL" | head -c 1200
+          } > /tmp/repor_relatorio.txt 2>&1
+          sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/repor_relatorio.txt
+          [ -n "$PREVIA_BASIC_AUTH" ] && sed -i "s/${PREVIA_BASIC_AUTH}/[SENHA]/g" /tmp/repor_relatorio.txt
+          cat /tmp/repor_relatorio.txt
+          if grep -q "Deploy is live" /tmp/repor_relatorio.txt; then
+            echo "Domínio reposto com o site completo, atrás de senha, sobre o main atual."
+          else
+            echo "::error::Reposição falhou — ver relatório acima."; exit 1
+          fi
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg_repor 2>/dev/null
+          mkdir -p /tmp/reg_repor/relatorios && cp /tmp/repor_relatorio.txt "/tmp/reg_repor/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_repor_dominio_manual.txt"
+          cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio manual ${GITHUB_SHA::7}" && git push -q
+
   atualizar:
+    # 21/09/2026 (achado real, mesmo dia): disparar apenas_repor_dominio=true SEM esta guarda
+    # também disparou este job inteiro — só o job novo tinha `if:`, o schedule/workflow_dispatch
+    # do topo do arquivo aciona TODOS os jobs por padrão, salvo restrição própria. Corrigido para
+    # não repetir: pula quando o disparo foi explicitamente só para repor o domínio.
+    if: "!(github.event_name == 'workflow_dispatch' && inputs.apenas_repor_dominio)"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
