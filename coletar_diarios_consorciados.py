@@ -308,7 +308,8 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
         if not resultado_nav.get("ok"):
             diag = resultado_nav.get("diagnostico") or {}
             detalhe_diag = (f" [tentativas={diag.get('tentativas')} tempo_ms={diag.get('tempo_ms')} "
-                            f"console_erros={diag.get('console_erros')} erros_pagina={diag.get('erros_pagina')}]"
+                            f"total_req={diag.get('total_requisicoes')} req_relevantes={diag.get('requisicoes_relevantes')} "
+                            f"console={diag.get('console')} erros_pagina={diag.get('erros_pagina')}]"
                             if diag else "")
             registrar_lacuna(nome_fonte, f"token via navegador: {resultado_nav.get('erro', 'falha desconhecida')}{detalhe_diag}",
                              canal="DOM-consorciado", camada=2, uf=uf)

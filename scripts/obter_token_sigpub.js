@@ -23,13 +23,22 @@ const POLL_MS = 400, TIMEOUT_TOKEN_MS = 12000;
   const url = process.argv[2];
   if (!url) { console.log(JSON.stringify({ ok: false, erro: "uso: obter_token_sigpub.js <url>" })); process.exit(1); }
   let b;
-  const consoleMsgs = [], pageErrors = [];
+  const consoleMsgs = [], pageErrors = [], requisicoes = [];
   try {
     b = await chromium.launch();
     const ctx = await b.newContext();
     const page = await ctx.newPage();
-    page.on("console", m => { if (m.type() === "error") consoleMsgs.push(m.text().slice(0, 200)); });
+    page.on("console", m => consoleMsgs.push(`[${m.type()}] ${m.text()}`.slice(0, 200)));
     page.on("pageerror", e => pageErrors.push(String(e.message || e).slice(0, 200)));
+    page.on("requestfinished", async req => {
+      try {
+        const resp = await req.response();
+        requisicoes.push(`${req.method()} ${req.url().slice(0, 120)} -> ${resp ? resp.status() : "?"}`);
+      } catch (_) { /* resposta pode já ter sido descartada; ignora */ }
+    });
+    page.on("requestfailed", req => {
+      requisicoes.push(`${req.method()} ${req.url().slice(0, 120)} -> FALHOU (${req.failure()?.errorText || "?"})`);
+    });
     await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
     // Polling em vez de espera fixa (achado 20/09/2026: 800ms não bastou contra produção real —
     // o mecanismo que preenche o token pode ser assíncrono, ex. uma chamada de rede própria).
@@ -47,21 +56,26 @@ const POLL_MS = 400, TIMEOUT_TOKEN_MS = 12000;
     const cookies = await ctx.cookies();
     const tempo_ms = Date.now() - inicio;
     await b.close();
+    const reqsRelevantes = requisicoes.filter(r => /token|csrf|calendar/i.test(r));
+    const diagBase = { tentativas, tempo_ms, total_requisicoes: requisicoes.length,
+      requisicoes_relevantes: reqsRelevantes.slice(0, 10),
+      console: consoleMsgs.slice(0, 10), erros_pagina: pageErrors.slice(0, 5) };
     if (!token) {
       console.log(JSON.stringify({ ok: false, erro: "input #calendar__token não encontrado na página renderizada",
-        diagnostico: { tentativas, tempo_ms, console_erros: consoleMsgs.slice(0, 5), erros_pagina: pageErrors.slice(0, 5) } }));
+        diagnostico: diagBase }));
       process.exit(1);
     }
     if (token === PLACEHOLDER) {
       console.log(JSON.stringify({ ok: false,
         erro: `token ainda é o placeholder ('${PLACEHOLDER}') após ${tempo_ms}ms / ${tentativas} tentativas — JS não preencheu a tempo, ou o mecanismo mudou`,
-        diagnostico: { tentativas, tempo_ms, console_erros: consoleMsgs.slice(0, 5), erros_pagina: pageErrors.slice(0, 5) } }));
+        diagnostico: diagBase }));
       process.exit(1);
     }
     console.log(JSON.stringify({ ok: true, token, cookies, diagnostico: { tentativas, tempo_ms } }));
   } catch (e) {
     if (b) await b.close().catch(() => {});
     console.log(JSON.stringify({ ok: false, erro: `${e.name}: ${e.message}`.slice(0, 300),
-      diagnostico: { console_erros: consoleMsgs.slice(0, 5), erros_pagina: pageErrors.slice(0, 5) } }));
+      diagnostico: { console: consoleMsgs.slice(0, 10), erros_pagina: pageErrors.slice(0, 5),
+        requisicoes_relevantes: requisicoes.filter(r => /token|csrf|calendar/i.test(r)).slice(0, 10) } }));
   }
 })();
