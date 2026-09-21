@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §142 · Busca web (SearXNG): rotação real de lotes — sem isto, a rodada semanal batia sempre nos mesmos 60 primeiros municípios, para sempre · 21/09/2026
+
+Classe **correção de lacuna conhecida** — já registrada como pendência na entrega original (§140): "atualmente só lote 1 (60 municípios). Cobrir os 5.571 ao longo de semanas exige configuração de rotação." Corrigida no mesmo dia, a pedido direto (pergunta editorial: "por que 60 municípios apenas?").
+
+**O problema real.** `atualizar.yml` chamava `monitorar_busca_web.py --lote 1 --tamanho 60` — fixo. Toda segunda-feira, pra sempre, a busca tentaria os mesmos 60 municípios de maior prioridade, nunca avançando para os outros 5.511.
+
+**Correção.** `proximo_lote_automatico()`: estado mínimo persistido em `data/busca_web_estado.json` (só o número do próximo lote). Quando `--lote` não é passado explicitamente na chamada (novo padrão em `atualizar.yml`: `--tamanho 60`, sem `--lote`), o script lê o estado, usa o lote indicado, grava o próximo, com volta ao 1 depois do último — cobertura cíclica. Uma chamada manual com `--lote N` explícito (para teste, como as duas rodadas de diagnóstico de hoje) continua funcionando exatamente igual e **não mexe no estado da rotação automática** — testar não atrapalha o progresso real.
+
+**Números reais**: 5.571 municípios ÷ 60 por rodada = 93 lotes — a cobertura completa leva cerca de 93 semanas (quase 2 anos) para passar por todos pelo menos uma vez. Isto é uma limitação conhecida e aceita do próprio uso de busca de terceiros sem chave (§140: motores de busca por trás do SearXNG já demonstraram bloqueio por volume — CAPTCHA do DuckDuckGo visto na primeira rodada de teste real), não algo que dê para acelerar sem risco de perder a fonte inteira por bloqueio.
+
+**Teste.** Novo caso no autoteste hermético (mock de `ler`/`gravar`, mesmo padrão já usado em `coletar_diarios_municipais.py`): rotação avança 1→2→3 e volta a 1 com `total_lotes=3`. 6/6 casos verdes. Suíte de consistência verde.
+
+**Achado adicional, ao testar este PR.** `main` estava com `data/verificacao_municipal.json` divergente do que `recalcular_mare.py --check` recomputava — confirmado num clone limpo, então pré-existente, não causado por esta mudança. Causa: a rodada real de hoje (busca web tocando 60 municípios, `marcar_fonte_consultada()` atualizando `fontes_consultadas.json`) mudou um dos quatro arquivos-fonte do derivado (`municipios.json`, `log_buscas.json`, `municipios_ibge_referencia.json`, `fontes_consultadas.json`) em algum ponto entre o `--write` interno de `atualizar.py` e o commit final do workflow, sem um `--write` final capturando essa mudança — a linha exata não foi isolada com certeza. Corrigido de duas formas: (1) `main` sincronizado agora (`--write` rodado, `--check` verde); (2) proteção estrutural — novo step "Sincronizar índice antes do commit" roda `--write`+`--check` logo antes do commit, sempre, para qualquer step futuro que também toque esses quatro arquivos.
+
 ## §141 · SearXNG testado de ponta a ponta contra uma Action real — bug real achado e corrigido (uso errado de referencia_ibge()) · 21/09/2026
 
 Classe **correção de bug, achada só ao testar com rede real** (não hermético — o autoteste não pega isso, já que não bate na função de verdade contra dado real).
