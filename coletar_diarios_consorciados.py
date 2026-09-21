@@ -405,6 +405,13 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
     pistas_reg.setdefault("pistas", [])
     atos = ler("atos_resposta.json")
     vistos = {(e["nome"], e["uf"], e["data"], e.get("causa")) for e in atos["eventos"]}
+    # 21/09/2026 (achado real na revisão da fila, mesmo bug encontrado e corrigido em
+    # coletar_diarios_municipais.py): append sem dedup — aqui ainda não se manifestou porque o
+    # canal está bloqueado (§130), mas duplicaria a cada rodada no dia em que for desbloqueado.
+    # Chave: (ibge ou município quando não identificado, url do PDF, trecho) — mesma menção no
+    # mesmo documento não deveria virar duas entradas só por rodar de novo sobre um dia já visto.
+    vistos_pistas = {(p.get("ibge") or p.get("municipio"), p.get("url"), p.get("trecho"))
+                     for p in pistas_reg["pistas"]}
     total_pistas = total_decretos_novos = total_bloqueadas = total_fontes = 0
     for uf, fontes in UF_SIGPUB.items():
         if apenas_uf and uf != apenas_uf:
@@ -430,7 +437,10 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
                 vistos.add(chave); total_decretos_novos += 1
             for p in r["pistas"]:
                 p["municipio"] = p.get("municipio") or f"{uf} (não identificado no PDF consorciado)"
-                pistas_reg["pistas"].append(p); total_pistas += 1
+                chave_pista = (p.get("ibge") or p.get("municipio"), p.get("url"), p.get("trecho"))
+                if chave_pista in vistos_pistas:
+                    continue
+                pistas_reg["pistas"].append(p); vistos_pistas.add(chave_pista); total_pistas += 1
             print(f"  {r['dias_com_edicao']} dia(s) com edição, {r['dias_com_erro']} erro(s), "
                  f"{len(r['pistas'])} pista(s), {len(r['decretos'])} decreto(s) brutos")
     gravar("pistas_imprensa.json", pistas_reg); gravar("atos_resposta.json", atos)
@@ -587,6 +597,45 @@ def autoteste() -> int:
             globals()["sessao_get"], globals()["sessao_post"] = real_get, real_post
             globals()["obter_token_via_navegador"] = real_nav
             globals()["marcar_fonte_consultada"] = real_marcar
+    def t15():  # 21/09/2026: dedup de pistas em coletar() — mesmo achado real do bug em
+        # coletar_diarios_municipais.py, corrigido aqui também antes de se manifestar (este canal
+        # está bloqueado, §130, mas duplicaria a cada rodada no dia em que for desbloqueado).
+        # Mocka coletar_fonte para devolver sempre a MESMA pista; rodar coletar() duas vezes com
+        # apenas_uf="MG" (uma única fonte) deve produzir UMA pista na fila, não duas.
+        estado = {"pistas": {"pistas": []}, "atos": {"eventos": []}}
+        pista_fixa = {"municipio": "Uberlândia", "ibge": "3170206", "trecho": "Plano de Contingencia aprovado.",
+                     "uf": "MG", "origem": "diario_consorciado", "fonte": "teste", "data": "2026-09-01",
+                     "url": "https://x/edicao.pdf", "hash_evidencia": "h1", "registrado_em": "2026-09-21",
+                     "status": "pista"}
+        def ler_falso(nome, padrao=None):
+            if nome == "pistas_imprensa.json":
+                return estado["pistas"]
+            if nome == "atos_resposta.json":
+                return estado["atos"]
+            return padrao
+        def gravar_falso(nome, obj):
+            if nome == "pistas_imprensa.json":
+                estado["pistas"] = obj
+            elif nome == "atos_resposta.json":
+                estado["atos"] = obj
+        def coletar_fonte_falso(uf, slug, nome_fonte, desde_iso, ate_iso, por_cod):
+            return {"pistas": [dict(pista_fixa)], "decretos": [], "dias_com_edicao": 1, "dias_com_erro": 0}
+        real_ler, real_gravar = globals()["ler"], globals()["gravar"]
+        real_coletar_fonte = globals()["coletar_fonte"]
+        real_ref = globals()["referencia_ibge"]
+        globals()["ler"] = ler_falso; globals()["gravar"] = gravar_falso
+        globals()["coletar_fonte"] = coletar_fonte_falso
+        globals()["referencia_ibge"] = lambda: ({"3170206": {"nome": "Uberlândia", "uf": "MG"}}, {})
+        try:
+            coletar("2026-09-01", "2026-09-01", apenas_uf="MG")
+            n1 = len(estado["pistas"]["pistas"])
+            coletar("2026-09-01", "2026-09-01", apenas_uf="MG")
+            n2 = len(estado["pistas"]["pistas"])
+            return n1 == 1 and n2 == 1
+        finally:
+            globals()["ler"] = real_ler; globals()["gravar"] = real_gravar
+            globals()["coletar_fonte"] = real_coletar_fonte
+            globals()["referencia_ibge"] = real_ref
     return rodar_autoteste({
         "extrai token do HTML do calendário": t1,
         "regressão 22/09: token com atributos em ordem diferente (achado contra produção)": t1b,
@@ -598,6 +647,7 @@ def autoteste() -> int:
         "negativo: nome de entidade fora da referência IBGE não vira candidato": t9,
         "normalizar_nome remove acento": t10,
         "regressão 20/09: HTML real do SIGPub reconhecido como placeholder JS (bloqueio conhecido)": t11,
+        "regressão 21/09: coletar() não duplica pista ao rodar duas vezes sobre o mesmo achado": t15,
         "coletar_fonte: HTTP simples + navegador falham -> bloqueio_js, zero POST gasto": t12,
         "§130: navegador sucede -> token real usado no POST, cookie do navegador chega no jar": t13,
         "§130: GET simples já real -> navegador nunca é chamado (caminho barato)": t14,

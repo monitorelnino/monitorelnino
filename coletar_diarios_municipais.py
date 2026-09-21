@@ -200,6 +200,14 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
     atos = ler("atos_resposta.json"); pistas = ler("pistas_imprensa.json", {"_governanca": "", "pistas": []})
     pistas.setdefault("pistas", [])
     vistos = {(e["nome"], e["uf"], e["data"], e.get("causa")) for e in atos["eventos"]}
+    # 21/09/2026 (achado real, revisão da fila de pistas): pistas["pistas"].append() nunca teve
+    # deduplicação — ao contrário de atos_resposta.json (dedup por `vistos` acima), a mesma
+    # menção reaparecia como pista nova a cada rodada que tocasse a mesma janela de datas.
+    # Achado concreto: Ouro Branco/AL, mesmo decreto 021/2026, mesmo hash_evidencia, mesmo trecho
+    # — duas pistas idênticas na fila, a segunda registrada dois dias depois da primeira. Chave de
+    # deduplicação: (ibge, url, trecho) — a mesma menção no mesmo documento não deveria virar duas
+    # entradas na fila só porque a rodada rodou de novo sobre uma data já coberta.
+    vistos_pistas = {(p.get("ibge"), p.get("url"), p.get("trecho")) for p in pistas["pistas"]}
     n_ok = n_lac = novos = npist = 0
     for cod in alvo:
         ref = por_cod[cod]
@@ -245,12 +253,16 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
                                     "url": d["url"], "lat": ref["lat"], "lon": ref["lon"], "canal": "DOM", "hash_evidencia": h})
             vistos.add(chave); novos += 1
         for p in pist:
+            chave_pista = (cod, p["url"], p["trecho"])
+            if chave_pista in vistos_pistas:
+                continue  # mesma menção, mesmo documento — já está na fila (achado 21/09/2026)
             pistas["pistas"].append({"municipio": ref["nome"], "uf": ref["uf"], "ibge": cod, "origem": "querido_diario",
                                     "data": iso_para_br(p["data"]), "url": p["url"], "trecho": p["trecho"],
                                     "hash_evidencia": h, "registrado_em": date.today().isoformat(),
                                     # 03/09/2026: triagem/autoridade/objeto/destino só ORDENAM a fila; nunca decidem sozinhos (§3.2, §5.2.1-bis)
                                     **triagem_completa(p["trecho"]),
-                                    "status": "pista — promover a registro exige documento primário lido por humano"}); npist += 1
+                                    "status": "pista — promover a registro exige documento primário lido por humano"})
+            vistos_pistas.add(chave_pista); npist += 1
         marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado",
                                 resultado=f"{len(decretos)} decreto(s), {len(pist)} pista(s)")
         cobertura_qd(cod, desde, resposta_com_diario=True)   # com excertos = coberto, sem gastar outra chamada
@@ -325,6 +337,51 @@ def autoteste() -> int:
         livro = {"municipios": {"1": {"fontes": [{"fonte": FONTE_QD, "data": "2026-08-20"}]}}}  # fora da janela: pendente
         pend = pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03")
         return pend == ["1", "2", "3"]  # os três pendentes; --tudo (testado no fluxo real) os consultaria todos, não só um fatiamento
+    def t9():  # 21/09/2026: dedup de pistas — rodar coletar_lote DUAS VEZES sobre o mesmo achado
+        # (mesmo padrão do achado real: Ouro Branco/AL apareceu duplicado por duas rodadas sobre a
+        # mesma janela) deve produzir UMA pista na fila, não duas. Mocka toda a I/O: rede
+        # (consultar_qd), arquivos (ler/gravar/preservar_evidencia/preservar_texto_integral/
+        # marcar_fonte_consultada) — nunca toca dado real, e roda coletar_lote de verdade, não uma
+        # simulação da lógica.
+        estado = {"atos": {"eventos": []}, "pistas": {"pistas": []}}
+        def ler_falso(nome, padrao=None):
+            if nome == "atos_resposta.json":
+                return estado["atos"]
+            if nome == "pistas_imprensa.json":
+                return estado["pistas"]
+            if nome == "populacao_censo2022.json":
+                return {"1100015": 100000}
+            if nome == "cadastro_prioritarios.json":
+                return {}
+            return padrao
+        def gravar_falso(nome, obj):
+            if nome == "atos_resposta.json":
+                estado["atos"] = obj
+            elif nome == "pistas_imprensa.json":
+                estado["pistas"] = obj
+        def referencia_falsa():
+            ref = {"1100015": {"nome": "Teste", "uf": "MG", "lat": 0, "lon": 0}}
+            return ref, {}
+        def consultar_falso(params, timeout=30):
+            return json.dumps(FIX).encode()
+        real = {n: globals()[n] for n in ("ler", "gravar", "referencia_ibge", "consultar_qd",
+                                          "preservar_evidencia", "preservar_texto_integral",
+                                          "marcar_fonte_consultada", "log_busca")}
+        globals()["ler"] = ler_falso; globals()["gravar"] = gravar_falso
+        globals()["referencia_ibge"] = referencia_falsa; globals()["consultar_qd"] = consultar_falso
+        globals()["preservar_evidencia"] = lambda *a, **kw: "hashfalso"
+        globals()["preservar_texto_integral"] = lambda *a, **kw: None
+        globals()["marcar_fonte_consultada"] = lambda *a, **kw: None
+        globals()["log_busca"] = lambda *a, **kw: None
+        try:
+            coletar_lote(1, 150, "2026-08-01")   # 1ª rodada
+            n_apos_primeira = len(estado["pistas"]["pistas"])
+            coletar_lote(1, 150, "2026-08-01")   # 2ª rodada, mesmo achado
+            n_apos_segunda = len(estado["pistas"]["pistas"])
+            return n_apos_primeira == 1 and n_apos_segunda == 1
+        finally:
+            for n, f in real.items():
+                globals()[n] = f
     return rodar_autoteste({"classifica decreto com nº e pista de plano": t1, "negativo: decreto sem número": t2,
                             "prioridade: UF do cadastro, depois população": t3,
                             "negativo: UF fora da lista curada entra por percentual, não em balde indefinido": t3b,
@@ -335,7 +392,8 @@ def autoteste() -> int:
                             "varredura integral: fila de pendentes na janela": t5,
                             "varredura integral: tamanho para cobrir até a data-fim": t6,
                             "--tudo: fila completa de pendentes (não fatiada)": t7,
-                            "resposta vazia → sem_cobertura_qd / coberto_sem_mencao / erro (nunca 'nada localizado')": t8})
+                            "resposta vazia → sem_cobertura_qd / coberto_sem_mencao / erro (nunca 'nada localizado')": t8,
+                            "regressão 21/09: rodar duas vezes sobre o mesmo achado não duplica a pista": t9})
 
 
 if __name__ == "__main__":
