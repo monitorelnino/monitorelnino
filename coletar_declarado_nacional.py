@@ -54,7 +54,7 @@ USO
   python coletar_declarado_nacional.py --autoteste
   python coletar_declarado_nacional.py           # coleta (rede)
 """
-import csv, io, sys
+import io, sys
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge,
@@ -74,9 +74,19 @@ FONTES_PADRAO = {
         "_nota": "2017 e 2020 são as únicas edições recentes com este bloco (módulos rotativos "
                  "da MUNIC); 2020 é a mais recente. Verificado por download real em 20/09/2026.",
     },
-    "icm": {"nome": "ICM/SEDEC — Indicador de Capacidade Municipal", "url": None, "edicao": None,
-            "status": "a_verificar", "coluna_ibge": "codigo_ibge", "coluna_faixa": "faixa",
-            "coluna_var8": "var8_plano_contingencia"},
+    "icm": {
+        "nome": "ICM/SEDEC — Indicador de Capacidade Municipal, base completa",
+        "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/base_completa_icm_082026.xlsx",
+        "edicao": "2026 (base publicada 28/04/2026, correção de falhas)",
+        "status": "a_verificar",
+        "aba": "Planilha1",
+        "coluna_ibge": "Código IBGE",
+        "coluna_var8": "8",
+        "_nota": "Página oficial: gov.br/mdr/.../icm — variável 8 confirmada como 'Plano de "
+                 "Contingência' na descrição das 20 variáveis do indicador. Colunas 1–20 vêm "
+                 "numeradas, não nomeadas (o próprio ICM não dá nome descritivo às variáveis). "
+                 "Verificado por download real em 21/09/2026.",
+    },
 }
 SIM = {"sim", "s", "1", "true", "possui"}
 NAO = {"não", "nao", "n", "0", "false", "não possui", "nao possui"}
@@ -126,16 +136,56 @@ def parse_munic_xlsx(bruto: bytes, aba: str, col_ibge: str, col_plano: str,
     return out
 
 
-def parse_icm_csv(texto: str, col_ibge: str, col_faixa: str, col_var8: str, edicao) -> dict:
+def normalizar_binario_icm(v) -> str:
+    """As 20 variáveis do ICM vêm como 0/1 (inteiro, não texto — confirmado por download real
+    em 21/09/2026). normalizar_sim_nao() não serve aqui: ela faz `str(v or "")`, e `0 or ""`
+    vira string vazia em Python (0 é falsy) — inteiro 0 cairia em NA por engano, não em "nao"."""
+    if v is None:
+        return "NA"
+    if isinstance(v, (int, float)):
+        return "sim" if v == 1 else "nao" if v == 0 else "NA"
+    return normalizar_sim_nao(v)
+
+
+def parse_icm_xlsx(bruto: bytes, aba: str, col_ibge: str, col_var: str, edicao) -> dict:
+    """{ibge7: {icm_var8_plano_contingencia, icm_edicao}}. Esquema real (base_completa_icm,
+    download de 21/09/2026): linha 1 é título da planilha; linha 2 é o cabeçalho real —
+    'Nº', 'Código IBGE', 'UF', 'Município', 'Região', depois as 20 variáveis do ICM como
+    cabeçalho LITERAL '1' a '20' (string), depois 'Soma', 'Municípios Prioritários'. A
+    variável 8 é "Plano de Contingência" (confirmado na página oficial do MDR/Sedec,
+    gov.br/mdr/.../icm — não suposto). `col_var` aqui é o cabeçalho '8', não um nome
+    descritivo — o próprio ICM não nomeia as colunas, só numera."""
+    import openpyxl
     out = {}
-    rd = csv.DictReader(io.StringIO(texto), delimiter=";" if texto.count(";") > texto.count(",") else ",")
-    for row in rd:
-        cod = str(row.get(col_ibge, "")).strip()
-        if len(cod) != 7 or not cod.isdigit():
-            continue
-        faixa = str(row.get(col_faixa, "")).strip().upper()
-        out[cod] = {"icm_faixa": faixa if faixa in ("A", "B", "C", "D") else None,
-                    "icm_var8_plano_contingencia": normalizar_sim_nao(row.get(col_var8)), "icm_edicao": edicao}
+    wb = openpyxl.load_workbook(io.BytesIO(bruto), read_only=True, data_only=True)
+    try:
+        if aba not in wb.sheetnames:
+            return out
+        ws = wb[aba]
+        linhas = ws.iter_rows(values_only=True)
+        next(linhas, None)  # linha 1: título da planilha, não é cabeçalho
+        cabecalho = list(next(linhas, []))
+        try:
+            idx_ibge = cabecalho.index(col_ibge)
+        except ValueError:
+            return out
+        idx_var = None
+        for i, c in enumerate(cabecalho):
+            if str(c).strip() == str(col_var).strip():
+                idx_var = i
+                break
+        for linha in linhas:
+            if idx_ibge >= len(linha):
+                continue
+            cod = str(linha[idx_ibge] or "").strip().zfill(7)
+            if len(cod) != 7 or not cod.isdigit():
+                continue
+            d = {"icm_edicao": edicao}
+            if idx_var is not None and idx_var < len(linha):
+                d["icm_var8_plano_contingencia"] = normalizar_binario_icm(linha[idx_var])
+            out[cod] = d
+    finally:
+        wb.close()
     return out
 
 
@@ -175,15 +225,14 @@ def coletar() -> int:
         except Exception as e:  # noqa: BLE001
             registrar_lacuna(f["nome"], f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[f["url"]])
             f["status"] = f"erro: {type(e).__name__}"; continue
-        ext = "xlsx" if chave == "munic" else "csv"
+        ext = "xlsx"
         h = preservar_evidencia(bruto, f["url"], ext, "coletar_declarado_nacional")
         if chave == "munic":
             dados = parse_munic_xlsx(bruto, f["aba"], f["coluna_ibge"], f["coluna_plano"],
                                      f.get("coluna_plano_seca", ""), f.get("edicao"))
             campo, fato = "munic_plano_contingencia", "plano_declarado_munic"
         else:
-            texto = bruto.decode("utf-8", "replace")
-            dados = parse_icm_csv(texto, f["coluna_ibge"], f["coluna_faixa"], f["coluna_var8"], f.get("edicao"))
+            dados = parse_icm_xlsx(bruto, f["aba"], f["coluna_ibge"], f["coluna_var8"], f.get("edicao"))
             campo, fato = "icm_var8_plano_contingencia", "plano_declarado_icm"
         casados = 0
         for cod, d in dados.items():
@@ -217,7 +266,22 @@ def _xlsx_fixture() -> bytes:
     return buf.getvalue()
 
 
-FIX_ICM = "codigo_ibge,faixa,var8_plano_contingencia\n4202404,A,sim\n2927408,C,nao\n4202404x,Z,talvez\n"
+def _xlsx_fixture_icm() -> bytes:
+    """Mesmo layout real do ICM (base_completa_icm, download de 21/09/2026): linha 1 é
+    título da planilha, linha 2 é o cabeçalho real, variáveis numeradas 1–20 como inteiro
+    0/1 (não texto — é por isso que normalizar_binario_icm existe, não normalizar_sim_nao)."""
+    import openpyxl
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    ws = wb.create_sheet("Planilha1")
+    ws.append(["Base Completa do Indicador de Capacidade Municipal - ICM"])
+    ws.append(["Nº", "Código IBGE", "UF", "Município", "Região"] + [str(i) for i in range(1, 21)]
+             + ["Soma", "Municípios Prioritários"])
+    linha1 = [1, 4202404, "SC", "Cidade Um", "3 - Sul"] + [0] * 7 + [1] + [0] * 12 + [8, "Sim"]
+    linha2 = [2, 2927408, "BA", "Cidade Dois", "2 - Nordeste"] + [1] * 7 + [0] + [1] * 12 + [19, "Não"]
+    ws.append(linha1); ws.append(linha2)
+    buf = io.BytesIO(); wb.save(buf)
+    return buf.getvalue()
 
 
 def autoteste() -> int:
@@ -229,10 +293,15 @@ def autoteste() -> int:
             "2927408": {"munic_edicao": 2020, "munic_plano_contingencia": "nao",
                         "munic_plano_contingencia_seca": "sim"},
         }
-    def t2():
-        d = parse_icm_csv(FIX_ICM, "codigo_ibge", "faixa", "var8_plano_contingencia", 2025)
-        return len(d) == 2 and d["4202404"]["icm_faixa"] == "A" and d["2927408"]["icm_var8_plano_contingencia"] == "nao"
-    def t3(): return normalizar_sim_nao("talvez") == "NA" and normalizar_sim_nao(None) == "NA"
+    def t2():  # var8 da linha 1 é o 8º "0"/valor da sequência — colocado como 1 (sim);
+        # linha 2 tem 0 (não) na mesma posição — testa especificamente o caso 0 int (falsy).
+        d = parse_icm_xlsx(_xlsx_fixture_icm(), "Planilha1", "Código IBGE", "8", "2026")
+        return (len(d) == 2 and d["4202404"]["icm_var8_plano_contingencia"] == "sim"
+                and d["2927408"]["icm_var8_plano_contingencia"] == "nao")
+    def t3():
+        return (normalizar_sim_nao("talvez") == "NA" and normalizar_sim_nao(None) == "NA"
+                and normalizar_binario_icm(0) == "nao" and normalizar_binario_icm(1) == "sim"
+                and normalizar_binario_icm(None) == "NA")  # 0 é falsy em Python — achado real 21/09
     def t4():  # negativo: aba errada → vazio, nunca exceção
         return parse_munic_xlsx(_xlsx_fixture(), "Aba Inexistente", "CodMun", "Mgrd184", "Mgrd05", 2020) == {}
     def t5():  # negativo: coluna do plano ausente da aba → ainda casa por IBGE, sem o campo do plano
@@ -244,6 +313,11 @@ def autoteste() -> int:
         buf = io.BytesIO(); wb.save(buf)
         d = parse_munic_xlsx(buf.getvalue(), "Gestão de riscos", "CodMun", "Mgrd184", "Mgrd05", 2020)
         return d == {"4202404": {"munic_edicao": 2020}}
+    def t5b():  # negativo: aba errada no ICM → vazio, nunca exceção
+        return parse_icm_xlsx(_xlsx_fixture_icm(), "Aba Inexistente", "Código IBGE", "8", "2026") == {}
+    def t5c():  # negativo: linha 1 (título) nunca é lida como cabeçalho — se fosse, "Código
+        # IBGE" não bateria e tudo viraria vazio; prova que o pulo da linha 1 está funcionando
+        return len(parse_icm_xlsx(_xlsx_fixture_icm(), "Planilha1", "Código IBGE", "8", "2026")) == 2
     def t6():  # 21/09/2026: marcar_fato_municipal_em_memoria replica a lógica da função
         # original (mesmos defaults, cria o registro se não existir) sem I/O — testado contra
         # um livro em memória, dois municípios, um já existente e um novo.
@@ -256,10 +330,12 @@ def autoteste() -> int:
         novo_criado = (livro["municipios"]["3106200"]["nivel_verificacao"] == "nao_verificado"
                       and livro["municipios"]["3106200"]["plano_declarado_munic"] is False)
         return existente_preservado and novo_criado
-    return rodar_autoteste({"parser MUNIC (xlsx, aba nomeada)": t1, "parser ICM": t2,
-                            "valores fora do vocabulário viram NA": t3,
-                            "negativo: aba inexistente": t4,
-                            "negativo: coluna do plano ausente": t5,
+    return rodar_autoteste({"parser MUNIC (xlsx, aba nomeada)": t1, "parser ICM (xlsx, var8 inteiro 0/1)": t2,
+                            "valores fora do vocabulário viram NA; binário ICM trata 0 int corretamente": t3,
+                            "negativo: aba inexistente (MUNIC)": t4,
+                            "negativo: coluna do plano ausente (MUNIC)": t5,
+                            "negativo: aba inexistente (ICM)": t5b,
+                            "linha 1 (título) do ICM nunca é lida como cabeçalho": t5c,
                             "marcar_fato_municipal_em_memoria: preserva registro existente e cria novo": t6})
 
 
