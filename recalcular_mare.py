@@ -265,7 +265,16 @@ def calcular():
     robustez["_parametros"] = {"metodo": "Monte Carlo 10.000 sorteios de pesos Dirichlet(1,1,1), semente 42",
                                "uso": "evidência de robustez (anexo metodológico); não é produto público por UF",
                                "decisao": "Metodologia §13, 29/08/2026"}
-    return saida, float(lin.mean()), pct, robustez
+    # 21/09/2026 (achado real, Portão 17): a média nacional usava lin.mean() — média dos valores
+    # CRUS, antes do arredondamento de cada UF a 1 casa decimal — enquanto verificar_consistencia.py
+    # (e qualquer leitor somando os 27 números da tabela pública) calcula a média dos valores JÁ
+    # ARREDONDADOS. As duas contas podem divergir por erro de arredondamento acumulado; ficaram
+    # coincidentemente iguais a sessão inteira porque a nota nunca mudou de verdade — a primeira
+    # mudança real (ativação da camada declarada, §137) expôs a divergência (45.1 vs 45.2).
+    # Corrigido para a fonte mais defensável: a média dos números que o site publica por UF, para
+    # que somar a tabela pública e dividir por 27 dê exatamente o número do medidor principal.
+    media_publicada = round(sum(v["total"] for v in saida.values()) / len(saida), 1)
+    return saida, media_publicada, pct, robustez
 
 def _recomputar_verificacao_em_memoria():
     """v2.2.4 (§3.3): data/verificacao_municipal.json é ARTEFATO DERIVADO de
