@@ -206,6 +206,29 @@ jobs:
         continue-on-error: true
         run: python3 verificar_prazos_legais.py
 
+      # §137 (21/09/2026): busca web aberta (camada 4) — complemento ao Querido Diário e ao
+      # SIGPub, bloqueado de forma definitiva (Storage Access API, mecanismo de segurança do
+      # navegador — §136). SearXNG efêmero: sobe agora, alimenta a MESMA fila de pistas que os
+      # demais coletores, encerra com o job. Sem chave, sem cadastro — qualquer fork do projeto
+      # sobe a mesma instância automaticamente, sem configuração adicional.
+      - name: Subir SearXNG efêmero (busca web sem chave)
+        continue-on-error: true
+        id: searxng
+        run: |
+          docker run -d --name searxng -p 127.0.0.1:8080:8080 \
+            -v "$PWD/scripts/searxng_settings.yml:/etc/searxng/settings.yml:ro" \
+            searxng/searxng:latest
+          ok=""
+          for i in $(seq 1 30); do
+            if curl -sf "http://127.0.0.1:8080/search?q=teste&format=json" > /dev/null 2>&1; then ok=1; break; fi
+            sleep 2
+          done
+          [ -n "$ok" ] && echo "pronto=1" >> "$GITHUB_OUTPUT" || echo "SearXNG não respondeu a tempo — busca web pulada nesta rodada"
+      - name: Busca web por plano de contingência (SearXNG efêmero, 60 municípios/rodada)
+        if: steps.searxng.outputs.pronto == '1'
+        continue-on-error: true
+        run: python3 monitorar_busca_web.py --lote 1 --tamanho 60
+
       # §17 (29/08/2026): vigia de imprensa nacional (Google News RSS) por
       # possíveis instrumentos ainda não registrados — descoberta pura, com
       # trava absoluta (nenhuma pista entra no banco sem confirmação humana
@@ -307,6 +330,15 @@ jobs:
             grep -nE "^\[(aviso|erro)\]|recusada|indisponível|sem trimestres|Traceback" /tmp/atualizar.log 2>/dev/null | head -60 || echo "(nenhum)"
             echo "--- etapas executadas ---"
             grep -c "^=== " /tmp/atualizar.log 2>/dev/null || echo "?"
+            # 21/09/2026: absorve o que a "rotina diária" (sessão manual separada, sem definição
+            # formal no repositório) cobria de único e a Action ainda não tocava — filas humanas
+            # e branches parados. A rotina diária como prática separada é descontinuada a partir
+            # de hoje (decisão editorial); isto é o substituto, automático, sempre nesta rodada.
+            echo "--- filas humanas (contagem) ---"
+            python3 scripts/contar_filas_humanas.py 2>/dev/null || echo "  (falhou ao contar)"
+            echo "--- branches sem commit há mais de 14 dias (exclui main/publico) ---"
+            git for-each-ref --sort=committerdate refs/remotes/origin --format='%(committerdate:short) %(refname:short)' 2>/dev/null | \
+              awk -v d="$(date -u -d '14 days ago' +%Y-%m-%d)" '$1 < d && $2 !~ /origin\/(main|publico|HEAD)$/' | head -20 || echo "  (nenhum ou falhou)"
             echo "--- log (últimas 220 linhas) ---"; tail -220 /tmp/atualizar.log 2>/dev/null
           } > /tmp/relatorio.txt 2>&1
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro

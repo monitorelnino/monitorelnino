@@ -1,0 +1,9 @@
+# SearXNG efêmero — sobe dentro do job da Action, roda as buscas de monitorar_busca_web.py,
+# encerra com o job. Sem chave, sem cadastro, sem produto pago no código (§137, 21/09/2026).
+# secret_key só protege a instância local durante o job; nunca é exposta fora dele.
+use_default_settings: true
+server:
+  secret_key: "efemero-so-localhost-nunca-exposto-fora-do-job-da-action"
+  limiter: false
+search:
+  formats: [html, json]
