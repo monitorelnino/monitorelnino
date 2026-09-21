@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §135 · ICM/SEDEC: fonte real encontrada, esquema confirmado por download, coletor reescrito — 5.570 municípios coletados de verdade · 21/09/2026
+
+Classe **código + fonte nova**. Não altera `data/indice.json` (camada declarada travada até 26/10/2026, §3.9) — `--check` confirma média inalterada.
+
+**Origem.** Pedido direto: inventário completo de fontes possíveis para a camada declarada, regardless de custo computacional. ICM tinha `url: null` desde sempre — nunca verificado de fato.
+
+**Achado.** Página oficial `gov.br/mdr/.../icm` lista as 20 variáveis do indicador; variável 8 é literalmente "Plano de Contingência". A mesma página disponibiliza `base_completa_icm_082026.xlsx` — todos os municípios, sem chave de API, atualizada 28/04/2026. Esquema real (inspecionado por download, não suposto): linha 1 é título da planilha, linha 2 é cabeçalho (`Código IBGE`, `UF`, `Município`, colunas numeradas `1`–`20`, `Soma`), valores das variáveis vêm como **inteiro 0/1**, não texto.
+
+**Achado dentro do achado:** o normalizador de sim/não existente (`normalizar_sim_nao`) faz `str(v or "")` — `0 or ""` vira string vazia em Python (0 é falsy), então um valor inteiro `0` cairia silenciosamente em "NA" em vez de "não". Criado `normalizar_binario_icm()` dedicado, com teste de regressão específico para esse caso.
+
+**Coletor reescrito.** `parse_icm_csv` (nunca funcionaria — ICM não distribui CSV) → `parse_icm_xlsx`, pulando a linha de título, casando coluna por nome/número. `fontes_declarado.json` ganha URL, aba, colunas reais.
+
+**Teste real de ponta a ponta**, via Action antes de mesclar (não só autoteste): `coletar_declarado_nacional.py` rodado contra as duas fontes reais juntas — MUNIC 5.570 municípios, **ICM 5.570 municípios, var8 = 2.573 sim / 2.997 não**. Autoteste: 8 casos, incluindo o caso do inteiro 0 falsy e a prova de que a linha de título nunca é lida como cabeçalho. Suíte completa verde. `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §134 · Defeito estrutural de §120 eliminado: cortina "em atualização" publicada explicitamente no início da rodada, sem corrida com o passo final de reposição · 21/09/2026
 
 Classe **correção de infraestrutura, sem alteração de dado ou nota**. Origem: domínio ficou aberto de novo mesmo após a correção de §133 (run #89 falhou); pedido editorial de tornar o ciclo cortina↔senha confiável.
