@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §130 · Diários consorciados: navegador real (Playwright/Chromium) implementado e testado contra produção — bloqueio persiste, causa mais específica agora documentada · 21/09/2026
+
+Classe **investigação + código, ainda sem ativação em produção**. Continuação direta do §129, a pedido explícito de "desbloquear o que for preciso" (20-21/09/2026).
+
+**O que foi pedido e o que foi entregue.** §129 identificou que o token do calendário SIGPub é preenchido por JavaScript e ficou bloqueado ali. Pedido explícito de prosseguir: implementar o navegador headless. Feito — `scripts/obter_token_sigpub.js` abre a página num Chromium real via Playwright (`package.json` já tinha `playwright` como devDependency, usado pelos portões visuais §14.3/§18 — não é dependência nova) e `obter_token_via_navegador()` em `coletar_diarios_consorciados.py` chama esse script, injeta os cookies da sessão do navegador no cookiejar HTTP e segue o resto do fluxo (POST do calendário, download do PDF) sem precisar de navegador de novo. `coletar_fonte()` tenta o caminho HTTP simples primeiro — mais barato — e só escala para o navegador quando o HTTP devolve o placeholder conhecido.
+
+**Achado real, testado contra produção duas vezes (não suposto):** mesmo com Chromium de verdade, o token continua vindo como placeholder. Console do navegador mostra um único erro: `requestStorageAccess: Permission denied` — API que exige ativação transitória de usuário (gesto real), que automação headless não tem por padrão. Nenhuma requisição de rede relacionada a token/csrf apareceu durante o carregamento — o mecanismo não busca de um endpoint, é calculado (ou bloqueado) no cliente. Testado clique real via protocolo do Chrome (`page.mouse.click`, que o Chromium trata como confiável, diferente de `element.click()` via JS) logo após a navegação — não resolveu; o controller provavelmente já tenta e falha durante o carregamento inicial, antes do script recuperar controle para clicar.
+
+**Por que parei aqui.** Resolver de fato exigiria (a) a flag exata do Chromium que libera `requestStorageAccess` em automação — não inventei um nome sem verificar a documentação real; ou (b) interceptar via protocolo do Chrome antes da navegação terminar, uma camada de engenharia mais profunda que o normal do Playwright. Dado o pedido de terminar a rotina, não abri mais essa frente sem verificação.
+
+**O que fica pronto, mesmo sem resolver o bloqueio:** a ponte com o navegador existe e funciona mecanicamente (autoteste `t13` prova isso com mock — token e cookies do navegador chegam corretamente no fluxo HTTP); a política de dois níveis (HTTP barato primeiro) está certa e testada (`t14`); os diagnósticos por fonte agora incluem tentativas, tempo, requisições relevantes e console completo — quem retomar isso não repete a investigação do zero. O motor de PDF → texto → atribuição de município (§129) continua intacto e testado.
+
+**Teste.** Autoteste hermético, 14 casos (3 novos desde §129: `t12` bloqueio total, `t13` navegador sucede e injeta cookies corretamente, `t14` caminho barato pula o navegador quando desnecessário). `docs/MANIFEST_SHA256.txt` regenerado. `diagnostico_sinais.yml` sem mudança líquida — os steps de teste desta investigação foram usados só em disparos manuais do branch de trabalho, nunca mesclados ao pipeline semanal.
+
 ## §129 · Diários consorciados (SIGPub/associações estaduais): fonte de alto potencial mapeada, motor construído e testado, coleta automatizada BLOQUEADA por token JS · 20/09/2026
 
 Classe **investigação + código, sem ativação em produção**. Não entra em `portoes.yml` nem `atualizar.yml` — não produz dado nenhum hoje, só lacunas declaradas de bloqueio.

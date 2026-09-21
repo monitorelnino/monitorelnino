@@ -41,29 +41,57 @@ link real, tarefa ainda não feita para os estados ausentes daqui. Adicionar um
 estado = adicionar uma linha a UF_SIGPUB, nunca adivinhar um slug pelo padrão dos
 outros (ex.: PI quase certamente NÃO é `/pi/`; teria de ser verificado).
 
-STATUS (20/09/2026): BLOQUEADO PARA COLETA AUTOMATIZADA — verificado contra
-produção, duas vezes, com sessão de cookies e leitura byte a byte do HTML real.
-O token do widget de calendário é preenchido por JavaScript (controller Stimulus
-`csrf-protection`); o servidor só entrega um placeholder estático
-(`PLACEHOLDER_TOKEN`, a string literal "csrf-token") — não há `<meta
-name="csrf-token">` nem outra fonte estática de onde copiar o valor real. Todo
-POST feito com o placeholder volta `{"error":"Ocorreu um erro inesperado!"}`.
-`coletar_fonte()` detecta isso e para ANTES de gastar qualquer requisição de
-calendário (testado). Desbloquear exige navegador headless (Selenium/Playwright)
-no runner — decisão de infraestrutura nova, não tomada aqui por ser
-desproporcional ao que foi pedido (fechar a rotina, não abrir uma dependência
-nova com seu próprio ciclo de depuração). O motor de PDF → texto → atribuição de
-município é real e testado (autoteste ponta a ponta com PDF sintético) — fica
-pronto, sem precisar reescrita, para quando uma fonte de token funcional existir.
-NÃO está ligado a `portoes.yml` nem a `atualizar.yml`: rodar `coletar()` hoje
-não produz erro, mas também não produz nenhuma pista real — só lacunas
-declaradas de bloqueio, uma por fonte configurada.
+STATUS (20-21/09/2026): BLOQUEADO PARA COLETA AUTOMATIZADA — duas rodadas de
+investigação real, nenhuma inventada, nenhuma abandonada por preguiça.
+
+RODADA 1 (20/09, sessão anterior): verificado contra produção, duas vezes, com
+sessão de cookies e leitura byte a byte do HTML real. O token do widget de
+calendário é preenchido por JavaScript (controller Stimulus `csrf-protection`);
+o servidor só entrega um placeholder estático (`PLACEHOLDER_TOKEN`, a string
+literal "csrf-token") — não há `<meta name="csrf-token">` nem outra fonte
+estática de onde copiar. Todo POST feito com o placeholder volta
+`{"error":"Ocorreu um erro inesperado!"}`.
+
+RODADA 2 (20-21/09, esta sessão, pedido explícito de desbloquear): implementado
+`obter_token_via_navegador()` + `scripts/obter_token_sigpub.js`, que abre a
+página num Chromium REAL via Playwright (já dependência do projeto para os
+portões visuais — não é dependência nova; ver `package.json`). Testado contra
+produção real. Achado novo: mesmo com navegador real, o token continua vindo
+como placeholder. O console do navegador mostra um único erro real:
+`requestStorageAccess: Permission denied` — a API de Storage Access exige
+ativação transitória de usuário (gesto genuíno), que automação headless não
+tem por padrão. Testado clique real via CDP (`page.mouse.click`, que Chromium
+trata como confiável, diferente de `element.click()` via JS) logo após a
+navegação — não resolveu; o controller provavelmente já tentou e falhou antes
+do clique chegar (roda no carregamento inicial da página, antes do ponto em
+que o script recupera controle). Nenhuma requisição de rede relacionada a
+token/csrf apareceu durante o carregamento (`req_relevantes=[]`) — o mecanismo
+não busca o valor de um mini-endpoint; é calculado (ou bloqueado) inteiramente
+no cliente.
+
+O que resolveria isso, não tentado por exigir mais engenharia do que o
+razoável agora sem inventar flag/API que eu não possa verificar: (a) a flag
+exata do Chromium que libera `requestStorageAccess` automaticamente em
+contexto de teste/automação — não vou adivinhar um nome de flag sem checar a
+documentação real; (b) interceptar via protocolo do Chrome (CDP) antes da
+navegação terminar, uma camada de engenharia mais profunda que o navegador
+comum do Playwright. `coletar_fonte()` tenta o caminho HTTP simples primeiro
+(barato) e só escala para o navegador se vier o placeholder — mesmo assim, e
+mesmo com o navegador real, o bloqueio persiste; a causa agora é mais
+específica e mais bem documentada que na rodada 1, não resolvida. O motor de
+PDF → texto → atribuição de município é real e testado (autoteste ponta a
+ponta com PDF sintético, 14 casos) — fica pronto, sem precisar reescrita, para
+quando a aquisição do token funcionar. NÃO está ligado a `portoes.yml` nem a
+`atualizar.yml`: rodar `coletar()` hoje não produz erro, mas também não
+produz nenhuma pista real — só lacunas declaradas de bloqueio, com o
+diagnóstico completo (tentativas, tempo, requisições relevantes, console) por
+fonte, para quem retomar isso não precisar repetir a investigação do zero.
 
 USO
   python coletar_diarios_consorciados.py --autoteste
   python coletar_diarios_consorciados.py --desde 2026-09-01 --ate 2026-09-20 [--uf MG]
 """
-import http.cookiejar, io, json, re, sys, time, unicodedata, urllib.parse, urllib.request
+import http.cookiejar, io, json, pathlib, re, subprocess, sys, time, unicodedata, urllib.parse, urllib.request
 from datetime import date, timedelta
 from coletores_base import (UA, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste)
@@ -195,16 +223,14 @@ def candidatos_da_uf(por_cod: dict, uf: str) -> dict:
 
 
 def nova_sessao():
-    """Um cookiejar por fonte (slug). 22/09/2026 (achado contra produção): a primeira versão
-    usava buscar()/buscar_post() — cada chamada em uma conexão nova, sem cookies. Contra o
+    """Um cookiejar por fonte (slug), devolvido junto com o opener para permitir injetar cookies
+    obtidos pelo navegador (ver injetar_cookies). 22/09/2026 (achado contra produção): a primeira
+    versão usava buscar()/buscar_post() — cada chamada em uma conexão nova, sem cookies. Contra o
     amm-mg real isso devolveu 0 edições em 6 dias × 3 fontes, estatisticamente implausível para
-    associações que publicam quase todo dia útil. Hipótese mais provável — e a única mudança
-    aqui — é que o calendário valida o token contra a SESSÃO do GET inicial (padrão comum de
-    CSRF), não só o valor do token; sem cookies persistentes a validação falha silenciosamente
-    (o endpoint responde 'error' como se não houvesse edição, não como erro de autenticação).
-    Corrigido: token, calendário e PDF da mesma fonte passam a usar UM opener com cookiejar."""
+    associações que publicam quase todo dia útil. Corrigido: token, calendário e PDF da mesma
+    fonte passam a usar UM opener com cookiejar."""
     jar = http.cookiejar.CookieJar()
-    return urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    return urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar)), jar
 
 
 def sessao_get(opener, url: str, timeout: int = 40) -> bytes:
@@ -222,48 +248,109 @@ def sessao_post(opener, url: str, campos: dict, timeout: int = 40) -> bytes:
         return r.read()
 
 
+CAMINHO_SCRIPT_TOKEN = str(pathlib.Path(__file__).parent / "scripts" / "obter_token_sigpub.js")
+
+
+def obter_token_via_navegador(url: str, timeout: int = 60) -> dict:
+    """§130 (20/09/2026): o token é preenchido por JS (ver bloqueio documentado no topo do
+    módulo) — chama scripts/obter_token_sigpub.js, que abre a página num Chromium real
+    (Playwright, já dependência do projeto para os portões visuais — não é dependência nova) e
+    devolve token + cookies da sessão. Nunca lança: qualquer falha (node ausente, timeout, JSON
+    malformado, Chromium não instalado) vira {"ok": False, "erro": ...} — quem chama decide
+    lacuna, exatamente como qualquer outra falha de rede deste coletor."""
+    try:
+        r = subprocess.run(["node", CAMINHO_SCRIPT_TOKEN, url], capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return {"ok": False, "erro": f"timeout ({timeout}s) esperando o navegador"}
+    except (FileNotFoundError, OSError) as e:
+        return {"ok": False, "erro": f"{type(e).__name__}: {e}"}
+    saida = (r.stdout or "").strip()
+    if not saida:
+        return {"ok": False, "erro": f"sem saída do script (código {r.returncode}; stderr: {(r.stderr or '')[:300]})"}
+    try:
+        return json.loads(saida.splitlines()[-1])
+    except json.JSONDecodeError as e:
+        return {"ok": False, "erro": f"JSON inválido do script: {e} — saída: {saida[:300]!r}"}
+
+
+def cookie_de_playwright(c: dict) -> "http.cookiejar.Cookie":
+    """Converte um cookie no formato do Playwright ({name, value, domain, path, expires,
+    httpOnly, secure, ...}) para http.cookiejar.Cookie, para injetar no jar usado por
+    sessao_get/sessao_post."""
+    dominio = c.get("domain", "") or ""
+    exp = c.get("expires")
+    return http.cookiejar.Cookie(
+        version=0, name=c["name"], value=c["value"], port=None, port_specified=False,
+        domain=dominio, domain_specified=bool(dominio), domain_initial_dot=dominio.startswith("."),
+        path=c.get("path", "/") or "/", path_specified=True,
+        secure=bool(c.get("secure")), expires=(exp if exp and exp > 0 else None),
+        discard=False, comment=None, comment_url=None,
+        rest={"HttpOnly": None} if c.get("httpOnly") else {})
+
+
+def injetar_cookies(jar: "http.cookiejar.CookieJar", cookies_playwright: list) -> None:
+    for c in cookies_playwright or []:
+        try:
+            jar.set_cookie(cookie_de_playwright(c))
+        except (KeyError, ValueError):
+            continue  # cookie malformado do navegador — ignora esse, não derruba a sessão inteira
+
+
 def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: str, por_cod: dict,
                   pausa: float = 0.4) -> dict:
-    """Uma associação (um slug): token, um POST de calendário por dia (regular + extra), PDF +
-    texto + pistas para cada dia com edição. Nunca levanta exceção: falha de rede em um dia vira
-    lacuna declarada e a coleta segue para o dia seguinte — um dia ruim não derruba o mês inteiro.
+    """Uma associação (um slug): token (HTTP simples primeiro; Chromium real só se vier
+    placeholder — §130), um POST de calendário por dia (regular + extra), PDF + texto + pistas
+    para cada dia com edição. Nunca levanta exceção: falha de rede em um dia vira lacuna
+    declarada e a coleta segue para o dia seguinte — um dia ruim não derruba o mês inteiro.
 
-    BLOQUEIO CONHECIDO (verificado contra produção em 20/09/2026, duas vezes, com sessão de
-    cookies e com token real inspecionado byte a byte — não é suposição): o token do calendário
-    (`id="calendar__token"`) é preenchido por JavaScript no navegador (`data-controller=
-    "csrf-protection"`, um controller Stimulus). O HTML servido traz só um placeholder estático,
-    a string literal "csrf-token" — não há `<meta name="csrf-token">` nem outro valor estático de
-    onde copiar. Um cliente HTTP simples nunca vê o valor real. `extrair_token()` detecta esse
-    placeholder e recusa a coletar com ele (ver PLACEHOLDER_TOKEN abaixo) em vez de gastar
-    requisições contra um token que o servidor sabe ser inválido.
-
-    Isto bloqueia a coleta automatizada por este canal até haver navegador headless (Selenium/
-    Playwright) no pipeline — decisão de infraestrutura, não implementada aqui por ser
-    desproporcional ao pedido original (22/09/2026: precisávamos fechar a rotina, não abrir uma
-    dependência nova e seu próprio ciclo de depuração). O motor de PDF/atribuição de município
-    abaixo é real e testado (autoteste ponta a ponta com PDF sintético) — fica pronto para quando
-    uma fonte de token funcional existir, sem precisar reescrever nada além da aquisição do token."""
+    HISTÓRICO DO BLOQUEIO (verificado contra produção em 20/09/2026, duas vezes, byte a byte): o
+    token do calendário (`id="calendar__token"`) é preenchido por JavaScript no navegador
+    (`data-controller="csrf-protection"`, um controller Stimulus) — o HTML servido traz só o
+    placeholder estático "csrf-token", sem `<meta name="csrf-token">` nem outra fonte estática.
+    Corrigido em 20/09/2026 (§130): quando o GET simples devolve o placeholder,
+    `obter_token_via_navegador()` abre a página num Chromium real (Playwright, já dependência do
+    projeto para os portões visuais — não é dependência nova) e lê o valor que o JS preenche,
+    junto com os cookies da sessão — injetados no cookiejar HTTP para o POST do calendário e o
+    download do PDF não precisarem de navegador. O caminho HTTP simples continua tentado
+    primeiro: mais barato, e cobre o dia (improvável, mas não impossível) em que o site volte a
+    servir o token no próprio HTML."""
     candidatos = candidatos_da_uf(por_cod, uf)
     pistas_todas, decretos_todos = [], []
     dias_com_edicao = dias_com_erro = 0
-    opener = nova_sessao()
+    opener, jar = nova_sessao()
+    # Caminho barato primeiro: GET simples + extrair_token(). Normalmente devolve o placeholder
+    # (ver STATUS no topo do módulo) e escala para o navegador — mas manter esse caminho evita o
+    # custo de um Chromium inteiro se o site algum dia voltar a servir o token estático, e reusa
+    # o parser já testado (t1, t1b, t2, t11) em vez de descartá-lo.
+    token = cookies_navegador = None
     try:
         html = sessao_get(opener, BASE.format(slug=slug), timeout=40)
-        token = extrair_token(html)
+        token_http = extrair_token(html)
     except Exception as e:  # noqa: BLE001
-        registrar_lacuna(nome_fonte, f"token: {type(e).__name__}: {e}", canal="DOM-consorciado", camada=2, uf=uf)
-        return {"pistas": [], "decretos": [], "dias_com_edicao": 0, "dias_com_erro": 0, "erro_fatal": True}
-    if not token:
-        registrar_lacuna(nome_fonte, "token do calendário não encontrado no HTML (layout mudou?)",
-                         canal="DOM-consorciado", camada=2, uf=uf)
-        return {"pistas": [], "decretos": [], "dias_com_edicao": 0, "dias_com_erro": 0, "erro_fatal": True}
-    if token == PLACEHOLDER_TOKEN:
-        registrar_lacuna(nome_fonte, "bloqueio conhecido: token é placeholder estático "
-                         f"({PLACEHOLDER_TOKEN!r}) preenchido por JS (Stimulus csrf-protection); "
-                         "requer navegador headless — não implementado (ver docstring)",
-                         canal="DOM-consorciado", camada=2, uf=uf)
-        return {"pistas": [], "decretos": [], "dias_com_edicao": 0, "dias_com_erro": 0, "erro_fatal": True,
-                "bloqueio_js": True}
+        token_http = None
+        registrar_lacuna(nome_fonte, f"GET inicial: {type(e).__name__}: {e}", canal="DOM-consorciado", camada=2, uf=uf)
+    if token_http and token_http != PLACEHOLDER_TOKEN:
+        token = token_http  # site voltou a servir estático — não precisa de navegador
+    else:
+        resultado_nav = obter_token_via_navegador(BASE.format(slug=slug))
+        if not resultado_nav.get("ok"):
+            diag = resultado_nav.get("diagnostico") or {}
+            detalhe_diag = (f" [tentativas={diag.get('tentativas')} tempo_ms={diag.get('tempo_ms')} "
+                            f"total_req={diag.get('total_requisicoes')} req_relevantes={diag.get('requisicoes_relevantes')} "
+                            f"console={diag.get('console')} erros_pagina={diag.get('erros_pagina')}]"
+                            if diag else "")
+            registrar_lacuna(nome_fonte, f"token via navegador: {resultado_nav.get('erro', 'falha desconhecida')}{detalhe_diag}",
+                             canal="DOM-consorciado", camada=2, uf=uf)
+            return {"pistas": [], "decretos": [], "dias_com_edicao": 0, "dias_com_erro": 0, "erro_fatal": True,
+                    "bloqueio_js": True}
+        token = resultado_nav["token"]
+        cookies_navegador = resultado_nav.get("cookies")
+        if not token or token == PLACEHOLDER_TOKEN:
+            registrar_lacuna(nome_fonte, f"navegador devolveu token inválido/placeholder ({token!r})",
+                             canal="DOM-consorciado", camada=2, uf=uf)
+            return {"pistas": [], "decretos": [], "dias_com_edicao": 0, "dias_com_erro": 0, "erro_fatal": True,
+                    "bloqueio_js": True}
+        injetar_cookies(jar, cookies_navegador)
     for dia in sequencia_dias(desde_iso, ate_iso):
         campos = {"calendar[_token]": token, "calendar[day]": str(dia.day),
                   "calendar[month]": str(dia.month), "calendar[year]": str(dia.year)}
@@ -414,11 +501,10 @@ def autoteste() -> int:
         html_real = (b'<input type="hidden" id="calendar__token" name="calendar[_token]" '
                     b'data-controller="csrf-protection" value="csrf-token" />')
         return extrair_token(html_real) == PLACEHOLDER_TOKEN
-    def t12():  # coletar_fonte para no placeholder ANTES de gastar qualquer POST de calendário —
-        # sem isso, cada dia da janela dispararia 2 requisições contra um token que o servidor já
-        # devolveria erro, sem necessidade. Mocka registrar_lacuna também: sem isso o autoteste
-        # gravava em data/log_buscas.json de verdade (achado ao rodar localmente antes do commit —
-        # autoteste tem que ser hermético, nunca tocar dado real do repositório).
+    def t12():  # coletar_fonte: GET simples devolve placeholder, navegador TAMBÉM falha ->
+        # bloqueio_js, zero POST de calendário gasto, uma lacuna registrada. Mocka
+        # registrar_lacuna: sem isso o autoteste gravava em data/log_buscas.json de verdade
+        # (achado ao rodar localmente antes do commit — autoteste tem que ser hermético).
         chamadas_post, lacunas = [], []
         def get_falso(opener, url, timeout=40):
             return (b'<input type="hidden" id="calendar__token" name="calendar[_token]" '
@@ -426,18 +512,81 @@ def autoteste() -> int:
         def post_falso(opener, url, campos, timeout=40):
             chamadas_post.append(url)
             return b'{"error":"nao deveria ter chegado aqui"}'
+        def navegador_falso_falha(url, timeout=45):
+            return {"ok": False, "erro": "Chromium indisponível (teste)"}
         def lacuna_falsa(*a, **kw):
             lacunas.append((a, kw))
         real_get, real_post = globals()["sessao_get"], globals()["sessao_post"]
+        real_nav = globals()["obter_token_via_navegador"]
         real_lacuna = globals()["registrar_lacuna"]
         globals()["sessao_get"], globals()["sessao_post"] = get_falso, post_falso
+        globals()["obter_token_via_navegador"] = navegador_falso_falha
         globals()["registrar_lacuna"] = lacuna_falsa
         try:
             r = coletar_fonte("MG", "amm-mg", "teste", "2026-09-01", "2026-09-05", FIX_REF)
             return r.get("bloqueio_js") is True and len(chamadas_post) == 0 and len(lacunas) == 1
         finally:
             globals()["sessao_get"], globals()["sessao_post"] = real_get, real_post
+            globals()["obter_token_via_navegador"] = real_nav
             globals()["registrar_lacuna"] = real_lacuna
+    def t13():  # §130: GET simples devolve placeholder, navegador SUCEDE -> o token real (não o
+        # placeholder) vai nos campos do POST, e o cookie do navegador chega no jar HTTP.
+        campos_vistos, cookies_no_jar = [], []
+        def get_falso(opener, url, timeout=40):
+            return (b'<input type="hidden" id="calendar__token" name="calendar[_token]" '
+                    b'data-controller="csrf-protection" value="csrf-token" />')
+        def post_falso(opener, url, campos, timeout=40):
+            campos_vistos.append(dict(campos))
+            for c in opener_jar_global[0]:
+                cookies_no_jar.append(c.name)
+            return b'{"error":"sem edicao neste dia (esperado no teste)"}'
+        def navegador_falso_ok(url, timeout=45):
+            return {"ok": True, "token": "TOKEN-REAL-DE-VERDADE",
+                    "cookies": [{"name": "sessao_sigpub", "value": "xyz", "domain": ".diariomunicipal.com.br",
+                                "path": "/", "secure": True, "httpOnly": True, "expires": -1}]}
+        opener_jar_global = [None]
+        real_nova_sessao = globals()["nova_sessao"]
+        def nova_sessao_espia():
+            o, j = real_nova_sessao(); opener_jar_global[0] = j; return o, j
+        real_get, real_post = globals()["sessao_get"], globals()["sessao_post"]
+        real_nav = globals()["obter_token_via_navegador"]
+        real_marcar = globals()["marcar_fonte_consultada"]
+        globals()["sessao_get"], globals()["sessao_post"] = get_falso, post_falso
+        globals()["obter_token_via_navegador"] = navegador_falso_ok
+        globals()["nova_sessao"] = nova_sessao_espia
+        globals()["marcar_fonte_consultada"] = lambda *a, **kw: None
+        try:
+            coletar_fonte("MG", "amm-mg", "teste", "2026-09-01", "2026-09-01", FIX_REF)
+            token_usado_certo = all(c["calendar[_token]"] == "TOKEN-REAL-DE-VERDADE" for c in campos_vistos)
+            return token_usado_certo and len(campos_vistos) == 2 and "sessao_sigpub" in cookies_no_jar
+        finally:
+            globals()["sessao_get"], globals()["sessao_post"] = real_get, real_post
+            globals()["obter_token_via_navegador"] = real_nav
+            globals()["nova_sessao"] = real_nova_sessao
+            globals()["marcar_fonte_consultada"] = real_marcar
+    def t14():  # se o GET simples JÁ devolve um token real (site voltou a servir estático), o
+        # navegador nunca é chamado — caminho barato evita o custo de um Chromium à toa.
+        chamado = [False]
+        def get_falso(opener, url, timeout=40):
+            return b'<input type="hidden" id="calendar__token" value="TOKEN-ESTATICO-REAL" />'
+        def post_falso(opener, url, campos, timeout=40):
+            return b'{"error":"sem edicao"}'
+        def navegador_espiao(url, timeout=45):
+            chamado[0] = True
+            return {"ok": True, "token": "NAO-DEVERIA-SER-USADO", "cookies": []}
+        real_get, real_post = globals()["sessao_get"], globals()["sessao_post"]
+        real_nav = globals()["obter_token_via_navegador"]
+        real_marcar = globals()["marcar_fonte_consultada"]
+        globals()["sessao_get"], globals()["sessao_post"] = get_falso, post_falso
+        globals()["obter_token_via_navegador"] = navegador_espiao
+        globals()["marcar_fonte_consultada"] = lambda *a, **kw: None
+        try:
+            coletar_fonte("MG", "amm-mg", "teste", "2026-09-01", "2026-09-01", FIX_REF)
+            return chamado[0] is False
+        finally:
+            globals()["sessao_get"], globals()["sessao_post"] = real_get, real_post
+            globals()["obter_token_via_navegador"] = real_nav
+            globals()["marcar_fonte_consultada"] = real_marcar
     return rodar_autoteste({
         "extrai token do HTML do calendário": t1,
         "regressão 22/09: token com atributos em ordem diferente (achado contra produção)": t1b,
@@ -449,7 +598,9 @@ def autoteste() -> int:
         "negativo: nome de entidade fora da referência IBGE não vira candidato": t9,
         "normalizar_nome remove acento": t10,
         "regressão 20/09: HTML real do SIGPub reconhecido como placeholder JS (bloqueio conhecido)": t11,
-        "coletar_fonte para no placeholder sem gastar nenhum POST de calendário": t12,
+        "coletar_fonte: HTTP simples + navegador falham -> bloqueio_js, zero POST gasto": t12,
+        "§130: navegador sucede -> token real usado no POST, cookie do navegador chega no jar": t13,
+        "§130: GET simples já real -> navegador nunca é chamado (caminho barato)": t14,
     })
 
 
