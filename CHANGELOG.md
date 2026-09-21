@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §134 · Defeito estrutural de §120 eliminado: cortina "em atualização" publicada explicitamente no início da rodada, sem corrida com o passo final de reposição · 21/09/2026
+
+Classe **correção de infraestrutura, sem alteração de dado ou nota**. Origem: domínio ficou aberto de novo mesmo após a correção de §133 (run #89 falhou); pedido editorial de tornar o ciclo cortina↔senha confiável.
+
+O mecanismo antigo tinha dois deploys de produção competindo: push no ramo `publico` (auto-deploy do Netlify) em paralelo com o passo final, que esperava com `sleep(120)` a corrida terminar antes de sobrescrever. Frágil por desenho — exatamente o que falhou hoje.
+
+Corrigido de vez: novo passo "Colocar 'em atualização' no domínio", logo no início do job `atualizar`, publica a cortina (conteúdo do ramo `publico`, buscado por `git fetch` autenticado com `GITHUB_TOKEN`) direto via `netlify-cli`, sem depender do gatilho do ramo. O passo final de reposição, inalterado em lógica, perdeu o `sleep(120)` — não há mais corrida para esperar. Pula em modo `ensaio`. Nunca bloqueia a rodada (`continue-on-error`).
+
+`scripts/testar_reposicao_dominio.py` reescrito para verificar a arquitetura nova (passo inicial existe, vem antes do final, final roda com `if: always()`) em vez da antiga (checagem de `sleep`).
+
+**Teste.** Portão verde, `validar_workflows.py` verde, sintaxe bash do step novo verificada isoladamente. Suíte completa (consistência, MARÉ reproduzido) verde. `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §133 · URGENTE: guarda booleana de apenas_repor_dominio nunca funcionou (comparação com literal `true` falha contra input de workflow_dispatch); portão de ordem dava falso positivo · 21/09/2026
 
 Classe **correção de bug de infraestrutura, sem alteração de dado ou nota**.

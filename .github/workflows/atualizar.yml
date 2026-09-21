@@ -118,6 +118,42 @@ jobs:
         with: { node-version: "22" }   # AUD-18: coerente com engines.node e com o lockfile
       - run: npm ci                    # AUD-11: instalação reproduzível a partir do package-lock.json
 
+      - name: Colocar "em atualização" no domínio (início da rodada, sem corrida com auto-deploy)
+        # 21/09/2026 (pedido editorial urgente: domínio ficou aberto). Substitui o mecanismo antigo
+        # — push no ramo `publico` disparando auto-deploy do Netlify em paralelo, com sleep(120) e
+        # torcida para a ordem dar certo (§120) — por UM deploy explícito, direto por este workflow,
+        # sem depender de timing de outro gatilho. A cortina do ramo `publico` JÁ É a página "Em
+        # atualização" (mesmo conteúdo, barra de progresso); publicada aqui direto no domínio, no
+        # início da rodada. O passo "Repor o site completo" (fim do job) substitui por cima quando
+        # a rodada termina — sem mais corrida entre os dois.
+        if: github.event.inputs.ensaio != 'true'
+        continue-on-error: true   # nunca bloqueia a rodada de dados por causa da cortina
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::warning::segredo do Netlify ausente — cortina de início não publicada (não bloqueia a rodada)."; exit 0
+          fi
+          # checkout roda com persist-credentials:false (AUD-11: sem credencial git na árvore) —
+          # busca autenticada só para este fetch, sem persistir nada depois dele.
+          git fetch --quiet "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" publico
+          rm -rf /tmp/cortina_inicio && mkdir -p /tmp/cortina_inicio
+          if ! git show FETCH_HEAD:index.html > /tmp/cortina_inicio/index.html 2>/dev/null; then
+            echo "::warning::não achou index.html no ramo publico — cortina de início não publicada."; exit 0
+          fi
+          git show FETCH_HEAD:futura-positivo.svg > /tmp/cortina_inicio/futura-positivo.svg 2>/dev/null || true
+          printf 'User-agent: *\nDisallow: /\n' > /tmp/cortina_inicio/robots.txt
+          printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > /tmp/cortina_inicio/_headers
+          npx --yes netlify-cli@17 deploy --prod --dir=/tmp/cortina_inicio \
+            --message "Em atualização (início da rodada) — commit ${GITHUB_SHA::7}" > /tmp/cortina_out.txt 2>&1
+          if grep -q "Deploy is live" /tmp/cortina_out.txt; then
+            echo "Cortina 'em atualização' publicada no domínio."
+          else
+            echo "::warning::deploy da cortina de início não confirmou — rodada continua normalmente (o passo final ainda repõe o estado correto)."
+          fi
+
       # C4 (auditoria 29/08/2026): com versões travadas para reprodutibilidade,
       # nenhuma atualização de segurança entra sozinha — estas duas etapas são o
       # detector semanal de CVE novo. Informativas por ora (continue-on-error);
@@ -395,16 +431,17 @@ jobs:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
 
       - name: Repor o site completo no domínio (quando publicacao.json = senha)
-        # 20/09/2026 (§120). Defeito estrutural, não acidente de uma rodada: o ramo `publico`
-        # tem workflow próprio que dispara A CADA PUSH nele, e o passo anterior empurra o
-        # contador da cortina. Resultado: toda rodada semanal republicava a cortina por cima
-        # do site completo, e o domínio perdia o modo senha até alguém repor à mão.
-        # Aqui a rodada termina restaurando o estado declarado em data/publicacao.json:
+        # 21/09/2026: o defeito estrutural de §120 (dois deploys competindo — push no ramo
+        # `publico` disparando auto-deploy do Netlify EM PARALELO com este passo, resolvido só por
+        # um sleep(120) torcendo para a ordem dar certo) foi eliminado, não remendado — o passo
+        # "Colocar 'em atualização' no domínio" (início do job) já publica a cortina de forma
+        # EXPLÍCITA e SEQUENCIAL, sem depender do gatilho do ramo `publico`. Este passo aqui roda
+        # sempre por último, incondicionalmente (ver diretiva logo abaixo) — não há mais deploy
+        # concorrente para esperar assentar.
+        # Restaura o estado declarado em data/publicacao.json ao final da rodada:
         #   dominio: "senha"   -> site completo, Basic-Auth + noindex (este passo)
-        #   dominio: "cortina" -> cortina do ramo publico (nada a fazer: já é o que ficou)
+        #   dominio: "cortina" -> cortina/"em atualização" (nada a fazer: já é o que ficou do passo inicial)
         #   dominio: "aberto"  -> lançamento; fora do escopo deste passo, que sempre põe noindex
-        # A ordem importa: este passo vem DEPOIS do push da cortina e espera o deploy dela
-        # assentar, senão os dois deploys correm e o vencedor vira sorteio.
         if: always()
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -420,8 +457,6 @@ jobs:
           if [ -z "$PREVIA_BASIC_AUTH" ] || [ -z "$NETLIFY_AUTH_TOKEN" ]; then
             echo "::warning::Segredo ausente (PREVIA_BASIC_AUTH ou NETLIFY_AUTH_TOKEN) — domínio fica na cortina; repor pelo workflow de ensaio."; exit 0
           fi
-          # Espera o deploy disparado pelo push na cortina assentar, para não correr com ele.
-          sleep 120
           set +e
           {
             echo "passo=repor_dominio commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) modo=${MODO}"

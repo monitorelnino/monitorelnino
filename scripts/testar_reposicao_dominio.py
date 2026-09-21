@@ -4,22 +4,25 @@
 Criado em 20/09/2026 (§120), depois de o domínio passar sete horas servindo a
 cortina "Em atualização" no lugar do site completo, sem que nada tivesse falhado.
 
-O defeito é estrutural e não se anuncia. O ramo `publico` carrega um workflow
-próprio, `publicar_dominio.yml`, que dispara A CADA PUSH naquele ramo e faz deploy
-de PRODUÇÃO. A rodada semanal empurra o contador da cortina para lá no fim da
-execução. Logo, toda rodada republicava a cortina por cima do site completo e
-derrubava o modo senha — silenciosamente, com a Action verde do começo ao fim,
-porque do ponto de vista dela nada deu errado.
+Defeito original (§120): dois deploys de produção competindo — o ramo `publico`
+tinha um workflow próprio disparando a CADA PUSH nele, correndo em paralelo com
+o passo final que repunha o site completo. Resolvido primeiro com um `sleep`
+torcendo pela ordem (frágil: exposto de novo em 21/09/2026, §133, quando um
+disparo urgente falhou). Corrigido de vez em 21/09/2026 (§134): o passo
+"Colocar 'em atualização' no domínio" publica a cortina de forma EXPLÍCITA e
+SEQUENCIAL logo no início do job, direto por este workflow — sem depender do
+gatilho do ramo `publico`. Não há mais dois deploys concorrentes para esperar.
 
 `data/publicacao.json` declara qual estado o domínio deve ter (`dominio`):
-  "cortina" — página de rosto do ramo publico
+  "cortina" — página de rosto do ramo publico ("Em atualização")
   "senha"   — site completo atrás de Basic-Auth, noindex
   "aberto"  — lançamento
 
-Este portão verifica que `atualizar.yml` tem um passo final que lê essa declaração
-e repõe o domínio quando ele estiver em "senha"; que esse passo roda DEPOIS do
-push da cortina (senão os dois deploys correm e o vencedor é sorteio); e que ele
-espera o deploy da cortina assentar antes de publicar por cima.
+Este portão verifica que `atualizar.yml` tem: um passo INICIAL que publica a
+cortina "em atualização" direto no domínio (não via push no ramo publico); um
+passo FINAL que lê a declaração de `data/publicacao.json` e repõe o domínio
+quando ele estiver em "senha"; que o passo final roda DEPOIS do inicial e com
+`if: always()` (repõe mesmo se algo no meio do job falhar).
 
 Uso: python3 scripts/testar_reposicao_dominio.py
 """
@@ -71,26 +74,30 @@ def main() -> int:
         falhas.append("o passo de reposição não lê data/publicacao.json — o modo do domínio "
                       "ficaria codificado no workflow em vez de declarado pela editoria")
 
-    # 3. A ordem: reposição depois do push da cortina.
-    i_cortina = wf.find("Atualizar contador da cortina")
+    # 3. Existe o passo inicial que publica a cortina direto, sem depender do gatilho do ramo publico.
+    i_inicio = wf.find("Colocar \"em atualização\" no domínio")
+    if i_inicio == -1:
+        falhas.append("atualizar.yml não tem o passo inicial que publica a cortina 'em atualização' "
+                      "direto no domínio — sem ele, o domínio mostra o estado anterior (site completo "
+                      "ou dado desatualizado) durante toda a rodada, não uma cortina")
+
+    # 4. A ordem: passo inicial vem ANTES do passo final de reposição.
     i_repor = wf.find("Repor o site completo no domínio")
-    if i_cortina != -1 and i_repor != -1 and i_repor < i_cortina:
-        falhas.append("o passo de reposição vem ANTES do push da cortina — a cortina seria "
-                      "publicada por último e o domínio voltaria a perder o modo senha")
+    if i_inicio != -1 and i_repor != -1 and i_repor < i_inicio:
+        falhas.append("o passo de reposição final vem ANTES do passo que publica a cortina de "
+                      "início — a cortina seria publicada por último e o domínio perderia o modo senha")
 
-    # 4. A espera: sem ela os dois deploys correm.
+    # 5. O passo final roda com if: always() — repõe mesmo se algo no meio do job falhar.
+    #    Delimitado pelo próximo passo (não por uma janela fixa de caracteres — frágil a
+    #    mudanças no tamanho do comentário do próprio passo).
     if i_repor != -1:
-        trecho = wf[i_repor:]
-        if not re.search(r"sleep\s+(\d+)", trecho):
-            falhas.append("o passo de reposição não espera o deploy da cortina assentar "
-                          "(sem `sleep`, os dois deploys de produção correm entre si)")
-        else:
-            segundos = int(re.search(r"sleep\s+(\d+)", trecho).group(1))
-            if segundos < 60:
-                falhas.append(f"a espera antes de repor o domínio é de {segundos}s — curta "
-                              f"demais para o deploy da cortina (~1 min) assentar")
+        i_proximo_passo = wf.find("\n      - name:", i_repor)
+        trecho_do_passo = wf[i_repor:i_proximo_passo if i_proximo_passo != -1 else len(wf)]
+        if "if: always()" not in trecho_do_passo:
+            falhas.append("o passo de reposição final não tem `if: always()` — uma falha em "
+                          "qualquer passo anterior do job deixaria o domínio sem ser reposto")
 
-    # 5. A senha nunca pode estar no repositório: vem de segredo.
+    # 6. A senha nunca pode estar no repositório: vem de segredo.
     if i_repor != -1:
         trecho = wf[i_repor:]
         if "PREVIA_BASIC_AUTH" not in trecho:
@@ -104,8 +111,9 @@ def main() -> int:
             print(f"✗ {f}")
         return 1
 
-    print(f"✓ reposição do domínio: publicacao.json declara {modo!r}; atualizar.yml repõe o "
-          f"site depois do push da cortina, com espera, e tira a credencial de segredo")
+    print(f"✓ reposição do domínio: publicacao.json declara {modo!r}; atualizar.yml publica a "
+          f"cortina 'em atualização' no início e repõe o site no fim, sem depender de corrida "
+          f"entre dois deploys, e tira a credencial de segredo")
     return 0
 
 
