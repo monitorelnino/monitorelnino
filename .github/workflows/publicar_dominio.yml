@@ -7,6 +7,17 @@ name: Publicar este ramo no domínio (produção)
 # Lançar = copiar este workflow para o main com branches: [main]
 # (ver docs/PROTOCOLO_ATUALIZACAO.md §7). Relatórios de execução vão para o
 # repositório privado monitorelnino/robo-registro — nunca para este ramo.
+#
+# 21/09/2026 (pedido editorial urgente): esta é a "cortina 'Em atualização'" que fica no
+# domínio ENQUANTO a rodada semanal roda — mas até aqui, este deploy nunca aplicava
+# Basic-Auth, e a rodada semanal em atualizar.yml só repunha a senha MINUTOS depois
+# (passo "Repor o site completo no domínio"). Nesse intervalo o domínio ficava aberto,
+# mesmo quando data/publicacao.json (na main) declara dominio=senha. Corrigido: este
+# workflow agora lê o estado de data/publicacao.json direto da main antes de publicar, e
+# aplica o MESMO cabeçalho Basic-Auth (mesmo segredo PREVIA_BASIC_AUTH) quando dominio=
+# senha — a cortina "Em atualização" fica atrás da mesma senha do site completo, nunca
+# aberta, em vez de só o site completo ficar protegido nos dois extremos e a cortina no
+# meio ficar exposta.
 on:
   push:
     branches: [publico]
@@ -22,20 +33,36 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: "20" }
+      - name: Ler modo de publicação declarado na main
+        id: modo
+        run: |
+          git fetch --depth=1 origin main
+          MODO=$(git show origin/main:data/publicacao.json 2>/dev/null | python3 -c "import json,sys;print(json.load(sys.stdin).get('dominio',''))" 2>/dev/null || echo "")
+          echo "modo declarado em data/publicacao.json (main): '${MODO}'"
+          echo "modo=${MODO}" >> "$GITHUB_OUTPUT"
       - name: Deploy de produção no Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+          MODO: ${{ steps.modo.outputs.modo }}
         run: |
           set +e
           mkdir -p /tmp/site && cp index.html robots.txt netlify.toml progresso.json futura-positivo.svg /tmp/site/
+          if [ "$MODO" = "senha" ] && [ -n "$PREVIA_BASIC_AUTH" ]; then
+            printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > /tmp/site/_headers
+            MENSAGEM="Cortina Em atualização, atrás de senha (dominio=senha) ${GITHUB_SHA::7}"
+          else
+            MENSAGEM="Página em branco (ramo publico) ${GITHUB_SHA::7}"
+          fi
           {
-            echo "workflow=publicar_dominio ramo=publico commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            npx --yes netlify-cli@17 deploy --prod --dir=/tmp/site --message "Página em branco (ramo publico) ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1
+            echo "workflow=publicar_dominio ramo=publico commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) modo=${MODO:-?} com_senha=$([ -f /tmp/site/_headers ] && echo sim || echo nao)"
+            npx --yes netlify-cli@17 deploy --prod --dir=/tmp/site --message "$MENSAGEM" > /tmp/deploy_out.txt 2>&1
             echo "codigo_saida=$?"
             grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "Error|error|422|Deploy is live|Website URL|Unique deploy" | head -c 1500
           } > /tmp/relatorio.txt 2>&1
           sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/relatorio.txt
+          [ -n "$PREVIA_BASIC_AUTH" ] && sed -i "s/${PREVIA_BASIC_AUTH}/[SENHA]/g" /tmp/relatorio.txt
           grep -q "Deploy is live" /tmp/relatorio.txt && echo "DEPLOY_OK=1" >> $GITHUB_ENV || echo "DEPLOY_OK=0" >> $GITHUB_ENV
       - name: Registrar relatório no repositório privado
         if: always()
