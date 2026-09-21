@@ -6,13 +6,18 @@ Camada DECLARADA nacional (doc de redesenho §3.9, decisão C5): o que o municí
 DECLARA ter — MUNIC/IBGE (bloco "Gestão de riscos e de desastres": possui plano
 de contingência?) e ICM/SEDEC (faixa A–D; variável 8: plano de contingência).
 Produz `data/declarado_nacional.json`, por município: `munic_plano_contingencia`
-(sim/não/NA + ano da edição), `icm_faixa`, `icm_var8_plano_contingencia`.
+(sim/não/NA + ano da edição), `icm_var8_plano_contingencia` (ICM não fornece nome
+descritivo de coluna, só numeração 1–20; `icm_faixa` — A/D por município — não é
+extraído por este coletor, ver nota em fontes_declarado.json).
 
-GOVERNANÇA: esta camada NÃO altera nota antes de 26/10/2026. Até lá só existe
-via `recalcular_mare.py --simular-declarado-nacional`, que aplica o desconto de
-50% já existente (declarar ≠ publicar, §3.4 da transferência) e grava as 27
-notas antes/depois em `data/simulacao_declarado_nacional.json` — anexo público
-da metodologia. Regra declarada em 02/09/2026, vigência 26/10/2026 (§12.4).
+GOVERNANÇA: esta camada foi construída em 02/09/2026 e ficou só simulada
+(`recalcular_mare.py --simular-declarado-nacional`, removido do código em
+21/09/2026) até essa data, quando foi ATIVADA NA NOTA PÚBLICA por decisão
+editorial explícita — antecipada da vigência original de 26/10/2026. O desconto
+de 50% já existente (declarar ≠ publicar, §3.4 da transferência) continua
+vigente; a diferença é que agora `recalcular_mare.py` (sem flag nenhuma, todo
+`--write`/`--check`) já inclui esta camada sempre, em toda atualização — não é
+mais um anexo separado.
 
 FONTE MUNIC — verificada por download real em 20/09/2026 (§128), não por
 suposição (os nomes anteriores em `fontes_declarado.json`, "MGRD_PlanoContingencia"

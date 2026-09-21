@@ -9,6 +9,34 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §138 · Achado real pelo Portão 17: média nacional divergia entre "valores crus" e "valores publicados" — corrigido para a fonte mais defensável · 21/09/2026
+
+Classe **correção de bug, achado só porque a nota mudou de verdade pela primeira vez**. Não altera o valor de hoje (45,1 nos dois métodos, coincidência dos dados atuais) — corrige a fórmula para não divergir quando a nota variar de novo.
+
+**Como foi achado.** Testando §137 (ativação da camada declarada) antes de mesclar, o Portão 17 (robustez a atualização de dados, que perturba uma cópia do repositório e roda a cadeia inteira) falhou: `verificar_consistencia.py` viu `gaugeNum` (45,1) ≠ média recalculada (45,2) no cenário perturbado. Investigado a fundo, não era o `gaugeNum` que estava errado.
+
+**Causa raiz.** `recalcular_mare.py` tinha DOIS métodos de calcular a média nacional coexistindo, nunca sincronizados: `calcular()` retornava `lin.mean()` — a média dos 27 valores **crus, antes do arredondamento individual por UF**; `verificar_consistencia.py` recalculava, de forma independente, a média dos 27 valores **já arredondados e publicados** (`sum(v["total"] ...)/27`). As duas contas podem divergir por erro de arredondamento acumulado — ficaram coincidentemente iguais a sessão inteira porque a nota nunca tinha mudado de verdade; a perturbação do teste (ou a ativação real de §137) foi a primeira mudança grande o bastante para expor a divergência.
+
+**Por que isso importa.** Se alguém soma os 27 números da tabela pública do site e divide por 27, o resultado deve bater com o número do medidor principal — sem isso, o projeto fica exposto a exatamente o tipo de "conta não fecha" que sua própria disciplina de consistência existe para evitar.
+
+**Correção.** `calcular()` agora retorna a média calculada a partir de `saida` (os totais já arredondados por UF) — mesma fonte que `verificar_consistencia.py` já usava. Uma linha, sem mudança de fórmula nos componentes individuais.
+
+**Teste.** Portão 17 completo, do zero: 19/19 passos verdes (antes: `verificar_consistencia.py` falhava no cenário perturbado). Cadeia de derivados regenerada e confirmada idempotente. `--check` e suíte de consistência verdes com o dado real de hoje (45,1, inalterado). `docs/MANIFEST_SHA256.txt` regenerado.
+
+## §137 · Camada declarada nacional (MUNIC/ICM) ativada na nota pública — antecipada de 26/10 para 21/09/2026, por decisão editorial explícita · 21/09/2026
+
+Classe **mudança de regra editorial, com efeito real e imediato na nota pública**. Média nacional: **43,6 → 45,1**.
+
+**Origem.** Depois de entender a regra (declarar ≠ publicar, desconto de 50%, trava até 26/10/2026) e a base legal por trás dela (Lei 12.608/2012: obrigação de Plano de Contingência vale para municípios no cadastro de risco, com exigência de atualização periódica e prestação de contas em audiência pública — que uma marcação de "sim" no censo não verifica), pedido editorial direto: aplicar isso permanentemente, em toda atualização, desde já.
+
+**O que mudou.** `recalcular_mare.py`: a camada declarada nacional (MUNIC/ICM), antes só acessível via `--simular-declarado-nacional` (modo separado, sem tocar `indice.json`), passou a ser parte incondicional de `calcular()` — chamada padrão de `--write`/`--check`, sem flag nenhuma. O modo de simulação foi removido do código (não fazia mais sentido manter uma distinção entre "simulado" e "real" quando os dois viram a mesma coisa). `atualizar.py` não chama mais a simulação separadamente — o `--write` de sempre já cobre. `data/simulacao_declarado_nacional.json` removido (redundante: o que ele mostrava como "depois" é agora o valor real).
+
+**Fórmula inalterada.** Mesmo desconto de 50%, mesma regra conservadora (usa o maior entre a declaração ao tribunal de contas e a declaração nacional MUNIC/ICM, nunca soma os dois). A única mudança é a data de vigência — antecipada de 26/10/2026 para hoje.
+
+**Governança atualizada em três lugares**: `data/declarado_nacional.json` (`_governanca`, `vigencia_na_nota` → 21/09/2026), `METODOLOGIA.md` (§26, documentação pública), `coletar_declarado_nacional.py` (docstring). Também corrigido ali um erro pequeno e não relacionado: o docstring citava `icm_faixa` como campo produzido — nunca foi implementado (o parser real só extrai `icm_var8_plano_contingencia`); comentário agora reflete o comportamento real.
+
+**Teste.** `recalcular_mare.py --write` rodado de verdade: 45,1. `--check` reproduz. Suíte completa (consistência, estrutura, runtime) verde. `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §136 · SIGPub: tentativa real de destravar via Storage Access API (Playwright 1.63, grantPermissions) — bloqueio confirmado, não é mais questão de esforço · 21/09/2026
 
 Classe **investigação técnica, resultado negativo documentado**. Nenhum dado produzido, nenhuma alteração de nota.

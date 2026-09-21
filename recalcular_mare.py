@@ -170,7 +170,7 @@ def _declarado_nacional_uf():
             if uf: n[uf] = n.get(uf, 0) + 1
     return n
 
-def calcular(simular_declarado_nacional: bool = False):
+def calcular():
     """Motor do índice: lê data/*.json, calcula os três componentes por estado, agrega com elemento geométrico e piso, e devolve o dicionário completo (270 campos) que vira data/indice.json."""
     import statistics
     tab = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
@@ -211,11 +211,13 @@ def calcular(simular_declarado_nacional: bool = False):
             w += excedente * mediana_uf[uf] * CRED_POP[tipo_agr]
         dp = pct[uf].get("declarado_plano", 0) or 0
         da = pct[uf].get("declarado_antigo", 0) or 0
-        if simular_declarado_nacional:
-            # C5/§3.9 (regra declarada em 02/09/2026, vigência 26/10/2026): camada declarada
-            # nacional (MUNIC/ICM) entra com o MESMO desconto de 50%. Conservador: não soma
-            # à declaração de tribunal de contas — usa o maior dos dois contadores.
-            dp = max(dp, _declarado_nacional_uf().get(uf, 0))
+        # C5/§3.9: camada declarada nacional (MUNIC/ICM) ativada permanentemente em 21/09/2026,
+        # por decisão editorial explícita — não espera mais 26/10/2026. Antes disso era só
+        # simulação (calcular(simular_declarado_nacional=True), --simular-declarado-nacional);
+        # agora é parte padrão do cálculo, sempre, em toda atualização. Mesmo desconto de 50% de
+        # antes, sem mudança nenhuma na fórmula — só a trava de data caiu. Conservador: não soma
+        # à declaração de tribunal de contas — usa o maior dos dois contadores.
+        dp = max(dp, _declarado_nacional_uf().get(uf, 0))
         doc_n = sum(v for k, v in c.items() if k in PESO_DOC)
         if dp: w += max(dp - doc_n, 0) * mediana_uf[uf] * (CRED_POP["plano"] * 0.5)
         if da: w += da * mediana_uf[uf] * (CRED_POP["plano_antigo"] * 0.5)
@@ -263,7 +265,16 @@ def calcular(simular_declarado_nacional: bool = False):
     robustez["_parametros"] = {"metodo": "Monte Carlo 10.000 sorteios de pesos Dirichlet(1,1,1), semente 42",
                                "uso": "evidência de robustez (anexo metodológico); não é produto público por UF",
                                "decisao": "Metodologia §13, 29/08/2026"}
-    return saida, float(lin.mean()), pct, robustez
+    # 21/09/2026 (achado real, Portão 17): a média nacional usava lin.mean() — média dos valores
+    # CRUS, antes do arredondamento de cada UF a 1 casa decimal — enquanto verificar_consistencia.py
+    # (e qualquer leitor somando os 27 números da tabela pública) calcula a média dos valores JÁ
+    # ARREDONDADOS. As duas contas podem divergir por erro de arredondamento acumulado; ficaram
+    # coincidentemente iguais a sessão inteira porque a nota nunca mudou de verdade — a primeira
+    # mudança real (ativação da camada declarada, §137) expôs a divergência (45.1 vs 45.2).
+    # Corrigido para a fonte mais defensável: a média dos números que o site publica por UF, para
+    # que somar a tabela pública e dividir por 27 dê exatamente o número do medidor principal.
+    media_publicada = round(sum(v["total"] for v in saida.values()) / len(saida), 1)
+    return saida, media_publicada, pct, robustez
 
 def _recomputar_verificacao_em_memoria():
     """v2.2.4 (§3.3): data/verificacao_municipal.json é ARTEFATO DERIVADO de
@@ -415,23 +426,6 @@ def regravar_verificacao_municipal():
 def main():
     """Interface de linha de comando: sem flag, recalcula e grava; com --check, recalcula em memória e compara campo a campo contra o data/indice.json publicado (portão 2), sem gravar nada."""
     modo = sys.argv[1] if len(sys.argv) > 1 else "--check"
-    if modo == "--simular-declarado-nacional":
-        novo_b, ma, _, _ = calcular(); novo_s, ms, _, _ = calcular(simular_declarado_nacional=True)
-        linhas = {}
-        for uf in sorted(k for k in novo_b if len(k) == 2):
-            a_, b_ = novo_b[uf]["total"], novo_s[uf]["total"]
-            linhas[uf] = {"antes": a_, "depois": b_, "delta": round(b_ - a_, 1),
-                          "declarados_nacional": _declarado_nacional_uf().get(uf, 0)}
-        json.dump({"_governanca": "SIMULAÇÃO da camada declarada nacional (C5, §3.9). Regra declarada em "
-                                  "02/09/2026 com vigência em 26/10/2026; nada disto altera data/indice.json "
-                                  "antes dessa data. Anexo público da METODOLOGIA (§26).",
-                   "gerado_em": __import__("datetime").date.today().isoformat(),
-                   "media_nacional_antes": round(ma, 1), "media_nacional_depois": round(ms, 1),
-                   "por_uf": linhas},
-                  open(RAIZ / "data" / "simulacao_declarado_nacional.json", "w", encoding="utf-8"),
-                  ensure_ascii=False, indent=1)
-        print(f"simulação gravada: média {ma:.1f} → {ms:.1f} (27 UFs em data/simulacao_declarado_nacional.json)")
-        return 0
     novo, media, pct_derivado, robustez = calcular()
     alvo = RAIZ / "data" / "indice.json"
     alvo_pct = RAIZ / "data" / "percentual_uf.json"
