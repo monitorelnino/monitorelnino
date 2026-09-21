@@ -24,6 +24,31 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: "22" }
+      - name: Instalar dependências (Python + Node + Chromium — sonda §130 precisa do navegador real)
+        run: |
+          pip install -r requirements.txt --break-system-packages -q
+          npm ci --silent
+          npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+      - name: Sondar diários consorciados SIGPub — §130, token via Chromium real (MG, GO)
+        continue-on-error: true
+        timeout-minutes: 20
+        run: |
+          set -o pipefail
+          python3 -u coletar_diarios_consorciados.py --desde $(date -u -d '2 days ago' +%Y-%m-%d) --ate $(date -u +%Y-%m-%d) --uf MG 2>&1 | tee /tmp/consorciados_mg.log
+          python3 -u coletar_diarios_consorciados.py --desde $(date -u -d '2 days ago' +%Y-%m-%d) --ate $(date -u +%Y-%m-%d) --uf GO 2>&1 | tee /tmp/consorciados_go.log
+      - name: Publicar sonda de consorciados AGORA (não espera o resto do job)
+        if: always()
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro_cedo
+          mkdir -p /tmp/registro_cedo/relatorios
+          cp /tmp/consorciados_mg.log "/tmp/registro_cedo/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_consorciados_mg.txt" 2>/dev/null || true
+          cp /tmp/consorciados_go.log "/tmp/registro_cedo/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_consorciados_go.txt" 2>/dev/null || true
+          cd /tmp/registro_cedo && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com
+          git add -A && git commit -q -m "sonda consorciados §130" && git push || echo "nada novo para commitar"
       - name: Sondar o Portal da Transparência (por que a chave é recusada)
         continue-on-error: true
         env:
