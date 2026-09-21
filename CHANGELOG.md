@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §140 · Busca web aberta (SearXNG efêmero) finalmente entregue — trabalho testado numa sessão anterior nunca tinha chegado ao repositório; rotina diária separada descontinuada, absorvida no relatório semanal · 21/09/2026
+
+Classe **código + processo**, duas correções na mesma entrada.
+
+**Achado real (parte 1).** Uma sessão anterior descreveu o SearXNG (metabuscador open-source efêmero, sem chave) como "pronto e testado" — mas verificação direta mostrou que `monitorar_busca_web.py` e `scripts/searxng_settings.yml` nunca chegaram a `main`: só existia um commit de diagnóstico (`350135e`), não o código final. Reconstruído do zero a partir da especificação já validada antes (query `"{município}" {UF} "plano de contingência" El Niño 2026`, peneira local por nome do município + termo de plano no título, dedup por (ibge, url, trecho) — mesmo padrão §132), reaproveitando `ordem_prioridade()` de `coletar_diarios_municipais.py` em vez de duplicá-la. Alimenta a mesma fila (`data/pistas_imprensa.json`, `origem: "busca_web"`) que os demais coletores de pista — revisão humana num lugar só.
+
+**Bug evitado desta vez.** Antes de escrever o coletor, li o vocabulário real de `decisao` direto do código-fonte de `log_busca()` (`coletores_base.py`) em vez de reconstruir de memória — a sessão anterior tinha descoberto, só depois de rodar contra uma Action de verdade, que `"sem_mencao"` era rejeitado (o vocabulário exige `"coberto_sem_mencao"`). Usado o termo certo desde a primeira versão; autoteste novo (`t4_vocabulario...`) lê o vocabulário aceito via `inspect.getsource()`, não copia à mão, para que uma mudança futura no vocabulário quebre o teste em vez de quebrar em produção.
+
+**Integração no pipeline.** `atualizar.yml`: SearXNG sobe via Docker logo antes dos vigias de imprensa, espera até 60s por `/search?format=json` responder, roda 60 municípios por rodada; se a instância não subir a tempo, o passo seguinte é pulado (não falha a rodada inteira por uma fonte de descoberta).
+
+**Achado real (parte 2), sem relação com o SearXNG.** Ao investigar a numeração do CHANGELOG para esta entrada, descoberto que a prática de "rotina diária" (sessões manuais separadas, verificando portões e filas fora da Action) nunca teve definição formal no repositório — só é citada retroativamente em várias entradas antigas do CHANGELOG. Isso já tinha causado uma colisão real: os números §137/§138 desta sessão foram reaproveitados para outras mudanças (ativação da camada declarada, correção de arredondamento) porque o SearXNG/portões-condicionais originalmente previstos para esses números nunca chegaram a ser escritos no CHANGELOG. Decisão editorial (21/09/2026): a rotina diária separada é **descontinuada** — o que ela cobria de único (contagem das filas humanas, branches sem commit há mais de 14 dias) passa a fazer parte do relatório semanal automático (`atualizar.yml`), sempre, sem depender de uma sessão manual rodar à parte. Novo script `scripts/contar_filas_humanas.py` (achado ao testar: um fallback genérico inicial contava as CHAVES de cada dict, não os itens da lista — cada arquivo de fila usa uma chave diferente: `pistas`, `itens`, `fila`; corrigido para o nome real de cada uma).
+
+**Teste.** `monitorar_busca_web.py --autoteste`: 5/5, hermético (peneira `relevante()`, vocabulário real, dedup). Suíte de estrutura, consistência, MARÉ e sinais verde. `scripts/contar_filas_humanas.py` testado contra os dados reais: 60/27/15/93/97, batendo com os números já conhecidos desta sessão. `docs/MANIFEST_SHA256.txt` regenerado.
+
 ## §139 · LAI ao SEDEC/MDR sobre o Cadastro Nacional de Municípios; base legal completa da obrigação de Plano de Contingência documentada na METODOLOGIA · 21/09/2026
 
 Classe **transparência + documentação pública**. Nenhuma mudança de dado ou de nota.
