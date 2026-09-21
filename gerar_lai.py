@@ -70,6 +70,21 @@ Motivo: o portal do Exército bloqueou o acesso automatizado à relação em 02/
 Data do envio: ____/____/2026 · Protocolo: ________________
 """
 
+MODELO_CADASTRO_NACIONAL = """Ao Ministério do Desenvolvimento Regional (MDR) — Secretaria Nacional de Proteção e Defesa Civil (SEDEC)
+Serviço de Informação ao Cidadão — pedido com fundamento na Lei nº 12.527/2011 (Lei de Acesso à Informação)
+
+Com fundamento na Lei nº 12.527/2011, solicito à Secretaria Nacional de Proteção e Defesa Civil (SEDEC/MDR):
+
+(1) a relação NOMINAL, atualizada, dos municípios inscritos no Cadastro Nacional de Municípios com Áreas Suscetíveis à Ocorrência de Deslizamentos de Grande Impacto, Inundações Bruscas ou Processos Geológicos ou Hidrológicos Correlatos (Decreto nº 10.692/2021), com data de inscrição de cada município;
+(2) cópia ou indicação do endereço eletrônico da publicação anual prevista no parágrafo único do art. 1º do Decreto nº 10.692/2021, sobre a evolução das ocupações em áreas suscetíveis nos municípios inscritos, para os anos em que essa publicação já deveria ter ocorrido (2022 a 2026);
+(3) para os municípios inscritos, a data de elaboração do Plano de Contingência de Proteção e Defesa Civil de que trata o art. 5º, III, do mesmo Decreto, e se esse plano já passou pela avaliação e prestação de contas anual em audiência pública exigida pelo §6º do art. 3º-A da Lei nº 12.608/2012 (redação dada pela Lei nº 14.750/2023).
+
+Motivo: a ferramenta informatizada do Cadastro Nacional (servicos.mdr.gov.br) é de uso restrito aos municípios para autoinscrição, sem consulta pública equivalente localizada até 21/09/2026. Solicito resposta em formato aberto (CSV ou planilha). As respostas serão publicadas, com crédito ao órgão, no registro de transparência do MARÉ, e usadas para distinguir, na metodologia pública, os municípios com obrigação legal específica de Plano de Contingência formal dos demais.
+
+{assinatura}
+Data do envio: ____/____/2026 · Protocolo: ________________
+"""
+
 
 def orgaos_dc():
     est = json.load(open(RAIZ / "data" / "estados.json", encoding="utf-8"))["ufs"]
@@ -90,11 +105,15 @@ def gerar():
     pedidos.append({"uf": "BR", "tipo": "carro_pipa", "orgao": "Comando Militar do Nordeste / MIDR", "arquivo": "docs/lai/BR_carro_pipa_CMNE_MIDR.txt",
                     "status": "a_enviar", "protocolo": None, "data_envio": None, "prazo_legal": None, "prorrogacao": None,
                     "data_resposta": None, "resultado": None, "url_evidencia": None})
+    (SAIDA / "BR_cadastro_nacional_SEDEC_MDR.txt").write_text(MODELO_CADASTRO_NACIONAL.format(assinatura=ASSINATURA), encoding="utf-8")
+    pedidos.append({"uf": "BR", "tipo": "cadastro_nacional", "orgao": "SEDEC/MDR", "arquivo": "docs/lai/BR_cadastro_nacional_SEDEC_MDR.txt",
+                    "status": "a_enviar", "protocolo": None, "data_envio": None, "prazo_legal": None, "prorrogacao": None,
+                    "data_resposta": None, "resultado": None, "url_evidencia": None})
     reg = {"formato": "§3.7 do doc de redesenho 02/09/2026 — registro público dos pedidos de LAI do Monitor; "
                       "'a_enviar' = texto gerado, envio humano pendente (Fala.BR exige pessoa física identificada)",
            "gerado_em": date.today().isoformat(), "pedidos": pedidos}
     json.dump(reg, open(SAIDA.parent / "lai_pedidos.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print(f"LAI: {len(pedidos)} pedidos gerados em docs/lai/ (27 defesa civil + 27 saúde + 1 Carro-Pipa); registro em data/lai_pedidos.json")
+    print(f"LAI: {len(pedidos)} pedidos gerados em docs/lai/ (27 defesa civil + 27 saúde + 1 Carro-Pipa + 1 Cadastro Nacional); registro em data/lai_pedidos.json")
 
 
 def registrar(uf, tipo, protocolo, data_envio):
@@ -111,10 +130,15 @@ def registrar(uf, tipo, protocolo, data_envio):
 
 def autoteste():
     from coletores_base import rodar_autoteste
-    def t1(): gerar(); return len(list(SAIDA.glob("*.txt"))) == 55
-    def t2(): r = json.load(open(SAIDA.parent / "lai_pedidos.json", encoding="utf-8")); return len(r["pedidos"]) == 55 and all(p["protocolo"] is None for p in r["pedidos"])
+    def t1(): gerar(); return len(list(SAIDA.glob("*.txt"))) == 56
+    def t2(): r = json.load(open(SAIDA.parent / "lai_pedidos.json", encoding="utf-8")); return len(r["pedidos"]) == 56 and all(p["protocolo"] is None for p in r["pedidos"])
     def t3(): return "12.527" in (SAIDA / "SC_defesa_civil.txt").read_text(encoding="utf-8") and "Santa Catarina" in (SAIDA / "SC_saude.txt").read_text(encoding="utf-8")
-    return rodar_autoteste({"55 textos gerados": t1, "registro com 55 pedidos, protocolo null": t2, "texto cita a LAI e o estado": t3})
+    def t4():  # 21/09/2026: pedido do Cadastro Nacional (Decreto 10.692/2021) — cita a base legal certa
+        t = (SAIDA / "BR_cadastro_nacional_SEDEC_MDR.txt").read_text(encoding="utf-8")
+        return "10.692" in t and "12.527" in t and "14.750" in t
+    return rodar_autoteste({"56 textos gerados": t1, "registro com 56 pedidos, protocolo null": t2,
+                            "texto cita a LAI e o estado": t3,
+                            "pedido do Cadastro Nacional cita o decreto e a lei certa": t4})
 
 
 if __name__ == "__main__":
