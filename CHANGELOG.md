@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §156 · Portão da aplicação automática: o juiz só pontua sozinho com o ato publicado de 2026 lido no próprio documento — e cinco erros reais que ele teria cometido · 22/09/2026
+
+Classe **correção de segurança do dado + método declarado**. METODOLOGIA §40 ganha o parágrafo "Quando a máquina pontua sozinha".
+
+**O que a primeira rodada com PDF mostrou (cadência #6).** O juiz leu os diários, classificou e **aplicou 6 pistas** — todas revertidas pelos portões, mas por acaso: faltava `npm ci` no workflow de cadência e `verificar_estrutura.js` quebrou (`MODULE_NOT_FOUND`). Conferidas uma a uma, **5 das 6 eram erradas**: lei municipal de 2021 (Guaraniaçu/PR, duas), "Lei 17 · 2026" e "Portaria 4.609 · 2026" com ano solto (Antônio Olinto/PR, Alagoinhas/BA), PDF de 2024 sem número (Nova Iguaçu/RJ). Na preparação local apareceram mais: a Lei federal 14.133/2021 (licitações) citada em edital, lida como o ato (Sátiro Dias/BA, Itapirapuã Paulista/SP), e decreto de 2021 (Andradina/SP). Consertar só o `npm` teria transformado esses erros em registros.
+
+**Três causas e três consertos.** (1) **Diário inteiro em vez do ato**: um diário tem dezenas de atos; classificar o documento todo dava DUVIDA e extraía o número do primeiro ato da edição (e "4574", nº de lei, como ano). `focar()` recorta a janela do ato da pista — âncora no número citado no trecho, recuo até o cabeçalho do próprio ato, normalização que preserva posições; o juiz recebe o texto focado. (2) **Ano implausível**: `RE_DATA_ANO_SOLTO` passa a aceitar só 19xx/20xx. (3) **Portão cumulativo antes do juiz** (`portao_automatico`): fonte oficial; ato publicado (diário ou PDF — notícia em portal oficial não é o ato); natureza ex-ante; data completa, válida, de 2026 e não futura; número que não seja lei federal citada (só leis são checadas contra a lista — "Decreto nº 101" municipal não é a LC 101); texto articulado; teste do objeto (Executivo, família do ciclo, pelo município); município nomeado no ato; nenhum alerta ativo da triagem de confiança (homônimo de outra UF etc.). Qualquer falha → fila humana com o motivo gravado em `preparacao.portao_automatico`.
+
+**Mais.** `npm ci` no workflow de cadência (os portões do juiz rodam em Node). Revertida por portão deixa de ser decisão final: continua pendente e é refeita. Preparação versionada (`PREP_VERSAO=2`): as 60 pistas preparadas pela versão sem foco são refeitas uma vez.
+
+**Resultado com documentos reais** (40 pistas: Querido Diário A/B + as 6 revertidas, sem aplicar): o portão entrega ao juiz **2** — Serra/ES (Decreto nº 6.823, 05/07/2026; já no banco, o juiz não duplica) e **Feira de Santana/BA (Decreto nº 14.665, 21/08/2026, institui o Plano de Contingência)**. As 5 erradas: todas barradas. Barradas por motivo: 21 natureza DUVIDA, 5 sem texto articulado, 3 objeto indefinido, 3 resposta, 2 camada de saúde, 2 atos de 2021, 2 data incompleta. A precisão é o requisito; o recall do classificador sobre planos reais em DUVIDA é a próxima frente.
+
+**Teste.** Autoteste de `revisar_pistas.py` com os casos reais (lei federal citada, ato de 2021, notícia em portal, município não nomeado, frio fora do objeto, decreto nº 101, homônimo, data inválida/futura, preparação antiga refeita uma só vez). Self-tests do classificador (97 decretos reais, 0 falsos positivos) e do juiz verdes.
+
 ## §155 · Card do município: tag de prioritário, situação no MARÉ, "publicação na imprensa encontrada" (peso zero, com link) e como pedir o documento ao gestor · 22/09/2026
 
 Classe **produto + método**, três decisões editoriais de 22/09/2026: imprensa não pontua (nem "em elaboração"); entra no card como link; o card estimula o leitor a pedir o documento ao gestor público e diz como. Mais: tag de prioritário em cada município.

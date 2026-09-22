@@ -75,7 +75,7 @@ RE_DATA_COMPLETA = re.compile(r"\d{1,2}[/.]\d{1,2}[/.]\d{2,4}")
 MESES = {"janeiro": 1, "fevereiro": 2, "marco": 3, "março": 3, "abril": 4, "maio": 5, "junho": 6, "julho": 7,
          "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12}
 RE_DATA_EXTENSO = re.compile(r"\b(\d{1,2})[º°o]?\s+de\s+([a-zç]+)\s+de\s+(\d{4})\b", re.I)
-RE_DATA_ANO_SOLTO = re.compile(r"\b\d{4}\b")
+RE_DATA_ANO_SOLTO = re.compile(r"\b(?:19|20)\d{2}\b")   # 22/09/2026 (§156): "4574" (nº de lei) era lido como ano
 
 
 def data_extenso_para_numerica(m):
