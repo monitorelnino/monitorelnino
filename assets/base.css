@@ -95,6 +95,9 @@ code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-
 .kicker{color:var(--teal);}
 .selo{color:var(--teal);}
 .mast-sub{color:var(--muted); margin:0 0 var(--sp-4);}
+/* 22/09/2026 (§155): tag do card do município — 'prioritário' (aproximação do Cadastro Nacional). Mesma família tipográfica dos selos. */
+.tag{display:inline-block; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:1.4; font-weight:var(--peso-semibold); letter-spacing:var(--ls-caps); text-transform:uppercase; padding:0 .45em; border-radius:3px; vertical-align:middle;}
+.tag--prior{background:var(--teal); color:#fff;}
 .rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted);}
 .dado{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 /* 15/09/2026 (pedido da editoria): textos explicativos ocupam a largura toda do painel — a medida de leitura (68ch) fica só para a citação e para o texto de prazos. */

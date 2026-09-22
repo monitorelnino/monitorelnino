@@ -87,6 +87,7 @@ jobs:
           python3 recalcular_mare.py --write
           python3 recalcular_mare.py --check
           python3 gerar_dados_abertos.py
+          python3 gerar_card_municipios.py   # §155
           python3 scripts/carimbar_assets.py
           python3 scripts/gerar_manifesto.py
           python3 verificar_consistencia.py
