@@ -1,0 +1,135 @@
+# busca_web_cadencia.yml — cadência automática da busca web (§148, 22/09/2026)
+# =============================================================================
+# Pedido editorial: rodar a busca web (SearXNG efêmero, 150 municípios por rodada, prioritários
+# primeiro — §143) a cada 2 horas ATÉ cobrir todos os 5.571 municípios pelo menos uma vez; depois
+# disso, 4 vezes ao dia, até a editoria mandar parar. A fase é lida de data/busca_web_estado.json
+# (`ciclos_completos`, gravado por monitorar_busca_web.py): 0 = fase 1; ≥1 = fase 2.
+#
+# Só a busca web roda aqui — não o pipeline inteiro (atualizar.yml continua semanal + diário para
+# todas as outras fontes; rodar TUDO a cada 2h martelaria fontes que não mudam nesse ritmo). Depois
+# da coleta: sincroniza o índice (verificacao_municipal.json depende de fontes_consultadas.json — §142),
+# regenera derivados/manifesto, commita com rebase e repõe o domínio atrás de senha.
+#
+# Mesmo grupo de concorrência do atualizar.yml: uma rodada de cada, nunca duas commitando ao mesmo tempo.
+name: Busca web — cadência automática
+on:
+  schedule:
+    - cron: "0 */2 * * *"   # a cada 2h; o próprio job decide se pula (fase 2 só roda em 0/6/12/18 UTC)
+  workflow_dispatch:
+    inputs:
+      forcar:
+        description: "true = ignora a regra de fase e roda agora (útil para teste)"
+        required: false
+        default: "false"
+permissions:
+  contents: read
+concurrency:
+  group: atualizar-dados
+  cancel-in-progress: false
+jobs:
+  busca_web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }
+      # Mesma correção estrutural do atualizar.yml (§148): partir do main REAL, não do SHA fixado no
+      # disparo — com rodada a cada 2h e cada uma levando minutos, a anterior pode ter acabado de commitar.
+      - name: Partir do main atual
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git reset --hard FETCH_HEAD
+      - name: Decidir a fase (2h em 2h até cobrir todos; depois 4x/dia)
+        id: fase
+        run: |
+          CICLOS=$(python3 -c "import json;print(int((json.load(open('data/busca_web_estado.json')) if __import__('os').path.exists('data/busca_web_estado.json') else {}).get('ciclos_completos',0)))")
+          HORA=$(date -u +%H)
+          FORCAR="${{ github.event.inputs.forcar }}"
+          echo "ciclos_completos=$CICLOS hora_utc=$HORA forcar=${FORCAR:-false}"
+          if [ "$FORCAR" = "true" ]; then echo "rodar=1" >> "$GITHUB_OUTPUT"; echo "forçado: roda agora"; exit 0; fi
+          if [ "$CICLOS" -lt 1 ]; then
+            echo "fase 1 (ainda não cobriu todos os municípios): roda"; echo "rodar=1" >> "$GITHUB_OUTPUT"
+          elif [ "$HORA" = "00" ] || [ "$HORA" = "06" ] || [ "$HORA" = "12" ] || [ "$HORA" = "18" ]; then
+            echo "fase 2 (cobertura completa feita), hora de rodar (4x/dia): roda"; echo "rodar=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "fase 2, fora dos 4 horários do dia: pula"; echo "rodar=0" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        if: steps.fase.outputs.rodar == '1'
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt --quiet
+        if: steps.fase.outputs.rodar == '1'
+      - name: Subir SearXNG efêmero
+        if: steps.fase.outputs.rodar == '1'
+        id: searxng
+        continue-on-error: true
+        run: |
+          docker run -d --name searxng -p 127.0.0.1:8080:8080 \
+            -v "$PWD/scripts/searxng_settings.yml:/etc/searxng/settings.yml:ro" \
+            searxng/searxng:latest
+          ok=""
+          for i in $(seq 1 30); do
+            if curl -sf "http://127.0.0.1:8080/search?q=teste&format=json" > /dev/null 2>&1; then ok=1; break; fi
+            sleep 2
+          done
+          [ -n "$ok" ] && echo "pronto=1" >> "$GITHUB_OUTPUT" || echo "SearXNG não subiu a tempo"
+      - name: Busca web (150 municípios, prioritários primeiro, rotação automática)
+        if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
+        run: python3 monitorar_busca_web.py --tamanho 150 2>&1 | tee /tmp/busca_web.log
+      - name: Sincronizar índice e derivados
+        if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
+        run: |
+          export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd)).timestamp()))")"
+          python3 recalcular_mare.py --write
+          python3 recalcular_mare.py --check
+          python3 gerar_dados_abertos.py
+          python3 scripts/carimbar_assets.py
+          python3 scripts/gerar_manifesto.py
+          python3 verificar_consistencia.py
+      - name: Commit com rebase (mesmo padrão do atualizar.yml)
+        if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
+        env:
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        run: |
+          git config user.name "monitor-el-nino-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ index.html defesa-civil.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt
+          if git diff --cached --quiet; then echo "Sem alterações."; echo "HOUVE=0" >> $GITHUB_ENV; exit 0; fi
+          git commit -m "Busca web automática ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
+          echo "HOUVE=1" >> $GITHUB_ENV
+          git checkout -- .
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
+          git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito; rodada não comitada"; rm -f ~/.ssh/robo; exit 1; }
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
+          rm -f ~/.ssh/robo
+      - name: Repor o site no domínio, atrás de senha
+        if: env.HOUVE == '1'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+        run: |
+          MODO=$(python3 -c "import json;print(json.load(open('data/publicacao.json')).get('dominio',''))" 2>/dev/null || echo "")
+          if [ "$MODO" != "senha" ]; then echo "modo '$MODO' — repor fica a cargo do atualizar.yml"; exit 0; fi
+          printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers
+          printf 'User-agent: *\nDisallow: /\n' > robots.txt
+          npx --yes netlify-cli@17 deploy --prod --dir=. --message "Busca web automática ${GITHUB_SHA::7}" > /tmp/repor_out.txt 2>&1 || true
+          rm -f _headers; git checkout -- robots.txt 2>/dev/null
+          grep -q "Deploy is live" /tmp/repor_out.txt && echo "Site reposto atrás de senha." || echo "::warning::reposição não confirmou — ver atualizar.yml na próxima rodada"
+      - name: Relatório no repositório privado (sempre)
+        if: always() && steps.fase.outputs.rodar == '1'
+        env:
+          ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+        run: |
+          {
+            echo "workflow=busca_web_cadencia execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) fase_rodou=${{ steps.fase.outputs.rodar }} searxng=${{ steps.searxng.outputs.pronto }} houve_alteracao=${HOUVE:-?}"
+            echo "--- estado da rotação ---"; cat data/busca_web_estado.json 2>/dev/null
+            echo "--- saída da busca ---"; cat /tmp/busca_web.log 2>/dev/null | tail -20
+          } > /tmp/rel.txt 2>&1
+          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg
+          mkdir -p /tmp/reg/relatorios && cp /tmp/rel.txt "/tmp/reg/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_busca_web_cadencia.txt"
+          cd /tmp/reg && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -q -m "busca web cadencia" && git push -q
