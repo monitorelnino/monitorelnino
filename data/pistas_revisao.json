@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-22",
- "total_pistas": 175,
- "total_municipios": 114,
+ "total_pistas": 190,
+ "total_municipios": 125,
  "por_nivel": {
-  "A": 19,
-  "B": 109,
+  "A": 26,
+  "B": 117,
   "C": 47
  },
  "grupos": [
@@ -269,6 +269,103 @@
      "url": "https://sctd.com.br/geral/tubarao-acelera-plano-contra-o-el-nino-com-r-40-milhoes-em-obras-preventivas/",
      "titulo": null,
      "trecho": "Tubarão acelera plano contra o El Niño com R$ 40 milhões em obras preventivas ... Plano de contingência reforçado. A Prefeitura informou que o Plano Municipal ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3504107",
+   "municipio": "Atibaia",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 1,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.atibaia.sp.gov.br/noticias/defesa-civil/el-nino-em-atibaia-o-dobro-da-chuva-prevista-para-setembro-em-apenas-tres-dias",
+     "titulo": "El Niño em Atibaia: o dobro da chuva prevista para setembro em ...",
+     "trecho": "Sep 12, 2026 ... A Prefeitura de Atibaia conta com equipes preparadas para atender a população, conforme previsto no Plano de Contingência, documento ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdMtGm7FpnC/",
+     "titulo": "El Niño em Atibaia: o dobro da chuva prevista para setembro em ...",
+     "trecho": "Sep 12, 2026 ... Photo by Portal Atibaia News on September 12, 2026. May be an image of.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3513504",
+   "municipio": "Cubatão",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 2,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "A",
+     "pontos_confianca": 8,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://cubatao.sp.gov.br/el-nino-cubatao-cria-comissao-permanente-de-enfrentamento-ao-fenomeno/",
+     "titulo": "El Niño: Cubatão cria comissão permanente de enfrentamento ao ...",
+     "trecho": "Jul 22, 2026 ... El Niño: Cubatão cria comissão permanente de enfrentamento ao fenômeno ... “O município já conta com o Plano de Contingência de Proteção e Defesa ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/sp/santos-regiao/noticia/2026/07/24/cubatao-cria-comissao-para-enfrentar-efeitos-do-el-nino-apos-cobranca-de-mp-sp.ghtml",
+     "titulo": "El Niño em Cubatão: prefeitura cria comissão após cobrança do MP",
+     "trecho": "Jul 24, 2026 ... Cubatão cria comissão para enfrentar efeitos do El Niño após cobrança de MP-SP ... Plano de Contingência de Proteção e Defesa Civil (PCPDC): ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -581,6 +678,68 @@
    ]
   },
   {
+   "ibge": "3506508",
+   "municipio": "Birigui",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "http://www.birigui.sp.gov.br/birigui/noticias/noticias_detalhes.php?id_noticia=11244",
+     "titulo": "Birigui sediará reunião para alinhar plano de contingência para o El ...",
+     "trecho": "Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3516200",
+   "municipio": "Franca",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.jornaldafranca.com.br/cpfl-apresenta-plano-de-contingencia-para-o-periodo-de-calor-com-el-nino-2026-2027/",
+     "titulo": "CPFL faz Plano de Contingência em Franca para casos eventuais ...",
+     "trecho": "Aug 24, 2026 ... CPFL faz Plano de Contingência em Franca para casos eventuais no período de calor · compartilhar no whatsapp · compartilhar no telegram ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3522406",
    "municipio": "Itapeva",
    "uf": "SP",
@@ -677,6 +836,37 @@
    ]
   },
   {
+   "ibge": "3551009",
+   "municipio": "São Vicente",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "http://www.saovicente.sp.gov.br/informacao/sao-vicente-reforca-preparacao-para-o-el-nino-com-obras-de-drenagem-investimentos-e-plano-preventivo",
+     "titulo": "São Vicente reforça preparação para o El Niño com obras de ...",
+     "trecho": "Jul 16, 2026 ... Além das intervenções estruturais, São Vicente conta com o Plano de Contingência ... Rua Frei Gaspar, 384 - Centro - São Vicente / SP CEP ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3554102",
    "municipio": "Taubaté",
    "uf": "SP",
@@ -738,6 +928,38 @@
      "titulo": null,
      "trecho": "1 de 6\ngarantindo autenticidade, validade jurídica e integridade https://www.valparaiso.sp.gov.br/diario-oficial/1051/ - 05/08/2026\n\nPODER EXECUTIVO\n\nDECRETOS\n\nDECRETO Nº 5101\n\nDECRETO Nº 5101, DE 03 DE AGOSTO DE 2026.\n*APROVA E INSTITUI O PLANO DE CONTINGÊNCIA MUNICIPAL\n\nDE PROTEÇÃO E DEFESA CIVIL ",
      "data": "05/08/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3556701",
+   "municipio": "Vinhedo",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "A",
+     "pontos_confianca": 8,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.camaravinhedo.sp.gov.br/imprensa/noticias/0/4/0/4337",
+     "titulo": "Nayla cobra plano de contingência e previsão orçamentária para ...",
+     "trecho": "Sep 6, 2026 ... ... plano de contingência e previsão orçamentária para enfrentar impactos do El Niño em Vinhedo. 16/06/2026 14:05. Nayla cobra plano de ...",
+     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -2263,6 +2485,53 @@
    ]
   },
   {
+   "ibge": "3545209",
+   "municipio": "Salto",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://salto.sp.gov.br/wp-content/uploads/2019/02/revisao_plano_saneamento_agua_esgoto.pdf",
+     "titulo": "REVISÃO DO PLANO MUNICIPAL DE SANEAMENTO BÁSICO DO ...",
+     "trecho": "município de Salto – SP. ... PLANO DE CONTINGÊNCIA. 1. Paralisação da estação de tratamento de esgotos. Interrupção no fornecimento de energia elétrica nas.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3545209/2026-07-01/e6fd8348ed7a25d5db2d34ffd9fc1ad81e82edc4.pdf",
+     "titulo": null,
+     "trecho": "19 de junho de 2026.\n\nNº  1393/2026  –  Comissão  de  Organização,  Bens,\nServiços,  Saúde,  Educação,  Cultura,  Servidores,  Meio\nAmbiente  e  Administração –  Solicitando a  ampliação da\noferta  de  vagas  em creche,  a  criação  de  um plano  de\ncontingência para o transporte escolar, o monitora",
+     "data": "01/07/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3551207",
    "municipio": "Sarutaiá",
    "uf": "SP",
@@ -2306,6 +2575,52 @@
      "titulo": null,
      "trecho": "razão da natureza,\ncomplexidade ou riscos envolvidos no objeto.\n \nArt. 11. O documento deverá conter, sempre que aplicável:\nI – identificação dos riscos;\nII – probabilidade;\nIII – impacto;\nIV – nível de risco;\nV – medidas preventivas;\nVI – plano de contingência;\nVII – responsáveis pelo acompanhament",
      "data": "20/08/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/sp/sao-jose-do-rio-preto-aracatuba/noticia/2022/09/13/votuporanga-tera-plano-de-contingenciamento-para-evitar-falta-de-agua.ghtml",
+     "titulo": "Votuporanga terá plano de contingenciamento para evitar falta ... - G1",
+     "trecho": "Sep 13, 2022 ... A empresa responsável pelo abastecimento de água em Votuporanga (SP) ... plano de contingência para evitar a falta de água no município. O ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://smastr16.blob.core.windows.net/cpla/2017/05/votuporanga.pdf",
+     "titulo": "p gestão integrada de plano municipal de",
+     "trecho": "QUESTÃO SOCIOAMBIENTAL NAS EMPRESAS MOVELEIRAS DO POLO DE VOTUPORANGA (SP) ... Como ações estruturantes do Plano de Contingência, o Plano Municipal de ...",
+     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -3461,6 +3776,67 @@
    ]
   },
   {
+   "ibge": "3504008",
+   "municipio": "Assis",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/difusoraassis/videos/energisa-prepara-plano-de-conting%C3%AAncia-por-causa-da-previs%C3%A3o-de-temporais-nos-pr/1589016705934825/",
+     "titulo": "ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA ...",
+     "trecho": "Sep 11, 2026 ... ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA DA PREVISÃO DE TEMPORAIS NOS PRÓXIMOS DIAS NA REGIÃO ... No photo description available. SOS PETS ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DbOFlI-T9AE/",
+     "titulo": "Até quando Bauru vai depender da sorte? ⚠️ O El Niño já está ...",
+     "trecho": "Jul 25, 2026 ... ... likes, 13 comments - fmc_comunica on July 25, 2026: \"Até quando Bauru vai depender da sorte ... plano de contingência claro e ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3509502",
    "municipio": "Campinas",
    "uf": "SP",
@@ -3583,6 +3959,66 @@
    ]
   },
   {
+   "ibge": "3526704",
+   "municipio": "Leme",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://checklistfacil.com/blog/plano-de-contingencia/",
+     "titulo": "Plano de contingência: como criar, implementar e testar?",
+     "trecho": "Feb 10, 2026 ... Aprenda a criar e a implementar um plano de contingência eficiente para garantir continuidade de negócios e reduzir riscos ... Pais Leme, 215 – ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3526902",
+   "municipio": "Limeira",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.ceivap.org.br/mata/Rosario-da-Limeira.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP",
+     "trecho": "arranjo institucional e plano de contingência e emergência. ... O município de Rosário da Limeira está inserido no Comitê da Bacia Hidrográfica dos Afluentes Mi-.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3529005",
    "municipio": "Marília",
    "uf": "SP",
@@ -3668,37 +4104,6 @@
      "titulo": null,
      "trecho": "Apresentação de Mapa Potenciométrico; \n- Recolhimento de ART do responsável técnico; \n- Elaboração de Relatório Técnico das atividades e resultados obtidos. \n\n10. Mapa de riscos \n\n \n\nNº Risco Identificado Probabilidade Impacto Medidas Preventivas \nPlano de \n\nContingência \n\n1 \n\nContratação de \n\nlabor",
      "data": "14/08/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3545209",
-   "municipio": "Salto",
-   "uf": "SP",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "texto_falso_positivo_provavel"
-     ],
-     "origem": "querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3545209/2026-07-01/e6fd8348ed7a25d5db2d34ffd9fc1ad81e82edc4.pdf",
-     "titulo": null,
-     "trecho": "19 de junho de 2026.\n\nNº  1393/2026  –  Comissão  de  Organização,  Bens,\nServiços,  Saúde,  Educação,  Cultura,  Servidores,  Meio\nAmbiente  e  Administração –  Solicitando a  ampliação da\noferta  de  vagas  em creche,  a  criação  de  um plano  de\ncontingência para o transporte escolar, o monitora",
-     "data": "01/07/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
