@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §161 · Três marcadores de conflito de merge saem do `CHANGELOG.md`: o que cada um escondia, conferido commit a commit · 22/09/2026
+
+Classe **correção de higiene do repositório**; nenhum dado, página, método ou número do índice muda. Média nacional inalterada: 45,1.
+
+**O que estava lá.** O `CHANGELOG.md` da `main` trazia, commitadas, três linhas de marcador de conflito no estilo diff3 — `||||||| parent of 842060a…`, `…95a5754…` e `…8fcd4fd…`, imediatamente antes dos títulos de §156, §153 e §150. Sem `<<<<<<<`, sem `=======` e sem `>>>>>>>`: resolução parcial de conflito de *cherry-pick* (o rótulo "parent of" é o que o git escreve na base com `merge.conflictStyle=diff3`), em que as três outras linhas foram apagadas à mão e a da base escapou. Documento de auditoria pública — o `README` aponta para ele como histórico de versões —, então o conteúdo ao redor foi conferido antes de apagar qualquer linha.
+
+**De onde veio cada marcador, e por que nada se perdeu.** `git log -S` localiza o commit que introduziu cada linha: **a183c28** (§152, decisão 3 do teste do objeto), **326bf8a** (§155, card do município) e **101fd65** (§158, o juiz sincroniza os derivados). Os três commits são **adição pura** ao `CHANGELOG.md` — 17, 11 e 11 linhas inseridas, **zero removidas** —, cada um com a seção nova mais o marcador solto. Nenhum texto foi perdido e nenhum foi duplicado: a numeração corre contínua de §159 a §140, sem lacuna nem seção repetida, e o texto de cada seção bate com o do commit que a introduziu. A resposta à pergunta "que texto deveria estar ali?" é, nos três casos, **nenhum**: a linha nunca cobriu conteúdo.
+
+**O que foi feito.** As três linhas removidas, e só elas — o diff é de 3 remoções. Entre §151 e §150 não se acrescentou a linha em branco que falta: ela já faltava antes do marcador (estado de `a183c28^`), é resíduo antigo compartilhado com outros sete títulos do arquivo e corrigi-la aqui misturaria restauração com reformatação. Manifesto regravado para selar o arquivo.
+
+**Conferência.** Nenhum outro arquivo versionado carrega marcador de conflito; as sequências de `<` e `>` em `evidencias/*.txt` são separadores do documento-fonte copiado, fora da selagem por definição. Nenhum portão lê o corpo do `CHANGELOG.md` (as duas citações em `scripts/verificar_runtime.js` e `scripts/verificar_publicado.js` são comentário e caminho de arquivo), e a mudança não toca `data/`, `*.py`, workflows nem dependências — o bloco "dado e coleta" de `portoes.yml` não é acionado.
+
 ## §159 · Da notícia ao documento: cada pista de imprensa é seguida até candidatos a ato oficial, que passam pelo mesmo portão e juiz · 22/09/2026
 
 Classe **método + código** (`seguir_pistas.py`). Decisão editorial de 22/09/2026: notícia nunca pontua; é pista de que o plano existe — a máquina deve ir atrás do ato.
@@ -37,7 +49,6 @@ Classe **documentação de processo**; nenhum dado, página ou método muda.
 
 A editoria passa a poder trabalhar pelo Claude Code, com o repositório numa pasta local permanente. O `CLAUDE.md` na raiz reúne o que antes estava espalhado em handouts de sessão: fluxo de mudança (PROTOCOLO §3.1), limites do merge automático (protótipo mostrado antes, publicação do domínio só com a palavra da editoria), lista de portões na ordem de `portoes.yml`, regras editoriais que o código não pode violar, regras de design e o que nunca entra no repositório público. Os documentos canônicos continuam prevalecendo; o arquivo só aponta para eles. Manifesto regravado para selar o arquivo novo.
 
-||||||| parent of 842060a (§157 juiz sincroniza derivados antes dos portões; backup cobre data/dados-abertos/selos; canal/fonte/ementa corretos)
 ## §156 · Portão da aplicação automática: o juiz só pontua sozinho com o ato publicado de 2026 lido no próprio documento — e cinco erros reais que ele teria cometido · 22/09/2026
 
 Classe **correção de segurança do dado + método declarado**. METODOLOGIA §40 ganha o parágrafo "Quando a máquina pontua sozinha".
@@ -76,7 +87,6 @@ Classe **encanamento que destrava método**. Decisão editorial de 22/09/2026 (m
 
 **Teste.** Self-test do classificador (97 decretos de resposta reais, 0 falsos positivos) verde, com os casos novos de data; self-test do juiz 5/5; leitor de PDF testado com PDF real gerado em memória. Nota inalterada até a rodada aplicar.
 
-||||||| parent of 95a5754 (§155 card do município: tag prioritário, situação no MARÉ, imprensa encontrada (peso zero, link), como pedir ao gestor)
 ## §153 · Fila de revisão humana das pistas: leitura assistida, decisões registradas, homônimos · 22/09/2026
 
 Classe **fluxo editorial + código** (`revisar_pistas.py`), a pedido direto ("vamos à fila de pistas").
@@ -110,7 +120,6 @@ Classe **decisão metodológica ex-ante + trava em teste**. Média nacional inal
 ## §151 · Blog do MARÉ entra na barra de navegação, antes de Imprensa; quadros com a mesma borda superior, uma cor por eixo · 22/09/2026
 
 Classe **decisão editorial aplicada**. Depois de ver o protótipo (§149) nas capturas, a editoria aprovou a página e pediu: (1) publicá-la na barra, **antes de Imprensa** — rótulo "Blog", ordem canônica dos portões atualizada (as exceções de "página fora da barra" para `blog.html` em estrutura e acessibilidade saem); (2) manter as bordas com cor nos quatro quadros, mas **no mesmo formato**: borda superior de 3 px em todos, uma cor por eixo (musgo · antecipação, sintético · saúde, argila · resposta, seca · sinais físicos), com os modificadores `--acento-*-topo` em `base.css`. Nome final, assinatura dos textos e o texto de exemplo seguem em aberto. **Adendo (mesmo dia):** rótulo na barra passa de "Blog" para **"Blog do MARÉ"** (pedido da editoria; URL segue `blog.html`).
-||||||| parent of 8fcd4fd (§151 Decisão 3 do teste do objeto: família julgada pelo município, nunca pelo alerta da UF (caso Salvador) — ex-ante, travado em teste)
 ## §150 · Metodologia de triagem das pistas: nível de confiança A/B/C, fila por município, regra contra falsos negativos · 22/09/2026
 
 Classe **método editorial + código**, a pedido direto ("as pistas, nós vamos decidir se entram ou não, construindo uma metodologia; cuidado com falsos negativos"). Seção pública nova: METODOLOGIA §40.
