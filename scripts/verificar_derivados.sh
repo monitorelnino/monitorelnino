@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.."
 # ainda não comitados): não compara com o git; regenera a cadeia e exige que uma
 # SEGUNDA regeneração não mude nada (derivados são função pura dos dados desta rodada).
 MODO="${1:-git}"
-export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd)).timestamp()))")}"
+export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd),tzinfo=datetime.timezone.utc).timestamp()))")}"
 python3 recalcular_mare.py --write >/dev/null
 python3 gerar_monitor_saude.py >/dev/null
 python3 gerar_resposta.py >/dev/null

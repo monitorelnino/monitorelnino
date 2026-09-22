@@ -131,3 +131,7 @@ jobs:
           python3 revisar_pistas.py --autoteste
           python3 gerar_card_municipios.py --autoteste
           python3 seguir_pistas.py --autoteste
+          # §163 (22/09/2026): o self-test do juiz passa a ser bloqueante. O cenário 6 confere que a
+          # cadeia de derivados que ele regenera é a MESMA de scripts/verificar_derivados.sh —
+          # divergir foi o que deixou o portão 12 vermelho na main.
+          python3 julgar_e_aplicar_descobertas.py --self-test

@@ -412,13 +412,13 @@ def _resumo_verificacao(out):
               "totais_por_nivel": tot, "por_uf": por_uf, "niveis_acima_do_padrao": acima,
               "ultima_rodada_log": ult, "fontes_suspensas_defeso_ultima_rodada": suspensas,
               "fila_citacao_incompleta": fila, "varredura_diarios": varredura}
-    with open(RAIZ / "data" / "verificacao_resumo.json", "w", encoding="utf-8") as f:
+    with open(RAIZ / "data" / "verificacao_resumo.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump(resumo, f, ensure_ascii=False, indent=1); f.write("\n")
     return resumo
 
 def regravar_verificacao_municipal():
     out = _recomputar_verificacao_em_memoria()
-    with open(RAIZ / "data" / "verificacao_municipal.json", "w", encoding="utf-8") as f:
+    with open(RAIZ / "data" / "verificacao_municipal.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump(out, f, ensure_ascii=False, indent=1); f.write("\n")
     _resumo_verificacao(out)
     return out
@@ -431,16 +431,16 @@ def main():
     alvo_pct = RAIZ / "data" / "percentual_uf.json"
     alvo_rob = RAIZ / "data" / "robustez_mc.json"
     if modo == "--write":
-        json.dump(novo, open(alvo, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-        json.dump(pct_derivado, open(alvo_pct, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-        json.dump(robustez, open(alvo_rob, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        json.dump(novo, open(alvo, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        json.dump(pct_derivado, open(alvo_pct, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        json.dump(robustez, open(alvo_rob, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
         print(f"data/indice.json, data/percentual_uf.json e data/robustez_mc.json regravados · média nacional {media:.1f}")
         # 03/09/2026: o fallback estático do medidor do herói (index.html) é DERIVADO do índice
         _p = RAIZ / "index.html"; _h = _p.read_text(encoding="utf-8"); _m = f"{media:.1f}"; _mbr = _m.replace(".", ",")
         _h2 = re.sub(r'(id="gaugeNum">)[\d,]+(<)', rf"\g<1>{_mbr}\g<2>", _h, count=1)
         _h2 = re.sub(r'data-alvo="[\d.]+" style="--galvo:[\d.]+;"', f'data-alvo="{_m}" style="--galvo:{_m};"', _h2, count=1)
         _h2 = re.sub(r'aria-label="Barra de progresso: MARÉ nacional em [\d,]+ de 100"', f'aria-label="Barra de progresso: MARÉ nacional em {_mbr} de 100"', _h2, count=1)
-        if _h2 != _h: _p.write_text(_h2, encoding="utf-8"); print(f"index.html: fallback do medidor regravado ({_mbr})")
+        if _h2 != _h: _p.write_text(_h2, encoding="utf-8", newline="\n"); print(f"index.html: fallback do medidor regravado ({_mbr})")
         vm = regravar_verificacao_municipal()
         print(f"data/verificacao_municipal.json regravado (derivado) · {len(vm)} municípios")
         # Selos SVG são função pura do índice: quem regrava o índice regrava os selos

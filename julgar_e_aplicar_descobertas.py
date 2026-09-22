@@ -133,26 +133,67 @@ def eh_estadual(rotulo):
     return rotulo.startswith("A-lac") or rotulo.startswith("C-estado-amplo")
 
 
+# Cadeia canônica de derivados (§163, 22/09/2026). FONTE DE VERDADE: scripts/verificar_derivados.sh
+# — o portão 12 roda exatamente esta sequência e cobra `git diff --exit-code`. Manter as duas em
+# sincronia não é disciplina: é self-test (ver cenário 6 em self_test()).
+CADEIA_DERIVADOS = (
+    ("recalcular_mare.py", "--write"),
+    ("gerar_monitor_saude.py",),
+    ("gerar_resposta.py",),
+    ("gerar_prioritarios.py",),
+    ("gerar_contadores_financiamento.py",),
+    ("gerar_feeds.py",),
+    ("gerar_dados_abertos.py",),
+    ("gerar_card_municipios.py",),
+    ("gerar_pdf_indice.py",),
+    ("gerar_pdf_metodologia.py",),
+    ("scripts/carimbar_assets.py",),
+    ("gerar_blog.py",),
+    ("scripts/gerar_manifesto.py",),
+)
+
+
+def cadeia_do_portao12():
+    """Lê a sequência de geradores de scripts/verificar_derivados.sh (só o primeiro bloco,
+    antes do modo --idempotencia). Função pura sobre o texto do script; usada pelo self-test."""
+    texto = (RAIZ / "scripts" / "verificar_derivados.sh").read_text(encoding="utf-8")
+    passos = []
+    for linha in texto.splitlines():
+        if linha.startswith('if [ "$MODO"'):
+            break
+        m = re.match(r"python3 (\S+\.py)((?: --\S+)*)\s*(?:>\s*/dev/null)?\s*(?:#.*)?$", linha.strip())
+        if m:
+            passos.append((m.group(1), *m.group(2).split()))
+    return tuple(passos)
+
+
 def sincronizar_derivados():
     """22/09/2026 (§158, causa real da reversão de Feira de Santana/BA na cadência #7): o juiz aplicava em
     municipios.json e ia direto aos portões — dados-abertos/municipios.csv ficava com 265 linhas contra 266
     no JSON e verificar_consistencia.py reprovava, com razão. TODA aplicação automática municipal estava
     condenada a ser revertida. Regenera, antes dos portões, exatamente os derivados que o workflow regenera
-    depois da coleta. Retorna a saída (para o log)."""
+    depois da coleta. Retorna a saída (para o log).
+
+    22/09/2026 (§163): a lista era curta demais — só recalcular_mare, gerar_dados_abertos e
+    gerar_card_municipios. gerar_prioritarios, gerar_feeds e os demais rodam ANTES do juiz, em
+    atualizar.py, e nunca mais depois: quando o juiz aplicava um município, o histórico público,
+    os feeds e a contagem de prioritários ficavam para trás e o portão 12 ficava vermelho na main.
+    Agora a lista é a cadeia canônica inteira (CADEIA_DERIVADOS), conferida contra
+    scripts/verificar_derivados.sh pelo self-test — divergência é erro, não silêncio."""
     import os, datetime as _dt
     env = dict(os.environ)
     try:
         dd, mm, aa = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8"))["corte"].split("/")
-        env.setdefault("SOURCE_DATE_EPOCH", str(int(_dt.datetime(int(aa), int(mm), int(dd)).timestamp())))
+        env.setdefault("SOURCE_DATE_EPOCH", str(int(_dt.datetime(int(aa), int(mm), int(dd), tzinfo=_dt.timezone.utc).timestamp())))
     except Exception:  # noqa: BLE001
         pass
     saida = []
-    for cmd in (["python3", "recalcular_mare.py", "--write"], ["python3", "gerar_dados_abertos.py"],
-                ["python3", "gerar_card_municipios.py"]):
-        if not (RAIZ / cmd[1]).exists():
+    for passo in CADEIA_DERIVADOS:
+        if not (RAIZ / passo[0]).exists():
             continue
+        cmd = [sys.executable, *passo]
         r = subprocess.run(cmd, cwd=RAIZ, capture_output=True, text=True, env=env)
-        saida.append(f"$ {' '.join(cmd)}\n{r.stdout[-400:]}\n{r.stderr[-400:]}")
+        saida.append(f"$ python3 {' '.join(passo)}\n{r.stdout[-400:]}\n{r.stderr[-400:]}")
     return "\n".join(saida)
 
 
@@ -640,7 +681,18 @@ def self_test():
         assert r5["decisao"] == "FILA_HUMANA" and "citação incompleta" in r5["motivo"]
         print("✓ self-test OK — EX_ANTE confiante mas sem número/data vai para fila (citação incompleta)")
 
-    print("\n✓ self-test do orquestrador OK — 5 cenários cobertos (aplicar exigiria banco real; "
+    # 6) §163: a cadeia que o juiz regenera tem de ser a MESMA que o portão 12 cobra.
+    #    Divergência aqui foi a causa do portão 12 vermelho na main em 22/09/2026 (histórico
+    #    público, feeds e prioritários parados depois que o juiz aplicou Feira de Santana/BA).
+    do_portao = cadeia_do_portao12()
+    assert do_portao, "não consegui ler a cadeia de scripts/verificar_derivados.sh"
+    assert CADEIA_DERIVADOS == do_portao, (
+        "cadeia do juiz diferente da do portão 12:\n"
+        f"  juiz   : {[' '.join(p) for p in CADEIA_DERIVADOS]}\n"
+        f"  portão : {[' '.join(p) for p in do_portao]}")
+    print(f"✓ self-test OK — cadeia de derivados do juiz idêntica à do portão 12 ({len(do_portao)} passos)")
+
+    print("\n✓ self-test do orquestrador OK — 6 cenários cobertos (aplicar exigiria banco real; "
           "ver classificador_natureza.py e verificar_recorrencia_uf.py para os self-tests de aplicação).")
 
 

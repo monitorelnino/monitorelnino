@@ -161,9 +161,9 @@ def gerar():
     tabs = tabelas(dados)
     SAIDA.mkdir(exist_ok=True)
     for nome, (linhas, campos, _) in tabs.items():
-        (SAIDA / f"{nome}.csv").write_text(_csv(linhas, campos), encoding="utf-8")
-    (SAIDA / "datapackage.json").write_text(json.dumps(datapackage(tabs, corte), ensure_ascii=False, indent=1), encoding="utf-8")
-    (RAIZ / "CITATION.cff").write_text(citation(corte), encoding="utf-8")
+        (SAIDA / f"{nome}.csv").write_text(_csv(linhas, campos), encoding="utf-8", newline="\n")
+    (SAIDA / "datapackage.json").write_text(json.dumps(datapackage(tabs, corte), ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
+    (RAIZ / "CITATION.cff").write_text(citation(corte), encoding="utf-8", newline="\n")
     return {nome: len(linhas) for nome, (linhas, _, _) in tabs.items()}
 
 
