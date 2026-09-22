@@ -61,6 +61,13 @@ jobs:
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt --quiet
         if: steps.fase.outputs.rodar == '1'
+      # 22/09/2026 (§156, achado na rodada #6): o juiz roda os portões em Node após aplicar; sem node_modules,
+      # verificar_estrutura.js falha com MODULE_NOT_FOUND e TODA aplicação automática é revertida (6 planos reais).
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        if: steps.fase.outputs.rodar == '1'
+        with: { node-version: "22" }
+      - run: npm ci
+        if: steps.fase.outputs.rodar == '1'
       - name: Subir SearXNG efêmero
         if: steps.fase.outputs.rodar == '1'
         id: searxng
