@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §162 · A prova de Feira de Santana/BA, que o juiz aplicou sem preservar: portão de evidências volta ao verde · 22/09/2026
+
+Classe **correção de integridade da prova**. Nenhum campo de julgamento tocado; média nacional inalterada: 45,2.
+
+**O portão estava vermelho na `main`.** `verificar_evidencias.py`, bloqueante desde 15/09/2026, acusava `1 de 92 registro(s) pontuável(is) com URL sem evidência preservada — Feira de Santana/BA`. O registro entrou em `data/municipios.json` na rodada automática de 22/09 às 20:20 UTC (`e19fcdd`) como `plano`, canal `DOM`, com a URL do diário no Querido Diário — e **sem `hash_evidencia`**. É o outro lado do §158: o juiz passou a aplicar o município sozinho, mas a preservação da prova ficou de fora do caminho.
+
+**Por que não se resolvia sozinho.** `preservar_evidencias.py` existe desde a v2.2.4 (§3.8) e não é chamado por **nenhum** dos workflows — nem a cadência, nem os portões. Enquanto ninguém o rodasse à mão, o vermelho ficava; e como o portão só roda quando o PR mexe em dado, o próximo PR de dado é que iria descobrir.
+
+**Feito.** `preservar_evidencias.py` baixou o documento (3,0 MB), guardou a cópia em `evidencias/b4c95d43…pdf`, indexou em `data/evidencias.json` (url, origem, data de preservação, tamanho) e gravou o `hash_evidencia` no registro. É a única edição programática permitida em `municipios.json` fora de `aplicar_revisao.py`, justamente porque não altera julgamento: categoria, documento, data, fonte e canal seguem como o juiz os deixou. O portão fecha em `✓ EVIDÊNCIAS OK — 92 registro(s) pontuável(is) com URL, todos com evidência preservada; 1960 item(ns) íntegro(s)`.
+
+**Lacuna declarada.** A extração de texto do PDF (§10.1, `preservar_evidencias.py --ler`) **não** foi feita: 93 dos 95 itens com URL de PDF têm o texto extraído, e os dois que faltam são este e o Plancon de SE preservado em 03/09. Rodar `--ler` aqui arrastaria o item de SE junto, que é outro assunto. `--ler` também não está em workflow nenhum.
+
+**Nota de procedência.** Gerado numa máquina Windows, com dois artefatos corrigidos à mão porque os utilitários de escrita não são portáveis: `coletores_base.gravar()` abre o arquivo em modo texto e escreveu `data/*.json` inteiros em CRLF, e `preservar_evidencia()` gravou `"arquivo"` com barra invertida (`evidencias\…`), que no runner Linux viraria "arquivo ausente" e deixaria o portão vermelho de novo. Os dois consertos de verdade — `newline="\n"` na escrita e `as_posix()` no caminho, mais os cerca de 25 scripts que escrevem JSON sem passar por `gravar()` — ficam para correção própria.
+
 ## §161 · Três marcadores de conflito de merge saem do `CHANGELOG.md`: o que cada um escondia, conferido commit a commit · 22/09/2026
 
 Classe **correção de higiene do repositório**; nenhum dado, página, método ou número do índice muda. Média nacional inalterada: 45,1.
