@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-22",
- "total": 2169,
- "com_registro": 265,
- "com_imprensa": 72,
+ "total": 2170,
+ "com_registro": 266,
+ "com_imprensa": 73,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -5535,7 +5535,11 @@
    "nome": "Feira de Santana",
    "uf": "BA",
    "prioritario": true,
-   "categoria": "nao_localizado"
+   "categoria": "plano",
+   "documento": "DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026 Institui o Plano de Contingência do Município de Feira de Santana, e dá outras providencias.",
+   "url": "https://data.queridodiario.ok.org.br/2910800/2026-08-22/fd1e754992bd6eb995addc22ff3ed3dc40a7f166.pdf",
+   "data": "21/08/2026",
+   "fonte": "Diário Oficial do Município (via Querido Diário) — ato lido e classificado automaticamente em 22/09/2026 (§158)"
   },
   "2911105": {
    "nome": "Formosa do Rio Preto",
@@ -13902,6 +13906,21 @@
    "nome": "Redentora",
    "uf": "RS",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "4315453": {
+   "nome": "Relvado",
+   "uf": "RS",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Relvado apresenta estudo socioambiental e Plano de Contingência ...",
+     "url": "https://www.independente.com.br/artigo/relvado-apresenta-estudo-socioambiental-e-plano-de-contingencia-em-audiencia-publica",
+     "data": "22/09/2026",
+     "veiculo": "independente.com.br",
+     "nivel": "A"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "4315503": {

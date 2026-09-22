@@ -570,7 +570,7 @@
    "trecho": "DE SANTANA \ngarante a autenticidade deste documento quando visualizado diretamente no portal \nwww.diariooficial.feiradesantana.ba.gov.br \n\n3 \n\nDECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026 \n                                        \n \n\nInstitui o Plano de Contingência do Município de Feira de \nSantana, e ",
    "hash_evidencia": "391c0d3779ea0db78034eab56b29995789704f7090f4ee1970ea533cd3461a14",
    "registrado_em": "2026-09-03",
-   "status": "revertida_erro_portao",
+   "status": "aplicada_automaticamente",
    "triagem": "candidato_forte",
    "autoridade": "executivo",
    "objeto": "indefinido",
@@ -605,9 +605,10 @@
      "motivo": "ato publicado, ex-ante, citação completa de 2026, executivo, família do ciclo, município nomeado"
     },
     "juiz": {
-     "decisao": "REVERTIDA",
-     "motivo": "portão falhou após aplicar — desfeito de verdade em disco, ver log",
-     "detalhe_portoes": "$ node scripts/verificar_estrutura.js\n✓ ESTRUTURA OK — árvore íntegra, contêineres, masthead e rodapé consistentes em 12 página(s).\n\n\n$ python3 verificar_consistencia.py\nmunicípios=266 pontos=266 UFs pct=27 UFs índice=27 média MARÉ=45.2\nAVISOS:\n  ⚠ prévia single-file não encontrada — checagem de paridade pulada (normal fora da sessão de edição)\nERROS:\n  ✗ dados abertos: municipios.csv tem 265 linha(s), JSON tem 266\n\n"
+     "decisao": "APLICADA",
+     "motivo": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+     "numero": "DECRETO Nº 14.665",
+     "data": "21/08/2026"
     },
     "resultado": "preparada"
    }
@@ -2165,6 +2166,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -2228,6 +2235,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -2329,6 +2342,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -2422,6 +2441,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -2470,6 +2497,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -2592,6 +2627,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -2723,6 +2766,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -2772,6 +2821,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -2821,6 +2876,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -2870,6 +2931,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -2949,6 +3016,14 @@
     "numero": null,
     "data_ato": null,
     "citacao_completa": false
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -2999,6 +3074,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -3048,6 +3131,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -3093,6 +3184,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -3138,6 +3237,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 1,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -3334,6 +3441,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -3429,6 +3542,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -3627,6 +3748,12 @@
     "numero": null,
     "data_ato": null,
     "citacao_completa": false
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -3793,6 +3920,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -3838,6 +3971,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "22/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -4916,7 +5055,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "01f42ba144"
+   "id": "01f42ba144",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "31/07/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "paração para o Fenômeno El Niño Setembro Amarelo: - Camboriú promove ação de acolhimento e cuidado em saúde mental Prevenção - Defesa Civil apresenta Plano de Contingência para a comunidade em audiência na Câmara de Vereadores Tempo em SC - Frio persiste em Santa Catarina nesta semana e chuva forte retorna a partir de sexta Meio Ambiente - Camboriú e Balneário lançam licitação para construção do Parque Inundável Obras no saneamento: - O desconforto passa, mas os benefícios ficam Município lança o Plano &#8220;Camboriú em Alerta ao El Niño&#8221; Por Fabiany Smania | 31/07/2026 16:40 Ouça agora",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Camboriú",
@@ -4963,7 +5126,20 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "027ed149de"
+   "id": "027ed149de",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Caçador",
@@ -5011,7 +5187,31 @@
     "ato_formal"
    ],
    "alertas": [],
-   "id": "092f7415f2"
+   "id": "092f7415f2",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "30/08/2026"
+    },
+    "numero": null,
+    "data_ato": "2023",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "didas previstas estavam o reforço no monitoramento das condições meteorológicas, a limpeza e manutenção de sistemas de drenagem urbana e a revisão do plano de contingência municipal. Previsão é de chuva intensa e volumes até 120 mm até sábado (15). Foto: Enchente 2023/Divulgação/ND Mais Estão sendo organizados abrigos temporários, a preparação de equipes de resposta e a realização de intervenções viárias preventivas, com atenção especial às rotas utilizadas em situações de transbordamento de rios. A Defesa Civil está fazendo uma ação de orientação para os moradores acompanharem os alertas ofic",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Rio do Sul",
@@ -5062,7 +5262,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "bb82c0a14b"
+   "id": "bb82c0a14b",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "11/09/2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "ivulgadas pela Defesa Civil de Santa Catarina e já trabalha em medidas preventivas para proteger a população. Publicidade Veja também: Celesc reforça plano de contingência para enfrentar possíveis impactos do El Niño Brasil enfrenta Haiti em busca da primeira vitória na Copa do Mundo 2026 Sete áreas de risco estão sendo monitoradas Segundo Gardini, a Defesa Civil identificou sete pontos considerados críticos em Videira, que poderão receber intervenções caso haja necessidade. Entre as principais ações previstas está o desassoreamento do Rio das Pedras, um dos locais historicamente mais afetados",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Mafra",
@@ -5087,7 +5311,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "9083d2246b"
+   "id": "9083d2246b",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "22/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Defesa Civil de Mafra apresenta plano de contingência para enchentes e alagamentos - Riomafra Mix® | Orgulho de ser Riomafrense! Buscando por? Procure por títulos, chamadas e conteúdo das matérias. terça-feira, 22 de setembro de 2026 Envie sua notícia Anuncie Fale conosco Entrar Últimas Rio Negro Mafra Campo do Tenente Itaiópolis Emprego Esporte Obituário Policial Promoções Publieditorial Entrar Navegação home notícias Rio Negro Mafra Campo do Tenente Itaiópolis Emprego Esporte Obituário Policial Promoções Publieditorial ver todas as notícias --> opinião Adriana Moro Fala Doutor! Jesley Dias P",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Canoinhas",
@@ -5112,7 +5360,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "446cb04b13"
+   "id": "446cb04b13",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "22/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "s no município. O planejamento também inclui espaços para acolhimento de animais em caso de enchentes. Zenilda ressaltou que o município trabalha com plano de contingência e definição clara de prioridades em situações emergenciais. “Precisamos primeiro salvar vidas, depois atender os MEIs, organizar abrigamentos e assim por diante”, disse. Outro projeto em andamento é o desassoreamento do Rio Canoinhas, que deve receber mais de R$ 12 milhões em recursos viabilizados pelo Governo do Estado, em ação conjunta entre as prefeituras de Canoinhas e Três Barras . Publicidade Anterior Identificado moto",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pomerode",
@@ -5136,7 +5408,31 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "b16e877d25"
+   "id": "b16e877d25",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": "Decreto Estadual nº 1.530",
+    "data_ato": "18/05/2026",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'situação de emergência' + recital de dano ocorrido",
+    "trecho_documento": "ios de calor intenso. Planos de preparação para famílias e municípios Outro destaque é a área &#8220;Planos de Preparação&#8221;, que disponibiliza o Plano de Contingência (Plancon), documento que reúne estratégias e protocolos adotados pela Defesa Civil para resposta a desastres. Além disso, a página oferece acesso ao Plano Emergencial Familiar, que orienta as famílias sobre como se preparar antecipadamente para situações de risco, incluindo a definição de rotas de fuga, montagem de kits de emergência e estabelecimento de pontos de encontro. &gt;&gt;&gt; Siga o canal do Jornal de Pomerode no ",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Ituporanga",
@@ -5161,7 +5457,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "8fdf540c39"
+   "id": "8fdf540c39",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "22/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "s de risco entram na pauta Além disso, o pedido solicita detalhes sobre ações da Defesa Civil Municipal . Os parlamentares também querem saber se h á plano de contingência atualizado para enfrentar enchentes. Por outro lado, o documento cobra a existência de levantamento técnico sobre áreas de risc o. Entre os pontos, estão regiões com possibilidade de deslizamentos e locais com histórico de alagamentos. Informação à população também é questionada Da mesma forma, os vereadores questionam se essas informações estão sendo divulgadas à população por canais oficiais. Assim, o pedido busca garantir",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Ituporanga",
@@ -5186,7 +5506,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "73b34a28d6"
+   "id": "73b34a28d6",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "22/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "s da Defesa Civil. 1779737819_mg820wklpsmj0hxj_extrato Baixar Veja também Rio do Sul Diante do El Niño, lojistas de Rio do Sul são orientados a fazer plano de contingência Rio do Sul Motorista que atropelou e matou professora em Rio do Sul é condenado Rio do Sul Rio do Sul deve iniciar a abertura de novos trechos de transenchentes em junho Comentar Cancelar resposta O seu endereço de e-mail não será publicado. Campos obrigatórios são marcados com * Comentário * Nome * E-mail * Salvar meus dados neste navegador para a próxima vez que eu comentar. Publicações relacionadas Ituporanga Associação d",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Guabiruba",
@@ -5212,7 +5556,31 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "id": "614dc28f8e"
+   "id": "614dc28f8e",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2018"
+    },
+    "numero": null,
+    "data_ato": "2018",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "MUNICÍPIO DE GUABIRUBA Estado de Santa Catarina REVISÃO DO PLANO MUNICIPAL SANEAMENTO BÁSICO RELATÓRIO FINAL Guabiruba, Novembro de 2018. Revisão do Plano Municipal de Saneamento Básico Prefeitura Municipal de Guabiruba – Santa Catarina REVISÃO DO PLANO MUNICIPAL DE SANEAMENTO BÁSICO RELATÓRIO FINAL MÊS DE NOVEMBRO DE 2018 Prefeitura Municipal de Guabiruba Rua Brusque, 344 – Centro. Guabiruba – Santa Catarina CEP: 88.360-000 Fone: (47) 3308-3100 http://www.guabiruba.sc.gov.br/ Ampla Assessoria e Planejamento Ltda. Rua Fernando Machado n° 73, sala 603, Centro. Florianópolis/SC CEP: 88.010-510 w",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Capinzal",
@@ -5236,7 +5604,31 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "d915e221c3"
+   "id": "d915e221c3",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "23/06/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Rádio Capinzal - Ouro apresenta Plano de Contingência da Defesa Civil e reforça preparação para eventos climáticos Início Notícias Agricultura Agronegócio Associativismo Bombeiros Cinquentenário Coronavírus Cultura Economia Educação Eleições 2020 Eleições 2022 Eleições 2024 Eleições 2026 Entidades Esportes Fé Geral Geral Habitação Infraestrutura Jornal A Semana Justiça Legislativo Loterias Luto MANIFESTAÇÃO Meio Ambiente Memória - Jornal A Semana Opinião Outubro Rosa Ouvinte-Repórter Personalidades Polícia Política Produção PUBLICAÇÃO LEGAL Publicidade Religião Santa Catarina Saúde Segurança S",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Maracajá",
@@ -5259,7 +5651,20 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "id": "ee5c21214a"
+   "id": "ee5c21214a",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Ouro",
@@ -5284,7 +5689,16 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "9c0fd223ae"
+   "id": "9c0fd223ae",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Ouro",
@@ -5310,7 +5724,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "39cae9c286"
+   "id": "39cae9c286",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "23/06/2026"
+    },
+    "numero": null,
+    "data_ato": "23/06/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Rádio Capinzal - Ouro apresenta Plano de Contingência da Defesa Civil e reforça preparação para eventos climáticos Início Notícias Agricultura Agronegócio Associativismo Bombeiros Cinquentenário Coronavírus Cultura Economia Educação Eleições 2020 Eleições 2022 Eleições 2024 Eleições 2026 Entidades Esportes Fé Geral Geral Habitação Infraestrutura Jornal A Semana Justiça Legislativo Loterias Luto MANIFESTAÇÃO Meio Ambiente Memória - Jornal A Semana Opinião Outubro Rosa Ouvinte-Repórter Personalidades Polícia Política Produção PUBLICAÇÃO LEGAL Publicidade Religião Santa Catarina Saúde Segurança S",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Lindóia do Sul",
@@ -5333,7 +5771,27 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "3f4fdbbfa2"
+   "id": "3f4fdbbfa2",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE LINDÓIA DO SUL SECRETARIA MUNICIPAL DE SAÚDE PLANO MUNICIPAL DE SAÚDE 2026-2029 Novembro de 2025 EXECUTIVO MUNICIPAL PREFEITO MUNICIPAL: FLÁVIO LUIZ BENINI VICE-PREFEITO: MARCIANO CANTON SECRETÁRIA MUNICIPAL DE SAÚDE: IVANICE ÂNGELA PECCIN IDENTIFICAÇÃO: PLANO MUNICIPAL DE SAÚDE 2026-2029 NOME DA ENTIDADE EXECUTORA: PREFEITURA MUNICIPAL DE LINDÓIA DO SUL SECRETARIA MUNICIPAL DE SAÚDE EQUIPE TÉCNICA RESPONSÁVEL PELA ELABORAÇÃO: Rita de Cássia Oliveira Franceschina Rayana Wastner Pereira Ivanice Ângela Peccin Ronaldo Piscini FUNÇÕES Enfermeira Est",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pedras Grandes",
@@ -5359,7 +5817,31 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "id": "2a96d9194b"
+   "id": "2a96d9194b",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "vis&otilde;es para os pr&oacute;ximos meses&rdquo;, comenta.&nbsp; Pedras Grandes tem um Plano de Conting&ecirc;ncia de Prote&ccedil;&atilde;o e Defesa Civil que estabelece os protocolos para monitorar, alertar e responder a desastres como inunda&ccedil;&otilde;es, alagamentos e deslizamentos. O documento organiza as rotas de fuga, a localiza&ccedil;&atilde;o dos abrigos e as responsabilidades de &oacute;rg&atilde;os de seguran&ccedil;a e sa&uacute;de. Plano alerta para urg&ecirc;ncia na retirada de seixo do Rio Tubar&atilde;o Em vistoria realizada pelos t&eacute;cnicos da Funda&ccedil;&atilde",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Imperatriz",
@@ -5383,7 +5865,31 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "acc5082fbd"
+   "id": "acc5082fbd",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": "Lei nº 8.080",
+    "data_ato": "1990",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "talecimento da participação e do controle social do SUS; Desenvolvimento de ações voltadas às populações em situação de maior vulnerabilidade social. Dessa forma, o Plano Municipal de Saúde 2026–2029 de Imperatriz/MA apresenta diretrizes, objetivos, metas e indicadores voltados ao fortalecimento da Atenção Primária à Saúde; à qualificação da atenção especializada e hospitalar; à ampliação das ações de vigilância em saúde; à melhoria da gestão do trabalho e da educação na saúde; e ao aprimoramento da governança, da regulação e do financiamento do SUS no município. O presente instrumento reafirm",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (1990)"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: data do ato incompleta (1990)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Caxias",
@@ -5434,7 +5940,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "7e83fdc810"
+   "id": "7e83fdc810",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "26/04/2026"
+    },
+    "numero": null,
+    "data_ato": "2024",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "anifeste de forma forte, o que amplia o risco de alagamentos, enxurradas e cheias de rios.&nbsp; Atualmente, a Defesa Civil trabalha na elaboração do Plano de Contingência de Caxias do Sul . O documento irá guiar as ações antes, durante e depois de situações de desastres ou emergências. A Hopeful, startup da PUC-RS, foi contratada para auxiliar no desenvolvimento do documento.&nbsp; — Temos a meta de finalizar o projeto até setembro. Estamos mapeando todos os desastres previstos no código Brasileiro de Desastre e criando um protocolo operacional para cada situação. Simulados de evacuação em re",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Porto Alegre",
@@ -5459,7 +5989,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "0c4848ddc3"
+   "id": "0c4848ddc3",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "17/04/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Porto Alegre prepara plano de contingência para possíveis impactos do El Niño no segundo semestre deste ano | GZH Terça-feira, 22 de set de 2026 DESTAQUES cantor rick da dupla rick e renner zuenir ventura Porto Alegre 18.7º Últimas notícias Zero Hora Edição do Dia Gaúcha Vídeos Esportes NOVO Destaques Produtos Regiões Colunistas Editorias CONTEÚDOS PATROCINADOS Aplicativos Assinantes Atendimento ao assinante Fale com o Clube do Assinante Fale com a Redação Quem é quem Anuncie seu negócio Práticas editoriais em GZH Perguntas Frequentes ECAD Porto Alegre AO VIVO &quot;Chamada Geral 2ª Edição&quo",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Porto Alegre",
@@ -5484,7 +6038,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "1214c1f8a2"
+   "id": "1214c1f8a2",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "ar uma série de encontros com os presidentes do Ministério Público, Tribunal de Contas e Tribunal de Justiça, para informar e buscar parcerias para o plano de contingência contra chuvas da Capital . Ele também irá solicitar uma audiência com o governador Eduardo Leite (PSD) para tratar do assunto . “Ontem (quarta) e anteontem (terça) eu passei toda a tarde no Centro Administrativo com o DMAE (Departamento Municipal de Água e Esgotos), a Defesa Civil e outros, discutindo um plano de contingência. Porque tem obras (anticheias) que foram feitas, outras que estão em andamento e outras que, inclusi",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pelotas",
@@ -5581,7 +6159,20 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "34fcb8dfdc"
+   "id": "34fcb8dfdc",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Santa Rosa",
@@ -5752,7 +6343,31 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "ee931a5f66"
+   "id": "ee931a5f66",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2015"
+    },
+    "numero": null,
+    "data_ato": "2015",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "BOM JESUS DOS PERDÕES PLANO MUNICIPAL DE SANEAMENTO BÁSICO E PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS SÓLIDOS 2015-2034 Analândia Itirapina Corumbataí CORUMBATAÍ Rio Claor Ipeúna Cordeirópolis Santa Gertrudes Santa Maria São Pedor Charqueada Artur JAGUARI da Serra Iracemápolis Nogueira Limeira Águas de Cosmópolis Holambra Santo Antônio São Pedor da Posse Monte Alegre Amparo do Sul PIRACICABA Piracicaba Santa Ameri N ca o n v a a Odessa Paulínia Jaguariúna Pedreira CAMANDUC Pi A nha IA lzinho Pedra T B o e le la do Itupeva Camanducaia Bárbara Saltinho Rio das d’Oeste Tuiuti Pedras Sumaré",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Dourados",
@@ -5778,7 +6393,20 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "id": "9dd3bf8ab8"
+   "id": "9dd3bf8ab8",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2019"
+    },
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": "2019",
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Naviraí",
@@ -5805,7 +6433,27 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "id": "19065cb6c1"
+   "id": "19065cb6c1",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "................................ 57 Tabela 29: Prospectiva de vazões médias de esgoto no horizonte de projeto para Naviraí/MS. ...... 58 Tabela 30: Geração total de esgoto no horizonte de projeto para Naviraí/MS. ................................... 58 Tabela 31: Projeção do volume de esgoto destinado a ETE. ................................................................... 59 Tabela 32: Estimativa de carga de DBO sem e com tratamento. ............................................................ 60 Tabela 33: Capacidade do Sistema de Esgotamento Sanitário de Naviraí/MS. .......................",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -5830,7 +6478,20 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "0a8db47e79"
+   "id": "0a8db47e79",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -5880,7 +6541,20 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "33884f648b"
+   "id": "33884f648b",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -5905,7 +6579,31 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "415d03ad94"
+   "id": "415d03ad94",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "maior vulnerabilidade social e territorial e atuação voltada à redução de riscos de desastres, perdas econômicas e colapsos em serviços essenciais. O Plano de Contingência de Enfrentamento ao El Niño (Plancon El Niño) integra a mesma estrutura. O documento estabelece fluxos de alerta precoce e mobilização entre secretarias municipais, concessionárias de serviços públicos, órgãos estaduais e federais e sociedade civil. Os cenários considerados incluem chuvas intensas, inundações, erosão costeira, ondas de calor, estiagens e focos de incêndio urbano. A Prefeitura também prevê instituir a Polític",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Valença",
@@ -5929,7 +6627,31 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "d80bcc1e3e"
+   "id": "d80bcc1e3e",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "o Corpo de Bombeiros Militar da Bahia e do Serviço Autônomo de Água e Esgoto (SAAE) participaram de uma reunião estratégica voltada à consolidação do Plano de Contingência, documento que orientará as ações de resposta diante de eventos climáticos extremos. O encontro foi realizado na sede da Secretaria Municipal de Mobilidade Urbana e Ordem Pública e teve como principal objetivo alinhar procedimentos entre os órgãos envolvidos, fortalecendo a capacidade de prevenção, monitoramento e resposta rápida em situações de emergência. A reunião foi conduzida pela diretora da Defesa Civil e engenheira c",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Valença",
@@ -5954,7 +6676,27 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "26c06b7006"
+   "id": "26c06b7006",
+   "preparacao": {
+    "data": "22/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "numero": null,
+    "data_ato": "2023",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "--> Valença fortalece plano de contingência para o El Niño e intensifica ações de prevenção às queimadas top of page Página inicial Nossa História Programação Fotos Top 10 Vídeos Notícias Valença fortalece plano de contingência para o El Niño e intensifica ações de prevenção às queimadas 24 de jul. 2 min de leitura O encontro reuniu representantes da Defesa Civil Municipal, do Corpo de Bombeiros Militar da Bahia e do Serviço Autônomo de Água e Esgoto (SAAE), representado por seu diretor, João Batista, consolidando uma atuação integrada entre os órgãos para fortalecer a prevenção, a resposta rá",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Valença",
@@ -8600,6 +9342,57 @@
     "fonte_desconhecida",
     "municipio_na_url",
     "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Bozano",
+   "uf": "RS",
+   "ibge": "4302584",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://www.bozano.rs.gov.br/meio-ambiente/download/54/",
+   "trecho": "Bozano (RS), uma cidade que viu sua população residente ... urbana e rural do município de Bozano, é fundamental antecipar um plano de contingência para.",
+   "titulo": "REVISÃO E ATUALIZAÇÃO DO PLANO MUNICIPAL DE ...",
+   "registrado_em": "2026-09-22",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "ec5a28b7aa",
+   "nivel_confianca": "B",
+   "pontos_confianca": 5,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_na_url",
+    "plano_no_titulo"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Relvado",
+   "uf": "RS",
+   "ibge": "4315453",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://www.independente.com.br/artigo/relvado-apresenta-estudo-socioambiental-e-plano-de-contingencia-em-audiencia-publica",
+   "trecho": "Sep 11, 2026 ... Relvado apresenta estudo socioambiental e Plano de Contingência em audiência pública ... El Niño e sua relação com eventos climáticos.",
+   "titulo": "Relvado apresenta estudo socioambiental e Plano de Contingência ...",
+   "registrado_em": "2026-09-22",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "f2695b78ea",
+   "nivel_confianca": "A",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_imprensa",
+    "municipio_no_titulo",
+    "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
    "alertas": []

@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-22",
- "total_pistas": 268,
- "total_municipios": 158,
+ "total_pistas": 270,
+ "total_municipios": 160,
  "por_nivel": {
-  "A": 44,
-  "B": 174,
+  "A": 45,
+  "B": 175,
   "C": 50
  },
  "grupos": [
@@ -1478,6 +1478,38 @@
      "url": "https://www.aperibe.rj.leg.br/leis/legislacao-municipal/plano-municipal-de-saneamento-basico-de-aperibe.pdf",
      "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE APERIBÉ",
      "trecho": "urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4315453",
+   "municipio": "Relvado",
+   "uf": "RS",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "f2695b78ea",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.independente.com.br/artigo/relvado-apresenta-estudo-socioambiental-e-plano-de-contingencia-em-audiencia-publica",
+     "titulo": "Relvado apresenta estudo socioambiental e Plano de Contingência ...",
+     "trecho": "Sep 11, 2026 ... Relvado apresenta estudo socioambiental e Plano de Contingência em audiência pública ... El Niño e sua relação com eventos climáticos.",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -5172,6 +5204,37 @@
      "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
      "titulo": null,
      "trecho": "VOLUME II. Bom Jesus dos Perdões, 2015. ... O Plano de Contingência é um documento onde estão definidas as responsabilidades estabelecidas em uma.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4302584",
+   "municipio": "Bozano",
+   "uf": "RS",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "ec5a28b7aa",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.bozano.rs.gov.br/meio-ambiente/download/54/",
+     "titulo": "REVISÃO E ATUALIZAÇÃO DO PLANO MUNICIPAL DE ...",
+     "trecho": "Bozano (RS), uma cidade que viu sua população residente ... urbana e rural do município de Bozano, é fundamental antecipar um plano de contingência para.",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
