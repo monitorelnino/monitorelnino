@@ -18,7 +18,7 @@ const fs = require("fs"), path = require("path");
 const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("--listar");
 const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento.html", "monitor-de-riscos.html", "calendario-eleitoral.html",
-  "pesquisadores.html", "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+  "pesquisadores.html", "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 
 // Exceções: colocações técnicas ou oficiais que contêm uma palavra da lista, mas não são juízo.
 const EXCECOES = [/síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,

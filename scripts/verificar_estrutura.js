@@ -16,7 +16,7 @@ let __baseCss = null;
 function baseCssParaBreakpoints() { if (__baseCss === null) __baseCss = fs.readFileSync(path.join(RAIZ, "assets", "base.css"), "utf-8"); return __baseCss; }
 // 03/09/2026: YAML dos workflows sem chave duplicada (o GitHub recusa o arquivo inteiro)
 try { require("child_process").execSync("python3 scripts/validar_workflows.py", { cwd: RAIZ, stdio: "pipe" }); } catch (e) { console.log("  ✗ workflows inválidos: " + String(e.stdout || "")); process.exit(1); }
-const PADRAO = ["index.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "imprensa.html"]
+const PADRAO = ["index.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "imprensa.html", "blog.html"]
   .map(a => path.join(RAIZ, a));
 const arquivos = process.argv.length > 2 ? process.argv.slice(2) : PADRAO;
 
@@ -50,7 +50,7 @@ for (const arq of arquivos) {
     const rotulos = [...navM[1].matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map(m => m[1].trim());
     if (JSON.stringify(rotulos) !== JSON.stringify(NAV_ORDEM))
       falha(`${nome}: nav fora da ordem canônica (${rotulos.join(" · ")})`);
-    const ativa = navM[1].match(/<span class="ativa(?: [^"]*)?"[^>]*>([^<]+)<\/span>/) || (nome === "calendario-eleitoral.html" ? ["", "Calendário"] : null);
+    const ativa = navM[1].match(/<span class="ativa(?: [^"]*)?"[^>]*>([^<]+)<\/span>/) || (nome === "calendario-eleitoral.html" ? ["", "Calendário"] : nome === "blog.html" ? ["", "Blog"] : null)   // 22/09/2026: Blog do MARÉ publicado fora da barra, como o Calendário;
     if (nome !== "obrigado.html" && !ativa) falha(`${nome}: nav sem item ativo`);
   }
 

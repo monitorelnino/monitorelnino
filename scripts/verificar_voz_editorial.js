@@ -14,7 +14,7 @@ const RAIZ = path.join(__dirname, "..");
 const listar = process.argv.includes("--listar");
 const PAGINAS = ["index.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html",
   "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html",
-  "obrigado.html", "imprensa.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+  "obrigado.html", "imprensa.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 
 // Frases-marcador de ressalva metodológica que só devem aparecer uma vez por página (na
 // ficha ou numa nota dedicada) — não em cada legenda de figura. Lista curta e literal de

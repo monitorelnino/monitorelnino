@@ -266,6 +266,7 @@ def main():
     rodar([sys.executable, "gerar_selos.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_feeds.py", "--data", hoje], obrigatorio=True)
     rodar([sys.executable, "gerar_dados_abertos.py"], obrigatorio=True)
+    rodar([sys.executable, "gerar_blog.py"], obrigatorio=True)   # 22/09/2026: páginas dos textos, índice e feed do Blog do MARÉ (função pura de blog/posts/*.md)
 
     rodar(["node", "scripts/verificar_estrutura.js"], obrigatorio=True)
 
