@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §151 · Blog do MARÉ entra na barra de navegação, antes de Imprensa; quadros com a mesma borda superior, uma cor por eixo · 22/09/2026
+
+Classe **decisão editorial aplicada**. Depois de ver o protótipo (§149) nas capturas, a editoria aprovou a página e pediu: (1) publicá-la na barra, **antes de Imprensa** — rótulo "Blog", ordem canônica dos portões atualizada (as exceções de "página fora da barra" para `blog.html` em estrutura e acessibilidade saem); (2) manter as bordas com cor nos quatro quadros, mas **no mesmo formato**: borda superior de 3 px em todos, uma cor por eixo (musgo · antecipação, sintético · saúde, argila · resposta, seca · sinais físicos), com os modificadores `--acento-*-topo` em `base.css`. Nome final, assinatura dos textos e o texto de exemplo seguem em aberto.
 ## §150 · Metodologia de triagem das pistas: nível de confiança A/B/C, fila por município, regra contra falsos negativos · 22/09/2026
 
 Classe **método editorial + código**, a pedido direto ("as pistas, nós vamos decidir se entram ou não, construindo uma metodologia; cuidado com falsos negativos"). Seção pública nova: METODOLOGIA §40.
