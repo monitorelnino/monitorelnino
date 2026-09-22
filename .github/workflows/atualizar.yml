@@ -440,6 +440,7 @@ jobs:
       - name: Sincronizar índice antes do commit (garantia contra derivado desatualizado)
         run: |
           export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd)).timestamp()))")"
+          python3 triar_confianca_pistas.py   # §150: anota nível A/B/C e regenera a fila de revisão por município
           python3 recalcular_mare.py --write
           python3 recalcular_mare.py --check
           # 22/09/2026 (§148, achado no CI): --write pode mudar verificacao_municipal.json neste ponto;
