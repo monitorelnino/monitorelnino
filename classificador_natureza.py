@@ -70,7 +70,18 @@ RE_NUMERO_ATO = re.compile(
     r"(decreto|portaria|lei|resolução)\s*(estadual|municipal|est\.)?\s*[nº°.\s]*"
     r"(\d{1,3}(?:\.\d{3})*|\d+)", re.I)
 RE_DATA_COMPLETA = re.compile(r"\d{1,2}[/.]\d{1,2}[/.]\d{2,4}")
+# 22/09/2026 (§154): gramática padrão de diário oficial — "DE 21 DE AGOSTO DE 2026", "de 1º de setembro de 2026".
+# Sem isto, extrair_data devolvia só o ano e o registro público saía "ato 14.665, 2026" (caso Feira de Santana/BA).
+MESES = {"janeiro": 1, "fevereiro": 2, "marco": 3, "março": 3, "abril": 4, "maio": 5, "junho": 6, "julho": 7,
+         "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12}
+RE_DATA_EXTENSO = re.compile(r"\b(\d{1,2})[º°o]?\s+de\s+([a-zç]+)\s+de\s+(\d{4})\b", re.I)
 RE_DATA_ANO_SOLTO = re.compile(r"\b\d{4}\b")
+
+
+def data_extenso_para_numerica(m):
+    """'21 DE AGOSTO DE 2026' → '21/08/2026'; None se o mês não for reconhecido."""
+    mes = MESES.get(m.group(2).lower())
+    return f"{int(m.group(1)):02d}/{mes:02d}/{m.group(3)}" if mes else None
 
 
 def cita_instrumento_conhecido(texto_lower):
@@ -129,6 +140,10 @@ def extrair_data(texto):
     m_completa = RE_DATA_COMPLETA.search(texto)
     if m_completa:
         return m_completa.group(0)
+    for m_ext in RE_DATA_EXTENSO.finditer(texto):   # 22/09/2026: por extenso vence ano solto
+        d = data_extenso_para_numerica(m_ext)
+        if d:
+            return d
     m_ano = RE_DATA_ANO_SOLTO.search(texto)
     return m_ano.group(0) if m_ano else None
 
@@ -176,7 +191,11 @@ def self_test():
     assert citacao_completa("Decreto nº 123, de 15/07/2026")
     assert not citacao_completa("Comitê El Niño (decreto exato pendente de confirmação)")
     assert not citacao_completa("Plano de Contingência publicado")  # sem número nem data
-    print("✓ self-test OK — checagem de citação completa (número + data)")
+    # 22/09/2026 (§154): data por extenso normalizada — gramática de diário oficial (caso Feira de Santana/BA)
+    assert extrair_data("DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026") == "21/08/2026"
+    assert extrair_data("Decreto nº 12, de 1º de setembro de 2026") == "01/09/2026"
+    assert extrair_data("ciclo El Niño 2026/2027, de 15/08/2026") == "15/08/2026"  # numérica completa segue vencendo
+    print("✓ self-test OK — checagem de citação completa (número + data, inclusive por extenso)")
 
 
 if __name__ == "__main__":

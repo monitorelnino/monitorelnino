@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §154 · O juiz passa a ler PDF e datas por extenso — o diário oficial deixa de ser invisível (teste real: Feira de Santana/BA) · 22/09/2026
+
+Classe **encanamento que destrava método**. Decisão editorial de 22/09/2026 (metodologia sem intervenção humana para o caso claro): a máquina nunca pontua sem documento oficial verificado; para isso precisa conseguir LER o documento oficial.
+
+**Brecha 1 — PDF.** `buscar_texto()` do juiz (`julgar_e_aplicar_descobertas.py`) extraía só HTML por regex. Contagem real: **41 de 41** pistas do Querido Diário e 24 da busca web são PDF — invisíveis ao juiz, que devolvia texto de bytes binários ou nada. Agora detecta PDF por magic bytes (`%PDF-`), Content-Type ou extensão (servidores municipais mentem no tipo) e extrai com `pdfplumber` (já dependência; preserva espaçamento de palavras, ao contrário do pypdf nos PDFs-infográfico — nota em requirements.txt). Até 40 páginas / 60 mil caracteres; PDF só-imagem (escaneado sem OCR) vira "não obtido", nunca texto inventado.
+
+**Brecha 2 — data por extenso.** `classificador_natureza.extrair_data()` lia "DE 21 DE AGOSTO DE 2026" como "2026". O portão de citação já aceitava ano solto (não bloqueava), mas o registro público sairia "ato 14.665, 2026". Agora: numérica completa > por extenso (normalizada para dd/mm/aaaa, com "1º") > ano solto.
+
+**Brecha 3 — data da edição vs. data do ato** (achada no teste real): a primeira data do diário é a da EDIÇÃO ("DATA 22/08/2026"), que vem antes do decreto. `extrair_numero_e_data()` prefere a data na janela de 90 caracteres logo após o número do ato; cai para a busca global só sem data ali.
+
+**Teste real, não fixture.** `data.queridodiario.ok.org.br` está na rede permitida: baixado o diário de Feira de Santana/BA (edição 3605), lido como PDF, extraído "DECRETO Nº 14.665" / "21/08/2026", classificado EX_ANTE ("nomeia instrumento conhecido: plano de contingência, sem dano relatado"), citação completa. É o primeiro plano municipal da fila que o juiz consegue aplicar sozinho — na próxima rodada de cadência.
+
+**Teste.** Self-test do classificador (97 decretos de resposta reais, 0 falsos positivos) verde, com os casos novos de data; self-test do juiz 5/5; leitor de PDF testado com PDF real gerado em memória. Nota inalterada até a rodada aplicar.
+
 ## §153 · Fila de revisão humana das pistas: leitura assistida, decisões registradas, homônimos · 22/09/2026
 
 Classe **fluxo editorial + código** (`revisar_pistas.py`), a pedido direto ("vamos à fila de pistas").

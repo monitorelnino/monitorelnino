@@ -75,6 +75,13 @@ def buscar_texto(url, timeout=20):
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (monitor-el-nino-bot)"})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             raw = resp.read()
+            tipo = (resp.headers.get("Content-Type") or "").lower()
+        # 22/09/2026 (§154): diário oficial é PDF — 41/41 pistas do Querido Diário e 24 da busca web eram
+        # invisíveis ao juiz, que só lia HTML. pdfplumber já é dependência (coletores de boletim); detecta
+        # por magic bytes (%PDF), não só pelo Content-Type/.pdf, porque servidores municipais mentem no tipo.
+        if raw[:5] == b"%PDF-" or "application/pdf" in tipo or url.lower().split("?")[0].endswith(".pdf"):
+            texto = extrair_texto_pdf(raw)
+            return texto[:20000] if texto else None
         try:
             html = raw.decode("utf-8")
         except UnicodeDecodeError:
@@ -87,10 +94,37 @@ def buscar_texto(url, timeout=20):
         return None
 
 
+def extrair_texto_pdf(raw):
+    """Texto de um PDF em memória via pdfplumber (preserva espaçamento de palavras; pypdf separa
+    letras nos PDFs-infográfico das SES — nota em requirements.txt). Tolerante: None em falha
+    ou em PDF só-imagem (escaneado sem OCR — registrado como não obtido, nunca inventado)."""
+    try:
+        import io, pdfplumber
+        partes = []
+        with pdfplumber.open(io.BytesIO(raw)) as pdf:
+            for pg in pdf.pages[:40]:   # decretos têm poucas páginas; diários inteiros podem ter centenas
+                t = pg.extract_text() or ""
+                if t.strip():
+                    partes.append(t)
+                if sum(len(x) for x in partes) > 60000:
+                    break
+        texto = re.sub(r"\s+", " ", " ".join(partes)).strip()
+        return texto or None
+    except Exception:
+        return None
+
+
 def extrair_numero_e_data(texto):
-    """Tenta extrair número do ato e data do texto — usados na citação pública."""
+    """Tenta extrair número do ato e data do texto — usados na citação pública.
+    22/09/2026 (§154, achado no teste real com o diário de Feira de Santana/BA): a data logo APÓS o
+    número do ato ("DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026") é a data do ato; a primeira data do
+    texto costuma ser a da EDIÇÃO do diário ("DATA 22/08/2026"), que vem antes. Prefere a janela
+    imediata após o número; cai para a busca global só se ali não houver data."""
     m_num = RE_NUMERO_ATO.search(texto)
-    return (m_num.group(0).strip() if m_num else None, extrair_data(texto))
+    if not m_num:
+        return None, extrair_data(texto)
+    janela = texto[m_num.end(): m_num.end() + 90]
+    return m_num.group(0).strip(), (extrair_data(janela) or extrair_data(texto))
 
 
 def eh_estadual(rotulo):
