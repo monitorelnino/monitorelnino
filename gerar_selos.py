@@ -79,9 +79,9 @@ def gerar():
     corte = json.load(open(DATA / "meta.json", encoding="utf-8")).get("corte", "")
     SAIDA.mkdir(exist_ok=True)
     for uf, v in sorted(indice.items()):
-        (SAIDA / f"mare-{uf}.svg").write_text(svg_selo(estados[uf], uf, v["total"], corte), encoding="utf-8")
+        (SAIDA / f"mare-{uf}.svg").write_text(svg_selo(estados[uf], uf, v["total"], corte), encoding="utf-8", newline="\n")
     media = round(sum(v["total"] for v in indice.values()) / len(indice), 1)
-    (SAIDA / "mare-brasil.svg").write_text(svg_selo("Brasil", "BR", media, corte, nacional=True), encoding="utf-8")
+    (SAIDA / "mare-brasil.svg").write_text(svg_selo("Brasil", "BR", media, corte, nacional=True), encoding="utf-8", newline="\n")
     (SAIDA / "README.md").write_text(f"""# Selos do índice MARÉ
 
 Um selo SVG por estado (`mare-UF.svg`) e um nacional (`mare-brasil.svg`),
@@ -97,7 +97,7 @@ O selo diz o que o índice mede — preparação *demonstrável publicamente* �
 nunca "preparado". Não altere o número: o arquivo é regravado pelo pipeline e
 o site confere, a cada publicação, que cada selo bate com `data/indice.json`.
 Licença: MIT, como o restante do projeto.
-""", encoding="utf-8")
+""", encoding="utf-8", newline="\n")
     return len(indice) + 1
 
 

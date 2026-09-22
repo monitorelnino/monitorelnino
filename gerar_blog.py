@@ -217,7 +217,7 @@ def main(argv: list[str]) -> int:
             c.unlink()
     for c, conteudo in saida.items():
         c.parent.mkdir(parents=True, exist_ok=True)
-        c.write_text(conteudo, encoding="utf-8")
+        c.write_text(conteudo, encoding="utf-8", newline="\n")
     print(f"gerar_blog: {len(saida) - 2} texto(s) → blog/, data/blog/posts.json, feeds/blog.xml")
     return 0
 

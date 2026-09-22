@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §163 · O portão 12 estava vermelho na `main`: a cadeia de derivados do juiz era curta demais, e agora é a mesma do portão — travada em teste · 22/09/2026
+
+Classe **correção de encanamento com efeito no registro público**. Nenhum número do índice muda: a média nacional segue 45,2 e a Bahia já estava em 20,0 em `data/estados.json`. O que estava errado era o **histórico**, que não registrava a mudança já publicada.
+
+**O achado.** Ao rodar a suíte completa para o §162, `scripts/verificar_derivados.sh` (portão 12) fechou vermelho. Teste controlado antes de acusar a própria mudança: árvore separada em `origin/main` puro (`39b0047`), cadeia regenerada, **mesmos 9 arquivos, mesmos números** — o vermelho é anterior ao §162 e não vem dele.
+
+**Causa raiz: a mesma lista curta, escrita duas vezes.** `sincronizar_derivados()` do juiz (§158) regenerava `recalcular_mare --write`, `gerar_dados_abertos` e `gerar_card_municipios`. O passo "Sincronizar índice antes do commit" de `atualizar.yml` regenerava exatamente esses três. Mas `gerar_prioritarios`, `gerar_feeds`, `gerar_monitor_saude`, `gerar_resposta`, `gerar_contadores_financiamento`, `carimbar_assets` e `gerar_blog` rodam **antes** do juiz, dentro de `atualizar.py`, e nunca mais depois. Quando o juiz aplicava um município — Feira de Santana/BA, na rodada de 22/09 —, esses derivados ficavam parados: `data/historico_mudancas.json` sem os eventos "plano preventivo localizado" e "Bahia: MARÉ 18,6 → 20,0", `data/municipios_prioritarios.json` com `publicados: 170` e o município como `publicado: false`, `feeds/BA.xml` e `feeds/brasil.xml` sem as entradas, mais `dados-abertos/`, os dois PDFs e o manifesto. Um leitor via a nota nova no site e um histórico que não a explicava.
+
+**Conserto, com a lista num lugar só.** A cadeia do juiz passa a ser a **cadeia canônica inteira** (`CADEIA_DERIVADOS`, 13 passos), e o mesmo vale para o passo de sincronização da cadência. A fonte de verdade continua sendo `scripts/verificar_derivados.sh` — o que o portão 12 cobra. Para a lista não divergir de novo em silêncio, o `--self-test` do juiz ganha o **cenário 6**: lê a sequência do próprio `.sh` e exige igualdade; a lista antiga, de três passos, reprova. O self-test do juiz entra em `portoes.yml` como portão bloqueante (não estava).
+
+**Portabilidade, sem a qual nada disto podia ser feito fora do runner.** Regenerar a cadeia numa máquina Windows produzia lixo, por dois defeitos invisíveis no Linux: escrita em modo texto sem `newline="\n"` (o Python traduz `\n` para `\r\n` e o derivado sai em CRLF, com hash diferente do selado) e `str(Path.relative_to(...))`, que grava `evidencias\<hash>.pdf` — no Linux, nome de arquivo inexistente, e o portão de evidências vermelho. Corrigidas **30 chamadas** em oito arquivos (`coletores_base.py`, `recalcular_mare.py`, `gerar_feeds.py`, `gerar_dados_abertos.py`, `gerar_blog.py`, `gerar_selos.py`, `scripts/carimbar_assets.py`, `scripts/gerar_manifesto.py`). **Prova:** com só essas correções aplicadas sobre `origin/main`, a cadeia regenerada no Windows difere, **byte a byte**, apenas nos 9 arquivos genuinamente atrasados — todo o resto do repositório sai idêntico ao que o runner produz.
+
+**Teste.** Portão 12 verde em árvore limpa. Self-test do juiz 6/6, com o teste negativo do próprio cenário 6. Consistência, `recalcular_mare --check` (45,2), sinais, saúde, evidências, financiamento, painel, resposta, detector de defeso, workflows e manifesto (`--check`, PDFs bit-determinísticos inclusive) verdes. Os portões `.js` não rodaram nesta máquina — não há Node instalado; ficam com o CI.
+
 ## §162 · A prova de Feira de Santana/BA, que o juiz aplicou sem preservar: portão de evidências volta ao verde · 22/09/2026
 
 Classe **correção de integridade da prova**. Nenhum campo de julgamento tocado; média nacional inalterada: 45,2.

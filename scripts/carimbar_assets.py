@@ -40,7 +40,7 @@ def main() -> int:
     for pg in PAGINAS:
         t = pg.read_text(encoding="utf-8"); t2, n = carimbar(t)
         if t2 != t:
-            pg.write_text(t2, encoding="utf-8")
+            pg.write_text(t2, encoding="utf-8", newline="\n")
         total += n
     print(f"carimbar_assets: {total} referência(s) carimbada(s) em {len(PAGINAS)} página(s)")
     return 0

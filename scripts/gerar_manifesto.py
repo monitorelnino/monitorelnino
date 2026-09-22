@@ -136,7 +136,7 @@ def main():
             return 1
         print(f"✓ MANIFESTO CONFERE — {len(h(novo))} arquivos selados")
         return 0
-    MANIFESTO.write_text(novo, encoding="utf-8")
+    MANIFESTO.write_text(novo, encoding="utf-8", newline="\n")
     print(f"docs/MANIFEST_SHA256.txt regravado — {len([l for l in novo.splitlines() if not l.startswith('#')]) - 1 + 1} arquivos selados (PDFs incluídos)")
     return 0
 

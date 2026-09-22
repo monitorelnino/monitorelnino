@@ -443,13 +443,27 @@ jobs:
           python3 seguir_pistas.py --limite 20   # §159: notícia → documento (links, Querido Diário, busca no domínio oficial); SearXNG ainda no ar
           python3 triar_confianca_pistas.py   # §150: anota nível A/B/C e regenera a fila de revisão por município
           python3 revisar_pistas.py --preparar --relatorio   # §153: leitura assistida (busca doc, extrai nº/data, classifica) + docs/FILA_PISTAS.md
-          python3 recalcular_mare.py --write
-          python3 recalcular_mare.py --check
           # 22/09/2026 (§148, achado no CI): --write pode mudar verificacao_municipal.json neste ponto;
           # dados-abertos/verificacao_municipal.csv deriva dele e já tinha sido gerado antes — ficava
           # atrás. Regenera aqui também, e o manifesto por cima, para o commit sair consistente.
+          # 22/09/2026 (§163): a lista era curta (recalcular + dados abertos + card) e deixava de fora
+          # gerar_prioritarios, gerar_feeds e os demais, que só rodam ANTES do juiz, em atualizar.py.
+          # Quando o juiz aplicava um município, histórico público, feeds e contagem de prioritários
+          # ficavam para trás e o portão 12 fechava vermelho na main. Agora é a cadeia canônica
+          # inteira, na mesma ordem de scripts/verificar_derivados.sh — que é a fonte de verdade.
+          python3 recalcular_mare.py --write
+          python3 recalcular_mare.py --check
+          python3 gerar_monitor_saude.py
+          python3 gerar_resposta.py
+          python3 gerar_prioritarios.py
+          python3 gerar_contadores_financiamento.py
+          python3 gerar_feeds.py
           python3 gerar_dados_abertos.py
           python3 gerar_card_municipios.py   # §155
+          python3 gerar_pdf_indice.py
+          python3 gerar_pdf_metodologia.py
+          python3 scripts/carimbar_assets.py
+          python3 gerar_blog.py
           python3 scripts/gerar_manifesto.py
 
       - name: Commit das alterações de dados

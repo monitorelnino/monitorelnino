@@ -67,7 +67,7 @@ def gravar(nome, obj):
     p = DATA / nome
     ind = _indent_de(p)
     tmp = p.with_name(f"{p.name}.tmp{os.getpid()}")
-    with open(tmp, "w", encoding="utf-8") as f:
+    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
         json.dump(obj, f, ensure_ascii=False, indent=ind)
         f.write("\n")
     os.replace(tmp, p)
@@ -134,9 +134,9 @@ def registrar_fonte_suspensa(url: str, corpo: bytes, padrao: str) -> None:
     hoje = _dt.date.today().isoformat()
     f = d["fontes"].setdefault(url, {"primeira_deteccao": hoje, "ultima_deteccao": hoje, "padrao": padrao, "hash": h, "amostra": corpo[:2000].decode("utf-8", "replace")[:500], "suspensa": True, "setor": setor_da_url(url)})
     f.update({"ultima_deteccao": hoje, "padrao": padrao, "hash": h, "suspensa": True, "setor": f.get("setor") or setor_da_url(url)})
-    json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1); open(p, "a").write("\n")
+    json.dump(d, open(p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); open(p, "a", newline="\n").write("\n")
     (EVID).mkdir(parents=True, exist_ok=True)
-    (EVID / f"defeso_{h[:16]}.txt").write_text(corpo[:20000].decode("utf-8", "replace"), encoding="utf-8")
+    (EVID / f"defeso_{h[:16]}.txt").write_text(corpo[:20000].decode("utf-8", "replace"), encoding="utf-8", newline="\n")
 
 
 def url_ascii(url: str) -> str:
@@ -240,7 +240,7 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
         destino = EVID / f"{h}.{ext.lstrip('.')}"
         if not destino.exists():
             destino.write_bytes(conteudo)
-        item["arquivo"] = str(destino.relative_to(RAIZ))
+        item["arquivo"] = destino.relative_to(RAIZ).as_posix()
     else:
         try:
             buscar("https://web.archive.org/save/" + url, timeout=60)
@@ -260,7 +260,7 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
     falha de rede não derruba a coleta; a pista continua valendo com o excerto (regra 1)."""
     destino = EVID / f"{h}.txt"
     if destino.exists():
-        return str(destino.relative_to(RAIZ))
+        return destino.relative_to(RAIZ).as_posix()
     partes, total = [], 0
     for g in (gazettes or []):
         u = g.get("txt_url") or ""
@@ -287,7 +287,7 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
     # objeto do Monitor. Ver redigir_dados_pessoais() para a fundamentação (LGPD art. 6º, III).
     texto_final, n_cpfs = redigir_dados_pessoais(texto_final)
     EVID.mkdir(exist_ok=True)
-    destino.write_text(texto_final, encoding="utf-8")
+    destino.write_text(texto_final, encoding="utf-8", newline="\n")
     if n_cpfs:
         # 19/09/2026 (ensaio da rodada antecipada, portão bloqueante vermelho): este registro
         # documenta uma REDAÇÃO de dados pessoais num documento preservado — não é uma busca
@@ -300,15 +300,15 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
         # nivel=None é o valor honesto (sem nível territorial declarado) e já aceito; não usar
         # "municipal_completo", que tem sentido próprio no §2.1 (bateria municipal completa) e
         # exige municipio e uf estruturados.
-        log_busca("site_estadual", 2, [str(destino.relative_to(RAIZ))], "registro", nivel=None,
+        log_busca("site_estadual", 2, [destino.relative_to(RAIZ).as_posix()], "registro", nivel=None,
                   resultados=f"redação de dados pessoais: {n_cpfs} CPF(s) removido(s) do texto integral preservado ({origem})")
     idx = ler("evidencias.json", {"itens": {}})
     if h in idx.get("itens", {}):
-        idx["itens"][h]["texto_integral"] = str(destino.relative_to(RAIZ))
+        idx["itens"][h]["texto_integral"] = destino.relative_to(RAIZ).as_posix()
         idx["itens"][h]["texto_integral_em"] = hoje()
         idx["itens"][h]["texto_integral_origem"] = origem
         gravar("evidencias.json", idx)
-    return str(destino.relative_to(RAIZ))
+    return destino.relative_to(RAIZ).as_posix()
 
 
 def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: str = "",

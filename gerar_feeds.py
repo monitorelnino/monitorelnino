@@ -169,17 +169,17 @@ def renderizar(historico, nomes, data):
     """Escreve feeds/brasil.xml, feeds/UF.xml (27) e feeds/index.json."""
     FEEDS.mkdir(exist_ok=True)
     eventos = sorted(historico["eventos"], key=lambda x: (x["data"].split("/")[::-1], x["titulo"]), reverse=True)
-    (FEEDS / "brasil.xml").write_text(atom("MARÉ — atualizações", "brasil.xml", eventos[:100], eventos[0]["data"] if eventos else data), encoding="utf-8")
+    (FEEDS / "brasil.xml").write_text(atom("MARÉ — atualizações", "brasil.xml", eventos[:100], eventos[0]["data"] if eventos else data), encoding="utf-8", newline="\n")
     for uf, nome in sorted(nomes.items()):
         ev = [x for x in eventos if x["uf"] == uf][:50]
-        (FEEDS / f"{uf}.xml").write_text(atom(f"MARÉ — {nome}", f"{uf}.xml", ev, ev[0]["data"] if ev else data), encoding="utf-8")
+        (FEEDS / f"{uf}.xml").write_text(atom(f"MARÉ — {nome}", f"{uf}.xml", ev, ev[0]["data"] if ev else data), encoding="utf-8", newline="\n")
     # v2.2.4 (§7.7): feed próprio de saúde — eventos dos tipos novos (instrumento_saude,
     # verificacao_ampliada, decreto_reconhecido). Nasce válido mesmo sem eventos.
     ev_saude = [x for x in eventos if x.get("tipo") in ("instrumento_saude", "verificacao_ampliada", "decreto_reconhecido")][:100]
     (FEEDS / "saude.xml").write_text(atom("MARÉ — saúde e El Niño (registro de transparência, peso zero)", "saude.xml",
-                                          ev_saude, ev_saude[0]["data"] if ev_saude else data), encoding="utf-8")
+                                          ev_saude, ev_saude[0]["data"] if ev_saude else data), encoding="utf-8", newline="\n")
     (FEEDS / "index.json").write_text(json.dumps({"brasil": f"{SITE}/feeds/brasil.xml", "saude": f"{SITE}/feeds/saude.xml",
-                                                  "ufs": {uf: f"{SITE}/feeds/{uf}.xml" for uf in sorted(nomes)}}, ensure_ascii=False, indent=1), encoding="utf-8")
+                                                  "ufs": {uf: f"{SITE}/feeds/{uf}.xml" for uf in sorted(nomes)}}, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
 
 
 def executar(data, dados=None, gravar=True):
@@ -196,8 +196,8 @@ def executar(data, dados=None, gravar=True):
     ineditos = [x for x in novos if x["id"] not in vistos]
     historico["eventos"].extend(ineditos)
     if gravar:
-        json.dump(agora, open(SNAPSHOT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-        json.dump(historico, open(HISTORICO, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        json.dump(agora, open(SNAPSHOT, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        json.dump(historico, open(HISTORICO, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
         renderizar(historico, agora["nomes"], data)
     return ineditos, historico, agora
 
