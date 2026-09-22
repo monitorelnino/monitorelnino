@@ -9,6 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §157 · `CLAUDE.md`: as regras de trabalho num arquivo lido automaticamente pelo Claude Code · 22/09/2026
+
+Classe **documentação de processo**; nenhum dado, página ou método muda.
+
+A editoria passa a poder trabalhar pelo Claude Code, com o repositório numa pasta local permanente. O `CLAUDE.md` na raiz reúne o que antes estava espalhado em handouts de sessão: fluxo de mudança (PROTOCOLO §3.1), limites do merge automático (protótipo mostrado antes, publicação do domínio só com a palavra da editoria), lista de portões na ordem de `portoes.yml`, regras editoriais que o código não pode violar, regras de design e o que nunca entra no repositório público. Os documentos canônicos continuam prevalecendo; o arquivo só aponta para eles. Manifesto regravado para selar o arquivo novo.
+
 ## §156 · Portão da aplicação automática: o juiz só pontua sozinho com o ato publicado de 2026 lido no próprio documento — e cinco erros reais que ele teria cometido · 22/09/2026
 
 Classe **correção de segurança do dado + método declarado**. METODOLOGIA §40 ganha o parágrafo "Quando a máquina pontua sozinha".
