@@ -133,9 +133,32 @@ def eh_estadual(rotulo):
     return rotulo.startswith("A-lac") or rotulo.startswith("C-estado-amplo")
 
 
-def rodar_portoes():
-    """Roda os quatro portões bloqueantes. Retorna (ok, saida_combinada)."""
+def sincronizar_derivados():
+    """22/09/2026 (§157, causa real da reversão de Feira de Santana/BA na cadência #7): o juiz aplicava em
+    municipios.json e ia direto aos portões — dados-abertos/municipios.csv ficava com 265 linhas contra 266
+    no JSON e verificar_consistencia.py reprovava, com razão. TODA aplicação automática municipal estava
+    condenada a ser revertida. Regenera, antes dos portões, exatamente os derivados que o workflow regenera
+    depois da coleta. Retorna a saída (para o log)."""
+    import os, datetime as _dt
+    env = dict(os.environ)
+    try:
+        dd, mm, aa = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8"))["corte"].split("/")
+        env.setdefault("SOURCE_DATE_EPOCH", str(int(_dt.datetime(int(aa), int(mm), int(dd)).timestamp())))
+    except Exception:  # noqa: BLE001
+        pass
     saida = []
+    for cmd in (["python3", "recalcular_mare.py", "--write"], ["python3", "gerar_dados_abertos.py"],
+                ["python3", "gerar_card_municipios.py"]):
+        if not (RAIZ / cmd[1]).exists():
+            continue
+        r = subprocess.run(cmd, cwd=RAIZ, capture_output=True, text=True, env=env)
+        saida.append(f"$ {' '.join(cmd)}\n{r.stdout[-400:]}\n{r.stderr[-400:]}")
+    return "\n".join(saida)
+
+
+def rodar_portoes():
+    """Sincroniza os derivados e roda os portões bloqueantes. Retorna (ok, saida_combinada)."""
+    saida = [sincronizar_derivados()]
     for cmd in (["node", "scripts/verificar_estrutura.js"],
                 ["python3", "verificar_consistencia.py"],
                 ["python3", "recalcular_mare.py", "--check"],
@@ -152,6 +175,7 @@ ARQUIVOS_MUTAVEIS = ["estados.json", "municipios.json", "pontos_mapa.json", "ind
                       "percentual_uf.json", "decretos_historico_uf.json", "atos_resposta.json",
                       "consist.json"]
 RECALCULAR_PY = RAIZ / "recalcular_mare.py"
+DIRETORIOS_SINCRONIZADOS = ("data", "dados-abertos", "selos")   # §157: tudo que sincronizar_derivados() pode reescrever (selos: recalcular_mare --write)
 
 
 def backup_dados():
@@ -172,6 +196,15 @@ def backup_dados():
     backup["recalcular_mare.py"] = RECALCULAR_PY.read_bytes()
     backup["index.html"] = INDEX_HTML.read_bytes()  # gaugeNum é gravado aqui
     backup["defesa-civil.html"] = MAPAS_HTML.read_bytes()  # AREAS é gravado aqui
+    # 22/09/2026 (§157): rodar_portoes() agora regenera derivados antes de checar — o backup passa a cobrir
+    # TUDO que essa sincronização pode tocar, para a reversão continuar sendo reversão de verdade.
+    for d in DIRETORIOS_SINCRONIZADOS:
+        base = RAIZ / d
+        if base.exists():
+            arquivos = [f for f in base.rglob("*") if f.is_file()]
+            for f in arquivos:
+                backup.setdefault(str(f.relative_to(RAIZ)), f.read_bytes())
+            backup[f"__lista__:{d}"] = "\n".join(sorted(str(f.relative_to(RAIZ)) for f in arquivos)).encode()
     return backup
 
 
@@ -179,7 +212,16 @@ def restaurar_dados(backup):
     """Restaura exatamente os bytes originais — usado quando os portões falham
     depois de uma aplicação, para que NADA quebrado fique em disco."""
     for caminho, conteudo in backup.items():
+        if caminho.startswith("__lista__:"):
+            continue
         (RAIZ / caminho).write_bytes(conteudo)
+    # arquivos CRIADOS depois do backup nos diretórios sincronizados também saem (§157)
+    for chave, lista in backup.items():
+        if chave.startswith("__lista__:"):
+            d = chave.split(":", 1)[1]; antes = set(lista.decode().splitlines())
+            for f in (RAIZ / d).rglob("*"):
+                if f.is_file() and str(f.relative_to(RAIZ)) not in antes:
+                    f.unlink()
 
 
 def atualizar_estados_py(uf, status, antecipacao, confianca="Média"):
@@ -343,6 +385,33 @@ def buscar_lat_lon(nome, uf):
     return (m["lat"], m["lon"]) if m else (None, None)
 
 
+def canal_e_fonte(url):
+    """22/09/2026 (§157): o canal era gravado fixo como "imprensa" — no teste real de Feira de Santana/BA o ato
+    veio do DIÁRIO OFICIAL (Querido Diário), e o site diria que veio de jornal, o oposto da regra de 22/09
+    (imprensa nunca pontua). Vocabulário do banco: DOM, site_municipal, DOU, orgao_estadual, imprensa."""
+    from urllib.parse import urlparse as _up
+    h = (_up(url or "").hostname or "").lower()
+    if "queridodiario" in h:
+        return "DOM", "Diário Oficial do Município (via Querido Diário)"
+    if "in.gov.br" in h:
+        return "DOU", "Diário Oficial da União"
+    if re.search(r"diario|imprensaoficial|\bdom\.|diariomunicipal", h):
+        return "DOM", f"Diário Oficial do Município ({h})"
+    if h.endswith(".gov.br") or h.endswith(".leg.br"):
+        return "site_municipal", f"Portal oficial ({h})"
+    return "imprensa", f"Fonte não oficial ({h}) — revisar"
+
+
+def ementa(texto, numero, data):
+    """Cabeçalho + ementa do ato (até "e dá outras providências" ou 240 caracteres), não 200 caracteres crus."""
+    t = re.sub(r"\s+", " ", texto or "").strip()
+    i = t.lower().find((numero or "").lower()) if numero else -1
+    t = t[i:] if i >= 0 else t
+    m = re.search(r"e d[aá] outras provid[eê]ncias\.?", t, re.I)
+    corpo = t[: m.end()] if m and m.end() <= 320 else t[:240].rsplit(" ", 1)[0] + "…"
+    return corpo if (numero and numero.lower() in corpo.lower()) else f"{corpo} (ato {numero}, {data})"
+
+
 def aplicar_municipal(nome, uf, texto, numero, data, url, hoje):
     """Mescla um registro municipal EX_ANTE confiante em municipios.json E em
     pontos_mapa.json (o mapa lê daqui, não de municipios.json — esquecer este
@@ -355,11 +424,12 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje):
     municipios = json.load(open(mun_path, encoding="utf-8"))
     if any(m["nome"] == nome and m["uf"] == uf for m in municipios):
         return False, f"{nome}/{uf} já consta na base — não duplicar (revisão humana decide se é atualização)"
-    doc = f"{texto[:200].strip()} (ato {numero}, {data})" if numero else texto[:200].strip()
+    canal, fonte_base = canal_e_fonte(url)
+    doc = ementa(texto, numero, data)
     municipios.append({
         "nome": nome, "uf": uf, "categoria": "plano", "documento": doc, "data": data,
-        "fonte": f"classificado automaticamente ({hoje}) — verificar fonte em {url}",
-        "url": url, "lat": lat, "lon": lon, "canal": "imprensa",
+        "fonte": f"{fonte_base} — ato lido e classificado automaticamente em {hoje} (§157)",
+        "url": url, "lat": lat, "lon": lon, "canal": canal,
     })
     json.dump(municipios, open(mun_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 

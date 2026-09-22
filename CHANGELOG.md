@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §157 · O juiz sincroniza os derivados antes dos portões (toda aplicação automática municipal era revertida) e grava a proveniência certa — Feira de Santana/BA aplicada ponta a ponta · 22/09/2026
+
+Classe **correção de encanamento com efeito no índice**. Achado na cadência #7, a primeira com `npm ci`, foco e portão.
+
+**O que aconteceu.** O portão do §156 fez exatamente o calibrado: de 30 documentos, entregou ao juiz só Serra/ES (já no banco — o juiz não duplica) e Feira de Santana/BA. O juiz aplicou Feira de Santana e **reverteu de novo**. Motivo real, lido no log: `✗ dados abertos: municipios.csv tem 265 linha(s), JSON tem 266`. O juiz ia de `municipios.json` direto aos portões, sem regenerar os derivados; `verificar_consistencia.py` reprovava, com razão. **Toda aplicação automática municipal estava condenada a ser revertida** — desde 31/08, o `npm ci` ausente só escondia isso.
+
+**Consertos.** (1) `sincronizar_derivados()` — antes dos portões, o juiz regenera o que o workflow regenera depois da coleta (`recalcular_mare.py --write`, `gerar_dados_abertos.py`, `gerar_card_municipios.py`), com o mesmo `SOURCE_DATE_EPOCH`. (2) O backup passa a cobrir `data/`, `dados-abertos/` e `selos/` inteiros (a sincronização regrava o selo SVG de cada estado), e a reversão apaga arquivos criados depois do backup — reversão continua sendo reversão de verdade. (3) **Proveniência**: `aplicar_municipal` gravava `canal: "imprensa"` fixo; no teste, um ato lido no diário oficial sairia rotulado como vindo de jornal — o oposto da regra de 22/09. Agora o canal vem do endereço (`DOM` via Querido Diário ou diário municipal; `DOU`; `site_municipal`), a fonte diz o que é ("Diário Oficial do Município (via Querido Diário) — ato lido e classificado automaticamente"), e o documento guarda cabeçalho + ementa do ato, não 200 caracteres crus.
+
+**Teste real, local, com rede.** Feira de Santana pelo caminho completo (download do PDF → foco → portão → juiz → sincronização → portões): **APLICADA, portões verdes**; registro `plano`, `DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026 Institui o Plano de Contingência do Município de Feira de Santana`, canal `DOM`. Cobertura populacional da BA: **18,3 → 22,6**. Reversão testada: aplicar + sincronizar alterou 15 arquivos; restaurar deixou a árvore limpa. A aplicação local foi desfeita — quem aplica é a cadência, com log.
+
 ## §156 · Portão da aplicação automática: o juiz só pontua sozinho com o ato publicado de 2026 lido no próprio documento — e cinco erros reais que ele teria cometido · 22/09/2026
 
 Classe **correção de segurança do dado + método declarado**. METODOLOGIA §40 ganha o parágrafo "Quando a máquina pontua sozinha".
