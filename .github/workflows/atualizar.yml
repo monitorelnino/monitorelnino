@@ -423,6 +423,19 @@ jobs:
           path: links_relatorio.txt
           retention-days: 30
 
+      # 22/09/2026 (§164): preservar_evidencias.py existe desde a v2.2.4 (§3.8) e não era chamado
+      # por workflow nenhum — dependia de alguém rodar à mão. Quando o juiz passou a aplicar
+      # municípios sozinho (§158), o registro entrava em data/municipios.json sem hash_evidencia e
+      # verificar_evidencias.py, bloqueante desde 15/09, fechava vermelho na main até que uma
+      # sessão humana notasse (foi o caso de Feira de Santana/BA, §162). Aqui, depois do juiz e de
+      # TODO passo que pode criar registro pontuável (coletores, aplicar_revisao), e antes da
+      # sincronização e do commit. Idempotente: quem já tem hash e cópia é pulado. Falha de rede
+      # vira lacuna declarada — o portão cobra na rodada seguinte, que tenta de novo.
+      - name: Preservar a evidência dos registros pontuáveis sem cópia (§164)
+        continue-on-error: true
+        timeout-minutes: 20
+        run: python3 preservar_evidencias.py --limite 20
+
       - name: Completar evidências com texto integral (autocura, 10/09/2026)
         # Pistas antigas sem .txt (inclusive evidência perdida, via recuperação por URL)
         # são completadas a cada rodada; o commit abaixo já inclui evidencias/.

@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §164 · A cadência passa a preservar a evidência sozinha — e o portão confere que ela continua fazendo isso · 22/09/2026
+
+Classe **encanamento**; nenhum dado, número ou página muda. Fecha a pendência declarada no §162.
+
+**A lacuna.** `preservar_evidencias.py` existe desde a v2.2.4 (§3.8) e **não era chamado por nenhum workflow** — nem a cadência, nem os portões. Enquanto o registro pontuável nascia de sessão humana, isso passava: quem aplicava rodava o script. Desde o §158, o juiz aplica município sozinho, e o §162 foi a consequência: Feira de Santana/BA entrou no banco como `plano` sem `hash_evidencia`, e `verificar_evidencias.py` — bloqueante desde 15/09 — deixou a `main` vermelha até alguém notar. O portão estava certo; faltava o passo que o mantém verde.
+
+**Feito.** Passo novo em `atualizar.yml`, **depois do juiz e depois de todo passo que pode criar registro pontuável** (coletores, `aplicar_revisao`), e antes da sincronização de derivados e do commit — ao lado da autocura de textos integrais de 10/09. Roda `preservar_evidencias.py --limite 20`, com `timeout-minutes: 20` e `continue-on-error`, porque o script já trata falha de rede como lacuna declarada e a rodada seguinte tenta de novo. É idempotente por construção: registro que já tem hash e cópia é pulado. O commit da rodada já inclui `evidencias/` e `data/`.
+
+**Trava, para não voltar a depender de atenção humana.** `verificar_evidencias.py` ganha teste negativo permanente: o próprio portão confere que a cadência chama o script, e reprova com o motivo escrito se a chamada sumir. Testado nos quatro casos — passo presente (passa), passo trocado por outro, chamada comentada em `run: #` e chamada comentada dentro de bloco `run: |` (os três acusam). Sem isso, tirar o passo seria silencioso: o portão só acusaria na próxima aplicação automática, que é exatamente o atraso que se quer eliminar.
+
+**Lacuna que continua declarada.** A extração de texto dos PDFs (§10.1, `preservar_evidencias.py --ler`) também não está em workflow nenhum, e dois itens seguem sem texto extraído: o decreto de Feira de Santana e o Plancon de SE preservado em 03/09. Não entra aqui porque é outra rotina, com outro custo de rede — fica nomeada para a decisão da editoria.
+
+**Teste.** Portão de evidências verde, com a pré-condição nova. Portão 12 verde em árvore limpa, workflows válidos, consistência, `recalcular_mare --check` (45,2) e o restante do bloco de dado e coleta verdes. Os portões `.js` ficam com o CI — não há Node nesta máquina.
+
 ## §163 · O portão 12 estava vermelho na `main`: a cadeia de derivados do juiz era curta demais, e agora é a mesma do portão — travada em teste · 22/09/2026
 
 Classe **correção de encanamento com efeito no registro público**. Nenhum número do índice muda: a média nacional segue 45,2 e a Bahia já estava em 20,0 em `data/estados.json`. O que estava errado era o **histórico**, que não registrava a mudança já publicada.

@@ -37,10 +37,41 @@ def checar_cliente_http() -> list:
     return erros
 
 
+def checar_preservacao_na_cadencia() -> list:
+    """Teste negativo permanente (22/09/2026, §164): a cadência TEM de chamar preservar_evidencias.py.
+
+    Este portão é bloqueante desde 15/09, mas o script que o mantém verde não era chamado por
+    workflow nenhum — dependia de alguém rodar à mão. Quando o juiz passou a aplicar municípios
+    sozinho (§158), Feira de Santana/BA entrou no banco sem hash_evidencia e a main ficou vermelha
+    até uma sessão humana notar (§162). Sem esta trava, tirar o passo do workflow volta a ser
+    silencioso: o portão só acusaria na próxima aplicação automática."""
+    wf = RAIZ / ".github" / "workflows" / "atualizar.yml"
+    if not wf.exists():
+        return []   # fora do repositório completo (cópia parcial), não é falha do dado
+    texto = wf.read_text(encoding="utf-8")
+    # A chamada pode estar num `run:` de uma linha só ou num bloco `run: |`; o que importa é
+    # existir uma linha que execute o script e não esteja comentada.
+    def executa(linha: str) -> bool:
+        corpo = linha.strip()
+        for prefixo in ("- run:", "run:"):
+            if corpo.startswith(prefixo):
+                corpo = corpo[len(prefixo):].strip()
+                break
+        return (corpo.startswith("python3 ") and "preservar_evidencias.py" in corpo
+                and not corpo.startswith("#"))
+
+    linhas = [l for l in texto.splitlines() if executa(l)]
+    if not linhas:
+        return ["a cadência (.github/workflows/atualizar.yml) não chama preservar_evidencias.py — "
+                "registro aplicado pelo juiz ficaria sem cópia do documento e este portão fecharia "
+                "vermelho na main até alguém rodar à mão (ver §164)"]
+    return []
+
+
 def main() -> int:
-    e = checar_cliente_http()
+    e = checar_cliente_http() + checar_preservacao_na_cadencia()
     if e:
-        print("✗ EVIDÊNCIAS: cliente HTTP:"); [print("   ", x) for x in e]; return 1
+        print("✗ EVIDÊNCIAS: pré-condições do portão:"); [print("   ", x) for x in e]; return 1
     mun = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
     p_idx = RAIZ / "data" / "evidencias.json"
     idx = json.load(open(p_idx, encoding="utf-8")) if p_idx.exists() else {"itens": {}}
