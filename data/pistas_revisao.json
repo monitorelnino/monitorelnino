@@ -1,11 +1,11 @@
 {
- "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§149). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
+ "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-22",
- "total_pistas": 172,
- "total_municipios": 111,
+ "total_pistas": 175,
+ "total_municipios": 114,
  "por_nivel": {
-  "A": 18,
-  "B": 107,
+  "A": 19,
+  "B": 109,
   "C": 47
  },
  "grupos": [
@@ -449,6 +449,37 @@
      "titulo": null,
      "trecho": "e na restauração da \nnormalidade social, articulando e facilitando as ações \nde prevenção, preparação, resposta e recuperação no \nMunicípio de Serra. “\n\nLeia-se: […]\n“ Art. 1º Fica instituído o Plano Municipal de Proteção e \nDefesa Civil (Plano de Contingência de Proteção e Defesa \nCivil), como inst",
      "data": "06/07/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3112000",
+   "municipio": "Candeias",
+   "uf": "MG",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://prefeitura.candeias.ba.gov.br/2025/03/defesa-civil-de-candeias-apresenta-plano-de-contingencia-para-continuacao-da-operacao-chuva/",
+     "titulo": "Defesa Civil de Candeias apresenta Plano de Contingência para ...",
+     "trecho": "A Defesa Civil de Candeias se reuniu, nesta terça-feira (25/03), no Paço Municipal, para apresentar o Plano de Contingência e alinhar as ações preventivas destinadas à Operação Chuva 2025 · A reunião contou com a presença do prefeito Eriton Ramos e dos secretários das pastas envolvidas ...",
+     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -2573,6 +2604,68 @@
      "url": "https://www.congonhas.mg.gov.br/wp-content/uploads/2017/10/PGRSU-FINAL.pdf",
      "titulo": null,
      "trecho": "o município Congonhas/MG e a empresa Ampla Consultoria, que tem como objetivo ... - Plano de contingência adotado pela empresa para os casos de acidentes ou.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3137809",
+   "municipio": "Lambari",
+   "uf": "MG",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/prefeituradelambari/videos/preven%C3%A7%C3%A3o-antes-da-emerg%C3%AAncia-%EF%B8%8Fdiante-dos-efeitos-do-el-ni%C3%B1o-no-pa%C3%ADs-e-da-possib/1058494277164913/",
+     "titulo": "Prevenção antes da emergência! 🛡️ Diante dos efeitos do El Niño ...",
+     "trecho": "Sep 10, 2026 ... ... Plano de Contingência, reunindo diferentes secretarias para ... Paróquia Nossa Senhora da Saúde - Lambari / MG. Paróquia Nossa Senho ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3138807",
+   "municipio": "Luz",
+   "uf": "MG",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.estadao.com.br/economia/como-o-super-el-nino-pode-pressionar-a-conta-de-luz-em-2027/",
+     "titulo": "Como o super El Niño previsto para os próximos meses pode deixar ...",
+     "trecho": "Jun 19, 2026 ... ... luz. Para preservar os reservatórios das hidrelétricas, o Operador ... plano de contingência que favoreça a atuação preventiva e ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
