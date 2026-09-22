@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §151 · Decisão 3 do teste do objeto: plano municipal é julgado pelo risco do município, nunca pelo alerta da UF (caso Salvador) — registro ex-ante, sem mudança de nota · 22/09/2026
+
+Classe **decisão metodológica ex-ante + trava em teste**. Média nacional inalterada: 45,1.
+
+**Origem.** Pergunta editorial direta: "um plano é um plano; em nível municipal ele tem que estar adequado ao município, não ao alerta estadual — Salvador tem plano de enchente e está correto, mesmo a Bahia tendo alerta de seca".
+
+**O que a investigação mostrou.** O índice **já pratica a regra**: Salvador consta em `data/municipios.json` como `plano` (1,0), "Operação Chuva 2026 / PPDC (Codesal)", sem nenhum desconto pelo alerta estadual de estiagem. Os únicos `nao_el_nino` do banco são 4 municípios do AP com portaria de doença viral — epidemia, corretamente fora do ciclo. O teste do objeto municipal (`classificar_objeto(trecho)`, §5.2.1) aceita qualquer das três famílias do ciclo e não recebe a UF como insumo; a triagem de confiança de §150 idem. A tabela risco×instrumento (`consist.json`, CONSIST) compara instrumento **estadual** com risco **estadual** — legítima nessa escala, e só nela. O fator de alinhamento (Correção A, f_A) **não está no motor** — é candidato v2.3/v2.4.
+
+**Por que ainda assim mudar.** Dois riscos reais: (1) a metodologia não dizia isso explicitamente, e quem revisa a fila pode aplicar a regra estadual por engano — a própria editoria leu assim; (2) o candidato v2.4 "alinhamento ao risco no crédito municipal (mesmo fator f_A)" estava descrito de forma que, implementado contra o alerta da UF, criaria exatamente o erro de Salvador.
+
+**Feito.** METODOLOGIA §5.2.1 ganha a "Decisão 3 — escala do julgamento", com o caso Salvador e a regra: família julgada pela exposição do município; CONSIST nunca cruza com município; regra imposta na assinatura das funções. §26 (candidatos v2.4) recebe a restrição ex-ante: alinhamento municipal só contra exposição do próprio município (suscetibilidade geo-hidrológica por município do Cemaden; Semiárido/SUDENE; Risco de Fogo/INPE por área; exposição costeira), nunca contra a UF. A regra virou caso de teste nas duas camadas de triagem (`classificar_pista_civil.py` t15, `triar_confianca_pistas.py`): plano de chuvas/enchentes em Salvador/BA → `objeto=el_nino`, nível A — para que nenhuma mudança futura a reabra em silêncio.
+
+**Registro honesto.** Não houve mudança de número porque não havia erro no dado; houve mudança de método declarado, no lugar certo e antes de qualquer implementação que pudesse beneficiar ou prejudicar um ente.
+
+**Teste.** Autotestes das duas triagens verdes (15/15 e 10/10). `recalcular_mare.py --check`: 45,1, inalterado. Vocabulário público, consistência e idempotência dos derivados verdes.
+
 ## §150 · Metodologia de triagem das pistas: nível de confiança A/B/C, fila por município, regra contra falsos negativos · 22/09/2026
 
 Classe **método editorial + código**, a pedido direto ("as pistas, nós vamos decidir se entram ou não, construindo uma metodologia; cuidado com falsos negativos"). Seção pública nova: METODOLOGIA §40.

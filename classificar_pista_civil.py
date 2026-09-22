@@ -251,10 +251,20 @@ def autoteste() -> int:
         r = triagem_completa("DECRETO Nº 10, DE 2026. Institui o Plano de Contingência para Ondas de Frio e Geadas")
         return r["destino"] == "fora_do_objeto"
 
+    def t15():  # DECISÃO 3 (22/09/2026): plano municipal é julgado pelo risco DO MUNICÍPIO, nunca pelo alerta da UF.
+        # Caso Salvador/BA: plano de chuvas/enchentes (Operação Chuva / PPDC-Codesal) é do ciclo mesmo com a
+        # Bahia em alerta de estiagem — Salvador está fora da área de seca. O teste do objeto aceita qualquer
+        # das três famílias do ciclo; classificar_objeto(trecho) NÃO recebe UF, e este teste existe para que
+        # nunca passe a receber. (O índice já credita Salvador como 'plano' 1,0 — isto trava a regra.)
+        r = triagem_completa("DECRETO Nº 38.100, DE 2026. Institui a Operação Chuva 2026 e o Plano Preventivo de "
+                             "Defesa Civil (PPDC) para o período de chuvas e enchentes em Salvador")
+        return r["objeto"] == "el_nino" and r["destino"] != "fora_do_objeto"
+
     return rodar_autoteste({
         "DECISÃO 1: conselho de saúde aprova plano de desastres → camada saúde": t9,
         "DECISÃO 1b: câmara aprova sem decreto → executivo pendente": t10,
         "DECISÃO 2: plano de baixas temperaturas → fora do objeto": t11,
+        "DECISÃO 3: plano de enchente em UF com alerta de seca é do ciclo (município, não a UF — caso Salvador)": t15,
         "decreto do Executivo, estiagem → candidato ao componente pontuado": t12,
         "negativo: sem sinais → indefinido, nunca promovido": t13,
         "negativo: fora do objeto vence mesmo com decreto": t14,
