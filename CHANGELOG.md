@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §150 · Metodologia de triagem das pistas: nível de confiança A/B/C, fila por município, regra contra falsos negativos · 22/09/2026
+
+Classe **método editorial + código**, a pedido direto ("as pistas, nós vamos decidir se entram ou não, construindo uma metodologia; cuidado com falsos negativos"). Seção pública nova: METODOLOGIA §40.
+
+**Diagnóstico.** 172 pistas na fila, 112 delas da busca web; 124 em "indefinido" na triagem textual existente (`classificar_pista_civil.py`) — que é boa, mas calibrada para linguagem de diário oficial ("fica instituído", "decreto nº"). Manchete real de imprensa ("Marília prepara plano de contingência…") não tem essa linguagem e caía toda em "indefinido", sem ordenação nenhuma entre as centenas que a cadência de 2h vai trazer.
+
+**O que foi construído — `triar_confianca_pistas.py`.** Camada complementar (não substitui a textual), só sinais literais, todos gravados na pista (`sinais`, `alertas`, `pontos_confianca`, `nivel_confianca`): fonte (host oficial > imprensa > desconhecido); onde o município aparece (título > URL > início do trecho > só no trecho); onde o termo de plano aparece; impressão digital de ato formal; família de risco do ciclo; triagem textual como sinal a mais. Alertas que rebaixam para C sem descartar: risco errado no título; município citado de passagem numa lista. Saída: `data/pistas_revisao.json` (derivado, regenerado a cada rodada) — pistas agrupadas por município, municípios ordenados pelo melhor nível. Roda nos dois workflows de coleta, antes do commit; autoteste no portão. A busca web passa a guardar o `titulo` do resultado (sinal mais forte; até agora se perdia).
+
+**Regra contra falsos negativos, e o que ela custou.** A camada NUNCA descarta: C fica no fim, visível. Calibrando contra as 172 pistas reais, três falsos negativos genuínos apareceram e viraram regra + caso de teste: (1) risco errado só conta no **título** (plano real de chuvas cita dengue de passagem no trecho); (2) comparação de nomes **sem acento** — "Petrópolis" não casava com "petropolis" na URL e um plano real do g1 estava em C; (3) nome no **início do trecho** (posição de manchete) conta, salvo em lista de municípios — corrigido depois de uma regressão pega pelo próprio teste (numa lista, "Ipixuna" caía nos primeiros 70 caracteres e ganhava o bônus). Parei de calibrar aí: mais ajuste em 172 amostras seria ajustar ruído; a revisão humana é o calibrador daqui em diante.
+
+**Resultado na fila atual.** A=18, B=107, C=47 em 111 municípios. Petrópolis: 5 pistas, todas B (antes: C). Caso Anita Garibaldi/Ipixuna: C com alerta, protegido por teste.
+
+**Teste.** Autoteste 8/8 (réplicas dos casos reais de §141-§143 + os três falsos negativos da calibração). Portões de consistência, MARÉ, vocabulário verdes. Cadeia de derivados idempotente. `validar_workflows` verde nos três workflows tocados.
+
 ## §149 · Blog do MARÉ (protótipo): página nova fora da barra, quatro quadros de situação e textos em Markdown · 22/09/2026
 
 Classe **página nova, decisão editorial em curso** (nome final, lugar na navegação e assinatura dos textos ainda por decisão da editoria; nada do índice muda).

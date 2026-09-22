@@ -142,6 +142,7 @@ def rodar(lote: str | None, tamanho: int) -> int:
             pistas["pistas"].append({
                 "municipio": nome, "uf": uf, "ibge": cod, "origem": "busca_web",
                 "data": date.today().strftime("%d/%m/%Y"), "url": r.get("url"), "trecho": trecho,
+                "titulo": (r.get("title") or "")[:300],   # 22/09/2026 (§150): título é o sinal mais forte da triagem de confiança
                 "registrado_em": date.today().isoformat(),
                 **triagem_completa(trecho),
                 "status": "pista — promover a registro exige documento primário lido por humano",
