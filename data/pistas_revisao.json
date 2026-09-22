@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-22",
- "total_pistas": 263,
- "total_municipios": 153,
+ "total_pistas": 267,
+ "total_municipios": 157,
  "por_nivel": {
-  "A": 43,
-  "B": 170,
+  "A": 44,
+  "B": 173,
   "C": 50
  },
  "grupos": [
@@ -1484,6 +1484,38 @@
    ]
   },
   {
+   "ibge": "4211892",
+   "municipio": "Painel",
+   "uf": "SC",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "1a33729bcf",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf",
+     "titulo": "Painel El Niño 2026–2027 - Portal Gov.br",
+     "trecho": "Aug 11, 2026 ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4212403",
    "municipio": "Pedras Grandes",
    "uf": "SC",
@@ -2788,7 +2820,7 @@
      "titulo": null,
      "trecho": "e Defesa Civil; \n\nII - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças; \n\nIII - incorporar as ações de proteção e defesa civil no planejamento municipal; \n\nIV - elaborar, manter atualizado e implementar o Plano de Contingência (PLANCON); \n\nhttp://www.guaraniacu.pr.",
      "data": "20/07/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "revertida_erro_portao"
     },
     {
      "id": "181ee33bf4",
@@ -2806,7 +2838,7 @@
      "titulo": null,
      "trecho": "e Defesa Civil; \n\nII - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças; \n\nIII - incorporar as ações de proteção e defesa civil no planejamento municipal; \n\nIV - elaborar, manter atualizado e implementar o Plano de Contingência (PLANCON); \n\nhttp://www.guaraniacu.pr.",
      "data": "21/07/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "revertida_erro_portao"
     }
    ]
   },
@@ -3515,7 +3547,7 @@
      "titulo": null,
      "trecho": "07 Descumprimento de \n\nnormas de segurança e \n\nlegislação vigente \n\nBaixa Alto Médio Cláusulas contratuais específicas e \n\nfiscalização \n\n08 Interrupção do serviço \n\ndurante o evento. \n\nBaixa Alto Médio Previsão de equipe de prontidão e \n\nplano de contingência \n\n09 Inadimplência trabalhista \n\nda con",
      "data": "24/07/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "revertida_erro_portao"
     },
     {
      "id": "d7f2497267",
@@ -4124,7 +4156,7 @@
      "titulo": null,
      "trecho": "permanentemente atualizados e arquivados no próprio estabelecimento, \nem local de fácil acesso à equipe de fiscalização, os relatórios de manutenção preventiva de equipamentos, laudos de integridade estrutural da pista de concreto \narmado e o Plano de Contingência / PGR. Prazo: Durante a vigência da",
      "data": "11/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "revertida_erro_portao"
     }
    ]
   },
@@ -4568,7 +4600,7 @@
      "titulo": null,
      "trecho": "por ato do Chefe do Poder Executivo dentre \nos servidores públicos municipais. \n\nArt. 6º Compete à COMPDEC: \n\nI – coordenar e executar as ações de proteção e defesa civil no âmbito municipal; \n\nII – elaborar, manter atualizado e executar o Plano de Contingência Municipal; \n\nIII – identificar, mapear",
      "data": "30/06/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "revertida_erro_portao"
     }
    ]
   },
@@ -4892,7 +4924,7 @@
      "titulo": null,
      "trecho": "Acionar o Plano de Contingência. • Emitir ALERTA (PREPARAÇÃO PARA EVENTUAL. DESOCUPAÇÃO (SMS, mídias sociais, etc ... JACERUBA, NOVA IGUAÇU - RJ.",
      "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "revertida_erro_portao"
     }
    ]
   },
@@ -5178,6 +5210,70 @@
    ]
   },
   {
+   "ibge": "4202438",
+   "municipio": "Bocaina do Sul",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "f55e1e41f1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://scc10.com.br/radioclube/impactos-do-el-nino-pautam-audiencia-em-bocaina-do-sul/",
+     "titulo": "Impactos do El Niño pautam audiência em Bocaina do Sul - SCC10",
+     "trecho": "Jun 15, 2026 ... Impactos do El Niño pautam audiência em Bocaina do Sul. A Defesa Civil pretende expor o plano de contingência ... 2 Três apostas de SC ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4202537",
+   "municipio": "Bom Jesus",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "b1d0b5be45",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DZFHb2qRQl7/",
+     "titulo": "EL NIÑO PROVOCA ALAGAMENTOS EM BOM JESUS DO ...",
+     "trecho": "Jun 2, 2026 ... 1 like. fallaregiao. Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A Secretaria Municipal de Assistência ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4203808",
    "municipio": "Canoinhas",
    "uf": "SC",
@@ -5332,6 +5428,37 @@
      "url": "https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/",
      "titulo": null,
      "trecho": "8 days ago ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4209805",
+   "municipio": "Leoberto Leal",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "20efec3d28",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DXy9oH5DsmM/",
+     "titulo": "Proteção e Defesa Civil-Leoberto Leal | ENTENDA O EL NIÑO ...",
+     "trecho": "May 1, 2026 ... Photo by Proteção e Defesa Civil-Leoberto Leal on May 01, 2026.",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }

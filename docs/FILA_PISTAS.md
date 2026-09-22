@@ -1,26 +1,26 @@
 # Fila de pistas — revisão humana
 
-Gerado em 22/09/2026 · 244 pendente(s) · 19 decidida(s) · A=42 B=163 C=39
+Gerado em 22/09/2026 · 254 pendente(s) · 13 decidida(s) · A=43 B=172 C=39
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
 ## Feira de Santana/BA — 1 pendente(s)
-- `66fdadd299` · nível **A** (7 pts) · querido_diario · DUVIDA · **DECRETO Nº 14.665**, 4574
+- `66fdadd299` · nível **A** (7 pts) · querido_diario · EX_ANTE · **DECRETO Nº 14.665**, 21/08/2026
   - url: https://data.queridodiario.ok.org.br/2910800/2026-08-22/fd1e754992bd6eb995addc22ff3ed3dc40a7f166.pdf
   - trecho: DE SANTANA  garante a autenticidade deste documento quando visualizado diretamente no portal  www.diariooficial.feiradesantana.ba.gov.br   3   DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026                                    
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão falhou após aplicar — desfeito de verdade em disco, ver log
 
 ## Sobral/CE — 1 pendente(s)
-- `f2688a9eeb` · nível **A** (6 pts) · querido_diario · DUVIDA · data 2026 (do trecho)
+- `f2688a9eeb` · nível **A** (6 pts) · querido_diario · DUVIDA · **Decreto Municipal Nº 196**, 22/11/2017
   - url: https://data.queridodiario.ok.org.br/2312908/2026-08-06/3c8a62862c1d5568ea61bc227c62f6e21890191d.pdf
   - trecho:  Representante da Contratada: Francisco Helton Soares  de Sousa. Jackson Lira Cavalcante - Coordenador Jurídico da SEDHAS.   EXTRATO DO PLANO DE CONTINGÊNCIA - 2026 -  ALAGAMENTOS, ENCHENTES DA DEFESA CIVIL. PROCESSO  nº
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Serra/ES — 1 pendente(s)
-- `3f8922a3b6` · nível **A** (6 pts) · querido_diario · DUVIDA · citação não extraída
+- `3f8922a3b6` · nível **A** (6 pts) · querido_diario · EX_ANTE · **Decreto nº 6.823**, 05/07/2026
   - url: https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf
   - trecho: e na restauração da  normalidade social, articulando e facilitando as ações  de prevenção, preparação, resposta e recuperação no  Município de Serra. “  Leia-se: […] “ Art. 1º Fica instituído o Plano Municipal de Proteçã
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: Serra/ES já consta na base — não duplicar (revisão humana decide se é atualização)
 
 ## Campo Mourão/PR — 1 pendente(s)
 - `b24d320293` · nível **A** (6 pts) · busca_web · — · citação não extraída
@@ -173,10 +173,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: São Mateus do Sul apresenta Plano de Contingência e reforça ...
   - url: https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/
   - trecho: Jul 22, 2026 ... ... El Niño pode provocar no município. ... São Mateus do Sul apresenta Plano de Contingência e reforça preparação para possíveis cheias.
-- `d8ee3ef9b3` · nível **B** (4 pts) · querido_diario · DUVIDA · citação não extraída
+- `d8ee3ef9b3` · nível **B** (4 pts) · querido_diario · RESPOSTA · **Lei Municipal nº 1.997**, 2010
   - url: https://data.queridodiario.ok.org.br/4125605/2026-07-15/fa6789e5589fdd035db4fe168ec1951aac2a1a1f.pdf
   - trecho: e  Defesa Civil;  II - Promover o mapeamento das áreas de risco de desastres e a identificação de  ameaças;  III - Incorporar as ações de proteção e defesa civil no planejamento municipal;  IV - Elaborar, manter atualiza
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
 - `59174d8593` · nível **B** (4 pts) · querido_diario · DUVIDA · **Lei Municipal nº 1.997**, 2010
   - url: https://data.queridodiario.ok.org.br/4125605/2026-07-17/1ea6f889e9053ea646fd6513b642ee851bec3e80.pdf
   - trecho: ao Conselho Municipal de Proteção e Defesa Civil:   I - Atuar como órgão consultivo do Chefe do Poder Executivo e do Coordenador Executivo da COMPDEC na gestão de riscos e desastres; II - Analisar, propor alterações e em
@@ -228,14 +228,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: fonte não oficial: só leitura assistida, decisão humana
 
 ## Quissamã/RJ — 2 pendente(s)
-- `f2f2d164b6` · nível **A** (8 pts) · querido_diario · DUVIDA · data 28/12/1990 (do trecho)
+- `f2f2d164b6` · nível **A** (8 pts) · querido_diario · EX_ANTE · data 28/12/1990 (do trecho)
   - url: https://data.queridodiario.ok.org.br/3304151/2026-08-28/0d072c822e8af816951b3361cbca56b77d3cc363.pdf
   - trecho: 28 de dezembro de  1990 e por dispositivos oriundos da Lei Municipal no 2129 de 17 de  novembro de 2021,  RESOLVE 1 – Aprovar a Programação Anual de Saúde – PAS 2027; 2 – Aprovar o Plano Municipal de Contingência de desa
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
-- `9f4159408e` · nível **A** (6 pts) · querido_diario · DUVIDA · data 2027 (do trecho)
+  - juiz: portão automático: triagem do ato: destino=camada_saude (autoridade=executivo, objeto=misto)
+- `9f4159408e` · nível **A** (6 pts) · querido_diario · EX_ANTE · **Portaria n° 26.627**, 26.08.2026
   - url: https://data.queridodiario.ok.org.br/3304151/2026-08-21/62ecdc438ea19a06f1ee1072422b23dcbc846704.pdf
   - trecho: na Avenida Francisco de  Assis Carneiro da Silva, número 205 – Caxias.  PAUTA:  1 – Apreciação e aprovação da Programação Anual de Saúde –  PAS 2027;  2 – Apreciação e aprovação do Plano Municipal de  Contingência de des
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
 ## Ouro/SC — 2 pendente(s)
 - `39cae9c286` · nível **A** (6 pts) · busca_web · — · data 23/06/2026 (do trecho)
@@ -244,6 +244,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `9c0fd223ae` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - url: https://ouro.sc.gov.br/audiencia-publica-plano-de-contingencia-defesa-civil/
   - trecho: Audiência Pública – Plano de Contingência Defesa Civil. A Prefeitura de Ouro e o Conselho Municipal de Proteção e Defesa Civil realizam no próximo dia 23 de ...
+
+## Painel/SC — 1 pendente(s)
+- `1a33729bcf` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Painel El Niño 2026–2027 - Portal Gov.br
+  - url: https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf
+  - trecho: Aug 11, 2026 ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...
 
 ## Pedras Grandes/SC — 1 pendente(s)
 - `2a96d9194b` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
@@ -264,10 +270,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 19, 2026 ... Celesc reforça plano de contingência para enfrentar possíveis impactos do El Niño ... Videira Notícias – 11/09/2026. 1 hora atrás 0. Situação ...
 
 ## Andradina/SP — 1 pendente(s)
-- `727d0e6ceb` · nível **A** (6 pts) · querido_diario · DUVIDA · citação não extraída
+- `727d0e6ceb` · nível **A** (6 pts) · querido_diario · EX_ANTE · **Decreto nº 7.123**, 2021
   - url: https://data.queridodiario.ok.org.br/3502101/2026-08-25/b93ce383bd30092e150eed406682034e73385e96.pdf
   - trecho: SIGNATÁRIOS: Mateus Moreira Siketo, Juiz da 009ª Zona Eleitoral; e Mário Celso Lopes, Prefeito do município de Andradina/SP.         PREFEITURA MUNICIPAL DE ANDRADINA                COMISSÃO MUNICIPAL DE DEFESA CIVIL    
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: data do ato incompleta (2021)
 
 ## Atibaia/SP — 2 pendente(s)
 - `bf998ab2f2` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
@@ -312,33 +318,33 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: A Prefeitura de Ilhabela, por meio da Secretaria de Mobilidade e Segurança, realiza uma Audiência Pública para apresentar o Plano de Contingência Municipal ...
 
 ## Itapeva/SP — 1 pendente(s)
-- `7c2803fc81` · nível **A** (9 pts) · querido_diario · DUVIDA · **Lei Municipal nº 4.066**, 2017
+- `7c2803fc81` · nível **A** (9 pts) · querido_diario · DUVIDA · **Lei Municipal nº 4.066**, 29/11/2017
   - url: https://data.queridodiario.ok.org.br/3522406/2026-07-17/696095b9946f7f3638f8e30666e00090526fecf1.pdf
   - trecho: Município de Itapeva conforme Lei Municipal nº 4.066, de 29 de novembro de 2017 Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, e Lei 14.063, de 2020, garantindo autenticidade, validade jurídica e i
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Itapevi/SP — 1 pendente(s)
-- `64e0a44b7b` · nível **A** (6 pts) · querido_diario · DUVIDA · data 14/07/2026 (do trecho)
+- `64e0a44b7b` · nível **A** (6 pts) · querido_diario · DUVIDA · **Decreto Municipal 4.588**, 14/01/2009
   - url: https://data.queridodiario.ok.org.br/3522505/2026-07-14/6969b2f93a9a6b117c3deeeec90dbda6ca4b2ced.pdf
   - trecho: 068584/2026.    DIÁRIO OFICIAL - MUNICÍPIO DE ITAPEVI Ano 18 | Edição nº 1573 | Itapevi, 14 de julho de 2026 35  4708/2026 PREFEITO  Nomeia os membros para compor o Comitê Permanente de Gestão em Situações de Baixas Temp
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Luiziânia/SP — 1 pendente(s)
-- `5138160916` · nível **A** (8 pts) · querido_diario · DUVIDA · data 30/06/2026 (do trecho)
+- `5138160916` · nível **A** (8 pts) · querido_diario · DUVIDA · **Resolução 02**, 2016
   - url: https://data.queridodiario.ok.org.br/3527702/2026-06-30/89eb2b7090d7003095097c7001608c5a741468bd.pdf
   - trecho: VALIDADE JURÍDICA E INTEGRIDADE   2      TTeerrççaa--ffeeiirraa,,  3300  ddee  jjuunnhhoo  ddee  22002266..    AAnnoo  VVII..  EEddiiççããoo  nnºº  995588//22002266      DECRETOS   DECRETO Nº -2.753/2026, DE 30 DE JUNHO D
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Osasco/SP — 2 pendente(s)
-- `18f96b3772` · nível **A** (6 pts) · querido_diario · DUVIDA · citação não extraída
+- `18f96b3772` · nível **A** (6 pts) · querido_diario · EX_ANTE · citação não extraída
   - url: https://data.queridodiario.ok.org.br/3534401/2026-07-02/c90b47be36e5b16e355be3ece3d45e71195d76de.pdf
   - trecho: Locais de captação d’água 8   5. PLANO DE PREVENÇÃO E CONTINGÊNCIA ...................................................................................................... 9   5.1 Operação Osasco Sem Fogo 10   5.2 Disposiç
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
-- `17f2f7885d` · nível **B** (5 pts) · querido_diario · DUVIDA · **Lei nº. 396**, 3969
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `17f2f7885d` · nível **B** (5 pts) · querido_diario · DUVIDA · **PORTARIA Nº 157**, 2026
   - url: https://data.queridodiario.ok.org.br/3534401/2026-08-21/f6adb26b015035bbd2c3d5ff2503d9b228f233a1.pdf
   - trecho: base em suas atribuições conferidas   pela Lei nº. 3969/05, em sua Reunião Ordinária Nº 365 realizada no dia 20 de agosto de 2026.      RESOLVE:                 Publicar: Apresentação do Instituto Fonte de Vida    Publ
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## São Vicente/SP — 1 pendente(s)
 - `d0631f1419` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
@@ -347,16 +353,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jul 16, 2026 ... Além das intervenções estruturais, São Vicente conta com o Plano de Contingência ... Rua Frei Gaspar, 384 - Centro - São Vicente / SP CEP ...
 
 ## Taubaté/SP — 1 pendente(s)
-- `6b73b40090` · nível **A** (9 pts) · querido_diario · DUVIDA · **Lei nº 12.608**, 2012
+- `6b73b40090` · nível **A** (9 pts) · querido_diario · DUVIDA · **Lei nº 12.608**, 10/04/2012
   - url: https://data.queridodiario.ok.org.br/3554102/2026-08-28/910c6c0f9432b64c29fb49065573cd9e1b892e37.pdf
   - trecho:  Prefeitura Municipal de Taubaté   Estado de São Paulo     Em conformidade com o art. 8º, inciso XI, da Lei nº 12.608, de 10 de abril de 2012, c/c o art.   3º-A, § 7º, da Lei nº 12.340, de 1º de dezembro de 2010, a elabo
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Valparaíso/SP — 1 pendente(s)
-- `a12da56045` · nível **A** (8 pts) · querido_diario · DUVIDA · **DECRETO Nº 510**, 05/08/2026
+- `a12da56045` · nível **A** (8 pts) · querido_diario · DUVIDA · **DECRETO Nº 510**, 03/08/2026
   - url: https://data.queridodiario.ok.org.br/3556305/2026-08-05/079a45b84e38f9effc2259e5d164e9799c03dbde.pdf
   - trecho: 1 de 6 garantindo autenticidade, validade jurídica e integridade https://www.valparaiso.sp.gov.br/diario-oficial/1051/ - 05/08/2026  PODER EXECUTIVO  DECRETOS  DECRETO Nº 5101  DECRETO Nº 5101, DE 03 DE AGOSTO DE 2026. *
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Vinhedo/SP — 1 pendente(s)
 - `2ed1c8ce14` · nível **A** (8 pts) · busca_web · — · data 16/06/2026 (do trecho)
@@ -365,11 +371,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 6, 2026 ... ... plano de contingência e previsão orçamentária para enfrentar impactos do El Niño em Vinhedo. 16/06/2026 14:05. Nayla cobra plano de ...
 
 ## Colônia Leopoldina/AL — 1 pendente(s)
-- `f62f1c5f13` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+- `f62f1c5f13` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO 496**, 30/06/2026
   - url: https://data.queridodiario.ok.org.br/2700000/2026-07-01/9341f1ab84a22a0c3d1e0e82351ba7e64355b809.pdf
   - trecho: e   desempenho da plataforma;   II – interoperabilidade: integração com sistemas de pagamento, nota   fiscal eletrônica e cadastros de fornecedores;   III – continuidade e contingência: manutenção de plano de   continuid
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: triagem do ato: destino=camada_saude (autoridade=executivo, objeto=indefinido)
 
 ## Manaus/AM — 2 pendente(s)
 - `4e6b0deeb7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -381,24 +387,30 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Aug 20, 2026 ... El Niño 2026: depois do choque logístico de 2023, Manaus volta a acender o alerta para o escoamento de filmes e embalagens · 2023 mostrou quanto ...
   - juiz: fonte não oficial: só leitura assistida, decisão humana
 
+## Alagoinhas/BA — 1 pendente(s)
+- `dcbb078c19` · nível **B** (3 pts) · querido_diario · EX_ANTE · **PORTARIANº4.609**, 2026
+  - url: https://data.queridodiario.ok.org.br/2900702/2026-09-11/c8ca60a50045716ee029b2b4d95a589481b052fe.pdf
+  - trecho: permanentemente atualizados e arquivados no próprio estabelecimento,  em local de fácil acesso à equipe de fiscalização, os relatórios de manutenção preventiva de equipamentos, laudos de integridade estrutural da pista d
+  - juiz: portão falhou após aplicar — desfeito de verdade em disco, ver log
+
 ## Monte Santo/BA — 1 pendente(s)
-- `af30820017` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+- `af30820017` · nível **B** (3 pts) · querido_diario · DUVIDA · **DECRETO N° 759**, 2024
   - url: https://data.queridodiario.ok.org.br/2921500/2026-07-24/97abb84aaa1c236f4f696f778c7c25d3022b28ed.pdf
   - trecho: do empreendimento, adotando  as medidas corretivas cabíveis.   IX. Manter atualizado e em local visível de fácil acesso, os relatórios de manutenção preventiva nos  equipamentos, inspeção da integridade física, estanquei
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Sátiro Dias/BA — 1 pendente(s)
-- `258cad1be3` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+- `258cad1be3` · nível **B** (3 pts) · querido_diario · EX_ANTE · **Lei nº 14.133**, 01/04/2021
   - url: https://data.queridodiario.ok.org.br/2929701/2026-08-05/fdb843955e75ed31568a9768e3d50b6af58ab3a9.pdf
   - trecho: autenticação individualizada por login  e senha;  e) a realização periódica de cópias de segurança (backup) das informações armazenadas no sistema, em  periodicidade compatível com as boas práticas de segurança da inform
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: ato de 2021 — pode ser edição anterior; decisão humana
 
 ## Teolândia/BA — 1 pendente(s)
 - `bac6200a44` · nível **B** (3 pts) · querido_diario · DUVIDA · data 27/08/2026 (do trecho)
   - url: https://data.queridodiario.ok.org.br/2931608/2026-08-27/c1e61392a9f1ac81c2c32b82b50229c317da72e5.pdf
   - trecho: Formação continuada e  certificação  Sempre que  necessário  Edição 2.794 | Ano 20 27 de agosto de 2026  Página 26  Certificação Digital: YL29CSXL-2O0TPJGV-OV92BOEB-W63ZS1BE Versão eletrônica disponível em: http://www.te
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Valença/BA — 4 pendente(s)
 - `d80bcc1e3e` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
@@ -543,12 +555,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-RECIFE-2026__final.pdf
   - trecho: Apr 10, 2026 ... Universidade Católica de Pernambuco. Page 8. 7. 1.1. PLANO DE CONTINGÊNCIA RECIFE. A Secretaria Executiva de Defesa Civil do Recife – SEDEC, no.
 
+## Antônio Olinto/PR — 1 pendente(s)
+- `76fe18969e` · nível **B** (4 pts) · querido_diario · RESPOSTA · **Lei 17**, 2026
+  - url: https://data.queridodiario.ok.org.br/4101309/2026-06-30/4655a84801a9714a900d8286732d96a92927789d.pdf
+  - trecho: por ato do Chefe do Poder Executivo dentre  os servidores públicos municipais.   Art. 6º Compete à COMPDEC:   I – coordenar e executar as ações de proteção e defesa civil no âmbito municipal;   II – elaborar, manter atua
+  - juiz: portão falhou após aplicar ato de resposta — desfeito de verdade
+
 ## Apucarana/PR — 1 pendente(s)
-- `9fc344f3b2` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+- `9fc344f3b2` · nível **B** (3 pts) · querido_diario · EX_ANTE · **Decreto 277**, 18/08/2026
   - url: https://data.queridodiario.ok.org.br/4101408/2026-08-19/dae418d4fd84e033218a03d861c0a3ea8e21a8a9.pdf
   - trecho: participantes convidados pelo Comitê Gestor do Programa Sandbox – Apucarana que possam  auxiliar na análise das propostas.  5.2. Plano de Descontinuidade Ordenada (facultativo, até 15 páginas), contendo o planejamento pa
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: triagem do ato: destino=indefinido (autoridade=indefinido, objeto=indefinido)
 
 ## Araucária/PR — 2 pendente(s)
 - `508df0e165` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
@@ -561,10 +579,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 29, 2026 ... Araucária - PR. Menu Araucária Tem Tudo Quem somosMelhores do Ano ... Entre as iniciativas estão a atualização do Plano de Contingência ...
 
 ## Campo Largo/PR — 1 pendente(s)
-- `8aa8935738` · nível **B** (4 pts) · querido_diario · DUVIDA · citação não extraída
+- `8aa8935738` · nível **B** (4 pts) · querido_diario · DUVIDA · **Lei nº 269**, 06/08/2026
   - url: https://data.queridodiario.ok.org.br/4104204/2026-08-06/fb7ee6e30ded0010959cd22ab40c1f357cfade1a.pdf
   - trecho: Municipal, com as seguintes competências, entre outras:  I - coordenar as ações de proteção e defesa civil em todas as suas fases prevenção, mitigação,  preparação, resposta e recuperação;  II - elaborar, implementar e m
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Castro/PR — 2 pendente(s)
 - `6ac5fc7306` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
@@ -598,11 +616,19 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DZfGtwfkYSt/
   - trecho: Jun 12, 2026 ... ... Fazenda Rio Grande conta com mecanismos de preparação para situações climáticas extremas. A Defesa Civil municipal possui Plano de Contingência ...
 
-## Guaraniaçu/PR — 1 pendente(s)
+## Guaraniaçu/PR — 3 pendente(s)
 - `79d149e325` · nível **B** (4 pts) · querido_diario · DUVIDA · **Lei Municipal nº 134**, 31/03/2021
   - url: https://data.queridodiario.ok.org.br/4109302/2026-08-27/28ca56b28a30ff9eb2f05c8beaff802136710345.pdf
   - trecho: Conselho Municipal de Proteção e Defesa Civil:   I - atuar como órgão consultivo do Chefe do Poder Executivo e do Coordenador Executivo da   COMPDEC na gestão de riscos e desastres;   II - analisar, propor alterações e e
   - juiz: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro
+- `3be70dc14d` · nível **B** (4 pts) · querido_diario · EX_ANTE · **Lei Municipal nº 134**, 31/03/2021
+  - url: https://data.queridodiario.ok.org.br/4109302/2026-07-20/ed942da2f94b8222a100b3e01023631b5bf39a1d.pdf
+  - trecho: e Defesa Civil;   II - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças;   III - incorporar as ações de proteção e defesa civil no planejamento municipal;   IV - elaborar, manter atualiz
+  - juiz: portão falhou após aplicar — desfeito de verdade em disco, ver log
+- `181ee33bf4` · nível **B** (4 pts) · querido_diario · RESPOSTA · **Lei Municipal nº 134**, 31/03/2021
+  - url: https://data.queridodiario.ok.org.br/4109302/2026-07-21/75a03b7356306f0199a9825f3ca05b40b5d10c38.pdf
+  - trecho: e Defesa Civil;   II - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças;   III - incorporar as ações de proteção e defesa civil no planejamento municipal;   IV - elaborar, manter atualiz
+  - juiz: portão falhou após aplicar ato de resposta — desfeito de verdade
 
 ## Guarapuava/PR — 3 pendente(s)
 - `c5e2e5d0d1` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
@@ -618,7 +644,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DZr7Dbes3ju/
   - trecho: Jun 17, 2026 ... Photo by Gmais Notícias | Guarapuava on June 17, 2026. 2 ... Entre as medidas adotadas estão a atualização do Plano de Contingência 2026 ...
 
-## Jaboti/PR — 1 pendente(s)
+## Jaboti/PR — 2 pendente(s)
+- `c27bf03033` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO Nº78**, 23/07/2026
+  - url: https://data.queridodiario.ok.org.br/4111704/2026-07-24/ed10a013992dd32bd9a7b708febe86d42f26fc0b.pdf
+  - trecho: 07 Descumprimento de   normas de segurança e   legislação vigente   Baixa Alto Médio Cláusulas contratuais específicas e   fiscalização   08 Interrupção do serviço   durante o evento.   Baixa Alto Médio Previsão de equip
+  - juiz: portão falhou após aplicar — desfeito de verdade em disco, ver log
 - `d7f2497267` · nível **B** (3 pts) · querido_diario · DUVIDA · **Lei Municipal nº. 290**, 16/12/2025
   - url: https://data.queridodiario.ok.org.br/4111704/2026-08-14/4a741ff1b07b15993a1b874a8a9b40b359858fd8.pdf
   - trecho: 07 Descumprimento de   normas de segurança e   legislação vigente   Baixa Alto Médio Cláusulas contratuais específicas e   fiscalização   08 Interrupção do serviço   durante o evento.   Baixa Alto Médio Previsão de equip
@@ -686,7 +716,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 12, 2026 ... Photo by Prefeitura de Rolândia-PR on September 12, 2026. May be an ... Plano de Contingência, que, diante desse cenário, atuam ...
 
 ## Toledo/PR — 2 pendente(s)
-- `9efaaf6098` · nível **B** (5 pts) · busca_web · — · data 1586 (do trecho)
+- `9efaaf6098` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - título: Assistência Social apresenta plano de contingência para ...
   - url: https://www.toledo.pr.gov.br/noticias/assistencia-social/assistencia-social-apresenta-plano-de-contingencia-para-emergencias
   - trecho: 7 days ago ... ... plano de contingência para emergências climáticas previstas para ... toledo@toledo.pr.gov.br · Rua: Raimundo Leonardi, 1586. Centro - CEP ...
@@ -719,6 +749,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `ee3dcef3a6` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/Dako5M6EX_g/?hl=en
   - trecho: Jul 9, 2026 ... ... Plano de Contingência para nos preparar. Fique de olho nas ... Duque de Caxias - RJ.
+
+## Nova Iguaçu/RJ — 1 pendente(s)
+- `363c09aa4b` · nível **B** (3 pts) · busca_web · RESPOSTA · citação não extraída
+  - url: https://www.novaiguacu.rj.gov.br/smdc/wp-content/uploads/sites/27/2024/12/plancon-2024-2025.pdf
+  - trecho: Acionar o Plano de Contingência. • Emitir ALERTA (PREPARAÇÃO PARA EVENTUAL. DESOCUPAÇÃO (SMS, mídias sociais, etc ... JACERUBA, NOVA IGUAÇU - RJ.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão falhou após aplicar ato de resposta — desfeito de verdade
 
 ## Petrópolis/RJ — 5 pendente(s)
 - `8c6cc9987b` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
@@ -769,16 +806,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3304557/2026-07-07/9d400f1139ab12cb074b80f96559fa4fce36e7a0.pdf
   - trecho: acesso.  2.1.2 EQUIPAMENTOS  Os equipamentos e mobiliários do estabelecimento de saúde deverão garantir a plena realização dos proce- dimentos contratados de acordo com o perfil constante neste Termo de Referência, garan
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Silva Jardim/RJ — 3 pendente(s)
 - `a7a71366a2` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - url: https://tvprefeito.com/prefeitura-de-silva-jardim-apresenta-o-plano-de-contingencia-de-protecao-e-defesa-civil/
   - trecho: A Prefeitura de Silva Jardim, através da Subsecretaria Municipal de Defesa Civil, apresentou nesta quarta-feira (5), o Plano de Contingência de Proteção e Defesa Civil para ameaças naturais de desastres característicos d
-- `4420b1758a` · nível **B** (3 pts) · busca_web · — · data 0001 (do trecho)
+- `4420b1758a` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - url: https://www.silvajardim.rj.gov.br/index.php/plano-de-contingencia-covid-19/
   - trecho: Prefeitura Municipal de Silva Jardim - CNPJ: 28.741.098/0001-57 - Rua Luiz Gomes, 46, Centro - Silva Jardim/RJ - CEP: 28820-000
-- `4663b87c0a` · nível **C** (2 pts) · busca_web · — · data 0001 (do trecho)
+- `4663b87c0a` · nível **C** (2 pts) · busca_web · — · citação não extraída
   - url: https://www.silvajardim.rj.gov.br/index.php/plano-de-contingencia-da-defesa-civil/
   - trecho: Please wait while flipbook is loading. For more related info, FAQs and issues please refer to DearFlip WordPress Flipbook Plugin Help documentation · Prefeitura Municipal de Silva Jardim - CNPJ: 28.741.098/0001-57 - Rua 
 
@@ -826,6 +863,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `a61d32c5be` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DdUOT62G-yP/
   - trecho: 7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...
+
+## Bocaina do Sul/SC — 1 pendente(s)
+- `f55e1e41f1` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Impactos do El Niño pautam audiência em Bocaina do Sul - SCC10
+  - url: https://scc10.com.br/radioclube/impactos-do-el-nino-pautam-audiencia-em-bocaina-do-sul/
+  - trecho: Jun 15, 2026 ... Impactos do El Niño pautam audiência em Bocaina do Sul. A Defesa Civil pretende expor o plano de contingência ... 2 Três apostas de SC ...
+
+## Bom Jesus/SC — 1 pendente(s)
+- `b1d0b5be45` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: EL NIÑO PROVOCA ALAGAMENTOS EM BOM JESUS DO ...
+  - url: https://www.instagram.com/reel/DZFHb2qRQl7/
+  - trecho: Jun 2, 2026 ... 1 like. fallaregiao. Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A Secretaria Municipal de Assistência ...
 
 ## Brusque/SC — 4 pendente(s)
 - `2385e529b6` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
@@ -932,6 +981,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/
   - trecho: 8 days ago ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...
 
+## Leoberto Leal/SC — 1 pendente(s)
+- `20efec3d28` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Proteção e Defesa Civil-Leoberto Leal | ENTENDA O EL NIÑO ...
+  - url: https://www.instagram.com/p/DXy9oH5DsmM/
+  - trecho: May 1, 2026 ... Photo by Proteção e Defesa Civil-Leoberto Leal on May 01, 2026.
+
 ## Lindóia do Sul/SC — 1 pendente(s)
 - `3f4fdbbfa2` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - url: https://lindoiadosul.sc.gov.br/uploads/sites/20/2025/12/PLANO-MUNICIPAL-DE-SAUDE-2026-2029.pdf
@@ -983,31 +1038,31 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jul 25, 2026 ... ... likes, 13 comments - fmc_comunica on July 25, 2026: "Até quando Bauru vai depender da sorte ... plano de contingência claro e ...
 
 ## Campinas/SP — 1 pendente(s)
-- `19f12d575c` · nível **B** (3 pts) · querido_diario · DUVIDA · data 2026 (do trecho)
+- `19f12d575c` · nível **B** (3 pts) · querido_diario · DUVIDA · **DECRETO Nº 24.530**, 08/07/2026
   - url: https://data.queridodiario.ok.org.br/3509502/2026-07-13/80bed338bbc1cd2456dbc6b5cba027f2d96e9aff.pdf
   - trecho: CRMV/SP: 58404 DEFERIDO  PROTOCOLO: PMC.2026.00130122-77 INTERESSADO: REDE MUNICIPAL DR. MÁRIO GATTI DE URGÊNCIA,  EMERGÊNCIA E HOSPITALAR - UNIDADE PEDIÁTRICA MÁRIO GATTINHO CNPJ/CPF: 47.018.676/0001-76 ASSUNTO: Plano d
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Coronel Macedo/SP — 1 pendente(s)
-- `e7be63294b` · nível **B** (3 pts) · querido_diario · DUVIDA · data 2026 (do trecho)
+- `e7be63294b` · nível **B** (3 pts) · querido_diario · DUVIDA · **Lei nº 14.133**, 2021
   - url: https://data.queridodiario.ok.org.br/3512605/2026-07-08/cfc3861c7e5a2f000dc424a19cdfa00ac7afea06.pdf
   - trecho: Ausência de política de expiração/troca periódica de   senhas e existência de usuários com permissões   indevidas no GEMMAP (controle de acesso a revisar)   • Setor recém-criado (2026), com processos ainda em   estrutura
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Itapirapuã Paulista/SP — 1 pendente(s)
-- `abf3d08656` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+- `abf3d08656` · nível **B** (3 pts) · querido_diario · EX_ANTE · **Lei nº 14.133**, 2021
   - url: https://data.queridodiario.ok.org.br/3522653/2026-07-15/a4f1f912f5ff9dabd73c9726225c376c7124b2ad.pdf
   - trecho: disponibilidade e desempenho da plataforma;   II – interoperabilidade: integração com sistemas de pagamento, nota fiscal   eletrônica e cadastros de fornecedores;   III – continuidade e contingência: manutenção de plano 
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: data do ato incompleta (2021)
 
 ## Itápolis/SP — 1 pendente(s)
-- `ed1a68da45` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+- `ed1a68da45` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída
   - url: https://data.queridodiario.ok.org.br/3522703/2026-07-13/f04596c02d41fdb9b28379ce2507cba23931c904.pdf
   - trecho: secretarias coordenadas pela chefia SEMANAL 40,00 40,00 40,00  ATENDIMENTO DE OUVIDORIA À POPULAÇÃO MES/ANO 12,00 12,00 12,00  RESPOSTAS DE REQUERIMENTOS/OFICIOS DA  CÂMARA MUNICIPAL  %/ANO 100,00 100,00 100,00  Áreas de
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: triagem do ato: destino=indefinido (autoridade=executivo, objeto=indefinido)
 
 ## Leme/SP — 1 pendente(s)
 - `468c7d518a` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
@@ -1022,11 +1077,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: arranjo institucional e plano de contingência e emergência. ... O município de Rosário da Limeira está inserido no Comitê da Bacia Hidrográfica dos Afluentes Mi-.
 
 ## Marília/SP — 1 pendente(s)
-- `df390f6462` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+- `df390f6462` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída
   - url: https://data.queridodiario.ok.org.br/3529005/2026-08-27/a43b0c975a5a52a8b34c7abee8a0efd29f70510f.pdf
   - trecho: capacidade técnica, operacional e financeira do proponente para conduzir o ciclo experimental;   V- a existência de mecanismos de responsabilidade civil e de reparação de eventuais danos decorrentes da experimentação;   
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
 ## Pindamonhangaba/SP — 1 pendente(s)
 - `e675ae8771` · nível **B** (4 pts) · imprensa · DUVIDA · **Decreto Municipal nº 7.087**, 16/06/2026
@@ -1038,7 +1093,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `fc7d32b136` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
   - url: https://data.queridodiario.ok.org.br/3541307/2026-08-14/7227ab5ec7d6b342418ed995127e0889de671379.pdf
   - trecho: Apresentação de Mapa Potenciométrico;  - Recolhimento de ART do responsável técnico;  - Elaboração de Relatório Técnico das atividades e resultados obtidos.   10. Mapa de riscos      Nº Risco Identificado Probabilidade I
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Salto/SP — 2 pendente(s)
 - `39f8ac9178` · nível **B** (5 pts) · busca_web · — · citação não extraída
@@ -1046,23 +1101,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://salto.sp.gov.br/wp-content/uploads/2019/02/revisao_plano_saneamento_agua_esgoto.pdf
   - trecho: município de Salto – SP. ... PLANO DE CONTINGÊNCIA. 1. Paralisação da estação de tratamento de esgotos. Interrupção no fornecimento de energia elétrica nas.
   - ⚠ ano_anterior_ao_ciclo
-- `b0683c484f` · nível **B** (3 pts) · querido_diario · DUVIDA · data 19/06/2026 (do trecho)
+- `b0683c484f` · nível **B** (3 pts) · querido_diario · DUVIDA · **Lei Municipal n. 3.713**, 13/12/2017
   - url: https://data.queridodiario.ok.org.br/3545209/2026-07-01/e6fd8348ed7a25d5db2d34ffd9fc1ad81e82edc4.pdf
   - trecho: 19 de junho de 2026.  Nº  1393/2026  –  Comissão  de  Organização,  Bens, Serviços,  Saúde,  Educação,  Cultura,  Servidores,  Meio Ambiente  e  Administração –  Solicitando a  ampliação da oferta  de  vagas  em creche, 
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Sarutaiá/SP — 2 pendente(s)
-- `d5880f0fa0` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+- `d5880f0fa0` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída
   - url: https://data.queridodiario.ok.org.br/3551207/2026-08-20/4dce124618dcbc5c9d7473e6dcc0df78c2a5868e.pdf
   - trecho: razão da natureza, complexidade ou riscos envolvidos no objeto.   Art. 11. O documento deverá conter, sempre que aplicável: I – identificação dos riscos; II – probabilidade; III – impacto; IV – nível de risco; V – medida
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
-- `016582cd8e` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `016582cd8e` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída
   - url: https://data.queridodiario.ok.org.br/3551207/2026-08-20/a0f996e97d735f4f5b6b40fbdc7f02a8154fd6e8.pdf
   - trecho: razão da natureza, complexidade ou riscos envolvidos no objeto.   Art. 11. O documento deverá conter, sempre que aplicável: I – identificação dos riscos; II – probabilidade; III – impacto; IV – nível de risco; V – medida
   - ⚠ texto_falso_positivo_provavel
-  - juiz: nenhum padrão claro bateu — não classificar sozinho
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
 ## Votuporanga/SP — 2 pendente(s)
 - `ebc84478b1` · nível **B** (5 pts) · busca_web · — · data 2022 (do trecho)
@@ -1181,19 +1236,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 
 
 ---
-## Decididas (19) — registro permanente, nunca apagadas
+## Decididas (13) — registro permanente, nunca apagadas
 
 - `c53cf50fc3` Rio Branco/AC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `ef69b9d26b` Ouro Branco/AL · aplicada — promovida a registro (plano) em 10/09/2026; revisão consumida · 
 - `c65f37b2cb` Macapá/AP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
-- `dcbb078c19` Alagoinhas/BA · revertida_erro_portao · 
 - `48fe6dc786` Belo Horizonte/MG · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `c65f37b2cb` Belém/PA · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
-- `76fe18969e` Antônio Olinto/PR · revertida_erro_portao · 
-- `3be70dc14d` Guaraniaçu/PR · revertida_erro_portao · 
-- `181ee33bf4` Guaraniaçu/PR · revertida_erro_portao · 
-- `c27bf03033` Jaboti/PR · revertida_erro_portao · 
-- `363c09aa4b` Nova Iguaçu/RJ · revertida_erro_portao · 
 - `c65f37b2cb` Florianópolis/SC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `c65f37b2cb` Indaial/SC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `c65f37b2cb` Rio do Sul/SC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
