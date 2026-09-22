@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 22/09/2026 · 256 pendente(s) · 14 decidida(s) · A=43 B=174 C=39
+Gerado em 22/09/2026 · 263 pendente(s) · 14 decidida(s) · A=44 B=178 C=41
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -17,52 +17,62 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: Serra/ES já consta na base — não duplicar (revisão humana decide se é atualização)
 
 ## Campo Mourão/PR — 1 pendente(s)
-- `b24d320293` · nível **A** (6 pts) · busca_web · — · citação não extraída
+- `b24d320293` · nível **A** (6 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Campo Mourão cria Plano de Contingência para emergências
   - url: https://crn1.com.br/2026/09/campo-mourao-prepara-plano-de-contingencia-para-situacoes-de-emergencia
   - trecho: A Prefeitura de Campo Mourão está estruturando um Plano de Contingência (PLANCON) para organizar a resposta do município em casos de emergência. O assunto foi discutido nesta terça-feira (1º de setembro) em reunião no ga
+  - juiz: portão automático: fonte não oficial
 
 ## Cascavel/PR — 7 pendente(s)
-- `ec95baef59` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+- `ec95baef59` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Chuva em Cascavel: Município aciona plano de contingência
   - url: https://oparana.com.br/?p=603515
   - trecho: Sep 12, 2026 ... El Niño: Prefeitura aciona Grupo de Ações Emergenciais até a próxima terça-feira. Cascavel aciona plano de contingência ... 2026 Todos os ...
-- `6192734d41` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `6192734d41` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Defesa de Cascavel avança plano de enfrentamento ao El Niño
   - url: https://www.jornaldooeste.com.br/defesa-cascavel-enfrentamento-el-nino/
   - trecho: Jul 30, 2026 ... Defesa Civil de Cascavel avança no plano de enfrentamento ao El Niño ... Plano de Contingência Municipal. A criação dos Nupdecs atende às ...
-- `4ac2e444de` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `4ac2e444de` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Prefeitura de Cascavel lança plano para enfrentar efeitos do El Niño
   - url: https://www.opresente.com.br/municipios/prefeitura-de-cascavel-lanca-plano-para-enfrentar-efeitos-do-el-nino/
   - trecho: Jul 7, 2026 ... Prefeitura de Cascavel lança plano para enfrentar efeitos do El Niño ... A Defesa Civil atualizou o Plano de Contingência Municipal e criou o ...
-- `37e5e57874` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `37e5e57874` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Cascavel se prepara para impactos do El Niño
   - url: https://oparana.com.br/cotidiano/cascavel-reforca-plano-de-prevencao-para-enfrentar-possiveis-impactos-do-el-nino/
   - trecho: Jul 7, 2026 ... prevenção de riscos relacionados à arborização urbana. Na Defesa Civil, os trabalhos incluem a atualização do Plano de Contingência Municipal, ...
-- `47110c9cc2` · nível **B** (5 pts) · busca_web · — · data 12/08/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `47110c9cc2` · nível **B** (5 pts) · busca_web · DUVIDA · data 12/08/2026 (do trecho)
   - título: Cascavel se prepara para efeitos do El Niño e mapeia 77 pontos de ...
   - url: https://www.radiouniaodetoledo.com.br/noticia/6/479691/cascavel-se-prepara-para-efeitos-do-el-nino-e-mapeia-77-pontos-de-atencao
   - trecho: Aug 12, 2026 ... 12 de agosto de 2026 | 14h29. Atualizado há 29 dias. A Defesa Civil de Cascavel atualizou o plano de contingência para preparar o município ...
-- `98b212d659` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `98b212d659` · nível **B** (4 pts) · busca_web · EX_ANTE · **Portaria nº 229**, 2026
   - título: Plano de Contingência para Eventos Climáticos Adversos
   - url: https://www.cascavel.app/plano-de-contingencia
   - trecho: Aug 17, 2026 ... Plano de Contingência para Eventos Climáticos Adversos. Instrução ... Cascavel diante de eventos climáticos associados ao fenômeno El Niño.
-- `0bc1fba20f` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `0bc1fba20f` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Cascavel se prepara para enfrentar os efeitos do El Niño ...
   - url: https://www.instagram.com/reel/DdCJ3KeTUzj/
   - trecho: Sep 8, 2026 ... renatosilvacascavel on September 8, 2026: "Cascavel se prepara para enfrentar os efeitos do El Niño. 🌧️ Nossa Defesa Civil está em campo ...
+  - juiz: portão automático: fonte não oficial
 
 ## Foz do Iguaçu/PR — 1 pendente(s)
-- `00461f6b27` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+- `00461f6b27` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Câmara de Foz do Iguaçu cobra plano de contingência para efeitos ...
   - url: https://portaliguacu.com.br/camara-de-foz-do-iguacu-cobra-plano-de-contingencia-para-efeitos-do-el-nino/
   - trecho: Jun 22, 2026 ... Câmara de Foz do Iguaçu cobra plano de contingência para efeitos do El Niño. A Câmara Municipal de Foz do Iguaçu aprovou o Requerimento nº ...
+  - juiz: portão automático: fonte não oficial
 
 ## Francisco Beltrão/PR — 1 pendente(s)
-- `d67c026a71` · nível **A** (9 pts) · busca_web · — · data 08/09/2026 (do trecho)
+- `d67c026a71` · nível **A** (9 pts) · busca_web · DUVIDA · data 08/09/2026 (do trecho)
   - título: Francisco Beltrão atualiza Plano de Contingência e reforça ações ...
   - url: https://franciscobeltrao.pr.gov.br/noticia/francisco-beltrao-atualiza-plano-de-contingencia-e-reforca-acoes-preventivas-para-o-el-nino
   - trecho: Jun 18, 2026 ... Francisco Beltrão atualiza Plano de Contingência e reforça ações preventivas para o El Niño ... 2026 em Francisco Beltrão PR. 08/09/2026 03 ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Guaratuba/PR — 4 pendente(s)
 - `566e4a1aaf` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
@@ -177,18 +187,21 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Umuarama/PR — 3 pendente(s)
-- `93531db81d` · nível **A** (8 pts) · busca_web · — · data 11/08/2026 (do trecho)
+- `93531db81d` · nível **A** (8 pts) · busca_web · EX_ANTE · data 11/08/2026 (do trecho)
   - título: Plano de Contingência Municipal de Proteção e Defesa Civil ...
   - url: https://umuarama.pr.gov.br/files/ArquivoDiversos/arquivo/1786533277.pdf
   - trecho: Plano de contingência do município de Umuarama - PR. 11/08/2026. Página 2 de 72 ... del.gsmenezes@pc.pr.gov. br. Page 60. Plano de contingência do município ...
-- `64a5717321` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `64a5717321` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Francisco Alves atualiza Plano de Contingência e reforça ações ...
   - url: https://portalumuaramanews.com.br/2026/09/10/francisco-alves-atualiza-plano-de-contingencia-e-reforca-acoes-preventivas-diante-da-intensificacao-do-el-nino/
   - trecho: Sep 10, 2026 ... ... Umuarama. Francisco Alves atualiza Plano de Contingência e reforça ações preventivas diante da intensificação do El Niño. Defesa Civil ...
-- `01c236948c` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `01c236948c` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Umuarama reforça prevenção para enfrentar El Niño - Globoplay
   - url: https://globoplay.globo.com/v/14865940/
   - trecho: Aug 13, 2026 ... Detalhes. Meio-Dia Paraná - Noroeste. Umuarama reforça prevenção para enfrentar El Niño ... Município também atualiza plano de contingência da ...
+  - juiz: portão automático: fonte não oficial
 
 ## Aperibé/RJ — 1 pendente(s)
 - `22f71a60d4` · nível **A** (8 pts) · busca_web · — · citação não extraída
@@ -220,6 +233,35 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://fontecerta.com/noticias-da-regiao-dos-lagos/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/
   - trecho: 3 days ago ... ... 2026 Débora Clara Santos. Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado ...
   - juiz: portão automático: fonte não oficial
+
+## Duque de Caxias/RJ — 6 pendente(s)
+- `dc942a39be` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA MUNICIPAL AJUDA A MITIGAR DANOS CAUSADOS ...
+  - url: https://duquedecaxias.rj.gov.br/noticia/plano-de-contingencia-municipal-ajuda-a-mitigar-danos-causados-por-desastres-naturais/5368
+  - trecho: A Prefeitura de Duque de Caxias vem adotando desde novembro do ano passado o novo Plano de Contingência Municipal, com medidas preventivas e mitigatórias contra inundações e deslizamentos.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `cbe5a11555` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://www.cmdc.rj.gov.br/?p=32729
+  - trecho: Chuvas de verão: Duque de Caxias se prepara com Plano de Contingência. Em 27, agosto, 2026. Chuvas de verão: Duque de Caxias se prepara com Plano de ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `77eaf852fd` · nível **B** (5 pts) · seguimento_busca_oficial · RESPOSTA · data 2025 (do trecho)
+  - título: Resultado OCR - Prefeitura de Duque de Caxias
+  - url: https://transparencia.duquedecaxias.rj.gov.br/diario_oficial_get_anexo.php?codigo=4375&ocr=s
+  - trecho: 5.4 PLANEJAMENTO FUNCIONAL 39 ... DE JANEIRO Plano de contingência 2025/2026 PREFEITURA DE DUQUE DE CAXIAS PREFEITURA DE DUQUE DE CAXIAS Secretaria Municipal de Defesa de Civil Secretaria Municipal de Defesa de Civil SIT
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `f5961f3406` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · data 2024 (do trecho)
+  - título: DEFESA CIVIL DE DUQUE DE CAXIAS LANÇA PLANO VERÃO 2024/2025
+  - url: https://duquedecaxias.rj.gov.br/noticia/defesa-civil-de-duque-de-caxias-lanca-plano-verao-20242025/5797
+  - trecho: A Secretaria municipal de Obras e Defesa Civil de Duque de Caxias apresentou, na manhã desta quarta-feira (06/11), na sede da prefeitura, em Jardim Primavera, o Plano Verão 2024/2025.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `0a62c14347` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - url: https://www.instagram.com/p/Dam9q7uR2F9/
+  - trecho: Jul 10, 2026 ... ... Duque de Caxias, por meio da Defesa Civil, iniciou a atualização do Plano de Contingência para o verão 2026/2027, reforçando as ações de ...
+  - juiz: portão automático: fonte não oficial
+- `ee3dcef3a6` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/p/Dako5M6EX_g/?hl=en
+  - trecho: Jul 9, 2026 ... ... Plano de Contingência para nos preparar. Fique de olho nas ... Duque de Caxias - RJ.
 
 ## Quissamã/RJ — 2 pendente(s)
 - `f2f2d164b6` · nível **A** (8 pts) · querido_diario · EX_ANTE · data 28/12/1990 (do trecho)
@@ -281,46 +323,54 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: data do ato incompleta (2021)
 
 ## Atibaia/SP — 2 pendente(s)
-- `bf998ab2f2` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+- `bf998ab2f2` · nível **A** (6 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño em Atibaia: o dobro da chuva prevista para setembro em ...
   - url: https://www.atibaia.sp.gov.br/noticias/defesa-civil/el-nino-em-atibaia-o-dobro-da-chuva-prevista-para-setembro-em-apenas-tres-dias
   - trecho: Sep 12, 2026 ... A Prefeitura de Atibaia conta com equipes preparadas para atender a população, conforme previsto no Plano de Contingência, documento ...
-- `3a5b0ed193` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `3a5b0ed193` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño em Atibaia: o dobro da chuva prevista para setembro em ...
   - url: https://www.instagram.com/p/DdMtGm7FpnC/
   - trecho: Sep 12, 2026 ... Photo by Portal Atibaia News on September 12, 2026. May be an image of.
+  - juiz: portão automático: fonte não oficial
 
 ## Birigui/SP — 1 pendente(s)
-- `bf03df2920` · nível **A** (7 pts) · busca_web · — · data 2026 (do trecho)
+- `bf03df2920` · nível **A** (7 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Birigui sediará reunião para alinhar plano de contingência para o El ...
   - url: http://www.birigui.sp.gov.br/birigui/noticias/noticias_detalhes.php?id_noticia=11244
   - trecho: Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Cubatão/SP — 2 pendente(s)
-- `ec41e5cbc0` · nível **A** (8 pts) · busca_web · — · data 2026 (do trecho)
+- `ec41e5cbc0` · nível **A** (8 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño: Cubatão cria comissão permanente de enfrentamento ao ...
   - url: https://cubatao.sp.gov.br/el-nino-cubatao-cria-comissao-permanente-de-enfrentamento-ao-fenomeno/
   - trecho: Jul 22, 2026 ... El Niño: Cubatão cria comissão permanente de enfrentamento ao fenômeno ... “O município já conta com o Plano de Contingência de Proteção e Defesa ...
-- `2e1bdf83ef` · nível **A** (7 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `2e1bdf83ef` · nível **A** (7 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño em Cubatão: prefeitura cria comissão após cobrança do MP
   - url: https://g1.globo.com/sp/santos-regiao/noticia/2026/07/24/cubatao-cria-comissao-para-enfrentar-efeitos-do-el-nino-apos-cobranca-de-mp-sp.ghtml
   - trecho: Jul 24, 2026 ... Cubatão cria comissão para enfrentar efeitos do El Niño após cobrança de MP-SP ... Plano de Contingência de Proteção e Defesa Civil (PCPDC): ...
+  - juiz: portão automático: fonte não oficial
 
 ## Franca/SP — 1 pendente(s)
-- `a1cf9dfc3c` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+- `a1cf9dfc3c` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: CPFL faz Plano de Contingência em Franca para casos eventuais ...
   - url: https://www.jornaldafranca.com.br/cpfl-apresenta-plano-de-contingencia-para-o-periodo-de-calor-com-el-nino-2026-2027/
   - trecho: Aug 24, 2026 ... CPFL faz Plano de Contingência em Franca para casos eventuais no período de calor · compartilhar no whatsapp · compartilhar no telegram ...
+  - juiz: portão automático: fonte não oficial
 
 ## Ilhabela/SP — 2 pendente(s)
-- `d214752152` · nível **A** (7 pts) · busca_web · — · citação não extraída
+- `d214752152` · nível **A** (7 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Defesa Civil de Ilhabela regulamenta novo Plano Municipal de ...
   - url: https://www.ilhabela.sp.gov.br/portal/noticias/0/3/17590/defesa-civil-de-ilhabela-regulamenta-novo-plano-municipal-de-contingencia
   - trecho: O Plano de Contingência completo pode ser acessado em: https://www.ilhabela ... Dia Laranja prepara população de Ilhabela para possíveis impactos do Super El Niño.
-- `35c97468d4` · nível **A** (7 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `35c97468d4` · nível **A** (7 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano Municipal de Contingência da Defesa Civil de Ilhabela será ...
   - url: https://www.ilhabela.sp.gov.br/portal/noticias/0/3/103/plano-municipal-de-contingencia-da-defesa-civil-de-ilhabela-sera-apresentado-em-audiencia-publica
   - trecho: A Prefeitura de Ilhabela, por meio da Secretaria de Mobilidade e Segurança, realiza uma Audiência Pública para apresentar o Plano de Contingência Municipal ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Itapeva/SP — 1 pendente(s)
 - `7c2803fc81` · nível **A** (9 pts) · querido_diario · DUVIDA · **Lei Municipal nº 4.066**, 29/11/2017
@@ -352,10 +402,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## São Vicente/SP — 1 pendente(s)
-- `d0631f1419` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+- `d0631f1419` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: São Vicente reforça preparação para o El Niño com obras de ...
   - url: http://www.saovicente.sp.gov.br/informacao/sao-vicente-reforca-preparacao-para-o-el-nino-com-obras-de-drenagem-investimentos-e-plano-preventivo
   - trecho: Jul 16, 2026 ... Além das intervenções estruturais, São Vicente conta com o Plano de Contingência ... Rua Frei Gaspar, 384 - Centro - São Vicente / SP CEP ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Taubaté/SP — 1 pendente(s)
 - `6b73b40090` · nível **A** (9 pts) · querido_diario · DUVIDA · **Lei nº 12.608**, 10/04/2012
@@ -370,10 +421,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Vinhedo/SP — 1 pendente(s)
-- `2ed1c8ce14` · nível **A** (8 pts) · busca_web · — · data 16/06/2026 (do trecho)
+- `2ed1c8ce14` · nível **A** (8 pts) · busca_web · DUVIDA · data 16/06/2026 (do trecho)
   - título: Nayla cobra plano de contingência e previsão orçamentária para ...
   - url: https://www.camaravinhedo.sp.gov.br/imprensa/noticias/0/4/0/4337
   - trecho: Sep 6, 2026 ... ... plano de contingência e previsão orçamentária para enfrentar impactos do El Niño em Vinhedo. 16/06/2026 14:05. Nayla cobra plano de ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Colônia Leopoldina/AL — 1 pendente(s)
 - `f62f1c5f13` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO 496**, 30/06/2026
@@ -382,7 +434,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: triagem do ato: destino=camada_saude (autoridade=executivo, objeto=indefinido)
 
-## Manaus/AM — 2 pendente(s)
+## Manaus/AM — 6 pendente(s)
+- `3621ef564b` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE MANAUS – PMSBM
+  - url: https://planodesaneamento.manaus.am.gov.br/wp-content/uploads/2025/12/DIAGNOSTICO-E-PROGNOSTICO-ESGOTAMENTO-SANITARIO-1.pdf
+  - trecho: 1.17 CONTINGÊNCIAS E EMERGÊNCIAS ............................................... 150 · 1.17.1 Plano de contingências e emergências ........................................
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `3800c57450` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Decreto de estado de emergência em Manaus devido à ...
+  - url: https://manaus.am.gov.br/noticia/decreto/prefeito-vai-decretar-estado-de-emergencia-em-manaus-devido-a-estiagem-nesta-quarta-feira-11-9
+  - trecho: Meio Ambiente · Arborização · Infraestrutura · Atenção primária · Arborização · Mobilidade · Compromisso · Mobilidade · Oportunidade · ÚLTIMAS NOTÍCIAS · Oportunidade · Fiscalização · Nota de Pesar · Mais notícias · Plan
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `4e6b0deeb7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - url: https://exame.com/esg/el-nino-manaus-usa-drones-monitora-qualidade-do-ar-e-combate-queimadas-em-prevencao/
   - trecho: Jul 16, 2026 ... Ainda neste mês, a prefeitura pretende lançar o Plano de Contingência ... El Niño pela Prefeitura de Manaus (Prefeitura de Manaus/Divulgação).
@@ -391,6 +454,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://plasticonews.org/el-nino-2026-depois-do-choque-logistico-de-2023-manaus-volta-a-acender-o-alerta-para-o-escoamento-de-filmes-e-embalagens/
   - trecho: Aug 20, 2026 ... El Niño 2026: depois do choque logístico de 2023, Manaus volta a acender o alerta para o escoamento de filmes e embalagens · 2023 mostrou quanto ...
   - juiz: portão automático: fonte não oficial
+- `1e6cce79ba` · nível **C** (3 pts) · seguimento_busca_oficial · DUVIDA · **LEI Nº 5.145**, 24/03/2020
+  - título: LEIS-E-DECRETOS-AM-COVID-19. ...
+  - url: https://www.amazonprev.am.gov.br/wp-content/uploads/2020/06/LEIS-E-DECRETOS-AM-COVID-19.pdf
+  - trecho: Amazonas (FTI), “ações do combate a pandemia da COVID-19 (novo coronavírus)”. ... Estadual, e dá outras providências. Institui o Plano de Contingenciamento de Gastos, que terá como objetivo promover
+  - ⚠ risco_errado_no_titulo, ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `53f1d1ef3e` · nível **C** (2 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Novo decreto do Governo do Amazonas traz mudanças em regras de ...
+  - url: http://www.amazonas.am.gov.br/2021/03/novo-decreto-do-governo-do-amazonas-traz-mudancas-em-regras-de-circulacao-ensino-privado-restaurantes-e-balnearios/
+  - trecho: Entre as mudanças está o horário de funcionamento de restaurantes e lanchonetes, que passará a ser das 06h às 23h, de segunda a sábado, e das 7h às 16h aos domingos. O decreto com as alterações, que entrará em vigor na p
+  - ⚠ ano_anterior_ao_ciclo
 
 ## Alagoinhas/BA — 1 pendente(s)
 - `dcbb078c19` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída
@@ -429,9 +503,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `5914b8cfee` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://midiabahia.com.br/valenca-reforca-acoes-para-enfrentar-os-efeitos-do-el-nino-e-prevenir-queimadas/
   - trecho: Jul 24, 2026 ... O encontro teve como objetivo fortalecer o Plano de Contingência ... Acidente entre Fiat Palio e Volkswagen Voyage na BA-001, em Valença.
-- `294ad7a040` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `294ad7a040` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - url: https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas
   - trecho: A Prefeitura de Valença realizou, ... do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município....
+  - juiz: portão automático: fonte não oficial
 
 ## Fortaleza/CE — 4 pendente(s)
 - `0a8db47e79` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
@@ -488,9 +563,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: data do ato incompleta (1990)
 
 ## Barão de Cocais/MG — 1 pendente(s)
-- `106613cb27` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `106613cb27` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - url: https://www.portalcarlossouto.com.br/noticias/barao-de-cocais-ativa-nivel-2-do-plano-de-contingencia-devido-a-chuvas-intensas/
   - trecho: A Prefeitura de Barão de Cocais, em resposta às chuvas intensas, ativou o nível 2 do plano de contingência, o que implica em ações preventivas e monitoramento intensificado.
+  - juiz: portão automático: fonte não oficial
 
 ## Congonhas/MG — 1 pendente(s)
 - `b9c96715ad` · nível **B** (4 pts) · busca_web · — · citação não extraída
@@ -499,16 +575,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
 
 ## Lambari/MG — 1 pendente(s)
-- `6366db55bf` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `6366db55bf` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Prevenção antes da emergência! 🛡️ Diante dos efeitos do El Niño ...
   - url: https://www.facebook.com/prefeituradelambari/videos/preven%C3%A7%C3%A3o-antes-da-emerg%C3%AAncia-%EF%B8%8Fdiante-dos-efeitos-do-el-ni%C3%B1o-no-pa%C3%ADs-e-da-possib/1058494277164913/
   - trecho: Sep 10, 2026 ... ... Plano de Contingência, reunindo diferentes secretarias para ... Paróquia Nossa Senhora da Saúde - Lambari / MG. Paróquia Nossa Senho ...
+  - juiz: portão automático: fonte não oficial
 
 ## Luz/MG — 1 pendente(s)
-- `c072e8920c` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `c072e8920c` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Como o super El Niño previsto para os próximos meses pode deixar ...
   - url: https://www.estadao.com.br/economia/como-o-super-el-nino-pode-pressionar-a-conta-de-luz-em-2027/
   - trecho: Jun 19, 2026 ... ... luz. Para preservar os reservatórios das hidrelétricas, o Operador ... plano de contingência que favoreça a atuação preventiva e ...
+  - juiz: portão automático: fonte não oficial
 
 ## Dourados/MS — 1 pendente(s)
 - `9dd3bf8ab8` · nível **B** (4 pts) · busca_web · — · data 2019 (do trecho)
@@ -584,14 +662,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: triagem do ato: destino=indefinido (autoridade=indefinido, objeto=indefinido)
 
 ## Araucária/PR — 2 pendente(s)
-- `508df0e165` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+- `508df0e165` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Araucária começa a se preparar para Super El Niño - G1 - Globo
   - url: https://g1.globo.com/pr/parana/especial-publicitario/municipio-de-araucaria/araucaria-noticias/noticia/2026/08/11/araucaria-comeca-a-se-preparar-para-super-el-nino.ghtml
   - trecho: Aug 11, 2026 ... Araucária começa a se preparar para Super El Niño. Defesa Civil expõe ... Entre as iniciativas estão a atualização do Plano de Contingência ...
-- `4ad53c9087` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `4ad53c9087` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Araucária começa a se preparar para Super El Niño
   - url: https://www.araucariatemtudo.com.br/blog/araucaria-comeca-a-se-preparar-para-super-el-nino
   - trecho: Jun 29, 2026 ... Araucária - PR. Menu Araucária Tem Tudo Quem somosMelhores do Ano ... Entre as iniciativas estão a atualização do Plano de Contingência ...
+  - juiz: portão automático: fonte não oficial
 
 ## Campo Largo/PR — 1 pendente(s)
 - `8aa8935738` · nível **B** (4 pts) · querido_diario · DUVIDA · **Lei nº 269**, 06/08/2026
@@ -610,10 +690,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 10, 2026 ... Defesa Civil de Castro reforça prevenção ao El Niño e orienta ... plano de contingência para resposta rápida em caso de ocorrências. O ...
 
 ## Colombo/PR — 1 pendente(s)
-- `f7778f6ca8` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `f7778f6ca8` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: El Niño aumenta risco de chuvas intensas no Paraná, e Colombo ...
   - url: https://ivandecolombo.com.br/blog/2026/09/16/el-nino-aumenta-risco-de-chuvas-intensas-no-parana-e-colombo-reforca-prevencao/
   - trecho: 6 days ago ... El Niño aumenta risco de chuvas intensas no Paraná, e Colombo reforça prevenção ... O documento municipal aponta que o Plano de Contingência de ...
+  - juiz: portão automático: fonte não oficial
 
 ## Curitiba/PR — 1 pendente(s)
 - `6a630cc284` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
@@ -622,14 +703,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 11, 2026 ... ... Plano de Contingência e a criação de fundos municipais de Defesa Civil. ... Endereço: Rua Afonso Pedri, 65 - Pilarzinho, Curitiba - PR Telefone ...
 
 ## Fazenda Rio Grande/PR — 2 pendente(s)
-- `da6fbe3938` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `da6fbe3938` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño coloca Fazenda Rio Grande em atenção para período de ...
   - url: https://www.facebook.com/NoticiaFazenda/posts/el-ni%C3%B1o-coloca-fazenda-rio-grande-em-aten%C3%A7%C3%A3o-para-per%C3%ADodo-de-chuvas-intensasa-co/1519122706319589/
   - trecho: Jun 15, 2026 ... El Niño coloca Fazenda Rio Grande em atenção para período de chuvas intensas. A confirmação ... Plano de Contingência para eventos como enchentes, ...
-- `fc1be0320a` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `fc1be0320a` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño preocupa autoridades e coloca Fazenda Rio Grande em ...
   - url: https://www.instagram.com/p/DZfGtwfkYSt/
   - trecho: Jun 12, 2026 ... ... Fazenda Rio Grande conta com mecanismos de preparação para situações climáticas extremas. A Defesa Civil municipal possui Plano de Contingência ...
+  - juiz: portão automático: fonte não oficial
 
 ## Guaraniaçu/PR — 3 pendente(s)
 - `79d149e325` · nível **B** (4 pts) · querido_diario · EX_ANTE · **Lei Municipal nº 134**, 31/03/2021
@@ -646,18 +729,20 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
 
 ## Guarapuava/PR — 3 pendente(s)
-- `c5e2e5d0d1` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+- `c5e2e5d0d1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño: Guarapuava monta operação para reduzir danos das ...
   - url: https://paranacentral.com.br/el-nino-guarapuava-monta-operacao-para-reduzir-danos-das-chuvas-no-2semestre
   - trecho: Jun 17, 2026 ... El Niño: Guarapuava monta operação para reduzir danos ... Entre as medidas em execução estão a atualização do Plano de Contingência 2026 ...
+  - juiz: portão automático: fonte não oficial
 - `e8111187e2` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
   - título: plano municipal de saúde 2026/2029
   - url: https://guarapuava.pr.gov.br/wp-content/uploads/2025/12/Plano-Municipal-de-Saude-2026-2029.pdf
   - trecho: Guarapuava/PR (Residentes), 2019-2023 ... Guarapuava 2026-2029. DIRETRIZ 1: Fortalecer a Atenção Primária à Saúde (APS) como coordenadora do cuidado ...
-- `add8051d23` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `add8051d23` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: GUARAPUAVA se prepara para o El Niño e reforça ações para ...
   - url: https://www.instagram.com/p/DZr7Dbes3ju/
   - trecho: Jun 17, 2026 ... Photo by Gmais Notícias | Guarapuava on June 17, 2026. 2 ... Entre as medidas adotadas estão a atualização do Plano de Contingência 2026 ...
+  - juiz: portão automático: fonte não oficial
 
 ## Jaboti/PR — 2 pendente(s)
 - `c27bf03033` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO Nº78**, 23/07/2026
@@ -670,38 +755,44 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Londrina/PR — 1 pendente(s)
-- `89e500dcd9` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `89e500dcd9` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño é confirmado e Simepar prevê aumento de chuvas até ...
   - url: https://www.folhadelondrina.com.br/geral/el-nino-e-confirmado-e-simepar-preve-aumento-de-chuvas-ate-dezembro-3304815e.html
   - trecho: Jun 11, 2026 ... Entre as iniciativas prioritárias estão o desassoreamento de rios e córregos, atualização do Plano de Contingência ... Londrina, Guaratuba e ...
+  - juiz: portão automático: fonte não oficial
 
 ## Pato Branco/PR — 2 pendente(s)
-- `0bf8eb27f3` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `0bf8eb27f3` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Encontro em Pato Branco reúne Defesa Civil e Comitê El Niño ...
   - url: https://www.instagram.com/reel/DdEhX1fAQm0/
   - trecho: Sep 9, 2026 ... Encontro em Pato Branco reúne Defesa Civil e Comitê El Niño. ... Plano de Contingência e organizar a atuação em possíveis ocorrências.
+  - juiz: portão automático: fonte não oficial
 - `7239d24376` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
   - título: Atenção Pato Branco: o El Niño vem aí e precisamos nos preparar ...
   - url: https://www.instagram.com/p/DZ3MoT1CV3F/?hl=en
   - trecho: Jun 21, 2026 ... Atenção Pato Branco: o El Niño vem aí e precisamos nos preparar Pato ... Plano de Contingência Climática foi cancelada. Em breve ...
 
 ## Pinhais/PR — 4 pendente(s)
-- `9103511ece` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+- `9103511ece` · nível **B** (5 pts) · busca_web · RESPOSTA · **Decreto 043**, 2026
   - título: Pinhais adota medidas preventivas para enfrentar o El Niño
   - url: https://www.bemparana.com.br/publicacao/blogs/metropole/pinhais-adota-medidas-preventivas-para-enfrentar-o-el-nino/
   - trecho: Jul 18, 2026 ... ... El Niño 2026/2027. Pinhais contou com a presença da prefeita Rosa Maria e representantes da Defesa Civil do município. PLANO DE CONTINGÊNCIA ...
-- `e3bce79e2c` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `e3bce79e2c` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño: Pinhais reforça prevenção contra chuvas fortes e ...
   - url: https://www.bemparana.com.br/noticias/regiao-metropolitana/el-nino-pinhais-reforca-prevencao-contra-chuvas-fortes-e-alagamentos/
   - trecho: Jul 17, 2026 ... ... plano de contingência. El Niño: Pinhais reforça prevenção contra chuvas fortes e alagamentos ... El Niño 2026, que reúne municípios da Região ...
-- `15a9294f0f` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `15a9294f0f` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Como Pinhais está se preparando para o El Niño? Os dados não ...
   - url: https://www.instagram.com/p/DZ8p_KXAOXD/
   - trecho: Jun 23, 2026 ... Prefeitura de Pinhais e lideranças religiosas integram plano de contingência contra os impactos do El Niño Na manhã desta quinta-feira ...
-- `ba7a6554e7` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `ba7a6554e7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Defesa Civil de Pinhais acompanha evolução do El Niño e adota ...
   - url: https://www.instagram.com/p/Da5PKEiEYKD/
   - trecho: Jul 17, 2026 ... ... Pinhais - PR on July 17, 2026 ... Prefeitura de Pinhais e lideranças religiosas integram plano de contingência contra os impactos do El Niño
+  - juiz: portão automático: fonte não oficial
 
 ## Pitanga/PR — 1 pendente(s)
 - `0f81f5ccab` · nível **B** (6 pts) · busca_web · — · citação não extraída
@@ -731,14 +822,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 12, 2026 ... Photo by Prefeitura de Rolândia-PR on September 12, 2026. May be an ... Plano de Contingência, que, diante desse cenário, atuam ...
 
 ## Toledo/PR — 2 pendente(s)
-- `9efaaf6098` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `9efaaf6098` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: Assistência Social apresenta plano de contingência para ...
   - url: https://www.toledo.pr.gov.br/noticias/assistencia-social/assistencia-social-apresenta-plano-de-contingencia-para-emergencias
   - trecho: 7 days ago ... ... plano de contingência para emergências climáticas previstas para ... toledo@toledo.pr.gov.br · Rua: Raimundo Leonardi, 1586. Centro - CEP ...
-- `0670e58642` · nível **B** (4 pts) · busca_web · — · data 1950 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `0670e58642` · nível **B** (4 pts) · busca_web · EX_ANTE · data 1950 (do trecho)
   - título: El Niño pode ser o mais forte desde 1950, aponta nova projeção
   - url: https://www.radiouniaodetoledo.com.br/noticia/6/482130/el-nino-pode-ser-o-mais-forte-desde-1950-aponta-nova-projecao
   - trecho: Sep 10, 2026 ... Toledo cria núcleo de prevenção para enfrentar possíveis efeitos do El Niño ... Defesa Civil atualiza plano de contingência e articula ...
+  - juiz: portão automático: fonte não oficial
 
 ## União da Vitória/PR — 1 pendente(s)
 - `b4bd0380b2` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
@@ -752,19 +845,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Plano Municipal de Saneamento Básico de Armação dos Búzios/RJ. Produto ... A inexistência de um plano de contingência municipal para resposta a eventos ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-
-## Duque de Caxias/RJ — 3 pendente(s)
-- `cbe5a11555` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://www.cmdc.rj.gov.br/?p=32729
-  - trecho: Chuvas de verão: Duque de Caxias se prepara com Plano de Contingência. Em 27, agosto, 2026. Chuvas de verão: Duque de Caxias se prepara com Plano de ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `0a62c14347` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - url: https://www.instagram.com/p/Dam9q7uR2F9/
-  - trecho: Jul 10, 2026 ... ... Duque de Caxias, por meio da Defesa Civil, iniciou a atualização do Plano de Contingência para o verão 2026/2027, reforçando as ações de ...
-  - juiz: portão automático: fonte não oficial
-- `ee3dcef3a6` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/p/Dako5M6EX_g/?hl=en
-  - trecho: Jul 9, 2026 ... ... Plano de Contingência para nos preparar. Fique de olho nas ... Duque de Caxias - RJ.
 
 ## Nova Iguaçu/RJ — 1 pendente(s)
 - `363c09aa4b` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
@@ -1086,16 +1166,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: May 13, 2026 ... ... plano de contingência diante das previsões de chuvas intensas associadas ao fenômeno El Niño. ... Rio do Sul SC e Região.. agora fica a ...
 
 ## Assis/SP — 1 pendente(s)
-- `c6d3458dae` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `c6d3458dae` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA ...
   - url: https://www.facebook.com/difusoraassis/videos/energisa-prepara-plano-de-conting%C3%AAncia-por-causa-da-previs%C3%A3o-de-temporais-nos-pr/1589016705934825/
   - trecho: Sep 11, 2026 ... ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA DA PREVISÃO DE TEMPORAIS NOS PRÓXIMOS DIAS NA REGIÃO ... No photo description available. SOS PETS ...
+  - juiz: portão automático: fonte não oficial
 
 ## Bauru/SP — 1 pendente(s)
-- `2bbceca048` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `2bbceca048` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Até quando Bauru vai depender da sorte? ⚠️ O El Niño já está ...
   - url: https://www.instagram.com/p/DbOFlI-T9AE/
   - trecho: Jul 25, 2026 ... ... likes, 13 comments - fmc_comunica on July 25, 2026: "Até quando Bauru vai depender da sorte ... plano de contingência claro e ...
+  - juiz: portão automático: fonte não oficial
 
 ## Campinas/SP — 1 pendente(s)
 - `19f12d575c` · nível **B** (3 pts) · querido_diario · DUVIDA · **DECRETO Nº 24.530**, 08/07/2026
@@ -1125,16 +1207,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: triagem do ato: destino=indefinido (autoridade=executivo, objeto=indefinido)
 
 ## Leme/SP — 1 pendente(s)
-- `468c7d518a` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `468c7d518a` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Plano de contingência: como criar, implementar e testar?
   - url: https://checklistfacil.com/blog/plano-de-contingencia/
   - trecho: Feb 10, 2026 ... Aprenda a criar e a implementar um plano de contingência eficiente para garantir continuidade de negócios e reduzir riscos ... Pais Leme, 215 – ...
+  - juiz: portão automático: fonte não oficial
 
 ## Limeira/SP — 1 pendente(s)
-- `931153e48f` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `931153e48f` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP
   - url: https://www.ceivap.org.br/mata/Rosario-da-Limeira.pdf
   - trecho: arranjo institucional e plano de contingência e emergência. ... O município de Rosário da Limeira está inserido no Comitê da Bacia Hidrográfica dos Afluentes Mi-.
+  - juiz: portão automático: fonte não oficial
 
 ## Marília/SP — 1 pendente(s)
 - `df390f6462` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída
@@ -1156,11 +1240,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Salto/SP — 2 pendente(s)
-- `39f8ac9178` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `39f8ac9178` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: REVISÃO DO PLANO MUNICIPAL DE SANEAMENTO BÁSICO DO ...
   - url: https://salto.sp.gov.br/wp-content/uploads/2019/02/revisao_plano_saneamento_agua_esgoto.pdf
   - trecho: município de Salto – SP. ... PLANO DE CONTINGÊNCIA. 1. Paralisação da estação de tratamento de esgotos. Interrupção no fornecimento de energia elétrica nas.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `b0683c484f` · nível **B** (3 pts) · querido_diario · DUVIDA · **Lei Municipal n. 3.713**, 13/12/2017
   - url: https://data.queridodiario.ok.org.br/3545209/2026-07-01/e6fd8348ed7a25d5db2d34ffd9fc1ad81e82edc4.pdf
   - trecho: 19 de junho de 2026.  Nº  1393/2026  –  Comissão  de  Organização,  Bens, Serviços,  Saúde,  Educação,  Cultura,  Servidores,  Meio Ambiente  e  Administração –  Solicitando a  ampliação da oferta  de  vagas  em creche, 
@@ -1180,16 +1265,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
 ## Votuporanga/SP — 2 pendente(s)
-- `ebc84478b1` · nível **B** (5 pts) · busca_web · — · data 2022 (do trecho)
+- `ebc84478b1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2022 (do trecho)
   - título: Votuporanga terá plano de contingenciamento para evitar falta ... - G1
   - url: https://g1.globo.com/sp/sao-jose-do-rio-preto-aracatuba/noticia/2022/09/13/votuporanga-tera-plano-de-contingenciamento-para-evitar-falta-de-agua.ghtml
   - trecho: Sep 13, 2022 ... A empresa responsável pelo abastecimento de água em Votuporanga (SP) ... plano de contingência para evitar a falta de água no município. O ...
   - ⚠ ano_anterior_ao_ciclo
-- `e2b73559c8` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `e2b73559c8` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: p gestão integrada de plano municipal de
   - url: https://smastr16.blob.core.windows.net/cpla/2017/05/votuporanga.pdf
   - trecho: QUESTÃO SOCIOAMBIENTAL NAS EMPRESAS MOVELEIRAS DO POLO DE VOTUPORANGA (SP) ... Como ações estruturantes do Plano de Contingência, o Plano Municipal de ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
 
 ## None/AC — 1 pendente(s)
 - `e0c2afcacf` · nível **C** (2 pts) · agencia_oficial · — · citação não extraída
