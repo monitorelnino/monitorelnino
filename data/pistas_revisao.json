@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-22",
- "total_pistas": 255,
- "total_municipios": 148,
+ "total_pistas": 256,
+ "total_municipios": 149,
  "por_nivel": {
   "A": 42,
-  "B": 163,
+  "B": 164,
   "C": 50
  },
  "grupos": [
@@ -4130,6 +4130,37 @@
      "trecho": null,
      "data": "27/08/2026",
      "status": "pista — candidato a NOVO na camada estadual de saúde; localizar o plano/nota no portal oficial da SES-GO"
+    }
+   ]
+  },
+  {
+   "ibge": "5208004",
+   "municipio": "Formosa",
+   "uf": "GO",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "af55f73484",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://agroempresario.com/publicacion/120391/gildo-insfran-anticipa-a-formosa-a-el-nino-con-un-plan-especial/",
+     "titulo": "Gildo Insfrán anticipa a Formosa a El Niño con un plan especial ...",
+     "trecho": "Formosa presentó un plan de contingencia ante el posible impacto del fenómeno El Niño, con medidas preventivas para responder a lluvias intensas y eventuales crecidas de los ríos Pilcomayo, Bermejo y Paraguay.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
