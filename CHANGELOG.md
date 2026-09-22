@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §153 · Fila de revisão humana das pistas: leitura assistida, decisões registradas, homônimos · 22/09/2026
+
+Classe **fluxo editorial + código** (`revisar_pistas.py`), a pedido direto ("vamos à fila de pistas").
+
+**Lacuna estrutural encontrada.** O caminho testado de promoção (`julgar_e_aplicar_descobertas.py`: busca o documento, classifica ex-ante/resposta, extrai número e data, aplica com backup + portões + rollback) só consumia pistas do vigia de imprensa (`status == pendente_confirmacao_documento`, campos `alvo` e `fonte_provavel_oficial`). As pistas da busca web e do Querido Diário — a maioria da fila — nunca entravam nele, mesmo as de nível A com decreto nº e data. Duas esteiras disjuntas.
+
+**O que foi construído — um adaptador, não um juiz novo.** (1) `--preparar` (roda nas rodadas de coleta, com rede): para toda pista pendente de nível A ou B, busca o texto da URL, extrai número/data, classifica natureza e grava em `preparacao` na própria pista; fonte oficial delega ao juiz com o esquema que ele espera — pode aplicar sozinho, como já faz para o vigia; fonte não oficial só recebe leitura assistida. Nunca rebaixa, nunca descarta. (2) `--aceitar ID --ato --data` / `--rejeitar ID --motivo` / `--adiar ID`: decisão humana gravada em `decisao_humana` na pista; aceitar promove pelo mesmo `aplicar_municipal()` (backup + portões + rollback); a rejeição é da pista, não do município. (3) `--relatorio` → `docs/FILA_PISTAS.md`, legível, por município, com número/data/natureza pré-extraídos; decididas ao fim, nunca fora. Ids estáveis (sha1 ibge|url|trecho) gravados na triagem.
+
+**Falso positivo real achado no próprio relatório, nível A.** "Candeias/MG" com URL `prefeitura.candeias.ba.gov.br` — homônimos: a busca por Candeias MG devolveu a prefeitura da Bahia. Regra nova na triagem de confiança: UF no host oficial divergente da UF da pista → alerta `uf_divergente_na_url`, nível C. Pegou 3 na fila (Candeias MG, Caxias MA, Santa Rosa RS). Alerta informativo `ano_anterior_ao_ciclo` (URL/título de 2025 sem 2026) — não rebaixa: pode ser `plano_antigo` (0,6), decisão humana.
+
+**Teste.** Autoteste hermético 8/8 (ids estáveis; preparar só A/B e nunca descarta; oficial delega, não oficial não; documento não obtido não quebra; rejeitar/adiar só registram; aceitar exige citação; aceitar aplica e desfaz se portão falhar; relatório). Triagem de confiança 11/11 com o caso Candeias. Portão de autotestes inclui os dois. Consistência, MARÉ (45,1) e idempotência verdes.
+
 ## §152 · Decisão 3 do teste do objeto: plano municipal é julgado pelo risco do município, nunca pelo alerta da UF (caso Salvador) — registro ex-ante, sem mudança de nota · 22/09/2026
 
 Classe **decisão metodológica ex-ante + trava em teste**. Média nacional inalterada: 45,1.

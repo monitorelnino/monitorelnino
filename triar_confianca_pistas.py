@@ -31,7 +31,7 @@ USO
   python triar_confianca_pistas.py            # anota as pistas e gera a fila
   python triar_confianca_pistas.py --autoteste
 """
-import json, re, sys, unicodedata
+import hashlib, json, re, sys, unicodedata
 from collections import defaultdict
 from datetime import date
 from urllib.parse import urlparse
@@ -54,6 +54,7 @@ RISCO_ERRADO_TITULO = (r"covid|coronav", r"dengue|chikungunya|zika|arbovirose", 
                        r"\benergia\b|apag[ãa]o|el[ée]trica", r"elei[çc][ãa]o|\btre\b|vereador|cassa",
                        r"tr[áa]fico|dro[gq]a", r"\bfrio\b|geada|baixas temperaturas", r"\bcovid-19\b")
 # lista de municípios no trecho: 3+ ocorrências de "Nome/UF" ou "Nome (UF)" ou "Nome, UF"
+RE_UF_HOST = re.compile(r"\.(ac|al|ap|am|ba|ce|df|es|go|ma|mt|ms|mg|pa|pb|pr|pe|pi|rj|rn|rs|ro|rr|sc|sp|se|to)\.(gov|leg|jus|mp)\.br$")
 RE_LISTA = re.compile(r"[A-ZÁÉÍÓÚÂÊÔÃÕÇ][\wÀ-ÿ\.\- ]{2,40}(?:/|\s\(|,\s)(?:AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO)\b")
 
 
@@ -120,8 +121,15 @@ def classificar_confianca(pista: dict) -> dict:
         alertas.append("padrao_lista_de_municipios")
     if "municipio_so_no_trecho" in sinais and "padrao_lista_de_municipios" in alertas:
         alertas.append("municipio_citado_de_passagem")   # o caso Anita Garibaldi/Ipixuna
+    m_uf = RE_UF_HOST.search(host)
+    if m_uf and (pista.get("uf") or "").lower() and m_uf.group(1) != (pista.get("uf") or "").lower():
+        # 22/09/2026 (achado real na fila A): "Candeias/MG" com URL prefeitura.candeias.BA.gov.br —
+        # homônimos. A UF do host oficial é dado duro; divergente da pista, é outro município.
+        alertas.append("uf_divergente_na_url")
+    if re.search(r"/20(1\d|2[0-5])/|\b20(1\d|2[0-5])\b", url.lower() + " " + titulo) and not re.search(r"\b2026\b", url.lower() + " " + titulo + " " + trecho):
+        alertas.append("ano_anterior_ao_ciclo")   # informativo: pode ser plano_antigo (0,6), não rebaixa sozinho
 
-    if "risco_errado_no_titulo" in alertas or "municipio_citado_de_passagem" in alertas:
+    if "risco_errado_no_titulo" in alertas or "municipio_citado_de_passagem" in alertas or "uf_divergente_na_url" in alertas:
         nivel = "C"
     elif pts >= 6 and not alertas:
         nivel = "A"
@@ -137,6 +145,8 @@ def anotar_e_gerar_fila() -> dict:
     d = ler("pistas_imprensa.json") or {"pistas": []}
     por_mun = defaultdict(list)
     for p in d["pistas"]:
+        if not p.get("id"):   # §153: id estável (sha1 ibge|url|trecho) para as decisões humanas
+            p["id"] = hashlib.sha1(f"{p.get('ibge') or ''}|{p.get('url') or ''}|{(p.get('trecho') or '')[:500]}".encode()).hexdigest()[:10]
         p.update(classificar_confianca(p))
         por_mun[(p.get("ibge"), p.get("municipio"), p.get("uf"))].append(p)
     gravar("pistas_imprensa.json", d)
@@ -148,7 +158,7 @@ def anotar_e_gerar_fila() -> dict:
         melhor = ps[0]["nivel_confianca"]
         grupos.append({"ibge": ibge, "municipio": mun, "uf": uf, "melhor_nivel": melhor,
                        "n_pistas": len(ps), "niveis": {n: sum(1 for p in ps if p["nivel_confianca"] == n) for n in "ABC"},
-                       "pistas": [{k: p.get(k) for k in ("nivel_confianca", "pontos_confianca", "sinais", "alertas",
+                       "pistas": [{k: p.get(k) for k in ("id", "nivel_confianca", "pontos_confianca", "sinais", "alertas",
                                                          "origem", "url", "titulo", "trecho", "data", "status")} for p in ps]})
     grupos.sort(key=lambda g: (ordem[g["melhor_nivel"]], -g["n_pistas"], g["uf"] or "", g["municipio"] or ""))
     fila = {"_governanca": ("Fila de revisão humana das pistas, agrupada por município e ordenada por nível de "
@@ -225,7 +235,18 @@ def autoteste():
             "trecho": "Decreto nº 38.100/2026 institui a Operação Chuva e o PPDC para o período de chuvas e enchentes"})
         return "familia_de_risco_do_ciclo" in r["sinais"] and r["nivel_confianca"] == "A"
 
+    def t_homonimo_uf_divergente_na_url():
+        # achado real (22/09): busca por "Candeias" MG devolveu prefeitura.candeias.ba.gov.br (Candeias/BA)
+        r = classificar_confianca({"municipio": "Candeias", "uf": "MG", "triagem": "indefinido",
+            "titulo": "Defesa Civil de Candeias apresenta Plano de Contingência para a Operação Chuva",
+            "url": "https://prefeitura.candeias.ba.gov.br/2025/03/defesa-civil-plano-de-contingencia/", "trecho": "A Defesa Civil de Candeias..."})
+        ok_ba = classificar_confianca({"municipio": "Candeias", "uf": "BA", "triagem": "indefinido",
+            "titulo": "Defesa Civil de Candeias apresenta Plano de Contingência 2026",
+            "url": "https://prefeitura.candeias.ba.gov.br/2026/plano/", "trecho": "..."})
+        return r["nivel_confianca"] == "C" and "uf_divergente_na_url" in r["alertas"] and "uf_divergente_na_url" not in ok_ba["alertas"] and ok_ba["nivel_confianca"] == "A"
+
     return rodar_autoteste({
+        "homônimos: UF do host oficial divergente da pista → C (caso Candeias MG/BA)": t_homonimo_uf_divergente_na_url,
         "imprensa local com município e plano no título: A ou B (caso Marília)": t_marilia_imprensa_local,
         "decreto em fonte oficial com ato formal: A": t_decreto_oficial_vira_A,
         "documento de outro município, citado só em lista: C com alerta (caso Anita Garibaldi/Ipixuna)": t_anita_garibaldi_nao_e_de_ipixuna,
