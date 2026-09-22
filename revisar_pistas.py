@@ -62,6 +62,14 @@ def pendente(p: dict) -> bool:
     return p.get("status", "").startswith("pista") and p.get("status") not in DECIDIDAS
 
 
+def citacao_do_trecho(p: dict):
+    """Número e data extraídos do título+trecho da própria pista — sem rede. Fallback honesto
+    quando o documento não é obtido (PDFs do Querido Diário: o buscador do juiz lê HTML) ou não
+    traz o ato no texto. Caso real: Feira de Santana/BA trazia "DECRETO Nº 14.665 DE 21 DE AGOSTO
+    DE 2026" no trecho e aparecia como "citação não extraída"."""
+    return juiz.extrair_numero_e_data(f"{p.get('titulo') or ''} {p.get('trecho') or ''}")
+
+
 # ---------------------------------------------------------------- preparação (leitura assistida)
 def preparar(fila: dict, hoje: str, buscar=juiz.buscar_texto, processar=juiz.processar_pista,
              niveis=("A", "B"), limite=60) -> dict:
@@ -74,10 +82,16 @@ def preparar(fila: dict, hoje: str, buscar=juiz.buscar_texto, processar=juiz.pro
         if not pendente(p) or p.get("nivel_confianca") not in niveis or p.get("preparacao"): continue
         feitas += 1
         prep = {"data": hoje, "fonte_oficial": bool(parece_fonte_oficial(p.get("url") or ""))}
+        n_t, d_t = citacao_do_trecho(p)
+        if n_t or d_t:
+            prep["citacao_do_trecho"] = {"numero": n_t, "data_ato": d_t}
         texto = buscar(p.get("url") or "")
         if texto is None:
-            prep["resultado"] = "documento_nao_obtido"; p["preparacao"] = prep; res["nao_obtido"] += 1; continue
+            prep.update({"resultado": "documento_nao_obtido", "numero": n_t, "data_ato": d_t,
+                         "citacao_completa": citacao_completa(f"{n_t or ''} {d_t or ''}")})
+            p["preparacao"] = prep; res["nao_obtido"] += 1; continue
         numero, data = juiz.extrair_numero_e_data(texto)
+        numero, data = numero or n_t, data or d_t   # documento manda; trecho completa o que faltar
         natureza, motivo = classificar(texto)
         prep.update({"numero": numero, "data_ato": data, "citacao_completa": citacao_completa(f"{numero or ''} {data or ''}"),
                      "natureza": natureza, "motivo_natureza": motivo, "trecho_documento": texto[:600]})
@@ -161,7 +175,11 @@ def relatorio(fila: dict) -> str:
         for p in ps:
             if not pendente(p): continue
             pr = p.get("preparacao") or {}
-            cit = f"**{pr.get('numero')}**, {pr.get('data_ato')}" if pr.get("numero") else "citação não extraída"
+            if pr.get("numero"):
+                cit = f"**{pr.get('numero')}**, {pr.get('data_ato')}"
+            else:
+                n_t, d_t = citacao_do_trecho(p)
+                cit = f"**{n_t}**, {d_t} (do trecho)" if n_t else ("data " + d_t + " (do trecho)" if d_t else "citação não extraída")
             nat = pr.get("natureza") or "—"
             L.append(f"- `{p.get('id')}` · nível **{p.get('nivel_confianca')}** ({p.get('pontos_confianca')} pts) · {p.get('origem')} · {nat} · {cit}")
             if p.get("titulo"): L.append(f"  - título: {p['titulo'][:160]}")
@@ -238,7 +256,18 @@ def autoteste():
         md = relatorio(f)
         return "Bagé/RS" in md and "Marília/SP" in md and "Decididas (1)" in md and "rejeitada_humana" in md
 
+    def t_citacao_do_trecho_sem_rede():
+        # caso real: Feira de Santana/BA — decreto no trecho, documento é PDF (não lido)
+        p = {"trecho": "www.diariooficial.feiradesantana.ba.gov.br 3 DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026"}
+        n, d = citacao_do_trecho(p)
+        f = {"pistas": [{**p, "municipio": "Feira de Santana", "uf": "BA", "ibge": "2910800", "url": "https://x.pdf",
+                         "status": STATUS_PENDENTE, "nivel_confianca": "A", "origem": "querido_diario"}]}
+        garantir_ids(f); preparar(f, "22/09/2026", buscar=lambda u: None, processar=lambda pj, h: {})
+        pr = f["pistas"][0]["preparacao"]
+        return bool(n) and "14.665" in n and pr["resultado"] == "documento_nao_obtido" and pr["numero"] == n and "14.665" in relatorio(f)
+
     return rodar_autoteste({
+        "citação do trecho sem rede (caso Feira de Santana, PDF)": t_citacao_do_trecho_sem_rede,
         "ids estáveis entre rodadas": t_ids_estaveis,
         "preparar: só A e B, nunca descarta, C intocada": t_preparar_so_A_e_B_e_nunca_descarta,
         "preparar: fonte oficial delega ao juiz; não oficial só lê": t_preparar_oficial_delega_e_nao_oficial_nao,
