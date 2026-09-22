@@ -215,6 +215,16 @@ def autoteste():
             "trecho": "Prefeitura de Petrópolis abre Plano de Contingência do Inverno 2026"})
         return "municipio_na_url" in r["sinais"] and r["nivel_confianca"] != "C"
 
+    def t_salvador_enchente_em_uf_de_seca_nao_rebaixa():
+        # DECISÃO 3 (22/09/2026): a família de risco é julgada pelo município, nunca pelo alerta da UF.
+        # Salvador tem plano de chuvas/enchentes; a Bahia está em alerta de estiagem; Salvador está fora
+        # da área de seca. classificar_confianca() NÃO lê a UF para a família — e este teste trava isso.
+        r = classificar_confianca({"municipio": "Salvador", "uf": "BA", "triagem": "candidato_forte",
+            "titulo": "Salvador lança Operação Chuva 2026 e Plano Preventivo de Defesa Civil",
+            "url": "https://www.salvador.ba.gov.br/codesal/operacao-chuva-2026",
+            "trecho": "Decreto nº 38.100/2026 institui a Operação Chuva e o PPDC para o período de chuvas e enchentes"})
+        return "familia_de_risco_do_ciclo" in r["sinais"] and r["nivel_confianca"] == "A"
+
     return rodar_autoteste({
         "imprensa local com município e plano no título: A ou B (caso Marília)": t_marilia_imprensa_local,
         "decreto em fonte oficial com ato formal: A": t_decreto_oficial_vira_A,
@@ -224,6 +234,7 @@ def autoteste():
         "pista sem título degrada sem quebrar": t_sem_titulo_degrada_sem_quebrar,
         "nunca descarta: toda pista recebe um nível": t_nunca_descarta,
         "acento: Petrópolis casa com 'petropolis' na URL (falso negativo real corrigido)": t_acento_petropolis_casa_com_url,
+        "DECISÃO 3: plano de enchente em UF com alerta de seca não rebaixa (município, não a UF — caso Salvador)": t_salvador_enchente_em_uf_de_seca_nao_rebaixa,
     })
 
 
