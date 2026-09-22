@@ -1584,7 +1584,22 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "59174d8593"
+   "id": "59174d8593",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 1.997",
+    "data_ato": "2010",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "trecho_documento": "Lei Municipal nº 1.997/2010 - Responsável: Ana Luiza Guimarães de Lima SÃO MATEUS DO SUL/PR, Sexta-feira, 17 de Julho de 2026 - EDIÇÃO Nº 3898 SUMÁRIO PODER EXECUTIVO ........................................................................................................................................ 1 DECRETOS ............................................................................................................................................... 1 PORTARIAS .................................................................................................................................",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Guaraniaçu",
@@ -1609,7 +1624,22 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "79d149e325"
+   "id": "79d149e325",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 134",
+    "data_ato": "31/03/2021",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "trecho_documento": "DIÁRIO OFICIAL ELETRÔNICO Lei Municipal nº 1341/2021 de 31 de março de 2021 Decreto Municipal n° 4823/ 2021 MUNICÍPIO DE GUARANIAÇU – PR Avenida Abilon de Souza Naves, 458 Centro CEP: 85.400-200 Telefone: (45) 32321162 QUINTA-FEIRA, 27 DE AGOSTO DE 2026 ANO: VI EDIÇÃO Nº 1.293 ATOS DO PODER EXECUTIVO E LEGISLATIVO SUMÁRIO DECRETO N.º 7445/2026 ............................................................................................................................. 2 DECRETO Nº 7446/2026 .........................................................................................................",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Guaraniaçu",
@@ -1621,7 +1651,7 @@
    "trecho": "e Defesa Civil; \n\nII - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças; \n\nIII - incorporar as ações de proteção e defesa civil no planejamento municipal; \n\nIV - elaborar, manter atualizado e implementar o Plano de Contingência (PLANCON); \n\nhttp://www.guaraniacu.pr.",
    "hash_evidencia": "f2813b754758d88a367dadb102db851aeb2a2c72403e219eacea357ed3fdebfb",
    "registrado_em": "2026-09-03",
-   "status": "pista — promover a registro exige documento primário lido por humano",
+   "status": "revertida_erro_portao",
    "triagem": "indefinido",
    "autoridade": "indefinido",
    "objeto": "el_nino",
@@ -1635,7 +1665,23 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "3be70dc14d"
+   "id": "3be70dc14d",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 134",
+    "data_ato": "31/03/2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "DIÁRIO OFICIAL ELETRÔNICO Lei Municipal nº 1341/2021 de 31 de março de 2021 Decreto Municipal n° 4823/ 2021 MUNICÍPIO DE GUARANIAÇU – PR Avenida Abilon de Souza Naves, 458 Centro CEP: 85.400-200 Telefone: (45) 32321162 SEDUNDA-FEIRA, 20 DE JULHO DE 2026 ANO: VI EDIÇÃO Nº 1.265 ATOS DO PODER EXECUTIVO E LEGISLATIVO SUMÁRIO DECRETO N.º 7400/2026 ............................................................................................................................. 2 EDITAL Nº 088/2026 ...........................................................................................................",
+    "juiz": {
+     "decisao": "REVERTIDA",
+     "motivo": "portão falhou após aplicar — desfeito de verdade em disco, ver log",
+     "detalhe_portoes": "$ node scripts/verificar_estrutura.js\n\nnode:internal/modules/cjs/loader:1433\n  throw err;\n  ^\n\nError: Cannot find module 'jsdom'\nRequire stack:\n- /home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js:12:19)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\n\nNode.js v22.23.2\n"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Guaraniaçu",
@@ -1647,7 +1693,7 @@
    "trecho": "e Defesa Civil; \n\nII - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças; \n\nIII - incorporar as ações de proteção e defesa civil no planejamento municipal; \n\nIV - elaborar, manter atualizado e implementar o Plano de Contingência (PLANCON); \n\nhttp://www.guaraniacu.pr.",
    "hash_evidencia": "f2813b754758d88a367dadb102db851aeb2a2c72403e219eacea357ed3fdebfb",
    "registrado_em": "2026-09-03",
-   "status": "pista — promover a registro exige documento primário lido por humano",
+   "status": "revertida_erro_portao",
    "triagem": "indefinido",
    "autoridade": "indefinido",
    "objeto": "el_nino",
@@ -1661,7 +1707,23 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "181ee33bf4"
+   "id": "181ee33bf4",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 134",
+    "data_ato": "31/03/2021",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "trecho_documento": "DIÁRIO OFICIAL ELETRÔNICO Lei Municipal nº 1341/2021 de 31 de março de 2021 Decreto Municipal n° 4823/ 2021 MUNICÍPIO DE GUARANIAÇU – PR Avenida Abilon de Souza Naves, 458 Centro CEP: 85.400-200 Telefone: (45) 32321162 TERÇA-FEIRA, 21 DE JULHO DE 2026 ANO: VI EDIÇÃO Nº 1.266 ATOS DO PODER EXECUTIVO E LEGISLATIVO SUMÁRIO LEI Nº 1703/2026 .......................................................................................................................................... 2 DECRETO N.º 7401/2026 ..................................................................................................",
+    "juiz": {
+     "decisao": "REVERTIDA",
+     "motivo": "portão falhou após aplicar ato de resposta — desfeito de verdade",
+     "detalhe_portoes": "$ node scripts/verificar_estrutura.js\n\nnode:internal/modules/cjs/loader:1433\n  throw err;\n  ^\n\nError: Cannot find module 'jsdom'\nRequire stack:\n- /home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js:12:19)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\n\nNode.js v22.23.2\n"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Antônio Olinto",
@@ -1673,7 +1735,7 @@
    "trecho": "por ato do Chefe do Poder Executivo dentre \nos servidores públicos municipais. \n\nArt. 6º Compete à COMPDEC: \n\nI – coordenar e executar as ações de proteção e defesa civil no âmbito municipal; \n\nII – elaborar, manter atualizado e executar o Plano de Contingência Municipal; \n\nIII – identificar, mapear",
    "hash_evidencia": "80c52784cd5e0055a460c200055636a7b3ef83fbfc8f0531cb6861a4162df2df",
    "registrado_em": "2026-09-03",
-   "status": "pista — promover a registro exige documento primário lido por humano",
+   "status": "revertida_erro_portao",
    "triagem": "indefinido",
    "autoridade": "executivo",
    "objeto": "el_nino",
@@ -1686,7 +1748,23 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "76fe18969e"
+   "id": "76fe18969e",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "Lei 17",
+    "data_ato": "2026",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'estado de calamidade pública' + recital de dano ocorrido",
+    "trecho_documento": "Lei Ordinária 837/2017. https://antonioolinto.pr.gov.br/diario-oficial/5282/ Terça-feira, 30 de Junho de 2026 Edição Nº 2333 Página PREFEITURA MUNICIPAL DE ANTÔNIO OLINTO - PARANÁ Rua Reinaldo Machiavelli, 202 - Centro - CEP 83980-000 E-mail: diariooficial_pmao@hotmail.com Responsável: SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO Lei Ordinária 837/2017. PODER EXECUTIVO ........................................................................................................................................ 1 LEIS ...........................................................................................",
+    "juiz": {
+     "decisao": "REVERTIDA",
+     "motivo": "portão falhou após aplicar ato de resposta — desfeito de verdade",
+     "detalhe_portoes": "$ node scripts/verificar_estrutura.js\n\nnode:internal/modules/cjs/loader:1433\n  throw err;\n  ^\n\nError: Cannot find module 'jsdom'\nRequire stack:\n- /home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js:12:19)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\n\nNode.js v22.23.2\n"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Jaboti",
@@ -1698,7 +1776,7 @@
    "trecho": "07 Descumprimento de \n\nnormas de segurança e \n\nlegislação vigente \n\nBaixa Alto Médio Cláusulas contratuais específicas e \n\nfiscalização \n\n08 Interrupção do serviço \n\ndurante o evento. \n\nBaixa Alto Médio Previsão de equipe de prontidão e \n\nplano de contingência \n\n09 Inadimplência trabalhista \n\nda con",
    "hash_evidencia": "4e1c991c3913ea4c47201406234eaa6098bd9f11c9bf73ac7ff727ec712a7b7e",
    "registrado_em": "2026-09-03",
-   "status": "pista — promover a registro exige documento primário lido por humano",
+   "status": "revertida_erro_portao",
    "triagem": "indefinido",
    "autoridade": "indefinido",
    "objeto": "indefinido",
@@ -1710,7 +1788,23 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "c27bf03033"
+   "id": "c27bf03033",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "DECRETO Nº78",
+    "data_ato": "23/07/2026",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "Jaboti/PR, Sexta-feira, 24 de Julho de 2026 - Edição 1392 ________________________________________________________________________________________ Sumário PODER EXECUTIVO ........................................................................................................................................ 1 DECRETOS ............................................................................................................................................... 1 LICITAÇÕES, CONTRATOS, EXTRATOS E HOMOLOGAÇÕES ........................................................... 2 INSTITUTO DE PREVIDÊNCIA .",
+    "juiz": {
+     "decisao": "REVERTIDA",
+     "motivo": "portão falhou após aplicar — desfeito de verdade em disco, ver log",
+     "detalhe_portoes": "$ node scripts/verificar_estrutura.js\n\nnode:internal/modules/cjs/loader:1433\n  throw err;\n  ^\n\nError: Cannot find module 'jsdom'\nRequire stack:\n- /home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js:12:19)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\n\nNode.js v22.23.2\n"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Jaboti",
@@ -1734,7 +1828,22 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "d7f2497267"
+   "id": "d7f2497267",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº. 290",
+    "data_ato": "16/12/2025",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "Jaboti/PR, Sexta-feira, 14 de Agosto de 2026 - Edição 1402 ________________________________________________________________________________________ Sumário PODER EXECUTIVO ........................................................................................................................................ 1 DECRETOS ............................................................................................................................................... 1 PORTARIAS ............................................................................................................................",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "nenhum padrão claro bateu — não classificar sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Goiânia",
@@ -1760,7 +1869,22 @@
    "alertas": [
     "texto_falso_positivo_provavel"
    ],
-   "id": "7b81fc2e37"
+   "id": "7b81fc2e37",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "Lei nº 1.552",
+    "data_ato": "21/08/1959",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "Criado pela Lei nº 1.552, de 21/08/1959. Versão digital instituída pelo Decreto nº 3.987, de 14/08/2013. Sr(s) Usuário(s), Com o propósito de ampliar o acesso ao Diário e conferir praticidade e economicidade aos meios de sua produção, a Prefeitura de Goiânia coloca à disposição de todos os interessados o Diário Oficial do Município – Eletrônico (DOM-e). Esta versão está assinada digitalmente, conforme MP nº 2.200-2 de 24/08/2001, que institui a Infra-estrutura de Chaves Públicas Brasileiras (ICP – Brasil). A publicação eletrônica substitui qualquer outro meio de publicação oficial e produz tod",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "Goiânia/GO já consta na base — não duplicar (revisão humana decide se é atualização)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Goiânia",
@@ -1784,7 +1908,26 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "3dbff817c3"
+   "id": "3dbff817c3",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2025"
+    },
+    "numero": "Lei nº 1.552",
+    "data_ato": "21/08/1959",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "Criado pela Lei nº 1.552, de 21/08/1959. Versão digital instituída pelo Decreto nº 3.987, de 14/08/2013. Sr(s) Usuário(s), Com o propósito de ampliar o acesso ao Diário e conferir praticidade e economicidade aos meios de sua produção, a Prefeitura de Goiânia coloca à disposição de todos os interessados o Diário Oficial do Município – Eletrônico (DOM-e). Esta versão está assinada digitalmente, conforme MP nº 2.200-2 de 24/08/2001, que institui a Infra-estrutura de Chaves Públicas Brasileiras (ICP – Brasil). A publicação eletrônica substitui qualquer outro meio de publicação oficial e produz tod",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "Goiânia/GO já consta na base — não duplicar (revisão humana decide se é atualização)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pindamonhangaba",
@@ -1810,7 +1953,22 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "id": "e675ae8771"
+   "id": "e675ae8771",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "numero": "Decreto Municipal nº 7.087",
+    "data_ato": "16/06/2026",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "El Niño em Pindamonhangaba: Defesa Civil monitora 22 setores de risco e reforça prevenção | Vale 360 News Skip to content Vale 360 News Vale 360 News | Notícias do Vale do Paraíba e Litoral Norte Home Denuncie Cidades São José dos Campos Taubaté Caçapava Jacareí Pindamonhangaba Caraguatatuba Ubatuba Campos do Jordão Guaratinguetá Lorena Cruzeiro São Sebastião Santo Antônio do Pinhal Polícia Emprego Cultura Turismo Esportes Política Vídeo Contato Pesquisar por: El Niño em Pindamonhangaba: Defesa Civil monitora 22 setores de risco e reforça prevenção 15 de agosto de 2026 15 de agosto de 2026 by ",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": null,
@@ -1853,7 +2011,22 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "id": "65196c38c7"
+   "id": "65196c38c7",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "numero": null,
+    "data_ato": "02/09/2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "trecho_documento": "Governo decreta emergência em Roraima e cria gabinete para enfrentar impactos da estiagem - Folha BV Pular para o conteúdo Pular para o menu Menu Eleições 2026 Mormaço Cultural Parabólica Social Okiá Últimas Notícias Rádio Editais SEBRAE - Gente que faz Home Últimas Notícias Colunas Voltar Álvaro Coêlho Parabólica Jessé Souza Social (Shirley Rodrigues) Okiá (Bárbara Carvalho) Folha BV Agro (Gustavo Domingues) Momento Zen (Evelin Campos) Letras Saborosas (Denise Rohnelt Araujo) Falando de Negócios (Weber Negreiros) Minha Rua Fala (Francisco Cândido) Fiscaliza e Conta Coluna Esplanada Descomplic",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": null,
@@ -1934,7 +2107,22 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "id": "d7b81c79ef"
+   "id": "d7b81c79ef",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "numero": null,
+    "data_ato": "27/08/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "Saúde lança plano sobre riscos associados ao El Niño 2026 Ir Para o Conteúdo Buscar 22 de setembro de 2026 Início Cidades Goiânia Aparecida de Goiânia Anápolis Bela Vista de Goiás Catalão Senador Canedo Trindade Política Últimas Concursos Eleições 2026 Candidatos 2024 Apuração 2º turno Apuração 1º turno Candidatos 2022 Apuração 2º Turno Apuração 1 Turno Lista de candidatos 2020 &#8211; Votação por cidade Colunas e Blogs Altair Tavares Charlie Pereira Crônicas do Diário Elson Oliveira Rafaela Veronezi Jean Damas Cultura e Diversão Esportes Campeonato Brasileiro Série A Série B Série C Série D V",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Alagoinhas",
@@ -1950,7 +2138,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano",
+   "status": "revertida_erro_portao",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -1958,7 +2146,23 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "dcbb078c19"
+   "id": "dcbb078c19",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": "PORTARIANº4.609",
+    "data_ato": "2026",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Edição 5.772 | Ano 18 11 de setembro de 2026 Página 2 ÍNDICE NOTIFICAÇÃO NOTIFICAÇÃO ........................................................................................... PORTARIA PORTARIANº4.609/2026-CONCEDELICENÇAPRÊMIO-JOSÉCARLOSBARBOSAPAULO............. PORTARIASESAUNº051-DESIGNAFISCALDECONTRATO ............................................. PORTARIASESAUNº052-DESIGNAGESTORDECONTRATO............................................ ERRATA REPUBLICAÇÃO-HOMOLOGAÇÃODAERRATANº148/2026 ........................................... LICENÇAAMBIENTAL LICENÇAAMBIENTAL-ARAÚJOPOSTODECOMBUSTÍVEISLTDA...",
+    "juiz": {
+     "decisao": "REVERTIDA",
+     "motivo": "portão falhou após aplicar — desfeito de verdade em disco, ver log",
+     "detalhe_portoes": "$ node scripts/verificar_estrutura.js\n\nnode:internal/modules/cjs/loader:1433\n  throw err;\n  ^\n\nError: Cannot find module 'jsdom'\nRequire stack:\n- /home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js:12:19)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\n\nNode.js v22.23.2\n"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Manaus",
@@ -1983,7 +2187,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "4e6b0deeb7"
+   "id": "4e6b0deeb7",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "\b\u0000\u0000\u0000\u0000\u0000\u0000\u0003ì½ÝÜ8.x\u0002 =\u001aë¶ ¿)¥ª³²R%I%µT¥nm A\"\"X\" \u0016A25Ûfçv.ö\u0005íM¹h«1+³]ë³7s¹ù&çIö8@2\u0018?ÊLTJUtµ þøq8 î»ßùÍ\u0017¾þÓc4¯óìî 8¢L\u0014³QYãI5Bq&´>\u0018½|¹\u0010U*&|pG!\u001a\\B'ðäèî¹\u0014ÉÝ;¹¬\u0005ç¢z&ëQSOq8Ú»ør!ry0Z¤òu©ªzbUÔ²¨\u000fF¯Ó¤ $rÆ\u0012 c\u0016i ëXdò\u0012çg)\u0006 ÉÒâ\u0015ªdv0*+)Ð\u0007£4\u001739BóJN\u000fFóº.õþÞé4&òDäÄ*ß{]âö{M oë=æ0Ï öþi.j}Xø\u0001\u0014 á2v\u0002L],jL]Â}øÿw¥}æú ð½iÕ²Òûß7\"KëÓß Þï÷§ªÊEý»×rRþ~µÂº>Í¤KYw\u0015Ý{YÈzO×¢Nã½Xë½ãO¸'§!KÄ³ÄZP\"jËJÆ2E,\u000fFðÚÕ ÷BM&% ¦ÂIb!\u0003Çó\u0012\u001aú \u0014>-âÑèî=[Ò%Jd\u0006{Â\u0017LNy\u0010z\u0013/\b®]Z.Ò\u0002²Ä Üú®7Ç|yí\u00129ç \u0016Ñ4 \u0013\u0012Lãp\u001aüÚ¥ù R\u0016O GJ×\u000f\u0019óÄõ[êø.Äç \u001b\u0000! Kßq¦nB \u0013z^ì\\z=º»N¤Ç\\9Q|ýÒ¶0[Þç:kf=OÂI4M¢F,",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Manaus",
@@ -2007,7 +2230,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "2b9ac0d88a"
+   "id": "2b9ac0d88a",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "El Niño 2026: depois do choque logístico de 2023, Manaus volta a acender o alerta para o escoamento de filmes e embalagens &#8211; PlásticoNews Menu PlásticoNews Procurar por Início Sobre PlasticoNews.org Política de Privacidade Seguir Facebook X YouTube Instagram Entrar Barra Lateral Procurar por Notícias de Última Hora Você também tem problema para comprar PCR? Entenda por que especificação vale mais que volume disponível Braskem protocola recuperação extrajudicial: o que muda para quem converte filmes de PE e PP El Niño 2026: depois do choque logístico de 2023, Manaus volta a acender o aler",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Duque de Caxias",
@@ -2056,7 +2298,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "cbe5a11555"
+   "id": "cbe5a11555",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "30/04/2027",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Chuvas de verão: Duque de Caxias se prepara com Plano de Contingência | CMDC Início Institucional Histórico Estrutura Pres. Claudio Thomaz Presidentes &#038; Legislaturas Corredor Cultural Instituto Histórico Publicações Teatro Legislativo Poder Legislativo Vereadores Vereadores – 20ª Legislatura Mesa Diretora Lideranças Comendas Comissões Legislação Atividade Legislativa Sessões do Plenário Pautas das Comissões Comunicação Licitações Licitações Abertas Licitações Concluídas Concursos Notícias Agenda de Eventos Jornal da Câmara Nossa Cidade Duque de Caxias Datas e Símbolos Símbolos Municipais ",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "citação incompleta (número=None, data=30/04/2027)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Duque de Caxias",
@@ -2081,7 +2342,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "0a62c14347"
+   "id": "0a62c14347",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "Instagram Instagram Log In Sign Up Meta About Blog Jobs Help API Privacy Consumer Health Privacy Terms Locations Popular Instagram Lite Meta AI Muse Threads Contact Uploading &amp; Non-Users Meta Verified English Down chevron icon Afrikaans العربية Čeština Dansk Deutsch Ελληνικά English English (UK) Español (España) Español فارسی Suomi Français עברית Bahasa Indonesia Italiano 日本語 한국어 Bahasa Melayu Norsk Nederlands Polski Português (Brasil) Português (Portugal) Русский Svenska ภาษาไทย Filipino Türkçe 中文(简体) 中文(台灣) বাংলা ગુજરાતી हिन्दी Hrvatski Magyar ಕನ್ನಡ മലയാളം मराठी नेपाली ਪੰਜਾਬੀ සිංහල Slove",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Nova Iguaçu",
@@ -2096,7 +2376,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano",
+   "status": "revertida_erro_portao",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -2107,7 +2387,23 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "id": "363c09aa4b"
+   "id": "363c09aa4b",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2024",
+    "citacao_completa": false,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'situação de emergência' + recital de dano ocorrido",
+    "trecho_documento": "PLANCON-NI: Plano de Contingências da Versão 8.0 Cidade de Nova Iguaçu Órgão: SMDC Ano: 2024-2025 PLANO DE CONTINGÊNCIAS PARA O ENFRENTAMENTO DAS EMERGÊNCIAS NA CIDADE DE NOVA IGUAÇU 2024 - 2025 PLANCON-NI 2024/2025 1 PLANCON-NI: Plano de Contingências da Versão 8.0 Cidade de Nova Iguaçu Órgão: SMDC Ano: 2024-2025 Sumário 1. INTRODUÇÃO ........................................................................................................................................... 4 1.1 JUSTIFICATIVA ......................................................................................................",
+    "juiz": {
+     "decisao": "REVERTIDA",
+     "motivo": "portão falhou após aplicar ato de resposta — desfeito de verdade",
+     "detalhe_portoes": "$ node scripts/verificar_estrutura.js\n\nnode:internal/modules/cjs/loader:1433\n  throw err;\n  ^\n\nError: Cannot find module 'jsdom'\nRequire stack:\n- /home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js:12:19)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\n\nNode.js v22.23.2\n"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Petrópolis",
@@ -2131,7 +2427,19 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "8c6cc9987b"
+   "id": "8c6cc9987b",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Petrópolis",
@@ -2155,7 +2463,26 @@
     "plano_no_trecho"
    ],
    "alertas": [],
-   "id": "c47baae820"
+   "id": "c47baae820",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "23/05/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Prefeitura de Petrópolis abre Plano de Contingência do Inverno 2026 | G1 Pular para o conteúdo Região Serrana Prefeitura de Petrópolis abre consulta pública para Plano de Contingência do Inverno 2026 Moradores podem enviar sugestões até 10 de junho; plano prevê ações para estiagem e prevenção de incêndios florestais. Por Priscila Torquato, g1 &mdash; Petrópolis 23/05/2026 14h29 Atualizado 23/05/2026 O documento preliminar foi apresentado durante uma reunião extraordinária do Conselho Municipal de Proteção e Defesa Civil (Compdec). O plano está disponível no site da prefeitura e as contribuiçõe",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Petrópolis",
@@ -2180,7 +2507,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "5b52c9d6f6"
+   "id": "5b52c9d6f6",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2025"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "El Niño acende alerta para Petrópolis, mas especialistas pedem cautela | Tribuna de Petrópolis Olá, visitante ! Sair Minha Conta Meus Classificados Capa do dia Precisa de ajuda? Fale conosco ! Blogs e Colunas Cidade Casa e Campo Petrópolis 182 Anos Economia Esporte Geral Brasil Educação Rio e Região Tecnologia Horóscopo Informe Publicitário Internacional Les Partisans Opinião Oportunidades Empregos Política Variedades Animais Automóveis Cinema Cozinha Moda Saúde TV Cidade Geral Colunas Precisa de ajuda? Fale conosco ! Anuncie Pesquisar: Notícias Tribuna FM Classificados Petrópolis 183 Anos Cid",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Petrópolis",
@@ -2205,7 +2551,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "fdf619c31e"
+   "id": "fdf619c31e",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "22/06/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Inverno começa com influência do El Niño e Petrópolis deve ter temperaturas acima da média - Sou Petrópolis Comer e beber Lazer Entretenimento Clube de Experiências Turismo Agenda Hospedagem Compras História Serviços Cultura Testes Nós somos Petrópolis Petrópolis do bem Cidade Roteiros Negócios Saúde Bem-estar Educação Esporte Tecnologia Quem Somos Contato Connect with us Sou Petrópolis Comer e beber Lazer Entretenimento Clube de Experiências Mais Turismo Agenda Hospedagem Compras História Serviços Cultura Testes Nós somos Petrópolis Petrópolis do Bem Cidade Roteiros Negócios Saúde Bem-estar E",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Petrópolis",
@@ -2230,7 +2595,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "dd26e0b5a5"
+   "id": "dd26e0b5a5",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2025"
+    },
+    "numero": null,
+    "data_ato": "8220",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Previsão de &#8220;Super El Niño&#8221; preocupa produtores rurais de Petrópolis | Tribuna de Petrópolis Olá, visitante ! Sair Minha Conta Meus Classificados Capa do dia Precisa de ajuda? Fale conosco ! Blogs e Colunas Cidade Casa e Campo Petrópolis 182 Anos Economia Esporte Geral Brasil Educação Rio e Região Tecnologia Horóscopo Informe Publicitário Internacional Les Partisans Opinião Oportunidades Empregos Política Variedades Animais Automóveis Cinema Cozinha Moda Saúde TV Cidade Geral Colunas Precisa de ajuda? Fale conosco ! Anuncie Pesquisar: Notícias Tribuna FM Classificados Petrópolis 18",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cabo Frio",
@@ -2255,7 +2639,22 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "454ffeddcd"
+   "id": "454ffeddcd",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "18/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño - Notícias --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> Pular para o conteúdo Início Fazenda Saúde Educação Turismo Assist. Social Menu Facebook Instagram Youtube Acesso rápido Início Todas as Notícias Educação Fazenda Saúde Turismo Portal da Prefeitura Categorias 1 ano de Governo 100 dias de Governo 180 dias de Governo 407 anos de Cabo Frio 408 anos de Cabo Frio Administração Agenda Cultural Agr",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "citação incompleta (número=None, data=18/09/2026)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cabo Frio",
@@ -2280,7 +2679,15 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "438126adad"
+   "id": "438126adad",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Cabo Frio",
@@ -2306,7 +2713,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "17218417dd"
+   "id": "17218417dd",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "18/09/2026"
+    },
+    "numero": null,
+    "data_ato": "18/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Cabo Frio prepara plano de contingência na Saúde para possíveis impactos do El Niño - Lagos Informa Ir para o conteúdo Início Regiões Cidades Araruama Armação dos Búzios Arraial do Cabo Cabo Frio Iguaba Grande Macaé Maricá Rio das Ostras Rio de Janeiro São Pedro da Aldeia Saquarema Estado RJ Baixada Fluminense Região dos Lagos Região Metropolitana Região Norte Fluminense Região Serrana Região Sul do Rio e Costa Verde Brasil Mundo Política Política Caderno Político +Notícias Comunitário Mais Lidas🔥 Policial Cultura Eventos Turismo Esportes Meio Ambiente Contato Sobre Nós Termos de Uso Linha Edi",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cabo Frio",
@@ -2331,7 +2757,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "c2ecd3c7f1"
+   "id": "c2ecd3c7f1",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "18/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño - Fonte Certa Araruama Arraial do Cabo Búzios Cabo Frio Iguaba Grande São Pedro da Aldeia Direto da Fonte Pesquisar Araruama Arraial do Cabo Búzios Cabo Frio Iguaba Grande São Pedro da Aldeia Direto da Fonte Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño Saúde participa da elaboração de ações para monitoramento de riscos e atendimento à população em situações de emergência 18 de setembro de 2026 Débora Clara Santos A Secretaria Municipal de Saúde de Cabo Frio começ",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cabo Frio",
@@ -2356,7 +2801,22 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "4e915972de"
+   "id": "4e915972de",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "numero": null,
+    "data_ato": "18/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño - O Diário Fluminense Economia Esportes Polícia Política Região Saúde Variedades Font Resizer Aa Pesquisar Economia Esportes Polícia Política Região Saúde Variedades Have an existing account? Sign In Siga-nos © 2022 Foxiz News Network. Ruby Design Company. All Rights Reserved. Cabo Frio Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño Atualizado pela última vez em: 18/09/2026 13:36 Por diario Compartilhar 3 minutos de leitura Compartilhar A Prefeitura de Cabo Frio avança n",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cabo Frio",
@@ -2381,7 +2841,22 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "b4b939ce17"
+   "id": "b4b939ce17",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": false,
+    "numero": null,
+    "data_ato": "22/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño | 📢 PORTAL LAGOS CULTURA 📰 22/09/2026 Início Guia Cidade Você Repórter Programação Promoções Pedir música Audiência Anuncie 📢 PORTAL LAGOS CULTURA 📰 Informação, cultura e conexão para uma Região dos Lagos em movimento. Menu Início Guia Cidade Você Repórter RJ - Região dos Lagos Rio das Ostras Campos dos Goytacazes Saquarema São Pedro da Aldeia Mais Casimiro de Abreu Marica Iguaba Grande Cabo Frio Arraial do Cabo Araruama Búzios Cultura Últimas Notícias Anuncie ÚLTIMAS NOTÍCIAS 13:38 Alunos fazem provas de ava",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "fonte não oficial: só leitura assistida, decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Rio das Ostras",
@@ -2406,7 +2881,26 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
-   "id": "081c850403"
+   "id": "081c850403",
+   "preparacao": {
+    "data": "22/09/2026",
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "20/08/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Prefeitura de Rio das Ostras Encontro realizado na Uerj reuniu representantes de órgãos municipais de todo o Estado para discutir estratégias de prevenção, [&hellip;] \" name=\"description\"> O Portal da Prefeitura de Rio das Ostras oferece informações e serviços online que buscam atender às necessidades da comunidade. Este website coleta ou registra apenas cookies técnicos (via Google Analytics), sem armazenamento e/ou tratamento de dados pessoais de navegação do usuário. --> O Portal PMRO coleta ou registra apenas cookies de rastreamento. Aceitar e Continuar Ir para conteúdo 0 Ir para menu 1 Ir",
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "citação incompleta (número=None, data=20/08/2026)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Resende",
@@ -6912,6 +7406,186 @@
    "sinais": [
     "fonte_desconhecida",
     "municipio_no_titulo",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Quatis",
+   "uf": "RJ",
+   "ibge": "3304128",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf",
+   "trecho": "Centro CEP: 27.410-170- Quatis / RJ. EXECUÇÃO. Vallenge ... enquanto o plano de contingência aborda ações programadas de interrupção dos serviços, o.",
+   "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO QUATIS - RJ",
+   "registrado_em": "2026-09-22",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "5364ca024c",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_no_titulo",
+    "plano_no_titulo"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Aperibé",
+   "uf": "RJ",
+   "ibge": "3300159",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://www.aperibe.rj.leg.br/leis/legislacao-municipal/plano-municipal-de-saneamento-basico-de-aperibe.pdf",
+   "trecho": "urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...",
+   "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE APERIBÉ",
+   "registrado_em": "2026-09-22",
+   "triagem": "candidato_forte",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "22f71a60d4",
+   "nivel_confianca": "A",
+   "pontos_confianca": 8,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_titulo",
+    "plano_no_titulo",
+    "texto_candidato_forte"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "ibge": "3304508",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf",
+   "trecho": "Jan 18, 2012 ... Plano Municipal de Saneamento Básico – Rio das Flores/RJ. 8 ... Portanto, enquanto o plano de contingência aborda ações programadas de.",
+   "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES",
+   "registrado_em": "2026-09-22",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "dd7ce9f7bc",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_no_titulo",
+    "plano_no_titulo"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Primavera",
+   "uf": "PA",
+   "ibge": "1506104",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://correiopetropolitano.com.br/2026/09/21/primavera-comeca-nesta-terca-feira-22-9-com-influencia-do-el-nino-2/",
+   "trecho": "1 day ago ... A primavera começa nesta terça-feira, dia 22 de setembro, às ... Elaboração do Plano de Contingência para Chuvas Intensas Verão 2026/2027.",
+   "titulo": "Primavera começa nesta terça-feira (22/9) com influência do El Niño",
+   "registrado_em": "2026-09-22",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "33c5c4e2e4",
+   "nivel_confianca": "B",
+   "pontos_confianca": 5,
+   "sinais": [
+    "fonte_imprensa",
+    "municipio_no_titulo",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Primavera",
+   "uf": "PA",
+   "ibge": "1506104",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://www.instagram.com/p/DdkM97SOz_M/",
+   "trecho": "7 hours ago ... Primavera 2026: 🌡️ Temperaturas podem ficar acima da ... Entre as medidas de preparação estão a elaboração do plano de contingência para ...",
+   "titulo": "A primavera começa nesta terça — e o El Niño pode mudar o ...",
+   "registrado_em": "2026-09-22",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "a691974354",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_no_titulo",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Primavera",
+   "uf": "PA",
+   "ibge": "1506104",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
+   "trecho": "1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: \"A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...",
+   "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
+   "registrado_em": "2026-09-22",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "b92d75059e",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_no_titulo",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Primavera",
+   "uf": "PA",
+   "ibge": "1506104",
+   "origem": "busca_web",
+   "data": "22/09/2026",
+   "url": "https://sul21.com.br/noticias/geral/2026/04/el-nino-deve-intensificar-chuvas-da-primavera-mas-ainda-e-cedo-para-prever-eventos-extremos/",
+   "trecho": "Apr 9, 2026 ... El Niño deve intensificar chuvas da primavera, mas ainda é cedo para prever eventos extremos ... plano de contingência bem estruturado. As ...",
+   "titulo": "El Niño deve intensificar chuvas da primavera, mas ainda é cedo ...",
+   "registrado_em": "2026-09-22",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "2ba4c41a5c",
+   "nivel_confianca": "B",
+   "pontos_confianca": 5,
+   "sinais": [
+    "fonte_imprensa",
+    "municipio_no_titulo",
+    "plano_no_trecho",
     "familia_de_risco_do_ciclo"
    ],
    "alertas": []

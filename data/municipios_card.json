@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-22",
- "total": 2173,
+ "total": 2176,
  "com_registro": 265,
- "com_imprensa": 117,
+ "com_imprensa": 118,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -1265,6 +1265,35 @@
    "nome": "Prainha",
    "uf": "PA",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "1506104": {
+   "nome": "Primavera",
+   "uf": "PA",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Primavera começa nesta terça-feira (22/9) com influência do El Niño",
+     "url": "https://correiopetropolitano.com.br/2026/09/21/primavera-comeca-nesta-terca-feira-22-9-com-influencia-do-el-nino-2/",
+     "data": "22/09/2026",
+     "veiculo": "correiopetropolitano.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "A primavera começa nesta terça — e o El Niño pode mudar o ...",
+     "url": "https://www.instagram.com/p/DdkM97SOz_M/",
+     "data": "22/09/2026",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
+     "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
+     "data": "22/09/2026",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "1506138": {
@@ -5299,15 +5328,6 @@
    "nome": "Alagoinhas",
    "uf": "BA",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "permanentemente atualizados e arquivados no próprio estabelecimento, \nem local de fácil acesso à equipe de fiscalização, os relatórios de ma",
-     "url": "https://data.queridodiario.ok.org.br/2900702/2026-09-11/c8ca60a50045716ee029b2b4d95a589481b052fe.pdf",
-     "data": "11/09/2026",
-     "veiculo": "data.queridodiario.ok.org.br",
-     "nivel": "B"
-    }
-   ],
    "categoria": "nao_localizado"
   },
   "2900801": {
@@ -8884,6 +8904,21 @@
    "prioritario": true,
    "categoria": "nao_localizado"
   },
+  "3300159": {
+   "nome": "Aperibé",
+   "uf": "RJ",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE APERIBÉ",
+     "url": "https://www.aperibe.rj.leg.br/leis/legislacao-municipal/plano-municipal-de-saneamento-basico-de-aperibe.pdf",
+     "data": "22/09/2026",
+     "veiculo": "aperibe.rj.leg.br",
+     "nivel": "A"
+    }
+   ],
+   "categoria": "nao_localizado"
+  },
   "3300209": {
    "nome": "Araruama",
    "uf": "RJ",
@@ -9186,16 +9221,7 @@
    "documento": "Plano de Contingências de Nova Iguaçu (PLANCON-NI), versão 8.0, apresentado publicamente em 10/12/2025 — documento completo publicado em PDF",
    "url": "https://www.novaiguacu.rj.gov.br/smdc/wp-content/uploads/sites/27/2024/12/plancon-2024-2025.pdf",
    "data": "10/12/2025",
-   "fonte": "Prefeitura de Nova Iguaçu, Secretaria Municipal de Defesa Civil (oficial, PDF publicado)",
-   "imprensa": [
-    {
-     "titulo": "Acionar o Plano de Contingência. • Emitir ALERTA (PREPARAÇÃO PARA EVENTUAL. DESOCUPAÇÃO (SMS, mídias sociais, etc ... JACERUBA, NOVA IGUAÇU",
-     "url": "https://www.novaiguacu.rj.gov.br/smdc/wp-content/uploads/sites/27/2024/12/plancon-2024-2025.pdf",
-     "data": "21/09/2026",
-     "veiculo": "novaiguacu.rj.gov.br",
-     "nivel": "B"
-    }
-   ]
+   "fonte": "Prefeitura de Nova Iguaçu, Secretaria Municipal de Defesa Civil (oficial, PDF publicado)"
   },
   "3303609": {
    "nome": "Paracambi",
@@ -9274,6 +9300,21 @@
    "prioritario": true,
    "categoria": "nao_localizado"
   },
+  "3304128": {
+   "nome": "Quatis",
+   "uf": "RJ",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO QUATIS - RJ",
+     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf",
+     "data": "22/09/2026",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
+   "categoria": "nao_localizado"
+  },
   "3304144": {
    "nome": "Queimados",
    "uf": "RJ",
@@ -9327,6 +9368,21 @@
    "nome": "Rio Claro",
    "uf": "RJ",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "3304508": {
+   "nome": "Rio das Flores",
+   "uf": "RJ",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES",
+     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf",
+     "data": "22/09/2026",
+     "veiculo": "ceivap.org.br",
+     "nivel": "B"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "3304524": {
@@ -10956,21 +11012,6 @@
    "data": "2026",
    "fonte": "Defesa Civil estadual/municipal"
   },
-  "4101309": {
-   "nome": "Antônio Olinto",
-   "uf": "PR",
-   "prioritario": false,
-   "imprensa": [
-    {
-     "titulo": "por ato do Chefe do Poder Executivo dentre \nos servidores públicos municipais. \n\nArt. 6º Compete à COMPDEC: \n\nI – coordenar e executar as aç",
-     "url": "https://data.queridodiario.ok.org.br/4101309/2026-06-30/4655a84801a9714a900d8286732d96a92927789d.pdf",
-     "data": "30/06/2026",
-     "veiculo": "data.queridodiario.ok.org.br",
-     "nivel": "B"
-    }
-   ],
-   "categoria": "nao_localizado"
-  },
   "4101408": {
    "nome": "Apucarana",
    "uf": "PR",
@@ -11292,20 +11333,6 @@
      "data": "27/08/2026",
      "veiculo": "data.queridodiario.ok.org.br",
      "nivel": "B"
-    },
-    {
-     "titulo": "e Defesa Civil; \n\nII - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças; \n\nIII - incorporar as ações de pr",
-     "url": "https://data.queridodiario.ok.org.br/4109302/2026-07-21/75a03b7356306f0199a9825f3ca05b40b5d10c38.pdf",
-     "data": "21/07/2026",
-     "veiculo": "data.queridodiario.ok.org.br",
-     "nivel": "B"
-    },
-    {
-     "titulo": "e Defesa Civil; \n\nII - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças; \n\nIII - incorporar as ações de pr",
-     "url": "https://data.queridodiario.ok.org.br/4109302/2026-07-20/ed942da2f94b8222a100b3e01023631b5bf39a1d.pdf",
-     "data": "20/07/2026",
-     "veiculo": "data.queridodiario.ok.org.br",
-     "nivel": "B"
     }
    ],
    "categoria": "nao_localizado"
@@ -11436,13 +11463,6 @@
      "titulo": "07 Descumprimento de \n\nnormas de segurança e \n\nlegislação vigente \n\nBaixa Alto Médio Cláusulas contratuais específicas e \n\nfiscalização \n\n08",
      "url": "https://data.queridodiario.ok.org.br/4111704/2026-08-14/4a741ff1b07b15993a1b874a8a9b40b359858fd8.pdf",
      "data": "14/08/2026",
-     "veiculo": "data.queridodiario.ok.org.br",
-     "nivel": "B"
-    },
-    {
-     "titulo": "07 Descumprimento de \n\nnormas de segurança e \n\nlegislação vigente \n\nBaixa Alto Médio Cláusulas contratuais específicas e \n\nfiscalização \n\n08",
-     "url": "https://data.queridodiario.ok.org.br/4111704/2026-07-24/ed10a013992dd32bd9a7b708febe86d42f26fc0b.pdf",
-     "data": "24/07/2026",
      "veiculo": "data.queridodiario.ok.org.br",
      "nivel": "B"
     }
