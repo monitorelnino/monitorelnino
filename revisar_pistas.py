@@ -190,9 +190,12 @@ def preparar(fila: dict, hoje: str, buscar=juiz.buscar_texto, processar=juiz.pro
     `buscar`/`processar` injetáveis para o autoteste (sem rede)."""
     res = defaultdict(int)
     feitas = 0
-    for p in fila["pistas"]:
+    # §159: candidatos da cascata notícia→documento (origem "seguimento_*") vêm primeiro e não dependem do nível
+    # de confiança — o título deles costuma ser o nome do arquivo; quem decide é o portão automático.
+    eh_seg = lambda x: (x.get("origem") or "").startswith("seguimento")
+    for p in sorted(fila["pistas"], key=lambda x: 0 if eh_seg(x) else 1):
         if feitas >= limite: break
-        if not pendente(p) or p.get("nivel_confianca") not in niveis: continue
+        if not pendente(p) or (p.get("nivel_confianca") not in niveis and not eh_seg(p)): continue
         ja = p.get("preparacao") or {}
         if ja and ja.get("versao") == PREP_VERSAO and (ja.get("juiz") or {}).get("decisao") != "REVERTIDA":
             continue   # refaz: revertidas por portão e preparações de versão anterior (sem foco/portão)
