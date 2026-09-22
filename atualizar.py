@@ -256,7 +256,7 @@ def main():
     # verificação), feeds e dados abertos. Relógio fixado no corte (determinismo dos PDFs).
     corte = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("corte", "")
     try:
-        dd, mm, aa = corte.split("/"); epoch = str(int(datetime.datetime(int(aa), int(mm), int(dd)).timestamp()))
+        dd, mm, aa = corte.split("/"); epoch = str(int(datetime.datetime(int(aa), int(mm), int(dd), tzinfo=datetime.timezone.utc).timestamp()))
     except Exception:
         epoch = None
     rodar([sys.executable, "recalcular_mare.py", "--write"], obrigatorio=True, env_extra=({"SOURCE_DATE_EPOCH": epoch} if epoch else None))

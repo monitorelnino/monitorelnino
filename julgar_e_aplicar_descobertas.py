@@ -184,7 +184,7 @@ def sincronizar_derivados():
     env = dict(os.environ)
     try:
         dd, mm, aa = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8"))["corte"].split("/")
-        env.setdefault("SOURCE_DATE_EPOCH", str(int(_dt.datetime(int(aa), int(mm), int(dd)).timestamp())))
+        env.setdefault("SOURCE_DATE_EPOCH", str(int(_dt.datetime(int(aa), int(mm), int(dd), tzinfo=_dt.timezone.utc).timestamp())))
     except Exception:  # noqa: BLE001
         pass
     saida = []
