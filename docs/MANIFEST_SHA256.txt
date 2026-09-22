@@ -7,7 +7,7 @@
 # evidencias/ (cópias de documentos-fonte, indexadas por hash em data/evidencias.json), node_modules/ e arquivos de imagem. Tudo o mais versionado está selado (AUD-09).
 # (ferramenta de sessão — inventário em docs/AUDITORIA_CODIGO.md §2). Conferência: sha256sum -c
 e7b36936250d82483b3277c3bff749a3d98ef7f5092efbb5b5943b1e11ada877  .env.example
-5bba30244f820354f52dcb463453cbd81ed2f47c9778be09b847494aa4246cda  .github/workflows/atualizar.yml
+e5df6a140c0f6dd7d846ad52b266906931e99b19f09566ad0a01ff3c16285a1e  .github/workflows/atualizar.yml
 3480476b12c57f9ca37172d8101f2e36ad92c462cc18ce8dfb5c9d404a5d969f  .github/workflows/auditoria_seguranca.yml
 5df9363a929a0abcbe04af012f1004837fa8b32724a2433f27f9c46faa9298cb  .github/workflows/busca_web_cadencia.yml
 e87693c33ed88fd129462aaf6b192bc41fe8ac045fc1afd9230af45fc151cbf9  .github/workflows/diagnostico_sinais.yml
@@ -74,7 +74,7 @@ f1dbe1ce7889670b5b252fb732ee88eba08e8af9e1af6fbd6e720ed89fa97749  dados-abertos/
 dc61185b8a1633eed65c05dbc3f92da64f4f1cdd36a4d0c02f1a2f26e7f92aa8  dados-abertos/municipios.csv
 76eb99e8d7534217d5e96505ce49f686be383314c9dd75f9e9f9267f9913a672  dados-abertos/painel_amostral.csv
 5404492ae08c3f6902fde526d1bec4d59bdee2f9a5c66eca760b8f1b6fb6a7e4  dados-abertos/saude_uf.csv
-9b09490e32ba4cfd4a1d7c54cbf3a44ab1c06df7a701d4fe0108e143ada755a9  dados-abertos/verificacao_municipal.csv
+9c82f6a4604cc0fab30615d987a06d1c6ae73868028115738f31bd0d9a552e4e  dados-abertos/verificacao_municipal.csv
 e71772a88526ec2501ee60f72e78eb55c46edac4530f84bc6888f08b18257b56  data/atos_resposta.json
 fc4522f0fd045067e44b692f59d1dc2d2b7a73535fb9162c55303d634421ac1a  data/boletins.json
 d27cddc6ccb0155c723ec82ab63e24b301b9a95fae968b2a5da4da39946f6e79  data/busca_web_estado.json
