@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-22",
- "total_pistas": 267,
- "total_municipios": 157,
+ "total_pistas": 268,
+ "total_municipios": 158,
  "por_nivel": {
   "A": 44,
-  "B": 173,
+  "B": 174,
   "C": 50
  },
  "grupos": [
@@ -5172,6 +5172,38 @@
      "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
      "titulo": null,
      "trecho": "VOLUME II. Bom Jesus dos Perdões, 2015. ... O Plano de Contingência é um documento onde estão definidas as responsabilidades estabelecidas em uma.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4302600",
+   "municipio": "Braga",
+   "uf": "RS",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "2d7a06302b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/glauber.braga1/videos/sobre-o-super-el-ni%C3%B1odiante-da-previs%C3%A3o-de-eventos-clim%C3%A1ticos-extremos-associado/2433071383769773/",
+     "titulo": "SOBRE o super EL NIÑO Diante da previsão de eventos climáticos ...",
+     "trecho": "Aug 2, 2026 ... Admiro Glauber Braga! Parabéns, deputado! 1mo. 1. Profile photo of ... Qual é o plano de contingência? O que fazer pra que as pessoas ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
