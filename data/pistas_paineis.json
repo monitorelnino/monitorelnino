@@ -1,0 +1,463 @@
+{
+ "_governanca": "Fila de pistas de CAMADA (sondar_paineis.py, 22/09/2026): referências a painéis e hospedagens de terceiros achadas no HTML de sítios oficiais. Motivada pelo painel Power BI da Defesa Civil do AM, público e nunca alcançado pela varredura textual. TRAVA ABSOLUTA: nada aqui entra no banco sem confirmação humana do documento primário (promoção = regra R7). Um item nesta fila NÃO é plano: é um lugar onde ainda não olhamos.",
+ "itens": [
+  {
+   "uf": "AM",
+   "setor": "defesa_civil",
+   "dominio": "defesacivil.am.gov.br",
+   "pagina_origem": "indicado por ouvidoria@defesacivil.am.gov.br em resposta a LAI, 22/09/2026",
+   "hospedeiro": "app.powerbi.com",
+   "tipo": "painel Power BI",
+   "url": "https://app.powerbi.com/view?r=eyJrIjoiNDhmOGE4YjMtOWNlNi00ZDJjLWIwMTUtNmE4NGYxNGJjOGY1IiwidCI6Ijg1NDczOTk4LTFmODEtNDAxMS1iYzk3LTg3YWUwNGU2MTIwNCJ9",
+   "hash": "am-painel-planos-acao",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "aberto_em_navegador_22-09-2026_aguarda_leitura_dos_links_por_municipio",
+   "descoberto_em": "2026-09-22",
+   "observacao": "Menu 'Planos de Ação' com 9 cartões; o cartão 'Planos de Contingência Municipais' abre sub-painel com tabela dos 62 municípios (calha, município, ícone de link do plano, ano). Cartões adicionais relevantes ao item (3) do pedido: Plano Estadual de Proteção e Defesa Civil, Plano Tático Estiagem 2026, Plano Tático Cheia 2026. A tabela é declaração ESTADUAL (ano, não número/data do ato); o documento por município está atrás de cada ícone e ainda não foi aberto — sem isso não se sabe se o plano de 2026 é anterior ou posterior a 29/06/2026.",
+   "sub_painel_municipios": {
+    "url": "https://app.powerbi.com/view?r=eyJrIjoiZjg5MzkyM2QtMGJkZi00MGRiLWJhYmYtMjcyZTBkMmNiZDc2IiwidCI6Ijg1NDczOTk4LTFmODEtNDAxMS1iYzk3LTg3YWUwNGU2MTIwNCJ9",
+    "lido_em": "2026-09-22",
+    "n_municipios": 62,
+    "com_plano_declarado": 51,
+    "sem_plano_declarado": 11,
+    "tabela": [
+     {
+      "indice": 1,
+      "calha": "Alto Solimões",
+      "municipio": "Atalaia do Norte",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 2,
+      "calha": "Alto Solimões",
+      "municipio": "Benjamin Constant",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 3,
+      "calha": "Alto Solimões",
+      "municipio": "Tabatinga",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 4,
+      "calha": "Alto Solimões",
+      "municipio": "São Paulo de Olivença",
+      "ano_do_plano": 2025,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 5,
+      "calha": "Alto Solimões",
+      "municipio": "Amaturá",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 6,
+      "calha": "Alto Solimões",
+      "municipio": "Santo Antônio do Içá",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 7,
+      "calha": "Alto Solimões",
+      "municipio": "Tonantins",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 8,
+      "calha": "Médio Solimões",
+      "municipio": "Jutaí",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 9,
+      "calha": "Médio Solimões",
+      "municipio": "Fonte Boa",
+      "ano_do_plano": 2024,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 10,
+      "calha": "Médio Solimões",
+      "municipio": "Japurá",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 11,
+      "calha": "Médio Solimões",
+      "municipio": "Maraã",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 12,
+      "calha": "Médio Solimões",
+      "municipio": "Uarini",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 13,
+      "calha": "Médio Solimões",
+      "municipio": "Alvarães",
+      "ano_do_plano": 2024,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 14,
+      "calha": "Médio Solimões",
+      "municipio": "Tefé",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 15,
+      "calha": "Médio Solimões",
+      "municipio": "Coari",
+      "ano_do_plano": 2024,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 16,
+      "calha": "Baixo Solimões",
+      "municipio": "Codajás",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 17,
+      "calha": "Baixo Solimões",
+      "municipio": "Anori",
+      "ano_do_plano": 2024,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 18,
+      "calha": "Baixo Solimões",
+      "municipio": "Anamã",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 19,
+      "calha": "Baixo Solimões",
+      "municipio": "Caapiranga",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 20,
+      "calha": "Baixo Solimões",
+      "municipio": "Manacapuru",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 21,
+      "calha": "Baixo Solimões",
+      "municipio": "Iranduba",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 22,
+      "calha": "Baixo Solimões",
+      "municipio": "Manaquiri",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 23,
+      "calha": "Baixo Solimões",
+      "municipio": "Careiro Castanho",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 24,
+      "calha": "Baixo Solimões",
+      "municipio": "Careiro da Várzea",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 25,
+      "calha": "Médio Amazonas",
+      "municipio": "Itacoatiara",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 26,
+      "calha": "Médio Amazonas",
+      "municipio": "Presidente Figueiredo",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 27,
+      "calha": "Médio Amazonas",
+      "municipio": "Rio Preto da Eva",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 28,
+      "calha": "Médio Amazonas",
+      "municipio": "Silves",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 29,
+      "calha": "Médio Amazonas",
+      "municipio": "Autazes",
+      "ano_do_plano": 2023,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 30,
+      "calha": "Médio Amazonas",
+      "municipio": "Urucurituba",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 31,
+      "calha": "Médio Amazonas",
+      "municipio": "Itapiranga",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 32,
+      "calha": "Baixo Amazonas",
+      "municipio": "Barreirinha",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 33,
+      "calha": "Baixo Amazonas",
+      "municipio": "Boa Vista do Ramos",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 34,
+      "calha": "Baixo Amazonas",
+      "municipio": "Nhamundá",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 35,
+      "calha": "Baixo Amazonas",
+      "municipio": "Urucará",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 36,
+      "calha": "Baixo Amazonas",
+      "municipio": "São Sebastião do Uatumã",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 37,
+      "calha": "Baixo Amazonas",
+      "municipio": "Parintins",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 38,
+      "calha": "Baixo Amazonas",
+      "municipio": "Maués",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 39,
+      "calha": "Juruá",
+      "municipio": "Guajará",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 40,
+      "calha": "Juruá",
+      "municipio": "Ipixuna",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 41,
+      "calha": "Juruá",
+      "municipio": "Envira",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 42,
+      "calha": "Juruá",
+      "municipio": "Itamarati",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 43,
+      "calha": "Juruá",
+      "municipio": "Eirunepé",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 44,
+      "calha": "Juruá",
+      "municipio": "Carauari",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 45,
+      "calha": "Juruá",
+      "municipio": "Juruá",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 46,
+      "calha": "Purus",
+      "municipio": "Boca do Acre",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 47,
+      "calha": "Purus",
+      "municipio": "Pauini",
+      "ano_do_plano": 2024,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 48,
+      "calha": "Purus",
+      "municipio": "Lábrea",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 49,
+      "calha": "Purus",
+      "municipio": "Canutama",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 50,
+      "calha": "Purus",
+      "municipio": "Tapauá",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 51,
+      "calha": "Purus",
+      "municipio": "Beruri",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 52,
+      "calha": "Madeira",
+      "municipio": "Humaitá",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 53,
+      "calha": "Madeira",
+      "municipio": "Apuí",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 54,
+      "calha": "Madeira",
+      "municipio": "Manicoré",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 55,
+      "calha": "Madeira",
+      "municipio": "Novo Aripuanã",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 56,
+      "calha": "Madeira",
+      "municipio": "Borba",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 57,
+      "calha": "Madeira",
+      "municipio": "Nova Olinda do Norte",
+      "ano_do_plano": 2025,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 58,
+      "calha": "Negro",
+      "municipio": "São Gabriel da Cachoeira",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 59,
+      "calha": "Negro",
+      "municipio": "Santa Isabel do Rio Negro",
+      "ano_do_plano": 2024,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 60,
+      "calha": "Negro",
+      "municipio": "Barcelos",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     },
+     {
+      "indice": 61,
+      "calha": "Negro",
+      "municipio": "Novo Airão",
+      "ano_do_plano": null,
+      "plano_declarado_pelo_estado": false
+     },
+     {
+      "indice": 62,
+      "calha": "Negro",
+      "municipio": "Manaus",
+      "ano_do_plano": 2026,
+      "plano_declarado_pelo_estado": true
+     }
+    ]
+   }
+  }
+ ]
+}
