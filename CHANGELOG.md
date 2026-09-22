@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §155 · Card do município: tag de prioritário, situação no MARÉ, "publicação na imprensa encontrada" (peso zero, com link) e como pedir o documento ao gestor · 22/09/2026
+
+Classe **produto + método**, três decisões editoriais de 22/09/2026: imprensa não pontua (nem "em elaboração"); entra no card como link; o card estimula o leitor a pedir o documento ao gestor público e diz como. Mais: tag de prioritário em cada município.
+
+**Dado novo — `data/municipios_card.json`** (`gerar_card_municipios.py`, na cadeia canônica de derivados e nos dois workflows de coleta). Um objeto por código IBGE, só para municípios com algo a dizer: `prioritario` (aproximação populacional do Cadastro Nacional — o mesmo proxy de `gerar_prioritarios.py`), categoria no MARÉ (`municipios.json`; ausente = nada localizado), documento/url/data quando há registro, e `imprensa`: até 3 pistas pendentes de nível A/B (título, url, data, veículo), mais novas primeiro. Pistas C e rejeitadas ficam fora; a pista NUNCA vira categoria — peso zero por construção, coberto por teste. Quando o documento oficial aparece e o juiz aplica, a categoria sobe e a pista fica como proveniência. Hoje: 2.173 municípios (2.095 prioritários; 265 com registro; 117 com pista de imprensa), 382 KB, carregado só na primeira consulta.
+
+**A consulta de `prefeituras.html` virou o card.** Antes: só os prioritários eram consultáveis, resposta sim/não. Agora: todos os 5.571 (referência IBGE); tag **prioritário**; "No MARÉ: …" com o documento linkado; a lista de publicações na imprensa, rotulada "pista — não pontua no MARÉ sem o documento oficial"; e, sempre que não há documento do tipo plano (nada localizado, não verificado, só decreto de emergência, ato de outro risco), o bloco **"Peça o documento ao gestor público"**: qualquer pessoa pode pedir sem justificar (LAI, Lei 12.527/2011), pelo e-SIC ou ouvidoria da prefeitura, ou pelo Fala.BR; texto pronto do pedido (plano vigente + ato instituinte, número e data); prazo de 20 dias; e-mail do MARÉ para reenviar o que receber. A mesma tag entra no tooltip do mapa de verificação em `defesa-civil.html`.
+
+**Teste.** Autoteste do gerador 7/7 (prioritário sozinho entra; sem nada não entra; imprensa só A/B pendentes; imprensa nunca vira categoria; proveniência mantida). Card testado com Chromium real (Playwright) em quatro casos: Palotina/PR (prioritário, sem plano, 3 pistas de imprensa, convite a pedir), Salvador/BA (prioritário, plano localizado com link, sem convite), Acrelândia/AC (prioritário, só decreto de emergência → convite a pedir), grafia inexistente. Zero erros de JavaScript. Portões de vocabulário, voz, legendas, segurança, estrutura, acessibilidade e runtime verdes; cadeia de derivados idempotente.
+
 ## §154 · O juiz passa a ler PDF e datas por extenso — o diário oficial deixa de ser invisível (teste real: Feira de Santana/BA) · 22/09/2026
 
 Classe **encanamento que destrava método**. Decisão editorial de 22/09/2026 (metodologia sem intervenção humana para o caso claro): a máquina nunca pontua sem documento oficial verificado; para isso precisa conseguir LER o documento oficial.
@@ -23,6 +33,7 @@ Classe **encanamento que destrava método**. Decisão editorial de 22/09/2026 (m
 
 **Teste.** Self-test do classificador (97 decretos de resposta reais, 0 falsos positivos) verde, com os casos novos de data; self-test do juiz 5/5; leitor de PDF testado com PDF real gerado em memória. Nota inalterada até a rodada aplicar.
 
+||||||| parent of 95a5754 (§155 card do município: tag prioritário, situação no MARÉ, imprensa encontrada (peso zero, link), como pedir ao gestor)
 ## §153 · Fila de revisão humana das pistas: leitura assistida, decisões registradas, homônimos · 22/09/2026
 
 Classe **fluxo editorial + código** (`revisar_pistas.py`), a pedido direto ("vamos à fila de pistas").

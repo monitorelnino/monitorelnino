@@ -103,7 +103,8 @@ svgPoints.append('g').selectAll('circle')
   .attr('stroke', d=>d.categoria==='plano' ? MonitorMapas.cor('branco') : MonitorMapas.cor('branco'))
   .attr('stroke-width', d=>d.categoria==='plano' ? 1.6 : 1)
   .attr('stroke-dasharray', d=>(d.categoria==='nao_localizado'||d.categoria==='nao_verificado') ? '2,1.5' : null)
-  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong><br>${CAT_STYLE[d.categoria].label}${d.fase===2?' · Fase 2':''}`, evt))
+  // 22/09/2026 (§155): tag de prioritário no tooltip — conjunto vem de data/municipios_prioritarios.json (carregado abaixo, no mapa de prioritários)
+  .on('mouseenter', (evt,d)=> showTip(`<strong>${d.nome} (${d.uf})</strong>${(window.__PRIOR_SET && window.__PRIOR_SET.has(d.nome+'|'+d.uf)) ? ' <span class="tag tag--prior">prioritário</span>' : ''}<br>${CAT_STYLE[d.categoria].label}${d.fase===2?' · Fase 2':''}`, evt))
   .on('mousemove', (evt)=> showTip(tooltip.innerHTML, evt))
   .on('mouseleave', hideTip);
 
@@ -159,6 +160,7 @@ setTimeout(function(){
 const svgPrior = d3.select('#mapPrioritarios');
 fetch('data/municipios_prioritarios.json').then(r => r.ok ? r.json() : null).then(PRIOR => {
   if (!PRIOR) return;
+  window.__PRIOR_SET = new Set(PRIOR.municipios.map(m => m.nome + '|' + m.uf));   // §155: tag no tooltip do mapa de verificação
   svgPrior.append('g').selectAll('path')
     .data(BR_GEOJSON.features).join('path')
     .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')

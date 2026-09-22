@@ -448,6 +448,7 @@ jobs:
           # dados-abertos/verificacao_municipal.csv deriva dele e já tinha sido gerado antes — ficava
           # atrás. Regenera aqui também, e o manifesto por cima, para o commit sair consistente.
           python3 gerar_dados_abertos.py
+          python3 gerar_card_municipios.py   # §155
           python3 scripts/gerar_manifesto.py
 
       - name: Commit das alterações de dados
