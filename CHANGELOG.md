@@ -9,6 +9,19 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §149 · Blog do MARÉ (protótipo): página nova fora da barra, quatro quadros de situação e textos em Markdown · 22/09/2026
+
+Classe **página nova, decisão editorial em curso** (nome final, lugar na navegação e assinatura dos textos ainda por decisão da editoria; nada do índice muda).
+
+**O que entra.** `blog.html`, publicada fora da barra de navegação como o Calendário, em dois blocos. (1) *Situação do monitoramento*: quatro quadros — MARÉ Legal, MARÉ Saúde, Defesa civil, Sinais físicos — lidos dos **mesmos arquivos** das páginas correspondentes (`indice`, `estados`, `municipios`, `monitor_saude`, `resposta/por_uf`, `sinais_risco`), sem nenhum número próprio; cada quadro tem crédito no formato único com a data da **sua** fonte, porque as cadências diferem (índices semanais; alertas, avisos e sinais diários). Os quadros substituem a ideia de um "post de status" automático: o pulso da rotina fica nos números, o fluxo de textos fica só para a voz editorial. (2) *Textos*: lista gerada de `data/blog/posts.json`.
+
+**Textos como dado.** Um Markdown por texto em `blog/posts/AAAA-MM-DD-slug.md`, com cabeçalho (titulo · data · categoria `analise`|`diario` · autor · resumo). `gerar_blog.py` gera a página de cada texto (`blog/<slug>.html`, masthead e rodapé copiados de `blog.html` com caminhos reescritos para `../`), o índice e o feed Atom `feeds/blog.xml`; `--check` entra na cadeia do Portão 12 (`verificar_derivados.sh`, depois do carimbo de assets) e a geração entra em `atualizar.py` depois dos dados abertos. Dependência nova travada: `Markdown==3.10.2` (BSD). Um texto de exemplo, "O que este espaço acompanha", assinado provisoriamente pela editoria.
+
+**Componentes.** Só em `base.css`, com tokens: `.grade-cartoes--4` (4 → 2 → 1 colunas nos breakpoints 1020/640), `.cartao--status` (mesmo `.gauge-head/.gnum` da inicial) com `.status-dl`, `.blog-lista` e a prosa de `.post`. Nenhum estilo inline, nenhum hex.
+
+**Portões.** Página registrada em estrutura (exceção de item ativo, como o Calendário), acessibilidade, figuras, legendas, vocabulário, voz editorial, palavras (meta 250 · teto 300), SEO e sitemap; cabeçalho de cache `must-revalidate` para `/blog/*` no `netlify.toml`. Suíte de página completa verde, inclusive móvel (390 px) e consistência visual (1366 · 900 · 390) em Chromium real; `gerar_blog.py --autoteste` verde.
+
+**Fica com a editoria.** Nome da página, entrada (ou não) na barra, assinatura dos textos e o próprio texto de exemplo.
 ## §148 · Cadência automática da busca web (2h em 2h até cobrir todos os municípios, depois 4x/dia); causa raiz do run #117 corrigida; site fica no ar atrás de senha durante a rodada · 22/09/2026
 
 Classe **infraestrutura**, quatro mudanças relacionadas, a pedido editorial direto depois dos testes de 21/09.

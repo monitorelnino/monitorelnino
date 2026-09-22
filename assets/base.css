@@ -275,6 +275,30 @@ a.cartao--kpi:hover{outline:1.5px solid var(--link); outline-offset:2px; color:i
 .cartao b.cartao-t{display:block; font-size:var(--fs-body); margin:0 0 var(--sp-1);}
 .cartao .cartao-s{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); display:block; margin:0 0 var(--sp-2);}
 .cartao .cartao-a{font-size:var(--fs-small); font-weight:var(--peso-semibold);}
+/* 22/09/2026 (Blog do MARÉ): quadro de situação — número grande (mesmo .gauge-head/.gnum da inicial), lista
+   rótulo/valor e crédito com a data da própria fonte; quatro por linha no desktop, dois no tablet, um no celular. */
+.grade-cartoes--4{grid-template-columns:repeat(4, minmax(0, 1fr));}
+.cartao--status .gauge-head{margin:0 0 var(--sp-1);}
+.cartao--status .cartao-s{margin:0 0 var(--sp-3);}
+.status-dl{margin:0; padding:0; font-size:var(--fs-small); line-height:var(--lh-small);}
+.status-dl > div{padding:var(--sp-2) 0; border-top:1px solid var(--line);}
+.status-dl dt{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); margin:0 0 var(--sp-1);}
+.status-dl dd{margin:0; font-weight:var(--peso-semibold); color:var(--ink);}
+.cartao--status .cartao-a{margin-top:var(--sp-3);}
+.cartao--status .figura-pe{padding-top:var(--sp-3);}
+/* lista de textos do blog e página do texto */
+.blog-lista{list-style:none; margin:0; padding:0;}
+.blog-item{padding:var(--sp-4) 0; border-top:1px solid var(--line);}
+.blog-item:first-child{border-top:none; padding-top:0;}
+.blog-item .selo{margin-bottom:var(--sp-1);}
+.blog-titulo{display:block; font-family:var(--font-titulo); font-size:var(--fs-h3); line-height:var(--lh-h3); font-weight:var(--peso-regular); text-decoration:none; margin:0 0 var(--sp-1);}
+.blog-titulo:hover{text-decoration:underline;}
+.blog-resumo{margin:0; color:var(--muted);}
+.blog-vazio{color:var(--muted);}
+.post .post-corpo{max-width:72ch;}
+.post .post-corpo > p, .post .post-corpo > ul, .post .post-corpo > ol{margin:0 0 var(--sp-4);}
+.post .post-corpo > h2{margin:var(--sp-6) 0 var(--sp-3);}
+.post .post-volta{margin:var(--sp-6) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
 .bloco-citacao{background:var(--surface-2); border-left:4px solid var(--teal); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); font-size:var(--fs-body); line-height:var(--lh-body);}
 
 /* ===== 8. Tabelas ===== */
@@ -584,6 +608,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 @media (max-width:1020px){
   .wrap{padding:var(--sp-5) var(--grade-margem) var(--sp-7);}
   .grade-figuras, .grade-figuras--3{grid-template-columns:minmax(0, 1fr);}
+  .grade-cartoes--4{grid-template-columns:repeat(2, minmax(0, 1fr));}
   .passos{grid-template-columns:minmax(0, 1fr);}
   .figura--largo{grid-column:auto;}
   .regions{grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));}
@@ -595,6 +620,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .emerg-nums{grid-template-columns:repeat(2, minmax(0, 1fr));}
   .emerg-num--sms{grid-column:1 / -1;}
   .figura--dupla .figura-midia{grid-template-columns:minmax(0, 1fr);}
+  .grade-cartoes--4{grid-template-columns:minmax(0, 1fr);}
   .wrap{padding:var(--sp-4) var(--grade-margem-celular) var(--sp-7);}
   h1, .site-title{font-size:var(--fs-h2); line-height:var(--lh-h2);}
   h2{font-size:var(--fs-h3); line-height:var(--lh-h3);}
