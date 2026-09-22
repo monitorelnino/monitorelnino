@@ -29,7 +29,7 @@ concurrency:
 jobs:
   busca_web:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60   # §153: --preparar pode acionar o juiz (portões) em pistas de fonte oficial
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false }
@@ -83,6 +83,7 @@ jobs:
         run: |
           export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd)).timestamp()))")"
           python3 triar_confianca_pistas.py   # §150: anota nível A/B/C e regenera a fila de revisão por município
+          python3 revisar_pistas.py --preparar --limite 30 --relatorio   # §153: leitura assistida (busca doc, extrai nº/data, classifica) + docs/FILA_PISTAS.md
           python3 recalcular_mare.py --write
           python3 recalcular_mare.py --check
           python3 gerar_dados_abertos.py
@@ -96,7 +97,7 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ index.html defesa-civil.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt
+          git add data/ index.html defesa-civil.html selos/ dados-abertos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
           if git diff --cached --quiet; then echo "Sem alterações."; echo "HOUVE=0" >> $GITHUB_ENV; exit 0; fi
           git commit -m "Busca web automática ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
           echo "HOUVE=1" >> $GITHUB_ENV
