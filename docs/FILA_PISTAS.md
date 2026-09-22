@@ -75,108 +75,128 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Guaratuba/PR — 4 pendente(s)
-- `566e4a1aaf` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+- `566e4a1aaf` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Guaratuba reforça plano de ação para enfrentar o El Niño
   - url: https://guaratuba.portaldacidade.com/noticias/cidade/guaratuba-reforca-plano-de-acao-para-enfrentar-o-el-nino-0745
   - trecho: Jun 25, 2026 ... Entre as medidas práticas já adotadas pela gestão municipal está a atualização contínua do Plano de Contingência ... Unidade Guaratuba / PR. CNPJ: ...
-- `33c95451d6` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `33c95451d6` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Prefeitura dá continuidade ao planejamento preventivo para o El Niño
   - url: http://cidadao.guaratuba.pr.gov.br/noticias/prefeitura-d-continuidade-ao-planejamento-preventivo-para-o-el-nio
   - trecho: Jul 2, 2026 ... Guaratuba - PR, CEP: 83280-000. Telefone: (41) 3472-8500. Atendimento ... © 2026 Prefeitura Municipal de Guaratuba. Todos os direitos ...
-- `46ee74f95c` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `46ee74f95c` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Guaratuba reforça planejamento preventivo para o El Niño A ...
   - url: https://www.instagram.com/reel/DdcDYXyI8Ea/
   - trecho: 4 days ago ... ... El Niño A Prefeitura de Guaratuba segue preparando o município para ... Por determinação do prefeito Mateus Silva, o Plano de Contingência ...
-- `7dee04ec8d` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `7dee04ec8d` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Alerta El Niño: Guaratuba prepara plano de emergência e mapeia ...
   - url: https://guaratuba.portaldacidade.com/noticias/cidade/alerta-el-nino-guaratuba-prepara-plano-de-emergencia-e-mapeia-riscos-5241
   - trecho: Jul 2, 2026 ... Unidade Guaratuba / PR. CNPJ: 17.720.042/0001-08. © Copyright 2008-2026 Portal da Cidade ®. Outras cidades, Andradas / MG, Atibaia / SP · Bady ...
+  - juiz: portão automático: fonte não oficial
 
 ## Irati/PR — 3 pendente(s)
-- `31775ad11b` · nível **A** (7 pts) · busca_web · — · data 21/07/2026 (do trecho)
+- `31775ad11b` · nível **A** (7 pts) · busca_web · RESPOSTA · data 21/07/2026 (do trecho)
   - título: Defesa Civil promove reunião sobre El Niño e ... - Jornal Folha de Irati
   - url: https://folhadeirati.com.br/defesa-civil-promove-reuniao-sobre-el-nino-e-plano-de-contingencia-em-sao-mateus-do-sul/
   - trecho: Jul 21, 2026 ... Irati PR, 04:51, 10°C. Grupo do WhatsApp · Defesa Civil promove reunião sobre El Niño e Plano de Contingência em São Mateus do Sul ... 21/07/2026 ...
-- `5aa3b39e87` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `5aa3b39e87` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Com previsão de El Niño no 2º semestre, Estado reforça ... - Irati-PR
   - url: https://hojecentrosul.com.br/com-previsao-de-el-nino-no-2o-semestre-estado-reforca-mecanismos-de-apoio-aos-municipios/
   - trecho: May 14, 2026 ... As principais medidas são a revisão do Plano de Contingência ... © 2026 Hoje no Centro Sul – Irati-PR. Todos os direitos reservados ...
-- `8c0607925f` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `8c0607925f` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2026 (do trecho)
   - título: El Niño é confirmado e Simepar prevê aumento de chuvas até ...
   - url: https://folhadeirati.com.br/el-nino-e-confirmado-e-simepar-preve-aumento-de-chuvas-ate-dezembro/
   - trecho: Jun 11, 2026 ... Irati PR, 07:09, 13°C. Grupo do WhatsApp · El Niño é confirmado e Simepar prevê aumento de chuvas até dezembro. O fenômeno gradativamente se ...
+  - juiz: portão automático: fonte não oficial
 
 ## Palotina/PR — 15 pendente(s)
-- `d3fc51badf` · nível **A** (8 pts) · busca_web · — · data 11/09/2026 (do trecho)
+- `d3fc51badf` · nível **A** (8 pts) · busca_web · DUVIDA · data 11/09/2026 (do trecho)
   - título: Palotina apresenta plano de contingência para enfrentar eventos ...
   - url: https://folhadepalotina.com.br/geral/palotina-apresenta-plano-de-contingencia-para-enfrentar-eventos-climaticos/
   - trecho: Sep 11, 2026 ... A Defesa Civil Municipal apresentou, nesta sexta-feira (11/09/2026), o Plano de Contingência Municipal de Proteção e Defesa Civil de Palotina.
-- `6414a934f7` · nível **A** (8 pts) · busca_web · — · data 06/09/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `6414a934f7` · nível **A** (8 pts) · busca_web · DUVIDA · data 06/09/2026 (do trecho)
   - título: Palotina apresenta Plano de Contingência e debate prevenção aos ...
   - url: https://www.palotinazerohoranews.com.br/noticias/palotina-pr-/1733338
   - trecho: Sep 12, 2026 ... 06/09/2026 - PALOTINA PR PALOTINA ALINHA AÇÕES DO PLANO DE CONTINGÊNCIA PARA POSSÍVEIS IMPACTOS DO EL NIÑO O Município de Palotina, por meio ...
-- `b6a82db568` · nível **A** (8 pts) · busca_web · — · data 03/09/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `b6a82db568` · nível **A** (8 pts) · busca_web · EX_ANTE · data 03/09/2026 (do trecho)
   - título: PALOTINA ALINHA AÇÕES DO PLANO DE CONTINGÊNCIA PARA ...
   - url: https://portalpalotina.com.br/destaques/palotina-alinha-acoes-do-plano-de-contingencia-para-possiveis-impactos-do-el-nino/
   - trecho: 03/09/2026. PALOTINA ALINHA AÇÕES DO PLANO DE CONTINGÊNCIA PARA POSSÍVEIS IMPACTOS DO EL NIÑO. O Município de Palotina, por meio da Secretaria Municipal de ...
-- `2cd747326b` · nível **A** (8 pts) · busca_web · — · data 31/07/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `2cd747326b` · nível **A** (8 pts) · busca_web · EX_ANTE · data 31/07/2026 (do trecho)
   - título: Palotina inicia elaboração de Plano de Contingência para prevenir ...
   - url: https://folhadepalotina.com.br/destaque/palotina-inicia-elaboracao-de-plano-de-contingencia-para-prevenir-impactos-do-el-nino/
   - trecho: Palotina inicia elaboração de Plano de Contingência para prevenir impactos do El Niño. 31/07/2026 15:24. Facebook · X · Pinterest · WhatsApp. A Secretaria ...
-- `66da05d34d` · nível **A** (7 pts) · busca_web · — · data 04/09/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `66da05d34d` · nível **A** (7 pts) · busca_web · EX_ANTE · data 04/09/2026 (do trecho)
   - título: Palestra sobre o El Niño e plano de contingência será realizada em ...
   - url: https://folhadepalotina.com.br/geral/palestra-sobre-o-el-nino-e-plano-de-contingencia-sera-realizada-em-palotina/
   - trecho: Palestra sobre o El Niño e plano de contingência será realizada em Palotina. 04/09/2026 09:43. Facebook · X · Pinterest · WhatsApp. O Município de Palotina ...
+  - juiz: portão automático: fonte não oficial
 - `9450f10840` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
   - título: Palotina terá palestra sobre El Niño e Plano de Contingência
   - url: https://bemoeste.com.br/noticia/4207/palotina-tera-palestra-sobre-el-nino-e-plano-de-contingencia
   - trecho: Sep 10, 2026 ... ... Palotina · Maripá · Cidades · Policial · Brasil · Geral · Especiais · Saúde e Bem ... Plano de Contingência. Encontro será realizado nesta sexta- ...
-- `95d9fa6ebe` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `95d9fa6ebe` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Prefeitura convida população para palestra sobre El Niño e plano ...
   - url: https://palotina.pr.gov.br/noticia/impressao?id=805
   - trecho: A Prefeitura de Palotina convida a população para uma palestra sobre o fenômeno El Niño e a apresentação do. Plano de Contingência Municipal, nesta sexta ...
-- `4610e95212` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `4610e95212` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Palotina apresenta Plano de Contingência e reforça prevenção aos ...
   - url: https://www.instagram.com/p/DdKMRSyFSUF/
   - trecho: Sep 11, 2026 ... Palotina apresenta Plano de Contingência e reforça prevenção aos impactos do El Niño A Defesa Civil Municipal de Palotina realizou nesta ...
-- `a9914502df` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `a9914502df` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Palotina realiza palestra sobre El Niño e apresenta Plano de ...
   - url: https://palotinapress.com.br/artigo/geral/palotina-realiza-palestra-sobre-el-nino-e-apresenta-plano-de-contingencia-municipal-C-23354
   - trecho: Palotina realiza palestra sobre El Niño e apresenta Plano de Contingência Municipal. Geral; • 11 Set 2026; Fonte: Assessoria. Palotina realiza palestra ...
+  - juiz: portão automático: fonte não oficial
 - `7068f16c13` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
   - título: Prefeitura de Palotina promove palestra sobre impactos do El Niño ...
   - url: https://www.portalmaripa.com.br/noticia/72851/prefeitura-de-palotina-promove-palestra-sobre-impactos-do-el-nino-e-acoes-de-prevencao
   - trecho: Sep 9, 2026 ... Prefeitura de Palotina promove palestra sobre impactos do El Niño ... El Niño e a apresentação detalhada do Plano de Contingência Municipal.
-- `fe9498d76e` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+- `fe9498d76e` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: PALOTINA ALINHA AÇÕES DO PLANO DE CONTINGÊNCIA PARA ...
   - url: https://www.instagram.com/p/Dc160UplZpw/
   - trecho: Sep 3, 2026 ... PALOTINA ALINHA AÇÕES DO PLANO DE CONTINGÊNCIA PARA POSSÍVEIS IMPACTOS DO EL NIÑO O Município de Palotina, por meio da Secretaria Municipal ...
+  - juiz: portão automático: fonte não oficial
 - `e6f388dc52` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
   - título: Palotina promove palestra sobre El Niño e apresenta Plano de ...
   - url: https://tribunadepalotina.com.br/noticia/8786/palotina-promove-palestra-sobre-el-nino-e-apresenta-plano-de-contingencia-municipal
   - trecho: Sep 4, 2026 ... Palotina promove palestra sobre El Niño e apresenta Plano de Contingência Municipal ... © 2026 Tribuna de Palotina - Todos os direitos reservados.
-- `aee609b723` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+- `aee609b723` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Palotina realiza palestra sobre o El Niño e apresenta Plano de ...
   - url: https://correiodoar.com.br/noticia/palotina-realiza-palestra-sobre-o-el-nino-e-apresenta-plano-de-contingencia-municipal/102506/
   - trecho: Sep 4, 2026 ... Palotina realiza palestra sobre o El Niño e apresenta Plano de Contingência Municipal ... ©2006 - 2026 - Direitos reservados a CORREIO DO AR
-- `bb8020c3b5` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `bb8020c3b5` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño pode aumentar risco de temporais em Palotina até fevereiro ...
   - url: https://palotina24horas.com.br/el-nino-pode-aumentar-risco-de-temporais-em-palotina-ate-fevereiro-alerta-corpo-de-bombeiros/
   - trecho: Sep 3, 2026 ... Segundo o comandante do Corpo de Bombeiros de Palotina, Tenente Novinski, o El Niño ... Plano de contingência. Segundo o comandante, Corpo de ...
+  - juiz: portão automático: fonte não oficial
 - `51fdf21230` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
   - título: Palotina apresenta Plano de Contingência para prevenção de ...
   - url: https://bemoeste.com.br/noticia/4219/palotina-apresenta-plano-de-contingencia-para-prevencao-de-eventos-climaticos
   - trecho: Sep 11, 2026 ... Palotina apresentou o Plano de Contingência Municipal em encontro na ACIPA, com orientações para prevenção e resposta a eventos climáticos.
 
 ## São Mateus do Sul/PR — 4 pendente(s)
-- `a7f7eb8de1` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+- `a7f7eb8de1` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: São Mateus do Sul: reunião sobre o Plano de Contingência para o ...
   - url: https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/
   - trecho: Jul 21, 2026 ... EventosSão Mateus do Sul. São Mateus do Sul: reunião sobre o Plano de Contingência para o El Niño acontece nesta terça (21). Cláudia ...
-- `9c4357312e` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `9c4357312e` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: São Mateus do Sul apresenta Plano de Contingência e reforça ...
   - url: https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/
   - trecho: Jul 22, 2026 ... ... El Niño pode provocar no município. ... São Mateus do Sul apresenta Plano de Contingência e reforça preparação para possíveis cheias.
+  - juiz: portão automático: fonte não oficial
 - `d8ee3ef9b3` · nível **B** (4 pts) · querido_diario · RESPOSTA · **Lei Municipal nº 1.997**, 2010
   - url: https://data.queridodiario.ok.org.br/4125605/2026-07-15/fa6789e5589fdd035db4fe168ec1951aac2a1a1f.pdf
   - trecho: e  Defesa Civil;  II - Promover o mapeamento das áreas de risco de desastres e a identificação de  ameaças;  III - Incorporar as ações de proteção e defesa civil no planejamento municipal;  IV - Elaborar, manter atualiza
@@ -684,10 +704,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: El Niño: Castro decreta Estado de Alerta Hidrológico, Geológico e ...
   - url: https://bntonline.com.br/el-nino-castro-decreta-estado-de-alerta-hidrologico-geologico-e-climatico-por-180-dias/
   - trecho: Aug 26, 2026 ... El Niño: Castro decreta Estado de Alerta Hidrológico, Geológico e ... O Município também conta com Plano de Contingência atualizado e ...
-- `9772595cd6` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+- `9772595cd6` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Defesa Civil de Castro reforça prevenção ao El Niño e orienta ...
   - url: https://www.bemparana.com.br/noticias/parana/cidadesdoparana/defesa-civil-de-castro-reforca-prevencao-ao-el-nino-e-orienta-moradores-a-receber-alertas-por-sms/
   - trecho: Jun 10, 2026 ... Defesa Civil de Castro reforça prevenção ao El Niño e orienta ... plano de contingência para resposta rápida em caso de ocorrências. O ...
+  - juiz: portão automático: fonte não oficial
 
 ## Colombo/PR — 1 pendente(s)
 - `f7778f6ca8` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
@@ -767,10 +788,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/DdEhX1fAQm0/
   - trecho: Sep 9, 2026 ... Encontro em Pato Branco reúne Defesa Civil e Comitê El Niño. ... Plano de Contingência e organizar a atuação em possíveis ocorrências.
   - juiz: portão automático: fonte não oficial
-- `7239d24376` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `7239d24376` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Atenção Pato Branco: o El Niño vem aí e precisamos nos preparar ...
   - url: https://www.instagram.com/p/DZ3MoT1CV3F/?hl=en
   - trecho: Jun 21, 2026 ... Atenção Pato Branco: o El Niño vem aí e precisamos nos preparar Pato ... Plano de Contingência Climática foi cancelada. Em breve ...
+  - juiz: portão automático: fonte não oficial
 
 ## Pinhais/PR — 4 pendente(s)
 - `9103511ece` · nível **B** (5 pts) · busca_web · RESPOSTA · **Decreto 043**, 2026
@@ -795,11 +817,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Pitanga/PR — 1 pendente(s)
-- `0f81f5ccab` · nível **B** (6 pts) · busca_web · — · citação não extraída
+- `0f81f5ccab` · nível **B** (6 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PR Plano Municipal de Saneamento Básico Relatório Final C.3 ...
   - url: https://www.pitanga.pr.leg.br/leis/legislacao-municipal/2019/lei-ordinaria/2020/Lei%20no%202336%20de%2014%20de%20setembro%20de%202020%20-%20parte%203_20200922_085348.pdf
   - trecho: Plano de Contingência/Emergência. • Situações de alagamento. • Mobilizar a ... longo da execução do monitoramento pelos responsáveis do PMSB de Pitanga — PR.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## Rio Negro/PR — 3 pendente(s)
 - `63d91b34fd` · nível **B** (5 pts) · busca_web · — · citação não extraída
@@ -816,10 +839,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Nesta terça-feira (26), mais uma ... finalização do Plano de Resposta Imediata (PRI), abordou sobre o planejamento estratégico para prevenir e se necessário enfrentar as situações que exigem respostas rápidas....
 
 ## Rolândia/PR — 1 pendente(s)
-- `1fc6306b51` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `1fc6306b51` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: DEFESA CIVIL DE ROLÂNDIA INFORMA O fenômeno El Niño pode ...
   - url: https://www.instagram.com/p/DdJSHHdRqae/
   - trecho: Sep 12, 2026 ... Photo by Prefeitura de Rolândia-PR on September 12, 2026. May be an ... Plano de Contingência, que, diante desse cenário, atuam ...
+  - juiz: portão automático: fonte não oficial
 
 ## Toledo/PR — 2 pendente(s)
 - `9efaaf6098` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
@@ -834,10 +858,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## União da Vitória/PR — 1 pendente(s)
-- `b4bd0380b2` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `b4bd0380b2` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Diante das previsões relacionadas ao El Niño, União da Vitória tem ...
   - url: https://www.instagram.com/p/DZ5wii5gHCw/
   - trecho: Jun 22, 2026 ... A atuação integrada entre a Defesa Civil e as secretarias municipais, a atualização do Plano de Contingência, a criação do Conselho Municipal de ...
+  - juiz: portão automático: fonte não oficial
 
 ## Armação dos Búzios/RJ — 1 pendente(s)
 - `87de8b3aaf` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
