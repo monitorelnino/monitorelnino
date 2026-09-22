@@ -43,14 +43,14 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css(\?v=[0-9a-f]+)?"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["MARÉ Legal", "Monitor de riscos", "Proteja-se", "Defesa civil", "MARÉ Saúde", "Financiamento", "Para gestores", "Imprensa", "Pesquisadores"];   // 17/09/2026: Monitor de riscos (plural) e monitor-de-riscos.html; era Monitor de risco / sinais-de-risco.html
+  const NAV_ORDEM = ["MARÉ Legal", "Monitor de riscos", "Proteja-se", "Defesa civil", "MARÉ Saúde", "Financiamento", "Para gestores", "Blog", "Imprensa", "Pesquisadores"];   // 22/09/2026: Blog antes de Imprensa (pedido da editoria)   // 17/09/2026: Monitor de riscos (plural) e monitor-de-riscos.html; era Monitor de risco / sinais-de-risco.html
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {
     const rotulos = [...navM[1].matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map(m => m[1].trim());
     if (JSON.stringify(rotulos) !== JSON.stringify(NAV_ORDEM))
       falha(`${nome}: nav fora da ordem canônica (${rotulos.join(" · ")})`);
-    const ativa = navM[1].match(/<span class="ativa(?: [^"]*)?"[^>]*>([^<]+)<\/span>/) || (nome === "calendario-eleitoral.html" ? ["", "Calendário"] : nome === "blog.html" ? ["", "Blog"] : null)   // 22/09/2026: Blog do MARÉ publicado fora da barra, como o Calendário;
+    const ativa = navM[1].match(/<span class="ativa(?: [^"]*)?"[^>]*>([^<]+)<\/span>/) || (nome === "calendario-eleitoral.html" ? ["", "Calendário"] : null);
     if (nome !== "obrigado.html" && !ativa) falha(`${nome}: nav sem item ativo`);
   }
 
