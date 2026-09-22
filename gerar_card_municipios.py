@@ -21,6 +21,7 @@ import json, sys
 from datetime import date
 from urllib.parse import urlparse
 from coletores_base import ler, gravar, rodar_autoteste
+from monitorar_imprensa_regional import parece_fonte_oficial
 
 NIVEIS_NO_CARD = ("A", "B")
 MAX_IMPRENSA = 3
@@ -60,6 +61,9 @@ def montar(referencia, prioritarios, municipios, pistas):
     for p in pistas:
         st = p.get("status") or ""
         if not st.startswith("pista") or p.get("nivel_confianca") not in NIVEIS_NO_CARD:
+            continue
+        # §159: documento oficial candidato (cascata ou host oficial) não é "publicação na imprensa" — não entra aqui
+        if (p.get("origem") or "").startswith("seguimento") or parece_fonte_oficial(p.get("url") or ""):
             continue
         try:
             cod = int(p.get("ibge") or 0)

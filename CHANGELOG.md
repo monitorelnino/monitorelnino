@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §159 · Da notícia ao documento: cada pista de imprensa é seguida até candidatos a ato oficial, que passam pelo mesmo portão e juiz · 22/09/2026
+
+Classe **método + código** (`seguir_pistas.py`). Decisão editorial de 22/09/2026: notícia nunca pontua; é pista de que o plano existe — a máquina deve ir atrás do ato.
+
+**Por que três rotas e não só o Querido Diário.** Contagem real: das 172 pistas de imprensa pendentes (A/B), só **33, em 19 municípios, têm diário indexado no QD** (518 municípios cobertos, `data/cobertura_qd.json`). O QD resolve ~20%; o resto exige outras rotas. E a API do QD estava fora do ar (503 nos dois domínios) no momento do teste — a cascata não pode depender de uma rota só.
+
+**As rotas, da mais precisa à mais ampla.** (1) **Links da própria notícia**: jornal local costuma linkar o decreto ou o PDF; entram os links para host oficial que sejam PDF, diário, ou cujo endereço/texto fale em decreto, lei, portaria, plano, PLANCON. (2) **Querido Diário** por código IBGE, edições desde 01/10/2025 com os termos do plano — só para municípios com cobertura. (3) **Busca no domínio oficial** via o SearXNG efêmero da cadência: "{município}" UF decreto "plano de contingência", só resultados em host oficial. Até 4 candidatos por rota.
+
+**Sem caminho paralelo.** Cada candidato vira uma **pista nova** (`origem: seguimento_*`, `pista_origem` = id da notícia) e segue o caminho já testado: triagem → `revisar_pistas --preparar` (candidatos da cascata primeiro, sem filtro de nível — o título costuma ser nome de arquivo) → portão automático do §156 (ato publicado de 2026, lido no próprio diário/PDF) → juiz com derivados e rollback (§158). A notícia de origem **nunca muda de status**: continua pendente e visível no card até o documento aparecer. O card não rotula documento oficial candidato como "publicação na imprensa". Rota indisponível fica registrada no `seguimento` da notícia e é refeita; notícia já seguida é refeita depois de 7 dias.
+
+**Teste.** Autoteste hermético 7/7 (link oficial vira pista ligada à origem; não segue fonte oficial nem nível C; nunca altera o status da notícia; QD só com cobertura e falha sem quebrar; edição do QD vira candidato; busca aceita só host oficial; sem duplicar, refaz após 7 dias). Autotestes de `revisar_pistas.py` e `gerar_card_municipios.py` verdes. O teste com rede real acontece na cadência (sites de imprensa e o buscador não estão na rede do ambiente de edição).
+
 ## §158 · O juiz sincroniza os derivados antes dos portões (toda aplicação automática municipal era revertida) e grava a proveniência certa — Feira de Santana/BA aplicada ponta a ponta · 22/09/2026
 
 Classe **correção de encanamento com efeito no índice**. Achado na cadência #7, a primeira com `npm ci`, foco e portão.
