@@ -2572,9 +2572,13 @@
     "consultado_em": "22/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
     "consultado_em": "22/09/2026"
@@ -2641,8 +2645,8 @@
      "Perigo": 1
     },
     "exemplos": [
-     "Tempestade",
-     "Baixa Umidade"
+     "Baixa Umidade",
+     "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
@@ -2777,8 +2781,8 @@
      "Perigo": 2
     },
     "exemplos": [
-     "Tempestade",
-     "Baixa Umidade"
+     "Baixa Umidade",
+     "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
@@ -2917,8 +2921,8 @@
      "Perigo": 1
     },
     "exemplos": [
-     "Tempestade",
-     "Baixa Umidade"
+     "Baixa Umidade",
+     "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
