@@ -262,6 +262,10 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 .cartao--acento-seca{border-top:3px solid var(--seca);}
 .cartao--acento-fogo{border-top:3px solid var(--fogo);}
 .cartao--acento-neutro-topo{border-top:3px solid var(--muted);}
+/* 22/09/2026 (Blog): mesma borda superior em todos os quadros de situação, cor por eixo — musgo (antecipação), sintético (saúde), argila (resposta), seca (sinais físicos) */
+.cartao--acento-musgo-topo{border-top:3px solid var(--musgo);}
+.cartao--acento-sintetico-topo{border-top:3px solid var(--sintetico);}
+.cartao--acento-argila-topo{border-top:3px solid var(--argila);}
 /* 15/09/2026 (Financiamento): chip da chave de acesso, na paleta das chaves (MonitorMapas.PALETA.chaves) */
 .chip-chave{display:inline-block; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--branco); border-radius:var(--radius); padding:2px var(--sp-2); margin-right:var(--sp-1); vertical-align:middle;}
 .chave-regra{background:var(--sintetico);} .chave-decreto{background:var(--argila);} .chave-discricionaria{background:var(--ambar); color:var(--abissal);} .chave-direta{background:var(--mineral); color:var(--abissal);} .chave-estadual{background:var(--musgo);} .chave-fogo{background:var(--fogo);}
