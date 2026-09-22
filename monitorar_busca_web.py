@@ -69,11 +69,19 @@ def proximo_lote_automatico(total_lotes: int) -> int:
     5.511. Estado mínimo persistido em data/busca_web_estado.json: só o número do
     PRÓXIMO lote. Cada rodada automática avança um; ao passar do último, volta ao 1
     (cobertura cíclica: depois de ~93 semanas, todos os municípios já foram tentados
-    pelo menos uma vez, e o ciclo recomeça)."""
+    pelo menos uma vez, e o ciclo recomeça).
+    22/09/2026 (pedido editorial, §148): registra `ciclos_completos` — quantas vezes a
+    rotação já deu a volta inteira. A cadência automática (busca_web_cadencia.yml) lê
+    isso: 0 ciclos = fase 1, a cada 2h até cobrir todos; ≥1 = fase 2, 4x/dia."""
     estado = ler("busca_web_estado.json") or {"proximo_lote": 1}
     lote = ((estado.get("proximo_lote", 1) - 1) % total_lotes) + 1
+    ciclos = int(estado.get("ciclos_completos", 0) or 0)
+    if lote == total_lotes:
+        ciclos += 1   # este lote fecha a volta: todos os municípios tentados pelo menos uma vez
     gravar("busca_web_estado.json", {"proximo_lote": (lote % total_lotes) + 1,
                                      "ultimo_lote_rodado": lote,
+                                     "total_lotes": total_lotes,
+                                     "ciclos_completos": ciclos,
                                      "atualizado_em": date.today().isoformat()})
     return lote
 
@@ -201,8 +209,9 @@ def autoteste():
             l1 = proximo_lote_automatico(3)  # total_lotes=3, estado vazio => começa em 1
             l2 = proximo_lote_automatico(3)
             l3 = proximo_lote_automatico(3)
+            c_apos_volta = estado_falso["busca_web_estado.json"]["ciclos_completos"]  # 3º lote fecha a volta
             l4 = proximo_lote_automatico(3)  # depois do 3º, deve voltar pro 1º
-            return [l1, l2, l3, l4] == [1, 2, 3, 1]
+            return [l1, l2, l3, l4] == [1, 2, 3, 1] and c_apos_volta == 1
         finally:
             globals_mod.ler, globals_mod.gravar = real_ler, real_gravar
 

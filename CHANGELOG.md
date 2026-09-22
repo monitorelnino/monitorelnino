@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §148 · Cadência automática da busca web (2h em 2h até cobrir todos os municípios, depois 4x/dia); causa raiz do run #117 corrigida; site fica no ar atrás de senha durante a rodada · 22/09/2026
+
+Classe **infraestrutura**, quatro mudanças relacionadas, a pedido editorial direto depois dos testes de 21/09.
+
+**1. Cadência nova — `busca_web_cadencia.yml`.** Workflow próprio, enxuto: só busca web (150 municípios, prioritários primeiro — §143) + sincronização do índice + derivados + commit + reposição do domínio. Não roda o pipeline inteiro (o `atualizar.yml` segue semanal + diário para as outras fontes — rodar tudo a cada 2h martelaria fontes que não mudam nesse ritmo). Cron `0 */2 * * *`; o próprio job decide a fase lendo `ciclos_completos` em `data/busca_web_estado.json` (novo campo, gravado por `proximo_lote_automatico()`): **fase 1** (0 ciclos) roda a cada 2h; **fase 2** (≥1 ciclo — todos os 5.571 já tentados pelo menos uma vez) roda só em 00/06/12/18 UTC, 4x/dia, até a editoria mandar parar. Com 150 por rodada são 38 lotes: fase 1 cobre o Brasil inteiro em ~3 dias. Mesmo grupo de concorrência do `atualizar.yml` — nunca duas rodadas commitando ao mesmo tempo. `workflow_dispatch` com `forcar=true` ignora a regra de fase (teste).
+
+**2. Causa raiz do run #117 (falha em "Commit das alterações de dados").** `workflow_dispatch` e `schedule` fixam `head_sha` no momento do disparo. `#117` foi disparado enquanto `#112` ainda rodava (fila do concurrency), partiu de um `main` antigo; `#112` commitou `busca_web_estado.json`, `#117` mudou o mesmo arquivo, e o rebase antes do push deu conflito real — a rodada se perdeu. O mecanismo de rebase (03/09) cobria PR editorial no meio da rodada (arquivos diferentes), não uma rodada anterior do próprio robô tocando o MESMO arquivo de estado. Com cadência de 2h isso viraria rotina. Solução estrutural, nos dois workflows: passo "Partir do main atual" logo após o checkout — `fetch` + `reset --hard` no `main` real, agora, não no SHA fixado.
+
+**3. Site no ar durante a rodada (pedido: "para mim ele precisa estar visível").** Em modo `senha` não existe leitor anônimo — quem não tem a senha recebe o pedido de login, não vê página nenhuma. Publicar a cortina "em atualização" no início da rodada só tirava o site de quem TEM a senha por 75-105 min, sem proteger ninguém a mais. Agora, em modo `senha`, o passo da cortina é pulado: o site anterior (completo e consistente — o deploy do fim é atômico) fica no ar atrás de senha a rodada inteira, e a versão nova entra no passo final. Mais seguro, inclusive: o domínio nunca fica sem Basic-Auth. A cortina continua valendo nos modos `cortina` e `aberto`, onde leitor existe. (A nota do `publicacao.json` fala em "véu no navegador"; esse JS não existe mais no código — a proteção real hoje é só o Basic-Auth do Netlify.)
+
+**4. Contador de ciclos.** `busca_web_estado.json` ganha `total_lotes` e `ciclos_completos`; autoteste da rotação cobre a virada de ciclo.
+
+**Ainda não feito, próximo passo**: a metodologia de triagem das pistas (pedido editorial da mesma mensagem — "cuidado com falsos negativos") — merece PR próprio e seção na METODOLOGIA.
+
+**Teste.** Autoteste `monitorar_busca_web.py` 8/8. `validar_workflows.py`, `testar_reposicao_dominio.py`, `testar_cadencia_publicacao.py` verdes. O workflow novo só aceita `workflow_dispatch` depois de existir em `main` — teste real com `forcar=true` logo após o merge.
+
 ## §147 · Causa raiz real de "os mapas não aparecem": cache-busting nunca rodou em §145/§146 — corrigido; texto de #resposta removido por completo · 21/09/2026
 
 Classe **bug real de processo, achado em produção** — mais importante que o conteúdo em si.
