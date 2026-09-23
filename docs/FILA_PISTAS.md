@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 328 pendente(s) · 15 decidida(s) · A=54 B=215 C=59
+Gerado em 23/09/2026 · 331 pendente(s) · 15 decidida(s) · A=54 B=217 C=60
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1003,12 +1003,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 12, 2026 ... ... Fazenda Rio Grande conta com mecanismos de preparação para situações climáticas extremas. A Defesa Civil municipal possui Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
 
-## Floresta/PR — 1 pendente(s)
+## Floresta/PR — 3 pendente(s)
+- `dba3a689b5` · nível **B** (5 pts) · seguimento_link_noticia · — · citação não extraída
+  - título: Monitoramento de Incêndios Florestais para Vigilância em Saúde
+  - url: https://www.gov.br/saude/pt-br/composicao/svsa/saude-ambiental/vigiar/monitoramento-de-incendios-florestais/2026/informe-monitoramento-de-incendios-florestais-se-27.pdf
+  - trecho: Monitoramento de Incêndios Florestais para Vigilância em Saúde
 - `8fae3caa6a` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Super El Niño impõe riscos de incêndios florestais na Amazônia
   - url: https://amazoniareal.com.br/super-el-nino-impoe-riscos-de-incendios-florestais-na-amazonia/
   - trecho: Jul 23, 2026 ... “Mas precisamos dizer com clareza: o El Niño não coloca fogo na floresta. O fogo tem responsáveis. Ele começa com o desmatamento, a grilagem ...
   - juiz: portão automático: fonte não oficial
+- `37a9499afc` · nível **C** (4 pts) · seguimento_link_noticia · DUVIDA · citação não extraída
+  - título: um plano de contingência para os territórios indígenas
+  - url: https://sepi.ac.gov.br/governo-do-acre-intensifica-acoes-para-reduzir-impactos-do-super-el-nino-em-terras-indigenas-do-estado/
+  - trecho: um plano de contingência para os territórios indígenas
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Guaraniaçu/PR — 3 pendente(s)
 - `79d149e325` · nível **B** (4 pts) · querido_diario · EX_ANTE · **Lei Municipal nº 134**, 31/03/2021
@@ -1071,6 +1081,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/4113700/2026-05-18/2dc458566aa8e7f65f5740b3d978b0c29e7e43e9.pdf
   - trecho: crianças e adolescentes, com caráter de utilidade pública; III – integrar todos os órgãos municipais para divulgação do ARP aos servidores públicos; IV – instruir as famílias vítimas de desaparecimento para ações e estab
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+
+## Mercedes/PR — 1 pendente(s)
+- `e6a4dbbe87` · nível **B** (5 pts) · busca_web · DUVIDA · **Decreto N.º 187**, 2026
+  - título: MERCEDES ACTIVA EL COMITE DE EMERGENCIA FRENTE A "EL NIÑO" - Dato ...
+  - url: https://www.datoposta.com/mercedes-activa-el-comite-de-emergencia-frente-a-el-nino/
+  - trecho: Con el objetivo de anticiparse ... formalizó la medida a través del Decreto N.º 1874/2026, que declara la Emergencia Climatológica Preventiva hasta el próximo 31 de diciembre....
+  - juiz: portão automático: fonte não oficial
 
 ## Pato Branco/PR — 2 pendente(s)
 - `0bf8eb27f3` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
