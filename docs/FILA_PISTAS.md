@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 22/09/2026 · 263 pendente(s) · 14 decidida(s) · A=44 B=178 C=41
+Gerado em 23/09/2026 · 267 pendente(s) · 14 decidida(s) · A=44 B=181 C=42
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -224,10 +224,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Aperibé/RJ — 1 pendente(s)
-- `22f71a60d4` · nível **A** (8 pts) · busca_web · — · citação não extraída
+- `22f71a60d4` · nível **A** (8 pts) · busca_web · DUVIDA · citação não extraída
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE APERIBÉ
   - url: https://www.aperibe.rj.leg.br/leis/legislacao-municipal/plano-municipal-de-saneamento-basico-de-aperibe.pdf
   - trecho: urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Cabo Frio/RJ — 6 pendente(s)
 - `17218417dd` · nível **A** (6 pts) · busca_web · EX_ANTE · data 18/09/2026 (do trecho)
@@ -309,10 +310,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Audiência Pública – Plano de Contingência Defesa Civil. A Prefeitura de Ouro e o Conselho Municipal de Proteção e Defesa Civil realizam no próximo dia 23 de ...
 
 ## Painel/SC — 1 pendente(s)
-- `1a33729bcf` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+- `1a33729bcf` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Painel El Niño 2026–2027 - Portal Gov.br
   - url: https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf
   - trecho: Aug 11, 2026 ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...
+  - juiz: portão automático: data do ato incompleta (2026)
 
 ## Pedras Grandes/SC — 1 pendente(s)
 - `2a96d9194b` · nível **A** (6 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -498,6 +500,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: do empreendimento, adotando  as medidas corretivas cabíveis.   IX. Manter atualizado e em local visível de fácil acesso, os relatórios de manutenção preventiva nos  equipamentos, inspeção da integridade física, estanquei
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
+## Saúde/BA — 2 pendente(s)
+- `bea041a44e` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
+  - título: O Ministério da Saúde anunciou um plano de contingência para ...
+  - url: https://www.instagram.com/p/DdXJSijlMz7/
+  - trecho: 6 days ago ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.
+  - juiz: portão automático: fonte não oficial
+- `a31600aeb5` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...
+  - url: https://www.instagram.com/p/DdXM3Qjga7q/
+  - trecho: 6 days ago ... ... Plano de Contingência para chuvas intensas, além da emissão de ... saúde relacionadas ao El Niño 2026-2027. O documento prevê ações ...
+  - juiz: portão automático: fonte não oficial
+
 ## Sátiro Dias/BA — 1 pendente(s)
 - `258cad1be3` · nível **B** (3 pts) · querido_diario · EX_ANTE · **Lei nº 14.133**, 01/04/2021
   - url: https://data.queridodiario.ok.org.br/2929701/2026-08-05/fdb843955e75ed31568a9768e3d50b6af58ab3a9.pdf
@@ -550,10 +564,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Formosa/GO — 1 pendente(s)
-- `af55f73484` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `af55f73484` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Gildo Insfrán anticipa a Formosa a El Niño con un plan especial ...
   - url: https://agroempresario.com/publicacion/120391/gildo-insfran-anticipa-a-formosa-a-el-nino-con-un-plan-especial/
   - trecho: Formosa presentó un plan de contingencia ante el posible impacto del fenómeno El Niño, con medidas preventivas para responder a lluvias intensas y eventuales crecidas de los ríos Pilcomayo, Bermejo y Paraguay.
+  - juiz: portão automático: fonte não oficial
 
 ## Goiânia/GO — 2 pendente(s)
 - `7b81fc2e37` · nível **B** (3 pts) · querido_diario · DUVIDA · **LEI Nº 11.686**, 24/07/2026
@@ -632,22 +647,26 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: e aprovados na última revisão do Plano d · nto de ações a implementar que preten · o de recursos, esforços e iniciativas locais, be · or parte das entidades locais. Palno de Ação · 2025/2026 · no de · olvimento · 024/202
 
 ## Primavera/PA — 4 pendente(s)
-- `33c5c4e2e4` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+- `33c5c4e2e4` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Primavera começa nesta terça-feira (22/9) com influência do El Niño
   - url: https://correiopetropolitano.com.br/2026/09/21/primavera-comeca-nesta-terca-feira-22-9-com-influencia-do-el-nino-2/
   - trecho: 1 day ago ... A primavera começa nesta terça-feira, dia 22 de setembro, às ... Elaboração do Plano de Contingência para Chuvas Intensas Verão 2026/2027.
-- `2ba4c41a5c` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `2ba4c41a5c` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño deve intensificar chuvas da primavera, mas ainda é cedo ...
   - url: https://sul21.com.br/noticias/geral/2026/04/el-nino-deve-intensificar-chuvas-da-primavera-mas-ainda-e-cedo-para-prever-eventos-extremos/
   - trecho: Apr 9, 2026 ... El Niño deve intensificar chuvas da primavera, mas ainda é cedo para prever eventos extremos ... plano de contingência bem estruturado. As ...
-- `a691974354` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `a691974354` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: A primavera começa nesta terça — e o El Niño pode mudar o ...
   - url: https://www.instagram.com/p/DdkM97SOz_M/
   - trecho: 7 hours ago ... Primavera 2026: 🌡️ Temperaturas podem ficar acima da ... Entre as medidas de preparação estão a elaboração do plano de contingência para ...
-- `b92d75059e` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `b92d75059e` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: A primavera começa nesta terça-feira (22) com influência do El Niño ...
   - url: https://www.instagram.com/reel/DdjcfUDOx9f/
   - trecho: 1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: "A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...
+  - juiz: portão automático: fonte não oficial
 
 ## Paulista/PE — 3 pendente(s)
 - `78f12d9669` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
@@ -825,18 +844,21 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## Rio Negro/PR — 3 pendente(s)
-- `63d91b34fd` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `63d91b34fd` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: El Niño: nova reunião é realizada em Rio Negro com foco no ...
   - url: https://www.clickriomafra.com.br/noticias/rio-negro/el-nino-nova-reuniao-e-realizada-em-rio-negro-com-foco-no-planejamento/
   - trecho: El Niño: nova reunião é realizada em Rio Negro com foco no planejamento. Há 3 meses ... plano de contingência das ações do Grupo de Ações Coordenadas. O ...
-- `228cf24014` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `228cf24014` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: El Niño: Prefeitura e Defesa Civil de Rio Negro se preparam para ...
   - url: https://www.clickriomafra.com.br/noticias/rio-negro/el-nino-prefeitura-e-defesa-civil-de-rio-negro-se-preparam-para-eventuais-efeitos/
   - trecho: Além do Plano de Contingência, Rio Negro também terá este plano que garantirá ações mais efetivas em diferentes situações. No último dia 12 outra reunião ...
-- `a9c11337f7` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `a9c11337f7` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Rio Negro se prepara para eventuais efeitos do El Niño - Jornal ...
   - url: https://oregionalpr.com.br/rio-negro-se-prepara-para-eventuais-efeitos-do-el-nino/
   - trecho: Nesta terça-feira (26), mais uma ... finalização do Plano de Resposta Imediata (PRI), abordou sobre o planejamento estratégico para prevenir e se necessário enfrentar as situações que exigem respostas rápidas....
+  - juiz: portão automático: fonte não oficial
 
 ## Rolândia/PR — 1 pendente(s)
 - `1fc6306b51` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -900,10 +922,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Quatis/RJ — 1 pendente(s)
-- `5364ca024c` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `5364ca024c` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO QUATIS - RJ
   - url: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf
   - trecho: Centro CEP: 27.410-170- Quatis / RJ. EXECUÇÃO. Vallenge ... enquanto o plano de contingência aborda ações programadas de interrupção dos serviços, o.
+  - juiz: portão automático: fonte não oficial
 
 ## Resende/RJ — 1 pendente(s)
 - `c109afebf4` · nível **B** (4 pts) · busca_web · DUVIDA · data 2021 (do trecho)
@@ -912,10 +935,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Rio das Flores/RJ — 1 pendente(s)
-- `dd7ce9f7bc` · nível **B** (4 pts) · busca_web · — · data 2012 (do trecho)
+- `dd7ce9f7bc` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2012 (do trecho)
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES
   - url: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf
   - trecho: Jan 18, 2012 ... Plano Municipal de Saneamento Básico – Rio das Flores/RJ. 8 ... Portanto, enquanto o plano de contingência aborda ações programadas de.
+  - juiz: portão automático: fonte não oficial
 
 ## Rio das Ostras/RJ — 1 pendente(s)
 - `081c850403` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -970,23 +994,25 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Bozano/RS — 1 pendente(s)
-- `ec5a28b7aa` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `ec5a28b7aa` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: REVISÃO E ATUALIZAÇÃO DO PLANO MUNICIPAL DE ...
   - url: https://www.bozano.rs.gov.br/meio-ambiente/download/54/
   - trecho: Bozano (RS), uma cidade que viu sua população residente ... urbana e rural do município de Bozano, é fundamental antecipar um plano de contingência para.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Braga/RS — 1 pendente(s)
-- `2d7a06302b` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `2d7a06302b` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: SOBRE o super EL NIÑO Diante da previsão de eventos climáticos ...
   - url: https://www.facebook.com/glauber.braga1/videos/sobre-o-super-el-ni%C3%B1odiante-da-previs%C3%A3o-de-eventos-clim%C3%A1ticos-extremos-associado/2433071383769773/
   - trecho: Aug 2, 2026 ... Admiro Glauber Braga! Parabéns, deputado! 1mo. 1. Profile photo of ... Qual é o plano de contingência? O que fazer pra que as pessoas ...
+  - juiz: portão automático: fonte não oficial
 
 ## Novo Hamburgo/RS — 1 pendente(s)
 - `34fcb8dfdc` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.novohamburgo.rs.gov.br/noticia/novo-hamburgo-debate-possiveis-impactos-el-nino-2o-seminario-resiliencia-climatica
   - trecho: Jul 6, 2026 ... Novo Hamburgo debate possíveis impactos do El Niño no 2º Seminário de Resiliência Climática ... Plano de Contingência, como a integração entre as ...
 
-## Porto Alegre/RS — 2 pendente(s)
+## Porto Alegre/RS — 4 pendente(s)
 - `0c4848ddc3` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://gauchazh.clicrbs.com.br/porto-alegre/noticia/2026/04/porto-alegre-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino-no-segundo-semestre-deste-ano-cmo3jqfyp02fv017498040kw4.html
   - trecho: Apr 17, 2026 ... Porto Alegre prepara plano de contingência para possíveis impactos do El Niño no segundo semestre deste ano. Apesar das previsões, consultor ...
@@ -995,6 +1021,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.correiodopovo.com.br/not%C3%ADcias/pol%C3%ADtica/prefeitura-de-porto-alegre-prepara-plano-de-contingencia-contra-as-cheias-1.1706117
   - trecho: Apr 16, 2026 ... Prefeitura de Porto Alegre prepara plano de contingência contra as cheias. Com previsão de El Niño em 2026, Melo irá acelerar articulação por ...
   - juiz: portão automático: fonte não oficial
+- `72987b88b5` · nível **B** (4 pts) · seguimento_querido_diario · DUVIDA · **Portaria 878**, 06/10/2025
+  - título: Diário oficial de 2025-10-07
+  - url: https://data.queridodiario.ok.org.br/4314902/2025-10-07/fba7a235177e4cb8f6415a813fb689f048b2d77e.pdf
+  - trecho: reais e noventa e sete centavos). Para R$ 159,97 o período de a essas alterações acarretarão uma repercussão financeira no valor total de 31/10/2024 30/10/2025, (dez mil cento e vinte e dois reais e quatorze centavos). A
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `22583b25d3` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Portaria 861**, 29/09/2025
+  - título: Diário oficial de 2025-10-01
+  - url: https://data.queridodiario.ok.org.br/4314902/2025-10-01/769f10071e5b1facc71affd7dca1f64f05ecabca.pdf
+  - trecho: (cento e setenta e sete R$ 177.359,77 mil trezentos e cinquenta e nove reais e setenta e sete centavos) referente ao acréscimo qualitativo. O valor de (cento e quarenta e seis mil duzentos e quarenta e três reais) refere
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Balneário Camboriú/SC — 2 pendente(s)
 - `b37728af79` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
@@ -1006,16 +1044,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...
 
 ## Bocaina do Sul/SC — 1 pendente(s)
-- `f55e1e41f1` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+- `f55e1e41f1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Impactos do El Niño pautam audiência em Bocaina do Sul - SCC10
   - url: https://scc10.com.br/radioclube/impactos-do-el-nino-pautam-audiencia-em-bocaina-do-sul/
   - trecho: Jun 15, 2026 ... Impactos do El Niño pautam audiência em Bocaina do Sul. A Defesa Civil pretende expor o plano de contingência ... 2 Três apostas de SC ...
+  - juiz: portão automático: fonte não oficial
 
 ## Bom Jesus/SC — 1 pendente(s)
-- `b1d0b5be45` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+- `b1d0b5be45` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: EL NIÑO PROVOCA ALAGAMENTOS EM BOM JESUS DO ...
   - url: https://www.instagram.com/reel/DZFHb2qRQl7/
   - trecho: Jun 2, 2026 ... 1 like. fallaregiao. Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A Secretaria Municipal de Assistência ...
+  - juiz: portão automático: fonte não oficial
 
 ## Brusque/SC — 4 pendente(s)
 - `2385e529b6` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -1142,10 +1182,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## Leoberto Leal/SC — 1 pendente(s)
-- `20efec3d28` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `20efec3d28` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Proteção e Defesa Civil-Leoberto Leal | ENTENDA O EL NIÑO ...
   - url: https://www.instagram.com/p/DXy9oH5DsmM/
   - trecho: May 1, 2026 ... Photo by Proteção e Defesa Civil-Leoberto Leal on May 01, 2026.
+  - juiz: portão automático: fonte não oficial
 
 ## Lindóia do Sul/SC — 1 pendente(s)
 - `3f4fdbbfa2` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
