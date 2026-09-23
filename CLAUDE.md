@@ -129,3 +129,7 @@ execuções apagadas sem aviso. Use `/merge-main`.
   `Crawl-delay` e acessa documento público mesmo onde ele pede que robôs não entrem — com o
   cliente identificado e rastro em `data/robots_registro.json`. Nunca disfarçar o cliente.
 - Bloqueio de acesso real (`401`, `403`, `429`, `451`, captcha, login) se respeita, sempre.
+- Recusa servida com `200` é recusa (§186, §187): muro de robô (Imperva, Cloudflare, Akamai)
+  e geobloqueio de WAF parecem conteúdo e entrariam no índice como prova falsa.
+  `coletores_base.detectar_muro_de_robo` levanta antes de preservar. Nunca nomeie a recusa
+  errado: chamar geobloqueio de `robots.txt` já custou treze dias de abstenção indevida.

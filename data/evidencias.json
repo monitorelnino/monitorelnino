@@ -12606,7 +12606,7 @@
    "tamanho": 9707,
    "arquivo": "evidencias/41e391c661c7569e82591a182fe0a22eff257e008020ca158049ea2ffb88e956.txt",
    "wayback": null,
-   "nota": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño 2026-2027 (SES-SP), 43 páginas, lançado 31/08/2026. Estrutura, objetivos, caracterização territorial (645 municípios, 17 DRS, 19 RRAS), estágios (mobilização/alerta/emergência) e eixos de atividade preservados; seção de responsáveis técnicos resumida sem nomes/contatos individuais; tabelas de atribuição (p. 11-27) sintetizadas por eixo. CONVENÇÃO (11/09/2026): item de texto preservado manualmente — a chave é o sha256 do TEXTO, não do PDF de origem (o binário não foi baixado; a extração ocorreu fora do sandbox). Por isso `texto_manual: true`: ler_pdfs não deve reextrair (sobrescreveria o arquivo sob o mesmo nome e violaria o portão de integridade) e reconferir não deve comparar com o hash do binário (geraria evento falso de 'documento-fonte alterado').",
+   "nota": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño 2026-2027 (SES-SP), 43 páginas, lançado 31/08/2026. Estrutura, objetivos, caracterização territorial (645 municípios, 17 DRS, 19 RRAS), estágios (mobilização/alerta/emergência) e eixos de atividade preservados; seção de responsáveis técnicos resumida sem nomes/contatos individuais; tabelas de atribuição (p. 11-27) sintetizadas por eixo. CONVENÇÃO (11/09/2026): item de texto preservado manualmente — a chave é o sha256 do TEXTO, não do PDF de origem (o binário não foi baixado; a extração ocorreu fora do sandbox). Por isso `texto_manual: true`: ler_pdfs não deve reextrair (sobrescreveria o arquivo sob o mesmo nome e violaria o portão de integridade) e reconferir não deve comparar com o hash do binário (geraria evento falso de 'documento-fonte alterado'). | §187, 23/09/2026: o binário deste mesmo documento foi finalmente preservado em a5473b26a69e… (1.368.655 bytes, 43 páginas, texto extraído do PDF). A justificativa registrada aqui em 10/09 — 'recusa acesso automatizado por robots.txt' — não se confirma: o host devolve 404 em /robots.txt, e a única captura arquivada desse caminho (29/04/2026) é uma página 'Connection denied by Geolocation' servida com HTTP 200, ou seja, geobloqueio de WAF, não robots. O diagnóstico errado manteve o canal automático afastado de um host que nada proibia.",
    "texto_arquivo": "evidencias/41e391c661c7569e82591a182fe0a22eff257e008020ca158049ea2ffb88e956.txt",
    "texto_hash": "41e391c661c7569e82591a182fe0a22eff257e008020ca158049ea2ffb88e956",
    "texto_manual": true,
@@ -18145,7 +18145,12 @@
    "preservado_em": "2026-09-23",
    "tamanho": 1297769,
    "arquivo": "evidencias/09e3a4da9956f2796740efc37f7d4066dd6e1b9e63202f37ce5b694bc805cb88.pdf",
-   "wayback": null
+   "wayback": null,
+   "texto_arquivo": "evidencias/09e3a4da9956f2796740efc37f7d4066dd6e1b9e63202f37ce5b694bc805cb88.txt",
+   "paginas": 7,
+   "texto_hash": "7603b4978b1cd415b73c2d27d711e45fe23eb269812ff8811200aa78adc6ab65",
+   "lido_em": "2026-09-23",
+   "caracteres": 8625
   },
   "89b590415dbda82df56a5912e1c07ab1b7027feb048896d49e6b31cfcd87082a": {
    "url": "https://www.defesacivil.pr.gov.br/sites/defesa-civil/arquivos_restritos/files/documento/2026-07/nota_tecnicandeg003_2026.pdf",
@@ -18153,7 +18158,12 @@
    "preservado_em": "2026-09-23",
    "tamanho": 845717,
    "arquivo": "evidencias/89b590415dbda82df56a5912e1c07ab1b7027feb048896d49e6b31cfcd87082a.pdf",
-   "wayback": null
+   "wayback": null,
+   "texto_arquivo": "evidencias/89b590415dbda82df56a5912e1c07ab1b7027feb048896d49e6b31cfcd87082a.txt",
+   "paginas": 6,
+   "texto_hash": "5ddea6b45f94111a777f0fc178d6dbe8c697b54a8051987a34b42b6387c8d359",
+   "lido_em": "2026-09-23",
+   "caracteres": 8128
   },
   "fc9168072a773ea489f9059d3af5a7db996890173e6e240482cdad7b5ab891de": {
    "url": "https://www.defesacivil.pr.gov.br/sites/defesa-civil/arquivos_restritos/files/documento/2026-08/nota_tecnicandeg005_2026.pdf",
@@ -18161,7 +18171,12 @@
    "preservado_em": "2026-09-23",
    "tamanho": 2457648,
    "arquivo": "evidencias/fc9168072a773ea489f9059d3af5a7db996890173e6e240482cdad7b5ab891de.pdf",
-   "wayback": null
+   "wayback": null,
+   "texto_arquivo": "evidencias/fc9168072a773ea489f9059d3af5a7db996890173e6e240482cdad7b5ab891de.txt",
+   "paginas": 10,
+   "texto_hash": "96991f6907105d4dd844f0037805dfd700c7ec49095672200affe4e95b569a24",
+   "lido_em": "2026-09-23",
+   "caracteres": 12600
   },
   "bc5b4cab2f13864902965f66c1cf3af68a442e4e703d06a8e1c685d3e3299d49": {
    "url": "https://www.defesacivil.pr.gov.br/Pagina/NOTAS-TECNICA-CONJUNTA-EL-NINO-OSCILACAO-SUL-ENOS-2026",
@@ -18201,7 +18216,19 @@
    "preservado_em": "2026-09-23",
    "tamanho": 257992,
    "arquivo": "evidencias/079c710fda3fae76dd62da7593f60486021a90386bbf80e628eb45be593c3040.pdf",
-   "wayback": null
+   "wayback": null,
+   "texto_arquivo": "evidencias/079c710fda3fae76dd62da7593f60486021a90386bbf80e628eb45be593c3040.txt",
+   "paginas": 1,
+   "texto_hash": "747b839bee570fc8c0275af48d6322c0366e377d98c639c426f67d720d8f6bef",
+   "lido_em": "2026-09-23",
+   "caracteres": 0,
+   "ocr_arquivo": "evidencias/079c710fda3fae76dd62da7593f60486021a90386bbf80e628eb45be593c3040.ocr.txt",
+   "ocr_hash": "fe96a688db3eee6667a83ba74e9ed49efb4522aef54db41d0b8d197cb04129e8",
+   "ocr_paginas": 1,
+   "ocr_caracteres": 8982,
+   "ocr_em": "2026-09-23",
+   "ocr_motor": "tesseract v5.4.0.20240606 · modelo por · 200 DPI",
+   "nota": "Resolução CES/SE nº 08/2024. O arquivo publicado com esse nome é, na verdade, a página 7 do Diário Oficial de Sergipe nº 29.393 de 07/05/2024 — digitalizada, sem camada de texto (caracteres extraíveis: 0), e com matéria de outros órgãos na mesma página. O OCR do §177 (200 DPI, tesseract por) devolveu 9.007 caracteres legíveis, nos quais o ato se apresenta como tal: o Plenário do Conselho Estadual de Saúde, na 275ª Reunião Ordinária de 06/05/2024, invocando as Leis 8.080/1990, 8.142/1990 e a Lei Estadual 6.300/2007, 'Resolve APROVAR o Plano Estadual de Saúde 2024-2027', com homologação do Secretário de Estado da Saúde. LIMITE DE USO (§156, §177): este texto de OCR é cópia legível preservada, nunca entrada de classificador nem de juízo — o OCR traz ruído (lê '08/2074' onde o original diz 08/2024). Quem decide se o registro de SE vira 'documentado' é a editoria, lendo o documento. Fila R7."
   },
   "1935ce3677b588cecd8bdf0ae6bdd3925a8109a98a1e3b4512021bf5ec8738ce": {
    "url": "https://www.defesacivil.pr.gov.br/Pagina/Plano-de-Contingencia-e-Simulado",
@@ -18210,6 +18237,20 @@
    "tamanho": 4164,
    "arquivo": "evidencias/1935ce3677b588cecd8bdf0ae6bdd3925a8109a98a1e3b4512021bf5ec8738ce.txt",
    "wayback": null
+  },
+  "a5473b26a69e60fb13ae18631503a2c528e5a6364c009a49ca276455a200fac4": {
+   "url": "https://portal.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/central/planoestadualdepreparacaaoerespostaemsauudeparaofenoemenoelninao.pdf",
+   "origem": "leitura direta do PDF oficial em 23/09/2026, indicada pela editoria (§187) — portal.saude.sp.gov.br não publica robots.txt (HTTP 404 em 23/09/2026); binário baixado com o cliente identificado do Monitor e texto extraído do próprio documento",
+   "preservado_em": "2026-09-23",
+   "tamanho": 1368655,
+   "arquivo": "evidencias/a5473b26a69e60fb13ae18631503a2c528e5a6364c009a49ca276455a200fac4.pdf",
+   "wayback": null,
+   "texto_arquivo": "evidencias/a5473b26a69e60fb13ae18631503a2c528e5a6364c009a49ca276455a200fac4.txt",
+   "paginas": 43,
+   "texto_hash": "598a03dbdb1fc87069b091c8535e129075dc7511394dad75d0144b1bbc3c3bb9",
+   "lido_em": "2026-09-23",
+   "caracteres": 78771,
+   "nota": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño 2026-2027 (SES-SP / CCD / CVE), 43 páginas, lançado em 31/08/2026. É o BINÁRIO do documento que o item 41e391c661c7… guardava desde 10/09/2026 apenas como texto transcrito à mão (9,7 kB, chave = sha256 do texto, porque o PDF não havia sido baixado). Com este item a cadeia de SP na saúde fica completa: binário + texto extraído, ambos com hash. Nada é promovido — a reclassificação do instrumento de SP é R7."
   }
  }
 }

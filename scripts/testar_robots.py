@@ -160,7 +160,18 @@ def t_muro_de_robo_e_recusa_nao_conteudo():
 def t_muro_nao_acusa_pdf_nem_documento_grande():
     """PDF e resposta grande ficam fora: muro é página curta, e varrer documento acharia falso positivo."""
     grande = b"<html><body>" + b"pardon our interruption " * 5000 + b"</body></html>"
-    return cb.detectar_muro_de_robo(b"%PDF-1.7 pardon our interruption") is None         and cb.detectar_muro_de_robo(grande) is None
+    return (cb.detectar_muro_de_robo(b"%PDF-1.7 pardon our interruption") is None
+            and cb.detectar_muro_de_robo(grande) is None)
+
+
+def t_geobloqueio_com_200_e_recusa():
+    """§187, caso real de portal.saude.sp.gov.br: o servidor devolve 200 com a página "Connection
+    denied by Geolocation" no lugar do recurso pedido. Sem esta marca, a rodada de 10/09 leu a recusa
+    como se fosse robots.txt e escreveu isso no banco como procedência — e a abstenção durou treze
+    dias. Muro de país e muro de robô são a mesma classe: recusa que parece conteúdo."""
+    corpo = ('<html lang="en"><head><title>Connection denied by Geolocation</title></head>'
+             '<body><div class="box">Reason: Blocked country</div></body></html>').encode("utf-8")
+    return cb.detectar_muro_de_robo(corpo) == "connection denied by geolocation"
 
 
 def t_buscar_levanta_muro_de_robo():
@@ -200,5 +211,6 @@ if __name__ == "__main__":
         "o canal renderizado também deixa rastro": t_canal_renderizado_tambem_deixa_rastro,
         "§186 muro de robô com HTTP 200 é recusa, não conteúdo": t_muro_de_robo_e_recusa_nao_conteudo,
         "§186 muro não acusa PDF nem resposta grande": t_muro_nao_acusa_pdf_nem_documento_grande,
+        "§187 geobloqueio com HTTP 200 é recusa": t_geobloqueio_com_200_e_recusa,
         "§186 buscar() levanta no muro antes de preservar": t_buscar_levanta_muro_de_robo,
     }))

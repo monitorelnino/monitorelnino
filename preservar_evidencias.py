@@ -56,7 +56,17 @@ def gravar_texto(h: str, paginas: list) -> str:
     return hashlib.sha256(txt.encode("utf-8")).hexdigest()
 
 
-def ler_pdfs(limite: int = 40) -> int:
+def filtrar_alvos(alvos: list, trecho: str | None) -> list:
+    """Restringe a fila ao que casa com um trecho da URL (§187): a fila tem dezenas de alvos, e
+    esperar a vez de um documento específico gasta rede em quem já foi lido. Sem trecho, devolve
+    tudo — o comportamento da cadência não muda."""
+    if not trecho:
+        return alvos
+    t = trecho.lower()
+    return [(h, it) for h, it in alvos if t in str(it.get("url", "")).lower()]
+
+
+def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
     """§10.1 peça 1: para todo item do índice com URL de PDF sem texto (e para registros com URL de PDF ainda sem hash),
     baixa com o UA do Monitor, extrai o texto por página, grava evidencias/<sha>.txt e indexa (texto_arquivo, paginas, texto_hash).
     Sítio que recusa (401/403) → decisão 'acesso recusado' no log (candidato a pedido de LAI)."""
@@ -72,6 +82,7 @@ def ler_pdfs(limite: int = 40) -> int:
             if u.lower().split("?")[0].endswith(".pdf") and not r.get("hash_evidencia") and all(it.get("url") != u for it in itens.values()):
                 alvos.append((None, {"url": u, "origem": f"ler_pdfs/{fonte}", "_reg": r}))
     lidos = recusados = falhas = 0
+    alvos = filtrar_alvos(alvos, alvo)
     for h, it in alvos[:limite]:
         u = it["url"]
         try:
@@ -209,7 +220,7 @@ def alvos_ocr(itens: dict) -> list:
             and not it.get("ocr_arquivo") and not it.get("texto_manual")]
 
 
-def ocr_pdfs(limite: int = 10, paginas_max: int = 0) -> int:
+def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) -> int:
     """§177: cópia legível por OCR dos PDFs escaneados, para que a prova deixe de ser inexistente.
 
     Não decide nada e não toca em registro: só acrescenta prova, como o resto desta rotina.
@@ -217,7 +228,7 @@ def ocr_pdfs(limite: int = 10, paginas_max: int = 0) -> int:
     from datetime import date
     exe = tesseract_disponivel()
     idx = ler("evidencias.json", {"itens": {}}); itens = idx.setdefault("itens", {})
-    alvos = alvos_ocr(itens)
+    alvos = filtrar_alvos(alvos_ocr(itens), alvo)
     if not exe:
         registrar_lacuna("OCR de PDF escaneado", "Tesseract não instalado nesta máquina",
                          canal="DOM", camada=2, strings=[a[0] for a in alvos[:5]])
@@ -375,6 +386,7 @@ def main(limite: int = 200) -> int:
 if __name__ == "__main__":
     lim = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else 200
     pgs = int(sys.argv[sys.argv.index("--paginas") + 1]) if "--paginas" in sys.argv else 0
+    alv = sys.argv[sys.argv.index("--alvo") + 1] if "--alvo" in sys.argv else None
     sys.exit(autoteste_ocr() if "--autoteste" in sys.argv else
-             ocr_pdfs(lim if "--limite" in sys.argv else 10, pgs) if "--ocr" in sys.argv else
-             ler_pdfs(lim) if "--ler" in sys.argv else reconferir(lim) if "--reconferir" in sys.argv else main(lim))
+             ocr_pdfs(lim if "--limite" in sys.argv else 10, pgs, alv) if "--ocr" in sys.argv else
+             ler_pdfs(lim, alv) if "--ler" in sys.argv else reconferir(lim) if "--reconferir" in sys.argv else main(lim))

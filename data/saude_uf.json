@@ -908,11 +908,13 @@
      "doc": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño",
      "numero": null,
      "data": "31/08/2026",
-     "url": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/super-el-nino-faz-sao-paulo-lancar-plano-para-antecipar-cenarios-de-risco/",
-     "hash_evidencia": null,
+     "url": "https://portal.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/central/planoestadualdepreparacaaoerespostaemsauudeparaofenoemenoelninao.pdf",
+     "hash_evidencia": "a5473b26a69e60fb13ae18631503a2c528e5a6364c009a49ca276455a200fac4",
      "natureza_doc": "ex-ante",
      "justificativa_ex_ante": "plano específico do ciclo El Niño 2026/2027, lançado em 31/08/2026, cobrindo 4 cenários (chuvas extremas/enchentes/deslizamentos, ondas de calor/queimadas, arboviroses, e um quarto eixo) — mais abrangente que o plano recorrente de arboviroses já registrado; confirmado em 6 fontes de imprensa independentes (CNN Brasil, Agência Brasil, Jornal Guarulhos em Destaque, Diário do Litoral, thmais.com.br)",
-     "tipo": "especifico_ciclo"
+     "tipo": "especifico_ciclo",
+     "url_noticia": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/super-el-nino-faz-sao-paulo-lancar-plano-para-antecipar-cenarios-de-risco/",
+     "nota": "§187, 23/09/2026: a URL deste instrumento apontava para matéria da CNN Brasil, sem hash, enquanto o documento oficial já estava no banco desde 10/09 (fontes_uf.json) e agora tem binário preservado (43 páginas, 1,37 MB). Trocada a fonte de imprensa pelo documento, e guardada a notícia em url_noticia. O status NÃO muda por esta correção: continua NOVO, e a reclassificação é R7."
     }
    ],
    "status": "NOVO",

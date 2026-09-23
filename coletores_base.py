@@ -376,6 +376,12 @@ MARCAS_DE_MURO = (
     "sorry, you have been blocked",
     "bot detection",
     "verificando seu navegador",
+    # §187: geobloqueio de WAF, servido com HTTP 200. ACHADO REAL: portal.saude.sp.gov.br devolveu
+    # esta página no lugar do robots.txt (captura de 29/04/2026), e a rodada de 10/09 registrou no
+    # banco que o host "recusa acesso automatizado por robots.txt" — diagnóstico errado que virou
+    # regra de abstenção por treze dias. Não é muro de robô no sentido estrito: é muro de país. A
+    # classe é a mesma, e é isso que importa — o servidor respondeu não, e a resposta parece conteúdo.
+    "connection denied by geolocation",
 )
 
 
