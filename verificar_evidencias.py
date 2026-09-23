@@ -11,7 +11,8 @@ NÃO é prova, embora tenha contado como se fosse até 22/09/2026). Regime decla
     69 registros do ES não tinham cópia por falha do nosso próprio cliente HTTP — IRI com "ê" cru no caminho,
     corrigida em coletores_base.url_ascii; a primeira rodada do robô com a correção é segunda 14/09);
   - a partir de 15/09/2026: BLOQUEANTE — sai 1 se faltar.
-Também confere a integridade dos arquivos preservados (sha256 do arquivo = chave).
+Também confere a integridade dos arquivos preservados: sha256 do binário = chave, e
+sha256 do texto extraído = `texto_hash` (§175 — o do texto não era conferido).
 """
 import hashlib, json, pathlib, sys
 from datetime import date
@@ -138,8 +139,54 @@ def autoteste_prova() -> list:
             for c, esperado in casos if prova_preservada(c) is not esperado]
 
 
+def integridade_texto(itens: dict, raiz: pathlib.Path = RAIZ) -> list:
+    """sha256(texto_arquivo) == texto_hash, para todo item que registra os dois (§175, 23/09/2026).
+
+    Achado real: o portão conferia a integridade da cópia BINÁRIA (sha256 do arquivo = chave) e
+    nunca a do TEXTO — que desde o §174 também conta como prova preservada. A rotina de redação de
+    CPF de 12/09/2026 (`scripts/remediar_cpf_evidencias.py`) regravava o `.txt` e não recalculava
+    `texto_hash`: Maricá/RJ ficou com o hash de antes da redação, e nada acusava. Um texto cujo hash
+    registrado não bate com o arquivo em disco não é prova verificável — é um arquivo qualquer."""
+    erros = []
+    for h, it in itens.items():
+        ta, th = it.get("texto_arquivo"), it.get("texto_hash")
+        if not ta or not th:
+            continue
+        pth = raiz / ta
+        if not pth.exists():
+            erros.append(f"{h[:12]}… texto ausente ({ta})")
+        elif hashlib.sha256(pth.read_bytes()).hexdigest() != th:
+            erros.append(f"{h[:12]}… texto não bate com texto_hash ({ta}) — regravado sem recalcular o hash?")
+    return erros
+
+
+def autoteste_integridade_texto() -> list:
+    """Teste negativo permanente da regra acima: texto regravado sem recalcular o hash reprova."""
+    import tempfile
+    falhas = []
+    with tempfile.TemporaryDirectory() as d:
+        raiz = pathlib.Path(d); (raiz / "evidencias").mkdir()
+        alvo = raiz / "evidencias" / "a.txt"
+        alvo.write_text("\n=== página 1 ===\ntexto preservado\n",
+                        encoding="utf-8", newline="\n")
+        certo = hashlib.sha256(alvo.read_bytes()).hexdigest()
+        casos = [
+            ({"texto_arquivo": "evidencias/a.txt", "texto_hash": certo}, 0),
+            ({"texto_arquivo": "evidencias/a.txt", "texto_hash": "0" * 64}, 1),      # regravado sem recalcular
+            ({"texto_arquivo": "evidencias/ausente.txt", "texto_hash": certo}, 1),   # texto perdido
+            ({"texto_arquivo": None, "texto_hash": None}, 0),
+            ({"arquivo": "evidencias/a.pdf"}, 0),                                    # só cópia binária: fora desta regra
+        ]
+        for i, (item, esperado) in enumerate(casos):
+            n = len(integridade_texto({f"{i:064d}": item}, raiz))
+            if n != esperado:
+                falhas.append(f"integridade_texto({item}) devolveu {n} problema(s); esperado {esperado}")
+    return falhas
+
+
 def main() -> int:
-    e = checar_cliente_http() + checar_preservacao_na_cadencia() + autoteste_prova()
+    e = (checar_cliente_http() + checar_preservacao_na_cadencia() + autoteste_prova()
+         + autoteste_integridade_texto())
     if e:
         print("✗ EVIDÊNCIAS: pré-condições do portão:"); [print("   ", x) for x in e]; return 1
     mun = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
@@ -166,6 +213,8 @@ def main() -> int:
                 corrompidos.append(f"{h[:12]}… arquivo ausente ({arq})")
             elif hashlib.sha256(p.read_bytes()).hexdigest() != h:
                 corrompidos.append(f"{h[:12]}… conteúdo não bate com o hash ({arq})")
+    # §175 (23/09/2026): o texto extraído é prova desde o §174 — e o hash dele nunca era conferido.
+    corrompidos += integridade_texto(itens)
     # 11/09/2026 (achado do ensaio): teste negativo permanente. Um item cuja `arquivo` é um .txt e cuja URL de origem
     # é um .pdf tem a chave = sha256 do TEXTO, não do binário. Sem a marca `texto_manual`, `preservar_evidencias --ler`
     # o elege como alvo, reextrai o PDF e regrava evidencias/<h>.txt sob o mesmo nome — o conteúdo deixa de bater com a

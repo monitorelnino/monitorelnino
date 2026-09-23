@@ -9,6 +9,25 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §175 · O hash do texto preservado não era conferido — e a rotina de redação de CPF o deixava para trás · 23/09/2026
+
+Classe **correção de segurança do dado**. Nenhum número do índice muda; um item do banco passa a ter o hash que descreve o arquivo que está publicado.
+
+**O achado.** O §174 tornou o texto extraído do PDF prova preservada — é o que sustenta 29 registros pontuáveis acima do teto de cópia de 5 MB. Mas o portão 6 conferia integridade só da **cópia binária** (`sha256(arquivo) == chave`); o `texto_hash` nunca era comparado com o arquivo em disco. Prova que ninguém confere não é prova verificável.
+
+**Quem o quebrava.** `scripts/remediar_cpf_evidencias.py`, a remediação de 12/09/2026 que apagou 1.018 CPFs de 69 arquivos já publicados, regrava o `.txt` e **não recalculava** `texto_hash`. **Exposição medida:** 68 itens do banco carregam a nota de redação; desses, **um só** tem `texto_hash` — Maricá/RJ — e era exatamente o divergente. Os outros 67 são texto integral de diário oficial, que não registra hash próprio (ver a lacuna registrada abaixo).
+
+**Três defeitos no mesmo caminho, além do hash.** `tamanho` descreve o arquivo apontado por `arquivo`; o código o sobrescrevia com o comprimento de **qualquer** arquivo regravado — inclusive o texto, que é outro arquivo do mesmo item. A escrita do `.txt` e a do próprio `data/evidencias.json` saíam sem `newline="\n"` (a série do §163): rodar a remediação no Windows regravaria toda a evidência em CRLF, mudando byte a byte o que os hashes selam. O índice passa a ser gravado por `gravar()`, que é atômico desde 21/09.
+
+**O conserto, nas duas pontas.** No portão: `integridade_texto()` exige `sha256(texto_arquivo) == texto_hash` em todo item que registra os dois, com autoteste negativo permanente (hash trocado reprova, texto ausente reprova, item só com cópia binária passa). Na rotina: recalcula `texto_hash` e recontagem de `caracteres` quando o regravado é o texto do item, e `tamanho` só quando o regravado é o `arquivo`. Autoteste novo e bloqueante em `portoes.yml`, com as quatro regras.
+
+**O passado, consertado pela própria rotina.** `reindexar_textos()` não toca no arquivo: o `.txt` publicado, já redigido, é a verdade — o índice é que estava atrasado. Rodado aqui, reindexou **um** item: Maricá/RJ, `texto_hash` `49e7cbf5…` → `b302f484…`. A contagem de caracteres não mudou (609.285) porque `[CPF REDIGIDO]` tem exatamente os 14 caracteres do padrão `NNN.NNN.NNN-NN` — coincidência do desenho da redação, não garantia; por isso a contagem é refeita a partir do arquivo, e não presumida.
+
+**Lacuna registrada, com número.** Os **148** itens que guardam `texto_integral` (edição inteira de diário oficial) não registram hash nenhum desse texto — a integridade deles se apoia no `.json` da resposta da API, cuja chave o portão confere (147 dos 148). Quatro desses itens apontam para um `.txt` que **não está em disco**. Fica nomeado para a correção seguinte, que precisa de campo novo no índice e de reindexação dos 148.
+
+**Teste.** Portão 6 verde, agora com a integridade do texto (89 de 93 pontuáveis com prova, 4 em lacuna declarada, 2.059 itens íntegros) — e vermelho, conferido antes do conserto, apontando o item de Maricá pelo nome. Os 29 portões de dado do executor local verdes, incluindo o portão 12 em árvore limpa e o autoteste novo. Os portões `.js` ficam com o CI.
+
+
 ## §174 · "Tentativa falhou" contava como prova preservada — e cinco registros pontuáveis viviam só disso · 23/09/2026
 
 Classe **correção de segurança do dado**. Nenhum número do índice muda; muda o que o portão aceita como prova, e quatro registros passam a aparecer como lacuna declarada.

@@ -146,3 +146,8 @@ jobs:
           # cadeia de derivados que ele regenera é a MESMA de scripts/verificar_derivados.sh —
           # divergir foi o que deixou o portão 12 vermelho na main.
           python3 julgar_e_aplicar_descobertas.py --self-test
+          # §175 (23/09/2026): a rotina de redação de CPF regravava o texto preservado sem recalcular
+          # `texto_hash` — e o portão 6 nunca conferia o hash do texto, só o da cópia binária. O
+          # autoteste trava as quatro regras: contagem sem marcadores, escrita em LF, reindexação pelo
+          # arquivo em disco (que é a verdade) e `tamanho` intacto (ele descreve `arquivo`).
+          python3 scripts/remediar_cpf_evidencias.py --autoteste
