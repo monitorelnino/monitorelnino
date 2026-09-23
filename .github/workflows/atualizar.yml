@@ -497,7 +497,8 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ index.html defesa-civil.html recalcular_mare.py MARE_Indice_Documentacao.pdf METODOLOGIA.pdf selos/ feeds/ dados-abertos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
+          # 23/09/2026: a lista nomeava só index.html e defesa-civil.html. preencher_fallback_estatico.py reescreve TAMBÉM saude.html e financiamento.html (o que o leitor sem JavaScript vê), e carimbar_assets.py reescreve as 12 páginas. Tudo isso era descartado no commit enquanto o manifesto guardava o hash da versão nova — portão 12 vermelho na main, e a página de Saúde servindo número velho a quem não roda JavaScript. `*.html` cobre as páginas de hoje e as de amanhã.
+          git add data/ *.html recalcular_mare.py MARE_Indice_Documentacao.pdf METODOLOGIA.pdf selos/ feeds/ dados-abertos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
           # Escopo do commit ampliado em 31/08/2026, e revisado depois no mesmo
           # dia quando mapas/gráficos ganharam página própria: index.html
           # (o número fixo do medidor), mapas-e-graficos.html (AREAS —

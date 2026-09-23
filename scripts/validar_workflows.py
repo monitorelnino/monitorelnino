@@ -2,7 +2,7 @@
 """Valida os workflows do GitHub Actions com detecção de CHAVE DUPLICADA (o pyyaml aceita em
 silêncio; o GitHub recusa o workflow inteiro — 03/09/2026: um 'env' duplicado quebrou a rotina).
 Roda no portão 1 (verificar_estrutura.js chama este script) e na checagem de PR."""
-import glob, sys, yaml
+import glob, pathlib, sys, yaml
 class Dup(yaml.SafeLoader): pass
 def cons(loader, node):
     keys = [loader.construct_object(k) for k, _ in node.value]
@@ -39,6 +39,40 @@ for f, wf in carregados.items():
 for m in sem_teto:
     print(f"  ✗ {m}")
 erros += len(sem_teto)
+
+# A LISTA DO COMMIT COBRE O QUE A RODADA REESCREVE (23/09/2026). Achado real: o passo de
+# commit da rodada de atualização nomeava só `index.html` e `defesa-civil.html`. Mas
+# preencher_fallback_estatico.py reescreve também saude.html e financiamento.html — que é o
+# que o leitor SEM JavaScript vê, e o que o aria-label da barra de progresso anuncia ao
+# leitor de tela — e carimbar_assets.py reescreve as 12 páginas.
+#
+# O resultado não era só portão 12 vermelho: o manifesto guardava o hash da página NOVA
+# enquanto a página VELHA continuava no ar. A página de Saúde serviu 31,8 durante duas
+# rodadas, quando o valor era 32,5; "17 estados verificados", quando eram 20. Silencioso,
+# porque descartar uma mudança no `git add` não produz erro nenhum.
+paginas = sorted(pathlib.Path(".").glob("*.html"))
+# A cobrança vale só para quem REESCREVE página: carimbar_assets e preencher_fallback_estatico
+# mexem no HTML, e gerar_manifesto sela o hash delas. Workflow que só commita evidência ou
+# dado não tem página a perder — e portão que cobra o que não se aplica acaba desligado.
+REESCREVE = ("carimbar_assets", "preencher_fallback_estatico", "gerar_manifesto")
+for f, wf in carregados.items():
+    texto = open(f, encoding="utf-8").read()
+    if not any(x in texto for x in REESCREVE):
+        continue
+    for linha in texto.splitlines():
+        t = linha.strip()
+        if not t.startswith("git add ") or " -A" in t:
+            continue
+        caminhos = t[len("git add "):].split()
+        if "*.html" in caminhos or "." in caminhos:
+            continue          # glob cobre as páginas de hoje e as de amanhã
+        fora = [pg.name for pg in paginas if pg.name not in caminhos]
+        if fora:
+            print(f"  ✗ {f}: `git add` não cobre {len(fora)} página(s) que a cadeia de "
+                  f"derivados reescreve: {', '.join(fora[:4])}"
+                  f"{'…' if len(fora) > 4 else ''} — a mudança seria descartada em silêncio, "
+                  f"e o manifesto guardaria o hash da versão que não foi commitada")
+            erros += 1
 
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")
