@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 267 pendente(s) · 14 decidida(s) · A=44 B=181 C=42
+Gerado em 23/09/2026 · 302 pendente(s) · 15 decidida(s) · A=49 B=197 C=56
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -16,12 +16,32 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: e na restauração da  normalidade social, articulando e facilitando as ações  de prevenção, preparação, resposta e recuperação no  Município de Serra. “  Leia-se: […] “ Art. 1º Fica instituído o Plano Municipal de Proteçã
   - juiz: Serra/ES já consta na base — não duplicar (revisão humana decide se é atualização)
 
-## Campo Mourão/PR — 1 pendente(s)
+## Campo Mourão/PR — 5 pendente(s)
 - `b24d320293` · nível **A** (6 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Campo Mourão cria Plano de Contingência para emergências
   - url: https://crn1.com.br/2026/09/campo-mourao-prepara-plano-de-contingencia-para-situacoes-de-emergencia
   - trecho: A Prefeitura de Campo Mourão está estruturando um Plano de Contingência (PLANCON) para organizar a resposta do município em casos de emergência. O assunto foi discutido nesta terça-feira (1º de setembro) em reunião no ga
   - juiz: portão automático: fonte não oficial
+- `8bab8d5538` · nível **B** (5 pts) · seguimento_querido_diario · DUVIDA · **Lei nº 707**, 21/11/1990
+  - título: Diário oficial de 2026-04-22
+  - url: https://data.queridodiario.ok.org.br/4104303/2026-04-22/f11d986a9304e31fbda76f7ea096c7b28774be75.pdf
+  - trecho: - Resoluções – Assunto - Nº 20/2025 – 14/03; Sisnor; Plano de Trabalho R$ 600.000,00 - Nº 21/2025 – 14/03; Sisnor; Plano de Trabalho R$ 1.500.000,00 - Nº 22/2025 – 14/03; Apae; Plano de Trabalho R$ 50.615,00 - Nº 23/2025
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `a8e48f0ba9` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
+  - título: Diário oficial de 2026-01-29
+  - url: https://data.queridodiario.ok.org.br/4104303/2026-01-29/6756480d7a8a26ccf93b18bcd8f299c4f81fca22.pdf
+  - trecho: . 21 2.8 AVALIAÇÃO E ACOMPANHAMENTO DO RETORNO DOS INVESTIMENTOS ....................... 23 2.9. VEDAÇÕES ..................................................................................................................
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `3dbeb8dd50` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
+  - título: Diário oficial de 2026-02-06
+  - url: https://data.queridodiario.ok.org.br/4104303/2026-02-06/0f3432b06f1e027dbc268f312d2924c428314968.pdf
+  - trecho: Domicílio (organização e funcionamento); SEMA Contrato de Cortes e pode de árvores (critérios e gestão da Demanda). 12. CRONOGRAMA DE EXECUÇÃO Atividades Plano de execução – 2026 Jan Fev Mar Abr Mai Jun Jul Ago Set Out N
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `58bb5548e5` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · **Lei nº 707**, 21/11/1990
+  - título: Diário oficial de 2026-04-23
+  - url: https://data.queridodiario.ok.org.br/4104303/2026-04-23/7572e3a6ca905e1a7bcec0765a56736d865f0583.pdf
+  - trecho: PLÁSTICO PROFISSIONAL COM TRAVA, LÂMINA DE AÇO CARBONO EXTENSÍVEL INTERNA DE 18MM UNIDADE GATTE 766 R$1,59 R$1.217,94 68 ESTOJO DE PINCEL ATÔMICO COM 12 CORES, PONTA DE POLIÉSTER 4.0 MM, ESCRITA 1.8 MM, TINTA À BASE DE Á
+  - juiz: portão automático: ato de 1990 — pode ser edição anterior; decisão humana
 
 ## Cascavel/PR — 7 pendente(s)
 - `ec95baef59` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -60,6 +80,53 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 8, 2026 ... renatosilvacascavel on September 8, 2026: "Cascavel se prepara para enfrentar os efeitos do El Niño. 🌧️ Nossa Defesa Civil está em campo ...
   - juiz: portão automático: fonte não oficial
 
+## Curitiba/PR — 9 pendente(s)
+- `0bb73f1765` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Hospitais privados precisam apresentar plano de contingência - Prefeitura de Curitiba
+  - url: https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236
+  - trecho: Documento estabelece que os hospitais privados devem prever o remanejamento de no mínimo de 50% dos leitos clínicos e cirúrgicos para atendimento exclusivo da covid-19
+- `d0f22de20c` · nível **B** (6 pts) · seguimento_busca_oficial · DUVIDA · **Lei Municipal nº 14.286**, 12/07/2013
+  - título: PREFEITURA MUNICIPAL DE CURITIBA DECRETO Nº 1868
+  - url: https://mid.curitiba.pr.gov.br/2024/00444371.pdf
+  - trecho: Poder Executivo poderá indicar a Reserva de Contingência como aporte local, quando · da formulação de convênios a serem assinados com outras esferas de governo. ... Art. 9º Outras instruções para o cumprimento da legisla
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ad219e719d` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Situação de Emergência é encerrada em Curitiba, município ...
+  - url: https://saude.curitiba.pr.gov.br/noticias/2168-situacao-de-emergencia-e-encerrada-em-curitiba-municipio-segue-com-novo-protocolo.html
+  - trecho: O novo decreto prevê regras de transição para esse momento para que seja possível assegurar a continuidade das ações que compõem o plano de contingência contra o coronavírus, com a prorrogação de contratos vigentes, além
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `6a630cc284` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: El Niño deve atingir o Paraná em julho com aumento de chuvas
+  - url: https://bandnewsfmcuritiba.com/el-nino-deve-atingir-o-parana-em-julho-com-aumento-de-chuvas/
+  - trecho: Jun 11, 2026 ... ... Plano de Contingência e a criação de fundos municipais de Defesa Civil. ... Endereço: Rua Afonso Pedri, 65 - Pilarzinho, Curitiba - PR Telefone ...
+- `164be351c2` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · **Decreto Municipal n.º 421**, 16/03/2020
+  - título: DECRETO - AVISO DE PUBLICAÇÃO Nº 123
+  - url: https://saude.curitiba.pr.gov.br/images/Decreto%20n%C2%BA%20700.2022.pdf
+  - trecho: social, que compõem o Plano de Contingência para Resposta às Emergências em · Saúde Pública, e evitar prejuízo ao atendimento da população, fica instituído regime de · transição para os seguintes atos destinados ao enfre
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `93f2b30e7a` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
+  - título: Diário oficial de 2026-01-22
+  - url: https://data.queridodiario.ok.org.br/4106902/2026-01-22/eab7a52d061a5a0fe550b5c54d56b05c77693667.pdf
+  - trecho: infantil, armazéns da família, mercados, Marca: Modelo: Valor unitário: R$ 30,0000 Quantidade: 3650,0000 - METRO QUADRADO Protocolo 01-143567/2025 Anexo 192.1 - PE Nº 07_2025 - ATA REGISTRO PREÇOS ASSIN do Trâmite 192 IN
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `c2c2f54bb9` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · **Lei nº 14.133**, 2021
+  - título: Diário oficial de 2026-02-18
+  - url: https://data.queridodiario.ok.org.br/4106902/2026-02-18/fcc4c7e93b9b30b2c390f9f0c78a1c9cc748beeb.pdf
+  - trecho: U R H S U ni da de d e R ec ur so s H um . e S aú de O cu p. U G T U LC U LC P D M U C C Á re a T ar ifá ria C oo rd en ad or ia d e P la ne ja m en to e S up or te a o Ju rí di co E qu ip . d e T ra ns po rt e P ro je t
+  - juiz: portão automático: data do ato incompleta (2021)
+- `b1c83eec27` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
+  - título: Diário oficial de 2026-01-28
+  - url: https://data.queridodiario.ok.org.br/4106902/2026-01-28/34769132c312aa234d59d859c86d8f6817e93cba.pdf
+  - trecho: QUARTA – DA RATIFICAÇÃO Permanecem em vigor e inalteradas as demais cláusulas e condições da ata de registro de preços originária que não foram modificadas por este termo. E para constar, foi lavrado o presente, que depo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `b641fea0e5` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
+  - título: Diário oficial de 2026-02-06
+  - url: https://data.queridodiario.ok.org.br/4106902/2026-02-06/ad8977333887bb17f454d5be3dff627ab08cb8ba.pdf
+  - trecho: 1.000m2. Marca: Não se aplica. Modelo: Não se aplica. Valor unitário: R$ 1.000,0000 Quantidade: 21,0000 - UNIDADE Protocolo 01-143579/2025 Anexo 188.3 - PE Nº 06_2025 - ATA REGISTRO PREÇOS.PDF do Trâmite 188 INFORMAÇÃO -
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
 ## Foz do Iguaçu/PR — 1 pendente(s)
 - `00461f6b27` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Câmara de Foz do Iguaçu cobra plano de contingência para efeitos ...
@@ -96,7 +163,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jul 2, 2026 ... Unidade Guaratuba / PR. CNPJ: 17.720.042/0001-08. © Copyright 2008-2026 Portal da Cidade ®. Outras cidades, Andradas / MG, Atibaia / SP · Bady ...
   - juiz: portão automático: fonte não oficial
 
-## Irati/PR — 3 pendente(s)
+## Irati/PR — 4 pendente(s)
 - `31775ad11b` · nível **A** (7 pts) · busca_web · RESPOSTA · data 21/07/2026 (do trecho)
   - título: Defesa Civil promove reunião sobre El Niño e ... - Jornal Folha de Irati
   - url: https://folhadeirati.com.br/defesa-civil-promove-reuniao-sobre-el-nino-e-plano-de-contingencia-em-sao-mateus-do-sul/
@@ -112,6 +179,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://folhadeirati.com.br/el-nino-e-confirmado-e-simepar-preve-aumento-de-chuvas-ate-dezembro/
   - trecho: Jun 11, 2026 ... Irati PR, 07:09, 13°C. Grupo do WhatsApp · El Niño é confirmado e Simepar prevê aumento de chuvas até dezembro. O fenômeno gradativamente se ...
   - juiz: portão automático: fonte não oficial
+- `dee7d22f38` · nível **C** (2 pts) · seguimento_link_noticia · EX_ANTE · citação não extraída
+  - título: nota técnica orientativa sobre o fenômeno
+  - url: https://www.parana.pr.gov.br/sites/default/arquivos_restritos/files/documento/2026-05/nota_tecnicandeg001_2026.pdf
+  - trecho: nota técnica orientativa sobre o fenômeno
+  - juiz: portão automático: data do ato incompleta (2026)
 
 ## Palotina/PR — 15 pendente(s)
 - `d3fc51badf` · nível **A** (8 pts) · busca_web · DUVIDA · data 11/09/2026 (do trecho)
@@ -186,7 +258,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://bemoeste.com.br/noticia/4219/palotina-apresenta-plano-de-contingencia-para-prevencao-de-eventos-climaticos
   - trecho: Sep 11, 2026 ... Palotina apresentou o Plano de Contingência Municipal em encontro na ACIPA, com orientações para prevenção e resposta a eventos climáticos.
 
-## São Mateus do Sul/PR — 4 pendente(s)
+## São Mateus do Sul/PR — 6 pendente(s)
 - `a7f7eb8de1` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: São Mateus do Sul: reunião sobre o Plano de Contingência para o ...
   - url: https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/
@@ -204,6 +276,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `59174d8593` · nível **B** (4 pts) · querido_diario · DUVIDA · **Lei Municipal nº 1.997**, 2010
   - url: https://data.queridodiario.ok.org.br/4125605/2026-07-17/1ea6f889e9053ea646fd6513b642ee851bec3e80.pdf
   - trecho: ao Conselho Municipal de Proteção e Defesa Civil:   I - Atuar como órgão consultivo do Chefe do Poder Executivo e do Coordenador Executivo da COMPDEC na gestão de riscos e desastres; II - Analisar, propor alterações e em
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `fcbc27b1d0` · nível **B** (4 pts) · seguimento_querido_diario · EX_ANTE · **Lei n.º 8.666**, 02/03/2026
+  - título: Diário oficial de 2026-03-03
+  - url: https://data.queridodiario.ok.org.br/4125605/2026-03-03/cc19b4c8e24e34d1088fc54df8626255eee7b9f7.pdf
+  - trecho: categoria, a saber: 01 de fevereiro de 2026, conforme tabela abaixo, com fulcro na Cláusula Quarta, §2 do contrato c/c Artigo 65, Inciso II, alínea “d”, da Lei n.º 8.666/93. VALORES ATUAIS ITE M DESCRITI VO QT DE VALOR U
+  - juiz: portão automático: número extraído parece lei citada, não o ato instituinte (Lei n.º 8.666)
+- `dd01820f8b` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 1.997**, 2010
+  - título: Diário oficial de 2026-06-30
+  - url: https://data.queridodiario.ok.org.br/4125605/2026-06-30/ed645c3ccee3b1adcb2c38df011136fcdf267488.pdf
+  - trecho: ESTADO DO PARANÁ CNPJ: 76.021.450/0001-22 MEDICAMENTO S LTDA. 34 GLIMEPIRIDA 2MG cod br 273119 Cimed COM 32000 0,0774 2.476,80 INOVAMED HOSPITALAR LTDA 35 HEPARINA 5000 UI/ ML INTRAVENOSA COM 5ML cod br 272796 HIPOLAB OR
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Umuarama/PR — 3 pendente(s)
@@ -449,6 +531,57 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 6, 2026 ... ... plano de contingência e previsão orçamentária para enfrentar impactos do El Niño em Vinhedo. 16/06/2026 14:05. Nayla cobra plano de ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
+## Votuporanga/SP — 9 pendente(s)
+- `a9a8b28bac` · nível **A** (8 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 204**, 09/06/2026
+  - título: Aprova a 6ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/13164/
+  - trecho: DECRETO Nº 20 472, de 09 de junho de 2026 (Aprova a 6ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON) JORGE AUGUSTO SEBA, Prefeito do Município de Votuporanga, Estado de São Paulo, no uso de suas a
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `d5d0fd8e7d` · nível **A** (8 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 124**, 15/07/2020
+  - título: Aprova a 3a Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/7585/
+  - trecho: DECRETO N° 12 464, de 15 de julho de 2020 (Aprova a 3ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON) JOÃO EDUARDO DADO LEITE DE CARVALHO, Prefeito do Município de Votuporanga, Estado de São Paulo,
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `84a881d48b` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 158**, 29/06/2023
+  - título: Aprova a 5ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/1427/
+  - trecho: (Aprova a 5ª Edição do PLANO ... legais; DECRETA: Art. 1º Fica aprovado a 5ª Edição do Plano de Contingência de Proteção e Defesa Civil – PLANCON do Município de Votuporanga....
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `241d37933f` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 144**, 13/04/2022
+  - título: Aprova a 4ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/4360
+  - trecho: (Aprova a 4ª Edição do PLANO ... legais; DECRETA: Art. 1º Fica aprovada a 4ª Edição do Plano de Contingência de Proteção e Defesa Civil – PLANCON do Município de Votuporanga....
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `ebc84478b1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2022 (do trecho)
+  - título: Votuporanga terá plano de contingenciamento para evitar falta ... - G1
+  - url: https://g1.globo.com/sp/sao-jose-do-rio-preto-aracatuba/noticia/2022/09/13/votuporanga-tera-plano-de-contingenciamento-para-evitar-falta-de-agua.ghtml
+  - trecho: Sep 13, 2022 ... A empresa responsável pelo abastecimento de água em Votuporanga (SP) ... plano de contingência para evitar a falta de água no município. O ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
+- `e2b73559c8` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: p gestão integrada de plano municipal de
+  - url: https://smastr16.blob.core.windows.net/cpla/2017/05/votuporanga.pdf
+  - trecho: QUESTÃO SOCIOAMBIENTAL NAS EMPRESAS MOVELEIRAS DO POLO DE VOTUPORANGA (SP) ... Como ações estruturantes do Plano de Contingência, o Plano Municipal de ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
+- `ac326b52aa` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
+  - título: Diário oficial de 2026-02-20
+  - url: https://data.queridodiario.ok.org.br/3557105/2026-02-20/10c9f8a3467bc3a282b035b0964ab8aa6d79d72e.pdf
+  - trecho: internacional de educação, em Votuporanga. Informou também que está prevista a realização, pelo Consórcio As sin ad o po r 1 2 pe ss oa s: A LE XA ND RE M IO TT O DA C OS TA , A NT ON IO C AR LO S SA NT AN A DA S IL VA ,
+  - juiz: portão automático: data do ato incompleta (2026)
+- `d85304d71b` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 5.927**, 02/03/2017
+  - título: Diário oficial de 2025-10-27
+  - url: https://data.queridodiario.ok.org.br/3557105/2025-10-27/17b7e57b76a1c6d2b3990aab37da8c375afc5198.pdf
+  - trecho: digitalmente) As si na do p or 5 p es so as : W AG N ER H AS H IM O TO , D AN N A SA N TO S D E O LI VE IR A C EZ AR M O R IA L PI G N AT AR I, LU AN V IN IC IU S LA C ER D A PI M EN TA , M AU R IL O P IM EN TA D E M O R
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `1edaadc6ce` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 5.927**, 02/03/2017
+  - título: Diário oficial de 2025-11-05
+  - url: https://data.queridodiario.ok.org.br/3557105/2025-11-05/9009e9286ffa6204accff6b73d2a73268122a835.pdf
+  - trecho: RESPONSABILIDADE As si na do p or 5 p es so as : W AG N ER H AS H IM O TO , J O SN EI M AR F ER R EI R A D E FR EI TA S, L U AN V IN IC IU S LA C ER D A PI M EN TA , D AN N A SA N TO S D E O LI VE IR A C EZ AR M O R IA L
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
 ## Colônia Leopoldina/AL — 1 pendente(s)
 - `f62f1c5f13` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO 496**, 30/06/2026
   - url: https://data.queridodiario.ok.org.br/2700000/2026-07-01/9341f1ab84a22a0c3d1e0e82351ba7e64355b809.pdf
@@ -609,6 +742,20 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: o município Congonhas/MG e a empresa Ampla Consultoria, que tem como objetivo ... - Plano de contingência adotado pela empresa para os casos de acidentes ou.
   - ⚠ ano_anterior_ao_ciclo
 
+## Fervedouro/MG — 1 pendente(s)
+- `e6fda1e3b1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2013 (do trecho)
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - Saae Fervedouro
+  - url: https://www.saaefervedouro.com.br/uploads/conteudoarquivo_arquivo/2528/fervedouroplanosaneamento.pdf
+  - trecho: Identificação de possíveis fontes de financiamento, arranjo institucional e plano de contingência e emergência. FERVEDOURO – MG. 2013. Page 2. Plano Municipal ...
+  - juiz: portão automático: fonte não oficial
+
+## Guidoval/MG — 1 pendente(s)
+- `58f84392fd` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP
+  - url: https://www.ceivap.org.br/mata/Guidoval.pdf
+  - trecho: Plano Municipal de Saneamento Básico – Guidoval/MG 101. Plano Municipal de Saneamento Básico – Guidoval/MG. 100. Quadro 19 – Proposições e prazos quanto à ...
+  - juiz: portão automático: fonte não oficial
+
 ## Lambari/MG — 1 pendente(s)
 - `6366db55bf` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Prevenção antes da emergência! 🛡️ Diante dos efeitos do El Niño ...
@@ -718,7 +865,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Municipal, com as seguintes competências, entre outras:  I - coordenar as ações de proteção e defesa civil em todas as suas fases prevenção, mitigação,  preparação, resposta e recuperação;  II - elaborar, implementar e m
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Castro/PR — 2 pendente(s)
+## Castro/PR — 6 pendente(s)
 - `6ac5fc7306` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
   - título: El Niño: Castro decreta Estado de Alerta Hidrológico, Geológico e ...
   - url: https://bntonline.com.br/el-nino-castro-decreta-estado-de-alerta-hidrologico-geologico-e-climatico-por-180-dias/
@@ -728,6 +875,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.bemparana.com.br/noticias/parana/cidadesdoparana/defesa-civil-de-castro-reforca-prevencao-ao-el-nino-e-orienta-moradores-a-receber-alertas-por-sms/
   - trecho: Jun 10, 2026 ... Defesa Civil de Castro reforça prevenção ao El Niño e orienta ... plano de contingência para resposta rápida em caso de ocorrências. O ...
   - juiz: portão automático: fonte não oficial
+- `62470160e3` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **LEI Nº 262**, 11/07/2026
+  - título: Diário oficial de 2026-07-11
+  - url: https://data.queridodiario.ok.org.br/4104907/2026-07-11/c7cdbbbf4ea7208f0c997348a22ee81dd84fdedf.pdf
+  - trecho: consolidação do Projeto de Lei Or- çamentária Anual para 2027, de que tata esta lei, e determinará: I – O calendário das atividades para a elaboração dos orçamentos; II – A elaboração e a distribuição do material que com
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `178475fe7e` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · **LEI Nº 262**, 04/12/2025
+  - título: Diário oficial de 2025-12-04
+  - url: https://data.queridodiario.ok.org.br/4104907/2025-12-04/ec6f8df73776c86fc7df026503513b34873dae6b.pdf
+  - trecho: ST R O P la ne ja m en to e O rç am en to R ec ei ta s do P P A p or A no - A gr up ad o po r C on ta D ed uç ão A no P P A : 2 02 6 - 2 02 9 G ra u a lis ta r: 10 P ág 1 / 37 IP M S is te m as L td a A te nd e. N et - W
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `d55d2bbd62` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **LEI Nº 262**, 29/01/2026
+  - título: Diário oficial de 2026-01-29
+  - url: https://data.queridodiario.ok.org.br/4104907/2026-01-29/9a9c66fb045c4a4d41cece5e14e2c5977e9c4bff.pdf
+  - trecho: id ad e: C on so lid ad o P ág 1 / 2 IP M S is te m as L td a A te nd e. N et - W P R v :2 01 3. 01 Id en tif ic ad or : W P R 16 11 10 1- 97 37 -R A Y LH V K N S C Y R -3 - E m iti do p or : A LI N E P E TR O S K I M O 
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `399b7a1ad5` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **LEI Nº 262**, 2013
+  - título: Diário oficial de 2026-05-29
+  - url: https://data.queridodiario.ok.org.br/4104907/2026-05-29/2ec744608d982f6ac33d3ab6e5daa5c0f72b6c84.pdf
+  - trecho: : E xe cu tiv o P er ío do d e R ef er ên ci a: 0 5/ 20 25 a 0 4/ 20 26 P ág 1 / 2 IP M S is te m as L td a A te nd e. N et - W P R v :2 01 3. 01 Id en tif ic ad or : W P R 48 41 10 1- 97 37 -E A LD P G B V E O Q N -9 - 
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Colombo/PR — 1 pendente(s)
 - `f7778f6ca8` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
@@ -735,12 +903,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://ivandecolombo.com.br/blog/2026/09/16/el-nino-aumenta-risco-de-chuvas-intensas-no-parana-e-colombo-reforca-prevencao/
   - trecho: 6 days ago ... El Niño aumenta risco de chuvas intensas no Paraná, e Colombo reforça prevenção ... O documento municipal aponta que o Plano de Contingência de ...
   - juiz: portão automático: fonte não oficial
-
-## Curitiba/PR — 1 pendente(s)
-- `6a630cc284` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
-  - título: El Niño deve atingir o Paraná em julho com aumento de chuvas
-  - url: https://bandnewsfmcuritiba.com/el-nino-deve-atingir-o-parana-em-julho-com-aumento-de-chuvas/
-  - trecho: Jun 11, 2026 ... ... Plano de Contingência e a criação de fundos municipais de Defesa Civil. ... Endereço: Rua Afonso Pedri, 65 - Pilarzinho, Curitiba - PR Telefone ...
 
 ## Fazenda Rio Grande/PR — 2 pendente(s)
 - `da6fbe3938` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -794,12 +956,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 07 Descumprimento de   normas de segurança e   legislação vigente   Baixa Alto Médio Cláusulas contratuais específicas e   fiscalização   08 Interrupção do serviço   durante o evento.   Baixa Alto Médio Previsão de equip
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Londrina/PR — 1 pendente(s)
+## Londrina/PR — 4 pendente(s)
 - `89e500dcd9` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño é confirmado e Simepar prevê aumento de chuvas até ...
   - url: https://www.folhadelondrina.com.br/geral/el-nino-e-confirmado-e-simepar-preve-aumento-de-chuvas-ate-dezembro-3304815e.html
   - trecho: Jun 11, 2026 ... Entre as iniciativas prioritárias estão o desassoreamento de rios e córregos, atualização do Plano de Contingência ... Londrina, Guaratuba e ...
   - juiz: portão automático: fonte não oficial
+- `f3513a0ca1` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 13.935**, 09/04/2025
+  - título: Diário oficial de 2026-09-16
+  - url: https://data.queridodiario.ok.org.br/4113700/2026-09-16/f81dac043c2295a950fbb7d3381a65f66e67736f.pdf
+  - trecho: Parágrafo único. O Plano de Aplicação Anual do FUMPDEC, de que trata o Art. 13, I, desta Lei, será elaborado em consonância e articulação com o Plano Plurianual (PPA), a Lei de Diretrizes Orçamentárias (LDO), a Lei Orçam
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `caeeb2386d` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · **LEI N.º 142**, 03/09/2026
+  - título: Diário oficial de 2026-09-14
+  - url: https://data.queridodiario.ok.org.br/4113700/2026-09-14/fc977526057018cd7f5437d935955d65047b4864.pdf
+  - trecho: disponibilidade e desempenho da plataforma; II - interoperabilidade: integração com sistemas de pagamento, nota fiscal eletrônica e cadastros de fornecedores; III - continuidade e contingência: manutenção de plano de con
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ac31393747` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
+  - título: Diário oficial de 2026-05-18
+  - url: https://data.queridodiario.ok.org.br/4113700/2026-05-18/2dc458566aa8e7f65f5740b3d978b0c29e7e43e9.pdf
+  - trecho: crianças e adolescentes, com caráter de utilidade pública; III – integrar todos os órgãos municipais para divulgação do ARP aos servidores públicos; IV – instruir as famílias vítimas de desaparecimento para ações e estab
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
 ## Pato Branco/PR — 2 pendente(s)
 - `0bf8eb27f3` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -813,7 +990,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 21, 2026 ... Atenção Pato Branco: o El Niño vem aí e precisamos nos preparar Pato ... Plano de Contingência Climática foi cancelada. Em breve ...
   - juiz: portão automático: fonte não oficial
 
-## Pinhais/PR — 4 pendente(s)
+## Pinhais/PR — 8 pendente(s)
 - `9103511ece` · nível **B** (5 pts) · busca_web · RESPOSTA · **Decreto 043**, 2026
   - título: Pinhais adota medidas preventivas para enfrentar o El Niño
   - url: https://www.bemparana.com.br/publicacao/blogs/metropole/pinhais-adota-medidas-preventivas-para-enfrentar-o-el-nino/
@@ -834,6 +1011,28 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/Da5PKEiEYKD/
   - trecho: Jul 17, 2026 ... ... Pinhais - PR on July 17, 2026 ... Prefeitura de Pinhais e lideranças religiosas integram plano de contingência contra os impactos do El Niño
   - juiz: portão automático: fonte não oficial
+- `db8716315e` · nível **B** (4 pts) · seguimento_querido_diario · EX_ANTE · data 06.01.03 (do trecho)
+  - título: Diário oficial de 2026-08-21
+  - url: https://data.queridodiario.ok.org.br/4119152/2026-08-21/a91636060117d972a85a657f2f0dd53e9eaf10b3.pdf
+  - trecho: 03.04 - Relatório de vistorias Relatórios referentes a fatores de risco ambientais relacionados às doenças ou a outros agravos à saúde, e relatórios para a instrução de processos administrativos. 06.01.03.05 - Planos de 
+  - juiz: portão automático: data do ato incompleta (06.01.03)
+- `cb263f587f` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
+  - título: Diário oficial de 2026-02-03
+  - url: https://data.queridodiario.ok.org.br/4119152/2026-02-03/dd75254fd615b0f9c8dad15963da4dcdb48cc2a8.pdf
+  - trecho: 1 Risco de Mercado​ 33 2.9.2 Risco De Crédito​ 34 2.9.3 Risco De Liquidez​ 34 2.9.4 Risco De Solvência​ 35 2.9.5 Risco Sistêmico​ 35 2.9.6 Risco Reputacional​ 35 2.10 AVALIAÇÃO E ACOMPANHAMENTO DO RETORNO DOS INVESTIMENT
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `fa21e3c096` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2025 (do trecho)
+  - título: Diário oficial de 2025-12-11
+  - url: https://data.queridodiario.ok.org.br/4119152/2025-12-11/6bc24ea3ba71c71c168b618d7356ac2e1f67d3c5.pdf
+  - trecho: ​25​ ​2.9.2 Risco De Crédito​ ​25​ ​2.9.3 Risco De Liquidez​ ​26​ ​2.9.4 Risco De Solvência​ ​26​ ​2.9.5 Risco Sistêmico​ ​27​ ​2.9.6 Risco Reputacional​ ​27​ ​2.10 AVALIAÇÃO E ACOMPANHAMENTO DO RETORNO DOS INVESTIMENTOS
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `3ac7871458` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · **Decreto 117**, 08/10/2025
+  - título: Diário oficial de 2025-10-09
+  - url: https://data.queridodiario.ok.org.br/4119152/2025-10-09/5a5fe77e6cb8f6f6ca45ff238b8771d7e276e6b5.pdf
+  - trecho: sensíveis de segurados não devem ser veiculados em grupos abertos ou não institucionais. A gestão dos canais oficiais é de responsabilidade da Diretoria Administrativa (DIAM), que deve manter registro de administradores,
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Pitanga/PR — 1 pendente(s)
 - `0f81f5ccab` · nível **B** (6 pts) · busca_web · EX_ANTE · citação não extraída
@@ -1330,20 +1529,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
-## Votuporanga/SP — 2 pendente(s)
-- `ebc84478b1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2022 (do trecho)
-  - título: Votuporanga terá plano de contingenciamento para evitar falta ... - G1
-  - url: https://g1.globo.com/sp/sao-jose-do-rio-preto-aracatuba/noticia/2022/09/13/votuporanga-tera-plano-de-contingenciamento-para-evitar-falta-de-agua.ghtml
-  - trecho: Sep 13, 2022 ... A empresa responsável pelo abastecimento de água em Votuporanga (SP) ... plano de contingência para evitar a falta de água no município. O ...
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: fonte não oficial
-- `e2b73559c8` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
-  - título: p gestão integrada de plano municipal de
-  - url: https://smastr16.blob.core.windows.net/cpla/2017/05/votuporanga.pdf
-  - trecho: QUESTÃO SOCIOAMBIENTAL NAS EMPRESAS MOVELEIRAS DO POLO DE VOTUPORANGA (SP) ... Como ações estruturantes do Plano de Contingência, o Plano Municipal de ...
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: fonte não oficial
-
 ## None/AC — 1 pendente(s)
 - `e0c2afcacf` · nível **C** (2 pts) · agencia_oficial · — · citação não extraída
   - url: https://agencia.ac.gov.br/estado-antecipa-acoes-e-mobiliza-gabinete-de-crise-para-mitigar-impactos-de-seca-extrema-em-2026/
@@ -1449,7 +1634,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 
 
 ---
-## Decididas (14) — registro permanente, nunca apagadas
+## Decididas (15) — registro permanente, nunca apagadas
 
 - `c53cf50fc3` Rio Branco/AC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `ef69b9d26b` Ouro Branco/AL · aplicada — promovida a registro (plano) em 10/09/2026; revisão consumida · 
@@ -1465,3 +1650,4 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `a37a69b31b` Jacareí/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `2440b4715a` Mauá/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `5b7f46123d` São Bernardo do Campo/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
+- `25519ed399` Votuporanga/SP · aplicada_automaticamente · 
