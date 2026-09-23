@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §172 · Teto de tempo por etapa e por job: a fonte pendurada deixa de segurar a fila · 23/09/2026
+
+**Achado real.** A rodada diária de 23/09 ficou **45+ minutos** no passo do pipeline. Fora do dia de publicação esse passo executa só dois scripts antes de encerrar na trava de cadência, e um deles não toca a rede — logo o tempo estava num único coletor que não respondia. *Registro honesto:* não consegui ler os logs (a API devolveu 404 durante a execução e depois do cancelamento), então a atribuição ao coletor é **inferência pelo caminho do código**, não leitura do log.
+
+**Três camadas faltavam ao mesmo tempo:** `subprocess.run` sem `timeout`; o passo do workflow sem `timeout-minutes`; e o **job** sem `timeout-minutes`, herdando as **seis horas** de padrão do GitHub. Com a trava de concorrência do workflow de atualização (`cancel-in-progress: false`), isso vira a fila parada o dia inteiro — e nada reprova, porque **um job pendurado não é um job vermelho**. Só foi notado porque alguém foi olhar.
+
+**Teto por etapa é a correção principal**, não o teto do job: a fonte lenta mata a etapa dela e a rodada segue, que é a disciplina que o pipeline já declara — nenhum coletor é bloqueante, fonte fora do ar é lacuna declarada. Sem isso a única saída era matar a rodada inteira e perder junto tudo o que ela já havia coletado. 45 min nas etapas pesadas do dia de publicação, 15 min nos coletores diários que nunca pontuam.
+
+**Teto por job é rede de segurança** para o que o teto por etapa não alcança: neto que sobrevive ao filho morto, travamento fora de um subprocesso. 180 min na rodada completa, que leva 75–105.
+
+**O portão passa a exigir teto em todo job de todo workflow** — eram **cinco** sem teto no repositório, não um. Recusa também `timeout-minutes >= 360`, que é declarar o padrão e chamá-lo de teto.
+
+---
+
 ## §170 · Os planos do AM pela reserva de arquivo, com procedência declarada — e a recusa que não se contorna · 23/09/2026
 
 **O problema.** A rodada de 23/09 leu os 62 municípios do painel, e **nenhum** documento abriu: `Connection reset by peer` nas 62 tentativas. O painel Power BI respondia normalmente no mesmo runner, o que localiza o problema — quem recusa não é a Microsoft, é o hospedeiro dos planos.
