@@ -103,8 +103,13 @@ code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-
 .note{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted); margin:0 0 var(--sp-2);}
 .sub{font-size:var(--fs-small); color:var(--muted); font-weight:var(--peso-regular);}
 .selo, .kicker, .mast-sub{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); letter-spacing:var(--ls-caps-largo); text-transform:uppercase; margin:0 0 var(--sp-2);}
-.kicker{color:var(--teal);}
-.selo{color:var(--teal);}
+/* Marca (23/09/2026): o kicker e o selo usavam --teal (SINTÉTICO puro, #5E7C93), que sobre
+   branco dá 4,39:1 — abaixo do AA de 4,5:1 que a própria marca exige. Passam a --link
+   (#4F6B80, 5,60:1), que é o sintético escurecido já usado como cor de texto no site: mesma
+   família, mesmo acento, sem hex novo. Defeito pré-existente, achado pela varredura de
+   contraste da marca. */
+.kicker{color:var(--link);}
+.selo{color:var(--link);}
 .mast-sub{color:var(--muted); margin:0 0 var(--sp-4);}
 /* 22/09/2026 (§155): tag do card do município — 'prioritário' (aproximação do Cadastro Nacional). Mesma família tipográfica dos selos. */
 .tag{display:inline-block; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:1.4; font-weight:var(--peso-semibold); letter-spacing:var(--ls-caps); text-transform:uppercase; padding:0 .45em; border-radius:3px; vertical-align:middle;}
@@ -216,7 +221,7 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 .figura{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:var(--esp-figura); margin:0; box-shadow:var(--sombra); display:flex; flex-direction:column; max-width:100%; min-width:0;}
 .figura[hidden]{display:none;}   /* 13/09/2026: .figura força display:flex, que sobrepõe [hidden] da UA stylesheet — precisa da regra explícita (mesmo padrão de .detail[hidden] acima) */
 .figura--largo{grid-column:1 / -1;}
-.figura-cat{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--teal); margin:0 0 var(--sp-1);}
+.figura-cat{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--link); margin:0 0 var(--sp-1);}
 .figura-titulo{font-family:var(--font-titulo); font-size:var(--fs-h4); line-height:var(--lh-h4); font-weight:var(--peso-display); color:var(--ink); margin:0 0 var(--sp-1); min-height:calc(2 * var(--fs-h4) * var(--lh-h4));}
 .figura-sub{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--esp-figura-legenda); min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
 /* 17/09/2026 (pedido da editoria): gráfico do ONI no padrão dos sites oficiais — fundo preto,
@@ -498,7 +503,7 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .prazo-rel .prazo-meta{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); margin-top:2px; white-space:normal; min-width:0;}
 .prazo-rel .prazo-meta strong{color:var(--ink);}
 .prazo-rel .prazo-espera{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--ink); margin-top:var(--sp-2); max-width:var(--medida-leitura);}
-.prazo-rel .prazo-espera .k{font-family:var(--font-dado); font-size:var(--fs-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--teal);}
+.prazo-rel .prazo-espera .k{font-family:var(--font-dado); font-size:var(--fs-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--link);}
 .prazo-rel .prazo-espera summary{cursor:pointer; list-style:none;}
 .prazo-rel .prazo-espera summary::-webkit-details-marker{display:none;}
 .prazo-rel .prazo-espera summary::after{content:' →'; color:var(--teal);}
