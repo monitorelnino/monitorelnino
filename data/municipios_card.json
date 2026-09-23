@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-23",
- "total": 2184,
+ "total": 2185,
  "com_registro": 267,
- "com_imprensa": 87,
+ "com_imprensa": 89,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -3418,7 +3418,16 @@
    "documento": "Reconhecimento federal; Portaria 875",
    "url": "https://www.diariomunicipal.com.br/femurn",
    "data": "17/03/2026",
-   "fonte": "Atlas Público"
+   "fonte": "Atlas Público",
+   "imprensa": [
+    {
+     "titulo": "El Niño pode provocar tempestades severas no Paraná - G1 - Globo",
+     "url": "https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml",
+     "data": "23/09/2026",
+     "veiculo": "g1.globo.com",
+     "nivel": "B"
+    }
+   ]
   },
   "2408904": {
    "nome": "Parelhas",
@@ -3484,6 +3493,28 @@
    "nome": "São Paulo do Potengi",
    "uf": "RN",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "2413003": {
+   "nome": "São Vicente",
+   "uf": "RN",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "São Vicente reforça preparação para o El Niño - Santa Portal",
+     "url": "https://santaportal.com.br/baixada/sao-vicente-reforca-preparacao-para-o-el-nino/",
+     "data": "23/09/2026",
+     "veiculo": "santaportal.com.br",
+     "nivel": "A"
+    },
+    {
+     "titulo": "São Vicente reforça drenagem como prevenção ao El Niño - Jornal ...",
+     "url": "https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/",
+     "data": "23/09/2026",
+     "veiculo": "jornaldaorla.com.br",
+     "nivel": "A"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "2413409": {

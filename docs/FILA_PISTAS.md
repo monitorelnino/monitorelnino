@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 332 pendente(s) · 15 decidida(s) · A=54 B=218 C=60
+Gerado em 23/09/2026 · 335 pendente(s) · 15 decidida(s) · A=56 B=219 C=60
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -416,6 +416,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: decreto 40/2026
   - url: https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf
   - trecho: Os interessados (grupos formais, ... Cel. Eurico de Castro, nº 14, Centro, Rio das Flôres/RJ. ... O Prefeito Rodrigo Santana de Almeida assinou o Decreto nº 247/2025, que organiza o funcionamento das farmácias em regime 
+
+## São Vicente/RN — 2 pendente(s)
+- `c9edcbd126` · nível **A** (7 pts) · busca_web · DUVIDA · citação não extraída
+  - título: São Vicente reforça preparação para o El Niño - Santa Portal
+  - url: https://santaportal.com.br/baixada/sao-vicente-reforca-preparacao-para-o-el-nino/
+  - trecho: Além das intervenções estruturais, São Vicente conta com o Plano de Contingência de Proteção e Defesa Civil (PCPDC), que estabelece protocolos de monitoramento, prevenção e resposta a eventos meteorológicos severos.
+  - juiz: portão automático: fonte não oficial
+- `dfbc75c84b` · nível **A** (7 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: São Vicente reforça drenagem como prevenção ao El Niño - Jornal ...
+  - url: https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/
+  - trecho: Já São Vicente mantém o Plano de Contingência de Proteção e Defesa Civil, que estabelece protocolos de monitoramento, prevenção e resposta a ocorrências provocadas por chuvas intensas.
+  - juiz: portão automático: fonte não oficial
 
 ## Relvado/RS — 1 pendente(s)
 - `f2695b78ea` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
@@ -1305,6 +1317,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `6ad08bf44e` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://www.conectandonoticias.com.br/valenca-reforca-estrategia-contra-os-efeitos-do-el-nino-e-amplia-plano-de-prevencao-a-queimadas/
   - trecho: Jul 23, 2026 ... Com a atualização do Plano de Contingência e o fortalecimento da integração entre os órgãos municipais e estaduais, Valença busca ampliar ...
+  - juiz: portão automático: fonte não oficial
+
+## Paraná/RN — 1 pendente(s)
+- `f4a1c5aa12` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
+  - título: El Niño pode provocar tempestades severas no Paraná - G1 - Globo
+  - url: https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml
+  - trecho: Devido à previsão, Defesa Civil começou a revisar Plano de Contingência e a orientar prefeituras sobre prevenção a desastres. Por Millena Sartori, g1 PR. 14 ...
   - juiz: portão automático: fonte não oficial
 
 ## Alvorada D'Oeste/RO — 1 pendente(s)
