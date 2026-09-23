@@ -152,7 +152,7 @@ def classificar_falha(e) -> tuple:
         if e.code in (401, 402, 403, 429, 451):
             return "acesso recusado", f"HTTP {e.code} — o servidor respondeu NÃO; não se contorna"
         if e.code in (404, 410):
-            return "nada localizado", f"HTTP {e.code} — o caminho tentado não existe neste domínio"
+            return "consultado sem achado", f"HTTP {e.code} — o caminho tentado não existe neste domínio"
         return "erro", f"HTTP {e.code} — servidor com defeito"
     return "erro", f"{type(e).__name__} — sem resposta do servidor (não é recusa; ver §170)"
 
@@ -186,7 +186,7 @@ def sondar(uf: str, setor: str, fila: dict) -> list:
         # §181: o silêncio era o pior dos registros. Sem esta linha, "consultei e não havia painel"
         # e "nunca consultei" ficam idênticos no log — e a leitura do resultado erra, porque só as
         # falhas aparecem. Aconteceu de verdade na leitura da rodada de 23/09.
-        log_busca("sonda de painéis", 1, [dominio], "nada localizado",
+        log_busca("sonda de painéis", 1, [dominio], "consultado sem achado",
                   resultados=f"consultado em {consultadas} página(s); nenhuma referência a "
                              f"hospedeiro de painel no HTML bruto", uf=uf, n_resultados=0)
     return novos
@@ -279,7 +279,7 @@ def autoteste() -> int:
         import urllib.error
         e = urllib.error.HTTPError("https://x/planos", 404, "Not Found", None, None)
         d, motivo = classificar_falha(e)
-        return d == "nada localizado" and "não existe" in motivo
+        return d == "consultado sem achado" and "não existe" in motivo
 
     def t_403_e_recusa_que_se_respeita():
         import urllib.error

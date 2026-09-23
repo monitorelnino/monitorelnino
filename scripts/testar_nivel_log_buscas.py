@@ -86,7 +86,53 @@ def t3():
     return False
 
 
-sys.exit(rodar_autoteste({
+
+# §184 (23/09/2026): o vocabulário de `decisao`, que é irmão do de `nivel` e tem a mesma armadilha.
+# Defeito real: o §181 fez a sonda de camada registrar o silêncio como "nada localizado", valor
+# reservado à bateria municipal completa — a chamada quebrava no assert e, se passasse, o portão de
+# consistência reprovaria. Nunca rodou porque só dispara em execução com rede.
+def t3():
+    """'nada localizado' sem bateria municipal completa continua proibido."""
+    import coletores_base as cb
+    try:
+        cb.log_busca("sonda de painéis", 1, ["x.gov.br"], "nada localizado", uf="PR")
+        return False
+    except AssertionError:
+        return True
+
+
+def t4():
+    """'consultado sem achado' é aceito sem nível — é sonda de UF, não verificação municipal."""
+    import ast as _ast
+    import pathlib as _p
+    fonte = (_p.Path(__file__).resolve().parent.parent / "coletores_base.py").read_text(encoding="utf-8")
+    arvore = _ast.parse(fonte)
+    for no in _ast.walk(arvore):
+        if isinstance(no, _ast.FunctionDef) and no.name == "log_busca":
+            texto = _ast.get_source_segment(fonte, no) or ""
+            return '"consultado"' in texto and '"nada localizado"' not in texto.split("assert")[1][:200]
+    return False
+
+
+def t5():
+    """Nenhum script registra 'nada localizado' sem passar nivel='municipal_completo'."""
+    import pathlib as _p
+    raiz = _p.Path(__file__).resolve().parent.parent
+    suspeitos = []
+    for arq in list(raiz.glob("*.py")) + list(raiz.glob("scripts/*.py")):
+        if arq.name in ("coletores_base.py", "verificar_consistencia.py", "recalcular_mare.py",
+                        "migrar_v224_verificacao.py", "testar_nivel_log_buscas.py",
+                        "verificar_robustez_atualizacao.py", "gerar_cobertura_declarada.py"):
+            continue
+        for linha in arq.read_text(encoding="utf-8").split("\n"):
+            if '"nada localizado"' in linha and "log_busca" in linha and "municipal_completo" not in linha:
+                suspeitos.append(f"{arq.name}: {linha.strip()[:80]}")
+    return not suspeitos
+
+sys.exit(rodar_autoteste({"§184 'nada localizado' sem bateria municipal reprova": t3,
+                          "§184 'consultado sem achado' entra no vocabulário": t4,
+                          "§184 nenhum script loga 'nada localizado' sem o nível": t5,
+                          
     "vocabulário de nivel intacto (não aceita 'municipal')": t1,
     "log_busca() em coletores_base.py só usa níveis do vocabulário": t2,
     "log da redação de dados pessoais usa nivel=None": t3,

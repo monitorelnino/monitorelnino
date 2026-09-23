@@ -94,12 +94,36 @@ TERMOS_BUSCA = {
 }
 
 
+def dominio_por_busca_ativa(uf: str, setor: str):
+    """(dominio, confianca) achados por `descobrir_dominios.py` (§184), ou (None, None).
+
+    Lê `data/dominios_oficiais.json`, que guarda a trilha das tentativas e só registra endereço que
+    se identificou como a instituição procurada. Nunca levanta: arquivo ausente é o caso normal em
+    cópia parcial do repositório."""
+    alvo = (ler("dominios_oficiais.json", {"alvos": {}}) or {}).get("alvos", {}).get(f"{uf}/{setor}") or {}
+    return alvo.get("dominio"), alvo.get("confianca")
+
+
 def dominio_para(uf: str, setor: str) -> str:
-    """Domínio conhecido, ou o padrão mais comum como primeira tentativa (§11: declarado,
-    não escondido — precisa de curadoria; um palpite errado só perde recall)."""
+    """Endereço do órgão, na ordem de quem prova mais (§184, 23/09/2026).
+
+    1. busca ativa com identidade no TÍTULO da página (confiança alta) — é a prova mais forte;
+    2. curadoria humana (DOMINIOS_CONHECIDOS, §179), que conferiu caso a caso;
+    3. busca ativa com identidade só no corpo (confiança média);
+    4. o padrão mais comum como último recurso, declarado como palpite.
+
+    O palpite fica por último porque erra de três maneiras conhecidas — subdomínio inexistente (a
+    Defesa Civil da PB fica sob o Corpo de Bombeiros), endereço que só responde com `www.` (o caso
+    do PR) e endereço que responde sendo outra coisa —, e cada erro vira lacuna falsa: ausência de
+    busca publicada como ausência de plano."""
+    ativo, confianca = dominio_por_busca_ativa(uf, setor)
+    if ativo and confianca == "alta":
+        return ativo
     conhecido = DOMINIOS_CONHECIDOS.get(setor, {}).get(uf)
     if conhecido:
         return conhecido
+    if ativo:
+        return ativo
     prefixo = "saude" if setor == "saude" else "defesacivil"
     return f"{prefixo}.{uf.lower()}.gov.br"
 

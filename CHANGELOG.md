@@ -9,6 +9,49 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §184 · O endereço do órgão deixa de ser palpite: busca ativa nas 27 UFs, com trilha e confiança declaradas · 23/09/2026
+
+Classe **correção de instrumentação**. Nenhum número do índice muda. Muda de onde a coleta vai buscar documento em 20 dos 54 alvos — e o que o projeto diz quando não acha.
+
+**O que estava errado.** `dominio_para()` chutava `defesacivil.<uf>.gov.br` e `saude.<uf>.gov.br`, com sete correções feitas à mão no §179. A editoria apontou o caso do PR em 23/09, e ele é o tipo do erro: o chute pode falhar por razões que nada têm a ver com existir ou não plano. São três, todas medidas hoje: o subdomínio **não existe** (a Defesa Civil da PB fica sob o Corpo de Bombeiros), **existe só com `www.`**, ou **responde sendo outra coisa**. Cada uma vira lacuna falsa — ausência de busca publicada como ausência de plano, que é exatamente o que o §11 proíbe confundir.
+
+**A busca ativa.** `descobrir_dominios.py` testa até dez padrões declarados por UF e setor (`defesacivil`, `www.defesacivil`, `cbm`, `bombeiros`, `cedec`, `sedec`, portal do estado; e para saúde `saude`, `ses`, `sesa`, `sesau`, `sus`) e **só aceita quem se identifica como a instituição procurada**: identidade no `<title>` é confiança **alta**, no corpo é **média**, e quem responde sem se identificar **não é escolhido** — endereço que responde sem se nomear daria aparência de busca feita. A trilha inteira fica gravada em `data/dominios_oficiais.json`, inclusive os candidatos que falharam: saber que `cbm.<uf>.gov.br` não existe é informação, não ruído. Disciplina do §11 mantida: cliente identificado, uma requisição por domínio a cada 2 s, e `403` anotado como recusa que não se contorna (§170).
+
+**Resultado: 54 alvos, 47 com domínio identificado** — 29 com identidade no título, 18 no corpo — e **7 sem domínio**, cada um com o motivo em vocabulário que distingue o que é diferente. **Vinte diferem do palpite:**
+
+- **15 só por causa do `www.`** — AL e MA (saúde), CE (os dois setores), DF, MS (os dois), PA, PE (os dois), PI, RN (os dois), TO. É o caso que a editoria apontou, multiplicado por quinze.
+- **5 são outro órgão ou o portal do estado:** a defesa civil de **GO**, **PB**, **TO** responde em `bombeiros.<uf>.gov.br`, e a de **AM** e **RR** em `cbm.<uf>.gov.br` — Corpo de Bombeiros, que é onde a defesa civil estadual costuma morar.
+
+**A ordem de prova, declarada em código.** `dominio_para()` resolve nesta sequência: identidade no título (a prova mais forte) → curadoria humana do §179 → identidade no corpo → palpite, **agora explicitamente por último**. A busca ativa confirmou 11 das 13 curadorias manuais, **corrigiu uma** (PE defesa civil: a curadoria apontava o portal do estado, `www.pe.gov.br`; existe `www.defesacivil.pe.gov.br`, que se nomeia no título) e não alcançou uma (RO saúde: `sesau.ro.gov.br` não resolveu no DNS hoje, e a curadoria segue valendo por ser mais forte que o palpite).
+
+**As sete lacunas, nomeadas pelo motivo — e nenhuma é "não tem plano".** AP (os dois setores) e parte de RJ, RO, PB: **certificado TLS que não valida**, que é achado sobre o sítio do estado e não se contorna; AM saúde: DNS inexistente em seis candidatos e **404** nos dois que resolvem; RJ, RO e PB: o portal do estado responde mas não se nomeia como a secretaria. Antes desta entrada, os sete apareceriam como "nenhum candidato respondeu se identificando" — frase que escondia quatro situações distintas.
+
+**Dois defeitos meus, achados na primeira execução real e consertados aqui.**
+
+*O primeiro estava latente no §181, já mesclado.* Ao fazer a sonda de camada registrar o silêncio, usei a decisão `"nada localizado"` — valor **reservado à bateria municipal completa**: `recalcular_mare.py` o lê para elevar o nível de verificação do município, `verificar_consistencia.py` reprova se ele aparecer sem `nivel="municipal_completo"`, e o `assert` de `log_busca()` derruba a chamada. Nunca havia rodado porque só dispara em execução com rede — e derrubou a varredura no quinto alvo. O vocabulário ganha **`"consultado sem achado"`**, para a sonda de UF registrar que olhou sem entrar pela porta da verificação municipal. Três casos novos no portão do vocabulário, incluindo uma varredura que reprova se **qualquer** script voltar a logar `"nada localizado"` sem o nível.
+
+*O segundo era a régua de identidade.* A marca `"secretaria de estado da saude"` não casou com o título real da SES-MG — **"Home | Secretaria De Estado De Saúde De Minas Gerais"** —, porque o órgão escreve "de saúde", não "da saúde". Uma preposição derrubou a identificação de um domínio que responde e se nomeia, e MG entrou como lacuna falsa. As marcas passam a ser expressões (`secretaria[^.]{0,30}\bsaude\b`), e o caso real da SES-MG virou teste.
+
+**Teste.** Nove casos no autoteste do script, todos offline com rede injetada: ordem de prova, identidade no título e no corpo, parada no primeiro de confiança alta, página que não se identifica, `403` como recusa, motivo separando TLS de ausência, e a preposição da SES-MG. Autoteste bloqueante em `portoes.yml` — o repositório vai a 53 portões. Consistência, `recalcular_mare --check`, evidências, escrita portável e portão 12 verdes.
+
+## §183 · O que o defeso eleitoral veda, conferido na norma: propaganda, não dado · 23/09/2026
+
+Classe **registro metodológico**. Nenhum número, nenhuma página e nenhum texto público mudam. Muda a régua com que o Monitor interpreta um sítio oficial que sai do ar citando o período eleitoral — e essa régua vinha sendo aplicada sem estar escrita.
+
+**Por que a pergunta surgiu.** O §182 mostrou que, das 31 fontes que o projeto tratava como suspensas por defeso, 22 não estavam: cinco suspendiam apenas **notícia institucional** e 17 não declaravam suspensão alguma. A editoria formulou a dúvida certa: o defeso suspende defesa civil e saúde? A resposta não podia ser inferência — tinha de vir da norma.
+
+**O que a norma diz.** A **Lei 9.504/97, art. 73, VI, "b"** veda ao agente público *autorizar publicidade institucional* de atos, programas, obras, serviços e campanhas nos três meses anteriores ao pleito, ressalvados os produtos e serviços com concorrência no mercado e a grave e urgente necessidade pública **reconhecida previamente** pela Justiça Eleitoral. É restrição de **propaganda**.
+
+**O que a norma preserva expressamente.** A **Resolução TSE nº 23.735/2024, art. 15, §§ 2º, 3º e 4º** estabelece que manter páginas na internet para cumprir os deveres do **art. 48-A da LC 101/2000** (transparência fiscal), dos **arts. 8º e 10 da Lei 12.527/2011** (LAI — divulgação de informação de interesse coletivo independentemente de requerimento) e do **art. 29, § 2º, da Lei 14.129/2021** **não configura publicidade institucional vedada**. O que se exige é *adequar* a página: retirar nome, símbolo, slogan e elemento de enaltecimento pessoal ou governamental. A jurisprudência acompanha — TSE, **AgR-REspe nº 18241** (26/09/2017): conteúdo antigo e meramente informativo no sítio oficial não é conduta vedada; **AgR-RO nº 187415** (29/05/2018, rel. Rosa Weber): o exame é caso a caso, nunca em abstrato.
+
+**A síntese, que é a régua:** a norma manda tirar a **propaganda**, não o **dado**.
+
+**Consequência operacional, e é ela que entra no método.** Sítio que retira do ar PLANCON, plano estadual de saúde ou portal de transparência citando o período eleitoral **não está cumprindo exigência legal — está excedendo-a**, e o dever da LAI continua valendo. Então o Monitor: (a) registra o fato observado — o sítio declara o próprio conteúdo indisponível —, com evidência e data; (b) classifica isso como **lacuna de transparência declarada**, nunca como impedimento legal à publicação; (c) distingue o escopo do que o próprio sítio declara (§182), porque suspensão de notícia institucional não fecha o canal de documento. O excesso de cautela tem casos documentados fora do ciclo do El Niño — Ibama, INPE, Arquivo Nacional, Agência Brasil — e é matéria jornalística do próprio Monitor, não pressuposto do método.
+
+**Onde isto vive.** `METODOLOGIA.md` §24 (período eleitoral), com os dispositivos citados e a consequência escrita. **Nenhuma frase pública foi alterada nesta entrada**: como a régua toca o que o site afirma sobre estados, a redação ao leitor é decisão da editoria, e fica aguardando sua palavra.
+
+**O que ficou pendente, nomeado.** A releitura das fontes que estavam falsamente suspensas — MT, SP, PR e SE, defesa civil e saúde — porque, se o canal de documento estava aberto, havia plano alcançável que o Monitor não estava lendo.
+
 ## §182 · "Fonte suspensa por defeso" era, em 22 de 31 casos, coisa nenhuma — o detector casava em atributo de imagem e não distinguia notícia de serviço · 23/09/2026
 
 Classe **correção de leitura com efeito no material público**. Nenhum número do índice muda. Muda quantas fontes o Monitor declara suspensas: de **31 para 9**.
