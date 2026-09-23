@@ -49,7 +49,10 @@ def gravar_texto(h: str, paginas: list) -> str:
     txt, n_cpfs = redigir_dados_pessoais(txt)
     if n_cpfs:
         print(f"  [redação] {n_cpfs} CPF(s) removido(s) do texto antes de preservar")
-    (EVID / f"{h}.txt").write_text(txt, encoding="utf-8")
+    # newline="\n" (§174): sem isso, no Windows o texto sai em CRLF enquanto o texto_hash abaixo é
+    # calculado sobre a string em memória, com \n — o hash registrado deixaria de bater com o
+    # arquivo em disco, e a cópia preservada divergiria da que o runner gera. Ver §163.
+    (EVID / f"{h}.txt").write_text(txt, encoding="utf-8", newline="\n")
     return hashlib.sha256(txt.encode("utf-8")).hexdigest()
 
 
