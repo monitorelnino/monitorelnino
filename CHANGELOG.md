@@ -9,6 +9,42 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §187 · O plano de saúde de SP estava no banco desde 10/09, e a procedência dizia "robots" onde era geobloqueio · 23/09/2026
+
+Classe **correção de registro e de instrumento**. Nenhum número do índice muda e nada é promovido. O que muda é a qualidade da prova de um estado, um padrão de busca que escondia host inteiro, e um detector que não reconhecia uma recusa.
+
+**A pergunta da editoria.** Recebido o endereço do *Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño 2026-2027* (SES-SP), a pergunta foi: por que a varredura não achou? A resposta não é ausência — é **recall**, e o mais desconfortável é que a busca tinha, no próprio banco, uma instrução para não tentar.
+
+**O documento já estava registrado.** `data/saude_desfechos/fontes_uf.json` traz a URL exata como `url_instrumento` de SP desde **10/09/2026**, com a leitura de que o plano "substitui o Plano de Contingência das Arboviroses 2025/2026 como instrumento de referência do ciclo". E `data/evidencias.json` guardava dele uma **transcrição manual de 9,7 kB** (`41e391c6…`), com a convenção declarada: a chave é o sha256 do **texto**, porque o binário não havia sido baixado.
+
+**A primeira hipótese era errada, e a medição a derrubou.** Suspeitei do padrão de domínio: `descobrir_dominios.PADROES["saude"]` não gerava `portal.saude.{uf}.gov.br`, e o §184 havia fechado SP em `saude.sp.gov.br`. Medido: as três grafias — `saude.sp.gov.br`, `www.saude.sp.gov.br` e `portal.saude.sp.gov.br` — servem **o mesmo documento, com o mesmo sha256** (`a5473b26…`, 1.368.655 bytes), sob o host que o §184 já tinha escolhido. **O padrão não foi a causa.** Ele foi acrescentado de todo modo, como alargamento de alcance e não como correção de defeito, e a entrada registra a diferença porque confundir as duas coisas é como se aprende a lição errada.
+
+**As causas reais, medidas:**
+
+1. **A busca não consulta o próprio banco.** `descobrir_dominios` e `descobrir_planos` procuram por palpite de domínio e por link em página renderizada, e **nunca conferem as URLs que o projeto já registrou** em `data/saude_desfechos/fontes_uf.json` e `data/evidencias.json`. O plano estava nos dois. Uma varredura que ignora o que já foi achado pode registrar "consultado sem achado" sobre documento que o projeto lê desde 10/09 — e foi exatamente isso. É a causa de fundo, e a mais fácil de subestimar, porque não se parece com um defeito de rede nem de parser.
+2. **Caminho fundo, não linkado.** O PDF está sob `/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/central/`, e nenhuma das páginas que o canal renderizado do §185 visitou aponta para ele. Descoberta por link não alcança documento que não é linkado de onde se entra.
+3. **A nota de procedência dizia para não tentar** — "portal.saude.sp.gov.br recusa acesso automatizado por `robots.txt`".
+
+**E essa justificativa não se sustenta.** Medido em 23/09: `portal.saude.sp.gov.br/robots.txt` devolve **404** — não existe arquivo, nada está proibido. A única captura arquivada daquele caminho (Wayback, 29/04/2026) **não é um `robots.txt`**: é uma página `Connection denied by Geolocation`, servida com **HTTP 200**. O que barrou a leitura automatizada em 10/09 foi **geobloqueio de WAF**, não robots.
+
+O diagnóstico correto já estava escrito — em `METODOLOGIA.md` §11, a própria entrada de 10/09 registra que "num acesso automatizado a outro recurso do CVE-SP a resposta foi `Blocked country: [Brazil]`". **Os dois registros do projeto discordavam entre si**, um dizendo geolocalização e outro dizendo robots, e a varredura de 23/09 não leu nenhum dos dois. Uma recusa mal nomeada virou regra de abstenção por treze dias.
+
+**O detector do §186 não pegava esse caso.** `detectar_muro_de_robo` devolvia `None` para a página de geobloqueio: a lista de marcas tinha Imperva, Cloudflare e Akamai, e não tinha muro de país. É a mesma classe e o mesmo perigo do §186 — o servidor respondeu não, e a resposta **parece conteúdo**: uma página de 1,5 kB entraria no índice de evidências como se fosse o documento. `"connection denied by geolocation"` entra em `MARCAS_DE_MURO`.
+
+**Cautela operacional que fica declarada.** O filtro é por país, e o *runner* da Action **não roda no Brasil**. Este acesso de 23/09 partiu de máquina no Brasil e funcionou; a captura de um rastreador fora do país foi negada. Então documento de SP acessível daqui pode ser inacessível no CI, e vice-versa — divergência de ambiente que nenhum coletor deve tratar como ausência de plano.
+
+**O que ficou preservado.** O **binário** do plano: 43 páginas, 1.368.655 bytes, `a5473b26…`, com texto extraído do próprio documento (78.771 caracteres, sem CR) e hash dos dois. A cadeia de SP na saúde deixa de ser transcrição à mão e passa a ser binário + texto, ambos verificáveis. Os dois itens ficam cruzados no índice, e o de 10/09 guarda a retificação da sua própria procedência — o erro fica no registro, não apagado.
+
+**Um apontamento de imprensa onde havia documento.** Em `data/saude_uf.json`, o instrumento de SP para o El Niño apontava para matéria da **CNN Brasil**, com `hash_evidencia: null`, enquanto o oficial já estava em `fontes_uf.json`. Trocado pelo documento, com o hash do binário; a notícia fica em `url_noticia`. **O status não muda por esta correção**: continua `NOVO`, e reclassificar é R7.
+
+**Sergipe: o OCR entregou o ato.** A Resolução CES/SE nº 08/2024 é publicada num arquivo que o nome promete como resolução e que é, de fato, a **página 7 do Diário Oficial de Sergipe nº 29.393 de 07/05/2024** — digitalizada, zero caracteres extraíveis, com matéria de outros órgãos na mesma página. O OCR do §177 devolveu 9.007 caracteres legíveis, e neles o ato **se apresenta como tal** (régua do §180): o Plenário do Conselho Estadual de Saúde, na 275ª Reunião Ordinária de 06/05/2024, invocando as Leis 8.080/1990, 8.142/1990 e a Lei Estadual 6.300/2007, "Resolve **APROVAR** o Plano Estadual de Saúde 2024-2027", com homologação do Secretário de Estado da Saúde. O limite do §156 e do §177 fica escrito no registro: **texto de OCR é cópia legível, nunca entrada de classificador nem de juízo** — e este traz ruído visível (lê "08/2074" onde o original diz 08/2024). Quem decide se o registro de SE vira `documentado` é a editoria, lendo o documento.
+
+**Instrumento de leitura.** `preservar_evidencias.py --ler|--ocr --alvo <trecho-da-url>` restringe a fila a um documento: esperar a vez de um alvo específico gastava rede relendo dezenas já lidos.
+
+**O que fica em aberto, declarado.** A causa 1 não foi corrigida nesta entrada: fazer a busca conferir as URLs já registradas no banco antes de concluir é mudança de arquitetura da descoberta, não remendo, e entra como dívida nomeada. Enquanto ela não existir, **nenhuma rodada de descoberta pode ser lida como prova de ausência** — só como prova de que aquele canal não achou.
+
+**Teste.** Um caso novo em `descobrir_dominios --autoteste` (as grafias com `portal.` estão nos padrões, antes do palpite genérico `www.{uf}`) e o **15º** em `scripts/testar_robots.py` (geobloqueio com 200 é recusa). Autotestes de robots e de domínios verdes; consistência, `recalcular_mare --check`, evidências, escrita portável e portão 12 verdes.
+
 ## §186 · A releitura de PR, SP e SE: o que apareceu, e o muro de robô que devolvia bloqueio com HTTP 200 · 23/09/2026
 
 Classe **coleta e correção de leitura**. Nenhum número do índice muda e nada é promovido — tudo entra na fila R7. O que muda é o que está preservado, e uma prova falsa que o projeto poderia ter registrado sem perceber.

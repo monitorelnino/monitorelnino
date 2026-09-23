@@ -45,9 +45,16 @@ PADROES = {
     "defesa_civil": ["defesacivil.{uf}.gov.br", "www.defesacivil.{uf}.gov.br",
                      "cbm.{uf}.gov.br", "bombeiros.{uf}.gov.br", "www.bombeiros.{uf}.gov.br",
                      "cedec.{uf}.gov.br", "sedec.{uf}.gov.br", "defesacivil.{uf}.def.br",
+                     "portal.defesacivil.{uf}.gov.br", "portal.{uf}.gov.br",
                      "www.{uf}.gov.br", "{uf}.gov.br"],
-    "saude": ["saude.{uf}.gov.br", "www.saude.{uf}.gov.br", "ses.{uf}.gov.br", "sesa.{uf}.gov.br",
-              "sesau.{uf}.gov.br", "sus.{uf}.gov.br", "www.{uf}.gov.br", "{uf}.gov.br"],
+    # §187: "portal." é convenção comum no governo estadual brasileiro e faltava aqui. É ALARGAMENTO
+    # DE ALCANCE, não correção de defeito, e a distinção está medida: o Plano Estadual de Saúde para
+    # o El Niño de SP é servido com o MESMO sha256 em saude.sp.gov.br, www.saude.sp.gov.br e
+    # portal.saude.sp.gov.br — o host escolhido pelo §184 sempre servia o documento. O que escondeu
+    # o plano foi o caminho fundo e não linkado, e a busca não conferir o que o banco já registrava.
+    "saude": ["saude.{uf}.gov.br", "www.saude.{uf}.gov.br", "portal.saude.{uf}.gov.br",
+              "ses.{uf}.gov.br", "sesa.{uf}.gov.br", "sesau.{uf}.gov.br", "sus.{uf}.gov.br",
+              "portal.{uf}.gov.br", "www.{uf}.gov.br", "{uf}.gov.br"],
 }
 
 # Marcas de identidade: o que a página tem de dizer para ser aceita como a instituição procurada.
@@ -256,7 +263,15 @@ def autoteste() -> int:
         finally:
             dp.ler = real_ler
 
+    def t_padrao_cobre_o_host_do_plano_de_sp():
+        """§187: as grafias com "portal." entram no leque, antes do palpite genérico www.{uf}. Trava de
+        alcance, não de defeito — medido em 23/09, os três hosts de SP servem o mesmo documento."""
+        alvos = [x.format(uf="sp") for x in PADROES["saude"]]
+        return ("portal.saude.sp.gov.br" in alvos
+                and alvos.index("portal.saude.sp.gov.br") < alvos.index("www.sp.gov.br"))
+
     return rodar_autoteste({
+        "§187 padrão de saúde cobre portal.saude.<uf>": t_padrao_cobre_o_host_do_plano_de_sp,
         "ordem de prova: título > curadoria > corpo > palpite": t_ordem_de_prova_em_dominio_para,
         "identidade no título escolhe o domínio": t_titulo_vence,
         "para de bater no primeiro de confiança alta": t_para_no_primeiro_de_confianca_alta,
