@@ -9,6 +9,28 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §168 · A rodada real do painel do AM: 62 de 62 municípios lidos, e a eliminação que faltava no caminho principal · 23/09/2026
+
+**A verificação que faltava.** As correções do §165 (etiqueta de interface do Power BI colada ao nome; rolagem que nunca acontecia) passavam no autoteste offline, mas não tinham sido postas contra o painel real. Rodada manual com `commitar: false`, que não escreve nada no repositório:
+
+| | antes | depois |
+|---|---|---|
+| linhas lidas | 20 de 62 | **62 de 62** |
+| declarado | 19 | **51** |
+| sem plano declarado | 1 | **11** |
+| sem código IBGE | **20** | **1** |
+| itens na fila | 82 | 63 |
+
+Os 51/11 reproduzem exatamente a divisão da leitura humana de 22/09 — duas leituras independentes, mesmo resultado. Isso é corroboração, não coincidência.
+
+**O que a rodada real ainda revelou: a eliminação não valia no caminho principal.** Mesmo com os 62 lidos, sobrou **um** município sem código IBGE — "Careiro Castanho" no painel contra "Careiro" no IBGE. A regra de casamento por eliminação existia desde o §165, tinha dois casos de teste, e **só era chamada no caminho da semeadura**. Quando a rodada renderizada virou o caminho principal, a regra ficou para trás sem que nada acusasse: dois caminhos de código, um deles com a correção.
+
+Ligada agora nas duas origens, com a mesma trava: só dispara quando sobra **um** nome sem par de cada lado. Dois casos novos fixam os dois lados da regra — a dedução acontece na grade completa, e **não** acontece em leitura parcial, onde 61 códigos sem par tornariam qualquer dedução um chute.
+
+**Em aberto, declarado e sem eufemismo.** Os 62 documentos responderam `Connection reset by peer` ao runner do GitHub, um a um. **Nenhum ato foi lido; a rodada não produziu um único `documentado`.** Isso é lacuna declarada: não sabemos se o portal recusa o runner, se recusa endereços fora do Brasil, ou se estava fora do ar. O que o painel prova continua sendo o que ele sempre provou — que o estado **declara** o plano —, e ano no painel não prova antecipação. A camada `documentado` do AM segue vazia, e é assim que deve aparecer enquanto for verdade.
+
+---
+
 ## §167 · Automações do projeto: os portões passam a ter fonte única, e as regras viram portas · 23/09/2026
 
 Classe **encanamento**; nenhum dado, número ou página muda. Lote saído de falhas desta mesma sessão, não de catálogo.

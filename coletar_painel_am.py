@@ -299,12 +299,26 @@ def coletar(url: str, de_arquivo=None, limite=None, efeitos: "Efeitos | None" = 
                   "painel AM", 1, strings=[url], uf="AM")
         return {"itens": [], "resumo": {"erro": render.get("erro")}}
 
+    # A eliminação vale para as DUAS origens. Ela nasceu no caminho da semeadura, mas a
+    # rodada renderizada de 23/09 mostrou o custo de deixá-la de fora aqui: 62 dos 62
+    # municípios lidos, e ainda assim um nome sem par — "Careiro Castanho" no painel contra
+    # "Careiro" no IBGE. A regra existia, era testada, e não era chamada no caminho que
+    # virou o principal. Só dispara quando sobra UM de cada lado; com dois ou mais, todos
+    # seguem lacuna declarada.
+    brutas = list((render.get("linhas") or [])[:limite])
+    registros = [linha_para_registro(b) for b in brutas]
+    deduzidos = casar_por_eliminacao(
+        [r["municipio_no_painel"] for r in registros], por_cod, por_nome)
+
     itens, ibges_lidos = [], []
-    for bruta in (render.get("linhas") or [])[:limite]:
-        r = linha_para_registro(bruta)
-        cod = casar_ibge(r["municipio_no_painel"], por_nome)
+    for r in registros:
+        nome = r["municipio_no_painel"]
+        cod = casar_ibge(nome, por_nome)
+        if not cod and nome in deduzidos:
+            cod = deduzidos[nome]
+            r = {**r, "casamento_ibge": "por eliminação (único sem par dos dois lados)"}
         if not cod:
-            ef.lacuna(f"município do painel: {r['municipio_no_painel']!r}",
+            ef.lacuna(f"município do painel: {nome!r}",
                       "nome não casou com a referência IBGE do AM",
                       "painel AM", 1, uf="AM")
         else:
@@ -617,6 +631,40 @@ def autoteste() -> int:
         return (a["camada"] == "declarado" and a["hash_evidencia"] is None
                 and any("Atalaia" in f for f, _ in ef.lacunas))
 
+    def t_eliminacao_vale_no_caminho_renderizado():
+        """A regra de eliminação nasceu na semeadura e NÃO era chamada aqui — a rodada real
+        de 23/09 leu os 62 municípios e ainda assim devolveu um sem código IBGE, porque o
+        painel escreve "Careiro Castanho" e o IBGE registra "Careiro". Monta uma grade com
+        os 62 nomes do IBGE, troca só esse por "Careiro Castanho", e cobra a dedução."""
+        por_cod, por_nome = referencia_ibge()
+        nomes = sorted((por_cod[c]["nome"] for (n, uf), c in por_nome.items() if uf == "AM"))
+        nomes = [("Careiro Castanho" if n == "Careiro" else n) for n in nomes]
+        grade = {"ok": True, "colunas": ["Município", "Calha", "Ano do Plano"],
+                 "linhas": [{"indice": i, "celulas": {"Município": n, "Calha": "—",
+                                                      "Ano do Plano": "2026"},
+                             "url_do_link": None, "como_obtido": "sem link na linha"}
+                            for i, n in enumerate(nomes, 1)]}
+        s2 = coletar(URL_SUB_PAINEL, de_arquivo=_escrever_tmp(grade), efeitos=_inertes())
+        por_painel = {i["municipio_no_painel"]: i for i in s2["itens"]}
+        cc = por_painel.get("Careiro Castanho")
+        sem_ibge = [i for i in s2["itens"] if not i["ibge"]]
+        return (cc and cc["ibge"] and "elimina" in (cc.get("casamento_ibge") or "")
+                and not sem_ibge)
+
+    def t_eliminacao_nao_dispara_em_leitura_parcial():
+        """Duas linhas lidas de 62 deixam 61 códigos sem par: a eliminação não pode deduzir
+        nada aí. Um nome desconhecido numa leitura parcial continua lacuna declarada."""
+        grade = {"ok": True, "colunas": ["Município", "Ano do Plano"],
+                 "linhas": [{"indice": 1, "celulas": {"Município": "Manaus",
+                                                      "Ano do Plano": "2026"},
+                             "url_do_link": None, "como_obtido": "sem link na linha"},
+                            {"indice": 2, "celulas": {"Município": "Cidade Inexistente",
+                                                      "Ano do Plano": "2026"},
+                             "url_do_link": None, "como_obtido": "sem link na linha"}]}
+        s2 = coletar(URL_SUB_PAINEL, de_arquivo=_escrever_tmp(grade), efeitos=_inertes())
+        por_painel = {i["municipio_no_painel"]: i for i in s2["itens"]}
+        return por_painel["Cidade Inexistente"]["ibge"] is None
+
     def t_ano_sem_link_fica_declarado():
         """O coração da regra: painel diz 2026, não há link → declarado, nunca documentado,
         e nunca 'antecipado por ser de 2026'."""
@@ -737,6 +785,8 @@ def autoteste() -> int:
         "link abre + ato com nº e data → documentado": t_link_abre_com_ato_vira_documentado,
         "link abre sem ato legível → continua declarado": t_link_abre_sem_ato_continua_declarado,
         "link que não abre → lacuna declarada": t_link_que_nao_abre_vira_lacuna,
+        "eliminação vale também no caminho renderizado": t_eliminacao_vale_no_caminho_renderizado,
+        "eliminação não deduz em leitura parcial": t_eliminacao_nao_dispara_em_leitura_parcial,
         "ano 2026 sem link → declarado, nunca documentado": t_ano_sem_link_fica_declarado,
         "linha sem ano e sem link → sem plano declarado": t_sem_ano_e_sem_link_e_sem_plano,
         "render falho vira lacuna declarada, não ausência": t_render_falho_vira_lacuna,
