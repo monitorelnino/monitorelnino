@@ -96,16 +96,80 @@ def _plano(t: str) -> str:
     return "".join(c for c in _ud.normalize("NFD", str(t or "").lower()) if _ud.category(c) != "Mn")
 
 
-def detectar_defeso(texto: str) -> str | None:
-    """Padrão que casou (sem acento) ou None. Função pura; só corpos HTML/texto pequenos interessam."""
+def texto_declarativo(html: str) -> str:
+    """O que a página DIZ ao leitor: texto visível, mais <title> e <meta name="description">.
+
+    §182 (23/09/2026, achado numa rodada real): a detecção de defeso rodava sobre o HTML cru, e
+    casava em atributo — `alt="banner periodo eleitoral"` de uma imagem em saude.pi.gov.br marcou o
+    portal inteiro como suspenso, embora a página estivesse no ar e servindo conteúdo. Título e
+    descrição ficam DENTRO da régua de propósito: os avisos de defeso reais de MA e MG moram
+    exatamente ali (`<title>Suspensão Temporária | Período Eleitoral 2026</title>` e
+    `<meta name="description" content="em função do período eleitoral, esta página está
+    indisponível…">`). Atributo de imagem, classe de CSS e endereço de link ficam fora."""
+    if not html:
+        return ""
+    h = html[:200000]
+    partes = []
+    for rx in (r"<title[^>]*>(.*?)</title>",
+               r"""<meta[^>]+name=["']description["'][^>]*content=["'](.*?)["']""",
+               r"""<meta[^>]+content=["'](.*?)["'][^>]*name=["']description["']"""):
+        partes += re.findall(rx, h, re.IGNORECASE | re.DOTALL)
+    # texto visível: fora de script/style e fora de qualquer tag
+    corpo = re.sub(r"(?is)<(script|style|noscript)[^>]*>.*?</\1>", " ", h)
+    partes.append(re.sub(r"(?s)<[^>]+>", " ", corpo))
+    return " ".join(partes)
+
+
+# §182 (23/09/2026): o ESCOPO do que o sítio declara suspenso. Medido nas páginas reais de 23/09:
+#   · MA  — "Suspensão Temporária | Período Eleitoral 2026" no <title>: o sítio inteiro saiu do ar;
+#   · MG  — "em função do período eleitoral, esta página está indisponível": a página saiu do ar;
+#   · MT  — "em cumprimento à legislação eleitoral, o governo suspende a exibição das NOTÍCIAS
+#            institucionais": o que saiu do ar foi a notícia, não o documento nem o serviço;
+#   · SP  — "os conteúdos desta SEÇÃO DE NOTÍCIAS ficarão indisponíveis": idem;
+#   · SC  — "banner home - legislação eleitoral - full banner": só o nome de um banner.
+# A distinção é material para o índice: a Lei 9.504/97 restringe PUBLICIDADE institucional, e é isso
+# que os estados dizem estar suspendendo. Chamar de "fonte suspensa" um sítio que só tirou a seção de
+# notícias esconderia que o plano de contingência continua servido — e transformaria uma restrição de
+# propaganda em lacuna de transparência que ninguém declarou.
+_MARCAS_DE_NOTICIA = ("noticia", "noticias", "publicidade institucional", "propaganda institucional",
+                      "secao de noticias", "conteudo institucional", "sala de imprensa", "materias")
+_MARCAS_DE_SITIO = ("esta pagina esta indisponivel", "este portal", "deste portal", "conteudo deste",
+                    "suspensao temporaria", "conteudo indisponivel", "site esta indisponivel",
+                    "portal encontra-se", "pagina indisponivel", "temporariamente indisponivel",
+                    "conteudo temporariamente")
+
+
+def classificar_defeso(texto: str) -> tuple:
+    """(padrao, escopo) do que a página declara: escopo "sitio", "noticias" ou None.
+
+    Função pura. Lê só o texto declarativo (texto visível, <title>, <meta description>) — atributo de
+    imagem e classe de CSS ficam fora, porque `alt="banner periodo eleitoral"` marcou um portal
+    inteiro como suspenso em 23/09/2026 com a página no ar."""
     if not texto:
-        return None
-    t = _plano(texto[:200000])
+        return None, None
+    t = _plano(texto_declarativo(texto) if "<" in texto[:2000] else texto[:200000])
     for rx in _RE_DEFESO:
         m = rx.search(t)
-        if m:
-            return m.group(0)
-    return None
+        if not m:
+            continue
+        janela = t[max(0, m.start() - 220):m.end() + 220]
+        if any(marca in janela for marca in _MARCAS_DE_NOTICIA):
+            return m.group(0), "noticias"
+        if any(marca in janela for marca in _MARCAS_DE_SITIO):
+            return m.group(0), "sitio"
+        # padrão que se basta: nomeia o defeso, não só o calendário eleitoral
+        if m.group(0) in ("defeso eleitoral", "(defeso)", "restricoes eleitorais", "vedacoes eleitorais"):
+            return m.group(0), "sitio"
+        return m.group(0), None      # menção sem declaração de indisponibilidade: não é suspensão
+    return None, None
+
+
+def detectar_defeso(texto: str) -> str | None:
+    """Padrão que casou (sem acento) ou None, SÓ quando o sítio declara indisponibilidade do próprio
+    conteúdo (§182). Notícia institucional suspensa não fecha o canal que o Monitor usa: o documento
+    continua servido, e marcar a fonte como suspensa inventaria uma lacuna."""
+    padrao, escopo = classificar_defeso(texto)
+    return padrao if escopo == "sitio" else None
 
 
 def _dominio_publico(url: str) -> bool:

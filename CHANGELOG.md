@@ -9,6 +9,31 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §182 · "Fonte suspensa por defeso" era, em 22 de 31 casos, coisa nenhuma — o detector casava em atributo de imagem e não distinguia notícia de serviço · 23/09/2026
+
+Classe **correção de leitura com efeito no material público**. Nenhum número do índice muda. Muda quantas fontes o Monitor declara suspensas: de **31 para 9**.
+
+**Como isto apareceu.** A sonda de camada do §181 bateu em 27 portais estaduais e o detector de defeso (PR-N0 §1.5) marcou **27 fontes como suspensas** numa única rodada. Número alto o bastante para desconfiar — e o número **é publicado**: `gerar_pdf_indice.py` imprime "Fontes suspensas por defeso na última rodada: N" no PDF do índice, e quatro páginas do site leem o arquivo.
+
+**Primeiro defeito: o padrão casava em atributo.** A detecção rodava sobre o HTML cru. Em `saude.pi.gov.br`, o que casou foi `alt="banner periodo eleitoral"` — o texto alternativo de uma **imagem** de banner do Detran. A página estava no ar, servindo conteúdo, e foi marcada como suspensa. Agora a busca ocorre no **texto declarativo**: texto visível, `<title>` e `<meta name="description">` — que é onde os avisos reais moram (`<title>Suspensão Temporária | Período Eleitoral 2026</title>` no MA; `<meta description>` "em função do período eleitoral, esta página está indisponível" no MG). Atributo de imagem, classe de CSS e endereço de link ficam fora.
+
+**Segundo defeito, e o mais grave: o detector não distinguia notícia de serviço.** Nas palavras dos próprios sítios, em 23/09:
+
+- **MT:** "em cumprimento à legislação eleitoral, o Governo de Mato Grosso suspende, a partir deste sábado (4.7), a exibição das **notícias institucionais** publicadas neste portal";
+- **SP:** "os conteúdos **desta seção de notícias** ficarão indisponíveis de 4 de julho de 2026 até o final da eleição";
+- **PR** (defesa civil e saúde): cada item da lista de notícias foi trocado por "conteúdo indisponível devido ao período eleitoral" — a lista de notícias, não o portal;
+- **MA:** "Suspensão Temporária | Período Eleitoral 2026" **no título da página** — aí sim, o sítio inteiro.
+
+O que a Lei 9.504/97 restringe é **publicidade institucional**, e é isso que os estados dizem estar suspendendo. Chamar de "fonte suspensa" um portal que tirou do ar a seção de notícias esconde que o plano de contingência continua servido — e transforma uma restrição de propaganda em lacuna de transparência que ninguém declarou. `classificar_defeso()` passa a devolver o **escopo**: `sitio`, `noticias` ou nenhum. Só `sitio` fecha o canal que o Monitor usa.
+
+**Terceiro defeito, este meu, e pego antes de virar dado.** A primeira versão do script de reavaliação decidia pela evidência preservada — que é **truncada** nas primeiras 20 mil letras do corpo servido. Em `defesacivil.pr.gov.br` o aviso aparece depois desse corte: a evidência não trazia o padrão, e o script **reabriu a fonte como se estivesse no ar**. Não achar numa cópia truncada não é prova de ausência. A régua ficou assim: casou na evidência → segue suspensa; não casou e a evidência está **inteira** → reaberta; não casou e a evidência está **truncada**, ou não existe → **inconclusivo, e inconclusivo nunca reabre sozinho**; com `--refazer-busca`, a fonte decide e a procedência da decisão fica gravada (`evidência preservada` ou `nova busca em <data>`). Falha de rede mantém o estado, pela regra do §170: ausência de resposta não é prova de nada.
+
+**O resultado, item por item.** Das 31 fontes registradas como suspensas: **9 continuam** (8 porque o sítio declara o próprio conteúdo indisponível — MA, MG em três caminhos, BA, SE em dois, mais o painel nacional em "edição de defeso" — e 1 mantida por não responder à nova busca, com o motivo escrito); **5 eram suspensão de notícia institucional** (PR defesa civil, PR saúde, MT saúde, SP saúde, SE saúde) e o canal de documento delas está aberto; **17 não traziam declaração nenhuma** — casamento em atributo, banner ou menção de calendário. Cada registro guarda o escopo, a data da reavaliação e a procedência da decisão; **nenhum foi apagado**, porque a detecção aconteceu e isso é parte do histórico.
+
+**O que isto abre, e fica declarado como pendência.** Se o que se suspende é publicidade institucional, então o PLANCON e o plano de saúde de MT, SP, PR e SE estavam alcançáveis enquanto o Monitor os tratava como fonte suspensa. A releitura dessas fontes é o passo seguinte — junto com a conferência na legislação (Lei 9.504/97 art. 73, VI, "b" e as resoluções do TSE para 2026) de até onde vai a restrição, que é decisão de redação e não de código, e por isso não entra nesta entrada.
+
+**Teste.** Portão do detector de defeso (bloqueante desde a v2.2.4) com **13 casos**, oito deles com texto real das páginas de 23/09: atributo de imagem, título, descrição, texto visível, classe de CSS, notícia institucional em duas redações e sítio inteiro. Autoteste do script de reavaliação com as quatro situações da régua, inclusive a que meu próprio erro produziu (truncada não reabre). Evidências, consistência, `recalcular_mare --check`, escrita portável e portão 12 verdes.
+
 ## §181 · A receita do AM aplicada às outras UFs: os oito painéis abertos um por um, e a sonda que ficava muda quando não achava · 23/09/2026
 
 Classe **coleta e correção de instrumentação**. Nenhum número do índice muda e nenhum registro novo entra no banco. O que este lote entrega é uma **resposta medida** a uma pergunta que estava aberta, e o conserto do instrumento que tornava a resposta ilegível.
