@@ -146,7 +146,7 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ dados-abertos/ selos/ index.html defesa-civil.html docs/MANIFEST_SHA256.txt
+          git add data/ dados-abertos/ selos/ *.html docs/MANIFEST_SHA256.txt
           if git diff --cached --quiet; then echo "Sem alterações."; exit 0; fi
           git commit -m "Painel do AM: rodada renderizada ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
           git checkout -- .

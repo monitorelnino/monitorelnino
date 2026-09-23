@@ -9,6 +9,31 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §173 · A página de Saúde servia número velho a quem não roda JavaScript · 23/09/2026
+
+**Como apareceu.** A rodada completa de 23/09 terminou verde nos 35 passos, e o portão 12 fechou **vermelho** na `main` logo depois: o manifesto trazia, para `saude.html`, o hash de um arquivo **que não existe no repositório**.
+
+**A causa.** O passo de commit da rodada tinha uma lista fechada de caminhos, e ela nomeava só `index.html` e `defesa-civil.html`. Mas `preencher_fallback_estatico.py` — obrigatório no pipeline — reescreve também `saude.html` e `financiamento.html`, e `carimbar_assets.py` reescreve as 12 páginas. Tudo isso era **descartado no `git add`**, enquanto o manifesto, esse sim commitado, guardava o hash da versão nova.
+
+**O dano real não era o portão.** O conteúdo estático é o que o leitor **sem JavaScript** vê, e o que o `aria-label` da barra de progresso anuncia ao leitor de tela. Medido na `main` de hoje:
+
+| campo em `saude.html` | no ar | valor real |
+|---|---|---|
+| MARÉ Saúde | 31,8 | **32,5** |
+| estados verificados | 17 | **20** |
+| estados não verificados | 10 | **7** |
+| secretarias com plano do ciclo | 2 | **4** |
+
+Duas rodadas automáticas descartaram a correção dessa página. O mecanismo, porém, não era de duas rodadas: repetiria em todas.
+
+**Silencioso por construção.** Descartar uma mudança no `git add` não produz erro nenhum — a rodada fica verde, o site fica errado.
+
+**A correção.** `*.html` no lugar da lista nomeada, nos **três** workflows que regeneram o manifesto (a rodada de atualização, a busca web de cadência e o painel do AM) — as duas últimas tinham exatamente a mesma falta. O glob cobre as páginas de hoje e as de amanhã.
+
+**O portão.** `validar_workflows.py` passa a cobrar que todo workflow que reescreve página commite as páginas. A cobrança vale **só** para quem roda `carimbar_assets`, `preencher_fallback_estatico` ou `gerar_manifesto`: `preservar_evidencias.yml` caiu como falso positivo na primeira versão da regra, e portão que cobra o que não se aplica acaba desligado.
+
+---
+
 ## §172 · Teto de tempo por etapa e por job: a fonte pendurada deixa de segurar a fila · 23/09/2026
 
 **Achado real.** A rodada diária de 23/09 ficou **45+ minutos** no passo do pipeline. Fora do dia de publicação esse passo executa só dois scripts antes de encerrar na trava de cadência, e um deles não toca a rede — logo o tempo estava num único coletor que não respondia. *Registro honesto:* não consegui ler os logs (a API devolveu 404 durante a execução e depois do cancelamento), então a atribuição ao coletor é **inferência pelo caminho do código**, não leitura do log.
