@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-23",
- "total_pistas": 317,
- "total_municipios": 163,
+ "total_pistas": 327,
+ "total_municipios": 166,
  "por_nivel": {
-  "A": 51,
-  "B": 199,
-  "C": 67
+  "A": 52,
+  "B": 207,
+  "C": 68
  },
  "grupos": [
   {
@@ -1244,6 +1244,106 @@
      "url": "https://data.queridodiario.ok.org.br/4104303/2026-04-23/7572e3a6ca905e1a7bcec0765a56736d865f0583.pdf",
      "titulo": "Diário oficial de 2026-04-23",
      "trecho": "PLÁSTICO PROFISSIONAL COM TRAVA, LÂMINA DE AÇO CARBONO EXTENSÍVEL INTERNA DE 18MM UNIDADE GATTE 766 R$1,59 R$1.217,94 68 ESTOJO DE PINCEL ATÔMICO COM 12 CORES, PONTA DE POLIÉSTER 4.0 MM, ESCRITA 1.8 MM, TINTA À BASE DE ÁGUA. EMBALAGEM COMPACT OR 576 R$18,04 R$10.391,04 76 FICHA PAUTADA BRANCA 6X9 PACOTE COM 100 UNIDADES. PACOTE TILIBRA 33 R$15,47 R$510,51 82 FITA ADESIVA TRANSPARENTE EM POLIPROPILENO, CORTEMANUAL, 12MM X 50M. UNIDADE KORETECH 1.751 R$0,91 R$1.593,41 86 FOLHAS DE PAPEL",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 1,
+    "B": 4,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "717dc075f0",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.defesacivil.rj.gov.br/images/sedec-arquivos/PLANCON_23_24__Versao_1_0.pdf",
+     "titulo": "Base para revisão PLANCON 23/24.docx",
+     "trecho": "PLANO DE CONTINGÊNCIAS · DO ESTADO DO RIO DE JANEIRO · PARA CHUVAS INTENSAS · VERÃO 2023/2024 · (versão 1.0) NÍVEL: TÁTICO-OPERACIONAL · PLANO DE EMERGÊNCIA · Decreto nº 46.935, de 12 de fevereiro de 2020 · Verificar versão atualizada no QR Code a seguir: 3 ·",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "dd7ce9f7bc",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES",
+     "trecho": "Jan 18, 2012 ... Plano Municipal de Saneamento Básico – Rio das Flores/RJ. 8 ... Portanto, enquanto o plano de contingência aborda ações programadas de.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7207bc00aa",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://www.rio.rj.gov.br/dlstatic/10112/7502221/4349502/PLANODECONTINGENCIA20212022.pdf",
+     "titulo": "Plano De Contingência 2021-2022",
+     "trecho": "requisitos para confecção de Plano de Contingência, no · âmbito do SINPDEC); e) Decreto Rio nº 43.533, de 10 de agosto de 2017 · (Institui · a · rede · municipal · de · operações · e · monitoramento da cidade); f) Portaria MI nº 413/2018 (Define procedimentos sobre ·",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "38bcaa7326",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.cbmerj.rj.gov.br/estado-do-rio-apresenta-plano-de-contingencias-para-enfrentamento-da-seca-estiagem-e-incendio-florestal/",
+     "titulo": "Estado do Rio apresenta Plano de Contingências para enfrentamento ...",
+     "trecho": "O documento contempla desde o ... agilidade na mobilização de recursos e no apoio aos municípios sempre que houver necessidade. ... O Plano de Contingência estabelece seis Níveis de Resposta (NR), classificados do NR 0 ao NR 5, de acordo com a gravidade do cenário ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "90923bfd42",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf",
+     "titulo": "decreto 40/2026",
+     "trecho": "Os interessados (grupos formais, ... Cel. Eurico de Castro, nº 14, Centro, Rio das Flôres/RJ. ... O Prefeito Rodrigo Santana de Almeida assinou o Decreto nº 247/2025, que organiza o funcionamento das farmácias em regime de plantão para todo o ano de 2026....",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -3630,6 +3730,87 @@
    ]
   },
   {
+   "ibge": "3304128",
+   "municipio": "Quatis",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "5364ca024c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO QUATIS - RJ",
+     "trecho": "Centro CEP: 27.410-170- Quatis / RJ. EXECUÇÃO. Vallenge ... enquanto o plano de contingência aborda ações programadas de interrupção dos serviços, o.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "55526c44cb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saude.rj.gov.br/controladoria-geral-da-ses/legislacao",
+     "titulo": "Saúde RJ - Controladoria Geral da SES - Legislação",
+     "trecho": "Deliberação Conjunta CIB/COSEMS-RJ nº 91 de 08 de abril de 2021 · Pactua “ad referendum” a alteração do anexo do plano de contingência da Secretaria de Estado de Saúde do Rio de Janeiro para enfrentamento da infecção pelo novo coronavírus (covid-19).",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "def55639fb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NDE2NDg%2C",
+     "titulo": "Aos trinta dias do mês de abril do ano de dois mil e quinze, ...",
+     "trecho": "Quatis, Resende, Rio Claro, Rio das Flores e Volta Redonda e sem representação de secretários de saúde ... os municípios de, Itatiaia, Pinheiral, Porto Real e Valença. Sra. Sonia iniciou a reunião, cumprimentando ... a todos e justificou a ausência da Sra. Rosemary. Prosseguindo, explicou que é aguardado a publicação ... do decreto Estadual definindo um “feriadão”, a partir de vinte e seis de março até quatro de abril, com o",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c930576b25",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://quatis.rj.gov.br/prefeitura-de-quatis-decreta-medidas-de-combate-ao-coronavirus/",
+     "titulo": "PREFEITURA DE QUATIS DECRETA MEDIDAS DE COMBATE AO CORONAVÍRUS ...",
+     "trecho": "QUATIS O prefeito Bruno de Souza (MDB) assinou no final da tarde de terça-feira, dia 17, um decreto instituindo a Situação de Atenção na Saúde Pública do Município pelo prazo de 180 dias.",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4314902",
    "municipio": "Porto Alegre",
    "uf": "RS",
@@ -5249,6 +5430,37 @@
    ]
   },
   {
+   "ibge": "3115904",
+   "municipio": "Chácara",
+   "uf": "MG",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "b9a8774e49",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.ceivap.org.br/mata/Chacara.pdf",
+     "titulo": "Plano Municipal de Saneamento Básico – Chácara/MG - CEIVAP",
+     "trecho": "Identificação de possíveis fontes de financiamento, arranjo institucional e plano de contingência e emergência. CHÁCARA – MG. 2013. Page 2. Plano Municipal de ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3118007",
    "municipio": "Congonhas",
    "uf": "MG",
@@ -5403,6 +5615,70 @@
      "titulo": "Como o super El Niño previsto para os próximos meses pode deixar ...",
      "trecho": "Jun 19, 2026 ... ... luz. Para preservar os reservatórios das hidrelétricas, o Operador ... plano de contingência que favoreça a atuação preventiva e ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3143609",
+   "municipio": "Morro da Garça",
+   "uf": "MG",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "3c6300c5d6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://coresab.com.br/wp-content/uploads/2019/08/P8_Morro_da_Garca.pdf",
+     "titulo": "Plano Municipal de Saneamento Básico de Morro da Garça - coresab",
+     "trecho": "Morro da Garça, foi aprovado e instituído na reunião ordinária do CBH ... Além dos programas e ações apresentados, o Plano de Contingência e Emergências.",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3150109",
+   "municipio": "Piau",
+   "uf": "MG",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "434571d764",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DZnD7JLlSBT/",
+     "titulo": "O El Niño já começou a influenciar o clima no Piauí e deve provocar ...",
+     "trecho": "Jun 15, 2026 ... Photo by Defesa Civil Piau on August 11, 2026. May be a cartoon ... 🌦️ EL NIÑO: ATENÇÃO E PREVENÇÃO EM PIAU – MG 🌦️ A Defesa Civil ...",
+     "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -5798,37 +6074,6 @@
    ]
   },
   {
-   "ibge": "3304128",
-   "municipio": "Quatis",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "5364ca024c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf",
-     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO QUATIS - RJ",
-     "trecho": "Centro CEP: 27.410-170- Quatis / RJ. EXECUÇÃO. Vallenge ... enquanto o plano de contingência aborda ações programadas de interrupção dos serviços, o.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "3304201",
    "municipio": "Resende",
    "uf": "RJ",
@@ -5855,37 +6100,6 @@
      "titulo": null,
      "trecho": "Jan 3, 2021 ... Manejo CEP: 27520-005 Resende-RJ. Diretor Executivo – André Luis ... Plano de Contingência e Proteção. (PLACONP), com sua última versão ...",
      "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3304508",
-   "municipio": "Rio das Flores",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "dd7ce9f7bc",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf",
-     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES",
-     "trecho": "Jan 18, 2012 ... Plano Municipal de Saneamento Básico – Rio das Flores/RJ. 8 ... Portanto, enquanto o plano de contingência aborda ações programadas de.",
-     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
