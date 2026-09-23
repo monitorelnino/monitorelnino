@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 302 pendente(s) · 15 decidida(s) · A=49 B=197 C=56
+Gerado em 23/09/2026 · 312 pendente(s) · 15 decidida(s) · A=50 B=205 C=57
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -376,6 +376,33 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: na Avenida Francisco de  Assis Carneiro da Silva, número 205 – Caxias.  PAUTA:  1 – Apreciação e aprovação da Programação Anual de Saúde –  PAS 2027;  2 – Apreciação e aprovação do Plano Municipal de  Contingência de des
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
+## Rio das Flores/RJ — 5 pendente(s)
+- `717dc075f0` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto nº 46.935**, 12/02/2020
+  - título: Base para revisão PLANCON 23/24.docx
+  - url: https://www.defesacivil.rj.gov.br/images/sedec-arquivos/PLANCON_23_24__Versao_1_0.pdf
+  - trecho: PLANO DE CONTINGÊNCIAS · DO ESTADO DO RIO DE JANEIRO · PARA CHUVAS INTENSAS · VERÃO 2023/2024 · (versão 1.0) NÍVEL: TÁTICO-OPERACIONAL · PLANO DE EMERGÊNCIA · Decreto nº 46.935, de 12 de fevereiro de 2020 · Verificar ver
+  - juiz: portão automático: ato de 2020 — pode ser edição anterior; decisão humana
+- `dd7ce9f7bc` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2012 (do trecho)
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES
+  - url: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf
+  - trecho: Jan 18, 2012 ... Plano Municipal de Saneamento Básico – Rio das Flores/RJ. 8 ... Portanto, enquanto o plano de contingência aborda ações programadas de.
+  - juiz: portão automático: fonte não oficial
+- `7207bc00aa` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 10/08/2017 (do trecho)
+  - título: Plano De Contingência 2021-2022
+  - url: http://www.rio.rj.gov.br/dlstatic/10112/7502221/4349502/PLANODECONTINGENCIA20212022.pdf
+  - trecho: requisitos para confecção de Plano de Contingência, no · âmbito do SINPDEC); e) Decreto Rio nº 43.533, de 10 de agosto de 2017 · (Institui · a · rede · municipal · de · operações · e · monitoramento da cidade); f) Portar
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `38bcaa7326` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Estado do Rio apresenta Plano de Contingências para enfrentamento ...
+  - url: https://www.cbmerj.rj.gov.br/estado-do-rio-apresenta-plano-de-contingencias-para-enfrentamento-da-seca-estiagem-e-incendio-florestal/
+  - trecho: O documento contempla desde o ... agilidade na mobilização de recursos e no apoio aos municípios sempre que houver necessidade. ... O Plano de Contingência estabelece seis Níveis de Resposta (NR), classificados do NR 0 a
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `90923bfd42` · nível **B** (4 pts) · seguimento_busca_oficial · — · **decreto 40**, 2026
+  - título: decreto 40/2026
+  - url: https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf
+  - trecho: Os interessados (grupos formais, ... Cel. Eurico de Castro, nº 14, Centro, Rio das Flôres/RJ. ... O Prefeito Rodrigo Santana de Almeida assinou o Decreto nº 247/2025, que organiza o funcionamento das farmácias em regime 
+
 ## Relvado/RS — 1 pendente(s)
 - `f2695b78ea` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
   - título: Relvado apresenta estudo socioambiental e Plano de Contingência ...
@@ -736,6 +763,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: A Prefeitura de Barão de Cocais, em resposta às chuvas intensas, ativou o nível 2 do plano de contingência, o que implica em ações preventivas e monitoramento intensificado.
   - juiz: portão automático: fonte não oficial
 
+## Chácara/MG — 1 pendente(s)
+- `b9a8774e49` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2013 (do trecho)
+  - título: Plano Municipal de Saneamento Básico – Chácara/MG - CEIVAP
+  - url: https://www.ceivap.org.br/mata/Chacara.pdf
+  - trecho: Identificação de possíveis fontes de financiamento, arranjo institucional e plano de contingência e emergência. CHÁCARA – MG. 2013. Page 2. Plano Municipal de ...
+  - juiz: portão automático: fonte não oficial
+
 ## Congonhas/MG — 1 pendente(s)
 - `b9c96715ad` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - url: https://www.congonhas.mg.gov.br/wp-content/uploads/2017/10/PGRSU-FINAL.pdf
@@ -768,6 +802,21 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Como o super El Niño previsto para os próximos meses pode deixar ...
   - url: https://www.estadao.com.br/economia/como-o-super-el-nino-pode-pressionar-a-conta-de-luz-em-2027/
   - trecho: Jun 19, 2026 ... ... luz. Para preservar os reservatórios das hidrelétricas, o Operador ... plano de contingência que favoreça a atuação preventiva e ...
+  - juiz: portão automático: fonte não oficial
+
+## Morro da Garça/MG — 1 pendente(s)
+- `3c6300c5d6` · nível **B** (5 pts) · busca_web · DUVIDA · **Lei nº 11.445**, 2007
+  - título: Plano Municipal de Saneamento Básico de Morro da Garça - coresab
+  - url: https://coresab.com.br/wp-content/uploads/2019/08/P8_Morro_da_Garca.pdf
+  - trecho: Morro da Garça, foi aprovado e instituído na reunião ordinária do CBH ... Além dos programas e ações apresentados, o Plano de Contingência e Emergências.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
+
+## Piau/MG — 1 pendente(s)
+- `434571d764` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: O El Niño já começou a influenciar o clima no Piauí e deve provocar ...
+  - url: https://www.instagram.com/p/DZnD7JLlSBT/
+  - trecho: Jun 15, 2026 ... Photo by Defesa Civil Piau on August 11, 2026. May be a cartoon ... 🌦️ EL NIÑO: ATENÇÃO E PREVENÇÃO EM PIAU – MG 🌦️ A Defesa Civil ...
   - juiz: portão automático: fonte não oficial
 
 ## Dourados/MS — 1 pendente(s)
@@ -1120,25 +1169,34 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 22, 2026 ... ... Plano de Contingência para Chuvas Intensas Verão 2025/2026, que segue vigente. ... Tags:el niño, inverno, petrópolis, previsão, rio, super ...
   - juiz: portão automático: fonte não oficial
 
-## Quatis/RJ — 1 pendente(s)
+## Quatis/RJ — 4 pendente(s)
 - `5364ca024c` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO QUATIS - RJ
   - url: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf
   - trecho: Centro CEP: 27.410-170- Quatis / RJ. EXECUÇÃO. Vallenge ... enquanto o plano de contingência aborda ações programadas de interrupção dos serviços, o.
   - juiz: portão automático: fonte não oficial
+- `55526c44cb` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto nº 47.565**, 12/04/2021
+  - título: Saúde RJ - Controladoria Geral da SES - Legislação
+  - url: https://www.saude.rj.gov.br/controladoria-geral-da-ses/legislacao
+  - trecho: Deliberação Conjunta CIB/COSEMS-RJ nº 91 de 08 de abril de 2021 · Pactua “ad referendum” a alteração do anexo do plano de contingência da Secretaria de Estado de Saúde do Rio de Janeiro para enfrentamento da infecção pel
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `def55639fb` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Aos trinta dias do mês de abril do ano de dois mil e quinze, ...
+  - url: https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NDE2NDg%2C
+  - trecho: Quatis, Resende, Rio Claro, Rio das Flores e Volta Redonda e sem representação de secretários de saúde ... os municípios de, Itatiaia, Pinheiral, Porto Real e Valença. Sra. Sonia iniciou a reunião, cumprimentando ... a t
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `c930576b25` · nível **C** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PREFEITURA DE QUATIS DECRETA MEDIDAS DE COMBATE AO CORONAVÍRUS ...
+  - url: https://quatis.rj.gov.br/prefeitura-de-quatis-decreta-medidas-de-combate-ao-coronavirus/
+  - trecho: QUATIS O prefeito Bruno de Souza (MDB) assinou no final da tarde de terça-feira, dia 17, um decreto instituindo a Situação de Atenção na Saúde Pública do Município pelo prazo de 180 dias.
+  - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Resende/RJ — 1 pendente(s)
 - `c109afebf4` · nível **B** (4 pts) · busca_web · DUVIDA · data 2021 (do trecho)
   - url: https://resende.rj.gov.br/images/Plano-Municipal-de-Saneamento-B%C3%A1sico.pdf
   - trecho: Jan 3, 2021 ... Manejo CEP: 27520-005 Resende-RJ. Diretor Executivo – André Luis ... Plano de Contingência e Proteção. (PLACONP), com sua última versão ...
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-
-## Rio das Flores/RJ — 1 pendente(s)
-- `dd7ce9f7bc` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2012 (do trecho)
-  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO RIO DAS FLORES
-  - url: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf
-  - trecho: Jan 18, 2012 ... Plano Municipal de Saneamento Básico – Rio das Flores/RJ. 8 ... Portanto, enquanto o plano de contingência aborda ações programadas de.
-  - juiz: portão automático: fonte não oficial
 
 ## Rio das Ostras/RJ — 1 pendente(s)
 - `081c850403` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
