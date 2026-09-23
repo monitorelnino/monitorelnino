@@ -48,7 +48,8 @@ import time
 import unicodedata
 from datetime import date
 
-from coletores_base import (RAIZ, buscar, hoje, ler, gravar, log_busca, preservar_evidencia,
+from coletores_base import (RAIZ, buscar, buscar_com_procedencia, hoje, ler,
+                            gravar, log_busca, preservar_evidencia,
                             referencia_ibge, registrar_lacuna, marcar_fonte_consultada,
                             rodar_autoteste, UA)
 
@@ -231,7 +232,7 @@ class Efeitos:
     data/ — antes desta separação, `--autoteste` batia em app.powerbi.com e sujava
     log_buscas.json e fontes_consultadas.json a cada execução do portão."""
 
-    def __init__(self, buscar_fn=buscar, preservar_fn=preservar_evidencia,
+    def __init__(self, buscar_fn=buscar_com_procedencia, preservar_fn=preservar_evidencia,
                  log_fn=log_busca, lacuna_fn=registrar_lacuna,
                  marcar_fn=marcar_fonte_consultada, pausa_s=2.0):
         self.buscar = buscar_fn
@@ -254,9 +255,13 @@ class EfeitosInertes(Efeitos):
                          marcar_fn=self._marcar, pausa_s=0.0)
 
     def _buscar(self, url, timeout=45):
+        """Devolve (bytes, procedencia), como buscar_com_procedencia. Uma resposta simulada
+        pode ser `bytes` (procedência direta, o caso comum) ou a tupla inteira, para o teste
+        que precisa simular documento vindo de captura de arquivo."""
         if url not in self.respostas:
             raise OSError(f"offline: sem resposta simulada para {url}")
-        return self.respostas[url]
+        r = self.respostas[url]
+        return r if isinstance(r, tuple) else (r, "fonte direta")
 
     def _preservar(self, conteudo, url, ext, origem):
         self.preservados.append(url)
@@ -332,19 +337,33 @@ def coletar(url: str, de_arquivo=None, limite=None, efeitos: "Efeitos | None" = 
 
         if r["url_do_link"]:
             try:
-                conteudo = ef.buscar(r["url_do_link"], timeout=45)
+                # Reserva pelo Wayback (o mesmo caminho que o DF, PE e a listagem do DF já
+                # usam desde 12/09). Rodada real de 23/09: os 62 documentos do painel do AM
+                # responderam "Connection reset by peer" ao runner, um a um, enquanto o
+                # próprio painel abria normalmente — logo quem recusa não é a Microsoft, é o
+                # hospedeiro dos planos. Ler a captura pública de um arquivo não contorna
+                # bloqueio nenhum: é outra fonte, e ela entra declarada como tal.
+                conteudo, procedencia = ef.buscar(r["url_do_link"], timeout=45)
+                item["procedencia_do_documento"] = procedencia
                 ext = "pdf" if conteudo[:5] == b"%PDF-" else "html"
                 item["hash_evidencia"] = ef.preservar(
-                    conteudo, r["url_do_link"], ext, "painel Power BI Defesa Civil AM")
+                    conteudo, r["url_do_link"], ext,
+                    f"painel Power BI Defesa Civil AM ({procedencia})")
                 ato = ler_ato(texto_do_documento(conteudo, r["url_do_link"]))
                 if ato:
                     # Único caminho para `documentado`: documento aberto E ato com número e data.
                     item["ato"] = ato
                     item["camada"] = "documentado"
                     item["no_ciclo"] = date.fromisoformat(ato["data"]) >= CICLO_INICIO
+                    if procedencia != "fonte direta":
+                        # O ato foi lido, mas numa cópia de arquivo. O registro diz isso em
+                        # vez de fingir que o documento foi lido na fonte hoje.
+                        item["observacao"] = (
+                            f"ato lido em {procedencia} — a fonte não respondeu ao coletor; "
+                            "documento é o arquivado, não necessariamente o vigente")
                 else:
                     item["observacao"] = ("documento preservado, mas sem número e data de ato "
-                                          "legíveis — permanece declarado")
+                                          f"legíveis ({procedencia}) — permanece declarado")
             except Exception as e:  # noqa: BLE001
                 ef.lacuna(f"documento de {r['municipio_no_painel']}",
                           f"{type(e).__name__}: {e}", "painel AM", 1,
@@ -369,11 +388,20 @@ def coletar(url: str, de_arquivo=None, limite=None, efeitos: "Efeitos | None" = 
         "sem_plano_declarado": sum(1 for i in itens if i["camada"] == "sem_plano_declarado"),
         "sem_codigo_ibge": sum(1 for i in itens if not i["ibge"]),
         "no_ciclo": sum(1 for i in itens if i.get("no_ciclo")),
+        # Quantos documentos vieram da fonte e quantos de captura de arquivo. Um lote em que
+        # tudo veio de arquivo diz algo sobre a fonte, não sobre os municípios — e sem a
+        # contagem esse fato ficaria espalhado item a item, invisível no resumo.
+        "documentos_da_fonte": sum(1 for i in itens
+                                   if i.get("procedencia_do_documento") == "fonte direta"),
+        "documentos_de_captura": sum(1 for i in itens
+                                     if (i.get("procedencia_do_documento") or "").startswith("captura")),
     }
     ef.log("painel AM", 1, [url], "pista", uf="AM", nivel="estadual",
            n_resultados=len(itens),
            resultados=(f"{resumo['documentado']} documentado(s), {resumo['declarado']} "
-                       f"declarado(s), {resumo['sem_plano_declarado']} sem plano"))
+                       f"declarado(s), {resumo['sem_plano_declarado']} sem plano; "
+                       f"{resumo['documentos_da_fonte']} documento(s) da fonte, "
+                       f"{resumo['documentos_de_captura']} de captura"))
     return {"itens": itens, "resumo": resumo}
 
 
@@ -618,6 +646,75 @@ def autoteste() -> int:
                 and a["no_ciclo"] is False and a["hash_evidencia"]
                 and a["promovivel"] is False)
 
+    def t_recusa_explicita_nao_cai_na_reserva():
+        """A regra do projeto: não contornar bloqueio de acesso de fonte. 403, 401, 429 e 451
+        são o servidor RESPONDENDO "não" — ir buscar a mesma página numa captura de arquivo
+        seria dar a volta por fora. A reserva existe para o caso oposto, em que a conexão nem
+        vira conversa HTTP e portanto não há recusa a respeitar."""
+        import urllib.error
+
+        for codigo in (401, 403, 429, 451):
+            def recusa(url, timeout=40, _c=codigo):
+                raise urllib.error.HTTPError(url, _c, "recusa", {}, None)
+            try:
+                buscar_com_procedencia("https://x.gov.br/p.pdf", buscar_fn=recusa)
+                return False                      # não podia ter voltado com conteúdo
+            except urllib.error.HTTPError as e:
+                if e.code != codigo:
+                    return False
+        return True
+
+    def t_falha_de_conexao_cai_na_reserva():
+        """O caso do AM: "Connection reset by peer", sem resposta HTTP nenhuma. Aí a reserva
+        vale, e o conteúdo volta marcado como captura — nunca como leitura na fonte."""
+        def reset(url, timeout=40):
+            if "web.archive.org" in url:
+                return b"%PDF-copia arquivada"
+            raise ConnectionResetError(104, "Connection reset by peer")
+        conteudo, proc = buscar_com_procedencia("https://x.gov.br/p.pdf", buscar_fn=reset)
+        return conteudo.startswith(b"%PDF-") and proc == "captura do Wayback"
+
+    def t_erro_do_servidor_ainda_usa_reserva():
+        """404 e 5xx não são recusa de acesso: são página que sumiu ou servidor com defeito.
+        Aí a captura de arquivo é exatamente o instrumento certo."""
+        def erro(url, timeout=40):
+            import urllib.error as ue
+            if "web.archive.org" in url:
+                return b"%PDF-copia"
+            raise ue.HTTPError(url, 404, "Not Found", {}, None)
+        return buscar_com_procedencia("https://x.gov.br/p.pdf", buscar_fn=erro)[1] == "captura do Wayback"
+
+    def t_documento_direto_declara_procedencia():
+        """Mesmo o caminho feliz passa a dizer de onde veio: sem o campo, a leitura na fonte
+        e a leitura numa cópia de arquivo viravam a mesma coisa no banco."""
+        ef = _inertes({FIXTURE["linhas"][0]["url_do_link"]: DOC_COM_ATO})
+        s2 = coletar(URL_SUB_PAINEL, de_arquivo=_fixture_em_disco(), limite=3, efeitos=ef)
+        a = {i["municipio_no_painel"]: i for i in s2["itens"]}["Atalaia do Norte"]
+        return a["procedencia_do_documento"] == "fonte direta" and "observacao" not in a
+
+    def t_ato_lido_em_captura_nao_se_passa_por_fonte():
+        """O ato está legível, então vira `documentado` — mas o registro diz, na cara, que
+        foi lido numa captura de arquivo e que o documento é o arquivado, não o vigente.
+        Sem esta marca o banco afirmaria mais do que a fonte entregou."""
+        ef = _inertes({FIXTURE["linhas"][0]["url_do_link"]:
+                       (DOC_COM_ATO, "captura do Wayback")})
+        s2 = coletar(URL_SUB_PAINEL, de_arquivo=_fixture_em_disco(), limite=3, efeitos=ef)
+        a = {i["municipio_no_painel"]: i for i in s2["itens"]}["Atalaia do Norte"]
+        return (a["camada"] == "documentado"
+                and a["procedencia_do_documento"] == "captura do Wayback"
+                and "não necessariamente o vigente" in (a.get("observacao") or "")
+                and a["promovivel"] is False)
+
+    def t_captura_sem_ato_continua_declarado():
+        """Captura de arquivo não promove nada sozinha: sem número e data de ato legíveis,
+        a camada continua `declarado`, com a procedência anotada."""
+        ef = _inertes({FIXTURE["linhas"][0]["url_do_link"]:
+                       (DOC_SEM_ATO, "captura do Wayback")})
+        s2 = coletar(URL_SUB_PAINEL, de_arquivo=_fixture_em_disco(), limite=3, efeitos=ef)
+        a = {i["municipio_no_painel"]: i for i in s2["itens"]}["Atalaia do Norte"]
+        return (a["camada"] == "declarado" and a["ato"] is None
+                and "captura do Wayback" in (a.get("observacao") or ""))
+
     def t_link_abre_sem_ato_continua_declarado():
         ef = _inertes({FIXTURE["linhas"][0]["url_do_link"]: DOC_SEM_ATO})
         s = coletar(URL_SUB_PAINEL, de_arquivo=_fixture_em_disco(), limite=3, efeitos=ef)
@@ -783,6 +880,12 @@ def autoteste() -> int:
         "nome desconhecido não casa (vira lacuna)": t_nome_desconhecido_nao_casa,
         "normaliza linha bruta do renderizador": t_linha_para_registro,
         "link abre + ato com nº e data → documentado": t_link_abre_com_ato_vira_documentado,
+        "recusa explícita da fonte não cai na reserva (não se contorna bloqueio)": t_recusa_explicita_nao_cai_na_reserva,
+        "falha de conexão cai na reserva, marcada como captura": t_falha_de_conexao_cai_na_reserva,
+        "404/5xx ainda usa a reserva (não é recusa de acesso)": t_erro_do_servidor_ainda_usa_reserva,
+        "documento lido na fonte declara a procedência": t_documento_direto_declara_procedencia,
+        "ato lido em captura não se passa por leitura na fonte": t_ato_lido_em_captura_nao_se_passa_por_fonte,
+        "captura sem ato legível continua declarado": t_captura_sem_ato_continua_declarado,
         "link abre sem ato legível → continua declarado": t_link_abre_sem_ato_continua_declarado,
         "link que não abre → lacuna declarada": t_link_que_nao_abre_vira_lacuna,
         "eliminação vale também no caminho renderizado": t_eliminacao_vale_no_caminho_renderizado,
@@ -850,6 +953,10 @@ def main() -> int:
     print(f"  sem plano declarado no painel:                 {r['sem_plano_declarado']}")
     print(f"  sem código IBGE (lacuna declarada):            {r['sem_codigo_ibge']}")
     print(f"  com ato dentro do ciclo (>= 29/06/2026):       {r['no_ciclo']}")
+    if r.get("documentos_de_captura"):
+        print(f"  documentos lidos na fonte:                     {r.get('documentos_da_fonte', 0)}")
+        print(f"  documentos lidos em captura de arquivo:        {r['documentos_de_captura']}"
+              "  ← a fonte não respondeu; o documento é o arquivado")
     print(f"\nFila: data/{FILA} ({len(fila['itens'])} item(ns)).")
     print("Nada entra no banco sem promoção humana (R7). Ano no painel não prova antecipação.")
     return 0

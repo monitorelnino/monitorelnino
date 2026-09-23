@@ -185,6 +185,52 @@ def buscar(url: str, timeout: int = 40) -> bytes:
     return corpo
 
 
+# Códigos em que o servidor NÃO falhou: ele respondeu, e a resposta foi "não". Cair na
+# reserva do Wayback nesses casos seria contornar bloqueio de acesso de fonte, que o
+# CLAUDE.md proíbe. A reserva existe para o caso oposto — a conexão que nem chega a virar
+# conversa HTTP (reset, handshake TLS incompleto, DNS mudo), em que não há recusa a
+# respeitar porque não houve resposta.
+RECUSAS_EXPLICITAS = {401, 402, 403, 429, 451}
+
+
+def buscar_com_procedencia(url: str, timeout: int = 40, buscar_fn=None) -> tuple:
+    """Como buscar_com_reserva_wayback, mas DIZ por qual caminho o conteúdo veio:
+    devolve (bytes, procedencia) com procedencia em {"fonte direta", "captura do Wayback"}.
+
+    A distinção não é cosmética. Um plano lido no sítio do órgão e um plano lido numa
+    captura de arquivo provam coisas diferentes: o primeiro é o documento como está hoje,
+    o segundo é como estava quando alguém o arquivou. Registrar qual dos dois foi é a
+    mesma disciplina que separa `declarado` de `documentado` no resto do projeto — e sem
+    o campo, as duas viravam a mesma coisa no banco."""
+    _buscar = buscar_fn or buscar
+    try:
+        return _buscar(url, timeout=timeout), "fonte direta"
+    except urllib.error.HTTPError as e:
+        if e.code in RECUSAS_EXPLICITAS:
+            raise                       # a fonte disse não; não se dá a volta por fora
+        e_direto = e
+    except Exception as e:  # noqa: BLE001
+        e_direto = e
+
+    # 12/09/2026: a mensagem antiga só repetia o erro direto — sem dizer se foi o PEDIDO de
+    # captura que falhou (arquivo.org pode demorar mais que nosso timeout num sítio lento)
+    # ou a LEITURA dela. Timeout maior para o Wayback e mensagem que preserva os dois passos.
+    erro_salvar = erro_ler = None
+    try:
+        _buscar("https://web.archive.org/save/" + url, timeout=max(timeout, 90))
+    except Exception as e:  # noqa: BLE001
+        erro_salvar = e
+    try:
+        return (_buscar(f"https://web.archive.org/web/20301231000000/{url}",
+                        timeout=max(timeout, 60)),
+                "captura do Wayback")
+    except Exception as e:  # noqa: BLE001
+        erro_ler = e
+    raise RuntimeError(f"direto: {type(e_direto).__name__}: {e_direto} | wayback/save: "
+                       f"{type(erro_salvar).__name__ if erro_salvar else 'ok'} | wayback/ler: "
+                       f"{type(erro_ler).__name__}: {erro_ler}") from e_direto
+
+
 def buscar_com_reserva_wayback(url: str, timeout: int = 40) -> bytes:
     """12/09/2026: reserva para fontes que o runner não alcança diretamente (medido: alguns portais estaduais
     pequenos não completam handshake TLS/conexão com o runner do Actions, enquanto web.archive.org — um CDN
@@ -193,26 +239,7 @@ def buscar_com_reserva_wayback(url: str, timeout: int = 40) -> bytes:
     (timestamp bem no futuro é o truque para pegar a mais nova, não a mais antiga disponível). Se o pedido de
     captura falhar ou for limitado, ainda tenta ler uma captura já existente antes de desistir — pode não ser
     da mesma hora, mas é melhor que lacuna para fonte semanal."""
-    try:
-        return buscar(url, timeout=timeout)
-    except Exception as e_direto:  # noqa: BLE001
-        # 12/09/2026: numa rodada real o DF falhou nos dois caminhos, e a mensagem só mostrava o erro
-        # direto de novo — sem dizer se foi o PEDIDO de captura que falhou (arquivo.org pode demorar mais
-        # que nosso timeout para capturar um site lento) ou a LEITURA da captura. Timeout maior para o
-        # Wayback (capturar um site difícil pode ser mais lento que ler um já capturado) e mensagem que
-        # preserva qual dos dois passos falhou.
-        erro_salvar = erro_ler = None
-        try:
-            buscar("https://web.archive.org/save/" + url, timeout=max(timeout, 90))
-        except Exception as e:  # noqa: BLE001
-            erro_salvar = e
-        try:
-            return buscar(f"https://web.archive.org/web/20301231000000/{url}", timeout=max(timeout, 60))
-        except Exception as e:  # noqa: BLE001
-            erro_ler = e
-        raise RuntimeError(f"direto: {type(e_direto).__name__}: {e_direto} | wayback/save: "
-                           f"{type(erro_salvar).__name__ if erro_salvar else 'ok'} | wayback/ler: "
-                           f"{type(erro_ler).__name__}: {erro_ler}") from e_direto
+    return buscar_com_procedencia(url, timeout=timeout)[0]
 
 
 def fonte_esta_suspensa(urls) -> bool:
