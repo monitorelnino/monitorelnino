@@ -246,7 +246,7 @@ def main() -> None:
             if "HTTPError 404" not in r:   # só o que não é 404 interessa
                 print(f"  {u}\n    -> {r}")
             relatorio["_sondas"][u] = r
-    with open("diagnostico_sinais.json", "w", encoding="utf-8") as f:
+    with open("diagnostico_sinais.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump(relatorio, f, ensure_ascii=False, indent=1)
     print("\n→ diagnostico_sinais.json gravado.")
 

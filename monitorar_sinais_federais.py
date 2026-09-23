@@ -174,7 +174,7 @@ def main():
         return self_test()
     fila = carregar_fila()
     novas = registrar(fila, vigiar_dou() + vigiar_stf())
-    json.dump(fila, open(FILA, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     try:
         ult = json.load(open(RAIZ / "data" / "boletins.json", encoding="utf-8")).get("ultimo_boletim")
         print(f"(vigia de boletins delegada a atualizar_boletins.py — último registrado: nº {ult})")

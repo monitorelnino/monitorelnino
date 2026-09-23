@@ -29,7 +29,7 @@ HOJE = "2026-09-02"
 def j(p):
     with open(p, encoding="utf-8") as f: return json.load(f)
 def w(p, d):
-    with open(p, "w", encoding="utf-8") as f:
+    with open(p, "w", encoding="utf-8", newline="\n") as f:
         json.dump(d, f, ensure_ascii=False, indent=1); f.write("\n")
 
 def migrar_log():

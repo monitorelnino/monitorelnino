@@ -94,7 +94,7 @@ def main() -> int:
         for a in avisos:
             print("  -", a)
         return 1
-    CAMINHO.write_text(json.dumps(migrado, ensure_ascii=False, indent=1), encoding="utf-8")
+    CAMINHO.write_text(json.dumps(migrado, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     print(f"✓ migrado — {len(migrado['uf'])} UFs, nenhum valor de topo mudou.")
     return 0
 

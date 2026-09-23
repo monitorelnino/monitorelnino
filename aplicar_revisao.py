@@ -43,7 +43,7 @@ def carregar(nome):
 
 def salvar(nome, obj):
     """Grava um dicionário como JSON formatado, no mesmo padrão de indentação usado em todo o projeto."""
-    json.dump(obj, open(DATA / nome, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(obj, open(DATA / nome, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 
 
 def mesclar(revisao: list[dict], municipios: list[dict], pontos: list[dict]):

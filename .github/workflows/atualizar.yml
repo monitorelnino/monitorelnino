@@ -130,6 +130,14 @@ jobs:
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
 
+      # §177 (23/09/2026): OCR dos PLANCON escaneados. `tesseract-ocr-por` é o que faz diferença —
+      # com o modelo em inglês o texto sai com acento trocado ("Administragao", "sAO JOSE"), medido
+      # aqui num teste real. A rasterização sai por pypdfium2, que já vem com pdfplumber. Cinco
+      # minutos de teto: é instalação de pacote, não coleta.
+      - name: Instalar Tesseract com o modelo português (§177)
+        timeout-minutes: 5
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por
+
       # Node/jsdom precisam vir ANTES do atualizar.py: o orquestrador chama
       # scripts/verificar_estrutura.js, scripts/verificar_runtime.js e (desde
       # 31/08/2026, quando mapas/gráficos ganharam página própria)
@@ -448,6 +456,25 @@ jobs:
         continue-on-error: true
         timeout-minutes: 20
         run: python3 preservar_evidencias.py --limite 20
+
+      # 22/09/2026, registrado no §174: a leitura (§10.1) também estava fora de todo workflow. Não é acessório:
+      # acima de 5 MB a cópia binária é pulada por desenho e só resta o pedido de snapshot ao
+      # Wayback, que falha com frequência (40 itens do índice, mediana de 13 MB). Nesses casos o
+      # TEXTO extraído é a única prova preservada — e o portão passou a exigir prova de verdade.
+      - name: Ler o texto dos PDFs preservados (§10.1 — única prova acima de 5 MB)
+        continue-on-error: true
+        timeout-minutes: 25
+        run: python3 preservar_evidencias.py --ler --limite 20
+
+      # §177 (23/09/2026): PDF escaneado não tem camada de texto, e acima do teto de 5 MB não tem
+      # cópia binária nem snapshot — era prova nenhuma (quatro PLANCON do ES em LACUNA_DECLARADA,
+      # §174). O OCR dá uma cópia LEGÍVEL, marcada como tal em campos `ocr_*`: prova preservada,
+      # nunca insumo do classificador nem do juiz (§156). Depois da leitura, que é quem descobre
+      # que o PDF não tem texto. Teto de 30 min: ~230 páginas a ~2,5 s cada, com folga.
+      - name: OCR dos PDFs escaneados (§177 — única cópia legível possível)
+        continue-on-error: true
+        timeout-minutes: 30
+        run: python3 preservar_evidencias.py --ocr --limite 6
 
       - name: Completar evidências com texto integral (autocura, 10/09/2026)
         # Pistas antigas sem .txt (inclusive evidência perdida, via recuperação por URL)

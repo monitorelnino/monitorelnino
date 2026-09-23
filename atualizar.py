@@ -333,7 +333,7 @@ def main():
     if hash_arquivo(transf) != antes:
         meta["corte"] = hoje
         print(f"\nTransferências alteradas → corte dos dados atualizado para {hoje}.")
-    json.dump(meta, open(meta_p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    json.dump(meta, open(meta_p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=2)
     # 10/09/2026 (causa-raiz do portão 12 vermelho na main após cada rodada): os três geradores
     # abaixo carimbam `gerado_em` com o `atualizado_em` de data/meta.json (data determinística),
     # mas rodaram ANTES deste carimbo e ficavam um dia atrás. Reexecutá-los aqui é idempotente

@@ -171,9 +171,9 @@ def main():
                 if bate_palavra_chave(a):
                     revisar.append(a)
 
-    json.dump(bruto, open(DATA_DIR / "transferencias_api_raw.json", "w", encoding="utf-8"),
+    json.dump(bruto, open(DATA_DIR / "transferencias_api_raw.json", "w", encoding="utf-8", newline="\n"),
                ensure_ascii=False, indent=1)
-    json.dump(revisar, open(DATA_DIR / "transferencias_revisar.json", "w", encoding="utf-8"),
+    json.dump(revisar, open(DATA_DIR / "transferencias_revisar.json", "w", encoding="utf-8", newline="\n"),
                ensure_ascii=False, indent=1)
 
     print(f"\nConcluído. {len(bruto)} registros brutos salvos em data/transferencias_api_raw.json")
