@@ -140,19 +140,39 @@ def registrar(fila: dict, achados: list) -> list:
     return ineditos
 
 
+def classificar_falha(e) -> tuple:
+    """(decisao, motivo) de uma falha de busca. §181 (23/09/2026): a versão anterior chamava TODA
+    falha de "acesso recusado", e isso mentia em duas direções. Dos 235 registros de falha da
+    rodada de 23/09, **80 eram HTTP 404** nos caminhos adivinhados (`/planos`, `/defesa-civil`) —
+    caminho que não existe não é fonte que recusa —, 140 eram falha de conexão (DNS, TLS, reset) e
+    só **3 eram 403**, que é o servidor dizendo não. A distinção é a do §170: recusa se respeita,
+    ausência de resposta não é recusa."""
+    import urllib.error
+    if isinstance(e, urllib.error.HTTPError):
+        if e.code in (401, 402, 403, 429, 451):
+            return "acesso recusado", f"HTTP {e.code} — o servidor respondeu NÃO; não se contorna"
+        if e.code in (404, 410):
+            return "nada localizado", f"HTTP {e.code} — o caminho tentado não existe neste domínio"
+        return "erro", f"HTTP {e.code} — servidor com defeito"
+    return "erro", f"{type(e).__name__} — sem resposta do servidor (não é recusa; ver §170)"
+
+
 def sondar(uf: str, setor: str, fila: dict) -> list:
     """Sonda um alvo (UF + setor). Nunca levanta: falha de rede vira acesso_recusado."""
     dominio = dominio_para(uf, setor)
     achados = []
+    consultadas = 0
     for caminho in CAMINHOS[:3]:        # 3 páginas por alvo — mesma disciplina de custo
         url = f"https://{dominio}{caminho}"
         try:
             html = buscar(url, timeout=30).decode("utf-8", "replace")
         except Exception as e:  # noqa: BLE001 — tolerante por design
-            log_busca("sonda de painéis", 1, [url], "acesso recusado",
-                      resultados=f"{type(e).__name__}: {e}", uf=uf)
+            decisao, motivo = classificar_falha(e)
+            log_busca("sonda de painéis", 1, [url], decisao,
+                      resultados=f"{motivo} ({type(e).__name__}: {e})", uf=uf)
             time.sleep(2.0)
             continue
+        consultadas += 1
         for ref in achar_hospedeiros(html):
             achados.append({"uf": uf, "setor": setor, "dominio": dominio,
                             "pagina_origem": url, **ref})
@@ -162,7 +182,51 @@ def sondar(uf: str, setor: str, fila: dict) -> list:
         log_busca("sonda de painéis", 1, [dominio], "pista",
                   resultados="; ".join(sorted({a["tipo"] for a in achados})),
                   uf=uf, n_resultados=len(achados))
+    elif consultadas:
+        # §181: o silêncio era o pior dos registros. Sem esta linha, "consultei e não havia painel"
+        # e "nunca consultei" ficam idênticos no log — e a leitura do resultado erra, porque só as
+        # falhas aparecem. Aconteceu de verdade na leitura da rodada de 23/09.
+        log_busca("sonda de painéis", 1, [dominio], "nada localizado",
+                  resultados=f"consultado em {consultadas} página(s); nenhuma referência a "
+                             f"hospedeiro de painel no HTML bruto", uf=uf, n_resultados=0)
     return novos
+
+
+STATUS_VERIFICADO = "verificado_em_navegador"
+
+
+def anotar_verificacao(fila: dict, anotacoes: list) -> list:
+    """Registra na fila o que cada painel É, depois de aberto em navegador (§181, 23/09/2026).
+
+    A sonda diz que existe uma camada; só a abertura diz o que há dentro. Sem este registro, cada
+    sessão reabre os mesmos painéis para redescobrir que o de MG é boletim meteorológico — e, pior,
+    a ausência de plano municipal fica indistinguível de "ninguém olhou". Vocabulário fechado:
+    `traz_planos_municipais` é True, False ou None (não deu para determinar), e `coletar: False`
+    exige motivo escrito. Nunca toca em `promovivel` nem em `documento_oficial_confirmado`: promoção
+    segue humana (R7)."""
+    aplicadas = []
+    for a in anotacoes:
+        alvo = [i for i in fila["itens"] if i.get("uf") == a["uf"] and i.get("setor") == a["setor"]]
+        if a.get("url"):
+            alvo = [i for i in alvo if i.get("url") == a["url"]]
+        if not alvo:
+            raise ValueError(f"nenhum item na fila para {a['uf']}/{a['setor']}")
+        if a.get("traz_planos_municipais") not in (True, False, None):
+            raise ValueError("traz_planos_municipais: só True, False ou None")
+        if a.get("coletar") not in (True, False):
+            raise ValueError("coletar: só True ou False")
+        if a["coletar"] is False and not a.get("motivo"):
+            raise ValueError("coletar=False exige motivo escrito")
+        for i in alvo:
+            i["status"] = STATUS_VERIFICADO
+            i["verificado_em"] = a.get("verificado_em") or hoje()
+            i["conteudo"] = a["conteudo"]
+            i["traz_planos_municipais"] = a.get("traz_planos_municipais")
+            i["coletar"] = a["coletar"]
+            if a.get("motivo"):
+                i["motivo"] = a["motivo"]
+            aplicadas.append(i)
+    return aplicadas
 
 
 def autoteste() -> int:
@@ -211,7 +275,67 @@ def autoteste() -> int:
         a = achar_hospedeiros(html)
         return len(a) == 1 and a[0]["tipo"] == "painel Power BI"
 
+    def t_404_nao_e_recusa():
+        import urllib.error
+        e = urllib.error.HTTPError("https://x/planos", 404, "Not Found", None, None)
+        d, motivo = classificar_falha(e)
+        return d == "nada localizado" and "não existe" in motivo
+
+    def t_403_e_recusa_que_se_respeita():
+        import urllib.error
+        e = urllib.error.HTTPError("https://x/", 403, "Forbidden", None, None)
+        d, motivo = classificar_falha(e)
+        return d == "acesso recusado" and "NÃO" in motivo
+
+    def t_500_e_defeito_do_servidor():
+        import urllib.error
+        e = urllib.error.HTTPError("https://x/", 500, "Server Error", None, None)
+        return classificar_falha(e)[0] == "erro"
+
+    def t_sem_resposta_nao_e_recusa():
+        import urllib.error
+        d, motivo = classificar_falha(urllib.error.URLError("[Errno 11001] getaddrinfo failed"))
+        return d == "erro" and "não é recusa" in motivo
+
+    def t_anotacao_registra_o_que_o_painel_e():
+        fila = {"itens": [{"uf": "MG", "setor": "defesa_civil", "url": "u", "hash": "h",
+                           "status": "pendente_abertura_em_navegador", "promovivel": False,
+                           "documento_oficial_confirmado": None}]}
+        anotar_verificacao(fila, [{"uf": "MG", "setor": "defesa_civil", "conteudo": "boletim",
+                                   "traz_planos_municipais": False, "coletar": False,
+                                   "motivo": "não traz tabela de planos"}])
+        i = fila["itens"][0]
+        return (i["status"] == STATUS_VERIFICADO and i["traz_planos_municipais"] is False
+                and i["coletar"] is False and i["motivo"]
+                # a anotação é triagem, não promoção: as travas de campo continuam de pé
+                and i["promovivel"] is False and i["documento_oficial_confirmado"] is None)
+
+    def t_anotacao_sem_motivo_para_nao_coletar_reprova():
+        fila = {"itens": [{"uf": "SC", "setor": "saude", "url": "u", "hash": "h"}]}
+        try:
+            anotar_verificacao(fila, [{"uf": "SC", "setor": "saude", "conteudo": "x",
+                                       "traz_planos_municipais": False, "coletar": False}])
+            return False
+        except ValueError:
+            return True
+
+    def t_anotacao_de_alvo_inexistente_reprova():
+        try:
+            anotar_verificacao({"itens": []}, [{"uf": "ZZ", "setor": "saude", "conteudo": "x",
+                                                "traz_planos_municipais": None, "coletar": False,
+                                                "motivo": "m"}])
+            return False
+        except ValueError:
+            return True
+
     return rodar_autoteste({
+        "§181 404 em caminho adivinhado não é recusa": t_404_nao_e_recusa,
+        "§181 403 é recusa que se respeita": t_403_e_recusa_que_se_respeita,
+        "§181 5xx é defeito do servidor": t_500_e_defeito_do_servidor,
+        "§181 falha de conexão é ausência de resposta, não recusa": t_sem_resposta_nao_e_recusa,
+        "§181 anotação registra o que o painel é, sem promover": t_anotacao_registra_o_que_o_painel_e,
+        "§181 não coletar exige motivo escrito": t_anotacao_sem_motivo_para_nao_coletar_reprova,
+        "§181 anotação de alvo inexistente reprova": t_anotacao_de_alvo_inexistente_reprova,
         "acha Power BI em iframe (com a URL completa)": t_acha_powerbi_em_iframe,
         "HTML sem painel não produz achado": t_html_sem_painel_nao_inventa,
         "acha vários hospedeiros na mesma página": t_varios_hospedeiros,
@@ -222,6 +346,21 @@ def autoteste() -> int:
 
 
 def main() -> int:
+    if "--anotar" in sys.argv:
+        # §181: aplica à fila o que a abertura em navegador mostrou. O arquivo é uma lista de
+        # anotações; a validação está em anotar_verificacao(), com vocabulário fechado.
+        import json as _json
+        caminho = sys.argv[sys.argv.index("--anotar") + 1]
+        fila = ler(FILA, {"itens": []})
+        with open(caminho, encoding="utf-8") as f:
+            anotacoes = _json.load(f)
+        aplicadas = anotar_verificacao(fila, anotacoes)
+        gravar(FILA, fila)
+        for i in aplicadas:
+            marca = "coletar" if i.get("coletar") else "não coletar"
+            print(f"  {i['uf']}/{i['setor']}: {i['conteudo'][:60]} → {marca}")
+        print(f"{len(aplicadas)} item(ns) anotado(s) na fila.")
+        return 0
     if "--autoteste" in sys.argv:
         return autoteste()
     setores = ["defesa_civil", "saude"]

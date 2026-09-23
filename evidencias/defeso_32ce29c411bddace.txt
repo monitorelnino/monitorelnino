@@ -1,0 +1,333 @@
+
+        
+
+
+
+
+
+                              	
+
+
+
+																					
+		
+
+    
+			<!DOCTYPE HTML>
+		<html>
+										
+
+
+
+																					
+		
+
+						
+			
+			
+																																																																																							<head>
+				<title>Cidadão - Secretaria da Saúde - Governo do Estado de São Paulo</title>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+						<link rel="icon" href="/resources/ses/favicon.png" type="image/png" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <link href="/mmp/ses/css/styles-min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/dwr-view/interface/coreService.js"></script>
+    <script type="text/javascript" src="/dwr-view/engine.js"></script>
+    <script type="text/javascript" src="/mmp/ses/js/scripts-min.js"></script>
+    
+        	<link rel="stylesheet" type="text/css" href="/mmp/ses/plugins/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/mmp/ses/plugins/flexslider/flexslider.css" />
+	<link href="/mmp/ses/css/responsive.css" media="screen" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/mmp/ses/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/mmp/ses/plugins/flexslider/jquery.flexslider.js"></script>
+    	
+    <link rel="stylesheet" href="/mmp/ses/css/print.css" media="print" type="text/css" />
+
+<link href="/mmp/ses/css/ui-lightness/jquery-ui-1.8.8.custom.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!--[if IE 7]>
+	<link href="/mmp/ses/css/ie7.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<link href="/mmp/ses/css/prettyPhotoie6.css" media="screen" rel="stylesheet" type="text/css" />
+<![endif]-->
+<!--[if IE 6.0]>
+	<link href="/mmp/ses/css/ie6.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<link href="/mmp/ses/css/prettyPhotoie6.css" media="screen" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script src="/mmp/ses/js/head.0.96.js"></script>
+<script type="text/javascript">
+
+	var Expresso = {
+		srPath: "",
+		parentId: "81",
+				objectId: "101",
+		css: "",
+		defaultCss: "",
+		currentUrl : "/ses/perfil/cidadao/",
+		userId: "",
+		homePageId : "21"
+	}
+</script>
+
+	<script src='https://www.google.com/recaptcha/api.js?hl=PT'></script>
+															<link rel="canonical" href="http://www.saude.sp.gov.br" />
+													<script src="/mmp/ses/js/home.js" type="text/javascript"></script>
+				<script>
+					$(document).ready(function() {
+					var siteroot = "http://" + window.location.toString().split("/")[2];
+						$(".instituicao a").each(function(){
+							$(this).click(function() {
+								if($(this).prev().val()!= 0) window.location.href = (siteroot + $(this).prev().val());
+							});  
+						});
+					});
+				</script>
+			</head>
+						    <body class="responsive-body" >
+			    <!-- $offline_eleitoral -->
+				<div class="container">
+					<div class="row">
+						<link rel="stylesheet" type="text/css" href="https://saopaulo.sp.gov.br/barra-govsp/css/topo-padrao-govsp.min.css">
+<link rel="stylesheet" type="text/css" href="https://saopaulo.sp.gov.br/barra-govsp/css/barra-contraste-govsp.min.css">
+<style>
+.govsp-topo {
+    margin-bottom: 15px;
+}
+</style>
+  <section class="govsp-topo">     
+        <div id="govsp-topbarGlobal" class="blu-e">
+                <div id="topbarGlobal">
+                    <div id="topbarLink" class="govsp-black">
+                    <div class="govsp-portal">
+                        <a href="https://www.saopaulo.sp.gov.br" accesskey="1" title="Governo SP" target="_blank"><img src="https://saopaulo.sp.gov.br/barra-govsp/img/logo-governo-do-estado-sp.png">
+                    </div> 
+                </div>
+                <nav class="govsp-navbar govsp-navbar-expand-lg">
+                    
+                        <a class="govsp-link digital" href="https://spmaisdigital.sp.gov.br" title="site SP + Digital (nova janela)" target="_blank">SP + Digital</a>
+    
+                        <a class="govsp-social" href="https://www.flickr.com/governosp/" target="_blank" title="Flickr Governo de São Paulo (nova janela)"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-flickr.png" alt="Flickr Governo de São Paulo" /></a>
+                                           
+                        <a class="govsp-social" href="https://www.linkedin.com/company/governosp/" target="_blank" title="Linkedin Governo de São Paulo (nova janela)"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-linkedin.png" alt="Linkedin Governo de São Paulo" /></a>
+    
+                        <a class="govsp-social" href="https://www.tiktok.com/@governosp" target="_blank" title="TikTok Governo de São Paulo (nova janela)"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-tiktok.png" alt="TikTok Governo de São Paulo" /></a>                        
+                        
+                        <a class="govsp-social" href="https://www.youtube.com/governosp/" target="_blank" title="Youtube Governo de São Paulo (nova janela)"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-youtube.png" alt="Youtube Governo de São Paulo" /></a>
+                        
+                        <a class="govsp-social" href="https://www.twitter.com/governosp/" target="_blank" title="Twitter Governo de São Paulo (nova janela)"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-twitter.png" alt="Twitter Governo de São Paulo" /></a>
+    
+                        <a class="govsp-social" href="https://www.instagram.com/governosp/" target="_blank" title="Instagram Governo de São Paulo"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-insta.png" alt="Instagram Governo de São Paulo" /></a>
+                        
+                        <a class="govsp-social" href="https://www.facebook.com/governosp/" target="_blank" title="Facebook Governo de São Paulo (nova janela)"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-facebook.png" alt="Facebook Governo de São Paulo" /></a>                       
+                        
+                        <p class="govsp-social">/governosp</p>
+                        <div id="separador-nav"></div>
+                        <a class="govsp-acessibilidade" href="#" id="aumentaFonte" accesskey="2" title="Aumentar Fonte"><img class="govsp-acessibilidade" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-big-font.png" alt="Aumentar Fonte"></a>
+
+                        <a class="govsp-acessibilidade" href="#" id="reduzFonte" accesskey="3" title="Diminuir Fonte"><img class="govsp-acessibilidade" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-small-font.png" alt="Diminuir Fonte"></a>
+
+                        <a class="govsp-acessibilidade" href="#" id="altocontraste" accesskey="4" title="Aplicar contraste"><img class="govsp-acessibilidade" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-contrast.png" alt="Contraste"></a>
+
+                        <a class="govsp-acessibilidade" href="https://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/" accesskey="5" target="_blank"><img class="govsp-acessibilidade" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-error-report.png"  alt="Símbolo de exclamação dentro de triângulo"></a>                        
+                </nav>
+            </div>
+            <div class="govsp-kebab" id="govsp-kebab">
+                    <figure></figure>
+                    <figure class="govsp-middle" id="govsp-middle"></figure>
+                    <span class="govsp-cross" id="govsp-cross"></span>
+                    <figure></figure>
+                    <ul class="govsp-dropdown" id="govsp-dropdown">               
+                        <li><a class="govsp-link digital" href="https://spmaisdigital.sp.gov.br" target="_blank" title="Site SP + Digital">SP + Digital</a>
+
+                        <li><a class="govsp-social" href="https://www.flickr.com/governosp/" target="_blank" title="Flickr Governo de São Paulo"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-flickr.png" alt="Flickr Governo de São Paulo" /></a></li>
+                        
+                        <li><a class="govsp-social" href="https://www.linkedin.com/company/governosp/" target="_blank" title="Linkedin Governo de São Paulo"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-linkedin.png" alt="Linkedin Governo de São Paulo" /></a></li>
+
+                        <li><a class="govsp-social" href="https://www.tiktok.com/@governosp" target="_blank" title="TikTok Governo de São Paulo"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-tiktok.png" alt="TikTok Governo de São Paulo" /></a></li>
+
+                        <li><a class="govsp-social" href="https://www.twitter.com/governosp/" target="_blank" title="Twitter Governo de São Paulo"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-twitter.png" alt="Twitter Governo de São Paulo" /></a></li>
+                        
+                        <li><a class="govsp-social" href="https://www.youtube.com/governosp/" target="_blank" title="Youtube Governo de São Paulo"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-youtube.png" alt="Youtube Governo de São Paulo" /></a></li> 
+
+                        <li><a class="govsp-social" href="https://www.instagram.com/governosp/" target="_blank" title="Instagram Governo de São Paulo"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-insta.png" alt="Instagram Governo de São Paulo" /></a></li>
+                      
+                        <li><a class="govsp-social" href="https://www.facebook.com/governosp/" target="_blank" title="Acessar o Facebook do Governo de São Paulo"><img class="govsp-icon-social" src="https://saopaulo.sp.gov.br/barra-govsp/img/i-facebook.png" alt="Acessar o Facebook Governo de São Paulo" /></a></li>
+                        
+                        <li><p class="govsp-social">/governosp</p></li>
+                    </ul> 
+            </div>
+        </div>
+        
+        <script src="https://saopaulo.sp.gov.br/barra-govsp/js/script-topo.js"></script>
+        <script src="https://saopaulo.sp.gov.br/barra-govsp/js/script-contrast-govsp.js"></script>
+        <script src="https://saopaulo.sp.gov.br/barra-govsp/js/script-tamanho-fonte-govsp.js"></script>
+        <script src="https://saopaulo.sp.gov.br/barra-govsp/js/script-scroll.js"></script>
+        <noscript>
+          Seu navegador não tem suporte a JavaScript ou está desativado!</noscript>
+    </section>			    		<div class="col-xs-12 col-sm-12 col-md-12">
+			                <div id="page" class="cidadao primeiro new-layout " >
+			                	<header id="header">
+									<div class="row">
+										
+
+    <nav class="navbar navbar-default col-md-8  col-xs-12 col-lg-9" role="navigation">
+    	<div>
+    		
+            <div class="navbar-header">
+    			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+    			</button>
+                          </div>
+    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">			
+            	<ul class="nav navbar-nav" id="teste">
+            				            		            		<li class="current dropdown">
+							            			<a href="/ses/institucional/"  title="Institucional">Institucional</a>
+            			            			            			            			            			            			            			            			            			            			            			            			            			            					            		 	<ul class="dropdown-menu">
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Sobre a SES">Sobre a SES</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Fundações">Fundações</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Autarquias">Autarquias</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Coordenadorias">Coordenadorias</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Departamentos Regionais de Saúde">Departamentos Regionais de Saúde</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Órgãos Vinculados">Órgãos Vinculados</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Carta de Serviços (Em Construção)">Carta de Serviços (Em Construção)</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Gabinete">Gabinete</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/institucional/"   title="Humanização">Humanização</a>
+            				</li>
+            				            			</ul>
+            		</li>
+            		            		<li class="current dropdown">
+							            			<a href="http://portaldenoticias.saude.sp.gov.br" target='_blank' title="Notícias">Notícias</a>
+            			            			            			            			            					            		 	<ul class="dropdown-menu">
+            				            			</ul>
+            		</li>
+            		            		<li class="current dropdown">
+							            			<a href="/ses/legislacao/"  title="Legislação">Legislação</a>
+            			            			            			            			            			            			            					            		 	<ul class="dropdown-menu">
+            				            				<li>
+										            					<a href="/ses/legislacao/"   title="Informe Eletrônico de Legislação em Saúde ">Informe Eletrônico de Legislação em Saúde </a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/legislacao/"   title="Base de Dados de Legislação em Saúde">Base de Dados de Legislação em Saúde</a>
+            				</li>
+            				            			</ul>
+            		</li>
+            		            		<li class="current dropdown">
+							            			<a href="/ses/sites-de-interesse/"  title="Sites de Interesse">Sites de Interesse</a>
+            			            			            			            			            			            			            			            			            			            			            			            			            			            					            		 	<ul class="dropdown-menu">
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Instituições vinculadas à Secretaria de Estado da Saúde São Paulo ">Instituições vinculadas à Secretaria de Estado da Saúde São Paulo </a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Associações / Conselhos / Sociedades ">Associações / Conselhos / Sociedades </a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Órgãos Governamentais">Órgãos Governamentais</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Órgãos Estaduais ">Órgãos Estaduais </a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Secretarias Estaduais e Municipais de Saúde ">Secretarias Estaduais e Municipais de Saúde </a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Escolas, Faculdades e Universidades ">Escolas, Faculdades e Universidades </a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Hospitais">Hospitais</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Internacionais">Internacionais</a>
+            				</li>
+            				            				<li>
+										            					<a href="/ses/sites-de-interesse/"   title="Outros ">Outros </a>
+            				</li>
+            				            			</ul>
+            		</li>
+            		            		<li class="current">
+            			<a href="/fale-conosco" title="Fale conosco">Fale conosco</a>
+            		</li>
+            	</ul>
+            </div>
+        </div>
+    </nav>
+
+			                			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+	<div class="rightMenu">
+		<nav id="headerMenu">
+			<ul>
+			<li><a href="/">Home</a></li>
+							<li><a href="/mapa-do-site/">Mapa do Site</a></li>
+																</ul>
+		</nav>
+	</div>
+	<!--
+	<div class="col-xs-6 col-sm-6 col-md-6">
+				<a href="/" title="Secretaria de Estado da Saúde"><h3 class="logotipo" style="background:none;">Secretaria de Estado da Saúde</h3></a>
+			</div>
+	-->
+
+	<form id="topSearch" action="/search.view" method="post">
+		<fieldset>
+			<label for="search">Busca</label>
+			
+			<input type="hidden" name="method" value="search" />
+			<input type="hidden" name="searchInAllField" value="true" />
+			<input type="hidden" name="searchType" value="2" />
+			<input type="hidden" name="search" value="true" />
+			<input type="hidden" value="all,html,fileContent,fileName,mimeType" name="searchFields"/>
+			<input type="hidden" name="page" value="0" />
+			<input type="hidden" name="startObjectId" value="21"/>
+	
+			<input type="text" name="keywords" class="kw" />
+			<input type="submit" value="Buscar" class="submit"/>
+		</fieldset>
+	</form>
+</div>									</div>
+			                	</header>
+			                				                	<div id="newHome">
+	<div id="menu-perfil">
+		<ul id="perfil" class=" button-group">
+			<li class="primeiro selected"><a class="button" href="/ses/perfil/cidadao/">Cidadão</a></li>
+			<li class="terceiro "><a class="button" href="/ses/perfil/gestor/">Gestor</a></li>
+			<li class="segundo "><a class="button" href="/ses/perfil/profissional-da-saude/">Profissional da Saúde</a></li>
+	</ul>
+	</div>
+	<div class="fontSize hidden-xs hidden-sm" id="fontSize">
+	<a class="small" rel="10" href="#">A</a>
+	<a class="medium selected"rel="13" href="#">A</a>
+	<a class="big" rel="16" href="#">A</a>
+	<span>Tamanho do texto</span>
+</div>	<section class="pageContent">
+		<d

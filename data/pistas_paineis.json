@@ -12,7 +12,7 @@
    "hash": "am-painel-planos-acao",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "aberto_em_navegador_22-09-2026_aguarda_leitura_dos_links_por_municipio",
+   "status": "verificado_em_navegador",
    "descoberto_em": "2026-09-22",
    "observacao": "Menu 'Planos de Ação' com 9 cartões; o cartão 'Planos de Contingência Municipais' abre sub-painel com tabela dos 62 municípios (calha, município, ícone de link do plano, ano). Cartões adicionais relevantes ao item (3) do pedido: Plano Estadual de Proteção e Defesa Civil, Plano Tático Estiagem 2026, Plano Tático Cheia 2026. A tabela é declaração ESTADUAL (ano, não número/data do ato); o documento por município está atrás de cada ícone e ainda não foi aberto — sem isso não se sabe se o plano de 2026 é anterior ou posterior a 29/06/2026.",
    "sub_painel_municipios": {
@@ -457,7 +457,11 @@
       "plano_declarado_pelo_estado": true
      }
     ]
-   }
+   },
+   "verificado_em": "2026-09-23",
+   "conteudo": "sub-painel 'Planos de Contingência Municipais': tabela com os 62 municípios, calha, ano do plano e link do documento por município",
+   "traz_planos_municipais": true,
+   "coletar": true
   },
   {
    "uf": "ES",
@@ -470,8 +474,13 @@
    "hash": "dd9ccb784336a7d5",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_abertura_em_navegador",
-   "descoberto_em": "2026-09-23"
+   "status": "verificado_em_navegador",
+   "descoberto_em": "2026-09-23",
+   "verificado_em": "2026-09-23",
+   "conteudo": "Relatório de Voluntários (Público) — CEPDEC",
+   "traz_planos_municipais": false,
+   "coletar": false,
+   "motivo": "aberto em navegador em 23/09/2026: painel de voluntariado, sem tabela de planos municipais"
   },
   {
    "uf": "MG",
@@ -484,8 +493,13 @@
    "hash": "d4c1cc0e61f9704b",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_abertura_em_navegador",
-   "descoberto_em": "2026-09-23"
+   "status": "verificado_em_navegador",
+   "descoberto_em": "2026-09-23",
+   "verificado_em": "2026-09-23",
+   "conteudo": "Boletim Informativo da Defesa Civil Estadual: boletim meteorológico, série histórica e indicadores de seca e estiagem",
+   "traz_planos_municipais": false,
+   "coletar": false,
+   "motivo": "aberto em navegador em 23/09/2026: HTTP 200, nenhuma grade no DOM renderizado; não há tabela de planos municipais a extrair"
   },
   {
    "uf": "RJ",
@@ -498,8 +512,13 @@
    "hash": "6ad3c67315f64634",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_abertura_em_navegador",
-   "descoberto_em": "2026-09-23"
+   "status": "verificado_em_navegador",
+   "descoberto_em": "2026-09-23",
+   "verificado_em": "2026-09-23",
+   "conteudo": "Dashboards operacionais: serviço 24h, notificações por tipo, GRAC, S2iD, força especial",
+   "traz_planos_municipais": false,
+   "coletar": false,
+   "motivo": "aberto em navegador em 23/09/2026: painel de operação e ocorrências, sem tabela de planos municipais"
   },
   {
    "uf": "GO",
@@ -512,8 +531,13 @@
    "hash": "3dcf80d57b495a74",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_abertura_em_navegador",
-   "descoberto_em": "2026-09-23"
+   "status": "verificado_em_navegador",
+   "descoberto_em": "2026-09-23",
+   "verificado_em": "2026-09-23",
+   "conteudo": "painel de apresentação e cronograma (secretaria de saúde)",
+   "traz_planos_municipais": false,
+   "coletar": false,
+   "motivo": "aberto em navegador em 23/09/2026: HTTP 200 sem grade no DOM; páginas de apresentação e cronograma"
   },
   {
    "uf": "PR",
@@ -526,8 +550,13 @@
    "hash": "3ee1841fbf5daa3d",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_abertura_em_navegador",
-   "descoberto_em": "2026-09-23"
+   "status": "verificado_em_navegador",
+   "descoberto_em": "2026-09-23",
+   "verificado_em": "2026-09-23",
+   "conteudo": "formulário 'Notifique Aqui CIEVS/PR' — canal de ENTRADA de notificação, não publicação de documento",
+   "traz_planos_municipais": false,
+   "coletar": false,
+   "motivo": "aberto em 23/09/2026: é formulário de envio ao CIEVS, não há documento publicado para preservar"
   },
   {
    "uf": "SC",
@@ -540,8 +569,32 @@
    "hash": "e20e31f9d8f13896",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_abertura_em_navegador",
-   "descoberto_em": "2026-09-23"
+   "status": "verificado_em_navegador",
+   "descoberto_em": "2026-09-23",
+   "verificado_em": "2026-09-23",
+   "conteudo": "catálogo telefônico interno da secretaria: local, andar, superintendência, diretoria, gerência, setor, nome, ramal e telefone (293 linhas)",
+   "traz_planos_municipais": false,
+   "coletar": false,
+   "motivo": "aberto em navegador em 23/09/2026: são DADOS PESSOAIS de servidores (nome e ramal), irrelevantes para o que o Monitor mede — preservar seria violar a minimização (LGPD art. 6º, III). A renderização de teste foi apagada do disco e nada foi comitado."
+  },
+  {
+   "uf": "AC",
+   "setor": "defesa_civil",
+   "dominio": "defesacivil.ac.gov.br",
+   "pagina_origem": "https://defesacivil.ac.gov.br/",
+   "hospedeiro": "drive.google.com",
+   "tipo": "pasta/arquivo no Google Drive",
+   "url": "https://drive.google.com/file/d/1EQLPBVIU1MSZNLpgSGQLX9_xV4NF5S8V/view",
+   "hash": "04df3c8889e17ac4",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "verificado_em_navegador",
+   "descoberto_em": "2026-09-23",
+   "verificado_em": "2026-09-23",
+   "conteudo": "PDF de uma página no Google Drive: lista de siglas das divisões internas do CEPDC (ASPLAN, ASSECOM, ASSEJUR, CORPDEC, DIVRH…)",
+   "traz_planos_municipais": false,
+   "coletar": false,
+   "motivo": "baixado em 23/09/2026 (41 kB, 1 página): organograma interno, não plano de contingência"
   }
  ]
 }

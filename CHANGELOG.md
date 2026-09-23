@@ -9,6 +9,43 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §181 · A receita do AM aplicada às outras UFs: os oito painéis abertos um por um, e a sonda que ficava muda quando não achava · 23/09/2026
+
+Classe **coleta e correção de instrumentação**. Nenhum número do índice muda e nenhum registro novo entra no banco. O que este lote entrega é uma **resposta medida** a uma pergunta que estava aberta, e o conserto do instrumento que tornava a resposta ilegível.
+
+**A pergunta.** O §180 documentou 51 planos municipais do AM a partir de um painel Power BI. A pergunta imediata da editoria: existem painéis assim em outras UFs, publicando o que o do AM publica?
+
+**A sonda, rodada de dentro do Brasil.** 27 UFs × 2 setores × 3 páginas, com o intervalo de 2 s por domínio que o §11 fixa: **248 execuções**, 13 pistas, **uma pista nova** — um PDF no Google Drive da Defesa Civil do AC. O catálogo passou de 7 para 8 painéis.
+
+**Os oito abertos em navegador real, um por um.** A sonda diz que existe uma camada; só a abertura diz o que há dentro:
+
+| UF | setor | o que é | traz planos municipais |
+|---|---|---|---|
+| **AM** | defesa civil | tabela dos 62 municípios com ano e link do documento | **sim** (coletado no §180) |
+| MG | defesa civil | boletim informativo: meteorologia, série histórica, indicadores de seca | não |
+| ES | defesa civil | "Relatório de Voluntários (Público) — CEPDEC" | não |
+| RJ | defesa civil | dashboards operacionais: serviço 24h, notificações por tipo, GRAC, S2iD | não |
+| GO | saúde | painel de apresentação e cronograma | não |
+| SC | saúde | catálogo telefônico interno da secretaria (293 linhas) | não |
+| PR | saúde | formulário "Notifique Aqui CIEVS/PR" — canal de entrada | não |
+| AC | defesa civil | PDF de uma página: siglas das divisões internas do CEPDC | não |
+
+**O painel do AM é, por ora, único.** Não há mais nada a agregar desta camada — e isso é resultado, não frustração: a hipótese "deve haver vários painéis como o do AM" foi testada e não se sustentou. Cada verificação fica registrada na fila (`status: verificado_em_navegador`, com `conteudo`, `traz_planos_municipais`, `coletar` e o motivo), para a próxima sessão não reabrir os mesmos oito e redescobrir o boletim meteorológico de MG.
+
+**O caso de SC merece nome próprio.** O painel de saúde de SC é um **catálogo telefônico de servidores** — local, andar, superintendência, setor, nome, ramal. São dados pessoais sem nenhuma relação com o que o Monitor mede: preservá-los violaria a minimização (LGPD art. 6º, III), que é a mesma fundamentação da redação de CPF de 12/09. A renderização de teste foi apagada do disco e nada dela foi comitado. Na fila, o item fica `coletar: false` com o motivo escrito — declarado, para ninguém tentar de novo por descuido.
+
+**O defeito do instrumento — e ele enganou a própria leitura desta rodada.** A sonda registrava **achado** e **falha**, e ficava **muda quando consultava e não encontrava nada**. Consequência prática, acontecida aqui: ao ler o log da rodada, a primeira conclusão foi "20 das 27 UFs não responderam" — falsa, porque o sucesso sem achado não deixava rastro, e só as falhas apareciam. "Consultei e não havia painel" e "nunca consultei" eram indistinguíveis, que é justamente a confusão que o projeto proíbe entre ausência de dado e dado não coletado.
+
+**Além disso, toda falha se chamava "acesso recusado"**, e isso mentia nas duas direções. Das 235 falhas da rodada: **80 eram HTTP 404** nos caminhos adivinhados (`/planos`, `/defesa-civil`) — caminho que não existe não é fonte que recusa —, **140 eram falha de conexão** (DNS, TLS, reset), e **3 eram 403**, o único caso em que o servidor de fato respondeu não. A distinção é a que o §170 fixou: recusa se respeita; ausência de resposta não é recusa.
+
+**O conserto.** `classificar_falha()` separa os quatro casos (404/410 → nada localizado, com o motivo; 401/402/403/429/451 → acesso recusado; 5xx → erro de servidor; sem resposta → erro declarado como tal). A sonda passa a registrar `nada localizado` quando consultou e não achou, com quantas páginas consultou. E `anotar_verificacao()` grava na fila o que a abertura mostrou, com vocabulário fechado: `traz_planos_municipais` é `true`, `false` ou `null`, e `coletar: false` **exige motivo escrito**. A anotação é triagem, nunca promoção: `promovivel` e `documento_oficial_confirmado` continuam intocados (R7).
+
+**Sete casos negativos novos** no autoteste da sonda (que já é portão bloqueante desde o §164), entre eles os quatro tipos de falha e a recusa de anotar "não coletar" sem motivo.
+
+**O que este lote não entrega, dito com clareza:** nenhum plano municipal novo, nenhum registro pontuável novo, nenhuma UF nova documentada. O caminho que sobra para ampliar cobertura não é painel — é o que o §179 já nomeou: curadoria de domínio por UF, e pedido de LAI onde o documento não está publicado.
+
+**Teste.** Autoteste da sonda verde com os sete casos novos; portão de evidências, consistência, `recalcular_mare --check` e escrita portável verdes; portão 12 em árvore limpa.
+
 ## §180 · Os 51 planos do AM lidos de dentro do Brasil — e o ato que o coletor achava que estava lendo · 23/09/2026
 
 Classe **coleta e correção de leitura**. Nenhum número do índice muda e nada é promovido: a fila do painel do AM é R7, promoção humana. O que muda é o que está preservado (51 documentos que não existiam no repositório) e o que o coletor aceita chamar de "ato do plano".
