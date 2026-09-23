@@ -51,34 +51,50 @@ Limites do merge automático:
 
 ## Portões
 
-Rodar localmente antes do PR (ordem de `portoes.yml`):
-
 ```
-python3 scripts/validar_workflows.py
-node scripts/verificar_estrutura.js
-node scripts/verificar_runtime.js
-node scripts/verificar_runtime_mapas.js
-node scripts/verificar_runtime_sinais.js
-node scripts/verificar_runtime_saude.js
-node scripts/verificar_acessibilidade.js
-node scripts/verificar_vocabulario_publico.js
-node scripts/verificar_voz_editorial.js
-node scripts/verificar_runtime_financiamento.js
-node scripts/verificar_figuras.js
-node scripts/verificar_legendas.js
-node scripts/verificar_runtime_resposta.js
-node scripts/verificar_calendario.js
-node scripts/verificar_palavras.js
-node scripts/verificar_seguranca.js
-node scripts/verificar_seo.js
-node scripts/verificar_movel.js
-node scripts/verificar_consistencia_visual.js
+python3 scripts/portoes_locais.py tudo        # ou: paginas | dados
 ```
 
-Se dado ou coleta mudou (`data/`, `*.py`, dependências), rodar também o bloco
-"dado e coleta" de `portoes.yml` (consistência, `recalcular_mare.py --check`,
-sinais, saúde, evidências, financiamento, painel, resposta, portão 12,
-portão 17, testes de regressão e autotestes dos coletores).
+A lista de portões **não vive aqui**. Ela é derivada de `.github/workflows/portoes.yml`, que
+é o único lugar que reprova de verdade — hoje são 46 comandos. Este arquivo e o PROTOCOLO
+§3.3 *descrevem* o conjunto; não o definem. Rodar um subconjunto escolhido a olho custou um
+ciclo de CI em 23/09/2026 (`verificar_seguranca.js` ficou de fora e reprovou lá por uma
+Action sem SHA fixado).
+
+Use `dados` sempre que tocar `data/`, um `*.py` de coleta ou dependências; na dúvida, `tudo`.
+`--listar` mostra a lista sem rodar. Nada sobe com portão vermelho.
+
+Atalhos: `/portoes`, `/p12` (derivado obsoleto), `/e-da-main` (a falha é minha ou já estava
+na `main`?), `/merge-main`, `/lote`. Para a suíte inteira sem gastar contexto, o subagente
+`portoes-runner` devolve só o veredito e as falhas.
+
+### Portão 12 — derivado obsoleto
+
+Sequência fixa: `bash scripts/verificar_derivados.sh` → `git add -A` → commit → rodar de
+novo. Arquivo derivado **não se edita à mão** (há hook que bloqueia). Antes de assumir a
+culpa, confira com `/e-da-main`: carimbo obsoleto já deixou a `main` vermelha sozinho.
+
+## Arquivos que nunca entram em contexto
+
+| arquivo | tamanho |
+|---|---|
+| `data/log_buscas.json` | ~14 MB |
+| `data/fontes_consultadas.json` | ~12 MB |
+| `data/verificacao_municipal.json` | ~2 MB |
+| `evidencias/` | ~380 MB |
+
+Consulte sempre agregando (`python3 -c "import json,collections; ..."`), nunca com `Read`.
+Um Read nos dois primeiros estoura a sessão sozinho. Há hook que bloqueia acima de 1 MB em
+`data/`, `dados-abertos/` e `evidencias/`.
+
+## Log append-only: merge pela base comum
+
+`data/log_buscas.json` e `data/historico_mudancas.json` só crescem. Quando os dois lados
+acrescentam e o merge conflita, **nunca deduplique por conteúdo**: execuções idênticas no
+log v2 são tentativas reais distintas e contam. Una pela base comum
+(`base + nossos_novos + deles_novos`) e confira que o total final é **maior ou igual** a cada
+lado. Em 23/09/2026 uma união por conteúdo produziu um log menor que cada lado — quase 3.000
+execuções apagadas sem aviso. Use `/merge-main`.
 
 ## Regras editoriais que o código não pode violar
 

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/bloquear_segredos.py\"",
+            "timeout": 10,
+            "statusMessage": "conferindo segredos"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/bloquear_leitura_pesada.py\"",
+            "timeout": 10,
+            "statusMessage": "conferindo tamanho do arquivo"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/bloquear_derivados.py\"",
+            "timeout": 10,
+            "statusMessage": "conferindo se é derivado"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/autoteste_do_coletor.py\"",
+            "timeout": 130,
+            "statusMessage": "rodando o autoteste do coletor"
+          }
+        ]
+      }
+    ]
+  }
+}
