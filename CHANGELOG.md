@@ -9,6 +9,26 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §170 · Os planos do AM pela reserva de arquivo, com procedência declarada — e a recusa que não se contorna · 23/09/2026
+
+**O problema.** A rodada de 23/09 leu os 62 municípios do painel, e **nenhum** documento abriu: `Connection reset by peer` nas 62 tentativas. O painel Power BI respondia normalmente no mesmo runner, o que localiza o problema — quem recusa não é a Microsoft, é o hospedeiro dos planos.
+
+**A solução já existia no projeto.** `buscar_com_reserva_wayback` foi criada em 12/09 para exatamente este sintoma: portais estaduais que não completam conexão com o runner do Actions, enquanto o arquivo público responde. Três coletores já a usam (DF, PE, listagem do DF). O coletor do AM ficou de fora.
+
+**Mas a reserva, como estava, não distinguia duas coisas muito diferentes.**
+
+*Primeira:* um plano lido na fonte e um plano lido numa captura de arquivo **provam coisas diferentes** — o primeiro é o documento como está hoje, o segundo como estava quando alguém o arquivou. `buscar_com_procedencia` passa a devolver `(bytes, procedencia)`, e o item guarda qual dos dois foi. Ato legível numa captura ainda vira `documentado`, mas com a observação em letra de forma: *o documento é o arquivado, não necessariamente o vigente*. Sem esse campo, as duas leituras viravam a mesma coisa no banco. `buscar_com_reserva_wayback` continua existindo, agora como fachada — nenhum dos três coletores muda de comportamento.
+
+*Segunda, e mais séria:* o `CLAUDE.md` proíbe contornar bloqueio de acesso de fonte, e a reserva antiga **caía no arquivo para qualquer erro**, inclusive `403`. Um 403 não é falha: é o servidor respondendo **não**. Ir buscar a mesma página numa captura seria dar a volta por fora.
+
+Agora `401`, `402`, `403`, `429` e `451` propagam sem reserva. A reserva vale para o caso oposto — reset de conexão, handshake TLS incompleto, DNS mudo —, em que **não houve resposta e portanto não há recusa a respeitar**. `404` e `5xx` seguem usando a reserva: página que sumiu ou servidor com defeito é exatamente o que um arquivo serve para resolver. Isto corrige, de tabela, a mesma falta nos três coletores que já usavam a reserva.
+
+**O resumo passa a contar procedência.** Um lote em que tudo veio de arquivo diz algo sobre a fonte, não sobre os municípios — e espalhado item a item, esse fato ficava invisível.
+
+**O que continua valendo.** Nada entra no banco sem promoção humana (R7). Ano no painel não prova antecipação. Camada `documentado` segue exigindo ato com número e data lidos do próprio documento.
+
+---
+
 ## §168 · A rodada real do painel do AM: 62 de 62 municípios lidos, e a eliminação que faltava no caminho principal · 23/09/2026
 
 **A verificação que faltava.** As correções do §165 (etiqueta de interface do Power BI colada ao nome; rolagem que nunca acontecia) passavam no autoteste offline, mas não tinham sido postas contra o painel real. Rodada manual com `commitar: false`, que não escreve nada no repositório:
