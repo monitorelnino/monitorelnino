@@ -141,6 +141,39 @@ def t_canal_renderizado_tambem_deixa_rastro():
     return False
 
 
+# §186: muro de robô com HTTP 200 — o caso real de defesacivil.sp.gov.br ("Pardon Our Interruption").
+MURO_IMPERVA = (b'<html><head><title>Pardon Our Interruption</title></head><body>As you were browsing '
+                b'something about your browser made us think you were a bot.</body></html>')
+MURO_CLOUDFLARE = (b'<html><head><title>Just a moment...</title></head><body>Checking your browser '
+                   b'before accessing este site.</body></html>')
+DOCUMENTO = (b'<html><head><title>Plano Estadual de Contingencia 2026</title></head><body>Decreto que '
+             b'institui o Plano Estadual de Contingencia.</body></html>')
+
+
+def t_muro_de_robo_e_recusa_nao_conteudo():
+    """A página de bloqueio não pode virar evidência preservada — seria prova falsa."""
+    return (cb.detectar_muro_de_robo(MURO_IMPERVA) == "pardon our interruption"
+            and cb.detectar_muro_de_robo(MURO_CLOUDFLARE) is not None
+            and cb.detectar_muro_de_robo(DOCUMENTO) is None)
+
+
+def t_muro_nao_acusa_pdf_nem_documento_grande():
+    """PDF e resposta grande ficam fora: muro é página curta, e varrer documento acharia falso positivo."""
+    grande = b"<html><body>" + b"pardon our interruption " * 5000 + b"</body></html>"
+    return cb.detectar_muro_de_robo(b"%PDF-1.7 pardon our interruption") is None         and cb.detectar_muro_de_robo(grande) is None
+
+
+def t_buscar_levanta_muro_de_robo():
+    """buscar() precisa LEVANTAR no muro, antes de qualquer preservação — pela fonte."""
+    import ast
+    fonte = (RAIZ / "coletores_base.py").read_text(encoding="utf-8")
+    for no in ast.walk(ast.parse(fonte)):
+        if isinstance(no, ast.FunctionDef) and no.name == "buscar":
+            corpo = ast.get_source_segment(fonte, no) or ""
+            return "detectar_muro_de_robo(" in corpo and "raise MuroDeRobo(" in corpo
+    return False
+
+
 def t_buscar_declara_a_regra_no_codigo():
     """buscar() precisa consultar robots_de e registrar o acesso contra o robots — pela fonte."""
     import ast
@@ -165,4 +198,7 @@ if __name__ == "__main__":
         "o cliente nunca é disfarçado": t_cliente_nunca_e_disfarcado,
         "buscar() consulta o robots, respeita o ritmo e registra": t_buscar_declara_a_regra_no_codigo,
         "o canal renderizado também deixa rastro": t_canal_renderizado_tambem_deixa_rastro,
+        "§186 muro de robô com HTTP 200 é recusa, não conteúdo": t_muro_de_robo_e_recusa_nao_conteudo,
+        "§186 muro não acusa PDF nem resposta grande": t_muro_nao_acusa_pdf_nem_documento_grande,
+        "§186 buscar() levanta no muro antes de preservar": t_buscar_levanta_muro_de_robo,
     }))

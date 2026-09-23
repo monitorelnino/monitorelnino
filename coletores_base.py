@@ -340,6 +340,63 @@ def registrar_acesso_contra_robots(host: str, url: str, origem: str = None) -> N
     gravar(ROBOTS_REGISTRO, reg)
 
 
+# ---------------------------------------------------------------------------------
+# Muro de robô: a recusa que vem com HTTP 200 (§186, 23/09/2026).
+#
+# ACHADO REAL. Na releitura de SP, `defesacivil.sp.gov.br` respondeu 200 e 107 kB de HTML na
+# primeira leitura e, depois de alguns pedidos, passou a devolver **200 com a página "Pardon Our
+# Interruption"** — o muro do Imperva. Um 403 o projeto já sabia tratar (§170: o servidor respondeu
+# não). Um muro com 200 é pior, porque *parece* conteúdo: sem este detector, ele entraria no índice
+# de evidências como documento preservado, e uma página de bloqueio de 6 kB ficaria registrada como
+# se fosse o plano do estado. Seria prova falsa — o defeito mais grave que este projeto pode ter.
+#
+# A LEITURA CORRETA é a do §170: isto é recusa, e recusa se respeita. Não se disfarça cliente, não
+# se troca de rota, não se tenta de novo em loop. Vira lacuna declarada com o motivo escrito.
+class MuroDeRobo(Exception):
+    """A resposta veio com 200, mas é página de bloqueio de robô, não o documento pedido."""
+
+    def __init__(self, url: str, marca: str):
+        super().__init__(f"muro de robô em {url}: {marca!r} — recusa com HTTP 200 (§186); não se contorna")
+        self.url = url
+        self.marca = marca
+
+
+# Marcas de muro, no texto declarativo da página. Cada uma é assinatura de um produto conhecido, e a
+# lista é fechada de propósito: heurística larga ("acesso negado") confundiria página institucional
+# que fala de negativa de acesso à informação com bloqueio técnico.
+MARCAS_DE_MURO = (
+    "pardon our interruption",              # Imperva/Incapsula
+    "attention required! | cloudflare",     # Cloudflare
+    "checking your browser before accessing",
+    "just a moment...",                     # Cloudflare challenge
+    "enable javascript and cookies to continue",
+    "request unsuccessful. incapsula incident",
+    "access denied | akamai",
+    "you have been blocked",
+    "sorry, you have been blocked",
+    "bot detection",
+    "verificando seu navegador",
+)
+
+
+def detectar_muro_de_robo(corpo: bytes, tamanho_maximo: int = 60000) -> str | None:
+    """Marca do muro, ou None. Só olha respostas PEQUENAS: muro é página curta, e varrer um PDF de
+    20 MB em busca de frase de bloqueio custa caro e acha falso positivo em documento que cite o
+    assunto. Função pura."""
+    if not corpo or len(corpo) > tamanho_maximo:
+        return None
+    if corpo[:5] == b"%PDF-":
+        return None
+    try:
+        texto = _plano(texto_declarativo(corpo.decode("utf-8", "replace")))
+    except Exception:  # noqa: BLE001
+        return None
+    for marca in MARCAS_DE_MURO:
+        if _plano(marca) in texto:
+            return marca
+    return None
+
+
 def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
     """GET simples com User-Agent do projeto. Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
@@ -361,6 +418,11 @@ def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
             registrar_acesso_contra_robots(host, url, origem)
         except Exception:  # noqa: BLE001 — o rastro nunca derruba a coleta; a falha aparece no log
             pass
+    # §186: muro de robô com HTTP 200 é recusa, não conteúdo. Levanta antes de qualquer preservação,
+    # para que uma página de bloqueio não entre no índice de evidências como se fosse o documento.
+    marca = detectar_muro_de_robo(corpo)
+    if marca:
+        raise MuroDeRobo(url, marca)
     if _dominio_publico(url) and ("html" in ct or "text" in ct or corpo[:200].lstrip().lower().startswith(b"<!doctype") or b"<html" in corpo[:2000].lower()):
         pad = detectar_defeso(corpo[:200000].decode("utf-8", "replace")) or ("defeso" if "defeso" in url.lower() else None)
         if pad:
