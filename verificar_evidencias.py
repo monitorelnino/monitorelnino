@@ -3,8 +3,10 @@
 verificar_evidencias.py — portão 6 (v2.2.4, §3.8 / §6)
 ======================================================
 Todo registro PONTUÁVEL com URL precisa de evidência preservada
-(`hash_evidencia` presente em `data/evidencias.json`, com arquivo em
-`evidencias/` ou snapshot no Wayback). Regime declarado:
+(`hash_evidencia` presente em `data/evidencias.json`, com cópia binária em
+`evidencias/`, texto extraído do PDF, ou snapshot real no Wayback — ver
+`prova_preservada()`, §165: a anotação de que a tentativa de snapshot falhou
+NÃO é prova, embora tenha contado como se fosse até 22/09/2026). Regime declarado:
   - até 14/09/2026: AVISO — lista o que falta, sai 0 (prazo original 09/09, adiado em 08/09/2026 com errata:
     69 registros do ES não tinham cópia por falha do nosso próprio cliente HTTP — IRI com "ê" cru no caminho,
     corrigida em coletores_base.url_ascii; a primeira rodada do robô com a correção é segunda 14/09);
@@ -65,11 +67,79 @@ def checar_preservacao_na_cadencia() -> list:
         return ["a cadência (.github/workflows/atualizar.yml) não chama preservar_evidencias.py — "
                 "registro aplicado pelo juiz ficaria sem cópia do documento e este portão fecharia "
                 "vermelho na main até alguém rodar à mão (ver §164)"]
+    if not any("--ler" in l for l in linhas):
+        return ["a cadência chama preservar_evidencias.py mas não no modo --ler — sem a leitura, o "
+                "documento acima de 5 MB fica sem nenhuma cópia preservada, só com a tentativa de "
+                "Wayback registrada (ver §165)"]
     return []
 
 
+MIN_CARACTERES_TEXTO = 200   # mesmo piso que ler_pdfs() usa para decidir se a extração serviu
+
+# §165 (22/09/2026): lacuna DECLARADA e DATADA. Quatro registros pontuáveis do ES não têm prova
+# preservada de espécie alguma — o PDF está acima do teto de cópia (5 MB), o Wayback não tem
+# snapshot (consultado, não só tentado) e o PDF é escaneado, sem camada de texto: a leitura do
+# §10.1 devolve zero caractere. Até 22/09/2026 eles passavam no portão porque a STRING
+# "tentativa falhou (...)" contava como prova; o conserto tornaria a main vermelha de imediato.
+# Decisão da editoria: declarar em vez de esconder. Cada um aparece como AVISO em toda execução,
+# e a partir da data abaixo o portão BLOQUEIA. A chave é o hash do documento: se ele for
+# represervado, o hash muda e a exceção deixa de valer sozinha.
+LACUNA_BLOQUEIA_A_PARTIR = date(2026, 10, 31)
+LACUNA_DECLARADA = {
+    "a195e6f055705006603b01151e72bbf889b4c464239220b2d73e52d33ce87efa":
+        "Anchieta/ES — PLANCON edição 2025: PDF de 9,9 MB, 68 páginas escaneadas (0 caractere), sem snapshot",
+    "5ea5d0a10add8493681a6eed2b950ef538603d01b175906042fde74b042751f1":
+        "Itaguaçu/ES — PLANCON edição 2025: PDF de 19,3 MB, 78 páginas escaneadas (0 caractere), sem snapshot",
+    "ea1ed0881e4391004c3515f1b14dca04d8e60d91549c802f5b4b99a9d5030a39":
+        "São José do Calçado/ES — PLANCON edição 2025: PDF de 12,9 MB, 14 páginas escaneadas (0 caractere), sem snapshot",
+    "294b4d9ad62d1f0347bde59475088168f03b2b2996cc7bdccacbb3d87621a51b":
+        "Venda Nova do Imigrante/ES — PLANCON edição 2025: PDF de 17,5 MB, 70 páginas escaneadas (0 caractere), sem snapshot",
+}
+
+
+def prova_preservada(item: dict) -> bool:
+    """Há prova mesmo, e não só a anotação de que a tentativa falhou? (§165, 22/09/2026)
+
+    Achado real: a condição anterior era `item["arquivo"] or item["wayback"]`, e
+    `preservar_evidencia()` grava em `wayback` a STRING "tentativa falhou (HTTPError)" quando o
+    pedido de snapshot não vai — string não vazia, portanto verdadeira. O portão dava por provados
+    34 dos 92 registros pontuáveis que não tinham cópia nenhuma: são os documentos acima do limite
+    de 5 MB (mediana de 13 MB, um de 70 MB), em que a cópia binária é pulada por desenho e o
+    Wayback era a única rede de segurança. Agora só conta prova de verdade: a cópia binária, o
+    TEXTO extraído (`texto_arquivo`, §10.1 — é cópia preservada, legível e com hash próprio) ou um
+    endereço de snapshot que comece com http."""
+    if item.get("arquivo"):
+        return True
+    # O texto só é prova se houver texto: quatro PDFs escaneados do ES produziam um .txt com os
+    # marcadores de página e zero caractere de conteúdo, que contaria como cópia preservada.
+    if item.get("texto_arquivo") and (item.get("caracteres") or 0) >= MIN_CARACTERES_TEXTO:
+        return True
+    wb = item.get("wayback")
+    return isinstance(wb, str) and wb.startswith("http")
+
+
+def autoteste_prova() -> list:
+    """Teste negativo permanente da regra acima — a falha registrada NUNCA pode contar como prova."""
+    casos = [
+        ({"arquivo": None, "wayback": "tentativa falhou (HTTPError)"}, False),
+        ({"arquivo": None, "wayback": "tentativa falhou (URLError)"}, False),
+        ({"arquivo": None, "wayback": "tentativa falhou (TimeoutError)"}, False),
+        ({"arquivo": None, "wayback": None}, False),
+        ({"arquivo": "evidencias/x.pdf", "wayback": None}, True),
+        ({"arquivo": None, "texto_arquivo": "evidencias/x.txt", "caracteres": 9407,
+          "wayback": "tentativa falhou (X)"}, True),
+        ({"arquivo": None, "wayback": "https://web.archive.org/web/*/http://x"}, True),
+        # PDF escaneado: o .txt existe, com marcadores de página e nada dentro — não é prova.
+        ({"arquivo": None, "texto_arquivo": "evidencias/x.txt", "caracteres": 0}, False),
+        ({"arquivo": None, "texto_arquivo": "evidencias/x.txt"}, False),
+        ({"arquivo": None, "texto_arquivo": "evidencias/x.txt", "caracteres": 199}, False),
+    ]
+    return [f"prova_preservada({c}) deveria ser {esperado}"
+            for c, esperado in casos if prova_preservada(c) is not esperado]
+
+
 def main() -> int:
-    e = checar_cliente_http() + checar_preservacao_na_cadencia()
+    e = checar_cliente_http() + checar_preservacao_na_cadencia() + autoteste_prova()
     if e:
         print("✗ EVIDÊNCIAS: pré-condições do portão:"); [print("   ", x) for x in e]; return 1
     mun = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
@@ -77,11 +147,17 @@ def main() -> int:
     idx = json.load(open(p_idx, encoding="utf-8")) if p_idx.exists() else {"itens": {}}
     itens = idx.get("itens", {})
     faltam, corrompidos = [], []
+    declarados, resolvidos = [], []
     for m in mun:
         if m.get("categoria") in PONT and str(m.get("url", "")).startswith("http"):
             h = m.get("hash_evidencia")
-            if not h or h not in itens or not (itens[h].get("arquivo") or itens[h].get("wayback")):
-                faltam.append(f"{m['nome']}/{m['uf']}")
+            if not h or h not in itens or not prova_preservada(itens[h]):
+                if h in LACUNA_DECLARADA and date.today() < LACUNA_BLOQUEIA_A_PARTIR:
+                    declarados.append(LACUNA_DECLARADA[h])
+                else:
+                    faltam.append(f"{m['nome']}/{m['uf']}")
+            elif h in LACUNA_DECLARADA:
+                resolvidos.append(LACUNA_DECLARADA[h])
     for h, it in itens.items():
         arq = it.get("arquivo")
         if arq:
@@ -107,7 +183,16 @@ def main() -> int:
         for f in faltam[:8]: print("   ", f)
         if len(faltam) > 8: print(f"    … e mais {len(faltam) - 8}")
         return 1 if regime == "BLOQUEANTE" else 0
-    print(f"✓ EVIDÊNCIAS OK — {total} registro(s) pontuável(is) com URL, todos com evidência preservada; {len(itens)} item(ns) íntegro(s).")
+    if resolvidos:
+        print(f"⚠ EVIDÊNCIAS: {len(resolvidos)} lacuna(s) declarada(s) já resolvida(s) — tirar de "
+              f"LACUNA_DECLARADA para a lista não apodrecer:")
+        for r in resolvidos: print("   ", r)
+    if declarados:
+        print(f"⚠ EVIDÊNCIAS: {len(declarados)} de {total} registro(s) pontuável(is) sem prova preservada, "
+              f"em LACUNA DECLARADA (§165) — bloqueante a partir de {LACUNA_BLOQUEIA_A_PARTIR.strftime('%d/%m/%Y')}:")
+        for d in declarados: print("   ", d)
+    print(f"✓ EVIDÊNCIAS OK — {total - len(declarados)} de {total} registro(s) pontuável(is) com URL com "
+          f"evidência preservada; {len(declarados)} em lacuna declarada; {len(itens)} item(ns) íntegro(s).")
     return 0
 
 

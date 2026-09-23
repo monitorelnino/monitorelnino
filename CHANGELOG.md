@@ -9,6 +9,28 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §165 · "Tentativa falhou" contava como prova preservada — e cinco registros pontuáveis viviam só disso · 22/09/2026
+
+Classe **correção de segurança do dado**. Nenhum número do índice muda; muda o que o portão aceita como prova, e quatro registros passam a aparecer como lacuna declarada.
+
+**O achado.** Ao pendurar a leitura de PDFs (§10.1) na cadência — a pendência que o §164 deixou declarada —, a conferência do resultado descobriu o buraco. A condição do portão era `item["arquivo"] or item["wayback"]`. E `preservar_evidencia()` grava em `wayback` a **string** `"tentativa falhou (HTTPError)"` quando o pedido de snapshot não vai. String não vazia é verdadeira em Python: a anotação de que a preservação falhou passou a valer como preservação.
+
+**O tamanho real da exposição, medido e não estimado.** 40 itens do índice têm a anotação de falha no lugar do snapshot, e 34 registros pontuáveis dependem de um deles — são os documentos acima do teto de cópia de 5 MB (mediana de 13 MB, um de 70 MB), em que a cópia binária é pulada por desenho. Mas **29 desses 34 têm o texto extraído do PDF**, que é cópia preservada de verdade: o portão só não olhava para ele. Os que viviam **exclusivamente** da string de falha, sem nenhuma prova de espécie alguma, eram **5**.
+
+**O conserto.** `prova_preservada()` só aceita prova de verdade: a cópia binária, o **texto extraído** com conteúdo (`texto_arquivo` com pelo menos 200 caracteres — o mesmo piso que `ler_pdfs()` já usa para decidir se a extração serviu), ou um endereço de snapshot que comece com `http`. Teste negativo permanente junto, rodado a cada execução: as três formas de `"tentativa falhou (...)"`, o `.txt` vazio e o `.txt` de 199 caracteres reprovam; cópia, texto com conteúdo e URL de snapshot passam.
+
+**A leitura entra na cadência.** `preservar_evidencias.py --ler` também não estava em workflow nenhum. Agora roda logo depois da preservação, e o portão exige a presença das **duas** chamadas. Rodada aqui, extraiu os dois textos que o §164 deixou pendentes: Feira de Santana/BA (57 páginas) e Lagarto/SE (28) — e foi o de Lagarto que tirou o quinto registro da lista dos sem prova.
+
+**Quatro sem prova nenhuma — lacuna declarada e datada.** Anchieta, Itaguaçu, São José do Calçado e Venda Nova do Imigrante, todos do ES: PLANCON de 10 a 19 MB, **escaneado**, sem camada de texto (cada página é uma imagem de 2409×3406 px), leitura devolve zero caractere, e o Wayback **não tem snapshot** — consultado pela API de disponibilidade, não só tentado. Não têm cópia binária, nem texto, nem snapshot. Em vez de escondê-los atrás de um arquivo vazio, entram em `LACUNA_DECLARADA` no próprio portão: aparecem como aviso nomeado em toda execução e **bloqueiam a partir de 31/10/2026**. A chave é o hash do documento — represervado, o hash muda e a exceção cai sozinha. O portão também avisa quando uma lacuna declarada já foi resolvida, para a lista não apodrecer.
+
+**Caminho para fechar a lacuna: OCR, testado antes de prometido.** Os quatro são escaneados a ~300 DPI, que é o caso fácil. Teste real com o PLANCON de São José do Calçado: renderizando a 200 DPI com `pypdfium2` (já é dependência, via pdfplumber) e passando por Tesseract, a página 1 devolve "PREFEITURA MUNICIPAL DE SÃO JOSÉ DO CALÇADO — DEFESA CIVIL — PLANO DE CONTINGÊNCIA" e a página 2 traz o ato instituidor, "DECRETO n° 7.717/2024" — e isso **com o modelo em inglês**, usado só para provar legibilidade. 2,0 s por página; as 230 páginas dos quatro sairiam em cerca de 8 minutos. Nenhuma dependência Python nova; no runner, uma linha de `apt-get` para `tesseract-ocr` e `tesseract-ocr-por`. Fica para correção própria, com a regra que ela vai exigir: **texto de OCR é cópia preservada e legível, marcada como tal — nunca insumo do classificador nem do juiz**, que exigem o ato lido no documento (§156).
+
+**Mais um defeito de escrita da série do §163.** `gravar_texto()` gravava o `.txt` sem `newline="\n"`: no Windows o arquivo saía em CRLF enquanto o `texto_hash` registrado era calculado sobre a string com `\n` — o hash não batia com o arquivo em disco. Corrigido; conferido que agora `sha256(arquivo) == texto_hash` nos dois textos novos.
+
+**Registrado, sem mexer.** Maricá/RJ tem `texto_hash` desatualizado desde a redação de CPF de 12/09/2026 (`scripts/remediar_cpf_evidencias.py` regravou o texto sem recalcular o hash). É o único item do índice nessa condição. O conserto pertence à rotina de redação, não a este portão.
+
+**Teste.** Portão de evidências verde, com as pré-condições novas e os autotestes da regra de prova. Portão 12 verde em árvore limpa; workflows válidos; consistência, `recalcular_mare --check` (45,2) e o restante do bloco de dado e coleta verdes. Os portões `.js` ficam com o CI.
+
 ## §164 · A cadência passa a preservar a evidência sozinha — e o portão confere que ela continua fazendo isso · 22/09/2026
 
 Classe **encanamento**; nenhum dado, número ou página muda. Fecha a pendência declarada no §162.

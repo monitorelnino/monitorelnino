@@ -436,6 +436,15 @@ jobs:
         timeout-minutes: 20
         run: python3 preservar_evidencias.py --limite 20
 
+      # 22/09/2026 (§165): a leitura (§10.1) também estava fora de todo workflow. Não é acessório:
+      # acima de 5 MB a cópia binária é pulada por desenho e só resta o pedido de snapshot ao
+      # Wayback, que falha com frequência (40 itens do índice, mediana de 13 MB). Nesses casos o
+      # TEXTO extraído é a única prova preservada — e o portão passou a exigir prova de verdade.
+      - name: Ler o texto dos PDFs preservados (§10.1 — única prova acima de 5 MB)
+        continue-on-error: true
+        timeout-minutes: 25
+        run: python3 preservar_evidencias.py --ler --limite 20
+
       - name: Completar evidências com texto integral (autocura, 10/09/2026)
         # Pistas antigas sem .txt (inclusive evidência perdida, via recuperação por URL)
         # são completadas a cada rodada; o commit abaixo já inclui evidencias/.
