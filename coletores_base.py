@@ -230,14 +230,137 @@ def redigir_dados_pessoais(texto: str) -> tuple:
     return padrao.sub("[CPF REDIGIDO]", texto), n
 
 
-def buscar(url: str, timeout: int = 40) -> bytes:
+# ---------------------------------------------------------------------------------
+# robots.txt: leitura, ritmo e rastro (§185, 23/09/2026 — decisão da editoria).
+#
+# O QUE O ARQUIVO É. A RFC 9309 diz, em letra de forma: as regras do robots.txt "não são uma forma
+# de autorização de acesso" (§ 1.3) e o protocolo "não substitui medidas válidas de segurança"
+# (§ 3). É um PEDIDO publicado pelo sítio. No direito brasileiro não há norma nem precedente que o
+# torne vinculante; o que é crime (CP, art. 154-A) exige "violação indevida de mecanismo de
+# segurança", que o robots.txt não é; ato oficial não tem proteção autoral (Lei 9.610/98, art. 8º,
+# IV); e a LAI (art. 8º, § 3º, III) obriga o órgão a possibilitar acesso automatizado ao que publica.
+# O Querido Diário, de onde este projeto lê os diários, roda com ROBOTSTXT_OBEY = False e cliente
+# identificado. A METODOLOGIA fixou em 10/09/2026 que bloqueio a robô não é evidência de
+# indisponibilidade ao cidadão.
+#
+# O QUE O MONITOR FAZ, então, por decisão da editoria em 23/09/2026:
+#   1. LÊ o robots.txt de cada sítio antes do primeiro acesso, e guarda o que ele declara;
+#   2. RESPEITA o Crawl-delay pedido (o de defesacivil.mt.gov.br é 30 s) — o pedido de ritmo é
+#      barato de honrar e é a parte do robots que protege o servidor de verdade;
+#   3. ACESSA documento público mesmo onde o robots pede que robôs não entrem — com o cliente
+#      IDENTIFICADO (coletores_base.UA), nunca disfarçado de navegador ou de Googlebot;
+#   4. DEIXA RASTRO: todo acesso feito contra o que o robots pediu fica em
+#      data/robots_registro.json, com URL, data e origem, publicado como o resto de data/.
+#
+# O QUE NÃO MUDA: 401, 403, 429 e 451 continuam sendo recusa que se respeita (§170); captcha e
+# login não se contornam; dado pessoal segue fora (LGPD, art. 6º, III). robots.txt é pedido;
+# aquilo é tranca.
+import urllib.robotparser as _robotparser
+
+ROBOTS_REGISTRO = "robots_registro.json"
+CRAWL_DELAY_MAXIMO = 60.0            # pedido acima disso vira 60 s: honra o ritmo sem travar a rodada
+_ROBOTS_CACHE = {}                    # host -> {"status", "crawl_delay", "rp"}
+_ULTIMO_ACESSO = {}                   # host -> time.time() do último pedido
+
+
+def _ler_robots_bruto(host: str, timeout: int = 15):
+    """(status_http, texto) do robots.txt, sem passar por buscar() — evita recursão e defeso."""
+    req = urllib.request.Request(f"https://{host}/robots.txt", headers={"User-Agent": UA, "Accept": "text/plain,*/*"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.status, r.read(200000).decode("utf-8", "replace")
+    except urllib.error.HTTPError as e:
+        return e.code, ""
+    except Exception:  # noqa: BLE001 — DNS, TLS, timeout: indeterminado
+        return None, ""
+
+
+def robots_de(host: str, ler_fn=_ler_robots_bruto) -> dict:
+    """O que o sítio declara em robots.txt, lido uma vez por host por execução.
+
+    status: "permite" | "proibe" (o grupo que nos alcança nega a raiz) | "sem_robots" (4xx) |
+    "indeterminado" (servidor não respondeu). Segue a RFC 9309 § 2.3.1: 4xx = sem restrição."""
+    if host in _ROBOTS_CACHE:
+        return _ROBOTS_CACHE[host]
+    codigo, texto = ler_fn(host)
+    reg = {"status": "indeterminado", "crawl_delay": None, "rp": None}
+    if codigo == 200 and texto.strip():
+        rp = _robotparser.RobotFileParser()
+        rp.parse(texto.splitlines())
+        cd = rp.crawl_delay(UA) or rp.crawl_delay("*")
+        reg = {"status": "permite" if rp.can_fetch(UA, f"https://{host}/") else "proibe",
+               "crawl_delay": min(float(cd), CRAWL_DELAY_MAXIMO) if cd else None, "rp": rp}
+    elif codigo is not None and 400 <= codigo < 500:
+        reg = {"status": "sem_robots", "crawl_delay": None, "rp": None}
+    _ROBOTS_CACHE[host] = reg
+    return reg
+
+
+def robots_permite(host: str, url: str) -> bool | None:
+    """True/False pelo robots do sítio para o NOSSO cliente; None quando não há robots ou não deu
+    para ler. Só informa — a decisão de acessar é da editoria (§185), não desta função."""
+    reg = robots_de(host)
+    if reg["rp"] is None:
+        return None
+    return bool(reg["rp"].can_fetch(UA, url))
+
+
+def _respeitar_ritmo(host: str, crawl_delay, dormir=None):
+    """Espera o que o sítio pediu entre dois acessos ao mesmo host. Sem pedido, não espera
+    (o ritmo de 2 s por domínio continua sendo responsabilidade de quem chama, como sempre)."""
+    import time as _t
+    dormir = dormir or _t.sleep
+    if not crawl_delay:
+        _ULTIMO_ACESSO[host] = _t.time()
+        return
+    passado = _t.time() - _ULTIMO_ACESSO.get(host, 0.0)
+    if passado < crawl_delay:
+        dormir(crawl_delay - passado)
+    _ULTIMO_ACESSO[host] = _t.time()
+
+
+def registrar_acesso_contra_robots(host: str, url: str, origem: str = None) -> None:
+    """Rastro público (§185): cada acesso feito onde o robots pediu que robôs não entrassem.
+    Guarda os 200 últimos por host e a contagem total — nunca apaga o fato de ter acessado."""
+    import datetime as _dt
+    reg = ler(ROBOTS_REGISTRO, {"_governanca": "Rastro dos acessos feitos contra o pedido do robots.txt "
+                                                 "(§185, decisão da editoria de 23/09/2026): o Monitor lê "
+                                                 "documento público com cliente identificado e Crawl-delay "
+                                                 "respeitado, e registra aqui cada acesso desse tipo. "
+                                                 "Nunca lido pelo cálculo da nota.", "hosts": {}}) or {}
+    hosts = reg.setdefault("hosts", {})
+    h = hosts.setdefault(host, {"status_robots": None, "crawl_delay": None, "primeiro_acesso": hoje(),
+                                "total_acessos": 0, "acessos": []})
+    r = _ROBOTS_CACHE.get(host) or {}
+    h["status_robots"] = r.get("status"); h["crawl_delay"] = r.get("crawl_delay")
+    h["ultimo_acesso"] = hoje(); h["total_acessos"] = int(h.get("total_acessos", 0)) + 1
+    h["acessos"].append({"url": url, "quando": _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                         "origem": origem or EXECUTOR, "cliente": UA.split(" ")[0]})
+    h["acessos"] = h["acessos"][-200:]
+    gravar(ROBOTS_REGISTRO, reg)
+
+
+def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
     """GET simples com User-Agent do projeto. Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
-    contra os padrões de página de defeso e registra a fonte como suspensa (PR-N0 §1.5)."""
+    contra os padrões de página de defeso e registra a fonte como suspensa (PR-N0 §1.5).
+
+    §185: antes do pedido, lê o robots.txt do sítio (uma vez por host) e respeita o Crawl-delay
+    que ele declara; depois do pedido, se o robots pedia que robôs não entrassem ali, registra o
+    acesso em data/robots_registro.json. O acesso acontece — decisão da editoria —, mas nunca
+    sem rastro e nunca disfarçado."""
+    host = (urllib.parse.urlparse(url).netloc or "").lower()
+    robots = robots_de(host) if host else {"status": "indeterminado", "crawl_delay": None, "rp": None}
+    _respeitar_ritmo(host, robots.get("crawl_delay"))
     req = urllib.request.Request(url_ascii(url), headers={"User-Agent": UA, "Accept": "*/*"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         corpo = r.read()
         ct = (r.headers.get("Content-Type") or "").lower()
+    if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):
+        try:
+            registrar_acesso_contra_robots(host, url, origem)
+        except Exception:  # noqa: BLE001 — o rastro nunca derruba a coleta; a falha aparece no log
+            pass
     if _dominio_publico(url) and ("html" in ct or "text" in ct or corpo[:200].lstrip().lower().startswith(b"<!doctype") or b"<html" in corpo[:2000].lower()):
         pad = detectar_defeso(corpo[:200000].decode("utf-8", "replace")) or ("defeso" if "defeso" in url.lower() else None)
         if pad:

@@ -50,6 +50,7 @@ import time
 import urllib.parse
 
 from coletores_base import (RAIZ, buscar, preservar_evidencia, ler, gravar,
+                             log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, setor_da_url)
 
 FILA = RAIZ / "data" / "pistas_descobertas.json"
@@ -262,6 +263,75 @@ def autoteste() -> int:
     })
 
 
+RENDERIZADOR = RAIZ / "scripts" / "renderizar_pagina.js"
+
+# Termos que fazem um link virar candidato na página renderizada. Lista declarada e certamente
+# incompleta — termo que falta reduz recall, nunca inventa achado (mesma disciplina do §11).
+TERMOS_NO_LINK = ("plano", "conting", "plancon", "seca", "estiagem", "incend", "queimad",
+                  "decreto", "portaria", "resolu", "arbovir", "dengue", "emerg")
+
+
+def descobrir_renderizado(uf: str, setor: str, url: str, fila: dict, rodar=None) -> list:
+    """Canal 2 da descoberta (§185, 23/09/2026): a página como o navegador a vê.
+
+    POR QUE EXISTE. O canal 1 é a API do WordPress, e ela não responde em boa parte dos portais:
+    na releitura de 23/09, oito alvos devolveram 404, 410, JSON inválido ou 401. Pior, o portal da
+    Defesa Civil do MT é Liferay e diz, em texto, "este site precisa que o seu navegador tenha
+    JAVASCRIPT ativo": o conteúdo existe, os links existem, e o cliente HTTP recebe o esqueleto. Foi
+    assim que o Planejamento Estratégico 2026 do MT — que anuncia o "inédito Plano Estadual de
+    Defesa Civil" e o suporte a 20 PLANCONs municipais — ficou invisível para toda rodada anterior.
+
+    O QUE FAZ: renderiza a página com navegador real (scripts/renderizar_pagina.js, cliente
+    identificado), preserva o HTML renderizado como evidência, e registra na MESMA fila do canal 1
+    o texto visível e cada link candidato. O que NÃO faz: decidir que existe plano. As três travas
+    do módulo continuam valendo — nada entra no banco, todo item nasce `promovivel: false`, e a
+    promoção é humana (R7)."""
+    import json as _json
+    import subprocess as _sub
+    rodar = rodar or (lambda cmd: _sub.run(cmd, capture_output=True, text=True, timeout=180, encoding="utf-8"))
+    # §185: o navegador não passa por buscar(), então o rastro do robots tem de ser deixado aqui —
+    # e são exatamente estes os acessos que contrariam o pedido do sítio. Sem esta chamada, a
+    # política teria rastro só do canal HTTP, que é o que menos precisa dele.
+    host = url.split("//", 1)[-1].split("/", 1)[0].lower()
+    if robots_permite(host, url) is False:
+        try:
+            registrar_acesso_contra_robots(host, url, "descobrir_planos/renderizado")
+        except Exception:  # noqa: BLE001
+            pass
+    r = rodar(["node", str(RENDERIZADOR), url])
+    try:
+        render = _json.loads(r.stdout or "{}")
+    except Exception:  # noqa: BLE001
+        render = {"ok": False, "erro": "saída do renderizador não é JSON"}
+    if not render.get("ok"):
+        registrar_lacuna(f"render de {url[:60]}", str(render.get("erro"))[:120],
+                         canal="descoberta renderizada", camada=1, uf=uf)
+        return []
+
+    hash_pagina = None
+    try:
+        hash_pagina = preservar_evidencia((render.get("texto") or "").encode("utf-8"), url, "txt",
+                                          "descobrir_planos/renderizado")
+    except Exception:  # noqa: BLE001 — sem evidência o achado ainda vale como pista, declarada
+        pass
+
+    achados = [{"uf": uf, "setor": setor, "url": url, "titulo": render.get("titulo"),
+                "data_publicacao": None, "dominio": (url.split("//", 1)[-1].split("/", 1)[0]),
+                "canal": "renderizado", "texto_visivel": (render.get("texto") or "")[:4000],
+                "hash_evidencia": hash_pagina}]
+    for l in render.get("links") or []:
+        alvo = f"{l.get('href','')} {l.get('texto','')}".lower()
+        if any(termo in alvo for termo in TERMOS_NO_LINK) and "#" not in l.get("href", "")[-2:]:
+            achados.append({"uf": uf, "setor": setor, "url": l["href"], "titulo": l.get("texto"),
+                            "data_publicacao": None, "dominio": (l["href"].split("//", 1)[-1].split("/", 1)[0]),
+                            "canal": "renderizado/link", "achado_em": url, "hash_evidencia": None})
+    novos = registrar(fila, achados)
+    log_busca("descoberta renderizada", 1, [url], "pista" if novos else "consultado sem achado",
+              uf=uf, n_resultados=len(novos),
+              resultados=f"{render.get('n_links')} link(s) na página; {len(novos)} pista(s) inédita(s)")
+    return novos
+
+
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
@@ -272,12 +342,32 @@ def main() -> int:
     setores = ["saude", "defesa_civil"]
     if "--setor" in sys.argv:
         setores = [sys.argv[sys.argv.index("--setor") + 1]]
+    # §185: alvo por UF. A releitura das fontes que o §182 mostrou falsamente suspensas precisa
+    # bater em quatro UFs específicas, não na lista inteira em ordem alfabética.
+    ufs = UFS
+    if "--uf" in sys.argv:
+        ufs = [u.strip().upper() for u in sys.argv[sys.argv.index("--uf") + 1].split(",") if u.strip()]
 
     fila = carregar_fila()
+    # §185: canal renderizado, dirigido a uma página. Exige --uf e --setor, porque a pista nasce
+    # atribuída a um alvo — pista sem UF não serve para nada a jusante.
+    if "--renderizar" in sys.argv:
+        url = sys.argv[sys.argv.index("--renderizar") + 1]
+        if "--uf" not in sys.argv or "--setor" not in sys.argv:
+            print("--renderizar exige --uf e --setor"); return 1
+        uf = sys.argv[sys.argv.index("--uf") + 1].upper()
+        setor = sys.argv[sys.argv.index("--setor") + 1]
+        novos = descobrir_renderizado(uf, setor, url, fila)
+        gravar("pistas_descobertas.json", fila)
+        print(f"Canal renderizado: {len(novos)} pista(s) inédita(s) de {url}")
+        for n in novos:
+            print(f"  · [{n['uf']}/{n['setor']}] {str(n.get('titulo'))[:70]} — {n['url'][:80]}")
+        print("  → NENHUMA é promovível — trava absoluta (R7).")
+        return 0
     total_novos = 0
     consultas = 0
     for setor in setores:
-        for uf in UFS:
+        for uf in ufs:
             if consultas >= limite:
                 break
             novos = descobrir(uf, setor, fila)
