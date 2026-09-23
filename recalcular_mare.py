@@ -74,7 +74,7 @@ ESTADOS = {
  "DF":("VIG",40,"Média"),   "ES":("VIG",30,"Baixa"),  "GO":("NOVO",30,"Média"),
  "MA":("READ",100,"Média"),"MG":("VIG",20,"Baixa"),  "MS":("READ",100,"Média"),
  "MT":("NOVO",100,"Média"),"PA":("READ",30,"Alta"),   "PB":("LAC",10,"Alta"),
- "PE":("ELAB",20,"Média"), "PI":("VIG",40,"Média"),  "PR":("READ",100,"Alta"),
+ "PE":("ELAB",20,"Média"), "PI":("VIG",40,"Média"),  "PR":("NOVO",100,"Alta"),
  "RJ":("VIG",30,"Baixa"),  "RN":("LAC",10,"Alta"),   "RO":("READ",40,"Alta"),
  "RR":("VIG",40,"Alta"),   "RS":("READ",100,"Alta"), "SC":("NOVO",100,"Alta"),
  "SE":("NOVO",30,"Média"),   "SP":("VIG",40,"Baixa"),  "TO":("READ",40,"Média"),

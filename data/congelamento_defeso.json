@@ -1,7 +1,59 @@
 {
- "_governanca": "Errata C25 / §13 (06/09/2026): hash das constantes do motor (ESTADO_SCORE, CRED_POP, ESTADOS, ESTRUTURA, PESO_ESTRUTURA) congeladas de 05/09/2026 a 25/10/2026. verificar_consistencia.py falha se o hash mudar dentro do intervalo. Alterar este arquivo exige errata pública.",
+ "_governanca": "Errata C25 / §13 (06/09/2026): hash das constantes do motor (ESTADO_SCORE, CRED_POP, ESTADOS, ESTRUTURA, PESO_ESTRUTURA) congeladas de 05/09/2026 a 25/10/2026. verificar_consistencia.py falha se o hash mudar dentro do intervalo. Alterar este arquivo exige errata pública. Errata C26 (23/09/2026): o C6 sempre admitiu correção de DADO que viole regra de prova, com errata e efeito em pontos por UF — o que a trava do C25 tornava impossível, porque ESTADOS e ESTRUTURA (classificação por UF, que é dado) estão no mesmo hash das regras. A partir daqui, mudar o hash exige uma entrada em 'erratas' encadeada ao hash anterior, e o portão confere a corrente. Regra que altera nota (peso, crédito, componente, faixa, régua) segue proibida sem exceção até 25/10/2026.",
  "desde": "2026-09-05",
  "ate": "2026-10-25",
- "hash_constantes": "de3b7f4d7c7239d4ab21d7b5ce3197f5fc3bb4a858b531d43c05a07c366be27a",
- "registrado_em": "2026-09-06"
+ "hash_constantes": "f22619ebf17a77843a14e421040798390f67e984f5bff3725e7a2f63aedadfc6",
+ "registrado_em": "2026-09-23",
+ "hash_original_05_09": "de3b7f4d7c7239d4ab21d7b5ce3197f5fc3bb4a858b531d43c05a07c366be27a",
+ "erratas": [
+  {
+   "codigo": "C26",
+   "data": "2026-09-23",
+   "classe": "correção de dado por regra de prova (C6)",
+   "o_que_mudou": "ESTADOS['PR'] — status do instrumento operacional: READ → NOVO. ESTRUTURA['PR'] inalterada (READ).",
+   "uf": [
+    "PR"
+   ],
+   "motivo": "Os dois eixos de PR receberam READ do mesmo julgamento do mesmo documento (04/09/2026), e os eixos fazem perguntas diferentes: a estrutura pergunta se um órgão foi criado ou acionado; o instrumento pergunta se ele é novo para o ciclo. Lidas as Notas Técnicas Conjuntas nº 03, 04 e 05/2026 (§187), a série é instituída para o biênio 2026/2027 e mantida mensalmente — não é readaptação de instrumento preexistente —, e a nº 05 (14/08/2026) fixa gatilhos operacionais atrelados aos Avisos BGR, com obrigação endereçada a gestores municipais e NARDCs. Pela régua do §30, que julga pela FUNÇÃO do ato e não pelo nome, o instrumento é NOVO. A estrutura permanece READ porque as notas acionam CEGERD e NARDCs, sem criar órgão — a mesma assimetria já registrada em AM (instrumento NOVO, estrutura READ).",
+   "efeito_por_uf": {
+    "PR": {
+     "componente_estadual": [
+      65.0,
+      82.5
+     ],
+     "total": [
+      67.4,
+      73.3
+     ],
+     "total_geo": [
+      62.4,
+      67.5
+     ],
+     "faixa": [
+      "consolidado",
+      "avançado"
+     ]
+    }
+   },
+   "efeito_nacional": {
+    "media_linear": [
+     46.21,
+     46.43
+    ],
+    "media_geometrica": [
+     40.33,
+     40.52
+    ],
+    "ufs_afetadas": 1
+   },
+   "prova": [
+    "89b590415dbd",
+    "09e3a4da9956",
+    "fc9168072a77",
+    "bc5b4cab2f13"
+   ],
+   "hash_anterior": "de3b7f4d7c7239d4ab21d7b5ce3197f5fc3bb4a858b531d43c05a07c366be27a",
+   "hash_novo": "f22619ebf17a77843a14e421040798390f67e984f5bff3725e7a2f63aedadfc6"
+  }
+ ]
 }

@@ -9,6 +9,42 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §188 · Errata pública ao C6: a classificação por UF é dado, e o Paraná foi reclassificado dentro do defeso · 23/09/2026
+
+Classe **governança com efeito em nota** — a primeira desta série que muda um número publicado. O Paraná vai de **67,4 para 73,3** e troca de faixa. Nenhum peso, crédito, componente, faixa ou régua foi tocado.
+
+**A pergunta que a editoria fez, e que estava certa.** "Se pode mudar o plano dentro do defeso, não entendi essa regra." A dúvida apontava para uma contradição real, e a verificação a confirmou: desde 06/09 o `data/municipios.json` mudou em **16 commits** — a nota muda todo dia pelo lado municipal —, enquanto `ESTADOS` e `ESTRUTURA` não mudaram uma vez (`git log -L` não devolve nenhum commit). Não era disciplina: era trava.
+
+**O defeito, nomeado.** O C6 diz, desde 02/09, que o Monitor não aplica mudança de **regra** que altere notas até 25/10, e que **publica correção de dado que viole regra de prova, com errata e efeito declarado em pontos por UF** — foi assim que o C10 rebaixou registros de imprensa sem documento primário, derrubando a média de 47,1 para 45,9 dentro do defeso. A Errata C25, de 06/09, trancou por hash as constantes do motor, e nesse hash entraram `ESTADOS` e `ESTRUTURA`: a **classificação por UF**, que é dado, não regra. O resultado é que a correção autorizada no papel ficou **impossível em código** — qualquer reclassificação, com quanta prova houvesse, reprovava no portão. A regra escrita e a trava implementada diziam coisas diferentes, e a trava vencia. O pior dos dois mundos, outra vez: a disciplina existia no lugar errado.
+
+**A correção é de procedimento, não de aperto.** A classificação por UF volta a ser corrigível dentro do defeso, e **só** por errata pública encadeada: `data/congelamento_defeso.json` ganha uma lista `erratas`, cada entrada com código, data, motivo, UF, efeito em pontos e os hashes **anterior e novo**. `verificar_consistencia.py` confere a corrente inteira e reprova se ela se romper, se faltar campo obrigatório, ou se alguém trocar o hash sem errata — os três casos foram testados ao vivo antes de seguir, e os três reprovam. Trava que passa e não morde é enfeite. **Mudança de regra continua proibida até 25/10, e nenhuma errata a autoriza.**
+
+**Por que o Paraná muda, com a prova.** Os dois eixos do PR receberam `READ` do **mesmo julgamento do mesmo documento** em 04/09/2026 — e os eixos perguntam coisas diferentes: a estrutura pergunta se um órgão foi criado ou acionado para o ciclo; o instrumento pergunta se ele é **novo** para o ciclo. A confusão entre as duas perguntas é a causa do erro, e ela só apareceu quando o documento foi lido.
+
+O §186 preservou as Notas Técnicas Conjuntas nº 03, 04 e 05/2026, e o §187 extraiu o texto das três. O que elas dizem:
+
+- a página da Coordenadoria declara que Defesa Civil e SIMEPAR "mantêm monitoramento contínuo ... **para o biênio 2026/2027**" e que as notas são "emitidas **mensalmente**" — série instituída para o ciclo, não readaptação de instrumento preexistente;
+- a nº 05, de **14 de agosto de 2026**, não para na análise: fixa **gatilhos operacionais atrelados aos Avisos BGR** — "prever **obrigatoriamente** nos Planos de Contingência" a restrição de público sob Aviso Laranja e o **cancelamento** do evento sob Aviso Vermelho, antes do início do evento meteorológico —, endereçados a atores identificados (gestores municipais e NARDCs), com exigências técnicas nomeadas (ABNT NBR 6123, SPDA, ART/RRT).
+
+Pela régua do §30, que julga pela **função** do ato e não pelo nome, o instrumento operacional do PR é `NOVO`. A **estrutura permanece `READ`**: as notas acionam CEGERD e NARDCs, e não criam órgão. É a mesma assimetria já registrada no AM em 04/09 — instrumento `NOVO` pelo decreto preventivo do ciclo, estrutura `READ` pelo sistema permanente mobilizado —, e é ela que sustenta a consistência entre as duas UFs.
+
+**Efeito declarado, medido antes e depois:**
+
+| | antes | depois |
+|---|---|---|
+| PR · componente estadual | 65,0 | 82,5 |
+| PR · nota | 67,4 | **73,3** |
+| PR · faixa | consolidado | **avançado** |
+| PR · leitura geométrica | 62,4 | 67,5 |
+| média nacional linear | 46,21 | 46,43 |
+| média nacional geométrica | 40,33 | 40,52 |
+
+**Nenhuma outra UF muda** — a conferência foi campo a campo nos 27 registros do índice. Sem mudança de versão maior: como no C10, isto é correção de dado, não de motor (`METODOLOGIA` §12).
+
+**O que esta entrada não faz.** Não promove nada por conta própria: o PCO no SISDC segue como via de cobertura municipal a investigar, com o limite declarado de que sistema de coordenador não é publicação ao cidadão; e as capitais e municípios do PR não foram reavaliados aqui. Corrigir para cima é o mesmo dever que corrigir para baixo — a assimetria do §5.0 vale contra o erro, não a favor dele.
+
+**Teste.** Três casos de burla verificados ao vivo contra a corrente de erratas (corrente rompida, campo obrigatório ausente, hash trocado sem errata), todos reprovando. `verificar_consistencia` verde, `recalcular_mare --write` com média 46,4, derivados regenerados pela cadeia canônica e portão 12 verde.
+
 ## §187 · O plano de saúde de SP estava no banco desde 10/09, e a procedência dizia "robots" onde era geobloqueio · 23/09/2026
 
 Classe **correção de registro e de instrumento**. Nenhum número do índice muda e nada é promovido. O que muda é a qualidade da prova de um estado, um padrão de busca que escondia host inteiro, e um detector que não reconhecia uma recusa.

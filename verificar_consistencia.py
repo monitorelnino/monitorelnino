@@ -409,6 +409,27 @@ try:
             _h = _hl.sha256("\n".join(_bloco(n) for n in ("ESTADO_SCORE", "CRED_POP", "ESTADOS", "ESTRUTURA", "PESO_ESTRUTURA")).encode()).hexdigest()
             if _h != _cfg["hash_constantes"]:
                 erro(f"congelamento (Errata C25): constantes do motor mudaram dentro do defeso ({_cfg['desde']}–{_cfg['ate']}); exige errata pública")
+            # Errata C26 (23/09/2026): a trava do C25 congelava num só hash as REGRAS e a CLASSIFICAÇÃO
+            # POR UF (ESTADOS, ESTRUTURA), que é dado. O C6 sempre admitiu correção de dado que viole
+            # regra de prova, "com errata e efeito declarado em pontos por UF" — e a trava tornava isso
+            # impossível. A saída não é afrouxar: é exigir que cada troca de hash deixe errata pública
+            # ENCADEADA. Sem esta conferência, trocar o hash à mão bastaria, e a errata seria enfeite.
+            _orig = _cfg.get("hash_original_05_09")
+            _err = _cfg.get("erratas") or []
+            if _cfg["hash_constantes"] != (_orig or _cfg["hash_constantes"]) or _err:
+                if not _err:
+                    erro("congelamento: hash_constantes difere do registrado em 05/09 e não há errata em 'erratas'")
+                _esperado = _orig
+                for _i, _e in enumerate(_err, 1):
+                    for _c in ("codigo", "data", "motivo", "efeito_por_uf", "hash_anterior", "hash_novo"):
+                        if not _e.get(_c):
+                            erro(f"congelamento: errata {_i} sem campo obrigatório '{_c}' (C26)")
+                    if _esperado and _e.get("hash_anterior") != _esperado:
+                        erro(f"congelamento: errata {_i} ({_e.get('codigo')}) não encadeia — hash_anterior "
+                             f"{str(_e.get('hash_anterior'))[:12]}… ≠ {str(_esperado)[:12]}… (C26)")
+                    _esperado = _e.get("hash_novo")
+                if _esperado != _cfg["hash_constantes"]:
+                    erro("congelamento: a última errata não fecha em hash_constantes — corrente rompida (C26)")
 except Exception as _e:
     erro(f"portão de congelamento falhou ao executar: {_e}")
 
