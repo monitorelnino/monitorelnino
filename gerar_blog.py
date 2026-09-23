@@ -226,18 +226,18 @@ def autoteste() -> int:
     import tempfile
     md = "---\ntitulo: Teste <b>\ndata: 2026-01-02\ncategoria: diario\nautor: Editoria\nresumo: Frase.\n---\n\n# Sub\n\nTexto **forte**.\n"
     with tempfile.TemporaryDirectory() as d:
-        p = Path(d) / "2026-01-02-teste.md"; p.write_text(md, encoding="utf-8")
+        p = Path(d) / "2026-01-02-teste.md"; p.write_text(md, encoding="utf-8", newline="\n")
         post = ler_post(p)
         assert post["titulo"] == "Teste <b>" and post["categoria_rotulo"] == CATEGORIAS["diario"]
         assert "<h2>Sub</h2>" in post["html"] and "<h1>" not in post["html"], post["html"]
         assert post["data_br"] == "02/01/2026" and post["url"] == "blog/2026-01-02-teste.html"
         for ruim, msg in [("---\ntitulo: x\n---\n\ncorpo", "sem data"), (md.replace("diario", "outra"), "categoria inválida"), (md.replace("2026-01-02", "02/01/2026"), "data fora do formato")]:
-            q = Path(d) / "2026-01-02-ruim.md"; q.write_text(ruim, encoding="utf-8")
+            q = Path(d) / "2026-01-02-ruim.md"; q.write_text(ruim, encoding="utf-8", newline="\n")
             try:
                 ler_post(q); raise AssertionError("aceitou " + msg)
             except SystemExit:
                 pass
-        r = Path(d) / "Ruim_Slug.md"; r.write_text(md, encoding="utf-8")
+        r = Path(d) / "Ruim_Slug.md"; r.write_text(md, encoding="utf-8", newline="\n")
         try:
             ler_post(r); raise AssertionError("aceitou slug fora do padrão")
         except SystemExit:

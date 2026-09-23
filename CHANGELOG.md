@@ -9,6 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §178 · A escrita portável deixa de depender de atenção: 78 sítios corrigidos e um portão que impede a volta · 23/09/2026
+
+Classe **encanamento com efeito na auditabilidade**. Nenhum dado, número ou página muda — no runner (Linux) o comportamento é idêntico byte a byte. O que muda é quem pode reproduzir o que o robô publica.
+
+**A série que estava aberta.** O §163 corrigiu 30 chamadas em oito arquivos e nomeou o resto: escrita em modo texto sem `newline="
+"` faz o Python traduzir cada `
+` para `
+` no Windows. O arquivo sai em CRLF, o hash deixa de bater com o selado em `docs/MANIFEST_SHA256.txt` e o derivado regenerado fora da Action não é o mesmo arquivo. O defeito é **invisível no runner** e só aparece na máquina de quem tenta reproduzir — que é exatamente quando o repositório precisa ser auditável.
+
+**O tamanho do que faltava, medido.** **78 sítios em 39 arquivos**: `data/municipios.json` (`verificar_vigencia.py`), `data/meta.json` (`atualizar.py`), as filas de pista (`monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py`, `monitorar_atos_resposta.py`, `monitorar_politica_por_inteiro.py`), os modelos de pedido de LAI, `docs/FILA_PISTAS.md`, os dez sítios do juiz, o índice de evidências na remediação de CPF, as páginas de reserva estática e o resto. Corrigidos por varredura sobre a **árvore sintática** — `ast`, não expressão regular sobre a linha, que confunde comentário e docstring com código —, um a um, e cada arquivo recompilado depois.
+
+**A correção que importa é a porta, não a varredura.** `scripts/verificar_escrita_portavel.py` é portão **sempre bloqueante** (roda no bloco que não depende de o dado ter mudado, porque o defeito entra por `*.py`): recusa `open(..., "w"/"a"/"x")` e `write_text(...)` sem `newline` — e também `csv.writer`/`csv.DictWriter` sem `lineterminator`, cujo padrão do módulo é CRLF em **qualquer** sistema. Distingue modo binário, leitura, comentário e docstring. Exceção justificada se declara na própria linha (`# escrita-nao-portavel-ok: <motivo>`) — não há nenhuma hoje. Autoteste com 17 casos nas duas direções, rodado antes da varredura do repositório.
+
+**Testado nas duas direções.** Portão verde sobre os 121 arquivos Python do repositório. Depois, tirando de propósito o `newline` de uma linha (`atualizar.py:336`, o que grava `data/meta.json`), o portão fecha vermelho apontando arquivo e linha; restaurada, verde.
+
+**Teste.** Os 31 portões de dado verdes (o 17 não roda nesta máquina: exige privilégio de link simbólico no Windows), incluindo os autotestes dos oito coletores, do juiz, das sondas e das três rotinas de evidência tocadas aqui; portão 12 em árvore limpa; workflows válidos. O repositório passa a ter **51 portões**.
+
+
 ## §177 · OCR do PLANCON escaneado: a cópia legível que faltava, e a regra que vem com ela · 23/09/2026
 
 Classe **prova preservada**. Nenhum número do índice muda, e nenhuma leitura de máquina passa a usar OCR — o contrário: a separação entre "cópia preservada" e "insumo de julgamento" vira regra travada em portão.

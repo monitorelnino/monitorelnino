@@ -114,7 +114,7 @@ def main():
     saida_p = Path(args.saida)
     fila_saida = json.load(open(saida_p, encoding="utf-8")) if saida_p.exists() else []
     fila_saida.append(entrada)
-    json.dump(fila_saida, open(saida_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(fila_saida, open(saida_p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 
     print(f"Convertido: {entrada['acao'].upper()} {nome_oficial}/{uf} → {args.categoria}")
     print(f"  fonte: {item['link']}")

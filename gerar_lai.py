@@ -95,24 +95,24 @@ def gerar():
     SAIDA.mkdir(parents=True, exist_ok=True)
     dc = orgaos_dc(); pedidos = []
     for uf, nome in sorted(UF_NOME.items()):
-        (SAIDA / f"{uf}_defesa_civil.txt").write_text(MODELO_DC.format(orgao=dc.get(uf, f"Defesa Civil {uf}"), uf=uf, nome=nome, assinatura=ASSINATURA), encoding="utf-8")
-        (SAIDA / f"{uf}_saude.txt").write_text(MODELO_SAUDE.format(uf=uf, nome=nome, assinatura=ASSINATURA), encoding="utf-8")
+        (SAIDA / f"{uf}_defesa_civil.txt").write_text(MODELO_DC.format(orgao=dc.get(uf, f"Defesa Civil {uf}"), uf=uf, nome=nome, assinatura=ASSINATURA), encoding="utf-8", newline="\n")
+        (SAIDA / f"{uf}_saude.txt").write_text(MODELO_SAUDE.format(uf=uf, nome=nome, assinatura=ASSINATURA), encoding="utf-8", newline="\n")
         for tipo, org in (("defesa_civil", dc.get(uf, f"Defesa Civil {uf}")), ("saude", f"Secretaria de Estado da Saúde de {nome}")):
             pedidos.append({"uf": uf, "tipo": tipo, "orgao": org, "arquivo": f"docs/lai/{uf}_{tipo}.txt",
                             "status": "a_enviar", "protocolo": None, "data_envio": None, "prazo_legal": None,
                             "prorrogacao": None, "data_resposta": None, "resultado": None, "url_evidencia": None})
-    (SAIDA / "BR_carro_pipa_CMNE_MIDR.txt").write_text(MODELO_CARRO_PIPA.format(assinatura=ASSINATURA), encoding="utf-8")
+    (SAIDA / "BR_carro_pipa_CMNE_MIDR.txt").write_text(MODELO_CARRO_PIPA.format(assinatura=ASSINATURA), encoding="utf-8", newline="\n")
     pedidos.append({"uf": "BR", "tipo": "carro_pipa", "orgao": "Comando Militar do Nordeste / MIDR", "arquivo": "docs/lai/BR_carro_pipa_CMNE_MIDR.txt",
                     "status": "a_enviar", "protocolo": None, "data_envio": None, "prazo_legal": None, "prorrogacao": None,
                     "data_resposta": None, "resultado": None, "url_evidencia": None})
-    (SAIDA / "BR_cadastro_nacional_SEDEC_MDR.txt").write_text(MODELO_CADASTRO_NACIONAL.format(assinatura=ASSINATURA), encoding="utf-8")
+    (SAIDA / "BR_cadastro_nacional_SEDEC_MDR.txt").write_text(MODELO_CADASTRO_NACIONAL.format(assinatura=ASSINATURA), encoding="utf-8", newline="\n")
     pedidos.append({"uf": "BR", "tipo": "cadastro_nacional", "orgao": "SEDEC/MDR", "arquivo": "docs/lai/BR_cadastro_nacional_SEDEC_MDR.txt",
                     "status": "a_enviar", "protocolo": None, "data_envio": None, "prazo_legal": None, "prorrogacao": None,
                     "data_resposta": None, "resultado": None, "url_evidencia": None})
     reg = {"formato": "§3.7 do doc de redesenho 02/09/2026 — registro público dos pedidos de LAI do Monitor; "
                       "'a_enviar' = texto gerado, envio humano pendente (Fala.BR exige pessoa física identificada)",
            "gerado_em": date.today().isoformat(), "pedidos": pedidos}
-    json.dump(reg, open(SAIDA.parent / "lai_pedidos.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(reg, open(SAIDA.parent / "lai_pedidos.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     print(f"LAI: {len(pedidos)} pedidos gerados em docs/lai/ (27 defesa civil + 27 saúde + 1 Carro-Pipa + 1 Cadastro Nacional); registro em data/lai_pedidos.json")
 
 
@@ -124,7 +124,7 @@ def registrar(uf, tipo, protocolo, data_envio):
             it.update({"status": "enviado", "protocolo": protocolo, "data_envio": data_envio,
                        "prazo_legal": (d + timedelta(days=20)).isoformat(), "prorrogacao": (d + timedelta(days=30)).isoformat(),
                        "resultado": "aguardando"})
-            json.dump(reg, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1); print(f"registrado: {uf}/{tipo} protocolo {protocolo}"); return 0
+            json.dump(reg, open(p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); print(f"registrado: {uf}/{tipo} protocolo {protocolo}"); return 0
     print("pedido não encontrado"); return 1
 
 
