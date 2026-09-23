@@ -9,6 +9,23 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §176 · O texto integral do diário oficial não guardava hash nenhum — e quatro itens prometiam um arquivo que não existia · 23/09/2026
+
+Classe **correção de segurança do dado**. Nenhum número do índice muda. Fecha a lacuna que o §175 deixou nomeada.
+
+**O que estava aberto.** O §175 passou a exigir `sha256(texto_arquivo) == texto_hash`. Mas a outra família de texto preservado — `texto_integral`, a edição inteira do diário oficial que o julgamento humano lê offline (decisão de 10/09) — não registrava hash de espécie alguma: **148 itens**, zero hashes. A integridade deles se apoiava no `.json` da resposta da API, cuja chave o portão confere; o texto em si, que é o que alguém abre para ler, não tinha com o que ser comparado.
+
+**E quatro deles prometiam um arquivo que não existe.** `texto_integral` gravado em 12/09/2026, apontando para um `.txt` que **nunca entrou no commit da rodada** — conferido no histórico: `git log --all` não conhece nenhum desses quatro caminhos. O índice afirmava preservar o que não estava em disco, e nada acusava.
+
+**Por que nada os procurava.** A fila da autocura (`scripts/preservar_textos_integrais.py`, que roda em toda rodada desde 10/09) saía só de `data/pistas_imprensa.json`, e só de pista com `origem == querido_diario`: 33 evidências de diário, todas com texto. Evidência preservada por `coletar_diarios_municipais.py` que **não gerou pista** ficava fora do alcance da rotina que existe justamente para completá-la. Quem tinha o defeito era invisível para quem o consertaria.
+
+**O conserto, em quatro pontos.** (1) `preservar_texto_integral()` registra `texto_integral_hash` ao gravar — e também quando o arquivo **já existe**, curando o índice de quem foi preservado antes desta regra, sem mexer na data nem na origem da preservação original. (2) A fila da autocura passa a incluir o que o **índice** diz ter e o disco não tem, venha de pista ou não. (3) `selar_hashes()` preenche o hash ausente e **não resela divergência em silêncio**: arquivo que mudou depois de selado vira aviso e trava no portão, porque reselar apagaria o registro de que mudou (a mudança legítima conhecida — a redação de CPF — recalcula o hash na própria rotina, §175). (4) O portão 6 confere as duas famílias, e arquivo prometido pelo índice e ausente do disco reprova **mesmo sem hash registrado**.
+
+**Rodado aqui.** Os quatro textos foram recuperados a partir do `.json` preservado (as URLs de edição do Querido Diário continuam no ar): 2,4 MB, 553 kB, 108 kB e 103 kB. Dois deles trouxeram CPF na edição e saíram redigidos na preservação, 2 em cada, com a redação registrada no log v2 — o defeito de 12/09 não republicou dado pessoal, porque a causa raiz já estava corrigida desde então. E **144 hashes** foram selados, fechando os 148. Como a autocura já está pendurada na cadência, a selagem e a recuperação passam a acontecer sozinhas a cada rodada.
+
+**Teste.** Portão 6 vermelho antes do conserto, nomeando os quatro pelo hash, e verde depois (89 de 93 pontuáveis com prova, 4 em lacuna declarada do §174, 2.059 itens íntegros). Dois autotestes negativos novos e bloqueantes em `portoes.yml` (agora 30 portões de dado, 49 no total). Portão 12 em árvore limpa; log `data/log_buscas.json` cresceu de 26.774 para 26.776 execuções, append-only conferido.
+
+
 ## §175 · O hash do texto preservado não era conferido — e a rotina de redação de CPF o deixava para trás · 23/09/2026
 
 Classe **correção de segurança do dado**. Nenhum número do índice muda; um item do banco passa a ter o hash que descreve o arquivo que está publicado.

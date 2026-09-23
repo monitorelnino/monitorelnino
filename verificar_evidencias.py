@@ -146,17 +146,24 @@ def integridade_texto(itens: dict, raiz: pathlib.Path = RAIZ) -> list:
     nunca a do TEXTO — que desde o §174 também conta como prova preservada. A rotina de redação de
     CPF de 12/09/2026 (`scripts/remediar_cpf_evidencias.py`) regravava o `.txt` e não recalculava
     `texto_hash`: Maricá/RJ ficou com o hash de antes da redação, e nada acusava. Um texto cujo hash
-    registrado não bate com o arquivo em disco não é prova verificável — é um arquivo qualquer."""
+    registrado não bate com o arquivo em disco não é prova verificável — é um arquivo qualquer.
+    §176: vale também para o texto integral do diário (`texto_integral`/`texto_integral_hash`), e
+    arquivo prometido pelo índice e ausente do disco reprova mesmo sem hash registrado."""
     erros = []
-    for h, it in itens.items():
-        ta, th = it.get("texto_arquivo"), it.get("texto_hash")
-        if not ta or not th:
-            continue
-        pth = raiz / ta
-        if not pth.exists():
-            erros.append(f"{h[:12]}… texto ausente ({ta})")
-        elif hashlib.sha256(pth.read_bytes()).hexdigest() != th:
-            erros.append(f"{h[:12]}… texto não bate com texto_hash ({ta}) — regravado sem recalcular o hash?")
+    # §176 (23/09/2026): o texto INTEGRAL do diário oficial entra na mesma regra. Eram 148 itens sem
+    # hash nenhum do texto, e quatro apontavam para um arquivo que não estava em disco — o campo foi
+    # gravado em 12/09 e o `.txt` nunca entrou no commit da rodada. Arquivo prometido e ausente é
+    # falha de integridade, com ou sem hash registrado: o índice afirma preservar o que não existe.
+    for campo, campo_hash in (("texto_arquivo", "texto_hash"), ("texto_integral", "texto_integral_hash")):
+        for h, it in itens.items():
+            ta, th = it.get(campo), it.get(campo_hash)
+            if not ta:
+                continue
+            pth = raiz / ta
+            if not pth.exists():
+                erros.append(f"{h[:12]}… {campo} ausente em disco ({ta})")
+            elif th and hashlib.sha256(pth.read_bytes()).hexdigest() != th:
+                erros.append(f"{h[:12]}… {campo} não bate com {campo_hash} ({ta}) — regravado sem recalcular o hash?")
     return erros
 
 
@@ -176,6 +183,11 @@ def autoteste_integridade_texto() -> list:
             ({"texto_arquivo": "evidencias/ausente.txt", "texto_hash": certo}, 1),   # texto perdido
             ({"texto_arquivo": None, "texto_hash": None}, 0),
             ({"arquivo": "evidencias/a.pdf"}, 0),                                    # só cópia binária: fora desta regra
+            # §176: texto integral do diário — mesma régua, e o arquivo prometido tem de existir
+            ({"texto_integral": "evidencias/a.txt", "texto_integral_hash": certo}, 0),
+            ({"texto_integral": "evidencias/a.txt", "texto_integral_hash": "0" * 64}, 1),
+            ({"texto_integral": "evidencias/ausente.txt"}, 1),                        # prometido e ausente
+            ({"texto_integral": "evidencias/a.txt"}, 0),                             # ainda sem hash: selagem pendente
         ]
         for i, (item, esperado) in enumerate(casos):
             n = len(integridade_texto({f"{i:064d}": item}, raiz))

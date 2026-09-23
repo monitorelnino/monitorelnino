@@ -151,3 +151,7 @@ jobs:
           # autoteste trava as quatro regras: contagem sem marcadores, escrita em LF, reindexação pelo
           # arquivo em disco (que é a verdade) e `tamanho` intacto (ele descreve `arquivo`).
           python3 scripts/remediar_cpf_evidencias.py --autoteste
+          # §176 (23/09/2026): o texto integral do diário oficial não guardava hash nenhum (148 itens),
+          # e quatro apontavam para um .txt que nunca entrou no commit da rodada. O autoteste trava as
+          # duas regras: fila pelo índice (não só pelas pistas) e hash ausente selado, divergente acusado.
+          python3 scripts/preservar_textos_integrais.py --autoteste
