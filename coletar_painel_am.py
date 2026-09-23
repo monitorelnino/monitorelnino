@@ -98,6 +98,54 @@ ROTULOS_DE_INTERFACE = (
 )
 
 
+# §180 (23/09/2026, rodada real feita de dentro do Brasil): o ato que estas constantes filtram.
+# `ler_ato` pegava a PRIMEIRA ocorrência de "<tipo> nº <n> de <data>" no documento — e todo PLANCON
+# municipal tem, na seção de demografia, a frase "Ato de Criação: Lei Estadual Nº 96 DE 19 de
+# dezembro de 1955". Resultado medido nos 51 documentos baixados: 16 itens viraram `documentado`
+# com o ato de CRIAÇÃO DO MUNICÍPIO no lugar do ato do plano — 13 deles anteriores a 2015 (1874,
+# 1881, 1897, 1938, 1955 duas vezes, 1956, 1974, 1975, 1982, 2008, 2012, 2013). Nenhum foi promovido,
+# porque `promovivel` nasce false e o §156 exige ato do ciclo; mas o campo publicado na fila estaria
+# errado, e quem revisa confiaria nele.
+CONTEXTO_DE_CRIACAO = (
+    "ato de criacao", "criacao do municipio", "criado pela lei", "criado pelo decreto",
+    "elevado a categoria", "instalacao do municipio", "emancipacao", "desmembramento",
+    "data de criacao", "lei de criacao",
+)
+# O ato do plano tem de se APRESENTAR como tal. Vizinhança com a palavra "plano" não basta —
+# medido nos 51 documentos do AM em 23/09/2026, a primeira versão desta regra ainda aceitou três
+# atos errados, cada um de um tipo diferente de armadilha:
+#   · Coari e Rio Preto da Eva: "Coordenador Municipal de Proteção e Defesa Civil / Portaria n° 007
+#     de 06 de Janeiro de 2026" — o ato que NOMEIA o coordenador, colado na assinatura dele;
+#   · Manicoré: "Lei nº 14.750, de 12 de dezembro de 2023 – Atualiza a PNPDEC" — citação numa lista
+#     de fundamentação legal, com "plano de contingência" na mesma frase.
+# Então a exigência passa a ser o VERBO instituidor na mesma oração (ou na ementa seguinte, onde o
+# decreto brasileiro costuma trazê-lo), mais a palavra do plano, menos os marcadores de citação.
+VERBOS_INSTITUIDORES = ("institui", "fica instituido", "aprova", "fica aprovado", "homologa", "adota")
+PALAVRAS_DO_PLANO = ("plano de contingencia", "plancon", "plano municipal de contingencia")
+MARCADORES_DE_CITACAO = (
+    "atualiza a", "politica nacional", "pnpdec", "sinpdec", "conpdec", "estatuto da cidade",
+    "transferencias de recursos", "dispoe sobre o sistema", "lei federal", "constituicao federal",
+)
+# Piso de plausibilidade: plano de contingência do ciclo 2026-27 não é instituído por ato anterior a
+# 2015 (a Política Nacional de Proteção e Defesa Civil é de 2012, e os planos que a cumprem vieram
+# depois). Ato mais antigo que isto, mesmo fora de contexto de criação, fica como NÃO LIDO — o item
+# cai para `declarado`, que é a resposta honesta, em vez de publicar uma data que não é do plano.
+ANO_MINIMO_DO_ATO = 2015
+
+
+def celula_sem_rotulo(valor):
+    """Célula do Power BI sem o rótulo de interface. Quando a célula é SÓ o rótulo, devolve ""
+    — ausência, não texto. Medido na rodada de 23/09: 53 das 62 linhas traziam apenas
+    "Formatação Condicional Adicional" na coluna Calha (a calha aparece uma vez por grupo, e as
+    demais linhas herdam visualmente). Publicar esse rótulo seria publicar interface como dado."""
+    if not isinstance(valor, str):
+        return valor
+    s = valor.strip()
+    if any(_norm(s) == _norm(r) for r in ROTULOS_DE_INTERFACE):
+        return ""
+    return limpar_rotulo_powerbi(s)
+
+
 def limpar_rotulo_powerbi(texto: str) -> str:
     """Remove do FIM do texto os rótulos de interface declarados acima. Só no fim, só os
     declarados, e comparando sem acento nem caixa — o miolo do nome nunca é tocado."""
@@ -112,12 +160,8 @@ def limpar_rotulo_powerbi(texto: str) -> str:
     return s
 
 
-def ler_ato(texto: str):
-    """Extrai {tipo, numero, data} do texto do PRÓPRIO documento. None se não achar —
-    nunca chuta. A data volta em ISO; dia/mês inválidos devolvem None (não silenciam)."""
-    m = RE_ATO.search(texto or "")
-    if not m:
-        return None
+def _ato_do_casamento(m):
+    """{tipo, numero, data} de um casamento do RE_ATO, ou None se a data não fecha."""
     tipo, numero, dia, mes_txt, ano = m.groups()
     mes = MESES.get(_norm(mes_txt)) if not mes_txt.isdigit() else int(mes_txt)
     if not mes:
@@ -127,6 +171,48 @@ def ler_ato(texto: str):
     except ValueError:
         return None
     return {"tipo": tipo.lower(), "numero": numero.strip(" ."), "data": d.isoformat()}
+
+
+def ler_ato(texto: str):
+    """Extrai {tipo, numero, data} do ato que INSTITUI o plano, lido no próprio documento.
+    None quando não há ato legível — nunca chuta, e "não localizei" é resposta válida (§180).
+
+    Três filtros, nesta ordem, sobre TODAS as ocorrências (a versão anterior lia só a primeira):
+      1. descarta quem está em contexto de CRIAÇÃO DO MUNICÍPIO (ver CONTEXTO_DE_CRIACAO);
+      2. descarta ato anterior a ANO_MINIMO_DO_ATO, que não pode ser o do plano deste ciclo;
+      3. exige que o ato se apresente COMO o ato do plano: verbo instituidor (institui/aprova/
+         homologa/adota) e palavra do plano na mesma oração ou na ementa seguinte, e nenhum
+         marcador de citação legal. Sem isso o item fica `declarado` — que é a resposta honesta
+         quando o documento não diz qual ato o instituiu."""
+    t = texto or ""
+    candidatos = []
+    for m in RE_ATO.finditer(t):
+        # só a oração imediatamente anterior conta: no modelo estadual, a frase do ato de criação é
+        # seguida de "...a instalação do município ocorreu em ...", e uma janela cega de 160
+        # caracteres levava essa marca para dentro do contexto do ato SEGUINTE, que é o do plano.
+        esquerda = _norm(re.split(r"[.;\n]", t[max(0, m.start() - 160):m.start()])[-1])
+        if any(marca in esquerda for marca in CONTEXTO_DE_CRIACAO):
+            continue
+        ato = _ato_do_casamento(m)
+        if not ato or int(ato["data"][:4]) < ANO_MINIMO_DO_ATO:
+            continue
+        # janela ANCORADA no casamento: o que resta da oração antes dele, o próprio ato e as duas
+        # orações seguintes — é ali que o decreto brasileiro põe a ementa ("… DE 2026. Institui o
+        # Plano …"). Contar pedaços a partir do início da fatia cortava antes da ementa quando havia
+        # ponto no meio de um número ("População: 25.172").
+        antes = re.split(r"[.;\n]", t[max(0, m.start() - 160):m.start()])[-1]
+        depois = re.split(r"[.;\n]", t[m.end():m.end() + 300])[:2]
+        janela = _norm(" ".join([antes, m.group(0)] + depois))
+        if any(marca in janela for marca in MARCADORES_DE_CITACAO):
+            continue
+        if not any(v in janela for v in VERBOS_INSTITUIDORES):
+            continue
+        if not any(pl in janela for pl in PALAVRAS_DO_PLANO):
+            continue
+        candidatos.append((m.start(), ato))
+    if not candidatos:
+        return None
+    return candidatos[0][1]
 
 
 def eh_pdf(conteudo: bytes, url: str) -> bool:
@@ -168,23 +254,31 @@ def texto_do_documento(conteudo: bytes, url: str) -> str:
 def linha_para_registro(linha: dict) -> dict:
     """Normaliza uma linha bruta do renderizador para os campos do projeto. Célula ausente
     vira None — o painel não tem coluna de número/data de ato, e isso é o ponto."""
-    cel = {_norm(k): v for k, v in (linha.get("celulas") or {}).items()}
+    # §180: limpa o rótulo de interface ANTES de qualquer casamento de coluna. Sem isso a célula
+    # "Plano" chega com "Formatação Condicional Adicional" e o casamento por substring de "ano"
+    # bate nela ("plano" contém "ano") antes de chegar em "ano do plano" — foi assim que as 62
+    # linhas da rodada de 23/09 perderam o ano declarado pelo estado, que é o dado do painel.
+    cel = {_norm(k): celula_sem_rotulo(v) for k, v in (linha.get("celulas") or {}).items()}
 
     def pega(*chaves):
+        # passada estrita primeiro: nome de coluna igual, ou começando/terminando pela chave
+        for c in chaves:
+            for k, v in cel.items():
+                if (k == c or k.startswith(c + " ") or k.endswith(" " + c)) and v not in (None, ""):
+                    return v
+        # depois tolerante, para cabeçalho que muda de redação sem mudar de sentido
         for c in chaves:
             for k, v in cel.items():
                 if c in k and v not in (None, ""):
                     return v
         return None
 
-    ano = pega("ano")
-    try:
-        ano = int(re.sub(r"\D", "", str(ano))) if ano else None
-    except ValueError:
-        ano = None
+    ano_bruto = pega("ano do plano", "ano")
+    m_ano = re.search(r"(19|20)\d{2}", str(ano_bruto or ""))
+    ano = int(m_ano.group(0)) if m_ano else None
     # Célula ausente continua None depois da limpeza: "" não é a mesma coisa que ausência.
     def limpo(v):
-        return limpar_rotulo_powerbi(v) or None if v else None
+        return (v or None) if v else None
 
     return {"municipio_no_painel": limpo(pega("municipio", "município")),
             "calha": limpo(pega("calha")),
@@ -565,7 +659,10 @@ def autoteste() -> int:
         return a and a["numero"] == "1.234" and a["data"] == "2026-03-05" and a["tipo"] == "decreto"
 
     def t_le_ato_numerico():
-        a = ler_ato("Portaria nº 12/2026, de 30 de 06 de 2026")
+        # §180: a data em formato numérico continua sendo lida, mas o ato precisa se apresentar como
+        # o do plano — antes desta regra, "Portaria nº 12/2026, de 30 de 06 de 2026" sozinha passava,
+        # e era assim que a portaria de nomeação do coordenador virava ato do plano.
+        a = ler_ato("Portaria nº 12/2026, de 30 de 06 de 2026, que aprova o plano de contingência municipal")
         return a and a["data"] == "2026-06-30"
 
     def t_texto_sem_ato_nao_inventa():
@@ -865,7 +962,79 @@ def autoteste() -> int:
                 return False
         return True
 
+    # ---------------------------------------------------------------- §180: os dois defeitos reais
+    # Trecho REAL do PLANCON de Jutaí/AM, baixado em 23/09/2026 (a frase existe, com variações, em
+    # todos os 51 documentos do painel: é a seção de demografia do modelo estadual).
+    TRECHO_ATO_DE_CRIACAO = (
+        "8. DEMOGRAFIA Código do Município: 1302306 Ato de Criação: Lei Estadual Nº 96 DE 19 de "
+        "dezembro de 1955, e a instalação do município ocorreu em 11 de abril de 1956. População: 25.172"
+    )
+    TRECHO_ATO_DO_PLANO = (
+        "DECRETO Nº 007, DE 06 DE JANEIRO DE 2026. Institui o Plano Municipal de Contingência para "
+        "enfrentamento de desastres e dá outras providências."
+    )
+
+    def t_ato_de_criacao_do_municipio_nao_e_ato_do_plano():
+        return ler_ato(TRECHO_ATO_DE_CRIACAO) is None
+
+    def t_ato_do_plano_e_lido():
+        a = ler_ato(TRECHO_ATO_DO_PLANO)
+        return a is not None and a["numero"] == "007" and a["data"] == "2026-01-06"
+
+    def t_prefere_o_ato_do_plano_mesmo_vindo_depois():
+        # o de criação vem primeiro no documento, como no modelo real
+        a = ler_ato(TRECHO_ATO_DE_CRIACAO + " ... " + TRECHO_ATO_DO_PLANO)
+        return a is not None and a["data"] == "2026-01-06"
+
+    def t_ato_antigo_fora_de_contexto_de_criacao_nao_passa():
+        # a Lei 12.608/2012 é citada em quase todo PLANCON: é a Política Nacional, não o ato do plano
+        texto = ("Este plano observa a Lei Nº 12.608 de 10 de abril de 2012, que institui a Política "
+                 "Nacional de Proteção e Defesa Civil.")
+        return ler_ato(texto) is None
+
+    # Os três atos errados que a PRIMEIRA versão da regra do §180 ainda aceitou, em texto real dos
+    # documentos do painel do AM. Cada um é uma armadilha diferente, e é por isso que ficam os três.
+    def t_portaria_que_nomeia_coordenador_nao_e_ato_do_plano():
+        return ler_ato("Nilson Ferreira Rolim Coordenador Municipal de Proteção e Defesa Civil "
+                       "Portaria n° 007 de 06 de Janeiro de 2026. ELABORADO POR: Nilson Ferreira Rolim") is None
+
+    def t_decreto_que_nomeia_coordenador_nao_e_ato_do_plano():
+        return ler_ato("RAIMUNDO IVANILDO DE ANDRADE GALVÃO Coordenador Municipal de Proteção e Defesa "
+                       "Civil Decreto n° 143-PMC-GP, de 01 de setembro de 2023.") is None
+
+    def t_citacao_em_lista_de_fundamentacao_nao_e_ato_do_plano():
+        return ler_ato("• Lei nº 14.750, de 12 de dezembro de 2023 – Atualiza a PNPDEC, reforçando o "
+                       "plano de contingência como conjunto de procedimentos e ações") is None
+
+    def t_ato_que_aprova_o_plancon_e_lido():
+        a = ler_ato("Decreto nº 1.234, de 10 de julho de 2026 - Aprova o PLANCON municipal para o ciclo 2026/2027.")
+        return a is not None and a["data"] == "2026-07-10"
+
+    def t_ano_do_painel_sobrevive_ao_rotulo():
+        # células como o painel real devolve: TODAS com o rótulo colado, inclusive a coluna "Plano"
+        linha = {"indice": 2, "url_do_link": None, "como_obtido": "x", "celulas": {
+            "Seleção de Linha": "Selecionar Linha",
+            "Índice": "1 Formatação Condicional Adicional",
+            "Calha": "Formatação Condicional Adicional",
+            "Município": "Atalaia do Norte Formatação Condicional Adicional",
+            "Plano": "Formatação Condicional Adicional",
+            "Ano do Plano": "2026 Formatação Condicional Adicional"}}
+        r = linha_para_registro(linha)
+        # o ano é o dado que o painel declara; a calha, nesta linha, é herança visual do grupo
+        return (r["ano_do_plano"] == 2026
+                and r["municipio_no_painel"] == "Atalaia do Norte"
+                and r["calha"] is None)
+
     return rodar_autoteste({
+        "§180 ato de criação do município não é ato do plano": t_ato_de_criacao_do_municipio_nao_e_ato_do_plano,
+        "§180 ato que institui o plano é lido": t_ato_do_plano_e_lido,
+        "§180 ato que aprova o PLANCON é lido": t_ato_que_aprova_o_plancon_e_lido,
+        "§180 portaria que nomeia o coordenador não é ato do plano": t_portaria_que_nomeia_coordenador_nao_e_ato_do_plano,
+        "§180 decreto que nomeia o coordenador não é ato do plano": t_decreto_que_nomeia_coordenador_nao_e_ato_do_plano,
+        "§180 citação em lista de fundamentação não é ato do plano": t_citacao_em_lista_de_fundamentacao_nao_e_ato_do_plano,
+        "§180 prefere o ato do plano mesmo vindo depois do de criação": t_prefere_o_ato_do_plano_mesmo_vindo_depois,
+        "§180 lei citada de passagem (12.608/2012) não vira ato do plano": t_ato_antigo_fora_de_contexto_de_criacao_nao_passa,
+        "§180 ano declarado no painel sobrevive ao rótulo de interface": t_ano_do_painel_sobrevive_ao_rotulo,
         "lê nº e data de ato por extenso": t_le_ato_por_extenso,
         "lê nº e data de ato em formato numérico": t_le_ato_numerico,
         "texto sem ato não inventa ato": t_texto_sem_ato_nao_inventa,

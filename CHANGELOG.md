@@ -9,6 +9,34 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §180 · Os 51 planos do AM lidos de dentro do Brasil — e o ato que o coletor achava que estava lendo · 23/09/2026
+
+Classe **coleta e correção de leitura**. Nenhum número do índice muda e nada é promovido: a fila do painel do AM é R7, promoção humana. O que muda é o que está preservado (51 documentos que não existiam no repositório) e o que o coletor aceita chamar de "ato do plano".
+
+**O que o §170 deixou em aberto.** A rodada de 23/09 leu os 62 municípios do painel e **nenhum documento abriu**: `Connection reset by peer` nas 62 tentativas, com o painel Power BI respondendo normalmente no mesmo runner. O §170 registrou a distinção que decide este caso: um `403` é o servidor dizendo **não**, e não se contorna; **reset de conexão é ausência de resposta, em que não há recusa a respeitar**.
+
+**A rodada feita daqui.** A sessão de 23/09 roda numa máquina no Brasil. Mesmo endereço, mesmo User-Agent do projeto, mesmo código: o renderizador abriu o painel (62 linhas, 51 com link) e `www.defesacivil.am.gov.br` entregou os documentos — o PLANCON de Tabatinga, 18,83 MB, em 2,1 s. **51 de 51 documentos abriram, todos como `fonte direta`**, nenhum por captura de arquivo. A rota era o problema, não o servidor.
+
+**E aí a leitura mostrou o defeito que o fixture escondia.** A primeira rodada devolveu **16 itens `documentado`** — e os 16 estavam errados. `ler_ato` pegava a primeira ocorrência de "⟨tipo⟩ nº ⟨n⟩ de ⟨data⟩" no documento, e todo PLANCON do modelo estadual traz, na seção de demografia, **"Ato de Criação: Lei Estadual Nº 96 DE 19 de dezembro de 1955"**. Treze dos dezesseis "atos" eram anteriores a 2015: 1874, 1881, 1897, 1938, 1955 duas vezes, 1956, 1974, 1975, 1982, 2008, 2012, 2013. Nenhum foi promovido — `promovivel` nasce `false` e o §156 exige ato do ciclo lido no documento —, mas a fila publicaria a lei de criação do município como se fosse o ato do plano, e quem revisa confiaria no campo.
+
+**Três armadilhas, não uma.** Filtrar contexto de criação derrubou 13 e deixou 3, cada um de um tipo diferente — e os três também estavam errados:
+
+- **Coari:** "RAIMUNDO … Coordenador Municipal de Proteção e Defesa Civil / Decreto n° 143-PMC-GP, de 01 de setembro de 2023" — o ato que **nomeia o coordenador**, colado na assinatura dele.
+- **Rio Preto da Eva:** "Portaria n° 007 de 06 de Janeiro de 2026", mesma estrutura de assinatura.
+- **Manicoré:** "Lei nº 14.750, de 12 de dezembro de 2023 – Atualiza a PNPDEC" — **citação numa lista de fundamentação legal**, com "plano de contingência" na mesma frase, que é justamente o que um filtro de vizinhança não distingue.
+
+**A régua final.** O ato tem de **se apresentar como o ato do plano**: verbo instituidor (`institui`, `fica instituído`, `aprova`, `homologa`, `adota`) **e** palavra do plano (`plano de contingência`, `PLANCON`, `plano municipal de contingência`) na oração do ato ou na ementa seguinte, **sem** marcador de citação legal (`atualiza a`, `Política Nacional`, `PNPDEC`, `SINPDEC`, `transferências de recursos`, `lei federal`…). Fora disso o item fica `declarado` — que é a resposta honesta quando o documento não diz qual ato o instituiu. Some-se o piso de plausibilidade: ato anterior a 2015 não institui plano deste ciclo.
+
+Detalhe de implementação que custou uma rodada: a janela de contexto precisa estar **ancorada no casamento**. Contada do início da fatia, ela cortava antes da ementa quando havia ponto no meio de um número — `População: 25.172` quebrava a leitura do decreto seguinte.
+
+**Segundo defeito, no ano declarado.** As 62 linhas vinham com `ano_do_plano: null`. A célula da coluna **Plano** chega do Power BI com o rótulo de interface `Formatação Condicional Adicional`, e o casamento de coluna por substring de `"ano"` batia nela antes de chegar em `"ano do plano"` — porque **"plano" contém "ano"**. A limpeza do rótulo passou para antes do casamento, o casamento ficou estrito e o ano sai por expressão de quatro dígitos. De tabela: célula que é **só** o rótulo passa a ser ausência, não texto — eram 53 das 62 linhas na coluna Calha, que herdam o grupo visualmente. Com isso o painel volta a declarar o que declara: **42 municípios com plano de 2026**, 6 de 2024, 2 de 2025 e 1 de 2023.
+
+**O resultado, medido e sem enfeite.** 62 linhas; **51 documentos preservados como prova, todos da fonte direta** (23 com cópia binária no repositório, 52,1 MB; os demais acima do teto de 5 MB, com hash e texto); **zero `documentado`**, porque nenhum dos 51 declara no próprio corpo o ato que o instituiu na forma que a régua exige; **51 `declarado`** com o ano do painel; 11 sem plano declarado; **zero promovível**. O estado declara; o documento, como está publicado, não prova o ato — e é isso que a fila registra.
+
+**Nove casos novos no autoteste do coletor** — sete negativos e dois positivos, quase todos com texto real dos documentos do AM (48 casos no total): ato de criação do município, portaria e decreto de nomeação do coordenador, citação da PNPDEC, Lei 12.608/2012 citada de passagem, ato que institui, ato que aprova o PLANCON, o ano sobrevivendo ao rótulo, e o ato do plano preferido mesmo vindo depois do de criação. Um teste antigo foi corrigido junto, e a razão fica escrita: `"Portaria nº 12/2026, de 30 de 06 de 2026"` sozinha passava — era esse contrato frouxo que deixava a nomeação virar ato do plano.
+
+**Teste.** Suíte completa de portões rodada nesta máquina, agora com Node e Chromium instalados (só o portão 17 fica de fora, por exigir privilégio de link simbólico que o Windows não concede). Portão de evidências verde com os 51 itens novos íntegros; portão 12 em árvore limpa; autotestes dos coletores verdes.
+
 ## §179 · O registro que faltava: duas mudanças mescladas sem entrada, e a curadoria de domínios da defesa civil · 23/09/2026
 
 Classe **correção do registro público**. Nenhum código de produção muda aqui além de uma referência errada em comentário; o que muda é o `CHANGELOG.md` passar a conter o que a `main` já contém.
