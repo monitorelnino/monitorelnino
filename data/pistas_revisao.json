@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-23",
- "total_pistas": 301,
- "total_municipios": 162,
+ "total_pistas": 302,
+ "total_municipios": 163,
  "por_nivel": {
   "A": 51,
-  "B": 191,
+  "B": 192,
   "C": 59
  },
  "grupos": [
@@ -418,7 +418,7 @@
      "titulo": "Diário oficial de 2026-06-10",
      "trecho": "Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON) JORGE AUGUSTO SEBA, Prefeito do Município de Votuporanga, Estado de São Paulo, no uso de suas atribuições legais; DECRETA: Art. 1º Fica aprovada a 6ª Edição do Plano de Contingência de Proteção e Defesa Civil - PLANCON do Município de Votuporanga, parte integrante deste Decreto. Parágrafo único. O Plano a que se refere o caput deste artigo, é parte integrante deste Decreto. Art. 2º O PLANCON tem por",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "status": "aplicada_automaticamente"
     },
     {
      "id": "e2b73559c8",
@@ -5065,6 +5065,37 @@
      "url": "https://www.saaefervedouro.com.br/uploads/conteudoarquivo_arquivo/2528/fervedouroplanosaneamento.pdf",
      "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - Saae Fervedouro",
      "trecho": "Identificação de possíveis fontes de financiamento, arranjo institucional e plano de contingência e emergência. FERVEDOURO – MG. 2013. Page 2. Plano Municipal ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3128808",
+   "municipio": "Guidoval",
+   "uf": "MG",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "58f84392fd",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.ceivap.org.br/mata/Guidoval.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP",
+     "trecho": "Plano Municipal de Saneamento Básico – Guidoval/MG 101. Plano Municipal de Saneamento Básico – Guidoval/MG. 100. Quadro 19 – Proposições e prazos quanto à ...",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }

@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 286 pendente(s) · 15 decidida(s) · A=49 B=189 C=48
+Gerado em 23/09/2026 · 287 pendente(s) · 15 decidida(s) · A=49 B=190 C=48
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -712,6 +712,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - Saae Fervedouro
   - url: https://www.saaefervedouro.com.br/uploads/conteudoarquivo_arquivo/2528/fervedouroplanosaneamento.pdf
   - trecho: Identificação de possíveis fontes de financiamento, arranjo institucional e plano de contingência e emergência. FERVEDOURO – MG. 2013. Page 2. Plano Municipal ...
+  - juiz: portão automático: fonte não oficial
+
+## Guidoval/MG — 1 pendente(s)
+- `58f84392fd` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CEIVAP
+  - url: https://www.ceivap.org.br/mata/Guidoval.pdf
+  - trecho: Plano Municipal de Saneamento Básico – Guidoval/MG 101. Plano Municipal de Saneamento Básico – Guidoval/MG. 100. Quadro 19 – Proposições e prazos quanto à ...
   - juiz: portão automático: fonte não oficial
 
 ## Lambari/MG — 1 pendente(s)
