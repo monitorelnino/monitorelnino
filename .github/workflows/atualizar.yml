@@ -21,6 +21,10 @@ on:
         description: "Encerrar a varredura HOJE: consulta todos os municípios pendentes numa rodada só, ignorando o ritmo por dias restantes (pedido editorial pontual)"
         type: boolean
         default: false
+      rodada_completa_agora:
+        description: "Rodada COMPLETA fora do dia de publicação: roda tudo E comita, e a edição leva a data de hoje (pedido editorial pontual — não altera INTENSIVO_DE/ATE nem o regime do domínio)"
+        type: boolean
+        default: false
       apenas_repor_dominio:
         description: "Só repor o domínio com senha sobre o main atual, sem rodar a coleta semanal inteira (pedido editorial urgente — ver job separado repor_dominio_manual)"
         type: boolean
@@ -329,6 +333,7 @@ jobs:
           INTENSIVO_DE: ${{ vars.INTENSIVO_DE }}
           INTENSIVO_ATE: ${{ vars.INTENSIVO_ATE }}
           ENSAIO: ${{ github.event.inputs.ensaio == 'true' && '1' || '' }}
+          FORCAR_RODADA_COMPLETA: ${{ github.event.inputs.rodada_completa_agora == 'true' && '1' || '' }}
           LOTE_DIARIOS: ${{ vars.LOTE_DIARIOS }}
           TAMANHO_LOTE: ${{ vars.TAMANHO_LOTE }}
           FINALIZAR_VARREDURA_HOJE: ${{ github.event.inputs.finalizar_varredura_hoje == 'true' && '1' || '' }}
