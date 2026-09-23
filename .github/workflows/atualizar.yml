@@ -47,6 +47,7 @@ permissions:
 jobs:
   repor_dominio_manual:
     # 21/09/2026: pedido editorial urgente (o domínio estava aberto). Job independente,
+    timeout-minutes: 20
     # concorrência própria — não espera nem bloqueia a rodada semanal (job `atualizar` abaixo).
     # Faz exatamente o que o passo "Repor o site completo no domínio" de dentro da rodada
     # semanal faz, mas isolado: checkout do main atual, cabeçalho Basic-Auth, deploy Netlify.
@@ -97,6 +98,13 @@ jobs:
 
   atualizar:
     # 21/09/2026 (achado real, mesmo dia): disparar apenas_repor_dominio=true SEM esta guarda
+    # Rede de segurança do JOB (23/09/2026). O teto por ETAPA em atualizar.py é a
+    # correção principal — mata a fonte pendurada e a rodada segue. Este aqui existe
+    # para o que o teto por etapa não alcança (neto que sobrevive ao filho morto,
+    # travamento fora de um subprocesso). Sem ele o job herda 6 HORAS do GitHub, e a
+    # trava de concorrência transforma isso na fila de atualização parada o dia todo.
+    # A rodada completa leva 75–105 min; 180 dá folga sem dar um turno inteiro.
+    timeout-minutes: 180
     # também disparou este job inteiro — só o job novo tinha `if:`, o schedule/workflow_dispatch
     # do topo do arquivo aciona TODOS os jobs por padrão, salvo restrição própria. Corrigido para
     # não repetir: pula quando o disparo foi explicitamente só para repor o domínio.

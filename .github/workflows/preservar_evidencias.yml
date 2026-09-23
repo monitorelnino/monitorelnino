@@ -19,6 +19,7 @@ permissions:
 jobs:
   preservar:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false }   # AUD-11: sem credencial git na árvore; push por deploy key no passo final
