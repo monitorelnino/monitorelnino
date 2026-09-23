@@ -141,6 +141,10 @@ jobs:
           python3 seguir_pistas.py --autoteste
           # §164 (22/09/2026): sonda de camada (painéis) — autoteste bloqueante desde a entrada.
           python3 sondar_paineis.py --autoteste
+          # §184 (23/09/2026): busca ativa de domínio por UF. O autoteste é offline (rede injetada) e
+          # trava a ordem de prova — título > curadoria humana > corpo > palpite — mais a regra que
+          # impede endereço que responde sem se identificar de virar domínio oficial.
+          python3 descobrir_dominios.py --autoteste
           # §165 (23/09/2026): coletor do painel do AM. O autoteste é offline por construção
           # (rede, evidência, log e livro de fontes injetados) e confere a regra que dá sentido
           # ao coletor: ano no painel é `declarado`, nunca `documentado`.

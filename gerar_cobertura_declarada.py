@@ -62,7 +62,10 @@ CANAIS = ["diario_oficial", "sitio_do_orgao", "painel", "portal_transparencia",
 # contam como TENTATIVA, nunca como verificação — senão a nota de rodapé mentiria de novo,
 # só que com mais detalhe.
 DECISOES_QUE_VERIFICAM = {"registro", "pista", "nada localizado", "coberto_sem_mencao",
-                          "com_excerto", "sem_cobertura_qd"}
+                          "com_excerto", "sem_cobertura_qd",
+                          # §184: a sonda de UF que consultou a fonte e não achou OLHOU — é o oposto
+                          # de tentativa frustrada. Fica aqui pela mesma razão que "nada localizado".
+                          "consultado sem achado"}
 
 
 def classe_do_canal(canal: str) -> str:

@@ -1,0 +1,2895 @@
+{
+ "_governanca": "Domínio oficial por UF e setor, achado por busca ativa (§184). Trilha completa das tentativas, inclusive as que falharam. Insumo de descobrir_planos.dominio_para(); nunca lido pelo cálculo da nota.",
+ "alvos": {
+  "AC/defesa_civil": {
+   "uf": "AC",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.ac.gov.br",
+   "confianca": "media",
+   "titulo": "Início - Portal CEPDC",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 40205,
+     "titulo": "Início - Portal CEPDC",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.defesacivil.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name ",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cedec.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sedec.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "defesacivil.ac.def.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 6769,
+     "titulo": "DPE-ACRE",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "www.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 102034,
+     "titulo": "Portal de Serviços do Estado do Acre",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name ",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "AC/saude": {
+   "uf": "AC",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.ac.gov.br",
+   "confianca": "alta",
+   "titulo": "Secretaria de Estado da Saúde",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.ac.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 202195,
+     "titulo": "Secretaria de Estado da Saúde",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "AL/defesa_civil": {
+   "uf": "AL",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.al.gov.br",
+   "confianca": "alta",
+   "titulo": "Defesa Civil do Estado de Alagoas &#8211; Coordenadoria Estadual de Defesa Civil de Alagoas (CEDEC)",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.al.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 122253,
+     "titulo": "Defesa Civil do Estado de Alagoas &#8211; Coordenadoria Estadual de Defesa Civil de Alagoas (CEDEC)",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "AL/saude": {
+   "uf": "AL",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.saude.al.gov.br",
+   "confianca": "alta",
+   "titulo": "Saúde Alagoas &#8211; Secretaria de Estado da Saúde de Alagoas",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.al.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.al.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 337464,
+     "titulo": "Saúde Alagoas &#8211; Secretaria de Estado da Saúde de Alagoas",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "AP/defesa_civil": {
+   "uf": "AP",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "4 endereço(s) não existe(m) no DNS; 6 com certificado TLS que não valida (não se contorna)",
+   "tentativas": [
+    {
+     "dominio": "defesacivil.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cedec.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sedec.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "defesacivil.ap.def.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "AP/saude": {
+   "uf": "AP",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "4 endereço(s) não existe(m) no DNS; 4 com certificado TLS que não valida (não se contorna)",
+   "tentativas": [
+    {
+     "dominio": "saude.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ap.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "AM/defesa_civil": {
+   "uf": "AM",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "cbm.am.gov.br",
+   "confianca": "media",
+   "titulo": "CBMAM - Início",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "HTTPError: HTTP Error 404: Not Found",
+     "http": 404,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "HTTPError: HTTP Error 404: Not Found",
+     "http": 404,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 34373,
+     "titulo": "CBMAM - Início",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "bombeiros.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cedec.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sedec.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "defesacivil.am.def.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "AM/saude": {
+   "uf": "AM",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "6 endereço(s) não existe(m) no DNS; 2 com caminho inexistente (404/410)",
+   "tentativas": [
+    {
+     "dominio": "saude.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "HTTPError: HTTP Error 404: Not Found",
+     "http": 404,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "HTTPError: HTTP Error 404: Not Found",
+     "http": 404,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "am.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "BA/defesa_civil": {
+   "uf": "BA",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.ba.gov.br",
+   "confianca": "alta",
+   "titulo": "Início | sudec - superintendência de Proteção e Defesa Civil",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 54302,
+     "titulo": "Início | sudec - superintendência de Proteção e Defesa Civil",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "BA/saude": {
+   "uf": "BA",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.ba.gov.br",
+   "confianca": "media",
+   "titulo": "Início | sesab",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 150085,
+     "titulo": "Início | sesab",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 150085,
+     "titulo": "Início | sesab",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 56126,
+     "titulo": "ba.gov.br",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "ba.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 56126,
+     "titulo": "ba.gov.br",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    }
+   ]
+  },
+  "CE/defesa_civil": {
+   "uf": "CE",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.defesacivil.ce.gov.br",
+   "confianca": "alta",
+   "titulo": "Período Eleitoral - Coordenadoria Estadual de Defesa Civil do Ceará",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 81703,
+     "titulo": "Período Eleitoral - Coordenadoria Estadual de Defesa Civil do Ceará",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "CE/saude": {
+   "uf": "CE",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.saude.ce.gov.br",
+   "confianca": "media",
+   "titulo": "Home - Secretaria da Saúde do Ceará",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 194620,
+     "titulo": "Home - Secretaria da Saúde do Ceará",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because th",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 158244,
+     "titulo": "Página Inicial - Governo do Estado do Ceará",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ce.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 158244,
+     "titulo": "Página Inicial - Governo do Estado do Ceará",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    }
+   ]
+  },
+  "DF/defesa_civil": {
+   "uf": "DF",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.df.gov.br",
+   "confianca": "alta",
+   "titulo": "Defesa Civil do Distrito Federal",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 103951,
+     "titulo": "Defesa Civil do Distrito Federal",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "DF/saude": {
+   "uf": "DF",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.df.gov.br",
+   "confianca": "media",
+   "titulo": "GOVERNO DO DISTRITO FEDERAL",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 79220,
+     "titulo": "GOVERNO DO DISTRITO FEDERAL",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "df.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "ES/defesa_civil": {
+   "uf": "ES",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.es.gov.br",
+   "confianca": "alta",
+   "titulo": "CEPDEC - Coordenadoria Estadual de Prote&#xE7;&#xE3;o e Defesa Civil",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 158058,
+     "titulo": "CEPDEC - Coordenadoria Estadual de Prote&#xE7;&#xE3;o e Defesa Civil",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "ES/saude": {
+   "uf": "ES",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.es.gov.br",
+   "confianca": "media",
+   "titulo": "SESA - Secretaria de Estado da Sa&#xFA;de do Esp&#xED;rito Santo",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 573005,
+     "titulo": "SESA - Secretaria de Estado da Sa&#xFA;de do Esp&#xED;rito Santo",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 573005,
+     "titulo": "SESA - Secretaria de Estado da Sa&#xFA;de do Esp&#xED;rito Santo",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 175855,
+     "titulo": "Governo ES",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "es.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "GO/defesa_civil": {
+   "uf": "GO",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "bombeiros.go.gov.br",
+   "confianca": "alta",
+   "titulo": "Corpo de Bombeiros Militar do Estado de Goiás &#8211; Vida alheia e riquezas salvar",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 215876,
+     "titulo": "Corpo de Bombeiros Militar do Estado de Goiás &#8211; Vida alheia e riquezas salvar",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "GO/saude": {
+   "uf": "GO",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.go.gov.br",
+   "confianca": "media",
+   "titulo": "Saúde",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 313480,
+     "titulo": "Saúde",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 313480,
+     "titulo": "Saúde",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 21005,
+     "titulo": "Portal Expresso",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "go.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "MA/defesa_civil": {
+   "uf": "MA",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.defesacivil.ma.gov.br",
+   "confianca": "alta",
+   "titulo": "Coordenadoria Estadual de Proteção e Defesa Civil",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.ma.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 1368262,
+     "titulo": "Suspensão Temporária | Período Eleitoral 2026",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "www.defesacivil.ma.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 53555,
+     "titulo": "Coordenadoria Estadual de Proteção e Defesa Civil",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "MA/saude": {
+   "uf": "MA",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.saude.ma.gov.br",
+   "confianca": "alta",
+   "titulo": "Comunicado | Secretaria de Estado da Saúde do Maranhão",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.ma.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.ma.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 76373,
+     "titulo": "Comunicado | Secretaria de Estado da Saúde do Maranhão",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "MT/defesa_civil": {
+   "uf": "MT",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.mt.gov.br",
+   "confianca": "alta",
+   "titulo": "Defesa Civil",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 115349,
+     "titulo": "Defesa Civil",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "MT/saude": {
+   "uf": "MT",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.mt.gov.br",
+   "confianca": "media",
+   "titulo": "Secretaria de Estado de Saúde - MT",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 53032,
+     "titulo": "Secretaria de Estado de Saúde - MT",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 53032,
+     "titulo": "Secretaria de Estado de Saúde - MT",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 1660751,
+     "titulo": "Portal do Governo de Mato Grosso",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "mt.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "MS/defesa_civil": {
+   "uf": "MS",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.defesacivil.ms.gov.br",
+   "confianca": "alta",
+   "titulo": "DEFESA CIVIL - Coordenadoria Estadual de Proteção e Defesa Civil",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 306335,
+     "titulo": "DEFESA CIVIL - Coordenadoria Estadual de Proteção e Defesa Civil",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "MS/saude": {
+   "uf": "MS",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.saude.ms.gov.br",
+   "confianca": "media",
+   "titulo": "SES - Secretaria de Estado de Saúde",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 250919,
+     "titulo": "SES - Secretaria de Estado de Saúde",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 5156,
+     "titulo": "Portal Único ms.gov.br",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "ms.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10061] No connection could be made because th",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "MG/defesa_civil": {
+   "uf": "MG",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.mg.gov.br",
+   "confianca": "alta",
+   "titulo": "Período Eleitoral | Defesa Civil -",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.mg.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 35539,
+     "titulo": "Período Eleitoral | Defesa Civil -",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "MG/saude": {
+   "uf": "MG",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.mg.gov.br",
+   "confianca": "alta",
+   "titulo": "Home | Secretaria De Estado De Saúde De Minas Gerais",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.mg.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 424984,
+     "titulo": "Home | Secretaria De Estado De Saúde De Minas Gerais",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "PA/defesa_civil": {
+   "uf": "PA",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.pa.gov.br",
+   "confianca": "alta",
+   "titulo": "CEDEC-PA - Defesa Civil do Pará",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.pa.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 366609,
+     "titulo": "CEDEC-PA - Defesa Civil do Pará",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "PA/saude": {
+   "uf": "PA",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.saude.pa.gov.br",
+   "confianca": "alta",
+   "titulo": "SESPA &#8211; Secretaria de Saúde Pública",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.pa.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.pa.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 117521,
+     "titulo": "SESPA &#8211; Secretaria de Saúde Pública",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "PB/defesa_civil": {
+   "uf": "PB",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "bombeiros.pb.gov.br",
+   "confianca": "alta",
+   "titulo": "Corpo de Bombeiros Militar da Paraíba &#8211; Portal Institucional do CBMPB",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 109282,
+     "titulo": "Corpo de Bombeiros Militar da Paraíba &#8211; Portal Institucional do CBMPB",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "PB/saude": {
+   "uf": "PB",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 4 endereço(s) não existe(m) no DNS; 1 com certificado TLS que não valida (não se contorna)",
+   "tentativas": [
+    {
+     "dominio": "saude.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 153,
+     "titulo": "",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "www.saude.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because th",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "pb.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because th",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "PR/defesa_civil": {
+   "uf": "PR",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.pr.gov.br",
+   "confianca": "alta",
+   "titulo": "COORDENADORIA ESTADUAL DA DEFESA CIVIL",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 178661,
+     "titulo": "COORDENADORIA ESTADUAL DA DEFESA CIVIL",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "PR/saude": {
+   "uf": "PR",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.pr.gov.br",
+   "confianca": "media",
+   "titulo": "Secretaria da Saúde",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 299830,
+     "titulo": "Secretaria da Saúde",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 299830,
+     "titulo": "Secretaria da Saúde",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 299830,
+     "titulo": "Secretaria da Saúde",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "sesau.pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 423,
+     "titulo": "www.pr.gov.br",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "pr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "PE/defesa_civil": {
+   "uf": "PE",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.defesacivil.pe.gov.br",
+   "confianca": "alta",
+   "titulo": "Página Inicial - Defesa Civil - Governo do PE",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.pe.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.pe.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 180418,
+     "titulo": "Página Inicial - Defesa Civil - Governo do PE",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "PE/saude": {
+   "uf": "PE",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.saude.pe.gov.br",
+   "confianca": "alta",
+   "titulo": "Início - Secretaria de Saúde do Estado de Pernambuco",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.pe.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.pe.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 314681,
+     "titulo": "Início - Secretaria de Saúde do Estado de Pernambuco",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "PI/defesa_civil": {
+   "uf": "PI",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.pi.gov.br",
+   "confianca": "media",
+   "titulo": "Home Período Eleitoral &#8211; pi.gov",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cedec.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sedec.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "defesacivil.pi.def.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 526710,
+     "titulo": "Home Período Eleitoral &#8211; pi.gov",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "PI/saude": {
+   "uf": "PI",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.pi.gov.br",
+   "confianca": "media",
+   "titulo": "SESAPI",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 118189,
+     "titulo": "SESAPI",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 118189,
+     "titulo": "SESAPI",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 526710,
+     "titulo": "Home Período Eleitoral &#8211; pi.gov",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "pi.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "RJ/defesa_civil": {
+   "uf": "RJ",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.rj.gov.br",
+   "confianca": "alta",
+   "titulo": "Defesa Civil RJ",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 143448,
+     "titulo": "Defesa Civil RJ",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "RJ/saude": {
+   "uf": "RJ",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 4 endereço(s) não existe(m) no DNS; 2 com certificado TLS que não valida (não se contorna)",
+   "tentativas": [
+    {
+     "dominio": "saude.rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 7705,
+     "titulo": "Governo do Estado do Rio de Janeiro",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "rj.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "HTTPError: HTTP Error 503: Service Unavailable",
+     "http": 503,
+     "recusa": false
+    }
+   ]
+  },
+  "RN/defesa_civil": {
+   "uf": "RN",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.rn.gov.br",
+   "confianca": "media",
+   "titulo": "Portal do Governo do Estado do Rio Grande do Norte &#8211; Portal do Governo do RN",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cedec.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sedec.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "HTTPError: HTTP Error 503: Service Unavailable",
+     "http": 503,
+     "recusa": false
+    },
+    {
+     "dominio": "defesacivil.rn.def.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 100750,
+     "titulo": "Portal do Governo do Estado do Rio Grande do Norte &#8211; Portal do Governo do RN",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "RN/saude": {
+   "uf": "RN",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.rn.gov.br",
+   "confianca": "media",
+   "titulo": "Portal do Governo do Estado do Rio Grande do Norte &#8211; Portal do Governo do RN",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 100750,
+     "titulo": "Portal do Governo do Estado do Rio Grande do Norte &#8211; Portal do Governo do RN",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "rn.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "RS/defesa_civil": {
+   "uf": "RS",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.rs.gov.br",
+   "confianca": "alta",
+   "titulo": "Defesa Civil do Rio Grande do Sul",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 97033,
+     "titulo": "Defesa Civil do Rio Grande do Sul",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "RS/saude": {
+   "uf": "RS",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.rs.gov.br",
+   "confianca": "media",
+   "titulo": "Secretaria da Sa&uacute;de",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 84107,
+     "titulo": "Secretaria da Sa&uacute;de",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 84107,
+     "titulo": "Secretaria da Sa&uacute;de",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 115287,
+     "titulo": "RS.GOV.BR - Portal de Servi&ccedil;os Digitais",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "rs.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 115275,
+     "titulo": "RS.GOV.BR - Portal de Servi&ccedil;os Digitais",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    }
+   ]
+  },
+  "RO/defesa_civil": {
+   "uf": "RO",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 7 endereço(s) não existe(m) no DNS; 2 com certificado TLS que não valida (não se contorna)",
+   "tentativas": [
+    {
+     "dominio": "defesacivil.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cedec.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sedec.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "defesacivil.ro.def.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 36391,
+     "titulo": "P&#xE1;gina Inicial - Portal de Rôndonia",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "RO/saude": {
+   "uf": "RO",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 6 endereço(s) não existe(m) no DNS; 1 com certificado TLS que não valida (não se contorna)",
+   "tentativas": [
+    {
+     "dominio": "saude.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.saude.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 36391,
+     "titulo": "P&#xE1;gina Inicial - Portal de Rôndonia",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "ro.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "RR/defesa_civil": {
+   "uf": "RR",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "cbm.rr.gov.br",
+   "confianca": "alta",
+   "titulo": "Corpo de Bombeiros Militar de Roraima - Emergência 193",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.rr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "HTTPError: HTTP Error 523: <none>",
+     "http": 523,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.rr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "HTTPError: HTTP Error 523: <none>",
+     "http": 523,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.rr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 36095,
+     "titulo": "Corpo de Bombeiros Militar de Roraima - Emergência 193",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "RR/saude": {
+   "uf": "RR",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.rr.gov.br",
+   "confianca": "alta",
+   "titulo": ":: SESAU &#8211; Secretaria de Estado da Saúde de Roraima ::",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.rr.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 137787,
+     "titulo": ":: SESAU &#8211; Secretaria de Estado da Saúde de Roraima ::",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "SC/defesa_civil": {
+   "uf": "SC",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.sc.gov.br",
+   "confianca": "alta",
+   "titulo": "Início - Secretaria de Estado da Proteção e Defesa Civil de Santa Catarina",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 330732,
+     "titulo": "Início - Secretaria de Estado da Proteção e Defesa Civil de Santa Catarina",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "SC/saude": {
+   "uf": "SC",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.sc.gov.br",
+   "confianca": "media",
+   "titulo": "HOME - Portal SES/SC",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 158665,
+     "titulo": "HOME - Portal SES/SC",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 158697,
+     "titulo": "HOME - Portal SES/SC",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 5051,
+     "titulo": "Portal de Serviços",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "sc.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 5051,
+     "titulo": "Portal de Serviços",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    }
+   ]
+  },
+  "SP/defesa_civil": {
+   "uf": "SP",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.sp.gov.br",
+   "confianca": "alta",
+   "titulo": "Secretaria da Defesa Civil | Governo do Estado de SP",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 107754,
+     "titulo": "Secretaria da Defesa Civil | Governo do Estado de SP",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "SP/saude": {
+   "uf": "SP",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.sp.gov.br",
+   "confianca": "media",
+   "titulo": "Cidadão - Secretaria da Saúde - Governo do Estado de São Paulo",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 56008,
+     "titulo": "Cidadão - Secretaria da Saúde - Governo do Estado de São Paulo",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 56016,
+     "titulo": "Cidadão - Secretaria da Saúde - Governo do Estado de São Paulo",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 123819,
+     "titulo": "SP.GOV.BR | Governo do Estado de São Paulo",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "sp.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 123819,
+     "titulo": "SP.GOV.BR | Governo do Estado de São Paulo",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    }
+   ]
+  },
+  "SE/defesa_civil": {
+   "uf": "SE",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "defesacivil.se.gov.br",
+   "confianca": "alta",
+   "titulo": "Página inicial - Defesa Civil - SUPDEC",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 202340,
+     "titulo": "Página inicial - Defesa Civil - SUPDEC",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "SE/saude": {
+   "uf": "SE",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "saude.se.gov.br",
+   "confianca": "media",
+   "titulo": "Página inicial - Saúde",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 74810,
+     "titulo": "Página inicial - Saúde",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 74810,
+     "titulo": "Página inicial - Saúde",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "ses.se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 1204156,
+     "titulo": "Portal de Serviços de Sergipe",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "se.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    }
+   ]
+  },
+  "TO/defesa_civil": {
+   "uf": "TO",
+   "setor": "defesa_civil",
+   "verificado_em": "2026-09-23",
+   "dominio": "bombeiros.to.gov.br",
+   "confianca": "alta",
+   "titulo": "Corpo de Bombeiros Militar - BOMBEIROS-TO",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "defesacivil.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 2971,
+     "titulo": "Aviso de Suspensão - Governo do Tocantins",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "www.defesacivil.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 23172,
+     "titulo": "Corpo de Bombeiros Militar - BOMBEIROS-TO",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  },
+  "TO/saude": {
+   "uf": "TO",
+   "setor": "saude",
+   "verificado_em": "2026-09-23",
+   "dominio": "www.to.gov.br",
+   "confianca": "alta",
+   "titulo": "Aviso de Suspensão - Governo do Tocantins",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 25223,
+     "titulo": "Secretaria da Saúde - SAUDE-TO",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.to.gov.br",
+     "tentado_em": "2026-09-23",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 2971,
+     "titulo": "Aviso de Suspensão - Governo do Tocantins",
+     "confianca": "alta",
+     "identidade_em": "titulo"
+    }
+   ]
+  }
+ }
+}

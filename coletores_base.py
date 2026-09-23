@@ -425,8 +425,15 @@ def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: 
               uf=None, municipio=None, ibge=None, nivel=None, n_resultados=None,
               fonte_suspensa_defeso: bool = False, hash_evidencia=None):
     """Acrescenta uma execução ao log v2. `decisao` no vocabulário fechado:
-    registro | pista | nada localizado | fonte suspensa (defeso) | erro."""
-    assert decisao.split(" ")[0] in ("registro", "pista", "nada", "fonte", "erro", "acesso", "sem_cobertura_qd", "coberto_sem_mencao", "com_excerto"), decisao   # "acesso recusado" (§10.1), decisões do §1.2
+    registro | pista | nada localizado | consultado sem achado | fonte suspensa (defeso) | erro.
+
+    §184 (23/09/2026): "consultado sem achado" existe porque "nada localizado" **não podia ser
+    reusado**. Aquele valor é da bateria municipal completa: `recalcular_mare.py` o lê para elevar o
+    nível de verificação do município, `verificar_consistencia.py` reprova se ele aparecer sem
+    `nivel="municipal_completo"`, e o assert abaixo o exige. Uma sonda de UF que consultou o portal
+    e não achou painel precisa registrar isso — o silêncio foi o pior defeito do §181 —, mas não pode
+    entrar pela porta da verificação municipal."""
+    assert decisao.split(" ")[0] in ("registro", "pista", "nada", "consultado", "fonte", "erro", "acesso", "sem_cobertura_qd", "coberto_sem_mencao", "com_excerto"), decisao   # "acesso recusado" (§10.1), decisões do §1.2, "consultado sem achado" (§184)
     if decisao.startswith("nada localizado"):
         assert nivel == "municipal_completo", "regra §2.1: 'nada localizado' exige bateria municipal completa"
     lg = ler("log_buscas.json")
