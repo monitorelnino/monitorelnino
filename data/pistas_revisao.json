@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
- "gerado_em": "2026-09-22",
- "total_pistas": 277,
- "total_municipios": 160,
+ "gerado_em": "2026-09-23",
+ "total_pistas": 281,
+ "total_municipios": 161,
  "por_nivel": {
   "A": 46,
-  "B": 179,
-  "C": 52
+  "B": 182,
+  "C": 53
  },
  "grupos": [
   {
@@ -2900,6 +2900,91 @@
    ]
   },
   {
+   "ibge": "4314902",
+   "municipio": "Porto Alegre",
+   "uf": "RS",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "0c4848ddc3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://gauchazh.clicrbs.com.br/porto-alegre/noticia/2026/04/porto-alegre-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino-no-segundo-semestre-deste-ano-cmo3jqfyp02fv017498040kw4.html",
+     "titulo": null,
+     "trecho": "Apr 17, 2026 ... Porto Alegre prepara plano de contingência para possíveis impactos do El Niño no segundo semestre deste ano. Apesar das previsões, consultor ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "1214c1f8a2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.correiodopovo.com.br/not%C3%ADcias/pol%C3%ADtica/prefeitura-de-porto-alegre-prepara-plano-de-contingencia-contra-as-cheias-1.1706117",
+     "titulo": null,
+     "trecho": "Apr 16, 2026 ... Prefeitura de Porto Alegre prepara plano de contingência contra as cheias. Com previsão de El Niño em 2026, Melo irá acelerar articulação por ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "72987b88b5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4314902/2025-10-07/fba7a235177e4cb8f6415a813fb689f048b2d77e.pdf",
+     "titulo": "Diário oficial de 2025-10-07",
+     "trecho": "reais e noventa e sete centavos). Para R$ 159,97 o período de a essas alterações acarretarão uma repercussão financeira no valor total de 31/10/2024 30/10/2025, (dez mil cento e vinte e dois reais e quatorze centavos). A contar de considerando oR$ 10.122,14 31/10/2023, disposto nas Cláusulas Segunda e Terceira, o valor total do Contrato passa a ser de (duzentos e trinta R$ 233.820,64 Órgão de divulgação do Município - Ano XXX - Edição 7619 - Terça-feira, 7 de outubro de 2025 http://www",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "22583b25d3",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/4314902/2025-10-01/769f10071e5b1facc71affd7dca1f64f05ecabca.pdf",
+     "titulo": "Diário oficial de 2025-10-01",
+     "trecho": "(cento e setenta e sete R$ 177.359,77 mil trezentos e cinquenta e nove reais e setenta e sete centavos) referente ao acréscimo qualitativo. O valor de (cento e quarenta e seis mil duzentos e quarenta e três reais) referente ao acréscimo quantitativo. OR$ 146.243,00 percentual de acréscimo acumulado é de % em relação ao valor inicial do Contrato atualizado, conforme itens 12,90 identificados na planilha de custos constante no Documento SEI nº 33212449. A contar da assinatura do presente Termo Aditivo",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4202909",
    "municipio": "Brusque",
    "uf": "SC",
@@ -3378,6 +3463,56 @@
      "titulo": null,
      "trecho": "Plano de contingência de Criciúma prepara mobilização em emergências. 17 de junho de 2026. Foto: Divulgação / Prefeitura de Criciúma. A Prefeitura de ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2929800",
+   "municipio": "Saúde",
+   "uf": "BA",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "bea041a44e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdXJSijlMz7/",
+     "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
+     "trecho": "6 days ago ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a31600aeb5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdXM3Qjga7q/",
+     "titulo": "EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...",
+     "trecho": "6 days ago ... ... Plano de Contingência para chuvas intensas, além da emissão de ... saúde relacionadas ao El Niño 2026-2027. O documento prevê ações ...",
+     "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -3870,56 +4005,6 @@
      "titulo": null,
      "trecho": "Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...",
      "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4314902",
-   "municipio": "Porto Alegre",
-   "uf": "RS",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "0c4848ddc3",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://gauchazh.clicrbs.com.br/porto-alegre/noticia/2026/04/porto-alegre-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino-no-segundo-semestre-deste-ano-cmo3jqfyp02fv017498040kw4.html",
-     "titulo": null,
-     "trecho": "Apr 17, 2026 ... Porto Alegre prepara plano de contingência para possíveis impactos do El Niño no segundo semestre deste ano. Apesar das previsões, consultor ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "1214c1f8a2",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.correiodopovo.com.br/not%C3%ADcias/pol%C3%ADtica/prefeitura-de-porto-alegre-prepara-plano-de-contingencia-contra-as-cheias-1.1706117",
-     "titulo": null,
-     "trecho": "Apr 16, 2026 ... Prefeitura de Porto Alegre prepara plano de contingência contra as cheias. Com previsão de El Niño em 2026, Melo irá acelerar articulação por ...",
-     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
