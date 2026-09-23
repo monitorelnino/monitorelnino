@@ -72,6 +72,13 @@ def checar_preservacao_na_cadencia() -> list:
         return ["a cadência chama preservar_evidencias.py mas não no modo --ler — sem a leitura, o "
                 "documento acima de 5 MB fica sem nenhuma cópia preservada, só com a tentativa de "
                 "Wayback registrada (ver §174)"]
+    if not any("--ocr" in l for l in linhas):
+        return ["a cadência chama preservar_evidencias.py mas não no modo --ocr — o PDF escaneado "
+                "acima de 5 MB continua sem prova de espécie alguma, que é a lacuna declarada do "
+                "§174 e o que o §177 fecha"]
+    if not any("tesseract-ocr-por" in l for l in texto.splitlines()):
+        return ["a cadência roda --ocr mas não instala tesseract-ocr-por — com o modelo em inglês o "
+                "OCR troca acento no português e a cópia legível sai pior do que precisa (§177)"]
     return []
 
 
@@ -115,6 +122,11 @@ def prova_preservada(item: dict) -> bool:
     # marcadores de página e zero caractere de conteúdo, que contaria como cópia preservada.
     if item.get("texto_arquivo") and (item.get("caracteres") or 0) >= MIN_CARACTERES_TEXTO:
         return True
+    # §177 (23/09/2026): o texto de OCR é cópia preservada e LEGÍVEL de PDF escaneado — é prova,
+    # com o mesmo piso de caracteres. Guardado em campo próprio (`ocr_*`) exatamente para não virar
+    # insumo de classificação: o ato que pontua tem de ser lido no documento (§156).
+    if item.get("ocr_arquivo") and (item.get("ocr_caracteres") or 0) >= MIN_CARACTERES_TEXTO:
+        return True
     wb = item.get("wayback")
     return isinstance(wb, str) and wb.startswith("http")
 
@@ -134,6 +146,11 @@ def autoteste_prova() -> list:
         ({"arquivo": None, "texto_arquivo": "evidencias/x.txt", "caracteres": 0}, False),
         ({"arquivo": None, "texto_arquivo": "evidencias/x.txt"}, False),
         ({"arquivo": None, "texto_arquivo": "evidencias/x.txt", "caracteres": 199}, False),
+        # §177: a cópia legível por OCR é prova, com o mesmo piso — vazia, não é
+        ({"arquivo": None, "wayback": "tentativa falhou (X)", "ocr_arquivo": "evidencias/x.ocr.txt",
+          "ocr_caracteres": 12345}, True),
+        ({"arquivo": None, "ocr_arquivo": "evidencias/x.ocr.txt", "ocr_caracteres": 199}, False),
+        ({"arquivo": None, "ocr_arquivo": "evidencias/x.ocr.txt"}, False),
     ]
     return [f"prova_preservada({c}) deveria ser {esperado}"
             for c, esperado in casos if prova_preservada(c) is not esperado]
@@ -154,7 +171,8 @@ def integridade_texto(itens: dict, raiz: pathlib.Path = RAIZ) -> list:
     # hash nenhum do texto, e quatro apontavam para um arquivo que não estava em disco — o campo foi
     # gravado em 12/09 e o `.txt` nunca entrou no commit da rodada. Arquivo prometido e ausente é
     # falha de integridade, com ou sem hash registrado: o índice afirma preservar o que não existe.
-    for campo, campo_hash in (("texto_arquivo", "texto_hash"), ("texto_integral", "texto_integral_hash")):
+    for campo, campo_hash in (("texto_arquivo", "texto_hash"), ("texto_integral", "texto_integral_hash"),
+                              ("ocr_arquivo", "ocr_hash")):   # §177
         for h, it in itens.items():
             ta, th = it.get(campo), it.get(campo_hash)
             if not ta:
@@ -164,6 +182,12 @@ def integridade_texto(itens: dict, raiz: pathlib.Path = RAIZ) -> list:
                 erros.append(f"{h[:12]}… {campo} ausente em disco ({ta})")
             elif th and hashlib.sha256(pth.read_bytes()).hexdigest() != th:
                 erros.append(f"{h[:12]}… {campo} não bate com {campo_hash} ({ta}) — regravado sem recalcular o hash?")
+    # §177: o texto de OCR não pode ocupar o lugar da camada de texto do documento. Se `ocr_arquivo`
+    # e `texto_arquivo` apontarem para o mesmo arquivo, a leitura de máquina (classificar_saude_no_plano)
+    # passaria a ler OCR como se fosse o documento — e erro de caractere viraria classificação.
+    for h, it in itens.items():
+        if it.get("ocr_arquivo") and it.get("ocr_arquivo") == it.get("texto_arquivo"):
+            erros.append(f"{h[:12]}… ocr_arquivo é o mesmo arquivo de texto_arquivo — OCR não substitui a camada de texto")
     return erros
 
 
@@ -188,6 +212,11 @@ def autoteste_integridade_texto() -> list:
             ({"texto_integral": "evidencias/a.txt", "texto_integral_hash": "0" * 64}, 1),
             ({"texto_integral": "evidencias/ausente.txt"}, 1),                        # prometido e ausente
             ({"texto_integral": "evidencias/a.txt"}, 0),                             # ainda sem hash: selagem pendente
+            # §177: cópia legível por OCR — mesma régua de integridade, e arquivo próprio
+            ({"ocr_arquivo": "evidencias/a.txt", "ocr_hash": certo}, 0),
+            ({"ocr_arquivo": "evidencias/a.txt", "ocr_hash": "0" * 64}, 1),
+            ({"ocr_arquivo": "evidencias/a.txt", "ocr_hash": certo,
+              "texto_arquivo": "evidencias/a.txt", "texto_hash": certo}, 1),           # OCR no lugar da camada de texto
         ]
         for i, (item, esperado) in enumerate(casos):
             n = len(integridade_texto({f"{i:064d}": item}, raiz))

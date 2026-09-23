@@ -9,6 +9,25 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §177 · OCR do PLANCON escaneado: a cópia legível que faltava, e a regra que vem com ela · 23/09/2026
+
+Classe **prova preservada**. Nenhum número do índice muda, e nenhuma leitura de máquina passa a usar OCR — o contrário: a separação entre "cópia preservada" e "insumo de julgamento" vira regra travada em portão.
+
+**A lacuna que isto fecha.** O §174 deixou quatro registros pontuáveis em `LACUNA_DECLARADA`, bloqueante a partir de 31/10/2026: Anchieta, Itaguaçu, São José do Calçado e Venda Nova do Imigrante, todos do ES. O PLANCON de cada um tem de 10 a 19 MB — acima do teto de cópia de 5 MB —, é **escaneado** (cada página é uma imagem), a extração de texto devolve **zero caractere** e o Wayback não tem snapshot. Não é prova fraca: é prova nenhuma.
+
+**O recurso.** `preservar_evidencias.py --ocr` rasteriza a 200 DPI com `pypdfium2` e passa cada página pelo Tesseract, gravando `evidencias/<sha256>.ocr.txt` — com marcador `=== página N (OCR) ===`, CPF redigido **antes** do hash e o hash registrado em `ocr_hash`, ao lado de `ocr_paginas`, `ocr_caracteres`, `ocr_em` e `ocr_motor`, que guarda a versão do Tesseract, o modelo e o DPI que produziram aquele texto. A fila é idempotente por construção: só entra quem foi lido e não tinha texto (`caracteres` abaixo do piso de 200), e sai ao ganhar OCR.
+
+**A regra que vem com o recurso, e é a parte que importa.** O texto de OCR é **cópia preservada e legível por gente — nunca insumo do classificador nem do juiz**. O ato que pontua no índice tem de ser lido no próprio documento (§156); OCR erra caractere, e erro de leitura não pode virar degrau publicado nem nota. A separação é **estrutural**, não recomendação: (1) o OCR mora em campo próprio e em arquivo próprio, nunca em `texto_arquivo`; (2) `classificar_saude_no_plano.py` passa a ler por `texto_para_leitura_automatica()`, que recusa `ocr_arquivo` e recusa até um `texto_arquivo` que aponte para `.ocr.txt`, com autoteste que reprova se OCR entrar por ali; (3) o portão 6 recusa item em que `ocr_arquivo` e `texto_arquivo` sejam o mesmo arquivo; (4) o juiz nunca leu campo de evidência — ele busca o documento na URL —, então continua fora por desenho. O motor do índice não lê nenhum dos dois. Registrado em `METODOLOGIA.md` §10.1 como peça 4 da leitura contínua.
+
+**Medido aqui, não prometido.** PLANCON de São José do Calçado: 13,5 MB baixados em 4 s, hash idêntico ao registrado; duas páginas rasterizadas em 2 s; OCR em 1,3 s e 1,6 s, devolvendo 223 e 375 caracteres — a primeira página traz "PREFEITURA MUNICIPAL DE SÃO JOSÉ DO CALÇADO · DEFESA CIVIL · PLANO DE CONTINGÊNCIA" e a segunda o coordenador da COMPDEC. **Com o modelo em inglês**, o único instalado nesta máquina: por isso o texto sai com acento trocado ("Administragao", "sAO JOSE DO CALCADO"). É exatamente a razão de a cadência instalar `tesseract-ocr-por`, e de o portão cobrar essa instalação.
+
+**Quem produz a cópia é a cadência, não esta sessão.** O passo novo roda depois da leitura (que é quem descobre que o PDF não tem texto), com teto de 30 min — as ~230 páginas dos quatro a ~2,5 s cada cabem com folga. Nenhum pacote Python novo: `pypdfium2` e `Pillow` já vinham com `pdfplumber`; passam a ser declarados e travados em `requirements.txt`, porque a versão do rasterizador decide o pixel e o pixel decide o texto que fica preservado. As quatro lacunas **continuam declaradas** até a primeira rodada com o modelo português — o portão avisa sozinho quando uma lacuna declarada foi resolvida, para a lista não apodrecer.
+
+**A trava, na mesma linha do §164 e do §174.** `checar_preservacao_na_cadencia()` passa a exigir, além de `preservar_evidencias.py` e do `--ler`, a chamada `--ocr` e a instalação do modelo português. Testado nas duas direções: com o passo trocado por `echo`, o portão fecha vermelho dizendo o que falta; restaurado, verde.
+
+**Teste.** Portão 6 verde com os autotestes novos (prova por OCR com piso de caracteres, integridade do `.ocr.txt`, OCR que não ocupa o lugar da camada de texto); autoteste do OCR sem rede e sem Tesseract, bloqueante em `portoes.yml` (31 portões de dado, 50 no total); autoteste da leitura automática de saúde com o caso do OCR; workflows válidos com teto em todo job; portão 12 em árvore limpa; `pip install -r requirements.txt` com os pins novos.
+
+
 ## §176 · O texto integral do diário oficial não guardava hash nenhum — e quatro itens prometiam um arquivo que não existia · 23/09/2026
 
 Classe **correção de segurança do dado**. Nenhum número do índice muda. Fecha a lacuna que o §175 deixou nomeada.

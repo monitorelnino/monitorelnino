@@ -155,3 +155,7 @@ jobs:
           # e quatro apontavam para um .txt que nunca entrou no commit da rodada. O autoteste trava as
           # duas regras: fila pelo índice (não só pelas pistas) e hash ausente selado, divergente acusado.
           python3 scripts/preservar_textos_integrais.py --autoteste
+          # §177 (23/09/2026): OCR do PDF escaneado. O autoteste roda sem rede e sem Tesseract, e trava
+          # as regras que dão sentido ao recurso: a fila só chama escaneado, o texto de OCR tem arquivo
+          # próprio (não sobrescreve a camada de texto), CPF redigido antes do hash, marcador e LF.
+          python3 preservar_evidencias.py --autoteste
