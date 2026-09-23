@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §169 · Procedência do painel do AM sem registro de LAI no repositório público · 23/09/2026
+
+**Regra que estava sendo violada.** `data/pistas_paineis.json` gravava, no repositório **público**, `"indicado por ouvidoria@defesacivil.am.gov.br em resposta a LAI, 22/09/2026"`. O `CLAUDE.md` é explícito: pedidos e respostas de LAI vivem no repositório privado da editoria, nunca aqui.
+
+**O que muda.** O campo continua existindo e continua dizendo quem indicou e quando — a procedência não se perde. Sai o que a regra protege: o registro de que houve LAI e o endereço da ouvidoria. O texto passa a apontar para onde o detalhe vive.
+
+**Por que não apagar o campo.** Procedência é o que separa uma URL achada por varredura de uma URL indicada pelo órgão, e essa diferença importa para quem audita o dado. Apagar resolveria a regra criando um buraco.
+
+**Limite desta correção, declarado.** Isto corrige a `main`; **não** apaga a string do histórico do git, que é público e onde ela permanece nos commits anteriores. Reescrever histórico de ramo público é ação destrutiva e não se faz sem decisão da editoria.
+
+---
+
 ## §168 · A rodada real do painel do AM: 62 de 62 municípios lidos, e a eliminação que faltava no caminho principal · 23/09/2026
 
 **A verificação que faltava.** As correções do §165 (etiqueta de interface do Power BI colada ao nome; rolagem que nunca acontecia) passavam no autoteste offline, mas não tinham sido postas contra o painel real. Rodada manual com `commitar: false`, que não escreve nada no repositório:
