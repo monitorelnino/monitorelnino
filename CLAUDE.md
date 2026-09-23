@@ -125,4 +125,7 @@ execuções apagadas sem aviso. Use `/merge-main`.
   diagnósticos) vive no repositório privado da editoria, nunca aqui.
 - O código será aberto: nenhuma API ou produto pago dependurado no código,
   nem atrás de chave configurável.
-- Não contornar `robots.txt` nem bloqueios de acesso de fontes.
+- `robots.txt` é pedido, não tranca (RFC 9309 §1.3; §185): o Monitor o lê, respeita o
+  `Crawl-delay` e acessa documento público mesmo onde ele pede que robôs não entrem — com o
+  cliente identificado e rastro em `data/robots_registro.json`. Nunca disfarçar o cliente.
+- Bloqueio de acesso real (`401`, `403`, `429`, `451`, captcha, login) se respeita, sempre.

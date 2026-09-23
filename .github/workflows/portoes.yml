@@ -145,6 +145,10 @@ jobs:
           # trava a ordem de prova — título > curadoria humana > corpo > palpite — mais a regra que
           # impede endereço que responde sem se identificar de virar domínio oficial.
           python3 descobrir_dominios.py --autoteste
+          # §185 (23/09/2026): a política de robots.txt decidida pela editoria — ler, respeitar o
+          # Crawl-delay, acessar documento público com cliente identificado e DEIXAR RASTRO. O
+          # autoteste roda sem rede e trava as quatro partes, inclusive o rastro do canal renderizado.
+          python3 scripts/testar_robots.py
           # §165 (23/09/2026): coletor do painel do AM. O autoteste é offline por construção
           # (rede, evidência, log e livro de fontes injetados) e confere a regra que dá sentido
           # ao coletor: ano no painel é `declarado`, nunca `documentado`.
