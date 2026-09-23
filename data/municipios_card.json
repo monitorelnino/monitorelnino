@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-23",
- "total": 2180,
+ "total": 2182,
  "com_registro": 267,
- "com_imprensa": 83,
+ "com_imprensa": 85,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -10986,6 +10986,21 @@
    ],
    "categoria": "nao_localizado"
   },
+  "4107900": {
+   "nome": "Floresta",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Super El Niño impõe riscos de incêndios florestais na Amazônia",
+     "url": "https://amazoniareal.com.br/super-el-nino-impoe-riscos-de-incendios-florestais-na-amazonia/",
+     "data": "23/09/2026",
+     "veiculo": "amazoniareal.com.br",
+     "nivel": "B"
+    }
+   ],
+   "categoria": "nao_localizado"
+  },
   "4108304": {
    "nome": "Foz do Iguaçu",
    "uf": "PR",
@@ -11492,6 +11507,21 @@
    "nome": "Santo Antônio do Sudoeste",
    "uf": "PR",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "4124806": {
+   "nome": "São João",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Enfrentamento ao El Niño é priorizado em São João da Barra - O Dia",
+     "url": "https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html",
+     "data": "23/09/2026",
+     "veiculo": "odia.ig.com.br",
+     "nivel": "B"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "4125506": {

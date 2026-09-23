@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 324 pendente(s) · 15 decidida(s) · A=52 B=213 C=59
+Gerado em 23/09/2026 · 328 pendente(s) · 15 decidida(s) · A=54 B=215 C=59
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -15,6 +15,20 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf
   - trecho: e na restauração da  normalidade social, articulando e facilitando as ações  de prevenção, preparação, resposta e recuperação no  Município de Serra. “  Leia-se: […] “ Art. 1º Fica instituído o Plano Municipal de Proteçã
   - juiz: Serra/ES já consta na base — não duplicar (revisão humana decide se é atualização)
+
+## Bituruna/PR — 1 pendente(s)
+- `8e36414ea8` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
+  - título: 1 PLANO MUNICIPAL DE EDUCAÇÃO BITURUNA - PR SUMÁRIO
+  - url: https://arquivo.bituruna.pr.gov.br/publicacoes/download/1715/plano-municipal-de-educao
+  - trecho: PLANO MUNICIPAL DE EDUCAÇÃO · 1 – INTRODUÇÃO .......................................................................................................................... 3
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+
+## Campina da Lagoa/PR — 1 pendente(s)
+- `5e453245c9` · nível **A** (6 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: PLANO MUNICIPAL DE SAÚDE DE CAMPINA DA LAGOA 2026-2029 2025
+  - url: https://www.campinadalagoa.pr.gov.br/documentos/legislacao/142510-planos-1-2026.pdf
+  - trecho: Isso aponta para a necessidade de reforçar o acompanhamento pré-natal de alto risco para ... Sinal de Alerta Localizado: Enquanto a 11ª Regional de Saúde de Campo Mourão como um todo manteve um · número de óbitos estável
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Campo Mourão/PR — 5 pendente(s)
 - `b24d320293` · nível **A** (6 pts) · busca_web · EX_ANTE · citação não extraída
@@ -989,6 +1003,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 12, 2026 ... ... Fazenda Rio Grande conta com mecanismos de preparação para situações climáticas extremas. A Defesa Civil municipal possui Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
 
+## Floresta/PR — 1 pendente(s)
+- `8fae3caa6a` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Super El Niño impõe riscos de incêndios florestais na Amazônia
+  - url: https://amazoniareal.com.br/super-el-nino-impoe-riscos-de-incendios-florestais-na-amazonia/
+  - trecho: Jul 23, 2026 ... “Mas precisamos dizer com clareza: o El Niño não coloca fogo na floresta. O fogo tem responsáveis. Ele começa com o desmatamento, a grilagem ...
+  - juiz: portão automático: fonte não oficial
+
 ## Guaraniaçu/PR — 3 pendente(s)
 - `79d149e325` · nível **B** (4 pts) · querido_diario · EX_ANTE · **Lei Municipal nº 134**, 31/03/2021
   - url: https://data.queridodiario.ok.org.br/4109302/2026-08-27/28ca56b28a30ff9eb2f05c8beaff802136710345.pdf
@@ -1137,6 +1158,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: DEFESA CIVIL DE ROLÂNDIA INFORMA O fenômeno El Niño pode ...
   - url: https://www.instagram.com/p/DdJSHHdRqae/
   - trecho: Sep 12, 2026 ... Photo by Prefeitura de Rolândia-PR on September 12, 2026. May be an ... Plano de Contingência, que, diante desse cenário, atuam ...
+  - juiz: portão automático: fonte não oficial
+
+## São João/PR — 1 pendente(s)
+- `f2fa11f62e` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Enfrentamento ao El Niño é priorizado em São João da Barra - O Dia
+  - url: https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html
+  - trecho: Jul 23, 2026 ... Enfrentamento ao El Niño é priorizado em São João ... Está definido que que cada secretaria operacional irá elaborar seu plano de contingência ...
   - juiz: portão automático: fonte não oficial
 
 ## Toledo/PR — 2 pendente(s)
