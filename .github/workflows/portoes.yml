@@ -133,6 +133,14 @@ jobs:
           python3 seguir_pistas.py --autoteste
           # §164 (22/09/2026): sonda de camada (painéis) — autoteste bloqueante desde a entrada.
           python3 sondar_paineis.py --autoteste
+          # §165 (23/09/2026): coletor do painel do AM. O autoteste é offline por construção
+          # (rede, evidência, log e livro de fontes injetados) e confere a regra que dá sentido
+          # ao coletor: ano no painel é `declarado`, nunca `documentado`.
+          python3 coletar_painel_am.py --autoteste
+          # §166 (23/09/2026): cobertura declarada por canal. Estrutura inerte (nenhuma página
+          # a lê ainda); o autoteste trava a regra que lhe dá sentido: erro de acesso é
+          # tentativa, nunca verificação — senão a nota de rodapé repetiria o erro que corrige.
+          python3 gerar_cobertura_declarada.py --autoteste
           # §163 (22/09/2026): o self-test do juiz passa a ser bloqueante. O cenário 6 confere que a
           # cadeia de derivados que ele regenera é a MESMA de scripts/verificar_derivados.sh —
           # divergir foi o que deixou o portão 12 vermelho na main.
