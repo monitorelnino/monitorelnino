@@ -212,6 +212,21 @@ Classe **correção de higiene do repositório**; nenhum dado, página, método 
 
 **Conferência.** Nenhum outro arquivo versionado carrega marcador de conflito; as sequências de `<` e `>` em `evidencias/*.txt` são separadores do documento-fonte copiado, fora da selagem por definição. Nenhum portão lê o corpo do `CHANGELOG.md` (as duas citações em `scripts/verificar_runtime.js` e `scripts/verificar_publicado.js` são comentário e caminho de arquivo), e a mudança não toca `data/`, `*.py`, workflows nem dependências — o bloco "dado e coleta" de `portoes.yml` não é acionado.
 
+## §160 · Cadência do robô: quatro rodadas por dia, a cada 6 horas · 22/09/2026
+
+Classe **encanamento operacional**; nenhum dado, número ou página muda. Decisão editorial de 22/09/2026, escrita naquele dia e aplicada agora — o número §160 estava reservado para ela.
+
+**O que muda.** As duas rodadas diárias (09h e 21h UTC, decididas na v2.2.4 E4 e em 03/09/2026) passam a ser **quatro, a cada 6 horas**: 01h, 07h, 13h e 19h UTC — 22h, 04h, 10h e 16h de Brasília. Os quatro horários são deslocados da rodada semanal de domingo (03h UTC) para não caírem no mesmo minuto dela; a trava de concorrência do workflow já faz a segunda esperar a primeira, e evitar a colisão poupa a fila.
+
+**Por quê.** Acelerar a varredura integral dos 5.571 municípios enquanto `INTENSIVO_DE`/`INTENSIVO_ATE` estiverem ativas. O motivo continua de pé quando esta entrada é aplicada: o contador da varredura mede **2.741 municípios consultados** (119 com menção, 179 lidos sem menção, 2.440 sem diário indexado, 3 indefinidos) — pouco mais da metade. A cadência é **mantida depois da semana intensiva**, até nova instrução da editoria.
+
+**O que não muda.** A regra de cadência de `atualizar.py`: fora da semana intensiva, a execução que não cai no dia de publicação **encerra sem comitar**. O compromisso público com o leitor continua sendo o domingo (`obrigado.html` e `pesquisadores.html` prometem o mesmo dia, e o portão de cadência confere). Mais rodadas significam mais consulta e mais preservação de evidência, não mais publicação.
+
+**Interação com os tetos de tempo do §172.** Cada rodada tem teto de 180 min por job e tetos por etapa; com 6 horas de intervalo, nem a rodada mais longa (75–105 min, mais o OCR do §177) alcança a seguinte.
+
+**Teste.** Workflows válidos com teto em todo job; portão de cadência verde (dia de publicação medido no fuso da redação, cron semanal no dia certo em Brasília, promessa pública igual nas duas páginas); portão 12 em árvore limpa. `docs/PROTOCOLO_ATUALIZACAO.md` passa a descrever a cadência nova — era o único lugar que ainda dizia "duas rodadas por dia".
+
+
 ## §159 · Da notícia ao documento: cada pista de imprensa é seguida até candidatos a ato oficial, que passam pelo mesmo portão e juiz · 22/09/2026
 
 Classe **método + código** (`seguir_pistas.py`). Decisão editorial de 22/09/2026: notícia nunca pontua; é pista de que o plano existe — a máquina deve ir atrás do ato.

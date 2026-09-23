@@ -9,8 +9,19 @@ on:
                          # no fuso America/Sao_Paulo. A rodada (75-105 min) termina por volta de
                          # 01h20 de Brasilia, ainda no domingo -- nao cruza a meia-noite.
                          # 20/09/2026 (editoria): segundas 09h UTC -> sabado 22h40 -> domingo 0h.
-    - cron: "0 9 * * *"  # v2.2.4 (E4): execucao DIARIA (06h Brasília); atualizar.py encerra sem comitar fora da semana intensiva (INTENSIVO_ATE) se nao for o dia de publicacao
-    - cron: "0 21 * * *"  # 03/09/2026: 2a rodada DIARIA (18h Brasília), so para acelerar a varredura integral (03-10/09); mesma regra de cadencia
+    - cron: "0 1 * * *"   # 22/09/2026 (decisao editorial): cadencia de 4x/dia, a cada 6h. Substitui as duas
+                          # rodadas diarias de 09h e 21h UTC (v2.2.4 E4 e 03/09/2026). Motivo: acelerar a
+                          # varredura integral dos 5.571 municipios enquanto INTENSIVO_DE/INTENSIVO_ATE
+                          # estiverem ativas -- e MANTIDA depois disso como cadencia permanente, ate nova
+                          # instrucao da editoria.
+                          # Os quatro horarios sao deslocados da rodada semanal de domingo ("0 3 * * 0")
+                          # para nao colidir no mesmo minuto: 1, 7, 13 e 19 UTC contra 3 UTC.
+                          # Regra de cadencia inalterada: atualizar.py encerra sem comitar fora da semana
+                          # intensiva (INTENSIVO_ATE) se nao for o dia de publicacao.
+                          # 01h UTC = 22h de Brasilia do dia anterior
+    - cron: "0 7 * * *"   # 04h de Brasilia
+    - cron: "0 13 * * *"  # 10h de Brasilia
+    - cron: "0 19 * * *"  # 16h de Brasilia
   workflow_dispatch:       # execução manual pelo botão "Run workflow"
     inputs:
       ensaio:
