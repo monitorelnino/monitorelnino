@@ -15550,6 +15550,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "23/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -15597,6 +15603,134 @@
     "juiz": {
      "decisao": "FILA_HUMANA",
      "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "23/09/2026",
+    "candidatos": 2,
+    "pistas_novas": 2,
+    "falhas": []
+   }
+  },
+  {
+   "municipio": "Mercedes",
+   "uf": "PR",
+   "ibge": "4115853",
+   "origem": "busca_web",
+   "data": "23/09/2026",
+   "url": "https://www.datoposta.com/mercedes-activa-el-comite-de-emergencia-frente-a-el-nino/",
+   "trecho": "Con el objetivo de anticiparse ... formalizó la medida a través del Decreto N.º 1874/2026, que declara la Emergencia Climatológica Preventiva hasta el próximo 31 de diciembre....",
+   "titulo": "MERCEDES ACTIVA EL COMITE DE EMERGENCIA FRENTE A \"EL NIÑO\" - Dato ...",
+   "registrado_em": "2026-09-23",
+   "triagem": "indefinido",
+   "autoridade": "executivo",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "e6a4dbbe87",
+   "nivel_confianca": "B",
+   "pontos_confianca": 5,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_no_titulo",
+    "ato_formal",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": "Decreto N.º 187",
+     "data_ato": "2026"
+    },
+    "numero": "Decreto N.º 187",
+    "data_ato": "2026",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "Decreto N.º 1874/2026, que declara la Emergencia Climatológica Preventiva hasta el próximo 31 de diciembre. La iniciativa, impulsada bajo la coordinación del Comité Operativo de Emergencia (COE), reunió a más de medio centenar de asistentes en un encuentro encabezado por el intendente Juan Ignacio Ustarroz. La convocatoria buscó articular el trabajo en red entre el Estado y la comunidad para dar cuenta de las acciones realizadas y planificadas de cara a un escenario que los especialistas califican como complejo para la provincia de Buenos Aires y el partido. Prevención y articulación comunitar",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Floresta",
+   "uf": "PR",
+   "ibge": "4107900",
+   "url": "https://www.gov.br/saude/pt-br/composicao/svsa/saude-ambiental/vigiar/monitoramento-de-incendios-florestais/2026/informe-monitoramento-de-incendios-florestais-se-27.pdf",
+   "trecho": "Monitoramento de Incêndios Florestais para Vigilância em Saúde",
+   "titulo": "Monitoramento de Incêndios Florestais para Vigilância em Saúde",
+   "data": "23/09/2026",
+   "origem": "seguimento_link_noticia",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "pista_origem": "8fae3caa6a",
+   "id": "dba3a689b5",
+   "nivel_confianca": "B",
+   "pontos_confianca": 5,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_titulo",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
+  },
+  {
+   "municipio": "Floresta",
+   "uf": "PR",
+   "ibge": "4107900",
+   "url": "https://sepi.ac.gov.br/governo-do-acre-intensifica-acoes-para-reduzir-impactos-do-super-el-nino-em-terras-indigenas-do-estado/",
+   "trecho": "um plano de contingência para os territórios indígenas",
+   "titulo": "um plano de contingência para os territórios indígenas",
+   "data": "23/09/2026",
+   "origem": "seguimento_link_noticia",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "pista_origem": "8fae3caa6a",
+   "id": "37a9499afc",
+   "nivel_confianca": "C",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_titulo"
+   ],
+   "alertas": [
+    "uf_divergente_na_url"
+   ],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": " A Secretaria Extraordinária dos Povos Indígenas (Sepi), em parceria com a Defesa Civil estadual, órgãos de saúde e lideranças indígenas, elaborou um plano de contingência que reúne medidas de monitoramento, logística, segurança alimentar e abastecimento de água para atender as aldeias que possam ser afetadas pela seca. Povos indígenas são muito afetados por eventos climáticos extremos. Foto: Alexandre Cruz-Noronha/Sema O El Niño é um fenômeno climático caracterizado pelo aquecimento anormal das águas do Oceano Pacífico Equatorial, alterando os padrões de circulação atmosférica e influenciando",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
    }

@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-23",
- "total": 2182,
+ "total": 2183,
  "com_registro": 267,
- "com_imprensa": 85,
+ "com_imprensa": 86,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -11229,6 +11229,21 @@
    "nome": "Medianeira",
    "uf": "PR",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "4115853": {
+   "nome": "Mercedes",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MERCEDES ACTIVA EL COMITE DE EMERGENCIA FRENTE A \"EL NIÑO\" - Dato ...",
+     "url": "https://www.datoposta.com/mercedes-activa-el-comite-de-emergencia-frente-a-el-nino/",
+     "data": "23/09/2026",
+     "veiculo": "datoposta.com",
+     "nivel": "B"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "4116208": {
