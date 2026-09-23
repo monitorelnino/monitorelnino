@@ -82,6 +82,35 @@ def _norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
 
 
+# Rótulos que o Power BI COLA no texto acessível da célula quando a coluna tem formatação
+# condicional. Achado na rodada renderizada de 23/09/2026: o painel devolveu "Atalaia do
+# Norte Formatação Condicional Adicional" — nome de município com uma etiqueta de interface
+# no fim. As 20 linhas lidas falharam TODAS o casamento com o IBGE por causa disso, e sem
+# esta limpeza virariam 20 lacunas falsas: o dado estava lá, quem não leu foi o coletor.
+#
+# A lista é FECHADA de propósito. Uma heurística de corte ("tire as três últimas palavras")
+# mutilaria nome legítimo — São Paulo de Olivença tem quatro, Santo Antônio do Içá tem
+# quatro. Rótulo novo aparecendo é preferível como lacuna declarada a nome recortado errado.
+ROTULOS_DE_INTERFACE = (
+    "Formatação Condicional Adicional",
+    "Additional Conditional Formatting",
+)
+
+
+def limpar_rotulo_powerbi(texto: str) -> str:
+    """Remove do FIM do texto os rótulos de interface declarados acima. Só no fim, só os
+    declarados, e comparando sem acento nem caixa — o miolo do nome nunca é tocado."""
+    s = (texto or "").strip()
+    mudou = True
+    while mudou:
+        mudou = False
+        for rotulo in ROTULOS_DE_INTERFACE:
+            if _norm(s).endswith(_norm(rotulo)) and _norm(s) != _norm(rotulo):
+                s = " ".join(s.split()[:-len(rotulo.split())]).strip()
+                mudou = True
+    return s
+
+
 def ler_ato(texto: str):
     """Extrai {tipo, numero, data} do texto do PRÓPRIO documento. None se não achar —
     nunca chuta. A data volta em ISO; dia/mês inválidos devolvem None (não silenciam)."""
@@ -152,8 +181,12 @@ def linha_para_registro(linha: dict) -> dict:
         ano = int(re.sub(r"\D", "", str(ano))) if ano else None
     except ValueError:
         ano = None
-    return {"municipio_no_painel": pega("municipio", "município"),
-            "calha": pega("calha"),
+    # Célula ausente continua None depois da limpeza: "" não é a mesma coisa que ausência.
+    def limpo(v):
+        return limpar_rotulo_powerbi(v) or None if v else None
+
+    return {"municipio_no_painel": limpo(pega("municipio", "município")),
+            "calha": limpo(pega("calha")),
             "ano_do_plano": ano,
             "url_do_link": linha.get("url_do_link"),
             "como_obtido": linha.get("como_obtido"),
@@ -165,7 +198,7 @@ def casar_ibge(nome: str, por_nome: dict):
     declarada, nunca palpite (um município errado contamina o índice de um terceiro)."""
     if not nome:
         return None
-    alvo = _norm(nome)
+    alvo = _norm(limpar_rotulo_powerbi(nome))
     for (n, uf), cod in por_nome.items():
         if uf == "AM" and _norm(n) == alvo:
             return cod
@@ -330,6 +363,34 @@ def coletar(url: str, de_arquivo=None, limite=None, efeitos: "Efeitos | None" = 
     return {"itens": itens, "resumo": resumo}
 
 
+N_MUNICIPIOS_AM = 62
+
+
+def leitura_confiavel(saida: dict) -> tuple:
+    """A leitura merece ir para a fila? Devolve (ok, motivo).
+
+    ACHADO DA RODADA 1 (23/09/2026). A primeira rodada renderizada de verdade leu 20 linhas
+    em vez de 62 e NENHUMA casou com a referência IBGE — o renderizador havia pegado a grade
+    errada da página. Mesmo assim o coletor escreveu as 20 na fila, que foi de 62 para 82
+    itens. A trava de promoção segurou o banco, mas a fila de triagem humana foi poluída com
+    lixo que parecia dado.
+
+    Daí esta porta: uma leitura em que quase nada casa com o IBGE não é leitura parcial, é
+    leitura ERRADA, e leitura errada vira lacuna declarada — nunca item de fila. Duas regras,
+    ambas sobre o mesmo princípio de que ausência de leitura não é ausência de plano."""
+    itens = saida.get("itens") or []
+    if not itens:
+        return False, "nenhuma linha lida"
+    sem_ibge = sum(1 for i in itens if not i.get("ibge"))
+    if sem_ibge > len(itens) // 2:
+        return False, (f"{sem_ibge} de {len(itens)} linhas sem código IBGE — a grade lida "
+                       "provavelmente não é a tabela dos municípios")
+    if len(itens) < N_MUNICIPIOS_AM // 2:
+        return False, (f"apenas {len(itens)} de {N_MUNICIPIOS_AM} municípios lidos — "
+                       "leitura parcial demais para entrar na fila")
+    return True, ""
+
+
 def gravar_fila(saida: dict, url: str) -> dict:
     fila = ler(FILA, {"_governanca": (
         "Leitura do painel Power BI da Defesa Civil do AM (coletar_painel_am.py, §165). "
@@ -483,6 +544,41 @@ def autoteste() -> int:
                 and eh_pdf(b"%PDF-1.7 ...", "https://x/sem-extensao") is True
                 and ler_ato(texto_do_documento(DOC_COM_ATO, "https://x/plano.pdf")) is not None)
 
+    # As 20 linhas que a rodada renderizada de 23/09/2026 de fato devolveu, com o rótulo de
+    # interface colado no fim. Na rodada, TODAS falharam o casamento com o IBGE.
+    LINHAS_REAIS_23_09 = [
+        "Atalaia do Norte", "Benjamin Constant", "Tabatinga", "São Paulo de Olivença",
+        "Amaturá", "Santo Antônio do Içá", "Tonantins", "Jutaí", "Fonte Boa", "Japurá",
+        "Maraã", "Uarini", "Alvarães", "Tefé", "Coari", "Codajás", "Anori", "Anamã",
+        "Caapiranga", "Manacapuru",
+    ]
+
+    def t_limpa_rotulo_de_interface():
+        return limpar_rotulo_powerbi(
+            "Atalaia do Norte Formatação Condicional Adicional") == "Atalaia do Norte"
+
+    def t_limpeza_nao_mutila_nome_longo():
+        # São Paulo de Olivença tem quatro palavras; um corte por contagem cega o destruiria.
+        return (limpar_rotulo_powerbi("São Paulo de Olivença Formatação Condicional Adicional")
+                == "São Paulo de Olivença"
+                and limpar_rotulo_powerbi("Santo Antônio do Içá") == "Santo Antônio do Içá")
+
+    def t_rotulo_sozinho_nao_vira_nome_vazio():
+        # Célula que só tem a etiqueta não vira "" (que casaria com qualquer coisa): fica
+        # como está e falha o casamento, isto é, vira lacuna declarada.
+        return limpar_rotulo_powerbi("Formatação Condicional Adicional") != ""
+
+    def t_regressao_20_linhas_reais_casam():
+        """As 20 linhas da rodada real casam com o IBGE depois da limpeza. Este é o teste
+        que teria evitado o dia: a grade estava certa, o dado estava lá, e o coletor
+        devolveu 20 lacunas por causa de uma etiqueta de interface."""
+        por_cod, por_nome = referencia_ibge()
+        for nome in LINHAS_REAIS_23_09:
+            bruto = f"{nome} Formatação Condicional Adicional"
+            if not casar_ibge(bruto, por_nome):
+                return False
+        return True
+
     def t_casa_ibge_com_acento_e_caixa():
         _, por_nome = referencia_ibge()
         return (casar_ibge("SAO GABRIEL DA CACHOEIRA", por_nome)
@@ -595,6 +691,25 @@ def autoteste() -> int:
         semear_da_sonda(efeitos=_inertes())
         return all((RAIZ / "data" / n).read_bytes() == b for n, b in antes.items())
 
+    def t_leitura_errada_nao_entra_na_fila():
+        """Regressão da rodada 1: 20 linhas, nenhuma casando com o IBGE. Isso é grade errada,
+        não leitura parcial — e grade errada não polui a fila de triagem humana."""
+        s = {"itens": [{"ibge": None, "municipio_no_painel": f"lixo {i}"} for i in range(20)],
+             "resumo": {}}
+        ok, motivo = leitura_confiavel(s)
+        return ok is False and "IBGE" in motivo
+
+    def t_leitura_parcial_demais_nao_entra():
+        s = {"itens": [{"ibge": "1300029", "municipio_no_painel": f"m{i}"} for i in range(10)],
+             "resumo": {}}
+        ok, motivo = leitura_confiavel(s)
+        return ok is False and "parcial" in motivo
+
+    def t_leitura_boa_entra():
+        s = {"itens": [{"ibge": "1300029", "municipio_no_painel": f"m{i}"} for i in range(62)],
+             "resumo": {}}
+        return leitura_confiavel(s) == (True, "")
+
     def t_trava_estrutural():
         fonte = (RAIZ / "coletar_painel_am.py").read_text(encoding="utf-8")
         for proibido in ["estados.json", "saude_uf.json", "municipios.json",
@@ -612,6 +727,10 @@ def autoteste() -> int:
         "data impossível vira None (não silencia)": t_data_impossivel_vira_none,
         "PDF ilegível devolve vazio (vira lacuna, não ausência)": t_pdf_ilegivel_nao_vira_ausencia_de_ato,
         "HTML servido em URL .pdf é lido como HTML": t_html_servido_em_url_pdf,
+        "limpa rótulo de interface do Power BI": t_limpa_rotulo_de_interface,
+        "limpeza não mutila nome longo (São Paulo de Olivença)": t_limpeza_nao_mutila_nome_longo,
+        "rótulo sozinho não vira nome vazio": t_rotulo_sozinho_nao_vira_nome_vazio,
+        "regressão: as 20 linhas reais de 23/09 casam com o IBGE": t_regressao_20_linhas_reais_casam,
         "casa nome do painel com IBGE (acento/caixa)": t_casa_ibge_com_acento_e_caixa,
         "nome desconhecido não casa (vira lacuna)": t_nome_desconhecido_nao_casa,
         "normaliza linha bruta do renderizador": t_linha_para_registro,
@@ -628,6 +747,9 @@ def autoteste() -> int:
         "Careiro Castanho casa por eliminação, e fica marcado": t_careiro_casa_por_eliminacao_e_fica_marcado,
         "eliminação não dispara com dois sem par (seria chute)": t_eliminacao_nao_dispara_com_dois_sem_par,
         "semeadura é offline e não escreve em data/": t_semeadura_e_offline,
+        "leitura com grade errada não entra na fila": t_leitura_errada_nao_entra_na_fila,
+        "leitura parcial demais não entra na fila": t_leitura_parcial_demais_nao_entra,
+        "leitura completa entra na fila": t_leitura_boa_entra,
         "trava estrutural: não escreve no banco": t_trava_estrutural,
     })
 
@@ -661,9 +783,14 @@ def main() -> int:
         saida = semear_da_sonda()
     else:
         saida = coletar(url, de_arquivo=de_arquivo, limite=limite)
-    if not saida["itens"]:
-        print("Nenhuma linha lida — lacuna declarada no log. Nada foi escrito na fila.")
-        print(f"  motivo: {saida['resumo'].get('erro')}")
+    ok, motivo = leitura_confiavel(saida)
+    if not ok:
+        registrar_lacuna("leitura do painel do AM", motivo, "painel AM", 1,
+                         strings=[url], uf="AM")
+        print(f"Leitura recusada — nada foi escrito na fila.\n  motivo: {motivo}")
+        if saida["resumo"].get("erro"):
+            print(f"  erro do renderizador: {saida['resumo']['erro']}")
+        print("  o artefato da rodada traz o HTML renderizado para conferir a grade.")
         return 1
     fila = gravar_fila(saida, url)
     r = saida["resumo"]

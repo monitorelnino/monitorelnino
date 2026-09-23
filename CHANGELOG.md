@@ -9,6 +9,59 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §167 · Automações do projeto: os portões passam a ter fonte única, e as regras viram portas · 23/09/2026
+
+Classe **encanamento**; nenhum dado, número ou página muda. Lote saído de falhas desta mesma sessão, não de catálogo.
+
+**O achado que motiva tudo: havia três listas de portões, e nenhuma estava certa.** O `CLAUDE.md` listava 19 comandos, o `PROTOCOLO §3.3` numerava 19 **outros**, e o `portoes.yml` — o único que reprova de verdade — roda **47**. A divergência era maior do que qualquer um dos documentos sugeria. Rodar um subconjunto coerente com uma das listas custou um ciclo de CI hoje: `verificar_seguranca.js` ficou de fora e reprovou lá por uma Action sem SHA fixado.
+
+**A correção não é escrever a lista uma quarta vez — é parar de escrevê-la.** `scripts/portoes_locais.py` deriva do workflow e roda o que ele roda, na ordem dele; portão novo no CI passa a valer localmente sem ninguém copiar. Saída de uma linha por portão, com o vermelho mostrando tudo e parando ali: a suíte em modo verboso são centenas de linhas de `✓` que não informam nada e custam contexto caro.
+
+**Quatro hooks, cada um nascido de um erro real.** `bloquear_segredos` (chaves e credenciais, por `Read` **e** por `Bash`, porque ler por shell contornaria o bloqueio de `Read`); `bloquear_leitura_pesada` (`Read` acima de 1 MB em `data/`, `dados-abertos/` e `evidencias/` — os dois maiores somam 26 MB e um `Read` estoura a sessão sozinho); `bloquear_derivados` (a regra do CLAUDE.md vira porta); `autoteste_do_coletor` (roda o autoteste do script recém-editado — nasce do achado do §165, em que um autoteste sujava `data/` a cada execução do portão).
+
+**Correção de premissa sobre o token.** Este repositório **não tem arquivo de token**: os segredos da operação são GitHub Actions secrets, fora da árvore. Proteger um arquivo inexistente daria falsa segurança, então o hook mira o que existe.
+
+**O hook mordeu quem o escreveu.** Ao comitar este lote, `bloquear_segredos` recusou o próprio commit que o introduzia — a mensagem citava um caminho protegido ao explicar a regra, e ele leu isso como operando. Falso positivo real; corrigido para que corpos de heredoc e valores de `-m` sejam tratados como texto, não operando. Nove casos de teste nas duas direções. Um controle que atrapalha sem proteger acaba desligado, que é o pior desfecho possível.
+
+**Também entram** cinco skills (`/portoes`, `/p12`, `/merge-main`, `/e-da-main`, `/lote`) e quatro subagentes (`portoes-runner`, que mantém a saída verde fora do contexto principal; `diagnosticador-de-ci`; `revisor-de-trava`; `auditor-de-lacuna`). O `CLAUDE.md` deixa de listar portões e ganha a tabela dos arquivos que nunca entram em contexto e a regra do merge de log append-only.
+
+**Teste.** Os 47 portões verdes, rodados pelo próprio executor novo, com árvore limpa. Nenhum MCP novo, nada pago, nenhum segredo tocado.
+
+## §166 · Cobertura declarada por UF e por canal: estrutura pronta, texto público com a editoria · 23/09/2026
+
+Classe **encanamento**; nenhuma página lê o arquivo ainda.
+
+**O problema.** O site afirma "não localizamos até o corte" sem dizer **onde** se procurou. O caso do painel do AM (§165) mostrou que a frase valia menos do que parecia. Afirmação de ausência sem escopo declarado é afirmação que o leitor não pode auditar.
+
+**Feito.** `gerar_cobertura_declarada.py` **deriva** de `data/log_buscas.json` quais canais foram verificados em cada UF e quando — sem criar um segundo lugar onde a verdade mora. Regra central, travada em teste: **erro de acesso é tentativa, nunca verificação**; senão a nota de rodapé repetiria, com mais detalhe, o erro que ela corrige. Canal nunca visto aparece como não verificado em vez de sumir do relatório.
+
+**O ponto cego, quantificado.** Sobre 24.610 execuções reais: **nenhuma UF passa de 3 dos 7 canais**, e `painel`, `portal_transparencia` e `lai` estão verificados em **zero** UFs.
+
+**Parado antes de publicar, como pede a transferência.** `nota_publica` nasce `null` de propósito: a redação da nota na ficha de cada estado é decisão da editoria. O canal `lai` existe no esquema mas guarda só data e status — jamais texto ou registro de pedido.
+
+## §165 · Painel do AM: o coletor, os 62 municípios e a distinção entre declarado e documentado · 23/09/2026
+
+Classe **código + dado de fila**; **nenhuma nota do MARÉ muda** — conferido antes e depois, 0 UFs com diferença em `indice.json`.
+
+**O caso.** Em 22/09 a Ouvidoria da Defesa Civil do AM respondeu a um pedido de LAI sem enviar a lista: indicou um painel Power BI, com os 62 municípios, ano do plano e link do documento. Público, provavelmente antigo, nunca alcançado por nenhuma rodada — a tabela é montada em JavaScript depois do carregamento.
+
+**Feito.** `scripts/renderizar_painel_am.js` renderiza e extrai a grade em bruto; `coletar_painel_am.py` casa nome com código IBGE, baixa o documento de cada link, preserva a evidência e lê **do próprio documento** o número e a data do ato. A rodada renderizada mora em workflow manual, porque exige navegador e saída de rede que a sessão de desenvolvimento pode não ter.
+
+**A regra que dá sentido ao coletor.** A tabela do painel é **declaração do estado**: traz o ano, não o ato. Camada `declarado`. Só vira `documentado` o município cujo link abriu e cujo ato teve número e data lidos do documento. **Ano 2026 não prova antecipação** — a régua separa antes e depois de 29/06/2026 pela data do **ato**, e há teste que fixa isso.
+
+**Incorporação.** 62 municípios do AM na fila a partir da leitura humana de 22/09: 51 declarados, 11 sem plano, **0 documentados** — zero é o ponto, não falha, porque a leitura humana não capturou os links. Os 62 sobem de nível de verificação `nacional` para `estadual` sem mover nota nenhuma.
+
+**Casamento por eliminação.** O painel escreve "Careiro Castanho", nome popular; o IBGE registra "Careiro". Existe também "Careiro da Várzea", município distinto — por isso um apelido não podia virar alias solto: errar aqui move a nota de um terceiro. A regra só dispara quando sobra **um** nome sem par de cada lado; com dois ou mais, todos seguem lacuna declarada.
+
+**Achado da primeira rodada real, e a correção do diagnóstico.** O render leu 20 linhas de 62 e **nenhuma** casou com o IBGE. A primeira leitura disso foi que o extrator pegava a grade errada — o Power BI desenha vários visuais, e o código fazia `querySelector`. O log da rodada desmente: a grade escolhida era a certa (`Seleção de Linha · Índice · Calha · Município · Plano · Ano do Plano`, `aria-rowcount=63`). Eram **dois defeitos independentes**, e nenhum deles era esse.
+
+1. **Etiqueta de interface colada ao nome.** O painel devolveu `Atalaia do Norte Formatação Condicional Adicional` — o Power BI cola o rótulo do recurso de formatação no texto acessível da célula. As 20 linhas falharam o casamento por isso: o dado estava lá, quem não leu foi o coletor. `limpar_rotulo_powerbi` recorta a etiqueta **só do fim** e **só da lista declarada**: um corte por heurística mutilaria São Paulo de Olivença e Santo Antônio do Içá, que têm quatro palavras. Rótulo novo que aparecer vira lacuna declarada, não nome recortado errado. As 20 linhas reais viraram caso de regressão.
+2. **A rolagem nunca aconteceu.** `page.mouse.wheel` era chamado sem mover o cursor, isto é, em (0,0) — fora da grade. O Power BI só rola o visual sob o ponteiro, então a roda caía no vazio e a leitura parava nas 20 primeiras linhas. O aviso de "leitura parcial" saiu certo e a causa era outra. Agora são três estratégias (`scrollTop` no contêiner que de fato rola, roda **com o ponteiro sobre a grade**, evento sintético), e a que funcionou fica no diagnóstico — rolagem que parar de funcionar precisa ser visível. De quebra, `aria-rowcount` conta o cabeçalho (63 para 62 municípios), e a parada por contagem só dispara descontando-o.
+
+**O que resistiu ao diagnóstico errado.** A porta de qualidade do coletor: leitura em que quase nada casa com o IBGE, ou parcial demais, vira lacuna declarada e nunca item de fila. Sem ela, as 20 linhas tinham ido para a triagem humana parecendo dado — foi exatamente o que a rodada de 23/09 produziu (fila de 82 itens, 20 sem código IBGE) antes da porta existir. A escolha de grade por pontuação fica como endurecimento: não era a causa, mas o `querySelector` era frágil de verdade.
+
+**Ainda em aberto.** Os documentos do painel responderam `Connection reset by peer` ao runner do GitHub em todas as tentativas — nenhum ato foi lido, e por isso a rodada não produziu um único `documentado`. Isso é lacuna declarada, não ausência de plano: não sabemos se o portal bloqueia o runner ou se estava fora do ar.
+
 ## §164 · A cadência passa a preservar a evidência sozinha — e o portão confere que ela continua fazendo isso · 22/09/2026
 
 Classe **encanamento**; nenhum dado, número ou página muda. Fecha a pendência declarada no §162.
