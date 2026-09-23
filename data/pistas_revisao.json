@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-23",
- "total_pistas": 347,
- "total_municipios": 179,
+ "total_pistas": 350,
+ "total_municipios": 181,
  "por_nivel": {
-  "A": 56,
-  "B": 220,
+  "A": 58,
+  "B": 221,
   "C": 71
  },
  "grupos": [
@@ -1701,6 +1701,58 @@
      "titulo": null,
      "trecho": "na Avenida Francisco de \nAssis Carneiro da Silva, número 205 – Caxias.\n\nPAUTA:\n\n1 – Apreciação e aprovação da Programação Anual de Saúde – \nPAS 2027;\n\n2 – Apreciação e aprovação do Plano Municipal de \nContingência de desastres 2026-2028 e Plano de Contingência \ndas Arboviroses 2026-2028;\n\n3 – Criaçã",
      "data": "21/08/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2413003",
+   "municipio": "São Vicente",
+   "uf": "RN",
+   "melhor_nivel": "A",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 2,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "c9edcbd126",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://santaportal.com.br/baixada/sao-vicente-reforca-preparacao-para-o-el-nino/",
+     "titulo": "São Vicente reforça preparação para o El Niño - Santa Portal",
+     "trecho": "Além das intervenções estruturais, São Vicente conta com o Plano de Contingência de Proteção e Defesa Civil (PCPDC), que estabelece protocolos de monitoramento, prevenção e resposta a eventos meteorológicos severos.",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "dfbc75c84b",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/",
+     "titulo": "São Vicente reforça drenagem como prevenção ao El Niño - Jornal ...",
+     "trecho": "Já São Vicente mantém o Plano de Contingência de Proteção e Defesa Civil, que estabelece protocolos de monitoramento, prevenção e resposta a ocorrências provocadas por chuvas intensas.",
+     "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -6608,6 +6660,38 @@
      "titulo": null,
      "trecho": "Jul 23, 2026 ... Com a atualização do Plano de Contingência e o fortalecimento da integração entre os órgãos municipais e estaduais, Valença busca ampliar ...",
      "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2408607",
+   "municipio": "Paraná",
+   "uf": "RN",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "f4a1c5aa12",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml",
+     "titulo": "El Niño pode provocar tempestades severas no Paraná - G1 - Globo",
+     "trecho": "Devido à previsão, Defesa Civil começou a revisar Plano de Contingência e a orientar prefeituras sobre prevenção a desastres. Por Millena Sartori, g1 PR. 14 ...",
+     "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
