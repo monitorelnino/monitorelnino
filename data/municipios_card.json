@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-23",
- "total": 2185,
+ "total": 2187,
  "com_registro": 267,
- "com_imprensa": 89,
+ "com_imprensa": 91,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -1608,6 +1608,28 @@
    "prioritario": true,
    "categoria": "nao_localizado"
   },
+  "1703826": {
+   "nome": "Cachoeirinha",
+   "uf": "TO",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
+     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+     "data": "23/09/2026",
+     "veiculo": "instagram.com",
+     "nivel": "B"
+    },
+    {
+     "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
+     "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
+     "data": "23/09/2026",
+     "veiculo": "oreporter.net",
+     "nivel": "B"
+    }
+   ],
+   "categoria": "nao_localizado"
+  },
   "1705508": {
    "nome": "Colinas do Tocantins",
    "uf": "TO",
@@ -1642,6 +1664,21 @@
    "nome": "Lagoa da Confusão",
    "uf": "TO",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "1712009": {
+   "nome": "Lajeado",
+   "uf": "TO",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Lajeado aciona plano de contingência e inicia remoção de famílias ...",
+     "url": "https://grupoahora.net.br/conteudos/2026/09/21/lajeado-aciona-plano-de-contingencia-e-inicia-remocao-de-familias-na-cota-21m/",
+     "data": "23/09/2026",
+     "veiculo": "grupoahora.net.br",
+     "nivel": "B"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "1713205": {

@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-23",
- "total_pistas": 350,
- "total_municipios": 181,
+ "total_pistas": 353,
+ "total_municipios": 183,
  "por_nivel": {
   "A": 58,
-  "B": 221,
+  "B": 224,
   "C": 71
  },
  "grupos": [
@@ -5522,6 +5522,55 @@
    ]
   },
   {
+   "ibge": "1703826",
+   "municipio": "Cachoeirinha",
+   "uf": "TO",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "c374e77c18",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
+     "trecho": "6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4de3abf82b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
+     "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
+     "trecho": "Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": null,
    "municipio": "Rio Branco",
    "uf": "AC",
@@ -7727,6 +7776,37 @@
      "url": "https://queluz.sp.gov.br/wp-content/uploads/2024/06/P6-PMGIRS-Versao-Preliminar-do-PMGIRS-Queluz.pdf",
      "titulo": "plano municipal de gestão integrada de resíduos sólidos queluz - sp",
      "trecho": "Queluz / SP. Disponível em: http://atlasdigital.mdr.gov.br/paginas ... 9842020-DISPE-SOBRE-O-PLANO-DE-CONTINGENCIA.pdf. Acesso em: 11 fev. 2024 ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1712009",
+   "municipio": "Lajeado",
+   "uf": "TO",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "81bac8fc03",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://grupoahora.net.br/conteudos/2026/09/21/lajeado-aciona-plano-de-contingencia-e-inicia-remocao-de-familias-na-cota-21m/",
+     "titulo": "Lajeado aciona plano de contingência e inicia remoção de famílias ...",
+     "trecho": "Decisão foi tomada em reunião no gabinete da prefeita Gláucia Schumacher, no início da tarde desta segunda-feira - Grupo A Hora",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
