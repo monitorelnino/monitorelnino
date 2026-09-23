@@ -67,6 +67,20 @@ DOMINIOS_CONHECIDOS = {
     "defesa_civil": {
         "SC": "defesacivil.sc.gov.br",   # §11: robô recusado nas rodadas de 07/09/2026 — mantido para nova tentativa
         "SE": "defesacivil.se.gov.br",   # §11: idem
+        # 23/09/2026 (§164, Tarefa B): na primeira rodada real da sonda de camada, 13 das 27
+        # UFs não responderam a NADA — o palpite `defesacivil.<uf>.gov.br` estava errado para
+        # elas, que é a lacuna de curadoria declarada acima. Sondados seis padrões por UF;
+        # estes sete responderam HTTP 200 e passam a ser conhecidos. Conferidos um a um.
+        "AL": "defesacivil.al.gov.br",
+        "CE": "www.defesacivil.ce.gov.br",
+        "MS": "www.defesacivil.ms.gov.br",
+        "PB": "bombeiros.pb.gov.br",     # a Defesa Civil da PB fica sob o Corpo de Bombeiros
+        "PE": "www.pe.gov.br",           # sem domínio próprio: portal do estado
+        "PI": "www.pi.gov.br",           # idem
+        "SP": "defesacivil.sp.gov.br",
+        # Seguem sem domínio localizado (nenhum dos seis padrões respondeu), e por isso
+        # seguem como lacuna declarada, nunca como ausência de plano:
+        # AP, DF, RN, RO, TO — e SE, acima, que responde mas recusa o robô.
     },
 }
 

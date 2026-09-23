@@ -84,7 +84,7 @@ jobs:
       # Sobe SEMPRE, inclusive quando o render falha — é aí que o HTML bruto mais serve.
       - name: Artefato — JSON bruto e HTML renderizado do painel
         if: always() && (inputs.alvo == 'painel_am' || inputs.alvo == 'ambos')
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: painel-am-render
           path: |
