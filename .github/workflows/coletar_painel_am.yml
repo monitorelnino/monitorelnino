@@ -1,0 +1,158 @@
+# coletar_painel_am.yml — rodada renderizada do painel do AM e sonda de camada (§165/§166, 23/09/2026)
+# =============================================================================================
+# POR QUE ESTE WORKFLOW EXISTE. O coletor do painel (§165) precisa de duas coisas que a sessão de
+# desenvolvimento pode não ter: navegador real e saída para app.powerbi.com. O runner da Action tem
+# as duas. Então a rodada que de fato lê o painel mora aqui, e não na máquina de quem escreve o código.
+#
+# DISPARO MANUAL, NUNCA AGENDADO. A leitura do painel não é cadência: é um passo que alguém decide
+# dar, olha o resultado e triage. Agendar seria martelar um sítio que muda raramente e, pior, criar
+# a impressão de que o dado se promove sozinho — que é exatamente o contrário da regra R7.
+#
+# O QUE ELE NÃO FAZ: não promove nada ao banco. Os coletores têm trava estrutural (autoteste lê o
+# próprio fonte e reprova se aparecer escrita em estados.json/municipios.json/indice.json/...). O que
+# sai daqui são filas de pistas — data/pistas_painel_am.json e data/pistas_paineis.json — mais o nível
+# de verificação no livro de fontes. Promoção segue humana.
+#
+# O ARTEFATO É METADE DO VALOR. O renderizador sobe o JSON bruto E o HTML renderizado do painel como
+# artefato da execução. Se a grade do Power BI não vier como o extrator espera (papéis ARIA), é esse
+# HTML que permite corrigir o seletor sem adivinhação — e sem bater no sítio de novo a cada tentativa.
+name: Painel do AM — rodada renderizada (manual)
+on:
+  workflow_dispatch:
+    inputs:
+      alvo:
+        description: "painel_am | sonda_paineis | ambos"
+        required: false
+        default: "painel_am"
+      commitar:
+        description: "true = commita as filas e os derivados no main; false = só relatório e artefato"
+        required: false
+        default: "false"
+permissions:
+  contents: read
+# Mesmo grupo do atualizar.yml e da busca web: uma rodada de cada, nunca duas commitando junto.
+concurrency:
+  group: atualizar-dados
+  cancel-in-progress: false
+jobs:
+  painel_am:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }
+      # Mesma correção estrutural do atualizar.yml (§148): partir do main REAL, não do SHA do disparo.
+      - name: Partir do main atual
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git reset --hard FETCH_HEAD
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt --quiet
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: "22" }
+      - run: npm ci
+      - name: Chromium real (mesmo padrão do portão móvel)
+        run: npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+
+      # Autotestes antes de qualquer rede: se a lógica quebrou, não vale bater no sítio.
+      - name: Autotestes dos coletores (offline, bloqueante)
+        run: |
+          python3 coletar_painel_am.py --autoteste
+          python3 sondar_paineis.py --autoteste
+          python3 gerar_cobertura_declarada.py --autoteste
+
+      - name: Renderizar o sub-painel dos municípios
+        if: inputs.alvo == 'painel_am' || inputs.alvo == 'ambos'
+        id: render
+        continue-on-error: true   # painel fora do ar vira lacuna declarada, não falha de workflow
+        run: |
+          URL=$(python3 -c "import coletar_painel_am as c; print(c.URL_SUB_PAINEL)")
+          node scripts/renderizar_painel_am.js "$URL" --html-para /tmp/painel_am.html > /tmp/render_am.json
+          echo "--- diagnóstico ---"
+          python3 -c "
+          import json; d=json.load(open('/tmp/render_am.json'))
+          print('ok:', d.get('ok'), '| linhas:', d.get('n_linhas'))
+          print('colunas:', d.get('colunas'))
+          print('diagnóstico:', d.get('diagnostico'))
+          print('erro:', d.get('erro'))
+          com_link = sum(1 for l in d.get('linhas', []) if l.get('url_do_link'))
+          print(f'linhas com URL de documento: {com_link}')
+          "
+      # Sobe SEMPRE, inclusive quando o render falha — é aí que o HTML bruto mais serve.
+      - name: Artefato — JSON bruto e HTML renderizado do painel
+        if: always() && (inputs.alvo == 'painel_am' || inputs.alvo == 'ambos')
+        uses: actions/upload-artifact@v4
+        with:
+          name: painel-am-render
+          path: |
+            /tmp/render_am.json
+            /tmp/painel_am.html
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Coletar (baixa documento por município, preserva evidência, lê nº e data do ato)
+        if: (inputs.alvo == 'painel_am' || inputs.alvo == 'ambos') && steps.render.outcome == 'success'
+        run: python3 coletar_painel_am.py --de-arquivo /tmp/render_am.json
+      # Se o painel não renderizou, ainda assim é melhor ter a leitura humana de 22/09 na fila do
+      # que não ter nada — a semeadura é offline e não inventa documento nenhum.
+      - name: Semear da leitura humana (só se o render falhou)
+        if: (inputs.alvo == 'painel_am' || inputs.alvo == 'ambos') && steps.render.outcome != 'success'
+        run: |
+          echo "::warning::render do painel não concluiu — semeando a leitura humana de 22/09 (0 documentados)"
+          python3 coletar_painel_am.py --semear-da-sonda
+
+      - name: Sonda de camada nas 27 UFs (Tarefa B)
+        if: inputs.alvo == 'sonda_paineis' || inputs.alvo == 'ambos'
+        continue-on-error: true
+        run: python3 sondar_paineis.py 2>&1 | tail -60
+
+      - name: Cobertura declarada por canal (estrutura inerte; nota pública segue da editoria)
+        run: python3 gerar_cobertura_declarada.py
+
+      - name: Sincronizar índice e derivados
+        run: |
+          export SOURCE_DATE_EPOCH="$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd),tzinfo=datetime.timezone.utc).timestamp()))")"
+          python3 recalcular_mare.py --write
+          python3 recalcular_mare.py --check
+          python3 gerar_dados_abertos.py
+          python3 gerar_card_municipios.py
+          python3 scripts/carimbar_assets.py
+          python3 scripts/gerar_manifesto.py
+          python3 verificar_consistencia.py
+          python3 verificar_evidencias.py
+
+      - name: Resumo da rodada
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          p = pathlib.Path("data/pistas_painel_am.json")
+          if not p.exists():
+              print("fila do painel do AM: ausente (nada coletado nesta rodada)"); raise SystemExit(0)
+          d = json.load(open(p, encoding="utf-8"))
+          r = d.get("resumo", {})
+          print(f"fila: {len(d.get('itens', []))} item(ns) · origem: {r.get('origem', 'rodada renderizada')}")
+          for k in ("documentado", "declarado", "sem_plano_declarado", "sem_codigo_ibge", "no_ciclo"):
+              print(f"  {k}: {r.get(k)}")
+          print("\nNenhum item entra no banco sem promoção humana (R7).")
+          PY
+
+      - name: Commit com rebase (mesmo padrão do atualizar.yml)
+        if: inputs.commitar == 'true'
+        env:
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        run: |
+          git config user.name "monitor-el-nino-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ dados-abertos/ selos/ index.html defesa-civil.html docs/MANIFEST_SHA256.txt
+          if git diff --cached --quiet; then echo "Sem alterações."; exit 0; fi
+          git commit -m "Painel do AM: rodada renderizada ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
+          git checkout -- .
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
+          git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito; rodada não comitada"; rm -f ~/.ssh/robo; exit 1; }
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
+          rm -f ~/.ssh/robo
