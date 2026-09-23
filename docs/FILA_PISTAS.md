@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 335 pendente(s) · 15 decidida(s) · A=56 B=219 C=60
+Gerado em 23/09/2026 · 338 pendente(s) · 15 decidida(s) · A=56 B=222 C=60
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1728,6 +1728,25 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: razão da natureza, complexidade ou riscos envolvidos no objeto.   Art. 11. O documento deverá conter, sempre que aplicável: I – identificação dos riscos; II – probabilidade; III – impacto; IV – nível de risco; V – medida
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+
+## Cachoeirinha/TO — 2 pendente(s)
+- `c374e77c18` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...
+  - url: https://www.instagram.com/p/DdZX8XIRdv_/
+  - trecho: 6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: " Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...
+  - juiz: portão automático: fonte não oficial
+- `4de3abf82b` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...
+  - url: https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/
+  - trecho: Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...
+  - juiz: portão automático: fonte não oficial
+
+## Lajeado/TO — 1 pendente(s)
+- `81bac8fc03` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Lajeado aciona plano de contingência e inicia remoção de famílias ...
+  - url: https://grupoahora.net.br/conteudos/2026/09/21/lajeado-aciona-plano-de-contingencia-e-inicia-remocao-de-familias-na-cota-21m/
+  - trecho: Decisão foi tomada em reunião no gabinete da prefeita Gláucia Schumacher, no início da tarde desta segunda-feira - Grupo A Hora
+  - juiz: portão automático: fonte não oficial
 
 ## None/AC — 1 pendente(s)
 - `e0c2afcacf` · nível **C** (2 pts) · agencia_oficial · — · citação não extraída
