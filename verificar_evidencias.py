@@ -84,25 +84,18 @@ def checar_preservacao_na_cadencia() -> list:
 
 MIN_CARACTERES_TEXTO = 200   # mesmo piso que ler_pdfs() usa para decidir se a extração serviu
 
-# §174 (22/09/2026): lacuna DECLARADA e DATADA. Quatro registros pontuáveis do ES não têm prova
-# preservada de espécie alguma — o PDF está acima do teto de cópia (5 MB), o Wayback não tem
-# snapshot (consultado, não só tentado) e o PDF é escaneado, sem camada de texto: a leitura do
-# §10.1 devolve zero caractere. Até 22/09/2026 eles passavam no portão porque a STRING
-# "tentativa falhou (...)" contava como prova; o conserto tornaria a main vermelha de imediato.
-# Decisão da editoria: declarar em vez de esconder. Cada um aparece como AVISO em toda execução,
-# e a partir da data abaixo o portão BLOQUEIA. A chave é o hash do documento: se ele for
-# represervado, o hash muda e a exceção deixa de valer sozinha.
+# §174 (22/09/2026): lacuna DECLARADA e DATADA — mecanismo, hoje sem nenhuma lacuna em uso.
+# Quatro registros pontuáveis do ES não tinham prova preservada de espécie alguma: PDF acima do
+# teto de cópia (5 MB), Wayback sem snapshot (consultado, não só tentado) e PDF escaneado, sem
+# camada de texto — a leitura do §10.1 devolvia zero caractere. Até 22/09/2026 passavam no portão
+# porque a STRING "tentativa falhou (...)" contava como prova. Decisão da editoria: declarar em vez
+# de esconder, com aviso a cada execução e bloqueio a partir da data abaixo.
+# §177 (23/09/2026): os quatro ganharam cópia legível por OCR (modelo português) e SAÍRAM daqui —
+# a lista fica vazia de propósito, e o mecanismo continua de pé para a próxima lacuna que precise
+# ser declarada. A chave é o hash do documento: represervado, o hash muda e a exceção cai sozinha.
+# O portão também avisa quando uma lacuna declarada já foi resolvida, para a lista não apodrecer.
 LACUNA_BLOQUEIA_A_PARTIR = date(2026, 10, 31)
-LACUNA_DECLARADA = {
-    "a195e6f055705006603b01151e72bbf889b4c464239220b2d73e52d33ce87efa":
-        "Anchieta/ES — PLANCON edição 2025: PDF de 9,9 MB, 68 páginas escaneadas (0 caractere), sem snapshot",
-    "5ea5d0a10add8493681a6eed2b950ef538603d01b175906042fde74b042751f1":
-        "Itaguaçu/ES — PLANCON edição 2025: PDF de 19,3 MB, 78 páginas escaneadas (0 caractere), sem snapshot",
-    "ea1ed0881e4391004c3515f1b14dca04d8e60d91549c802f5b4b99a9d5030a39":
-        "São José do Calçado/ES — PLANCON edição 2025: PDF de 12,9 MB, 14 páginas escaneadas (0 caractere), sem snapshot",
-    "294b4d9ad62d1f0347bde59475088168f03b2b2996cc7bdccacbb3d87621a51b":
-        "Venda Nova do Imigrante/ES — PLANCON edição 2025: PDF de 17,5 MB, 70 páginas escaneadas (0 caractere), sem snapshot",
-}
+LACUNA_DECLARADA = {}
 
 
 def prova_preservada(item: dict) -> bool:
@@ -180,8 +173,16 @@ def integridade_texto(itens: dict, raiz: pathlib.Path = RAIZ) -> list:
             pth = raiz / ta
             if not pth.exists():
                 erros.append(f"{h[:12]}… {campo} ausente em disco ({ta})")
-            elif th and hashlib.sha256(pth.read_bytes()).hexdigest() != th:
+                continue
+            bruto = pth.read_bytes()
+            if th and hashlib.sha256(bruto).hexdigest() != th:
                 erros.append(f"{h[:12]}… {campo} não bate com {campo_hash} ({ta}) — regravado sem recalcular o hash?")
+            # §177 (23/09/2026, achado na primeira rodada real de OCR): cópia preservada em CRLF é
+            # cópia que depende da máquina que a produziu. O Tesseract do Windows devolve CRLF no
+            # stdout, e `newline` na gravação não alcança isso — traduz o que o Python escreve, não
+            # o "\r" que já vem no texto. A prova tem de sair igual em qualquer máquina (série do §163).
+            if b"\r\n" in bruto:
+                erros.append(f"{h[:12]}… {campo} está em CRLF ({ta}) — a cópia preservada dependeria da máquina")
     # §177: o texto de OCR não pode ocupar o lugar da camada de texto do documento. Se `ocr_arquivo`
     # e `texto_arquivo` apontarem para o mesmo arquivo, a leitura de máquina (classificar_saude_no_plano)
     # passaria a ler OCR como se fosse o documento — e erro de caractere viraria classificação.
@@ -201,6 +202,8 @@ def autoteste_integridade_texto() -> list:
         alvo.write_text("\n=== página 1 ===\ntexto preservado\n",
                         encoding="utf-8", newline="\n")
         certo = hashlib.sha256(alvo.read_bytes()).hexdigest()
+        # arquivo em CRLF, para o caso negativo da regra de portabilidade da cópia preservada
+        (raiz / "evidencias" / "crlf.txt").write_bytes(b"=== pagina 1 ===\r\ntexto\r\n")
         casos = [
             ({"texto_arquivo": "evidencias/a.txt", "texto_hash": certo}, 0),
             ({"texto_arquivo": "evidencias/a.txt", "texto_hash": "0" * 64}, 1),      # regravado sem recalcular
@@ -217,6 +220,9 @@ def autoteste_integridade_texto() -> list:
             ({"ocr_arquivo": "evidencias/a.txt", "ocr_hash": "0" * 64}, 1),
             ({"ocr_arquivo": "evidencias/a.txt", "ocr_hash": certo,
               "texto_arquivo": "evidencias/a.txt", "texto_hash": certo}, 1),           # OCR no lugar da camada de texto
+            # §177: cópia preservada em CRLF reprova, com ou sem hash registrado
+            ({"texto_arquivo": "evidencias/crlf.txt"}, 1),
+            ({"ocr_arquivo": "evidencias/crlf.txt"}, 1),
         ]
         for i, (item, esperado) in enumerate(casos):
             n = len(integridade_texto({f"{i:064d}": item}, raiz))

@@ -171,11 +171,17 @@ def rasterizar(pdf_bytes: bytes, dpi: int = OCR_DPI, limite_paginas: int = 0) ->
 
 
 def ocr_pagina(png: bytes, exe: str, idioma: str, dpi: int = OCR_DPI) -> str:
-    """Texto de uma página, por stdin/stdout do Tesseract — nenhum arquivo temporário em disco."""
+    """Texto de uma página, por stdin/stdout do Tesseract — nenhum arquivo temporário em disco.
+
+    Achado na primeira rodada real (23/09/2026): o Tesseract do Windows devolve as quebras de linha
+    em CRLF no próprio stdout. `newline="\n"` na gravação não resolve — ele traduz o que o Python
+    escreve, não o "\r" que já vem dentro do texto. Sem normalizar aqui, a cópia preservada sairia
+    diferente byte a byte da que o runner produz, que é a série do §163 de novo, agora no conteúdo."""
     import subprocess
     r = subprocess.run([exe, "-", "-", "-l", idioma, "--dpi", str(dpi)],
                        input=png, capture_output=True, timeout=OCR_TIMEOUT_PAGINA)
-    return r.stdout.decode("utf-8", errors="replace").strip()
+    bruto = r.stdout.decode("utf-8", errors="replace")
+    return bruto.replace("\r\n", "\n").replace("\r", "\n").strip()
 
 
 def gravar_ocr(h: str, paginas: list) -> str:
@@ -184,6 +190,9 @@ def gravar_ocr(h: str, paginas: list) -> str:
     ser confundido com camada de texto do documento, nem sobrescrevê-la."""
     EVID.mkdir(exist_ok=True)
     txt = "".join(f"\n=== página {i+1} (OCR) ===\n{t}\n" for i, t in enumerate(paginas))
+    # Defesa em profundidade da normalização feita em ocr_pagina(): qualquer "\r" que chegue aqui
+    # sairia no arquivo preservado e o tornaria dependente da máquina que rodou o OCR.
+    txt = txt.replace("\r\n", "\n").replace("\r", "\n")
     txt, n_cpfs = redigir_dados_pessoais(txt)
     if n_cpfs:
         print(f"  [redação] {n_cpfs} CPF(s) removido(s) do texto de OCR antes de preservar")
@@ -278,7 +287,8 @@ def autoteste_ocr() -> int:
         try:
             EVID = Path(d)
             (EVID / "aa.txt").write_text("camada de texto do documento", encoding="utf-8", newline="\n")
-            oh = gravar_ocr("aa", ["PREFEITURA MUNICIPAL", "DECRETO n 7.717/2024 CPF 123.456.789-00"])
+            oh = gravar_ocr("aa", ["PREFEITURA MUNICIPAL", "DECRETO n 7.717/2024 CPF 123.456.789-00",
+                                   "linha 1\r\nlinha 2\rlinha 3"])   # Tesseract do Windows devolve CRLF
             texto = (EVID / "aa.ocr.txt").read_text(encoding="utf-8")
             if (EVID / "aa.txt").read_text(encoding="utf-8") != "camada de texto do documento":
                 falhas.append("gravar_ocr sobrescreveu o .txt do documento — o OCR tem arquivo próprio")
