@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Secretaria de Estado de Saúde - MT</title>
+    <meta name="author" content="STI - Secretaria de Estado de Saúde - MT" />
+    <meta name="generator" content="STI - Secretaria de Estado de Saúde - MT" />
+    <meta name="description" content="Secretaria de Estado de Saúde de Mato Grosso" />
+    <meta property="og:title" content="SES-MT - Secretaria de Estado de Saúde de Mato Grosso" />
+    <meta property="og:description" content="Secretaria de Estado de Saúde de Mato Grosso" />
+    <meta property="og:image"content="http://www.saude.mt.gov.br/img/ses-logo.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    
+
+    <link href="/assets/favicon.ico" rel="icon" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    
+    <link href="/css/lightbox.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="/owlcarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/owlcarousel/assets/owl.theme.default.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
+        rel="stylesheet" />
+    
+    <link href="/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        body.accessibility-large-font {
+            font-size: 1.25rem !important;
+        }
+
+        body.accessibility-xlarge-font {
+            font-size: 1.5rem !important;
+        }
+
+        body.accessibility-contrast {
+            background-color: black !important;
+            color: white !important;
+        }
+
+        body.accessibility-contrast a,
+        body.accessibility-contrast a:hover,
+        body.accessibility-contrast a:focus {
+            color: #00ffff !important;
+        }
+    </style>
+
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLPP3Q71ER"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GLPP3Q71ER');
+    </script>
+
+</head>
+
+<body>
+    <div class="topo">
+    <div class="container">
+        <div class="nav-topo d-flex justify-content-md-end justify-content-center">
+            <ul>
+                <li>
+                    
+
+                                    </li>
+                <li>
+                    <a href="https://www.instagram.com/ses.mt/" target="_blank"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                    <a href="https://www.facebook.com/sesmatogrosso" target="_blank" class="mx-2"><i class="fa-brands fa-square-facebook fa-xl"></i></a>
+                </li>
+                <li>
+                    Acessibilidade:
+                    <a href="#" id="font-increase" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte" class="mx-2"><i class="fa fa-sm fa-plus"> A</i></a>
+                    <a href="#" id="font-decrease" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte"><i class="fa fa-sm fa-minus"> A</i></a>
+                    <a href="#" id="contrast-toggle" title="Alternar contraste" aria-label="Alternar modo de alto contraste" class="mx-2"><i class="fa fa-adjust"></i></a>
+                </li>
+                <li>
+                    <a href="http://www.mt.gov.br" aria-label="ir para mt.gov.br" title="ir para mt.gov.br"
+                        alt="ir para mt.gov.br">mt.gov.br</a>
+                </li>
+                <!-- <li>
+                        <a href="#" id="contraste_ativa" aria-label="contraste" title="contraste" alt="contraste"><i class="fa fa-adjust" aria-hidden="true"></i></a>
+                        <a href="#" id="contraste_normal" aria-label="contraste" title="contraste" alt="contraste" style="display: none;"><i class="fa fa-adjust" aria-hidden="true"></i></a>
+                    </li> -->
+                
+                
+                
+            </ul>
+        </div>
+        <header class="py-2">
+            <div class="row">
+                <div class="col-12 col-md-4 pt-1 d-flex align-middle justify-content-md-start justify-content-center">
+                    <a href="https://www.saude.mt.gov.br">
+                        <img src="/img/ses-horizontal.png" class="brand" />
+                    </a>
+                </div>
+                <div class="col-12 col-md-4"></div>
+                <div class="col-12 col-md-4 justify-content-end align-middle">
+                    <div class="row">
+                        <div class="col-12">
+                            <form class="mt-4" method="GET" action="https://www.saude.mt.gov.br/search" enctype="multipart/form-data">
+                                <div class="input-group">
+                                    <select class="form-control term-serach" id="term" name="term"
+                                        aria-describedby="button-addon2" style="width: 80%">
+
+                                    </select>
+                                    <a href="https://www.saude.mt.gov.br/pesquisar" class="btn" type="submit" id="btn-search"
+                                        style="float:right">
+                                        Busca
+                                        
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row px-4 text-end">
+                        <div class="col-2 mt-4">
+
+                        </div>
+
+                        <div class="col-3 mt-4">
+                            <a href="https://ouvidoria.cge.mt.gov.br/falecidadao/" target="_blank" title="Transparência"
+                                alt="Transparência"><img src="/img/fale_cidadao_balao.png" width="55" /></a>
+                        </div>
+                        <div class="col-3 mt-4">
+                            <a href="https://www.transparencia.mt.gov.br/" target="_blank" title="Transparência"
+                                alt="Transparência"><img src="/img/portal_transparencia_logo.png" width="90" /></a>
+                        </div>
+                        <div class="col-4 mt-4">
+                            <a href="https://ouvidoria.cge.mt.gov.br/falecidadao/servlet/cadastrardemanda?5" target="_blank" title="Transparência"
+                            alt="Transparência"><img src="/img/sic_logo.png" width="120" /></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+            aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+            <ul class="navbar-nav">
+                                                            <li class="nav-item" style="font-weight: bold">
+                                                                                                <a class="nav-link" aria-current="page"
+                                        href="/">Início</a>
+                                                                
+                                                    </li>
+                                                                                <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="font-weight: bold">
+        Institucional
+    </a>
+    <ul class="dropdown-menu">
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://www.saude.mt.gov.br/pagina/775/regimento-interno">Regimento Interno</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="/unidade/integridade">Integridade</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://www.saude.mt.gov.br/pagina/778/publicacoes">Publicações</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="/legislacoes">Atos Normativos</a>
+                                                </li>
+                    <li>
+                                    <a class="dropdown-item" aria-current="page"
+                        href="https://www.saude.mt.gov.br/pagina/773/missao-visao-e-valores">Missão, Visão e Valores</a>
+                            </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://www.saude.mt.gov.br/pagina/774/estrutura-oganizacional">Estrutura Oganizacional</a>
+                                                </li>
+                    <li>
+                                    <a class="dropdown-item" aria-current="page"
+                        href="https://www.saude.mt.gov.br/pagina/792/secretario">Secretário</a>
+                            </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://www.saude.mt.gov.br/pagina/1165/planejamento-e-gestao">Planejamento e Gestão</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://www.saude.mt.gov.br/pagina/1221/gestao-de-processos">Gestão de Processos</a>
+                                                </li>
+                    <li>
+                                    <a class="dropdown-item" aria-current="page"
+                        href="https://www.saude.mt.gov.br/pagina/796/contatos">Contatos</a>
+                            </li>
+            </ul>
+</li>
+                                                                                <li class="nav-item" style="font-weight: bold">
+                                                                                            <a class="nav-link" aria-current="page" href="https://www.saude.mt.gov.br/pagina/749/unidades-de-saude">Unidades de Saúde</a>
+                                
+                                                                
+                                                    </li>
+                                                                                <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="font-weight: bold">
+        Serviços
+    </a>
+    <ul class="dropdown-menu">
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://www.saude.mt.gov.br/pagina/1782/carteiras-digitais">Carteiras Digitais</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://portal.mt.gov.br/orgao/secretaria-de-estado-de-saude">Carta de Serviços</a>
+                                                </li>
+                    <li>
+                                    <a class="dropdown-item" aria-current="page"
+                        href="https://www.saude.mt.gov.br/pagina/965/gestores-e-profissionais">Gestores e Profissionais</a>
+                            </li>
+            </ul>
+</li>
+                                                                                <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="font-weight: bold">
+        Imprensa
+    </a>
+    <ul class="dropdown-menu">
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="/noticias?s=&amp;type=N">Notícias</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="/fotos">Fotos</a>
+                                                </li>
+            </ul>
+</li>
+                                                                                <li class="nav-item" style="font-weight: bold">
+                                                                                                <a class="nav-link" aria-current="page"
+                                        href="/unidade/escritorios-regionais-de-saude">Escritórios Regionais</a>
+                                                                
+                                                    </li>
+                                                                                <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="font-weight: bold">
+        Ouvidoria
+    </a>
+    <ul class="dropdown-menu">
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="/unidade/ouvidoria-setorial">Fale com a Ouvidoria</a>
+                                                </li>
+            </ul>
+</li>
+                                                                                <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="font-weight: bold">
+        Transparência
+    </a>
+    <ul class="dropdown-menu">
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="/unidade/licitacoes">Licitações</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="/unidade/licitacoes/74/contratos-de-aquisicoes-e-servicos">Aquisições</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://www.saude.mt.gov.br/pagina/786/regulacao">Regulação</a>
+                                                </li>
+                    <li>
+                                    <a class="dropdown-item" aria-current="page"
+                        href="https://www.saude.mt.gov.br/pagina/789/perguntas-frequentes">Perguntas Frequentes</a>
+                            </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="http://www.saude.mt.gov.br/unidade/profissionais-terceirizados-e-fiscais">Profissionais Terceirizados e Fiscais</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="/unidade/parcerias-organizacoes-sociais-de-saude-e-consorcios">Parcerias Organizações Sociais de Saúde e Consórcios</a>
+                                                </li>
+                    <li>
+                                                            <a class="dropdown-item" aria-current="page" href="https://www.saude.mt.gov.br/unidade/OSE">Obras e Serviços de Engenharia</a>
+                                                </li>
+            </ul>
+</li>
+                                                </ul>
+        </div>
+    </div>
+</nav>
+
+    <main class="container">
+        
+    <div id="banners" class="carousel slide mt-4 mb-4 shadow-sm" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#banners" data-bs-slide-to="0" class="banner-indicator"
+                aria-label="Slide 0"></button>
+                
+    </div>
+    <div class="carousel-inner">
+                    <div class="carousel-item">
+                                    <a href="https://www.saude.mt.gov.br/noticia/1808/fornecedor-da-area-da-saude-cadastre-se-no-siag" target="_blank">
+                        <img src="https://www.saude.mt.gov.br/storage//images/92c84847c4b390d30db8a4cf7c584f6a.png" class="d-block w-100"
+                            alt="Fornecedores" />
+                    </a>
+                            </div>
+            </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#banners" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#banners" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+    <div class="row mt-5 mb-3">
+        <div class="col-lg-12 col-sm-12 col-md-12 d-flex align-items-center">
+            <span class="titulo">
+                <h3> <a href="https://www.saude.mt.gov.br/noticias?s=&amp;type=N">Notícias</a></h3>
+            </span>
+            <span class="risco">&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col-md-12">
+            <div class="row g-0 border-noticia overflow-hidden flex-md-row mb-4 shadow-sm h-md-350 position-relative">
+                    <div class="col-md-6">
+                                                <div style="height:400px;background-size: cover;background-image:url('https://www.saude.mt.gov.br/storage/images/3757a5a5c3cd297c8eb733f1ce1338bc.jpg"></div>
+                            
+                                            </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-1 text-primary" style="text-transform: uppercase">LEGISLAÇÃO EM VIGOR</strong>
+                    <div class="mb-1 text-body-secondary"><i class="fa-regular fa-clock mx-1"></i> 03/07/2026</div>
+                    <h3 class="mb-1">Governo de MT suspende notícias institucionais do Portal em cumprimento às normas eleitorais</h3>
+                    <p class="card-text mb-auto">
+                        <i>Nesse período, serão publicadas apenas notícias de caráter de utilidade pública</i>
+                        <br />
+                        <br />
+                        Em cumprimento à legislação eleitoral, o Governo de Mato Grosso suspende, a partir deste sábado (4.7), a exibição das notícias institucionais publicadas no Portal do Governo, bem como todo o conteúdo de fotografias e produções audiovisuais.A medida atende às restrições previstas no artigo 73 da Lei Federal nº 9.504/1997 (Lei das Eleições), que disciplina a publicidade institucional...
+                    </p>
+                    <a href="https://www.saude.mt.gov.br/noticia/12422/governo-de-mt-suspende-noticias-institucionais-do-portal-em-cumprimento-as-normas-eleitorais" class="stretched-link"></a>
+               

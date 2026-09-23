@@ -84,6 +84,9 @@ jobs:
           python3 verificar_financiamento.py
           python3 verificar_painel.py
           python3 scripts/testar_detector_defeso.py
+          # §182 (23/09/2026): a reavaliação de suspensão por defeso tem régua própria — evidência
+          # truncada não reabre fonte, e notícia institucional suspensa não fecha o canal de documento.
+          python3 scripts/reavaliar_fontes_suspensas.py --autoteste
           python3 verificar_resposta.py
       - name: Portão móvel (390 px, Chromium real — v3.1 §14.3)
         run: |

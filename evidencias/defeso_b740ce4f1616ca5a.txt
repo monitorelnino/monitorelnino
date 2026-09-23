@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <meta http-equiv="refresh" content="30;url=https://servicos.to.gov.br/">
+    <title>Aviso de Suspensão - Governo do Tocantins</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        main {
+            padding: 32px 16px;
+            text-align: center;
+        }
+        #redirect-info {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 30px;
+            line-height: 1.4;
+            padding: 0 16px;
+        }
+        @media (max-width: 768px) {
+            main {
+                padding: 20px 12px;
+            }
+            #redirect-info {
+                font-size: 1.2rem;
+                margin-top: 20px;
+                padding: 0 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            main {
+                padding: 16px 8px;
+            }
+            #redirect-info {
+                font-size: 1rem;
+                margin-top: 16px;
+                padding: 0 8px;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<main class="portal-suspensao">
+    <div class="container">
+        <img src="/Eleicao.jpg?1791082800" alt="ATENÇÃO TOCANTINENSES! Em cumprimento à legislação eleitoral, os sites e redes sociais do Governo do Tocantins e das secretarias estaduais serão temporariamente suspensos a partir de 4 de julho, permanecendo inativos até o encerramento das eleições de 2026. Durante esse período, o perfil oficial do Governo do Tocantins no X (@governoTO) será utilizado exclusivamente para a divulgação de informações de utilidade pública, comunicados oficiais e serviços essenciais de interesse da população." style="width:100%; max-width:1026px; height:auto; display:block; margin:0 auto;">
+        <div id="redirect-info">
+            Você será redirecionado para o Portal de Serviços em instantes. Aguarde <strong><span id="redirect-seconds">30</span> segundos</strong>.
+        </div>
+    </div>
+</main>
+
+<script>
+    (function() {
+        var seconds = 30;
+        var targetUrl = 'https://servicos.to.gov.br/';
+        var counter = document.getElementById('redirect-seconds');
+
+        var interval = setInterval(function() {
+            seconds -= 1;
+            if (counter) {
+                counter.textContent = seconds;
+            }
+            if (seconds <= 0) {
+                clearInterval(interval);
+                window.location.href = targetUrl;
+            }
+        }, 1000);
+    })();
+</script>
+
+</body>
+</html>
