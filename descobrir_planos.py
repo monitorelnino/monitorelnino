@@ -67,7 +67,8 @@ DOMINIOS_CONHECIDOS = {
     "defesa_civil": {
         "SC": "defesacivil.sc.gov.br",   # §11: robô recusado nas rodadas de 07/09/2026 — mantido para nova tentativa
         "SE": "defesacivil.se.gov.br",   # §11: idem
-        # 23/09/2026 (§164, Tarefa B): na primeira rodada real da sonda de camada, 13 das 27
+        # 23/09/2026 (§179; o commit dizia "§164", número que já era de outra entrada): na primeira
+        # rodada real da sonda de camada, 13 das 27
         # UFs não responderam a NADA — o palpite `defesacivil.<uf>.gov.br` estava errado para
         # elas, que é a lacuna de curadoria declarada acima. Sondados seis padrões por UF;
         # estes sete responderam HTTP 200 e passam a ser conhecidos. Conferidos um a um.
