@@ -92,7 +92,7 @@ def main():
 
     html, log_consts = sincronizar_consts(html)
     html, log_heroi = sincronizar_heroi(html, meta, indice)
-    alvo.write_text(html, encoding="utf-8")
+    alvo.write_text(html, encoding="utf-8", newline="\n")
 
     print(f"{alvo}:")
     for l in log_consts + log_heroi: print(f"  {l}")
@@ -101,7 +101,7 @@ def main():
         pk = Path(args.tambem_pacote)
         html_pk = pk.read_text(encoding="utf-8")
         html_pk, log_pk = sincronizar_heroi(html_pk, meta, indice)
-        pk.write_text(html_pk, encoding="utf-8")
+        pk.write_text(html_pk, encoding="utf-8", newline="\n")
         print(f"\n{pk} (só herói — consts vêm de fetch ao vivo):")
         for l in log_pk: print(f"  {l}")
 

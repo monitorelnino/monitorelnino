@@ -37,7 +37,7 @@ def main():
     if min(pib, key=pib.get) != "MA":
         print("ABORTADO: última posição não é MA — nada gravado"); return 1
     json.dump({"completo": True, "fonte": "IBGE, Sistema de Contas Regionais 2023 (SIDRA), validado por 4 sentinelas em produção",
-               "pib_per_capita": pib}, open(DEST, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+               "pib_per_capita": pib}, open(DEST, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     print(f"OK 27 UFs gravadas com sentinelas verdes — gráfico-tese passa ao eixo de riqueza"); return 0
 
 if __name__ == "__main__":

@@ -23,8 +23,8 @@ def chamar(nome, params, tent=3):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
                 corpo = r.read().decode("utf-8", "replace")
-            (SAIDA / f"{nome}.request.txt").write_text(url + "\n", encoding="utf-8")
-            (SAIDA / f"{nome}.response.json").write_text(corpo, encoding="utf-8")
+            (SAIDA / f"{nome}.request.txt").write_text(url + "\n", encoding="utf-8", newline="\n")
+            (SAIDA / f"{nome}.response.json").write_text(corpo, encoding="utf-8", newline="\n")
             try:
                 d = json.loads(corpo)
             except ValueError:
@@ -34,7 +34,7 @@ def chamar(nome, params, tent=3):
             print(f"  {nome}: total_gazettes={n} | gazettes={len(g)} | excerpts={ex} | url={url[:140]}")
             return d
         except urllib.error.HTTPError as e:
-            print(f"  {nome}: HTTPError {e.code} {e.reason} (tentativa {i+1})"); (SAIDA / f"{nome}.error.txt").write_text(f"{url}\nHTTP {e.code}\n{e.read(500)!r}", encoding="utf-8")
+            print(f"  {nome}: HTTPError {e.code} {e.reason} (tentativa {i+1})"); (SAIDA / f"{nome}.error.txt").write_text(f"{url}\nHTTP {e.code}\n{e.read(500)!r}", encoding="utf-8", newline="\n")
             if e.code == 429: time.sleep(10 * (i + 1)); continue
             return None
         except Exception as e:  # noqa: BLE001
@@ -78,7 +78,7 @@ def main():
     for u in ("https://queridodiario.ok.org.br/api/docs", "https://queridodiario.ok.org.br/api/openapi.json"):
         try:
             with urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=30) as r:
-                c = r.read(200000).decode("utf-8", "replace"); (SAIDA / ("docs_" + u.split("/")[-1] + ".txt")).write_text(c, encoding="utf-8")
+                c = r.read(200000).decode("utf-8", "replace"); (SAIDA / ("docs_" + u.split("/")[-1] + ".txt")).write_text(c, encoding="utf-8", newline="\n")
                 print(f"  {u}: HTTP {r.status}, {len(c)} chars; parâmetros vistos: {sorted(set(p for p in ('territory_ids','published_since','published_until','querystring','size','offset','excerpt_size','number_of_excerpts','pre_tags','post_tags','sort_by') if p in c))}")
         except Exception as e:  # noqa: BLE001
             print(f"  {u}: {type(e).__name__}: {e}")

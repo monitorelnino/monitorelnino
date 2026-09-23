@@ -194,7 +194,7 @@ def main():
                 marcos.setdefault(uf, {})[risco] = t
         print(f"Modo manual: {ARQUIVO_MANUAL.name} lido para deslizamento/enchente/inundacao/chuvas_intensas/incendio.")
     else:
-        json.dump(MODELO_MANUAL, open(ARQUIVO_MANUAL, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        json.dump(MODELO_MANUAL, open(ARQUIVO_MANUAL, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
         print(f"[aviso] {ARQUIVO_MANUAL.name} não existia — modelo criado. Preencha e rode de novo.")
 
     print("\n[ANA] buscando dataset 'Monitor de Secas' no catálogo de dados abertos...")
@@ -209,7 +209,7 @@ def main():
         print("   roda de verdade na Action do GitHub ou na máquina de quem publica)")
 
     saida = DATA / "marcos_severidade.json"
-    json.dump(marcos, open(saida, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(marcos, open(saida, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     print(f"\n{saida.relative_to(RAIZ)} gravado com {sum(len(v) for v in marcos.values())} marco(s) manual(is).")
     print("NOTA: marcos_severidade.json NÃO é consumido por recalcular_mare.py ainda —")
     print("      integração ao cálculo do MARÉ é posterior à simulação (Metodologia §12.5).")

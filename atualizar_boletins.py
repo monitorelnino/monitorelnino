@@ -36,7 +36,7 @@ def main() -> int:
         print(f"[NOVO BOLETIM] nº {detectado} detectado (registro anterior: nº {atual['ultimo_boletim']}).")
         print("  → Revisar o painel 'Risco projetado × instrumento estadual' e a timeline contra o novo boletim.")
         atual["ultimo_boletim"] = detectado
-        json.dump(atual, open(REGISTRO, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        json.dump(atual, open(REGISTRO, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=2)
     else:
         print(f"Nenhum boletim novo (último conhecido: nº {atual.get('ultimo_boletim')}).")
     return 0

@@ -11,5 +11,12 @@ pypdf==5.9.0
 # ("1 1 . 2 4 1", "S E  0 1  a  3 5"), e nenhum padrão numérico casa. pdfplumber preserva o texto como os
 # parsers foram afinados. Versão travada, como todo o resto (docs/SBOM.md).
 pdfplumber==0.11.9
+# 23/09/2026 (§177): pypdfium2 e Pillow já vinham como dependências TRANSITIVAS do pdfplumber, mas
+# o OCR dos PLANCON escaneados as usa diretamente (rasterizar a página e salvar o PNG que vai ao
+# Tesseract). Dependência usada de propósito se declara e se trava: a versão do rasterizador decide
+# o pixel, e o pixel decide o texto que fica preservado — faixa aberta significaria cópia preservada
+# variando com a máquina. Nenhum pacote novo entra: são as mesmas duas que o pdfplumber já instalava.
+pypdfium2==5.13.0
+Pillow==12.3.0
 PyYAML==6.0.3
 Markdown==3.10.2

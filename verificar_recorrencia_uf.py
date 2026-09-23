@@ -47,7 +47,7 @@ def carregar_historico():
 
 def salvar_historico(historico):
     """Grava o histórico completo de volta em disco (indentado, para diff legível)."""
-    json.dump(historico, open(HISTORICO_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    json.dump(historico, open(HISTORICO_PATH, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=2)
 
 
 def checar_recorrencia(uf, texto_novo, limiar=LIMIAR_PADRAO):

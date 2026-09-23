@@ -100,10 +100,89 @@ def _recuperar_pela_url(h: str):
             ".json restaurado, sem txt_url alcançável" if identico else None)
 
 
+def fila_do_indice(idx: dict, raiz=None) -> list:
+    """§176 (23/09/2026): hashes que o ÍNDICE diz ter texto integral preservado e não têm arquivo.
+
+    A fila desta rotina sempre saiu de `data/pistas_imprensa.json`, com `origem == querido_diario`.
+    Evidência preservada por `coletar_diarios_municipais.py` que não gerou pista ficava fora de
+    alcance: quatro itens tinham `texto_integral` no índice desde 12/09/2026 apontando para um
+    `.txt` que nunca entrou no commit da rodada, e nada os procurava nem os acusava."""
+    raiz = raiz or RAIZ
+    return [h for h, it in (idx.get("itens") or {}).items()
+            if it.get("texto_integral") and not (raiz / it["texto_integral"]).exists()]
+
+
+def selar_hashes(idx: dict, raiz=None) -> tuple:
+    """§176: sela `texto_integral_hash` de quem foi preservado antes desta regra. Muda `idx` em
+    memória e devolve (selados, divergentes) — quem chama grava.
+
+    Preenche só quando o hash está AUSENTE. Divergência entre o arquivo em disco e um hash já
+    registrado não é reselada em silêncio: seria apagar o registro de que o arquivo mudou. Volta
+    na lista de divergentes, e o portão 6 bloqueia até alguém dizer o que aconteceu (a redação de
+    dados pessoais, que é a mudança legítima conhecida, recalcula o hash na própria rotina —
+    scripts/remediar_cpf_evidencias.py)."""
+    raiz = raiz or RAIZ
+    selados, divergentes = [], []
+    for h, item in (idx.get("itens") or {}).items():
+        ti = item.get("texto_integral")
+        if not ti:
+            continue
+        arq = raiz / ti
+        if not arq.exists():
+            continue
+        real = sha256(arq.read_bytes())
+        registrado = item.get("texto_integral_hash")
+        if registrado == real:
+            continue
+        if registrado:
+            divergentes.append(f"{h[:12]}… registrado {registrado[:10]}… ≠ disco {real[:10]}… ({ti})")
+        else:
+            item["texto_integral_hash"] = real
+            selados.append(f"{h[:12]}… {real[:10]}… ({ti})")
+    return selados, divergentes
+
+
+def autoteste() -> int:
+    """Testes negativos permanentes das duas regras novas do §176."""
+    import tempfile
+    falhas = []
+    with tempfile.TemporaryDirectory() as d:
+        raiz = Path(d); (raiz / "evidencias").mkdir()
+        (raiz / "evidencias" / "aa.txt").write_text("edição inteira", encoding="utf-8", newline="\n")
+        h_real = sha256((raiz / "evidencias" / "aa.txt").read_bytes())
+        idx = {"itens": {
+            "a" * 64: {"texto_integral": "evidencias/aa.txt"},                                  # sem hash → sela
+            "b" * 64: {"texto_integral": "evidencias/bb.txt"},                                  # arquivo ausente → fila
+            "c" * 64: {"texto_integral": "evidencias/aa.txt", "texto_integral_hash": "0" * 64},  # divergente → acusa
+            "d" * 64: {"texto_integral": "evidencias/aa.txt", "texto_integral_hash": h_real},    # em ordem → silêncio
+            "e" * 64: {"arquivo": "evidencias/aa.json"},                                        # sem texto integral
+        }}
+        fila = fila_do_indice(idx, raiz)
+        if fila != ["b" * 64]:
+            falhas.append(f"fila_do_indice devolveu {[x[:4] for x in fila]}, esperado só o de arquivo ausente")
+        selados, divergentes = selar_hashes(idx, raiz)
+        if len(selados) != 1 or idx["itens"]["a" * 64].get("texto_integral_hash") != h_real:
+            falhas.append(f"selar_hashes não selou o hash ausente: {selados}")
+        if len(divergentes) != 1:
+            falhas.append(f"selar_hashes não acusou a divergência: {divergentes}")
+        if idx["itens"]["c" * 64]["texto_integral_hash"] != "0" * 64:
+            falhas.append("selar_hashes reselou um hash divergente em silêncio — isso apaga o registro da mudança")
+        if selar_hashes(idx, raiz)[0]:
+            falhas.append("selar_hashes não é idempotente")
+    if falhas:
+        print("✗ AUTOTESTE (texto integral):"); [print("   ", f) for f in falhas]; return 1
+    print("✓ AUTOTESTE OK — fila pelo índice, hash ausente selado, divergência acusada e não reselada.")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=0, help="máximo de downloads nesta execução (0 = todos)")
+    ap.add_argument("--autoteste", action="store_true", help="testes negativos das regras do §176")
     a = ap.parse_args()
+    if a.autoteste:
+        return autoteste()
+
 
     pistas = json.load(open(RAIZ / "data" / "pistas_imprensa.json", encoding="utf-8"))["pistas"]
     pendentes, vistos = [], set()
@@ -116,7 +195,14 @@ def main() -> int:
             continue
         pendentes.append(h)
 
-    print(f"{len(vistos)} evidência(s) de diário na fila · {len(pendentes)} sem texto integral")
+    # §176: quem o índice diz ter texto integral preservado e não tem arquivo em disco entra na
+    # mesma fila, venha de pista ou não — foi assim que quatro itens de 12/09/2026 ficaram órfãos.
+    idx = ler("evidencias.json", {"itens": {}})
+    do_indice = [h for h in fila_do_indice(idx) if h not in pendentes]
+    pendentes += do_indice
+
+    print(f"{len(vistos)} evidência(s) de diário na fila · {len(pendentes)} sem texto integral"
+          f" ({len(do_indice)} vindo(s) do índice, sem pista)")
     ok = falha = sem_json = 0
     for i, h in enumerate(pendentes, 1):
         if a.n and i > a.n:
@@ -145,6 +231,19 @@ def main() -> int:
             print(f"  ✗ {h[:12]}…: nenhum txt_url alcançável nesta execução")
             falha += 1
         time.sleep(1.0)  # cortesia com a API pública do Querido Diário
+
+    # §176: sela o hash do texto integral de quem foi preservado antes desta regra.
+    idx = ler("evidencias.json", {"itens": {}})
+    selados, divergentes = selar_hashes(idx)
+    if selados:
+        gravar("evidencias.json", idx)
+        print(f"{len(selados)} hash(es) de texto integral selado(s):")
+        for s in selados[:8]:
+            print("   ", s)
+        if len(selados) > 8:
+            print(f"    … e mais {len(selados) - 8}")
+    for dv in divergentes:
+        print(f"  ⚠ texto integral divergente do hash registrado: {dv}")
 
     print(f"concluído: {ok} completada(s), {falha} sem texto nesta execução, {sem_json} sem evidência-base")
     return 0  # best-effort por desenho: pendência não é erro; a régua de prova continua no julgamento

@@ -194,7 +194,7 @@ def main():
     meta = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8"))
     corte = _data(meta.get("corte", "")) or datetime.date.today()
     saida = cruzar(reg, estados, corte)
-    json.dump(saida, open(RAIZ / "data" / "prazos_uf.json", "w", encoding="utf-8"),
+    json.dump(saida, open(RAIZ / "data" / "prazos_uf.json", "w", encoding="utf-8", newline="\n"),
               ensure_ascii=False, indent=1)
     digesto(saida)
     if "--simular" in sys.argv:

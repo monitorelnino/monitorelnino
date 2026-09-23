@@ -9,7 +9,7 @@ import json, sys, datetime
 D = "data/"; PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estadual"}
 def j(n): return json.load(open(D + n, encoding="utf-8"))
 def w(n, o):
-    json.dump(o, open(D + n, "w", encoding="utf-8"), ensure_ascii=False, indent=1); open(D + n, "a").write("\n")
+    json.dump(o, open(D + n, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); open(D + n, "a", newline="\n").write("\n")
 mun = j("municipios.json"); pistas = j("pistas_imprensa.json"); pistas.setdefault("pistas", [])
 try: err = j("erratas_v224.json")
 except FileNotFoundError: err = []

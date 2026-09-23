@@ -238,8 +238,8 @@ def executar(dry_run=False, buscar=_get):
         return resumo
     resumo["pistas_imprensa"] = len(imp.registrar(fila_imp, novas_imp))
     resumo["pistas_federais"] = len(msf.registrar(fila_fed, novas_fed))
-    json.dump(fila_imp, open(DATA / "pistas_imprensa.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    json.dump(fila_fed, open(DATA / "pistas_sinais.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(fila_imp, open(DATA / "pistas_imprensa.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    json.dump(fila_fed, open(DATA / "pistas_sinais.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     assert _hash_banco() == antes, "TRAVA VIOLADA: o banco mudou durante o vigia da Política Por Inteiro"
     return resumo
 

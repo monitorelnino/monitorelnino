@@ -38,7 +38,7 @@ POR_UF = 12; FORCADOS = {"4213401": "Ponte Serrada/SC — sorteado em 02/09/2026
 
 def j(p): return json.load(open(p, encoding="utf-8"))
 def w(p, o):
-    P.mkdir(exist_ok=True); json.dump(o, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1); open(p, "a").write("\n")
+    P.mkdir(exist_ok=True); json.dump(o, open(p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); open(p, "a", newline="\n").write("\n")
 def porte(pop):
     for nome, a, b in PORTES:
         if a <= pop < b: return nome

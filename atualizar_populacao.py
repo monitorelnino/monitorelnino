@@ -130,7 +130,7 @@ def main():
             print("✗ VALIDAÇÃO FALHOU — nada foi gravado.")
             return 1
         DESTINO.parent.mkdir(exist_ok=True)
-        json.dump(pop, open(DESTINO, "w"), separators=(",", ":"))
+        json.dump(pop, open(DESTINO, "w", newline="\n"), separators=(",", ":"))
         print(f"✓ {len(pop)} municípios · total {sum(pop.values()):,} · {ap} · gravado em {DESTINO.name}")
         return 0
 
@@ -143,7 +143,7 @@ def main():
         print("✗ VALIDAÇÃO FALHOU — nada foi gravado. O índice continua sem o componente populacional.")
         return 1
     DESTINO.parent.mkdir(exist_ok=True)
-    json.dump(pop, open(DESTINO, "w"), separators=(",", ":"))
+    json.dump(pop, open(DESTINO, "w", newline="\n"), separators=(",", ":"))
     print(f"✓ {len(pop)} municípios · total {sum(pop.values()):,} · {ap} · gravado em {DESTINO.name}")
     return 0
 

@@ -285,8 +285,8 @@ def main():
         mudou = 1
 
     if mudou:
-        json.dump(municipios, open(ARQ_MUN, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-        json.dump(pontos, open(ARQ_PONTOS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        json.dump(municipios, open(ARQ_MUN, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        json.dump(pontos, open(ARQ_PONTOS, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
         # Regrava indice.json e percentual_uf.json DERIVADOS da nova base — sem
         # isto, o portão de consistência acusaria "percentual_uf desatualizado"
         # e bloquearia o job mesmo para escrituras neutras ao escore. Como a R7
@@ -298,8 +298,8 @@ def main():
         if r.returncode != 0:
             print("  ✗ recálculo derivado falhou — abortando para bloquear a publicação.")
             return 1
-    json.dump(sorted(processadas), open(ARQ_PROC, "w"), indent=0)
-    json.dump(recusadas, open(ARQ_REC, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(sorted(processadas), open(ARQ_PROC, "w", newline="\n"), indent=0)
+    json.dump(recusadas, open(ARQ_REC, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     print(f"Contribuições: {aprovadas} aprovada(s) · {reservadas} reservada(s) à revisão humana (R7) · "
           f"{len(recusadas)} recusada(s) acumuladas no log.")
     if reservadas:

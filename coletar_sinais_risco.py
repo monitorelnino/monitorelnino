@@ -641,7 +641,7 @@ def coletar(registro: dict, camadas) -> dict:
 def gravar(registro: dict) -> None:
     """Grava o registro em data/sinais_risco.json com indentação de 1 espaço, padrão dos demais arquivos de data/."""
     registro["gerado_em"] = hoje()
-    REGISTRO.write_text(json.dumps(registro, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    REGISTRO.write_text(json.dumps(registro, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"→ {REGISTRO.relative_to(RAIZ)} gravado.")
 
 

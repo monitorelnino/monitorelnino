@@ -52,6 +52,10 @@ jobs:
         run: |
           set -e
           python3 scripts/validar_workflows.py
+          # §178 (23/09/2026): escrita em modo texto sem newline fixado corrompe todo derivado
+          # regenerado fora do runner (CRLF contra o LF que o manifesto sela). Roda sempre, não só
+          # quando dado muda: o defeito entra por *.py, e é aí que ele precisa ser barrado.
+          python3 scripts/verificar_escrita_portavel.py
           node scripts/verificar_estrutura.js
           node scripts/verificar_runtime.js
           node scripts/verificar_runtime_mapas.js
@@ -146,3 +150,16 @@ jobs:
           # cadeia de derivados que ele regenera é a MESMA de scripts/verificar_derivados.sh —
           # divergir foi o que deixou o portão 12 vermelho na main.
           python3 julgar_e_aplicar_descobertas.py --self-test
+          # §175 (23/09/2026): a rotina de redação de CPF regravava o texto preservado sem recalcular
+          # `texto_hash` — e o portão 6 nunca conferia o hash do texto, só o da cópia binária. O
+          # autoteste trava as quatro regras: contagem sem marcadores, escrita em LF, reindexação pelo
+          # arquivo em disco (que é a verdade) e `tamanho` intacto (ele descreve `arquivo`).
+          python3 scripts/remediar_cpf_evidencias.py --autoteste
+          # §176 (23/09/2026): o texto integral do diário oficial não guardava hash nenhum (148 itens),
+          # e quatro apontavam para um .txt que nunca entrou no commit da rodada. O autoteste trava as
+          # duas regras: fila pelo índice (não só pelas pistas) e hash ausente selado, divergente acusado.
+          python3 scripts/preservar_textos_integrais.py --autoteste
+          # §177 (23/09/2026): OCR do PDF escaneado. O autoteste roda sem rede e sem Tesseract, e trava
+          # as regras que dão sentido ao recurso: a fila só chama escaneado, o texto de OCR tem arquivo
+          # próprio (não sobrescreve a camada de texto), CPF redigido antes do hash, marcador e LF.
+          python3 preservar_evidencias.py --autoteste

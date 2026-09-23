@@ -71,7 +71,7 @@ def carregar_cursor(total):
 def salvar_cursor(posicao, total):
     """Grava a posição do rodízio para a próxima execução continuar de onde parou."""
     json.dump({"posicao": posicao, "tamanho_universo": total},
-               open(CURSOR_RESPOSTA, "w", encoding="utf-8"))
+               open(CURSOR_RESPOSTA, "w", encoding="utf-8", newline="\n"))
 
 
 def main():
@@ -103,7 +103,7 @@ def main():
             time.sleep(1.0)  # mesma cortesia de taxa do resto do pipeline
 
     salvar_cursor((pos + limite) % len(universo), len(universo))
-    json.dump(fila, open(FILA, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 
     print(f"Universo de busca (atos de resposta): {len(universo)} UFs; "
           f"{limite} consultadas nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")

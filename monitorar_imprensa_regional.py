@@ -218,7 +218,7 @@ def salvar_cursor(posicao, total):
     """Grava a posição do rodízio para a próxima execução continuar dali."""
     json.dump({"posicao": posicao, "tamanho_universo": total,
               "atualizado_em": time.strftime("%Y-%m-%d")},
-              open(CURSOR, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+              open(CURSOR, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 
 
 def carregar_fila():
@@ -314,7 +314,7 @@ def self_test():
     import tempfile, os
     with tempfile.TemporaryDirectory() as d:
         cur = pathlib.Path(d) / "cursor.json"
-        json.dump({"posicao": 5, "tamanho_universo": 10}, open(cur, "w"))
+        json.dump({"posicao": 5, "tamanho_universo": 10}, open(cur, "w", newline="\n"))
         d2 = json.load(open(cur))
         assert d2["posicao"] == 5
     print("✓ mecanismo de cursor (leitura/gravação) OK")
@@ -364,7 +364,7 @@ def main():
             time.sleep(1.0)  # cortesia de taxa, mesmo padrão das outras rotinas do pipeline
 
     salvar_cursor((pos + limite) % len(universo), len(universo))
-    json.dump(fila, open(FILA, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 
     print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C); "
           f"{limite} consultados nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")

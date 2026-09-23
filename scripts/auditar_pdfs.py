@@ -58,7 +58,7 @@ def montar_html_instrumentado():
 })();
 </script>
 </head>"""
-    TESTE.write_text(html.replace("</head>", hook, 1), encoding="utf-8")
+    TESTE.write_text(html.replace("</head>", hook, 1), encoding="utf-8", newline="\n")
 
 
 def main():
