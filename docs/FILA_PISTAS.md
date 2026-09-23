@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 316 pendente(s) · 15 decidida(s) · A=51 B=208 C=57
+Gerado em 23/09/2026 · 324 pendente(s) · 15 decidida(s) · A=52 B=213 C=59
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -547,6 +547,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3534401/2026-08-21/f6adb26b015035bbd2c3d5ff2503d9b228f233a1.pdf
   - trecho: base em suas atribuições conferidas   pela Lei nº. 3969/05, em sua Reunião Ordinária Nº 365 realizada no dia 20 de agosto de 2026.      RESOLVE:                 Publicar: Apresentação do Instituto Fonte de Vida    Publ
   - ⚠ texto_falso_positivo_provavel
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Pereiras/SP — 1 pendente(s)
+- `742c031931` · nível **A** (6 pts) · busca_web · DUVIDA · **Lei N° 11.445**, 05/01/2007
+  - título: PLANO MUNICIPAL DE - Prefeitura Municipal de Pereiras
+  - url: https://www.pereiras.sp.gov.br/public/admin/globalarq/contrato/arquivo/5d92f86ed6e83979b3c8100a5aceb3a6.pdf
+  - trecho: E-mail: aabínete(õ)pereiras.sp.qnv.hr - PEREIRAS - Estado de São Paulo. LEI ... al^ste^ento de Pereiras, são apresentadas no Quadro 3.1j. / Eng ...
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## São Vicente/SP — 1 pendente(s)
@@ -1512,12 +1519,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jul 25, 2026 ... ... likes, 13 comments - fmc_comunica on July 25, 2026: "Até quando Bauru vai depender da sorte ... plano de contingência claro e ...
   - juiz: portão automático: fonte não oficial
 
-## Bom Jesus dos Perdões/SP — 1 pendente(s)
+## Bom Jesus dos Perdões/SP — 2 pendente(s)
 - `befac87760` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: BOM JESUS DOS PERDÕES PLANO MUNICIPAL DE ... - Bacias PCJ
   - url: https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf
   - trecho: Os estudos realizados em Bom Jesus dos Perdões/SP tiveram o objetivo de determinar as características físicas ... O Plano de Contingência é um documento ...
   - juiz: portão automático: fonte não oficial
+- `e762e0e502` · nível **C** (4 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Notícia - PLANO DE CONTINGÊNCIA AO CORONAVÍRUS. - Prefeitura ...
+  - url: https://bjperdoes.sp.gov.br/noticia/339/plano-de-contingencia-ao-coronavirus/
+  - trecho: Fica declarada situação de emergência em todo o Município de Bom Jesus dos Perdões.
+  - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Campinas/SP — 1 pendente(s)
 - `19f12d575c` · nível **B** (3 pts) · querido_diario · DUVIDA · **DECRETO Nº 24.530**, 08/07/2026
@@ -1546,6 +1559,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: secretarias coordenadas pela chefia SEMANAL 40,00 40,00 40,00  ATENDIMENTO DE OUVIDORIA À POPULAÇÃO MES/ANO 12,00 12,00 12,00  RESPOSTAS DE REQUERIMENTOS/OFICIOS DA  CÂMARA MUNICIPAL  %/ANO 100,00 100,00 100,00  Áreas de
   - juiz: portão automático: triagem do ato: destino=indefinido (autoridade=executivo, objeto=indefinido)
 
+## Lavrinhas/SP — 1 pendente(s)
+- `431efa4aa9` · nível **B** (3 pts) · busca_web · DUVIDA · data 2009 (do trecho)
+  - título: PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO ...
+  - url: https://smastr20.blob.core.windows.net/conesan/Lavrinhas_AE_DU_RS_2011.pdf
+  - trecho: Plano de Contingência é uma eventual ruptura dos taludes e bermas, resultante da ... Lavrinhas/SP – Outubro/2009. Relatórios anteriormente emitidos, referentes ...
+  - juiz: portão automático: fonte não oficial
+
 ## Leme/SP — 1 pendente(s)
 - `468c7d518a` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Plano de contingência: como criar, implementar e testar?
@@ -1567,6 +1587,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
+## Monte Alegre do Sul/SP — 1 pendente(s)
+- `4918e7db22` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: MUNICÍPIO DE MONTE ALEGRE DO SUL PLANO MUNICIPAL DE ...
+  - url: https://smastr20.blob.core.windows.net/conesan/Monte%20Alegre%20do%20Sul_AE_DU_RS_2014.pdf
+  - trecho: ... Plano de Contingência para o Sistema de Esgotamento Sanitário. 351. 6.4. Prognóstico do Sistema de Drenagem Pluvial do Município de Monte Alegre do Sul. 353.
+  - juiz: portão automático: fonte não oficial
+
 ## Pindamonhangaba/SP — 1 pendente(s)
 - `e675ae8771` · nível **B** (4 pts) · imprensa · EX_ANTE · **Decreto Municipal nº 7.087**, 16/06/2026
   - url: https://www.vale360news.com.br/el-nino-em-pindamonhangaba-defesa-civil-monitora-22-setores-de-risco-e-reforca-prevencao/
@@ -1578,6 +1605,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3541307/2026-08-14/7227ab5ec7d6b342418ed995127e0889de671379.pdf
   - trecho: Apresentação de Mapa Potenciométrico;  - Recolhimento de ART do responsável técnico;  - Elaboração de Relatório Técnico das atividades e resultados obtidos.   10. Mapa de riscos      Nº Risco Identificado Probabilidade I
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Queluz/SP — 1 pendente(s)
+- `0768d2e16c` · nível **B** (6 pts) · busca_web · EX_ANTE · data 2024 (do trecho)
+  - título: plano municipal de gestão integrada de resíduos sólidos queluz - sp
+  - url: https://queluz.sp.gov.br/wp-content/uploads/2024/06/P6-PMGIRS-Versao-Preliminar-do-PMGIRS-Queluz.pdf
+  - trecho: Queluz / SP. Disponível em: http://atlasdigital.mdr.gov.br/paginas ... 9842020-DISPE-SOBRE-O-PLANO-DE-CONTINGENCIA.pdf. Acesso em: 11 fev. 2024 ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## Salto/SP — 2 pendente(s)
 - `39f8ac9178` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
@@ -1592,7 +1627,19 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Santo Antônio de Posse/SP — 1 pendente(s)
+## Santo Antônio de Posse/SP — 3 pendente(s)
+- `756e6a8b69` · nível **B** (8 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Municipal n. 2.802**, 15/03/2012
+  - título: Diário Oficial do Município - Santo Antônio de Posse
+  - url: https://pmsaposse.sp.gov.br/wp-content/uploads/2024/03/Edicao-1076.pdf
+  - trecho: CONSIDERANDO a edição do Decreto Municipal n. 2.802, de 15 de março de 2012, que institui e · regulamenta, no âmbito do Município de Santo Antônio de Posse, o sistema municipal de Defesa Civil ... Art. 1º Fica instituído
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `5edede613c` · nível **B** (7 pts) · seguimento_busca_oficial · DUVIDA · **Lei nº 265**, 16/02/2012
+  - título: plano de contingência da política de assistência social ...
+  - url: https://pmsaposse.sp.gov.br/wp-content/uploads/2020/08/Plano-de-Conting%C3%AAncia-SUAS-Santo-Antonio-de-Posse.pdf
+  - trecho: O Município de Santo Antônio de Posse através da lei municipal nº 2657 de
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `7c938d57b7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Santo Antônio de Posse define diretrizes do Plano de Contingência ...
   - url: https://oregional.net/flip/edicao-2522
@@ -1714,6 +1761,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `f18a9c9a62` · nível **C** (1 pts) · imprensa · — · citação não extraída
   - url: https://esginside.com.br/2026/07/24/governo-de-sp-tem-plano-de-contingencia-e-monitoramento-inedito-para-enfrentar-el-nino/
   - trecho: 
+
+## Dourado/SP — 1 pendente(s)
+- `b34956c94d` · nível **C** (5 pts) · busca_web · — · data 2019 (do trecho)
+  - título: Plano Municipal de Saneamento Básico
+  - url: https://do.dourados.ms.gov.br/wp-content/uploads/2019/01/ANEXO-4.pdf
+  - trecho: Jan 23, 2019 ... ... Dourado. Elevatória de Esgoto Bruto. Olinda Pires. Elevatória de Esgoto ... Plano de contingência tem como principal objetivo garantir o ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
 
 ---
 ## Decididas (15) — registro permanente, nunca apagadas

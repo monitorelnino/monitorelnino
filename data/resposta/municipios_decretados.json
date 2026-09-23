@@ -1,6 +1,6 @@
 {
  "_governanca": "RESPOSTA (v3.1 §3; Metodologia §32): contagens, frações e datas do que foi decretado depois, e — desde 15/09/2026 (§32.4) — o ÍNDICE de resposta 0–100, igual a 100 × fração da população (Censo 2022) em município sob decreto no ciclo. Sem faixa, sem peso; nunca combinado com o índice de antecipação (C17). Peso zero no MARÉ (portão verificar_resposta.py). Fatia 'evento observado' em_classificacao até o adaptador municipal existir (C16). Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a). Arquivo reduzido para a página: só municípios sob decreto; ausência = 'não consta decreto reconhecido no ciclo' (S2iD completo; DOE/DOM parcial).",
- "gerado_em": "20/09/2026",
+ "gerado_em": "23/09/2026",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a).",
  "municipios": {
   "2900207": {
@@ -559,6 +559,30 @@
      "data": "03/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.884, nº 2.885, nº 2.886, nº 2.890)",
      "hash": "8abecaf01d33b0362856fd4a912a0c31af86905fe7f5bc6d3f8e880f9b5545e9"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "2101731": {
+   "ibge": "2101731",
+   "nome": "Belágua",
+   "uf": "MA",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
     }
    ],
    "n_eventos": 1
@@ -2165,6 +2189,30 @@
    ],
    "n_eventos": 1
   },
+  "2702355": {
+   "ibge": "2702355",
+   "nome": "Craíbas",
+   "uf": "AL",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1
+  },
   "4306130": {
    "ibge": "4306130",
    "nome": "Cruzaltense",
@@ -3221,6 +3269,54 @@
    ],
    "n_eventos": 1
   },
+  "4206900": {
+   "ibge": "4206900",
+   "nome": "Ibirama",
+   "uf": "SC",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "3520301": {
+   "ibge": "3520301",
+   "nome": "Iguape",
+   "uf": "SP",
+   "decreto": true,
+   "primeiro_decreto": "18/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-nove-cidades-afetadas-por-desastres",
+     "data": "18/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.121, nº 3.122)",
+     "hash": "b1f73ffb63d63878bb471499d8adbadf5746a1327a333aeed4d1bf08051a7f1d"
+    }
+   ],
+   "n_eventos": 1
+  },
   "4310306": {
    "ibge": "4310306",
    "nome": "Ilópolis",
@@ -3457,6 +3553,30 @@
      "data": "17/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.622, nº 2.627)",
      "hash": "fa40af132d0dc95ddfa37c5d1f9b0bd0c4bc8caa1c98360cbe3096ca4b4a316d"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "1301951": {
+   "ibge": "1301951",
+   "nome": "Itamarati",
+   "uf": "AM",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
     }
    ],
    "n_eventos": 1
@@ -4093,6 +4213,30 @@
    ],
    "n_eventos": 1
   },
+  "2406809": {
+   "ibge": "2406809",
+   "nome": "Lajes Pintadas",
+   "uf": "RN",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1
+  },
   "4311601": {
    "ibge": "4311601",
    "nome": "Liberato Salzano",
@@ -4558,6 +4702,30 @@
    ],
    "n_eventos": 1
   },
+  "2509339": {
+   "ibge": "2509339",
+   "nome": "Matinhas",
+   "uf": "PB",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1
+  },
   "2407500": {
    "ibge": "2407500",
    "nome": "Maxaranguape",
@@ -4602,6 +4770,54 @@
      "data": "17/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.622, nº 2.627)",
      "hash": "fa40af132d0dc95ddfa37c5d1f9b0bd0c4bc8caa1c98360cbe3096ca4b4a316d"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "2407609": {
+   "ibge": "2407609",
+   "nome": "Messias Targino",
+   "uf": "RN",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "2509404": {
+   "ibge": "2509404",
+   "nome": "Mogeiro",
+   "uf": "PB",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
     }
    ],
    "n_eventos": 1
@@ -5038,6 +5254,30 @@
    ],
    "n_eventos": 1
   },
+  "3145505": {
+   "ibge": "3145505",
+   "nome": "Olímpio Noronha",
+   "uf": "MG",
+   "decreto": true,
+   "primeiro_decreto": "18/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-nove-cidades-afetadas-por-desastres",
+     "data": "18/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.121, nº 3.122)",
+     "hash": "b1f73ffb63d63878bb471499d8adbadf5746a1327a333aeed4d1bf08051a7f1d"
+    }
+   ],
+   "n_eventos": 1
+  },
   "3534708": {
    "ibge": "3534708",
    "nome": "Ourinhos",
@@ -5418,6 +5658,30 @@
      "data": "14/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.606, nº 2.606, nº 2.607, nº 2.607, nº 2.608, nº 2.608, nº 2.609, nº 2.609)",
      "hash": "8e55cb168af593c4a2a013239b3a42b8aa618eed224d7dc7d472d445771d0da1"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "2310506": {
+   "ibge": "2310506",
+   "nome": "Pedra Branca",
+   "uf": "CE",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
     }
    ],
    "n_eventos": 1
@@ -6071,6 +6335,30 @@
    ],
    "n_eventos": 1
   },
+  "4120606": {
+   "ibge": "4120606",
+   "nome": "Prudentópolis",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1
+  },
   "4315305": {
    "ibge": "4315305",
    "nome": "Quaraí",
@@ -6719,6 +7007,30 @@
    ],
    "n_eventos": 1
   },
+  "4317301": {
+   "ibge": "4317301",
+   "nome": "Santa Vitória do Palmar",
+   "uf": "RS",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1
+  },
   "2513505": {
    "ibge": "2513505",
    "nome": "Santana de Mangueira",
@@ -7243,6 +7555,30 @@
      "data": "17/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.622, nº 2.627)",
      "hash": "fa40af132d0dc95ddfa37c5d1f9b0bd0c4bc8caa1c98360cbe3096ca4b4a316d"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "2412906": {
+   "ibge": "2412906",
+   "nome": "São Tomé",
+   "uf": "RN",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
     }
    ],
    "n_eventos": 1
@@ -7927,6 +8263,30 @@
    ],
    "n_eventos": 1
   },
+  "4127882": {
+   "ibge": "4127882",
+   "nome": "Tunas do Paraná",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1
+  },
   "1304260": {
    "ibge": "1304260",
    "nome": "Uarini",
@@ -8147,6 +8507,30 @@
      "data": "10/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.003, nº 3.003, nº 3.005, nº 3.005)",
      "hash": "fb6f776794ed23051b71b90ef8959e1b1d5cc7e0a9006ea8d0486f85e5cff5e3"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "2517209": {
+   "ibge": "2517209",
+   "nome": "Vieirópolis",
+   "uf": "PB",
+   "decreto": true,
+   "primeiro_decreto": "21/09/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-24-cidades-afetadas-por-desastres-2",
+     "data": "21/09/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
+     "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
     }
    ],
    "n_eventos": 1

@@ -11626,9 +11626,7 @@
     "data": "23/09/2026",
     "candidatos": 3,
     "pistas_novas": 0,
-    "falhas": [
-     "querido_diario: HTTPError"
-    ]
+    "falhas": []
    }
   },
   {
@@ -14900,6 +14898,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "23/09/2026",
+    "candidatos": 2,
+    "pistas_novas": 2,
+    "falhas": []
    }
   },
   {
@@ -14945,6 +14949,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "23/09/2026",
+    "candidatos": 1,
+    "pistas_novas": 1,
+    "falhas": []
    }
   },
   {
@@ -15026,6 +15036,364 @@
     "numero": "Decreto 472",
     "data_ato": "14/08/2024",
     "citacao_completa": true
+   }
+  },
+  {
+   "municipio": "Queluz",
+   "uf": "SP",
+   "ibge": "3541901",
+   "origem": "busca_web",
+   "data": "23/09/2026",
+   "url": "https://queluz.sp.gov.br/wp-content/uploads/2024/06/P6-PMGIRS-Versao-Preliminar-do-PMGIRS-Queluz.pdf",
+   "trecho": "Queluz / SP. Disponível em: http://atlasdigital.mdr.gov.br/paginas ... 9842020-DISPE-SOBRE-O-PLANO-DE-CONTINGENCIA.pdf. Acesso em: 11 fev. 2024 ...",
+   "titulo": "plano municipal de gestão integrada de resíduos sólidos queluz - sp",
+   "registrado_em": "2026-09-23",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "0768d2e16c",
+   "nivel_confianca": "B",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_titulo",
+    "plano_no_titulo"
+   ],
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2024"
+    },
+    "numero": null,
+    "data_ato": "2022",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS SÓLIDOS QUELUZ - SP PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS SÓLIDOS DO MUNICÍPIO DE QUELUZ - SP ATO CONVOCATÓRIO N.º 17/2022 CONTRATO N.º 30/2023 CONTRATANTE ASSOCIAÇÃO PRÓ-GESTÃO DAS ÁGUAS DA BACIA HIDROGRÁFICA DO RIO PARAÍBA DO SUL AVENIDA LUZ DIAS MARTINS – EDIFÍCIO ALPHA CENTER CEP: 27516-245 – RESENDE/RJ CONTRATADA DRZ GEOTECNOLOGIA E CONSULTORIA LTDA. AVENIDA HIGIENÓPOLIS, 32, 4° ANDAR, CENTRO CEP: 86020-080 – LONDRINA/PR MUNICÍPIO PREFEITURA DE QUELUZ RUA PRUDENTE DE MORAES, 100, CENTRO CEP: 12800-000 – QUELUZ/SP 2024 ii PLANO MUNI",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Pereiras",
+   "uf": "SP",
+   "ibge": "3537503",
+   "origem": "busca_web",
+   "data": "23/09/2026",
+   "url": "https://www.pereiras.sp.gov.br/public/admin/globalarq/contrato/arquivo/5d92f86ed6e83979b3c8100a5aceb3a6.pdf",
+   "trecho": "E-mail: aabínete(õ)pereiras.sp.qnv.hr - PEREIRAS - Estado de São Paulo. LEI ... al^ste^ento de Pereiras, são apresentadas no Quadro 3.1j. / Eng ...",
+   "titulo": "PLANO MUNICIPAL DE - Prefeitura Municipal de Pereiras",
+   "registrado_em": "2026-09-23",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "742c031931",
+   "nivel_confianca": "A",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_titulo",
+    "plano_no_titulo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei N° 11.445",
+    "data_ato": "05/01/2007",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "S C.N.P.J 46.634.622/0001-72 Taço MunícipaCJ^ataCino Crísjyí '«31-^88» Rua Dr. Luiz Vergueiro, 151 - Centro - CEP 18.580-000 ~ Telefax:( 14)3888-8100 E-mail: aabínete(õ)pereiras.sp.qnv.hr - PEREIRAS - Estado de São Paulo. LEI N\" 890/12 DE 04 DE DEZEMBRO DE 2012. \"Autoriza o Poder Executivo Municipal a elaborar o Plano Municipal de Saneamento Básico, que engloba as áreas de abastecimento de água potável, esgotamento sanitário, limpeza urbana e manejo de resíduos sólidos e drenagem e manejo de águas pluviais urbanas\" Roberto Luiz Silveira, Prefeito de Pereiras- Estado de São Paulo, no uso de sua",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Monte Alegre do Sul",
+   "uf": "SP",
+   "ibge": "3531209",
+   "origem": "busca_web",
+   "data": "23/09/2026",
+   "url": "https://smastr20.blob.core.windows.net/conesan/Monte%20Alegre%20do%20Sul_AE_DU_RS_2014.pdf",
+   "trecho": "... Plano de Contingência para o Sistema de Esgotamento Sanitário. 351. 6.4. Prognóstico do Sistema de Drenagem Pluvial do Município de Monte Alegre do Sul. 353.",
+   "titulo": "MUNICÍPIO DE MONTE ALEGRE DO SUL PLANO MUNICIPAL DE ...",
+   "registrado_em": "2026-09-23",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "4918e7db22",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_no_titulo",
+    "plano_no_titulo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "goto sanitário 332 6.2.2.3. Diretriz – Construção de novos reservatórios metálicos 333 6.2.3. Cadastro do Sistema de Abastecimento de Água 339 6.2.4. Plano de Contingência para o Sistema de Abastecimento de Água 339 6.3. Prognóstico do Sistema de Esgotamento Sanitário 341 6.3.1. Estudo da Geração de Esgoto Sanitário para os Próximos 20 anos 341 8 Novaes – Engenharia e Construções Ltda. - EPP Rua Bento Carlos, n0. 672 – Centro – São Carlos – 13560-660 – Fone 16- 3412.5060 E.mail: comercial@novaes.eng.br ____________________________________________________________________________________________",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Dourado",
+   "uf": "SP",
+   "ibge": "3514304",
+   "origem": "busca_web",
+   "data": "23/09/2026",
+   "url": "https://do.dourados.ms.gov.br/wp-content/uploads/2019/01/ANEXO-4.pdf",
+   "trecho": "Jan 23, 2019 ... ... Dourado. Elevatória de Esgoto Bruto. Olinda Pires. Elevatória de Esgoto ... Plano de contingência tem como principal objetivo garantir o ...",
+   "titulo": "Plano Municipal de Saneamento Básico",
+   "registrado_em": "2026-09-23",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "b34956c94d",
+   "nivel_confianca": "C",
+   "pontos_confianca": 5,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_na_url",
+    "plano_no_titulo"
+   ],
+   "alertas": [
+    "uf_divergente_na_url",
+    "ano_anterior_ao_ciclo"
+   ]
+  },
+  {
+   "municipio": "Lavrinhas",
+   "uf": "SP",
+   "ibge": "3526605",
+   "origem": "busca_web",
+   "data": "23/09/2026",
+   "url": "https://smastr20.blob.core.windows.net/conesan/Lavrinhas_AE_DU_RS_2011.pdf",
+   "trecho": "Plano de Contingência é uma eventual ruptura dos taludes e bermas, resultante da ... Lavrinhas/SP – Outubro/2009. Relatórios anteriormente emitidos, referentes ...",
+   "titulo": "PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO ...",
+   "registrado_em": "2026-09-23",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "431efa4aa9",
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_na_url",
+    "plano_no_titulo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2009"
+    },
+    "numero": null,
+    "data_ato": "2009",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "PREFEITURA MUNICIPAL DE LAVRINHAS Geraldo Alckmin Governador do Estado de São Paulo Jose Luiz da Cunha Edson Giriboni Prefeito Municipal Secretário de Saneamento e Recursos Hídricos João Francisco Monteiro Bosse Hadimilton Gatti Secretário de Meio Ambiente Coordenador de Saneamento Equipe Técnica Coordenadoria de Saneamento Grupo Executivo Local Raul David do Valle Júnior João Francisco Monteiro Bosse Cleide Poletto Carlos Alberto Modesto Domingos Eduardo G. Baía Francis Marney Maíra T. R. Morsa Maria Aparecida de Campos Marina Boldo Lisboa Contratada Coordenação Geral Paulo Vilela Equipe Técn",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Santo Antônio de Posse",
+   "uf": "SP",
+   "ibge": "3548005",
+   "url": "https://pmsaposse.sp.gov.br/wp-content/uploads/2020/08/Plano-de-Conting%C3%AAncia-SUAS-Santo-Antonio-de-Posse.pdf",
+   "trecho": "O Município de Santo Antônio de Posse através da lei municipal nº 2657 de",
+   "titulo": "plano de contingência da política de assistência social ...",
+   "data": "23/09/2026",
+   "origem": "seguimento_busca_oficial",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "pista_origem": "7c938d57b7",
+   "id": "5edede613c",
+   "nivel_confianca": "B",
+   "pontos_confianca": 7,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_na_url",
+    "plano_no_titulo",
+    "ato_formal"
+   ],
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": "lei municipal nº 265",
+     "data_ato": null
+    },
+    "numero": "Lei nº 265",
+    "data_ato": "16/02/2012",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "trecho_documento": "Lei nº 2657 de 16 de fevereiro de 2012 de Benefícios Eventuais e é baseada no artº. 22 da Lei Federal nº 8.742, de 7 de dezembro de 1993, a qual autoriza a concessão de benefícios eventuais em caso de nascimento, morte, situações de vulnerabilidade temporária e calamidade pública. Quanto aos benefícios eventuais em situação de emergência e calamidade, a Portaria Nº 54, de 01 de Abril de 2020, recomenda: a) A prestação de benefícios eventuais em situações de emergência e calamidade está prevista no caput do Art. 22 da LOAS, Lei nº 8.742, de 07 de dezembro de 1993, e foi regulamentada pelo Decre",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Santo Antônio de Posse",
+   "uf": "SP",
+   "ibge": "3548005",
+   "url": "https://pmsaposse.sp.gov.br/wp-content/uploads/2024/03/Edicao-1076.pdf",
+   "trecho": "CONSIDERANDO a edição do Decreto Municipal n. 2.802, de 15 de março de 2012, que institui e · regulamenta, no âmbito do Município de Santo Antônio de Posse, o sistema municipal de Defesa Civil ... Art. 1º Fica instituído o Plano de Contingência da Defesa Civil do Município de Santo ...",
+   "titulo": "Diário Oficial do Município - Santo Antônio de Posse",
+   "data": "23/09/2026",
+   "origem": "seguimento_busca_oficial",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "pista_origem": "7c938d57b7",
+   "id": "756e6a8b69",
+   "nivel_confianca": "B",
+   "pontos_confianca": 8,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_titulo",
+    "plano_no_trecho",
+    "ato_formal",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": "Decreto Municipal n. 2.802",
+     "data_ato": "15/03/2012"
+    },
+    "numero": "Decreto Municipal n. 2.802",
+    "data_ato": "15/03/2012",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Decreto Municipal n. 2.802, de 15 de março de 2012, que institui e regulamenta, no âmbito do Município de Santo Antônio de Posse, o sistema municipal de Defesa Civil de Santo Antônio de Posse o SIMDEC, DECRETA: Art. 1º Fica instituído o Plano de Contingência da Defesa Civil do Município de Santo Antônio de Posse, conforme consta do Anexo do presente Decreto. § 1º As atribuições dos órgãos e agentes públicos integrantes nas ações de prevenção, preparação e resposta aos desastres serão definidas no Plano de Contingência anexo ao presente Decreto. Município de Santo Antônio de Posse – Estado de S",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Bom Jesus dos Perdões",
+   "uf": "SP",
+   "ibge": "3507100",
+   "url": "https://bjperdoes.sp.gov.br/noticia/339/plano-de-contingencia-ao-coronavirus/",
+   "trecho": "Fica declarada situação de emergência em todo o Município de Bom Jesus dos Perdões.",
+   "titulo": "Notícia - PLANO DE CONTINGÊNCIA AO CORONAVÍRUS. - Prefeitura ...",
+   "data": "23/09/2026",
+   "origem": "seguimento_busca_oficial",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "pista_origem": "befac87760",
+   "id": "e762e0e502",
+   "nivel_confianca": "C",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_so_no_trecho",
+    "plano_no_titulo"
+   ],
+   "alertas": [
+    "risco_errado_no_titulo"
+   ],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "29/07/2021",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "trecho_documento": "Notícia - PLANO DE CONTINGÊNCIA AO CORONAVÍRUS. - Prefeitura Municipal de Bom Jesus dos Perdões . . . Acessibilidade Aumentar Fonte . Diminuir Fonte . Fonte Normal . Alto Contraste . Atalhos . Alt + Z - Abrir Caixa de Pesquisa Alt + C - Foco no Menu Alt + R - Ir para o Rodapé do Site Alt + B - Ativar Alto Contraste Alt + W - Aumentar Letra Alt + S - Diminuir Letra Alt + Q - Letra Normal Alt + N - Ir para o Conteúdo do Site Alt + L - Abrir Libras Mapa do Site . Acesso à informação . De Segunda à Sexta das 10:00 às 16:00 Horas Buscar conteúdo Buscar: Português Idioma Português Português English ",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
    }
   }
  ]

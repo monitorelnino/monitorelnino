@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-23",
- "total_pistas": 331,
- "total_municipios": 168,
+ "total_pistas": 339,
+ "total_municipios": 173,
  "por_nivel": {
-  "A": 53,
-  "B": 210,
-  "C": 68
+  "A": 54,
+  "B": 215,
+  "C": 70
  },
  "grupos": [
   {
@@ -2567,6 +2567,37 @@
    ]
   },
   {
+   "ibge": "3537503",
+   "municipio": "Pereiras",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "742c031931",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.pereiras.sp.gov.br/public/admin/globalarq/contrato/arquivo/5d92f86ed6e83979b3c8100a5aceb3a6.pdf",
+     "titulo": "PLANO MUNICIPAL DE - Prefeitura Municipal de Pereiras",
+     "trecho": "E-mail: aabínete(õ)pereiras.sp.qnv.hr - PEREIRAS - Estado de São Paulo. LEI ... al^ste^ento de Pereiras, são apresentadas no Quadro 3.1j. / Eng ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3551009",
    "municipio": "São Vicente",
    "uf": "SP",
@@ -4447,6 +4478,78 @@
    ]
   },
   {
+   "ibge": "3548005",
+   "municipio": "Santo Antônio de Posse",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "756e6a8b69",
+     "nivel_confianca": "B",
+     "pontos_confianca": 8,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://pmsaposse.sp.gov.br/wp-content/uploads/2024/03/Edicao-1076.pdf",
+     "titulo": "Diário Oficial do Município - Santo Antônio de Posse",
+     "trecho": "CONSIDERANDO a edição do Decreto Municipal n. 2.802, de 15 de março de 2012, que institui e · regulamenta, no âmbito do Município de Santo Antônio de Posse, o sistema municipal de Defesa Civil ... Art. 1º Fica instituído o Plano de Contingência da Defesa Civil do Município de Santo ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5edede613c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://pmsaposse.sp.gov.br/wp-content/uploads/2020/08/Plano-de-Conting%C3%AAncia-SUAS-Santo-Antonio-de-Posse.pdf",
+     "titulo": "plano de contingência da política de assistência social ...",
+     "trecho": "O Município de Santo Antônio de Posse através da lei municipal nº 2657 de",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7c938d57b7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://oregional.net/flip/edicao-2522",
+     "titulo": "Santo Antônio de Posse define diretrizes do Plano de Contingência ...",
+     "trecho": "Feb 3, 2026 ... Santo Antônio de Posse define diretrizes do. Plano de Contingência contra a dengue em. 2026. Jaguariúna divulga lista de pré-selecionados do.",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2929800",
    "municipio": "Saúde",
    "uf": "BA",
@@ -5083,6 +5186,56 @@
      "titulo": null,
      "trecho": "May 13, 2026 ... ... plano de contingência diante das previsões de chuvas intensas associadas ao fenômeno El Niño. ... Rio do Sul SC e Região.. agora fica a ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3507100",
+   "municipio": "Bom Jesus dos Perdões",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "befac87760",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
+     "titulo": "BOM JESUS DOS PERDÕES PLANO MUNICIPAL DE ... - Bacias PCJ",
+     "trecho": "Os estudos realizados em Bom Jesus dos Perdões/SP tiveram o objetivo de determinar as características físicas ... O Plano de Contingência é um documento ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e762e0e502",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://bjperdoes.sp.gov.br/noticia/339/plano-de-contingencia-ao-coronavirus/",
+     "titulo": "Notícia - PLANO DE CONTINGÊNCIA AO CORONAVÍRUS. - Prefeitura ...",
+     "trecho": "Fica declarada situação de emergência em todo o Município de Bom Jesus dos Perdões.",
+     "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -6896,37 +7049,6 @@
    ]
   },
   {
-   "ibge": "3507100",
-   "municipio": "Bom Jesus dos Perdões",
-   "uf": "SP",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "befac87760",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
-     "titulo": "BOM JESUS DOS PERDÕES PLANO MUNICIPAL DE ... - Bacias PCJ",
-     "trecho": "Os estudos realizados em Bom Jesus dos Perdões/SP tiveram o objetivo de determinar as características físicas ... O Plano de Contingência é um documento ...",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "3509502",
    "municipio": "Campinas",
    "uf": "SP",
@@ -7053,6 +7175,37 @@
    ]
   },
   {
+   "ibge": "3526605",
+   "municipio": "Lavrinhas",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "431efa4aa9",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://smastr20.blob.core.windows.net/conesan/Lavrinhas_AE_DU_RS_2011.pdf",
+     "titulo": "PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO ...",
+     "trecho": "Plano de Contingência é uma eventual ruptura dos taludes e bermas, resultante da ... Lavrinhas/SP – Outubro/2009. Relatórios anteriormente emitidos, referentes ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3526704",
    "municipio": "Leme",
    "uf": "SP",
@@ -7147,6 +7300,37 @@
    ]
   },
   {
+   "ibge": "3531209",
+   "municipio": "Monte Alegre do Sul",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "4918e7db22",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://smastr20.blob.core.windows.net/conesan/Monte%20Alegre%20do%20Sul_AE_DU_RS_2014.pdf",
+     "titulo": "MUNICÍPIO DE MONTE ALEGRE DO SUL PLANO MUNICIPAL DE ...",
+     "trecho": "... Plano de Contingência para o Sistema de Esgotamento Sanitário. 351. 6.4. Prognóstico do Sistema de Drenagem Pluvial do Município de Monte Alegre do Sul. 353.",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3538006",
    "municipio": "Pindamonhangaba",
    "uf": "SP",
@@ -7208,8 +7392,8 @@
    ]
   },
   {
-   "ibge": "3548005",
-   "municipio": "Santo Antônio de Posse",
+   "ibge": "3541901",
+   "municipio": "Queluz",
    "uf": "SP",
    "melhor_nivel": "B",
    "n_pistas": 1,
@@ -7220,19 +7404,21 @@
    },
    "pistas": [
     {
-     "id": "7c938d57b7",
+     "id": "0768d2e16c",
      "nivel_confianca": "B",
-     "pontos_confianca": 4,
+     "pontos_confianca": 6,
      "sinais": [
-      "fonte_desconhecida",
+      "fonte_oficial",
       "municipio_no_titulo",
       "plano_no_titulo"
      ],
-     "alertas": [],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
      "origem": "busca_web",
-     "url": "https://oregional.net/flip/edicao-2522",
-     "titulo": "Santo Antônio de Posse define diretrizes do Plano de Contingência ...",
-     "trecho": "Feb 3, 2026 ... Santo Antônio de Posse define diretrizes do. Plano de Contingência contra a dengue em. 2026. Jaguariúna divulga lista de pré-selecionados do.",
+     "url": "https://queluz.sp.gov.br/wp-content/uploads/2024/06/P6-PMGIRS-Versao-Preliminar-do-PMGIRS-Queluz.pdf",
+     "titulo": "plano municipal de gestão integrada de resíduos sólidos queluz - sp",
+     "trecho": "Queluz / SP. Disponível em: http://atlasdigital.mdr.gov.br/paginas ... 9842020-DISPE-SOBRE-O-PLANO-DE-CONTINGENCIA.pdf. Acesso em: 11 fev. 2024 ...",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -8054,6 +8240,40 @@
      "trecho": null,
      "data": "17/06/2026",
      "status": "rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial)"
+    }
+   ]
+  },
+  {
+   "ibge": "3514304",
+   "municipio": "Dourado",
+   "uf": "SP",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "b34956c94d",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "uf_divergente_na_url",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://do.dourados.ms.gov.br/wp-content/uploads/2019/01/ANEXO-4.pdf",
+     "titulo": "Plano Municipal de Saneamento Básico",
+     "trecho": "Jan 23, 2019 ... ... Dourado. Elevatória de Esgoto Bruto. Olinda Pires. Elevatória de Esgoto ... Plano de contingência tem como principal objetivo garantir o ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
