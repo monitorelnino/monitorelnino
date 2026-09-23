@@ -45,8 +45,23 @@ function executavelDoChromium() {
     navegador = await chromium.launch({ executablePath: executavelDoChromium() });
     const contexto = await navegador.newContext({ userAgent: UA, locale: 'pt-BR' });
     const pagina = await contexto.newPage();
-    const resposta = await pagina.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+    // §185: 'networkidle' nunca chega em sítio com conexão longa aberta (analytics, chat, polling) —
+    // defesacivil.sp.gov.br estourou 60 s assim. Cai para condições mais fracas em vez de desistir:
+    // o que interessa é o DOM montado, não a rede ficar silenciosa.
+    let resposta = null;
+    const erros = [];
+    for (const condicao of ['networkidle', 'load', 'domcontentloaded']) {
+      try {
+        resposta = await pagina.goto(url, { waitUntil: condicao, timeout: condicao === 'networkidle' ? 25000 : 45000 });
+        saida.espera_usada = condicao;
+        break;
+      } catch (e) {
+        erros.push(`${condicao}: ${e.name}`);
+      }
+    }
+    if (!resposta && !erros.every((x) => x.includes('Timeout'))) throw new Error(erros.join(' | '));
     saida.http = resposta ? resposta.status() : null;
+    saida.tentativas_de_espera = erros;
     await pagina.waitForTimeout(espera);
 
     saida.titulo = (await pagina.title() || '').trim().slice(0, 200);

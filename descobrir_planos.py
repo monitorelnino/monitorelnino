@@ -253,7 +253,50 @@ def autoteste() -> int:
                 return False
         return True
 
+    def t_filtro_de_link_aceita_documento_e_recusa_navegacao():
+        """Os casos reais da rodada de 23/09, nos dois sentidos."""
+        aceita = [
+            ("https://x.gov.br/uploads/PES-SE-2024-2027.pdf", "Plano Estadual de Saúde vigência 2024-2027"),
+            ("https://x.gov.br/doc/nota_tecnica05.pdf", "EL NIÑO - NOTA TÉCNICA 005/2026"),
+            ("https://x.gov.br/Pagina/NOTAS-TECNICA-CONJUNTA-EL-NINO-ENOS-2026", ""),
+            ("https://x.gov.br/plancon-municipal", "PLANCON"),
+        ]
+        aceita += [
+            # §186: o ato que APROVA o plano é achado relevante (é ele que decide `documentado`, §180)
+            ("https://cides.se.gov.br/uploads/RESOLUCAO-No-08_2024-APROVAR-O-PES-2024-2027.pdf",
+             "Resolução de Aprovação do PES 2024-2027"),
+        ]
+        recusa = [
+            ("https://x.gov.br/servicos/Emergencia/Acionar-Corpo-de-Bombeiros", "Acionar Corpo de Bombeiros"),
+            # ato que não tem nada com plano: nomeação e portaria de sistema de relatório
+            ("https://x.gov.br/uploads/PORTARIA_No_575-SARGSUS.pdf", "PORTARIA_No_575 – SARGSUS"),
+            ("https://x.gov.br/Pagina/Plano-Estadual#addtoany", "Mais…"),
+            ("https://x.gov.br/Pagina/Portaria-de-Nomeacao-COMPEDC-Modelo", ""),
+            ("https://x.gov.br/Pagina/O-que-e-a-rede-de-radioamadores", "Rede Estadual de Emergência de Radioamadores"),
+            ("javascript:void(0)", "Plano"),
+            ("https://www.facebook.com/sharer?u=plano", "Plano"),
+        ]
+        return (all(link_e_candidato(u, t) for u, t in aceita)
+                and not any(link_e_candidato(u, t) for u, t in recusa))
+
+    def t_purga_tira_ruido_e_preserva_pagina_e_canal_1():
+        fila = {"itens": [
+            {"uf": "PR", "setor": "defesa_civil", "canal": "renderizado", "url": "https://x/pagina", "titulo": "p"},
+            {"uf": "PR", "setor": "defesa_civil", "canal": "renderizado/link", "titulo": "Mais…",
+             "url": "https://x/Pagina/Plano#addtoany"},
+            {"uf": "PR", "setor": "defesa_civil", "canal": "renderizado/link", "titulo": "NOTA TÉCNICA 005/2026",
+             "url": "https://x/doc/nota_tecnica05.pdf"},
+            {"uf": "SE", "setor": "saude", "url": "https://y/plano.pdf", "titulo": "wp-json"},
+        ]}
+        fora = purgar_ruido_renderizado(fila)
+        urls = [i["url"] for i in fila["itens"]]
+        return (len(fora) == 1 and "addtoany" in fora[0]["url"]
+                and "https://x/pagina" in urls and "https://y/plano.pdf" in urls
+                and "https://x/doc/nota_tecnica05.pdf" in urls)
+
     return rodar_autoteste({
+        "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
+        "§186 purga tira o ruído e preserva página e canal 1": t_purga_tira_ruido_e_preserva_pagina_e_canal_1,
         "domínio conhecido (BA/saúde)": t_dominio_conhecido,
         "domínio padrão (fallback declarado)": t_dominio_padrao,
         "wp-json: extrai só PDFs, com título e data": t_wp_json_parse,
@@ -265,10 +308,58 @@ def autoteste() -> int:
 
 RENDERIZADOR = RAIZ / "scripts" / "renderizar_pagina.js"
 
-# Termos que fazem um link virar candidato na página renderizada. Lista declarada e certamente
-# incompleta — termo que falta reduz recall, nunca inventa achado (mesma disciplina do §11).
-TERMOS_NO_LINK = ("plano", "conting", "plancon", "seca", "estiagem", "incend", "queimad",
-                  "decreto", "portaria", "resolu", "arbovir", "dengue", "emerg")
+# Termos que fazem um link virar candidato na página renderizada (§185, apertado no §186).
+#
+# A primeira versão aceitava "emerg", "decreto", "portaria", "resolu" e "document", e a rodada real
+# de 23/09 mostrou o preço: entraram na fila humana "Acionar Corpo de Bombeiros", "Portaria de
+# Nomeação COMPDEC — Modelo", "Rede de Radioamadores" e até a âncora de compartilhamento "Mais…".
+# Fila de triagem com ruído é pior que fila curta: ela gasta o tempo humano que devia julgar
+# documento. Termo que falta reduz recall; termo largo demais destrói a utilidade da fila.
+TERMOS_NO_LINK = ("plano", "plancon", "conting", "nota tecnica", "nota técnica", "el nino",
+                  "el niño", "enos", "seca", "estiagem", "incend", "queimad", "arbovir", "dengue")
+
+# Endereços que nunca são documento, por mais que o texto casse: navegação, âncora e compartilhamento.
+LINKS_QUE_NAO_SAO_DOCUMENTO = ("addtoany", "javascript:", "/servicos/", "facebook.com", "twitter.com",
+                               "x.com/intent", "whatsapp", "linkedin.com", "/imprimir", "mailto:",
+                               "#content", "#main")
+MAXIMO_LINKS_POR_PAGINA = 25   # teto por página: a fila é para leitura humana, não para despejo
+
+
+# O ato que APROVA um plano é achado tão relevante quanto o plano (§180: é ele que decide se o
+# registro é `documentado`). Mas "Portaria de Nomeação COMPDEC — Modelo" não é nada disso. A
+# diferença está na companhia: ato + verbo de aprovação, ou ato + nome/sigla de plano.
+RE_ATO_DE_PLANO = re.compile(
+    r"(resolu[çc]|decreto|portaria|lei)[^|]{0,80}?"
+    r"(aprova|institui|homologa|adota|plano|plancon|\bpes\b|\bpas\b)",
+    re.IGNORECASE)
+
+
+def link_e_candidato(href: str, texto: str) -> bool:
+    """O link merece entrar na fila de triagem humana? Função pura, testável (§186)."""
+    u = (href or "").lower()
+    alvo = f"{u} {(texto or '').lower()}"
+    if not u.startswith("http") or u.rstrip("/").endswith("#") or any(x in u for x in LINKS_QUE_NAO_SAO_DOCUMENTO):
+        return False
+    if "#" in u and not u.lower().endswith(".pdf"):
+        return False
+    if any(termo in alvo for termo in TERMOS_NO_LINK):
+        return True
+    return bool(RE_ATO_DE_PLANO.search(alvo))
+
+
+def purgar_ruido_renderizado(fila: dict) -> list:
+    """Tira da fila os links do canal renderizado que o filtro apertado do §186 não aceita mais.
+
+    Nunca mexe em item do canal 1 (wp-json), nem na PÁGINA registrada — só nos links que ela gerou,
+    que são os que entraram por filtro largo. Devolve o que saiu, para o relatório."""
+    fora, ficam = [], []
+    for i in fila.get("itens", []):
+        if i.get("canal") == "renderizado/link" and not link_e_candidato(i.get("url", ""), i.get("titulo") or ""):
+            fora.append(i)
+        else:
+            ficam.append(i)
+    fila["itens"] = ficam
+    return fora
 
 
 def descobrir_renderizado(uf: str, setor: str, url: str, fila: dict, rodar=None) -> list:
@@ -319,9 +410,12 @@ def descobrir_renderizado(uf: str, setor: str, url: str, fila: dict, rodar=None)
                 "data_publicacao": None, "dominio": (url.split("//", 1)[-1].split("/", 1)[0]),
                 "canal": "renderizado", "texto_visivel": (render.get("texto") or "")[:4000],
                 "hash_evidencia": hash_pagina}]
+    candidatos = 0
     for l in render.get("links") or []:
-        alvo = f"{l.get('href','')} {l.get('texto','')}".lower()
-        if any(termo in alvo for termo in TERMOS_NO_LINK) and "#" not in l.get("href", "")[-2:]:
+        if candidatos >= MAXIMO_LINKS_POR_PAGINA:
+            break
+        if link_e_candidato(l.get("href", ""), l.get("texto", "")):
+            candidatos += 1
             achados.append({"uf": uf, "setor": setor, "url": l["href"], "titulo": l.get("texto"),
                             "data_publicacao": None, "dominio": (l["href"].split("//", 1)[-1].split("/", 1)[0]),
                             "canal": "renderizado/link", "achado_em": url, "hash_evidencia": None})
@@ -351,6 +445,16 @@ def main() -> int:
     fila = carregar_fila()
     # §185: canal renderizado, dirigido a uma página. Exige --uf e --setor, porque a pista nasce
     # atribuída a um alvo — pista sem UF não serve para nada a jusante.
+    if "--limpar-ruido" in sys.argv:
+        fora = purgar_ruido_renderizado(fila)
+        gravar("pistas_descobertas.json", fila)
+        print(f"{len(fora)} link(s) do canal renderizado saíram da fila pelo filtro do §186:")
+        for i in fora[:20]:
+            print(f"  − [{i['uf']}/{i['setor']}] {str(i.get('titulo'))[:46]:46s} {i['url'][:70]}")
+        if len(fora) > 20:
+            print(f"  … e mais {len(fora) - 20}")
+        print(f"fila fica com {len(fila['itens'])} item(ns).")
+        return 0
     if "--renderizar" in sys.argv:
         url = sys.argv[sys.argv.index("--renderizar") + 1]
         if "--uf" not in sys.argv or "--setor" not in sys.argv:

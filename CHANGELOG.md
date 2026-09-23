@@ -9,6 +9,49 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §186 · A releitura de PR, SP e SE: o que apareceu, e o muro de robô que devolvia bloqueio com HTTP 200 · 23/09/2026
+
+Classe **coleta e correção de leitura**. Nenhum número do índice muda e nada é promovido — tudo entra na fila R7. O que muda é o que está preservado, e uma prova falsa que o projeto poderia ter registrado sem perceber.
+
+**O que esta entrada foi buscar.** O §182 mostrou que MT, SP, PR e SE eram tratados como fonte suspensa por defeso quando o que estava suspenso era a seção de notícias. Com os domínios corrigidos pelo §184 e a política de `robots.txt` do §185, os quatro voltaram à fila de leitura. MT saiu no §185; aqui estão os outros três.
+
+### Paraná: o instrumento estadual está sendo mantido mensalmente, e ninguém tinha lido
+
+A Coordenadoria Estadual da Defesa Civil do PR tem **uma seção "El Niño" na navegação principal** e uma página dedicada — *Notas Técnica Conjunta El Niño Oscilação Sul-ENOS 2026* — que reúne notas **mensais** produzidas com o SIMEPAR para o biênio 2026/2027, com análise climática, projeção de precipitação, avaliação de risco e recomendação preventiva. Preservadas três, com hash: **nº 03/2026** (846 kB, 6 páginas), **nº 04/2026** (1,3 MB, 7 páginas) e **nº 05/2026** (2,5 MB, 10 páginas), todas assinadas por dois meteorologistas com registro no CREA e pelo chefe do CEGERD.
+
+O índice registra, para o PR, a "Nota Técnica Conjunta nº 01/2026". A leitura mostra que o instrumento **não é peça única de janeiro: é série mensal em curso**, e a nº 05 é de agosto de 2026 — dentro do ciclo pela régua do §5.2. Isso é matéria de reclassificação pela editoria, não de promoção automática: o que a máquina fez foi preservar e enfileirar.
+
+Segundo achado, e ele explica um vazio do índice: o PR mantém o **Plano de Contingência online (PCO)**, ferramenta hospedada no SISDC (Sistema Informatizado de Defesa Civil do Paraná) para que o Coordenador Municipal elabore o PLANCON do seu município, invocando o art. 8º, XI da Lei 12.608. **Nove dos dez registros pontuáveis do PR não têm URL de documento** — e a razão provável é que os planos municipais vivem dentro desse sistema, não em PDF no sítio. Fica declarado como via de cobertura a investigar, com o limite óbvio: sistema de coordenador não é publicação ao cidadão.
+
+Na saúde, o PR publica o Plano Estadual de Saúde em série (2008-2011 até 2020-2023), com a edição **2024-2027** servida pelo documentador oficial do estado.
+
+### Sergipe: o plano de saúde com o ato que o aprova — e o plano de defesa civil que segue sem URL
+
+Preservados, com hash: o **Plano Estadual de Saúde 2024-2027** (192 páginas, 2,5 MB, datado de novembro de 2023) e a **Resolução nº 08/2024 do Conselho Estadual de Saúde, que o aprova**. A resolução é **escaneada, sem camada de texto** — exatamente o caso que o §177 resolveu: entra na fila do OCR, e é o ato que a régua do §180 procura. Também na fila: as Programações Anuais de Saúde de 2021 a 2026 e as resoluções que as aprovam.
+
+Na defesa civil, a página de legislação institucional traz decretos e portarias do órgão (medalha de mérito, edital de voluntariado, acordo com a UFS), mas **não o Plano de Contingência Estadual** que o índice registra para SE ("Sergipe Resiliente: El Niño 2026/27", Cegec, 04/08/2026). Ele continua **sem URL** — lacuna declarada, agora com a busca documentada: o sítio foi lido, renderizado, e o documento não está publicado ali.
+
+### São Paulo: bloqueio de robô devolvido como se fosse página
+
+O portal de SP entregou **107 kB de HTML** por HTTP na primeira leitura, no endereço final `/sec_defesa_civil`. Duas coisas apareceram depois:
+
+- **sob navegador automatizado, a página vem vazia** — título em branco, zero links; há um script de detecção de robô ofuscado no `<head>`;
+- **depois de alguns pedidos, o HTTP passou a devolver "Pardon Our Interruption" com HTTP 200** — o muro do Imperva.
+
+Pela doutrina do §170, isso é **recusa**: o servidor respondeu não, e recusa se respeita. Não se disfarça cliente, não se troca de rota, não se insiste em laço. SP fica como lacuna declarada com o motivo escrito — e nenhum documento de SP foi lido nesta rodada.
+
+**E aqui estava o defeito grave.** Um `403` o projeto já sabia tratar. Um muro com **200** é pior, porque *parece conteúdo*: sem detector, aquela página de 6 kB entraria em `data/evidencias.json` como documento preservado, e o índice passaria a citar como plano de SP uma tela de bloqueio. Seria **prova falsa** — o pior defeito possível num projeto cujo valor é a prova. `detectar_muro_de_robo()` reconhece as assinaturas conhecidas (Imperva, Cloudflare, Akamai) no texto declarativo da página, e `buscar()` levanta `MuroDeRobo` **antes de qualquer preservação**. Só olha resposta pequena e nunca PDF: muro é página curta, e varrer documento grande acharia falso positivo em quem cita o assunto.
+
+### Duas correções de instrumento que a rodada real exigiu
+
+**O renderizador desistia cedo.** `networkidle` nunca chega em sítio com conexão longa aberta — analytics, chat, *polling* —, e SP estourava 60 s assim. A espera passou a ser em cascata: `networkidle` (25 s) → `load` → `domcontentloaded`, registrando qual condição serviu. Foi assim que o portal de SP finalmente respondeu 200 ao navegador (ainda que em branco, pelo muro).
+
+**O filtro de link do §185 era largo e sujou a fila humana.** Aceitava `emerg`, `portaria`, `decreto` e `document`, e a primeira rodada registrou "Acionar Corpo de Bombeiros", "Portaria de Nomeação COMPDEC — Modelo", "Rede Estadual de Radioamadores" e até a âncora de compartilhamento "Mais…". Fila de triagem com ruído é pior que fila curta: gasta o tempo humano que deveria julgar documento. Agora o termo é de plano (`plano`, `PLANCON`, `contingência`, `nota técnica`, `El Niño`, `ENOS`, seca, estiagem, incêndio, queimada, arbovirose, dengue), com teto de 25 links por página e exclusão de navegação, âncora e compartilhamento.
+
+**A primeira versão do aperto errou para o outro lado**, e o erro ficou registrado porque importa: a purga levou junto a **"Resolução de Aprovação do PES 2024-2027"** de SE — que é precisamente o ato que o §180 procura para decidir se um registro é `documentado`. O filtro passou a aceitar ato **acompanhado** de verbo de aprovação ou de nome de plano (`Resolução … aprova o PES`), e a recusar ato solto (`Portaria nº 575 – SARGSUS`, `Portaria de Nomeação`). `--limpar-ruido` tirou **20 itens** da fila; ela ficou com 37, dos quais 22 vindos do canal renderizado.
+
+**Teste.** Catorze casos no autoteste do `robots` (`scripts/testar_robots.py`), bloqueante: os onze do §185 mais os três do muro — muro é recusa, muro não acusa PDF nem resposta grande, e `buscar()` levanta antes de preservar. Dois casos novos no autoteste de `descobrir_planos`, com os links reais das três UFs nos dois sentidos, incluindo o ato de aprovação. Consistência, `recalcular_mare --check`, evidências, escrita portável e portão 12 verdes.
+
 ## §185 · `robots.txt` é pedido, não tranca: a regra decidida, escrita em código e com rastro público · 23/09/2026
 
 Classe **decisão de política de coleta**, com efeito imediato na cobertura. Nenhum número do índice muda. O que muda é o Monitor passar a **ler** o que um sítio oficial publica atrás de um `robots.txt` restritivo — e a deixar registro de cada vez que faz isso.
