@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-23",
- "total": 2176,
+ "total": 2178,
  "com_registro": 267,
- "com_imprensa": 79,
+ "com_imprensa": 81,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -9621,6 +9621,21 @@
    "prioritario": true,
    "categoria": "nao_localizado"
   },
+  "3507100": {
+   "nome": "Bom Jesus dos Perdões",
+   "uf": "SP",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "BOM JESUS DOS PERDÕES PLANO MUNICIPAL DE ... - Bacias PCJ",
+     "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
+     "data": "23/09/2026",
+     "veiculo": "agencia.baciaspcj.org.br",
+     "nivel": "B"
+    }
+   ],
+   "categoria": "nao_localizado"
+  },
   "3507506": {
    "nome": "Botucatu",
    "uf": "SP",
@@ -10410,6 +10425,21 @@
    "nome": "Santo André",
    "uf": "SP",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "3548005": {
+   "nome": "Santo Antônio de Posse",
+   "uf": "SP",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Santo Antônio de Posse define diretrizes do Plano de Contingência ...",
+     "url": "https://oregional.net/flip/edicao-2522",
+     "data": "23/09/2026",
+     "veiculo": "oregional.net",
+     "nivel": "B"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "3548500": {

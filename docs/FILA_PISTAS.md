@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 312 pendente(s) · 15 decidida(s) · A=50 B=205 C=57
+Gerado em 23/09/2026 · 316 pendente(s) · 15 decidida(s) · A=51 B=208 C=57
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -408,6 +408,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Relvado apresenta estudo socioambiental e Plano de Contingência ...
   - url: https://www.independente.com.br/artigo/relvado-apresenta-estudo-socioambiental-e-plano-de-contingencia-em-audiencia-publica
   - trecho: Sep 11, 2026 ... Relvado apresenta estudo socioambiental e Plano de Contingência em audiência pública ... El Niño e sua relação com eventos climáticos.
+
+## Bocaina do Sul/SC — 3 pendente(s)
+- `7c06fceaa8` · nível **A** (6 pts) · seguimento_busca_oficial · — · **Decreto 472**, 14/08/2024
+  - título: Secretaria Municipal de Saúde - Prefeitura de Bocaina do Sul
+  - url: https://bocaina.sc.gov.br/remume-2/
+  - trecho: 14/05/2026 - Decreto 4726 2026 - Membros Conselho · Arquivos · [14/08/2024] Banner Estratificação de Risco · [14/08/2024] Protocolo de Estratificação de Risco às Demandas agudas · [14/08/2024] Protocolo para Dispensação 
+- `adfbaef6ee` · nível **B** (6 pts) · seguimento_busca_oficial · DUVIDA · **Decreto Municipal nº 3.054**, 18/03/2020
+  - título: Estado de Santa Catarina Município de Bocaina do Sul Centro ...
+  - url: https://bocaina.sc.gov.br/uploads/sites/291/2022/08/2069740_09032021_Decreto_3264_novas_restricoes_COVID.pdf
+  - trecho: CONSIDERANDO, o Decreto Municipal nº 3.054 de 18 de março de 2020, que declara situação de · emergência em todo o território do Município de Bocaina do Sul - SC, como medida necessária ao
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `f55e1e41f1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Impactos do El Niño pautam audiência em Bocaina do Sul - SCC10
+  - url: https://scc10.com.br/radioclube/impactos-do-el-nino-pautam-audiencia-em-bocaina-do-sul/
+  - trecho: Jun 15, 2026 ... Impactos do El Niño pautam audiência em Bocaina do Sul. A Defesa Civil pretende expor o plano de contingência ... 2 Três apostas de SC ...
+  - juiz: portão automático: fonte não oficial
 
 ## Ouro/SC — 2 pendente(s)
 - `39cae9c286` · nível **A** (6 pts) · busca_web · EX_ANTE · data 23/06/2026 (do trecho)
@@ -1300,13 +1317,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DdUOT62G-yP/
   - trecho: 7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...
 
-## Bocaina do Sul/SC — 1 pendente(s)
-- `f55e1e41f1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - título: Impactos do El Niño pautam audiência em Bocaina do Sul - SCC10
-  - url: https://scc10.com.br/radioclube/impactos-do-el-nino-pautam-audiencia-em-bocaina-do-sul/
-  - trecho: Jun 15, 2026 ... Impactos do El Niño pautam audiência em Bocaina do Sul. A Defesa Civil pretende expor o plano de contingência ... 2 Três apostas de SC ...
-  - juiz: portão automático: fonte não oficial
-
 ## Bom Jesus/SC — 1 pendente(s)
 - `b1d0b5be45` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: EL NIÑO PROVOCA ALAGAMENTOS EM BOM JESUS DO ...
@@ -1502,6 +1512,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jul 25, 2026 ... ... likes, 13 comments - fmc_comunica on July 25, 2026: "Até quando Bauru vai depender da sorte ... plano de contingência claro e ...
   - juiz: portão automático: fonte não oficial
 
+## Bom Jesus dos Perdões/SP — 1 pendente(s)
+- `befac87760` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: BOM JESUS DOS PERDÕES PLANO MUNICIPAL DE ... - Bacias PCJ
+  - url: https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf
+  - trecho: Os estudos realizados em Bom Jesus dos Perdões/SP tiveram o objetivo de determinar as características físicas ... O Plano de Contingência é um documento ...
+  - juiz: portão automático: fonte não oficial
+
 ## Campinas/SP — 1 pendente(s)
 - `19f12d575c` · nível **B** (3 pts) · querido_diario · DUVIDA · **DECRETO Nº 24.530**, 08/07/2026
   - url: https://data.queridodiario.ok.org.br/3509502/2026-07-13/80bed338bbc1cd2456dbc6b5cba027f2d96e9aff.pdf
@@ -1574,6 +1591,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 19 de junho de 2026.  Nº  1393/2026  –  Comissão  de  Organização,  Bens, Serviços,  Saúde,  Educação,  Cultura,  Servidores,  Meio Ambiente  e  Administração –  Solicitando a  ampliação da oferta  de  vagas  em creche, 
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Santo Antônio de Posse/SP — 1 pendente(s)
+- `7c938d57b7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Santo Antônio de Posse define diretrizes do Plano de Contingência ...
+  - url: https://oregional.net/flip/edicao-2522
+  - trecho: Feb 3, 2026 ... Santo Antônio de Posse define diretrizes do. Plano de Contingência contra a dengue em. 2026. Jaguariúna divulga lista de pré-selecionados do.
+  - juiz: portão automático: fonte não oficial
 
 ## Sarutaiá/SP — 2 pendente(s)
 - `d5880f0fa0` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída

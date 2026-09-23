@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-23",
- "total_pistas": 327,
- "total_municipios": 166,
+ "total_pistas": 331,
+ "total_municipios": 168,
  "por_nivel": {
-  "A": 52,
-  "B": 207,
+  "A": 53,
+  "B": 210,
   "C": 68
  },
  "grupos": [
@@ -1580,6 +1580,74 @@
      "url": "https://globoplay.globo.com/v/14865940/",
      "titulo": "Umuarama reforça prevenção para enfrentar El Niño - Globoplay",
      "trecho": "Aug 13, 2026 ... Detalhes. Meio-Dia Paraná - Noroeste. Umuarama reforça prevenção para enfrentar El Niño ... Município também atualiza plano de contingência da ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4202438",
+   "municipio": "Bocaina do Sul",
+   "uf": "SC",
+   "melhor_nivel": "A",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 1,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "7c06fceaa8",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://bocaina.sc.gov.br/remume-2/",
+     "titulo": "Secretaria Municipal de Saúde - Prefeitura de Bocaina do Sul",
+     "trecho": "14/05/2026 - Decreto 4726 2026 - Membros Conselho · Arquivos · [14/08/2024] Banner Estratificação de Risco · [14/08/2024] Protocolo de Estratificação de Risco às Demandas agudas · [14/08/2024] Protocolo para Dispensação de Fórmulas ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "adfbaef6ee",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://bocaina.sc.gov.br/uploads/sites/291/2022/08/2069740_09032021_Decreto_3264_novas_restricoes_COVID.pdf",
+     "titulo": "Estado de Santa Catarina Município de Bocaina do Sul Centro ...",
+     "trecho": "CONSIDERANDO, o Decreto Municipal nº 3.054 de 18 de março de 2020, que declara situação de · emergência em todo o território do Município de Bocaina do Sul - SC, como medida necessária ao",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f55e1e41f1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://scc10.com.br/radioclube/impactos-do-el-nino-pautam-audiencia-em-bocaina-do-sul/",
+     "titulo": "Impactos do El Niño pautam audiência em Bocaina do Sul - SCC10",
+     "trecho": "Jun 15, 2026 ... Impactos do El Niño pautam audiência em Bocaina do Sul. A Defesa Civil pretende expor o plano de contingência ... 2 Três apostas de SC ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -6356,38 +6424,6 @@
    ]
   },
   {
-   "ibge": "4202438",
-   "municipio": "Bocaina do Sul",
-   "uf": "SC",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "f55e1e41f1",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://scc10.com.br/radioclube/impactos-do-el-nino-pautam-audiencia-em-bocaina-do-sul/",
-     "titulo": "Impactos do El Niño pautam audiência em Bocaina do Sul - SCC10",
-     "trecho": "Jun 15, 2026 ... Impactos do El Niño pautam audiência em Bocaina do Sul. A Defesa Civil pretende expor o plano de contingência ... 2 Três apostas de SC ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "4202537",
    "municipio": "Bom Jesus",
    "uf": "SC",
@@ -6860,6 +6896,37 @@
    ]
   },
   {
+   "ibge": "3507100",
+   "municipio": "Bom Jesus dos Perdões",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "befac87760",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
+     "titulo": "BOM JESUS DOS PERDÕES PLANO MUNICIPAL DE ... - Bacias PCJ",
+     "trecho": "Os estudos realizados em Bom Jesus dos Perdões/SP tiveram o objetivo de determinar as características físicas ... O Plano de Contingência é um documento ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3509502",
    "municipio": "Campinas",
    "uf": "SP",
@@ -7136,6 +7203,37 @@
      "titulo": null,
      "trecho": "Apresentação de Mapa Potenciométrico; \n- Recolhimento de ART do responsável técnico; \n- Elaboração de Relatório Técnico das atividades e resultados obtidos. \n\n10. Mapa de riscos \n\n \n\nNº Risco Identificado Probabilidade Impacto Medidas Preventivas \nPlano de \n\nContingência \n\n1 \n\nContratação de \n\nlabor",
      "data": "14/08/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3548005",
+   "municipio": "Santo Antônio de Posse",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "7c938d57b7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://oregional.net/flip/edicao-2522",
+     "titulo": "Santo Antônio de Posse define diretrizes do Plano de Contingência ...",
+     "trecho": "Feb 3, 2026 ... Santo Antônio de Posse define diretrizes do. Plano de Contingência contra a dengue em. 2026. Jaguariúna divulga lista de pré-selecionados do.",
+     "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
