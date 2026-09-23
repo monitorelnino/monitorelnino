@@ -81,7 +81,22 @@ def ja_publicou_hoje():
     except Exception:  # noqa: BLE001 — meta ilegível nunca bloqueia a rodada
         return False
 
-def rodar(cmd, obrigatorio=False, env_extra=None):
+# TETO DE TEMPO POR ETAPA (23/09/2026). Achado real: a rodada diária de 23/09 ficou 45+ min
+# num passo que, fora do dia de publicação, só executa dois scripts antes de encerrar na
+# trava de cadência — e um deles não toca a rede. O `subprocess.run` não tinha timeout, o
+# passo do workflow não tinha `timeout-minutes`, e o job herda o padrão de 6 HORAS do
+# GitHub. Somado à trava de concorrência (`cancel-in-progress: false`), uma única fonte
+# pendurada segurava a fila de atualização o dia inteiro, sem nada reprovar.
+#
+# O teto por etapa é a correção certa, não o teto do job: uma fonte lenta mata a etapa dela
+# e a rodada segue — que é exatamente a disciplina que o pipeline já declara ("nenhum
+# coletor é bloqueante; fonte fora do ar é lacuna declarada"). Sem isso, a única saída era
+# matar a rodada inteira e perder também o que já tinha coletado.
+TETO_ETAPA_S = 45 * 60          # etapas pesadas do dia de publicação
+TETO_ETAPA_DIARIA_S = 15 * 60   # coletores que rodam todo dia e nunca pontuam
+
+
+def rodar(cmd, obrigatorio=False, env_extra=None, teto_s=TETO_ETAPA_S):
     """Executa um subprocesso do pipeline; se obrigatorio=True, aborta o processo com o mesmo código de saída em caso de falha."""
     # 21/09/2026 (§124): flush obrigatório. Fora de um terminal, o stdout do Python é
     # bufferizado em blocos, mas os subprocessos escrevem direto no descritor. Sem o flush,
@@ -91,14 +106,22 @@ def rodar(cmd, obrigatorio=False, env_extra=None):
     # que "[aviso] iri_plume: ..." passou despercebido rodada após rodada.
     print(f"\n=== {' '.join(cmd)} ===", flush=True)
     env = {**os.environ, **(env_extra or {})}
-    r = subprocess.run(cmd, cwd=RAIZ, env=env)
+    try:
+        codigo = subprocess.run(cmd, cwd=RAIZ, env=env, timeout=teto_s).returncode
+    except subprocess.TimeoutExpired:
+        # O filho é morto; netos que ele tenha deixado podem sobreviver até o fim do job.
+        # Ainda assim a rodada volta a andar, que é o ponto.
+        codigo = 124
+        print(f"[aviso] etapa estourou o teto de {teto_s // 60} min e foi encerrada: "
+              f"{' '.join(cmd)} — tratada como fonte fora do ar (lacuna declarada), "
+              f"a rodada continua", flush=True)
     sys.stdout.flush()
-    if r.returncode != 0 and obrigatorio:
+    if codigo != 0 and obrigatorio:
         print(f"[erro] etapa obrigatória falhou: {' '.join(cmd)}", flush=True)
-        sys.exit(r.returncode)
-    if r.returncode != 0:
-        print(f"[aviso] etapa não obrigatória falhou (código {r.returncode}): {' '.join(cmd)}", flush=True)
-    return r.returncode == 0
+        sys.exit(codigo)
+    if codigo != 0:
+        print(f"[aviso] etapa não obrigatória falhou (código {codigo}): {' '.join(cmd)}", flush=True)
+    return codigo == 0
 
 def hash_arquivo(p):
     """SHA-256 do conteúdo do arquivo (string vazia se ainda não existir), usado para detectar se a etapa de transferências mudou os dados."""
@@ -157,7 +180,7 @@ def main():
     # cadência semanal do índice, então "o que está acontecendo agora" só se atualizava às
     # segundas. Sinais como ONI, avisos do INMET e focos do INPE mudam todo dia na fonte; a
     # chamada sai daqui de dentro do portão semanal e roda incondicionalmente, todo dia.
-    rodar([sys.executable, "coletar_sinais_risco.py"])
+    rodar([sys.executable, "coletar_sinais_risco.py"], teto_s=TETO_ETAPA_DIARIA_S)
 
     # 18/09/2026 (rotina diária, portão 12 vermelho na main): gerar_monitor_saude.py copia
     # sinais.uf[UF].fogo.focos_24h de data/sinais_risco.json para data/monitor_saude.json
@@ -168,7 +191,7 @@ def main():
     # regravado quando a fonte muda). Regenerar aqui, todo dia, mantém o derivado
     # sincronizado com o sinal que ele copia; a chamada do bloco semanal (mais abaixo)
     # continua — é idempotente sobre os mesmos dados quando nada mudou.
-    rodar([sys.executable, "gerar_monitor_saude.py"])
+    rodar([sys.executable, "gerar_monitor_saude.py"], teto_s=TETO_ETAPA_DIARIA_S)
 
     if not em_intensivo and dia_semana != DIA_PUBLICACAO:
         print(f"[cadência] fora da semana intensiva e não é {NOME_DIA_PUBLICACAO} "
