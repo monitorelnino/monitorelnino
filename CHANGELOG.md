@@ -9,6 +9,30 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §179 · O registro que faltava: duas mudanças mescladas sem entrada, e a curadoria de domínios da defesa civil · 23/09/2026
+
+Classe **correção do registro público**. Nenhum código de produção muda aqui além de uma referência errada em comentário; o que muda é o `CHANGELOG.md` passar a conter o que a `main` já contém.
+
+**A auditoria.** Cruzando os **150** títulos `## §N` do `CHANGELOG.md` com os números citados nas mensagens de commit da `main`, aparecem duas mudanças mescladas **sem entrada nenhuma**:
+
+1. **§171 — rodada completa sob demanda** (PR #358, `8220dcf`). Código na `main`, portão fixando as quatro propriedades, e o `CHANGELOG` pulando de §172 para §170. A entrada foi escrita agora, no lugar cronológico, a partir do código mesclado (conferido: `FORCAR_RODADA_COMPLETA` em `atualizar.py:168`, a entrada `rodada_completa_agora` e o teto em `atualizar.yml`, as quatro asserções em `scripts/testar_cadencia_publicacao.py`).
+2. **A curadoria de domínios da defesa civil** (`7104d42`), que a mensagem do commit numerou como "§164" — número que na mesma leva já pertencia a outra entrada. Ficou sem entrada própria e com o comentário do código citando uma seção que fala de outra coisa. Passa a ser esta.
+
+**A curadoria, que é o conteúdo perdido.** Segundo o registro da rodada de 23/09/2026 (mensagem de `7104d42`), na primeira rodada real da sonda de camada **13 das 27 UFs não responderam a nada**, porque o palpite `defesacivil.<uf>.gov.br` estava errado para elas — a lacuna de curadoria que a própria docstring de `descobrir_planos.py` declara. Sondados seis padrões por UF, **sete** responderam HTTP 200 e entraram em `DOMINIOS_CONHECIDOS`, conferidos um a um: **AL**, **CE**, **MS**, **PB** (a Defesa Civil fica sob o Corpo de Bombeiros), **PE** e **PI** (sem domínio próprio: portal do estado) e **SP**. Seguem **sem domínio localizado**, como lacuna declarada e nunca como ausência de plano: **AP, DF, RN, RO e TO** — e **SE**, que responde mas recusa o robô. O comentário no código passa a citar §179.
+
+**No mesmo commit, uma correção de segurança pega pelo CI.** `coletar_painel_am.yml` usava `actions/upload-artifact@v4` sem fixar por SHA, e o projeto exige SHA em toda Action (`scripts/verificar_seguranca.js`). Foi fixado no mesmo SHA que `atualizar.yml` já usava — conferido hoje: `ea165f8d…`.
+
+**Os outros buracos da numeração, conferidos.** Além de §160 (aplicado em ramo próprio hoje) e §171, a sequência não tem §113, §114 e §115 — e **nenhum commit do repositório cita esses três números**. São números pulados, não trabalho perdido. Fica registrado para a próxima auditoria não caçá-los.
+
+**Por que isto não vira portão.** A regra óbvia — "a numeração não pode ter buraco" — brigaria com o fluxo de PRs paralelos: enquanto um ramo carrega o §178 e outro o §179, cada um vê um buraco que não é seu, e o portão fecharia vermelho nos dois. Em vez de porta, fica a **conferência**, de uma linha, para rodar quando se quiser auditar o registro:
+
+```
+python3 -c "import re;from pathlib import Path;n=[int(x) for x in re.findall(r'^## §(\d+)',Path('CHANGELOG.md').read_text(encoding='utf-8'),re.M)];print('buracos:',sorted(set(range(min(n),max(n)+1))-set(n)))"
+```
+
+**Teste.** Portão 12 em árvore limpa (o `CHANGELOG.md` entra no manifesto), consistência e workflows verdes.
+
+
 ## §178 · A escrita portável deixa de depender de atenção: 78 sítios corrigidos e um portão que impede a volta · 23/09/2026
 
 Classe **encanamento com efeito na auditabilidade**. Nenhum dado, número ou página muda — no runner (Linux) o comportamento é idêntico byte a byte. O que muda é quem pode reproduzir o que o robô publica.
@@ -148,6 +172,21 @@ Duas rodadas automáticas descartaram a correção dessa página. O mecanismo, p
 **O portão passa a exigir teto em todo job de todo workflow** — eram **cinco** sem teto no repositório, não um. Recusa também `timeout-minutes >= 360`, que é declarar o padrão e chamá-lo de teto.
 
 ---
+
+## §171 · Rodada completa sob demanda: destrava declarada, só pelo botão, sem virar atalho · 23/09/2026
+
+Classe **encanamento operacional**; nenhum dado, número ou página muda. *Entrada escrita a posteriori em 23/09/2026: a mudança foi mesclada (PR #358) sem registro no `CHANGELOG.md` — ver §179.*
+
+**O pedido.** A editoria quis antecipar uma rodada de atualização **completa** fora do domingo, para ver o pipeline inteiro rodar antes da cadência.
+
+**Por que o que existia não servia.** O *ensaio* roda tudo e **não comita** — serve para olhar o pipeline, não para publicar uma edição. E publicar fora do dia exigiria mexer em `INTENSIVO_DE`/`INTENSIVO_ATE`, que são variáveis do repositório e valem **também para os crons**: uma edição fora de hora viraria uma semana inteira de rodadas completas, e ninguém lembraria de desfazer.
+
+**A destrava, declarada e efêmera.** `FORCAR_RODADA_COMPLETA` só é acionada pelo botão manual — vem de `github.event.inputs.rodada_completa_agora`, e um cron não tem `event.inputs`, então nenhuma rodada agendada a alcança. Sai no log da rodada, dizendo que hoje não é o dia de publicação e que a edição levará a data de hoje. Não toca `INTENSIVO_DE`/`ATE` nem `data/publicacao.json` — o regime do domínio não muda. E não suprime o commit, ao contrário do ensaio.
+
+**Por que a forma importa.** A cadência semanal é compromisso público: `obrigado.html` e `pesquisadores.html` dizem ao leitor quando o banco muda. Por isso a destrava é decisão tomada **a cada disparo**, nunca herdada de uma configuração esquecida.
+
+**Trava.** O portão de cadência (`scripts/testar_cadencia_publicacao.py`) fixa as quatro propriedades e reprova se qualquer uma cair: destrava ausente do código, entrada ausente do workflow, destrava solta de cron, ou destrava acrescentada à condição do commit — que a transformaria em ensaio disfarçado. Testado nos dois sentidos.
+
 
 ## §170 · Os planos do AM pela reserva de arquivo, com procedência declarada — e a recusa que não se contorna · 23/09/2026
 
