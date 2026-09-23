@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-23",
- "total": 2171,
- "com_registro": 266,
- "com_imprensa": 74,
+ "total": 2172,
+ "com_registro": 267,
+ "com_imprensa": 75,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -6821,6 +6821,21 @@
    "prioritario": true,
    "categoria": "nao_localizado"
   },
+  "3125952": {
+   "nome": "Fervedouro",
+   "uf": "MG",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - Saae Fervedouro",
+     "url": "https://www.saaefervedouro.com.br/uploads/conteudoarquivo_arquivo/2528/fervedouroplanosaneamento.pdf",
+     "data": "23/09/2026",
+     "veiculo": "saaefervedouro.com.br",
+     "nivel": "B"
+    }
+   ],
+   "categoria": "nao_localizado"
+  },
   "3126109": {
    "nome": "Formiga",
    "uf": "MG",
@@ -10559,6 +10574,11 @@
    "nome": "Votuporanga",
    "uf": "SP",
    "prioritario": true,
+   "categoria": "plano",
+   "documento": "DECRETO Nº 20 472, de 09 de junho de 2026 (Aprova a 6ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON) JORGE AUGUSTO SEBA, Prefeito do Município de Votuporanga, Estado de São Paulo, no uso de suas a",
+   "url": "https://data.queridodiario.ok.org.br/3557105/2026-06-10/82d153f4a3fef5c49059ba180414a79eafb51fa0.pdf",
+   "data": "09/06/2026",
+   "fonte": "Diário Oficial do Município (via Querido Diário) — ato lido e classificado automaticamente em 23/09/2026 (§158)",
    "imprensa": [
     {
      "titulo": "Votuporanga terá plano de contingenciamento para evitar falta ... - G1",
@@ -10574,8 +10594,7 @@
      "veiculo": "smastr16.blob.core.windows.net",
      "nivel": "B"
     }
-   ],
-   "categoria": "nao_localizado"
+   ]
   },
   "4100400": {
    "nome": "Almirante Tamandaré",

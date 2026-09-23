@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 267 pendente(s) · 14 decidida(s) · A=44 B=181 C=42
+Gerado em 23/09/2026 · 286 pendente(s) · 15 decidida(s) · A=49 B=189 C=48
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -59,6 +59,53 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/DdCJ3KeTUzj/
   - trecho: Sep 8, 2026 ... renatosilvacascavel on September 8, 2026: "Cascavel se prepara para enfrentar os efeitos do El Niño. 🌧️ Nossa Defesa Civil está em campo ...
   - juiz: portão automático: fonte não oficial
+
+## Curitiba/PR — 9 pendente(s)
+- `0bb73f1765` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Hospitais privados precisam apresentar plano de contingência - Prefeitura de Curitiba
+  - url: https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236
+  - trecho: Documento estabelece que os hospitais privados devem prever o remanejamento de no mínimo de 50% dos leitos clínicos e cirúrgicos para atendimento exclusivo da covid-19
+- `d0f22de20c` · nível **B** (6 pts) · seguimento_busca_oficial · DUVIDA · **Lei Municipal nº 14.286**, 12/07/2013
+  - título: PREFEITURA MUNICIPAL DE CURITIBA DECRETO Nº 1868
+  - url: https://mid.curitiba.pr.gov.br/2024/00444371.pdf
+  - trecho: Poder Executivo poderá indicar a Reserva de Contingência como aporte local, quando · da formulação de convênios a serem assinados com outras esferas de governo. ... Art. 9º Outras instruções para o cumprimento da legisla
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ad219e719d` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Situação de Emergência é encerrada em Curitiba, município ...
+  - url: https://saude.curitiba.pr.gov.br/noticias/2168-situacao-de-emergencia-e-encerrada-em-curitiba-municipio-segue-com-novo-protocolo.html
+  - trecho: O novo decreto prevê regras de transição para esse momento para que seja possível assegurar a continuidade das ações que compõem o plano de contingência contra o coronavírus, com a prorrogação de contratos vigentes, além
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `6a630cc284` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: El Niño deve atingir o Paraná em julho com aumento de chuvas
+  - url: https://bandnewsfmcuritiba.com/el-nino-deve-atingir-o-parana-em-julho-com-aumento-de-chuvas/
+  - trecho: Jun 11, 2026 ... ... Plano de Contingência e a criação de fundos municipais de Defesa Civil. ... Endereço: Rua Afonso Pedri, 65 - Pilarzinho, Curitiba - PR Telefone ...
+- `164be351c2` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · **Decreto Municipal n.º 421**, 16/03/2020
+  - título: DECRETO - AVISO DE PUBLICAÇÃO Nº 123
+  - url: https://saude.curitiba.pr.gov.br/images/Decreto%20n%C2%BA%20700.2022.pdf
+  - trecho: social, que compõem o Plano de Contingência para Resposta às Emergências em · Saúde Pública, e evitar prejuízo ao atendimento da população, fica instituído regime de · transição para os seguintes atos destinados ao enfre
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `93f2b30e7a` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
+  - título: Diário oficial de 2026-01-22
+  - url: https://data.queridodiario.ok.org.br/4106902/2026-01-22/eab7a52d061a5a0fe550b5c54d56b05c77693667.pdf
+  - trecho: infantil, armazéns da família, mercados, Marca: Modelo: Valor unitário: R$ 30,0000 Quantidade: 3650,0000 - METRO QUADRADO Protocolo 01-143567/2025 Anexo 192.1 - PE Nº 07_2025 - ATA REGISTRO PREÇOS ASSIN do Trâmite 192 IN
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `c2c2f54bb9` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · **Lei nº 14.133**, 2021
+  - título: Diário oficial de 2026-02-18
+  - url: https://data.queridodiario.ok.org.br/4106902/2026-02-18/fcc4c7e93b9b30b2c390f9f0c78a1c9cc748beeb.pdf
+  - trecho: U R H S U ni da de d e R ec ur so s H um . e S aú de O cu p. U G T U LC U LC P D M U C C Á re a T ar ifá ria C oo rd en ad or ia d e P la ne ja m en to e S up or te a o Ju rí di co E qu ip . d e T ra ns po rt e P ro je t
+  - juiz: portão automático: data do ato incompleta (2021)
+- `b1c83eec27` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
+  - título: Diário oficial de 2026-01-28
+  - url: https://data.queridodiario.ok.org.br/4106902/2026-01-28/34769132c312aa234d59d859c86d8f6817e93cba.pdf
+  - trecho: QUARTA – DA RATIFICAÇÃO Permanecem em vigor e inalteradas as demais cláusulas e condições da ata de registro de preços originária que não foram modificadas por este termo. E para constar, foi lavrado o presente, que depo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `b641fea0e5` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
+  - título: Diário oficial de 2026-02-06
+  - url: https://data.queridodiario.ok.org.br/4106902/2026-02-06/ad8977333887bb17f454d5be3dff627ab08cb8ba.pdf
+  - trecho: 1.000m2. Marca: Não se aplica. Modelo: Não se aplica. Valor unitário: R$ 1.000,0000 Quantidade: 21,0000 - UNIDADE Protocolo 01-143579/2025 Anexo 188.3 - PE Nº 06_2025 - ATA REGISTRO PREÇOS.PDF do Trâmite 188 INFORMAÇÃO -
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Foz do Iguaçu/PR — 1 pendente(s)
 - `00461f6b27` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -449,6 +496,57 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 6, 2026 ... ... plano de contingência e previsão orçamentária para enfrentar impactos do El Niño em Vinhedo. 16/06/2026 14:05. Nayla cobra plano de ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
+## Votuporanga/SP — 9 pendente(s)
+- `a9a8b28bac` · nível **A** (8 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 204**, 09/06/2026
+  - título: Aprova a 6ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/13164/
+  - trecho: DECRETO Nº 20 472, de 09 de junho de 2026 (Aprova a 6ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON) JORGE AUGUSTO SEBA, Prefeito do Município de Votuporanga, Estado de São Paulo, no uso de suas a
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `d5d0fd8e7d` · nível **A** (8 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 124**, 15/07/2020
+  - título: Aprova a 3a Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/7585/
+  - trecho: DECRETO N° 12 464, de 15 de julho de 2020 (Aprova a 3ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON) JOÃO EDUARDO DADO LEITE DE CARVALHO, Prefeito do Município de Votuporanga, Estado de São Paulo,
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `84a881d48b` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 158**, 29/06/2023
+  - título: Aprova a 5ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/1427/
+  - trecho: (Aprova a 5ª Edição do PLANO ... legais; DECRETA: Art. 1º Fica aprovado a 5ª Edição do Plano de Contingência de Proteção e Defesa Civil – PLANCON do Município de Votuporanga....
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `241d37933f` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 144**, 13/04/2022
+  - título: Aprova a 4ª Edição do PLANO DE CONTINGÊNCIA DE PROTEÇÃO E ...
+  - url: https://www.votuporanga.sp.gov.br/portal/leis_decretos/4360
+  - trecho: (Aprova a 4ª Edição do PLANO ... legais; DECRETA: Art. 1º Fica aprovada a 4ª Edição do Plano de Contingência de Proteção e Defesa Civil – PLANCON do Município de Votuporanga....
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `ebc84478b1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2022 (do trecho)
+  - título: Votuporanga terá plano de contingenciamento para evitar falta ... - G1
+  - url: https://g1.globo.com/sp/sao-jose-do-rio-preto-aracatuba/noticia/2022/09/13/votuporanga-tera-plano-de-contingenciamento-para-evitar-falta-de-agua.ghtml
+  - trecho: Sep 13, 2022 ... A empresa responsável pelo abastecimento de água em Votuporanga (SP) ... plano de contingência para evitar a falta de água no município. O ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
+- `e2b73559c8` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: p gestão integrada de plano municipal de
+  - url: https://smastr16.blob.core.windows.net/cpla/2017/05/votuporanga.pdf
+  - trecho: QUESTÃO SOCIOAMBIENTAL NAS EMPRESAS MOVELEIRAS DO POLO DE VOTUPORANGA (SP) ... Como ações estruturantes do Plano de Contingência, o Plano Municipal de ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
+- `ac326b52aa` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
+  - título: Diário oficial de 2026-02-20
+  - url: https://data.queridodiario.ok.org.br/3557105/2026-02-20/10c9f8a3467bc3a282b035b0964ab8aa6d79d72e.pdf
+  - trecho: internacional de educação, em Votuporanga. Informou também que está prevista a realização, pelo Consórcio As sin ad o po r 1 2 pe ss oa s: A LE XA ND RE M IO TT O DA C OS TA , A NT ON IO C AR LO S SA NT AN A DA S IL VA ,
+  - juiz: portão automático: data do ato incompleta (2026)
+- `d85304d71b` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 5.927**, 02/03/2017
+  - título: Diário oficial de 2025-10-27
+  - url: https://data.queridodiario.ok.org.br/3557105/2025-10-27/17b7e57b76a1c6d2b3990aab37da8c375afc5198.pdf
+  - trecho: digitalmente) As si na do p or 5 p es so as : W AG N ER H AS H IM O TO , D AN N A SA N TO S D E O LI VE IR A C EZ AR M O R IA L PI G N AT AR I, LU AN V IN IC IU S LA C ER D A PI M EN TA , M AU R IL O P IM EN TA D E M O R
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `1edaadc6ce` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 5.927**, 02/03/2017
+  - título: Diário oficial de 2025-11-05
+  - url: https://data.queridodiario.ok.org.br/3557105/2025-11-05/9009e9286ffa6204accff6b73d2a73268122a835.pdf
+  - trecho: RESPONSABILIDADE As si na do p or 5 p es so as : W AG N ER H AS H IM O TO , J O SN EI M AR F ER R EI R A D E FR EI TA S, L U AN V IN IC IU S LA C ER D A PI M EN TA , D AN N A SA N TO S D E O LI VE IR A C EZ AR M O R IA L
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
 ## Colônia Leopoldina/AL — 1 pendente(s)
 - `f62f1c5f13` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO 496**, 30/06/2026
   - url: https://data.queridodiario.ok.org.br/2700000/2026-07-01/9341f1ab84a22a0c3d1e0e82351ba7e64355b809.pdf
@@ -609,6 +707,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: o município Congonhas/MG e a empresa Ampla Consultoria, que tem como objetivo ... - Plano de contingência adotado pela empresa para os casos de acidentes ou.
   - ⚠ ano_anterior_ao_ciclo
 
+## Fervedouro/MG — 1 pendente(s)
+- `e6fda1e3b1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2013 (do trecho)
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - Saae Fervedouro
+  - url: https://www.saaefervedouro.com.br/uploads/conteudoarquivo_arquivo/2528/fervedouroplanosaneamento.pdf
+  - trecho: Identificação de possíveis fontes de financiamento, arranjo institucional e plano de contingência e emergência. FERVEDOURO – MG. 2013. Page 2. Plano Municipal ...
+  - juiz: portão automático: fonte não oficial
+
 ## Lambari/MG — 1 pendente(s)
 - `6366db55bf` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Prevenção antes da emergência! 🛡️ Diante dos efeitos do El Niño ...
@@ -736,12 +841,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 6 days ago ... El Niño aumenta risco de chuvas intensas no Paraná, e Colombo reforça prevenção ... O documento municipal aponta que o Plano de Contingência de ...
   - juiz: portão automático: fonte não oficial
 
-## Curitiba/PR — 1 pendente(s)
-- `6a630cc284` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
-  - título: El Niño deve atingir o Paraná em julho com aumento de chuvas
-  - url: https://bandnewsfmcuritiba.com/el-nino-deve-atingir-o-parana-em-julho-com-aumento-de-chuvas/
-  - trecho: Jun 11, 2026 ... ... Plano de Contingência e a criação de fundos municipais de Defesa Civil. ... Endereço: Rua Afonso Pedri, 65 - Pilarzinho, Curitiba - PR Telefone ...
-
 ## Fazenda Rio Grande/PR — 2 pendente(s)
 - `da6fbe3938` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño coloca Fazenda Rio Grande em atenção para período de ...
@@ -794,12 +893,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 07 Descumprimento de   normas de segurança e   legislação vigente   Baixa Alto Médio Cláusulas contratuais específicas e   fiscalização   08 Interrupção do serviço   durante o evento.   Baixa Alto Médio Previsão de equip
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Londrina/PR — 1 pendente(s)
+## Londrina/PR — 4 pendente(s)
 - `89e500dcd9` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño é confirmado e Simepar prevê aumento de chuvas até ...
   - url: https://www.folhadelondrina.com.br/geral/el-nino-e-confirmado-e-simepar-preve-aumento-de-chuvas-ate-dezembro-3304815e.html
   - trecho: Jun 11, 2026 ... Entre as iniciativas prioritárias estão o desassoreamento de rios e córregos, atualização do Plano de Contingência ... Londrina, Guaratuba e ...
   - juiz: portão automático: fonte não oficial
+- `f3513a0ca1` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 13.935**, 09/04/2025
+  - título: Diário oficial de 2026-09-16
+  - url: https://data.queridodiario.ok.org.br/4113700/2026-09-16/f81dac043c2295a950fbb7d3381a65f66e67736f.pdf
+  - trecho: Parágrafo único. O Plano de Aplicação Anual do FUMPDEC, de que trata o Art. 13, I, desta Lei, será elaborado em consonância e articulação com o Plano Plurianual (PPA), a Lei de Diretrizes Orçamentárias (LDO), a Lei Orçam
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `caeeb2386d` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · **LEI N.º 142**, 03/09/2026
+  - título: Diário oficial de 2026-09-14
+  - url: https://data.queridodiario.ok.org.br/4113700/2026-09-14/fc977526057018cd7f5437d935955d65047b4864.pdf
+  - trecho: disponibilidade e desempenho da plataforma; II - interoperabilidade: integração com sistemas de pagamento, nota fiscal eletrônica e cadastros de fornecedores; III - continuidade e contingência: manutenção de plano de con
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ac31393747` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2026 (do trecho)
+  - título: Diário oficial de 2026-05-18
+  - url: https://data.queridodiario.ok.org.br/4113700/2026-05-18/2dc458566aa8e7f65f5740b3d978b0c29e7e43e9.pdf
+  - trecho: crianças e adolescentes, com caráter de utilidade pública; III – integrar todos os órgãos municipais para divulgação do ARP aos servidores públicos; IV – instruir as famílias vítimas de desaparecimento para ações e estab
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
 ## Pato Branco/PR — 2 pendente(s)
 - `0bf8eb27f3` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -1330,20 +1444,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
-## Votuporanga/SP — 2 pendente(s)
-- `ebc84478b1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2022 (do trecho)
-  - título: Votuporanga terá plano de contingenciamento para evitar falta ... - G1
-  - url: https://g1.globo.com/sp/sao-jose-do-rio-preto-aracatuba/noticia/2022/09/13/votuporanga-tera-plano-de-contingenciamento-para-evitar-falta-de-agua.ghtml
-  - trecho: Sep 13, 2022 ... A empresa responsável pelo abastecimento de água em Votuporanga (SP) ... plano de contingência para evitar a falta de água no município. O ...
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: fonte não oficial
-- `e2b73559c8` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
-  - título: p gestão integrada de plano municipal de
-  - url: https://smastr16.blob.core.windows.net/cpla/2017/05/votuporanga.pdf
-  - trecho: QUESTÃO SOCIOAMBIENTAL NAS EMPRESAS MOVELEIRAS DO POLO DE VOTUPORANGA (SP) ... Como ações estruturantes do Plano de Contingência, o Plano Municipal de ...
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: fonte não oficial
-
 ## None/AC — 1 pendente(s)
 - `e0c2afcacf` · nível **C** (2 pts) · agencia_oficial · — · citação não extraída
   - url: https://agencia.ac.gov.br/estado-antecipa-acoes-e-mobiliza-gabinete-de-crise-para-mitigar-impactos-de-seca-extrema-em-2026/
@@ -1449,7 +1549,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 
 
 ---
-## Decididas (14) — registro permanente, nunca apagadas
+## Decididas (15) — registro permanente, nunca apagadas
 
 - `c53cf50fc3` Rio Branco/AC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `ef69b9d26b` Ouro Branco/AL · aplicada — promovida a registro (plano) em 10/09/2026; revisão consumida · 
@@ -1465,3 +1565,4 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `a37a69b31b` Jacareí/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `2440b4715a` Mauá/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `5b7f46123d` São Bernardo do Campo/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
+- `25519ed399` Votuporanga/SP · aplicada_automaticamente · 
