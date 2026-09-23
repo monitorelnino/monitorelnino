@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 331 pendente(s) · 15 decidida(s) · A=54 B=217 C=60
+Gerado em 23/09/2026 · 332 pendente(s) · 15 decidida(s) · A=54 B=218 C=60
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1305,6 +1305,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `6ad08bf44e` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://www.conectandonoticias.com.br/valenca-reforca-estrategia-contra-os-efeitos-do-el-nino-e-amplia-plano-de-prevencao-a-queimadas/
   - trecho: Jul 23, 2026 ... Com a atualização do Plano de Contingência e o fortalecimento da integração entre os órgãos municipais e estaduais, Valença busca ampliar ...
+  - juiz: portão automático: fonte não oficial
+
+## Alvorada D'Oeste/RO — 1 pendente(s)
+- `bc54c96f5a` · nível **B** (4 pts) · busca_web · EX_ANTE · **LEI N.° 14.133**, 2021
+  - título: EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante ...
+  - url: https://www.rondoniaovivo.com/noticia/interior/2026/04/07/el-nino-alvorada-doeste-planeja-racionamento-de-agua-diante-de-alerta-de-seca-severa.html
+  - trecho: Apr 7, 2026 ... EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante de alerta de seca ... plano de contingência e aguarda retorno. Sugestão de Pauta
   - juiz: portão automático: fonte não oficial
 
 ## None/RR — 1 pendente(s)

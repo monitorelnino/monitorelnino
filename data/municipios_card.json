@@ -1,9 +1,9 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
  "gerado_em": "2026-09-23",
- "total": 2183,
+ "total": 2184,
  "com_registro": 267,
- "com_imprensa": 86,
+ "com_imprensa": 87,
  "prioritarios": 2095,
  "municipios": {
   "1100023": {
@@ -86,6 +86,21 @@
    "nome": "Nova Mamoré",
    "uf": "RO",
    "prioritario": true,
+   "categoria": "nao_localizado"
+  },
+  "1100346": {
+   "nome": "Alvorada D'Oeste",
+   "uf": "RO",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante ...",
+     "url": "https://www.rondoniaovivo.com/noticia/interior/2026/04/07/el-nino-alvorada-doeste-planeja-racionamento-de-agua-diante-de-alerta-de-seca-severa.html",
+     "data": "23/09/2026",
+     "veiculo": "rondoniaovivo.com",
+     "nivel": "B"
+    }
+   ],
    "categoria": "nao_localizado"
   },
   "1100452": {

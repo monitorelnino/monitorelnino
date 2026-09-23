@@ -15661,6 +15661,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "23/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -15731,6 +15737,56 @@
     "juiz": {
      "decisao": "FILA_HUMANA",
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Alvorada D'Oeste",
+   "uf": "RO",
+   "ibge": "1100346",
+   "origem": "busca_web",
+   "data": "23/09/2026",
+   "url": "https://www.rondoniaovivo.com/noticia/interior/2026/04/07/el-nino-alvorada-doeste-planeja-racionamento-de-agua-diante-de-alerta-de-seca-severa.html",
+   "trecho": "Apr 7, 2026 ... EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante de alerta de seca ... plano de contingência e aguarda retorno. Sugestão de Pauta",
+   "titulo": "EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante ...",
+   "registrado_em": "2026-09-23",
+   "triagem": "indefinido",
+   "autoridade": "colegiado",
+   "objeto": "el_nino",
+   "destino": "pista_executivo_pendente",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "bc54c96f5a",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_no_titulo",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "23/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": "LEI N.° 14.133",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "EL NIÑO: Alvorada D'Oeste planeja racionamento de água diante de alerta de seca severa - Rondoniaovivo.com --> --> --> ELEIÇÕES 2022 - 2º TURNO --> Memorial vítimas do COVID-19 - Clique aqui e confira! --> VEJA A RETROSPECTIVA 2025 --> Seja Bem vindo. Entrar / Assinar 21 Anos\" /> > 21 Anos\" /> Inicial Polícia Política Interior Esporte Cultura Concursos Espaço Aberto Canais Achados e Perdidos Viagens e Turismo Geral Brasil e Mundo Colunas --> Listão --> Eleições 2026 Notícias Arquivo de Notícias Editorias Agronegócio Brasil e Mundo Canais Colunas Comunidade Concursos Copa do Mundo 2026 Coronaví",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
    }
