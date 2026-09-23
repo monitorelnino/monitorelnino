@@ -37,7 +37,7 @@ UFS = "AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC S
 
 def _g(nome, obj):
     FIN.mkdir(parents=True, exist_ok=True)
-    with open(FIN / nome, "w", encoding="utf-8") as f: json.dump(obj, f, ensure_ascii=False, indent=1); f.write("\n")
+    with open(FIN / nome, "w", encoding="utf-8", newline="\n") as f: json.dump(obj, f, ensure_ascii=False, indent=1); f.write("\n")
 
 
 def _l(nome, padrao=None):

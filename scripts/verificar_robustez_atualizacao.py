@@ -25,7 +25,7 @@ sys.path.insert(0, str(RAIZ))  # migrar_saude_instrumentos.py mora na raiz, não
 
 
 def j(p): return json.load(open(p, encoding="utf-8"))
-def w(p, o): json.dump(o, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1); open(p, "a").write("\n")
+def w(p, o): json.dump(o, open(p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); open(p, "a", newline="\n").write("\n")
 
 
 def perturbar(T: pathlib.Path):

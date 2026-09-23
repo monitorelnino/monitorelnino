@@ -277,7 +277,7 @@ def atualizar_estados_py(uf, status, antecipacao, confianca="Média"):
         return False, f"esperava exatamente 1 ocorrência de {uf} no dicionário ESTADOS, achei {len(ocorrencias)}"
     novo_trecho = f'"{uf}":("{status}",{antecipacao},"{confianca}")'
     src_novo = padrao.sub(novo_trecho, src, count=1)
-    RECALCULAR_PY.write_text(src_novo, encoding="utf-8")
+    RECALCULAR_PY.write_text(src_novo, encoding="utf-8", newline="\n")
     return True, "atualizado"
 
 
@@ -299,7 +299,7 @@ def sincronizar_consist(uf, nova_cat, novo_instr):
         return False, f"{uf} não existe em consist.json (não deveria acontecer — todas as 27 UFs têm entrada)"
     consist[uf]["cat"] = nova_cat
     consist[uf]["instr"] = novo_instr
-    json.dump(consist, open(CONSIST_JSON, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(consist, open(CONSIST_JSON, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     return True, "atualizado"
 
 
@@ -336,7 +336,7 @@ def sincronizar_areas(uf, risco_texto):
         obj_novo = obj_antigo.replace("ufs:[", f"ufs:['{uf}',")
         bloco_novo = bloco_novo.replace(obj_antigo, obj_novo)
     src_novo = src[:m.start()] + "const AREAS = " + bloco_novo + ";" + src[m.end():]
-    MAPAS_HTML.write_text(src_novo, encoding="utf-8")
+    MAPAS_HTML.write_text(src_novo, encoding="utf-8", newline="\n")
     return True, "atualizado"
 
 
@@ -392,7 +392,7 @@ def aplicar_estadual(uf, texto, numero, data, url, hoje):
         if not ok_areas:
             return False, f"AREAS não pôde ser sincronizado: {motivo_areas}", None, None
 
-    json.dump(estados, open(estados_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(estados, open(estados_path, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     registrar_no_historico(uf, int(hoje[-4:]), numero or "?", "instrumento aplicado automaticamente",
                             texto[:300], f"julgar_e_aplicar_descobertas.py, {hoje}")
     return True, "aplicado", status_novo, antecipacao
@@ -472,12 +472,12 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje):
         "fonte": f"{fonte_base} — ato lido e classificado automaticamente em {hoje} (§158)",
         "url": url, "lat": lat, "lon": lon, "canal": canal,
     })
-    json.dump(municipios, open(mun_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(municipios, open(mun_path, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 
     pontos_path = RAIZ / "data" / "pontos_mapa.json"
     pontos = json.load(open(pontos_path, encoding="utf-8"))
     pontos.append({"nome": nome, "uf": uf, "categoria": "plano", "lat": lat, "lon": lon, "fase": 3})
-    json.dump(pontos, open(pontos_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(pontos, open(pontos_path, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 
     return True, "aplicado"
 
@@ -489,7 +489,7 @@ def registrar_log(entrada):
     log = json.load(open(LOG_BUSCAS, encoding="utf-8")) if LOG_BUSCAS.exists() else \
         {"formato": "registro por execução da bateria/aquisição (§4.1.1c e §4.1.3-iv)", "execucoes": []}
     log["execucoes"].append(entrada)
-    json.dump(log, open(LOG_BUSCAS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(log, open(LOG_BUSCAS, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 
 
 def atualizar_gauge_estatico():
@@ -502,7 +502,7 @@ def atualizar_gauge_estatico():
     ver = f"{media:.1f}".replace(".", ",")
     src = INDEX_HTML.read_text(encoding="utf-8")
     src_novo = re.sub(r'(id="gaugeNum">)[\d,]+(<)', rf"\g<1>{ver}\g<2>", src, count=1)
-    INDEX_HTML.write_text(src_novo, encoding="utf-8")
+    INDEX_HTML.write_text(src_novo, encoding="utf-8", newline="\n")
 
 
 def extrair_municipio_do_texto(texto, uf):
@@ -554,7 +554,7 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
         "fonte": f"classificado automaticamente ({hoje}) a partir de {url}",
         "lat": municipio["lat"], "lon": municipio["lon"], "canal": "imprensa",
     })
-    json.dump(atos, open(atos_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(atos, open(atos_path, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     return True, "aplicado"
 
 
@@ -721,5 +721,5 @@ if __name__ == "__main__":
         registrar_log({"data": hoje, "canal": "julgamento_automatico", "alvo": pista["alvo"],
                         "decisao": r["decisao"], "motivo": r.get("motivo", "")})
 
-    json.dump(fila, open(PISTAS_IMPRENSA, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(fila, open(PISTAS_IMPRENSA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     print(f"Processadas {len(pendentes)} pistas pendentes: {resultados}")

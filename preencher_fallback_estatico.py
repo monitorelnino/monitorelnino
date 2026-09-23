@@ -70,7 +70,7 @@ def preencher_index():
         n[0] += 1
 
     if h != h0:
-        p.write_text(h, encoding="utf-8")
+        p.write_text(h, encoding="utf-8", newline="\n")
     print(f"index.html: {n[0]} campo(s) de fallback estático regravado(s)")
 
 
@@ -127,7 +127,7 @@ def preencher_saude():
         n[0] += 1
 
     if h != h0:
-        p.write_text(h, encoding="utf-8")
+        p.write_text(h, encoding="utf-8", newline="\n")
     print(f"saude.html: {n[0]} campo(s) de fallback estático regravado(s)")
 
 
@@ -139,7 +139,7 @@ def preencher_financiamento():
     h = sub_id(h, "corteFin", corte, n)
     h = sub_id(h, "notaFogoCorte", corte, n)
     if h != h0:
-        p.write_text(h, encoding="utf-8")
+        p.write_text(h, encoding="utf-8", newline="\n")
     print(f"financiamento.html: {n[0]} campo(s) de fallback estático regravado(s)")
 
 

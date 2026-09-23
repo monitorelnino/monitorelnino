@@ -123,7 +123,7 @@ def main():
         L += ["", "**Decisão:** ", "", "---", ""]
 
     saida = RAIZ / f"caderno_de_pistas_{hoje}.md"
-    saida.write_text("\n".join(L), encoding="utf-8")
+    saida.write_text("\n".join(L), encoding="utf-8", newline="\n")
     print(f"{saida} · {len(lote)} pista(s) no lote · {restantes} na fila")
 
 

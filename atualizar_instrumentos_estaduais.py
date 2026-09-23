@@ -257,7 +257,7 @@ def main():
 
     saida = DATA / "instrumentos_revisar.json"
     if todas_propostas:
-        json.dump(todas_propostas, open(saida, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        json.dump(todas_propostas, open(saida, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
         print(f"\n{len(todas_propostas)} proposta(s) salvas em {saida.relative_to(RAIZ)}")
         print("PRÓXIMO PASSO (manual, obrigatório):")
         print("  Revise o arquivo, apague o que não deve entrar, e então rode:")

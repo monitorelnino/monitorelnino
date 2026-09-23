@@ -49,7 +49,10 @@ def gravar_texto(h: str, paginas: list) -> str:
     txt, n_cpfs = redigir_dados_pessoais(txt)
     if n_cpfs:
         print(f"  [redação] {n_cpfs} CPF(s) removido(s) do texto antes de preservar")
-    (EVID / f"{h}.txt").write_text(txt, encoding="utf-8")
+    # newline="\n" (§174): sem isso, no Windows o texto sai em CRLF enquanto o texto_hash abaixo é
+    # calculado sobre a string em memória, com \n — o hash registrado deixaria de bater com o
+    # arquivo em disco, e a cópia preservada divergiria da que o runner gera. Ver §163.
+    (EVID / f"{h}.txt").write_text(txt, encoding="utf-8", newline="\n")
     return hashlib.sha256(txt.encode("utf-8")).hexdigest()
 
 
@@ -101,6 +104,207 @@ def ler_pdfs(limite: int = 40) -> int:
     for it in itens.values(): it.pop("_reg", None)
     gravar("evidencias.json", idx)
     print(f"leitura de PDFs: {lidos} lido(s) com texto, {recusados} acesso recusado (LAI), {falhas} falha(s); {len(alvos)} alvo(s) na fila")
+    return 0
+
+
+# ---------------------------------------------------------------------------------
+# §177 (23/09/2026): OCR do PDF escaneado — cópia LEGÍVEL, nunca insumo de julgamento.
+# Quatro PLANCON do ES (Anchieta, Itaguaçu, São José do Calçado e Venda Nova do Imigrante)
+# entraram em LACUNA_DECLARADA no §174: PDF de 10 a 19 MB, acima do teto de cópia, escaneado
+# (cada página é uma imagem), leitura devolve zero caractere e o Wayback não tem snapshot.
+# Sem cópia, sem texto e sem snapshot, não há prova preservada de nenhuma espécie.
+#
+# REGRA QUE VEM COM O RECURSO: o texto de OCR é cópia preservada e LEGÍVEL, marcada como tal
+# (campos `ocr_*`, arquivo `<hash>.ocr.txt`) — e NUNCA insumo do classificador nem do juiz. O
+# ato que pontua no índice tem de ser lido no documento (§156); OCR erra caractere, e um erro
+# de leitura não pode virar nota. Por isso o texto de OCR não entra em `texto_arquivo`, que é o
+# campo que classificar_saude_no_plano.py lê.
+OCR_DPI = 200
+OCR_MIN_CARACTERES = 200          # o mesmo piso de ler_pdfs() e de prova_preservada()
+OCR_TIMEOUT_PAGINA = 120          # segundos por página; fonte lenta não segura a rodada (§172)
+OCR_EXECUTAVEIS_WINDOWS = (r"C:\Program Files\Tesseract-OCR\tesseract.exe",)
+
+
+def tesseract_disponivel():
+    """Caminho do executável do Tesseract, ou None. No runner vem do apt (`tesseract-ocr`);
+    fora dele, do instalador padrão do Windows. Ausência é lacuna declarada, nunca erro fatal."""
+    import shutil
+    achado = shutil.which("tesseract")
+    if achado:
+        return achado
+    return next((c for c in OCR_EXECUTAVEIS_WINDOWS if Path(c).exists()), None)
+
+
+def motor_ocr(exe: str) -> tuple:
+    """(versão, idioma) do Tesseract. `por` quando o modelo está instalado; senão `eng`, e o
+    registro diz qual leu — modelo errado explica erro de leitura, e calar isso esconde a causa."""
+    import subprocess
+    versao = "desconhecida"
+    try:
+        saida = subprocess.run([exe, "--version"], capture_output=True, text=True, timeout=30).stdout
+        versao = (saida.splitlines() or ["tesseract"])[0].replace("tesseract ", "").strip()
+    except Exception:  # noqa: BLE001
+        pass
+    idioma = "eng"
+    try:
+        saida = subprocess.run([exe, "--list-langs"], capture_output=True, text=True, timeout=30).stdout
+        if "por" in {l.strip() for l in saida.splitlines()[1:]}:
+            idioma = "por"
+    except Exception:  # noqa: BLE001
+        pass
+    return versao, idioma
+
+
+def rasterizar(pdf_bytes: bytes, dpi: int = OCR_DPI, limite_paginas: int = 0) -> list:
+    """Páginas do PDF como PNG, por pypdfium2 (já é dependência, via pdfplumber). Função pura."""
+    import pypdfium2 as pdfium
+    doc = pdfium.PdfDocument(io.BytesIO(pdf_bytes))
+    total = len(doc)
+    quantas = min(total, limite_paginas) if limite_paginas else total
+    paginas = []
+    for i in range(quantas):
+        bitmap = doc[i].render(scale=dpi / 72)
+        buf = io.BytesIO()
+        bitmap.to_pil().save(buf, format="PNG")
+        paginas.append(buf.getvalue())
+    return paginas
+
+
+def ocr_pagina(png: bytes, exe: str, idioma: str, dpi: int = OCR_DPI) -> str:
+    """Texto de uma página, por stdin/stdout do Tesseract — nenhum arquivo temporário em disco.
+
+    Achado na primeira rodada real (23/09/2026): o Tesseract do Windows devolve as quebras de linha
+    em CRLF no próprio stdout. `newline="\n"` na gravação não resolve — ele traduz o que o Python
+    escreve, não o "\r" que já vem dentro do texto. Sem normalizar aqui, a cópia preservada sairia
+    diferente byte a byte da que o runner produz, que é a série do §163 de novo, agora no conteúdo."""
+    import subprocess
+    r = subprocess.run([exe, "-", "-", "-l", idioma, "--dpi", str(dpi)],
+                       input=png, capture_output=True, timeout=OCR_TIMEOUT_PAGINA)
+    bruto = r.stdout.decode("utf-8", errors="replace")
+    return bruto.replace("\r\n", "\n").replace("\r", "\n").strip()
+
+
+def gravar_ocr(h: str, paginas: list) -> str:
+    """evidencias/<sha256 do PDF>.ocr.txt, com marcador de página e CPF redigido antes do hash
+    (mesma regra de gravar_texto). Nome à parte do `.txt` de propósito: o texto de OCR não pode
+    ser confundido com camada de texto do documento, nem sobrescrevê-la."""
+    EVID.mkdir(exist_ok=True)
+    txt = "".join(f"\n=== página {i+1} (OCR) ===\n{t}\n" for i, t in enumerate(paginas))
+    # Defesa em profundidade da normalização feita em ocr_pagina(): qualquer "\r" que chegue aqui
+    # sairia no arquivo preservado e o tornaria dependente da máquina que rodou o OCR.
+    txt = txt.replace("\r\n", "\n").replace("\r", "\n")
+    txt, n_cpfs = redigir_dados_pessoais(txt)
+    if n_cpfs:
+        print(f"  [redação] {n_cpfs} CPF(s) removido(s) do texto de OCR antes de preservar")
+    (EVID / f"{h}.ocr.txt").write_text(txt, encoding="utf-8", newline="\n")
+    return hashlib.sha256(txt.encode("utf-8")).hexdigest()
+
+
+def alvos_ocr(itens: dict) -> list:
+    """Itens cujo PDF foi lido e não tinha texto: `texto_arquivo` gravado com menos caracteres que
+    o piso, e sem OCR ainda. Idempotente por construção — quem tem `ocr_arquivo` sai da fila."""
+    return [(h, it) for h, it in itens.items()
+            if str(it.get("url", "")).lower().split("?")[0].endswith(".pdf")
+            and it.get("texto_arquivo") and (it.get("caracteres") or 0) < OCR_MIN_CARACTERES
+            and not it.get("ocr_arquivo") and not it.get("texto_manual")]
+
+
+def ocr_pdfs(limite: int = 10, paginas_max: int = 0) -> int:
+    """§177: cópia legível por OCR dos PDFs escaneados, para que a prova deixe de ser inexistente.
+
+    Não decide nada e não toca em registro: só acrescenta prova, como o resto desta rotina.
+    Falha de rede, PDF alterado ou Tesseract ausente viram lacuna declarada no log."""
+    from datetime import date
+    exe = tesseract_disponivel()
+    idx = ler("evidencias.json", {"itens": {}}); itens = idx.setdefault("itens", {})
+    alvos = alvos_ocr(itens)
+    if not exe:
+        registrar_lacuna("OCR de PDF escaneado", "Tesseract não instalado nesta máquina",
+                         canal="DOM", camada=2, strings=[a[0] for a in alvos[:5]])
+        print(f"OCR: Tesseract ausente — {len(alvos)} alvo(s) ficam em lacuna declarada")
+        return 0
+    versao, idioma = motor_ocr(exe)
+    feitos = falhas = 0
+    for h, it in alvos[:limite]:
+        u = it["url"]
+        try:
+            bruto = buscar(u, timeout=120)
+        except Exception as e:  # noqa: BLE001
+            falhas += 1
+            registrar_lacuna(f"OCR de {u[:60]}", type(e).__name__, canal="DOM", camada=2, strings=[u])
+            continue
+        if hashlib.sha256(bruto).hexdigest() != h:
+            falhas += 1
+            registrar_lacuna(f"OCR de {u[:60]}", "documento mudou desde o hash registrado", canal="DOM", camada=2, strings=[u])
+            continue
+        try:
+            imagens = rasterizar(bruto, OCR_DPI, paginas_max)
+            textos = [ocr_pagina(png, exe, idioma) for png in imagens]
+        except Exception as e:  # noqa: BLE001
+            falhas += 1
+            registrar_lacuna(f"OCR de {u[:60]}", f"rasterização/OCR falhou ({type(e).__name__})", canal="DOM", camada=2, strings=[u])
+            continue
+        caracteres = sum(len(t) for t in textos)
+        if caracteres < OCR_MIN_CARACTERES:
+            falhas += 1
+            registrar_lacuna(f"OCR de {u[:60]}", f"OCR devolveu {caracteres} caractere(s) — abaixo do piso de {OCR_MIN_CARACTERES}",
+                             canal="DOM", camada=2, strings=[u])
+            continue
+        oh = gravar_ocr(h, textos)
+        it.update({"ocr_arquivo": f"evidencias/{h}.ocr.txt", "ocr_hash": oh, "ocr_paginas": len(textos),
+                   "ocr_caracteres": caracteres, "ocr_em": date.today().isoformat(),
+                   "ocr_motor": f"tesseract {versao} · modelo {idioma} · {OCR_DPI} DPI"})
+        log_busca("site_municipal", 2, [u], "registro", nivel=None, hash_evidencia=h,
+                  resultados=(f"cópia legível por OCR preservada: {len(textos)} página(s), {caracteres} caractere(s), "
+                              f"modelo {idioma} — prova preservada, nunca insumo de classificação (§177)"))
+        feitos += 1
+        print(f"  ✓ {h[:12]}… → evidencias/{h}.ocr.txt ({len(textos)} página(s), {caracteres} caractere(s), modelo {idioma})")
+    gravar("evidencias.json", idx)
+    print(f"OCR: {feitos} cópia(s) legível(is) preservada(s), {falhas} falha(s); {len(alvos)} alvo(s) na fila")
+    return 0
+
+
+def autoteste_ocr() -> int:
+    """Testes negativos permanentes das regras do §177, sem rede e sem Tesseract."""
+    falhas = []
+    # 1. a fila só chama quem foi lido e não tinha texto, e sai dela ao ganhar OCR
+    itens = {
+        "a" * 64: {"url": "http://x/p.pdf", "texto_arquivo": "evidencias/a.txt", "caracteres": 0},
+        "b" * 64: {"url": "http://x/p.pdf", "texto_arquivo": "evidencias/b.txt", "caracteres": 9407},
+        "c" * 64: {"url": "http://x/p.pdf", "texto_arquivo": "evidencias/c.txt", "caracteres": 0,
+                   "ocr_arquivo": "evidencias/c.ocr.txt"},
+        "d" * 64: {"url": "http://x/pagina.html", "texto_arquivo": "evidencias/d.txt", "caracteres": 0},
+        "e" * 64: {"url": "http://x/p.pdf", "texto_arquivo": "evidencias/e.txt", "caracteres": 199},
+    }
+    fila = {h for h, _ in alvos_ocr(itens)}
+    if fila != {"a" * 64, "e" * 64}:
+        falhas.append(f"alvos_ocr devolveu {sorted(x[:1] for x in fila)}, esperado o escaneado e o abaixo do piso")
+    # 2. o arquivo de OCR tem nome próprio e não sobrescreve a camada de texto do documento
+    import tempfile
+    global EVID
+    real = EVID
+    with tempfile.TemporaryDirectory() as d:
+        try:
+            EVID = Path(d)
+            (EVID / "aa.txt").write_text("camada de texto do documento", encoding="utf-8", newline="\n")
+            oh = gravar_ocr("aa", ["PREFEITURA MUNICIPAL", "DECRETO n 7.717/2024 CPF 123.456.789-00",
+                                   "linha 1\r\nlinha 2\rlinha 3"])   # Tesseract do Windows devolve CRLF
+            texto = (EVID / "aa.ocr.txt").read_text(encoding="utf-8")
+            if (EVID / "aa.txt").read_text(encoding="utf-8") != "camada de texto do documento":
+                falhas.append("gravar_ocr sobrescreveu o .txt do documento — o OCR tem arquivo próprio")
+            if "123.456.789-00" in texto:
+                falhas.append("gravar_ocr não redigiu CPF antes de preservar")
+            if "(OCR)" not in texto:
+                falhas.append("o marcador de página do OCR não diz que é OCR")
+            if b"\r\n" in (EVID / "aa.ocr.txt").read_bytes():
+                falhas.append("o texto de OCR saiu em CRLF (série do §163)")
+            if oh != hashlib.sha256(texto.encode("utf-8")).hexdigest():
+                falhas.append("o hash devolvido por gravar_ocr não é o do arquivo gravado")
+        finally:
+            EVID = real
+    if falhas:
+        print("✗ AUTOTESTE (OCR de escaneado):"); [print("   ", f) for f in falhas]; return 1
+    print("✓ AUTOTESTE OK — fila só de escaneado, arquivo próprio do OCR, CPF redigido, marcador e LF.")
     return 0
 
 
@@ -170,4 +374,7 @@ def main(limite: int = 200) -> int:
 
 if __name__ == "__main__":
     lim = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else 200
-    sys.exit(ler_pdfs(lim) if "--ler" in sys.argv else reconferir(lim) if "--reconferir" in sys.argv else main(lim))
+    pgs = int(sys.argv[sys.argv.index("--paginas") + 1]) if "--paginas" in sys.argv else 0
+    sys.exit(autoteste_ocr() if "--autoteste" in sys.argv else
+             ocr_pdfs(lim if "--limite" in sys.argv else 10, pgs) if "--ocr" in sys.argv else
+             ler_pdfs(lim) if "--ler" in sys.argv else reconferir(lim) if "--reconferir" in sys.argv else main(lim))

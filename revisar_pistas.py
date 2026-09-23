@@ -493,5 +493,5 @@ if __name__ == "__main__":
     gravar("pistas_imprensa.json", fila)
     if a.relatorio or a.preparar or a.aceitar or a.rejeitar or a.adiar:
         md = relatorio(fila)
-        open("docs/FILA_PISTAS.md", "w", encoding="utf-8").write(md)
+        open("docs/FILA_PISTAS.md", "w", encoding="utf-8", newline="\n").write(md)
         print(f"docs/FILA_PISTAS.md regravado ({novos} id(s) novo(s))")

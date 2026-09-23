@@ -62,7 +62,7 @@ def main():
             m["vigencia"] = "ativo"; ativo += 1
         else:
             m["vigencia"] = "prazo_tipico_vencido"; vencido += 1
-    json.dump(mun, open(RAIZ / "data" / "municipios.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(mun, open(RAIZ / "data" / "municipios.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     velho = RAIZ / "data" / "vigencia_revisar.json"
     if velho.exists(): velho.unlink()
     print(f"OK vigência automática: {ativo} ativos · {vencido} prazo típico vencido · {indet} indeterminadas (fila humana extinta)")

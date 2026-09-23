@@ -106,7 +106,7 @@ def rodar():
         fila.append(item)
     json.dump({"execucao": time.strftime("%Y-%m-%d"), "regra": "marcador editorial apenas — NUNCA altera pontuação",
                "dicionario_alerta": ALERTA, "dicionario_protetivo": PROTETIVO, "fila": fila},
-              open(FILA, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+              open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     print(f"OK fila de conteúdo de decretos: {len(fila)} registros ({sum(1 for f in fila if f['situacao']=='analisado')} com texto analisado)")
     return 0
 

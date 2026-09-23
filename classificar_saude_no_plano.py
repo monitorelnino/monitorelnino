@@ -50,13 +50,27 @@ def classificar(paginas: list) -> dict:
     return {"degrau": d, "rotulo": ROTULO[d], "pagina_citada": termos[d][0][0], "termos": {str(k): v[:5] for k, v in termos.items()}}
 
 
+def texto_para_leitura_automatica(item: dict):
+    """O que a máquina pode ler, e só isso (§177, 23/09/2026).
+
+    Devolve o caminho da camada de texto do próprio documento (`texto_arquivo`), ou None. O texto de
+    OCR (`ocr_arquivo`, PDF escaneado) é cópia preservada e legível para leitura HUMANA — nunca
+    insumo de classificação: OCR erra caractere, e um erro de leitura não pode virar degrau publicado,
+    nem nota no índice (§156, a mesma regra que exige o ato lido no documento). Também recusa um
+    `texto_arquivo` que aponte para um `.ocr.txt`, caso alguém um dia grave OCR nesse campo."""
+    ta = item.get("texto_arquivo")
+    if not ta or str(ta).endswith(".ocr.txt"):
+        return None
+    return ta
+
+
 def rodar() -> int:
     idx = ler("evidencias.json", {"itens": {}}); itens = idx.get("itens") or {}
     saida = ler("saude_no_plano_auto.json", {"_governanca": "Leitura AUTOMÁTICA de como o plano trata a saúde (§10.1): degraus 1/2/3/5 por regra com página citada; degrau 4 nunca automático. Publicada como 'leitura automática'; vira saude_no_plano (confirmada) só pela fila R7 com revisado_por e data. Peso zero; nunca lida pelo motor.", "itens": {}}) or {}
     fila = ler("saude_no_plano_revisar.json", {"_governanca": "Fila R7 (§10.1): pré-classificações automáticas de saude_no_plano aguardando confirmação humana na sessão semanal, a partir do texto já extraído.", "fila": []}) or {}
     n = 0
     for h, it in itens.items():
-        ta = it.get("texto_arquivo")
+        ta = texto_para_leitura_automatica(it)
         if not ta or h in (saida.get("itens") or {}):
             continue
         p = RAIZ / ta
@@ -83,7 +97,13 @@ def autoteste() -> int:
     def t4(): return classificar(["Cenário do El Niño 2026-2027: ondas de calor e fumaça de queimadas."])["degrau"] == 5 and classificar(["Plano de Contingência 2026/2027."])["degrau"] == 0
     def t5(): return classificar(["Nada sobre o tema."])["degrau"] == 0 and 4 not in REGRAS   # degrau 4 nunca automático
     def t6(): c = classificar(["Secretaria de Saúde na lista.", "Vigidesastres."]); return c["degrau"] == 3 and "1" in c["termos"] and "3" in c["termos"]
-    return rodar_autoteste({"1 órgão listado": t1, "2 resposta com página": t2, "3 vigilância pós": t3, "5 riscos do ciclo": t4, "0 ausente e 4 nunca automático": t5, "maior degrau, termos por degrau": t6})
+    def t7():
+        # §177: o texto de OCR não entra na leitura automática, nem quando é a única cópia preservada
+        return (texto_para_leitura_automatica({"ocr_arquivo": "evidencias/x.ocr.txt", "ocr_caracteres": 9000}) is None
+                and texto_para_leitura_automatica({"texto_arquivo": "evidencias/x.ocr.txt"}) is None
+                and texto_para_leitura_automatica({"texto_arquivo": "evidencias/x.txt"}) == "evidencias/x.txt")
+    return rodar_autoteste({"1 órgão listado": t1, "2 resposta com página": t2, "3 vigilância pós": t3, "5 riscos do ciclo": t4, "0 ausente e 4 nunca automático": t5, "maior degrau, termos por degrau": t6,
+                            "OCR nunca é insumo da leitura automática (§177)": t7})
 
 
 if __name__ == "__main__":

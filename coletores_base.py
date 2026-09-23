@@ -279,6 +279,31 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
     return h
 
 
+def _indexar_texto_integral(h: str, destino, origem=None) -> str:
+    """Indexa o texto integral preservado — e o HASH do arquivo (§176, 23/09/2026).
+
+    Sem o hash, o portão 6 não tem com o que comparar o arquivo publicado: 148 itens ficaram
+    assim, e quatro apontavam para um `.txt` que não estava em disco sem que nada acusasse (o
+    campo foi gravado em 12/09 e o arquivo nunca entrou no commit da rodada). Chamado também
+    quando o arquivo JÁ existe, para curar o índice de quem foi preservado antes desta regra —
+    daí `origem=None`, que preserva a data e a origem da preservação original.
+    """
+    caminho = destino.relative_to(RAIZ).as_posix()
+    idx = ler("evidencias.json", {"itens": {}})
+    item = (idx.get("itens") or {}).get(h)
+    if item is None:
+        return caminho
+    antes = dict(item)
+    item["texto_integral"] = caminho
+    item["texto_integral_hash"] = sha256(destino.read_bytes())
+    if origem is not None:
+        item["texto_integral_em"] = hoje()
+        item["texto_integral_origem"] = origem
+    if item != antes:
+        gravar("evidencias.json", idx)
+    return caminho
+
+
 def preservar_texto_integral(h: str, gazettes, origem: str):
     """Baixa o texto integral (txt_url) das edições cuja resposta da API já foi preservada
     sob o hash h, gravando em evidencias/<h>.txt (decisão editorial de 10/09/2026: o excerto
@@ -287,7 +312,7 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
     falha de rede não derruba a coleta; a pista continua valendo com o excerto (regra 1)."""
     destino = EVID / f"{h}.txt"
     if destino.exists():
-        return destino.relative_to(RAIZ).as_posix()
+        return _indexar_texto_integral(h, destino)   # §176: sela o hash de quem já está em disco
     partes, total = [], 0
     for g in (gazettes or []):
         u = g.get("txt_url") or ""
@@ -329,13 +354,7 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
         # exige municipio e uf estruturados.
         log_busca("site_estadual", 2, [destino.relative_to(RAIZ).as_posix()], "registro", nivel=None,
                   resultados=f"redação de dados pessoais: {n_cpfs} CPF(s) removido(s) do texto integral preservado ({origem})")
-    idx = ler("evidencias.json", {"itens": {}})
-    if h in idx.get("itens", {}):
-        idx["itens"][h]["texto_integral"] = destino.relative_to(RAIZ).as_posix()
-        idx["itens"][h]["texto_integral_em"] = hoje()
-        idx["itens"][h]["texto_integral_origem"] = origem
-        gravar("evidencias.json", idx)
-    return destino.relative_to(RAIZ).as_posix()
+    return _indexar_texto_integral(h, destino, origem)
 
 
 def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: str = "",

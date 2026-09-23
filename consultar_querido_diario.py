@@ -135,7 +135,7 @@ def rodar(alvos=None, ufs=None):
         varrer_uf(uf, ref, pistas)
     execucao["ufs_varridas"] = ufs if ufs is not None else UFS_LAC
     json.dump({"execucao": execucao, "pistas": pistas},
-              open(DESTINO, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+              open(DESTINO, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     n_cob = sum(1 for p in pistas if p.get("cobertura_qd"))
     print(f"✓ {len(pistas)} entradas ({n_cob} com cobertura) → {DESTINO.name} — triagem humana pendente")
     return 0
@@ -156,7 +156,7 @@ def main():
                                 "uf": g.get("state_code"), "data": g.get("date"),
                                 "url_pdf": g.get("url"), "excerto": (g.get("excerpts") or [""])[0][:250]})
         json.dump({"execucao": time.strftime("%Y-%m-%d"), "sementes": sementes, "achados": achados},
-                  open(RAIZ / "data" / "termos_candidatos_qd.json", "w", encoding="utf-8"),
+                  open(RAIZ / "data" / "termos_candidatos_qd.json", "w", encoding="utf-8", newline="\n"),
                   ensure_ascii=False, indent=1)
         print(f"OK {len(achados)} excertos nacionais colhidos -> termos_candidatos_qd.json (triagem humana)")
         return 0
