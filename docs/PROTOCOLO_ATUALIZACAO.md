@@ -42,10 +42,15 @@ espera a pista B. Isso é a governança automático × humano do projeto
 > (monitorelnino.com.br), sem precisar da prévia com senha. Script:
 > `scripts/atualizar_contador_cortina.py`.
 
-- **Gatilho:** domingos, 0h de Brasília (03h UTC — o cron é UTC) — compromisso semanal fora da
-  semana intensiva; durante a semana intensiva em curso (03–06/09/2026), **duas rodadas
-  por dia**, 06h e 18h Brasília (03/09/2026, decisão editorial: acelerar a varredura
-  integral); ou botão *Run workflow* na aba Actions a qualquer momento.
+- **Gatilho:** domingos, 0h de Brasília (03h UTC — o cron é UTC) — compromisso semanal
+  público; mais **quatro rodadas por dia, a cada 6 horas** (01h, 07h, 13h e 19h UTC = 22h,
+  04h, 10h e 16h de Brasília), deslocadas da semanal para não colidir no mesmo minuto
+  (22/09/2026, decisão editorial: acelerar a varredura integral dos 5.571 municípios
+  enquanto `INTENSIVO_DE`/`INTENSIVO_ATE` estiverem ativas, e mantida depois disso até nova
+  instrução — substitui as duas rodadas diárias de 06h e 18h de Brasília decididas em
+  03/09/2026); ou botão *Run workflow* na aba Actions a qualquer momento. A regra de cadência
+  não muda: fora da semana intensiva, a execução que não cai no dia de publicação encerra sem
+  comitar.
 - **Segredos necessários** (Settings → Secrets and variables → Actions):
   `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID`, `PORTAL_TRANSPARENCIA_API_KEY`.
   Confirmados presentes em 01/09/2026. Ausência de qualquer um faz a etapa
