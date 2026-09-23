@@ -72,6 +72,9 @@ async function extrairGrade(page, alvoLinhas) {
       cabecalho: x.cabecalho.slice(0, 6), linhas: x.linhas, aria_rowcount: x.aria_rowcount }));
     const grade = pontuadas[0].g;
     if (!grade) return { achou: false, candidatas };
+    // Marca a escolhida para que o lado Node consiga rolar ESTA grade, e não a página.
+    for (const g of grades) g.removeAttribute('data-mare-grade');
+    grade.setAttribute('data-mare-grade', '1');
     const cab = [...grade.querySelectorAll('[role="columnheader"]')]
       .map(e => (e.innerText || e.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim())
       .filter(Boolean);
@@ -97,11 +100,54 @@ async function extrairGrade(page, alvoLinhas) {
   }, alvoLinhas);
 }
 
+// ACHADO DA RODADA REAL (23/09/2026): a versão anterior rolava com page.mouse.wheel sem
+// nunca mover o cursor, isto é, na posição (0,0) — fora da grade. O Power BI só rola o
+// visual sob o ponteiro, então a roda caía no vazio e a leitura parava nas 20 primeiras
+// linhas de 62. O aviso de "leitura parcial" saiu certo; a causa é que não houve rolagem
+// nenhuma. Três estratégias, da mais confiável para a mais frágil, e a que funcionou fica
+// declarada no diagnóstico — rolagem que para de funcionar precisa ser visível, não muda.
+async function rolarGrade(page) {
+  const sel = '[data-mare-grade="1"]';
+  // 1. scrollTop no contêiner que de fato rola (o visual do Power BI usa um filho próprio).
+  const porCodigo = await page.evaluate((s) => {
+    const g = document.querySelector(s);
+    if (!g) return false;
+    const cands = [g, ...g.querySelectorAll('*')];
+    for (const c of cands) {
+      if (c.scrollHeight - c.clientHeight > 8) {
+        const antes = c.scrollTop;
+        c.scrollTop = antes + Math.max(200, c.clientHeight - 40);
+        if (c.scrollTop !== antes) return true;
+      }
+    }
+    return false;
+  }, sel).catch(() => false);
+  if (porCodigo) return 'scrollTop';
+
+  // 2. roda do mouse COM o ponteiro sobre a grade — o que faltava antes.
+  const caixa = await page.locator(sel).first().boundingBox().catch(() => null);
+  if (caixa) {
+    await page.mouse.move(caixa.x + caixa.width / 2, caixa.y + caixa.height / 2);
+    await page.mouse.wheel(0, 600);
+    return 'wheel-sobre-a-grade';
+  }
+
+  // 3. último recurso: evento de roda sintético na própria grade.
+  const sintetico = await page.evaluate((s) => {
+    const g = document.querySelector(s);
+    if (!g) return false;
+    g.dispatchEvent(new WheelEvent('wheel', { deltaY: 600, bubbles: true }));
+    return true;
+  }, sel).catch(() => false);
+  return sintetico ? 'wheel-sintetico' : 'sem-rolagem';
+}
+
 // A grade do Power BI é virtualizada: só as linhas visíveis existem no DOM. Rola até o
 // número de linhas distintas parar de crescer (ou bater o teto), acumulando por rowindex.
 async function extrairTudoRolando(page) {
   const porIndice = new Map();
   let cabecalho = [], rowcount = null, semGanho = 0, candidatas = [];
+  const estrategias = [];
   for (let i = 0; i < MAX_ROLAGENS; i++) {
     const g = await extrairGrade(page, ALVO_LINHAS);
     if (!g.achou) return { achou: false, candidatas: g.candidatas || [] };
@@ -114,13 +160,17 @@ async function extrairTudoRolando(page) {
       if (!porIndice.has(chave)) porIndice.set(chave, l);
     }
     if (porIndice.size === antes) { if (++semGanho >= 3) break; } else semGanho = 0;
-    if (rowcount && porIndice.size >= rowcount) break;
-    await page.mouse.wheel(0, 600);
+    // aria-rowcount CONTA O CABEÇALHO: 63 para 62 municípios. Descontá-lo é o que faz esta
+    // parada disparar; sem isso a leitura sempre ia até o teto de rolagens.
+    if (rowcount && porIndice.size >= rowcount - 1) break;
+    const como = await rolarGrade(page);
+    estrategias.push(como);
     await page.waitForTimeout(700);
   }
   const linhas = [...porIndice.values()].sort(
     (a, b) => (a.aria_rowindex ?? 1e9) - (b.aria_rowindex ?? 1e9));
-  return { achou: true, cabecalho, linhas, aria_rowcount: rowcount, candidatas };
+  return { achou: true, cabecalho, linhas, aria_rowcount: rowcount, candidatas,
+           rolagem: { tentativas: estrategias.length, estrategias } };
 }
 
 (async () => {
@@ -157,6 +207,7 @@ async function extrairTudoRolando(page) {
       saida.diagnostico.aria_rowcount = g.aria_rowcount;
       // Toda grade da página, com a nota que recebeu: uma escolha errada fica visível.
       saida.diagnostico.grades_candidatas = g.candidatas;
+      saida.diagnostico.rolagem = g.rolagem;
       for (const l of g.linhas) {
         const celulas = {};
         g.cabecalho.forEach((c, i) => { celulas[c] = l.valores[i] ?? null; });
