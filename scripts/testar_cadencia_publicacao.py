@@ -139,6 +139,38 @@ def main():
                     f"{local:%H:%M} no fuso da redação, mas DIA_PUBLICACAO={dia} "
                     f"({esperado}) — o portão encerraria a rodada sem publicar")
 
+    # 4. A destrava de rodada completa sob demanda (23/09/2026) é a única forma de publicar
+    #    fora do dia declarado. Justamente por isso ela não pode virar atalho silencioso: só
+    #    o botão manual pode acioná-la, nunca um cron, e ela não pode suprimir o commit — aí
+    #    seria um ensaio disfarçado, e a rodada pedida não valeria de nada.
+    fonte_py = (RAIZ / "atualizar.py").read_text(encoding="utf-8")
+    wf = (RAIZ / ".github" / "workflows" / "atualizar.yml").read_text(encoding="utf-8")
+
+    if "FORCAR_RODADA_COMPLETA" not in fonte_py:
+        falhas.append("atualizar.py não lê FORCAR_RODADA_COMPLETA — a destrava sumiu do código")
+    if "rodada_completa_agora" not in wf:
+        falhas.append("atualizar.yml não declara a entrada rodada_completa_agora — a destrava "
+                      "ficaria acionável só por variável de ambiente, fora do registro do disparo")
+
+    for linha in wf.splitlines():
+        if "FORCAR_RODADA_COMPLETA:" in linha:
+            # Um cron não tem github.event.inputs: amarrar a destrava à entrada é o que
+            # garante que nenhuma rodada agendada a acione por acidente.
+            if "github.event.inputs.rodada_completa_agora" not in linha:
+                falhas.append("FORCAR_RODADA_COMPLETA não vem de "
+                              "github.event.inputs.rodada_completa_agora — um cron a acionaria")
+            break
+    else:
+        falhas.append("FORCAR_RODADA_COMPLETA não é passada a nenhum passo de atualizar.yml")
+
+    # O commit é condicionado ao ENSAIO, e só a ele. Se alguém acrescentar a destrava a essa
+    # condição, a rodada completa passaria a não comitar — e o pedido editorial que a
+    # originou deixaria de ser atendido sem ninguém perceber.
+    for linha in wf.splitlines():
+        if "inputs.ensaio != 'true'" in linha and "rodada_completa_agora" in linha:
+            falhas.append("a condição do commit menciona rodada_completa_agora — a destrava "
+                          "viraria ensaio disfarçado, rodando tudo e não publicando nada")
+
     if falhas:
         for f in falhas:
             print(f"✗ {f}")
@@ -146,7 +178,8 @@ def main():
 
     print(f"✓ cadência coerente: DIA_PUBLICACAO={dia} ({nome_dia}) medido no fuso da redação; "
           f"portão usa a constante; cron semanal cai no dia certo em Brasília; "
-          f"obrigado.html e pesquisadores.html prometem o mesmo dia ao leitor")
+          f"obrigado.html e pesquisadores.html prometem o mesmo dia ao leitor; "
+          f"destrava de rodada completa só pelo botão manual e sem suprimir o commit")
     return 0
 
 

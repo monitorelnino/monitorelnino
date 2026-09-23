@@ -131,6 +131,24 @@ def main():
         print("[ensaio] execução de ensaio: tudo roda como no dia da semana intensiva; NADA será comitado nem publicado.")
         em_intensivo = True
 
+    # RODADA COMPLETA SOB DEMANDA (23/09/2026, pedido da editoria). Diferente do ensaio:
+    # roda tudo E comita, fora do dia de publicação. Existe porque a alternativa era mexer
+    # nas variáveis INTENSIVO_DE/INTENSIVO_ATE do repositório, que valem também para os três
+    # crons — uma edição fora de hora viraria uma semana inteira de rodadas completas, e
+    # ninguém lembraria de desfazer.
+    #
+    # É destrava DECLARADA, não atalho: sai no log, exige disparo manual com o botão, e a
+    # edição publicada leva a data de HOJE. Isso é consequência editorial real — a cadência
+    # semanal é compromisso público (obrigado.html, pesquisadores.html dizem ao leitor
+    # quando o banco muda), e uma edição fora do dia declarado é decisão da editoria,
+    # tomada a cada disparo, nunca herdada de uma configuração esquecida.
+    if os.environ.get("FORCAR_RODADA_COMPLETA"):
+        print(f"[cadência] RODADA COMPLETA SOB DEMANDA: hoje é "
+              f"{hoje_editorial():%d/%m/%Y} e o dia de publicação declarado é "
+              f"{NOME_DIA_PUBLICACAO}. Rodando tudo e comitando por pedido explícito da "
+              f"editoria; a edição levará a data de hoje.")
+        em_intensivo = True
+
     # Sinais oficiais de risco (01/09/2026, METODOLOGIA §23): coleta as três camadas
     # para monitor-de-riscos.html. NÃO é bloqueante e NÃO toca no índice — fonte fora do
     # ar permanece como lacuna declarada na página, nunca como valor estimado.
