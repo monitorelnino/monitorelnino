@@ -330,6 +330,34 @@ def coletar(url: str, de_arquivo=None, limite=None, efeitos: "Efeitos | None" = 
     return {"itens": itens, "resumo": resumo}
 
 
+N_MUNICIPIOS_AM = 62
+
+
+def leitura_confiavel(saida: dict) -> tuple:
+    """A leitura merece ir para a fila? Devolve (ok, motivo).
+
+    ACHADO DA RODADA 1 (23/09/2026). A primeira rodada renderizada de verdade leu 20 linhas
+    em vez de 62 e NENHUMA casou com a referência IBGE — o renderizador havia pegado a grade
+    errada da página. Mesmo assim o coletor escreveu as 20 na fila, que foi de 62 para 82
+    itens. A trava de promoção segurou o banco, mas a fila de triagem humana foi poluída com
+    lixo que parecia dado.
+
+    Daí esta porta: uma leitura em que quase nada casa com o IBGE não é leitura parcial, é
+    leitura ERRADA, e leitura errada vira lacuna declarada — nunca item de fila. Duas regras,
+    ambas sobre o mesmo princípio de que ausência de leitura não é ausência de plano."""
+    itens = saida.get("itens") or []
+    if not itens:
+        return False, "nenhuma linha lida"
+    sem_ibge = sum(1 for i in itens if not i.get("ibge"))
+    if sem_ibge > len(itens) // 2:
+        return False, (f"{sem_ibge} de {len(itens)} linhas sem código IBGE — a grade lida "
+                       "provavelmente não é a tabela dos municípios")
+    if len(itens) < N_MUNICIPIOS_AM // 2:
+        return False, (f"apenas {len(itens)} de {N_MUNICIPIOS_AM} municípios lidos — "
+                       "leitura parcial demais para entrar na fila")
+    return True, ""
+
+
 def gravar_fila(saida: dict, url: str) -> dict:
     fila = ler(FILA, {"_governanca": (
         "Leitura do painel Power BI da Defesa Civil do AM (coletar_painel_am.py, §165). "
@@ -595,6 +623,25 @@ def autoteste() -> int:
         semear_da_sonda(efeitos=_inertes())
         return all((RAIZ / "data" / n).read_bytes() == b for n, b in antes.items())
 
+    def t_leitura_errada_nao_entra_na_fila():
+        """Regressão da rodada 1: 20 linhas, nenhuma casando com o IBGE. Isso é grade errada,
+        não leitura parcial — e grade errada não polui a fila de triagem humana."""
+        s = {"itens": [{"ibge": None, "municipio_no_painel": f"lixo {i}"} for i in range(20)],
+             "resumo": {}}
+        ok, motivo = leitura_confiavel(s)
+        return ok is False and "IBGE" in motivo
+
+    def t_leitura_parcial_demais_nao_entra():
+        s = {"itens": [{"ibge": "1300029", "municipio_no_painel": f"m{i}"} for i in range(10)],
+             "resumo": {}}
+        ok, motivo = leitura_confiavel(s)
+        return ok is False and "parcial" in motivo
+
+    def t_leitura_boa_entra():
+        s = {"itens": [{"ibge": "1300029", "municipio_no_painel": f"m{i}"} for i in range(62)],
+             "resumo": {}}
+        return leitura_confiavel(s) == (True, "")
+
     def t_trava_estrutural():
         fonte = (RAIZ / "coletar_painel_am.py").read_text(encoding="utf-8")
         for proibido in ["estados.json", "saude_uf.json", "municipios.json",
@@ -628,6 +675,9 @@ def autoteste() -> int:
         "Careiro Castanho casa por eliminação, e fica marcado": t_careiro_casa_por_eliminacao_e_fica_marcado,
         "eliminação não dispara com dois sem par (seria chute)": t_eliminacao_nao_dispara_com_dois_sem_par,
         "semeadura é offline e não escreve em data/": t_semeadura_e_offline,
+        "leitura com grade errada não entra na fila": t_leitura_errada_nao_entra_na_fila,
+        "leitura parcial demais não entra na fila": t_leitura_parcial_demais_nao_entra,
+        "leitura completa entra na fila": t_leitura_boa_entra,
         "trava estrutural: não escreve no banco": t_trava_estrutural,
     })
 
@@ -661,9 +711,14 @@ def main() -> int:
         saida = semear_da_sonda()
     else:
         saida = coletar(url, de_arquivo=de_arquivo, limite=limite)
-    if not saida["itens"]:
-        print("Nenhuma linha lida — lacuna declarada no log. Nada foi escrito na fila.")
-        print(f"  motivo: {saida['resumo'].get('erro')}")
+    ok, motivo = leitura_confiavel(saida)
+    if not ok:
+        registrar_lacuna("leitura do painel do AM", motivo, "painel AM", 1,
+                         strings=[url], uf="AM")
+        print(f"Leitura recusada — nada foi escrito na fila.\n  motivo: {motivo}")
+        if saida["resumo"].get("erro"):
+            print(f"  erro do renderizador: {saida['resumo']['erro']}")
+        print("  o artefato da rodada traz o HTML renderizado para conferir a grade.")
         return 1
     fila = gravar_fila(saida, url)
     r = saida["resumo"]
