@@ -8,22 +8,22 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MARÉ · Monitor de Antecipação e Resposta ao El Niño">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Monitor de riscos · El Niño 2026/2027 no Brasil: ONI, previsão, seca, fogo e alertas">
-<meta property="og:description" content="Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, focos de fogo e alertas do INMET e do CEMADEN por estado.">
+<meta property="og:title" content="Monitor de riscos · El Niño 2026/2027 no Brasil: ONI, previsão, seca, temperatura, ar e fogo">
+<meta property="og:description" content="Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, temperatura e qualidade do ar nas capitais e focos de fogo por estado.">
 <meta property="og:url" content="https://monitorelnino.com.br/monitor-de-riscos.html">
 <meta property="og:image" content="https://monitorelnino.com.br/assets/social/card-monitor-el-nino.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="MARÉ · Monitor de Antecipação e Resposta ao El Niño — como o país se prepara para o ciclo 2026/2027">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Monitor de riscos · El Niño 2026/2027 no Brasil: ONI, previsão, seca, fogo e alertas">
-<meta name="twitter:description" content="Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, focos de fogo e alertas do INMET e do CEMADEN por estado.">
+<meta name="twitter:title" content="Monitor de riscos · El Niño 2026/2027 no Brasil: ONI, previsão, seca, temperatura, ar e fogo">
+<meta name="twitter:description" content="Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, temperatura e qualidade do ar nas capitais e focos de fogo por estado.">
 <meta name="twitter:image" content="https://monitorelnino.com.br/assets/social/card-monitor-el-nino.png">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebPage", "name": "Monitor de riscos · El Niño 2026/2027 no Brasil: ONI, previsão, seca, fogo e alertas", "description": "Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, focos de fogo e alertas do INMET e do CEMADEN por estado.", "url": "https://monitorelnino.com.br/monitor-de-riscos.html", "inLanguage": "pt-BR", "isPartOf": {"@type": "WebSite", "name": "MARÉ · Monitor de Antecipação e Resposta ao El Niño", "url": "https://monitorelnino.com.br/", "publisher": {"@type": "Organization", "name": "Futura Evidence Lab", "url": "https://www.futuraevidencelab.com.br/", "logo": "https://monitorelnino.com.br/assets/futura-positivo.svg"}}, "dateModified": "2026-09-07"}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebPage", "name": "Monitor de riscos · El Niño 2026/2027 no Brasil: ONI, previsão, seca, temperatura, ar e fogo", "description": "Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, temperatura e qualidade do ar nas capitais e focos de fogo por estado.", "url": "https://monitorelnino.com.br/monitor-de-riscos.html", "inLanguage": "pt-BR", "isPartOf": {"@type": "WebSite", "name": "MARÉ · Monitor de Antecipação e Resposta ao El Niño", "url": "https://monitorelnino.com.br/", "publisher": {"@type": "Organization", "name": "Futura Evidence Lab", "url": "https://www.futuraevidencelab.com.br/", "logo": "https://monitorelnino.com.br/assets/futura-positivo.svg"}}, "dateModified": "2026-09-07"}]</script>
 <!-- /seo -->
 
-<title>Monitor de riscos · El Niño 2026/2027 no Brasil: ONI, previsão, seca, fogo e alertas</title>
-<meta name="description" content="Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, focos de fogo e alertas do INMET e do CEMADEN por estado.">
+<title>Monitor de riscos · El Niño 2026/2027 no Brasil: ONI, previsão, seca, temperatura, ar e fogo</title>
+<meta name="description" content="Situação atual do El Niño no Brasil: ONI, probabilidade, prognóstico trimestral, Monitor de Secas, temperatura e qualidade do ar nas capitais e focos de fogo por estado.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
@@ -105,25 +105,32 @@
 
   <div class="panel" id="agora">
     <h2>O que está acontecendo agora</h2>
-    <p class="hint">Avisos meteorológicos vigentes (INMET) e alertas do CEMADEN, seca observada (Monitor de Secas, ANA) e focos de calor (INPE), por estado.</p>
+    <p class="hint">Seca observada (Monitor de Secas, ANA), temperatura e qualidade do ar nas capitais e focos de calor (INPE), por estado.</p>
+    <p class="hint" id="linhaAlertas">Avisos do INMET e alertas do CEMADEN em vigor: <a href="defesa-civil.html#alertas">Defesa civil</a>.</p>
     <div class="grade-figuras">
-      <figure class="figura figura--mapa" id="boxAvisos">
-        <h3 class="figura-titulo">Avisos meteorológicos vigentes</h3>
-        <p class="figura-sub">Consulta mais recente · INMET, por UF · contagem e severidade</p>
-        <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos vigentes do INMET" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legAvisos"></div>
-      </figure>
-      <figure class="figura figura--mapa" id="boxCemaden">
-        <h3 class="figura-titulo">Alertas de risco vigentes, CEMADEN</h3>
-        <p class="figura-sub">Consulta mais recente · alertas hidrológicos e geológicos, por UF · contagem</p>
-        <div class="figura-midia"><svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legCemaden"></div>
-      </figure>
       <figure class="figura figura--mapa" id="boxSecas">
         <h3 class="figura-titulo">Seca observada, Monitor de Secas</h3>
         <p class="figura-sub">Mapa mensal mais recente · categoria de seca em pelo menos metade da área da UF (Monitor de Secas, ANA) · sem seca · S0–S4</p>
         <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
+      </figure>
+      <figure class="figura figura--mapa" id="boxTemperatura">
+        <h3 class="figura-titulo">Temperatura máxima prevista para amanhã, nas capitais</h3>
+        <p class="figura-sub">Capital de cada UF · máxima prevista para o dia seguinte · °C · estimativa de modelo</p>
+        <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-label="Mapa do Brasil pela temperatura máxima prevista para o dia seguinte na capital de cada estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legTemperatura"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTemperatura"><thead><tr><th>UF</th><th>Capital</th><th>Máxima de ontem</th><th>Máxima prevista para amanhã</th><th>Mínima prevista</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      </figure>
+      <figure class="figura figura--mapa" id="boxAr">
+        <h3 class="figura-titulo">Material particulado fino (PM2,5) nas capitais</h3>
+        <p class="figura-sub">Capital de cada UF · média diária de PM2,5 · µg/m³ · estimativa de modelo · linha de referência da OMS em 15 µg/m³</p>
+        <div class="figura-midia"><svg id="mapaAr" role="img" aria-label="Mapa do Brasil pela média diária estimada de material particulado fino na capital de cada estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legAr"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAr"><thead><tr><th>UF</th><th>Capital</th><th>PM2,5</th><th>PM10</th><th>Ozônio</th><th>Relação com a linha da OMS</th></tr></thead><tbody></tbody></table></div>
+        </details>
       </figure>
       <figure class="figura figura--mapa" id="boxFogo">
         <h3 class="figura-titulo">Focos ativos nas últimas 24 horas</h3>
