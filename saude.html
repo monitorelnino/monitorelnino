@@ -30,8 +30,8 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=76daae0b">
-<link rel="stylesheet" href="assets/base.css?v=df716eeb">
-<script src="assets/mapas.js?v=e83ba02a"></script>
+<link rel="stylesheet" href="assets/base.css?v=12ea95f4">
+<script src="assets/mapas.js?v=4b7b364b"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -170,25 +170,17 @@
     </div>
   </div>
 
-  <!-- 24/09/2026 (decisão editorial): esta seção mostrava CONTAGEM DE AVISOS do INMET, que é alerta
-       e não dado de saúde, e foi para defesa-civil.html. No lugar entra a classe de excesso de calor
-       que o próprio Ministério da Saúde publica por município, no vocabulário dele. A temperatura
-       medida vive uma vez só, no Monitor de riscos, e esta página remete a ela. -->
   <div class="panel panel--acento-teal" id="calor">
     <h2>Calor</h2>
-    <p class="hint" id="calorResumo">Classe de excesso de calor por município, no vocabulário do MS.</p>
+    <p class="hint">Avisos de calor vigentes do INMET por estado, na consulta mais recente.</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxCalor">
-        <h3 class="figura-titulo">Municípios em excesso de calor</h3>
-        <p class="figura-sub">Consulta mais recente · classe severa ou extrema · Painel do MS · contagem por UF</p>
-        <div class="figura-midia"><svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de municípios em classe severa ou extrema de excesso de calor segundo o Painel Nacional de Excesso de Calor do Ministério da Saúde" viewBox="0 0 480 460"></svg></div>
+        <h3 class="figura-titulo">Avisos de calor vigentes (INMET)</h3>
+        <p class="figura-sub">Consulta mais recente · INMET, por UF · contagem</p>
+        <div class="figura-midia"><svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de avisos de calor vigentes do INMET por estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legCalor"></div>
-        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblCalor"><thead><tr><th>UF</th><th>Normal</th><th>Baixo</th><th>Severo</th><th>Extremo</th><th>Lidos</th></tr></thead><tbody></tbody></table></div>
-        </details>
       </figure>
     </div>
-    <p class="note u-mb-0">Temperatura: <a href="monitor-de-riscos.html#agora">Monitor de riscos</a>. Avisos de calor em vigor: <a href="defesa-civil.html#alertas">Defesa civil</a>.</p>
   </div>
 
   <div class="panel panel--acento-teal" id="respiratorias">
@@ -272,7 +264,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/saude.js?v=b2912584" defer></script>
+<script src="assets/js/saude.js?v=9f019b13" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

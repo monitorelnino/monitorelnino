@@ -49,6 +49,21 @@ Duas coisas que a sonda das estações desmentiu, e que ficam registradas para n
 
 **O que fica declarado.** O `MonitorAr` do MMA está em `monitorar.mma.gov.br`, não no caminho que o pedido trazia — não citado até estar conferido. `data/resposta/quadrantes.json` responde 404 desde antes desta rodada; a página já o trata como nulo. Os 313 municípios do painel e os 5.571 seguem fora da coleta de temperatura e ar: esta rodada cobre as 27 capitais, e ampliar é a segunda fase que o próprio pedido previu.
 
+## §205 · As quatro decisões da direção de arte, e a primeira correção que elas produziram · 24/09/2026
+
+Classe **direção de arte**. O §192 instalou a constituição visual e mediu a auditoria; parou nos passos 1 a 5 do §25, porque os passos seguintes dependiam de quatro pontos em que a constituição contradizia decisão viva do projeto. A editoria delegou as quatro. Aqui estão, com a razão de cada uma.
+
+**1. Fundo branco: fica.** O §1 da constituição lista "excesso de branco" entre o que a seriedade não precisa. A decisão é manter — e a razão vem da própria constituição, no §23: num produto cujo conteúdo é dado, a base branca dá a **maior folga de contraste** às cores que carregam significado, e legibilidade tem precedência sobre preferência de base. O desvio está declarado dentro do documento, com a instrução de não reverter `--bg`. O que a personalidade busca aqui é ritmo, composição e hierarquia — não inversão de fundo.
+
+**2. Paleta: nenhum matiz novo.** O §11 pede profundidade mineral e cita ametista e magenta. A decisão é **não acrescentar matiz**, e ela se apoia no §9 da mesma constituição: *cada cor deve possuir função*, e *não introduza uma nova cor apenas porque ela fica bonita naquela seção*. Aqui toda cor é semântica — chuva, seca, fogo, status do instrumento, ausência de dado. Ametista não tem o que significar, e inventar significado para justificar a cor é o caminho errado. A paleta **já é mineral**: musgo, argila, âmbar, sintético, mineral, bioluz, areia. Profundidade vem pelo §12, luminosidade e transparência dentro da família. Vale ainda a trava do sistema de marca — dez hexes nomeados, e hex fora de `tokens.css` reprova em portão.
+
+**3. Card como arquitetura: decisão tomada, implementação com protótipo.** O §6 afirma que *card não é unidade narrativa* e o §19 marca a grade repetitiva de três colunas como estética de template. A auditoria do §192 mediu: `border-radius` de 6px em **38 de 38** figuras, sombra em 38 de 38, cinco larguras distintas, nenhuma figura ocupando a viewport. A decisão é **acolher a crítica e não executá-la às cegas**: o componente único nasceu de uma auditoria datada de 07/09 e é sustentado por dois portões, e o próprio §19 diz que esses padrões não são proibidos — o problema é usá-los como arquitetura automática. Sair disso é adotar as famílias de composição do §21, o que é desenho, não ajuste de token, e o `CLAUDE.md` exige protótipo à vista da editoria antes de qualquer merge visual. Fica como a próxima rodada, com capturas.
+
+**4. Papéis tipográficos: corrigido agora, e a auditoria achou um defeito real.** O §13 pede diferenciação clara entre título, legenda, nota e fonte. Medido no `base.css`: **`.figura-sub` e `.fonte-figura` eram tipograficamente idênticas** — mesma família, mesmo tamanho, mesma entrelinha, mesma cor. O §11 da governança editorial exige quatro funções separadas e **proíbe comprimi-las**; pela forma, o leitor não distinguia a legenda do crédito.
+
+A correção segue o §14, que diz que hierarquia não é só tamanho: a legenda passa a **peso médio**, a fonte fica em regular. Mesma cor, mesmo tamanho, peso diferente — o que preserva a escala fixa de oito degraus e **não toca em contraste**, já que cor e tamanho não mudam. É a menor intervenção que resolve a confusão, e é o tipo de coisa que só aparece quando se mede em vez de olhar.
+
+**O que fica declarado.** Os passos 9 a 11 do §25 — redesenhar páginas representativas, validar, propagar — dependem da decisão 3 e de protótipo mostrado. A dívida da lista canônica de categorias, aberta no §202, segue aberta. E o teste de personalidade do §26 só faz sentido depois do redesenho, não antes.
 ## §204 · O sistema de marca entra, com a voz subordinada à governança editorial · 24/09/2026
 
 Classe **design e governança**. Nenhum número muda. Nenhum texto público foi reescrito.
@@ -272,6 +287,7 @@ Classe **correção de reprodutibilidade**. Nenhum dado muda, nenhum número do 
 
 **O tamanho do defeito.** Ele não era do ramo. Ele pega **qualquer ramo, e a própria `main`**, em toda janela entre a meia-noite UTC e a meia-noite local — três horas por dia, todo dia. O `/p12` do projeto já registrava o sintoma ("carimbo `gerado_em` obsoleto em `data/municipios_card.json` já deixou a `main` vermelha sozinho"), sem a causa. Agora a causa está no código, com o motivo escrito ao lado.
 
+**A correção, na origem.** `data_de_geracao()` lê `SOURCE_DATE_EPOCH` quando ele existe e só cai em `date.today()` quando não existe — o mesmo padrão que `gerar_pdf_indice.py` e `gerar_pdf_metodologia.py` já usavam. Rodando pela cadeia canônica, o carimbo passa a ser o corte (`2026-09-10`), determinístico em qualquer fuso e em qualquer hora. O campo não é lido por nenhuma página: a busca por município em `prefeituras.js` consome os cartões, não o carimbo.
 **O defeito estava em dois lugares, e o segundo derrubou o CI de novo.** Corrigido o carimbo do card, a rodada seguinte reprovou outra vez no portão 12 — agora com **uma única linha** do manifesto, e nenhum arquivo alterado. A linha era a primeira dele: *"selado em 23/09/2026"*. O `scripts/gerar_manifesto.py` fixa `SOURCE_DATE_EPOCH` no corte justamente para os PDFs saírem bit-determinísticos, e o cabeçalho dele escapava pelo mesmo `date.today()`. Manifesto que depende de quando roda não é selo, é carimbo de hora. O sintoma foi didático: nenhum arquivo mudando e o manifesto mudando é a assinatura de um carimbo no próprio manifesto.
 
 **A correção, na origem, nos dois.** `data_de_geracao()` e o selo do manifesto leem `SOURCE_DATE_EPOCH` quando ele existe e só caem em `date.today()` quando não existe — o mesmo padrão que `gerar_pdf_indice.py` e `gerar_pdf_metodologia.py` já usavam. Rodando pela cadeia canônica, os dois passam a carregar o corte (`2026-09-10`), determinísticos em qualquer fuso e em qualquer hora. O campo não é lido por nenhuma página: a busca por município em `prefeituras.js` consome os cartões, não o carimbo.
@@ -279,6 +295,50 @@ Classe **correção de reprodutibilidade**. Nenhum dado muda, nenhum número do 
 **Trava.** Autoteste no próprio gerador, que já é portão: com `SOURCE_DATE_EPOCH` posto, a data sai dele — conferido em dois epochs distintos —; sem ele, cai no dia de hoje. Os epochs são calculados no teste, não digitados: a primeira versão trazia dois números mágicos, e os dois estavam um dia adiantados.
 
 **Teste.** Autoteste do gerador verde; cadeia canônica regenerada em árvore limpa sem diferença.
+
+## §192 · A constituição visual entra como fonte de verdade, e a auditoria mede o que ela acusa · 23/09/2026
+
+Classe **governança de design**. Nenhum pixel do site mudou nesta entrada, e isso é deliberado: o §25 da própria constituição proíbe maquiagem componente por componente e manda observar o site inteiro antes de tocar em qualquer coisa. Esta entrada faz os passos 1 a 5 desse processo e para onde ele manda parar.
+
+**O que entrou.** `AI_VISUAL_ART_DIRECTION.md`, na raiz, ao lado da metodologia e da governança editorial. O projeto passa a ter **três fontes de verdade**, e a ordem entre elas ficou escrita no `CLAUDE.md`: a `METODOLOGIA` decide **o que pode ser afirmado**; a governança editorial decide **por que, onde e como** aquilo é dito; a direção de arte decide **com que forma** aquilo aparece. Prova, depois narrativa, depois estética — e é a própria direção de arte que estabelece esse limite, no §23 (criatividade nunca compromete contraste, legibilidade, daltonismo ou leitura em tela pequena) e no §10 (cor não introduz julgamento que o dado não sustenta).
+
+### A auditoria, com número
+
+As dez páginas foram abertas em navegador real e medidas. O que a constituição acusa no §19 — "estética de template" — está medido, não suposto:
+
+| medida | resultado |
+|---|---|
+| `border-radius` das figuras | **6 px em 38 de 38** — uniformidade total |
+| sombra | **presente em 38 de 38** |
+| larguras distintas para 38 figuras | **cinco**; a mais comum cobre 15 delas |
+| ritmo dominante das seções | figura + um parágrafo, repetido |
+| figura que ocupe a viewport | **nenhuma**: a maior tem 1.132 px num `--grade-max` de 1.180 px |
+| cartões em sequência | um painel do financiamento tem **dez**; outro tem cinco |
+| `.figura-cat`, o degrau de categoria do componente | **vazio nas 38** |
+
+Três leituras que a tabela sustenta. **A largura não é decisão de composição:** ela é consequência da coluna da grade, e por isso só existem cinco. **Não há momento imersivo** — o §6 pede que uma visualização possa ocupar grande parte da tela, e nenhuma ocupa. **O ritmo é o que o §4 nomeia**: a sequência título/texto/gráfico repetida, mais visível em `monitor-de-riscos`, `defesa-civil`, `saude` e `financiamento`, onde quase toda seção tem a mesma forma.
+
+Uma ressalva de honestidade: a uniformidade medida **não é acidente nem desleixo**. Ela é o resultado de uma decisão registrada — a auditoria de consistência de 07/09/2026, que criou o componente único de figura e a escala fixa, e a travou por dois portões. O site é uniforme porque foi construído para ser. A constituição visual agora pede o oposto em vários pontos, e essa é a matéria das decisões abaixo, não um defeito a corrigir em silêncio.
+
+### Quatro colisões que exigem decisão da editoria
+
+O §25 manda reconstruir a direção global antes de redesenhar. Não dá para fazer isso sem resolver quatro pontos em que a constituição contradiz uma decisão viva do projeto — três delas tomadas nesta mesma semana.
+
+1. **Fundo branco.** O §1 lista "excesso de branco" e "cinza institucional" entre o que a seriedade não precisa. A editoria determinou em 05/09/2026, e **reafirmou em 23/09/2026**, que o fundo deste site é branco. A determinação prevalece; o desvio está declarado no `CLAUDE.md`. O que a constituição ainda permite sem tocar nisso é profundidade por **campo de cor, linha e espaço**, não por inversão de base.
+
+2. **Paleta.** O §11 pede profundidade mineral — ametistas, magentas escuros, turquesas. O sistema de marca instalado em 23/09 fixa **dez hexes**, e `assets/tokens.css` proíbe hex fora dele, com portão. As duas coisas não cabem juntas: ou a paleta da marca ganha uma extensão declarada (tons profundos derivados dos dez, com função semântica atribuída, como o §9 exige), ou o §11 fica limitado ao que os dez permitem.
+
+3. **Card e componente único.** O §6 afirma que **card não é unidade narrativa** e o §19 marca "gráfico dentro de caixa branca" e "grade repetitiva de três colunas" como template. A arquitetura do site é exatamente essa, por decisão de 07/09, e `verificar_figuras.js` e `verificar_consistencia_visual.js` a mantêm. Sair dela é reescrever os dois portões — possível, mas é mudança de arquitetura visual, não ajuste.
+
+4. **Escala tipográfica.** O §13 pede diferenciação entre título narrativo, título de seção, título de visualização, corpo, legenda, nota, fonte e número destacado. A escala fixa de oito degraus cobre os tamanhos, mas **os papéis não estão todos distintos** — e o §14 lembra que hierarquia não é só tamanho: peso, largura, posição, espaço e ritmo também constroem. Aqui há caminho sem quebrar a escala, usando peso e espaço, e é o único dos quatro pontos que não exige decisão para começar.
+
+### O que já dá para fazer sem decisão nenhuma
+
+Três coisas, todas dentro do sistema existente e sem tocar em portão: preencher `.figura-cat`, que é um degrau de hierarquia que o componente já tem e ninguém usa; diferenciar os papéis tipográficos por **peso e espaço** em vez de tamanho (§14); e aplicar as **famílias de composição** do §21 ao que já existe, começando por onde a narrativa pede — a página de riscos abre em contexto nacional e deveria abrir em composição ampla, e a busca por município é uma família AÇÃO que hoje tem a mesma forma de tudo mais.
+
+Nenhuma dessas foi feita nesta entrada. O §25 só libera redesenhar no passo 9, depois de a direção global estar reconstruída, e a direção global depende dos quatro pontos acima.
+
+**Teste.** Nenhuma mudança visual; portões de estrutura, figuras, legendas, palavras, fichas semânticas e consistência visual verdes, como antes.
 
 ## §191 · A calibração propagada para as páginas restantes · 23/09/2026
 
