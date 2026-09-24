@@ -10,7 +10,11 @@
   "coluna_plano": "Mgrd184",
   "coluna_plano_seca": "Mgrd05",
   "_nota": "2017 e 2020 são as únicas edições recentes com este bloco (módulos rotativos da MUNIC); 2020 é a mais recente. Verificado por download real em 20/09/2026 (§128).",
-  "ultima_coleta": "2026-09-24"
+  "ultima_coleta": "2026-09-24",
+  "_achado_fundo_24_09_2026": "Procurada variável de FUNDO municipal de proteção e defesa civil na MUNIC (§208, camada B do dinheiro municipal). NÃO EXISTE: das 15 menções a 'fundo' no dicionário da MUNIC 2020, todas são de habitação (MHAB16), transporte (MTRA16) e meio ambiente — nenhuma de defesa civil. A MUNIC 2024 não tem o bloco de gestão de riscos (só 'Evento climático RS'), confirmado por download real. As duas variáveis mais próximas do que a camada B quer são Mgrd225 ('Há previsão de recursos para ações de proteção e defesa civil na Lei Orçamentária Anual') e Mgrd226 ('Há outras fontes de recursos para ações de proteção e defesa civil'). NÃO COLETADAS: publicá-las cria indicador público novo, o que é decisão da editoria (governança §29). Registrado aqui para que a decisão não precise refazer a verificação.",
+  "coluna_previsao_orcamentaria_candidata": "Mgrd225",
+  "coluna_outras_fontes_candidata": "Mgrd226",
+  "status_camada_b": "aguardando_decisao_editorial"
  },
  "icm": {
   "nome": "ICM/SEDEC — Indicador de Capacidade Municipal, base completa",

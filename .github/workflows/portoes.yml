@@ -133,6 +133,7 @@ jobs:
           pip install openpyxl==3.1.5 --break-system-packages -q
           python3 scripts/sondar_enso_probabilidades.py --autoteste
           python3 scripts/sondar_munic_ibge.py --autoteste
+          python3 scripts/sondar_credenciais.py --autoteste
       - name: Autotestes dos coletores
         if: steps.diff.outputs.dado_mudou == 'true'
         run: |

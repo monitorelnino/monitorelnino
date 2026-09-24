@@ -9,6 +9,32 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §208 · O que faltava para a credencial chegar, e a variável de fundo que a MUNIC não tem · 24/09/2026
+
+Classe **infraestrutura e verificação de fonte**. Nenhum número público muda.
+
+### O item 1: cadastrar o segredo não ligava nada
+
+A camada de medição do §206 ficou escrita e desligada, esperando credencial. Ao preparar o caminho para a editoria, apareceu o que faltava do meu lado: **nenhum workflow declarava `OPENAQ_API_KEY` nem `INMET_API_TOKEN`**. Cadastrar o segredo no GitHub não faria diferença — o valor não chegaria ao coletor, e a fonte continuaria em `aguardando_credencial` sem ninguém entender por quê. Os dois passaram a ser declarados no passo que roda o `atualizar.py`.
+
+**E uma sonda para não descobrir isso em seis horas.** `scripts/sondar_credenciais.py` responde, em segundos e sob disparo manual, se a credencial chegou ao passo e se a fonte a aceita. Ela preserva a distinção que importa: `ausente` (não há segredo), `recusada` (401, 403, ou 200 com corpo vazio ou "CHAVE INVÁLIDA!" — recusa servida com 200 é recusa), `erro_da_fonte` e `aceita`. Confundir os quatro é o que faz alguém procurar problema no lugar errado. Ela **nunca imprime a credencial**: só o tamanho e os quatro últimos caracteres, que bastam para distinguir "colei a chave errada" de "não colei chave nenhuma" num log público. Treze casos no autoteste, entre eles a prova de que a chave do OpenAQ viaja em cabeçalho e o token do INMET no caminho, e de que nenhum dos dois aparece no relatório.
+
+**As duas credenciais não são a mesma tarefa, e isso estava implícito.** O **OpenAQ** é autoatendimento, conferido na documentação dele: cadastro em `explore.openaq.org/register`, chave em `explore.openaq.org/account`, cabeçalho `X-API-Key`. O **INMET** não tem caminho público documentado para o token: o portal dele não publica manual de API, e o que a carta de serviços oferece para dado de estação é o **BDMEP**, que é aplicativo de descarga com login, não API por requisição. Ou seja, o OpenAQ é questão de minutos; o token do INMET é pedido institucional sem prazo publicado. A sonda diz isso na própria saída, em vez de deixar a diferença escondida.
+
+### O item 2: a MUNIC não tem variável de fundo, e há duas melhores
+
+A camada B supunha que a MUNIC pudesse declarar a existência de fundo municipal de defesa civil. **Não declara.** Medido com o arquivo à vista: das quinze menções a "fundo" no dicionário da MUNIC 2020, todas são de **habitação** (`MHAB16`), **transporte** (`MTRA16`) e **meio ambiente** — nenhuma de defesa civil. E a MUNIC 2024 não tem o bloco de gestão de riscos: as dez abas dela incluem "Evento climático RS", que é restrito a um estado e não serve a indicador nacional.
+
+As duas variáveis mais próximas do que a camada B quer são melhores do que a pergunta original, porque falam de dinheiro e não de estrutura: **`Mgrd225`** — "Há previsão de recursos para ações de proteção e defesa civil na Lei Orçamentária Anual" — e **`Mgrd226`** — "Há outras fontes de recursos para ações de proteção e defesa civil". Ficam **registradas e não coletadas**: publicá-las cria indicador público novo, o que é decisão da editoria (governança §29). O registro em `data/fontes_declarado.json` existe para que a decisão não tenha de refazer a verificação.
+
+### Dois defeitos achados no caminho
+
+**A sonda da MUNIC dizia não rodar fora da Action, e a razão estava errada.** A docstring afirmava que o ambiente de edição respondia `403 host_not_allowed` para os domínios do IBGE. O que ele responde é `CERTIFICATE_VERIFY_FAILED` — a loja de certificados desta máquina Windows não completa a cadeia do `ftp.ibge.gov.br`. Mesmo defeito e mesma correção do `gsc.cemaden.gov.br` no §206: verificar contra o pacote de raízes do `certifi`. Com isso a sonda roda localmente, e foi ela que respondeu o item 2 sem gastar um ciclo de CI. **Nomear a recusa errado custou, aqui, a impressão de que a pergunta não tinha resposta acessível** — a mesma classe de erro que o `CLAUDE.md` registra a respeito de geobloqueio chamado de `robots.txt`.
+
+**A mesma docstring mandava investigar problema já resolvido.** Ela dizia que `declarado_nacional.json` estava vazio desde 02/09 porque a fonte tinha `url: null`. Isso foi resolvido em 20–21/09: a fonte está `ok`, a coluna conferida contra o arquivo, e a camada declarada cobre os **5.570 municípios**, ativada na nota em 21/09. A docstring ficou três dias velha e me pôs a caçar um problema morto; corrigida.
+
+**Teste.** Portão novo (`sondar_credenciais.py --autoteste`), agora 58 na lista canônica. Estrutura, segurança e a sonda da MUNIC verdes.
+
 ## §207 · O dinheiro próprio do município: a camada que existe para todos · 24/09/2026
 
 Classe **coleta e páginas**. Peso zero nos dois índices, provado por portão e pelo teste de estresse que apaga a pasta inteira e confere que nenhuma nota muda.
