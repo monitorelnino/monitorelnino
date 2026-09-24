@@ -1,14 +1,342 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-24",
- "total_pistas": 418,
+ "total_pistas": 429,
  "total_municipios": 191,
  "por_nivel": {
-  "A": 79,
-  "B": 258,
-  "C": 81
+  "A": 80,
+  "B": 264,
+  "C": 85
  },
  "grupos": [
+  {
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "melhor_nivel": "A",
+   "n_pistas": 18,
+   "niveis": {
+    "A": 2,
+    "B": 9,
+    "C": 7
+   },
+   "pistas": [
+    {
+     "id": "856520058d",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/",
+     "titulo": "Super El Niño acende alerta em Itajaí e mobiliza estrutura para ...",
+     "trecho": "Adicionar · Planos de contingência estadual e municipal preveem uso de barcos, veículos 4x4 e outros equipamentos em caso de alagamentos 25/08/2026 às 05h20 ... Super El Niño acende alerta em Itajaí e mobiliza estrutura para possíveis ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b97a664c30",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://defesacivil.itajai.sc.gov.br/historico/",
+     "titulo": "Histórico - Defesa Civil de Itajaí",
+     "trecho": "Após a enchente o site da Defesa ... perigosos; foram adquiridos materiais de contingencia para assistência humanitária e de capacitação nas escolas. Além disso, através de uma iniciativa inédita no país, todos os dados do Plano de Contingência de Itajaí estão sendo ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b11bbc9e9c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.portoitajai.com.br/informacoes-el-nino",
+     "titulo": "Informações EL NIÑO | Porto de Itajaí",
+     "trecho": "Plano de Contingência de Saúde · Plano de Gerenciamento de Resíduos - PGRS ... Rua Blumenau, 05 Centro, Itajaí - Santa Catarina Brasil - CEP: 88.305-101 ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3425f8be32",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://itajai.sc.gov.br/noticias/36482/itajai-antecipa-prevencao-e-se-prepara-para-combater-el-nino-no-segundo-semestre--",
+     "titulo": "Itajaí antecipa prevenção e se prepara para combater El Niño no ...",
+     "trecho": "May 4, 2026 ... Rua Alberto Werner, 100•Vila Operária•Itajaí - SC•CEP: 88304-053. 2026 Município de Itajaí • Todos os direitos reservados. Política de ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "91a6821421",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.portoitajai.com.br/infomacoes-el-ni-o",
+     "titulo": "Infomações El Niño - Porto de Itajaí",
+     "trecho": "Plano de Contingência de Saúde · Plano de Gerenciamento de Resíduos - PGRS ... Rua Blumenau, 05 Centro, Itajaí - Santa Catarina Brasil - CEP: 88.305-101 ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b582a28463",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://plancon.itajai.sc.gov.br/",
+     "titulo": "CMGPC19",
+     "trecho": "Jornal 2317, de 23 de outubro de 2020 - Torna publico o Plano de Contingência Municipal para a Educação de Itajaí.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "08e1764ebb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DceLKWvkaP7/",
+     "titulo": null,
+     "trecho": "Aug 25, 2026 ... Itajaí apresenta o Plano de Contingência e prepara empresas para riscos climáticos do El Niño 2026.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3ff937f76f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://upiara.com.br/noticias/super-el-nino-o-que-itajai-fez-para-prevenir-e-combater-emergencias/",
+     "titulo": null,
+     "trecho": "Os canais oficiais da prefeitura divulgam, todas as sextas-feiras, o Radar El Niño para informar e preparar a população para o evento. ... Pesquisa da ABRH-SC revela formação de lideranças como principal desafio do RH de grandes companhias",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "dbbff31d64",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/",
+     "titulo": null,
+     "trecho": "Os planos de contingência estadual, publicado na quinta-feira (20), e municipal de Itajaí preveem o uso de veículos 4×4 e embarcações quando alagamentos, enxurradas ou inundações comprometerem o acesso a áreas afetadas.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d5cd31c2c0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/PrefeituradeItajai/videos/%EF%B8%8Fmedidas-de-preven%C3%A7%C3%A3o-ao-el-ni%C3%B1o-a-defesa-civil-de-itaja%C3%AD-passa-a-divulgar-seman/1338660184904006/",
+     "titulo": null,
+     "trecho": "Jun 26, 2026 ... 🌧️ Itajaí se antecipa ao El Niño com ações para proteger a cidade Com foco na ... plano de contingência. Já fizemos reunião com o setor ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "0443bc037e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DdeH-bKxvPQ/",
+     "titulo": "️ Radar El Niño A Defesa Civil de Itajaí está ampliando a rede de ...",
+     "trecho": "5 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d6081ded51",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://itajai.sc.gov.br/noticia/25783/coronavirus-plano-de-contingencia-para-o-retorno-das-aulas-presenciais",
+     "titulo": "Coronavírus: Plano de contingência para o retorno das aulas ...",
+     "trecho": "A Secretaria de Educação de Itajaí lançou nesta sexta-feira (23) o Plano Municipal de Contingência da Educação para a prevenção, monitoramento e controle do coronavírus (COVID-19) nas unidades escolares, aprovado pelo Governo do Estado.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5c1fae3ce3",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://visornoticias.com.br/el-nino-em-itajai-encontro-prepara-empresas-para-riscos-climaticos",
+     "titulo": null,
+     "trecho": "Promovido pela Secretaria Municipal de Desenvolvimento Econômico, o encontro terá orientações sobre prevenção, gestão de riscos e elaboração de planos de contingência para empresas.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "54533a653c",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DcegeSkHXfI/",
+     "titulo": null,
+     "trecho": "Aug 25, 2026 ... ... likes, 0 comments - portaldafoz on August 25, 2026: \"ITAJAÍ APRESENTA PLANO DE CONTINGÊNCIA E PREPARA EMPRESAS PARA RISCOS ... El Niño em 2026, ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8dd2e869e3",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DbdTa6fRclC/?hl=en",
+     "titulo": null,
+     "trecho": "Jul 31, 2026 ... Acompanhe a série Radar El Niño e fique por dentro das ações da Defesa Civil de Itajaí. ... plano de contingência do município. A Defesa Civil ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "dbc0225590",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DXsJ5lKjFWy/",
+     "titulo": null,
+     "trecho": "Apr 28, 2026 ... ... plano de contingência com foco na prevenção e na resposta rápida a ... 🌧️ ITAJAÍ SE PREPARA PARA IMPACTOS DO EL NIÑO Prefeitura ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "635a19a521",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.sed.sc.gov.br/secretaria/imprensa/noticias/30782-governo-do-estado-detalha-plano-de-contingencia-para-educacao-a-comunidade-escolar",
+     "titulo": "SED - Secretaria de Estado da Educação - Governo do Estado detalha ...",
+     "trecho": "O Governo do Estado finalizou o ... para o retorno às atividades presenciais em Santa Catarina. O documento foi detalhado para a comunidade escolar na manhã desta quarta-feira, 9, em uma transmissão on-line....",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e2f9a623b9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 1,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DdeH-bKxvPQ/",
+     "titulo": null,
+     "trecho": "3 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
   {
    "ibge": "4117909",
    "municipio": "Palotina",
@@ -292,265 +620,6 @@
      "url": "https://bemoeste.com.br/noticia/4219/palotina-apresenta-plano-de-contingencia-para-prevencao-de-eventos-climaticos",
      "titulo": "Palotina apresenta Plano de Contingência para prevenção de ...",
      "trecho": "Sep 11, 2026 ... Palotina apresentou o Plano de Contingência Municipal em encontro na ACIPA, com orientações para prevenção e resposta a eventos climáticos.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4208203",
-   "municipio": "Itajaí",
-   "uf": "SC",
-   "melhor_nivel": "A",
-   "n_pistas": 14,
-   "niveis": {
-    "A": 1,
-    "B": 8,
-    "C": 5
-   },
-   "pistas": [
-    {
-     "id": "856520058d",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/",
-     "titulo": "Super El Niño acende alerta em Itajaí e mobiliza estrutura para ...",
-     "trecho": "Adicionar · Planos de contingência estadual e municipal preveem uso de barcos, veículos 4x4 e outros equipamentos em caso de alagamentos 25/08/2026 às 05h20 ... Super El Niño acende alerta em Itajaí e mobiliza estrutura para possíveis ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "b11bbc9e9c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.portoitajai.com.br/informacoes-el-nino",
-     "titulo": "Informações EL NIÑO | Porto de Itajaí",
-     "trecho": "Plano de Contingência de Saúde · Plano de Gerenciamento de Resíduos - PGRS ... Rua Blumenau, 05 Centro, Itajaí - Santa Catarina Brasil - CEP: 88.305-101 ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3425f8be32",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://itajai.sc.gov.br/noticias/36482/itajai-antecipa-prevencao-e-se-prepara-para-combater-el-nino-no-segundo-semestre--",
-     "titulo": "Itajaí antecipa prevenção e se prepara para combater El Niño no ...",
-     "trecho": "May 4, 2026 ... Rua Alberto Werner, 100•Vila Operária•Itajaí - SC•CEP: 88304-053. 2026 Município de Itajaí • Todos os direitos reservados. Política de ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "91a6821421",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.portoitajai.com.br/infomacoes-el-ni-o",
-     "titulo": "Infomações El Niño - Porto de Itajaí",
-     "trecho": "Plano de Contingência de Saúde · Plano de Gerenciamento de Resíduos - PGRS ... Rua Blumenau, 05 Centro, Itajaí - Santa Catarina Brasil - CEP: 88.305-101 ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "08e1764ebb",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DceLKWvkaP7/",
-     "titulo": null,
-     "trecho": "Aug 25, 2026 ... Itajaí apresenta o Plano de Contingência e prepara empresas para riscos climáticos do El Niño 2026.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3ff937f76f",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://upiara.com.br/noticias/super-el-nino-o-que-itajai-fez-para-prevenir-e-combater-emergencias/",
-     "titulo": null,
-     "trecho": "Os canais oficiais da prefeitura divulgam, todas as sextas-feiras, o Radar El Niño para informar e preparar a população para o evento. ... Pesquisa da ABRH-SC revela formação de lideranças como principal desafio do RH de grandes companhias",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "dbbff31d64",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/",
-     "titulo": null,
-     "trecho": "Os planos de contingência estadual, publicado na quinta-feira (20), e municipal de Itajaí preveem o uso de veículos 4×4 e embarcações quando alagamentos, enxurradas ou inundações comprometerem o acesso a áreas afetadas.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "d5cd31c2c0",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.facebook.com/PrefeituradeItajai/videos/%EF%B8%8Fmedidas-de-preven%C3%A7%C3%A3o-ao-el-ni%C3%B1o-a-defesa-civil-de-itaja%C3%AD-passa-a-divulgar-seman/1338660184904006/",
-     "titulo": null,
-     "trecho": "Jun 26, 2026 ... 🌧️ Itajaí se antecipa ao El Niño com ações para proteger a cidade Com foco na ... plano de contingência. Já fizemos reunião com o setor ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "0443bc037e",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DdeH-bKxvPQ/",
-     "titulo": "️ Radar El Niño A Defesa Civil de Itajaí está ampliando a rede de ...",
-     "trecho": "5 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "5c1fae3ce3",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://visornoticias.com.br/el-nino-em-itajai-encontro-prepara-empresas-para-riscos-climaticos",
-     "titulo": null,
-     "trecho": "Promovido pela Secretaria Municipal de Desenvolvimento Econômico, o encontro terá orientações sobre prevenção, gestão de riscos e elaboração de planos de contingência para empresas.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "54533a653c",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DcegeSkHXfI/",
-     "titulo": null,
-     "trecho": "Aug 25, 2026 ... ... likes, 0 comments - portaldafoz on August 25, 2026: \"ITAJAÍ APRESENTA PLANO DE CONTINGÊNCIA E PREPARA EMPRESAS PARA RISCOS ... El Niño em 2026, ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "8dd2e869e3",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DbdTa6fRclC/?hl=en",
-     "titulo": null,
-     "trecho": "Jul 31, 2026 ... Acompanhe a série Radar El Niño e fique por dentro das ações da Defesa Civil de Itajaí. ... plano de contingência do município. A Defesa Civil ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "dbc0225590",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DXsJ5lKjFWy/",
-     "titulo": null,
-     "trecho": "Apr 28, 2026 ... ... plano de contingência com foco na prevenção e na resposta rápida a ... 🌧️ ITAJAÍ SE PREPARA PARA IMPACTOS DO EL NIÑO Prefeitura ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "e2f9a623b9",
-     "nivel_confianca": "C",
-     "pontos_confianca": 1,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DdeH-bKxvPQ/",
-     "titulo": null,
-     "trecho": "3 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -1669,6 +1738,142 @@
    ]
   },
   {
+   "ibge": "2611101",
+   "municipio": "Petrolina",
+   "uf": "PE",
+   "melhor_nivel": "A",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 2,
+    "B": 4,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "0ae0a524aa",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://petrolina.pe.gov.br/mapa-do-site/",
+     "titulo": "Mapa do Site | Prefeitura de Petrolina - PE",
+     "trecho": "Coronavírus Plano de Contingência · Coronavírus Tire Suas Dúvidas · Decreto N.º 037/2020 – Reabertura Gradual · Resoluções CIB/PE · Dados Abertos · Dados Abertos – API · Decretos · Decretos 2012 · Decretos 2013 · Decretos 2014 · Decretos 2015 ·",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "53953ddbae",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://petrolina.pe.gov.br/chesf-e-defesa-civil-de-petrolina-iniciam-instalacao-de-placas-do-plano-de-contingencia-na-tapera/",
+     "titulo": "CHESF e Defesa Civil de Petrolina iniciam instalação de placas ...",
+     "trecho": "Petrolina é uma das poucas cidades de Pernambuco que possui um plano de contingência, o que demonstra que as equipes da Defesa Civil do município seguem realizando o seu trabalho com seriedade.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e6187df402",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/2611101/2025-10-24/3151b51738df227376e28d7a6e96266b6309e564.pdf",
+     "titulo": "Diário oficial de 2025-10-24",
+     "trecho": ". . . . . . . . . . . DECRETO DECRETO Nº 136 DE 22 DE OUTUBRO DE 2025 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL DE CONVOCAÇÃO PARA CONSULTA PÚBLICA N.º 001/2025- PLANCON. . . . . . . . . . . . . . . . . . . . . . . . TERMO EXTRATO DE CONTRATO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EXTRATO DE",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f2fdbb2b26",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/2611101/2025-11-05/8470c278430a8cbc62a6bf8a4ab2756775830857.pdf",
+     "titulo": "Diário oficial de 2025-11-05",
+     "trecho": ". . . . . . . . . . . . . . . PORTARIA Nº. 04249-2025 - SEDUCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL 1º RETIFICAÇÃO DE EDITAL N.º 001-2025 - PLANCON - DEF.CIVIL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL N.º 057-2025 - SEDUCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b53b04907d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf",
+     "titulo": "plano municipal de saneamento de petrolina/pe",
+     "trecho": "Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8a884d3778",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/2611101/2026-09-17/6c8f7efb6f3d6b683bd057e63b5d533b996f0b54.pdf",
+     "titulo": "Diário oficial de 2026-09-17",
+     "trecho": "Petrolina-PE. CEP:56.302-905 E-mail: gabineteprefeiturapetrolina@gmail.com Tel. 3983-6410 MATRIZ DA EDUCAÇÃO – AGENDA TRANSVERSAL DA CRIANÇA E DO ADOLESCENTE SECRETARIA MUNICIPAL DE EDUCAÇÃO – PETROLINA/PE | PPA 2026–2029 Problema Programa Indicad or SELO UNICE F OBS Objetivo Ação Entrega 2026 2027 2028 2029 Necessidade de fortalecer os processos de gestão e as condições de funcionamen to das unidades de Educação Infantil, contribuindo para a qualidade da oferta e do atendimento às crianças",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b6cd0781c1",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/2611101/2026-08-25/ebe64a6d7daf5862bf7ed2fcf83ca5029bf8b902.pdf",
+     "titulo": "Diário oficial de 2026-08-25",
+     "trecho": "filhos menores de 6 anos, se houver; CPF dos dependentes; Título de Eleitor e comprovação das obrigações eleitorais (original e cópia); Cartão PIS ou PASEP; Comprovação do nível de escolaridade (original e cópia); Comprovações de As si na do p or 1 p es so a: D O R IA N E S E C C H I M A S C A R E LO P ar a ve rif ic ar a v al id ad e da s as si na tu ra s, a ce ss e ht tp s: //p et ro lin a. 1d oc .c om .b r/ ve rif ic ac ao /5 E 12 -3 76 7-",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4104808",
    "municipio": "Cascavel",
    "uf": "PR",
@@ -2713,73 +2918,6 @@
      "titulo": null,
      "trecho": "7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "2611101",
-   "municipio": "Petrolina",
-   "uf": "PE",
-   "melhor_nivel": "A",
-   "n_pistas": 3,
-   "niveis": {
-    "A": 2,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "0ae0a524aa",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "ato_formal"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://petrolina.pe.gov.br/mapa-do-site/",
-     "titulo": "Mapa do Site | Prefeitura de Petrolina - PE",
-     "trecho": "Coronavírus Plano de Contingência · Coronavírus Tire Suas Dúvidas · Decreto N.º 037/2020 – Reabertura Gradual · Resoluções CIB/PE · Dados Abertos · Dados Abertos – API · Decretos · Decretos 2012 · Decretos 2013 · Decretos 2014 · Decretos 2015 ·",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "53953ddbae",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://petrolina.pe.gov.br/chesf-e-defesa-civil-de-petrolina-iniciam-instalacao-de-placas-do-plano-de-contingencia-na-tapera/",
-     "titulo": "CHESF e Defesa Civil de Petrolina iniciam instalação de placas ...",
-     "trecho": "Petrolina é uma das poucas cidades de Pernambuco que possui um plano de contingência, o que demonstra que as equipes da Defesa Civil do município seguem realizando o seu trabalho com seriedade.",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "b53b04907d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf",
-     "titulo": "plano municipal de saneamento de petrolina/pe",
-     "trecho": "Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...",
-     "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -5492,6 +5630,75 @@
    ]
   },
   {
+   "ibge": "2103000",
+   "municipio": "Caxias",
+   "uf": "MA",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "7e83fdc810",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html",
+     "titulo": null,
+     "trecho": "26/04/2026 - 08h00min. Compartilhar. Adicione GZH como fonte preferencial no Google ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "dc078080d6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html",
+     "titulo": "Possibilidade de El Niño reacende alerta para chuvas intensas em ...",
+     "trecho": "Apr 26, 2026 ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de Contingência de Caxias do Sul. O documento irá guiar as ações antes, durante e ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5f1a2834eb",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "busca_web",
+     "url": "https://caxias.rs.gov.br/noticias/2026/04/prefeitura-promove-palestra-sobre-el-nino-e-reforca-acoes-de-prevencao-em-caxias-do-sul",
+     "titulo": null,
+     "trecho": "Apr 29, 2026 ... ... Plano de Contingência de Caxias do Sul. Muitas ações já estão sendo ... © 2026 Prefeitura de Caxias do Sul. Ícones por Freepik · Sobre o ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4107900",
    "municipio": "Floresta",
    "uf": "PR",
@@ -6061,52 +6268,49 @@
    ]
   },
   {
-   "ibge": "2103000",
-   "municipio": "Caxias",
+   "ibge": "2105302",
+   "municipio": "Imperatriz",
    "uf": "MA",
    "melhor_nivel": "B",
    "n_pistas": 2,
    "niveis": {
     "A": 0,
-    "B": 1,
-    "C": 1
+    "B": 2,
+    "C": 0
    },
    "pistas": [
     {
-     "id": "7e83fdc810",
+     "id": "acc5082fbd",
      "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html",
-     "titulo": null,
-     "trecho": "26/04/2026 - 08h00min. Compartilhar. Adicione GZH como fonte preferencial no Google ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "5f1a2834eb",
-     "nivel_confianca": "C",
      "pontos_confianca": 4,
      "sinais": [
       "fonte_oficial",
       "municipio_na_url",
       "plano_no_trecho"
      ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
+     "alertas": [],
      "origem": "busca_web",
-     "url": "https://caxias.rs.gov.br/noticias/2026/04/prefeitura-promove-palestra-sobre-el-nino-e-reforca-acoes-de-prevencao-em-caxias-do-sul",
+     "url": "https://transparencia.imperatriz.ma.gov.br/upload/plano_municipal_saude/19310.pdf",
      "titulo": null,
-     "trecho": "Apr 29, 2026 ... ... Plano de Contingência de Caxias do Sul. Muitas ações já estão sendo ... © 2026 Prefeitura de Caxias do Sul. Ícones por Freepik · Sobre o ...",
+     "trecho": "Dessa forma, o Plano Municipal de Saúde 2026–2029 de Imperatriz/MA apresenta ... Plano de Contingência da COVID-19;. • Plano de Enfrentamento das ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "16acd8c225",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DXZsVCSDqit/?hl=en",
+     "titulo": "Plano de contingência em ação em Imperatriz Desde a ... - Instagram",
+     "trecho": "Apr 21, 2026 ... 4493 likes, 204 comments - prefeituradeimperatriz on April 21, 2026: \" Plano de contingência em ação em Imperatriz Desde a madrugada, ...",
+     "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -6706,6 +6910,55 @@
    ]
   },
   {
+   "ibge": "4210407",
+   "municipio": "Maracajá",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "ee5c21214a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://maracaja.sc.gov.br/pagina-40824/",
+     "titulo": null,
+     "trecho": "Nova escola municipal de Maracajá será entregue em 2026 à comunidade de Espigão Grande",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ffb3a23042",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://maracaja.sc.gov.br/pagina-40824/",
+     "titulo": "Plano de Contingência para Covid-19 - Prefeitura de Maracajá",
+     "trecho": "Matrículas e rematrículas para o ano letivo de 2026 na Rede Municipal de Ensino de Maracajá iniciam em novembro.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4212205",
    "municipio": "Papanduva",
    "uf": "SC",
@@ -7244,37 +7497,6 @@
      "url": "https://agroempresario.com/publicacion/120391/gildo-insfran-anticipa-a-formosa-a-el-nino-con-un-plan-especial/",
      "titulo": "Gildo Insfrán anticipa a Formosa a El Niño con un plan especial ...",
      "trecho": "Formosa presentó un plan de contingencia ante el posible impacto del fenómeno El Niño, con medidas preventivas para responder a lluvias intensas y eventuales crecidas de los ríos Pilcomayo, Bermejo y Paraguay.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "2105302",
-   "municipio": "Imperatriz",
-   "uf": "MA",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "acc5082fbd",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://transparencia.imperatriz.ma.gov.br/upload/plano_municipal_saude/19310.pdf",
-     "titulo": null,
-     "trecho": "Dessa forma, o Plano Municipal de Saúde 2026–2029 de Imperatriz/MA apresenta ... Plano de Contingência da COVID-19;. • Plano de Enfrentamento das ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -8518,36 +8740,6 @@
      "url": "https://www.riomaframix.com.br/noticia/defesa-civil-de-mafra-apresenta-plano-de-contingencia-para-enchentes-e-alagamentos/119270",
      "titulo": null,
      "trecho": "Jun 1, 2026 ... Defesa Civil de Mafra apresenta plano de contingência para enchentes e alagamentos ... El Niño. Durante o encontro, o prefeito Carlos Nitz ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4210407",
-   "municipio": "Maracajá",
-   "uf": "SC",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "ee5c21214a",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://maracaja.sc.gov.br/pagina-40824/",
-     "titulo": null,
-     "trecho": "Nova escola municipal de Maracajá será entregue em 2026 à comunidade de Espigão Grande",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
