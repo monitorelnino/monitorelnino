@@ -601690,6 +601690,510 @@
    "fonte_suspensa_defeso": false,
    "executor": "robo",
    "hash_evidencia": null
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "AC",
+   "municipio": "Rio Branco",
+   "ibge": "1200401",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1200401&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 88.0, 'casos_notif': 1, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "bb488e892e2a33fb8ab0aebfb12299f0dea218c204f17cbc9c80cdfc28dfd4df"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "AL",
+   "municipio": "Maceió",
+   "ibge": "2704302",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2704302&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 88.0, 'casos_notif': 28, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "fde20184d8070801608d01eacbbfcde0031375909bc09b79ecc5df15451c7657"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "AM",
+   "municipio": "Manaus",
+   "ibge": "1302603",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1302603&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 79.0, 'casos_notif': 19, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "8bbb282cb975d5dbd11701880dee719e6148d946b75a676f3ba1d4d485982780"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "AP",
+   "municipio": "Macapá",
+   "ibge": "1600303",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1600303&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 151.0, 'casos_notif': 0, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "b7b30afc6c3b696d9405c23cbcf3f6122dddec5b97409ac884482c058884b7c5"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "BA",
+   "municipio": "Salvador",
+   "ibge": "2927408",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2927408&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 47.0, 'casos_notif': 47, 'nivel': 2, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "dfdce6b03510a1b4650ad749791e4a4981a05e0231e20a73b9624d1697853ebb"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "CE",
+   "municipio": "Fortaleza",
+   "ibge": "2304400",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2304400&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 168.0, 'casos_notif': 4, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "26b96070329d4a63223908a37ef2a23ce299786a225c30a31aae9c67a774728e"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "DF",
+   "municipio": "Brasília",
+   "ibge": "5300108",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=5300108&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 269.0, 'casos_notif': 140, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "49c3e2cf54125e9f974954de61978e3e26d1e84bc453b77b0dc1e3ecd9718c8d"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "ES",
+   "municipio": "Vitória",
+   "ibge": "3205309",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=3205309&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 32.0, 'casos_notif': 32, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "4158c4ef17103c218649a3bd2b07864660621d6f3a1182fb1648f96df6ed2950"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "GO",
+   "municipio": "Goiânia",
+   "ibge": "5208707",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=5208707&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 166.0, 'casos_notif': 166, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "1f448843cff16e0e48cd29583440a5cf506c577b699f8f8ef033e634f835c37a"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MA",
+   "municipio": "São Luís",
+   "ibge": "2111300",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2111300&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 43.0, 'casos_notif': 1, 'nivel': 2, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "c4efc55f798531288812e25be484c57015afc8ab86da86eacce73f7dfb50177f"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MG",
+   "municipio": "Belo Horizonte",
+   "ibge": "3106200",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=3106200&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 52.0, 'casos_notif': 52, 'nivel': 2, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "7fc4cbb638f13cd7c258cced12cef14d51e6643f87cda17b572ca2486d88105c"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MS",
+   "municipio": "Campo Grande",
+   "ibge": "5002704",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=5002704&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 0.0, 'casos_notif': 0, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "f59c84f927d32adb9f5a31dd5195782d2db03d9a089a0d389f82d2f11fd57798"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "MT",
+   "municipio": "Cuiabá",
+   "ibge": "5103403",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=5103403&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 4.0, 'casos_notif': 1, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "847eab2f9e622a6e47b53e476fc02346df7e3d4a5baf1dd482a3441b7fb4694c"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PA",
+   "municipio": "Belém",
+   "ibge": "1501402",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1501402&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 75.0, 'casos_notif': 6, 'nivel': 2, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "c1ed703d5141ef37078e665b2982a1fc01c49bcbc3fb0debec4db090bdf428aa"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PB",
+   "municipio": "João Pessoa",
+   "ibge": "2507507",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2507507&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 159.0, 'casos_notif': 64, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "61d2c6a799ce78f577604aa37321f7b85e18b291677e6de8470d3c3e8cb4d09b"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PE",
+   "municipio": "Recife",
+   "ibge": "2611606",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2611606&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 311.5, 'casos_notif': 61, 'nivel': 2, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "b3cc3fdc390f27d8ce0c075a0e17385cd76f11241dbd9bf2e08d8c4bf44994c0"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PI",
+   "municipio": "Teresina",
+   "ibge": "2211001",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2211001&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 35.0, 'casos_notif': 7, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "4868535504c4d203c5c201e911a763b0b966f610770c0e6ebfc1ee8c35330891"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "PR",
+   "municipio": "Curitiba",
+   "ibge": "4106902",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=4106902&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 13.0, 'casos_notif': 3, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "1af67706bd47eeb5f9ac7283a52532a0d637036df55bb1fa02cb5bbee4f23f27"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RJ",
+   "municipio": "Rio de Janeiro",
+   "ibge": "3304557",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=3304557&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 96.0, 'casos_notif': 96, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "539435c727102a7454536a5a7e21b2f22ba7e9c28f2f653e362debfada94789b"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RN",
+   "municipio": "Natal",
+   "ibge": "2408102",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2408102&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 24.0, 'casos_notif': 24, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "8cd8a158502d00fd624c5e4f00fd38b526da959c8eb0d8560ace2ee7face9d49"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RO",
+   "municipio": "Porto Velho",
+   "ibge": "1100205",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1100205&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 22.0, 'casos_notif': 0, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "3ee831cb39b71339232210c9f8b4df94dbd892a48f7d29f1eb48bc0816dcef48"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RR",
+   "municipio": "Boa Vista",
+   "ibge": "1400100",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1400100&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 34.0, 'casos_notif': 10, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "b3c99fb64039a1add9f117aa812a4e23a2c36df6abf884ac72de12a8c9f1908f"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "RS",
+   "municipio": "Porto Alegre",
+   "ibge": "4314902",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=4314902&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 8.0, 'casos_notif': 2, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "ebc1c0dec278a67d48018590de0223536c3d044a9fd6c00cc93aa308e7664a32"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "SC",
+   "municipio": "Florianópolis",
+   "ibge": "4205407",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=4205407&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 37.0, 'casos_notif': 19, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "56300375448bac11eb8652325276215e465fee3fcbcfbb307c12af62aaf1966f"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "SE",
+   "municipio": "Aracaju",
+   "ibge": "2800308",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=2800308&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 71.0, 'casos_notif': 5, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "58e0028d20b4a2555f8536ab0182c1328432a459561bcbe103cd3613393aebb7"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "SP",
+   "municipio": "São Paulo",
+   "ibge": "3550308",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=3550308&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 268.0, 'casos_notif': 268, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "a724b79988758db42dc4eaab1a9152d758dfeb0337b8999289ff40570eb433f9"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": "TO",
+   "municipio": "Palmas",
+   "ibge": "1721000",
+   "nivel": null,
+   "strings": [
+    "https://info.dengue.mat.br/api/alertcity?geocode=1721000&disease=dengue&format=json&ew_start=1&ew_end=53&ey_start=2026&ey_end=2026"
+   ],
+   "n_resultados": 37,
+   "resultados": "InfoDengue: {'se': 202637, 'casos_est': 165.0, 'casos_notif': 99, 'nivel': 1, 'data_iniSE': 1789257600000}",
+   "decisao": "registro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": "2e623acb8f8a0e283d9d6cc9da3ef8d7a254deaca274c33401b7ef0f99398932"
+  },
+  {
+   "data": "2026-09-24",
+   "canal": "DOU",
+   "camada": 1,
+   "uf": null,
+   "municipio": null,
+   "ibge": null,
+   "nivel": null,
+   "strings": [
+    "https://clima.saude.gov.br/"
+   ],
+   "n_resultados": null,
+   "resultados": "Painel de Excesso de Calor (MS): ValueError: painel do MS respondeu 200 com corpo vazio em 5 de 5 handlers — recusa servida com 200, não ausência de dado",
+   "decisao": "erro",
+   "fonte_suspensa_defeso": false,
+   "executor": "claude",
+   "hash_evidencia": null
   }
  ]
 }

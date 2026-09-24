@@ -47,6 +47,16 @@
    "papel": "RESPOSTA, peso zero",
    "status": "aguardando_primeira_coleta",
    "consultado_em": null
+  },
+  "painel_calor_ms": {
+   "nome": "Painel Nacional de Excesso de Calor",
+   "orgao": "Ministério da Saúde",
+   "papel": "classe de excesso de calor por município (índice EHF), no vocabulário do MS",
+   "url_publica": "https://clima.saude.gov.br/",
+   "status": "aguardando_primeira_coleta",
+   "consultado_em": "24/09/2026",
+   "ultima_tentativa_falhou": "24/09/2026",
+   "motivo_da_falha": "ValueError: painel do MS respondeu 200 com corpo vazio em 5 de 5 handlers — recusa servida com 200, não ausência de dado"
   }
  },
  "dengue_capitais": {
