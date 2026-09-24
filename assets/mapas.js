@@ -90,11 +90,18 @@
     return g;
   }
 
-  /** Camada densa (milhares de pontos) num único <path> — barata de renderizar. */
-  function pontosDensos(ctx, svgId, itens, cor, largura, opacidade) {
-    const svg = d3.select('#' + svgId); svg.selectAll('path.densos').remove();
+  /** Camada densa (milhares de pontos) num único <path> — barata de renderizar. `classe`
+   *  (opcional) permite mais de uma camada densa no mesmo mapa; sem ela, uma só. */
+  function pontosDensos(ctx, svgId, itens, cor, largura, opacidade, classe) {
+    /* 24/09/2026 (§208): `classe` é opcional e existe porque esta função REMOVIA a camada
+       anterior a cada chamada — desenhar duas camadas densas no mesmo mapa apagava a primeira,
+       em silêncio. Foi o que aconteceu ao pôr três classes de dotação no mapa do dinheiro
+       municipal: sobrou só a última, sem erro nenhum. Sem `classe`, o comportamento é o de
+       antes ('densos'), então nenhuma página existente muda. */
+    const cls = classe || 'densos';
+    const svg = d3.select('#' + svgId); svg.selectAll('path.' + cls).remove();
     const d = itens.filter(p => p.lat != null && p.lon != null).map(p => { const c = ctx.projection([p.lon, p.lat]); return 'M' + c[0].toFixed(1) + ' ' + c[1].toFixed(1) + 'h0'; }).join('');
-    svg.append('path').attr('class', 'densos').attr('d', d).attr('stroke', cor).attr('stroke-width', largura || 1.4).attr('stroke-linecap', 'round').attr('stroke-opacity', opacidade || .55).attr('fill', 'none');
+    svg.append('path').attr('class', cls).attr('d', d).attr('stroke', cor).attr('stroke-width', largura || 1.4).attr('stroke-linecap', 'round').attr('stroke-opacity', opacidade || .55).attr('fill', 'none');
     svg.selectAll('g.siglas').raise();
   }
 

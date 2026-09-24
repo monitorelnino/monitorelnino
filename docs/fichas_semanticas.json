@@ -948,26 +948,30 @@
    "acao_relacionada": null
   },
   "financiamento.html#boxDespesa182": {
-   "tipo": "mapa de pontos e lista",
-   "pergunta_que_responde": "Quanto cada município declarou de despesa em defesa civil, por habitante?",
+   "tipo": "mapa de pontos com seletor de camada e lista",
+   "pergunta_que_responde": "Quanto cada município declarou de despesa em defesa civil por habitante, e quais declararam ter previsão de recursos na lei orçamentária?",
    "dimensao_da_preparacao": "dinheiro próprio do município",
    "universo": "municípios consultados no SICONFI (a amostra cresce por rodada)",
    "unidade_de_analise": "município",
    "territorio": "Brasil",
-   "periodo": "exercício 2025",
-   "variavel_principal": "despesa liquidada na subfunção 06.182 por habitante, em R$/hab",
+   "periodo": "despesa: exercício 2025 · dotação declarada: base ICM de 2026",
+   "variavel_principal": "camada 1: despesa liquidada na subfunção 06.182 por habitante, em R$/hab · camada 2: declaração de previsão de recursos na LOA (sim/não)",
    "denominador": "população do Censo 2022",
-   "fonte": "SICONFI (Tesouro Nacional) e IBGE — Censo 2022",
-   "metodologia": "Despesa liquidada declarada pelo próprio município na DCA, anexo I-E. A subfunção 182 soma preparação e resposta, e a fonte não separa. Três classes de ausência, nenhuma delas zero: sem lançamento na 182, sem declaração no SICONFI, sem coleta. Valor real abaixo de R$ 0,01 é exibido como 'menos de R$ 0,01', nunca como R$ 0,00.",
+   "fonte": "SICONFI (Tesouro Nacional), IBGE — Censo 2022 e ICM — Sedec/MIDR",
+   "metodologia": "Despesa liquidada declarada pelo próprio município na DCA, anexo I-E. A subfunção 182 soma preparação e resposta, e a fonte não separa. Três classes de ausência, nenhuma delas zero: sem lançamento na 182, sem declaração no SICONFI, sem coleta. Valor real abaixo de R$ 0,01 é exibido como 'menos de R$ 0,01', nunca como R$ 0,00. A segunda camada é a variável 11 do ICM, 'Dotação orçamentária (LOA) para proteção e Defesa Civil', resposta do próprio município à Sedec, binária e cobrindo os 5.570. Peso zero como a primeira. Escolhida no lugar da variável da MUNIC 2020 por ser de 2026 e não ter 24% de respostas inutilizáveis.",
    "conclusoes_permitidas": [
     "quanto o município declarou de despesa liquidada na subfunção de defesa civil, por habitante",
-    "quais municípios não lançaram nada naquela subfunção e quais não entregaram a declaração"
+    "quais municípios não lançaram nada naquela subfunção e quais não entregaram a declaração",
+    "quais municípios declararam previsão de recursos para defesa civil na LOA"
    ],
    "conclusoes_nao_permitidas": [
     "que município sem lançamento na 182 não gasta em defesa civil",
     "que o valor seja gasto em preparação",
     "qualidade ou eficácia da defesa civil municipal",
-    "comparação com o saldo do fundo municipal, que é outro dado"
+    "comparação com o saldo do fundo municipal, que é outro dado",
+    "que dotação declarada seja despesa realizada",
+    "que a declaração ao ICM tenha sido verificada pelo Monitor",
+    "somar ou comparar as duas camadas como se medissem a mesma coisa"
    ],
    "funcao_narrativa": "evidência do dinheiro próprio",
    "acao_relacionada": "consultar a declaração do município no SICONFI"

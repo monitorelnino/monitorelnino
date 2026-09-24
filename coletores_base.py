@@ -21,7 +21,7 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
    É deste livro (mais o log) que `recalcular_mare.py` deriva o nível de
    verificação — os coletores nunca escrevem `verificacao_municipal.json`.
 """
-import hashlib, json, os, pathlib, re, sys, urllib.error, urllib.parse, urllib.request
+import hashlib, json, os, pathlib, re, ssl, sys, urllib.error, urllib.parse, urllib.request
 from datetime import date, datetime
 
 RAIZ = pathlib.Path(__file__).parent
@@ -403,6 +403,27 @@ def detectar_muro_de_robo(corpo: bytes, tamanho_maximo: int = 60000) -> str | No
     return None
 
 
+def contexto_tls():
+    """Contexto TLS verificado contra o pacote de CAs do `certifi`, quando ele existe.
+
+    24/09/2026 (§208): três fontes oficiais falhavam aqui com CERTIFICATE_VERIFY_FAILED —
+    `gsc.cemaden.gov.br`, `ftp.ibge.gov.br` e a listagem da MUNIC — porque a loja de
+    certificados da máquina Windows não completa a cadeia delas. No runner Linux passavam, e por
+    isso o defeito se disfarçava de "fonte fora do ar no ambiente de edição": a sonda da MUNIC
+    chegou a documentar a causa errada (403 de host) e ficou marcada como não executável
+    localmente. Nomear a recusa errado é exatamente o que o CLAUDE.md proíbe.
+
+    Isto NÃO afrouxa verificação: continua validando o certificado, contra um conjunto de raízes
+    mais completo e igual em qualquer máquina. Fonte que recusa de verdade continua recusando, e
+    `certifi` está declarado e travado em requirements.txt. Sem o pacote, devolve None e o
+    comportamento é o de antes."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return None
+
+
 def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
     """GET simples com User-Agent do projeto. Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
@@ -416,7 +437,7 @@ def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
     robots = robots_de(host) if host else {"status": "indeterminado", "crawl_delay": None, "rp": None}
     _respeitar_ritmo(host, robots.get("crawl_delay"))
     req = urllib.request.Request(url_ascii(url), headers={"User-Agent": UA, "Accept": "*/*"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
+    with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
         corpo = r.read()
         ct = (r.headers.get("Content-Type") or "").lower()
     if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):

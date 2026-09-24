@@ -31,7 +31,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=76daae0b">
 <link rel="stylesheet" href="assets/base.css?v=12ea95f4">
-<script src="assets/mapas.js?v=e83ba02a"></script>
+<script src="assets/mapas.js?v=412fe5b7"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -123,15 +123,24 @@
     <div class="grade-figuras">
       <figure class="figura figura--mapa figura--largo" id="boxDespesa182">
         <h3 class="figura-titulo">Despesa em defesa civil por habitante</h3>
-        <p class="figura-sub">Exercício 2025 · despesa liquidada na subfunção 182 · R$/hab · população do Censo 2022 · inclui preparação e resposta</p>
-        <div class="figura-midia"><svg id="mapaDespesa182" role="img" aria-label="Mapa do Brasil com a despesa municipal liquidada em defesa civil por habitante, por município consultado" viewBox="0 0 480 460"></svg></div>
+        <p class="figura-sub">Despesa liquidada na subfunção 182 · R$/hab · Censo 2022 · inclui preparação e resposta · a camada abaixo define o recorte</p>
+        <div class="figura-midia">
+          <svg id="mapaDespesa182" role="img" aria-label="Mapa do Brasil com a despesa municipal liquidada em defesa civil por habitante, por município consultado" viewBox="0 0 480 460"></svg>
+          <svg id="mapaDotacao" role="img" aria-label="Mapa do Brasil com os municípios que declararam dotação orçamentária para proteção e defesa civil na Lei Orçamentária Anual" viewBox="0 0 480 460" hidden></svg>
+        </div>
         <div class="map-legend" id="legDespesa182"></div>
+        <div class="map-legend" id="legDotacao" hidden></div>
+        <label class="sr-only" for="selDinheiroProprio">Camada</label>
+        <select id="selDinheiroProprio" class="seletor u-mt-2" aria-label="Escolher a camada do mapa">
+          <option value="despesa">Despesa liquidada · subfunção 182, exercício 2025</option>
+          <option value="dotacao">Dotação declarada · na LOA, ICM 2026, todos os municípios</option>
+        </select>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
           <dl class="dl-dados" id="dlDespesa182"></dl>
         </details>
       </figure>
     </div>
-    <p class="note u-mb-0">A subfunção 182 soma preparação e resposta, e a fonte não separa as duas. Parte dos municípios lança defesa civil em outra subfunção, como drenagem, urbanismo ou segurança: sem lançamento na 182 não é ausência de gasto em defesa civil.</p>
+    <p class="note u-mb-0">A subfunção 182 soma preparação e resposta, e a fonte não separa as duas. Parte dos municípios lança defesa civil em outra subfunção, como drenagem, urbanismo ou segurança: sem lançamento na 182 não é ausência de gasto em defesa civil. A dotação declarada é resposta do município ao ICM, e diz que há previsão na lei, não quanto foi gasto.</p>
   </div>
 
   <div class="panel" id="preventivo">
@@ -246,7 +255,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/financiamento.js?v=a89fa458" defer></script>
+<script src="assets/js/financiamento.js?v=65cb534a" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

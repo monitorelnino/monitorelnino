@@ -454,7 +454,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     fetch('data/financiamento/municipios/despesa_182.json').then(r => r.ok ? r.json() : null),
     fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
     fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
-  ]).then(function ([DSP, REF, GEO]) {
+    // §208: camada declarada da dotação na LOA (ICM 2026). Ausente = lacuna na segunda camada,
+    // sem derrubar a primeira.
+    fetch('data/declarado_nacional.json').then(r => r.ok ? r.json() : null).catch(() => null),
+  ]).then(function ([DSP, REF, GEO, DECL]) {
     /* Sem coleta, a seção declara a lacuna. Mapa cinza com legenda muda deixaria o leitor
        concluir que ninguém gasta nada, que é exatamente a conclusão que o dado não autoriza. */
     if (!DSP || !DSP.municipios || !Object.keys(DSP.municipios).length || !REF || !GEO) {
@@ -559,6 +562,80 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         return '<dt>' + esc(m.nome) + ' (' + esc(m.uf) + ')</dt><dd>' + valor + '</dd>';
       }).join('');
     }
+
+    /* ---- camada B declarada (§208): dotação orçamentária na LOA, ICM 2026 --------------
+       Pergunta DIFERENTE da camada A, e o seletor existe para não confundir as duas: a
+       despesa diz quanto o município gastou; a dotação diz que há previsão na lei. Peso
+       zero em ambas. `NA` é ausência de resposta e NÃO é "não": vira classe própria. */
+    const dotacao = DECL && DECL.municipios ? DECL.municipios : null;
+    const svgD = d3.select('#mapaDotacao');
+    const COR_SIM = MonitorMapas.PALETA.preparacao;
+    const COR_NAO = MonitorMapas.cor('areia');
+    const COR_NA = MonitorMapas.cor('sem-dado');
+    let contagem = {sim: 0, nao: 0, na: 0};
+
+    if (dotacao) {
+      const pontos = Object.entries(dotacao).map(function (par) {
+        const v = (par[1] || {}).icm_var11_dotacao_loa;
+        const classe = v === 'sim' ? 'sim' : v === 'nao' ? 'nao' : 'na';
+        contagem[classe]++;
+        return {cod: par[0], classe: classe, ll: coord[par[0]]};
+      }).filter(m => m.ll);
+      svgD.append('g').selectAll('path').data(GEO.features).join('path')
+        .attr('d', ctx.path).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
+        .on('mouseenter', (evt, d) => MonitorMapas.showTip('<strong>' + esc(d.properties.name) + '</strong>', evt))
+        .on('mousemove', (evt) => MonitorMapas.showTip(document.getElementById('mapTooltip').innerHTML, evt))
+        .on('mouseleave', MonitorMapas.hideTip);
+      /* 5.570 pontos num só <path> por classe: camada densa, barata de renderizar. */
+      [['nao', COR_NAO], ['na', COR_NA], ['sim', COR_SIM]].forEach(function (par) {
+        const itens = pontos.filter(m => m.classe === par[0])
+          .map(m => ({lon: m.ll[0], lat: m.ll[1]}));
+        if (itens.length) MonitorMapas.pontosDensos(ctx, 'mapaDotacao', itens, par[1], 1.6, 0.85,
+                                                    'densos-dotacao-' + par[0]);
+      });
+      MonitorMapas.siglas(ctx, svgD);
+      MonitorMapas.legenda('legDotacao', [
+        {cor: COR_SIM, rotulo: 'com dotação declarada (' + contagem.sim + ')'},
+        {cor: COR_NAO, rotulo: 'sem dotação declarada (' + contagem.nao + ')'},
+      ].concat(contagem.na ? [{cor: COR_NA, rotulo: 'sem resposta (' + contagem.na + ')'}] : []));
+      fonteFigura('boxDespesa182', {fontes: ['SICONFI (Tesouro Nacional)', 'IBGE — Censo 2022'],
+                                    url: 'https://apidatalake.tesouro.gov.br/', data: DSP.gerado_em});
+    } else {
+      MonitorMapas.legenda('legDotacao', [{cor: COR_NA, rotulo: 'sem coleta até o corte'}]);
+    }
+
+    /* O seletor troca a camada, a legenda e o texto-fato juntos — nunca um sem o outro, que é
+       como um número de uma camada acaba lido como se fosse da outra. */
+    const sel = document.getElementById('selDinheiroProprio');
+    const fatoDespesa = resumoEl ? resumoEl.textContent : '';
+    const fatoDotacao = dotacao
+      ? contagem.sim + ' município(s) declararam previsão de recursos para proteção e defesa civil '
+        + 'na Lei Orçamentária Anual, contra ' + contagem.nao + ' que declararam não haver. '
+        + 'Resposta ao Indicador de Capacidade Municipal da Sedec, base de 2026. '
+        + 'Declarar previsão na lei não é o mesmo que ter gasto.'
+      : 'Dotação declarada na LOA: sem coleta até o corte.';
+    const creditoDespesa = {fontes: ['SICONFI (Tesouro Nacional)', 'IBGE — Censo 2022'],
+                            url: 'https://apidatalake.tesouro.gov.br/', data: DSP.gerado_em};
+    const creditoDotacao = {fontes: ['ICM — Sedec/MIDR'],
+                            url: 'https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/icm',
+                            data: DECL && DECL.ativado_em ? DECL.ativado_em : (DSP.gerado_em || null)};
+    function trocarCamada(valor) {
+      const eDotacao = valor === 'dotacao';
+      /* toggleAttribute, não `.hidden`: em SVG a propriedade não reflete no atributo, e é o
+         atributo que esconde (ver a nota em ligarSeletorDeCamada, defesa-civil.js). */
+      const trocar = (id, mostrar) => { const e = document.getElementById(id); if (e) e.toggleAttribute('hidden', !mostrar); };
+      trocar('mapaDespesa182', !eDotacao);
+      trocar('mapaDotacao', eDotacao);
+      trocar('legDespesa182', !eDotacao);
+      trocar('legDotacao', eDotacao);
+      if (resumoEl) resumoEl.textContent = eDotacao ? fatoDotacao : fatoDespesa;
+      /* O crédito é de UMA figura e precisa seguir a camada: fonte errada ao lado de número
+         certo é proveniência falsa. Remove e remonta, porque MonitorMapas.credito não duplica. */
+      const pe = document.querySelector('#boxDespesa182 .fonte-figura');
+      if (pe) pe.remove();
+      fonteFigura('boxDespesa182', eDotacao ? creditoDotacao : creditoDespesa);
+    }
+    if (sel) sel.addEventListener('change', e => trocarCamada(e.target.value));
   }).catch(function () {
     if (resumoEl) resumoEl.textContent = 'Despesa municipal em defesa civil: sem coleta até o corte.';
     MonitorMapas.legenda('legDespesa182', [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);

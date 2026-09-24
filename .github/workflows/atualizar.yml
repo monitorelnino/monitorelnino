@@ -354,6 +354,13 @@ jobs:
       - name: Atualizar dados (boletins + instrumentos estaduais + transferências)
         env:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+          # §208: a camada de MEDIÇÃO dos sinais (OpenAQ e estações do INMET) só liga com
+          # credencial. Sem o segredo cadastrado, o valor chega vazio, coletar_sinais_risco.py
+          # levanta CredencialAusente e a fonte fica com status `aguardando_credencial` — a
+          # figura diz isso na legenda e nenhum ponto é desenhado. Declarar aqui é o que faz o
+          # segredo CHEGAR ao coletor: sem esta linha, cadastrá-lo no GitHub não liga nada.
+          OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+          INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
           # v2.2.4 (§13): semana intensiva controlada por variáveis de repositório
           # (Settings → Secrets and variables → Actions → Variables). Fora do período,
           # a execução diária encerra sem coletar nem comitar (retorno ao semanal é automático).

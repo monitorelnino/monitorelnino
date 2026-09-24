@@ -80,6 +80,47 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
         return out;
       }, { FAMILIAS, PROPS, SO_TIPOGRAFIA: [...SO_TIPOGRAFIA], PROPS_TIPO });
       if (r.scroll) falhas.push(`${p}@${largura}: rolagem horizontal`);
+
+      /* 24/09/2026 (§208): SELETOR DE CAMADA TEM DE TROCAR DE CAMADA.
+         Dois seletores da Defesa civil não trocavam nada — `svg.hidden = false` não remove o
+         atributo num elemento SVG, e é o atributo que esconde. Quatro camadas de mapa nunca
+         chegaram ao leitor, e nenhum portão viu: os de runtime conferem que o SVG tem as 27 UFs
+         desenhadas, não que a escolha do leitor muda o que aparece. Esta checagem percorre cada
+         `select.seletor`, escolhe cada opção e exige que o conjunto de SVGs visíveis MUDE. */
+      if (largura === LARGURAS[0]) {
+        /* Só vale para seletor que ESCOLHE ENTRE CAMADAS, isto é, cuja figura tem dois ou mais
+           SVG/canvas identificados. Seletor que redesenha o MESMO canvas (o comparador da Saúde)
+           ou que troca texto (contatos no Proteja-se) muda conteúdo, não camada, e exigir dele
+           troca de elemento visível seria acusar comportamento correto. */
+        const seletores = await page.$$eval("select.seletor", els => els.map(e => {
+          const fig = e.closest("figure");
+          return {
+            id: e.id,
+            valores: [...e.options].map(o => o.value),
+            camadas: fig ? fig.querySelectorAll("svg[id], canvas[id]").length : 0,
+          };
+        }));
+        for (const sl of seletores) {
+          if (!sl.id || sl.valores.length < 2 || sl.camadas < 2) continue;
+          const vistos = new Set();
+          for (const v of sl.valores) {
+            await page.selectOption("#" + sl.id, v);
+            await page.waitForTimeout(250);
+            const visiveis = await page.evaluate(id => {
+              const sel = document.getElementById(id);
+              const fig = sel.closest("figure") || document;
+              return [...fig.querySelectorAll("svg[id], canvas[id]")]
+                .filter(e => getComputedStyle(e).display !== "none")
+                .map(e => e.id).sort().join(",");
+            }, sl.id);
+            vistos.add(visiveis);
+          }
+          if (vistos.size < 2) {
+            falhas.push(`${p}: seletor #${sl.id} não troca a camada — ${sl.valores.length} opções, `
+              + `sempre o mesmo visível (${[...vistos][0] || "nada"})`);
+          }
+        }
+      }
       for (const [nome, itens] of Object.entries(r.familias)) { porFamilia[nome] = porFamilia[nome] || {}; for (const it of itens) { (porFamilia[nome][it.assinatura] = porFamilia[nome][it.assinatura] || []).push(p + " › " + it.texto); } }
       for (const [t, ex] of Object.entries(r.tamanhos)) (tamanhos[t] = tamanhos[t] || new Set()).add(p + " › " + ex);
       // (3) lado a lado: figuras com o mesmo top (±4px) devem ter mesma largura/altura e mesma posição interna

@@ -2,15 +2,17 @@
 """Sonda (22/09/2026): qual edição da MUNIC/IBGE traz o bloco de gestão de riscos e desastres,
 onde está o arquivo, e como se chamam de verdade as colunas de plano de contingência.
 
-POR QUE ESTA SONDA EXISTE
-`data/declarado_nacional.json` está com `"municipios": {}` desde 02/09/2026, porque
-`data/fontes_declarado.json` tem `url: null` e `status: "a_verificar"` para MUNIC e ICM.
-A camada entra na nota em 26/10/2026. Sem ela, o único canal que pergunta a TODOS os 5.570
-municípios se possuem plano de contingência não existe, e a varredura depende do Querido
-Diário, que indexa ~9,5% do país.
+POR QUE ESTA SONDA EXISTE — E O QUE JÁ FOI RESOLVIDO
+Ela nasceu porque `data/declarado_nacional.json` estava com `"municipios": {}` e
+`data/fontes_declarado.json` tinha `url: null` para MUNIC e ICM. **Isso foi resolvido em
+20–21/09/2026:** a fonte está com `status: "ok"`, a coluna conferida contra o arquivo
+(`Mgrd184`, aba "Gestão de riscos"), e a camada declarada cobre os 5.570 municípios, ativada
+na nota em 21/09. Esta docstring ficou três dias velha e mandava investigar problema morto —
+corrigida em 24/09/2026 (§208).
 
-Os nomes de coluna em `fontes_declarado.json` (`MGRD_PlanoContingencia`, `CodMun`) foram
-escritos por suposição, nunca conferidos contra arquivo. Esta sonda os confere.
+O que a sonda serve HOJE: conferir, contra o arquivo, qual edição traz o bloco e como as
+colunas se chamam, sempre que se quiser uma variável nova daquele bloco. Foi para isso que
+ela rodou em 24/09/2026, ao procurar variável de FUNDO municipal de defesa civil (§208).
 
 A EDIÇÃO NÃO É ÓBVIA — E ESTE É O PONTO PRINCIPAL
 A MUNIC 2024 (21ª edição) anuncia oito temas: recursos humanos; informática e comunicação;
@@ -23,8 +25,9 @@ Ou seja: a edição mais RECENTE pode não ser a edição CERTA. A sonda lista o
 edição e mostra as colunas, para que a escolha seja feita com o arquivo à vista — decisão
 editorial, porque muda o ano de referência do que o site afirma.
 
-NÃO GRAVA NADA. Não toca `data/`. Roda na Action, onde a rede é aberta; o sandbox de edição
-responde 403 `host_not_allowed` para os domínios do IBGE.
+NÃO GRAVA NADA. Não toca `data/`. Roda na Action E localmente: em 24/09/2026 mediu-se que o
+impedimento local não era bloqueio de host, e sim a cadeia de certificados do `ftp.ibge.gov.br`,
+que a loja do Windows não completa — ver `_contexto_tls`.
 
 Uso:
   python3 scripts/sondar_munic_ibge.py             # sonda (rede)
@@ -32,6 +35,7 @@ Uso:
 """
 import io
 import re
+import ssl
 import sys
 import urllib.error
 import urllib.request
@@ -58,8 +62,26 @@ PADRAO_IBGE = re.compile(r"^(cod|codigo|cd)[\s_]*(mun|municipio|ibge)|^a1$", re.
 PADRAO_FUNDO = re.compile(r"(fundo|fumpdec|fumdec|fundec|fmpdc|fmdc)", re.I)
 
 
+def _contexto_tls():
+    """Verificação de certificado contra o pacote de CAs do `certifi` quando ele existe.
+
+    24/09/2026: a docstring desta sonda dizia que o ambiente de edição respondia 403
+    `host_not_allowed` para os domínios do IBGE. O que ele responde de verdade, medido hoje, é
+    CERTIFICATE_VERIFY_FAILED — a loja de certificados da máquina Windows não completa a cadeia
+    do `ftp.ibge.gov.br`. Mesmo defeito, e mesma correção, do `gsc.cemaden.gov.br` no §206.
+    Não afrouxa verificação nenhuma: valida contra um conjunto de raízes mais completo e igual em
+    qualquer máquina. Com isto a sonda roda FORA da Action, o que era o único impedimento para
+    responder à editoria qual edição da MUNIC serve."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return None
+
+
 def baixar(url: str, limite: int = 40_000_000) -> bytes:
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=120) as r:
+    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=120,
+                                context=_contexto_tls()) as r:
         return r.read(limite)
 
 

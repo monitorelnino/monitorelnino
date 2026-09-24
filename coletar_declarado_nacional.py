@@ -87,6 +87,7 @@ FONTES_PADRAO = {
         "aba": "Planilha1",
         "coluna_ibge": "Código IBGE",
         "coluna_var8": "8",
+        "coluna_var11_dotacao": "11",
         "_nota": "Página oficial: gov.br/mdr/.../icm — variável 8 confirmada como 'Plano de "
                  "Contingência' na descrição das 20 variáveis do indicador. Colunas 1–20 vêm "
                  "numeradas, não nomeadas (o próprio ICM não dá nome descritivo às variáveis). "
@@ -152,8 +153,24 @@ def normalizar_binario_icm(v) -> str:
     return normalizar_sim_nao(v)
 
 
-def parse_icm_xlsx(bruto: bytes, aba: str, col_ibge: str, col_var: str, edicao) -> dict:
-    """{ibge7: {icm_var8_plano_contingencia, icm_edicao}}. Esquema real (base_completa_icm,
+def parse_icm_xlsx(bruto: bytes, aba: str, col_ibge: str, col_var: str, edicao,
+                   col_dotacao: str = "") -> dict:
+    """{ibge7: {icm_var8_plano_contingencia, icm_var11_dotacao_loa, icm_edicao}}.
+
+    24/09/2026 (§208, camada B do dinheiro municipal): `col_dotacao` lê a variável **11** do
+    ICM, "Dotação orçamentária (LOA) para proteção e Defesa Civil". Ela entrou no lugar da
+    variável de FUNDO da MUNIC 2020 porque é melhor em três sentidos, medidos: base de **2026**
+    contra 2020; **binária e sem vazio** nos 5.570, contra cinco valores na MUNIC (`Sim` 968,
+    `Não` 3.265, `-` 1.229, `Recusa` 90, `Não informou` 18 — 24 % do país sem resposta
+    utilizável); e é da própria SEDEC. Confirmação cruzada: os 968 que disseram "sim" à MUNIC em
+    2020 têm **todos** 1 na variável 11 do ICM 2026 — nenhuma discordância nesse sentido, o que
+    mostra que as duas perguntam a mesma coisa.
+
+    PESO ZERO, e a garantia é estrutural: `recalcular_mare._declarado_nacional_uf()` lê apenas
+    `munic_plano_contingencia` e `icm_var8_plano_contingencia`, **por nome**. Um campo novo não
+    entra por ficar no mesmo registro. `verificar_financiamento.py` tem a trava que prova isso.
+
+    Esquema real (base_completa_icm,
     download de 21/09/2026): linha 1 é título da planilha; linha 2 é o cabeçalho real —
     'Nº', 'Código IBGE', 'UF', 'Município', 'Região', depois as 20 variáveis do ICM como
     cabeçalho LITERAL '1' a '20' (string), depois 'Soma', 'Municípios Prioritários'. A
@@ -174,11 +191,17 @@ def parse_icm_xlsx(bruto: bytes, aba: str, col_ibge: str, col_var: str, edicao) 
             idx_ibge = cabecalho.index(col_ibge)
         except ValueError:
             return out
-        idx_var = None
-        for i, c in enumerate(cabecalho):
-            if str(c).strip() == str(col_var).strip():
-                idx_var = i
-                break
+        def indice_de(rotulo):
+            """A coluna do ICM é o cabeçalho LITERAL '8' ou '11', não um nome descritivo."""
+            if not str(rotulo).strip():
+                return None
+            for i, c in enumerate(cabecalho):
+                if str(c).strip() == str(rotulo).strip():
+                    return i
+            return None
+
+        idx_var = indice_de(col_var)
+        idx_dot = indice_de(col_dotacao)
         for linha in linhas:
             if idx_ibge >= len(linha):
                 continue
@@ -188,6 +211,8 @@ def parse_icm_xlsx(bruto: bytes, aba: str, col_ibge: str, col_var: str, edicao) 
             d = {"icm_edicao": edicao}
             if idx_var is not None and idx_var < len(linha):
                 d["icm_var8_plano_contingencia"] = normalizar_binario_icm(linha[idx_var])
+            if idx_dot is not None and idx_dot < len(linha):
+                d["icm_var11_dotacao_loa"] = normalizar_binario_icm(linha[idx_dot])
             out[cod] = d
     finally:
         wb.close()
@@ -237,7 +262,8 @@ def coletar() -> int:
                                      f.get("coluna_plano_seca", ""), f.get("edicao"))
             campo, fato = "munic_plano_contingencia", "plano_declarado_munic"
         else:
-            dados = parse_icm_xlsx(bruto, f["aba"], f["coluna_ibge"], f["coluna_var8"], f.get("edicao"))
+            dados = parse_icm_xlsx(bruto, f["aba"], f["coluna_ibge"], f["coluna_var8"], f.get("edicao"),
+                                   f.get("coluna_var11_dotacao", ""))
             campo, fato = "icm_var8_plano_contingencia", "plano_declarado_icm"
         casados = 0
         for cod, d in dados.items():
@@ -303,6 +329,24 @@ def autoteste() -> int:
         d = parse_icm_xlsx(_xlsx_fixture_icm(), "Planilha1", "Código IBGE", "8", "2026")
         return (len(d) == 2 and d["4202404"]["icm_var8_plano_contingencia"] == "sim"
                 and d["2927408"]["icm_var8_plano_contingencia"] == "nao")
+    def t2b():
+        """§208: a variável 11 (dotação na LOA) é lida à parte da 8, e o cruzamento da fixture
+        prova que as colunas não se confundem — na linha 1 a 8 é 1 e a 11 é 0; na linha 2, o
+        contrário. Se o parser trocasse os índices, este teste cairia."""
+        d = parse_icm_xlsx(_xlsx_fixture_icm(), "Planilha1", "Código IBGE", "8", "2026", "11")
+        return (d["4202404"]["icm_var8_plano_contingencia"] == "sim"
+                and d["4202404"]["icm_var11_dotacao_loa"] == "nao"
+                and d["2927408"]["icm_var8_plano_contingencia"] == "nao"
+                and d["2927408"]["icm_var11_dotacao_loa"] == "sim")
+
+    def t2c():
+        """Sem a coluna pedida, o campo NÃO aparece — e não aparece como 'nao', que seria afirmar
+        ausência de dotação em cima de ausência de coleta."""
+        d = parse_icm_xlsx(_xlsx_fixture_icm(), "Planilha1", "Código IBGE", "8", "2026")
+        sem_pedir = all("icm_var11_dotacao_loa" not in v for v in d.values())
+        d2 = parse_icm_xlsx(_xlsx_fixture_icm(), "Planilha1", "Código IBGE", "8", "2026", "99")
+        return sem_pedir and all("icm_var11_dotacao_loa" not in v for v in d2.values())
+
     def t3():
         return (normalizar_sim_nao("talvez") == "NA" and normalizar_sim_nao(None) == "NA"
                 and normalizar_binario_icm(0) == "nao" and normalizar_binario_icm(1) == "sim"
@@ -336,6 +380,8 @@ def autoteste() -> int:
                       and livro["municipios"]["3106200"]["plano_declarado_munic"] is False)
         return existente_preservado and novo_criado
     return rodar_autoteste({"parser MUNIC (xlsx, aba nomeada)": t1, "parser ICM (xlsx, var8 inteiro 0/1)": t2,
+                            "§208 ICM var11 (dotação na LOA) lida à parte da var8, sem trocar coluna": t2b,
+                            "§208 negativo: coluna de dotação não pedida ou ausente não vira 'nao'": t2c,
                             "valores fora do vocabulário viram NA; binário ICM trata 0 int corretamente": t3,
                             "negativo: aba inexistente (MUNIC)": t4,
                             "negativo: coluna do plano ausente (MUNIC)": t5,

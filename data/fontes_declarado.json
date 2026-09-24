@@ -10,7 +10,11 @@
   "coluna_plano": "Mgrd184",
   "coluna_plano_seca": "Mgrd05",
   "_nota": "2017 e 2020 são as únicas edições recentes com este bloco (módulos rotativos da MUNIC); 2020 é a mais recente. Verificado por download real em 20/09/2026 (§128).",
-  "ultima_coleta": "2026-09-24"
+  "ultima_coleta": "2026-09-24",
+  "_achado_fundo_24_09_2026": "Procurada variável de FUNDO municipal de proteção e defesa civil na MUNIC (§208, camada B do dinheiro municipal). NÃO EXISTE: das 15 menções a 'fundo' no dicionário da MUNIC 2020, todas são de habitação (MHAB16), transporte (MTRA16) e meio ambiente — nenhuma de defesa civil. A MUNIC 2024 não tem o bloco de gestão de riscos (só 'Evento climático RS'), confirmado por download real. As duas variáveis mais próximas do que a camada B quer são Mgrd225 ('Há previsão de recursos para ações de proteção e defesa civil na Lei Orçamentária Anual') e Mgrd226 ('Há outras fontes de recursos para ações de proteção e defesa civil'). NÃO COLETADAS, e não serão: a editoria aprovou publicar a dotação orçamentária, e para isso o ICM variável 11 é fonte melhor (2026, binária, sem vazio, da SEDEC) — ver _nota_var11 em `icm`. Mgrd225/226 ficam registradas como o caminho descartado, e por quê.",
+  "coluna_previsao_orcamentaria_candidata": "Mgrd225",
+  "coluna_outras_fontes_candidata": "Mgrd226",
+  "status_camada_b": "substituida_pelo_icm_var11"
  },
  "icm": {
   "nome": "ICM/SEDEC — Indicador de Capacidade Municipal, base completa",
@@ -21,6 +25,8 @@
   "coluna_ibge": "Código IBGE",
   "coluna_var8": "8",
   "_nota": "Página oficial: gov.br/mdr/.../icm — variável 8 confirmada como 'Plano de Contingência' na descrição das 20 variáveis do indicador. Colunas 1–20 vêm numeradas, não nomeadas. Verificado por download real em 21/09/2026.",
-  "ultima_coleta": "2026-09-24"
+  "ultima_coleta": "2026-09-24",
+  "coluna_var11_dotacao": "11",
+  "_nota_var11": "§208: variável 11 do ICM = 'Dotação orçamentária (LOA) para proteção e Defesa Civil', confirmada na página oficial do MDR/Sedec (as 20 variáveis em três dimensões). Escolhida no lugar de Mgrd225 da MUNIC 2020 por ser de 2026, binária e sem vazio nos 5.570 — a MUNIC tem cinco valores e 1.337 municípios (24 %) sem resposta utilizável. Medido: 2.040 municípios com dotação declarada, 3.530 sem. Os 968 que disseram 'sim' à MUNIC em 2020 têm todos 1 aqui. PESO ZERO: dinheiro não pontua, e a trava está em verificar_financiamento.py. Próximo ciclo do ICM: resultados na 2ª quinzena de novembro de 2026."
  }
 }

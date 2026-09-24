@@ -9,6 +9,56 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §208 · O que faltava para a credencial chegar, e a variável de fundo que a MUNIC não tem · 24/09/2026
+
+Classe **infraestrutura e verificação de fonte**. Nenhum número público muda.
+
+### O item 1: cadastrar o segredo não ligava nada
+
+A camada de medição do §206 ficou escrita e desligada, esperando credencial. Ao preparar o caminho para a editoria, apareceu o que faltava do meu lado: **nenhum workflow declarava `OPENAQ_API_KEY` nem `INMET_API_TOKEN`**. Cadastrar o segredo no GitHub não faria diferença — o valor não chegaria ao coletor, e a fonte continuaria em `aguardando_credencial` sem ninguém entender por quê. Os dois passaram a ser declarados no passo que roda o `atualizar.py`.
+
+**E uma sonda para não descobrir isso em seis horas.** `scripts/sondar_credenciais.py` responde, em segundos e sob disparo manual, se a credencial chegou ao passo e se a fonte a aceita. Ela preserva a distinção que importa: `ausente` (não há segredo), `recusada` (401, 403, ou 200 com corpo vazio ou "CHAVE INVÁLIDA!" — recusa servida com 200 é recusa), `erro_da_fonte` e `aceita`. Confundir os quatro é o que faz alguém procurar problema no lugar errado. Ela **nunca imprime a credencial**: só o tamanho e os quatro últimos caracteres, que bastam para distinguir "colei a chave errada" de "não colei chave nenhuma" num log público. Treze casos no autoteste, entre eles a prova de que a chave do OpenAQ viaja em cabeçalho e o token do INMET no caminho, e de que nenhum dos dois aparece no relatório.
+
+**As duas credenciais não são a mesma tarefa, e isso estava implícito.** O **OpenAQ** é autoatendimento, conferido na documentação dele: cadastro em `explore.openaq.org/register`, chave em `explore.openaq.org/account`, cabeçalho `X-API-Key`. O **INMET** não tem caminho público documentado para o token: o portal dele não publica manual de API, e o que a carta de serviços oferece para dado de estação é o **BDMEP**, que é aplicativo de descarga com login, não API por requisição. Ou seja, o OpenAQ é questão de minutos; o token do INMET é pedido institucional sem prazo publicado. A sonda diz isso na própria saída, em vez de deixar a diferença escondida.
+
+### O item 2: a MUNIC não tem variável de fundo, e há duas melhores
+
+A camada B supunha que a MUNIC pudesse declarar a existência de fundo municipal de defesa civil. **Não declara.** Medido com o arquivo à vista: das quinze menções a "fundo" no dicionário da MUNIC 2020, todas são de **habitação** (`MHAB16`), **transporte** (`MTRA16`) e **meio ambiente** — nenhuma de defesa civil. E a MUNIC 2024 não tem o bloco de gestão de riscos: as dez abas dela incluem "Evento climático RS", que é restrito a um estado e não serve a indicador nacional.
+
+As duas variáveis mais próximas do que a camada B quer são melhores do que a pergunta original, porque falam de dinheiro e não de estrutura: **`Mgrd225`** — "Há previsão de recursos para ações de proteção e defesa civil na Lei Orçamentária Anual" — e **`Mgrd226`** — "Há outras fontes de recursos para ações de proteção e defesa civil". Ficam **registradas e não coletadas**: publicá-las cria indicador público novo, o que é decisão da editoria (governança §29). O registro em `data/fontes_declarado.json` existe para que a decisão não tenha de refazer a verificação.
+
+### Dois defeitos achados no caminho
+
+**A sonda da MUNIC dizia não rodar fora da Action, e a razão estava errada.** A docstring afirmava que o ambiente de edição respondia `403 host_not_allowed` para os domínios do IBGE. O que ele responde é `CERTIFICATE_VERIFY_FAILED` — a loja de certificados desta máquina Windows não completa a cadeia do `ftp.ibge.gov.br`. Mesmo defeito e mesma correção do `gsc.cemaden.gov.br` no §206: verificar contra o pacote de raízes do `certifi`. Com isso a sonda roda localmente, e foi ela que respondeu o item 2 sem gastar um ciclo de CI. **Nomear a recusa errado custou, aqui, a impressão de que a pergunta não tinha resposta acessível** — a mesma classe de erro que o `CLAUDE.md` registra a respeito de geobloqueio chamado de `robots.txt`.
+
+**A mesma docstring mandava investigar problema já resolvido.** Ela dizia que `declarado_nacional.json` estava vazio desde 02/09 porque a fonte tinha `url: null`. Isso foi resolvido em 20–21/09: a fonte está `ok`, a coluna conferida contra o arquivo, e a camada declarada cobre os **5.570 municípios**, ativada na nota em 21/09. A docstring ficou três dias velha e me pôs a caçar um problema morto; corrigida.
+
+### A editoria aprovou publicar, e a pergunta dela achou fonte melhor
+
+Autorizada a publicação, a editoria perguntou se a MUNIC 2020 era mesmo a mais atual. **Não era**, e a pergunta evitou que eu usasse a pior fonte. O **ICM da Sedec/MIDR** tem, entre suas vinte variáveis, a **número 11 — "Dotação orçamentária (LOA) para proteção e Defesa Civil"**, que pergunta a mesma coisa e é melhor em três sentidos medidos: base de **2026** contra 2020; **binária e sem vazio** nos 5.570, contra cinco valores na MUNIC (`Sim` 968, `Não` 3.265, `-` 1.229, `Recusa` 90, `Não informou` 18 — **24 % do país sem resposta utilizável**); e vem da autoridade de defesa civil, não de um censo de gestão. Ainda por cima o projeto **já baixava** esse arquivo, para a variável 8 do plano de contingência.
+
+**Confirmação cruzada, que é o que dá confiança na troca:** os **968** municípios que disseram "sim" à MUNIC em 2020 têm **todos** 1 na variável 11 do ICM 2026 — nenhuma discordância nesse sentido. As duas perguntam a mesma coisa; uma pergunta melhor.
+
+Medido no arquivo: **2.040 municípios declaram previsão de recursos na LOA; 3.530 declaram não haver.** A figura do dinheiro próprio ganhou seletor de camada — despesa liquidada (o que gastou) e dotação declarada (o que disse que previu) —, com texto-fato e crédito trocando **junto** com a camada, porque fonte errada ao lado de número certo é proveniência falsa.
+
+**Nenhuma fonte centralizada responde "existe fundo".** Nem MUNIC, nem ICM, nem SICONFI: os anexos alternativos do Tesouro vêm vazios e o caminho dos dados abertos do CNPJ não responde no endereço público. Existência de fundo continua dependendo da lei municipal, que é o que os termos do dicionário do §207 servem para achar.
+
+**A trava do peso zero, porque estrutural não basta.** A dotação declarada mora no **mesmo registro por município** que a camada declarada de plano, que pontua a 50 %. Hoje o motor lê apenas dois campos, por nome, então o campo novo não entra — mas isso deixa de valer no dia em que alguém trocar a leitura por "qualquer campo que diga sim". `verificar_financiamento.py` passou a injetar a dotação num município **sem** plano declarado e a exigir que a contagem por UF não mude nem um município. Provado nos dois sentidos: com o motor sabotado de propósito, a trava reprova.
+
+### Três defeitos de código achados por causa disso
+
+**Um mapa inteiro que nunca chegou ao leitor.** Na Defesa civil, escolher "Nível de verificação · todos os 5.571 municípios" **não fazia nada** — e "Natureza · decreto reativo × plano preventivo" também não. A causa: `svg.hidden = false`. Em elemento **SVG**, `hidden` não é propriedade refletida: a atribuição cria uma propriedade JS comum e o **atributo permanece**, e é o atributo que a folha do navegador usa para esconder. Medido: depois do evento, `svg.hidden` era `false`, o atributo continuava lá e o `display` continuava `none`. Quatro camadas de mapa, publicadas e inalcançáveis. Corrigido com `toggleAttribute`, que mexe no atributo e serve para SVG e para HTML.
+
+**E nenhum portão via.** Os de runtime conferem que o SVG tem as 27 UFs desenhadas — não que a escolha do leitor muda o que aparece. `verificar_consistencia_visual.js` passou a percorrer cada `select.seletor`, escolher cada opção e exigir que o conjunto de elementos visíveis **mude**. A invariante é estreita de propósito: vale só para seletor cuja figura tem dois ou mais SVG/canvas, porque seletor que redesenha o mesmo canvas (o comparador da Saúde) ou troca texto (contatos no Proteja-se) muda conteúdo, não camada — exigir troca deles seria acusar comportamento correto. Provado que pega: com o defeito reposto, o portão reprova os dois seletores.
+
+**`pontosDensos` apagava a camada anterior.** Ela remove `path.densos` a cada chamada, então duas camadas densas no mesmo mapa deixavam só a última — em silêncio. Foi o que aconteceu com as três classes de dotação: sobraram 2.040 pontos e desapareceram 3.530, sem erro nenhum. Ganhou parâmetro de classe opcional; sem ele, o comportamento é o de antes e nenhuma página existente muda.
+
+**E o mesmo defeito de certificado, pela terceira vez — agora resolvido no lugar certo.** O `buscar()` de `coletores_base.py` é a função compartilhada por todos os coletores e não usava o `certifi`: a MUNIC falhava com `CERTIFICATE_VERIFY_FAILED` mesmo depois de eu corrigir a sonda. Corrigido lá, uma vez, para todos. As duas fontes da camada declarada passaram a coletar nesta máquina.
+
+**Um quarto defeito, achado ao rodar a suíte, e este é de segurança de dado.** O autoteste do `gerar_painel.py` falhou uma vez com erro transitório de E/S do Windows sobre `data/painel/lista.json` — e a **restauração abortou no primeiro arquivo**, sem tentar os seguintes. A lista **imutável** do painel amostral e os agregados ficaram com `sorteado_em` e `lista_publicada_em` trocados de 02/09 para a data de hoje, e o autoteste reportou apenas "3 falhas", sem dizer que havia mexido em dado publicado. A falha em si não se reproduz em árvore limpa e não vem desta edição (a `main` passa), mas a fragilidade é real: agora cada arquivo é restaurado à parte, com segunda tentativa, e o que não voltar é **nomeado** num erro que manda conferir com `git status`. Mutação de dado publicado não pode sair como falha genérica.
+
+**Teste.** Portão novo (`sondar_credenciais.py --autoteste`), agora 58 na lista canônica. Dois casos novos no coletor da camada declarada (a variável 11 lida à parte da 8, e coluna não pedida que não vira "nao"), a trava do peso zero provada nos dois sentidos, e o portão do seletor provado nos dois sentidos. Estrutura, segurança, figuras, palavras, consistência visual e a sonda da MUNIC verdes.
+
 ## §207 · O dinheiro próprio do município: a camada que existe para todos · 24/09/2026
 
 Classe **coleta e páginas**. Peso zero nos dois índices, provado por portão e pelo teste de estresse que apaga a pasta inteira e confere que nenhuma nota muda.
