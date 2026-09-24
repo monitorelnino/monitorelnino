@@ -1061,3 +1061,54 @@ Figura `#boxPreventivoSetor` em Financiamento e ficha "Como ler o dinheiro preve
 **Quando a máquina pontua sozinha — e quando não (decisão editorial de 22/09/2026, §156 do CHANGELOG).** Notícia de imprensa **nunca pontua**, nem como plano em elaboração: ela aparece no card do município como "publicação na imprensa encontrada", com link, e o card orienta o leitor a pedir o documento ao gestor público pela Lei de Acesso à Informação. A notícia serve para achar o ato. Um registro só é criado sem leitura humana quando **todas** estas condições valem ao mesmo tempo, verificadas no próprio documento: (1) fonte oficial; (2) é o ato publicado — diário oficial ou PDF do ato, não notícia em portal da prefeitura; (3) o classificador de natureza lê o ato como ex-ante (não resposta a desastre, não dúvida); (4) número e data completa do ato extraídos do texto, com a data dentro do ciclo 2026 e não futura — ato anterior pode ser edição anterior, e isso a pessoa decide; (5) o número não é de lei federal citada no texto (a Lei 14.133/2021, de licitações, aparecia como se fosse o ato); (6) texto normativo articulado ("Art. 1º", "fica instituído"); (7) teste do objeto do §5.2.1: ato do Poder Executivo, família de risco do ciclo julgada pelo município; (8) o município está nomeado no ato e nenhum alerta da triagem de confiança (homônimo de outra UF, município citado de passagem, risco errado no título) está ativo. Falhou qualquer uma, a pista vai para a fila humana com o motivo registrado; nada é descartado. Calibração contra casos reais: das seis aplicações que o juiz automático fez numa rodada de teste, cinco eram erradas (lei de 2021, atos com data incompleta, PDF de 2024 sem número) e o portão barra todas; das 40 pistas de diário oficial testadas com o documento real, ele deixou passar duas — dois decretos de 2026 que instituem o plano (Serra/ES e Feira de Santana/BA). A precisão é o requisito; o que o portão deixa de aplicar sozinho continua na fila, visível, para a pessoa.
 
 **O que ela não resolve.** Município sem nenhuma presença online não gera pista alguma — isso é limite de cobertura, não de triagem, e é o que os pedidos de LAI aos órgãos estaduais e ao MDR (§39, C5) cobrem. E a triagem ordena; não substitui a leitura do documento primário, que continua sendo o único caminho para um registro.
+
+
+## 41. Temperatura, qualidade do ar e alertas por município: as duas naturezas de dado e a regra das 36 horas (24/09/2026)
+
+**A linha narrativa que organiza as três páginas.** Alerta é o que um órgão emite para que alguém aja, e vive em **Defesa civil**, ao lado da resposta. Fenômeno é o que se mede, e vive no **Monitor de riscos**. Exposição sanitária é o que atinge a população, e vive em **Saúde**. A mesma variável não aparece duas vezes: a temperatura é medida uma vez, no Monitor de riscos, e a Saúde remete a ela. Peso zero nos dois índices continua valendo para tudo o que entra aqui, provado por portão.
+
+### 41.1 Estimativa de modelo e medição nunca compartilham escala de cor
+
+Duas naturezas de dado passam a existir, declaradas **no dado** e não na figura:
+
+- **`estimativa de modelo`** — valor calculado por modelo numérico numa grade, sem estação no ponto. É o caso do Open-Meteo (modelos ECMWF, DWD e NOAA) para temperatura e do Copernicus CAMS para poluentes, ambos em grade de cerca de 11 km.
+- **`medição`** — valor lido por estação ou monitor instalado no local. É o caso das estações automáticas do INMET e dos monitores das redes oficiais brasileiras agregados pelo OpenAQ.
+
+O rótulo viaja junto do valor porque figura nenhuma pode exibir um sem o outro, e porque as duas naturezas **não compartilham a escala de cor**: modelo pinta a área, medição entra como ponto sobreposto com forma própria. Misturar as duas numa só rampa diria ao leitor que um valor de grade e uma leitura de termômetro têm o mesmo estatuto probatório, e eles não têm.
+
+Duas consequências práticas registradas: a resposta do Open-Meteo devolve o **lat/lon do nó da grade**, não o que foi pedido, de modo que o casamento entre coordenada e capital é **posicional** e nunca por coordenada; e a API de ar entrega somente série horária, de modo que **a média diária é cálculo nosso** e está declarada como tal em cada registro.
+
+### 41.2 A linha da OMS vive no dado
+
+A referência de PM2,5 é **15 µg/m³ de média diária**, diretriz da OMS de 2021 — a mesma que o Ministério da Saúde usa no informe semanal de fumaça. A constante é declarada em `data/sinais_risco.json` e lida de lá pela página; nenhum HTML guarda número de referência. A figura descreve a relação ("acima da linha da OMS", "abaixo da linha da OMS") e não qualifica o valor: qualificar é interpretação, e interpretação mora no texto narrativo.
+
+### 41.3 Alertas por município, e por que o vocabulário é o do órgão
+
+`data/alertas/vigentes.json` guarda, por código IBGE, cada aviso do INMET e cada alerta do CEMADEN em vigor, com **tipo, grau, início e fim**. Tudo isso já vinha na resposta das duas fontes e era descartado na agregação por UF.
+
+O tipo e a severidade são reproduzidos **como o órgão os nomeia** ("Chuvas Intensas", "Baixa Umidade", "Perigo Potencial", "Movimentos de Massa", "Moderado"), pela mesma regra do §23: o projeto não cria escala de dano própria. Um município pode estar sob mais de um aviso ao mesmo tempo, e a lista **preserva todos** — escolher aqui o mais grave esconderia que há dois riscos distintos em vigor.
+
+Dois cuidados que a primeira coleta obrigou a registrar:
+
+- A camada do CEMADEN chama-se `alertas_vigentes_siaden` mas devolve também os **encerramentos**, com nível `Cessar` (17 de 29 registros na consulta de 24/09/2026). Encerramento não é alerta em vigor e não entra na contagem; fica registrado à parte, porque alerta encerrado hoje é informação, não ausência de dado.
+- O casamento entre alerta e coordenada é feito pelo **código IBGE**, nunca pelo nome: o CEMADEN escreve o município em caixa alta e o INMET às vezes, e casar por nome deixou doze municípios fora do mapa em silêncio.
+
+### 41.4 A regra das 36 horas
+
+Um aviso do INMET dura horas. Por isso `consultado_em` das fontes de cadência sub-diária passa a carregar **hora** (`dd/mm/aaaa hh:mm`, no fuso da redação), e o registro declara `validade_horas_sinal = 36`: passado esse prazo sem coleta, a figura mostra "sem coleta desde" no lugar do dado. Dado velho sem aviso de idade é dado falso, e sem a hora não havia como distinguir um retrato de quinze minutos de um de vinte e três horas.
+
+A cadência é de quatro coletas por dia, nos mesmos horários da rotina de atualização (1, 7, 13 e 19 UTC), e o livro `data/sinais_risco_consultas.json` guarda URL, hora e hash da resposta de cada chamada — a URL nunca carrega credencial, que viaja em cabeçalho justamente para não ficar registrada num arquivo público.
+
+### 41.5 Fontes que exigem credencial, e o que isso significa aqui
+
+Duas fontes da camada de medição exigem credencial, medido em 24/09/2026: o **OpenAQ v3** recusa com `HTTP 401` sem chave, e o endpoint de dados das **estações do INMET** passou a exigir token (a rota sem token devolve `204` com corpo vazio; a rota com token responde "CHAVE INVÁLIDA!"). Bloqueio de acesso real se respeita, sempre.
+
+A consequência é declarada, não contornada: a fonte fica com status próprio, `aguardando_credencial`, que **não é** falha de rede nem ausência de dado — é decisão pendente. A credencial vem do ambiente, nunca do repositório, que é público; e enquanto não existir, as figuras de temperatura e de ar dizem na legenda "medição: aguardando credencial da fonte" e nenhum ponto é desenhado. O site roda sem as duas, e nada do que elas trariam é substituído por estimativa.
+
+### 41.6 Calor na página de Saúde: dado de saúde, e um zero silencioso corrigido
+
+O painel "Calor" da página de Saúde mostrava **contagem de avisos do INMET** — que é alerta, e foi para a Defesa civil. No lugar entra a **classe de excesso de calor** que o próprio Ministério da Saúde publica por município (Normal, Baixo, Severo, Extremo, a partir do índice EHF), no vocabulário dele.
+
+A troca revelou um defeito que estava no ar desde que a figura foi escrita: o código filtrava avisos de calor lendo `a.lista` e `a.avisos` dentro de `avisos_inmet`, **campos que o agregado por UF nunca teve**. O filtro devolvia sempre lista vazia, e o mapa pintava **zero nos 27 estados todos os dias**, inclusive com aviso de calor em vigor; o cartão do Proteja-se dizia "Nenhum aviso de calor vigente" pela mesma razão. Zero silencioso é o pior defeito possível numa figura de risco, porque tem a forma de informação.
+
+O painel do MS **não publica API**: o endereço é função interna do aplicativo, com o caminho carimbado pelo build, de modo que o coletor o descobre a cada rodada e o valida **por conteúdo**, não por nome minificado. E, medido em 24/09/2026, esse endereço passa a responder `HTTP 200 com corpo vazio` depois de uma rajada de consultas — oito vezes em oito, também no navegador. Corpo vazio com 200 é **recusa** (§11, §186, §187), nunca "nenhum município em excesso de calor": sobe como falha, entra como lacuna declarada, e a seção diz ao leitor por que não há número.

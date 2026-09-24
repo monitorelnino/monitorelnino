@@ -1,0 +1,38 @@
+{
+ "_formato": {
+  "descricao": "URL, hora e hash da resposta de cada chamada de rede da última rodada das fontes de cadência sub-diária.",
+  "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
+  "escrito_por": "coletar_sinais_risco.py"
+ },
+ "gerado_em": "24/09/2026 12:34",
+ "consultas": [
+  {
+   "fonte": "inmet_avisos",
+   "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
+   "consultado_em": "24/09/2026 12:34",
+   "bytes": 226367,
+   "sha256": "af5f245f5d2e4c6087e5f6625ec854b47aa48ce36cd8d4892806878ce3ff5328"
+  },
+  {
+   "fonte": "cemaden_alertas",
+   "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
+   "consultado_em": "24/09/2026 12:34",
+   "bytes": 2020787,
+   "sha256": "e2d240fd503202261c92ecc9db322fd8658e2c852a348e8d5c401e1f02c40564"
+  },
+  {
+   "fonte": "open_meteo_tempo",
+   "url": "https://api.open-meteo.com/v1/forecast?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max&timezone=America%2FSao_Paulo&past_days=1&forecast_days=4",
+   "consultado_em": "24/09/2026 12:34",
+   "bytes": 15152,
+   "sha256": "65efa6cae0ebe8bb1b9c11cc2131539b13c9c51934acca3e19553da43269d569"
+  },
+  {
+   "fonte": "open_meteo_ar",
+   "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-9.9750,-9.6660,-3.1187,0.0349,-12.9718,-3.7166,-15.7795,-20.3155,-16.6864,-2.5387,-19.9102,-20.4486,-15.6010,-1.4554,-7.1151,-8.0467,-5.0919,-25.4195,-22.9129,-5.7936,-8.7608,2.8238,-30.0318,-27.5945,-10.9091,-23.5329,-10.2400&longitude=-67.8243,-35.7350,-60.0212,-51.0694,-38.5011,-38.5423,-47.9297,-40.3128,-49.2643,-44.2825,-43.9266,-54.6295,-56.0974,-48.4898,-34.8641,-34.8771,-42.8034,-49.2646,-43.2003,-35.1986,-63.8999,-60.6753,-51.2065,-48.5477,-37.0677,-46.6395,-48.3558&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global",
+   "consultado_em": "24/09/2026 12:34",
+   "bytes": 39956,
+   "sha256": "88a8a337c08042a51548f5ce0f3e245deb1a59c41fd1cd2559ef4e5b39852126"
+  }
+ ]
+}

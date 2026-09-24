@@ -178,12 +178,21 @@ function renderTable(){
   (document.getElementById('munCount')||{}).textContent = TABELA_MUNICIPIOS.length;
   if (document.querySelector('#tblFontes tbody') && SINAIS && SINAIS.fontes) {
   document.querySelector('#tblFontes tbody').innerHTML = Object.entries(SINAIS.fontes).map(([id, f]) => {
+    /* 24/09/2026: três acréscimos. (1) `aguardando_credencial` é estado próprio e não pode ser
+       lido como "não localizamos coleta" — a fonte não está fora do ar, exige credencial que a
+       editoria ainda não forneceu. (2) a natureza do dado (estimativa de modelo × medição) fica
+       visível aqui, ao lado do papel. (3) a licença, quando a fonte exige crédito em forma fixa
+       (CC BY 4.0 do Open-Meteo e do OpenAQ), aparece na própria linha. */
     const situacao = f.status === 'coletado'
       ? '<strong>Coletada</strong> em ' + esc(f.consultado_em) + '<br><span class="note">' + esc(f.documento || '') + '</span>'
-      : '<span class="note fonte-espera">Não localizamos coleta até o corte</span>';
+      : f.status === 'aguardando_credencial'
+        ? '<span class="note fonte-espera">Aguardando credencial da fonte</span>'
+        : '<span class="note fonte-espera">Não localizamos coleta até o corte</span>';
+    const extras = [f.natureza ? esc(f.natureza) : '', f.licenca ? esc(f.licenca) : '']
+      .filter(Boolean).map(x => '<br><span class="note">' + x + '</span>').join('');
     return '<tr><td><a href="' + esc(f.url_publica) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a><br>' +
       '<span class="note">Camada: ' + esc(CAMADA_ROTULO[f.camada]) + '</span></td><td>' + esc(f.orgao) + '</td><td>' +
-      esc(f.papel) + '</td><td>' + situacao + '</td></tr>';
+      esc(f.papel) + extras + '</td><td>' + situacao + '</td></tr>';
   }).join('');
   }
   { const fm = document.getElementById('fontesMonit'); if (fm) fm.innerHTML = (TRANSFERENCIAS.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a></li>').join(''); }

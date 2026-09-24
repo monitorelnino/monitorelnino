@@ -93,8 +93,12 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const el = id => document.getElementById(id);
   let SSIN = null, SINAIS = null;
+  let ALERTAS = null;
   try { [SSIN, SINAIS] = await Promise.all(['data/saude_sinais.json','data/sinais_risco.json'].map(f => fetch(f).then(r => { if(!r.ok) throw new Error(f); return r.json(); }))); }
   catch(e) { ['asDengue','asCalor','asEmerg'].forEach(id => el(id).textContent = 'Não foi possível carregar os dados desta camada agora — lacuna declarada.'); return; }
+  /* Alertas por município (24/09/2026): arquivo próprio. Ausência vira lacuna declarada no cartão,
+     nunca "nenhum aviso em vigor" — que é o que o código anterior dizia todos os dias por um defeito. */
+  try { ALERTAS = await fetch('data/alertas/vigentes.json').then(r => r.ok ? r.json() : null); } catch(e) { ALERTAS = null; }
   // Dengue (InfoDengue, capitais): mostra as capitais em nível 2 ou mais; nível é vocabulário da fonte.
   const NIV = {1:'nível 1 (baixa atividade)', 2:'nível 2 (atenção)', 3:'nível 3 (alerta)', 4:'nível 4 (emergência)'};
   const caps = Object.entries(SSIN.dengue_capitais || {});
@@ -108,17 +112,28 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       : 'Nenhuma capital em nível 2 ou acima na última coleta (' + caps.length + ' capitais consultadas).')
       + '<br><small>Última semana epidemiológica disponível · capitais apenas, não representa o estado.</small>';
   }
-  // Calor (INMET): reuso da camada de avisos dos sinais de risco, filtrada para calor.
-  const avisos = uf => (SINAIS.uf && SINAIS.uf[uf] && SINAIS.uf[uf].avisos_inmet) || null;
-  const nCalor = uf => { const a = avisos(uf); if(!a) return null; const lista = a.lista || a.avisos || []; return lista.filter(x => /calor/i.test(JSON.stringify(x))).length; };
+  /* Avisos e alertas em vigor, por estado, com os TIPOS que o órgão nomeou.
+     O código anterior filtrava avisos de calor lendo `a.lista`/`a.avisos` dentro de `avisos_inmet` —
+     campos que o agregado por UF nunca teve. O filtro devolvia sempre lista vazia, e o cartão dizia
+     "Nenhum aviso de calor vigente" TODOS OS DIAS, inclusive com aviso em vigor. Agora lê o arquivo
+     por município, que traz o tipo declarado, e ausência de arquivo é lacuna, não calma. */
   const fI = (SINAIS.fontes || {}).inmet_avisos || {};
-  if (fI.status !== 'coletado' || !SINAIS.uf) {
-    el('asCalor').textContent = 'Não localizamos coleta do INMET até o corte — lacuna declarada.';
+  if (!ALERTAS || !ALERTAS.municipios) {
+    el('asCalor').textContent = 'Não localizamos coleta de avisos e alertas até o corte — lacuna declarada.';
   } else {
-    const comCalor = Object.keys(SINAIS.uf).map(uf => [uf, nCalor(uf)]).filter(([uf,n]) => n).sort((a,b) => b[1]-a[1]);
-    el('asCalor').innerHTML = (comCalor.length
-      ? comCalor.map(([uf,n]) => '<strong>' + esc(uf) + '</strong> — ' + n + ' aviso(s) de calor vigente(s)').join('<br>')
-      : 'Nenhum aviso de calor vigente na última consulta ao INMET.') + '<br><small>Consultado em ' + esc(fI.consultado_em || '—') + '.</small>';
+    const porUf = {};
+    Object.values(ALERTAS.municipios).forEach(function(m){
+      const d = porUf[m.uf] = porUf[m.uf] || {n: 0, tipos: new Set()};
+      d.n++;
+      (m.inmet || []).forEach(a => d.tipos.add(a.tipo));
+      (m.cemaden || []).forEach(a => d.tipos.add(a.tipo || 'tipo não declarado'));
+    });
+    const ordenadas = Object.entries(porUf).sort((a, b) => b[1].n - a[1].n);
+    el('asCalor').innerHTML = (ordenadas.length
+      ? ordenadas.map(([uf, d]) => '<strong>' + esc(uf) + '</strong> — ' + d.n + ' município(s): '
+          + esc([...d.tipos].sort().join(', '))).join('<br>')
+      : 'Nenhum município sob aviso ou alerta na última consulta.')
+      + '<br><small>Consultado em ' + esc(ALERTAS.gerado_em || '—') + '.</small>';
   }
   // Emergências sanitárias (ESPIN e decretos por dengue/calor): resposta, peso zero.
   const fE = (SSIN.fontes || {}).espin || {};
