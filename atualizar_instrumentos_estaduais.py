@@ -151,8 +151,17 @@ REPOSITORIOS = {
     "PI": {"parser": None, "nota": "SONDADO 24/09/2026 — www.pi.gov.br/planos-de-contigencia responde sob aviso de período eleitoral, com 5 PDFs na página; conteúdo não conferido. Reconferir depois de 25/10"},
     "SP": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.sp.gov.br/planos-de-contigencia devolve a página institucional, sem lista de planos municipais. Ver também o muro de robô do §186 neste domínio"},
     "AL": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.al.gov.br/planos-de-contigencia responde 349 bytes (página vazia)"},
+    # ---- Descoberta RENDERIZADA de 24/09/2026 (§197), o passo que a sonda por caminho não alcança --
+    # As 21 UFs sem parser tiveram a home aberta em navegador real e a navegação lida em busca de
+    # seção de planos MUNICIPAIS. Três candidatos, e os três dizem coisas diferentes:
+    "PA": {"parser": None, "nota": "DESCOBERTO 24/09/2026 — plancon.defesacivilpa.com.br é o SISTEMA PLANCON do CBMPA/CEPDEC: 'Gestão municipal de planos de contingência — cadastro, revisão, aprovação e exportação'. Fica ATRÁS DE LOGIN, e login é recusa que se respeita (§170). Os planos municipais do PA existem e não são públicos: é a mesma forma do SISDC do PR. Via de cobertura por LAI, decisão da editoria"},
+    "RJ": {"parser": None, "nota": "DESCOBERTO 24/09/2026 — defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc reúne 38 PDFs, mas são do ESTADO, não dos municípios: PLACON 2025/2026 (preservado, hash eefffe3f449f8cb5…, 45 MB) e planos setoriais de CGE, DRM, GSI, INEA e PGE. Não é repositório municipal; é instrumento estadual, e entra na fila R7 como candidato a reclassificação de RJ, hoje VIG"},
+    # PR já estava mapeado acima e a descoberta renderizada confirmou o mesmo desenho do PA: sistema,
+    # não repositório. Dois estados guardando plano municipal atrás de autenticação é padrão, não
+    # acaso, e é matéria para pedido de LAI — não para raspagem.
+    #
     # As demais não responderam em nenhum dos três caminhos (404 ou sem resposta) em 24/09/2026:
-    # AC, BA, CE, DF, GO, MA, MT, PA, PB, PE, RJ, RN, RR. Ausência NOS CAMINHOS SONDADOS, não
+    # AC, BA, CE, DF, GO, MA, MT, PB, PE, RN, RR. Ausência NOS CAMINHOS SONDADOS, não
     # ausência de repositório — a distinção é a mesma do §194 entre "procuramos e não há" e "não
     # havia onde procurar", e ela vale também para o que o Monitor ainda não procurou direito.
 }
