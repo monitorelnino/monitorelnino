@@ -19,7 +19,7 @@
   },
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "23/09/2026",
+ "gerado_em": "24/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -39,7 +39,7 @@
    "url_publica": "https://monitordesecas.ana.gov.br/",
    "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "status": "coletado",
-   "consultado_em": "23/09/2026",
+   "consultado_em": "24/09/2026",
    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
    "detalhe": "Fração da área de cada UF em cada categoria de seca (S0 a S4), no mapa mensal mais recente.",
    "recurso": {
@@ -106,7 +106,7 @@
    "url_publica": "https://alertas2.inmet.gov.br/",
    "papel": "Avisos vigentes por área, com grau e vigência declarados pelo INMET.",
    "status": "coletado",
-   "consultado_em": "23/09/2026",
+   "consultado_em": "24/09/2026",
    "documento": "Avisos ativos no momento da consulta",
    "detalhe": "Avisos vigentes por área, com grau e vigência declarados pelo INMET."
   },
@@ -117,8 +117,8 @@
    "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
-   "consultado_em": "23/09/2026",
-   "documento": "Focos do dia — focos_diario_br_20260923.csv",
+   "consultado_em": "24/09/2026",
+   "documento": "Focos do dia — focos_diario_br_20260924.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -128,7 +128,7 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
    "papel": "Alertas vigentes emitidos aos municípios monitorados.",
    "status": "coletado",
-   "consultado_em": "23/09/2026",
+   "consultado_em": "24/09/2026",
    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
    "detalhe": "Alertas vigentes emitidos aos municípios monitorados."
   },
@@ -139,7 +139,7 @@
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
-   "consultado_em": "23/09/2026",
+   "consultado_em": "24/09/2026",
    "documento": "ONI v5, último trimestre JJA/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
@@ -172,7 +172,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
    "papel": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico.",
    "status": "coletado",
-   "consultado_em": "23/09/2026",
+   "consultado_em": "24/09/2026",
    "documento": "RONI, último trimestre JJA/2026",
    "detalhe": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico."
   },
@@ -183,7 +183,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
    "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
    "status": "coletado",
-   "consultado_em": "23/09/2026",
+   "consultado_em": "24/09/2026",
    "documento": "Niño 3.4 mensal, último mês 08/2026",
    "detalhe": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam."
   }
@@ -2121,21 +2121,25 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Chuvas Intensas"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 12,
+    "focos_24h": 3,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2143,7 +2147,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "AL": {
@@ -2183,7 +2187,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -2191,13 +2195,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 7,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2205,7 +2209,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "AM": {
@@ -2246,21 +2250,25 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Chuvas Intensas"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 2816,
+    "focos_24h": 80,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2268,7 +2276,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "AP": {
@@ -2308,7 +2316,7 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -2316,13 +2324,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 84,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2330,7 +2338,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "BA": {
@@ -2371,7 +2379,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2383,13 +2391,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 822,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2397,7 +2405,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "CE": {
@@ -2437,7 +2445,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2449,13 +2457,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 11,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2463,7 +2471,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "DF": {
@@ -2503,7 +2511,7 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2515,13 +2523,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2529,7 +2537,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "ES": {
@@ -2567,7 +2575,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 2,
@@ -2581,13 +2589,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2595,7 +2603,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "GO": {
@@ -2636,7 +2644,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2648,13 +2656,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 207,
+    "focos_24h": 5,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2662,7 +2670,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "MA": {
@@ -2703,7 +2711,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2715,13 +2723,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 1172,
+    "focos_24h": 35,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2729,7 +2737,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "MG": {
@@ -2769,7 +2777,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 4,
@@ -2784,21 +2792,26 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 106,
+    "focos_24h": 16,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
-    "total": 0,
-    "niveis": {},
-    "municipios": [],
+    "total": 2,
+    "niveis": {
+     "Moderado": 2
+    },
+    "municipios": [
+     "PADRE PARAÍSO",
+     "UBÁ"
+    ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "MS": {
@@ -2839,7 +2852,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 2,
@@ -2852,25 +2865,21 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
-    "niveis": {
-     "Cessar": 1
-    },
-    "municipios": [
-     "CAMPO GRANDE"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "MT": {
@@ -2910,7 +2919,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 2,
@@ -2923,13 +2932,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 1313,
+    "focos_24h": 54,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2937,7 +2946,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "PA": {
@@ -2978,7 +2987,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2990,13 +2999,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 3767,
+    "focos_24h": 55,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3004,7 +3013,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "PB": {
@@ -3044,7 +3053,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -3056,13 +3065,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3070,7 +3079,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "PE": {
@@ -3110,7 +3119,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -3122,13 +3131,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 6,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3136,7 +3145,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "PI": {
@@ -3177,7 +3186,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -3189,13 +3198,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 642,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3203,7 +3212,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "PR": {
@@ -3243,7 +3252,7 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -3255,13 +3264,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 1,
@@ -3273,7 +3282,7 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "RJ": {
@@ -3311,7 +3320,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 3,
@@ -3326,25 +3335,30 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
-    "total": 2,
+    "total": 7,
     "niveis": {
-     "Moderado": 2
+     "Moderado": 6,
+     "Alto": 1
     },
     "municipios": [
-     "NOVA FRIBURGO"
+     "ANGRA DOS REIS",
+     "MANGARATIBA",
+     "NOVA FRIBURGO",
+     "PETRÓPOLIS",
+     "RIO DE JANEIRO"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "RN": {
@@ -3384,7 +3398,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -3396,13 +3410,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 3,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3410,7 +3424,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "RO": {
@@ -3451,25 +3465,26 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 2
     },
     "exemplos": [
-     "Tempestade"
+     "Tempestade",
+     "Chuvas Intensas"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 207,
+    "focos_24h": 8,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3477,7 +3492,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "RR": {
@@ -3517,7 +3532,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -3525,13 +3540,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 106,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3539,7 +3554,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "RS": {
@@ -3579,7 +3594,7 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -3587,50 +3602,39 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
-    "total": 28,
+    "total": 13,
     "niveis": {
-     "Moderado": 4,
-     "Alto": 8,
-     "Cessar": 16
+     "Moderado": 5,
+     "Alto": 4,
+     "Cessar": 4
     },
     "municipios": [
      "ARROIO DO MEIO",
-     "BARRA DO GUARITA",
      "CAXIAS DO SUL",
      "CRUZEIRO DO SUL",
-     "ENCANTADO",
+     "ELDORADO DO SUL",
      "ESTRELA",
-     "FONTOURA XAVIER",
-     "GRAMADO",
-     "IGREJINHA",
      "LAJEADO",
-     "MAQUINÉ",
      "MONTENEGRO",
      "MUÇUM",
-     "NOVA HARTZ",
-     "PAROBÉ",
      "ROLANTE",
-     "SANTA CRUZ DO SUL",
-     "SANTA MARIA",
      "SÃO JERÔNIMO",
      "SÃO SEBASTIÃO DO CAÍ",
      "TAQUARI",
-     "TEUTÔNIA",
-     "TRÊS COROAS",
      "VENÂNCIO AIRES"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "SC": {
@@ -3670,7 +3674,7 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -3678,63 +3682,44 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
-    "total": 49,
+    "total": 19,
     "niveis": {
-     "Moderado": 33,
-     "Cessar": 16
+     "Moderado": 6,
+     "Cessar": 13
     },
     "municipios": [
-     "ARARANGUÁ",
-     "ASCURRA",
-     "BENEDITO NOVO",
      "BLUMENAU",
-     "BOM RETIRO",
      "BRUSQUE",
      "COCAL DO SUL",
      "CRICIÚMA",
      "ERMO",
-     "FORQUILHINHA",
      "GASPAR",
-     "GRÃO PARÁ",
      "GUABIRUBA",
-     "IBIRAMA",
-     "INDAIAL",
      "JACINTO MACHADO",
-     "LUIZ ALVES",
-     "MARACAJÁ",
      "MELEIRO",
-     "MORRO DA FUMAÇA",
      "MORRO GRANDE",
      "NOVA VENEZA",
-     "ORLEANS",
-     "PETROLÂNDIA",
      "POMERODE",
-     "PRESIDENTE GETÚLIO",
      "RANCHO QUEIMADO",
-     "RIO DOS CEDROS",
-     "RODEIO",
-     "SANTO AMARO DA IMPERATRIZ",
      "SIDERÓPOLIS",
-     "SÃO PEDRO DE ALCÂNTARA",
      "TIMBÉ DO SUL",
      "TIMBÓ",
      "TURVO",
      "URUBICI",
-     "URUSSANGA",
-     "VITOR MEIRELES"
+     "URUSSANGA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "SE": {
@@ -3774,7 +3759,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -3782,13 +3767,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3796,7 +3781,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "SP": {
@@ -3836,7 +3821,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 3,
@@ -3851,28 +3836,26 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
-    "total": 3,
+    "total": 2,
     "niveis": {
-     "Moderado": 2,
-     "Cessar": 1
+     "Moderado": 2
     },
     "municipios": [
      "ITAPETININGA",
-     "SÃO PAULO",
      "SÃO SEBASTIÃO"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   },
   "TO": {
@@ -3913,7 +3896,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -3925,13 +3908,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    },
    "fogo": {
-    "focos_24h": 1464,
+    "focos_24h": 51,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260923.csv",
-    "consultado_em": "23/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260924.csv",
+    "consultado_em": "24/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3939,7 +3922,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "23/09/2026"
+    "consultado_em": "24/09/2026"
    }
   }
  }
