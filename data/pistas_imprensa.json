@@ -18989,6 +18989,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "24/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -19298,6 +19304,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "24/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -19348,6 +19360,14 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "24/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "querido_diario: HTTPError"
+    ]
    }
   },
   {
@@ -19685,6 +19705,52 @@
     "juiz": {
      "decisao": "FILA_HUMANA",
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Montenegro",
+   "uf": "RS",
+   "ibge": "4312401",
+   "origem": "busca_web",
+   "data": "24/09/2026",
+   "url": "https://fatonovo.com.br/destaque/audiencia-publica-do-plano-de-contingencia-de-montenegro-sera-remarcada/",
+   "trecho": "A audiência pública agendada ... seria apresentado o Plano de Contingência Municipal, foi cancelada, em virtude da previsão de fortes chuvas e do risco de enchente....",
+   "titulo": "Audiência Pública do Plano de Contingência de Montenegro será ...",
+   "registrado_em": "2026-09-24",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "16cf798d8e",
+   "nivel_confianca": "A",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_imprensa",
+    "municipio_no_titulo",
+    "plano_no_titulo",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "24/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "numero": null,
+    "data_ato": "11/09/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Audiência Pública do Plano de Contingência de Montenegro será remarcada &#8211; Fato Novo --> --> --> --> --> --> --> --> --> --> --> --> --> São Sebastião do Caí / RS 16°C Sexta-feira, 11 de Setembro de 2026 | 22:20h Toggle navigation Cidades Tudo Feliz Harmonia Maratá Montenegro Pareci Novo Salvador do Sul São José do Hortêncio São José do Sul São Pedro da Serra São Sebastião do Caí São Vendelino Tupandi Vale Real Alto Feliz Barão Bom Princípio Brochier Capela de Santana Linha Nova Cidades Moradora de Montenegro é candidata a deputada estadual 11 de setembro de 2026 0 Robô da FIERGS é atraçã",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
    }
