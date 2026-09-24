@@ -24,6 +24,25 @@ Classe **direção de arte**. O §192 instalou a constituição visual e mediu a
 A correção segue o §14, que diz que hierarquia não é só tamanho: a legenda passa a **peso médio**, a fonte fica em regular. Mesma cor, mesmo tamanho, peso diferente — o que preserva a escala fixa de oito degraus e **não toca em contraste**, já que cor e tamanho não mudam. É a menor intervenção que resolve a confusão, e é o tipo de coisa que só aparece quando se mede em vez de olhar.
 
 **O que fica declarado.** Os passos 9 a 11 do §25 — redesenhar páginas representativas, validar, propagar — dependem da decisão 3 e de protótipo mostrado. A dívida da lista canônica de categorias, aberta no §202, segue aberta. E o teste de personalidade do §26 só faz sentido depois do redesenho, não antes.
+## §204 · O sistema de marca entra, com a voz subordinada à governança editorial · 24/09/2026
+
+Classe **design e governança**. Nenhum número muda. Nenhum texto público foi reescrito.
+
+**O que entra.** O sistema de marca pessoal — paleta, tipografia, regras visuais — passa a viver no `CLAUDE.md`, com a skill `marca-pessoal` instalada. A auditoria mostrou que **a marca já estava aqui**: o `tokens.css` declarava, hex por hex, os dez valores da paleta, e as três famílias tipográficas já eram Fraunces, Archivo e Archivo Narrow. O trabalho foi de edição e elevação, não de recriação — como o próprio sistema de marca manda.
+
+**O que mudou de fato, e é pouco de propósito.** O display estava em **Fraunces 400** e o peso 300 nem era carregado; passa a 300 em todas as dezoito regras, com o itálico 300 no carregamento. O versalete de dado vai de `.06em` a **`.12em`**. Dois pontos de bold no display que o carregamento novo teria quebrado: o cartão em canvas do Proteja-se desenhava Fraunces 600, e o número do selo nos mapas não declarava peso. E `--bioluz`, que a marca define como metade da sua tensão característica, estava **declarado e sem uso em lugar nenhum** — entra na seleção de texto, e só ali: é o detalhe que acende sem preencher área grande, e é interface pura, sem significado de dado.
+
+**Um defeito de contraste que a varredura da marca encontrou.** `.kicker`, `.selo`, `.figura-cat` e `.prazo-espera .k` usavam sintético puro em texto de 12px: **4,39:1**, abaixo do AA de 4,5 que a própria marca manda conferir. Passam ao sintético escurecido que o site já usava como cor de texto — 5,60:1, mesma família, nenhum hex novo. Defeito pré-existente, achado por olhar com a régua certa.
+
+**O fundo continua branco, e isso é desvio declarado.** A Seção 3 do sistema de marca manda "base sempre escura ou osso". A editoria decidiu em 05/09/2026, e reafirmou em 24/09, que o fundo deste site é branco. O desvio está anotado em dois lugares do `CLAUDE.md` — no alto da seção e na própria regra — com a instrução explícita de **não reverter `--bg`** por fidelidade à marca.
+
+**A voz entra subordinada, e essa é a condição.** O sistema de marca pede voz "provocadora, poética, espirituosa". A `AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`, instalada no §189 com precedência declarada, pede o oposto para conteúdo público: **clara, precisa, sóbria**, não promocional (§16), sem dramatização nem frase de impacto (§24), sem dizer ao leitor o que pensar (§20).
+
+As duas ficam, com a fronteira escrita nos dois arquivos: a voz da marca vale para material de marca; **título, legenda, nota, fonte, tooltip, cartão e prosa de página seguem a governança, sempre**. Não é concessão — é o que o próprio sistema de marca decide no fim da sua Seção 7: *"dúvida entre mais bonito e mais rigoroso: escolher o que preserva o rigor visível"*. Num monitor de evidências, o rigor visível **é** o produto. E o portão 19 já reprovava juízo em texto de figura, de modo que a colisão nem chegaria ao ar — o que muda é que agora ninguém precisa descobrir isso por tentativa.
+
+**O que segue fora.** Nenhuma peça-manifesto foi acrescentada e nenhum slogan entrou no site: o rodapé é da Futura Evidence Lab, e o próprio sistema de marca proíbe copiar uma identidade na outra. Nenhuma imagem foi inventada. Nenhum marcador `[PREENCHER]` ficou pendente, porque nenhum bloco sem substância foi criado.
+
+**Teste.** Portões de estrutura, móvel e consistência visual verdes; contraste medido com zero elementos reprovando em `index` e `saude`; overflow horizontal zero em 1280px e em 375px.
 
 ## §203 · A leitura dos 82, e os quatro defeitos que a exigência de citar denunciou · 24/09/2026
 
