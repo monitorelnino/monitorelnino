@@ -9,6 +9,25 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §189 · A governança editorial e narrativa vira documento canônico, com precedência declarada · 23/09/2026
+
+Classe **governança**. Nenhum número do índice muda e nenhum texto público foi reescrito nesta entrada. O que muda é qual documento decide, e em que ordem, quando se vai escrever para o leitor.
+
+**O que entrou.** `AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`, na raiz, ao lado da `METODOLOGIA.md`. Ele declara a pergunta central do site — *qual é o estado de preparação do Brasil diante do risco analisado?* — e a sequência que a responde: **pergunta → contexto → evidências → dimensões da preparação → síntese → ação**. E fixa a hierarquia de decisão: a narrativa decide **por quê e onde**, a semântica decide **o quê**, o editorial decide **como**; nenhuma camada substitui a anterior.
+
+**A regra de precedência, escrita para não ficar ambígua.** O documento se declara acima de padrão local e de hábito anterior de geração. No `CLAUDE.md` isso ficou combinado assim: a `METODOLOGIA.md` decide **o que pode ser afirmado** (prova, lacuna declarada, teto de ausência, o que pontua); a governança decide **por que, onde e como** aquilo é dito. As duas não competem — uma é limite de fato, a outra é ordem da informação. Quando o estilo pedir o que a prova não sustenta, vence a prova, e a própria governança diz isso no §6 e no §15.
+
+**O que o site já cumpre, e não foi mexido.** O portão 19 (`verificar_legendas.js`, regra de 15/09) já reprova juízo, interpretação e causa não demonstrada em texto de figura — é o §13, o §15 e o §20 da governança, já em código. A `docs/VOZ_EDITORIAL.md` (16/09) já proíbe metadiscurso e explicação da política editorial na legenda — §18. O componente de figura já separa **categoria, título, legenda e fonte**, com formato único de crédito. E o teto público de ausência ("não localizamos até o corte", nunca "não existe") é literalmente o §15.
+
+**As duas lacunas reais, declaradas e não resolvidas aqui:**
+
+1. **Nota metodológica não tem lugar próprio.** O §11 manda manter quatro funções separadas — título, legenda, **nota metodológica** e fonte — e proíbe comprimi-las num bloco só. O componente tem três: `.figura-cat`, `.figura-titulo`, `.figura-sub` e `.fonte-figura`. Hoje a ressalva metodológica vive na ficha "Como ler" ou numa nota "O que a figura não diz", por página, não por figura. Falta decidir se ela vira slot do componente.
+2. **Não existe ficha semântica por figura (§35).** O documento pede, para cada visualização, uma ficha interna com universo, unidade de análise, território, período, variável, denominador, fonte, metodologia, conclusões permitidas e não permitidas, função narrativa e ação relacionada — memória semântica que impede uma alteração futura de perder o significado da figura. O projeto não tem nada equivalente. É trabalho de porte, e fica declarado como dívida, não como pendência escondida.
+
+**Um conflito que precisa de decisão.** O ramo `marca-pessoal`, ainda não mesclado, acrescenta ao `CLAUDE.md` um sistema de marca cuja seção de voz pede tom "provocador, poético, espirituoso e vivo". A governança editorial pede o oposto para conteúdo público: voz "clara, segura, precisa, **sóbria**", não promocional (§16), sem metáfora excessiva nem frase de impacto (§24), sem dizer ao leitor o que pensar (§20). Pela precedência agora declarada, **a governança vence no conteúdo público** — a marca segue mandando em paleta, tipografia e sistema visual. Se o ramo da marca for mesclado, a seção de voz dele precisa entrar já subordinada, e não como regra concorrente.
+
+**O que esta entrada não faz.** Não revisa título, legenda ou texto de nenhuma página. O §36 da governança descreve uma ordem de execução para revisão geral do site, e o §34 exige um teste de calibração numa seção difícil antes de propagar qualquer lógica ao restante — nada disso foi feito aqui, e fazer sem pedido seria exatamente o "patchwork" que o §30 proíbe.
+
 ## §188 · Errata pública ao C6: a classificação por UF é dado, e o Paraná foi reclassificado dentro do defeso · 23/09/2026
 
 Classe **governança com efeito em nota** — a primeira desta série que muda um número publicado. O Paraná vai de **67,4 para 73,3** e troca de faixa. Nenhum peso, crédito, componente, faixa ou régua foi tocado.
