@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, ALERTAS;
+let BR_GEOJSON, SINAIS, MARE, ALERTAS, CLIMA;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 const TIPO_COR = {estiagem:MonitorMapas.PALETA.risco.seca, chuvas:MonitorMapas.PALETA.risco.chuvas, incendios:MonitorMapas.PALETA.risco.fogo, misto:MonitorMapas.PALETA.risco.multi, sem_sinal:MonitorMapas.PALETA.risco.sem_sinal};   // paleta semântica única
@@ -25,6 +25,10 @@ async function __load(){
   /* Os alertas por município moram na Defesa civil (24/09/2026); aqui entram só como contagem na
      linha-fato. Arquivo ausente não derruba a página: a linha fica com o texto estático dela. */
   ALERTAS = await fetch('data/alertas/vigentes.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  /* §209: temperatura e PM2,5 dos 5.570, em arquivo próprio (compacto) — a série por capital
+     continua em sinais_risco.json. Ausente, a figura segue só com as capitais. */
+  CLIMA = await fetch('data/clima_municipios.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  window.__refMunicipios = await fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : []).catch(() => []);
   __init();
 }
 
@@ -163,6 +167,89 @@ desenharMapa('mapaAr', 'legAr',
    {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo: pmVals.length ? pmMax.toFixed(0) + ' µg/m³' : 'maior'},
    {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxAr', 'open_meteo_ar');
+
+
+/* CAMADA MUNICIPAL (§209) — os mesmos dois fenômenos, nos 5.570 municípios.
+   Pergunta igual, recorte diferente: a camada de capitais traz a série e os demais poluentes; a
+   municipal traz um ponto por município. Cada uma com sua legenda e seu texto-fato; o seletor
+   troca as duas coisas junto, porque número de um recorte lido como se fosse do outro é erro que
+   parece dado. Município sem leitura NÃO é desenhado — ausência é ausência. */
+(function camadaMunicipal(){
+  if (!CLIMA || !CLIMA.municipios || !Object.keys(CLIMA.municipios).length) {
+    /* Sem coleta municipal, o seletor não pode oferecer uma camada vazia: ele sai, e a figura
+       segue sendo a de capitais, sem prometer o que não tem. */
+    ['selTemperatura','selAr'].forEach(id => { const s = document.getElementById(id); if (s) s.remove(); });
+    return;
+  }
+  const REF = window.__refMunicipios || [];
+  const coord = {};
+  REF.forEach(m => { coord[String(m.codigo_ibge).padStart(7,'0')] = [m.lon, m.lat]; });
+
+  const casos = [
+    {sel:'selTemperatura', svgCap:'mapaTemperatura', svgMun:'mapaTemperaturaMun',
+     legCap:'legTemperatura', legMun:'legTemperaturaMun', campo:'tmax', unidade:'°C',
+     rotulo: v => v.toFixed(0) + ' °C'},
+    {sel:'selAr', svgCap:'mapaAr', svgMun:'mapaArMun',
+     legCap:'legAr', legMun:'legArMun', campo:'pm25', unidade:'µg/m³',
+     rotulo: v => v.toFixed(0) + ' µg/m³'},
+  ];
+
+  casos.forEach(function(caso){
+    const itens = Object.entries(CLIMA.municipios)
+      .filter(par => typeof par[1][caso.campo] === 'number' && coord[par[0]])
+      .map(par => ({cod: par[0], v: par[1][caso.campo], ll: coord[par[0]]}));
+    const sel = document.getElementById(caso.sel);
+    if (!itens.length) { if (sel) sel.remove(); return; }
+
+    const vals = itens.map(m => m.v);
+    const vmin = Math.min.apply(null, vals), vmax = Math.max.apply(null, vals);
+    const escala = d3.scaleLinear().domain([vmin, vmax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
+
+    /* Cinco faixas iguais desenhadas como cinco camadas densas — um <path> por faixa, que é o que
+       torna 5 mil pontos baratos. Classe própria por faixa: `pontosDensos` remove a camada
+       anterior quando a classe se repete (achado do §208). */
+    const svg = d3.select('#' + caso.svgMun);
+    svg.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
+      .attr('d', pathGen).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path');
+    const FAIXAS = 5;
+    for (let f = 0; f < FAIXAS; f++) {
+      const lo = vmin + (vmax - vmin) * f / FAIXAS, hi = vmin + (vmax - vmin) * (f + 1) / FAIXAS;
+      const naFaixa = itens.filter(m => m.v >= lo && (f === FAIXAS - 1 ? m.v <= hi : m.v < hi))
+                           .map(m => ({lon: m.ll[0], lat: m.ll[1]}));
+      if (naFaixa.length) {
+        MonitorMapas.pontosDensos(__ctx(), caso.svgMun, naFaixa, escala((lo + hi) / 2), 1.8, 0.85,
+                                  'densos-' + caso.campo + '-' + f);
+      }
+    }
+    MonitorMapas.siglas(__ctx(), svg);
+    MonitorMapas.legendaContinua(caso.legMun,
+      'linear-gradient(90deg,' + MonitorMapas.PALETA.rampaPerigo[0] + ',' + MonitorMapas.PALETA.rampaPerigo[1] + ')',
+      caso.rotulo(vmin), caso.rotulo(vmax),
+      [{cor: MonitorMapas.cor('zebra'), rotulo: 'sem leitura neste município'}]);
+
+    if (sel) {
+      sel.addEventListener('change', function(e){
+        const mun = e.target.value === 'municipios';
+        /* toggleAttribute, não `.hidden`: em SVG a propriedade não reflete no atributo (§208). */
+        [[caso.svgCap, !mun], [caso.svgMun, mun], [caso.legCap, !mun], [caso.legMun, mun]]
+          .forEach(par => { const el = document.getElementById(par[0]); if (el) el.toggleAttribute('hidden', !par[1]); });
+      });
+    }
+  });
+
+  /* Texto-fato da cobertura, uma vez, abaixo da seção: quantos municípios cada variável alcançou.
+     Sem isso, um mapa com 5.570 pontos e outro com 1.700 pareceriam a mesma coisa. */
+  const r = CLIMA.resumo || {};
+  const linha = document.getElementById('linhaAlertas');
+  if (linha && r.municipios_no_pais) {
+    const extra = document.createElement('p');
+    extra.className = 'hint';
+    extra.id = 'coberturaClima';
+    extra.textContent = 'Temperatura em ' + (r.com_temperatura || 0) + ' de ' + r.municipios_no_pais
+      + ' municípios e PM2,5 em ' + (r.com_pm25 || 0) + ', na coleta de ' + esc(CLIMA.gerado_em || '') + '.';
+    linha.insertAdjacentElement('afterend', extra);
+  }
+})();
 
 /* CAMADA DE MEDIÇÃO (24/09/2026) — pontos de estação e de monitor sobre os dois mapas de modelo.
    As duas fontes exigem credencial (OpenAQ v3 recusa com 401 sem chave; o endpoint de dados das

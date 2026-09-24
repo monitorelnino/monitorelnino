@@ -30,6 +30,7 @@ USO
   python coletar_sinais_risco.py --semear      # (re)cria o registro a partir do que já é verificado no repositório
   python coletar_sinais_risco.py               # coleta as três camadas (precisa de rede aberta)
   python coletar_sinais_risco.py --camada enos # coleta só uma camada
+  python coletar_sinais_risco.py --municipios  # temperatura e PM2,5 dos 5.570 (§209)
 
 As três camadas (METODOLOGIA §23.2):
   ciclo      — Painel El Niño 2026-2027 (CEMADEN/INPE): risco projetado por UF
@@ -128,6 +129,13 @@ CAPITAL_IBGE = {
 MUNICIPIOS_REF = RAIZ / "data" / "municipios_ibge_referencia.json"
 CONSULTAS = RAIZ / "data" / "sinais_risco_consultas.json"
 ALERTAS = RAIZ / "data" / "alertas" / "vigentes.json"
+CLIMA = RAIZ / "data" / "clima_municipios.json"
+# Municípios por chamada. A API aceita lista de coordenadas; 100 mantém a URL curta e
+# o número de chamadas baixo (56 por fonte para os 5.570).
+CLIMA_LOTE = 100
+# Pausa entre lotes. O teto do Open-Meteo é por localidade e também por hora; sem pausa,
+# 39 de 56 lotes voltaram 429 em 24/09/2026.
+CLIMA_PAUSA_S = 12.0
 
 # ---------------------------------------------------------------------------
 # Catálogo de fontes. `url_publica` é o que a página mostra ao leitor (a página
@@ -250,6 +258,16 @@ FONTES = {
         "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
     },
     "iri_plume": {
+        # 24/09/2026 (§209): varredura completa dos caminhos, e o resultado é que HOJE não há
+        # fonte aberta para esta tabela. Testado e registrado para ninguém repetir:
+        #   · `~forecast/ensofcst/Data/ensofcst_ONI` e as duas variantes: HTTP 404 (desde ~15/09);
+        #   · `ensoforecast.iri.columbia.edu`, host novo que serve os gráficos da página:
+        #     HTTP 403 em tudo que não seja a imagem publicada. 403 é bloqueio de acesso real e
+        #     se respeita — não se insiste;
+        #   · a página QuickLook do IRI e a discussão do CPC: nenhuma tabela por trimestre no HTML,
+        #     a figura de probabilidades é imagem (`enso-probs-current.png`).
+        # O parser (`parse_plume_iri`) continua provado por fixture e pronto para o dia em que a
+        # tabela voltar. Até lá, lacuna declarada — que é o comportamento correto, não uma falha.
         "nome": "Probabilidades ENSO (plume IRI/CPC)", "orgao": "IRI/Columbia", "camada": "enos",
         "url_publica": "https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/",
         "endpoint": "https://iri.columbia.edu/~forecast/ensofcst/Data/ensofcst_ONI",
@@ -1071,6 +1089,159 @@ def coletar_fonte(chave: str):
     raise RuntimeError(f"adaptador ausente para {chave}")
 
 
+def _buscar_com_ritmo(url: str, tentativas: int = 4) -> str:
+    """GET que respeita o limite de taxa do Open-Meteo, com espera crescente.
+
+    Medido em 24/09/2026: o plano gratuito conta **por LOCALIDADE**, não por chamada — um pedido
+    com 100 coordenadas gasta 100 do teto. Varrer os 5.570 em rajada fez 39 de 56 lotes voltarem
+    com HTTP 429, e o resultado foi uma coleta pela metade. Limite de taxa é regra de acesso da
+    fonte e se respeita: aqui isso é esperar, não insistir mais rápido."""
+    import time
+    for i in range(tentativas):
+        try:
+            return _buscar(url)
+        except urllib.error.HTTPError as e:
+            if e.code not in (429, 503) or i == tentativas - 1:
+                raise
+            espera = 20 * (i + 1)
+            print(f"  [ritmo] HTTP {e.code} — esperando {espera}s antes de repetir.", flush=True)
+            time.sleep(espera)
+    raise RuntimeError("inalcançável")
+
+
+def coletar_clima_municipal(args) -> int:
+    """Temperatura e PM2,5 para TODOS os municípios, em lotes de coordenadas, com ritmo.
+
+    A API aceita várias coordenadas por chamada e responde uma lista posicional (sonda de
+    24/09/2026), então os 5.570 cabem em ~56 chamadas por variável. O que NÃO cabe é o teto
+    diário do plano gratuito: ele conta por localidade, e 5.570 × 2 variáveis = 11.140 passa dos
+    10 mil. Por isso as duas variáveis são coletadas SEPARADAMENTE (`--apenas tempo|ar`) e o
+    registro é retomável: município já lido hoje não é pedido de novo.
+
+    Grava parcial a cada dez lotes: uma varredura nacional não pode depender de terminar."""
+    import time
+    ref = json.loads(MUNICIPIOS_REF.read_text(encoding="utf-8"))
+    pontos = [{"ibge": str(m["codigo_ibge"]).zfill(7), "lat": float(m["lat"]), "lon": float(m["lon"])}
+              for m in ref if m.get("codigo_ibge") and m.get("lat") is not None and m.get("lon") is not None]
+    if "--limite" in args:
+        pontos = pontos[: int(args[args.index("--limite") + 1])]
+    tam = int(args[args.index("--lote") + 1]) if "--lote" in args else CLIMA_LOTE
+    pausa = float(args[args.index("--pausa") + 1]) if "--pausa" in args else CLIMA_PAUSA_S
+    quais = args[args.index("--apenas") + 1] if "--apenas" in args else "ambos"
+
+    registro = json.loads(CLIMA.read_text(encoding="utf-8")) if CLIMA.exists() else {
+        "_formato": {
+            "descricao": "Temperatura prevista e PM2,5 estimado por município, do Open-Meteo "
+                         "(modelos ECMWF/DWD/NOAA) e do Copernicus CAMS.",
+            "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco (METODOLOGIA §23).",
+            "natureza": NATUREZA_MODELO,
+            "campos": {"tmax": "máxima prevista para o dia seguinte, em °C",
+                       "tmin": "mínima prevista para o dia seguinte, em °C",
+                       "tmax_ontem": "máxima do dia anterior, em °C",
+                       "pm25": "média diária de PM2,5, em µg/m³"},
+            "referencia_pm25_oms": {"valor": REF_PM25_OMS_DIARIA, "unidade": "µg/m³",
+                                    "documento": REF_PM25_DOCUMENTO},
+            "ausencia": "Município sem leitura não aparece aqui — ausência é ausência, e um "
+                        "registro com campos nulos seria lido como 'medimos e não há'.",
+            "limite_da_fonte": "O plano gratuito do Open-Meteo conta por LOCALIDADE: 5.570 × 2 "
+                               "variáveis passa do teto diário de 10 mil. As duas variáveis são "
+                               "coletadas em rodadas separadas, e a cobertura de cada uma fica "
+                               "declarada no resumo.",
+            "escrito_por": "coletar_sinais_risco.py --municipios",
+        },
+        "gerado_em": None, "municipios": {},
+    }
+    muns = registro["municipios"]
+
+    def falta(p, campo):
+        return campo not in (muns.get(p["ibge"]) or {})
+
+    def gravar_clima():
+        registro["gerado_em"] = agora()
+        registro["resumo"] = {
+            "municipios_no_pais": len(pontos),
+            "com_temperatura": sum(1 for v in muns.values() if "tmax" in v),
+            "com_pm25": sum(1 for v in muns.values() if "pm25" in v),
+        }
+        # separators compacto: são milhares de registros num arquivo que a página carrega inteiro.
+        CLIMA.write_text(json.dumps(registro, ensure_ascii=False, separators=(",", ":")) + "\n",
+                         encoding="utf-8", newline="\n")
+
+    def varrer(nome, campo, monta_url, extrai):
+        pendentes = [p for p in pontos if falta(p, campo)]
+        print(f"{nome}: {len(pendentes)} município(s) pendente(s), lotes de {tam}, pausa de {pausa}s", flush=True)
+        falhas = 0
+        for i in range(0, len(pendentes), tam):
+            lote = pendentes[i:i + tam]
+            chaves = [p["ibge"] for p in lote]
+            try:
+                dados = json.loads(_buscar_com_ritmo(monta_url(lote)))
+            except Exception as e:  # noqa: BLE001
+                falhas += 1
+                print(f"  [aviso] {nome} lote {i//tam + 1}: {type(e).__name__} — sem leitura.", flush=True)
+                if falhas >= 5:
+                    print(f"  [aviso] {nome}: cinco lotes seguidos sem resposta — parando aqui; "
+                          "o que veio está gravado e a rodada seguinte retoma.", flush=True)
+                    break
+                continue
+            falhas = 0
+            for cod, valores in extrai(dados, chaves).items():
+                muns.setdefault(cod, {}).update(valores)
+            if (i // tam) % 10 == 0:
+                gravar_clima()
+                print(f"  … {min(i + tam, len(pendentes))}/{len(pendentes)}", flush=True)
+            time.sleep(pausa)
+        gravar_clima()
+
+    if quais in ("ambos", "tempo"):
+        varrer("temperatura", "tmax",
+               lambda lote: (f"{FONTES['open_meteo_tempo']['endpoint']}?{_coordenadas_em_lote(lote)}"
+                             "&daily=temperature_2m_max,temperature_2m_min"
+                             "&timezone=America%2FSao_Paulo&past_days=1&forecast_days=3"),
+               lambda d, ch: {k: v for k, v in _so_temperatura(d, ch).items()})
+    if quais in ("ambos", "ar"):
+        varrer("qualidade do ar", "pm25",
+               lambda lote: (f"{FONTES['open_meteo_ar']['endpoint']}?{_coordenadas_em_lote(lote)}"
+                             "&hourly=pm2_5&timezone=America%2FSao_Paulo&forecast_days=1"
+                             "&domains=cams_global"),
+               lambda d, ch: {k: v for k, v in _so_pm25(d, ch).items()})
+
+    r = registro["resumo"]
+    kb = CLIMA.stat().st_size / 1024
+    print(f"→ {CLIMA.relative_to(RAIZ)}: {len(muns)} município(s), {kb:.0f} kB · "
+          f"temperatura {r['com_temperatura']}/{r['municipios_no_pais']} · "
+          f"PM2,5 {r['com_pm25']}/{r['municipios_no_pais']}")
+    return 0
+
+
+def _so_temperatura(dados, chaves) -> dict:
+    """Do Forecast, só o que o mapa municipal mostra: máxima e mínima de amanhã, máxima de ontem.
+    Função pura. A série inteira continua existindo por capital, em sinais_risco.json."""
+    saida = {}
+    for chave, bloco in parse_open_meteo_tempo(dados, chaves).items():
+        serie = bloco.get("serie") or []
+        amanha = serie[2] if len(serie) > 2 else (serie[-1] if serie else None)
+        ontem = serie[0] if serie else None
+        reg = {}
+        if amanha:
+            if amanha.get("maxima") is not None:
+                reg["tmax"] = amanha["maxima"]
+            if amanha.get("minima") is not None:
+                reg["tmin"] = amanha["minima"]
+        if ontem and ontem.get("maxima") is not None:
+            reg["tmax_ontem"] = ontem["maxima"]
+        if reg:
+            saida[chave] = reg
+    return saida
+
+
+def _so_pm25(dados, chaves) -> dict:
+    """Do Air Quality, só a média diária de PM2,5. Função pura."""
+    return {k: {"pm25": v["media_diaria"]["pm2_5"]}
+            for k, v in parse_open_meteo_ar(dados, chaves).items()
+            if (v.get("media_diaria") or {}).get("pm2_5") is not None}
+
+
 # ===========================================================================
 # REGISTRO
 # ===========================================================================
@@ -1678,6 +1849,8 @@ def main() -> None:
     args = sys.argv[1:]
     if "--autoteste" in args:
         sys.exit(autoteste())
+    if "--municipios" in args:
+        sys.exit(coletar_clima_municipal(args))
     registro = normalizar(json.loads(REGISTRO.read_text(encoding="utf-8"))) if REGISTRO.exists() else esqueleto()
     if "--semear" in args:
         registro = semear(esqueleto() if "--zerar" in args else registro)

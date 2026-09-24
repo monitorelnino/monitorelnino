@@ -52,7 +52,8 @@ import urllib.error
 import urllib.parse
 from datetime import date
 
-from coletores_base import (buscar, ler, log_busca, registrar_lacuna, rodar_autoteste, sha256)
+from coletores_base import (abrir_lote_log, buscar, descarregar_lote_log, fechar_lote_log,
+                            ler, log_busca, registrar_lacuna, rodar_autoteste, sha256)
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "financiamento" / "municipios" / "despesa_182.json"
@@ -224,6 +225,9 @@ def coletar(args) -> int:
     if "--lote" in args:
         pendentes = pendentes[: int(args[args.index("--lote") + 1])]
     print(f"SICONFI 182 · exercício {exercicio} · {len(pendentes)} município(s) nesta rodada")
+    # Varredura nacional: sem lote, seriam 5.570 leituras e gravações de um log de 16 MB (§209).
+    # O lote acumula em memória e descarrega de 250 em 250, junto com o salvamento parcial abaixo.
+    abrir_lote_log()
     ok = sem_decl = falhas = 0
     for i, (cod, nome, uf) in enumerate(pendentes, 1):
         url = f"{API}?an_exercicio={exercicio}&no_anexo={urllib.parse.quote(ANEXO)}&id_ente={cod}"
@@ -233,6 +237,11 @@ def coletar(args) -> int:
             registrar_lacuna(f"SICONFI 182/{nome}-{uf}", type(e).__name__, canal="DOU", camada=1,
                              uf=uf, municipio=nome, ibge=cod, strings=[url])
             falhas += 1
+            if falhas > 200 and falhas > ok:
+                # A fonte caiu de vez: parar e declarar, em vez de varrer 5 mil erros.
+                fechar_lote_log(); gravar(registro)
+                print(f"[aviso] SICONFI: {falhas} falhas de rede contra {ok} leituras — rodada interrompida.")
+                return 0
             continue
         try:
             lido = parse_dca_182(json.loads(bruto.decode("utf-8", "replace")), exercicio)
@@ -268,7 +277,10 @@ def coletar(args) -> int:
                   n_resultados=1, resultados=f"SICONFI 182: {registro['municipios'][cod]['classe']}",
                   hash_evidencia=sha256(bruto))
         if i % 200 == 0:
+            descarregar_lote_log()
             gravar(registro)      # salva parcial: 5.570 chamadas não podem depender de terminar
+            print(f"  … {i}/{len(pendentes)}", flush=True)
+    fechar_lote_log()
     gravar(registro)
     print(f"  com lançamento nesta rodada: {ok} · sem declaração: {sem_decl} · falhas de rede: {falhas}")
     return 0

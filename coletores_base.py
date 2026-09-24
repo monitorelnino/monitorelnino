@@ -633,6 +633,51 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
     return _indexar_texto_integral(h, destino, origem)
 
 
+# ---------------------------------------------------------------------------------
+# LOTE DO LOG (24/09/2026, §209) — para varredura nacional
+#
+# `log_busca` lê E grava `log_buscas.json` (hoje 16 MB) a CADA chamada. Isso é correto para
+# coletores de dezenas de municípios, e inviável numa varredura dos 5.570: seriam 5.570 leituras
+# e 5.570 gravações de 16 MB, cerca de 180 GB de E/S — e, pior, cada gravação é uma janela em que
+# uma interrupção deixa o arquivo pela metade. É a mesma armadilha que `marcar_fato_municipal`
+# criou em `coletar_declarado_nacional.py` em 21/09, quando corrompeu `fontes_consultadas.json`.
+#
+# A saída aqui é a mesma, mas no lugar certo: um lote OPCIONAL. Sem abrir lote, nada muda para
+# nenhum coletor existente. Com lote aberto, as execuções ficam em memória e são descarregadas de
+# 250 em 250 — teto que limita tanto a E/S quanto o que se perderia numa interrupção.
+_LOTE_LOG = None
+_LOTE_LOG_TETO = 250
+
+
+def abrir_lote_log():
+    """Começa a acumular execuções em memória em vez de gravar a cada chamada."""
+    global _LOTE_LOG
+    if _LOTE_LOG is None:
+        _LOTE_LOG = []
+
+
+def descarregar_lote_log():
+    """Grava o que está acumulado, numa leitura e uma gravação. Idempotente."""
+    global _LOTE_LOG
+    if not _LOTE_LOG:
+        return 0
+    pendentes, _LOTE_LOG = _LOTE_LOG, []
+    lg = ler("log_buscas.json")
+    assert lg and lg.get("formato_versao") == 2, "log_buscas.json precisa estar no esquema v2"
+    lg["execucoes"].extend(pendentes)
+    gravar("log_buscas.json", lg)
+    _LOTE_LOG = []
+    return len(pendentes)
+
+
+def fechar_lote_log():
+    """Descarrega o que resta e volta ao comportamento de gravar a cada chamada."""
+    global _LOTE_LOG
+    n = descarregar_lote_log()
+    _LOTE_LOG = None
+    return n
+
+
 def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: str = "",
               uf=None, municipio=None, ibge=None, nivel=None, n_resultados=None,
               fonte_suspensa_defeso: bool = False, hash_evidencia=None):
@@ -648,14 +693,22 @@ def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: 
     assert decisao.split(" ")[0] in ("registro", "pista", "nada", "consultado", "fonte", "erro", "acesso", "sem_cobertura_qd", "coberto_sem_mencao", "com_excerto"), decisao   # "acesso recusado" (§10.1), decisões do §1.2, "consultado sem achado" (§184)
     if decisao.startswith("nada localizado"):
         assert nivel == "municipal_completo", "regra §2.1: 'nada localizado' exige bateria municipal completa"
-    lg = ler("log_buscas.json")
-    assert lg and lg.get("formato_versao") == 2, "log_buscas.json precisa estar no esquema v2"
-    lg["execucoes"].append({
+    execucao = {
         "data": hoje(), "canal": canal, "camada": camada, "uf": uf, "municipio": municipio,
         "ibge": ibge, "nivel": nivel, "strings": strings, "n_resultados": n_resultados,
         "resultados": resultados[:600], "decisao": decisao,
         "fonte_suspensa_defeso": bool(fonte_suspensa_defeso) or fonte_esta_suspensa(strings), "executor": EXECUTOR,
-        "hash_evidencia": hash_evidencia})
+        "hash_evidencia": hash_evidencia}
+    # Com lote aberto, acumula e descarrega de 250 em 250 (ver LOTE DO LOG acima). Sem lote, o
+    # comportamento é o de sempre: uma leitura e uma gravação por execução.
+    if _LOTE_LOG is not None:
+        _LOTE_LOG.append(execucao)
+        if len(_LOTE_LOG) >= _LOTE_LOG_TETO:
+            descarregar_lote_log()
+        return
+    lg = ler("log_buscas.json")
+    assert lg and lg.get("formato_versao") == 2, "log_buscas.json precisa estar no esquema v2"
+    lg["execucoes"].append(execucao)
     gravar("log_buscas.json", lg)
 
 

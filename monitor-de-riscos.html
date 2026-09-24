@@ -117,8 +117,17 @@
       <figure class="figura figura--mapa" id="boxTemperatura">
         <h3 class="figura-titulo">Temperatura máxima prevista para amanhã, nas capitais</h3>
         <p class="figura-sub">Capital de cada UF · máxima prevista para o dia seguinte · °C · estimativa de modelo</p>
-        <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-label="Mapa do Brasil pela temperatura máxima prevista para o dia seguinte na capital de cada estado" viewBox="0 0 480 460"></svg></div>
+        <div class="figura-midia">
+          <svg id="mapaTemperatura" role="img" aria-label="Mapa do Brasil pela temperatura máxima prevista para o dia seguinte na capital de cada estado" viewBox="0 0 480 460"></svg>
+          <svg id="mapaTemperaturaMun" role="img" aria-label="Mapa do Brasil com a temperatura máxima prevista para o dia seguinte em cada município" viewBox="0 0 480 460" hidden></svg>
+        </div>
         <div class="map-legend" id="legTemperatura"></div>
+        <div class="map-legend" id="legTemperaturaMun" hidden></div>
+        <label class="sr-only" for="selTemperatura">Camada</label>
+        <select id="selTemperatura" class="seletor u-mt-2" aria-label="Escolher a camada do mapa">
+          <option value="capitais">Capitais · com a série de dias</option>
+          <option value="municipios">Todos os municípios · máxima prevista</option>
+        </select>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblTemperatura"><thead><tr><th>UF</th><th>Capital</th><th>Máxima de ontem</th><th>Máxima prevista para amanhã</th><th>Mínima prevista</th></tr></thead><tbody></tbody></table></div>
         </details>
@@ -126,8 +135,17 @@
       <figure class="figura figura--mapa" id="boxAr">
         <h3 class="figura-titulo">Material particulado fino (PM2,5) nas capitais</h3>
         <p class="figura-sub">Capital de cada UF · média diária de PM2,5 · µg/m³ · estimativa de modelo · linha de referência da OMS em 15 µg/m³</p>
-        <div class="figura-midia"><svg id="mapaAr" role="img" aria-label="Mapa do Brasil pela média diária estimada de material particulado fino na capital de cada estado" viewBox="0 0 480 460"></svg></div>
+        <div class="figura-midia">
+          <svg id="mapaAr" role="img" aria-label="Mapa do Brasil pela média diária estimada de material particulado fino na capital de cada estado" viewBox="0 0 480 460"></svg>
+          <svg id="mapaArMun" role="img" aria-label="Mapa do Brasil com a média diária estimada de material particulado fino em cada município" viewBox="0 0 480 460" hidden></svg>
+        </div>
         <div class="map-legend" id="legAr"></div>
+        <div class="map-legend" id="legArMun" hidden></div>
+        <label class="sr-only" for="selAr">Camada</label>
+        <select id="selAr" class="seletor u-mt-2" aria-label="Escolher a camada do mapa">
+          <option value="capitais">Capitais · com os demais poluentes</option>
+          <option value="municipios">Todos os municípios · PM2,5</option>
+        </select>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAr"><thead><tr><th>UF</th><th>Capital</th><th>PM2,5</th><th>PM10</th><th>Ozônio</th><th>Relação com a linha da OMS</th></tr></thead><tbody></tbody></table></div>
         </details>
