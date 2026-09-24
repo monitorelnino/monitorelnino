@@ -25,7 +25,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   if (!selUF) return;
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const NOMES_UF = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
-  const CAT = {plano:'plano de contingência localizado', plano_antigo:'plano de edição anterior localizado', plano_elaboracao:'plano em elaboração (ato oficial localizado)',
+  const CAT = {plano:'plano de contingência localizado', plano_antigo:'plano vigente, de ciclo anterior', plano_elaboracao:'plano em elaboração (ato oficial localizado)',
                coberto_estadual:'coberto pelo plano estadual', decreto:'decreto de emergência localizado (não conta como preparação)', nao_verificado:'ainda não verificado',
                nao_el_nino:'ato localizado é de outro risco (não conta)', nao_localizado:'nenhum plano localizado até o corte'};
   let CARDS = null;

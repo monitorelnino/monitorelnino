@@ -52,7 +52,7 @@ const pathGen = d3.geoPath().projection(projection);
 // ---- Mapa 1: pontos por categoria de ato (Fase 1 + Fase 2) ----
 const CAT_STYLE = {
   plano:            {cor:MonitorMapas.PALETA.categorias.plano, r:5.5, label:'Plano publicado'},
-  plano_antigo:     {cor:MonitorMapas.PALETA.categorias.plano_antigo, r:5,   label:'Plano desatualizado'},
+  plano_antigo:     {cor:MonitorMapas.PALETA.categorias.plano_antigo, r:5,   label:'Plano vigente, de ciclo anterior'},
   plano_elaboracao: {cor:MonitorMapas.PALETA.categorias.plano_elaboracao, r:5,   label:'Plano em elaboração'},
   estrutura:        {cor:MonitorMapas.PALETA.categorias.estrutura, r:5,   label:'Estrutura de coordenação'},
   decreto:          {cor:MonitorMapas.PALETA.categorias.decreto, r:4.5, label:'Decreto de emergência'},

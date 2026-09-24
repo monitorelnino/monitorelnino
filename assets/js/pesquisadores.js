@@ -149,7 +149,7 @@ document.getElementById('fontesVerificadas').innerHTML =
 document.getElementById('fontesFederaisCount').textContent = document.querySelectorAll('#fontesFederais li').length;
 
   const CAT_LABEL_TBL = {
-    plano:['Plano preventivo',MonitorMapas.PALETA.categorias.plano], plano_antigo:['Plano desatualizado',MonitorMapas.PALETA.categorias.plano_antigo],
+    plano:['Plano preventivo',MonitorMapas.PALETA.categorias.plano], plano_antigo:['Plano vigente, de ciclo anterior',MonitorMapas.PALETA.categorias.plano_antigo],
     plano_elaboracao:['Em elaboração',MonitorMapas.PALETA.categorias.plano_elaboracao], estrutura:['Estrutura de coordenação',MonitorMapas.PALETA.categorias.estrutura], decreto:['Decreto reativo',MonitorMapas.PALETA.categorias.decreto],
     coberto_estadual:['Coberto pelo estado',MonitorMapas.PALETA.categorias.coberto_estadual], nao_el_nino:['Não é El Niño',MonitorMapas.PALETA.categorias.nao_el_nino],
     nao_localizado:['Nada localizado',MonitorMapas.PALETA.categorias.nao_localizado],

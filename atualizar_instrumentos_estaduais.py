@@ -134,6 +134,27 @@ REPOSITORIOS = {
     # planos municipais recebidos. Rever se a página mudar.
     "SC": {"parser": None, "nota": "VERIFICADO 26/08/2026 — defesacivil.sc.gov.br/municipios/ publica apenas pacotes-modelo (PlanCon AS, PlanCon EduAgravi); sem repositório de planos municipais. Cobertura de SC vem do levantamento declarado do TCE-SC (Painel Farol)"},
     "RS": {"parser": None, "nota": "VERIFICADO 26/08/2026 — defesacivil.rs.gov.br publica modelo de plano (.doc), sem repositório de planos municipais. Cobertura de RS vem do levantamento declarado do TCE-RS 2025"},
+
+    # ---- Sondagem de 24/09/2026 (§195), pedido editorial de estender o canal ----------------
+    # SE e ES são as duas UFs com repositório de PLANCONs municipais e parser, e juntas já deram 84
+    # dos planos do banco — o dobro do que o canal inteiro de diários municipais produziu. O pedido
+    # foi estender às outras. O QUE FOI FEITO, e o seu limite, declarado: as 23 UFs restantes foram
+    # sondadas nos três caminhos que SE e ES usam (/planos-de-contigencia — com a grafia sem o
+    # segundo "n" que os dois adotam —, /planos-de-contingencia e /plancon), com o cliente
+    # identificado e respeitando robots (§185). Seis responderam; nenhuma é repositório municipal.
+    # ISSO NÃO PROVA QUE NÃO EXISTE: prova que não está nesses três caminhos. Um repositório sob
+    # outro endereço, ou atrás de JavaScript, escapa desta sondagem — a descoberta renderizada
+    # (descobrir_planos.py --renderizar) é o passo seguinte, e está declarado como pendente.
+    "MS": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.ms.gov.br/planos-de-contingencia responde 293 kB com o título 'Planos de Contingência (PLANCON)', mas a página não lista plano municipal nenhum: só a Comissão Estadual e botões de compartilhamento. Página informativa, não repositório"},
+    "MG": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.mg.gov.br/planos-de-contigencia responde com aviso de período eleitoral (padrão do §182: o que está suspenso é a seção, não o sítio). Reconferir depois de 25/10"},
+    "TO": {"parser": None, "nota": "SONDADO 24/09/2026 — bombeiros.to.gov.br/planos-de-contigencia responde 'Aviso de Suspensão' do período eleitoral. Reconferir depois de 25/10"},
+    "PI": {"parser": None, "nota": "SONDADO 24/09/2026 — www.pi.gov.br/planos-de-contigencia responde sob aviso de período eleitoral, com 5 PDFs na página; conteúdo não conferido. Reconferir depois de 25/10"},
+    "SP": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.sp.gov.br/planos-de-contigencia devolve a página institucional, sem lista de planos municipais. Ver também o muro de robô do §186 neste domínio"},
+    "AL": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.al.gov.br/planos-de-contigencia responde 349 bytes (página vazia)"},
+    # As demais não responderam em nenhum dos três caminhos (404 ou sem resposta) em 24/09/2026:
+    # AC, BA, CE, DF, GO, MA, MT, PA, PB, PE, RJ, RN, RR. Ausência NOS CAMINHOS SONDADOS, não
+    # ausência de repositório — a distinção é a mesma do §194 entre "procuramos e não há" e "não
+    # havia onde procurar", e ela vale também para o que o Monitor ainda não procurou direito.
 }
 
 
