@@ -9,6 +9,34 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §191 · A calibração propagada para as páginas restantes · 23/09/2026
+
+Classe **revisão editorial**. Nenhum número muda, nenhuma figura nasce ou morre. O §34 só libera propagar depois da calibração validada; o §190 fez a calibração no MARÉ · Saúde, e esta entrada leva a **lógica** — não as frases — às outras páginas. O §13 é explícito: consistência é aplicar a mesma regra a objetos diferentes, não repetir o mesmo texto.
+
+**Base de evidência.** As seis páginas com figura foram abertas em navegador real e inventariadas renderizadas, não no HTML: **26 figuras** com título, legenda, nota de leitura e presença de seletor. A calibração tinha ensinado que nesta casa o texto do HTML é só o que se vê sem JavaScript — os títulos-fato são escritos por cima, em tempo de execução —, e auditar o arquivo teria deixado passar de novo o que passou antes.
+
+**Doze correções, todas das classes que a calibração isolou:**
+
+*Metadiscurso (§18).* A nota da anomalia mensal abria com "**Este gráfico mostra**", que está nominalmente na lista do §18. O conteúdo e a autossuficiência que a editoria pediu em 17/09 ficam intactos; o sujeito passa a ser a medida, como já era nas notas do ONI e do RONI, e não o gráfico.
+
+*Legenda que descrevia o seletor (§13, §21).* Duas figuras da defesa civil traziam "plano localizado, **ou** até onde a verificação chegou" e "% de municípios com ato, **ou** natureza predominante" — a legenda enumerando as opções do `<select>` logo abaixo, que já as nomeia. Mesmo defeito que a saúde tinha, mesma solução: a legenda diz o invariante da figura, o controle diz o recorte.
+
+*Legenda que repetia o título (§13).* Sete casos, entre os avisos do INMET, os alertas do CEMADEN, as rotas do dinheiro, a série de transferências, os prioritários da defesa civil, as áreas COBRADE e o gráfico do RS. Em cada um a legenda passou a carregar o que o título não diz — origem da lista, unidade, classificação, referência da anomalia — em vez de reescrevê-lo.
+
+*Forma no lugar do objeto (§12).* "Tipo de risco projetado para o ciclo — **mapa e contagem de estados**" descrevia o layout da figura. O título nomeia o objeto; a forma o leitor vê.
+
+*Título nomeado pela figura vizinha (§7).* "**Detalhe geográfico** · valor pago por UF" em Pesquisadores. O §7 proíbe nomear uma figura pela anterior, e "detalhe" só significa algo para quem leu a de cima. Virou "Valor pago das MPs por UF da unidade gestora", que se sustenta sozinho — o teste do §32.10.
+
+**Um erro meu no meio do caminho.** Ao tirar a duplicação entre legenda e nota do gráfico de anomalia, escrevi uma legenda que repetia o título inteiro. A auditoria automática da rodada seguinte pegou, e a legenda passou a dar a referência que faltava (desvio em relação à média climatológica do mês). Fica registrado porque a lição é a do §21: economia de texto não é cortar, é trocar repetição por informação.
+
+**O que foi auditado e não mudou.** Os títulos de cartão — 33 deles, em Prefeituras, Financiamento, Pesquisadores e Imprensa — entram no escopo do §5 e foram lidos um a um: identificam objeto, sem metadiscurso e sem juízo. A numeração das oito rotas do dinheiro é identificador, não significado, que é o que o §28 pede. Nada a corrigir, e isso também é resultado.
+
+**Auditoria final, automatizada e repetível.** Ao fim, as 26 figuras foram reinventariadas renderizadas e passadas por quatro testes: legenda que repete o título, legenda que descreve o seletor, metadiscurso na legenda ou na nota, e título duplicado na mesma página. **Zero ocorrências.**
+
+**O que continua em aberto.** As seções "Onde cada estado está" e "O que cada estado publicou", na saúde, seguem anotadas como suspeita de redundância (§10) — examinar isso é decidir se uma figura sai, e remoção de evidência substantiva é decisão da editoria pelo §29, não minha. A dívida do §35 (ficha semântica por figura) segue declarada. E a ordem narrativa das páginas (§8, §36 passo 7) não foi mexida: esta entrada revisou texto, não sequência.
+
+**Teste.** Portões de legendas, figuras, palavras, estrutura e os três de runtime (saúde, mapas, financiamento) verdes.
+
 ## §190 · Teste de calibração da governança editorial no MARÉ · Saúde · 23/09/2026
 
 Classe **revisão editorial**. Nenhum número do índice muda, nenhuma figura foi criada ou removida. O §34 da governança exige, antes de propagar qualquer lógica ao site, calibrar numa seção com pelo menos três visualizações e **escolher uma difícil, não a mais fácil**. A escolhida foi a página de Saúde: doze figuras e cinco seções irmãs por doença — a configuração em que legenda por fórmula e título herdado da figura vizinha são mais prováveis.
