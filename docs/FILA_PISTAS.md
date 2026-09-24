@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 24/09/2026 · 403 pendente(s) · 15 decidida(s) · A=77 B=256 C=70
+Gerado em 24/09/2026 · 414 pendente(s) · 15 decidida(s) · A=78 B=262 C=74
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -120,7 +120,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: vagas para os 21 km, 42 km, Desafio 5 + 21 km e Maratoninha Kids já estejam esgotadas. SERVIÇO Maratona de Vitória 2026 29 e 30 de agosto Praça do Papa, Enseada do Suá Inscrições: www.ticketsports.com.br ou www.maratonad
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Petrolina/PE — 3 pendente(s)
+## Petrolina/PE — 7 pendente(s)
 - `0ae0a524aa` · nível **A** (7 pts) · seguimento_busca_oficial · DUVIDA · **Decreto N.º 037**, 2020
   - título: Mapa do Site | Prefeitura de Petrolina - PE
   - url: https://petrolina.pe.gov.br/mapa-do-site/
@@ -131,11 +131,33 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://petrolina.pe.gov.br/chesf-e-defesa-civil-de-petrolina-iniciam-instalacao-de-placas-do-plano-de-contingencia-na-tapera/
   - trecho: Petrolina é uma das poucas cidades de Pernambuco que possui um plano de contingência, o que demonstra que as equipes da Defesa Civil do município seguem realizando o seu trabalho com seriedade.
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `e6187df402` · nível **B** (5 pts) · seguimento_querido_diario · EX_ANTE · **DECRETONº136**, 24/10/2025
+  - título: Diário oficial de 2025-10-24
+  - url: https://data.queridodiario.ok.org.br/2611101/2025-10-24/3151b51738df227376e28d7a6e96266b6309e564.pdf
+  - trecho: . . . . . . . . . . . DECRETO DECRETO Nº 136 DE 22 DE OUTUBRO DE 2025 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL DE CONVOCAÇÃO PARA CONSUL
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `f2fdbb2b26` · nível **B** (5 pts) · seguimento_querido_diario · EX_ANTE · **PORTARIANº. 042**, 2025
+  - título: Diário oficial de 2025-11-05
+  - url: https://data.queridodiario.ok.org.br/2611101/2025-11-05/8470c278430a8cbc62a6bf8a4ab2756775830857.pdf
+  - trecho: . . . . . . . . . . . . . . . PORTARIA Nº. 04249-2025 - SEDUCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . EDITAL 1º RETIFICAÇÃO D
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `b53b04907d` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2010 (do trecho)
   - título: plano municipal de saneamento de petrolina/pe
   - url: https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf
   - trecho: Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...
   - juiz: portão automático: fonte não oficial
+- `8a884d3778` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · **DECRETO Nº 092**, 17/09/2026
+  - título: Diário oficial de 2026-09-17
+  - url: https://data.queridodiario.ok.org.br/2611101/2026-09-17/6c8f7efb6f3d6b683bd057e63b5d533b996f0b54.pdf
+  - trecho: Petrolina-PE. CEP:56.302-905 E-mail: gabineteprefeiturapetrolina@gmail.com Tel. 3983-6410 MATRIZ DA EDUCAÇÃO – AGENDA TRANSVERSAL DA CRIANÇA E DO ADOLESCENTE SECRETARIA MUNICIPAL DE EDUCAÇÃO – PETROLINA/PE | PPA 2026–202
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `b6cd0781c1` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **decreto municipal 131**, 2023
+  - título: Diário oficial de 2026-08-25
+  - url: https://data.queridodiario.ok.org.br/2611101/2026-08-25/ebe64a6d7daf5862bf7ed2fcf83ca5029bf8b902.pdf
+  - trecho: filhos menores de 6 anos, se houver; CPF dos dependentes; Título de Eleitor e comprovação das obrigações eleitorais (original e cópia); Cartão PIS ou PASEP; Comprovação do nível de escolaridade (original e cópia); Compro
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Bituruna/PR — 1 pendente(s)
 - `8e36414ea8` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
@@ -751,12 +773,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: May 12, 2026 ... Canoinhas se prepara para possível impacto do El Niño ... Zenilda ressaltou que o município trabalha com plano de contingência e definição clara ...
   - juiz: portão automático: fonte não oficial
 
-## Itajaí/SC — 14 pendente(s)
+## Itajaí/SC — 18 pendente(s)
 - `856520058d` · nível **A** (6 pts) · busca_web · RESPOSTA · data 25/08/2026 (do trecho)
   - título: Super El Niño acende alerta em Itajaí e mobiliza estrutura para ...
   - url: https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/
   - trecho: Adicionar · Planos de contingência estadual e municipal preveem uso de barcos, veículos 4x4 e outros equipamentos em caso de alagamentos 25/08/2026 às 05h20 ... Super El Niño acende alerta em Itajaí e mobiliza estrutura 
   - juiz: portão automático: fonte não oficial
+- `b97a664c30` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Histórico - Defesa Civil de Itajaí
+  - url: https://defesacivil.itajai.sc.gov.br/historico/
+  - trecho: Após a enchente o site da Defesa ... perigosos; foram adquiridos materiais de contingencia para assistência humanitária e de capacitação nas escolas. Além disso, através de uma iniciativa inédita no país, todos os dados 
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `b11bbc9e9c` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Informações EL NIÑO | Porto de Itajaí
   - url: https://www.portoitajai.com.br/informacoes-el-nino
@@ -771,6 +798,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Infomações El Niño - Porto de Itajaí
   - url: https://www.portoitajai.com.br/infomacoes-el-ni-o
   - trecho: Plano de Contingência de Saúde · Plano de Gerenciamento de Resíduos - PGRS ... Rua Blumenau, 05 Centro, Itajaí - Santa Catarina Brasil - CEP: 88.305-101 ...
+- `b582a28463` · nível **B** (4 pts) · seguimento_busca_oficial · DUVIDA · data 23/10/2020 (do trecho)
+  - título: CMGPC19
+  - url: https://plancon.itajai.sc.gov.br/
+  - trecho: Jornal 2317, de 23 de outubro de 2020 - Torna publico o Plano de Contingência Municipal para a Educação de Itajaí.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `08e1764ebb` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DceLKWvkaP7/
   - trecho: Aug 25, 2026 ... Itajaí apresenta o Plano de Contingência e prepara empresas para riscos climáticos do El Niño 2026.
@@ -792,6 +824,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/DdeH-bKxvPQ/
   - trecho: 5 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...
   - juiz: portão automático: fonte não oficial
+- `d6081ded51` · nível **C** (5 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Coronavírus: Plano de contingência para o retorno das aulas ...
+  - url: https://itajai.sc.gov.br/noticia/25783/coronavirus-plano-de-contingencia-para-o-retorno-das-aulas-presenciais
+  - trecho: A Secretaria de Educação de Itajaí lançou nesta sexta-feira (23) o Plano Municipal de Contingência da Educação para a prevenção, monitoramento e controle do coronavírus (COVID-19) nas unidades escolares, aprovado pelo Go
+  - ⚠ risco_errado_no_titulo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `5c1fae3ce3` · nível **C** (2 pts) · busca_web · — · citação não extraída
   - url: https://visornoticias.com.br/el-nino-em-itajai-encontro-prepara-empresas-para-riscos-climaticos
   - trecho: Promovido pela Secretaria Municipal de Desenvolvimento Econômico, o encontro terá orientações sobre prevenção, gestão de riscos e elaboração de planos de contingência para empresas.
@@ -804,6 +842,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `dbc0225590` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/reel/DXsJ5lKjFWy/
   - trecho: Apr 28, 2026 ... ... plano de contingência com foco na prevenção e na resposta rápida a ... 🌧️ ITAJAÍ SE PREPARA PARA IMPACTOS DO EL NIÑO Prefeitura ...
+- `635a19a521` · nível **C** (2 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: SED - Secretaria de Estado da Educação - Governo do Estado detalha ...
+  - url: https://www.sed.sc.gov.br/secretaria/imprensa/noticias/30782-governo-do-estado-detalha-plano-de-contingencia-para-educacao-a-comunidade-escolar
+  - trecho: O Governo do Estado finalizou o ... para o retorno às atividades presenciais em Santa Catarina. O documento foi detalhado para a comunidade escolar na manhã desta quarta-feira, 9, em uma transmissão on-line....
 - `e2f9a623b9` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/reel/DdeH-bKxvPQ/
   - trecho: 3 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...
@@ -1152,21 +1194,31 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: competências das unidades administrativas e dos colegiados envolvidos, em conformidade com a Resolução CMN nº 5.272/2025 e a Portaria MTP nº 1.467/2022. Destacou, ainda, como recomendação para futura revisão do procedime
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Caxias/MA — 2 pendente(s)
+## Caxias/MA — 3 pendente(s)
 - `7e83fdc810` · nível **B** (5 pts) · busca_web · EX_ANTE · data 26/04/2026 (do trecho)
   - url: https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html
   - trecho: 26/04/2026 - 08h00min. Compartilhar. Adicione GZH como fonte preferencial no Google ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de ...
+  - juiz: portão automático: fonte não oficial
+- `dc078080d6` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Possibilidade de El Niño reacende alerta para chuvas intensas em ...
+  - url: https://gauchazh.clicrbs.com.br/pioneiro/geral/noticia/2026/04/possibilidade-de-el-nino-reacende-alerta-para-chuvas-intensas-em-caxias-do-sul-onde-mais-de-5-mil-pessoas-vivem-em-areas-de-risco-cmoekgnpv02bt015b7ep38go2.html
+  - trecho: Apr 26, 2026 ... Atualmente, a Defesa Civil trabalha na elaboração do Plano de Contingência de Caxias do Sul. O documento irá guiar as ações antes, durante e ...
   - juiz: portão automático: fonte não oficial
 - `5f1a2834eb` · nível **C** (4 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://caxias.rs.gov.br/noticias/2026/04/prefeitura-promove-palestra-sobre-el-nino-e-reforca-acoes-de-prevencao-em-caxias-do-sul
   - trecho: Apr 29, 2026 ... ... Plano de Contingência de Caxias do Sul. Muitas ações já estão sendo ... © 2026 Prefeitura de Caxias do Sul. Ícones por Freepik · Sobre o ...
   - ⚠ uf_divergente_na_url
 
-## Imperatriz/MA — 1 pendente(s)
+## Imperatriz/MA — 2 pendente(s)
 - `acc5082fbd` · nível **B** (4 pts) · busca_web · EX_ANTE · **Lei nº 8.080**, 1990
   - url: https://transparencia.imperatriz.ma.gov.br/upload/plano_municipal_saude/19310.pdf
   - trecho: Dessa forma, o Plano Municipal de Saúde 2026–2029 de Imperatriz/MA apresenta ... Plano de Contingência da COVID-19;. • Plano de Enfrentamento das ...
   - juiz: portão automático: data do ato incompleta (1990)
+- `16acd8c225` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Plano de contingência em ação em Imperatriz Desde a ... - Instagram
+  - url: https://www.instagram.com/reel/DXZsVCSDqit/?hl=en
+  - trecho: Apr 21, 2026 ... 4493 likes, 204 comments - prefeituradeimperatriz on April 21, 2026: " Plano de contingência em ação em Imperatriz Desde a madrugada, ...
+  - juiz: portão automático: fonte não oficial
 
 ## Barão de Cocais/MG — 1 pendente(s)
 - `106613cb27` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
@@ -1879,10 +1931,15 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 1, 2026 ... Defesa Civil de Mafra apresenta plano de contingência para enchentes e alagamentos ... El Niño. Durante o encontro, o prefeito Carlos Nitz ...
   - juiz: portão automático: fonte não oficial
 
-## Maracajá/SC — 1 pendente(s)
+## Maracajá/SC — 2 pendente(s)
 - `ee5c21214a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://maracaja.sc.gov.br/pagina-40824/
   - trecho: Nova escola municipal de Maracajá será entregue em 2026 à comunidade de Espigão Grande
+- `ffb3a23042` · nível **C** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Plano de Contingência para Covid-19 - Prefeitura de Maracajá
+  - url: https://maracaja.sc.gov.br/pagina-40824/
+  - trecho: Matrículas e rematrículas para o ano letivo de 2026 na Rede Municipal de Ensino de Maracajá iniciam em novembro.
+  - ⚠ risco_errado_no_titulo
 
 ## Navegantes/SC — 1 pendente(s)
 - `027ed149de` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
