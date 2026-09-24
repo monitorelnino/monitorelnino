@@ -263,6 +263,11 @@ const LATLON_POR_CODIGO = {};
 (function alertasEmVigor(){
   const box = document.getElementById('boxAlertas');
   if(!box) return;
+  /* `esc` do módulo único, e não uma cópia local: o `esc` declarado mais acima neste arquivo vive
+     DENTRO de outra função e não alcança aqui. Chamá-lo lançava ReferenceError e o resto do bloco
+     morria em silêncio — a tabela e o cruzamento ficavam vazios sem nenhuma mensagem de erro, que
+     é a forma mais perigosa de defeito: some conteúdo e nada avisa. Só apareceu ao renderizar. */
+  const esc = MonitorMapas.esc;
   const resumoEl = document.getElementById('alertasResumo');
   const CINZA = MonitorMapas.cor('zebra');
 
@@ -298,7 +303,7 @@ const LATLON_POR_CODIGO = {};
   const svgA = d3.select('#mapAlertas');
   svgA.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
     .attr('d', pathGen).attr('fill', CINZA).attr('class', 'uf-path')
-    .on('mouseenter', (evt, d) => showTip('<strong>' + d.properties.name + '</strong>', evt))
+    .on('mouseenter', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong>', evt))
     .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
     .on('mouseleave', hideTip);
   svgA.append('g').selectAll('circle').data(comCoord).join('circle')
@@ -307,10 +312,10 @@ const LATLON_POR_CODIGO = {};
     .attr('fill', m => m.inmet.length ? corDoGrau(m.grauPior) : COR_CEMADEN)
     .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 0.8)
     .on('mouseenter', (evt, m) => showTip(
-      '<strong>' + m.nome + ' (' + m.uf + ')</strong>'
-      + m.inmet.map(a => '<br>INMET · ' + a.tipo + ' · ' + a.severidade
-          + (a.inicio ? ' · de ' + a.inicio : '') + (a.fim ? ' a ' + a.fim : '')).join('')
-      + m.cemaden.map(a => '<br>CEMADEN · ' + (a.tipo || 'tipo não declarado') + ' · ' + a.nivel).join(''), evt))
+      '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong>'
+      + m.inmet.map(a => '<br>INMET · ' + esc(a.tipo) + ' · ' + esc(a.severidade)
+          + (a.inicio ? ' · de ' + esc(a.inicio) : '') + (a.fim ? ' a ' + esc(a.fim) : '')).join('')
+      + m.cemaden.map(a => '<br>CEMADEN · ' + esc(a.tipo || 'tipo não declarado') + ' · ' + esc(a.nivel)).join(''), evt))
     .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
     .on('mouseleave', hideTip);
   addSiglas(svgA);
@@ -358,8 +363,8 @@ const LATLON_POR_CODIGO = {};
     });
     corpoA.innerHTML = Object.keys(porUf).sort().map(function(uf){
       const d = porUf[uf];
-      return '<tr><td><strong>' + uf + '</strong></td><td>' + d.inmet + '</td><td>' + d.cemaden
-           + '</td><td>' + [...d.tipos].sort().join(' · ') + '</td></tr>';
+      return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + d.inmet + '</td><td>' + d.cemaden
+           + '</td><td>' + esc([...d.tipos].sort().join(' · ')) + '</td></tr>';
     }).join('') || '<tr><td colspan="4">nenhum município sob aviso ou alerta na consulta</td></tr>';
   }
 
@@ -383,7 +388,7 @@ const LATLON_POR_CODIGO = {};
   const svgX = d3.select('#mapAlertaDecreto');
   svgX.append('g').selectAll('path').data(BR_GEOJSON.features).join('path')
     .attr('d', pathGen).attr('fill', CINZA).attr('class', 'uf-path')
-    .on('mouseenter', (evt, d) => showTip('<strong>' + d.properties.name + '</strong>', evt))
+    .on('mouseenter', (evt, d) => showTip('<strong>' + esc(d.properties.name) + '</strong>', evt))
     .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
     .on('mouseleave', hideTip);
   svgX.append('g').selectAll('circle')
@@ -393,19 +398,21 @@ const LATLON_POR_CODIGO = {};
     .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 1.4)
     .on('mouseenter', function(evt, d){
       const v = muns[d.cod] || {inmet: [], cemaden: []};
-      showTip('<strong>' + d.nome + ' (' + d.uf + ')</strong><br>'
+      showTip('<strong>' + esc(d.nome) + ' (' + esc(d.uf) + ')</strong><br>'
         + (d.decretos > 1 ? d.decretos + ' decretos de emergência no ciclo' : 'Decreto de emergência')
-        + (d.data ? ' em ' + d.data : '')
-        + v.inmet.map(a => '<br>INMET · ' + a.tipo + ' · ' + a.severidade).join('')
-        + v.cemaden.map(a => '<br>CEMADEN · ' + (a.tipo || 'tipo não declarado') + ' · ' + a.nivel).join(''), evt);
+        + (d.data ? ' em ' + esc(d.data) : '')
+        + v.inmet.map(a => '<br>INMET · ' + esc(a.tipo) + ' · ' + esc(a.severidade)).join('')
+        + v.cemaden.map(a => '<br>CEMADEN · ' + esc(a.tipo || 'tipo não declarado') + ' · ' + esc(a.nivel)).join(''), evt);
     })
     .on('mousemove', (evt) => showTip(tooltip.innerHTML, evt))
     .on('mouseleave', hideTip);
   addSiglas(svgX);
   MonitorMapas.legenda('legAlertaDecreto', [
-    {cor: MonitorMapas.PALETA.resposta, rotulo: comDecreto.length + ' município(s) com decreto no ciclo e sob aviso ou alerta agora'},
+    // Rótulo de legenda é nome de categoria, não frase: até 40 caracteres (portão de
+    // harmonização). A contagem e a ressalva vivem no título-fato e no texto do mouse.
+    {cor: MonitorMapas.PALETA.resposta, rotulo: 'decreto no ciclo e alerta agora (' + comDecreto.length + ')'},
     {cor: CINZA, rotulo: 'demais municípios'}]
-    .concat(decretoSemCodigo ? [{cor: MonitorMapas.cor('sem-dado'), rotulo: decretoSemCodigo + ' decreto(s) sem código IBGE resolvido, fora do cruzamento'}] : []));
+    .concat(decretoSemCodigo ? [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem código IBGE (' + decretoSemCodigo + ')'}] : []));
   creditoSinal('boxAlertaDecreto', ['inmet_avisos', 'cemaden_alertas'], carimbo);
 })();
 
