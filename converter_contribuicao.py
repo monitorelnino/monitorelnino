@@ -54,7 +54,8 @@ RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
 
 CATEGORIAS_VALIDAS = {"plano", "plano_antigo", "plano_elaboracao", "decreto",
-                      "coberto_estadual", "nao_el_nino", "nao_localizado"}
+                      "coberto_estadual", "nao_el_nino", "nao_localizado",
+                      "plano_novo", "plano_readaptado", "plano_recorrente"}  # §202
 
 
 def norm(s: str) -> str:

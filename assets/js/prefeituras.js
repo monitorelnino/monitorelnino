@@ -25,7 +25,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   if (!selUF) return;
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const NOMES_UF = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
-  const CAT = {plano:'plano de contingência localizado', plano_antigo:'plano vigente, de ciclo anterior', plano_elaboracao:'plano em elaboração (ato oficial localizado)',
+  const CAT = {plano:'plano de contingência localizado', plano_antigo:'plano vigente, de ciclo anterior', plano_novo:'plano novo, dedicado ao ciclo', plano_readaptado:'plano readaptado para o ciclo', plano_recorrente:'plano recorrente, sazonal', plano_elaboracao:'plano em elaboração (ato oficial localizado)',
                coberto_estadual:'coberto pelo plano estadual', decreto:'decreto de emergência localizado (não conta como preparação)', nao_verificado:'ainda não verificado',
                nao_el_nino:'ato localizado é de outro risco (não conta)', nao_localizado:'nenhum plano localizado até o corte'};
   let CARDS = null;
@@ -63,7 +63,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
           h += '<p class="u-mb-0"><strong>Publicação na imprensa encontrada</strong> <span class="u-muted">(pista — não pontua no MARÉ sem o documento oficial):</span></p><ul class="u-mb-0">'
             + c.imprensa.map(i => '<li><a href="' + esc(i.url) + '" rel="noopener">' + esc(i.titulo || i.veiculo) + '</a> <span class="u-muted">' + esc(i.veiculo) + (i.data ? ' · ' + esc(i.data) : '') + '</span></li>').join('') + '</ul>';
         }
-        if (!['plano', 'plano_antigo', 'plano_elaboracao', 'coberto_estadual'].includes(cat)) {   // sem documento do tipo plano → convida a pedir
+        if (!['plano', 'plano_antigo', 'plano_elaboracao', 'coberto_estadual', 'plano_novo', 'plano_readaptado', 'plano_recorrente'].includes(cat)) {   // sem documento do tipo plano → convida a pedir
           h += '<p class="note u-mb-0"><strong>Peça o documento ao gestor público.</strong> Qualquer pessoa pode pedir, sem justificar (Lei de Acesso à Informação, Lei 12.527/2011): pelo e-SIC ou pela ouvidoria da prefeitura, ou pelo <a href="https://falabr.cgu.gov.br" rel="noopener">Fala.BR →</a> se o município não tiver canal próprio. Texto que funciona: <em>"Solicito cópia do Plano de Contingência de Proteção e Defesa Civil vigente do município, com o ato (decreto ou portaria) que o instituiu, número e data."</em> A resposta é devida em até 20 dias. Recebeu? <a href="mailto:contato@futuraevidencelab.com.br?subject=Plano%20de%20conting%C3%AAncia%20municipal">Envie para o MARÉ →</a></p>';
         }
         h += '<p class="note u-mb-0"><a href="index.html#' + esc(uf) + '">ver o estado na página inicial →</a></p>';

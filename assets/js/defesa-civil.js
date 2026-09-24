@@ -53,6 +53,9 @@ const pathGen = d3.geoPath().projection(projection);
 const CAT_STYLE = {
   plano:            {cor:MonitorMapas.PALETA.categorias.plano, r:5.5, label:'Plano publicado'},
   plano_antigo:     {cor:MonitorMapas.PALETA.categorias.plano_antigo, r:5,   label:'Plano vigente, de ciclo anterior'},
+  plano_novo: {cor:MonitorMapas.PALETA.categorias.plano_novo, r:5,   label:'Plano novo, dedicado ao ciclo'},
+  plano_readaptado: {cor:MonitorMapas.PALETA.categorias.plano_readaptado, r:5,   label:'Plano readaptado para o ciclo'},
+  plano_recorrente: {cor:MonitorMapas.PALETA.categorias.plano_recorrente, r:5,   label:'Plano recorrente, sazonal'},
   plano_elaboracao: {cor:MonitorMapas.PALETA.categorias.plano_elaboracao, r:5,   label:'Plano em elaboração'},
   estrutura:        {cor:MonitorMapas.PALETA.categorias.estrutura, r:5,   label:'Estrutura de coordenação'},
   decreto:          {cor:MonitorMapas.PALETA.categorias.decreto, r:4.5, label:'Decreto de emergência'},
@@ -91,7 +94,7 @@ const contaveis = MAP_POINTS.filter(p => p.categoria==='plano' || p.categoria===
 (document.getElementById('countComAto')||{}).textContent = contaveis;
 
 // ordenar para desenhar "plano" por cima de "decreto" por cima de "não localizado"
-const drawOrder = ['nao_verificado','nao_localizado','nao_el_nino','coberto_estadual','plano_elaboracao','estrutura','decreto','plano_antigo','plano'];
+const drawOrder = ['nao_verificado','nao_localizado','nao_el_nino','coberto_estadual','plano_elaboracao','estrutura','decreto','plano_antigo','plano','plano_novo','plano_readaptado','plano_recorrente'];
 const sortedPoints = [...MAP_POINTS].sort((a,b)=> drawOrder.indexOf(a.categoria) - drawOrder.indexOf(b.categoria));
 
 svgPoints.append('g').selectAll('circle')

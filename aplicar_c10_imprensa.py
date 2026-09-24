@@ -6,7 +6,8 @@ citação original preservada em data/pistas_imprensa.json (status "rebaixado_c1
 e errata pública em data/erratas_v224.json com o efeito na nota. Correção de dado,
 não de método (C6): permitida no defeso. Idempotente."""
 import json, sys, datetime
-D = "data/"; PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estadual"}
+D = "data/"; PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estadual",
+        "plano_novo", "plano_readaptado", "plano_recorrente"}  # §202: escada municipal
 def j(n): return json.load(open(D + n, encoding="utf-8"))
 def w(n, o):
     json.dump(o, open(D + n, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); open(D + n, "a", newline="\n").write("\n")

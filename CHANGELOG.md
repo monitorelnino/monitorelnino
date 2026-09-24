@@ -9,6 +9,53 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §203 · A leitura dos 82, e os quatro defeitos que a exigência de citar denunciou · 24/09/2026
+
+Classe **coleta e instrumento**. Nada aplicado: `classificar_planos_municipais.py` escreve um arquivo de revisão, e a promoção é R7.
+
+**O que foi feito.** Dos 122 planos municipais no banco, **82 têm texto preservado**. Cada um foi lido por um classificador que propõe a classe da escada do §202 e **é obrigado a citar o trecho que sustenta a proposta**. Resultado: **8 propostas e 74 abstenções**.
+
+Oito de oitenta e dois parece pouco. É o número honesto, e chegar a ele custou quatro correções — todas descobertas pela mesma exigência, a de citar.
+
+**Defeito 1: o sinal vinha da prosa do corpo.** A primeira versão varria o texto inteiro. Vitória saiu como "recorrente" por uma frase sobre óbitos *"computados todos os anos, no período chuvoso"*, e três PLANCONs capixabas saíram como "readaptado" por *"manter registro **atualizado** sobre danos humanos"* — uma instrução **dentro** do plano, não prova de que o plano foi atualizado. O tipo de um instrumento se declara no título e na abertura, não numa linha da página 40. É a régua do §182 (texto declarativo) e a do §180 (o ato tem de se apresentar como tal). Passou a ler só a **zona de identidade**.
+
+**Defeito 2: o robô classificava a própria descrição.** A correção anterior incluiu na zona de identidade o campo `documento` do banco — e **71 de 82** viraram "readaptado", porque esse campo diz "PLANCON edição 2025". Só que esse rótulo foi escrito **pelo Monitor**, não pelo documento. O robô concordava consigo mesmo e chamava isso de evidência. O campo saiu da pontuação e ficou só como contexto para o humano.
+
+**Defeito 3: o ano do ciclo alimentava duas classes ao mesmo tempo.** "2026/2027" pontuava para *novo* e era exigido por *readaptado*, então "atualização do plano para 2026/2027" empatava consigo mesma e caía em abstenção. Quem distingue criar de atualizar é o **verbo**, não o ano — o ano passou a valer pouco, e "El Niño" e "ENOS", muito.
+
+**Defeito 4, o pior: `enos\b` casava dentro de "m<u>enos</u>".** Sem limite de palavra à esquerda, a sigla pegava qualquer palavra terminada em "enos" — menos, terrenos, plenos. Foi assim que um parágrafo sobre ocupação de moradia em Afonso Cláudio recebeu três pontos de "dedicado ao El Niño". Sigla curta sem âncora pega pedaço de palavra comum, e **o erro só apareceu porque a proposta é obrigada a citar**: a citação não tinha nada a ver com El Niño, e foi isso que denunciou.
+
+**Uma correção de método, no meio do caminho.** A citação guardava o **primeiro** sinal que casava, não o mais forte — de modo que o revisor podia conferir uma frase fraca enquanto o ponto vinha de outra. Citação que não corresponde ao que pesou é pior do que citação nenhuma: faz o humano conferir a frase errada e concordar com uma conclusão que ninguém verificou. Passou a mostrar o sinal de maior peso.
+
+**A régua de abstenção.** Sinal ausente, ou duas classes com força parecida (margem menor que 2), devolvem `indeterminado` — e `indeterminado` **mantém o registro onde está, valendo 1,00**. O robô não classifica no escuro, e "não sei" nunca vira nota. Das 82 leituras, 74 terminaram assim, e isso não é falha do instrumento: é ele funcionando.
+
+**O que as 8 propostas dizem.** Cinco `plano_readaptado` e três `plano_recorrente`, todas no Espírito Santo — que é onde há repositório estadual e, portanto, onde há documento preservado para ler. As três recorrentes se sustentam em texto do próprio documento: *"sendo revisado anualmente"* em Castelo e Santa Leopoldina, e *"PMPDC — Vitória-ES Verão 2024/2025"* em Vitória. Nenhuma foi aplicada.
+
+**Onze casos no autoteste**, entre eles os quatro defeitos acima virados em trava: prosa de corpo não classifica, rótulo do banco não pontua, "menos" não casa com ENOS, e abstenção não inventa citação.
+
+**O limite, declarado.** Sobram **40 planos sem texto preservado** — para esses não há o que ler, e nenhuma proposta é possível sem antes extrair o documento. E o classificador continua sendo um proponente: ele lê a abertura, não o plano inteiro, e um documento cujo título diz "verão" mas cujo corpo institui resposta ao El Niño existe. Por isso cada proposta carrega a citação e a classe concorrente — para que a leitura humana confira a **evidência**, e não a conclusão.
+
+## §202 · A escada dos estados chega ao município · 24/09/2026
+
+Classe **governança com efeito em nota** — mas de efeito **zero na aplicação**, e isso é o ponto.
+
+**A assimetria que existia.** O componente estadual distinguia, desde a v3.0, o que o instrumento **é**: `NOVO` 100 para o criado para o ciclo, `READ` 65 para o preexistente reativado por ato datado, `VIG` 45 para a ativação recorrente anual — plano de verão, operação sazonal que mobiliza o sistema todo ano, com ou sem El Niño. No município não havia nada disso: existia `plano`, e pronto. Um Plano de Contingência escrito para o El Niño 2026/2027 valia exatamente o mesmo que uma Operação Chuva que roda desde sempre.
+
+**A emenda.** `CRED_POP` ganha `plano_novo` 1,00 · `plano_readaptado` 0,65 · `plano_recorrente` 0,45 — as mesmas proporções da escada estadual, porque consistência aqui é aplicar a mesma régua a objetos diferentes, não inventar uma segunda. Registrada como **C28** na corrente de erratas do congelamento, pelo mesmo instrumento do §196: decisão da editoria emendando o C6, não errata.
+
+**Duas decisões de desenho, declaradas porque mudam o que o número significa.**
+
+A primeira: **`plano` continua valendo 1,00** e passa a significar *localizado, tipo não determinado*. Não se desconta município porque **nós** ainda não lemos o documento dele. É a regra da casa desde a v2.2.4 §2.1 — ausência de verificação não é ausência de documento —, e ela vale aqui com força: lacuna nossa não pode virar nota deles.
+
+A segunda: **`plano_antigo` fica em 1,00**. O §196, de hoje de manhã, decidiu que plano vigente de ciclo anterior conta integral. Sob a escada, ele cairia para 0,45. Reverter uma decisão da editoria por reinterpretação, no mesmo dia, seria trocar o juízo dela pelo meu — então ele só se move com o documento na mão mostrando que é rotina recorrente, e aí vira `plano_recorrente`, com a prova junto.
+
+**Efeito medido: nenhum.** Média nacional 46,57 antes e depois; nenhuma UF muda; nenhum registro foi reclassificado. A escada foi **instalada**, não aplicada.
+
+**A consequência, dita antes de acontecer.** Esta escada tende a **baixar** o índice conforme os documentos forem lidos, não a subir. Dos 122 planos municipais no banco, **82 têm texto extraído** — dá para classificar lendo, que é como se faz aqui. Quando um "Plano Preventivo de Chuvas de Verão" for lido e classificado como recorrente, ele cai de 1,00 para 0,45. É o resultado correto: rotina sazonal anual não é resposta ao El Niño. E chega aos poucos, na velocidade da leitura, cada passo por R7.
+
+**O vocabulário estava duplicado em dez lugares.** Acrescentar três categorias exigiu tocar o motor, a correção C10, as categorias aceitas de contribuição pública, o rótulo humano dos feeds, a paleta dos mapas e quatro arquivos de interface — porque não existe uma lista canônica de categorias, existem dez cópias. Todas foram ligadas nesta entrada; a lista única fica declarada como dívida, e é o tipo de coisa que o §30 da direção de arte chama de corrigir na origem.
+
+**Uma trava que aprendeu a distinguir vazio de esquecido.** O portão do congelamento exigia `efeito_por_uf` preenchido em toda errata — e reprovou esta, cujo efeito é genuinamente zero UF. Mas `{}` vazio significa duas coisas opostas: *nenhuma UF foi afetada* e *ninguém preencheu*. O portão passou a aceitar o vazio **apenas quando o efeito nacional corrobora** com `ufs_afetadas = 0` explícito; sem a corroboração, continua reprovando. Verificado ao vivo nos dois sentidos.
 ## §201 · Ausência declarada pelo órgão: a distinção que faltava, e a resposta do MT na fila humana · 24/09/2026
 
 Classe **esquema de dados e ingestão de evidência**. Nenhum número muda. Nada entra no banco: a resposta de LAI vai para arquivo de revisão, e a promoção é R7.

@@ -67,6 +67,7 @@ jobs:
           node scripts/verificar_runtime_financiamento.js
           node scripts/verificar_figuras.js
           node scripts/verificar_fichas_semanticas.js
+          python3 classificar_planos_municipais.py --autoteste
           python3 scripts/verificar_ausencia_declarada.py
           node scripts/verificar_legendas.js
           node scripts/verificar_runtime_resposta.js
