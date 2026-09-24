@@ -9,6 +9,106 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §193 · O carimbo que virava a data em UTC e deixava o portão 12 vermelho sem culpa de ninguém · 24/09/2026
+
+Classe **correção de reprodutibilidade**. Nenhum dado muda, nenhum número do índice muda. O que muda é a cadeia de derivados deixar de depender do relógio da parede.
+
+**O sintoma.** O CI do PR #370 reprovou no portão 12 com dois arquivos obsoletos — `data/municipios_card.json` e o manifesto — enquanto os mesmos portões estavam verdes na máquina local. Reprovação que não se reproduz é sempre suspeita de ambiente, e era.
+
+**A causa.** `scripts/verificar_derivados.sh` fixa `SOURCE_DATE_EPOCH` no corte da edição, justamente para a cadeia inteira ser reproduzível. `gerar_card_municipios.py` escapava: carimbava `gerado_em` com `date.today()`. Enquanto a data local e a do runner coincidem, o defeito é invisível. O CI rodou às **01:21 UTC de 24/09/2026**, com o Brasil ainda em 23/09 — o runner regenerou com o dia seguinte, o portão viu diferença e acusou derivado obsoleto num ramo que não tinha nada a ver com carimbo de data.
+
+**O tamanho do defeito.** Ele não era do ramo. Ele pega **qualquer ramo, e a própria `main`**, em toda janela entre a meia-noite UTC e a meia-noite local — três horas por dia, todo dia. O `/p12` do projeto já registrava o sintoma ("carimbo `gerado_em` obsoleto em `data/municipios_card.json` já deixou a `main` vermelha sozinho"), sem a causa. Agora a causa está no código, com o motivo escrito ao lado.
+
+**O defeito estava em dois lugares, e o segundo derrubou o CI de novo.** Corrigido o carimbo do card, a rodada seguinte reprovou outra vez no portão 12 — agora com **uma única linha** do manifesto, e nenhum arquivo alterado. A linha era a primeira dele: *"selado em 23/09/2026"*. O `scripts/gerar_manifesto.py` fixa `SOURCE_DATE_EPOCH` no corte justamente para os PDFs saírem bit-determinísticos, e o cabeçalho dele escapava pelo mesmo `date.today()`. Manifesto que depende de quando roda não é selo, é carimbo de hora. O sintoma foi didático: nenhum arquivo mudando e o manifesto mudando é a assinatura de um carimbo no próprio manifesto.
+
+**A correção, na origem, nos dois.** `data_de_geracao()` e o selo do manifesto leem `SOURCE_DATE_EPOCH` quando ele existe e só caem em `date.today()` quando não existe — o mesmo padrão que `gerar_pdf_indice.py` e `gerar_pdf_metodologia.py` já usavam. Rodando pela cadeia canônica, os dois passam a carregar o corte (`2026-09-10`), determinísticos em qualquer fuso e em qualquer hora. O campo não é lido por nenhuma página: a busca por município em `prefeituras.js` consome os cartões, não o carimbo.
+
+**Trava.** Autoteste no próprio gerador, que já é portão: com `SOURCE_DATE_EPOCH` posto, a data sai dele — conferido em dois epochs distintos —; sem ele, cai no dia de hoje. Os epochs são calculados no teste, não digitados: a primeira versão trazia dois números mágicos, e os dois estavam um dia adiantados.
+
+**Teste.** Autoteste do gerador verde; cadeia canônica regenerada em árvore limpa sem diferença.
+
+## §191 · A calibração propagada para as páginas restantes · 23/09/2026
+
+Classe **revisão editorial**. Nenhum número muda, nenhuma figura nasce ou morre. O §34 só libera propagar depois da calibração validada; o §190 fez a calibração no MARÉ · Saúde, e esta entrada leva a **lógica** — não as frases — às outras páginas. O §13 é explícito: consistência é aplicar a mesma regra a objetos diferentes, não repetir o mesmo texto.
+
+**Base de evidência.** As seis páginas com figura foram abertas em navegador real e inventariadas renderizadas, não no HTML: **26 figuras** com título, legenda, nota de leitura e presença de seletor. A calibração tinha ensinado que nesta casa o texto do HTML é só o que se vê sem JavaScript — os títulos-fato são escritos por cima, em tempo de execução —, e auditar o arquivo teria deixado passar de novo o que passou antes.
+
+**Doze correções, todas das classes que a calibração isolou:**
+
+*Metadiscurso (§18).* A nota da anomalia mensal abria com "**Este gráfico mostra**", que está nominalmente na lista do §18. O conteúdo e a autossuficiência que a editoria pediu em 17/09 ficam intactos; o sujeito passa a ser a medida, como já era nas notas do ONI e do RONI, e não o gráfico.
+
+*Legenda que descrevia o seletor (§13, §21).* Duas figuras da defesa civil traziam "plano localizado, **ou** até onde a verificação chegou" e "% de municípios com ato, **ou** natureza predominante" — a legenda enumerando as opções do `<select>` logo abaixo, que já as nomeia. Mesmo defeito que a saúde tinha, mesma solução: a legenda diz o invariante da figura, o controle diz o recorte.
+
+*Legenda que repetia o título (§13).* Sete casos, entre os avisos do INMET, os alertas do CEMADEN, as rotas do dinheiro, a série de transferências, os prioritários da defesa civil, as áreas COBRADE e o gráfico do RS. Em cada um a legenda passou a carregar o que o título não diz — origem da lista, unidade, classificação, referência da anomalia — em vez de reescrevê-lo.
+
+*Forma no lugar do objeto (§12).* "Tipo de risco projetado para o ciclo — **mapa e contagem de estados**" descrevia o layout da figura. O título nomeia o objeto; a forma o leitor vê.
+
+*Título nomeado pela figura vizinha (§7).* "**Detalhe geográfico** · valor pago por UF" em Pesquisadores. O §7 proíbe nomear uma figura pela anterior, e "detalhe" só significa algo para quem leu a de cima. Virou "Valor pago das MPs por UF da unidade gestora", que se sustenta sozinho — o teste do §32.10.
+
+**Um erro meu no meio do caminho.** Ao tirar a duplicação entre legenda e nota do gráfico de anomalia, escrevi uma legenda que repetia o título inteiro. A auditoria automática da rodada seguinte pegou, e a legenda passou a dar a referência que faltava (desvio em relação à média climatológica do mês). Fica registrado porque a lição é a do §21: economia de texto não é cortar, é trocar repetição por informação.
+
+**O que foi auditado e não mudou.** Os títulos de cartão — 33 deles, em Prefeituras, Financiamento, Pesquisadores e Imprensa — entram no escopo do §5 e foram lidos um a um: identificam objeto, sem metadiscurso e sem juízo. A numeração das oito rotas do dinheiro é identificador, não significado, que é o que o §28 pede. Nada a corrigir, e isso também é resultado.
+
+**Auditoria final, automatizada e repetível.** Ao fim, as 26 figuras foram reinventariadas renderizadas e passadas por quatro testes: legenda que repete o título, legenda que descreve o seletor, metadiscurso na legenda ou na nota, e título duplicado na mesma página. **Zero ocorrências.**
+
+**O que continua em aberto.** As seções "Onde cada estado está" e "O que cada estado publicou", na saúde, seguem anotadas como suspeita de redundância (§10) — examinar isso é decidir se uma figura sai, e remoção de evidência substantiva é decisão da editoria pelo §29, não minha. A dívida do §35 (ficha semântica por figura) segue declarada. E a ordem narrativa das páginas (§8, §36 passo 7) não foi mexida: esta entrada revisou texto, não sequência.
+
+**O que estava em aberto e foi fechado nesta mesma entrada.**
+
+*A suspeita de redundância era outra coisa.* Examinadas, "Onde cada estado está" e "O que cada estado publicou" **não são redundantes**: a primeira é o cartão por estado — a camada de territorialização em que o leitor acha o seu (§26) —; a segunda é o panorama agregado, com os três mapas. Mesmo dado, funções narrativas distintas, e o §10 as classifica em papéis diferentes. O defeito real era **a ordem** — e aqui cabe precisão, porque a primeira formulação desta entrada dizia "específico antes do geral" e isso está errado: os dois painéis são de **escala estadual**. O que os separa é a função. `#estadual` responde "o que cada estado publicou" no agregado, e `#estados` deixa o leitor achar o seu — o passo BRASIL → ESTADO do §26. A resposta agregada passa a vir antes da busca individual. Os dois painéis foram trocados; **nenhuma figura saiu**, e nenhuma evidência foi eliminada, o que teria exigido decisão da editoria pelo §29. A decisão editorial registrada em 2089 — cada desfecho em seção própria **antes dos estados** — continua valendo e segue asserida por portão; o que nunca foi decisão registrada era a ordem interna dos dois painéis, que o portão apenas fixava por inércia.
+
+*A pendência do §22 que eu havia adiado.* "Última semana consolidada", "última semana disponível" e "última semana epidemiológica" conviviam na mesma tela. Lidos o dado e o código, a diferença é **real**: o mapa municipal lê a série consolidada do InfoDengue, com as quatro últimas semanas vazadas, e o mapa das capitais lê outra fonte, em que cada capital carrega a própria semana. Uniformizar teria apagado uma distinção de método. As duas expressões ficam, e a ficha semântica de cada figura agora registra por quê.
+
+*Seis legendas da saúde que a varredura anterior não alcançou*, porque a página não estava no lote auditado — duas delas repetiam o título por causa da própria calibração do §190.
+
+**A dívida do §35, paga.** `docs/fichas_semanticas.json` passa a guardar, para cada uma das **38 figuras** do site, a ficha que o §35 pede: pergunta que responde, dimensão da preparação, universo, unidade de análise, território, período, variável, denominador, fonte, metodologia, **conclusões permitidas e não permitidas**, função narrativa e ação relacionada. Onde não foi possível estabelecer um campo com segurança, ele é `null` — o §6 proíbe transformar incerteza interna em afirmação, e isso vale também para a memória interna.
+
+Ficha sem portão envelhece em silêncio, então ela ganhou um: `scripts/verificar_fichas_semanticas.js` (o **55º** do repositório) renderiza as onze páginas e reprova figura sem ficha, ficha órfã, campo obrigatório vazio e — porque o §35 diz que a ficha é memória interna e o §27 proíbe renderizar bastidor — qualquer texto de ficha que vaze para a interface. O portão não julga o conteúdo da ficha: isso é leitura humana, e o §29 reserva à editoria o que muda significado.
+
+**Teste.** Portões de legendas, figuras, palavras, estrutura, fichas semânticas e os três de runtime (saúde, mapas, financiamento) verdes; 38 figuras com ficha completa.
+
+## §190 · Teste de calibração da governança editorial no MARÉ · Saúde · 23/09/2026
+
+Classe **revisão editorial**. Nenhum número do índice muda, nenhuma figura foi criada ou removida. O §34 da governança exige, antes de propagar qualquer lógica ao site, calibrar numa seção com pelo menos três visualizações e **escolher uma difícil, não a mais fácil**. A escolhida foi a página de Saúde: doze figuras e cinco seções irmãs por doença — a configuração em que legenda por fórmula e título herdado da figura vizinha são mais prováveis.
+
+**Sete defeitos no texto estático.** Dois títulos **idênticos** ("Nível de alerta por município · última semana consolidada") distinguiam dengue de chikungunya apenas por um token no fim da legenda. As legendas dessas figuras eram molde com sufixo — exatamente o que o §13 chama de "parecer gerada por fórmula". Duas legendas descreviam **as três opções do seletor** ("semanal … ou acumulado anual") em vez da figura, fazendo o trabalho que o próprio controle já faz. A legenda do status repetia o título duas vezes na mesma frase. E o risco sanitário trazia "(derivado)" no título **e** na legenda.
+
+**Um defeito de indicador.** O mapa de prontidão se chamava "Antecipação por estado". O código é explícito (`saude.js`, Metodologia §31): *prontidão = média de instrumento, cobertura populacional sanitária e antecipação*. O título nomeava **um dos três componentes como se fosse o indicador** — o §3 proíbe transformar variável isolada em conceito mais amplo, e aqui era o inverso, o conceito reduzido a uma parte. A legenda, o `aria-label` e o código já diziam *prontidão*; o título era o único fora. Agrava que a `METODOLOGIA` (E17) usa "antecipação" também para **a metade da página** (antecipação × resposta): a mesma palavra com dois sentidos na mesma tela, que é o §22.
+
+**Dois defeitos que só a renderização mostrou** — e é para isso que o §34 tem um passo 9. Os títulos desta página são **títulos-fato calculados do dado** (regra de 15/09), escritos por JavaScript por cima do HTML. Lidos no navegador:
+
+- o título-fato do mapa de **prontidão** contava estados por **status de instrumento** — o objeto da figura seguinte —, saindo quase idêntico ao dela. É o §32.8 em estado puro: texto herdado da figura vizinha.
+- o título dizia "**1 municípios** em alerta" para chikungunya. Concordância, que o §29 autoriza corrigir sem consulta.
+
+**Um erro meu, registrado porque importa.** A primeira correção do título-fato derivou a contagem de verificados de um campo que não existe em `saude_uf.json`, e a página renderizou "**Prontidão sanitária por estado: 0 de 27 estados verificados**" — número falso num texto público. A validação renderizada pegou antes de qualquer commit. A contagem passou a vir do agregado autoritativo (`monitor_saude.json` → `resumo.verificadas`, hoje **20 de 27**), com o motivo escrito no código para ninguém repetir o atalho. O §6 diz que incerteza interna nunca vira afirmação pública; aqui ela quase virou, e o que a barrou foi olhar o resultado renderizado, não o diff.
+
+**O portão foi atualizado, não afrouxado.** `verificar_runtime_saude.js` exigia que o título do mapa trouxesse as contagens de status. O princípio que ele guarda — *título-fato vem do dado, nunca digitado* — continua idêntico; o que mudou é qual fato e sobre qual objeto. A asserção agora confere a contagem de verificados contra `monitor_saude.json`, **passou a cobrir também o título do status** (que antes ninguém verificava) e ficou imune ao singular, que teria virado falha latente na primeira vez que a dengue marcasse um só município.
+
+**Correção de um registro do §189.** Aquela entrada disse que a nota metodológica "não tem lugar próprio" no componente de figura. Está errado: `.figura-leitura` existe no componente desde 07/09 e é a quarta função que o §11 pede. O defeito real é outro, e menor: ela é usada em **três figuras, todas em `monitor-de-riscos.html`**, e em nenhuma das outras onze páginas. Slot subutilizado, não ausente.
+
+**O que esta entrada não faz.** Não propaga nada. O §34 só libera propagar depois da calibração validada, e a propagação para as outras onze páginas é trabalho próprio, com o mesmo protocolo: ler dado e código de cada figura antes de escrever, e validar renderizado. As seções "Onde cada estado está" e "O que cada estado publicou" ficam anotadas como suspeita de redundância (§10) ainda não examinada.
+
+**Teste.** Portões de legendas, figuras, palavras, estrutura, consistência visual e runtime de saúde verdes; doze figuras sem título duplicado; overflow horizontal 0.
+
+## §189 · A governança editorial e narrativa vira documento canônico, com precedência declarada · 23/09/2026
+
+Classe **governança**. Nenhum número do índice muda e nenhum texto público foi reescrito nesta entrada. O que muda é qual documento decide, e em que ordem, quando se vai escrever para o leitor.
+
+**O que entrou.** `AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`, na raiz, ao lado da `METODOLOGIA.md`. Ele declara a pergunta central do site — *qual é o estado de preparação do Brasil diante do risco analisado?* — e a sequência que a responde: **pergunta → contexto → evidências → dimensões da preparação → síntese → ação**. E fixa a hierarquia de decisão: a narrativa decide **por quê e onde**, a semântica decide **o quê**, o editorial decide **como**; nenhuma camada substitui a anterior.
+
+**A regra de precedência, escrita para não ficar ambígua.** O documento se declara acima de padrão local e de hábito anterior de geração. No `CLAUDE.md` isso ficou combinado assim: a `METODOLOGIA.md` decide **o que pode ser afirmado** (prova, lacuna declarada, teto de ausência, o que pontua); a governança decide **por que, onde e como** aquilo é dito. As duas não competem — uma é limite de fato, a outra é ordem da informação. Quando o estilo pedir o que a prova não sustenta, vence a prova, e a própria governança diz isso no §6 e no §15.
+
+**O que o site já cumpre, e não foi mexido.** O portão 19 (`verificar_legendas.js`, regra de 15/09) já reprova juízo, interpretação e causa não demonstrada em texto de figura — é o §13, o §15 e o §20 da governança, já em código. A `docs/VOZ_EDITORIAL.md` (16/09) já proíbe metadiscurso e explicação da política editorial na legenda — §18. O componente de figura já separa **categoria, título, legenda e fonte**, com formato único de crédito. E o teto público de ausência ("não localizamos até o corte", nunca "não existe") é literalmente o §15.
+
+**As duas lacunas reais, declaradas e não resolvidas aqui:**
+
+1. **Nota metodológica não tem lugar próprio.** O §11 manda manter quatro funções separadas — título, legenda, **nota metodológica** e fonte — e proíbe comprimi-las num bloco só. O componente tem três: `.figura-cat`, `.figura-titulo`, `.figura-sub` e `.fonte-figura`. Hoje a ressalva metodológica vive na ficha "Como ler" ou numa nota "O que a figura não diz", por página, não por figura. Falta decidir se ela vira slot do componente.
+2. **Não existe ficha semântica por figura (§35).** O documento pede, para cada visualização, uma ficha interna com universo, unidade de análise, território, período, variável, denominador, fonte, metodologia, conclusões permitidas e não permitidas, função narrativa e ação relacionada — memória semântica que impede uma alteração futura de perder o significado da figura. O projeto não tem nada equivalente. É trabalho de porte, e fica declarado como dívida, não como pendência escondida.
+
+**Um conflito que precisa de decisão.** O ramo `marca-pessoal`, ainda não mesclado, acrescenta ao `CLAUDE.md` um sistema de marca cuja seção de voz pede tom "provocador, poético, espirituoso e vivo". A governança editorial pede o oposto para conteúdo público: voz "clara, segura, precisa, **sóbria**", não promocional (§16), sem metáfora excessiva nem frase de impacto (§24), sem dizer ao leitor o que pensar (§20). Pela precedência agora declarada, **a governança vence no conteúdo público** — a marca segue mandando em paleta, tipografia e sistema visual. Se o ramo da marca for mesclado, a seção de voz dele precisa entrar já subordinada, e não como regra concorrente.
+
+**O que esta entrada não faz.** Não revisa título, legenda ou texto de nenhuma página. O §36 da governança descreve uma ordem de execução para revisão geral do site, e o §34 exige um teste de calibração numa seção difícil antes de propagar qualquer lógica ao restante — nada disso foi feito aqui, e fazer sem pedido seria exatamente o "patchwork" que o §30 proíbe.
+
 ## §188 · Errata pública ao C6: a classificação por UF é dado, e o Paraná foi reclassificado dentro do defeso · 23/09/2026
 
 Classe **governança com efeito em nota** — a primeira desta série que muda um número publicado. O Paraná vai de **67,4 para 73,3** e troca de faixa. Nenhum peso, crédito, componente, faixa ou régua foi tocado.

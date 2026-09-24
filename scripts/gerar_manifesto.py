@@ -36,7 +36,7 @@ ESCOPO DECLARADO DA SELAGEM (impresso no cabeçalho do próprio manifesto):
 Uso: python3 scripts/gerar_manifesto.py           (regrava o manifesto)
      python3 scripts/gerar_manifesto.py --check   (confere sem regravar)
 """
-import datetime
+import datetime, os
 import hashlib
 import pathlib
 import sys
@@ -76,7 +76,15 @@ def sha256(rel):
 
 def gerar():
     """Monta o texto completo do manifesto, cabeçalho de escopo incluído."""
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    # §193 (24/09/2026): o carimbo do selo vem do RELÓGIO FIXADO, nunca do relógio da parede.
+    # Este arquivo já fixava SOURCE_DATE_EPOCH no corte para os PDFs saírem bit-determinísticos, e
+    # o próprio cabeçalho dele escapava com date.today(). O efeito: na janela entre a meia-noite
+    # UTC e a local, o runner sela com o dia seguinte, UMA linha do manifesto muda, nenhum arquivo
+    # muda, e o portão 12 reprova um ramo que não tem nada a ver com o assunto. Foi o que derrubou
+    # o CI do PR #370 duas vezes. Manifesto que depende de quando roda não é selo, é carimbo de hora.
+    _ep = os.environ.get("SOURCE_DATE_EPOCH")
+    hoje = (datetime.datetime.fromtimestamp(int(_ep), tz=datetime.timezone.utc).date()
+            if _ep else datetime.date.today()).strftime("%d/%m/%Y")
     linhas = [
         f"# MANIFEST_SHA256 · Monitor El Niño Brasil · selado em {hoje} por scripts/gerar_manifesto.py",
         "# Escopo: código, páginas, dados, documentação-fonte, configuração E os dois PDFs publicados",

@@ -70,13 +70,13 @@
       </figure>
       <figure class="figura figura--grafico" id="boxRoni">
         <h3 class="figura-titulo">Índice RONI (Relative Oceanic Niño Index), série desde 1950</h3>
-        <p class="figura-sub">Trimestres móveis desde 1950 · mesma anomalia do ONI, descontado o aquecimento médio do oceano tropical · °C</p>
+        <p class="figura-sub">Trimestres móveis desde 1950 · anomalia relativa da temperatura do mar na região Niño 3.4 · °C</p>
         <div class="figura-midia canvas-wrap grafico-preto" id="wrapRoni"></div>
         <p class="figura-leitura" id="roniLeitura" hidden></p>
       </figure>
       <figure class="figura figura--grafico" id="boxAnomalia">
         <h3 class="figura-titulo">Anomalia mensal da temperatura do mar, região Niño 3.4</h3>
-        <p class="figura-sub">Últimos meses · leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam · °C</p>
+        <p class="figura-sub">Últimos meses · desvio em relação à média climatológica do mês · °C</p>
         <div class="figura-midia canvas-wrap grafico-preto" id="wrapAnomalia"></div>
         <p class="figura-leitura" id="anomaliaLeitura" hidden></p>
       </figure>
@@ -89,8 +89,8 @@
     <p class="hint">Família de risco projetada para cada estado nos boletins do Painel El Niño 2026/2027.</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa figura--largo figura--dupla" id="boxTipoRisco">
-        <h3 class="figura-titulo">Tipo de risco projetado para o ciclo — mapa e contagem de estados</h3>
-        <p class="figura-sub">Ciclo 2026/2027 (boletins do Painel) · tipo de risco projetado por UF · mapa e contagem de estados por família</p>
+        <h3 class="figura-titulo">Tipo de risco projetado para o ciclo, por estado</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · famílias de risco dos boletins do Painel El Niño · 27 UFs</p>
         <div class="figura-midia">
           <div class="midia-mapa"><svg id="mapaTipoRisco" role="img" aria-label="Mapa do Brasil por tipo de risco projetado nos boletins do Painel El Niño" viewBox="0 0 480 460"></svg></div>
           <div class="canvas-wrap" id="wrapTipos"><canvas id="cTipos" role="img" aria-label="Estados por tipo de risco projetado, contagem"></canvas></div>
@@ -109,13 +109,13 @@
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxAvisos">
         <h3 class="figura-titulo">Avisos meteorológicos vigentes</h3>
-        <p class="figura-sub">Consulta mais recente · avisos meteorológicos vigentes do INMET por UF · contagem e severidade</p>
+        <p class="figura-sub">Consulta mais recente · INMET, por UF · contagem e severidade</p>
         <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos vigentes do INMET" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAvisos"></div>
       </figure>
       <figure class="figura figura--mapa" id="boxCemaden">
         <h3 class="figura-titulo">Alertas de risco vigentes, CEMADEN</h3>
-        <p class="figura-sub">Consulta mais recente · alertas hidrológicos e geológicos vigentes (CEMADEN) por UF · contagem</p>
+        <p class="figura-sub">Consulta mais recente · alertas hidrológicos e geológicos, por UF · contagem</p>
         <div class="figura-midia"><svg id="mapaCemaden" role="img" aria-label="Mapa do Brasil pelo número de alertas hidrológicos e geológicos vigentes do CEMADEN" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legCemaden"></div>
       </figure>
@@ -144,7 +144,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=7da30123" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=66c33be0" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

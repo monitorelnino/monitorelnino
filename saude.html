@@ -119,20 +119,20 @@
     <p class="hint">Nível de alerta nos 313 municípios acompanhados e nas 27 capitais; casos por semana sobre a faixa esperada para a época (2019–2025).</p>
     <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxDesfMapa">
-        <h3 class="figura-titulo">Nível de alerta por município · última semana consolidada</h3>
-        <p class="figura-sub">Última semana consolidada · nível de alerta InfoDengue (1–4) por município dos 313 acompanhados · dengue</p>
+        <h3 class="figura-titulo">Dengue: nível de alerta por município</h3>
+        <p class="figura-sub">Última semana consolidada · 313 municípios acompanhados · escala InfoDengue de 1 a 4</p>
         <div class="figura-midia"><svg id="mapaDesf" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nos municípios dos 313 municípios acompanhados" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legDesfMapa"></div>
       </figure>
       <figure class="figura figura--mapa" id="boxDengue">
         <h3 class="figura-titulo">Dengue nas capitais · última semana epidemiológica</h3>
-        <p class="figura-sub">Última semana disponível · nível de alerta InfoDengue nas 27 capitais · 1–4</p>
+        <p class="figura-sub">Última semana disponível em cada capital · escala InfoDengue de 1 a 4</p>
         <div class="figura-midia"><svg id="mapaDengue" role="img" aria-label="Mapa do Brasil com o nível de alerta de dengue nas 27 capitais" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legDengue"></div>
       </figure>
       <figure class="figura figura--grafico" id="boxDesfAcum">
         <h3 class="figura-titulo">Casos notificados de dengue: 313 municípios acompanhados e capitais</h3>
-        <p class="figura-sub">313 municípios acompanhados e 27 capitais · semanal, sobre a faixa esperada para a época, ou acumulado anual · nº de casos</p>
+        <p class="figura-sub">313 municípios acompanhados e 27 capitais · nº de casos · a visualização escolhida abaixo define o recorte</p>
         <div class="figura-midia canvas-wrap"><canvas id="cDesfAcum" aria-label="Casos notificados de dengue, conforme a visualização: semanal nos 313 municípios acompanhados sobre a faixa esperada para a época, acumulado anual nos 313 municípios acompanhados, ou semanal nas 27 capitais"></canvas></div>
         <div class="map-legend" id="legDesfAcum"></div>
         <label class="sr-only" for="selComparadorDengue">Visualização</label>
@@ -151,14 +151,14 @@
     <p class="hint">Nível de alerta nos 313 municípios acompanhados e casos por semana sobre a faixa esperada para a época.</p>
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxChikMapa">
-        <h3 class="figura-titulo">Nível de alerta por município · última semana consolidada</h3>
-        <p class="figura-sub">Última semana consolidada · nível de alerta InfoDengue (1–4) por município dos 313 acompanhados · chikungunya</p>
+        <h3 class="figura-titulo">Chikungunya: nível de alerta por município</h3>
+        <p class="figura-sub">Última semana consolidada · 313 municípios acompanhados · escala InfoDengue de 1 a 4</p>
         <div class="figura-midia"><svg id="mapaChik" role="img" aria-label="Mapa do Brasil com o nível de alerta de chikungunya nos municípios dos 313 municípios acompanhados" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legChikMapa"></div>
       </figure>
       <figure class="figura figura--grafico" id="boxChikSerie">
         <h3 class="figura-titulo">Casos notificados de chikungunya: 313 municípios acompanhados</h3>
-        <p class="figura-sub">313 municípios acompanhados · semanal, sobre a faixa esperada para a época, ou acumulado anual · nº de casos</p>
+        <p class="figura-sub">313 municípios acompanhados · nº de casos · a visualização escolhida abaixo define o recorte</p>
         <div class="figura-midia canvas-wrap"><canvas id="cChikSerie" aria-label="Casos notificados de chikungunya nos 313 municípios acompanhados: semanal sobre a faixa esperada para a época ou acumulado anual"></canvas></div>
         <div class="map-legend" id="legChikSerie"></div>
         <label class="sr-only" for="selComparadorChik">Visualização</label>
@@ -176,7 +176,7 @@
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxCalor">
         <h3 class="figura-titulo">Avisos de calor vigentes (INMET)</h3>
-        <p class="figura-sub">Consulta mais recente · avisos de calor vigentes do INMET por UF · contagem</p>
+        <p class="figura-sub">Consulta mais recente · INMET, por UF · contagem</p>
         <div class="figura-midia"><svg id="mapaCalor" role="img" aria-label="Mapa do Brasil pelo número de avisos de calor vigentes do INMET por estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legCalor"></div>
       </figure>
@@ -195,7 +195,7 @@
       </figure>
       <figure class="figura figura--grafico" id="boxSG">
         <h3 class="figura-titulo">Síndrome gripal por semana · Brasil, sobre a faixa esperada para a época</h3>
-        <p class="figura-sub">Semanas de 2026 (últimas 4 excluídas do consolidado) · síndrome gripal · Brasil · nº de casos</p>
+        <p class="figura-sub">Semanas de 2026, sem as 4 últimas ainda não consolidadas · nº de casos</p>
         <div class="figura-midia canvas-wrap"><canvas id="cSG" aria-label="Casos de síndrome gripal por semana epidemiológica no Brasil, com a faixa esperada para a época (2019–2025)"></canvas><svg id="svgSGLacuna" viewBox="0 0 900 220" role="img" aria-label="Série ainda não coletada — lacuna declarada" hidden><text id="txtSGLacuna1" x="450" y="100" text-anchor="middle" font-size="15"></text><text id="txtSGLacuna2" x="450" y="126" text-anchor="middle" font-size="12.5"></text></svg></div>
         <div class="map-legend" id="legSG"></div>
       </figure>
@@ -216,20 +216,13 @@
     <p class="note u-mb-0"><span id="carimboSaude"></span> Os alertas e as orientações para a população estão em <a href="proteja-se.html#alertas-saude">Proteja-se</a>, alimentados pelos mesmos dados desta página.</p>
   </div>
 
-  <div class="panel" id="estados">
-    <h2>Onde cada estado está</h2>
-    <p class="hint">Índice de antecipação e de resposta de cada estado; na face do cartão, plano de saúde para o ciclo, cobertura sanitária e dengue na capital. O detalhe abre em uma janela. <strong id="contagemUF">—</strong></p>
-    <div class="regions" id="regionsSaude"></div>
-    <p class="note u-mt-3 u-mb-0">Estado sem número ainda não foi verificado nesta camada.</p>
-  </div>
-
   <div class="panel" id="estadual">
     <h2>O que cada estado publicou</h2>
     <p class="hint">Plano publicado pela secretaria estadual de saúde, pelo centro de informações estratégicas (CIEVS) ou pelo centro de operações (COE), e o risco sanitário projetado nos boletins do Painel El Niño.</p>
     <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxMonitor">
-        <h3 class="figura-titulo">Antecipação por estado · plano de saúde para o ciclo × quando foi publicado</h3>
-        <p class="figura-sub">Corte da edição · prontidão sanitária (0–100) por UF verificada · faixas do índice</p>
+        <h3 class="figura-titulo">Prontidão sanitária por estado</h3>
+        <p class="figura-sub">Corte da edição · 0 a 100 por UF verificada · média de instrumento, cobertura populacional e antecipação (Metodologia §31)</p>
         <div class="figura-midia"><svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil com a prontidão sanitária por estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legMonitor"></div>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela</summary>
@@ -238,7 +231,7 @@
       </figure>
       <figure class="figura figura--mapa" id="boxStatus">
         <h3 class="figura-titulo">Status do instrumento estadual de saúde</h3>
-        <p class="figura-sub">Corte da edição · status do plano estadual de saúde para o ciclo · categoria do plano estadual de saúde</p>
+        <p class="figura-sub">Corte da edição · 27 UFs · categoria do instrumento estadual</p>
         <div class="figura-midia"><svg id="mapaStatus" role="img" aria-label="Mapa do Brasil com o status do plano estadual de saúde para o ciclo" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legStatus"></div>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em tabela: as 27 UFs</summary>
@@ -246,13 +239,20 @@
         </details>
       </figure>
       <figure class="figura figura--mapa" id="boxRiscoSan">
-        <h3 class="figura-titulo">Risco sanitário projetado (derivado)</h3>
-        <p class="figura-sub">Ciclo 2026/2027 · risco sanitário projetado por UF (derivado dos boletins) · família</p>
+        <h3 class="figura-titulo">Risco sanitário projetado por estado</h3>
+        <p class="figura-sub">Ciclo 2026/2027 · famílias de risco derivadas dos boletins do Painel El Niño, sem projeção própria</p>
         <div class="figura-midia"><svg id="mapaRiscoSan" role="img" aria-label="Mapa do Brasil com a família de risco sanitário projetado por estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legRiscoSan"></div>
       </figure>
     </div>
   </div>
+  <div class="panel" id="estados">
+    <h2>Onde cada estado está</h2>
+    <p class="hint">Índice de antecipação e de resposta de cada estado; na face do cartão, plano de saúde para o ciclo, cobertura sanitária e dengue na capital. O detalhe abre em uma janela. <strong id="contagemUF">—</strong></p>
+    <div class="regions" id="regionsSaude"></div>
+    <p class="note u-mt-3 u-mb-0">Estado sem número ainda não foi verificado nesta camada.</p>
+  </div>
+
 
 </main>
   <footer class="site-footer">
@@ -264,7 +264,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/saude.js?v=427038d8" defer></script>
+<script src="assets/js/saude.js?v=9f019b13" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

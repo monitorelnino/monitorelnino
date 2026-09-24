@@ -11,9 +11,19 @@ Site estático (HTML + JSON em `data/`), pipeline de coleta em Python/Node,
 publicado pelo Netlify a partir da raiz do repositório (`netlify.toml`).
 
 Documentos canônicos:
+- **`AI_EDITORIAL_NARRATIVE_GOVERNANCE.md` — fonte de verdade EDITORIAL e NARRATIVA.**
+  Leitura obrigatória **antes** de criar, alterar, reorganizar ou revisar qualquer
+  conteúdo público: página, seção, título, legenda, nota, figura, mapa, tabela,
+  cartão, indicador ou chamada. Ele declara precedência sobre padrão local e
+  hábito anterior de geração; onde divergir de outro documento, ele ganha —
+  exceto nas travas de prova do `METODOLOGIA.md`, que são limite de fato e não
+  de estilo (ver abaixo).
 - `docs/PROTOCOLO_ATUALIZACAO.md` — como toda mudança entra no site (pista B, §3).
 - `METODOLOGIA.md` — fonte de verdade do método; `CHANGELOG.md` — resumo por §.
-- `docs/GUIA_DO_EDITOR.md` e `docs/VOZ_EDITORIAL.md` — texto público e voz.
+- `docs/GUIA_DO_EDITOR.md` e `docs/VOZ_EDITORIAL.md` — texto público e voz, hoje
+  subordinados à governança editorial acima; onde eles forem mais restritivos,
+  o mais restritivo prevalece (os dois proíbem juízo em legenda; a governança
+  também).
 - `.github/workflows/portoes.yml` — lista canônica dos portões.
 
 ## Idioma e modo de trabalho
@@ -108,6 +118,21 @@ execuções apagadas sem aviso. Use `/merge-main`.
 - Texto explicativo: direto ao que se vê, sem instrução de uso e sem nota interna.
 - Nenhum nome de autor parlamentar no site.
 - Mudança de pesos, créditos ou componentes do índice exige versão maior (METODOLOGIA §12).
+
+**Como as duas fontes de verdade se combinam.** A `METODOLOGIA.md` decide **o que
+pode ser afirmado** (prova, lacuna declarada, teto de ausência, o que pontua); a
+`AI_EDITORIAL_NARRATIVE_GOVERNANCE.md` decide **por que, onde e como** aquilo é
+dito ao leitor. Elas não competem: a primeira é limite de fato, a segunda é ordem
+da informação. Quando uma regra de estilo pedir algo que a prova não sustenta,
+vence a prova — e a governança diz o mesmo, no §6 (incerteza interna nunca vira
+afirmação pública) e no §15 (não transformar "não encontrado" em "não existe").
+
+**Decisão que exige a editoria** (governança §29): redefinir metodologia, mudar o
+significado de um indicador, eliminar evidência substantiva, introduzir nova
+interpretação científica, mudar o objetivo do projeto, criar conclusão não
+sustentada ou alterar fato ou fonte. Ordem, agrupamento, remoção de redundância,
+posição de nota, transição, correção gramatical e responsividade o Claude decide
+sozinho.
 
 ## Design
 

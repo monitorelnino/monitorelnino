@@ -17,8 +17,24 @@ entra no card como link, rotulada como pista sem verificação, para que o leito
 documento ao gestor público (o card diz como). Quando o documento oficial aparece e o juiz
 aplica, a categoria sobe e a pista fica como proveniência.
 """
-import json, sys
-from datetime import date
+import json, os, sys
+from datetime import date, datetime, timezone
+
+
+def data_de_geracao() -> str:
+    """Data do carimbo do derivado, do RELÓGIO FIXADO — nunca do relógio da parede.
+
+    DEFEITO REAL (§193, 24/09/2026). `scripts/verificar_derivados.sh` fixa SOURCE_DATE_EPOCH no
+    corte da edição justamente para a cadeia ser reproduzível, e este arquivo escapava: usava
+    `date.today()`. Enquanto a data local e a do runner coincidem, ninguém vê. Quando a data vira
+    em UTC — o CI de 24/09/2026 rodou 01:21 UTC, com o Brasil ainda em 23/09 —, o runner regenera
+    com o dia seguinte, o portão 12 acusa derivado obsoleto e a reprovação não tem nada a ver com
+    o ramo que a recebeu. A `main` reprova sozinha pelo mesmo motivo, todo dia, na virada.
+    """
+    epoch = os.environ.get("SOURCE_DATE_EPOCH")
+    if epoch:
+        return datetime.fromtimestamp(int(epoch), tz=timezone.utc).date().isoformat()
+    return date.today().isoformat()
 from urllib.parse import urlparse
 from coletores_base import ler, gravar, rodar_autoteste
 from monitorar_imprensa_regional import parece_fonte_oficial
@@ -93,7 +109,7 @@ def gerar():
                            "`prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). "
                            "`imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o "
                            "leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado."),
-           "gerado_em": date.today().isoformat(), "total": len(cards),
+           "gerado_em": data_de_geracao(), "total": len(cards),
            "com_registro": sum(1 for c in cards.values() if c.get("categoria") != "nao_localizado"),
            "com_imprensa": sum(1 for c in cards.values() if c.get("imprensa")),
            "prioritarios": sum(1 for c in cards.values() if c.get("prioritario")),
@@ -120,7 +136,26 @@ def autoteste():
     def t_imprensa_nao_vira_categoria(): return c["3529005"].get("categoria") == "nao_localizado"   # peso zero, por construção
     def t_veiculo_sem_www(): return c["3529005"]["imprensa"][0]["veiculo"] == "marilianoticia.com.br"
     def t_registro_mantem_imprensa_como_proveniencia(): return c["4301602"]["imprensa"][0]["veiculo"] == "g1.globo.com"
+    def t_carimbo_segue_o_relogio_fixado():
+        """§193: o carimbo do derivado não pode depender do relógio da parede. Com SOURCE_DATE_EPOCH
+        posto, a data sai dele; sem ele, cai no dia de hoje. Foi a falta disso que fez o CI reprovar
+        na virada da data em UTC, num ramo que não tinha nada a ver com o assunto."""
+        anterior = os.environ.get("SOURCE_DATE_EPOCH")
+        try:
+            ep = lambda a, m, d: str(int(datetime(a, m, d, tzinfo=timezone.utc).timestamp()))
+            os.environ["SOURCE_DATE_EPOCH"] = ep(2026, 9, 10)   # o corte desta edição
+            fixo = data_de_geracao()
+            os.environ["SOURCE_DATE_EPOCH"] = ep(2026, 9, 21)
+            outro = data_de_geracao()
+            os.environ.pop("SOURCE_DATE_EPOCH")
+            livre = data_de_geracao()
+        finally:
+            if anterior is None: os.environ.pop("SOURCE_DATE_EPOCH", None)
+            else: os.environ["SOURCE_DATE_EPOCH"] = anterior
+        return fixo == "2026-09-10" and outro == "2026-09-21" and livre == date.today().isoformat()
+
     return rodar_autoteste({
+        "§193 carimbo do derivado segue o relógio fixado, não o da parede": t_carimbo_segue_o_relogio_fixado,
         "prioritário sem registro entra, categoria nao_localizado": t_prioritario_sozinho_entra,
         "município sem nada não entra (ausência = nada localizado)": t_sem_nada_nao_entra,
         "registro no MARÉ + tag prioritário false": t_registro_e_tag,
