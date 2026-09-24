@@ -6,6 +6,12 @@
    folha usa px arbitrário. Portões: verificar_estrutura.js (escala e hex) e
    verificar_consistencia_visual.js (estilo computado em 3 larguras).
 
+   MARCA (23/09/2026): a paleta abaixo É a da marca pessoal, hex por hex, e as três famílias
+   tipográficas também. Duas regras da marca ficam DELIBERADAMENTE em aberto, por decisão da
+   editoria: (1) o fundo é BRANCO, não escuro nem osso — decisão editorial de 05/09/2026,
+   reafirmada em 23/09/2026; (2) alguns tons derivados fora dos dez hexes nomeados existem por
+   necessidade de contraste AA e de codificação de dado, e estão marcados abaixo.
+
    Tema TÉCNICO sobre fundo branco (decisão editorial de 05/09/2026): base
    branca e osso-claro; tinta Vazio/Abissal; verde Musgo como cor de ação;
    terracota Argila/Âmbar como calor de dado; Sintético e Mineral como frios
@@ -34,8 +40,6 @@
   --neutro: #66736F;    /* ausência de verificação ≠ ausência de documento (C7); 5,3:1 sobre branco */
   --bioluz: #A8C99A;    /* BIOLUZ — acento positivo, em dose mínima */
   --areia: #D6C4AC;     /* AREIA — trilhos das barras de prazo */
-  --osso: #F0F4F3;      /* alias legado */
-  --card: #FFFFFF;      /* alias legado */
   /* Tríade de risco (famílias do ciclo) */
   --chuva: #5E7C93;
   --seca: #C9814B;
@@ -72,8 +76,11 @@
   --fs-small: 14px;    --lh-small: 1.5;     /* notas, células de tabela, campos, botões */
   --fs-caption: 12px;  --lh-caption: 1.4;   /* versaletes, legendas, créditos, rótulos, navegação */
 
+  /* Marca (23/09/2026): o display é Fraunces LEVE. Nunca bold em título — a ousadia da
+     marca se gasta em um lugar só, e não é no peso da fonte. */
+  --peso-display: 300;
   --peso-regular: 400; --peso-medio: 500; --peso-semibold: 600; --peso-bold: 700;
-  --ls-caps: .06em;       /* versaletes de dado, rótulos, cabeçalho de tabela */
+  --ls-caps: .12em;       /* versaletes de dado, rótulos, cabeçalho de tabela (marca: .12em) */
   --ls-nav: .02em;        /* navegação principal (07/09/2026, PR #104): nove seções + CTA "Envie um plano ou decreto" numa linha só no desktop */
   --ls-caps-largo: .14em; /* kicker, selo, mast-sub */
   --ls-titulo: -.012em;   /* display */

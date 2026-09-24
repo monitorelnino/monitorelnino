@@ -208,7 +208,7 @@ function gerarImagemGuia(){
 
   Promise.all([
     carregarImagem(typeof LOGO_MARE_PDF !== 'undefined' ? LOGO_MARE_PDF : ''),
-    document.fonts ? document.fonts.load('600 40px Fraunces').then(() => document.fonts.load('400 24px "Archivo Narrow"')).then(() => document.fonts.load('700 26px Archivo')).catch(() => {}) : Promise.resolve(),
+    document.fonts ? document.fonts.load('300 40px Fraunces').then(() => document.fonts.load('400 24px "Archivo Narrow"')).then(() => document.fonts.load('700 26px Archivo')).catch(() => {}) : Promise.resolve(),
   ]).then(([logo]) => {
     ctx.fillStyle = 'rgb(255,255,255)'; ctx.fillRect(0, 0, W, H);
     const M = 70; let y = 60;
@@ -222,7 +222,7 @@ function gerarImagemGuia(){
     ctx.strokeStyle = grad; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(M, y); ctx.lineTo(W - M, y); ctx.stroke();
     y += 40;
 
-    ctx.fillStyle = 'rgb(14,15,13)'; ctx.textAlign = 'center'; ctx.font = '600 42px Fraunces, Georgia, serif';
+    ctx.fillStyle = 'rgb(14,15,13)'; ctx.textAlign = 'center'; ctx.font = '300 42px Fraunces, Georgia, serif';
     ctx.fillText('Proteja-se', W / 2, y); y += 36;
     ctx.font = '400 22px Archivo, Arial, sans-serif'; ctx.fillStyle = 'rgb(85,100,85)';
     ctx.fillText('Orientações oficiais e telefones de emergência', W / 2, y); y += 46;
@@ -234,7 +234,7 @@ function gerarImagemGuia(){
     EMERG.forEach(e => {
       ctx.fillStyle = e.cor; roundRect(M, y, boxW, boxH, 14); ctx.fill();
       ctx.fillStyle = 'rgb(255,255,255)'; ctx.textAlign = 'left';
-      ctx.font = '600 40px Fraunces, Georgia, serif';
+      ctx.font = '300 40px Fraunces, Georgia, serif';
       ctx.fillText(e.num, M + 28, y + 52);
       const numW = ctx.measureText(e.num).width;
       ctx.font = '700 24px Archivo, Arial, sans-serif';
