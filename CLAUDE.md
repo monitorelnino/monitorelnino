@@ -18,6 +18,11 @@ Documentos canônicos:
   hábito anterior de geração; onde divergir de outro documento, ele ganha —
   exceto nas travas de prova do `METODOLOGIA.md`, que são limite de fato e não
   de estilo (ver abaixo).
+- **`AI_VISUAL_ART_DIRECTION.md` — fonte de verdade de ESTÉTICA e DIREÇÃO DE ARTE.**
+  Governa composição, ritmo, cor, tipografia, forma da visualização e experiência
+  visual. Leitura obrigatória antes de mexer em layout, componente visual, paleta
+  ou gráfico. O §25 dele é vinculante: **não se maquia componente por componente**
+  — observa-se o site inteiro, reconstrói-se a direção, e só então se propaga.
 - `docs/PROTOCOLO_ATUALIZACAO.md` — como toda mudança entra no site (pista B, §3).
 - `METODOLOGIA.md` — fonte de verdade do método; `CHANGELOG.md` — resumo por §.
 - `docs/GUIA_DO_EDITOR.md` e `docs/VOZ_EDITORIAL.md` — texto público e voz, hoje
@@ -119,7 +124,15 @@ execuções apagadas sem aviso. Use `/merge-main`.
 - Nenhum nome de autor parlamentar no site.
 - Mudança de pesos, créditos ou componentes do índice exige versão maior (METODOLOGIA §12).
 
-**Como as duas fontes de verdade se combinam.** A `METODOLOGIA.md` decide **o que
+**Como as três fontes de verdade se combinam.** A `METODOLOGIA.md` decide **o que pode ser
+afirmado**; a `AI_EDITORIAL_NARRATIVE_GOVERNANCE.md` decide **por que, onde e como** aquilo é
+dito; a `AI_VISUAL_ART_DIRECTION.md` decide **com que forma** aquilo aparece. A ordem de
+precedência quando colidem é essa mesma: prova, depois narrativa, depois estética — e é a
+própria direção de arte que diz, no §23, que criatividade visual nunca compromete contraste,
+legibilidade, daltonismo ou leitura em tela pequena, e no §10 que cor não introduz julgamento
+que o dado não sustenta.
+
+**Como a metodologia e a governança editorial se combinam.** A `METODOLOGIA.md` decide **o que
 pode ser afirmado** (prova, lacuna declarada, teto de ausência, o que pontua); a
 `AI_EDITORIAL_NARRATIVE_GOVERNANCE.md` decide **por que, onde e como** aquilo é
 dito ao leitor. Elas não competem: a primeira é limite de fato, a segunda é ordem

@@ -9,6 +9,50 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §192 · A constituição visual entra como fonte de verdade, e a auditoria mede o que ela acusa · 23/09/2026
+
+Classe **governança de design**. Nenhum pixel do site mudou nesta entrada, e isso é deliberado: o §25 da própria constituição proíbe maquiagem componente por componente e manda observar o site inteiro antes de tocar em qualquer coisa. Esta entrada faz os passos 1 a 5 desse processo e para onde ele manda parar.
+
+**O que entrou.** `AI_VISUAL_ART_DIRECTION.md`, na raiz, ao lado da metodologia e da governança editorial. O projeto passa a ter **três fontes de verdade**, e a ordem entre elas ficou escrita no `CLAUDE.md`: a `METODOLOGIA` decide **o que pode ser afirmado**; a governança editorial decide **por que, onde e como** aquilo é dito; a direção de arte decide **com que forma** aquilo aparece. Prova, depois narrativa, depois estética — e é a própria direção de arte que estabelece esse limite, no §23 (criatividade nunca compromete contraste, legibilidade, daltonismo ou leitura em tela pequena) e no §10 (cor não introduz julgamento que o dado não sustenta).
+
+### A auditoria, com número
+
+As dez páginas foram abertas em navegador real e medidas. O que a constituição acusa no §19 — "estética de template" — está medido, não suposto:
+
+| medida | resultado |
+|---|---|
+| `border-radius` das figuras | **6 px em 38 de 38** — uniformidade total |
+| sombra | **presente em 38 de 38** |
+| larguras distintas para 38 figuras | **cinco**; a mais comum cobre 15 delas |
+| ritmo dominante das seções | figura + um parágrafo, repetido |
+| figura que ocupe a viewport | **nenhuma**: a maior tem 1.132 px num `--grade-max` de 1.180 px |
+| cartões em sequência | um painel do financiamento tem **dez**; outro tem cinco |
+| `.figura-cat`, o degrau de categoria do componente | **vazio nas 38** |
+
+Três leituras que a tabela sustenta. **A largura não é decisão de composição:** ela é consequência da coluna da grade, e por isso só existem cinco. **Não há momento imersivo** — o §6 pede que uma visualização possa ocupar grande parte da tela, e nenhuma ocupa. **O ritmo é o que o §4 nomeia**: a sequência título/texto/gráfico repetida, mais visível em `monitor-de-riscos`, `defesa-civil`, `saude` e `financiamento`, onde quase toda seção tem a mesma forma.
+
+Uma ressalva de honestidade: a uniformidade medida **não é acidente nem desleixo**. Ela é o resultado de uma decisão registrada — a auditoria de consistência de 07/09/2026, que criou o componente único de figura e a escala fixa, e a travou por dois portões. O site é uniforme porque foi construído para ser. A constituição visual agora pede o oposto em vários pontos, e essa é a matéria das decisões abaixo, não um defeito a corrigir em silêncio.
+
+### Quatro colisões que exigem decisão da editoria
+
+O §25 manda reconstruir a direção global antes de redesenhar. Não dá para fazer isso sem resolver quatro pontos em que a constituição contradiz uma decisão viva do projeto — três delas tomadas nesta mesma semana.
+
+1. **Fundo branco.** O §1 lista "excesso de branco" e "cinza institucional" entre o que a seriedade não precisa. A editoria determinou em 05/09/2026, e **reafirmou em 23/09/2026**, que o fundo deste site é branco. A determinação prevalece; o desvio está declarado no `CLAUDE.md`. O que a constituição ainda permite sem tocar nisso é profundidade por **campo de cor, linha e espaço**, não por inversão de base.
+
+2. **Paleta.** O §11 pede profundidade mineral — ametistas, magentas escuros, turquesas. O sistema de marca instalado em 23/09 fixa **dez hexes**, e `assets/tokens.css` proíbe hex fora dele, com portão. As duas coisas não cabem juntas: ou a paleta da marca ganha uma extensão declarada (tons profundos derivados dos dez, com função semântica atribuída, como o §9 exige), ou o §11 fica limitado ao que os dez permitem.
+
+3. **Card e componente único.** O §6 afirma que **card não é unidade narrativa** e o §19 marca "gráfico dentro de caixa branca" e "grade repetitiva de três colunas" como template. A arquitetura do site é exatamente essa, por decisão de 07/09, e `verificar_figuras.js` e `verificar_consistencia_visual.js` a mantêm. Sair dela é reescrever os dois portões — possível, mas é mudança de arquitetura visual, não ajuste.
+
+4. **Escala tipográfica.** O §13 pede diferenciação entre título narrativo, título de seção, título de visualização, corpo, legenda, nota, fonte e número destacado. A escala fixa de oito degraus cobre os tamanhos, mas **os papéis não estão todos distintos** — e o §14 lembra que hierarquia não é só tamanho: peso, largura, posição, espaço e ritmo também constroem. Aqui há caminho sem quebrar a escala, usando peso e espaço, e é o único dos quatro pontos que não exige decisão para começar.
+
+### O que já dá para fazer sem decisão nenhuma
+
+Três coisas, todas dentro do sistema existente e sem tocar em portão: preencher `.figura-cat`, que é um degrau de hierarquia que o componente já tem e ninguém usa; diferenciar os papéis tipográficos por **peso e espaço** em vez de tamanho (§14); e aplicar as **famílias de composição** do §21 ao que já existe, começando por onde a narrativa pede — a página de riscos abre em contexto nacional e deveria abrir em composição ampla, e a busca por município é uma família AÇÃO que hoje tem a mesma forma de tudo mais.
+
+Nenhuma dessas foi feita nesta entrada. O §25 só libera redesenhar no passo 9, depois de a direção global estar reconstruída, e a direção global depende dos quatro pontos acima.
+
+**Teste.** Nenhuma mudança visual; portões de estrutura, figuras, legendas, palavras, fichas semânticas e consistência visual verdes, como antes.
+
 ## §191 · A calibração propagada para as páginas restantes · 23/09/2026
 
 Classe **revisão editorial**. Nenhum número muda, nenhuma figura nasce ou morre. O §34 só libera propagar depois da calibração validada; o §190 fez a calibração no MARÉ · Saúde, e esta entrada leva a **lógica** — não as frases — às outras páginas. O §13 é explícito: consistência é aplicar a mesma regra a objetos diferentes, não repetir o mesmo texto.
