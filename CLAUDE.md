@@ -141,6 +141,13 @@ execuções apagadas sem aviso. Use `/merge-main`.
 > Acrescentado em 23/09/2026 a pedido da editoria. O conteúdo acima (governança
 > do MARÉ) permanece íntegro; esta seção rege **design, edição e conteúdo**.
 > Não muda a arquitetura do código.
+>
+> **DESVIO DECLARADO — o fundo deste site é BRANCO.** A Seção 3 abaixo manda
+> "base sempre escura (vazio/abissal) ou osso". Aqui não vale: o fundo branco é
+> decisão editorial de 05/09/2026, reafirmada pela editoria em 23/09/2026, e
+> está registrada em `assets/tokens.css`. **Não reverter `--bg` para escuro nem
+> para osso** por fidelidade à marca — a editoria já decidiu, e decidiu contra.
+> Todo o resto da Seção 3 (paleta, papéis das cores, proibições) vale integral.
 
 ---
 
@@ -191,6 +198,9 @@ Regra de ouro: **nenhuma imagem bela sem substância; nenhum dado sem beleza.** 
 Regras de uso:
 
 - **Base sempre escura (vazio/abissal) ou osso.** Eles dominam a página.
+  · **Exceção permanente deste site (23/09/2026):** o MARÉ usa fundo **branco**,
+  por decisão editorial de 05/09/2026 reafirmada em 23/09/2026. Ver o desvio
+  declarado no alto desta seção. O tema técnico sobre branco é o padrão do site.
 - Argila e âmbar entram como calor: linhas, detalhes, hover. Nunca como fundo de área grande.
 - **Bioluz e sintético são acentos.** Um por vez, em pequena dose: o detalhe que "acende" (link, ponto, sublinhado, número em destaque). Nunca preencher áreas grandes.
 - A tensão bioluz × sintético é a marca em duas cores: o híbrido.
