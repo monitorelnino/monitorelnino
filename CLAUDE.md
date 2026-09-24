@@ -266,6 +266,19 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 300; }
 
 **Tom de voz:** provocador, poético, espirituoso e vivo. A voz seduz a mente antes do olhar.
 
+> **SUBORDINAÇÃO DECLARADA (24/09/2026).** Este parágrafo **não se aplica ao conteúdo público do
+> site**. A `AI_EDITORIAL_NARRATIVE_GOVERNANCE.md` é a fonte de verdade editorial e tem precedência
+> declarada: ela exige voz **clara, segura, precisa, sóbria e não promocional** (§16), proíbe
+> dramatização, frase de impacto e metáfora excessiva (§24), e proíbe dizer ao leitor o que pensar
+> (§20). Onde as duas colidem, **vence a governança** — e o portão 19 (`verificar_legendas.js`) já
+> reprova juízo e interpretação em texto de figura, de modo que a colisão nem chega ao ar.
+>
+> Onde esta voz **vale**: material de marca e apresentação que não seja conteúdo público do índice.
+> Onde ela **não vale**: título, legenda, nota, fonte, tooltip, cartão, prosa de página — tudo o que
+> o leitor encontra no site. A razão é do próprio sistema de marca, no fim da Seção 7: *"dúvida entre
+> mais bonito e mais rigoroso: escolher o que preserva o rigor visível"*. Num monitor de evidências,
+> o rigor visível **é** o produto.
+
 | Faz | Não faz |
 |---|---|
 | Afirma teses com elegância e lastro | Opina sem fundamentar |

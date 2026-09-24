@@ -13,7 +13,11 @@ Ler o `CLAUDE.md` na raiz do repositório (seções 2 a 5) antes de qualquer edi
 3. Títulos em Fraunces peso 300 (itálico para ênfase), corpo em Archivo, legendas e dados em Archivo Narrow versalete. Nunca bold no display.
 4. Nada de verde eco saturado, prata, cromado, neon, ícone de folha.
 5. Cada bloco bonito tem substância visível (dado, fonte, tese). Cada bloco informativo tem a marca.
-6. Voz: provocadora, poética, espirituosa, viva. Tese com lastro, sem polêmica vazia. PT/EN só quando tiver função.
+6. Voz: provocadora, poética, espirituosa, viva — **mas NÃO no conteúdo público do site**. Aí vale a
+   `AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`, que tem precedência e pede voz clara, precisa e **sóbria**
+   (§16), sem dramatização (§24) e sem dizer ao leitor o que pensar (§20). Título, legenda, nota,
+   fonte, tooltip, cartão e prosa de página seguem a governança, sempre. Esta voz fica para material
+   de marca que não é conteúdo do índice. Tese com lastro, sem polêmica vazia; PT/EN só com função.
 7. Contraste AA, layout funcional em 375px de largura, sem rolagem horizontal.
 8. Só o design e o conteúdo mudam; não refatorar a arquitetura do código.
 
