@@ -18,7 +18,7 @@ Mesmo tratamento do §35 (dengue): canal endêmico (mediana/p75/p90) sobre os me
 vazadas até a completude do dado laboratorial, "o Monitor não atribui casos ao El Niño". Peso zero.
   python coletar_srag_gripe.py --autoteste
 """
-import csv, io, re, statistics, sys, unicodedata
+import json, csv, io, re, statistics, sys, unicodedata
 from collections import defaultdict
 from pathlib import Path
 from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste
@@ -198,6 +198,28 @@ def _gravar_diagnostico(url_ok, cabecalho, disponiveis, erro_por_url):
         "valores_de_dado": sorted(disponiveis)[:60], "erro_por_url": erro_por_url})
 
 
+# 24/09/2026 (§199): sítio oficial do InfoGripe, indicado como "fonte original" pela ficha da Base
+# dos Dados. Ele NÃO é alcançável da máquina de edição — tempo de conexão esgotado, e o mesmo com um
+# navegador real, o que exclui problema de cliente. O runner do CI pode alcançá-lo, e é por isso que
+# ele entra aqui como SONDA DE DIAGNÓSTICO, não como fonte: a rodada agendada registra o que o host
+# respondeu (status, tipo de conteúdo, primeiros bytes) sem tentar interpretar nada como dado. Fazer
+# o CI descobrir o que a máquina local não alcança é barato; chutar um caminho de CSV seria inventar.
+SITIO_OFICIAL = "https://info.gripe.fiocruz.br/"
+
+
+def sondar_sitio_oficial(ler_fn=None) -> dict:
+    """Devolve o que o sítio oficial respondeu, para o diagnóstico. Nunca devolve dado epidemiológico."""
+    ler_fn = ler_fn or (lambda u: buscar(u, timeout=45))
+    try:
+        corpo = ler_fn(SITIO_OFICIAL)
+        txt = corpo.decode("utf-8", "replace") if isinstance(corpo, bytes) else str(corpo)
+        return {"alcancado": True, "bytes": len(corpo),
+                "parece_login": parece_pagina_de_login(txt),
+                "inicio": txt[:160]}
+    except Exception as e:  # noqa: BLE001
+        return {"alcancado": False, "erro": f"{type(e).__name__}: {str(e)[:80]}"}
+
+
 def coletar() -> int:
     bruto = None; url_ok = None; erro_por_url = {}
     for url in URLS_SERIE:
@@ -206,6 +228,9 @@ def coletar() -> int:
         except Exception as e:  # noqa: BLE001
             erro_por_url[url] = type(e).__name__
     if bruto is None:
+        # §199: com todos os CSV fora do ar, a rodada aproveita para sondar o sítio oficial e
+        # registrar o que ele responde. É diagnóstico, não coleta.
+        erro_por_url = dict(erro_por_url, **{SITIO_OFICIAL: json.dumps(sondar_sitio_oficial(), ensure_ascii=False)[:300]})
         _gravar_diagnostico(None, [], set(), erro_por_url)
         registrar_lacuna("InfoGripe (série SRAG)", " · ".join(f"{u.split('/')[2]}: {e}" for u, e in erro_por_url.items()), canal="DOU", camada=1)
         print("srag/sg: falha de rede em todos os hosts — lacuna declarada"); return 0
@@ -299,6 +324,15 @@ def autoteste() -> int:
             parse_serie_longa(csv_txt, INDICADORES["sg"]["padroes"]); return False
         except ValueError:
             return len(URLS_SERIE) == 2 and URLS_SERIE[0] == URL_SERIE and "gitlab.fiocruz.br" in URLS_SERIE[1]
+    def t_sonda_so_diagnostica():
+        """§199: a sonda registra o que o host respondeu e nada mais. Falha vira registro, não exceção;
+        e o que ela devolve nunca contém dado epidemiológico — só tamanho, veredito de login e início."""
+        falha = sondar_sitio_oficial(lambda u: (_ for _ in ()).throw(TimeoutError("x")))
+        login = sondar_sitio_oficial(lambda u: b'<!DOCTYPE html><html class="devise-layout-html">')
+        return (falha["alcancado"] is False and "TimeoutError" in falha["erro"]
+                and login["alcancado"] is True and login["parece_login"] is True
+                and set(login) <= {"alcancado", "bytes", "parece_login", "inicio"})
+
     def t_reconhece_a_tela_de_login():
         """§198: HTTP 200 com tela de login não é CSV malformado — é recusa, e tem de ser nomeada
         assim. Sem isto, o diagnóstico dizia "cabeçalho: ['<!DOCTYPE html>']" e mandava a próxima
@@ -313,7 +347,8 @@ def autoteste() -> int:
         return all(parece_pagina_de_login(c) is r for c, r in casos)
 
     return rodar_autoteste({
-        "§198 reconhece a tela de login e não a confunde com CSV": t_reconhece_a_tela_de_login,"detecção de colunas por padrão": t1, "coluna ausente falha alto (nunca adivinha)": t2,
+        "§198 reconhece a tela de login e não a confunde com CSV": t_reconhece_a_tela_de_login,
+        "§199 sonda do sítio oficial nunca devolve dado, só diagnóstico": t_sonda_so_diagnostica,"detecção de colunas por padrão": t1, "coluna ausente falha alto (nunca adivinha)": t2,
                             "parse: BR e UF, escala 'casos' filtrada": t3, "canal endêmico: 6 anos, ordenado": t4,
                             "últimas 4 SE vazadas": t5, "ressalva e siglas": t6,
                             "alvo: srag casa, sg ausente → None": t7, "sg extraído só quando o rótulo existe": t8,
