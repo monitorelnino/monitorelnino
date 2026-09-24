@@ -11,18 +11,95 @@ verificar_financiamento.py — portão 13 (v2.3, §7.8)
  (f) nada de data/financiamento/ lido por recalcular_mare.py; TESTE DE ESTRESSE: com a
      pasta inteira renomeada, o índice recomputado é idêntico bit a bit;
  (g) faixa do defeso presente na série (datas e base legal);
- (h) ausência de qualquer campo de autor de emenda em data/financiamento/ (E10).
+ (h) ausência de qualquer campo de autor de emenda em data/financiamento/ (E10);
+ (i) camada A do dinheiro municipal (24/09/2026): todo registro com fonte, exercício, data e
+     hash; população SEMPRE do Censo 2022; fórmula do R$/hab declarada no dado; NENHUMA classe
+     de ausência convertida em zero; e a ressalva "inclui preparação e resposta" na legenda.
 Uso: python3 verificar_financiamento.py [--negativos]
 """
 import json, os, pathlib, re, shutil, sys, tempfile
 from pagina_completa import ler_pagina
 
 RAIZ = pathlib.Path(__file__).parent; FIN = RAIZ / "data" / "financiamento"
+MUNICIPIOS = FIN / "municipios"
+# A ressalva é obrigatória porque a subfunção 182 soma as duas coisas e a fonte não as separa:
+# sem ela, o leitor tomaria despesa de socorro por despesa de preparação.
+RESSALVA_182 = "inclui preparação e resposta"
 AUTOR = re.compile(r'"(nomeAutor|codigoAutor|autor(?:_emenda)?|nomeParlamentar|autorEmenda)"', re.I)
 CHAVE = re.compile(r'chave-api-dados["\']?\s*[:=]\s*["\'][0-9a-f]{20,}', re.I)
 
 
-def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
+def checar_despesa_182(despesa: dict, html: str, censo: dict) -> list:
+    """(i) Camada A do dinheiro municipal. A regra que manda aqui é uma: ausência nunca é zero, e
+    as três classes de ausência são coisas diferentes."""
+    if not despesa:
+        return []                              # ainda não coletado: lacuna, não erro
+    e = []
+    fmt = despesa.get("_formato") or {}
+    if "NENHUM" not in str(fmt.get("efeito_no_indice", "")):
+        e.append("(i) despesa_182: não declara efeito nulo sobre o índice")
+    if not fmt.get("formula_rs_hab"):
+        e.append("(i) despesa_182: fórmula do R$/hab não declarada no dado")
+    if "Censo 2022" not in str(fmt.get("populacao", "")):
+        e.append("(i) despesa_182: não declara que a população é a do Censo 2022")
+    if RESSALVA_182 not in str(fmt.get("ressalva_obrigatoria", "")):
+        e.append("(i) despesa_182: falta a ressalva obrigatória no dado")
+    if RESSALVA_182 not in html:
+        e.append("(i) financiamento.html: a legenda da camada A precisa dizer a ressalva da subfunção 182")
+    classes_validas = {"com_lancamento", "sem_lancamento_182", "sem_declaracao"}
+    for cod, v in (despesa.get("municipios") or {}).items():
+        onde = "despesa_182[" + str(cod) + "]"
+        if v.get("classe") not in classes_validas:
+            e.append(onde + ": classe fora do vocabulário (" + str(v.get("classe")) + ")")
+        for campo in ("fonte_url", "consultado_em", "sha256", "exercicio"):
+            if not v.get(campo):
+                e.append("(i) " + onde + ": sem " + campo)
+        # A regra central: ausência NUNCA vira zero, em nenhuma das duas classes de ausência.
+        if v.get("classe") in ("sem_lancamento_182", "sem_declaracao"):
+            if v.get("rs_hab") is not None:
+                e.append("(i) " + onde + ": classe de ausência com rs_hab = " + str(v.get("rs_hab"))
+                         + " — ausência não é zero")
+            if v.get("valores"):
+                e.append("(i) " + onde + ": classe de ausência com valores pendurados")
+        elif v.get("rs_hab") is not None:
+            # População do Censo 2022, sempre — nunca a estimativa que o SICONFI devolve.
+            pop = v.get("populacao_censo2022")
+            if pop != censo.get(cod):
+                e.append("(i) " + onde + ": população " + str(pop) + " não é a do Censo 2022 ("
+                         + str(censo.get(cod)) + ")")
+            liq = (v.get("valores") or {}).get("liquidada")
+            if isinstance(liq, (int, float)) and isinstance(pop, int) and pop > 0:
+                esperado = round(liq / pop, 6)
+                if abs(v["rs_hab"] - esperado) > 1e-6:
+                    e.append("(i) " + onde + ": rs_hab " + str(v["rs_hab"])
+                             + " não bate com a fórmula (" + str(esperado) + ")")
+            if liq and liq > 0 and v["rs_hab"] == 0:
+                e.append("(i) " + onde + ": valor real positivo apresentado como zero")
+    return e
+
+
+def _com_zero(despesa: dict) -> dict:
+    """Copia o registro e põe rs_hab = 0 no primeiro município SEM lançamento — o erro que o portão
+    tem de acusar: ausência apresentada como zero."""
+    d = json.loads(json.dumps(despesa))
+    for v in (d.get("municipios") or {}).values():
+        if v.get("classe") == "sem_lancamento_182":
+            v["rs_hab"] = 0
+            break
+    return d
+
+
+def _com_populacao_errada(despesa: dict) -> dict:
+    """Copia o registro e troca a população de um município pela estimativa do SICONFI."""
+    d = json.loads(json.dumps(despesa))
+    for v in (d.get("municipios") or {}).values():
+        if v.get("classe") == "com_lancamento" and v.get("populacao_siconfi"):
+            v["populacao_censo2022"] = v["populacao_siconfi"]
+            break
+    return d
+
+
+def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, censo=None) -> list:
     e = []
     if CHAVE.search(html) or CHAVE.search(motor) or any(CHAVE.search(t) for t in arquivos_fin.values()): e.append("(a) chave de API em código ou dados")
     for cid in ["boxRede", "boxPreventivoSetor", "boxRSGrafico"]:   # 15/09/2026: figuras vivas na página (Fundo estadual, contadores, dinheiro e resposta saíram a pedido da editoria)   # boxFontesMonit/boxConsultas vivem em pesquisadores.html (07/09/2026); boxPorHab retirado do HTML em 13/09/2026 (auditoria de visualizações) — sem cobertura mínima (1/8 rotas), JS mantido desativado; boxPainel, boxCompromissos, boxFinance, boxSerie, boxRotaMPs, boxMpsBrUf, boxMpsUf e boxMpsUfBarras migraram para pesquisadores.html em 13/09/2026 (proposta de enxugamento, Manus AI)
@@ -85,14 +162,21 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict) -> list:
     for nome, t in arquivos_fin.items():
         m = AUTOR.search(t)
         if m: e.append(f"(h) E10: campo de autor em {nome}: {m.group(1)}")
+    e += checar_despesa_182(despesa or {}, html, censo or {})
     return e
 
 
 def carregar():
     j = lambda p: json.load(open(p, encoding="utf-8"))
-    arqs = {p.name: p.read_text(encoding="utf-8") for p in FIN.glob("*.json")}
+    # Os arquivos de municipios/ entram na varredura de chave de API e de campo de autor, como
+    # todos os outros — a pasta nova não escapa das regras da pasta.
+    fontes = list(FIN.glob("*.json")) + list(MUNICIPIOS.glob("*.json"))
+    arqs = {p.name: p.read_text(encoding="utf-8") for p in fontes}
+    dsp = MUNICIPIOS / "despesa_182.json"
+    censo = RAIZ / "data" / "populacao_censo2022.json"
     return (ler_pagina(RAIZ / "financiamento.html"), j(FIN / "rotas.json"), j(FIN / "serie_nacional.json"), j(FIN / "por_uf.json"),
-            open(RAIZ / "recalcular_mare.py", encoding="utf-8").read(), arqs)
+            open(RAIZ / "recalcular_mare.py", encoding="utf-8").read(), arqs,
+            j(dsp) if dsp.exists() else {}, j(censo) if censo.exists() else {})
 
 
 def estresse() -> bool:
@@ -108,7 +192,7 @@ def estresse() -> bool:
 
 
 def negativos() -> int:
-    html, rotas, serie, poruf, motor, arqs = carregar(); import copy
+    html, rotas, serie, poruf, motor, arqs, despesa, censo = carregar(); import copy
     casos = {
         "chave de API no motor": lambda: checar(html, rotas, serie, poruf, motor + '\nchave-api-dados = "0123456789abcdef0123456789abcdef"', arqs),
         "figura sem crédito": lambda: checar(html.replace("fonteFigura('boxRede'", "fonteFigura('boxX'"), rotas, serie, poruf, motor, arqs),
@@ -117,6 +201,11 @@ def negativos() -> int:
         "motor lendo financiamento": lambda: checar(html, rotas, serie, poruf, motor + "\nx = 'data/financiamento/x.json'", arqs),
         "campo de autor (E10)": lambda: checar(html, rotas, serie, poruf, motor, {**arqs, "emendas.json": '{"itens":[{"nomeAutor":"X"}]}'}),
         "faixa do defeso ausente": lambda: checar(html, rotas, {**serie, "defeso": {}}, poruf, motor, arqs),
+        # (i) o negativo que o pedido exige: forçar rs_hab = 0 num município sem lançamento.
+        "ausência convertida em zero": lambda: checar(html, rotas, serie, poruf, motor, arqs, _com_zero(despesa), censo),
+        "população que não é a do Censo 2022": lambda: checar(html, rotas, serie, poruf, motor, arqs, _com_populacao_errada(despesa), censo),
+        "ressalva da subfunção 182 ausente da página": lambda: checar(
+            html.replace(RESSALVA_182, "inclui o que a fonte trouxer"), rotas, serie, poruf, motor, arqs, despesa, censo),
     }
     f = 0
     for n, fn in casos.items():

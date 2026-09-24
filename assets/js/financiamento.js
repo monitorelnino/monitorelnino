@@ -432,3 +432,136 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     if (link && fonte && dlg) link.addEventListener('click', e => { e.preventDefault(); document.getElementById('detailFinConteudo').innerHTML = fonte.innerHTML; if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } });
   }).catch(() => { MonitorMapas.legenda('legPreventivoSetor', [{cor: MonitorMapas.NEUTRA, rotulo: 'dado não carregado'}]); fonteFigura('boxPreventivoSetor', {fontes: 'MARÉ', data: null}); });
 })();
+
+/* =========================================================================
+   O DINHEIRO PRÓPRIO DO MUNICÍPIO — camada A (24/09/2026)
+   Despesa liquidada na subfunção 182 (Defesa Civil), declarada ao SICONFI, por habitante.
+   Peso zero, como todo o financiamento.
+
+   A regra que governa esta figura: as TRÊS classes de ausência são coisas diferentes e
+   nenhuma delas é zero. "Sem lançamento na 182" não é "sem gasto em defesa civil" — muitos
+   municípios lançam defesa civil em drenagem, urbanismo ou segurança. E um valor real
+   pequeno NUNCA aparece como R$ 0,00: o dado guarda seis casas e a exibição diz
+   "menos de R$ 0,01" em vez de arredondar para zero, que pareceria nada.
+   ========================================================================= */
+(function dinheiroProprio(){
+  const svgId = 'mapaDespesa182';
+  if (!document.getElementById(svgId)) return;
+  const esc = MonitorMapas.esc;
+  const resumoEl = document.getElementById('proprioResumo');
+
+  Promise.all([
+    fetch('data/financiamento/municipios/despesa_182.json').then(r => r.ok ? r.json() : null),
+    fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
+    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
+  ]).then(function ([DSP, REF, GEO]) {
+    /* Sem coleta, a seção declara a lacuna. Mapa cinza com legenda muda deixaria o leitor
+       concluir que ninguém gasta nada, que é exatamente a conclusão que o dado não autoriza. */
+    if (!DSP || !DSP.municipios || !Object.keys(DSP.municipios).length || !REF || !GEO) {
+      if (resumoEl) resumoEl.textContent = 'Despesa municipal em defesa civil: sem coleta até o corte.';
+      MonitorMapas.legenda('legDespesa182', [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
+      fonteFigura('boxDespesa182', {fontes: ['SICONFI (Tesouro Nacional)', 'IBGE — Censo 2022'], data: null});
+      return;
+    }
+
+    const ctx = MonitorMapas.contexto(GEO, 480, 460);
+    const coord = {};
+    REF.forEach(m => { coord[String(m.codigo_ibge).padStart(7, '0')] = [m.lon, m.lat]; });
+
+    const muns = DSP.municipios, r = DSP.resumo || {};
+    const comValor = Object.entries(muns)
+      .filter(([, v]) => v.classe === 'com_lancamento' && typeof v.rs_hab === 'number')
+      .map(([cod, v]) => Object.assign({cod: cod, ll: coord[cod]}, v));
+    const ausentes = Object.entries(muns)
+      .filter(([, v]) => v.classe !== 'com_lancamento')
+      .map(([cod, v]) => Object.assign({cod: cod, ll: coord[cod]}, v));
+
+    /* Escala em raiz quadrada sobre o R$/hab: a distribuição é muito assimétrica (no piloto das
+       capitais, de R$ 0,0014 a R$ 40,93) e uma escala linear achataria tudo menos o extremo. */
+    const valores = comValor.map(m => m.rs_hab);
+    const maxV = valores.length ? Math.max.apply(null, valores) : 1;
+    const escala = d3.scaleSqrt().domain([0, maxV]).range(MonitorMapas.PALETA.rampaPreparo).clamp(true);
+    const COR_SEM_LANC = MonitorMapas.cor('areia');
+    const COR_SEM_DECL = MonitorMapas.cor('sem-dado');
+
+    /* Formatação: nunca "R$ 0,00" para um valor positivo. */
+    function reais(v) {
+      if (typeof v !== 'number') return 'sem valor';
+      if (v > 0 && v < 0.01) return 'menos de R$ 0,01';
+      return 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+    function total(v) {
+      return typeof v === 'number'
+        ? 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+        : 'sem valor';
+    }
+
+    const svg = d3.select('#' + svgId);
+    svg.append('g').selectAll('path').data(GEO.features).join('path')
+      .attr('d', ctx.path).attr('fill', MonitorMapas.cor('zebra')).attr('class', 'uf-path')
+      .on('mouseenter', (evt, d) => MonitorMapas.showTip('<strong>' + esc(d.properties.name) + '</strong>', evt))
+      .on('mousemove', (evt) => MonitorMapas.showTip(document.getElementById('mapTooltip').innerHTML, evt))
+      .on('mouseleave', MonitorMapas.hideTip);
+
+    function desenhar(itens, corDe, raio) {
+      svg.append('g').selectAll('circle').data(itens.filter(m => m.ll)).join('circle')
+        .attr('cx', m => ctx.projection(m.ll)[0]).attr('cy', m => ctx.projection(m.ll)[1])
+        .attr('r', raio).attr('fill', corDe)
+        .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 0.7)
+        .on('mouseenter', (evt, m) => MonitorMapas.showTip(
+          '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong>'
+          + '<br>' + (m.populacao_censo2022 ? m.populacao_censo2022.toLocaleString('pt-BR') + ' hab. (Censo 2022)' : 'população não localizada')
+          + (m.classe === 'com_lancamento'
+              ? '<br>Liquidada em 2025: ' + total((m.valores || {}).liquidada) + '<br>' + reais(m.rs_hab) + ' por habitante'
+              : m.classe === 'sem_lancamento_182'
+                ? '<br>Entregou a declaração e não lançou nada na subfunção 182'
+                : '<br>' + esc(m.nota || 'Não entregou o exercício ao SICONFI')), evt))
+        .on('mousemove', (evt) => MonitorMapas.showTip(document.getElementById('mapTooltip').innerHTML, evt))
+        .on('mouseleave', MonitorMapas.hideTip);
+    }
+    // As ausências entram primeiro, por baixo: quem tem valor é o que a figura mostra.
+    desenhar(ausentes.filter(m => m.classe === 'sem_declaracao'), COR_SEM_DECL, 3);
+    desenhar(ausentes.filter(m => m.classe === 'sem_lancamento_182'), COR_SEM_LANC, 3);
+    desenhar(comValor, m => escala(m.rs_hab), 4);
+    MonitorMapas.siglas(ctx, svg);
+
+    MonitorMapas.legendaContinua('legDespesa182',
+      'linear-gradient(90deg,' + MonitorMapas.PALETA.rampaPreparo[0] + ',' + MonitorMapas.PALETA.rampaPreparo[1] + ')',
+      reais(valores.length ? Math.min.apply(null, valores) : 0), reais(maxV),
+      [{cor: COR_SEM_LANC, rotulo: 'sem lançamento na 182'},
+       {cor: COR_SEM_DECL, rotulo: 'sem declaração no SICONFI'}]);
+    fonteFigura('boxDespesa182', {fontes: ['SICONFI (Tesouro Nacional)', 'IBGE — Censo 2022'],
+                                  url: 'https://apidatalake.tesouro.gov.br/', data: DSP.gerado_em});
+
+    /* Título-fato, só do dado. A mediana é sobre quem TEM lançamento: incluir as ausências como
+       zero rebaixaria a mediana com não-dado. */
+    if (resumoEl) {
+      resumoEl.textContent =
+        'Despesa em defesa civil em ' + (DSP.exercicio || '') + ': mediana de ' + reais(r.mediana_rs_hab)
+        + ' por habitante entre ' + (r.com_rs_hab || 0) + ' município(s) com lançamento; '
+        + (r.sem_lancamento_182 || 0) + ' não lançaram nada na subfunção; '
+        + (r.sem_declaracao || 0) + ' sem declaração no SICONFI. '
+        + 'O valor soma preparação e resposta; a fonte não separa as duas.';
+    }
+
+    /* Alternativa em lista: lista de definição, e não tabela — esta página não tem tabelas
+   (decisão editorial de 15/09/2026, com portão próprio). */
+    const dl = document.getElementById('dlDespesa182');
+    if (dl) {
+      const ordenados = comValor.slice().sort((a, b) => b.rs_hab - a.rs_hab).concat(
+        ausentes.slice().sort((a, b) => String(a.nome).localeCompare(String(b.nome), 'pt-BR')));
+      dl.innerHTML = ordenados.map(function (m) {
+        const valor = m.classe === 'com_lancamento'
+          ? reais(m.rs_hab) + ' por habitante · liquidada ' + total((m.valores || {}).liquidada)
+          : m.classe === 'sem_lancamento_182'
+            ? 'sem lançamento na subfunção 182'
+            : (m.nota ? esc(m.nota) : 'sem declaração no SICONFI');
+        return '<dt>' + esc(m.nome) + ' (' + esc(m.uf) + ')</dt><dd>' + valor + '</dd>';
+      }).join('');
+    }
+  }).catch(function () {
+    if (resumoEl) resumoEl.textContent = 'Despesa municipal em defesa civil: sem coleta até o corte.';
+    MonitorMapas.legenda('legDespesa182', [{cor: MonitorMapas.cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
+    fonteFigura('boxDespesa182', {fontes: ['SICONFI (Tesouro Nacional)', 'IBGE — Censo 2022'], data: null});
+  });
+})();
