@@ -41,7 +41,18 @@ PAUSA_ENTRE_CONSULTAS = 0.25   # segundos; cortesia com a API pública
 QD_API = "https://api.queridodiario.org.br/gazettes?{params}"
 QD_API_RESERVA = "https://queridodiario.ok.org.br/api/gazettes?{params}"
 TERMOS_RESPOSTA = ['"situação de emergência"', '"estado de calamidade pública"']
-TERMOS_PISTA = ['"plano de contingência"', '"El Niño"', '"plano de ação"']
+# 24/09/2026 (§194): a lista saiu de três para nove frases, e cada acréscimo veio do NOME REAL de um
+# plano já no banco, nunca de palpite. Medido contra os 134 planos conhecidos: "plano de ação" casava
+# com ZERO deles (Teresina publica "Planos de ação", e a frase exata não alcançava), enquanto ficavam
+# de fora "Plano Operacional de Enfrentamento à Estiagem" (Manaus), "Plano Preventivo de Chuvas de
+# Verão" (São Paulo) e as siglas PLANCON/PLAMCON/PLACON, que é como boa parte dos municípios nomeia o
+# instrumento. Conferido na API em 24/09: o analisador do Querido Diário resolve plural — "planos de
+# contingência" devolve o mesmo que "plano de contingência" —, então a lista não precisa das flexões.
+# O limite conhecido, e o motivo de não alargar mais (§186): termo genérico enche a fila humana de
+# ruído, e fila com ruído gasta o tempo de quem deveria julgar documento.
+TERMOS_PISTA = ['"plano de contingência"', '"El Niño"', '"plano de ação"',
+                '"PLANCON"', '"PLAMCON"', '"PLACON"',
+                '"plano operacional"', '"plano preventivo"', '"plano de enfrentamento"']
 PAD_DECRETO = re.compile(r"decreto\s+(?:municipal\s+)?n[ºo°\.]?\s*([\d\.\/-]+)[^.]{0,200}?(situa[çc][ãa]o de emerg[êe]ncia|estado de calamidade p[úu]blica)", re.I)
 PAD_PLANO = re.compile(r"plano\s+(?:municipal\s+)?de\s+conting[êe]ncia[^.]{0,160}", re.I)
 
@@ -114,9 +125,38 @@ def consultar_qd(params: str, timeout: int = 30) -> bytes:
     return buscar_com_espera(QD_API_RESERVA.format(params=params), timeout=timeout)
 
 
-def decisao_para_vazio(coberto) -> str:
-    """Função pura: decisão do log para resposta sem edições, dada a cobertura (True/False/None)."""
-    return "coberto_sem_mencao" if coberto is True else "sem_cobertura_qd" if coberto is False else "erro"
+def edicoes_no_periodo(cod: str, desde: str):
+    """True se o território tem ao menos uma edição publicada a partir de `desde`; False se não;
+    None se o teste falhou. É a pergunta que a rodada precisa responder, e que o teste de cobertura
+    (sem recorte de data) não responde — ver a nota em decisao_para_vazio (§194)."""
+    try:
+        time.sleep(PAUSA_ENTRE_CONSULTAS)
+        d = json.loads(consultar_qd(urllib.parse.urlencode(
+            {"territory_ids": cod, "published_since": desde, "size": 1}), timeout=30).decode("utf-8", "replace"))
+        return (d.get("total_gazettes", 0) or 0) > 0
+    except Exception:  # noqa: BLE001 — teste auxiliar nunca derruba a rodada
+        return None
+
+
+def decisao_para_vazio(coberto, edicoes_no_periodo=None) -> str:
+    """Decisão do log para resposta sem achado. Função pura.
+
+    §194 (24/09/2026), TRÊS estados onde antes havia dois. O teste de cobertura pergunta se o
+    município tem diário indexado ALGUMA VEZ — sem recorte de data. Medido em 24/09: Manaus tem
+    7.517 edições no Querido Diário e a mais recente é de **02/08/2016**; São Paulo tem 20, a mais
+    recente de 07/02/2025; Aracaju, 4.582, a mais recente de 01/04/2025. Nenhum deles tem uma única
+    edição dentro do ciclo. Pelo critério antigo os três saíam como "indexado; nenhuma menção aos
+    termos no período" — frase que dá a entender que houve edição e nela não se falou do assunto.
+    Não houve edição. É a diferença entre "procuramos e não há" e "não havia onde procurar", que é
+    exatamente a distinção que este projeto não pode perder.
+    """
+    if coberto is None:
+        return "erro"
+    if coberto is False:
+        return "sem_cobertura_qd"
+    if edicoes_no_periodo is False:
+        return "sem_edicao_no_periodo"
+    return "coberto_sem_mencao"
 
 
 def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
@@ -226,18 +266,25 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
             # PR-N0 §1.2 (06/09/2026): distinguir "não indexado" de "sem menção". Teste de cobertura por
             # território (sem querystring, size=1), guardado em data/cobertura_qd.json (uma vez por janela).
             coberto = cobertura_qd(cod, desde)
-            if coberto is False:
-                marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado="sem_cobertura_qd: diário não indexado no Querido Diário")
-                log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "sem_cobertura_qd", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
-                          n_resultados=0, resultados="Querido Diário: território sem diário indexado (total_gazettes=0 sem querystring) — verificação por outro canal pendente")
-            elif coberto is True:
-                marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado="coberto_sem_mencao: indexado; nenhum excerto com os termos no período")
-                log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "coberto_sem_mencao", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
-                          n_resultados=0, resultados="Querido Diário: diário indexado, nenhuma menção aos termos no período (bateria negativa de camada 1)")
-            else:
-                marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado="cobertura a confirmar (teste de cobertura falhou)")
-                log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, "erro", uf=ref["uf"], municipio=ref["nome"], ibge=cod,
-                          n_resultados=0, resultados="Querido Diário: 0 resultados e teste de cobertura sem resposta")
+            # §194 (24/09/2026): o teste acima não tem recorte de data, então um município cujo
+            # diário está indexado mas PAROU de ser publicado no índice sai como "indexado". Este
+            # segundo teste pergunta o que importa para a rodada: existe alguma edição DENTRO da
+            # janela? Sem ele, "não havia onde procurar" era registrado como "procuramos e não há".
+            edicoes = edicoes_no_periodo(cod, desde) if coberto is True else None
+            decisao = decisao_para_vazio(coberto, edicoes)
+            MOTIVO = {
+                "sem_cobertura_qd": ("sem_cobertura_qd: diário não indexado no Querido Diário",
+                                     "Querido Diário: território sem diário indexado (total_gazettes=0 sem querystring) — verificação por outro canal pendente"),
+                "sem_edicao_no_periodo": ("sem_edicao_no_periodo: diário indexado, nenhuma edição dentro da janela",
+                                          "Querido Diário: diário indexado, mas sem NENHUMA edição no período — a fonte não tem o que dizer sobre a janela; verificação por outro canal pendente"),
+                "coberto_sem_mencao": ("coberto_sem_mencao: indexado, com edições no período; nenhum excerto com os termos",
+                                       "Querido Diário: diário indexado e com edições no período, nenhuma menção aos termos (bateria negativa de camada 1)"),
+                "erro": ("cobertura a confirmar (teste de cobertura falhou)",
+                         "Querido Diário: 0 resultados e teste de cobertura sem resposta"),
+            }[decisao]
+            marcar_fonte_consultada([cod], FONTE_QD, "nao_verificado", resultado=MOTIVO[0])
+            log_busca("DOM", 1, TERMOS_RESPOSTA + TERMOS_PISTA, decisao, uf=ref["uf"], municipio=ref["nome"], ibge=cod,
+                      n_resultados=0, resultados=MOTIVO[1])
             n_ok += 1; continue
         h = preservar_evidencia(bruto, url, "json", "coletar_diarios_municipais")
         # 10/09/2026: além do excerto, o texto integral da edição — o julgamento humano lê o
@@ -332,7 +379,10 @@ def autoteste() -> int:
                 and tamanho_para_cobrir(100000, "2026-09-10", "2026-09-10", 150) == 1500
                 and tamanho_para_cobrir(300, "2026-09-11", "2026-09-10", 150) == 300)  # data-fim passada: tudo hoje
     def t8():  # PR-N0 §1.2: resposta vazia nunca vira 'nada localizado' — só as três decisões (ou erro)
-        return decisao_para_vazio(True) == "coberto_sem_mencao" and decisao_para_vazio(False) == "sem_cobertura_qd" and decisao_para_vazio(None) == "erro"
+        # §194: o estado novo — indexado, porém sem nenhuma edição na janela.
+        assert decisao_para_vazio(True, False) == "sem_edicao_no_periodo", "sem edição no período"
+        assert decisao_para_vazio(True, None) == "coberto_sem_mencao", "teste de janela indisponível não inventa estado"
+        return decisao_para_vazio(True, True) == "coberto_sem_mencao" and decisao_para_vazio(False) == "sem_cobertura_qd" and decisao_para_vazio(None) == "erro"
     def t7():  # --tudo: alvo é a fila inteira de pendentes, sem fatiar por tamanho/dias restantes
         livro = {"municipios": {"1": {"fontes": [{"fonte": FONTE_QD, "data": "2026-08-20"}]}}}  # fora da janela: pendente
         pend = pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03")

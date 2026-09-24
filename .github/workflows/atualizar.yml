@@ -568,9 +568,25 @@ jobs:
           # toca data/) aborta o rebase e o push falha com aviso, sem commit parcial.
           # depth=50 (em vez do padrão herdado do checkout raso) para o merge-base do rebase
           # ter história o bastante mesmo com PRs editoriais mesclados no meio da rodada.
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
-          git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito em data/; rodada não comitada"; rm -f ~/.ssh/robo; exit 1; }
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
+          # 24/09/2026: mesmo laço da cadência de busca. A separação dos grupos de concorrência
+          # (feita hoje, para a busca de 2h não esperar por esta rodada de até 2h43) significa que os
+          # dois passam a commitar em paralelo — então a proteção tem de estar no push, e não na fila.
+          # Uma tentativa só descartava um dia inteiro de coleta quando a main andava no intervalo.
+          EMPURROU=0
+          for TENTATIVA in 1 2 3 4 5 6; do
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            if ! git rebase FETCH_HEAD; then
+              git rebase --abort || true
+              echo "tentativa $TENTATIVA: rebase conflitou em data/; nova tentativa"
+              sleep $((TENTATIVA * 10)); continue
+            fi
+            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+              EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
+            fi
+            echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
+            sleep $((TENTATIVA * 10))
+          done
+          if [ "$EMPURROU" != "1" ]; then rm -f ~/.ssh/robo; echo "::error::seis tentativas de rebase-e-push falharam; rodada não comitada"; exit 1; fi
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
 

@@ -1,0 +1,145 @@
+{
+ "_governanca": "ARQUIVO DE REVISÃO (§201, 24/09/2026) — resposta da Defesa Civil de MT ao pedido de acesso à informação de 10/09/2026. NADA AQUI ESTÁ NO BANCO: este arquivo existe para leitura humana e aprovação item a item (R7). Quem aprovar apaga o que não deve entrar antes de aplicar. O texto integral do pedido e da resposta NÃO está aqui nem em nenhum arquivo deste repositório (regra editorial vigente); o ponteiro para o registro interno está em cada bloco.",
+ "origem": {
+  "uf": "MT",
+  "orgao": "Defesa Civil MT — Centro de Operações",
+  "recebido_em": "2026-09-23",
+  "pedido_em": "2026-09-10",
+  "protocolo": "Fale Cidadão 503505 · SIGADOC SES-CIN-2026/176970",
+  "registro_interno": "robo-registro/notas/lai/lai_pedidos.json"
+ },
+ "ressalva_de_cobertura": "O estado listou 6 municípios com plano vigente. A hipótese mais provável é que ele conheça apenas os planos que lhe foram COMUNICADOS, não o universo real — e a própria resposta remete o endereço de cada plano ao município. Isto é DECLARAÇÃO ESTADUAL COM COBERTURA POSSIVELMENTE PARCIAL: não converter o complemento em 'municípios sem plano'. Divergência de denominador anotada em 24/09: data/municipios_ibge_referencia.json traz 142 municípios em MT (sem nome nem código repetido) e o handover fala em 141, que é o número que o IBGE publica. Conferir antes de usar qualquer proporção em texto público.",
+ "blocos": [
+  {
+   "item": 1,
+   "camada": "declarado pelo estado",
+   "acao_se_aprovado": "somar à camada declarada de MT, com o desconto de 50% já vigente; NÃO promover a documentado sem o ato",
+   "limite": "sem número e sem data do ato — o órgão remeteu o endereço de cada plano ao respectivo município",
+   "municipios": [
+    {
+     "nome": "Tangará da Serra",
+     "uf": "MT",
+     "ibge": "5107958"
+    },
+    {
+     "nome": "Campo Verde",
+     "uf": "MT",
+     "ibge": "5102678"
+    },
+    {
+     "nome": "Nova Xavantina",
+     "uf": "MT",
+     "ibge": "5106257"
+    },
+    {
+     "nome": "Itiquira",
+     "uf": "MT",
+     "ibge": "5104609"
+    },
+    {
+     "nome": "São Pedro da Cipa",
+     "uf": "MT",
+     "ibge": "5107404"
+    },
+    {
+     "nome": "Cáceres",
+     "uf": "MT",
+     "ibge": "5102504"
+    }
+   ]
+  },
+  {
+   "item": 2,
+   "camada": "acompanhamento — NÃO pontua",
+   "acao_se_aprovado": "registrar para reverificação nas datas previstas; 'em elaboração' não é plano publicado",
+   "municipios": [
+    {
+     "nome": "Água Boa",
+     "uf": "MT",
+     "ibge": "5100201",
+     "previsao": "10/2026"
+    },
+    {
+     "nome": "Cláudia",
+     "uf": "MT",
+     "ibge": "5103056",
+     "previsao": "10/2026"
+    },
+    {
+     "nome": "Juína",
+     "uf": "MT",
+     "ibge": "5105150",
+     "previsao": "10/2026"
+    },
+    {
+     "nome": "Colíder",
+     "uf": "MT",
+     "ibge": "5103205",
+     "previsao": "11/2026"
+    },
+    {
+     "nome": "Aripuanã",
+     "uf": "MT",
+     "ibge": "5101407",
+     "previsao": "11/2026"
+    },
+    {
+     "nome": "Primavera do Leste",
+     "uf": "MT",
+     "ibge": "5107040",
+     "previsao": "12/2026"
+    },
+    {
+     "nome": "Sorriso",
+     "uf": "MT",
+     "ibge": "5107925",
+     "previsao": "12/2026"
+    },
+    {
+     "nome": "Alto Paraguai",
+     "uf": "MT",
+     "ibge": "5100508",
+     "previsao": "12/2026"
+    }
+   ]
+  },
+  {
+   "item": 3,
+   "camada": "ausência declarada pelo órgão",
+   "acao_se_aprovado": "já registrado em data/ausencia_declarada.json; nenhum efeito no índice",
+   "nota": "a declaração é sobre plano estadual de CONTINGÊNCIA; o instrumento pelo qual MT é classificado é o Plano de Combate a Incêndios 2º sem. 2026 (Decreto 2.015/2026) — documentos diferentes"
+  },
+  {
+   "item": 4,
+   "camada": "resposta (peso zero, Correção B)",
+   "acao_se_aprovado": "acrescentar a data/atos_resposta.json como homologação estadual, com número e data",
+   "achado": "MT tem ZERO eventos de resposta no banco hoje — está entre as 8 UFs sem nenhum (AP, DF, ES, MT, PA, RJ, RR, TO). Os três atos abaixo não vieram pelo S2iD: a divergência entre a homologação estadual e o que o S2iD indexa é achado, não erro a silenciar",
+   "decretos": [
+    {
+     "nome": "Itaúba",
+     "uf": "MT",
+     "ibge": "5104559",
+     "decreto": "Decreto nº 2.205",
+     "data": "20/07/2026",
+     "causa": "homologação estadual (LAI)"
+    },
+    {
+     "nome": "Várzea Grande",
+     "uf": "MT",
+     "ibge": "5108402",
+     "decreto": "Decreto nº 2.233",
+     "data": "27/08/2026",
+     "causa": "homologação estadual (LAI)"
+    },
+    {
+     "nome": "Colniza",
+     "uf": "MT",
+     "ibge": "5103254",
+     "decreto": "Decreto nº 2.234",
+     "data": "28/08/2026",
+     "causa": "homologação estadual (LAI)"
+    }
+   ]
+  }
+ ]
+}

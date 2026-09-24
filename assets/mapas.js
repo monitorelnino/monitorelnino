@@ -177,7 +177,11 @@
     // status do instrumento estadual (defesa civil e saúde) e das capitais
     status: { NOVO: COR.musgo, READ: COR.sintetico, ELAB: COR.ambar, VIG: COR.mineral, LAC: COR.argila, NAO_VERIFICADO: COR['cinza-quente'] },
     // categoria do ato municipal (mapa de pontos, tabelas, cartão da cidade)
-    categorias: { plano: COR.musgo, plano_antigo: COR.sintetico, plano_elaboracao: COR.ambar, estrutura: COR.ambar, decreto: COR.argila,
+    categorias: { plano: COR.musgo, plano_antigo: COR.sintetico,
+      // §202: a escada municipal usa a mesma família do que gradua — novo herda a cor de
+      // plano, readaptado e recorrente herdam a de plano_antigo, para o mapa não ganhar três
+      // cores novas por uma distinção que é de grau, não de natureza.
+      plano_novo: COR.musgo, plano_readaptado: COR.sintetico, plano_recorrente: COR.sintetico, plano_elaboracao: COR.ambar, estrutura: COR.ambar, decreto: COR.argila,
                   coberto_estadual: COR.mineral, nao_el_nino: COR.areia, nao_localizado: COR.argila, nao_verificado: COR['cinza-quente'] },
     // nível de verificação municipal
     verificacao: { nao_verificado: COR['cinza-quente'], nacional: COR.mineral, estadual: COR.sintetico, municipal_completo: COR.musgo, fonte_suspensa: COR.argila },

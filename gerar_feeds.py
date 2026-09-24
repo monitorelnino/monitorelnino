@@ -33,7 +33,9 @@ FEEDS = RAIZ / "feeds"
 SITE = "https://monitorelnino.com.br"
 SNAPSHOT = DATA / "snapshot_feed.json"
 HISTORICO = DATA / "historico_mudancas.json"
-CAT_HUMANO = {"plano": "plano preventivo", "plano_antigo": "plano de edição anterior", "plano_elaboracao": "plano em elaboração",
+CAT_HUMANO = {"plano": "plano preventivo", "plano_antigo": "plano vigente, de ciclo anterior",
+              "plano_novo": "plano novo, dedicado ao ciclo", "plano_readaptado": "plano readaptado para o ciclo",
+              "plano_recorrente": "plano recorrente, sazonal", "plano_elaboracao": "plano em elaboração",
               "decreto": "decreto de emergência", "coberto_estadual": "cobertura pelo plano estadual",
               "nao_el_nino": "ato que não trata do El Niño", "nao_localizado": "verificação completa sem ato localizado",
               "nao_verificado": "ainda não verificado com a bateria completa de fontes"}
