@@ -151,11 +151,34 @@ def autoteste():
         return {n: (P / n).read_bytes() if (P / n).exists() else None for n in _NOMES_PAINEL}
 
     def _restaurar(antes):
+        """Restaura TODOS os arquivos, mesmo que um falhe, e grita nomeando o que não voltou.
+
+        24/09/2026: uma falha transitória de E/S no Windows (`OSError: [Errno 22]` sobre
+        `lista.json`) abortou a restauração no PRIMEIRO arquivo — e os seguintes nem foram
+        tentados. Resultado: a lista IMUTÁVEL do painel e os agregados ficaram com
+        `sorteado_em` e `lista_publicada_em` trocados de 02/09 para a data de hoje, e o
+        autoteste reportou apenas "3 falhas", sem dizer que havia mexido em dado publicado.
+        Mutação de dado publicado não pode sair como falha genérica: agora cada arquivo é
+        tentado à parte, com uma segunda tentativa, e o que não voltar é nomeado no erro."""
+        import time
+        nao_voltaram = []
         for n, b in antes.items():
-            if b is not None:
-                (P / n).write_bytes(b)
-            elif (P / n).exists():
-                (P / n).unlink()
+            for tentativa in (1, 2):
+                try:
+                    if b is not None:
+                        (P / n).write_bytes(b)
+                    elif (P / n).exists():
+                        (P / n).unlink()
+                    break
+                except OSError as e:
+                    if tentativa == 2:
+                        nao_voltaram.append(f"{n} ({type(e).__name__}: {e})")
+                    else:
+                        time.sleep(0.4)      # trava transitória de antivírus ou indexador
+        if nao_voltaram:
+            raise RuntimeError("AUTOTESTE NÃO CONSEGUIU RESTAURAR DADO PUBLICADO — verifique com "
+                               "`git status` e `git checkout --` em data/painel/: "
+                               + "; ".join(nao_voltaram))
 
     def t1(): u, d = universo(); return len(u) == 5571 and sum(1 for m in u if m["capital"]) == 27
     def t2(): return [porte(p) for p in (0, 19999, 20000, 49999, 50000, 99999, 100000, 899999, 900000)] == ["pequeno_I", "pequeno_I", "pequeno_II", "pequeno_II", "medio", "medio", "grande", "grande", "metropole"]
