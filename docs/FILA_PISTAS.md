@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 24/09/2026 · 376 pendente(s) · 15 decidida(s) · A=67 B=242 C=67
+Gerado em 24/09/2026 · 403 pendente(s) · 15 decidida(s) · A=77 B=256 C=70
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -119,6 +119,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3205309/2026-07-29/a7f158e2d5e7fd975935d29393b6f819beea151d.pdf
   - trecho: vagas para os 21 km, 42 km, Desafio 5 + 21 km e Maratoninha Kids já estejam esgotadas. SERVIÇO Maratona de Vitória 2026 29 e 30 de agosto Praça do Papa, Enseada do Suá Inscrições: www.ticketsports.com.br ou www.maratonad
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Petrolina/PE — 3 pendente(s)
+- `0ae0a524aa` · nível **A** (7 pts) · seguimento_busca_oficial · DUVIDA · **Decreto N.º 037**, 2020
+  - título: Mapa do Site | Prefeitura de Petrolina - PE
+  - url: https://petrolina.pe.gov.br/mapa-do-site/
+  - trecho: Coronavírus Plano de Contingência · Coronavírus Tire Suas Dúvidas · Decreto N.º 037/2020 – Reabertura Gradual · Resoluções CIB/PE · Dados Abertos · Dados Abertos – API · Decretos · Decretos 2012 · Decretos 2013 · Decreto
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `53953ddbae` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: CHESF e Defesa Civil de Petrolina iniciam instalação de placas ...
+  - url: https://petrolina.pe.gov.br/chesf-e-defesa-civil-de-petrolina-iniciam-instalacao-de-placas-do-plano-de-contingencia-na-tapera/
+  - trecho: Petrolina é uma das poucas cidades de Pernambuco que possui um plano de contingência, o que demonstra que as equipes da Defesa Civil do município seguem realizando o seu trabalho com seriedade.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `b53b04907d` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2010 (do trecho)
+  - título: plano municipal de saneamento de petrolina/pe
+  - url: https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf
+  - trecho: Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...
+  - juiz: portão automático: fonte não oficial
 
 ## Bituruna/PR — 1 pendente(s)
 - `8e36414ea8` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
@@ -614,6 +631,25 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.independente.com.br/artigo/relvado-apresenta-estudo-socioambiental-e-plano-de-contingencia-em-audiencia-publica
   - trecho: Sep 11, 2026 ... Relvado apresenta estudo socioambiental e Plano de Contingência em audiência pública ... El Niño e sua relação com eventos climáticos.
 
+## Balneário Camboriú/SC — 4 pendente(s)
+- `d11d9042f8` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Balneário Camboriú reforça plano de ação para enfrentar impactos ...
+  - url: https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html
+  - trecho: Jun 16, 2026 ... Balneário Camboriú reforça plano de ação para enfrentar impactos do El Niño ... Plano de Contingência, validação de abrigos temporários ...
+  - juiz: portão automático: fonte não oficial
+- `a3382c4401` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Plano de Contingência de Balneário Camboriú entra em consulta ...
+  - url: https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/
+  - trecho: Sep 15, 2026 ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...
+  - juiz: portão automático: fonte não oficial
+- `b37728af79` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - url: https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/
+  - trecho: 7 days ago ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...
+  - juiz: portão automático: fonte não oficial
+- `a61d32c5be` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/p/DdUOT62G-yP/
+  - trecho: 7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...
+
 ## Bocaina do Sul/SC — 3 pendente(s)
 - `7c06fceaa8` · nível **A** (6 pts) · seguimento_busca_oficial · — · **Decreto 472**, 14/08/2024
   - título: Secretaria Municipal de Saúde - Prefeitura de Bocaina do Sul
@@ -630,6 +666,147 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://scc10.com.br/radioclube/impactos-do-el-nino-pautam-audiencia-em-bocaina-do-sul/
   - trecho: Jun 15, 2026 ... Impactos do El Niño pautam audiência em Bocaina do Sul. A Defesa Civil pretende expor o plano de contingência ... 2 Três apostas de SC ...
   - juiz: portão automático: fonte não oficial
+
+## Brusque/SC — 5 pendente(s)
+- `6c00236c0f` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: BRUSQUE: Preparativos para o El Niño e plano de contingência de ...
+  - url: https://araguaiabrusque.com.br/brusque-preparativos-para-o-el-nino-e-plano-de-contingencia-de-produtos-perigosos/
+  - trecho: maio 7, 2026. BRUSQUE: Preparativos para o El Niño e plano de contingência de produtos perigosos. Ações preventivas e de resposta foram destaques de ...
+  - juiz: portão automático: fonte não oficial
+- `2385e529b6` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://www.brusque.sc.gov.br/cidadao/noticia/operacao-el-nino-organiza-acoes-de-prevencao-e-monitoramento-em-brusque
+  - trecho: May 5, 2026 ... Com a possibilidade de configuração do fenômeno climático El Niño nos próximos meses, a Prefeitura de Brusque e a Defesa Civil iniciaram uma ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `2c9b2f8bf7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - url: https://www.brusque.sc.gov.br/cidadao/noticia/acoes-preventivas-contra-o-el-nino-avancam-em-brusque
+  - trecho: Jul 20, 2026 ... Para garantir a segurança de alunos e professores, a Secretaria de Educação de Brusque implementará o Plancon Multirisco (Plano de Contingência) ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `4f544e83d5` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://brusque.portaldacidade.com/noticias/educacao/brusque-prepara-escolas-para-enfrentar-possiveis-impactos-do-el-nino-2038
+  - trecho: Jul 20, 2026 ... Entre os principais temas do encontro esteve a implantação do Plano de Contingência Multirriscos (Plancon) nas unidades de ensino do município.
+  - juiz: portão automático: fonte não oficial
+- `5dcc2a84f6` · nível **B** (3 pts) · busca_web · RESPOSTA · citação não extraída
+  - url: https://araguaiabrusque.com.br/el-nino-comite-de-gestao-de-crise-se-reune-para-alinhar-acoes-preventivas-em-sc/
+  - trecho: ... Plano de Contingência Estadual. A reunião do GRAC reúne os corpos técnicos das ... Mathilde Hoffmann, 66 - Centro II, Brusque, SC - 88353-120 - Centro ...
+  - juiz: portão automático: fonte não oficial
+
+## Camboriú/SC — 10 pendente(s)
+- `47a4f304b5` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Balneário Camboriú reforça plano de ação para enfrentar impactos ...
+  - url: https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html
+  - trecho: Jun 16, 2026 ... Balneário Camboriú reforça plano de ação para enfrentar impactos do El Niño ... Plano de Contingência, validação de abrigos temporários ...
+  - juiz: portão automático: fonte não oficial
+- `00c8844837` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Plano de Contingência de Balneário Camboriú entra em consulta ...
+  - url: https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/
+  - trecho: Sep 15, 2026 ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...
+  - juiz: portão automático: fonte não oficial
+- `97c71884e1` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Município lança o Plano "Camboriú em Alerta ao El Niño" - JM Litoral
+  - url: https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/
+  - trecho: Jul 31, 2026 ... ... Plano de Contingência para a comunidade em audiência na Câmara de ... A Defesa Civil de Camboriú lançamento o Plano “Camboriú em Alerta ao El Niño ...
+  - juiz: portão automático: fonte não oficial
+- `09ed714bdc` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Cartilha El Niño 2026 · Bacia do Rio Camboriú - Página 3
+  - url: https://pagina3.com.br/wp-content/uploads/2026/09/Cartilha_El_Nino_2026.pdf
+  - trecho: El Niño 2026 · Comitê de Bacia do Rio Camboriú ... Sacos de areia ou comportas nos acessos historicamente vulneráveis a alagamento. Plano de contingência.
+  - juiz: portão automático: fonte não oficial
+- `afc5fc9c39` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://www.blogdoprisco.com.br/camboriu-lanca-plano-contra-o-el-nino-com-aporte-de-r-5-milhoes-articulado-por-carlos-humberto/
+  - trecho: Aug 4, 2026 ... ... Camboriú em Alerta ao El Niño. Durante a cerimônia, o parlamentar ... O Plano de Contingência para Enchentes foi dividido de forma ...
+  - juiz: portão automático: fonte não oficial
+- `7cff064735` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - url: https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/
+  - trecho: 7 days ago ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...
+  - juiz: portão automático: fonte não oficial
+- `01f42ba144` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/
+  - trecho: Jul 31, 2026 ... A Defesa Civil de Camboriú lançamento o Plano “Camboriú em Alerta ao El Niño”, uma iniciativa que reúne ações de conscientização, ...
+  - juiz: portão automático: fonte não oficial
+- `738d8dd3b1` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Prefeitura de Camboriú on Instagram: "Os efeitos do El Niño exigem ...
+  - url: https://www.instagram.com/p/DbTWe49Asge/
+  - trecho: Jul 27, 2026 ... 8h45 — Cenário climático para Camboriú e prognóstico do El Niño 2026/2027 ... Camboriú-SC. Photo by Linha Popular | Portal de notícias de ...
+  - juiz: portão automático: fonte não oficial
+- `8972896ab3` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/p/DbaxUUaia33/
+  - trecho: Jul 30, 2026 ... 8h45 — Cenário climático para Camboriú e prognóstico do El Niño 2026/2027 ... Camboriú-SC. Photo by Linha Popular | Portal de notícias de ...
+- `e5e29169cd` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.jmlitoral.com.br/2026/06/22/camboriu-fortalece-plano-de-prevencao-ao-el-nino-e-cria-gabinete-de-crise-para-proteger-a-populacao/
+  - trecho: Jun 22, 2026 ... Na última sexta-feira (19), o prefeito de Camboriú, Leonel Pavan, reuniu no Auditório Ulisses Guimarães, no Paço Municipal, ...
+
+## Canoinhas/SC — 3 pendente(s)
+- `4276ecbded` · nível **A** (6 pts) · busca_web · RESPOSTA · data 23/09/2026 (do trecho)
+  - título: Trabalho preventivo da prefeitura reduz impactos do El Niño em ...
+  - url: https://diariodoplanalto.com.br/geral/trabalho-preventivo-da-prefeitura-reduz-impactos-do-el-nino-em-canoinhas.15484817
+  - trecho: ... CANOINHAS. Trabalho preventivo da prefeitura reduz impactos do El Niño em Canoinhas. 23/09/2026 10:49. '; Divulgação -. A prevenção de uma enchente não ...
+  - juiz: portão automático: fonte não oficial
+- `3e3c4c04d1` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: MP abre procedimentos sobre prevenção ao El Niño em Canoinhas ...
+  - url: https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720
+  - trecho: 18 hours ago ... Em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Unidade Canoinhas / SC. CNPJ: 62.276.888/0001-47. © ...
+  - juiz: portão automático: fonte não oficial
+- `446cb04b13` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://rwtv.com.br/planaltonorte/canoinhas-se-prepara-para-possivel-impacto-do-el-nino-e-reforca-acoes-preventivas/
+  - trecho: May 12, 2026 ... Canoinhas se prepara para possível impacto do El Niño ... Zenilda ressaltou que o município trabalha com plano de contingência e definição clara ...
+  - juiz: portão automático: fonte não oficial
+
+## Itajaí/SC — 14 pendente(s)
+- `856520058d` · nível **A** (6 pts) · busca_web · RESPOSTA · data 25/08/2026 (do trecho)
+  - título: Super El Niño acende alerta em Itajaí e mobiliza estrutura para ...
+  - url: https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/
+  - trecho: Adicionar · Planos de contingência estadual e municipal preveem uso de barcos, veículos 4x4 e outros equipamentos em caso de alagamentos 25/08/2026 às 05h20 ... Super El Niño acende alerta em Itajaí e mobiliza estrutura 
+  - juiz: portão automático: fonte não oficial
+- `b11bbc9e9c` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Informações EL NIÑO | Porto de Itajaí
+  - url: https://www.portoitajai.com.br/informacoes-el-nino
+  - trecho: Plano de Contingência de Saúde · Plano de Gerenciamento de Resíduos - PGRS ... Rua Blumenau, 05 Centro, Itajaí - Santa Catarina Brasil - CEP: 88.305-101 ...
+  - juiz: portão automático: fonte não oficial
+- `3425f8be32` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Itajaí antecipa prevenção e se prepara para combater El Niño no ...
+  - url: https://itajai.sc.gov.br/noticias/36482/itajai-antecipa-prevencao-e-se-prepara-para-combater-el-nino-no-segundo-semestre--
+  - trecho: May 4, 2026 ... Rua Alberto Werner, 100•Vila Operária•Itajaí - SC•CEP: 88304-053. 2026 Município de Itajaí • Todos os direitos reservados. Política de ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `91a6821421` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Infomações El Niño - Porto de Itajaí
+  - url: https://www.portoitajai.com.br/infomacoes-el-ni-o
+  - trecho: Plano de Contingência de Saúde · Plano de Gerenciamento de Resíduos - PGRS ... Rua Blumenau, 05 Centro, Itajaí - Santa Catarina Brasil - CEP: 88.305-101 ...
+- `08e1764ebb` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - url: https://www.instagram.com/p/DceLKWvkaP7/
+  - trecho: Aug 25, 2026 ... Itajaí apresenta o Plano de Contingência e prepara empresas para riscos climáticos do El Niño 2026.
+  - juiz: portão automático: fonte não oficial
+- `3ff937f76f` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
+  - url: https://upiara.com.br/noticias/super-el-nino-o-que-itajai-fez-para-prevenir-e-combater-emergencias/
+  - trecho: Os canais oficiais da prefeitura divulgam, todas as sextas-feiras, o Radar El Niño para informar e preparar a população para o evento. ... Pesquisa da ABRH-SC revela formação de lideranças como principal desafio do RH de
+  - juiz: portão automático: fonte não oficial
+- `dbbff31d64` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
+  - url: https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/
+  - trecho: Os planos de contingência estadual, publicado na quinta-feira (20), e municipal de Itajaí preveem o uso de veículos 4×4 e embarcações quando alagamentos, enxurradas ou inundações comprometerem o acesso a áreas afetadas.
+  - juiz: portão automático: fonte não oficial
+- `d5cd31c2c0` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - url: https://www.facebook.com/PrefeituradeItajai/videos/%EF%B8%8Fmedidas-de-preven%C3%A7%C3%A3o-ao-el-ni%C3%B1o-a-defesa-civil-de-itaja%C3%AD-passa-a-divulgar-seman/1338660184904006/
+  - trecho: Jun 26, 2026 ... 🌧️ Itajaí se antecipa ao El Niño com ações para proteger a cidade Com foco na ... plano de contingência. Já fizemos reunião com o setor ...
+  - juiz: portão automático: fonte não oficial
+- `0443bc037e` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: ️ Radar El Niño A Defesa Civil de Itajaí está ampliando a rede de ...
+  - url: https://www.instagram.com/reel/DdeH-bKxvPQ/
+  - trecho: 5 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...
+  - juiz: portão automático: fonte não oficial
+- `5c1fae3ce3` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - url: https://visornoticias.com.br/el-nino-em-itajai-encontro-prepara-empresas-para-riscos-climaticos
+  - trecho: Promovido pela Secretaria Municipal de Desenvolvimento Econômico, o encontro terá orientações sobre prevenção, gestão de riscos e elaboração de planos de contingência para empresas.
+- `54533a653c` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/p/DcegeSkHXfI/
+  - trecho: Aug 25, 2026 ... ... likes, 0 comments - portaldafoz on August 25, 2026: "ITAJAÍ APRESENTA PLANO DE CONTINGÊNCIA E PREPARA EMPRESAS PARA RISCOS ... El Niño em 2026, ...
+- `8dd2e869e3` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/reel/DbdTa6fRclC/?hl=en
+  - trecho: Jul 31, 2026 ... Acompanhe a série Radar El Niño e fique por dentro das ações da Defesa Civil de Itajaí. ... plano de contingência do município. A Defesa Civil ...
+- `dbc0225590` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/reel/DXsJ5lKjFWy/
+  - trecho: Apr 28, 2026 ... ... plano de contingência com foco na prevenção e na resposta rápida a ... 🌧️ ITAJAÍ SE PREPARA PARA IMPACTOS DO EL NIÑO Prefeitura ...
+- `e2f9a623b9` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/reel/DdeH-bKxvPQ/
+  - trecho: 3 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...
 
 ## Ouro/SC — 2 pendente(s)
 - `39cae9c286` · nível **A** (6 pts) · busca_web · EX_ANTE · data 23/06/2026 (do trecho)
@@ -663,7 +840,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Tubarão acelera plano contra o El Niño com R$ 40 milhões em obras preventivas ... Plano de contingência reforçado. A Prefeitura informou que o Plano Municipal ...
   - juiz: portão automático: fonte não oficial
 
-## Videira/SC — 1 pendente(s)
+## Videira/SC — 2 pendente(s)
+- `b0d9e10b95` · nível **A** (7 pts) · busca_web · DUVIDA · data 22/09/2026 (do trecho)
+  - título: Videira intensifica ações para enfrentar o El Niño e reduzir riscos
+  - url: https://portalrbv.com.br/noticias/seguranca/videira-intensifica-acoes-para-enfrentar-o-el-nino-e-reduzir-riscos-de-enchentes-ej/
+  - trecho: Jun 19, 2026 ... Celesc reforça plano de contingência para enfrentar possíveis impactos do El Niño ... Videira Notícias – 22/09/2026. 15 horas atrás 0.
+  - juiz: portão automático: fonte não oficial
 - `bb82c0a14b` · nível **A** (6 pts) · busca_web · DUVIDA · data 11/09/2026 (do trecho)
   - url: https://portalrbv.com.br/noticias/seguranca/videira-intensifica-acoes-para-enfrentar-o-el-nino-e-reduzir-riscos-de-enchentes-ej/
   - trecho: Jun 19, 2026 ... Celesc reforça plano de contingência para enfrentar possíveis impactos do El Niño ... Videira Notícias – 11/09/2026. 1 hora atrás 0. Situação ...
@@ -1093,7 +1275,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: "A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
 
-## Paulista/PE — 5 pendente(s)
+## Paulista/PE — 9 pendente(s)
+- `55cc6ecfa6` · nível **B** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Paulista aciona Gabinete de Gerenciamento de Risco para atualizar ...
+  - url: https://paulista.pe.gov.br/2024/dinamico/noticia-detalhe.php?id=7782
+  - trecho: O Gabinete de Gerenciamento de Risco do Paulista, reativou na manhã desta sexta-feira (20.03), o Plano de Contingência e Proteção da Defesa Civil. O Plano que foi implantado há sete anos, envolve todas as secretarias mun
+  - ⚠ ano_anterior_ao_ciclo
 - `6d7dc08e68` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño coloca saúde do Noroeste Paulista no radar do Ministério ...
   - url: https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/
@@ -1112,16 +1299,25 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DdZ_Zs9DJqA/
   - trecho: 4 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.
   - juiz: portão automático: fonte não oficial
+- `cdb8158a6f` · nível **C** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA DE PEDRINHAS PAULISTA (COVID-19)
+  - url: https://www.pedrinhaspaulista.sp.gov.br/plano-municipal/plano-municipal-index/download/3/
+  - trecho: Na aplicação do plano de contingência, as atividades específicas serão · direcionadas para os três níveis de respostas descritos abaixo: A. Nível de resposta: Alerta: Corresponde a uma situação de risco de introdução do 
+  - ⚠ risco_errado_no_titulo, uf_divergente_na_url
+- `48b4ee03b7` · nível **C** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Em São Paulo, apenas 237 municípios têm plano de contingência ...
+  - url: https://www.al.sp.gov.br/noticia/?id=434103
+  - trecho: Apenas 237 dos 645 municípios paulistas têm um Plano de Contingência de Defesa Civil para desastres. Os dados são do Observatório do Futuro, do TCESP (Tribunal de Contas do Estado de São Paulo), e foram apresentados nest
+  - ⚠ uf_divergente_na_url
+- `74f939994e` · nível **C** (3 pts) · seguimento_busca_oficial · DUVIDA · **Decreto nº 59.774**, 17/09/2020
+  - título: Retomada Econômica da cidade de São Paulo | Secretaria Municipal ...
+  - url: https://www.prefeitura.sp.gov.br/cidade/secretarias/desenvolvimento/desenvolvimento_economico/index.php?p=297913
+  - trecho: Portaria SMADS Nº 33, de 21 de agosto de 2020, aprova o "Plano de Contingência dos Serviços de Medidas Socioeducativas em Meio Aberto para situação de emergência decorrente da COVID-19.
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `cd4703fb08` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DbY6fIWFA_v/
   - trecho: Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL Paulista ...
-
-## Petrolina/PE — 1 pendente(s)
-- `b53b04907d` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2010 (do trecho)
-  - título: plano municipal de saneamento de petrolina/pe
-  - url: https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf
-  - trecho: Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...
-  - juiz: portão automático: fonte não oficial
 
 ## Recife/PE — 1 pendente(s)
 - `d1a3559016` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -1600,64 +1796,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Balneário Camboriú/SC — 2 pendente(s)
-- `b37728af79` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
-  - url: https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/
-  - trecho: 7 days ago ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...
-  - juiz: portão automático: fonte não oficial
-- `a61d32c5be` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/p/DdUOT62G-yP/
-  - trecho: 7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...
-
 ## Bom Jesus/SC — 1 pendente(s)
 - `b1d0b5be45` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: EL NIÑO PROVOCA ALAGAMENTOS EM BOM JESUS DO ...
   - url: https://www.instagram.com/reel/DZFHb2qRQl7/
   - trecho: Jun 2, 2026 ... 1 like. fallaregiao. Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A Secretaria Municipal de Assistência ...
-  - juiz: portão automático: fonte não oficial
-
-## Brusque/SC — 4 pendente(s)
-- `2385e529b6` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://www.brusque.sc.gov.br/cidadao/noticia/operacao-el-nino-organiza-acoes-de-prevencao-e-monitoramento-em-brusque
-  - trecho: May 5, 2026 ... Com a possibilidade de configuração do fenômeno climático El Niño nos próximos meses, a Prefeitura de Brusque e a Defesa Civil iniciaram uma ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `2c9b2f8bf7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - url: https://www.brusque.sc.gov.br/cidadao/noticia/acoes-preventivas-contra-o-el-nino-avancam-em-brusque
-  - trecho: Jul 20, 2026 ... Para garantir a segurança de alunos e professores, a Secretaria de Educação de Brusque implementará o Plancon Multirisco (Plano de Contingência) ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `4f544e83d5` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://brusque.portaldacidade.com/noticias/educacao/brusque-prepara-escolas-para-enfrentar-possiveis-impactos-do-el-nino-2038
-  - trecho: Jul 20, 2026 ... Entre os principais temas do encontro esteve a implantação do Plano de Contingência Multirriscos (Plancon) nas unidades de ensino do município.
-  - juiz: portão automático: fonte não oficial
-- `5dcc2a84f6` · nível **B** (3 pts) · busca_web · RESPOSTA · citação não extraída
-  - url: https://araguaiabrusque.com.br/el-nino-comite-de-gestao-de-crise-se-reune-para-alinhar-acoes-preventivas-em-sc/
-  - trecho: ... Plano de Contingência Estadual. A reunião do GRAC reúne os corpos técnicos das ... Mathilde Hoffmann, 66 - Centro II, Brusque, SC - 88353-120 - Centro ...
-  - juiz: portão automático: fonte não oficial
-
-## Camboriú/SC — 5 pendente(s)
-- `afc5fc9c39` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://www.blogdoprisco.com.br/camboriu-lanca-plano-contra-o-el-nino-com-aporte-de-r-5-milhoes-articulado-por-carlos-humberto/
-  - trecho: Aug 4, 2026 ... ... Camboriú em Alerta ao El Niño. Durante a cerimônia, o parlamentar ... O Plano de Contingência para Enchentes foi dividido de forma ...
-  - juiz: portão automático: fonte não oficial
-- `7cff064735` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
-  - url: https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/
-  - trecho: 7 days ago ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...
-  - juiz: portão automático: fonte não oficial
-- `01f42ba144` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/
-  - trecho: Jul 31, 2026 ... A Defesa Civil de Camboriú lançamento o Plano “Camboriú em Alerta ao El Niño”, uma iniciativa que reúne ações de conscientização, ...
-  - juiz: portão automático: fonte não oficial
-- `8972896ab3` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/p/DbaxUUaia33/
-  - trecho: Jul 30, 2026 ... 8h45 — Cenário climático para Camboriú e prognóstico do El Niño 2026/2027 ... Camboriú-SC. Photo by Linha Popular | Portal de notícias de ...
-- `e5e29169cd` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.jmlitoral.com.br/2026/06/22/camboriu-fortalece-plano-de-prevencao-ao-el-nino-e-cria-gabinete-de-crise-para-proteger-a-populacao/
-  - trecho: Jun 22, 2026 ... Na última sexta-feira (19), o prefeito de Camboriú, Leonel Pavan, reuniu no Auditório Ulisses Guimarães, no Paço Municipal, ...
-
-## Canoinhas/SC — 1 pendente(s)
-- `446cb04b13` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://rwtv.com.br/planaltonorte/canoinhas-se-prepara-para-possivel-impacto-do-el-nino-e-reforca-acoes-preventivas/
-  - trecho: May 12, 2026 ... Canoinhas se prepara para possível impacto do El Niño ... Zenilda ressaltou que o município trabalha com plano de contingência e definição clara ...
   - juiz: portão automático: fonte não oficial
 
 ## Capinzal/SC — 1 pendente(s)
@@ -1666,7 +1809,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 23, 2026 ... ... Plano de Contingência do município. O encontro ocorreu na Sala do ... Capinzal e região), 3º Sargento BM David Azevedo de Souza, que ...
   - juiz: portão automático: fonte não oficial
 
-## Chapecó/SC — 1 pendente(s)
+## Chapecó/SC — 2 pendente(s)
+- `f5990f6e1e` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Super El Niño: o que Chapecó fez para prevenir emergências
+  - url: https://upiara.com.br/noticias/super-el-nino-o-que-chapeco-fez-para-prevenir-e-combater-emergencias/
+  - trecho: Esse treinamento também faz parte do Plano de Contingência do município. Escolas passaram por treinamentos para reagir a emergências Foto: Prefeitura de Chapecó, Divulgação ... AnteriorAnteriorJorge Bornhausen nega janta
+  - juiz: portão automático: fonte não oficial
 - `2026bb79e8` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
   - url: https://upiara.com.br/noticias/super-el-nino-o-que-chapeco-fez-para-prevenir-e-combater-emergencias/
   - trecho: Super El Niño: o que Itajaí fez ... entre eles, Chapecó. Após o pedido, o município atualizou o Plano de Contingência da Defesa Civil de 2025 e mapeou as áreas de risco....
@@ -1691,39 +1839,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Itajaí/SC — 9 pendente(s)
-- `08e1764ebb` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - url: https://www.instagram.com/p/DceLKWvkaP7/
-  - trecho: Aug 25, 2026 ... Itajaí apresenta o Plano de Contingência e prepara empresas para riscos climáticos do El Niño 2026.
-  - juiz: portão automático: fonte não oficial
-- `3ff937f76f` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
-  - url: https://upiara.com.br/noticias/super-el-nino-o-que-itajai-fez-para-prevenir-e-combater-emergencias/
-  - trecho: Os canais oficiais da prefeitura divulgam, todas as sextas-feiras, o Radar El Niño para informar e preparar a população para o evento. ... Pesquisa da ABRH-SC revela formação de lideranças como principal desafio do RH de
-  - juiz: portão automático: fonte não oficial
-- `dbbff31d64` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
-  - url: https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/
-  - trecho: Os planos de contingência estadual, publicado na quinta-feira (20), e municipal de Itajaí preveem o uso de veículos 4×4 e embarcações quando alagamentos, enxurradas ou inundações comprometerem o acesso a áreas afetadas.
-  - juiz: portão automático: fonte não oficial
-- `d5cd31c2c0` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - url: https://www.facebook.com/PrefeituradeItajai/videos/%EF%B8%8Fmedidas-de-preven%C3%A7%C3%A3o-ao-el-ni%C3%B1o-a-defesa-civil-de-itaja%C3%AD-passa-a-divulgar-seman/1338660184904006/
-  - trecho: Jun 26, 2026 ... 🌧️ Itajaí se antecipa ao El Niño com ações para proteger a cidade Com foco na ... plano de contingência. Já fizemos reunião com o setor ...
-  - juiz: portão automático: fonte não oficial
-- `5c1fae3ce3` · nível **C** (2 pts) · busca_web · — · citação não extraída
-  - url: https://visornoticias.com.br/el-nino-em-itajai-encontro-prepara-empresas-para-riscos-climaticos
-  - trecho: Promovido pela Secretaria Municipal de Desenvolvimento Econômico, o encontro terá orientações sobre prevenção, gestão de riscos e elaboração de planos de contingência para empresas.
-- `54533a653c` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/p/DcegeSkHXfI/
-  - trecho: Aug 25, 2026 ... ... likes, 0 comments - portaldafoz on August 25, 2026: "ITAJAÍ APRESENTA PLANO DE CONTINGÊNCIA E PREPARA EMPRESAS PARA RISCOS ... El Niño em 2026, ...
-- `8dd2e869e3` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/reel/DbdTa6fRclC/?hl=en
-  - trecho: Jul 31, 2026 ... Acompanhe a série Radar El Niño e fique por dentro das ações da Defesa Civil de Itajaí. ... plano de contingência do município. A Defesa Civil ...
-- `dbc0225590` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/reel/DXsJ5lKjFWy/
-  - trecho: Apr 28, 2026 ... ... plano de contingência com foco na prevenção e na resposta rápida a ... 🌧️ ITAJAÍ SE PREPARA PARA IMPACTOS DO EL NIÑO Prefeitura ...
-- `e2f9a623b9` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/reel/DdeH-bKxvPQ/
-  - trecho: 3 days ago ... Fonte: Defesa Civil de Santa Catarina e Município de Itajaí. ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...
-
 ## Ituporanga/SC — 2 pendente(s)
 - `8fdf540c39` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://www.gcd.com.br/ituporanga/pedido-de-informacao-na-camara-cobra-preparo-de-ituporanga-para-o-el-nino/
@@ -1734,7 +1849,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: May 29, 2026 ... Ituporanga decreta estado de alerta climático ... Diante do El Niño, lojistas de Rio do Sul são orientados a fazer plano de contingência.
   - juiz: portão automático: fonte não oficial
 
-## Lages/SC — 1 pendente(s)
+## Lages/SC — 2 pendente(s)
+- `4419188894` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Defesa Civil de Lages participa de encontro nacional sobre El Niño
+  - url: https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/
+  - trecho: Sep 14, 2026 ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...
+  - juiz: portão automático: fonte não oficial
 - `8aa38d8664` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - url: https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/
   - trecho: 8 days ago ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...
@@ -1775,6 +1895,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: ... Plano de Contingência Estadual. A reunião do GRAC reúne os corpos técnicos ... El Niño: Defesa Civil de SC alinha ações preventivas | Portal Palhoça.
   - juiz: portão automático: fonte não oficial
 
+## Papanduva/SC — 2 pendente(s)
+- `031ae6ccfa` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Plano de Contingência de Papanduva chega às escolas
+  - url: https://www.liberdadesbs.com.br/noticia/plano-de-contingencia-de-papanduva-chega-as-escolas
+  - trecho: Sep 16, 2026 ... Plano de Contingência de Papanduva chega às escolas. Encontros acontecem ao longo desta semana. Da Redação.
+  - juiz: portão automático: fonte não oficial
+- `a2b34dcdc9` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Papanduva prepara abrigo animal por causa do “El Niño”
+  - url: https://www.liberdadesbs.com.br/noticia/papanduva-prepara-abrigo-animal-por-causa-do-el-nino
+  - trecho: Sep 11, 2026 ... Plantão das Farmácias - Papanduva SC. Voltar para o início. Papanduva ... O documento também relaciona a medida ao Plano de Contingência ...
+  - juiz: portão automático: fonte não oficial
+
 ## Pomerode/SC — 1 pendente(s)
 - `b16e877d25` · nível **B** (3 pts) · busca_web · RESPOSTA · **Decreto Estadual nº 1.530**, 18/05/2026
   - url: https://www.jornaldepomerode.com.br/como-se-preparar-para-o-el-nino-nova-pagina-da-defesa-civil-reune-informacoes-alertas-e-medidas-de-autoprotecao/
@@ -1789,6 +1921,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `780b956d53` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DYStRN-AfHD/
   - trecho: May 13, 2026 ... ... plano de contingência diante das previsões de chuvas intensas associadas ao fenômeno El Niño. ... Rio do Sul SC e Região.. agora fica a ...
+
+## Sombrio/SC — 1 pendente(s)
+- `ecaa8ff4d8` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Sombrio elabora Plano de Contingência para segurança nas ...
+  - url: https://www.instagram.com/p/Da5UB4kn5ns/
+  - trecho: Jul 17, 2026 ... 1 likes, 0 comments - portallitoralmais on July 17, 2026: "Sombrio elabora Plano de Contingência para segurança nas unidades de ensino ...
+  - juiz: portão automático: fonte não oficial
 
 ## Assis/SP — 1 pendente(s)
 - `c6d3458dae` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
