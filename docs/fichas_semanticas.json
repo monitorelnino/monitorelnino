@@ -668,26 +668,28 @@
    "acao_relacionada": null
   },
   "saude.html#boxCalor": {
-   "tipo": "mapa e contagem",
-   "pergunta_que_responde": "Onde há aviso de calor vigente agora?",
-   "dimensao_da_preparacao": "alertas de saúde",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
+   "tipo": "mapa e lista",
+   "pergunta_que_responde": "Quantos municípios de cada estado estão em classe severa ou extrema de excesso de calor?",
+   "dimensao_da_preparacao": "exposição observada",
+   "universo": "municípios lidos pelo painel do Ministério da Saúde",
+   "unidade_de_analise": "município, agregado por UF",
    "territorio": "Brasil",
-   "periodo": "consulta mais recente",
-   "variavel_principal": "contagem de avisos de calor vigentes",
-   "denominador": null,
-   "fonte": "INMET",
-   "metodologia": null,
+   "periodo": "dia da consulta",
+   "variavel_principal": "classe de excesso de calor (Normal, Baixo, Severo, Extremo), no vocabulário do MS",
+   "denominador": "municípios lidos no dia",
+   "fonte": "Painel Nacional de Excesso de Calor (Ministério da Saúde)",
+   "metodologia": "Classe calculada pelo MS a partir do índice EHF. O Monitor reproduz a classe publicada e não reescala. Fonte sem resposta entra como lacuna declarada, nunca como zero.",
    "conclusoes_permitidas": [
-    "onde há aviso de calor vigente no momento da consulta"
+    "quantos municípios o MS classificou em cada classe de excesso de calor no dia"
    ],
    "conclusoes_nao_permitidas": [
-    "efeito do calor sobre a saúde da população",
-    "ausência de aviso como ausência de risco"
+    "efeito sobre casos ou óbitos",
+    "atribuição do calor ao El Niño",
+    "ausência de classificação como ausência de calor",
+    "comparação da classe com temperatura medida"
    ],
-   "funcao_narrativa": "camada observada: sinal de risco sanitário em curso",
-   "acao_relacionada": "consultar o aviso no INMET"
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": "consultar o painel do Ministério da Saúde"
   },
   "saude.html#boxSRAG": {
    "tipo": "série temporal",
@@ -944,50 +946,6 @@
    ],
    "funcao_narrativa": "evidência do agora",
    "acao_relacionada": null
-  },
-  "monitor-de-riscos.html#boxAvisos": {
-   "tipo": "mapa e contagem",
-   "pergunta_que_responde": "Onde há aviso meteorológico vigente agora?",
-   "dimensao_da_preparacao": "alertas",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
-   "territorio": "Brasil",
-   "periodo": "consulta mais recente",
-   "variavel_principal": "contagem e severidade de avisos vigentes",
-   "denominador": null,
-   "fonte": "INMET",
-   "metodologia": null,
-   "conclusoes_permitidas": [
-    "onde há aviso vigente no momento da consulta"
-   ],
-   "conclusoes_nao_permitidas": [
-    "eficácia do sistema de alerta",
-    "ausência de aviso como ausência de risco"
-   ],
-   "funcao_narrativa": "evidência do agora: o ciclo em curso",
-   "acao_relacionada": "consultar o aviso no INMET"
-  },
-  "monitor-de-riscos.html#boxCemaden": {
-   "tipo": "mapa e contagem",
-   "pergunta_que_responde": "Onde há alerta hidrológico ou geológico vigente agora?",
-   "dimensao_da_preparacao": "alertas",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
-   "territorio": "Brasil",
-   "periodo": "consulta mais recente",
-   "variavel_principal": "contagem de alertas vigentes",
-   "denominador": null,
-   "fonte": "CEMADEN",
-   "metodologia": null,
-   "conclusoes_permitidas": [
-    "onde há alerta vigente no momento da consulta"
-   ],
-   "conclusoes_nao_permitidas": [
-    "eficácia do sistema",
-    "ausência de alerta como ausência de risco"
-   ],
-   "funcao_narrativa": "evidência do agora",
-   "acao_relacionada": "consultar o alerta no CEMADEN"
   },
   "financiamento.html#boxDespesa182": {
    "tipo": "mapa de pontos e lista",

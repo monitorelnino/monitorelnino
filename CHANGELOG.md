@@ -9,6 +9,32 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §207 · O dinheiro próprio do município: a camada que existe para todos · 24/09/2026
+
+Classe **coleta e páginas**. Peso zero nos dois índices, provado por portão e pelo teste de estresse que apaga a pasta inteira e confere que nenhuma nota muda.
+
+**A precisão de desenho que o pedido delegou.** O saldo do Fundo Municipal de Proteção e Defesa Civil não é dado centralizado: existe só no portal ou na lei orçamentária de cada município, e muitos não têm fundo. Existe, porém, um dado irmão **centralizado para os 5.570**: a despesa na subfunção **06.182 (Defesa Civil)**, que todo município declara ao SICONFI. É por ela que a camada A começa, e é ela que faz o mapa nascer completo enquanto as camadas B e C crescem por amostragem.
+
+**As quatro verificações que o pedido mandou fazer antes, respondidas.** O anexo é o `DCA-Anexo I-E`; a subfunção vem no campo `conta`, como "06.182 - Defesa Civil"; as colunas são empenhada, liquidada, paga e as duas de restos a pagar, e a **liquidada** é a publicada. Não existe consulta em lote — `id_ente` tem de ser o código IBGE exato, e consulta sem ele devolve zero itens —, então são 5.570 chamadas, o que cabe na cadência anual da DCA. O piloto das 27 capitais foi feito antes de generalizar, como o pedido exige.
+
+**O que o piloto das capitais mostrou.** Dezenove capitais com lançamento, sete que entregaram a declaração e **não lançaram nada na subfunção 182**, e uma sem declaração. Mediana de **R$ 1,19 por habitante**. Rio Branco no topo, com R$ 40,93; Belo Horizonte com R$ 13,62; São Paulo com R$ 4,13.
+
+**Três classes de ausência, porque são três coisas diferentes.** `sem_lancamento_182` é o município que entregou a DCA e não lançou nada ali — e isso **não é** ausência de gasto em defesa civil, porque muitos lançam defesa civil em drenagem (17.512), urbanismo (15.451) ou segurança (06.181). `sem_declaracao` é quem não entregou o exercício. `sem_coleta` é quem o Monitor ainda não consultou. Nenhuma das três tem valor por habitante, e o portão reprova se alguma tiver.
+
+**Dois defeitos que o piloto produziu, e que só apareceram porque houve piloto.**
+
+Curitiba liquidou R$ 2.467,02 para 1,77 milhão de habitantes. Arredondado a duas casas, isso virava **R$ 0,00 por habitante** — um valor real apresentado como zero, no mapa e na legenda do mínimo. O dado passou a guardar seis casas, e a exibição diz **"menos de R$ 0,01"**: arredondar para zero um valor que existe é o mesmo erro de fundo das três classes de ausência, só que mais difícil de ver.
+
+E Brasília aparecia como "não entregou". O Distrito Federal **não entrega DCA municipal porque não é município**: declara como estado. Chamar isso de falta de entrega imputaria a ele uma falha que não existe, e o registro passou a carregar a nota da natureza federativa.
+
+**A ressalva que a legenda é obrigada a dizer.** "**Inclui preparação e resposta**" — porque a subfunção 182 soma as duas coisas e a fonte não as separa. Um município que gastou tudo socorrendo uma enchente aparece igual a um que gastou tudo em plano e treinamento. A ressalva está declarada no dado, exigida na página, e o portão reprova se sair de qualquer um dos dois.
+
+**A alternativa em lista não é tabela.** A página de Financiamento não tem tabelas por decisão de 15/09/2026, com portão próprio; a lista da figura é uma lista de definição. Vale registrar que o portão reprovou uma vez por casar a palavra "tabela" dentro de um **comentário** do código, e a correção certa foi reescrever o comentário, não afrouxar o portão.
+
+**Portão.** `verificar_financiamento.py` ganhou a bateria (i): todo registro com fonte, exercício, data e hash; população **sempre** do Censo 2022, nunca a estimativa que o próprio SICONFI devolve; fórmula do R$/hab declarada no dado; conferência de que o valor publicado bate com a fórmula; e a trava central — nenhuma classe de ausência com valor por habitante. Três testes negativos novos: forçar zero num município sem lançamento, trocar a população pela do SICONFI e retirar a ressalva da página. Os arquivos de `municipios/` entraram na varredura de chave de API e de campo de autor, como os demais da pasta.
+
+**O que fica declarado.** As camadas **B** (existe fundo municipal?) e **C** (quanto há no fundo, por amostragem, capitais primeiro) seguem abertas, e com elas o seletor de camadas do mapa, o cartão da cidade e a seção da METODOLOGIA. A varredura dos 5.570 também: esta rodada cobre as 27 capitais, com fila própria e prioridade baixa, sem disputar com a rotina dos planos.
+
 ## §206 · Temperatura, qualidade do ar e os alertas onde eles pertencem · 24/09/2026
 
 Classe **coleta e páginas**. Peso zero em tudo o que entra: nenhum número novo toca nota do MARÉ Legal nem do MARÉ Saúde, e o portão prova isso.
