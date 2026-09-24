@@ -240,12 +240,25 @@ def descobrir_calor_ms(buscar_fn=None, data: str = None) -> tuple:
     payload = {"t": {"t": 10, "i": 0, "p": {"k": ["data"], "v": [
         {"t": 10, "i": 1, "p": {"k": ["date"], "v": [{"t": 1, "s": dia}]}, "o": 0}]}, "o": 0}, "f": 63, "m": []}
     consulta = urllib.parse.quote(json.dumps(payload, separators=(",", ":")), safe="")
+    import time
     vazias = 0
     for h in handlers:
         url = f"{CALOR_MS_SITIO}_serverFn/{h}?payload={consulta}"
-        try:
-            bruto = fn(url)
-        except Exception:
+        bruto = None
+        # 24/09/2026 (§209): a recusa com 200 e corpo vazio é TRANSITÓRIA — medida como limite de
+        # taxa, não bloqueio: minutos depois o mesmo endereço devolveu os 5.573 municípios. Sem
+        # espera, a fonte ficava eternamente em "aguardando primeira coleta" por uma janela de
+        # alguns minutos. Esperar é respeitar o limite; insistir sem pausa é o contrário.
+        for tentativa in range(3):
+            try:
+                bruto = fn(url)
+            except Exception:
+                bruto = None
+            if (bruto or "").strip():
+                break
+            if tentativa < 2:
+                time.sleep(15 * (tentativa + 1))
+        if bruto is None:
             continue
         # 24/09/2026, medido: este endereço serve HTTP 200 com CORPO VAZIO quando não quer
         # responder — aconteceu 8 vezes em 8 tentativas depois de uma rajada de consultas, e
