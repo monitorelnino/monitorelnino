@@ -28,6 +28,10 @@ UF_NOME = {"AC": "Acre", "AL": "Alagoas", "AM": "Amazonas", "AP": "Amapá", "BA"
            "RO": "Rondônia", "RR": "Roraima", "RS": "Rio Grande do Sul", "SC": "Santa Catarina", "SE": "Sergipe", "SP": "São Paulo", "TO": "Tocantins"}
 ASSINATURA = "Futura Evidence Lab — MARÉ · Monitor de Antecipação e Resposta ao El Niño (monitorelnino.com.br)"
 
+# 24/09/2026 (§201): delimitação temporal e espacial em todo pedido. Goiás recusou pedido por
+# genérico, invocando o art. 11 da Lei estadual 18.025/2013 — e a recusa é evitável: basta
+# dizer de que período e de que território se fala. Sem isso, o pedido pode ser negado sem
+# nunca chegar ao mérito, e o prazo da LAI se perde inteiro.
 MODELO_DC = """À {orgao} ({uf})
 Serviço de Informação ao Cidadão — pedido com fundamento na Lei nº 12.527/2011 (Lei de Acesso à Informação)
 
@@ -37,6 +41,10 @@ Com fundamento na Lei nº 12.527/2011, solicito ao órgão estadual de proteçã
 (2) a relação dos municípios com plano em elaboração, com a data prevista de conclusão;
 (3) o plano estadual de contingência vigente para o mesmo ciclo, com número, data e endereço eletrônico;
 (4) a relação dos municípios cujos decretos de situação de emergência ou estado de calamidade pública foram homologados pelo estado desde 29/06/2026, com número e data.
+
+Delimitação temporal: atos vigentes ou editados entre 29/06/2026 e 31/12/2027.
+Delimitação espacial: âmbito estadual e municípios do estado de {nome} ({uf}).
+
 
 Solicito resposta em formato aberto (CSV ou planilha). Informo que as respostas serão publicadas, com crédito ao órgão, no registro de transparência do MARÉ, como fonte de nível estadual da verificação.
 
@@ -52,6 +60,10 @@ Com fundamento na Lei nº 12.527/2011, solicito à Secretaria de Estado da Saúd
 (1) o plano estadual de contingência vigente para arboviroses e/ou ondas de calor e/ou emergências em saúde pública associadas ao El Niño 2026-2027, com número, data e endereço eletrônico do documento;
 (2) a relação dos municípios com plano municipal de contingência correspondente, se a Secretaria a mantiver, com número e data do ato e, quando disponível, o endereço eletrônico;
 (3) a indicação do órgão ou estrutura responsável (CIEVS, COE, sala de situação) e a data de sua ativação para o ciclo, se houver.
+
+Delimitação temporal: atos vigentes ou editados entre 29/06/2026 e 31/12/2027.
+Delimitação espacial: âmbito estadual e municípios do estado de {nome} ({uf}).
+
 
 Solicito resposta em formato aberto (CSV ou planilha). As respostas serão publicadas, com crédito ao órgão, na página "Saúde e El Niño" do MARÉ — registro de transparência sem peso no índice.
 
@@ -113,7 +125,7 @@ def gerar():
                       "'a_enviar' = texto gerado, envio humano pendente (Fala.BR exige pessoa física identificada)",
            "gerado_em": date.today().isoformat(), "pedidos": pedidos}
     json.dump(reg, open(SAIDA.parent / "lai_pedidos.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
-    print(f"LAI: {len(pedidos)} pedidos gerados em docs/lai/ (27 defesa civil + 27 saúde + 1 Carro-Pipa + 1 Cadastro Nacional); registro em data/lai_pedidos.json")
+    print(f"LAI: {len(pedidos)} pedidos gerados em {SAIDA} (27 defesa civil + 27 saúde + 1 Carro-Pipa + 1 Cadastro Nacional); registro em data/lai_pedidos.json")
 
 
 def registrar(uf, tipo, protocolo, data_envio):
@@ -133,10 +145,20 @@ def autoteste():
     def t1(): gerar(); return len(list(SAIDA.glob("*.txt"))) == 56
     def t2(): r = json.load(open(SAIDA.parent / "lai_pedidos.json", encoding="utf-8")); return len(r["pedidos"]) == 56 and all(p["protocolo"] is None for p in r["pedidos"])
     def t3(): return "12.527" in (SAIDA / "SC_defesa_civil.txt").read_text(encoding="utf-8") and "Santa Catarina" in (SAIDA / "SC_saude.txt").read_text(encoding="utf-8")
+    def t5():
+        """§201: todo pedido estadual traz delimitação temporal e espacial. Goiás recusou pedido por
+        genérico (art. 11 da Lei estadual 18.025/2013); sem o recorte, a negativa vem sem mérito e o
+        prazo da LAI se perde. Confere nos dois modelos, e com a UF interpolada, não literal."""
+        dc = (SAIDA / "MT_defesa_civil.txt").read_text(encoding="utf-8")
+        sa = (SAIDA / "GO_saude.txt").read_text(encoding="utf-8")
+        return ("Delimitação temporal: atos vigentes ou editados entre 29/06/2026 e 31/12/2027." in dc
+                and "municípios do estado de Mato Grosso (MT)" in dc
+                and "Delimitação temporal" in sa and "Goiás (GO)" in sa)
+
     def t4():  # 21/09/2026: pedido do Cadastro Nacional (Decreto 10.692/2021) — cita a base legal certa
         t = (SAIDA / "BR_cadastro_nacional_SEDEC_MDR.txt").read_text(encoding="utf-8")
         return "10.692" in t and "12.527" in t and "14.750" in t
-    return rodar_autoteste({"56 textos gerados": t1, "registro com 56 pedidos, protocolo null": t2,
+    return rodar_autoteste({"§201 delimitação temporal e espacial em todo pedido": t5, "56 textos gerados": t1, "registro com 56 pedidos, protocolo null": t2,
                             "texto cita a LAI e o estado": t3,
                             "pedido do Cadastro Nacional cita o decreto e a lei certa": t4})
 
