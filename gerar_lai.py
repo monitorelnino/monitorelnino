@@ -149,6 +149,9 @@ def autoteste():
         """§201: todo pedido estadual traz delimitação temporal e espacial. Goiás recusou pedido por
         genérico (art. 11 da Lei estadual 18.025/2013); sem o recorte, a negativa vem sem mérito e o
         prazo da LAI se perde. Confere nos dois modelos, e com a UF interpolada, não literal."""
+        gerar()   # §201: gera antes de ler — este caso pode rodar antes do t1, e no runner o
+                  # diretório do registro privado não existe até a primeira geração. Localmente
+                  # passava por sobra de execução anterior, que é a pior forma de um teste passar.
         dc = (SAIDA / "MT_defesa_civil.txt").read_text(encoding="utf-8")
         sa = (SAIDA / "GO_saude.txt").read_text(encoding="utf-8")
         return ("Delimitação temporal: atos vigentes ou editados entre 29/06/2026 e 31/12/2027." in dc
