@@ -52,6 +52,10 @@ SUBPASTAS = {"Base_de_Dados", "Tabelas_de_Resultados"}
 PADRAO_PLANO = re.compile(r"(plano.*coting|plano.*conting|conting.*plano|plancont)", re.I)
 PADRAO_RISCO = re.compile(r"(risco|desastre|defesa\s*civil|mgrd|protecao\s*civil|prote\u00e7\u00e3o)", re.I)
 PADRAO_IBGE = re.compile(r"^(cod|codigo|cd)[\s_]*(mun|municipio|ibge)|^a1$", re.I)
+# 24/09/2026 (camada B do dinheiro municipal, §207): a pergunta "o município tem FUNDO de
+# defesa civil?" também pode ter resposta declarada na MUNIC. Os nomes possíveis da coluna
+# incluem as siglas que as leis municipais usam (FUMPDEC, FUMDEC, FUNDEC, FMPDC).
+PADRAO_FUNDO = re.compile(r"(fundo|fumpdec|fumdec|fundec|fmpdc|fmdc)", re.I)
 
 
 def baixar(url: str, limite: int = 40_000_000) -> bytes:
@@ -74,7 +78,7 @@ def colunas_de_csv(texto: str) -> list:
 
 
 def classificar_colunas(colunas: list) -> dict:
-    """Separa as colunas em: chave do município, plano de contingência, e contexto de risco.
+    """Separa as colunas em: chave do município, plano de contingência, contexto de risco e fundo.
 
     O par plano/risco é o que decide se a edição serve: sem coluna de plano de contingência,
     a edição não responde à pergunta do índice, por mais recente que seja.
@@ -83,6 +87,9 @@ def classificar_colunas(colunas: list) -> dict:
         "ibge": [c for c in colunas if PADRAO_IBGE.search(c)],
         "plano_contingencia": [c for c in colunas if PADRAO_PLANO.search(c)],
         "risco_desastre": [c for c in colunas if PADRAO_RISCO.search(c) and not PADRAO_PLANO.search(c)],
+        # A coluna de fundo, se existir, é a camada declarada da camada B (§207): mesmo tratamento
+        # da camada declarada de planos — "declarado, não documentado" até a lei ser localizada.
+        "fundo_municipal": [c for c in colunas if PADRAO_FUNDO.search(c)],
     }
 
 
@@ -277,6 +284,19 @@ def autoteste() -> int:
                cols_x == ["CodMun", "UF", "Mgrd01", "MGRD_PlanoContingencia", "Mgrd03"])
         checar("xlsx: a coluna de plano é classificada",
                classificar_colunas(cols_x)["plano_contingencia"] == ["MGRD_PlanoContingencia"])
+    except ImportError:
+        pass
+    # §207, camada B: a coluna de FUNDO, se a edição a tiver, é classificada à parte — e uma
+    # coluna de plano não é tomada por coluna de fundo, nem o contrário.
+    cls = classificar_colunas(["CodMun", "MGRD_PlanoContingencia", "Mgrd_FundoMunicipal",
+                               "Mgrd_FUMPDEC", "Mgrd_RiscoArea"])
+    checar("fundo: as colunas de fundo são separadas das de plano e de risco",
+           cls["fundo_municipal"] == ["Mgrd_FundoMunicipal", "Mgrd_FUMPDEC"]
+           and cls["plano_contingencia"] == ["MGRD_PlanoContingencia"])
+    checar("fundo NEGATIVO: edição sem coluna de fundo devolve lista vazia, não engano",
+           classificar_colunas(["CodMun", "MGRD_PlanoContingencia"])["fundo_municipal"] == [])
+    try:
+        pass
     except ImportError:
         print("  (openpyxl ausente — casos de xlsx pulados)")
 

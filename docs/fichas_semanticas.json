@@ -946,6 +946,31 @@
    ],
    "funcao_narrativa": "evidência do agora",
    "acao_relacionada": null
+  },
+  "financiamento.html#boxDespesa182": {
+   "tipo": "mapa de pontos e lista",
+   "pergunta_que_responde": "Quanto cada município declarou de despesa em defesa civil, por habitante?",
+   "dimensao_da_preparacao": "dinheiro próprio do município",
+   "universo": "municípios consultados no SICONFI (a amostra cresce por rodada)",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil",
+   "periodo": "exercício 2025",
+   "variavel_principal": "despesa liquidada na subfunção 06.182 por habitante, em R$/hab",
+   "denominador": "população do Censo 2022",
+   "fonte": "SICONFI (Tesouro Nacional) e IBGE — Censo 2022",
+   "metodologia": "Despesa liquidada declarada pelo próprio município na DCA, anexo I-E. A subfunção 182 soma preparação e resposta, e a fonte não separa. Três classes de ausência, nenhuma delas zero: sem lançamento na 182, sem declaração no SICONFI, sem coleta. Valor real abaixo de R$ 0,01 é exibido como 'menos de R$ 0,01', nunca como R$ 0,00.",
+   "conclusoes_permitidas": [
+    "quanto o município declarou de despesa liquidada na subfunção de defesa civil, por habitante",
+    "quais municípios não lançaram nada naquela subfunção e quais não entregaram a declaração"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que município sem lançamento na 182 não gasta em defesa civil",
+    "que o valor seja gasto em preparação",
+    "qualidade ou eficácia da defesa civil municipal",
+    "comparação com o saldo do fundo municipal, que é outro dado"
+   ],
+   "funcao_narrativa": "evidência do dinheiro próprio",
+   "acao_relacionada": "consultar a declaração do município no SICONFI"
   }
  }
 }
