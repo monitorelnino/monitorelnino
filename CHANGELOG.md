@@ -9,6 +9,30 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §201 · Ausência declarada pelo órgão: a distinção que faltava, e a resposta do MT na fila humana · 24/09/2026
+
+Classe **esquema de dados e ingestão de evidência**. Nenhum número muda. Nada entra no banco: a resposta de LAI vai para arquivo de revisão, e a promoção é R7.
+
+**A distinção, que vale para todos os estados.** O teto público de ausência é a espinha dorsal deste projeto: nunca se diz "não existe", diz-se "não localizamos até o corte". A regra protege contra negar a existência de um documento que talvez só não tenhamos encontrado. Mas ela cobrava um preço que ficou visível agora: quando o **órgão competente declara formalmente que o instrumento não existe**, o Monitor era obrigado a relatar isso com a mesma frase tímida de quando a busca apenas falhou. **As duas coisas não são a mesma.** Uma é lacuna nossa, de alcance. A outra é lacuna deles, confirmada na fonte.
+
+`data/ausencia_declarada.json` passa a guardar a segunda, com órgão, data, canal, escopo e o ponteiro para o registro interno — **nunca o texto da resposta**, que por regra editorial não entra neste repositório. O portão `scripts/verificar_ausencia_declarada.py` (o **56º**) impede que o arquivo vire porta dos fundos para afirmar inexistência sem lastro: exige fonte nomeada e data em todo item, exige que cada um declare o **efeito no índice** explicitamente, recusa UF fora das 27 e escopo repetido, e limita o tamanho do resumo — porque aqui se guarda o fato, não a carta. Seis casos no autoteste, cinco deles negativos.
+
+**Efeito no índice: nenhum, nos dois casos registrados.** Quem não tem instrumento já contava zero. O que muda é o que o Monitor pode afirmar, e com que fonte.
+
+**Mato Grosso, e uma leitura que quase saiu errada.** A Defesa Civil de MT declarou que **não existe plano estadual de contingência**. Lido depressa, isso parece contradizer a classificação de MT, que é `NOVO`. Não contradiz: o instrumento pelo qual MT é classificado é o **Plano de Combate a Incêndios do 2º semestre de 2026 (Decreto 2.015/2026)**, com a Sala de Situação Central como estrutura. A declaração é sobre um documento **diferente** do que pontua, e está registrada com essa ressalva no próprio item.
+
+**O que veio do MT, e para onde foi.** `data/mt_lai_revisar.json`, arquivo de revisão para leitura humana, com quatro blocos: 6 municípios com plano vigente **declarado pelo estado** (sem número nem data do ato — o órgão remete o endereço a cada município, então é declaração, não documento); 8 com plano em elaboração e data prevista, que **não pontuam**; a ausência declarada do plano estadual; e 3 decretos homologados, com número e data.
+
+**O cruzamento do item 4 deu achado.** MT tem **zero** eventos de resposta no banco — está entre as oito UFs sem nenhum (AP, DF, ES, MT, PA, RJ, RR, TO). Os três atos que o estado homologou não vieram pelo S2iD. A divergência entre a homologação estadual e o que o S2iD indexa é achado, não erro a silenciar. E há uma distinção de publicação que vale registrar: **o decreto é ato público** — número, data e município podem ser publicados; a carta da LAI, não.
+
+**A ressalva de cobertura, e uma divergência de denominador.** Seis planos é número baixo, e a hipótese mais provável é que o estado conheça apenas os planos que lhe foram comunicados — a própria resposta remete o endereço de cada plano ao município. Fica registrado como **declaração estadual com cobertura possivelmente parcial**, e o complemento **não** vira "municípios sem plano". Anotada também uma divergência que apareceu na conferência: `municipios_ibge_referencia.json` traz **142** municípios em MT, sem nome nem código repetido, e o handover fala em **141**, que é o número publicado pelo IBGE. Nenhum dos dois é usado como verdade até a conferência; proporção em texto público fica suspensa.
+
+**Reverificação com data.** `data/reverificar.json` guarda os 8 municípios em elaboração com a data a partir da qual voltar a olhar. O limite está escrito no próprio arquivo: **ainda não há consumidor automático** — é lista de trabalho legível por máquina, para a data não se perder num documento de handover. Ligar a um coletor é trabalho declarado e não feito.
+
+**O pedido de LAI ganhou recorte.** Goiás recusou pedido por genérico, invocando o art. 11 da Lei estadual 18.025/2013. Os dois modelos passam a trazer delimitação **temporal** (atos vigentes ou editados entre 29/06/2026 e 31/12/2027) e **espacial** (âmbito estadual e municípios da UF), com a UF interpolada e não literal — travado por autoteste. Sem o recorte, a negativa vem sem chegar ao mérito e o prazo da LAI se perde inteiro.
+
+**Uma mensagem que mentia.** O gerador anunciava "56 pedidos gerados em `docs/lai/`" enquanto escrevia no registro privado, fora deste repositório. Agora anuncia o diretório real. O texto dos pedidos nunca esteve no repositório público, e a mensagem sugeria que estivesse.
+
 ## §200 · O peso que contradizia a regra nova, no canto onde ninguém olha · 24/09/2026
 
 Classe **coerência interna**. Nenhuma nota muda, nenhuma média muda.
