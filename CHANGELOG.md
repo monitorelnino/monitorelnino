@@ -9,6 +9,28 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §202 · A escada dos estados chega ao município · 24/09/2026
+
+Classe **governança com efeito em nota** — mas de efeito **zero na aplicação**, e isso é o ponto.
+
+**A assimetria que existia.** O componente estadual distinguia, desde a v3.0, o que o instrumento **é**: `NOVO` 100 para o criado para o ciclo, `READ` 65 para o preexistente reativado por ato datado, `VIG` 45 para a ativação recorrente anual — plano de verão, operação sazonal que mobiliza o sistema todo ano, com ou sem El Niño. No município não havia nada disso: existia `plano`, e pronto. Um Plano de Contingência escrito para o El Niño 2026/2027 valia exatamente o mesmo que uma Operação Chuva que roda desde sempre.
+
+**A emenda.** `CRED_POP` ganha `plano_novo` 1,00 · `plano_readaptado` 0,65 · `plano_recorrente` 0,45 — as mesmas proporções da escada estadual, porque consistência aqui é aplicar a mesma régua a objetos diferentes, não inventar uma segunda. Registrada como **C28** na corrente de erratas do congelamento, pelo mesmo instrumento do §196: decisão da editoria emendando o C6, não errata.
+
+**Duas decisões de desenho, declaradas porque mudam o que o número significa.**
+
+A primeira: **`plano` continua valendo 1,00** e passa a significar *localizado, tipo não determinado*. Não se desconta município porque **nós** ainda não lemos o documento dele. É a regra da casa desde a v2.2.4 §2.1 — ausência de verificação não é ausência de documento —, e ela vale aqui com força: lacuna nossa não pode virar nota deles.
+
+A segunda: **`plano_antigo` fica em 1,00**. O §196, de hoje de manhã, decidiu que plano vigente de ciclo anterior conta integral. Sob a escada, ele cairia para 0,45. Reverter uma decisão da editoria por reinterpretação, no mesmo dia, seria trocar o juízo dela pelo meu — então ele só se move com o documento na mão mostrando que é rotina recorrente, e aí vira `plano_recorrente`, com a prova junto.
+
+**Efeito medido: nenhum.** Média nacional 46,57 antes e depois; nenhuma UF muda; nenhum registro foi reclassificado. A escada foi **instalada**, não aplicada.
+
+**A consequência, dita antes de acontecer.** Esta escada tende a **baixar** o índice conforme os documentos forem lidos, não a subir. Dos 122 planos municipais no banco, **82 têm texto extraído** — dá para classificar lendo, que é como se faz aqui. Quando um "Plano Preventivo de Chuvas de Verão" for lido e classificado como recorrente, ele cai de 1,00 para 0,45. É o resultado correto: rotina sazonal anual não é resposta ao El Niño. E chega aos poucos, na velocidade da leitura, cada passo por R7.
+
+**O vocabulário estava duplicado em dez lugares.** Acrescentar três categorias exigiu tocar o motor, a correção C10, as categorias aceitas de contribuição pública, o rótulo humano dos feeds, a paleta dos mapas e quatro arquivos de interface — porque não existe uma lista canônica de categorias, existem dez cópias. Todas foram ligadas nesta entrada; a lista única fica declarada como dívida, e é o tipo de coisa que o §30 da direção de arte chama de corrigir na origem.
+
+**Uma trava que aprendeu a distinguir vazio de esquecido.** O portão do congelamento exigia `efeito_por_uf` preenchido em toda errata — e reprovou esta, cujo efeito é genuinamente zero UF. Mas `{}` vazio significa duas coisas opostas: *nenhuma UF foi afetada* e *ninguém preencheu*. O portão passou a aceitar o vazio **apenas quando o efeito nacional corrobora** com `ufs_afetadas = 0` explícito; sem a corroboração, continua reprovando. Verificado ao vivo nos dois sentidos.
+
 ## §200 · O peso que contradizia a regra nova, no canto onde ninguém olha · 24/09/2026
 
 Classe **coerência interna**. Nenhuma nota muda, nenhuma média muda.
