@@ -35,7 +35,11 @@ E Brasília aparecia como "não entregou". O Distrito Federal **não entrega DCA
 
 **O cartão da cidade, a metodologia e os créditos.** O cartão de cada município ganhou uma linha de peso zero com a despesa na subfunção 182 — e três travas: a linha traz a ressalva e o peso declarado, a classe de ausência **nunca vira zero**, e despesa sozinha **não cria cartão** de município que não tinha nada a dizer. A `METODOLOGIA.md` ganhou a **§42**, com as três camadas, as duas limitações da subfunção, as classes de ausência, a exceção federativa do DF e a forma da fonte. Os Pesquisadores passaram a creditar SICONFI/Tesouro e o Censo 2022/IBGE.
 
-**O que fica declarado.** As camadas **B** (existe fundo municipal?) e **C** (quanto há no fundo, por amostragem, capitais primeiro) seguem abertas, e com elas o seletor de camadas do mapa. A varredura dos 5.570 também: esta rodada cobre as 27 capitais, com fila própria e prioridade baixa, sem disputar com a rotina dos planos.
+**O começo da camada B, feito do jeito que não adivinha.** O dicionário de busca ganhou o grupo **`financiamento_municipal`**, com os oito jeitos de a lei do fundo se escrever — "fundo municipal de proteção e defesa civil", FUMPDEC, FUMDEC, FUNDEC, FMPDC, "fica instituído o fundo". É vocabulário de **recuperação**: serve para achar o ato, nunca para classificá-lo, e o registro segue exigindo número, data e URL da lei.
+
+Quanto à MUNIC, a verificação 7.2 do pedido já tinha resposta parcial no repositório, da sonda de 22/09: o bloco de gestão de riscos e desastres existe nas edições de **2017 e 2020**, não na de 2024 — cuja lista de oito temas não o inclui, e cujo bloco de evento climático é restrito ao Rio Grande do Sul. Ou seja, **a edição mais recente pode não ser a edição certa**, e escolher muda o ano de referência do que o site afirma: é decisão da editoria. A sonda passou a procurar também coluna de **fundo**, para que a próxima rodada da Action responda se ela existe — em vez de eu supor. Ela não roda aqui: os domínios do IBGE respondem 403 no ambiente de edição.
+
+**O que fica declarado.** A camada **C** (quanto há no fundo, por amostragem, capitais primeiro) segue aberta, e com ela o seletor de camadas do mapa. Da camada **B** falta a escolha editorial da edição da MUNIC e a descoberta das leis. A varredura dos 5.570 também: esta rodada cobre as 27 capitais, com fila própria e prioridade baixa, sem disputar com a rotina dos planos.
 
 ## §206 · Temperatura, qualidade do ar e os alertas onde eles pertencem · 24/09/2026
 
