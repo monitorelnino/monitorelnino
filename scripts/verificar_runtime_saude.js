@@ -160,10 +160,16 @@ setTimeout(() => {
   try {
     const SUFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_uf.json"), "utf8")); const UFS = Object.keys(SUFd.uf); const st = u => (SUFd.uf[u] || {}).status || "NAO_VERIFICADO";
     const c = k => UFS.filter(u => k.includes(st(u))).length;
-    teste("saúde: título-fato do MARÉ · Saúde com as contagens do dado", new RegExp(`^Saúde: ${c(["NOVO"])} estados com plano para o ciclo, ${c(["VIG","READ"])} com o de todo ano, ${c(["ELAB"])} em elaboração, ${c(["NAO_VERIFICADO"])} não verificados`).test(q("boxMonitor").querySelector(".figura-titulo").textContent));
+    // 23/09/2026 (governança editorial §12, §32.8): boxMonitor pinta PRONTIDÃO SANITÁRIA; o título-fato
+    // anterior contava estados por status de instrumento, que é o objeto da figura seguinte, e saía
+    // quase igual ao dela. O princípio que este portão guarda continua o mesmo — o título vem do dado,
+    // nunca digitado —, e a contagem agora sai do agregado autoritativo em monitor_saude.json.
+    const MSd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
+    teste("saúde: título-fato da prontidão com a contagem do dado", new RegExp(`^Prontidão sanitária por estado: ${MSd.resumo.verificadas} de ${UFS.length} estados verificados$`).test(q("boxMonitor").querySelector(".figura-titulo").textContent));
+    teste("saúde: título-fato do status com as contagens do dado", new RegExp(`^Plano de saúde por estado: ${c(["NOVO"])} para o ciclo, ${c(["VIG","READ"])} de todo ano, ${c(["NAO_VERIFICADO"])} não verificados$`).test(q("boxStatus").querySelector(".figura-titulo").textContent));
     const DESFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "serie_painel.json"), "utf8")); const M = DESFd.municipios; const se = Object.values(M).map(m => m.ultima_se).sort().pop();
     const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
-    teste("saúde: dengue — municípios em alerta laranja/vermelho na última semana, do dado", new RegExp(`^Dengue: ${alto} municípios em alerta laranja ou vermelho na semana SE ${se.split("-")[1]} de 2026`).test(q("boxDesfMapa").querySelector(".figura-titulo").textContent));
+    teste("saúde: dengue — municípios em alerta laranja/vermelho na última semana, do dado", new RegExp(`^Dengue: ${alto} ${alto === 1 ? "município" : "municípios"} em alerta laranja ou vermelho na semana SE ${se.split("-")[1]} de 2026`).test(q("boxDesfMapa").querySelector(".figura-titulo").textContent));
     teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
   } catch (e) { teste("saúde: títulos-fato (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, tooltip, créditos e lacunas declaradas.");

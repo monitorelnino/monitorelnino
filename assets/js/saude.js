@@ -428,7 +428,16 @@ function titulosFatoSaude(){
   try {   // MARÉ · Saúde: estados por categoria do plano de saúde
     const UFS = Object.keys(SUF.uf || {}); const st = uf => (SUF.uf[uf] || {}).status || 'NAO_VERIFICADO';
     const c = k => UFS.filter(u => k.includes(st(u))).length;
-    titulo('boxMonitor', `Saúde: ${c(['NOVO'])} estados com plano para o ciclo, ${c(['VIG','READ'])} com o de todo ano, ${c(['ELAB'])} em elaboração, ${c(['NAO_VERIFICADO'])} não verificados` + (c(['LAC']) ? `, ${c(['LAC'])} sem plano` : ''));
+    // 23/09/2026 (governança editorial §12, §32.8): este mapa pinta PRONTIDÃO SANITÁRIA — média de
+    // instrumento, cobertura populacional e antecipação (Metodologia §31). O título-fato anterior
+    // contava estados por STATUS DE INSTRUMENTO, que é o objeto da figura seguinte (boxStatus), e
+    // saía quase idêntico ao dela. Título herdado da figura vizinha é o defeito que o §32.8 procura.
+    // O fato agora é sobre o próprio objeto, e traz à tona a cobertura da verificação.
+    // A contagem vem do agregado do próprio dado (MSAUDE.resumo), não de um recálculo aqui: o campo
+    // `verificado` não existe em SUF.uf, e uma primeira tentativa de derivá-lo dali imprimiu
+    // "0 de 27 estados verificados" numa página pública. Fato de título sai da fonte, nunca de palpite.
+    const Rsa = (typeof MSAUDE !== 'undefined' && MSAUDE && MSAUDE.resumo) || {};
+    if (Rsa.verificadas != null) titulo('boxMonitor', `Prontidão sanitária por estado: ${Rsa.verificadas} de ${UFS.length} estados verificados`);
     titulo('boxStatus', `Plano de saúde por estado: ${c(['NOVO'])} para o ciclo, ${c(['VIG','READ'])} de todo ano, ${c(['NAO_VERIFICADO'])} não verificados`);
   } catch (e) {}
   // dengue: municípios em alerta laranja/vermelho na última semana consolidada (nível 3 = laranja, 4 = vermelho no InfoDengue)
@@ -437,7 +446,8 @@ function titulosFatoSaude(){
     if (!Object.keys(M).length) return; const se = Object.values(M).map(m => m.ultima_se).filter(Boolean).sort().pop();
     const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
     const rot = doenca === 'chikungunya' ? 'Chikungunya' : 'Dengue';
-    titulo(box, `${rot}: ${n(alto)} municípios em alerta laranja ou vermelho na semana ${String(se || '').replace('2026-', 'SE ')} de 2026 (painel amostral)`);
+    const mun = alto === 1 ? 'município' : 'municípios';
+    titulo(box, `${rot}: ${n(alto)} ${mun} em alerta laranja ou vermelho na semana ${String(se || '').replace('2026-', 'SE ')} de 2026 (painel amostral)`);
   } catch (e) {} };
   tituloDoenca('dengue', 'boxDesfMapa'); tituloDoenca('chikungunya', 'boxChikMapa');
 }

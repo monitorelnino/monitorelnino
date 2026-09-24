@@ -9,6 +9,29 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §190 · Teste de calibração da governança editorial no MARÉ · Saúde · 23/09/2026
+
+Classe **revisão editorial**. Nenhum número do índice muda, nenhuma figura foi criada ou removida. O §34 da governança exige, antes de propagar qualquer lógica ao site, calibrar numa seção com pelo menos três visualizações e **escolher uma difícil, não a mais fácil**. A escolhida foi a página de Saúde: doze figuras e cinco seções irmãs por doença — a configuração em que legenda por fórmula e título herdado da figura vizinha são mais prováveis.
+
+**Sete defeitos no texto estático.** Dois títulos **idênticos** ("Nível de alerta por município · última semana consolidada") distinguiam dengue de chikungunya apenas por um token no fim da legenda. As legendas dessas figuras eram molde com sufixo — exatamente o que o §13 chama de "parecer gerada por fórmula". Duas legendas descreviam **as três opções do seletor** ("semanal … ou acumulado anual") em vez da figura, fazendo o trabalho que o próprio controle já faz. A legenda do status repetia o título duas vezes na mesma frase. E o risco sanitário trazia "(derivado)" no título **e** na legenda.
+
+**Um defeito de indicador.** O mapa de prontidão se chamava "Antecipação por estado". O código é explícito (`saude.js`, Metodologia §31): *prontidão = média de instrumento, cobertura populacional sanitária e antecipação*. O título nomeava **um dos três componentes como se fosse o indicador** — o §3 proíbe transformar variável isolada em conceito mais amplo, e aqui era o inverso, o conceito reduzido a uma parte. A legenda, o `aria-label` e o código já diziam *prontidão*; o título era o único fora. Agrava que a `METODOLOGIA` (E17) usa "antecipação" também para **a metade da página** (antecipação × resposta): a mesma palavra com dois sentidos na mesma tela, que é o §22.
+
+**Dois defeitos que só a renderização mostrou** — e é para isso que o §34 tem um passo 9. Os títulos desta página são **títulos-fato calculados do dado** (regra de 15/09), escritos por JavaScript por cima do HTML. Lidos no navegador:
+
+- o título-fato do mapa de **prontidão** contava estados por **status de instrumento** — o objeto da figura seguinte —, saindo quase idêntico ao dela. É o §32.8 em estado puro: texto herdado da figura vizinha.
+- o título dizia "**1 municípios** em alerta" para chikungunya. Concordância, que o §29 autoriza corrigir sem consulta.
+
+**Um erro meu, registrado porque importa.** A primeira correção do título-fato derivou a contagem de verificados de um campo que não existe em `saude_uf.json`, e a página renderizou "**Prontidão sanitária por estado: 0 de 27 estados verificados**" — número falso num texto público. A validação renderizada pegou antes de qualquer commit. A contagem passou a vir do agregado autoritativo (`monitor_saude.json` → `resumo.verificadas`, hoje **20 de 27**), com o motivo escrito no código para ninguém repetir o atalho. O §6 diz que incerteza interna nunca vira afirmação pública; aqui ela quase virou, e o que a barrou foi olhar o resultado renderizado, não o diff.
+
+**O portão foi atualizado, não afrouxado.** `verificar_runtime_saude.js` exigia que o título do mapa trouxesse as contagens de status. O princípio que ele guarda — *título-fato vem do dado, nunca digitado* — continua idêntico; o que mudou é qual fato e sobre qual objeto. A asserção agora confere a contagem de verificados contra `monitor_saude.json`, **passou a cobrir também o título do status** (que antes ninguém verificava) e ficou imune ao singular, que teria virado falha latente na primeira vez que a dengue marcasse um só município.
+
+**Correção de um registro do §189.** Aquela entrada disse que a nota metodológica "não tem lugar próprio" no componente de figura. Está errado: `.figura-leitura` existe no componente desde 07/09 e é a quarta função que o §11 pede. O defeito real é outro, e menor: ela é usada em **três figuras, todas em `monitor-de-riscos.html`**, e em nenhuma das outras onze páginas. Slot subutilizado, não ausente.
+
+**O que esta entrada não faz.** Não propaga nada. O §34 só libera propagar depois da calibração validada, e a propagação para as outras onze páginas é trabalho próprio, com o mesmo protocolo: ler dado e código de cada figura antes de escrever, e validar renderizado. As seções "Onde cada estado está" e "O que cada estado publicou" ficam anotadas como suspeita de redundância (§10) ainda não examinada.
+
+**Teste.** Portões de legendas, figuras, palavras, estrutura, consistência visual e runtime de saúde verdes; doze figuras sem título duplicado; overflow horizontal 0.
+
 ## §189 · A governança editorial e narrativa vira documento canônico, com precedência declarada · 23/09/2026
 
 Classe **governança**. Nenhum número do índice muda e nenhum texto público foi reescrito nesta entrada. O que muda é qual documento decide, e em que ordem, quando se vai escrever para o leitor.
