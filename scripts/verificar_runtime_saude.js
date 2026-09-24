@@ -67,7 +67,13 @@ setTimeout(() => {
   teste("mapas do painel (dengue e chikungunya): 27 estados e legenda", ["mapaDesf", "mapaChik"].every(id => q(id).querySelectorAll("path").length === 27) && q("legDesfMapa").children.length >= 1 && q("legChikMapa").children.length >= 1);
   teste("dengue nas capitais: 27 pontos dentro do mapa (coordenadas pela malha IBGE)", (() => { const c = [...d.querySelectorAll("#mapaDengue circle")]; return c.length === 27 && c.every(x => +x.getAttribute("cx") > 0 && +x.getAttribute("cx") < 480 && +x.getAttribute("cy") > 0 && +x.getAttribute("cy") < 460); })());
   teste("sem acordeão escondendo desfecho, sem seletor de doença", !q("outrosDesfechos") && !q("selDoencaDesf") && !q("boxEmerg") && !q("boxRespostaSanitaria"));
-  teste("seções próprias: dengue, chikungunya, calor, respiratórias, diarreicas, na ordem, antes dos estados", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("heroSaude") < pos("dengue") && pos("dengue") < pos("chikungunya") && pos("chikungunya") < pos("calor") && pos("calor") < pos("respiratorias") && pos("respiratorias") < pos("diarreicas") && pos("diarreicas") < pos("estados") && pos("estados") < pos("estadual"); })());
+  teste("seções próprias: dengue, chikungunya, calor, respiratórias, diarreicas, na ordem, antes dos estados", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("heroSaude") < pos("dengue") && pos("dengue") < pos("chikungunya") && pos("chikungunya") < pos("calor") && pos("calor") < pos("respiratorias") && pos("respiratorias") < pos("diarreicas") && pos("diarreicas") < pos("estadual") && pos("estadual") < pos("estados"); })());
+  // 23/09/2026 (§191): a decisão editorial registrada é "cada desfecho em seção própria, ANTES
+  // dos estados", e ela continua asserida acima. O que mudou é a ordem interna dos dois painéis
+  // de estado, que nunca foi decisão registrada — o portão só fixava a ordem que existia. Os dois
+  // são de escala estadual; o que os separa é a função: #estadual responde "o que cada estado
+  // publicou" no agregado, e #estados deixa o leitor achar o seu (§26, BRASIL → ESTADO). A
+  // resposta agregada vem antes da busca individual.
   const MSAUDE = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
   teste("medidor de resposta sanitária: índice do dado (MSAUDE.resposta.indice), arte única, contagem na pílula", q("rsNum").textContent === MSAUDE.resposta.indice.toFixed(1).replace(".", ",") && !!d.querySelector("#contadorRespostaSaude .gauge-fill--resposta") && new RegExp(MSAUDE.resposta.emergencias + " emergência").test(q("rsBadge").textContent));
   teste("interpretação da resposta fora do medidor, com contagem e milhões", /emergência\(s\) sanitária\(s\) declarada\(s\) desde 29\/06\/2026/.test(q("interpRespostaSaude").textContent));
@@ -160,10 +166,16 @@ setTimeout(() => {
   try {
     const SUFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_uf.json"), "utf8")); const UFS = Object.keys(SUFd.uf); const st = u => (SUFd.uf[u] || {}).status || "NAO_VERIFICADO";
     const c = k => UFS.filter(u => k.includes(st(u))).length;
-    teste("saúde: título-fato do MARÉ · Saúde com as contagens do dado", new RegExp(`^Saúde: ${c(["NOVO"])} estados com plano para o ciclo, ${c(["VIG","READ"])} com o de todo ano, ${c(["ELAB"])} em elaboração, ${c(["NAO_VERIFICADO"])} não verificados`).test(q("boxMonitor").querySelector(".figura-titulo").textContent));
+    // 23/09/2026 (governança editorial §12, §32.8): boxMonitor pinta PRONTIDÃO SANITÁRIA; o título-fato
+    // anterior contava estados por status de instrumento, que é o objeto da figura seguinte, e saía
+    // quase igual ao dela. O princípio que este portão guarda continua o mesmo — o título vem do dado,
+    // nunca digitado —, e a contagem agora sai do agregado autoritativo em monitor_saude.json.
+    const MSd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
+    teste("saúde: título-fato da prontidão com a contagem do dado", new RegExp(`^Prontidão sanitária por estado: ${MSd.resumo.verificadas} de ${UFS.length} estados verificados$`).test(q("boxMonitor").querySelector(".figura-titulo").textContent));
+    teste("saúde: título-fato do status com as contagens do dado", new RegExp(`^Plano de saúde por estado: ${c(["NOVO"])} para o ciclo, ${c(["VIG","READ"])} de todo ano, ${c(["NAO_VERIFICADO"])} não verificados$`).test(q("boxStatus").querySelector(".figura-titulo").textContent));
     const DESFd = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "serie_painel.json"), "utf8")); const M = DESFd.municipios; const se = Object.values(M).map(m => m.ultima_se).sort().pop();
     const alto = Object.values(M).filter(m => m.ultima_se === se && (m.nivel_ultima_se === 3 || m.nivel_ultima_se === 4)).length;
-    teste("saúde: dengue — municípios em alerta laranja/vermelho na última semana, do dado", new RegExp(`^Dengue: ${alto} municípios em alerta laranja ou vermelho na semana SE ${se.split("-")[1]} de 2026`).test(q("boxDesfMapa").querySelector(".figura-titulo").textContent));
+    teste("saúde: dengue — municípios em alerta laranja/vermelho na última semana, do dado", new RegExp(`^Dengue: ${alto} ${alto === 1 ? "município" : "municípios"} em alerta laranja ou vermelho na semana SE ${se.split("-")[1]} de 2026`).test(q("boxDesfMapa").querySelector(".figura-titulo").textContent));
     teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
   } catch (e) { teste("saúde: títulos-fato (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, tooltip, créditos e lacunas declaradas.");

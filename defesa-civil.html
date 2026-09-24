@@ -29,9 +29,9 @@
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=76daae0b">
-<link rel="stylesheet" href="assets/base.css?v=df716eeb">
-<script src="assets/mapas.js?v=4cb7f58a"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
+<link rel="stylesheet" href="assets/base.css?v=3aa81805">
+<script src="assets/mapas.js?v=75aa61c8"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -55,7 +55,7 @@
     <div class="grade-figuras">
       <figure class="figura figura--mapa" id="boxVerificacao">
         <h3 class="figura-titulo">Verificação municipal</h3>
-        <p class="figura-sub">Corte da edição · plano localizado, ou até onde a verificação chegou · pontos</p>
+        <p class="figura-sub">Corte da edição · 5.571 municípios · a visualização escolhida abaixo define o recorte</p>
         <div class="figura-midia">
           <svg id="mapPoints" role="img" aria-label="Mapa do Brasil com os municípios verificados individualmente, coloridos pela categoria do ato encontrado" viewBox="0 0 480 460"></svg>
           <svg id="mapNiveis" role="img" aria-label="Mapa do Brasil com os 5.571 municípios coloridos pelo nível de verificação alcançado" viewBox="0 0 480 460" hidden></svg>
@@ -73,7 +73,7 @@
       </figure>
       <figure class="figura figura--mapa" id="boxCoberturaNatureza">
         <h3 class="figura-titulo">Cobertura e natureza dos atos, por UF</h3>
-        <p class="figura-sub">Corte da edição · % de municípios com ato, ou natureza predominante · por UF</p>
+        <p class="figura-sub">Corte da edição · 27 UFs · a visualização escolhida abaixo define o recorte</p>
         <div class="figura-midia">
           <svg id="mapCobertura" role="img" aria-label="Mapa do Brasil: percentual de municípios de cada estado com algum ato formal" viewBox="0 0 480 460"></svg>
           <svg id="mapNatureza" role="img" aria-label="Mapa do Brasil: predomínio de decretos reativos ou planos preventivos entre os atos de cada estado" viewBox="0 0 480 460" hidden></svg>
@@ -91,7 +91,7 @@
       </figure>
       <figure class="figura figura--mapa" id="boxPrioritarios">
         <h3 class="figura-titulo">Municípios prioritários: com e sem instrumento localizado</h3>
-        <p class="figura-sub">Corte da edição · municípios prioritários (Painel/SEDEC) com e sem ato localizado · pontos</p>
+        <p class="figura-sub">Corte da edição · lista de prioritários do Painel/SEDEC · um ponto por município</p>
         <div class="figura-midia"><svg id="mapPrioritarios" role="img" aria-label="Mapa do Brasil com os municípios prioritários do Cadastro Nacional (aproximação por população), distinguindo os que já têm instrumento localizado dos que ainda não" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legPrioritarios"></div>
       </figure>
@@ -115,7 +115,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/defesa-civil.js?v=436688e0" defer></script>
+<script src="assets/js/defesa-civil.js?v=a95392b6" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

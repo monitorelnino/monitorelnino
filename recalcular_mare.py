@@ -40,7 +40,17 @@ import json, re, pathlib, sys
 import numpy as np
 
 RAIZ = pathlib.Path(__file__).parent
-PESO_DOC = {"plano": 1.0, "plano_antigo": 0.7}  # Correção B (26/08/2026): "decreto" removido —
+# 24/09/2026 (§200): plano_antigo passa de 0,7 a 1,0 aqui também. Este dicionário serve a duas
+# coisas: como CONJUNTO de pertinência no motor (`k in PESO_DOC`, onde os valores não entram na
+# conta) e como PESO de verdade em analise_sensibilidade.py, no cálculo de `teto_ativo` — a
+# checagem de quais UFs estourariam o teto de 100%. Deixar 0,7 aqui depois que o §196 levou o
+# crédito real a 1,0 fazia a checagem de teto subestimar, e deixava no código um número que
+# contradizia a regra vigente: a próxima sessão leria 0,7 e concluiria que plano anterior vale
+# menos. Vale igual, e agora está escrito igual nos dois lugares.
+PESO_DOC = {"plano": 1.0, "plano_antigo": 1.0,
+            # §202: a escada municipal. Os pesos aqui acompanham CRED_POP — este dicionário
+            # também serve de peso no cálculo de teto_ativo (ver §200).
+            "plano_novo": 1.0, "plano_readaptado": 0.65, "plano_recorrente": 0.45}  # Correção B (26/08/2026): "decreto" removido —
 # não é purga pontual de dado, é regra estrutural. Sem isto, um decreto novo achado pela busca
 # automática de segunda-feira (ou por contribuição de leitor) voltaria a pontuar 0,4 por registro,
 # desfazendo a Correção B sozinho a cada atualização. `k in PESO_DOC` nas linhas abaixo já basta
@@ -50,7 +60,36 @@ ESTADO_SCORE = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
 # da v2.1 (÷100), generalizada pelo §12.4.2 — com o desvio documentado de
 # nao_el_nino (0, não 0,1; ver docstring). decreto ausente por regra estrutural
 # (Correção B): `CRED_POP.get(cat, 0.0)` já o exclui sem lista de exceções.
-CRED_POP = {"plano": 1.0, "plano_antigo": 0.6, "plano_elaboracao": 0.45,
+# 24/09/2026 (§196, decisão editorial que emenda o C6): plano vigente de ciclo anterior passa a
+# contar INTEGRAL. A régua deixa de perguntar QUANDO o plano foi publicado e passa a perguntar se ele
+# EXISTE e se está vigente — plano vigente é plano vigente. O tipo (novo do ciclo, readaptado,
+# vigente-recorrente) continua distinguido no banco e à vista no site, como descrição, e deixa de ser
+# desconto. Efeito medido antes de aplicar, e declarado no CHANGELOG.
+# ESCADA MUNICIPAL (§202, 24/09/2026, decisão da editoria que emenda o C6). Até aqui o município
+# tinha "plano" e pronto: um instrumento feito para o El Niño valia o mesmo que uma operação de verão
+# que roda todo ano. A escada dos ESTADOS já distinguia — NOVO 100 · READ 65 · VIG 45 (§30) —, e esta
+# entrada leva a mesma régua ao município, nas mesmas proporções.
+#
+#   plano_novo        1.00  instrumento criado PARA o ciclo / dedicado ao El Niño
+#   plano_readaptado  0.65  instrumento preexistente reativado ou readaptado para o ciclo, por ato datado
+#   plano_recorrente  0.45  rotina sazonal que roda todo ano com ou sem El Niño (plano de verão, operação chuva)
+#
+# DUAS DECISÕES DE DESENHO, declaradas porque mudam o que o número significa:
+#
+# 1. `plano` continua valendo 1,00 e passa a significar "localizado, TIPO NÃO DETERMINADO". Não se
+#    desconta município porque NÓS ainda não lemos o documento dele: ausência de verificação nunca é
+#    ausência de documento (v2.2.4, §2.1), e lacuna nossa não vira nota deles. O tipo se resolve
+#    lendo, um a um, e cada reclassificação é R7.
+# 2. `plano_antigo` FICA em 1,00. O §196, de hoje, decidiu que plano vigente de ciclo anterior conta
+#    integral; sob a escada ele cairia para 0,45, que é o oposto. Reverter uma decisão da editoria por
+#    reinterpretação seria trocar o juízo dela pelo meu. Ele só se move com o documento na mão
+#    mostrando que é rotina recorrente — e aí vira `plano_recorrente`, com a prova junto.
+#
+# CONSEQUÊNCIA, dita antes de acontecer: aplicar esta escada tende a BAIXAR o índice conforme os
+# documentos forem lidos, não a subir. É o resultado correto — operação de verão anual não é resposta
+# ao El Niño —, e ele chega aos poucos, na velocidade da leitura.
+CRED_POP = {"plano": 1.0, "plano_antigo": 1.0,
+            "plano_novo": 1.0, "plano_readaptado": 0.65, "plano_recorrente": 0.45, "plano_elaboracao": 0.45,
             # v3.0: estrutura de coordenação nomeada para o ciclo — compromisso formal sem instrumento
             # operacional; paridade declarada com plano_elaboracao (§30). O crédito é o MAIOR, nunca a soma.
             "estrutura": 0.45,

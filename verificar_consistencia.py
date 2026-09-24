@@ -311,7 +311,7 @@ try:
     if _lg.get("formato_versao") != 2:
         erro("log_buscas: esquema v2 ausente (formato_versao != 2)")
     _NIVEIS = {None, "nacional", "estadual", "municipal_completo"}
-    _DEC_OK = ("registro", "pista", "nada localizado", "fonte suspensa (defeso)", "erro")
+    _DEC_OK = ("registro", "pista", "nada localizado", "fonte suspensa (defeso)", "erro")  # §194: ver nota abaixo
     _completos = set()
     for _i, _e in enumerate(_lg.get("execucoes", [])):
         for _k in ("data", "canal", "strings", "decisao", "executor"):
@@ -422,6 +422,17 @@ try:
                 _esperado = _orig
                 for _i, _e in enumerate(_err, 1):
                     for _c in ("codigo", "data", "motivo", "efeito_por_uf", "hash_anterior", "hash_novo"):
+                        if _c == "efeito_por_uf":
+                            # §202: efeito_por_uf vazio pode significar duas coisas OPOSTAS — nenhuma UF
+                            # foi afetada, ou ninguém preencheu. Vazio só passa quando o efeito nacional
+                            # CORROBORA explicitamente que são zero UFs; caso contrário é omissão, e
+                            # omissão numa errata de mudança de regra é exatamente o que não pode passar.
+                            if _c not in _e:
+                                erro(f"congelamento: errata {_i} sem campo obrigatório 'efeito_por_uf' (C26)")
+                            elif not _e.get(_c) and (_e.get("efeito_nacional") or {}).get("ufs_afetadas") != 0:
+                                erro(f"congelamento: errata {_i} com efeito_por_uf vazio e sem "
+                                     f"efeito_nacional.ufs_afetadas = 0 — vazio por omissão não passa (C26/§202)")
+                            continue
                         if not _e.get(_c):
                             erro(f"congelamento: errata {_i} sem campo obrigatório '{_c}' (C26)")
                     if _esperado and _e.get("hash_anterior") != _esperado:

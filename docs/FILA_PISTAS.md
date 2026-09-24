@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 23/09/2026 · 338 pendente(s) · 15 decidida(s) · A=56 B=222 C=60
+Gerado em 24/09/2026 · 376 pendente(s) · 15 decidida(s) · A=67 B=242 C=67
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -10,11 +10,115 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho:  Representante da Contratada: Francisco Helton Soares  de Sousa. Jackson Lira Cavalcante - Coordenador Jurídico da SEDHAS.   EXTRATO DO PLANO DE CONTINGÊNCIA - 2026 -  ALAGAMENTOS, ENCHENTES DA DEFESA CIVIL. PROCESSO  nº
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Serra/ES — 1 pendente(s)
+## Serra/ES — 9 pendente(s)
+- `d53c841939` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Defesa Civil da Serra elabora Plano de Contingência ...
+  - url: https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade
+  - trecho: A Defesa Cívil da Serra, em conjunto com as demais secretarias da Prefeitura da Serra, está trabalhando no Plano de Contingência, que tem como objetivo elaborar ações preventivas para os períodos chuvosos e evitar ocorrê
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `3f8922a3b6` · nível **A** (6 pts) · querido_diario · EX_ANTE · **Decreto nº 6.823**, 05/07/2026
   - url: https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf
   - trecho: e na restauração da  normalidade social, articulando e facilitando as ações  de prevenção, preparação, resposta e recuperação no  Município de Serra. “  Leia-se: […] “ Art. 1º Fica instituído o Plano Municipal de Proteçã
   - juiz: Serra/ES já consta na base — não duplicar (revisão humana decide se é atualização)
+- `900b8ddce3` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Serra sai na frente e apresenta plano para enfrentar os efeitos ...
+  - url: https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino
+  - trecho: Com o objetivo de preparar a cidade ... quinta-feira (6), o Plano de Contingência que irá nortear as ações do município para enfrentar situações como chuvas intensas, alagamentos, inundações e períodos de estiagem....
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `941cec3cf2` · nível **B** (7 pts) · seguimento_busca_oficial · DUVIDA · **DECRETO 682**, 05/11/2015
+  - título: decreto nº 6823, de 5 de novembro de 2015
+  - url: https://prefeiturasempapel.serra.es.gov.br/Arquivo/Documents/legislacao/html/D68232015.html
+  - trecho: Neste sentido, a Defesa Civil do Município, seguindo a orientação da Defesa Civil Nacional/Estadual, elaborou o Plano Municipal de Contingência, importante instrumento de planejamento das ações, com vista à preparação pa
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `914f69a7da` · nível **B** (6 pts) · seguimento_querido_diario · EX_ANTE · **DECRETO Nº 1.871**, 10/12/2025
+  - título: Diário oficial de 2025-12-19
+  - url: https://data.queridodiario.ok.org.br/3205002/2025-12-19/35d226b9dea4bc74b05a648fb52e72ac5d1116a2.pdf
+  - trecho: ficando revogadas as disposições em contrário. Palácio Municipal em Serra, 17 de dezembro de 2025. WEVERSON VALCKER MEIRELES Prefeito Municipal Protocolo 1693752 Decretos DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTI
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `93ee2f87e5` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · data 2020 (do trecho)
+  - título: plano de contingência 2020/2021 - Portal Gov.br
+  - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf
+  - trecho: PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram co
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `c4320e89f3` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: O Super El Niño está confirmado, e a Serra precisa se preparar para ...
+  - url: https://www.instagram.com/reel/DclxdDCOw7_/
+  - trecho: Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...
+  - juiz: portão automático: fonte não oficial
+- `19d201966d` · nível **B** (4 pts) · seguimento_querido_diario · — · **Decreto Municipal nº 1.871**, 10/12/2025
+  - título: Diário oficial de 2025-12-29
+  - url: s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf
+  - trecho: Protocolo 1697291 PORTARIA CG Nº 046/2025 PUBLICA O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE SERRA - 2025 (PMPDEC). A COORDENADORA MUNICIPAL DE GOVERNO, no uso das atribuições que lhe são conferidas por lei; CONSIDE
+  - ⚠ ano_anterior_ao_ciclo
+- `6a02a7e1d2` · nível **C** (2 pts) · seguimento_querido_diario · EX_ANTE · data 03.1.90 (do trecho)
+  - título: Diário oficial de 2026-01-06
+  - url: https://data.queridodiario.ok.org.br/3205002/2026-01-06/6d23fe1ca4e777b647898ca2bc48b40769f6cfd3.pdf
+  - trecho: APLICACOES DIRETAS 33.745.000,003.1.90.00.00 1.500.0000.0000 APL. DIR. DEC. DE OP. ÓRGÃOS, FUNDOS E ENT. DOS OR 2.500.000,003.1.91.00.00 1.500.0000.0000 APLICACOES DIRETAS 28.255.000,003.3.90.00.00 1.500.0000.0000 64.500
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+
+## São Mateus/ES — 2 pendente(s)
+- `9e41a19f6f` · nível **A** (6 pts) · busca_web · EX_ANTE · data 21/07/2026 (do trecho)
+  - título: São Mateus do Sul: reunião sobre o Plano de Contingência para o ...
+  - url: https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/
+  - trecho: Jul 21, 2026 ... São Mateus do Sul: reunião sobre o Plano de Contingência para o El Niño acontece nesta terça (21) ... 21 de julho de 2026. Compartilhe essa ...
+  - juiz: portão automático: fonte não oficial
+- `0a6f89093a` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: São Mateus do Sul apresenta Plano de Contingência e reforça ...
+  - url: https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/
+  - trecho: Jul 22, 2026 ... São Mateus do Sul apresenta Plano de Contingência e reforça preparação para possíveis cheias ... O El Niño é um fenômeno climático natural ...
+  - juiz: portão automático: fonte não oficial
+
+## Vila Velha/ES — 1 pendente(s)
+- `213cfdefc1` · nível **A** (6 pts) · busca_web · EX_ANTE · data 11/09/2026 (do trecho)
+  - título: Vila Velha apresenta plano de contingência com foco no El Niño ...
+  - url: https://eshoje.com.br/meio-ambiente/2026/08/vila-velha-apresenta-plano-de-contingencia-com-foco-no-el-nino/
+  - trecho: Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.
+  - juiz: portão automático: fonte não oficial
+
+## Vitória/ES — 8 pendente(s)
+- `ab9dfdc5bf` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Saúde de Vitória desenvolve Plano de Contingência para situações ...
+  - url: https://m.vitoria.es.gov.br/noticia/saude-de-vitoria-desenvolve-plano-de-contingencia-para-situacoes-de-desastres-51224
+  - trecho: Em Vitória, além da Defesa Civil, a Secretaria Municipal de Saúde de Vitória (Semus) também elaborou um Plano de Contingência voltado para pessoas afetadas por desastres naturais, como deslizamentos, alagamentos e inunda
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `d18d64a5a8` · nível **A** (6 pts) · seguimento_querido_diario · DUVIDA · **DECRETO Nº 25.944**, 27/11/2025
+  - título: Diário oficial de 2025-12-01
+  - url: https://data.queridodiario.ok.org.br/3205309/2025-12-01/452d5c537adf89813a2b1cb664786c90bf0a6a92.pdf
+  - trecho: Lorenzo Pazolini Prefeito Municipal Decretos DECRETO Nº 25.944 Atualiza o Plano Municipal de Proteção e Defesa Civil (PMPDC) do Município de Vitória/ES 2025/2026. O Prefeito Municipal de Vitória, Estado do Espírito Santo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `7168e66e84` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · data 2007 (do trecho)
+  - título: Plano Municipal de Proteção e Defesa Civil – Prefeitura de ...
+  - url: https://m.vitoria.es.gov.br/cidadao/defesa-civil-plano-de-contingencia-para-desastre-e-emergencia
+  - trecho: De acordo com o Plano Municipal de Proteção e Defesa Civil - PMPDC, lançado em 2007 e atualizado em 2022 e 2024, são desenvolvidas ações de prevenção, de preparação para emergências e desastres, de resposta aos desastres
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `938a518d32` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: Defesa Civil – Prefeitura de Vitória
+  - url: https://www.vitoria.es.gov.br/prefeitura/defesa-civil
+  - trecho: Envolvendo a atuação de 14 secretarias municipais, o Plano de Contingência divide o desastre em quatro estados:
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `f3c4158eff` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: El Niño coloca municípios em alerta e Prefeitura de Vitória da ...
+  - url: https://rbtv.com.br/noticia/13581/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos
+  - trecho: Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...
+  - juiz: portão automático: fonte não oficial
+- `04bfce3cfe` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE VIANA PLANCON ...
+  - url: https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-2025.pdf
+  - trecho: O plano contempla protocolos detalhados · de prevenção, monitoramento constante e resposta rápida a eventuais incidentes, ... Imagem 14: Estrutura básica do Plano de Ação da Barragem PCH São Pedro.
+  - juiz: portão automático: data do ato incompleta (2025)
+- `f63069b16f` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Diante das previsões relacionadas ao El Niño, União da Vitória tem ...
+  - url: https://www.instagram.com/p/DZ5wii5gHCw/
+  - trecho: Jun 22, 2026 ... A atuação integrada entre a Defesa Civil e as secretarias municipais, a atualização do Plano de Contingência, a criação do Conselho Municipal de ...
+  - juiz: portão automático: fonte não oficial
+- `403eb09b43` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 7.534**, 2008
+  - título: Diário oficial de 2026-07-29
+  - url: https://data.queridodiario.ok.org.br/3205309/2026-07-29/a7f158e2d5e7fd975935d29393b6f819beea151d.pdf
+  - trecho: vagas para os 21 km, 42 km, Desafio 5 + 21 km e Maratoninha Kids já estejam esgotadas. SERVIÇO Maratona de Vitória 2026 29 e 30 de agosto Praça do Papa, Enseada do Suá Inscrições: www.ticketsports.com.br ou www.maratonad
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Bituruna/PR — 1 pendente(s)
 - `8e36414ea8` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
@@ -326,7 +430,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Cabo Frio/RJ — 6 pendente(s)
+## Cabo Frio/RJ — 11 pendente(s)
 - `17218417dd` · nível **A** (6 pts) · busca_web · EX_ANTE · data 18/09/2026 (do trecho)
   - url: https://lagosinforma.com.br/cidades/cabofrio/cabo-frio-prepara-plano-de-contingencia-na-saude-para-possiveis-impactos-do-el-nino/
   - trecho: Cabo Frio prepara plano de contingência na Saúde para possíveis impactos do El Niño. Foto de Redação Por Redação; • 18/09/2026; - 15:31.
@@ -350,6 +454,31 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://fontecerta.com/noticias-da-regiao-dos-lagos/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/
   - trecho: 3 days ago ... ... 2026 Débora Clara Santos. Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado ...
   - juiz: portão automático: fonte não oficial
+- `0e2c464646` · nível **C** (7 pts) · busca_web · — · citação não extraída
+  - título: Saúde de Cabo Frio estrutura plano de contingência para possíveis ...
+  - url: https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/
+  - trecho: 6 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...
+  - ⚠ risco_errado_no_titulo
+- `0610669d73` · nível **C** (7 pts) · busca_web · — · citação não extraída
+  - título: Prefeitura de Cabo Frio prepara plano de contingência para ...
+  - url: https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino
+  - trecho: 5 days ago ... Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos associados ...
+  - ⚠ risco_errado_no_titulo
+- `162b614875` · nível **C** (7 pts) · busca_web · — · data 21/09/2026 (do trecho)
+  - título: Saúde de Cabo Frio estrutura plano de contingência para possíveis ...
+  - url: https://radiorcfm.com/news/view/3975-saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-ni-o
+  - trecho: Diversos setores da pasta participaram de um encontro realizado nesta semana, com a participação da Defesa Civil. 21/09/2026 09:20. Saúde de Cabo Frio ...
+  - ⚠ risco_errado_no_titulo
+- `853cd22bce` · nível **C** (6 pts) · busca_web · — · citação não extraída
+  - título: Saúde de Cabo Frio prepara plano de contingência para possíveis ...
+  - url: https://rc24h.com.br/saude-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/
+  - trecho: 6 days ago ... Saúde de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...
+  - ⚠ risco_errado_no_titulo
+- `a393cf8444` · nível **C** (6 pts) · busca_web · — · citação não extraída
+  - título: Saúde de Cabo Frio estrutura plano de contingência para possíveis ...
+  - url: https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2
+  - trecho: 6 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño. A Prefeitura de Cabo Frio avança na elaboração do Plano ...
+  - ⚠ risco_errado_no_titulo
 
 ## Duque de Caxias/RJ — 6 pendente(s)
 - `dc942a39be` · nível **A** (6 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
@@ -379,6 +508,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `ee3dcef3a6` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/Dako5M6EX_g/?hl=en
   - trecho: Jul 9, 2026 ... ... Plano de Contingência para nos preparar. Fique de olho nas ... Duque de Caxias - RJ.
+
+## Itatiaia/RJ — 3 pendente(s)
+- `a691ddb18c` · nível **A** (7 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Itatiaia avança na construção de plano de ação para eventos ...
+  - url: https://diariodovale.com.br/cidade/itatiaia-avanca-na-construcao-de-plano-de-acao-para-eventos-climaticos-extremos/
+  - trecho: Itatiaia – A cidade de Itatiaia participa, nesta terça-feira (25) e quarta-feira (26), da Oficina Estadual de Preparação dos Municípios para Respostas aos Eventos Climáticos Extremos em virtude do El Niño 2026/2027.
+  - juiz: portão automático: fonte não oficial
+- `62152476bb` · nível **B** (7 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: plano de contingência da defesa civil itatiaia / rj
+  - url: https://itatiaia.rj.gov.br/wp-content/uploads/2025/10/2025-PLANO-DE-CONTINGENCIA-INUNDACOES-Atualizado.pdf
+  - trecho: Plano de Contingência para ITATIAIA/RJ · Atualizado por: Rodrigo de Oliveira Rocha 17 · A PROCURADORIA GERAL DO MUNICÍPIO (PGM):  Apoiar as ações de Defesa Civil, no que se refere à parte jurídica;  Elaborar e providen
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `271267c5be` · nível **B** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Iprevi Itatiaia - Decreto estabelece medidas da Prefeitura para ...
+  - url: http://iprevi.rj.gov.br/index.php/seja-bem-vindo/noticias/156-decreto-estabelece-medidas-da-prefeitura-para-prevencao-contra-o-novo-coronavirus
+  - trecho: O decreto (nº 3406/20) assinado pelo prefeito Eduardo Guedes foi publicado no Boletim Oficial da Prefeitura desta segunda-feira, dia 16. O endereço eletrônico é www.itatiaia.rj.gov.br. Para esclarecer quaisquer dúvidas, 
 
 ## Quissamã/RJ — 2 pendente(s)
 - `f2f2d164b6` · nível **A** (8 pts) · querido_diario · EX_ANTE · data 28/12/1990 (do trecho)
@@ -416,6 +562,39 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: decreto 40/2026
   - url: https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf
   - trecho: Os interessados (grupos formais, ... Cel. Eurico de Castro, nº 14, Centro, Rio das Flôres/RJ. ... O Prefeito Rodrigo Santana de Almeida assinou o Decreto nº 247/2025, que organiza o funcionamento das farmácias em regime 
+
+## Rio das Ostras/RJ — 6 pendente(s)
+- `91ff9d71c6` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Municipal nº 326**, 2022
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON
+  - url: https://www.riodasostras.rj.gov.br/wp-content/uploads/2025/11/plancon-chuvas-intensas-2025-2026.pdf
+  - trecho: Complementando esse marco legal, o Decreto Municipal nº 3267, de 2022,
+  - juiz: portão automático: data do ato incompleta (2022)
+- `2790627bda` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON ...
+  - url: https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-alagamentos-2024.pdf
+  - trecho: Rio das Ostras.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `081c850403` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://www.riodasostras.rj.gov.br/defesa-civil-e-saude-de-rio-das-ostras-participam-de-evento-sobre-enfrentamento-aos-impactos-do-el-nino/
+  - trecho: Aug 20, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño. Foto ... Plano de Contingência do Vigidesastres (Programa Nacional de ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `2153e2be9a` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Rio das Ostras participa de evento sobre os impactos do El Niño
+  - url: https://riodasostras.com.br/noticias/Noticias.php?noticia=14414
+  - trecho: Aug 21, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño ... Plano de Contingência do Vigidesastres (Programa Nacional de ...
+  - juiz: portão automático: fonte não oficial
+- `f1c181077f` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Jornal Oficial Município de Rio das Ostras - Poderes Executivo ...
+  - url: https://appro.riodasostras.rj.gov.br/storage/riodasostrasapp/jornais/2026/07/5c20e01c-6d1f-4e66-a433-d2c71a2f24e5.pdf
+  - trecho: Municipal reuniu todos os setores envolvidos para tomada de decisões imediatas, a partir de um Plano de Contingência.
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `64324be146` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 20/09/2024 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON MARÉS ...
+  - url: https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-mares-de-tempestade-2024.pdf
+  - trecho: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E · DEFESA CIVIL PLANCON · MARÉS DE TEMPESTADE OU · RESSACA MARÍTIMA · Degradação severa das Regiões Costeiras · COBRADE: 1.3.1.1.2 · RIO DAS OSTRAS · VERSÃO: 8.0 / 2024 · ÚLTIMA ATUALIZ
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## São Vicente/RN — 2 pendente(s)
 - `c9edcbd126` · nível **A** (7 pts) · busca_web · DUVIDA · citação não extraída
@@ -914,10 +1093,20 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: "A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
 
-## Paulista/PE — 3 pendente(s)
+## Paulista/PE — 5 pendente(s)
+- `6d7dc08e68` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: El Niño coloca saúde do Noroeste Paulista no radar do Ministério ...
+  - url: https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/
+  - trecho: Sep 16, 2026 ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...
+  - juiz: portão automático: fonte não oficial
 - `78f12d9669` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - url: https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/
   - trecho: 5 days ago ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...
+  - juiz: portão automático: fonte não oficial
+- `417950010d` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: EL NIÑO 2026 | Representantes da CPFL Paulista se reuniram na ...
+  - url: https://www.instagram.com/p/DdZ_Zs9DJqA/
+  - trecho: 7 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.
   - juiz: portão automático: fonte não oficial
 - `469f974651` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DdZ_Zs9DJqA/
@@ -926,6 +1115,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `cd4703fb08` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DbY6fIWFA_v/
   - trecho: Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL Paulista ...
+
+## Petrolina/PE — 1 pendente(s)
+- `b53b04907d` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2010 (do trecho)
+  - título: plano municipal de saneamento de petrolina/pe
+  - url: https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf
+  - trecho: Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...
+  - juiz: portão automático: fonte não oficial
 
 ## Recife/PE — 1 pendente(s)
 - `d1a3559016` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -1222,6 +1418,30 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
+## Bom Jesus do Itabapoana/RJ — 2 pendente(s)
+- `5d7fd533db` · nível **B** (6 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
+  - título: Bom Jesus do Itabapoana apresenta plano de contingência para ...
+  - url: https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml
+  - trecho: Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
+- `c3bd28f4ca` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/p/DcjeKSYhTDO/
+  - trecho: Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: "Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...
+
+## Nova Friburgo/RJ — 2 pendente(s)
+- `ee78fe94d7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Como Nova Friburgo será atingida pelo super El Niño? Segundo ...
+  - url: https://www.facebook.com/wandersonnogueira.rj/videos/como-nova-friburgo-ser%C3%A1-atingida-pelo-super-el-ni%C3%B1o-segundo-especialistas-com-pa/1720640012274128/
+  - trecho: Jun 10, 2026 ... Como Nova Friburgo será atingida pelo super El Niño? Segundo ... plano de contingência para respostas rápidas à emergências. A ...
+  - juiz: portão automático: fonte não oficial
+- `7fe1c44b7c` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · **lei municipal nº4.565**, 10/07/2017
+  - título: Diário oficial de 2025-10-23
+  - url: https://data.queridodiario.ok.org.br/3303401/2025-10-23/73b365c36a8eb243297134684209517b6c1694c4.pdf
+  - trecho: Aberto e fechado Objeto da compra: REGISTRO DE PREÇOS para futura e eventual CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE CESTAS BÁSICAS, em atendimento às necessidades das famílias de risco alto e risco m
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
 ## Nova Iguaçu/RJ — 1 pendente(s)
 - `363c09aa4b` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - url: https://www.novaiguacu.rj.gov.br/smdc/wp-content/uploads/sites/27/2024/12/plancon-2024-2025.pdf
@@ -1278,12 +1498,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://resende.rj.gov.br/images/Plano-Municipal-de-Saneamento-B%C3%A1sico.pdf
   - trecho: Jan 3, 2021 ... Manejo CEP: 27520-005 Resende-RJ. Diretor Executivo – André Luis ... Plano de Contingência e Proteção. (PLACONP), com sua última versão ...
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-
-## Rio das Ostras/RJ — 1 pendente(s)
-- `081c850403` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://www.riodasostras.rj.gov.br/defesa-civil-e-saude-de-rio-das-ostras-participam-de-evento-sobre-enfrentamento-aos-impactos-do-el-nino/
-  - trecho: Aug 20, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño. Foto ... Plano de Contingência do Vigidesastres (Programa Nacional de ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Rio de Janeiro/RJ — 1 pendente(s)
 - `aada6797ff` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída
@@ -1784,11 +1998,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `245a4e7499` · nível **C** (2 pts) · busca_web · — · citação não extraída
   - url: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-barra-do-pirai.pdf
   - trecho: ... Barra do Piraí-RJ. EXECUÇÃO. Vallenge Consultoria, Projetos e Obras Ltda ... plano de contingência aborda ações programadas de interrupção dos serviços ...
-
-## Bom Jesus do Itabapoana/RJ — 1 pendente(s)
-- `c3bd28f4ca` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/p/DcjeKSYhTDO/
-  - trecho: Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: "Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...
 
 ## Miguel Pereira/RJ — 1 pendente(s)
 - `8ebb040da2` · nível **C** (2 pts) · busca_web · — · citação não extraída

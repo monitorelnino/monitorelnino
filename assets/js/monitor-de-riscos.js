@@ -278,7 +278,10 @@ if (nino34Mensal && nino34Mensal.serie && nino34Mensal.serie.length) {
     const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(2).replace('.', ',');
     // 17/09/2026 (pedido da editoria): mesmo padrão das outras duas notas — explica o que o gráfico
     // mede antes do número, sem depender de o leitor ter lido as notas do ONI ou do RONI antes.
-    el.textContent = 'Este gráfico mostra a mesma temperatura da região Niño 3.4, mês a mês, sem a suavização de três meses do ONI e do RONI. Anomalia de ' + fmt(u.anomalia) + ' °C em ' + MES_CURTO[u.mes - 1] + '/' + u.ano + '.';
+    // 23/09/2026 (governança editorial §18): "Este gráfico mostra" é metadiscurso — a lista do §18 o
+    // traz nominalmente. O conteúdo e a autossuficiência pedidos pela editoria em 17/09 ficam; o
+    // sujeito passa a ser a medida, como já era nas notas do ONI e do RONI, e não o gráfico.
+    el.textContent = 'A anomalia mensal é a mesma temperatura da região Niño 3.4, mês a mês, sem a suavização de três meses do ONI e do RONI. Anomalia de ' + fmt(u.anomalia) + ' °C em ' + MES_CURTO[u.mes - 1] + '/' + u.ano + '.';
     el.hidden = false;
   })();
 } else { lacuna('wrapAnomalia', 'A anomalia mensal aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }

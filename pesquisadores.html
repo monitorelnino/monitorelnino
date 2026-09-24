@@ -29,9 +29,9 @@
 <script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=76daae0b">
-<link rel="stylesheet" href="assets/base.css?v=df716eeb">
-<script src="assets/mapas.js?v=4cb7f58a"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=8eadbbc1">
+<link rel="stylesheet" href="assets/base.css?v=3aa81805">
+<script src="assets/mapas.js?v=75aa61c8"></script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -163,7 +163,7 @@
           <select id="tblCat" aria-label="Filtrar a tabela por categoria do ato">
             <option value="">Todas as categorias</option>
             <option value="plano">Plano preventivo publicado</option>
-            <option value="plano_antigo">Plano desatualizado</option>
+            <option value="plano_antigo">Plano vigente, de ciclo anterior</option>
             <option value="plano_elaboracao">Plano em elaboração</option>
             <option value="estrutura">Estrutura de coordenação para o ciclo</option>
             <option value="decreto">Decreto de emergência (reativo)</option>
@@ -232,8 +232,8 @@
           <div class="map-legend" id="legMpsBrUf"></div>
         </figure>
         <figure class="figura figura--mapa" id="boxMpsUf">
-          <h3 class="figura-titulo">Detalhe geográfico · valor pago por UF da unidade gestora</h3>
-          <p class="figura-sub">Execução mensal 06–09/2026 · valor pago das ações reforçadas pelas MPs, por UF · R$</p>
+          <h3 class="figura-titulo">Valor pago das MPs por UF da unidade gestora</h3>
+          <p class="figura-sub">Execução mensal 06–09/2026 · ações reforçadas pelas MPs 1.367 e 1.384 · R$</p>
           <div class="figura-midia"><svg id="mapaMpsUf" role="img" aria-label="Mapa do Brasil: valor pago das ações reforçadas pelas MPs, por UF da unidade gestora; sedes nacionais aparecem como BR" viewBox="0 0 480 460"></svg></div>
           <div class="map-legend" id="legMpsUf"></div>
         </figure>
@@ -258,7 +258,7 @@
       <div class="grade-figuras">
         <figure class="figura figura--tabela" id="boxAreas">
         <h3 class="figura-titulo">Áreas temáticas dos planos estaduais (COBRADE)</h3>
-        <p class="figura-sub">Corte da edição · áreas temáticas citadas nos planos estaduais · classificação COBRADE · nº de UFs</p>
+        <p class="figura-sub">Corte da edição · classificação COBRADE · nº de UFs por área</p>
         <div class="figura-midia"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAreas"><thead><tr><th>Área temática (COBRADE)</th><th>UFs</th><th>Quais</th></tr></thead><tbody></tbody></table></div></div>
       </figure>
       <figure class="figura figura--tabela" id="boxCatalogo">
@@ -297,7 +297,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/pesquisadores.js?v=0fcf7f36" defer></script>
+<script src="assets/js/pesquisadores.js?v=bb464ddb" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

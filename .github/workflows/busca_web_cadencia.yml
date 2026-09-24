@@ -10,7 +10,11 @@
 # da coleta: sincroniza o índice (verificacao_municipal.json depende de fontes_consultadas.json — §142),
 # regenera derivados/manifesto, commita com rebase e repõe o domínio atrás de senha.
 #
-# Mesmo grupo de concorrência do atualizar.yml: uma rodada de cada, nunca duas commitando ao mesmo tempo.
+# CONCORRÊNCIA (24/09/2026, pedido editorial): grupo PRÓPRIO. Até hoje esta rodada dividia o grupo
+# `atualizar-dados` com o atualizar.yml, que leva de 1h43 a 2h43 por execução — enquanto ele rodava,
+# a busca de 2h ficava na fila, e uma execução pendente é cancelada quando a seguinte chega. A coleta
+# parava por atividade alheia. Com grupo próprio ela nunca espera por outro workflow; a segurança do
+# commit simultâneo passa a vir do laço de rebase-e-push abaixo, que é onde ela deve estar.
 name: Busca web — cadência automática
 on:
   schedule:
@@ -24,7 +28,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: atualizar-dados
+  group: busca-web-cadencia
   cancel-in-progress: false
 jobs:
   busca_web:
@@ -49,13 +53,13 @@ jobs:
           FORCAR="${{ github.event.inputs.forcar }}"
           echo "ciclos_completos=$CICLOS hora_utc=$HORA forcar=${FORCAR:-false}"
           if [ "$FORCAR" = "true" ]; then echo "rodar=1" >> "$GITHUB_OUTPUT"; echo "forçado: roda agora"; exit 0; fi
-          if [ "$CICLOS" -lt 1 ]; then
-            echo "fase 1 (ainda não cobriu todos os municípios): roda"; echo "rodar=1" >> "$GITHUB_OUTPUT"
-          elif [ "$HORA" = "00" ] || [ "$HORA" = "06" ] || [ "$HORA" = "12" ] || [ "$HORA" = "18" ]; then
-            echo "fase 2 (cobertura completa feita), hora de rodar (4x/dia): roda"; echo "rodar=1" >> "$GITHUB_OUTPUT"
-          else
-            echo "fase 2, fora dos 4 horários do dia: pula"; echo "rodar=0" >> "$GITHUB_OUTPUT"
-          fi
+          # 24/09/2026 (pedido editorial): a cadência volta a ser de 2 em 2 horas, SEM parar, em
+          # qualquer fase. A regra anterior caía para 4x/dia assim que `ciclos_completos` chegava a 1
+          # — e chegou em 24/09 —, de modo que a busca passava a pular oito das doze rodadas do dia.
+          # `ciclos_completos` continua sendo gravado e continua servindo de relatório de cobertura;
+          # o que ele não faz mais é decidir se a rodada acontece.
+          echo "ciclos_completos=$CICLOS (informativo) · cadência de 2h em qualquer fase: roda"
+          echo "rodar=1" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         if: steps.fase.outputs.rodar == '1'
         with: { python-version: "3.12" }
@@ -114,9 +118,26 @@ jobs:
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
           GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main
-          git rebase FETCH_HEAD || { git rebase --abort; echo "::error::main avançou com conflito; rodada não comitada"; rm -f ~/.ssh/robo; exit 1; }
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main
+          # 24/09/2026: uma tentativa só perdia a rodada inteira quando a main andava entre o fetch e
+          # o push — e ela anda, porque o atualizar.yml e a prévia commitam em paralelo desde que os
+          # grupos de concorrência foram separados. Agora são seis tentativas com espera crescente:
+          # busca o main de novo, rebaseia e empurra. O dado coletado só se perde se as seis falharem.
+          EMPURROU=0
+          for TENTATIVA in 1 2 3 4 5 6; do
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            if ! git rebase FETCH_HEAD; then
+              git rebase --abort || true
+              echo "tentativa $TENTATIVA: rebase conflitou; nova tentativa"
+              sleep $((TENTATIVA * 10)); continue
+            fi
+            if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+              EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
+            fi
+            echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
+            sleep $((TENTATIVA * 10))
+          done
           rm -f ~/.ssh/robo
+          if [ "$EMPURROU" != "1" ]; then echo "::error::seis tentativas de rebase-e-push falharam; rodada não comitada"; exit 1; fi
       - name: Repor o site no domínio, atrás de senha
         if: env.HOUVE == '1'
         env:
