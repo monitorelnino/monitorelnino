@@ -24,6 +24,22 @@ from pathlib import Path
 from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste
 
 RAIZ = Path(__file__).resolve().parent
+# ESTADO DA FONTE, medido em 24/09/2026 (§198) — os três hosts, um a um:
+#   · gitlab.fiocruz.br      → responde, mas com a TELA DE LOGIN do GitLab (HTTP 200, devise-layout);
+#                              a API do projeto (`/api/v4/projects/marcelo.gomes%2Finfogripe`) dá 404.
+#                              O repositório deixou de ser público.
+#   · gitlab.procc.fiocruz.br → inacessível (timeout de conexão), aqui e no runner.
+#   DIFERENÇA DE AMBIENTE, declarada para não enganar a próxima sessão: numa máquina Windows o
+#   `gitlab.fiocruz.br` nem chega a responder — o servidor manda cadeia TLS incompleta ("unable to
+#   get local issuer certificate") e o repositório de raízes do sistema não fecha a cadeia sozinho.
+#   O runner do CI, com o repositório de raízes do Linux, alcança o host e recebe a tela de login.
+#   Ou seja: rodando local, o coletor registra falha de rede; rodando no CI, registra a recusa. As
+#   duas são verdade, e o diagnóstico grava qual delas ocorreu.
+#   · infogripe.fiocruz.br    → inacessível (timeout de conexão).
+# Consequência: a série de SRAG e de síndrome gripal fica em LACUNA DECLARADA. Os arquivos
+# srag_serie.json e sg_serie.json não existem, e a página de saúde já trata ausência de arquivo
+# como lacuna — ou seja, o site não mostra dado velho; mostra que não tem. Procurar fonte pública
+# equivalente (OpenDataSUS/SIVEP-Gripe é microdado, outra esteira) é trabalho declarado, não feito.
 URL_SERIE = "https://gitlab.procc.fiocruz.br/mave/repo/-/raw/master/Dados/InfoGripe/serie_temporal_com_estimativas_recentes.csv"
 # 14/09/2026: o host canônico (gitlab.procc) dá timeout desde 09/09 (ver scripts/diagnostico_fontes_saude.py); o InfoGripe
 # passou a aparecer também em gitlab.fiocruz.br — a interface pede login, mas o endpoint /-/raw/ pode servir anônimo.
@@ -149,6 +165,30 @@ def vazar_incompletas(serie: dict, ano: int, n: int = SE_INCOMPLETAS) -> tuple:
     return cons, sorted(inc)
 
 
+# 24/09/2026 (§198): marcas da página de LOGIN do GitLab. `devise-layout-html` é a classe que o
+# Devise (a camada de autenticação do Rails, que o GitLab usa) põe no <html> da tela de entrada —
+# é a assinatura mais estável, porque não depende de texto traduzido.
+MARCAS_DE_LOGIN = ("devise-layout-html", "sign_in", "user_login", "não autorizado", "unauthorized")
+
+
+def parece_pagina_de_login(corpo: str) -> bool:
+    """True se o que voltou é tela de autenticação em vez de dado. Função pura.
+
+    POR QUE EXISTE. Em 24/09/2026 o repositório do InfoGripe no GitLab da Fiocruz deixou de ser
+    público: `gitlab.fiocruz.br/...` responde **HTTP 200** com a tela de login do GitLab, e a API do
+    projeto responde 404. Sem este reconhecedor, o coletor tratava a resposta como CSV malformado e
+    registrava "cabeçalho: ['<!DOCTYPE html>']" — diagnóstico que faz pensar em defeito de parser
+    quando o fato é outro: a fonte fechou. É a mesma classe do muro de robô do §186, e a mesma
+    disciplina do §170: login é recusa, e recusa se respeita. Não se contorna autenticação.
+    """
+    if not corpo:
+        return False
+    inicio = corpo[:4000].lower()
+    if "<!doctype html" not in inicio and "<html" not in inicio:
+        return False
+    return any(m in inicio for m in MARCAS_DE_LOGIN)
+
+
 def _gravar_diagnostico(url_ok, cabecalho, disponiveis, erro_por_url):
     """Guarda o que a rodada VIU (host que respondeu, cabeçalho real, rótulos de `dado`) — para a próxima sessão
     ajustar padrões sem precisar de rede. Nunca contém dado epidemiológico."""
@@ -169,6 +209,16 @@ def coletar() -> int:
         _gravar_diagnostico(None, [], set(), erro_por_url)
         registrar_lacuna("InfoGripe (série SRAG)", " · ".join(f"{u.split('/')[2]}: {e}" for u, e in erro_por_url.items()), canal="DOU", camada=1)
         print("srag/sg: falha de rede em todos os hosts — lacuna declarada"); return 0
+    if parece_pagina_de_login(bruto):
+        _gravar_diagnostico(url_ok, ["<página de login do GitLab>"], set(),
+                            dict(erro_por_url, **{url_ok: "acesso recusado: repositório exige autenticação"}))
+        registrar_lacuna("InfoGripe (série SRAG e síndrome gripal)",
+                         "repositório passou a exigir autenticação — HTTP 200 com tela de login do GitLab; "
+                         "a API do projeto responde 404. Login é recusa que se respeita (§170); a série fica "
+                         "como lacuna declarada até haver fonte pública equivalente",
+                         canal="DOU", camada=1)
+        print("srag/sg: a fonte passou a exigir login — recusa respeitada, lacuna declarada")
+        return 0
     try:
         cabecalho, _delim, disponiveis = dados_disponiveis(bruto)
     except ValueError as e:
@@ -249,7 +299,21 @@ def autoteste() -> int:
             parse_serie_longa(csv_txt, INDICADORES["sg"]["padroes"]); return False
         except ValueError:
             return len(URLS_SERIE) == 2 and URLS_SERIE[0] == URL_SERIE and "gitlab.fiocruz.br" in URLS_SERIE[1]
-    return rodar_autoteste({"detecção de colunas por padrão": t1, "coluna ausente falha alto (nunca adivinha)": t2,
+    def t_reconhece_a_tela_de_login():
+        """§198: HTTP 200 com tela de login não é CSV malformado — é recusa, e tem de ser nomeada
+        assim. Sem isto, o diagnóstico dizia "cabeçalho: ['<!DOCTYPE html>']" e mandava a próxima
+        sessão caçar defeito de parser onde a fonte apenas fechou."""
+        LOGIN = '<!DOCTYPE html>' + '\\n' + '<html class="devise-layout-html">'
+        CSV = 'SE;ano;dado;valor' + '\\n' + '202601;2026;srag;123'
+        casos = [(LOGIN, True),
+                 ('<!doctype html><html><body>unauthorized</body></html>', True),
+                 (CSV, False),
+                 ('', False),
+                 ('<!DOCTYPE html><html><p>Boletim InfoGripe</p></html>', False)]
+        return all(parece_pagina_de_login(c) is r for c, r in casos)
+
+    return rodar_autoteste({
+        "§198 reconhece a tela de login e não a confunde com CSV": t_reconhece_a_tela_de_login,"detecção de colunas por padrão": t1, "coluna ausente falha alto (nunca adivinha)": t2,
                             "parse: BR e UF, escala 'casos' filtrada": t3, "canal endêmico: 6 anos, ordenado": t4,
                             "últimas 4 SE vazadas": t5, "ressalva e siglas": t6,
                             "alvo: srag casa, sg ausente → None": t7, "sg extraído só quando o rótulo existe": t8,

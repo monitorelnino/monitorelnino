@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §198 · O InfoGripe fechou: a fonte de SRAG e síndrome gripal passou a exigir login · 24/09/2026
+
+Classe **correção de coletor e de diagnóstico**. Nenhum número muda: as duas séries já estavam em lacuna declarada, e continuam.
+
+**O sintoma.** O diagnóstico do coletor, gerado em 23/09, dizia que o host respondeu e que o cabeçalho da planilha era `['<!DOCTYPE html>']`. Lido assim, parece defeito de *parser* — CSV que veio malformado. Não era.
+
+**O que foi medido em 24/09, host a host.** `gitlab.fiocruz.br` responde **HTTP 200 com a tela de login do GitLab** (`devise-layout-html`, a classe que o Devise põe no `<html>` da página de entrada), e a API do projeto, em `/api/v4/projects/marcelo.gomes%2Finfogripe`, responde **404**. `gitlab.procc.fiocruz.br` e `infogripe.fiocruz.br` estão inacessíveis, com tempo de conexão esgotado. **O repositório do InfoGripe deixou de ser público.** Não é endereço que mudou: é autenticação que passou a ser exigida — e login é recusa que se respeita (§170), como o muro de robô do §186. Não se contorna autenticação.
+
+**A correção.** `parece_pagina_de_login()` reconhece a tela de entrada antes de o coletor tentar ler o conteúdo como planilha, e a rodada passa a registrar *"repositório passou a exigir autenticação"* em vez de um cabeçalho estranho. A diferença importa para quem vier depois: um diagnóstico manda caçar defeito de código; o outro manda procurar fonte nova ou abrir pedido de acesso. Cinco casos no autoteste, incluindo os dois que **não** podem disparar — CSV legítimo e HTML que não é login.
+
+**Diferença de ambiente, declarada.** Numa máquina Windows o `gitlab.fiocruz.br` nem chega a responder: o servidor manda cadeia TLS incompleta (*"unable to get local issuer certificate"*) e o repositório de raízes do sistema não a fecha sozinho. O runner do CI, com o repositório de raízes do Linux, alcança o host e recebe a tela de login. Rodando local, o coletor registra falha de rede; rodando no CI, registra a recusa. As duas são verdade, e o diagnóstico grava qual delas ocorreu — o que evita que a próxima sessão ache que uma das duas está errada.
+
+**O que o leitor vê, e por que está certo.** `srag_serie.json` e `sg_serie.json` **não existem**, e a página de saúde trata ausência de arquivo como lacuna declarada. O site não mostra dado velho: mostra que não tem. É a regra funcionando — mas agora com a causa nomeada, em vez de silêncio.
+
+**O que fica declarado e não feito.** Procurar fonte pública equivalente. O SIVEP-Gripe no OpenDataSUS é microdado, uma esteira inteiramente diferente da série semanal com canal endêmico que estas duas figuras usam — não é substituição de URL, é coletor novo. Fica como trabalho nomeado, não como pendência escondida.
+
 ## §197 · A descoberta renderizada dos repositórios estaduais: dois estados guardam o plano municipal atrás de login · 24/09/2026
 
 Classe **coleta**. Nenhum número muda; um documento estadual entra preservado e um candidato a reclassificação entra na fila R7.
