@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 24/09/2026 · 366 pendente(s) · 15 decidida(s) · A=66 B=233 C=67
+Gerado em 24/09/2026 · 376 pendente(s) · 15 decidida(s) · A=67 B=242 C=67
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -509,12 +509,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/Dako5M6EX_g/?hl=en
   - trecho: Jul 9, 2026 ... ... Plano de Contingência para nos preparar. Fique de olho nas ... Duque de Caxias - RJ.
 
-## Itatiaia/RJ — 1 pendente(s)
+## Itatiaia/RJ — 3 pendente(s)
 - `a691ddb18c` · nível **A** (7 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Itatiaia avança na construção de plano de ação para eventos ...
   - url: https://diariodovale.com.br/cidade/itatiaia-avanca-na-construcao-de-plano-de-acao-para-eventos-climaticos-extremos/
   - trecho: Itatiaia – A cidade de Itatiaia participa, nesta terça-feira (25) e quarta-feira (26), da Oficina Estadual de Preparação dos Municípios para Respostas aos Eventos Climáticos Extremos em virtude do El Niño 2026/2027.
   - juiz: portão automático: fonte não oficial
+- `62152476bb` · nível **B** (7 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: plano de contingência da defesa civil itatiaia / rj
+  - url: https://itatiaia.rj.gov.br/wp-content/uploads/2025/10/2025-PLANO-DE-CONTINGENCIA-INUNDACOES-Atualizado.pdf
+  - trecho: Plano de Contingência para ITATIAIA/RJ · Atualizado por: Rodrigo de Oliveira Rocha 17 · A PROCURADORIA GERAL DO MUNICÍPIO (PGM):  Apoiar as ações de Defesa Civil, no que se refere à parte jurídica;  Elaborar e providen
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `271267c5be` · nível **B** (4 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Iprevi Itatiaia - Decreto estabelece medidas da Prefeitura para ...
+  - url: http://iprevi.rj.gov.br/index.php/seja-bem-vindo/noticias/156-decreto-estabelece-medidas-da-prefeitura-para-prevencao-contra-o-novo-coronavirus
+  - trecho: O decreto (nº 3406/20) assinado pelo prefeito Eduardo Guedes foi publicado no Boletim Oficial da Prefeitura desta segunda-feira, dia 16. O endereço eletrônico é www.itatiaia.rj.gov.br. Para esclarecer quaisquer dúvidas, 
 
 ## Quissamã/RJ — 2 pendente(s)
 - `f2f2d164b6` · nível **A** (8 pts) · querido_diario · EX_ANTE · data 28/12/1990 (do trecho)
@@ -552,6 +562,39 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: decreto 40/2026
   - url: https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf
   - trecho: Os interessados (grupos formais, ... Cel. Eurico de Castro, nº 14, Centro, Rio das Flôres/RJ. ... O Prefeito Rodrigo Santana de Almeida assinou o Decreto nº 247/2025, que organiza o funcionamento das farmácias em regime 
+
+## Rio das Ostras/RJ — 6 pendente(s)
+- `91ff9d71c6` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Municipal nº 326**, 2022
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON
+  - url: https://www.riodasostras.rj.gov.br/wp-content/uploads/2025/11/plancon-chuvas-intensas-2025-2026.pdf
+  - trecho: Complementando esse marco legal, o Decreto Municipal nº 3267, de 2022,
+  - juiz: portão automático: data do ato incompleta (2022)
+- `2790627bda` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON ...
+  - url: https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-alagamentos-2024.pdf
+  - trecho: Rio das Ostras.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `081c850403` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://www.riodasostras.rj.gov.br/defesa-civil-e-saude-de-rio-das-ostras-participam-de-evento-sobre-enfrentamento-aos-impactos-do-el-nino/
+  - trecho: Aug 20, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño. Foto ... Plano de Contingência do Vigidesastres (Programa Nacional de ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `2153e2be9a` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Rio das Ostras participa de evento sobre os impactos do El Niño
+  - url: https://riodasostras.com.br/noticias/Noticias.php?noticia=14414
+  - trecho: Aug 21, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño ... Plano de Contingência do Vigidesastres (Programa Nacional de ...
+  - juiz: portão automático: fonte não oficial
+- `f1c181077f` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Jornal Oficial Município de Rio das Ostras - Poderes Executivo ...
+  - url: https://appro.riodasostras.rj.gov.br/storage/riodasostrasapp/jornais/2026/07/5c20e01c-6d1f-4e66-a433-d2c71a2f24e5.pdf
+  - trecho: Municipal reuniu todos os setores envolvidos para tomada de decisões imediatas, a partir de um Plano de Contingência.
+  - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `64324be146` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 20/09/2024 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON MARÉS ...
+  - url: https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-mares-de-tempestade-2024.pdf
+  - trecho: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E · DEFESA CIVIL PLANCON · MARÉS DE TEMPESTADE OU · RESSACA MARÍTIMA · Degradação severa das Regiões Costeiras · COBRADE: 1.3.1.1.2 · RIO DAS OSTRAS · VERSÃO: 8.0 / 2024 · ÚLTIMA ATUALIZ
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## São Vicente/RN — 2 pendente(s)
 - `c9edcbd126` · nível **A** (7 pts) · busca_web · DUVIDA · citação não extraída
@@ -1050,10 +1093,20 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: "A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
 
-## Paulista/PE — 3 pendente(s)
+## Paulista/PE — 5 pendente(s)
+- `6d7dc08e68` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: El Niño coloca saúde do Noroeste Paulista no radar do Ministério ...
+  - url: https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/
+  - trecho: Sep 16, 2026 ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...
+  - juiz: portão automático: fonte não oficial
 - `78f12d9669` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - url: https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/
   - trecho: 5 days ago ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...
+  - juiz: portão automático: fonte não oficial
+- `417950010d` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: EL NIÑO 2026 | Representantes da CPFL Paulista se reuniram na ...
+  - url: https://www.instagram.com/p/DdZ_Zs9DJqA/
+  - trecho: 7 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.
   - juiz: portão automático: fonte não oficial
 - `469f974651` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DdZ_Zs9DJqA/
@@ -1062,6 +1115,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `cd4703fb08` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/p/DbY6fIWFA_v/
   - trecho: Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL Paulista ...
+
+## Petrolina/PE — 1 pendente(s)
+- `b53b04907d` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2010 (do trecho)
+  - título: plano municipal de saneamento de petrolina/pe
+  - url: https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf
+  - trecho: Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...
+  - juiz: portão automático: fonte não oficial
 
 ## Recife/PE — 1 pendente(s)
 - `d1a3559016` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -1369,12 +1429,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DcjeKSYhTDO/
   - trecho: Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: "Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...
 
-## Nova Friburgo/RJ — 1 pendente(s)
+## Nova Friburgo/RJ — 2 pendente(s)
 - `ee78fe94d7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Como Nova Friburgo será atingida pelo super El Niño? Segundo ...
   - url: https://www.facebook.com/wandersonnogueira.rj/videos/como-nova-friburgo-ser%C3%A1-atingida-pelo-super-el-ni%C3%B1o-segundo-especialistas-com-pa/1720640012274128/
   - trecho: Jun 10, 2026 ... Como Nova Friburgo será atingida pelo super El Niño? Segundo ... plano de contingência para respostas rápidas à emergências. A ...
   - juiz: portão automático: fonte não oficial
+- `7fe1c44b7c` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · **lei municipal nº4.565**, 10/07/2017
+  - título: Diário oficial de 2025-10-23
+  - url: https://data.queridodiario.ok.org.br/3303401/2025-10-23/73b365c36a8eb243297134684209517b6c1694c4.pdf
+  - trecho: Aberto e fechado Objeto da compra: REGISTRO DE PREÇOS para futura e eventual CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE CESTAS BÁSICAS, em atendimento às necessidades das famílias de risco alto e risco m
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Nova Iguaçu/RJ — 1 pendente(s)
 - `363c09aa4b` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
@@ -1432,17 +1498,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://resende.rj.gov.br/images/Plano-Municipal-de-Saneamento-B%C3%A1sico.pdf
   - trecho: Jan 3, 2021 ... Manejo CEP: 27520-005 Resende-RJ. Diretor Executivo – André Luis ... Plano de Contingência e Proteção. (PLACONP), com sua última versão ...
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-
-## Rio das Ostras/RJ — 2 pendente(s)
-- `081c850403` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://www.riodasostras.rj.gov.br/defesa-civil-e-saude-de-rio-das-ostras-participam-de-evento-sobre-enfrentamento-aos-impactos-do-el-nino/
-  - trecho: Aug 20, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño. Foto ... Plano de Contingência do Vigidesastres (Programa Nacional de ...
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `2153e2be9a` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - título: Rio das Ostras participa de evento sobre os impactos do El Niño
-  - url: https://riodasostras.com.br/noticias/Noticias.php?noticia=14414
-  - trecho: Aug 21, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño ... Plano de Contingência do Vigidesastres (Programa Nacional de ...
-  - juiz: portão automático: fonte não oficial
 
 ## Rio de Janeiro/RJ — 1 pendente(s)
 - `aada6797ff` · nível **B** (3 pts) · querido_diario · DUVIDA · citação não extraída

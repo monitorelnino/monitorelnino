@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-24",
- "total_pistas": 381,
- "total_municipios": 188,
+ "total_pistas": 391,
+ "total_municipios": 189,
  "por_nivel": {
-  "A": 68,
-  "B": 235,
+  "A": 69,
+  "B": 244,
   "C": 78
  },
  "grupos": [
@@ -1596,6 +1596,131 @@
    ]
   },
   {
+   "ibge": "3304524",
+   "municipio": "Rio das Ostras",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 6,
+   "niveis": {
+    "A": 1,
+    "B": 5,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "91ff9d71c6",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2025/11/plancon-chuvas-intensas-2025-2026.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON",
+     "trecho": "Complementando esse marco legal, o Decreto Municipal nº 3267, de 2022,",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2790627bda",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-alagamentos-2024.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON ...",
+     "trecho": "Rio das Ostras.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "081c850403",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.riodasostras.rj.gov.br/defesa-civil-e-saude-de-rio-das-ostras-participam-de-evento-sobre-enfrentamento-aos-impactos-do-el-nino/",
+     "titulo": null,
+     "trecho": "Aug 20, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño. Foto ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2153e2be9a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://riodasostras.com.br/noticias/Noticias.php?noticia=14414",
+     "titulo": "Rio das Ostras participa de evento sobre os impactos do El Niño",
+     "trecho": "Aug 21, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f1c181077f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://appro.riodasostras.rj.gov.br/storage/riodasostrasapp/jornais/2026/07/5c20e01c-6d1f-4e66-a433-d2c71a2f24e5.pdf",
+     "titulo": "Jornal Oficial Município de Rio das Ostras - Poderes Executivo ...",
+     "trecho": "Municipal reuniu todos os setores envolvidos para tomada de decisões imediatas, a partir de um Plano de Contingência.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "64324be146",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-mares-de-tempestade-2024.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON MARÉS ...",
+     "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E · DEFESA CIVIL PLANCON · MARÉS DE TEMPESTADE OU · RESSACA MARÍTIMA · Degradação severa das Regiões Costeiras · COBRADE: 1.3.1.1.2 · RIO DAS OSTRAS · VERSÃO: 8.0 / 2024 · ÚLTIMA ATUALIZAÇÃO: 20 DE SETEMBRO DE 2024 · EXEMPLAR PERTENCENTE ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4104303",
    "municipio": "Campo Mourão",
    "uf": "PR",
@@ -2023,6 +2148,74 @@
      "titulo": "Umuarama reforça prevenção para enfrentar El Niño - Globoplay",
      "trecho": "Aug 13, 2026 ... Detalhes. Meio-Dia Paraná - Noroeste. Umuarama reforça prevenção para enfrentar El Niño ... Município também atualiza plano de contingência da ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3302254",
+   "municipio": "Itatiaia",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 1,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "a691ddb18c",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://diariodovale.com.br/cidade/itatiaia-avanca-na-construcao-de-plano-de-acao-para-eventos-climaticos-extremos/",
+     "titulo": "Itatiaia avança na construção de plano de ação para eventos ...",
+     "trecho": "Itatiaia – A cidade de Itatiaia participa, nesta terça-feira (25) e quarta-feira (26), da Oficina Estadual de Preparação dos Municípios para Respostas aos Eventos Climáticos Extremos em virtude do El Niño 2026/2027.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "62152476bb",
+     "nivel_confianca": "B",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://itatiaia.rj.gov.br/wp-content/uploads/2025/10/2025-PLANO-DE-CONTINGENCIA-INUNDACOES-Atualizado.pdf",
+     "titulo": "plano de contingência da defesa civil itatiaia / rj",
+     "trecho": "Plano de Contingência para ITATIAIA/RJ · Atualizado por: Rodrigo de Oliveira Rocha 17 · A PROCURADORIA GERAL DO MUNICÍPIO (PGM):  Apoiar as ações de Defesa Civil, no que se refere à parte jurídica;  Elaborar e providenciar, quando necessário, o decreto declarando Situação Anormal.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "271267c5be",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://iprevi.rj.gov.br/index.php/seja-bem-vindo/noticias/156-decreto-estabelece-medidas-da-prefeitura-para-prevencao-contra-o-novo-coronavirus",
+     "titulo": "Iprevi Itatiaia - Decreto estabelece medidas da Prefeitura para ...",
+     "trecho": "O decreto (nº 3406/20) assinado pelo prefeito Eduardo Guedes foi publicado no Boletim Oficial da Prefeitura desta segunda-feira, dia 16. O endereço eletrônico é www.itatiaia.rj.gov.br. Para esclarecer quaisquer dúvidas, ou adotar novos procedimentos em relação à prevenção e proliferação ...",
+     "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -2841,38 +3034,6 @@
      "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE APERIBÉ",
      "trecho": "urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3302254",
-   "municipio": "Itatiaia",
-   "uf": "RJ",
-   "melhor_nivel": "A",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 1,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "a691ddb18c",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://diariodovale.com.br/cidade/itatiaia-avanca-na-construcao-de-plano-de-acao-para-eventos-climaticos-extremos/",
-     "titulo": "Itatiaia avança na construção de plano de ação para eventos ...",
-     "trecho": "Itatiaia – A cidade de Itatiaia participa, nesta terça-feira (25) e quarta-feira (26), da Oficina Estadual de Preparação dos Municípios para Respostas aos Eventos Climáticos Extremos em virtude do El Niño 2026/2027.",
-     "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -3928,6 +4089,110 @@
    ]
   },
   {
+   "ibge": "2610707",
+   "municipio": "Paulista",
+   "uf": "PE",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 4,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "6d7dc08e68",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/",
+     "titulo": "El Niño coloca saúde do Noroeste Paulista no radar do Ministério ...",
+     "trecho": "Sep 16, 2026 ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "78f12d9669",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/",
+     "titulo": null,
+     "trecho": "5 days ago ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "417950010d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZ_Zs9DJqA/",
+     "titulo": "EL NIÑO 2026 | Representantes da CPFL Paulista se reuniram na ...",
+     "trecho": "7 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "469f974651",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZ_Zs9DJqA/",
+     "titulo": null,
+     "trecho": "4 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cd4703fb08",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DbY6fIWFA_v/",
+     "titulo": null,
+     "trecho": "Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL Paulista ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3303906",
    "municipio": "Petrópolis",
    "uf": "RJ",
@@ -4709,74 +4974,6 @@
      "titulo": null,
      "trecho": "... Plano de Contingência Estadual. A reunião do GRAC reúne os corpos técnicos das ... Mathilde Hoffmann, 66 - Centro II, Brusque, SC - 88353-120 - Centro ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "2610707",
-   "municipio": "Paulista",
-   "uf": "PE",
-   "melhor_nivel": "B",
-   "n_pistas": 3,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "78f12d9669",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/",
-     "titulo": null,
-     "trecho": "5 days ago ... ... El Niño. Por isso que nós estamos organizando junto aos municípios e aos estados um plano de contingência mais robusto”, afirmou. Ads. O ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "469f974651",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdZ_Zs9DJqA/",
-     "titulo": null,
-     "trecho": "4 days ago ... EL NIÑO 2026 | Representantes da CPFL Paulista ... plano de contingência com foco no aumento de ocorrências associadas ao fenômeno El Niño.",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "cd4703fb08",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DbY6fIWFA_v/",
-     "titulo": null,
-     "trecho": "Jul 29, 2026 ... Birigui recebe na próxima sexta-feira (31/07) uma reunião de alinhamento do Plano de Contingência – El Niño 2026, iniciativa da CPFL Paulista ...",
-     "data": "21/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -5746,8 +5943,8 @@
    ]
   },
   {
-   "ibge": "3304524",
-   "municipio": "Rio das Ostras",
+   "ibge": "3303401",
+   "municipio": "Nova Friburgo",
    "uf": "RJ",
    "melhor_nivel": "B",
    "n_pistas": 2,
@@ -5758,38 +5955,38 @@
    },
    "pistas": [
     {
-     "id": "081c850403",
+     "id": "ee78fe94d7",
      "nivel_confianca": "B",
-     "pontos_confianca": 5,
+     "pontos_confianca": 4,
      "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.riodasostras.rj.gov.br/defesa-civil-e-saude-de-rio-das-ostras-participam-de-evento-sobre-enfrentamento-aos-impactos-do-el-nino/",
-     "titulo": null,
-     "trecho": "Aug 20, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño. Foto ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "2153e2be9a",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
+      "fonte_desconhecida",
       "municipio_no_titulo",
       "plano_no_trecho",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://riodasostras.com.br/noticias/Noticias.php?noticia=14414",
-     "titulo": "Rio das Ostras participa de evento sobre os impactos do El Niño",
-     "trecho": "Aug 21, 2026 ... Rio das Ostras participa de evento sobre os impactos do El Niño ... Plano de Contingência do Vigidesastres (Programa Nacional de ...",
+     "url": "https://www.facebook.com/wandersonnogueira.rj/videos/como-nova-friburgo-ser%C3%A1-atingida-pelo-super-el-ni%C3%B1o-segundo-especialistas-com-pa/1720640012274128/",
+     "titulo": "Como Nova Friburgo será atingida pelo super El Niño? Segundo ...",
+     "trecho": "Jun 10, 2026 ... Como Nova Friburgo será atingida pelo super El Niño? Segundo ... plano de contingência para respostas rápidas à emergências. A ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7fe1c44b7c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3303401/2025-10-23/73b365c36a8eb243297134684209517b6c1694c4.pdf",
+     "titulo": "Diário oficial de 2025-10-23",
+     "trecho": "Aberto e fechado Objeto da compra: REGISTRO DE PREÇOS para futura e eventual CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE CESTAS BÁSICAS, em atendimento às necessidades das famílias de risco alto e risco muito alto do Plano de Contingência do Município, at ingidas por situações de emergência e calamidade, provenientes de intempéries climáticas, pelo período de 01 (um) ano. • Aceito e Habilitado para a empresa Z E S COMERCIAL LTDA, CNPJ 47.496.710/ 0001-18, pelo melhor",
      "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -6825,6 +7022,37 @@
    ]
   },
   {
+   "ibge": "2611101",
+   "municipio": "Petrolina",
+   "uf": "PE",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "b53b04907d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf",
+     "titulo": "plano municipal de saneamento de petrolina/pe",
+     "trecho": "Um Plano de Contingência pode estruturar-se em três grandes capítulos: aspectos ... Petrolina-Pe. Recife, 2010. FONTE, Paulo Gilberto Dantas da. Aspectos ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2611606",
    "municipio": "Recife",
    "uf": "PE",
@@ -7174,38 +7402,6 @@
      "titulo": null,
      "trecho": "Plano Municipal de Saneamento Básico de Armação dos Búzios/RJ. Produto ... A inexistência de um plano de contingência municipal para resposta a eventos ...",
      "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3303401",
-   "municipio": "Nova Friburgo",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "ee78fe94d7",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.facebook.com/wandersonnogueira.rj/videos/como-nova-friburgo-ser%C3%A1-atingida-pelo-super-el-ni%C3%B1o-segundo-especialistas-com-pa/1720640012274128/",
-     "titulo": "Como Nova Friburgo será atingida pelo super El Niño? Segundo ...",
-     "trecho": "Jun 10, 2026 ... Como Nova Friburgo será atingida pelo super El Niño? Segundo ... plano de contingência para respostas rápidas à emergências. A ...",
-     "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
