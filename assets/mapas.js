@@ -189,6 +189,13 @@
     risco: { chuvas: COR.sintetico, seca: COR.ambar, fogo: COR.argila, multi: COR['areia-escura'], sem_sinal: COR.areia },
     // consistência risco × instrumento (mapa 5 da Defesa civil)
     consistencia: { COBRE: COR.musgo, PARCIAL: COR.mineral, DIFERE: COR.argila, SEM: COR.argila, NEUTRO: COR.areia },
+    // 24/09/2026: grau do aviso do INMET e nível do alerta do CEMADEN, tal como os órgãos os nomeiam
+    // (o projeto não cria escala de dano própria — transferência conceitual §11). Fica na paleta, e
+    // não na página, porque a mesma severidade aparece em Defesa civil e em Proteja-se e tem de ter a
+    // mesma cor. `outro` é para vocabulário NOVO do órgão: entra num tom neutro e a legenda o nomeia
+    // pelo nome que ele deu, em vez de ser enquadrado à força num grau vizinho.
+    grauAviso: { 'Perigo Potencial': COR.ambar, 'Perigo': COR.argila, 'Grande Perigo': COR.abissal,
+                 cemaden: COR.sintetico, outro: COR.mineral },
     // ENOS
     enso: { el_nino: COR.argila, neutro: COR.areia, la_nina: COR.sintetico },
     // antecipação × resposta (índice × contador); defeso

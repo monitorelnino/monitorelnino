@@ -9,6 +9,34 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §206 · Temperatura, qualidade do ar e os alertas onde eles pertencem · 24/09/2026
+
+Classe **coleta e páginas**. Peso zero em tudo o que entra: nenhum número novo toca nota do MARÉ Legal nem do MARÉ Saúde, e o portão prova isso.
+
+**O que a editoria pediu.** Trazer temperatura, qualidade do ar e alertas climáticos de plataformas públicas, sem construir nada do zero, e organizar pela linha narrativa já fixada: alerta vai para Defesa civil, fenômeno vai para Monitor de riscos, exposição sanitária vai para Saúde.
+
+**Duas fontes novas, ambas sem chave.** `open_meteo_tempo` (Forecast do Open-Meteo, modelos ECMWF, DWD e NOAA) e `open_meteo_ar` (Copernicus CAMS via Open-Meteo), nas 27 capitais, por código IBGE. Três coisas que a sonda com rede real ensinou e que o código registra: várias coordenadas numa chamada devolvem uma **lista posicional**, o lat/lon que volta é o do **nó da grade** e não o pedido (casar por índice, nunca por coordenada), e o ar vem só em série horária — **a média diária é cálculo nosso**, e o dado diz isso.
+
+**As duas naturezas, declaradas no dado.** `estimativa de modelo` e `medição` são rótulos que viajam com o valor, não com a figura, para que nenhuma página possa exibir um sem o outro. A linha de referência de PM2,5 da OMS, 15 µg/m³ de média diária, também está **no dado** — nenhuma página guarda número de referência.
+
+**Hora, não só data.** `consultado_em` das fontes de cadência sub-diária passa a ter `hh:mm` no fuso da redação. Sem isso não havia como distinguir um retrato de quinze minutos de um de vinte e três horas, que é exatamente a diferença que a regra das 36 horas precisa ver. A cadência de quatro vezes por dia já existia e já comitava (`atualizar.yml` às 1, 7, 13 e 19 UTC): o que faltava era a hora.
+
+**A granularidade municipal dos avisos já vinha na resposta, e era jogada fora.** Cada aviso do INMET traz o tipo (`descricao`), a severidade, o início e o fim com hora, e **a lista completa de municípios com código IBGE** — tudo isso era agregado em "total por UF" e descartado. `data/alertas/vigentes.json` passa a guardar por município: 1.177 municípios sob aviso ou alerta na primeira coleta. O hexadecimal que o INMET manda em `aviso_cor` **não é gravado**: cor só vive em `assets/tokens.css`, e o grau do órgão entrou na paleta semântica única, porque a mesma severidade aparece em mais de uma página.
+
+**Um erro de contagem que a camada do CEMADEN embutia.** A camada se chama `alertas_vigentes_siaden` mas devolve também os **encerramentos**, com `nivel` igual a "Cessar" — 17 dos 29 registros da primeira consulta. "Cessar" não é grau de severidade, é o fim de um alerta: contá-lo como alerta em vigor teria publicado 1.192 municípios onde havia 1.177. Os encerramentos ficam registrados à parte, porque alerta encerrado hoje é informação, não ausência de dado.
+
+**Uma falha que parecia fonte fora do ar e era ambiente.** O CEMADEN vinha morrendo com `CERTIFICATE_VERIFY_FAILED`: a loja de certificados desta máquina não completa a cadeia do `gsc.cemaden.gov.br`. Passou a verificar contra o pacote de raízes do `certifi`, que é o mesmo em qualquer máquina. Não afrouxa verificação nenhuma — fonte que recusa de verdade continua recusando. `certifi` era dependência transitiva e agora está declarado e travado, pela mesma regra do `pypdfium2`: a versão do pacote de raízes decide **quais fontes a coleta consegue verificar**.
+
+**Onde cada coisa ficou.** O Monitor de riscos perdeu os dois mapas de alerta e ganhou temperatura e PM2,5 por capital, com alternativa em lista; os alertas viraram uma linha-fato com contagem e link. A Defesa civil ganhou o painel **"Alertas em vigor"**, com mapa por município, gráfico por tipo, lista por UF e o cruzamento com os decretos — e os decretos ganharam bloco próprio, logo depois, para que alerta e decreto fiquem na mesma dobra.
+
+**Dois defeitos achados no navegador, não no código.** Casar município por **nome** deixou os 12 municípios do CEMADEN fora do mapa, em silêncio, porque o CEMADEN escreve em caixa alta: passou a casar por código IBGE, que não tem grafia. E o cruzamento decreto × alerta desenhava **193 pontos e dizia "193 municípios"** — eram 193 eventos sobre 170 municípios, porque um município pode ter mais de um decreto no ciclo. Os dois só apareceram porque a página foi aberta e medida.
+
+**O portão de sinais aprendeu que os sinais não vivem numa página só.** Ele exigia que toda fonte catalogada fosse creditada em `monitor-de-riscos.html`. A invariante não afrouxou — toda fonte continua tendo de ser creditada em alguma página de sinal —, mas a lista de páginas agora existe em vez de ser uma só implícita.
+
+**Teste.** Vinte e oito casos novos no autoteste do coletor, entre eles os quatro achados acima virados em trava: casamento posicional (fixture com coordenada trocada de propósito), "Cessar" não conta como alerta em vigor, hexadecimal não é gravado, e ausência nunca vira zero em nenhum dos dois adaptadores. Estrutura, figuras, legendas, acessibilidade, runtime de sinais, móvel a 390 px e consistência visual verdes.
+
+**O que fica declarado.** O painel de calor do MS (`clima.saude.gov.br`) tem dado por município, com classe, índice EHF e máxima, mas **não tem endereço estável**: é função interna do app, com o caminho carimbado pelo build. O `MonitorAr` do MMA está em `monitorar.mma.gov.br`, não no caminho que o pedido trazia. E `data/resposta/quadrantes.json` responde 404 desde antes desta rodada; a página já o trata como nulo.
+
 ## §204 · O sistema de marca entra, com a voz subordinada à governança editorial · 24/09/2026
 
 Classe **design e governança**. Nenhum número muda. Nenhum texto público foi reescrito.

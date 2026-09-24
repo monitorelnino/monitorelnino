@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE;
+let BR_GEOJSON, SINAIS, MARE, ALERTAS;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 const TIPO_COR = {estiagem:MonitorMapas.PALETA.risco.seca, chuvas:MonitorMapas.PALETA.risco.chuvas, incendios:MonitorMapas.PALETA.risco.fogo, misto:MonitorMapas.PALETA.risco.multi, sem_sinal:MonitorMapas.PALETA.risco.sem_sinal};   // paleta semântica única
@@ -22,6 +22,9 @@ async function __load(){
       return r.json();
     }))
   );
+  /* Os alertas por município moram na Defesa civil (24/09/2026); aqui entram só como contagem na
+     linha-fato. Arquivo ausente não derruba a página: a linha fica com o texto estático dela. */
+  ALERTAS = await fetch('data/alertas/vigentes.json').then(r => r.ok ? r.json() : null).catch(() => null);
   __init();
 }
 
@@ -40,6 +43,18 @@ function credito(caixaId, fonteId){
   const f = fonteDe(fonteId);
   MonitorMapas.credito(caixaId, {fontes: f.nome, url: f.url_publica, data: coletada(fonteId) ? f.consultado_em : null});
   const d = document.querySelector('#' + caixaId + ' .fonte-figura'); if (d) d.dataset.credito = fonteId;
+}
+
+/* Alternativa em lista de uma figura por UF: `celulas(uf)` devolve o array de colunas depois da
+   sigla, ou null quando aquela UF não tem leitura — e aí a linha diz a lacuna, não zero. */
+function preencherTabela(tabelaId, celulas){
+  const corpo = document.querySelector('#' + tabelaId + ' tbody');
+  if(!corpo) return;
+  const nCols = (document.querySelectorAll('#' + tabelaId + ' thead th').length || 2) - 1;
+  corpo.innerHTML = UFS.map(uf => {
+    const cols = celulas(uf) || Array(nCols).fill('sem coleta até o corte');
+    return '<tr><td><strong>' + uf + '</strong></td>' + cols.map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>';
+  }).join('');
 }
 
 /* Marca visualmente uma figura que espera a primeira coleta. */
@@ -97,17 +112,72 @@ desenharMapa('mapaSecas', 'legSecas',
   ['sem seca','S0','S1','S2','S3','S4'].map(c => ({cor:SECA_COR[c], rotulo:SECA_ROTULO[c]})).concat([{cor:NEUTRA, rotulo:'Sem coleta até o corte'}]));
 credito('boxSecas', 'monitor_secas');
 
-// ---- Mapa 3: avisos INMET ----
-const aviso = uf => (SINAIS.uf[uf] || {}).avisos_inmet;
-const maxAvisos = Math.max(1, ...UFS.map(uf => (aviso(uf) || {}).total || 0));
-const escalaAviso = d3.scaleLinear().domain([0, maxAvisos]).range(MonitorMapas.PALETA.rampaPerigo);   // perigo = rampa quente (era verde)
-desenharMapa('mapaAvisos', 'legAvisos',
-  uf => { const a = aviso(uf); return a ? escalaAviso(a.total) : NEUTRA; },
-  uf => { const a = aviso(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
-    const graus = Object.entries(a.graus || {}).map(([g, n]) => esc(g) + ': ' + n).join(' · ');
-    return a.total + ' aviso(s) vigente(s)' + (graus ? '<br>' + graus : ''); },
-  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 avisos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:maxAvisos + ' aviso(s)'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
-credito('boxAvisos', 'inmet_avisos');
+// ---- Mapa 3: temperatura máxima prevista nas capitais (24/09/2026) ----
+/* O valor é da CAPITAL, não a média do estado: a UF é pintada para localizar, e tanto o texto do
+   mouse quanto a lista dizem qual cidade foi lida. Estimativa de modelo, nunca medição de estação —
+   o rótulo vem do próprio dado (campo `natureza`), não escrito à mão aqui. */
+const temp = uf => (SINAIS.uf[uf] || {}).temperatura;
+const serieTemp = uf => ((temp(uf) || {}).serie) || [];
+const diaDe = (uf, desloc) => { const s = serieTemp(uf); const hoje = s.findIndex(p => p.data === diaISO(0)); const i = (hoje < 0 ? 1 : hoje) + desloc; return s[i] || null; };
+function diaISO(desloc){ const d = new Date(); d.setDate(d.getDate() + desloc); return d.toISOString().slice(0, 10); }
+const maxPrev = uf => (diaDe(uf, 1) || {}).maxima;
+const temps = UFS.map(maxPrev).filter(v => typeof v === 'number');
+const tMin = temps.length ? Math.min(...temps) : 0, tMax = temps.length ? Math.max(...temps) : 1;
+const escalaTemp = d3.scaleLinear().domain([tMin, tMax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
+desenharMapa('mapaTemperatura', 'legTemperatura',
+  uf => { const v = maxPrev(uf); return typeof v === 'number' ? escalaTemp(v) : NEUTRA; },
+  uf => { const t = temp(uf); if(!t) return 'Aguardando a primeira coleta desta fonte';
+    const amanha = diaDe(uf, 1), ontem = diaDe(uf, -1);
+    return esc(t.capital && t.capital.nome || uf) + '<br>Máxima prevista para amanhã: '
+      + (amanha && amanha.maxima != null ? amanha.maxima + ' ' + esc(t.unidade) : 'sem valor')
+      + (ontem && ontem.maxima != null ? '<br>Máxima de ontem: ' + ontem.maxima + ' ' + esc(t.unidade) : '')
+      + '<br>' + esc(t.natureza); },
+  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo: temps.length ? tMin.toFixed(0) + ' °C' : 'menor'},
+   {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo: temps.length ? tMax.toFixed(0) + ' °C' : 'maior'},
+   {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+credito('boxTemperatura', 'open_meteo_tempo');
+preencherTabela('tblTemperatura', uf => { const t = temp(uf); if(!t) return null;
+  const a = diaDe(uf, 1), o = diaDe(uf, -1);
+  return [t.capital && t.capital.nome || '', o && o.maxima != null ? o.maxima + ' °C' : 'sem valor',
+          a && a.maxima != null ? a.maxima + ' °C' : 'sem valor',
+          a && a.minima != null ? a.minima + ' °C' : 'sem valor']; });
+
+// ---- Mapa 4: material particulado fino nas capitais (24/09/2026) ----
+/* Escala ancorada na linha da OMS (15 µg/m³ de média diária), que vem DO DADO — o número não vive
+   no HTML nem aqui. A relação com a linha é descrita ("acima"/"abaixo"), sem qualificar o valor. */
+const ar = uf => (SINAIS.uf[uf] || {}).qualidade_ar;
+const pm25 = uf => ((ar(uf) || {}).media_diaria || {}).pm2_5;
+const REF_PM25 = ((SINAIS._formato || {}).referencia_pm25_oms || {}).valor;
+const pmVals = UFS.map(pm25).filter(v => typeof v === 'number');
+const pmMax = pmVals.length ? Math.max(...pmVals) : 1;
+const escalaPm = d3.scaleLinear().domain([0, pmMax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
+const relacaoOms = v => typeof v !== 'number' || REF_PM25 == null ? '' : (v > REF_PM25 ? 'acima da linha da OMS' : 'abaixo da linha da OMS');
+desenharMapa('mapaAr', 'legAr',
+  uf => { const v = pm25(uf); return typeof v === 'number' ? escalaPm(v) : NEUTRA; },
+  uf => { const a = ar(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
+    const v = pm25(uf), u = (a.unidades || {}).pm2_5 || 'µg/m³';
+    return esc(a.capital && a.capital.nome || uf) + '<br>PM2,5: '
+      + (typeof v === 'number' ? v + ' ' + esc(u) + ' (' + relacaoOms(v) + ')' : 'sem valor')
+      + '<br>' + esc(a.natureza); },
+  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 µg/m³'},
+   {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo: pmVals.length ? pmMax.toFixed(0) + ' µg/m³' : 'maior'},
+   {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+credito('boxAr', 'open_meteo_ar');
+
+/* Linha-fato dos alertas: a contagem fica aqui, os alertas moram na Defesa civil. Só reescreve
+   quando o arquivo carregou — sem ele, o texto estático do HTML permanece, sem número inventado. */
+(function linhaDeAlertas(){
+  const el = document.getElementById('linhaAlertas');
+  if(!el || !ALERTAS || !ALERTAS.resumo) return;
+  const r = ALERTAS.resumo;
+  el.innerHTML = r.municipios_inmet + ' município(s) sob aviso do INMET e ' + r.municipios_cemaden
+    + ' sob alerta do CEMADEN, em ' + esc(MonitorMapas.dataBR(ALERTAS.gerado_em) || '')
+    + ' · <a href="defesa-civil.html#alertas">Defesa civil</a>';
+})();
+preencherTabela('tblAr', uf => { const a = ar(uf); if(!a) return null;
+  const m = a.media_diaria || {}, u = (a.unidades || {}).pm2_5 || 'µg/m³';
+  const num = (x) => typeof x === 'number' ? x + ' ' + u : 'sem valor';
+  return [a.capital && a.capital.nome || '', num(m.pm2_5), num(m.pm10), num(m.ozone), relacaoOms(m.pm2_5)]; });
 
 // ---- Mapa 4: focos ativos ----
 const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
@@ -118,24 +188,6 @@ desenharMapa('mapaFogo', 'legFogo',
   uf => { const f = fogo(uf); return f ? f.focos_24h + ' foco(s) nas últimas 24 h' : 'Aguardando a primeira coleta desta fonte'; },
   [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 focos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:maxFogo + ' foco(s)'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxFogo', 'inpe_fogo');
-
-// ---- Mapa 5: alertas vigentes do CEMADEN ----
-const alerta = uf => (SINAIS.uf[uf] || {}).alertas_cemaden;
-const maxAlerta = Math.max(1, ...UFS.map(uf => (alerta(uf) || {}).total || 0));
-const escalaAlerta = d3.scaleLinear().domain([0, maxAlerta]).range(MonitorMapas.PALETA.rampaPerigo);
-desenharMapa('mapaCemaden', 'legCemaden',
-  uf => { const a = alerta(uf); return a ? escalaAlerta(a.total) : NEUTRA; },
-  uf => { const a = alerta(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
-    const niveis = Object.entries(a.niveis || {}).map(([n, q]) => esc(n) + ': ' + q).join(' · ');
-    return a.total + ' alerta(s) vigente(s)' + (niveis ? '<br>' + niveis : ''); },
-  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 alertas'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:maxAlerta + ' alerta(s)'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
-// CEMADEN: "nenhum alerta vigente" é informação da fonte, não lacuna — vai na LEGENDA, não em parágrafo.
-(function(){
-  const temAlerta = Object.values((SINAIS && SINAIS.uf) || {}).some(u => u.alertas_cemaden && u.alertas_cemaden.total);
-  const leg = document.getElementById('legCemaden');
-  if (leg && coletada('cemaden_alertas') && !temAlerta) MonitorMapas.legenda('legCemaden', [{cor:MonitorMapas.PALETA.semDado, rotulo:'nenhum alerta vigente na consulta'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:'com alertas (quando houver)'}]);
-})();
-credito('boxCemaden', 'cemaden_alertas');
 
 // =====================  Cartões do estado do ciclo  =====================
 const oni = SINAIS.enos.oni, prob = SINAIS.enos.probabilidades;

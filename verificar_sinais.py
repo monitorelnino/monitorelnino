@@ -26,6 +26,12 @@ import sys
 RAIZ = pathlib.Path(__file__).parent
 REGISTRO = RAIZ / "data" / "sinais_risco.json"
 PAGINA = RAIZ / "monitor-de-riscos.html"
+# 24/09/2026: os sinais deixaram de viver numa página só. Os avisos do INMET e os alertas do
+# CEMADEN foram para defesa-civil.html, com granularidade municipal. A invariante NÃO afrouxou:
+# toda fonte catalogada continua tendo de ser creditada em ALGUMA destas páginas — o que mudou é
+# que a lista de páginas existe em vez de ser uma só implícita.
+PAGINAS_DE_SINAL = ("monitor-de-riscos.html", "defesa-civil.html", "saude.html", "proteja-se.html")
+ALERTAS = RAIZ / "data" / "alertas" / "vigentes.json"
 INDICE = RAIZ / "data" / "indice.json"
 MOTOR = RAIZ / "recalcular_mare.py"
 UFS = {"AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT",
@@ -152,11 +158,25 @@ def main():
         # `credito`), então o que se verifica aqui é o que É estático: a chamada
         # existe para cada fonte do catálogo. Que o crédito renderize com link,
         # documento e data é verificado por scripts/verificar_runtime_sinais.js.
-        for chave in reg["fontes"]:
-            if f"'{chave}'" not in html:
-                falha(f"monitor-de-riscos.html: fonte '{chave}' catalogada mas nunca creditada na página")
     else:
         avisos.append("monitor-de-riscos.html ainda não existe — checagem de linguagem pulada")
+
+    # Proveniência visível: toda fonte catalogada é creditada em alguma página de sinal. O crédito
+    # é montado em tempo de execução a partir do registro (função `credito`), então o que se
+    # verifica aqui é o que É estático: a chamada existe. Que renderize com link, documento e data
+    # é verificado por scripts/verificar_runtime_sinais.js.
+    creditadas = set()
+    for nome in PAGINAS_DE_SINAL:
+        caminho = RAIZ / nome
+        if not caminho.exists():
+            continue
+        corpo = ler_pagina(caminho)
+        for chave in reg["fontes"]:
+            if f"'{chave}'" in corpo:
+                creditadas.add(chave)
+    for chave in sorted(set(reg["fontes"]) - creditadas):
+        falha(f"fonte '{chave}' catalogada mas nunca creditada em nenhuma página de sinal "
+              f"({', '.join(PAGINAS_DE_SINAL)})")
 
     # ---- 5. lacuna honesta ------------------------------------------------
     for chave, fonte in reg["fontes"].items():
