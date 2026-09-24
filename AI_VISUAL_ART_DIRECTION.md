@@ -33,6 +33,13 @@ Ela NÃO precisa ser comunicada através de:
 
 O site deve ter personalidade.
 
+> **DESVIO DECLARADO DESTE SITE (24/09/2026).** O "excesso de branco" listado acima não se aplica
+> à base: o MARÉ usa **fundo branco**, por decisão editorial de 05/09/2026 reafirmada em 24/09.
+> **Não reverter `--bg`.** A razão está no §23 desta própria constituição — num produto cujo
+> conteúdo é dado, a base branca dá a maior folga de contraste às cores que carregam significado, e
+> legibilidade tem precedência sobre preferência de base. O que a personalidade deve buscar aqui é
+> ritmo, composição e hierarquia, não inversão de fundo.
+
 ## 2. CONCEITO VISUAL
 
 Trate o site como uma combinação entre: publicação editorial contemporânea + observatório de dados + narrativa visual digital.
@@ -118,6 +125,14 @@ Prefira cores que tenham: saturação controlada; contraste; profundidade; prese
 Quando adequado, explore uma sensação de cor mineral ou de pedra preciosa: verdes profundos; azuis densos; turquesas; ametistas; magentas escuros; âmbar; cobre; tons minerais.
 
 O resultado não deve parecer neon gratuito. A intensidade deve ser sofisticada.
+
+> **DECISÃO DESTE SITE (24/09/2026): nenhum matiz novo.** A paleta já é mineral — musgo, argila,
+> âmbar, sintético, mineral, bioluz, areia — e cada cor aqui **tem função semântica**: chuva, seca,
+> fogo, status de instrumento, ausência de dado. Acrescentar ametista ou magenta criaria cor **sem
+> função**, que é o que o §9 proíbe duas seções acima, para satisfazer um exemplo que o próprio §11
+> condiciona ao "quando adequado". Profundidade, aqui, vem pelo §12 — luminosidade e transparência
+> dentro da família —, não por matiz novo. Vale também a trava do sistema de marca: dez hexes
+> nomeados, e hex fora de `tokens.css` reprova em portão.
 
 ## 12. LUZ E PROFUNDIDADE
 

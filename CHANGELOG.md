@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §205 · As quatro decisões da direção de arte, e a primeira correção que elas produziram · 24/09/2026
+
+Classe **direção de arte**. O §192 instalou a constituição visual e mediu a auditoria; parou nos passos 1 a 5 do §25, porque os passos seguintes dependiam de quatro pontos em que a constituição contradizia decisão viva do projeto. A editoria delegou as quatro. Aqui estão, com a razão de cada uma.
+
+**1. Fundo branco: fica.** O §1 da constituição lista "excesso de branco" entre o que a seriedade não precisa. A decisão é manter — e a razão vem da própria constituição, no §23: num produto cujo conteúdo é dado, a base branca dá a **maior folga de contraste** às cores que carregam significado, e legibilidade tem precedência sobre preferência de base. O desvio está declarado dentro do documento, com a instrução de não reverter `--bg`. O que a personalidade busca aqui é ritmo, composição e hierarquia — não inversão de fundo.
+
+**2. Paleta: nenhum matiz novo.** O §11 pede profundidade mineral e cita ametista e magenta. A decisão é **não acrescentar matiz**, e ela se apoia no §9 da mesma constituição: *cada cor deve possuir função*, e *não introduza uma nova cor apenas porque ela fica bonita naquela seção*. Aqui toda cor é semântica — chuva, seca, fogo, status do instrumento, ausência de dado. Ametista não tem o que significar, e inventar significado para justificar a cor é o caminho errado. A paleta **já é mineral**: musgo, argila, âmbar, sintético, mineral, bioluz, areia. Profundidade vem pelo §12, luminosidade e transparência dentro da família. Vale ainda a trava do sistema de marca — dez hexes nomeados, e hex fora de `tokens.css` reprova em portão.
+
+**3. Card como arquitetura: decisão tomada, implementação com protótipo.** O §6 afirma que *card não é unidade narrativa* e o §19 marca a grade repetitiva de três colunas como estética de template. A auditoria do §192 mediu: `border-radius` de 6px em **38 de 38** figuras, sombra em 38 de 38, cinco larguras distintas, nenhuma figura ocupando a viewport. A decisão é **acolher a crítica e não executá-la às cegas**: o componente único nasceu de uma auditoria datada de 07/09 e é sustentado por dois portões, e o próprio §19 diz que esses padrões não são proibidos — o problema é usá-los como arquitetura automática. Sair disso é adotar as famílias de composição do §21, o que é desenho, não ajuste de token, e o `CLAUDE.md` exige protótipo à vista da editoria antes de qualquer merge visual. Fica como a próxima rodada, com capturas.
+
+**4. Papéis tipográficos: corrigido agora, e a auditoria achou um defeito real.** O §13 pede diferenciação clara entre título, legenda, nota e fonte. Medido no `base.css`: **`.figura-sub` e `.fonte-figura` eram tipograficamente idênticas** — mesma família, mesmo tamanho, mesma entrelinha, mesma cor. O §11 da governança editorial exige quatro funções separadas e **proíbe comprimi-las**; pela forma, o leitor não distinguia a legenda do crédito.
+
+A correção segue o §14, que diz que hierarquia não é só tamanho: a legenda passa a **peso médio**, a fonte fica em regular. Mesma cor, mesmo tamanho, peso diferente — o que preserva a escala fixa de oito degraus e **não toca em contraste**, já que cor e tamanho não mudam. É a menor intervenção que resolve a confusão, e é o tipo de coisa que só aparece quando se mede em vez de olhar.
+
+**O que fica declarado.** Os passos 9 a 11 do §25 — redesenhar páginas representativas, validar, propagar — dependem da decisão 3 e de protótipo mostrado. A dívida da lista canônica de categorias, aberta no §202, segue aberta. E o teste de personalidade do §26 só faz sentido depois do redesenho, não antes.
+
 ## §203 · A leitura dos 82, e os quatro defeitos que a exigência de citar denunciou · 24/09/2026
 
 Classe **coleta e instrumento**. Nada aplicado: `classificar_planos_municipais.py` escreve um arquivo de revisão, e a promoção é R7.
