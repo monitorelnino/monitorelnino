@@ -74,11 +74,19 @@ const CAT_STYLE = {
 function ligarSeletorDeCamada(selId, pares){
   const sel = document.getElementById(selId);
   if (!sel) return;
+  /* 24/09/2026 (§208): era `svg.hidden = !ativo`, e em elemento SVG isso NÃO FUNCIONA. `hidden`
+     é propriedade de HTMLElement; num SVGElement a atribuição cria uma propriedade JS comum e
+     não reflete no atributo — e o que esconde é o atributo, pela regra `[hidden]` da folha do
+     navegador. Medido: depois do change, `svg.hidden` era false e o atributo continuava lá, com
+     display:none. Consequência: os dois seletores desta página nunca trocaram de camada, e
+     "Nível de verificação · todos os 5.571 municípios" e "Natureza · decreto × plano" jamais
+     chegaram ao leitor. `toggleAttribute` mexe no atributo e serve para SVG e para HTML. */
+  function mostrar(el, ativo){ if (el) el.toggleAttribute('hidden', !ativo); }
   function aplicar(){
     pares.forEach(p => {
       const ativo = p.valor === sel.value;
-      const svg = document.getElementById(p.svg); if (svg) svg.hidden = !ativo;
-      const leg = document.getElementById(p.legenda); if (leg) leg.hidden = !ativo;
+      mostrar(document.getElementById(p.svg), ativo);
+      mostrar(document.getElementById(p.legenda), ativo);
     });
   }
   sel.addEventListener('change', aplicar);

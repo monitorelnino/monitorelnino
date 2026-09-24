@@ -15,6 +15,9 @@ verificar_financiamento.py — portão 13 (v2.3, §7.8)
  (i) camada A do dinheiro municipal (24/09/2026): todo registro com fonte, exercício, data e
      hash; população SEMPRE do Censo 2022; fórmula do R$/hab declarada no dado; NENHUMA classe
      de ausência convertida em zero; e a ressalva "inclui preparação e resposta" na legenda.
+     Camada B declarada (§208): a dotação na LOA (ICM var 11) mora no mesmo registro que a camada
+     declarada de plano, que pontua — a trava injeta a dotação num município sem plano e exige que
+     a contagem não mude.
 Uso: python3 verificar_financiamento.py [--negativos]
 """
 import json, os, pathlib, re, shutil, sys, tempfile
@@ -166,6 +169,42 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
     return e
 
 
+def dinheiro_declarado_nao_pontua() -> bool:
+    """§208: a dotação orçamentária declarada (ICM variável 11) mora no MESMO registro por
+    município que a camada declarada de PLANO, que pontua a 50 %. Dinheiro não pontua.
+
+    A garantia hoje é estrutural — `recalcular_mare._declarado_nacional_uf()` lê apenas
+    `munic_plano_contingencia` e `icm_var8_plano_contingencia`, por nome. Estrutural deixa de ser
+    garantia no dia em que alguém trocar a leitura por 'qualquer campo que termine em sim'. Esta
+    trava injeta a dotação num município SEM plano declarado e exige que a contagem por UF não
+    mude nem um município."""
+    import importlib
+    import recalcular_mare as rm
+    importlib.reload(rm)
+    caminho = RAIZ / "data" / "declarado_nacional.json"
+    if not caminho.exists():
+        return True                               # sem a camada, nada a provar
+    original = caminho.read_bytes()
+    try:
+        antes = rm._declarado_nacional_uf()
+        d = json.loads(original.decode("utf-8"))
+        muns = d.get("municipios") or {}
+        # Um município que NÃO declara plano por nenhuma das duas fontes: se a dotação contasse,
+        # ele entraria na contagem e o total subiria.
+        alvo = next((c for c, v in muns.items()
+                     if v.get("munic_plano_contingencia") != "sim"
+                     and v.get("icm_var8_plano_contingencia") != "sim"), None)
+        if alvo is None:
+            return True
+        muns[alvo]["icm_var11_dotacao_loa"] = "sim"
+        caminho.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n",
+                           encoding="utf-8", newline="\n")
+        depois = rm._declarado_nacional_uf()
+        return antes == depois
+    finally:
+        caminho.write_bytes(original)
+
+
 def carregar():
     j = lambda p: json.load(open(p, encoding="utf-8"))
     # Os arquivos de municipios/ entram na varredura de chave de API e de campo de autor, como
@@ -217,6 +256,9 @@ if __name__ == "__main__":
     if "--negativos" in sys.argv: sys.exit(negativos())
     e = checar(*carregar())
     if not estresse(): e.append("(f) TESTE DE ESTRESSE: índice mudou sem data/financiamento/")
+    if not dinheiro_declarado_nao_pontua():
+        e.append("(i) a dotação orçamentária declarada (ICM var 11) ENTROU na contagem da camada "
+                 "declarada — dinheiro não pontua")
     if e:
         print("✗ FINANCIAMENTO: publicação bloqueada:"); [print("   ", x) for x in e]; sys.exit(1)
     print("✓ FINANCIAMENTO OK — sem chave, créditos por figura, modelo coerente, nada imputado, resposta separada, motor intacto sob estresse, defeso na série, E10.")
