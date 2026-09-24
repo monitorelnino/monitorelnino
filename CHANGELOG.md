@@ -9,6 +9,116 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §199 · A ficha da Base dos Dados não substitui a fonte, mas entregou o host que faltava · 24/09/2026
+
+Classe **investigação de fonte**. Nenhum dado novo entra; o que entra é uma sonda de diagnóstico e o registro do que foi medido.
+
+**O que a editoria trouxe.** A ficha do InfoGripe na Base dos Dados, com o conjunto `736ad69a…`.
+
+**Por que ela não resolve o problema do §198, dito sem rodeio.** A própria ficha declara: *"estes dados não passaram pela metodologia de tratamento da Base dos Dados"*; **possui dados estruturados: não**; **tem API: não**; e a **cobertura temporal é 2010–2020**. É uma entrada de catálogo que aponta para a fonte original — não uma tabela tratada e consultável. O MARÉ precisa da série **semanal de 2026** com canal endêmico; 2010–2020 não cobre o ciclo, e sem API nem estrutura não há de onde ler.
+
+**O que ela entregou de valioso.** O botão "Acessar fonte original" aponta para **`info.gripe.fiocruz.br`** — com ponto entre `info` e `gripe`. O §198 havia testado `infogripe.fiocruz.br`, sem o ponto: **hosts diferentes**, e o certo não tinha sido tentado. O achado é da editoria, não meu.
+
+**E o que a medição fez com ele.** `info.gripe.fiocruz.br` resolve em DNS (157.86.198.43) e **não responde** desta máquina: tempo de conexão esgotado, inclusive com um **navegador real** — o que exclui problema de cliente, de cabeçalho ou de TLS. Junto com `infogripe.fiocruz.br` e `gitlab.procc.fiocruz.br`, são três hosts da Fiocruz inalcançáveis daqui, em três sub-redes distintas, enquanto `gitlab.fiocruz.br` e `www.fiocruz.br` respondem normalmente. Não dá para concluir daqui se o serviço está fora do ar ou se a rota é que não fecha.
+
+**A saída, que é usar o CI como instrumento.** Quando todos os CSV falham, a rodada passa a **sondar o sítio oficial** e a registrar no diagnóstico o que ele respondeu — status, tamanho, se é tela de login, e os primeiros caracteres. É **diagnóstico, nunca coleta**: a sonda não tenta interpretar nada como dado, e o autoteste trava isso, conferindo que o que ela devolve não carrega mais do que tamanho, veredito de login e início do conteúdo. O runner roda em outra rede; se ele alcançar o host, a próxima rodada agendada nos diz — e aí o caminho do CSV vira uma pergunta respondível. Fazer o CI descobrir o que a máquina de edição não alcança é barato. Chutar um caminho de CSV seria inventar, e o §6 proíbe.
+
+## §198 · O InfoGripe fechou: a fonte de SRAG e síndrome gripal passou a exigir login · 24/09/2026
+
+Classe **correção de coletor e de diagnóstico**. Nenhum número muda: as duas séries já estavam em lacuna declarada, e continuam.
+
+**O sintoma.** O diagnóstico do coletor, gerado em 23/09, dizia que o host respondeu e que o cabeçalho da planilha era `['<!DOCTYPE html>']`. Lido assim, parece defeito de *parser* — CSV que veio malformado. Não era.
+
+**O que foi medido em 24/09, host a host.** `gitlab.fiocruz.br` responde **HTTP 200 com a tela de login do GitLab** (`devise-layout-html`, a classe que o Devise põe no `<html>` da página de entrada), e a API do projeto, em `/api/v4/projects/marcelo.gomes%2Finfogripe`, responde **404**. `gitlab.procc.fiocruz.br` e `infogripe.fiocruz.br` estão inacessíveis, com tempo de conexão esgotado. **O repositório do InfoGripe deixou de ser público.** Não é endereço que mudou: é autenticação que passou a ser exigida — e login é recusa que se respeita (§170), como o muro de robô do §186. Não se contorna autenticação.
+
+**A correção.** `parece_pagina_de_login()` reconhece a tela de entrada antes de o coletor tentar ler o conteúdo como planilha, e a rodada passa a registrar *"repositório passou a exigir autenticação"* em vez de um cabeçalho estranho. A diferença importa para quem vier depois: um diagnóstico manda caçar defeito de código; o outro manda procurar fonte nova ou abrir pedido de acesso. Cinco casos no autoteste, incluindo os dois que **não** podem disparar — CSV legítimo e HTML que não é login.
+
+**Diferença de ambiente, declarada.** Numa máquina Windows o `gitlab.fiocruz.br` nem chega a responder: o servidor manda cadeia TLS incompleta (*"unable to get local issuer certificate"*) e o repositório de raízes do sistema não a fecha sozinho. O runner do CI, com o repositório de raízes do Linux, alcança o host e recebe a tela de login. Rodando local, o coletor registra falha de rede; rodando no CI, registra a recusa. As duas são verdade, e o diagnóstico grava qual delas ocorreu — o que evita que a próxima sessão ache que uma das duas está errada.
+
+**O que o leitor vê, e por que está certo.** `srag_serie.json` e `sg_serie.json` **não existem**, e a página de saúde trata ausência de arquivo como lacuna declarada. O site não mostra dado velho: mostra que não tem. É a regra funcionando — mas agora com a causa nomeada, em vez de silêncio.
+
+**O que fica declarado e não feito.** Procurar fonte pública equivalente. O SIVEP-Gripe no OpenDataSUS é microdado, uma esteira inteiramente diferente da série semanal com canal endêmico que estas duas figuras usam — não é substituição de URL, é coletor novo. Fica como trabalho nomeado, não como pendência escondida.
+
+## §197 · A descoberta renderizada dos repositórios estaduais: dois estados guardam o plano municipal atrás de login · 24/09/2026
+
+Classe **coleta**. Nenhum número muda; um documento estadual entra preservado e um candidato a reclassificação entra na fila R7.
+
+**Por que renderizar.** O §195 sondou 23 UFs nos três caminhos que SE e ES usam e registrou o resultado com o limite à vista: aquilo provava ausência *nos caminhos sondados*, não ausência de repositório. O §164 já havia ensinado que evidência atrás de JavaScript é invisível para busca textual. As 21 UFs sem parser tiveram então a página inicial aberta em **navegador real**, com a navegação lida em busca de seção de planos municipais.
+
+**Três candidatos, e os três dizem coisas diferentes.**
+
+**Pará — o achado que muda o diagnóstico.** `plancon.defesacivilpa.com.br` é o **SISTEMA PLANCON** do CBMPA com a CEPDEC: *"Gestão municipal de planos de contingência — cadastro, revisão, aprovação e exportação"*. E fica **atrás de login**. Os planos municipais do Pará existem, são geridos pelo estado, e não são públicos. É exatamente o desenho do SISDC do Paraná, que o §186 já havia encontrado. **Dois estados guardando plano municipal atrás de autenticação é padrão, não acaso** — e padrão muda a estratégia: o caminho para essa cobertura é pedido de LAI, decisão da editoria, não raspagem. Login é recusa que se respeita (§170), e ela foi respeitada.
+
+**Rio de Janeiro — instrumento estadual, não repositório municipal.** A seção "Para Municípios" reúne 38 PDFs, e a leitura mostrou que são **do estado**: o *Plano de Contingências do Estado do Rio de Janeiro 2025/2026* (PLACON) e os planos setoriais de CGE, DRM, GSI, INEA e PGE. O PLACON foi preservado com hash (45 MB). O índice registra RJ hoje como `VIG`, e um plano estadual datado de 2025/2026 com anexos setoriais é matéria de reclassificação — que é **R7, da editoria**, não automática. Entra na fila.
+
+**Paraná** confirmou o que já se sabia, agora por navegador: sistema, não repositório.
+
+**As outras dezoito não têm seção de planos municipais na navegação.** Isso agora é uma afirmação mais forte que a do §195 — foi lido o que o navegador monta, não o que um caminho adivinhado devolve —, e continua sendo o que é: ausência no que foi examinado. Repositório em página interna não linkada da home escapa.
+
+**O saldo do pedido "estenda às outras UFs".** Ele não produziu parsers novos, e é importante dizer por quê em vez de registrar um número vazio: das 25 UFs com domínio resolvido, **duas** publicam repositório de planos municipais (SE e ES, que já tinham parser), **duas** o mantêm em sistema fechado (PR e PA), **uma** publica instrumento estadual na seção dos municípios (RJ) e as demais não publicam repositório onde foi procurado. O canal não cresce por engenharia — cresce por LAI, ou não cresce.
+
+## §196 · Plano vigente é plano vigente: a emenda ao C6 e o fim do eixo "antes e depois" · 24/09/2026
+
+Classe **governança com efeito em nota**. Duas UFs mudam, nenhuma troca de faixa, e a média nacional vai de **46,43 a 46,57**.
+
+**A decisão da editoria.** A régua da cobertura municipal deixa de perguntar **quando** o plano foi publicado e passa a perguntar se ele **existe e está vigente**. `CRED_POP["plano_antigo"]` vai de **0,6 para 1,0**. O boletim de 29/06/2026 abre o ciclo — não transforma um plano de contingência em vigor em meio plano. E a expectativa declarada, de que instrumento publicado depois do boletim tenha sido adaptado ao risco do ciclo, é outra coisa, que o índice **não mede hoje** e que fica registrada como tal, não como suposição embutida no número.
+
+O tipo do instrumento — novo do ciclo, readaptado, vigente-recorrente — continua distinguido no banco e visível no site. Ele passa a ser **descrição**, e deixa de ser **desconto**.
+
+**Efeito declarado, medido antes de aplicar:**
+
+| | antes | depois |
+|---|---|---|
+| RS · cobertura populacional | 28,5 | 30,6 |
+| RS · nota | 64,5 | **65,2** |
+| SE · cobertura populacional | 54,3 | 63,1 |
+| SE · nota | 61,4 | **64,4** |
+| média nacional | 46,43 | **46,57** |
+
+**Nenhuma outra UF muda; nenhuma troca de faixa.** Só duas se mexem porque apenas onze municípios estão hoje na categoria — o que também diz o tamanho real do ganho: ele virá da coleta, não da régua.
+
+**Sobre o instrumento, porque isso importa mais que o número.** Isto **não é errata**. A Errata C26, de 23/09, diz em letra de forma que *nenhuma errata autoriza mudança de regra*, e continua valendo. O que aconteceu aqui é a editoria **emendando a própria regra**, que é prerrogativa dela e de mais ninguém. A corrente de hashes do congelamento foi usada para tornar a mudança **auditável** — entrada **C27**, com motivo, UFs afetadas, efeito em pontos e os hashes anterior e novo encadeados —, e não para disfarçar mudança de regra de correção de dado. Um projeto que confunde as duas coisas perde o direito de dizer que congelou alguma coisa.
+
+**O vocabulário público, que era onde o "antes e depois" de fato morava.** A mesma categoria era descrita de **três formas** no site, duas delas contraditórias: "Plano de ciclos anteriores ainda vigente" na inicial, "Plano desatualizado" em Pesquisadores e em três arquivos de JavaScript, "plano de edição anterior localizado" em Prefeituras. Um plano vigente não é um plano desatualizado. Os seis rótulos passam a dizer **"Plano vigente, de ciclo anterior"**.
+
+## §195 · O vocabulário do plano vigente, e o mapa de repositórios estendido às 27 UFs · 24/09/2026
+
+Classe **correção de texto público e de cobertura de fonte**. Nenhum número muda nesta entrada.
+
+**Onde o "antes e depois" realmente morava.** A mesma categoria — plano de ciclo anterior ainda em vigor — era descrita de **três formas** no site, duas delas incompatíveis entre si: *"Plano de ciclos anteriores ainda vigente"* na inicial, *"Plano desatualizado"* em Pesquisadores e em três arquivos de JavaScript, *"plano de edição anterior localizado"* em Prefeituras. Um plano vigente não é um plano desatualizado, e o leitor que passasse por duas páginas via o projeto se contradizer sobre o mesmo dado. Os seis rótulos passam a dizer **"Plano vigente, de ciclo anterior"** — em `index.html`, `pesquisadores.html`, `defesa-civil.js`, `index.js`, `pesquisadores.js` e `prefeituras.js`. É o §22 da governança editorial aplicado onde ele mais importa: o mesmo conceito, o mesmo nome, em todo o site.
+
+**O canal que mais rende, e o que a sondagem achou.** O repositório estadual de PLANCONs tinha parser para **duas** UFs — SE e ES — e sozinho já deu **84 planos municipais**, o dobro do que o canal inteiro de diários municipais produziu (41). A editoria pediu estender às outras.
+
+As 23 UFs restantes foram sondadas nos três caminhos que SE e ES usam (`/planos-de-contigencia`, com a grafia sem o segundo "n" que ambos adotam; `/planos-de-contingencia`; `/plancon`), com o cliente identificado e o `robots.txt` respeitado (§185). **Seis responderam, e nenhuma é repositório de planos municipais:**
+
+- **MS** entrega 293 kB sob o título "Planos de Contingência (PLANCON)" — e não lista um único plano municipal: só a Comissão Estadual e botões de compartilhamento. Página informativa, não repositório.
+- **MG, TO e PI** respondem sob aviso de período eleitoral — o padrão que o §182 já havia isolado: o que está suspenso é a seção, não o sítio. Ficam para reconferir depois de 25/10.
+- **SP** devolve a página institucional; **AL**, 349 bytes vazios.
+
+As outras treze (AC, BA, CE, DF, GO, MA, MT, PA, PB, PE, RJ, RN, RR) não responderam em nenhum dos três caminhos.
+
+**O limite, escrito junto com o achado.** Isso prova ausência **nos caminhos sondados**, não ausência de repositório. Repositório sob outro endereço, ou atrás de JavaScript, escapa desta sonda — e o §164 já ensinou a esta casa que evidência atrás de JavaScript é invisível para busca textual. A descoberta renderizada é o passo seguinte, e fica declarada como pendente e não como concluída. É a mesma distinção do §194, aplicada agora ao que o próprio Monitor ainda não procurou direito.
+
+---
+
+## §194 · A coleta volta a rodar de duas em duas horas, e o log passa a dizer a verdade sobre a fonte · 24/09/2026
+
+Classe **operação e honestidade de registro**. Nenhum número do índice muda.
+
+**Por que a coleta parava.** Três causas, todas medidas:
+
+1. **Fila alheia.** `busca_web_cadencia.yml` dividia o grupo de concorrência `atualizar-dados` com o `atualizar.yml`, que leva de **1h43 a 2h43** por execução. Enquanto ele rodava, a busca de 2h ficava na fila — e execução pendente é cancelada quando a seguinte chega. A coleta parava por atividade que não era dela. Agora ela tem grupo próprio e não espera por ninguém; as outras esteiras seguem rodando e visíveis.
+2. **O freio de mão.** A regra de fase caía para 4×/dia assim que `ciclos_completos` chegava a 1 — e chegou em 24/09. A busca passou a **pular oito das doze rodadas do dia**, silenciosamente, porque pular conta como execução bem-sucedida. `ciclos_completos` continua sendo gravado e continua servindo de relatório de cobertura; o que ele não faz mais é decidir se a rodada acontece.
+3. **Rodada perdida no push.** Era uma tentativa só de `rebase` e `push`: se a `main` andasse no intervalo, a rodada inteira era descartada. Agora são seis tentativas com espera crescente, **nos dois workflows** — porque separar os grupos significa que os dois passam a commitar em paralelo, e a proteção tem de estar no push, não na fila.
+
+**Os termos, de três para nove.** Cada acréscimo veio do **nome real** de um plano já no banco, nunca de palpite: `PLANCON`, `PLAMCON`, `PLACON`, "plano operacional", "plano preventivo", "plano de enfrentamento". Medido contra os 134 planos conhecidos, `"plano de ação"` casava com **zero** deles. Conferido na API que o analisador do Querido Diário resolve plural — `"planos de contingência"` devolve o mesmo que `"plano de contingência"` —, então a lista não precisa das flexões. O limite, e a razão de não alargar mais (§186): termo genérico enche a fila humana de ruído, e fila com ruído gasta o tempo de quem deveria julgar documento.
+
+**O diário estadual: a rota que nunca poderia funcionar.** `coletar_doe.py` registrava, a cada rodada, "adaptador não confirmado" para as 27 UFs: **2.479 lacunas idênticas desde 03/09**, um terço de todos os erros do log, sobre um fato que não muda de duas em duas horas. A lacuna é real e continua declarada — uma vez por dia, não a cada rodada. E fica registrado o que foi **medido** em 24/09: o Querido Diário **não indexa diário estadual**. Consultados os territórios de SE, ES, SP, RJ e MG, todos devolvem zero, enquanto Aracaju devolve 4.582. O adaptador `querido_diario` dessa rota nunca poderia funcionar; confirmar um DOE exige adaptador direto, sítio a sítio. Registrado para ninguém repetir a tentativa achando que é questão de configuração. O host, de quebra, ainda era o antigo — o que responde 302 a cada chamada desde 21/09.
+
+**O achado mais sério, e é de honestidade.** O teste de cobertura pergunta se o município tem diário indexado **alguma vez**, sem recorte de data. Medido em 24/09: **Manaus** tem 7.517 edições no Querido Diário e a mais recente é de **02/08/2016**; **São Paulo** tem 20, a mais recente de 07/02/2025; **Aracaju**, 4.582, a mais recente de 01/04/2025. Nenhum deles tem **uma única edição dentro do ciclo**.
+
+Pelo critério antigo, os três saíam no log como *"indexado; nenhuma menção aos termos no período"* — frase que faz crer que houve edição e que nela não se falou do assunto. Não houve edição. O registro passa a ter **três estados** onde tinha dois: `sem_cobertura_qd` (não indexado), **`sem_edicao_no_periodo`** (indexado, mas sem nenhuma edição na janela) e `coberto_sem_mencao` (indexado, com edições, nenhuma menção). É a diferença entre *"procuramos e não há"* e *"não havia onde procurar"* — a distinção que este projeto não pode perder, e que estava sendo apagada 71 vezes por rodada.
+
 ## §193 · O carimbo que virava a data em UTC e deixava o portão 12 vermelho sem culpa de ninguém · 24/09/2026
 
 Classe **correção de reprodutibilidade**. Nenhum dado muda, nenhum número do índice muda. O que muda é a cadeia de derivados deixar de depender do relógio da parede.

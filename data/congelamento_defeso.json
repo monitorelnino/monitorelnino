@@ -2,8 +2,8 @@
  "_governanca": "Errata C25 / §13 (06/09/2026): hash das constantes do motor (ESTADO_SCORE, CRED_POP, ESTADOS, ESTRUTURA, PESO_ESTRUTURA) congeladas de 05/09/2026 a 25/10/2026. verificar_consistencia.py falha se o hash mudar dentro do intervalo. Alterar este arquivo exige errata pública. Errata C26 (23/09/2026): o C6 sempre admitiu correção de DADO que viole regra de prova, com errata e efeito em pontos por UF — o que a trava do C25 tornava impossível, porque ESTADOS e ESTRUTURA (classificação por UF, que é dado) estão no mesmo hash das regras. A partir daqui, mudar o hash exige uma entrada em 'erratas' encadeada ao hash anterior, e o portão confere a corrente. Regra que altera nota (peso, crédito, componente, faixa, régua) segue proibida sem exceção até 25/10/2026.",
  "desde": "2026-09-05",
  "ate": "2026-10-25",
- "hash_constantes": "f22619ebf17a77843a14e421040798390f67e984f5bff3725e7a2f63aedadfc6",
- "registrado_em": "2026-09-23",
+ "hash_constantes": "116d5553575e929af7f6c7c97401317f2abacfa3741eaca17d625f224653232f",
+ "registrado_em": "2026-09-24",
  "hash_original_05_09": "de3b7f4d7c7239d4ab21d7b5ce3197f5fc3bb4a858b531d43c05a07c366be27a",
  "erratas": [
   {
@@ -54,6 +54,61 @@
    ],
    "hash_anterior": "de3b7f4d7c7239d4ab21d7b5ce3197f5fc3bb4a858b531d43c05a07c366be27a",
    "hash_novo": "f22619ebf17a77843a14e421040798390f67e984f5bff3725e7a2f63aedadfc6"
+  },
+  {
+   "codigo": "C27",
+   "data": "2026-09-24",
+   "classe": "DECISÃO EDITORIAL QUE EMENDA O C6 — mudança de REGRA, não correção de dado",
+   "o_que_mudou": "CRED_POP['plano_antigo']: 0.6 → 1.0. Plano vigente de ciclo anterior passa a contar integral.",
+   "uf": [
+    "RS",
+    "SE"
+   ],
+   "motivo": "Decisão da editoria em 24/09/2026. A régua deixa de perguntar QUANDO o plano foi publicado e passa a perguntar se ele EXISTE e está vigente: plano vigente é plano vigente, e o boletim de 29/06 deixa de ser uma linha que divide quem conta de quem conta menos. O tipo — novo do ciclo, readaptado, vigente-recorrente — continua distinguido no banco e à vista no site, como descrição, e deixa de ser desconto. ISTO NÃO É ERRATA: a Errata C26 (23/09) diz que nenhuma errata autoriza mudança de regra, e ela continua valendo. O instrumento aqui é a própria editoria emendando o C6, que é prerrogativa dela; a corrente de hashes é usada para deixar a mudança auditável, não para disfarçá-la de correção.",
+   "efeito_por_uf": {
+    "RS": {
+     "cobertura_pop": [
+      28.5,
+      30.6
+     ],
+     "total": [
+      64.5,
+      65.2
+     ],
+     "faixa": [
+      "consolidado",
+      "consolidado"
+     ]
+    },
+    "SE": {
+     "cobertura_pop": [
+      54.3,
+      63.1
+     ],
+     "total": [
+      61.4,
+      64.4
+     ],
+     "faixa": [
+      "consolidado",
+      "consolidado"
+     ]
+    }
+   },
+   "efeito_nacional": {
+    "media_linear": [
+     46.43,
+     46.57
+    ],
+    "ufs_afetadas": 2,
+    "trocas_de_faixa": 0
+   },
+   "prova": [
+    "data/municipios.json (categoria=plano_antigo)",
+    "recalcular_mare.py CRED_POP"
+   ],
+   "hash_anterior": "f22619ebf17a77843a14e421040798390f67e984f5bff3725e7a2f63aedadfc6",
+   "hash_novo": "116d5553575e929af7f6c7c97401317f2abacfa3741eaca17d625f224653232f"
   }
  ]
 }

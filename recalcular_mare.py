@@ -50,7 +50,12 @@ ESTADO_SCORE = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
 # da v2.1 (÷100), generalizada pelo §12.4.2 — com o desvio documentado de
 # nao_el_nino (0, não 0,1; ver docstring). decreto ausente por regra estrutural
 # (Correção B): `CRED_POP.get(cat, 0.0)` já o exclui sem lista de exceções.
-CRED_POP = {"plano": 1.0, "plano_antigo": 0.6, "plano_elaboracao": 0.45,
+# 24/09/2026 (§196, decisão editorial que emenda o C6): plano vigente de ciclo anterior passa a
+# contar INTEGRAL. A régua deixa de perguntar QUANDO o plano foi publicado e passa a perguntar se ele
+# EXISTE e se está vigente — plano vigente é plano vigente. O tipo (novo do ciclo, readaptado,
+# vigente-recorrente) continua distinguido no banco e à vista no site, como descrição, e deixa de ser
+# desconto. Efeito medido antes de aplicar, e declarado no CHANGELOG.
+CRED_POP = {"plano": 1.0, "plano_antigo": 1.0, "plano_elaboracao": 0.45,
             # v3.0: estrutura de coordenação nomeada para o ciclo — compromisso formal sem instrumento
             # operacional; paridade declarada com plano_elaboracao (§30). O crédito é o MAIOR, nunca a soma.
             "estrutura": 0.45,
