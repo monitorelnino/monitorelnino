@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 24/09/2026 · 414 pendente(s) · 15 decidida(s) · A=78 B=262 C=74
+Gerado em 24/09/2026 · 415 pendente(s) · 15 decidida(s) · A=79 B=262 C=74
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -645,6 +645,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: São Vicente reforça drenagem como prevenção ao El Niño - Jornal ...
   - url: https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/
   - trecho: Já São Vicente mantém o Plano de Contingência de Proteção e Defesa Civil, que estabelece protocolos de monitoramento, prevenção e resposta a ocorrências provocadas por chuvas intensas.
+  - juiz: portão automático: fonte não oficial
+
+## Montenegro/RS — 1 pendente(s)
+- `16cf798d8e` · nível **A** (6 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Audiência Pública do Plano de Contingência de Montenegro será ...
+  - url: https://fatonovo.com.br/destaque/audiencia-publica-do-plano-de-contingencia-de-montenegro-sera-remarcada/
+  - trecho: A audiência pública agendada ... seria apresentado o Plano de Contingência Municipal, foi cancelada, em virtude da previsão de fortes chuvas e do risco de enchente....
   - juiz: portão automático: fonte não oficial
 
 ## Relvado/RS — 1 pendente(s)

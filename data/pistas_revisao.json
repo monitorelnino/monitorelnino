@@ -1,10 +1,10 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-24",
- "total_pistas": 429,
- "total_municipios": 191,
+ "total_pistas": 430,
+ "total_municipios": 192,
  "por_nivel": {
-  "A": 80,
+  "A": 81,
   "B": 264,
   "C": 85
  },
@@ -3993,6 +3993,38 @@
      "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE APERIBÉ",
      "trecho": "urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4312401",
+   "municipio": "Montenegro",
+   "uf": "RS",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "16cf798d8e",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://fatonovo.com.br/destaque/audiencia-publica-do-plano-de-contingencia-de-montenegro-sera-remarcada/",
+     "titulo": "Audiência Pública do Plano de Contingência de Montenegro será ...",
+     "trecho": "A audiência pública agendada ... seria apresentado o Plano de Contingência Municipal, foi cancelada, em virtude da previsão de fortes chuvas e do risco de enchente....",
+     "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
