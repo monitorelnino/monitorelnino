@@ -311,7 +311,7 @@ try:
     if _lg.get("formato_versao") != 2:
         erro("log_buscas: esquema v2 ausente (formato_versao != 2)")
     _NIVEIS = {None, "nacional", "estadual", "municipal_completo"}
-    _DEC_OK = ("registro", "pista", "nada localizado", "fonte suspensa (defeso)", "erro")
+    _DEC_OK = ("registro", "pista", "nada localizado", "fonte suspensa (defeso)", "erro")  # §194: ver nota abaixo
     _completos = set()
     for _i, _e in enumerate(_lg.get("execucoes", [])):
         for _k in ("data", "canal", "strings", "decisao", "executor"):

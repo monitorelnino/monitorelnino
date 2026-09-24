@@ -29,7 +29,13 @@ REGIOES = {"N": "AC AM AP PA RO RR TO", "NE": "AL BA CE MA PB PE PI RN SE", "CO"
            "SE": "ES MG RJ SP", "S": "PR RS SC"}
 TERMOS = ["homologa a situação de emergência", "homologa o decreto", "situação de emergência",
           "estado de calamidade pública", "plano de contingência El Niño", "plano de contingência"]
-QD_API = "https://queridodiario.ok.org.br/api/gazettes?{params}"
+# 24/09/2026 (§194): host migrado — o antigo responde 302 a cada chamada desde 21/09 (§ do coletor
+# municipal). E fica registrado o que foi MEDIDO em 24/09: o Querido Diário **não indexa diário
+# ESTADUAL**. Consultados os territórios de SE, ES, SP, RJ e MG (códigos IBGE de dois dígitos), todos
+# devolvem total_gazettes=0, enquanto Aracaju devolve 4.582. Ou seja: o adaptador "querido_diario"
+# desta rota nunca poderá funcionar, e confirmar um DOE exige adaptador DIRETO, sítio a sítio.
+# Registrado para ninguém repetir a tentativa achando que é questão de configuração.
+QD_API = "https://api.queridodiario.org.br/gazettes?{params}"
 PADRAO_HOMOLOGA = re.compile(r"homologa\s+(?:o\s+)?(?:decreto\s+(?:municipal\s+)?n[ºo°\.]?\s*([\d\.\/-]+))?[^.]{0,160}?munic[íi]pio de ([^,;\.\-–]+?)(?:\s*[-–]\s*([A-Z]{2}))?[\.,;]", re.I)
 
 
@@ -71,10 +77,17 @@ def iso_para_br(s: str) -> str:
 def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
     por_cod, por_nome = referencia_ibge()
     f = cfg["ufs"][uf]
-    f["ultima_tentativa"] = date.today().isoformat()
+    hoje = date.today().isoformat()
+    ja_registrada_hoje = f.get("ultima_tentativa") == hoje
+    f["ultima_tentativa"] = hoje
     if not f.get("adaptador") or not f.get("url"):
-        registrar_lacuna(f"DOE/{uf}", "adaptador não confirmado (a_verificar)", canal="repositorio_estadual",
-                         camada=1, uf=uf)
+        # 24/09/2026 (§194): a lacuna é REAL e continua declarada — mas uma vez por dia, não a cada
+        # rodada. Com a cadência de 2h, as 27 UFs geravam 324 lacunas idênticas por dia: 2.479 desde
+        # 03/09, um terço de todos os erros do log, sobre um fato que não muda de duas em duas horas.
+        # Registro que não distingue novidade de repetição deixa de informar e passa a esconder.
+        if not ja_registrada_hoje:
+            registrar_lacuna(f"DOE/{uf}", "adaptador não confirmado (a_verificar)", canal="repositorio_estadual",
+                             camada=1, uf=uf)
         f["status"] = "a_verificar"; return "lacuna"
     if f["adaptador"] == "querido_diario":
         params = urllib.parse.urlencode({"territory_ids": f["url"], "published_since": desde,
