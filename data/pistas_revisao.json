@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-24",
- "total_pistas": 430,
- "total_municipios": 192,
+ "total_pistas": 435,
+ "total_municipios": 194,
  "por_nivel": {
-  "A": 81,
-  "B": 264,
+  "A": 83,
+  "B": 267,
   "C": 85
  },
  "grupos": [
@@ -4062,6 +4062,69 @@
    ]
   },
   {
+   "ibge": "4319505",
+   "municipio": "São Sebastião do Caí",
+   "uf": "RS",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "bb280bb962",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://fatonovo.com.br/destaque/risco-de-enchente-montenegro-e-sao-sebastiao-do-cai-acionam-plano-de-contingencia/",
+     "titulo": "Montenegro e São Sebastião do Caí acionam Plano de Contingência",
+     "trecho": "Risco de enchente: Montenegro e São Sebastião do Caí acionam Plano de Contingência. 21 de julho de 2026; por Guilherme Baptista · 0. Compartilhar; Facebook ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4321436",
+   "municipio": "Terra de Areia",
+   "uf": "RS",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "dc6c8beaa8",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://terradeareia.rs.gov.br/pagina/view/6",
+     "titulo": "Terra de Areia/RS - Plano de Ação Municipal",
+     "trecho": "A rede de frio do município de Terra de Areia é composta de três (3) câmaras de conservação de imunobiológicos, ligada à rede elétrica e com bateria interna com autonomia de 6 horas para casos de queda de energia, além de uma geladeira.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4211892",
    "municipio": "Painel",
    "uf": "SC",
@@ -6063,6 +6126,74 @@
    ]
   },
   {
+   "ibge": "4322806",
+   "municipio": "Veranópolis",
+   "uf": "RS",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "30b9dd8912",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdjWyeyFvGR/",
+     "titulo": "Veranópolis aciona Plano de Contingência após chuvas intensas e ...",
+     "trecho": "3 days ago ... 4 likes, 1 comments - studiotvnoticias on September 21, 2026: \"#Chuvas #Veranópolis | Veranópolis aciona Plano de Contingência após chuvas ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e4815395b1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdjR3TzljqQ/",
+     "titulo": "Veranópolis aciona Plano de Contingência após chuvas intensas e ...",
+     "trecho": "3 days ago ... 29 likes, 0 comments - studiotvnoticias on September 21, 2026: \"#Chuvas #Estradas #Veranópolis | Veranópolis aciona Plano de Contingência ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6928fbd958",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdjWyeyFvGR/",
+     "titulo": null,
+     "trecho": "19 hours ago ... 4 likes, 1 comments - studiotvnoticias on September 21, 2026: \"#Chuvas #Veranópolis | Veranópolis aciona Plano de Contingência após chuvas ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4204608",
    "municipio": "Criciúma",
    "uf": "SC",
@@ -6787,6 +6918,57 @@
      "titulo": null,
      "trecho": "Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...",
      "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4302303",
+   "municipio": "Bom Jesus",
+   "uf": "RS",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "57ed7351c7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
+     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para ...",
+     "trecho": "Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ee931a5f66",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
+     "titulo": null,
+     "trecho": "VOLUME II. Bom Jesus dos Perdões, 2015. ... O Plano de Contingência é um documento onde estão definidas as responsabilidades estabelecidas em uma.",
+     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -8463,37 +8645,6 @@
    ]
   },
   {
-   "ibge": "4302303",
-   "municipio": "Bom Jesus",
-   "uf": "RS",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "ee931a5f66",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
-     "titulo": null,
-     "trecho": "VOLUME II. Bom Jesus dos Perdões, 2015. ... O Plano de Contingência é um documento onde estão definidas as responsabilidades estabelecidas em uma.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "4302584",
    "municipio": "Bozano",
    "uf": "RS",
@@ -9946,38 +10097,6 @@
      "url": "https://www.pelotas.com.br/noticia/governo-apresenta-plano-de-contingencia-diante-de-crises-climaticas",
      "titulo": null,
      "trecho": "May 15, 2026 ... ouvidoria@pelotas.rs.gov.br. Horário de funcionamento: 8h às 14h ... @2026 - Prefeitura Municipal de Pelotas | Desenvolvido pela COINPEL e SECOM.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4322806",
-   "municipio": "Veranópolis",
-   "uf": "RS",
-   "melhor_nivel": "C",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 0,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "6928fbd958",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdjWyeyFvGR/",
-     "titulo": null,
-     "trecho": "19 hours ago ... 4 likes, 1 comments - studiotvnoticias on September 21, 2026: \"#Chuvas #Veranópolis | Veranópolis aciona Plano de Contingência após chuvas ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }

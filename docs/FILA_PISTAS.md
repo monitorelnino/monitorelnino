@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 24/09/2026 · 415 pendente(s) · 15 decidida(s) · A=79 B=262 C=74
+Gerado em 24/09/2026 · 420 pendente(s) · 15 decidida(s) · A=81 B=265 C=74
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -659,6 +659,20 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Relvado apresenta estudo socioambiental e Plano de Contingência ...
   - url: https://www.independente.com.br/artigo/relvado-apresenta-estudo-socioambiental-e-plano-de-contingencia-em-audiencia-publica
   - trecho: Sep 11, 2026 ... Relvado apresenta estudo socioambiental e Plano de Contingência em audiência pública ... El Niño e sua relação com eventos climáticos.
+
+## São Sebastião do Caí/RS — 1 pendente(s)
+- `bb280bb962` · nível **A** (6 pts) · busca_web · EX_ANTE · data 21/07/2026 (do trecho)
+  - título: Montenegro e São Sebastião do Caí acionam Plano de Contingência
+  - url: https://fatonovo.com.br/destaque/risco-de-enchente-montenegro-e-sao-sebastiao-do-cai-acionam-plano-de-contingencia/
+  - trecho: Risco de enchente: Montenegro e São Sebastião do Caí acionam Plano de Contingência. 21 de julho de 2026; por Guilherme Baptista · 0. Compartilhar; Facebook ...
+  - juiz: portão automático: fonte não oficial
+
+## Terra de Areia/RS — 1 pendente(s)
+- `dc6c8beaa8` · nível **A** (6 pts) · busca_web · DUVIDA · **Lei 13.019**, 2014
+  - título: Terra de Areia/RS - Plano de Ação Municipal
+  - url: https://terradeareia.rs.gov.br/pagina/view/6
+  - trecho: A rede de frio do município de Terra de Areia é composta de três (3) câmaras de conservação de imunobiológicos, ligada à rede elétrica e com bateria interna com autonomia de 6 horas para casos de queda de energia, além d
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Balneário Camboriú/SC — 4 pendente(s)
 - `d11d9042f8` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -1808,7 +1822,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 
   - juiz: portão automático: fonte não oficial
 
-## Bom Jesus/RS — 1 pendente(s)
+## Bom Jesus/RS — 2 pendente(s)
+- `57ed7351c7` · nível **B** (6 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
+  - título: Bom Jesus do Itabapoana apresenta plano de contingência para ...
+  - url: https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml
+  - trecho: Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
 - `ee931a5f66` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2015 (do trecho)
   - url: https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf
   - trecho: VOLUME II. Bom Jesus dos Perdões, 2015. ... O Plano de Contingência é um documento onde estão definidas as responsabilidades estabelecidas em uma.
@@ -1854,6 +1874,21 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: (cento e setenta e sete R$ 177.359,77 mil trezentos e cinquenta e nove reais e setenta e sete centavos) referente ao acréscimo qualitativo. O valor de (cento e quarenta e seis mil duzentos e quarenta e três reais) refere
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Veranópolis/RS — 3 pendente(s)
+- `30b9dd8912` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Veranópolis aciona Plano de Contingência após chuvas intensas e ...
+  - url: https://www.instagram.com/p/DdjWyeyFvGR/
+  - trecho: 3 days ago ... 4 likes, 1 comments - studiotvnoticias on September 21, 2026: "#Chuvas #Veranópolis | Veranópolis aciona Plano de Contingência após chuvas ...
+  - juiz: portão automático: fonte não oficial
+- `e4815395b1` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Veranópolis aciona Plano de Contingência após chuvas intensas e ...
+  - url: https://www.instagram.com/p/DdjR3TzljqQ/
+  - trecho: 3 days ago ... 29 likes, 0 comments - studiotvnoticias on September 21, 2026: "#Chuvas #Estradas #Veranópolis | Veranópolis aciona Plano de Contingência ...
+  - juiz: portão automático: fonte não oficial
+- `6928fbd958` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://www.instagram.com/p/DdjWyeyFvGR/
+  - trecho: 19 hours ago ... 4 likes, 1 comments - studiotvnoticias on September 21, 2026: "#Chuvas #Veranópolis | Veranópolis aciona Plano de Contingência após chuvas ...
 
 ## Bom Jesus/SC — 1 pendente(s)
 - `b1d0b5be45` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -2248,11 +2283,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `11cbfdf188` · nível **C** (2 pts) · busca_web · — · citação não extraída
   - url: https://www.santarosa.gob.ar/el-nino-la-municipalidad-de-santa-rosa-detallo-el-plan-de-acciones-que-puso-en-marcha/
   - trecho: La Municipalidad de Santa Rosa ... del evento climático “El Niño”. Ya se concretó la limpieza del 35% de los canales y el 30% de las bocas de tormenta, mientras que se realizó un mantenimiento general de los principales 
-
-## Veranópolis/RS — 1 pendente(s)
-- `6928fbd958` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://www.instagram.com/p/DdjWyeyFvGR/
-  - trecho: 19 hours ago ... 4 likes, 1 comments - studiotvnoticias on September 21, 2026: "#Chuvas #Veranópolis | Veranópolis aciona Plano de Contingência após chuvas ...
 
 ## Caçador/SC — 1 pendente(s)
 - `363746d364` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
