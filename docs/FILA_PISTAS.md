@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 24/09/2026 · 338 pendente(s) · 15 decidida(s) · A=56 B=222 C=60
+Gerado em 24/09/2026 · 344 pendente(s) · 15 decidida(s) · A=59 B=225 C=60
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -10,11 +10,35 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho:  Representante da Contratada: Francisco Helton Soares  de Sousa. Jackson Lira Cavalcante - Coordenador Jurídico da SEDHAS.   EXTRATO DO PLANO DE CONTINGÊNCIA - 2026 -  ALAGAMENTOS, ENCHENTES DA DEFESA CIVIL. PROCESSO  nº
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Serra/ES — 1 pendente(s)
+## Serra/ES — 2 pendente(s)
 - `3f8922a3b6` · nível **A** (6 pts) · querido_diario · EX_ANTE · **Decreto nº 6.823**, 05/07/2026
   - url: https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf
   - trecho: e na restauração da  normalidade social, articulando e facilitando as ações  de prevenção, preparação, resposta e recuperação no  Município de Serra. “  Leia-se: […] “ Art. 1º Fica instituído o Plano Municipal de Proteçã
   - juiz: Serra/ES já consta na base — não duplicar (revisão humana decide se é atualização)
+- `c4320e89f3` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: O Super El Niño está confirmado, e a Serra precisa se preparar para ...
+  - url: https://www.instagram.com/reel/DclxdDCOw7_/
+  - trecho: Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...
+  - juiz: portão automático: fonte não oficial
+
+## São Mateus/ES — 2 pendente(s)
+- `9e41a19f6f` · nível **A** (6 pts) · busca_web · EX_ANTE · data 21/07/2026 (do trecho)
+  - título: São Mateus do Sul: reunião sobre o Plano de Contingência para o ...
+  - url: https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/
+  - trecho: Jul 21, 2026 ... São Mateus do Sul: reunião sobre o Plano de Contingência para o El Niño acontece nesta terça (21) ... 21 de julho de 2026. Compartilhe essa ...
+  - juiz: portão automático: fonte não oficial
+- `0a6f89093a` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: São Mateus do Sul apresenta Plano de Contingência e reforça ...
+  - url: https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/
+  - trecho: Jul 22, 2026 ... São Mateus do Sul apresenta Plano de Contingência e reforça preparação para possíveis cheias ... O El Niño é um fenômeno climático natural ...
+  - juiz: portão automático: fonte não oficial
+
+## Vila Velha/ES — 1 pendente(s)
+- `213cfdefc1` · nível **A** (6 pts) · busca_web · EX_ANTE · data 11/09/2026 (do trecho)
+  - título: Vila Velha apresenta plano de contingência com foco no El Niño ...
+  - url: https://eshoje.com.br/meio-ambiente/2026/08/vila-velha-apresenta-plano-de-contingencia-com-foco-no-el-nino/
+  - trecho: Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.
+  - juiz: portão automático: fonte não oficial
 
 ## Bituruna/PR — 1 pendente(s)
 - `8e36414ea8` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
@@ -766,6 +790,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `f504be1f02` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/reel/DdCR-pNhPgT/
   - trecho: Sep 8, 2026 ... ... likes, 0 comments - tvceara on September 8, 2026: "Fortaleza já ... El Niño (COE El Niño) e um Plano de Contingência. O período mais ...
+
+## Vitória/ES — 2 pendente(s)
+- `f3c4158eff` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: El Niño coloca municípios em alerta e Prefeitura de Vitória da ...
+  - url: https://rbtv.com.br/noticia/13581/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos
+  - trecho: Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...
+  - juiz: portão automático: fonte não oficial
+- `f63069b16f` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Diante das previsões relacionadas ao El Niño, União da Vitória tem ...
+  - url: https://www.instagram.com/p/DZ5wii5gHCw/
+  - trecho: Jun 22, 2026 ... A atuação integrada entre a Defesa Civil e as secretarias municipais, a atualização do Plano de Contingência, a criação do Conselho Municipal de ...
+  - juiz: portão automático: fonte não oficial
 
 ## None/GO — 1 pendente(s)
 - `d7b81c79ef` · nível **B** (4 pts) · imprensa · EX_ANTE · citação não extraída
