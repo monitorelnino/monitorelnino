@@ -19,7 +19,7 @@
   "metodologia",
   "acao_relacionada"
  ],
- "registrado_em": "2026-09-23",
+ "registrado_em": "24/09/2026",
  "fichas": {
   "monitor-de-riscos.html#boxOni": {
    "tipo": "série temporal",
@@ -108,50 +108,6 @@
    ],
    "funcao_narrativa": "contexto: define o risco ao qual a preparação deve responder",
    "acao_relacionada": null
-  },
-  "monitor-de-riscos.html#boxAvisos": {
-   "tipo": "mapa e contagem",
-   "pergunta_que_responde": "Onde há aviso meteorológico vigente agora?",
-   "dimensao_da_preparacao": "alertas",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
-   "territorio": "Brasil",
-   "periodo": "consulta mais recente",
-   "variavel_principal": "contagem e severidade de avisos vigentes",
-   "denominador": null,
-   "fonte": "INMET",
-   "metodologia": null,
-   "conclusoes_permitidas": [
-    "onde há aviso vigente no momento da consulta"
-   ],
-   "conclusoes_nao_permitidas": [
-    "eficácia do sistema de alerta",
-    "ausência de aviso como ausência de risco"
-   ],
-   "funcao_narrativa": "evidência do agora: o ciclo em curso",
-   "acao_relacionada": "consultar o aviso no INMET"
-  },
-  "monitor-de-riscos.html#boxCemaden": {
-   "tipo": "mapa e contagem",
-   "pergunta_que_responde": "Onde há alerta hidrológico ou geológico vigente agora?",
-   "dimensao_da_preparacao": "alertas",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
-   "territorio": "Brasil",
-   "periodo": "consulta mais recente",
-   "variavel_principal": "contagem de alertas vigentes",
-   "denominador": null,
-   "fonte": "CEMADEN",
-   "metodologia": null,
-   "conclusoes_permitidas": [
-    "onde há alerta vigente no momento da consulta"
-   ],
-   "conclusoes_nao_permitidas": [
-    "eficácia do sistema",
-    "ausência de alerta como ausência de risco"
-   ],
-   "funcao_narrativa": "evidência do agora",
-   "acao_relacionada": "consultar o alerta no CEMADEN"
   },
   "monitor-de-riscos.html#boxSecas": {
    "tipo": "mapa",
@@ -712,26 +668,28 @@
    "acao_relacionada": null
   },
   "saude.html#boxCalor": {
-   "tipo": "mapa e contagem",
-   "pergunta_que_responde": "Onde há aviso de calor vigente agora?",
-   "dimensao_da_preparacao": "alertas de saúde",
-   "universo": "27 UFs",
-   "unidade_de_analise": "UF",
+   "tipo": "mapa e lista",
+   "pergunta_que_responde": "Quantos municípios de cada estado estão em classe severa ou extrema de excesso de calor?",
+   "dimensao_da_preparacao": "exposição observada",
+   "universo": "municípios lidos pelo painel do Ministério da Saúde",
+   "unidade_de_analise": "município, agregado por UF",
    "territorio": "Brasil",
-   "periodo": "consulta mais recente",
-   "variavel_principal": "contagem de avisos de calor vigentes",
-   "denominador": null,
-   "fonte": "INMET",
-   "metodologia": null,
+   "periodo": "dia da consulta",
+   "variavel_principal": "classe de excesso de calor (Normal, Baixo, Severo, Extremo), no vocabulário do MS",
+   "denominador": "municípios lidos no dia",
+   "fonte": "Painel Nacional de Excesso de Calor (Ministério da Saúde)",
+   "metodologia": "Classe calculada pelo MS a partir do índice EHF. O Monitor reproduz a classe publicada e não reescala. Fonte sem resposta entra como lacuna declarada, nunca como zero.",
    "conclusoes_permitidas": [
-    "onde há aviso de calor vigente no momento da consulta"
+    "quantos municípios o MS classificou em cada classe de excesso de calor no dia"
    ],
    "conclusoes_nao_permitidas": [
-    "efeito do calor sobre a saúde da população",
-    "ausência de aviso como ausência de risco"
+    "efeito sobre casos ou óbitos",
+    "atribuição do calor ao El Niño",
+    "ausência de classificação como ausência de calor",
+    "comparação da classe com temperatura medida"
    ],
-   "funcao_narrativa": "camada observada: sinal de risco sanitário em curso",
-   "acao_relacionada": "consultar o aviso no INMET"
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": "consultar o painel do Ministério da Saúde"
   },
   "saude.html#boxSRAG": {
    "tipo": "série temporal",
@@ -868,6 +826,125 @@
     "atribuição de doença ao El Niño"
    ],
    "funcao_narrativa": "fecha a dimensão ligando o instrumento publicado ao risco que ele deveria responder",
+   "acao_relacionada": null
+  },
+  "defesa-civil.html#boxAlertas": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Quais municípios estão sob aviso meteorológico ou alerta de risco em vigor agora?",
+   "dimensao_da_preparacao": "alertas",
+   "universo": "municípios sob aviso do INMET ou alerta do CEMADEN na consulta",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil",
+   "periodo": "consulta mais recente, com hora",
+   "variavel_principal": "grau do aviso (INMET) e nível do alerta (CEMADEN), no vocabulário do órgão",
+   "denominador": null,
+   "fonte": "INMET e CEMADEN",
+   "metodologia": "Um município pode estar sob mais de um aviso ao mesmo tempo e aparece com todos; encerramento do CEMADEN (nível 'Cessar') não conta como alerta em vigor. Coordenada casada por código IBGE, nunca por nome.",
+   "conclusoes_permitidas": [
+    "quais municípios estão sob aviso ou alerta no momento da consulta",
+    "de que tipo é o aviso e por quanto tempo vale, conforme o órgão declarou"
+   ],
+   "conclusoes_nao_permitidas": [
+    "eficácia do sistema de alerta",
+    "ausência de aviso como ausência de risco",
+    "gravidade comparada entre tipos diferentes de aviso"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": "consultar o aviso no INMET ou o alerta no CEMADEN"
+  },
+  "defesa-civil.html#boxAlertasTipo": {
+   "tipo": "gráfico de barras",
+   "pergunta_que_responde": "De que tipo são os avisos e alertas em vigor, e quantos municípios cada tipo alcança?",
+   "dimensao_da_preparacao": "alertas",
+   "universo": "municípios sob aviso ou alerta na consulta",
+   "unidade_de_analise": "tipo de aviso ou alerta",
+   "territorio": "Brasil",
+   "periodo": "consulta mais recente, com hora",
+   "variavel_principal": "número de municípios por tipo, no nome que o órgão deu ao tipo",
+   "denominador": null,
+   "fonte": "INMET e CEMADEN",
+   "metodologia": "Município sob dois tipos conta nos dois: a soma das barras é maior que o número de municípios.",
+   "conclusoes_permitidas": [
+    "quais tipos de aviso estão em vigor e quantos municípios cada um alcança"
+   ],
+   "conclusoes_nao_permitidas": [
+    "comparação de gravidade entre tipos",
+    "soma das barras como total de municípios"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": null
+  },
+  "defesa-civil.html#boxAlertaDecreto": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Quais municípios que decretaram emergência no ciclo estão sob aviso ou alerta agora?",
+   "dimensao_da_preparacao": "alertas",
+   "universo": "municípios com decreto de emergência no ciclo",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil",
+   "periodo": "decreto desde 29/06/2026; aviso e alerta na consulta mais recente",
+   "variavel_principal": "coincidência entre decreto no ciclo e aviso ou alerta em vigor",
+   "denominador": "municípios com decreto no ciclo",
+   "fonte": "INMET, CEMADEN e S2iD",
+   "metodologia": "Um ponto e uma contagem por MUNICÍPIO: município com mais de um decreto conta uma vez.",
+   "conclusoes_permitidas": [
+    "quantos municípios que decretaram estão hoje sob aviso ou alerta"
+   ],
+   "conclusoes_nao_permitidas": [
+    "causalidade entre o decreto e o aviso",
+    "que o decreto tenha sido motivado pelo aviso em vigor",
+    "eficácia da resposta"
+   ],
+   "funcao_narrativa": "cruzamento de evidências",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxTemperatura": {
+   "tipo": "mapa e lista",
+   "pergunta_que_responde": "Qual a temperatura máxima prevista para amanhã na capital de cada estado?",
+   "dimensao_da_preparacao": "fenômeno observado",
+   "universo": "27 capitais",
+   "unidade_de_analise": "capital",
+   "territorio": "Brasil",
+   "periodo": "dia anterior e próximos dias, consulta com hora",
+   "variavel_principal": "temperatura máxima prevista, em °C",
+   "denominador": null,
+   "fonte": "Open-Meteo (modelos ECMWF, DWD, NOAA)",
+   "metodologia": "Estimativa de modelo numa grade de cerca de 11 km, não medição de estação. O valor é da CAPITAL e não a média do estado; a UF é pintada para localizar.",
+   "conclusoes_permitidas": [
+    "qual a máxima prevista para a capital, segundo o modelo",
+    "como a máxima prevista se compara à do dia anterior na mesma capital"
+   ],
+   "conclusoes_nao_permitidas": [
+    "temperatura do estado inteiro",
+    "atribuição da temperatura ao El Niño",
+    "leitura como medição de estação",
+    "previsão do Monitor"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxAr": {
+   "tipo": "mapa e lista",
+   "pergunta_que_responde": "Qual a concentração de material particulado fino estimada na capital de cada estado?",
+   "dimensao_da_preparacao": "fenômeno observado",
+   "universo": "27 capitais",
+   "unidade_de_analise": "capital",
+   "territorio": "Brasil",
+   "periodo": "média diária do dia da consulta, com hora",
+   "variavel_principal": "PM2,5 em µg/m³, média diária",
+   "denominador": null,
+   "fonte": "Copernicus CAMS via Open-Meteo",
+   "metodologia": "Estimativa de modelo, não medição. A API entrega série horária; a média diária é cálculo do Monitor. Linha de referência de 15 µg/m³ da OMS (2021), declarada no dado.",
+   "conclusoes_permitidas": [
+    "qual a média diária estimada de PM2,5 na capital",
+    "se o valor estimado está acima ou abaixo da linha de referência da OMS"
+   ],
+   "conclusoes_nao_permitidas": [
+    "leitura como medição de monitor",
+    "efeito sobre a saúde de pessoas identificadas",
+    "atribuição da poluição ao El Niño",
+    "qualidade do ar do estado inteiro"
+   ],
+   "funcao_narrativa": "evidência do agora",
    "acao_relacionada": null
   }
  }

@@ -180,13 +180,55 @@ function __init(){
   }
   const fD = SSIN.fontes.infodengue;
   fonteFigura('boxDengue', {fontes: 'InfoDengue (Fiocruz/FGV)', data: fD.status === 'coletado' ? (fD.ultima_coleta_ok || fD.consultado_em) : null});
-  const avisos = uf => (SINAIS.uf && SINAIS.uf[uf] && SINAIS.uf[uf].avisos_inmet) || null;
-  const nCalor = uf => { const a = avisos(uf); if(!a) return null; const lista = a.lista || a.avisos || []; return lista.filter(x => /calor/i.test(JSON.stringify(x))).length; };
+  /* CALOR (24/09/2026) — classe de excesso de calor do Ministério da Saúde, por município, agregada
+     por UF. Substitui a contagem de avisos do INMET que estava aqui: aviso é ALERTA e mora na
+     Defesa civil. E aquela contagem estava quebrada desde que foi escrita — lia `a.lista`/`a.avisos`
+     em `avisos_inmet`, campos que o agregado nunca teve, então pintava ZERO nos 27 estados sempre,
+     em qualquer dia, inclusive com aviso de calor em vigor. Zero silencioso é o pior defeito
+     possível numa figura de risco: parece informação.
+     O vocabulário (Normal, Baixo, Severo, Extremo) é o do MS; o projeto não reescala nada. */
+  const CALOR = SSIN.calor_excesso || null;
+  const fCalor = (SSIN.fontes || {}).painel_calor_ms || {};
   const CAL = [MonitorMapas.PALETA.zero, MonitorMapas.PALETA.ordinal4[1], MonitorMapas.PALETA.ordinal4[2], MonitorMapas.PALETA.ordinal4[3]];
-  desenharMapa('mapaCalor','legCalor', uf => { const n = nCalor(uf); return n == null ? NEUTRA : CAL[Math.min(3, n)]; },
-    uf => { const n = nCalor(uf); return n == null ? 'Aguardando coleta do INMET' : n + ' aviso(s) de calor vigente(s)'; },
-    [{cor:CAL[0],rotulo:'0'},{cor:CAL[1],rotulo:'1'},{cor:CAL[2],rotulo:'2'},{cor:CAL[3],rotulo:'3+'},{cor:NEUTRA,rotulo:'aguardando coleta'}]);
-  fonteFigura('boxCalor', {fontes: 'INMET', data: (SINAIS.fontes && SINAIS.fontes.inmet_avisos && SINAIS.fontes.inmet_avisos.status === 'coletado') ? SINAIS.fontes.inmet_avisos.consultado_em : null});
+  const calorUf = uf => (CALOR && CALOR.por_uf && CALOR.por_uf[uf]) || null;
+  const nAcima = uf => { const c = calorUf(uf); return c ? (c.severo || 0) + (c.extremo || 0) : null; };
+  desenharMapa('mapaCalor', 'legCalor',
+    uf => { const n = nAcima(uf); return n == null ? NEUTRA : CAL[Math.min(3, n)]; },
+    uf => { const c = calorUf(uf);
+      if(!c) return 'Sem coleta até o corte';
+      return 'Severo: ' + (c.severo || 0) + ' · Extremo: ' + (c.extremo || 0)
+           + '<br>Baixo: ' + (c.baixo || 0) + ' · Normal: ' + (c.normal || 0)
+           + '<br>' + (c.total || 0) + ' município(s) lido(s)'; },
+    [{cor:CAL[0], rotulo:'nenhum município em severo ou extremo'}, {cor:CAL[1], rotulo:'1'},
+     {cor:CAL[2], rotulo:'2'}, {cor:CAL[3], rotulo:'3 ou mais'}, {cor:NEUTRA, rotulo:'sem coleta até o corte'}]);
+  fonteFigura('boxCalor', {fontes: fCalor.nome || 'Painel Nacional de Excesso de Calor',
+                           url: fCalor.url_publica, data: CALOR ? CALOR.coletado_em : null});
+  (function listaCalor(){
+    const corpo = document.querySelector('#tblCalor tbody');
+    if(!corpo) return;
+    corpo.innerHTML = UFS.map(function(uf){
+      const c = calorUf(uf);
+      if(!c) return '<tr><td><strong>' + uf + '</strong></td><td colspan="5">sem coleta até o corte</td></tr>';
+      return '<tr><td><strong>' + uf + '</strong></td><td>' + (c.normal || 0) + '</td><td>' + (c.baixo || 0)
+           + '</td><td>' + (c.severo || 0) + '</td><td>' + (c.extremo || 0) + '</td><td>' + (c.total || 0) + '</td></tr>';
+    }).join('');
+  })();
+  (function resumoCalor(){
+    const el = document.getElementById('calorResumo');
+    if(!el) return;
+    if(CALOR && CALOR.resumo){
+      const r = CALOR.resumo;
+      el.textContent = (r.severo || 0) + ' município(s) em classe severa e ' + (r.extremo || 0)
+        + ' em extrema, de ' + (CALOR.municipios_lidos || Object.keys(CALOR.municipios || {}).length)
+        + ' lidos no dia ' + (CALOR.data || '') + ', segundo o Ministério da Saúde.';
+      return;
+    }
+    /* Sem coleta, a seção diz POR QUE não há número. O painel do MS não publica API: o endereço é
+       função interna do aplicativo e, medido em 24/09/2026, responde HTTP 200 com corpo vazio
+       quando recusa. Recusa servida com 200 é recusa, nunca "nenhum município em excesso de calor". */
+    el.textContent = 'Classe de excesso de calor por município: sem coleta até o corte.'
+      + (fCalor.ultima_tentativa_falhou ? ' Última tentativa em ' + fCalor.ultima_tentativa_falhou + '.' : '');
+  })();
   (function(){ const f = SSIN.fontes || {}; const c = Object.entries(f).map(([k, v]) => (v.nome || k) + ': ' + (v.consultado_em ? 'consultado em ' + v.consultado_em : (v.status === 'reuso' ? 'reuso da página de sinais' : 'ainda não consultado')));
     const el = document.getElementById('carimboSaude'); if (el) el.textContent = 'Estado das fontes: ' + c.join(' · ') + '.'; })();
 

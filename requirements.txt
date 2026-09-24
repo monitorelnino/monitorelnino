@@ -20,3 +20,10 @@ pypdfium2==5.13.0
 Pillow==12.3.0
 PyYAML==6.0.3
 Markdown==3.10.2
+# 24/09/2026: certifi já vinha como dependência TRANSITIVA do requests, mas coletar_sinais_risco.py
+# passou a usá-lo DIRETAMENTE para verificar o certificado do gsc.cemaden.gov.br, cuja cadeia a loja
+# do Windows não completa (CERTIFICATE_VERIFY_FAILED, que parecia fonte fora do ar e era ambiente).
+# Mesma regra do pypdfium2 acima: dependência usada de propósito se declara e se trava — aqui a versão
+# do pacote de raízes decide QUAIS FONTES a coleta consegue verificar, e faixa aberta significaria
+# cobertura variando com a máquina. Não afrouxa verificação nenhuma: só amplia o conjunto de raízes.
+certifi==2026.7.22
