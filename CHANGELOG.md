@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §193 · O carimbo que virava a data em UTC e deixava o portão 12 vermelho sem culpa de ninguém · 24/09/2026
+
+Classe **correção de reprodutibilidade**. Nenhum dado muda, nenhum número do índice muda. O que muda é a cadeia de derivados deixar de depender do relógio da parede.
+
+**O sintoma.** O CI do PR #370 reprovou no portão 12 com dois arquivos obsoletos — `data/municipios_card.json` e o manifesto — enquanto os mesmos portões estavam verdes na máquina local. Reprovação que não se reproduz é sempre suspeita de ambiente, e era.
+
+**A causa.** `scripts/verificar_derivados.sh` fixa `SOURCE_DATE_EPOCH` no corte da edição, justamente para a cadeia inteira ser reproduzível. `gerar_card_municipios.py` escapava: carimbava `gerado_em` com `date.today()`. Enquanto a data local e a do runner coincidem, o defeito é invisível. O CI rodou às **01:21 UTC de 24/09/2026**, com o Brasil ainda em 23/09 — o runner regenerou com o dia seguinte, o portão viu diferença e acusou derivado obsoleto num ramo que não tinha nada a ver com carimbo de data.
+
+**O tamanho do defeito.** Ele não era do ramo. Ele pega **qualquer ramo, e a própria `main`**, em toda janela entre a meia-noite UTC e a meia-noite local — três horas por dia, todo dia. O `/p12` do projeto já registrava o sintoma ("carimbo `gerado_em` obsoleto em `data/municipios_card.json` já deixou a `main` vermelha sozinho"), sem a causa. Agora a causa está no código, com o motivo escrito ao lado.
+
+**A correção, na origem.** `data_de_geracao()` lê `SOURCE_DATE_EPOCH` quando ele existe e só cai em `date.today()` quando não existe — o mesmo padrão que `gerar_pdf_indice.py` e `gerar_pdf_metodologia.py` já usavam. Rodando pela cadeia canônica, o carimbo passa a ser o corte (`2026-09-10`), determinístico em qualquer fuso e em qualquer hora. O campo não é lido por nenhuma página: a busca por município em `prefeituras.js` consome os cartões, não o carimbo.
+
+**Trava.** Autoteste no próprio gerador, que já é portão: com `SOURCE_DATE_EPOCH` posto, a data sai dele — conferido em dois epochs distintos —; sem ele, cai no dia de hoje. Os epochs são calculados no teste, não digitados: a primeira versão trazia dois números mágicos, e os dois estavam um dia adiantados.
+
+**Teste.** Autoteste do gerador verde; cadeia canônica regenerada em árvore limpa sem diferença.
+
 ## §191 · A calibração propagada para as páginas restantes · 23/09/2026
 
 Classe **revisão editorial**. Nenhum número muda, nenhuma figura nasce ou morre. O §34 só libera propagar depois da calibração validada; o §190 fez a calibração no MARÉ · Saúde, e esta entrada leva a **lógica** — não as frases — às outras páginas. O §13 é explícito: consistência é aplicar a mesma regra a objetos diferentes, não repetir o mesmo texto.
