@@ -1,0 +1,874 @@
+{
+ "_governanca": "Fichas semânticas por figura (§35 da AI_EDITORIAL_NARRATIVE_GOVERNANCE.md, instaladas em 23/09/2026). NÃO aparecem na interface: são memória semântica, para que uma alteração futura não perca o significado da figura. A chave é '<pagina>#<id da figura>'. Preenchidas a partir do que foi verificado na auditoria — título, legenda, fonte, código e dado; onde não foi possível estabelecer com segurança, o campo é null, porque o §6 proíbe transformar incerteza interna em afirmação. O portão scripts/verificar_fichas_semanticas.js reprova figura sem ficha, ficha órfã e campo obrigatório vazio.",
+ "campos_obrigatorios": [
+  "tipo",
+  "pergunta_que_responde",
+  "universo",
+  "unidade_de_analise",
+  "territorio",
+  "periodo",
+  "variavel_principal",
+  "fonte",
+  "conclusoes_permitidas",
+  "conclusoes_nao_permitidas",
+  "funcao_narrativa"
+ ],
+ "campos_opcionais": [
+  "dimensao_da_preparacao",
+  "denominador",
+  "metodologia",
+  "acao_relacionada"
+ ],
+ "registrado_em": "2026-09-23",
+ "fichas": {
+  "monitor-de-riscos.html#boxOni": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Em que fase do ciclo ENOS o Pacífico está, pela medida oficial?",
+   "dimensao_da_preparacao": null,
+   "universo": "trimestres móveis desde 1950",
+   "unidade_de_analise": "trimestre móvel",
+   "territorio": "região Niño 3.4 (oceano Pacífico equatorial)",
+   "periodo": "1950 até o trimestre mais recente",
+   "variavel_principal": "anomalia da temperatura da superfície do mar (°C)",
+   "denominador": null,
+   "fonte": "NOAA/CPC",
+   "metodologia": "média móvel de três meses sobre a climatologia de referência",
+   "conclusoes_permitidas": [
+    "intensidade e duração do episódio ENOS na série histórica"
+   ],
+   "conclusoes_nao_permitidas": [
+    "efeito do El Niño sobre o Brasil",
+    "previsão de impacto local"
+   ],
+   "funcao_narrativa": "contexto: estabelece que existe um ciclo em curso, antes de qualquer evidência de preparação",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxRoni": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Quanto do aquecimento medido é do ENOS e quanto é do aquecimento médio do oceano tropical?",
+   "dimensao_da_preparacao": null,
+   "universo": "trimestres móveis desde 1950",
+   "unidade_de_analise": "trimestre móvel",
+   "territorio": "região Niño 3.4",
+   "periodo": "1950 até o trimestre mais recente",
+   "variavel_principal": "anomalia relativa da temperatura da superfície do mar (°C)",
+   "denominador": "média do oceano tropical",
+   "fonte": "NOAA/CPC",
+   "metodologia": "ONI descontado o aquecimento médio do oceano tropical",
+   "conclusoes_permitidas": [
+    "intensidade do episódio descontada a tendência de fundo"
+   ],
+   "conclusoes_nao_permitidas": [
+    "substituir o ONI como índice oficial de classificação do episódio"
+   ],
+   "funcao_narrativa": "contexto: qualifica a leitura do ONI",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxAnomalia": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como a temperatura da região Niño 3.4 está variando mês a mês, sem suavização?",
+   "dimensao_da_preparacao": null,
+   "universo": "meses recentes",
+   "unidade_de_analise": "mês",
+   "territorio": "região Niño 3.4",
+   "periodo": "últimos meses disponíveis",
+   "variavel_principal": "desvio da temperatura em relação à média climatológica do mês (°C)",
+   "denominador": "média climatológica do mês",
+   "fonte": "NOAA/CPC",
+   "metodologia": "leitura mensal, sem a média móvel de três meses do ONI e do RONI",
+   "conclusoes_permitidas": [
+    "direção e ritmo recentes da anomalia"
+   ],
+   "conclusoes_nao_permitidas": [
+    "classificar o episódio (isso é papel do ONI)",
+    "inferir impacto no Brasil"
+   ],
+   "funcao_narrativa": "contexto: mostra o movimento recente que a suavização esconde",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxTipoRisco": {
+   "tipo": "mapa e contagem",
+   "pergunta_que_responde": "Que tipo de risco os boletins federais projetam para cada estado neste ciclo?",
+   "dimensao_da_preparacao": "risco projetado (insumo, não componente do índice)",
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "ciclo 2026/2027",
+   "variavel_principal": "família de risco projetada",
+   "denominador": null,
+   "fonte": "Painel El Niño (órgãos técnicos federais)",
+   "metodologia": "famílias derivadas dos boletins, sem projeção própria do Monitor",
+   "conclusoes_permitidas": [
+    "que tipo de risco o poder público federal projetou para cada UF"
+   ],
+   "conclusoes_nao_permitidas": [
+    "risco observado",
+    "severidade do que ocorrerá",
+    "atribuição de evento ao El Niño"
+   ],
+   "funcao_narrativa": "contexto: define o risco ao qual a preparação deve responder",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxAvisos": {
+   "tipo": "mapa e contagem",
+   "pergunta_que_responde": "Onde há aviso meteorológico vigente agora?",
+   "dimensao_da_preparacao": "alertas",
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "consulta mais recente",
+   "variavel_principal": "contagem e severidade de avisos vigentes",
+   "denominador": null,
+   "fonte": "INMET",
+   "metodologia": null,
+   "conclusoes_permitidas": [
+    "onde há aviso vigente no momento da consulta"
+   ],
+   "conclusoes_nao_permitidas": [
+    "eficácia do sistema de alerta",
+    "ausência de aviso como ausência de risco"
+   ],
+   "funcao_narrativa": "evidência do agora: o ciclo em curso",
+   "acao_relacionada": "consultar o aviso no INMET"
+  },
+  "monitor-de-riscos.html#boxCemaden": {
+   "tipo": "mapa e contagem",
+   "pergunta_que_responde": "Onde há alerta hidrológico ou geológico vigente agora?",
+   "dimensao_da_preparacao": "alertas",
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "consulta mais recente",
+   "variavel_principal": "contagem de alertas vigentes",
+   "denominador": null,
+   "fonte": "CEMADEN",
+   "metodologia": null,
+   "conclusoes_permitidas": [
+    "onde há alerta vigente no momento da consulta"
+   ],
+   "conclusoes_nao_permitidas": [
+    "eficácia do sistema",
+    "ausência de alerta como ausência de risco"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": "consultar o alerta no CEMADEN"
+  },
+  "monitor-de-riscos.html#boxSecas": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Onde há seca observada, e em que categoria?",
+   "dimensao_da_preparacao": null,
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "mapa mensal mais recente",
+   "variavel_principal": "categoria de seca (S0–S4)",
+   "denominador": "metade da área da UF",
+   "fonte": "Monitor de Secas (ANA)",
+   "metodologia": "categoria atingida em pelo menos metade da área da UF",
+   "conclusoes_permitidas": [
+    "seca observada por UF no mês do mapa"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuir a seca ao El Niño",
+    "projeção de seca futura"
+   ],
+   "funcao_narrativa": "evidência do agora: condição observada",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxFogo": {
+   "tipo": "mapa e contagem",
+   "pergunta_que_responde": "Onde há foco de calor ativo nas últimas 24 horas?",
+   "dimensao_da_preparacao": null,
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "último dia disponível",
+   "variavel_principal": "contagem de focos em 24 h",
+   "denominador": null,
+   "fonte": "INPE (satélite de referência)",
+   "metodologia": "satélite de referência do INPE",
+   "conclusoes_permitidas": [
+    "distribuição de focos no dia"
+   ],
+   "conclusoes_nao_permitidas": [
+    "área queimada",
+    "atribuição ao El Niño",
+    "comparação entre satélites distintos"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": null
+  },
+  "defesa-civil.html#boxVerificacao": {
+   "tipo": "mapa de pontos com seletor",
+   "pergunta_que_responde": "Onde há ato de defesa civil localizado, e até onde a verificação do Monitor chegou?",
+   "dimensao_da_preparacao": "planos de contingência e declarações de emergência",
+   "universo": "5.571 municípios",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "ato localizado (plano ou decreto) ou nível de verificação atingido",
+   "denominador": "5.571 municípios",
+   "fonte": "registro federal, diários oficiais municipais e sítios oficiais",
+   "metodologia": "duas visões no seletor: atos localizados e nível de verificação",
+   "conclusoes_permitidas": [
+    "onde o Monitor localizou ato até o corte",
+    "até que camada a verificação chegou em cada município"
+   ],
+   "conclusoes_nao_permitidas": [
+    "ausência de ato localizado como ausência de planejamento",
+    "município sem ponto como município sem plano"
+   ],
+   "funcao_narrativa": "evidência central da preparação municipal, com o alcance da verificação à vista",
+   "acao_relacionada": "conferir o próprio município e indicar documento que falte"
+  },
+  "defesa-civil.html#boxCoberturaNatureza": {
+   "tipo": "mapa com seletor",
+   "pergunta_que_responde": "Que fração dos municípios de cada estado tem ato, e de que natureza ele é?",
+   "dimensao_da_preparacao": "planos de contingência",
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "% de municípios com ato, ou natureza predominante do ato",
+   "denominador": "municípios da UF",
+   "fonte": "banco de registros do Monitor",
+   "metodologia": "natureza distingue decreto reativo de plano preventivo",
+   "conclusoes_permitidas": [
+    "cobertura relativa por UF",
+    "predominância de ato reativo ou preventivo"
+   ],
+   "conclusoes_nao_permitidas": [
+    "qualidade do plano",
+    "capacidade de resposta efetiva"
+   ],
+   "funcao_narrativa": "dimensão territorial da mesma evidência, um nível acima do município",
+   "acao_relacionada": null
+  },
+  "defesa-civil.html#boxPrioritarios": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Os municípios que a União classifica como prioritários têm instrumento localizado?",
+   "dimensao_da_preparacao": "planos de contingência",
+   "universo": "lista de prioritários do Painel/SEDEC",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "presença de ato localizado no município prioritário",
+   "denominador": "municípios da lista de prioritários",
+   "fonte": "Painel/SEDEC e banco de registros do Monitor",
+   "metodologia": null,
+   "conclusoes_permitidas": [
+    "cobertura dentro do recorte oficial de prioridade"
+   ],
+   "conclusoes_nao_permitidas": [
+    "ausência localizada como ausência de plano",
+    "risco do município"
+   ],
+   "funcao_narrativa": "diagnóstico: cruza prioridade declarada pela União com evidência publicada",
+   "acao_relacionada": null
+  },
+  "defesa-civil.html#boxAtosResposta": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Quantos municípios decretaram emergência desde o boletim que abriu o ciclo?",
+   "dimensao_da_preparacao": "declarações de emergência (resposta, não preparação)",
+   "universo": "5.571 municípios",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil",
+   "periodo": "desde 29/06/2026",
+   "variavel_principal": "município com decreto de emergência no ciclo",
+   "denominador": null,
+   "fonte": "diários oficiais e registro federal",
+   "metodologia": "decreto não pontua no índice (Correção B); fica no banco para transparência",
+   "conclusoes_permitidas": [
+    "quantos e quais municípios decretaram no período"
+   ],
+   "conclusoes_nao_permitidas": [
+    "decreto como preparação",
+    "decreto como medida de dano",
+    "atribuição do decreto ao El Niño"
+   ],
+   "funcao_narrativa": "contraponto: resposta é a outra metade, e não se mistura com antecipação",
+   "acao_relacionada": null
+  },
+  "financiamento.html#boxCompromissosGrafico": {
+   "tipo": "gráfico de barras",
+   "pergunta_que_responde": "O que a União anunciou para o ciclo, e quanto disso virou empenho e pagamento?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "duas MPs e cinco compromissos verificados",
+   "unidade_de_analise": "compromisso",
+   "territorio": "Brasil",
+   "periodo": "ciclo 2026/2027",
+   "variavel_principal": "valor anunciado, empenhado e pago (R$ milhões)",
+   "denominador": "valor anunciado",
+   "fonte": "Portal da Transparência e atos oficiais",
+   "metodologia": "só compromissos com ato publicado e conferido",
+   "conclusoes_permitidas": [
+    "distância entre anúncio e execução em cada compromisso"
+   ],
+   "conclusoes_nao_permitidas": [
+    "total do gasto federal com o ciclo",
+    "eficácia do dinheiro aplicado"
+   ],
+   "funcao_narrativa": "abre a dimensão de financiamento com o que é verificável",
+   "acao_relacionada": null
+  },
+  "financiamento.html#boxMPsUF": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Onde chegou o pagamento da MP 1.367 (incêndios)?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "execução da MP 1.367 (incêndios)",
+   "unidade_de_analise": "UF da unidade gestora",
+   "territorio": "Brasil",
+   "periodo": "desde jun/2026",
+   "variavel_principal": "valor pago (R$)",
+   "denominador": null,
+   "fonte": "Portal da Transparência",
+   "metodologia": "UF da unidade gestora (Ibama, ICMBio), não do beneficiário final; unidade nacional contabilizada à parte",
+   "conclusoes_permitidas": [
+    "distribuição do pagamento por UF da unidade gestora"
+   ],
+   "conclusoes_nao_permitidas": [
+    "território onde o recurso foi aplicado",
+    "benefício recebido pela população da UF"
+   ],
+   "funcao_narrativa": "detalhamento territorial do compromisso federal",
+   "acao_relacionada": null
+  },
+  "financiamento.html#boxMP1384UF": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Onde chegou o pagamento da MP 1.384 (alimentos)?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "execução da MP 1.384 (alimentos)",
+   "unidade_de_analise": "UF da unidade gestora",
+   "territorio": "Brasil",
+   "periodo": "desde jun/2026",
+   "variavel_principal": "valor pago (R$)",
+   "denominador": null,
+   "fonte": "Portal da Transparência",
+   "metodologia": "UF da unidade gestora (MDA/Conab, MDS), não do beneficiário final; unidade nacional contabilizada à parte",
+   "conclusoes_permitidas": [
+    "distribuição do pagamento por UF da unidade gestora"
+   ],
+   "conclusoes_nao_permitidas": [
+    "território onde o recurso foi aplicado",
+    "benefício recebido pela população da UF"
+   ],
+   "funcao_narrativa": "detalhamento territorial do compromisso federal",
+   "acao_relacionada": null
+  },
+  "financiamento.html#boxRede": {
+   "tipo": "diagrama de estrutura",
+   "pergunta_que_responde": "Por quais rotas o dinheiro público chega ao município, e o que abre cada uma?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "rotas verificadas até o corte",
+   "unidade_de_analise": "rota",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "rota, origem e chave de acesso",
+   "denominador": null,
+   "fonte": "legislação e atos citados em cada rota",
+   "metodologia": "estrutura, não série temporal",
+   "conclusoes_permitidas": [
+    "quais rotas existem e que condição abre cada uma"
+   ],
+   "conclusoes_nao_permitidas": [
+    "volume de recurso por rota",
+    "probabilidade de o município receber"
+   ],
+   "funcao_narrativa": "explica o mecanismo antes de mostrar o fluxo",
+   "acao_relacionada": "identificar a rota aplicável ao próprio município"
+  },
+  "financiamento.html#boxPreventivoSetor": {
+   "tipo": "diagrama de estrutura",
+   "pergunta_que_responde": "Quantas rotas preventivas existem por setor, e quais dependem de plano ou risco declarado?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "rotas preventivas por setor",
+   "unidade_de_analise": "rota",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "rota preventiva e sua chave",
+   "denominador": null,
+   "fonte": "legislação e atos citados",
+   "metodologia": "resposta desenhada em tracejado para não se confundir com preventiva",
+   "conclusoes_permitidas": [
+    "onde a prevenção tem rota própria e onde depende de plano ou risco declarado"
+   ],
+   "conclusoes_nao_permitidas": [
+    "suficiência do financiamento preventivo"
+   ],
+   "funcao_narrativa": "diagnóstico da assimetria entre setores",
+   "acao_relacionada": null
+  },
+  "financiamento.html#boxSerie": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como as transferências da União a municípios se distribuem no tempo e por rota?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "transferências da União a municípios",
+   "unidade_de_analise": "semana",
+   "territorio": "Brasil",
+   "periodo": "semanas de 2026",
+   "variavel_principal": "valor transferido (R$ milhões) por rota",
+   "denominador": null,
+   "fonte": "Portal da Transparência",
+   "metodologia": "faixa do período eleitoral marcada no eixo",
+   "conclusoes_permitidas": [
+    "ritmo semanal e composição por rota"
+   ],
+   "conclusoes_nao_permitidas": [
+    "efeito causal do período eleitoral sobre o repasse",
+    "destino final do recurso"
+   ],
+   "funcao_narrativa": "fluxo observado, depois do mecanismo",
+   "acao_relacionada": null
+  },
+  "financiamento.html#boxRSGrafico": {
+   "tipo": "gráfico comparativo",
+   "pergunta_que_responde": "No RS, quem recebeu repasse preventivo e quem entrou por decreto e reconhecimento?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "municípios do RS",
+   "unidade_de_analise": "município",
+   "territorio": "Rio Grande do Sul",
+   "periodo": "ciclo 2026/2027",
+   "variavel_principal": "município no Prepara RS, sob decreto e reconhecido pela União",
+   "denominador": "municípios do RS",
+   "fonte": "Resolução 008/FUNDEC/2026 e registros federais",
+   "metodologia": "a lista oficial duplica um município; o total distinto pode ser 137, ressalva declarada na Metodologia",
+   "conclusoes_permitidas": [
+    "sobreposição entre repasse preventivo e resposta por decreto no estado"
+   ],
+   "conclusoes_nao_permitidas": [
+    "generalizar o caso do RS para o país",
+    "eficácia do repasse"
+   ],
+   "funcao_narrativa": "caso único com dataset nominal, declarado como exceção",
+   "acao_relacionada": null
+  },
+  "pesquisadores.html#boxConsultas": {
+   "tipo": "tabela",
+   "pergunta_que_responde": "Que consultas o Monitor fez, quando, com que parâmetros e com que resposta?",
+   "dimensao_da_preparacao": "disponibilidade de informação pública",
+   "universo": "rodadas do robô",
+   "unidade_de_analise": "consulta",
+   "territorio": "Brasil",
+   "periodo": "rodadas registradas",
+   "variavel_principal": "endpoint, parâmetros, data, itens e hash da resposta",
+   "denominador": null,
+   "fonte": "log de execução do próprio Monitor",
+   "metodologia": "uma linha por consulta, com hash da resposta",
+   "conclusoes_permitidas": [
+    "o que foi consultado e quando",
+    "reprodutibilidade da coleta"
+   ],
+   "conclusoes_nao_permitidas": [
+    "completude da fonte consultada",
+    "ausência de resultado como ausência do fenômeno"
+   ],
+   "funcao_narrativa": "metodológico: expõe o rastro da coleta para auditoria externa",
+   "acao_relacionada": "replicar a consulta"
+  },
+  "pesquisadores.html#boxRotaMPs": {
+   "tipo": "gráfico de barras",
+   "pergunta_que_responde": "Quanto as duas MPs de 2026 dotaram por órgão, e quanto foi pago?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "MP 1.367 e MP 1.384",
+   "unidade_de_analise": "órgão e uso",
+   "territorio": "Brasil",
+   "periodo": "MPs de 15/06 e 12/08/2026",
+   "variavel_principal": "dotação e parcela paga (R$ milhões)",
+   "denominador": "dotação",
+   "fonte": "atos das MPs e Portal da Transparência",
+   "metodologia": null,
+   "conclusoes_permitidas": [
+    "dotação por órgão e fração executada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "destino territorial do recurso",
+    "efeito da despesa"
+   ],
+   "funcao_narrativa": "metodológico: detalha a fonte que a página de financiamento resume",
+   "acao_relacionada": null
+  },
+  "pesquisadores.html#boxMpsBrUf": {
+   "tipo": "gráfico comparativo",
+   "pergunta_que_responde": "Quanto do pagamento das MPs saiu por unidade gestora de Brasília e quanto por unidade nas UFs?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "execução das duas MPs",
+   "unidade_de_analise": "unidade gestora",
+   "territorio": "Brasil",
+   "periodo": "execução mensal 06–09/2026",
+   "variavel_principal": "fração paga (%)",
+   "denominador": "total pago das MPs",
+   "fonte": "Portal da Transparência",
+   "metodologia": "classifica pela sede da unidade gestora (BR = Brasília), não pelo destino do recurso",
+   "conclusoes_permitidas": [
+    "concentração da execução em unidades nacionais ou estaduais"
+   ],
+   "conclusoes_nao_permitidas": [
+    "território onde o recurso foi aplicado"
+   ],
+   "funcao_narrativa": "metodológico: explica por que o mapa por UF não é mapa de destino",
+   "acao_relacionada": null
+  },
+  "pesquisadores.html#boxMpsUf": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Quanto foi pago das MPs por UF da unidade gestora?",
+   "dimensao_da_preparacao": "financiamento",
+   "universo": "ações reforçadas pelas MPs 1.367 e 1.384",
+   "unidade_de_analise": "UF da unidade gestora",
+   "territorio": "Brasil",
+   "periodo": "execução mensal 06–09/2026",
+   "variavel_principal": "valor pago (R$)",
+   "denominador": null,
+   "fonte": "Portal da Transparência",
+   "metodologia": "UF da unidade gestora, não do beneficiário final",
+   "conclusoes_permitidas": [
+    "distribuição do pagamento por UF da unidade gestora"
+   ],
+   "conclusoes_nao_permitidas": [
+    "território onde o recurso foi aplicado",
+    "benefício recebido pela população da UF"
+   ],
+   "funcao_narrativa": "metodológico: a mesma leitura do financiamento, aberta para auditoria",
+   "acao_relacionada": null
+  },
+  "pesquisadores.html#boxAreas": {
+   "tipo": "gráfico de barras",
+   "pergunta_que_responde": "Que áreas temáticas os planos estaduais citam?",
+   "dimensao_da_preparacao": "planejamento",
+   "universo": "planos estaduais localizados",
+   "unidade_de_analise": "área temática",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "nº de UFs por área",
+   "denominador": "UFs com plano localizado",
+   "fonte": "leitura dos planos estaduais pelo Monitor",
+   "metodologia": "classificação COBRADE aplicada ao texto do plano",
+   "conclusoes_permitidas": [
+    "quais riscos os planos nomeiam, e em quantas UFs"
+   ],
+   "conclusoes_nao_permitidas": [
+    "qualidade do tratamento dado ao risco",
+    "adequação do plano ao risco projetado"
+   ],
+   "funcao_narrativa": "metodológico: mostra o conteúdo por trás da classificação de instrumento",
+   "acao_relacionada": null
+  },
+  "pesquisadores.html#boxCatalogo": {
+   "tipo": "tabela",
+   "pergunta_que_responde": "Dos 20 desfechos previstos no Quadro 2 do plano de contingência, quais o Monitor coleta?",
+   "dimensao_da_preparacao": "disponibilidade de informação pública",
+   "universo": "os 20 desfechos do Quadro 2",
+   "unidade_de_analise": "desfecho",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "estado da coleta: coletado, candidato ou sem fonte",
+   "denominador": "20 desfechos",
+   "fonte": "Quadro 2 do plano de contingência e sistemas oficiais de origem",
+   "metodologia": "cada desfecho com sistema oficial de origem e fonte aberta correspondente",
+   "conclusoes_permitidas": [
+    "cobertura do Monitor sobre o que o próprio plano previu medir"
+   ],
+   "conclusoes_nao_permitidas": [
+    "desfecho sem fonte como desfecho inexistente",
+    "desempenho do sistema de saúde"
+   ],
+   "funcao_narrativa": "metodológico: declara a lacuna de cobertura à vista, em vez de escondê-la",
+   "acao_relacionada": null
+  },
+  "pesquisadores.html#boxGatilhos": {
+   "tipo": "tabela",
+   "pergunta_que_responde": "Dos gatilhos do Quadro 5, quais o Monitor já computa e em que valor estão?",
+   "dimensao_da_preparacao": "planejamento",
+   "universo": "gatilhos do Quadro 5 do plano",
+   "unidade_de_analise": "gatilho",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "valor atual no Monitor e limiar previsto no plano",
+   "denominador": null,
+   "fonte": "Quadro 5 do plano de contingência e séries do próprio Monitor",
+   "metodologia": "o Monitor não emite semáforo próprio: exibe valor e limiar, sem classificar estágio",
+   "conclusoes_permitidas": [
+    "distância entre o valor corrente e o limiar escrito no plano"
+   ],
+   "conclusoes_nao_permitidas": [
+    "acionamento do estágio",
+    "juízo sobre a resposta do poder público"
+   ],
+   "funcao_narrativa": "metodológico: liga a medida do Monitor ao que o plano previu, sem decidir por ele",
+   "acao_relacionada": null
+  },
+  "saude.html#boxDesfMapa": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Em quais municípios acompanhados o alerta de dengue está alto na última semana consolidada?",
+   "dimensao_da_preparacao": null,
+   "universo": "313 municípios acompanhados",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil (painel amostral)",
+   "periodo": "última semana epidemiológica consolidada",
+   "variavel_principal": "nível de alerta InfoDengue (1 a 4)",
+   "denominador": null,
+   "fonte": "InfoDengue (Fiocruz/FGV), a partir de notificações do Sinan",
+   "metodologia": "as quatro últimas semanas epidemiológicas ficam fora da série consolidada; nowcasting nas semanas recentes",
+   "conclusoes_permitidas": [
+    "nível de alerta por município acompanhado na semana consolidada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição dos casos ao El Niño",
+    "generalizar o painel amostral para o país",
+    "incidência real do município"
+   ],
+   "funcao_narrativa": "camada observada: peso zero no índice, contexto do risco sanitário",
+   "acao_relacionada": null
+  },
+  "saude.html#boxChikMapa": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Em quais municípios acompanhados o alerta de chikungunya está alto na última semana consolidada?",
+   "dimensao_da_preparacao": null,
+   "universo": "313 municípios acompanhados",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil (painel amostral)",
+   "periodo": "última semana epidemiológica consolidada",
+   "variavel_principal": "nível de alerta InfoDengue (1 a 4)",
+   "denominador": null,
+   "fonte": "InfoDengue (Fiocruz/FGV), a partir de notificações do Sinan",
+   "metodologia": "as quatro últimas semanas epidemiológicas ficam fora da série consolidada; nowcasting nas semanas recentes",
+   "conclusoes_permitidas": [
+    "nível de alerta por município acompanhado na semana consolidada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição dos casos ao El Niño",
+    "generalizar o painel amostral para o país",
+    "incidência real do município"
+   ],
+   "funcao_narrativa": "camada observada: peso zero no índice, contexto do risco sanitário",
+   "acao_relacionada": null
+  },
+  "saude.html#boxDengue": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Qual o nível de alerta de dengue em cada capital?",
+   "dimensao_da_preparacao": null,
+   "universo": "27 capitais",
+   "unidade_de_analise": "capital",
+   "territorio": "Brasil",
+   "periodo": "última semana disponível em cada capital",
+   "variavel_principal": "nível de alerta InfoDengue (1 a 4)",
+   "denominador": null,
+   "fonte": "registro de capitais do Monitor (saude_sinais), a partir do InfoDengue",
+   "metodologia": "fonte distinta da série municipal: cada capital carrega a própria semana, que pode não ser a consolidada",
+   "conclusoes_permitidas": [
+    "nível de alerta na capital, na semana que o registro traz"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição dos casos ao El Niño",
+    "estender o sinal da capital ao estado inteiro",
+    "comparar diretamente com o mapa municipal, que usa a semana consolidada"
+   ],
+   "funcao_narrativa": "camada observada, no recorte que existe para as 27 UFs",
+   "acao_relacionada": null
+  },
+  "saude.html#boxDesfAcum": {
+   "tipo": "série temporal com seletor",
+   "pergunta_que_responde": "Como os casos notificados de dengue evoluem frente à faixa esperada para a época?",
+   "dimensao_da_preparacao": null,
+   "universo": "313 municípios acompanhados e 27 capitais",
+   "unidade_de_analise": "semana epidemiológica",
+   "territorio": "Brasil (painel amostral)",
+   "periodo": "semanas de 2026",
+   "variavel_principal": "nº de casos notificados",
+   "denominador": "canal endêmico (mediana, p75 e p90 das mesmas semanas de 2019–2025, com 2024 à parte)",
+   "fonte": "InfoDengue (Fiocruz/FGV), a partir de notificações do Sinan",
+   "metodologia": "a visualização escolhida no seletor define o recorte: semanal sobre a faixa esperada, acumulado anual ou capitais",
+   "conclusoes_permitidas": [
+    "posição da série frente à faixa esperada para a época"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição dos casos ao El Niño",
+    "generalizar o painel amostral para o país",
+    "casos como medida de gravidade"
+   ],
+   "funcao_narrativa": "camada observada: peso zero, sem faixa e sem nota",
+   "acao_relacionada": null
+  },
+  "saude.html#boxChikSerie": {
+   "tipo": "série temporal com seletor",
+   "pergunta_que_responde": "Como os casos notificados de chikungunya evoluem frente à faixa esperada para a época?",
+   "dimensao_da_preparacao": null,
+   "universo": "313 municípios acompanhados",
+   "unidade_de_analise": "semana epidemiológica",
+   "territorio": "Brasil (painel amostral)",
+   "periodo": "semanas de 2026",
+   "variavel_principal": "nº de casos notificados",
+   "denominador": "canal endêmico (mediana, p75 e p90 das mesmas semanas de 2019–2025, com 2024 à parte)",
+   "fonte": "InfoDengue (Fiocruz/FGV), a partir de notificações do Sinan",
+   "metodologia": "a visualização escolhida no seletor define o recorte: semanal sobre a faixa esperada, acumulado anual ou capitais",
+   "conclusoes_permitidas": [
+    "posição da série frente à faixa esperada para a época"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição dos casos ao El Niño",
+    "generalizar o painel amostral para o país",
+    "casos como medida de gravidade"
+   ],
+   "funcao_narrativa": "camada observada: peso zero, sem faixa e sem nota",
+   "acao_relacionada": null
+  },
+  "saude.html#boxCalor": {
+   "tipo": "mapa e contagem",
+   "pergunta_que_responde": "Onde há aviso de calor vigente agora?",
+   "dimensao_da_preparacao": "alertas de saúde",
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "consulta mais recente",
+   "variavel_principal": "contagem de avisos de calor vigentes",
+   "denominador": null,
+   "fonte": "INMET",
+   "metodologia": null,
+   "conclusoes_permitidas": [
+    "onde há aviso de calor vigente no momento da consulta"
+   ],
+   "conclusoes_nao_permitidas": [
+    "efeito do calor sobre a saúde da população",
+    "ausência de aviso como ausência de risco"
+   ],
+   "funcao_narrativa": "camada observada: sinal de risco sanitário em curso",
+   "acao_relacionada": "consultar o aviso no INMET"
+  },
+  "saude.html#boxSRAG": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como síndrome respiratória aguda grave (SRAG) evolui frente à faixa esperada para a época?",
+   "dimensao_da_preparacao": null,
+   "universo": "Brasil",
+   "unidade_de_analise": "semana epidemiológica",
+   "territorio": "Brasil",
+   "periodo": "semanas de 2026",
+   "variavel_principal": "nº de casos",
+   "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
+   "fonte": "Ministério da Saúde",
+   "metodologia": "as quatro últimas semanas ficam fora do consolidado",
+   "conclusoes_permitidas": [
+    "posição da série frente à faixa esperada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição ao El Niño",
+    "semanas recentes como tendência consolidada",
+    "gravidade dos casos"
+   ],
+   "funcao_narrativa": "camada observada: peso zero no índice",
+   "acao_relacionada": null
+  },
+  "saude.html#boxSG": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como síndrome gripal evolui frente à faixa esperada para a época?",
+   "dimensao_da_preparacao": null,
+   "universo": "Brasil",
+   "unidade_de_analise": "semana epidemiológica",
+   "territorio": "Brasil",
+   "periodo": "semanas de 2026",
+   "variavel_principal": "nº de casos",
+   "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
+   "fonte": "Ministério da Saúde",
+   "metodologia": "as quatro últimas semanas ficam fora do consolidado",
+   "conclusoes_permitidas": [
+    "posição da série frente à faixa esperada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição ao El Niño",
+    "semanas recentes como tendência consolidada",
+    "gravidade dos casos"
+   ],
+   "funcao_narrativa": "camada observada: peso zero no índice",
+   "acao_relacionada": null
+  },
+  "saude.html#boxDDA": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como doenças diarreicas agudas (MDDA) evolui frente à faixa esperada para a época?",
+   "dimensao_da_preparacao": null,
+   "universo": "Brasil",
+   "unidade_de_analise": "semana epidemiológica",
+   "territorio": "Brasil",
+   "periodo": "semanas de 2026",
+   "variavel_principal": "nº de atendimentos",
+   "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
+   "fonte": "Ministério da Saúde",
+   "metodologia": "atendimentos em unidades sentinela; as quatro últimas semanas são parciais",
+   "conclusoes_permitidas": [
+    "posição da série frente à faixa esperada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição ao El Niño",
+    "semanas recentes como tendência consolidada",
+    "gravidade dos casos"
+   ],
+   "funcao_narrativa": "camada observada: peso zero no índice",
+   "acao_relacionada": null
+  },
+  "saude.html#boxMonitor": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Qual a prontidão sanitária de cada estado para o ciclo?",
+   "dimensao_da_preparacao": "planejamento e instrumento estadual de saúde",
+   "universo": "27 UFs, das quais as verificadas recebem número",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "prontidão sanitária, de 0 a 100",
+   "denominador": "média de três componentes: instrumento, cobertura populacional sanitária e antecipação",
+   "fonte": "banco de registros do Monitor",
+   "metodologia": "Metodologia §31; UF não verificada fica cinza e sem número",
+   "conclusoes_permitidas": [
+    "extensão do arcabouço sanitário publicado e verificado em cada UF"
+   ],
+   "conclusoes_nao_permitidas": [
+    "estado de saúde da população",
+    "capacidade de resposta efetiva",
+    "UF cinza como UF sem plano"
+   ],
+   "funcao_narrativa": "síntese da dimensão de saúde, depois da camada observada",
+   "acao_relacionada": null
+  },
+  "saude.html#boxStatus": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Em que categoria está o instrumento estadual de saúde de cada UF?",
+   "dimensao_da_preparacao": "instrumento estadual de saúde",
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "categoria do instrumento (novo do ciclo, readaptado, vigente-recorrente, em elaboração, não localizado, não verificado)",
+   "denominador": null,
+   "fonte": "banco de registros do Monitor",
+   "metodologia": "categoria julgada pela função do ato, não pelo nome; não verificado não é não localizado",
+   "conclusoes_permitidas": [
+    "categoria do instrumento em cada UF verificada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "não localizado como inexistente",
+    "qualidade ou adequação do plano"
+   ],
+   "funcao_narrativa": "decompõe o componente de instrumento que entra na prontidão",
+   "acao_relacionada": null
+  },
+  "saude.html#boxRiscoSan": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Que famílias de risco sanitário os boletins projetam para cada estado?",
+   "dimensao_da_preparacao": "risco projetado (insumo, não componente do índice)",
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "ciclo 2026/2027",
+   "variavel_principal": "família de risco sanitário projetada",
+   "denominador": null,
+   "fonte": "boletins do Painel El Niño",
+   "metodologia": "derivado das famílias de risco dos boletins, sem projeção própria do Monitor",
+   "conclusoes_permitidas": [
+    "que risco sanitário o poder público federal projetou para cada UF"
+   ],
+   "conclusoes_nao_permitidas": [
+    "risco observado",
+    "incidência esperada",
+    "atribuição de doença ao El Niño"
+   ],
+   "funcao_narrativa": "fecha a dimensão ligando o instrumento publicado ao risco que ele deveria responder",
+   "acao_relacionada": null
+  }
+ }
+}

@@ -35,7 +35,19 @@ Classe **revisão editorial**. Nenhum número muda, nenhuma figura nasce ou morr
 
 **O que continua em aberto.** As seções "Onde cada estado está" e "O que cada estado publicou", na saúde, seguem anotadas como suspeita de redundância (§10) — examinar isso é decidir se uma figura sai, e remoção de evidência substantiva é decisão da editoria pelo §29, não minha. A dívida do §35 (ficha semântica por figura) segue declarada. E a ordem narrativa das páginas (§8, §36 passo 7) não foi mexida: esta entrada revisou texto, não sequência.
 
-**Teste.** Portões de legendas, figuras, palavras, estrutura e os três de runtime (saúde, mapas, financiamento) verdes.
+**O que estava em aberto e foi fechado nesta mesma entrada.**
+
+*A suspeita de redundância era outra coisa.* Examinadas, "Onde cada estado está" e "O que cada estado publicou" **não são redundantes**: a primeira é o cartão por estado — a camada de territorialização em que o leitor acha o seu (§26) —; a segunda é o panorama agregado, com os três mapas. Mesmo dado, funções narrativas distintas, e o §10 as classifica em papéis diferentes. O defeito real era **a ordem**: o específico vinha antes do geral, o inverso do §8 e do §26. Os dois painéis foram trocados; nenhuma figura saiu, e nenhuma evidência foi eliminada — o que teria exigido decisão da editoria pelo §29.
+
+*A pendência do §22 que eu havia adiado.* "Última semana consolidada", "última semana disponível" e "última semana epidemiológica" conviviam na mesma tela. Lidos o dado e o código, a diferença é **real**: o mapa municipal lê a série consolidada do InfoDengue, com as quatro últimas semanas vazadas, e o mapa das capitais lê outra fonte, em que cada capital carrega a própria semana. Uniformizar teria apagado uma distinção de método. As duas expressões ficam, e a ficha semântica de cada figura agora registra por quê.
+
+*Seis legendas da saúde que a varredura anterior não alcançou*, porque a página não estava no lote auditado — duas delas repetiam o título por causa da própria calibração do §190.
+
+**A dívida do §35, paga.** `docs/fichas_semanticas.json` passa a guardar, para cada uma das **38 figuras** do site, a ficha que o §35 pede: pergunta que responde, dimensão da preparação, universo, unidade de análise, território, período, variável, denominador, fonte, metodologia, **conclusões permitidas e não permitidas**, função narrativa e ação relacionada. Onde não foi possível estabelecer um campo com segurança, ele é `null` — o §6 proíbe transformar incerteza interna em afirmação, e isso vale também para a memória interna.
+
+Ficha sem portão envelhece em silêncio, então ela ganhou um: `scripts/verificar_fichas_semanticas.js` (o **55º** do repositório) renderiza as onze páginas e reprova figura sem ficha, ficha órfã, campo obrigatório vazio e — porque o §35 diz que a ficha é memória interna e o §27 proíbe renderizar bastidor — qualquer texto de ficha que vaze para a interface. O portão não julga o conteúdo da ficha: isso é leitura humana, e o §29 reserva à editoria o que muda significado.
+
+**Teste.** Portões de legendas, figuras, palavras, estrutura, fichas semânticas e os três de runtime (saúde, mapas, financiamento) verdes; 38 figuras com ficha completa.
 
 ## §190 · Teste de calibração da governança editorial no MARÉ · Saúde · 23/09/2026
 
