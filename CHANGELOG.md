@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §200 · O peso que contradizia a regra nova, no canto onde ninguém olha · 24/09/2026
+
+Classe **coerência interna**. Nenhuma nota muda, nenhuma média muda.
+
+**O achado.** Conferindo a `main` depois do merge do §196, apareceram **dois** valores para a mesma coisa no motor: `CRED_POP["plano_antigo"] = 1.0`, que é o crédito de verdade, e `PESO_DOC["plano_antigo"] = 0.7`, quatro dezenas de linhas acima.
+
+**Por que passou despercebido.** No `recalcular_mare.py` o `PESO_DOC` é usado só como **conjunto de pertinência** — `sum(v for k, v in c.items() if k in PESO_DOC)`, onde o `v` vem do contador e não do dicionário. Os valores não entram na conta, e o próprio comentário do arquivo diz isso. Mas o `analise_sensibilidade.py` **usa os valores**, em `sum(rm.PESO_DOC[k] * v ...)`, para calcular `teto_ativo` — a checagem de quais UFs estourariam o teto de 100% de cobertura. Com 0,7 onde o crédito real é 1,0, essa checagem **subestimava**.
+
+**Efeito medido:** nenhum. `teto_ativo` continua vazio antes e depois, e as 27 notas são idênticas. A correção não muda o que o site publica — muda o que o código afirma.
+
+**Por que corrigir mesmo assim.** Um número escrito no motor que contradiz a regra vigente é uma armadilha datada: a próxima sessão lê `plano_antigo: 0.7`, conclui que plano anterior vale menos, e decide alguma coisa a partir disso. Vale igual desde o §196, e agora está escrito igual nos dois lugares, com o motivo ao lado.
+
 ## §199 · A ficha da Base dos Dados não substitui a fonte, mas entregou o host que faltava · 24/09/2026
 
 Classe **investigação de fonte**. Nenhum dado novo entra; o que entra é uma sonda de diagnóstico e o registro do que foi medido.
