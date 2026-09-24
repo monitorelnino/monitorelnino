@@ -38,6 +38,8 @@ As três camadas (METODOLOGIA §23.2):
 """
 import hashlib
 import json
+import math
+import os
 import pathlib
 import re
 import ssl
@@ -105,6 +107,11 @@ REF_PM25_DOCUMENTO = "OMS, Global Air Quality Guidelines (2021) — média diár
 # Idade máxima de uma coleta antes de a figura trocar o valor por "sem coleta desde":
 # um aviso do INMET dura horas, e retrato velho sem aviso de idade é dado falso.
 VALIDADE_HORAS_SINAL = 36
+
+# Teto de distância entre o monitor/estação e a capital que ele representa. Monitor longe medindo
+# outra cidade não é "medição na capital", e aceitar por proximidade folgada produz crédito falso.
+OPENAQ_RAIO_KM = 30.0
+INMET_RAIO_KM = 40.0
 
 # Capital de cada UF pelo CÓDIGO IBGE — a chave canônica. Nome e coordenada saem de
 # data/municipios_ibge_referencia.json em tempo de execução, então esta tabela não
@@ -190,6 +197,36 @@ FONTES = {
         "papel": "PM2,5, PM10, ozônio, NO₂ e CO estimados por modelo, por capital, em µg/m³.",
         "natureza": NATUREZA_MODELO,
         "licenca": "CC BY 4.0 — crédito obrigatório: Copernicus CAMS via Open-Meteo.com",
+    },
+    # ---------------------------------------------------------------------
+    # CAMADA DE MEDIÇÃO (24/09/2026). As duas fontes abaixo exigem credencial, e as duas
+    # ficam em LACUNA DECLARADA enquanto a credencial não existir no ambiente — o site roda
+    # sem elas, e nada do que elas trariam é substituído por estimativa.
+    #   OpenAQ v3: recusa com HTTP 401 sem `X-API-Key` (medido em 24/09/2026). 401 é bloqueio
+    #     de acesso real e se respeita, sempre.
+    #   Estações do INMET: o endpoint de dados passou a exigir token. Sem token a rota devolve
+    #     204 com corpo vazio, e a rota com token responde "CHAVE INVÁLIDA!" (medido em 24/09).
+    # A chave vem do AMBIENTE (segredo da Action), nunca do repositório — que é público.
+    # ---------------------------------------------------------------------
+    "openaq": {
+        "nome": "Qualidade do ar medida", "orgao": "OpenAQ (agrega redes oficiais brasileiras)",
+        "camada": "observado",
+        "url_publica": "https://openaq.org/",
+        "endpoint": "https://api.openaq.org/v3/locations?iso=BR&limit=1000",
+        "papel": "PM2,5 medido por monitor oficial, onde existir monitor.",
+        "natureza": NATUREZA_MEDICAO,
+        "licenca": "CC BY 4.0 — crédito obrigatório do OpenAQ e da rede de origem",
+        "credencial": "OPENAQ_API_KEY",
+    },
+    "inmet_estacoes": {
+        "nome": "Temperatura medida em estação", "orgao": "INMET",
+        "camada": "observado",
+        "url_publica": "https://portal.inmet.gov.br/dadoshistoricos",
+        "endpoint": "https://apitempo.inmet.gov.br/estacoes/T",
+        "papel": "Máxima e mínima medidas na estação automática da capital.",
+        "natureza": NATUREZA_MEDICAO,
+        "licenca": "Dados abertos INMET",
+        "credencial": "INMET_API_TOKEN",
     },
     "noaa_oni": {
         "nome": "Oceanic Niño Index (ONI)", "orgao": "NOAA/CPC", "camada": "enos",
@@ -313,6 +350,21 @@ def registrar_consulta(chave: str, url: str, bruto: str) -> None:
     })
 
 
+class CredencialAusente(RuntimeError):
+    """Fonte que exige credencial e não a encontrou no ambiente.
+
+    É classe própria, e não ValueError, porque o desfecho é diferente: resposta recusada é
+    problema da fonte ou nosso, credencial ausente é decisão que a editoria ainda não tomou. A
+    página diz coisas diferentes nos dois casos, e quem lê o log precisa distinguir."""
+
+
+def credencial_de(chave: str) -> str | None:
+    """Lê do AMBIENTE a credencial que a fonte declara em `credencial`. Nunca do repositório, que é
+    público. Fonte sem `credencial` devolve None e segue sem nada."""
+    nome = FONTES.get(chave, {}).get("credencial")
+    return os.environ.get(nome) if nome else None
+
+
 def _contexto_tls():
     """Contexto TLS com o pacote de CAs do `certifi` quando ele existe, e o do sistema quando não.
 
@@ -328,16 +380,22 @@ def _contexto_tls():
         return None
 
 
-def _buscar(url: str) -> str:
-    """GET simples com cabeçalho identificado e tempo limite; erros sobem para quem chamou tratar."""
-    req = urllib.request.Request(url, headers=CABECALHO)
+def _buscar(url: str, extra: dict = None) -> str:
+    """GET simples com cabeçalho identificado e tempo limite; erros sobem para quem chamou tratar.
+
+    `extra` acrescenta cabeçalho (é por onde a chave do OpenAQ viaja). O User-Agent identificado
+    NUNCA é substituído: disfarçar o cliente é proibido no projeto."""
+    req = urllib.request.Request(url, headers={**CABECALHO, **(extra or {})})
     with urllib.request.urlopen(req, timeout=TEMPO_LIMITE, context=_contexto_tls()) as r:
         return r.read().decode("utf-8", errors="replace")
 
 
-def _buscar_registrado(chave: str, url: str) -> str:
-    """Como `_buscar`, e deixa rastro no livro de consultas. Usado pelas fontes de cadência sub-diária."""
-    bruto = _buscar(url)
+def _buscar_registrado(chave: str, url: str, extra: dict = None) -> str:
+    """Como `_buscar`, e deixa rastro no livro de consultas. Usado pelas fontes de cadência sub-diária.
+
+    O livro guarda a URL, e a URL nunca carrega credencial — a chave viaja em cabeçalho, de propósito,
+    para não ficar registrada num arquivo que vai ao repositório público."""
+    bruto = _buscar(url, extra)
     registrar_consulta(chave, url, bruto)
     return bruto
 
@@ -532,6 +590,90 @@ def parse_open_meteo_ar(dados, chaves) -> dict:
             "no_da_grade": {"lat": bloco.get("latitude"), "lon": bloco.get("longitude")},
         }
     return saida
+
+
+def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
+    """Lê as estações brasileiras do OpenAQ v3 e devolve {UF: {...}} só das que ficam NA CAPITAL.
+
+    O OpenAQ agrega redes oficiais (CETESB, INEA, FEAM e outras) e a rede de origem tem de ser
+    creditada junto — ela vem em `provider`/`owner` e é guardada. A seleção é pela coordenada mais
+    próxima da capital, com teto de 30 km: monitor a 200 km da capital medindo outra cidade não é
+    "medição na capital", e aceitar por proximidade folgada produziria crédito falso. Função pura."""
+    def dist_km(a, b):
+        # distância plana suficiente para um teto de dezenas de km (sem trigonometria esférica:
+        # a 30 km o erro do achatamento é menor que a resolução do próprio monitor)
+        dy = (a[0] - b[0]) * 111.0
+        dx = (a[1] - b[1]) * 111.0 * math.cos(math.radians((a[0] + b[0]) / 2))
+        return math.hypot(dx, dy)
+
+    itens = (dados or {}).get("results") if isinstance(dados, dict) else dados
+    melhor = {}
+    for loc in itens or []:
+        if not isinstance(loc, dict):
+            continue
+        coord = loc.get("coordinates") or {}
+        lat, lon = coord.get("latitude"), coord.get("longitude")
+        if not isinstance(lat, (int, float)) or not isinstance(lon, (int, float)):
+            continue
+        params = [p.get("name") for p in (loc.get("sensors") or []) if isinstance(p, dict)]
+        if not any("pm25" in str(p).replace("_", "").lower() or "pm2.5" in str(p).lower()
+                   for p in params + [s.get("parameter", {}).get("name") if isinstance(s, dict) else None
+                                      for s in (loc.get("sensors") or [])]):
+            continue                                  # sem PM2,5 o monitor não serve a esta figura
+        for uf, cap in por_uf_capital.items():
+            d = dist_km((lat, lon), (cap["lat"], cap["lon"]))
+            if d > OPENAQ_RAIO_KM:
+                continue
+            atual = melhor.get(uf)
+            if atual and atual["distancia_km"] <= d:
+                continue
+            melhor[uf] = {
+                "id": loc.get("id"), "nome": loc.get("name"),
+                "rede_de_origem": (loc.get("provider") or {}).get("name") if isinstance(loc.get("provider"), dict) else loc.get("provider"),
+                "distancia_km": round(d, 1),
+                "coordenada": {"lat": lat, "lon": lon},
+                "natureza": NATUREZA_MEDICAO,
+            }
+    return melhor
+
+
+def parse_estacoes_inmet(dados, por_uf_capital: dict) -> dict:
+    """Escolhe a estação automática OPERANTE mais próxima de cada capital e devolve {UF: {...}}.
+
+    Duas coisas medidas em 24/09/2026 que este código registra para ninguém repetir:
+      • `FL_CAPITAL` NÃO serve: vale "N" em 561 estações e nulo em 112, e "S" em nenhuma. Campo
+        quebrado na fonte, não indicador de capital.
+      • casar pelo nome da cidade perde 5 capitais, porque a estação se chama "SAO PAULO -
+        MIRANTE", "BELO HORIZONTE - PAMPULHA", e Fortaleza não tem estação com o nome da cidade.
+    Por isso a escolha é por COORDENADA, com teto, e `CD_SITUACAO` tem de ser "Operante": estação
+    em pane devolveria série vazia que pareceria ausência de calor. Função pura."""
+    def dist_km(a, b):
+        dy = (a[0] - b[0]) * 111.0
+        dx = (a[1] - b[1]) * 111.0 * math.cos(math.radians((a[0] + b[0]) / 2))
+        return math.hypot(dx, dy)
+
+    melhor = {}
+    for e in dados or []:
+        if not isinstance(e, dict) or str(e.get("CD_SITUACAO", "")).strip() != "Operante":
+            continue
+        try:
+            lat, lon = float(e["VL_LATITUDE"]), float(e["VL_LONGITUDE"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        uf = str(e.get("SG_ESTADO") or "").strip().upper()
+        cap = por_uf_capital.get(uf)
+        if not cap:
+            continue
+        d = dist_km((lat, lon), (cap["lat"], cap["lon"]))
+        if d > INMET_RAIO_KM:
+            continue
+        atual = melhor.get(uf)
+        if atual and atual["distancia_km"] <= d:
+            continue
+        melhor[uf] = {"codigo": e.get("CD_ESTACAO"), "nome": e.get("DC_NOME"),
+                      "situacao": e.get("CD_SITUACAO"), "distancia_km": round(d, 1),
+                      "coordenada": {"lat": lat, "lon": lon}, "natureza": NATUREZA_MEDICAO}
+    return melhor
 
 
 def parse_change_maps_ana(dados) -> dict:
@@ -811,6 +953,30 @@ def coletar_fonte(chave: str):
     if not fonte["endpoint"]:
         raise RuntimeError("fonte sem endpoint automático — entra por leitura humana (--semear)")
 
+    # Fonte com credencial declarada: sem a credencial no ambiente, nem tenta a rede. Bater na
+    # porta para levar 401 gastaria a fonte e sujaria o log com uma recusa que já é conhecida.
+    if fonte.get("credencial") and not credencial_de(chave):
+        raise CredencialAusente(
+            f"{fonte['credencial']} ausente no ambiente — camada de medição fica em lacuna declarada")
+
+    if chave == "openaq":
+        capitais = {c["uf"]: c for c in resolver_capitais()}
+        bruto = _buscar_registrado(chave, fonte["endpoint"],
+                                   extra={"X-API-Key": credencial_de(chave)})
+        locais = parse_openaq_locais(json.loads(bruto), capitais)
+        if not locais:
+            raise ValueError("OpenAQ respondeu sem monitor de PM2,5 a menos de "
+                             f"{OPENAQ_RAIO_KM:.0f} km de nenhuma capital — recusada")
+        return ({"por_uf": locais}, f"OpenAQ — {len(locais)} capital(is) com monitor de PM2,5")
+
+    if chave == "inmet_estacoes":
+        capitais = {c["uf"]: c for c in resolver_capitais()}
+        estacoes = parse_estacoes_inmet(json.loads(_buscar_registrado(chave, fonte["endpoint"])), capitais)
+        if not estacoes:
+            raise ValueError("lista de estações do INMET sem estação operante a menos de "
+                             f"{INMET_RAIO_KM:.0f} km de nenhuma capital — recusada")
+        return ({"por_uf": estacoes}, f"INMET — {len(estacoes)} estação(ões) automática(s) de capital")
+
     # As duas fontes do Open-Meteo pedem as 27 coordenadas numa chamada só e tratam a resposta
     # posicionalmente; saem antes do GET genérico abaixo.
     if chave in ("open_meteo_tempo", "open_meteo_ar"):
@@ -943,7 +1109,8 @@ def esqueleto() -> dict:
         "enos": {"oni": None, "roni": None, "nino34_mensal": None, "probabilidades": None, "prognostico": None},
         "uf": {uf: {"risco_projetado": None, "secas": None, "avisos_inmet": None,
                     "fogo": None, "alertas_cemaden": None,
-                    "temperatura": None, "qualidade_ar": None} for uf in UFS},
+                    "temperatura": None, "qualidade_ar": None,
+                    "temperatura_medida": None, "ar_medido": None} for uf in UFS},
     }
 
 
@@ -962,7 +1129,7 @@ def normalizar(registro: dict) -> dict:
     for uf in UFS:
         bloco = registro.setdefault("uf", {}).setdefault(uf, {})
         for campo in ("risco_projetado", "secas", "avisos_inmet", "fogo", "alertas_cemaden",
-                      "temperatura", "qualidade_ar"):
+                      "temperatura", "qualidade_ar", "temperatura_medida", "ar_medido"):
             bloco.setdefault(campo, None)
     # O catálogo do _formato também envelhece: campos declarativos novos entram sem tocar no resto.
     formato = registro.setdefault("_formato", {})
@@ -1015,6 +1182,12 @@ def coletar(registro: dict, camadas) -> dict:
         except (urllib.error.URLError, TimeoutError, OSError) as e:
             print(f"[aviso] {chave}: rede indisponível ({e.__class__.__name__}) — registro anterior mantido.")
             continue
+        except CredencialAusente as e:
+            # Não é falha: é decisão pendente. O status diz isso, e a página mostra lacuna
+            # declarada em vez de sugerir que a fonte está fora do ar.
+            registro["fontes"][chave].update({"status": "aguardando_credencial", "motivo": str(e)})
+            print(f"[aviso] {chave}: {e}")
+            continue
         except (ValueError, RuntimeError, json.JSONDecodeError) as e:
             print(f"[aviso] {chave}: resposta recusada ({e}) — registro anterior mantido.")
             continue
@@ -1061,6 +1234,14 @@ def coletar(registro: dict, camadas) -> dict:
                                               "fonte": chave, "documento": documento,
                                               "consultado_em": agora()}
                                              if lido else None)   # capital sem leitura fica nula: lacuna, nunca zero
+        # Camada de MEDIÇÃO: guarda a estação/monitor escolhido e a distância até a capital, para
+        # que a figura possa dizer ONDE mediu. Sem isso, "medição" viraria um rótulo sem endereço.
+        elif chave in ("openaq", "inmet_estacoes"):
+            campo = "ar_medido" if chave == "openaq" else "temperatura_medida"
+            for uf in UFS:
+                lido = payload["por_uf"].get(uf)
+                registro["uf"][uf][campo] = ({**lido, "fonte": chave, "documento": documento,
+                                              "consultado_em": agora()} if lido else None)
         elif chave == "monitor_secas":
             if payload.get("recurso"):
                 registro["fontes"][chave]["recurso"] = payload["recurso"]
@@ -1413,6 +1594,77 @@ def autoteste() -> int:
     _so_cess = agregar_alertas_por_municipio([], [_cess[0]])
     checar("CEMADEN: município só com encerramento não fica 'sob alerta'",
            _so_cess["3303906"]["cemaden"] == [] and len(_so_cess["3303906"]["cemaden_cessados"]) == 1)
+
+    # ---- camada de MEDIÇÃO: OpenAQ e estações do INMET (24/09/2026) ------
+    _caps = {"DF": {"uf": "DF", "lat": -15.7939, "lon": -47.8828},
+             "SP": {"uf": "SP", "lat": -23.5505, "lon": -46.6333}}
+    _locais = parse_openaq_locais({"results": [
+        {"id": 1, "name": "Perto de Brasília", "coordinates": {"latitude": -15.80, "longitude": -47.89},
+         "provider": {"name": "Rede X"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+        {"id": 2, "name": "Mais perto ainda", "coordinates": {"latitude": -15.795, "longitude": -47.883},
+         "provider": {"name": "Rede Y"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+        {"id": 3, "name": "Longe demais", "coordinates": {"latitude": -14.0, "longitude": -47.0},
+         "provider": {"name": "Rede Z"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+        {"id": 4, "name": "Sem PM2,5 em SP", "coordinates": {"latitude": -23.551, "longitude": -46.634},
+         "provider": {"name": "Rede W"}, "sensors": [{"parameter": {"name": "o3"}}]},
+    ]}, _caps)
+    checar("OpenAQ: escolhe o monitor MAIS PRÓXIMO da capital",
+           _locais["DF"]["id"] == 2 and _locais["DF"]["distancia_km"] < 1)
+    checar("OpenAQ: guarda a rede de origem, que o crédito exige",
+           _locais["DF"]["rede_de_origem"] == "Rede Y")
+    checar("OpenAQ: monitor além do teto de raio não representa a capital",
+           all(v["id"] != 3 for v in _locais.values()))
+    checar("OpenAQ: monitor sem PM2,5 não entra nesta figura", "SP" not in _locais)
+    checar("OpenAQ: rotula a natureza como medição, nunca como modelo",
+           _locais["DF"]["natureza"] == NATUREZA_MEDICAO)
+    checar("OpenAQ negativo: resposta vazia devolve vazio",
+           parse_openaq_locais({}, _caps) == {} and parse_openaq_locais({"results": []}, _caps) == {})
+
+    _est = parse_estacoes_inmet([
+        {"CD_ESTACAO": "A001", "DC_NOME": "BRASILIA", "SG_ESTADO": "DF", "CD_SITUACAO": "Operante",
+         "VL_LATITUDE": "-15.7893", "VL_LONGITUDE": "-47.9257"},
+        {"CD_ESTACAO": "A999", "DC_NOME": "MAIS PERTO EM PANE", "SG_ESTADO": "DF", "CD_SITUACAO": "Pane",
+         "VL_LATITUDE": "-15.7939", "VL_LONGITUDE": "-47.8828"},
+        {"CD_ESTACAO": "A701", "DC_NOME": "SAO PAULO - MIRANTE", "SG_ESTADO": "SP", "CD_SITUACAO": "Operante",
+         "VL_LATITUDE": "-23.4961", "VL_LONGITUDE": "-46.6200"},
+        {"CD_ESTACAO": "A555", "DC_NOME": "LONGE", "SG_ESTADO": "SP", "CD_SITUACAO": "Operante",
+         "VL_LATITUDE": "-22.0", "VL_LONGITUDE": "-47.0"},
+    ], _caps)
+    checar("INMET estações: estação em PANE não é escolhida, mesmo sendo a mais próxima",
+           _est["DF"]["codigo"] == "A001")
+    checar("INMET estações: acha capital cujo nome de estação NÃO é o nome da cidade (SAO PAULO - MIRANTE)",
+           _est["SP"]["codigo"] == "A701")
+    checar("INMET estações: estação além do teto de raio não representa a capital",
+           all(v["codigo"] != "A555" for v in _est.values()))
+    checar("INMET estações negativo: lista vazia devolve vazio",
+           parse_estacoes_inmet([], _caps) == {} and parse_estacoes_inmet(None, _caps) == {})
+
+    # A credencial vem SÓ do ambiente, e sem ela a fonte nem bate na porta.
+    _antes = {k: os.environ.pop(k, None) for k in ("OPENAQ_API_KEY", "INMET_API_TOKEN")}
+    try:
+        for _f in ("openaq", "inmet_estacoes"):
+            try:
+                coletar_fonte(_f)
+                checar(f"{_f}: sem credencial levanta CredencialAusente", False)
+            except CredencialAusente as e:
+                checar(f"{_f}: sem credencial levanta CredencialAusente, sem tocar a rede",
+                       FONTES[_f]["credencial"] in str(e))
+            except Exception as e:  # noqa: BLE001
+                checar(f"{_f}: sem credencial levanta CredencialAusente (veio {type(e).__name__})", False)
+        checar("credencial: lida do ambiente, nunca do repositório",
+               credencial_de("openaq") is None)
+        os.environ["OPENAQ_API_KEY"] = "chave-de-teste"
+        checar("credencial: encontra a chave quando o ambiente a tem",
+               credencial_de("openaq") == "chave-de-teste")
+        checar("credencial: fonte sem credencial declarada devolve None",
+               credencial_de("noaa_oni") is None)
+    finally:
+        os.environ.pop("OPENAQ_API_KEY", None)
+        for k, v in _antes.items():
+            if v is not None:
+                os.environ[k] = v
+    checar("esqueleto: a camada de medição nasce como lacuna nas 27 UFs",
+           all(esq["uf"][u]["temperatura_medida"] is None and esq["uf"][u]["ar_medido"] is None for u in UFS))
 
     if falhas:
         print(f"\n✗ AUTOTESTE: {len(falhas)} falha(s).")

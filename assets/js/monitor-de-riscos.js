@@ -164,6 +164,47 @@ desenharMapa('mapaAr', 'legAr',
    {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
 credito('boxAr', 'open_meteo_ar');
 
+/* CAMADA DE MEDIÇÃO (24/09/2026) — pontos de estação e de monitor sobre os dois mapas de modelo.
+   As duas fontes exigem credencial (OpenAQ v3 recusa com 401 sem chave; o endpoint de dados das
+   estações do INMET passou a exigir token). Enquanto a credencial não existir, a figura DIZ isso
+   na legenda, e nenhum ponto é desenhado: modelo e medição nunca compartilham a escala de cor, e
+   ausência de medição não é medição igual ao modelo. */
+(function camadaDeMedicao(){
+  const casos = [
+    {fonte: 'inmet_estacoes', legenda: 'legTemperatura', campo: 'temperatura_medida', svg: 'mapaTemperatura'},
+    {fonte: 'openaq', legenda: 'legAr', campo: 'ar_medido', svg: 'mapaAr'},
+  ];
+  casos.forEach(function(caso){
+    const f = fonteDe(caso.fonte);
+    const pontos = UFS.map(uf => [uf, (SINAIS.uf[uf] || {})[caso.campo]]).filter(par => par[1]);
+    const leg = document.getElementById(caso.legenda);
+    if (!leg) return;
+    if (!pontos.length) {
+      const motivo = f.status === 'aguardando_credencial'
+        ? 'medição: aguardando credencial da fonte'
+        : 'medição: sem coleta até o corte';
+      leg.insertAdjacentHTML('beforeend',
+        '<span><i style="background:' + MonitorMapas.cor('sem-dado') + '"></i>' + esc(motivo) + '</span>');
+      return;
+    }
+    const svg = d3.select('#' + caso.svg);
+    svg.append('g').selectAll('circle').data(pontos).join('circle')
+      .attr('cx', par => projection([par[1].coordenada.lon, par[1].coordenada.lat])[0])
+      .attr('cy', par => projection([par[1].coordenada.lon, par[1].coordenada.lat])[1])
+      .attr('r', 3.4).attr('fill', MonitorMapas.cor('branco'))
+      .attr('stroke', MonitorMapas.cor('abissal')).attr('stroke-width', 1.4)
+      .on('mouseenter', (evt, par) => showTip(
+        '<strong>' + esc(par[0]) + '</strong><br>' + esc(par[1].nome || '')
+        + '<br>' + esc(par[1].natureza) + ' · ' + esc(par[1].distancia_km) + ' km da capital'
+        + (par[1].rede_de_origem ? '<br>rede: ' + esc(par[1].rede_de_origem) : ''), evt))
+      .on('mousemove', (evt) => showTip(document.getElementById('mapTooltip').innerHTML, evt))
+      .on('mouseleave', hideTip);
+    leg.insertAdjacentHTML('beforeend',
+      '<span><i style="background:' + MonitorMapas.cor('branco') + ';border:1.4px solid '
+      + MonitorMapas.cor('abissal') + '"></i>' + pontos.length + ' ponto(s) de medição</span>');
+  });
+})();
+
 /* Linha-fato dos alertas: a contagem fica aqui, os alertas moram na Defesa civil. Só reescreve
    quando o arquivo carregou — sem ele, o texto estático do HTML permanece, sem número inventado. */
 (function linhaDeAlertas(){
