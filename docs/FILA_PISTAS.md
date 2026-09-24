@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 24/09/2026 · 420 pendente(s) · 15 decidida(s) · A=81 B=265 C=74
+Gerado em 24/09/2026 · 425 pendente(s) · 15 decidida(s) · A=81 B=270 C=74
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1176,7 +1176,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: A Prefeitura de Valença realizou, ... do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município....
   - juiz: portão automático: fonte não oficial
 
-## Fortaleza/CE — 4 pendente(s)
+## Cascavel/CE — 1 pendente(s)
+- `76376a0214` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Cascavel está preparada para enfrentar um “Super El Niño”? A ...
+  - url: https://www.instagram.com/reel/DZxKeajCt-W/
+  - trecho: Jun 19, 2026 ... ⚠️🌧️ CASCAVEL EM ALERTA! A Prefeitura acionou nesta sexta-feira (11) o plano de contingência diante da previsão de tempo severo para os ...
+  - juiz: portão automático: fonte não oficial
+
+## Fortaleza/CE — 5 pendente(s)
 - `0a8db47e79` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.opiniaoce.com.br/fortaleza/2026/08/28/calor-extremo-e-el-nino-mobilizam-orgaos-municipais-para-acoes-preventivas/
   - trecho: Aug 28, 2026 ... ... El Niño) e o Plano de Contingência (Plancon El Niño). Para o ... FORTALEZA-CE | CNPJ: 45.114.358/0001-83 (85) 98766-0192 - Rossi ...
@@ -1186,6 +1193,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `415d03ad94` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://corrivus.com.br/ceara/fortaleza/fortaleza-acoes-emergenciais-impactos-el-nino
   - trecho: Sep 8, 2026 ... Home / Ceará / Fortaleza / Cotidiano / Fortaleza anuncia pacote de ações contra impactos do El Niño ... O Plano de Contingência de Enfrentamento ...
+  - juiz: portão automático: fonte não oficial
+- `665aaf5ba3` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Fortaleza se prepara para enfrentar os impactos do El Niño ...
+  - url: https://www.instagram.com/reel/Dc4SGOJNAiW/
+  - trecho: Sep 4, 2026 ... Fortaleza se prepara para enfrentar os impactos do El Niño ... El Niño e do Plano de Contingência; Ampliação da rede de estações ...
   - juiz: portão automático: fonte não oficial
 - `f504be1f02` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/reel/DdCR-pNhPgT/
@@ -1315,6 +1327,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: ... Naviraí/MS. ...... 58. Tabela 30: Geração total de esgoto no horizonte de projeto ... •PLANO DE CONTINGÊNCIA E MERGÊNCIA. -Comunicar a Defesa Civil para ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+
+## Ponta Porã/MS — 3 pendente(s)
+- `0a6da9d7c2` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Ponta Porã capacita servidores contra impacto do El Niño na saúde
+  - url: https://msconecta.com.br/noticia/ponta-pora-capacita-servidores-contra-impacto-do-el-nino-na-saude
+  - trecho: 4 hours ago ... ... Ponta Porã e os municípios vizinhos saiam do encontro com um plano de contingência conjunto. Quem abriu a programação técnica foi Serafim ...
+- `23aecbdeda` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Ponta Porã discute resposta da saúde ao El Niño, mas ainda ...
+  - url: https://www.centraldoms.com.br/noticia/1489/campo-grande/nosso-ms/ponta-pora-discute-resposta-da-saude-ao-el-nino-mas-ainda-precisa-transformar-alerta-em-plano.html
+  - trecho: 5 hours ago ... Ponta Porã discute resposta da saúde ao El Niño, mas ainda precisa ... plano de contingência com ações, responsáveis, prazos e orçamento.
+  - juiz: portão automático: fonte não oficial
+- `2aef170bf8` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Ponta Porã capacita servidores sobre impactos do El Niño na saúde
+  - url: https://acritica.net/saude/ponta-pora-capacita-servidores-sobre-impactos-do-el-nino-na-saude/
+  - trecho: 3 hours ago ... Evento reúne profissionais da região de fronteira para discutir prevenção e resposta a mudanças climáticas Ponta Porã realiza capacitação ...
+  - juiz: portão automático: fonte não oficial
 
 ## Almeirim/PA — 2 pendente(s)
 - `ddb47cb55c` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
