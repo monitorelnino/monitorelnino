@@ -40,7 +40,14 @@ import json, re, pathlib, sys
 import numpy as np
 
 RAIZ = pathlib.Path(__file__).parent
-PESO_DOC = {"plano": 1.0, "plano_antigo": 0.7}  # Correção B (26/08/2026): "decreto" removido —
+# 24/09/2026 (§200): plano_antigo passa de 0,7 a 1,0 aqui também. Este dicionário serve a duas
+# coisas: como CONJUNTO de pertinência no motor (`k in PESO_DOC`, onde os valores não entram na
+# conta) e como PESO de verdade em analise_sensibilidade.py, no cálculo de `teto_ativo` — a
+# checagem de quais UFs estourariam o teto de 100%. Deixar 0,7 aqui depois que o §196 levou o
+# crédito real a 1,0 fazia a checagem de teto subestimar, e deixava no código um número que
+# contradizia a regra vigente: a próxima sessão leria 0,7 e concluiria que plano anterior vale
+# menos. Vale igual, e agora está escrito igual nos dois lugares.
+PESO_DOC = {"plano": 1.0, "plano_antigo": 1.0}  # Correção B (26/08/2026): "decreto" removido —
 # não é purga pontual de dado, é regra estrutural. Sem isto, um decreto novo achado pela busca
 # automática de segunda-feira (ou por contribuição de leitor) voltaria a pontuar 0,4 por registro,
 # desfazendo a Correção B sozinho a cada atualização. `k in PESO_DOC` nas linhas abaixo já basta
