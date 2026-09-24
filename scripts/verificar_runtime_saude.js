@@ -67,7 +67,13 @@ setTimeout(() => {
   teste("mapas do painel (dengue e chikungunya): 27 estados e legenda", ["mapaDesf", "mapaChik"].every(id => q(id).querySelectorAll("path").length === 27) && q("legDesfMapa").children.length >= 1 && q("legChikMapa").children.length >= 1);
   teste("dengue nas capitais: 27 pontos dentro do mapa (coordenadas pela malha IBGE)", (() => { const c = [...d.querySelectorAll("#mapaDengue circle")]; return c.length === 27 && c.every(x => +x.getAttribute("cx") > 0 && +x.getAttribute("cx") < 480 && +x.getAttribute("cy") > 0 && +x.getAttribute("cy") < 460); })());
   teste("sem acordeão escondendo desfecho, sem seletor de doença", !q("outrosDesfechos") && !q("selDoencaDesf") && !q("boxEmerg") && !q("boxRespostaSanitaria"));
-  teste("seções próprias: dengue, chikungunya, calor, respiratórias, diarreicas, na ordem, antes dos estados", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("heroSaude") < pos("dengue") && pos("dengue") < pos("chikungunya") && pos("chikungunya") < pos("calor") && pos("calor") < pos("respiratorias") && pos("respiratorias") < pos("diarreicas") && pos("diarreicas") < pos("estados") && pos("estados") < pos("estadual"); })());
+  teste("seções próprias: dengue, chikungunya, calor, respiratórias, diarreicas, na ordem, antes dos estados", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("heroSaude") < pos("dengue") && pos("dengue") < pos("chikungunya") && pos("chikungunya") < pos("calor") && pos("calor") < pos("respiratorias") && pos("respiratorias") < pos("diarreicas") && pos("diarreicas") < pos("estadual") && pos("estadual") < pos("estados"); })());
+  // 23/09/2026 (§191): a decisão editorial registrada é "cada desfecho em seção própria, ANTES
+  // dos estados", e ela continua asserida acima. O que mudou é a ordem interna dos dois painéis
+  // de estado, que nunca foi decisão registrada — o portão só fixava a ordem que existia. Os dois
+  // são de escala estadual; o que os separa é a função: #estadual responde "o que cada estado
+  // publicou" no agregado, e #estados deixa o leitor achar o seu (§26, BRASIL → ESTADO). A
+  // resposta agregada vem antes da busca individual.
   const MSAUDE = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
   teste("medidor de resposta sanitária: índice do dado (MSAUDE.resposta.indice), arte única, contagem na pílula", q("rsNum").textContent === MSAUDE.resposta.indice.toFixed(1).replace(".", ",") && !!d.querySelector("#contadorRespostaSaude .gauge-fill--resposta") && new RegExp(MSAUDE.resposta.emergencias + " emergência").test(q("rsBadge").textContent));
   teste("interpretação da resposta fora do medidor, com contagem e milhões", /emergência\(s\) sanitária\(s\) declarada\(s\) desde 29\/06\/2026/.test(q("interpRespostaSaude").textContent));
