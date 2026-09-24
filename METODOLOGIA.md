@@ -1112,3 +1112,40 @@ O painel "Calor" da página de Saúde mostrava **contagem de avisos do INMET** �
 A troca revelou um defeito que estava no ar desde que a figura foi escrita: o código filtrava avisos de calor lendo `a.lista` e `a.avisos` dentro de `avisos_inmet`, **campos que o agregado por UF nunca teve**. O filtro devolvia sempre lista vazia, e o mapa pintava **zero nos 27 estados todos os dias**, inclusive com aviso de calor em vigor; o cartão do Proteja-se dizia "Nenhum aviso de calor vigente" pela mesma razão. Zero silencioso é o pior defeito possível numa figura de risco, porque tem a forma de informação.
 
 O painel do MS **não publica API**: o endereço é função interna do aplicativo, com o caminho carimbado pelo build, de modo que o coletor o descobre a cada rodada e o valida **por conteúdo**, não por nome minificado. E, medido em 24/09/2026, esse endereço passa a responder `HTTP 200 com corpo vazio` depois de uma rajada de consultas — oito vezes em oito, também no navegador. Corpo vazio com 200 é **recusa** (§11, §186, §187), nunca "nenhum município em excesso de calor": sobe como falha, entra como lacuna declarada, e a seção diz ao leitor por que não há número.
+
+
+## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
+
+Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.
+
+### 42.1 Por que três camadas, e não uma
+
+A pergunta da editoria foi "quantos reais por habitante existem nos fundos de defesa civil de cada município". O **saldo do Fundo Municipal de Proteção e Defesa Civil não é dado centralizado**: existe só no portal ou na lei orçamentária de cada município, e muitos municípios não têm fundo. Perseguir só isso produziria um mapa quase vazio por muitos meses.
+
+Existe, porém, um dado irmão **centralizado para os 5.570**: a despesa na subfunção **06.182 (Defesa Civil)**, que todo município declara ao SICONFI na Declaração de Contas Anuais. Daí as três camadas:
+
+- **A — despesa na subfunção 182, todos os municípios.** Centralizada, anual, completa. É a que faz o mapa nascer cheio.
+- **B — o município tem fundo?** MUNIC/IBGE como camada declarada e a lei municipal que institui o fundo como documento primário.
+- **C — quanto há no fundo, por amostragem.** Capitais primeiro, depois os 313 do painel, depois os prioritários. Fila própria, prioridade baixa, sem disputar com a rotina dos planos.
+
+### 42.2 A subfunção 182 e suas duas limitações, que a legenda é obrigada a dizer
+
+**Ela soma preparação e resposta**, e a fonte não separa as duas. Um município que gastou tudo socorrendo uma enchente aparece igual a um que gastou tudo em plano e treinamento. Por isso a legenda pública traz, obrigatoriamente, "**inclui preparação e resposta**" — declarado no dado, exigido na página, e o portão reprova se sair de qualquer um dos dois.
+
+**Parte dos municípios lança defesa civil em outra subfunção** — drenagem (17.512), urbanismo (15.451), segurança pública (06.181). Por isso a classe se chama `sem_lancamento_182` e **não** "sem gasto em defesa civil": é ausência de lançamento *naquela* subfunção, e dizer mais do que isso seria conclusão que o dado não autoriza.
+
+### 42.3 Três classes de ausência, nenhuma delas zero
+
+`sem_lancamento_182` (entregou a DCA e não lançou ali) · `sem_declaracao` (não entregou o exercício) · `sem_coleta` (o Monitor ainda não consultou). Nenhuma tem valor por habitante, e o portão reprova se alguma tiver. A mediana publicada é calculada **só sobre quem tem lançamento**: incluir as ausências como zero rebaixaria a mediana com não-dado.
+
+E uma quarta armadilha, que o piloto das capitais produziu: **valor real pequeno não é zero**. Curitiba liquidou R$ 2.467,02 para 1,77 milhão de habitantes, o que arredondado a duas casas virava R$ 0,00 por habitante. O dado guarda seis casas e a exibição diz "menos de R$ 0,01". Arredondar para zero um valor que existe é o mesmo erro das classes de ausência, só mais difícil de ver.
+
+### 42.4 A exceção federativa do Distrito Federal
+
+O DF **não entrega DCA municipal porque não é município**: declara como estado. Classificá-lo como "não entregou" imputaria a ele uma falha que não existe, e o registro carrega a nota da natureza federativa.
+
+### 42.5 Forma da fonte, medida com rede
+
+Anexo `DCA-Anexo I-E`; a subfunção vem no campo `conta`, como "06.182 - Defesa Civil"; o campo `coluna` distingue empenhada, liquidada, paga e as duas de inscrição de restos a pagar, e a **liquidada** é a publicada, com as outras guardadas porque a diferença entre elas é informação. `id_ente` tem de ser o código IBGE exato, e consulta sem ele devolve zero itens: **não existe consulta em lote**, então são 5.570 chamadas, o que cabe na cadência anual da DCA. Cada registro guarda a URL consultada, a data e o hash da resposta.
+
+O cálculo é `despesa liquidada na subfunção 06.182 ÷ população do Censo 2022`, com a fórmula declarada no dado. A população é **sempre** a do Censo 2022, nunca a estimativa que o próprio SICONFI devolve — que fica guardada como contexto, e cuja diferença muda o número publicado: no Rio de Janeiro, R$ 0,47 por habitante pela estimativa do SICONFI contra R$ 0,50 pelo Censo.

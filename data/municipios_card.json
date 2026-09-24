@@ -1,10 +1,11 @@
 {
- "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado.",
+ "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-09-10",
  "total": 2187,
  "com_registro": 267,
  "com_imprensa": 103,
  "prioritarios": 2095,
+ "com_despesa_182": 27,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -68,7 +69,16 @@
    "documento": "Força-tarefa integrada + Programa 10 Passos",
    "url": null,
    "data": "07-08/2026",
-   "fonte": "Prefeitura de Porto Velho"
+   "fonte": "Prefeitura de Porto Velho",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.318573,
+    "liquidada": 146675.0,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "1100288": {
    "nome": "Rolim de Moura",
@@ -257,7 +267,16 @@
    "documento": "Plano de Ação para Contingência no abastecimento (Saerb) + plano de contingência amplo da Defesa Civil, apresentados 16/06/2026",
    "url": "https://www.riobranco.ac.gov.br/saerb/prefeitura-de-rio-branco-apresenta-plano-de-contingencia-para-garantir-abastecimento-de-agua-durante-estiagem-severa/",
    "data": "16/06/2026",
-   "fonte": "Prefeitura de Rio Branco (oficial)"
+   "fonte": "Prefeitura de Rio Branco (oficial)",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 40.925509,
+    "liquidada": 14927825.14,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "1200427": {
    "nome": "Rodrigues Alves",
@@ -557,7 +576,16 @@
      "veiculo": "plasticonews.org",
      "nivel": "B"
     }
-   ]
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 2.017792,
+    "liquidada": 4163808.07,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "1302702": {
    "nome": "Manicoré",
@@ -735,7 +763,16 @@
    "documento": "Plano de Estiagem + fiscalização de terrenos",
    "url": null,
    "data": "2026",
-   "fonte": "Prefeitura de Boa Vista"
+   "fonte": "Prefeitura de Boa Vista",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "1400159": {
    "nome": "Bonfim",
@@ -915,7 +952,16 @@
    "documento": "Plano Municipal de Enfrentamento ao Super El Niño 2026–2027 + Protocolo de Alerta e Enfrentamento ao Calor Extremo — EM ELABORAÇÃO (reunião técnica de 35 órgãos em 07/07/2026; coordenação Semma, operação Defesa Civil; tr",
    "url": null,
    "data": "07/07/2026",
-   "fonte": "Agência Belém (comunicação oficial da Prefeitura) reproduzida por O Liberal, RBTV, Roma News e Jornal Passaporte; achado"
+   "fonte": "Agência Belém (comunicação oficial da Prefeitura) reproduzida por O Liberal, RBTV, Roma News e Jornal Passaporte; achado",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.97093,
+    "liquidada": 2568887.9,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "1501501": {
    "nome": "Benevides",
@@ -1540,7 +1586,16 @@
    "documento": "Plano de Atendimento Emergencial – Estiagem (PAE 2026) — APRESENTADO em reunião da Defesa Civil municipal (Didec/GCMM) com mapeamento de risco e diagnóstico El Niño; publicação do documento não localizada; GT de transiçã",
    "url": null,
    "data": "26/08/2026",
-   "fonte": "Diário do Amapá (imprensa nomeada) reproduzindo apresentação oficial da Didec/GCMM; achado pela bateria negativa (§4.1.2"
+   "fonte": "Diário do Amapá (imprensa nomeada) reproduzindo apresentação oficial da Didec/GCMM; achado pela bateria negativa (§4.1.2",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "1600402": {
    "nome": "Mazagão",
@@ -1731,7 +1786,16 @@
    "documento": "Comitê PrevIncêndio (permanente)",
    "url": null,
    "data": "2026",
-   "fonte": "Prefeitura de Palmas"
+   "fonte": "Prefeitura de Palmas",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "1721208": {
    "nome": "Tocantinópolis",
@@ -2358,7 +2422,16 @@
    "documento": "Plano de Contingência (2024) + mapeamento 2026",
    "url": "https://www.saoluis.ma.gov.br/portal/noticias/0/3/2902/defesa-civil-de-sao-luis-conclui-mapeamento-de-areas-com-riscos-de-alagamentos",
    "data": "2024/2026",
-   "fonte": "Prefeitura de São Luís (oficial); plano de 2024 confirmado por apuração independente via LAI"
+   "fonte": "Prefeitura de São Luís (oficial); plano de 2024 confirmado por apuração independente via LAI",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.009536,
+    "liquidada": 1047671.42,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2111409": {
    "nome": "São Luís Gonzaga do Maranhão",
@@ -2742,7 +2815,16 @@
    "documento": "Planos de ação 2026 (chuvas + estiagem + incêndios)",
    "url": null,
    "data": "2026",
-   "fonte": "Prefeitura de Teresina (Semdef)"
+   "fonte": "Prefeitura de Teresina (Semdef)",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.066869,
+    "liquidada": 57928.57,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2211100": {
    "nome": "União",
@@ -2931,7 +3013,16 @@
      "veiculo": "corrivus.com.br",
      "nivel": "B"
     }
-   ]
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.402777,
+    "liquidada": 978215.0,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2304707": {
    "nome": "Granja",
@@ -3449,7 +3540,16 @@
    "documento": "Plano de Contingência — chuvas",
    "url": null,
    "data": "22/05/2026",
-   "fonte": "Prefeitura de Natal"
+   "fonte": "Prefeitura de Natal",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.081632,
+    "liquidada": 61330.02,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2408201": {
    "nome": "Nísia Floresta",
@@ -3780,7 +3880,16 @@
    "documento": "Plano de Contingência (período chuvoso)",
    "url": null,
    "data": "2026",
-   "fonte": "Prefeitura de João Pessoa"
+   "fonte": "Prefeitura de João Pessoa",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 3.13556,
+    "liquidada": 2614843.96,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2508307": {
    "nome": "Lagoa Seca",
@@ -4500,7 +4609,16 @@
    "documento": "Ação Inverno 2026 / Plano de Contingência Recife",
    "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-RECIFE-2026__final.pdf",
    "data": "23/03/2026",
-   "fonte": "Ação Inverno (oficial)"
+   "fonte": "Ação Inverno (oficial)",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2611705": {
    "nome": "Riacho das Almas",
@@ -4852,7 +4970,16 @@
    "documento": "Previne Maceió (5º ano)",
    "url": "https://maceio.al.gov.br/noticias/defesa-civil/defesa-civil-intensifica-acoes-preventivas-para-o-periodo-chuvoso-em-maceio",
    "data": "10/04/2026",
-   "fonte": "Prefeitura de Maceió"
+   "fonte": "Prefeitura de Maceió",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.193161,
+    "liquidada": 1142947.98,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2704401": {
    "nome": "Major Isidoro",
@@ -5076,7 +5203,16 @@
    "documento": "Plano de Contingenciamento (ed. 2024)",
    "url": null,
    "data": "2024",
-   "fonte": "Prefeitura de Aracaju"
+   "fonte": "Prefeitura de Aracaju",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2800407": {
    "nome": "Arauá",
@@ -6084,7 +6220,16 @@
    "documento": "Operação Chuva 2026 / PPDC (Codesal)",
    "url": "https://codesal.salvador.ba.gov.br/noticias/",
    "data": "03/2026",
-   "fonte": "Codesal (oficial)"
+   "fonte": "Codesal (oficial)",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "2927705": {
    "nome": "Santa Cruz Cabrália",
@@ -6484,7 +6629,16 @@
    "documento": "Revisão do Plano de Contingência 2026/2027 (treinamentos 17/08)",
    "url": "https://prefeitura.pbh.gov.br/obras-e-infraestruturadefesa-civil/plano-de-contingencia",
    "data": "17/08/2026",
-   "fonte": "Prefeitura de Belo Horizonte — página oficial do Plano Municipal de Gestão de Riscos"
+   "fonte": "Prefeitura de Belo Horizonte — página oficial do Plano Municipal de Gestão de Riscos",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 13.623817,
+    "liquidada": 31546766.55,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "3106309": {
    "nome": "Belo Oriente",
@@ -9045,7 +9199,16 @@
      "veiculo": "instagram.com",
      "nivel": "B"
     }
-   ]
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.925816,
+    "liquidada": 621786.3,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "3300100": {
    "nome": "Angra dos Reis",
@@ -9528,7 +9691,16 @@
    "documento": "Plano de Contingência para Chuvas Intensas",
    "url": "https://www.defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc",
    "data": "vigente",
-   "fonte": "Defesa Civil Estadual do RJ (oficial)"
+   "fonte": "Defesa Civil Estadual do RJ (oficial)",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.499964,
+    "liquidada": 3105485.95,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "3304706": {
    "nome": "Santo Antônio de Pádua",
@@ -10745,7 +10917,16 @@
    "documento": "Plano Preventivo de Chuvas de Verão (PPCV)",
    "url": "https://prefeitura.sp.gov.br/web/secretaria_executiva_de_mudancas_climaticas/participacao_social/conselhos_e_orgaos_colegiados/plano_preventivo_de_chuva_de_verao",
    "data": "26/08/2026",
-   "fonte": "Defesa Civil de São Paulo"
+   "fonte": "Defesa Civil de São Paulo",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 4.133298,
+    "liquidada": 47331403.95,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "3550407": {
    "nome": "São Pedro",
@@ -11157,7 +11338,16 @@
      "veiculo": "bandnewsfmcuritiba.com",
      "nivel": "B"
     }
-   ]
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.001391,
+    "liquidada": 2467.02,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "4107207": {
    "nome": "Dois Vizinhos",
@@ -12407,7 +12597,16 @@
    "documento": "Plano municipal em elaboração (alinhado aos 4 níveis de SC)",
    "url": null,
    "data": "06/2026",
-   "fonte": "Imprensa (Agora Floripa)"
+   "fonte": "Imprensa (Agora Floripa)",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.148869,
+    "liquidada": 79974.14,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "4205456": {
    "nome": "Forquilhinha",
@@ -14376,7 +14575,16 @@
      "veiculo": "correiodopovo.com.br",
      "nivel": "B"
     }
-   ]
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 3.212422,
+    "liquidada": 4280777.23,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "4315107": {
    "nome": "Porto Xavier",
@@ -14919,7 +15127,16 @@
    "documento": "Plancon consolidado não confirmado pela prefeitura",
    "url": null,
    "data": "—",
-   "fonte": "Prefeitura de Campo Grande"
+   "fonte": "Prefeitura de Campo Grande",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.408017,
+    "liquidada": 1264311.82,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "5002902": {
    "nome": "Cassilândia",
@@ -15193,7 +15410,16 @@
    "documento": "PLACON municipal em elaboração + Cuiabá Sem Queimadas",
    "url": null,
    "data": "2026",
-   "fonte": "Prefeitura de Cuiabá"
+   "fonte": "Prefeitura de Cuiabá",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "5103502": {
    "nome": "Diamantino",
@@ -15420,7 +15646,16 @@
    "documento": "Sem plano municipal próprio; coberto pelo PLANCON Estiagem estadual",
    "url": null,
    "data": "18/08/2026",
-   "fonte": "Governo de Goiás"
+   "fonte": "Governo de Goiás",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 0.019215,
+    "liquidada": 27616.92,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   },
   "5208806": {
    "nome": "Goianira",
@@ -15520,7 +15755,16 @@
    "documento": "Decreto nº 48.599/2026 (PPCIF/Operação Verde Vivo, recorrente desde 2016) — REGRA DO DF ativada (METODOLOGIA §14, 29/08/2026, primeira aplicação): mesmo instrumento conta para instrumento estadual E cobertura populaciona",
    "url": null,
    "data": "14/05/2026",
-   "fonte": "SINJ-DF / CBMDF"
+   "fonte": "SINJ-DF / CBMDF",
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_declaracao",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   }
   }
  }
 }

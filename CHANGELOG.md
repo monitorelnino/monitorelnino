@@ -33,7 +33,9 @@ E Brasília aparecia como "não entregou". O Distrito Federal **não entrega DCA
 
 **Portão.** `verificar_financiamento.py` ganhou a bateria (i): todo registro com fonte, exercício, data e hash; população **sempre** do Censo 2022, nunca a estimativa que o próprio SICONFI devolve; fórmula do R$/hab declarada no dado; conferência de que o valor publicado bate com a fórmula; e a trava central — nenhuma classe de ausência com valor por habitante. Três testes negativos novos: forçar zero num município sem lançamento, trocar a população pela do SICONFI e retirar a ressalva da página. Os arquivos de `municipios/` entraram na varredura de chave de API e de campo de autor, como os demais da pasta.
 
-**O que fica declarado.** As camadas **B** (existe fundo municipal?) e **C** (quanto há no fundo, por amostragem, capitais primeiro) seguem abertas, e com elas o seletor de camadas do mapa, o cartão da cidade e a seção da METODOLOGIA. A varredura dos 5.570 também: esta rodada cobre as 27 capitais, com fila própria e prioridade baixa, sem disputar com a rotina dos planos.
+**O cartão da cidade, a metodologia e os créditos.** O cartão de cada município ganhou uma linha de peso zero com a despesa na subfunção 182 — e três travas: a linha traz a ressalva e o peso declarado, a classe de ausência **nunca vira zero**, e despesa sozinha **não cria cartão** de município que não tinha nada a dizer. A `METODOLOGIA.md` ganhou a **§42**, com as três camadas, as duas limitações da subfunção, as classes de ausência, a exceção federativa do DF e a forma da fonte. Os Pesquisadores passaram a creditar SICONFI/Tesouro e o Censo 2022/IBGE.
+
+**O que fica declarado.** As camadas **B** (existe fundo municipal?) e **C** (quanto há no fundo, por amostragem, capitais primeiro) seguem abertas, e com elas o seletor de camadas do mapa. A varredura dos 5.570 também: esta rodada cobre as 27 capitais, com fila própria e prioridade baixa, sem disputar com a rotina dos planos.
 
 ## §206 · Temperatura, qualidade do ar e os alertas onde eles pertencem · 24/09/2026
 

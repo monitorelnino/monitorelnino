@@ -58,8 +58,12 @@ def _data_key(d):
         return "0"
 
 
-def montar(referencia, prioritarios, municipios, pistas):
-    """Pura. Devolve dict codigo_ibge(str) → card."""
+def montar(referencia, prioritarios, municipios, pistas, despesa_182=None):
+    """Pura. Devolve dict codigo_ibge(str) → card.
+
+    `despesa_182` é a camada A do dinheiro próprio do município (§207): peso ZERO, uma linha só,
+    com a classe quando não há valor. Ausente, o card simplesmente não tem a linha — e não tem
+    zero, que é o que um leitor leria como "não gasta nada"."""
     por_nome = {(m["nome"], m["uf"]): int(m["codigo_ibge"]) for m in referencia}
     prior = {int(m["codigo_ibge"]) for m in prioritarios}
     cards = {}
@@ -91,6 +95,26 @@ def montar(referencia, prioritarios, municipios, pistas):
         c.setdefault("imprensa", []).append({"titulo": (p.get("titulo") or p.get("trecho") or "")[:140].strip(),
                                              "url": p.get("url"), "data": p.get("data"), "veiculo": _host(p.get("url")),
                                              "nivel": p.get("nivel_confianca")})
+    # §207: a linha do dinheiro próprio. Peso zero, e as três classes de ausência viajam como
+    # classe, nunca como número — "sem lançamento na subfunção 182" NÃO é "não gasta em defesa
+    # civil", porque muitos municípios lançam defesa civil em drenagem, urbanismo ou segurança.
+    for cod, d in ((despesa_182 or {}).get("municipios") or {}).items():
+        try:
+            chave = int(cod)
+        except (TypeError, ValueError):
+            continue
+        c = cards.get(chave)
+        if c is None:
+            continue                     # só municípios que já têm card; a linha não cria card
+        c["defesa_civil_orcamento"] = {
+            "exercicio": d.get("exercicio"),
+            "classe": d.get("classe"),
+            "rs_hab": d.get("rs_hab"),
+            "liquidada": (d.get("valores") or {}).get("liquidada"),
+            "fonte": "SICONFI (Tesouro Nacional)",
+            "ressalva": "inclui preparação e resposta",
+            "peso_no_indice": "nenhum",
+        }
     for c in cards.values():
         if "imprensa" in c:
             c["imprensa"].sort(key=lambda x: _data_key(x.get("data")), reverse=True)
@@ -104,15 +128,19 @@ def gerar():
     prior = (ler("municipios_prioritarios.json") or {}).get("municipios", [])
     mun = ler("municipios.json") or []
     pis = (ler("pistas_imprensa.json") or {}).get("pistas", [])
-    cards = montar(ref, prior, mun, pis)
+    dsp = ler("financiamento/municipios/despesa_182.json") or {}
+    cards = montar(ref, prior, mun, pis, dsp)
     out = {"_governanca": ("Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. "
                            "`prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). "
                            "`imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o "
-                           "leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado."),
+                           "leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. "
+                           "`defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, "
+                           "peso ZERO; classe de ausência nunca vira zero."),
            "gerado_em": data_de_geracao(), "total": len(cards),
            "com_registro": sum(1 for c in cards.values() if c.get("categoria") != "nao_localizado"),
            "com_imprensa": sum(1 for c in cards.values() if c.get("imprensa")),
            "prioritarios": sum(1 for c in cards.values() if c.get("prioritario")),
+           "com_despesa_182": sum(1 for c in cards.values() if c.get("defesa_civil_orcamento")),
            "municipios": cards}
     gravar("municipios_card.json", out)
     return out
@@ -122,15 +150,36 @@ def autoteste():
     ref = [{"nome": "Bagé", "uf": "RS", "codigo_ibge": 4301602}, {"nome": "Ipixuna", "uf": "AM", "codigo_ibge": 1301803},
            {"nome": "Marília", "uf": "SP", "codigo_ibge": 3529005}, {"nome": "Sem Nada", "uf": "SP", "codigo_ibge": 3500001}]
     prior = [{"codigo_ibge": 1301803}]
+    dsp = {"municipios": {
+        "4301602": {"exercicio": 2025, "classe": "com_lancamento", "rs_hab": 1.23,
+                    "valores": {"liquidada": 100000.0}},
+        "1301803": {"exercicio": 2025, "classe": "sem_lancamento_182", "rs_hab": None, "valores": {}},
+        "9999999": {"exercicio": 2025, "classe": "com_lancamento", "rs_hab": 9.9, "valores": {"liquidada": 1.0}},
+    }}
     mun = [{"nome": "Bagé", "uf": "RS", "categoria": "plano", "documento": "Decreto x", "url": "https://bage.rs.gov.br/d", "data": "10/07/2026"}]
     pis = [{"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "pista — promover…", "nivel_confianca": "B", "titulo": "Marília prepara plano", "url": "https://www.marilianoticia.com.br/a", "data": "15/09/2026"},
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "pista — promover…", "nivel_confianca": "C", "titulo": "ruído", "url": "https://x", "data": "16/09/2026"},
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "rejeitada_humana", "nivel_confianca": "A", "titulo": "rejeitada", "url": "https://y", "data": "17/09/2026"},
            {"ibge": "4301602", "municipio": "Bagé", "uf": "RS", "status": "pista — promover…", "nivel_confianca": "A", "titulo": "Bagé lança plano", "url": "https://g1.globo.com/b", "data": "01/09/2026"}]
-    c = montar(ref, prior, mun, pis)
+    c = montar(ref, prior, mun, pis, dsp)
 
     def t_prioritario_sozinho_entra(): return c["1301803"]["prioritario"] is True and c["1301803"]["categoria"] == "nao_localizado"
     def t_sem_nada_nao_entra(): return "3500001" not in c
+
+    def t_despesa_182_entra_com_a_ressalva():
+        d = c["4301602"]["defesa_civil_orcamento"]
+        return (d["rs_hab"] == 1.23 and d["liquidada"] == 100000.0 and d["exercicio"] == 2025
+                and d["peso_no_indice"] == "nenhum" and "preparação e resposta" in d["ressalva"])
+
+    def t_despesa_182_ausencia_nao_vira_zero():
+        """Classe de ausência viaja como CLASSE, nunca como número. Um zero aqui seria lido como
+        'este município não gasta nada em defesa civil', que é conclusão que o dado não autoriza."""
+        d = c["1301803"]["defesa_civil_orcamento"]
+        return d["classe"] == "sem_lancamento_182" and d["rs_hab"] is None and d["liquidada"] is None
+
+    def t_despesa_182_nao_cria_card():
+        """Município que só tem despesa e nada mais não passa a existir no card por causa dela."""
+        return "9999999" not in c
     def t_registro_e_tag(): return c["4301602"]["categoria"] == "plano" and c["4301602"]["prioritario"] is False and c["4301602"]["url"]
     def t_imprensa_so_A_B_pendentes(): return [x["titulo"] for x in c["3529005"]["imprensa"]] == ["Marília prepara plano"] and c["3529005"]["categoria"] == "nao_localizado"
     def t_imprensa_nao_vira_categoria(): return c["3529005"].get("categoria") == "nao_localizado"   # peso zero, por construção
@@ -163,6 +212,9 @@ def autoteste():
         "imprensa nunca vira categoria (peso zero por construção)": t_imprensa_nao_vira_categoria,
         "veículo = host sem www": t_veiculo_sem_www,
         "município com registro mantém a pista como proveniência": t_registro_mantem_imprensa_como_proveniencia,
+        "§207 despesa na 182 entra no card com a ressalva e peso zero": t_despesa_182_entra_com_a_ressalva,
+        "§207 classe de ausência nunca vira zero no card": t_despesa_182_ausencia_nao_vira_zero,
+        "§207 despesa sozinha não cria card de município": t_despesa_182_nao_cria_card,
     })
 
 
