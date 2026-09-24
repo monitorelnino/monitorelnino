@@ -9,6 +9,32 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §203 · A leitura dos 82, e os quatro defeitos que a exigência de citar denunciou · 24/09/2026
+
+Classe **coleta e instrumento**. Nada aplicado: `classificar_planos_municipais.py` escreve um arquivo de revisão, e a promoção é R7.
+
+**O que foi feito.** Dos 122 planos municipais no banco, **82 têm texto preservado**. Cada um foi lido por um classificador que propõe a classe da escada do §202 e **é obrigado a citar o trecho que sustenta a proposta**. Resultado: **8 propostas e 74 abstenções**.
+
+Oito de oitenta e dois parece pouco. É o número honesto, e chegar a ele custou quatro correções — todas descobertas pela mesma exigência, a de citar.
+
+**Defeito 1: o sinal vinha da prosa do corpo.** A primeira versão varria o texto inteiro. Vitória saiu como "recorrente" por uma frase sobre óbitos *"computados todos os anos, no período chuvoso"*, e três PLANCONs capixabas saíram como "readaptado" por *"manter registro **atualizado** sobre danos humanos"* — uma instrução **dentro** do plano, não prova de que o plano foi atualizado. O tipo de um instrumento se declara no título e na abertura, não numa linha da página 40. É a régua do §182 (texto declarativo) e a do §180 (o ato tem de se apresentar como tal). Passou a ler só a **zona de identidade**.
+
+**Defeito 2: o robô classificava a própria descrição.** A correção anterior incluiu na zona de identidade o campo `documento` do banco — e **71 de 82** viraram "readaptado", porque esse campo diz "PLANCON edição 2025". Só que esse rótulo foi escrito **pelo Monitor**, não pelo documento. O robô concordava consigo mesmo e chamava isso de evidência. O campo saiu da pontuação e ficou só como contexto para o humano.
+
+**Defeito 3: o ano do ciclo alimentava duas classes ao mesmo tempo.** "2026/2027" pontuava para *novo* e era exigido por *readaptado*, então "atualização do plano para 2026/2027" empatava consigo mesma e caía em abstenção. Quem distingue criar de atualizar é o **verbo**, não o ano — o ano passou a valer pouco, e "El Niño" e "ENOS", muito.
+
+**Defeito 4, o pior: `enos\b` casava dentro de "m<u>enos</u>".** Sem limite de palavra à esquerda, a sigla pegava qualquer palavra terminada em "enos" — menos, terrenos, plenos. Foi assim que um parágrafo sobre ocupação de moradia em Afonso Cláudio recebeu três pontos de "dedicado ao El Niño". Sigla curta sem âncora pega pedaço de palavra comum, e **o erro só apareceu porque a proposta é obrigada a citar**: a citação não tinha nada a ver com El Niño, e foi isso que denunciou.
+
+**Uma correção de método, no meio do caminho.** A citação guardava o **primeiro** sinal que casava, não o mais forte — de modo que o revisor podia conferir uma frase fraca enquanto o ponto vinha de outra. Citação que não corresponde ao que pesou é pior do que citação nenhuma: faz o humano conferir a frase errada e concordar com uma conclusão que ninguém verificou. Passou a mostrar o sinal de maior peso.
+
+**A régua de abstenção.** Sinal ausente, ou duas classes com força parecida (margem menor que 2), devolvem `indeterminado` — e `indeterminado` **mantém o registro onde está, valendo 1,00**. O robô não classifica no escuro, e "não sei" nunca vira nota. Das 82 leituras, 74 terminaram assim, e isso não é falha do instrumento: é ele funcionando.
+
+**O que as 8 propostas dizem.** Cinco `plano_readaptado` e três `plano_recorrente`, todas no Espírito Santo — que é onde há repositório estadual e, portanto, onde há documento preservado para ler. As três recorrentes se sustentam em texto do próprio documento: *"sendo revisado anualmente"* em Castelo e Santa Leopoldina, e *"PMPDC — Vitória-ES Verão 2024/2025"* em Vitória. Nenhuma foi aplicada.
+
+**Onze casos no autoteste**, entre eles os quatro defeitos acima virados em trava: prosa de corpo não classifica, rótulo do banco não pontua, "menos" não casa com ENOS, e abstenção não inventa citação.
+
+**O limite, declarado.** Sobram **40 planos sem texto preservado** — para esses não há o que ler, e nenhuma proposta é possível sem antes extrair o documento. E o classificador continua sendo um proponente: ele lê a abertura, não o plano inteiro, e um documento cujo título diz "verão" mas cujo corpo institui resposta ao El Niño existe. Por isso cada proposta carrega a citação e a classe concorrente — para que a leitura humana confira a **evidência**, e não a conclusão.
+
 ## §202 · A escada dos estados chega ao município · 24/09/2026
 
 Classe **governança com efeito em nota** — mas de efeito **zero na aplicação**, e isso é o ponto.
