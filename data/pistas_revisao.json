@@ -1,10 +1,10 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-25",
- "total_pistas": 463,
+ "total_pistas": 464,
  "total_municipios": 198,
  "por_nivel": {
-  "A": 86,
+  "A": 87,
   "B": 288,
   "C": 89
  },
@@ -3245,6 +3245,72 @@
      "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
      "trecho": "8 hours ago ... Bauru, SP. Dólar. R$ 5,19. Euro. R$ 5,91. Peso Arg. R$ 0,00 · Tecnologia ... Resumindo: plano de contingência, população das áreas de risco ...",
      "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "5208707",
+   "municipio": "Goiânia",
+   "uf": "GO",
+   "melhor_nivel": "A",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 1,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "8c33d902f4",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://sme.goiania.go.gov.br/site/index.php/institucional/ultimas-noticias/3282-orientacoes-el-nino",
+     "titulo": "Orientações Fenômeno EL NINO - Goiânia - SME",
+     "trecho": "3 days ago ... ... Plano de Contingência Fenômeno EL NINO e Riscos Climáticos Associados 2026 ... © 2025 Prefeitura de Goiânia. Todos os direitos reservados.",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7b81fc2e37",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/5208707/2026-07-24/3edf420cef024afe1f07f6dcae0c8b8aed71ec01.pdf",
+     "titulo": null,
+     "trecho": "contratados.\n\n13.3. Produto obrigatório\n\nA proposta deverá apresentar Matriz de Riscos contendo, no mínimo:\n\nI – descrição do risco;\n\nII – causa provável;\n\nIII – probabilidade;\n\nIV – impacto;\n\nV – nível de risco;\n\nVI – medida preventiva;\n\nVII – plano de contingência;\n\nVIII – responsável pelo tratame",
+     "data": "24/07/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3dbff817c3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/5208707/2026-08-12/92a375a415f1751fe37c697e62d361237cffda2f.pdf",
+     "titulo": null,
+     "trecho": "competências das unidades administrativas e dos colegiados envolvidos, em\nconformidade com a Resolução CMN nº 5.272/2025 e a Portaria MTP nº 1.467/2022. Destacou, ainda, como recomendação\npara futura revisão do procedimento, a inclusão expressa do plano de contingência previsto na regulamentação vig",
+     "data": "12/08/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -6978,54 +7044,6 @@
      "titulo": "EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...",
      "trecho": "6 days ago ... ... Plano de Contingência para chuvas intensas, além da emissão de ... saúde relacionadas ao El Niño 2026-2027. O documento prevê ações ...",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "5208707",
-   "municipio": "Goiânia",
-   "uf": "GO",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "7b81fc2e37",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "texto_falso_positivo_provavel"
-     ],
-     "origem": "querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/5208707/2026-07-24/3edf420cef024afe1f07f6dcae0c8b8aed71ec01.pdf",
-     "titulo": null,
-     "trecho": "contratados.\n\n13.3. Produto obrigatório\n\nA proposta deverá apresentar Matriz de Riscos contendo, no mínimo:\n\nI – descrição do risco;\n\nII – causa provável;\n\nIII – probabilidade;\n\nIV – impacto;\n\nV – nível de risco;\n\nVI – medida preventiva;\n\nVII – plano de contingência;\n\nVIII – responsável pelo tratame",
-     "data": "24/07/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3dbff817c3",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/5208707/2026-08-12/92a375a415f1751fe37c697e62d361237cffda2f.pdf",
-     "titulo": null,
-     "trecho": "competências das unidades administrativas e dos colegiados envolvidos, em\nconformidade com a Resolução CMN nº 5.272/2025 e a Portaria MTP nº 1.467/2022. Destacou, ainda, como recomendação\npara futura revisão do procedimento, a inclusão expressa do plano de contingência previsto na regulamentação vig",
-     "data": "12/08/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]

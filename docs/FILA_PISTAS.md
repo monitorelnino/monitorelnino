@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 25/09/2026 · 448 pendente(s) · 15 decidida(s) · A=84 B=286 C=78
+Gerado em 25/09/2026 · 449 pendente(s) · 15 decidida(s) · A=85 B=286 C=78
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -118,6 +118,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Diário oficial de 2026-07-29
   - url: https://data.queridodiario.ok.org.br/3205309/2026-07-29/a7f158e2d5e7fd975935d29393b6f819beea151d.pdf
   - trecho: vagas para os 21 km, 42 km, Desafio 5 + 21 km e Maratoninha Kids já estejam esgotadas. SERVIÇO Maratona de Vitória 2026 29 e 30 de agosto Praça do Papa, Enseada do Suá Inscrições: www.ticketsports.com.br ou www.maratonad
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Goiânia/GO — 3 pendente(s)
+- `8c33d902f4` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Orientações Fenômeno EL NINO - Goiânia - SME
+  - url: https://sme.goiania.go.gov.br/site/index.php/institucional/ultimas-noticias/3282-orientacoes-el-nino
+  - trecho: 3 days ago ... ... Plano de Contingência Fenômeno EL NINO e Riscos Climáticos Associados 2026 ... © 2025 Prefeitura de Goiânia. Todos os direitos reservados.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `7b81fc2e37` · nível **B** (3 pts) · querido_diario · DUVIDA · **LEI Nº 11.686**, 24/07/2026
+  - url: https://data.queridodiario.ok.org.br/5208707/2026-07-24/3edf420cef024afe1f07f6dcae0c8b8aed71ec01.pdf
+  - trecho: contratados.  13.3. Produto obrigatório  A proposta deverá apresentar Matriz de Riscos contendo, no mínimo:  I – descrição do risco;  II – causa provável;  III – probabilidade;  IV – impacto;  V – nível de risco;  VI – m
+  - ⚠ texto_falso_positivo_provavel
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `3dbff817c3` · nível **B** (3 pts) · querido_diario · DUVIDA · **Portaria nº 012**, 2026
+  - url: https://data.queridodiario.ok.org.br/5208707/2026-08-12/92a375a415f1751fe37c697e62d361237cffda2f.pdf
+  - trecho: competências das unidades administrativas e dos colegiados envolvidos, em conformidade com a Resolução CMN nº 5.272/2025 e a Portaria MTP nº 1.467/2022. Destacou, ainda, como recomendação para futura revisão do procedime
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Fronteira/MG — 5 pendente(s)
@@ -1312,17 +1328,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://agroempresario.com/publicacion/120391/gildo-insfran-anticipa-a-formosa-a-el-nino-con-un-plan-especial/
   - trecho: Formosa presentó un plan de contingencia ante el posible impacto del fenómeno El Niño, con medidas preventivas para responder a lluvias intensas y eventuales crecidas de los ríos Pilcomayo, Bermejo y Paraguay.
   - juiz: portão automático: fonte não oficial
-
-## Goiânia/GO — 2 pendente(s)
-- `7b81fc2e37` · nível **B** (3 pts) · querido_diario · DUVIDA · **LEI Nº 11.686**, 24/07/2026
-  - url: https://data.queridodiario.ok.org.br/5208707/2026-07-24/3edf420cef024afe1f07f6dcae0c8b8aed71ec01.pdf
-  - trecho: contratados.  13.3. Produto obrigatório  A proposta deverá apresentar Matriz de Riscos contendo, no mínimo:  I – descrição do risco;  II – causa provável;  III – probabilidade;  IV – impacto;  V – nível de risco;  VI – m
-  - ⚠ texto_falso_positivo_provavel
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `3dbff817c3` · nível **B** (3 pts) · querido_diario · DUVIDA · **Portaria nº 012**, 2026
-  - url: https://data.queridodiario.ok.org.br/5208707/2026-08-12/92a375a415f1751fe37c697e62d361237cffda2f.pdf
-  - trecho: competências das unidades administrativas e dos colegiados envolvidos, em conformidade com a Resolução CMN nº 5.272/2025 e a Portaria MTP nº 1.467/2022. Destacou, ainda, como recomendação para futura revisão do procedime
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Caxias/MA — 3 pendente(s)
 - `7e83fdc810` · nível **B** (5 pts) · busca_web · EX_ANTE · data 26/04/2026 (do trecho)
