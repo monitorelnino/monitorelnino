@@ -1,10 +1,10 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-25",
- "total_pistas": 441,
- "total_municipios": 196,
+ "total_pistas": 442,
+ "total_municipios": 197,
  "por_nivel": {
-  "A": 83,
+  "A": 84,
   "B": 273,
   "C": 85
  },
@@ -3834,6 +3834,38 @@
      "titulo": "Vila Velha apresenta plano de contingência com foco no El Niño ...",
      "trecho": "Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.",
      "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3127008",
+   "municipio": "Fronteira",
+   "uf": "MG",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "c4f4252469",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.diariodafronteira.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "Por Diário da Fronteira Em 24/09/2026 19:38. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Falta aplicá-las. “Antes de El Niño, o ...",
+     "data": "25/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
