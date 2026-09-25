@@ -940,6 +940,31 @@ def _gravar_livro(livro):
         descarregar_lote_livro()
 
 
+JANELA_FONTES = 12      # quantas consultas DISTINTAS cada município guarda no livro
+
+
+def janela_de_fontes(entradas) -> list:
+    """As últimas `JANELA_FONTES` consultas DISTINTAS (fonte, dia). Função pura.
+
+    25/09/2026, medido: a janela era das últimas 12 ENTRADAS, e 38.434 delas eram repetição da
+    mesma fonte no mesmo dia — cada município guardava 12 registros para apenas 5 ou 6 consultas
+    distintas. `coletar_s2id` marca os 5.571 municípios a cada rodada, e roda mais de uma vez por
+    dia; quatro entradas idênticas empurravam para fora do arquivo a consulta ao diário municipal.
+    Foi o que fez 1.896 municípios voltarem a aparecer como pendentes depois de consultados.
+
+    Isto NÃO contradiz a regra de nunca deduplicar o log: são arquivos com perguntas diferentes.
+    O log responde "quantas tentativas houve" — e duas tentativas iguais em dias diferentes são
+    duas tentativas, que contam. Este livro responde "que fontes foram consultadas, e quando" —
+    e a mesma fonte no mesmo dia, repetida, não acrescenta resposta nenhuma. A entrada que fica
+    é a ÚLTIMA de cada par, porque é ela que traz o resultado mais recente."""
+    por_chave = {}
+    for e in entradas or []:
+        por_chave[(e.get("fonte"), e.get("data"))] = e      # a última de cada par vence
+    distintas = list(por_chave.values())
+    distintas.sort(key=lambda e: e.get("data") or "")        # estável: empate mantém a ordem
+    return distintas[-JANELA_FONTES:]
+
+
 def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "consultada"):
     """Registra que `fonte` foi consultada para cada município em `ibges`, com o nível
     que essa fonte confere (§2.2). Nunca rebaixa um nível já alcançado."""
@@ -951,7 +976,7 @@ def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "con
         m = livro["municipios"].setdefault(cod, {"nivel_verificacao": "nao_verificado",
                                                   "ultima_verificacao": None, "fontes": []})
         m["fontes"].append({"fonte": fonte, "data": hoje(), "resultado": resultado})
-        m["fontes"] = m["fontes"][-12:]
+        m["fontes"] = janela_de_fontes(m["fontes"])
         if ordem[nivel] > ordem[m["nivel_verificacao"]]:
             m["nivel_verificacao"] = nivel
         m["ultima_verificacao"] = hoje()

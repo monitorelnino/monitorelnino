@@ -1241,3 +1241,15 @@ Daí duas regras.
 
 **Corolário sobre testes.** O teste que guardava esse vocabulário lia o **texto** da função procurando a palavra, e reprovou quando a lista virou constante — sem que nada tivesse mudado de comportamento. Teste que lê código-fonte serve para regra estrutural ("nenhum script escreve neste arquivo"); para regra de comportamento, o teste chama a função. Confundir os dois produz reprovação falsa na refatoração e, pior, aprovação falsa quando o texto continua lá e o comportamento mudou.
 
+## 46. Livro-razão e janela: dois arquivos, duas perguntas, duas regras (25/09/2026)
+
+O projeto tem uma regra forte e bem estabelecida: **o log de buscas nunca se deduplica**. Duas execuções idênticas em dias diferentes são duas tentativas reais, e uma união por conteúdo já apagou quase 3.000 delas em 23/09/2026. A regra continua valendo integralmente.
+
+Ela vale para o log **porque o log responde a uma pergunta de contagem**: *quantas tentativas houve, quando, com que resultado*. É livro-razão: só cresce, e cada linha é um evento.
+
+O `fontes_consultadas.json` parece o mesmo arquivo e não é. Ele responde a outra pergunta — *que fontes foram consultadas para este município, e quando* — e guarda uma **janela** das últimas consultas, não o histórico inteiro. Nessa pergunta, a mesma fonte no mesmo dia, repetida, não acrescenta resposta nenhuma: só ocupa vaga.
+
+Confundir os dois custou caro, e o caso está no `CHANGELOG.md` §216: a janela de doze entradas guardava, na prática, cinco ou seis consultas distintas, porque um coletor marca os 5.571 municípios a cada rodada e roda mais de uma vez por dia. As repetições empurraram para fora a consulta ao diário municipal, e **1.896 municípios já consultados voltaram a aparecer como pendentes** — enquanto o log, corretamente, dizia que todos os 5.571 tinham sido consultados.
+
+Daí a regra: **a janela guarda consultas distintas; o livro-razão guarda eventos.** E o corolário prático: quando dois arquivos respondem à mesma pergunta e discordam, o livro-razão tem precedência — ele é o registro do que aconteceu, e a janela é derivada dele.
+

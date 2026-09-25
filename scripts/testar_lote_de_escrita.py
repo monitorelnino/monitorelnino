@@ -148,6 +148,46 @@ def t_livro_fato_municipal_tambem_entra_no_lote():
         return durante == 0 and livro["municipios"]["1100001"]["decreto_reconhecido"] is True
 
 
+def t_janela_guarda_consultas_distintas():
+    """25/09/2026: a janela do livro guarda as 12 consultas DISTINTAS (fonte, dia), não as 12
+    últimas ENTRADAS. Medido antes do conserto: 38.434 entradas repetidas, e cada município
+    guardando 12 registros para apenas 5 ou 6 consultas distintas."""
+    e = [{"fonte": "A", "data": "2026-09-24", "resultado": "primeiro"},
+         {"fonte": "A", "data": "2026-09-24", "resultado": "ultimo"},
+         {"fonte": "B", "data": "2026-09-25", "resultado": "x"}]
+    r = cb.janela_de_fontes(e)
+    return (len(r) == 2 and r[0]["resultado"] == "ultimo"   # a última de cada par vence
+            and cb.janela_de_fontes([]) == [] and cb.janela_de_fontes(None) == [])
+
+
+def t_repeticao_nao_expulsa_consulta_antiga():
+    """O defeito em uma frase: quatro marcações idênticas da mesma fonte no mesmo dia empurravam
+    para fora do arquivo a consulta ao diário municipal. Foi o que fez 1.896 municípios voltarem
+    a aparecer como pendentes depois de consultados."""
+    antiga = {"fonte": "Querido Diário (diário municipal)", "data": "2026-09-25", "resultado": "ok"}
+    entradas = [antiga] + [{"fonte": "DOU/SEDEC", "data": "2026-09-25", "resultado": "n"}
+                           for _ in range(30)]
+    r = cb.janela_de_fontes(entradas)
+    return any(x["fonte"].startswith("Querido Diário") for x in r) and len(r) == 2
+
+
+def t_teto_da_janela_vale_para_distintas():
+    """Com mais de 12 consultas distintas, ficam as 12 mais recentes — o teto continua existindo."""
+    entradas = [{"fonte": f"f{i}", "data": f"2026-09-{i:02d}", "resultado": "x"} for i in range(1, 21)]
+    r = cb.janela_de_fontes(entradas)
+    return len(r) == cb.JANELA_FONTES and r[-1]["fonte"] == "f20" and r[0]["fonte"] == "f9"
+
+
+def t_o_log_nao_deduplica_e_isso_e_proposital():
+    """O contraste que dá sentido à regra acima: no LOG, duas execuções iguais são duas tentativas
+    reais e contam — deduplicar ali já apagou quase 3.000 execuções em 23/09. São arquivos com
+    perguntas diferentes: 'quantas tentativas houve' contra 'que fontes foram consultadas'."""
+    with _Cofre() as c:
+        for _ in range(5):
+            cb.log_busca("DOM", 1, ["x"], "consultado sem achado", resultados="idêntico")
+        return _execucoes(c) == 5
+
+
 if __name__ == "__main__":
     sys.exit(rodar_autoteste({
         "log sem lote: uma gravação por chamada (comportamento antigo intacto)": t_log_sem_lote_grava_a_cada_chamada,
@@ -159,4 +199,8 @@ if __name__ == "__main__":
         "§212 livro: o teto descarrega no caminho e nada se perde": t_livro_nada_se_perde_no_teto,
         "livro: nível de verificação nunca rebaixa, nem com lote aberto": t_livro_nivel_nunca_rebaixa_nem_com_lote,
         "livro: fato municipal também entra no lote": t_livro_fato_municipal_tambem_entra_no_lote,
+        "§216 a janela do livro guarda consultas DISTINTAS, não entradas": t_janela_guarda_consultas_distintas,
+        "§216 repetição da mesma fonte no dia não expulsa consulta de outra fonte": t_repeticao_nao_expulsa_consulta_antiga,
+        "o teto da janela continua valendo para as consultas distintas": t_teto_da_janela_vale_para_distintas,
+        "contraste: o log NÃO deduplica, e isso é proposital": t_o_log_nao_deduplica_e_isso_e_proposital,
     }))

@@ -9,6 +9,23 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §216 · O livro guardava doze registros para cinco consultas, e isso apagava a varredura · 25/09/2026
+
+Classe **correção de coleta**. Nenhum número público muda; o que muda é o site saber o que já consultou.
+
+**A pergunta que revelou.** Terminada a varredura, a conferência foi direta: cada município foi consultado ao menos uma vez? O **log** — que é o livro-razão, só cresce e nunca se deduplica — diz que sim, **5.571 códigos IBGE distintos** com consulta ao diário dentro do ciclo. Mas o **livro de fontes consultadas**, que é de onde o coletor tira a fila de pendentes, dizia que **1.896 continuavam pendentes**. Dois arquivos, duas respostas.
+
+**Quem estava errado era o livro, e por um detalhe de desenho.** Ele guarda, por município, as últimas **doze entradas** — uma janela, não um histórico. Medido: das doze, apenas **cinco ou seis eram consultas distintas**; havia **38.434 entradas repetidas** no arquivo inteiro. A causa é boa e vira defeito na escala: `coletar_s2id` marca os 5.571 municípios a cada rodada, e roda mais de uma vez por dia, então quatro marcações idênticas de "DOU/SEDEC (via MIDR) em 24/09" ocupavam quatro das doze vagas — e empurravam para fora justamente a consulta ao diário municipal, feita uma vez só.
+
+**O conserto.** A janela passa a guardar as doze consultas **distintas** (fonte, dia), ficando com a entrada mais recente de cada par. Não é dedupe de conteúdo — é a distinção entre dois arquivos com perguntas diferentes, e ela merece ficar escrita:
+
+- o **log** responde *quantas tentativas houve*. Duas execuções iguais em dias diferentes são duas tentativas reais e contam; deduplicar ali já apagou quase 3.000 execuções em 23/09, e continua proibido.
+- o **livro** responde *que fontes foram consultadas, e quando*. A mesma fonte no mesmo dia, repetida, não acrescenta resposta nenhuma — só gasta vaga.
+
+Refeito o arquivo com a regra nova, a janela passou a cobrir de 11/09 a 25/09 no lugar de só 23/09 a 25/09, e as duas respostas voltaram a bater: **5.571 de 5.571 com o diário municipal consultado no ciclo, zero pendentes**.
+
+Quatro casos no autoteste, um deles o contraste que dá sentido à regra: o log continua **não** deduplicando.
+
 ## §215 · A quebra de linha vinha da fonte, e a normalização estava no lugar errado · 25/09/2026
 
 Classe **integridade de evidência**. Nenhum número muda.
