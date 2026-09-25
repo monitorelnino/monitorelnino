@@ -1109,6 +1109,26 @@ def _buscar_com_ritmo(url: str, tentativas: int = 4) -> str:
     raise RuntimeError("inalcançável")
 
 
+CARIMBO_CLIMA = {"tmax": "lido_tempo", "pm25": "lido_ar"}
+
+
+def precisa_ler(registro_do_municipio, campo: str, hoje: str, so_faltantes: bool = False) -> bool:
+    """Este município precisa ser consultado para esta variável? Função pura.
+
+    São duas rodadas diferentes, e confundi-las foi o defeito de 25/09/2026:
+      · RENOVAR (padrão): precisa ler quem não tem o valor OU cujo valor é de outro dia. É o que
+        a rotina diária faz, alternando a variável pelo dia, porque o teto da fonte não deixa
+        renovar as duas no mesmo dia.
+      · PREENCHER (`--preencher`): precisa ler só quem NUNCA teve leitura. Serve para fechar a
+        cobertura nacional sem gastar o teto renovando o que já está lido.
+    Sem a data, a segunda rodada deixava o valor de ontem no lugar e ainda assim carimbava o
+    arquivo com a data de hoje — o mapa diria "coleta de hoje" mostrando previsão de ontem."""
+    v = registro_do_municipio or {}
+    if campo not in v:
+        return True
+    return (not so_faltantes) and v.get(CARIMBO_CLIMA[campo]) != hoje
+
+
 def coletar_clima_municipal(args) -> int:
     """Temperatura e PM2,5 para TODOS os municípios, em lotes de coordenadas, com ritmo.
 
@@ -1117,6 +1137,11 @@ def coletar_clima_municipal(args) -> int:
     diário do plano gratuito: ele conta por localidade, e 5.570 × 2 variáveis = 11.140 passa dos
     10 mil. Por isso as duas variáveis são coletadas SEPARADAMENTE (`--apenas tempo|ar`) e o
     registro é retomável: município já lido hoje não é pedido de novo.
+
+    Duas rodadas diferentes, e a diferença importa: sem argumento, RENOVA a variável (é o que a
+    rotina diária faz, alternando a variável pelo dia); com `--preencher`, só busca município que
+    NUNCA teve leitura — serve para completar a cobertura nacional sem gastar o teto do dia
+    renovando o que já está lido. Cada leitura carrega a data em que foi feita.
 
     Grava parcial a cada dez lotes: uma varredura nacional não pode depender de terminar."""
     import time
@@ -1138,7 +1163,9 @@ def coletar_clima_municipal(args) -> int:
             "campos": {"tmax": "máxima prevista para o dia seguinte, em °C",
                        "tmin": "mínima prevista para o dia seguinte, em °C",
                        "tmax_ontem": "máxima do dia anterior, em °C",
-                       "pm25": "média diária de PM2,5, em µg/m³"},
+                       "pm25": "média diária de PM2,5, em µg/m³",
+                       "lido_tempo": "data em que a temperatura daquele município foi lida",
+                       "lido_ar": "data em que o PM2,5 daquele município foi lido"},
             "referencia_pm25_oms": {"valor": REF_PM25_OMS_DIARIA, "unidade": "µg/m³",
                                     "documento": REF_PM25_DOCUMENTO},
             "ausencia": "Município sem leitura não aparece aqui — ausência é ausência, e um "
@@ -1153,8 +1180,25 @@ def coletar_clima_municipal(args) -> int:
     }
     muns = registro["municipios"]
 
+    # 25/09/2026: `falta` só olhava se o campo EXISTIA. Numa segunda rodada, no dia seguinte,
+    # isso deixava o valor de ontem no lugar e ainda assim carimbava `gerado_em` com a data de
+    # hoje — o mapa diria "coleta de hoje" mostrando previsão de ontem. Agora cada variável
+    # carrega a data em que foi lida, e são duas coisas distintas: RENOVAR (o padrão, o que a
+    # rotina diária faz) e PREENCHER (`--preencher`, que só busca quem nunca teve leitura, para
+    # completar a cobertura nacional sem gastar o teto do dia renovando o que já está lido).
+    HOJE = date.today().strftime("%d/%m/%Y")
+    CARIMBO = CARIMBO_CLIMA
+    so_faltantes = "--preencher" in args
+
     def falta(p, campo):
-        return campo not in (muns.get(p["ibge"]) or {})
+        return precisa_ler(muns.get(p["ibge"]), campo, HOJE, so_faltantes)
+
+    def por_data(campo):
+        c = {}
+        for v in muns.values():
+            if campo in v:
+                c[v.get(CARIMBO[campo]) or "data não registrada"] = c.get(v.get(CARIMBO[campo]) or "data não registrada", 0) + 1
+        return dict(sorted(c.items(), key=lambda kv: -kv[1]))
 
     def gravar_clima():
         registro["gerado_em"] = agora()
@@ -1162,6 +1206,11 @@ def coletar_clima_municipal(args) -> int:
             "municipios_no_pais": len(pontos),
             "com_temperatura": sum(1 for v in muns.values() if "tmax" in v),
             "com_pm25": sum(1 for v in muns.values() if "pm25" in v),
+            # O teto diário da fonte não deixa renovar as duas variáveis no mesmo dia, então o
+            # arquivo tem leituras de dias diferentes. Isso fica declarado aqui, e a página diz
+            # ao leitor — senão `gerado_em` passaria por data de tudo.
+            "temperatura_por_data": por_data("tmax"),
+            "pm25_por_data": por_data("pm25"),
         }
         # separators compacto: são milhares de registros num arquivo que a página carrega inteiro.
         CLIMA.write_text(json.dumps(registro, ensure_ascii=False, separators=(",", ":")) + "\n",
@@ -1186,7 +1235,7 @@ def coletar_clima_municipal(args) -> int:
                 continue
             falhas = 0
             for cod, valores in extrai(dados, chaves).items():
-                muns.setdefault(cod, {}).update(valores)
+                muns.setdefault(cod, {}).update({**valores, CARIMBO[campo]: HOJE})
             if (i // tam) % 10 == 0:
                 gravar_clima()
                 print(f"  … {min(i + tam, len(pendentes))}/{len(pendentes)}", flush=True)
@@ -1208,9 +1257,12 @@ def coletar_clima_municipal(args) -> int:
 
     r = registro["resumo"]
     kb = CLIMA.stat().st_size / 1024
+    def _datas(d):
+        return ", ".join(f"{n} em {dt}" for dt, n in d.items()) or "—"
+
     print(f"→ {CLIMA.relative_to(RAIZ)}: {len(muns)} município(s), {kb:.0f} kB · "
-          f"temperatura {r['com_temperatura']}/{r['municipios_no_pais']} · "
-          f"PM2,5 {r['com_pm25']}/{r['municipios_no_pais']}")
+          f"temperatura {r['com_temperatura']}/{r['municipios_no_pais']} ({_datas(r['temperatura_por_data'])}) · "
+          f"PM2,5 {r['com_pm25']}/{r['municipios_no_pais']} ({_datas(r['pm25_por_data'])})")
     return 0
 
 
@@ -1836,6 +1888,21 @@ def autoteste() -> int:
                 os.environ[k] = v
     checar("esqueleto: a camada de medição nasce como lacuna nas 27 UFs",
            all(esq["uf"][u]["temperatura_medida"] is None and esq["uf"][u]["ar_medido"] is None for u in UFS))
+
+    # Clima municipal: renovar e preencher são rodadas diferentes (25/09/2026).
+    _sem = {}
+    _ontem = {"tmax": 30.1, "lido_tempo": "24/09/2026"}
+    _hoje = {"tmax": 31.2, "lido_tempo": "25/09/2026"}
+    checar("clima: município sem leitura é pedido nas duas rodadas",
+           precisa_ler(_sem, "tmax", "25/09/2026") and precisa_ler(_sem, "tmax", "25/09/2026", so_faltantes=True))
+    checar("clima: leitura de ontem é RENOVADA na rodada diária",
+           precisa_ler(_ontem, "tmax", "25/09/2026") is True)
+    checar("clima: leitura de ontem NÃO é refeita quando a rodada é só de preenchimento",
+           precisa_ler(_ontem, "tmax", "25/09/2026", so_faltantes=True) is False)
+    checar("clima: leitura de hoje não é pedida de novo",
+           precisa_ler(_hoje, "tmax", "25/09/2026") is False)
+    checar("clima: leitura sem carimbo de data conta como a renovar",
+           precisa_ler({"pm25": 9.0}, "pm25", "25/09/2026") is True)
 
     if falhas:
         print(f"\n✗ AUTOTESTE: {len(falhas)} falha(s).")

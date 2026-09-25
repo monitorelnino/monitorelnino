@@ -237,16 +237,26 @@ credito('boxAr', 'open_meteo_ar');
     }
   });
 
-  /* Texto-fato da cobertura, uma vez, abaixo da seção: quantos municípios cada variável alcançou.
-     Sem isso, um mapa com 5.570 pontos e outro com 1.700 pareceriam a mesma coisa. */
+  /* Texto-fato da cobertura, uma vez, abaixo da seção: quantos municípios cada variável alcançou,
+     e de QUANDO é cada leitura. Sem a contagem, um mapa com 5.570 pontos e outro com 1.700
+     pareceriam a mesma coisa; sem a data, a data da coleta passaria por data de tudo — e o teto
+     diário da fonte não deixa renovar as duas variáveis no mesmo dia (25/09/2026). */
   const r = CLIMA.resumo || {};
   const linha = document.getElementById('linhaAlertas');
+  const datas = d => {
+    const e = Object.entries(d || {}).sort((a, b) => b[1] - a[1]);
+    if (!e.length) return '';
+    if (e.length === 1) return ', lida em ' + e[0][0];
+    return ', lida em ' + e.map(([dt, n]) => dt + ' (' + n.toLocaleString('pt-BR') + ')').join(' e ');
+  };
   if (linha && r.municipios_no_pais) {
     const extra = document.createElement('p');
     extra.className = 'hint';
     extra.id = 'coberturaClima';
-    extra.textContent = 'Temperatura em ' + (r.com_temperatura || 0) + ' de ' + r.municipios_no_pais
-      + ' municípios e PM2,5 em ' + (r.com_pm25 || 0) + ', na coleta de ' + esc(CLIMA.gerado_em || '') + '.';
+    const n = v => Number(v || 0).toLocaleString('pt-BR');
+    extra.textContent = 'Temperatura em ' + n(r.com_temperatura) + ' de ' + n(r.municipios_no_pais)
+      + ' municípios' + datas(r.temperatura_por_data)
+      + '; PM2,5 em ' + n(r.com_pm25) + datas(r.pm25_por_data) + '.';
     linha.insertAdjacentElement('afterend', extra);
   }
 })();

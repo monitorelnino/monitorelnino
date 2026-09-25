@@ -21,8 +21,8 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
    É deste livro (mais o log) que `recalcular_mare.py` deriva o nível de
    verificação — os coletores nunca escrevem `verificacao_municipal.json`.
 """
-import hashlib, json, os, pathlib, re, ssl, sys, urllib.error, urllib.parse, urllib.request
-from datetime import date, datetime
+import hashlib, html, json, os, pathlib, re, ssl, sys, time, urllib.error, urllib.parse, urllib.request
+from datetime import date, datetime, timedelta
 
 RAIZ = pathlib.Path(__file__).parent
 DATA = RAIZ / "data"
@@ -70,7 +70,23 @@ def gravar(nome, obj):
     with open(tmp, "w", encoding="utf-8", newline="\n") as f:
         json.dump(obj, f, ensure_ascii=False, indent=ind)
         f.write("\n")
-    os.replace(tmp, p)
+    # 24/09/2026: no Windows, os.replace() falha com PermissionError (WinError 5) quando OUTRO
+    # processo tem o destino aberto — o indexador do sistema e o antivírus abrem os JSON grandes
+    # de data/ sozinhos, por um instante. Derrubou o `coletar_s2id` no meio da rodada nacional,
+    # em `evidencias.json`. É janela de milissegundos: espera-se e tenta-se de novo. O que NÃO se
+    # faz é engolir o erro, porque falta de permissão de verdade tem de aparecer.
+    for tentativa in range(6):
+        try:
+            os.replace(tmp, p)
+            return
+        except PermissionError:
+            if tentativa == 5:
+                try:
+                    os.unlink(tmp)          # não deixa .tmp órfão ao lado do arquivo bom
+                except OSError:
+                    pass
+                raise
+            time.sleep(0.2 * (tentativa + 1))
 
 
 # ---------------------------------------------------------------------------------
@@ -678,6 +694,17 @@ def fechar_lote_log():
     return n
 
 
+# Vocabulário FECHADO das decisões do log. Era uma tupla anônima dentro do `assert`, e por isso
+# ninguém percebeu quando o §194 (24/09/2026) criou a decisão `sem_edicao_no_periodo` no coletor
+# dos diários municipais e não a acrescentou aqui: a varredura passou a morrer com AssertionError
+# no primeiro município indexado sem edição na janela — e morrer é melhor do que gravar errado,
+# mas a varredura ficou parada sem que isso aparecesse como problema de vocabulário. Nomear a
+# lista é o que permite que o coletor que INVENTA uma decisão prove, no autoteste dele, que ela
+# cabe aqui.
+DECISOES_LOG = ("registro", "pista", "nada", "consultado", "fonte", "erro", "acesso",
+                "sem_cobertura_qd", "sem_edicao_no_periodo", "coberto_sem_mencao", "com_excerto")
+
+
 def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: str = "",
               uf=None, municipio=None, ibge=None, nivel=None, n_resultados=None,
               fonte_suspensa_defeso: bool = False, hash_evidencia=None):
@@ -690,7 +717,7 @@ def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: 
     `nivel="municipal_completo"`, e o assert abaixo o exige. Uma sonda de UF que consultou o portal
     e não achou painel precisa registrar isso — o silêncio foi o pior defeito do §181 —, mas não pode
     entrar pela porta da verificação municipal."""
-    assert decisao.split(" ")[0] in ("registro", "pista", "nada", "consultado", "fonte", "erro", "acesso", "sem_cobertura_qd", "coberto_sem_mencao", "com_excerto"), decisao   # "acesso recusado" (§10.1), decisões do §1.2, "consultado sem achado" (§184)
+    assert decisao.split(" ")[0] in DECISOES_LOG, decisao
     if decisao.startswith("nada localizado"):
         assert nivel == "municipal_completo", "regra §2.1: 'nada localizado' exige bateria municipal completa"
     execucao = {
@@ -710,6 +737,110 @@ def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: 
     assert lg and lg.get("formato_versao") == 2, "log_buscas.json precisa estar no esquema v2"
     lg["execucoes"].append(execucao)
     gravar("log_buscas.json", lg)
+
+
+# ── página de consulta do DOU (compartilhada por coletar_s2id e coletar_espin) ──
+# 24/09/2026: a busca do DOU trocou o transporte do resultado. Ele vinha num
+# <input ... value="{json}"> e passou a vir num <script type="application/json">. Os dois
+# coletores tinham, cada um, a cópia do regex do <input> — e devolviam LISTA VAZIA para
+# qualquer consulta, calados: a guarda do s2id testava `"jsonArray" in texto`, e essa
+# string continua na página (está no script e no JS ao lado), de modo que a guarda passava
+# e o zero virava "consultamos e não há". Medido em 24/09: a consulta de reconhecimentos
+# tinha 132 resultados reais no ciclo, e o coletor lia 0. Agora o leitor é UM, e a ausência
+# do elemento LEVANTA — nunca devolve lista vazia.
+
+class FormatoDoDOUMudou(Exception):
+    """A página de consulta não trouxe o elemento de resultados. É lacuna, não ausência."""
+
+
+_ID_BUSCA_DOU = "_br_com_seatecnologia_in_buscadou_BuscaDouPortlet_params"
+# A data VAI em dd-mm-aaaa. Com aaaa-mm-dd a página responde 200 e devolve outra janela
+# (medido em 24/09: 132 resultados contra 3) — formato errado aqui não dá erro, dá número menor.
+BUSCA_DOU = ("https://www.in.gov.br/consulta/-/buscar/dou?q={q}&s={secao}&exactDate=personalizado"
+             "&sortType=0&publishFrom={de}&publishTo={ate}&delta=50")
+TETO_PAGINA_DOU = 50      # medido: delta=50 devolve 50; delta=100 volta a 20, e `start` é ignorado
+
+
+def _sem_marcacao(s: str) -> str:
+    """Tira a marcação do trecho devolvido pela busca (o termo vem embrulhado em
+    <span class='highlight'>) e normaliza o espaço. Função pura."""
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", s or ""))).strip()
+
+
+def parse_busca_dou(texto: str) -> list:
+    """Resultados da página de consulta do DOU: [{titulo, url, data, trecho}]. Função pura.
+
+    `trecho` é EXCERTO (≈235 caracteres com reticências), não o ato: quem precisa do texto
+    inteiro tem de abrir `url`. Levanta FormatoDoDOUMudou quando o elemento de resultados
+    não está na página — ausência de estrutura é lacuna, e lista vazia mentiria."""
+    m = (re.search(r'<script[^>]*id="' + _ID_BUSCA_DOU + r'"[^>]*>(.*?)</script>', texto, re.S)
+         or re.search(r'id="' + _ID_BUSCA_DOU + r'"[^>]*value="([^"]*)"', texto))
+    if not m:
+        raise FormatoDoDOUMudou("elemento de resultados ausente na página de consulta")
+    try:
+        dados = json.loads(html.unescape(m.group(1)).strip())
+    except json.JSONDecodeError as e:
+        raise FormatoDoDOUMudou(f"elemento de resultados ilegível: {e}") from e
+    if not isinstance(dados, dict) or "jsonArray" not in dados:
+        raise FormatoDoDOUMudou("elemento de resultados sem a chave jsonArray")
+    return [{"titulo": _sem_marcacao(it.get("title")),
+             "url": "https://www.in.gov.br/web/dou/-/" + (it.get("urlTitle") or ""),
+             "data": it.get("pubDate", ""),
+             # `orgao` é a hierarquia que a PRÓPRIA busca declara ("Ministério da Saúde/Gabinete
+             # do Ministro"). Vale mais do que adivinhar o órgão pelo título: é a fonte dizendo
+             # de quem é o ato, e é por ele que um coletor decide quais atos vale a pena abrir.
+             "orgao": _sem_marcacao(it.get("hierarchyStr")),
+             "trecho": _sem_marcacao(it.get("content"))}
+            for it in (dados.get("jsonArray") or [])]
+
+
+def total_declarado_dou(texto: str):
+    """Quantos resultados a PÁGINA diz ter ("132 resultados"), ou None. Função pura.
+    Serve para saber se a leitura foi completa — ler 50 de 132 e não dizer nada seria
+    apresentar recorte como varredura."""
+    m = re.search(r"([\d.]+)\s*resultados?\b", texto, re.I)
+    return int(m.group(1).replace(".", "")) if m else None
+
+
+def varrer_busca_dou(q: str, de, ate, secao: str = "do1", buscar_fn=None, pausa: float = 2.0,
+                     _prof: int = 0, _relogio=None) -> tuple:
+    """Varre a consulta do DOU numa janela de datas e devolve (itens, janelas_incompletas).
+
+    A página entrega no máximo 50 por consulta e não pagina (`start` é ignorado): o jeito de
+    ler tudo é ESTREITAR a janela. Quando o total declarado passa do que veio, a janela é
+    partida ao meio e as metades são lidas — recursivamente, até o dia. Dia único que ainda
+    estoure entra em `janelas_incompletas`, que o coletor declara; nunca se apresenta recorte
+    como varredura. `buscar_fn(url) -> bytes` é injetável (autoteste offline, preservação de
+    evidência no chamador)."""
+    buscar_fn = buscar_fn or buscar
+    dormir = _relogio or time.sleep
+    url = BUSCA_DOU.format(q=urllib.parse.quote(q), secao=secao,
+                           de=de.strftime("%d-%m-%Y"), ate=ate.strftime("%d-%m-%Y"))
+    # §11: no máximo uma requisição a cada 2 s por domínio. Aqui isso importa duas vezes, porque
+    # estreitar a janela multiplica as chamadas ao MESMO host — quem varre tem de ir mais devagar,
+    # não mais rápido. A primeira consulta de cada varredura não espera; as seguintes, sim.
+    if _prof and pausa:
+        dormir(pausa)
+    texto = buscar_fn(url).decode("utf-8", "replace")
+    itens = parse_busca_dou(texto)
+    total = total_declarado_dou(texto)
+    if total is None and len(itens) >= TETO_PAGINA_DOU:
+        # A página veio cheia e não declarou o total (a contagem mudou de forma?). Não dá para
+        # afirmar que é tudo — trata-se como janela que não coube, e estreita-se do mesmo jeito.
+        total = len(itens) + 1
+    if total is None or total <= len(itens):
+        return itens, []
+    if de >= ate:                                   # um dia só, e ainda não coube
+        return itens, [{"de": de.isoformat(), "ate": ate.isoformat(), "lidos": len(itens), "total": total}]
+    meio = de + (ate - de) / 2
+    a, fa = varrer_busca_dou(q, de, meio, secao, buscar_fn, pausa, _prof + 1, _relogio)
+    b, fb = varrer_busca_dou(q, meio + timedelta(days=1), ate, secao, buscar_fn, pausa, _prof + 1, _relogio)
+    vistos, saida = set(), []
+    for it in a + b:                                # janelas vizinhas não se sobrepõem, mas o
+        if it["url"] in vistos:                     # DOU republica o mesmo ato em retificação
+            continue
+        vistos.add(it["url"]); saida.append(it)
+    return saida, fa + fb
 
 
 def eh_suspensao_defeso(html: str) -> bool:
@@ -737,14 +868,67 @@ def referencia_ibge():
     return por_cod, por_nome
 
 
+# 25/09/2026: o mesmo problema do log, no livro de fontes. `marcar_fonte_consultada` e
+# `marcar_fato_municipal` leem e regravam `fontes_consultadas.json` — 12 MB — a CADA município.
+# Na varredura dos diários municipais são 2.965 municípios: cerca de 71 GB de entrada e saída, e
+# 2.965 janelas em que uma interrupção deixa o arquivo pela metade. É literalmente o arquivo que
+# foi corrompido assim em 21/09. A saída é a mesma do log: um lote OPCIONAL. Sem abrir lote, nada
+# muda para nenhum coletor existente.
+_LOTE_LIVRO = None          # o livro inteiro, em memória, enquanto o lote está aberto
+_LOTE_LIVRO_PENDENTES = 0
+_LOTE_LIVRO_TETO = 250
+
+
+def abrir_lote_livro():
+    """Carrega o livro de fontes uma vez e passa a mutá-lo em memória."""
+    global _LOTE_LIVRO, _LOTE_LIVRO_PENDENTES
+    if _LOTE_LIVRO is None:
+        _LOTE_LIVRO = _livro_de_fontes()
+        _LOTE_LIVRO_PENDENTES = 0
+
+
+def descarregar_lote_livro():
+    """Grava o livro se houver mutação pendente. Idempotente."""
+    global _LOTE_LIVRO_PENDENTES
+    if _LOTE_LIVRO is None or not _LOTE_LIVRO_PENDENTES:
+        return 0
+    n, _LOTE_LIVRO_PENDENTES = _LOTE_LIVRO_PENDENTES, 0
+    gravar("fontes_consultadas.json", _LOTE_LIVRO)
+    return n
+
+
+def fechar_lote_livro():
+    """Descarrega o que resta e volta a gravar a cada chamada."""
+    global _LOTE_LIVRO
+    n = descarregar_lote_livro()
+    _LOTE_LIVRO = None
+    return n
+
+
+def _livro_de_fontes():
+    return ler("fontes_consultadas.json", {"_governanca": "Livro de fontes consultadas por município "
+                                           "(v2.2.4). Insumo do nível de verificação derivado por "
+                                           "recalcular_mare.py; nunca lido pelo cálculo da nota.",
+                                           "municipios": {}})
+
+
+def _gravar_livro(livro):
+    """Grava agora, ou deixa para o lote — e o lote tem teto, para limitar o que uma
+    interrupção levaria embora."""
+    global _LOTE_LIVRO_PENDENTES
+    if _LOTE_LIVRO is None:
+        gravar("fontes_consultadas.json", livro)
+        return
+    _LOTE_LIVRO_PENDENTES += 1
+    if _LOTE_LIVRO_PENDENTES >= _LOTE_LIVRO_TETO:
+        descarregar_lote_livro()
+
+
 def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "consultada"):
     """Registra que `fonte` foi consultada para cada município em `ibges`, com o nível
     que essa fonte confere (§2.2). Nunca rebaixa um nível já alcançado."""
     assert nivel in NIVEIS
-    livro = ler("fontes_consultadas.json", {"_governanca": "Livro de fontes consultadas por município "
-                                            "(v2.2.4). Insumo do nível de verificação derivado por "
-                                            "recalcular_mare.py; nunca lido pelo cálculo da nota.",
-                                            "municipios": {}})
+    livro = _LOTE_LIVRO if _LOTE_LIVRO is not None else _livro_de_fontes()
     ordem = {n: i for i, n in enumerate(NIVEIS)}
     for cod in ibges:
         cod = str(cod).zfill(7)
@@ -755,18 +939,18 @@ def marcar_fonte_consultada(ibges, fonte: str, nivel: str, resultado: str = "con
         if ordem[nivel] > ordem[m["nivel_verificacao"]]:
             m["nivel_verificacao"] = nivel
         m["ultima_verificacao"] = hoje()
-    gravar("fontes_consultadas.json", livro)
+    _gravar_livro(livro)
 
 
 def marcar_fato_municipal(ibge, campo: str, valor):
     """Fatos binários por município (§3.3): decreto_reconhecido, decreto_homologado,
     plano_declarado_munic, plano_declarado_icm."""
     assert campo in ("decreto_reconhecido", "decreto_homologado", "plano_declarado_munic", "plano_declarado_icm")
-    livro = ler("fontes_consultadas.json", {"_governanca": "", "municipios": {}})
+    livro = _LOTE_LIVRO if _LOTE_LIVRO is not None else _livro_de_fontes()
     m = livro["municipios"].setdefault(str(ibge).zfill(7), {"nivel_verificacao": "nao_verificado",
                                                              "ultima_verificacao": None, "fontes": []})
     m[campo] = valor
-    gravar("fontes_consultadas.json", livro)
+    _gravar_livro(livro)
 
 
 # ── autoteste ────────────────────────────────────────────────────────────────

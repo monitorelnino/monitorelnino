@@ -25,6 +25,9 @@ import json, math, re, sys, time, urllib.parse, urllib.error
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, preservar_texto_integral, log_busca,
                             registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar,
+                            DECISOES_LOG,
+                            abrir_lote_log, fechar_lote_log, descarregar_lote_log,
+                            abrir_lote_livro, fechar_lote_livro, descarregar_lote_livro,
                             rodar_autoteste)
 from classificar_pista_civil import triagem_completa
 
@@ -95,15 +98,34 @@ def tamanho_para_cobrir(n_pendentes: int, hoje_iso: str, ate_iso: str, minimo: i
     return max(minimo, min(maximo, math.ceil(n_pendentes / dias)))
 
 
-def buscar_com_espera(url: str, timeout: int = 30) -> bytes:
-    """Uma nova tentativa após 30 s se a API limitar (HTTP 429); outros erros sobem."""
-    try:
-        return buscar(url, timeout=timeout)
-    except urllib.error.HTTPError as e:
-        if e.code == 429:
-            time.sleep(30)
-            return buscar(url, timeout=timeout)
-        raise
+ESPERAS_429 = (30,)        # limite de taxa: a fonte manda esperar, e esperar é a resposta certa
+ESPERAS_5XX = (5, 15)      # indisponibilidade temporária: "tente mais tarde", crescendo
+
+
+def buscar_com_espera(url: str, timeout: int = 30, buscar_fn=None, dormir=None) -> bytes:
+    """Repete com espera quando a fonte pede tempo; 4xx sobe na hora.
+
+    25/09/2026, medido na varredura nacional: **63 dos 505 primeiros municípios** viraram lacuna
+    por `HTTP 503 Service Unavailable` — 12 %. Não é bloqueio (403) nem limite de taxa (429): é
+    indisponibilidade temporária, e a resposta certa a "tente mais tarde" é tentar mais tarde. A
+    reserva de domínio não resolvia isto: ela cobre troca de endereço, e o endereço antigo serve o
+    MESMO serviço — se a produção está fora, a reserva está fora junto.
+
+    4xx (fora 429) continua subindo na hora: consulta errada não melhora com repetição, e repetir
+    só dobraria a carga sobre uma API pública mantida por um projeto sem fins lucrativos."""
+    buscar_fn = buscar_fn or buscar
+    dormir = dormir or time.sleep
+    restantes = None
+    while True:
+        try:
+            return buscar_fn(url, timeout=timeout)
+        except urllib.error.HTTPError as e:
+            if restantes is None:
+                restantes = list(ESPERAS_429 if e.code == 429 else
+                                 ESPERAS_5XX if e.code >= 500 else ())
+            if not restantes:
+                raise
+            dormir(restantes.pop(0))
 
 
 def consultar_qd(params: str, timeout: int = 30) -> bytes:
@@ -168,6 +190,11 @@ def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
         cache = {"_governanca": cache.get("_governanca", ""), "janela": desde, "municipios": {}}
     mun = cache.setdefault("municipios", {})
     hoje = date.today().isoformat()
+    # 25/09/2026 (§212, terceiro arquivo): o acerto em cache NÃO pode gravar. Antes, toda chamada
+    # regravava `cobertura_qd.json` (418 kB) e, pior, lia e regravava `verificacao_municipal.json`
+    # (2 MB) — nos 3.428 municípios da varredura, cerca de 13 GB de entrada e saída para não mudar
+    # nada. Agora só grava quem mudou.
+    anterior = dict(mun.get(cod) or {})
     if resposta_com_diario:
         mun[cod] = {"cobertura_qd": True, "data_teste": hoje}
     elif cod in mun and mun[cod].get("cobertura_qd") is not None:
@@ -179,15 +206,21 @@ def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
             mun[cod] = {"cobertura_qd": (d.get("total_gazettes", 0) or 0) > 0, "data_teste": hoje}
         except Exception:  # noqa: BLE001
             mun[cod] = {"cobertura_qd": None, "data_teste": hoje}
-    gravar("cobertura_qd.json", cache)
-    # espelho em verificacao_municipal.json (campo público)
+    if mun.get(cod) != anterior:
+        gravar("cobertura_qd.json", cache)
+    # Espelho em verificacao_municipal.json (campo público). A data que vai para lá é a do TESTE,
+    # não a de hoje: num acerto em cache o teste não aconteceu hoje, e carimbá-lo com a data de
+    # hoje afirmaria uma verificação que não houve. Grava só quando valor ou data mudam.
     try:
+        valor, quando = mun[cod]["cobertura_qd"], mun[cod]["data_teste"]
         vm = ler("verificacao_municipal.json", []) or []
         if isinstance(vm, list):
             for reg in vm:
                 if str(reg.get("ibge")).zfill(7) == str(cod).zfill(7):
-                    reg["cobertura_qd"] = mun[cod]["cobertura_qd"]; reg["data_teste_cobertura"] = hoje
-                    gravar("verificacao_municipal.json", vm); break
+                    if reg.get("cobertura_qd") != valor or reg.get("data_teste_cobertura") != quando:
+                        reg["cobertura_qd"] = valor; reg["data_teste_cobertura"] = quando
+                        gravar("verificacao_municipal.json", vm)
+                    break
     except Exception:  # noqa: BLE001
         pass
     return mun[cod]["cobertura_qd"]
@@ -248,6 +281,29 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
     # deduplicação: (ibge, url, trecho) — a mesma menção no mesmo documento não deveria virar duas
     # entradas na fila só porque a rodada rodou de novo sobre uma data já coberta.
     vistos_pistas = {(p.get("ibge"), p.get("url"), p.get("trecho")) for p in pistas["pistas"]}
+    n_ok = n_lac = novos = npist = 0
+    # 25/09/2026: varredura nacional. Sem lote, cada município lê e regrava o log de buscas
+    # (20 MB) e o livro de fontes (12 MB) — nos 2.965 pendentes de hoje, dezenas de gigabytes de
+    # entrada e saída e outras tantas janelas em que uma interrupção deixa o arquivo pela metade.
+    # É o mesmo arquivo que foi corrompido assim em 21/09. Os dois lotes acumulam em memória e
+    # descarregam de 250 em 250; o `finally` garante que o que sobrou chegue ao disco mesmo se a
+    # rodada for interrompida, porque perder 2.900 registros por causa de um Ctrl-C seria pior
+    # do que a E/S que o lote evita.
+    abrir_lote_log()
+    abrir_lote_livro()
+    try:
+        n_ok, n_lac, novos, npist = _varrer(alvo, por_cod, desde, atos, pistas, vistos, vistos_pistas)
+    finally:
+        fechar_lote_log()
+        fechar_lote_livro()
+    gravar("atos_resposta.json", atos); gravar("pistas_imprensa.json", pistas)
+    print(f"lote {lote}: {n_ok} consultados, {n_lac} lacunas, {novos} decretos novos, {npist} pistas")
+    return 0
+
+
+def _varrer(alvo, por_cod, desde, atos, pistas, vistos, vistos_pistas):
+    """O laço da varredura, separado só para que o chamador possa fechar os lotes num `finally`.
+    Devolve (consultados, lacunas, decretos novos, pistas novas)."""
     n_ok = n_lac = novos = npist = 0
     for cod in alvo:
         ref = por_cod[cod]
@@ -317,9 +373,13 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
                   municipio=ref["nome"], ibge=cod, n_resultados=dados.get("total_gazettes"), hash_evidencia=h,
                   resultados=f"{len(decretos)} decretos, {len(pist)} pistas (com_excerto: pista para a fila humana; R7)")
         n_ok += 1
-    gravar("atos_resposta.json", atos); gravar("pistas_imprensa.json", pistas)
-    print(f"lote {lote}: {n_ok} consultados, {n_lac} lacunas, {novos} decretos novos, {npist} pistas")
-    return 0
+        if n_ok % 250 == 0:
+            # Salvamento parcial: descarrega os lotes e grava o banco. Uma varredura nacional não
+            # pode depender de terminar para que o que já foi lido conte.
+            descarregar_lote_log(); descarregar_lote_livro()
+            gravar("atos_resposta.json", atos); gravar("pistas_imprensa.json", pistas)
+            print(f"  … {n_ok} consultados, {n_lac} lacunas, {novos} decretos, {npist} pistas", flush=True)
+    return n_ok, n_lac, novos, npist
 
 
 FIX = {"total_gazettes": 1, "gazettes": [{"date": "2026-08-30", "url": "https://x/d.pdf", "excerpts": [
@@ -387,6 +447,106 @@ def autoteste() -> int:
         livro = {"municipios": {"1": {"fontes": [{"fonte": FONTE_QD, "data": "2026-08-20"}]}}}  # fora da janela: pendente
         pend = pendentes_na_janela(["1", "2", "3"], livro, "2026-09-03")
         return pend == ["1", "2", "3"]  # os três pendentes; --tudo (testado no fluxo real) os consultaria todos, não só um fatiamento
+    def t10():
+        """25/09/2026: TODA decisão que este coletor inventa tem de caber no vocabulário fechado
+        do log. O §194 criou `sem_edicao_no_periodo` e não a acrescentou lá: a varredura nacional
+        morria com AssertionError no primeiro município indexado sem edição na janela, e ficou
+        parada sem que isso aparecesse como problema de vocabulário. Este teste liga as duas
+        pontas — inventar decisão nova sem registrá-la passa a reprovar aqui, não em produção."""
+        possiveis = {decisao_para_vazio(c, e)
+                     for c in (True, False, None) for e in (True, False, None)}
+        return possiveis and all(d.split(" ")[0] in DECISOES_LOG for d in possiveis)
+
+    def t11():
+        """25/09/2026: acerto em cache não grava, e a data que vai ao espelho é a do TESTE.
+
+        Antes, toda chamada regravava `cobertura_qd.json` e `verificacao_municipal.json` (2 MB) —
+        13 GB de E/S na varredura para não mudar nada — e carimbava o espelho com a data de HOJE
+        mesmo quando o teste tinha sido feito dias antes, afirmando uma verificação que não houve.
+        """
+        gravados = []
+        vm = [{"ibge": "1100015", "cobertura_qd": True, "data_teste_cobertura": "2026-09-20"}]
+        cache = {"janela": "2026-06-29",
+                 "municipios": {"1100015": {"cobertura_qd": True, "data_teste": "2026-09-20"}}}
+
+        def ler_falso(nome, padrao=None):
+            if nome == "cobertura_qd.json":
+                return cache
+            if nome == "verificacao_municipal.json":
+                return vm
+            return padrao
+
+        def consultar_proibido(*a, **kw):
+            raise AssertionError("acerto em cache não pode consultar a rede")
+
+        real = {n: globals()[n] for n in ("ler", "gravar", "consultar_qd")}
+        globals()["ler"] = ler_falso
+        globals()["gravar"] = lambda nome, obj: gravados.append(nome)
+        globals()["consultar_qd"] = consultar_proibido
+        try:
+            r = cobertura_qd("1100015", "2026-06-29")
+        finally:
+            for n, f in real.items():
+                globals()[n] = f
+        return (r is True and gravados == []
+                and vm[0]["data_teste_cobertura"] == "2026-09-20")
+
+    def t12():
+        """25/09/2026: 503 é "tente mais tarde", e a resposta certa é esperar — a reserva de
+        domínio não resolve, porque serve o mesmo serviço. 4xx continua subindo na hora."""
+        import urllib.error as ue
+
+        def erro(code):
+            return ue.HTTPError("u", code, "x", None, None)
+
+        # 503 duas vezes e sucesso na terceira: duas esperas, crescendo.
+        esperas, n = [], {"i": 0}
+
+        def flaky(url, timeout=30):
+            n["i"] += 1
+            if n["i"] <= 2:
+                raise erro(503)
+            return b"ok"
+
+        r = buscar_com_espera("u", buscar_fn=flaky, dormir=esperas.append)
+        um = (r == b"ok" and esperas == [5, 15])
+
+        # 503 sempre: desiste depois das esperas previstas, sem laço infinito.
+        esperas2 = []
+
+        def sempre(url, timeout=30):
+            raise erro(503)
+
+        try:
+            buscar_com_espera("u", buscar_fn=sempre, dormir=esperas2.append)
+            dois = False
+        except ue.HTTPError:
+            dois = esperas2 == [5, 15]
+
+        # 404: sobe na hora, sem espera nenhuma.
+        esperas3 = []
+
+        def quatro04(url, timeout=30):
+            raise erro(404)
+
+        try:
+            buscar_com_espera("u", buscar_fn=quatro04, dormir=esperas3.append)
+            tres = False
+        except ue.HTTPError:
+            tres = esperas3 == []
+
+        # 429: a espera longa da fonte, uma vez.
+        esperas4, m = [], {"i": 0}
+
+        def limitado(url, timeout=30):
+            m["i"] += 1
+            if m["i"] == 1:
+                raise erro(429)
+            return b"ok"
+
+        quatro = buscar_com_espera("u", buscar_fn=limitado, dormir=esperas4.append) == b"ok" and esperas4 == [30]
+        return um and dois and tres and quatro
+
     def t9():  # 21/09/2026: dedup de pistas — rodar coletar_lote DUAS VEZES sobre o mesmo achado
         # (mesmo padrão do achado real: Ouro Branco/AL apareceu duplicado por duas rodadas sobre a
         # mesma janela) deve produzir UMA pista na fila, não duas. Mocka toda a I/O: rede
@@ -416,13 +576,18 @@ def autoteste() -> int:
             return json.dumps(FIX).encode()
         real = {n: globals()[n] for n in ("ler", "gravar", "referencia_ibge", "consultar_qd",
                                           "preservar_evidencia", "preservar_texto_integral",
-                                          "marcar_fonte_consultada", "log_busca")}
+                                          "marcar_fonte_consultada", "log_busca",
+                                          "abrir_lote_log", "fechar_lote_log", "descarregar_lote_log",
+                                          "abrir_lote_livro", "fechar_lote_livro", "descarregar_lote_livro")}
         globals()["ler"] = ler_falso; globals()["gravar"] = gravar_falso
         globals()["referencia_ibge"] = referencia_falsa; globals()["consultar_qd"] = consultar_falso
         globals()["preservar_evidencia"] = lambda *a, **kw: "hashfalso"
         globals()["preservar_texto_integral"] = lambda *a, **kw: None
         globals()["marcar_fonte_consultada"] = lambda *a, **kw: None
         globals()["log_busca"] = lambda *a, **kw: None
+        for _n in ("abrir_lote_log", "fechar_lote_log", "descarregar_lote_log",
+                   "abrir_lote_livro", "fechar_lote_livro", "descarregar_lote_livro"):
+            globals()[_n] = lambda *a, **kw: 0
         try:
             coletar_lote(1, 150, "2026-08-01")   # 1ª rodada
             n_apos_primeira = len(estado["pistas"]["pistas"])
@@ -436,14 +601,15 @@ def autoteste() -> int:
                             "prioridade: UF do cadastro, depois população": t3,
                             "negativo: UF fora da lista curada entra por percentual, não em balde indefinido": t3b,
                             "negativo: resposta nula": t4,
-                            "prioridade: UF do cadastro, depois população": t3,
                             "reserva de domínio do QD: 5xx/rede repete no antigo, 4xx sobe na hora": t3c,
-                            "negativo: resposta nula": t4,
                             "varredura integral: fila de pendentes na janela": t5,
                             "varredura integral: tamanho para cobrir até a data-fim": t6,
                             "--tudo: fila completa de pendentes (não fatiada)": t7,
                             "resposta vazia → sem_cobertura_qd / coberto_sem_mencao / erro (nunca 'nada localizado')": t8,
-                            "regressão 21/09: rodar duas vezes sobre o mesmo achado não duplica a pista": t9})
+                            "regressão 21/09: rodar duas vezes sobre o mesmo achado não duplica a pista": t9,
+                            "toda decisão deste coletor cabe no vocabulário fechado do log": t10,
+                            "acerto em cache não grava, e o espelho leva a data do teste": t11,
+                            "503 espera e repete; 429 espera uma vez; 4xx sobe na hora": t12})
 
 
 if __name__ == "__main__":

@@ -71,7 +71,7 @@ python3 scripts/portoes_locais.py tudo        # ou: paginas | dados
 ```
 
 A lista de portões **não vive aqui**. Ela é derivada de `.github/workflows/portoes.yml`, que
-é o único lugar que reprova de verdade — hoje são 47 comandos (`--listar` confere). Este arquivo e o PROTOCOLO
+é o único lugar que reprova de verdade — hoje são 61 comandos (`--listar` confere). Este arquivo e o PROTOCOLO
 §3.3 *descrevem* o conjunto; não o definem. Rodar um subconjunto escolhido a olho custou um
 ciclo de CI em 23/09/2026 (`verificar_seguranca.js` ficou de fora e reprovou lá por uma
 Action sem SHA fixado).
