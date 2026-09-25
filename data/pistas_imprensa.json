@@ -21870,7 +21870,41 @@
    "autoridade": "colegiado",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "8bd2d925c4",
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2027"
+    },
+    "numero": null,
+    "data_ato": "14/09/2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "Pauta da Reunião 1º Ponto de Pauta: Votação da Ata da Reunião Ordinária 364ª; 2º Ponto de Pauta: PAS 2027 – Inclusão; 3º Ponto de Pauta: Apresentação Plano de Contingência da Síndrome Gripal; 4º Ponto de Pauta: Apresentação Plano de Contingência da Síndrome Gripal; 5º Ponto de Pauta: Informes. Passamos para o 1º Ponto de Pauta: Votação da a Ordinária 364ª. A secretária Rejane propôs uma alteração na ordem dos trabalhos, sugerindo que o conselho realizasse primeiramente a votação da ata ordinária, seguida pela apresentação do Instituto Fonte de Vida, onde a plenária segue com os demais pontos, ",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Itapevi",
@@ -21886,7 +21920,35 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "e16fe63e01",
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_trecho"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Municipal 4.588",
+    "data_ato": "14/01/2009",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "DIÁRIO OFICIAL ITAPEVI P R E F E I T U R A Ano 18 | Edição nº 1599 | Itapevi, 22 de setembro de 2026 www.itapevi.sp.gov.br Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, garantindo autenticidade, validade jurídica e integridade. Publicação Oficial da Prefeitura de Itapevi, conforme Decreto Municipal 4.588, de 14 de janeiro de 2009 2 DIÁRIO OFICIAL - MUNICÍPIO DE ITAPEVI Ano 18 | Edição nº 1599 | Itapevi, 22 de setembro de 2026 3 DIÁRIO OFICIAL - MUNICÍPIO DE ITAPEVI Ano 18 | Edição nº 1599 | Itapevi, 22 de setembro de 2026 SECRETÁRIO DE GOVERNO SECRETARIA DE GOVERNO ....",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Andradina",
@@ -21902,7 +21964,38 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "08776f3b63",
+   "nivel_confianca": "A",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_so_no_trecho",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo",
+    "texto_candidato_forte"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto nº 7.123",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "ídica e integridade. Terça-feira, 25 de Agosto de 2026, Ano V - Edição 1370 2/55 PREFEITURA MUNICIPAL DE ANDRADINA COMISSÃO MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON ANDRADINA/SP COMISSÃO MUNICIPAL DE DEFESA CIVIL 2026 Município de Andradina – Estado de São Paulo Diário Oficial assinado digitalmente conforme Decreto nº 7.123, de 2021, garantindo autenticidade, validade jurídica e integridade. Terça-feira, 25 de Agosto de 2026, Ano V - Edição 1370 3/55 PREFEITURA MUNICIPAL DE ANDRADINA COMISSÃO MUNICIPAL DE DEFESA CIVIL Plano de Contingência de Proteçã",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2021)"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: data do ato incompleta (2021)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Valparaíso",
@@ -21918,7 +22011,43 @@
    "autoridade": "executivo",
    "objeto": "el_nino",
    "destino": "registro_defesa_civil",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "b1b658a2e1",
+   "nivel_confianca": "A",
+   "pontos_confianca": 9,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_inicio_do_trecho",
+    "plano_no_trecho",
+    "ato_formal",
+    "familia_de_risco_do_ciclo",
+    "texto_candidato_forte"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": "DECRETO Nº 510",
+     "data_ato": "03/08/2026"
+    },
+    "numero": "DECRETO Nº 510",
+    "data_ato": "03/08/2026",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "DECRETO Nº 5101 DECRETA: Art.1º Fica aprovado e instituído, no âmbito do Município de DECRETO Nº 5101, DE 03 DE AGOSTO DE 2026. Valparaíso, o Plano de Contingência Municipal de Proteção e Defesa *APROVA E INSTITUI O PLANO DE CONTINGÊNCIA MUNICIPAL Civil – PLANCON 2025/2026, inclusive para a hipótese de rompimento DE PROTEÇÃO E DEFESA CIVIL – PLANCON 2025/2026, da barragem da Usina Hidrelétrica de Nova Avanhandava. INCLUSIVE PARA A HIPÓTESE DE ROMPIMENTO DA BARRAGEM §1º O PLANCON e seus anexos passam a integrar este Decreto para DA USINA HIDRELÉTRICA DE NOVA AVANHANDAVA, E DÁ todos os efeitos a",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Junqueirópolis",
@@ -21934,7 +22063,37 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "b09fdb3f39",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_so_no_trecho",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "18/12/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "Lei, e Igreja Católica serão utilizadas como pontos de acolhimento, conforme considerando os princípios constitucionais da legalidade, o Plano de Contingência da Defesa Civil de Junqueirópolis, além de impessoalidade, moralidade, publicidade e eficiência, outras instalações públicas que por ventura tiverem necessidade e adequação. CONSIDERANDO os alertas meteorológicos de risco emitidos pela Defesa Civil do Estado de São Paulo e pelos órgãos oficiais de Art. 5º. Fica recomendado à população que acompanhe os boletins de monitoramento climático para a região do Oeste Paulista nos dias 11 e orien",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato no futuro (18/12/2026) — leitura errada provável"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: data do ato no futuro (18/12/2026) — leitura errada provável"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Coronel Macedo",
@@ -21950,7 +22109,41 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "a88e164ee8",
+   "nivel_confianca": "A",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo",
+    "texto_candidato_forte"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "29/05/2024"
+    },
+    "numero": "Lei nº 14.133",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "Diário Oficial Cidade de Coronel Macedo - SP www.coronelmacedo.sp.gov.br Diego Garcia Batista - Prefeito A A n n o o 2 2 C o C o ro r o n e n e l M l M a a c c e d e d o o , 1 4 , 0 d 2 e M d e a b r il d e 2 0 1 8 N ú m e r o 4 4 Poder Executivo Ano 10 Coronel Macedo, quarta-feira, 08 de julho de 2026 Edição 875 LEI COMPLEMENTAR Nº 227/2017, DE 04 DE MAIO DE LICITAÇÕES participantes fica limitado a 2, restritos, ainda, 2017 a órgãos do município. Justifica-se a “Institui o Diário Oficial Eletrônico do Município como meio quantidade devido ao município não possuir oficial de comunicação dos at",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Londrina",
@@ -21966,7 +22159,37 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "b1ff3ee378",
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "LEI N.º 142",
+    "data_ato": "03/09/2026",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "LEI N.º 14236, DE 03 DE SETEMBRO DE 2026 SÚMULA: Inclui a Copa da Amizade de Futebol Suíço de Londrina no Calendário de Comemorações Oficiais do Município de Londrina e dá outras providências. A CÂMARA MUNICIPAL DE LONDRINA, ESTADO DO PARANÁ, APROVOU E EU, PREFEITO DO MUNICÍPIO, SANCIONO A SEGUINTE LEI: Art. 1º Fica incluída no Calendário de Comemorações Oficiais do Município de Londrina a Copa da Amizade de Futebol Suíço de Londrina, tradicional competição esportiva amadora realizada anualmente no município. Art. 2º A Copa da Amizade de Futebol Suíço de Londrina poderá ser realizada em data a",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "São Mateus do Sul",
@@ -21982,7 +22205,36 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "a9cedbd19a",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 1.997",
+    "data_ato": "2010",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "trecho_documento": "ificação de ameaças; III - Incorporar as ações de proteção e defesa civil no planejamento municipal; IV - Elaborar, manter atualizado e implementar o Plano de Contingência (PLANCON); V - Realizar vistorias em áreas de risco e, se necessário, solicitar ou promover a interdição de locais e a evacuação da população; VI - Manter a população informada sobre os riscos e as formas de prevenção. www.saomateusdosul.pr.gov.br PREFEITURA DE SÃO MATEUS DO SUL (42) 3912-7008 Rua Barão do Rio Branco,431 – Centro CNPJ 76.021.450/0001-22 Diário Oficial do Município de São Mateus do Sul/PR 2 Lei Municipal nº 1",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "São Mateus do Sul",
@@ -21998,7 +22250,36 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "ba6f2b8496",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 1.997",
+    "data_ato": "2010",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "trecho_documento": "e do Poder Executivo e do Coordenador Executivo da COMPDEC na gestão de riscos e desastres; II - Analisar, propor alterações e emitir parecer sobre o Plano de Contingência Municipal (PLANCON); III - Aprovar o plano de aplicação dos recursos do Fundo Municipal de Proteção e Defesa Civil (FUMPDEC) e atuar como órgão fiscalizador, analisando as suas prestações de contas; IV - Propor diretrizes para a integração das ações de defesa civil com as políticas de ordenamento territorial, saúde, meio ambiente e assistência social do município; V - Promover a participação da sociedade civil no voluntariad",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Ipiranga",
@@ -22014,7 +22295,43 @@
    "autoridade": "executivo",
    "objeto": "el_nino",
    "destino": "registro_defesa_civil",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "ed067e9120",
+   "nivel_confianca": "A",
+   "pontos_confianca": 9,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_inicio_do_trecho",
+    "plano_no_trecho",
+    "ato_formal",
+    "familia_de_risco_do_ciclo",
+    "texto_candidato_forte"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "citacao_do_trecho": {
+     "numero": "DECRETO Nº. 107",
+     "data_ato": "2026"
+    },
+    "numero": "DECRETONº107",
+    "data_ato": "2026",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "DECRETO DECRETONº107/2026................................................................................... AVISO AVISODELICITAÇÃOPREGÃOELETRÔNICON°069/2026.............................................. ADJUDICAÇÃO ADJUDICAÇÃOPREGÃOELETRÔNICONº065/2026.................................................... RESULTADODEPROCESSO LOTESMALSUCEDIDOSPREGÃOELETRÔNICONº065/2026............................................ HOMOLOGAÇÃO TERMODEHOMOLOGAÇÃOCONCORRÊNCIAELETRÔNICANº08/2026............................... TERMODEHOMOLOGAÇÃOPREGÃOELETRÔNICONº060/2026....................................... TERMODEHO",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2026)"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: data do ato incompleta (2026)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Guaraniaçu",
@@ -22030,7 +22347,36 @@
    "autoridade": "executivo",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "9487cc7458",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 134",
+    "data_ato": "31/03/2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "trecho_documento": "e do Poder Executivo e do Coordenador Executivo da COMPDEC na gestão de riscos e desastres; II - analisar, propor alterações e emitir parecer sobre o Plano de Contingência Municipal (PLANCON); III - aprovar o plano de aplicação dos recursos do Fundo Municipal de Proteção e Defesa Civil (FUMPDEC) e atuar como órgão fiscalizador, analisando as suas prestações de contas; IV - propor diretrizes para a integração das ações de defesa civil com as políticas de ordenamento territorial, saúde, meio ambiente e assistência social do município; Diário Oficial Assinado Eletronicamente com Certificado Padrã",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2021 — pode ser edição anterior; decisão humana"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: ato de 2021 — pode ser edição anterior; decisão humana"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Guaraniaçu",
@@ -22046,7 +22392,37 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "2c51b795a4",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_so_no_trecho",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Municipal n° 482",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "Decreto Municipal n° 4823/ 2021 MUNICÍPIO DE GUARANIAÇU – PR Avenida Abilon de Souza Naves, 458 Centro CEP: 85.400-200 Telefone: (45) 32321162 SEDUNDA-FEIRA, 20 DE JULHO DE 2026 ANO: VI EDIÇÃO Nº 1.265 ATOS DO PODER EXECUTIVO E LEGISLATIVO SUMÁRIO DECRETO N.º 7400/2026 ............................................................................................................................. 2 EDITAL Nº 088/2026 .................................................................................................................................... 4 LEI Nº 1703/2026 ...............................",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Guaraniaçu",
@@ -22062,7 +22438,37 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — promover a registro exige documento primário lido por humano"
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "b7e3d8bf11",
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_so_no_trecho",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "25/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 134",
+    "data_ato": "31/03/2021",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "trecho_documento": "ificação de ameaças; III - incorporar as ações de proteção e defesa civil no planejamento municipal; IV - elaborar, manter atualizado e implementar o Plano de Contingência (PLANCON); Diário Oficial Assinado Eletronicamente com Certificado Padrão ICP- Arquivo Assinado Digitalmente por Prefeitura de Guaraniaçu/PR Brasil e Protocolado com Carimbo de Tempo SCT de acordo com a A Prefeitura Municipal de Guaraniaçu da garantia da autenticidade deste documento, desde que visualizado através de Medida Provisória 2200-2 do Art. 10º de 24.08.01 da ICP-Brasil http://www.guaraniacu.pr.gov.br no link Diário",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   }
  ]
 }
