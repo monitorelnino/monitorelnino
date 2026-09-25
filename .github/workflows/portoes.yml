@@ -137,7 +137,7 @@ jobs:
       - name: Autotestes dos coletores
         if: steps.diff.outputs.dado_mudou == 'true'
         run: |
-          for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_saude coletar_financiamento gerar_lai gerar_painel; do python3 $c.py --autoteste; done
+          for c in coletar_s2id coletar_doe coletar_declarado_nacional coletar_diarios_municipais coletar_diarios_consorciados coletar_saude coletar_financiamento gerar_lai gerar_painel; do python3 $c.py --autoteste; done
           python3 gerar_feeds.py --self-test
           python3 triar_confianca_pistas.py --autoteste
           python3 revisar_pistas.py --autoteste

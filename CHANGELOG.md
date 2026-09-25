@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §223 · O canal destravado entra na rotina, com a janela certa · 25/09/2026
+
+Classe **rotina de coleta**.
+
+O canal dos diários consorciados estava escrito desde 22/09 e **fora do pipeline** — nem em `atualizar.yml`, nem nos portões —, porque a fonte bloqueava e rodá-lo não produzia nada. Destravado (§217), ele passa a ser o único caminho para a maioria dos 5.041 municípios sem diário indexado no Querido Diário, e ficar fora da rotina seria deixar o conserto na gaveta.
+
+**A janela é curta de propósito: oito dias.** Uma edição consorciada é um PDF de vários megabytes e leva cerca de dois minutos entre baixar e ler; varrer o ciclo inteiro são horas por estado — medido. Isso é trabalho de rodada dedicada, não de cadência diária. A rotina precisa do que é novo desde ontem; o retroativo se faz uma vez.
+
+**O que foi varrido nesta sessão, e o que ficou.** Minas Gerais e Goiás fecharam o ciclo inteiro: 86 e 148 dias com edição, **14 pistas e 7 decretos**. Ceará estava em andamento quando a rodada foi encerrada, e Paraná, Rio Grande do Sul, Rio Grande do Norte e Bahia não começaram — as quatro primeiras por tempo, a Bahia porque as duas fontes dela estão fora do ar (§217). O retroativo desses estados fica declarado como pendente, e não como varrido.
+
+O autoteste do coletor entrou na lista de portões, onde não estava.
+
 ## §222 · Terceira cópia do mesmo vocabulário, e ela só falhou quando a fonte voltou · 25/09/2026
 
 Classe **correção de verificação**. Nenhum número muda; sete atos deixam de reprovar o portão.
