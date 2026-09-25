@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 25/09/2026 · 449 pendente(s) · 15 decidida(s) · A=85 B=286 C=78
+Gerado em 25/09/2026 · 450 pendente(s) · 15 decidida(s) · A=85 B=287 C=78
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1456,7 +1456,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.cm-almeirim.pt/images/repositorio/2025/Plano%20de%20A%C3%A7%C3%A3o%202025.pdf
   - trecho: e aprovados na última revisão do Plano d · nto de ações a implementar que preten · o de recursos, esforços e iniciativas locais, be · or parte das entidades locais. Palno de Ação · 2025/2026 · no de · olvimento · 024/202
 
-## Primavera/PA — 4 pendente(s)
+## Primavera/PA — 5 pendente(s)
 - `33c5c4e2e4` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Primavera começa nesta terça-feira (22/9) com influência do El Niño
   - url: https://correiopetropolitano.com.br/2026/09/21/primavera-comeca-nesta-terca-feira-22-9-com-influencia-do-el-nino-2/
@@ -1476,6 +1476,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: A primavera começa nesta terça-feira (22) com influência do El Niño ...
   - url: https://www.instagram.com/reel/DdjcfUDOx9f/
   - trecho: 1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: "A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...
+  - juiz: portão automático: fonte não oficial
+- `f2c6baef92` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: A primavera começa nesta terça-feira (22) com influência do El Niño ...
+  - url: https://www.instagram.com/reel/DdjcfUDOx9f/
+  - trecho: 4 days ago ... ... likes, 15 comments - defesacivil_petropolis on September 21, 2026: "A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
 
 ## Paulista/PE — 9 pendente(s)

@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-25",
- "total_pistas": 464,
+ "total_pistas": 465,
  "total_municipios": 198,
  "por_nivel": {
   "A": 87,
-  "B": 288,
+  "B": 289,
   "C": 89
  },
  "grupos": [
@@ -5751,6 +5751,110 @@
    ]
   },
   {
+   "ibge": "1506104",
+   "municipio": "Primavera",
+   "uf": "PA",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 5,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "33c5c4e2e4",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://correiopetropolitano.com.br/2026/09/21/primavera-comeca-nesta-terca-feira-22-9-com-influencia-do-el-nino-2/",
+     "titulo": "Primavera começa nesta terça-feira (22/9) com influência do El Niño",
+     "trecho": "1 day ago ... A primavera começa nesta terça-feira, dia 22 de setembro, às ... Elaboração do Plano de Contingência para Chuvas Intensas Verão 2026/2027.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2ba4c41a5c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://sul21.com.br/noticias/geral/2026/04/el-nino-deve-intensificar-chuvas-da-primavera-mas-ainda-e-cedo-para-prever-eventos-extremos/",
+     "titulo": "El Niño deve intensificar chuvas da primavera, mas ainda é cedo ...",
+     "trecho": "Apr 9, 2026 ... El Niño deve intensificar chuvas da primavera, mas ainda é cedo para prever eventos extremos ... plano de contingência bem estruturado. As ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a691974354",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdkM97SOz_M/",
+     "titulo": "A primavera começa nesta terça — e o El Niño pode mudar o ...",
+     "trecho": "7 hours ago ... Primavera 2026: 🌡️ Temperaturas podem ficar acima da ... Entre as medidas de preparação estão a elaboração do plano de contingência para ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b92d75059e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
+     "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
+     "trecho": "1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: \"A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f2c6baef92",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
+     "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
+     "trecho": "4 days ago ... ... likes, 15 comments - defesacivil_petropolis on September 21, 2026: \"A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4109401",
    "municipio": "Guarapuava",
    "uf": "PR",
@@ -6050,92 +6154,6 @@
      "titulo": null,
      "trecho": "Jun 22, 2026 ... ... Plano de Contingência para Chuvas Intensas Verão 2025/2026, que segue vigente. ... Tags:el niño, inverno, petrópolis, previsão, rio, super ...",
      "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "1506104",
-   "municipio": "Primavera",
-   "uf": "PA",
-   "melhor_nivel": "B",
-   "n_pistas": 4,
-   "niveis": {
-    "A": 0,
-    "B": 4,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "33c5c4e2e4",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://correiopetropolitano.com.br/2026/09/21/primavera-comeca-nesta-terca-feira-22-9-com-influencia-do-el-nino-2/",
-     "titulo": "Primavera começa nesta terça-feira (22/9) com influência do El Niño",
-     "trecho": "1 day ago ... A primavera começa nesta terça-feira, dia 22 de setembro, às ... Elaboração do Plano de Contingência para Chuvas Intensas Verão 2026/2027.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "2ba4c41a5c",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://sul21.com.br/noticias/geral/2026/04/el-nino-deve-intensificar-chuvas-da-primavera-mas-ainda-e-cedo-para-prever-eventos-extremos/",
-     "titulo": "El Niño deve intensificar chuvas da primavera, mas ainda é cedo ...",
-     "trecho": "Apr 9, 2026 ... El Niño deve intensificar chuvas da primavera, mas ainda é cedo para prever eventos extremos ... plano de contingência bem estruturado. As ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "a691974354",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdkM97SOz_M/",
-     "titulo": "A primavera começa nesta terça — e o El Niño pode mudar o ...",
-     "trecho": "7 hours ago ... Primavera 2026: 🌡️ Temperaturas podem ficar acima da ... Entre as medidas de preparação estão a elaboração do plano de contingência para ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "b92d75059e",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DdjcfUDOx9f/",
-     "titulo": "A primavera começa nesta terça-feira (22) com influência do El Niño ...",
-     "trecho": "1 day ago ... ... likes, 12 comments - defesacivil_petropolis on September 21, 2026: \"A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...",
-     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
