@@ -101,17 +101,48 @@ def t3():
         return True
 
 
+def _aceita(decisao, nivel=None):
+    """Chama log_busca() de verdade, contra um `data/` temporário, e diz se passou."""
+    import json as _json
+    import tempfile as _tmp
+    import coletores_base as _cb
+    with _tmp.TemporaryDirectory() as d:
+        antigo, _cb.DATA = _cb.DATA, pathlib.Path(d)
+        (_cb.DATA / "log_buscas.json").write_text(
+            _json.dumps({"formato_versao": 2, "execucoes": []}), encoding="utf-8", newline="\n")
+        try:
+            _cb.log_busca("DOM", 1, ["x"], decisao, nivel=nivel)
+            return True
+        except AssertionError:
+            return False
+        finally:
+            _cb.DATA = antigo
+
+
+def t6():
+    """25/09/2026 (§213): toda decisão do vocabulário é de fato aceita por log_busca().
+    O §194 criou `sem_edicao_no_periodo` no coletor dos diários e não a registrou aqui — a
+    varredura nacional morria no primeiro município indexado sem edição na janela."""
+    from coletores_base import DECISOES_LOG
+    return all(_aceita(d) for d in DECISOES_LOG if d != "nada")
+
+
+def t7():
+    """Negativo, e é o que dá sentido ao vocabulário ser fechado: decisão fora dele reprova."""
+    return not _aceita("inventei_agora")
+
+
 def t4():
-    """'consultado sem achado' é aceito sem nível — é sonda de UF, não verificação municipal."""
-    import ast as _ast
-    import pathlib as _p
-    fonte = (_p.Path(__file__).resolve().parent.parent / "coletores_base.py").read_text(encoding="utf-8")
-    arvore = _ast.parse(fonte)
-    for no in _ast.walk(arvore):
-        if isinstance(no, _ast.FunctionDef) and no.name == "log_busca":
-            texto = _ast.get_source_segment(fonte, no) or ""
-            return '"consultado"' in texto and '"nada localizado"' not in texto.split("assert")[1][:200]
-    return False
+    """'consultado sem achado' é aceito sem nível — é sonda de UF, não verificação municipal.
+
+    25/09/2026: este teste lia o TEXTO de log_busca() procurando a palavra no `assert`. Quando o
+    vocabulário virou a constante nomeada `DECISOES_LOG` — para que um coletor possa provar que a
+    decisão que inventou cabe nele —, o teste reprovou sem que nada tivesse mudado de
+    comportamento. Teste de texto quebra em refatoração; agora ele testa o que importa: a decisão
+    é aceita, e é aceita SEM nível. `nada localizado` continua exigindo a bateria municipal, o que
+    t3 prova pelo outro lado."""
+    from coletores_base import DECISOES_LOG
+    return "consultado" in DECISOES_LOG and _aceita("consultado sem achado", nivel=None)
 
 
 def t5():
@@ -131,6 +162,8 @@ def t5():
 
 sys.exit(rodar_autoteste({"§184 'nada localizado' sem bateria municipal reprova": t3,
                           "§184 'consultado sem achado' entra no vocabulário": t4,
+                          "§213 toda decisão do vocabulário é aceita por log_busca()": t6,
+                          "negativo: decisão fora do vocabulário reprova": t7,
                           "§184 nenhum script loga 'nada localizado' sem o nível": t5,
                           
     "vocabulário de nivel intacto (não aceita 'municipal')": t1,

@@ -448,10 +448,13 @@ except Exception as _e:
 try:
     import json as _j0
     _lg = _j0.load(open(RAIZ / "data" / "log_buscas.json", encoding="utf-8"))
-    _DEC_DOM = {"sem_cobertura_qd", "coberto_sem_mencao", "com_excerto", "registro", "erro"}
+    # 25/09/2026 (§213): era uma cópia, e ficou para trás quando o §194 criou
+    # `sem_edicao_no_periodo` — o portão reprovou 86 execuções legítimas. O conjunto agora vem de
+    # quem produz as decisões, para que as duas listas não possam divergir de novo.
+    from coletar_diarios_municipais import DECISOES_DOM as _DEC_DOM
     _ruins = [e for e in _lg.get("execucoes", []) if e.get("canal") == "DOM" and (e.get("data") or "") >= "2026-09-07"   # a partir da primeira rodada após o §1.2 (a de 06/09 6h ainda era o varredor em lote)
               and e.get("decisao") not in _DEC_DOM]
-    if _ruins: erro(f"log DOM sem as decisões do §1.2 (sem_cobertura_qd/coberto_sem_mencao/com_excerto) em {len(_ruins)} execução(ões) desde 06/09 — ex.: {_ruins[0].get('decisao')!r} {str(_ruins[0].get('resultados'))[:60]!r}")
+    if _ruins: erro(f"log DOM com decisão fora do conjunto do canal ({', '.join(_DEC_DOM)}) em {len(_ruins)} execução(ões) desde 06/09 — ex.: {_ruins[0].get('decisao')!r} {str(_ruins[0].get('resultados'))[:60]!r}")
     # 'nada localizado' municipal exige cobertura confirmada (cobertura_qd = true) ou bateria completa (§4.1.2)
     _vm = _j0.load(open(RAIZ / "data" / "verificacao_municipal.json", encoding="utf-8"))
     _nl = [r for r in _vm if r.get("nivel_verificacao") == "municipal_completo" and r.get("cobertura_qd") is False and not r.get("bateria_completa")]

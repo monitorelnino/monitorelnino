@@ -153,6 +153,21 @@ jobs:
           # Crawl-delay, acessar documento público com cliente identificado e DEIXAR RASTRO. O
           # autoteste roda sem rede e trava as quatro partes, inclusive o rastro do canal renderizado.
           python3 scripts/testar_robots.py
+          # §209 (24/09/2026): leitor único da página de consulta do DOU. O DOU trocou o
+          # <input value="{json}"> por um <script type="application/json"> e as duas cópias do
+          # regex passaram a devolver LISTA VAZIA, caladas: 132 reconhecimentos reais lidos como
+          # zero. O autoteste é offline e trava a lição — ausência de estrutura LEVANTA, o trecho
+          # da busca é excerto e não é prova, e janela lida pela metade volta declarada.
+          python3 scripts/testar_busca_dou.py
+          # §209 (24/09/2026): a escrita de data/. Além da atomicidade de 21/09, agora trava a
+          # espera curta no cadeado momentâneo do Windows (WinError 5), que derrubou o
+          # coletar_s2id em evidencias.json — sem engolir falta de permissão de verdade.
+          python3 scripts/testar_escrita_atomica.py
+          # §212 (25/09/2026): os lotes de escrita do log de buscas e do livro de fontes.
+          # Os dois arquivos eram lidos e regravados a cada município; numa varredura de
+          # 2.965, dezenas de GB de E/S e outras tantas janelas de corrupção. O autoteste é
+          # offline e trava o que não pode falhar: sem lote nada muda, com lote nada se perde.
+          python3 scripts/testar_lote_de_escrita.py
           # §165 (23/09/2026): coletor do painel do AM. O autoteste é offline por construção
           # (rede, evidência, log e livro de fontes injetados) e confere a regra que dá sentido
           # ao coletor: ano no painel é `declarado`, nunca `documentado`.

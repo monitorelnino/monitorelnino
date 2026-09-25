@@ -44,15 +44,18 @@ USO
   python coletar_siconfi_182.py --capitais           # só as 27 capitais (piloto)
   python coletar_siconfi_182.py --uf SP              # uma UF
   python coletar_siconfi_182.py --lote 300           # próximos N municípios pendentes
+  python coletar_siconfi_182.py --paralelo 6         # trabalhadores de REDE (padrão 6)
 """
 import json
 import pathlib
 import sys
+from concurrent.futures import ThreadPoolExecutor
 import urllib.error
 import urllib.parse
 from datetime import date
 
-from coletores_base import (buscar, ler, log_busca, registrar_lacuna, rodar_autoteste, sha256)
+from coletores_base import (abrir_lote_log, buscar, descarregar_lote_log, fechar_lote_log,
+                            ler, log_busca, registrar_lacuna, rodar_autoteste, sha256)
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "financiamento" / "municipios" / "despesa_182.json"
@@ -72,6 +75,12 @@ COLUNAS = {"Despesas Empenhadas": "empenhada", COLUNA_PUBLICADA: "liquidada",
            "Inscrição de Restos a Pagar Não Processados": "rp_nao_processados",
            "Inscrição de Restos a Pagar Processados": "rp_processados"}
 FORMULA_RS_HAB = "despesa liquidada na subfunção 06.182 ÷ população do Censo 2022"
+# Busca em paralelo: só a REDE. Medido em 24/09/2026 contra o Tesouro — 1 trabalhador dá 60
+# chamadas/min, 8 dão 522, sem um erro. Seis é o meio-termo escolhido: corta a varredura nacional
+# de seis horas para cerca de vinte minutos sem tratar a fonte como se fosse nossa. Tudo o que
+# MUTA estado (registro, log, arquivo) continua numa thread só, na ordem — paralelizar mutação
+# seria trocar seis horas por uma corrida de dados no livro de buscas.
+TRABALHADORES = 6
 RESSALVA_OBRIGATORIA = "inclui preparação e resposta"
 
 # Capital de cada UF pelo CÓDIGO IBGE, que é a chave canônica. A mesma tabela existe em
@@ -224,15 +233,34 @@ def coletar(args) -> int:
     if "--lote" in args:
         pendentes = pendentes[: int(args[args.index("--lote") + 1])]
     print(f"SICONFI 182 · exercício {exercicio} · {len(pendentes)} município(s) nesta rodada")
+    # Varredura nacional: sem lote, seriam 5.570 leituras e gravações de um log de 16 MB (§209).
+    # O lote acumula em memória e descarrega de 250 em 250, junto com o salvamento parcial abaixo.
+    abrir_lote_log()
     ok = sem_decl = falhas = 0
-    for i, (cod, nome, uf) in enumerate(pendentes, 1):
+    trabalhadores = int(args[args.index("--paralelo") + 1]) if "--paralelo" in args else TRABALHADORES
+
+    def puxar(alvo):
+        """Só rede, e devolve o erro em vez de levantar — quem consome muta o estado, em ordem."""
+        cod, nome, uf = alvo
         url = f"{API}?an_exercicio={exercicio}&no_anexo={urllib.parse.quote(ANEXO)}&id_ente={cod}"
         try:
-            bruto = buscar(url, timeout=40, origem="coletar_siconfi_182")
+            return alvo, url, buscar(url, timeout=40, origem="coletar_siconfi_182"), None
         except (urllib.error.URLError, TimeoutError, OSError) as e:
-            registrar_lacuna(f"SICONFI 182/{nome}-{uf}", type(e).__name__, canal="DOU", camada=1,
+            return alvo, url, None, e
+
+    piscina = ThreadPoolExecutor(max_workers=trabalhadores)
+    resultados = piscina.map(puxar, pendentes)
+    for i, ((cod, nome, uf), url, bruto, erro) in enumerate(resultados, 1):
+        if erro is not None:
+            registrar_lacuna(f"SICONFI 182/{nome}-{uf}", type(erro).__name__, canal="DOU", camada=1,
                              uf=uf, municipio=nome, ibge=cod, strings=[url])
             falhas += 1
+            if falhas > 200 and falhas > ok:
+                # A fonte caiu de vez: parar e declarar, em vez de varrer 5 mil erros.
+                piscina.shutdown(wait=False, cancel_futures=True)
+                fechar_lote_log(); gravar(registro)
+                print(f"[aviso] SICONFI: {falhas} falhas de rede contra {ok} leituras — rodada interrompida.")
+                return 0
             continue
         try:
             lido = parse_dca_182(json.loads(bruto.decode("utf-8", "replace")), exercicio)
@@ -268,7 +296,11 @@ def coletar(args) -> int:
                   n_resultados=1, resultados=f"SICONFI 182: {registro['municipios'][cod]['classe']}",
                   hash_evidencia=sha256(bruto))
         if i % 200 == 0:
+            descarregar_lote_log()
             gravar(registro)      # salva parcial: 5.570 chamadas não podem depender de terminar
+            print(f"  … {i}/{len(pendentes)}", flush=True)
+    piscina.shutdown(wait=True)
+    fechar_lote_log()
     gravar(registro)
     print(f"  com lançamento nesta rodada: {ok} · sem declaração: {sem_decl} · falhas de rede: {falhas}")
     return 0

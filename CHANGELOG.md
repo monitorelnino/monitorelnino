@@ -9,6 +9,201 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §216 · O livro guardava doze registros para cinco consultas, e isso apagava a varredura · 25/09/2026
+
+Classe **correção de coleta**. Nenhum número público muda; o que muda é o site saber o que já consultou.
+
+**A pergunta que revelou.** Terminada a varredura, a conferência foi direta: cada município foi consultado ao menos uma vez? O **log** — que é o livro-razão, só cresce e nunca se deduplica — diz que sim, **5.571 códigos IBGE distintos** com consulta ao diário dentro do ciclo. Mas o **livro de fontes consultadas**, que é de onde o coletor tira a fila de pendentes, dizia que **1.896 continuavam pendentes**. Dois arquivos, duas respostas.
+
+**Quem estava errado era o livro, e por um detalhe de desenho.** Ele guarda, por município, as últimas **doze entradas** — uma janela, não um histórico. Medido: das doze, apenas **cinco ou seis eram consultas distintas**; havia **38.434 entradas repetidas** no arquivo inteiro. A causa é boa e vira defeito na escala: `coletar_s2id` marca os 5.571 municípios a cada rodada, e roda mais de uma vez por dia, então quatro marcações idênticas de "DOU/SEDEC (via MIDR) em 24/09" ocupavam quatro das doze vagas — e empurravam para fora justamente a consulta ao diário municipal, feita uma vez só.
+
+**O conserto.** A janela passa a guardar as doze consultas **distintas** (fonte, dia), ficando com a entrada mais recente de cada par. Não é dedupe de conteúdo — é a distinção entre dois arquivos com perguntas diferentes, e ela merece ficar escrita:
+
+- o **log** responde *quantas tentativas houve*. Duas execuções iguais em dias diferentes são duas tentativas reais e contam; deduplicar ali já apagou quase 3.000 execuções em 23/09, e continua proibido.
+- o **livro** responde *que fontes foram consultadas, e quando*. A mesma fonte no mesmo dia, repetida, não acrescenta resposta nenhuma — só gasta vaga.
+
+Refeito o arquivo com a regra nova, a janela passou a cobrir de 11/09 a 25/09 no lugar de só 23/09 a 25/09, e as duas respostas voltaram a bater: **5.571 de 5.571 com o diário municipal consultado no ciclo, zero pendentes**.
+
+Quatro casos no autoteste, um deles o contraste que dá sentido à regra: o log continua **não** deduplicando.
+
+## §215 · A quebra de linha vinha da fonte, e a normalização estava no lugar errado · 25/09/2026
+
+Classe **integridade de evidência**. Nenhum número muda.
+
+O §177 (23/09) estabeleceu que **cópia preservada em CRLF é cópia que depende da máquina que a produziu**, e nasceu do OCR — o Tesseract do Windows devolve CRLF. O conserto de então foi fixar o modo de escrita.
+
+A varredura nacional mostrou o outro caminho: **dois diários municipais vieram da fonte com CRLF solto**, 8 e 16 quebras entre mais de cem mil LF. O modo de escrita não pega isso — ele traduz a quebra que **nós** escrevemos, não a que já veio dentro do texto. O portão de evidências reprovou, com razão.
+
+A normalização passou para a **entrada**, onde o texto é lido. Isso é legítimo porque a cópia preservada é **transcrição, não arquivo byte a byte** — já redigimos CPF dela, por dever legal —, então padronizar a quebra de linha está dentro do mesmo contrato, e é o que torna a cópia independente da máquina. Cinco cópias já em disco foram normalizadas e tiveram o hash **reselado no índice**, de modo que a conferência de integridade continua batendo.
+
+## §214 · 503 não é bloqueio nem limite: é "tente mais tarde", e a resposta certa é tentar mais tarde · 25/09/2026
+
+Classe **correção de coleta**. Peso zero; o que muda é quanta coisa a varredura consegue ler.
+
+**Medido na varredura nacional, com ela rodando:** dos 505 primeiros municípios, **63 viraram lacuna por `HTTP 503 Service Unavailable`** — 12 %. O projeto já separa bem as recusas que se respeitam sem insistir (403, 401, captcha, login) e o limite de taxa (429, que manda esperar). O 503 não é nenhum dos dois: é o servidor dizendo que está fora **agora**.
+
+**E a defesa que existia não servia para isto.** Diante de 5xx, o coletor trocava para o domínio de reserva do Querido Diário. Essa reserva foi criada em 21/09 para cobrir **troca de endereço** — e o endereço antigo serve o **mesmo serviço**. Se a produção está fora, a reserva está fora junto: a tentativa era gasta sem chance de sucesso, e o município virava lacuna.
+
+**O conserto.** 503 (e 5xx em geral) passa a ser tratado como o que é: duas novas tentativas, com 5 e 15 segundos de espera, antes de recorrer à reserva ou declarar a lacuna. 429 segue com a espera longa que a fonte pede. **4xx continua subindo na hora** — consulta errada não melhora com repetição, e repetir dobraria a carga sobre uma API pública mantida por um projeto sem fins lucrativos.
+
+**Medido depois, com o conserto rodando:** a varredura terminou com **204 municípios** em lacuna por 503; a passagem seguinte, com a espera, leu **os 204, com zero lacunas** — e encontrou mais um decreto. Nenhum se perdera: no caminho de erro o coletor **não** marca a fonte como consultada, então quem cai em 503 continua na fila. Quatro casos no autoteste, com relógio injetado: 503 que passa na terceira tentativa espera 5 e 15; 503 permanente desiste depois dessas duas, sem laço infinito; 404 sobe sem espera nenhuma; 429 espera os 30 segundos, uma vez.
+
+## §213 · A varredura dos diários municipais estava morrendo havia um dia, por uma palavra · 25/09/2026
+
+Classe **correção de coleta**. Nenhum número público muda; o que muda é a varredura voltar a andar.
+
+**O que aconteceu.** O §194, de 24/09, criou uma decisão nova para o log: `sem_edicao_no_periodo` — o município tem diário indexado, mas **nenhuma edição dentro da janela**, que é diferente de "indexado e sem menção" e diferente de "não indexado". A distinção está certa e é exatamente o tipo de coisa que este projeto separa. Só que o vocabulário de decisões do log é **fechado**, por um `assert`, e a palavra nova não foi acrescentada lá.
+
+Resultado: desde 24/09 a varredura dos diários municipais **morria com `AssertionError` no primeiro município indexado sem edição na janela**. Morrer é melhor do que gravar errado — o `assert` fez o trabalho dele —, mas a varredura ficou parada um dia inteiro e a fila de pendentes cresceu de 2.965 para **3.428** sem que isso aparecesse como problema de vocabulário.
+
+**O conserto não é acrescentar a palavra.** Acrescentá-la é uma linha; o que importa é por que ninguém viu. O vocabulário era uma tupla anônima dentro do `assert`, visível só para quem abrisse a função — então o coletor que **inventa** uma decisão não tinha como conferir se ela cabia. Agora a lista é a constante `DECISOES_LOG`, e o autoteste do coletor dos diários prova que **toda** decisão que ele pode produzir cabe nela. Inventar decisão nova sem registrá-la passa a reprovar no portão, não em produção.
+
+**E a palavra tinha ficado de fora de DUAS listas, não de uma.** A segunda apareceu depois, quando a suíte inteira rodou: o portão `verificar_consistencia.py` mantinha a **própria cópia** do conjunto de decisões válidas para o canal dos diários, e reprovou **86 execuções legítimas** — pelo mesmo motivo, em outro lugar. Cópia de vocabulário é isso: envelhece em silêncio e só se manifesta quando a decisão nova aparece no dado.
+
+Agora o conjunto do canal é declarado **onde as decisões são produzidas**, no próprio coletor, e importado por quem confere. As duas listas não podem mais divergir, e o autoteste do coletor prova que tudo o que ele pode produzir cabe nos dois conjuntos — o do canal e o do log.
+
+Dois testes a mais no lado do log: que toda decisão do vocabulário é de fato aceita, e — o que dá sentido a ele ser fechado — que decisão fora dele reprova. E um terceiro achado de passagem: o teste que guardava `consultado sem achado` lia o **texto** da função procurando a palavra, e reprovou quando a lista virou constante, sem nada ter mudado de comportamento. Teste de texto quebra em refatoração; ele passou a testar o que importa, chamando a função.
+
+## §212 · O livro de fontes tinha o mesmo defeito do log, e ele é o arquivo que já foi corrompido · 25/09/2026
+
+Classe **infraestrutura de coleta**. Nenhum número público muda.
+
+**O que apareceu ao preparar a varredura dos diários municipais.** O §209 resolveu, para o log de buscas, a escrita repetida a cada município: 20 MB lidos e regravados por consulta. O livro de fontes consultadas — `fontes_consultadas.json`, 12 MB — continuava exatamente como estava, e é chamado uma vez por município pelos mesmos coletores. Nos **2.965 municípios pendentes** de hoje, são cerca de 71 GB de entrada e saída só nele, e 2.965 janelas em que uma interrupção deixa o arquivo pela metade.
+
+Não é hipótese: **esse é o arquivo que foi corrompido assim em 21/09/2026**, quando um coletor foi interrompido no meio de uma gravação e o JSON voltou com 166.961 linhas no lugar de 368.019. A escrita atômica resolveu o arquivo truncado; a frequência da escrita ficou de pé.
+
+**E ele apareceu antes disso, medido, numa rodada que parecia travada.** O `coletar_s2id` ficou **53 minutos** com a CPU em 100% sem escrever nada, e a primeira suspeita — rede — estava errada. Cronometrado por partes: a varredura do DOU leva 29 segundos em 7 requisições; abrir um ato leva cerca de 1 segundo; os parsers da tabela rodam em milissegundos. O tempo estava no laço final: cada município reconhecido chama `marcar_fato_municipal`, que lê e regrava o livro de 12 MB, e cada município que não casa com a referência do IBGE chama `log_busca`, que faz o mesmo com o log de 20 MB. São mais de 600 municípios em 136 portarias — horas de serialização de JSON para gravar algumas centenas de campos.
+
+É um defeito que só aparece quando a fonte volta a funcionar: enquanto o canal do DOU lia zero (§210), esse laço nunca rodava. Consertar a leitura expôs o custo de escrever.
+
+**O conserto é o mesmo, e agora é simétrico.** O livro ganhou lote opcional, igual ao do log: sem abrir lote, nada muda para nenhum coletor existente; com lote, o livro é carregado uma vez, mutado em memória e descarregado de 250 em 250. A varredura dos diários municipais abre os dois lotes e os fecha num `finally` — porque perder 2.900 registros por causa de um Ctrl-C seria pior do que a entrada e saída que o lote evita — e grava parcial a cada 250 municípios, de modo que o que já foi lido conte mesmo se a rodada não terminar.
+
+**E um terceiro arquivo, com um erro de data junto.** O teste de cobertura do Querido Diário é cacheado por janela — mas gravava assim mesmo, a cada município: `cobertura_qd.json` (418 kB) e, pior, `verificacao_municipal.json` (2 MB), lido e regravado inteiro. São cerca de **13 GB de entrada e saída na varredura para não mudar nada**. Agora só grava quem mudou.
+
+Ao arrumar apareceu um erro que a escrita cega escondia: o espelho público carimbava `data_teste_cobertura` com a data de **hoje** mesmo quando o resultado veio do cache — isto é, quando o teste tinha sido feito dias antes. Afirmava uma verificação que não houve. A data que vai ao espelho passou a ser a do **teste**, e não a da rodada.
+
+Os lotes entraram em `coletar_s2id`, `coletar_diarios_municipais` e `coletar_doe` — este último por antecipação, porque hoje nenhum DOE tem adaptador confirmado e o laço nem chega ao município; o dia em que chegar não é o dia de descobrir isto com 27 UFs na fila.
+
+Nove casos no autoteste, em `data/` temporário, para os dois lotes: sem lote é uma gravação por chamada (o comportamento antigo intacto); com lote nada é gravado até fechar e tudo chega; o teto descarrega no caminho e nada se perde; fechar duas vezes não duplica; e a regra de fundo do livro — **nível de verificação nunca rebaixa** — continua valendo com o lote aberto. São 61 portões.
+
+## §211 · A segunda rodada do clima municipal mostrava previsão de ontem com a data de hoje · 25/09/2026
+
+Classe **correção de coleta**. Peso zero: sinal de risco não entra na nota.
+
+**O defeito.** O coletor de clima municipal decide o que pedir com uma pergunta só: *este município já tem o valor?* Na primeira varredura isso basta. Na segunda, no dia seguinte, ele pulava quem já tinha leitura — e mesmo assim carimbava o arquivo inteiro com `gerado_em` de hoje. O mapa diria "coleta de 25/09" mostrando, para a maioria dos municípios, a previsão de 24/09.
+
+O comentário do próprio código dizia *"município já lido **hoje** não é pedido de novo"*. A intenção estava escrita; o "hoje" é que não existia em lugar nenhum.
+
+**Por que isso não se resolve pedindo tudo de novo.** O teto diário do plano gratuito do Open-Meteo conta por localidade: 5.570 municípios × 2 variáveis são 11.140, acima dos 10 mil do dia. Renovar as duas no mesmo dia é impossível por construção — a rotina diária alterna a variável pelo dia, e o arquivo, portanto, **sempre** terá leituras de dias diferentes. O que não pode é isso ficar implícito.
+
+**O conserto.** Cada leitura passa a carregar a data em que foi feita (`lido_tempo`, `lido_ar`), e o coletor passa a distinguir duas rodadas que antes eram uma só: **renovar** (o padrão — precisa ler quem não tem o valor *ou* cujo valor é de outro dia) e **preencher** (`--preencher` — só quem nunca teve leitura, para fechar a cobertura nacional sem gastar o teto renovando o que já está lido). O resumo conta por data, e a linha-fato da página passou a dizer de quando é cada variável em vez de deixar a data da coleta passar por data de tudo.
+
+Cinco casos no autoteste, sobre a função que decide: município sem leitura entra nas duas rodadas; leitura de ontem é renovada na rodada diária e **não** é refeita na de preenchimento; leitura de hoje não é pedida de novo; e leitura sem carimbo conta como a renovar — porque ausência de data não é prova de atualidade.
+
+## §210 · O DOU trocou de formato, e dois coletores passaram a ler zero sem dizer nada · 24/09/2026
+
+Classe **correção de coleta**. Peso zero: nada aqui muda nota. O que muda é o que o site consegue ver.
+
+**O que aconteceu.** A página de consulta do Diário Oficial da União trocou o transporte do resultado da busca. Ele vinha num `<input ... value="{json}">` e passou a vir num `<script type="application/json">`. Dois coletores — `coletar_s2id` e o `coletar_espin` escrito hoje — tinham, cada um, a **cópia** do mesmo regex do `<input>`; os dois passaram a devolver **lista vazia** para qualquer consulta.
+
+**O silêncio é o defeito, não a troca.** Mudança de formato de fonte é rotina, e o projeto tem guarda para ela: o `coletar_s2id` testava `"jsonArray" in texto` antes de confiar na leitura. Só que essa string **continua na página** — está dentro do próprio `<script>` e no JavaScript ao lado. A guarda passava, o parser devolvia `[]`, e o coletor registrava a consulta como bem-sucedida com zero achados. Medido em 24/09, com a janela do ciclo: a consulta de reconhecimentos tem **132 resultados reais** e o coletor lia **0**.
+
+Zero dessa forma é a pior coisa que este projeto pode publicar: tem a cara de "procuramos e não há" e é, na verdade, "não conseguimos procurar". Continuavam entrando reconhecimentos pelo canal principal, que é o RSS do MIDR — o canal do DOU é o segundo —, mas o segundo estava desligado e ninguém sabia.
+
+**O conserto não é o regex novo.** O leitor da consulta do DOU passou a ser **um só**, em `coletores_base`, lido pelos dois coletores; e ele **levanta** quando a página não traz a estrutura de resultados, em vez de devolver lista vazia. A diferença entre "a fonte respondeu e não há" e "a fonte respondeu e não entendi" deixou de ser uma linha de guarda que alguém precisa lembrar de escrever, e passou a ser impossível de confundir: uma devolve `[]`, a outra estoura.
+
+### Três coisas que a leitura correta mostrou
+
+**A busca não pagina, e entrega no máximo 50.** `delta=50` traz 50; `delta=100` volta a 20; `start` é ignorado. Ler os 50 mais recentes de 132 e não dizer nada seria apresentar recorte como varredura — então a consulta virou varredura por **janela**: quando o total que a página declara é maior do que o que ela entrega, a janela é partida ao meio, recursivamente, até caber. Dia único que ainda estoure volta declarado como leitura parcial, e o coletor registra a lacuna.
+
+**A data vai em dd-mm-aaaa.** Com `aaaa-mm-dd` a página responde `200`, normalmente, e devolve **outra janela** — 3 resultados no lugar de 132. Formato errado aqui não dá erro: dá número menor. Ficou travado em teste, porque é o tipo de coisa que se conserta uma vez e se reintroduz na próxima.
+
+**O trecho da busca não é o ato.** O que a consulta devolve é um excerto de ≈235 caracteres, com o termo embrulhado em marcação de destaque, que **nunca** chega ao município e frequentemente corta o verbo do ato. Quem precisa do conteúdo abre o ato. E o ato moderno não diz mais "Município de X - UF" em prosa: traz uma **tabela** (UF · Município · Desastre · Decreto · Data · Processo), que é dado melhor do que a prosa — vem com o número e a data do decreto **municipal**, que agora entram em campo próprio, sem mudar o significado de nenhum campo que o banco já usava.
+
+E o rótulo do ato deixou de ser afirmação nossa. Quem reconhece situação de emergência de município é a SEDEC (Lei 12.608; Decreto 10.593, art. 20), e a busca **declara o órgão** de cada resultado — então "Portaria SEDEC/MIDR nº N" passou a ser o que a fonte diz, e ato de outro órgão que apenas casa com a mesma expressão não vira reconhecimento federal. Órgão que a fonte não declarou continua sendo lido: silêncio da fonte não é filtro.
+
+**A rodada completa, com o canal consertado: 618 reconhecimentos lidos e ZERO novos.** É a melhor notícia possível, e vale explicar por quê. O canal principal é o RSS do MIDR, que chega antes; o canal do DOU é o segundo. Os dois são independentes — um lê a notícia do ministério, o outro lê o ato publicado — e, varrendo o ciclo inteiro, concordam inteiramente: tudo o que o DOU reconhece já estava no banco. O canal desligado não estava escondendo reconhecimento nenhum; estava deixando de **confirmar**.
+
+**Mas o ato traz o que a notícia não tem**, e descartar isso seria jogar dado fora por causa do que já sabíamos: o número e a data do decreto **municipal** e a classe do desastre, que estão na tabela do ato e não no texto da notícia. O acréscimo é aditivo e usa a mesma chave que já serve para deduplicar — preenche campo ausente, nunca sobrescreve campo existente —, e isso ficou travado em teste.
+
+### A fonte que tinha ficha no catálogo e não tinha código
+
+**ESPIN — emergência em saúde pública declarada — estava em `aguardando_primeira_coleta` desde 02/09.** O zero que a página mostrava veio de busca manual de 05/09. Zero conferido à mão é dado; o que ele não faz é durar. Uma declaração publicada em novembro passaria despercebida até alguém lembrar de procurar de novo.
+
+`coletar_espin.py` busca no DOU pelo vocabulário do **próprio ato** e **classifica pelo que o texto diz que é**: declaração, prorrogação, encerramento ou menção de passagem. Nada entra no banco por conta própria — a promoção é humana (R7) —, e a classificação serve para separar o que vale a leitura de quem: a declaração vai à frente da fila, prorrogação e encerramento vão atrás, porque prorrogar uma emergência que o banco não tem descreveria um estado que o site não conhece. Menção de passagem — a resolução da Anvisa que cita a expressão, e que a primeira rodada real encontrou — não é ato e não entra em lugar nenhum.
+
+Duas decisões foram **medidas**, não escolhidas de cabeça. Os termos: a expressão por extenso devolve 2 resultados na janela do ciclo, a forma curta devolve 26 — e a sigla "ESPIN", com ou sem aspas, devolve 37 atos sem relação nenhuma, porque o buscador do DOU não a trata como sigla; ficou de fora, porque ruído não é cobertura. E quais atos abrir: **ESPIN é declarada pelo Ministro da Saúde** (Decreto 7.616/2011, art. 2º), e o órgão vem declarado pela própria busca — então só os atos dele são abertos por inteiro. Órgão ausente é lido, nunca descartado: silêncio da fonte não pode virar filtro.
+
+**E a revisão do coletor achou quatro coisas que o autor não veria.** Vale registrar porque são todas do mesmo tipo — não erro de conta, e sim silêncio.
+
+**Falha de leitura virava ausência.** Quando a rede falhava ao abrir um ato, os dois coletores caíam para o excerto (ESPIN) ou descartavam o resultado (S2iD), sem registro. Uma rodada com rede ruim se pareceria, no arquivo, com "procuramos e não há". Agora o ato que não pôde ser aberto entra em `nao_lidos`, muda a situação do registro para `leitura_incompleta` e vira lacuna declarada com o endereço do ato.
+
+**O classificador não tinha "não sei".** Ele devolvia sempre declara, prorroga, encerra ou menciona — nunca a dúvida, contra a regra do projeto de que na dúvida o classificador não classifica. Agora há `incerto`, e ele aparece em três situações: dois verbos em trechos diferentes do mesmo ato, ato que não pôde ser aberto, e verbo que aparece só no excerto de um ato que não foi aberto. O caso inverso também ficou travado: *"declara o encerramento"* é uma frase só, não duas decisões, e continua sendo encerramento — o casamento mais específico absorve o que se sobrepõe a ele.
+
+**Classificação automática chegava ao texto público.** O cartão de emergências sanitárias contava `declaracoes` do coletor, ou seja, ia ao ar o que uma expressão regular decidiu sozinha. Peso zero no índice não é a mesma coisa que dispensa de revisão: o contador do cartão passou a vir **só do banco**, que é humano, e o que o coletor acha vai para `data/espin_revisar.json`, a fila de leitura do projeto (R7). Enquanto houver ato na fila, o cartão diz que há ato localizado **em conferência** — que é o fato — e não que há emergência registrada.
+
+**E faltava o ritmo de dois segundos.** Estreitar a janela multiplica as consultas ao mesmo host, e depois abre-se um ato por resultado: era a hora de ir mais devagar, não mais rápido. O §11 do projeto passou a valer no canal do DOU, com a primeira consulta de cada varredura sem espera e as seguintes com ela — travado em teste, inclusive a contagem das esperas.
+
+O cartão de "Emergências sanitárias declaradas" deixou de dizer "coleta em andamento" — frase que serve para quem não procurou — e passou a dizer qual dos três estados é o caso: não procuramos, procuramos e não há (com a janela e a data), ou há.
+
+### E um cadeado do Windows que derrubou a rodada
+
+No meio da varredura, `coletar_s2id` morreu com `PermissionError` ao substituir `data/evidencias.json`: no Windows, `os.replace()` falha quando **outro** processo tem o destino aberto, e o indexador do sistema abre os JSON grandes de `data/` sozinho, por um instante. A escrita atômica de 21/09 continua igual; ganhou uma espera curta e algumas tentativas. O que ela **não** faz é engolir o erro — falta de permissão de verdade tem de aparecer —, e o temporário não fica órfão ao lado do arquivo bom.
+
+Dois portões novos guardam o conjunto — o leitor do DOU e a escrita de `data/` —, e os autotestes dos dois coletores passaram de 11 e 16 para 16 e 21 casos, com trava estrutural que confere a via que eles de fato usam para escrever. São 60 portões.
+
+## §209 · A rodada nacional: os 5.571 municípios, e o que cada fonte aceitou dar · 24/09/2026
+
+Classe **coleta**. Peso zero em tudo o que entra; nenhuma nota muda.
+
+**O pedido.** Popular o site com pelo menos uma rodada de todos os municípios, em cada caso, e fazer rodar todos os coletores de saúde, de financiamento e de risco. O que segue é o resultado, com o que cada fonte aceitou dar e o que recusou — porque numa varredura nacional o que **não** vem é tão informativo quanto o que vem.
+
+### O que impedia varrer o país, e foi resolvido
+
+**O log de buscas era lido e gravado a cada município.** `log_busca` lê e regrava `data/log_buscas.json` — 16 MB — a cada chamada. Correto para um coletor de dezenas de municípios; para 5.570, são cerca de 180 GB de entrada e saída, e 5.570 janelas em que uma interrupção deixa o arquivo pela metade. É a mesma armadilha que corrompeu `fontes_consultadas.json` em 21/09. Agora `coletores_base` tem **lote opcional**: sem abrir lote nada muda para nenhum coletor existente; com lote, as execuções ficam em memória e descarregam de 250 em 250 — teto que limita a E/S e também o que se perderia numa interrupção.
+
+**E a varredura levaria seis horas.** Medido contra o Tesouro: um trabalhador dá 60 chamadas por minuto, oito dão 522, sem um erro. Seis foi o meio-termo escolhido — corta a varredura para vinte minutos sem tratar a fonte como se fosse nossa. Paraleliza-se **só a rede**: tudo o que muta estado continua numa thread só, em ordem, porque trocar seis horas por uma corrida de dados no livro de buscas seria um mau negócio.
+
+### Dinheiro próprio do município: a varredura completa
+
+**Os 5.571 municípios consultados no SICONFI.** 1.497 com lançamento na subfunção 182, **3.998 que entregaram a declaração e não lançaram nada ali**, e 76 sem declaração. Mediana de **R$ 8,50 por habitante** entre os que lançaram.
+
+A distribuição é extrema e o extremo é **real**: de menos de um centavo por habitante a **R$ 2.209,50**. Os seis maiores são municípios minúsculos do **Rio Grande do Sul** — Canudos do Vale liquidou R$ 3,66 milhões para 1.656 habitantes. Não é erro de vírgula nem de população: é o que a fonte declara, e conferi um por um.
+
+**Dois defeitos que só a escala nacional produziu.** Com 27 capitais o mapa funcionava; com 5.571 ele quebrou de duas maneiras. Os **5.564 círculos com tratador de mouse** faziam a página levar 14 segundos para abrir — viraram camadas densas por classe, e agora são 5,5 segundos. E a **escala contínua de 0 ao máximo** punha 99 % do país na mesma cor: virou classe por quantil, com a legenda dizendo os limites (até R$ 1,16 · R$ 1,16 a R$ 4,48 · R$ 4,48 a R$ 13,96 · R$ 13,96 a R$ 40,05 · acima de R$ 40,05). A lista por extenso, de 5.571 entradas, passou a ser montada **quando o leitor abre**, não no carregamento: continua completa, muda só o momento em que é construída.
+
+### Clima municipal: o teto que conta por localidade
+
+`data/clima_municipios.json` guarda temperatura e PM2,5 por município, compacto. Duas coisas medidas com rede, e as duas mudaram o desenho:
+
+**O plano gratuito do Open-Meteo conta por LOCALIDADE, não por chamada.** Um pedido com 100 coordenadas gasta 100 do teto diário de 10 mil — e 5.570 municípios × 2 variáveis são 11.140. **Não cabem no mesmo dia.** Por isso as variáveis passam a ser coletadas em rodadas separadas, alternando pelo dia na rotina diária, e o coletor **retoma**: município já lido não é pedido de novo.
+
+**E varrer em rajada é recusado.** A primeira tentativa trouxe HTTP 429 em 39 de 56 lotes e uma coleta pela metade — que o resumo teria mostrado como se fosse cobertura. Agora há pausa entre lotes e espera crescente no 429. Limite de taxa é regra da fonte: aqui isso significa esperar, não insistir mais rápido.
+
+Os dois mapas do Monitor de riscos ganharam seletor **capitais / todos os municípios**, cada camada com sua legenda, e uma linha-fato dizendo a cobertura de cada variável — sem ela, um mapa com 5.570 pontos e outro com 1.700 pareceriam a mesma coisa.
+
+### O que as fontes recusaram, e o que isso significa
+
+**Probabilidades ENSO (IRI):** o arquivo tabular dá **404**; o host novo que serve os gráficos responde **403** em tudo que não seja a imagem publicada; a QuickLook e a discussão do CPC não trazem tabela no HTML. 403 é bloqueio de acesso real e não se insiste. O parser segue provado por fixture, esperando a tabela voltar.
+
+**Painel de arboviroses do MS:** o portal de dados mudou de endereço e o que publica sobre dengue é **microdado do Sinan** — 83 arquivos —, não a série semanal do painel. Agregar microdado produziria número **nosso**, que pode divergir do painel oficial: é projeto próprio e decisão da editoria, não coleta. A página segue com o InfoDengue, creditado como modelo.
+
+**Painel de excesso de calor do MS:** responde, e recusa, e responde de novo. Medido no mesmo dia: **5.573 municípios** numa consulta, e `200` com corpo vazio em outra, minutos depois. É limite de taxa, não bloqueio — então a descoberta ganhou espera crescente, para a fonte não ficar eternamente em "aguardando primeira coleta" por causa de uma janela de minutos.
+
+### O índice de resposta aparecia com escala em dois lugares e sem escala no terceiro
+
+**O cartão do leitor — o que abre quando alguém digita a própria cidade — não tinha a barra de resposta.** A grade de estados tem, a ficha do estado tem, e as duas usam a rampa fria→quente (Mineral → Argila) que a resposta tem por definição. No cartão, a mesma grandeza aparecia só como número de decretos em texto corrido, ao lado da barra do MARÉ, que é outra rampa e outra coisa. Quem consulta a própria cidade — o leitor mais provável do site — via a metade que não tem escala.
+
+Agora o cartão traz a mesma barra, com a mesma arte e os mesmos números da ficha do estado. Os dois índices nunca se somam (C17), e o relatório em PDF, que é gerado por esse cartão, passou a dizer a mesma coisa que ele.
+
+**E ao pôr os dois lado a lado apareceu uma contradição aparente.** Em Pernambuco o cartão diz "0 decreto(s) reativo(s)" numa linha e "3 de 185 municípios" na barra logo acima. Os dois números estão certos e são de **cadastros diferentes**: a cobertura documentada conta atos de planejamento localizados no banco do Monitor; o índice de resposta conta decretos de emergência no registro federal (S2iD) e nos diários. O cartão passou a dizer isso, em vez de deixar o leitor concluir que um dos dois está errado.
+
+### O que já estava feito, e vale registrar
+
+A varredura municipal de planos **já cobria os 5.571** em nível nacional. O que faltava era a profundidade: o diário municipal consultado, município a município, dentro da janela do ciclo.
+
+**Isso fechou em 25/09: 5.571 de 5.571, zero pendentes.** Foram 3.631 consultas nesta rodada, e o resultado diz mais sobre a cobertura do país do que sobre o Monitor: **3.093 municípios não têm diário indexado** no Querido Diário — não há onde procurar, e isso é lacuna declarada, nunca "nada localizado"; 86 têm diário indexado sem nenhuma edição dentro da janela; 67 têm edições e nenhuma menção aos termos; **167 trouxeram menção**, que vai à fila de leitura humana; e 14 viraram registro de decreto.
+
 ## §208 · O que faltava para a credencial chegar, e a variável de fundo que a MUNIC não tem · 24/09/2026
 
 Classe **infraestrutura e verificação de fonte**. Nenhum número público muda.

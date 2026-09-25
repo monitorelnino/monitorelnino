@@ -1,7 +1,7 @@
 {
  "_governanca": "MARÉ · Saúde v0.3 (15/09/2026; v0.2 em 14/09; v0.1 em 05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Três componentes com pesos iguais (1/3), como no índice principal: instrumento estadual × cobertura populacional sanitária (população em município cujo plano localizado trata a saúde, crédito municipal do MARÉ × degrau/5 da leitura saude_no_plano; plano sem leitura = 0, contado) × antecipação. Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31.",
  "versao": "0.3",
- "gerado_em": "24/09/2026",
+ "gerado_em": "25/09/2026",
  "corte": "05/09/2026",
  "metodo": {
   "pesos": {
@@ -116,7 +116,7 @@
     "dengue_capital": "Rio Branco",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 112
+    "focos_24h": 143
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -156,7 +156,7 @@
     "dengue_capital": "Maceió",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 1
+    "focos_24h": 0
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -196,7 +196,7 @@
     "dengue_capital": "Manaus",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 1506
+    "focos_24h": 263
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -236,7 +236,7 @@
     "dengue_capital": "Macapá",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 64
+    "focos_24h": 49
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -276,7 +276,7 @@
     "dengue_capital": "Salvador",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 457
+    "focos_24h": 179
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -316,7 +316,7 @@
     "dengue_capital": "Fortaleza",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 31
+    "focos_24h": 10
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -436,7 +436,7 @@
     "dengue_capital": "Goiânia",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 136
+    "focos_24h": 160
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -476,7 +476,7 @@
     "dengue_capital": "São Luís",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 1129
+    "focos_24h": 205
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -516,7 +516,7 @@
     "dengue_capital": "Belo Horizonte",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 154
+    "focos_24h": 71
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -556,7 +556,7 @@
     "dengue_capital": "Campo Grande",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 2
+    "focos_24h": 3
    },
    "risco_projetado": [
     "arboviroses",
@@ -596,7 +596,7 @@
     "dengue_capital": "Cuiabá",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 1119
+    "focos_24h": 1351
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -636,7 +636,7 @@
     "dengue_capital": "Belém",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 2630
+    "focos_24h": 810
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -676,7 +676,7 @@
     "dengue_capital": "João Pessoa",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 2
+    "focos_24h": 1
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -716,7 +716,7 @@
     "dengue_capital": "Recife",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 24
+    "focos_24h": 10
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -756,7 +756,7 @@
     "dengue_capital": "Teresina",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 509
+    "focos_24h": 273
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -876,7 +876,7 @@
     "dengue_capital": "Natal",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 0
+    "focos_24h": 17
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -916,7 +916,7 @@
     "dengue_capital": "Porto Velho",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 128
+    "focos_24h": 73
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -956,7 +956,7 @@
     "dengue_capital": "Boa Vista",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 11
+    "focos_24h": 27
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -996,7 +996,7 @@
     "dengue_capital": "Porto Alegre",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 0
+    "focos_24h": 2
    },
    "risco_projetado": [
     "leptospirose",
@@ -1036,7 +1036,7 @@
     "dengue_capital": "Florianópolis",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 0
+    "focos_24h": 1
    },
    "risco_projetado": [
     "leptospirose",
@@ -1116,7 +1116,7 @@
     "dengue_capital": "São Paulo",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 1
+    "focos_24h": 19
    },
    "risco_projetado": [
     "leptospirose",
@@ -1156,7 +1156,7 @@
     "dengue_capital": "Palmas",
     "dengue_se": 202637,
     "avisos_calor": 0,
-    "focos_24h": 1467
+    "focos_24h": 235
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",

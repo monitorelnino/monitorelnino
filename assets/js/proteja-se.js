@@ -136,10 +136,27 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       + '<br><small>Consultado em ' + esc(ALERTAS.gerado_em || '—') + '.</small>';
   }
   // Emergências sanitárias (ESPIN e decretos por dengue/calor): resposta, peso zero.
+  // 24/09/2026: enquanto não havia coletor, o cartão só sabia dizer "coleta em andamento" —
+  // frase que serve para quem não procurou. Com a busca no DOU rodando, ele passa a distinguir
+  // os estados que o projeto separa. O CONTADOR vem só do banco (`emergencias`), que é humano:
+  // o que o coletor classificou sozinho está na fila de leitura (R7) e não é registro, então
+  // aparece como ato localizado em conferência — nunca como emergência registrada.
   const fE = (SSIN.fontes || {}).espin || {};
-  el('asEmerg').textContent = (fE.status === 'coletado' && (SSIN.emergencias || []).length)
-    ? (SSIN.emergencias.length + ' emergência(s) sanitária(s) registrada(s) — atos de resposta, registro à parte, peso zero.')
-    : 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento).';
+  const bE = SSIN.espin_busca || null;
+  const nE = (SSIN.emergencias || []).length;
+  const emConferencia = bE ? ((bE.declaracoes || []).length + (bE.para_leitura_humana || []).length) : 0;
+  const naoLidos = bE ? (bE.nao_lidos || []).length : 0;
+  const janela = bE ? ('janela de ' + MonitorMapas.dataBR(bE.janela.de) + ' a ' + MonitorMapas.dataBR(bE.janela.ate)
+                       + ', consultada em ' + bE.consultado_em) : '';
+  el('asEmerg').textContent = nE
+    ? (nE + ' emergência(s) sanitária(s) registrada(s) — atos de resposta, registro à parte, peso zero.')
+    : !(fE.status === 'coletado' && bE)
+      ? 'Nenhuma emergência sanitária registrada até o corte (fonte: DOU e diários municipais; coleta em andamento).'
+      : emConferencia
+        ? (emConferencia + ' ato(s) localizado(s) no Diário Oficial da União, seção 1, ' + janela + ', em conferência antes de entrar no registro.')
+        : naoLidos
+          ? ('Consulta ao Diário Oficial da União, seção 1, ' + janela + '; ' + naoLidos + ' ato(s) não puderam ser abertos.')
+          : ('Nenhuma declaração localizada no Diário Oficial da União, seção 1, na ' + janela + '.');
   MonitorMapas.credito('asFonte', {fontes: ['modelo InfoDengue (Fiocruz/FGV)', 'Painel de Arboviroses (MS)', 'INMET', 'DOU e diários municipais (ESPIN)'], data: [fD.ultima_coleta_ok, fD.consultado_em, fI.consultado_em, (SSIN || {}).gerado_em, (SINAIS || {}).gerado_em].find(Boolean) || null});
 })();
 

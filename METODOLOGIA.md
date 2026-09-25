@@ -1149,3 +1149,107 @@ O DF **não entrega DCA municipal porque não é município**: declara como esta
 Anexo `DCA-Anexo I-E`; a subfunção vem no campo `conta`, como "06.182 - Defesa Civil"; o campo `coluna` distingue empenhada, liquidada, paga e as duas de inscrição de restos a pagar, e a **liquidada** é a publicada, com as outras guardadas porque a diferença entre elas é informação. `id_ente` tem de ser o código IBGE exato, e consulta sem ele devolve zero itens: **não existe consulta em lote**, então são 5.570 chamadas, o que cabe na cadência anual da DCA. Cada registro guarda a URL consultada, a data e o hash da resposta.
 
 O cálculo é `despesa liquidada na subfunção 06.182 ÷ população do Censo 2022`, com a fórmula declarada no dado. A população é **sempre** a do Censo 2022, nunca a estimativa que o próprio SICONFI devolve — que fica guardada como contexto, e cuja diferença muda o número publicado: no Rio de Janeiro, R$ 0,47 por habitante pela estimativa do SICONFI contra R$ 0,50 pelo Censo.
+
+
+## 43. A rodada nacional e os tetos que as fontes impõem (24/09/2026)
+
+Varrer os 5.571 municípios não é a mesma coisa que varrer 27 capitais, e o que muda não é só o tempo.
+
+### 43.1 O que a escala quebra, e que 27 não mostram
+
+**Entrada e saída.** O livro de buscas é lido e regravado a cada execução registrada. A 27 municípios isso é irrelevante; a 5.570, são cerca de 180 GB de E/S e outras tantas janelas em que uma interrupção deixa o arquivo pela metade. Coletor de varredura nacional abre **lote** no log: acumula em memória e descarrega de 250 em 250 — teto que limita a E/S e também o que se perde numa interrupção.
+
+**E vale para todo arquivo grande escrito por item, não só o log (25/09/2026).** O livro de fontes consultadas tem o mesmo padrão de escrita e o mesmo tamanho de ordem de grandeza; a regra, portanto, é do padrão e não do arquivo: **coletor que percorre municípios não grava arquivo grande por item**, acumula e descarrega com teto. O teto é o que limita tanto a entrada e saída quanto o que uma interrupção levaria embora, e o fechamento vai num `finally`, porque perder milhares de registros por causa de uma interrupção é pior do que a E/S que o lote evita.
+
+Um detalhe do diagnóstico merece registro, porque se repete: **o custo de escrever só aparece quando a leitura volta a funcionar**. Enquanto o canal do DOU lia zero por uma mudança de formato da fonte, o laço que grava por município nunca rodava; consertar a leitura foi o que expôs a escrita. Rodada que parece travada, portanto, não é sempre a fonte: medir por partes — varredura, leitura do documento, parser, laço de gravação — é o que separa rede de serialização.
+
+**Desenho.** Um ponto por município com tratador de mouse é natural a 27 e insustentável a 5.571: a página passava de cinco para catorze segundos. A varredura nacional usa **camada densa por classe** — um caminho por classe —, e o detalhe por município vive na lista, que é a alternativa canônica do site. A lista, por sua vez, é montada **quando o leitor a abre**: cinco mil entradas construídas no carregamento custam segundos que ninguém pediu.
+
+**Escala de cor.** Uma escala contínua de zero ao máximo funciona quando a distribuição é estreita. A despesa municipal em defesa civil vai de menos de um centavo a R$ 2.209,50 por habitante, com mediana de R$ 8,50: numa escala contínua, 99 % do país cai na mesma cor e o mapa não diz nada. Distribuição assimétrica pede **classe por quantil**, com os limites escritos na legenda — cinco tons sem limite declarado não significam nada.
+
+### 43.2 Os tetos das fontes são regra, não obstáculo
+
+**Teto por localidade.** O plano gratuito do Open-Meteo conta **por localidade**, não por requisição: um pedido com cem coordenadas gasta cem. Os 5.570 municípios em duas variáveis somam 11.140 — acima do teto diário de dez mil. A consequência é de método, não de código: as variáveis são coletadas em **rodadas separadas**, alternando por dia, e o coletor **retoma** de onde parou. A cobertura de cada variável fica declarada na própria página, porque um mapa com 5.570 pontos e outro com 1.700 parecem a mesma coisa.
+
+**Limite de taxa.** Varrer em rajada trouxe `HTTP 429` em 39 de 56 lotes — e uma coleta pela metade que, sem o resumo por variável, teria passado por cobertura. Limite de taxa é regra de acesso da fonte: cumpri-lo significa **pausa entre lotes e espera crescente**, nunca insistir mais rápido.
+
+**Paralelismo, quando a fonte aceita.** Contra o Tesouro, medido: um trabalhador dá 60 chamadas por minuto, oito dão 522, sem erro. Seis é o meio-termo adotado — corta a varredura de seis horas para vinte minutos sem tratar a fonte como se fosse nossa. E paraleliza-se **só a rede**: tudo o que muta estado corre numa thread só, em ordem, porque uma corrida de dados no livro de buscas custa mais do que as horas economizadas.
+
+### 43.3 Recusa transitória não é ausência
+
+Uma fonte pode responder, recusar e responder de novo no mesmo dia. O painel de excesso de calor do MS devolveu 5.573 municípios numa consulta e `200` com corpo vazio minutos depois. Tratar a segunda resposta como ausência definitiva deixaria a fonte eternamente em "aguardando primeira coleta" por causa de uma janela de minutos. A regra que daí resulta: **recusa servida com 200 continua sendo recusa** — nunca vira zero —, mas o coletor espera e tenta de novo antes de desistir da rodada.
+
+E há a recusa que não é transitória, e essa se respeita sem insistência: `403` em tudo que não seja a figura publicada (probabilidades ENSO do IRI), e tela de login servida com `200` (série do InfoGripe). Nos dois casos o que entra no site é lacuna declarada, com o que foi testado escrito por extenso — para que ninguém repita a busca e para que a volta da fonte seja reconhecida quando acontecer.
+
+### 43.4 Quando o teto obriga a misturar dias, a data é por dado (25/09/2026)
+
+Um teto que conta por localidade não é só um limite de volume: ele decide a **periodicidade possível**. Com 5.570 municípios e duas variáveis contra um teto de dez mil por dia, renovar as duas no mesmo dia é impossível por construção — a rotina alterna a variável pelo dia, e o arquivo terá sempre leituras de datas diferentes.
+
+Daí a regra: **quando o teto obriga a misturar dias, a data deixa de ser do arquivo e passa a ser do dado**. Cada leitura carrega a data em que foi feita, o resumo conta por data, e a página diz de quando é cada variável. Um carimbo único de "gerado em" sobre um arquivo de datas mistas afirma atualidade que o dado não tem — e é o tipo de afirmação que ninguém percebe, porque o número está certo e só a data está errada.
+
+Disso decorre a separação entre duas rodadas que parecem a mesma: **renovar** (buscar quem não tem o valor ou cujo valor é de outro dia) e **preencher** (buscar só quem nunca teve leitura). A primeira é a rotina; a segunda serve para fechar a cobertura nacional sem gastar o teto do dia renovando o que já está lido. Confundi-las produz exatamente o defeito acima: cobertura que cresce enquanto a data mente.
+
+## 44. Ler uma fonte que mudou de forma: a diferença entre "não há" e "não entendi" (24/09/2026)
+
+O caso que originou esta seção está no `CHANGELOG.md` §210: a página de consulta do Diário Oficial da União trocou o transporte do resultado — de um `<input value="{json}">` para um `<script type="application/json">` — e dois coletores passaram a ler **lista vazia** em toda consulta, silenciosamente. Uma consulta com 132 resultados reais era registrada como consulta bem-sucedida com zero achados.
+
+### 44.1 Estrutura ausente levanta; lista vazia é resposta
+
+O projeto já separa quatro coisas que não se confundem: zero, ausência de dado, dado indisponível e dado não coletado. O defeito mostrou que essa separação não pode depender de uma guarda que o autor do coletor precisa lembrar de escrever — a guarda existia (`"jsonArray" in texto`) e passava, porque a string continuava na página em outro contexto.
+
+A regra que substitui a lembrança: **o leitor de uma fonte estruturada levanta quando a estrutura não está lá**, e só devolve coleção vazia quando a estrutura está presente e vazia. Uma responde "a fonte disse que não há"; a outra responde "a fonte respondeu e não entendi". Devolver a mesma coisa nos dois casos é o que transforma lacuna em afirmação.
+
+Corolário: **leitor de fonte é único**. Duas cópias do mesmo parser em coletores diferentes não são redundância — são duas chances de envelhecer em silêncio, e só uma de ser corrigida.
+
+### 44.2 Parâmetro que muda o recorte sem dar erro
+
+A mesma consulta aceita a data em dois formatos e responde `200` nos dois, com **janelas diferentes**: em `dd-mm-aaaa`, 132 resultados; em `aaaa-mm-dd`, três. Parâmetro errado que responde normalmente e devolve menos é mais perigoso do que parâmetro que falha, porque não deixa rastro. Onde um formato de parâmetro decide o tamanho do recorte, o formato é **travado em teste**, e não só comentado.
+
+### 44.3 Recorte não se apresenta como varredura
+
+A consulta entrega no máximo 50 resultados e não pagina. Ler os 50 mais recentes de 132 e publicar o resultado como se fosse a varredura da janela seria afirmação sem prova. O método é: comparar o total que a **própria página declara** com o que ela entregou e, quando não bate, **estreitar a janela** até caber. O que ainda não couber volta declarado como leitura parcial, com a janela e os dois números — e entra no registro do coletor como lacuna, não como resultado.
+
+### 44.4 O excerto da busca não é o documento
+
+O que uma busca devolve na lista de resultados é excerto — aqui, ≈235 caracteres, com o termo embrulhado em marcação de destaque. Ele serve para localizar o documento e **não** para extrair fato dele: corta o verbo do ato e nunca alcança o município. Fato se extrai do documento, aberto pelo endereço que o resultado traz.
+
+E quando abrir custa uma requisição por resultado, o critério de quais abrir vem da **competência declarada pela fonte**, não de palpite sobre o título: emergência em saúde pública de importância nacional é declarada pelo Ministro da Saúde (Decreto 7.616/2011, art. 2º), então são os atos do Ministério que se abrem por inteiro. Órgão que a fonte não declarou é lido, nunca descartado — silêncio da fonte não pode virar filtro.
+
+### 44.5 Falha de leitura não é ausência, e o classificador precisa de "não sei"
+
+Duas consequências da mesma regra, encontradas na revisão do coletor novo.
+
+**Falha ao abrir o documento tem de aparecer no registro.** Um coletor que tenta abrir o ato, não consegue e cai para o excerto — ou simplesmente descarta o resultado — produz um arquivo em que uma rodada com rede ruim é indistinguível de uma rodada sem achados. O documento que não pôde ser lido entra numa lista própria, muda a situação declarada da coleta e vira lacuna com o endereço do documento. É a mesma distinção de sempre, aplicada um nível abaixo: entre "a fonte não tem" e "não conseguimos ler o que a fonte tem".
+
+**O classificador tem quatro respostas, e uma delas é a dúvida.** Classificar é decidir, e decidir sempre é o defeito. A incerteza é declarada quando o texto sustenta mais de uma leitura (dois verbos em trechos diferentes do mesmo ato), quando o documento não pôde ser lido, e quando o indício veio de um excerto em vez do documento. O que **não** é incerteza: um casamento mais específico que se sobrepõe a um mais geral — "declara o encerramento" é uma frase só, e tratá-la como duas decisões encheria a fila humana de trabalho que a máquina já sabe fazer.
+
+### 44.6 Peso zero não dispensa revisão humana
+
+"Não entra no índice" e "pode ir ao ar sem conferência" são coisas diferentes, e confundi-las é fácil quando o dado é de peso zero. Saída de classificação automática vai para a fila de leitura humana (R7) e **não** para o texto público. Enquanto houver item na fila, o que o site diz é o fato verificável — que há ato localizado em conferência —, nunca o resultado da classificação como se fosse registro. O contador público vem sempre do banco, que é humano.
+
+## 45. Vocabulário fechado só funciona se quem escreve nele puder conferir (25/09/2026)
+
+O log de buscas tem um vocabulário **fechado** de decisões, garantido por asserção: registro, pista, nada localizado, consultado sem achado, fonte suspensa, erro, e as decisões de cobertura do diário municipal. Fechá-lo é a escolha certa — é o que impede que "não achamos" e "não procuramos" virem a mesma palavra por descuido de quem escreve um coletor novo.
+
+O caso que originou esta seção está no `CHANGELOG.md` §213: uma decisão nova e correta (`sem_edicao_no_periodo` — diário indexado, nenhuma edição na janela) foi criada num coletor e não registrada no vocabulário. A varredura nacional passou a morrer no primeiro município daquele tipo e ficou parada um dia, com a fila crescendo, sem que a causa aparecesse como problema de vocabulário.
+
+Daí duas regras.
+
+**A lista tem de ter nome, e uma só.** Vocabulário escondido dentro de uma asserção é visível só para quem abre a função — e, pior, tende a ser copiado: a mesma palavra que faltava na asserção faltava também na cópia que o portão de consistência mantinha, e reprovou 86 execuções legítimas quando a decisão nova apareceu no dado. Cópia de vocabulário envelhece em silêncio. O conjunto é declarado **onde as decisões são produzidas** e importado por quem confere. Nomeado, ele pode ser importado — e o coletor que **inventa** uma decisão prova, no próprio autoteste, que toda decisão que ele pode produzir cabe nela. A conferência passa do momento da execução para o momento do portão.
+
+**O fechamento se prova pelos dois lados.** Um teste confere que toda palavra do vocabulário é de fato aceita; outro, que palavra de fora reprova. Sem o segundo, "fechado" é só uma intenção escrita no comentário.
+
+**Corolário sobre testes.** O teste que guardava esse vocabulário lia o **texto** da função procurando a palavra, e reprovou quando a lista virou constante — sem que nada tivesse mudado de comportamento. Teste que lê código-fonte serve para regra estrutural ("nenhum script escreve neste arquivo"); para regra de comportamento, o teste chama a função. Confundir os dois produz reprovação falsa na refatoração e, pior, aprovação falsa quando o texto continua lá e o comportamento mudou.
+
+## 46. Livro-razão e janela: dois arquivos, duas perguntas, duas regras (25/09/2026)
+
+O projeto tem uma regra forte e bem estabelecida: **o log de buscas nunca se deduplica**. Duas execuções idênticas em dias diferentes são duas tentativas reais, e uma união por conteúdo já apagou quase 3.000 delas em 23/09/2026. A regra continua valendo integralmente.
+
+Ela vale para o log **porque o log responde a uma pergunta de contagem**: *quantas tentativas houve, quando, com que resultado*. É livro-razão: só cresce, e cada linha é um evento.
+
+O `fontes_consultadas.json` parece o mesmo arquivo e não é. Ele responde a outra pergunta — *que fontes foram consultadas para este município, e quando* — e guarda uma **janela** das últimas consultas, não o histórico inteiro. Nessa pergunta, a mesma fonte no mesmo dia, repetida, não acrescenta resposta nenhuma: só ocupa vaga.
+
+Confundir os dois custou caro, e o caso está no `CHANGELOG.md` §216: a janela de doze entradas guardava, na prática, cinco ou seis consultas distintas, porque um coletor marca os 5.571 municípios a cada rodada e roda mais de uma vez por dia. As repetições empurraram para fora a consulta ao diário municipal, e **1.896 municípios já consultados voltaram a aparecer como pendentes** — enquanto o log, corretamente, dizia que todos os 5.571 tinham sido consultados.
+
+Daí a regra: **a janela guarda consultas distintas; o livro-razão guarda eventos.** E o corolário prático: quando dois arquivos respondem à mesma pergunta e discordam, o livro-razão tem precedência — ele é o registro do que aconteceu, e a janela é derivada dele.
+

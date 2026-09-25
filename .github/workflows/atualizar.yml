@@ -351,6 +351,19 @@ jobs:
         continue-on-error: true
         run: python3 julgar_e_aplicar_descobertas.py
 
+      # §209: temperatura e PM2,5 dos 5.570 municípios. O teto diário do Open-Meteo conta por
+      # LOCALIDADE (5.570 × 2 variáveis = 11.140, acima de 10 mil), então cada rodada coleta UMA
+      # variável, alternando pelo dia do mês, e o coletor RETOMA de onde parou — município já
+      # lido hoje não é pedido de novo. Não é bloqueante: fonte sem resposta vira lacuna declarada.
+      - name: Clima municipal (temperatura ou qualidade do ar, alternando por rodada)
+        continue-on-error: true
+        timeout-minutes: 50
+        run: |
+          set -o pipefail
+          VARIAVEL=$([ $(( $(date -u +%d) % 2 )) -eq 0 ] && echo tempo || echo ar)
+          echo "variável desta rodada: $VARIAVEL"
+          python3 coletar_sinais_risco.py --municipios --apenas "$VARIAVEL" 2>&1 | tee /tmp/clima_mun.log
+
       - name: Atualizar dados (boletins + instrumentos estaduais + transferências)
         env:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}

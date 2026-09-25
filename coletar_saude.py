@@ -95,8 +95,17 @@ def semear():
                              "coletado_em, órgão, documento, data de referência, URL, valores por UF/município, "
                              "lacuna declarada. Dado epidemiológico é observação, nunca juízo de preparo. Peso zero.",
               "fontes": {
+                  # 24/09/2026 (§209): procurado o dado aberto do painel. O portal de dados do MS
+                  # mudou de endereço (opendatasus → dadosabertos.saude.gov.br, aplicativo novo, 140
+                  # conjuntos) e o que ele publica sobre dengue é MICRODADO do Sinan — 83 arquivos,
+                  # atualizados em setembro/2026 —, não a série de casos prováveis por semana que o
+                  # painel mostra. Agregar microdado do Sinan produziria número NOSSO, que poderia
+                  # divergir do painel do MS: é projeto próprio, não coleta, e exige decisão da
+                  # editoria. Até lá a página usa o InfoDengue, com crédito de modelo.
                   "painel_arboviroses_ms": {"nome": "Painel de Arboviroses", "orgao": "Ministério da Saúde", "papel": "fonte PRIMÁRIA do número de casos prováveis por semana epidemiológica",
-                                             "url_publica": None, "status": "a_verificar", "consultado_em": None, "nota": "formato em verificação"},
+                                             "url_publica": "https://dadosabertos.saude.gov.br/dataset/arboviroses-dengue",
+                                             "status": "a_verificar", "consultado_em": None,
+                                             "nota": "o MS publica microdado do Sinan (83 arquivos), não a série semanal do painel; agregar seria número nosso"},
                   "infodengue": {"nome": "InfoDengue", "orgao": "Fiocruz/FGV", "papel": "nível de alerta e série municipal semanal (modelo); crédito obrigatório 'modelo InfoDengue (Fiocruz/FGV)'",
                                  "url_publica": "https://info.dengue.mat.br", "status": "aguardando_primeira_coleta", "consultado_em": None,
                                  "regra_divergencia": "divergência com o painel do MS → exibe o MS e loga a diferença (C2)"},
@@ -231,12 +240,25 @@ def descobrir_calor_ms(buscar_fn=None, data: str = None) -> tuple:
     payload = {"t": {"t": 10, "i": 0, "p": {"k": ["data"], "v": [
         {"t": 10, "i": 1, "p": {"k": ["date"], "v": [{"t": 1, "s": dia}]}, "o": 0}]}, "o": 0}, "f": 63, "m": []}
     consulta = urllib.parse.quote(json.dumps(payload, separators=(",", ":")), safe="")
+    import time
     vazias = 0
     for h in handlers:
         url = f"{CALOR_MS_SITIO}_serverFn/{h}?payload={consulta}"
-        try:
-            bruto = fn(url)
-        except Exception:
+        bruto = None
+        # 24/09/2026 (§209): a recusa com 200 e corpo vazio é TRANSITÓRIA — medida como limite de
+        # taxa, não bloqueio: minutos depois o mesmo endereço devolveu os 5.573 municípios. Sem
+        # espera, a fonte ficava eternamente em "aguardando primeira coleta" por uma janela de
+        # alguns minutos. Esperar é respeitar o limite; insistir sem pausa é o contrário.
+        for tentativa in range(3):
+            try:
+                bruto = fn(url)
+            except Exception:
+                bruto = None
+            if (bruto or "").strip():
+                break
+            if tentativa < 2:
+                time.sleep(15 * (tentativa + 1))
+        if bruto is None:
             continue
         # 24/09/2026, medido: este endereço serve HTTP 200 com CORPO VAZIO quando não quer
         # responder — aconteceu 8 vezes em 8 tentativas depois de uma rajada de consultas, e

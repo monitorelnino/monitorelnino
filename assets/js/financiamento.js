@@ -479,11 +479,20 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       .filter(([, v]) => v.classe !== 'com_lancamento')
       .map(([cod, v]) => Object.assign({cod: cod, ll: coord[cod]}, v));
 
-    /* Escala em raiz quadrada sobre o R$/hab: a distribuição é muito assimétrica (no piloto das
-       capitais, de R$ 0,0014 a R$ 40,93) e uma escala linear achataria tudo menos o extremo. */
-    const valores = comValor.map(m => m.rs_hab);
-    const maxV = valores.length ? Math.max.apply(null, valores) : 1;
-    const escala = d3.scaleSqrt().domain([0, maxV]).range(MonitorMapas.PALETA.rampaPreparo).clamp(true);
+    /* Classes por QUANTIL, e não escala contínua. Com os 5.571 municípios a distribuição é
+       extrema: mediana de R$ 8,50 por habitante e máximo de R$ 2.209,50 — seis municípios
+       minúsculos do Rio Grande do Sul, onde o gasto é real e altíssimo. Numa escala contínua de
+       0 ao máximo, 99 % do país ficaria na mesma cor e o mapa não diria nada. Os quantis mostram
+       a distribuição; a legenda diz os limites de cada classe, então ninguém precisa adivinhar
+       o que a cor significa. */
+    const valores = comValor.map(m => m.rs_hab).sort((a, b) => a - b);
+    const maxV = valores.length ? valores[valores.length - 1] : 1;
+    const N_CLASSES = 5;
+    const corte = k => valores[Math.min(valores.length - 1, Math.floor(valores.length * k / N_CLASSES))];
+    const limites = Array.from({length: N_CLASSES - 1}, (_, i) => corte(i + 1));
+    const rampa = d3.scaleLinear().domain([0, N_CLASSES - 1]).range(MonitorMapas.PALETA.rampaPreparo);
+    const corDaClasse = i => rampa(i);
+    const classeDe = v => { let i = 0; while (i < limites.length && v >= limites[i]) i++; return i; };
     const COR_SEM_LANC = MonitorMapas.cor('areia');
     const COR_SEM_DECL = MonitorMapas.cor('sem-dado');
 
@@ -506,33 +515,33 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       .on('mousemove', (evt) => MonitorMapas.showTip(document.getElementById('mapTooltip').innerHTML, evt))
       .on('mouseleave', MonitorMapas.hideTip);
 
-    function desenhar(itens, corDe, raio) {
-      svg.append('g').selectAll('circle').data(itens.filter(m => m.ll)).join('circle')
-        .attr('cx', m => ctx.projection(m.ll)[0]).attr('cy', m => ctx.projection(m.ll)[1])
-        .attr('r', raio).attr('fill', corDe)
-        .attr('stroke', MonitorMapas.cor('branco')).attr('stroke-width', 0.7)
-        .on('mouseenter', (evt, m) => MonitorMapas.showTip(
-          '<strong>' + esc(m.nome) + ' (' + esc(m.uf) + ')</strong>'
-          + '<br>' + (m.populacao_censo2022 ? m.populacao_censo2022.toLocaleString('pt-BR') + ' hab. (Censo 2022)' : 'população não localizada')
-          + (m.classe === 'com_lancamento'
-              ? '<br>Liquidada em 2025: ' + total((m.valores || {}).liquidada) + '<br>' + reais(m.rs_hab) + ' por habitante'
-              : m.classe === 'sem_lancamento_182'
-                ? '<br>Entregou a declaração e não lançou nada na subfunção 182'
-                : '<br>' + esc(m.nota || 'Não entregou o exercício ao SICONFI')), evt))
-        .on('mousemove', (evt) => MonitorMapas.showTip(document.getElementById('mapTooltip').innerHTML, evt))
-        .on('mouseleave', MonitorMapas.hideTip);
+    /* Camadas densas — um <path> por classe — e não um <circle> por município. Com os 5.571, os
+       círculos com tratador de mouse levavam 14 segundos para a página abrir; as camadas densas
+       desenham o mesmo em um passe. O detalhe por município vive na lista, que é a alternativa
+       canônica do site. Classe própria por camada: `pontosDensos` apaga a anterior quando o nome
+       se repete (achado do §208). */
+    function camada(itens, cor, nome, largura) {
+      const pts = itens.filter(m => m.ll).map(m => ({lon: m.ll[0], lat: m.ll[1]}));
+      if (pts.length) MonitorMapas.pontosDensos(ctx, svgId, pts, cor, largura || 1.8, 0.9, 'densos-182-' + nome);
     }
     // As ausências entram primeiro, por baixo: quem tem valor é o que a figura mostra.
-    desenhar(ausentes.filter(m => m.classe === 'sem_declaracao'), COR_SEM_DECL, 3);
-    desenhar(ausentes.filter(m => m.classe === 'sem_lancamento_182'), COR_SEM_LANC, 3);
-    desenhar(comValor, m => escala(m.rs_hab), 4);
+    camada(ausentes.filter(m => m.classe === 'sem_declaracao'), COR_SEM_DECL, 'semdecl', 1.6);
+    camada(ausentes.filter(m => m.classe === 'sem_lancamento_182'), COR_SEM_LANC, 'semlanc', 1.6);
+    for (let i = 0; i < N_CLASSES; i++) {
+      camada(comValor.filter(m => classeDe(m.rs_hab) === i), corDaClasse(i), 'c' + i, 2.0);
+    }
     MonitorMapas.siglas(ctx, svg);
 
-    MonitorMapas.legendaContinua('legDespesa182',
-      'linear-gradient(90deg,' + MonitorMapas.PALETA.rampaPreparo[0] + ',' + MonitorMapas.PALETA.rampaPreparo[1] + ')',
-      reais(valores.length ? Math.min.apply(null, valores) : 0), reais(maxV),
-      [{cor: COR_SEM_LANC, rotulo: 'sem lançamento na 182'},
-       {cor: COR_SEM_DECL, rotulo: 'sem declaração no SICONFI'}]);
+    /* A legenda diz o limite de cada classe: sem isso, cinco tons não significam nada. Rótulo é
+       nome de categoria e cabe em 40 caracteres, como o portão de harmonização exige. */
+    const rotuloClasse = i =>
+      i === 0 ? 'até ' + reais(limites[0])
+      : i === N_CLASSES - 1 ? 'acima de ' + reais(limites[limites.length - 1])
+      : reais(limites[i - 1]) + ' a ' + reais(limites[i]);
+    MonitorMapas.legenda('legDespesa182',
+      Array.from({length: N_CLASSES}, (_, i) => ({cor: corDaClasse(i), rotulo: rotuloClasse(i)}))
+        .concat([{cor: COR_SEM_LANC, rotulo: 'sem lançamento na 182'},
+                 {cor: COR_SEM_DECL, rotulo: 'sem declaração no SICONFI'}]));
     fonteFigura('boxDespesa182', {fontes: ['SICONFI (Tesouro Nacional)', 'IBGE — Censo 2022'],
                                   url: 'https://apidatalake.tesouro.gov.br/', data: DSP.gerado_em});
 
@@ -548,9 +557,16 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     }
 
     /* Alternativa em lista: lista de definição, e não tabela — esta página não tem tabelas
-   (decisão editorial de 15/09/2026, com portão próprio). */
+   (decisão editorial de 15/09/2026, com portão próprio).
+       Montada SÓ quando o leitor abre: são 5.571 entradas, e construí-las no carregamento
+       custava segundos numa página que ninguém pediu para ver por extenso. A lista continua
+       completa — o que muda é quando ela é construída, não o que ela traz. */
     const dl = document.getElementById('dlDespesa182');
-    if (dl) {
+    const detalhes = dl && dl.closest('details');
+    let listaMontada = false;
+    function montarLista() {
+      if (listaMontada || !dl) return;
+      listaMontada = true;
       const ordenados = comValor.slice().sort((a, b) => b.rs_hab - a.rs_hab).concat(
         ausentes.slice().sort((a, b) => String(a.nome).localeCompare(String(b.nome), 'pt-BR')));
       dl.innerHTML = ordenados.map(function (m) {
@@ -561,6 +577,12 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
             : (m.nota ? esc(m.nota) : 'sem declaração no SICONFI');
         return '<dt>' + esc(m.nome) + ' (' + esc(m.uf) + ')</dt><dd>' + valor + '</dd>';
       }).join('');
+    }
+    if (detalhes) {
+      detalhes.addEventListener('toggle', () => { if (detalhes.open) montarLista(); });
+      if (detalhes.open) montarLista();
+    } else {
+      montarLista();
     }
 
     /* ---- camada B declarada (§208): dotação orçamentária na LOA, ICM 2026 --------------

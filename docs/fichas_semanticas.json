@@ -898,17 +898,17 @@
    "acao_relacionada": null
   },
   "monitor-de-riscos.html#boxTemperatura": {
-   "tipo": "mapa e lista",
-   "pergunta_que_responde": "Qual a temperatura máxima prevista para amanhã na capital de cada estado?",
+   "tipo": "mapa com seletor de camada e lista",
+   "pergunta_que_responde": "Qual a temperatura máxima prevista para amanhã — na capital de cada estado, ou em cada município?",
    "dimensao_da_preparacao": "fenômeno observado",
-   "universo": "27 capitais",
-   "unidade_de_analise": "capital",
+   "universo": "27 capitais (camada 1) · os 5.570 municípios (camada 2, cobertura declarada na seção)",
+   "unidade_de_analise": "capital, ou município",
    "territorio": "Brasil",
    "periodo": "dia anterior e próximos dias, consulta com hora",
    "variavel_principal": "temperatura máxima prevista, em °C",
    "denominador": null,
    "fonte": "Open-Meteo (modelos ECMWF, DWD, NOAA)",
-   "metodologia": "Estimativa de modelo numa grade de cerca de 11 km, não medição de estação. O valor é da CAPITAL e não a média do estado; a UF é pintada para localizar.",
+   "metodologia": "Estimativa de modelo numa grade de cerca de 11 km, não medição de estação. O valor é da CAPITAL e não a média do estado; a UF é pintada para localizar. A camada municipal traz um ponto por município, só com a máxima e a mínima previstas e a máxima de ontem — a série inteira continua só por capital. Município sem leitura não é desenhado: ausência é ausência. A cobertura de cada variável é declarada em texto, porque o teto diário do Open-Meteo conta por localidade e nem sempre alcança os 5.570 numa rodada.",
    "conclusoes_permitidas": [
     "qual a máxima prevista para a capital, segundo o modelo",
     "como a máxima prevista se compara à do dia anterior na mesma capital"
@@ -917,23 +917,24 @@
     "temperatura do estado inteiro",
     "atribuição da temperatura ao El Niño",
     "leitura como medição de estação",
-    "previsão do Monitor"
+    "previsão do Monitor",
+    "que município não desenhado tenha temperatura baixa — ele não foi lido"
    ],
    "funcao_narrativa": "evidência do agora",
    "acao_relacionada": null
   },
   "monitor-de-riscos.html#boxAr": {
-   "tipo": "mapa e lista",
-   "pergunta_que_responde": "Qual a concentração de material particulado fino estimada na capital de cada estado?",
+   "tipo": "mapa com seletor de camada e lista",
+   "pergunta_que_responde": "Qual a concentração estimada de material particulado fino — na capital de cada estado, ou em cada município?",
    "dimensao_da_preparacao": "fenômeno observado",
-   "universo": "27 capitais",
-   "unidade_de_analise": "capital",
+   "universo": "27 capitais (camada 1) · os 5.570 municípios (camada 2, cobertura declarada na seção)",
+   "unidade_de_analise": "capital, ou município",
    "territorio": "Brasil",
    "periodo": "média diária do dia da consulta, com hora",
    "variavel_principal": "PM2,5 em µg/m³, média diária",
    "denominador": null,
    "fonte": "Copernicus CAMS via Open-Meteo",
-   "metodologia": "Estimativa de modelo, não medição. A API entrega série horária; a média diária é cálculo do Monitor. Linha de referência de 15 µg/m³ da OMS (2021), declarada no dado.",
+   "metodologia": "Estimativa de modelo, não medição. A API entrega série horária; a média diária é cálculo do Monitor. Linha de referência de 15 µg/m³ da OMS (2021), declarada no dado. A camada municipal traz só o PM2,5; os demais poluentes continuam por capital. Município sem leitura não é desenhado.",
    "conclusoes_permitidas": [
     "qual a média diária estimada de PM2,5 na capital",
     "se o valor estimado está acima ou abaixo da linha de referência da OMS"
@@ -942,7 +943,8 @@
     "leitura como medição de monitor",
     "efeito sobre a saúde de pessoas identificadas",
     "atribuição da poluição ao El Niño",
-    "qualidade do ar do estado inteiro"
+    "qualidade do ar do estado inteiro",
+    "que município não desenhado tenha ar limpo — ele não foi lido"
    ],
    "funcao_narrativa": "evidência do agora",
    "acao_relacionada": null

@@ -23,6 +23,7 @@ import json, re, sys, urllib.parse
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
+                            abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso)
 
 REGIOES = {"N": "AC AM AP PA RO RR TO", "NE": "AL BA CE MA PB PE PI RN SE", "CO": "DF GO MS MT",
@@ -174,7 +175,15 @@ if __name__ == "__main__":
         ufs = REGIOES[sys.argv[sys.argv.index("--regiao") + 1].upper()].split()
     else:
         ufs = [u for r in REGIOES.values() for u in r.split()]
-    res = {u: coletar_uf(u, desde, cfg) for u in ufs}
+    # §212 (25/09/2026): `marcar_fato_municipal` e `marcar_fonte_consultada` leem e regravam o
+    # livro de fontes (12 MB) a cada município. Hoje nenhum DOE tem adaptador confirmado e o laço
+    # não chega lá — o lote entra agora justamente para que, no dia em que chegar, a varredura
+    # não descubra o problema com 27 UFs de municípios na fila.
+    abrir_lote_log(); abrir_lote_livro()
+    try:
+        res = {u: coletar_uf(u, desde, cfg) for u in ufs}
+    finally:
+        fechar_lote_log(); fechar_lote_livro()
     gravar("fontes_doe.json", cfg)
     print("DOE:", ", ".join(f"{u}={r}" for u, r in res.items()))
     sys.exit(0)

@@ -541,13 +541,20 @@ function renderMinha(){
     else acoes.push('Predominam planos preventivos no seu estado; verifique se o da sua cidade está atualizado para o ciclo 2026/2027.');
     if (decl && 100*decl/i.total > 5*i.pct) acoes.push('Muitos municípios declaram ter plano a órgãos de controle, mas poucos documentos estão públicos: peça a publicação do PLANCON no site da prefeitura.');
 
+    // 24/09/2026: o cartão do leitor mostrava só a barra do MARÉ (preparação: Argila → Musgo) e dizia o
+    // número de decretos em texto corrido. O índice de RESPOSTA — população sob decreto, frio → quente
+    // (Mineral → Argila) — só existia na grade de estados e na ficha do estado, de modo que a mesma
+    // grandeza aparecia com escala num lugar e sem escala no outro. É a mesma barra, com a mesma arte e
+    // os mesmos números da ficha; nunca somada ao MARÉ (C17).
     html += `<h4>${UF_NOME[ufFinal]} no MARÉ</h4>
       ${miniGauge(v.total)}
+      ${barraResposta(ufFinal)}
       <p class="note">Confiança da verificação: ${v.confianca}</p>
       <ul>
         <li>Instrumento operacional estadual: ${STATUS_HUMANO[v.status_estadual]}</li>
         <li>Estrutura de coordenação estadual: ${STATUS_HUMANO_ESTR[v.estrutura_status] || v.estrutura_status}</li>
         <li>Cobertura municipal documentada: <strong>${String(i.pct).replace('.',',')}%</strong> (${i.n_plano} plano(s) preventivo(s), ${i.n_decreto} decreto(s) reativo(s))${decl ? ` · declarada a órgãos de controle: ${(100*decl/i.total).toFixed(1).replace('.',',')}%` : ''}</li>
+        ${RESP && RESP.uf && RESP.uf[ufFinal] ? '<li class="note">Os dois números vêm de cadastros diferentes: a cobertura documentada conta atos de planejamento localizados no banco do Monitor; o índice de resposta conta decretos de emergência no registro federal (S2iD) e nos diários oficiais.</li>' : ''}
       </ul>
       <h4>O que fazer e o que cobrar</h4>
       <ul>
@@ -700,6 +707,10 @@ function gerarRelatorioCidadao(uf, municipio){
   if (uf !== 'DF') item('Municípios do estado com algum ato localizado: ' + i.com_ato + ' de ' + i.total + ' (' + fmt(i.pct) + '%) — ' + i.n_plano + ' com plano preventivo, ' + i.n_decreto + ' com decreto de emergência.');  // DF: o único município é Brasília, já descrita como capital
   const fx = v.total < 25 ? 'estágio inicial' : v.total < 50 ? 'em construção' : v.total < 70 ? 'consolidado' : 'avançado';
   item('No índice MARÉ, ' + d.nome + ' está em ' + fmt(v.total) + '/100 (' + fx + ').');
+  // 24/09/2026: o PDF é gerado pelo cartão e tinha de dizer a mesma coisa que ele — o cartão passou a
+  // mostrar a barra de resposta, e aqui a mesma grandeza entra em texto. Os dois índices não se somam (C17).
+  { const _r = RESP && RESP.uf && RESP.uf[uf];
+    if (_r) item('Índice de resposta (população em município sob decreto de emergência no ciclo): ' + fmt(indiceResposta(_r)) + '/100 — ' + _r.n_municipios + ' de ' + _r.total_municipios + ' municípios. Mede reação a dano ocorrido; não se soma ao MARÉ, que mede antecipação.'); }
 
   // ---- 4. O que ainda falta ----
   secao('O que ainda falta — e o que cobrar');
