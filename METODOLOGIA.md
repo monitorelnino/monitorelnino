@@ -1235,7 +1235,7 @@ O caso que originou esta seção está no `CHANGELOG.md` §213: uma decisão nov
 
 Daí duas regras.
 
-**A lista tem de ter nome.** Vocabulário escondido dentro de uma asserção é visível só para quem abre a função. Nomeado, ele pode ser importado — e o coletor que **inventa** uma decisão prova, no próprio autoteste, que toda decisão que ele pode produzir cabe nela. A conferência passa do momento da execução para o momento do portão.
+**A lista tem de ter nome, e uma só.** Vocabulário escondido dentro de uma asserção é visível só para quem abre a função — e, pior, tende a ser copiado: a mesma palavra que faltava na asserção faltava também na cópia que o portão de consistência mantinha, e reprovou 86 execuções legítimas quando a decisão nova apareceu no dado. Cópia de vocabulário envelhece em silêncio. O conjunto é declarado **onde as decisões são produzidas** e importado por quem confere. Nomeado, ele pode ser importado — e o coletor que **inventa** uma decisão prova, no próprio autoteste, que toda decisão que ele pode produzir cabe nela. A conferência passa do momento da execução para o momento do portão.
 
 **O fechamento se prova pelos dois lados.** Um teste confere que toda palavra do vocabulário é de fato aceita; outro, que palavra de fora reprova. Sem o segundo, "fechado" é só uma intenção escrita no comentário.
 

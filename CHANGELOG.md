@@ -31,6 +31,10 @@ Resultado: desde 24/09 a varredura dos diários municipais **morria com `Asserti
 
 **O conserto não é acrescentar a palavra.** Acrescentá-la é uma linha; o que importa é por que ninguém viu. O vocabulário era uma tupla anônima dentro do `assert`, visível só para quem abrisse a função — então o coletor que **inventa** uma decisão não tinha como conferir se ela cabia. Agora a lista é a constante `DECISOES_LOG`, e o autoteste do coletor dos diários prova que **toda** decisão que ele pode produzir cabe nela. Inventar decisão nova sem registrá-la passa a reprovar no portão, não em produção.
 
+**E a palavra tinha ficado de fora de DUAS listas, não de uma.** A segunda apareceu depois, quando a suíte inteira rodou: o portão `verificar_consistencia.py` mantinha a **própria cópia** do conjunto de decisões válidas para o canal dos diários, e reprovou **86 execuções legítimas** — pelo mesmo motivo, em outro lugar. Cópia de vocabulário é isso: envelhece em silêncio e só se manifesta quando a decisão nova aparece no dado.
+
+Agora o conjunto do canal é declarado **onde as decisões são produzidas**, no próprio coletor, e importado por quem confere. As duas listas não podem mais divergir, e o autoteste do coletor prova que tudo o que ele pode produzir cabe nos dois conjuntos — o do canal e o do log.
+
 Dois testes a mais no lado do log: que toda decisão do vocabulário é de fato aceita, e — o que dá sentido a ele ser fechado — que decisão fora dele reprova. E um terceiro achado de passagem: o teste que guardava `consultado sem achado` lia o **texto** da função procurando a palavra, e reprovou quando a lista virou constante, sem nada ter mudado de comportamento. Teste de texto quebra em refatoração; ele passou a testar o que importa, chamando a função.
 
 ## §212 · O livro de fontes tinha o mesmo defeito do log, e ele é o arquivo que já foi corrompido · 25/09/2026
