@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 24/09/2026 · 425 pendente(s) · 15 decidida(s) · A=81 B=270 C=74
+Gerado em 25/09/2026 · 426 pendente(s) · 15 decidida(s) · A=81 B=271 C=74
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1159,7 +1159,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Formação continuada e  certificação  Sempre que  necessário  Edição 2.794 | Ano 20 27 de agosto de 2026  Página 26  Certificação Digital: YL29CSXL-2O0TPJGV-OV92BOEB-W63ZS1BE Versão eletrônica disponível em: http://www.te
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Valença/BA — 4 pendente(s)
+## Valença/BA — 5 pendente(s)
+- `1914876af4` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Valença fortalece plano de contingência para o El Niño e ...
+  - url: https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas
+  - trecho: A Prefeitura de Valença realizou, ... para alinhar as ações preventivas do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município.O ......
+  - juiz: portão automático: fonte não oficial
 - `d80bcc1e3e` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://www.conectandonoticias.com.br/valenca-reforca-estrategia-contra-os-efeitos-do-el-nino-e-amplia-plano-de-prevencao-a-queimadas/
   - trecho: Jul 23, 2026 ... Com a atualização do Plano de Contingência e o fortalecimento da integração entre os órgãos municipais e estaduais, Valença busca ampliar ...

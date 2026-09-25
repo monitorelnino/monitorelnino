@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
- "gerado_em": "2026-09-24",
- "total_pistas": 440,
+ "gerado_em": "2026-09-25",
+ "total_pistas": 441,
  "total_municipios": 196,
  "por_nivel": {
   "A": 83,
-  "B": 272,
+  "B": 273,
   "C": 85
  },
  "grupos": [
@@ -5121,6 +5121,108 @@
    ]
   },
   {
+   "ibge": "2932903",
+   "municipio": "Valença",
+   "uf": "BA",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 5,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "1914876af4",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas",
+     "titulo": "Valença fortalece plano de contingência para o El Niño e ...",
+     "trecho": "A Prefeitura de Valença realizou, ... para alinhar as ações preventivas do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município.O ......",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d80bcc1e3e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.conectandonoticias.com.br/valenca-reforca-estrategia-contra-os-efeitos-do-el-nino-e-amplia-plano-de-prevencao-a-queimadas/",
+     "titulo": null,
+     "trecho": "Jul 23, 2026 ... Com a atualização do Plano de Contingência e o fortalecimento da integração entre os órgãos municipais e estaduais, Valença busca ampliar ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "26c06b7006",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.edmaisfm.com.br/post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas",
+     "titulo": null,
+     "trecho": "“A construção do nosso plano de contingência é fundamental para antecipar os riscos e preparar o município contra os efeitos severos do El Niño. Unir o treinamento dos brigadistas à conscientização dos moradores garante que Valença ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5914b8cfee",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://midiabahia.com.br/valenca-reforca-acoes-para-enfrentar-os-efeitos-do-el-nino-e-prevenir-queimadas/",
+     "titulo": null,
+     "trecho": "Jul 24, 2026 ... O encontro teve como objetivo fortalecer o Plano de Contingência ... Acidente entre Fiat Palio e Volkswagen Voyage na BA-001, em Valença.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "294ad7a040",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas",
+     "titulo": null,
+     "trecho": "A Prefeitura de Valença realizou, ... do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município....",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2304400",
    "municipio": "Fortaleza",
    "uf": "CE",
@@ -5322,90 +5424,6 @@
      "titulo": null,
      "trecho": "Jun 22, 2026 ... ... Plano de Contingência para Chuvas Intensas Verão 2025/2026, que segue vigente. ... Tags:el niño, inverno, petrópolis, previsão, rio, super ...",
      "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "2932903",
-   "municipio": "Valença",
-   "uf": "BA",
-   "melhor_nivel": "B",
-   "n_pistas": 4,
-   "niveis": {
-    "A": 0,
-    "B": 4,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "d80bcc1e3e",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.conectandonoticias.com.br/valenca-reforca-estrategia-contra-os-efeitos-do-el-nino-e-amplia-plano-de-prevencao-a-queimadas/",
-     "titulo": null,
-     "trecho": "Jul 23, 2026 ... Com a atualização do Plano de Contingência e o fortalecimento da integração entre os órgãos municipais e estaduais, Valença busca ampliar ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "26c06b7006",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.edmaisfm.com.br/post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas",
-     "titulo": null,
-     "trecho": "“A construção do nosso plano de contingência é fundamental para antecipar os riscos e preparar o município contra os efeitos severos do El Niño. Unir o treinamento dos brigadistas à conscientização dos moradores garante que Valença ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "5914b8cfee",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://midiabahia.com.br/valenca-reforca-acoes-para-enfrentar-os-efeitos-do-el-nino-e-prevenir-queimadas/",
-     "titulo": null,
-     "trecho": "Jul 24, 2026 ... O encontro teve como objetivo fortalecer o Plano de Contingência ... Acidente entre Fiat Palio e Volkswagen Voyage na BA-001, em Valença.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "294ad7a040",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.baixosulemalta.com/single-post/valen%C3%A7a-fortalece-plano-de-conting%C3%AAncia-para-o-el-ni%C3%B1o-e-intensifica-a%C3%A7%C3%B5es-de-preven%C3%A7%C3%A3o-%C3%A0s-queimadas",
-     "titulo": null,
-     "trecho": "A Prefeitura de Valença realizou, ... do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município....",
-     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
