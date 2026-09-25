@@ -596,6 +596,16 @@ def _indexar_texto_integral(h: str, destino, origem=None) -> str:
     return caminho
 
 
+def normalizar_quebras(texto: str) -> str:
+    """Toda quebra de linha vira LF. Função pura.
+
+    §177: cópia preservada em CRLF é cópia que depende da máquina que a produziu. A regra nasceu
+    do OCR (o Tesseract do Windows devolve CRLF) e vale igual para o documento de origem, que
+    também pode trazer CRLF solto — e aí o modo de escrita não resolve, porque ele só traduz a
+    quebra que nós escrevemos."""
+    return texto.replace("\r\n", "\n").replace("\r", "\n")
+
+
 def preservar_texto_integral(h: str, gazettes, origem: str):
     """Baixa o texto integral (txt_url) das edições cuja resposta da API já foi preservada
     sob o hash h, gravando em evidencias/<h>.txt (decisão editorial de 10/09/2026: o excerto
@@ -615,7 +625,13 @@ def preservar_texto_integral(h: str, gazettes, origem: str):
         except Exception as e:  # noqa: BLE001 — best effort; a falha fica declarada no arquivo
             partes.append(f"=== {g.get('date', '')} · {u} ===\n[texto integral indisponível nesta coleta: {type(e).__name__}]")
             continue
-        texto = corpo.decode("utf-8", errors="replace")
+        # 25/09/2026 (§177, achado na varredura nacional): o documento de ORIGEM pode trazer
+        # CRLF solto — dois diários municipais vieram com 8 e 16 quebras CRLF entre mais de cem
+        # mil LF. A cópia preservada é transcrição, não arquivo byte a byte (já redigimos CPF dela),
+        # e a regra do projeto é que ela não dependa da máquina. A normalização tem de ser AQUI, na
+        # entrada: o `newline` da escrita traduz a quebra que NÓS escrevemos, e não a que já veio
+        # dentro do texto.
+        texto = normalizar_quebras(corpo.decode("utf-8", errors="replace"))
         total += len(corpo)
         if total > LIMITE_EVIDENCIA:
             corte = max(0, len(texto) - (total - LIMITE_EVIDENCIA))
