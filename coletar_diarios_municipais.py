@@ -102,6 +102,13 @@ ESPERAS_429 = (30,)        # limite de taxa: a fonte manda esperar, e esperar é
 ESPERAS_5XX = (5, 15)      # indisponibilidade temporária: "tente mais tarde", crescendo
 
 
+# Decisões que ESTE canal produz. Existe nomeado por causa do §213: o §194 criou
+# `sem_edicao_no_periodo` e a palavra ficou de fora de DUAS listas — a do `log_busca`, que matou a
+# varredura, e a de `verificar_consistencia.py`, que reprovou o portão depois. Quem produz a
+# decisão declara o conjunto; quem confere importa daqui. Assim as listas não podem divergir.
+DECISOES_DOM = ("sem_cobertura_qd", "sem_edicao_no_periodo", "coberto_sem_mencao",
+                "com_excerto", "registro", "erro")
+
 def buscar_com_espera(url: str, timeout: int = 30, buscar_fn=None, dormir=None) -> bytes:
     """Repete com espera quando a fonte pede tempo; 4xx sobe na hora.
 
@@ -455,7 +462,8 @@ def autoteste() -> int:
         pontas — inventar decisão nova sem registrá-la passa a reprovar aqui, não em produção."""
         possiveis = {decisao_para_vazio(c, e)
                      for c in (True, False, None) for e in (True, False, None)}
-        return possiveis and all(d.split(" ")[0] in DECISOES_LOG for d in possiveis)
+        return (possiveis and all(d.split(" ")[0] in DECISOES_LOG for d in possiveis)
+                and possiveis <= set(DECISOES_DOM))
 
     def t11():
         """25/09/2026: acerto em cache não grava, e a data que vai ao espelho é a do TESTE.

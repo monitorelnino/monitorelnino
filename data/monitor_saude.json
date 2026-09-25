@@ -1,7 +1,7 @@
 {
  "_governanca": "MARÉ · Saúde v0.3 (15/09/2026; v0.2 em 14/09; v0.1 em 05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Três componentes com pesos iguais (1/3), como no índice principal: instrumento estadual × cobertura populacional sanitária (população em município cujo plano localizado trata a saúde, crédito municipal do MARÉ × degrau/5 da leitura saude_no_plano; plano sem leitura = 0, contado) × antecipação. Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número. Sem número nacional enquanto houver UF não verificada. Metodologia §31.",
  "versao": "0.3",
- "gerado_em": "24/09/2026",
+ "gerado_em": "25/09/2026",
  "corte": "05/09/2026",
  "metodo": {
   "pesos": {
