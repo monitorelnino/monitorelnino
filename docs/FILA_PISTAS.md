@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 25/09/2026 · 450 pendente(s) · 15 decidida(s) · A=85 B=287 C=78
+Gerado em 25/09/2026 · 454 pendente(s) · 15 decidida(s) · A=87 B=289 C=78
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -773,6 +773,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DdUOT62G-yP/
   - trecho: 7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...
 
+## Barra Bonita/SC — 1 pendente(s)
+- `176ba92e01` · nível **A** (6 pts) · busca_web · — · citação não extraída
+  - título: Barra Bonita elabora Plano de Contingência da Assistência Social ...
+  - url: https://barrabonita.sc.gov.br/barra-bonita-elabora-plano-de-contingencia-da-assistencia-social/
+  - trecho: A Secretaria Municipal de Assistência ... Centro de Referência de Assistência Social (CRAS), com foco na elaboração do Plano de Contingência da Assistência Social (PLANCON)....
+
 ## Bocaina do Sul/SC — 3 pendente(s)
 - `7c06fceaa8` · nível **A** (6 pts) · seguimento_busca_oficial · — · **Decreto 472**, 14/08/2024
   - título: Secretaria Municipal de Saúde - Prefeitura de Bocaina do Sul
@@ -960,11 +966,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://ouro.sc.gov.br/audiencia-publica-plano-de-contingencia-defesa-civil/
   - trecho: Audiência Pública – Plano de Contingência Defesa Civil. A Prefeitura de Ouro e o Conselho Municipal de Proteção e Defesa Civil realizam no próximo dia 23 de ...
 
-## Painel/SC — 1 pendente(s)
+## Painel/SC — 2 pendente(s)
 - `1a33729bcf` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Painel El Niño 2026–2027 - Portal Gov.br
   - url: https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf
   - trecho: Aug 11, 2026 ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...
+  - juiz: portão automático: data do ato incompleta (2026)
+- `19460c8d92` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: PAINEL EL NIÑO 2026-2027 - Portal Gov.br
+  - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/painel-el-nino-3-edicao.pdf
+  - trecho: 3 days ago ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...
   - juiz: portão automático: data do ato incompleta (2026)
 
 ## Pedras Grandes/SC — 1 pendente(s)
@@ -2114,7 +2125,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 8 days ago ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...
   - juiz: portão automático: fonte não oficial
 
-## Leoberto Leal/SC — 1 pendente(s)
+## Leoberto Leal/SC — 2 pendente(s)
+- `683a0424e6` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Proteção e Defesa Civil-Leoberto Leal | ENTENDA O EL NIÑO ...
+  - url: https://www.instagram.com/p/DXy9oH5DsmM/
+  - trecho: May 1, 2026 ... Revisão completa do Plano de Contingência (Plancon), com atualização de protocolos, alertas e fluxos de atendimento; Simulado realizado em ...
+  - juiz: portão automático: fonte não oficial
 - `20efec3d28` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Proteção e Defesa Civil-Leoberto Leal | ENTENDA O EL NIÑO ...
   - url: https://www.instagram.com/p/DXy9oH5DsmM/
@@ -2125,6 +2141,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `3f4fdbbfa2` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - url: https://lindoiadosul.sc.gov.br/uploads/sites/20/2025/12/PLANO-MUNICIPAL-DE-SAUDE-2026-2029.pdf
   - trecho: ... sc/lindoia-do-sul/panorama). Conforme já mencionado, o município vivenciou ... Ações Atualização anual ou sempre que se fizer necessário do Plano de Contingência ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Macieira/SC — 1 pendente(s)
+- `4059c65aca` · nível **B** (8 pts) · busca_web · DUVIDA · data 05/11/2015 (do trecho)
+  - título: [05/11/2015] plano municipal de saneamento - Prefeitura de Macieira
+  - url: https://macieira.sc.gov.br/uploads/sites/363/2022/09/646836_PLANO_MUNICIPAL_DE_SANEAMENTO.pdf
+  - trecho: Prefeitura Municipal de Macieira. Rua José Augusto Royer, n° 133. Macieira/SC. Fone (49) 3574 - 0014 www.macieira.sc.gov.br. Universidade do Extremo Sul ...
+  - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Mafra/SC — 1 pendente(s)
