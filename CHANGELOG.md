@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §215 · A quebra de linha vinha da fonte, e a normalização estava no lugar errado · 25/09/2026
+
+Classe **integridade de evidência**. Nenhum número muda.
+
+O §177 (23/09) estabeleceu que **cópia preservada em CRLF é cópia que depende da máquina que a produziu**, e nasceu do OCR — o Tesseract do Windows devolve CRLF. O conserto de então foi fixar o modo de escrita.
+
+A varredura nacional mostrou o outro caminho: **dois diários municipais vieram da fonte com CRLF solto**, 8 e 16 quebras entre mais de cem mil LF. O modo de escrita não pega isso — ele traduz a quebra que **nós** escrevemos, não a que já veio dentro do texto. O portão de evidências reprovou, com razão.
+
+A normalização passou para a **entrada**, onde o texto é lido. Isso é legítimo porque a cópia preservada é **transcrição, não arquivo byte a byte** — já redigimos CPF dela, por dever legal —, então padronizar a quebra de linha está dentro do mesmo contrato, e é o que torna a cópia independente da máquina. Cinco cópias já em disco foram normalizadas e tiveram o hash **reselado no índice**, de modo que a conferência de integridade continua batendo.
+
 ## §214 · 503 não é bloqueio nem limite: é "tente mais tarde", e a resposta certa é tentar mais tarde · 25/09/2026
 
 Classe **correção de coleta**. Peso zero; o que muda é quanta coisa a varredura consegue ler.
