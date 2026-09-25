@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-25",
- "total_pistas": 465,
- "total_municipios": 198,
+ "total_pistas": 473,
+ "total_municipios": 201,
  "por_nivel": {
-  "A": 87,
-  "B": 289,
+  "A": 89,
+  "B": 295,
   "C": 89
  },
  "grupos": [
@@ -3794,6 +3794,56 @@
    ]
   },
   {
+   "ibge": "4211892",
+   "municipio": "Painel",
+   "uf": "SC",
+   "melhor_nivel": "A",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 2,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "1a33729bcf",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf",
+     "titulo": "Painel El Niño 2026–2027 - Portal Gov.br",
+     "trecho": "Aug 11, 2026 ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "19460c8d92",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/painel-el-nino-3-edicao.pdf",
+     "titulo": "PAINEL EL NIÑO 2026-2027 - Portal Gov.br",
+     "trecho": "3 days ago ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4218707",
    "municipio": "Tubarão",
    "uf": "SC",
@@ -4518,8 +4568,8 @@
    ]
   },
   {
-   "ibge": "4211892",
-   "municipio": "Painel",
+   "ibge": "4202099",
+   "municipio": "Barra Bonita",
    "uf": "SC",
    "melhor_nivel": "A",
    "n_pistas": 1,
@@ -4530,21 +4580,20 @@
    },
    "pistas": [
     {
-     "id": "1a33729bcf",
+     "id": "176ba92e01",
      "nivel_confianca": "A",
      "pontos_confianca": 6,
      "sinais": [
       "fonte_oficial",
       "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
+      "plano_no_titulo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf",
-     "titulo": "Painel El Niño 2026–2027 - Portal Gov.br",
-     "trecho": "Aug 11, 2026 ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...",
-     "data": "22/09/2026",
+     "url": "https://barrabonita.sc.gov.br/barra-bonita-elabora-plano-de-contingencia-da-assistencia-social/",
+     "titulo": "Barra Bonita elabora Plano de Contingência da Assistência Social ...",
+     "trecho": "A Secretaria Municipal de Assistência ... Centro de Referência de Assistência Social (CRAS), com foco na elaboração do Plano de Contingência da Assistência Social (PLANCON)....",
+     "data": "25/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -6159,6 +6208,90 @@
    ]
   },
   {
+   "ibge": "2700805",
+   "municipio": "Belém",
+   "uf": "AL",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 4,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "f31b168edf",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://aprovinciadopara.com.br/belem-vai-enfrentar-o-novo-el-nino-ha-riscos-de-seca-fumaca-e-doencas-na-capital-paraense-diz-a-fiocruz/",
+     "titulo": "Belém vai enfrentar o novo El Niño. Há riscos de seca, fumaça ...",
+     "trecho": "Nos últimos dias, também iniciou a elaboração de um Plano Municipal de Enfrentamento ao El Niño 2026-2027, reunindo 35 órgãos municipais, estaduais e federais para discutir medidas preventivas diante das projeções climáticas.",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7f2e70971c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.romanews.com.br/brasil/saiba-o-que-e-o-super-el-nino-e-por-que-ele-preocupa-o-brasil-em-2026-0726",
+     "titulo": "Entenda o Super El Niño e como Belém se prepara para enfrentar ...",
+     "trecho": "Diante desse cenário, a Prefeitura de Belém está elaborando o Plano Municipal de Enfrentamento ao Super El Niño 2026–2027.",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d0a5cdc873",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/jornaldiariodopara/posts/bel%C3%A9m-est%C3%A1-pronta-para-enfrentar-o-super-el-ni%C3%B1o-2026-2027-com-um-plano-integrad/1020795150701006/",
+     "titulo": "Belém está pronta para enfrentar o Super El Niño 2026 ...",
+     "trecho": "Diário do Pará, Belém. 110,992 followers · 177,813 talking about this · 79 were here. O Diário do Pará é um jornal fundado pelo jornalista Laércio Wilson Barbalho, impresso diariamente em Belém desde...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "885e08b5bd",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DaqT2kElC19/",
+     "titulo": "EL NIÑO Belém pode enfrentar, nos próximos meses ...",
+     "trecho": "Create an account or log in to Instagram - Share what you're into with the people who get you.",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4127700",
    "municipio": "Toledo",
    "uf": "PR",
@@ -7705,6 +7838,55 @@
      "url": "https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/",
      "titulo": null,
      "trecho": "8 days ago ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4209805",
+   "municipio": "Leoberto Leal",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "683a0424e6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DXy9oH5DsmM/",
+     "titulo": "Proteção e Defesa Civil-Leoberto Leal | ENTENDA O EL NIÑO ...",
+     "trecho": "May 1, 2026 ... Revisão completa do Plano de Contingência (Plancon), com atualização de protocolos, alertas e fluxos de atendimento; Simulado realizado em ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "20efec3d28",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DXy9oH5DsmM/",
+     "titulo": "Proteção e Defesa Civil-Leoberto Leal | ENTENDA O EL NIÑO ...",
+     "trecho": "May 1, 2026 ... Photo by Proteção e Defesa Civil-Leoberto Leal on May 01, 2026.",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -9455,37 +9637,6 @@
    ]
   },
   {
-   "ibge": "4209805",
-   "municipio": "Leoberto Leal",
-   "uf": "SC",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "20efec3d28",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DXy9oH5DsmM/",
-     "titulo": "Proteção e Defesa Civil-Leoberto Leal | ENTENDA O EL NIÑO ...",
-     "trecho": "May 1, 2026 ... Photo by Proteção e Defesa Civil-Leoberto Leal on May 01, 2026.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "4209854",
    "municipio": "Lindóia do Sul",
    "uf": "SC",
@@ -9511,6 +9662,40 @@
      "titulo": null,
      "trecho": "... sc/lindoia-do-sul/panorama). Conforme já mencionado, o município vivenciou ... Ações Atualização anual ou sempre que se fizer necessário do Plano de Contingência ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4210050",
+   "municipio": "Macieira",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "4059c65aca",
+     "nivel_confianca": "B",
+     "pontos_confianca": 8,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://macieira.sc.gov.br/uploads/sites/363/2022/09/646836_PLANO_MUNICIPAL_DE_SANEAMENTO.pdf",
+     "titulo": "[05/11/2015] plano municipal de saneamento - Prefeitura de Macieira",
+     "trecho": "Prefeitura Municipal de Macieira. Rua José Augusto Royer, n° 133. Macieira/SC. Fone (49) 3574 - 0014 www.macieira.sc.gov.br. Universidade do Extremo Sul ...",
+     "data": "25/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
