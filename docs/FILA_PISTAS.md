@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 25/09/2026 · 427 pendente(s) · 15 decidida(s) · A=82 B=271 C=74
+Gerado em 25/09/2026 · 433 pendente(s) · 15 decidida(s) · A=83 B=273 C=77
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -120,12 +120,31 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: vagas para os 21 km, 42 km, Desafio 5 + 21 km e Maratoninha Kids já estejam esgotadas. SERVIÇO Maratona de Vitória 2026 29 e 30 de agosto Praça do Papa, Enseada do Suá Inscrições: www.ticketsports.com.br ou www.maratonad
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Fronteira/MG — 1 pendente(s)
+## Fronteira/MG — 5 pendente(s)
 - `c4f4252469` · nível **A** (6 pts) · busca_web · EX_ANTE · **Lei 12.340**, 2011
   - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
   - url: https://www.diariodafronteira.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
   - trecho: Por Diário da Fronteira Em 24/09/2026 19:38. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Falta aplicá-las. “Antes de El Niño, o ...
   - juiz: portão automático: fonte não oficial
+- `5dc697c489` · nível **B** (3 pts) · seguimento_link_noticia · — · citação não extraída
+  - título: Política Nacional Proteção e Defesa Civil
+  - url: https://www2.camara.leg.br/legin/fed/lei/2012/lei-12608-10-abril-2012-612681-norma-pl.html
+  - trecho: Política Nacional Proteção e Defesa Civil
+  - ⚠ ano_anterior_ao_ciclo
+- `d7b79630ca` · nível **C** (2 pts) · seguimento_link_noticia · — · citação não extraída
+  - título: Política Nacional sobre Mudança do Clima
+  - url: https://www2.camara.leg.br/legin/fed/lei/2009/lei-12187-29-dezembro-2009-599441-norma-pl.html
+  - trecho: Política Nacional sobre Mudança do Clima
+- `884d2fc565` · nível **C** (2 pts) · seguimento_link_noticia · — · **Lei 12.340**, None
+  - título: Lei 12.340/10
+  - url: https://www2.camara.gov.br/legin/fed/lei/2010/lei-12340-1-dezembro-2010-609599-norma-pl.html
+  - trecho: Lei 12.340/10
+  - ⚠ ano_anterior_ao_ciclo
+- `7c0e256396` · nível **C** (2 pts) · seguimento_link_noticia · — · **Lei 14.904**, None
+  - título: Lei 14.904/24
+  - url: https://www2.camara.gov.br/legin/fed/lei/2024/lei-14904-27-junho-2024-795864-norma-pl.html
+  - trecho: Lei 14.904/24
+  - ⚠ ano_anterior_ao_ciclo
 
 ## Petrolina/PE — 7 pendente(s)
 - `0ae0a524aa` · nível **A** (7 pts) · seguimento_busca_oficial · DUVIDA · **Decreto N.º 037**, 2020
@@ -994,6 +1013,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/3527702/2026-06-30/89eb2b7090d7003095097c7001608c5a741468bd.pdf
   - trecho: VALIDADE JURÍDICA E INTEGRIDADE   2      TTeerrççaa--ffeeiirraa,,  3300  ddee  jjuunnhhoo  ddee  22002266..    AAnnoo  VVII..  EEddiiççããoo  nnºº  995588//22002266      DECRETOS   DECRETO Nº -2.753/2026, DE 30 DE JUNHO D
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Monte Mor/SP — 1 pendente(s)
+- `b92e627686` · nível **A** (6 pts) · busca_web · DUVIDA · **Decreto nº 6.757**, 17/10/2025
+  - título: PREFEITURA DE MONTE MOR SE ANTECIPA E LANÇA PLANO DE CONTINGÊNCIA ...
+  - url: https://www.montemor.sp.gov.br/portal/noticias/0/3/9008/prefeitura-de-monte-mor-se-antecipa-e-lanca-plano-de-contingencia-para-enfrentar-o-periodo-de-chuvas/
+  - trecho: Milena Rinaldo destacou a importância ... que ninguém fique desamparado. Estamos organizando abrigos, suprimentos e equipes de apoio para agir com rapidez e acolhimento, caso seja necessário....
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Osasco/SP — 2 pendente(s)
 - `18f96b3772` · nível **A** (6 pts) · querido_diario · EX_ANTE · citação não extraída
@@ -2075,12 +2101,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Sep 11, 2026 ... ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA DA PREVISÃO DE TEMPORAIS NOS PRÓXIMOS DIAS NA REGIÃO ... No photo description available. SOS PETS ...
   - juiz: portão automático: fonte não oficial
 
-## Bauru/SP — 1 pendente(s)
+## Bauru/SP — 2 pendente(s)
 - `2bbceca048` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Até quando Bauru vai depender da sorte? ⚠️ O El Niño já está ...
   - url: https://www.instagram.com/p/DbOFlI-T9AE/
   - trecho: Jul 25, 2026 ... ... likes, 13 comments - fmc_comunica on July 25, 2026: "Até quando Bauru vai depender da sorte ... plano de contingência claro e ...
   - juiz: portão automático: fonte não oficial
+- `fd22a6b607` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
+  - url: https://bdbauru.com.br/noticia/67022/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
+  - trecho: 8 hours ago ... Bauru, SP. Dólar. R$ 5,19. Euro. R$ 5,91. Peso Arg. R$ 0,00 · Tecnologia ... Resumindo: plano de contingência, população das áreas de risco ...
 
 ## Bom Jesus dos Perdões/SP — 2 pendente(s)
 - `befac87760` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída

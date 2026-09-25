@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-25",
- "total_pistas": 442,
- "total_municipios": 197,
+ "total_pistas": 448,
+ "total_municipios": 198,
  "por_nivel": {
-  "A": 84,
-  "B": 273,
-  "C": 85
+  "A": 85,
+  "B": 275,
+  "C": 88
  },
  "grupos": [
   {
@@ -2374,6 +2374,105 @@
    ]
   },
   {
+   "ibge": "3127008",
+   "municipio": "Fronteira",
+   "uf": "MG",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 1,
+    "B": 1,
+    "C": 3
+   },
+   "pistas": [
+    {
+     "id": "c4f4252469",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.diariodafronteira.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "Por Diário da Fronteira Em 24/09/2026 19:38. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Falta aplicá-las. “Antes de El Niño, o ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5dc697c489",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_link_noticia",
+     "url": "https://www2.camara.leg.br/legin/fed/lei/2012/lei-12608-10-abril-2012-612681-norma-pl.html",
+     "titulo": "Política Nacional Proteção e Defesa Civil",
+     "trecho": "Política Nacional Proteção e Defesa Civil",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d7b79630ca",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_link_noticia",
+     "url": "https://www2.camara.leg.br/legin/fed/lei/2009/lei-12187-29-dezembro-2009-599441-norma-pl.html",
+     "titulo": "Política Nacional sobre Mudança do Clima",
+     "trecho": "Política Nacional sobre Mudança do Clima",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "884d2fc565",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_link_noticia",
+     "url": "https://www2.camara.gov.br/legin/fed/lei/2010/lei-12340-1-dezembro-2010-609599-norma-pl.html",
+     "titulo": "Lei 12.340/10",
+     "trecho": "Lei 12.340/10",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7c0e256396",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_link_noticia",
+     "url": "https://www2.camara.gov.br/legin/fed/lei/2024/lei-14904-27-junho-2024-795864-norma-pl.html",
+     "titulo": "Lei 14.904/24",
+     "trecho": "Lei 14.904/24",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4104303",
    "municipio": "Campo Mourão",
    "uf": "PR",
@@ -3839,38 +3938,6 @@
    ]
   },
   {
-   "ibge": "3127008",
-   "municipio": "Fronteira",
-   "uf": "MG",
-   "melhor_nivel": "A",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 1,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "c4f4252469",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.diariodafronteira.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "trecho": "Por Diário da Fronteira Em 24/09/2026 19:38. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Falta aplicá-las. “Antes de El Niño, o ...",
-     "data": "25/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "4102901",
    "municipio": "Bituruna",
    "uf": "PR",
@@ -4413,6 +4480,37 @@
      "titulo": null,
      "trecho": "VALIDADE JURÍDICA E INTEGRIDADE \n\n2 \n\n \n\nTTeerrççaa--ffeeiirraa,,  3300  ddee  jjuunnhhoo  ddee  22002266..  \n\nAAnnoo  VVII..  EEddiiççããoo  nnºº  995588//22002266 \n\n \n\nDECRETOS \n\nDECRETO Nº -2.753/2026, DE 30 DE JUNHO DE \n2026 \n\n \n\nAprova o Plano de Contingência para Proteção \n\ne Defesa Civil do Mu",
      "data": "30/06/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3531803",
+   "municipio": "Monte Mor",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "b92e627686",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.montemor.sp.gov.br/portal/noticias/0/3/9008/prefeitura-de-monte-mor-se-antecipa-e-lanca-plano-de-contingencia-para-enfrentar-o-periodo-de-chuvas/",
+     "titulo": "PREFEITURA DE MONTE MOR SE ANTECIPA E LANÇA PLANO DE CONTINGÊNCIA ...",
+     "trecho": "Milena Rinaldo destacou a importância ... que ninguém fique desamparado. Estamos organizando abrigos, suprimentos e equipes de apoio para agir com rapidez e acolhimento, caso seja necessário....",
+     "data": "25/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -7406,6 +7504,56 @@
    ]
   },
   {
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "2bbceca048",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DbOFlI-T9AE/",
+     "titulo": "Até quando Bauru vai depender da sorte? ⚠️ O El Niño já está ...",
+     "trecho": "Jul 25, 2026 ... ... likes, 13 comments - fmc_comunica on July 25, 2026: \"Até quando Bauru vai depender da sorte ... plano de contingência claro e ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "fd22a6b607",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://bdbauru.com.br/noticia/67022/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "8 hours ago ... Bauru, SP. Dólar. R$ 5,19. Euro. R$ 5,91. Peso Arg. R$ 0,00 · Tecnologia ... Resumindo: plano de contingência, população das áreas de risco ...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3507100",
    "municipio": "Bom Jesus dos Perdões",
    "uf": "SP",
@@ -9246,38 +9394,6 @@
      "url": "https://www.facebook.com/difusoraassis/videos/energisa-prepara-plano-de-conting%C3%AAncia-por-causa-da-previs%C3%A3o-de-temporais-nos-pr/1589016705934825/",
      "titulo": "ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA ...",
      "trecho": "Sep 11, 2026 ... ENERGISA PREPARA PLANO DE CONTINGÊNCIA POR CAUSA DA PREVISÃO DE TEMPORAIS NOS PRÓXIMOS DIAS NA REGIÃO ... No photo description available. SOS PETS ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3506003",
-   "municipio": "Bauru",
-   "uf": "SP",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "2bbceca048",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DbOFlI-T9AE/",
-     "titulo": "Até quando Bauru vai depender da sorte? ⚠️ O El Niño já está ...",
-     "trecho": "Jul 25, 2026 ... ... likes, 13 comments - fmc_comunica on July 25, 2026: \"Até quando Bauru vai depender da sorte ... plano de contingência claro e ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
