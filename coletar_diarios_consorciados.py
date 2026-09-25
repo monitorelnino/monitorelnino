@@ -198,19 +198,28 @@ def parse_calendario(bruto: bytes) -> list:
 
 
 def extrair_texto_pdf(bruto: bytes) -> str:
-    """pdfplumber primeiro (mesma ordem usada nos coletores de boletim de saúde); pypdf como reserva."""
+    """Texto do PDF. pypdf primeiro, pdfplumber como reserva.
+
+    25/09/2026, MEDIDO: a ordem era a inversa, herdada dos coletores de boletim de saúde, onde
+    pdfplumber ganha porque lá a GEOMETRIA importa (ler número dentro de tabela). Aqui não
+    importa: o que se faz com o texto é casar expressão regular. E o custo é real — num PDF de
+    5 MB e 44 páginas, pdfplumber levou 3,8 s contra 2,0 s do pypdf, e os diários consorciados
+    chegam a 7 MB. Numa varredura de quase 90 dias vezes sete fontes, essa diferença é de horas.
+
+    A reserva continua existindo e o critério de troca também: texto curto demais significa PDF
+    que o primeiro leitor não soube abrir, e aí o outro tenta."""
     try:
-        import pdfplumber
-        with pdfplumber.open(io.BytesIO(bruto)) as pdf:
-            texto = "\n".join((pg.extract_text() or "") for pg in pdf.pages)
+        import pypdf
+        r = pypdf.PdfReader(io.BytesIO(bruto))
+        texto = "\n".join((p.extract_text() or "") for p in r.pages)
         if len(texto) > 200:
             return texto
     except Exception:  # noqa: BLE001
         pass
     try:
-        import pypdf
-        r = pypdf.PdfReader(io.BytesIO(bruto))
-        return "\n".join((p.extract_text() or "") for p in r.pages)
+        import pdfplumber
+        with pdfplumber.open(io.BytesIO(bruto)) as pdf:
+            return "\n".join((pg.extract_text() or "") for pg in pdf.pages)
     except Exception:  # noqa: BLE001
         return ""
 
@@ -498,8 +507,14 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
                 if chave_pista in vistos_pistas:
                     continue
                 pistas_reg["pistas"].append(p); vistos_pistas.add(chave_pista); total_pistas += 1
+            # 25/09/2026: grava a cada FONTE que termina. A varredura do ciclo leva horas — medido,
+            # cerca de duas por fonte — e gravar só no fim significava que uma interrupção na
+            # última hora jogaria fora todas as anteriores. É a mesma lição do §212, aplicada ao
+            # que se COLETOU e não ao que se registrou: rodada longa não pode depender de terminar.
+            gravar("pistas_imprensa.json", pistas_reg); gravar("atos_resposta.json", atos)
             print(f"  {r['dias_com_edicao']} dia(s) com edição, {r['dias_com_erro']} erro(s), "
-                 f"{len(r['pistas'])} pista(s), {len(r['decretos'])} decreto(s) brutos")
+                 f"{len(r['pistas'])} pista(s), {len(r['decretos'])} decreto(s) brutos "
+                 f"[gravado: {total_pistas} pista(s), {total_decretos_novos} decreto(s) no acumulado]", flush=True)
     gravar("pistas_imprensa.json", pistas_reg); gravar("atos_resposta.json", atos)
     print(f"total: {total_pistas} pistas novas, {total_decretos_novos} decretos novos, "
          f"{total_bloqueadas}/{total_fontes} fonte(s) bloqueada(s) por token JS, "

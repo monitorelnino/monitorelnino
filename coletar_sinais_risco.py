@@ -1213,8 +1213,7 @@ def coletar_clima_municipal(args) -> int:
             "pm25_por_data": por_data("pm25"),
         }
         # separators compacto: são milhares de registros num arquivo que a página carrega inteiro.
-        CLIMA.write_text(json.dumps(registro, ensure_ascii=False, separators=(",", ":")) + "\n",
-                         encoding="utf-8", newline="\n")
+        escrever_json(CLIMA, registro, compacto=True)
 
     def varrer(nome, campo, monta_url, extrai):
         pendentes = [p for p in pontos if falta(p, campo)]
@@ -1476,10 +1475,41 @@ def coletar(registro: dict, camadas) -> dict:
     return registro
 
 
+def escrever_json(caminho, obj, compacto: bool = False) -> None:
+    """Escrita ATOMICA, com a espera do cadeado do Windows (§221).
+
+    25/09/2026: este coletor nunca foi migrado depois da corrupcao de 21/09/2026, quando um
+    processo interrompido no meio de uma gravacao deixou um JSON truncado em `data/`. Os quatro
+    arquivos dele — sinais, alertas, clima e consultas — ainda escreviam direto no destino, e o
+    de clima e o maior de todos, regravado dezenas de vezes numa varredura nacional: era o mais
+    exposto. Mesmo remedio do resto do projeto: temporario ao lado, `os.replace()` no fim, e
+    espera curta quando o Windows recusa por cadeado de outro processo.
+
+    `compacto` para o arquivo que a pagina carrega inteiro; indentado para os demais, que sao
+    lidos por gente no diff."""
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    tmp = caminho.with_name(caminho.name + ".tmp" + str(os.getpid()))
+    corpo = (json.dumps(obj, ensure_ascii=False, separators=(",", ":")) if compacto
+             else json.dumps(obj, ensure_ascii=False, indent=1))
+    tmp.write_text(corpo + "\n", encoding="utf-8", newline="\n")
+    for tentativa in range(6):
+        try:
+            os.replace(tmp, caminho)
+            return
+        except PermissionError:
+            if tentativa == 5:
+                try:
+                    tmp.unlink()
+                except OSError:
+                    pass
+                raise
+            time.sleep(0.2 * (tentativa + 1))
+
+
 def gravar(registro: dict) -> None:
     """Grava o registro em data/sinais_risco.json com indentação de 1 espaço, padrão dos demais arquivos de data/."""
     registro["gerado_em"] = hoje()
-    REGISTRO.write_text(json.dumps(registro, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    escrever_json(REGISTRO, registro)
     print(f"→ {REGISTRO.relative_to(RAIZ)} gravado.")
 
 
@@ -1510,7 +1540,7 @@ def gravar_alertas_vigentes() -> None:
     # aparece no log, sem precisar de outra sonda com rede.
     campos_cemaden = sorted({c for a in cemaden for c in (a.get("campos_vistos") or [])})
     ALERTAS.parent.mkdir(parents=True, exist_ok=True)
-    ALERTAS.write_text(json.dumps({
+    escrever_json(ALERTAS, {
         "_formato": {
             "descricao": "Avisos meteorológicos do INMET e alertas do CEMADEN em vigor, por município.",
             "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco (METODOLOGIA §23).",
@@ -1538,7 +1568,7 @@ def gravar_alertas_vigentes() -> None:
         "municipios": {k: {c: v[c] for c in ("nome", "uf", "inmet", "cemaden")}
                        for k, v in sorted(por_municipio.items())},
         "cessados": dict(sorted(cessados.items())),
-    }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    })
     print(f"→ {ALERTAS.relative_to(RAIZ)} gravado ({len(por_municipio)} município(s) "
           f"em vigor; {sum(len(v) for v in cessados.values())} encerramento(s) à parte; "
           f"{len(sem_codigo)} alerta(s) do CEMADEN sem código IBGE).")
@@ -1555,7 +1585,7 @@ def gravar_consultas() -> None:
     rodada não consultou."""
     if not _LIVRO_CONSULTAS:
         return
-    CONSULTAS.write_text(json.dumps({
+    escrever_json(CONSULTAS, {
         "_formato": {
             "descricao": "URL, hora e hash da resposta de cada chamada de rede da última rodada "
                          "das fontes de cadência sub-diária.",
@@ -1564,7 +1594,7 @@ def gravar_consultas() -> None:
         },
         "gerado_em": agora(),
         "consultas": _LIVRO_CONSULTAS,
-    }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    })
     print(f"→ {CONSULTAS.relative_to(RAIZ)} gravado ({len(_LIVRO_CONSULTAS)} consulta(s)).")
 
 

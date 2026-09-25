@@ -108,6 +108,15 @@ def vazar_incompletas(serie: dict, n: int = SE_INCOMPLETAS) -> tuple:
     return cons, now
 
 
+def gravar_serie(nome, obj):
+    """Série semanal por município, no formato compacto (§221).
+
+    A página de Saúde carrega QUATRO destes arquivos inteiros; a indentação, que serve para
+    deixar o diff do robô legível, custa 38% do peso deles. O mesmo critério já valia para o
+    clima municipal. Arquivo pequeno continua indentado."""
+    gravar(nome, obj, compacto=True)
+
+
 def coletar() -> int:
     cfg = _config(); pre = cfg["prefixo"]; rot = cfg["rotulo"]
     lista = ler("painel/lista.json", {}) or {}
@@ -130,7 +139,15 @@ def coletar() -> int:
         cls = classificar(s, c)
         ult = sorted(k for k in s if k.startswith("2026-"))[-1] if any(k.startswith("2026-") for k in s) else None
         serie_painel[cod] = {"nome": m["nome"], "uf": m["uf"], "pop": next((v.get("pop") for v in s.values() if v.get("pop")), None),
-                             "semanas_2026": {k: v for k, v in cons.items() if k.startswith("2026-")}, "nowcasting": now, "classe": cls,
+                             # 25/09/2026 (§221): `pop` vinha repetido DENTRO de cada uma das 37
+                             # semanas de cada município — 11.579 repetições de um valor que já
+                             # está um nível acima, no próprio município, e que a página não lê de
+                             # dentro da semana. Não é dado perdido: é a mesma população, escrita
+                             # 37 vezes. Tirar encolhe o arquivo em 36%, e a página de Saúde
+                             # carrega quatro séries destas.
+                             "semanas_2026": {k: {c: x for c, x in v.items() if c != "pop"}
+                                              for k, v in cons.items() if k.startswith("2026-")},
+                             "nowcasting": now, "classe": cls,
                              "acumulado": {str(a): round(sum(float(v["casos"] or 0) for k, v in s.items() if k.startswith(f"{a}-")), 1) for a in (2024, 2025, 2026)},
                              "ultima_se": ult, "nivel_ultima_se": (s.get(ult) or {}).get("nivel") if ult else None}
         canal[cod] = c; completude[cod] = {"ultima_se_disponivel": ult, "se_vazadas": sorted(now.keys())}
@@ -145,8 +162,8 @@ def coletar() -> int:
     gov = (f"Monitor de desfechos em saúde (§8, 07/09/2026), {rot}: terceira coluna — observado. Peso zero, sem nota, sem faixa. " + RESSALVA_TXT() +
            " Canal endêmico: mediana/p75/p90 das mesmas SE de 2019–2025 (2024 à parte). Últimas 4 SE vazadas na série consolidada; nowcasting como faixa.")
     fonte = f"InfoDengue (Fiocruz/FGV), alertcity, disease={DOENCA}"
-    gravar(f"saude_desfechos/{pre}serie_painel.json", {"_governanca": gov, "gerado_em": hoje, "doenca": DOENCA, "fonte": fonte, "municipios": serie_painel})
-    gravar(f"saude_desfechos/{pre}canal_endemico.json", {"_governanca": gov, "gerado_em": hoje, "doenca": DOENCA, "anos_canal": ANOS_CANAL, "ano_a_parte": 2024, "municipios": canal})
+    gravar_serie(f"saude_desfechos/{pre}serie_painel.json", {"_governanca": gov, "gerado_em": hoje, "doenca": DOENCA, "fonte": fonte, "municipios": serie_painel})
+    gravar_serie(f"saude_desfechos/{pre}canal_endemico.json", {"_governanca": gov, "gerado_em": hoje, "doenca": DOENCA, "anos_canal": ANOS_CANAL, "ano_a_parte": 2024, "municipios": canal})
     gravar(f"saude_desfechos/{pre}completude.json", {"_governanca": gov, "gerado_em": hoje, "doenca": DOENCA, "se_incompletas": SE_INCOMPLETAS, "municipios": completude})
     gravar(f"saude_desfechos/{pre}serie_uf.json", {"_governanca": gov + " Soma dos municípios do painel amostral por UF — não é o total da UF.", "gerado_em": hoje, "doenca": DOENCA,
                                               "uf": {uf: {k: {"casos": round(v["casos"], 1), "est": round(v["est"], 1), "n_municipios": v["n"]} for k, v in sorted(d.items())} for uf, d in por_uf.items()}})

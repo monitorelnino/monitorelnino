@@ -9,6 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §221 · A página de Saúde pesava 10 MB, e um terço era formatação · 25/09/2026
+
+Classe **desempenho e integridade de escrita**. Nenhum dado muda de valor.
+
+**Medido nas doze páginas**, com o cache aquecido: nenhuma passa de 3 segundos, nenhuma tem erro de execução, nenhuma rola na horizontal em 375 px. As leituras de 9 e 10 segundos que apareceram na primeira medição eram artefato da página medida primeiro — vale registrar, porque é o tipo de número que vira decisão errada se não for repetido.
+
+A exceção real era o **peso**: a página de Saúde baixava **10,2 MB**, quase tudo em quatro séries semanais por município. Duas causas, e nenhuma delas é dado:
+
+**Uma população escrita 37 vezes.** Cada semana de cada município repetia o campo `pop`, que já está um nível acima, no próprio município, e que a página não lê de dentro da semana — **11.579 repetições** por arquivo. Não é dado perdido ao sair: é o mesmo número, escrito 37 vezes.
+
+**E a indentação.** Ela existe para o diff do robô ficar legível, e vale para quase todo o `data/`. Nos arquivos que o navegador baixa **por completo** ela custa 38% do peso. A decisão já tinha sido tomada uma vez, para o clima municipal; passou a valer para as seis séries de saúde, por uma porta comum — `gravar(..., compacto=True)`.
+
+Resultado: **10,2 MB → 6,8 MB**, um terço a menos, em 2,3 segundos e sem erro. O que ficou de fora de propósito: carregar a chikungunya só quando o leitor chega ao painel dela economizaria mais 3 MB, mas muda o comportamento da página e é decisão de editoria, não de desempenho.
+
+### E o arquivo de clima era o único grande sem escrita atômica
+
+Ao unificar a porta, apareceu o motivo pelo qual ela precisava existir: `coletar_sinais_risco` **nunca foi migrado** depois da corrupção de 21/09/2026 — os quatro arquivos dele, entre eles o de clima, escreviam direto no destino, sem temporário e sem `os.replace()`. O de clima é o maior de todos e é regravado dezenas de vezes numa varredura nacional: era o mais exposto de `data/` a uma interrupção no meio da escrita, e o único que ainda estava assim. Agora escreve como o resto, com a espera do cadeado do Windows inclusive.
+
 ## §220 · O autoteste que escrevia no livro-razão, e o portão que faltava para vê-lo · 25/09/2026
 
 Classe **infraestrutura de verificação**. Oito linhas indevidas removidas do log; nenhum número público muda.
@@ -66,6 +84,12 @@ Classe **coleta**. Peso zero: tudo o que sai daqui é pista, e pista não entra 
 **Medido hoje: o token vem real.** A mesma configuração headless que o script já usava devolve o valor verdadeiro, e um POST de calendário com ele responde com a edição do dia, número e link do PDF. O que mudou entre 21 e 25/09 não dá para afirmar daqui — o que dá para afirmar é o que foi medido: não há bloqueio. **Sete das nove fontes entregam.**
 
 Vale registrar o método, porque ele se repete: a conclusão anterior não estava errada por preguiça — estava datada. Bloqueio de fonte tem prazo de validade, e reverificar é barato perto de tratar como impossível o que já não é.
+
+### Duas medições que mudaram o desenho da varredura
+
+**O extrator estava na ordem errada para este uso.** O coletor tentava `pdfplumber` primeiro e `pypdf` como reserva — ordem herdada dos coletores de boletim de saúde, onde a geometria importa porque é preciso ler número dentro de tabela. Aqui não importa: o que se faz com o texto é casar expressão regular. Medido num PDF de 5 MB e 44 páginas: **3,8 s contra 2,0 s**, e os diários consorciados chegam a 7 MB. Numa varredura de quase noventa dias vezes sete fontes, isso é diferença de horas. A ordem foi invertida; a reserva e o critério de troca continuam, porque texto curto demais significa PDF que o primeiro leitor não soube abrir.
+
+**E ela gravava só no fim.** Medido: cerca de duas horas por fonte, sete fontes. Uma interrupção na última hora jogaria fora todas as anteriores — a mesma lição do §212, agora aplicada ao que se coleta, e não ao que se registra. Passou a gravar a cada fonte concluída, e a varredura roda fonte a fonte para que cada uma feche sozinha.
 
 ### E o mesmo defeito do dia, pela quarta vez
 

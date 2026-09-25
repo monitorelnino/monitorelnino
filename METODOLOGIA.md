@@ -1283,3 +1283,17 @@ Três regras deste projeto são declaradas nos próprios scripts e nunca eram co
 
 **Portão que grita sem motivo ensina a ignorar portão.** A primeira versão deste portão comparava tamanho e carimbo, e acusou de "alterar dado" três autotestes que regravavam arquivos com conteúdo idêntico. Calibrar foi parte do trabalho, não um detalhe: reescrever idêntico virou aviso, alterar conteúdo virou reprovação. Um portão com falso positivo conhecido é pior do que não ter portão, porque treina quem o lê a passar por cima.
 
+## 50. Formatação é peso, e peso é acesso (25/09/2026)
+
+Os arquivos de `data/` são indentados para que o diff do robô seja legível — e isso vale para quase todos eles, porque quem lê um diff é gente. Existe uma exceção, e ela tem critério objetivo: **o arquivo que o navegador baixa por completo**. Nele a indentação não serve a ninguém e custa perto de 38% do peso.
+
+O caso está no `CHANGELOG.md` §221: a página de Saúde baixava 10,2 MB, e um terço disso era formatação mais um campo repetido 37 vezes por município. Num monitor de interesse público, peso é acesso: quem abre o site com dado móvel paga por byte.
+
+A regra, então: **arquivo que a página carrega inteiro é gravado em forma compacta; o resto continua indentado.** A escolha é do arquivo, declarada onde ele é gravado, e passa pela mesma função de escrita dos demais — não por uma escrita paralela, que foi como essa exceção existiu antes e acabou deixando o maior arquivo de `data/` sem escrita atômica.
+
+Duas notas de método que vieram junto:
+
+**Repetição não é dado.** Um valor constante por município, escrito dentro de cada uma das 37 semanas dele, não é informação preservada: é a mesma informação, 37 vezes. Tirá-la não perde nada — e é diferente de descartar um campo que a fonte declarou e que ninguém lê hoje, o que não se faz.
+
+**Medição de desempenho se repete antes de virar decisão.** A primeira página medida numa bateria sempre aparece mais lenta, porque paga o custo do começo. Duas leituras de 9 e 10 segundos sumiram ao repetir com o cache aquecido. Número que não se repetiu não é medida.
+
