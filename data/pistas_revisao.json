@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-25",
- "total_pistas": 469,
- "total_municipios": 200,
+ "total_pistas": 473,
+ "total_municipios": 201,
  "por_nivel": {
   "A": 89,
-  "B": 291,
+  "B": 295,
   "C": 89
  },
  "grupos": [
@@ -6203,6 +6203,90 @@
      "titulo": null,
      "trecho": "Jun 22, 2026 ... ... Plano de Contingência para Chuvas Intensas Verão 2025/2026, que segue vigente. ... Tags:el niño, inverno, petrópolis, previsão, rio, super ...",
      "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2700805",
+   "municipio": "Belém",
+   "uf": "AL",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 4,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "f31b168edf",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://aprovinciadopara.com.br/belem-vai-enfrentar-o-novo-el-nino-ha-riscos-de-seca-fumaca-e-doencas-na-capital-paraense-diz-a-fiocruz/",
+     "titulo": "Belém vai enfrentar o novo El Niño. Há riscos de seca, fumaça ...",
+     "trecho": "Nos últimos dias, também iniciou a elaboração de um Plano Municipal de Enfrentamento ao El Niño 2026-2027, reunindo 35 órgãos municipais, estaduais e federais para discutir medidas preventivas diante das projeções climáticas.",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7f2e70971c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.romanews.com.br/brasil/saiba-o-que-e-o-super-el-nino-e-por-que-ele-preocupa-o-brasil-em-2026-0726",
+     "titulo": "Entenda o Super El Niño e como Belém se prepara para enfrentar ...",
+     "trecho": "Diante desse cenário, a Prefeitura de Belém está elaborando o Plano Municipal de Enfrentamento ao Super El Niño 2026–2027.",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d0a5cdc873",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/jornaldiariodopara/posts/bel%C3%A9m-est%C3%A1-pronta-para-enfrentar-o-super-el-ni%C3%B1o-2026-2027-com-um-plano-integrad/1020795150701006/",
+     "titulo": "Belém está pronta para enfrentar o Super El Niño 2026 ...",
+     "trecho": "Diário do Pará, Belém. 110,992 followers · 177,813 talking about this · 79 were here. O Diário do Pará é um jornal fundado pelo jornalista Laércio Wilson Barbalho, impresso diariamente em Belém desde...",
+     "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "885e08b5bd",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DaqT2kElC19/",
+     "titulo": "EL NIÑO Belém pode enfrentar, nos próximos meses ...",
+     "trecho": "Create an account or log in to Instagram - Share what you're into with the people who get you.",
+     "data": "25/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]

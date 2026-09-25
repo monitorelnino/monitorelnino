@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 25/09/2026 · 454 pendente(s) · 15 decidida(s) · A=87 B=289 C=78
+Gerado em 25/09/2026 · 458 pendente(s) · 15 decidida(s) · A=87 B=293 C=78
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1201,6 +1201,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: RESPONSABILIDADE As si na do p or 5 p es so as : W AG N ER H AS H IM O TO , J O SN EI M AR F ER R EI R A D E FR EI TA S, L U AN V IN IC IU S LA C ER D A PI M EN TA , D AN N A SA N TO S D E O LI VE IR A C EZ AR M O R IA L
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Belém/AL — 4 pendente(s)
+- `f31b168edf` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Belém vai enfrentar o novo El Niño. Há riscos de seca, fumaça ...
+  - url: https://aprovinciadopara.com.br/belem-vai-enfrentar-o-novo-el-nino-ha-riscos-de-seca-fumaca-e-doencas-na-capital-paraense-diz-a-fiocruz/
+  - trecho: Nos últimos dias, também iniciou a elaboração de um Plano Municipal de Enfrentamento ao El Niño 2026-2027, reunindo 35 órgãos municipais, estaduais e federais para discutir medidas preventivas diante das projeções climát
+- `7f2e70971c` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Entenda o Super El Niño e como Belém se prepara para enfrentar ...
+  - url: https://www.romanews.com.br/brasil/saiba-o-que-e-o-super-el-nino-e-por-que-ele-preocupa-o-brasil-em-2026-0726
+  - trecho: Diante desse cenário, a Prefeitura de Belém está elaborando o Plano Municipal de Enfrentamento ao Super El Niño 2026–2027.
+  - juiz: portão automático: fonte não oficial
+- `d0a5cdc873` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Belém está pronta para enfrentar o Super El Niño 2026 ...
+  - url: https://www.facebook.com/jornaldiariodopara/posts/bel%C3%A9m-est%C3%A1-pronta-para-enfrentar-o-super-el-ni%C3%B1o-2026-2027-com-um-plano-integrad/1020795150701006/
+  - trecho: Diário do Pará, Belém. 110,992 followers · 177,813 talking about this · 79 were here. O Diário do Pará é um jornal fundado pelo jornalista Laércio Wilson Barbalho, impresso diariamente em Belém desde...
+  - juiz: portão automático: fonte não oficial
+- `885e08b5bd` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
+  - título: EL NIÑO Belém pode enfrentar, nos próximos meses ...
+  - url: https://www.instagram.com/p/DaqT2kElC19/
+  - trecho: Create an account or log in to Instagram - Share what you're into with the people who get you.
+  - juiz: portão automático: fonte não oficial
 
 ## Colônia Leopoldina/AL — 1 pendente(s)
 - `f62f1c5f13` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO 496**, 30/06/2026
