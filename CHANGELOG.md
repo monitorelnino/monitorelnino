@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §222 · Terceira cópia do mesmo vocabulário, e ela só falhou quando a fonte voltou · 25/09/2026
+
+Classe **correção de verificação**. Nenhum número muda; sete atos deixam de reprovar o portão.
+
+O canal dos diários consorciados escreve `DOM-consorciado` como canal do ato. O portão de consistência mantinha a **própria cópia** da lista de canais válidos, e esse valor não estava nela — os sete decretos de Minas Gerais reprovaram assim que entraram no banco.
+
+**É a terceira cópia do mesmo tipo de vocabulário a envelhecer em um dia** (§213 foram duas: a do `log_busca` e a do portão). E o padrão de quando ela falha é o que vale registrar: o coletor existia desde 22/09 e **nunca tinha produzido dado**, porque a fonte estava bloqueada. A cópia desatualizada ficou invisível enquanto o canal estava parado — é o mesmo fenômeno do §212, onde consertar a leitura foi o que expôs o custo de escrever.
+
+O conjunto passou a ser declarado em `coletores_base` e importado por quem confere. E `DOM` e `DOM-consorciado` ficam **propositalmente distintos**: no primeiro o diário é do próprio município; no segundo é de uma associação, e a atribuição do município é heurística de proximidade dentro do PDF. Mesma origem legal, força probatória diferente — quem lê o dado precisa saber qual dos dois é.
+
+O autoteste do coletor passou a provar que o canal que ele escreve cabe no vocabulário, para que a próxima invenção reprove em quem a inventou, e não no CI.
+
 ## §221 · A página de Saúde pesava 10 MB, e um terço era formatação · 25/09/2026
 
 Classe **desempenho e integridade de escrita**. Nenhum dado muda de valor.

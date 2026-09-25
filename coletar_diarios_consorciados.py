@@ -94,7 +94,8 @@ USO
 import http.cookiejar, io, json, pathlib, re, subprocess, sys, time, unicodedata, urllib.parse, urllib.request
 from datetime import date, timedelta
 from coletores_base import (UA, preservar_evidencia, log_busca, registrar_lacuna,
-                            marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste)
+                            marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste,
+                            CANAIS_ATO)
 from classificar_pista_civil import triagem_completa
 
 # Só slugs confirmados por navegação/fetch reais nesta sessão (20-22/09/2026). AL fica de
@@ -590,6 +591,15 @@ def autoteste() -> int:
         texto = "Texto solto. Fica instituido o Plano de Contingencia para chuvas."
         _, pistas = classificar_trechos_consorciado(texto, candidatos_da_uf(FIX_REF, "MG"))
         return len(pistas) == 1 and pistas[0]["ibge"] is None and pistas[0]["municipio"] is None
+    def t_canal_no_vocabulario():
+        """§222: o canal que ESTE coletor escreve tem de existir no vocabulário de canais.
+
+        Ele existia desde 22/09 e nunca tinha produzido dado, porque a fonte estava bloqueada.
+        Ao destravar, `DOM-consorciado` chegou ao banco e reprovou o portão de consistência, que
+        mantinha a própria cópia da lista. Mesma lição do §213, terceira ocorrência: quem produz
+        um valor prova aqui que ele cabe, em vez de descobrir no CI."""
+        return "DOM-consorciado" in CANAIS_ATO and "DOM" in CANAIS_ATO
+
     def t9():  # negativo: nome de entidade que NÃO está na referência da UF não vira candidato falso
         texto = "PREFEITURA DE CIDADE INEXISTENTE\nPlano de Contingencia aprovado."
         _, pistas = classificar_trechos_consorciado(texto, candidatos_da_uf(FIX_REF, "MG"))
@@ -741,6 +751,7 @@ def autoteste() -> int:
             globals()["coletar_fonte"] = real_coletar_fonte
             globals()["referencia_ibge"] = real_ref
     return rodar_autoteste({
+        "§222 o canal deste coletor existe no vocabulário de canais": t_canal_no_vocabulario,
         "extrai token do HTML do calendário": t1,
         "regressão 22/09: token com atributos em ordem diferente (achado contra produção)": t1b,
         "negativo: HTML sem token": t2,

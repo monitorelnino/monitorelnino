@@ -30,7 +30,10 @@ transf = json.load(open(f"{D}/transferencias.json"))
 atos_resposta = json.load(open(f"{D}/atos_resposta.json"))
 
 CATS = {"plano","plano_antigo","plano_elaboracao","estrutura","decreto","coberto_estadual","nao_el_nino","nao_localizado","nao_verificado"}  # v3.0: estrutura (§5.1-bis)
-CANAIS = {"DOM","DOU","repositorio_estadual","orgao_estadual","site_municipal","imprensa","—"}
+# 25/09/2026 (§222): era uma cópia, e ficou para trás quando o canal dos diários consorciados
+# passou a produzir dado de verdade. O conjunto agora vem de quem produz — mesma lição do §213.
+from coletores_base import CANAIS_ATO  # noqa: E402
+CANAIS = set(CANAIS_ATO)
 
 # 1. Vocabulário controlado e campos obrigatórios
 for r in municipios:

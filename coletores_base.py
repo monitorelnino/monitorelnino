@@ -33,6 +33,20 @@ NIVEIS = ("nao_verificado", "nacional", "estadual", "municipal_completo")
 EXECUTOR = "robo" if os.environ.get("GITHUB_ACTIONS") else "claude"
 
 
+# Vocabulário FECHADO do canal de um ato/registro municipal. Vive aqui, e não dentro do portão,
+# pela lição do §213: uma cópia do vocabulário no lugar que CONFERE envelhece quando quem PRODUZ
+# inventa um valor novo. Foi o que aconteceu em 25/09/2026 com `DOM-consorciado` — o coletor de
+# diários consorciados existia desde 22/09, mas estava bloqueado, e só ao destravá-lo o canal
+# novo chegou ao dado e reprovou o portão de consistência.
+#
+# `DOM` e `DOM-consorciado` são propositalmente DISTINTOS: no primeiro o diário é do próprio
+# município; no segundo é um diário de associação, onde a atribuição do município é heurística de
+# proximidade no PDF. Mesma origem legal, força probatória diferente — e quem lê o dado precisa
+# saber qual dos dois é.
+CANAIS_ATO = ("DOM", "DOM-consorciado", "DOU", "repositorio_estadual", "orgao_estadual",
+              "site_municipal", "imprensa", "\u2014")
+
+
 def hoje() -> str:
     return date.today().isoformat()
 
