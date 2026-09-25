@@ -85,6 +85,12 @@ Classe **coleta**. Peso zero: tudo o que sai daqui é pista, e pista não entra 
 
 Vale registrar o método, porque ele se repete: a conclusão anterior não estava errada por preguiça — estava datada. Bloqueio de fonte tem prazo de validade, e reverificar é barato perto de tratar como impossível o que já não é.
 
+### O primeiro estado varrido, e o que ele trouxe
+
+**Minas Gerais, ciclo inteiro: 86 dias com edição, zero erros, 11 pistas e 7 decretos novos.** São decretos municipais de situação de emergência — Teófilo Otoni, Bocaiúva, Diamantina, Bonfinópolis de Minas, Conquista, Cláudio e Coração de Jesus — em municípios cujo diário **nunca esteve indexado no Querido Diário**. Eles existiam, publicados, e o Monitor não tinha por onde vê-los.
+
+É a medida do que o canal vale: um estado, e sete atos que nenhum outro canal do projeto alcançava.
+
 ### Duas medições que mudaram o desenho da varredura
 
 **O extrator estava na ordem errada para este uso.** O coletor tentava `pdfplumber` primeiro e `pypdf` como reserva — ordem herdada dos coletores de boletim de saúde, onde a geometria importa porque é preciso ler número dentro de tabela. Aqui não importa: o que se faz com o texto é casar expressão regular. Medido num PDF de 5 MB e 44 páginas: **3,8 s contra 2,0 s**, e os diários consorciados chegam a 7 MB. Numa varredura de quase noventa dias vezes sete fontes, isso é diferença de horas. A ordem foi invertida; a reserva e o critério de troca continuam, porque texto curto demais significa PDF que o primeiro leitor não soube abrir.
