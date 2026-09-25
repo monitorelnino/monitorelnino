@@ -168,6 +168,19 @@ jobs:
           # 2.965, dezenas de GB de E/S e outras tantas janelas de corrupção. O autoteste é
           # offline e trava o que não pode falhar: sem lote nada muda, com lote nada se perde.
           python3 scripts/testar_lote_de_escrita.py
+          # §218 (25/09/2026): a fila de leitura humana em ordem de decisão. O autoteste
+          # trava o que importa: item já julgado sai da fila, falso positivo provável vai ao
+          # fim sem ser excluído (quem decide é a pessoa), e o script NÃO escreve no banco —
+          # trava estrutural que olha só o código, sem confundir a menção com a chamada.
+          python3 scripts/preparar_fila_revisao.py --autoteste
+          # §220 (25/09/2026): autoteste que escreve no banco não é autoteste offline. Um
+          # deles gravou OITO execuções no log real — mockava rede e arquivos, e não
+          # `registrar_lacuna`, que chama `log_busca`, que grava. As travas estruturais dos
+          # coletores leem o próprio fonte e não enxergam escrita três chamadas abaixo, dentro
+          # de coletores_base: só a execução mostra. Este portão roda os 51 autotestes e
+          # compara data/ antes e depois, por CONTEÚDO — regravar idêntico é aviso, alterar
+          # reprova. Achou também um autoteste vermelho que nenhum outro portão rodava.
+          python3 scripts/verificar_autotestes_isolados.py
           # §165 (23/09/2026): coletor do painel do AM. O autoteste é offline por construção
           # (rede, evidência, log e livro de fontes injetados) e confere a regra que dá sentido
           # ao coletor: ano no painel é `declarado`, nunca `documentado`.

@@ -219,6 +219,13 @@ def parse_icm_xlsx(bruto: bytes, aba: str, col_ibge: str, col_var: str, edicao,
     return out
 
 
+# 25/09/2026 (§219): piso de sanidade para base NACIONAL. MUNIC e ICM cobrem os 5.570
+# municípios; se o casamento com o IBGE cair abaixo disto, a leitura quebrou — não é a base que
+# encolheu. Valor folgado de propósito: serve para separar "quebrou" de "veio menos", não para
+# afinar recall. As rodadas reais casam ~5.570.
+PISO_MUNICIPIOS = 1000
+
+
 def marcar_fato_municipal_em_memoria(livro: dict, ibge, campo: str, valor) -> None:
     """Mesma lógica de `coletores_base.marcar_fato_municipal`, mas contra um `livro` já
     carregado em memória — sem ler/gravar o arquivo a cada chamada (ver nota em coletar()).
@@ -271,6 +278,20 @@ def coletar() -> int:
                 reg["municipios"].setdefault(cod, {}).update(d); casados += 1
                 if d.get(campo) in ("sim", "nao"):
                     marcar_fato_municipal_em_memoria(livro_fatos, cod, fato, d[campo] == "sim")
+        # 25/09/2026 (§219): estas duas bases são NACIONAIS — MUNIC e ICM cobrem os 5.570
+        # municípios. Ler um punhado deles não é resultado, é leitura quebrada: os parsers
+        # devolvem dicionário vazio quando a aba some ou a coluna do IBGE muda de nome, e sem um
+        # piso o coletor gravava `status: "ok"` e `decisao: "registro"` com ZERO municípios —
+        # uma troca de layout do IBGE ficaria invisível. É o defeito do §210, sem nem a guarda
+        # frágil que lá existia. O piso é o mesmo remédio que os boletins estaduais já usam.
+        if casados < PISO_MUNICIPIOS:
+            registrar_lacuna(f["nome"], f"leitura quebrada: {casados} município(s) casados com o IBGE, "
+                                        f"abaixo do piso de {PISO_MUNICIPIOS} para uma base nacional "
+                                        f"(aba {f['aba']!r}, coluna {f['coluna_ibge']!r} a reverificar)",
+                             canal="DOU", camada=1, strings=[f["url"]], hash_evidencia=h)
+            f["status"] = f"leitura quebrada: {casados} municípios"
+            print(f"  [lacuna declarada] {f['nome']}: {casados} município(s) — abaixo do piso")
+            continue
         marcar_fonte_consultada([c for c in dados if c in por_cod], f["nome"], "nacional",
                                 resultado=f"{casados} municípios na base")
         log_busca("DOU", 1, [f["url"]], "registro", nivel="nacional", n_resultados=casados,

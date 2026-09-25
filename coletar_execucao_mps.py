@@ -119,6 +119,18 @@ def coletar() -> int:
             for uf, v in parcial[mp]["por_uf_pago"].items(): acumulado[mp]["por_uf_pago"][uf] += v
     if not meses_lidos:
         print("execucao_mps: nenhum arquivo mensal lido — lacuna declarada, nada alterado"); return 0
+    # 25/09/2026 (§219): o filtro depende dos NOMES das colunas do Portal ("Código Órgão
+    # Subordinado", "Código Ação"). Se algum for renomeado, nenhuma linha casa, todo total fica
+    # 0,00 — e a checagem acima não pega, porque ela só confere se o ZIP baixou. O site passaria
+    # a dizer que as MPs não executaram nada. Nenhuma linha casada é LEITURA QUEBRADA, não
+    # execução zero: declara-se a lacuna e não se toca no que já estava gravado.
+    if not any(a["empenhado"] or a["liquidado"] or a["pago"] for a in acumulado.values()):
+        registrar_lacuna("Execução das MPs (Portal da Transparência)",
+                         f"{len(meses_lidos)} arquivo(s) mensal(is) lido(s) e NENHUMA linha casou com o "
+                         "filtro de órgão/ação — nomes de coluna a reverificar; execução anterior mantida",
+                         canal="DOU", camada=1)
+        print("execucao_mps: arquivos lidos e nenhuma linha casada — lacuna declarada, nada alterado")
+        return 0
     for mp in mps["mps"]:
         a = acumulado.get(mp["id"]);
         if not a: continue

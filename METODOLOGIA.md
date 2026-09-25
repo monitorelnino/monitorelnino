@@ -1253,3 +1253,33 @@ Confundir os dois custou caro, e o caso está no `CHANGELOG.md` §216: a janela 
 
 Daí a regra: **a janela guarda consultas distintas; o livro-razão guarda eventos.** E o corolário prático: quando dois arquivos respondem à mesma pergunta e discordam, o livro-razão tem precedência — ele é o registro do que aconteceu, e a janela é derivada dele.
 
+## 47. Bloqueio de fonte tem prazo de validade (25/09/2026)
+
+Quando uma fonte bloqueia, o projeto registra a lacuna com o que foi testado escrito por extenso — e essa disciplina existe para que ninguém repita a investigação do zero. Ela tem um efeito colateral: a lacuna bem documentada passa a parecer permanente.
+
+O caso está no `CHANGELOG.md` §217. Um canal que alcança a maioria dos municípios sem diário indexado ficou quatro dias fora com diagnóstico completo — duas rodadas de investigação, causa identificada no cliente, nada suposto. Ao ser reverificado, funcionou de primeira, sem nenhuma mudança de código.
+
+Daí a regra: **lacuna por bloqueio é datada, e reverificar é barato.** Antes de tratar um canal como perdido — e antes de construir um caminho alternativo mais caro para contorná-lo — a primeira coisa é repetir o teste. O custo de repetir é uma requisição; o custo de não repetir é um canal inteiro parado e uma rota substituta construída sem necessidade.
+
+O corolário é sobre como se escreve a lacuna: ela registra **o que foi medido e quando**, nunca "não é possível". A diferença entre "em 21/09 o token vinha como placeholder" e "o token não é obtível" é a mesma diferença entre "não localizamos até o corte" e "não existe" — e vale para dentro de casa também.
+
+## 48. Piso de sanidade em base de cobertura conhecida (25/09/2026)
+
+Quando a fonte tem cobertura **conhecida** — uma base nacional que cobre os 5.570 municípios, um arquivo mensal que cobre um conjunto fixo de órgãos —, o número de registros lidos é, por si só, uma prova de que a leitura funcionou. Ler zero, ou ler dezenas onde se esperam milhares, não é um resultado pequeno: é uma leitura quebrada.
+
+Daí a regra: **toda leitura de base com cobertura conhecida declara um piso**, e abaixo dele o resultado não é gravado — vira lacuna declarada, nomeando o que reverificar (a aba, a coluna, o filtro). O piso é folgado de propósito. Ele não serve para afinar recall; serve para separar "a fonte veio menor" de "não consegui ler a fonte", que são coisas diferentes e hoje eram indistinguíveis.
+
+O corolário é sobre o que fazer quando o piso reprova: **não se sobrescreve o que já estava gravado**. Uma leitura quebrada não tem autoridade para apagar uma leitura boa da rodada anterior.
+
+E um caso particular que merece nome próprio, porque é a regra central do projeto aplicada a um campo: **ausência de valor não é zero**. `valor or 0` transforma "a fonte não declarou quanto" em "a fonte declarou que foi nada" — e as duas coisas viram o mesmo número no site. Campo monetário ausente é ausência, com marca própria, e zero continua sendo zero.
+
+## 49. Quem verifica o verificador (25/09/2026)
+
+Três regras deste projeto são declaradas nos próprios scripts e nunca eram conferidas por ninguém. O `CHANGELOG.md` §220 mostra o custo: um autoteste que declarava "nunca toca dado real" gravou oito execuções no log de buscas, e o autoteste ficou verde — ele mockava a rede e os arquivos, e não a função que grava três chamadas abaixo.
+
+**Trava declarada no comentário não é trava.** Uma regra só está garantida quando existe algo que reprova quando ela é violada. Enquanto isso não existe, a regra é intenção — e intenção envelhece em silêncio, como todo o resto.
+
+**Trava que lê o próprio fonte tem alcance curto.** As travas estruturais do projeto procuram chamadas proibidas no texto do script, e por construção não enxergam o que acontece dentro de uma dependência. Elas continuam valendo para o que veem; para o resto, o que prova é **executar e comparar o estado antes e depois**.
+
+**Portão que grita sem motivo ensina a ignorar portão.** A primeira versão deste portão comparava tamanho e carimbo, e acusou de "alterar dado" três autotestes que regravavam arquivos com conteúdo idêntico. Calibrar foi parte do trabalho, não um detalhe: reescrever idêntico virou aviso, alterar conteúdo virou reprovação. Um portão com falso positivo conhecido é pior do que não ter portão, porque treina quem o lê a passar por cima.
+

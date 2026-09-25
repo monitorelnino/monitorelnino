@@ -124,13 +124,34 @@ def limpar_autor(item: dict) -> dict:
     return {k: v for k, v in item.items() if not any(k.lower().startswith(a.lower()) for a in CAMPOS_AUTOR)}
 
 
+def valor_declarado(item: dict):
+    """O valor que a fonte declarou, ou `None` se ela não declarou nenhum. Função pura.
+
+    25/09/2026 (§219): antes era `float(valor or valorLiberado or 0)`, e isso apagava a
+    distinção que é a regra central deste projeto — uma transferência de R$ 0,00 e uma resposta
+    SEM o campo de valor viravam o mesmo número. Se o Portal renomear o campo, tudo vira zero e
+    o site mostra "R$ 0,00 transferidos" onde o certo é "não localizamos o valor". Zero é dado;
+    ausência é lacuna."""
+    for campo in ("valor", "valorLiberado"):
+        v = item.get(campo)
+        if v in (None, ""):
+            continue
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
 def parse_transferencias(dados) -> list:
     """Normaliza itens do Portal (/transferencias-voluntarias | /convenios): {rota, valor, ano, municipio_ibge, objeto, orgao}."""
     out = []
     for it in (dados or []):
         it = limpar_autor(it)
         ibge = str(it.get("codigoIBGE") or (it.get("municipio") or {}).get("codigoIBGE") or "")
-        out.append({"rota": "r5", "valor": float(it.get("valor") or it.get("valorLiberado") or 0), "ano": int(str(it.get("ano") or it.get("dataReferencia") or "2026")[:4]),
+        _v = valor_declarado(it)
+        out.append({"rota": "r5", "valor": _v, **({} if _v is not None else {"valor_ausente": True}),
+                    "ano": int(str(it.get("ano") or it.get("dataReferencia") or "2026")[:4]),
                     "municipio_ibge": ibge.zfill(7) if ibge.isdigit() else None, "objeto": (it.get("objeto") or it.get("descricao") or "")[:200],
                     "orgao": (it.get("orgao") or {}).get("nome") if isinstance(it.get("orgao"), dict) else it.get("orgao")})
     return out
@@ -201,12 +222,23 @@ def autoteste():
                     (FIN / n).unlink()
     def t2(): r = _l("rotas.json")["rotas"]; return [x["n"] for x in r] == list(range(1, 9)) and len({x["cor"] for x in r}) == 8
     def t3(): p = parse_transferencias(FIX_T); return len(p) == 1 and p[0]["valor"] == 1500.5 and p[0]["municipio_ibge"] == "4202404" and "nomeAutor" not in json.dumps(p)
+
+    def t3b():
+        """§219: valor AUSENTE não é R$ 0,00. Antes eram o mesmo número, e uma troca de nome de
+        campo no Portal faria o site dizer "zero transferido" onde o certo é "não localizamos"."""
+        sem = parse_transferencias([{"codigoIBGE": "4202404", "ano": 2026}])[0]
+        zero = parse_transferencias([{"codigoIBGE": "4202404", "valor": "0", "ano": 2026}])[0]
+        ilegivel = parse_transferencias([{"codigoIBGE": "4202404", "valor": "R$ mil", "ano": 2026}])[0]
+        return (sem["valor"] is None and sem.get("valor_ausente") is True
+                and zero["valor"] == 0.0 and "valor_ausente" not in zero
+                and ilegivel["valor"] is None and ilegivel.get("valor_ausente") is True)
     def t4(): p = parse_emendas(FIX_E); return p[0]["rota"] == "r6" and "BELTRANO" not in json.dumps(p) and "nomeAutor" not in json.dumps(p)
     def t5(): return parse_transferencias(None) == [] and parse_emendas([]) == []
     def t6(): u = _l("por_uf.json")["uf"]; return len(u) == 27 and u["RS"]["fundo_a_fundo_preventivo"].get("precedente_E12") is True
     def t7(): return (FIN / "consultas.json").read_bytes() == _SNAP if _SNAP else True
     _SNAP = (FIN / "consultas.json").read_bytes() if (FIN / "consultas.json").exists() else b""
     return rodar_autoteste({"semear cria os 6 registros, sem tocar dados reais": t1, "8 rotas em ordem, cores únicas": t2, "parser transferências descarta autor (E10)": t3,
+                            "§219 valor ausente não é zero": t3b,
                             "parser emendas descarta autor (E10)": t4, "negativo: resposta nula": t5, "por_uf: 27 UFs, Prepara RS como precedente": t6,
                             "negativo: autoteste não altera dados reais": t7})
 

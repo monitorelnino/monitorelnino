@@ -186,6 +186,18 @@ def coletar() -> int:
         # mesmo esquema de registrar_consulta() em coletar_financiamento.py (a página lê parametros/itens/hash_resposta)
         consultas["consultas"].append({"endpoint": REPO + nome, "parametros": {"carga": carga}, "data": date.today().isoformat(),
                                        "hash_resposta": hashlib.sha256(b).hexdigest(), "itens": None, "bytes": len(b), "fonte": "TransfereGov — Dados Abertos (sem chave)"})
+    # 25/09/2026 (§219): o filtro depende dos NOMES das colunas do TransfereGov (ANO_PROP,
+    # NATUREZA_JURIDICA, COD_MUNIC_IBGE, DIA_ASSIN_CONV). Se algum for renomeado, nenhuma
+    # proposta casa, toda série vira 0,00 — e a página passa a dizer que não houve repasse
+    # nenhum. Nenhum instrumento casado é LEITURA QUEBRADA, não ausência de transferência:
+    # declara-se a lacuna e não se sobrescreve a série que já estava gravada.
+    if not semanas and not por_uf_r5:
+        registrar_lacuna("TransfereGov — Dados Abertos",
+                         "arquivo lido e NENHUM instrumento casou com o filtro de ano/natureza/IBGE — "
+                         "nomes de coluna a reverificar; série anterior mantida",
+                         canal="DOU", camada=1)
+        print("transferegov: arquivo lido e nenhum instrumento casado — lacuna declarada, nada alterado")
+        return 0
     # série nacional (rota r5)
     rotas = ler("financiamento/rotas.json", {}) or {}
     ids = [r["id"] for r in rotas.get("rotas", [])] or ["r1","r2","r3","r4","r5","r6","r7","rE"]
