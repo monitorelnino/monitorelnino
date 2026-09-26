@@ -22618,6 +22618,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "26/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -22981,6 +22987,12 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "26/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -23054,6 +23066,57 @@
     "juiz": {
      "decisao": "FILA_HUMANA",
      "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "26/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
+   }
+  },
+  {
+   "municipio": "Coqueiral",
+   "uf": "MG",
+   "ibge": "3118700",
+   "origem": "busca_web",
+   "data": "26/09/2026",
+   "url": "https://www.coqueiral.mg.gov.br/plano-de-contingencia-municipal-de-enfrentamento-ao-covid-19",
+   "trecho": "Prefeitura Municipal - Portal",
+   "titulo": "Prefeitura Municipal - Plano de Contingência ... - Coqueiral - MG",
+   "registrado_em": "2026-09-26",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "e3edb754f4",
+   "nivel_confianca": "A",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_titulo",
+    "plano_no_titulo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "26/09/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "texto vazio ou ausente",
+    "trecho_documento": "",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
    }

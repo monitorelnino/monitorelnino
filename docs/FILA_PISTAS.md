@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 26/09/2026 · 491 pendente(s) · 15 decidida(s) · A=91 B=305 C=95
+Gerado em 26/09/2026 · 492 pendente(s) · 15 decidida(s) · A=92 B=305 C=95
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -135,6 +135,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/5208707/2026-08-12/92a375a415f1751fe37c697e62d361237cffda2f.pdf
   - trecho: competências das unidades administrativas e dos colegiados envolvidos, em conformidade com a Resolução CMN nº 5.272/2025 e a Portaria MTP nº 1.467/2022. Destacou, ainda, como recomendação para futura revisão do procedime
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Coqueiral/MG — 1 pendente(s)
+- `e3edb754f4` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
+  - título: Prefeitura Municipal - Plano de Contingência ... - Coqueiral - MG
+  - url: https://www.coqueiral.mg.gov.br/plano-de-contingencia-municipal-de-enfrentamento-ao-covid-19
+  - trecho: Prefeitura Municipal - Portal
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Fronteira/MG — 5 pendente(s)
 - `c4f4252469` · nível **A** (6 pts) · busca_web · EX_ANTE · **Lei 12.340**, 2011

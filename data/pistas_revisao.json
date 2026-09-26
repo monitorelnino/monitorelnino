@@ -1,10 +1,10 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-26",
- "total_pistas": 506,
- "total_municipios": 217,
+ "total_pistas": 507,
+ "total_municipios": 218,
  "por_nivel": {
-  "A": 93,
+  "A": 94,
   "B": 307,
   "C": 106
  },
@@ -4533,6 +4533,37 @@
      "titulo": "Vila Velha apresenta plano de contingência com foco no El Niño ...",
      "trecho": "Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.",
      "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3118700",
+   "municipio": "Coqueiral",
+   "uf": "MG",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "e3edb754f4",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.coqueiral.mg.gov.br/plano-de-contingencia-municipal-de-enfrentamento-ao-covid-19",
+     "titulo": "Prefeitura Municipal - Plano de Contingência ... - Coqueiral - MG",
+     "trecho": "Prefeitura Municipal - Portal",
+     "data": "26/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
