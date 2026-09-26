@@ -19,9 +19,10 @@ por este script).
 import json, subprocess, sys, os
 from pathlib import Path
 from datetime import datetime, timezone
-from coletores_base import gravar_em  # noqa: E402  (§229: escrita atômica de data/)
 
 RAIZ = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ))
+from coletores_base import gravar_em  # noqa: E402  (§229: escrita atômica de data/)
 
 
 def numeros_da_varredura() -> dict | None:
