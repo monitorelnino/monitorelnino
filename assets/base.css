@@ -134,7 +134,7 @@ code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-
 /* ===== 4. Masthead e navegação ===== */
 .grad-line{height:2px; border:none; margin:0; background:var(--green);}
 header.masthead{display:block; margin-bottom:var(--sp-6);}
-.mast-top{display:flex; justify-content:space-between; align-items:center; gap:var(--sp-4) var(--sp-5); flex-wrap:wrap; margin-bottom:var(--sp-4);}
+.mast-top{display:flex; justify-content:space-between; align-items:center; gap:var(--sp-4) var(--sp-5); flex-wrap:wrap; margin-bottom:var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line);}
 .mast-logo{display:block; line-height:0; text-decoration:none;}
 .logo-futura{height:26px; width:auto; display:block;}
 .mainnav{display:flex; gap:var(--sp-1); flex-wrap:wrap; flex-basis:100%;}
@@ -145,16 +145,16 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
    mão envelhece calada, então `verificar_runtime.js` reprova se a contagem deixar de bater.
    A ordem daqui até o fim do bloco importa: o ramo vem primeiro, e hover, botão de ação e página
    corrente vêm depois, porque precisam vencê-lo. */
-.mainnav > :is(a, span):nth-child(1){background:color-mix(in srgb, var(--nav-1) 32%, var(--branco)); border-color:var(--nav-1); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(3){background:color-mix(in srgb, var(--nav-2) 32%, var(--branco)); border-color:var(--nav-2); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(5){background:color-mix(in srgb, var(--nav-3) 32%, var(--branco)); border-color:var(--nav-3); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(7){background:color-mix(in srgb, var(--nav-4) 32%, var(--branco)); border-color:var(--nav-4); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(8){background:color-mix(in srgb, var(--nav-5) 32%, var(--branco)); border-color:var(--nav-5); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(10){background:color-mix(in srgb, var(--nav-6) 32%, var(--branco)); border-color:var(--nav-6); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(12){background:color-mix(in srgb, var(--nav-7) 32%, var(--branco)); border-color:var(--nav-7); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(14){background:color-mix(in srgb, var(--nav-8) 32%, var(--branco)); border-color:var(--nav-8); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(15){background:color-mix(in srgb, var(--nav-9) 32%, var(--branco)); border-color:var(--nav-9); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(16){background:color-mix(in srgb, var(--nav-10) 32%, var(--branco)); border-color:var(--nav-10); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(1){background:color-mix(in srgb, var(--nav-1) 60%, var(--branco)); border-color:var(--nav-1); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(3){background:color-mix(in srgb, var(--nav-2) 60%, var(--branco)); border-color:var(--nav-2); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(5){background:color-mix(in srgb, var(--nav-3) 60%, var(--branco)); border-color:var(--nav-3); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(7){background:color-mix(in srgb, var(--nav-4) 60%, var(--branco)); border-color:var(--nav-4); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(8){background:color-mix(in srgb, var(--nav-5) 60%, var(--branco)); border-color:var(--nav-5); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(10){background:color-mix(in srgb, var(--nav-6) 60%, var(--branco)); border-color:var(--nav-6); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(12){background:color-mix(in srgb, var(--nav-7) 60%, var(--branco)); border-color:var(--nav-7); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(14){background:color-mix(in srgb, var(--nav-8) 60%, var(--branco)); border-color:var(--nav-8); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(15){background:color-mix(in srgb, var(--nav-9) 60%, var(--branco)); border-color:var(--nav-9); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(16){background:color-mix(in srgb, var(--nav-10) 60%, var(--branco)); border-color:var(--nav-10); color:var(--ink);}
 /* Os seletores de estado repetem `> :is(a, span)` de propósito: sem isso eles ficam abaixo
    do `:nth-child` do ramo na especificidade e o ramo vence, mesmo vindo antes. */
 .mainnav > :is(a, span):hover{color:var(--ink); border-width:1.5px; text-decoration:none;}
@@ -163,13 +163,13 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
    BORDA mais grossa, e não por cor nem por fonte própria: um segundo peso tipográfico aqui deixou
    `verificar_consistencia_visual.js` vermelho — a família "navegação" tem de ter um estilo só. */
 .mainnav > :is(a, span).btn-nav{border-width:2px;}
-.mainnav > :is(a, span).btn-nav:hover{background:color-mix(in srgb, var(--nav-7) 55%, var(--branco)); color:var(--ink);}
-/* 26/09/2026 (pedido da editoria): a página corrente era musgo, a mesma cor do botão de ação e do
-   botão primário do site — duas funções diferentes na mesma cor. Passa a terracota, que no sistema
-   de marca é o acento único e não tem outra função. Branco sobre #C04430 mede 5,1:1, acima do
-   mínimo AA. Vale em todas as páginas: é o mesmo componente. Preenchida, ela se destaca das
-   demais do ramo, que são tinta clara com texto escuro. */
-.mainnav > :is(a, span).ativa, .mainnav > :is(a, span).ativa:hover{background:var(--terracota); color:var(--branco); border-color:var(--terracota);}
+.mainnav > :is(a, span).btn-nav:hover{background:color-mix(in srgb, var(--nav-7) 85%, var(--branco)); color:var(--ink);}
+/* 26/09/2026, em duas decisões da editoria no mesmo dia. Primeiro a página corrente saiu do musgo
+   (que era também a cor do botão de ação — duas funções na mesma cor) e foi para terracota; depois,
+   com a gradação no menu, a editoria pediu que ela fosse a BRANCO, fora do ramo. É inversão: entre
+   dez botões de tinta, o único branco é o que se destaca, e sem gastar mais uma cor. Borda e texto
+   em --ink medem 18,5:1 sobre branco. Vale em todas as páginas: é o mesmo componente. */
+.mainnav > :is(a, span).ativa, .mainnav > :is(a, span).ativa:hover{background:var(--branco); color:var(--ink); border-color:var(--ink);}
 .mainnav > :is(a, span).ativa.btn-nav{cursor:default;}
 .mainnav > :is(a, span):active{background:var(--terracota); color:var(--branco); border-color:var(--terracota);}
 .site-title{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display); letter-spacing:var(--ls-titulo); color:var(--ink); margin:0 0 var(--sp-2);}
@@ -185,7 +185,10 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
    texto de verdade (.site-nome), no tamanho da escala, selecionável e pesquisável. */
 .site-title--logo svg{display:block; width:420px; height:auto; max-width:100%;}
 .site-nome{display:block; font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-h2); line-height:var(--lh-h2); letter-spacing:var(--ls-titulo); color:var(--ink); margin:var(--sp-2) 0 0;}
-.site-intro{font-size:var(--fs-h4); line-height:var(--lh-h4); color:var(--muted); max-width:78ch; margin:var(--sp-3) 0 0;}
+/* 26/09/2026 (pedido da editoria): a descrição ocupava só parte da largura, o que a deixava
+   desalinhada dos parágrafos abaixo, e colava no menu sem nenhuma separação. Largura inteira, e
+   a divisória vem da própria barra do menu (ver .mast-top). */
+.site-intro{font-size:var(--fs-h4); line-height:var(--lh-h4); color:var(--muted); max-width:none; margin:var(--sp-3) 0 var(--sp-5);}
 .masthead--mini .site-title--logo{margin:0 0 var(--sp-1);}
 .masthead--mini .site-title--logo svg{width:210px;}
 .masthead--mini .site-nome{font-size:var(--fs-h4); line-height:var(--lh-h4); margin-top:var(--sp-1);}
@@ -389,8 +392,37 @@ table th, .mun-table thead th{font-family:var(--font-dado); font-size:var(--fs-c
 .tbl-controls input, .tbl-controls select{background:var(--campo); border:1px solid var(--campo-borda); border-radius:var(--radius); color:var(--ink); padding:var(--sp-2) var(--sp-3); font-family:var(--font-corpo); font-size:var(--fs-small); min-height:var(--alvo-toque);}
 .tbl-controls input{flex:1; min-width:180px;}
 .btn-limpar{padding:0 var(--sp-3); font-family:var(--font-corpo); font-size:var(--fs-body); font-weight:var(--peso-semibold); background:transparent; color:var(--link); border:1px solid var(--line); border-radius:var(--radius); cursor:pointer; min-height:var(--alvo-toque);}
-.contrib-grid{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-4);}
+/* 26/09/2026 (pedido da editoria: o formulário "está muito corporativo"). A grade 1fr 1fr punha
+   estado e município lado a lado e depois quebrava para largura inteira sem razão — era daí que
+   vinha o ar de formulário genérico. Coluna única com medida de leitura, três etapas nomeadas, e o
+   destino do envio dito ANTES do botão. Nenhum campo entrou, saiu ou mudou de nome: o que o
+   Monitor coleta é decisão da editoria (governança §29); ordem e agrupamento, não. */
+.contrib-grid{display:block; max-width:660px; counter-reset:etapa;}
 .contrib-grid > *{min-width:0;}
+.contrib-etapa{border:0; margin:0 0 var(--sp-6); padding:0; min-width:0;}
+.contrib-etapa:last-child{margin-bottom:var(--sp-4);}
+.contrib-etapa > legend{display:block; width:100%; padding:0 0 var(--sp-2); margin:0 0 var(--sp-3); border-bottom:1px solid var(--line); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted);}
+.contrib-etapa > legend b{color:var(--ink); font-weight:var(--peso-semibold);}
+/* O número vem de contador: numeração escrita à mão desalinha quando a ordem muda. */
+.contrib-etapa > legend::before{counter-increment:etapa; content:counter(etapa) " · "; color:var(--argila); font-variant-numeric:tabular-nums;}
+.contrib-etapa .fld{margin:0 0 var(--sp-4);}
+.contrib-etapa .fld:last-child, .contrib-etapa > p:last-child{margin-bottom:0;}
+.contrib-etapa .hint{margin:calc(var(--sp-3) * -1) 0 var(--sp-4);}
+/* Par acoplado: estado e município são uma coisa só, e é a exceção à coluna única que a
+   pesquisa de usabilidade de formulário reconhece. Abaixo de 560px voltam a empilhar. */
+.contrib-par{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:var(--sp-4);}
+.contrib-par .fld{margin:0;}
+.contrib-destino{background:var(--campo); border:1px solid var(--campo-borda); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:0 0 var(--sp-4); max-width:660px; font-size:var(--fs-small); line-height:var(--lh-small);}
+/* Em tela larga sobrava metade do painel vazia à direita da coluna única. O aviso de destino ocupa
+   esse espaço e acompanha a rolagem: quem preenche vê o destino o tempo todo, e não só ao chegar
+   no botão. Assimetria com função, que é o que a direção de arte §5 pede.
+   Escrito como PADRÃO e desfeito em 1020px porque esta folha só usa consultas `max-width`, e
+   `verificar_estrutura.js` reprova ponto de quebra que não seja 640 ou 1020. */
+#formContrib{display:grid; grid-template-columns:minmax(0,660px) minmax(0,1fr); column-gap:var(--sp-7); align-items:start;}
+#formContrib .contrib-grid{grid-column:1; grid-row:1;}
+#formContrib .contrib-destino{grid-column:2; grid-row:1 / span 3; position:sticky; top:var(--sp-5); margin:0; max-width:none;}
+#formContrib button[type="submit"]{grid-column:1; grid-row:2; justify-self:start;}
+#formContrib #contribOffline{grid-column:1; grid-row:3;}
 .fld{display:flex; flex-direction:column; gap:var(--sp-1); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted);}
 .fld input, .fld select, .fld textarea{font-family:var(--font-corpo); font-size:var(--fs-body); color:var(--ink); background:var(--campo); border:1px solid var(--campo-borda); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3); text-transform:none; letter-spacing:0; width:100%; min-width:0; max-width:100%; min-height:var(--alvo-toque);}
 .fld-full{grid-column:1 / -1;}
@@ -549,13 +581,39 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .aviso-direito{margin:var(--sp-2) 0 0; background:var(--surface-2); border-left:4px solid var(--musgo); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3);}
 
 /* ===== 12. Prazos (relógios) e barras por UF ===== */
-.calendario{display:grid; grid-template-columns:minmax(160px, 1fr) minmax(0, 3fr) minmax(0, 2fr); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
-.calendario .cal-linha{display:contents;}
-.calendario .cal-linha > span{padding:var(--sp-2) var(--sp-3); border-top:1px solid var(--line); font-size:var(--fs-small); line-height:var(--lh-small); min-width:0;}
-.calendario .cal-cabecalho > span{border-top:0; background:var(--surface-2); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted);}
-.calendario .cal-data{font-family:var(--font-dado); font-variant-numeric:tabular-nums; white-space:nowrap; color:var(--ink);}
-.calendario .cal-fonte{color:var(--muted); font-size:var(--fs-caption); line-height:var(--lh-caption);}
-.calendario .cal-linha.prazo .cal-data{color:var(--rust);}
+/* 26/09/2026 (pedido da editoria): o calendário deixa de ser tabela e vira linha do tempo.
+   A tabela não transmitia tempo — "em 15 dias" era texto no meio de uma frase, e a janela de seis
+   meses do El Niño era só dois números separados por travessão. Agora há um eixo único,
+   compartilhado por todas as faixas, e uma linha de HOJE que as atravessa na mesma posição. */
+.calendario{display:block;}
+.calendario .cal-eixo, .calendario .cal-linha{display:grid; grid-template-columns:minmax(150px,1.6fr) minmax(0,3fr) minmax(0,1.3fr); gap:0 var(--sp-4); align-items:center; min-width:0;}
+.calendario .cal-eixo{align-items:end; padding:0 0 var(--sp-1); border-bottom:1px solid var(--ink); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted);}
+.calendario .cal-eixo .cal-regua{position:relative; height:1.6em;}
+.calendario .cal-eixo .cal-regua span{position:absolute; bottom:0; white-space:nowrap;}
+.calendario .cal-eixo .cal-regua .meio{transform:translateX(-50%);}
+/* O rótulo da ponta direita invadia a coluna da fonte; ancorado pela direita, ele para na borda. */
+.calendario .cal-eixo .cal-regua .fim{left:auto; right:0;}
+/* A linha de hoje precisa de nome: sem rótulo ela é só um risco. */
+.calendario .cal-eixo .cal-regua .hoje{transform:translateX(-50%); color:var(--ink); font-weight:var(--peso-semibold);}
+.calendario .cal-eixo .cal-regua .hoje::after{content:""; position:absolute; left:50%; top:100%; height:var(--sp-1); width:1px; background:var(--ink); opacity:.55;}
+.calendario .cal-linha{padding:var(--sp-2) 0; border-bottom:1px solid var(--line);}
+.calendario .cal-linha > span{min-width:0; font-size:var(--fs-small); line-height:var(--lh-small);}
+.calendario .cal-texto .cal-data{display:block; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); font-variant-numeric:tabular-nums;}
+.calendario .cal-texto .cal-marco{display:block;}
+.calendario .cal-fonte{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
+.calendario .cal-faixa{position:relative; height:22px;}
+.calendario .cal-faixa::before{content:""; position:absolute; left:0; right:0; top:50%; height:1px; background:var(--line);}
+.calendario .cal-faixa::after{content:""; position:absolute; top:-10px; bottom:-10px; width:1px; left:var(--hoje); background:var(--ink); opacity:.55;}
+/* Barra lisa, em mineral e sintético: o degradê do índice significa "valor de 0 a 100" e
+   reaproveitá-lo para tempo criaria ambiguidade entre duas grandezas diferentes. */
+.calendario .cal-barra{position:absolute; top:50%; transform:translateY(-50%); height:9px; border-radius:5px; left:var(--x0); width:var(--w); min-width:4px; overflow:hidden; background:var(--sem-dado); box-shadow:inset 0 0 0 1px var(--linha);}
+.calendario .cal-barra i{position:absolute; inset:0 auto 0 0; width:var(--decorrido); background:var(--mineral);}
+.calendario .cal-linha.prazo .cal-barra i{background:var(--sintetico);}
+.calendario .cal-linha.vencido .cal-barra i{background:var(--cinza-quente); opacity:.5;}
+.calendario .cal-ponto{position:absolute; top:50%; left:var(--x0); transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; background:var(--argila);}
+.calendario .cal-linha.futuro .cal-ponto{background:var(--branco); border:2px solid var(--argila);}
+.calendario + .legend{margin-top:var(--sp-3);}
+.calendario .cal-linha.prazo .cal-texto .cal-data{color:var(--rust);}
 .calendario .cal-linha.vencido > span{color:var(--muted);}
 .prazos-grade{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:var(--sp-4); margin:0;}
 .prazo-rel{display:grid; grid-template-columns:64px 1fr; gap:var(--sp-2) var(--sp-3); align-items:start; padding:var(--sp-3); border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:var(--sombra); min-width:0;}
@@ -690,6 +748,14 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 
 /* ===== 18. Responsivo — dois pontos de quebra canônicos: 1020 px (tablet) e 640 px (celular) ===== */
 @media (max-width:1020px){
+  /* Abaixo de 1020px não há espaço para o aviso ao lado: ele volta ao fluxo, antes do botão. */
+  #formContrib{display:block;}
+  #formContrib .contrib-destino{position:static; margin:0 0 var(--sp-4); max-width:660px;}
+  /* §24: a faixa de tempo desce para baixo do texto, em largura inteira, e a régua sai — ela
+     precisa das três colunas para apontar para o lugar certo. */
+  .calendario .cal-eixo{display:none;}
+  .calendario .cal-linha{grid-template-columns:1fr; gap:var(--sp-1) 0;}
+  .calendario .cal-faixa{height:20px;}
   /* 26/09/2026, medido em 375px: numa grade geográfica de seis colunas a célula fica com 54px,
      nove nomes quebram e "Pernambuco" é cortado. A direção de arte §24 manda recompor, não
      comprimir: abaixo de 1020px a grade geográfica sai e as células voltam a colunas simples, na
@@ -706,6 +772,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .mast-top{gap:var(--sp-3) var(--sp-4);}
 }
 @media (max-width:640px){
+  .contrib-par{grid-template-columns:1fr;}
   .regions{grid-template-columns:repeat(2, minmax(0,1fr));}
   .emerg-nums{grid-template-columns:repeat(2, minmax(0, 1fr));}
   .emerg-num--sms{grid-column:1 / -1;}

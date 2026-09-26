@@ -9,6 +9,93 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §242 · O calendário vira linha do tempo; o formulário, três etapas · 26/09/2026
+
+Classe **design**. Nenhum dado, número ou fonte mudou.
+
+### O calendário
+
+Pedido da editoria: *"é preciso criar alguma forma gráfica para representar o que significa cada uma
+dessas datas, como se elas já tivessem passado, como se tivessem ainda correndo"*.
+
+A tabela não transmitia tempo nenhum. "Em 15 dias" era texto perdido no meio de uma frase, e a
+janela crítica do El Niño — seis meses — aparecia como dois números separados por travessão.
+
+O dado já sustentava a resposta, e foi isso que destravou: **prazo tem `data_base` e `vencimento`**,
+ou seja, é intervalo, não ponto. Intervalo se desenha.
+
+- **Um eixo de tempo só, compartilhado por todas as faixas.** Mesma escala, logo as durações ficam
+  comparáveis entre si — o que a tabela não permitia.
+- **Uma linha vertical de HOJE** atravessando todas as faixas na mesma posição. É ela que faz "já
+  passou" e "ainda corre" serem visíveis sem ler texto.
+- **Prazo vira barra**: parte decorrida cheia, trilho claro é o que falta.
+- **Data única vira ponto**, vazado enquanto não chega.
+- **Três estados, não dois.** A janela do El Niño ainda não começou, então não diz "0 de 181 dias":
+  diz "começa em 5 dias · dura 181 dias".
+
+**Uma decisão de propósito:** o degradê das barras do índice **não** é reaproveitado aqui. Naquela
+arte ele significa "valor de 0 a 100", e usá-lo para tempo criaria ambiguidade entre duas grandezas
+diferentes. A barra de tempo é lisa, em mineral e sintético.
+
+### O formulário
+
+Pedido: *"está muito corporativo"*. A pesquisa de usabilidade de formulário converge em três pontos,
+e os três se aplicavam: coluna única, agrupamento lógico, e dizer o destino antes do envio.
+
+A grade `1fr 1fr` punha estado e município lado a lado e depois quebrava para largura inteira sem
+razão — era daí que vinha o ar genérico. Agora: **três etapas numeradas** (Onde, O documento, Você),
+coluna única com medida de leitura, e o par estado/município mantido lado a lado, que é a exceção
+que a própria pesquisa reconhece. O número da etapa vem de contador CSS, não escrito à mão.
+
+O aviso **"o que acontece depois"** fica ao lado em tela larga, acompanhando a rolagem, e ocupa a
+metade do painel que sobrava vazia. Quem decide clicar precisa saber o destino antes, não depois.
+
+**Nenhum campo entrou, saiu ou mudou de nome.** O que o Monitor coleta é decisão da editoria
+(governança §29); ordem, agrupamento e remoção de redundância, não.
+
+### O cabeçalho e o menu
+
+Pedidos da editoria, no mesmo turno: a descrição ocupava só parte da largura e colava no menu sem
+separação; a gradação estava discreta demais; e a página corrente devia ir a **branco**, fora do ramo.
+
+- Descrição em largura inteira (1132px, a mesma do parágrafo abaixo), e o menu ganhou uma linha
+  acima que o separa do texto.
+- Tinta dos botões de 32% para **60%**. Medido: o pior contraste de texto cai de 11,5:1 para 6,6:1,
+  ainda bem acima do mínimo AA.
+- A página corrente sai da terracota e vai a **branco**, com borda e texto em `--ink` (18,5:1).
+  É inversão: entre dez botões de tinta, o único branco é o que se destaca, e não gasta mais uma cor.
+  Isso substitui a decisão do §241, tomada horas antes.
+
+### O teto de palavras, que foi o limite real
+
+A página inicial já estava a **6 palavras** do teto editorial (944 de 950). Os dois acréscimos que a
+pesquisa recomendava custavam 43. Não cabiam.
+
+Cortei **só o que eu mesmo acrescentei**, sem tocar no texto da editoria: dentro da etapa 2 havia uma
+dica que repetia quase palavra por palavra o texto de apoio da seção (remoção de redundância é do
+§29), e o aviso de destino encolheu de 45 para 13 palavras — ficou mais curto e mais forte.
+Página em **948 de 950**. Fica registrado: qualquer texto novo nessa página agora exige cortar outro.
+
+### Portões
+
+Duas checagens de calendário descreviam o formato antigo e foram **substituídas, não afrouxadas**: o
+rótulo do prazo passou de "em 15 dias" para "44 de 59 dias" (diz quanto já correu, e não só quanto
+falta), e a ordenação passou a ser pelo vencimento, não pelo início — numa linha do tempo o que
+interessa é o que vence primeiro, e a chave virou a última data do texto.
+
+Três checagens novas, todas provadas quebrando de propósito:
+
+- cada linha tem barra (intervalo) ou ponto (data única);
+- a linha de hoje está na **mesma posição** em todas as faixas — sem isso a escala não é comum e as
+  durações deixam de ser comparáveis, que é a razão de existir do eixo único;
+- toda barra declara quanto do prazo já correu.
+
+**Três defeitos meus, pegos pelos portões antes de subir.** Pontos de quebra de 900px e 560px, quando
+o projeto só admite 640 e 1020 (`verificar_estrutura.js`); margem de −5px, fora da escala de
+espaçamento; e uma regra órfã do desenho de tabela (`white-space:nowrap` na data) que ficou abaixo do
+bloco que substituí e causava **rolagem horizontal em 375px**. Conferido depois: sem rolagem em
+1280, 768 e 375.
+
 ## §241 · Os estados viram grade territorial; o menu ganha gradação · 26/09/2026
 
 Classe **design**. Nenhum dado, número ou fonte mudou.
