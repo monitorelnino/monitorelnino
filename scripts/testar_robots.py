@@ -32,6 +32,18 @@ ROBOTS_LIVRE = "User-agent: *\nDisallow:\n"
 ROBOTS_SO_NOS = f"User-agent: {cb.UA.split('/')[0]}\nDisallow: /\n\nUser-agent: *\nDisallow:\n"
 
 
+# Recorte REAL do desafio do F5/Shape servido por paraiba.pb.gov.br em 26/09/2026, com HTTP 200 —
+# inclusive no lugar do /robots.txt. Encurtado: o original tem 47 a 51 kB de JavaScript ofuscado.
+# Repare que NÃO há uma frase declarativa: é isso que o fazia passar pelo detector do §186.
+MURO_F5 = (b'<html><head><script type="text/javascript" src="/TSPD/08f1c0a1?type=8"></script>'
+           b'<script>window["bobcmn"]="11202031303200300";window["failureConfig"]='
+           b'{"fmt":"1","uri":"/TSPD/"};</script></head><body><noscript>'
+           b'<div></div></noscript></body></html>')
+# Uma página que apenas CITA o produto em prosa não pode casar: a marca exige a forma do código.
+CITA_O_PRODUTO = (b'<html><body><p>O portal do estado adotou protecao TSPD contra robos, '
+                  b'informa a nota tecnica publicada nesta data.</p></body></html>')
+
+
 def _limpo():
     cb._ROBOTS_CACHE.clear()
     cb._ULTIMO_ACESSO.clear()
@@ -174,6 +186,42 @@ def t_geobloqueio_com_200_e_recusa():
     return cb.detectar_muro_de_robo(corpo) == "connection denied by geolocation"
 
 
+def t_muro_f5_sem_texto_declarativo_e_recusa():
+    """§232: o desafio do F5/Shape é recusa, e passava porque a página não DIZ nada.
+
+    O detector do §186 varre o texto declarativo — regra conquistada no §182, quando casar em
+    atributo de HTML marcou um portal inteiro como suspenso por um `alt="banner periodo
+    eleitoral"`. O desafio do F5 não tem texto nenhum: é só JavaScript ofuscado. As duas coisas são
+    verdadeiras, e a saída foi uma família de marcas própria, casada no corpo cru e só com
+    identificadores do produto."""
+    marca = cb.detectar_muro_de_robo(MURO_F5)
+    return bool(marca) and "bobcmn" in marca
+
+
+def t_muro_f5_nao_acusa_quem_so_cita_o_produto():
+    """Negativo do §232, e o que impede repetir o falso positivo do §182: prosa que menciona o
+    produto não é desafio. A marca exige a forma do código (`window["bobcmn"]`, `/TSPD/`), não a
+    palavra solta."""
+    return (cb.detectar_muro_de_robo(CITA_O_PRODUTO) is None
+            and cb.detectar_muro_de_robo(DOCUMENTO) is None
+            and cb.detectar_muro_de_robo(b"%PDF-1.4 " + b"bobcmn") is None)
+
+
+def t_muro_no_lugar_do_robots_nao_vira_permissao():
+    """§232: o pior efeito do muro invisível não era falhar — era CONCLUIR.
+
+    Medido em 26/09/2026: `paraiba.pb.gov.br/robots.txt` devolve 51 kB do desafio com HTTP 200, e
+    `robots_de()` concluía **"permite"** — tirava permissão de uma recusa e gravava isso como o que
+    o sítio declara. Muro no lugar do robots é "indeterminado": o sítio não declarou regra nenhuma,
+    ele não deixou ler a declaração."""
+    _limpo()
+    try:
+        reg = cb.robots_de("f5.exemplo", lambda h, timeout=0: (200, MURO_F5.decode("utf-8")))
+        return reg["status"] == "indeterminado" and reg["rp"] is None
+    finally:
+        _limpo()
+
+
 class _RespostaFalsa:
     """O mínimo que `buscar_uma_vez` usa de uma resposta HTTP: gerenciador de contexto,
     `.read()` e `.headers.get("Content-Type")`."""
@@ -280,5 +328,8 @@ if __name__ == "__main__":
         "§186 muro de robô com HTTP 200 é recusa, não conteúdo": t_muro_de_robo_e_recusa_nao_conteudo,
         "§186 muro não acusa PDF nem resposta grande": t_muro_nao_acusa_pdf_nem_documento_grande,
         "§187 geobloqueio com HTTP 200 é recusa": t_geobloqueio_com_200_e_recusa,
+        "§232 desafio do F5/Shape sem texto declarativo é recusa": t_muro_f5_sem_texto_declarativo_e_recusa,
+        "§232 negativo: quem só CITA o produto em prosa não é muro": t_muro_f5_nao_acusa_quem_so_cita_o_produto,
+        "§232 muro no lugar do robots.txt não vira permissão": t_muro_no_lugar_do_robots_nao_vira_permissao,
         "§186 buscar() levanta no muro antes de preservar": t_buscar_levanta_muro_de_robo,
     }))

@@ -9,6 +9,26 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §232 · O muro que não dizia nada, e a permissão tirada de uma recusa · 26/09/2026
+
+Classe **conformidade com a política de acesso**. É o §186 e o §187 pela terceira vez, e desta vez o detector estava cego.
+
+**O que foi medido.** Em `paraiba.pb.gov.br`, `/`, a pasta de vigilância em saúde e **até o `/robots.txt`** devolvem a mesma página de 47 a 51 kB com **HTTP 200**: um desafio JavaScript do F5/Shape (BIG-IP ASM), cuja carga hexadecimal decodifica para *"Oops....something went wrong....your support id is: %DOSL7.challenge.support_id%"*. O host inteiro está atrás do muro.
+
+**Por que passou.** `detectar_muro_de_robo` varre o **texto declarativo** da página — e essa regra foi conquistada no §182, quando casar em atributo de HTML marcou um portal inteiro como suspenso por causa de um `alt="banner periodo eleitoral"`. O desafio do F5 **não diz nada**: não há "pardon our interruption", não há "you have been blocked", é só JavaScript ofuscado. As duas coisas são verdadeiras ao mesmo tempo, e a saída não foi afrouxar a régua — foi distinguir as famílias. Marcas que vivem no **código** da página (`window["bobcmn"]`, `/TSPD/`, `TSPD_101`) passam a ser casadas no corpo cru, e só elas: são identificadores de produto, não palavras de língua, e nenhum documento público brasileiro as contém. Um texto que menciona "proteção TSPD" em prosa continua não casando.
+
+**O efeito pior não era falhar — era concluir.** `robots_de()` leu os 51 kB de desafio como se fossem um `robots.txt` e concluiu **"permite"**: tirou permissão de uma recusa e registrou isso como o que o sítio declara. Agora muro no lugar do robots é **"indeterminado"** — o sítio não declarou regra nenhuma, ele não deixou ler a declaração.
+
+**A recusa da Paraíba ganhou o nome certo.** O coletor de boletins da PB chamava a página de "página de espera do Plone" e de "interstício (cookie)", e procurava dentro dela um destino que não existe — porque não há destino, há desafio. O log registrava *"nenhum boletim nº 01–6 de 2026 respondeu com PDF"*. Agora registra *"bloqueio de acesso do host: muro de robô … desafio de robô no código da página"*, e **para de tentar os seis números** contra um muro que cobre o host inteiro. Nomear a recusa errado é o erro que custou treze dias de abstenção indevida no §187; aqui custava uma lacuna com o nome de outra coisa.
+
+**E a conferência de links dizia "OK" sobre documento que ninguém abre.** `verificar_links.py` classificava por status: 200 → OK. Um host que serve muro com 200 aparecia como link vivo e conferido — e `data/saude_uf.json` guarda um plano da PB apontando exatamente para lá, com `hash_evidencia` nulo. A conferência de links existe para achar o que morreu; ela estava dizendo que estava vivo.
+
+Entrou a classificação **`BLOQUEADO`**, contada à parte: não é link morto e não é link conferido, é recusa. E o **caminho rápido do HEAD saiu**: ele decidia pelo status **sem corpo para inspecionar**, e um host que serve muro com 200 responde 200 ao HEAD também. Quem mostrou isso foi o autoteste desta própria função, escrito antes da correção — com o muro injetado, ela classificava OK. Agora a leitura é um GET por link, com **leitura parcial de 60 kB** (o mesmo teto do detector): um PDF de dez megabytes não é baixado inteiro para se saber que o link está de pé.
+
+Seis travas novas, todas offline: o desafio sem texto declarativo **é** recusa; prosa que só cita o produto **não** é; muro no lugar do robots não vira permissão; e o verificador de links classifica `BLOQUEADO` e o relatório conta a recusa à parte sem chamá-la de quebrado.
+
+**O que fica para a editoria.** O desafio JavaScript **não se resolve**: é recusa e se respeita. Os boletins de arboviroses da Paraíba — as 16 Regiões de Saúde, o melhor formato tabular depois do Mato Grosso do Sul — seguem inacessíveis por via automatizada. O caminho que resta é pedido pela LAI ou contato institucional com a SES-PB. E há um registro a revisar: o plano da PB em `data/saude_uf.json` foi verificado por pessoa em 05/09 e **nunca preservado** (`hash_evidencia` nulo); hoje aquele endereço está atrás do muro.
+
 ## §231 · O primeiro diário oficial ESTADUAL que o Monitor leu · 26/09/2026
 
 Classe **cobertura de coleta**. Em quase dois meses de operação, o projeto nunca havia lido um diário oficial de estado: as 27 UFs de `data/fontes_doe.json` estavam com adaptador nulo, e o §194 já tinha medido que o Querido Diário **não indexa** diário estadual — os territórios de dois dígitos devolvem zero. O único adaptador implementado era justamente o que não podia funcionar.

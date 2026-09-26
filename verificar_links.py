@@ -10,6 +10,8 @@ Para cada link, faz uma requisição HTTP e classifica:
   OK           — resposta 200-299
   REDIRECIONA  — 300-399 (registra o destino final)
   QUEBRADO     — 400-599 ou erro de conexão/timeout
+  BLOQUEADO    — §232: HTTP 200 servindo muro de robô. Não é link morto e não é link
+                 conferido: é recusa. Contado à parte, e nunca na lista de quebrados.
   (o relatório nunca remove um link por conta própria — mas a partir de
    15/09/2026 a decisão sobre o que fazer com cada QUEBRADO não fica mais
    parada à espera de revisão humana por padrão: quem lê o relatório busca
@@ -44,7 +46,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import ua_de  # noqa: E402
+from coletores_base import ua_de, detectar_muro_de_robo  # noqa: E402  (§232)
 
 DATA = RAIZ / "data"
 ARQUIVOS_HTML = ["index.html", "defesa-civil.html", "proteja-se.html", "prefeituras.html", "obrigado.html"]
@@ -127,14 +129,30 @@ def verificar_um(url: str, timeout=15):
     # CLAUDE.md não abre exceção: nunca disfarçar o cliente. Se um portal recusa o Monitor
     # identificado, a recusa é o resultado da verificação — e é o resultado que se registra.
     headers = {"User-Agent": ua_de("verificação de links")}
+    # §232 (26/09/2026): o caminho rápido do HEAD saiu. Ele devolvia OK com base no status e
+    # SEM CORPO para inspecionar — e um host que serve muro de robô com 200 responde 200 ao HEAD
+    # também. O autoteste desta função pegou isso: com o muro injetado, ela classificava OK. Sem
+    # corpo não há como distinguir documento de recusa, e essa distinção é o §186.
+    #
+    # O custo é uma requisição por link em vez de uma ou duas, e ela lê só os primeiros 60 kB —
+    # o teto que `detectar_muro_de_robo` já usa. Um PDF de dez megabytes não é baixado inteiro
+    # para se saber que o link está vivo.
     try:
-        resp = requests.head(url, timeout=timeout, allow_redirects=True, headers=headers)
-        if resp.status_code < 400:
-            return classificar_status(resp.status_code), resp.status_code, resp.url
-    except Exception:
-        pass
-    try:  # HEAD ausente, recusado (403/405) ou com erro de conexão: GET é o teste que decide
-        resp = requests.get(url, timeout=timeout, allow_redirects=True, headers=headers)
+        resp = requests.get(url, timeout=timeout, allow_redirects=True, headers=headers, stream=True)
+        try:
+            inicio = resp.raw.read(60000, decode_content=True) or b""
+        except Exception:  # noqa: BLE001 — corpo ilegível não invalida o status
+            inicio = getattr(resp, "content", b"")[:60000] or b""
+        finally:
+            resp.close()
+        # §232 (26/09/2026): 200 com muro de robô é RECUSA, não link vivo. Medido em
+        # paraiba.pb.gov.br: o host inteiro devolve 200 com o desafio JavaScript do F5/Shape, e
+        # `data/saude_uf.json` guarda um plano da PB apontando para lá — este verificador diria
+        # "OK" sobre um documento que ninguém consegue mais abrir. Mesma família do §186, e aqui
+        # o efeito é pior: a conferência de links existe justamente para achar o que morreu.
+        marca = detectar_muro_de_robo(inicio)
+        if marca:
+            return "BLOQUEADO", resp.status_code, f"{resp.url} — {marca}"
         return classificar_status(resp.status_code), resp.status_code, resp.url
     except Exception as e:
         return "QUEBRADO", None, str(e)
@@ -154,23 +172,29 @@ def rodar_verificacao(links: dict, workers=8):
 def relatorio(links: dict, resultados: dict, titulo: str):
     """Formata os resultados da verificação em relatório de terminal, agrupado por status."""
     linhas = [f"\n=== {titulo} ({len(links)} link(s) únicos) ==="]
-    contagem = {"OK": 0, "REDIRECIONA": 0, "QUEBRADO": 0}
+    contagem = {"OK": 0, "REDIRECIONA": 0, "QUEBRADO": 0, "BLOQUEADO": 0}
     quebrados = []
     codigos_quebrados = []
     for url, onde in sorted(links.items()):
         status, codigo, destino = resultados[url]
         contagem[status] += 1
-        marca = {"OK": "✓", "REDIRECIONA": "↪", "QUEBRADO": "✗"}[status]
+        marca = {"OK": "✓", "REDIRECIONA": "↪", "QUEBRADO": "✗", "BLOQUEADO": "⛔"}[status]
         linhas.append(f"  {marca} [{status}{' '+str(codigo) if codigo else ''}] {url}")
         if status == "REDIRECIONA" and destino != url:
             linhas.append(f"      → {destino}")
+        if status == "BLOQUEADO":
+            # §232: recusa com HTTP 200. NÃO entra na lista de quebrados — o documento pode estar
+            # lá e vivo; o que se sabe é que o host recusa robô. Isso não autoriza tratar o link
+            # como morto nem, do outro lado, como conferido.
+            linhas.append(f"      recusa com 200: {destino}")
         if status == "QUEBRADO":
             linhas.append(f"      erro: {destino}")
             quebrados.append((url, onde))
             codigos_quebrados.append(codigo)
         for arq, ctx in onde[:2]:
             linhas.append(f"      usado em: {arq} ({ctx})")
-    linhas.append(f"\n  Resumo: {contagem['OK']} OK · {contagem['REDIRECIONA']} redirecionam · {contagem['QUEBRADO']} quebrados")
+    linhas.append(f"\n  Resumo: {contagem['OK']} OK · {contagem['REDIRECIONA']} redirecionam · "
+                  f"{contagem['QUEBRADO']} quebrados · {contagem['BLOQUEADO']} com recusa de robô (HTTP 200)")
 
     # Salvaguarda: bloqueio de rede/proxy parece com "tudo quebrado", mas não é.
     # Domínios completamente diferentes falhando pelo MESMO código sugere bloqueio
@@ -210,6 +234,56 @@ def self_test():
         ok = obtido == esperado
         falhas += not ok
         print(f"  {'✓' if ok else '✗'} {codigo} → {obtido}" + ("" if ok else f" (esperado {esperado})"))
+
+    print("\n=== §232: 200 com muro de robô é BLOQUEADO, não OK ===")
+    # A conferência de links existe para achar o que morreu. Um host que devolve 200 com desafio
+    # de robô — medido em paraiba.pb.gov.br, host inteiro, inclusive o /robots.txt — apareceria
+    # como link vivo e conferido, sobre um documento que ninguém consegue mais abrir.
+    MURO = (b'<html><head><script src="/TSPD/08f1c0a1"></script><script>'
+            b'window["bobcmn"]="11202031";</script></head><body></body></html>')
+
+    class _Raw:
+        def __init__(self, corpo):
+            self._c = corpo
+
+        def read(self, n, decode_content=True):
+            return self._c[:n]
+
+    class _RespFalsa:
+        def __init__(self, corpo, codigo=200, url="https://muro.exemplo/doc.pdf"):
+            self.content, self.status_code, self.url = corpo, codigo, url
+            self.raw = _Raw(corpo)
+
+        def close(self):
+            pass
+
+    import types
+    falso = types.ModuleType("requests")
+    falso.head = lambda u, **k: _RespFalsa(MURO)
+    falso.get = lambda u, **k: _RespFalsa(MURO)
+    real = sys.modules.get("requests")
+    sys.modules["requests"] = falso
+    try:
+        status, codigo, destino = verificar_um("https://muro.exemplo/doc.pdf")
+    finally:
+        if real is not None:
+            sys.modules["requests"] = real
+        else:
+            sys.modules.pop("requests", None)
+    ok_muro = status == "BLOQUEADO" and codigo == 200 and "bobcmn" in destino
+    falhas += not ok_muro
+    print(f"  {'✓' if ok_muro else '✗'} muro com 200 → {status} (e não OK)")
+    # e o relatório renderiza a classificação nova sem estourar
+    try:
+        texto, _ = relatorio({"https://muro.exemplo/doc.pdf": [("index.html", "doc")]},
+                             {"https://muro.exemplo/doc.pdf": ("BLOQUEADO", 200, "x — desafio")},
+                             "prova")
+        ok_rel = "BLOQUEADO" in texto and "recusa de robô" in texto
+    except Exception as e:  # noqa: BLE001
+        ok_rel = False
+        print(f"      relatório estourou: {type(e).__name__}: {e}")
+    falhas += not ok_rel
+    print(f"  {'✓' if ok_rel else '✗'} o relatório conta a recusa à parte, sem chamá-la de quebrado")
 
     print("\n=== Teste do banco: extrai url de municipios.json real ===")
     links_banco = extrair_links_banco()
