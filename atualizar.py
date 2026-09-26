@@ -250,8 +250,8 @@ def main():
     # edição consorciada é um PDF de vários MB e leva cerca de dois minutos — varrer o ciclo
     # inteiro leva horas e é trabalho de rodada dedicada, não de cadência diária.
     rodar([sys.executable, "coletar_diarios_consorciados.py", "--desde",
-           (datetime.date.today() - datetime.timedelta(days=8)).isoformat(),
-           "--ate", datetime.date.today().isoformat()])
+           (hoje_editorial() - datetime.timedelta(days=8)).isoformat(),
+           "--ate", hoje_editorial().isoformat()])
     rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero
