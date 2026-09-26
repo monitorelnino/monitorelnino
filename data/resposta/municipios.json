@@ -2262,12 +2262,13 @@
    "nome": "Alto Paraíso",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "16/09/2026",
+   "primeiro_decreto": "09/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -2277,9 +2278,17 @@
      "data": "16/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.074",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17273",
+     "data": "09/09/2026",
+     "decreto": "Decreto municipal nº 3.911",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1100403": {
    "ibge": "1100403",
@@ -3008,14 +3017,25 @@
    "ibge": "4101002",
    "nome": "Ampére",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "04/09/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17269",
+     "data": "04/09/2026",
+     "decreto": "Decreto municipal nº 81",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    }
+   ],
+   "n_eventos": 1
   },
   "2700201": {
    "ibge": "2700201",
@@ -3672,14 +3692,25 @@
    "ibge": "4101200",
    "nome": "Antonina",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "09/09/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17273",
+     "data": "09/09/2026",
+     "decreto": "Decreto municipal nº 316",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    }
+   ],
+   "n_eventos": 1
   },
   "2300804": {
    "ibge": "2300804",
@@ -4767,12 +4798,13 @@
    "nome": "Arapuã",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "16/09/2026",
+   "primeiro_decreto": "04/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -4782,9 +4814,17 @@
      "data": "16/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.084",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17269",
+     "data": "04/09/2026",
+     "decreto": "Decreto municipal nº 100",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3103801": {
    "ibge": "3103801",
@@ -7094,12 +7134,13 @@
    "nome": "Barbosa Ferraz",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "23/09/2026",
+   "primeiro_decreto": "18/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -7109,9 +7150,17 @@
      "data": "23/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.171",
      "hash": "bcd9cd188e807dd7de177c5dbcfe179f0312f52a74de43f9732027eddae86594"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17301",
+     "data": "18/09/2026",
+     "decreto": "Decreto municipal nº 76",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1501303": {
    "ibge": "1501303",
@@ -9219,12 +9268,13 @@
    "nome": "Boa Vista da Aparecida",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "18/09/2026",
+   "primeiro_decreto": "15/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -9234,9 +9284,17 @@
      "data": "18/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.121",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17290",
+     "data": "15/09/2026",
+     "decreto": "Decreto municipal nº 235",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4302154": {
    "ibge": "4302154",
@@ -12600,7 +12658,7 @@
    "nome": "Cafezal do Sul",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "17/09/2026",
+   "primeiro_decreto": "11/09/2026",
    "tipos": [
     "reconhecimento_federal",
     "SE"
@@ -12624,9 +12682,25 @@
      "data": "17/09/2026",
      "decreto": "Decreto municipal nº 236/2026",
      "hash": "f87c11e039da2347139572c74f00fb036c68ccb48d02eb36bb8d105812be2d22"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17314",
+     "data": "23/09/2026",
+     "decreto": "Decreto municipal nº 242",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17282",
+     "data": "11/09/2026",
+     "decreto": "Decreto municipal nº 236",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 4
   },
   "3508900": {
    "ibge": "3508900",
@@ -13354,12 +13428,13 @@
    "nome": "Cambé",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "10/09/2026",
+   "primeiro_decreto": "31/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -13369,9 +13444,17 @@
      "data": "10/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.003, nº 3.003, nº 3.005, nº 3.005)",
      "hash": "fb6f776794ed23051b71b90ef8959e1b1d5cc7e0a9006ea8d0486f85e5cff5e3"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17252",
+     "data": "31/08/2026",
+     "decreto": "Decreto municipal nº 562",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4103800": {
    "ibge": "4103800",
@@ -14669,12 +14752,13 @@
    "nome": "Cândido de Abreu",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "09/09/2026",
+   "primeiro_decreto": "18/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -14684,9 +14768,17 @@
      "data": "09/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.970",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17213",
+     "data": "18/08/2026",
+     "decreto": "Decreto municipal nº 197",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4304309": {
    "ibge": "4304309",
@@ -14793,12 +14885,13 @@
    "nome": "Candói",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "08/07/2026",
+   "primeiro_decreto": "03/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -14808,9 +14901,17 @@
      "data": "08/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.248",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/16964",
+     "data": "03/07/2026",
+     "decreto": "Decreto municipal nº 225",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4304408": {
    "ibge": "4304408",
@@ -17110,9 +17211,17 @@
      "data": "14/09/2026",
      "decreto": "Decreto municipal nº 670/2026",
      "hash": "552b70c7b391d3163c46dfe25b872af6c231d45daf99628a9ae5c480412ef2ff"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17301",
+     "data": "18/09/2026",
+     "decreto": "Decreto municipal nº 688",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "2907301": {
    "ibge": "2907301",
@@ -18375,10 +18484,11 @@
    "nome": "Chopinzinho",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "21/09/2026",
+   "primeiro_decreto": "09/09/2026",
    "tipos": [
     "reconhecimento_federal",
-    "ECP"
+    "ECP",
+    "SE"
    ],
    "reconhecido": true,
    "decretado": true,
@@ -18399,9 +18509,17 @@
      "data": "2026-09-15",
      "decreto": "Decreto nº 350",
      "hash": "364ba749bf2d4a135f51237c30db364bfb690be193e05f11c35d6ed68bd01eb9"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17273",
+     "data": "09/09/2026",
+     "decreto": "Decreto municipal nº 283",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "2303931": {
    "ibge": "2303931",
@@ -18523,12 +18641,13 @@
    "nome": "Cidade Gaúcha",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "16/09/2026",
+   "primeiro_decreto": "09/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -18538,9 +18657,17 @@
      "data": "16/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.084",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17273",
+     "data": "09/09/2026",
+     "decreto": "Decreto municipal nº 119",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5205497": {
    "ibge": "5205497",
@@ -23063,12 +23190,13 @@
    "nome": "Dois Vizinhos",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "18/09/2026",
+   "primeiro_decreto": "14/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -23078,9 +23206,17 @@
      "data": "18/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.121",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17285",
+     "data": "14/09/2026",
+     "decreto": "Decreto municipal nº 23.807",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3514205": {
    "ibge": "3514205",
@@ -24777,12 +24913,13 @@
    "nome": "Espigão Alto do Iguaçu",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "18/09/2026",
+   "primeiro_decreto": "14/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -24792,9 +24929,17 @@
      "data": "18/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.121",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17285",
+     "data": "14/09/2026",
+     "decreto": "Decreto municipal nº 65",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1100098": {
    "ibge": "1100098",
@@ -27746,14 +27891,25 @@
    "ibge": "4108502",
    "nome": "General Carneiro",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "06/07/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/16965",
+     "data": "06/07/2026",
+     "decreto": "Decreto municipal nº 509",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    }
+   ],
+   "n_eventos": 1
   },
   "2802502": {
    "ibge": "2802502",
@@ -28274,12 +28430,13 @@
    "nome": "Goioerê",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "02/09/2026",
+   "primeiro_decreto": "20/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -28289,21 +28446,30 @@
      "data": "02/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
      "hash": "a93102f465844db2b59799856f7a652939bf57774feef7b7a9beb5ffbead7218"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17223",
+     "data": "20/08/2026",
+     "decreto": "Decreto municipal nº 9.943",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4108650": {
    "ibge": "4108650",
    "nome": "Goioxim",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "08/07/2026",
+   "primeiro_decreto": "02/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -28313,9 +28479,17 @@
      "data": "08/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.248",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/16963",
+     "data": "02/07/2026",
+     "decreto": "Decreto municipal nº 34",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3127404": {
    "ibge": "3127404",
@@ -29639,12 +29813,13 @@
    "nome": "Guaratuba",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "12/08/2026",
+   "primeiro_decreto": "06/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -29654,9 +29829,17 @@
      "data": "12/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
      "hash": "5db0444cf0ce122602da6898b40e48f8c0c5f3c9abaecb6d48aa966c36dae2e7"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17187",
+     "data": "06/08/2026",
+     "decreto": "Decreto municipal nº 27.783",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3128600": {
    "ibge": "3128600",
@@ -33071,9 +33254,10 @@
    "nome": "Irati",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": null,
+   "primeiro_decreto": "04/09/2026",
    "tipos": [
-    "ECP"
+    "ECP",
+    "SE"
    ],
    "reconhecido": false,
    "decretado": true,
@@ -33086,9 +33270,17 @@
      "data": "2026-09-01",
      "decreto": "Decreto nº 632/2026",
      "hash": "3dea527d0430a238ecc8b29439d637da71ab2e0e3fda0cd6deb9a2906cdbb603"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17269",
+     "data": "04/09/2026",
+     "decreto": "Decreto municipal nº 644",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4207858": {
    "ibge": "4207858",
@@ -35655,14 +35847,25 @@
    "ibge": "4111506",
    "nome": "Ivaiporã",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "22/09/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17309",
+     "data": "22/09/2026",
+     "decreto": "Decreto municipal nº 15.450",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    }
+   ],
+   "n_eventos": 1
   },
   "4111555": {
    "ibge": "4111555",
@@ -42061,12 +42264,13 @@
    "nome": "Manoel Ribas",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "14/09/2026",
+   "primeiro_decreto": "09/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -42076,9 +42280,17 @@
      "data": "14/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.031, nº 3.032, nº 3.034)",
      "hash": "38beb3300008507118c2364a54b03274bb0c94b7b9987878326dfa5f7df970e2"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17273",
+     "data": "09/09/2026",
+     "decreto": "Decreto municipal nº 166",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1200344": {
    "ibge": "1200344",
@@ -43157,12 +43369,13 @@
    "nome": "Marmeleiro",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "16/09/2026",
+   "primeiro_decreto": "03/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -43172,9 +43385,17 @@
      "data": "16/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.072, nº 3.073, nº 3.073, nº 3.074, nº 3.074, nº 3.084)",
      "hash": "e6e4ae099af13fbaabef02fbd11df4adb85f2985f7da97788d20d6edd88dd09c"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17264",
+     "data": "03/09/2026",
+     "decreto": "Decreto municipal nº 3.770",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3140407": {
    "ibge": "3140407",
@@ -43218,12 +43439,13 @@
    "nome": "Marquinho",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "08/07/2026",
+   "primeiro_decreto": "03/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -43241,9 +43463,25 @@
      "data": "08/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.248",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17213",
+     "data": "18/08/2026",
+     "decreto": "Decreto municipal nº 82",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/16964",
+     "data": "03/07/2026",
+     "decreto": "Decreto municipal nº 73",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 4
   },
   "3140506": {
    "ibge": "3140506",
@@ -43565,12 +43803,13 @@
    "nome": "Matelândia",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "17/09/2026",
+   "primeiro_decreto": "14/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -43580,9 +43819,17 @@
      "data": "17/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.101",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17285",
+     "data": "14/09/2026",
+     "decreto": "Decreto municipal nº 5.821",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3140605": {
    "ibge": "3140605",
@@ -46120,12 +46367,13 @@
    "nome": "Morretes",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "26/08/2026",
+   "primeiro_decreto": "20/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -46135,9 +46383,17 @@
      "data": "26/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.771, nº 2.772)",
      "hash": "c8873e570c4ad66daa4b006ad77b0fcbd4bcf203faaa34418eb46826ba8a04eb"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17223",
+     "data": "20/08/2026",
+     "decreto": "Decreto municipal nº 2.928",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5213806": {
    "ibge": "5213806",
@@ -48318,12 +48574,13 @@
    "nome": "Nova Laranjeiras",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "18/09/2026",
+   "primeiro_decreto": "09/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -48333,9 +48590,17 @@
      "data": "18/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.121",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17273",
+     "data": "09/09/2026",
+     "decreto": "Decreto municipal nº 207",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3144805": {
    "ibge": "3144805",
@@ -51102,7 +51367,7 @@
    "nome": "Palmeira",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "18/09/2026",
+   "primeiro_decreto": "15/09/2026",
    "tipos": [
     "reconhecimento_federal",
     "SE"
@@ -51134,9 +51399,17 @@
      "data": "2026-09-15",
      "decreto": "Decreto nº 19.546",
      "hash": "364ba749bf2d4a135f51237c30db364bfb690be193e05f11c35d6ed68bd01eb9"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17290",
+     "data": "15/09/2026",
+     "decreto": "Decreto municipal nº 19.546",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 3
+   "n_eventos": 4
   },
   "4212056": {
    "ibge": "4212056",
@@ -51361,14 +51634,25 @@
    "ibge": "4117800",
    "nome": "Palmital",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "18/08/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17213",
+     "data": "18/08/2026",
+     "decreto": "Decreto municipal nº 45",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    }
+   ],
+   "n_eventos": 1
   },
   "4313805": {
    "ibge": "4313805",
@@ -54287,12 +54571,13 @@
    "nome": "Perobal",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "14/09/2026",
+   "primeiro_decreto": "04/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -54302,9 +54587,17 @@
      "data": "14/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.031, nº 3.032, nº 3.034)",
      "hash": "38beb3300008507118c2364a54b03274bb0c94b7b9987878326dfa5f7df970e2"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17269",
+     "data": "04/09/2026",
+     "decreto": "Decreto municipal nº 93",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4118907": {
    "ibge": "4118907",
@@ -55107,12 +55400,13 @@
    "nome": "Pinhão",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "03/09/2026",
+   "primeiro_decreto": "01/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -55130,9 +55424,25 @@
      "data": "04/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.907",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17298",
+     "data": "17/09/2026",
+     "decreto": "Decreto municipal nº 236",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17256",
+     "data": "01/09/2026",
+     "decreto": "Decreto municipal nº 224",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 4
   },
   "3303955": {
    "ibge": "3303955",
@@ -55454,12 +55764,13 @@
    "nome": "Piraí do Sul",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "19/08/2026",
+   "primeiro_decreto": "12/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -55469,9 +55780,17 @@
      "data": "19/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
      "hash": "4ab7239d7c3eff966f6f998fea68047326e7c984116a505e25d8c3452c36d869"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17197",
+     "data": "12/08/2026",
+     "decreto": "Decreto municipal nº 2.983",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3538808": {
    "ibge": "3538808",
@@ -55897,14 +56216,25 @@
    "ibge": "4119608",
    "nome": "Pitanga",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "09/09/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17273",
+     "data": "09/09/2026",
+     "decreto": "Decreto municipal nº 178",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    }
+   ],
+   "n_eventos": 1
   },
   "3539509": {
    "ibge": "3539509",
@@ -56139,12 +56469,13 @@
    "nome": "Planalto",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "23/09/2026",
+   "primeiro_decreto": "18/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -56154,9 +56485,17 @@
      "data": "23/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.171",
      "hash": "bcd9cd188e807dd7de177c5dbcfe179f0312f52a74de43f9732027eddae86594"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17301",
+     "data": "18/09/2026",
+     "decreto": "Decreto municipal nº 5.790",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4213153": {
    "ibge": "4213153",
@@ -57972,12 +58311,13 @@
    "nome": "Pranchita",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "16/09/2026",
+   "primeiro_decreto": "09/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -57987,9 +58327,17 @@
      "data": "16/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.072, nº 3.073, nº 3.073, nº 3.074, nº 3.074, nº 3.084)",
      "hash": "e6e4ae099af13fbaabef02fbd11df4adb85f2985f7da97788d20d6edd88dd09c"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17273",
+     "data": "09/09/2026",
+     "decreto": "Decreto municipal nº 113",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3152808": {
    "ibge": "3152808",
@@ -58627,12 +58975,13 @@
    "nome": "Prudentópolis",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "21/09/2026",
+   "primeiro_decreto": "16/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -58642,9 +58991,17 @@
      "data": "21/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
      "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17294",
+     "data": "16/09/2026",
+     "decreto": "Decreto municipal nº 573",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1718451": {
    "ibge": "1718451",
@@ -58881,12 +59238,13 @@
    "nome": "Quedas do Iguaçu",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "31/07/2026",
+   "primeiro_decreto": "27/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -58896,9 +59254,17 @@
      "data": "31/07/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.475, nº 2.475, nº 2.475, nº 2.476, nº 2.477, nº 2.477, nº 2.477)",
      "hash": "d9d6eb5621a5a4bd2b6234fca86c24806f282724977585bea61958062f5065e7"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17133",
+     "data": "27/07/2026",
+     "decreto": "Decreto municipal nº 261",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2208650": {
    "ibge": "2208650",
@@ -59360,12 +59726,13 @@
    "nome": "Ramilândia",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "16/09/2026",
+   "primeiro_decreto": "14/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -59375,9 +59742,17 @@
      "data": "16/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.072, nº 3.073, nº 3.073, nº 3.074, nº 3.074, nº 3.084)",
      "hash": "e6e4ae099af13fbaabef02fbd11df4adb85f2985f7da97788d20d6edd88dd09c"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17285",
+     "data": "14/09/2026",
+     "decreto": "Decreto municipal nº 4.091",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3542206": {
    "ibge": "3542206",
@@ -59758,12 +60133,13 @@
    "nome": "Renascença",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "09/09/2026",
+   "primeiro_decreto": "03/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -59773,9 +60149,17 @@
      "data": "09/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.970, nº 2.971, nº 2.972)",
      "hash": "8a147302d0fde468375b1cb09dfc38de50081f9211e5a874db9f43880e81102b"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17264",
+     "data": "03/09/2026",
+     "decreto": "Decreto municipal nº 2.753",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2311702": {
    "ibge": "2311702",
@@ -59821,12 +60205,13 @@
    "nome": "Reserva",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "15/07/2026",
+   "primeiro_decreto": "06/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -59844,9 +60229,25 @@
      "data": "15/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.304",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17213",
+     "data": "18/08/2026",
+     "decreto": "Decreto municipal nº 4.554",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/16965",
+     "data": "06/07/2026",
+     "decreto": "Decreto municipal nº 4.513",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 4
   },
   "5107156": {
    "ibge": "5107156",
@@ -60718,12 +61119,13 @@
    "nome": "Rio Bonito do Iguaçu",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "15/07/2026",
+   "primeiro_decreto": "09/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -60733,9 +61135,17 @@
      "data": "15/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.304",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/16968",
+     "data": "09/07/2026",
+     "decreto": "Decreto municipal nº 222",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5107206": {
    "ibge": "5107206",
@@ -60792,7 +61202,7 @@
    "nome": "Rio Branco do Sul",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "24/09/2026",
+   "primeiro_decreto": "18/09/2026",
    "tipos": [
     "reconhecimento_federal",
     "SE"
@@ -60816,9 +61226,17 @@
      "data": "2026-09-21",
      "decreto": "Decreto nº 8.788/2026",
      "hash": "1823a6d6fb555ac375be9a0f662cfd4377b4b70c9eb792ee7e4aabcd7b0c50ad"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17301",
+     "data": "18/09/2026",
+     "decreto": "Decreto municipal nº 8.788",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "5007208": {
    "ibge": "5007208",
@@ -61285,14 +61703,25 @@
    "ibge": "4122305",
    "nome": "Rio Negro",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "tipos": [],
+   "decreto": true,
+   "primeiro_decreto": "16/09/2026",
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17294",
+     "data": "16/09/2026",
+     "decreto": "Decreto municipal nº 149",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    }
+   ],
+   "n_eventos": 1
   },
   "3155405": {
    "ibge": "3155405",
@@ -64261,12 +64690,13 @@
    "nome": "Santa Maria do Oeste",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "25/08/2026",
+   "primeiro_decreto": "18/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -64276,9 +64706,17 @@
      "data": "25/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.754, nº 2.757, nº 2.758, nº 2.759)",
      "hash": "4c5e854e829f8ced5343405727cc57a603e4444163a8a886c4766e074fa958d1"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17213",
+     "data": "18/08/2026",
+     "decreto": "Decreto municipal nº 72",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1506609": {
    "ibge": "1506609",
@@ -75498,12 +75936,13 @@
    "nome": "Tibagi",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "08/09/2026",
+   "primeiro_decreto": "03/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -75513,9 +75952,17 @@
      "data": "08/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
      "hash": "a42b968c212a0fb513b0eb622330c0c96f3e70e9889bd27acc7a07fd1ecc694f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17264",
+     "data": "03/09/2026",
+     "decreto": "Decreto municipal nº 702",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2411056": {
    "ibge": "2411056",
@@ -76861,12 +77308,13 @@
    "nome": "Tunas do Paraná",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "21/09/2026",
+   "primeiro_decreto": "17/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -76876,9 +77324,17 @@
      "data": "21/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
      "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17298",
+     "data": "17/09/2026",
+     "decreto": "Decreto municipal nº 300",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4127908": {
    "ibge": "4127908",
@@ -77184,12 +77640,13 @@
    "nome": "Turvo",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "10/07/2026",
+   "primeiro_decreto": "02/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -77199,9 +77656,17 @@
      "data": "10/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.268",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/16963",
+     "data": "02/07/2026",
+     "decreto": "Decreto municipal nº 72",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4218806": {
    "ibge": "4218806",
@@ -77755,7 +78220,7 @@
    "nome": "União da Vitória",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "23/09/2026",
+   "primeiro_decreto": "14/09/2026",
    "tipos": [
     "reconhecimento_federal",
     "SE"
@@ -77779,9 +78244,17 @@
      "data": "2026-09-14",
      "decreto": "Decreto nº 473/2026",
      "hash": "e40d15f9f223e62c487758d009db0c14faafb74c982334413b3858032f8ed539"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17285",
+     "data": "14/09/2026",
+     "decreto": "Decreto municipal nº 473",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "3170438": {
    "ibge": "3170438",
@@ -80186,12 +80659,13 @@
    "nome": "Wenceslau Braz",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "17/09/2026",
+   "primeiro_decreto": "11/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -80201,9 +80675,17 @@
      "data": "17/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.101",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17282",
+     "data": "11/09/2026",
+     "decreto": "Decreto municipal nº 180",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2933505": {
    "ibge": "2933505",
@@ -80262,12 +80744,13 @@
    "nome": "Xambrê",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "10/09/2026",
+   "primeiro_decreto": "03/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -80277,9 +80760,17 @@
      "data": "10/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.003, nº 3.003, nº 3.005, nº 3.005)",
      "hash": "fb6f776794ed23051b71b90ef8959e1b1d5cc7e0a9006ea8d0486f85e5cff5e3"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17264",
+     "data": "03/09/2026",
+     "decreto": "Decreto municipal nº 144",
+     "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4323804": {
    "ibge": "4323804",
