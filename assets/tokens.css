@@ -49,6 +49,12 @@
   --bioluz:#A8C99A; --sintetico:#5E7C93; --mineral:#8FA5A8; --osso-claro:#F0F4F3;
   --linha:#C5CFCE; --cinza-quente:#66736F; --sem-dado:#DCE3E2; --branco:#FFFFFF; --areia-escura:#7A6A4F;
   --zebra:#E9EEEC; --preto:#000000; --muted-token:#55645B;
+  --osso:#EDE6D8;       /* OSSO — a base clara da marca; até 26/09/2026 só existia como --tooltip-ink */
+  /* 26/09/2026 (pedido da editoria): o fundo dos campos de formulário era --surface-2, um
+     mineral-claríssimo que sobre branco lê como o cinza padrão de navegador. Passa a osso: tom da
+     paleta, quente, e a única base clara que o sistema de marca autoriza. Não muda zebra de tabela
+     nem trilho de barra — esses continuam em --surface-2, que é o que eles são. */
+  --campo:#EDE6D8; --campo-borda:#CDBB9F;
   --gauge-trilho:#E7DECD; --gauge-borda:#CDBB9F; --gauge-osso:#F5F1E8; --gauge-cinza:#DDDED9; --ambar-escuro:#A87A50; --sintetico-escuro:#2A4457;
   --tooltip-bg:#141B16; --tooltip-ink:#EDE6D8;
   --sombra: 0 1px 3px rgba(21,32,26,.10);
