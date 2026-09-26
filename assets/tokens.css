@@ -55,6 +55,16 @@
      paleta, quente, e a única base clara que o sistema de marca autoriza. Não muda zebra de tabela
      nem trilho de barra — esses continuam em --surface-2, que é o que eles são. */
   --campo:#EDE6D8; --campo-borda:#CDBB9F;
+  /* 26/09/2026 (pedido da editoria): o menu principal faz uma gradação da esquerda para a direita,
+     do vermelho ao azul, como a barra do índice. Não é matiz novo: é o próprio --degrade-resposta
+     lido ao contrário (ele já vai de frio a quente), amostrado em dez pontos — argila → âmbar →
+     sintético. Termina no sintético e não no mineral porque o mineral é claro demais: como borda
+     ele mediria 2,6:1 sobre branco, abaixo do mínimo de 3:1 da WCAG 1.4.11.
+     O botão usa a cor cheia na borda e uma tinta dela no fundo, com texto em --ink. Medido: a
+     pior borda fica em 3,16:1 e o pior texto em 11,5:1. Preenchido com texto branco reprovaria
+     em oito dos dez botões, por isso não é preenchido. */
+  --nav-1:#7C4A34; --nav-2:#8F583A; --nav-3:#A2653F; --nav-4:#B57345; --nav-5:#C8804B;
+  --nav-6:#B48059; --nav-7:#9F7F67; --nav-8:#897E76; --nav-9:#747D84; --nav-10:#5E7C93;
   --gauge-trilho:#E7DECD; --gauge-borda:#CDBB9F; --gauge-osso:#F5F1E8; --gauge-cinza:#DDDED9; --ambar-escuro:#A87A50; --sintetico-escuro:#2A4457;
   --tooltip-bg:#141B16; --tooltip-ink:#EDE6D8;
   --sombra: 0 1px 3px rgba(21,32,26,.10);

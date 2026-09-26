@@ -175,13 +175,24 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   if (elFooter && dataRef) elFooter.textContent = dataRef;
 })();
 
+// 26/09/2026 (pedido da editoria). Os estados eram agrupados numa COLUNA por região, e o
+// desequilíbrio de contagem (9 no Nordeste contra 3 no Sul) deixava um quadrante vazio, porque
+// toda coluna herda a altura da mais longa. Enquanto a contagem por região definir a geometria,
+// nenhum ajuste de espaçamento resolve. Agora o arranjo é GEOGRÁFICO: cada estado ocupa a
+// posição aproximada dele no país, e a contagem desigual deixa de existir como problema.
+// A grade é a `br_states_grid1` do pacote geofacet (hafen/grid-designer), publicada e conferida
+// contra a fonte — não é posição estimada aqui.
+const GRADE_BR = {
+  RR:[1,2], AP:[1,3],
+  AM:[2,2], PA:[2,3], MA:[2,4], CE:[2,5],
+  AC:[3,1], RO:[3,2], TO:[3,3], PI:[3,4], PB:[3,5], RN:[3,6],
+  MT:[4,2], GO:[4,3], BA:[4,4], PE:[4,5], AL:[4,6],
+  MS:[5,2], DF:[5,3], MG:[5,4], SE:[5,5],
+  SP:[6,3], RJ:[6,4], ES:[6,5],
+  PR:[7,3], SC:[7,4],
+  RS:[8,3],
+};
 const regionsEl = document.getElementById('regions');
-DATA.regions.forEach(region=>{
-  const col = document.createElement('div');
-  col.className = 'region-col';
-  col.innerHTML = `<h3>${region}</h3><div class="tiles" id="tiles-${region}"></div>`;
-  regionsEl.appendChild(col);
-});
 
 // 26/09/2026: dentro de cada faixa de região, ordem decrescente pelo índice — não alfabética.
 // Alinhadas numa série, as barras só são comparáveis se a ordem for a da própria grandeza; em
@@ -196,7 +207,7 @@ const ufsOrdenadas = DATA.ufs.slice().sort((a, b) => {
   return vb - va;
 });
 ufsOrdenadas.forEach(item=>{
-  const container = document.getElementById('tiles-'+item.regiao);
+  const container = regionsEl;
   const tile = document.createElement('div');
   tile.className = `tile st-${item.status}`;
   tile.dataset.uf = item.uf;
@@ -204,7 +215,11 @@ ufsOrdenadas.forEach(item=>{
   tile.style.color = 'var(--ink)';
   const v = (typeof MARE !== 'undefined' && MARE[item.uf]) ? MARE[item.uf].total : null;
   tile.title = `${item.uf} · MARÉ ${v == null ? 'sem dado' : String(v).replace('.', ',')} / 100`;
-  tile.innerHTML = `<span class="tile-uf">${item.uf}</span>` +
+  const pos = GRADE_BR[item.uf];
+  if (pos) { tile.style.gridRow = pos[0]; tile.style.gridColumn = pos[1]; }
+  // 26/09/2026 (pedido da editoria): nome por extenso além da sigla. Vem de item.nome, a mesma
+  // fonte que a janela de detalhe já usa ("Bahia (BA)") — nenhuma segunda lista de nomes.
+  tile.innerHTML = `<span class="tile-uf">${item.uf}</span><span class="tile-nome">${item.nome}</span>` +
     (v == null
       ? '<span class="tile-score">·</span>'
       : `<span class="tile-score" data-contar="${v}">0,0</span>
@@ -277,6 +292,13 @@ function selectUF(uf, tileEl){
     <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
     <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}</div></div>
     <div class="field"><div class="k">Órgão responsável</div><div class="v">${esc(d.orgao)}</div></div>
+    ${(function(){ // 26/09/2026: a face da célula não comporta este campo, e ele NÃO existia no
+      // detalhe — sem isto, o alcance da varredura sumiria da interface inteira.
+      const niv = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[d.uf]) || {};
+      const tot = Object.values(niv).reduce((a, b) => a + b, 0);
+      const lidos = ((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[d.uf] || 0;
+      return tot ? `<div class="field"><div class="k">Diários municipais consultados</div><div class="v">${lidos} de ${tot}</div></div>` : '';
+    })()}
     ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || d.adpf743.status) + '</span> intimado em ' + d.adpf743.intimado_em + ' · decisão de ' + d.adpf743.decisao + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' : '') + '</div></div>' : ''}
     ${barraResposta(d.uf)}
     ${typeof MARE !== 'undefined' && MARE[d.uf] && MARE[d.uf].estado_estrutura !== undefined ? '<div class="field"><div class="k">Componente estadual</div><div class="v">estrutura ' + MARE[d.uf].estado_estrutura + ' · instrumento ' + MARE[d.uf].estado_operacional + ' → média ' + MARE[d.uf].estado + ' (pesos iguais)</div></div>' : ''}

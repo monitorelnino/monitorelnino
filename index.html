@@ -35,8 +35,8 @@
 <script src="assets/vendor/jspdf.umd.min.js?v=98ccf17a"></script>
 
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=1764eb75">
-<link rel="stylesheet" href="assets/base.css?v=66ab8438">
+<link rel="stylesheet" href="assets/tokens.css?v=5ca29f74">
+<link rel="stylesheet" href="assets/base.css?v=b18113b4">
 <script src="assets/mapas.js?v=412fe5b7"></script>
 </head>
 <body>
@@ -134,9 +134,9 @@
 
   <div class="panel">
     <h2>O MARÉ Legal por estado</h2>
-    <p class="hint">Cada linha mostra a nota do estado, o contador de resposta, o plano publicado, a capital e até onde a verificação chegou nos municípios. Dentro de cada região, os estados aparecem em ordem decrescente de nota. O detalhe de cada estado abre em uma janela.</p>
-    <div class="tile-cab" aria-hidden="true"><span>UF</span><span class="tile-cab-mare">MARÉ 0–100</span><span>Resposta</span><span class="tile-cab-face"><span>Diários municipais</span><span>Plano do estado</span><span>Capital</span></span></div>
+    <p class="hint">Cada célula é um estado, na posição geográfica aproximada, com a nota do MARÉ e o contador de resposta. O detalhe de cada estado — plano publicado, capital, órgão e alcance da varredura — abre em uma janela.</p>
     <div class="regions" id="regions"></div>
+    <div class="legend"><span>Barra de cima: MARÉ 0–100</span><span>Barra de baixo: resposta 0–100</span><span>Ponto no canto: a capital tem verificação própria</span></div>
   </div>
   <dialog class="detail" id="detail" aria-label="Detalhe do estado">
     <button type="button" class="detail-fechar" id="detailFechar" aria-label="Fechar">×</button>
@@ -198,7 +198,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/index.js?v=850d6da1" defer></script>
+<script src="assets/js/index.js?v=e322f540" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

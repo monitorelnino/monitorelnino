@@ -139,18 +139,39 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
 .logo-futura{height:26px; width:auto; display:block;}
 .mainnav{display:flex; gap:var(--sp-1); flex-wrap:wrap; flex-basis:100%;}
 .mainnav a, .mainnav span{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); letter-spacing:var(--ls-nav); text-transform:uppercase; color:var(--muted); text-decoration:none; white-space:nowrap; padding:0 var(--sp-2); border:1px solid var(--line); border-radius:var(--radius); min-height:36px; display:inline-flex; align-items:center; transition:color .15s, border-color .15s, background .15s;}
-.mainnav a:hover{color:var(--ink); border-color:var(--ink); text-decoration:none;}
-/* 26/09/2026 (pedido da editoria): a página corrente era musgo, a mesma cor do botão de ação
-   ("Para gestores") e do botão primário do site — duas funções diferentes na mesma cor. Passa a
-   terracota, que no sistema de marca é o acento único e não tem outra função. Branco sobre
-   #C04430 mede 5,1:1, acima do mínimo AA para texto normal. A regra vale em todas as páginas,
-   e não só na inicial: é o mesmo componente, e a marca pede o mesmo token para o mesmo papel. */
-.mainnav .ativa, .mainnav .ativa:hover{background:var(--terracota); color:var(--branco); border-color:var(--terracota);}
-.mainnav a:active{background:var(--terracota); color:var(--branco); border-color:var(--terracota);}
+/* 26/09/2026 (pedido da editoria): gradação do vermelho ao azul da esquerda para a direita, como
+   na barra do índice. Sem efeito nenhum — só cor. As posições abaixo são as dos dez botões; os
+   números pulados são os separadores <i class="nav-sep">, que ficam entre eles. Lista escrita à
+   mão envelhece calada, então `verificar_runtime.js` reprova se a contagem deixar de bater.
+   A ordem daqui até o fim do bloco importa: o ramo vem primeiro, e hover, botão de ação e página
+   corrente vêm depois, porque precisam vencê-lo. */
+.mainnav > :is(a, span):nth-child(1){background:color-mix(in srgb, var(--nav-1) 32%, var(--branco)); border-color:var(--nav-1); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(3){background:color-mix(in srgb, var(--nav-2) 32%, var(--branco)); border-color:var(--nav-2); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(5){background:color-mix(in srgb, var(--nav-3) 32%, var(--branco)); border-color:var(--nav-3); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(7){background:color-mix(in srgb, var(--nav-4) 32%, var(--branco)); border-color:var(--nav-4); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(8){background:color-mix(in srgb, var(--nav-5) 32%, var(--branco)); border-color:var(--nav-5); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(10){background:color-mix(in srgb, var(--nav-6) 32%, var(--branco)); border-color:var(--nav-6); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(12){background:color-mix(in srgb, var(--nav-7) 32%, var(--branco)); border-color:var(--nav-7); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(14){background:color-mix(in srgb, var(--nav-8) 32%, var(--branco)); border-color:var(--nav-8); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(15){background:color-mix(in srgb, var(--nav-9) 32%, var(--branco)); border-color:var(--nav-9); color:var(--ink);}
+.mainnav > :is(a, span):nth-child(16){background:color-mix(in srgb, var(--nav-10) 32%, var(--branco)); border-color:var(--nav-10); color:var(--ink);}
+/* Os seletores de estado repetem `> :is(a, span)` de propósito: sem isso eles ficam abaixo
+   do `:nth-child` do ramo na especificidade e o ramo vence, mesmo vindo antes. */
+.mainnav > :is(a, span):hover{color:var(--ink); border-width:1.5px; text-decoration:none;}
 .mainnav .nav-sep{display:inline-block; width:1px; height:22px; background:var(--line); margin:0; align-self:center;}
-.mainnav .btn-nav{background:var(--branco); color:var(--green); border:1.5px solid var(--green);}
-.mainnav .btn-nav:hover{background:var(--green); color:var(--branco);}
-.mainnav .ativa.btn-nav{background:var(--terracota); color:var(--branco); border-color:var(--terracota); cursor:default;}
+/* O botão de ação ("Para gestores") era musgo cheio, fora do ramo. Mantém o peso de chamada pela
+   BORDA mais grossa, e não por cor nem por fonte própria: um segundo peso tipográfico aqui deixou
+   `verificar_consistencia_visual.js` vermelho — a família "navegação" tem de ter um estilo só. */
+.mainnav > :is(a, span).btn-nav{border-width:2px;}
+.mainnav > :is(a, span).btn-nav:hover{background:color-mix(in srgb, var(--nav-7) 55%, var(--branco)); color:var(--ink);}
+/* 26/09/2026 (pedido da editoria): a página corrente era musgo, a mesma cor do botão de ação e do
+   botão primário do site — duas funções diferentes na mesma cor. Passa a terracota, que no sistema
+   de marca é o acento único e não tem outra função. Branco sobre #C04430 mede 5,1:1, acima do
+   mínimo AA. Vale em todas as páginas: é o mesmo componente. Preenchida, ela se destaca das
+   demais do ramo, que são tinta clara com texto escuro. */
+.mainnav > :is(a, span).ativa, .mainnav > :is(a, span).ativa:hover{background:var(--terracota); color:var(--branco); border-color:var(--terracota);}
+.mainnav > :is(a, span).ativa.btn-nav{cursor:default;}
+.mainnav > :is(a, span):active{background:var(--terracota); color:var(--branco); border-color:var(--terracota);}
 .site-title{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display); letter-spacing:var(--ls-titulo); color:var(--ink); margin:0 0 var(--sp-2);}
 .site-title em{font-style:italic; font-weight:var(--peso-regular);}
 /* 18/09/2026 (pedido da editoria): o logotipo do MARÉ substitui o texto "MARÉ" + subtítulo do
@@ -452,45 +473,42 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 /* ===== 11. Estados (mosaico por região) e cartões de estado/cidade — página inicial ===== */
 /* 26/09/2026 (pedido da editoria: "grande e pesada e com uma estética sem harmonia, porque muitas
    regiões têm muitos estados e outras têm poucos").
-   A causa era geométrica: uma COLUNA por região, com 9 ladrilhos no Nordeste contra 3 no Sul. A
-   grade ficava com 1365px de altura — medidos — e um quadrante inteiro vazio embaixo à direita,
-   porque toda coluna herda a altura da mais longa. Nenhum ajuste de espaçamento resolve isso: o
-   número de estados por região é o que é, e enquanto ele definir a geometria, a desarmonia volta.
-   A região deixa de ser COLUNA e passa a ser FAIXA horizontal: o desequilíbrio 9×3 vira diferença
-   de comprimento de faixa, que é informação (o Nordeste tem mais estados), e não buraco de leiaute.
-   E o cartão vira LINHA. A direção de arte §6 diz que cartão não é unidade narrativa e só se usa
-   quando a informação é mesmo modular; 27 estados de uma mesma série não são 27 módulos, são uma
-   série — e série se lê alinhada, não empilhada. Alinhadas, as barras do índice passam a ser
-   comparáveis entre estados, o que 27 cartões soltos não permitiam. Ordenadas pelo índice dentro
-   da faixa (ver assets/js/index.js), cada região lê como um degradê contínuo.
-   O que NÃO mudou: a face de três campos continua visível em todo estado, o detalhe continua
-   abrindo em janela ao clique, e nenhuma cor nova entrou. */
-.regions{display:block;}
+   A causa era geométrica: uma COLUNA por região, com 9 ladrilhos no Nordeste contra 3 no Sul, numa
+   grade de 1365px — medidos — em que toda coluna herda a altura da mais longa, sobrando um
+   quadrante vazio embaixo à direita. Enquanto a contagem por região definir a geometria, nenhum
+   ajuste de espaçamento resolve.
+   Primeiro tentei trocar o cartão por linha alinhada. Consertava a geometria e custava caro: virava
+   tabela institucional, que a direção de arte §1 proíbe. A editoria recusou, com razão.
+   O arranjo agora é GEOGRÁFICO: cada estado ocupa a posição aproximada dele no país. A contagem
+   desigual deixa de existir como problema, o cartão volta, e a página ganha o panorama nacional que
+   não tinha — a inicial não exibia mapa nenhum dos 27 estados (governança §26). Cada célula tem o
+   mesmo peso visual, do Amazonas ao DF, o que um mapa de área fiel não dá: medido na geometria do
+   próprio site, o AM tem 271x a área do DF, e o cartão não caberia em 16 das 27 formas reais.
+   A grade é a `br_states_grid1` do geofacet, publicada; as posições vivem em assets/js/index.js. */
+.regions{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:var(--sp-2); max-width:880px; margin:0 auto;}
 .regions > *{min-width:0;}
-.region-col{padding:0; margin:0 0 var(--sp-5);}
-.region-col h3{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); margin:0 0 var(--sp-2); padding-bottom:var(--sp-1); border-bottom:1px solid var(--line); text-align:left; word-break:normal; hyphens:none;}
-.tiles{display:flex; flex-direction:column;}
-.tile, .tile-cab{display:grid; grid-template-columns:30px 46px minmax(64px,1.1fr) minmax(52px,.9fr) minmax(0,4fr); column-gap:var(--sp-3); align-items:center;}
-/* O cabeçalho nomeia as colunas: numa série alinhada, duas barras lado a lado sem rótulo
-   dependeriam só de posição para dizer o que são — o que a direção de arte §23 proíbe. Ele
-   descreve a coluna (variável e unidade) e nada mais, como manda o portão 19. */
-.tile-cab{padding:0 var(--sp-2) var(--sp-1); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--ink); margin-bottom:var(--sp-1);}
-.tile-cab .tile-cab-mare{grid-column:2 / 4;}
-.tile-cab .tile-cab-face{grid-column:5; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); column-gap:var(--sp-3);}
-.tile-cab span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.tile{border-radius:0; padding:var(--sp-1) var(--sp-2); cursor:pointer; text-align:left; font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-medio); border:1px solid transparent; border-bottom-color:var(--line); transition:background .12s ease, border-color .12s ease; position:relative; color:var(--branco); background:var(--branco);}
-.tile:hover{background:var(--osso-claro); border-color:var(--teal);}
-.tile:focus-visible{background:var(--osso-claro); border-color:var(--teal); outline:2px solid var(--link); outline-offset:-2px;}
+.tile{display:block; text-align:center; border-radius:var(--radius); padding:var(--sp-2); cursor:pointer;
+  font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-medio);
+  border:1px solid var(--line); transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  position:relative; color:var(--branco); background:var(--branco);}
+.tile:hover{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); border-color:var(--teal);}
+.tile:focus-visible{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); outline:2px solid var(--link); outline-offset:2px;}
 .tile.active{outline:2px solid var(--ink); outline-offset:2px;}
-.tile .cap-dot{position:absolute; right:4px; top:50%; transform:translateY(-50%); width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.6;}
-.tile .tile-uf{display:block; font-weight:var(--peso-bold); margin:0;}
-.tile .tile-score{display:block; text-align:right; font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); opacity:.85; margin:0; font-family:var(--font-dado); font-variant-numeric:tabular-nums;}
-.tile .tile-bar{height:6px; background:var(--sem-dado); border-radius:3px; overflow:hidden; margin:0;}
+.tile .cap-dot{position:absolute; top:4px; right:5px; width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.6;}
+.tile .tile-uf{display:block; font-weight:var(--peso-bold);}
+/* Medido a 140px de célula: nenhum nome quebra, nem "Rio Grande do Norte". Cada fileira da grade se
+   ajusta à sua célula mais alta, então o alinhamento se mantém sozinho se algum quebrar. */
+.tile .tile-nome{display:block; font-family:var(--font-dado); font-weight:var(--peso-regular); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin-top:1px; hyphens:none; white-space:normal;}
+.tile .tile-score{display:block; font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); opacity:.85; margin-top:2px; font-family:var(--font-dado); font-variant-numeric:tabular-nums;}
+.tile .tile-bar{height:6px; background:var(--sem-dado); border-radius:3px; overflow:hidden; margin-top:var(--sp-1);}
 .tile .tile-fill{height:100%; width:0; background:var(--degrade-indice); background-size:calc(10000%/var(--galvo,1)) 100%; background-repeat:no-repeat; border-radius:3px; transition:width 1.2s cubic-bezier(.2,.7,.3,1);}
-.tile .tile-bar--resposta{margin:0;}
+.tile .tile-bar--resposta{margin-top:3px;}
 .tile .tile-fill--resposta{background:var(--degrade-resposta); background-size:calc(10000%/var(--galvo,1)) 100%; background-repeat:no-repeat;}
-.tile .tile-face{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); column-gap:var(--sp-3); text-align:left; margin:0; border-top:0; padding:0; font-family:var(--font-dado); font-weight:var(--peso-regular); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
-.tile .tile-face span{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+/* Os três campos de texto não cabem numa célula de 140px junto com sigla, nome, nota e as duas
+   barras. Eles vivem na janela de detalhe — inclusive "Diários municipais consultados", que ANTES
+   desta mudança não existia lá e teria sumido da interface (ver assets/js/index.js). */
+.tile .tile-face{display:none;}
+.regions + .legend{max-width:880px; margin-left:auto; margin-right:auto; justify-content:center;}
 .legend{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-3); margin-top:var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 /* 13/09/2026: regra global — qualquer componente com display: explícito (flex/block/grid) sobrepõe
    [hidden] da UA stylesheet à mesma especificidade; !important garante que 'hidden' sempre esconda,
@@ -672,24 +690,23 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 
 /* ===== 18. Responsivo — dois pontos de quebra canônicos: 1020 px (tablet) e 640 px (celular) ===== */
 @media (max-width:1020px){
+  /* 26/09/2026, medido em 375px: numa grade geográfica de seis colunas a célula fica com 54px,
+     nove nomes quebram e "Pernambuco" é cortado. A direção de arte §24 manda recompor, não
+     comprimir: abaixo de 1020px a grade geográfica sai e as células voltam a colunas simples, na
+     ordem norte→sul da própria grade, que é onde o nome inteiro cabe. */
+  .regions{grid-template-columns:repeat(3, minmax(0,1fr)); max-width:none;}
+  .regions .tile{grid-row:auto !important; grid-column:auto !important;}
   .wrap{padding:var(--sp-5) var(--grade-margem) var(--sp-7);}
   .grade-figuras, .grade-figuras--3{grid-template-columns:minmax(0, 1fr);}
   .grade-cartoes--4{grid-template-columns:repeat(2, minmax(0, 1fr));}
   .passos{grid-template-columns:minmax(0, 1fr);}
   .figura--largo{grid-column:auto;}
-  /* 26/09/2026: em tablet a linha se abre em duas — identificação e medidores em cima, a face
-     inteira embaixo, com os três campos. Nenhum campo desaparece por falta de largura. */
-  .tile{grid-template-columns:28px 42px minmax(52px,1fr) minmax(44px,.8fr); row-gap:2px;}
-  /* Abaixo de 1020px a linha deixa de ter cinco colunas, e um cabeçalho de cinco colunas sobre
-     ela apontaria para o lugar errado. Ele sai; cada campo continua dizendo o que é no próprio
-     texto, e o ladrilho guarda o rótulo completo no title. */
-  .tile-cab{display:none;}
-  .tile .tile-face{grid-column:1 / -1; margin-top:var(--sp-1);}
   .comoler-grid{grid-template-columns:1fr;}
   .cols{column-count:1;}
   .mast-top{gap:var(--sp-3) var(--sp-4);}
 }
 @media (max-width:640px){
+  .regions{grid-template-columns:repeat(2, minmax(0,1fr));}
   .emerg-nums{grid-template-columns:repeat(2, minmax(0, 1fr));}
   .emerg-num--sms{grid-column:1 / -1;}
   .figura--dupla .figura-midia{grid-template-columns:minmax(0, 1fr);}
@@ -708,10 +725,6 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .contato-vazio{grid-column:1;}
   .figura-titulo, .figura-sub{min-height:0;}
   .mun-table th, .mun-table td{font-size:var(--fs-caption); padding:var(--sp-2);}
-  /* 26/09/2026 (direção de arte §24: recompor, não comprimir): em 375px a linha se abre em duas
-     — identificação e medidores em cima, a face inteira embaixo, com os três campos de volta. */
-  .tile{grid-template-columns:30px 46px minmax(40px,1fr) minmax(36px,.8fr); row-gap:2px; padding:var(--sp-2) 0;}
-  .tile .tile-face{grid-column:1 / -1; grid-template-columns:1fr; margin-top:var(--sp-1);}
   .tile .tile-face span{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .gauge-head .glabel{flex-basis:100%; margin-left:0; text-align:left; margin-top:var(--sp-1);}
   .strip-tick span{display:none;}
