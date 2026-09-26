@@ -33,6 +33,20 @@ NIVEIS = ("nao_verificado", "nacional", "estadual", "municipal_completo")
 EXECUTOR = "robo" if os.environ.get("GITHUB_ACTIONS") else "claude"
 
 
+# Vocabulário FECHADO do canal de um ato/registro municipal. Vive aqui, e não dentro do portão,
+# pela lição do §213: uma cópia do vocabulário no lugar que CONFERE envelhece quando quem PRODUZ
+# inventa um valor novo. Foi o que aconteceu em 25/09/2026 com `DOM-consorciado` — o coletor de
+# diários consorciados existia desde 22/09, mas estava bloqueado, e só ao destravá-lo o canal
+# novo chegou ao dado e reprovou o portão de consistência.
+#
+# `DOM` e `DOM-consorciado` são propositalmente DISTINTOS: no primeiro o diário é do próprio
+# município; no segundo é um diário de associação, onde a atribuição do município é heurística de
+# proximidade no PDF. Mesma origem legal, força probatória diferente — e quem lê o dado precisa
+# saber qual dos dois é.
+CANAIS_ATO = ("DOM", "DOM-consorciado", "DOU", "repositorio_estadual", "orgao_estadual",
+              "site_municipal", "imprensa", "\u2014")
+
+
 def hoje() -> str:
     return date.today().isoformat()
 
@@ -56,7 +70,7 @@ def _indent_de(p) -> int:
         return 1
 
 
-def gravar(nome, obj):
+def gravar(nome, obj, compacto: bool = False):
     """Escrita ATÔMICA (achado real, 21/09/2026): a versão anterior escrevia direto no arquivo
     final — qualquer interrupção no meio (timeout, Action cancelada, OOM) deixava um JSON
     truncado e inválido. Reproduzido de verdade: coletar_declarado_nacional.py rodando sob
@@ -65,10 +79,17 @@ def gravar(nome, obj):
     os.replace(), que em POSIX é atômico — o arquivo final é sempre a versão antiga completa
     ou a nova completa, nunca uma mistura truncada."""
     p = DATA / nome
-    ind = _indent_de(p)
+    # 25/09/2026 (§221): `compacto` para o arquivo que a PÁGINA carrega inteiro. A indentação
+    # existe para deixar o diff do robô legível, e vale a pena na maioria dos arquivos; nos que o
+    # navegador baixa por completo ela custa 38% do peso. A decisão já tinha sido tomada uma vez,
+    # para o clima municipal — só que lá o arquivo era escrito por fora desta função, e por isso
+    # ficava sem a escrita atômica e sem a espera do cadeado do Windows. Agora é a mesma porta.
     tmp = p.with_name(f"{p.name}.tmp{os.getpid()}")
     with open(tmp, "w", encoding="utf-8", newline="\n") as f:
-        json.dump(obj, f, ensure_ascii=False, indent=ind)
+        if compacto:
+            json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
+        else:
+            json.dump(obj, f, ensure_ascii=False, indent=_indent_de(p))
         f.write("\n")
     # 24/09/2026: no Windows, os.replace() falha com PermissionError (WinError 5) quando OUTRO
     # processo tem o destino aberto — o indexador do sistema e o antivírus abrem os JSON grandes

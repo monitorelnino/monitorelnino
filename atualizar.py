@@ -243,6 +243,15 @@ def main():
     # declarada nacional (MUNIC/ICM) agora é parte permanente do cálculo padrão (calcular()),
     # ativada por decisão editorial explícita. O --write mais adiante no pipeline já cobre isso;
     # nenhuma chamada separada é mais necessária aqui.
+    # 25/09/2026 (§217/§223): o canal dos diários CONSORCIADOS entra na rotina. Ele estava
+    # escrito desde 22/09 e fora do pipeline porque a fonte bloqueava; destravado, é o único
+    # caminho para a maioria dos 5.041 municípios sem diário indexado no Querido Diário.
+    # A janela é CURTA de propósito: a rotina roda todo dia e só precisa do que é novo. Uma
+    # edição consorciada é um PDF de vários MB e leva cerca de dois minutos — varrer o ciclo
+    # inteiro leva horas e é trabalho de rodada dedicada, não de cadência diária.
+    rodar([sys.executable, "coletar_diarios_consorciados.py", "--desde",
+           (hoje_editorial() - datetime.timedelta(days=8)).isoformat(),
+           "--ate", hoje_editorial().isoformat()])
     rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
     rodar([sys.executable, "coletar_saude.py"])                         # §9: camada observada (InfoDengue); peso zero

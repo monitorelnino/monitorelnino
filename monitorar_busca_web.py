@@ -187,9 +187,13 @@ def autoteste():
         # vocabulário fixo exige "coberto_sem_mencao". Este teste lê o vocabulário
         # DIRETO do código-fonte de log_busca(), não uma cópia à mão, para que uma
         # mudança futura no vocabulário quebre este teste em vez de quebrar em produção.
-        src = inspect.getsource(coletores_base.log_busca)
-        aceitos = {"pista", "coberto_sem_mencao", "com_excerto", "registro", "nada", "fonte", "erro", "acesso", "sem_cobertura_qd"}
-        return all(a in src for a in ("pista", "coberto_sem_mencao"))
+        # 25/09/2026 (§213/§220): ele lia o TEXTO de log_busca() procurando as palavras. Quando o
+        # vocabulário virou a constante nomeada `DECISOES_LOG` — justamente para que quem produz
+        # uma decisão possa conferir se ela cabe —, o teste reprovou sem nada ter mudado de
+        # comportamento. Era o mesmo defeito em dois arquivos. Agora ele importa a lista e usa as
+        # decisões que ESTE script de fato registra.
+        usadas = {"pista", "coberto_sem_mencao", "registro", "erro"}
+        return usadas <= set(coletores_base.DECISOES_LOG)
 
     def t5_dedup_mesma_chave():
         vistos = {("0000001", "https://x.gov.br/a", "trecho x")}

@@ -264,8 +264,15 @@ def coletar(args) -> int:
             continue
         try:
             lido = parse_dca_182(json.loads(bruto.decode("utf-8", "replace")), exercicio)
-        except (ValueError, json.JSONDecodeError):
+        except (ValueError, json.JSONDecodeError) as e:
+            # 25/09/2026 (§219): este galho não registrava nada — só somava um contador local.
+            # O galho de erro de REDE, poucas linhas acima, declara a lacuna; este, que dispara
+            # justamente quando a fonte muda de formato ou devolve página de erro disfarçada de
+            # 200, sumia sem rastro no log. É a classe de erro que originou o §210, e era a única
+            # sem registro estruturado.
             falhas += 1
+            registrar_lacuna(f"SICONFI 182/{nome}-{uf}", f"resposta ilegível: {type(e).__name__}: {e}",
+                             canal="DOU", camada=1, uf=uf, municipio=nome, ibge=cod, strings=[url])
             continue
         if not lido:
             # Resposta sem itens: o município não entregou este exercício. É classe própria, com

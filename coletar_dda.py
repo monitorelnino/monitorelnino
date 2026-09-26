@@ -147,6 +147,15 @@ def _painel() -> set:
     return {k for k in (d.get("municipios") or {}) if isinstance(k, str) and len(k) == 7 and k.isdigit()}
 
 
+def gravar_compacto(nome, obj):
+    """Série semanal que a página carrega inteira: sem indentação (§221).
+
+    A indentação serve para o diff do robô ficar legível, e vale para quase tudo em `data/`.
+    Nos arquivos que o navegador baixa por completo ela custa perto de 38% do peso — mesmo
+    critério já adotado para o clima municipal e para as séries de arboviroses."""
+    gravar(nome, obj, compacto=True)
+
+
 def coletar() -> int:
     hoje = _hoje().strftime("%d/%m/%Y")
     cache = (ler(ARQUIVO_CACHE) or {}).get("arquivos") or {}
@@ -199,7 +208,8 @@ def coletar() -> int:
     pre = recs["preliminar"]
     gov = (f"Peso zero (§31/§35). {RESSALVA} Semanas de 2026 até a última presente no depósito; as {SE_INCOMPLETAS} últimas são "
            "'parciais' (atraso de digitação; a fonte não publica nowcasting). Anos históricos reaproveitados enquanto o MD5 publicado não muda (dda_cache.json).")
-    gravar(ARQUIVO, {"_governanca": gov, "gerado_em": hoje, "fonte": f"https://doi.org/10.5281/zenodo.{REGISTROS['preliminar']}",
+    # §221: compacto — a página baixa este arquivo inteiro.
+    gravar_compacto(ARQUIVO, {"_governanca": gov, "gerado_em": hoje, "fonte": f"https://doi.org/10.5281/zenodo.{REGISTROS['preliminar']}",
                      "fonte_primaria": f"Sivep-DDA / Ministério da Saúde, resposta LAI {LAI}",
                      "deposito_publicado_em": (pre.get("metadata") or {}).get("publication_date"), "indicador": "dda",
                      "ano_corrente": ANO_CORRENTE, "anos_canal": ANOS_CANAL, "se_incompletas": SE_INCOMPLETAS,
@@ -209,7 +219,7 @@ def coletar() -> int:
                      "cobertura": {loc: {k: v for k, v in c.items() if int(k[:4]) in ANOS_PUBLICOS} for loc, c in cobertura.items()}})
     gravar(ARQUIVO_CACHE, {"_governanca": "Cache de leitura do Sivep-DDA (14/09/2026): MD5 publicado e série completa por ano, para não baixar de novo o que não mudou. Série integral 2019–2026 (BR + UFs) fica aqui; a página só baixa dda_serie.json.",
                            "gerado_em": hoje, "arquivos": arquivos})
-    gravar(ARQUIVO_PAINEL, {"_governanca": gov + " Só os municípios do painel amostral (casamento por prefixo IBGE de 6 dígitos).",
+    gravar_compacto(ARQUIVO_PAINEL, {"_governanca": gov + " Só os municípios do painel amostral (casamento por prefixo IBGE de 6 dígitos).",
                             "gerado_em": hoje, "fonte": f"https://doi.org/10.5281/zenodo.{REGISTROS['preliminar']}",
                             "anos_publicados": list(ANOS_PUBLICOS),
                             "municipios": {m: {"semanas": {k: v for k, v in sorted(s.items()) if int(k[:4]) in ANOS_PUBLICOS}} for m, s in pain.items()}})

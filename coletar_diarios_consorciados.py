@@ -94,7 +94,8 @@ USO
 import http.cookiejar, io, json, pathlib, re, subprocess, sys, time, unicodedata, urllib.parse, urllib.request
 from datetime import date, timedelta
 from coletores_base import (UA, preservar_evidencia, log_busca, registrar_lacuna,
-                            marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste)
+                            marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste,
+                            CANAIS_ATO)
 from classificar_pista_civil import triagem_completa
 
 # Só slugs confirmados por navegação/fetch reais nesta sessão (20-22/09/2026). AL fica de
@@ -104,6 +105,10 @@ UF_SIGPUB = {
     "MG": [{"slug": "amm-mg", "nome": "Diário Oficial dos Municípios Mineiros (AMM-MG)"}],
     "GO": [{"slug": "agm", "nome": "Diário Oficial dos Municípios de Goiás (AGM)"},
            {"slug": "fgm", "nome": "Diário Oficial dos Municípios de Goiás (FGM)"}],
+    # 25/09/2026: os dois slugs foram reconferidos na página inicial da própria plataforma e
+    # CONTINUAM sendo estes — não é curadoria desatualizada. Eles respondem, e não entregam
+    # edição em nenhuma data testada (22 a 25/09, dias úteis), enquanto as outras sete fontes
+    # entregam. Ficam declarados como fonte fora do ar, e não como "os municípios não publicaram".
     "BA": [{"slug": "bahia", "nome": "Diário Oficial dos Municípios da Bahia (AMURB)"},
            {"slug": "amurc", "nome": "Diário Oficial dos Municípios do Sul/Extremo Sul/Sudoeste da Bahia (AMURC)"}],
     "CE": [{"slug": "aprece", "nome": "Diário Oficial dos Municípios do Ceará (APRECE)"}],
@@ -118,6 +123,15 @@ TERMOS_RESPOSTA = ['"situação de emergência"', '"estado de calamidade públic
 TERMOS_PISTA = ['"plano de contingência"', '"El Niño"', '"plano de ação"']
 PAD_DECRETO = re.compile(r"decreto\s+(?:municipal\s+)?n[ºo°\.]?\s*([\d\.\/-]+)[^.]{0,200}?(situa[çc][ãa]o de emerg[êe]ncia|estado de calamidade p[úu]blica)", re.I)
 PAD_PLANO = re.compile(r"plano\s+(?:municipal\s+)?de\s+conting[êe]ncia[^.]{0,160}", re.I)
+# 25/09/2026: um diário de associação municipal publica em dia útil. Zero edições em cinco dias
+# úteis é fonte fora do ar ou slug mudado — não "não publicaram".
+TETO_UTEIS_SEM_EDICAO = 5
+
+
+class FonteForaDoAr(Exception):
+    """A fonte recusou todos os dias tentados até o teto. Lacuna de fonte, não de dia."""
+
+
 PAD_TOKEN = re.compile(r'<input\b[^>]*\bid=["\']calendar__token["\'][^>]*>', re.I)
 # 20/09/2026: valor literal que o SIGPub serve no atributo `value` desse input quando o token real
 # é preenchido por JS (controller Stimulus `csrf-protection`) — verificado byte a byte contra
@@ -153,33 +167,60 @@ def extrair_token(html: bytes) -> str:
     return v.group(1) if v else ""
 
 
+class CalendarioIlegivel(Exception):
+    """A resposta do calendário não tem a forma esperada. Mudança de formato, não ausência."""
+
+
 def parse_calendario(bruto: bytes) -> list:
-    """[{link_diario, numero_edicao, url_arquivos}] ou [] se 'error' no corpo (sem edição no dia)."""
+    """[{link_diario, numero_edicao, url_pdf}] do dia; `[]` quando não houve edição. Função pura.
+
+    25/09/2026, MEDIDO contra produção antes de mexer: `{"error":"Ocorreu um erro inesperado!"}`
+    é como esta fonte diz "não houve edição neste dia" — o mesmo corpo volta para sábado (19/09),
+    domingo (20/09) e Natal, enquanto segunda e terça entregam a edição. Ou seja, a leitura
+    original estava certa, e tratar esse `error` como lacuna criaria uma lacuna falsa a cada fim
+    de semana. O que NÃO é dia sem edição é corpo que não dá para ler: aí a forma mudou, e isso
+    levanta, porque devolver `[]` esconderia uma mudança de formato (§210).
+
+    O sinal de fonte QUEBRADA não está no dia: está em errar TODOS os dias, inclusive os úteis —
+    e isso quem detecta é `coletar_fonte`, no nível da fonte."""
     try:
         body = json.loads(bruto.decode("utf-8", "replace"))
-    except (json.JSONDecodeError, UnicodeDecodeError):
-        return []
-    if "error" in body or "edicao" not in body:
-        return []
+    except (json.JSONDecodeError, UnicodeDecodeError) as e:
+        raise CalendarioIlegivel(f"corpo não é JSON: {type(e).__name__}") from e
+    if not isinstance(body, dict):
+        raise CalendarioIlegivel("corpo JSON não é um objeto")
+    if body.get("error"):
+        return []                      # a fonte diz: não houve edição neste dia
+    if "edicao" not in body:
+        raise CalendarioIlegivel("resposta sem `error` e sem a lista `edicao`")
     base_url = body.get("url_arquivos", "")
     return [{"link_diario": e.get("link_diario", ""), "numero_edicao": e.get("numero_edicao", ""),
-             "url_pdf": f"{base_url}{e.get('link_diario', '')}.pdf"} for e in body["edicao"] if e.get("link_diario")]
+             "url_pdf": f"{base_url}{e.get('link_diario', '')}.pdf"} for e in (body["edicao"] or []) if e.get("link_diario")]
 
 
 def extrair_texto_pdf(bruto: bytes) -> str:
-    """pdfplumber primeiro (mesma ordem usada nos coletores de boletim de saúde); pypdf como reserva."""
+    """Texto do PDF. pypdf primeiro, pdfplumber como reserva.
+
+    25/09/2026, MEDIDO: a ordem era a inversa, herdada dos coletores de boletim de saúde, onde
+    pdfplumber ganha porque lá a GEOMETRIA importa (ler número dentro de tabela). Aqui não
+    importa: o que se faz com o texto é casar expressão regular. E o custo é real — num PDF de
+    5 MB e 44 páginas, pdfplumber levou 3,8 s contra 2,0 s do pypdf, e os diários consorciados
+    chegam a 7 MB. Numa varredura de quase 90 dias vezes sete fontes, essa diferença é de horas.
+
+    A reserva continua existindo e o critério de troca também: texto curto demais significa PDF
+    que o primeiro leitor não soube abrir, e aí o outro tenta."""
     try:
-        import pdfplumber
-        with pdfplumber.open(io.BytesIO(bruto)) as pdf:
-            texto = "\n".join((pg.extract_text() or "") for pg in pdf.pages)
+        import pypdf
+        r = pypdf.PdfReader(io.BytesIO(bruto))
+        texto = "\n".join((p.extract_text() or "") for p in r.pages)
         if len(texto) > 200:
             return texto
     except Exception:  # noqa: BLE001
         pass
     try:
-        import pypdf
-        r = pypdf.PdfReader(io.BytesIO(bruto))
-        return "\n".join((p.extract_text() or "") for p in r.pages)
+        import pdfplumber
+        with pdfplumber.open(io.BytesIO(bruto)) as pdf:
+            return "\n".join((pg.extract_text() or "") for pg in pdf.pages)
     except Exception:  # noqa: BLE001
         return ""
 
@@ -316,7 +357,7 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
     servir o token no próprio HTML."""
     candidatos = candidatos_da_uf(por_cod, uf)
     pistas_todas, decretos_todos = [], []
-    dias_com_edicao = dias_com_erro = 0
+    dias_com_edicao = dias_com_erro = dias_ilegiveis = uteis_sem_edicao = 0
     opener, jar = nova_sessao()
     # Caminho barato primeiro: GET simples + extrair_token(). Normalmente devolve o placeholder
     # (ver STATUS no topo do módulo) e escala para o navegador — mas manter esse caminho evita o
@@ -360,6 +401,11 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
             try:
                 bruto = sessao_post(opener, url_tmpl.format(slug=slug), campos, timeout=40)
                 edicoes += parse_calendario(bruto)
+            except CalendarioIlegivel as e:
+                # Mudou a forma da resposta: lacuna declarada, nunca dia sem edição.
+                dias_ilegiveis += 1
+                registrar_lacuna(nome_fonte, f"{dia.isoformat()}: {e}",
+                                 canal="DOM-consorciado", camada=2, uf=uf)
             except Exception as e:  # noqa: BLE001
                 dias_com_erro += 1
                 registrar_lacuna(nome_fonte, f"{dia.isoformat()}: {type(e).__name__}: {e}",
@@ -393,10 +439,20 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
                                     "promover a registro exige documento primário lido por humano"})
                 pistas_todas.append(p)
             dias_com_edicao += 1
+        if not edicoes and dia.weekday() < 5:
+            uteis_sem_edicao += 1
         marcar_fonte_consultada([], nome_fonte, "nao_verificado",
                                 resultado=f"{dia.isoformat()}: {len(edicoes)} edição(ões)")
+    # 25/09/2026: um diário de associação municipal publica em dia útil. Nenhuma edição em
+    # `TETO_UTEIS_SEM_EDICAO` dias úteis não é "não publicaram": é a fonte fora do ar, ou o slug
+    # que mudou. Medido: os dois slugs da Bahia erram em TODA data testada, enquanto MG, GO, CE,
+    # PR, RS e RN entregam. Antes isso saía como "0 dia(s) com edição, 0 erro(s)" — fonte inteira
+    # ausente relatada como ausência de publicação.
+    if dias_com_edicao == 0 and uteis_sem_edicao >= TETO_UTEIS_SEM_EDICAO:
+        raise FonteForaDoAr(f"nenhuma edição em {uteis_sem_edicao} dia(s) útil(eis)")
     return {"pistas": pistas_todas, "decretos": decretos_todos, "dias_com_edicao": dias_com_edicao,
-            "dias_com_erro": dias_com_erro, "erro_fatal": False}
+            "dias_com_erro": dias_com_erro, "dias_ilegiveis": dias_ilegiveis,
+            "uteis_sem_edicao": uteis_sem_edicao, "erro_fatal": False}
 
 
 def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
@@ -412,14 +468,25 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
     # mesmo documento não deveria virar duas entradas só por rodar de novo sobre um dia já visto.
     vistos_pistas = {(p.get("ibge") or p.get("municipio"), p.get("url"), p.get("trecho"))
                      for p in pistas_reg["pistas"]}
-    total_pistas = total_decretos_novos = total_bloqueadas = total_fontes = 0
+    total_pistas = total_decretos_novos = total_bloqueadas = total_fontes = total_fora_do_ar = 0
     for uf, fontes in UF_SIGPUB.items():
         if apenas_uf and uf != apenas_uf:
             continue
         for f in fontes:
             total_fontes += 1
             print(f"[{uf}] {f['nome']} ({f['slug']}) — {desde_iso} a {ate_iso}", flush=True)
-            r = coletar_fonte(uf, f["slug"], f["nome"], desde_iso, ate_iso, por_cod)
+            try:
+                r = coletar_fonte(uf, f["slug"], f["nome"], desde_iso, ate_iso, por_cod)
+            except FonteForaDoAr as e:
+                # 25/09/2026: os dois slugs da Bahia respondem 200 com "Ocorreu um erro
+                # inesperado!" em toda data testada. Antes isso era contado como "0 dia(s) com
+                # edição, 0 erro(s)" — fonte inteira fora do ar relatada como ausência de
+                # publicação. Agora encerra cedo, com lacuna declarada e nome próprio.
+                total_fora_do_ar += 1
+                registrar_lacuna(f["nome"], f"fonte fora do ar: {e}", canal="DOM-consorciado",
+                                 camada=2, uf=uf, strings=[BASE.format(slug=f["slug"])])
+                print(f"  FORA DO AR: {e} — lacuna declarada, slug a reverificar", flush=True)
+                continue
             if r.get("bloqueio_js"):
                 total_bloqueadas += 1
                 print(f"  BLOQUEADA: token exige JavaScript (ver STATUS no topo do arquivo)")
@@ -441,11 +508,18 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
                 if chave_pista in vistos_pistas:
                     continue
                 pistas_reg["pistas"].append(p); vistos_pistas.add(chave_pista); total_pistas += 1
+            # 25/09/2026: grava a cada FONTE que termina. A varredura do ciclo leva horas — medido,
+            # cerca de duas por fonte — e gravar só no fim significava que uma interrupção na
+            # última hora jogaria fora todas as anteriores. É a mesma lição do §212, aplicada ao
+            # que se COLETOU e não ao que se registrou: rodada longa não pode depender de terminar.
+            gravar("pistas_imprensa.json", pistas_reg); gravar("atos_resposta.json", atos)
             print(f"  {r['dias_com_edicao']} dia(s) com edição, {r['dias_com_erro']} erro(s), "
-                 f"{len(r['pistas'])} pista(s), {len(r['decretos'])} decreto(s) brutos")
+                 f"{len(r['pistas'])} pista(s), {len(r['decretos'])} decreto(s) brutos "
+                 f"[gravado: {total_pistas} pista(s), {total_decretos_novos} decreto(s) no acumulado]", flush=True)
     gravar("pistas_imprensa.json", pistas_reg); gravar("atos_resposta.json", atos)
     print(f"total: {total_pistas} pistas novas, {total_decretos_novos} decretos novos, "
-         f"{total_bloqueadas}/{total_fontes} fonte(s) bloqueada(s) por token JS")
+         f"{total_bloqueadas}/{total_fontes} fonte(s) bloqueada(s) por token JS, "
+         f"{total_fora_do_ar}/{total_fontes} fora do ar (lacuna declarada)")
     return 0
 
 
@@ -485,7 +559,24 @@ def autoteste() -> int:
         r = parse_calendario(FIX_JSON_OK)
         return len(r) == 1 and r[0]["url_pdf"] == "https://x.com/arq/2026-09-15-edicao-4200.pdf"
     def t4(): return parse_calendario(FIX_JSON_VAZIO) == []  # negativo: dia sem edição
-    def t5(): return parse_calendario(b"not even json") == []  # negativo: corpo inesperado nunca derruba
+    def t5():
+        """25/09/2026: corpo que não dá para ler LEVANTA, e não vira "dia sem edição".
+
+        A versão anterior devolvia `[]` para as duas coisas, e era o mesmo defeito do §210: uma
+        mudança de formato da fonte apareceria no arquivo como dia sem publicação. Medido antes
+        de mexer: `{"error":...}` É dia sem edição (volta no sábado, no domingo e no Natal) e
+        continua devolvendo `[]`; corpo ilegível é outra coisa."""
+        for corpo in (b"not even json", b'{"outra":"coisa"}', b'[1,2,3]'):
+            try:
+                parse_calendario(corpo)
+                return False
+            except CalendarioIlegivel:
+                pass
+        return parse_calendario(FIX_JSON_VAZIO) == []        # `error` segue sendo dia sem edição
+
+    def t5b():
+        """Fonte que não publica em NENHUM dia útil está fora do ar — não é ausência de edição."""
+        return TETO_UTEIS_SEM_EDICAO >= 3 and issubclass(FonteForaDoAr, Exception)
     def t6():
         cand = candidatos_da_uf(FIX_REF, "MG")
         return cand == {"BELO HORIZONTE": "3106200", "UBERLANDIA": "3170206"}
@@ -500,6 +591,15 @@ def autoteste() -> int:
         texto = "Texto solto. Fica instituido o Plano de Contingencia para chuvas."
         _, pistas = classificar_trechos_consorciado(texto, candidatos_da_uf(FIX_REF, "MG"))
         return len(pistas) == 1 and pistas[0]["ibge"] is None and pistas[0]["municipio"] is None
+    def t_canal_no_vocabulario():
+        """§222: o canal que ESTE coletor escreve tem de existir no vocabulário de canais.
+
+        Ele existia desde 22/09 e nunca tinha produzido dado, porque a fonte estava bloqueada.
+        Ao destravar, `DOM-consorciado` chegou ao banco e reprovou o portão de consistência, que
+        mantinha a própria cópia da lista. Mesma lição do §213, terceira ocorrência: quem produz
+        um valor prova aqui que ele cabe, em vez de descobrir no CI."""
+        return "DOM-consorciado" in CANAIS_ATO and "DOM" in CANAIS_ATO
+
     def t9():  # negativo: nome de entidade que NÃO está na referência da UF não vira candidato falso
         texto = "PREFEITURA DE CIDADE INEXISTENTE\nPlano de Contingencia aprovado."
         _, pistas = classificar_trechos_consorciado(texto, candidatos_da_uf(FIX_REF, "MG"))
@@ -561,10 +661,16 @@ def autoteste() -> int:
         real_get, real_post = globals()["sessao_get"], globals()["sessao_post"]
         real_nav = globals()["obter_token_via_navegador"]
         real_marcar = globals()["marcar_fonte_consultada"]
+        # 25/09/2026: sem mockar estes dois, o autoteste escreve no log REAL — foi o que
+        # aconteceu nesta sessão, oito entradas de uma fonte "teste" que não existe. Autoteste
+        # offline não toca em data/, nem por um registro de lacuna.
+        real_lac, real_log = globals()["registrar_lacuna"], globals()["log_busca"]
         globals()["sessao_get"], globals()["sessao_post"] = get_falso, post_falso
         globals()["obter_token_via_navegador"] = navegador_falso_ok
         globals()["nova_sessao"] = nova_sessao_espia
         globals()["marcar_fonte_consultada"] = lambda *a, **kw: None
+        globals()["registrar_lacuna"] = lambda *a, **kw: None
+        globals()["log_busca"] = lambda *a, **kw: None
         try:
             coletar_fonte("MG", "amm-mg", "teste", "2026-09-01", "2026-09-01", FIX_REF)
             token_usado_certo = all(c["calendar[_token]"] == "TOKEN-REAL-DE-VERDADE" for c in campos_vistos)
@@ -574,6 +680,7 @@ def autoteste() -> int:
             globals()["obter_token_via_navegador"] = real_nav
             globals()["nova_sessao"] = real_nova_sessao
             globals()["marcar_fonte_consultada"] = real_marcar
+            globals()["registrar_lacuna"], globals()["log_busca"] = real_lac, real_log
     def t14():  # se o GET simples JÁ devolve um token real (site voltou a servir estático), o
         # navegador nunca é chamado — caminho barato evita o custo de um Chromium à toa.
         chamado = [False]
@@ -587,9 +694,15 @@ def autoteste() -> int:
         real_get, real_post = globals()["sessao_get"], globals()["sessao_post"]
         real_nav = globals()["obter_token_via_navegador"]
         real_marcar = globals()["marcar_fonte_consultada"]
+        # 25/09/2026: sem mockar estes dois, o autoteste escreve no log REAL — foi o que
+        # aconteceu nesta sessão, oito entradas de uma fonte "teste" que não existe. Autoteste
+        # offline não toca em data/, nem por um registro de lacuna.
+        real_lac, real_log = globals()["registrar_lacuna"], globals()["log_busca"]
         globals()["sessao_get"], globals()["sessao_post"] = get_falso, post_falso
         globals()["obter_token_via_navegador"] = navegador_espiao
         globals()["marcar_fonte_consultada"] = lambda *a, **kw: None
+        globals()["registrar_lacuna"] = lambda *a, **kw: None
+        globals()["log_busca"] = lambda *a, **kw: None
         try:
             coletar_fonte("MG", "amm-mg", "teste", "2026-09-01", "2026-09-01", FIX_REF)
             return chamado[0] is False
@@ -597,6 +710,7 @@ def autoteste() -> int:
             globals()["sessao_get"], globals()["sessao_post"] = real_get, real_post
             globals()["obter_token_via_navegador"] = real_nav
             globals()["marcar_fonte_consultada"] = real_marcar
+            globals()["registrar_lacuna"], globals()["log_busca"] = real_lac, real_log
     def t15():  # 21/09/2026: dedup de pistas em coletar() — mesmo achado real do bug em
         # coletar_diarios_municipais.py, corrigido aqui também antes de se manifestar (este canal
         # está bloqueado, §130, mas duplicaria a cada rodada no dia em que for desbloqueado).
@@ -637,11 +751,13 @@ def autoteste() -> int:
             globals()["coletar_fonte"] = real_coletar_fonte
             globals()["referencia_ibge"] = real_ref
     return rodar_autoteste({
+        "§222 o canal deste coletor existe no vocabulário de canais": t_canal_no_vocabulario,
         "extrai token do HTML do calendário": t1,
         "regressão 22/09: token com atributos em ordem diferente (achado contra produção)": t1b,
         "negativo: HTML sem token": t2,
         "parse_calendario: edição do dia": t3, "negativo: dia sem edição (error)": t4,
-        "negativo: corpo não-JSON nunca derruba": t5, "candidatos_da_uf: nomes normalizados por UF": t6,
+        "negativo: corpo ilegível levanta; `error` segue sendo dia sem edição": t5,
+        "fonte sem edição em nenhum dia útil é fonte fora do ar": t5b, "candidatos_da_uf: nomes normalizados por UF": t6,
         "ponta a ponta: PDF sintético -> pista com o município mais próximo correto": t7,
         "negativo: sem cabeçalho de entidade -> ibge None, pista mantida (não descartada)": t8,
         "negativo: nome de entidade fora da referência IBGE não vira candidato": t9,

@@ -9,6 +9,126 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §223 · O canal destravado entra na rotina, com a janela certa · 25/09/2026
+
+Classe **rotina de coleta**.
+
+O canal dos diários consorciados estava escrito desde 22/09 e **fora do pipeline** — nem em `atualizar.yml`, nem nos portões —, porque a fonte bloqueava e rodá-lo não produzia nada. Destravado (§217), ele passa a ser o único caminho para a maioria dos 5.041 municípios sem diário indexado no Querido Diário, e ficar fora da rotina seria deixar o conserto na gaveta.
+
+**A janela é curta de propósito: oito dias.** Uma edição consorciada é um PDF de vários megabytes e leva cerca de dois minutos entre baixar e ler; varrer o ciclo inteiro são horas por estado — medido. Isso é trabalho de rodada dedicada, não de cadência diária. A rotina precisa do que é novo desde ontem; o retroativo se faz uma vez.
+
+**O que foi varrido nesta sessão, e o que ficou.** Minas Gerais, Goiás e Ceará fecharam o ciclo inteiro: **19 pistas e 7 decretos** (MG 11 pistas, CE 5, GO 3). Paraná, Rio Grande do Sul e Rio Grande do Norte não começaram, por tempo; a Bahia não tem o que varrer enquanto as duas fontes dela seguirem fora do ar (§217). O retroativo desses quatro fica declarado como **pendente**, e não como varrido — a rotina diária, de janela curta, não o cobre.
+
+O autoteste do coletor entrou na lista de portões, onde não estava.
+
+## §222 · Terceira cópia do mesmo vocabulário, e ela só falhou quando a fonte voltou · 25/09/2026
+
+Classe **correção de verificação**. Nenhum número muda; sete atos deixam de reprovar o portão.
+
+O canal dos diários consorciados escreve `DOM-consorciado` como canal do ato. O portão de consistência mantinha a **própria cópia** da lista de canais válidos, e esse valor não estava nela — os sete decretos de Minas Gerais reprovaram assim que entraram no banco.
+
+**É a terceira cópia do mesmo tipo de vocabulário a envelhecer em um dia** (§213 foram duas: a do `log_busca` e a do portão). E o padrão de quando ela falha é o que vale registrar: o coletor existia desde 22/09 e **nunca tinha produzido dado**, porque a fonte estava bloqueada. A cópia desatualizada ficou invisível enquanto o canal estava parado — é o mesmo fenômeno do §212, onde consertar a leitura foi o que expôs o custo de escrever.
+
+O conjunto passou a ser declarado em `coletores_base` e importado por quem confere. E `DOM` e `DOM-consorciado` ficam **propositalmente distintos**: no primeiro o diário é do próprio município; no segundo é de uma associação, e a atribuição do município é heurística de proximidade dentro do PDF. Mesma origem legal, força probatória diferente — quem lê o dado precisa saber qual dos dois é.
+
+O autoteste do coletor passou a provar que o canal que ele escreve cabe no vocabulário, para que a próxima invenção reprove em quem a inventou, e não no CI.
+
+## §221 · A página de Saúde pesava 10 MB, e um terço era formatação · 25/09/2026
+
+Classe **desempenho e integridade de escrita**. Nenhum dado muda de valor.
+
+**Medido nas doze páginas**, com o cache aquecido: nenhuma passa de 3 segundos, nenhuma tem erro de execução, nenhuma rola na horizontal em 375 px. As leituras de 9 e 10 segundos que apareceram na primeira medição eram artefato da página medida primeiro — vale registrar, porque é o tipo de número que vira decisão errada se não for repetido.
+
+A exceção real era o **peso**: a página de Saúde baixava **10,2 MB**, quase tudo em quatro séries semanais por município. Duas causas, e nenhuma delas é dado:
+
+**Uma população escrita 37 vezes.** Cada semana de cada município repetia o campo `pop`, que já está um nível acima, no próprio município, e que a página não lê de dentro da semana — **11.579 repetições** por arquivo. Não é dado perdido ao sair: é o mesmo número, escrito 37 vezes.
+
+**E a indentação.** Ela existe para o diff do robô ficar legível, e vale para quase todo o `data/`. Nos arquivos que o navegador baixa **por completo** ela custa 38% do peso. A decisão já tinha sido tomada uma vez, para o clima municipal; passou a valer para as seis séries de saúde, por uma porta comum — `gravar(..., compacto=True)`.
+
+Resultado: **10,2 MB → 6,8 MB**, um terço a menos, em 2,3 segundos e sem erro. O que ficou de fora de propósito: carregar a chikungunya só quando o leitor chega ao painel dela economizaria mais 3 MB, mas muda o comportamento da página e é decisão de editoria, não de desempenho.
+
+### E o arquivo de clima era o único grande sem escrita atômica
+
+Ao unificar a porta, apareceu o motivo pelo qual ela precisava existir: `coletar_sinais_risco` **nunca foi migrado** depois da corrupção de 21/09/2026 — os quatro arquivos dele, entre eles o de clima, escreviam direto no destino, sem temporário e sem `os.replace()`. O de clima é o maior de todos e é regravado dezenas de vezes numa varredura nacional: era o mais exposto de `data/` a uma interrupção no meio da escrita, e o único que ainda estava assim. Agora escreve como o resto, com a espera do cadeado do Windows inclusive.
+
+## §220 · O autoteste que escrevia no livro-razão, e o portão que faltava para vê-lo · 25/09/2026
+
+Classe **infraestrutura de verificação**. Oito linhas indevidas removidas do log; nenhum número público muda.
+
+**O achado, e ele é meu.** Ao conferir a varredura dos diários consorciados, apareceram no log de buscas **oito execuções de uma fonte chamada "teste"** — uma fonte que não existe, numa consulta que nunca aconteceu. Foram escritas pelo **autoteste** deste coletor, rodado várias vezes nesta sessão.
+
+A causa é específica e vale guardar: o autoteste mockava a rede, os arquivos e o livro de fontes, e **não** mockava `registrar_lacuna` — que chama `log_busca`, que grava. Ninguém percebeu porque o autoteste ficou verde. Autoteste prova o que o autor lembrou de provar.
+
+As oito foram removidas. Isso **não** é deduplicar o log, que continua proibido e por bom motivo: é desfazer uma escrita que não devia ter acontecido, num livro cuja função é registrar tentativas reais.
+
+**A regra existia; faltava quem conferisse.** Vários coletores declaram "nunca toca dado real", e as travas estruturais deles procuram `open(...)` e `gravar(...)` no próprio fonte — e não enxergam a escrita que acontece três chamadas abaixo, dentro de `coletores_base`. Só a execução mostra. O portão novo roda os **51 autotestes** do projeto e compara `data/` antes e depois.
+
+**Ele já provou o valor duas vezes.** Achou um autoteste **vermelho que nenhum portão existente rodava** (`monitorar_busca_web.py`), quebrado pelo próprio §213: era o mesmo teste-por-texto do vocabulário, num segundo arquivo. E encontrou três autotestes que regravam arquivos com conteúdo idêntico.
+
+**A calibragem é parte do achado.** A primeira versão comparava tamanho e carimbo, e acusou esses três de "alterar dado" — acusação falsa: o conteúdo era o mesmo byte. Portão que grita sem motivo ensina a ignorar portão. Ficou assim: regravar idêntico é **aviso** e vale mockar; **alterar** conteúdo reprova. O caso que originou o portão cai no segundo grupo, porque acrescentou linhas.
+
+## §219 · O mesmo defeito, procurado de propósito: quatro achados em quem lê planilha · 25/09/2026
+
+Classe **correção de coleta**. Nenhum número público muda hoje; o que muda é o que aconteceria quando uma fonte trocasse de layout.
+
+Depois de o mesmo padrão aparecer quatro vezes num dia — fonte que não responde o que devia, e o arquivo registrando isso como se ela tivesse dito "não há" —, valia procurá-lo de propósito nos coletores que ainda não tinham sido tocados. Quatro achados, todos reais, todos da mesma família. E um descarte que também vale registrar.
+
+**Base nacional lida pela metade virava "ok".** `coletar_declarado_nacional` lê MUNIC e ICM, que cobrem os 5.570 municípios. Os parsers devolvem dicionário vazio quando a aba muda de nome ou a coluna do IBGE some — e não havia **nenhum piso**: com zero municípios casados, o coletor gravava `status: "ok"` e decisão `registro` no log. Uma troca de layout do IBGE seria invisível. Agora há piso de sanidade, folgado de propósito: ele separa "quebrou" de "veio menos", e abaixo dele é lacuna declarada com a aba e a coluna a reverificar.
+
+**Execução zero que não era execução zero.** `coletar_execucao_mps` e `coletar_transferegov` filtram por nomes de coluna do Portal e do TransfereGov. Renomeada uma coluna, nenhuma linha casa, todo total fica `0,00` — e a única guarda existente conferia se o arquivo **baixou**, não se alguma linha casou. O site passaria a dizer que as medidas provisórias não executaram nada e que não houve repasse nenhum. Agora, nenhum casamento é leitura quebrada: lacuna declarada, e o que já estava gravado **não é sobrescrito**.
+
+**Ausência de valor virava R$ 0,00.** Em `coletar_financiamento`, o valor de uma transferência era `float(valor or valorLiberado or 0)`. Isso apaga a distinção que é a regra central deste projeto: uma transferência de R$ 0,00 e uma resposta **sem** o campo de valor viravam o mesmo número. Agora valor ausente é `null` com marca própria, e zero continua sendo zero — travado por teste nos três casos: ausente, zero e ilegível.
+
+**Falha de formato sem rastro.** No `coletar_siconfi_182`, o galho de erro de rede declarava a lacuna; o galho que dispara quando a fonte devolve algo que não é o JSON esperado — página de erro disfarçada de 200, corpo truncado — só somava um contador local e seguia. Justamente a classe de erro que originou o §210 era a única sem registro no log.
+
+**O que NÃO é achado, e por que vale dizer.** `coletar_painel_am` já implementa a lição inteira: recusa a leitura quando metade dos itens não casa com o IBGE, e só deduz um município por eliminação quando sobra exatamente um de cada lado. Os coletores de boletim estadual já têm piso mínimo e levantam em toda mudança estrutural. Eles são a referência de onde o remédio veio — não o problema.
+
+## §218 · A fila não parava por ser difícil; parava por estar fora de ordem · 25/09/2026
+
+Classe **infraestrutura editorial**. Nenhum dado muda, nenhum item é promovido.
+
+A promoção ao banco é sempre humana (R7), e as filas somam **848 itens sem julgamento**, espalhados por sete arquivos com sete formatos. Lidos como JSON cru, o custo não está em decidir — está em achar as decisões que importam no meio das que se descartam em dois segundos.
+
+A triagem que separa isso **já existia nos dados** e não estava sendo usada para ordenar: das 485 pistas pendentes, **88 estão em confiança A** e 27 são candidatos fortes, contra 230 em B/indefinido. `scripts/preparar_fila_revisao.py` junta as sete filas, ordena por quanto cada item merece a atenção e mostra o **trecho** — que é o que permite descartar sem abrir o documento. Medido no próprio material: o trecho de maior confiança da fila é texto genérico da Lei 12.608, e some da fila em um olhar.
+
+O que ele **não** faz é o ponto: não promove, não classifica, não decide e não escreve no banco. Só ordena e apresenta o que já estava lá. Falso positivo provável vai para o fim e **não é excluído** — a máquina palpita, a pessoa decide.
+
+O relatório sai **fora do repositório**, porque fila de revisão é material de trabalho da editoria e este repositório é público.
+
+Seis casos no autoteste, e um deles rendeu uma lição própria: a trava estrutural reprovou por causa da **prosa que a explicava** — a frase que citava os nomes das funções proibidas casava com o padrão que as procura. Travas que leem código-fonte cru confundem a menção com a chamada. Esta passou a olhar só o código, com o tokenizador do próprio Python.
+
+## §217 · O canal que faltava para 90% do país estava destravado, e ninguém tinha voltado a tentar · 25/09/2026
+
+Classe **coleta**. Peso zero: tudo o que sai daqui é pista, e pista não entra no banco sem leitura humana (R7).
+
+**O problema, que já estava diagnosticado.** Dos 5.571 municípios, **5.041 não têm diário indexado no Querido Diário** — e a causa foi verificada em 22/09 contra o código-fonte do próprio QD, não suposta: a raspagem é feita site a site, e a plataforma SIGPub (`diariomunicipal.com.br`), usada pelas associações municipais de pelo menos MG, GO, BA, CE, PR, RS e RN, tem **um único raspador** em todo o país, o de Alagoas. É por isso que AL lidera a cobertura com 94% enquanto MG, PI, SC, GO, AC e MT ficam entre 0,4% e 2,5%. Não é ausência de plano: é lacuna de raspagem.
+
+**O que bloqueava.** O widget de calendário do SIGPub exige um token preenchido por JavaScript. Duas rodadas de investigação, em 20 e 21/09, concluíram que nem um Chromium real o obtinha: o console acusava `requestStorageAccess: Permission denied`, e o token vinha como placeholder. O motor de PDF → texto → atribuição de município ficou pronto e testado, esperando.
+
+**Medido hoje: o token vem real.** A mesma configuração headless que o script já usava devolve o valor verdadeiro, e um POST de calendário com ele responde com a edição do dia, número e link do PDF. O que mudou entre 21 e 25/09 não dá para afirmar daqui — o que dá para afirmar é o que foi medido: não há bloqueio. **Sete das nove fontes entregam.**
+
+Vale registrar o método, porque ele se repete: a conclusão anterior não estava errada por preguiça — estava datada. Bloqueio de fonte tem prazo de validade, e reverificar é barato perto de tratar como impossível o que já não é.
+
+### O primeiro estado varrido, e o que ele trouxe
+
+**Minas Gerais, ciclo inteiro: 86 dias com edição, zero erros, 11 pistas e 7 decretos novos.** São decretos municipais de situação de emergência — Teófilo Otoni, Bocaiúva, Diamantina, Bonfinópolis de Minas, Conquista, Cláudio e Coração de Jesus — em municípios cujo diário **nunca esteve indexado no Querido Diário**. Eles existiam, publicados, e o Monitor não tinha por onde vê-los.
+
+É a medida do que o canal vale: um estado, e sete atos que nenhum outro canal do projeto alcançava.
+
+### Duas medições que mudaram o desenho da varredura
+
+**O extrator estava na ordem errada para este uso.** O coletor tentava `pdfplumber` primeiro e `pypdf` como reserva — ordem herdada dos coletores de boletim de saúde, onde a geometria importa porque é preciso ler número dentro de tabela. Aqui não importa: o que se faz com o texto é casar expressão regular. Medido num PDF de 5 MB e 44 páginas: **3,8 s contra 2,0 s**, e os diários consorciados chegam a 7 MB. Numa varredura de quase noventa dias vezes sete fontes, isso é diferença de horas. A ordem foi invertida; a reserva e o critério de troca continuam, porque texto curto demais significa PDF que o primeiro leitor não soube abrir.
+
+**E ela gravava só no fim.** Medido: cerca de duas horas por fonte, sete fontes. Uma interrupção na última hora jogaria fora todas as anteriores — a mesma lição do §212, agora aplicada ao que se coleta, e não ao que se registra. Passou a gravar a cada fonte concluída, e a varredura roda fonte a fonte para que cada uma feche sozinha.
+
+### E o mesmo defeito do dia, pela quarta vez
+
+Ao rodar a Bahia, o coletor disse **"0 dia(s) com edição, 0 erro(s)"**. Os dois slugs baianos respondem `200` com `{"error":"Ocorreu um erro inesperado!"}` em **toda** data testada, inclusive dias úteis — fonte inteira fora do ar, relatada como ausência de publicação.
+
+**Só que o conserto óbvio estava errado, e medir antes evitou trocar um defeito por outro.** Tratar esse `error` como lacuna criaria uma lacuna falsa a cada fim de semana: medido contra produção, o **mesmo corpo** volta para sábado (19/09), domingo (20/09) e Natal, enquanto segunda e terça entregam a edição. Ou seja, `error` é como esta fonte diz "não houve edição neste dia", e a leitura original estava certa.
+
+O sinal de fonte quebrada não está no dia — está em **errar todos os dias úteis**. Ficou assim: `error` segue sendo dia sem edição; corpo que não dá para ler **levanta**, porque aí a forma mudou e devolver vazio esconderia isso; e fonte sem nenhuma edição em cinco dias úteis é declarada **fora do ar**, com o nome certo. Os dois slugs da Bahia foram reconferidos na página inicial da plataforma e continuam sendo aqueles: não é curadoria desatualizada, é a fonte que não está entregando.
+
 ## §216 · O livro guardava doze registros para cinco consultas, e isso apagava a varredura · 25/09/2026
 
 Classe **correção de coleta**. Nenhum número público muda; o que muda é o site saber o que já consultou.
