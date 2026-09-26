@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 26/09/2026 · 471 pendente(s) · 15 decidida(s) · A=91 B=302 C=78
+Gerado em 26/09/2026 · 491 pendente(s) · 15 decidida(s) · A=91 B=305 C=95
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1316,11 +1316,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: do empreendimento, adotando  as medidas corretivas cabíveis.   IX. Manter atualizado e em local visível de fácil acesso, os relatórios de manutenção preventiva nos  equipamentos, inspeção da integridade física, estanquei
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Saúde/BA — 2 pendente(s)
+## Saúde/BA — 3 pendente(s)
 - `bea041a44e` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: O Ministério da Saúde anunciou um plano de contingência para ...
   - url: https://www.instagram.com/p/DdXJSijlMz7/
   - trecho: 6 days ago ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.
+  - juiz: portão automático: fonte não oficial
+- `91647c4cad` · nível **B** (5 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: O Ministério da Saúde anunciou um plano de contingência para ...
+  - url: https://www.instagram.com/p/DdXJSijlMz7/
+  - trecho: Sep 16, 2026 ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.
   - juiz: portão automático: fonte não oficial
 - `a31600aeb5` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...
@@ -1389,6 +1394,15 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `f504be1f02` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - url: https://www.instagram.com/reel/DdCR-pNhPgT/
   - trecho: Sep 8, 2026 ... ... likes, 0 comments - tvceara on September 8, 2026: "Fortaleza já ... El Niño (COE El Niño) e um Plano de Contingência. O período mais ...
+
+## GUARACIABA DO NORTE/CE — 2 pendente(s)
+- `3ceb220d95` · nível **B** (3 pts) · diario_consorciado · DUVIDA · **PORTARIA 011**, 2026
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116916_2026-09-17_6168da75348341282d6e64042dab876f.pdf
+  - trecho: competências profissionais legalmente estabelecidas;  VII – coordenar a elaboração e atualização do Plano Municipal de  Contingência de Proteção e Defesa Civil;  VIII – propor a realização de campanhas, capacitações, tre
+  - juiz: portão automático: fonte não oficial
+- `cc8670ea5e` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116916_2026-09-17_6168da75348341282d6e64042dab876f.pdf
+  - trecho:  de risco;  III – realizar levantamentos preventivos;  IV – auxiliar na elaboração e atualização do Plano Municipal de  Contingência;  V – elaborar planos, projetos e programas destinados à prevenção e  redução de riscos
 
 ## None/GO — 1 pendente(s)
 - `d7b81c79ef` · nível **B** (4 pts) · imprensa · EX_ANTE · citação não extraída
@@ -1483,6 +1497,21 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Morro da Garça, foi aprovado e instituído na reunião ordinária do CBH ... Além dos programas e ações apresentados, o Plano de Contingência e Emergências.
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: fonte não oficial
+
+## POUSO ALEGRE/MG — 4 pendente(s)
+- `94440592e5` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **Lei nº 14.133**, 2021
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118418_2026-08-17_2e631f23e5ba59601d746661eada6e5d.pdf
+  - trecho:  emergência; e  l) óbitos ocorridos na unidade, por classificação de risco e causa provável.  VII - plano de contingência para situações de desastre s, eventos com múltiplas vítimas, surtos, epidemias, desabastecimento, 
+  - juiz: portão automático: fonte não oficial
+- `96f2cc8838` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118418_2026-08-17_2e631f23e5ba59601d746661eada6e5d.pdf
+  - trecho: s gineco-obstétricas, saúde mental, intoxicações, violências, acidentes e pacientes críticos;  VI - plano de contingência para indisponibilidade de equipamentos, insumos, profissionais, sistemas informatizados, transport
+- `05b3640cf1` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118418_2026-08-17_2e631f23e5ba59601d746661eada6e5d.pdf
+  - trecho: ecagem, segregação, identificação, transporte intern o e descarte de  medicamentos e insumos;  VI - plano de contingência para desabastecimento, ruptura de estoque, falha de armazenamento, indisponibilidade de fornecedor
+- `e6b205addf` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118418_2026-08-17_2e631f23e5ba59601d746661eada6e5d.pdf
+  - trecho: tiva, manutenção corretiva, identificação de  equipamento inoperante e retirada segura de uso;  V - plano de contingência para indisponibilidade de equipamentos críticos, incluindo remanejamento entre unidades, a cioname
 
 ## Piau/MG — 1 pendente(s)
 - `434571d764` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -2476,12 +2505,83 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/reel/Dai6_4EoDv0/
   - trecho: Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...
 
+## ACOPIARA/CE — 1 pendente(s)
+- `0c059dc858` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116863_2026-07-03_b1e8202ae0f8f29dac11d258c7c30c51.pdf
+  - trecho: ição de modelo de  gestão;  XIII — mecanismos de ouvidoria, transparência e controle social;  XIV — plano de contingência para assegurar a continuidade dos  serviços;  XV — responsabilidades do Município e da Organização
+
+## PENAFORTE/CE — 2 pendente(s)
+- `7565decba3` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116866_2026-07-08_8014e2ac7cf651d60912f8066554687d.pdf
+  - trecho: dados e as informações armazenadas em segurança, bem  como manter cópias de segurança (backup) e um plano de  contingência de modo que a continuidade da prestação do serviço não  seja prejudicada em caso de eventuais sin
+  - ⚠ texto_falso_positivo_provavel
+- `ff21aaa1a4` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116869_2026-07-13_3bf49cfc7fb9f764f7224360eec267ee.pdf
+  - trecho: dados e as informações armazenadas em segurança, bem  como manter cópias de segurança (backup) e um plano de  contingência de modo que a continuidade da prestação do serviço não  seja prejudicada em caso de eventuais sin
+  - ⚠ texto_falso_positivo_provavel
+
+## CABECEIRAS/GO — 1 pendente(s)
+- `6d74e72b44` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=3392&i=publicado_114597_2026-07-31_8acb3bc4d0a9d274f80e2974eeea8161.pdf
+  - trecho: ecedores;  III – continuidade e contingência:  manutenção de plano de  continuidade do serviço e de plano de contingência operacional;  IV – auditorias: permissão para realização de auditorias periódicas  de segurança, i
+  - ⚠ texto_falso_positivo_provavel
+
+## FLORES DE GOIÁS/GO — 1 pendente(s)
+- `50b9729463` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=907&i=publicado_115613_2026-07-31_2d4b5639c9ffb560eafa92f0b4b0725d.pdf
+  - trecho: dores;     III – continuidade e contingência:  manutenção de plano de  continuidade do serviço e de plano de contingência operacional;     IV – auditorias: permissão para realização de auditorias periódicas   de seguranç
+  - ⚠ texto_falso_positivo_provavel
+
+## PORANGATU/GO — 1 pendente(s)
+- `240c73cbd5` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=3392&i=publicado_114612_2026-08-21_7184df772ce72c04d56e991ac4350830.pdf
+  - trecho: financeira,  conciliação financeira integral do contrato, saneamento processual e a  instituição do Plano de Contingência e Transição Hospitalar (prazo de  5 dias úteis);  • Acatou a Recomendação Ministerial nº 202600840
+
 ## Candeias/MG — 1 pendente(s)
 - `c83ac94522` · nível **C** (7 pts) · busca_web · — · data 2025 (do trecho)
   - título: Defesa Civil de Candeias apresenta Plano de Contingência para ...
   - url: https://prefeitura.candeias.ba.gov.br/2025/03/defesa-civil-de-candeias-apresenta-plano-de-contingencia-para-continuacao-da-operacao-chuva/
   - trecho: A Defesa Civil de Candeias se reuniu, nesta terça-feira (25/03), no Paço Municipal, para apresentar o Plano de Contingência e alinhar as ações preventivas destinadas à Operação Chuva 2025 · A reunião contou com a presenç
   - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+
+## DIVINÓPOLIS/MG — 1 pendente(s)
+- `32bd37b077` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118387_2026-07-03_1aa7a61123fc1d704b42a660e161181f.pdf
+  - trecho: das para áreas inundáveis;  b) Não alterar cotas altimétricas sem autorização expressa;  c) Incluir plano de contingência para eventos de cheia.  1.5. Todo o projeto deverá respeitar a Área de Preservação Permane nte (AP
+
+## JOÃO MONLEVADE/MG — 1 pendente(s)
+- `8ad7538c73` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118402_2026-07-24_5e3d8fecb52e3e01393f6d4f61a81dfc.pdf
+  - trecho:  de metas  com base na análise dos indicadores. A OSC deve apresentar um  plano de ação corretiva.  Plano de contingência: Incluir um plano de contingência para casos de falha ou defeito no sistema, com o fornecimento de
+
+## Ponte Nova/MG — 1 pendente(s)
+- `16873f549a` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118429_2026-09-01_682ce1816f30de7d06ea04aee2f22ac2.pdf
+  - trecho: ecedores;  III – continuidade e contingência:  manutenção de plano de  continuidade do serviço e de plano de contingência operacional;  IV – auditorias: permissão para realização de auditorias periódicas de  segurança, i
+  - ⚠ texto_falso_positivo_provavel
+
+## SANTA BÁRBARA/MG — 1 pendente(s)
+- `d17febb488` · nível **C** (2 pts) · diario_consorciado · — · data 19/08/2026 (do trecho)
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118419_2026-08-18_248ae1169ef759dd2a279100c0860506.pdf
+  - trecho: necedores;  III – continuidade e contingência: manutenção de plano de  continuidade do serviço e de plano de contingência operacional;  IV – auditorias: permissão para realização de auditorias periódicas de  segurança, i
+  - ⚠ texto_falso_positivo_provavel
+
+## SENHORA DOS REMÉDIOS/MG — 1 pendente(s)
+- `3e7e0f22ef` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118394_2026-07-14_ba8a06faf54e45bbb4024b59fb1ad846.pdf
+  - trecho: cedores;  III – continuidade e contingência:  manutenção de pla no de  continuidade do serviço e de plano de contingência operacional;  IV – auditorias: permissão para realização de auditorias periódicas de  segurança, i
+  - ⚠ texto_falso_positivo_provavel
+
+## SÃO LOURENÇO/MG — 1 pendente(s)
+- `451d221aec` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118417_2026-08-14_3b60f950421df9125576d4adfeb8641b.pdf
+  - trecho: relatórios  gerenciais, conforme detalhado no Termo de Referência.  9.4. A Contratada deverá manter plano de contingência que assegure o  abastecimento autorizado em caso de indisponibilidade temporária do  sistema, falh
+  - ⚠ texto_falso_positivo_provavel
+
+## TRÊS PONTAS/MG — 1 pendente(s)
+- `b50f2452d8` · nível **C** (2 pts) · diario_consorciado · — · data 2026 (do trecho)
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118427_2026-08-28_2af5176640e1a1a9db76ab3053d1656b.pdf
+  - trecho: mente a gestão operacional,  administrativa e assistencial do CEAE , mediante implementação de  seu Plano de Contingência e Tr ansição, em articulação com a  Secretaria Municipal de Saúde de Patos de Minas, objetivando  
 
 ## Viçosa/MG — 1 pendente(s)
 - `ad85a6abf2` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)

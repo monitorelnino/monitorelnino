@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-26",
- "total_pistas": 486,
- "total_municipios": 203,
+ "total_pistas": 506,
+ "total_municipios": 217,
  "por_nivel": {
   "A": 93,
-  "B": 304,
-  "C": 89
+  "B": 307,
+  "C": 106
  },
  "grupos": [
   {
@@ -6621,6 +6621,85 @@
    ]
   },
   {
+   "ibge": "3152501",
+   "municipio": "POUSO ALEGRE",
+   "uf": "MG",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 3
+   },
+   "pistas": [
+    {
+     "id": "94440592e5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118418_2026-08-17_2e631f23e5ba59601d746661eada6e5d.pdf",
+     "titulo": null,
+     "trecho": " emergência; e \nl) óbitos ocorridos na unidade, por classificação de risco e causa provável. \nVII - plano de contingência para situações de desastre s, eventos com múltiplas vítimas, surtos, epidemias, desabastecimento, indisponibilidade de \nequipamentos críticos e outras situações excepcionais que possam comprometer a continuidade da assistência; \nVIII - ações de integração com a Vigilância em Saúde, Se gurança do Paciente, Saúde do Tra",
+     "data": "2026-08-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "96f2cc8838",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118418_2026-08-17_2e631f23e5ba59601d746661eada6e5d.pdf",
+     "titulo": null,
+     "trecho": "s gineco-obstétricas, saúde mental, intoxicações, violências, acidentes e pacientes críticos; \nVI - plano de contingência para indisponibilidade de equipamentos, insumos, profissionais, sistemas informatizados, transporte de amostras, laudos \nou serviços contratualizados; \nVII - mecanismos de integração dos resultados ao prontuário  do usuário, aos fluxos de regulação, aos protocolos assistenciais e aos indicadores da \nRede Municipal de ",
+     "data": "2026-08-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "05b3640cf1",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118418_2026-08-17_2e631f23e5ba59601d746661eada6e5d.pdf",
+     "titulo": null,
+     "trecho": "ecagem, segregação, identificação, transporte intern o e descarte de \nmedicamentos e insumos; \nVI - plano de contingência para desabastecimento, ruptura de estoque, falha de armazenamento, indisponibilidade de fornecedor, nec essidade de \nremanejamento entre unidades e eventos que comprometam o acesso a medicamentos críticos; \nVII - integração da Assistência Farmacêutica com os protocolos clínicos, o Núcleo de Segurança do Paciente, o Nú",
+     "data": "2026-08-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e6b205addf",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118418_2026-08-17_2e631f23e5ba59601d746661eada6e5d.pdf",
+     "titulo": null,
+     "trecho": "tiva, manutenção corretiva, identificação de \nequipamento inoperante e retirada segura de uso; \nV - plano de contingência para indisponibilidade de equipamentos críticos, incluindo remanejamento entre unidades, a cionamento de manutenção, \nsubstituição temporária, comunicação à gestão e registro da não conformidade; \nVI - integração da gestão de equipamentos críticos com os protocolos assistenciais, o Núcleo de Segurança do Paciente, o N",
+     "data": "2026-08-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4127700",
    "municipio": "Toledo",
    "uf": "PR",
@@ -6865,6 +6944,74 @@
      "url": "https://data.queridodiario.ok.org.br/4314902/2025-10-01/769f10071e5b1facc71affd7dca1f64f05ecabca.pdf",
      "titulo": "Diário oficial de 2025-10-01",
      "trecho": "(cento e setenta e sete R$ 177.359,77 mil trezentos e cinquenta e nove reais e setenta e sete centavos) referente ao acréscimo qualitativo. O valor de (cento e quarenta e seis mil duzentos e quarenta e três reais) referente ao acréscimo quantitativo. OR$ 146.243,00 percentual de acréscimo acumulado é de % em relação ao valor inicial do Contrato atualizado, conforme itens 12,90 identificados na planilha de custos constante no Documento SEI nº 33212449. A contar da assinatura do presente Termo Aditivo",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2929800",
+   "municipio": "Saúde",
+   "uf": "BA",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "bea041a44e",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdXJSijlMz7/",
+     "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
+     "trecho": "6 days ago ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "91647c4cad",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdXJSijlMz7/",
+     "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
+     "trecho": "Sep 16, 2026 ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
+     "data": "26/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a31600aeb5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdXM3Qjga7q/",
+     "titulo": "EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...",
+     "trecho": "6 days ago ... ... Plano de Contingência para chuvas intensas, além da emissão de ... saúde relacionadas ao El Niño 2026-2027. O documento prevê ações ...",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -7412,52 +7559,49 @@
    ]
   },
   {
-   "ibge": "2929800",
-   "municipio": "Saúde",
-   "uf": "BA",
+   "ibge": "2305001",
+   "municipio": "GUARACIABA DO NORTE",
+   "uf": "CE",
    "melhor_nivel": "B",
    "n_pistas": 2,
    "niveis": {
     "A": 0,
-    "B": 2,
-    "C": 0
+    "B": 1,
+    "C": 1
    },
    "pistas": [
     {
-     "id": "bea041a44e",
+     "id": "3ceb220d95",
      "nivel_confianca": "B",
-     "pontos_confianca": 5,
+     "pontos_confianca": 3,
      "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdXJSijlMz7/",
-     "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
-     "trecho": "6 days ago ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "a31600aeb5",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
+      "fonte_imprensa",
       "plano_no_trecho",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdXM3Qjga7q/",
-     "titulo": "EL NIÑO ⚠️ O Ministério da Saúde prepara uma série de ações ...",
-     "trecho": "6 days ago ... ... Plano de Contingência para chuvas intensas, além da emissão de ... saúde relacionadas ao El Niño 2026-2027. O documento prevê ações ...",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116916_2026-09-17_6168da75348341282d6e64042dab876f.pdf",
+     "titulo": null,
+     "trecho": "competências profissionais legalmente estabelecidas; \nVII – coordenar a elaboração e atualização do Plano Municipal de \nContingência de Proteção e Defesa Civil; \nVIII – propor a realização de campanhas, capacitações, treinamentos e \nexercícios simulados; \nIX – coordenar o levantamento e cadastramento das áreas de risco \nexistentes no Município; \nCeará , 18 de Setembro de 2026   •   Diário Oficial dos Municípios do Estado do Ceará   •    ANO XVII | ",
+     "data": "2026-09-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cc8670ea5e",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116916_2026-09-17_6168da75348341282d6e64042dab876f.pdf",
+     "titulo": null,
+     "trecho": " de risco; \nIII – realizar levantamentos preventivos; \nIV – auxiliar na elaboração e atualização do Plano Municipal de \nContingência; \nV – elaborar planos, projetos e programas destinados à prevenção e \nredução de riscos; \nVI – acompanhar alertas meteorológicos, hidrológic os, geológicos e \ndemais informações relacionadas à possibilidade de ocorrência de \neventos adversos; \nVII – realizar ações educativas junto às comunidades; \nVIII – promover camp",
+     "data": "2026-09-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -10659,6 +10803,56 @@
    ]
   },
   {
+   "ibge": "2310605",
+   "municipio": "PENAFORTE",
+   "uf": "CE",
+   "melhor_nivel": "C",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "7565decba3",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116866_2026-07-08_8014e2ac7cf651d60912f8066554687d.pdf",
+     "titulo": null,
+     "trecho": "dados e as informações armazenadas em segurança, bem \ncomo manter cópias de segurança (backup) e um plano de \ncontingência de modo que a continuidade da prestação do serviço não \nseja prejudicada em caso de eventuais sinistros; \nDisponibilizar versões atualizadas do SISTEMA ATLASTECH, cujas \nimplantações deverão ser programadas em conjunto com o \nCOMODATÁRIO; \nManter o COMODATÁRIO  informado de qualquer alteração de \nrotinas do SISTEMA AT",
+     "data": "2026-07-09",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ff21aaa1a4",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116869_2026-07-13_3bf49cfc7fb9f764f7224360eec267ee.pdf",
+     "titulo": null,
+     "trecho": "dados e as informações armazenadas em segurança, bem \ncomo manter cópias de segurança (backup) e um plano de \ncontingência de modo que a continuidade da prestação do serviço não \nseja prejudicada em caso de eventuais sinistros; \nd) Disponibilizar versões atualizadas do SISTEMA ATLASTECH , \ncujas implantações deverão ser programadas em conjunto com o \nCOMODATÁRIO; \ne) Manter o COMODATÁRIO informado de qualquer alteração de \nrotinas do SIST",
+     "data": "2026-07-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4309209",
    "municipio": "Gravataí",
    "uf": "RS",
@@ -10856,6 +11050,131 @@
    ]
   },
   {
+   "ibge": "2300309",
+   "municipio": "ACOPIARA",
+   "uf": "CE",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "0c059dc858",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116863_2026-07-03_b1e8202ae0f8f29dac11d258c7c30c51.pdf",
+     "titulo": null,
+     "trecho": "ição de modelo de \ngestão; \nXIII — mecanismos de ouvidoria, transparência e controle social; \nXIV — plano de contingência para assegurar a continuidade dos \nserviços; \nXV — responsabilidades do Município e da Organização Social \nquanto a licenças, alvarás, sistemas de informação, registros sanitários \ne alimentação das bases oficiais do SUS. \n  \nArt. 24º - A Organização Social contratada na área da saúde deverá \nfornecer ao Município, em",
+     "data": "2026-07-06",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "5204003",
+   "municipio": "CABECEIRAS",
+   "uf": "GO",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "6d74e72b44",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=3392&i=publicado_114597_2026-07-31_8acb3bc4d0a9d274f80e2974eeea8161.pdf",
+     "titulo": null,
+     "trecho": "ecedores; \nIII – continuidade e contingência:  manutenção de plano de \ncontinuidade do serviço e de plano de contingência operacional; \nIV – auditorias: permissão para realização de auditorias periódicas \nde segurança, integridade e desempenho; \nV – avaliação de fornecedores: adoção de mecanismos de avaliação \nde desempenho e reputação dos fornecedores, com base em \nindicadores objetivos e verificáveis; \nVI – sanções: auxílio ao ente púb",
+     "data": "2026-08-03",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "5207907",
+   "municipio": "FLORES DE GOIÁS",
+   "uf": "GO",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "50b9729463",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=907&i=publicado_115613_2026-07-31_2d4b5639c9ffb560eafa92f0b4b0725d.pdf",
+     "titulo": null,
+     "trecho": "dores; \n  \nIII – continuidade e contingência:  manutenção de plano de \ncontinuidade do serviço e de plano de contingência operacional; \n  \nIV – auditorias: permissão para realização de auditorias periódicas  \nde segurança, integridade e desempenho; \n  \nV – avaliação de fornecedores: adoção de mecanismos de avaliação \nde desempenho e reputação dos fornecedores, com bas e em \nindicadores objetivos e verificáveis; \n  \nVI – sanções: auxílio ",
+     "data": "2026-08-03",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "5218003",
+   "municipio": "PORANGATU",
+   "uf": "GO",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "240c73cbd5",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=3392&i=publicado_114612_2026-08-21_7184df772ce72c04d56e991ac4350830.pdf",
+     "titulo": null,
+     "trecho": "financeira, \nconciliação financeira integral do contrato, saneamento processual e a \ninstituição do Plano de Contingência e Transição Hospitalar (prazo de \n5 dias úteis); \n• Acatou a Recomendação Ministerial nº 2026008400927  (2ª \nPromotoria de Justiça de Porangatu) e determinou representaç ões ao \nMinistério Público do Estado de Goiás, Procuradoria -Geral do \nMunicípio, Receita Federal do Brasil, Controladoria -Geral do \nMunicípio e Con",
+     "data": "2026-08-24",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": null,
    "municipio": "Belo Horizonte",
    "uf": "MG",
@@ -10916,6 +11235,224 @@
      "trecho": "A Defesa Civil de Candeias se reuniu, nesta terça-feira (25/03), no Paço Municipal, para apresentar o Plano de Contingência e alinhar as ações preventivas destinadas à Operação Chuva 2025 · A reunião contou com a presença do prefeito Eriton Ramos e dos secretários das pastas envolvidas ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3122306",
+   "municipio": "DIVINÓPOLIS",
+   "uf": "MG",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "32bd37b077",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118387_2026-07-03_1aa7a61123fc1d704b42a660e161181f.pdf",
+     "titulo": null,
+     "trecho": "das para áreas inundáveis; \nb) Não alterar cotas altimétricas sem autorização expressa; \nc) Incluir plano de contingência para eventos de cheia. \n1.5. Todo o projeto deverá respeitar a Área de Preservação Permane nte (APP) de 50 metros da borda da calha do leito regular do Rio Itapecerica, \nconforme Ar",
+     "data": "2026-07-06",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3136207",
+   "municipio": "JOÃO MONLEVADE",
+   "uf": "MG",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "8ad7538c73",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118402_2026-07-24_5e3d8fecb52e3e01393f6d4f61a81dfc.pdf",
+     "titulo": null,
+     "trecho": " de metas  com base na análise dos indicadores. A OSC deve apresentar um \nplano de ação corretiva. \nPlano de contingência: Incluir um plano de contingência para casos de falha ou defeito no sistema, com o fornecimento de peças sobressalentes e \nprotocolos de reparo e manutenção. \nPlano de segurança de dados detalhado: A OSC deverá fornecer um plano detalhado de segurança da informação, abordando: \nCriptografia de dados em trânsito e e",
+     "data": "2026-07-27",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3152105",
+   "municipio": "Ponte Nova",
+   "uf": "MG",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "16873f549a",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118429_2026-09-01_682ce1816f30de7d06ea04aee2f22ac2.pdf",
+     "titulo": null,
+     "trecho": "ecedores; \nIII – continuidade e contingência:  manutenção de plano de \ncontinuidade do serviço e de plano de contingência operacional; \nIV – auditorias: permissão para realização de auditorias periódicas de \nsegurança, integridade e desempenho; \nV – avaliação de fornecedores: adoção de mecanismos de avaliação \nde desempenho e reputação dos fornecedores, com ba se em \nindicadores objetivos e verificáveis; \nVI – sanções: auxílio ao ente pú",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3157203",
+   "municipio": "SANTA BÁRBARA",
+   "uf": "MG",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "d17febb488",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118419_2026-08-18_248ae1169ef759dd2a279100c0860506.pdf",
+     "titulo": null,
+     "trecho": "necedores; \nIII – continuidade e contingência: manutenção de plano de \ncontinuidade do serviço e de plano de contingência operacional; \nIV – auditorias: permissão para realização de auditorias periódicas de \nsegurança, integridade e desempenho; \nMinas Gerais , 19 de Agosto de 2026   •   Diário Oficial dos Municípios Mineiros   •    ANO XVIII | Nº 4342 \n \nwww.diariomunicipal.com.br/amm-mg                                                   ",
+     "data": "2026-08-19",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3166204",
+   "municipio": "SENHORA DOS REMÉDIOS",
+   "uf": "MG",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "3e7e0f22ef",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118394_2026-07-14_ba8a06faf54e45bbb4024b59fb1ad846.pdf",
+     "titulo": null,
+     "trecho": "cedores; \nIII – continuidade e contingência:  manutenção de pla no de \ncontinuidade do serviço e de plano de contingência operacional; \nIV – auditorias: permissão para realização de auditorias periódicas de \nsegurança, integridade e desempenho; \nV – avaliação de fornecedores: adoção de mecanismos de avaliação \nde desempenho  e reputação dos fornecedores, com base em \nindicadores objetivos e verificáveis; \nVI – sanções: auxílio ao ente pú",
+     "data": "2026-07-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3163706",
+   "municipio": "SÃO LOURENÇO",
+   "uf": "MG",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "451d221aec",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118417_2026-08-14_3b60f950421df9125576d4adfeb8641b.pdf",
+     "titulo": null,
+     "trecho": "relatórios \ngerenciais, conforme detalhado no Termo de Referência. \n9.4. A Contratada deverá manter plano de contingência que assegure o \nabastecimento autorizado em caso de indisponibilidade temporária do \nsistema, falha de comunicação, defeito do cartão ou outra ocorrência \nimpeditiva. \n9.5. Os abastecimentos ocorrerão exclusivamente conforme a \nnecessidade do CISAB SUL, não h avendo obrigação de consumo \nintegral do quantitativo estim",
+     "data": "2026-08-17",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3169406",
+   "municipio": "TRÊS PONTAS",
+   "uf": "MG",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "b50f2452d8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118427_2026-08-28_2af5176640e1a1a9db76ab3053d1656b.pdf",
+     "titulo": null,
+     "trecho": "mente a gestão operacional, \nadministrativa e assistencial do CEAE , mediante implementação de \nseu Plano de Contingência e Tr ansição, em articulação com a \nSecretaria Municipal de Saúde de Patos de Minas, objetivando \nassegurar a continuidade integral da assistência. \nA dilação ora concedida não importa reconsideração da decisão \nadministrativa relativa ao encerramento do Contrato n º 03/2026, \ntampouco constitui renovação",
+     "data": "2026-08-31",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },

@@ -22485,7 +22485,15 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "32bd37b077",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": []
   },
   {
    "municipio": "SENHORA DOS REMÉDIOS",
@@ -22502,7 +22510,17 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "3e7e0f22ef",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ]
   },
   {
    "municipio": "JOÃO MONLEVADE",
@@ -22519,7 +22537,15 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "8ad7538c73",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": []
   },
   {
    "municipio": "SÃO LOURENÇO",
@@ -22536,7 +22562,17 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "451d221aec",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ]
   },
   {
    "municipio": "POUSO ALEGRE",
@@ -22553,7 +22589,36 @@
    "autoridade": "indefinido",
    "objeto": "misto",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "94440592e5",
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "26/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "numero": "Lei nº 14.133",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "trecho_documento": "Minas Gerais , 18 de Agosto de 2026 • Diário Oficial dos Municípios Mineiros • ANO XVIII | Nº 4341 ESTADO DE MINAS GERAIS Expediente: ARISMIG - AGENCIA REGULADORA INTERMUNICIPAL Associação Mineira de Municípios – AMM - MG DE SANEAMENTO DE MG Presidente - LUCAS VIEIRA LOPES ARISMIG - AGÊNCIA REGULADORA INTERMUNICIPAL 1º Vice-Presidente - SANDRO LÚCIO FONSECA DE SANEAMENTO DE MINAS GERAIS 2º Vice-Presidente - JOSÉ APARECIDO MENDES SANTOS MANIFESTAÇÃO DE INTERESSE 3º Vice-Presidente - LUIZ FÁBIO ANTONUCCI FILHO 1º Secretário - MAYCON WILLIAN DA SILVA MANIFESTAÇÃO DE INTERESSE DA ADMINISTRAÇÃO 2º ",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "POUSO ALEGRE",
@@ -22570,7 +22635,15 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "96f2cc8838",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": []
   },
   {
    "municipio": "POUSO ALEGRE",
@@ -22587,7 +22660,15 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "05b3640cf1",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": []
   },
   {
    "municipio": "POUSO ALEGRE",
@@ -22604,7 +22685,15 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "e6b205addf",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": []
   },
   {
    "municipio": "SANTA BÁRBARA",
@@ -22621,7 +22710,17 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "d17febb488",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ]
   },
   {
    "municipio": "TRÊS PONTAS",
@@ -22638,7 +22737,15 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "camada_saude",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "b50f2452d8",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": []
   },
   {
    "municipio": "Ponte Nova",
@@ -22655,7 +22762,17 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "16873f549a",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ]
   },
   {
    "municipio": "CABECEIRAS",
@@ -22672,7 +22789,17 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "6d74e72b44",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ]
   },
   {
    "municipio": "PORANGATU",
@@ -22689,7 +22816,16 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "240c73cbd5",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "municipio_so_no_trecho",
+    "plano_no_trecho"
+   ],
+   "alertas": []
   },
   {
    "municipio": "FLORES DE GOIÁS",
@@ -22706,7 +22842,17 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "50b9729463",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ]
   },
   {
    "municipio": "ACOPIARA",
@@ -22723,7 +22869,15 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "0c059dc858",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": []
   },
   {
    "municipio": "PENAFORTE",
@@ -22740,7 +22894,17 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "7565decba3",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ]
   },
   {
    "municipio": "PENAFORTE",
@@ -22757,7 +22921,17 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "ff21aaa1a4",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": [
+    "texto_falso_positivo_provavel"
+   ]
   },
   {
    "municipio": "GUARACIABA DO NORTE",
@@ -22774,7 +22948,40 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "3ceb220d95",
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "26/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "18/09/2026"
+    },
+    "numero": "PORTARIA 011",
+    "data_ato": "2026",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "Ceará , 18 de Setembro de 2026 • Diário Oficial dos Municípios do Estado do Ceará • ANO XVII | Nº 4055 ESTADO DO CEARÁ Expediente: PREFEITURA MUNICIPAL DE ABAIARA Aprece – Associação dos Municípios do Estado do Ceará DIRETORIA DO BIÊNIO 2025 – 2026 SECRETARIA MUNICIPAL DE GOVERNO E ARTICULAÇÃO POLÍTICA Diretoria Executiva PORTARIA 011709/2026 – SEMGAP Presidente – Joacy Alves dos Santos Júnior – Jaguaribara Vice-Presidente – Antônio Amaro Pereira Oliveira – Ipaporanga Designa o Agente de Integração para a Rede Secretário-Geral – Flávio César Bruno Teixeira Filho – Amontada Cearense de Ouvidori",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "GUARACIABA DO NORTE",
@@ -22791,7 +22998,65 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+   "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
+   "id": "cc8670ea5e",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "plano_no_trecho"
+   ],
+   "alertas": []
+  },
+  {
+   "municipio": "Saúde",
+   "uf": "BA",
+   "ibge": "2929800",
+   "origem": "busca_web",
+   "data": "26/09/2026",
+   "url": "https://www.instagram.com/p/DdXJSijlMz7/",
+   "trecho": "Sep 16, 2026 ... O Ministério da Saúde anunciou um plano de contingência para enfrentar os impactos do El Niño, do calor intenso e da seca no Nordeste.",
+   "titulo": "O Ministério da Saúde anunciou um plano de contingência para ...",
+   "registrado_em": "2026-09-26",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "91647c4cad",
+   "nivel_confianca": "B",
+   "pontos_confianca": 5,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_no_titulo",
+    "plano_no_titulo",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "26/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2026"
+    },
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": "Instagram Instagram Log In Sign Up Meta About Blog Jobs Help API Privacy Terms Locations Popular Instagram Lite Meta AI Muse Threads Contact Uploading &amp; Non-Users Meta Verified English Down chevron icon Afrikaans العربية Čeština Dansk Deutsch Ελληνικά English English (UK) Español (España) Español فارسی Suomi Français עברית Bahasa Indonesia Italiano 日本語 한국어 Bahasa Melayu Norsk Nederlands Polski Português (Brasil) Português (Portugal) Русский Svenska ภาษาไทย Filipino Türkçe 中文(简体) 中文(台灣) বাংলা ગુજરાતી हिन्दी Hrvatski Magyar ಕನ್ನಡ മലയാളം मराठी नेपाली ਪੰਜਾਬੀ සිංහල Slovenčina தமிழ் తెలుగు اردو ",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   }
  ]
 }
