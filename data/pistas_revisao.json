@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-26",
- "total_pistas": 510,
- "total_municipios": 221,
+ "total_pistas": 634,
+ "total_municipios": 275,
  "por_nivel": {
-  "A": 96,
-  "B": 308,
-  "C": 106
+  "A": 99,
+  "B": 362,
+  "C": 173
  },
  "grupos": [
   {
@@ -2269,6 +2269,126 @@
    ]
   },
   {
+   "ibge": "4119509",
+   "municipio": "PIRAQUARA",
+   "uf": "PR",
+   "melhor_nivel": "A",
+   "n_pistas": 6,
+   "niveis": {
+    "A": 1,
+    "B": 2,
+    "C": 3
+   },
+   "pistas": [
+    {
+     "id": "39efe0a6e1",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "titulo": null,
+     "trecho": "r:33C69F5B \n \nSECRETARIA MUNICIPAL DE SAÚDE \nRESOLUÇÃO Nº 33, DE 02 DE SETEMBRO DE 2026 \n \nAprova o Plano de Contingência para o \nEnfrentamento das Arboviroses, com ênfase na \nDengue, para o período de 2026–2027 \n  \nO PRESIDENTE DO CONSELHO MUNICIPAL DE SAÚDE DE \nPIRAQUARA – COMUSP, no uso de suas atribuições legais e \nregimentais, \nCONSIDERANDO a Lei Federal nº 8.142, de 28 de dezembro de \n1990, que dispõe sobre a participação da comuni",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "af9de3008f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "titulo": null,
+     "trecho": "as Arboviroses do Município de Piraquara para o \nperíodo de 2026–2027; \nRESOLVE: \nArt. 1º Aprovar o Plano de Contingência para o Enfrentamento das \nArboviroses do Município de Piraquara, com ênfase na Dengue, para \no período de 2026 –2027, conforme deliberação do Plenário do \nConselho Municipal de Saúde de Piraquara – COMUSP, na 6ª \nReunião Extraordinária, realizada em 02 de setembro de 2026. \nArt. 2º O Plano aprovado tem por finalidade ",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "40b222204d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "titulo": null,
+     "trecho": "o da Rede Municipal de Saúde para o período de maior \nrisco epidemiológico. \nArt. 4º A aprovação do Plano de Contingência para o Enfrentamento \ndas Arboviroses – 2026–2027 ocorreu mediante apreciação e \ndeliberação do Plenário do Conselho Municipal de Saúde de Piraquara \n– COMUSP, durante a 6ª Reunião Extraordinári a, realizada em 02 de \nsetembro de 2026, às 14h, de forma on-line. \nArt. 5º O Plano de Contingência para o Enfrentamento das",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "64096fbb44",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "titulo": null,
+     "trecho": "minhado pela Direção do Departamento de Vigilância em \nSaúde, que solicita a análise e avaliação do Plano de Contingência de \nArboviroses do Município de Piraquara para o período de 2026–2027; \nCONSIDERANDO a necessidade de planejamento, prevenção, \npreparação e organização da Rede Municipal de Saúde para o \nenfrentamento das arboviroses, especialmente da Dengue, \nconsiderando a maior ocorrência de casos durante o período de verão; \nCONS",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d68431e8ec",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "titulo": null,
+     "trecho": "Reunião Extraordinári a, realizada em 02 de \nsetembro de 2026, às 14h, de forma on-line. \nArt. 5º O Plano de Contingência para o Enfrentamento das \nArboviroses do Município de Piraquara – 2026–2027 integra a \npresente Resolução para todos os fins. \nArt. 6º A Secretaria Municipal de Saúde deverá observar as diretrizes \ne ações estabelecidas no Plano de Contingência, promovendo sua \nexecução, acompanhamen",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "29659078a2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "titulo": null,
+     "trecho": "s. \nArt. 6º A Secretaria Municipal de Saúde deverá observar as diretrizes \ne ações estabelecidas no Plano de Contingência, promovendo sua \nexecução, acompanhamento e monitoramento, conforme as \ncompetências dos setores envolvidos. \nArt. 7º Esta Resolução entra em vigor na data de sua aprovação, \nrevogadas as disposições em contrário. \n  \nPiraquara, 02 de setembro de 2026. \n. \nOSMAR DE S",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3301702",
    "municipio": "Duque de Caxias",
    "uf": "RJ",
@@ -2909,6 +3029,106 @@
      "trecho": "nota técnica orientativa sobre o fenômeno",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4128708",
+   "municipio": "VITORINO",
+   "uf": "PR",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 1,
+    "B": 1,
+    "C": 3
+   },
+   "pistas": [
+    {
+     "id": "fd8c051343",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "MENTO \nSOCIAL \nRESOLUÇÃO Nº 08/2026 \n \nRESOLUÇÃO Nº 08/2026 \n  \nSÚMULA: Dispõe sobre a aprovação do Plano \nMunicipal de Contingência para Situações de \nEmergência e Calamidade Pública, bem como, dos \nTermos do ForSUAS, d o Município de Vitorino – \nParaná. \n  \nO CONSELHO MUNICIPAL DE ASSISTÊNCIA SOCIAL – \nCMAS do Município de Vitorino, no uso de suas atribuições, que lhe \nconfere a Lei Municipal n° 521/95 de 16/",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "68fa9174dd",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "dinária \nrealizada em 24 de setembro de 2026, conforme Ata nº 07/2026; \nRESOLVE: \nArt. 1º Aprovar o Plano Municipal de Contingência para Situações \nde Emergência e Calamidade Pública do Município de Vitorino – \nParaná, que passa a constituir instrumento de planejamento e \norganização das ações da Política Municipal de Assistência Social \npara pr evenção, preparação, resposta e recuperação diante de \nsituações de emergência e calamidade pública. \nA",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9ee0f528a1",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118174_2026-08-31_c197a5934df29bc5df0d143b4f4eedbd.pdf",
+     "titulo": null,
+     "trecho": "Municipal nº 1131/2011 de 04 de junho de \n2011. Resolve:  \n  \nArt. 1º - Aprovar, por unanimidade, o Plano de Contingência \nMunicipal para o Enfrentamento de Arbovirose (Dengue, Zika Vírus e \nChikungunya) de Vitorino – Pr. \n  \nSala de Reuniões do Conselho Municipal de Saúde de Vitorino, \nEstado do Paraná, em 31 de agosto de 2026. \n  \nHAROLDO LUIZ BERNARDI \nPresidente do Conselho",
+     "data": "2026-09-01",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e5a421c2a1",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "paração, resposta e recuperação diante de \nsituações de emergência e calamidade pública. \nArt. 2º O Plano Municipal de Contingência deverá orientar a atuação \nda Rede Socioassistencial e a articulação com os demais órgãos e \npolíticas públicas envo lvidos no atendimento à população afetada, \nobservadas as competências de cada área. \nParaná , 25 de Setembro de 2026   •   Diário Oficial dos Municípios do Paraná   •    ANO XV | Nº 3624 \n \nwww.diariom",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "73df67d23e",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": " de recursos humanos, materiais e logísticos e a \narticulação intersetorial necessária. \nArt. 4º  O Plano Municipal de Contingência poderá ser atualizado \nsempre que necessário, especialmente diante de alterações na s \nnormativas, na estrutura da Rede Socioassistencial ou nas \ncaracterísticas e necessidades do território municipal. \nArt. 5º Aprovar o Termo de Aceite para adesão à Força de Proteção \ndo Sistema Único de Assistência Social – ForSUAS,",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -4891,6 +5111,39 @@
    ]
   },
   {
+   "ibge": "4321709",
+   "municipio": "TRÊS COROAS",
+   "uf": "RS",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "57f7eb410e",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117935_2026-09-22_a412393f0ac7ce9780a355a5115bd591.pdf",
+     "titulo": null,
+     "trecho": " \nafetada e à restabelecimento dos serviços essenciais; \nCONSIDERANDO que foi necessário aciona r o Plano de \nContingência de Proteção e Defesa Civil do Município, homologado \npelo Decreto Municipal nº 3.846, de 10 de julho de 2026; \nCONSIDERANDO a necessidade de adoção de medidas \nexcepcionais e urgentes para o enfrentamento das consequências do \ndesastre e pa",
+     "data": "2026-09-23",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4321436",
    "municipio": "Terra de Areia",
    "uf": "RS",
@@ -5311,6 +5564,253 @@
    ]
   },
   {
+   "ibge": "4120101",
+   "municipio": "PORTO AMAZONAS",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 14,
+   "niveis": {
+    "A": 0,
+    "B": 7,
+    "C": 7
+   },
+   "pistas": [
+    {
+     "id": "61ea1ea3a4",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "versos ocorridos no Município obs ervarão a Lei \nMunicipal nº 1.370/2026, este Regimento Interno, o Plano Municipal de Contingência de Proteção e Defesa Civil e as demais normas aplicáveis. \n§ 1º O Município deverá disponibilizar canais adequados de comunicação para que a população possa comun icar ocorrências e solicitar atendimento \nda Defesa C",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "01f12c44f7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "a aperfeiçoamento das futuras ações. \nParágrafo único. As conclusões poderão subsidiar a revisão do Plano Municipal de Contingência, dos protocolos de atendimento, dos mapas de \nrisco e dos demais instrumentos municipais de proteção e defesa civil. \n  \nArt. 108. As situações não previstas neste Regimento serão analisadas de acordo com a Lei Municipal nº 1.370/2026, a Política Nacional e Estadual \nde Prot",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b32c0faba0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "ação dos setores da COMPDEC diante de situações de risco ou desastre; \nIX – Coordenar a execução do Plano Municipal de Contingência; \nX – Acompanhar as informações e alertas relacionados a riscos e desastres; \nXI – comunicar ao Prefeito Municipal situações que possam exigir medidas administrativas extraordinárias; \nXII – propor ao Prefeito Municipal, quando tecnicamente necessário, a decretação de Situação de Emergência ou Estado de Calamidade Púb",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ab90b85eb1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "s os documentos relativos às atividades de proteção e defesa civil; \nV – Auxiliar na atualização do Plano Municipal de Contingência e demais instrumentos de planejamento; \nVI – Prestar apoio administrativo necessário às ações desenvolvidas pela COMPDEC. \n  \nSeção V \nDo Setor Técnico \n  \nArt. 20. Compete ao Setor Técnico: \nI – Implantar o banco de dados e elaborar mapas temáticos sobre ameaças, vulnerabilidade",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ed0abcd4f0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "ipal de proteção e defesa civil; \nIII – determinar a execução das medidas operacionais previstas no Plano Municipal de Contingência; \nIV – Solicitar apoio dos órgãos municipais e propor ao Prefeito a solicitação de apoio estadual ou federal, quando necessário; \nV – Coordenar o levantamento preliminar dos danos e prejuízos; \nVI – Manter os órgãos competentes informados acerca da evolução da ocorrência; \nVII – coordenar as ações da COMPDEC até o res",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d56014a572",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "s, estruturas e outros recursos disponíveis; \nIII – participar da elaboração, revisão e execução do Plano Municipal de Contingência; \nIV – Participar de reuniões, treinamentos, capacitações, exercícios simulados e demais atividades relacionadas à proteção e defesa civil; \nV – Prestar apoio nas situações de risco, emergência, calamidade pública ou desastre; \nVI – Manter atualizadas as informações sob sua responsabilidade que sejam relevantes para a",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d8ff0a3481",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "responsabilidade que sejam relevantes para a gestão municipal de riscos e desastres. \n  \nArt. 92. O Plano Municipal de Contingência de Proteção e Defesa Civil constitui instrumento operacional de referência para atuação do Município \ndiante dos riscos e desastres identificados, devendo  ser periodicamente revisado e atualizado pela COMPDEC, com participação dos órgãos e \ninstituições envolvidos. \n§ 1º A atualização do Plano de Contingência deverá ",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c6c02cf5b8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "bendo-lhe: \nI – Identificar, mapear e acompanhar áreas sujeitas a riscos; \nII – Manter atualizado o Plano Municipal de Contingência; \nIII – acompanhar alertas meteorológicos, hidrológicos e demais informações oficiais relacionadas a riscos; \nIV – Promover campanhas educativas; \nV – Promover treinamentos e simulados; \nVI – Manter atualizados os cadastros de recursos humanos, equipamentos, veículos, máquinas, abrigos e demais estruturas disponíveis;",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "aef578cdcb",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "MPDEC poderá ser imediatamente mobilizada pelo Coordenador, obser vada a gravidade da \nsituação e o Plano Municipal de Contingência. \n§ 1º Compete ao Coordenador, no âmbito de suas atribuições: \nI – Comunicar o evento às autoridades municipais e aos órgãos estaduais e federais competentes; ",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ffd4763d82",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": ", deverão ser utilizadas as rotas de evacuação e os pontos de encontro previamente estabelecidos no Plano Municipal de \nContingência. \n§ 3º O retorno às áreas evacuadas deverá ocorrer somente após avaliação das condições de segurança e orientação da COMPDEC, ouvido s os órgãos \ntécnicos comp",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c5f413be74",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "adas ou desabrigadas serão encaminhadas, conforme n ecessidade, aos locais previamente definidos no Plano Municipal \nde Contingência ou a outros espaços considerados seguros pela Administração Municipal. \n  \nArt. 44.  A gestão social e assistencial dos abrigos será realizada pelo Departamento Municipal de Assis tência Social, em articulação com a \nCOMPDEC e os",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "bef2054ede",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "dências \nde sua competência; \nVII – demais órgãos municipais:  execução das atividades previstas no Plano Municipal de Contingência e daquelas determinadas dentro de suas \nrespectivas competências. \n§ 1º Nenhuma das atribuições previstas neste artigo exclui a necessidade de atuação conjunta entre os órgãos. \n§ 2º A COMPDEC exercerá a coordenação das açõe",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5a04198f09",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "lizado pela COMPDEC, com participação dos órgãos e \ninstituições envolvidos. \n§ 1º A atualização do Plano de Contingência deverá considerar, entre outros aspectos: \nI – Alteração das áreas de risco; \nII – Novas ameaças identificadas; \nIII – alterações das rotas de evacuação; \nIV – Locais destinados a pontos de encontro e abrigamento; \nV – Disponibilidade de veículos, máquinas e equipamentos; \nVI – Relação de recursos humanos disponíveis;",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "84e45a4f41",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "íficos, fluxos de atendimento, procedimentos operaciona is e outros \ninstrumentos complementares ao Plano Municipal de Contingência. \n  \nArt. 93.  A COMPDEC deverá manter, sempre que possível e observadas as condições administrativas, técnicas e operacionais do Município,  \nregistros atuali",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2610707",
    "municipio": "Paulista",
    "uf": "PE",
@@ -5645,6 +6145,137 @@
      "trecho": "sensíveis de segurados não devem ser veiculados em grupos abertos ou não institucionais. A gestão dos canais oficiais é de responsabilidade da Diretoria Administrativa (DIAM), que deve manter registro de administradores, diretrizes de uso e plano de contingência Diário Oficial do Município Edição Nº 2061 - Ordinária Pinhais - Paraná, 9 de Outubro de 2025 MUNICÍPIO DE PINHAIS para incidentes de comunicação digital. Casos de uso indevido poderão resultar em sanções administrativas, cíveis ou penais",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4126207",
+   "municipio": "SAPOPEMA",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 5
+   },
+   "pistas": [
+    {
+     "id": "e30305de65",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": "026, do 2º Relatório \nDetalhado do Quadrimestre Anterior – 2º RDQA de \n2026, e sobre a aprovação do Plano Municipal de \nContingência para o Enfrentamento das Arboviroses \n– Dengue, Chikungunya e Zika – Biênio 2026–2027. \n  \nParaná , 15 de Setembro de 2026   •   Diário Oficial dos Municípios do Paraná   •    ANO XV | Nº 3616 \n \nwww.diariomunicipal.com.br/amp                   ",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "10163f82a3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": " de Saúde de Sapopema, com vigência de 01 de janeiro de \n2026 a 31 de dezembro de 2027. \nArt. 4º  O Plano Municipal de Contingência aprovado por esta \nResolução deverá orientar as ações de prevenção, vigilância, controle \ne resposta do Município às arboviroses, de acordo com os cenários \nepidemiológicos e as responsabilidades estabelecidas no próprio \nPlano. \nArt. 5º O Conselho Municipal de Saúde acompanhará, no âmbito de \nsuas atribuições, a exec",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "baa5239801",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": " Programação Anual de Saúde e execução \norçamentária e financeira; \nCONSIDERANDO a apresentação  do Plano Municipal de \nContingência para o Enfrentamento das Arboviroses – Dengue, \nChikungunya e Zika – Biênio 2026–2027, elaborado pela Secretaria \nMunicipal de Saúde de Sapopema, com vigência de 01 de janeiro de \n2026 a 31 de dezembro de 2027; \nCONSIDERANDO que o referido Plano estabelece a organização da \nresposta municipal diante de cenários de ris",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9a7023e238",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": "ANDO que, após a apresentação, manifestação dos \nconselheiros, questionamentos e esclarecimentos, o Plano Municipal \nde Contingência para o Enfrentamento das Arboviroses – Dengue, \nChikungunya e Zika – Biênio 2026 –2027 foi colocado em \napreciação e votação pelo Plenário do Conselho Municipal de Saúde; \nCONSIDERANDO que o Plenário do Conselho Municipal de Saúde \ndeliberou pela aprovação, por unanimidade , do referido Plano \nMunicipal de Contingênci",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "17778688c1",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": " o Plenário do Conselho Municipal de Saúde \ndeliberou pela aprovação, por unanimidade , do referido Plano \nMunicipal de Contingência; \nRESOLVE: \nArt. 1º  Registrar a apresentação e apreciação pelo Conselho \nMunicipal de Saúde do Demonstrativo das Receitas e Despesas com \nSaúde referente ao período de janeir",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "47a4a6f110",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": "elaborado por meio do DIGISUS \nGestor – Módulo Planejamento. \nArt. 3º  Aprovar, por unanimidade , o Plano Municipal de \nContingência para o Enfrentamento das Arboviroses – Dengue, \nChikungunya e Zika – Biênio 2026–2027, elaborado pela Secretaria \nMunicipal de Saúde de Sapopema, com vigência de 01 de janeiro de \n2026 a 31 de dezembro de 2027. \nArt. 4º  O Plano Municipal de Contingência aprovado por esta \nResolução deverá orientar as ações de prevenç",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "afe81f93e2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": "o Municipal de Saúde acompanhará, no âmbito de \nsuas atribuições, a execução das ações previstas no Plano Municipal \nde Contingência. \nArt. 6º Esta Resolução entra em vigor na data de sua aprovação. \n  \nSapopema – Paraná, 11 de setembro de 2026 \n  \nERALDO ROQUE BRIZOLA \nPresidente do Conselh",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -6119,6 +6750,218 @@
    ]
   },
   {
+   "ibge": "1100262",
+   "municipio": "RIO CRESPO",
+   "uf": "RO",
+   "melhor_nivel": "B",
+   "n_pistas": 6,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 5
+   },
+   "pistas": [
+    {
+     "id": "9fe1263187",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116146_2026-09-04_eddfbfba76f54bb282d8891cc1596a6e.pdf",
+     "titulo": null,
+     "trecho": "ltativa não afasta o dever da Detentora de avaliar as condições ordinariamente verificáveis. \n23.4. Plano de contingência \nA Detentora deverá manter plano de contingência proporcional aos riscos, abrangendo: \nI – falha de energia; \nII – defeito de sonorização, iluminação ou painel; \nIII – instabilidade estrutural; \nIV – chuva, vento ou condição climática adversa; \nV – indisponibilidade de profissional; \nVI – acidente ou princípio de incê",
+     "data": "2026-09-08",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "59d2640bbc",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116146_2026-09-04_eddfbfba76f54bb282d8891cc1596a6e.pdf",
+     "titulo": null,
+     "trecho": "ise do local, condições do terreno, acessos, logística, dimension amento das equipes, \ncronogramas, plano de contingência, avaliação de riscos e definição dos sistemas elétricos e de aterramento. \n23.2. Conteúdo mínimo \nO planejamento deverá contemplar, conforme aplicável: \nI – inspeção prévia do local; \nII – avaliação dos acessos e rotas de transporte",
+     "data": "2026-09-08",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e939344114",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116146_2026-09-04_eddfbfba76f54bb282d8891cc1596a6e.pdf",
+     "titulo": null,
+     "trecho": " contenção. \n36.10. Materialização do risco \nMaterializado o risco, o gestor deverá: \nI – acionar o plano de contingência; \nII – preservar a segurança; \nIII – limitar os danos; \nIV – identificar a parte responsável; \nV – registrar evidências; \nVI – avaliar impactos no prazo e no custo; \nVII – verificar repercussões sobre o equilíbrio econômico-financeiro; \nVIII – adotar providências de continuidade; \nIX – propor revisão dos controles; \nX",
+     "data": "2026-09-08",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f45427f9e6",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116146_2026-09-04_eddfbfba76f54bb282d8891cc1596a6e.pdf",
+     "titulo": null,
+     "trecho": "lise do local, condições do terreno, acessos, logística, dimensionamento das equipes, \ncronogramas, plano de contingência, avaliação de riscos e definição dos sistemas elétricos e de aterramento. \n23.2. Conteúdo mínimo \nO planejamento deverá contemplar, conforme aplicável: \nI – inspeção prévia do local; \nII – avaliação dos acessos e rotas de transporte",
+     "data": "2026-09-08",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "0b758a9ae7",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116155_2026-09-18_7a52bb6d655fc4b9b2f2a29c9f6a3d07.pdf",
+     "titulo": null,
+     "trecho": "mprometer a continuidade dos serviços ou a execução contratual; \nXLV – elaborar e manter atualizado plano de contingência para \nsituações que possam comprometer a disponibilidade da solução; \nXLVI – adotar mecanismos permanentes de gestão de riscos \nrelacionados à execução contratual; \nXLVII – observar integralmente a Lei Geral de Proteção de Dados \nPessoais – LGPD, adotando medidas técnicas e administrativas aptas a \nproteger os dados e",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f088df2ddf",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116158_2026-09-24_daa577355dc6c72211fe2c56490fd6fd.pdf",
+     "titulo": null,
+     "trecho": "                                                          168 \n \nXLV – elaborar e manter atualizado plano de contingência para \nsituações que possam comprometer a disponibilidade da solução; \nXLVI – adotar mecanismos permanentes de gestão de riscos \nrelacionados à execução contratual; \nXLVII – observar integralmente a Lei Geral de Proteção de Dados \nPessoais – LGPD, adotando medidas técnicas e administrativas aptas a \nproteger os dados e",
+     "data": "2026-09-24",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1302207",
+   "municipio": "JURUÁ",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "6e47405c57",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "titulo": null,
+     "trecho": "ução das medidas nele previstas, \nDECRETA: \nArt. 1º - Fica determinada a revisão e a atualização do Plano \nMunicipal de Contingência d o Município de Juruá, com incorporação \nexpressa dos riscos de estiagem, calor extremo, incêndios, fumaça, \nredução da navegabilidade, desabastecimento de bens essenciais e \ndescontinuidade dos serviços públicos essenciais. \nArt. 2º - Fica instituído o Grupo de Trabalho responsável pela revisão \ndo Plano, composto p",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "94ac8db3d0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "titulo": null,
+     "trecho": "E DO PREFEITO \nDECRETO Nº 032, DE 18 DE SETEMBRO DE 2026. \n \nDetermina a revisão e a atualização do Plano \nMunicipal de  Contingência do Município de Juruá, \ninstitui o Grupo de Trabalho responsável por sua \nelaboração, fixa seu conteúdo mínimo e dá outras \nprovidências. \n  \nO PREFEITO MUNICIPAL DE JURUÁ, ESTADO DO \nAMAZONAS, no uso das atribuições que lhe confere a Lei Orgânica \ndo Município, \nCONSIDERANDO a competência munic",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "69f90c7fe4",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "titulo": null,
+     "trecho": "NSIDERANDO os termos da Recomendação nº 89/2026 – MP-\nCMA; \nCONSIDERANDO que a existência formal de plano de contingência \nnão é suficiente, sendo necessária a demonstração da capacidade \nconcreta de execução das medidas nele previstas, \nDECRETA: \nArt. 1º - Fica determinada a revisão e a atualização do Plano \nMunicipal de Contingência d o Município de Juruá, com incorporação \nexpressa dos riscos de estiagem,",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d7d3aa8a50",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "titulo": null,
+     "trecho": "o das medidas previamente planejadas; \nII – propor e acompanhar a execução das medidas previstas no Plano \nMunicipal de Contingência; \nIII – funcionar como sala de situação durante os períodos de maior \nrisco; \nIV – deliberar sobre a elevação e a redução dos níveis de risco de que \ntrata o art. 5º; \nV – identificar previamente as comunidades, áreas e grupos \npopulacionais mais expostos e manter essa relação atualizada, \nobservadas as regras de prot",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6d0e36ee64",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "titulo": null,
+     "trecho": "ta; \nIV – emergência. \n  \n§ 1º - Cada nível será vinculado a providências previamente definidas \nno Plano Municipal de Contingência, de modo que a decisão sobre as \nmedidas a adotar não seja tomada apenas após a instalação da situação \ncrítica. \n§ 2º  - As providências graduais poderão compreender, conforme o \nrisco, o reforço do monitoramento, a convocação do Comitê, a \ncomunicação preventiva à popu",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2932903",
    "municipio": "Valença",
    "uf": "BA",
@@ -6532,6 +7375,104 @@
    ]
   },
   {
+   "ibge": "4127304",
+   "municipio": "TERRA RICA",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 4
+   },
+   "pistas": [
+    {
+     "id": "a92198d278",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "LUÇÃO N° 25/2026 \n \nSECRETARIA MUNICIPAL DE SAÚDE \nCONSELHO MUNICIPAL DE SAÚDE \n  \nSÚMULA: Aprova o Plano Municipal de \nContingência para o Enfrentamento das Arboviroses \ndo Município de Terra Rica – PR. \n  \nO CONSELHO MUNICIPAL DE SAÚDE DE TERRA RICA , \nEstado do Paraná, no uso de suas atribuições legais e regimentais, \nespecialmente as conferidas pela Lei Fe",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8fa71c7473",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "uações de \naumento de casos, surtos ou epidemias de arboviroses; \n  \nCONSIDERANDO a apresentação do Plano Municipal de \nContingência para o Enfrentamento das Arbo viroses, realizada pela \nEnfermeira Claudia Felipach, Coordenadora da Vigilância \nEpidemiológica do Município, durante a Reunião Ordinária do \nConselho Municipal de Saúde realizada no dia 24 de setembro de \n2026; \n  \nCONSIDERANDO que o Plano apresentado contempla as estratégias \ne ações m",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "102cf58d77",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "a Epidemiológica Municipal e \nsubmetido à apreciação do Conselho Municipal de Saúde. \n  \nArt. 2º  O Plano Municipal de Contingência cons titui instrumento \norientador para organização, planejamento e execução das ações de \nprevenção, vigilância, controle, assistência e resposta às arboviroses \nno âmbito do Município de Terra Rica. \n  \nArt. 3º  A execução das ações previstas no Plano será de \nresponsabilidade da Secretaria Municipal de Saúde, por m",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "13b674ad14",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "icipal de Saúde acompanhará, no âmbito de \nsuas atribuições, a implementação das ações previstas no Plano \nMunicipal de Contingência, podendo solicitar informações, relatórios \ne esclarecimentos relacionados à sua execução. \n  \nArt. 6º O Plano Municipal de Contingência para o Enfrentamento das \nArboviroses integra os registros do Conselho Municipal de Saúde e da \nSecretaria Munic",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7889a8748e",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "ndo solicitar informações, relatórios \ne esclarecimentos relacionados à sua execução. \n  \nArt. 6º O Plano Municipal de Contingência para o Enfrentamento das \nArboviroses integra os registros do Conselho Municipal de Saúde e da \nSecretaria Municipal de Saúde, devendo permanecer arquivado para \nfins de acompanhamento, transparência e controle social. \n  \nArt. 7º Esta Resolução entra em vigor na data de sua publicação. \n  \nTerra Rica, Estado do Paran",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3303906",
    "municipio": "Petrópolis",
    "uf": "RJ",
@@ -6630,6 +7571,199 @@
      "trecho": "Jun 22, 2026 ... ... Plano de Contingência para Chuvas Intensas Verão 2025/2026, que segue vigente. ... Tags:el niño, inverno, petrópolis, previsão, rio, super ...",
      "data": "21/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2411007",
+   "municipio": "RODOLFO FERNANDES",
+   "uf": "RN",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "8e7e43bd3d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf",
+     "titulo": null,
+     "trecho": "proteção da vida, da integridade física e do \npatrimônio público; \n  \nCONSIDERANDO as diretrizes do Plano de Contingência \nMultirriscos para Unidades Educacionais e a importância da \narticulação intersetorial entre Educação, Defesa Civil, Saúde, \nAssistência Social e demais órgãos de proteção; \n  \nCONSIDERANDO, ainda, que o Município de Rodolfo Fernandes \nintegra o cadastro nacional de municípios com áreas suscetíveis à \nocorrência de pr",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e94e2dccb3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf",
+     "titulo": null,
+     "trecho": "dações, secas prolongadas, ondas de calor, baixa \numidade e outros desequilíbrios ambientais; \nII — Plano de Contingência Escolar (PCE) : documento técnico -\noperacional elaborado por cada unidade escolar, contendo diagnóstico \nde riscos, protocolos de evacuação, rotas de fuga, pontos de encontro, \nsistema de alerta e responsabilidades definidas; \nIII — Estado de Atenção : situação de monitoramento preventivo, \nativado mediante previsão ",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "0daac61204",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf",
+     "titulo": null,
+     "trecho": "eção imediata, visando à preservação da \nintegridade física da comunidade escolar; \nII — Executar o Plano de Contingência Escolar, incluindo evacuação \nou abrigamento, conforme o caso; \nIII — suspender integralmente as aulas e demais atividades, \ncomunicando às famílias pelos canais de emergência; \nIV — Acionar os órgãos de proteção e defesa civil, saúde e segurança \npública; \nV — Manter a comunidade escolar em local seguro até a cessaçã",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "eab7bc2674",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf",
+     "titulo": null,
+     "trecho": "s ou desabrigadas. \n  \nArt. 10. Compete a cada unidade escolar: \nI — Elaborar e manter atualizado o Plano de Contingência Escolar \n(PCE); \nII — Manter procedimentos operac ionais de evacuação e \nabrigamento, com rotas, pontos de encontro e responsáveis definidos; \nIII — instituir sistema de comunicação e alerta interno; \nIV — Realizar, no mínimo, 02 (dois) simulados anuais , registrando-\nos em relatório próprio; \nV — Indicar servi dores ",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9fb1db971a",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf",
+     "titulo": null,
+     "trecho": "19.  As unidades escolares deverão manter, em meio físico ou \ndigital, os seguintes registros: \nI — Plano de Contingência Escolar atualizado; \nII — Procedimentos Operacionais de Evacuação e Abrigamento; \nIII — Plano de Comunicação e Alerta Interno; \nIV — Registro anual de capacitações e simulados, com relatórios de \nlições aprendidas; \nV — Mapa de risco atualizado. \n  \nArt. 20.  A COMPDEC e a Secretaria Municipal de Educação \nrealizarão,",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1100205",
+   "municipio": "PORTO VELHO",
+   "uf": "RO",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 4
+   },
+   "pistas": [
+    {
+     "id": "eadc2ef413",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116156_2026-09-21_4671f3dafc5edcb8758d815cff04388a.pdf",
+     "titulo": null,
+     "trecho": "ibilidade e sustentabilidade. \nArt. 11. Constituem instrumentos prioritários do SIMPDEC/PVH: \nI – o Plano Municipal de Contingência de Proteção e Defesa Civil; \nII – o Plano Municipal de Redução de Riscos – PMRR; \nIII – o Plano Municipal Integrado de Preparação e Resposta a Eventos \nClimáticos Extremos e seus planos sazonais ou temáticos; \nIV – os mapas, cartas, cadastros, bancos de dados, diagnósticos e \nsistemas de informações de riscos e desast",
+     "data": "2026-09-22",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f76f5e1126",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116149_2026-09-10_c0fcf226588251caf20b6671a655d3e6.pdf",
+     "titulo": null,
+     "trecho": "or dia completo de \ninterrupção e por bairro/setor afetado. \nExige demonstração de inexistência de \nplano de contingência ou recusa imotivada. \nGIII-02  \nDescumprir índices de cobertura, metas de \neficiência operacional ou indicadores de \nqualidade contratualmente exigidos. \nGrupo III (Grave) / 0,60%",
+     "data": "2026-09-11",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c0e4325cea",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116150_2026-09-11_2d2027ca84e959915ce973c78ce37a11.pdf",
+     "titulo": null,
+     "trecho": ", imagens, geolocalização, sistemas ou meios de controle; \nV - determinação de plano emergencial ou plano de contingência; \nVI - reforço operacional, manutenção, substituição de equipamento, \nadequação de frota, equipe, sistema, instalação ou procedimento; \nVII - comunicação aos usuários, ao Poder Concedente ou a órgãos  \ncompetentes; \nVIII - retenção cautelar, glosa ou suspensão de pagamento, quando \nhouver fundamento legal, contratual,",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3c3c068b12",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116150_2026-09-11_2d2027ca84e959915ce973c78ce37a11.pdf",
+     "titulo": null,
+     "trecho": " usuário, qualidade, continuidade, regularidade, \nsegurança, cronograma operacional, plano de ação, plano de \ncontingência, adequação de frota, equipamentos, instalações, rotas, \nsistemas operacionais ou qualquer providência relacionada à adequada \nprestação do serviço. \n  \n§ 2º A DRET deverá se manifestar quando o instrumento envolver \nrepercussão econômico -financeira, investimento, compensação, \nobrigação estrutural, recei",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "541f8e29b8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116156_2026-09-21_4671f3dafc5edcb8758d815cff04388a.pdf",
+     "titulo": null,
+     "trecho": "os relatórios \nencaminhados pelo CMGRCCSH; \nVI – acompanhar a elaboração, a revisão e a execução do Plano \nMunicipal de Contingência, do PMRR e dos demais instrumentos do \nSIMPDEC/PVH; \nVII – recomendar prioridades para o Pla no Plurianual, a Lei de \nDiretrizes Orçamentárias, a Lei Orçamentária Anual e os programas \nde captação de recursos; \nVIII – estimular a participação social, a educação para redução de \nriscos, a criação de NUPDECs e o volunta",
+     "data": "2026-09-22",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -6792,6 +7926,165 @@
      "titulo": null,
      "trecho": "tiva, manutenção corretiva, identificação de \nequipamento inoperante e retirada segura de uso; \nV - plano de contingência para indisponibilidade de equipamentos críticos, incluindo remanejamento entre unidades, a cionamento de manutenção, \nsubstituição temporária, comunicação à gestão e registro da não conformidade; \nVI - integração da gestão de equipamentos críticos com os protocolos assistenciais, o Núcleo de Segurança do Paciente, o N",
      "data": "2026-08-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4121208",
+   "municipio": "QUITANDINHA",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 3
+   },
+   "pistas": [
+    {
+     "id": "0e8472868f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "titulo": null,
+     "trecho": "ador:063FD1D0 \n \nESTADO DO PARANÁ \nPREFEITURA MUNICIPAL DE RANCHO ALEGRE D' OESTE \n \nADMINISTRAÇÃO \nPLANO DE CONTINGÊNCIA MUNICIPAL DE DEFESA \nCIVIL \n \n1 – APRESENTAÇÃO \nO presente Plano de Contingência tem por finalidade estabelecer \nprocedimentos e responsabilidades para atuação coordenada do \nMunicípio de Rancho Alegre D‘Oeste -Pr em situações de emergência \nou calamidade pública, visando reduzir danos humanos, materiais, \nambientais ",
+     "data": "2026-09-23",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7ff5898b6b",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "titulo": null,
+     "trecho": "paço recreativo 8h até 11h e 14h até 17h \n12 – ATIVAÇÃO DO PLANO \n  \n12.1 Autoridade de Ativação \nO Plano de Contingência poderá ser ativado pelas seguinres \nautoridades \nResponsável: Almir Rogério Domingos – Coordenador Operacional – \ncel (44) 99700 0353 \nResponsável: Mauro Ota Rodrigues Coordenador substituto – cel (44) \n99979 5875 \n  \n12.2 Critérios para Ativação \nO PLANCON será ativado sempre que forem constadas as condiçõ es \ne pres",
+     "data": "2026-09-23",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c7847c05c2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "titulo": null,
+     "trecho": "jadas e/ou desabrigadas; \n  \n12.3 Procedimentos para desativação \nApós a decisão formal de ativar o Plano de Contingência, o \nCoordenador Operacional deverá realizar os contatos necessários \npara que as seguintes medidas sejam desencadeadas: \n1 – Instalar o Sistema de Comando de Inciden tes e o Posto de \nComando, usando os dados abaixo: \nResponsável; Almir Rogério Domingos - Cel (44) 99700 0353 \nPosto de Comando Pátio de Maquina - Local ",
+     "data": "2026-09-23",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5a08a4b2a4",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "titulo": null,
+     "trecho": "(44) 99700 0353 \n  \n13.3 Procedimentos para desmobilização \nApós a decisão formal de desmobilizar o Plano de Contingência, as \nseguintes medidas serão desencadeadas: \n- Os órgãos mobilizados ativarão os pr otocolos intarnos definidos de \nacordo com o nível da desmobilização ( total ou retorno a uma \nsituação anterior) \n  \n14 – RECURSOS DISPONÍVEIS \nMáquinas e Equipamentos: \nResponsável: ALMIR ROGÉRIO DOMINGOS – Cel: (44) 99700 \n0353 \n- R",
+     "data": "2026-09-23",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4121307",
+   "municipio": "RANCHO ALEGRE",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 3
+   },
+   "pistas": [
+    {
+     "id": "a0aa9c74c6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "titulo": null,
+     "trecho": "to Municipal  \nPublicado por: \nSueli Batista Alves \nCódigo Identificador:45BE01CA \n \nADMINISTRAÇÃO \nPLANO DE CONTINGÊNCIA MUNICIPAL DE DEFESA \nCIVIL \n \n1 – APRESENTAÇÃO \nO presente Plano de Contingência tem por finalidade estabelecer \nprocedimentos e responsabilidades para atuação coordenada do \nMunicípio de Rancho Alegre D’Oeste -Pr em situações de emergência \nou calamidade pública, visando reduzir danos humanos, materiais, \nambientais ",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "45558967ce",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "titulo": null,
+     "trecho": "paço recreativo 8h até 11h e 14h até 17h \n12 – ATIVAÇÃO DO PLANO \n  \n12.1 Autoridade de Ativação \nO Plano de Contingência poderá ser ativado pelas seguinres \nautoridades \nResponsável: Almir Rogério Domingos – Coordenador Operacional – \ncel (44) 99700 0353 \nResponsável: Mauro Ota Rodrigues Coordenador substituto – cel (44) \n99979 5875 \n  \n12.2 Critérios para Ativação \nO PLANCON será ativado sempre que forem constadas as condições \ne press",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d70df9a67b",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "titulo": null,
+     "trecho": "jadas e/ou desabrigadas; \n  \n12.3 Procedimentos para desativação \nApós a decisão formal de ativar o Plano de Contingência, o \nCoordenador Operacional deverá realizar os contatos necessários \npara que as seguintes medidas sejam desencadeadas: \n1 – Instalar o Sistema de Comando de Incidentes e o Posto de \nComando, usando os dados abaixo: \nResponsável; Almir Rogério Domingos - Cel (44) 99700 0353 \n  \nPosto de Comando Pátio de Maquina - Loca",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2118e603de",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "titulo": null,
+     "trecho": "(44) 99700 0353 \n  \n13.3 Procedimentos para desmobilização \nApós a decisão formal de desmobilizar o Plano de Contingência, as \nseguintes medidas serão desencadeadas: \n- Os órgãos mobilizados ativarão os protocolos intarnos definidos  de \nacordo com o nível da desmobilização ( total ou retorno a uma \nsituação anterior) \n  \n14 – RECURSOS DISPONÍVEIS \n  \nMáquinas e Equipamentos: \nResponsável: ALMIR ROGÉRIO DOMINGOS – Cel: (44) 99700 \n0353 \n",
+     "data": "2026-09-21",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
@@ -7251,6 +8544,71 @@
    ]
   },
   {
+   "ibge": "4104428",
+   "municipio": "CANDÓI",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "c0f04f179c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "titulo": null,
+     "trecho": ". 33, da Lei Federal n° 8.080, de 19/09/90, \nLei Orgânica da Saúde. \nRESOLVE: \nArt. 1 º - Aprovar o Plano Municipal de Contingência para \nEnfrentamento da Dengue, Zika E Chikungunya ; \nArt. 2 º Esta Resolução entra em vigor na data de sua publicação, \nrevogando-se as disposições em contrário. \n  \nCandói, 25 de agosto de 2026. \n  \nGEORGE JOSÉ ROSA",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "766cb4df8d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "titulo": null,
+     "trecho": "inclusão \ndas PICS dentro da APS, com identificação dos hiperutilizadores.  \nTambém explana sobre o Plano de contingencia de desastres, sobre o \nfinanciamento próprio para as questões de desastres ambientais. O \npresente conselho aprova: a submissão da solicitação de execução das \nabras, como uns no item 2. Além disso, aprova -se o Pl ano Municipal \nde Contingência",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "058170b718",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "titulo": null,
+     "trecho": "reitas. \nPara reunião do Conselho de Saúde, para discussão dos seguintes \ntópicos: 1) Apreciação do Plano Municipal de Contingência para \nEnfrentamento da Dengue, Zika E Chikungunya, apresentado pelo \nsenhor Edson, onde descreve todas as ações no âmbito da Secretaria \nde Saúde para enfretamento de arboviroses no município. \n2)Apreciação da Resolução da SESA/PR 805/2026, onde o município \nsolicita a construção da UBS Cachoeira (Localizado no Verde ",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4107900",
    "municipio": "Floresta",
    "uf": "PR",
@@ -7313,6 +8671,73 @@
      "trecho": "um plano de contingência para os territórios indígenas",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4111100",
+   "municipio": "ITAMBÉ",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "8ae4f3adf8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "ntificador:B5131E7A \n \nPROCURADORIA JURÍDICA \nRESOLUÇÃO Nº005/ 2026 \n \nDispõe sobre a aprov ação do Plano Municipal de \nContingência e o Plano Municipal de Ação para \nEnfrentamento da Dengue, do Zika Vírus, da Febre \nChikungunya e da Febre Amarela de 2026, do \nMunicípio de Itambé, Estado do Paraná. \n  \nO CONSELHO MUNICIPAL DE SAÚDE DE ITAMBÉ, ESTADO \nDO PARANÁ, no uso de suas atribuições legais e regimentais, \nconferidas pela legislação vigente, e ",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b7683e9f86",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": " do Conselho Municipal de Saúde \nrealizada em 28 de agosto de 2026. \n  \nRESOLVE: \nArt. 1º Aprovar o Plano Municipal de Contingência para \nEnfrentamento da Dengue, do Zika Vírus, da Febre Chikungunya e da \nFebre Amarela, do Município de Itambé – Paraná. \nArt. 2º Aprovar o Plano Municipal de Ação para Enfrentamento da \nDengue, do Zika Vírus, da Febre Chikungunya e da Febre Amarela, \ndo Município de Itambé – Pa",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "dcc72497cf",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "ública relacionadas às arboviroses e à Febre \nAmarela; \nCONSIDERANDO a apresentação e apreciação do Plano Municipal \nde Contingência e do Plano Municipal de Ação para Enfrentamento da \nDengue, do Zika Vírus, da Febre Chikungunya e da Febre Amarela, \npela Secretaria Municipal de Saúde de Itambé – Pr; \nCONSIDERANDO a deliberação  e aprovação dos conselheiros \npresentes na Reunião Ordinária do Conselho Municipal de Saúde \nrealizada em 28 de agosto de ",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -7849,6 +9274,55 @@
    ]
   },
   {
+   "ibge": "4108452",
+   "municipio": "FOZ DO JORDÃO",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "dab5e7acc3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118186_2026-09-17_dd95a07f25b52e1159c407eaf8a05904.pdf",
+     "titulo": null,
+     "trecho": "umentos municipais de gestão de riscos e desastres, \ndevendo sua aplicação ser compatível com: \nI - Plano de contingência; \nII - Plano Diretor; \nIII - PPA, LDO e LOA; \nIV - Coordenadoria Municipal da Defesa Civil. \n  \nArt. 2º - Fica também criada a ação 84 – FUNDO MUNICIPAL \nPARA CALAMIDADES PÚBLICAS, na Lei Municipal nº \n1092/2025, que dispõe sobre Lei de Diretrizes Or",
+     "data": "2026-09-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a60c8c19d1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "titulo": null,
+     "trecho": "entual deve ser efetivada para \nindivíduos, famílias, e grupos, independentemente da existência de \nPlano de Contingência Local ou da decretação de situação de \nemergência ou estado de calamidade pública pelo Estado, Município \nou Distrito Federal. \n  \n§ 2º Compete à gestão local firmar protocolos interi nstitucionais com \na finalidade de definir atribuições e fluxos para a atuação da Defesa \nCivil, da A",
+     "data": "2026-09-25",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4107652",
    "municipio": "Fazenda Rio Grande",
    "uf": "PR",
@@ -7899,6 +9373,54 @@
    ]
   },
   {
+   "ibge": "4111407",
+   "municipio": "IVAÍ",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "a3e661334b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "titulo": null,
+     "trecho": "uições que lhe conferea LeiMunicipal nº 479/1996, de \n08 demarço1996. \nRESOLVE: \nArt. 1º –Aprovar o Plano Municipal de Contingência de Arbovirose, \ndestinado à prevenção e enfrentamento das doenças  transmitidas por \nvetores. \nArt. 2º –Aprovar o Plano de Contingência – Emergências em \nPacientes em Oxigenioterapia, visando garantir protocolos de \nsegurança e atendimento adequado em ",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9752a36dda",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "titulo": null,
+     "trecho": " \ndestinado à prevenção e enfrentamento das doenças  transmitidas por \nvetores. \nArt. 2º –Aprovar o Plano de Contingência – Emergências em \nPacientes em Oxigenioterapia, visando garantir protocolos de \nsegurança e atendimento adequado em situações emergenciais. \nArt. 3º –Aprovar o Plano Municipal de Educação Per manente em \nSaúde – Atenção Primária, com foco na capacitação contínua dos \nprofissionais da rede municipa",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4111704",
    "municipio": "Jaboti",
    "uf": "PR",
@@ -7941,6 +9463,56 @@
      "trecho": "07 Descumprimento de \n\nnormas de segurança e \n\nlegislação vigente \n\nBaixa Alto Médio Cláusulas contratuais específicas e \n\nfiscalização \n\n08 Interrupção do serviço \n\ndurante o evento. \n\nBaixa Alto Médio Previsão de equipe de prontidão e \n\nplano de contingência \n\n09 Inadimplência trabalhista \n\nda con",
      "data": "14/08/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4114401",
+   "municipio": "MANGUEIRINHA",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "f86fa2ac52",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": "igo Tartare \nCódigo Identificador:5ED561DD \n \nPROCURADORIA \nRESOLUÇÃO N.º 21/2026 \n \nDeliberação do Plano de Contingência para \nArboviroses.  \n  \nO CONSELHO MUNICIPAL DE SAÚDE DE \nMANGUEIRINHA, NO USO DE SUAS ATRIBUIÇÕES \nLEGAIS, RESOLVE: \n  \nArt. 1º - Aprovar em reunião ordinária, realizada no dia",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a521db411c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "titulo": null,
+     "trecho": ", RESOLVE: \n  \nArt. 1º - Aprovar em reunião ordinária, realizada no dia 28/08/2026, \nDeliberação do plano de contingência para arbovirores 2026. \n  \nMangueirinha 28 de Agosto de 2026 \n  \nIZANI FRANK \nPresidente do Conselho \n  \nHomologo a Resolução n.º 21/2026 – CMS – nos termos do Art. 1º, \n§ 2º da Lei",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -7991,6 +9563,151 @@
      "trecho": "Jun 21, 2026 ... Atenção Pato Branco: o El Niño vem aí e precisamos nos preparar Pato ... Plano de Contingência Climática foi cancelada. Em breve ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4122305",
+   "municipio": "RIO NEGRO",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "75675d3fdd",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf",
+     "titulo": null,
+     "trecho": "plano de manutenção pre ventiva, integração com a \nPolítica Municipal de Proteção e Defesa Civil, o Plano de \nContingência de Proteção e Defesa Civil e demais instrumentos \nmunicipais de gestão de riscos, quando existentes, além de diretrizes \nrelacionadas ao uso e ocupação do solo e à adaptação climática. \n§2º O planejamento de drenagem e manejo das águas pluviais urbanas \ndeverá observar as normas de referência da ANA aplicáveis ao \ncom",
+     "data": "2026-09-11",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "abda897203",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf",
+     "titulo": null,
+     "trecho": "e aplicáveis, com o Plano \nDiretor, os planos de bacia hidrográfica, o Plano Municipal de Saúde, \no Plano de Contingência da Defesa Civil, a legislação ambiental, a \nlegislação urbanística e demais planos setoriais pertinentes. \n  \nArt. 13. A elaboração e a revisão do Plano Municipal de Saneamento \nBásico - PMSB ob servarão ampla divulgação, disponibilização dos \nestudos que o fundam",
+     "data": "2026-09-11",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4126652",
+   "municipio": "SULINA",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "7af8bb29e3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118176_2026-09-02_f60707599631cf194c04978aff40f0f9.pdf",
+     "titulo": null,
+     "trecho": "teção e defesa civil no planejamento \nmunicipal; \nIV - elaborar, manter atual izado e implementar o Plano de \nContingência (PLANCON); \nV - realizar vistorias em áreas de risco e, se necessário, solicitar ou \npromover a interdição de locais e a evacuação da população; \nVI - manter a população informada sobre os riscos e as formas de \nprevenção. \nCAPÍTULO III \nDa Estrutura Operacional \nArt. 5º A estrutura organizacional da COMPDEC será comp",
+     "data": "2026-09-03",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "5674997a6f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "titulo": null,
+     "trecho": "OMPDEC na gestão de riscos e \ndesastres; \nII - analisar, propor alterações e emitir parecer sobre o Plano de \nContingência Municipal (PLANCON); \nIII - aprovar o plano de aplicação dos recursos do Fundo Municipal de \nProteção e Defesa Civil (FUMPDEC) e atuar como órgão fiscalizador, \nanalisando as suas prestações de contas; \nIV - propor diretrizes para a integração das ações de defesa civil com \nas políticas de ordenamento territorial, saú",
+     "data": "2026-09-23",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4128203",
+   "municipio": "UNIÃO DA VITÓRIA",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "a4932bf3b2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "titulo": null,
+     "trecho": "ipal \nde Saúde em reunião realizada no dia 27 de agosto de 2026; \n  \nRESOLVE: \n  \nArt. 1º Aprovar o Plano Municipal de Contingência para Epidemias de \nDoenças Transmitidas por Aedes aegypti e Aedes albopictus — \n2026/2027, da Secretaria Municipal de Saúde de União da Vitória — \nPR. \n  \nArt. 2º 0 Plano aprovado por esta Resolução passa a constituir \ninstrumento norteador das ações municipais de vigilância, prevenção, \ncontrole e resposta ",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "1e537f0b50",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "titulo": null,
+     "trecho": "a, prevenção, controle e assistência \nrelacionadas às arboviroses no Município; \nCONSIDERANDO que o Plano Municipal de Contingência \nestabelece diretrizes e ações integradas para prevenção, \nmonitoramento e controle da transmissão, bem como para resposta \noportuna diante de situações de surto ou epidemia; \nCONSIDERANDO que o referido Plano contempla ações de \nVigilância Epidemiológica, Vigilância Entomológica, Vigilânci a \nAmbiental, assistência à",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -8142,6 +9859,54 @@
      "trecho": "Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...",
      "data": "21/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1101708",
+   "municipio": "URUPÁ",
+   "uf": "RO",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "9028775691",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116148_2026-09-09_e2f4dd63af31e91d58da39a21df34ac6.pdf",
+     "titulo": null,
+     "trecho": "bro de 2026, no \nperíodo das 7h30 às 17h, para participar da Oficina Regionalizada de Elaboração do Plano de \nContingência para o Enfrentamento da Seca/Estiagem, Incêndios Florestais e Ondas de Calor do Setor \nSaúde \nTERMO DE COMPROMISSO \n  \nAssinatura do Servidor/Carimbo \nComprometo-me a apresentar Prestação de Contas \nacompanhado dos comprovantes de despesas, notas fiscais, \ndevidamente atestadas, no prazo de 30 (trinta) dias a contar d",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e1ccdc01a7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116148_2026-09-09_e2f4dd63af31e91d58da39a21df34ac6.pdf",
+     "titulo": null,
+     "trecho": "bro de 2026, no \nperíodo das 7h30 às 17h, para participar da Oficina Regionalizada de Elaboração do Plano de \nContingência para o Enfrentamento da Seca/Estiagem, Incêndios Florestais e Ondas de Calor do Setor \nSaúde \nTERMO DE COMPROMISSO \nAssinatura do \nServidor/Carimbo \nComprometo-me a apresentar Prestação de Contas acompanhado dos \ncomprovantes de despesas, notas fiscais, devidamente atestadas, no \nprazo de 30 (trinta) dias a contar da ",
+     "data": "2026-09-10",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -8805,6 +10570,161 @@
    ]
   },
   {
+   "ibge": "1300409",
+   "municipio": "BARCELOS",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "69d6060dfc",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118937_2026-09-01_1f784ca6fc033eb4bedcfaa26ac420e0.pdf",
+     "titulo": null,
+     "trecho": "res, solicitar que a gente se una \npara ter uma conversa, porque o município precisa apresentar um \nplano de contingência para a estiagem de 2026. A gente torce para que \nnão aconteça o pior, para que não seja necessário, mas precisamos \nestar organizados e planejados. Eu preciso da ajuda de vocês para n",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1301001",
+   "municipio": "CARAUARI",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "c6fe58dee9",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118944_2026-09-11_4f886e4cb52aa91dd8496b7afb7e16d7.pdf",
+     "titulo": null,
+     "trecho": "nais; \n  \nCONSIDERANDO que a Fundação de Vigilância em Saúde do \nAmazonas – FVS-RCP disponibiliza o Plano de Contingência para \nEventos Climáticos Sazonais de Seca e Estiagem do Estado do \nAmazonas 2026 e a Nota Técnica Conjunta nº 016/2026/SES -\nAM/FVS-RCP, orientando  os municípios amazonenses quanto às \nmedidas de preparação e resposta; \n  \nCONSIDERANDO que a magnitude da crise de origem \nsocioambiental e climática ultrapassa a capaci",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1302009",
+   "municipio": "ITAPIRANGA",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "509724bef5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118936_2026-08-31_5976aa056909873e4c6a3839b690952b.pdf",
+     "titulo": null,
+     "trecho": "teção e Defesa Civil \ncoordenará a atualização ou elaboração, no prazo de até 15 (quinze) \ndias, do Plano Municipal de Contingência para Estiagem, Seca, \nIncêndios Florestais, Fumaça e Eventos Associados ao El Niño \n2026/2027, contendo, no mínimo: \nI - Cenários de risco, áreas e populações vulneráveis; \nII - Níveis de alerta e critérios objetivos de acionamento; \nAmazonas , 01 de Setembro de 2026   •   Diário Oficial Eletrônico dos Municípios do E",
+     "data": "2026-09-01",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1302306",
+   "municipio": "JUTAÍ",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "d79cf9a073",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118939_2026-09-03_614ad7394ddd66813ea7f692f99a49e3.pdf",
+     "titulo": null,
+     "trecho": "o Climática, a ser elaborado no prazo \nmáximo de 12 meses a partir da publicação desta Lei; \nII - o Plano de Contingência Municipal de Proteção e Defesa Civil; \nIII - o Fundo Municipal de Meio Ambiente - FMMA, que também \nfinanciará as ações climáticas previstas nesta Lei, com rubrica \nespecífica para esta finalidade; \nIV – os programas e ações de educação ambiental  e comunicação \nsocial; \nV – os convênios, consórcios e parcerias com en",
+     "data": "2026-09-04",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1303007",
+   "municipio": "NHAMUNDÁ",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "20b18949c6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118940_2026-09-04_9e1ed9cde6af72b7a229329950218130.pdf",
+     "titulo": null,
+     "trecho": "te os índices pluviométricos, níveis de \nreservatórios e focos de calor no município. \n• Elaborar o Plano de Contingência Municipal para Estiagem e \nIncêndios Florestais. \n• Articular o fornecimento emergencial de água potável para as \ncomunidades afetadas, com prioridade para escolas, hospital, UBS’s e \nPostos de Saúde. \n• Coo",
+     "data": "2026-09-08",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2900702",
    "municipio": "Alagoinhas",
    "uf": "BA",
@@ -9374,6 +11294,68 @@
    ]
   },
   {
+   "ibge": "2606408",
+   "municipio": "GRAVATÁ",
+   "uf": "PE",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "61421e04ab",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115892_2026-09-04_4375d81c2d73ab73ea96d1b8b5cb3979.pdf",
+     "titulo": null,
+     "trecho": "entar \ne Nutricional; \n  \n• \nImplantar o Programa Família Acolhedora; \n  \n• \nElaborar e implementar Plano de Contingência do SUAS para \nsituações de emergência e desastres; \n  \n• \nFortalecer a descentralização do Cadastro Único e qualificar a gestão \ndos processos relacionados ao PROCAD-SUAS; \n  \n• \nFortalecer o controle s ocial por meio da formação continuada dos \nconselheiros e do aprimoramento das ações de fiscalização, com \nênfase na",
+     "data": "2026-09-08",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2608701",
+   "municipio": "LAGOA DOS GATOS",
+   "uf": "PE",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "8510dbac82",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115889_2026-09-01_d441f9724457a639ca89bf9ddb75201b.pdf",
+     "titulo": null,
+     "trecho": "energia solar em prédios públicos; 9.7. \nEstruturar e equipar a Defesa Civil municipal; \n9.8. Criar plano de contingência para desastres naturais; 9.9. Capacitar \nequipes e voluntários; \n9.10. Implantar sistema de alerta precoce para emergências; \n9.11. Preservar nascentes, rios e lagos; \n9.12. Recuperar ár",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2611606",
    "municipio": "Recife",
    "uf": "PE",
@@ -9533,6 +11515,99 @@
    ]
   },
   {
+   "ibge": "4114203",
+   "municipio": "MANDAGUARI",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "9d7abad675",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "titulo": null,
+     "trecho": " órgãos \ncompetentes, o FUMPDEC deverá, igualmente, ser integrado aos \nseguintes instrumentos: \nI – Plano de Contingência Municipal; \nII – Plano Municipal de Redução de Riscos; \nIII – Plano Municipal de Proteção e Defesa Civil, nos termos do art. \n7º, XXI, da Lei Estadual nº. 18.519/2015; \nIV – Conselho Municipal de Gestão de Riscos e Desastres, previsto no \nart. 7º, XXII, da Lei Estadual nº. 18.519/20",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4114351",
+   "municipio": "MANFRINÓPOLIS",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "0e808f2ee7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118185_2026-09-16_186a80bad631563f6a6674351b8f171a.pdf",
+     "titulo": null,
+     "trecho": "oteção e defesa civil no planejamento \nmunicipal; \nIV - elaborar, manter atualizado e implementar o Plano de \nContingência (PLANCON); \nV - realizar vistorias em áreas de risco e, se necessário, solicitar ou \npromover a interdição de locais e a evacuação da população; \nVI - manter a população informada sobre os riscos e as formas de \nprevenção. \n  \nCAPÍTULO III Da Estrutura Operacional \n  \nArt. 5º A estrutura organizacional da COMPDEC será",
+     "data": "2026-09-17",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4115705",
+   "municipio": "MATINHOS",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "7896c856c0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "titulo": null,
+     "trecho": " \nde Crise — COGEC, observarão o disposto no art. 20, inciso IX, \ndaquela Lei e serão veiculadas no Plano Municipal de Contingência \nde Proteção e Defesa Civil. \nParaná , 02 de Setembro de 2026   •   Diário Oficial dos Municípios do Paraná   •    ANO XV | Nº 3608 \n \nwww.diariomunicipal.com.br/amp                      ",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4115853",
    "municipio": "Mercedes",
    "uf": "PR",
@@ -9561,6 +11636,100 @@
      "trecho": "Con el objetivo de anticiparse ... formalizó la medida a través del Decreto N.º 1874/2026, que declara la Emergencia Climatológica Preventiva hasta el próximo 31 de diciembre....",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4116406",
+   "municipio": "NOSSA SENHORA DAS GRAÇAS",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "29fe3144fe",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf",
+     "titulo": null,
+     "trecho": " e Lei Municipal 929/2021, resolve dentro dos \nparâmetros legais aprovar: \n  \nArt. 2°- Aprovação do Plano de Contingência. \n  \nNossa Senhora das Graças, 27 de maio de 2026. \n  \nLAERCIFLÁVIO AZEVEDO \nPresidente do Conselho Municipal de Saúde \n  \nANA PAULA HERNANDES DO NASCIMENTO RI",
+     "data": "2026-09-11",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4118501",
+   "municipio": "PATO BRANCO",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "495bf03d77",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf",
+     "titulo": null,
+     "trecho": "de 15 \nde outubro de 2001. \n  \nArt. 6º A Comissão deverá  observar, em todas as suas atividades, o \nPlano de Contingência Municipal de Proteção e Defesa Civil, os \nprotocolos da Coordenadoria Municipal de Defesa Civil – COMDEC \ne as normas expedidas pelos órgãos competentes do Sistema Nacional \nde Proteção e Defesa Civil – SINPDEC e do Sistema Estadual de \nProteção e Defesa Civil – SEPDEC. \n  \nArt. 7º Esta Portaria entra em vigor na data",
+     "data": "2026-09-11",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4118600",
+   "municipio": "PAULA FREITAS",
+   "uf": "PR",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "fe3b89251f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "titulo": null,
+     "trecho": "MPDEC na gestão de riscos e \ndesastres; \nII - analisar, propor alterações e emi tir parecer sobre o Plano de \nContingência Municipal (PLANCON); \nIII - aprovar o plano de aplicação dos recursos do Fundo Municipal de \nProteção e Defesa Civil (FUMPDEC) e atuar como órgão fiscalizador, \nanalisando as suas prestações de contas; \nIV - propor diretrizes para a integração das ações de defesa civil com \nas políticas de ordenamento territorial, saú",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -9724,6 +11893,38 @@
      "trecho": "Plano Municipal de Saneamento Básico de Armação dos Búzios/RJ. Produto ... A inexistência de um plano de contingência municipal para resposta a eventos ...",
      "data": "21/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3302809",
+   "municipio": "MENDES",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "1c75f04b6d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=265&i=publicado_117413_2026-09-01_30182f5bd18c2ec63128c35ac5145311.pdf",
+     "titulo": null,
+     "trecho": "\nNúcleos Comunitários de Proteção e Defesa Civil – NUPDEC; \nPlano de Adaptação à Mudança do Clima; \nPlano de Contingência de Proteção e Defesa Civil; \nPlano de Redução de Riscos Municipal; \nPlanos de Ações Estruturais \nPlano Integrado para Comunidades Vulnerabilizadas. \nParágrafo Único: os planos previstos nos incisos III, IV, V, VI e VII \ndevem se adequar as disposições dos Planos Nacionais de Proteção e \nDefesa Civil (PNDC",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -10981,6 +13182,190 @@
    ]
   },
   {
+   "ibge": "2612471",
+   "municipio": "SANTA CRUZ DA BAIXA VERDE",
+   "uf": "PE",
+   "melhor_nivel": "C",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "7ed70110d4",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115898_2026-09-15_51215aeb0208699473a5fe3b03868121.pdf",
+     "titulo": null,
+     "trecho": "                                                                       137 \n \nGABINETE DO PREFEITO \nPLANO DE CONTINGÊNCIA PARA CONSERVAÇÃO DE \nIMUNOBIOLÓGICOS EM CASO DE FALTA DE ENERGIA \nELÉTRICA \n \nPLANO DE CONTINGÊNCI A PARA CONSERVAÇÃO DE \nIMUNOBIOLÓGICOS EM CASO DE FALTA DE ENERGIA \nELÉTRICA \n  \nLuana machado monteiro \nCOREN/PE 827.257- enfermeira \nCoordenação Municipal do Programa Nacional de Imunizações (PNI) \nMunicípio de Santa C",
+     "data": "2026-09-16",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8a241586f8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115898_2026-09-15_51215aeb0208699473a5fe3b03868121.pdf",
+     "titulo": null,
+     "trecho": " \nrestabelecimento da energia e destino dos imunobiológicos, quando \nhouver transferência. \n  \nEste Plano de Contingência deverá ser de conhecimento de todos os \nprofissionais que atuam nas salas de vacinação d o município e deverá \npermanecer disponível para consulta sempre que necessário. \n \nPublicado por: \nAdriano da Silva Monteiro \nCódigo Identificador:1E50FD06 \n \nESTADO DE PERNAMBUCO \nMUNICÍPIO DE SANTA CRUZ DO CAPIBARIBE \n \nCENTRAL",
+     "data": "2026-09-16",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2403707",
+   "municipio": "FELIPE GUERRA",
+   "uf": "RN",
+   "melhor_nivel": "C",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "9abebde00a",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117669_2026-09-03_91478b9324cd06fbb2056c80f1005a0f.pdf",
+     "titulo": null,
+     "trecho": "to \nsuspensivo na forma do art. 168 do mesmo diploma. \nH) DET ERMINAR à SEMARH a adoção imediata de plano de \ncontingência e de \ntransição destinado a assegurar a continuidade do processamento e do \npagamento \nda folha de pessoal do Município, contemplando: I – a definição da \ndata de cessação \nefetiva da execução contratu al, observado o efeito suspensivo de \neventual recurso; II \n– a obtenção e a migração segura das bases de dados e dos",
+     "data": "2026-09-04",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9f8897ec81",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117678_2026-09-17_bb703ceaabea330af89f1bd9948dce20.pdf",
+     "titulo": null,
+     "trecho": "ento da folha de pessoal \ndo Município até a efetiva migração dos serviços, mediante a \nexecução do plano de contingência determinado no art. 8º da Decisão \ndo Processo Administrativa nº 21/2026. \n  \nCLÁUSULA QUARTA – DO ACERTO DE CONTAS E DA \nRETENÇÃO DE CRÉDITOS \n  \n4.1. Registra-se que, até a dat",
+     "data": "2026-09-18",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1100338",
+   "municipio": "NOVA MAMORÉ",
+   "uf": "RO",
+   "melhor_nivel": "C",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "c2d3e4872a",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116150_2026-09-11_2d2027ca84e959915ce973c78ce37a11.pdf",
+     "titulo": null,
+     "trecho": "l disponibilizada para execução do objeto, \nbem como de apresentação de informações relacionadas ao plano de \ncontingência, continuidade e resposta a incidentes. \nDiante disso, em 28 de agosto de 2026 , a Comissão Especial de \nLicitação formalizou diligências junto às duas instituições, \nconcedendo prazo de 48 (quarent",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4b86d2d5d2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116150_2026-09-11_2d2027ca84e959915ce973c78ce37a11.pdf",
+     "titulo": null,
+     "trecho": "à \nsua capacidade técnica, administrativa e operacional e complementou \nas informações relativas ao plano de contingência, continuidade e \nresposta a incidentes, descrevendo estrutura própria, equipe \nresponsável, parque gráfico e sistema de gestão do concurso, bem \ncomo os procedimentos previstos para resposta às situações apontadas \npela Comissão. \nApós análise das respostas, concluímos que as duas instituições \natenderam satisfatoriam",
+     "data": "2026-09-14",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1101450",
+   "municipio": "PARECIS",
+   "uf": "RO",
+   "melhor_nivel": "C",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "18e2cc9957",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116145_2026-09-03_e541f56f169bdde9c0cfe49e87913e2f.pdf",
+     "titulo": null,
+     "trecho": "\nNível Vermelho – Emergência \n  \n• Aumento superior a 40% ou situação de calamidade. \n• Ativação do Plano de Contingência e mobilização extraordinária de \nrecursos. \n  \nANEXO II – COMITÊ DE MONITORAMENTO \nO Comitê de Monitoramento da Demanda Assistencial será composto \npor: \n  \n• Secretário Municipal de Saúde; \n• Diretor ",
+     "data": "2026-09-04",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8c408e2459",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116145_2026-09-03_e541f56f169bdde9c0cfe49e87913e2f.pdf",
+     "titulo": null,
+     "trecho": "dimento; \npercentual de documentação regular; \npercentual de inspeções realizadas no prazo. \n  \n14. PLANO DE CONTINGÊNCIA \nNa indisponibilidade de uma ambulância, deverão ser adotadas uma \nou mais das seguintes medidas: \nutilização de veículo reserva; \nremanejamento de ambulância entre unidades; \nacionamento de serviço de apoio pactuado; \npriorização dos atendimentos de urgência e emergência até a \nnormalização da frota. \n  \n15. DISPOSIÇ",
+     "data": "2026-09-04",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4309209",
    "municipio": "Gravataí",
    "uf": "RS",
@@ -11645,6 +14030,372 @@
    ]
   },
   {
+   "ibge": "2516102",
+   "municipio": "SOLEDADE",
+   "uf": "PB",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "4d4f078732",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=334&i=publicado_115130_2026-09-04_11aa60708671a8915f86760b4935e248.pdf",
+     "titulo": null,
+     "trecho": "erfuração de poços \nartesianos nas zonas urbana e rural; II - Auxiliar na elaboração e \nexecução do Plano de Contingência e dos Planos Setoriais de \nAbastecimento Hídrico; III - Promover a transparência pública na \ndivulgação dos cronogramas e ro tas de abastecimento; IV - \nRecomendar adequações orçamentárias e operacionais aos órgãos \nmunicipais competentes. \nArt. 3º Este Decreto entra em vigor na data de sua publicação. \n  \nJOSÉ ALVES ",
+     "data": "2026-09-08",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2600054",
+   "municipio": "ABREU E LIMA",
+   "uf": "PE",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "97d3457d91",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_121309_2026-09-21_bfd7a526eefcdea0b69f59f44fa845e0.pdf",
+     "titulo": null,
+     "trecho": "nal detalhado, regulamento técnico das modalidades, cronograma de etapas, organog rama \nde equipe e plano de contingência; \nII – Organização: secretaria do evento, credenciamento de atletas e equipes, controle de in scrições, tabelas de jogos/disputas e comunicação com \nparticipantes; \nIII – Segurança: obtenção de todas as licenças e alvarás exigidos pelas autoridades competentes, contratação de empresa de seguranç a privada \ncredenciada",
+     "data": "2026-09-21",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2604809",
+   "municipio": "CORTÊS",
+   "uf": "PE",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "77dcde02ce",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115902_2026-09-21_12d6b7b7a662230e646194b5f5329802.pdf",
+     "titulo": null,
+     "trecho": " 14.133/2021. \n  \nArt. 8º  A Secretaria Municipal de Saúde apresentará, no prazo de \nquinze dias, o Plano de Contingência Assistencial, com as alternativas \ndisponíveis por linha de serviço em caso de descontinuidade. \n  \nArt. 9º  As unidades competentes de administração e finanças \niniciarão os estudos necessários ao cumprimento das determinações \npropostas no relatório de",
+     "data": "2026-09-22",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2606002",
+   "municipio": "GARANHUNS",
+   "uf": "PE",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "977ae41865",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115889_2026-09-01_d441f9724457a639ca89bf9ddb75201b.pdf",
+     "titulo": null,
+     "trecho": "dimento à população de \nbaixa renda, em observância à Lei Federal nº 11.124/2005; \nXXVIII – Criar o Plano de Contingência Municipal – PLACONM que \nfunciona como um plano de resposta a catástrofes naturais e situações \nde emergência, o qual deve ser elaborado quando na normalidade; \nXXIX – Estruturar e fortalecer o sistema de controle interno, \npriorizando o controle preventivo e orientativo; \nXXX – Estabelecer e implementar planejamento ",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4100103",
+   "municipio": "ABATIÁ",
+   "uf": "PR",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "d59f230cb4",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "titulo": null,
+     "trecho": "CONSIDERANDO a deliberação Plenária realizada no dia 22 de \nsetembro de 2026 \nRESOLVE: \n1. APROVAR, Plano Municipal de Contingencia para \nEnfrentamento da Dengue, Zika Virus e Chikungunya \n(2026/2027), Atualização conforme Nota Orientativa (NO) \nnº04/2025/SESA para Níveis de Resposta I e II. \n  \nAbatiá, aos 22 de setembro de 2026. \n  \nSEBASTIÃO DE OLIVEIRA PINTO FILHO \nPresidente do Conselho Municipal de Saúde de Abatiá \n \nPublicado por: \nMara Cri",
+     "data": "2026-09-23",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4105409",
+   "municipio": "CHOPINZINHO",
+   "uf": "PR",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "1602d39b14",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118174_2026-08-31_c197a5934df29bc5df0d143b4f4eedbd.pdf",
+     "titulo": null,
+     "trecho": "adas durante a vigência do Comitê. \nArt. 5º As ações e deliberações do Comitê serão orientadas pelo Plano \nde Contingência do evento climático, que estabelecerá as diretrizes \npara o planejamento, coordenação e execução das ações, podendo ser \natualizado sempre que necessário, mediante deliberação do Comitê. \nCAPÍTULO IV – DAS DISPOSIÇÕES GERAIS \nArt. 6º Fica autorizada a requisição administrativa de bens, serviços e \nservidores de outras",
+     "data": "2026-09-01",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4107702",
+   "municipio": "FÊNIX",
+   "uf": "PR",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "b439490019",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "titulo": null,
+     "trecho": "ecedores; \nIII – Continuidade e contingência:  manutenção de plano de \ncontinuidade do serviço e de plano de contingência operacional; \nIV – Auditorias: permissão para realização de auditorias periódicas \nde segurança, integridade e desempenho; \nV – Avaliação de fornecedores: adoção de mecanismos de avaliação \nde desempenho e reputação dos fornecedores, com base em \nindicadores objetivos e verificáveis; \nVI – Sanções: auxílio ao ente púb",
+     "data": "2026-09-23",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4117701",
+   "municipio": "PALMEIRA",
+   "uf": "PR",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "013a1ad71d",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf",
+     "titulo": null,
+     "trecho": " poderão ser concedidos às pessoas, famílias e grupos afetados, \nindependentemente da existência de Plano de Contingência ou da \ndecretação formal de situação de emergência ou estado de calamidade \npública, quando caracterizada a situação de desproteção social. \n  \nParaná , 11 de Setembro de 2026   •   Diário Oficial dos Municípios do Paraná   •    ANO XV | Nº 3614 \n \nwww.diariomunicipal.com.br/amp                   ",
+     "data": "2026-09-11",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4118204",
+   "municipio": "PARANAGUÁ",
+   "uf": "PR",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "e34768822b",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118176_2026-09-02_f60707599631cf194c04978aff40f0f9.pdf",
+     "titulo": null,
+     "trecho": "ias, contado da publicação deste Decreto, Plano de Ação para o \nPeríodo de Alerta, compatível com o Plano Municipal de \nContingência e com os protocolos estaduais e federais aplicáveis, \ncontendo, no mínimo: \n  \nI - os cenários de risco considerados e os critérios técnicos de \nacompanhamento; \nII - as áreas e populações prioritárias, com atenção especial às pessoas \ne aos grupos vulneráveis ou vulnerabilizados; \nIII - as ações, os responsáveis, os ",
+     "data": "2026-09-03",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4119608",
+   "municipio": "PITANGA",
+   "uf": "PR",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "e7db244249",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118184_2026-09-15_73e5003f6ec967b8a272135117a4ec83.pdf",
+     "titulo": null,
+     "trecho": "\nNº Risco Identificado  Causa Provável Probabilidade  Impacto  Nível de Risco  Medidas Preventivas  Plano de Contingência  Responsável \n01 \nFornecimento d e CBUQ \nfora das especificações \ntécnicas \nFalha no controle de qualidade da \nusina Média Alto Alto \nExigir laudos técnicos, \ncontrole de qualidade e \natendimento às normas \nABNT/DNIT \nRecusa do material e \nsubstituição imediata pela \ncontratada \nContratada / \nFiscal \n02 Atraso na entr",
+     "data": "2026-09-16",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4119954",
+   "municipio": "PONTAL DO PARANÁ",
+   "uf": "PR",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "a551bed563",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": "IA Nº 630 DE 14 DE SETEMBRO DE 2026. \n \nSúmula: “Institui a Comissão para revisão e \natualização do Plano de Contingência de Arbovi roses \ne dá outras providências”. \n  \nO PREFEITO MUNICIPAL DE PONTAL DO PARANÁ, \nESTADO DO PARANÁ,  no uso de suas atribuições legais, e o \ncontido no Memorando n° 22.389/2026. \n  \nArtigo 1º –",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4125407",
+   "municipio": "SÃO JOSÉ DA BOA VISTA",
+   "uf": "PR",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "fbfcd5ff20",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "titulo": null,
+     "trecho": "ecedores; \nIII – continuidade e  contingência: manutenção de plano de \ncontinuidade do serviço e de plano de contingência operacional; \nIV – auditorias: permissão para realização de auditorias periódicas de \nsegurança, integridade e desempenho; \nV – avaliação de fornecedores: adoção de mecanismos de avaliação de \ndesempenho e reputação dos fornecedores, com base em indicadores \nobjetivos e verificáveis; \nVI – sanções: auxílio ao ente púb",
+     "data": "2026-09-15",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3300308",
    "municipio": "Barra do Piraí",
    "uf": "RJ",
@@ -11772,6 +14523,68 @@
    ]
   },
   {
+   "ibge": "2413359",
+   "municipio": "SERRA DO MEL",
+   "uf": "RN",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "d7369d5150",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "texto_falso_positivo_provavel"
+     ],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117680_2026-09-21_92df685e00e5ab6eeba09e8447dc5f14.pdf",
+     "titulo": null,
+     "trecho": "dados e as informações armazenadas em segurança, bem como manter \ncópias de segurança (backup) e um plano de contingência que \nassegure a continuidade do serviço em caso de sinistros. 6.1.4. \nDisponibilizar versões atualizadas do SISTEMA, cujas implantações \ndeverão ser programadas em conjunto com o COMODATÁRIO. \n6.1.5. Manter o COMODATÁRIO",
+     "data": "2026-09-22",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4300604",
+   "municipio": "ALVORADA",
+   "uf": "RS",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "e4101e0d8a",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117920_2026-08-31_8a68fceeb2dbb2ede592c8ecf74460a0.pdf",
+     "titulo": null,
+     "trecho": "o implementadas; \nX – manual técnico; \nXI – manual do usuário; \nXII – manual de instalação; \nXIII – plano de contingência; \nXIV – requisitos mínimos de infraestrutura; \nXV – instruções para compilação e implantação. \n§2ºA documentação deverá permanecer atualizada sempre que houver \nalterações relevantes na arquitetura ou funcionalidades do sistema. \n§3º \nO Município poder",
+     "data": "2026-09-01",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4314407",
    "municipio": "Pelotas",
    "uf": "RS",
@@ -11798,6 +14611,36 @@
      "trecho": "May 15, 2026 ... ouvidoria@pelotas.rs.gov.br. Horário de funcionamento: 8h às 14h ... @2026 - Prefeitura Municipal de Pelotas | Desenvolvido pela COINPEL e SECOM.",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4317004",
+   "municipio": "SANTANA DA BOA VISTA",
+   "uf": "RS",
+   "melhor_nivel": "C",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 0,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "8e8ed75efc",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117921_2026-09-01_88dff077832a30d8fa458a7f712b0b1b.pdf",
+     "titulo": null,
+     "trecho": "e agosto de 2026, a \nparametrização municipal, os testes de homologação, a validação de \nacesso e o plano de contingência necessários à transição. \nI – a habilitação do Município e dos contribuintes nos módulos \nnacionais aplicáveis; \nII – a recepção e consulta municipal das NFS-e no ADN; \nIII – a dispon",
+     "data": "2026-09-02",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
   },
