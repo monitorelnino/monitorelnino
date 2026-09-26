@@ -9,6 +9,32 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §231 · O primeiro diário oficial ESTADUAL que o Monitor leu · 26/09/2026
+
+Classe **cobertura de coleta**. Em quase dois meses de operação, o projeto nunca havia lido um diário oficial de estado: as 27 UFs de `data/fontes_doe.json` estavam com adaptador nulo, e o §194 já tinha medido que o Querido Diário **não indexa** diário estadual — os territórios de dois dígitos devolvem zero. O único adaptador implementado era justamente o que não podia funcionar.
+
+**Cinco estados passaram a ser lidos, e um sexto tem caminho declarado.** AP, ES, GO, MT e PR rodam o mesmo sistema, com três rotas públicas sem autenticação. Tudo abaixo foi medido contra produção, nada suposto:
+
+- `/apifront/portal/edicoes/edicoes_from_data/AAAA-MM-DD.json` — as edições do dia. Quando não há edição, responde `{"erro": true, "msg": "Edição não existente!"}`, que é resposta **correta** e não falha.
+- `/busca/busca/buscar/query/<pagina>/di:…/df:…/?q="termo"` — resposta Elasticsearch crua com `hits.total` e, por acerto, **`_source.conteudo` = o texto integral da página que casou**, mais data, página, total de páginas e os identificadores. É essa rota que torna a coleta viável: não se baixa um PDF de dez megabytes por acerto para depois procurar dentro dele.
+- `/portal/edicoes/download/<diario_id>` — o PDF da edição, para citação e conferência humana.
+
+**Duas medições que custaram a primeira sonda, e que ficam registradas para ninguém repetir.** A página da busca é indexada em **zero** e entrega dez por vez: pedir `/query/1/` numa UF com menos de dez acertos devolve `hits.total = 7` com `hits.hits = []` — total declarado, lista vazia. Foi exatamente isso que fez GO, ES, AP e MT parecerem sem resultado na primeira tentativa, e é um engano que se parece com ausência de dado. E o identificador do download é `diario_id`, não `pdf_id`: o segundo devolve 28 kB de HTML, o primeiro devolve o PDF de verdade.
+
+**O termo de busca nunca podia casar.** O primeiro termo da lista era `"homologa a situação de emergência"`, com um artigo que o ato estadual real não tem — medido no DOE-PR de 15/09/2026: *"Homologa situação de emergência no Município de Palmeira"*. Termo que não pode casar é pior do que termo ausente: produz "nada localizado" com aparência de busca feita.
+
+**E o padrão de extração também não podia.** O antigo exigia "município de X" na mesma frase do número do decreto. As duas formas reais, lidas no documento, são outras: *"Homologa o Decreto Municipal nº 235, de 15 de setembro de 2026, exarado pelo Prefeito de Boa Vista da Aparecida"* e *"Homologa situação de emergência no Município de Palmeira"*.
+
+**Um defeito que a primeira varredura real revelou, e que só ela revelaria.** O ato estadual diz a mesma coisa **duas vezes** — a ementa, sem o número do decreto municipal, e o dispositivo, com ele. Contar as duas produziu 54 atos registrados **e 54 pistas dos mesmos municípios**, com o motivo "sem número do decreto": fila de revisão humana cheia de trabalho já feito. A chave passou a ser o município, e entre duas leituras do mesmo ato fica a que traz o número. As pistas caíram de 58 para **7** — e essas sete são legítimas, de atos que aparecem só na forma da ementa.
+
+**O que entrou.** **54 homologações estaduais de decretos municipais de emergência**, todas do Paraná, cada uma com município casado ao código IBGE, número do decreto municipal, data, a URL do PDF da edição e **o número da página** — a diferença entre "está nesta edição de 104 páginas" e "está na página 11". Em 49 delas entrou também o número do decreto **estadual** que homologou. E **881 municípios** passaram a ter consulta a diário estadual registrada no livro de fontes: PR 399, GO 246, MT 142, ES 78, AP 16.
+
+Um registro foi conferido contra a fonte por desconfiança legítima: Ivaiporã aparece com "Decreto municipal nº 15.450", numeração que parece de decreto estadual. O documento diz exatamente isso — *"Decreto Municipal nº 15.450, de 21 de setembro de 2026, exarado pelo Prefeito de Ivaiporã"*. A extração está certa; o município numera assim.
+
+**O Amazonas fica fora, e por decisão.** Ele roda a mesma plataforma — as rotas de edição e de download respondem —, mas a de **busca devolve 404**: a busca dele é outro aplicativo. Registrá-lo como `apifront` produziria doze lacunas falsas por dia, sobre um fato que não muda. Ele vive em `APIFRONT_SEM_BUSCA`, com o que foi medido e o caminho que resta: varrer as edições por data e ler o PDF de cada uma. É trabalho a fazer, não fonte bloqueada, e a distinção importa.
+
+Treze autotestes offline travam o adaptador, incluindo os dois enganos acima: **total declarado com lista vazia LEVANTA** (§210 outra vez) e uma página que menciona "situação de emergência" em regra administrativa — a do IAT no DOE-PR de 01/07/2026 — **não** casa nenhum padrão e corretamente não produz registro.
+
 ## §230 · Cento e trinta e sete barreiras medidas, e as primeiras derrubadas · 26/09/2026
 
 Classe **desbloqueio de coleta**.

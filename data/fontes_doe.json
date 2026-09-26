@@ -1,5 +1,5 @@
 {
- "_governanca": "Cobertura dos 27 DOEs (v2.2.4, §4.2). 'a_verificar' = adaptador não confirmado; a Action registra o resultado da tentativa. Nunca inferir cobertura.",
+ "_governanca": "Cobertura dos 27 DOEs (v2.2.4, §4.2). 'a_verificar' = adaptador não confirmado; a Action registra o resultado da tentativa. Nunca inferir cobertura. §231: seis UFs usam o adaptador 'apifront' (plataforma comum, rotas medidas contra produção em 26/09/2026).",
  "ufs": {
   "AC": {
    "adaptador": null,
@@ -9,15 +9,15 @@
   },
   "AM": {
    "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
-   "ultima_tentativa": "2026-09-24"
+   "url": "https://diario.imprensaoficial.am.gov.br",
+   "status": "a_verificar: roda a plataforma comum, mas a rota de busca devolve 404 (medido 26/09/2026); caminho restante é edições por data + leitura do PDF",
+   "ultima_tentativa": "2026-09-26"
   },
   "AP": {
-   "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
-   "ultima_tentativa": "2026-09-24"
+   "adaptador": "apifront",
+   "url": "https://diofe.portal.ap.gov.br",
+   "status": "ok",
+   "ultima_tentativa": "2026-09-26"
   },
   "PA": {
    "adaptador": null,
@@ -104,10 +104,10 @@
    "ultima_tentativa": "2026-09-24"
   },
   "GO": {
-   "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
-   "ultima_tentativa": "2026-09-24"
+   "adaptador": "apifront",
+   "url": "https://diariooficial.abc.go.gov.br",
+   "status": "ok",
+   "ultima_tentativa": "2026-09-26"
   },
   "MS": {
    "adaptador": null,
@@ -116,16 +116,16 @@
    "ultima_tentativa": "2026-09-24"
   },
   "MT": {
-   "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
-   "ultima_tentativa": "2026-09-24"
+   "adaptador": "apifront",
+   "url": "https://www.iomat.mt.gov.br",
+   "status": "ok",
+   "ultima_tentativa": "2026-09-26"
   },
   "ES": {
-   "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
-   "ultima_tentativa": "2026-09-24"
+   "adaptador": "apifront",
+   "url": "https://ioes.dio.es.gov.br",
+   "status": "ok",
+   "ultima_tentativa": "2026-09-26"
   },
   "MG": {
    "adaptador": null,
@@ -146,10 +146,10 @@
    "ultima_tentativa": "2026-09-24"
   },
   "PR": {
-   "adaptador": null,
-   "url": null,
-   "status": "a_verificar",
-   "ultima_tentativa": "2026-09-24"
+   "adaptador": "apifront",
+   "url": "https://www.dioe.pr.gov.br",
+   "status": "ok",
+   "ultima_tentativa": "2026-09-26"
   },
   "RS": {
    "adaptador": null,
