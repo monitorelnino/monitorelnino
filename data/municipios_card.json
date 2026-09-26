@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-09-10",
- "total": 2191,
+ "total": 2211,
  "com_registro": 267,
- "com_imprensa": 115,
+ "com_imprensa": 147,
  "prioritarios": 2095,
- "com_despesa_182": 2191,
+ "com_despesa_182": 2211,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -151,6 +151,15 @@
    "url": null,
    "data": "07-08/2026",
    "fonte": "Prefeitura de Porto Velho",
+   "imprensa": [
+    {
+     "titulo": "ibilidade e sustentabilidade. \nArt. 11. Constituem instrumentos prioritários do SIMPDEC/PVH: \nI – o Plano Municipal de Contingência de Prote",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116156_2026-09-21_4671f3dafc5edcb8758d815cff04388a.pdf",
+     "data": "2026-09-22",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -160,6 +169,30 @@
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
    }
+  },
+  "1100262": {
+   "nome": "RIO CRESPO",
+   "uf": "RO",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ltativa não afasta o dever da Detentora de avaliar as condições ordinariamente verificáveis. \n23.4. Plano de contingência \nA Detentora dever",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116146_2026-09-04_eddfbfba76f54bb282d8891cc1596a6e.pdf",
+     "data": "2026-09-08",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
   },
   "1100288": {
    "nome": "Rolim de Moura",
@@ -234,6 +267,37 @@
    "nome": "Buritis",
    "uf": "RO",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "1101708": {
+   "nome": "URUPÁ",
+   "uf": "RO",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "bro de 2026, no \nperíodo das 7h30 às 17h, para participar da Oficina Regionalizada de Elaboração do Plano de \nContingência para o Enfrentame",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116148_2026-09-09_e2f4dd63af31e91d58da39a21df34ac6.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "bro de 2026, no \nperíodo das 7h30 às 17h, para participar da Oficina Regionalizada de Elaboração do Plano de \nContingência para o Enfrentame",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=269&i=publicado_116148_2026-09-09_e2f4dd63af31e91d58da39a21df34ac6.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -757,6 +821,15 @@
    "nome": "Barcelos",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "res, solicitar que a gente se una \npara ter uma conversa, porque o município precisa apresentar um \nplano de contingência para a estiagem de",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118937_2026-09-01_1f784ca6fc033eb4bedcfaa26ac420e0.pdf",
+     "data": "2026-09-02",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -892,6 +965,15 @@
    "nome": "Carauari",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "nais; \n  \nCONSIDERANDO que a Fundação de Vigilância em Saúde do \nAmazonas – FVS-RCP disponibiliza o Plano de Contingência para \nEventos Clim",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118944_2026-09-11_4f886e4cb52aa91dd8496b7afb7e16d7.pdf",
+     "data": "2026-09-14",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -1098,10 +1180,57 @@
    },
    "categoria": "nao_localizado"
   },
+  "1302009": {
+   "nome": "ITAPIRANGA",
+   "uf": "AM",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "teção e Defesa Civil \ncoordenará a atualização ou elaboração, no prazo de até 15 (quinze) \ndias, do Plano Municipal de Contingência para Est",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118936_2026-08-31_5976aa056909873e4c6a3839b690952b.pdf",
+     "data": "2026-09-01",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 4.182248,
+    "liquidada": 42500.0,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "1302207": {
    "nome": "Juruá",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "E DO PREFEITO \nDECRETO Nº 032, DE 18 DE SETEMBRO DE 2026. \n \nDetermina a revisão e a atualização do Plano \nMunicipal de  Contingência do Mun",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "data": "2026-09-21",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "NSIDERANDO os termos da Recomendação nº 89/2026 – MP-\nCMA; \nCONSIDERANDO que a existência formal de plano de contingência \nnão é suficiente,",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "data": "2026-09-21",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ução das medidas nele previstas, \nDECRETA: \nArt. 1º - Fica determinada a revisão e a atualização do Plano \nMunicipal de Contingência d o Mun",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "data": "2026-09-21",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -1117,6 +1246,15 @@
    "nome": "Jutaí",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "o Climática, a ser elaborado no prazo \nmáximo de 12 meses a partir da publicação desta Lei; \nII - o Plano de Contingência Municipal de Prote",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118939_2026-09-03_614ad7394ddd66813ea7f692f99a49e3.pdf",
+     "data": "2026-09-04",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -1257,6 +1395,15 @@
    "nome": "Nhamundá",
    "uf": "AM",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "te os índices pluviométricos, níveis de \nreservatórios e focos de calor no município. \n• Elaborar o Plano de Contingência Municipal para Est",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118940_2026-09-04_9e1ed9cde6af72b7a229329950218130.pdf",
+     "data": "2026-09-08",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -8130,6 +8277,44 @@
    },
    "categoria": "nao_localizado"
   },
+  "2411007": {
+   "nome": "RODOLFO FERNANDES",
+   "uf": "RN",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "proteção da vida, da integridade física e do \npatrimônio público; \n  \nCONSIDERANDO as diretrizes do Plano de Contingência \nMultirriscos para",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf",
+     "data": "2026-09-25",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "dações, secas prolongadas, ondas de calor, baixa \numidade e outros desequilíbrios ambientais; \nII — Plano de Contingência Escolar (PCE) : do",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf",
+     "data": "2026-09-25",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "eção imediata, visando à preservação da \nintegridade física da comunidade escolar; \nII — Executar o Plano de Contingência Escolar, incluindo",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf",
+     "data": "2026-09-25",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "2411205": {
    "nome": "Santa Cruz",
    "uf": "RN",
@@ -9877,6 +10062,15 @@
    "nome": "Gravatá",
    "uf": "PE",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "entar \ne Nutricional; \n  \n• \nImplantar o Programa Família Acolhedora; \n  \n• \nElaborar e implementar Plano de Contingência do SUAS para \nsitu",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115892_2026-09-04_4375d81c2d73ab73ea96d1b8b5cb3979.pdf",
+     "data": "2026-09-08",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -10062,6 +10256,30 @@
     "classe": "com_lancamento",
     "rs_hab": 0.834379,
     "liquidada": 15855.71,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "2608701": {
+   "nome": "LAGOA DOS GATOS",
+   "uf": "PE",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "energia solar em prédios públicos; 9.7. \nEstruturar e equipar a Defesa Civil municipal; \n9.8. Criar plano de contingência para desastres nat",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115889_2026-09-01_d441f9724457a639ca89bf9ddb75201b.pdf",
+     "data": "2026-09-02",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -21480,6 +21698,15 @@
    "nome": "Mendes",
    "uf": "RJ",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "Núcleos Comunitários de Proteção e Defesa Civil – NUPDEC; \nPlano de Adaptação à Mudança do Clima; \nPlano de Contingência de Proteção e Defe",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=265&i=publicado_117413_2026-09-01_30182f5bd18c2ec63128c35ac5145311.pdf",
+     "data": "2026-09-02",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_declaracao",
@@ -25445,6 +25672,37 @@
    },
    "categoria": "nao_localizado"
   },
+  "4104428": {
+   "nome": "CANDÓI",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "inclusão \ndas PICS dentro da APS, com identificação dos hiperutilizadores.  \nTambém explana sobre o Plano de contingencia de desastres, sobr",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "data": "2026-09-02",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": ". 33, da Lei Federal n° 8.080, de 19/09/90, \nLei Orgânica da Saúde. \nRESOLVE: \nArt. 1 º - Aprovar o Plano Municipal de Contingência para \nEn",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "data": "2026-09-02",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_declaracao",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "4104808": {
    "nome": "Cascavel",
    "uf": "PR",
@@ -25746,6 +26004,37 @@
    },
    "categoria": "nao_localizado"
   },
+  "4108452": {
+   "nome": "FOZ DO JORDÃO",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "umentos municipais de gestão de riscos e desastres, \ndevendo sua aplicação ser compatível com: \nI - Plano de contingência; \nII - Plano Diret",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118186_2026-09-17_dd95a07f25b52e1159c407eaf8a05904.pdf",
+     "data": "2026-09-18",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "entual deve ser efetivada para \nindivíduos, famílias, e grupos, independentemente da existência de \nPlano de Contingência Local ou da decret",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "data": "2026-09-25",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "4108601": {
    "nome": "Goioerê",
    "uf": "PR",
@@ -25935,10 +26224,72 @@
    },
    "categoria": "nao_localizado"
   },
+  "4111100": {
+   "nome": "ITAMBÉ",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ntificador:B5131E7A \n \nPROCURADORIA JURÍDICA \nRESOLUÇÃO Nº005/ 2026 \n \nDispõe sobre a aprov ação do Plano Municipal de \nContingência e o Pla",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "do Conselho Municipal de Saúde \nrealizada em 28 de agosto de 2026. \n  \nRESOLVE: \nArt. 1º Aprovar o Plano Municipal de Contingência para \nEn",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "4111258": {
    "nome": "Itaperuçu",
    "uf": "PR",
    "prioritario": true,
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4111407": {
+   "nome": "IVAÍ",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "uições que lhe conferea LeiMunicipal nº 479/1996, de \n08 demarço1996. \nRESOLVE: \nArt. 1º –Aprovar o Plano Municipal de Contingência de Arbov",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "data": "2026-09-21",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "destinado à prevenção e enfrentamento das doenças  transmitidas por \nvetores. \nArt. 2º –Aprovar o Plano de Contingência – Emergências em",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "data": "2026-09-21",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -26068,6 +26419,15 @@
    "nome": "Mandaguari",
    "uf": "PR",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "órgãos \ncompetentes, o FUMPDEC deverá, igualmente, ser integrado aos \nseguintes instrumentos: \nI – Plano de Contingência Municipal; \nII – P",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "data": "2026-09-02",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -26088,6 +26448,61 @@
     "classe": "sem_lancamento_182",
     "rs_hab": null,
     "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4114351": {
+   "nome": "MANFRINÓPOLIS",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "oteção e defesa civil no planejamento \nmunicipal; \nIV - elaborar, manter atualizado e implementar o Plano de \nContingência (PLANCON); \nV - r",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118185_2026-09-16_186a80bad631563f6a6674351b8f171a.pdf",
+     "data": "2026-09-17",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4114401": {
+   "nome": "MANGUEIRINHA",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "igo Tartare \nCódigo Identificador:5ED561DD \n \nPROCURADORIA \nRESOLUÇÃO N.º 21/2026 \n \nDeliberação do Plano de Contingência para \nArboviroses.",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": ", RESOLVE: \n  \nArt. 1º - Aprovar em reunião ordinária, realizada no dia 28/08/2026, \nDeliberação do plano de contingência para arbovirores 2",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 1.153822,
+    "liquidada": 19156.91,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -26143,6 +26558,15 @@
    "nome": "Matinhos",
    "uf": "PR",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "de Crise — COGEC, observarão o disposto no art. 20, inciso IX, \ndaquela Lei e serão veiculadas no Plano Municipal de Contingência \nde Prot",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "data": "2026-09-02",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -26211,6 +26635,30 @@
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
    }
+  },
+  "4116406": {
+   "nome": "NOSSA SENHORA DAS GRAÇAS",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "e Lei Municipal 929/2021, resolve dentro dos \nparâmetros legais aprovar: \n  \nArt. 2°- Aprovação do Plano de Contingência. \n  \nNossa Senhora",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf",
+     "data": "2026-09-11",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 74.686432,
+    "liquidada": 274024.52,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
   },
   "4116901": {
    "nome": "Nova Esperança",
@@ -26373,6 +26821,13 @@
      "data": "22/09/2026",
      "veiculo": "instagram.com",
      "nivel": "B"
+    },
+    {
+     "titulo": "de 15 \nde outubro de 2001. \n  \nArt. 6º A Comissão deverá  observar, em todas as suas atividades, o \nPlano de Contingência Municipal de Prote",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf",
+     "data": "2026-09-11",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
     }
    ],
    "defesa_civil_orcamento": {
@@ -26380,6 +26835,30 @@
     "classe": "com_lancamento",
     "rs_hab": 1.378911,
     "liquidada": 126633.65,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4118600": {
+   "nome": "PAULA FREITAS",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MPDEC na gestão de riscos e \ndesastres; \nII - analisar, propor alterações e emi tir parecer sobre o Plano de \nContingência Municipal (PLANCO",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "data": "2026-09-21",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -26467,6 +26946,29 @@
    "url": null,
    "data": "16/06/2026",
    "fonte": "Prefeitura de Curitiba (coordenação)",
+   "imprensa": [
+    {
+     "titulo": "r:33C69F5B \n \nSECRETARIA MUNICIPAL DE SAÚDE \nRESOLUÇÃO Nº 33, DE 02 DE SETEMBRO DE 2026 \n \nAprova o Plano de Contingência para o \nEnfrentame",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "data": "2026-09-14",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "A"
+    },
+    {
+     "titulo": "as Arboviroses do Município de Piraquara para o \nperíodo de 2026–2027; \nRESOLVE: \nArt. 1º Aprovar o Plano de Contingência para o Enfrentamen",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "data": "2026-09-14",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "o da Rede Municipal de Saúde para o período de maior \nrisco epidemiológico. \nArt. 4º A aprovação do Plano de Contingência para o Enfrentamen",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf",
+     "data": "2026-09-14",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "sem_lancamento_182",
@@ -26522,6 +27024,44 @@
    },
    "categoria": "nao_localizado"
   },
+  "4120101": {
+   "nome": "PORTO AMAZONAS",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "versos ocorridos no Município obs ervarão a Lei \nMunicipal nº 1.370/2026, este Regimento Interno, o Plano Municipal de Contingência de Prote",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "ação dos setores da COMPDEC diante de situações de risco ou desastre; \nIX – Coordenar a execução do Plano Municipal de Contingência; \nX – Ac",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "s os documentos relativos às atividades de proteção e defesa civil; \nV – Auxiliar na atualização do Plano Municipal de Contingência e demais",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf",
+     "data": "2026-09-10",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "4120606": {
    "nome": "Prudentópolis",
    "uf": "PR",
@@ -26565,6 +27105,54 @@
     "classe": "com_lancamento",
     "rs_hab": 45.354141,
     "liquidada": 1394095.58,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4121208": {
+   "nome": "QUITANDINHA",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "ador:063FD1D0 \n \nESTADO DO PARANÁ \nPREFEITURA MUNICIPAL DE RANCHO ALEGRE D' OESTE \n \nADMINISTRAÇÃO \nPLANO DE CONTINGÊNCIA MUNICIPAL DE DEFES",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "data": "2026-09-23",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4121307": {
+   "nome": "RANCHO ALEGRE",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "to Municipal  \nPublicado por: \nSueli Batista Alves \nCódigo Identificador:45BE01CA \n \nADMINISTRAÇÃO \nPLANO DE CONTINGÊNCIA MUNICIPAL DE DEFES",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "data": "2026-09-21",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -26812,6 +27400,37 @@
    },
    "categoria": "nao_localizado"
   },
+  "4126207": {
+   "nome": "SAPOPEMA",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "026, do 2º Relatório \nDetalhado do Quadrimestre Anterior – 2º RDQA de \n2026, e sobre a aprovação do Plano Municipal de \nContingência para o",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "data": "2026-09-15",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "de Saúde de Sapopema, com vigência de 01 de janeiro de \n2026 a 31 de dezembro de 2027. \nArt. 4º  O Plano Municipal de Contingência aprovado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "data": "2026-09-15",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "4126256": {
    "nome": "Sarandi",
    "uf": "PR",
@@ -26827,6 +27446,37 @@
    },
    "categoria": "nao_localizado"
   },
+  "4126652": {
+   "nome": "SULINA",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "teção e defesa civil no planejamento \nmunicipal; \nIV - elaborar, manter atual izado e implementar o Plano de \nContingência (PLANCON); \nV - r",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118176_2026-09-02_f60707599631cf194c04978aff40f0f9.pdf",
+     "data": "2026-09-03",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    },
+    {
+     "titulo": "OMPDEC na gestão de riscos e \ndesastres; \nII - analisar, propor alterações e emitir parecer sobre o Plano de \nContingência Municipal (PLANCO",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+     "data": "2026-09-23",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "4127106": {
    "nome": "Telêmaco Borba",
    "uf": "PR",
@@ -26836,6 +27486,30 @@
     "classe": "com_lancamento",
     "rs_hab": 2.112112,
     "liquidada": 158497.1,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4127304": {
+   "nome": "TERRA RICA",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "LUÇÃO N° 25/2026 \n \nSECRETARIA MUNICIPAL DE SAÚDE \nCONSELHO MUNICIPAL DE SAÚDE \n  \nSÚMULA: Aprova o Plano Municipal de \nContingência para o",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "data": "2026-09-25",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 56.83934,
+    "liquidada": 843609.49,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -26930,6 +27604,13 @@
      "data": "22/09/2026",
      "veiculo": "instagram.com",
      "nivel": "B"
+    },
+    {
+     "titulo": "ipal \nde Saúde em reunião realizada no dia 27 de agosto de 2026; \n  \nRESOLVE: \n  \nArt. 1º Aprovar o Plano Municipal de Contingência para Epi",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "data": "2026-09-02",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
     }
    ],
    "defesa_civil_orcamento": {
@@ -26937,6 +27618,37 @@
     "classe": "com_lancamento",
     "rs_hab": 0.100709,
     "liquidada": 5542.33,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "4128708": {
+   "nome": "VITORINO",
+   "uf": "PR",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "MENTO \nSOCIAL \nRESOLUÇÃO Nº 08/2026 \n \nRESOLUÇÃO Nº 08/2026 \n  \nSÚMULA: Dispõe sobre a aprovação do Plano \nMunicipal de Contingência para Si",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "data": "2026-09-25",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "A"
+    },
+    {
+     "titulo": "dinária \nrealizada em 24 de setembro de 2026, conforme Ata nº 07/2026; \nRESOLVE: \nArt. 1º Aprovar o Plano Municipal de Contingência para Sit",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf",
+     "data": "2026-09-25",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "com_lancamento",
+    "rs_hab": 2.02109,
+    "liquidada": 19616.7,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
@@ -33626,6 +34338,15 @@
    "nome": "Três Coroas",
    "uf": "RS",
    "prioritario": true,
+   "imprensa": [
+    {
+     "titulo": "afetada e à restabelecimento dos serviços essenciais; \nCONSIDERANDO que foi necessário aciona r o Plano de \nContingência de Proteção e Def",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117935_2026-09-22_a412393f0ac7ce9780a355a5115bd591.pdf",
+     "data": "2026-09-23",
+     "veiculo": "www-storage.voxtecnologia.com.br",
+     "nivel": "A"
+    }
+   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
