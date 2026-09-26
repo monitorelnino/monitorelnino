@@ -51,7 +51,19 @@ def ua_de(proposito: str = "") -> str:
     A política de robots (§185) depende disto: `can_fetch` é avaliado contra `UA`, e o rastro
     de `data/robots_registro.json` grava o cliente. Módulo que enviava outra string era medido
     contra a regra de um agente e registrado como outro."""
-    return f"{UA} [{proposito}]" if proposito else UA
+    if not proposito:
+        return UA
+    # §235 (26/09/2026): o propósito vai para um CABEÇALHO HTTP, e cabeçalho é ASCII (RFC 7230
+    # §3.2.4). Quando o §228 unificou o cliente, dezoito chamadas passaram a mandar propósito
+    # acentuado — "verificação de links", "população IBGE", "execução das MPs" — e o cabeçalho
+    # virou inválido. Medido no mesmo dia: `defesacivil.es.gov.br` responde **HTTP 400 em 0,4 s**
+    # ao pedido com acento e **200 com o PDF** ao mesmo pedido sem ele. O conserto do §228 estava
+    # certo no princípio e errado no byte.
+    #
+    # O acento sai por transliteração, e não o propósito: "verificação de links" vira
+    # "verificacao de links", que quem lê o log da fonte entende igual.
+    plano = _ud.normalize("NFKD", proposito).encode("ascii", "ignore").decode("ascii").strip()
+    return f"{UA} [{plano}]" if plano else UA
 NIVEIS = ("nao_verificado", "nacional", "estadual", "municipal_completo")
 EXECUTOR = "robo" if os.environ.get("GITHUB_ACTIONS") else "claude"
 
@@ -771,6 +783,17 @@ def buscar_com_procedencia(url: str, timeout: int = 40, buscar_fn=None) -> tuple
         if e.code in RECUSAS_EXPLICITAS:
             raise                       # a fonte disse não; não se dá a volta por fora
         e_direto = e
+    except MuroDeRobo:
+        # §235 (26/09/2026): **muro de robô é recusa, e recusa não se contorna pela reserva.**
+        # Medido nesta data, sem rede: um `MuroDeRobo` caía no `except Exception` abaixo e a função
+        # devolvia "captura do Wayback" — dava a volta por fora num "não" explícito. Pior: antes de
+        # ler a captura, ela PEDIA ao archive.org para salvar a URL, empurrando o endereço do host
+        # a um terceiro logo depois de ser recusada por ele.
+        #
+        # O comentário de `RECUSAS_EXPLICITAS` já dizia a regra: a reserva existe para a conexão que
+        # nem chega a virar conversa HTTP, "em que não há recusa a respeitar porque não houve
+        # resposta". Muro É resposta e É recusa (§186) — faltava a linha que faz valer.
+        raise
     except Exception as e:  # noqa: BLE001
         e_direto = e
 

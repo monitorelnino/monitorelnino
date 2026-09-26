@@ -28,6 +28,11 @@ O QUE ELE CONFERE
   b) nenhuma string do código (docstring e comentário à parte, que podem contar a história)
      traz token de navegador;
   c) o `UA` canônico começa com o nome do projeto;
+  c-bis) §235: `ua_de(proposito)` gera cabeçalho ASCII para CADA propósito literal do
+     repositório. Cabeçalho HTTP é ASCII (RFC 7230 §3.2.4), e quando o §228 unificou o
+     cliente dezoito chamadas passaram a mandar propósito acentuado: `defesacivil.es.gov.br`
+     respondeu HTTP 400 ao pedido com acento e 200 com o PDF ao mesmo pedido sem ele. A trava
+     protege a transliteração dentro de `ua_de` — tirá-la reprova o portão nas dezoito;
   d) todo módulo que faz pedido de rede cru identifica o cliente.
 
 A leitura é por AST, e não por `grep`, justamente para que docstring e comentário possam
@@ -39,7 +44,7 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import UA  # noqa: E402
+from coletores_base import UA, ua_de  # noqa: E402
 
 ESTE = pathlib.Path(__file__).name
 BASE = "coletores_base.py"
@@ -47,6 +52,13 @@ BASE = "coletores_base.py"
 TOKEN_NAVEGADOR = "Mozi" + "lla/"
 # Chamada de rede crua, sem passar pelo `buscar` do projeto.
 CRUAS = ("urlopen", "build_opener")
+
+
+def _nome(no) -> str:
+    """'coletores_base.ua_de' para um Attribute/Name, ou ''."""
+    if isinstance(no, ast.Attribute):
+        return f"{_nome(no.value)}.{no.attr}".lstrip(".")
+    return no.id if isinstance(no, ast.Name) else ""
 
 
 def arquivos():
@@ -101,6 +113,22 @@ def conferir(p: pathlib.Path) -> list:
             if TOKEN_NAVEGADOR in no.value:
                 falhas.append(f"{rel}:{no.lineno} string de código com token de navegador — "
                               "nunca disfarçar o cliente (CLAUDE.md)")
+
+    # (c-bis) §235: o cliente montado para cada propósito tem de caber num CABEÇALHO HTTP, e
+    #     cabeçalho é ASCII (RFC 7230 §3.2.4). Quando o §228 unificou o cliente, dezoito chamadas
+    #     passaram a mandar propósito acentuado e o cabeçalho ficou inválido — medido no mesmo dia:
+    #     `defesacivil.es.gov.br` respondeu **HTTP 400 em 0,4 s** ao pedido com acento e **200 com
+    #     o PDF** ao mesmo pedido sem ele. O portão confere o resultado de `ua_de` para CADA
+    #     propósito literal do repositório, e não a função isolada: era a combinação que quebrava.
+    for no in ast.walk(arvore):
+        if not (isinstance(no, ast.Call) and _nome(no.func).split(".")[-1] == "ua_de" and no.args):
+            continue
+        a0 = no.args[0]
+        if not (isinstance(a0, ast.Constant) and isinstance(a0.value, str)):
+            continue
+        if not ua_de(a0.value).isascii():
+            falhas.append(f"{rel}:{no.lineno} ua_de({a0.value!r}) gera cabeçalho não-ASCII — "
+                          "cabeçalho HTTP é ASCII (RFC 7230); veja §235")
 
     # (d) pedido cru de rede sem cliente identificado. Duas formas: `urllib` e `requests` —
     #     a segunda entrou em 26/09/2026 porque era justamente por ela que a chave do Portal da
