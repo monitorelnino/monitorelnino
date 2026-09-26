@@ -35,7 +35,7 @@ function faceTile(uf){
   const acima = (niv.estadual || 0) + (niv.municipal_completo || 0) + (niv.municipal_parcial || 0);
   const ST = {NOVO:'novo', READ:'readaptado', VIG:'vigente-recorrente', ELAB:'em elaboração', LAC:'não localizado'};
   return `<div class="tile-face">
-    <span>diário consultado: ${((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[uf] || 0} de ${tot}</span>
+    <span>diários: ${((VRESUMO && VRESUMO.varredura_diarios && VRESUMO.varredura_diarios.por_uf) || {})[uf] || 0} de ${tot}</span>
     <span>${esc(ST[d.status] || d.status)}${d.data && d.data !== 'Recorrente' ? ' · ' + esc(d.data) : ''}</span>
     <span>${d.capital && d.capital.nome ? esc(d.capital.nome) + ' · ' + esc(String(d.capital.status || '').toLowerCase()) : 'capital —'}</span></div>`;
 }
@@ -183,7 +183,19 @@ DATA.regions.forEach(region=>{
   regionsEl.appendChild(col);
 });
 
-DATA.ufs.forEach(item=>{
+// 26/09/2026: dentro de cada faixa de região, ordem decrescente pelo índice — não alfabética.
+// Alinhadas numa série, as barras só são comparáveis se a ordem for a da própria grandeza; em
+// ordem alfabética o leitor tem 27 valores e nenhuma leitura. Estado sem índice vai para o fim da
+// faixa, sem inventar posição para quem não tem número.
+const ufsOrdenadas = DATA.ufs.slice().sort((a, b) => {
+  const va = (typeof MARE !== 'undefined' && MARE[a.uf]) ? MARE[a.uf].total : null;
+  const vb = (typeof MARE !== 'undefined' && MARE[b.uf]) ? MARE[b.uf].total : null;
+  if (va == null && vb == null) return a.uf.localeCompare(b.uf, 'pt-BR');
+  if (va == null) return 1;
+  if (vb == null) return -1;
+  return vb - va;
+});
+ufsOrdenadas.forEach(item=>{
   const container = document.getElementById('tiles-'+item.regiao);
   const tile = document.createElement('div');
   tile.className = `tile st-${item.status}`;

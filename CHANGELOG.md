@@ -9,6 +9,77 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §239 · O cabeçalho ganha nome e os 27 estados deixam de ser 27 cartões · 26/09/2026
+
+Classe **design**. Seis pedidos da editoria sobre a página inicial, aplicados no laço de design do
+§237. Nenhum dado, nenhum número e nenhuma fonte mudaram.
+
+**Menu: a página corrente passa a terracota.** Era musgo — a mesma cor do botão "Para gestores" e do
+botão primário do site. Duas funções na mesma cor. A terracota é o acento único do sistema de marca e
+não tem outro papel. Branco sobre `#C04430` mede **5,1:1**, acima do mínimo AA para texto normal.
+A regra vale em **todas** as páginas, e não só na inicial: é o mesmo componente, e o `CLAUDE.md` pede
+o mesmo token para o mesmo papel.
+
+**Logotipo de 320px para 420px — e o nome do site sai de dentro do SVG.** O descritor
+"· MONITOR DE ANTECIPAÇÃO E RESPOSTA AO EL NIÑO" era desenhado a 9,5px do `viewBox` e chegava à tela a
+**7,6px**: abaixo do piso de 12px da escala do próprio site, e ilegível. Agora é texto de verdade, em
+Fraunces 300 no tamanho `--fs-h2`, selecionável e pesquisável. O `.sr-only` do `<h1>` encolheu para
+"MARÉ ·" porque o nome deixou de ser invisível — senão o leitor de tela o ouviria duas vezes.
+
+Isso **atravessou as 12 páginas**, e de propósito: o descritor estava dentro do SVG, e mexer nele só
+na inicial partiria a marca em duas versões. Nas onze páginas secundárias o logotipo é exibido a
+210px, o que levava o mesmo descritor a **5px de altura** — lá ele era ainda menos legível, e era o
+único lugar onde o nome completo do site aparecia. Agora é o mesmo texto, no mesmo lugar, em
+`--fs-h4`. Junto, o `viewBox` foi de `0 0 400 152` para `0 0 400 116`: sem o descritor sobravam 36
+unidades vazias abaixo da linha d'água, que apareciam como um vão entre o logotipo e o que vem
+depois. Nenhum traço da marca foi alterado.
+
+**Parágrafo de orientação no cabeçalho.** Diz o que o site verifica, o que esta página mede, o que as
+outras acompanham, e que registro sem localização até o corte é declarado como tal. Escrito contra os
+§§16, 18, 20 e 21 da governança: sem metadiscurso, sem palavra de juízo, sem prosa de IA.
+
+**Campos de formulário em osso.** O fundo era `--surface-2` (`#F0F4F3`), um mineral-claríssimo que
+sobre branco lê como o cinza padrão de navegador. Passa a `--campo` (`#EDE6D8`), o osso da marca —
+a única base clara que o sistema autoriza — com borda quente da mesma família. Texto secundário
+sobre ele mede **5,0:1**. Zebra de tabela e trilho de barra **não** mudaram: continuam em
+`--surface-2`, que é o que eles são.
+
+**Os estados: a região deixa de ser coluna e o cartão vira linha.** O pedido foi "grande e pesada e
+com uma estética sem harmonia, porque muitas regiões têm muitos estados e outras têm poucos". A causa
+é geométrica e foi medida: uma **coluna por região**, com 9 ladrilhos no Nordeste contra 3 no Sul,
+numa grade de **1365px** de altura em que toda coluna herda a altura da mais longa — sobrava um
+quadrante inteiro vazio embaixo à direita. Enquanto o número de estados por região definir a
+geometria, nenhum ajuste de espaçamento resolve.
+
+A região virou **faixa horizontal**: o desequilíbrio 9×3 passa a ser diferença de comprimento de
+faixa, que é informação, e não buraco de leiaute. E o cartão virou **linha**, porque a direção de arte
+§6 diz que cartão não é unidade narrativa e só se usa quando a informação é mesmo modular: 27 estados
+de uma mesma série não são 27 módulos. Alinhadas, as barras do índice passaram a ser **comparáveis
+entre estados**, o que 27 cartões soltos não permitiam; e dentro da faixa a ordem é decrescente pelo
+índice, não alfabética — em ordem alfabética o leitor tinha 27 valores e nenhuma leitura. Estado sem
+índice vai para o fim da faixa, sem posição inventada para quem não tem número.
+
+Duas barras lado a lado sem rótulo dependeriam só de posição para dizer o que são, o que a direção de
+arte §23 proíbe: entrou um cabeçalho de colunas que **descreve** a variável e a unidade e nada mais,
+como manda o portão 19. Abaixo de 1020px a linha se abre em duas e o cabeçalho sai, porque apontaria
+para o lugar errado — por isso o primeiro campo voltou a se descrever sozinho ("diários: 62 de 62"),
+já que no celular não há coluna nomeada e leitor de tela nunca teve uma.
+
+O que **não** mudou: a face de três campos continua visível em todo estado, o marcador de capital
+continua lá, o detalhe continua abrindo em janela ao clique, e nenhuma cor nova entrou.
+
+| | antes | depois |
+|---|---|---|
+| altura da grade dos estados | 1365px | 1291px (painel) |
+| altura da linha/cartão | 139px | 31px |
+| colunas raggeadas | 5 (9·7·4·4·3) | nenhuma |
+| barras comparáveis entre estados | não | sim |
+
+**O que fica para a editoria decidir.** O cabeçalho agora tem **três** parágrafos: o novo, de
+orientação, e os dois `.site-sub` que já existiam. Eles não se contradizem, mas o primeiro
+`.site-sub` (o boletim de 29 de junho) cobre parte do mesmo terreno. Não apaguei texto que ninguém
+pediu para apagar; se a editoria quiser fundir, é um pedido separado.
+
 ## §238 · O regime de trabalho muda: a skill vence nas duas colisões · 26/09/2026
 
 Classe **regra de trabalho**.
