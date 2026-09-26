@@ -50,6 +50,7 @@ import urllib.request
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
 from coletores_base import ua_de, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import normalizar_nome  # §233
 
 # Fuso da redação: a hora que a figura mostra ao leitor é a de Brasília, não a do runner
 # (que roda em UTC). Sem isto, "consultado às 14:02" apareceria três horas adiantado.
@@ -208,14 +209,25 @@ FONTES = {
         "licenca": "CC BY 4.0 — crédito obrigatório: Copernicus CAMS via Open-Meteo.com",
     },
     # ---------------------------------------------------------------------
-    # CAMADA DE MEDIÇÃO (24/09/2026). As duas fontes abaixo exigem credencial, e as duas
-    # ficam em LACUNA DECLARADA enquanto a credencial não existir no ambiente — o site roda
-    # sem elas, e nada do que elas trariam é substituído por estimativa.
-    #   OpenAQ v3: recusa com HTTP 401 sem `X-API-Key` (medido em 24/09/2026). 401 é bloqueio
-    #     de acesso real e se respeita, sempre.
-    #   Estações do INMET: o endpoint de dados passou a exigir token. Sem token a rota devolve
-    #     204 com corpo vazio, e a rota com token responde "CHAVE INVÁLIDA!" (medido em 24/09).
-    # A chave vem do AMBIENTE (segredo da Action), nunca do repositório — que é público.
+    # CAMADA DE MEDIÇÃO. O que ela promete é o que nenhuma estimativa de modelo substitui, e por
+    # isso cada fonte daqui só entra com o que de fato mediu.
+    #   OpenAQ v3: recusa com HTTP 401 sem `X-API-Key` (medido em 24/09/2026). 401 é bloqueio de
+    #     acesso real e se respeita, sempre. A chave vem do AMBIENTE (segredo da Action), nunca do
+    #     repositório — que é público. Em 26/09/2026 a sonda do §224 confirmou: a chave cadastrada
+    #     é ACEITA (HTTP 200).
+    #   Estações do INMET: **a credencial que travava esta fonte não era exigida pela rota que ela
+    #     usa.** Medido em 26/09/2026 — `https://apitempo.inmet.gov.br/estacoes/T` responde HTTP 200
+    #     com 262.904 bytes de JSON e 673 estações, SEM token nenhum, e é tudo o que
+    #     `parse_estacoes_inmet` consome. A fonte declarava `INMET_API_TOKEN`, e `coletar_fonte`
+    #     levantava `CredencialAusente` antes de tocar a rede: a camada de medição ficava vazia por
+    #     falta de uma chave que a rota não pede. O token saiu da declaração.
+    #
+    #     Ao lado, dois diagnósticos errados que ficavam aqui e foram conferidos: o comentário
+    #     afirmava que sem token a rota de dados devolve "204 com corpo vazio" — ela devolve **404**
+    #     (medido em `/estacao/diaria/2026-09-24/2026-09-25/A001`). E o papel declarado prometia
+    #     "máxima e mínima medidas", coisa que o adaptador não fazia: ele só escolhia a estação mais
+    #     próxima de cada capital. A promessa agora é cumprida pela rota pública
+    #     `/condicao/capitais/<data>` (200, 28 registros, sem token), abaixo.
     # ---------------------------------------------------------------------
     "openaq": {
         "nome": "Qualidade do ar medida", "orgao": "OpenAQ (agrega redes oficiais brasileiras)",
@@ -235,7 +247,9 @@ FONTES = {
         "papel": "Máxima e mínima medidas na estação automática da capital.",
         "natureza": NATUREZA_MEDICAO,
         "licenca": "Dados abertos INMET",
-        "credencial": "INMET_API_TOKEN",
+        # §233: a rota de condição das capitais, que traz a máxima e a mínima MEDIDAS. Pública,
+        # sem token, medida em 26/09/2026. É ela que cumpre o papel declarado acima.
+        "endpoint_medida": "https://apitempo.inmet.gov.br/condicao/capitais/{data}",
     },
     "noaa_oni": {
         "nome": "Oceanic Niño Index (ONI)", "orgao": "NOAA/CPC", "camada": "enos",
@@ -656,6 +670,69 @@ def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
     return melhor
 
 
+# A rota devolve o valor como TEXTO, e três formas aparecem: "28.8" (número limpo), "29.6*"
+# (número com asterisco) e "*" sozinho. As três são coisas diferentes e o projeto não pode
+# confundi-las — zero, ausência de dado e dado não divulgado são distintos.
+#
+# O que o asterisco SIGNIFICA não está declarado em nenhum lugar da resposta, e não vou afirmar.
+# Ele é registrado como o que é: uma marca que a fonte aplicou ao valor. Quem publicar o número
+# publica a marca junto.
+PAD_VALOR_INMET = re.compile(r"^\s*(-?\d+(?:[.,]\d+)?)\s*(\*?)\s*$")
+
+
+def _valor_inmet(bruto) -> tuple:
+    """(número, marcado_pela_fonte) ou (None, False) quando a fonte não divulgou. Função pura."""
+    t = str(bruto if bruto is not None else "").strip()
+    if not t or t == "*":
+        return None, False
+    m = PAD_VALOR_INMET.match(t)
+    if not m:
+        return None, False
+    return float(m.group(1).replace(",", ".")), bool(m.group(2))
+
+
+def parse_condicao_capitais(dados, por_uf_capital: dict, data_iso: str) -> dict:
+    """{UF: {tmax, tmin, umin_pct, pmax_mm, marcado_pela_fonte, data}} para as capitais com valor.
+
+    Três coisas MEDIDAS em 26/09/2026 que este leitor trata explicitamente:
+      • os nomes vêm em MAIÚSCULAS e sem acento — menos "MACEIÓ", que vem acentuado. A fonte é
+        inconsistente consigo mesma, então o casamento normaliza dos dois lados.
+      • **Brasília aparece DUAS vezes** (28 registros para 27 capitais). Nos dados de 26/09 as duas
+        linhas são idênticas, e nesse caso a duplicata é inofensiva. Se algum dia divergirem, a
+        capital é RECUSADA: duas medições diferentes para o mesmo dia e o mesmo lugar não se
+        resolvem escolhendo uma.
+      • seis das 28 linhas traziam `*` em vez de número. Isso é "não divulgado", nunca zero, e a
+        capital simplesmente não entra — a ausência fica como ausência.
+
+    Função pura."""
+    por_nome = {}
+    for uf, cap in (por_uf_capital or {}).items():
+        por_nome[normalizar_nome(cap["nome"])] = uf
+    vistos, saida, conflitos = {}, {}, []
+    for r in dados or []:
+        nome = normalizar_nome(str((r or {}).get("CAPITAL") or ""))
+        uf = por_nome.get(nome)
+        if not uf:
+            continue
+        tmax, marca_max = _valor_inmet(r.get("TMAX18"))
+        tmin, marca_min = _valor_inmet(r.get("TMIN18"))
+        if tmax is None and tmin is None:
+            continue
+        umin, _ = _valor_inmet(r.get("UMIN18"))
+        pmax, _ = _valor_inmet(r.get("PMAX12"))
+        reg = {"tmax": tmax, "tmin": tmin, "umin_pct": umin, "pmax_mm": pmax,
+               "marcado_pela_fonte": bool(marca_max or marca_min), "data": data_iso}
+        anterior = vistos.get(uf)
+        if anterior is not None and anterior != reg:
+            conflitos.append(uf)
+            continue
+        vistos[uf] = reg
+        saida[uf] = reg
+    for uf in conflitos:                 # duas linhas divergentes: nenhuma das duas serve
+        saida.pop(uf, None)
+    return saida
+
+
 def parse_estacoes_inmet(dados, por_uf_capital: dict) -> dict:
     """Escolhe a estação automática OPERANTE mais próxima de cada capital e devolve {UF: {...}}.
 
@@ -994,7 +1071,22 @@ def coletar_fonte(chave: str):
         if not estacoes:
             raise ValueError("lista de estações do INMET sem estação operante a menos de "
                              f"{INMET_RAIO_KM:.0f} km de nenhuma capital — recusada")
-        return ({"por_uf": estacoes}, f"INMET — {len(estacoes)} estação(ões) automática(s) de capital")
+        # §233: a MEDIDA, que é o que esta fonte promete no papel declarado. A rota é pública e
+        # separada; se ela falhar, a seleção de estações entra sozinha e a medida fica em lacuna —
+        # meia leitura declarada é melhor do que nenhuma, e muito melhor do que uma inventada.
+        dia = hoje_editorial().isoformat()
+        medidas, nota_medida = {}, "sem medida do dia"
+        try:
+            crus = json.loads(_buscar_registrado(chave, fonte["endpoint_medida"].format(data=dia)))
+            medidas = parse_condicao_capitais(crus, capitais, dia)
+            nota_medida = f"{len(medidas)} capital(is) com máxima/mínima medidas em {dia}"
+        except Exception as e:  # noqa: BLE001 — a seleção de estações não cai por causa da medida
+            nota_medida = f"medida do dia não obtida ({type(e).__name__})"
+        for uf, m in medidas.items():
+            if uf in estacoes:
+                estacoes[uf]["medida"] = m
+        return ({"por_uf": estacoes},
+                f"INMET — {len(estacoes)} estação(ões) automática(s) de capital; {nota_medida}")
 
     # As duas fontes do Open-Meteo pedem as 27 coordenadas numa chamada só e tratam a resposta
     # posicionalmente; saem antes do GET genérico abaixo.
@@ -1418,6 +1510,17 @@ def coletar(registro: dict, camadas) -> dict:
             "status": "coletado", "consultado_em": hoje(), "documento": documento,
             "detalhe": fonte["papel"],
         })
+        # §233: `update` MERGE, e por isso um `motivo` de rodada anterior sobrevivia à coleta bem
+        # sucedida. Visto no arquivo em 26/09/2026: `inmet_estacoes` gravado com
+        # `status: "coletado"` E `motivo: "INMET_API_TOKEN ausente — camada de medição fica em
+        # lacuna declarada"` ao mesmo tempo. Registro que se contradiz é pior do que registro
+        # ausente: quem lesse o `motivo` concluiria o oposto do que a coleta fez. Fonte que voltou
+        # a coletar não carrega o motivo de quando não coletava.
+        registro["fontes"][chave].pop("motivo", None)
+        if not fonte.get("credencial"):
+            # Mesma razão: a fonte deixou de exigir chave (§233, porque a rota dela é pública),
+            # e o campo antigo continuava no arquivo dizendo que exige.
+            registro["fontes"][chave].pop("credencial", None)
         if chave == "noaa_oni":
             registro["enos"]["oni"] = {**payload, "fonte": chave, "documento": documento}
         elif chave == "noaa_roni":
@@ -1893,10 +1996,42 @@ def autoteste() -> int:
     checar("INMET estações negativo: lista vazia devolve vazio",
            parse_estacoes_inmet([], _caps) == {} and parse_estacoes_inmet(None, _caps) == {})
 
+    # §233: o leitor da condição das capitais, com as três sutilezas medidas em 26/09/2026.
+    _cond = [
+        {"CAPITAL": "BELO HORIZONTE", "TMIN18": "19.5", "TMAX18": "28.8", "UMIN18": "53", "PMAX12": "0"},
+        {"CAPITAL": "MACEIÓ", "TMIN18": "23.1", "TMAX18": "29.6*", "UMIN18": "60", "PMAX12": "0"},
+        {"CAPITAL": "ARACAJU", "TMIN18": "*", "TMAX18": "*", "UMIN18": "*", "PMAX12": "*"},
+        {"CAPITAL": "BRASILIA", "TMIN18": "18.2", "TMAX18": "31.9", "UMIN18": "37", "PMAX12": "0"},
+        {"CAPITAL": "BRASILIA", "TMIN18": "18.2", "TMAX18": "31.9", "UMIN18": "37", "PMAX12": "0"},
+    ]
+    _capsc = {"MG": {"nome": "Belo Horizonte"}, "AL": {"nome": "Maceió"},
+              "SE": {"nome": "Aracaju"}, "DF": {"nome": "Brasília"}}
+    _m = parse_condicao_capitais(_cond, _capsc, "2026-09-25")
+    checar("§233 condição das capitais: lê a máxima e a mínima medidas",
+           _m.get("MG", {}).get("tmax") == 28.8 and _m["MG"]["tmin"] == 19.5)
+    checar("§233 nome em maiúscula E com acento ('MACEIÓ') casa dos dois lados",
+           "AL" in _m and _m["AL"]["tmax"] == 29.6)
+    checar("§233 o asterisco do valor é registrado como marca da fonte, não interpretado",
+           _m["AL"]["marcado_pela_fonte"] is True and _m["MG"]["marcado_pela_fonte"] is False)
+    checar("§233 negativo: '*' sozinho é NÃO DIVULGADO e a capital não entra — nunca zero",
+           "SE" not in _m)
+    checar("§233 Brasília vem DUAS vezes na fonte; idênticas, entra uma",
+           _m.get("DF", {}).get("tmax") == 31.9)
+    _div = _cond[:4] + [{"CAPITAL": "BRASILIA", "TMIN18": "18.2", "TMAX18": "40.0",
+                         "UMIN18": "37", "PMAX12": "0"}]
+    checar("§233 duas linhas DIVERGENTES para a mesma capital: nenhuma serve, recusa",
+           "DF" not in parse_condicao_capitais(_div, _capsc, "2026-09-25"))
+    checar("§233 negativo: lista vazia ou nula devolve vazio",
+           parse_condicao_capitais([], _capsc, "x") == {} and parse_condicao_capitais(None, _capsc, "x") == {})
+
     # A credencial vem SÓ do ambiente, e sem ela a fonte nem bate na porta.
     _antes = {k: os.environ.pop(k, None) for k in ("OPENAQ_API_KEY", "INMET_API_TOKEN")}
     try:
-        for _f in ("openaq", "inmet_estacoes"):
+        # §233: a lista é derivada de quem DECLARA credencial, e não fixa. Até 26/09/2026 ela
+        # tinha `inmet_estacoes` escrito à mão, e a fonte declarava `INMET_API_TOKEN` — numa rota
+        # que, medida no mesmo dia, responde HTTP 200 com 673 estações SEM token. O teste provava
+        # o defeito: exigia que a fonte recusasse por falta de uma chave que a rota não pede.
+        for _f in [k for k, v in FONTES.items() if v.get("credencial")]:
             try:
                 coletar_fonte(_f)
                 checar(f"{_f}: sem credencial levanta CredencialAusente", False)
@@ -1905,6 +2040,10 @@ def autoteste() -> int:
                        FONTES[_f]["credencial"] in str(e))
             except Exception as e:  # noqa: BLE001
                 checar(f"{_f}: sem credencial levanta CredencialAusente (veio {type(e).__name__})", False)
+        checar("§233 inmet_estacoes NÃO exige credencial: a rota dela é pública (medido 26/09)",
+               not FONTES["inmet_estacoes"].get("credencial"))
+        checar("§233 e a fonte promete a MEDIDA, então declara a rota que a traz",
+               "condicao/capitais" in FONTES["inmet_estacoes"].get("endpoint_medida", ""))
         checar("credencial: lida do ambiente, nunca do repositório",
                credencial_de("openaq") is None)
         os.environ["OPENAQ_API_KEY"] = "chave-de-teste"

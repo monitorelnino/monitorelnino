@@ -9,6 +9,32 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §233 · A fonte estava travada por uma chave que a rota dela não pede · 26/09/2026
+
+Classe **correção de fato**.
+
+A camada de MEDIÇÃO de temperatura estava vazia nas 27 capitais, e a página mostrava só a estimativa de modelo — justamente a distinção que o projeto declara manter. O motivo registrado era credencial ausente. **A rota que a fonte usa não pede credencial nenhuma.**
+
+Medido em 26/09/2026: `https://apitempo.inmet.gov.br/estacoes/T` responde **HTTP 200 com 262.904 bytes e 673 estações, sem token**, e é tudo o que `parse_estacoes_inmet` consome. A fonte declarava `INMET_API_TOKEN`, e `coletar_fonte` levantava `CredencialAusente` **antes de tocar a rede**. A seleção de estação nunca rodou por falta de uma chave que ninguém pediu.
+
+**Dois diagnósticos errados estavam escritos ao lado, e foram conferidos.** O comentário afirmava que sem token a rota de dados devolve "204 com corpo vazio" — devolve **404** (`/estacao/diaria/2026-09-24/2026-09-25/A001`). E o papel declarado prometia "máxima e mínima **medidas** na estação automática da capital", coisa que o adaptador não fazia: ele só escolhia a estação mais próxima de cada capital, e nunca leu temperatura alguma. Promessa no `papel` que o código não cumpre é pior do que lacuna declarada, porque ninguém vai procurar o que já parece entregue.
+
+**A promessa passou a ser cumprida**, por uma rota pública que o repositório não usava em lugar nenhum: `/condicao/capitais/<data>` — 200, 28 registros, sem token, com máxima, mínima, umidade mínima e precipitação máxima por capital. A rodada de 26/09 gravou **22 estações de capital e 21 capitais com máxima e mínima medidas**.
+
+**Três sutilezas da fonte que o leitor trata explicitamente, porque medi cada uma.**
+
+- Os nomes vêm em maiúsculas e sem acento — **menos "MACEIÓ", que vem acentuado**. A fonte é inconsistente consigo mesma, e só normalizar os dois lados resolve.
+- **Brasília aparece duas vezes** (28 registros para 27 capitais). Nos dados de 26/09 as duas linhas são idênticas e a duplicata é inofensiva; se algum dia divergirem, a capital é **recusada** — duas medições diferentes para o mesmo dia e o mesmo lugar não se resolvem escolhendo uma.
+- **Seis das 28 linhas traziam `*` em vez de número.** Isso é "não divulgado", nunca zero, e a capital não entra. E quando o valor vem como `29.6*`, o número entra com a marca registrada como marca: **o que o asterisco significa não está declarado em nenhum lugar da resposta, e eu não vou afirmar.** Quem publicar o número publica a marca junto.
+
+**Um registro que se contradizia.** O arquivo gravou, na mesma entrada, `status: "coletado"` **e** `motivo: "INMET_API_TOKEN ausente — camada de medição fica em lacuna declarada"`. A causa é `dict.update`, que mescla: o motivo de uma rodada anterior sobrevivia à coleta bem-sucedida. Registro que se contradiz é pior do que registro ausente — quem lesse o `motivo` concluiria o oposto do que a coleta fez. Fonte que voltou a coletar não carrega mais o motivo de quando não coletava, nem o campo de credencial que deixou de exigir.
+
+**`normalizar_nome` subiu para `coletores_base`.** Ela vivia só no coletor de diários consorciados, e importar aquele módulo por causa dela traria o Playwright junto. Copiá-la seria a cópia que envelhece do §213 — numa função de **casar nome**, onde divergir significa um município casar num coletor e não casar no outro.
+
+Nove travas novas, offline, incluindo as três sutilezas acima e a que impede o retorno do defeito: a lista de fontes que exigem credencial passou a ser **derivada** de quem declara credencial, em vez de escrita à mão. O teste antigo tinha `inmet_estacoes` fixo no código e **provava o defeito** — exigia que a fonte recusasse por falta de uma chave que a rota não pede.
+
+**Para a editoria:** o token do INMET continua sendo ação humana (sem caminho público de cadastro; é pedido à Central de Serviços), mas **não é mais necessário** para catalogar a estação nem para a máxima e a mínima medidas das capitais. Ele serviria para a série histórica por estação, que é outra coisa.
+
 ## §232 · O muro que não dizia nada, e a permissão tirada de uma recusa · 26/09/2026
 
 Classe **conformidade com a política de acesso**. É o §186 e o §187 pela terceira vez, e desta vez o detector estava cego.

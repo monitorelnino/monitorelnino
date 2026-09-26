@@ -118,7 +118,7 @@ import http.cookiejar, io, json, pathlib, re, subprocess, sys, time, unicodedata
 from datetime import date, timedelta
 from coletores_base import (UA, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste,
-                            CANAIS_ATO, hoje_editorial)
+                            CANAIS_ATO, hoje_editorial, normalizar_nome)
 from classificar_pista_civil import triagem_completa
 
 # Só slugs confirmados por navegação/fetch reais nesta sessão (20-22/09/2026). AL fica de
@@ -209,12 +209,6 @@ PAD_TOKEN_VALUE = re.compile(r'\bvalue=["\']([^"\']*)["\']', re.I)
 PAD_CABECALHO = re.compile(
     r"(?:PREFEITURA(?:\s+MUNICIPAL)?|MUNIC[ÍI]PIO|C[ÂA]MARA(?:\s+MUNICIPAL)?)\s+DE\s+([A-ZÀ-Úa-zà-ú][A-ZÀ-Úa-zà-ú\s']{2,40}?)(?=[\n\r,\.\-–—]|\s{2,}|$)",
     re.M)
-
-
-def normalizar_nome(s: str) -> str:
-    """Maiúsculas sem acento, sem duplo espaço — para casar nome do PDF com a referência IBGE."""
-    s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode("ascii")
-    return re.sub(r"\s+", " ", s).strip().upper()
 
 
 def extrair_token(html: bytes) -> str:
