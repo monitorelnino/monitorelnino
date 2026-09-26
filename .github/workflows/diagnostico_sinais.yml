@@ -27,11 +27,15 @@ jobs:
       # §208: a primeira coisa a conferir depois de cadastrar um segredo. Responde em segundos
       # se a credencial CHEGOU ao passo e se a fonte a aceita, sem esperar a rodada de 6 h. Nunca
       # imprime a credencial — só o tamanho e os quatro últimos caracteres.
-      - name: Sondar as credenciais das fontes de medição (OpenAQ e estações do INMET)
+      - name: Sondar as credenciais (OpenAQ, Portal da Transparência e estações do INMET)
         continue-on-error: true
         env:
           OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
           INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
+          # §224 (26/09/2026): faltava aqui. A sonda existe para responder "a chave chegou e a
+          # fonte aceita?", e a única credencial do projeto que estava cadastrada e sendo
+          # RECUSADA era justamente a que não passava por ela.
+          PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
         run: |
           set -o pipefail
           python3 scripts/sondar_credenciais.py 2>&1 | tee /tmp/credenciais.log
