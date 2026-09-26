@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 26/09/2026 · 619 pendente(s) · 15 decidida(s) · A=97 B=360 C=162
+Gerado em 26/09/2026 · 621 pendente(s) · 15 decidida(s) · A=98 B=360 C=163
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -222,12 +222,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: PLANO MUNICIPAL DE EDUCAÇÃO · 1 – INTRODUÇÃO .......................................................................................................................... 3
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Campina da Lagoa/PR — 1 pendente(s)
+## Campina da Lagoa/PR — 2 pendente(s)
 - `5e453245c9` · nível **A** (6 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: PLANO MUNICIPAL DE SAÚDE DE CAMPINA DA LAGOA 2026-2029 2025
   - url: https://www.campinadalagoa.pr.gov.br/documentos/legislacao/142510-planos-1-2026.pdf
   - trecho: Isso aponta para a necessidade de reforçar o acompanhamento pré-natal de alto risco para ... Sinal de Alerta Localizado: Enquanto a 11ª Regional de Saúde de Campo Mourão como um todo manteve um · número de óbitos estável
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `069fc8698d` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: PLANO MUNICIPAL DE SAÚDE DE CAMPINA DA LAGOA 2026-2029 2025
+  - url: https://www.campinadalagoa.pr.gov.br/documentos/legislacao/142510-planos-1-2026.pdf
+  - trecho: Este Plano Municipal de Saúde 2026-2029, portanto, é um convite à reflexão e à ação conjunta de gestores, profissionais de saúde, conselheiros e toda a comunidade de Campina da Lagoa, para que, juntos, possam
 
 ## Campo Mourão/PR — 5 pendente(s)
 - `b24d320293` · nível **A** (6 pts) · busca_web · EX_ANTE · citação não extraída
@@ -438,15 +442,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: data do ato incompleta (2026)
 
 ## PIRAQUARA/PR — 6 pendente(s)
-- `39efe0a6e1` · nível **A** (6 pts) · diario_consorciado · — · **RESOLUÇÃO Nº 33**, 02/09/2026 (do trecho)
+- `39efe0a6e1` · nível **A** (6 pts) · diario_consorciado · DUVIDA · **PORTARIA Nº 20**, 11/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf
   - trecho: r:33C69F5B    SECRETARIA MUNICIPAL DE SAÚDE  RESOLUÇÃO Nº 33, DE 02 DE SETEMBRO DE 2026    Aprova o Plano de Contingência para o  Enfrentamento das Arboviroses, com ênfase na  Dengue, para o período de 2026–2027     O PR
-- `af9de3008f` · nível **B** (5 pts) · diario_consorciado · — · data 02/09/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `af9de3008f` · nível **B** (5 pts) · diario_consorciado · DUVIDA · **PORTARIA Nº 20**, 11/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf
   - trecho: as Arboviroses do Município de Piraquara para o  período de 2026–2027;  RESOLVE:  Art. 1º Aprovar o Plano de Contingência para o Enfrentamento das  Arboviroses do Município de Piraquara, com ênfase na Dengue, para  o per
-- `40b222204d` · nível **B** (4 pts) · diario_consorciado · — · data 02/09/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `40b222204d` · nível **B** (4 pts) · diario_consorciado · DUVIDA · **PORTARIA Nº 20**, 11/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf
   - trecho: o da Rede Municipal de Saúde para o período de maior  risco epidemiológico.  Art. 4º A aprovação do Plano de Contingência para o Enfrentamento  das Arboviroses – 2026–2027 ocorreu mediante apreciação e  deliberação do Pl
+  - juiz: portão automático: fonte não oficial
 - `64096fbb44` · nível **C** (2 pts) · diario_consorciado · — · data 2026 (do trecho)
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118182_2026-09-11_e42e8262d26a736e6a002a66592391e0.pdf
   - trecho: minhado pela Direção do Departamento de Vigilância em  Saúde, que solicita a análise e avaliação do Plano de Contingência de  Arboviroses do Município de Piraquara para o período de 2026–2027;  CONSIDERANDO a necessidade
@@ -591,9 +598,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## VITORINO/PR — 5 pendente(s)
-- `fd8c051343` · nível **A** (6 pts) · diario_consorciado · — · **RESOLUÇÃO Nº 08**, 2026 (do trecho)
+- `fd8c051343` · nível **A** (6 pts) · diario_consorciado · DUVIDA · **RESOLUÇÃO Nº 39**, 24/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf
   - trecho: MENTO  SOCIAL  RESOLUÇÃO Nº 08/2026    RESOLUÇÃO Nº 08/2026     SÚMULA: Dispõe sobre a aprovação do Plano  Municipal de Contingência para Situações de  Emergência e Calamidade Pública, bem como, dos  Termos do ForSUAS, d
+  - juiz: portão automático: fonte não oficial
 - `68fa9174dd` · nível **B** (4 pts) · diario_consorciado · — · data 24/09/2026 (do trecho)
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf
   - trecho: dinária  realizada em 24 de setembro de 2026, conforme Ata nº 07/2026;  RESOLVE:  Art. 1º Aprovar o Plano Municipal de Contingência para Situações  de Emergência e Calamidade Pública do Município de Vitorino –  Paraná, q
@@ -813,9 +821,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## TRÊS COROAS/RS — 1 pendente(s)
-- `57f7eb410e` · nível **A** (7 pts) · diario_consorciado · — · **Decreto Municipal nº 3.846**, 10/07/2026 (do trecho)
+- `57f7eb410e` · nível **A** (7 pts) · diario_consorciado · EX_ANTE · **RESOLUÇÃO 008.202**, 2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117935_2026-09-22_a412393f0ac7ce9780a355a5115bd591.pdf
   - trecho:   afetada e à restabelecimento dos serviços essenciais;  CONSIDERANDO que foi necessário aciona r o Plano de  Contingência de Proteção e Defesa Civil do Município, homologado  pelo Decreto Municipal nº 3.846, de 10 de ju
+  - juiz: portão automático: fonte não oficial
 
 ## Terra de Areia/RS — 1 pendente(s)
 - `dc6c8beaa8` · nível **A** (6 pts) · busca_web · DUVIDA · **Lei 13.019**, 2014
@@ -1347,11 +1356,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: nais;     CONSIDERANDO que a Fundação de Vigilância em Saúde do  Amazonas – FVS-RCP disponibiliza o Plano de Contingência para  Eventos Climáticos Sazonais de Seca e Estiagem do Estado do  Amazonas 2026 e a Nota Técnica 
   - juiz: portão automático: fonte não oficial
 
-## ITAPIRANGA/AM — 1 pendente(s)
+## ITAPIRANGA/AM — 2 pendente(s)
 - `509724bef5` · nível **B** (3 pts) · diario_consorciado · DUVIDA · **PORTARIA Nº 063**, 2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118936_2026-08-31_5976aa056909873e4c6a3839b690952b.pdf
   - trecho: teção e Defesa Civil  coordenará a atualização ou elaboração, no prazo de até 15 (quinze)  dias, do Plano Municipal de Contingência para Estiagem, Seca,  Incêndios Florestais, Fumaça e Eventos Associados ao El Niño  2026
   - juiz: portão automático: fonte não oficial
+- `cdc3639111` · nível **C** (5 pts) · seguimento_busca_oficial · — · **DECRETO Nº 122**, 04/11/2020
+  - título: Diário Oficial dos Municípios de Santa Catarina - DOM/SC
+  - url: https://diariomunicipal.sc.gov.br/?AtoASolrDocument_page=40443&Search_page=7008&q=+categoria%3ADecretos&r=site%2Findex
+  - trecho: 1. 1. 1. DECRETO Nº 122, DE 04 DE NOVEMBRO DE 2020. 1. Dispõe sobre a homologação do Plano de Contingência Municipal elaborado pelo COMITÊ MUNICIPAL DE GERENCIAMNETO DE COVID-19 NO ÂMBITO DA EDUCAÇÃO.
+  - ⚠ uf_divergente_na_url
 
 ## JURUÁ/AM — 5 pendente(s)
 - `6e47405c57` · nível **B** (5 pts) · diario_consorciado · DUVIDA · **Lei nº 029**, 2026
@@ -1846,12 +1860,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 
 ## FOZ DO JORDÃO/PR — 2 pendente(s)
 - `dab5e7acc3` · nível **B** (5 pts) · diario_consorciado · — · **Lei Municipal nº 
-109**, 2025 (do trecho)
+109**, 2025
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118186_2026-09-17_dd95a07f25b52e1159c407eaf8a05904.pdf
   - trecho: umentos municipais de gestão de riscos e desastres,  devendo sua aplicação ser compatível com:  I - Plano de contingência;  II - Plano Diretor;  III - PPA, LDO e LOA;  IV - Coordenadoria Municipal da Defesa Civil.     Ar
-- `a60c8c19d1` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `a60c8c19d1` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **RESOLUÇÃO Nº 39**, 3.3.90
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf
   - trecho: entual deve ser efetivada para  indivíduos, famílias, e grupos, independentemente da existência de  Plano de Contingência Local ou da decretação de situação de  emergência ou estado de calamidade pública pelo Estado, Mun
+  - juiz: portão automático: fonte não oficial
 
 ## Fazenda Rio Grande/PR — 2 pendente(s)
 - `da6fbe3938` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
@@ -1948,12 +1963,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: ública relacionadas às arboviroses e à Febre  Amarela;  CONSIDERANDO a apresentação e apreciação do Plano Municipal  de Contingência e do Plano Municipal de Ação para Enfrentamento da  Dengue, do Zika Vírus, da Febre Chi
 
 ## IVAÍ/PR — 2 pendente(s)
-- `a3e661334b` · nível **B** (4 pts) · diario_consorciado · — · **LeiMunicipal nº 479**, 1996 (do trecho)
+- `a3e661334b` · nível **B** (4 pts) · diario_consorciado · EX_ANTE · **PORTARIA Nº 188**, 18/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf
   - trecho: uições que lhe conferea LeiMunicipal nº 479/1996, de  08 demarço1996.  RESOLVE:  Art. 1º –Aprovar o Plano Municipal de Contingência de Arbovirose,  destinado à prevenção e enfrentamento das doenças  transmitidas por  vet
-- `9752a36dda` · nível **B** (4 pts) · diario_consorciado · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `9752a36dda` · nível **B** (4 pts) · diario_consorciado · EX_ANTE · **PORTARIA Nº 188**, 18/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf
   - trecho:   destinado à prevenção e enfrentamento das doenças  transmitidas por  vetores.  Art. 2º –Aprovar o Plano de Contingência – Emergências em  Pacientes em Oxigenioterapia, visando garantir protocolos de  segurança e atendi
+  - juiz: portão automático: fonte não oficial
 
 ## Jaboti/PR — 2 pendente(s)
 - `c27bf03033` · nível **B** (3 pts) · querido_diario · EX_ANTE · **DECRETO Nº78**, 23/07/2026
@@ -2004,9 +2021,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## MANFRINÓPOLIS/PR — 1 pendente(s)
-- `0e808f2ee7` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `0e808f2ee7` · nível **B** (3 pts) · diario_consorciado · DUVIDA · **DECRETO Nº 356**, 16/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118185_2026-09-16_186a80bad631563f6a6674351b8f171a.pdf
   - trecho: oteção e defesa civil no planejamento  municipal;  IV - elaborar, manter atualizado e implementar o Plano de  Contingência (PLANCON);  V - realizar vistorias em áreas de risco e, se necessário, solicitar ou  promover a i
+  - juiz: portão automático: fonte não oficial
 
 ## MANGUEIRINHA/PR — 2 pendente(s)
 - `f86fa2ac52` · nível **B** (4 pts) · diario_consorciado · EX_ANTE · **DECRETO Nº 356**, 09/09/2026
@@ -2032,28 +2050,31 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## NOSSA SENHORA DAS GRAÇAS/PR — 1 pendente(s)
-- `29fe3144fe` · nível **B** (4 pts) · diario_consorciado · — · **Lei Municipal 929**, 2021 (do trecho)
+- `29fe3144fe` · nível **B** (4 pts) · diario_consorciado · — · **Lei Municipal 929**, 2021
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf
   - trecho:  e Lei Municipal 929/2021, resolve dentro dos  parâmetros legais aprovar:     Art. 2°- Aprovação do Plano de Contingência.     Nossa Senhora das Graças, 27 de maio de 2026.     LAERCIFLÁVIO AZEVEDO  Presidente do Conselh
 
 ## PATO BRANCO/PR — 1 pendente(s)
-- `495bf03d77` · nível **B** (3 pts) · diario_consorciado · — · data 15/10/2001 (do trecho)
+- `495bf03d77` · nível **B** (3 pts) · diario_consorciado · DUVIDA · **Lei Municipal n° 4.187**, 17/12/2025
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf
   - trecho: de 15  de outubro de 2001.     Art. 6º A Comissão deverá  observar, em todas as suas atividades, o  Plano de Contingência Municipal de Proteção e Defesa Civil, os  protocolos da Coordenadoria Municipal de Defesa Civil – 
+  - juiz: portão automático: fonte não oficial
 
 ## PAULA FREITAS/PR — 1 pendente(s)
-- `fe3b89251f` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `fe3b89251f` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **PORTARIA Nº 188**, 18/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf
   - trecho: MPDEC na gestão de riscos e  desastres;  II - analisar, propor alterações e emi tir parecer sobre o Plano de  Contingência Municipal (PLANCON);  III - aprovar o plano de aplicação dos recursos do Fundo Municipal de  Prot
+  - juiz: portão automático: fonte não oficial
 
 ## PORTO AMAZONAS/PR — 14 pendente(s)
 - `61ea1ea3a4` · nível **B** (5 pts) · diario_consorciado · EX_ANTE · **DECRETO Nº 356**, 09/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf
   - trecho: versos ocorridos no Município obs ervarão a Lei  Municipal nº 1.370/2026, este Regimento Interno, o Plano Municipal de Contingência de Proteção e Defesa Civil e as demais normas aplicáveis.  § 1º O Município deverá dispo
   - juiz: portão automático: fonte não oficial
-- `01f12c44f7` · nível **B** (5 pts) · diario_consorciado · — · **Lei Municipal nº 1.370**, 2026 (do trecho)
+- `01f12c44f7` · nível **B** (5 pts) · diario_consorciado · EX_ANTE · **DECRETO Nº 356**, 09/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf
   - trecho: a aperfeiçoamento das futuras ações.  Parágrafo único. As conclusões poderão subsidiar a revisão do Plano Municipal de Contingência, dos protocolos de atendimento, dos mapas de  risco e dos demais instrumentos municipais
+  - juiz: portão automático: fonte não oficial
 - `b32c0faba0` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **DECRETO Nº 356**, 09/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf
   - trecho: ação dos setores da COMPDEC diante de situações de risco ou desastre;  IX – Coordenar a execução do Plano Municipal de Contingência;  X – Acompanhar as informações e alertas relacionados a riscos e desastres;  XI – comun
@@ -2070,9 +2091,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf
   - trecho: s, estruturas e outros recursos disponíveis;  III – participar da elaboração, revisão e execução do Plano Municipal de Contingência;  IV – Participar de reuniões, treinamentos, capacitações, exercícios simulados e demais
   - juiz: portão automático: fonte não oficial
-- `d8ff0a3481` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `d8ff0a3481` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **DECRETO Nº 356**, 09/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf
   - trecho: responsabilidade que sejam relevantes para a gestão municipal de riscos e desastres.     Art. 92. O Plano Municipal de Contingência de Proteção e Defesa Civil constitui instrumento operacional de referência para atuação 
+  - juiz: portão automático: fonte não oficial
 - `c6c02cf5b8` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118180_2026-09-09_3db8bcaa5f2c6d83020400ea88f627a4.pdf
   - trecho: bendo-lhe:  I – Identificar, mapear e acompanhar áreas sujeitas a riscos;  II – Manter atualizado o Plano Municipal de Contingência;  III – acompanhar alertas meteorológicos, hidrológicos e demais informações oficiais re
@@ -2160,9 +2182,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## QUITANDINHA/PR — 4 pendente(s)
-- `0e8472868f` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `0e8472868f` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **Lei Estadual nº 20.394**, 2020
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf
   - trecho: ador:063FD1D0    ESTADO DO PARANÁ  PREFEITURA MUNICIPAL DE RANCHO ALEGRE D' OESTE    ADMINISTRAÇÃO  PLANO DE CONTINGÊNCIA MUNICIPAL DE DEFESA  CIVIL    1 – APRESENTAÇÃO  O presente Plano de Contingência tem por finalidad
+  - juiz: portão automático: fonte não oficial
 - `7ff5898b6b` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf
   - trecho: paço recreativo 8h até 11h e 14h até 17h  12 – ATIVAÇÃO DO PLANO     12.1 Autoridade de Ativação  O Plano de Contingência poderá ser ativado pelas seguinres  autoridades  Responsável: Almir Rogério Domingos – Coordenador
@@ -2174,9 +2197,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: (44) 99700 0353     13.3 Procedimentos para desmobilização  Após a decisão formal de desmobilizar o Plano de Contingência, as  seguintes medidas serão desencadeadas:  - Os órgãos mobilizados ativarão os pr otocolos intar
 
 ## RANCHO ALEGRE/PR — 4 pendente(s)
-- `a0aa9c74c6` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `a0aa9c74c6` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **PORTARIA Nº 188**, 18/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf
   - trecho: to Municipal   Publicado por:  Sueli Batista Alves  Código Identificador:45BE01CA    ADMINISTRAÇÃO  PLANO DE CONTINGÊNCIA MUNICIPAL DE DEFESA  CIVIL    1 – APRESENTAÇÃO  O presente Plano de Contingência tem por finalidad
+  - juiz: portão automático: fonte não oficial
 - `45558967ce` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf
   - trecho: paço recreativo 8h até 11h e 14h até 17h  12 – ATIVAÇÃO DO PLANO     12.1 Autoridade de Ativação  O Plano de Contingência poderá ser ativado pelas seguinres  autoridades  Responsável: Almir Rogério Domingos – Coordenador
@@ -2191,9 +2215,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `75675d3fdd` · nível **B** (5 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf
   - trecho: plano de manutenção pre ventiva, integração com a  Política Municipal de Proteção e Defesa Civil, o Plano de  Contingência de Proteção e Defesa Civil e demais instrumentos  municipais de gestão de riscos, quando existent
-- `abda897203` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `abda897203` · nível **B** (3 pts) · diario_consorciado · DUVIDA · **Lei Municipal n° 4.187**, 17/12/2025
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118181_2026-09-10_234babe51d7825f363a458db39634846.pdf
   - trecho: e aplicáveis, com o Plano  Diretor, os planos de bacia hidrográfica, o Plano Municipal de Saúde,  o Plano de Contingência da Defesa Civil, a legislação ambiental, a  legislação urbanística e demais planos setoriais perti
+  - juiz: portão automático: fonte não oficial
 
 ## Rio Negro/PR — 3 pendente(s)
 - `63d91b34fd` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
@@ -2220,12 +2245,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## SAPOPEMA/PR — 7 pendente(s)
-- `e30305de65` · nível **B** (4 pts) · diario_consorciado · — · data 15/09/2026 (do trecho)
+- `e30305de65` · nível **B** (4 pts) · diario_consorciado · EX_ANTE · **PORTARIA Nº 187**, 14/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf
   - trecho: 026, do 2º Relatório  Detalhado do Quadrimestre Anterior – 2º RDQA de  2026, e sobre a aprovação do Plano Municipal de  Contingência para o Enfrentamento das Arboviroses  – Dengue, Chikungunya e Zika – Biênio 2026–2027. 
-- `10163f82a3` · nível **B** (3 pts) · diario_consorciado · — · data 01/01/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `10163f82a3` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **PORTARIA Nº 187**, 14/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf
   - trecho:  de Saúde de Sapopema, com vigência de 01 de janeiro de  2026 a 31 de dezembro de 2027.  Art. 4º  O Plano Municipal de Contingência aprovado por esta  Resolução deverá orientar as ações de prevenção, vigilância, controle
+  - juiz: portão automático: fonte não oficial
 - `baa5239801` · nível **C** (2 pts) · diario_consorciado · — · data 01/01/2026 (do trecho)
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf
   - trecho:  Programação Anual de Saúde e execução  orçamentária e financeira;  CONSIDERANDO a apresentação  do Plano Municipal de  Contingência para o Enfrentamento das Arboviroses – Dengue,  Chikungunya e Zika – Biênio 2026–2027, 
@@ -2259,9 +2286,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## TERRA RICA/PR — 5 pendente(s)
-- `a92198d278` · nível **B** (4 pts) · diario_consorciado · — · data 2026 (do trecho)
+- `a92198d278` · nível **B** (4 pts) · diario_consorciado · DUVIDA · **RESOLUÇÃO Nº 39**, 24/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf
   - trecho: LUÇÃO N° 25/2026    SECRETARIA MUNICIPAL DE SAÚDE  CONSELHO MUNICIPAL DE SAÚDE     SÚMULA: Aprova o Plano Municipal de  Contingência para o Enfrentamento das Arboviroses  do Município de Terra Rica – PR.     O CONSELHO M
+  - juiz: portão automático: fonte não oficial
 - `8fa71c7473` · nível **C** (2 pts) · diario_consorciado · — · data 24/09/2026 (do trecho)
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf
   - trecho: uações de  aumento de casos, surtos ou epidemias de arboviroses;     CONSIDERANDO a apresentação do Plano Municipal de  Contingência para o Enfrentamento das Arbo viroses, realizada pela  Enfermeira Claudia Felipach, Coo
@@ -2449,15 +2477,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: fonte não oficial
 
 ## RODOLFO FERNANDES/RN — 5 pendente(s)
-- `8e7e43bd3d` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+- `8e7e43bd3d` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **Portaria nº 15**, 2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf
   - trecho: proteção da vida, da integridade física e do  patrimônio público;     CONSIDERANDO as diretrizes do Plano de Contingência  Multirriscos para Unidades Educacionais e a importância da  articulação intersetorial entre Educa
-- `e94e2dccb3` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `e94e2dccb3` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **Portaria nº 15**, 2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf
   - trecho: dações, secas prolongadas, ondas de calor, baixa  umidade e outros desequilíbrios ambientais;  II — Plano de Contingência Escolar (PCE) : documento técnico - operacional elaborado por cada unidade escolar, contendo diagn
-- `0daac61204` · nível **B** (3 pts) · diario_consorciado · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `0daac61204` · nível **B** (3 pts) · diario_consorciado · EX_ANTE · **Portaria nº 15**, 2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf
   - trecho: eção imediata, visando à preservação da  integridade física da comunidade escolar;  II — Executar o Plano de Contingência Escolar, incluindo evacuação  ou abrigamento, conforme o caso;  III — suspender integralmente as a
+  - juiz: portão automático: fonte não oficial
 - `eab7bc2674` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117683_2026-09-24_0f93f44b95829f060ea4721ed2c09a27.pdf
   - trecho: s ou desabrigadas.     Art. 10. Compete a cada unidade escolar:  I — Elaborar e manter atualizado o Plano de Contingência Escolar  (PCE);  II — Manter procedimentos operac ionais de evacuação e  abrigamento, com rotas, p
