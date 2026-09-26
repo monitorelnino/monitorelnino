@@ -23,6 +23,7 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
 """
 import hashlib, html, json, os, pathlib, re, ssl, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent
 DATA = RAIZ / "data"
@@ -47,8 +48,31 @@ CANAIS_ATO = ("DOM", "DOM-consorciado", "DOU", "repositorio_estadual", "orgao_es
               "site_municipal", "imprensa", "\u2014")
 
 
+# Fuso da REDAÇÃO. A data de uma edição é compromisso com o leitor brasileiro, e o runner do
+# GitHub Actions roda em UTC: a rodada de sábado 22h40 em Brasília já é domingo em UTC, e a edição
+# sairia datada de um dia que no Brasil ainda não começou.
+#
+# 26/09/2026 (§227): isto vivia só em `atualizar.py`, e o portão de cadência também só conferia
+# `atualizar.py`. Enquanto isso o `hoje()` DESTE arquivo — o que os dezesseis coletores chamam,
+# vinte e nove vezes só nos `coletar_*.py` — devolvia `date.today()`, a data do runner. A função
+# certa existia, o portão existia, e a porta por onde todo mundo passava era a errada. Mesmo
+# defeito de escopo do §213, do §222 e do §226: a lição aplicada num lugar só.
+FUSO_EDITORIAL = ZoneInfo("America/Sao_Paulo")
+
+
+def hoje_editorial(agora=None) -> date:
+    """Data de hoje no fuso da redação (America/Sao_Paulo), não no do runner.
+
+    `agora` existe para o portão poder provar o caso que importa sem esperar as 22h: um instante
+    que já virou o dia em UTC mas não em Brasília. Sem o relógio injetável, um teste só pegaria a
+    regressão nas três horas do dia em que os dois fusos discordam."""
+    return (agora or datetime.now(FUSO_EDITORIAL)).astimezone(FUSO_EDITORIAL).date()
+
+
 def hoje() -> str:
-    return date.today().isoformat()
+    """Data editorial em ISO. É o que vai a carimbo de arquivo, `consultado_em` e data de registro
+    — tudo que o leitor lê como "quando isto foi visto"."""
+    return hoje_editorial().isoformat()
 
 
 def ler(nome, padrao=None):
@@ -510,6 +534,17 @@ def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
 # vocabulário. Quem faz o pedido é quem tem de saber esperar, e o pedido é feito aqui.
 ESPERAS_429 = (30,)        # limite de taxa: a fonte manda esperar, e esperar é a resposta certa
 ESPERAS_5XX = (5, 15)      # indisponibilidade temporária: "tente mais tarde", crescendo
+# Conexão que nem chegou a virar conversa HTTP — reset, handshake TLS incompleto, DNS mudo,
+# timeout. UMA repetição curta, e não duas como no 5xx, por uma razão de custo medida: host
+# realmente fora do ar paga esta espera em CADA url de uma varredura, e uma varredura tem
+# milhares. Cinco segundos por url morta é aceitável; vinte, não.
+#
+# Que uma repetição basta veio de medição: em 24/09/2026, **105 leituras de PDF** falharam com
+# `URLError` num único dia, nos sítios de defesa civil de SE e AM. Testados em 26/09 sem
+# nenhuma mudança de código, os três documentos que a amostra apontava responderam na hora, com
+# 5,8 MB, 642 kB e 7,7 MB de PDF válido. Não era fonte fora do ar: era uma tarde ruim de rede
+# tratada como ausência de documento.
+ESPERAS_CONEXAO = (5,)
 
 
 def esperas_para(codigo: int) -> tuple:
@@ -528,8 +563,9 @@ def esperas_para(codigo: int) -> tuple:
 
 
 def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dormir=None) -> bytes:
-    """`buscar_uma_vez` com a espera do §226: repete quando a fonte pede tempo (429 e 5xx) e sobe
-    na hora quando repetir não ajudaria (4xx, muro de robô, erro de rede).
+    """`buscar_uma_vez` com a espera do §226: repete quando a fonte pede tempo (429 e 5xx) ou
+    quando a conexão nem virou conversa HTTP (reset, TLS, DNS, timeout), e sobe na hora quando
+    repetir não ajudaria — 4xx e muro de robô, que são recusa e não indisponibilidade.
 
     É a porta por onde todo coletor pede rede, e a correção entra aqui de propósito: dezesseis
     coletores passam a esperar sem mudar uma linha de chamada em nenhum deles. Quem mocka `buscar`
@@ -549,8 +585,16 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
         try:
             return uma_vez()
         except urllib.error.HTTPError as e:
+            # HTTPError é subclasse de URLError: tem de vir ANTES, senão todo status viraria
+            # "erro de conexão" e perderia a distinção entre recusa e indisponibilidade.
             if restantes is None:
                 restantes = list(esperas_para(e.code))
+            if not restantes:
+                raise
+            _dormir(restantes.pop(0))
+        except (urllib.error.URLError, TimeoutError):
+            if restantes is None:
+                restantes = list(ESPERAS_CONEXAO)
             if not restantes:
                 raise
             _dormir(restantes.pop(0))

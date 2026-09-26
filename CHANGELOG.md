@@ -9,6 +9,28 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §227 · A data de todos os coletores vinha do runner, e a reserva de arquivo nunca foi usada onde mais fazia falta · 26/09/2026
+
+Classe **correção de fato**.
+
+Três achados de uma auditoria dos dezesseis coletores, todos da mesma família do §226: uma regra certa, escrita num lugar, que não alcançava a porta por onde todo mundo passa.
+
+**1. O `hoje()` compartilhado datava em UTC.** O projeto tem `hoje_editorial()`, que converte para o fuso da redação, e tem um portão que exige seu uso — os dois viviam em `atualizar.py`, e o portão conferia `atualizar.py`. Enquanto isso, o `hoje()` de `coletores_base.py` — chamado pelos dezesseis coletores, **vinte e nove vezes só nos `coletar_*.py`** — devolvia `date.today()`: a data do runner, que roda em UTC. A rodada de sábado 22h40 em Brasília já é domingo em UTC, e o carimbo `consultado_em` de cada fonte saía datado de um dia que no Brasil ainda não tinha começado.
+
+O fuso e a função sobem para `coletores_base`, e `atualizar.py` passa a importá-los em vez de mantê-los. O portão de cadência foi ampliado para cobrir o helper compartilhado, e a prova usa **relógio injetado**, não o de agora: 27/09/2026 01h30 UTC é 26/09 22h30 em Brasília. Um teste sem relógio falso só pegaria a regressão nas três horas do dia em que os dois fusos discordam — ou seja, quase nunca, que é exatamente como o defeito durou. A trava foi verificada revertendo o código de propósito: o portão reprova.
+
+**2. A reserva de arquivo existia e não era usada onde mais fazia falta.** `preservar_evidencias.py` — o coletor que lê os PDFs de plano de contingência — chamava `buscar()` direto. Em 24/09, **105 leituras de PDF** falharam com `URLError` num único dia, nos sítios de defesa civil de Sergipe e do Amazonas. Testados em 26/09, sem nenhuma mudança de código, os três documentos da amostra responderam na hora: 5,8 MB, 642 kB e 7,7 MB de PDF válido. Não era fonte fora do ar — era uma tarde ruim de rede tratada como ausência de documento.
+
+Documento que existe e que o sítio momentaneamente não entrega é precisamente o caso da reserva do Wayback, no projeto desde 12/09. O coletor passa a usar `buscar_com_procedencia`, que a usa **dizendo por onde o conteúdo veio** — obrigatório aqui, porque plano lido no sítio do órgão e plano lido numa captura provam coisas diferentes. A procedência vai ao banco de evidências e, quando não é a fonte direta, ao log. A reserva **não** se aplica a recusa explícita (401, 402, 403, 429, 451): ali a fonte disse não, e não se dá a volta por fora.
+
+O `buscar()` compartilhado também passa a repetir erro de conexão — reset, TLS incompleto, DNS mudo, tempo esgotado. **Uma** repetição curta, e não duas como no 5xx, por uma razão de custo: host realmente fora do ar paga a espera em cada url de uma varredura, e uma varredura tem milhares. Cinco segundos por url morta é aceitável; vinte, não.
+
+**3. A lacuna guardava a classe da exceção, não o motivo.** As 128 falhas de leitura de PDF foram escritas apenas como `URLError`, sem dizer se foi DNS, TLS, reset ou tempo esgotado — e sem isso não havia como distinguir fonte caída de rede tropeçada, que é a distinção que decide se vale insistir. Agora a lacuna guarda a mensagem.
+
+**Uma correção ao diagnóstico anterior, para o registro.** As outras 71 falhas de leitura de PDF vinham com `UnicodeEncodeError`, e à primeira vista pareciam um defeito aberto do nosso cliente. São **todas de 07/09/2026**, véspera do conserto do `url_ascii` (08/09): estão fechadas há dezenove dias. O `url_ascii` foi reconferido contra a URL real do repositório do Espírito Santo, com `Contingência` cru misturado a `%C3%81` já codificado, e preserva o escape existente sem duplicá-lo.
+
+A suíte segue em 65 portões; dois deles ganharam travas novas.
+
 ## §226 · A lição dos 63 municípios estava aplicada em um coletor de dezesseis · 26/09/2026
 
 Classe **robustez de coleta**.

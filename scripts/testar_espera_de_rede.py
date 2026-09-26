@@ -164,6 +164,69 @@ def t_buscar_uma_vez_continua_existindo():
     return callable(getattr(cb, "buscar_uma_vez", None))
 
 
+def t_conexao_transitoria_entrega_na_repeticao():
+    """O caso medido em 24/09/2026: 105 leituras de PDF falharam com `URLError` num dia nos sítios
+    de defesa civil de SE e AM. Testados em 26/09, sem mudança de código, os documentos da amostra
+    responderam na hora — 5,8 MB, 642 kB e 7,7 MB de PDF válido. Não era fonte fora do ar; era uma
+    tarde ruim de rede tratada como ausência de documento."""
+    tentativas, esperas = [], []
+
+    def fn(url, timeout=None):
+        tentativas.append(url)
+        if len(tentativas) < 2:
+            raise urllib.error.URLError("conexão reiniciada")
+        return b"%PDF-1.4 documento"
+
+    return (cb.buscar("u", buscar_fn=fn, dormir=esperas.append).startswith(b"%PDF")
+            and len(tentativas) == 2 and esperas == [5])
+
+
+def t_conexao_morta_repete_uma_vez_so():
+    """Host realmente fora do ar paga a espera em CADA url de uma varredura, e uma varredura tem
+    milhares. Por isso a conexão repete UMA vez, e não duas como o 5xx: cinco segundos por url
+    morta é aceitável, vinte não."""
+    tentativas, esperas = [], []
+
+    def fn(url, timeout=None):
+        tentativas.append(url)
+        raise urllib.error.URLError("nome não resolve")
+
+    try:
+        cb.buscar("u", buscar_fn=fn, dormir=esperas.append)
+        return False
+    except urllib.error.URLError:
+        return len(tentativas) == 2 and esperas == [5]
+
+
+def t_httperror_nao_cai_no_ramo_de_conexao():
+    """`HTTPError` é subclasse de `URLError`. Se a ordem dos `except` invertesse, TODO status
+    passaria a ser tratado como erro de conexão e o projeto perderia a distinção entre recusa e
+    indisponibilidade — 403 ganharia uma repetição que a política proíbe."""
+    for codigo, esperado in ((403, []), (503, [5, 15]), (429, [30])):
+        fn, tentativas = _que_falha([codigo] * 6)
+        esperas = []
+        try:
+            cb.buscar("u", buscar_fn=fn, dormir=esperas.append)
+            return False
+        except urllib.error.HTTPError:
+            if esperas != esperado:
+                return False
+    return True
+
+
+def t_timeout_repete_como_conexao():
+    """Timeout é a conexão que não completou, não resposta da fonte: mesma política da conexão."""
+    tentativas, esperas = [], []
+
+    def fn(url, timeout=None):
+        tentativas.append(url)
+        if len(tentativas) < 2:
+            raise TimeoutError("tempo esgotado")
+        return b"ok"
+
+    return cb.buscar("u", buscar_fn=fn, dormir=esperas.append) == b"ok" and esperas == [5]
+
+
 if __name__ == "__main__":
     sys.exit(rodar_autoteste({
         "tabela de esperas por status é pura": t_esperas_para_e_pura,
@@ -176,4 +239,8 @@ if __name__ == "__main__":
         "negativo: sucesso faz um pedido só e não dorme": t_sucesso_faz_um_pedido_so,
         "a política de espera vive num lugar só (§213, §222)": t_politica_vive_num_lugar_so,
         "buscar_uma_vez continua disponível para sonda": t_buscar_uma_vez_continua_existindo,
+        "conexão transitória entrega na repetição (os 105 PDFs de 24/09)": t_conexao_transitoria_entrega_na_repeticao,
+        "conexão morta repete UMA vez só — custo de varredura": t_conexao_morta_repete_uma_vez_so,
+        "HTTPError não cai no ramo de conexão (ordem dos except)": t_httperror_nao_cai_no_ramo_de_conexao,
+        "timeout repete como conexão, não como resposta da fonte": t_timeout_repete_como_conexao,
     }))

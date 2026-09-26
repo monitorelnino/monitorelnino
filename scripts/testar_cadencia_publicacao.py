@@ -25,6 +25,7 @@ import sys
 from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent.parent
+sys.path.insert(0, str(RAIZ))   # §227: o portão passou a conferir coletores_base.hoje()
 
 NOMES_POR_INDICE = {
     0: "segunda", 1: "terça", 2: "quarta", 3: "quinta",
@@ -115,6 +116,28 @@ def main():
         if "datetime.date.today()" in codigo:
             falhas.append(f"atualizar.py:{linha_n} usa datetime.date.today() (UTC no runner) "
                           f"fora de comentário — use hoje_editorial(): {codigo.strip()[:70]}")
+
+    # 5c. (§227, 26/09/2026) O `hoje()` COMPARTILHADO é editorial, não do runner.
+    #     Até 26/09 este portão conferia apenas `atualizar.py` — e o `hoje()` de
+    #     `coletores_base.py`, que os dezesseis coletores chamam vinte e nove vezes só nos
+    #     `coletar_*.py`, devolvia `date.today()`: a data do runner, em UTC. A função certa
+    #     existia, o portão existia, e a porta por onde todo mundo passava era a errada.
+    #
+    #     A prova usa relógio injetado, e não o de agora: 27/09/2026 01h30 UTC é 26/09 22h30 em
+    #     Brasília. Um teste sem relógio falso só pegaria a regressão nas três horas do dia em que
+    #     os dois fusos discordam — ou seja, quase nunca, que é como o defeito durou.
+    import coletores_base as _cb
+    instante_utc = datetime.datetime(2026, 9, 27, 1, 30, tzinfo=datetime.timezone.utc)
+    if _cb.hoje_editorial(instante_utc).isoformat() != "2026-09-26":
+        falhas.append("coletores_base.hoje_editorial() não converte para o fuso da redação — "
+                      "a rodada das 22h30 de sábado sairia datada de domingo para o leitor")
+    fonte_base = (RAIZ / "coletores_base.py").read_text(encoding="utf-8")
+    for no in ast.walk(ast.parse(fonte_base)):
+        if isinstance(no, ast.FunctionDef) and no.name == "hoje":
+            corpo = ast.get_source_segment(fonte_base, no) or ""
+            if "date.today()" in corpo:
+                falhas.append("coletores_base.hoje() voltou a usar date.today() (UTC no runner) — "
+                              "é o carimbo de data de todos os coletores")
 
     # 6. O cron semanal do workflow cai no dia prometido, convertido para o fuso da redação.
     wf = RAIZ / ".github" / "workflows" / "atualizar.yml"

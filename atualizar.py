@@ -58,14 +58,12 @@ RAIZ = pathlib.Path(__file__).parent
 # scripts/testar_cadencia_publicacao.py bloqueia se algum deles divergir — o dia
 # é compromisso declarado ao leitor, não detalhe interno.
 # ---------------------------------------------------------------------------
-FUSO_EDITORIAL = ZoneInfo("America/Sao_Paulo")
+# §227: a definição subiu para coletores_base, onde o `hoje()` de todo coletor passa a usá-la.
+# Aqui fica o nome importado — duas definições do fuso da redação são a cópia que envelhece
+# (§213, §222, §226).
+from coletores_base import FUSO_EDITORIAL, hoje_editorial  # noqa: E402,F401
 DIA_PUBLICACAO = 6            # weekday(): 0 = segunda … 5 = sábado, 6 = domingo
 NOME_DIA_PUBLICACAO = "domingo"
-
-
-def hoje_editorial():
-    """Data de hoje no fuso da redação (America/Sao_Paulo), não no fuso do runner."""
-    return datetime.datetime.now(FUSO_EDITORIAL).date()
 
 
 def ja_publicou_hoje():
