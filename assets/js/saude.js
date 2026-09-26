@@ -276,7 +276,16 @@ function cartoesEstadosSaude(){
       t.innerHTML = '<span class="tile-uf">' + uf + '</span>' + (v == null ? '<span class="tile-score">·</span>' : '<span class="tile-score">' + String(v).replace('.', ',') + '</span><div class="tile-bar"><div class="tile-fill" style="--galvo:' + Math.max(v, 0.1) + '; width:' + v + '%"></div></div>')
         + '<div class="tile-bar tile-bar--resposta" title="Resposta sanitária ' + resp + ' / 100"><div class="tile-fill tile-fill--resposta" style="--galvo:' + Math.max(resp, 0.1) + '; width:' + resp + '%"></div></div>'
         + '<div class="tile-face"><span>' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + (i.data ? ' · ' + esc(i.data) : '') + '</span><span>' + (m.camada === 'adaptacao' ? 'plano decenal: estrutura' : 'cobertura sanitária ' + esc((m.cobertura || {}).pontos ?? '—')) + '</span><span>' + (dc.dengue_capital_nivel != null ? 'dengue na capital: nível ' + esc(dc.dengue_capital_nivel) : 'dengue na capital: sem coleta') + '</span></div>';
+      // 26/09/2026: a linha do estado abre o detalhe e sempre foi uma <div> com ouvinte de clique —
+      // sem papel e sem índice de tabulação, quem navega por teclado não alcançava nenhum estado. O
+      // defeito é anterior à troca de cartão por linha; a troca só o deixou visível. `role` e `tabindex`
+      // tornam o alvo alcançável, Enter e Espaço o acionam como qualquer botão, e o rótulo vem do
+      // mesmo texto do title, para o leitor de tela não ouvir a linha inteira campo a campo.
+      t.setAttribute('role', 'button');
+      t.tabIndex = 0;
+      t.setAttribute('aria-label', 'Detalhe de ' + t.title);
       t.addEventListener('click', () => abrirDetalheSaude(uf));
+      t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.click(); } });
       const col = document.getElementById('tilesSaude-' + REG[uf]); if (col) col.appendChild(t);
     });
     function abrirDetalheSaude(uf){

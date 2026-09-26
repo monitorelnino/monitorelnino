@@ -81,6 +81,17 @@ setTimeout(() => {
   teste("cartões por estado: micro-barra do índice só nos verificados", d.querySelectorAll("#regionsSaude .tile .tile-bar:not(.tile-bar--resposta)").length === MSAUDE.resumo.verificadas);
   try {
     const go = [...d.querySelectorAll("#regionsSaude .tile")].find(t => t.dataset.uf === "GO"); go.click();
+    // 26/09/2026: a linha é uma <div>; sem papel e sem índice de tabulação, quem navega por
+    // teclado não alcança estado nenhum. O clique acima passava verde com o defeito no ar — por
+    // isso a checagem do teclado fica ao lado dele, e não num portão próprio.
+    teste("linha do estado é alcançável por teclado (role + tabindex)",
+      go.getAttribute("role") === "button" && go.tabIndex === 0 && !!go.getAttribute("aria-label"));
+    for (const key of ["Enter", " "]) {
+      q("detailSaude").open = false;   // jsdom não implementa dialog.close()
+      go.dispatchEvent(new d.defaultView.KeyboardEvent("keydown", { key, bubbles: true, cancelable: true }));
+      teste(`detalhe do estado abre com ${key === " " ? "Espaço" : key}`, q("detailSaude").open === true);
+    }
+    go.click();
     const det = q("detailSaudeConteudo").textContent;
     teste("detalhe do estado (GO): instrumento, componentes, resposta, risco e dengue na capital", /Instrumento estadual de saúde/.test(det) && /Componentes/.test(det) && /Resposta sanitária/.test(det) && /Risco sanitário projetado/.test(det) && /Dengue na capital/.test(det) && q("detailSaude").open === true);
     const nv = [...d.querySelectorAll("#regionsSaude .tile")].find(t => t.dataset.uf === Object.keys(SUF.uf).find(u => SUF.uf[u].status === "NAO_VERIFICADO")); if (nv) { nv.click(); teste("detalhe de UF não verificada: declara a bateria não executada, sem número", /bateria de busca de saúde não foi executada/.test(q("detailSaudeConteudo").textContent)); }

@@ -119,6 +119,17 @@ setTimeout(() => {
     const tile = d.querySelector('#regions .tile[data-uf="SC"]');
     tile.click();
     teste("detalhe do estado abre ao clique", q("detail").open && q("detail").innerHTML.includes("Santa Catarina"));
+    q("detail").open = false;   // jsdom não implementa dialog.close(); a própria página já contorna assim
+    // 26/09/2026: a linha é uma <div>; sem papel e sem índice de tabulação, quem navega por
+    // teclado não alcança estado nenhum. O clique acima passava verde com o defeito no ar — por
+    // isso a checagem do teclado fica ao lado dele, e não num portão próprio.
+    teste("linha do estado é alcançável por teclado (role + tabindex)",
+      tile.getAttribute("role") === "button" && tile.tabIndex === 0 && !!tile.getAttribute("aria-label"));
+    for (const key of ["Enter", " "]) {
+      q("detail").open = false;   // jsdom não implementa dialog.close(); a própria página já contorna assim
+      tile.dispatchEvent(new d.defaultView.KeyboardEvent("keydown", { key, bubbles: true, cancelable: true }));
+      teste(`detalhe do estado abre com ${key === " " ? "Espaço" : key}`, q("detail").open === true);
+    }
   } catch (e) { teste("clique no estado", false); }
 
   // Botões de PDF: clicar de verdade e exigir que nenhum erro de runtime apareça.

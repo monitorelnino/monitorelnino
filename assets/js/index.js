@@ -212,7 +212,16 @@ ufsOrdenadas.forEach(item=>{
     respostaTile(item.uf) +
     faceTile(item.uf) +
     (item.capital ? '<span class="cap-dot"></span>' : '');
+  // 26/09/2026: a linha do estado abre o detalhe e sempre foi uma <div> com ouvinte de clique —
+  // sem papel e sem índice de tabulação, quem navega por teclado não alcançava nenhum estado. O
+  // defeito é anterior à troca de cartão por linha; a troca só o deixou visível. `role` e `tabindex`
+  // tornam o alvo alcançável, Enter e Espaço o acionam como qualquer botão, e o rótulo vem do
+  // mesmo texto do title, para o leitor de tela não ouvir a linha inteira campo a campo.
+  tile.setAttribute('role', 'button');
+  tile.tabIndex = 0;
+  tile.setAttribute('aria-label', 'Detalhe de ' + tile.title);
   tile.addEventListener('click', ()=>{ selectUF(item.uf, tile); animarGauges(document.getElementById('detail')); });
+  tile.addEventListener('keydown', e=>{ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tile.click(); } });
   container.appendChild(tile);
 });
 animarGauges(document.body); // 31/08/2026: corrigido de getElementById('regions') — o medidor principal do herói

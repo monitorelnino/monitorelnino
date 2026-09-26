@@ -480,6 +480,7 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .tile-cab span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .tile{border-radius:0; padding:var(--sp-1) var(--sp-2); cursor:pointer; text-align:left; font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-medio); border:1px solid transparent; border-bottom-color:var(--line); transition:background .12s ease, border-color .12s ease; position:relative; color:var(--branco); background:var(--branco);}
 .tile:hover{background:var(--osso-claro); border-color:var(--teal);}
+.tile:focus-visible{background:var(--osso-claro); border-color:var(--teal); outline:2px solid var(--link); outline-offset:-2px;}
 .tile.active{outline:2px solid var(--ink); outline-offset:2px;}
 .tile .cap-dot{position:absolute; right:4px; top:50%; transform:translateY(-50%); width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.6;}
 .tile .tile-uf{display:block; font-weight:var(--peso-bold); margin:0;}
