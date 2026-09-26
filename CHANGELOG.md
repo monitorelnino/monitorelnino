@@ -109,9 +109,24 @@ site faz, e foi substituída em vez de contornada.
 
 ### O que segue pendente
 
-A escolha entre os três cabeçalhos (A, B ou C) continua com a editoria; **A** é o que está no ar. E a
-grade ainda **não é uma figura no padrão do projeto** — sem numeração, fonte e data de atualização,
-como o quadro de estados também não era antes. Fica nomeado, não consertado de passagem.
+### O cabeçalho: a editoria escolheu a opção C
+
+O §239 deixou o cabeçalho com **três** parágrafos — o de orientação, novo, mais os dois que já
+existiam — e a decisão de fundir ficou com a editoria. Foram montadas três páginas inteiras e
+navegáveis para a escolha; ela escolheu **C**.
+
+O boletim de 29 de junho e a obrigação legal **sobem para o parágrafo de abertura**, que passa a
+dizer de uma vez o que o site é e por que ele existe. O segundo parágrafo fica só com o método do
+índice e recebe, no fim, a frase do teto de ausência. **Nenhum fato, número ou fonte saiu**: o painel
+federal, a data, as projeções por região, a obrigação legal, a ponderação por população, o segundo
+índice e o teto de ausência estão todos lá. O cabeçalho foi de 618px para **578px** em 1280px — a
+troca nunca foi de tamanho, foi de ordem de leitura.
+
+### O que segue pendente
+
+A grade ainda **não é uma figura no padrão do projeto** — sem numeração, fonte e data de
+atualização, como o quadro de estados também não era antes. Fica nomeado, não consertado de
+passagem.
 
 ## §240 · A linha do estado passa a ser alcançável por teclado · 26/09/2026
 
