@@ -419,6 +419,13 @@ def robots_de(host: str, ler_fn=_ler_robots_bruto) -> dict:
         return _ROBOTS_CACHE[host]
     codigo, texto = ler_fn(host)
     reg = {"status": "indeterminado", "crawl_delay": None, "rp": None}
+    # §232 (26/09/2026): o próprio `/robots.txt` pode vir com o desafio do muro de robô. Medido em
+    # paraiba.pb.gov.br: 51 kB de JavaScript do F5/Shape com HTTP 200 — e o leitor concluiu
+    # **"permite"**, tirando permissão de uma recusa. Muro no lugar do robots é "indeterminado": o
+    # sítio não declarou regra nenhuma, ele não nos deixou ler a declaração.
+    if codigo == 200 and detectar_muro_de_robo(texto.encode("utf-8", "replace")):
+        _ROBOTS_CACHE[host] = reg
+        return reg
     if codigo == 200 and texto.strip():
         rp = _robotparser.RobotFileParser()
         rp.parse(texto.splitlines())
@@ -517,6 +524,48 @@ MARCAS_DE_MURO = (
     # regra de abstenção por treze dias. Não é muro de robô no sentido estrito: é muro de país. A
     # classe é a mesma, e é isso que importa — o servidor respondeu não, e a resposta parece conteúdo.
     "connection denied by geolocation",
+    # §232 (26/09/2026): desafio JavaScript do F5/Shape (BIG-IP ASM). Este é DIFERENTE dos de cima e
+    # foi por isso que passou: a página não tem NENHUMA frase declarativa — é só JavaScript
+    # ofuscado. Nada de "pardon our interruption", nada de "you have been blocked". O detector do
+    # §186 devolvia None e o muro entrava como conteúdo.
+    #
+    # Medido em 26/09/2026 em paraiba.pb.gov.br: `/`, a pasta de vigilância em saúde e **até o
+    # `/robots.txt`** devolvem a MESMA página de 47 a 51 kB com HTTP 200. A carga hexadecimal dela
+    # decodifica para "Oops....something went wrong....your support id is:
+    # %DOSL7.challenge.support_id%". O código do coletor de boletins da PB chamava isso de "página
+    # de espera do Plone" e de "interstício (cookie)" — nome errado para uma recusa, que é
+    # exatamente o erro que custou treze dias de abstenção indevida no §187.
+    #
+    # As marcas são identificadores do próprio produto, não texto de página, e é o que existe para
+    # casar: `window["bobcmn"]` é a variável do desafio, e `/TSPD/` e `TSPD_101` são o cookie e a
+    # rota que ele usa. O desafio NÃO se resolve: é recusa, e recusa se respeita.
+)
+
+# Marcas que vivem no CÓDIGO da página, não no texto que ela mostra — e por isso precisam de uma
+# família própria, casada no corpo cru.
+#
+# §232 (26/09/2026): o desafio JavaScript do F5/Shape (BIG-IP ASM) passou pelo detector do §186
+# porque a página **não diz nada**. Não há "pardon our interruption", não há "you have been
+# blocked": é só JavaScript ofuscado. E `detectar_muro_de_robo` varre o TEXTO DECLARATIVO, por uma
+# razão boa e conquistada no §182 — casar em atributo de HTML marcou um portal inteiro como suspenso
+# por causa de um `alt="banner periodo eleitoral"`. As duas coisas são verdadeiras ao mesmo tempo,
+# e a saída é distinguir as famílias em vez de afrouxar a régua de uma delas.
+#
+# Medido em paraiba.pb.gov.br: `/`, a pasta de vigilância em saúde e **até o `/robots.txt`**
+# devolvem a MESMA página de 47 a 51 kB com HTTP 200. A carga hexadecimal decodifica para
+# "Oops....something went wrong....your support id is: %DOSL7.challenge.support_id%". O coletor da
+# PB chamava isso de "página de espera do Plone" e de "interstício (cookie)" — nome errado para uma
+# recusa, o mesmo erro que custou treze dias de abstenção indevida no §187.
+#
+# Estas marcas são identificadores do produto, não palavras de língua: `window["bobcmn"]` é a
+# variável do desafio, `/TSPD/` e `TSPD_101` são o cookie e a rota dele. Nenhum documento público
+# brasileiro contém essas cadeias, e é isso que autoriza casá-las no corpo cru sem repetir o §182.
+# O desafio NÃO se resolve: é recusa, e recusa se respeita.
+MARCAS_DE_MURO_NO_CODIGO = (
+    'window["bobcmn"]',
+    "/tspd/",
+    'window["failureconfig"]',
+    "tspd_101",
 )
 
 
@@ -529,12 +578,20 @@ def detectar_muro_de_robo(corpo: bytes, tamanho_maximo: int = 60000) -> str | No
     if corpo[:5] == b"%PDF-":
         return None
     try:
-        texto = _plano(texto_declarativo(corpo.decode("utf-8", "replace")))
+        cru = corpo.decode("utf-8", "replace")
+        texto = _plano(texto_declarativo(cru))
     except Exception:  # noqa: BLE001
         return None
     for marca in MARCAS_DE_MURO:
         if _plano(marca) in texto:
             return marca
+    # §232: a família que vive no código da página. Casada no corpo CRU, porque o desafio do
+    # F5/Shape não tem texto declarativo nenhum — e só com identificadores de produto, que nenhum
+    # documento público contém, para não repetir o falso positivo de atributo do §182.
+    cru_plano = _plano(cru)
+    for marca in MARCAS_DE_MURO_NO_CODIGO:
+        if marca in cru_plano:
+            return f"desafio de robô no código da página ({marca})"
     return None
 
 

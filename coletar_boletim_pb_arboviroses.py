@@ -29,7 +29,7 @@ a linha) e registra a divergência em `divergencia_fonte` — não silencia nem 
 """
 import io, re, sys
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial
+from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial, MuroDeRobo
 
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://paraiba.pb.gov.br"
@@ -177,6 +177,7 @@ def coletar() -> int:
     hoje = _hoje(); ano = hoje.year
     ANO_ESPERADO[0] = ano
     pdf_url = bruto = None
+    muro = None            # §232: nome da recusa, quando o host recusa
     interstícios = []
     for num in range(TETO_NUMERO, 0, -1):
         url = PADRAO_URL.format(n=num, ano=ano)
@@ -185,6 +186,16 @@ def coletar() -> int:
             # podia levar quase 50 min no pior caso. O diagnóstico mostrou resposta em ~1s quando o portal
             # responde; 12s é folgado sem represar a rodada quando não responde.
             b = buscar(url, timeout=12)
+        except MuroDeRobo as e:
+            # §232 (26/09/2026): a recusa deste host tem nome, e não era o que estava escrito aqui.
+            # Medido: `/`, a pasta de vigilância e ATÉ o `/robots.txt` devolvem a MESMA página de
+            # 47 a 51 kB com HTTP 200 — um desafio JavaScript do F5/Shape, cuja carga hexadecimal
+            # decodifica para "Oops....something went wrong....your support id is: …". O código
+            # chamava isso de "página de espera do Plone" e de "interstício (cookie)"; não é
+            # espera, é recusa, e o desafio não se resolve. Sai do laço: insistir nos seis números
+            # contra um muro que cobre o host inteiro só gasta a fonte e enche o log.
+            muro = str(e)
+            break
         except Exception:  # noqa: BLE001
             continue
         if b[:4] == b"%PDF":
@@ -205,6 +216,13 @@ def coletar() -> int:
         elif b[:15].lower().startswith(b"<!doctype html") or b[:5].lower() == b"<html":
             interstícios.append(f"nº {num:02d}: HTML sem destino declarado")
     if not pdf_url:
+        if muro:
+            # Bloqueio de acesso real: declara-se com o nome certo e se respeita. Não é ausência de
+            # boletim, não é formato inesperado, não é interstício — é o host recusando robô.
+            registrar_lacuna("SES-PB (boletim de arboviroses)",
+                             f"bloqueio de acesso do host: {muro}", canal="site_estadual", camada=2,
+                             strings=[PADRAO_URL.format(n=1, ano=ano)])
+            print("boletim PB: bloqueio de acesso do host — lacuna declarada com o nome certo"); return 0
         detalhe = f"nenhum boletim nº 01–{TETO_NUMERO} de {ano} respondeu com PDF"
         if interstícios:
             detalhe += f" — o portal devolveu HTML em vez do arquivo ({'; '.join(interstícios[:4])})"
