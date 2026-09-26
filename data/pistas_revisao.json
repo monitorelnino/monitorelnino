@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-26",
- "total_pistas": 508,
- "total_municipios": 219,
+ "total_pistas": 510,
+ "total_municipios": 221,
  "por_nivel": {
-  "A": 95,
-  "B": 307,
+  "A": 96,
+  "B": 308,
   "C": 106
  },
  "grupos": [
@@ -5143,6 +5143,39 @@
      "titulo": "PREFEITURA DE MONTE MOR SE ANTECIPA E LANÇA PLANO DE CONTINGÊNCIA ...",
      "trecho": "Milena Rinaldo destacou a importância ... que ninguém fique desamparado. Estamos organizando abrigos, suprimentos e equipes de apoio para agir com rapidez e acolhimento, caso seja necessário....",
      "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3535408",
+   "municipio": "Panorama",
+   "uf": "SP",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "0e8defe30c",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...",
+     "data": "26/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -10636,6 +10669,37 @@
      "titulo": "MUNICÍPIO DE MONTE ALEGRE DO SUL PLANO MUNICIPAL DE ...",
      "trecho": "... Plano de Contingência para o Sistema de Esgotamento Sanitário. 351. 6.4. Prognóstico do Sistema de Drenagem Pluvial do Município de Monte Alegre do Sul. 353.",
      "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3537008",
+   "municipio": "Pedregulho",
+   "uf": "SP",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "ec0c080dbe",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://smastr20.blob.core.windows.net/conesan/Pedregulho_RS_2018.pdf",
+     "titulo": "plano municipal específico dos serviços de saneamento básico",
+     "trecho": "Jun 30, 2018 ... Cândido Portinari (SP-334) passando por Batatais e Franca, até Pedregulho, como ... Quanto ao rendimento médio total, Pedregulho detém o menor ...",
+     "data": "26/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]

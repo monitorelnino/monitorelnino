@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-09-10",
- "total": 2189,
+ "total": 2191,
  "com_registro": 267,
- "com_imprensa": 113,
+ "com_imprensa": 115,
  "prioritarios": 2095,
- "com_despesa_182": 2189,
+ "com_despesa_182": 2191,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -24061,6 +24061,30 @@
    },
    "categoria": "nao_localizado"
   },
+  "3535408": {
+   "nome": "Panorama",
+   "uf": "SP",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "url": "https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "data": "26/09/2026",
+     "veiculo": "panoramainconfidentes.com.br",
+     "nivel": "A"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
   "3535507": {
    "nome": "Paraguaçu Paulista",
    "uf": "SP",
@@ -24100,6 +24124,30 @@
     "classe": "com_lancamento",
     "rs_hab": 0.663532,
     "liquidada": 29744.13,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "3537008": {
+   "nome": "Pedregulho",
+   "uf": "SP",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "plano municipal específico dos serviços de saneamento básico",
+     "url": "https://smastr20.blob.core.windows.net/conesan/Pedregulho_RS_2018.pdf",
+     "data": "26/09/2026",
+     "veiculo": "smastr20.blob.core.windows.net",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"

@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 26/09/2026 · 493 pendente(s) · 15 decidida(s) · A=93 B=305 C=95
+Gerado em 26/09/2026 · 495 pendente(s) · 15 decidida(s) · A=94 B=306 C=95
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1169,6 +1169,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: executiva   Rejane faça a leitura da Convocação e Pauta da Reunião 1º Ponto de Pauta: Votação da Ata   da Reunião Ordinária 364ª; 2º Ponto de Pauta: PAS 2027 – Inclusão; 3º Ponto de Pauta:   Apresentação Plano de Conting
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Panorama/SP — 1 pendente(s)
+- `0e8defe30c` · nível **A** (6 pts) · busca_web · RESPOSTA · **Lei 12.340**, 2011
+  - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
+  - url: https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
+  - trecho: Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...
+  - juiz: portão automático: fonte não oficial
 
 ## Pereiras/SP — 1 pendente(s)
 - `742c031931` · nível **A** (6 pts) · busca_web · DUVIDA · **Lei N° 11.445**, 05/01/2007
@@ -2414,6 +2421,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: MUNICÍPIO DE MONTE ALEGRE DO SUL PLANO MUNICIPAL DE ...
   - url: https://smastr20.blob.core.windows.net/conesan/Monte%20Alegre%20do%20Sul_AE_DU_RS_2014.pdf
   - trecho: ... Plano de Contingência para o Sistema de Esgotamento Sanitário. 351. 6.4. Prognóstico do Sistema de Drenagem Pluvial do Município de Monte Alegre do Sul. 353.
+  - juiz: portão automático: fonte não oficial
+
+## Pedregulho/SP — 1 pendente(s)
+- `ec0c080dbe` · nível **B** (3 pts) · busca_web · DUVIDA · data 2018 (do trecho)
+  - título: plano municipal específico dos serviços de saneamento básico
+  - url: https://smastr20.blob.core.windows.net/conesan/Pedregulho_RS_2018.pdf
+  - trecho: Jun 30, 2018 ... Cândido Portinari (SP-334) passando por Batatais e Franca, até Pedregulho, como ... Quanto ao rendimento médio total, Pedregulho detém o menor ...
   - juiz: portão automático: fonte não oficial
 
 ## Pindamonhangaba/SP — 1 pendente(s)
