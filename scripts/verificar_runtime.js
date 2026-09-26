@@ -237,7 +237,26 @@ setTimeout(() => {
   teste("porta para o calendário eleitoral segue na inicial (seção Calendário)", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
   teste("cruzamento risco × estágio (#cCruz/#boxCruz) não existe mais na inicial (17/09/2026, pedido da editoria)", !q("cCruz") && !q("boxCruz") && !q("cruzamento"));
   teste("todas as barras usam a arte única do medidor (nenhum .resp-fill / .tile-fill2 / .barra-resp)", !d.querySelector(".resp-fill, .tile-fill2, .barra-resp") && d.querySelectorAll("#hero .gauge-fill").length === 2 && !!d.querySelector("#hero .gauge-fill--resposta"));
-  teste("cartões de estado: cinco campos na face (barras + nível + instrumento + capital)", d.querySelectorAll(".tile .tile-face").length === 27 && [...d.querySelectorAll(".tile .tile-face")].every(f => f.querySelectorAll("span").length === 3));
+  // 26/09/2026: a célula da grade territorial não comporta os três campos de texto, que passaram
+  // para a janela de detalhe. O que o portão exige mudou junto: não mais "visíveis na face", mas
+  // "presentes em algum lugar da interface". "Diários municipais consultados" é conferido à parte,
+  // porque era o único que NÃO existia no detalhe e sumiria do site sem esta mudança.
+  teste("células de estado: 27, com sigla e nome por extenso", d.querySelectorAll("#regions .tile").length === 27 && d.querySelectorAll("#regions .tile .tile-uf").length === 27 && [...d.querySelectorAll("#regions .tile .tile-nome")].length === 27 && [...d.querySelectorAll("#regions .tile .tile-nome")].every(n => n.textContent.trim().length > 2));
+  teste("células de estado: cada uma posicionada na grade territorial, sem duas no mesmo lugar", (() => {
+    const p = [...d.querySelectorAll("#regions .tile")].map(t => t.style.gridRow + ":" + t.style.gridColumn);
+    return p.length === 27 && p.every(x => /^\d+:\d+$/.test(x)) && new Set(p).size === 27;
+  })());
+  // 26/09/2026: a gradação do menu é escrita em base.css por :nth-child, e lista escrita à mão
+  // envelhece calada — defeito que este projeto já viu três vezes (§213, §222, §226). Se um item
+  // entrar ou sair do menu, as posições deslocam e o ramo passa a pintar o botão errado sem avisar.
+  // Aqui as posições são lidas do DOM e comparadas com a lista que está na folha.
+  teste("menu: os dez botões estão nas posições que a gradação de base.css pinta", (() => {
+    const filhos = [...d.querySelectorAll(".mainnav > *")];
+    const posDOM = filhos.map((e, i) => (e.matches("a, span") ? i + 1 : 0)).filter(Boolean);
+    const css = require("fs").readFileSync(require("path").join(__dirname, "..", "assets", "base.css"), "utf8");
+    const posCSS = [...css.matchAll(/\.mainnav > :is\(a, span\):nth-child\((\d+)\)/g)].map(m => Number(m[1]));
+    return posDOM.length === 10 && posCSS.length === 10 && posDOM.join(",") === posCSS.join(",");
+  })());
 
   // Medidor principal do herói: a barra de progresso precisa de fato preencher
   // (achado de 31/08/2026 — animarGauges() estava escopada só a #regions e nunca

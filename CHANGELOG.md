@@ -9,6 +9,125 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §241 · Os estados viram grade territorial; o menu ganha gradação · 26/09/2026
+
+Classe **design**. Nenhum dado, número ou fonte mudou.
+
+### Os 27 estados: a região deixa de mandar na geometria
+
+O §239 trocou cartão por linha alinhada para matar o quadrante vazio. Consertava a geometria e
+custava caro: virava tabela institucional, que a direção de arte §1 proíbe. **A editoria recusou, e
+com razão** — eu tinha juntado duas coisas que não são a mesma, "coluna por região" e "cartão", e
+joguei fora a presença de cada estado junto com o defeito.
+
+Tentativa seguinte: cartão de volta, região em faixa horizontal. Resolvia, mas ainda deixava um
+cartão órfão por faixa e não dava panorama nenhum.
+
+O que resolve é **trocar o critério de arranjo**. Enquanto a contagem por região definir a
+geometria, o desequilíbrio volta em qualquer forma. Agora o arranjo é **geográfico**: cada estado
+ocupa a posição aproximada dele no país, numa grade de ladrilhos — o padrão que NYT, Washington
+Post, The Economist, Guardian e FiveThirtyEight usam para territórios de tamanho muito desigual.
+A grade é a **`br_states_grid1` do pacote `geofacet`**, publicada e buscada da fonte; nenhuma
+posição foi estimada aqui. A `br_states_grid2`, mais densa, foi testada e descartada: não lê como o
+Brasil (o Nordeste cai na mesma fileira do Amazonas).
+
+**Por que ladrilho e não a forma real de cada estado**, que a editoria perguntou. Medido na
+geometria que o próprio site já usa (`data/geo_uf.json`): o Amazonas tem **271×** a área do Distrito
+Federal, e num mapa de 760px — o maior que cabe na página — o cartão **não caberia em 16 dos 27
+estados**; o DF fica com 17×10px, onde não cabe nem a sigla. E há razão mais séria que espaço: num
+mapa de área fiel, cinco pontos de diferença no Amazonas gritam e os mesmos cinco pontos no DF
+somem. O índice é ponderado por **população coberta**, que não tem relação com área — um mapa fiel à
+área contaria visualmente o que o indicador não sustenta, o que a direção de arte §10 proíbe.
+
+Foi prototipada também uma versão com a **silhueta real** de cada UF dentro do ladrilho (forma
+verdadeira, escala normalizada; desvio de proporção medido em 0,00%). A editoria recusou por
+poluição visual, e o julgamento está certo: a forma do país já vem do arranjo das células, e repetir
+dentro de cada uma competia com o dado.
+
+**A célula mostra sigla, nome por extenso, nota e as duas barras.** O nome veio por pedido da
+editoria e sai de `DATA.ufs[].nome`, a mesma fonte que a janela de detalhe já usava — nenhuma
+segunda lista de nomes entrou no repositório.
+
+| | antes (§238) | linha (§239) | grade territorial |
+|---|---|---|---|
+| painel em 1280px | ~1500px | 1291px | **972px** |
+| colunas raggeadas | 5 (9·7·4·4·3) | — | — |
+| quadrante vazio | ~950px | não | não |
+| panorama nacional | nenhum | nenhum | sim |
+
+**O que saiu da célula, e o que isso obrigou a fazer.** Os três campos de texto (diários,
+instrumento estadual, capital) não cabem em 140px e passaram para a janela de detalhe. Ao conferir,
+descobri que **"diários municipais consultados" não existia no detalhe** — tirá-lo da face sem mais
+nada apagaria o alcance da varredura da interface inteira. Ele foi acrescentado ao detalhe no mesmo
+commit. Instrumento e capital já estavam lá.
+
+**Tela pequena** (direção de arte §24, recompor e não comprimir): medido em 375px, uma grade
+geográfica de seis colunas dá célula de 54px, nove nomes quebram e "Pernambuco" é cortado. Abaixo de
+1020px a grade sai e as células voltam a três colunas, e a duas abaixo de 640px. Como a ordem do DOM
+é decrescente pelo índice, no celular a lista sai **ordenada por nota** — que é a leitura útil onde
+não há mapa.
+
+### O menu: gradação do vermelho ao azul
+
+Pedido da editoria: os botões do menu formam, da esquerda para a direita, uma gradação entre
+vermelho e azul, como a barra do índice. Sem efeito nenhum, só cor.
+
+Nenhum matiz novo entrou: o ramo é o próprio **`--degrade-resposta` lido ao contrário** (ele já vai
+de frio a quente), amostrado em dez pontos — argila → âmbar → sintético. Termina no sintético e não
+no mineral porque o mineral é claro demais: como borda ele mediria **2,6:1** sobre branco, abaixo do
+mínimo de 3:1 da WCAG 1.4.11.
+
+**O botão não é preenchido, e isso foi medição e não gosto.** Com a cor cheia no fundo e texto
+branco, **oito dos dez botões reprovariam** o mínimo AA — o âmbar dá 3,1:1 e até o sintético, o mais
+escuro do lado frio, dá 4,39:1. Ficou cor cheia na **borda**, uma tinta de 32% dela no **fundo**, e
+texto em `--ink`: pior borda em **3,16:1**, pior texto em **11,5:1**.
+
+A página corrente segue em terracota preenchida — entre botões de tinta clara, ela se destaca
+sozinha. O botão de ação ("Para gestores") perdeu a cor própria e guarda o peso de chamada só pela
+borda mais grossa, para a gradação não ter buraco no meio.
+
+Dois detalhes que custaram uma volta cada. A ordem das regras importa: `:nth-child` empata alto na
+especificidade, e os seletores de estado (hover, botão de ação, página corrente) precisaram repetir
+`> :is(a, span)` para vencer o ramo. E dar **negrito** ao botão de ação criou um segundo estilo na
+família "navegação" e deixou `verificar_consistencia_visual.js` vermelho — o peso voltou ao dos
+demais. O mesmo portão pegou a legenda nova como `<p>` de corpo de painel; ela passou a usar
+`.legend`, o componente que o site já tinha.
+
+### Portões
+
+`verificar_runtime.js` ganhou três checagens, todas provadas nos dois sentidos:
+
+- as 27 células têm sigla e nome por extenso (tirar o nome → vermelho);
+- cada uma tem posição na grade e não há duas no mesmo lugar (pôr RS e PR na mesma célula → vermelho);
+- os dez botões do menu estão **exatamente** nas posições que o `:nth-child` de `base.css` pinta — a
+  checagem lê o DOM e a folha e compara (item novo no menu → vermelho; posição errada na folha →
+  vermelho). Lista escrita à mão envelhece calada, e este projeto já viu esse defeito três vezes
+  (§213, §222, §226).
+
+A checagem antiga exigia "cinco campos visíveis na face do cartão". Ela não descreve mais o que o
+site faz, e foi substituída em vez de contornada.
+
+### O que segue pendente
+
+### O cabeçalho: a editoria escolheu a opção C
+
+O §239 deixou o cabeçalho com **três** parágrafos — o de orientação, novo, mais os dois que já
+existiam — e a decisão de fundir ficou com a editoria. Foram montadas três páginas inteiras e
+navegáveis para a escolha; ela escolheu **C**.
+
+O boletim de 29 de junho e a obrigação legal **sobem para o parágrafo de abertura**, que passa a
+dizer de uma vez o que o site é e por que ele existe. O segundo parágrafo fica só com o método do
+índice e recebe, no fim, a frase do teto de ausência. **Nenhum fato, número ou fonte saiu**: o painel
+federal, a data, as projeções por região, a obrigação legal, a ponderação por população, o segundo
+índice e o teto de ausência estão todos lá. O cabeçalho foi de 618px para **578px** em 1280px — a
+troca nunca foi de tamanho, foi de ordem de leitura.
+
+### O que segue pendente
+
+A grade ainda **não é uma figura no padrão do projeto** — sem numeração, fonte e data de
+atualização, como o quadro de estados também não era antes. Fica nomeado, não consertado de
+passagem.
+
 ## §240 · A linha do estado passa a ser alcançável por teclado · 26/09/2026
 
 Classe **acessibilidade**.
