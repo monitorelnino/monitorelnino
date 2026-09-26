@@ -9,6 +9,43 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §236 · A skill de conduta de código entra subordinada, e com duas colisões nomeadas · 26/09/2026
+
+Classe **regra de trabalho**.
+
+A editoria pediu a instalação da skill `karpathy-guidelines`
+(<https://github.com/multica-ai/andrej-karpathy-skills>). Ela entrou em
+`.claude/skills/karpathy-guidelines/SKILL.md` como **cópia**, e não como plugin de marketplace:
+cópia aparece no diff e não cria dependência de terceiro na cadeia de execução. O corpo é **literal
+da origem, conferido byte a byte** (2.224 caracteres, commit `2c60614`), com um bloco do projeto
+antes dele — procedência e precedência —, para que a comparação com a fonte continue possível.
+
+**Licença, pelo que existe e pelo que não existe.** O frontmatter da skill e o `plugin.json` da
+origem declaram MIT; **o repositório não tem arquivo `LICENSE`** — a API do GitHub devolve 404 e
+`license: null`. Como este repositório é público, fica registrado assim.
+
+**O conteúdo foi lido inteiro antes de instalar**, e é benigno: quatro seções de conduta para
+escrever código, sem rede, sem credencial e sem nada que contorne portão. Duas delas, porém, colidem
+de frente com regras deste repositório, e nas duas **vence o repositório**:
+
+- **"If uncertain, ask. If something is unclear, stop."** O `CLAUDE.md` manda o oposto — execução
+  silenciosa, sem pedir confirmação para decisão técnica de rotina — e lista as únicas seis razões
+  para interromper. A editoria reafirmou isso como instrução permanente. Do resto da seção fica o
+  que não colide e é bom: declarar a suposição em vez de esconder, e dizer quando há caminho mais
+  simples.
+- **"Don't refactor things that aren't broken."** Boa regra geral, e o oposto do que a editoria
+  pediu aqui: *"avalie todo o código de todos os coletores e implemente todas as soluções que você
+  conhece"*. Os §§226 a 235 são trabalho transversal por definição — a política de espera saindo de
+  um coletor para os dezesseis, 75 datas em UTC em 41 arquivos, 33 escritas levadas à porta
+  atômica, 23 arquivos passando a um cliente só. Sob leitura literal dessa regra, **nenhum deles
+  existiria**, e os defeitos que corrigiram seguiriam em produção. O que a seção mantém intacto:
+  não mexer em estilo alheio, não apagar código morto pré-existente sem pedir, e limpar só o órfão
+  que a própria mudança criou.
+
+As outras duas seções reforçam o projeto. "Defina critério verificável e itere até verificar" é
+literalmente o que os portões são: 69 comandos que reprovam de verdade, e nada sobe com portão
+vermelho.
+
 ## §235 · O conserto do §228 estava certo no princípio e errado no byte · 26/09/2026
 
 Classe **correção de fato**. Decisões tomadas por autorização da editoria em 26/09/2026, e um defeito meu do mesmo dia, encontrado ao executá-las.
