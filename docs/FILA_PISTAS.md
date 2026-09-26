@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 26/09/2026 · 492 pendente(s) · 15 decidida(s) · A=92 B=305 C=95
+Gerado em 26/09/2026 · 493 pendente(s) · 15 decidida(s) · A=93 B=305 C=95
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -168,6 +168,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www2.camara.gov.br/legin/fed/lei/2024/lei-14904-27-junho-2024-795864-norma-pl.html
   - trecho: Lei 14.904/24
   - ⚠ ano_anterior_ao_ciclo
+
+## Inconfidentes/MG — 1 pendente(s)
+- `6f1e9a2bb2` · nível **A** (6 pts) · busca_web · RESPOSTA · **Lei 12.340**, 2011
+  - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
+  - url: https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
+  - trecho: Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...
+  - juiz: portão automático: fonte não oficial
 
 ## Petrolina/PE — 7 pendente(s)
 - `0ae0a524aa` · nível **A** (7 pts) · seguimento_busca_oficial · DUVIDA · **Decreto N.º 037**, 2020

@@ -1,10 +1,10 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-26",
- "total_pistas": 507,
- "total_municipios": 218,
+ "total_pistas": 508,
+ "total_municipios": 219,
  "por_nivel": {
-  "A": 94,
+  "A": 95,
   "B": 307,
   "C": 106
  },
@@ -4563,6 +4563,39 @@
      "url": "https://www.coqueiral.mg.gov.br/plano-de-contingencia-municipal-de-enfrentamento-ao-covid-19",
      "titulo": "Prefeitura Municipal - Plano de Contingência ... - Coqueiral - MG",
      "trecho": "Prefeitura Municipal - Portal",
+     "data": "26/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3130606",
+   "municipio": "Inconfidentes",
+   "uf": "MG",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "6f1e9a2bb2",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...",
      "data": "26/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
