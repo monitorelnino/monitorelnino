@@ -9,6 +9,26 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §225 · O canal consorciado ia de sete estados a quinze, e a lista estava a um `<select>` de distância · 26/09/2026
+
+Classe **cobertura de coleta**.
+
+O coletor de diários consorciados dizia, no próprio cabeçalho, que descobrir o slug de cada estado na plataforma SIGPub "exige abrir o site e ler o link real, tarefa ainda não feita para os estados ausentes daqui". Eram sete UFs. A tarefa foi feita, e o resultado são **quinze**.
+
+**Por que a lista estava incompleta.** O seletor de estados da página inicial da plataforma usa caminhos **relativos** (`/aam/`, `/famep/`), não URLs absolutas. Uma varredura por `href="https://www.diariomunicipal.com.br/<slug>"` — o jeito natural de procurar — acha parte das entidades e perde as outras. A lista autoritativa é o `<select>`: 21 UFs mais duas prefeituras avulsas.
+
+**Nove UFs novas, cada uma com prova.** PE, AM, PA, RO, RJ, SP, RR, PB e AL entraram depois de o nome da entidade ser lido na própria página e o calendário ser testado com token real em 24 e 25/09/2026. O comentário de cada linha registra quantas edições a fonte devolveu nesses dois dias: é prova de que o canal entrega, não promessa de que deveria. Slug inventado não dá 404 — a plataforma devolve a própria página inicial, 90.958 bytes sem `calendar__token`, e foi assim que vinte e nove palpites de sigla se descartaram numa rodada, sem nenhum entrar no código.
+
+**A correção de um rótulo errado, que é o achado mais importante daqui.** Em 25/09 os dois slugs da Bahia foram declarados "fonte fora do ar" porque respondiam ao calendário com `{"error":"Ocorreu um erro inesperado!"}` em toda data testada. O rótulo estava errado. A última edição de cada uma dessas entidades, lida na página, é de **2013** (AMURC), **2015** (AMM-MT), **2020** (APPM, Piauí), **2020** (MS) e **2009** (AMURCES, Sergipe): são **arquivos históricos** de associações que saíram da plataforma, e o `error` nas datas recentes é resposta correta — não há edição naquele dia porque não há mais edição nenhuma. Fonte fora do ar é falha; publicação encerrada é fato. Confundir as duas é do mesmo tipo que chamar geobloqueio de `robots.txt`, erro que já custou treze dias de abstenção indevida (§187).
+
+As cinco passam a viver em `SIGPUB_ENCERRADO`, com a data da última edição declarada, fora do varrimento ativo — e cada linha delas passa a ser o que realmente é: uma UF cujo diário **corrente** está em outro lugar. Isso é lacuna de descoberta, trabalho a fazer, e não bloqueio de acesso, que seria trabalho impossível.
+
+**O que a plataforma não cobre.** `/ma/` está no seletor dela e cai na própria página inicial: link morto do lado da fonte. AC, AP, ES, SC e TO não aparecem no seletor. As seis ficam em `SIGPUB_SEM_CANAL`, com o motivo observado — não o suposto.
+
+Um autoteste novo (o vigésimo do coletor) exige que as 27 UFs estejam **todas** classificadas, que nenhuma esteja em duas gavetas ao mesmo tempo e que nenhum slug de arquivo histórico volte ao varrimento ativo. O DF é a única ausência legítima: não tem município. A lista saltou de sete para quinze numa rodada, e o modo de errar é sempre o mesmo — uma UF nova entra e ninguém a tira da gaveta antiga, e então o varrimento declara lacuna diária de uma fonte que entrega.
+
+**Credenciais.** A sonda do §224 respondeu: a chave do **OpenAQ é aceita** (HTTP 200). A do Portal da Transparência está presente e o endpoint devolveu **504** — erro da fonte, não recusa de chave, distinção que importa porque o 403 das rodadas anteriores era recusa de verdade. O token do INMET segue **ausente**, sem caminho público de cadastro: é pedido à Central de Serviços, e é ação humana.
+
 ## §223 · O canal destravado entra na rotina, com a janela certa · 25/09/2026
 
 Classe **rotina de coleta**.
