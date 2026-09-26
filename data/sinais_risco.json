@@ -29,7 +29,7 @@
   },
   "validade_horas_sinal": 36
  },
- "gerado_em": "25/09/2026",
+ "gerado_em": "26/09/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -49,7 +49,7 @@
    "url_publica": "https://monitordesecas.ana.gov.br/",
    "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
+   "consultado_em": "26/09/2026",
    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
    "detalhe": "Fração da área de cada UF em cada categoria de seca (S0 a S4), no mapa mensal mais recente.",
    "recurso": {
@@ -116,7 +116,7 @@
    "url_publica": "https://alertas2.inmet.gov.br/",
    "papel": "Avisos vigentes por área, com grau e vigência declarados pelo INMET.",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
+   "consultado_em": "26/09/2026",
    "documento": "Avisos ativos no momento da consulta",
    "detalhe": "Avisos vigentes por área, com grau e vigência declarados pelo INMET."
   },
@@ -127,8 +127,8 @@
    "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
-   "documento": "Focos do dia — focos_diario_br_20260925.csv",
+   "consultado_em": "26/09/2026",
+   "documento": "Focos do dia — focos_diario_br_20260926.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -138,7 +138,7 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
    "papel": "Alertas vigentes emitidos aos municípios monitorados.",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
+   "consultado_em": "26/09/2026",
    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
    "detalhe": "Alertas vigentes emitidos aos municípios monitorados."
   },
@@ -149,7 +149,7 @@
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
+   "consultado_em": "26/09/2026",
    "documento": "ONI v5, último trimestre JJA/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
@@ -182,7 +182,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
    "papel": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico.",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
+   "consultado_em": "26/09/2026",
    "documento": "RONI, último trimestre JJA/2026",
    "detalhe": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico."
   },
@@ -193,7 +193,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
    "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
+   "consultado_em": "26/09/2026",
    "documento": "Niño 3.4 mensal, último mês 08/2026",
    "detalhe": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam."
   },
@@ -206,8 +206,8 @@
    "natureza": "estimativa de modelo",
    "licenca": "CC BY 4.0 — crédito obrigatório: Weather data by Open-Meteo.com",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
-   "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
+   "consultado_em": "26/09/2026",
+   "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
    "detalhe": "Máxima e mínima do dia anterior e dos próximos dias, por capital, em °C."
   },
   "open_meteo_ar": {
@@ -219,7 +219,7 @@
    "natureza": "estimativa de modelo",
    "licenca": "CC BY 4.0 — crédito obrigatório: Copernicus CAMS via Open-Meteo.com",
    "status": "coletado",
-   "consultado_em": "25/09/2026",
+   "consultado_em": "26/09/2026",
    "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
    "detalhe": "PM2,5, PM10, ozônio, NO₂ e CO estimados por modelo, por capital, em µg/m³."
   },
@@ -246,12 +246,10 @@
    "papel": "Máxima e mínima medidas na estação automática da capital.",
    "natureza": "medição",
    "licenca": "Dados abertos INMET",
-   "credencial": "INMET_API_TOKEN",
-   "status": "aguardando_credencial",
-   "consultado_em": null,
-   "documento": null,
-   "detalhe": null,
-   "motivo": "INMET_API_TOKEN ausente no ambiente — camada de medição fica em lacuna declarada"
+   "status": "coletado",
+   "consultado_em": "26/09/2026",
+   "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+   "detalhe": "Máxima e mínima medidas na estação automática da capital."
   }
  },
  "enos": {
@@ -2187,21 +2185,25 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Chuvas Intensas"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 143,
+    "focos_24h": 14,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2209,40 +2211,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 34.1,
-      "minima": 22.5,
-      "aparente_maxima": 41.4
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 34.7,
+      "maxima": 35.7,
       "minima": 23.7,
-      "aparente_maxima": 40.7
+      "aparente_maxima": 40.8
      },
      {
       "data": "2026-09-26",
-      "maxima": 35.0,
-      "minima": 23.8,
-      "aparente_maxima": 41.7
+      "maxima": 34.8,
+      "minima": 23.7,
+      "aparente_maxima": 38.8
      },
      {
       "data": "2026-09-27",
-      "maxima": 33.4,
-      "minima": 22.4,
-      "aparente_maxima": 39.5
+      "maxima": 34.4,
+      "minima": 23.5,
+      "aparente_maxima": 41.6
      },
      {
       "data": "2026-09-28",
-      "maxima": 34.9,
-      "minima": 23.9,
+      "maxima": 35.4,
+      "minima": 23.7,
       "aparente_maxima": 41.2
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 34.4,
+      "minima": 24.8,
+      "aparente_maxima": 40.2
      }
     ],
     "natureza": "estimativa de modelo",
@@ -2257,17 +2259,17 @@
      "lon": -67.8243
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 20.5,
-     "pm10": 21.1,
-     "ozone": 54.4,
-     "nitrogen_dioxide": 5.6,
-     "carbon_monoxide": 338.4
+     "pm2_5": 18.8,
+     "pm10": 19.2,
+     "ozone": 51.5,
+     "nitrogen_dioxide": 2.7,
+     "carbon_monoxide": 273.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -2295,9 +2297,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A104",
+    "nome": "RIO BRANCO",
+    "situacao": "Operante",
+    "distancia_km": 5.2,
+    "coordenada": {
+     "lat": -9.95916666,
+     "lon": -67.86888888
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 30.9,
+     "tmin": 22.4,
+     "umin_pct": 59.0,
+     "pmax_mm": 48.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "AL": {
@@ -2337,7 +2360,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2349,13 +2372,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 12,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2363,40 +2386,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 28.5,
-      "minima": 22.7,
-      "aparente_maxima": 32.9
-     },
-     {
       "data": "2026-09-25",
       "maxima": 27.6,
       "minima": 22.6,
-      "aparente_maxima": 31.9
+      "aparente_maxima": 31.3
      },
      {
       "data": "2026-09-26",
-      "maxima": 27.4,
-      "minima": 22.7,
-      "aparente_maxima": 31.5
+      "maxima": 27.7,
+      "minima": 22.9,
+      "aparente_maxima": 31.7
      },
      {
       "data": "2026-09-27",
-      "maxima": 27.2,
-      "minima": 23.5,
-      "aparente_maxima": 30.4
+      "maxima": 27.5,
+      "minima": 23.7,
+      "aparente_maxima": 30.9
      },
      {
       "data": "2026-09-28",
-      "maxima": 27.1,
+      "maxima": 27.0,
       "minima": 23.3,
-      "aparente_maxima": 30.5
+      "aparente_maxima": 31.0
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 27.6,
+      "minima": 23.5,
+      "aparente_maxima": 31.9
      }
     ],
     "natureza": "estimativa de modelo",
@@ -2411,17 +2434,17 @@
      "lon": -35.735
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.1,
-     "pm10": 15.4,
-     "ozone": 55.2,
-     "nitrogen_dioxide": 2.4,
-     "carbon_monoxide": 89.2
+     "pm2_5": 14.5,
+     "pm10": 21.4,
+     "ozone": 48.9,
+     "nitrogen_dioxide": 3.1,
+     "carbon_monoxide": 78.7
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -2449,9 +2472,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A303",
+    "nome": "MACEIO",
+    "situacao": "Operante",
+    "distancia_km": 13.3,
+    "coordenada": {
+     "lat": -9.55111111,
+     "lon": -35.77027777
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 29.9,
+     "tmin": 21.0,
+     "umin_pct": 61.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "AM": {
@@ -2492,7 +2536,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2504,58 +2548,58 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 263,
+    "focos_24h": 40,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 1,
     "niveis": {
-     "Moderado": 1
+     "Cessar": 1
     },
     "municipios": [
      "MANAUS"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 36.5,
-      "minima": 28.9,
-      "aparente_maxima": 42.3
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 32.6,
-      "minima": 25.7,
-      "aparente_maxima": 38.0
+      "maxima": 28.6,
+      "minima": 25.6,
+      "aparente_maxima": 33.6
      },
      {
       "data": "2026-09-26",
-      "maxima": 31.1,
-      "minima": 25.4,
-      "aparente_maxima": 37.1
+      "maxima": 32.0,
+      "minima": 26.1,
+      "aparente_maxima": 38.8
      },
      {
       "data": "2026-09-27",
-      "maxima": 34.1,
-      "minima": 26.8,
-      "aparente_maxima": 40.8
+      "maxima": 33.6,
+      "minima": 27.0,
+      "aparente_maxima": 40.0
      },
      {
       "data": "2026-09-28",
-      "maxima": 29.7,
-      "minima": 25.7,
-      "aparente_maxima": 36.2
+      "maxima": 31.1,
+      "minima": 27.1,
+      "aparente_maxima": 38.5
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 29.2,
+      "minima": 26.0,
+      "aparente_maxima": 35.3
      }
     ],
     "natureza": "estimativa de modelo",
@@ -2570,17 +2614,17 @@
      "lon": -60.0212
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 73.3,
-     "pm10": 75.4,
-     "ozone": 108.3,
-     "nitrogen_dioxide": 9.4,
-     "carbon_monoxide": 749.2
+     "pm2_5": 56.3,
+     "pm10": 58.4,
+     "ozone": 102.7,
+     "nitrogen_dioxide": 6.9,
+     "carbon_monoxide": 524.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -2608,9 +2652,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A101",
+    "nome": "MANAUS",
+    "situacao": "Operante",
+    "distancia_km": 1.8,
+    "coordenada": {
+     "lat": -3.10333333,
+     "lon": -60.01638888
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 33.2,
+     "tmin": 23.7,
+     "umin_pct": 53.0,
+     "pmax_mm": 15.8,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "AP": {
@@ -2650,7 +2715,7 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -2658,13 +2723,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 49,
+    "focos_24h": 57,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2672,40 +2737,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 32.8,
-      "minima": 26.0,
-      "aparente_maxima": 37.3
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 32.5,
+      "maxima": 32.3,
       "minima": 25.9,
-      "aparente_maxima": 36.8
+      "aparente_maxima": 36.6
      },
      {
       "data": "2026-09-26",
-      "maxima": 33.4,
-      "minima": 26.5,
-      "aparente_maxima": 38.8
+      "maxima": 33.2,
+      "minima": 25.3,
+      "aparente_maxima": 38.7
      },
      {
       "data": "2026-09-27",
-      "maxima": 33.4,
-      "minima": 27.0,
-      "aparente_maxima": 39.2
+      "maxima": 33.3,
+      "minima": 26.4,
+      "aparente_maxima": 39.1
      },
      {
       "data": "2026-09-28",
-      "maxima": 33.1,
-      "minima": 26.3,
-      "aparente_maxima": 37.6
+      "maxima": 33.0,
+      "minima": 25.4,
+      "aparente_maxima": 37.9
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 32.9,
+      "minima": 25.7,
+      "aparente_maxima": 38.1
      }
     ],
     "natureza": "estimativa de modelo",
@@ -2720,17 +2785,17 @@
      "lon": -51.0694
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 7.0,
-     "pm10": 10.4,
-     "ozone": 42.6,
-     "nitrogen_dioxide": 1.1,
-     "carbon_monoxide": 117.1
+     "pm2_5": 7.1,
+     "pm10": 10.5,
+     "ozone": 36.5,
+     "nitrogen_dioxide": 1.4,
+     "carbon_monoxide": 116.3
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -2758,9 +2823,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A249",
+    "nome": "MACAPA",
+    "situacao": "Operante",
+    "distancia_km": 2.2,
+    "coordenada": {
+     "lat": 0.03499999,
+     "lon": -51.08888888
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 33.0,
+     "tmin": 25.2,
+     "umin_pct": 48.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "BA": {
@@ -2801,26 +2887,25 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 2
+     "Perigo Potencial": 1
     },
     "exemplos": [
-     "Tempestade",
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 179,
+    "focos_24h": 257,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2828,40 +2913,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 27.3,
-      "minima": 23.4,
-      "aparente_maxima": 30.9
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 28.2,
+      "maxima": 28.0,
       "minima": 23.9,
-      "aparente_maxima": 31.6
+      "aparente_maxima": 31.1
      },
      {
       "data": "2026-09-26",
-      "maxima": 27.5,
-      "minima": 23.3,
-      "aparente_maxima": 31.0
+      "maxima": 27.4,
+      "minima": 24.2,
+      "aparente_maxima": 30.4
      },
      {
       "data": "2026-09-27",
-      "maxima": 27.1,
-      "minima": 23.9,
-      "aparente_maxima": 30.7
+      "maxima": 28.0,
+      "minima": 24.1,
+      "aparente_maxima": 31.4
      },
      {
       "data": "2026-09-28",
-      "maxima": 27.2,
-      "minima": 23.2,
-      "aparente_maxima": 30.6
+      "maxima": 26.7,
+      "minima": 23.0,
+      "aparente_maxima": 30.2
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 27.7,
+      "minima": 22.9,
+      "aparente_maxima": 30.9
      }
     ],
     "natureza": "estimativa de modelo",
@@ -2876,17 +2961,17 @@
      "lon": -38.5011
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 13.3,
-     "pm10": 19.2,
-     "ozone": 56.8,
-     "nitrogen_dioxide": 6.2,
-     "carbon_monoxide": 113.0
+     "pm2_5": 12.1,
+     "pm10": 16.7,
+     "ozone": 48.0,
+     "nitrogen_dioxide": 5.7,
+     "carbon_monoxide": 105.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -2914,9 +2999,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A401",
+    "nome": "SALVADOR",
+    "situacao": "Operante",
+    "distancia_km": 3.8,
+    "coordenada": {
+     "lat": -13.00555555,
+     "lon": -38.50583333
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 30.1,
+     "tmin": 22.1,
+     "umin_pct": 64.0,
+     "pmax_mm": 1.2,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "CE": {
@@ -2956,7 +3062,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -2968,13 +3074,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 10,
+    "focos_24h": 28,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -2982,40 +3088,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 30.3,
-      "minima": 25.6,
-      "aparente_maxima": 33.9
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 30.2,
+      "maxima": 30.3,
       "minima": 25.2,
-      "aparente_maxima": 33.5
+      "aparente_maxima": 33.8
      },
      {
       "data": "2026-09-26",
-      "maxima": 30.6,
-      "minima": 24.4,
-      "aparente_maxima": 32.9
+      "maxima": 30.7,
+      "minima": 25.3,
+      "aparente_maxima": 33.1
      },
      {
       "data": "2026-09-27",
-      "maxima": 29.8,
-      "minima": 25.7,
-      "aparente_maxima": 33.2
+      "maxima": 30.3,
+      "minima": 25.8,
+      "aparente_maxima": 33.5
      },
      {
       "data": "2026-09-28",
-      "maxima": 30.3,
+      "maxima": 30.6,
       "minima": 26.1,
-      "aparente_maxima": 33.3
+      "aparente_maxima": 33.7
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 30.7,
+      "minima": 25.9,
+      "aparente_maxima": 34.1
      }
     ],
     "natureza": "estimativa de modelo",
@@ -3030,17 +3136,17 @@
      "lon": -38.5423
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 9.8,
-     "pm10": 16.9,
-     "ozone": 59.5,
-     "nitrogen_dioxide": 0.8,
-     "carbon_monoxide": 117.5
+     "pm2_5": 8.5,
+     "pm10": 14.3,
+     "ozone": 62.6,
+     "nitrogen_dioxide": 0.7,
+     "carbon_monoxide": 103.7
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -3068,7 +3174,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -3110,7 +3216,7 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -3118,13 +3224,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3132,40 +3238,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 31.8,
-      "minima": 19.8,
-      "aparente_maxima": 33.4
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 31.3,
+      "maxima": 30.3,
       "minima": 19.9,
-      "aparente_maxima": 33.2
+      "aparente_maxima": 31.4
      },
      {
       "data": "2026-09-26",
-      "maxima": 32.1,
-      "minima": 20.4,
-      "aparente_maxima": 35.3
+      "maxima": 31.4,
+      "minima": 19.1,
+      "aparente_maxima": 34.0
      },
      {
       "data": "2026-09-27",
-      "maxima": 33.7,
-      "minima": 21.4,
-      "aparente_maxima": 33.6
+      "maxima": 32.6,
+      "minima": 21.8,
+      "aparente_maxima": 32.6
      },
      {
       "data": "2026-09-28",
-      "maxima": 33.9,
-      "minima": 21.4,
-      "aparente_maxima": 33.8
+      "maxima": 34.1,
+      "minima": 20.9,
+      "aparente_maxima": 33.7
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 34.9,
+      "minima": 23.3,
+      "aparente_maxima": 34.9
      }
     ],
     "natureza": "estimativa de modelo",
@@ -3180,17 +3286,17 @@
      "lon": -47.9297
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 21.3,
-     "pm10": 22.7,
-     "ozone": 80.2,
-     "nitrogen_dioxide": 17.5,
-     "carbon_monoxide": 267.4
+     "pm2_5": 15.0,
+     "pm10": 16.2,
+     "ozone": 90.5,
+     "nitrogen_dioxide": 11.7,
+     "carbon_monoxide": 246.5
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -3218,9 +3324,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A001",
+    "nome": "BRASILIA",
+    "situacao": "Operante",
+    "distancia_km": 1.2,
+    "coordenada": {
+     "lat": -15.78944444,
+     "lon": -47.92583332
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 31.9,
+     "tmin": 18.5,
+     "umin_pct": 32.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "ES": {
@@ -3258,7 +3385,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -3266,13 +3393,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3280,40 +3407,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 23.4,
-      "minima": 20.2,
-      "aparente_maxima": 24.6
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 24.7,
+      "maxima": 24.9,
       "minima": 20.8,
-      "aparente_maxima": 27.1
+      "aparente_maxima": 27.7
      },
      {
       "data": "2026-09-26",
-      "maxima": 29.0,
-      "minima": 21.7,
-      "aparente_maxima": 33.6
+      "maxima": 29.2,
+      "minima": 22.2,
+      "aparente_maxima": 32.9
      },
      {
       "data": "2026-09-27",
-      "maxima": 28.6,
-      "minima": 21.4,
-      "aparente_maxima": 33.3
+      "maxima": 28.8,
+      "minima": 21.6,
+      "aparente_maxima": 34.4
      },
      {
       "data": "2026-09-28",
-      "maxima": 28.9,
-      "minima": 21.6,
-      "aparente_maxima": 32.2
+      "maxima": 28.1,
+      "minima": 21.3,
+      "aparente_maxima": 32.1
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 29.7,
+      "minima": 21.5,
+      "aparente_maxima": 32.7
      }
     ],
     "natureza": "estimativa de modelo",
@@ -3328,17 +3455,17 @@
      "lon": -40.3128
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 12.8,
-     "pm10": 18.1,
-     "ozone": 51.5,
-     "nitrogen_dioxide": 9.7,
-     "carbon_monoxide": 603.0
+     "pm2_5": 9.0,
+     "pm10": 11.6,
+     "ozone": 50.8,
+     "nitrogen_dioxide": 8.9,
+     "carbon_monoxide": 365.7
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -3366,9 +3493,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A612",
+    "nome": "VITORIA",
+    "situacao": "Operante",
+    "distancia_km": 5.0,
+    "coordenada": {
+     "lat": -20.27083332,
+     "lon": -40.30583333
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 33.6,
+     "tmin": 22.1,
+     "umin_pct": 46.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "GO": {
@@ -3409,25 +3557,27 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 3,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 2,
+     "Grande Perigo": 1
     },
     "exemplos": [
-     "Tempestade"
+     "Baixa Umidade",
+     "Onda de Calor"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 160,
+    "focos_24h": 202,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3435,40 +3585,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 32.6,
-      "minima": 20.4,
-      "aparente_maxima": 35.9
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 35.5,
+      "maxima": 35.1,
       "minima": 22.3,
-      "aparente_maxima": 36.3
+      "aparente_maxima": 36.6
      },
      {
       "data": "2026-09-26",
-      "maxima": 35.9,
-      "minima": 24.4,
-      "aparente_maxima": 38.5
+      "maxima": 34.5,
+      "minima": 23.5,
+      "aparente_maxima": 37.5
      },
      {
       "data": "2026-09-27",
-      "maxima": 37.2,
-      "minima": 24.8,
-      "aparente_maxima": 37.9
+      "maxima": 36.0,
+      "minima": 24.7,
+      "aparente_maxima": 37.3
      },
      {
       "data": "2026-09-28",
-      "maxima": 38.3,
-      "minima": 25.7,
-      "aparente_maxima": 38.1
+      "maxima": 37.8,
+      "minima": 24.8,
+      "aparente_maxima": 38.0
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 37.6,
+      "minima": 25.3,
+      "aparente_maxima": 36.6
      }
     ],
     "natureza": "estimativa de modelo",
@@ -3483,17 +3633,17 @@
      "lon": -49.2643
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 14.2,
-     "pm10": 14.9,
-     "ozone": 88.9,
-     "nitrogen_dioxide": 15.2,
-     "carbon_monoxide": 359.5
+     "pm2_5": 12.3,
+     "pm10": 12.9,
+     "ozone": 102.2,
+     "nitrogen_dioxide": 8.0,
+     "carbon_monoxide": 280.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -3521,9 +3671,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A002",
+    "nome": "GOIANIA",
+    "situacao": "Operante",
+    "distancia_km": 6.7,
+    "coordenada": {
+     "lat": -16.64277777,
+     "lon": -49.22027777
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 34.0,
+     "tmin": 21.1,
+     "umin_pct": 36.0,
+     "pmax_mm": 19.3,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "MA": {
@@ -3564,26 +3735,25 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 2
+     "Perigo Potencial": 1
     },
     "exemplos": [
-     "Tempestade",
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 205,
+    "focos_24h": 354,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3591,40 +3761,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 31.8,
-      "minima": 25.1,
-      "aparente_maxima": 36.9
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 30.4,
+      "maxima": 30.6,
       "minima": 25.6,
-      "aparente_maxima": 35.0
+      "aparente_maxima": 35.1
      },
      {
       "data": "2026-09-26",
       "maxima": 32.9,
-      "minima": 25.8,
+      "minima": 25.6,
       "aparente_maxima": 38.3
      },
      {
       "data": "2026-09-27",
-      "maxima": 32.1,
+      "maxima": 31.7,
       "minima": 25.9,
-      "aparente_maxima": 36.9
+      "aparente_maxima": 36.5
      },
      {
       "data": "2026-09-28",
-      "maxima": 32.4,
+      "maxima": 30.9,
       "minima": 26.1,
-      "aparente_maxima": 36.7
+      "aparente_maxima": 34.9
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 33.0,
+      "minima": 25.7,
+      "aparente_maxima": 37.5
      }
     ],
     "natureza": "estimativa de modelo",
@@ -3639,17 +3809,17 @@
      "lon": -44.2825
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 9.8,
-     "pm10": 16.0,
-     "ozone": 50.7,
-     "nitrogen_dioxide": 1.5,
-     "carbon_monoxide": 107.7
+     "pm2_5": 7.8,
+     "pm10": 12.4,
+     "ozone": 53.0,
+     "nitrogen_dioxide": 1.6,
+     "carbon_monoxide": 104.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -3677,7 +3847,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -3719,21 +3889,27 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Grande Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade",
+     "Onda de Calor"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 71,
+    "focos_24h": 279,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3741,40 +3917,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 28.1,
-      "minima": 17.0,
-      "aparente_maxima": 30.5
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 29.6,
+      "maxima": 28.6,
       "minima": 18.7,
-      "aparente_maxima": 32.4
+      "aparente_maxima": 30.7
      },
      {
       "data": "2026-09-26",
-      "maxima": 32.3,
-      "minima": 18.6,
-      "aparente_maxima": 34.5
+      "maxima": 32.1,
+      "minima": 18.8,
+      "aparente_maxima": 34.6
      },
      {
       "data": "2026-09-27",
-      "maxima": 33.4,
+      "maxima": 33.8,
       "minima": 19.5,
-      "aparente_maxima": 34.7
+      "aparente_maxima": 35.5
      },
      {
       "data": "2026-09-28",
-      "maxima": 34.2,
-      "minima": 19.8,
-      "aparente_maxima": 35.7
+      "maxima": 33.1,
+      "minima": 20.0,
+      "aparente_maxima": 35.4
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 35.9,
+      "minima": 20.0,
+      "aparente_maxima": 36.5
      }
     ],
     "natureza": "estimativa de modelo",
@@ -3789,17 +3965,17 @@
      "lon": -43.9266
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 8.5,
-     "pm10": 9.0,
-     "ozone": 70.6,
-     "nitrogen_dioxide": 10.2,
-     "carbon_monoxide": 199.8
+     "pm2_5": 9.7,
+     "pm10": 11.1,
+     "ozone": 68.5,
+     "nitrogen_dioxide": 10.0,
+     "carbon_monoxide": 189.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -3827,9 +4003,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A572",
+    "nome": "BELO HORIZONTE - SANTO AGOSTINHO",
+    "situacao": "Operante",
+    "distancia_km": 3.8,
+    "coordenada": {
+     "lat": -19.93388888,
+     "lon": -43.95222222
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 33.2,
+     "tmin": 19.9,
+     "umin_pct": 36.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "MS": {
@@ -3870,21 +4067,27 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Grande Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade",
+     "Onda de Calor"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 3,
+    "focos_24h": 11,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -3892,40 +4095,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 28.5,
-      "minima": 18.5,
-      "aparente_maxima": 32.7
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 30.5,
+      "maxima": 30.7,
       "minima": 20.3,
-      "aparente_maxima": 34.5
+      "aparente_maxima": 33.7
      },
      {
       "data": "2026-09-26",
-      "maxima": 32.8,
-      "minima": 21.4,
-      "aparente_maxima": 35.7
+      "maxima": 33.6,
+      "minima": 22.5,
+      "aparente_maxima": 36.8
      },
      {
       "data": "2026-09-27",
       "maxima": 33.9,
-      "minima": 23.0,
-      "aparente_maxima": 36.5
+      "minima": 23.7,
+      "aparente_maxima": 36.9
      },
      {
       "data": "2026-09-28",
-      "maxima": 35.4,
-      "minima": 23.7,
-      "aparente_maxima": 37.6
+      "maxima": 34.5,
+      "minima": 24.2,
+      "aparente_maxima": 36.7
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 34.7,
+      "minima": 26.8,
+      "aparente_maxima": 35.2
      }
     ],
     "natureza": "estimativa de modelo",
@@ -3940,17 +4143,17 @@
      "lon": -54.6295
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 9.3,
-     "pm10": 9.7,
-     "ozone": 67.6,
-     "nitrogen_dioxide": 10.2,
-     "carbon_monoxide": 329.3
+     "pm2_5": 6.3,
+     "pm10": 6.7,
+     "ozone": 69.2,
+     "nitrogen_dioxide": 8.7,
+     "carbon_monoxide": 261.1
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -3978,9 +4181,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A702",
+    "nome": "CAMPO GRANDE",
+    "situacao": "Operante",
+    "distancia_km": 9.7,
+    "coordenada": {
+     "lat": -20.44722221,
+     "lon": -54.72249999
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 35.2,
+     "tmin": 23.6,
+     "umin_pct": 30.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "MT": {
@@ -4020,26 +4244,27 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 2,
     "graus": {
-     "Perigo Potencial": 2
+     "Perigo Potencial": 1,
+     "Grande Perigo": 1
     },
     "exemplos": [
-     "Chuvas Intensas",
-     "Tempestade"
+     "Baixa Umidade",
+     "Onda de Calor"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 1351,
+    "focos_24h": 644,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -4047,40 +4272,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 33.8,
-      "minima": 21.9,
-      "aparente_maxima": 39.1
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 35.4,
-      "minima": 23.6,
-      "aparente_maxima": 41.0
-     },
-     {
-      "data": "2026-09-26",
       "maxima": 36.1,
-      "minima": 24.6,
+      "minima": 23.6,
       "aparente_maxima": 40.6
      },
      {
+      "data": "2026-09-26",
+      "maxima": 37.1,
+      "minima": 26.8,
+      "aparente_maxima": 40.5
+     },
+     {
       "data": "2026-09-27",
-      "maxima": 37.8,
-      "minima": 26.4,
-      "aparente_maxima": 41.4
+      "maxima": 39.1,
+      "minima": 28.3,
+      "aparente_maxima": 43.1
      },
      {
       "data": "2026-09-28",
-      "maxima": 40.6,
-      "minima": 27.4,
-      "aparente_maxima": 41.7
+      "maxima": 41.3,
+      "minima": 28.9,
+      "aparente_maxima": 42.5
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 41.0,
+      "minima": 30.4,
+      "aparente_maxima": 41.2
      }
     ],
     "natureza": "estimativa de modelo",
@@ -4095,17 +4320,17 @@
      "lon": -56.0974
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 6.7,
-     "pm10": 7.0,
-     "ozone": 70.4,
-     "nitrogen_dioxide": 12.5,
-     "carbon_monoxide": 500.0
+     "pm2_5": 9.5,
+     "pm10": 9.8,
+     "ozone": 75.5,
+     "nitrogen_dioxide": 5.7,
+     "carbon_monoxide": 291.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -4133,9 +4358,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A901",
+    "nome": "CUIABA",
+    "situacao": "Operante",
+    "distancia_km": 4.0,
+    "coordenada": {
+     "lat": -15.60694444,
+     "lon": -56.06083333
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 36.3,
+     "tmin": 29.1,
+     "umin_pct": 33.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "PA": {
@@ -4176,26 +4422,21 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
-    "graus": {
-     "Perigo Potencial": 2
-    },
-    "exemplos": [
-     "Chuvas Intensas",
-     "Tempestade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 810,
+    "focos_24h": 934,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -4203,40 +4444,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 32.9,
-      "minima": 24.7,
-      "aparente_maxima": 38.9
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 31.8,
+      "maxima": 32.0,
       "minima": 24.3,
-      "aparente_maxima": 36.7
+      "aparente_maxima": 37.8
      },
      {
       "data": "2026-09-26",
-      "maxima": 34.7,
-      "minima": 23.9,
-      "aparente_maxima": 41.6
-     },
-     {
-      "data": "2026-09-27",
-      "maxima": 34.0,
-      "minima": 24.8,
+      "maxima": 33.9,
+      "minima": 24.1,
       "aparente_maxima": 41.5
      },
      {
+      "data": "2026-09-27",
+      "maxima": 33.8,
+      "minima": 24.7,
+      "aparente_maxima": 41.3
+     },
+     {
       "data": "2026-09-28",
-      "maxima": 32.9,
-      "minima": 24.8,
-      "aparente_maxima": 39.2
+      "maxima": 32.8,
+      "minima": 25.0,
+      "aparente_maxima": 39.5
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 34.3,
+      "minima": 24.1,
+      "aparente_maxima": 40.1
      }
     ],
     "natureza": "estimativa de modelo",
@@ -4251,17 +4492,17 @@
      "lon": -48.4898
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 8.9,
-     "pm10": 12.3,
-     "ozone": 49.2,
-     "nitrogen_dioxide": 3.2,
-     "carbon_monoxide": 133.4
+     "pm2_5": 11.6,
+     "pm10": 15.0,
+     "ozone": 51.6,
+     "nitrogen_dioxide": 3.4,
+     "carbon_monoxide": 126.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -4289,9 +4530,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A201",
+    "nome": "BELEM",
+    "situacao": "Operante",
+    "distancia_km": 7.4,
+    "coordenada": {
+     "lat": -1.41111111,
+     "lon": -48.43944444
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 34.4,
+     "tmin": 23.9,
+     "umin_pct": 54.0,
+     "pmax_mm": 17.6,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "PB": {
@@ -4331,7 +4593,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -4343,13 +4605,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 3,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -4357,40 +4619,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 29.3,
-      "minima": 25.1,
-      "aparente_maxima": 32.6
-     },
-     {
       "data": "2026-09-25",
       "maxima": 28.8,
       "minima": 23.9,
-      "aparente_maxima": 32.2
+      "aparente_maxima": 32.0
      },
      {
       "data": "2026-09-26",
       "maxima": 28.1,
-      "minima": 23.5,
-      "aparente_maxima": 31.3
+      "minima": 24.0,
+      "aparente_maxima": 31.1
      },
      {
       "data": "2026-09-27",
-      "maxima": 28.4,
-      "minima": 24.6,
-      "aparente_maxima": 32.4
+      "maxima": 29.2,
+      "minima": 24.3,
+      "aparente_maxima": 32.2
      },
      {
       "data": "2026-09-28",
-      "maxima": 28.4,
-      "minima": 23.7,
-      "aparente_maxima": 32.1
+      "maxima": 28.5,
+      "minima": 24.4,
+      "aparente_maxima": 32.5
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 28.6,
+      "minima": 24.5,
+      "aparente_maxima": 32.7
      }
     ],
     "natureza": "estimativa de modelo",
@@ -4405,17 +4667,17 @@
      "lon": -34.8641
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
      "pm2_5": 9.2,
-     "pm10": 15.4,
-     "ozone": 63.9,
-     "nitrogen_dioxide": 1.6,
-     "carbon_monoxide": 132.7
+     "pm10": 15.5,
+     "ozone": 59.3,
+     "nitrogen_dioxide": 1.0,
+     "carbon_monoxide": 111.5
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -4443,9 +4705,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A320",
+    "nome": "JOAO PESSOA",
+    "situacao": "Operante",
+    "distancia_km": 3.5,
+    "coordenada": {
+     "lat": -7.1436111,
+     "lon": -34.84972221
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 30.8,
+     "tmin": 23.7,
+     "umin_pct": 55.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "PE": {
@@ -4485,7 +4768,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -4497,13 +4780,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 10,
+    "focos_24h": 27,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -4511,40 +4794,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 29.3,
-      "minima": 24.5,
-      "aparente_maxima": 33.4
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 28.6,
+      "maxima": 28.5,
       "minima": 23.4,
-      "aparente_maxima": 32.5
+      "aparente_maxima": 31.5
      },
      {
       "data": "2026-09-26",
-      "maxima": 28.2,
-      "minima": 23.0,
+      "maxima": 27.9,
+      "minima": 23.8,
       "aparente_maxima": 31.7
      },
      {
       "data": "2026-09-27",
       "maxima": 28.1,
-      "minima": 24.0,
-      "aparente_maxima": 32.1
+      "minima": 23.8,
+      "aparente_maxima": 32.6
      },
      {
       "data": "2026-09-28",
-      "maxima": 27.6,
-      "minima": 23.6,
-      "aparente_maxima": 32.1
+      "maxima": 27.7,
+      "minima": 23.7,
+      "aparente_maxima": 32.6
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 28.4,
+      "minima": 24.0,
+      "aparente_maxima": 32.9
      }
     ],
     "natureza": "estimativa de modelo",
@@ -4559,17 +4842,17 @@
      "lon": -34.8771
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 9.4,
-     "pm10": 15.5,
-     "ozone": 64.5,
-     "nitrogen_dioxide": 1.8,
-     "carbon_monoxide": 113.6
+     "pm2_5": 10.6,
+     "pm10": 17.7,
+     "ozone": 57.9,
+     "nitrogen_dioxide": 1.3,
+     "carbon_monoxide": 95.7
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -4597,9 +4880,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A301",
+    "nome": "RECIFE",
+    "situacao": "Operante",
+    "distancia_km": 8.0,
+    "coordenada": {
+     "lat": -8.01888888,
+     "lon": -34.94416666
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 29.9,
+     "tmin": 22.5,
+     "umin_pct": 57.0,
+     "pmax_mm": 1.4,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "PI": {
@@ -4640,26 +4944,25 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 2
+     "Perigo Potencial": 1
     },
     "exemplos": [
-     "Tempestade",
      "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 273,
+    "focos_24h": 191,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -4667,40 +4970,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 38.7,
-      "minima": 25.3,
-      "aparente_maxima": 43.5
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 37.1,
+      "maxima": 37.2,
       "minima": 25.3,
       "aparente_maxima": 41.6
      },
      {
       "data": "2026-09-26",
-      "maxima": 37.6,
-      "minima": 24.9,
-      "aparente_maxima": 42.4
+      "maxima": 37.8,
+      "minima": 25.6,
+      "aparente_maxima": 41.7
      },
      {
       "data": "2026-09-27",
-      "maxima": 38.1,
-      "minima": 25.0,
-      "aparente_maxima": 42.3
+      "maxima": 38.0,
+      "minima": 24.9,
+      "aparente_maxima": 41.5
      },
      {
       "data": "2026-09-28",
-      "maxima": 37.8,
+      "maxima": 37.5,
       "minima": 25.2,
-      "aparente_maxima": 40.5
+      "aparente_maxima": 41.0
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 38.3,
+      "minima": 24.9,
+      "aparente_maxima": 41.5
      }
     ],
     "natureza": "estimativa de modelo",
@@ -4715,17 +5018,17 @@
      "lon": -42.8034
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 10.0,
-     "pm10": 12.6,
-     "ozone": 59.2,
-     "nitrogen_dioxide": 6.0,
-     "carbon_monoxide": 166.2
+     "pm2_5": 12.3,
+     "pm10": 15.0,
+     "ozone": 61.6,
+     "nitrogen_dioxide": 5.7,
+     "carbon_monoxide": 155.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -4753,9 +5056,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A312",
+    "nome": "TERESINA",
+    "situacao": "Operante",
+    "distancia_km": 6.4,
+    "coordenada": {
+     "lat": -5.03472221,
+     "lon": -42.80138888
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 36.4,
+     "tmin": 23.9,
+     "umin_pct": 35.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "PR": {
@@ -4795,21 +5119,25 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Grande Perigo": 1
+    },
+    "exemplos": [
+     "Onda de Calor"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 6,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -4817,40 +5145,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 18.7,
-      "minima": 10.1,
-      "aparente_maxima": 19.1
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 25.0,
+      "maxima": 24.6,
       "minima": 12.6,
-      "aparente_maxima": 26.8
+      "aparente_maxima": 27.5
      },
      {
       "data": "2026-09-26",
-      "maxima": 28.6,
+      "maxima": 29.0,
       "minima": 14.1,
-      "aparente_maxima": 31.8
+      "aparente_maxima": 32.2
      },
      {
       "data": "2026-09-27",
-      "maxima": 27.3,
-      "minima": 15.2,
-      "aparente_maxima": 31.0
+      "maxima": 25.5,
+      "minima": 15.8,
+      "aparente_maxima": 29.7
      },
      {
       "data": "2026-09-28",
-      "maxima": 29.9,
-      "minima": 16.2,
-      "aparente_maxima": 33.0
+      "maxima": 29.3,
+      "minima": 14.9,
+      "aparente_maxima": 31.7
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 28.3,
+      "minima": 16.9,
+      "aparente_maxima": 31.1
      }
     ],
     "natureza": "estimativa de modelo",
@@ -4865,17 +5193,17 @@
      "lon": -49.2646
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 12.8,
-     "pm10": 14.2,
-     "ozone": 64.9,
-     "nitrogen_dioxide": 21.0,
-     "carbon_monoxide": 366.2
+     "pm2_5": 12.6,
+     "pm10": 13.2,
+     "ozone": 82.0,
+     "nitrogen_dioxide": 18.0,
+     "carbon_monoxide": 265.5
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -4903,9 +5231,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A807",
+    "nome": "CURITIBA",
+    "situacao": "Operante",
+    "distancia_km": 4.7,
+    "coordenada": {
+     "lat": -25.4486111,
+     "lon": -49.23055554
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 28.6,
+     "tmin": 13.4,
+     "umin_pct": 43.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "RJ": {
@@ -4943,66 +5292,66 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Grande Perigo": 1
+    },
+    "exemplos": [
+     "Onda de Calor"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 3,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
-    "niveis": {
-     "Cessar": 1
-    },
-    "municipios": [
-     "PETRÓPOLIS"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 21.4,
-      "minima": 18.1,
-      "aparente_maxima": 22.1
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 25.9,
+      "maxima": 26.7,
       "minima": 19.3,
-      "aparente_maxima": 31.1
+      "aparente_maxima": 32.1
      },
      {
       "data": "2026-09-26",
-      "maxima": 26.6,
-      "minima": 19.9,
-      "aparente_maxima": 33.0
+      "maxima": 27.0,
+      "minima": 20.4,
+      "aparente_maxima": 33.6
      },
      {
       "data": "2026-09-27",
-      "maxima": 24.6,
-      "minima": 19.4,
-      "aparente_maxima": 29.2
+      "maxima": 24.9,
+      "minima": 20.8,
+      "aparente_maxima": 28.7
      },
      {
       "data": "2026-09-28",
-      "maxima": 25.5,
-      "minima": 21.5,
-      "aparente_maxima": 30.6
+      "maxima": 25.9,
+      "minima": 21.3,
+      "aparente_maxima": 31.3
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 28.5,
+      "minima": 21.1,
+      "aparente_maxima": 34.5
      }
     ],
     "natureza": "estimativa de modelo",
@@ -5017,17 +5366,17 @@
      "lon": -43.2003
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 21.7,
-     "pm10": 24.6,
-     "ozone": 48.6,
-     "nitrogen_dioxide": 25.9,
-     "carbon_monoxide": 260.0
+     "pm2_5": 29.6,
+     "pm10": 31.3,
+     "ozone": 109.2,
+     "nitrogen_dioxide": 22.2,
+     "carbon_monoxide": 336.8
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -5055,9 +5404,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A652",
+    "nome": "RIO DE JANEIRO - FORTE DE COPACABANA",
+    "situacao": "Operante",
+    "distancia_km": 8.4,
+    "coordenada": {
+     "lat": -22.98833333,
+     "lon": -43.19055555
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 32.8,
+     "tmin": 19.0,
+     "umin_pct": 53.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "RN": {
@@ -5097,7 +5467,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -5109,13 +5479,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 17,
+    "focos_24h": 8,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -5123,40 +5493,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 29.3,
-      "minima": 24.7,
-      "aparente_maxima": 32.9
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 28.8,
+      "maxima": 28.4,
       "minima": 24.7,
-      "aparente_maxima": 32.3
+      "aparente_maxima": 31.9
      },
      {
       "data": "2026-09-26",
       "maxima": 28.8,
-      "minima": 24.0,
-      "aparente_maxima": 31.7
+      "minima": 23.8,
+      "aparente_maxima": 32.0
      },
      {
       "data": "2026-09-27",
-      "maxima": 29.7,
-      "minima": 24.6,
-      "aparente_maxima": 32.8
+      "maxima": 29.5,
+      "minima": 23.7,
+      "aparente_maxima": 32.4
      },
      {
       "data": "2026-09-28",
-      "maxima": 28.9,
-      "minima": 23.4,
+      "maxima": 28.7,
+      "minima": 23.0,
       "aparente_maxima": 32.5
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 29.1,
+      "minima": 23.3,
+      "aparente_maxima": 33.0
      }
     ],
     "natureza": "estimativa de modelo",
@@ -5171,17 +5541,17 @@
      "lon": -35.1986
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 9.0,
-     "pm10": 15.1,
-     "ozone": 60.7,
-     "nitrogen_dioxide": 1.4,
-     "carbon_monoxide": 107.2
+     "pm2_5": 8.5,
+     "pm10": 14.1,
+     "ozone": 60.1,
+     "nitrogen_dioxide": 1.2,
+     "carbon_monoxide": 95.0
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -5209,9 +5579,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A304",
+    "nome": "NATAL",
+    "situacao": "Operante",
+    "distancia_km": 5.0,
+    "coordenada": {
+     "lat": -5.83722221,
+     "lon": -35.20805555
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 29.7,
+     "tmin": 23.5,
+     "umin_pct": 63.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "RO": {
@@ -5252,7 +5643,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -5264,13 +5655,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 73,
+    "focos_24h": 40,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -5278,40 +5669,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 34.6,
-      "minima": 25.1,
-      "aparente_maxima": 42.0
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 32.9,
+      "maxima": 33.9,
       "minima": 24.4,
-      "aparente_maxima": 39.8
+      "aparente_maxima": 39.3
      },
      {
       "data": "2026-09-26",
-      "maxima": 34.5,
-      "minima": 24.8,
-      "aparente_maxima": 40.8
+      "maxima": 31.9,
+      "minima": 23.5,
+      "aparente_maxima": 35.5
      },
      {
       "data": "2026-09-27",
-      "maxima": 33.3,
-      "minima": 24.8,
-      "aparente_maxima": 40.6
+      "maxima": 34.6,
+      "minima": 24.7,
+      "aparente_maxima": 40.7
      },
      {
       "data": "2026-09-28",
-      "maxima": 34.4,
-      "minima": 25.7,
-      "aparente_maxima": 41.6
+      "maxima": 34.6,
+      "minima": 25.9,
+      "aparente_maxima": 41.3
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 34.8,
+      "minima": 24.7,
+      "aparente_maxima": 41.7
      }
     ],
     "natureza": "estimativa de modelo",
@@ -5326,17 +5717,17 @@
      "lon": -63.8999
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 28.3,
-     "pm10": 29.2,
-     "ozone": 90.1,
-     "nitrogen_dioxide": 2.4,
-     "carbon_monoxide": 305.6
+     "pm2_5": 29.5,
+     "pm10": 30.7,
+     "ozone": 67.9,
+     "nitrogen_dioxide": 3.4,
+     "carbon_monoxide": 341.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -5364,9 +5755,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A925",
+    "nome": "PORTO VELHO",
+    "situacao": "Operante",
+    "distancia_km": 7.0,
+    "coordenada": {
+     "lat": -8.7936111,
+     "lon": -63.84583333
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 33.0,
+     "tmin": 22.2,
+     "umin_pct": 52.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "RR": {
@@ -5406,25 +5818,21 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Chuvas Intensas"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 27,
+    "focos_24h": 41,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -5432,40 +5840,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 35.2,
-      "minima": 26.9,
-      "aparente_maxima": 41.0
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 36.0,
+      "maxima": 34.6,
       "minima": 25.9,
-      "aparente_maxima": 40.9
+      "aparente_maxima": 40.2
      },
      {
       "data": "2026-09-26",
-      "maxima": 36.1,
-      "minima": 26.7,
-      "aparente_maxima": 41.0
+      "maxima": 35.6,
+      "minima": 25.6,
+      "aparente_maxima": 41.6
      },
      {
       "data": "2026-09-27",
-      "maxima": 34.8,
-      "minima": 25.4,
-      "aparente_maxima": 40.9
+      "maxima": 34.7,
+      "minima": 25.9,
+      "aparente_maxima": 40.6
      },
      {
       "data": "2026-09-28",
-      "maxima": 35.0,
-      "minima": 25.4,
-      "aparente_maxima": 39.6
+      "maxima": 35.2,
+      "minima": 25.5,
+      "aparente_maxima": 41.2
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 35.2,
+      "minima": 24.5,
+      "aparente_maxima": 41.7
      }
     ],
     "natureza": "estimativa de modelo",
@@ -5480,17 +5888,17 @@
      "lon": -60.6753
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 8.2,
-     "pm10": 9.7,
-     "ozone": 35.5,
-     "nitrogen_dioxide": 6.2,
-     "carbon_monoxide": 174.9
+     "pm2_5": 12.4,
+     "pm10": 14.4,
+     "ozone": 35.2,
+     "nitrogen_dioxide": 6.6,
+     "carbon_monoxide": 191.4
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -5518,7 +5926,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -5560,7 +5968,7 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -5572,59 +5980,58 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 6,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
-    "total": 2,
+    "total": 1,
     "niveis": {
-     "Moderado": 2
+     "Moderado": 1
     },
     "municipios": [
-     "NOVO HAMBURGO",
      "SÃO LEOPOLDO"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 23.5,
-      "minima": 8.9,
-      "aparente_maxima": 24.8
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 29.2,
+      "maxima": 29.0,
       "minima": 13.6,
-      "aparente_maxima": 31.7
+      "aparente_maxima": 31.2
      },
      {
       "data": "2026-09-26",
-      "maxima": 27.5,
-      "minima": 17.4,
-      "aparente_maxima": 31.7
+      "maxima": 27.3,
+      "minima": 17.3,
+      "aparente_maxima": 31.1
      },
      {
       "data": "2026-09-27",
-      "maxima": 22.7,
-      "minima": 17.2,
-      "aparente_maxima": 25.0
+      "maxima": 21.8,
+      "minima": 16.4,
+      "aparente_maxima": 22.8
      },
      {
       "data": "2026-09-28",
       "maxima": 24.5,
-      "minima": 18.0,
-      "aparente_maxima": 28.9
+      "minima": 17.7,
+      "aparente_maxima": 28.4
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 25.1,
+      "minima": 19.4,
+      "aparente_maxima": 27.9
      }
     ],
     "natureza": "estimativa de modelo",
@@ -5639,17 +6046,17 @@
      "lon": -51.2065
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 18.7,
-     "pm10": 19.3,
-     "ozone": 53.8,
-     "nitrogen_dioxide": 26.3,
-     "carbon_monoxide": 431.8
+     "pm2_5": 19.2,
+     "pm10": 20.7,
+     "ozone": 74.5,
+     "nitrogen_dioxide": 13.1,
+     "carbon_monoxide": 248.2
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -5677,9 +6084,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A801",
+    "nome": "PORTO ALEGRE - JARDIM BOTANICO",
+    "situacao": "Operante",
+    "distancia_km": 3.9,
+    "coordenada": {
+     "lat": -30.05361111,
+     "lon": -51.17472221
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 28.4,
+     "tmin": 18.6,
+     "umin_pct": 56.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "SC": {
@@ -5719,21 +6147,27 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Grande Perigo": 1
+    },
+    "exemplos": [
+     "Tempestade",
+     "Onda de Calor"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 3,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -5741,40 +6175,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 21.8,
-      "minima": 12.9,
-      "aparente_maxima": 21.2
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 24.7,
+      "maxima": 24.8,
       "minima": 15.3,
-      "aparente_maxima": 26.0
+      "aparente_maxima": 26.2
      },
      {
       "data": "2026-09-26",
-      "maxima": 27.7,
-      "minima": 17.3,
-      "aparente_maxima": 32.8
+      "maxima": 28.2,
+      "minima": 16.5,
+      "aparente_maxima": 33.3
      },
      {
       "data": "2026-09-27",
-      "maxima": 23.9,
-      "minima": 17.0,
-      "aparente_maxima": 25.8
+      "maxima": 23.6,
+      "minima": 17.6,
+      "aparente_maxima": 25.9
      },
      {
       "data": "2026-09-28",
-      "maxima": 24.3,
-      "minima": 18.2,
-      "aparente_maxima": 26.0
+      "maxima": 23.6,
+      "minima": 19.4,
+      "aparente_maxima": 25.0
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 22.6,
+      "minima": 19.9,
+      "aparente_maxima": 25.7
      }
     ],
     "natureza": "estimativa de modelo",
@@ -5789,17 +6223,17 @@
      "lon": -48.5477
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 7.7,
-     "pm10": 11.0,
-     "ozone": 69.2,
-     "nitrogen_dioxide": 3.5,
-     "carbon_monoxide": 120.5
+     "pm2_5": 10.8,
+     "pm10": 13.7,
+     "ozone": 78.7,
+     "nitrogen_dioxide": 5.1,
+     "carbon_monoxide": 150.6
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -5827,7 +6261,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -5869,7 +6303,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -5881,13 +6315,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -5895,40 +6329,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 28.9,
-      "minima": 24.3,
-      "aparente_maxima": 31.9
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 28.3,
+      "maxima": 28.4,
       "minima": 23.9,
-      "aparente_maxima": 32.1
+      "aparente_maxima": 32.0
      },
      {
       "data": "2026-09-26",
-      "maxima": 27.9,
-      "minima": 22.8,
-      "aparente_maxima": 32.2
-     },
-     {
-      "data": "2026-09-27",
-      "maxima": 28.1,
-      "minima": 23.7,
+      "maxima": 28.3,
+      "minima": 23.5,
       "aparente_maxima": 31.9
      },
      {
+      "data": "2026-09-27",
+      "maxima": 28.0,
+      "minima": 23.6,
+      "aparente_maxima": 32.3
+     },
+     {
       "data": "2026-09-28",
-      "maxima": 27.6,
-      "minima": 24.1,
-      "aparente_maxima": 31.4
+      "maxima": 27.7,
+      "minima": 24.7,
+      "aparente_maxima": 31.6
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 28.2,
+      "minima": 23.8,
+      "aparente_maxima": 31.7
      }
     ],
     "natureza": "estimativa de modelo",
@@ -5943,17 +6377,17 @@
      "lon": -37.0677
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 7.5,
-     "pm10": 11.3,
-     "ozone": 50.8,
-     "nitrogen_dioxide": 3.5,
-     "carbon_monoxide": 119.1
+     "pm2_5": 9.4,
+     "pm10": 14.2,
+     "ozone": 47.2,
+     "nitrogen_dioxide": 4.0,
+     "carbon_monoxide": 105.1
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -5981,7 +6415,7 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura_medida": null,
    "ar_medido": null
@@ -6023,21 +6457,27 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 2,
+    "graus": {
+     "Perigo Potencial": 1,
+     "Grande Perigo": 1
+    },
+    "exemplos": [
+     "Baixa Umidade",
+     "Onda de Calor"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 19,
+    "focos_24h": 35,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6045,40 +6485,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 20.8,
-      "minima": 12.8,
-      "aparente_maxima": 21.4
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 26.2,
+      "maxima": 25.8,
       "minima": 15.5,
-      "aparente_maxima": 30.2
+      "aparente_maxima": 30.0
      },
      {
       "data": "2026-09-26",
-      "maxima": 30.2,
-      "minima": 17.3,
-      "aparente_maxima": 33.2
+      "maxima": 31.1,
+      "minima": 16.4,
+      "aparente_maxima": 33.8
      },
      {
       "data": "2026-09-27",
-      "maxima": 30.6,
-      "minima": 17.7,
-      "aparente_maxima": 34.2
+      "maxima": 30.1,
+      "minima": 17.2,
+      "aparente_maxima": 33.9
      },
      {
       "data": "2026-09-28",
-      "maxima": 33.1,
-      "minima": 17.7,
-      "aparente_maxima": 35.2
+      "maxima": 33.2,
+      "minima": 17.6,
+      "aparente_maxima": 34.9
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 34.1,
+      "minima": 19.6,
+      "aparente_maxima": 35.6
      }
     ],
     "natureza": "estimativa de modelo",
@@ -6093,17 +6533,17 @@
      "lon": -46.6395
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 36.6,
-     "pm10": 37.6,
-     "ozone": 91.1,
-     "nitrogen_dioxide": 46.7,
-     "carbon_monoxide": 403.9
+     "pm2_5": 50.7,
+     "pm10": 51.1,
+     "ozone": 121.4,
+     "nitrogen_dioxide": 33.3,
+     "carbon_monoxide": 508.3
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -6131,9 +6571,22 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A701",
+    "nome": "SAO PAULO - MIRANTE",
+    "situacao": "Operante",
+    "distancia_km": 4.5,
+    "coordenada": {
+     "lat": -23.4962888,
+     "lon": -46.6200666
+    },
+    "natureza": "medição",
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   },
   "TO": {
@@ -6174,7 +6627,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Agosto de 2026",
-    "consultado_em": "25/09/2026"
+    "consultado_em": "26/09/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6182,17 +6635,17 @@
      "Perigo Potencial": 1
     },
     "exemplos": [
-     "Tempestade"
+     "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "fogo": {
-    "focos_24h": 235,
+    "focos_24h": 582,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20260925.csv",
-    "consultado_em": "25/09/2026"
+    "documento": "Focos do dia — focos_diario_br_20260926.csv",
+    "consultado_em": "26/09/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6200,40 +6653,40 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
    "temperatura": {
     "unidade": "°C",
     "serie": [
      {
-      "data": "2026-09-24",
-      "maxima": 35.6,
-      "minima": 27.1,
-      "aparente_maxima": 40.5
-     },
-     {
       "data": "2026-09-25",
-      "maxima": 33.0,
+      "maxima": 29.6,
       "minima": 25.7,
-      "aparente_maxima": 37.5
+      "aparente_maxima": 33.5
      },
      {
       "data": "2026-09-26",
-      "maxima": 33.5,
-      "minima": 25.6,
-      "aparente_maxima": 39.7
+      "maxima": 32.5,
+      "minima": 24.7,
+      "aparente_maxima": 37.8
      },
      {
       "data": "2026-09-27",
-      "maxima": 36.1,
-      "minima": 26.5,
-      "aparente_maxima": 40.5
+      "maxima": 35.9,
+      "minima": 25.9,
+      "aparente_maxima": 39.6
      },
      {
       "data": "2026-09-28",
-      "maxima": 36.3,
-      "minima": 27.0,
-      "aparente_maxima": 38.7
+      "maxima": 36.2,
+      "minima": 25.5,
+      "aparente_maxima": 39.1
+     },
+     {
+      "data": "2026-09-29",
+      "maxima": 34.9,
+      "minima": 26.7,
+      "aparente_maxima": 38.8
      }
     ],
     "natureza": "estimativa de modelo",
@@ -6248,17 +6701,17 @@
      "lon": -48.3558
     },
     "fonte": "open_meteo_tempo",
-    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-24 a 2026-09-28",
-    "consultado_em": "25/09/2026 10:13"
+    "documento": "Open-Meteo Forecast — 27 capitais, 2026-09-25 a 2026-09-29",
+    "consultado_em": "26/09/2026 13:23"
    },
    "qualidade_ar": {
     "horas_lidas": 24,
     "media_diaria": {
-     "pm2_5": 34.8,
-     "pm10": 36.5,
-     "ozone": 97.6,
-     "nitrogen_dioxide": 6.1,
-     "carbon_monoxide": 443.7
+     "pm2_5": 19.0,
+     "pm10": 20.6,
+     "ozone": 80.2,
+     "nitrogen_dioxide": 5.8,
+     "carbon_monoxide": 334.1
     },
     "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
     "unidades": {
@@ -6286,9 +6739,30 @@
     },
     "fonte": "open_meteo_ar",
     "documento": "Copernicus CAMS via Open-Meteo — 27 capitais, média diária do dia da consulta",
-    "consultado_em": "25/09/2026 10:13"
+    "consultado_em": "26/09/2026 13:23"
    },
-   "temperatura_medida": null,
+   "temperatura_medida": {
+    "codigo": "A009",
+    "nome": "PALMAS",
+    "situacao": "Operante",
+    "distancia_km": 11.2,
+    "coordenada": {
+     "lat": -10.14777777,
+     "lon": -48.31444444
+    },
+    "natureza": "medição",
+    "medida": {
+     "tmax": 35.6,
+     "tmin": 22.5,
+     "umin_pct": 41.0,
+     "pmax_mm": 0.0,
+     "marcado_pela_fonte": true,
+     "data": "2026-09-26"
+    },
+    "fonte": "inmet_estacoes",
+    "documento": "INMET — 22 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-09-26",
+    "consultado_em": "26/09/2026 13:23"
+   },
    "ar_medido": null
   }
  }

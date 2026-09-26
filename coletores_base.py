@@ -338,6 +338,21 @@ def descomprimir(corpo: bytes, codificacao: str | None) -> bytes:
     return corpo
 
 
+def normalizar_nome(s: str) -> str:
+    """Maiúsculas sem acento, sem duplo espaço — para casar nome de fonte com a referência IBGE.
+
+    §233 (26/09/2026): nasceu em `coletar_diarios_consorciados` e sobe para cá quando um segundo
+    coletor precisou dela. Importar aquele módulo só por esta função traria o Playwright junto, e
+    copiá-la seria a cópia que envelhece do §213 — numa função de CASAR NOME, onde divergir
+    significa um município deixar de casar num coletor e casar no outro.
+
+    Onde faz falta, e é medido: a rota de condição das capitais do INMET devolve os nomes em
+    maiúsculas sem acento — menos "MACEÓ", que vem acentuado. A fonte é inconsistente consigo
+    mesma, e só normalizar os dois lados resolve."""
+    s = _ud.normalize("NFKD", s or "").encode("ascii", "ignore").decode("ascii")
+    return re.sub(r"\s+", " ", s).strip().upper()
+
+
 def url_ascii(url: str) -> str:
     """IRI → URI (RFC 3987 §3.1): codifica em percent-encoding os caracteres fora do ASCII que
     sobraram no endereço, preservando os escapes já existentes. Achado de 08/09/2026: 69 URLs do
