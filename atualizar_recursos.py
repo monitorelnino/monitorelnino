@@ -10,7 +10,7 @@ endpoint inofensivo por construção.
 """
 import json, pathlib, sys, urllib.request
 
-from coletores_base import ua_de  # §228: pedia o SIDRA sem identificar o cliente
+from coletores_base import ua_de, gravar_em  # §228: pedia o SIDRA sem identificar o cliente
 
 RAIZ = pathlib.Path(__file__).parent
 DEST = RAIZ / "data" / "recursos_uf.json"
@@ -41,8 +41,9 @@ def main():
             print(f"ABORTADO: sentinela {uf} divergente ({pib[uf]} ≠ {esperado}) — nada gravado"); return 1
     if min(pib, key=pib.get) != "MA":
         print("ABORTADO: última posição não é MA — nada gravado"); return 1
-    json.dump({"completo": True, "fonte": "IBGE, Sistema de Contas Regionais 2023 (SIDRA), validado por 4 sentinelas em produção",
-               "pib_per_capita": pib}, open(DEST, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(DEST, {"completo": True,
+                     "fonte": "IBGE, Sistema de Contas Regionais 2023 (SIDRA), validado por 4 sentinelas em produção",
+                     "pib_per_capita": pib})   # §229
     print(f"OK 27 UFs gravadas com sentinelas verdes — gráfico-tese passa ao eixo de riqueza"); return 0
 
 if __name__ == "__main__":

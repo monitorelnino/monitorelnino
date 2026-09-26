@@ -162,6 +162,51 @@ def _pareados(texto: str) -> dict:
     return out
 
 
+def _linha_acima_de_rotulos(texto: str, rotulo: str) -> list:
+    """Número que corresponde ao `rotulo` no leiaute "linha de números, linha de rótulos".
+
+    26/09/2026 (§230): em 24/09 o informe do CIEVS-PE passou a compor os cartões do topo com os
+    três valores numa linha e os três rótulos na linha seguinte:
+
+        47.418 22.900 24.518
+        Casos notificados Casos prováveis Casos descartados
+
+    A regra de adjacência de `_candidatos` — número imediatamente antes ou depois do rótulo, só
+    com espaço entre eles — não alcança esse arranjo: antes de "Casos descartados" vem "Casos
+    prováveis", não um número. O informe deixou de ser lido, e Pernambuco saiu da série.
+
+    O pareamento aqui é POSICIONAL e condicionado: só vale se a linha de cima tiver exatamente
+    tantos números quanto a linha tem rótulos. Não é adivinhação, e não precisa ser confiável por
+    si: o que decide continua sendo `_resolver_por_identidade`, que só aceita a combinação em que
+    notificados == prováveis + descartados. Nos números acima a identidade fecha (47.418 = 22.900
+    + 24.518); se não fechasse, o coletor recusaria — como já recusava."""
+    linhas = texto.split("\n")
+    alvo = re.compile(rotulo)
+    for i, linha in enumerate(linhas):
+        m = alvo.search(linha)
+        if not m:
+            continue
+        # rótulos da linha, na ordem em que aparecem
+        rotulos = [r.start() for r in re.finditer(r"(?:Casos|[ÓO]bitos)\s+\w+", linha)]
+        if len(rotulos) < 2:
+            continue                      # rótulo sozinho: a regra de adjacência já resolve
+        try:
+            indice = max(k for k, pos in enumerate(rotulos) if pos <= m.start())
+        except ValueError:
+            continue
+        # primeira linha não vazia acima
+        j = i - 1
+        while j >= 0 and not linhas[j].strip():
+            j -= 1
+        if j < 0:
+            continue
+        numeros = re.findall(r"(?<![\d,%*.])(\d{1,3}(?:\.\d{3})+|\d{1,6})(?![\d,%])", linhas[j])
+        if len(numeros) != len(rotulos):
+            continue                      # contagens diferentes: não se pareia por posição
+        return [_n(numeros[indice])]
+    return []
+
+
 def _candidatos(texto: str, rotulo: str, janela: int = 40) -> list:
     """Números ADJACENTES ao rótulo: o imediatamente antes e o imediatamente depois (só espaço/quebra de linha
     entre número e rótulo). Um número separado do rótulo por outro texto pertence a outro rótulo — não entra.
@@ -179,6 +224,11 @@ def _candidatos(texto: str, rotulo: str, janela: int = 40) -> list:
     md = re.match(r"\s*(\d{1,3}(?:\.\d{3})+|\d{1,6})(?![\d,%])", depois)
     if md:
         c.append(_n(md.group(1)))
+    # §230: o leiaute de cartões (números numa linha, rótulos na seguinte) entra como candidato
+    # ADICIONAL, e não como substituto — a identidade contábil segue sendo quem decide.
+    for v in _linha_acima_de_rotulos(texto, rotulo):
+        if v not in c:
+            c.append(v)
     if not c:
         raise ValueError(f"nenhum número adjacente a: {rotulo}")
     return c

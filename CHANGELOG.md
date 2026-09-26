@@ -9,6 +9,39 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §230 · Cento e trinta e sete barreiras medidas, e as primeiras derrubadas · 26/09/2026
+
+Classe **desbloqueio de coleta**.
+
+A editoria mandou parar de publicar lacuna e passar a resolver: *"sempre que voce encontrar uma barreira, voce deve aplicar todas as solucoes que voce conhece para solucionar, e só me retornar com pedidos que realmente dependam de acao humana"*. O primeiro passo foi levantar o inventário de verdade, com seis varreduras de lentes diferentes — catálogos de fontes, código, log de buscas, cobertura municipal, diários estaduais, saúde e risco. Resultado: **137 barreiras distintas**, 62 de gravidade alta, cada uma com sintoma medido e não suposto.
+
+O levantamento consumiu o teto semanal de agentes, e a fase de resolução automática parou. As correções abaixo foram feitas à mão, a partir do inventário.
+
+**1. `buscar()` não descomprimia gzip, e ninguém sabia.** Medido: `diariooficial.to.gov.br` responde `Content-Encoding: gzip` **mesmo sem o pedido negociar compressão**. O cliente devolvia 2.966 bytes de gzip cru que, descomprimidos, são 16.386 bytes de HTML. É a família do §186 e do §187 — resposta com 200 que parece conteúdo e não é — com um agravante: `detectar_muro_de_robo` e `detectar_defeso` passavam a olhar ruído binário, e `preservar_evidencia` gravaria o blob comprimido com extensão `.html`. Depois do conserto, o Tocantins entrega os 16.389 bytes de HTML real. A função confere a marca do formato além do cabeçalho: servidor que declara gzip e manda texto existe, e descomprimir às cegas quebraria o que hoje chega bom.
+
+**2. Noventa e sete decretos parados por dois defeitos nossos, um deles com o rótulo errado.** `analisar_decretos.py` roda todo dia no ciclo e não produzia um único marcador de conteúdo. Duas causas:
+
+- O endereço do Querido Diário era `api.queridodiario.ok.org.br`, que **não serve mais TLS** (`SSLV3_ALERT_HANDSHAKE_FAILURE`, medido hoje). O resto do projeto migrou para o host vigente em 21/09; este arquivo ficou atrás, e a fila registrava 59 dos 97 itens como `erro_rede: SSLV3_...`. Agora o endereço não é copiado: usa-se o consultor de `coletar_diarios_municipais`, que já traz host vigente, domínio de reserva e a espera do §226.
+- **Um defeito de Python**: `for g in gazettes` e, dentro do laço, `a, p, g, rf = _varrer(ex)` — a gazeta era sobrescrita pela lista de termos, e duas linhas abaixo `g.get("date")` era chamado sobre uma lista. `AttributeError` em todo excerto com achado. E o `except Exception` único gravava isso como **`erro_rede`**: defeito nosso lançado na conta da fonte, que é precisamente o que o CLAUDE.md proíbe. Agora erro de rede e erro interno têm nomes distintos, e quem lê a fila sabe de quem é a culpa.
+
+A docstring também prometia tentar "(a) a URL do registro; (b) o Querido Diário". A perna (a) nunca existiu no código. Prometer o que não se faz é pior do que declarar a lacuna, e a promessa saiu.
+
+**3. O informe de Pernambuco voltou a ser legível — dois terços dele.** A listagem do CIEVS-PE responde 200 e traz o informe da SE 36 em PDF de 4 MB, íntegro. O que travava era o nosso leitor: em 24/09 a fonte passou a compor os cartões do topo com os três valores numa linha e os três rótulos na seguinte, e a regra de adjacência não alcança esse arranjo — antes de "Casos descartados" vem "Casos prováveis", não um número. O pareamento agora aceita a linha de cima, **condicionado** a haver tantos números quanto rótulos, e quem decide continua sendo a identidade contábil que já existia: só vale a combinação em que notificados = prováveis + descartados. Nos números reais fecha: 47.418 = 22.900 + 24.518.
+
+Dengue e chikungunya passaram a ser lidos. **Zika não, e fica declarado.** Na página dele os rótulos vêm entrelaçados em duas linhas ("Casos … Casos / Casos confirmados + descartados confirmados") e a identidade contábil **não desempata** prováveis de descartados, porque a soma é comutativa: `1.235 = 118 + 1.117` fecha nas duas ordens. Ler por posição de coluna exigiria as coordenadas do PDF, e adivinhar trocaria dois números numa página pública. Na dúvida, o classificador não classifica.
+
+**4. Correções menores encontradas ao medir.** `analisar_decretos.py` gravava a fila com `json.dump(open(...))` — escapou do portão do §229 porque as duas chamadas estavam em linhas diferentes. O portão foi reescrito para ler por **árvore sintática** em vez de por linha, e achou **mais nove**: o cursor de rodízio de três monitores (truncá-lo faz a próxima rodada recomeçar do zero), as duas filas do `consultar_querido_diario`, o PIB per capita das 27 UFs e a fila de contribuições. Todas migraram, e as datas em UTC que apareceram no caminho foram com elas.
+
+**Inventário para a editoria: o que ficou, e por quê.** Das 137 barreiras, as de maior volume seguem abertas com diagnóstico medido e caminho conhecido:
+
+- **Seis diários oficiais estaduais colhíveis hoje** (AP, AM, ES, GO, MT, PR — 943 municípios): rodam a mesma plataforma, com três rotas públicas sem autenticação já testadas ao vivo. Falta escrever o adaptador. É o maior ganho pendente.
+- **As 27 UFs de `fontes_doe.json` com adaptador nulo**, mais sete defeitos de código no caminho direto do `coletar_doe.py` — teto de 20 kB num documento de 510 mil caracteres, não lê PDF, ignora a janela de data, termo de busca com um artigo a mais que o decreto real não tem.
+- **InfoGripe**: o repositório da Fiocruz passou a responder 200 com tela de login do GitLab. Bloqueio de acesso real, que se respeita.
+- **Dezoito UFs sem fonte de boletim de arboviroses localizada**, nunca procuradas.
+- **SES-PB**: a recusa está **nomeada errado** no código — é muro de robô F5 servido com 200, não "PDF não respondeu". Corrigir o nome é pré-requisito para tratar o caso.
+- **Três coletores órfãos** (`coletar_espin.py`, `coletar_siconfi_182.py`, `buscar_financiamento_preventivo.py`): existem, têm autoteste, e não são invocados por nada.
+- **`inmet_estacoes`** está travada por uma credencial que a rota usada por ela **não exige**.
+
 ## §229 · A escrita atômica de 21/09 nunca saiu de uma função · 26/09/2026
 
 Classe **integridade de dado**.
@@ -113,6 +146,10 @@ O coletor de diários consorciados dizia, no próprio cabeçalho, que descobrir 
 **Por que a lista estava incompleta.** O seletor de estados da página inicial da plataforma usa caminhos **relativos** (`/aam/`, `/famep/`), não URLs absolutas. Uma varredura por `href="https://www.diariomunicipal.com.br/<slug>"` — o jeito natural de procurar — acha parte das entidades e perde as outras. A lista autoritativa é o `<select>`: 21 UFs mais duas prefeituras avulsas.
 
 **Nove UFs novas, cada uma com prova.** PE, AM, PA, RO, RJ, SP, RR, PB e AL entraram depois de o nome da entidade ser lido na própria página e o calendário ser testado com token real em 24 e 25/09/2026. O comentário de cada linha registra quantas edições a fonte devolveu nesses dois dias: é prova de que o canal entrega, não promessa de que deveria. Slug inventado não dá 404 — a plataforma devolve a própria página inicial, 90.958 bytes sem `calendar__token`, e foi assim que vinte e nove palpites de sigla se descartaram numa rodada, sem nenhum entrar no código.
+
+**O que a varredura retroativa colheu.** Doze UFs varridas de 01 a 26/09/2026 — as nove novas mais Paraná, Rio Grande do Sul e Rio Grande do Norte, que estavam declaradas pendentes no §223. **333 dias com edição lidos, zero erro de fonte, 124 pistas e 71 atos municipais.** O banco de atos saiu de 7 registros do canal consorciado, todos de Minas, para **71 em nove estados**: PR 19, RS 17, AM 11, MG 7, AL 5, RN 5, PB 4, RR 2, PE 1. O Paraná respondeu por 77 das 124 pistas. Pará, São Paulo e Rio de Janeiro leram 78 edições somadas e não produziram ato — leitura feita, ausência declarada, que é resultado e não falha.
+
+Cada registro traz município, código IBGE, número do decreto, a URL do PDF de origem e o hash da evidência. O canal é `DOM-consorciado`, distinto de `DOM` de propósito: a atribuição do município é heurística de proximidade no PDF consorciado, e quem lê o dado precisa saber disso.
 
 **A correção de um rótulo errado, que é o achado mais importante daqui.** Em 25/09 os dois slugs da Bahia foram declarados "fonte fora do ar" porque respondiam ao calendário com `{"error":"Ocorreu um erro inesperado!"}` em toda data testada. O rótulo estava errado. A última edição de cada uma dessas entidades, lida na página, é de **2013** (AMURC), **2015** (AMM-MT), **2020** (APPM, Piauí), **2020** (MS) e **2009** (AMURCES, Sergipe): são **arquivos históricos** de associações que saíram da plataforma, e o `error` nas datas recentes é resposta correta — não há edição naquele dia porque não há mais edição nenhuma. Fonte fora do ar é falha; publicação encerrada é fato. Confundir as duas é do mesmo tipo que chamar geobloqueio de `robots.txt`, erro que já custou treze dias de abstenção indevida (§187).
 

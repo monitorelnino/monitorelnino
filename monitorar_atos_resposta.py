@@ -71,8 +71,8 @@ def carregar_cursor(total):
 
 def salvar_cursor(posicao, total):
     """Grava a posição do rodízio para a próxima execução continuar de onde parou."""
-    json.dump({"posicao": posicao, "tamanho_universo": total},
-               open(CURSOR_RESPOSTA, "w", encoding="utf-8", newline="\n"))
+    # §229: o cursor do rodízio. Truncá-lo faz a próxima rodada recomeçar do zero ou parar.
+    gravar_em(CURSOR_RESPOSTA, {"posicao": posicao, "tamanho_universo": total})
 
 
 def main():

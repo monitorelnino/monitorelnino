@@ -491,14 +491,34 @@
    "ibge": "4100202",
    "nome": "Adrianópolis",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "ECP",
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_121268_2026-09-14_d749d8fa85fdb411362d06fd69fe8a21.pdf",
+     "data": "2026-09-14",
+     "decreto": "Decreto nº 067/2026",
+     "hash": "e40d15f9f223e62c487758d009db0c14faafb74c982334413b3858032f8ed539"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118184_2026-09-15_73e5003f6ec967b8a272135117a4ec83.pdf",
+     "data": "2026-09-16",
+     "decreto": "Decreto nº 068/2026",
+     "hash": "2f62f183241a5875f1808d409bf231e15aad4bdcf05b6cdce0aa1bea75695a2e"
+    }
+   ],
+   "n_eventos": 2
   },
   "2900355": {
    "ibge": "2900355",
@@ -761,9 +781,17 @@
      "data": "16/09/2026",
      "decreto": "Decreto municipal nº 705",
      "hash": "1b5426af7112cd5bf7a2e372f1b715f89fa455cc90315f24c60ee3a5987b1872"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Alagoanos (AMA))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=9878&i=publicado_115390_2026-09-15_73c31feb397e60b372aee4797badddaa.pdf",
+     "data": "2026-09-16",
+     "decreto": "Decreto nº 705",
+     "hash": "6fee2282bb47483457911c67f1254babb15c9920b7082da3a3870d0776fd2da3"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5000203": {
    "ibge": "5000203",
@@ -1118,14 +1146,25 @@
    "ibge": "4100301",
    "nome": "Agudos do Sul",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118178_2026-09-04_4db867cbd7791bd7abd24d4954f49697.pdf",
+     "data": "2026-09-08",
+     "decreto": "Decreto nº 2753",
+     "hash": "e492593e4c2fcaddac2ce302495eb3eceb928d02bb5f3a5d591a53c712f68309"
+    }
+   ],
+   "n_eventos": 1
   },
   "3200136": {
    "ibge": "3200136",
@@ -1741,10 +1780,11 @@
    "decreto": true,
    "primeiro_decreto": "24/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -1754,22 +1794,41 @@
      "data": "24/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.197",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117673_2026-09-10_1bf6894271964ff7026e912209f3050b.pdf",
+     "data": "2026-09-11",
+     "decreto": "Decreto nº 44/2026",
+     "hash": "dc8956409520c938825980a4bda42ed1fc99918ea8e7bd7e8c17aab68614bc96"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4100400": {
    "ibge": "4100400",
    "nome": "Almirante Tamandaré",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118178_2026-09-04_4db867cbd7791bd7abd24d4954f49697.pdf",
+     "data": "2026-09-08",
+     "decreto": "Decreto nº 1974",
+     "hash": "e492593e4c2fcaddac2ce302495eb3eceb928d02bb5f3a5d591a53c712f68309"
+    }
+   ],
+   "n_eventos": 1
   },
   "4300471": {
    "ibge": "4300471",
@@ -2382,14 +2441,25 @@
    "ibge": "1300029",
    "nome": "Alvarães",
    "uf": "AM",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118950_2026-09-21_e37b23b8060132b7a5260490556adf33.pdf",
+     "data": "2026-09-22",
+     "decreto": "Decreto nº 101",
+     "hash": "a433821a7f694480a0754147139f0ce905c9961fa15f1d620a3ef174c635f025"
+    }
+   ],
+   "n_eventos": 1
   },
   "3102209": {
    "ibge": "3102209",
@@ -2718,14 +2788,25 @@
    "ibge": "1300060",
    "nome": "Amaturá",
    "uf": "AM",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118946_2026-09-15_21fbd6e114d302fd6c9157e16ed5ae37.pdf",
+     "data": "2026-09-16",
+     "decreto": "Decreto nº 391/2026-",
+     "hash": "bb5413bed23c70023250c873fb45b74b6fc4209fa6120e05b6675d071f56d2eb"
+    }
+   ],
+   "n_eventos": 1
   },
   "2901106": {
    "ibge": "2901106",
@@ -2977,14 +3058,25 @@
    "ibge": "4101051",
    "nome": "Anahy",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118175_2026-09-01_db1469e619df8812ce28df63fe9f024a.pdf",
+     "data": "2026-09-02",
+     "decreto": "Decreto nº 227",
+     "hash": "f698891839a5378d06218c13913832ed5823231efe484a75afe51c907b144007"
+    }
+   ],
+   "n_eventos": 1
   },
   "1500701": {
    "ibge": "1500701",
@@ -3246,14 +3338,25 @@
    "ibge": "4300661",
    "nome": "André da Rocha",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117937_2026-09-24_e901901e7c63dba5f129438a0e658b82.pdf",
+     "data": "2026-09-25",
+     "decreto": "Decreto nº 227/2026",
+     "hash": "96aeed0955253e112a6e81e90ad71f86bec08a6414271c8e58d06348ed2b9d56"
+    }
+   ],
+   "n_eventos": 1
   },
   "3102803": {
    "ibge": "3102803",
@@ -4566,14 +4669,33 @@
    "ibge": "2700300",
    "nome": "Arapiraca",
    "uf": "AL",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Alagoanos (AMA))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=9878&i=publicado_115386_2026-09-09_cb1c87fe2dc834fdc859ffe464da4cc5.pdf",
+     "data": "2026-09-10",
+     "decreto": "Decreto nº 017",
+     "hash": "33e58d10575c155b29c2b659b101db9d10839938bac4bd798334bb462374f8f5"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Alagoanos (AMA))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=9878&i=publicado_115394_2026-09-21_95c24f25f24b53477dd8cd57cf20e4d4.pdf",
+     "data": "2026-09-22",
+     "decreto": "Decreto nº 31",
+     "hash": "a7363da7e7468eff016753d2ef9af9568a515c6b03ec3a4469800866f18f16af"
+    }
+   ],
+   "n_eventos": 2
   },
   "1702307": {
    "ibge": "1702307",
@@ -6076,14 +6198,33 @@
    "ibge": "1300300",
    "nome": "Autazes",
    "uf": "AM",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118940_2026-09-04_9e1ed9cde6af72b7a229329950218130.pdf",
+     "data": "2026-09-08",
+     "decreto": "Decreto nº 633",
+     "hash": "17c6eba58f8deb9fbf303cf3147fef1279d438dee9e62da102c7f8e976053d33"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118952_2026-09-23_91066dd2659639a23e1a1bbea203a750.pdf",
+     "data": "2026-09-24",
+     "decreto": "Decreto nº 28/2026",
+     "hash": "e822376427cffa542c4998e8208c9b26d4871b6a88f970e27be960881ca9142e"
+    }
+   ],
+   "n_eventos": 2
   },
   "3504305": {
    "ibge": "3504305",
@@ -8276,10 +8417,11 @@
    "decreto": true,
    "primeiro_decreto": "10/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -8289,9 +8431,17 @@
      "data": "10/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.003, nº 3.003, nº 3.005, nº 3.005)",
      "hash": "fb6f776794ed23051b71b90ef8959e1b1d5cc7e0a9006ea8d0486f85e5cff5e3"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Alagoanos (AMA))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=9878&i=publicado_115380_2026-08-31_dbddb3664b390e9c141432de56bf638d.pdf",
+     "data": "2026-09-01",
+     "decreto": "Decreto nº 031/2026",
+     "hash": "9417351acf85c7d2e4679db46be37a06251a2d6e94a590b844db8acd912b76bd"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3106309": {
    "ibge": "3106309",
@@ -9168,14 +9318,25 @@
    "ibge": "1300680",
    "nome": "Boa Vista do Ramos",
    "uf": "AM",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118951_2026-09-22_f89374783fbc1c1389fdc935d8566577.pdf",
+     "data": "2026-09-23",
+     "decreto": "Decreto nº 102",
+     "hash": "acf208b43c4eb7369607d20bf5e2af17d8a0a96a6cc3a521e1891e1be3b19b62"
+    }
+   ],
+   "n_eventos": 1
   },
   "4302253": {
    "ibge": "4302253",
@@ -10544,14 +10705,25 @@
    "ibge": "4103354",
    "nome": "Braganey",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "data": "2026-09-15",
+     "decreto": "Decreto nº 149/2026",
+     "hash": "364ba749bf2d4a135f51237c30db364bfb690be193e05f11c35d6ed68bd01eb9"
+    }
+   ],
+   "n_eventos": 1
   },
   "2701100": {
    "ibge": "2701100",
@@ -11523,10 +11695,11 @@
    "decreto": true,
    "primeiro_decreto": "25/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -11536,9 +11709,17 @@
      "data": "25/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.754, nº 2.757, nº 2.758, nº 2.759)",
      "hash": "4c5e854e829f8ced5343405727cc57a603e4444163a8a886c4766e074fa958d1"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117936_2026-09-23_9f0b65045a47b4d0af512b53164aac68.pdf",
+     "data": "2026-09-24",
+     "decreto": "Decreto nº 0255/2026",
+     "hash": "4648343cbc6903427be5d79bdffd43a79b449f892b517498308856b84b90ed68"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1300839": {
    "ibge": "1300839",
@@ -12593,10 +12774,11 @@
    "decreto": true,
    "primeiro_decreto": "08/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -12606,9 +12788,17 @@
      "data": "08/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.252",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117680_2026-09-21_92df685e00e5ab6eeba09e8447dc5f14.pdf",
+     "data": "2026-09-22",
+     "decreto": "Decreto nº 28/2026",
+     "hash": "71373c04bcf095091f1d905f9585009eb7fa4363cc0d1e176f85b6b9dc26fa76"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3509007": {
    "ibge": "3509007",
@@ -13458,14 +13648,25 @@
    "ibge": "4104006",
    "nome": "Campina Grande do Sul",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118184_2026-09-15_73e5003f6ec967b8a272135117a4ec83.pdf",
+     "data": "2026-09-16",
+     "decreto": "Decreto nº 351",
+     "hash": "2f62f183241a5875f1808d409bf231e15aad4bdcf05b6cdce0aa1bea75695a2e"
+    }
+   ],
+   "n_eventos": 1
   },
   "3111101": {
    "ibge": "3111101",
@@ -14567,14 +14768,25 @@
    "ibge": "4304358",
    "nome": "Candiota",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117937_2026-09-24_e901901e7c63dba5f129438a0e658b82.pdf",
+     "data": "2026-09-25",
+     "decreto": "Decreto nº 5.194/2026",
+     "hash": "96aeed0955253e112a6e81e90ad71f86bec08a6414271c8e58d06348ed2b9d56"
+    }
+   ],
+   "n_eventos": 1
   },
   "4104428": {
    "ibge": "4104428",
@@ -14804,14 +15016,25 @@
    "ibge": "1400175",
    "nome": "Cantá",
    "uf": "RR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Roraima (AMR))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=17081&i=publicado_116413_2026-09-24_b426822857137d3227c5e8ced98fc71d.pdf",
+     "data": "2026-09-25",
+     "decreto": "Decreto nº 259",
+     "hash": "78682e66d6aa7fb5eaa9efd95c0642a1fd35408c7c195cf7898b0f15d496a74c"
+    }
+   ],
+   "n_eventos": 1
   },
   "3301108": {
    "ibge": "3301108",
@@ -15710,27 +15933,49 @@
    "ibge": "1301001",
    "nome": "Carauari",
    "uf": "AM",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118951_2026-09-22_f89374783fbc1c1389fdc935d8566577.pdf",
+     "data": "2026-09-23",
+     "decreto": "Decreto nº 096",
+     "hash": "acf208b43c4eb7369607d20bf5e2af17d8a0a96a6cc3a521e1891e1be3b19b62"
+    }
+   ],
+   "n_eventos": 1
   },
   "2402303": {
    "ibge": "2402303",
    "nome": "Caraúbas",
    "uf": "RN",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117676_2026-09-15_c9e970c3c9e4bff799f4470def62ed0c.pdf",
+     "data": "2026-09-16",
+     "decreto": "Decreto nº 168/2026",
+     "hash": "a8a3c409548ec57f74394d7b348c616adf7a14285ea9dfce67453602ce00a884"
+    }
+   ],
+   "n_eventos": 1
   },
   "2504074": {
    "ibge": "2504074",
@@ -15867,10 +16112,11 @@
    "decreto": true,
    "primeiro_decreto": "03/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -15880,9 +16126,17 @@
      "data": "03/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.884, nº 2.885, nº 2.886, nº 2.890)",
      "hash": "8abecaf01d33b0362856fd4a912a0c31af86905fe7f5bc6d3f8e880f9b5545e9"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118949_2026-09-18_9d3e969421d0778972bb0650a67ed344.pdf",
+     "data": "2026-09-21",
+     "decreto": "Decreto nº 062/2026",
+     "hash": "62b7a7a1b0cc64a762c53c9c4d5befe30228f0b44d9fa35456d51f1a53580a46"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1301159": {
    "ibge": "1301159",
@@ -17604,14 +17858,25 @@
    "ibge": "4105201",
    "nome": "Cerro Azul",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118188_2026-09-21_0b9dd8aad035b23a676ab69fbd0c9f7e.pdf",
+     "data": "2026-09-22",
+     "decreto": "Decreto nº 351/2026",
+     "hash": "2e59f56b691c419e675c038889abc93dcb9f6d6f23965210af59ba141e1f24c8"
+    }
+   ],
+   "n_eventos": 1
   },
   "4305132": {
    "ibge": "4305132",
@@ -18112,10 +18377,11 @@
    "decreto": true,
    "primeiro_decreto": "21/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "ECP"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -18125,9 +18391,17 @@
      "data": "21/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.147",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "data": "2026-09-15",
+     "decreto": "Decreto nº 350",
+     "hash": "364ba749bf2d4a135f51237c30db364bfb690be193e05f11c35d6ed68bd01eb9"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2303931": {
    "ibge": "2303931",
@@ -18298,14 +18572,25 @@
    "ibge": "4305454",
    "nome": "Cidreira",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117929_2026-09-14_615a413d1fb91005dddc79d271bb7dd5.pdf",
+     "data": "2026-09-15",
+     "decreto": "Decreto nº 066",
+     "hash": "85183eda061fe17df98e74a6673c9a4d8d8c032c7117e732bb6ba56e217c05d5"
+    }
+   ],
+   "n_eventos": 1
   },
   "2907905": {
    "ibge": "2907905",
@@ -18448,14 +18733,25 @@
    "ibge": "4105706",
    "nome": "Clevelândia",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118187_2026-09-18_8f1fd18a5e366939fb1fbba11455ded7.pdf",
+     "data": "2026-09-21",
+     "decreto": "Decreto nº 473",
+     "hash": "3aa081de086f9f119bf9215767731acd918fa0c9adb89a868b71c79f305d0b15"
+    }
+   ],
+   "n_eventos": 1
   },
   "2908002": {
    "ibge": "2908002",
@@ -19001,14 +19297,25 @@
    "ibge": "2504405",
    "nome": "Conceição",
    "uf": "PB",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios da Paraíba (FAMUP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=334&i=publicado_115135_2026-09-14_6528913e0e41bbb0c6a6192e60776b04.pdf",
+     "data": "2026-09-15",
+     "decreto": "Decreto nº 011",
+     "hash": "f5e2a5c24117f4bb14dd2100c1e5ea7e66e72e3f754c95faf955f4be9552e1bc"
+    }
+   ],
+   "n_eventos": 1
   },
   "3117108": {
    "ibge": "3117108",
@@ -20072,14 +20379,25 @@
    "ibge": "2402808",
    "nome": "Coronel Ezequiel",
    "uf": "RN",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117671_2026-09-08_8856e3b42fefc748a31f3b32bef69d6b.pdf",
+     "data": "2026-09-09",
+     "decreto": "Decreto nº 018/2026.",
+     "hash": "76596671f26d949c687bb7daf7e8a52f7feb5cd50d43c975b4ac7146090a6579"
+    }
+   ],
+   "n_eventos": 1
   },
   "3119401": {
    "ibge": "3119401",
@@ -21182,14 +21500,25 @@
    "ibge": "4106571",
    "nome": "Cruzeiro do Iguaçu",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "data": "2026-09-15",
+     "decreto": "Decreto nº 05/2025",
+     "hash": "364ba749bf2d4a135f51237c30db364bfb690be193e05f11c35d6ed68bd01eb9"
+    }
+   ],
+   "n_eventos": 1
   },
   "4106605": {
    "ibge": "4106605",
@@ -23506,10 +23835,11 @@
    "decreto": true,
    "primeiro_decreto": "24/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -23519,9 +23849,25 @@
      "data": "24/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.196",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118940_2026-09-04_9e1ed9cde6af72b7a229329950218130.pdf",
+     "data": "2026-09-08",
+     "decreto": "Decreto nº 095/2026/",
+     "hash": "17c6eba58f8deb9fbf303cf3147fef1279d438dee9e62da102c7f8e976053d33"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118951_2026-09-22_f89374783fbc1c1389fdc935d8566577.pdf",
+     "data": "2026-09-23",
+     "decreto": "Decreto nº 100/2026/",
+     "hash": "acf208b43c4eb7369607d20bf5e2af17d8a0a96a6cc3a521e1891e1be3b19b62"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 3
   },
   "5003751": {
    "ibge": "5003751",
@@ -24012,14 +24358,25 @@
    "ibge": "4306957",
    "nome": "Entre Rios do Sul",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117935_2026-09-22_a412393f0ac7ce9780a355a5115bd591.pdf",
+     "data": "2026-09-23",
+     "decreto": "Decreto nº 4091",
+     "hash": "4b18a27e52d57a5ed77ed2850e56ddc96456713117fb45c0e6948cc7ecf0f593"
+    }
+   ],
+   "n_eventos": 1
   },
   "4306932": {
    "ibge": "4306932",
@@ -24038,14 +24395,25 @@
    "ibge": "1301506",
    "nome": "Envira",
    "uf": "AM",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118947_2026-09-16_7d85f6116b9d48fb61e0619ad9b1abc3.pdf",
+     "data": "2026-09-17",
+     "decreto": "Decreto nº 0240/2026",
+     "hash": "ad548220c6dac1c49b2226c32520c55f924375363ad8cc69856f2197fae5b027"
+    }
+   ],
+   "n_eventos": 1
   },
   "1200252": {
    "ibge": "1200252",
@@ -24940,14 +25308,25 @@
    "ibge": "4307864",
    "nome": "Fagundes Varela",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117937_2026-09-24_e901901e7c63dba5f129438a0e658b82.pdf",
+     "data": "2026-09-25",
+     "decreto": "Decreto nº 2.658",
+     "hash": "96aeed0955253e112a6e81e90ad71f86bec08a6414271c8e58d06348ed2b9d56"
+    }
+   ],
+   "n_eventos": 1
   },
   "5207535": {
    "ibge": "5207535",
@@ -25439,14 +25818,25 @@
    "ibge": "4107736",
    "nome": "Fernandes Pinheiro",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118190_2026-09-23_93d632abfdbe6a0e0c4ef48df455df6a.pdf",
+     "data": "2026-09-24",
+     "decreto": "Decreto nº 246/2026",
+     "hash": "0c5a90de5f0cea33ec7a1e965f55e8c833132fb52ee9cd41b38cd292fbc28880"
+    }
+   ],
+   "n_eventos": 1
   },
   "3125804": {
    "ibge": "3125804",
@@ -27060,14 +27450,25 @@
    "ibge": "2606002",
    "nome": "Garanhuns",
    "uf": "PE",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Pernambuco (AMUPE))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115902_2026-09-21_12d6b7b7a662230e646194b5f5329802.pdf",
+     "data": "2026-09-22",
+     "decreto": "Decreto nº 40/2026",
+     "hash": "3a79e5e571d73f65af71eca7c807709609509e575acc99b9db1a0df100fabf18"
+    }
+   ],
+   "n_eventos": 1
   },
   "2802403": {
    "ibge": "2802403",
@@ -27302,10 +27703,11 @@
    "decreto": true,
    "primeiro_decreto": "14/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -27315,9 +27717,17 @@
      "data": "14/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.606, nº 2.606, nº 2.607, nº 2.607, nº 2.608, nº 2.608, nº 2.609, nº 2.609)",
      "hash": "8e55cb168af593c4a2a013239b3a42b8aa618eed224d7dc7d472d445771d0da1"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_121333_2026-09-24_17b629e8ce8fd14e16108c6551c2e1bd.pdf",
+     "data": "2026-09-24",
+     "decreto": "Decreto nº 107",
+     "hash": "18abd96ad958f85343a2482932406d48a54a74b9d694fbedf58df0ac16bfd5a4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5103908": {
    "ibge": "5103908",
@@ -29037,14 +29447,25 @@
    "ibge": "4309506",
    "nome": "Guarani das Missões",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117922_2026-09-02_eaae9d8d6ca5cf2ed336b560eeb2357b.pdf",
+     "data": "2026-09-03",
+     "decreto": "Decreto nº 3.404",
+     "hash": "f222d6f1a610a1cbf60645e753e980920d56f3baa8ca18c27c828ae508ef1ed2"
+    }
+   ],
+   "n_eventos": 1
   },
   "5209408": {
    "ibge": "5209408",
@@ -32401,14 +32822,25 @@
    "ibge": "1400282",
    "nome": "Iracema",
    "uf": "RR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Roraima (AMR))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=17081&i=publicado_116410_2026-09-21_baa525cd868c070e034ce119bd2e418d.pdf",
+     "data": "2026-09-22",
+     "decreto": "Decreto nº 061-",
+     "hash": "88652d2078256177c08dcb057a5f03e039698ad35b994741a9433ea1f4287b66"
+    }
+   ],
+   "n_eventos": 1
   },
   "2306009": {
    "ibge": "2306009",
@@ -32469,10 +32901,11 @@
    "decreto": true,
    "primeiro_decreto": "09/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -32482,9 +32915,17 @@
      "data": "09/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.970, nº 2.971, nº 2.972)",
      "hash": "8a147302d0fde468375b1cb09dfc38de50081f9211e5a874db9f43880e81102b"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117937_2026-09-24_e901901e7c63dba5f129438a0e658b82.pdf",
+     "data": "2026-09-25",
+     "decreto": "Decreto nº 053/2026",
+     "hash": "96aeed0955253e112a6e81e90ad71f86bec08a6414271c8e58d06348ed2b9d56"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3131604": {
    "ibge": "3131604",
@@ -32629,14 +33070,25 @@
    "ibge": "4110706",
    "nome": "Irati",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "ECP"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118174_2026-08-31_c197a5934df29bc5df0d143b4f4eedbd.pdf",
+     "data": "2026-09-01",
+     "decreto": "Decreto nº 632/2026",
+     "hash": "3dea527d0430a238ecc8b29439d637da71ab2e0e3fda0cd6deb9a2906cdbb603"
+    }
+   ],
+   "n_eventos": 1
   },
   "4207858": {
    "ibge": "4207858",
@@ -45938,14 +46390,25 @@
    "ibge": "4312500",
    "nome": "Mostardas",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117937_2026-09-24_e901901e7c63dba5f129438a0e658b82.pdf",
+     "data": "2026-09-25",
+     "decreto": "Decreto nº 10005",
+     "hash": "96aeed0955253e112a6e81e90ad71f86bec08a6414271c8e58d06348ed2b9d56"
+    }
+   ],
+   "n_eventos": 1
   },
   "3532058": {
    "ibge": "3532058",
@@ -46095,10 +46558,11 @@
    "decreto": true,
    "primeiro_decreto": "21/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -46116,9 +46580,17 @@
      "data": "21/08/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.704",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117924_2026-09-04_4f88791431ff5b00de1c25b5a0503040.pdf",
+     "data": "2026-09-08",
+     "decreto": "Decreto nº 1.325/2026",
+     "hash": "a42f9fc5cfe18fc575f0eaa4e14882d95693e5f7333b8bc29bb075293f8dc3ed"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "2509800": {
    "ibge": "2509800",
@@ -50632,10 +51104,11 @@
    "decreto": true,
    "primeiro_decreto": "18/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -50645,9 +51118,25 @@
      "data": "18/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.121",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_121268_2026-09-14_d749d8fa85fdb411362d06fd69fe8a21.pdf",
+     "data": "2026-09-14",
+     "decreto": "Decreto nº 19.546",
+     "hash": "e40d15f9f223e62c487758d009db0c14faafb74c982334413b3858032f8ed539"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "data": "2026-09-15",
+     "decreto": "Decreto nº 19.546",
+     "hash": "364ba749bf2d4a135f51237c30db364bfb690be193e05f11c35d6ed68bd01eb9"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 3
   },
   "4212056": {
    "ibge": "4212056",
@@ -51677,14 +52166,25 @@
    "ibge": "2408706",
    "nome": "Paraú",
    "uf": "RN",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117680_2026-09-21_92df685e00e5ab6eeba09e8447dc5f14.pdf",
+     "data": "2026-09-22",
+     "decreto": "Decreto nº 036/2026/",
+     "hash": "71373c04bcf095091f1d905f9585009eb7fa4363cc0d1e176f85b6b9dc26fa76"
+    }
+   ],
+   "n_eventos": 1
   },
   "1505536": {
    "ibge": "1505536",
@@ -51742,14 +52242,25 @@
    "ibge": "4314035",
    "nome": "Pareci Novo",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117936_2026-09-23_9f0b65045a47b4d0af512b53164aac68.pdf",
+     "data": "2026-09-24",
+     "decreto": "Decreto nº 2601/2026.",
+     "hash": "4648343cbc6903427be5d79bdffd43a79b449f892b517498308856b84b90ed68"
+    }
+   ],
+   "n_eventos": 1
   },
   "1101450": {
    "ibge": "1101450",
@@ -53477,10 +53988,11 @@
    "decreto": true,
    "primeiro_decreto": "27/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -53498,9 +54010,17 @@
      "data": "27/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.793, nº 2.794, nº 2.795, nº 2.796)",
      "hash": "69b9f9c6f2062a3bcaff606efa31d40178e1d54d5550ef17e1b2a6af77940e68"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117929_2026-09-14_615a413d1fb91005dddc79d271bb7dd5.pdf",
+     "data": "2026-09-15",
+     "decreto": "Decreto nº 077/2026",
+     "hash": "85183eda061fe17df98e74a6673c9a4d8d8c032c7117e732bb6ba56e217c05d5"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "2310605": {
    "ibge": "2310605",
@@ -54660,10 +55180,11 @@
    "decreto": true,
    "primeiro_decreto": "31/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -54673,9 +55194,17 @@
      "data": "31/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.819, nº 2.819, nº 2.819, nº 2.823)",
      "hash": "532516544a5742e92157edc97d8d901dba698d334f49617a4e7f6430dc6e7167"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117937_2026-09-24_e901901e7c63dba5f129438a0e658b82.pdf",
+     "data": "2026-09-25",
+     "decreto": "Decreto nº 1629",
+     "hash": "96aeed0955253e112a6e81e90ad71f86bec08a6414271c8e58d06348ed2b9d56"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4213005": {
    "ibge": "4213005",
@@ -55986,10 +56515,11 @@
    "decreto": true,
    "primeiro_decreto": "02/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -55999,9 +56529,17 @@
      "data": "02/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
      "hash": "a93102f465844db2b59799856f7a652939bf57774feef7b7a9beb5ffbead7218"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios da Paraíba (FAMUP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=334&i=publicado_115129_2026-09-03_d3ae688587357dd9ab0fe2e7bf71125f.pdf",
+     "data": "2026-09-04",
+     "decreto": "Decreto nº 836",
+     "hash": "cf41235b28585021cca486a9e421b7ccf9dd36f7915057f420c26e575771d6ca"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2611309": {
    "ibge": "2611309",
@@ -57639,14 +58177,25 @@
    "ibge": "1303536",
    "nome": "Presidente Figueiredo",
    "uf": "AM",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118952_2026-09-23_91066dd2659639a23e1a1bbea203a750.pdf",
+     "data": "2026-09-24",
+     "decreto": "Decreto nº 3801",
+     "hash": "e822376427cffa542c4998e8208c9b26d4871b6a88f970e27be960881ca9142e"
+    }
+   ],
+   "n_eventos": 1
   },
   "4214003": {
    "ibge": "4214003",
@@ -60245,10 +60794,11 @@
    "decreto": true,
    "primeiro_decreto": "24/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -60258,9 +60808,17 @@
      "data": "24/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.195",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_121310_2026-09-21_66dc3bf42dacd7c7d9a1531451f75575.pdf",
+     "data": "2026-09-21",
+     "decreto": "Decreto nº 8.788/2026",
+     "hash": "1823a6d6fb555ac375be9a0f662cfd4377b4b70c9eb792ee7e4aabcd7b0c50ad"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "5007208": {
    "ibge": "5007208",
@@ -66305,10 +66863,11 @@
    "decreto": true,
    "primeiro_decreto": "11/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -66318,9 +66877,17 @@
      "data": "11/08/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.579",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117931_2026-09-16_c17abf7691d9e1e08328879879cb305c.pdf",
+     "data": "2026-09-17",
+     "decreto": "Decreto nº 066",
+     "hash": "9a054c6c58f8223db5df0bcd350f30dcc8953a7dcf8a64a7a84bc6c5d6944ea2"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2929107": {
    "ibge": "2929107",
@@ -68801,14 +69368,25 @@
    "ibge": "4318705",
    "nome": "São Leopoldo",
    "uf": "RS",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117935_2026-09-22_a412393f0ac7ce9780a355a5115bd591.pdf",
+     "data": "2026-09-23",
+     "decreto": "Decreto nº 11.460",
+     "hash": "4b18a27e52d57a5ed77ed2850e56ddc96456713117fb45c0e6948cc7ecf0f593"
+    }
+   ],
+   "n_eventos": 1
   },
   "3163706": {
    "ibge": "3163706",
@@ -69273,14 +69851,25 @@
    "ibge": "2515005",
    "nome": "São Miguel de Taipu",
    "uf": "PB",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios da Paraíba (FAMUP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=334&i=publicado_115137_2026-09-16_05f6f84c722754cf0c0eaa3099963a66.pdf",
+     "data": "2026-09-17",
+     "decreto": "Decreto nº 30/2026",
+     "hash": "d5f652a4a4db67c46a6d2216166a8f0d7339a1368d57f1c8c497bd98710fa66d"
+    }
+   ],
+   "n_eventos": 1
   },
   "2807006": {
    "ibge": "2807006",
@@ -70089,10 +70678,11 @@
    "decreto": true,
    "primeiro_decreto": "29/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -70110,9 +70700,17 @@
      "data": "29/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.449",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117936_2026-09-23_9f0b65045a47b4d0af512b53164aac68.pdf",
+     "data": "2026-09-24",
+     "decreto": "Decreto nº 4.633/2026",
+     "hash": "4648343cbc6903427be5d79bdffd43a79b449f892b517498308856b84b90ed68"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "3164506": {
    "ibge": "3164506",
@@ -72885,14 +73483,25 @@
    "ibge": "2516151",
    "nome": "Sossêgo",
    "uf": "PB",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios da Paraíba (FAMUP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=334&i=publicado_115138_2026-09-17_4c55c0ca4513b732bbb24131a91bf9ad.pdf",
+     "data": "2026-09-18",
+     "decreto": "Decreto nº 053/2026-",
+     "hash": "64b773cb3672fb79d88e1d5631005c0c3bedc2d8d6d37b5ee2a2625d6313e8d3"
+    }
+   ],
+   "n_eventos": 1
   },
   "1507904": {
    "ibge": "1507904",
@@ -74775,14 +75384,25 @@
    "ibge": "4127403",
    "nome": "Terra Roxa",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118186_2026-09-17_dd95a07f25b52e1159c407eaf8a05904.pdf",
+     "data": "2026-09-18",
+     "decreto": "Decreto nº 4709/2026",
+     "hash": "4760a52494310e45bfa2adf37cd7508af41be3c57be96ec378e88806528d8082"
+    }
+   ],
+   "n_eventos": 1
   },
   "3554409": {
    "ibge": "3554409",
@@ -75481,10 +76101,11 @@
    "decreto": true,
    "primeiro_decreto": "23/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -75494,9 +76115,17 @@
      "data": "23/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.172",
      "hash": "769ff89b799ba6e124ad176ab58b26da4ebefe74dc892b7a6fc26c096874138a"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Alagoanos (AMA))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=9878&i=publicado_115387_2026-09-10_52113800a78db0528314afdef7660ec9.pdf",
+     "data": "2026-09-11",
+     "decreto": "Decreto nº 18/2026",
+     "hash": "c2a4e0c9334f0061110962abf2cec801619db15d8923d9b70306e33ca5a3f8ef"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1508050": {
    "ibge": "1508050",
@@ -75638,14 +76267,25 @@
    "ibge": "4127858",
    "nome": "Três Barras do Paraná",
    "uf": "PR",
-   "decreto": false,
+   "decreto": true,
    "primeiro_decreto": null,
-   "tipos": [],
+   "tipos": [
+    "ECP"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118183_2026-09-22_3eee5e822946532025bc82ccae7426dd.pdf",
+     "data": "2026-09-15",
+     "decreto": "Decreto nº 7288/2026",
+     "hash": "364ba749bf2d4a135f51237c30db364bfb690be193e05f11c35d6ed68bd01eb9"
+    }
+   ],
+   "n_eventos": 1
   },
   "4321667": {
    "ibge": "4321667",
@@ -77117,10 +77757,11 @@
    "decreto": true,
    "primeiro_decreto": "23/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -77130,9 +77771,17 @@
      "data": "23/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.171",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_121268_2026-09-14_d749d8fa85fdb411362d06fd69fe8a21.pdf",
+     "data": "2026-09-14",
+     "decreto": "Decreto nº 473/2026",
+     "hash": "e40d15f9f223e62c487758d009db0c14faafb74c982334413b3858032f8ed539"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3170438": {
    "ibge": "3170438",

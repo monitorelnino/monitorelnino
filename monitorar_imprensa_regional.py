@@ -76,7 +76,7 @@ import urllib.request
 RAIZ = pathlib.Path(__file__).parent
 sys.path.insert(0, str(RAIZ / "scripts"))
 from validar_dicionario import get_sinalizadores_resposta  # noqa: E402 (import após sys.path)
-from coletores_base import ua_de, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, gravar_em, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
 
 FILA = RAIZ / "data" / "pistas_imprensa.json"
 CURSOR = RAIZ / "data" / "imprensa_cursor.json"
@@ -217,9 +217,9 @@ def carregar_cursor(total):
 
 def salvar_cursor(posicao, total):
     """Grava a posição do rodízio para a próxima execução continuar dali."""
-    json.dump({"posicao": posicao, "tamanho_universo": total,
-              "atualizado_em": time.strftime("%Y-%m-%d")},
-              open(CURSOR, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    # §229 (atômico) e §227 (data da redação, não do runner).
+    gravar_em(CURSOR, {"posicao": posicao, "tamanho_universo": total,
+                       "atualizado_em": hoje_editorial().isoformat()})
 
 
 def carregar_fila():
@@ -315,7 +315,7 @@ def self_test():
     import tempfile, os
     with tempfile.TemporaryDirectory() as d:
         cur = pathlib.Path(d) / "cursor.json"
-        json.dump({"posicao": 5, "tamanho_universo": 10}, open(cur, "w", newline="\n"))
+        gravar_em(cur, {"posicao": 5, "tamanho_universo": 10})
         d2 = json.load(open(cur))
         assert d2["posicao"] == 5
     print("✓ mecanismo de cursor (leitura/gravação) OK")

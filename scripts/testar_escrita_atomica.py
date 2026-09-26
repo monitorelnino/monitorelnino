@@ -118,15 +118,39 @@ def t_json_de_data_passa_pela_porta_atomica():
     O que o teste lê é o texto do código, e é suficiente: a forma `json.dump(obj, open(...))` e a
     forma `caminho.write_text(json.dumps(...))` são as duas maneiras de escrever JSON sem passar
     pela porta, e as duas são reconhecíveis na linha."""
-    import re
-    padrao = re.compile(r'json\.dump\(\s*[^,]+,\s*open\(|\.write_text\(\s*json\.dumps')
+    import ast
+
+    def _nome(no):
+        """'json.dump' para um Attribute/Name, ou ''."""
+        if isinstance(no, ast.Attribute):
+            return f"{_nome(no.value)}.{no.attr}".lstrip(".")
+        return no.id if isinstance(no, ast.Name) else ""
+
     achados = []
     for arq in sorted(list(RAIZ.glob("*.py")) + list(RAIZ.glob("scripts/*.py"))):
         if arq.name in FORA_DA_PORTA:
             continue
-        for n, linha in enumerate(arq.read_text(encoding="utf-8").splitlines(), 1):
-            if padrao.search(linha.split("#", 1)[0]):
-                achados.append(f"{arq.relative_to(RAIZ).as_posix()}:{n}")
+        try:
+            arvore = ast.parse(arq.read_text(encoding="utf-8"))
+        except SyntaxError as e:
+            achados.append(f"{arq.name}: não compila ({e})")
+            continue
+        for no in ast.walk(arvore):
+            if not isinstance(no, ast.Call):
+                continue
+            f = _nome(no.func)
+            # 26/09/2026: a primeira versão desta trava casava LINHA por linha, e
+            # `analisar_decretos.py` escapou porque `json.dump(` e `open(` estavam em linhas
+            # diferentes. A árvore sintática não se engana com quebra de linha.
+            if f == "json.dump" and len(no.args) >= 2 and isinstance(no.args[1], ast.Call) \
+                    and _nome(no.args[1].func) == "open":
+                achados.append(f"{arq.relative_to(RAIZ).as_posix()}:{no.lineno}")
+            if f.endswith(".write_text") and no.args and isinstance(no.args[0], ast.Call) \
+                    and _nome(no.args[0].func) == "json.dumps":
+                achados.append(f"{arq.relative_to(RAIZ).as_posix()}:{no.lineno}")
+            if f.endswith(".write_text") and no.args and isinstance(no.args[0], ast.BinOp) \
+                    and isinstance(no.args[0].left, ast.Call) and _nome(no.args[0].left.func) == "json.dumps":
+                achados.append(f"{arq.relative_to(RAIZ).as_posix()}:{no.lineno}")
     if achados:
         print("    escrita de JSON fora da porta atômica: " + ", ".join(achados[:8]))
         print("    Conserto: `from coletores_base import gravar_em` e `gravar_em(caminho, obj)`.")

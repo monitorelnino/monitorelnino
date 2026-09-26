@@ -303,6 +303,41 @@ def registrar_fonte_suspensa(url: str, corpo: bytes, padrao: str) -> None:
     (EVID / f"defeso_{h[:16]}.txt").write_text(corpo[:20000].decode("utf-8", "replace"), encoding="utf-8", newline="\n")
 
 
+def descomprimir(corpo: bytes, codificacao: str | None) -> bytes:
+    """Corpo em claro, quando o servidor comprimiu. Função pura.
+
+    26/09/2026 (§230, medido): `https://diariooficial.to.gov.br/` responde
+    `Content-Encoding: gzip` **mesmo sem o pedido negociar compressão** — `buscar()` devolvia
+    2.966 bytes de gzip cru que, descomprimidos, são 16.386 bytes de HTML ("Diário Oficial do
+    Estado"). É falha silenciosa e da pior espécie: `detectar_muro_de_robo`, `detectar_defeso` e
+    qualquer expressão regular passam a olhar ruído binário, e `preservar_evidencia` gravaria o
+    blob comprimido com extensão `.html`. Mesma família do §186 e do §187 — resposta com 200 que
+    parece conteúdo e não é —, com o agravante de que aqui o próprio detector fica cego.
+
+    Confere a MARCA além do cabeçalho: servidor que declara gzip e manda texto existe, e
+    descomprimir às cegas levantaria erro onde hoje o conteúdo chega bom. Quando a declaração e a
+    marca discordam, fica o corpo como veio — a única leitura que não inventa nada."""
+    if not corpo or not codificacao:
+        return corpo
+    cod = codificacao.strip().lower()
+    try:
+        if cod == "gzip" and corpo[:2] == b"\x1f\x8b":
+            import gzip as _gzip
+            return _gzip.decompress(corpo)
+        if cod == "deflate":
+            import zlib as _zlib
+            try:
+                return _zlib.decompress(corpo)
+            except _zlib.error:
+                return _zlib.decompress(corpo, -_zlib.MAX_WBITS)   # deflate cru, sem cabeçalho zlib
+        if cod == "br":
+            import brotli as _brotli                               # dependência opcional
+            return _brotli.decompress(corpo)
+    except Exception:  # noqa: BLE001 — corpo que não descomprime volta como veio, nunca perdido
+        return corpo
+    return corpo
+
+
 def url_ascii(url: str) -> str:
     """IRI → URI (RFC 3987 §3.1): codifica em percent-encoding os caracteres fora do ASCII que
     sobraram no endereço, preservando os escapes já existentes. Achado de 08/09/2026: 69 URLs do
@@ -540,6 +575,7 @@ def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
     with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
         corpo = r.read()
         ct = (r.headers.get("Content-Type") or "").lower()
+        corpo = descomprimir(corpo, r.headers.get("Content-Encoding"))
     if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):
         try:
             registrar_acesso_contra_robots(host, url, origem)
