@@ -23177,6 +23177,106 @@
     "pistas_novas": 0,
     "falhas": []
    }
+  },
+  {
+   "municipio": "Pedregulho",
+   "uf": "SP",
+   "ibge": "3537008",
+   "origem": "busca_web",
+   "data": "26/09/2026",
+   "url": "https://smastr20.blob.core.windows.net/conesan/Pedregulho_RS_2018.pdf",
+   "trecho": "Jun 30, 2018 ... Cândido Portinari (SP-334) passando por Batatais e Franca, até Pedregulho, como ... Quanto ao rendimento médio total, Pedregulho detém o menor ...",
+   "titulo": "plano municipal específico dos serviços de saneamento básico",
+   "registrado_em": "2026-09-26",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "ec0c080dbe",
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
+   "sinais": [
+    "fonte_desconhecida",
+    "municipio_na_url",
+    "plano_no_titulo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "26/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "2018"
+    },
+    "numero": null,
+    "data_ato": "2018",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "trecho_documento": " feito pela Rodovia dos Bandeirantes (SP- 348) e Rodovia Anhanguera (SP-330) até Ribeirão Preto, de onde segue-se pela Rodovia Cândido Portinari (SP-334) passando por Batatais e Franca, até Pedregulho, como mostrado na Ilustração 2.1. Planos Municipais Específicos dos Serviços de Saneamento Básico - ENGECORPS UGRHIs 04, 08, 12 e 19 1339-SSR-15-SA-RT-0004 Produto 4 (P4) – Plano Municipal Específico dos Serviços de Saneamento Básico – Município: Pedregulho (cid:48)(cid:68)(cid:83)(cid:68)(cid:3)(cid:71)(cid:72)(cid:3)(cid:47)(cid:82)(cid:70)(cid:68)(cid:79)(cid:76)(cid:93)(cid:68)(cid:111)(cid:1",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
+  },
+  {
+   "municipio": "Panorama",
+   "uf": "SP",
+   "ibge": "3535408",
+   "origem": "busca_web",
+   "data": "26/09/2026",
+   "url": "https://www.panoramainconfidentes.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico",
+   "trecho": "Por Panorama Inconfidentes Em 24/09/2026 19:34. Especialista resume alertas sobre El Niño e cobra ações urgentes do ... Resumindo: plano de contingência, ...",
+   "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+   "registrado_em": "2026-09-26",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "0e8defe30c",
+   "nivel_confianca": "A",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_imprensa",
+    "municipio_na_url",
+    "plano_no_trecho",
+    "ato_formal",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [],
+   "preparacao": {
+    "data": "26/09/2026",
+    "versao": 2,
+    "fonte_oficial": false,
+    "citacao_do_trecho": {
+     "numero": null,
+     "data_ato": "24/09/2026"
+    },
+    "numero": "Lei 12.340",
+    "data_ato": "2011",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "trecho_documento": "lei? Resumindo: plano de contingência, população das áreas de risco cadastrada, a questão da evacuação, a questão de abrigo, alertas testados, sirene, mensagens, simulados, rotas, pontos seguros, recursos. A lei hoje já traz todo o ciclo de gestão e proteção de defesa civil. A gente precisa começar a executar a política”, afirmou. Kayo Magalhães / Câmara dos Deputados Kenya Simões: \"Já existem leis suficientes, falta aplicá-las\" Entre as leis, Kenya Simões citou a Política Nacional sobre Mudança do Clima ; as transferências de recursos da União para prevenção, resposta e recuperação diante de ",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "fonte não oficial"
+    },
+    "juiz": {
+     "decisao": "FILA_HUMANA",
+     "motivo": "portão automático: fonte não oficial"
+    },
+    "resultado": "preparada"
+   }
   }
  ]
 }
