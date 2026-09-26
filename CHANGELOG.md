@@ -9,6 +9,99 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §238 · O regime de trabalho muda: a skill vence nas duas colisões · 26/09/2026
+
+Classe **regra de trabalho**.
+
+O §236 instalou a `karpathy-guidelines` subordinada, com duas colisões nomeadas, e registrou que
+nelas vencia o repositório. A editoria leu as duas escritas e decidiu o contrário, no mesmo dia:
+**vence a skill**. O `CLAUDE.md` foi alterado, e o bloco de precedência dentro da própria skill foi
+invertido para não ficar dizendo o contrário do que vale.
+
+**O que muda, em concreto.** Antes: execução silenciosa, sem pedir confirmação para decisão técnica
+de rotina, e mandato permanente para *"avaliar todo o código de todos os coletores e implementar
+todas as soluções que você conhece"*. Agora: declarar a suposição antes de implementar e **parar e
+perguntar diante de dúvida real**; apresentar as leituras quando há mais de uma em vez de escolher
+calado; e **escopo é o que foi pedido** — código morto pré-existente e defeito fora do escopo se
+**mencionam**, não se consertam de passagem. Órfão que a própria mudança criou continua sendo
+limpo. E toda tarefa de vários passos passa a declarar o plano no formato `passo → verificação`.
+
+**O que a troca custa, registrado porque ela tem custo.** Os §§226 a 235 nasceram do mandato
+anterior e são transversais por definição: a política de espera saindo de um coletor para os
+dezesseis, 75 datas em UTC migradas em 41 arquivos, 33 escritas de JSON levadas à porta atômica, 23
+arquivos passando a um cliente só, o muro de robô que o detector não via. Sob a regra nova, nenhum
+deles teria acontecido sem pedido específico. As **137 barreiras do inventário do §230** seguem
+medidas e nomeadas no arquivo, e nenhuma será atacada sem que a editoria peça.
+
+As três fontes de verdade não entram nessa troca: `METODOLOGIA.md`,
+`AI_EDITORIAL_NARRATIVE_GOVERNANCE.md` e `AI_VISUAL_ART_DIRECTION.md` são limite de prova e de
+governança, e continuam acima de qualquer skill.
+
+## §237 · Laço de design: ver em cinco segundos o que levava quatro minutos e meio · 26/09/2026
+
+Classe **rotina de trabalho**.
+
+Pedido da editoria: uma rotina rápida para mudança de fonte, cor, forma de botão e texto, que não
+precisasse atravessar partes do código que não servem a esse propósito, e que deixasse ver o
+resultado depressa.
+
+**O que já existia, medido antes de construir qualquer coisa.** A trilha `paginas` do
+`portoes_locais.py` já rodava 23 dos 69 portões; cronometrada portão a portão, são **4min25**, com
+sete portões respondendo por 216 dos 265 segundos. E mudança de fonte, cor ou forma toca apenas
+`assets/tokens.css` e `assets/base.css` — **nada em `data/`, nada na cadeia de derivados**.
+
+**O que estava lá e não funcionava.** `scripts/auditar_ux.js` — 12 páginas × 3 janelas (375, 768,
+1280), rolagem horizontal, elemento mais largo que a tela, texto abaixo de 12 px, alvo de toque,
+títulos, ids, alt, lang — apontava para **caminhos de sessões antigas** (`/tmp/index_pdf_test.html`,
+`/home/claude/audit/pacote/…`, `/mnt/user-data/outputs/…`) que não existem em máquina nenhuma. Ele
+rodava e não auditava nada. Segunda razão do abandono: usava `@axe-core/playwright`, **que nunca foi
+declarado no `package.json`**.
+
+Agora a lista de páginas é **derivada** dos `*.html` da raiz, como `validar_workflows.py` já fazia —
+página nova entra sozinha. O axe ficou **opcional**, e o relatório diz quando ele não está
+instalado: não acrescentei dependência que ninguém pediu, e o contraste, que é o que mais importa
+numa troca de cor, já é conferido por `verificar_acessibilidade.js`. E ele passou a **gravar
+captura** em 375 px e 1280 px, porque a pergunta da editoria é "como ficou", e relatório de axe-core
+não responde isso. As páginas são servidas por HTTP e não abertas por `file://`: elas buscam
+`data/*.json` ao vivo, e em `file://` o navegador recusa esse fetch — a auditoria mediria uma página
+sem dado nenhum. Página que não carrega **interrompe** em vez de virar relatório limpo.
+
+**Os perfis, e por que o assunto é declarado e não escolhido.** O `portoes_locais.py` deriva a
+trilha da condição `if: dado_mudou` do próprio CI, e o docstring dele diz por quê: *"é a mesma
+divisão que o CI faz, e por isso não inventa uma terceira semântica"*. O assunto segue a mesma
+disciplina — fica numa linha `# assunto: cor texto rapido` acima de cada comando, dentro do
+`portoes.yml`, que é o único lugar que reprova de verdade. O `CLAUDE.md` registra que subconjunto
+escolhido a olho custou um ciclo de CI em 23/09/2026.
+
+E `validar_workflows.py` passou a **reprovar portão de página sem assunto declarado** — o defeito
+que este projeto já viu três vezes (§213, §222, §226) é a lista que envelhece: portão novo entra,
+ninguém o declara, e o perfil segue verde sem nunca rodá-lo. Verificado nos dois sentidos: tirar um
+`# assunto:` deixa o portão vermelho.
+
+**Os tempos, medidos:**
+
+| comando | portões | tempo |
+|---|---|---|
+| `cor --rapido` / `texto --rapido` | 6 | **5 s** |
+| `cor` | 16 | 2min23 |
+| `texto` | 17 | 2min08 |
+| `paginas` | 23 | 4min25 |
+| `tudo` | 69 | a suíte inteira |
+
+O atalho `/design` encadeia a sequência, e as capturas saem em `previa/`, ignorada pelo git: são
+para olhar, não para guardar. Provado ponta a ponta com uma troca real de `--link` no `tokens.css`,
+revertida depois.
+
+**O que o laço não é, e está impresso no próprio rodapé dele.** Perfil parcial não libera nada:
+roda só o que aquele tipo de mudança toca, e o que a mudança não deveria tocar segue sem conferência
+até a suíte inteira rodar. Antes do PR, `tudo`.
+
+**Um limite honesto.** Os portões conferem contraste, token e componente; **não** conferem os papéis
+da paleta — "argila e âmbar nunca como fundo de área grande", "bioluz e sintético um por vez". Na
+prova de ponta a ponta, trocar `--link` por argila passou nos seis portões rápidos, porque o
+contraste fecha, e mesmo assim é uma cor de calor virando protagonista. O `AI_VISUAL_ART_DIRECTION.md`
+§25 continua sendo leitura humana, e o laço rápido não substitui o checklist da marca.
+
 ## §236 · A skill de conduta de código entra subordinada, e com duas colisões nomeadas · 26/09/2026
 
 Classe **regra de trabalho**.

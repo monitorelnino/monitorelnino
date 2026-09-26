@@ -74,6 +74,30 @@ for f, wf in carregados.items():
                   f"e o manifesto guardaria o hash da versão que não foi commitada")
             erros += 1
 
-print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo."
+# ASSUNTO DECLARADO EM TODO PORTÃO DE PÁGINA (§237, 26/09/2026). Os perfis rápidos de
+# `portoes_locais.py` (`cor`, `texto`, `--rapido`) derivam de uma linha `# assunto: ...` acima de
+# cada comando, no próprio portoes.yml — nunca de lista escolhida a olho, porque o CLAUDE.md
+# registra que subconjunto escolhido assim custou um ciclo de CI em 23/09/2026.
+#
+# A trava existe para o defeito que este projeto já viu três vezes (§213, §222, §226): portão novo
+# entra, ninguém o declara, e o perfil segue verde sem nunca rodá-lo. Silenciosamente, o laço de
+# design passaria a cobrir menos do que quem o roda acredita.
+import sys as _sys
+_sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+try:
+    from portoes_locais import comandos_do_workflow as _cmds
+except Exception as _e:                                   # noqa: BLE001
+    print(f"  ✗ não deu para derivar os portões para conferir o assunto: {_e}")
+    erros += 1
+else:
+    _sem = [c for g, c, a in _cmds() if g == "paginas" and not (a - {"rapido"})]
+    if _sem:
+        print(f"  ✗ {len(_sem)} portão(ões) de página sem `# assunto:` declarado — ficariam fora "
+              f"dos perfis `cor` e `texto` em silêncio: {', '.join(c[:46] for c in _sem[:3])}"
+              f"{'…' if len(_sem) > 3 else ''}")
+        erros += 1
+
+print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
+      "todo portão de página com assunto declarado."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")
 sys.exit(1 if erros else 0)

@@ -26,25 +26,26 @@ atrapalharia essa comparação.
 ## Precedência — onde esta skill vale, e onde ela cede
 
 Ela é **subordinada** às três fontes de verdade do projeto (`METODOLOGIA.md`,
-`AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`, `AI_VISUAL_ART_DIRECTION.md`) e ao `CLAUDE.md`. Duas seções
-dela colidem de frente com regras deste repositório, e nas duas **vence o repositório**:
+`AI_EDITORIAL_NARRATIVE_GOVERNANCE.md`, `AI_VISUAL_ART_DIRECTION.md`), que são limite de prova e de
+governança e não se negociam. Já nas duas colisões de **conduta de trabalho** abaixo, a editoria
+decidiu em 26/09/2026 (§238) que **vence a skill** — o `CLAUDE.md` foi alterado para refleti-lo:
 
-**§1 "Think Before Coding" — a parte do "pergunte".** Ela manda parar e perguntar diante de
-dúvida. O `CLAUDE.md` manda o contrário: *"Execução silenciosa: não narrar passos intermediários
-nem pedir confirmação para decisões técnicas rotineiras"*, e lista as únicas razões para
-interromper — credencial ausente, ação destrutiva, risco de perda de dado, decisão de produto não
-inferível, conflito real entre requisitos, impedimento técnico após diagnóstico. A editoria
-reafirmou isso como instrução permanente. O que FICA valendo do §1 é o resto, que não colide e é
-bom: declarar a suposição em vez de escondê-la, apresentar as interpretações quando há mais de uma,
-e dizer quando existe caminho mais simples.
+**§1 "Think Before Coding" — a parte do "pergunte". VALE.** Até 26/09/2026 o `CLAUDE.md` mandava o
+contrário — execução silenciosa, sem pedir confirmação para decisão técnica de rotina —, e a
+editoria tinha reafirmado isso como instrução permanente. Ela mudou de ideia no mesmo dia, depois
+de ver as duas colisões escritas. Agora: declarar a suposição, apresentar as leituras quando há mais
+de uma, e **parar e perguntar diante de dúvida real**.
 
-**§3 "Surgical Changes" — "não refatore o que não está quebrado".** É boa regra geral e é o oposto
-do que a editoria pediu para este projeto: *"avalie todo o código de todos os coletores e implemente
-todas as soluções que você conhece"*. Os §§226 a 235 do `CHANGELOG.md` são exatamente trabalho
-transversal — a política de espera saindo de um coletor para os dezesseis, 75 datas em UTC migradas
-em 41 arquivos, 33 escritas de JSON levadas à porta atômica, 23 arquivos passando a um cliente só.
-Sob leitura literal do §3, **nenhum deles existiria**, e os defeitos que eles corrigiram seguiriam
-em produção. Onde a editoria pede auditoria, o escopo é o que ela pediu, não a linha vizinha.
+**§3 "Surgical Changes" — "não refatore o que não está quebrado". VALE.** O mandato anterior era o
+oposto: *"avalie todo o código de todos os coletores e implemente todas as soluções que você
+conhece"*, e foi dele que nasceram os §§226 a 235 — a política de espera saindo de um coletor para
+os dezesseis, 75 datas em UTC migradas em 41 arquivos, 33 escritas de JSON levadas à porta atômica,
+23 arquivos passando a um cliente só. **Esse mandato deixou de ser permanente em 26/09/2026.**
+Conserto que atravessa o repositório passa a ser pedido, um a um.
+
+Fica registrado o que a troca custa, porque ela tem custo: as 137 barreiras do inventário do §230
+seguem medidas e nomeadas, e nenhuma será atacada sem pedido. Defeito que eu encontrar fora do
+escopo eu **nomeio** — não conserto de passagem.
 
 O que o §3 mantém intacto aqui: **não mexer no estilo alheio**, não apagar código morto
 pré-existente sem pedir, e limpar só o órfão que a própria mudança criou.

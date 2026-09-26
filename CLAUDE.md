@@ -34,16 +34,32 @@ Documentos canônicos:
 ## Idioma e modo de trabalho
 
 - Responder à editoria em português do Brasil.
-- Execução silenciosa: não narrar passos intermediários nem pedir confirmação
-  para decisões técnicas rotineiras (bugs, implementação, testes, refatoração).
+- **Declarar a suposição antes de implementar, e perguntar quando houver dúvida
+  real.** Havendo mais de uma leitura do pedido, apresentar as leituras em vez
+  de escolher calado. Confusão não se esconde: nomeia-se o que está obscuro.
+- **Escopo é o que foi pedido.** Não "melhorar" código vizinho, não refatorar o
+  que não está quebrado, não acrescentar configurabilidade que ninguém pediu.
+  Código morto pré-existente e defeito fora do escopo se **mencionam**, não se
+  consertam de passagem — vira pedido separado, decidido pela editoria. Órfão
+  que a própria mudança criou, esse sim se limpa.
+- Transformar a tarefa em critério verificável e iterar até verificar: para
+  tarefa de vários passos, declarar o plano no formato `passo → verificação`.
   Ao concluir: resumo curto — o que foi feito, mudanças importantes,
   verificações realizadas, o que ficou sem solução.
-- Interromper só para: credencial ausente, ação destrutiva ou irreversível,
+- Interromper sempre para: credencial ausente, ação destrutiva ou irreversível,
   risco de perda de dado, decisão de produto não inferível, conflito real entre
-  requisitos, ou impedimento técnico após diagnóstico razoável.
+  requisitos, impedimento técnico após diagnóstico razoável — e para ampliar
+  escopo além do que o pedido implica.
 - Verificar cada informação antes de apresentá-la como fato; suposição não
   verificada nunca é apresentada como dado.
-- Pendência que Claude consegue resolver é resolvida, não listada.
+
+> **Mudança de regime, 26/09/2026 (§238).** Até esta data valia o oposto nos dois
+> primeiros pontos: execução silenciosa, sem pedir confirmação para decisão
+> técnica de rotina, e mandato para auditar todo o código e consertar o que a
+> auditoria mostrasse. Foi assim que nasceram os §§226 a 235. A editoria instalou
+> a skill `karpathy-guidelines` e decidiu que, nas duas colisões, **vence a
+> skill**. O mandato de auditoria transversal não é mais permanente: cada
+> conserto que atravessa o repositório passa a ser pedido, um a um.
 
 ## Fluxo de mudança (PROTOCOLO §3.1)
 
