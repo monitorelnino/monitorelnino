@@ -39,6 +39,7 @@ from monitorar_imprensa_regional import (
     _get, montar_url, extrair_itens_rss, parece_fonte_oficial,
     carregar_fila, registrar, FILA,
 )
+from coletores_base import gravar_em  # noqa: E402  (§229: escrita atômica de data/)
 
 RAIZ = Path(__file__).parent
 CURSOR_RESPOSTA = RAIZ / "data" / "resposta_cursor.json"
@@ -103,7 +104,7 @@ def main():
             time.sleep(1.0)  # mesma cortesia de taxa do resto do pipeline
 
     salvar_cursor((pos + limite) % len(universo), len(universo))
-    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(FILA, fila)   # §229
 
     print(f"Universo de busca (atos de resposta): {len(universo)} UFs; "
           f"{limite} consultadas nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")

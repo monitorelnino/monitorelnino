@@ -14,7 +14,7 @@ D = "data/"; PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estad
         "plano_novo", "plano_readaptado", "plano_recorrente"}  # §202: escada municipal
 def j(n): return json.load(open(D + n, encoding="utf-8"))
 def w(n, o):
-    json.dump(o, open(D + n, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); open(D + n, "a", newline="\n").write("\n")
+    gravar_em(D + n, o)   # §229: escreve municipios.json e a fila de pistas
 mun = j("municipios.json"); pistas = j("pistas_imprensa.json"); pistas.setdefault("pistas", [])
 try: err = j("erratas_v224.json")
 except FileNotFoundError: err = []

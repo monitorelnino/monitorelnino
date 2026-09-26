@@ -124,7 +124,20 @@ def gravar(nome, obj, compacto: bool = False):
     inválido). Corrigido: grava num arquivo temporário no mesmo diretório e substitui via
     os.replace(), que em POSIX é atômico — o arquivo final é sempre a versão antiga completa
     ou a nova completa, nunca uma mistura truncada."""
-    p = DATA / nome
+    return gravar_em(DATA / nome, obj, compacto)
+
+
+def gravar_em(p, obj, compacto: bool = False):
+    """Como `gravar`, mas recebe o CAMINHO já montado.
+
+    26/09/2026 (§229): existe porque uma auditoria encontrou **trinta e três escritas de JSON
+    direto no destino** espalhadas pelo projeto, fora desta função — entre elas o `log_buscas.json`
+    (o livro-razão de 24 MB), o `municipios.json` (o banco), o `historico_mudancas.json` e o
+    `atos_resposta.json`, gravados por `julgar_e_aplicar_descobertas.py`, que roda no ciclo. A
+    correção de 21/09 tinha entrado em `gravar()`, e quem montava o caminho por conta própria não
+    passava por ela. Pedir o *nome* relativo a `data/` era justamente o atrito que fazia essas
+    chamadas ficarem de fora; com o caminho aceito, a migração é local e mecânica."""
+    p = pathlib.Path(p)
     # 25/09/2026 (§221): `compacto` para o arquivo que a PÁGINA carrega inteiro. A indentação
     # existe para deixar o diff do robô legível, e vale a pena na maioria dos arquivos; nos que o
     # navegador baixa por completo ela custa 38% do peso. A decisão já tinha sido tomada uma vez,

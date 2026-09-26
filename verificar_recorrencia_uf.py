@@ -27,6 +27,7 @@ import argparse
 import difflib
 import json
 from pathlib import Path
+from coletores_base import gravar_em  # noqa: E402  (§229: escrita atômica de data/)
 
 RAIZ = Path(__file__).parent
 HISTORICO_PATH = RAIZ / "data" / "decretos_historico_uf.json"
@@ -47,7 +48,7 @@ def carregar_historico():
 
 def salvar_historico(historico):
     """Grava o histórico completo de volta em disco (indentado, para diff legível)."""
-    json.dump(historico, open(HISTORICO_PATH, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=2)
+    gravar_em(HISTORICO_PATH, historico)
 
 
 def checar_recorrencia(uf, texto_novo, limiar=LIMIAR_PADRAO):

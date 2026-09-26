@@ -76,7 +76,7 @@ import urllib.request
 RAIZ = pathlib.Path(__file__).parent
 sys.path.insert(0, str(RAIZ / "scripts"))
 from validar_dicionario import get_sinalizadores_resposta  # noqa: E402 (import após sys.path)
-from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
 
 FILA = RAIZ / "data" / "pistas_imprensa.json"
 CURSOR = RAIZ / "data" / "imprensa_cursor.json"
@@ -365,7 +365,7 @@ def main():
             time.sleep(1.0)  # cortesia de taxa, mesmo padrão das outras rotinas do pipeline
 
     salvar_cursor((pos + limite) % len(universo), len(universo))
-    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(FILA, fila)   # §229
 
     print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C); "
           f"{limite} consultados nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")

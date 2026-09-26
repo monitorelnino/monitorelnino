@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §229 · A escrita atômica de 21/09 nunca saiu de uma função · 26/09/2026
+
+Classe **integridade de dado**.
+
+Em 21/09/2026 um processo interrompido no meio de uma gravação deixou `data/fontes_consultadas.json` truncado — 368.019 linhas viraram 166.961, JSON inválido. A correção entrou em `coletores_base.gravar()`: temporário ao lado, `os.replace()` no fim. Cinco dias depois, uma auditoria contou **trinta e três escritas de JSON direto no destino** espalhadas pelo projeto, todas fora daquela porta.
+
+**O que estava exposto, em ordem de dor.** `data/historico_mudancas.json` e `data/log_buscas.json` — os **dois arquivos append-only** do projeto, aqueles que a regra de merge por base comum existe para proteger. Truncar um deles é o pior caso possível, porque o que se perde não aparece em nenhum lugar: o próprio registro do que existiu é ele. `data/municipios.json`, o banco, gravado direto por **quatro portas diferentes** (`processar_contribuicoes.py`, `verificar_vigencia.py`, `julgar_e_aplicar_descobertas.py` e `aplicar_c10_imprensa.py`), três delas no ciclo diário. `data/indice.json`, que é o produto — um JSON truncado ali é o site inteiro sem número. E mais `atos_resposta.json`, `estados.json`, `prazos_uf.json`, `meta.json`, as quatro filas de revisão humana e o histórico de recorrência por UF.
+
+**Por que ficaram de fora, e a lição de projeto.** Não foi descuido: `gravar()` pedia o **nome relativo a `data/`**, e quem já tinha o caminho montado — a maioria — achava mais curto abrir o arquivo. O atrito da interface era o motivo. Daí `gravar_em(caminho, obj)`, que aceita o caminho pronto: a migração passou a ser local e mecânica, e as trinta e três chamadas entraram.
+
+**Um erro meu no caminho, que vale registrar porque é instrutivo.** A primeira tentativa de migração usou expressão regular multilinha e comeu um `with open(...) as f: json.dump(resumo, f)` em `recalcular_mare.py`, deixando `json.dump(novo)` — **sintaticamente válido, e que não grava nada**. O arquivo compilava. Se tivesse passado, o `indice.json` deixaria de ser regravado silenciosamente. Transformação automática que compila não é transformação correta: a segunda passada exigiu o casamento da linha inteira, e nada foi gravado sem `ast.parse` antes.
+
+**O portão** é uma trava nova em `scripts/testar_escrita_atomica.py`: nenhuma escrita de JSON fora de `gravar`/`gravar_em`, com uma lista curta de exceções **com motivo declarado** — a própria porta, o gerador que escreve no repositório privado da editoria, os três derivados que o portão 12 confere byte a byte, e o arquivo de teste que escreve fixture. Crescer nessa lista é decisão, não descuido. Verificado nos dois sentidos: reintroduzir uma escrita direta em `municipios.json` deixa o portão vermelho.
+
 ## §228 · Vinte e uma identidades, seis delas disfarçadas · 26/09/2026
 
 Classe **conformidade com a política de acesso**. Achado de auditoria, e o mais grave da sessão: não é robustez, é uma regra do `CLAUDE.md` sendo violada por código em produção.

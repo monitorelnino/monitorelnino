@@ -45,7 +45,7 @@ import time
 import unicodedata
 import urllib.parse
 import urllib.request
-from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 
@@ -400,7 +400,7 @@ def main():
             time.sleep(1.0)  # cortesia de taxa, mesmo padrão das outras rotinas do pipeline
 
     salvar_cursor((pos + limite) % len(universo), len(universo))
-    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(FILA, fila)   # §229
 
     print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C); "
           f"{limite} consultados nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")

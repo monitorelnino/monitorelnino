@@ -22,7 +22,7 @@ Uso:
   python atualizar_populacao.py --check   # só valida o arquivo existente
 """
 import json, pathlib, sys, urllib.request
-from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, gravar  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "populacao_censo2022.json"
@@ -131,7 +131,7 @@ def main():
             print("✗ VALIDAÇÃO FALHOU — nada foi gravado.")
             return 1
         DESTINO.parent.mkdir(exist_ok=True)
-        json.dump(pop, open(DESTINO, "w", newline="\n"), separators=(",", ":"))
+        gravar(DESTINO.name, pop, compacto=True)   # §229: atômico, e compacto como antes
         print(f"✓ {len(pop)} municípios · total {sum(pop.values()):,} · {ap} · gravado em {DESTINO.name}")
         return 0
 
@@ -144,7 +144,7 @@ def main():
         print("✗ VALIDAÇÃO FALHOU — nada foi gravado. O índice continua sem o componente populacional.")
         return 1
     DESTINO.parent.mkdir(exist_ok=True)
-    json.dump(pop, open(DESTINO, "w", newline="\n"), separators=(",", ":"))
+    gravar(DESTINO.name, pop, compacto=True)       # §229: atômico, e compacto como antes
     print(f"✓ {len(pop)} municípios · total {sum(pop.values()):,} · {ap} · gravado em {DESTINO.name}")
     return 0
 

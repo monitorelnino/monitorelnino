@@ -30,6 +30,7 @@ from pathlib import Path
 # em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
 # leitor brasileiro viu.
 from coletores_base import hoje_editorial  # noqa: E402
+from coletores_base import gravar_em  # §229 (o nome local gravar é um booleano)
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -202,8 +203,12 @@ def executar(data, dados=None, gravar=True):
     ineditos = [x for x in novos if x["id"] not in vistos]
     historico["eventos"].extend(ineditos)
     if gravar:
-        json.dump(agora, open(SNAPSHOT, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
-        json.dump(historico, open(HISTORICO, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        # §229: escrita atômica. `historico_mudancas.json` é um dos dois arquivos APPEND-ONLY do
+        # projeto — o que a regra de merge por base comum protege de perder eventos. Era gravado
+        # aqui direto no destino, e é ele que mais dói truncar: o que se perde não aparece em
+        # nenhum lugar, porque o próprio registro do que existiu é ele.
+        gravar_em(SNAPSHOT, agora)
+        gravar_em(HISTORICO, historico)
         renderizar(historico, agora["nomes"], data)
     return ineditos, historico, agora
 

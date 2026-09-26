@@ -32,6 +32,7 @@ import pathlib
 import re
 import sys
 import unicodedata
+from coletores_base import gravar_em  # noqa: E402  (§229: escrita atômica de data/)
 
 RAIZ = pathlib.Path(__file__).parent
 SAIDA = "escada_municipal_revisar.json"
@@ -183,7 +184,7 @@ def gerar() -> int:
         "propostas": sorted(propostas, key=lambda x: (x["proposta"], x["uf"], x["nome"])),
     }
     destino = RAIZ / "data" / SAIDA
-    destino.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    gravar_em(destino, doc)   # §229
     print(f"{len(propostas)} plano(s) com texto lido · {len(propostas) - indet} proposta(s) · "
           f"{indet} indeterminado(s) · {sem_texto} sem texto preservado")
     print(f"→ data/{SAIDA} (revisão humana; nada aplicado)")

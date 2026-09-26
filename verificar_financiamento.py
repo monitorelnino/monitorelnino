@@ -22,6 +22,7 @@ Uso: python3 verificar_financiamento.py [--negativos]
 """
 import json, os, pathlib, re, shutil, sys, tempfile
 from pagina_completa import ler_pagina
+from coletores_base import gravar_em  # §229 (escrita atômica)
 
 RAIZ = pathlib.Path(__file__).parent; FIN = RAIZ / "data" / "financiamento"
 MUNICIPIOS = FIN / "municipios"
@@ -197,8 +198,7 @@ def dinheiro_declarado_nao_pontua() -> bool:
         if alvo is None:
             return True
         muns[alvo]["icm_var11_dotacao_loa"] = "sim"
-        caminho.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n",
-                           encoding="utf-8", newline="\n")
+        gravar_em(caminho, d)   # §229
         depois = rm._declarado_nacional_uf()
         return antes == depois
     finally:
