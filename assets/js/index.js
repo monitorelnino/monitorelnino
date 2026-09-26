@@ -139,24 +139,85 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
 (function calendario(){
   const box = document.getElementById('marcosCiclo'); if (!box) return;
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const MS = 86400000;
   const dBR = t => { const [d,m,a] = String(t).split('/').map(Number); return new Date(a, m-1, d); };
-  // 17/09/2026 (pedido da editoria): a coluna "Fonte" vira link quando há URL; texto puro quando não há.
-  const fonteHTML = (rotulo, url) => url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(rotulo)}</a>` : esc(rotulo);
+  const fmt = d => String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear();
+  const MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const rotulo = d => MES[d.getMonth()] + ' ' + String(d.getFullYear()).slice(2);
+  const dias = n => n + ' dia' + (n === 1 ? '' : 's');
   const hoje = new Date(); hoje.setHours(0,0,0,0);
-  const linhas = [];
+
+  // 26/09/2026 (pedido da editoria: "é preciso criar alguma forma gráfica para representar o que
+  // significa cada uma dessas datas, como se elas já tivessem passado, como se tivessem ainda
+  // correndo"). A tabela anterior não transmitia tempo: "em 15 dias" era texto no meio de uma
+  // frase, e a janela de seis meses do El Niño era só dois números separados por travessão.
+  // O dado já sustentava a resposta — prazo tem data_base E vencimento, ou seja, é INTERVALO.
+  // Agora há um eixo de tempo único, compartilhado por todas as faixas (por isso as durações são
+  // comparáveis entre si), com uma linha de HOJE atravessando todas na mesma posição. É ela que
+  // faz "já passou" e "ainda corre" serem visíveis sem ler texto.
+  // O degradê das barras do índice NÃO é usado aqui de propósito: naquela arte ele significa
+  // "valor de 0 a 100", e reaproveitá-lo para tempo criaria ambiguidade.
   fetch('data/marcos_ciclo.json').then(r => r.ok ? r.json() : null).catch(() => null).then(M => {
-    ((M && M.marcos) || []).filter(m => dBR(m.ate || m.data) >= hoje).forEach(m => linhas.push({
-      ord: dBR(m.data), data: m.data + (m.ate ? ' – ' + m.ate : ''), marco: m.titulo, fonteHTML: fonteHTML(m.fonte, m.url), classe: 'marco'}));
+    const itens = [];
+    ((M && M.marcos) || []).filter(m => dBR(m.ate || m.data) >= hoje).forEach(m => itens.push({
+      ini: dBR(m.data), fim: m.ate ? dBR(m.ate) : null, titulo: m.titulo, fonte: m.fonte, url: m.url, classe: 'marco'}));
     ((PRAZOS && PRAZOS.marcos) || []).filter(m => m.vencimento && m.data_base && m.titulo_curto).forEach(m => {
-      const fim = dBR(m.vencimento), dias = Math.round((fim - hoje) / 86400000); if (dias < -60) return;
+      const fim = dBR(m.vencimento), resta = Math.round((fim - hoje) / MS); if (resta < -60) return;
       const f0 = (m.fontes && m.fontes[0]) || null;
-      linhas.push({ord: fim, data: m.vencimento, marco: m.titulo_curto + (dias < 0 ? ' · transcorrido' : dias === 0 ? ' · vence hoje' : ' · em ' + dias + ' dia' + (dias === 1 ? '' : 's')),
-        fonteHTML: fonteHTML(m.classe + ' · desde ' + m.data_base, f0 && f0.url), classe: dias < 0 ? 'prazo vencido' : 'prazo'});
+      itens.push({ini: dBR(m.data_base), fim, titulo: m.titulo_curto, fonte: m.classe + ' · desde ' + m.data_base,
+        url: f0 && f0.url, classe: resta < 0 ? 'prazo vencido' : 'prazo'});
     });
-    linhas.sort((a, b) => a.ord - b.ord);
-    const cab = box.querySelector('.cal-cabecalho');
-    box.innerHTML = (cab ? cab.outerHTML : '') + (linhas.map(l => `<div class="cal-linha ${l.classe}" role="row"><span class="cal-data" role="cell">${esc(l.data)}</span><span class="cal-marco" role="cell">${esc(l.marco)}</span><span class="cal-fonte" role="cell">${l.fonteHTML}</span></div>`).join('')
-      || '<div class="cal-linha" role="row"><span class="cal-data" role="cell">—</span><span class="cal-marco u-muted" role="cell">Marcos do ciclo não carregados.</span><span class="cal-fonte" role="cell"></span></div>');
+    if (!itens.length) {
+      box.innerHTML = '<div class="cal-linha" role="row"><span class="cal-texto" role="cell">Marcos do ciclo não carregados.</span><span class="cal-faixa" role="cell"></span><span class="cal-fonte" role="cell"></span></div>';
+      return;
+    }
+    itens.sort((a, b) => (a.fim || a.ini) - (b.fim || b.ini));
+    const t0 = new Date(Math.min(...itens.map(i => +i.ini), +hoje));
+    const t1 = new Date(Math.max(...itens.map(i => +(i.fim || i.ini)), +hoje));
+    const vao = (t1 - t0) || 1;
+    const pos = d => ((d - t0) / vao * 100).toFixed(2) + '%';
+    const meio = new Date((+t0 + +t1) / 2);
+
+    let html = '<div class="cal-eixo" role="row"><span role="columnheader">Marco</span>' +
+      '<span class="cal-regua" role="columnheader">' +
+      '<span>' + rotulo(t0) + '</span>' +
+      '<span class="meio" style="left:50%">' + rotulo(meio) + '</span>' +
+      '<span class="hoje" style="left:' + pos(hoje) + '">hoje</span>' +
+      '<span class="fim">' + rotulo(t1) + '</span></span>' +
+      '<span role="columnheader">Fonte</span></div>';
+
+    itens.forEach(it => {
+      const pontual = !it.fim || +it.fim === +it.ini;
+      const futuro = it.ini > hoje;
+      let selo, faixa;
+      if (pontual) {
+        const d = Math.round((it.ini - hoje) / MS);
+        selo = d < 0 ? 'há ' + dias(-d) : d === 0 ? 'hoje' : 'em ' + dias(d);
+        faixa = '<span class="cal-ponto" style="--x0:' + pos(it.ini) + '"></span>';
+      } else {
+        const total = Math.max(1, Math.round((it.fim - it.ini) / MS));
+        const corrido = Math.min(total, Math.max(0, Math.round((hoje - it.ini) / MS)));
+        const resta = Math.round((it.fim - hoje) / MS);
+        const aComecar = Math.round((it.ini - hoje) / MS);
+        // Três estados, não dois: o que ainda não começou não tem "dias decorridos".
+        selo = resta < 0 ? 'transcorrido'
+             : aComecar > 0 ? 'começa em ' + dias(aComecar) + ' · dura ' + dias(total)
+             : resta === 0 ? 'vence hoje'
+             : corrido + ' de ' + dias(total);
+        faixa = '<span class="cal-barra" style="--x0:' + pos(it.ini) + '; --w:' +
+          ((it.fim - it.ini) / vao * 100).toFixed(2) + '%"><i style="--decorrido:' +
+          (corrido / total * 100).toFixed(1) + '%"></i></span>';
+      }
+      const quando = fmt(it.ini) + (pontual ? '' : ' – ' + fmt(it.fim));
+      html += '<div class="cal-linha ' + it.classe + (futuro ? ' futuro' : '') + '" role="row">' +
+        '<span class="cal-texto" role="cell"><span class="cal-data">' + esc(quando) + ' · ' + esc(selo) + '</span>' +
+        '<span class="cal-marco">' + esc(it.titulo) + '</span></span>' +
+        '<span class="cal-faixa" role="cell" style="--hoje:' + pos(hoje) + '">' + faixa + '</span>' +
+        '<span class="cal-fonte" role="cell">' +
+        (it.url ? '<a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.fonte) + '</a>' : esc(it.fonte)) +
+        '</span></div>';
+    });
+    box.innerHTML = html;
   });
 })();
 

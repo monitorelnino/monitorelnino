@@ -201,8 +201,26 @@ setTimeout(() => {
   const marcosCiclo = JSON.parse(fs.readFileSync(path.join(raiz, "data", "marcos_ciclo.json"), "utf-8")).marcos.filter(m => _d(m.ate || m.data) >= _hoje).length;
   const linhasCal = [...q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)")];
   teste(`calendário: ${esperados} prazo(s) + ${marcosCiclo} marco(s) do ciclo em linhas data · marco · fonte`, linhasCal.length === esperados + marcosCiclo && linhasCal.every(l => l.querySelectorAll(".cal-data, .cal-marco, .cal-fonte").length === 3));
-  teste("calendário: prazos em curso marcados e com contagem de dias ou 'transcorrido'", linhasCal.filter(l => l.classList.contains("prazo")).length === esperados && linhasCal.filter(l => l.classList.contains("prazo")).every(l => /em \d+ dias?|vence hoje|transcorrido/.test(l.textContent)));
-  teste("calendário: linhas em ordem de data", (() => { const ds = linhasCal.map(l => { const m = l.querySelector(".cal-data").textContent.match(/(\d{2})\/(\d{2})\/(\d{4})/); return m ? +m[3] * 10000 + +m[2] * 100 + +m[1] : 0; }); return ds.every((v, i) => i === 0 || v >= ds[i - 1]); })());
+  // 26/09/2026: o calendário virou linha do tempo e o rótulo do prazo mudou junto — era "em 15
+  // dias", agora é "44 de 59 dias", que diz quanto já correu e não só quanto falta. A checagem
+  // acompanha a mudança em vez de ser afrouxada: continua exigindo leitura temporal em TODO prazo.
+  teste("calendário: prazos em curso marcados e com leitura temporal", linhasCal.filter(l => l.classList.contains("prazo")).length === esperados && linhasCal.filter(l => l.classList.contains("prazo")).every(l => /\d+ de \d+ dias?|vence hoje|transcorrido|começa em \d+ dias?/.test(l.textContent)));
+  // O que a forma nova promete: intervalo vira barra com parte decorrida, data única vira ponto,
+  // e a linha de HOJE fica na MESMA posição em todas as faixas — sem isso a escala não é comum e
+  // as durações deixam de ser comparáveis entre si, que é a razão de existir do eixo único.
+  teste("calendário: cada linha tem barra (intervalo) ou ponto (data única)", linhasCal.every(l => l.querySelectorAll(".cal-barra, .cal-ponto").length === 1));
+  teste("calendário: a linha de hoje está na mesma posição em todas as faixas", (() => {
+    const hs = linhasCal.map(l => { const f = l.querySelector(".cal-faixa"); return f && f.style.getPropertyValue("--hoje"); });
+    return hs.length > 1 && hs.every(h => h && h === hs[0]);
+  })());
+  teste("calendário: toda barra declara quanto do prazo já correu", [...q("marcosCiclo").querySelectorAll(".cal-barra")].every(b => {
+    const i = b.querySelector("i"); if (!i) return false;
+    const v = parseFloat(i.style.getPropertyValue("--decorrido")); return v >= 0 && v <= 100;
+  }));
+  // 26/09/2026: a ordenação passou a ser pelo VENCIMENTO, não pelo início — numa linha do tempo o
+  // que interessa é o que vence primeiro. A célula mostra "início – fim", então a chave é a
+  // ÚLTIMA data do texto, não a primeira.
+  teste("calendário: linhas em ordem de vencimento", (() => { const ds = linhasCal.map(l => { const m = [...l.querySelector(".cal-data").textContent.matchAll(/(\d{2})\/(\d{2})\/(\d{4})/g)].pop(); return m ? +m[3] * 10000 + +m[2] * 100 + +m[1] : 0; }); return ds.every((v, i) => i === 0 || v >= ds[i - 1]); })());
   // 13/09/2026 (pedido de Patricia): gerador de pedido de LAI pronto (31/08/2026–13/09/2026)
   // retirado da parte visível do site — pedidos de LAI passam a ser feitos por e-mail, de forma
   // privada. Testes correspondentes (cartão da cidade e detalhe do estado) removidos junto.
