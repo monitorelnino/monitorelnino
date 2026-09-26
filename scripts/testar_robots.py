@@ -186,6 +186,46 @@ def t_geobloqueio_com_200_e_recusa():
     return cb.detectar_muro_de_robo(corpo) == "connection denied by geolocation"
 
 
+def t_reserva_nao_contorna_muro_de_robo():
+    """§235: a reserva do Wayback NÃO dá a volta por fora num muro de robô.
+
+    Medido em 26/09/2026, sem rede: um `MuroDeRobo` caía no `except Exception` de
+    `buscar_com_procedencia` e a função devolvia "captura do Wayback" — contornava um "não"
+    explícito. Pior: antes de ler a captura, ela PEDIA ao archive.org para salvar a URL, empurrando
+    o endereço do host a um terceiro logo depois de ser recusada por ele.
+
+    O comentário de `RECUSAS_EXPLICITAS` já dizia a regra — a reserva é para a conexão que nem
+    vira conversa HTTP, "em que não há recusa a respeitar porque não houve resposta". Faltava a
+    linha que a faz valer. O teste trava as duas metades: muro levanta sem tocar o arquivo, e
+    conexão morta continua caindo na reserva, que é para o que ela existe."""
+    chamadas = []
+
+    def com_muro(url, timeout=None):
+        chamadas.append(url)
+        if "web.archive.org" in url:
+            return b"captura"
+        raise cb.MuroDeRobo(url, "desafio de robô")
+
+    try:
+        cb.buscar_com_procedencia("https://muro.exemplo/d.pdf", buscar_fn=com_muro)
+        return False                                  # contornou a recusa: proibido
+    except cb.MuroDeRobo:
+        pass
+    if len(chamadas) != 1:                            # nem sequer pediu captura ao arquivo
+        return False
+
+    outras = []
+
+    def sem_conexao(url, timeout=None):
+        outras.append(url)
+        if "web.archive.org" in url:
+            return b"captura"
+        raise OSError("conexão reiniciada")
+
+    corpo, proc = cb.buscar_com_procedencia("https://x.exemplo/d.pdf", buscar_fn=sem_conexao)
+    return corpo == b"captura" and proc == "captura do Wayback"
+
+
 def t_muro_f5_sem_texto_declarativo_e_recusa():
     """§232: o desafio do F5/Shape é recusa, e passava porque a página não DIZ nada.
 
@@ -331,5 +371,6 @@ if __name__ == "__main__":
         "§232 desafio do F5/Shape sem texto declarativo é recusa": t_muro_f5_sem_texto_declarativo_e_recusa,
         "§232 negativo: quem só CITA o produto em prosa não é muro": t_muro_f5_nao_acusa_quem_so_cita_o_produto,
         "§232 muro no lugar do robots.txt não vira permissão": t_muro_no_lugar_do_robots_nao_vira_permissao,
+        "§235 a reserva do Wayback não contorna muro de robô": t_reserva_nao_contorna_muro_de_robo,
         "§186 buscar() levanta no muro antes de preservar": t_buscar_levanta_muro_de_robo,
     }))

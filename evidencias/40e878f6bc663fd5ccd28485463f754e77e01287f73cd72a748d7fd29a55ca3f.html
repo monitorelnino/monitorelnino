@@ -1,0 +1,1066 @@
+
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Portal da Fundação de Vigilância em Saúde do Amazonas - Dra. Rosemary Costa Pinto - FVS-RCP/AM">
+    <meta name="author" content="Assessoria de Informática - AINFO">
+    <meta name="generator" content="Django 3.0">
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!--<link rel="shortcut icon" href="/static/images/favicon.png" />-->
+    <title>Portal FVS-RCP/AM</title>
+
+    <link rel="shortcut icon" href="/static/onepage25/assets/images/favicon.png" type="image/svg"/>
+    <link rel="stylesheet" href="/static/onepage25/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/onepage25/assets/css/animate.css" />
+    <link rel="stylesheet" href="/static/onepage25/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/static/onepage25/assets/css/ud-styles.css" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FLFC0MBDQR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FLFC0MBDQR');
+    </script>
+    
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/tabler-icons/tabler-icons.min.css"/>
+<style>
+.img-btn-hero {
+    font-size: 24px;
+    width: 24px;
+    margin-right: 10px;
+    color: #ffffff;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.news-img-btn {
+    font-size: 20px;
+    width: 20px;
+    margin-right: 5px;
+    color: #0CA959;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.icons-inst {
+    font-size: 24px;
+    width: 24px;
+    margin-right: 6px;
+    color: #0CA959;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.ud-single-testimonial .ud-testimonial-info .ud-testimonial-image {
+    width: 72px;
+    height: 72px;
+    border-radius: 0;
+    overflow: visible;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ud-testimonial-image i {
+    font-size: 28px;
+    color: #ffffff;
+    background-color: #197240;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+}
+.ud-single-testimonial:hover .ud-testimonial-image i {
+    background-color: #0CA959;
+}
+
+#institucionais {
+    justify-content: flex-start !important;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+#institucionais .ud-single-testimonial {
+    max-width: none !important;
+    width: calc(50% - 5px);
+    flex-shrink: 0;
+    flex-grow: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#institucionais .ud-single-testimonial .ud-testimonial-info {
+    width: 100% !important;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 5px !important;
+}
+@media (max-width: 767px) {
+    .service-buttons-back {
+        background-attachment: scroll;
+        background-position: center center;
+    }
+    #institucionais .ud-single-testimonial {
+        width: 100%;
+    }
+    .ud-single-testimonial .ud-testimonial-info .ud-testimonial-image {
+        width: 64px;
+        height: 64px;
+    }
+    .ud-testimonial-image i {
+        font-size: 24px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.pubs-icon i {
+    font-size: 35px;
+    color: #0CA959;
+    display: block;
+}
+
+#ouvidoria .col-md-5 > .col-md-12 {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+.ud-single-ouvid {
+    max-width: none !important;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+.ud-single-ouvid .ud-ouvid-info {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+.ud-single-ouvid .ud-ouvid-info .ud-ouvid-image {
+    overflow: visible !important;
+    border-radius: 0 !important;
+    padding: 5px 5px 5px 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0;
+}
+.ud-single-ouvid .ud-ouvid-info .ud-ouvid-image i {
+    font-size: 28px;
+    color: #ffffff;
+    background-color: #197240;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+}
+.ud-single-ouvid:hover .ud-ouvid-image i {
+    background-color: #0CA959;
+}
+.ud-single-ouvid .ud-ouvid-meta {
+    padding-left: 10px;
+}
+
+.contacts-icon i {
+    font-size: 52px;
+    color: #0CA959;
+    display: block;
+    text-align: center;
+}
+.fvs-logo-wrapper {
+    display: inline-block;
+    font-family: 'Fredoka', sans-serif;
+    margin-top: 2px;
+}
+
+.fvs-main-title {
+    color: #ffffff;
+    line-height: 0.9;
+}
+
+.fvs-light {
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: 1.1px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.fvs-bold {
+    font-size: 64px;
+    font-weight: 550;
+    letter-spacing: 0.1px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.fvs-badge-container {
+    display: flex;
+    align-items: stretch;
+    margin-top: 16px;
+    line-height: 50px;
+}
+
+.fvs-badge-green {
+    background-color: #1E7242;
+    color: white;
+    font-size: 36px;
+    font-weight: 400;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 2;
+}
+
+.fvs-badge-gray {
+    background-color: #dedede;
+    color: #000;
+    font-size: 36px;
+    font-weight: 400;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+    padding-right: 18px;
+    opacity: 0.5;
+    margin-left: -10px;
+    z-index: 1;
+}
+
+@media (max-width: 769px) {
+    .fvs-bold { font-size: 32px; }
+    .fvs-light { font-size: 18px; }
+    .fvs-badge-green, .fvs-badge-gray { font-size: 12px; border-radius: 8px; }
+    .fvs-badge-container { line-height: 25px; }
+}
+</style>
+
+  </head>
+  <body>
+    <header class="ud-header">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="/#home">
+                <img alt="Logo da FVS em branco" src="/static/onepage25/assets/images/logo/logo-fvs-white.png" alt="Logo" width="100"/>
+              </a>
+              <button class="navbar-toggler">
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+              </button>
+
+              <div class="navbar-collapse">
+                <ul id="nav" class="navbar-nav mx-auto">
+                  <li class="nav-item" style="text-align: center;" id="logo-menu">
+                    <a class="navbar-brand" href="/#home" style="text-align: center;">
+                      <img src="/static/onepage25/assets/images/logo/logo-fvs-white.png" alt="Logo" width="100"/><br/><br/>
+                      <b>&nbsp;&nbsp;&nbsp;FVS-RCP</b>
+                      <br/><br/>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#home">Início</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#news">Notícias</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#institucional">Institucional</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#services">Serviços</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#publications">Publicações</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#ouvidoria">Ouvidoria</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#contact" id="btn-contact">
+                      Fale&nbsp;Conosco
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <div id="social">
+                        <a href="https://www.instagram.com/fvs.rcp/"><img alt="instagram" src="/static/onepage25/assets/images/footer/instagram.png" class="img-footer"></a>
+                        <a href="https://www.facebook.com/fvs.rcp/"><img alt="facebook" src="/static/onepage25/assets/images/footer/facebook.png" class="img-footer"></a>
+                        <a href="https://www.youtube.com/fvsamazonas"><img alt="youtube" src="/static/onepage25/assets/images/footer/youtube.png" class="img-footer"></a>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/politica_privacidade" id="privacy">
+                      Política de Privacidade
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/lgpd" id="btn-lgpd">
+                      <img alt="icone lgpd" src="/static/onepage25/assets/images/hero/icons/btn-lgpd.png" width="20" height="20"> LGPD
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!--
+              <div class="navbar-btn">
+                <a href="" class="ud-main-btn ud-login-btn login-button">
+                  <img alt="seta para cima" src="/static/onepage25/assets/images/hero/font-arrow-up.png" class="img-access">
+                </a>
+                <a class="ud-main-btn ud-login-btn" href="">
+                  <img alt="seta para baixo"  src="/static/onepage25/assets/images/hero/font-arrow-down.png" class="img-access">
+                </a>
+                <a class="ud-main-btn ud-login-btn" href="">
+                  <img alt="icone de contraste" src="/static/onepage25/assets/images/hero/contrast.png" class="img-access">
+                </a>
+                <span class="divider-search">&nbsp;</span>
+                <a class="ud-main-btn ud-login-btn" href="" data-bs-toggle="modal" data-bs-target="#searchModal">
+                  <img alt="icone de busca" src="/static/onepage25/assets/images/hero/search.png" width="20" class="img-access">
+                </a>
+              </div>-->
+            </nav>
+          </div>
+        </div>
+    </header>
+
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <input type="text" class="form-control" placeholder="Informe o que deseja pesquisar no portal...">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-success">Pesquisar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+
+    <section class="ud-hero" id="home">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
+              <span class="ud-hero-title">
+                <div class="fvs-logo-wrapper">
+                    <div class="fvs-main-title">
+                        <div class="fvs-light">Fundação de</div>
+                        <div class="fvs-bold">Vigilância em Saúde</div>
+                    </div>
+
+                    <div class="fvs-badge-container">
+                        <div class="fvs-badge-green">do Amazonas</div>
+                        <div class="fvs-badge-gray">Dra Rosemary Costa Pinto</div>
+                    </div>
+                </div>
+
+              </span>
+              <div class="ud-hero-desc">
+                <a href="/dadossaude" class="btn btn-ud-hero btn-ud-hero"><i class="ti ti-layout-dashboard img-btn-hero"></i> Painéis de Dados</a>
+                <a href="#publications" class="btn btn-ud-hero btn-ud-hero"><i class="ti ti-book img-btn-hero"></i> Publicações</a>
+              </div>
+              <div class="ud-hero-desc">
+                <a href="https://cead.fvs.am.gov.br" class="btn btn-ud-hero btn-ud-hero"><i class="ti ti-school img-btn-hero"></i> Cursos e Treinamentos</a>
+                <a href="/transparencia/" class="btn btn-ud-hero"><i class="ti ti-eye img-btn-hero"></i> Transparência</a>
+              </div>
+              <div class="ud-hero-desc">
+                <a href="/formularios" class="btn btn-ud-hero"><i class="ti ti-forms img-btn-hero"></i> Formulários</a>
+                <a href="/ensinopesquisa" class="btn btn-ud-hero btn-ud-hero-disabled"><i class="ti ti-microscope img-btn-hero"></i> Pesquisa Científica</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="ud-features" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title">
+              <span>Notícias</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  
+                    <img alt="Imagem da Notícia" src="/media/noticia/WhatsApp_Image_2026-09-25_at_13.44.31.jpeg" class="news-img">
+                  
+                  <div class="news-in">
+                    <span class="news-date-time">25 Set 2026</span>
+                    <span class="news-title"><a class="news-title" href="/detalhe_noticia/fvs-rcp-contribui-com-vigilancia-em-saude-e-prevencao-em-reuniao-sobre-estiagem">FVS-RCP contribui com vigilância em saúde e prevenção em reunião sobre estiagem  ...</a></span>
+
+                  </div>
+                </div>
+          </div>
+          
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  
+                    <img alt="Imagem da Notícia" src="/media/noticia/WhatsApp_Image_2026-09-24_at_11.09.23_1.jpeg" class="news-img">
+                  
+                  <div class="news-in">
+                    <span class="news-date-time">24 Set 2026</span>
+                    <span class="news-title"><a class="news-title" href="/detalhe_noticia/fvs-rcp-aproxima-estudantes-de-medicina-da-uea-das-praticas-de-vigilancia-em-saude">FVS-RCP aproxima estudantes de Medicina da UEA das práticas de vigilância em saú ...</a></span>
+
+                  </div>
+                </div>
+          </div>
+          
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  
+                    <img alt="Imagem da Notícia" src="/media/noticia/WhatsApp_Image_2026-09-24_at_12.53.22.jpeg" class="news-img">
+                  
+                  <div class="news-in">
+                    <span class="news-date-time">24 Set 2026</span>
+                    <span class="news-title"><a class="news-title" href="/detalhe_noticia/autoridades-de-saude-promovem-seminario-de-imersao-sobre-sarampo-na-regiao-da-triplice-fronteira">Autoridades de Saúde promovem seminário de imersão sobre sarampo na região da Tr ...</a></span>
+
+                  </div>
+                </div>
+          </div>
+          
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  
+                    <img alt="Imagem da Notícia" src="/media/noticia/WhatsApp_Image_2026-09-24_at_12.31.43.jpeg" class="news-img">
+                  
+                  <div class="news-in">
+                    <span class="news-date-time">24 Set 2026</span>
+                    <span class="news-title"><a class="news-title" href="/detalhe_noticia/fvs-rcp-sedia-roda-de-conversa-sobre-saude-mental-em-ambiente-de-trabalho">Saúde mental em ambiente de trabalho é tema de roda de conversa na FVS-RCP ...</a></span>
+
+                  </div>
+                </div>
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-lg-10">
+            <div class="news-buttons wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+              <button onclick="js: location.href='https://www.agenciaamazonas.am.gov.br/'; " class="btn btn-news-buttons"><i class="ti ti-player-play news-img-btn"></i> Agência de Notícias do Amazonas</button>
+              <button onclick="js: location.href='https://diario.imprensaoficial.am.gov.br/'; " class="btn btn-news-buttons"><i class="ti ti-paperclip news-img-btn"></i> Diário Oficial do Amazonas</button>
+              <button onclick="redirectToPodcrest();" class="btn btn-news-buttons"><i class="ti ti-microphone news-img-btn"></i> PodCREST</button>
+            </div>
+          </div>
+          <div class="col-lg-2 wow fadeInUp" data-wow-delay=".2s" style="text-align: right; padding-top: 60px; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+              <button class="btn btn-news-buttons" onclick="redirectToNoticias();"> + Notícias</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="institucional" class="ud-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title">
+              <span>Institucional</span>
+            </div>
+          </div>
+        </div>
+        <div class="row col-md-12 wow fadeInUp" data-wow-delay=".3s">
+          <div class="col-md-6">
+            <div class="ud-about-content">
+              <p class="about-txt">
+                A Fundação de Vigilância em Saúde, Dra. Rosemary Costa Pinto tem por finalidade a <b>promoção e proteção à saúde</b>, mediante ações de:
+              </p>
+                <div class="col-md-12 row">
+                  <div class="col-md-6">
+                    <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Vigilância Epidemiológica</div>
+                    <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Vigilância Sanitária</div>
+                    <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Vigilância Laboratorial</div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Vigilância Ambiental</div>
+                    <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Controle de Doenças</div>
+                    <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Ensino e Pesquisa</div>
+                  </div>
+                </div>
+              <br/>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-12 d-flex flex-wrap" id="institucionais">
+              <a class="ud-single-testimonial" href="/historia">
+                <div class="ud-testimonial-info">
+                  <div class="ud-testimonial-image">
+                    <i class="ti ti-building-bank"></i>
+                  </div>
+                  <div class="ud-testimonial-meta">
+                    <h4>História</h4>
+                    <p class="about-btn-desc">Conheça um pouco da nossa história</p>
+                  </div>
+                </div>
+              </a>
+              <a class="ud-single-testimonial" href="/galeria">
+              <div class="ud-testimonial-info">
+                <div class="ud-testimonial-image">
+                  <i class="ti ti-users"></i>
+                </div>
+                <div class="ud-testimonial-meta">
+                  <h4>Presidentes</h4>
+                  <p class="about-btn-desc">Galeria de todos os diretores-presidentes</p>
+                </div>
+              </div>
+            </a>
+
+              <a class="ud-single-testimonial" href="/organograma">
+                <div class="ud-testimonial-info">
+                  <div class="ud-testimonial-image">
+                    <i class="ti ti-sitemap"></i>
+                  </div>
+                  <div class="ud-testimonial-meta">
+                    <h4>Organograma</h4>
+                    <p class="about-btn-desc">Nosso organograma institucional</p>
+                  </div>
+                </div>
+              </a>
+              <a class="ud-single-testimonial" href="/enderecos">
+                <div class="ud-testimonial-info">
+                  <div class="ud-testimonial-image">
+                    <i class="ti ti-map-pin"></i>
+                  </div>
+                  <div class="ud-testimonial-meta">
+                    <h4>Unidades</h4>
+                    <p class="about-btn-desc">Endereços de nossas unidades</p>
+                  </div>
+                </div>
+              </a>
+              <a class="ud-single-testimonial" href="/integridade">
+                <div class="ud-testimonial-info">
+                  <div class="ud-testimonial-image">
+                    <i class="ti ti-shield-check"></i>
+                  </div>
+                  <div class="ud-testimonial-meta">
+                    <h4>Integridade</h4>
+                    <p class="about-btn-desc">Conheça nosso Programa de Integridade</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row col-md-12 wow fadeInUp" data-wow-delay=".3s" style="margin-top: 24px;">
+            <p class="about-sub"><i class="ti ti-target icons-inst"></i> Missão</p>
+            <p class="about-txt2">Buscar a melhoria da <b>qualidade de vida da população</b> do Estado do Amazonas, por meio da promoção e proteção à saúde, mediante ações integradas das vigilâncias epidemiológica, sanitária, ambiental e laboratorial, bem como o controle de doenças e agravos, incluindo educação, capacitação, pesquisa e ações interinstitucionais.</p>
+            <p class="about-sub"><i class="ti ti-eye icons-inst"></i> Visão</p>
+            <p class="about-txt2">Ser reconhecida nacionalmente como centro de <b>excelência</b> em vigilância em saúde.</p>
+            <p class="about-sub"><i class="ti ti-heart icons-inst"></i> Valores</p>
+            <p class="about-txt2">Ética, compromisso com a <b>sociedade</b>, inovação, integração e sustentabilidade.</p>
+        </div>
+        <div class="row col-md-12 wow fadeInUp" data-wow-delay=".3s">
+            <p style="text-align: center; padding-top: 20px;">
+              <button class="btn btn-news-buttons" onclick="redirectToAreasTecnicas();">Conheça nossas Áreas Técnicas</button>
+            </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="ud-pricing">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title">
+              <span>Serviços</span>
+            </div>
+            <p class="about-txt">
+                A Fundação de Vigilância em Saúde do Amazonas, Dra. Rosemary Costa Pinto - FVSRCP disponibiliza para o público em geral seus serviços de forma  acessível, mediante solicitação. Dentre os serviços oferecidos estão:
+            </p>
+            <br/><br/>
+            <div class="col-md-12 row">
+              <div class="col-md-3">
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Licenciamento e Vistorias</div>
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Inspeções Sanitárias</div>
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Produtos Controlados</div>
+              </div>
+              <div class="col-md-3">
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Controle de Doenças</div>
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Investigações de Doenças</div>
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Pesquisa Científica</div>
+              </div>
+              <div class="col-md-3">
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Visita Acadêmica</div>
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Paineis de Dados</div>
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Imunização</div>
+              </div>
+              <div class="col-md-3">
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Declarações</div>
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Denúncias</div>
+                <div class="itens-inst"><i class="ti ti-circle-check icons-inst"></i> Treinamentos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="service-buttons-back">
+          <div class="container">
+            <div class="col-md-12">
+                <p class="service-txt">Baixe a Carta de Serviços ou entre em nosso Portal de Serviços para fazer uma solicitação.</p>
+                <div class="service-buttons wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  <a href="https://www.fvs.am.gov.br/media/publicacao/fvs-rcp_-_carta_de_servicos.pdf" class="btn btn-service-buttons">Carta de Serviços</a>
+                  <a href="/portal_servicos" class="btn btn-service-buttons" onclick="js: location.href='portal_servicos.html'; ">Portal de Serviços</a>
+                  <a href="https://servicos.portaldoservidor.am.gov.br/" class="btn btn-service-buttons">Portal do Servidor</a>
+                  <a href="/sistemasfvs/" class="btn btn-service-buttons">Sistemas</a>
+                </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <section id="publications" class="ud-publications">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title">
+              <span>Publicações</span>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="publications-cards">
+          <div class="col-xl-3 col-lg-3 col-sm-6" style="display: none;">
+                <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  <div class="pubs-in">
+                    <div class="pubs-icon"><i class="ti ti-news"></i></div>
+                    <div class="pubs-title">Revista Vigilância <br/>em Pauta</div>
+                    <div class="pubs-resume">Compilado com as <br/>últimas notícias sobre <br/>Vigilância em Saúde <br/>no Brasil e no mundo</div>
+                    <a href="/revista-vigilancia" class="pubs-btn">ACESSAR</a>
+                  </div>
+                </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  <div class="pubs-in">
+                    <div class="pubs-icon"><i class="ti ti-file-description"></i></div>
+                    <div class="pubs-title">Boletins <br/>Epidemiológicos</div>
+                    <div class="pubs-resume">Boletins sobre situação<br/> epidemiológica de <br/>vários agravos e <br/>doenças</div>
+                    <a href="/boletim-epidemiologico" class="pubs-btn">ACESSAR</a>
+                  </div>
+                </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  <div class="pubs-in">
+                    <div class="pubs-icon"><i class="ti ti-file-certificate"></i></div>
+                    <div class="pubs-title">Editais e <br/>Concursos</div>
+                    <div class="pubs-resume">Editais de <br/>Chamamento Público, <br/>Concursos, dentre <br/>outros</div>
+                    <a href="/editais_concursos" class="pubs-btn">ACESSAR</a>
+                  </div>
+                </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  <div class="pubs-in">
+                    <div class="pubs-icon"><i class="ti ti-files"></i></div>
+                    <div class="pubs-title">Demais <br/>Publicações</div>
+                    <div class="pubs-resume">Artigos, Notas <br/>Técnicas, Relatórios, <br/>Informes, Decretos e <br/>Portarias, dentre outros</div>
+                    <a href="/publicacoes" class="pubs-btn">ACESSAR</a>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ouvidoria" class="ud-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title">
+              <span>Ouvidoria</span>
+            </div>
+          </div>
+        </div>
+        <div class="row col-md-12 wow fadeInUp" data-wow-delay=".3s">
+          <div class="col-md-7">
+            <div class="ud-about-content">
+              <p>
+                A Ouvidoria é o lugar onde o cidadão pode manifestar-se através de <b>denúncias, reclamações, elogios, pedidos de informação</b> ou <b>sugestões</b> sobre as atividades desenvolvidas por esta Fundação.
+              </p>
+              <p><i class="ti ti-mail icons-inst"></i> E-mail: ouvidoria@fvs.am.gov.br</p>
+              <p><i class="ti ti-phone icons-inst"></i> Telefone: (92) 99175-5122</p>
+              <p><i class="ti ti-clock icons-inst"></i> Atendimento: Segunda à sexta-feira (8h às 12h / 13h às 16h)</p>
+              <p>
+                Você também pode entrar em contato pelas redes sociais.
+              </p>
+              <p style="text-align: center;">
+                <button class="btn btn-news-buttons" onclick="redirectToPesquisaSatisfacao();">Pesquisa de Satisfação</button>
+                <button class="btn btn-news-buttons" onclick="redirectToResultPesquisaSatisfacao();">Resultado da Pesquisa de Satisfação</button>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="col-md-12">
+              <a href="https://www.fvs.am.gov.br/media/publicacao/Relatorio_de_Gestao_Ouvidoria_2026_FVS-RCP.pdf" class="ud-single-ouvid">
+                <div class="ud-ouvid-info">
+                  <div class="ud-ouvid-image">
+                    <i class="ti ti-report-analytics"></i>
+                  </div>
+                  <div class="ud-ouvid-meta">
+                    <h4>Relatório de Gestão da Ouvidoria</h4>
+                    <p class="about-btn-desc">Gestão pública transparente</p>
+                  </div>
+                </div>
+              </a>
+              <a href="https://falabr.cgu.gov.br/web/AM" class="ud-single-ouvid">
+              <div class="ud-ouvid-info">
+                <div class="ud-ouvid-image">
+                  <i class="ti ti-message-circle-2"></i>
+                </div>
+                <div class="ud-ouvid-meta">
+                  <h4>Fala.BR - Amazonas</h4>
+                  <p class="about-btn-desc">Ajude a aprimorar os serviços públicos</p>
+                </div>
+              </div>
+            </a>
+             <a href="/lgpd" class="ud-single-ouvid">
+                <div class="ud-ouvid-info">
+                  <div class="ud-ouvid-image">
+                    <i class="ti ti-shield-lock"></i>
+                  </div>
+                  <div class="ud-ouvid-meta">
+                    <h4>LGPD</h4>
+                    <p class="about-btn-desc">Lei Geral de Proteção de Dados</p>
+                  </div>
+                </div>
+             </a>
+             <a href="/perguntas" class="ud-single-ouvid">
+                <div class="ud-ouvid-info">
+                  <div class="ud-ouvid-image">
+                    <i class="ti ti-help-circle"></i>
+                  </div>
+                  <div class="ud-ouvid-meta">
+                    <h4>Perguntas Frequentes</h4>
+                    <p class="about-btn-desc">Dúvidas mais frequentes</p>
+                  </div>
+                </div>
+             </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="ud-contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title mx-auto text-center">
+              <span>Fale Conosco</span>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center contact-cards">
+          <div class="row col-xl-6 col-lg-6">
+            <div class="col-md-6">
+                <div class="ud-contact-form-wrapper2 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  <div class="contacts-in">
+                    <div class="contacts-icon"><i class="ti ti-map-pin"></i></div>
+                    <div class="contacts-title">Endereço</div>
+                    <div class="contacts-resume">
+                      <div class="mb-2">Avenida Torquato Tapajós, 4.010 - Bairro Colônia Santo Antônio</div>
+                      <div class="mb-3">CEP: 69.093-018<br/>Manaus | Amazonas</div>
+                      <div>Em frente ao Complexo Viário "28 de Março" - Aeroporto</div>
+                    </div>
+                    <a href="https://www.google.com.br/maps/place/Funda%C3%A7%C3%A3o+de+Vigil%C3%A2ncia+em+Sa%C3%BAde+-+FVS%2FAM/@-3.0361834,-60.0213991,17z/data=!4m5!3m4!1s0x926c1a03c2773ed3:0xeb59357e4fa6ddea!8m2!3d-3.0361888!4d-60.0192104" class="contacts-btn">Mapa</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ud-contact-form-wrapper2 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  <div class="contacts-in">
+                    <div class="contacts-icon"><i class="ti ti-clock"></i></div>
+                    <div class="contacts-title">Funcionamento</div>
+                    <div class="contacts-resume">
+                      <b>Horário</b>
+                      <div class="mt-3 mb-4">
+                      FVS: 8h às 17h<br/>
+                      Protocolo: 8h às 14h
+                      </div>
+                      <b>Contato</b>
+                      <div class="mt-4 mb-4">
+                      (92) 3198-6766<br/>
+                      (92) 3198-6767<br/>
+                      dipre@fvs.am.gov.br
+                      </div>
+                      <b>CNPJ</b><br/>
+                      07.141.411/0001-46
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="row col-xl-6 col-lg-6">
+            <div class="col-md-12">
+              <div class="ud-contact-form-wrapper3 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                  <div class="contacts-in3">
+                    <form class="ud-contact-form">
+                        <div class="ud-form-group">
+                          <label for="fullName">Nome*</label>
+                          <input type="text" name="fullName" id="name" placeholder="">
+                        </div>
+                        <div class="ud-form-group">
+                          <label for="email">Email*</label>
+                          <input type="email" name="email" id="email" placeholder="">
+                        </div>
+                        <div class="ud-form-group">
+                          <label for="phone">Telefone (Opcional)</label>
+                          <input type="text" name="phone" id="phone" placeholder="">
+                        </div>
+                        <div class="ud-form-group">
+                          <label for="message">Mensagem*</label>
+                          <textarea name="message" rows="1" id="message" placeholder=""></textarea>
+                        </div>
+                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                        <div class="ud-form-group mb-0">
+                          <a href="#contact" class="ud-contactus-btn" id="enviar" onclick="js:
+                            $(this).hide();
+                            $('#enviando').show();
+                            $.ajax({
+                               type: 'POST',
+                               url: '/salva_fale_conosco',
+                               data: {
+                                  csrfmiddlewaretoken: 'odLjcvldFqkwjctBrxTcVcOUhBq3SDhQpUxneRtdf7U3K2K12yOc5a9SEYxRe5oL',
+                                  name: $('#name').val(),
+                                  email: $('#email').val(),
+                                  phone: $('#phone').val(),
+                                  message: $('#message').val(),
+                                  'g-recaptcha-response': $('[name=\'g-recaptcha-response\']').val()
+                               },
+                               beforeSend: function(data){
+                                  erros = [];
+                                  if($('#name').val()==''){
+                                     erros.push('&bull; Você precisa informar seu <u>nome</u>.<br/>');
+                                  }
+                                  if($('#email').val()==''){
+                                     erros.push('&bull; Você precisa informar um <u>email</u> válido.<br/>');
+                                  }
+                                  if($('#message').val()==''){
+                                     erros.push('&bull; A <u>mensagem</u> não pode estar vazia.<br/>');
+                                  }
+
+                                  if(erros!=''){
+                                     $('#messages_inside').html('<b>Atenção!</b><br/><br/> Verifique esses itens, antes de enviar novamente:<br/><br/>' + erros.join(''));
+                                     $('#contactModal').modal('show');
+                                     $('#enviar').show();
+                                     $('#enviando').hide();
+                                     return False;
+                                  }
+                               },
+                               success: function(data){
+                                  if(data==1){
+                                      $('#enviando').hide();
+                                      $('#messages_inside').html('<b>Sucesso!</b><br/><br/> Sua mensagem foi enviada. Obrigado pelo contato!');
+                                      $('#contactModal').modal('show');
+                                      $('#enviado').show();
+                                  }else{
+                                      $('#messages_inside').html('<b>Desculpe!</b><br/><br/> Não foi possível enviar sua mensagem pois tivemos um problema interno em nossos servidores. Peço que tente novamente mais tarde. Obrigado!');
+                                      $('#contactModal').modal('show');
+                                      $('#enviar').show();
+                                      $('#enviando').hide();
+                                  }
+                               }
+                            });
+                          ">
+                            Enviar
+                          </a>
+                          <span class="ud-contactus-btn" id="enviando" style="display: none;">Enviando...</span>
+                          <span id="enviado" style="display: none;"><b>Mensagem enviada. Obrigado pelo contato!</b></span>
+                        </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="messages_inside"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--
+    <div class="polices col-md-12" style="padding: 20px; bottom: auto; top: 200px;" id="nota">
+          <p><strong>Chamada para Editais Abertos</strong></p>
+          <p style="text-align: justify;">
+            <br/>
+            <b>&bull; </b> Edital direcionado às <b>Organizações da Sociedade Civil (OSCs)</b>.<br/>
+            <a href="/editais_concursos" class="polices-btn mb-2 mt-2">Acessar Edital OSCs</a>
+            <br/>
+            <b>&bull;</b> <b>Edital PAIC/FVS-RCP Edição 2026/2027</b>, destinado à
+               submissão de projetos de iniciação científica.<br/>
+            <a href="/paicfvs" class="polices-btn mb-2 mt-2">Acessar Edital PAIC</a>
+            <button class="polices-btn mb-2 mt-2" onclick="js: $('#nota').hide(); ">Fechar</button>
+          </p>
+    </div>
+-->
+
+
+<div id="notaPortal" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:80%; max-width:700px; background:#fff; border-radius:10px; padding:24px 28px; box-shadow:0 8px 32px rgba(0,0,0,0.18); z-index:9999; line-height:1.6;">
+    <button onclick="document.getElementById('notaPortal').style.display='none'" style="position:absolute; top:12px; right:14px; background:none; border:none; cursor:pointer; color:#888; padding:0; line-height:1;"><i class="ti ti-x" style="font-size:1.2rem;"></i></button>
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        
+            <i class="ti ti-info-circle" style="font-size:1.8rem; color:#1E7242; flex-shrink:0;"></i>
+        
+        <p class="polices-head" style="margin:0;">Período Eleitoral</p>
+    </div>
+    <div class="polices-details" style="margin-bottom:20px;"><p>Em atendimento à legislação eleitoral (<span style="font-weight: 700;">Lei nº 9.504/97</span>), o Portal FVS-RCP passará a exibir apenas conteúdos essenciais e permitidos durante esse período. Em caso de dúvidas e/ou solicitações, entre em contato pelo Fale Conosco.&nbsp;</p></div>
+    <div style="text-align:right;">
+        <button class="polices-btn" id="fechar-nota">Fechar</button>
+    </div>
+</div>
+
+
+      <br/>
+    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+      <div class="ud-footer-widgets">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="ud-footer-p">
+                <a href="https://www.instagram.com/fvs.rcp/" class="link-footer"><img alt="instagram" src="/static/onepage25/assets/images/footer/instagram.png" class="img-footer"></a>
+                <a href="https://www.facebook.com/fvs.rcp/" class="link-footer"><img alt="facebook" src="/static/onepage25/assets/images/footer/facebook.png" class="img-footer"></a>
+                <a href="https://www.youtube.com/fvsamazonas" class="link-footer"><img alt="youtube" src="/static/onepage25/assets/images/footer/youtube.png" class="img-footer"></a>
+              </p><br/><br/>
+              <p class="ud-footer-p"><a href="/politica_privacidade" class="link-footer">Política de Privacidade</a> <!--| <a href="/politica_privacidade" class="link-footer">Termos de Uso</a>--></p><br/>
+              <p class="ud-footer-p">Portal desenvolvido por Assessoria de Desenvolvimento de Sistemas - ADS/GINFO</p><br/>
+              <p class="ud-footer-p">Fundação de Vigilância em Saúde do Amazonas - Dra. Rosemary Costa Pinto - FVS-RCP &copy; 2025</p>
+              <p class="ud-footer-p">Todos os direitos reservados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+
+    <div class="polices row col-md-12" id="polices">
+        <div class="polices-img">
+          <img alt="icone de segurança" src="/static/onepage25/assets/images/hero/icons/user-safety.png">
+        </div>
+        <div class="polices-txt">
+          <p class="polices-head">Aviso de Privacidade e Segurança de Dados</p>
+          <p class="polices-details">Este portal coleta informações do seu dispositivo e da sua navegação por meio de <i>cookies</i> para permitir funcionalidades como: melhorar o funcionamento técnico das páginas e mensurar a audiência do portal, bem como disponibilizar serviços públicos de qualidade. Para saber mais sobre as informações e <i>cookies</i> que coletamos, acesse a nossa <a href="/politica_privacidade" class="polices-link">Política de Privacidade</a>. </p>
+        </div>
+        <div class="polices-btn-area">
+          <button class="polices-btn" id="check-polices">Ciente</button>
+        </div>
+    </div>
+
+    <!-- ====== Advice ====== -->
+    <!--<div class="polices col-md-12" style="padding: 20px; bottom: auto; top: 200px;" id="nota">
+          <p><strong>Nota Informativa</strong></p>
+          <p style="text-align: justify;">
+            <br/>
+            Informamos que no dia <b>19 de novembro de 2025</b> todos os nossos sistemas estarão <b>fora do ar</b>.
+            Nossos servidores estarão passando por um processo de <b>migração</b> para melhor atendermos a população.
+            A previsão de <b>retorno é à meia-noite do mesmo dia</b> ou assim que o processo for finalizado.<br/><br/>
+
+            Desde já, agradecemos a compreensão.
+            <br/><br/>
+            <button class="polices-btn" onclick="js: $('#nota').hide(); ">Fechar</button>
+          </p>
+    </div>
+    -->
+    <!-- ====== Advice End ====== -->
+
+    <!-- ====== Libras ====== -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <!-- ====== Libras End ====== -->
+
+    <script src="/static/bootstrap-4.3.1/site/docs/4.3/assets/js/vendor/jquery-slim.min.js"></script>
+    <script src="/static/onepage25/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/onepage25/assets/js/wow.min.js"></script>
+    <script src="/static/onepage25/assets/js/main.js"></script>
+    <script>
+    (function() {
+        var s = document.createElement('script');
+        s.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+        s.onload = function() {
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        };
+        document.head.appendChild(s);
+    })();
+    </script>
+    
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+function redirectToPodcrest() {
+    location.href = "/podcrest";
+}
+
+function redirectToNoticias() {
+    location.href = "/noticias";
+}
+
+function redirectToPesquisaSatisfacao() {
+    location.href = "/pesquisa_satisfacao";
+}
+
+function redirectToAreasTecnicas() {
+    location.href = "/areastecnicas";
+}
+
+function redirectToResultPesquisaSatisfacao() {
+    location.href = "/resultado_pesquisa_satisfacao";
+}
+</script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcJ9McrAAAAAAJZg28qKh63D9WEiU3c9wRZy5Dv"></script>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LcJ9McrAAAAAAJZg28qKh63D9WEiU3c9wRZy5Dv', {action: 'submit'}).then(function(token) {
+            $('#g-recaptcha-response').val(token);
+        });
+    });
+</script>
+
+<script>
+document.getElementById('fechar-nota').addEventListener('click', function() {
+    document.getElementById('notaPortal').style.display = 'none';
+});
+</script>
+
+
+  </body>
+</html>
+

@@ -128,7 +128,7 @@ def verificar_um(url: str, timeout=15):
     # o JUSTIFICAVA como "robô educado" para portais que recusam HEAD de robô. A regra do
     # CLAUDE.md não abre exceção: nunca disfarçar o cliente. Se um portal recusa o Monitor
     # identificado, a recusa é o resultado da verificação — e é o resultado que se registra.
-    headers = {"User-Agent": ua_de("verificação de links")}
+    headers = {"User-Agent": ua_de("verificação")}
     # §232 (26/09/2026): o caminho rápido do HEAD saiu. Ele devolvia OK com base no status e
     # SEM CORPO para inspecionar — e um host que serve muro de robô com 200 responde 200 ao HEAD
     # também. O autoteste desta função pegou isso: com o muro injetado, ela classificava OK. Sem
@@ -153,9 +153,38 @@ def verificar_um(url: str, timeout=15):
         marca = detectar_muro_de_robo(inicio)
         if marca:
             return "BLOQUEADO", resp.status_code, f"{resp.url} — {marca}"
-        return classificar_status(resp.status_code), resp.status_code, resp.url
+        if resp.status_code < 400:
+            return classificar_status(resp.status_code), resp.status_code, resp.url
+        return _confirmar_com_o_cliente_do_projeto(url, resp.status_code, resp.url)
     except Exception as e:
-        return "QUEBRADO", None, str(e)
+        return _confirmar_com_o_cliente_do_projeto(url, None, str(e))
+
+
+def _confirmar_com_o_cliente_do_projeto(url, codigo, detalhe):
+    """§235: antes de declarar QUEBRADO, pergunta ao cliente que de fato COLETA.
+
+    O relatório de links só serve se disser o que a coleta vê. Medido em 26/09/2026: o
+    `requests` devolveu 403 em `prefeitura.pbh.gov.br` e o `buscar` do projeto leu 87.169 bytes da
+    mesma página. Um "quebrado" que o próprio projeto consegue ler não é quebrado — é diferença
+    entre dois clientes, e reportar isso como link morto manda a editoria agir sobre nada.
+
+    Só roda quando o primeiro caminho falhou (três de 107 na rodada de 26/09), então custa quase
+    nada. O muro de robô continua sendo recusa, e a cadeia de TLS incompleta ganha nome próprio:
+    `pmsg.rj.gov.br` não é documento morto, é servidor sem a cadeia completa — e chamar uma coisa
+    da outra é o erro que o §187 registrou."""
+    from coletores_base import MuroDeRobo, buscar as _buscar
+    try:
+        corpo = _buscar(url, timeout=45)
+    except MuroDeRobo as e:
+        return "BLOQUEADO", codigo, f"{url} — {e}"
+    except Exception as e:  # noqa: BLE001
+        if "CERTIFICATE_VERIFY_FAILED" in str(e) or "SSLCertVerification" in type(e).__name__:
+            return "TLS_INCOMPLETO", codigo, f"cadeia de certificação incompleta no servidor: {str(e)[:140]}"
+        return "QUEBRADO", codigo, str(detalhe)
+    marca = detectar_muro_de_robo(corpo[:60000])
+    if marca:
+        return "BLOQUEADO", codigo, f"{url} — {marca}"
+    return "OK", 200, url
 
 
 def rodar_verificacao(links: dict, workers=8):
@@ -172,13 +201,13 @@ def rodar_verificacao(links: dict, workers=8):
 def relatorio(links: dict, resultados: dict, titulo: str):
     """Formata os resultados da verificação em relatório de terminal, agrupado por status."""
     linhas = [f"\n=== {titulo} ({len(links)} link(s) únicos) ==="]
-    contagem = {"OK": 0, "REDIRECIONA": 0, "QUEBRADO": 0, "BLOQUEADO": 0}
+    contagem = {"OK": 0, "REDIRECIONA": 0, "QUEBRADO": 0, "BLOQUEADO": 0, "TLS_INCOMPLETO": 0}
     quebrados = []
     codigos_quebrados = []
     for url, onde in sorted(links.items()):
         status, codigo, destino = resultados[url]
         contagem[status] += 1
-        marca = {"OK": "✓", "REDIRECIONA": "↪", "QUEBRADO": "✗", "BLOQUEADO": "⛔"}[status]
+        marca = {"OK": "✓", "REDIRECIONA": "↪", "QUEBRADO": "✗", "BLOQUEADO": "⛔", "TLS_INCOMPLETO": "⚠"}[status]
         linhas.append(f"  {marca} [{status}{' '+str(codigo) if codigo else ''}] {url}")
         if status == "REDIRECIONA" and destino != url:
             linhas.append(f"      → {destino}")
@@ -194,7 +223,8 @@ def relatorio(links: dict, resultados: dict, titulo: str):
         for arq, ctx in onde[:2]:
             linhas.append(f"      usado em: {arq} ({ctx})")
     linhas.append(f"\n  Resumo: {contagem['OK']} OK · {contagem['REDIRECIONA']} redirecionam · "
-                  f"{contagem['QUEBRADO']} quebrados · {contagem['BLOQUEADO']} com recusa de robô (HTTP 200)")
+                  f"{contagem['QUEBRADO']} quebrados · {contagem['BLOQUEADO']} com recusa de robô (HTTP 200) · "
+                  f"{contagem['TLS_INCOMPLETO']} com cadeia de TLS incompleta no servidor")
 
     # Salvaguarda: bloqueio de rede/proxy parece com "tudo quebrado", mas não é.
     # Domínios completamente diferentes falhando pelo MESMO código sugere bloqueio
