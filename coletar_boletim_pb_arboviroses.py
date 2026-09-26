@@ -65,7 +65,7 @@ def _hoje():
         a = _js.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
         return _dt.datetime.strptime(a, "%d/%m/%Y").date()
     except Exception:  # noqa: BLE001
-        return _dt.hoje_editorial()
+        return hoje_editorial()
 
 
 def destino_do_intersticio(corpo: bytes) -> str:

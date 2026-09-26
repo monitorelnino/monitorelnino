@@ -150,6 +150,28 @@ def main():
                 falhas.append(f"{arq.name}:{linha_n} usa date.today() (UTC no runner) — "
                               "use hoje_editorial() de coletores_base")
 
+    # 5e. (§227) `hoje_editorial` é chamada pelo nome, nunca como atributo de um módulo de data.
+    #     Esta trava nasceu de um erro meu na migração das 75 datas: a troca de `date.today()`
+    #     por `hoje_editorial()` deixou o prefixo em nove arquivos que escreviam
+    #     `_dt.date.today()`, produzindo `_dt.hoje_editorial()` — atributo que não existe.
+    #     Compilava, e **todos os autotestes passaram**: os nove estavam no ramo `except` de um
+    #     `_hoje()` que só é alcançado quando o `meta.json` não pode ser lido. Só um portão de
+    #     consistência, rodando o pipeline de verdade, mostrou.
+    #
+    #     A primeira versão desta trava tentava CHAMAR cada `_hoje()`. Não pegava nada, pelo
+    #     mesmo motivo que os autotestes não pegaram — o ramo quebrado não é alcançado no caminho
+    #     feliz. A checagem certa é estática e é esta: só `coletores_base` (e os apelidos dele)
+    #     podem prefixar o nome.
+    PREFIXO_OK = ("coletores_base.", "cb.", "_cb.", "atualizar.", "mod.", "m.")
+    for arq in sorted(list(RAIZ.glob("*.py")) + list(RAIZ.glob("scripts/*.py"))):
+        for linha_n, linha in enumerate(arq.read_text(encoding="utf-8").splitlines(), 1):
+            codigo = linha.split("#", 1)[0]
+            for m in re.finditer(r"([A-Za-z_][\w]*)\.hoje_editorial\s*\(", codigo):
+                if m.group(1) + "." not in PREFIXO_OK:
+                    falhas.append(f"{arq.relative_to(RAIZ).as_posix()}:{linha_n} chama "
+                                  f"{m.group(1)}.hoje_editorial() — o nome vem de coletores_base, "
+                                  "não de um módulo de data")
+
     # 6. O cron semanal do workflow cai no dia prometido, convertido para o fuso da redação.
     wf = RAIZ / ".github" / "workflows" / "atualizar.yml"
     if not wf.exists():

@@ -156,7 +156,7 @@ def render_post(post: dict, cabecalho: str, rodape: str, scripts: str) -> str:
 
 
 def render_feed(posts: list[dict]) -> str:
-    atual = max((p["data"] for p in posts), default=_dt.hoje_editorial().isoformat())
+    atual = max((p["data"] for p in posts), default=hoje_editorial().isoformat())
     itens = []
     for p in posts:
         itens.append(f"""  <entry>

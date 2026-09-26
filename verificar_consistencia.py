@@ -403,7 +403,7 @@ try:
     if not _cfg_p.exists():
         erro("congelamento (Errata C25): data/congelamento_defeso.json ausente")
     else:
-        _cfg = _js.load(open(_cfg_p, encoding="utf-8")); _hoje = _dt.hoje_editorial().isoformat()
+        _cfg = _js.load(open(_cfg_p, encoding="utf-8")); _hoje = hoje_editorial().isoformat()
         if _cfg["desde"] <= _hoje <= _cfg["ate"]:
             _src = open(RAIZ / "recalcular_mare.py", encoding="utf-8").read()
             def _bloco(n):
