@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-26",
- "total_pistas": 634,
+ "total_pistas": 636,
  "total_municipios": 275,
  "por_nivel": {
-  "A": 99,
+  "A": 100,
   "B": 362,
-  "C": 173
+  "C": 174
  },
  "grupos": [
   {
@@ -3963,6 +3963,54 @@
    ]
   },
   {
+   "ibge": "4103909",
+   "municipio": "Campina da Lagoa",
+   "uf": "PR",
+   "melhor_nivel": "A",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 2,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "5e453245c9",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.campinadalagoa.pr.gov.br/documentos/legislacao/142510-planos-1-2026.pdf",
+     "titulo": "PLANO MUNICIPAL DE SAÚDE DE CAMPINA DA LAGOA 2026-2029 2025",
+     "trecho": "Isso aponta para a necessidade de reforçar o acompanhamento pré-natal de alto risco para ... Sinal de Alerta Localizado: Enquanto a 11ª Regional de Saúde de Campo Mourão como um todo manteve um · número de óbitos estável (75 em 2023 e 76 em 2024), Campina da Lagoa experimentou um aumento ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "069fc8698d",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.campinadalagoa.pr.gov.br/documentos/legislacao/142510-planos-1-2026.pdf",
+     "titulo": "PLANO MUNICIPAL DE SAÚDE DE CAMPINA DA LAGOA 2026-2029 2025",
+     "trecho": "Este Plano Municipal de Saúde 2026-2029, portanto, é um convite à reflexão e à ação conjunta de gestores, profissionais de saúde, conselheiros e toda a comunidade de Campina da Lagoa, para que, juntos, possam",
+     "data": "26/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3304151",
    "municipio": "Quissamã",
    "uf": "RJ",
@@ -4847,37 +4895,6 @@
      "url": "https://arquivo.bituruna.pr.gov.br/publicacoes/download/1715/plano-municipal-de-educao",
      "titulo": "1 PLANO MUNICIPAL DE EDUCAÇÃO BITURUNA - PR SUMÁRIO",
      "trecho": "PLANO MUNICIPAL DE EDUCAÇÃO · 1 – INTRODUÇÃO .......................................................................................................................... 3",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4103909",
-   "municipio": "Campina da Lagoa",
-   "uf": "PR",
-   "melhor_nivel": "A",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 1,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "5e453245c9",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.campinadalagoa.pr.gov.br/documentos/legislacao/142510-planos-1-2026.pdf",
-     "titulo": "PLANO MUNICIPAL DE SAÚDE DE CAMPINA DA LAGOA 2026-2029 2025",
-     "trecho": "Isso aponta para a necessidade de reforçar o acompanhamento pré-natal de alto risco para ... Sinal de Alerta Localizado: Enquanto a 11ª Regional de Saúde de Campo Mourão como um todo manteve um · número de óbitos estável (75 em 2023 e 76 em 2024), Campina da Lagoa experimentou um aumento ...",
      "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -9081,6 +9098,56 @@
    ]
   },
   {
+   "ibge": "1302009",
+   "municipio": "ITAPIRANGA",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "509724bef5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "diario_consorciado",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118936_2026-08-31_5976aa056909873e4c6a3839b690952b.pdf",
+     "titulo": null,
+     "trecho": "teção e Defesa Civil \ncoordenará a atualização ou elaboração, no prazo de até 15 (quinze) \ndias, do Plano Municipal de Contingência para Estiagem, Seca, \nIncêndios Florestais, Fumaça e Eventos Associados ao El Niño \n2026/2027, contendo, no mínimo: \nI - Cenários de risco, áreas e populações vulneráveis; \nII - Níveis de alerta e critérios objetivos de acionamento; \nAmazonas , 01 de Setembro de 2026   •   Diário Oficial Eletrônico dos Municípios do E",
+     "data": "2026-09-01",
+     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cdc3639111",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://diariomunicipal.sc.gov.br/?AtoASolrDocument_page=40443&Search_page=7008&q=+categoria%3ADecretos&r=site%2Findex",
+     "titulo": "Diário Oficial dos Municípios de Santa Catarina - DOM/SC",
+     "trecho": "1. 1. 1. DECRETO Nº 122, DE 04 DE NOVEMBRO DE 2020. 1. Dispõe sobre a homologação do Plano de Contingência Municipal elaborado pelo COMITÊ MUNICIPAL DE GERENCIAMNETO DE COVID-19 NO ÂMBITO DA EDUCAÇÃO.",
+     "data": "26/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2305001",
    "municipio": "GUARACIABA DO NORTE",
    "uf": "CE",
@@ -10627,37 +10694,6 @@
      "titulo": null,
      "trecho": "nais; \n  \nCONSIDERANDO que a Fundação de Vigilância em Saúde do \nAmazonas – FVS-RCP disponibiliza o Plano de Contingência para \nEventos Climáticos Sazonais de Seca e Estiagem do Estado do \nAmazonas 2026 e a Nota Técnica Conjunta nº 016/2026/SES -\nAM/FVS-RCP, orientando  os municípios amazonenses quanto às \nmedidas de preparação e resposta; \n  \nCONSIDERANDO que a magnitude da crise de origem \nsocioambiental e climática ultrapassa a capaci",
      "data": "2026-09-14",
-     "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "1302009",
-   "municipio": "ITAPIRANGA",
-   "uf": "AM",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "509724bef5",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "diario_consorciado",
-     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118936_2026-08-31_5976aa056909873e4c6a3839b690952b.pdf",
-     "titulo": null,
-     "trecho": "teção e Defesa Civil \ncoordenará a atualização ou elaboração, no prazo de até 15 (quinze) \ndias, do Plano Municipal de Contingência para Estiagem, Seca, \nIncêndios Florestais, Fumaça e Eventos Associados ao El Niño \n2026/2027, contendo, no mínimo: \nI - Cenários de risco, áreas e populações vulneráveis; \nII - Níveis de alerta e critérios objetivos de acionamento; \nAmazonas , 01 de Setembro de 2026   •   Diário Oficial Eletrônico dos Municípios do E",
-     "data": "2026-09-01",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
     }
    ]
