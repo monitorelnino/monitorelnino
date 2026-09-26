@@ -81,7 +81,7 @@ setTimeout(() => {
   teste("cartões por estado: micro-barra do índice só nos verificados", d.querySelectorAll("#regionsSaude .tile .tile-bar:not(.tile-bar--resposta)").length === MSAUDE.resumo.verificadas);
   try {
     const go = [...d.querySelectorAll("#regionsSaude .tile")].find(t => t.dataset.uf === "GO"); go.click();
-    // 26/09/2026: a linha é uma <div>; sem papel e sem índice de tabulação, quem navega por
+    // 26/09/2026: a linha é uma caixa genérica; sem papel e sem índice de tabulação, quem navega por
     // teclado não alcança estado nenhum. O clique acima passava verde com o defeito no ar — por
     // isso a checagem do teclado fica ao lado dele, e não num portão próprio.
     teste("linha do estado é alcançável por teclado (role + tabindex)",

@@ -41,6 +41,13 @@ Verificado também fora do jsdom, em navegador de verdade: na inicial o Tab cheg
 16º passo e na de saúde no 211º (a página tem mais alvos antes), e Enter e Espaço abrem o detalhe
 nas duas, em 1280px e em 375px.
 
+**Uma armadilha para a próxima vez.** O `verificar_consistencia.py` confere equilíbrio de tags
+contando `<div` contra `</div>` na página **com o JS embutido** (`pagina_completa.ler_pagina`). O
+primeiro comentário que escrevi aqui dizia, em prosa, que a linha "sempre foi uma ‹div› com ouvinte
+de clique" — e o literal dentro do comentário entrou na contagem e reprovou o portão, sem que
+nenhuma tag de verdade estivesse aberta. A contagem é de texto, não de árvore: **não escreva nome de
+tag por extenso em comentário de `assets/js/*.js`.**
+
 ## §239 · O cabeçalho ganha nome e os 27 estados deixam de ser 27 cartões · 26/09/2026
 
 Classe **design**. Seis pedidos da editoria sobre a página inicial, aplicados no laço de design do

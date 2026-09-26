@@ -120,7 +120,7 @@ setTimeout(() => {
     tile.click();
     teste("detalhe do estado abre ao clique", q("detail").open && q("detail").innerHTML.includes("Santa Catarina"));
     q("detail").open = false;   // jsdom não implementa dialog.close(); a própria página já contorna assim
-    // 26/09/2026: a linha é uma <div>; sem papel e sem índice de tabulação, quem navega por
+    // 26/09/2026: a linha é uma caixa genérica; sem papel e sem índice de tabulação, quem navega por
     // teclado não alcança estado nenhum. O clique acima passava verde com o defeito no ar — por
     // isso a checagem do teclado fica ao lado dele, e não num portão próprio.
     teste("linha do estado é alcançável por teclado (role + tabindex)",
