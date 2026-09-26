@@ -9,6 +9,45 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §240 · A linha do estado passa a ser alcançável por teclado · 26/09/2026
+
+Classe **acessibilidade**.
+
+Achado ao conferir, a pedido da editoria, se a linha do estado continuava clicável depois do §239.
+Continuava — e o mesmo teste mostrou que **nunca foi alcançável por teclado**. A linha é uma `<div>`
+com ouvinte de clique, sem `role` e sem `tabindex`: quem navega por Tab não abria o detalhe de
+estado nenhum, na página inicial nem no MARÉ · Saúde. O defeito é **anterior** à troca de cartão por
+linha; a troca só o deixou visível.
+
+`role="button"`, `tabIndex = 0`, Enter e Espaço acionando como qualquer botão, e `aria-label` vindo
+do mesmo texto do `title` — sem ele o leitor de tela anunciaria a linha inteira campo a campo.
+
+O `:focus-visible` global desenha o contorno 2px **para fora**, e numa linha de 31px que ocupa a
+largura inteira ele sangra na linha vizinha e lê como dois filetes soltos. Desenhado para dentro
+(`outline-offset:-2px`) e com o mesmo realce do hover, o alvo do teclado ficou tão evidente quanto o
+do mouse.
+
+**Por que a checagem entrou no portão que já existia, e não num novo.** `verificar_runtime.js` já
+clicava em SC e exigia que o detalhe abrisse — e passava verde com o defeito no ar. A checagem do
+teclado fica ao lado dela, de propósito: é o mesmo comportamento, visto pelo outro dispositivo de
+entrada. O mesmo em `verificar_runtime_saude.js`. As duas foram provadas nos dois sentidos: tirar o
+`tabIndex` deixa a primeira vermelha, e tirar o acionamento no `keydown` deixa as outras duas.
+
+Detalhe de implementação do portão: jsdom não implementa `dialog.close()`, e a própria página já
+contorna isso (`if (typeof dlg.showModal === 'function') ... else dlg.open = true`). A checagem
+fecha o diálogo com `open = false` pela mesma razão.
+
+Verificado também fora do jsdom, em navegador de verdade: na inicial o Tab chega à primeira linha no
+16º passo e na de saúde no 211º (a página tem mais alvos antes), e Enter e Espaço abrem o detalhe
+nas duas, em 1280px e em 375px.
+
+**Uma armadilha para a próxima vez.** O `verificar_consistencia.py` confere equilíbrio de tags
+contando `<div` contra `</div>` na página **com o JS embutido** (`pagina_completa.ler_pagina`). O
+primeiro comentário que escrevi aqui dizia, em prosa, que a linha "sempre foi uma ‹div› com ouvinte
+de clique" — e o literal dentro do comentário entrou na contagem e reprovou o portão, sem que
+nenhuma tag de verdade estivesse aberta. A contagem é de texto, não de árvore: **não escreva nome de
+tag por extenso em comentário de `assets/js/*.js`.**
+
 ## §239 · O cabeçalho ganha nome e os 27 estados deixam de ser 27 cartões · 26/09/2026
 
 Classe **design**. Seis pedidos da editoria sobre a página inicial, aplicados no laço de design do
