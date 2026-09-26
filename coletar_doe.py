@@ -24,7 +24,7 @@ from datetime import date
 from coletores_base import (buscar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
-                            ler, gravar, rodar_autoteste, eh_suspensao_defeso)
+                            ler, gravar, rodar_autoteste, eh_suspensao_defeso, hoje_editorial)
 
 REGIOES = {"N": "AC AM AP PA RO RR TO", "NE": "AL BA CE MA PB PE PI RN SE", "CO": "DF GO MS MT",
            "SE": "ES MG RJ SP", "S": "PR RS SC"}
@@ -78,7 +78,7 @@ def iso_para_br(s: str) -> str:
 def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
     por_cod, por_nome = referencia_ibge()
     f = cfg["ufs"][uf]
-    hoje = date.today().isoformat()
+    hoje = hoje_editorial().isoformat()
     ja_registrada_hoje = f.get("ultima_tentativa") == hoje
     f["ultima_tentativa"] = hoje
     if not f.get("adaptador") or not f.get("url"):
@@ -118,7 +118,7 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
             registrar_lacuna(f"DOE/{uf}", "resposta não é JSON", canal="repositorio_estadual", camada=1, uf=uf, hash_evidencia=h)
             f["status"] = "erro: formato"; return "erro"
     else:
-        itens = [{"data": date.today().isoformat(), "url": url, "trechos": [texto[:20000]], "territorio": uf}]
+        itens = [{"data": hoje_editorial().isoformat(), "url": url, "trechos": [texto[:20000]], "territorio": uf}]
     homol = extrair_homologacoes(itens, uf)
     atos = ler("atos_resposta.json"); pistas = ler("pistas_doe.json", {"_governanca": "Pistas de DOE (v2.2.4): "
                                                                         "descoberta, nunca registro.", "itens": []})
@@ -128,7 +128,7 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         cod = por_nome.get((hm["municipio"], hm["uf"]))
         if not cod or not hm["decreto_municipal"]:
             pistas["itens"].append({**hm, "motivo": "sem número do decreto ou município não casou com IBGE",
-                                    "hash_evidencia": h, "registrado_em": date.today().isoformat()}); pist += 1
+                                    "hash_evidencia": h, "registrado_em": hoje_editorial().isoformat()}); pist += 1
             continue
         ref = por_cod[cod]; dbr = iso_para_br(hm["data"])
         chave = (ref["nome"], hm["uf"], dbr, "homologação estadual")

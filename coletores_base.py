@@ -273,15 +273,19 @@ def setor_da_url(url: str) -> str:
 
 def registrar_fonte_suspensa(url: str, corpo: bytes, padrao: str) -> None:
     """Grava a detecção (hash + 500 primeiras letras) e a contagem por UF em data/calendario/fontes_suspensas.json."""
-    import datetime as _dt
     h = hashlib.sha256(corpo).hexdigest()
     (DATA / "calendario").mkdir(parents=True, exist_ok=True)
     p = DATA / "calendario" / "fontes_suspensas.json"
     d = json.load(open(p, encoding="utf-8")) if p.exists() else {"_governanca": "Fontes oficiais que responderam com página de período eleitoral (detector de PR-N0 §1.5). Nunca 'nada localizado': fonte suspensa (defeso). A reabertura é o flag voltando a false, com data.", "fontes": {}}
-    hoje = _dt.date.today().isoformat()
-    f = d["fontes"].setdefault(url, {"primeira_deteccao": hoje, "ultima_deteccao": hoje, "padrao": padrao, "hash": h, "amostra": corpo[:2000].decode("utf-8", "replace")[:500], "suspensa": True, "setor": setor_da_url(url)})
-    f.update({"ultima_deteccao": hoje, "padrao": padrao, "hash": h, "suspensa": True, "setor": f.get("setor") or setor_da_url(url)})
-    json.dump(d, open(p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); open(p, "a", newline="\n").write("\n")
+    # §227: era `datetime.date.today()`, a data do runner em UTC. `primeira_deteccao` e
+    # `ultima_deteccao` dizem ao leitor QUANDO a fonte entrou em defeso; um dia de diferença
+    # muda a leitura de um prazo legal.
+    agora = hoje()
+    f = d["fontes"].setdefault(url, {"primeira_deteccao": agora, "ultima_deteccao": agora, "padrao": padrao, "hash": h, "amostra": corpo[:2000].decode("utf-8", "replace")[:500], "suspensa": True, "setor": setor_da_url(url)})
+    f.update({"ultima_deteccao": agora, "padrao": padrao, "hash": h, "suspensa": True, "setor": f.get("setor") or setor_da_url(url)})
+    # §227: era `json.dump(open(...))`, escrita direto no destino — a corrupção de 21/09/2026
+    # podia acontecer aqui do mesmo jeito, e este arquivo é gravado no meio de uma varredura.
+    gravar("calendario/fontes_suspensas.json", d)
     (EVID).mkdir(parents=True, exist_ok=True)
     (EVID / f"defeso_{h[:16]}.txt").write_text(corpo[:20000].decode("utf-8", "replace"), encoding="utf-8", newline="\n")
 

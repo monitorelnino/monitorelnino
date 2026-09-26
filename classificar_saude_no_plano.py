@@ -15,7 +15,7 @@ entra na fila R7 (data/saude_no_plano_revisar.json). Peso zero; nunca lida pelo 
 import json, re, sys, unicodedata
 from datetime import date
 from pathlib import Path
-from coletores_base import ler, gravar, rodar_autoteste
+from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
 
 RAIZ = Path(__file__).resolve().parent
 ROTULO = {0: "ausente", 1: "orgao_listado", 2: "resposta", 3: "vigilancia_pos", 4: "prevencao_epidemiologica", 5: "riscos_do_ciclo"}
@@ -79,11 +79,11 @@ def rodar() -> int:
         txt = p.read_text(encoding="utf-8", errors="replace")
         paginas = [b.split("\n", 1)[1] if "\n" in b else "" for b in re.split(r"\n=== página \d+ ===\n", txt)[1:]] or [txt]
         c = classificar(paginas)
-        saida.setdefault("itens", {})[h] = {**c, "url": it.get("url"), "texto_hash": it.get("texto_hash"), "paginas": len(paginas), "classificado_em": date.today().strftime("%d/%m/%Y"), "status": "leitura automática"}
+        saida.setdefault("itens", {})[h] = {**c, "url": it.get("url"), "texto_hash": it.get("texto_hash"), "paginas": len(paginas), "classificado_em": hoje_editorial().strftime("%d/%m/%Y"), "status": "leitura automática"}
         # divergência com leitura humana já confirmada (mesmo documento): fica marcada para a sessão semanal, nunca resolvida pela máquina
         conf = next((l for l in (ler("saude_no_plano.json", {}) or {}).get("leituras", []) if l.get("hash") and h.startswith(l["hash"])), None)
         div = ({"confirmada": conf.get("categoria"), "automatica": c["degrau"]} if conf and conf.get("categoria") != c["degrau"] else None)
-        fila.setdefault("fila", []).append({"hash": h, "url": it.get("url"), "degrau_auto": c["degrau"], "rotulo_auto": c["rotulo"], "pagina_citada": c["pagina_citada"], "entrou_em": date.today().strftime("%d/%m/%Y"), "status": "aguardando revisão", "divergencia": div})
+        fila.setdefault("fila", []).append({"hash": h, "url": it.get("url"), "degrau_auto": c["degrau"], "rotulo_auto": c["rotulo"], "pagina_citada": c["pagina_citada"], "entrou_em": hoje_editorial().strftime("%d/%m/%Y"), "status": "aguardando revisão", "divergencia": div})
         n += 1
     gravar("saude_no_plano_auto.json", saida); gravar("saude_no_plano_revisar.json", fila)
     print(f"saude_no_plano (auto): {n} documento(s) classificado(s) nesta rodada; {len(fila.get('fila', []))} na fila R7")

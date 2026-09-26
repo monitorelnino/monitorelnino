@@ -35,7 +35,7 @@ import hashlib, json, re, sys, unicodedata
 from collections import defaultdict
 from datetime import date
 from urllib.parse import urlparse
-from coletores_base import ler, gravar, rodar_autoteste
+from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
 
 # --- sinais literais ---------------------------------------------------------------------
 HOSTS_OFICIAIS = (r"\.gov\.br$", r"\.leg\.br$", r"\.jus\.br$", r"\.mp\.br$", r"\.def\.br$",
@@ -165,7 +165,7 @@ def anotar_e_gerar_fila() -> dict:
                             "confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. "
                             "Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. "
                             "Registro continua exigindo documento primário lido por humano (§3.2, C10)."),
-            "gerado_em": date.today().isoformat(), "total_pistas": len(d["pistas"]), "total_municipios": len(grupos),
+            "gerado_em": hoje_editorial().isoformat(), "total_pistas": len(d["pistas"]), "total_municipios": len(grupos),
             "por_nivel": {n: sum(g["niveis"][n] for g in grupos) for n in "ABC"}, "grupos": grupos}
     gravar("pistas_revisao.json", fila)
     return fila

@@ -26,7 +26,7 @@ USO
 import json, re, sys, urllib.parse
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna, ler, gravar,
-                            rodar_autoteste, referencia_ibge)
+                            rodar_autoteste, referencia_ibge, hoje_editorial)
 
 UFS = "AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO".split()
 CAPITAIS = {"AC": "Rio Branco", "AL": "Maceió", "AM": "Manaus", "AP": "Macapá", "BA": "Salvador", "CE": "Fortaleza",
@@ -46,7 +46,7 @@ RISCO_SANITARIO = {
 
 
 def semear():
-    hoje = date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     federal = {"_governanca": "Camada federal de saúde (§9.1). Reproduz documentos oficiais com órgão, data e "
                               "estatuto; 'anunciado_nao_localizado' = existência noticiada oficialmente, documento "
                               "não localizado até o corte. Nunca lido pelo cálculo do índice.",
@@ -236,7 +236,7 @@ def descobrir_calor_ms(buscar_fn=None, data: str = None) -> tuple:
     handlers = list(dict.fromkeys(re.findall(r"\(`([0-9a-f]{64})`\)", js)))
     if not handlers:
         raise ValueError("bundle do painel do MS sem handler de função interna — formato novo")
-    dia = data or date.today().strftime("%Y-%m-%d")
+    dia = data or hoje_editorial().strftime("%Y-%m-%d")
     payload = {"t": {"t": 10, "i": 0, "p": {"k": ["data"], "v": [
         {"t": 10, "i": 1, "p": {"k": ["date"], "v": [{"t": 1, "s": dia}]}, "o": 0}]}, "o": 0}, "f": 63, "m": []}
     consulta = urllib.parse.quote(json.dumps(payload, separators=(",", ":")), safe="")
@@ -308,7 +308,7 @@ def somar_series(series: list) -> dict:
 
 def coletar():
     _, por_nome = referencia_ibge()
-    sinais = ler("saude_sinais.json"); ano = date.today().year; ok = lac = 0
+    sinais = ler("saude_sinais.json"); ano = hoje_editorial().year; ok = lac = 0
     series_capitais = []   # 05/09/2026: série semanal 2024–2026 (27 capitais somadas) para o gráfico da página de Saúde
     for uf, cap in CAPITAIS.items():
         cod = por_nome.get((cap, uf))
@@ -328,11 +328,11 @@ def coletar():
             registrar_lacuna(f"InfoDengue série/{cap}-{uf}", type(e).__name__, canal="DOU", camada=1, uf=uf, municipio=cap, ibge=cod)
         if r:
             sinais["dengue_capitais"][uf] = {**r, "municipio": cap, "ibge": cod, "fonte": "modelo InfoDengue (Fiocruz/FGV)",
-                                             "url": url, "coletado_em": date.today().strftime("%d/%m/%Y"), "hash_evidencia": h}
+                                             "url": url, "coletado_em": hoje_editorial().strftime("%d/%m/%Y"), "hash_evidencia": h}
             ok += 1
         log_busca("DOU", 1, [url], "registro" if r else "pista", uf=uf, municipio=cap, ibge=cod, nivel=None,
                   n_resultados=len(dados) if isinstance(dados, list) else 0, resultados=f"InfoDengue: {r}", hash_evidencia=h)
-    hoje_br = date.today().strftime("%d/%m/%Y")
+    hoje_br = hoje_editorial().strftime("%d/%m/%Y")
     if ok:
         sinais["fontes"]["infodengue"]["status"] = "coletado"
         sinais["fontes"]["infodengue"]["ultima_coleta_ok"] = hoje_br
@@ -383,7 +383,7 @@ def coletar():
                          strings=[CALOR_MS_SITIO])
         print(f"[aviso] excesso de calor (MS) não coletado — {motivo}")
 
-    sinais["gerado_em"] = date.today().strftime("%d/%m/%Y")
+    sinais["gerado_em"] = hoje_editorial().strftime("%d/%m/%Y")
     gravar("saude_sinais.json", sinais)
     print(f"InfoDengue: {ok} capitais coletadas, {lac} lacunas")
     return 0

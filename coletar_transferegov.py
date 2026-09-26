@@ -31,7 +31,7 @@ import csv, hashlib, io, json, re, sys, urllib.request, zipfile
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de
+from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de, hoje_editorial
 
 RAIZ = Path(__file__).resolve().parent
 FIN = RAIZ / "data" / "financiamento"
@@ -150,7 +150,7 @@ def montar_serie(semanas: dict, rotas_ids: list, ano: int = 2026) -> list:
     """Uma linha por semana do ano (segunda a segunda) com todas as rotas: r5 coletada, demais 0; total = soma."""
     out = []
     d = date(ano, 1, 1); d -= timedelta(days=d.weekday())
-    hoje = date.today()
+    hoje = hoje_editorial()
     while d.year <= ano and d <= hoje:
         linha = {"semana": d.isoformat()}
         for rid in rotas_ids:
@@ -172,7 +172,7 @@ def programas_faf(dados) -> list:
 
 # ------------------------------------ coleta ------------------------------------
 def coletar() -> int:
-    hoje = date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     consultas = ler("financiamento/consultas.json", {"_governanca": "", "consultas": []}) or {"consultas": []}
     try:
         carga = _baixar(REPO + "data_carga_siconv.txt", 60).decode("utf-8", "replace").replace("\ufeff", "").strip()[:19]
@@ -184,7 +184,7 @@ def coletar() -> int:
     semanas, por_uf_r5, itens = cruzar_convenios(_csv_do_zip(bc), propostas, 2026)
     for nome, b in (("siconv_proposta.csv.zip", bp), ("siconv_convenio.csv.zip", bc)):
         # mesmo esquema de registrar_consulta() em coletar_financiamento.py (a página lê parametros/itens/hash_resposta)
-        consultas["consultas"].append({"endpoint": REPO + nome, "parametros": {"carga": carga}, "data": date.today().isoformat(),
+        consultas["consultas"].append({"endpoint": REPO + nome, "parametros": {"carga": carga}, "data": hoje_editorial().isoformat(),
                                        "hash_resposta": hashlib.sha256(b).hexdigest(), "itens": None, "bytes": len(b), "fonte": "TransfereGov — Dados Abertos (sem chave)"})
     # 25/09/2026 (§219): o filtro depende dos NOMES das colunas do TransfereGov (ANO_PROP,
     # NATUREZA_JURIDICA, COD_MUNIC_IBGE, DIA_ASSIN_CONV). Se algum for renomeado, nenhuma
@@ -224,7 +224,7 @@ def coletar() -> int:
     try:
         faf = json.loads(_baixar(API_FAF, 120).decode("utf-8", "replace"))
         rel = programas_faf(faf)
-        consultas["consultas"].append({"endpoint": API_FAF, "parametros": {}, "data": date.today().isoformat(), "hash_resposta": hashlib.sha256(json.dumps(faf, sort_keys=True).encode()).hexdigest(),
+        consultas["consultas"].append({"endpoint": API_FAF, "parametros": {}, "data": hoje_editorial().isoformat(), "hash_resposta": hashlib.sha256(json.dumps(faf, sort_keys=True).encode()).hexdigest(),
                                        "itens": len(faf), "bytes": None, "fonte": "TransfereGov — API Fundo a Fundo (sem chave)"})
         gravar("financiamento/programas_faf_2026.json", {"_governanca": "Programas fundo a fundo de 2026 (API pública do TransfereGov) cujo nome/objetivo cita defesa civil ou desastre. Vocabulário da fonte.", "gerado_em": hoje, "total_programas_2026": len(faf), "relevantes": rel})
     except Exception as e:  # noqa: BLE001

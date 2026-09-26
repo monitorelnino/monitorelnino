@@ -55,7 +55,7 @@ import urllib.parse
 from datetime import date
 
 from coletores_base import (abrir_lote_log, buscar, descarregar_lote_log, fechar_lote_log,
-                            ler, log_busca, registrar_lacuna, rodar_autoteste, sha256)
+                            ler, log_busca, registrar_lacuna, rodar_autoteste, sha256, hoje_editorial)
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "financiamento" / "municipios" / "despesa_182.json"
@@ -96,7 +96,7 @@ CAPITAL_IBGE = {
 
 
 def hoje() -> str:
-    return date.today().strftime("%d/%m/%Y")
+    return hoje_editorial().strftime("%d/%m/%Y")
 
 
 def parse_dca_182(dados, exercicio: int = None) -> dict:

@@ -20,7 +20,7 @@ triagem, fechando a janela de retenção de dado pessoal na máquina do editor
 fonte de verdade para contato; a fila local é descartável por desenho.
 """
 import datetime, json, os, pathlib, sys, urllib.parse, urllib.request
-from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 DOMINIOS_OFICIAIS = (".gov.br", "diariomunicipal.com.br", "doe.", "dom.", "in.gov.br")
@@ -47,7 +47,7 @@ def main() -> int:
 
     destino = RAIZ / "fila_contribuicoes"
     destino.mkdir(exist_ok=True)
-    hoje = datetime.date.today().isoformat()
+    hoje = hoje_editorial().isoformat()
     fila, incompletas = [], []
     for s in subs:
         d = s.get("data", {})

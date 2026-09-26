@@ -24,7 +24,7 @@ visível no card (§155) até o documento aparecer. Tudo tolerante a falha: rota
 USO   python seguir_pistas.py [--limite 20] [--refazer-dias 7]   ·   python seguir_pistas.py --autoteste
 """
 import argparse, datetime, hashlib, json, re, sys, urllib.parse, urllib.request
-from coletores_base import ler, gravar, rodar_autoteste, ua_de
+from coletores_base import ler, gravar, rodar_autoteste, ua_de, hoje_editorial
 from monitorar_imprensa_regional import parece_fonte_oficial
 
 STATUS_PENDENTE = "pista — promover a registro exige documento primário lido por humano"
@@ -249,7 +249,7 @@ if __name__ == "__main__":
         web = buscar_searxng
     except Exception:  # noqa: BLE001
         web = None
-    e = seguir(fila, datetime.date.today().strftime("%d/%m/%Y"), consultar_qd_=qd, buscar_web_=web,
+    e = seguir(fila, hoje_editorial().strftime("%d/%m/%Y"), consultar_qd_=qd, buscar_web_=web,
                cobertura_qd=cob, limite=a.limite, refazer_dias=a.refazer_dias)
     gravar("pistas_imprensa.json", fila)
     print(f"seguimento: {e['seguidas']} notícia(s) seguida(s) · {e['candidatos']} candidato(s) · {e['novas']} pista(s) nova(s) "

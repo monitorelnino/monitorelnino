@@ -118,7 +118,7 @@ import http.cookiejar, io, json, pathlib, re, subprocess, sys, time, unicodedata
 from datetime import date, timedelta
 from coletores_base import (UA, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste,
-                            CANAIS_ATO)
+                            CANAIS_ATO, hoje_editorial)
 from classificar_pista_civil import triagem_completa
 
 # Só slugs confirmados por navegação/fetch reais nesta sessão (20-22/09/2026). AL fica de
@@ -499,7 +499,7 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
             for p in pistas:
                 p.update({"uf": uf, "origem": "diario_consorciado", "fonte": nome_fonte,
                           "data": dia.isoformat(), "url": ed["url_pdf"], "hash_evidencia": h,
-                          "registrado_em": date.today().isoformat(), **triagem_completa(p["trecho"]),
+                          "registrado_em": hoje_editorial().isoformat(), **triagem_completa(p["trecho"]),
                           "status": "pista — atribuição de município por proximidade no PDF consorciado; "
                                     "promover a registro exige documento primário lido por humano"})
                 pistas_todas.append(p)
@@ -867,7 +867,7 @@ if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(autoteste())
     a = sys.argv
-    desde = a[a.index("--desde") + 1] if "--desde" in a else (date.today() - timedelta(days=30)).isoformat()
-    ate = a[a.index("--ate") + 1] if "--ate" in a else date.today().isoformat()
+    desde = a[a.index("--desde") + 1] if "--desde" in a else (hoje_editorial() - timedelta(days=30)).isoformat()
+    ate = a[a.index("--ate") + 1] if "--ate" in a else hoje_editorial().isoformat()
     uf = a[a.index("--uf") + 1] if "--uf" in a else ""
     sys.exit(coletar(desde, ate, apenas_uf=uf))

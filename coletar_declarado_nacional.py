@@ -63,7 +63,7 @@ import io, sys
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge,
-                            ler, gravar, rodar_autoteste)
+                            ler, gravar, rodar_autoteste, hoje_editorial)
 
 FONTES_PADRAO = {
     "_governanca": "Fontes da camada declarada nacional (v2.2.4, §3.9). Sem url confirmada → lacuna.",
@@ -296,7 +296,7 @@ def coletar() -> int:
                                 resultado=f"{casados} municípios na base")
         log_busca("DOU", 1, [f["url"]], "registro", nivel="nacional", n_resultados=casados,
                   resultados=f"{f['nome']}: {casados} municípios casados com IBGE", hash_evidencia=h)
-        f["status"] = "ok"; f["ultima_coleta"] = date.today().isoformat()
+        f["status"] = "ok"; f["ultima_coleta"] = hoje_editorial().isoformat()
         print(f"{f['nome']}: {casados} municípios")
     gravar("fontes_consultadas.json", livro_fatos)
     gravar("fontes_declarado.json", cfg); gravar("declarado_nacional.json", reg)

@@ -27,7 +27,7 @@ Parsers provados por fixture (--autoteste). Uso: --semear · --autoteste · (col
 """
 import hashlib, json, os, pathlib, sys, time, urllib.error, urllib.parse
 from datetime import date
-from coletores_base import buscar, log_busca, registrar_lacuna, ler, gravar, rodar_autoteste, referencia_ibge, sha256, ua_de
+from coletores_base import buscar, log_busca, registrar_lacuna, ler, gravar, rodar_autoteste, referencia_ibge, sha256, ua_de, hoje_editorial
 
 RAIZ = pathlib.Path(__file__).parent; FIN = RAIZ / "data" / "financiamento"
 API = "https://api.portaldatransparencia.gov.br/api-de-dados"
@@ -73,7 +73,7 @@ ROTAS = [
 
 
 def semear():
-    hoje = date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     _g("rotas.json", {"_governanca": "Modelo das sete rotas + estadual (§7.8, §28 da METODOLOGIA). Ordem e cores fixas em todas as figuras. "
                                      "Cláusula de neutralidade: descreve rotas existentes, não recomenda desenho de política.", "corte": hoje, "rotas": ROTAS})
     fin_uf = ler("financiamento_uf.json", {}) or {}; rec = ler("recursos_uf.json", {}) or {}; tr = ler("transferencias.json", {}) or {}
@@ -115,7 +115,7 @@ def semear():
 
 def registrar_consulta(endpoint, params, bruto, n):
     c = _l("consultas.json", {"consultas": []})
-    c["consultas"].append({"endpoint": endpoint, "parametros": params, "data": date.today().isoformat(), "hash_resposta": sha256(bruto), "itens": n, "bytes": len(bruto)})
+    c["consultas"].append({"endpoint": endpoint, "parametros": params, "data": hoje_editorial().isoformat(), "hash_resposta": sha256(bruto), "itens": n, "bytes": len(bruto)})
     _g("consultas.json", c)
 
 
@@ -175,7 +175,7 @@ def coletar(uf=None):
     por_cod, _ = referencia_ibge(); alvos = [c for c, r in por_cod.items() if (not uf or r["uf"] == uf)][:60]
     itens = []; ok = lac = 0
     for cod in alvos:
-        params = {"codigoIBGE": cod, "ano": date.today().year, "pagina": 1, "itens": 100}
+        params = {"codigoIBGE": cod, "ano": hoje_editorial().year, "pagina": 1, "itens": 100}
         url = f"{API}/transferencias-voluntarias?{urllib.parse.urlencode(params)}"
         try:
             req = urllib.request.Request(url, headers={"chave-api-dados": chave, "User-Agent": ua_de("financiamento")})

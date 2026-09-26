@@ -6,6 +6,10 @@ citação original preservada em data/pistas_imprensa.json (status "rebaixado_c1
 e errata pública em data/erratas_v224.json com o efeito na nota. Correção de dado,
 não de método (C6): permitida no defeso. Idempotente."""
 import json, sys, datetime
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
+# em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
+# leitor brasileiro viu.
+from coletores_base import hoje_editorial  # noqa: E402
 D = "data/"; PONT = {"plano", "plano_antigo", "plano_elaboracao", "coberto_estadual",
         "plano_novo", "plano_readaptado", "plano_recorrente"}  # §202: escada municipal
 def j(n): return json.load(open(D + n, encoding="utf-8"))
@@ -14,7 +18,7 @@ def w(n, o):
 mun = j("municipios.json"); pistas = j("pistas_imprensa.json"); pistas.setdefault("pistas", [])
 try: err = j("erratas_v224.json")
 except FileNotFoundError: err = []
-hoje = datetime.date.today().strftime("%d/%m/%Y"); n = 0
+hoje = hoje_editorial().strftime("%d/%m/%Y"); n = 0
 for m in mun:
     if m["categoria"] in PONT and m.get("canal") == "imprensa":
         pistas["pistas"].append({"municipio": m["nome"], "uf": m["uf"], "origem": "rebaixamento C10", "categoria_anterior": m["categoria"],

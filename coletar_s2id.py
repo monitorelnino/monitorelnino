@@ -27,7 +27,7 @@ from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_la
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, sha256,
                             parse_busca_dou, varrer_busca_dou, FormatoDoDOUMudou, RAIZ,
-                            abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro)
+                            abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro, hoje_editorial)
 
 FONTES = {
     "s2id": {"nome": "S2iD — Sistema Integrado de Informações sobre Desastres", "url": None,
@@ -598,4 +598,4 @@ if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(autoteste())
     desde = sys.argv[sys.argv.index("--desde") + 1] if "--desde" in sys.argv else "2026-06-29"
-    sys.exit(coletar(desde, date.today().isoformat()))
+    sys.exit(coletar(desde, hoje_editorial().isoformat()))

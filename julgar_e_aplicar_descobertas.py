@@ -60,7 +60,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import ua_de
+from coletores_base import ua_de, hoje_editorial
 from classificador_natureza import classificar, citacao_completa, extrair_data, RE_NUMERO_ATO
 from verificar_recorrencia_uf import checar_recorrencia, registrar_no_historico, REGUA_ANTECIPACAO_RECORRENTE
 
@@ -709,7 +709,7 @@ if __name__ == "__main__":
         print("Sem fila de pistas (data/pistas_imprensa.json não existe ainda) — nada a fazer.")
         sys.exit(0)
 
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     fila = json.load(open(PISTAS_IMPRENSA, encoding="utf-8"))
     pendentes = [p for p in fila["pistas"] if p.get("status") == "pendente_confirmacao_documento"]
     resultados = {"APLICADA": 0, "DESCARTADA": 0, "FILA_HUMANA": 0, "REVERTIDA": 0}

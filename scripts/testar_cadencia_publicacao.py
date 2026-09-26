@@ -139,6 +139,17 @@ def main():
                 falhas.append("coletores_base.hoje() voltou a usar date.today() (UTC no runner) — "
                               "é o carimbo de data de todos os coletores")
 
+    # 5d. (§227) NENHUM módulo da raiz volta a datar pelo runner. Antes de 26/09 havia **75
+    #     ocorrências de `date.today()` em 41 arquivos**, vinte e duas delas gravando data dentro
+    #     de `data/` — `registrado_em`, `consultado_em`, `coletado_em`, `gerado_em`, `ocr_em`,
+    #     `decidido_em`. Todas migraram para `hoje_editorial()`. A trava vale para a raiz inteira
+    #     porque o defeito nunca esteve em um arquivo: esteve na ausência de um lugar único.
+    for arq in sorted(RAIZ.glob("*.py")):
+        for linha_n, linha in enumerate(arq.read_text(encoding="utf-8").splitlines(), 1):
+            if "date.today()" in linha.split("#", 1)[0]:
+                falhas.append(f"{arq.name}:{linha_n} usa date.today() (UTC no runner) — "
+                              "use hoje_editorial() de coletores_base")
+
     # 6. O cron semanal do workflow cai no dia prometido, convertido para o fuso da redação.
     wf = RAIZ / ".github" / "workflows" / "atualizar.yml"
     if not wf.exists():

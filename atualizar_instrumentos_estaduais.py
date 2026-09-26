@@ -42,7 +42,7 @@ import re
 import sys
 import unicodedata
 from pathlib import Path
-from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -216,7 +216,7 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
     """Compara os achados do repositório contra a base e devolve propostas."""
     cfg = REPOSITORIOS[uf]
     base_uf = {norm(m["nome"]): m for m in municipios if m["uf"] == uf}
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     propostas = []
     for a in achados:
         chave = norm(a["nome"])

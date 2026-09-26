@@ -17,6 +17,8 @@ pedidos enviados até 05/10/2026.
 """
 import json, os, pathlib, sys
 from datetime import date, timedelta
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC).
+from coletores_base import hoje_editorial  # noqa: E402
 
 RAIZ = pathlib.Path(__file__).parent
 # 03/09/2026 (decisão editorial): pedidos e textos de LAI NUNCA no site nem no repositório público —
@@ -123,7 +125,7 @@ def gerar():
                     "data_resposta": None, "resultado": None, "url_evidencia": None})
     reg = {"formato": "§3.7 do doc de redesenho 02/09/2026 — registro público dos pedidos de LAI do Monitor; "
                       "'a_enviar' = texto gerado, envio humano pendente (Fala.BR exige pessoa física identificada)",
-           "gerado_em": date.today().isoformat(), "pedidos": pedidos}
+           "gerado_em": hoje_editorial().isoformat(), "pedidos": pedidos}
     json.dump(reg, open(SAIDA.parent / "lai_pedidos.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     print(f"LAI: {len(pedidos)} pedidos gerados em {SAIDA} (27 defesa civil + 27 saúde + 1 Carro-Pipa + 1 Cadastro Nacional); registro em data/lai_pedidos.json")
 
@@ -141,7 +143,7 @@ def registrar(uf, tipo, protocolo, data_envio):
 
 
 def autoteste():
-    from coletores_base import rodar_autoteste
+    from coletores_base import rodar_autoteste, hoje_editorial
     def t1(): gerar(); return len(list(SAIDA.glob("*.txt"))) == 56
     def t2(): r = json.load(open(SAIDA.parent / "lai_pedidos.json", encoding="utf-8")); return len(r["pedidos"]) == 56 and all(p["protocolo"] is None for p in r["pedidos"])
     def t3(): return "12.527" in (SAIDA / "SC_defesa_civil.txt").read_text(encoding="utf-8") and "Santa Catarina" in (SAIDA / "SC_saude.txt").read_text(encoding="utf-8")

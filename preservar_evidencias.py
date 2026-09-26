@@ -13,7 +13,7 @@ não altera nenhum campo de julgamento — só acrescenta prova.
 import hashlib, io, mimetypes, re, sys, urllib.error
 from pathlib import Path
 from coletores_base import (buscar, buscar_com_procedencia, preservar_evidencia, ler, gravar,
-                            registrar_lacuna, log_busca, EVID, redigir_dados_pessoais)
+                            registrar_lacuna, log_busca, EVID, redigir_dados_pessoais, hoje_editorial)
 
 LIMITE_PDF_COPIA = 5 * 1024 * 1024   # cópia do binário só até 5 MB; o TEXTO extraído é guardado sempre
 
@@ -128,7 +128,7 @@ def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
             falhas += 1; registrar_lacuna(f"leitura de PDF {u[:60]}", "PDF sem texto extraível (imagem?)", canal="DOM", camada=2, strings=[u]); continue
         th = gravar_texto(h, paginas)
         item = itens.setdefault(h, {"url": u, "origem": it.get("origem"), "preservado_em": None, "tamanho": len(bruto), "arquivo": None, "wayback": None})
-        item.update({"texto_arquivo": f"evidencias/{h}.txt", "paginas": len(paginas), "texto_hash": th, "lido_em": __import__("datetime").date.today().isoformat(), "caracteres": sum(len(t) for t in paginas),
+        item.update({"texto_arquivo": f"evidencias/{h}.txt", "paginas": len(paginas), "texto_hash": th, "lido_em": __import__("datetime").hoje_editorial().isoformat(), "caracteres": sum(len(t) for t in paginas),
                      # §227: por onde o documento veio. Sem o campo, um plano lido no sítio
                      # do órgão e um lido numa captura de arquivo ficavam iguais no banco.
                      "procedencia_do_documento": procedencia})
@@ -286,7 +286,7 @@ def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) ->
             continue
         oh = gravar_ocr(h, textos)
         it.update({"ocr_arquivo": f"evidencias/{h}.ocr.txt", "ocr_hash": oh, "ocr_paginas": len(textos),
-                   "ocr_caracteres": caracteres, "ocr_em": date.today().isoformat(),
+                   "ocr_caracteres": caracteres, "ocr_em": hoje_editorial().isoformat(),
                    "ocr_motor": f"tesseract {versao} · modelo {idioma} · {OCR_DPI} DPI"})
         log_busca("site_municipal", 2, [u], "registro", nivel=None, hash_evidencia=h,
                   resultados=(f"cópia legível por OCR preservada: {len(textos)} página(s), {caracteres} caractere(s), "
@@ -366,7 +366,7 @@ def reconferir(limite: int = 200) -> int:
             falhas += 1; continue
         n += 1; h2 = __import__("hashlib").sha256(bruto).hexdigest()
         if h2 != h:
-            alt += 1; hoje = date.today().strftime("%d/%m/%Y")
+            alt += 1; hoje = hoje_editorial().strftime("%d/%m/%Y")
             it = idx["itens"].setdefault(h, {}); it["alterado_em"] = hoje; it["hash_novo"] = h2; it["municipio"] = f"{m['nome']}/{m['uf']}"
             log_busca(m.get("canal") or "DOM", 2, [m["url"]], "pista", uf=m["uf"], municipio=m["nome"],
                       resultados=f"documento-fonte alterado em {hoje}: hash {h[:12]}… → {h2[:12]}… (categoria mantida; julgamento humano)")

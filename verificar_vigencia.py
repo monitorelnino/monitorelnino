@@ -16,6 +16,10 @@ Efeito no site: o campo `vigencia` acompanha o registro na tabela e na consulta.
 Uso: python3 verificar_vigencia.py [--check]
 """
 import datetime, json, pathlib, re, sys
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
+# em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
+# leitor brasileiro viu.
+from coletores_base import hoje_editorial  # noqa: E402
 
 RAIZ = pathlib.Path(__file__).parent
 LIMIAR = 180
@@ -50,7 +54,7 @@ def main():
     if "--check" in sys.argv:
         n = sum(1 for m in mun if m.get("categoria") == "decreto" and "vigencia" in m)
         print(f"OK vigência automática presente em {n} decretos"); return 0
-    hoje = datetime.date.today()
+    hoje = hoje_editorial()
     ativo = vencido = indet = 0
     for m in mun:
         if m.get("categoria") != "decreto": continue

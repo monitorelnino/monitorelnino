@@ -28,7 +28,7 @@ Anos históricos são baixados uma vez e reaproveitados enquanto o MD5 publicado
 import csv, hashlib, io, json, re, sys, unicodedata, zipfile
 from collections import defaultdict
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste
+from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial
 from coletar_srag_gripe import canal_endemico, vazar_incompletas, ANOS_CANAL, SE_INCOMPLETAS
 
 RAIZ = Path(__file__).resolve().parent
@@ -53,7 +53,7 @@ def _hoje():
         a = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
         return _dt.datetime.strptime(a, "%d/%m/%Y").date()
     except Exception:  # noqa: BLE001
-        return _dt.date.today()
+        return _dt.hoje_editorial()
 
 
 def _plano(t: str) -> str:

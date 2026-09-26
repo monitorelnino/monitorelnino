@@ -36,7 +36,7 @@ negativos"): a máquina prepara e ordena; quem decide é a pessoa, pista a pista
 import argparse, datetime, hashlib, json, re, sys, unicodedata
 from urllib.parse import urlparse
 from collections import defaultdict
-from coletores_base import ler, gravar, rodar_autoteste
+from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
 from classificador_natureza import classificar, citacao_completa
 from classificar_pista_civil import triagem_completa
 from monitorar_imprensa_regional import parece_fonte_oficial
@@ -119,7 +119,7 @@ def portao_automatico(p: dict, prep: dict, janela: str):
         return False, f"data do ato inválida ({prep.get('data_ato')})"
     if d_ato.year < ANO_MIN_AUTOMATICO:
         return False, f"ato de {m.group(3)} — pode ser edição anterior; decisão humana"
-    hoje_d = datetime.date.today()
+    hoje_d = hoje_editorial()
     if d_ato > hoje_d:
         return False, f"data do ato no futuro ({prep.get('data_ato')}) — leitura errada provável"
     digs = re.sub(r"\D", "", prep.get("numero") or "")
@@ -243,7 +243,7 @@ def decidir(fila: dict, pid: str, decisao: str, motivo: str = "", ato: str = "",
             backup=juiz.backup_dados, portoes=juiz.rodar_portoes, restaurar=juiz.restaurar_dados) -> dict:
     p = next((x for x in fila["pistas"] if x.get("id") == pid), None)
     if p is None: return {"ok": False, "motivo": f"id {pid} não encontrado"}
-    reg = {"decisao": decisao, "motivo": motivo, "decidido_em": hoje or datetime.date.today().strftime("%d/%m/%Y")}
+    reg = {"decisao": decisao, "motivo": motivo, "decidido_em": hoje or hoje_editorial().strftime("%d/%m/%Y")}
     if decisao == "rejeitar":
         p["status"] = "rejeitada_humana"; p["decisao_humana"] = reg
         return {"ok": True, "status": p["status"]}
@@ -286,7 +286,7 @@ def relatorio(fila: dict) -> str:
     pend = [p for p in fila["pistas"] if pendente(p)]
     dec = [p for p in fila["pistas"] if not pendente(p)]
     L = [f"# Fila de pistas — revisão humana", "",
-         f"Gerado em {datetime.date.today().strftime('%d/%m/%Y')} · {len(pend)} pendente(s) · {len(dec)} decidida(s) · "
+         f"Gerado em {hoje_editorial().strftime('%d/%m/%Y')} · {len(pend)} pendente(s) · {len(dec)} decidida(s) · "
          f"A={sum(1 for p in pend if p.get('nivel_confianca')=='A')} B={sum(1 for p in pend if p.get('nivel_confianca')=='B')} "
          f"C={sum(1 for p in pend if p.get('nivel_confianca')=='C')}", "",
          "Como decidir: `python3 revisar_pistas.py --aceitar ID --ato \"Decreto nº X\" --data dd/mm/aaaa [--url-documento …]` · "
@@ -483,7 +483,7 @@ if __name__ == "__main__":
     a = ap.parse_args()
     if a.autoteste: sys.exit(autoteste())
     fila = ler("pistas_imprensa.json") or {"pistas": []}
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     novos = garantir_ids(fila)
     if a.preparar:
         print("preparação:", preparar(fila, hoje, limite=a.limite))

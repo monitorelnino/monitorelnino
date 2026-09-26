@@ -46,7 +46,7 @@ Variáveis de ambiente: NETLIFY_AUTH_TOKEN e NETLIFY_SITE_ID. Sem elas, o
 script pula com aviso e código 0 (não bloqueia o job).
 """
 import datetime, json, os, pathlib, re, sys, unicodedata, urllib.request
-from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 ARQ_MUN = RAIZ / "data" / "municipios.json"
@@ -187,7 +187,7 @@ def main():
     municipios = json.load(open(ARQ_MUN))
     pontos = json.load(open(ARQ_PONTOS))
     ref = {(norm(r["nome"]), r["uf"]): r for r in json.load(open(ARQ_REF))}
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     aprovadas = mudou = reservadas = 0
 
     def recusa(sid, uf, municipio, motivo):
