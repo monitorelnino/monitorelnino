@@ -461,8 +461,8 @@ def contexto_tls():
         return None
 
 
-def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
-    """GET simples com User-Agent do projeto. Levanta a exceção — quem chama decide
+def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
+    """GET simples com User-Agent do projeto, UMA tentativa (ver `buscar`, que repete). Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
     contra os padrões de página de defeso e registra a fonte como suspensa (PR-N0 §1.5).
 
@@ -496,6 +496,64 @@ def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
             except Exception:  # noqa: BLE001
                 pass
     return corpo
+
+
+# Quanto esperar antes de repetir, por status HTTP. Nasceu local em coletar_diarios_municipais.py
+# em 25/09/2026, depois de uma medição na varredura nacional: **63 dos 505 primeiros municípios**
+# viraram lacuna por `HTTP 503 Service Unavailable` — 12 %, e nenhum deles bloqueio de acesso.
+# Indisponibilidade temporária é a fonte dizendo "tente mais tarde", e a resposta certa a isso é
+# tentar mais tarde.
+#
+# 26/09/2026 (§226): a política sobe para cá porque a lição valia para os dezesseis coletores e
+# estava aplicada em UM. Os outros quinze chamavam `buscar()` direto e desistiam na primeira
+# tentativa — mesmo defeito de escopo do §213 e do §222, agora numa regra de rede em vez de num
+# vocabulário. Quem faz o pedido é quem tem de saber esperar, e o pedido é feito aqui.
+ESPERAS_429 = (30,)        # limite de taxa: a fonte manda esperar, e esperar é a resposta certa
+ESPERAS_5XX = (5, 15)      # indisponibilidade temporária: "tente mais tarde", crescendo
+
+
+def esperas_para(codigo: int) -> tuple:
+    """Sequência de esperas, em segundos, antes de repetir um pedido que devolveu `codigo`.
+    Vazia quando repetir não ajuda. Função pura.
+
+    4xx (fora 429) não repete: consulta errada não melhora com repetição, e repetir só dobraria a
+    carga sobre APIs públicas mantidas por projetos sem fins lucrativos. 429 repete UMA vez, depois
+    da espera que a fonte pede — respeitar um limite de taxa é honrar a espera, não desistir na
+    hora nem insistir sem parar."""
+    if codigo == 429:
+        return ESPERAS_429
+    if codigo >= 500:
+        return ESPERAS_5XX
+    return ()
+
+
+def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dormir=None) -> bytes:
+    """`buscar_uma_vez` com a espera do §226: repete quando a fonte pede tempo (429 e 5xx) e sobe
+    na hora quando repetir não ajudaria (4xx, muro de robô, erro de rede).
+
+    É a porta por onde todo coletor pede rede, e a correção entra aqui de propósito: dezesseis
+    coletores passam a esperar sem mudar uma linha de chamada em nenhum deles. Quem mocka `buscar`
+    num autoteste continua funcionando — o mock substitui a função inteira, repetição incluída.
+
+    `buscar_fn` e `dormir` existem para o autoteste, que precisa provar a espera sem rede e sem
+    esperar de verdade."""
+    _dormir = dormir or time.sleep
+
+    def uma_vez():
+        if buscar_fn is not None:
+            return buscar_fn(url, timeout=timeout)
+        return buscar_uma_vez(url, timeout=timeout, origem=origem)
+
+    restantes = None
+    while True:
+        try:
+            return uma_vez()
+        except urllib.error.HTTPError as e:
+            if restantes is None:
+                restantes = list(esperas_para(e.code))
+            if not restantes:
+                raise
+            _dormir(restantes.pop(0))
 
 
 # Códigos em que o servidor NÃO falhou: ele respondeu, e a resposta foi "não". Cair na

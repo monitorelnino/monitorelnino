@@ -174,26 +174,94 @@ def t_geobloqueio_com_200_e_recusa():
     return cb.detectar_muro_de_robo(corpo) == "connection denied by geolocation"
 
 
+class _RespostaFalsa:
+    """O mínimo que `buscar_uma_vez` usa de uma resposta HTTP: gerenciador de contexto,
+    `.read()` e `.headers.get("Content-Type")`."""
+
+    def __init__(self, corpo: bytes, tipo: str = "text/html"):
+        self._corpo, self.headers = corpo, {"Content-Type": tipo}
+
+    def read(self, *a):
+        return self._corpo
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
+
+
+def _com_rede_falsa(corpo: bytes, tipo: str = "text/html"):
+    """Troca `urlopen` por uma resposta fixa. Devolve (restaurar, chamadas)."""
+    import urllib.request
+    chamadas = []
+    real = urllib.request.urlopen
+
+    def falso(req, timeout=None, context=None):
+        chamadas.append(getattr(req, "full_url", req))
+        return _RespostaFalsa(corpo, tipo)
+
+    urllib.request.urlopen = falso
+    return (lambda: setattr(urllib.request, "urlopen", real)), chamadas
+
+
 def t_buscar_levanta_muro_de_robo():
-    """buscar() precisa LEVANTAR no muro, antes de qualquer preservação — pela fonte."""
-    import ast
-    fonte = (RAIZ / "coletores_base.py").read_text(encoding="utf-8")
-    for no in ast.walk(ast.parse(fonte)):
-        if isinstance(no, ast.FunctionDef) and no.name == "buscar":
-            corpo = ast.get_source_segment(fonte, no) or ""
-            return "detectar_muro_de_robo(" in corpo and "raise MuroDeRobo(" in corpo
-    return False
+    """buscar() LEVANTA no muro de robô, antes de qualquer preservação.
+
+    26/09/2026 (§226): este teste lia o TEXTO-FONTE da função `buscar` e procurava as chamadas
+    dentro dela. Quando a espera do §226 entrou e `buscar` passou a envolver `buscar_uma_vez`, o
+    teste reprovou sem que nada tivesse quebrado — o terceiro caso do mesmo padrão nesta base.
+    Agora prova comportamento: com a rede falsa devolvendo um muro, `buscar` tem de levantar."""
+    _limpo()
+    restaurar, _ = _com_rede_falsa(MURO_IMPERVA)
+    try:
+        cb.robots_de("muro.exemplo", lambda h, timeout=0: (200, ROBOTS_LIVRE))
+        try:
+            cb.buscar("https://muro.exemplo/doc.html")
+            return False                              # entregou o muro como conteúdo: proibido
+        except cb.MuroDeRobo:
+            pass
+        # e o documento de verdade, no mesmo caminho, passa
+        restaurar()
+        restaurar2, _ = _com_rede_falsa(DOCUMENTO)
+        try:
+            return cb.buscar("https://muro.exemplo/doc.html") == DOCUMENTO
+        finally:
+            restaurar2()
+    finally:
+        try:
+            restaurar()
+        except Exception:                             # noqa: BLE001 — já restaurado acima
+            pass
+        _limpo()
 
 
-def t_buscar_declara_a_regra_no_codigo():
-    """buscar() precisa consultar robots_de e registrar o acesso contra o robots — pela fonte."""
-    import ast
-    fonte = (RAIZ / "coletores_base.py").read_text(encoding="utf-8")
-    for no in ast.walk(ast.parse(fonte)):
-        if isinstance(no, ast.FunctionDef) and no.name == "buscar":
-            corpo = ast.get_source_segment(fonte, no) or ""
-            return "robots_de(" in corpo and "_respeitar_ritmo(" in corpo and "registrar_acesso_contra_robots(" in corpo
-    return False
+def t_buscar_consulta_robots_respeita_ritmo_e_registra():
+    """As três partes da política do §185, provadas pelo efeito e não pelo texto do código:
+    o robots é consultado, o relógio do host é marcado, e o acesso contra o robots deixa rastro
+    com o cliente identificado."""
+    _limpo()
+    real_data = cb.DATA
+    restaurar, chamadas = _com_rede_falsa(DOCUMENTO)
+    with tempfile.TemporaryDirectory() as d:
+        try:
+            cb.DATA = pathlib.Path(d)
+            # ROBOTS_MT proíbe tudo para o nosso agente e pede Crawl-delay 30
+            cb.robots_de("mt2.exemplo", lambda h, timeout=0: (200, ROBOTS_MT))
+            corpo = cb.buscar("https://mt2.exemplo/web/plano.pdf", origem="teste")
+            reg = cb.ler(cb.ROBOTS_REGISTRO)
+            h = (reg.get("hosts") or {}).get("mt2.exemplo") or {}
+            return (corpo == DOCUMENTO
+                    and len(chamadas) == 1                       # um pedido, não dois
+                    and "mt2.exemplo" in cb._ULTIMO_ACESSO       # ritmo marcado para o host
+                    and h.get("status_robots") == "proibe"
+                    and h.get("crawl_delay") == 30.0
+                    and h.get("total_acessos") == 1
+                    and h["acessos"][0]["cliente"].startswith("MonitorElNino"))
+        finally:
+            restaurar()
+            cb.DATA = real_data
+            _limpo()
 
 
 if __name__ == "__main__":
@@ -207,7 +275,7 @@ if __name__ == "__main__":
         "acesso contra o robots deixa rastro com URL, data, origem e cliente": t_acesso_contra_robots_deixa_rastro,
         "rastro guarda os 200 últimos e conta todos": t_rastro_guarda_os_ultimos_200_mas_conta_todos,
         "o cliente nunca é disfarçado": t_cliente_nunca_e_disfarcado,
-        "buscar() consulta o robots, respeita o ritmo e registra": t_buscar_declara_a_regra_no_codigo,
+        "buscar() consulta o robots, respeita o ritmo e registra": t_buscar_consulta_robots_respeita_ritmo_e_registra,
         "o canal renderizado também deixa rastro": t_canal_renderizado_tambem_deixa_rastro,
         "§186 muro de robô com HTTP 200 é recusa, não conteúdo": t_muro_de_robo_e_recusa_nao_conteudo,
         "§186 muro não acusa PDF nem resposta grande": t_muro_nao_acusa_pdf_nem_documento_grande,

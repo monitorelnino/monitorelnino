@@ -168,6 +168,18 @@ jobs:
           # 2.965, dezenas de GB de E/S e outras tantas janelas de corrupção. O autoteste é
           # offline e trava o que não pode falhar: sem lote nada muda, com lote nada se perde.
           python3 scripts/testar_lote_de_escrita.py
+          # §226 (26/09/2026): a espera de rede compartilhada. Em 25/09 uma varredura nacional
+          # mediu 63 lacunas por HTTP 503 nos 505 primeiros municípios — 12 %, nenhuma delas
+          # bloqueio. A correção ficou dentro de um coletor e os outros quinze seguiram desistindo
+          # na primeira tentativa. O autoteste é offline e trava as duas metades da regra: repetir
+          # onde repetir ajuda (429, 5xx) e NUNCA repetir onde a fonte disse não (401, 403, 451,
+          # muro de robô) — e que a política não volte a existir em cópia.
+          python3 scripts/testar_espera_de_rede.py
+          # §226 (26/09/2026): o coletor de transferências do Portal da Transparência estava no
+          # pipeline SEM autoteste e sem portão — o único assim entre os que pedem rede. O
+          # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429
+          # era laço infinito, e desistir era um print em vez de lacuna declarada.
+          python3 atualizar_transferencias.py --autoteste
           # §218 (25/09/2026): a fila de leitura humana em ordem de decisão. O autoteste
           # trava o que importa: item já julgado sai da fila, falso positivo provável vai ao
           # fim sem ser excluído (quem decide é a pessoa), e o script NÃO escreve no banco —

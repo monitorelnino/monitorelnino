@@ -49,6 +49,11 @@ from urllib.parse import urlencode
 
 import requests
 
+# 26/09/2026 (§226): este script era o único do pipeline que pedia rede sem passar pelo
+# `coletores_base` — `requests` direto, sem espera, sem lacuna declarada e sem escrita atômica.
+# As três coisas vêm daqui agora, em vez de uma quarta cópia de cada regra.
+from coletores_base import esperas_para, registrar_lacuna, gravar
+
 API_BASE = "https://api.portaldatransparencia.gov.br/api-de-dados"
 ENDPOINTS = {
     "convenios": "/convenios",
@@ -92,21 +97,55 @@ class RateLimiter:
         self.ultima = time.time()
 
 
-def consultar_endpoint(endpoint: str, params: dict, api_key: str, limiter: RateLimiter, max_paginas: int = 5):
-    """Pagina um endpoint da API e retorna a lista completa de resultados."""
+def consultar_endpoint(endpoint: str, params: dict, api_key: str, limiter: RateLimiter,
+                       max_paginas: int = 5, pedir_fn=None, dormir=None, lacuna_fn=None):
+    """Pagina um endpoint da API e retorna a lista completa de resultados.
+
+    26/09/2026 (§226) — três defeitos corrigidos de uma vez, todos da mesma família:
+
+    1. **Erro transitório virava ausência de repasse.** Qualquer código diferente de 200 e 429
+       imprimia um aviso e abandonava o município. Em 26/09/2026 o endpoint de convênios devolveu
+       `HTTP 504` na sonda de credenciais — gateway, não recusa —, e com o código antigo aquele
+       município entraria no arquivo como "nada encontrado". Agora 5xx e 429 esperam o que a
+       política compartilhada de `coletores_base` manda esperar, e só depois desistem.
+
+    2. **O 429 repetia para sempre.** `continue` sem consumir tentativa: com um limite de taxa
+       persistente, o laço nunca terminava. Agora a espera é contada, e acaba.
+
+    3. **Desistir era silencioso.** Um `print` não é rastro: não entra no log de buscas nem na
+       contagem de lacunas, e o município ficava indistinguível de um que não tem convênio. Agora
+       desistir DECLARA a lacuna, com o código HTTP e o município — zero e ausência de dado são
+       coisas distintas, e esta função confundia as duas.
+
+    `pedir_fn`, `dormir` e `lacuna_fn` existem para o autoteste provar as três coisas sem rede."""
+    pedir = pedir_fn or (lambda url: requests.get(url, headers={"chave-api-dados": api_key}, timeout=30))
+    _dormir = dormir or time.sleep
+    _lacuna = lacuna_fn or registrar_lacuna
     resultados = []
     pagina = 1
     while pagina <= max_paginas:
-        limiter.esperar()
         q = dict(params, pagina=pagina)
         url = f"{API_BASE}{endpoint}?{urlencode(q)}"
-        resp = requests.get(url, headers={"chave-api-dados": api_key}, timeout=30)
-        if resp.status_code == 429:
-            print(f"  [rate limit] aguardando 60s e tentando de novo...")
-            time.sleep(60)
-            continue
+        restantes = None
+        resp = None
+        while True:
+            limiter.esperar()
+            resp = pedir(url)
+            if resp.status_code == 200:
+                break
+            if restantes is None:
+                restantes = list(esperas_para(resp.status_code))
+            if not restantes:
+                break
+            espera = restantes.pop(0)
+            print(f"  [{resp.status_code}] {endpoint}: a fonte pediu tempo — esperando {espera}s", flush=True)
+            _dormir(espera)
         if resp.status_code != 200:
-            print(f"  [aviso] {endpoint} código IBGE {params.get('codigoIBGE')} → HTTP {resp.status_code}: {resp.text[:200]}")
+            # Lacuna DECLARADA, não aviso: o município não fica indistinguível de um sem convênio.
+            _lacuna(f"Portal da Transparência ({endpoint})",
+                    f"HTTP {resp.status_code} após as esperas — município IBGE "
+                    f"{params.get('codigoIBGE')}, ano {params.get('ano')}",
+                    strings=[url])
             break
         dados = resp.json()
         if not dados:
@@ -171,10 +210,12 @@ def main():
                 if bate_palavra_chave(a):
                     revisar.append(a)
 
-    json.dump(bruto, open(DATA_DIR / "transferencias_api_raw.json", "w", encoding="utf-8", newline="\n"),
-               ensure_ascii=False, indent=1)
-    json.dump(revisar, open(DATA_DIR / "transferencias_revisar.json", "w", encoding="utf-8", newline="\n"),
-               ensure_ascii=False, indent=1)
+    # §226: escrita ATÔMICA, como no resto do projeto. Estes dois arquivos ainda escreviam direto
+    # no destino — a corrupção de 21/09/2026 (JSON truncado por processo interrompido no meio de
+    # uma gravação) podia acontecer aqui do mesmo jeito, e este script roda depois de milhares de
+    # requisições, que é exatamente quando uma Action é cancelada por tempo.
+    gravar("transferencias_api_raw.json", bruto)
+    gravar("transferencias_revisar.json", revisar)
 
     print(f"\nConcluído. {len(bruto)} registros brutos salvos em data/transferencias_api_raw.json")
     print(f"{len(revisar)} registros relevantes (palavras-chave) salvos em data/transferencias_revisar.json")
@@ -184,5 +225,93 @@ def main():
     print("  seguindo o vocabulário controlado e as regras de fonte do README.")
 
 
+class _RespostaFalsa:
+    """O mínimo que `consultar_endpoint` usa de uma resposta do `requests`."""
+
+    def __init__(self, status, corpo=None):
+        self.status_code, self._corpo = status, corpo if corpo is not None else []
+        self.text = "" if corpo is None else str(corpo)
+
+    def json(self):
+        return self._corpo
+
+
+def _limitador_mudo():
+    class _L:
+        def esperar(self):
+            pass
+    return _L()
+
+
+def autoteste() -> int:
+    """26/09/2026 (§226): este coletor estava no pipeline SEM autoteste e sem portão — o único
+    assim entre os que pedem rede. Os quatro testes abaixo travam justamente os defeitos que o
+    §226 corrigiu, porque é para lá que o código volta se alguém "simplificar" a função."""
+    from coletores_base import rodar_autoteste
+
+    def t1():
+        """504 transitório: espera, repete, e ENTREGA. Nada de município perdido por gateway."""
+        respostas = [_RespostaFalsa(504), _RespostaFalsa(504), _RespostaFalsa(200, [{"a": 1}])]
+        esperas, lacunas = [], []
+        r = consultar_endpoint("/convenios", {"codigoIBGE": "3106200", "ano": 2026, "itens": 20},
+                               "k", _limitador_mudo(), pedir_fn=lambda u: respostas.pop(0),
+                               dormir=esperas.append, lacuna_fn=lambda *a, **k: lacunas.append(a))
+        return r == [{"a": 1}] and esperas == [5, 15] and not lacunas
+
+    def t2():
+        """504 persistente: desiste DECLARANDO a lacuna, com o código e o município. Sem lacuna,
+        o município ficaria indistinguível de um que não tem convênio."""
+        esperas, lacunas = [], []
+        r = consultar_endpoint("/convenios", {"codigoIBGE": "3106200", "ano": 2026, "itens": 20},
+                               "k", _limitador_mudo(), pedir_fn=lambda u: _RespostaFalsa(504),
+                               dormir=esperas.append,
+                               lacuna_fn=lambda *a, **k: lacunas.append((a, k)))
+        return (r == [] and esperas == [5, 15] and len(lacunas) == 1
+                and "504" in lacunas[0][0][1] and "3106200" in lacunas[0][0][1])
+
+    def t3():
+        """429 termina. A versão anterior dava `continue` sem consumir tentativa: laço infinito
+        diante de um limite de taxa persistente."""
+        esperas, lacunas = [], []
+        pedidos = []
+
+        def pedir(u):
+            pedidos.append(u)
+            if len(pedidos) > 20:
+                raise AssertionError("laço infinito no 429")
+            return _RespostaFalsa(429)
+
+        consultar_endpoint("/convenios", {"codigoIBGE": "1", "ano": 2026, "itens": 20}, "k",
+                           _limitador_mudo(), pedir_fn=pedir, dormir=esperas.append,
+                           lacuna_fn=lambda *a, **k: lacunas.append(a))
+        return esperas == [30] and len(pedidos) == 2 and len(lacunas) == 1
+
+    def t4():
+        """Negativo: 404 não repete e não dorme. Consulta errada não melhora com repetição, e
+        repetir dobraria a carga sobre uma API pública."""
+        pedidos, esperas, lacunas = [], [], []
+        consultar_endpoint("/convenios", {"codigoIBGE": "1", "ano": 2026, "itens": 20}, "k",
+                           _limitador_mudo(),
+                           pedir_fn=lambda u: (pedidos.append(u), _RespostaFalsa(404))[1],
+                           dormir=esperas.append, lacuna_fn=lambda *a, **k: lacunas.append(a))
+        return len(pedidos) == 1 and not esperas and len(lacunas) == 1
+
+    def t5():
+        """A palavra-chave continua filtrando: convênio de defesa civil entra na fila de revisão,
+        convênio de pavimentação não. A fila é humana (R7) — este coletor nunca publica sozinho."""
+        return (bate_palavra_chave({"objeto": "Apoio à DEFESA CIVIL municipal na estiagem"})
+                and not bate_palavra_chave({"objeto": "Pavimentação asfáltica de vias urbanas"}))
+
+    return rodar_autoteste({
+        "504 transitório: espera, repete e entrega (município não se perde)": t1,
+        "504 persistente: desiste DECLARANDO a lacuna com código e município": t2,
+        "429 termina — a versão anterior era laço infinito": t3,
+        "negativo: 404 não repete e não dorme": t4,
+        "palavra-chave filtra o que vai à revisão humana": t5,
+    })
+
+
 if __name__ == "__main__":
+    if "--autoteste" in sys.argv:
+        sys.exit(autoteste())
     main()

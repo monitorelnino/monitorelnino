@@ -98,8 +98,9 @@ def tamanho_para_cobrir(n_pendentes: int, hoje_iso: str, ate_iso: str, minimo: i
     return max(minimo, min(maximo, math.ceil(n_pendentes / dias)))
 
 
-ESPERAS_429 = (30,)        # limite de taxa: a fonte manda esperar, e esperar é a resposta certa
-ESPERAS_5XX = (5, 15)      # indisponibilidade temporária: "tente mais tarde", crescendo
+# 26/09/2026 (§226): as duas tuplas de espera nasceram aqui e subiram para coletores_base, porque
+# a lição (63 de 505 municípios perdidos por 503) valia para os dezesseis coletores e estava
+# aplicada em um só. Não fica cópia: é o que o §213 e o §222 ensinaram a não fazer.
 
 
 # Decisões que ESTE canal produz. Existe nomeado por causa do §213: o §194 criou
@@ -120,19 +121,10 @@ def buscar_com_espera(url: str, timeout: int = 30, buscar_fn=None, dormir=None) 
 
     4xx (fora 429) continua subindo na hora: consulta errada não melhora com repetição, e repetir
     só dobraria a carga sobre uma API pública mantida por um projeto sem fins lucrativos."""
-    buscar_fn = buscar_fn or buscar
-    dormir = dormir or time.sleep
-    restantes = None
-    while True:
-        try:
-            return buscar_fn(url, timeout=timeout)
-        except urllib.error.HTTPError as e:
-            if restantes is None:
-                restantes = list(ESPERAS_429 if e.code == 429 else
-                                 ESPERAS_5XX if e.code >= 500 else ())
-            if not restantes:
-                raise
-            dormir(restantes.pop(0))
+    # §226: a espera é a de `coletores_base.buscar`, que a aplica a todo coletor do projeto. Esta
+    # função continua existindo, com a mesma assinatura, por dois motivos: os testes dela são a
+    # regressão do achado de 25/09, e `consultar_qd` a usa nos dois domínios do Querido Diário.
+    return buscar(url, timeout=timeout, buscar_fn=buscar_fn, dormir=dormir)
 
 
 def consultar_qd(params: str, timeout: int = 30) -> bytes:

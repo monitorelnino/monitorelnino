@@ -9,6 +9,30 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §226 · A lição dos 63 municípios estava aplicada em um coletor de dezesseis · 26/09/2026
+
+Classe **robustez de coleta**.
+
+Em 25/09 uma varredura nacional mediu o que ninguém tinha medido: **63 dos 505 primeiros municípios** viraram lacuna declarada por `HTTP 503 Service Unavailable` — 12 %, e nenhum deles bloqueio de acesso. Indisponibilidade temporária é a fonte dizendo "tente mais tarde", e a resposta certa a isso é tentar mais tarde. A correção foi escrita no mesmo dia, com as esperas certas e o cuidado certo — **e ficou dentro de `coletar_diarios_municipais.py`**.
+
+Os outros quinze coletores continuaram chamando `buscar()` direto e desistindo na primeira tentativa. É o defeito de escopo do §213 (o vocabulário do log em três arquivos) e do §222 (os canais em dois), agora numa regra de rede em vez de num vocabulário: a lição aprendida num lugar não alcança os outros quinze porque ninguém a moveu para onde ela vale.
+
+**A política sobe para `coletores_base`, e `buscar()` passa a aplicá-la.** Dezesseis coletores ganham a espera sem que uma única linha de chamada mude em nenhum deles — a correção entra pela porta por onde todos já pedem rede. Quem mocka `buscar` num autoteste continua funcionando, porque o mock substitui a função inteira. A tentativa única segue disponível como `buscar_uma_vez`, para sonda e diagnóstico que precisam do status cru sem gastar repetições.
+
+**As duas metades da regra são igualmente travadas.** Repetir onde repetir ajuda — 429 e 5xx. E **nunca repetir onde a fonte disse não**: 401, 403 e 451 sobem na primeira tentativa, sem espera, porque bloqueio de acesso real se respeita, sempre; muro de robô servido com 200 (§186) também não repete, porque ali não houve erro, houve recusa. Um portão novo (`scripts/testar_espera_de_rede.py`, dez travas, sem rede) existe sobretudo para a segunda metade: uma política de repetição escrita sem cuidado vira insistência contra quem recusou.
+
+**O coletor de transferências do Portal da Transparência era o único do pipeline que pedia rede sem passar por aqui** — `requests` direto, sem espera, sem escrita atômica e sem autoteste. Três defeitos, todos da mesma família, corrigidos juntos:
+
+- **Erro transitório virava ausência de repasse.** Qualquer código fora de 200 e 429 imprimia um aviso e abandonava o município. Hoje mesmo o endpoint de convênios devolveu `HTTP 504` na sonda de credenciais — gateway, não recusa — e, com o código antigo, aquele município entraria no arquivo como "nada encontrado". Zero e ausência de dado são coisas distintas, e a função confundia as duas.
+- **O 429 repetia para sempre**: `continue` sem consumir tentativa, laço infinito diante de um limite de taxa persistente.
+- **Desistir era silencioso.** Um `print` não é rastro: não entra no log de buscas nem na contagem de lacunas. Agora desistir **declara** a lacuna, com o código HTTP e o município.
+
+O coletor ganhou autoteste (cinco travas) e portão, e seus dois arquivos passaram a escrita atômica — eles escreviam direto no destino, e este é o script que roda depois de milhares de requisições, que é exatamente quando uma Action é cancelada por tempo.
+
+**Dois testes antigos foram reescritos.** `scripts/testar_robots.py` provava a política do §185 lendo o **texto-fonte** da função `buscar` com `ast`. Quando `buscar` passou a envolver `buscar_uma_vez`, os dois reprovaram sem que nada tivesse quebrado — terceiro caso do mesmo padrão nesta base. Agora provam comportamento: com a rede falsa, o muro **levanta**, o robots é consultado, o relógio do host é marcado e o acesso contra o robots deixa rastro com o cliente identificado.
+
+A suíte vai a **65 portões**.
+
 ## §225 · O canal consorciado ia de sete estados a quinze, e a lista estava a um `<select>` de distância · 26/09/2026
 
 Classe **cobertura de coleta**.
