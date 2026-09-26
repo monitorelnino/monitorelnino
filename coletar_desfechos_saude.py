@@ -27,7 +27,7 @@ import json, statistics, sys, time, urllib.parse
 from collections import defaultdict
 from datetime import date
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, preservar_evidencia
+from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, preservar_evidencia, hoje_editorial
 
 RAIZ = Path(__file__).resolve().parent
 # Doenças que o mesmo endpoint alertcity do InfoDengue serve com o parâmetro `disease`. A escolha vem da
@@ -54,7 +54,7 @@ def _hoje():
         a = _js.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
         return _dt.datetime.strptime(a, "%d/%m/%Y").date()
     except Exception:  # noqa: BLE001
-        return _dt.date.today()
+        return hoje_editorial()
 
 
 def parse_serie(dados) -> dict:

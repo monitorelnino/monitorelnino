@@ -23,10 +23,10 @@ Sem rede: lacuna declarada, nada muda.  python coletar_execucao_mps.py --autotes
 import csv, hashlib, io, json, re, sys, urllib.request, zipfile
 from collections import defaultdict
 from datetime import date
-from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste
+from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de, hoje_editorial
 
 BASE = "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/"
-UA = {"User-Agent": "MonitorElNinoBrasil/3.0 (coletor execução das MPs; dados abertos)"}
+UA = {"User-Agent": ua_de("execução das MPs")}
 UFS = {"AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"}
 
 # (id da MP, órgão subordinado/superior, ações) — vocabulário do arquivo, códigos confirmados
@@ -85,7 +85,7 @@ def _linhas_do_zip(bruto: bytes):
 
 
 def meses_ate_hoje(primeiro: str) -> list:
-    ano, mes = int(primeiro[:4]), int(primeiro[4:]); hoje = date.today(); out = []
+    ano, mes = int(primeiro[:4]), int(primeiro[4:]); hoje = hoje_editorial(); out = []
     while (ano, mes) <= (hoje.year, hoje.month):
         out.append(f"{ano}{mes:02d}"); mes += 1
         if mes > 12: ano, mes = ano + 1, 1
@@ -93,7 +93,7 @@ def meses_ate_hoje(primeiro: str) -> list:
 
 
 def coletar() -> int:
-    hoje = date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     mps = ler("financiamento/mps_2026.json", {}) or {}
     if not mps.get("mps"):
         print("execucao_mps: sem mps_2026.json — nada a fazer"); return 0

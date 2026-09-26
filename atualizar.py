@@ -58,14 +58,12 @@ RAIZ = pathlib.Path(__file__).parent
 # scripts/testar_cadencia_publicacao.py bloqueia se algum deles divergir — o dia
 # é compromisso declarado ao leitor, não detalhe interno.
 # ---------------------------------------------------------------------------
-FUSO_EDITORIAL = ZoneInfo("America/Sao_Paulo")
+# §227: a definição subiu para coletores_base, onde o `hoje()` de todo coletor passa a usá-la.
+# Aqui fica o nome importado — duas definições do fuso da redação são a cópia que envelhece
+# (§213, §222, §226).
+from coletores_base import FUSO_EDITORIAL, hoje_editorial, gravar_em  # noqa: E402,F401
 DIA_PUBLICACAO = 6            # weekday(): 0 = segunda … 5 = sábado, 6 = domingo
 NOME_DIA_PUBLICACAO = "domingo"
-
-
-def hoje_editorial():
-    """Data de hoje no fuso da redação (America/Sao_Paulo), não no fuso do runner."""
-    return datetime.datetime.now(FUSO_EDITORIAL).date()
 
 
 def ja_publicou_hoje():
@@ -342,7 +340,7 @@ def main():
     if hash_arquivo(transf) != antes:
         meta["corte"] = hoje
         print(f"\nTransferências alteradas → corte dos dados atualizado para {hoje}.")
-    json.dump(meta, open(meta_p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=2)
+    gravar_em(meta_p, meta)
     # 10/09/2026 (causa-raiz do portão 12 vermelho na main após cada rodada): os três geradores
     # abaixo carimbam `gerado_em` com o `atualizado_em` de data/meta.json (data determinística),
     # mas rodaram ANTES deste carimbo e ficavam um dia atrás. Reexecutá-los aqui é idempotente

@@ -9,6 +9,158 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §230 · Cento e trinta e sete barreiras medidas, e as primeiras derrubadas · 26/09/2026
+
+Classe **desbloqueio de coleta**.
+
+A editoria mandou parar de publicar lacuna e passar a resolver: *"sempre que voce encontrar uma barreira, voce deve aplicar todas as solucoes que voce conhece para solucionar, e só me retornar com pedidos que realmente dependam de acao humana"*. O primeiro passo foi levantar o inventário de verdade, com seis varreduras de lentes diferentes — catálogos de fontes, código, log de buscas, cobertura municipal, diários estaduais, saúde e risco. Resultado: **137 barreiras distintas**, 62 de gravidade alta, cada uma com sintoma medido e não suposto.
+
+O levantamento consumiu o teto semanal de agentes, e a fase de resolução automática parou. As correções abaixo foram feitas à mão, a partir do inventário.
+
+**1. `buscar()` não descomprimia gzip, e ninguém sabia.** Medido: `diariooficial.to.gov.br` responde `Content-Encoding: gzip` **mesmo sem o pedido negociar compressão**. O cliente devolvia 2.966 bytes de gzip cru que, descomprimidos, são 16.386 bytes de HTML. É a família do §186 e do §187 — resposta com 200 que parece conteúdo e não é — com um agravante: `detectar_muro_de_robo` e `detectar_defeso` passavam a olhar ruído binário, e `preservar_evidencia` gravaria o blob comprimido com extensão `.html`. Depois do conserto, o Tocantins entrega os 16.389 bytes de HTML real. A função confere a marca do formato além do cabeçalho: servidor que declara gzip e manda texto existe, e descomprimir às cegas quebraria o que hoje chega bom.
+
+**2. Noventa e sete decretos parados por dois defeitos nossos, um deles com o rótulo errado.** `analisar_decretos.py` roda todo dia no ciclo e não produzia um único marcador de conteúdo. Duas causas:
+
+- O endereço do Querido Diário era `api.queridodiario.ok.org.br`, que **não serve mais TLS** (`SSLV3_ALERT_HANDSHAKE_FAILURE`, medido hoje). O resto do projeto migrou para o host vigente em 21/09; este arquivo ficou atrás, e a fila registrava 59 dos 97 itens como `erro_rede: SSLV3_...`. Agora o endereço não é copiado: usa-se o consultor de `coletar_diarios_municipais`, que já traz host vigente, domínio de reserva e a espera do §226.
+- **Um defeito de Python**: `for g in gazettes` e, dentro do laço, `a, p, g, rf = _varrer(ex)` — a gazeta era sobrescrita pela lista de termos, e duas linhas abaixo `g.get("date")` era chamado sobre uma lista. `AttributeError` em todo excerto com achado. E o `except Exception` único gravava isso como **`erro_rede`**: defeito nosso lançado na conta da fonte, que é precisamente o que o CLAUDE.md proíbe. Agora erro de rede e erro interno têm nomes distintos, e quem lê a fila sabe de quem é a culpa.
+
+A docstring também prometia tentar "(a) a URL do registro; (b) o Querido Diário". A perna (a) nunca existiu no código. Prometer o que não se faz é pior do que declarar a lacuna, e a promessa saiu.
+
+**3. O informe de Pernambuco voltou a ser legível — dois terços dele.** A listagem do CIEVS-PE responde 200 e traz o informe da SE 36 em PDF de 4 MB, íntegro. O que travava era o nosso leitor: em 24/09 a fonte passou a compor os cartões do topo com os três valores numa linha e os três rótulos na seguinte, e a regra de adjacência não alcança esse arranjo — antes de "Casos descartados" vem "Casos prováveis", não um número. O pareamento agora aceita a linha de cima, **condicionado** a haver tantos números quanto rótulos, e quem decide continua sendo a identidade contábil que já existia: só vale a combinação em que notificados = prováveis + descartados. Nos números reais fecha: 47.418 = 22.900 + 24.518.
+
+Dengue e chikungunya passaram a ser lidos. **Zika não, e fica declarado.** Na página dele os rótulos vêm entrelaçados em duas linhas ("Casos … Casos / Casos confirmados + descartados confirmados") e a identidade contábil **não desempata** prováveis de descartados, porque a soma é comutativa: `1.235 = 118 + 1.117` fecha nas duas ordens. Ler por posição de coluna exigiria as coordenadas do PDF, e adivinhar trocaria dois números numa página pública. Na dúvida, o classificador não classifica.
+
+**4. Correções menores encontradas ao medir.** `analisar_decretos.py` gravava a fila com `json.dump(open(...))` — escapou do portão do §229 porque as duas chamadas estavam em linhas diferentes. O portão foi reescrito para ler por **árvore sintática** em vez de por linha, e achou **mais nove**: o cursor de rodízio de três monitores (truncá-lo faz a próxima rodada recomeçar do zero), as duas filas do `consultar_querido_diario`, o PIB per capita das 27 UFs e a fila de contribuições. Todas migraram, e as datas em UTC que apareceram no caminho foram com elas.
+
+**Inventário para a editoria: o que ficou, e por quê.** Das 137 barreiras, as de maior volume seguem abertas com diagnóstico medido e caminho conhecido:
+
+- **Seis diários oficiais estaduais colhíveis hoje** (AP, AM, ES, GO, MT, PR — 943 municípios): rodam a mesma plataforma, com três rotas públicas sem autenticação já testadas ao vivo. Falta escrever o adaptador. É o maior ganho pendente.
+- **As 27 UFs de `fontes_doe.json` com adaptador nulo**, mais sete defeitos de código no caminho direto do `coletar_doe.py` — teto de 20 kB num documento de 510 mil caracteres, não lê PDF, ignora a janela de data, termo de busca com um artigo a mais que o decreto real não tem.
+- **InfoGripe**: o repositório da Fiocruz passou a responder 200 com tela de login do GitLab. Bloqueio de acesso real, que se respeita.
+- **Dezoito UFs sem fonte de boletim de arboviroses localizada**, nunca procuradas.
+- **SES-PB**: a recusa está **nomeada errado** no código — é muro de robô F5 servido com 200, não "PDF não respondeu". Corrigir o nome é pré-requisito para tratar o caso.
+- **Três coletores órfãos** (`coletar_espin.py`, `coletar_siconfi_182.py`, `buscar_financiamento_preventivo.py`): existem, têm autoteste, e não são invocados por nada.
+- **`inmet_estacoes`** está travada por uma credencial que a rota usada por ela **não exige**.
+
+## §229 · A escrita atômica de 21/09 nunca saiu de uma função · 26/09/2026
+
+Classe **integridade de dado**.
+
+Em 21/09/2026 um processo interrompido no meio de uma gravação deixou `data/fontes_consultadas.json` truncado — 368.019 linhas viraram 166.961, JSON inválido. A correção entrou em `coletores_base.gravar()`: temporário ao lado, `os.replace()` no fim. Cinco dias depois, uma auditoria contou **trinta e três escritas de JSON direto no destino** espalhadas pelo projeto, todas fora daquela porta.
+
+**O que estava exposto, em ordem de dor.** `data/historico_mudancas.json` e `data/log_buscas.json` — os **dois arquivos append-only** do projeto, aqueles que a regra de merge por base comum existe para proteger. Truncar um deles é o pior caso possível, porque o que se perde não aparece em nenhum lugar: o próprio registro do que existiu é ele. `data/municipios.json`, o banco, gravado direto por **quatro portas diferentes** (`processar_contribuicoes.py`, `verificar_vigencia.py`, `julgar_e_aplicar_descobertas.py` e `aplicar_c10_imprensa.py`), três delas no ciclo diário. `data/indice.json`, que é o produto — um JSON truncado ali é o site inteiro sem número. E mais `atos_resposta.json`, `estados.json`, `prazos_uf.json`, `meta.json`, as quatro filas de revisão humana e o histórico de recorrência por UF.
+
+**Por que ficaram de fora, e a lição de projeto.** Não foi descuido: `gravar()` pedia o **nome relativo a `data/`**, e quem já tinha o caminho montado — a maioria — achava mais curto abrir o arquivo. O atrito da interface era o motivo. Daí `gravar_em(caminho, obj)`, que aceita o caminho pronto: a migração passou a ser local e mecânica, e as trinta e três chamadas entraram.
+
+**Um erro meu no caminho, que vale registrar porque é instrutivo.** A primeira tentativa de migração usou expressão regular multilinha e comeu um `with open(...) as f: json.dump(resumo, f)` em `recalcular_mare.py`, deixando `json.dump(novo)` — **sintaticamente válido, e que não grava nada**. O arquivo compilava. Se tivesse passado, o `indice.json` deixaria de ser regravado silenciosamente. Transformação automática que compila não é transformação correta: a segunda passada exigiu o casamento da linha inteira, e nada foi gravado sem `ast.parse` antes.
+
+**O portão** é uma trava nova em `scripts/testar_escrita_atomica.py`: nenhuma escrita de JSON fora de `gravar`/`gravar_em`, com uma lista curta de exceções **com motivo declarado** — a própria porta, o gerador que escreve no repositório privado da editoria, os três derivados que o portão 12 confere byte a byte, e o arquivo de teste que escreve fixture. Crescer nessa lista é decisão, não descuido. Verificado nos dois sentidos: reintroduzir uma escrita direta em `municipios.json` deixa o portão vermelho.
+
+## §228 · Vinte e uma identidades, seis delas disfarçadas · 26/09/2026
+
+Classe **conformidade com a política de acesso**. Achado de auditoria, e o mais grave da sessão: não é robustez, é uma regra do `CLAUDE.md` sendo violada por código em produção.
+
+**O que foi medido.** O repositório enviava **vinte e uma strings de `User-Agent` diferentes**, uma por arquivo. Seis começavam com o token de navegador; **duas eram o agente completo de um Chrome no Windows**. Entre os seis, `julgar_e_aplicar_descobertas.py` e `seguir_pistas.py`, que rodam no ciclo.
+
+**Por que isso não é detalhe técnico.** O `CLAUDE.md` diz, sem exceção: *nunca disfarçar o cliente*. Trazer o nome do projeto entre parênteses não desfaz o disfarce — o primeiro token é uma identidade de navegador, e a razão pela qual alguém escreve `Mozilla/5.0` é passar por filtro que recusa robô, o que é contornar recusa. É a mesma família do §186 e do §187: nomear a recusa errado, ou fazer com que ela não aconteça, produz prova obtida por um caminho que o projeto declarou não usar.
+
+Dois casos vinham com a decisão escrita no próprio código, e é isso que os torna instrutivos:
+
+- `verificar_links.py` **justificava** o agente em formato de navegador na docstring: muitos `.gov.br` devolviam 403 a HEAD com agente de robô e 200 a GET com agente de navegador. A observação trocava **duas variáveis ao mesmo tempo** — o método e a identidade — e atribuía o ganho às duas. Só a primeira metade fica: tentar GET onde HEAD não é implementado é usar o protocolo. Trocar a identidade é contornar recusa. Se um portal recusa o Monitor identificado, a recusa **é** o resultado da verificação.
+- `scripts/diagnostico_fontes_saude.py` pedia cada alvo **duas vezes**, uma com cada identidade, "para separar bloqueio por IP de bloqueio por agente". A intenção de diagnóstico é boa; o meio não é. E a resposta não mudaria conduta nenhuma: diante de bloqueio por agente o projeto respeita e declara a lacuna, igual ao bloqueio por IP. Saber que o sítio entregaria o documento a um navegador só serviria para tentar passar por um.
+
+**O segundo defeito, no mesmo lugar: a cópia que envelhece.** É o §213 e o §222 outra vez. Mudar o endereço de contato no `UA` canônico de `coletores_base` não mudava nada nos outros vinte arquivos. E aqui a cópia tem consequência direta: a política de robots (§185) avalia `can_fetch` contra `UA` e grava o cliente no rastro de `data/robots_registro.json`. **Módulo que enviava outra string era medido contra a regra de um agente e registrado como outro.**
+
+**O conserto.** Um `ua_de(proposito)` em `coletores_base`: mesma identidade, propósito declarado entre colchetes. Distinguir uma sonda de um coletor nos registros da fonte é objetivo legítimo, e é o que a função serve — quem recebe o pedido continua sabendo quem somos, e passa a saber por que estamos ali. As vinte e uma strings viraram uma, em **vinte e três arquivos**.
+
+**Três pedidos não identificavam cliente nenhum.** `atualizar_recursos.py` pedia o SIDRA do IBGE com o agente padrão da biblioteca. `atualizar_marcos_severidade.py`, o mesmo. E `atualizar_transferencias.py` levava a **chave de API** no cabeçalho e não levava o cliente: um pedido autenticado de agente anônimo. Os dois últimos só apareceram porque o portão novo foi ampliado para ler também as chamadas via `requests`, e o terceiro porque o portão os leu por AST em vez de por `grep`.
+
+**O portão** (`scripts/verificar_cliente_identificado.py`, 66º da suíte) confere quatro coisas: nenhum valor de `User-Agent` é string literal fora de `coletores_base`; nenhuma string **de código** traz token de navegador; o `UA` canônico começa com o nome do projeto; e todo módulo que faz pedido cru identifica o cliente. A leitura é por AST de propósito, para que docstring e comentário possam contar esta história sem reprovar o portão. Verificado nos dois sentidos: reintroduzir um disfarce o deixa vermelho.
+
+**E um furo de cobertura, encontrado ao medir isto.** `scripts/verificar_autotestes_isolados.py` roda **todos** os autotestes do projeto e, até aqui, imprimia os vermelhos e devolvia **zero**, com a nota "reportado pelos portões próprios". Medição: dos trinta e tantos módulos com autoteste, **vinte e um não têm portão próprio** — entre eles `coletar_espin`, `coletar_sinais_risco`, `coletar_dda`, `coletar_transferegov` e os quatro boletins estaduais. Para esses, autoteste vermelho aparecia no log e nada reprovava. Como este é o único portão que os alcança todos, autoteste vermelho passou a ser portão vermelho. Todos os trinta e tantos estavam verdes quando a trava entrou — a mudança não esconde dívida.
+
+**Para a editoria, com franqueza:** parte da coleta feita até hoje por `verificar_links.py`, `seguir_pistas.py`, `julgar_e_aplicar_descobertas.py` e as duas sondas de diagnóstico saiu com o cliente em formato de navegador. O código está corrigido; o que já entrou no banco por esse caminho é pergunta editorial, não técnica, e fica registrada aqui.
+
+A suíte vai a **66 portões**.
+
+## §227 · A data de todos os coletores vinha do runner, e a reserva de arquivo nunca foi usada onde mais fazia falta · 26/09/2026
+
+Classe **correção de fato**.
+
+Três achados de uma auditoria dos dezesseis coletores, todos da mesma família do §226: uma regra certa, escrita num lugar, que não alcançava a porta por onde todo mundo passa.
+
+**1. O `hoje()` compartilhado datava em UTC.** O projeto tem `hoje_editorial()`, que converte para o fuso da redação, e tem um portão que exige seu uso — os dois viviam em `atualizar.py`, e o portão conferia `atualizar.py`. Enquanto isso, o `hoje()` de `coletores_base.py` — chamado pelos dezesseis coletores, **vinte e nove vezes só nos `coletar_*.py`** — devolvia `date.today()`: a data do runner, que roda em UTC. A rodada de sábado 22h40 em Brasília já é domingo em UTC, e o carimbo `consultado_em` de cada fonte saía datado de um dia que no Brasil ainda não tinha começado.
+
+O fuso e a função sobem para `coletores_base`, e `atualizar.py` passa a importá-los em vez de mantê-los. O portão de cadência foi ampliado para cobrir o helper compartilhado, e a prova usa **relógio injetado**, não o de agora: 27/09/2026 01h30 UTC é 26/09 22h30 em Brasília. Um teste sem relógio falso só pegaria a regressão nas três horas do dia em que os dois fusos discordam — ou seja, quase nunca, que é exatamente como o defeito durou. A trava foi verificada revertendo o código de propósito: o portão reprova.
+
+**1-bis. E as outras setenta e cinco.** Consertar o `hoje()` compartilhado não bastava: uma contagem no mesmo dia encontrou **75 chamadas diretas a `date.today()` em 41 arquivos da raiz**, contornando o helper. Vinte e duas delas gravavam data **dentro de `data/`** — `registrado_em`, `consultado_em`, `coletado_em`, `atualizado_em`, `gerado_em`, `ocr_em`, `decidido_em` —, que é exatamente o que o leitor lê como "quando isto foi visto". Todas migraram para `hoje_editorial()`, uma troca de tipo idêntico (as duas devolvem `date`), e o portão de cadência passou a proibir `date.today()` na raiz inteira, não só no `atualizar.py`. A trava vale para todos porque o defeito nunca esteve num arquivo: esteve na ausência de um lugar único.
+
+**E um erro meu na migração, registrado porque a lição é sobre o limite dos autotestes.** A troca deixou o prefixo em nove arquivos que escreviam `_dt.date.today()` com `import datetime as _dt`, produzindo `_dt.hoje_editorial()` — atributo que não existe. O código **compilava**, e **todos os trinta e tantos autotestes passaram**: os nove estavam no ramo `except` de um `_hoje()` que só é alcançado quando o `meta.json` não pode ser lido. Quem mostrou foi o portão de consistência, rodando o pipeline de verdade. `compileall` vê sintaxe; nome resolvido dentro de função só aparece na execução, e execução só acontece no caminho que alguém percorre.
+
+A primeira trava que escrevi para isso tentava **chamar** cada `_hoje()`. Verifiquei, e ela não pegava nada — pelo mesmo motivo que os autotestes não pegaram: o ramo quebrado não está no caminho feliz. A trava que ficou é estática e diz o que importa: `hoje_editorial` se chama pelo nome, e só `coletores_base` pode prefixá-lo. Essa, testada nos dois sentidos, reprova.
+
+Duas coisas a mais apareceram nessa passagem. `coletores_base.registrar_fonte_suspensa` — que grava `primeira_deteccao` e `ultima_deteccao` de uma fonte em defeso, datas de que um prazo legal depende — datava pelo runner **e** escrevia direto no destino, sem a escrita atômica de 21/09. As duas foram corrigidas.
+
+**2. A reserva de arquivo existia e não era usada onde mais fazia falta.** `preservar_evidencias.py` — o coletor que lê os PDFs de plano de contingência — chamava `buscar()` direto. Em 24/09, **105 leituras de PDF** falharam com `URLError` num único dia, nos sítios de defesa civil de Sergipe e do Amazonas. Testados em 26/09, sem nenhuma mudança de código, os três documentos da amostra responderam na hora: 5,8 MB, 642 kB e 7,7 MB de PDF válido. Não era fonte fora do ar — era uma tarde ruim de rede tratada como ausência de documento.
+
+Documento que existe e que o sítio momentaneamente não entrega é precisamente o caso da reserva do Wayback, no projeto desde 12/09. O coletor passa a usar `buscar_com_procedencia`, que a usa **dizendo por onde o conteúdo veio** — obrigatório aqui, porque plano lido no sítio do órgão e plano lido numa captura provam coisas diferentes. A procedência vai ao banco de evidências e, quando não é a fonte direta, ao log. A reserva **não** se aplica a recusa explícita (401, 402, 403, 429, 451): ali a fonte disse não, e não se dá a volta por fora.
+
+O `buscar()` compartilhado também passa a repetir erro de conexão — reset, TLS incompleto, DNS mudo, tempo esgotado. **Uma** repetição curta, e não duas como no 5xx, por uma razão de custo: host realmente fora do ar paga a espera em cada url de uma varredura, e uma varredura tem milhares. Cinco segundos por url morta é aceitável; vinte, não.
+
+**3. A lacuna guardava a classe da exceção, não o motivo.** As 128 falhas de leitura de PDF foram escritas apenas como `URLError`, sem dizer se foi DNS, TLS, reset ou tempo esgotado — e sem isso não havia como distinguir fonte caída de rede tropeçada, que é a distinção que decide se vale insistir. Agora a lacuna guarda a mensagem.
+
+**Uma correção ao diagnóstico anterior, para o registro.** As outras 71 falhas de leitura de PDF vinham com `UnicodeEncodeError`, e à primeira vista pareciam um defeito aberto do nosso cliente. São **todas de 07/09/2026**, véspera do conserto do `url_ascii` (08/09): estão fechadas há dezenove dias. O `url_ascii` foi reconferido contra a URL real do repositório do Espírito Santo, com `Contingência` cru misturado a `%C3%81` já codificado, e preserva o escape existente sem duplicá-lo.
+
+A suíte segue em 65 portões; dois deles ganharam travas novas.
+
+## §226 · A lição dos 63 municípios estava aplicada em um coletor de dezesseis · 26/09/2026
+
+Classe **robustez de coleta**.
+
+Em 25/09 uma varredura nacional mediu o que ninguém tinha medido: **63 dos 505 primeiros municípios** viraram lacuna declarada por `HTTP 503 Service Unavailable` — 12 %, e nenhum deles bloqueio de acesso. Indisponibilidade temporária é a fonte dizendo "tente mais tarde", e a resposta certa a isso é tentar mais tarde. A correção foi escrita no mesmo dia, com as esperas certas e o cuidado certo — **e ficou dentro de `coletar_diarios_municipais.py`**.
+
+Os outros quinze coletores continuaram chamando `buscar()` direto e desistindo na primeira tentativa. É o defeito de escopo do §213 (o vocabulário do log em três arquivos) e do §222 (os canais em dois), agora numa regra de rede em vez de num vocabulário: a lição aprendida num lugar não alcança os outros quinze porque ninguém a moveu para onde ela vale.
+
+**A política sobe para `coletores_base`, e `buscar()` passa a aplicá-la.** Dezesseis coletores ganham a espera sem que uma única linha de chamada mude em nenhum deles — a correção entra pela porta por onde todos já pedem rede. Quem mocka `buscar` num autoteste continua funcionando, porque o mock substitui a função inteira. A tentativa única segue disponível como `buscar_uma_vez`, para sonda e diagnóstico que precisam do status cru sem gastar repetições.
+
+**As duas metades da regra são igualmente travadas.** Repetir onde repetir ajuda — 429 e 5xx. E **nunca repetir onde a fonte disse não**: 401, 403 e 451 sobem na primeira tentativa, sem espera, porque bloqueio de acesso real se respeita, sempre; muro de robô servido com 200 (§186) também não repete, porque ali não houve erro, houve recusa. Um portão novo (`scripts/testar_espera_de_rede.py`, dez travas, sem rede) existe sobretudo para a segunda metade: uma política de repetição escrita sem cuidado vira insistência contra quem recusou.
+
+**O coletor de transferências do Portal da Transparência era o único do pipeline que pedia rede sem passar por aqui** — `requests` direto, sem espera, sem escrita atômica e sem autoteste. Três defeitos, todos da mesma família, corrigidos juntos:
+
+- **Erro transitório virava ausência de repasse.** Qualquer código fora de 200 e 429 imprimia um aviso e abandonava o município. Hoje mesmo o endpoint de convênios devolveu `HTTP 504` na sonda de credenciais — gateway, não recusa — e, com o código antigo, aquele município entraria no arquivo como "nada encontrado". Zero e ausência de dado são coisas distintas, e a função confundia as duas.
+- **O 429 repetia para sempre**: `continue` sem consumir tentativa, laço infinito diante de um limite de taxa persistente.
+- **Desistir era silencioso.** Um `print` não é rastro: não entra no log de buscas nem na contagem de lacunas. Agora desistir **declara** a lacuna, com o código HTTP e o município.
+
+O coletor ganhou autoteste (cinco travas) e portão, e seus dois arquivos passaram a escrita atômica — eles escreviam direto no destino, e este é o script que roda depois de milhares de requisições, que é exatamente quando uma Action é cancelada por tempo.
+
+**Dois testes antigos foram reescritos.** `scripts/testar_robots.py` provava a política do §185 lendo o **texto-fonte** da função `buscar` com `ast`. Quando `buscar` passou a envolver `buscar_uma_vez`, os dois reprovaram sem que nada tivesse quebrado — terceiro caso do mesmo padrão nesta base. Agora provam comportamento: com a rede falsa, o muro **levanta**, o robots é consultado, o relógio do host é marcado e o acesso contra o robots deixa rastro com o cliente identificado.
+
+A suíte vai a **65 portões**.
+
+## §225 · O canal consorciado ia de sete estados a quinze, e a lista estava a um `<select>` de distância · 26/09/2026
+
+Classe **cobertura de coleta**.
+
+O coletor de diários consorciados dizia, no próprio cabeçalho, que descobrir o slug de cada estado na plataforma SIGPub "exige abrir o site e ler o link real, tarefa ainda não feita para os estados ausentes daqui". Eram sete UFs. A tarefa foi feita, e o resultado são **quinze**.
+
+**Por que a lista estava incompleta.** O seletor de estados da página inicial da plataforma usa caminhos **relativos** (`/aam/`, `/famep/`), não URLs absolutas. Uma varredura por `href="https://www.diariomunicipal.com.br/<slug>"` — o jeito natural de procurar — acha parte das entidades e perde as outras. A lista autoritativa é o `<select>`: 21 UFs mais duas prefeituras avulsas.
+
+**Nove UFs novas, cada uma com prova.** PE, AM, PA, RO, RJ, SP, RR, PB e AL entraram depois de o nome da entidade ser lido na própria página e o calendário ser testado com token real em 24 e 25/09/2026. O comentário de cada linha registra quantas edições a fonte devolveu nesses dois dias: é prova de que o canal entrega, não promessa de que deveria. Slug inventado não dá 404 — a plataforma devolve a própria página inicial, 90.958 bytes sem `calendar__token`, e foi assim que vinte e nove palpites de sigla se descartaram numa rodada, sem nenhum entrar no código.
+
+**O que a varredura retroativa colheu.** Doze UFs varridas de 01 a 26/09/2026 — as nove novas mais Paraná, Rio Grande do Sul e Rio Grande do Norte, que estavam declaradas pendentes no §223. **333 dias com edição lidos, zero erro de fonte, 124 pistas e 71 atos municipais.** O banco de atos saiu de 7 registros do canal consorciado, todos de Minas, para **71 em nove estados**: PR 19, RS 17, AM 11, MG 7, AL 5, RN 5, PB 4, RR 2, PE 1. O Paraná respondeu por 77 das 124 pistas. Pará, São Paulo e Rio de Janeiro leram 78 edições somadas e não produziram ato — leitura feita, ausência declarada, que é resultado e não falha.
+
+Cada registro traz município, código IBGE, número do decreto, a URL do PDF de origem e o hash da evidência. O canal é `DOM-consorciado`, distinto de `DOM` de propósito: a atribuição do município é heurística de proximidade no PDF consorciado, e quem lê o dado precisa saber disso.
+
+**A correção de um rótulo errado, que é o achado mais importante daqui.** Em 25/09 os dois slugs da Bahia foram declarados "fonte fora do ar" porque respondiam ao calendário com `{"error":"Ocorreu um erro inesperado!"}` em toda data testada. O rótulo estava errado. A última edição de cada uma dessas entidades, lida na página, é de **2013** (AMURC), **2015** (AMM-MT), **2020** (APPM, Piauí), **2020** (MS) e **2009** (AMURCES, Sergipe): são **arquivos históricos** de associações que saíram da plataforma, e o `error` nas datas recentes é resposta correta — não há edição naquele dia porque não há mais edição nenhuma. Fonte fora do ar é falha; publicação encerrada é fato. Confundir as duas é do mesmo tipo que chamar geobloqueio de `robots.txt`, erro que já custou treze dias de abstenção indevida (§187).
+
+As cinco passam a viver em `SIGPUB_ENCERRADO`, com a data da última edição declarada, fora do varrimento ativo — e cada linha delas passa a ser o que realmente é: uma UF cujo diário **corrente** está em outro lugar. Isso é lacuna de descoberta, trabalho a fazer, e não bloqueio de acesso, que seria trabalho impossível.
+
+**O que a plataforma não cobre.** `/ma/` está no seletor dela e cai na própria página inicial: link morto do lado da fonte. AC, AP, ES, SC e TO não aparecem no seletor. As seis ficam em `SIGPUB_SEM_CANAL`, com o motivo observado — não o suposto.
+
+Um autoteste novo (o vigésimo do coletor) exige que as 27 UFs estejam **todas** classificadas, que nenhuma esteja em duas gavetas ao mesmo tempo e que nenhum slug de arquivo histórico volte ao varrimento ativo. O DF é a única ausência legítima: não tem município. A lista saltou de sete para quinze numa rodada, e o modo de errar é sempre o mesmo — uma UF nova entra e ninguém a tira da gaveta antiga, e então o varrimento declara lacuna diária de uma fonte que entrega.
+
+**Credenciais.** A sonda do §224 respondeu: a chave do **OpenAQ é aceita** (HTTP 200). A do Portal da Transparência está presente e o endpoint devolveu **504** — erro da fonte, não recusa de chave, distinção que importa porque o 403 das rodadas anteriores era recusa de verdade. O token do INMET segue **ausente**, sem caminho público de cadastro: é pedido à Central de Serviços, e é ação humana.
+
 ## §223 · O canal destravado entra na rotina, com a janela certa · 25/09/2026
 
 Classe **rotina de coleta**.

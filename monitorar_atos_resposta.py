@@ -39,6 +39,7 @@ from monitorar_imprensa_regional import (
     _get, montar_url, extrair_itens_rss, parece_fonte_oficial,
     carregar_fila, registrar, FILA,
 )
+from coletores_base import gravar_em  # noqa: E402  (§229: escrita atômica de data/)
 
 RAIZ = Path(__file__).parent
 CURSOR_RESPOSTA = RAIZ / "data" / "resposta_cursor.json"
@@ -70,8 +71,8 @@ def carregar_cursor(total):
 
 def salvar_cursor(posicao, total):
     """Grava a posição do rodízio para a próxima execução continuar de onde parou."""
-    json.dump({"posicao": posicao, "tamanho_universo": total},
-               open(CURSOR_RESPOSTA, "w", encoding="utf-8", newline="\n"))
+    # §229: o cursor do rodízio. Truncá-lo faz a próxima rodada recomeçar do zero ou parar.
+    gravar_em(CURSOR_RESPOSTA, {"posicao": posicao, "tamanho_universo": total})
 
 
 def main():
@@ -103,7 +104,7 @@ def main():
             time.sleep(1.0)  # mesma cortesia de taxa do resto do pipeline
 
     salvar_cursor((pos + limite) % len(universo), len(universo))
-    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(FILA, fila)   # §229
 
     print(f"Universo de busca (atos de resposta): {len(universo)} UFs; "
           f"{limite} consultadas nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")

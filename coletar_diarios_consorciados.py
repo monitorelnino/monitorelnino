@@ -33,13 +33,36 @@ outra pista do sistema (§3.2). Quando nenhum cabeçalho é localizado, a pista 
 registrada em nível UF (`ibge: null`) em vez de descartada — perder o achado
 seria pior do que uma atribuição grosseira que o humano corrige.
 
-FONTES REGISTRADAS (só verificadas por navegação real em 20-22/09/2026; nenhum slug
-foi suposto): ver `UF_SIGPUB` abaixo. Estados fora desta lista NÃO são inventados
-aqui — a plataforma provavelmente cobre a maioria dos 27 (o seletor da página
-inicial lista todos), mas descobrir o slug de cada um exige abrir o site e ler o
-link real, tarefa ainda não feita para os estados ausentes daqui. Adicionar um
-estado = adicionar uma linha a UF_SIGPUB, nunca adivinhar um slug pelo padrão dos
-outros (ex.: PI quase certamente NÃO é `/pi/`; teria de ser verificado).
+FONTES REGISTRADAS: ver `UF_SIGPUB` abaixo. Em 20-22/09/2026 esta lista tinha sete
+UFs, porque descobrir o slug de cada estado exigia abrir o site e ler o link real —
+"tarefa ainda não feita", dizia aqui. Ela foi feita em 26/09/2026, e o caminho fica
+registrado porque não é óbvio: o seletor de estados da página inicial usa caminhos
+RELATIVOS (`/aam/`, `/ma/`), e não URLs absolutas, de modo que uma varredura por
+`href="https://www.diariomunicipal.com.br/<slug>"` acha parte das entidades e perde
+outras. A lista autoritativa é o `<select>` da página inicial: 21 UFs mais duas
+prefeituras avulsas. Slug inexistente não dá 404 — a plataforma devolve a PRÓPRIA
+página inicial (90.958 bytes, sem `calendar__token`), o que dá um teste barato e
+inequívoco para candidato inventado, e foi como vinte e nove palpites de sigla se
+descartaram numa só rodada.
+
+O QUE A VARREDURA DE 26/09/2026 MEDIU, entidade por entidade (token real via
+navegador, POST de calendário em 24 e 25/09, e a data da última edição lida na
+própria página):
+
+  · entregam edição hoje, e entraram em UF_SIGPUB: PE, AM, PA, RO, RJ, SP, RR, PB, AL.
+  · `/ma/` (Maranhão) está no seletor da plataforma e cai na própria página inicial:
+    link morto do lado dela, não lacuna nossa. Fica em SIGPUB_SEM_CANAL.
+  · cinco entidades respondem ao calendário e devolvem `{"error"...}` em TODO dia útil
+    de uma janela de dez. Isso NÃO é fonte fora do ar: a última edição de cada uma,
+    lida na página, é de 2009 a 2020 — são ARQUIVOS HISTÓRICOS de associações que
+    saíram da plataforma. Ver SIGPUB_ENCERRADO, que existe para não repetir o erro de
+    25/09/2026, quando os dois slugs da Bahia foram declarados "fonte fora do ar" —
+    rótulo errado, do mesmo tipo que chamar geobloqueio de robots.txt.
+  · AC, AP, ES, SC e TO não aparecem no seletor: a plataforma não cobre esses estados.
+
+Adicionar um estado = adicionar uma linha a UF_SIGPUB depois de LER o nome da entidade
+na página e confirmar que o calendário entrega edição. Nunca adivinhar um slug pelo
+padrão dos outros.
 
 STATUS (20-21/09/2026): BLOQUEADO PARA COLETA AUTOMATIZADA — duas rodadas de
 investigação real, nenhuma inventada, nenhuma abandonada por preguiça.
@@ -95,7 +118,7 @@ import http.cookiejar, io, json, pathlib, re, subprocess, sys, time, unicodedata
 from datetime import date, timedelta
 from coletores_base import (UA, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste,
-                            CANAIS_ATO)
+                            CANAIS_ATO, hoje_editorial)
 from classificar_pista_civil import triagem_completa
 
 # Só slugs confirmados por navegação/fetch reais nesta sessão (20-22/09/2026). AL fica de
@@ -105,16 +128,58 @@ UF_SIGPUB = {
     "MG": [{"slug": "amm-mg", "nome": "Diário Oficial dos Municípios Mineiros (AMM-MG)"}],
     "GO": [{"slug": "agm", "nome": "Diário Oficial dos Municípios de Goiás (AGM)"},
            {"slug": "fgm", "nome": "Diário Oficial dos Municípios de Goiás (FGM)"}],
-    # 25/09/2026: os dois slugs foram reconferidos na página inicial da própria plataforma e
-    # CONTINUAM sendo estes — não é curadoria desatualizada. Eles respondem, e não entregam
-    # edição em nenhuma data testada (22 a 25/09, dias úteis), enquanto as outras sete fontes
-    # entregam. Ficam declarados como fonte fora do ar, e não como "os municípios não publicaram".
-    "BA": [{"slug": "bahia", "nome": "Diário Oficial dos Municípios da Bahia (AMURB)"},
-           {"slug": "amurc", "nome": "Diário Oficial dos Municípios do Sul/Extremo Sul/Sudoeste da Bahia (AMURC)"}],
     "CE": [{"slug": "aprece", "nome": "Diário Oficial dos Municípios do Ceará (APRECE)"}],
     "PR": [{"slug": "amp", "nome": "Diário Oficial dos Municípios do Paraná (AMP)"}],
     "RS": [{"slug": "famurs", "nome": "Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS)"}],
     "RN": [{"slug": "femurn", "nome": "Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN)"}],
+    # 26/09/2026: as nove abaixo vieram do `<select>` da página inicial, com o nome da entidade
+    # lido no `alt` do logo de cada uma e o calendário testado em 24 e 25/09/2026 com token real.
+    # O número no comentário é quantas edições cada uma devolveu nesses dois dias — prova de que
+    # o canal entrega, não promessa de que deveria.
+    "PE": [{"slug": "amupe", "nome": "Diário Oficial dos Municípios de Pernambuco (AMUPE)"}],       # 2 e 2
+    "AM": [{"slug": "aam", "nome": "Diário Oficial dos Municípios do Amazonas (AAM)"}],             # 1 e 1
+    "PA": [{"slug": "famep", "nome": "Diário Oficial dos Municípios do Pará (FAMEP)"}],             # 1 e 1
+    "RO": [{"slug": "arom", "nome": "Diário Oficial dos Municípios de Rondônia (AROM)"}],           # 2 e 2
+    "RJ": [{"slug": "aemerj", "nome": "Diário Oficial dos Municípios do Rio de Janeiro (AEMERJ)"}], # 3 e 2
+    "SP": [{"slug": "apm", "nome": "Diário Oficial dos Municípios de São Paulo (APM)"}],            # 1 e 1
+    "RR": [{"slug": "amr", "nome": "Diário Oficial dos Municípios de Roraima (AMR)"}],              # 1 e 1
+    "PB": [{"slug": "famup", "nome": "Diário Oficial dos Municípios da Paraíba (FAMUP)"}],          # 2 e 2
+    "AL": [{"slug": "ama", "nome": "Diário Oficial dos Municípios Alagoanos (AMA)"}],               # 1 e 1
+}
+
+# Entidades que EXISTEM na plataforma e cuja publicação ali ENCERROU. Não entram no varrimento:
+# pedir o calendário delas hoje devolve `{"error":"Ocorreu um erro inesperado!"}` em todo dia útil,
+# e chamar isso de "fonte fora do ar" — como se fez em 25/09/2026 com os dois slugs da Bahia — é
+# nomear a recusa errado. A data é a da ÚLTIMA EDIÇÃO lida na página da entidade em 26/09/2026.
+#
+# Elas ficam declaradas aqui, e não apagadas, por dois motivos: o arquivo histórico é acessível por
+# data (serve a uma pergunta retroativa, se um dia houver), e cada linha destas é uma UF cujo
+# diário CORRENTE está em outro lugar — lacuna de descoberta, que é trabalho a fazer, e não
+# bloqueio de acesso, que seria trabalho impossível.
+SIGPUB_ENCERRADO = {
+    "BA": [{"slug": "bahia", "nome": "Associação dos Municípios do Recôncavo Baiano", "ultima_edicao": None},
+           {"slug": "amurc", "nome": "Diário Oficial dos Municípios do Sul/Extremo Sul/Sudoeste da Bahia (AMURC)",
+            "ultima_edicao": "2013-05-22"}],
+    "MT": [{"slug": "amm-mt", "nome": "Associação Mato-Grossense dos Municípios (AMM-MT)",
+            "ultima_edicao": "2015-03-10"}],
+    "PI": [{"slug": "appm", "nome": "Associação Piauiense de Municípios (APPM)", "ultima_edicao": "2020-02-10"}],
+    "MS": [{"slug": "ms", "nome": "Diário Oficial dos Municípios de Mato Grosso do Sul",
+            "ultima_edicao": "2020-10-30"}],
+    "SE": [{"slug": "sergipe", "nome": "Associação dos Municípios da Região Centro Sul de Sergipe (AMURCES)",
+            "ultima_edicao": "2009-12-10"}],
+}
+
+# UFs sem canal consorciado nesta plataforma, medido em 26/09/2026. `motivo` é o que se observou,
+# não o que se supõe: MA está no seletor e o link cai na própria página inicial da plataforma; as
+# outras cinco não aparecem no seletor. Para estas seis UFs o diário municipal, quando existe, tem
+# de vir por outro canal — Querido Diário, sítio da prefeitura ou outra plataforma.
+SIGPUB_SEM_CANAL = {
+    "MA": "no seletor da plataforma, mas /ma/ devolve a própria página inicial (link morto)",
+    "AC": "ausente do seletor da plataforma",
+    "AP": "ausente do seletor da plataforma",
+    "ES": "ausente do seletor da plataforma",
+    "SC": "ausente do seletor da plataforma",
+    "TO": "ausente do seletor da plataforma",
 }
 BASE = "https://www.diariomunicipal.com.br/{slug}/"
 URL_CALENDARIO = "https://www.diariomunicipal.com.br/{slug}/materia/calendario"
@@ -434,7 +499,7 @@ def coletar_fonte(uf: str, slug: str, nome_fonte: str, desde_iso: str, ate_iso: 
             for p in pistas:
                 p.update({"uf": uf, "origem": "diario_consorciado", "fonte": nome_fonte,
                           "data": dia.isoformat(), "url": ed["url_pdf"], "hash_evidencia": h,
-                          "registrado_em": date.today().isoformat(), **triagem_completa(p["trecho"]),
+                          "registrado_em": hoje_editorial().isoformat(), **triagem_completa(p["trecho"]),
                           "status": "pista — atribuição de município por proximidade no PDF consorciado; "
                                     "promover a registro exige documento primário lido por humano"})
                 pistas_todas.append(p)
@@ -750,6 +815,33 @@ def autoteste() -> int:
             globals()["ler"] = real_ler; globals()["gravar"] = real_gravar
             globals()["coletar_fonte"] = real_coletar_fonte
             globals()["referencia_ibge"] = real_ref
+    def t16():
+        """26/09/2026: as 27 UFs estão TODAS classificadas, e nenhuma em duas gavetas.
+
+        O teste existe porque a lista de UFs cresceu de sete para quinze numa rodada, e o modo de
+        errar é sempre o mesmo: uma UF entra em UF_SIGPUB e continua em SIGPUB_ENCERRADO, ou uma UF
+        nova aparece no seletor da plataforma e ninguém a tira de SIGPUB_SEM_CANAL — e aí o
+        varrimento passa a declarar lacuna diária de uma fonte que entrega, ou a pular uma que
+        entrega. O DF é a única ausência legítima: não tem município.
+
+        Confere também que slug de arquivo histórico NÃO está no varrimento ativo: é o que produziu
+        o rótulo errado de 25/09/2026 ("fonte fora do ar" para uma associação que parou de publicar
+        na plataforma em 2013)."""
+        UFS = {"AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA",
+               "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"}
+        ativas, encerradas = set(UF_SIGPUB), set(SIGPUB_ENCERRADO)
+        sem_canal = set(SIGPUB_SEM_CANAL)
+        if ativas & encerradas or ativas & sem_canal or encerradas & sem_canal:
+            return False                                   # nenhuma UF em duas gavetas
+        if (ativas | encerradas | sem_canal) != UFS - {"DF"}:
+            return False                                   # todas classificadas, menos o DF
+        slugs_ativos = {f["slug"] for fs in UF_SIGPUB.values() for f in fs}
+        slugs_encerrados = {f["slug"] for fs in SIGPUB_ENCERRADO.values() for f in fs}
+        if slugs_ativos & slugs_encerrados:
+            return False                                   # arquivo histórico fora do varrimento
+        # toda entidade encerrada declara a data da última edição, ou None explícito
+        return all("ultima_edicao" in f for fs in SIGPUB_ENCERRADO.values() for f in fs)
+
     return rodar_autoteste({
         "§222 o canal deste coletor existe no vocabulário de canais": t_canal_no_vocabulario,
         "extrai token do HTML do calendário": t1,
@@ -767,6 +859,7 @@ def autoteste() -> int:
         "coletar_fonte: HTTP simples + navegador falham -> bloqueio_js, zero POST gasto": t12,
         "§130: navegador sucede -> token real usado no POST, cookie do navegador chega no jar": t13,
         "§130: GET simples já real -> navegador nunca é chamado (caminho barato)": t14,
+        "26/09: as 27 UFs classificadas, nenhuma em duas gavetas, arquivo histórico fora do varrimento": t16,
     })
 
 
@@ -774,7 +867,7 @@ if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(autoteste())
     a = sys.argv
-    desde = a[a.index("--desde") + 1] if "--desde" in a else (date.today() - timedelta(days=30)).isoformat()
-    ate = a[a.index("--ate") + 1] if "--ate" in a else date.today().isoformat()
+    desde = a[a.index("--desde") + 1] if "--desde" in a else (hoje_editorial() - timedelta(days=30)).isoformat()
+    ate = a[a.index("--ate") + 1] if "--ate" in a else hoje_editorial().isoformat()
     uf = a[a.index("--uf") + 1] if "--uf" in a else ""
     sys.exit(coletar(desde, ate, apenas_uf=uf))

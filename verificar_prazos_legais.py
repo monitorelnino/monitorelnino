@@ -29,6 +29,10 @@ import datetime
 import json
 import pathlib
 import sys
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
+# em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
+# leitor brasileiro viu.
+from coletores_base import hoje_editorial, gravar  # noqa: E402
 
 RAIZ = pathlib.Path(__file__).parent
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA",
@@ -192,10 +196,9 @@ def main():
     validar_registro(reg)
     estados = json.load(open(RAIZ / "data" / "estados.json", encoding="utf-8"))
     meta = json.load(open(RAIZ / "data" / "meta.json", encoding="utf-8"))
-    corte = _data(meta.get("corte", "")) or datetime.date.today()
+    corte = _data(meta.get("corte", "")) or hoje_editorial()
     saida = cruzar(reg, estados, corte)
-    json.dump(saida, open(RAIZ / "data" / "prazos_uf.json", "w", encoding="utf-8", newline="\n"),
-              ensure_ascii=False, indent=1)
+    gravar("prazos_uf.json", saida)   # §229
     digesto(saida)
     if "--simular" in sys.argv:
         simular(saida)

@@ -12,6 +12,9 @@ Uso (na Action, com GITHUB_TOKEN e GITHUB_REPOSITORY no ambiente):
 Sai 0 com "Sem alterações." quando o índice está limpo.
 """
 import argparse, base64, json, os, subprocess, sys, urllib.request
+import pathlib as _pathlib, sys as _sys
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 API = "https://api.github.com"
 
@@ -19,7 +22,7 @@ API = "https://api.github.com"
 def api(metodo, rota, token, dados=None):
     req = urllib.request.Request(API + rota, data=json.dumps(dados).encode() if dados is not None else None, method=metodo,
                                  headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json",
-                                          "Content-Type": "application/json", "User-Agent": "monitorelnino-robo"})
+                                          "Content-Type": "application/json", "User-Agent": ua_de("commit pela API")})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.loads(r.read() or b"{}")
 

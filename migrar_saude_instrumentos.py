@@ -20,6 +20,7 @@ então `melhor_instrumento()` devolve exatamente o que já estava no campo de to
 import json
 import sys
 from pathlib import Path
+from coletores_base import gravar_em  # noqa: E402  (§229: escrita atômica de data/)
 
 RAIZ = Path(__file__).resolve().parent
 CAMINHO = RAIZ / "data" / "saude_uf.json"
@@ -94,7 +95,7 @@ def main() -> int:
         for a in avisos:
             print("  -", a)
         return 1
-    CAMINHO.write_text(json.dumps(migrado, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
+    gravar_em(CAMINHO, migrado)   # §229
     print(f"✓ migrado — {len(migrado['uf'])} UFs, nenhum valor de topo mudou.")
     return 0
 

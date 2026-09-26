@@ -16,6 +16,10 @@ Efeito no site: o campo `vigencia` acompanha o registro na tabela e na consulta.
 Uso: python3 verificar_vigencia.py [--check]
 """
 import datetime, json, pathlib, re, sys
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
+# em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
+# leitor brasileiro viu.
+from coletores_base import hoje_editorial, gravar  # noqa: E402
 
 RAIZ = pathlib.Path(__file__).parent
 LIMIAR = 180
@@ -50,7 +54,7 @@ def main():
     if "--check" in sys.argv:
         n = sum(1 for m in mun if m.get("categoria") == "decreto" and "vigencia" in m)
         print(f"OK vigência automática presente em {n} decretos"); return 0
-    hoje = datetime.date.today()
+    hoje = hoje_editorial()
     ativo = vencido = indet = 0
     for m in mun:
         if m.get("categoria") != "decreto": continue
@@ -62,7 +66,9 @@ def main():
             m["vigencia"] = "ativo"; ativo += 1
         else:
             m["vigencia"] = "prazo_tipico_vencido"; vencido += 1
-    json.dump(mun, open(RAIZ / "data" / "municipios.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    # §229: municipios.json é o banco do projeto. Esta é a SEGUNDA porta que o gravava direto no
+    # destino (a outra era processar_contribuicoes.py), e as duas rodam no ciclo diário.
+    gravar("municipios.json", mun)
     velho = RAIZ / "data" / "vigencia_revisar.json"
     if velho.exists(): velho.unlink()
     print(f"OK vigência automática: {ativo} ativos · {vencido} prazo típico vencido · {indet} indeterminadas (fila humana extinta)")

@@ -18,13 +18,18 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
-try:
-    from coletores_base import UA  # UA canônico do Monitor
-except Exception:  # noqa: BLE001
-    UA = "MonitorElNinoBrasil/1.0"
+from coletores_base import ua_de  # o cliente do projeto, com propósito declarado (§228)
 
-UA_NAVEGADOR = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/141.0.0.0 Safari/537.36")
+# §228 (26/09/2026): havia aqui um `UA_NAVEGADOR` — Chrome completo no Windows — e o laço de
+# medição pedia cada alvo DUAS vezes, uma com o cliente do Monitor e outra com o do navegador,
+# "para separar bloqueio por IP de bloqueio por UA". A intenção de diagnóstico é boa; o meio
+# não é: enviar identidade falsa a um sítio público é o que o CLAUDE.md proíbe sem exceção.
+#
+# E a resposta que a comparação daria não mudaria nada. Diante de bloqueio por agente, a
+# conduta do projeto é a mesma que diante de bloqueio por IP: respeitar e declarar a lacuna.
+# Saber que o sítio entregaria o documento a um navegador só serviria para tentar passar por
+# um — que é justamente o que não se faz aqui. A sonda mede com o cliente do Monitor, que é o
+# cliente que vai coletar, e o que ela mede é o que a coleta vai encontrar.
 
 ALVOS = [
     ("MS · listagem de boletins", "https://www.saude.ms.gov.br/informativos/boletins/"),
@@ -91,11 +96,10 @@ def main() -> int:
     resultado = {}
     for nome, url in ALVOS:
         print(f"--- {nome}\n    {url}")
-        for rotulo, ua in (("UA do Monitor", UA), ("UA de navegador", UA_NAVEGADOR)):
-            r = medir(url, ua)
-            resultado[f"{nome} | {rotulo}"] = r
-            print(f"    [{rotulo}] {json.dumps(r, ensure_ascii=False)}")
-            time.sleep(1.5)
+        r = medir(url, ua_de("diagnóstico de fontes de saúde"))
+        resultado[nome] = r
+        print(f"    {json.dumps(r, ensure_ascii=False)}")
+        time.sleep(1.5)
         print()
     bloqueios = {k: v for k, v in resultado.items() if v.get("status") not in (200, None) or v.get("erro")}
     print(f"=== RESUMO: {len(bloqueios)} de {len(resultado)} tentativas sem HTTP 200 ===")

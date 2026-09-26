@@ -49,6 +49,10 @@ import json
 import sys
 import unicodedata
 from pathlib import Path
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
+# em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
+# leitor brasileiro viu.
+from coletores_base import hoje_editorial, gravar_em  # noqa: E402
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -98,7 +102,7 @@ def main():
     municipios = json.load(open(DATA / "municipios.json", encoding="utf-8"))
     ja_existe = any(m["uf"] == uf and norm(m["nome"]) == norm(nome_oficial) for m in municipios)
 
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     entrada = {
         "acao": "atualizar" if ja_existe else "novo",
         "uf": uf,
@@ -115,7 +119,7 @@ def main():
     saida_p = Path(args.saida)
     fila_saida = json.load(open(saida_p, encoding="utf-8")) if saida_p.exists() else []
     fila_saida.append(entrada)
-    json.dump(fila_saida, open(saida_p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(saida_p, fila_saida)   # §229
 
     print(f"Convertido: {entrada['acao'].upper()} {nome_oficial}/{uf} → {args.categoria}")
     print(f"  fonte: {item['link']}")

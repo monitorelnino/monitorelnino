@@ -42,6 +42,7 @@ import re
 import sys
 import unicodedata
 from pathlib import Path
+from coletores_base import ua_de, hoje_editorial, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -206,7 +207,7 @@ def carregar_texto(uf: str, fixture: str | None) -> str:
     except ImportError:
         sys.exit("Erro: pacote 'requests' ausente (deveria estar em requirements.txt).")
     url = REPOSITORIOS[uf]["url"]
-    resp = requests.get(url, timeout=30, headers={"User-Agent": "MonitorElNinoBrasil/1.0 (Futura Evidence Lab)"})
+    resp = requests.get(url, timeout=30, headers={"User-Agent": ua_de("repositórios estaduais de planos")})
     resp.raise_for_status()
     return resp.text
 
@@ -215,7 +216,7 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
     """Compara os achados do repositório contra a base e devolve propostas."""
     cfg = REPOSITORIOS[uf]
     base_uf = {norm(m["nome"]): m for m in municipios if m["uf"] == uf}
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     propostas = []
     for a in achados:
         chave = norm(a["nome"])
@@ -287,7 +288,7 @@ def main():
 
     saida = DATA / "instrumentos_revisar.json"
     if todas_propostas:
-        json.dump(todas_propostas, open(saida, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        gravar_em(saida, todas_propostas)   # §229
         print(f"\n{len(todas_propostas)} proposta(s) salvas em {saida.relative_to(RAIZ)}")
         print("PRÓXIMO PASSO (manual, obrigatório):")
         print("  Revise o arquivo, apague o que não deve entrar, e então rode:")

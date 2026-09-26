@@ -32,7 +32,7 @@ USO
 """
 import json, sys, time, urllib.parse, urllib.request
 from datetime import date
-from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste
+from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste, ua_de, hoje_editorial
 from classificar_pista_civil import triagem_completa
 from coletar_diarios_municipais import ordem_prioridade
 
@@ -46,7 +46,7 @@ def buscar_searxng(query: str, timeout: int = 20) -> dict:
     """Consulta a instância local (formato JSON habilitado em searxng_settings.yml).
     Falha de rede/parse vira exceção — quem chama decide entre lacuna e retry."""
     url = f"{SEARXNG_URL}?{urllib.parse.urlencode({'q': query, 'format': 'json'})}"
-    req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNinoBrasil/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": ua_de("busca web")})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8", "replace"))
 
@@ -82,7 +82,7 @@ def proximo_lote_automatico(total_lotes: int) -> int:
                                      "ultimo_lote_rodado": lote,
                                      "total_lotes": total_lotes,
                                      "ciclos_completos": ciclos,
-                                     "atualizado_em": date.today().isoformat()})
+                                     "atualizado_em": hoje_editorial().isoformat()})
     return lote
 
 
@@ -141,9 +141,9 @@ def rodar(lote: str | None, tamanho: int) -> int:
                 continue  # mesma menção já está na fila (mesmo padrão §132)
             pistas["pistas"].append({
                 "municipio": nome, "uf": uf, "ibge": cod, "origem": "busca_web",
-                "data": date.today().strftime("%d/%m/%Y"), "url": r.get("url"), "trecho": trecho,
+                "data": hoje_editorial().strftime("%d/%m/%Y"), "url": r.get("url"), "trecho": trecho,
                 "titulo": (r.get("title") or "")[:300],   # 22/09/2026 (§150): título é o sinal mais forte da triagem de confiança
-                "registrado_em": date.today().isoformat(),
+                "registrado_em": hoje_editorial().isoformat(),
                 **triagem_completa(trecho),
                 "status": "pista — promover a registro exige documento primário lido por humano",
             })

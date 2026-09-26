@@ -60,6 +60,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
+from coletores_base import ua_de, hoje_editorial, gravar_em
 from classificador_natureza import classificar, citacao_completa, extrair_data, RE_NUMERO_ATO
 from verificar_recorrencia_uf import checar_recorrencia, registrar_no_historico, REGUA_ANTECIPACAO_RECORRENTE
 
@@ -72,7 +73,7 @@ def buscar_texto(url, timeout=20):
     Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
     falha já usado no resto do pipeline (perda de recall, nunca invenção de texto)."""
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (monitor-el-nino-bot)"})
+        req = urllib.request.Request(url, headers={"User-Agent": ua_de("julgamento de descobertas")})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             raw = resp.read()
             tipo = (resp.headers.get("Content-Type") or "").lower()
@@ -299,7 +300,7 @@ def sincronizar_consist(uf, nova_cat, novo_instr):
         return False, f"{uf} não existe em consist.json (não deveria acontecer — todas as 27 UFs têm entrada)"
     consist[uf]["cat"] = nova_cat
     consist[uf]["instr"] = novo_instr
-    json.dump(consist, open(CONSIST_JSON, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(CONSIST_JSON, consist)
     return True, "atualizado"
 
 
@@ -392,7 +393,7 @@ def aplicar_estadual(uf, texto, numero, data, url, hoje):
         if not ok_areas:
             return False, f"AREAS não pôde ser sincronizado: {motivo_areas}", None, None
 
-    json.dump(estados, open(estados_path, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(estados_path, estados)
     registrar_no_historico(uf, int(hoje[-4:]), numero or "?", "instrumento aplicado automaticamente",
                             texto[:300], f"julgar_e_aplicar_descobertas.py, {hoje}")
     return True, "aplicado", status_novo, antecipacao
@@ -472,12 +473,12 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje):
         "fonte": f"{fonte_base} — ato lido e classificado automaticamente em {hoje} (§158)",
         "url": url, "lat": lat, "lon": lon, "canal": canal,
     })
-    json.dump(municipios, open(mun_path, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(mun_path, municipios)
 
     pontos_path = RAIZ / "data" / "pontos_mapa.json"
     pontos = json.load(open(pontos_path, encoding="utf-8"))
     pontos.append({"nome": nome, "uf": uf, "categoria": "plano", "lat": lat, "lon": lon, "fase": 3})
-    json.dump(pontos, open(pontos_path, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(pontos_path, pontos)
 
     return True, "aplicado"
 
@@ -489,7 +490,7 @@ def registrar_log(entrada):
     log = json.load(open(LOG_BUSCAS, encoding="utf-8")) if LOG_BUSCAS.exists() else \
         {"formato": "registro por execução da bateria/aquisição (§4.1.1c e §4.1.3-iv)", "execucoes": []}
     log["execucoes"].append(entrada)
-    json.dump(log, open(LOG_BUSCAS, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(LOG_BUSCAS, log)
 
 
 def atualizar_gauge_estatico():
@@ -554,7 +555,7 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
         "fonte": f"classificado automaticamente ({hoje}) a partir de {url}",
         "lat": municipio["lat"], "lon": municipio["lon"], "canal": "imprensa",
     })
-    json.dump(atos, open(atos_path, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(atos_path, atos)
     return True, "aplicado"
 
 
@@ -708,7 +709,7 @@ if __name__ == "__main__":
         print("Sem fila de pistas (data/pistas_imprensa.json não existe ainda) — nada a fazer.")
         sys.exit(0)
 
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     fila = json.load(open(PISTAS_IMPRENSA, encoding="utf-8"))
     pendentes = [p for p in fila["pistas"] if p.get("status") == "pendente_confirmacao_documento"]
     resultados = {"APLICADA": 0, "DESCARTADA": 0, "FILA_HUMANA": 0, "REVERTIDA": 0}
@@ -721,5 +722,5 @@ if __name__ == "__main__":
         registrar_log({"data": hoje, "canal": "julgamento_automatico", "alvo": pista["alvo"],
                         "decisao": r["decisao"], "motivo": r.get("motivo", "")})
 
-    json.dump(fila, open(PISTAS_IMPRENSA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(PISTAS_IMPRENSA, fila)
     print(f"Processadas {len(pendentes)} pistas pendentes: {resultados}")

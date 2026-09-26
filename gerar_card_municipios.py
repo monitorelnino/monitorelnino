@@ -26,7 +26,7 @@ def data_de_geracao() -> str:
 
     DEFEITO REAL (§193, 24/09/2026). `scripts/verificar_derivados.sh` fixa SOURCE_DATE_EPOCH no
     corte da edição justamente para a cadeia ser reproduzível, e este arquivo escapava: usava
-    `date.today()`. Enquanto a data local e a do runner coincidem, ninguém vê. Quando a data vira
+    `hoje_editorial()`. Enquanto a data local e a do runner coincidem, ninguém vê. Quando a data vira
     em UTC — o CI de 24/09/2026 rodou 01:21 UTC, com o Brasil ainda em 23/09 —, o runner regenera
     com o dia seguinte, o portão 12 acusa derivado obsoleto e a reprovação não tem nada a ver com
     o ramo que a recebeu. A `main` reprova sozinha pelo mesmo motivo, todo dia, na virada.
@@ -34,9 +34,9 @@ def data_de_geracao() -> str:
     epoch = os.environ.get("SOURCE_DATE_EPOCH")
     if epoch:
         return datetime.fromtimestamp(int(epoch), tz=timezone.utc).date().isoformat()
-    return date.today().isoformat()
+    return hoje_editorial().isoformat()
 from urllib.parse import urlparse
-from coletores_base import ler, gravar, rodar_autoteste
+from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
 from monitorar_imprensa_regional import parece_fonte_oficial
 
 NIVEIS_NO_CARD = ("A", "B")
@@ -201,7 +201,7 @@ def autoteste():
         finally:
             if anterior is None: os.environ.pop("SOURCE_DATE_EPOCH", None)
             else: os.environ["SOURCE_DATE_EPOCH"] = anterior
-        return fixo == "2026-09-10" and outro == "2026-09-21" and livre == date.today().isoformat()
+        return fixo == "2026-09-10" and outro == "2026-09-21" and livre == hoje_editorial().isoformat()
 
     return rodar_autoteste({
         "§193 carimbo do derivado segue o relógio fixado, não o da parede": t_carimbo_segue_o_relogio_fixado,

@@ -26,6 +26,8 @@ USO  python3 gerar_painel.py --sortear --semente 20260902     # só antes da pub
 """
 import hashlib, json, pathlib, random, sys
 from datetime import date
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC).
+from coletores_base import hoje_editorial  # noqa: E402
 
 RAIZ = pathlib.Path(__file__).parent; D = RAIZ / "data"; P = D / "painel"
 UFS = "AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO".split()
@@ -99,7 +101,7 @@ def sortear(semente: int):
     ibges = [m["ibge"] for m in lista]; h = hashlib.sha256(json.dumps(ibges).encode()).hexdigest()
     w(P / "lista.json", {"_governanca": "LISTA IMUTÁVEL do painel amostral (E11, §10-bis). Publicada antes da primeira verificação; troca só por errata. "
                                        "verificar_painel.py bloqueia se o hash mudar. Nunca lida pelo cálculo do índice.",
-                        "semente": semente, "n": len(ibges), "por_uf": POR_UF, "hash_lista": h, "sorteado_em": date.today().isoformat(), "lista_publicada_em": date.today().strftime("%d/%m/%Y"),
+                        "semente": semente, "n": len(ibges), "por_uf": POR_UF, "hash_lista": h, "sorteado_em": hoje_editorial().isoformat(), "lista_publicada_em": hoje_editorial().strftime("%d/%m/%Y"),
                         "marcadores_disponiveis": [m for m in MARCADORES_PREVISTOS if disp[m]], "marcadores_indisponiveis": [m for m in MARCADORES_PREVISTOS if not disp[m]],
                         "forcados": FORCADOS, "criterios": "12 por UF; capitais fora; porte proporcional (mín. 1 por classe); mín. 2 no marcador dominante disponível; mín. 1 controle; sorteio random.Random(semente)",
                         "municipios": [{k: m[k] for k in ("ibge", "nome", "uf", "regiao", "populacao", "porte", "marcadores", "controle") + (("excecao",) if m.get("excecao") else ())} for m in lista],
@@ -109,7 +111,7 @@ def sortear(semente: int):
 
 
 def fichas():
-    lst = j(P / "lista.json"); hoje = date.today().strftime("%d/%m/%Y")
+    lst = j(P / "lista.json"); hoje = hoje_editorial().strftime("%d/%m/%Y")
     vm = {v["ibge"].zfill(7): v for v in j(D / "verificacao_municipal.json")}
     mun = {(m["nome"], m["uf"]): m for m in j(D / "municipios.json")}
     atos = j(D / "atos_resposta.json")["eventos"]
@@ -145,7 +147,7 @@ _NOMES_PAINEL = ("lista.json", "fichas.json", "agregados.json")
 
 
 def autoteste():
-    from coletores_base import rodar_autoteste
+    from coletores_base import rodar_autoteste, hoje_editorial
 
     def _backup():
         return {n: (P / n).read_bytes() if (P / n).exists() else None for n in _NOMES_PAINEL}

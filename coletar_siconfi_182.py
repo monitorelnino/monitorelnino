@@ -55,7 +55,7 @@ import urllib.parse
 from datetime import date
 
 from coletores_base import (abrir_lote_log, buscar, descarregar_lote_log, fechar_lote_log,
-                            ler, log_busca, registrar_lacuna, rodar_autoteste, sha256)
+                            ler, log_busca, registrar_lacuna, rodar_autoteste, sha256, hoje_editorial, gravar)
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "financiamento" / "municipios" / "despesa_182.json"
@@ -96,7 +96,7 @@ CAPITAL_IBGE = {
 
 
 def hoje() -> str:
-    return date.today().strftime("%d/%m/%Y")
+    return hoje_editorial().strftime("%d/%m/%Y")
 
 
 def parse_dca_182(dados, exercicio: int = None) -> dict:
@@ -216,8 +216,7 @@ def gravar(registro: dict) -> None:
     registro["gerado_em"] = hoje()
     registro["resumo"] = calcular_resumo(registro)
     DESTINO.parent.mkdir(parents=True, exist_ok=True)
-    DESTINO.write_text(json.dumps(registro, ensure_ascii=False, indent=1) + "\n",
-                       encoding="utf-8", newline="\n")
+    gravar(DESTINO.relative_to(RAIZ / "data").as_posix(), registro)   # §229
     r = registro["resumo"]
     print(f"→ {DESTINO.relative_to(RAIZ)}: {r['consultados']} consultado(s), "
           f"{r['com_lancamento']} com lançamento, {r['sem_lancamento_182']} sem lançamento na 182, "
@@ -442,7 +441,7 @@ def main() -> int:
     if "--semear" in args:
         reg = esqueleto()
         DESTINO.parent.mkdir(parents=True, exist_ok=True)
-        DESTINO.write_text(json.dumps(reg, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        gravar(DESTINO.relative_to(RAIZ / "data").as_posix(), reg)   # §229
         print(f"→ {DESTINO.relative_to(RAIZ)} semeado (vazio, com a governança declarada).")
         return 0
     return coletar(args)

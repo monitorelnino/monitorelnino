@@ -26,7 +26,7 @@ def checar_cliente_http() -> list:
     """Teste negativo permanente (08/09/2026): toda URL pontuável tem de sair de coletores_base.url_ascii em ASCII puro,
     idêntica quando já estava codificada. Foi um "ê" cru em 69 URLs do ES que deixou 69 registros sem evidência."""
     sys.path.insert(0, str(RAIZ))
-    from coletores_base import url_ascii
+    from coletores_base import url_ascii, hoje_editorial
     erros = []
     exemplo = "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Contingência%20atualizado/2026/%C3%81GUA.pdf"
     if url_ascii(exemplo) != "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/%C3%81GUA.pdf":
@@ -246,7 +246,7 @@ def main() -> int:
         if m.get("categoria") in PONT and str(m.get("url", "")).startswith("http"):
             h = m.get("hash_evidencia")
             if not h or h not in itens or not prova_preservada(itens[h]):
-                if h in LACUNA_DECLARADA and date.today() < LACUNA_BLOQUEIA_A_PARTIR:
+                if h in LACUNA_DECLARADA and hoje_editorial() < LACUNA_BLOQUEIA_A_PARTIR:
                     declarados.append(LACUNA_DECLARADA[h])
                 else:
                     faltam.append(f"{m['nome']}/{m['uf']}")
@@ -274,7 +274,7 @@ def main() -> int:
         print("✗ EVIDÊNCIAS: integridade violada:"); [print("   ", c) for c in corrompidos]; return 1
     total = sum(1 for m in mun if m.get("categoria") in PONT and str(m.get("url", "")).startswith("http"))
     if faltam:
-        regime = "BLOQUEANTE" if date.today() >= BLOQUEIA_A_PARTIR else "aviso (bloqueante a partir de 15/09/2026)"
+        regime = "BLOQUEANTE" if hoje_editorial() >= BLOQUEIA_A_PARTIR else "aviso (bloqueante a partir de 15/09/2026)"
         print(f"{'✗' if regime == 'BLOQUEANTE' else '⚠'} EVIDÊNCIAS: {len(faltam)} de {total} registro(s) pontuável(is) com URL sem evidência preservada — {regime}")
         for f in faltam[:8]: print("   ", f)
         if len(faltam) > 8: print(f"    … e mais {len(faltam) - 8}")

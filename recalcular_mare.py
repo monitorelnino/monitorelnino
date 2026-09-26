@@ -37,6 +37,8 @@ Uso:
   python recalcular_mare.py --write   # regrava data/indice.json
 """
 import json, re, pathlib, sys
+
+from coletores_base import gravar_em  # §229: escrita atômica de data/
 import numpy as np
 
 RAIZ = pathlib.Path(__file__).parent
@@ -451,8 +453,7 @@ def _resumo_verificacao(out):
               "totais_por_nivel": tot, "por_uf": por_uf, "niveis_acima_do_padrao": acima,
               "ultima_rodada_log": ult, "fontes_suspensas_defeso_ultima_rodada": suspensas,
               "fila_citacao_incompleta": fila, "varredura_diarios": varredura}
-    with open(RAIZ / "data" / "verificacao_resumo.json", "w", encoding="utf-8", newline="\n") as f:
-        json.dump(resumo, f, ensure_ascii=False, indent=1); f.write("\n")
+    gravar_em(RAIZ / "data" / "verificacao_resumo.json", resumo)   # §229
     return resumo
 
 def regravar_verificacao_municipal():
@@ -470,9 +471,11 @@ def main():
     alvo_pct = RAIZ / "data" / "percentual_uf.json"
     alvo_rob = RAIZ / "data" / "robustez_mc.json"
     if modo == "--write":
-        json.dump(novo, open(alvo, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
-        json.dump(pct_derivado, open(alvo_pct, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
-        json.dump(robustez, open(alvo_rob, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        # §229: escrita atômica. O índice é o produto do projeto; um JSON truncado aqui é o site
+        # inteiro sem número, e a corrupção de 21/09/2026 provou que a janela existe.
+        gravar_em(alvo, novo)
+        gravar_em(alvo_pct, pct_derivado)
+        gravar_em(alvo_rob, robustez)
         print(f"data/indice.json, data/percentual_uf.json e data/robustez_mc.json regravados · média nacional {media:.1f}")
         # 03/09/2026: o fallback estático do medidor do herói (index.html) é DERIVADO do índice
         _p = RAIZ / "index.html"; _h = _p.read_text(encoding="utf-8"); _m = f"{media:.1f}"; _mbr = _m.replace(".", ",")

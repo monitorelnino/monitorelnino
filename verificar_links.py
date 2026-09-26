@@ -43,6 +43,9 @@ import sys
 from pathlib import Path
 
 RAIZ = Path(__file__).parent
+sys.path.insert(0, str(RAIZ))
+from coletores_base import ua_de  # noqa: E402
+
 DATA = RAIZ / "data"
 ARQUIVOS_HTML = ["index.html", "defesa-civil.html", "proteja-se.html", "prefeituras.html", "obrigado.html"]
 
@@ -107,13 +110,23 @@ def verificar_um(url: str, timeout=15):
     """Faz a requisição real. Isolado nesta função para poder ser substituído
     por uma versão-fixture em --self-test.
     15/09/2026 (auditoria editorial): a rodada de 15/09 mostrou muitos .gov.br devolvendo
-    403/erro de SSL/timeout só com HEAD e um User-Agent de robô explícito ("MonitorElNinoBrasil/1.0…")
-    — os MESMOS domínios (CE, RS, SE, entre outros) tinham respondido 200 minutos antes, na sonda de
-    portais desta sessão, com GET e um User-Agent no formato padrão de robô educado ("Mozilla/5.0
-    (compatible; …)"). Assinatura de bloqueio por WAF a HEAD/UA de robô, não de site fora do ar.
-    Agora tenta GET com esse formato antes de declarar QUEBRADO — HEAD nunca é a palavra final."""
+    403/erro de SSL/timeout só com HEAD — os MESMOS domínios (CE, RS, SE, entre outros) tinham
+    respondido 200 minutos antes, na sonda de portais daquela sessão, com GET. HEAD nunca é a
+    palavra final: muito portal simplesmente não o implementa. Por isso tenta GET antes de
+    declarar QUEBRADO.
+
+    26/09/2026 (§228): a observação original trocava DUAS variáveis ao mesmo tempo — o método
+    (HEAD→GET) e o cliente (UA de robô → UA em formato de navegador) — e atribuía o ganho às
+    duas. Só a primeira metade fica, porque só ela é legítima: tentar GET onde HEAD não é
+    implementado é usar o protocolo; trocar a identidade para passar por um filtro que recusa
+    robô é contornar recusa, e o CLAUDE.md proíbe sem exceção. Se um portal recusa o Monitor
+    identificado, a recusa É o resultado da verificação, e é o resultado que se registra."""
     import requests
-    headers = {"User-Agent": "Mozilla/5.0 (compatible; MonitorElNinoBrasil/1.0; +https://monitorelnino.com.br; verificacao-de-links)"}
+    # §228 (26/09/2026): aqui havia um User-Agent em formato de navegador, e a docstring acima
+    # o JUSTIFICAVA como "robô educado" para portais que recusam HEAD de robô. A regra do
+    # CLAUDE.md não abre exceção: nunca disfarçar o cliente. Se um portal recusa o Monitor
+    # identificado, a recusa é o resultado da verificação — e é o resultado que se registra.
+    headers = {"User-Agent": ua_de("verificação de links")}
     try:
         resp = requests.head(url, timeout=timeout, allow_redirects=True, headers=headers)
         if resp.status_code < 400:

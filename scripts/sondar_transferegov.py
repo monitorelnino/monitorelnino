@@ -5,9 +5,13 @@ sondar_transferegov.py — sonda de UMA VEZ, 2ª rodada (04/09/2026): (a) lista 
 do módulo Discricionárias e Legais e imprime cabeçalho, 2 linhas de amostra, nº de linhas e as
 colunas que parecem IBGE/UF/data/valor/objeto — para desenhar o coletor com evidência.
 """
-import csv, io, json, re, urllib.request, zipfile
+import csv, io, json, pathlib, re, sys, urllib.request, zipfile
 
-UA = {"User-Agent": "Mozilla/5.0 (MonitorElNino/sonda)"}
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402
+
+# §228: era "Mozilla/5.0 (MonitorElNino/sonda)". Nunca disfarçar o cliente.
+UA = {"User-Agent": ua_de("sonda TransfereGov")}
 REPO = "https://repositorio.dados.gov.br/seges/detru/"
 
 def baixar(url, limite=None):

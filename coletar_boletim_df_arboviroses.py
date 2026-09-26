@@ -31,7 +31,7 @@ um link. Se a listagem não trouxer nenhum link nesse padrão, lacuna declarada.
 import io, re, sys
 from datetime import date
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, buscar_com_reserva_wayback, registrar_lacuna, log_busca, rodar_autoteste
+from coletores_base import ler, gravar, buscar, buscar_com_reserva_wayback, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial
 
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://www.saude.df.gov.br"
@@ -71,7 +71,7 @@ def _hoje():
         a = _js.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
         return _dt.datetime.strptime(a, "%d/%m/%Y").date()
     except Exception:  # noqa: BLE001
-        return _dt.date.today()
+        return hoje_editorial()
 
 
 def extrair_link_mais_recente(html: str) -> tuple:

@@ -49,6 +49,7 @@ import urllib.error
 import urllib.request
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
+from coletores_base import ua_de, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
 
 # Fuso da redação: a hora que a figura mostra ao leitor é a de Brasília, não a do runner
 # (que roda em UTC). Sem isto, "consultado às 14:02" apareceria três horas adiantado.
@@ -87,7 +88,7 @@ NOME_PARA_SIGLA = {
     "RORAIMA": "RR", "RIO GRANDE DO SUL": "RS", "SANTA CATARINA": "SC", "SERGIPE": "SE",
     "SÃO PAULO": "SP", "SAO PAULO": "SP", "TOCANTINS": "TO",
 }
-CABECALHO = {"User-Agent": "MonitorElNinoBrasil/2.2 (+https://monitorelnino.com.br; contato via site)"}
+CABECALHO = {"User-Agent": ua_de("sinais de risco")}
 
 # ---------------------------------------------------------------------------
 # Temperatura e qualidade do ar (24/09/2026, decisão editorial). Peso zero, como
@@ -326,7 +327,7 @@ def componentes_de_risco(texto: str) -> list:
 
 def hoje() -> str:
     """Data de hoje no formato dd/mm/aaaa usado em todo o repositório."""
-    return date.today().strftime("%d/%m/%Y")
+    return hoje_editorial().strftime("%d/%m/%Y")
 
 
 def agora() -> str:
@@ -1186,7 +1187,7 @@ def coletar_clima_municipal(args) -> int:
     # carrega a data em que foi lida, e são duas coisas distintas: RENOVAR (o padrão, o que a
     # rotina diária faz) e PREENCHER (`--preencher`, que só busca quem nunca teve leitura, para
     # completar a cobertura nacional sem gastar o teto do dia renovando o que já está lido).
-    HOJE = date.today().strftime("%d/%m/%Y")
+    HOJE = hoje_editorial().strftime("%d/%m/%Y")
     CARIMBO = CARIMBO_CLIMA
     so_faltantes = "--preencher" in args
 

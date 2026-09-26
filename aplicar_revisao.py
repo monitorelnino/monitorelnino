@@ -31,6 +31,10 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
+# em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
+# leitor brasileiro viu.
+from coletores_base import hoje_editorial, gravar  # noqa: E402
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -43,7 +47,7 @@ def carregar(nome):
 
 def salvar(nome, obj):
     """Grava um dicionário como JSON formatado, no mesmo padrão de indentação usado em todo o projeto."""
-    json.dump(obj, open(DATA / nome, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar(nome, obj)   # §229: esta é a porta por onde a revisão humana entra no banco
 
 
 def mesclar(revisao: list[dict], municipios: list[dict], pontos: list[dict]):
@@ -137,7 +141,7 @@ def main():
     if not rodar([sys.executable, "recalcular_mare.py", "--write"], "Recalculando MARÉ (índice + percentual_uf)"):
         sys.exit(1)
 
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     meta = carregar("meta.json")
     meta["corte"] = hoje
     meta["atualizado_em"] = hoje

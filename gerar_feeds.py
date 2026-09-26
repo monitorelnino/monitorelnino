@@ -26,6 +26,11 @@ import json
 import sys
 import xml.sax.saxutils as sx
 from pathlib import Path
+# §227: a data vem da REDAÇÃO, não do runner (que roda em UTC). A rodada de sábado 22h40
+# em Brasília já é domingo em UTC, e o carimbo gravado em data/ sairia um dia adiante do que o
+# leitor brasileiro viu.
+from coletores_base import hoje_editorial  # noqa: E402
+from coletores_base import gravar_em  # §229 (o nome local gravar é um booleano)
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -198,8 +203,12 @@ def executar(data, dados=None, gravar=True):
     ineditos = [x for x in novos if x["id"] not in vistos]
     historico["eventos"].extend(ineditos)
     if gravar:
-        json.dump(agora, open(SNAPSHOT, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
-        json.dump(historico, open(HISTORICO, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        # §229: escrita atômica. `historico_mudancas.json` é um dos dois arquivos APPEND-ONLY do
+        # projeto — o que a regra de merge por base comum protege de perder eventos. Era gravado
+        # aqui direto no destino, e é ele que mais dói truncar: o que se perde não aparece em
+        # nenhum lugar, porque o próprio registro do que existiu é ele.
+        gravar_em(SNAPSHOT, agora)
+        gravar_em(HISTORICO, historico)
         renderizar(historico, agora["nomes"], data)
     return ineditos, historico, agora
 
@@ -239,7 +248,7 @@ def self_test():
 def main():
     """Interface de linha de comando."""
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", default=datetime.date.today().strftime("%d/%m/%Y"))
+    ap.add_argument("--data", default=hoje_editorial().strftime("%d/%m/%Y"))
     ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args()
     if a.self_test:

@@ -21,6 +21,8 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 RAIZ = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ))
+from coletores_base import gravar_em  # noqa: E402  (§229: escrita atômica de data/)
 
 
 def numeros_da_varredura() -> dict | None:
@@ -102,7 +104,7 @@ def main() -> int:
     if not houve_mudanca(anterior, numeros):
         print("contador da cortina: sem mudança nos números — não publica de novo")
         return 0
-    destino.write_text(json.dumps(dado, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    gravar_em(destino, dado)   # §229
     subprocess.run(["git", "-C", str(tmp), "config", "user.name", "monitor-el-nino-bot"], check=True)
     subprocess.run(["git", "-C", str(tmp), "config", "user.email", "bot@users.noreply.github.com"], check=True)
     subprocess.run(["git", "-C", str(tmp), "add", "progresso.json"], check=True)

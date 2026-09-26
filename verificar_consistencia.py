@@ -32,7 +32,7 @@ atos_resposta = json.load(open(f"{D}/atos_resposta.json"))
 CATS = {"plano","plano_antigo","plano_elaboracao","estrutura","decreto","coberto_estadual","nao_el_nino","nao_localizado","nao_verificado"}  # v3.0: estrutura (§5.1-bis)
 # 25/09/2026 (§222): era uma cópia, e ficou para trás quando o canal dos diários consorciados
 # passou a produzir dado de verdade. O conjunto agora vem de quem produz — mesma lição do §213.
-from coletores_base import CANAIS_ATO  # noqa: E402
+from coletores_base import CANAIS_ATO, hoje_editorial  # noqa: E402
 CANAIS = set(CANAIS_ATO)
 
 # 1. Vocabulário controlado e campos obrigatórios
@@ -403,7 +403,7 @@ try:
     if not _cfg_p.exists():
         erro("congelamento (Errata C25): data/congelamento_defeso.json ausente")
     else:
-        _cfg = _js.load(open(_cfg_p, encoding="utf-8")); _hoje = _dt.date.today().isoformat()
+        _cfg = _js.load(open(_cfg_p, encoding="utf-8")); _hoje = hoje_editorial().isoformat()
         if _cfg["desde"] <= _hoje <= _cfg["ate"]:
             _src = open(RAIZ / "recalcular_mare.py", encoding="utf-8").read()
             def _bloco(n):

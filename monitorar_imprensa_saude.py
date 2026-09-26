@@ -45,13 +45,14 @@ import time
 import unicodedata
 import urllib.parse
 import urllib.request
+from coletores_base import ua_de, gravar_em, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 
 FILA = RAIZ / "data" / "pistas_imprensa_saude.json"
 CURSOR = RAIZ / "data" / "imprensa_saude_cursor.json"
 RSS = "https://news.google.com/rss/search"
-UA = {"User-Agent": "MonitorElNinoBrasil/1.0 (+monitorelnino.com.br; descoberta editorial, não indexação)"}
+UA = {"User-Agent": ua_de("descoberta editorial na imprensa de saúde")}
 
 PADROES_FONTE_PROVAVEL_OFICIAL = [
     r"\.gov\.br", r"\.leg\.br", r"\.jus\.br", r"diariomunicipal\.com\.br",
@@ -224,9 +225,9 @@ def carregar_cursor(total):
 
 
 def salvar_cursor(posicao, total):
-    json.dump({"posicao": posicao, "tamanho_universo": total,
-              "atualizado_em": time.strftime("%Y-%m-%d")},
-              open(CURSOR, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    # §229 (atômico) e §227 (data da redação, não do runner).
+    gravar_em(CURSOR, {"posicao": posicao, "tamanho_universo": total,
+                       "atualizado_em": hoje_editorial().isoformat()})
 
 
 def carregar_fila():
@@ -313,7 +314,7 @@ def self_test():
     import tempfile
     with tempfile.TemporaryDirectory() as d:
         cur = pathlib.Path(d) / "cursor.json"
-        json.dump({"posicao": 5, "tamanho_universo": 10}, open(cur, "w", newline="\n"))
+        gravar_em(cur, {"posicao": 5, "tamanho_universo": 10})
         d2 = json.load(open(cur))
         assert d2["posicao"] == 5
     print("✓ mecanismo de cursor (leitura/gravação) OK")
@@ -399,7 +400,7 @@ def main():
             time.sleep(1.0)  # cortesia de taxa, mesmo padrão das outras rotinas do pipeline
 
     salvar_cursor((pos + limite) % len(universo), len(universo))
-    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(FILA, fila)   # §229
 
     print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C); "
           f"{limite} consultados nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")

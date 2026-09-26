@@ -23,12 +23,35 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
 """
 import hashlib, html, json, os, pathlib, re, ssl, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent
 DATA = RAIZ / "data"
 EVID = RAIZ / "evidencias"
 LIMITE_EVIDENCIA = 5 * 1024 * 1024  # bytes
 UA = "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; coletor da Pista A)"
+
+
+def ua_de(proposito: str = "") -> str:
+    """O cliente do projeto, com o PROPÓSITO desta rotina declarado entre colchetes.
+
+    26/09/2026 (§228): uma auditoria contou **vinte e uma strings de User-Agent diferentes** no
+    repositório, cada arquivo com a sua. Duas coisas erradas ao mesmo tempo. A primeira é a
+    cópia que envelhece, já conhecida do §213 e do §222: mudar o endereço de contato no `UA`
+    canônico não mudava nada nos outros vinte. A segunda é pior — **seis dessas strings
+    começavam com `Mozilla/5.0`**, duas delas um User-Agent completo de Chrome no Windows. O
+    CLAUDE.md diz, sem exceção: *nunca disfarçar o cliente*. Disfarce não fica menos disfarce
+    por trazer o nome do projeto entre parênteses, e a razão de alguém escrever `Mozilla/5.0`
+    é exatamente passar por filtro que recusa robô — o que é contornar recusa.
+
+    Distinguir uma sonda de um coletor nos registros da fonte é um objetivo legítimo, e é o que
+    esta função serve: MESMA identidade, propósito declarado. Quem recebe o pedido continua
+    sabendo quem somos, e passa a saber também por que estamos ali.
+
+    A política de robots (§185) depende disto: `can_fetch` é avaliado contra `UA`, e o rastro
+    de `data/robots_registro.json` grava o cliente. Módulo que enviava outra string era medido
+    contra a regra de um agente e registrado como outro."""
+    return f"{UA} [{proposito}]" if proposito else UA
 NIVEIS = ("nao_verificado", "nacional", "estadual", "municipal_completo")
 EXECUTOR = "robo" if os.environ.get("GITHUB_ACTIONS") else "claude"
 
@@ -47,8 +70,31 @@ CANAIS_ATO = ("DOM", "DOM-consorciado", "DOU", "repositorio_estadual", "orgao_es
               "site_municipal", "imprensa", "\u2014")
 
 
+# Fuso da REDAÇÃO. A data de uma edição é compromisso com o leitor brasileiro, e o runner do
+# GitHub Actions roda em UTC: a rodada de sábado 22h40 em Brasília já é domingo em UTC, e a edição
+# sairia datada de um dia que no Brasil ainda não começou.
+#
+# 26/09/2026 (§227): isto vivia só em `atualizar.py`, e o portão de cadência também só conferia
+# `atualizar.py`. Enquanto isso o `hoje()` DESTE arquivo — o que os dezesseis coletores chamam,
+# vinte e nove vezes só nos `coletar_*.py` — devolvia `date.today()`, a data do runner. A função
+# certa existia, o portão existia, e a porta por onde todo mundo passava era a errada. Mesmo
+# defeito de escopo do §213, do §222 e do §226: a lição aplicada num lugar só.
+FUSO_EDITORIAL = ZoneInfo("America/Sao_Paulo")
+
+
+def hoje_editorial(agora=None) -> date:
+    """Data de hoje no fuso da redação (America/Sao_Paulo), não no do runner.
+
+    `agora` existe para o portão poder provar o caso que importa sem esperar as 22h: um instante
+    que já virou o dia em UTC mas não em Brasília. Sem o relógio injetável, um teste só pegaria a
+    regressão nas três horas do dia em que os dois fusos discordam."""
+    return (agora or datetime.now(FUSO_EDITORIAL)).astimezone(FUSO_EDITORIAL).date()
+
+
 def hoje() -> str:
-    return date.today().isoformat()
+    """Data editorial em ISO. É o que vai a carimbo de arquivo, `consultado_em` e data de registro
+    — tudo que o leitor lê como "quando isto foi visto"."""
+    return hoje_editorial().isoformat()
 
 
 def ler(nome, padrao=None):
@@ -78,7 +124,20 @@ def gravar(nome, obj, compacto: bool = False):
     inválido). Corrigido: grava num arquivo temporário no mesmo diretório e substitui via
     os.replace(), que em POSIX é atômico — o arquivo final é sempre a versão antiga completa
     ou a nova completa, nunca uma mistura truncada."""
-    p = DATA / nome
+    return gravar_em(DATA / nome, obj, compacto)
+
+
+def gravar_em(p, obj, compacto: bool = False):
+    """Como `gravar`, mas recebe o CAMINHO já montado.
+
+    26/09/2026 (§229): existe porque uma auditoria encontrou **trinta e três escritas de JSON
+    direto no destino** espalhadas pelo projeto, fora desta função — entre elas o `log_buscas.json`
+    (o livro-razão de 24 MB), o `municipios.json` (o banco), o `historico_mudancas.json` e o
+    `atos_resposta.json`, gravados por `julgar_e_aplicar_descobertas.py`, que roda no ciclo. A
+    correção de 21/09 tinha entrado em `gravar()`, e quem montava o caminho por conta própria não
+    passava por ela. Pedir o *nome* relativo a `data/` era justamente o atrito que fazia essas
+    chamadas ficarem de fora; com o caminho aceito, a migração é local e mecânica."""
+    p = pathlib.Path(p)
     # 25/09/2026 (§221): `compacto` para o arquivo que a PÁGINA carrega inteiro. A indentação
     # existe para deixar o diff do robô legível, e vale a pena na maioria dos arquivos; nos que o
     # navegador baixa por completo ela custa 38% do peso. A decisão já tinha sido tomada uma vez,
@@ -227,17 +286,56 @@ def setor_da_url(url: str) -> str:
 
 def registrar_fonte_suspensa(url: str, corpo: bytes, padrao: str) -> None:
     """Grava a detecção (hash + 500 primeiras letras) e a contagem por UF em data/calendario/fontes_suspensas.json."""
-    import datetime as _dt
     h = hashlib.sha256(corpo).hexdigest()
     (DATA / "calendario").mkdir(parents=True, exist_ok=True)
     p = DATA / "calendario" / "fontes_suspensas.json"
     d = json.load(open(p, encoding="utf-8")) if p.exists() else {"_governanca": "Fontes oficiais que responderam com página de período eleitoral (detector de PR-N0 §1.5). Nunca 'nada localizado': fonte suspensa (defeso). A reabertura é o flag voltando a false, com data.", "fontes": {}}
-    hoje = _dt.date.today().isoformat()
-    f = d["fontes"].setdefault(url, {"primeira_deteccao": hoje, "ultima_deteccao": hoje, "padrao": padrao, "hash": h, "amostra": corpo[:2000].decode("utf-8", "replace")[:500], "suspensa": True, "setor": setor_da_url(url)})
-    f.update({"ultima_deteccao": hoje, "padrao": padrao, "hash": h, "suspensa": True, "setor": f.get("setor") or setor_da_url(url)})
-    json.dump(d, open(p, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1); open(p, "a", newline="\n").write("\n")
+    # §227: era `datetime.date.today()`, a data do runner em UTC. `primeira_deteccao` e
+    # `ultima_deteccao` dizem ao leitor QUANDO a fonte entrou em defeso; um dia de diferença
+    # muda a leitura de um prazo legal.
+    agora = hoje()
+    f = d["fontes"].setdefault(url, {"primeira_deteccao": agora, "ultima_deteccao": agora, "padrao": padrao, "hash": h, "amostra": corpo[:2000].decode("utf-8", "replace")[:500], "suspensa": True, "setor": setor_da_url(url)})
+    f.update({"ultima_deteccao": agora, "padrao": padrao, "hash": h, "suspensa": True, "setor": f.get("setor") or setor_da_url(url)})
+    # §227: era `json.dump(open(...))`, escrita direto no destino — a corrupção de 21/09/2026
+    # podia acontecer aqui do mesmo jeito, e este arquivo é gravado no meio de uma varredura.
+    gravar("calendario/fontes_suspensas.json", d)
     (EVID).mkdir(parents=True, exist_ok=True)
     (EVID / f"defeso_{h[:16]}.txt").write_text(corpo[:20000].decode("utf-8", "replace"), encoding="utf-8", newline="\n")
+
+
+def descomprimir(corpo: bytes, codificacao: str | None) -> bytes:
+    """Corpo em claro, quando o servidor comprimiu. Função pura.
+
+    26/09/2026 (§230, medido): `https://diariooficial.to.gov.br/` responde
+    `Content-Encoding: gzip` **mesmo sem o pedido negociar compressão** — `buscar()` devolvia
+    2.966 bytes de gzip cru que, descomprimidos, são 16.386 bytes de HTML ("Diário Oficial do
+    Estado"). É falha silenciosa e da pior espécie: `detectar_muro_de_robo`, `detectar_defeso` e
+    qualquer expressão regular passam a olhar ruído binário, e `preservar_evidencia` gravaria o
+    blob comprimido com extensão `.html`. Mesma família do §186 e do §187 — resposta com 200 que
+    parece conteúdo e não é —, com o agravante de que aqui o próprio detector fica cego.
+
+    Confere a MARCA além do cabeçalho: servidor que declara gzip e manda texto existe, e
+    descomprimir às cegas levantaria erro onde hoje o conteúdo chega bom. Quando a declaração e a
+    marca discordam, fica o corpo como veio — a única leitura que não inventa nada."""
+    if not corpo or not codificacao:
+        return corpo
+    cod = codificacao.strip().lower()
+    try:
+        if cod == "gzip" and corpo[:2] == b"\x1f\x8b":
+            import gzip as _gzip
+            return _gzip.decompress(corpo)
+        if cod == "deflate":
+            import zlib as _zlib
+            try:
+                return _zlib.decompress(corpo)
+            except _zlib.error:
+                return _zlib.decompress(corpo, -_zlib.MAX_WBITS)   # deflate cru, sem cabeçalho zlib
+        if cod == "br":
+            import brotli as _brotli                               # dependência opcional
+            return _brotli.decompress(corpo)
+    except Exception:  # noqa: BLE001 — corpo que não descomprime volta como veio, nunca perdido
+        return corpo
+    return corpo
 
 
 def url_ascii(url: str) -> str:
@@ -461,8 +559,8 @@ def contexto_tls():
         return None
 
 
-def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
-    """GET simples com User-Agent do projeto. Levanta a exceção — quem chama decide
+def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
+    """GET simples com User-Agent do projeto, UMA tentativa (ver `buscar`, que repete). Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
     contra os padrões de página de defeso e registra a fonte como suspensa (PR-N0 §1.5).
 
@@ -477,6 +575,7 @@ def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
     with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
         corpo = r.read()
         ct = (r.headers.get("Content-Type") or "").lower()
+        corpo = descomprimir(corpo, r.headers.get("Content-Encoding"))
     if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):
         try:
             registrar_acesso_contra_robots(host, url, origem)
@@ -496,6 +595,84 @@ def buscar(url: str, timeout: int = 40, origem: str = None) -> bytes:
             except Exception:  # noqa: BLE001
                 pass
     return corpo
+
+
+# Quanto esperar antes de repetir, por status HTTP. Nasceu local em coletar_diarios_municipais.py
+# em 25/09/2026, depois de uma medição na varredura nacional: **63 dos 505 primeiros municípios**
+# viraram lacuna por `HTTP 503 Service Unavailable` — 12 %, e nenhum deles bloqueio de acesso.
+# Indisponibilidade temporária é a fonte dizendo "tente mais tarde", e a resposta certa a isso é
+# tentar mais tarde.
+#
+# 26/09/2026 (§226): a política sobe para cá porque a lição valia para os dezesseis coletores e
+# estava aplicada em UM. Os outros quinze chamavam `buscar()` direto e desistiam na primeira
+# tentativa — mesmo defeito de escopo do §213 e do §222, agora numa regra de rede em vez de num
+# vocabulário. Quem faz o pedido é quem tem de saber esperar, e o pedido é feito aqui.
+ESPERAS_429 = (30,)        # limite de taxa: a fonte manda esperar, e esperar é a resposta certa
+ESPERAS_5XX = (5, 15)      # indisponibilidade temporária: "tente mais tarde", crescendo
+# Conexão que nem chegou a virar conversa HTTP — reset, handshake TLS incompleto, DNS mudo,
+# timeout. UMA repetição curta, e não duas como no 5xx, por uma razão de custo medida: host
+# realmente fora do ar paga esta espera em CADA url de uma varredura, e uma varredura tem
+# milhares. Cinco segundos por url morta é aceitável; vinte, não.
+#
+# Que uma repetição basta veio de medição: em 24/09/2026, **105 leituras de PDF** falharam com
+# `URLError` num único dia, nos sítios de defesa civil de SE e AM. Testados em 26/09 sem
+# nenhuma mudança de código, os três documentos que a amostra apontava responderam na hora, com
+# 5,8 MB, 642 kB e 7,7 MB de PDF válido. Não era fonte fora do ar: era uma tarde ruim de rede
+# tratada como ausência de documento.
+ESPERAS_CONEXAO = (5,)
+
+
+def esperas_para(codigo: int) -> tuple:
+    """Sequência de esperas, em segundos, antes de repetir um pedido que devolveu `codigo`.
+    Vazia quando repetir não ajuda. Função pura.
+
+    4xx (fora 429) não repete: consulta errada não melhora com repetição, e repetir só dobraria a
+    carga sobre APIs públicas mantidas por projetos sem fins lucrativos. 429 repete UMA vez, depois
+    da espera que a fonte pede — respeitar um limite de taxa é honrar a espera, não desistir na
+    hora nem insistir sem parar."""
+    if codigo == 429:
+        return ESPERAS_429
+    if codigo >= 500:
+        return ESPERAS_5XX
+    return ()
+
+
+def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dormir=None) -> bytes:
+    """`buscar_uma_vez` com a espera do §226: repete quando a fonte pede tempo (429 e 5xx) ou
+    quando a conexão nem virou conversa HTTP (reset, TLS, DNS, timeout), e sobe na hora quando
+    repetir não ajudaria — 4xx e muro de robô, que são recusa e não indisponibilidade.
+
+    É a porta por onde todo coletor pede rede, e a correção entra aqui de propósito: dezesseis
+    coletores passam a esperar sem mudar uma linha de chamada em nenhum deles. Quem mocka `buscar`
+    num autoteste continua funcionando — o mock substitui a função inteira, repetição incluída.
+
+    `buscar_fn` e `dormir` existem para o autoteste, que precisa provar a espera sem rede e sem
+    esperar de verdade."""
+    _dormir = dormir or time.sleep
+
+    def uma_vez():
+        if buscar_fn is not None:
+            return buscar_fn(url, timeout=timeout)
+        return buscar_uma_vez(url, timeout=timeout, origem=origem)
+
+    restantes = None
+    while True:
+        try:
+            return uma_vez()
+        except urllib.error.HTTPError as e:
+            # HTTPError é subclasse de URLError: tem de vir ANTES, senão todo status viraria
+            # "erro de conexão" e perderia a distinção entre recusa e indisponibilidade.
+            if restantes is None:
+                restantes = list(esperas_para(e.code))
+            if not restantes:
+                raise
+            _dormir(restantes.pop(0))
+        except (urllib.error.URLError, TimeoutError):
+            if restantes is None:
+                restantes = list(ESPERAS_CONEXAO)
+            if not restantes:
+                raise
+            _dormir(restantes.pop(0))
 
 
 # Códigos em que o servidor NÃO falhou: ele respondeu, e a resposta foi "não". Cair na

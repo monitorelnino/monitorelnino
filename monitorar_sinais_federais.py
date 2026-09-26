@@ -28,11 +28,12 @@ import re
 import sys
 import urllib.parse
 import urllib.request
+from coletores_base import ua_de, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 FILA = RAIZ / "data" / "pistas_sinais.json"
 TERMOS_DOU = ["El Niño", "proteção e defesa civil", "plano de contingência"]
-UA = {"User-Agent": "MonitorElNinoBrasil/1.0"}
+UA = {"User-Agent": ua_de("sinais federais")}
 
 
 def _hash(p):
@@ -174,7 +175,7 @@ def main():
         return self_test()
     fila = carregar_fila()
     novas = registrar(fila, vigiar_dou() + vigiar_stf())
-    json.dump(fila, open(FILA, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(FILA, fila)   # §229
     try:
         ult = json.load(open(RAIZ / "data" / "boletins.json", encoding="utf-8")).get("ultimo_boletim")
         print(f"(vigia de boletins delegada a atualizar_boletins.py — último registrado: nº {ult})")

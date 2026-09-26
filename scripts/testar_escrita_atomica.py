@@ -90,10 +90,79 @@ def t_temporario_fica_no_mesmo_diretorio():
         return pathlib.Path(origem).parent == pathlib.Path(destino).parent
 
 
+# Escrita de JSON que NÃO passa pela porta atômica. Cada um destes está aqui com motivo
+# declarado — a lista é curta de propósito, e crescer nela é decisão, não descuido.
+FORA_DA_PORTA = {
+    "coletores_base.py": "é a própria porta",
+    "gerar_lai.py": "escreve no repositório PRIVADO da editoria, fora desta árvore",
+    "gerar_dados_abertos.py": "derivado em dados-abertos/, conferido byte a byte pelo portão 12",
+    "gerar_feeds.py": "index.json de feeds/ é derivado; os dois arquivos de data/ já migraram",
+    "gerar_painel.py": "derivado do painel, conferido pelo portão 12",
+    "verificar_robustez_atualizacao.py": "escreve FIXTURE de teste em diretório temporário",
+    "testar_escrita_atomica.py": "é este arquivo: a própria expressão de busca casaria consigo",
+}
+
+
+def t_json_de_data_passa_pela_porta_atomica():
+    """26/09/2026 (§229): nenhuma escrita de JSON em `data/` fora de `gravar`/`gravar_em`.
+
+    A correção de 21/09/2026 entrou em `gravar()` e ficou lá. Uma auditoria de 26/09 encontrou
+    **trinta e três escritas diretas** espalhadas pelo projeto, entre elas o `log_buscas.json`
+    (o livro-razão de 24 MB), o `historico_mudancas.json` (o outro arquivo append-only), o
+    `municipios.json` (o banco, por TRÊS portas diferentes), o `atos_resposta.json` e o próprio
+    `indice.json` — e `julgar_e_aplicar_descobertas.py`, que grava cinco deles, roda no ciclo.
+
+    A razão de terem ficado de fora é de projeto: `gravar()` pedia o NOME relativo a `data/`, e
+    quem já tinha o caminho montado achava mais fácil abrir o arquivo. Daí `gravar_em(caminho)`.
+
+    O que o teste lê é o texto do código, e é suficiente: a forma `json.dump(obj, open(...))` e a
+    forma `caminho.write_text(json.dumps(...))` são as duas maneiras de escrever JSON sem passar
+    pela porta, e as duas são reconhecíveis na linha."""
+    import ast
+
+    def _nome(no):
+        """'json.dump' para um Attribute/Name, ou ''."""
+        if isinstance(no, ast.Attribute):
+            return f"{_nome(no.value)}.{no.attr}".lstrip(".")
+        return no.id if isinstance(no, ast.Name) else ""
+
+    achados = []
+    for arq in sorted(list(RAIZ.glob("*.py")) + list(RAIZ.glob("scripts/*.py"))):
+        if arq.name in FORA_DA_PORTA:
+            continue
+        try:
+            arvore = ast.parse(arq.read_text(encoding="utf-8"))
+        except SyntaxError as e:
+            achados.append(f"{arq.name}: não compila ({e})")
+            continue
+        for no in ast.walk(arvore):
+            if not isinstance(no, ast.Call):
+                continue
+            f = _nome(no.func)
+            # 26/09/2026: a primeira versão desta trava casava LINHA por linha, e
+            # `analisar_decretos.py` escapou porque `json.dump(` e `open(` estavam em linhas
+            # diferentes. A árvore sintática não se engana com quebra de linha.
+            if f == "json.dump" and len(no.args) >= 2 and isinstance(no.args[1], ast.Call) \
+                    and _nome(no.args[1].func) == "open":
+                achados.append(f"{arq.relative_to(RAIZ).as_posix()}:{no.lineno}")
+            if f.endswith(".write_text") and no.args and isinstance(no.args[0], ast.Call) \
+                    and _nome(no.args[0].func) == "json.dumps":
+                achados.append(f"{arq.relative_to(RAIZ).as_posix()}:{no.lineno}")
+            if f.endswith(".write_text") and no.args and isinstance(no.args[0], ast.BinOp) \
+                    and isinstance(no.args[0].left, ast.Call) and _nome(no.args[0].left.func) == "json.dumps":
+                achados.append(f"{arq.relative_to(RAIZ).as_posix()}:{no.lineno}")
+    if achados:
+        print("    escrita de JSON fora da porta atômica: " + ", ".join(achados[:8]))
+        print("    Conserto: `from coletores_base import gravar_em` e `gravar_em(caminho, obj)`.")
+        return False
+    return True
+
+
 if __name__ == "__main__":
     sys.exit(rodar_autoteste({
         "grava e relê o que gravou": t_grava_e_rele,
         "§209 cadeado momentâneo do Windows não perde a escrita": t_cadeado_momentaneo_nao_perde_a_escrita,
         "falta de permissão de verdade levanta, e não deixa .tmp órfão": t_permissao_de_verdade_levanta_e_nao_deixa_lixo,
         "o temporário nasce no mesmo diretório do destino": t_temporario_fica_no_mesmo_diretorio,
+        "§229 nenhum JSON de data/ é escrito fora da porta atômica": t_json_de_data_passa_pela_porta_atomica,
     }))

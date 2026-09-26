@@ -46,6 +46,7 @@ Variáveis de ambiente: NETLIFY_AUTH_TOKEN e NETLIFY_SITE_ID. Sem elas, o
 script pula com aviso e código 0 (não bloqueia o job).
 """
 import datetime, json, os, pathlib, re, sys, unicodedata, urllib.request
+from coletores_base import ua_de, hoje_editorial, gravar  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 ARQ_MUN = RAIZ / "data" / "municipios.json"
@@ -76,7 +77,7 @@ def api(caminho, token):
     """Requisição autenticada à API do Netlify (submissions), reaproveitando token e site id do ambiente."""
     req = urllib.request.Request(
         "https://api.netlify.com/api/v1" + caminho,
-        headers={"Authorization": f"Bearer {token}", "User-Agent": "MonitorElNino/1.0"})
+        headers={"Authorization": f"Bearer {token}", "User-Agent": ua_de("contribuições públicas")})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
 
@@ -131,7 +132,7 @@ def baixar_documento(url):
     try:
         ok, _, motivo = host_oficial(url)
         if not ok: return False, "", motivo
-        opener = urllib.request.build_opener(_SemRedirect()); opener.addheaders = [("User-Agent", "MonitorElNino/1.0")]
+        opener = urllib.request.build_opener(_SemRedirect()); opener.addheaders = [("User-Agent", ua_de("contribuições públicas"))]
         with opener.open(url, timeout=45) as r:
             if r.status != 200:
                 return False, "", f"http {r.status}"
@@ -186,7 +187,7 @@ def main():
     municipios = json.load(open(ARQ_MUN))
     pontos = json.load(open(ARQ_PONTOS))
     ref = {(norm(r["nome"]), r["uf"]): r for r in json.load(open(ARQ_REF))}
-    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    hoje = hoje_editorial().strftime("%d/%m/%Y")
     aprovadas = mudou = reservadas = 0
 
     def recusa(sid, uf, municipio, motivo):
@@ -285,8 +286,11 @@ def main():
         mudou = 1
 
     if mudou:
-        json.dump(municipios, open(ARQ_MUN, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
-        json.dump(pontos, open(ARQ_PONTOS, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        # §229: municipios.json é o banco do projeto, e era gravado direto no destino —
+        # a corrupção de 21/09/2026 (JSON truncado por processo interrompido) podia
+        # acontecer aqui, no arquivo mais caro de perder de todos.
+        gravar(ARQ_MUN.name, municipios)
+        gravar(ARQ_PONTOS.name, pontos)
         # Regrava indice.json e percentual_uf.json DERIVADOS da nova base — sem
         # isto, o portão de consistência acusaria "percentual_uf desatualizado"
         # e bloquearia o job mesmo para escrituras neutras ao escore. Como a R7
@@ -298,8 +302,10 @@ def main():
         if r.returncode != 0:
             print("  ✗ recálculo derivado falhou — abortando para bloquear a publicação.")
             return 1
-    json.dump(sorted(processadas), open(ARQ_PROC, "w", newline="\n"), indent=0)
-    json.dump(recusadas, open(ARQ_REC, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    # §229: as duas listas de controle da contribuição pública também atomicamente. A de
+    # processadas é o que impede a MESMA contribuição de entrar duas vezes.
+    gravar(ARQ_PROC.name, sorted(processadas))
+    gravar(ARQ_REC.name, recusadas)
     print(f"Contribuições: {aprovadas} aprovada(s) · {reservadas} reservada(s) à revisão humana (R7) · "
           f"{len(recusadas)} recusada(s) acumuladas no log.")
     if reservadas:

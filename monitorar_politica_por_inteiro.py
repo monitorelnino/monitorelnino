@@ -40,6 +40,7 @@ import sys
 import unicodedata
 import urllib.request
 from pathlib import Path
+from coletores_base import ua_de, gravar  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -73,7 +74,7 @@ def nrm(s):
 
 def _get(url, timeout=30):
     """GET simples com User-Agent identificado; devolve texto ou levanta a exceção de rede."""
-    req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNinoBrasil/1.0 (+https://monitorelnino.com.br)"})
+    req = urllib.request.Request(url, headers={"User-Agent": ua_de("vigia da política")})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read().decode("utf-8", errors="replace")
 
@@ -238,8 +239,10 @@ def executar(dry_run=False, buscar=_get):
         return resumo
     resumo["pistas_imprensa"] = len(imp.registrar(fila_imp, novas_imp))
     resumo["pistas_federais"] = len(msf.registrar(fila_fed, novas_fed))
-    json.dump(fila_imp, open(DATA / "pistas_imprensa.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
-    json.dump(fila_fed, open(DATA / "pistas_sinais.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    # §229: as duas filas de revisão humana, atômicas. Perder metade de uma fila por
+    # interrupção é perder trabalho de julgamento que ninguém sabe que faltou.
+    gravar("pistas_imprensa.json", fila_imp)
+    gravar("pistas_sinais.json", fila_fed)
     assert _hash_banco() == antes, "TRAVA VIOLADA: o banco mudou durante o vigia da Política Por Inteiro"
     return resumo
 

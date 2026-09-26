@@ -5,7 +5,7 @@
    "status_robots": "proibe",
    "crawl_delay": 30.0,
    "primeiro_acesso": "2026-09-23",
-   "total_acessos": 4,
+   "total_acessos": 5,
    "acessos": [
     {
      "url": "https://defesacivil.mt.gov.br/",
@@ -30,9 +30,15 @@
      "quando": "2026-09-23T21:42:41Z",
      "origem": "§185 releitura MT",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://defesacivil.mt.gov.br/",
+     "quando": "2026-09-26T13:36:55Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-09-23"
+   "ultimo_acesso": "2026-09-26"
   },
   "www.defesacivil.mt.gov.br": {
    "status_robots": "proibe",
@@ -1262,7 +1268,7 @@
    "status_robots": "permite",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 29,
+   "total_acessos": 41,
    "acessos": [
     {
      "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2609907&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22&size=50",
@@ -1437,15 +1443,87 @@
      "quando": "2026-09-25T12:51:55Z",
      "origem": "claude",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3303500&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-26T11:25:39Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4205407&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-26T11:25:56Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2610905&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-26T11:26:01Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1303908&published_since=2026-01-01&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+     "quando": "2026-09-26T11:26:07Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=4202404&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T11:31:35Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=28&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:38Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=32&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:39Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=35&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:40Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=33&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:41Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=31&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:41Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=42&published_since=2026-06-29&size=1",
+     "quando": "2026-09-26T12:42:42Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2705309&size=1",
+     "quando": "2026-09-26T13:04:25Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-09-25"
+   "ultimo_acesso": "2026-09-26"
   },
   "zenodo.org": {
    "status_robots": "permite",
    "crawl_delay": 10.0,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 24,
+   "total_acessos": 25,
    "acessos": [
     {
      "url": "https://zenodo.org/api/records/20752238",
@@ -1590,9 +1668,15 @@
      "quando": "2026-09-25T13:14:21Z",
      "origem": "claude",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://zenodo.org/api/records?q=infogripe&size=10",
+     "quando": "2026-09-26T11:53:49Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-09-25"
+   "ultimo_acesso": "2026-09-26"
   },
   "office365prodam-my.sharepoint.com": {
    "status_robots": "proibe",
@@ -1614,6 +1698,177 @@
     }
    ],
    "ultimo_acesso": "2026-09-25"
+  },
+  "www.diariomunicipal.sc.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": 10.0,
+   "primeiro_acesso": "2026-09-26",
+   "total_acessos": 22,
+   "acessos": [
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/",
+     "quando": "2026-09-26T11:54:02Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/robots.txt",
+     "quando": "2026-09-26T11:54:12Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22&view=rss",
+     "quando": "2026-09-26T11:54:29Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22",
+     "quando": "2026-09-26T11:54:39Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano%20de%20conting%C3%AAncia%22",
+     "quando": "2026-09-26T11:55:04Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss",
+     "quando": "2026-09-26T11:55:46Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss&AtoASolrDocument_page=3",
+     "quando": "2026-09-26T11:55:56Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026",
+     "quando": "2026-09-26T11:56:06Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22plano+de+conting%C3%AAncia%22&dataInicial=01%2F09%2F2026&dataFinal=05%2F09%2F2026&view=rss",
+     "quando": "2026-09-26T11:56:25Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22&dataInicial=01%2F01%2F2026&dataFinal=26%2F09%2F2026&view=rss",
+     "quando": "2026-09-26T11:56:35Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&q=zzqqxxnadaaqui",
+     "quando": "2026-09-26T11:56:51Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?r=site/index&view=rss&q=zzqqxxnadaaqui",
+     "quando": "2026-09-26T11:57:00Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/",
+     "quando": "2026-09-26T11:57:12Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026&view=rss",
+     "quando": "2026-09-26T11:57:30Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&view=rss",
+     "quando": "2026-09-26T11:57:40Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/01/2026&dataFinal=26/09/2026&view=rss",
+     "quando": "2026-09-26T11:57:50Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22",
+     "quando": "2026-09-26T11:58:02Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
+     "quando": "2026-09-26T11:58:12Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
+     "quando": "2026-09-26T11:58:43Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/?q=%22plano%20de%20conting%C3%AAncia%22&dataInicial=01/09/2026&dataFinal=05/09/2026",
+     "quando": "2026-09-26T11:58:58Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/atos/8684094",
+     "quando": "2026-09-26T11:59:18Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.diariomunicipal.sc.gov.br/atos/8684094",
+     "quando": "2026-09-26T11:59:43Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-26"
+  },
+  "validator.w3.org": {
+   "status_robots": "permite",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-09-26",
+   "total_acessos": 1,
+   "acessos": [
+    {
+     "url": "https://validator.w3.org/nu/?out=json&doc=https%3A%2F%2Fwww.saude.df.gov.br%2Finformes-dengue-chikungunya-zika-febre-amarela",
+     "quando": "2026-09-26T12:45:50Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-26"
+  },
+  "www.saopaulo.sp.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-09-26",
+   "total_acessos": 1,
+   "acessos": [
+    {
+     "url": "https://www.saopaulo.sp.gov.br/wp-json/wp/v2/media?search=plancon&per_page=100&_fields=source_url,title,date",
+     "quando": "2026-09-26T13:50:47Z",
+     "origem": "claude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-09-26"
   }
  }
 }

@@ -43,7 +43,7 @@ from datetime import date
 
 from coletores_base import (buscar, ler, gravar, log_busca, registrar_lacuna, rodar_autoteste,
                             preservar_evidencia, parse_busca_dou, varrer_busca_dou,
-                            FormatoDoDOUMudou, RAIZ)
+                            FormatoDoDOUMudou, RAIZ, hoje_editorial)
 
 INICIO_CICLO = "2026-06-29"          # primeiro boletim do Painel El Niño; o ciclo começa aqui
 RITMO_S = 2.0                        # §11: no máximo uma requisição a cada 2 s por domínio
@@ -168,7 +168,7 @@ def montar_registro(itens: list, desde: str, ate: str, strings: list,
         "orgao": "Ministério da Saúde (DOU, seção 1)",
         "janela": {"de": desde, "ate": ate},
         "strings_buscadas": strings,
-        "consultado_em": date.today().strftime("%d/%m/%Y"),
+        "consultado_em": hoje_editorial().strftime("%d/%m/%Y"),
         "resultados_lidos": len(itens),
         "declaracoes": declaracoes,
         "para_leitura_humana": fila,
@@ -186,7 +186,7 @@ def montar_registro(itens: list, desde: str, ate: str, strings: list,
 
 def coletar(args) -> int:
     desde = args[args.index("--desde") + 1] if "--desde" in args else INICIO_CICLO
-    ate = date.today().isoformat()
+    ate = hoje_editorial().isoformat()
     d0, d1 = date.fromisoformat(desde), date.fromisoformat(ate)
     sinais = ler("saude_sinais.json")
     itens, falhas, incompletas = [], [], []
@@ -239,7 +239,7 @@ def coletar(args) -> int:
     f = sinais["fontes"]["espin"]
     f.update({"status": "coletado", "consultado_em": bloco["consultado_em"],
               "documento": f"DOU seção 1, {desde} a {ate}"})
-    sinais["gerado_em"] = date.today().strftime("%d/%m/%Y")
+    sinais["gerado_em"] = hoje_editorial().strftime("%d/%m/%Y")
     gravar("saude_sinais.json", sinais)
     # R7: nada entra no banco por classificação automática. O que o coletor achou — declaração
     # inclusive — vai para a fila de leitura humana, que é o veículo do projeto para isso.

@@ -32,7 +32,7 @@ Contrato da API validado ao vivo em 27/08/2026 (schema: total_gazettes,
 gazettes[{territory_id,date,url,territory_name,state_code,excerpts,edition,txt_url}]).
 """
 import json, pathlib, sys, time, urllib.parse, urllib.request
-from coletores_base import preservar_evidencia, preservar_texto_integral
+from coletores_base import preservar_evidencia, preservar_texto_integral, ua_de, gravar_em, hoje_editorial
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "pistas_querido_diario.json"
@@ -50,7 +50,7 @@ CAPITAIS = {"Rio Branco":"AC","Maceió":"AL","Manaus":"AM","Macapá":"AP","Salva
 def _get(params):
     """Requisição HTTP à API do Querido Diário com User-Agent identificado e tratamento de timeout."""
     url = API + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNino/1.0 (monitorelnino.com.br)"})
+    req = urllib.request.Request(url, headers={"User-Agent": ua_de("consulta ao Querido Diário")})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
 
@@ -134,8 +134,7 @@ def rodar(alvos=None, ufs=None):
     for uf in (ufs if ufs is not None else UFS_LAC):
         varrer_uf(uf, ref, pistas)
     execucao["ufs_varridas"] = ufs if ufs is not None else UFS_LAC
-    json.dump({"execucao": execucao, "pistas": pistas},
-              open(DESTINO, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(DESTINO, {"execucao": execucao, "pistas": pistas})   # §229
     n_cob = sum(1 for p in pistas if p.get("cobertura_qd"))
     print(f"✓ {len(pistas)} entradas ({n_cob} com cobertura) → {DESTINO.name} — triagem humana pendente")
     return 0
@@ -155,9 +154,10 @@ def main():
                 achados.append({"semente": sem, "territorio": g.get("territory_name"),
                                 "uf": g.get("state_code"), "data": g.get("date"),
                                 "url_pdf": g.get("url"), "excerto": (g.get("excerpts") or [""])[0][:250]})
-        json.dump({"execucao": time.strftime("%Y-%m-%d"), "sementes": sementes, "achados": achados},
-                  open(RAIZ / "data" / "termos_candidatos_qd.json", "w", encoding="utf-8", newline="\n"),
-                  ensure_ascii=False, indent=1)
+        # §229 e §227: atômico, e a data da redação — `time.strftime` usa o relógio do
+        # processo, que no runner é UTC.
+        gravar_em(RAIZ / "data" / "termos_candidatos_qd.json",
+                  {"execucao": hoje_editorial().isoformat(), "sementes": sementes, "achados": achados})
         print(f"OK {len(achados)} excertos nacionais colhidos -> termos_candidatos_qd.json (triagem humana)")
         return 0
     if "--uf" in sys.argv:

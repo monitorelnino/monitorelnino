@@ -20,6 +20,7 @@ triagem, fechando a janela de retenção de dado pessoal na máquina do editor
 fonte de verdade para contato; a fila local é descartável por desenho.
 """
 import datetime, json, os, pathlib, sys, urllib.parse, urllib.request
+from coletores_base import ua_de, hoje_editorial, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 DOMINIOS_OFICIAIS = (".gov.br", "diariomunicipal.com.br", "doe.", "dom.", "in.gov.br")
@@ -33,7 +34,7 @@ def main() -> int:
         return 0
     url = f"https://api.netlify.com/api/v1/sites/{site}/submissions?access_token={token}"
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNinoBrasil/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": ua_de("verificação de contribuições")})
         subs = json.load(urllib.request.urlopen(req, timeout=30))
     except Exception as e:
         print(f"[aviso] falha ao consultar a API do Netlify: {e}")
@@ -46,7 +47,7 @@ def main() -> int:
 
     destino = RAIZ / "fila_contribuicoes"
     destino.mkdir(exist_ok=True)
-    hoje = datetime.date.today().isoformat()
+    hoje = hoje_editorial().isoformat()
     fila, incompletas = [], []
     for s in subs:
         d = s.get("data", {})
@@ -71,8 +72,8 @@ def main() -> int:
         item["triagem"] = checks
         (fila if checks["campos_obrigatorios"] and checks["municipio_existe_ibge"] else incompletas).append(item)
 
-    json.dump({"gerada_em": hoje, "fila": fila, "incompletas": incompletas},
-              open(destino / f"fila_{hoje}.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    gravar_em(destino / f"fila_{hoje}.json",
+              {"gerada_em": hoje, "fila": fila, "incompletas": incompletas})   # §229
 
     md = [f"# Fila de conferência de contribuições · {hoje}",
           f"\n{len(fila)} para verificação humana · {len(incompletas)} incompletas\n"]

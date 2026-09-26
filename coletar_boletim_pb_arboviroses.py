@@ -29,7 +29,7 @@ a linha) e registra a divergência em `divergencia_fonte` — não silencia nem 
 """
 import io, re, sys
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste
+from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, hoje_editorial
 
 RAIZ = Path(__file__).resolve().parent
 BASE = "https://paraiba.pb.gov.br"
@@ -65,7 +65,7 @@ def _hoje():
         a = _js.load(open(RAIZ / "data" / "meta.json", encoding="utf-8")).get("atualizado_em")
         return _dt.datetime.strptime(a, "%d/%m/%Y").date()
     except Exception:  # noqa: BLE001
-        return _dt.date.today()
+        return hoje_editorial()
 
 
 def destino_do_intersticio(corpo: bytes) -> str:

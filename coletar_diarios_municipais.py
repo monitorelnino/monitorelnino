@@ -28,7 +28,7 @@ from coletores_base import (buscar, preservar_evidencia, preservar_texto_integra
                             DECISOES_LOG,
                             abrir_lote_log, fechar_lote_log, descarregar_lote_log,
                             abrir_lote_livro, fechar_lote_livro, descarregar_lote_livro,
-                            rodar_autoteste)
+                            rodar_autoteste, hoje_editorial)
 from classificar_pista_civil import triagem_completa
 
 FONTE_QD = "Querido Diário (diário municipal)"
@@ -98,8 +98,9 @@ def tamanho_para_cobrir(n_pendentes: int, hoje_iso: str, ate_iso: str, minimo: i
     return max(minimo, min(maximo, math.ceil(n_pendentes / dias)))
 
 
-ESPERAS_429 = (30,)        # limite de taxa: a fonte manda esperar, e esperar é a resposta certa
-ESPERAS_5XX = (5, 15)      # indisponibilidade temporária: "tente mais tarde", crescendo
+# 26/09/2026 (§226): as duas tuplas de espera nasceram aqui e subiram para coletores_base, porque
+# a lição (63 de 505 municípios perdidos por 503) valia para os dezesseis coletores e estava
+# aplicada em um só. Não fica cópia: é o que o §213 e o §222 ensinaram a não fazer.
 
 
 # Decisões que ESTE canal produz. Existe nomeado por causa do §213: o §194 criou
@@ -120,19 +121,10 @@ def buscar_com_espera(url: str, timeout: int = 30, buscar_fn=None, dormir=None) 
 
     4xx (fora 429) continua subindo na hora: consulta errada não melhora com repetição, e repetir
     só dobraria a carga sobre uma API pública mantida por um projeto sem fins lucrativos."""
-    buscar_fn = buscar_fn or buscar
-    dormir = dormir or time.sleep
-    restantes = None
-    while True:
-        try:
-            return buscar_fn(url, timeout=timeout)
-        except urllib.error.HTTPError as e:
-            if restantes is None:
-                restantes = list(ESPERAS_429 if e.code == 429 else
-                                 ESPERAS_5XX if e.code >= 500 else ())
-            if not restantes:
-                raise
-            dormir(restantes.pop(0))
+    # §226: a espera é a de `coletores_base.buscar`, que a aplica a todo coletor do projeto. Esta
+    # função continua existindo, com a mesma assinatura, por dois motivos: os testes dela são a
+    # regressão do achado de 25/09, e `consultar_qd` a usa nos dois domínios do Querido Diário.
+    return buscar(url, timeout=timeout, buscar_fn=buscar_fn, dormir=dormir)
 
 
 def consultar_qd(params: str, timeout: int = 30) -> bytes:
@@ -196,7 +188,7 @@ def cobertura_qd(cod: str, desde: str, resposta_com_diario: bool = False):
     if cache.get("janela") != desde:
         cache = {"_governanca": cache.get("_governanca", ""), "janela": desde, "municipios": {}}
     mun = cache.setdefault("municipios", {})
-    hoje = date.today().isoformat()
+    hoje = hoje_editorial().isoformat()
     # 25/09/2026 (§212, terceiro arquivo): o acerto em cache NÃO pode gravar. Antes, toda chamada
     # regravava `cobertura_qd.json` (418 kB) e, pior, lia e regravava `verificacao_municipal.json`
     # (2 MB) — nos 3.428 municípios da varredura, cerca de 13 GB de entrada e saída para não mudar
@@ -272,7 +264,7 @@ def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "",
             print(f"varredura integral (--tudo): {len(pend)} pendentes desde {pendentes_desde}; consultando todos nesta rodada")
         else:
             # varredura integral: próximos ainda não consultados na janela; tamanho dimensionado para cobrir todos até `ate`
-            tamanho = tamanho_para_cobrir(len(pend), date.today().isoformat(), ate or date.today().isoformat(), tamanho)
+            tamanho = tamanho_para_cobrir(len(pend), hoje_editorial().isoformat(), ate or hoje_editorial().isoformat(), tamanho)
             alvo = pend[:tamanho]
             print(f"varredura integral: {len(pend)} pendentes desde {pendentes_desde}; hoje {len(alvo)} (fim previsto {ate or 'hoje'})")
     else:
@@ -368,7 +360,7 @@ def _varrer(alvo, por_cod, desde, atos, pistas, vistos, vistos_pistas):
                 continue  # mesma menção, mesmo documento — já está na fila (achado 21/09/2026)
             pistas["pistas"].append({"municipio": ref["nome"], "uf": ref["uf"], "ibge": cod, "origem": "querido_diario",
                                     "data": iso_para_br(p["data"]), "url": p["url"], "trecho": p["trecho"],
-                                    "hash_evidencia": h, "registrado_em": date.today().isoformat(),
+                                    "hash_evidencia": h, "registrado_em": hoje_editorial().isoformat(),
                                     # 03/09/2026: triagem/autoridade/objeto/destino só ORDENAM a fila; nunca decidem sozinhos (§3.2, §5.2.1-bis)
                                     **triagem_completa(p["trecho"]),
                                     "status": "pista — promover a registro exige documento primário lido por humano"})

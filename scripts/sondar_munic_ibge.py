@@ -40,8 +40,11 @@ import sys
 import urllib.error
 import urllib.request
 import zipfile
+import pathlib as _pathlib, sys as _sys
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
-UA = {"User-Agent": "MonitorElNino/3.1 (sonda MUNIC; pesquisa de interesse publico)"}
+UA = {"User-Agent": ua_de("sonda MUNIC")}
 
 RAIZ_FTP = "https://ftp.ibge.gov.br/Perfil_Municipios/"
 
