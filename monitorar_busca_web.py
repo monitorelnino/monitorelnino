@@ -32,7 +32,7 @@ USO
 """
 import json, sys, time, urllib.parse, urllib.request
 from datetime import date
-from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste
+from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste, ua_de
 from classificar_pista_civil import triagem_completa
 from coletar_diarios_municipais import ordem_prioridade
 
@@ -46,7 +46,7 @@ def buscar_searxng(query: str, timeout: int = 20) -> dict:
     """Consulta a instância local (formato JSON habilitado em searxng_settings.yml).
     Falha de rede/parse vira exceção — quem chama decide entre lacuna e retry."""
     url = f"{SEARXNG_URL}?{urllib.parse.urlencode({'q': query, 'format': 'json'})}"
-    req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNinoBrasil/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": ua_de("busca web")})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8", "replace"))
 

@@ -23,10 +23,10 @@ Sem rede: lacuna declarada, nada muda.  python coletar_execucao_mps.py --autotes
 import csv, hashlib, io, json, re, sys, urllib.request, zipfile
 from collections import defaultdict
 from datetime import date
-from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste
+from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de
 
 BASE = "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/"
-UA = {"User-Agent": "MonitorElNinoBrasil/3.0 (coletor execução das MPs; dados abertos)"}
+UA = {"User-Agent": ua_de("execução das MPs")}
 UFS = {"AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"}
 
 # (id da MP, órgão subordinado/superior, ações) — vocabulário do arquivo, códigos confirmados

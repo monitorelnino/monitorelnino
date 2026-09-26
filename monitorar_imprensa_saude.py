@@ -45,13 +45,14 @@ import time
 import unicodedata
 import urllib.parse
 import urllib.request
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 
 FILA = RAIZ / "data" / "pistas_imprensa_saude.json"
 CURSOR = RAIZ / "data" / "imprensa_saude_cursor.json"
 RSS = "https://news.google.com/rss/search"
-UA = {"User-Agent": "MonitorElNinoBrasil/1.0 (+monitorelnino.com.br; descoberta editorial, não indexação)"}
+UA = {"User-Agent": ua_de("descoberta editorial na imprensa de saúde")}
 
 PADROES_FONTE_PROVAVEL_OFICIAL = [
     r"\.gov\.br", r"\.leg\.br", r"\.jus\.br", r"diariomunicipal\.com\.br",

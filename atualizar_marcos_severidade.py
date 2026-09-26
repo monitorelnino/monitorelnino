@@ -50,6 +50,8 @@ import json
 import sys
 from pathlib import Path
 
+from coletores_base import ua_de  # §228
+
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
 
@@ -139,7 +141,9 @@ def buscar_recurso_monitor_secas(sessao=None):
     rede não permitir a consulta (esperado no sandbox de edição)."""
     import requests
     url = f"{CKAN_BASE}/package_search"
-    resp = requests.get(url, params={"q": "monitor de secas", "rows": 5}, timeout=30)
+    # §228: o pedido ia sem identificar o cliente.
+    resp = requests.get(url, params={"q": "monitor de secas", "rows": 5}, timeout=30,
+                        headers={"User-Agent": ua_de("marcos de severidade")})
     resp.raise_for_status()
     corpo = resp.json()
     if not corpo.get("success") or not corpo["result"]["results"]:

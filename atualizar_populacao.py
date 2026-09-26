@@ -22,6 +22,7 @@ Uso:
   python atualizar_populacao.py --check   # só valida o arquivo existente
 """
 import json, pathlib, sys, urllib.request
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "populacao_censo2022.json"
@@ -56,7 +57,7 @@ APURACOES = {
 
 def buscar():
     """Busca a população por município no Censo 2022 (API SIDRA do IBGE), com paginação e tratamento de timeout."""
-    req = urllib.request.Request(URL_SIDRA, headers={"User-Agent": "MonitorElNino/1.0"})
+    req = urllib.request.Request(URL_SIDRA, headers={"User-Agent": ua_de("população IBGE")})
     with urllib.request.urlopen(req, timeout=120) as r:
         dados = json.load(r)
     # linha 0 é cabeçalho; D1C = código do município (7 díg.), V = valor

@@ -6,14 +6,17 @@ nomes de parâmetros e a forma da resposta para puxar a execução (empenhado/li
 duas MPs do ciclo: MP 1.367 (MMA: Ibama 44201, ICMBio 44207) e MP 1.384 (MDA/Conab, MDS).
 NUNCA imprime a chave.
 """
-import json, os, urllib.error, urllib.parse, urllib.request
+import json, os, pathlib, sys, urllib.error, urllib.parse, urllib.request
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402
 
 API = "https://api.portaldatransparencia.gov.br/api-de-dados"
 
 def testar(caminho, chave, params):
     url = f"{API}{caminho}?{urllib.parse.urlencode(params)}"
     print(f"\n-- {caminho} {params}")
-    req = urllib.request.Request(url, headers={"chave-api-dados": chave.strip(), "User-Agent": "MonitorElNinoBrasil/3.0", "Accept": "application/json"})
+    req = urllib.request.Request(url, headers={"chave-api-dados": chave.strip(), "User-Agent": ua_de("sonda Portal da Transparência"), "Accept": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             corpo = r.read(3000).decode("utf-8", "replace")
@@ -31,7 +34,7 @@ def sondar_execucao_mensal():
         url = f"https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/{mes}"
         print(f"\n=== execução mensal {mes}: {url}")
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (MonitorElNino/sonda)"})
+            req = urllib.request.Request(url, headers={"User-Agent": ua_de("sonda Portal da Transparência")})
             with urllib.request.urlopen(req, timeout=600) as r:
                 bruto = r.read()
             print(f"   bytes: {len(bruto):,}")

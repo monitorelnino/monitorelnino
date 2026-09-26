@@ -24,7 +24,7 @@ visível no card (§155) até o documento aparecer. Tudo tolerante a falha: rota
 USO   python seguir_pistas.py [--limite 20] [--refazer-dias 7]   ·   python seguir_pistas.py --autoteste
 """
 import argparse, datetime, hashlib, json, re, sys, urllib.parse, urllib.request
-from coletores_base import ler, gravar, rodar_autoteste
+from coletores_base import ler, gravar, rodar_autoteste, ua_de
 from monitorar_imprensa_regional import parece_fonte_oficial
 
 STATUS_PENDENTE = "pista — promover a registro exige documento primário lido por humano"
@@ -46,7 +46,7 @@ def _limpo(html):
 def buscar_html(url, timeout=20):
     """HTML cru (os links importam). Tolerante: None em falha."""
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (monitor-el-nino-bot)"})
+        req = urllib.request.Request(url, headers={"User-Agent": ua_de("seguir pistas")})
         with urllib.request.urlopen(req, timeout=timeout) as r:
             if "pdf" in (r.headers.get("Content-Type") or "").lower():
                 return None

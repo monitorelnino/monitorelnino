@@ -18,6 +18,7 @@ Sem texto obtenível → 'texto_pendente' (a ausência fica registrada, nunca in
 Uso: python3 analisar_decretos.py [--check]
 """
 import json, pathlib, re, sys, time, urllib.parse, urllib.request
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 FILA = RAIZ / "data" / "decretos_conteudo_revisar.json"
@@ -42,7 +43,7 @@ ROTA_FEDERAL = ["fide", "reconhecimento federal", "s2id", "cobrade"]
 def _qd(params):
     """Consulta a API do Querido Diário para um excerto específico, reaproveitando o mesmo limitador de taxa do restante do pipeline."""
     url = QD + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNino/1.0 (monitorelnino.com.br)"})
+    req = urllib.request.Request(url, headers={"User-Agent": ua_de("análise de decretos")})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
 

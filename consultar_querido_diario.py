@@ -32,7 +32,7 @@ Contrato da API validado ao vivo em 27/08/2026 (schema: total_gazettes,
 gazettes[{territory_id,date,url,territory_name,state_code,excerpts,edition,txt_url}]).
 """
 import json, pathlib, sys, time, urllib.parse, urllib.request
-from coletores_base import preservar_evidencia, preservar_texto_integral
+from coletores_base import preservar_evidencia, preservar_texto_integral, ua_de
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "pistas_querido_diario.json"
@@ -50,7 +50,7 @@ CAPITAIS = {"Rio Branco":"AC","Maceió":"AL","Manaus":"AM","Macapá":"AP","Salva
 def _get(params):
     """Requisição HTTP à API do Querido Diário com User-Agent identificado e tratamento de timeout."""
     url = API + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNino/1.0 (monitorelnino.com.br)"})
+    req = urllib.request.Request(url, headers={"User-Agent": ua_de("consulta ao Querido Diário")})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
 

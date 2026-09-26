@@ -49,6 +49,7 @@ import urllib.error
 import urllib.request
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 # Fuso da redação: a hora que a figura mostra ao leitor é a de Brasília, não a do runner
 # (que roda em UTC). Sem isto, "consultado às 14:02" apareceria três horas adiantado.
@@ -87,7 +88,7 @@ NOME_PARA_SIGLA = {
     "RORAIMA": "RR", "RIO GRANDE DO SUL": "RS", "SANTA CATARINA": "SC", "SERGIPE": "SE",
     "SÃO PAULO": "SP", "SAO PAULO": "SP", "TOCANTINS": "TO",
 }
-CABECALHO = {"User-Agent": "MonitorElNinoBrasil/2.2 (+https://monitorelnino.com.br; contato via site)"}
+CABECALHO = {"User-Agent": ua_de("sinais de risco")}
 
 # ---------------------------------------------------------------------------
 # Temperatura e qualidade do ar (24/09/2026, decisão editorial). Peso zero, como

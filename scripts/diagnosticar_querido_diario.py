@@ -11,9 +11,12 @@ pelo varredor antigo) vs UM território; (2) sintaxe do querystring (aspas/OR); 
 """
 import json, time, urllib.parse, urllib.request, urllib.error, sys
 from pathlib import Path
+import pathlib as _pathlib, sys as _sys
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 API = "https://queridodiario.ok.org.br/api/gazettes"
-UA = {"User-Agent": "MonitorElNino/3.1 (diagnostico; monitorelnino.com.br)"}
+UA = {"User-Agent": ua_de("diagnóstico do Querido Diário")}
 SAIDA = Path("leituras_qd"); SAIDA.mkdir(exist_ok=True)
 
 

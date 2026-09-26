@@ -27,7 +27,7 @@ Parsers provados por fixture (--autoteste). Uso: --semear · --autoteste · (col
 """
 import hashlib, json, os, pathlib, sys, time, urllib.error, urllib.parse
 from datetime import date
-from coletores_base import buscar, log_busca, registrar_lacuna, ler, gravar, rodar_autoteste, referencia_ibge, sha256
+from coletores_base import buscar, log_busca, registrar_lacuna, ler, gravar, rodar_autoteste, referencia_ibge, sha256, ua_de
 
 RAIZ = pathlib.Path(__file__).parent; FIN = RAIZ / "data" / "financiamento"
 API = "https://api.portaldatransparencia.gov.br/api-de-dados"
@@ -178,7 +178,7 @@ def coletar(uf=None):
         params = {"codigoIBGE": cod, "ano": date.today().year, "pagina": 1, "itens": 100}
         url = f"{API}/transferencias-voluntarias?{urllib.parse.urlencode(params)}"
         try:
-            req = urllib.request.Request(url, headers={"chave-api-dados": chave, "User-Agent": "MonitorElNinoBrasil/2.3"})
+            req = urllib.request.Request(url, headers={"chave-api-dados": chave, "User-Agent": ua_de("financiamento")})
             with urllib.request.urlopen(req, timeout=40) as r: bruto = r.read()
             dados = json.loads(bruto.decode("utf-8", "replace")); registrar_consulta("/transferencias-voluntarias", params, bruto, len(dados)); itens += parse_transferencias(dados); ok += 1
             time.sleep(1.0)  # 60 req/min

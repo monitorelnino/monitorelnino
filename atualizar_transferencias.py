@@ -52,7 +52,7 @@ import requests
 # 26/09/2026 (§226): este script era o único do pipeline que pedia rede sem passar pelo
 # `coletores_base` — `requests` direto, sem espera, sem lacuna declarada e sem escrita atômica.
 # As três coisas vêm daqui agora, em vez de uma quarta cópia de cada regra.
-from coletores_base import esperas_para, registrar_lacuna, gravar
+from coletores_base import esperas_para, registrar_lacuna, gravar, ua_de
 
 API_BASE = "https://api.portaldatransparencia.gov.br/api-de-dados"
 ENDPOINTS = {
@@ -118,7 +118,11 @@ def consultar_endpoint(endpoint: str, params: dict, api_key: str, limiter: RateL
        coisas distintas, e esta função confundia as duas.
 
     `pedir_fn`, `dormir` e `lacuna_fn` existem para o autoteste provar as três coisas sem rede."""
-    pedir = pedir_fn or (lambda url: requests.get(url, headers={"chave-api-dados": api_key}, timeout=30))
+    # §228: o cabeçalho levava a chave e NÃO levava o cliente — o Portal recebia um pedido
+    # autenticado de agente anônimo.
+    pedir = pedir_fn or (lambda url: requests.get(
+        url, headers={"chave-api-dados": api_key, "User-Agent": ua_de("transferências do Portal")},
+        timeout=30))
     _dormir = dormir or time.sleep
     _lacuna = lacuna_fn or registrar_lacuna
     resultados = []

@@ -40,6 +40,7 @@ import sys
 import unicodedata
 import urllib.request
 from pathlib import Path
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -73,7 +74,7 @@ def nrm(s):
 
 def _get(url, timeout=30):
     """GET simples com User-Agent identificado; devolve texto ou levanta a exceção de rede."""
-    req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNinoBrasil/1.0 (+https://monitorelnino.com.br)"})
+    req = urllib.request.Request(url, headers={"User-Agent": ua_de("vigia da política")})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read().decode("utf-8", errors="replace")
 

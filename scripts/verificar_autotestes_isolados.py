@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-verificar_autotestes_isolados.py — nenhum autoteste ALTERA `data/` · §220
-=========================================================================
+verificar_autotestes_isolados.py — todo autoteste roda VERDE e nenhum ALTERA `data/` · §220, §228
+=================================================================================================
 POR QUE ESTE PORTÃO EXISTE. Em 25/09/2026 o autoteste de um coletor gravou **oito execuções
 no log de buscas real**, com uma fonte "teste" que não existe e uma consulta que nunca
 aconteceu. Ele mockava a rede, os arquivos e o livro de fontes — e não mockava
@@ -19,6 +19,19 @@ e é o que reprova. O caso que originou o portão cai no segundo grupo: ele acre
 POR QUE NÃO BASTA LER O CÓDIGO. As travas estruturais dos coletores procuram `open(...)` e
 `gravar(...)` no próprio fonte, e não veem a escrita que acontece três chamadas abaixo, dentro
 de `coletores_base`. Só a execução mostra.
+
+O SEGUNDO TRABALHO DESTE PORTÃO (§228, 26/09/2026). Ele roda TODOS os autotestes do projeto, e
+até 26/09 imprimia os vermelhos e devolvia zero, com a nota "reportado pelos portões próprios".
+Medido naquele dia: dos trinta e tantos módulos com autoteste, **vinte e um não têm portão
+próprio** — entre eles `coletar_espin`, `coletar_sinais_risco`, `coletar_dda`,
+`coletar_transferegov` e os quatro boletins estaduais. Para esses, autoteste vermelho aparecia no
+log e nada reprovava. Como este é o único portão que os alcança todos, autoteste vermelho passou
+a ser portão vermelho aqui.
+
+CUIDADO AO RODAR LOCALMENTE: o portão compara `data/` antes e depois de cada autoteste, então
+qualquer coleta rodando em paralelo na mesma cópia do repositório aparece como "autoteste que
+alterou data/" — acusação falsa, do ambiente e não do código. Em CI o processo é único e a
+comparação é limpa.
 
 USO
   python scripts/verificar_autotestes_isolados.py            # roda todos
@@ -120,9 +133,20 @@ def main(args) -> int:
         print("    Conserto: mockar TAMBÉM o que grava indiretamente — registrar_lacuna e log_busca\n"
               "    chamam gravar() dentro de coletores_base, mesmo com a rede mockada.")
         return 1
-    print(f"✓ AUTOTESTES ISOLADOS OK — {len(scripts)} autoteste(s) rodados, nenhum ALTEROU data/."
-          + (f" ({len(quebrados)} autoteste(s) vermelho(s), reportado(s) pelos portões próprios.)"
-             if quebrados else ""))
+    if quebrados:
+        # 26/09/2026 (§228): antes daqui, autoteste vermelho era IMPRESSO e o portão devolvia zero,
+        # "reportado pelos portões próprios". Medido: dos trinta e tantos módulos com autoteste,
+        # **vinte e um não têm portão próprio** — entre eles coletar_espin, coletar_sinais_risco,
+        # coletar_dda, coletar_transferegov e os quatro boletins estaduais. Para esses, um autoteste
+        # vermelho aparecia no log e nada reprovava. Este é o único portão que alcança todos, e ele
+        # delegava a portões que não existiam.
+        print(f"\n✗ AUTOTESTES ISOLADOS: autoteste vermelho é portão vermelho. "
+              f"{len(quebrados)} de {len(scripts)}:")
+        for rel, erro in quebrados:
+            print(f"    {rel}: {erro}")
+        return 1
+    print(f"✓ AUTOTESTES ISOLADOS OK — {len(scripts)} autoteste(s) rodados, todos verdes, "
+          "nenhum ALTEROU data/.")
     return 0
 
 

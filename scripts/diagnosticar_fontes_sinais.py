@@ -13,9 +13,13 @@ baixa o HTML, encontra os scripts, baixa cada script e extrai por expressão
 regular todas as URLs e caminhos de API que aparecem no código — depois
 testa cada candidato encontrado. Nada é gravado em data/.
 """
-import json, re, urllib.parse, urllib.request, urllib.error
+import json, pathlib, re, sys, urllib.parse, urllib.request, urllib.error
 
-UA = {"User-Agent": "Mozilla/5.0 (MonitorElNino/diagnostico)"}
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402
+
+# §228: era "Mozilla/5.0 (MonitorElNino/diagnostico)". Nunca disfarçar o cliente.
+UA = {"User-Agent": ua_de("diagnóstico de fontes de sinais")}
 
 ALVOS = {
     "monitor_secas": "https://monitordesecas.ana.gov.br/",

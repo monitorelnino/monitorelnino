@@ -20,11 +20,14 @@ import urllib.error
 import urllib.request
 from datetime import date, timedelta
 
-UA_MONITOR = "Monitor El Nino Brasil (monitorelnino.com.br; contato@futuraevidencelab.com.br)"
-UA_NAVEGADOR = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/128.0 Safari/537.36"
-)
+# §228 (26/09/2026): havia aqui um `UA_NAVEGADOR` com o User-Agent completo de um Chrome no
+# Windows. Não era usado por nenhuma chamada — código morto —, e sai de todo modo: deixar um
+# disfarce pronto no arquivo é convite para a próxima pessoa usá-lo. O cliente é um só, com o
+# propósito declarado. Nunca disfarçar o cliente.
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402
+
+UA_MONITOR = ua_de("sonda do boletim InfoGripe")
 
 # Páginas candidatas a listagem/apontador para o boletim mais recente —
 # nenhuma foi confirmada ainda; testamos todas e registramos o que cada

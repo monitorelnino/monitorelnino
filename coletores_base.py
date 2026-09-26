@@ -30,6 +30,28 @@ DATA = RAIZ / "data"
 EVID = RAIZ / "evidencias"
 LIMITE_EVIDENCIA = 5 * 1024 * 1024  # bytes
 UA = "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; coletor da Pista A)"
+
+
+def ua_de(proposito: str = "") -> str:
+    """O cliente do projeto, com o PROPÓSITO desta rotina declarado entre colchetes.
+
+    26/09/2026 (§228): uma auditoria contou **vinte e uma strings de User-Agent diferentes** no
+    repositório, cada arquivo com a sua. Duas coisas erradas ao mesmo tempo. A primeira é a
+    cópia que envelhece, já conhecida do §213 e do §222: mudar o endereço de contato no `UA`
+    canônico não mudava nada nos outros vinte. A segunda é pior — **seis dessas strings
+    começavam com `Mozilla/5.0`**, duas delas um User-Agent completo de Chrome no Windows. O
+    CLAUDE.md diz, sem exceção: *nunca disfarçar o cliente*. Disfarce não fica menos disfarce
+    por trazer o nome do projeto entre parênteses, e a razão de alguém escrever `Mozilla/5.0`
+    é exatamente passar por filtro que recusa robô — o que é contornar recusa.
+
+    Distinguir uma sonda de um coletor nos registros da fonte é um objetivo legítimo, e é o que
+    esta função serve: MESMA identidade, propósito declarado. Quem recebe o pedido continua
+    sabendo quem somos, e passa a saber também por que estamos ali.
+
+    A política de robots (§185) depende disto: `can_fetch` é avaliado contra `UA`, e o rastro
+    de `data/robots_registro.json` grava o cliente. Módulo que enviava outra string era medido
+    contra a regra de um agente e registrado como outro."""
+    return f"{UA} [{proposito}]" if proposito else UA
 NIVEIS = ("nao_verificado", "nacional", "estadual", "municipal_completo")
 EXECUTOR = "robo" if os.environ.get("GITHUB_ACTIONS") else "claude"
 

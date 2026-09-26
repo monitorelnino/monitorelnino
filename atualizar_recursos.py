@@ -10,6 +10,8 @@ endpoint inofensivo por construção.
 """
 import json, pathlib, sys, urllib.request
 
+from coletores_base import ua_de  # §228: pedia o SIDRA sem identificar o cliente
+
 RAIZ = pathlib.Path(__file__).parent
 DEST = RAIZ / "data" / "recursos_uf.json"
 SENT = {"DF": 129790.44, "SP": 77566.27, "MT": 74620.05}
@@ -18,7 +20,10 @@ URL = "https://apisidra.ibge.gov.br/values/t/5938/n3/all/v/6323/p/2023?formato=j
 def main():
     """Busca o PIB per capita por UF na API SIDRA do IBGE, valida contra as quatro UFs-sentinela de 2023 e grava data/recursos_uf.json (ou marca completo:false em caso de falha, sem nunca publicar dado não confirmado)."""
     try:
-        with urllib.request.urlopen(URL, timeout=90) as r:
+        # §228: o pedido ia com o agente padrão da biblioteca — o IBGE não tinha como saber
+        # quem estava pedindo, e a política de robots (§185) depende do cliente enviado.
+        req = urllib.request.Request(URL, headers={"User-Agent": ua_de("PIB per capita no SIDRA")})
+        with urllib.request.urlopen(req, timeout=90) as r:
             dados = json.load(r)
     except Exception as e:
         print(f"SIDRA indisponível ({e}) — mantendo seed; site segue no eixo população"); return 0

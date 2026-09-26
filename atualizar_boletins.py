@@ -5,6 +5,7 @@ recente mencionado e compara com data/boletins.json. Falha de rede não interrom
 o pipeline (aviso e saída 0); um boletim novo atualiza o registro e sinaliza no log.
 """
 import json, re, sys, urllib.request
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 PAGINAS = [
     "https://www.gov.br/cemaden/pt-br",
@@ -27,7 +28,7 @@ def main() -> int:
     detectado = 0
     for url in PAGINAS:
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "MonitorElNinoBrasil/1.0"})
+            req = urllib.request.Request(url, headers={"User-Agent": ua_de("boletins Cemaden e INPE")})
             html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
             detectado = max(detectado, maior_boletim(html))
         except Exception as e:

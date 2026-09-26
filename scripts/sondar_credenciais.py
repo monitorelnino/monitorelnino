@@ -32,9 +32,12 @@ import ssl
 import sys
 import urllib.error
 import urllib.request
+import pathlib as _pathlib, sys as _sys
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 TEMPO_LIMITE = 25
-CABECALHO = {"User-Agent": "MonitorElNinoBrasil/2.2 (+https://monitorelnino.com.br; contato via site)"}
+CABECALHO = {"User-Agent": ua_de("sonda de credenciais")}
 
 # Cada fonte: o nome da variável de ambiente, como a credencial viaja, e um endereço BARATO
 # que aceita ou recusa. Endereço de sonda é o menor possível: confirmar acesso não é coletar.

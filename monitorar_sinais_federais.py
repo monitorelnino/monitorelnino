@@ -28,11 +28,12 @@ import re
 import sys
 import urllib.parse
 import urllib.request
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 FILA = RAIZ / "data" / "pistas_sinais.json"
 TERMOS_DOU = ["El Niño", "proteção e defesa civil", "plano de contingência"]
-UA = {"User-Agent": "MonitorElNinoBrasil/1.0"}
+UA = {"User-Agent": ua_de("sinais federais")}
 
 
 def _hash(p):

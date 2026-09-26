@@ -60,6 +60,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
+from coletores_base import ua_de
 from classificador_natureza import classificar, citacao_completa, extrair_data, RE_NUMERO_ATO
 from verificar_recorrencia_uf import checar_recorrencia, registrar_no_historico, REGUA_ANTECIPACAO_RECORRENTE
 
@@ -72,7 +73,7 @@ def buscar_texto(url, timeout=20):
     Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
     falha já usado no resto do pipeline (perda de recall, nunca invenção de texto)."""
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (monitor-el-nino-bot)"})
+        req = urllib.request.Request(url, headers={"User-Agent": ua_de("julgamento de descobertas")})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             raw = resp.read()
             tipo = (resp.headers.get("Content-Type") or "").lower()

@@ -153,6 +153,14 @@ jobs:
           # Crawl-delay, acessar documento público com cliente identificado e DEIXAR RASTRO. O
           # autoteste roda sem rede e trava as quatro partes, inclusive o rastro do canal renderizado.
           python3 scripts/testar_robots.py
+          # §228 (26/09/2026): um cliente só, e nunca disfarçado. Uma auditoria contou VINTE E UMA
+          # strings de User-Agent no repositório, seis delas começando com token de navegador e
+          # duas com o agente completo de um Chrome no Windows — uma delas com a justificativa
+          # escrita na própria docstring. O CLAUDE.md não abre exceção, e a política de robots do
+          # §185 depende do cliente que é REALMENTE enviado: quem mandava outra string era medido
+          # contra a regra de um agente e registrado no rastro como outro. A leitura é por AST
+          # para que docstring e comentário possam contar a história sem reprovar o portão.
+          python3 scripts/verificar_cliente_identificado.py
           # §209 (24/09/2026): leitor único da página de consulta do DOU. O DOU trocou o
           # <input value="{json}"> por um <script type="application/json"> e as duas cópias do
           # regex passaram a devolver LISTA VAZIA, caladas: 132 reconhecimentos reais lidos como

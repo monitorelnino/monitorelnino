@@ -42,6 +42,7 @@ import re
 import sys
 import unicodedata
 from pathlib import Path
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -206,7 +207,7 @@ def carregar_texto(uf: str, fixture: str | None) -> str:
     except ImportError:
         sys.exit("Erro: pacote 'requests' ausente (deveria estar em requirements.txt).")
     url = REPOSITORIOS[uf]["url"]
-    resp = requests.get(url, timeout=30, headers={"User-Agent": "MonitorElNinoBrasil/1.0 (Futura Evidence Lab)"})
+    resp = requests.get(url, timeout=30, headers={"User-Agent": ua_de("repositórios estaduais de planos")})
     resp.raise_for_status()
     return resp.text
 

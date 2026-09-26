@@ -31,13 +31,13 @@ import csv, hashlib, io, json, re, sys, urllib.request, zipfile
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste
+from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de
 
 RAIZ = Path(__file__).resolve().parent
 FIN = RAIZ / "data" / "financiamento"
 REPO = "https://repositorio.dados.gov.br/seges/detru/"
 API_FAF = "https://api.transferegov.gestao.gov.br/fundoafundo/programa?ano_programa=eq.2026&limit=500"
-UA = {"User-Agent": "MonitorElNinoBrasil/3.0 (coletor TransfereGov; dados abertos)"}
+UA = {"User-Agent": ua_de("coletor TransfereGov")}
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
 
 # Objeto que fala do ciclo: mesmas famílias de risco do teste do objeto (§5.2.1) + defesa civil.

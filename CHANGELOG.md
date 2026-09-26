@@ -9,6 +9,33 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §228 · Vinte e uma identidades, seis delas disfarçadas · 26/09/2026
+
+Classe **conformidade com a política de acesso**. Achado de auditoria, e o mais grave da sessão: não é robustez, é uma regra do `CLAUDE.md` sendo violada por código em produção.
+
+**O que foi medido.** O repositório enviava **vinte e uma strings de `User-Agent` diferentes**, uma por arquivo. Seis começavam com o token de navegador; **duas eram o agente completo de um Chrome no Windows**. Entre os seis, `julgar_e_aplicar_descobertas.py` e `seguir_pistas.py`, que rodam no ciclo.
+
+**Por que isso não é detalhe técnico.** O `CLAUDE.md` diz, sem exceção: *nunca disfarçar o cliente*. Trazer o nome do projeto entre parênteses não desfaz o disfarce — o primeiro token é uma identidade de navegador, e a razão pela qual alguém escreve `Mozilla/5.0` é passar por filtro que recusa robô, o que é contornar recusa. É a mesma família do §186 e do §187: nomear a recusa errado, ou fazer com que ela não aconteça, produz prova obtida por um caminho que o projeto declarou não usar.
+
+Dois casos vinham com a decisão escrita no próprio código, e é isso que os torna instrutivos:
+
+- `verificar_links.py` **justificava** o agente em formato de navegador na docstring: muitos `.gov.br` devolviam 403 a HEAD com agente de robô e 200 a GET com agente de navegador. A observação trocava **duas variáveis ao mesmo tempo** — o método e a identidade — e atribuía o ganho às duas. Só a primeira metade fica: tentar GET onde HEAD não é implementado é usar o protocolo. Trocar a identidade é contornar recusa. Se um portal recusa o Monitor identificado, a recusa **é** o resultado da verificação.
+- `scripts/diagnostico_fontes_saude.py` pedia cada alvo **duas vezes**, uma com cada identidade, "para separar bloqueio por IP de bloqueio por agente". A intenção de diagnóstico é boa; o meio não é. E a resposta não mudaria conduta nenhuma: diante de bloqueio por agente o projeto respeita e declara a lacuna, igual ao bloqueio por IP. Saber que o sítio entregaria o documento a um navegador só serviria para tentar passar por um.
+
+**O segundo defeito, no mesmo lugar: a cópia que envelhece.** É o §213 e o §222 outra vez. Mudar o endereço de contato no `UA` canônico de `coletores_base` não mudava nada nos outros vinte arquivos. E aqui a cópia tem consequência direta: a política de robots (§185) avalia `can_fetch` contra `UA` e grava o cliente no rastro de `data/robots_registro.json`. **Módulo que enviava outra string era medido contra a regra de um agente e registrado como outro.**
+
+**O conserto.** Um `ua_de(proposito)` em `coletores_base`: mesma identidade, propósito declarado entre colchetes. Distinguir uma sonda de um coletor nos registros da fonte é objetivo legítimo, e é o que a função serve — quem recebe o pedido continua sabendo quem somos, e passa a saber por que estamos ali. As vinte e uma strings viraram uma, em **vinte e três arquivos**.
+
+**Três pedidos não identificavam cliente nenhum.** `atualizar_recursos.py` pedia o SIDRA do IBGE com o agente padrão da biblioteca. `atualizar_marcos_severidade.py`, o mesmo. E `atualizar_transferencias.py` levava a **chave de API** no cabeçalho e não levava o cliente: um pedido autenticado de agente anônimo. Os dois últimos só apareceram porque o portão novo foi ampliado para ler também as chamadas via `requests`, e o terceiro porque o portão os leu por AST em vez de por `grep`.
+
+**O portão** (`scripts/verificar_cliente_identificado.py`, 66º da suíte) confere quatro coisas: nenhum valor de `User-Agent` é string literal fora de `coletores_base`; nenhuma string **de código** traz token de navegador; o `UA` canônico começa com o nome do projeto; e todo módulo que faz pedido cru identifica o cliente. A leitura é por AST de propósito, para que docstring e comentário possam contar esta história sem reprovar o portão. Verificado nos dois sentidos: reintroduzir um disfarce o deixa vermelho.
+
+**E um furo de cobertura, encontrado ao medir isto.** `scripts/verificar_autotestes_isolados.py` roda **todos** os autotestes do projeto e, até aqui, imprimia os vermelhos e devolvia **zero**, com a nota "reportado pelos portões próprios". Medição: dos trinta e tantos módulos com autoteste, **vinte e um não têm portão próprio** — entre eles `coletar_espin`, `coletar_sinais_risco`, `coletar_dda`, `coletar_transferegov` e os quatro boletins estaduais. Para esses, autoteste vermelho aparecia no log e nada reprovava. Como este é o único portão que os alcança todos, autoteste vermelho passou a ser portão vermelho. Todos os trinta e tantos estavam verdes quando a trava entrou — a mudança não esconde dívida.
+
+**Para a editoria, com franqueza:** parte da coleta feita até hoje por `verificar_links.py`, `seguir_pistas.py`, `julgar_e_aplicar_descobertas.py` e as duas sondas de diagnóstico saiu com o cliente em formato de navegador. O código está corrigido; o que já entrou no banco por esse caminho é pergunta editorial, não técnica, e fica registrada aqui.
+
+A suíte vai a **66 portões**.
+
 ## §227 · A data de todos os coletores vinha do runner, e a reserva de arquivo nunca foi usada onde mais fazia falta · 26/09/2026
 
 Classe **correção de fato**.

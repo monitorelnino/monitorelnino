@@ -76,11 +76,12 @@ import urllib.request
 RAIZ = pathlib.Path(__file__).parent
 sys.path.insert(0, str(RAIZ / "scripts"))
 from validar_dicionario import get_sinalizadores_resposta  # noqa: E402 (import após sys.path)
+from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
 
 FILA = RAIZ / "data" / "pistas_imprensa.json"
 CURSOR = RAIZ / "data" / "imprensa_cursor.json"
 RSS = "https://news.google.com/rss/search"
-UA = {"User-Agent": "MonitorElNinoBrasil/1.0 (+monitorelnino.com.br; descoberta editorial, não indexação)"}
+UA = {"User-Agent": ua_de("descoberta editorial na imprensa regional")}
 
 # Domínios cujo achado sugere fonte primária (ordenador de prioridade para o
 # triador — NUNCA confirmação; ver TRAVA ABSOLUTA acima).
