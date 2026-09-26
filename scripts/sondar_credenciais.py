@@ -46,6 +46,18 @@ FONTES = {
         "cabecalho": "X-API-Key",
         "onde_pedir": "https://explore.openaq.org/register (chave em explore.openaq.org/account)",
     },
+    "portal_transparencia": {
+        # 26/09/2026 (§224): a sonda nasceu (§208) para as duas fontes de MEDIÇÃO e deixou de
+        # fora justamente a credencial que já estava cadastrada e sendo recusada — a do Portal,
+        # com 403 em toda rodada desde 03/09. A pergunta "a chave nova funcionou?" não tinha
+        # como ser respondida sem rodar o pipeline inteiro. O endpoint abaixo é o mais barato da
+        # API (uma página, um item) e existe só para perguntar se a chave é aceita.
+        "nome": "Transferências e convênios (Portal da Transparência)",
+        "credencial": "PORTAL_TRANSPARENCIA_API_KEY",
+        "url": "https://api.portaldatransparencia.gov.br/api-de-dados/convenios?pagina=1",
+        "cabecalho": "chave-api-dados",
+        "onde_pedir": "https://portaldatransparencia.gov.br/api-de-dados/cadastrar-email",
+    },
     "inmet_estacoes": {
         "nome": "Temperatura medida em estação (INMET)",
         "credencial": "INMET_API_TOKEN",
@@ -124,7 +136,7 @@ def sondar_uma(chave: str, fonte: dict, buscar_fn=None) -> dict:
 
 
 def main() -> int:
-    print("=== credenciais das fontes de medição (§208) ===")
+    print("=== credenciais das fontes que exigem chave (§208, §224) ===")
     resultados = [sondar_uma(k, f) for k, f in FONTES.items()]
     simbolo = {"aceita": "✓", "ausente": "—", "recusada": "✗", "erro_da_fonte": "!",
                "rede_indisponivel": "?"}
@@ -133,7 +145,7 @@ def main() -> int:
         print(f"      {r['credencial']}: {r['credencial_no_ambiente']}")
         print(f"      {r['estado']} — {r['detalhe']}")
     aceitas = sum(1 for r in resultados if r["estado"] == "aceita")
-    print(f"\n{aceitas} de {len(resultados)} fonte(s) de medição prontas para coletar.")
+    print(f"\n{aceitas} de {len(resultados)} fonte(s) com credencial aceita.")
     # Saída 0 sempre: isto é diagnóstico, não portão. Credencial ausente é decisão pendente da
     # editoria, e não falha de build — tratá-la como falha bloquearia o pipeline por uma escolha.
     return 0
