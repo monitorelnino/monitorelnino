@@ -261,6 +261,16 @@ def main():
     rodar([sys.executable, "coletar_boletim_df_arboviroses.py"])      # 10/09/2026 (§36): arboviroses por Região de Saúde, informe semanal da SES-DF; peso zero
     rodar([sys.executable, "coletar_boletim_pe_arboviroses.py"])      # 10/09/2026 (§36): arboviroses, TOTAIS ESTADUAIS, informe semanal do CIEVS-PE (tabela municipal é imagem); peso zero
     rodar([sys.executable, "coletar_boletim_pb_arboviroses.py"])      # 10/09/2026 (§36): arboviroses por Região de Saúde, boletim numerado da SES-PB; peso zero
+    # §234 (26/09/2026): dois coletores que existiam, tinham autoteste e NÃO eram invocados por
+    # nada — nem aqui, nem em workflow, nem na lista de autotestes do portão. `coletar_espin`
+    # foi escrito no §209 exatamente para resolver o que o próprio cabeçalho dele descreve:
+    # "uma ESPIN declarada em novembro passaria despercebida até alguém procurar" — e, fora do
+    # pipeline, continuava sendo verdade. Custa duas consultas ao DOU.
+    rodar([sys.executable, "coletar_espin.py"])                       # §234: ESPIN no DOU, vigilância contínua; fila R7
+    # O SICONFI está completo para o exercício 2025 (5.571 municípios). Com `pendentes` vazio a
+    # chamada é barata e não faz nada; quando o exercício virar, ele preenche em lotes sozinho,
+    # que é justamente o que não acontecia com ele fora da rotina.
+    rodar([sys.executable, "coletar_siconfi_182.py", "--lote", "300"])  # §234: DCA/SICONFI, retomável por lote
     rodar([sys.executable, "preservar_evidencias.py", "--ler", "--limite", "40"])   # 07/09/2026 (§10.1): texto por página dos PDFs de planos
     rodar([sys.executable, "classificar_saude_no_plano.py"])            # 07/09/2026 (§10.1): leitura automática de saúde no plano → fila R7
     rodar([sys.executable, "gerar_monitor_saude.py"])                   # 05/09/2026: Monitor Saúde v0.1 (§31), derivado da camada de saúde; peso zero

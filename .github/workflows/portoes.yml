@@ -161,6 +161,14 @@ jobs:
           # contra a regra de um agente e registrado no rastro como outro. A leitura é por AST
           # para que docstring e comentário possam contar a história sem reprovar o portão.
           python3 scripts/verificar_cliente_identificado.py
+          # §234 (26/09/2026): três módulos que existiam, tinham teste próprio e não eram
+          # invocados por nada — nem no pipeline, nem aqui. `buscar_financiamento_preventivo` é
+          # auxílio humano (imprime os quatro gabaritos de busca de uma sessão de verificação), e
+          # por isso não entra na rotina automatizada: entra como portão, para que a estrutura de
+          # data/financiamento_uf.json e o vocabulário de status continuem válidos.
+          python3 coletar_espin.py --autoteste
+          python3 coletar_siconfi_182.py --autoteste
+          python3 buscar_financiamento_preventivo.py --check
           # §209 (24/09/2026): leitor único da página de consulta do DOU. O DOU trocou o
           # <input value="{json}"> por um <script type="application/json"> e as duas cópias do
           # regex passaram a devolver LISTA VAZIA, caladas: 132 reconhecimentos reais lidos como
