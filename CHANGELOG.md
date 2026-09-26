@@ -9,6 +9,22 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §234 · Três módulos que existiam e ninguém chamava · 26/09/2026
+
+Classe **rotina de coleta**.
+
+Um grep em `atualizar.py` e em todos os workflows encontrou três módulos que existem, têm autoteste próprio e **não eram invocados por nada** — nem no pipeline, nem na lista de autotestes do portão. Código que passa por revisão, entra no repositório e nunca roda é pior do que código ausente: ele dá a impressão de que o problema está resolvido.
+
+**`coletar_espin.py`** foi escrito no §209 exatamente para resolver o que o próprio cabeçalho dele descreve: *"uma ESPIN declarada em novembro passaria despercebida até alguém procurar"*. Fora do pipeline, isso continuava sendo verdade — o `data/saude_sinais.json` mostrava `espin: "coletado"` como resultado de **uma execução manual única**. Entra na rotina diária; custa duas consultas ao DOU.
+
+A rodada de 26/09 leu **26 resultados e nenhuma declaração**, e gravou `nenhuma_declaracao_localizada` com a janela (29/06 a 26/09), as duas strings buscadas e peso nenhum no índice. Isso é "procuramos e não há", que é resultado — diferente de "não procuramos". A fila de revisão humana não foi criada porque não havia nada a revisar, e não criar arquivo vazio é o comportamento certo.
+
+**`coletar_siconfi_182.py`** está completo para o exercício de 2025 (5.571 municípios), também por execução manual. O próximo exercício da DCA não entraria sozinho. Entra na rotina com `--lote 300`: enquanto não houver pendente, a chamada é barata e não faz nada; quando o exercício virar, ele preenche em lotes por conta própria.
+
+**`buscar_financiamento_preventivo.py`** é o caso diferente, e por isso **não** entra na rotina automatizada: ele é auxílio humano — imprime os quatro gabaritos de busca padronizados de uma UF para quem vai conduzir a sessão de verificação, e a regra de promoção a `ausente_verificado` exige os quatro executados e registrados. Automatizá-lo seria transformar a bateria numa varredura, que é o oposto do que ela é. Entra como **portão**, com `--check`, para que a estrutura de `data/financiamento_uf.json` e o vocabulário de status continuem válidos. O placar hoje: 1 UF `localizado`, 26 `nao_verificado` — e `nao_verificado` não é ausência, é ausência de verificação.
+
+A suíte vai a **69 portões**.
+
 ## §233 · A fonte estava travada por uma chave que a rota dela não pede · 26/09/2026
 
 Classe **correção de fato**.
