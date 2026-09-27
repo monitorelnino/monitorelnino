@@ -9,6 +9,47 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §260 · Preprint e site são rotinas separadas · 27/09/2026
+
+Classe **governança**. Decisão da editoria, e correção de um erro meu.
+
+### O que eu misturei
+
+Rodei as tarefas T0 a T4 do preprint e transformei dois achados em **PRs públicos no repositório do
+site**: o §256 (portão de paridade da cobertura do Querido Diário, vindo do T1) e o §257 (errata do
+§5.3 da METODOLOGIA, vinda do T2). Também criei um worktree do repositório do site para a análise.
+
+A editoria não pediu nada disso. Ela pediu o preprint; eu deixei o preprint entrar na rotina do
+site por conta própria.
+
+### A regra
+
+Registrada no `CLAUDE.md`, que é lido em toda sessão. Sem pedido explícito da editoria:
+
+- não rodar tarefa do preprint por iniciativa própria;
+- não abrir PR público a partir de achado do preprint;
+- não acrescentar portão ao site por causa dele;
+- não disparar rodada nem reposição de domínio para produzir dado de preprint;
+- não criar worktree do repositório do site para análise de preprint.
+
+Achado do preprint que revele defeito no site vira **pedido separado**, registrado na saída do
+preprint no repositório privado, e a editoria decide se vira mudança no site.
+
+### O que não foi desfeito, e por quê
+
+O §256 e o §257 ficam. Desfazê-los seria pior que a mistura que os gerou: o §256 é um portão que
+protege dado do site — ele reprova se `cobertura_qd.json` e `verificacao_resumo.json` discordarem —
+e o §257 alinhou o texto da metodologia ao código em vigor, corrigindo inclusive uma contradição
+que o próprio §5.3 tinha consigo mesmo.
+
+O caminho por onde eles entraram é que estava errado, e é esse que a regra corrige.
+
+### Acoplamento medido, e não havia
+
+Conferido: nenhum arquivo do site **chama** código do preprint. As únicas menções são comentários
+de procedência, que registram de onde veio cada conserto. As referências a `robo-registro` nos
+workflows são o canal de relatório da editoria, anterior a tudo isso. O worktree foi removido.
+
 ## §258 · Página "Pesquisadores" arquivada, com as provas nas páginas que as usam · 27/09/2026
 
 Classe **página pública**. Decisão da editoria, handover
