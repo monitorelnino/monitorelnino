@@ -407,6 +407,20 @@ origem editável — o rótulo do CEPDEC/ES e o texto estático de `defesa-civil
 renderização, para o separador de metadado do site (`·`), onde o texto vem de dado: `fontes_monitoramento`
 em `data/transferencias.json` e a nota dos cartões em `data/saude_federal.json`. O dado não foi tocado.
 
+`verificar_financiamento.py`, checagem (j), proibia `<table>` na página inteira. A exceção é a
+mesma dos outros portões — o bloco de prova —, mas aqui ela custou três tentativas, e cada erro vale
+registro. A primeira subtraía o bloco por regex `.*?` e deixava a tabela fora do recorte; a segunda
+fatiava a página "até o painel seguinte", e assim o ÚLTIMO painel engolia o resto do documento — uma
+tabela acrescentada antes de `</main>` passava sem ser vista; a terceira, que ficou, acha o fim de
+cada bloco por **profundidade de `<div>`**. Faltava ainda uma coisa: o portão lê a página com o JS
+embutido, e o JS do bloco de prova **monta** uma tabela dentro de uma string, então o conteúdo de
+`<script>` sai antes da checagem (trocado por espaços do mesmo tamanho, para não deslocar as
+posições). Dois casos negativos novos cobrem tabela na prosa antes e depois dos blocos, para que a
+exceção não cresça até engolir a regra.
+
+Esse portão só reprovou no CI porque eu havia rodado o caminho errado localmente
+(`scripts/verificar_financiamento.py`, que não existe) e tratei o silêncio como aprovação.
+
 `verificar_saude.py` cobrava a grafia `fonteFigura('<id>'` no texto da página e acusava três
 figuras creditadas — `#boxAreas`, `#boxCatalogo`, `#boxGatilhos` — como sem crédito. `fonteFigura`
 é **alias** de `MonitorMapas.credito` (está escrito assim em `assets/js/proveniencia.js`), e o JS
