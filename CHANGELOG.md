@@ -9,6 +9,64 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §246 · Um relatório de diagnóstico estava pulando o commit dos dados · 27/09/2026
+
+Classe **infraestrutura da rodada**. Achado ao preparar a rodada cuidadosa pedida pela editoria.
+
+### O sintoma
+
+A editoria disse, em 27/09, que o monitor de riscos estava desatualizado. Estava: **o último
+commit automático de dados bem-sucedido foi em 24/09 às 07h15**. Três dias.
+
+Pior que parado: as rodadas *pareciam* rodar. O passo de publicação dava `success` em todas
+elas — o domínio era republicado, com o dado velho.
+
+### A causa
+
+Medido nas rodadas agendadas:
+
+| rodada | relatório | commit |
+|---|---|---|
+| 26/09 01h14 · 07h13 · 13h14 · 19h07 | `failure` | **`skipped`** |
+| 24/09 13h17 → 25/09 19h07 | `success` | **`failure`** |
+| 24/09 07h15 e antes | `success` | `success` |
+
+**São dois defeitos sobrepostos.** Este § conserta o primeiro.
+
+O passo "Relatório da execução no repositório privado" clona um repositório privado com
+`ROBO_TOKEN`. Desde 26/09 o clone falha. O passo não tinha `continue-on-error`, e o `if:` do
+passo de commit é `github.event.inputs.ensaio != 'true'` — sem função de status. **Quando o `if:`
+não traz uma função de status, o GitHub soma o `success()` implícito**: "todos os passos
+anteriores passaram". O relatório reprovando fazia o `success()` cair, e o commit dos dados
+saía `skipped`.
+
+Um relatório de diagnóstico barrando o produto é inversão de prioridade. Ele segue reprovando —
+a falha continua visível no passo, que é onde ela deve estar — mas deixa de levar a rodada com
+ela.
+
+O que ele **não** conserta: o `ROBO_TOKEN` em si. O clone do repositório privado continua
+falhando, e isso é credencial — decisão da editoria, não minha.
+
+### O segundo defeito, medido e não consertado aqui
+
+Nas rodadas de 24 e 25/09 o commit reprovou por conta própria: **seis tentativas de rebase, seis
+conflitos idênticos**. Os arquivos: `data/log_buscas.json`, `data/fontes_consultadas.json`,
+`data/pistas_imprensa.json`, `data/pistas_revisao.json`, `docs/FILA_PISTAS.md`,
+`docs/MANIFEST_SHA256.txt`.
+
+A causa estrutural está medida: **`data/log_buscas.json` tem 20,7 MB em uma única linha** — zero
+quebras. Qualquer mudança dos dois lados é conflito textual garantido, porque não há linha para
+o git casar. E `busca_web_cadencia.yml` commita esse arquivo **a cada 2 horas**, enquanto a
+rodada leva mais que isso. O laço de rebase aborta e repete com o mesmo conteúdo, então conflita
+igual nas seis tentativas: a repetição só serve para o caso de *push recusado*, nunca para
+conflito.
+
+A resolução correta para `log_buscas.json` está documentada (união pela base comum, nunca
+dedução por conteúdo). Para `data/pistas_imprensa.json` e `data/fontes_consultadas.json` **não
+está**: os dois lados alteram os mesmos registros, e escolher qual vence é política de mesclagem
+com risco de perda silenciosa de evidência — o estrago que o projeto já sofreu uma vez, em
+23/09. Levado à editoria em vez de arbitrado.
+
 ## §245 · A fila de pistas aguenta dois produtores no mesmo arquivo · 27/09/2026
 
 Classe **coleta**. Preparo da rodada de atualização.
