@@ -59,6 +59,47 @@ média 46,6.
 
 **Não mesclar sem o "vai" da editoria.** O handover é explícito: capturas primeiro, merge depois.
 
+### As seis figuras sem crédito, e os quatro portões que o bloco de prova encontrou no caminho
+
+Depois da migração, seis figuras ficaram sem crédito: `boxCatalogo`, `boxGatilhos`, `boxConsultas`,
+`boxRotaMPs`, `boxMpsBrUf` e `boxMpsUf`. Causa única: os créditos das seis vivem dentro de `__load()`,
+em `assets/js/proveniencia.js`, e acima deles o código migrado acessava sem guarda elementos que hoje
+existem só em `defesa-civil.html` (`fontesMonitoramento`, `fontesVerificadas`, `fontesFederaisCount`,
+`tblSearch`/`tblCat`/`tblBody`, `#tblLog tbody`, `painelResumo`) e dois que não existem em nenhuma
+página (`pqCorte`, `pqAtualizado`). O primeiro ausente lançava `TypeError`, `__load()` morria, e nenhum
+crédito abaixo executava — nas quatro páginas, inclusive em defesa-civil, por causa do `pqCorte`. Antes
+disso, o arquivo compartilhado colidia em quatro identificadores globais (`esc`, `fonteFigura`, `AREAS`,
+`CAMADA_ROTULO`) e nem chegava a rodar; virou IIFE.
+
+Três portões reprovaram pelo mesmo motivo de fundo: a regra estava atrelada ao **nome** da página
+arquivada, ou pressupunha que o bloco de prova não existia em página publicada. Em todos, a exceção
+passa a seguir o marcador `data-proveniencia="1"`, que viaja com o bloco:
+
+- `verificar_vocabulario_publico.js` — a exceção v3.1 §9 (nome de arquivo e caminho de dados **são** o
+  assunto da ficha de proveniência) estava escrita como `p === "pesquisadores.html"`. Com a página
+  arquivada, a exceção deixou de valer para ninguém.
+- `verificar_legendas.js` — terceira exceção declarada, ao lado de `data-voz="ficha"` e `data-voz="lei"`,
+  e **só para as checagens de conteúdo**. A checagem de estilo de frase continua valendo: o travessão
+  como pontuação é regra geral de escrita e não tem exceção por bloco.
+- `verificar_runtime_financiamento.js` — a proibição de tabela (15/09, "tabelas viraram figuras") vale
+  para a prosa da página; no bloco de prova a tabela **é** o registro (endpoint, parâmetro, data, itens,
+  hash), e era essa a forma da página de origem.
+
+Os 18 travessões que o portão de legendas apontou não eram texto novo: viajaram com o bloco para
+páginas que têm checagem de prosa (a página arquivada não tinha). Corrigidos na origem onde havia
+origem editável — o rótulo do CEPDEC/ES e o texto estático de `defesa-civil.html` — e normalizados na
+renderização, para o separador de metadado do site (`·`), onde o texto vem de dado: `fontes_monitoramento`
+em `data/transferencias.json` e a nota dos cartões em `data/saude_federal.json`. O dado não foi tocado.
+
+`verificar_runtime.js` deixou de contar 10 itens de navegação por número fixo e passa a derivar a
+contagem de `NAV_ORDEM`, em `verificar_estrutura.js` — a lista canônica. Com a barra perdendo um item,
+o número fixo reprovava por estar certo.
+
+**Pendência para a editoria, fora deste escopo:** `coletar_saude.py` e o `data/saude_federal.json`
+publicado divergem no primeiro cartão federal — status (`anunciado_nao_localizado` × `localizado`), URL
+(ausente × presente) e nota. Rodar o coletor hoje substituiria o texto publicado, mais completo, pelo
+literal do script. É divergência de **fato**, não de estilo; não foi tocada.
+
 ### Arquivar, não apagar
 
 `pesquisadores.html` e `assets/js/pesquisadores.js` foram para `arquivo/pesquisadores/`, com um

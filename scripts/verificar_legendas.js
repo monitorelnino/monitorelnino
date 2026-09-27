@@ -123,7 +123,13 @@ function renderizar(pagina) {
     for (const pagina of PAGINAS_PROSA) {
       const domP = renderizar(pagina); await new Promise(r => setTimeout(r, 2200)); const dP = domP.window.document;
       dP.querySelectorAll("main p, main li, main dd, main summary, main figcaption, dialog p, dialog li, dialog dd").forEach(e => {
-        const dentroFichaOuLei = e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]');   // exceções declaradas
+        // 27/09/2026 (§258): terceira exceção declarada, data-proveniencia="1" — os blocos de prova que
+        // vieram da página Pesquisadores arquivada. Como a ficha, é onde a ressalva metodológica mora:
+        // ali o texto nomeia o artefato e descreve o método. Vale para as checagens de CONTEÚDO. A
+        // checagem de estilo de frase (travessão) continua valendo, porque ela é testada antes desta
+        // guarda — regra geral de escrita não tem exceção por bloco.
+        const dentroFichaOuLei = e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]')
+          || e.closest('[data-proveniencia="1"]');
         if (e.closest(".figura")) return;                                                // já coberto acima
         if (e.querySelector("p, li")) return;                                            // só as folhas
         const s = t(e); if (!s || s.length < 12) return; elementos++;

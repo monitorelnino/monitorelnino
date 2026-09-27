@@ -27,8 +27,12 @@ const PROIBIDOS = [
 let total = 0;
 (async () => {
   for (const p of PAGINAS) {
-    // v3.1 §9: Pesquisadores é a página de provas — nomes de arquivo, caminhos de dados e "verificações" são o assunto dela.
-    const REGRAS = p === "pesquisadores.html" ? PROIBIDOS.filter(([, rot]) => !/nome de arquivo|caminho de dados/.test(rot)) : PROIBIDOS;
+    // v3.1 §9: nos blocos de prova, nome de arquivo e caminho de dados SÃO o assunto — a ficha de
+    // proveniência existe para nomear o artefato que sustenta a figura.
+    // 27/09/2026 (§258): a exceção estava atrelada ao nome "pesquisadores.html". Aquela página foi
+    // arquivada e os blocos de prova foram para quatro páginas publicadas, então a exceção passou a
+    // não valer para ninguém. Agora ela segue o marcador `data-proveniencia="1"`, que viaja com o
+    // bloco: dentro dele o conjunto reduzido, fora dele o conjunto inteiro.
     const html = inlinePageJs(fs.readFileSync(path.join(RAIZ, p), "utf-8"), RAIZ); const vc = new VirtualConsole();
     const dom = new JSDOM(html, { url: "https://localhost/", runScripts: "dangerously", virtualConsole: vc, beforeParse(w) {
       global.window = w; global.document = w.document; w.d3 = require("d3"); w.eval(fs.readFileSync(path.join(RAIZ, "assets", "mapas.js"), "utf-8"));
@@ -37,9 +41,14 @@ let total = 0;
     } });
     await new Promise(r => setTimeout(r, 1500));
     const d = dom.window.document; d.querySelectorAll("script, style, noscript, code, pre").forEach(e => e.remove());
+    const provas = [...d.querySelectorAll('[data-proveniencia="1"]')];
+    const textoDeProva = provas.map(e => e.textContent).join(" ").replace(/\s+/g, " ");
+    provas.forEach(e => e.remove());
     const texto = d.body.textContent.replace(/\s+/g, " ");
+    const REGRAS_PROVA = PROIBIDOS.filter(([, rot]) => !/nome de arquivo|caminho de dados/.test(rot));
     const achados = [];
-    for (const [re, motivo] of REGRAS) { const m = texto.match(re); if (m) achados.push([motivo, [...new Set(m)].slice(0, 6)]); }
+    for (const [re, motivo] of PROIBIDOS) { const m = texto.match(re); if (m) achados.push([motivo, [...new Set(m)].slice(0, 6)]); }
+    for (const [re, motivo] of REGRAS_PROVA) { const m = textoDeProva.match(re); if (m) achados.push([motivo + " (bloco de prova)", [...new Set(m)].slice(0, 6)]); }
     if (achados.length) { total += achados.length; console.log(`  ✗ ${p}:`); achados.forEach(([mo, ex]) => console.log(`      ${mo}: ${ex.join(" | ")}`)); }
     else if (listar) console.log(`  ✓ ${p}`);
   }

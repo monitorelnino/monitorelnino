@@ -144,13 +144,15 @@ async function __load(){
   // (R$ 1,335 bi) citado em toda a documentação do site. Sem fonte real por trás, a figura foi removida; os compromissos
   // verificados e a série semanal, com fonte por linha, estão em financiamento.html#prometeu.
 { const fmon = document.getElementById('fontesMonitoramento');
+  // §258: o rótulo curado traz "nome — papel"; o separador de metadado do site é o ponto médio.
+  const rotulo = s => String(s == null ? '' : s).replace(/ — /g, ' · ');
   if (fmon) fmon.innerHTML = TRANSFERENCIAS.fontes_monitoramento
-    .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join(''); }
+    .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(rotulo(f.nome))}</a></li>`).join(''); }
   const ROTULO_HOST = {
   'www.diariomunicipal.com.br': 'Diários Oficiais dos Municípios (FAMUP/FEMURN/AMA/FAMEP/Sergipe)',
   'acaoinverno.recife.pe.gov.br': 'Ação Inverno · Prefeitura do Recife',
   'www.defesacivil.sc.gov.br': 'Defesa Civil de Santa Catarina',
-  'defesacivil.es.gov.br': 'CEPDEC/ES — repositório estadual de planos de contingência',
+  'defesacivil.es.gov.br': 'CEPDEC/ES · repositório estadual de planos de contingência',
   'www.gov.br': 'Portais gov.br (MIDR/SEDEC e órgãos federais)',
 };
 const porFonte = new Map();
@@ -224,7 +226,7 @@ function renderTable(){
       esc(f.papel) + extras + '</td><td>' + situacao + '</td></tr>';
   }).join('');
   }
-  { const fm = document.getElementById('fontesMonit'); if (fm) fm.innerHTML = (TRANSFERENCIAS.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.nome) + '</a></li>').join(''); }
+  { const fm = document.getElementById('fontesMonit'); if (fm) fm.innerHTML = (TRANSFERENCIAS.fontes_monitoramento || []).map(f => '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(String(f.nome || '').replace(/ — /g, ' · ')) + '</a></li>').join(''); }
   { const cons = (CONSULTAS && CONSULTAS.consultas) || []; if (document.querySelector('#tblConsultas tbody')) {
   if (cons.length) { (document.getElementById('notaConsultas')||{}).textContent = cons.length + ' consulta(s) registrada(s).'; document.querySelector('#tblConsultas tbody').innerHTML = cons.slice(-50).map(c => '<tr><td>' + esc(c.endpoint) + '</td><td>' + esc(JSON.stringify(c.parametros)) + '</td><td>' + esc(c.data) + '</td><td>' + c.itens + '</td><td><code>' + esc(String(c.hash_resposta).slice(0,12)) + '…</code></td></tr>').join(''); }
   }
@@ -236,7 +238,7 @@ function renderTable(){
     if (a) a.textContent = META.atualizado_em || '—'; }
   fetch('data/log_buscas.json').then(r => r.ok ? r.json() : null).then(l => { if (!(l && l.execucoes) || !el('pqLog')) return; el('pqLog').textContent = l.execucoes.length.toLocaleString('pt-BR');
     const ult = l.execucoes.reduce((a, e) => e.data > a ? e.data : a, ''); const c = {}; l.execucoes.filter(e => e.data === ult).forEach(e => { c[e.canal] = (c[e.canal] || 0) + 1; });
-    if (el('pqCanais')) el('pqCanais').textContent = ult + ' — ' + Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => k + ' ' + v).join(' · '); });
+    if (el('pqCanais')) el('pqCanais').textContent = ult + ' · ' + Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => k + ' ' + v).join(' · '); });
   fetch('data/verificacao_resumo.json').then(r => r.ok ? r.json() : null).then(v => { if (!(v && v.por_uf) || !document.querySelector('#tblLog tbody')) return;
     document.querySelector('#tblLog tbody').innerHTML = Object.keys(v.por_uf).sort().map(uf => { const n = v.por_uf[uf]; return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + (n.nacional || 0) + '</td><td>' + (n.estadual || 0) + '</td><td>' + (n.municipal_parcial || 0) + '</td><td>' + (n.municipal_completo || 0) + '</td><td>' + (n.nao_verificado || 0) + '</td></tr>'; }).join(''); });
   fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(c => { const m = (c && c.municipios) || {}; const t = Object.values(m); if (!el('pqCobertura')) return; el('pqCobertura').textContent = t.length ? t.filter(x => x.cobertura_qd === true).length + ' indexados · ' + t.filter(x => x.cobertura_qd === false).length + ' não indexados · ' + (5571 - t.length) + ' ainda não testados' : 'ainda não testada (a rotina preenche a partir da próxima rodada)'; });
@@ -262,7 +264,9 @@ function renderTable(){
       const STATUS_FED = {localizado: 'localizado', anunciado_nao_localizado: 'anunciado, não localizado até o corte'};
       alvo.innerHTML = (SFED.cartoes || []).map(c => '<div class="cartao"><h3 class="figura-titulo">' + esc(c.titulo) + '</h3>'
         + '<p class="figura-sub">' + esc(c.orgao || '—') + (c.data ? ' · ' + esc(c.data) : '') + '</p>'
-        + '<p class="card-body">' + esc(c.nota || '') + '</p>'
+        // §258: a nota curada usa travessão como pontuação de frase; o separador do site é o ponto
+        // médio. Normaliza na renderização — o dado em data/saude_federal.json fica intacto.
+        + '<p class="card-body">' + esc(String(c.nota || '').replace(/ — /g, ' · ')) + '</p>'
         + '<p class="note">' + esc(STATUS_FED[c.status] || c.status || '—') + '</p>'
         + (c.url ? '<div class="card-link"><a href="' + esc(c.url) + '" target="_blank" rel="noopener">Ver fonte oficial →</a></div>' : '')
         + '</div>').join('');
