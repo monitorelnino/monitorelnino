@@ -114,8 +114,18 @@ jobs:
     # para o que o teto por etapa não alcança (neto que sobrevive ao filho morto,
     # travamento fora de um subprocesso). Sem ele o job herda 6 HORAS do GitHub, e a
     # trava de concorrência transforma isso na fila de atualização parada o dia todo.
-    # A rodada completa leva 75–105 min; 180 dá folga sem dar um turno inteiro.
-    timeout-minutes: 180
+    # 27/09/2026 (§248): 180 estava ABAIXO da soma dos tetos por passo, e por isso o job era
+    # cortado sempre que os passos corressem perto dos seus. A conta, medida hoje: Tesseract 5 +
+    # clima municipal 50 + coleta pesada 120 + preservar evidência 20 + texto dos PDFs 25 +
+    # OCR 30 = 250 min só nos passos com teto declarado, mais uns quinze sem teto próprio.
+    # Com 180 o job morria ANTES do commit: na rodada de hoje às 04h47 ele cortou às 07h47, no
+    # passo "Ler o texto dos PDFs preservados", e o commit saiu `skipped` — e `continue-on-error`
+    # NÃO protege contra cancelamento, só contra reprovação.
+    # 300 cobre os 250 com 50 de folga para os passos sem teto, e segue longe das 6 HORAS que o
+    # GitHub daria por omissão — que é o que a trava de concorrência transformaria na fila de
+    # atualização parada o dia todo. "A rodada leva 75–105 min" deixou de ser verdade: a de hoje
+    # gastou 70 min antes da coleta e 90 na coleta, e ainda foi truncada.
+    timeout-minutes: 300
     # também disparou este job inteiro — só o job novo tinha `if:`, o schedule/workflow_dispatch
     # do topo do arquivo aciona TODOS os jobs por padrão, salvo restrição própria. Corrigido para
     # não repetir: pula quando o disparo foi explicitamente só para repor o domínio.
@@ -372,8 +382,15 @@ jobs:
         # Com teto próprio e `continue-on-error`, a coleta longa é truncada (e a falha fica
         # visível NESTE passo) mas a rodada segue e comita o que coletou. Coleta truncada com
         # commit é melhor que coleta completa sem commit — e o truque é que a segunda se parecia
-        # com sucesso. 90 min aqui deixa ~75 para os passos seguintes, que já têm tetos próprios.
-        timeout-minutes: 90
+        # com sucesso.
+        # 27/09/2026, medido na mesma noite: 90 TRUNCOU a coleta. O passo começou 05h57 e o
+        # seguinte começou 07h27 — exatamente no teto. E o `continue-on-error` mascarou isso como
+        # `success` na conclusão que a API mostra, porque ele converte o resultado em sucesso;
+        # truncamento silencioso é o defeito que esta rodada toda existe para não repetir.
+        # 120 com o teto do job em 300 (§248): a coleta tem folga real, e o job já não morre antes
+        # do commit. Se 120 truncar de novo, a saída não é subir o teto outra vez — é medir o que
+        # dentro do passo consome os 120.
+        timeout-minutes: 120
         env:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
           # §208: a camada de MEDIÇÃO dos sinais (OpenAQ e estações do INMET) só liga com

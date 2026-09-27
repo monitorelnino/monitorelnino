@@ -230,6 +230,15 @@ jobs:
           # sem ela o autoteste passava com a dedução por conteúdo dentro, e foi assim que quase
           # 3.000 execuções sumiram caladas.
           python3 scripts/unir_conflito_de_rodada.py --autoteste
+          # §248 (27/09/2026): a aritmética dos tetos de tempo da rodada. Os tetos POR PASSO
+          # somavam 220 min contra um teto de JOB de 180: com essa conta o job é cortado sempre
+          # que os passos correm perto dos seus, e o passo cortado sai `cancelled` — contra o que
+          # `continue-on-error` NÃO protege. Custou três rodadas cortadas antes do commit, com o
+          # passo de publicação dando `success` e republicando dado velho. O portão trava o
+          # invariante mínimo: soma dos tetos por passo ≤ teto do job. Ele não promete que a
+          # rodada caiba; promete que ela não está condenada por construção.
+          python3 scripts/verificar_tetos_da_rodada.py
+          python3 scripts/verificar_tetos_da_rodada.py --autoteste
           # §226 (26/09/2026): o coletor de transferências do Portal da Transparência estava no
           # pipeline SEM autoteste e sem portão — o único assim entre os que pedem rede. O
           # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429

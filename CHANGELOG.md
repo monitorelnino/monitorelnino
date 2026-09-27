@@ -9,6 +9,66 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §248 · O teto do job era menor que a soma dos tetos dos passos · 27/09/2026
+
+Classe **infraestrutura da rodada**. Quarto defeito da mesma noite, e o que de fato impedia o
+commit.
+
+### O que a rodada de controle mostrou
+
+Com os §§245 a 247 dentro, a rodada disparada às 04h47 fez: os cinco passos de descoberta
+`success` (o `KeyError` do §245 não voltou), a coleta pesada `success`, o relatório `success` — e
+o **commit `skipped`** de novo. Terminou `cancelled`. O passo de publicação deu `success` e
+republicou o dado velho, como nas anteriores.
+
+O culpado não foi nenhuma fonte. Foi uma conta.
+
+| teto declarado | minutos |
+|---|---|
+| Tesseract | 5 |
+| clima municipal | 50 |
+| coleta pesada | 90 |
+| preservar evidência | 20 |
+| texto dos PDFs | 25 |
+| OCR | 30 |
+| **soma dos tetos por passo** | **220** |
+| **teto do job** | **180** |
+
+Com 220 contra 180, o job é cortado sempre que os passos correm perto dos seus tetos. Foi o que
+houve: job iniciado 04h47, cortado às 07h47 no passo "Ler o texto dos PDFs preservados", que saiu
+**`cancelled`**. E aqui está a parte que o §246 não alcançava: **`continue-on-error` não protege
+contra cancelamento** — ele cobre `failure`. Todo passo depois do cancelado é pulado, incluindo o
+commit.
+
+### Duas correções e uma medição desmentida
+
+Teto do job: 180 → **300**. Cobre os 250 minutos de tetos declarados (já com a coleta em 120) com
+50 de folga para os cerca de quinze passos sem teto próprio, e segue longe das 6 horas que o
+GitHub daria por omissão. O comentário antigo dizia "a rodada leva 75–105 min"; **deixou de ser
+verdade**: a de hoje gastou 70 minutos antes da coleta e 90 na coleta.
+
+Teto da coleta pesada: 90 → **120**. O 90 que o §247 instalou **truncou** a coleta — o passo
+começou 05h57 e o seguinte começou 07h27, exatamente no teto. Eu havia lido aquilo como "terminou
+por si", porque a conclusão vinha `success`: **`continue-on-error` converte o resultado em sucesso
+na conclusão que a API mostra**. Truncamento silencioso mascarado de sucesso é o defeito que esta
+sequência toda existe para não repetir, e ele me pegou dentro do próprio conserto.
+
+### O portão
+
+Portão **72**, `scripts/verificar_tetos_da_rodada.py`, com sete asserções (quatro negativas). O
+invariante: **soma dos tetos por passo ≤ teto do job**, mais a exigência de que todo job com
+passos tenha teto próprio. Ele não promete que a rodada caiba — promete que ela **não está
+condenada por construção**. Conferido que reprova o estado de ontem: com job 180 e coleta 90, diz
+"a soma dos tetos por passo (220 min) passa do teto do job (180 min)".
+
+### O que segue aberto
+
+O commit dos dados continua **atrás de cerca de 75 minutos de enriquecimento opcional** — checagem
+de links, texto de PDF, OCR. Cada minuto ali é um minuto em que um cancelamento custa a rodada
+inteira. Comitar antes desses passos, e deixá-los comitar o que acrescentam depois, tira o produto
+do caminho do risco. É mudança na ordem de gravação do pipeline, e vai à editoria em vez de ser
+arbitrada aqui.
+
 ## §247 · A rodada aprende a resolver o conflito, e para de comer o próprio orçamento · 27/09/2026
 
 Classe **infraestrutura da rodada**. Fecha o segundo e o terceiro defeitos abertos no §246.
