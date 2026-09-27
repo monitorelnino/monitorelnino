@@ -9,6 +9,45 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §259 · A reposição urgente do domínio não é urgente enquanto a rodada corre · 27/09/2026
+
+Classe **infraestrutura da rodada**. Achado ao publicar o site a pedido da editoria.
+
+### O que aconteceu
+
+Reposição do domínio disparada às **15h30**. Ficou `pending`. Causa: a rodada agendada das
+**13h14** ocupava o grupo de concorrência `atualizar-dados`, com **até 300 minutos** de teto.
+
+O job `repor_dominio_manual` foi construído em 21/09 justamente para ser independente — o
+comentário dele diz *"não espera nem bloqueia a rodada semanal"* —, e tem grupo de concorrência
+**próprio de job**. Não bastava: `concurrency` declarado no nível do **workflow** enfileira o
+**run inteiro**, antes de qualquer job ser avaliado. O `if:` que pula a rodada e o grupo próprio
+do job só valem depois que o run começa, e ele não começava.
+
+O resultado é o pior possível para esse caminho: ele existe para o caso urgente, e o caso urgente
+é exatamente quando uma rodada está correndo — porque é aí que o domínio pode estar no ar errado.
+
+### O conserto
+
+O grupo passa a ser **condicional**:
+
+```yaml
+group: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.apenas_repor_dominio == 'true') && 'repor-dominio-urgente' || 'atualizar-dados' }}
+```
+
+Reposição e rodada deixam de disputar fila. **Rodadas seguem serializadas entre si**, que é o que
+a trava de 14/09 protege — ela nasceu porque a semanal e a diária caíam no mesmo minuto toda
+segunda e podiam colidir no push.
+
+### O portão
+
+`scripts/validar_workflows.py` passa a exigir que o grupo cite `apenas_repor_dominio`. Conferido
+que reprova: com o grupo fixo de volta, ele acusa "a reposição urgente do domínio voltaria a
+esperar a rodada na fila".
+
+Sem o portão a regressão volta calada, e só aparece no dia em que o domínio estiver no ar errado —
+que é o único dia em que isso importa.
+
 ## §257 · Errata de texto no §5.3: a METODOLOGIA passa a dizer o que o código faz · 27/09/2026
 
 Classe **errata de texto**. T2 do pedido do preprint. **Nenhuma nota muda** — `recalcular_mare.py
