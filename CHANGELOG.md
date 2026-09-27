@@ -9,6 +9,104 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §263 · Instrumentação do funil: a rodada conta por etapa · 27/09/2026
+
+Classe **método e coleta**. Decisão editorial de 27/09/2026, handovers
+`HANDOVER_juiz_automatico_e_busca_web_27-09-2026.md` (PR 3) e
+`HANDOVER_auditoria_funil_de_coleta_27-09-2026.md` (item B), repositório privado.
+**Nenhuma nota muda:** contagem mede o funil, não pontua.
+
+### O que a auditoria mediu e que este PR conserta
+
+A pergunta da editoria — "os coletores estão de fato encontrando os planos?" — não tinha como ser
+respondida sem abrir o código, e duas cegueiras mostraram por quê:
+
+- **`descobrir_planos.py` está agendado quatro vezes ao dia e tinha UMA execução em todo o
+  `log_buscas.json`** — e essa única era de uma triagem autorizada à mão em 19/09. O coletor rodava
+  e não registrava o que fazia. Agora registra: contagem por etapa e uma linha no log por execução,
+  com alvos consultados, achados inéditos e o tamanho da fila acumulada.
+- **`motor_de_busca` parou em 05/09, e as três últimas execuções são `erro`.** O canal morreu e
+  ninguém foi avisado. O alerta do portão do funil sobre etapa com histórico que devolve zero
+  (§261) é o que passa a avisar; a causa do erro fica como pedido separado.
+
+### As etapas instrumentadas
+
+`funil.registrar(...)` entra em cinco coletores, com os contadores que cada um já calculava:
+
+| etapa | contagens |
+|---|---|
+| `querido_diario` | entradas, com cobertura, UFs varridas |
+| `diario_municipal` | consultados, lacunas, decretos novos, pistas |
+| `diario_consorciado` | fontes, pistas, decretos novos, bloqueadas, fora do ar |
+| `doe` | UFs consultadas, UFs com resultado |
+| `descobrir_planos` | alvos consultados, achados novos, fila acumulada |
+| `busca_web` | (§261) consultas, com resultado bruto, motor sem resposta, pistas, cobertos, espera, lacunas, brutos por string |
+| `juiz` | (§262) pistas recebidas, com documento, promovidas, recusas por critério |
+
+### O portão dos autotestes isolados pegou a contagem
+
+O primeiro CI do §263 reprovou em `verificar_autotestes_isolados.py` (§220, §228): os autotestes de
+`coletar_diarios_municipais.py` e `coletar_diarios_consorciados.py` chegam ao fim do caminho
+principal, e a contagem do funil acabava escrita em `data/funil/<data>.json`. Autoteste offline não
+toca em `data/`, nem por um contador.
+
+A guarda ficou numa porta só — `funil.registrar` não escreve quando o processo roda com
+`--autoteste` **e** o destino é o `data/` do repositório —, em vez de um mock por autoteste: cinco
+coletores estão instrumentados hoje e qualquer outro herda a proteção. A primeira versão da guarda
+olhava só o modo e barrava também o autoteste do próprio `funil.py`, que escreve num diretório
+temporário; a condição correta é o destino, e o autoteste agora cobra as duas coisas (no
+temporário a escrita tem de acontecer; em `data/`, não).
+
+A conferência passa a rodar **dentro da rodada**, não só na CI do PR, com `continue-on-error`: a
+contradição aparece no log da rodada sem impedir o commit dos dados já coletados — o portão do PR é
+que reprova de verdade. Soma dos tetos por passo: 253 min, dentro do teto de 300 do job.
+
+### O portão media a saúde da rodada e reprovava todo PR
+
+A primeira rodada com o conjunto de nove consultas mediu **139 de 150 consultas (93%) sem resposta
+do motor**. O portão do funil fez o que devia — a rodada não conta como verificação da camada 4 —,
+mas o arquivo `data/funil/<data>.json` é commitado pela rodada, e o portão roda também na CI de todo
+PR. Resultado: um PR que não toca na busca web herdava a reprovação de uma rodada passada, e ficava
+impedido de subir justamente o conserto.
+
+O portão passa a ter dois modos. Em `--modo rodada`, o teto de 25% é **falha**: ali a mensagem
+significa "esta rodada não conta", e é a rodada que precisa saber. No modo `pr` (padrão), é
+**alerta**. O que reprova nos dois é **contradição na contagem** — mais cobertos sem menção do que
+consultas com resultado bruto, ou mais promoções do que pistas com documento: contradição é defeito
+do código que conta, não notícia sobre o motor.
+
+**O 93% continua sendo um fato a decidir, e é da editoria.** Nove consultas por município em vez de
+uma multiplicaram por nove o número de requisições à instância efêmera do SearXNG, e a hipótese
+mais provável é limite de taxa do próprio metabuscador. Não mexi no conjunto de consultas por
+iniciativa própria: adotar o **conjunto mínimo que recupere o máximo** era, no handover, uma decisão
+que depende da medição de revocação — e essa medição é exatamente o que o motor mudo impede. Fica
+como pedido separado, com três caminhos possíveis (espaçar as consultas, reduzir o lote, ou rodar a
+medição num job próprio com a instância dedicada) para a editoria escolher.
+
+### O que a auditoria achou e NÃO entra aqui
+
+Um PR por defeito, como o handover pede. Ficam como pedido separado, listados em
+`notas/preprint/funil/RELATORIO_2026-09-27.md`:
+
+- **169 de 242 municípios (70%) com excerto reconhecido no diário não estão em lugar nenhum do
+  funil** — nem no banco, nem em fila. É o achado de maior efeito sobre a cobertura, e é reparo de
+  dado: reprocessar os 169 do log para a fila e deixar o juiz decidir.
+- O `com_mencao` publicado (347) não é reproduzível a partir do log (400 execuções `com_excerto`,
+  242 municípios distintos): três contagens com o mesmo nome, nenhuma documentada.
+- `data/pistas_querido_diario.json` é declarada por `consultar_querido_diario.py`, **não existe** e
+  nenhum outro arquivo do repositório a menciona.
+- `scripts/caderno_de_pistas.py` é órfão (só ele mesmo se menciona no repositório inteiro).
+- `dominios_oficiais` e `saude_sinais` só se atualizam quando a CI roda os coletores.
+
+**Uma preocupação do §158 NÃO se confirmou:** dos 13 registros com canal `imprensa`, 12 são
+`nao_verificado` e o único categorizado é um decreto, que pontua zero. Nenhum registro pontuável do
+banco tem a imprensa como canal.
+
+**Erro de método corrigido no próprio relatório:** a primeira reconciliação juntava as menções ao
+banco pelo código IBGE e dava "0 registros". `data/municipios.json` **não tem código IBGE** — cada
+registro é identificado por nome e UF. Refeita a junção, 35 dos 242 estão no banco, e o número do
+achado caiu de 190 para 169.
+
 ## §262 · Juiz automático regrado da fila de pistas · 27/09/2026
 
 Classe **método e coleta**. Decisão editorial de 27/09/2026, handover

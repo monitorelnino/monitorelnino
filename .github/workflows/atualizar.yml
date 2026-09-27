@@ -303,6 +303,15 @@ jobs:
         continue-on-error: true
         run: python3 monitorar_busca_web.py --tamanho 150
 
+      # 27/09/2026 (PR 3 do juiz automático, item B da auditoria do funil): a contagem por etapa
+      # da rodada é conferida DENTRO da rodada, não só na CI do PR. `continue-on-error` porque a
+      # contradição na contagem tem de aparecer no log da rodada sem impedir que os dados já
+      # coletados sejam commitados — o portão do PR é que reprova de verdade.
+      - name: Conferir o funil da rodada (contagem por etapa)
+        continue-on-error: true
+        timeout-minutes: 3
+        run: python3 scripts/verificar_funil.py --modo rodada
+
       # §17 (29/08/2026): vigia de imprensa nacional (Google News RSS) por
       # possíveis instrumentos ainda não registrados — descoberta pura, com
       # trava absoluta (nenhuma pista entra no banco sem confirmação humana

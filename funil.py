@@ -26,11 +26,34 @@ Contagem não é prova: este arquivo mede o funil, nunca decide categoria nem po
 import datetime
 import json
 import pathlib
+import sys
 
 from coletores_base import DATA, gravar_em, hoje_editorial
 
 FUNIL = DATA / "funil"
 FORMATO_VERSAO = 1
+
+
+def em_autoteste() -> bool:
+    """O processo foi iniciado em modo autoteste?
+
+    27/09/2026: o portão `verificar_autotestes_isolados.py` (§220, §228) reprovou o §263 — os
+    autotestes de `coletar_diarios_municipais.py` e `coletar_diarios_consorciados.py` chegam ao fim
+    do caminho principal e a contagem do funil acabava escrita em `data/funil/<data>.json`.
+    Autoteste offline não toca em `data/`, nem por um contador.
+
+    A guarda fica AQUI, numa porta só, em vez de num mock por autoteste: são cinco coletores
+    instrumentados hoje e qualquer outro que venha depois herda a proteção. Ela nunca dispara na
+    rodada, porque a rodada não passa `--autoteste`."""
+    return any(a in ("--autoteste", "--self-test") for a in sys.argv)
+
+
+def escreveria_em_data() -> bool:
+    """O destino é o `data/` do repositório, e não um diretório temporário?
+
+    O autoteste deste módulo aponta `FUNIL` para um temporário — ali escrever é offline e é o que
+    torna o teste real. A guarda de autoteste só vale para o `data/` de verdade."""
+    return FUNIL == DATA / "funil"
 
 
 def caminho_do_dia(dia=None) -> pathlib.Path:
@@ -67,6 +90,8 @@ def registrar(etapa: str, dia=None, **contagens) -> dict:
     for chave, valor in contagens.items():
         alvo[chave] = int(alvo.get(chave, 0)) + valor
     doc["atualizado_em"] = datetime.datetime.now().replace(microsecond=0).isoformat()
+    if em_autoteste() and escreveria_em_data():
+        return doc   # devolve o que GRAVARIA, sem tocar em data/ (ver `em_autoteste`)
     FUNIL.mkdir(parents=True, exist_ok=True)
     gravar_em(caminho_do_dia(dia), doc)
     return doc
@@ -93,6 +118,15 @@ def autoteste() -> int:
             falhas.append("etapas convivem no mesmo dia")
         if ler_do_dia("2026-09-28") != {}:
             falhas.append("dia sem arquivo devolve vazio")
+
+        # a guarda de autoteste está ligada aqui (este próprio processo roda com --autoteste),
+        # então nada acima tocou data/ — o que o portão dos autotestes isolados cobra.
+        if not em_autoteste():
+            falhas.append("em_autoteste() não reconheceu --autoteste no próprio autoteste")
+        if escreveria_em_data():
+            falhas.append("o autoteste não redirecionou FUNIL para um temporário")
+        if not (FUNIL / "2026-09-27.json").exists():
+            falhas.append("no temporário a escrita tem de acontecer de verdade")
 
         try:
             registrar("busca_web", dia="2026-09-27", taxa=0.5)

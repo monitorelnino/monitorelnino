@@ -26,7 +26,9 @@ O portão é permissivo quanto à AUSÊNCIA do arquivo: rodada que não chamou a
 o contador, e isso não é defeito. O que ele não perdoa é o contador que se contradiz.
 
 USO
-  python3 scripts/verificar_funil.py            # a rodada de hoje
+  python3 scripts/verificar_funil.py                    # modo pr (padrão): contradição reprova,
+                                                        # teto do motor alerta
+  python3 scripts/verificar_funil.py --modo rodada      # dentro da rodada: o teto também reprova
   python3 scripts/verificar_funil.py --dia 2026-09-27
   python3 scripts/verificar_funil.py --autoteste
 """
@@ -63,8 +65,23 @@ def historico(exceto: pathlib.Path) -> dict:
     return maximos
 
 
-def conferir(doc: dict, maximos: dict) -> tuple:
-    """Devolve (falhas, alertas). Função pura: o autoteste a exercita sem tocar em disco."""
+def conferir(doc: dict, maximos: dict, modo: str = "pr") -> tuple:
+    """Devolve (falhas, alertas). Função pura: o autoteste a exercita sem tocar em disco.
+
+    Dois modos, e a diferença é de quem é o defeito:
+
+      `rodada` — o teto de 25% de motor sem resposta é FALHA. Ali a mensagem significa "esta rodada
+      não conta como verificação da camada 4", e é a própria rodada que precisa saber.
+
+      `pr` (padrão) — o teto é ALERTA. O arquivo do funil é commitado pela rodada; um PR que não
+      toca na busca web herdaria a reprovação de uma rodada passada, e ficaria impedido de subir
+      justamente o conserto. Foi o que aconteceu em 27/09/2026: a rodada mediu 139/150 (93%) sem
+      resposta e o portão passou a reprovar todo PR.
+
+    O que é FALHA nos dois modos é contradição na contagem — mais cobertos sem menção do que
+    consultas com resultado bruto, ou mais promoções do que pistas com documento. Contradição é
+    defeito do código que conta, não notícia sobre o motor.
+    """
     falhas, alertas = [], []
     etapas = doc.get("etapas") or {}
 
@@ -74,9 +91,10 @@ def conferir(doc: dict, maximos: dict) -> tuple:
         doentes = int(bw.get("motor_sem_resposta", 0) or 0) + int(bw.get("lacunas", 0) or 0)
         fracao = doentes / consultas
         if fracao > TETO_MOTOR_SEM_RESPOSTA:
-            falhas.append(f"busca web: {doentes}/{consultas} consultas sem resposta do motor "
-                          f"({100 * fracao:.0f}%), acima do teto de {100 * TETO_MOTOR_SEM_RESPOSTA:.0f}% "
-                          f"- a rodada nao conta como verificacao da camada 4")
+            aviso = (f"busca web: {doentes}/{consultas} consultas sem resposta do motor "
+                     f"({100 * fracao:.0f}%), acima do teto de {100 * TETO_MOTOR_SEM_RESPOSTA:.0f}% "
+                     f"- a rodada nao conta como verificacao da camada 4")
+            (falhas if modo == "rodada" else alertas).append(aviso)
         if int(bw.get("coberto_sem_mencao", 0) or 0) > consultas - doentes:
             falhas.append("busca web: mais municipios cobertos sem mencao do que consultas com resultado bruto")
 
@@ -97,29 +115,36 @@ def conferir(doc: dict, maximos: dict) -> tuple:
 def autoteste() -> int:
     casos = []
 
-    # 1. o defeito de 21-27/09: 46% sem resposta reprova
-    f, _ = conferir({"etapas": {"busca_web": {"consultas": 11412, "motor_sem_resposta": 5263}}}, {})
-    casos.append(("46% sem resposta reprova", bool(f) and "camada 4" in f[0]))
+    # 1. o defeito de 21-27/09: 46% sem resposta reprova A RODADA
+    f, _ = conferir({"etapas": {"busca_web": {"consultas": 11412, "motor_sem_resposta": 5263}}}, {}, "rodada")
+    casos.append(("46% sem resposta reprova a rodada", bool(f) and "camada 4" in f[0]))
+
+    # 1b. e no PR o mesmo número é ALERTA, não reprovação: o arquivo vem da rodada, e um PR que não
+    # toca na busca web não pode ficar preso à saúde do motor num dia passado.
+    f, a = conferir({"etapas": {"busca_web": {"consultas": 150, "motor_sem_resposta": 139}}}, {}, "pr")
+    casos.append(("no PR, teto estourado alerta e nao reprova", not f and any("motor" in x for x in a)))
 
     # 2. no teto exato não reprova (o teto é "acima de", não "a partir de")
-    f, _ = conferir({"etapas": {"busca_web": {"consultas": 100, "motor_sem_resposta": 25}}}, {})
+    f, _ = conferir({"etapas": {"busca_web": {"consultas": 100, "motor_sem_resposta": 25}}}, {}, "rodada")
     casos.append(("exatamente 25% nao reprova", not f))
-    f, _ = conferir({"etapas": {"busca_web": {"consultas": 100, "motor_sem_resposta": 26}}}, {})
-    casos.append(("26% reprova", bool(f)))
+    f, _ = conferir({"etapas": {"busca_web": {"consultas": 100, "motor_sem_resposta": 26}}}, {}, "rodada")
+    casos.append(("26% reprova na rodada", bool(f)))
 
     # 3. lacuna de rede conta junto com o motor mudo — as duas são a mesma doença
-    f, _ = conferir({"etapas": {"busca_web": {"consultas": 100, "motor_sem_resposta": 20, "lacunas": 10}}}, {})
+    f, _ = conferir({"etapas": {"busca_web": {"consultas": 100, "motor_sem_resposta": 20, "lacunas": 10}}}, {}, "rodada")
     casos.append(("lacuna soma com motor_sem_resposta", bool(f)))
 
-    # 4. coberto além do que teve resultado bruto é contradição
-    f, _ = conferir({"etapas": {"busca_web": {"consultas": 100, "motor_sem_resposta": 10,
-                                              "coberto_sem_mencao": 95}}}, {})
-    casos.append(("coberto acima do que teve resultado bruto reprova", bool(f)))
+    # 4. coberto além do que teve resultado bruto é contradição — reprova NOS DOIS modos
+    for modo in ("rodada", "pr"):
+        f, _ = conferir({"etapas": {"busca_web": {"consultas": 100, "motor_sem_resposta": 10,
+                                                  "coberto_sem_mencao": 95}}}, {}, modo)
+        casos.append((f"coberto acima do que teve resultado bruto reprova ({modo})", bool(f)))
 
-    # 5. promoção sem documento primário é impossível
-    f, _ = conferir({"etapas": {"juiz": {"promovidas": 5, "com_documento": 3}}}, {})
-    casos.append(("juiz: promovidas > com_documento reprova", bool(f)))
-    f, _ = conferir({"etapas": {"juiz": {"promovidas": 3, "com_documento": 3}}}, {})
+    # 5. promoção sem documento primário é impossível — reprova NOS DOIS modos
+    for modo in ("rodada", "pr"):
+        f, _ = conferir({"etapas": {"juiz": {"promovidas": 5, "com_documento": 3}}}, {}, modo)
+        casos.append((f"juiz: promovidas > com_documento reprova ({modo})", bool(f)))
+    f, _ = conferir({"etapas": {"juiz": {"promovidas": 3, "com_documento": 3}}}, {}, "pr")
     casos.append(("juiz: promovidas == com_documento passa", not f))
 
     # 6. etapa que já produziu e hoje devolve zero é ALERTA, não falha
@@ -149,6 +174,10 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    modo = sys.argv[sys.argv.index("--modo") + 1] if "--modo" in sys.argv else "pr"
+    if modo not in ("pr", "rodada"):
+        print(f"✗ --modo aceita 'pr' ou 'rodada', veio {modo!r}")
+        return 1
     dia = None
     if "--dia" in sys.argv:
         dia = sys.argv[sys.argv.index("--dia") + 1]
@@ -160,7 +189,7 @@ def main() -> int:
         print(f"✓ FUNIL OK — sem contador para {dia} (a rodada não chamou as etapas instrumentadas).")
         return 0
     doc = ler_json(p)
-    falhas, alertas = conferir(doc, historico(p))
+    falhas, alertas = conferir(doc, historico(p), modo)
     for a in alertas:
         print(f"  ! {a}")
     if falhas:
