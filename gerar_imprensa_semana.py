@@ -1,0 +1,479 @@
+#!/usr/bin/env python3
+"""Gera `data/imprensa/semana.json` — os cartões "Esta semana em números" da página Imprensa.
+
+POR QUE ESTE ARQUIVO EXISTE (27/09/2026, §253)
+==============================================
+Handover da editoria de 27/09: os big numbers da Imprensa devem mostrar MUDANÇAS RECENTES, coisas
+que um jornalista extrai para notícia. O número sozinho não é notícia; o NOME é — por isso cada
+cartão carrega a lista.
+
+REGRAS QUE VALEM PARA TODO CARTÃO (do handover, e são as do projeto):
+  · número lido do dado, NUNCA digitado (portão de paridade);
+  · período explícito no cartão ("de dd/mm a dd/mm");
+  · fonte e "consultado em";
+  · ZERO só quando a coleta rodou. Sem coleta → "sem coleta". Ausência não é zero;
+  · sem edição anterior → "primeira medição", nunca variação inventada;
+  · rótulo descreve (variável, período, unidade), sem adjetivo — voz de docs/VOZ_EDITORIAL.md;
+  · peso zero nos índices: nada daqui é lido por recalcular_mare.py nem gerar_monitor_saude.py.
+
+DUAS DATAS NO MESMO CAMPO, E FOI ISSO QUE QUASE ME FEZ PUBLICAR UMA LACUNA FALSA
+===============================================================================
+`data/atos_resposta.json` (e o CSV que dele deriva) guarda a data do ato em DOIS formatos:
+740 em `dd/mm/aaaa` e 71 em ISO `aaaa-mm-dd`, estas últimas vindas dos diários consorciados.
+
+Em 27/09, um parser que aceitava só `dd/mm/aaaa` me fez medir "71 decretos sem data legível" e
+quase registrar isso no CHANGELOG como fato. A editoria corrigiu: os decretos TÊM data. O defeito
+era do parser. `data_do_ato()` aceita os dois, e `verificar_imprensa.py` vigia a deriva — porque
+quem escrever um leitor com um formato só perde 71 linhas caladamente, e `dados-abertos/` é
+consumido por terceiros.
+
+Normalizar o formato PUBLICADO é decisão da editoria, não daqui: mudaria o CSV para quem já o lê.
+
+Uso:
+    python3 gerar_imprensa_semana.py                 # grava data/imprensa/semana.json
+    python3 gerar_imprensa_semana.py --autoteste     # prova as regras, sem rede
+"""
+import csv
+import io
+import json
+import pathlib
+import sys
+from datetime import date, datetime, timedelta
+
+from coletores_base import gravar_em
+
+RAIZ = pathlib.Path(__file__).resolve().parent
+DATA = RAIZ / "data"
+SAIDA = DATA / "imprensa" / "semana.json"
+JANELA = 7
+JANELA_SECUNDARIA = 14
+
+# Acima deste valor a escala europeia sai da faixa "bom/razoável". A banda é DA FONTE (EAQI), não
+# nossa — o cartão cita a escala e não adjetiva.
+EAQI_LIMIAR = 40
+
+
+def data_do_ato(valor) -> date | None:
+    """A data do ato, aceitando os DOIS formatos que o dado guarda. None só se não houver data.
+
+    27/09/2026: existir em dois formatos é defeito do dado, e vai ao CHANGELOG — mas ler só um
+    deles é defeito do leitor, e apaga 71 atos sem aviso.
+    """
+    texto = str(valor or "").strip()
+    if not texto:
+        return None
+    for formato in ("%d/%m/%Y", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(texto, formato).date()
+        except ValueError:
+            continue
+    return None
+
+
+def ler(nome: str, padrao=None):
+    caminho = DATA / nome
+    if not caminho.exists():
+        return padrao
+    return json.loads(caminho.read_text(encoding="utf-8"))
+
+
+def ler_atos() -> list[dict]:
+    caminho = RAIZ / "dados-abertos" / "atos_resposta.csv"
+    if not caminho.exists():
+        return []
+    with io.open(caminho, encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def periodo(corte: date) -> dict:
+    return {"ini": (corte - timedelta(days=JANELA)).isoformat(), "fim": corte.isoformat()}
+
+
+def cartao(ident, rotulo, valor, fonte, consultado_em, *, per=None, lista=None,
+           sem_coleta=False, nota=None, secundaria=None):
+    """Um cartão. `valor=None` com `sem_coleta=True` é 'sem coleta' — nunca zero."""
+    return {
+        "id": ident,
+        "rotulo": rotulo,
+        "valor": None if sem_coleta else valor,
+        "sem_coleta": bool(sem_coleta),
+        "periodo": per,
+        "fonte": fonte,
+        "consultado_em": consultado_em,
+        "primeira_medicao": True,      # não há fotografia da edição anterior (handover §3)
+        "variacao": None,              # sem edição anterior, variação seria inventada
+        "nota": nota,
+        "secundaria": secundaria,
+        "lista": lista or [],
+    }
+
+
+# ── os cartões ──────────────────────────────────────────────────────────────────────────────
+
+def cartao_decretos(atos, corte):
+    """1 · Municípios que entraram em emergência no período."""
+    decretos = [a for a in atos if "reconhecimento" not in (a.get("causa") or "").lower()]
+    def na_janela(dias):
+        limite = corte - timedelta(days=dias)
+        return [a for a in decretos if (d := data_do_ato(a.get("data"))) and limite < d <= corte]
+    j7, j14 = na_janela(JANELA), na_janela(JANELA_SECUNDARIA)
+    lista = [{"uf": a["uf"], "municipio": a["municipio"],
+              "data": data_do_ato(a["data"]).isoformat(), "causa": a.get("causa"),
+              "documento": a.get("decreto"), "url": a.get("url")}
+             for a in sorted(j7, key=lambda x: (data_do_ato(x["data"]), x["uf"], x["municipio"]),
+                             reverse=True)]
+    return cartao(
+        "decretos_no_periodo",
+        "Municípios que decretaram emergência ou calamidade no período",
+        len(j7), "Diários oficiais e diários consorciados (via MARÉ)",
+        None, per=periodo(corte), lista=lista,
+        secundaria={"rotulo": f"em {JANELA_SECUNDARIA} dias", "valor": len(j14)} if j14 else None)
+
+
+def cartao_reconhecimentos(atos, corte):
+    """2 · Reconhecidos pelo governo federal no período.
+
+    O handover marca este cartão como "a construir", porque o adaptador do S2iD guardaria só o
+    total. Medido em 27/09: `atos_resposta.csv` tem data em TODOS os 653 reconhecimentos. O cartão
+    é calculável hoje, e a premissa do handover está desmentida no CHANGELOG.
+    """
+    rec = [a for a in atos if "reconhecimento" in (a.get("causa") or "").lower()]
+    limite = corte - timedelta(days=JANELA)
+    na = [a for a in rec if (d := data_do_ato(a.get("data"))) and limite < d <= corte]
+    lista = [{"uf": a["uf"], "municipio": a["municipio"],
+              "data": data_do_ato(a["data"]).isoformat(),
+              "documento": a.get("decreto"), "url": a.get("url")}
+             for a in sorted(na, key=lambda x: (data_do_ato(x["data"]), x["uf"]), reverse=True)]
+    return cartao("reconhecimentos_no_periodo",
+                  "Municípios reconhecidos pelo governo federal no período",
+                  len(na), "Portarias SEDEC/MIDR publicadas no DOU", None,
+                  per=periodo(corte), lista=lista)
+
+
+def cartao_planos(municipios, corte):
+    """3 · Planos municipais com data de ato no período."""
+    limite = corte - timedelta(days=JANELA)
+    na = [m for m in municipios
+          if (m.get("categoria") == "plano"
+              and (d := data_do_ato(m.get("data"))) and limite < d <= corte)]
+    lista = [{"uf": m["uf"], "municipio": m["nome"], "data": data_do_ato(m["data"]).isoformat(),
+              "documento": m.get("documento"), "url": m.get("url")}
+             for m in sorted(na, key=lambda x: (data_do_ato(x["data"]), x["uf"]), reverse=True)]
+    return cartao("planos_no_periodo", "Planos municipais com data de ato no período",
+                  len(na), "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
+                  None, per=periodo(corte), lista=lista,
+                  nota=("a data é a do ato, não a da localização pelo MARÉ; plano antigo "
+                        "localizado agora não aparece aqui"))
+
+
+def cartao_focos(sinais):
+    """4 · Focos de calor nas últimas 24 horas."""
+    ufs = (sinais or {}).get("uf") or {}
+    linhas = [(uf, (u.get("fogo") or {})) for uf, u in ufs.items()]
+    com_dado = [(uf, f) for uf, f in linhas if f.get("focos_24h") is not None]
+    if not com_dado:
+        return cartao("focos_24h", "Focos de calor detectados nas últimas 24 horas", None,
+                      "Programa Queimadas (INPE)", None, sem_coleta=True)
+    total = sum(f["focos_24h"] for _, f in com_dado)
+    consultado = next((f.get("consultado_em") for _, f in com_dado if f.get("consultado_em")), None)
+    documento = next((f.get("documento") for _, f in com_dado if f.get("documento")), None)
+    lista = [{"uf": uf, "valor": f["focos_24h"]}
+             for uf, f in sorted(com_dado, key=lambda x: -x[1]["focos_24h"]) if f["focos_24h"]]
+    return cartao("focos_24h", "Focos de calor detectados nas últimas 24 horas", total,
+                  "Programa Queimadas (INPE)", consultado, lista=lista, nota=documento)
+
+
+def cartao_avisos(sinais):
+    """5 · Avisos meteorológicos em vigor, por grau."""
+    ufs = (sinais or {}).get("uf") or {}
+    com_dado = [(uf, u.get("avisos_inmet") or {}) for uf, u in ufs.items()]
+    com_dado = [(uf, a) for uf, a in com_dado if a.get("total") is not None]
+    if not com_dado:
+        return cartao("avisos_inmet", "Avisos meteorológicos em vigor", None,
+                      "INMET", None, sem_coleta=True)
+    total = sum(a["total"] for _, a in com_dado)
+    graus = {}
+    for _, a in com_dado:
+        for grau, n in (a.get("graus") or {}).items():
+            graus[grau] = graus.get(grau, 0) + n
+    consultado = next((a.get("consultado_em") for _, a in com_dado if a.get("consultado_em")), None)
+    lista = [{"uf": uf, "valor": a["total"], "graus": a.get("graus") or {}}
+             for uf, a in sorted(com_dado, key=lambda x: -x[1]["total"]) if a["total"]]
+    return cartao("avisos_inmet", "Avisos meteorológicos em vigor", total,
+                  "INMET — avisos ativos no momento da consulta", consultado, lista=lista,
+                  secundaria={"rotulo": "por grau", "valor": graus} if graus else None)
+
+
+def cartao_alertas(sinais):
+    """5b · Alertas do CEMADEN em vigor, por nível."""
+    ufs = (sinais or {}).get("uf") or {}
+    com_dado = [(uf, u.get("alertas_cemaden") or {}) for uf, u in ufs.items()]
+    com_dado = [(uf, a) for uf, a in com_dado if a.get("total") is not None]
+    if not com_dado:
+        return cartao("alertas_cemaden", "Alertas do CEMADEN em vigor", None,
+                      "CEMADEN", None, sem_coleta=True)
+    total = sum(a["total"] for _, a in com_dado)
+    niveis = {}
+    for _, a in com_dado:
+        for nivel, n in (a.get("niveis") or {}).items():
+            niveis[nivel] = niveis.get(nivel, 0) + n
+    consultado = next((a.get("consultado_em") for _, a in com_dado if a.get("consultado_em")), None)
+    lista = [{"uf": uf, "valor": a["total"], "municipios": (a.get("municipios") or [])[:20]}
+             for uf, a in sorted(com_dado, key=lambda x: -x[1]["total"]) if a["total"]]
+    return cartao("alertas_cemaden", "Alertas do CEMADEN em vigor", total,
+                  "CEMADEN — alertas vigentes", consultado, lista=lista,
+                  secundaria={"rotulo": "por nível", "valor": niveis} if niveis else None)
+
+
+def cartao_temperatura(sinais):
+    """9 · Maior máxima prevista entre as capitais.
+
+    O handover pede `tmax_amanha`. O dado guarda `tmax` com a `data` a que se refere — o cartão
+    diz a data que está no dado, nunca "amanhã" sem base.
+    """
+    ufs = (sinais or {}).get("uf") or {}
+    com_dado = [(uf, u.get("temperatura") or {}) for uf, u in ufs.items()]
+    com_dado = [(uf, t) for uf, t in com_dado if t.get("tmax") is not None]
+    if not com_dado:
+        return cartao("temperatura_maxima", "Maior máxima prevista entre as capitais", None,
+                      "INMET", None, sem_coleta=True)
+    ordenado = sorted(com_dado, key=lambda x: -x[1]["tmax"])
+    uf, t = ordenado[0]
+    lista = [{"uf": u, "capital": tt.get("capital"), "valor": tt["tmax"], "data": tt.get("data")}
+             for u, tt in ordenado[:5]]
+    return cartao("temperatura_maxima",
+                  "Maior máxima prevista entre as capitais, em grau Celsius",
+                  t["tmax"], t.get("publicado_por") or "INMET — previsão para as capitais",
+                  t.get("data"), lista=lista,
+                  nota=f"{t.get('capital')} ({uf}), previsão para {t.get('data')}; "
+                       f"critério: {t.get('criterio')}")
+
+
+def cartao_qualidade_ar(sinais):
+    """10 · Capitais com índice de qualidade do ar acima da faixa boa/razoável.
+
+    O handover pede PM2,5. A editoria removeu o PM2,5 do site em 27/09 (§244 trocou por ÍNDICE),
+    então o cartão usa o índice — que é o que interessa a quem lê, e vem pronto da fonte.
+    """
+    ufs = (sinais or {}).get("uf") or {}
+    linhas = []
+    for uf, u in ufs.items():
+        ind = ((u.get("qualidade_ar") or {}).get("indice") or {})
+        if ind.get("valor") is not None:
+            linhas.append((uf, ind))
+    if not linhas:
+        return cartao("qualidade_ar_indice",
+                      "Capitais com índice de qualidade do ar acima da faixa boa ou razoável",
+                      None, "Copernicus CAMS via Open-Meteo", None, sem_coleta=True)
+    acima = [(uf, i) for uf, i in linhas if i["valor"] > EAQI_LIMIAR]
+    escala = linhas[0][1].get("escala")
+    publicado = linhas[0][1].get("publicado_por")
+    lista = [{"uf": uf, "valor": i["valor"], "hora": i.get("hora")}
+             for uf, i in sorted(acima, key=lambda x: -x[1]["valor"])]
+    return cartao("qualidade_ar_indice",
+                  f"Capitais com índice {escala} acima de {EAQI_LIMIAR}",
+                  len(acima), publicado or "Copernicus CAMS via Open-Meteo",
+                  linhas[0][1].get("hora"), lista=lista,
+                  nota=(f"escala {escala}, faixas da própria fonte; {len(linhas)} capital(is) com "
+                        f"leitura; critério: {linhas[0][1].get('criterio')}"))
+
+
+# ── cartões que o handover pede e que NÃO são calculáveis hoje ──────────────────────────────
+
+NAO_CALCULAVEIS = [
+    {"id": "planos_localizados_no_periodo",
+     "rotulo": "Planos localizados pelo MARÉ nesta edição",
+     "por_que_nao": "o campo `localizado_em` não existe em nenhum registro (medido: 0 de 267 em "
+                    "data/municipios.json). Sem ele, a data de localização seria a do ato."},
+    {"id": "mudancas_de_categoria",
+     "rotulo": "Estados que mudaram de categoria nesta edição",
+     "por_que_nao": "não existe fotografia da edição anterior (`data/edicao_anterior/`). Sem o par, "
+                    "o diff seria inventado."},
+    {"id": "dengue_no_periodo",
+     "rotulo": "Municípios que entraram em alerta de dengue no período",
+     "por_que_nao": "o handover marca como calculável, mas a medição desmente: `dengue_capitais` "
+                    "tem 27 CAPITAIS com uma única semana epidemiológica corrente, e "
+                    "`serie_capitais` é série agregada das 27, não nível por município por SE. "
+                    "Sem o nível da SE anterior, a passagem para laranja/vermelho seria inventada."},
+    {"id": "paginas_fora_do_ar",
+     "rotulo": "Páginas oficiais fora do ar por aviso eleitoral",
+     "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje "
+                    "é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."},
+]
+
+
+def texto_pronto(cartoes: list[dict]) -> str:
+    """Uma frase por cartão com valor. Cláusula de valor zero ou sem coleta é OMITIDA."""
+    por_id = {c["id"]: c for c in cartoes}
+    partes = []
+
+    def v(ident):
+        c = por_id.get(ident)
+        if not c or c["sem_coleta"] or not c["valor"]:
+            return None
+        return c
+
+    c = v("decretos_no_periodo")
+    if c:
+        ufs = sorted({x["uf"] for x in c["lista"]})[:3]
+        ini = datetime.fromisoformat(c["periodo"]["ini"]).strftime("%d/%m")
+        fim = datetime.fromisoformat(c["periodo"]["fim"]).strftime("%d/%m")
+        partes.append(f"Entre {ini} e {fim}, {c['valor']} municípios decretaram emergência ou "
+                      f"calamidade ({', '.join(ufs)})")
+    c = v("reconhecimentos_no_periodo")
+    if c:
+        partes.append(f"{c['valor']} municípios foram reconhecidos pelo governo federal")
+    c = v("planos_no_periodo")
+    if c:
+        partes.append(f"{c['valor']} planos municipais têm ato no período")
+    c = v("focos_24h")
+    if c:
+        top = c["lista"][0]["uf"] if c["lista"] else None
+        partes.append(f"o INPE detectou {c['valor']} focos de calor nas últimas 24 horas"
+                      + (f" ({top})" if top else ""))
+    c = v("avisos_inmet")
+    if c:
+        partes.append(f"{c['valor']} avisos meteorológicos do INMET estão em vigor")
+    c = v("alertas_cemaden")
+    if c:
+        partes.append(f"{c['valor']} alertas do CEMADEN estão em vigor")
+    c = v("temperatura_maxima")
+    if c and c["lista"]:
+        # Vírgula decimal: o texto é público e em português. "39.0 °C" é erro de idioma.
+        graus = f"{c['valor']:.1f}".replace(".", ",")
+        partes.append(f"a maior máxima prevista entre as capitais é de {graus} °C em "
+                      f"{c['lista'][0]['capital']}")
+    c = v("qualidade_ar_indice")
+    if c:
+        partes.append(f"{c['valor']} capitais estão com índice de qualidade do ar acima de "
+                      f"{EAQI_LIMIAR}")
+    return ("; ".join(partes) + ".") if partes else ""
+
+
+def montar(corte: date) -> dict:
+    atos = ler_atos()
+    municipios = ler("municipios.json", []) or []
+    sinais = ler("sinais_risco.json", {}) or {}
+
+    cartoes = [
+        cartao_decretos(atos, corte),
+        cartao_reconhecimentos(atos, corte),
+        cartao_planos(municipios, corte),
+        cartao_focos(sinais),
+        cartao_avisos(sinais),
+        cartao_alertas(sinais),
+        cartao_temperatura(sinais),
+        cartao_qualidade_ar(sinais),
+    ]
+    return {
+        "_governanca":
+            "Cartões 'Esta semana em números' da página Imprensa (handover da editoria de "
+            "27/09/2026, §253). Peso ZERO nos índices: nada aqui é lido por recalcular_mare.py "
+            "nem por gerar_monitor_saude.py. Todo número vem do dado; texto fixo nunca contém "
+            "número. Zero só quando a coleta rodou — sem coleta é `sem_coleta: true`, e ausência "
+            "não é zero. Sem fotografia da edição anterior, `primeira_medicao: true` e "
+            "`variacao: null`: variação sem par seria inventada. Derivado de "
+            "gerar_imprensa_semana.py — não se edita à mão.",
+        "gerado_em": corte.isoformat(),
+        "janela_dias": JANELA,
+        "cartoes": cartoes,
+        "nao_calculaveis": NAO_CALCULAVEIS,
+        "texto_pronto": texto_pronto(cartoes),
+    }
+
+
+# ── autoteste ───────────────────────────────────────────────────────────────────────────────
+
+def autoteste() -> int:
+    falhas = []
+
+    def checar(nome, cond):
+        print(("  ✓ " if cond else "  ✗ ") + nome)
+        if not cond:
+            falhas.append(nome)
+
+    # A lição de 27/09: os DOIS formatos, e nada além deles em silêncio.
+    checar("data_do_ato aceita dd/mm/aaaa", data_do_ato("15/09/2026") == date(2026, 9, 15))
+    checar("data_do_ato aceita ISO", data_do_ato("2026-09-15") == date(2026, 9, 15))
+    checar("data_do_ato devolve None em vazio", data_do_ato("") is None and data_do_ato(None) is None)
+    checar("data_do_ato devolve None em lixo", data_do_ato("setembro") is None)
+
+    corte = date(2026, 9, 27)
+
+    # Zero não é sem coleta, e sem coleta não é zero.
+    c = cartao_focos({"uf": {}})
+    checar("sem fonte nenhuma, o cartão diz sem coleta e valor null",
+           c["sem_coleta"] is True and c["valor"] is None)
+    c = cartao_focos({"uf": {"AC": {"fogo": {"focos_24h": 0, "consultado_em": "x"}}}})
+    checar("coleta que rodou e deu zero é ZERO, não sem coleta",
+           c["sem_coleta"] is False and c["valor"] == 0)
+
+    # O cartão de decretos tem de ver o ato em ISO — era o defeito de 27/09.
+    atos = [{"uf": "MG", "municipio": "Teófilo Otoni", "data": "2026-09-25",
+             "causa": "situação de emergência", "decreto": "Decreto nº 79", "url": "u"},
+            # 22/09, não 20/09: a janela de 7 dias até 27/09 cobre 21 a 27, e 20 é o limite
+            # exclusivo. A primeira montagem deste teste usou 20/09 e reprovou — o código estava
+            # certo, a fixture estava errada.
+            {"uf": "SP", "municipio": "X", "data": "22/09/2026",
+             "causa": "situação de emergência", "decreto": "d", "url": "u"},
+            {"uf": "BA", "municipio": "Y", "data": "24/09/2026",
+             "causa": "reconhecimento federal", "decreto": "p", "url": "u"}]
+    c = cartao_decretos(atos, corte)
+    checar("decreto em ISO entra na contagem", c["valor"] == 2)
+    checar("reconhecimento NÃO entra no cartão de decretos",
+           all("reconhecimento" not in (x["causa"] or "").lower() for x in c["lista"]))
+    r = cartao_reconhecimentos(atos, corte)
+    checar("reconhecimento entra no cartão dele", r["valor"] == 1)
+
+    # Variação inventada é proibida enquanto não houver edição anterior.
+    checar("todo cartão nasce primeira_medicao e sem variação",
+           all(x["primeira_medicao"] and x["variacao"] is None
+               for x in montar(corte)["cartoes"]))
+
+    # Período em todo cartão de janela.
+    for ident in ("decretos_no_periodo", "reconhecimentos_no_periodo", "planos_no_periodo"):
+        cc = next(x for x in montar(corte)["cartoes"] if x["id"] == ident)
+        if not cc["periodo"]:
+            falhas.append(f"{ident} sem período")
+    checar("cartão de janela tem período", not any("sem período" in f for f in falhas))
+
+    # A frase pronta omite cláusula de valor zero — nunca "0 planos foram publicados".
+    frase = texto_pronto([cartao("planos_no_periodo", "r", 0, "f", None, per=periodo(corte)),
+                          cartao("focos_24h", "r", 5, "f", "x", lista=[{"uf": "PA", "valor": 5}])])
+    checar("frase pronta omite cláusula de valor zero", "planos" not in frase and "5 focos" in frase)
+    frase2 = texto_pronto([cartao("focos_24h", "r", None, "f", None, sem_coleta=True)])
+    checar("frase pronta omite cartão sem coleta", frase2 == "")
+
+    # Os não calculáveis precisam DIZER por quê — senão viram silêncio.
+    checar("todo não calculável declara o motivo",
+           all(x.get("por_que_nao") for x in NAO_CALCULAVEIS))
+    checar("dengue está entre os não calculáveis, contra o que o handover supõe",
+           any(x["id"] == "dengue_no_periodo" for x in NAO_CALCULAVEIS))
+
+    if falhas:
+        print(f"\n✗ IMPRENSA SEMANA: {len(falhas)} falha(s).")
+        return 1
+    print("\n✓ IMPRENSA SEMANA OK — dois formatos de data, zero ≠ sem coleta, "
+          "sem variação inventada, cláusula zero omitida.")
+    return 0
+
+
+def main() -> int:
+    if "--autoteste" in sys.argv[1:]:
+        return autoteste()
+    meta = ler("meta.json", {}) or {}
+    corte = data_do_ato(meta.get("corte")) or date.today()
+    r = montar(corte)
+    SAIDA.parent.mkdir(parents=True, exist_ok=True)
+    # §229: JSON de data/ passa pela porta atômica, nunca por write_text direto. Uma auditoria de
+    # 26/09 achou trinta e três escritas fora dela — entre elas o log de 24 MB e o banco municipal
+    # — e o portão 29 reprova quem repetir. Eu repeti, e o CI do PR #403 me pegou.
+    gravar_em(SAIDA, r)
+    com_valor = sum(1 for c in r["cartoes"] if not c["sem_coleta"])
+    print(f"→ {SAIDA.relative_to(RAIZ)} gravado · {len(r['cartoes'])} cartão(ões), "
+          f"{com_valor} com coleta, {len(r['nao_calculaveis'])} não calculável(is) declarado(s).")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

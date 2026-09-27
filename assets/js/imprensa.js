@@ -62,3 +62,94 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       : '<li class="u-muted">Nenhum marco futuro registrado.</li>';
   }).catch(() => { ul.innerHTML = '<li class="u-muted">Calendário não carregado.</li>'; });
 })();
+
+// ===== imprensa.html · "Esta semana em números" (§253, 27/09/2026) =====
+// Números vêm de data/imprensa/semana.json, gerado por gerar_imprensa_semana.py. Texto fixo no
+// HTML nunca contém número — o portão scripts/verificar_imprensa.py confere a paridade entre o
+// que a página mostra e o que o dado diz. Zero é zero; sem coleta é "sem coleta", nunca zero.
+(function () {
+  const fmt = v => {
+    if (v === null || v === undefined) return 'sem coleta';
+    if (typeof v === 'number' && !Number.isInteger(v)) return v.toFixed(1).replace('.', ',');
+    if (typeof v === 'number') return v.toLocaleString('pt-BR');
+    return String(v);
+  };
+  const dia = iso => {
+    if (!iso) return null;
+    const p = String(iso).slice(0, 10).split('-');
+    return p.length === 3 ? p[2] + '/' + p[1] : String(iso);
+  };
+
+  fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : null).then(S => {
+    if (!S || !S.cartoes) return;
+
+    const dlg = document.getElementById('detalheSemana');
+    const dlgTitulo = document.getElementById('detalheSemanaTitulo');
+    const dlgCorpo = document.getElementById('detalheSemanaCorpo');
+    const fechar = document.getElementById('detalheSemanaFechar');
+    if (fechar && dlg) fechar.addEventListener('click', () => dlg.close());
+
+    S.cartoes.forEach(c => {
+      const valor = document.querySelector('[data-imprensa="' + c.id + '"]');
+      if (valor) valor.textContent = c.sem_coleta ? 'sem coleta' : fmt(c.valor);
+
+      // O rótulo de um cartão pode trazer a escala da fonte (ex.: EAQI e o limiar), que é dado.
+      const titulo = document.querySelector('[data-imprensa-titulo="' + c.id + '"]');
+      if (titulo && c.rotulo) titulo.textContent = c.rotulo;
+
+      // Período, fonte e hora da consulta: o cartão não existe sem eles.
+      const meta = document.querySelector('[data-imprensa-meta="' + c.id + '"]');
+      if (meta) {
+        // O portão 19 proíbe travessão como pontuação de frase, e os campos `fonte` e `documento`
+        // do dado trazem travessão ("INMET — avisos ativos..."). Troca na APRESENTAÇÃO, por
+        // vírgula; o dado fica como a fonte o entregou.
+        const semTravessao = t => String(t).replace(/\s+—\s+/g, ', ').replace(/—/g, ',');
+        const partes = [];
+        if (c.periodo && c.periodo.ini && c.periodo.fim) {
+          partes.push('de ' + dia(c.periodo.ini) + ' a ' + dia(c.periodo.fim));
+        }
+        if (c.fonte) partes.push(c.fonte);
+        if (c.consultado_em) partes.push('consultado em ' + c.consultado_em);
+        if (c.primeira_medicao) partes.push('primeira medição');
+        if (c.nota) partes.push(c.nota);
+        meta.textContent = partes.map(semTravessao).join(' · ') || 'sem dado';
+      }
+
+      const botao = document.querySelector('[data-imprensa-lista="' + c.id + '"]');
+      if (botao) {
+        if (!c.lista || !c.lista.length) { botao.hidden = true; return; }
+        botao.hidden = false;
+        botao.addEventListener('click', () => {
+          if (!dlg) return;
+          dlgTitulo.textContent = c.rotulo || c.id;
+          dlgCorpo.innerHTML = c.lista.map(item => {
+            const chave = [item.municipio, item.capital, item.uf].filter(Boolean).join(' · ');
+            const detalhe = [];
+            if (item.valor !== undefined) detalhe.push(fmt(item.valor));
+            if (item.data) detalhe.push(dia(item.data));
+            if (item.causa) detalhe.push(item.causa);
+            if (item.documento) detalhe.push(item.documento);
+            if (item.hora) detalhe.push(item.hora);
+            const alvo = item.url
+              ? '<a href="' + esc(item.url) + '" target="_blank" rel="noopener">' + esc(detalhe.join(' · ') || 'documento') + '</a>'
+              : esc(detalhe.join(' · '));
+            return '<dt>' + esc(chave) + '</dt><dd>' + alvo + '</dd>';
+          }).join('');
+          dlg.showModal();
+        });
+      }
+    });
+
+    const frase = document.getElementById('semanaTextoPronto');
+    if (frase && S.texto_pronto) frase.textContent = S.texto_pronto;
+
+    // Os cartões que o handover pede e que o dado ainda não sustenta ficam DECLARADOS, com o
+    // motivo — silêncio aqui viraria a impressão de que nada falta.
+    const faltam = document.getElementById('semanaNaoCalculaveis');
+    if (faltam && (S.nao_calculaveis || []).length) {
+      faltam.hidden = false;
+      faltam.textContent = 'Ainda sem dado que os sustente: '
+        + S.nao_calculaveis.map(x => x.rotulo).join(' · ') + '.';
+    }
+  }).catch(() => {});
+})();
