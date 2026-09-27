@@ -134,44 +134,26 @@ code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-
 /* ===== 4. Masthead e navegação ===== */
 .grad-line{height:2px; border:none; margin:0; background:var(--green);}
 header.masthead{display:block; margin-bottom:var(--sp-6);}
-.mast-top{display:flex; justify-content:space-between; align-items:center; gap:var(--sp-4) var(--sp-5); flex-wrap:wrap; margin-bottom:var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line);}
+.mast-top{display:flex; justify-content:space-between; align-items:center; gap:var(--sp-4) var(--sp-5); flex-wrap:wrap; margin-bottom:var(--sp-5);}
 .mast-logo{display:block; line-height:0; text-decoration:none;}
 .logo-futura{height:26px; width:auto; display:block;}
 .mainnav{display:flex; gap:var(--sp-1); flex-wrap:wrap; flex-basis:100%;}
 .mainnav a, .mainnav span{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); letter-spacing:var(--ls-nav); text-transform:uppercase; color:var(--muted); text-decoration:none; white-space:nowrap; padding:0 var(--sp-2); border:1px solid var(--line); border-radius:var(--radius); min-height:36px; display:inline-flex; align-items:center; transition:color .15s, border-color .15s, background .15s;}
-/* 26/09/2026 (pedido da editoria): gradação do vermelho ao azul da esquerda para a direita, como
-   na barra do índice. Sem efeito nenhum — só cor. As posições abaixo são as dos dez botões; os
-   números pulados são os separadores <i class="nav-sep">, que ficam entre eles. Lista escrita à
-   mão envelhece calada, então `verificar_runtime.js` reprova se a contagem deixar de bater.
-   A ordem daqui até o fim do bloco importa: o ramo vem primeiro, e hover, botão de ação e página
-   corrente vêm depois, porque precisam vencê-lo. */
-.mainnav > :is(a, span):nth-child(1){background:color-mix(in srgb, var(--nav-1) 60%, var(--branco)); border-color:var(--nav-1); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(3){background:color-mix(in srgb, var(--nav-2) 60%, var(--branco)); border-color:var(--nav-2); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(5){background:color-mix(in srgb, var(--nav-3) 60%, var(--branco)); border-color:var(--nav-3); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(7){background:color-mix(in srgb, var(--nav-4) 60%, var(--branco)); border-color:var(--nav-4); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(8){background:color-mix(in srgb, var(--nav-5) 60%, var(--branco)); border-color:var(--nav-5); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(10){background:color-mix(in srgb, var(--nav-6) 60%, var(--branco)); border-color:var(--nav-6); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(12){background:color-mix(in srgb, var(--nav-7) 60%, var(--branco)); border-color:var(--nav-7); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(14){background:color-mix(in srgb, var(--nav-8) 60%, var(--branco)); border-color:var(--nav-8); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(15){background:color-mix(in srgb, var(--nav-9) 60%, var(--branco)); border-color:var(--nav-9); color:var(--ink);}
-.mainnav > :is(a, span):nth-child(16){background:color-mix(in srgb, var(--nav-10) 60%, var(--branco)); border-color:var(--nav-10); color:var(--ink);}
-/* Os seletores de estado repetem `> :is(a, span)` de propósito: sem isso eles ficam abaixo
-   do `:nth-child` do ramo na especificidade e o ramo vence, mesmo vindo antes. */
-.mainnav > :is(a, span):hover{color:var(--ink); border-width:1.5px; text-decoration:none;}
-.mainnav .nav-sep{display:inline-block; width:1px; height:22px; background:var(--line); margin:0; align-self:center;}
-/* O botão de ação ("Para gestores") era musgo cheio, fora do ramo. Mantém o peso de chamada pela
-   BORDA mais grossa, e não por cor nem por fonte própria: um segundo peso tipográfico aqui deixou
-   `verificar_consistencia_visual.js` vermelho — a família "navegação" tem de ter um estilo só. */
+/* 27/09/2026 (pedido da editoria): "os botões como uma peça única". O degradê vive na BARRA e
+   atravessa todos eles; cada botão mostra a fatia que lhe cabe. Não há emenda porque não há dois
+   pintados — há um só. Isso substitui as dez regras `:nth-child` de cor que existiam aqui, e com
+   elas some a lista escrita à mão que envelhecia a cada item novo no menu.
+   Os botões ESTICAM (`flex:1 1 auto`) para preencher a linha: com largura de conteúdo sobrava
+   cor no fim da faixa. Como o `flex-wrap` distribui a folga por linha, a última também fecha. */
+.mainnav{background-image:var(--degrade-menu); border-radius:var(--radius); padding:var(--sp-1); gap:var(--sp-1);}
+.mainnav > :is(a, span){flex:1 1 auto; justify-content:center; text-align:center; background:none; color:var(--branco); border-color:rgba(255,255,255,.30);}
+.mainnav > :is(a, span):hover{border-color:var(--branco); border-width:1.5px; text-decoration:none;}
 .mainnav > :is(a, span).btn-nav{border-width:2px;}
-.mainnav > :is(a, span).btn-nav:hover{background:color-mix(in srgb, var(--nav-7) 85%, var(--branco)); color:var(--ink);}
-/* 26/09/2026, em duas decisões da editoria no mesmo dia. Primeiro a página corrente saiu do musgo
-   (que era também a cor do botão de ação — duas funções na mesma cor) e foi para terracota; depois,
-   com a gradação no menu, a editoria pediu que ela fosse a BRANCO, fora do ramo. É inversão: entre
-   dez botões de tinta, o único branco é o que se destaca, e sem gastar mais uma cor. Borda e texto
-   em --ink medem 18,5:1 sobre branco. Vale em todas as páginas: é o mesmo componente. */
-.mainnav > :is(a, span).ativa, .mainnav > :is(a, span).ativa:hover{background:var(--branco); color:var(--ink); border-color:var(--ink);}
+/* A página corrente em branco: entre dez botões de cor, o único branco é o que se destaca, e não
+   gasta mais uma cor. Texto --ink sobre branco mede 19,2:1. */
+.mainnav > :is(a, span).ativa, .mainnav > :is(a, span).ativa:hover{background:var(--branco); color:var(--ink); border-color:var(--branco);}
 .mainnav > :is(a, span).ativa.btn-nav{cursor:default;}
-.mainnav > :is(a, span):active{background:var(--terracota); color:var(--branco); border-color:var(--terracota);}
+.mainnav .nav-sep{display:none;}
 .site-title{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display); letter-spacing:var(--ls-titulo); color:var(--ink); margin:0 0 var(--sp-2);}
 .site-title em{font-style:italic; font-weight:var(--peso-regular);}
 /* 18/09/2026 (pedido da editoria): o logotipo do MARÉ substitui o texto "MARÉ" + subtítulo do
@@ -185,10 +167,20 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
    texto de verdade (.site-nome), no tamanho da escala, selecionável e pesquisável. */
 .site-title--logo svg{display:block; width:420px; height:auto; max-width:100%;}
 .site-nome{display:block; font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-h2); line-height:var(--lh-h2); letter-spacing:var(--ls-titulo); color:var(--ink); margin:var(--sp-2) 0 0;}
-/* 26/09/2026 (pedido da editoria): a descrição ocupava só parte da largura, o que a deixava
-   desalinhada dos parágrafos abaixo, e colava no menu sem nenhuma separação. Largura inteira, e
-   a divisória vem da própria barra do menu (ver .mast-top). */
-.site-intro{font-size:var(--fs-h4); line-height:var(--lh-h4); color:var(--muted); max-width:none; margin:var(--sp-3) 0 var(--sp-5);}
+/* 27/09/2026 (pedido da editoria, tomando o site da Futura como referência): o que fazia este
+   topo parecer institucional não era cor nem moldura — era ESCALA e AR. A marca era um logotipo
+   de canto ao lado de um título do mesmo tamanho, tudo apertado e separado por filete.
+   Agora: a marca é o elemento dominante (620px), o nome é declaração em Fraunces no topo da escala,
+   e a descrição ocupa coluna estreita — ela corria 1132px, cerca de 110 caracteres por linha,
+   contra os 45 a 75 da medida confortável. A separação é por ESPAÇO, não por filete.
+   Princípios da referência, não a composição dela: o `CLAUDE.md` diz que as duas marcas têm
+   parentesco visual "sem ser gêmea" e proíbe copiar o leiaute de uma na outra. */
+.masthead .site-title--logo{display:block; margin:0 0 var(--sp-5);}
+.masthead .site-title--logo svg{width:min(620px, 80%); max-width:100%;}
+.mast-abertura{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:var(--sp-7); align-items:start; margin:0 0 var(--sp-6);}
+.site-nome-p{margin:0;}
+.site-nome{display:block; font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display); letter-spacing:var(--ls-titulo); color:var(--ink); max-width:14ch; margin:0;}
+.site-intro{font-size:var(--fs-body); line-height:var(--lh-body); color:var(--muted); max-width:52ch; margin:0;}
 .masthead--mini .site-title--logo{margin:0 0 var(--sp-1);}
 .masthead--mini .site-title--logo svg{width:210px;}
 .masthead--mini .site-nome{font-size:var(--fs-h4); line-height:var(--lh-h4); margin-top:var(--sp-1);}
@@ -539,6 +531,9 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 /* Os três campos de texto não cabem numa célula de 140px junto com sigla, nome, nota e as duas
    barras. Eles vivem na janela de detalhe — inclusive "Diários municipais consultados", que ANTES
    desta mudança não existia lá e teria sumido da interface (ver assets/js/index.js). */
+/* 27/09/2026: o risco projetado do estado, em vocabulário fechado e curto. A frase inteira do
+   boletim fica na janela de detalhe — aqui cabe o tipo, não a sentença. */
+.tile .tile-risco{display:block; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--rust); margin-top:var(--sp-1); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .tile .tile-face{display:none;}
 .regions + .legend{max-width:880px; margin-left:auto; margin-right:auto; justify-content:center;}
 .legend{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-3); margin-top:var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
@@ -748,6 +743,14 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 
 /* ===== 18. Responsivo — dois pontos de quebra canônicos: 1020 px (tablet) e 640 px (celular) ===== */
 @media (max-width:1020px){
+  /* §24: recompor. A marca encolhe, o nome desce um degrau da escala, e a abertura empilha. */
+  .masthead .site-title--logo svg{width:min(460px, 92%);}
+  .mast-abertura{grid-template-columns:1fr; row-gap:var(--sp-5);}
+  .site-nome{font-size:var(--fs-h1); line-height:var(--lh-h1); max-width:none;}
+  .site-intro{max-width:none;}
+  /* A barra quebra em várias linhas e o degradê horizontal se repetia em cada uma — várias
+     viagens em vez de uma. Virando o eixo, o bloco volta a ser UMA peça. */
+  .mainnav{background-image:var(--degrade-menu-vertical);}
   /* Abaixo de 1020px não há espaço para o aviso ao lado: ele volta ao fluxo, antes do botão. */
   #formContrib{display:block;}
   #formContrib .contrib-destino{position:static; margin:0 0 var(--sp-4); max-width:660px;}

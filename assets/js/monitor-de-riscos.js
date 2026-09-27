@@ -80,24 +80,9 @@ function __ctx(){ if (!window.__ctxCache) window.__ctxCache = MonitorMapas.conte
 const RISCO = uf => (SINAIS.uf[uf] || {}).risco_projetado;
 const TIPO_ROTULO = SINAIS._formato.tipos_de_risco;
 const TIPO_CURTO = SINAIS._formato.tipos_de_risco_curto;
-desenharMapa('mapaTipoRisco', 'legTipoRisco',
-  uf => { const r = RISCO(uf); return r ? TIPO_COR[r.tipo] : NEUTRA; },
-  uf => { const r = RISCO(uf); if (!r) return 'Sem registro localizado até o corte';
-    // 17/09/2026 (pedido da editoria): "misto" nomeia os riscos que o compõem, não só a categoria —
-    // o mouse sobre o mapa é onde o leitor descobre do que o "misto" daquele estado é feito.
-    const rotulo = r.tipo === 'misto' && r.componentes && r.componentes.length
-      ? r.componentes.map(c => TIPO_CURTO[c]).join(' + ')
-      : TIPO_ROTULO[r.tipo];
-    return '<em>' + esc(rotulo) + '</em><br>' + esc(r.texto); },
-  Object.keys(TIPO_COR).map(t => ({cor:TIPO_COR[t], rotulo:TIPO_ROTULO[t]})));
-credito('boxTipoRisco', 'painel_el_nino');
-
-const corpoTipo = document.querySelector('#tblTipoRisco tbody');
-corpoTipo.innerHTML = UFS.map(uf => { const r = RISCO(uf);
-  const tipoCel = r ? (r.tipo === 'misto' && r.componentes && r.componentes.length ? r.componentes.map(c => TIPO_CURTO[c]).join(' + ') : TIPO_ROTULO[r.tipo]) : '—';
-  return '<tr><td><strong>' + uf + '</strong></td><td>' + esc(r ? r.texto : 'não localizado até o corte') +
-         '</td><td>' + esc(tipoCel) + '</td></tr>'; }).join('');
-
+// 27/09/2026 (pedido da editoria): o mapa do tipo de risco projetado saiu daqui. O dado não
+// foi descartado — ele passou para o cartão de cada estado na página inicial, que é onde o
+// leitor procura o seu próprio estado. Ver assets/js/index.js.
 // ---- Mapa 2: seca observada ----
 // 15/09/2026: a fonte passou a ser o RPC de dados tabulares da ANA (fração cumulativa da área da UF em cada categoria
 // S0–S4, mapa mensal). O mapa mostra a categoria MEDIANA da área — a mais severa que cobre pelo menos metade da UF
@@ -122,50 +107,63 @@ credito('boxSecas', 'monitor_secas');
    o rótulo vem do próprio dado (campo `natureza`), não escrito à mão aqui. */
 const temp = uf => (SINAIS.uf[uf] || {}).temperatura;
 const serieTemp = uf => ((temp(uf) || {}).serie) || [];
-const diaDe = (uf, desloc) => { const s = serieTemp(uf); const hoje = s.findIndex(p => p.data === diaISO(0)); const i = (hoje < 0 ? 1 : hoje) + desloc; return s[i] || null; };
-function diaISO(desloc){ const d = new Date(); d.setDate(d.getDate() + desloc); return d.toISOString().slice(0, 10); }
-const maxPrev = uf => (diaDe(uf, 1) || {}).maxima;
-const temps = UFS.map(maxPrev).filter(v => typeof v === 'number');
+/* 27/09/2026 (pedido da editoria: "temperatura reportada por um órgão competente"). O dado passou
+   a vir do INMET (previsão oficial para as 27 capitais) no lugar do Open-Meteo, que roda modelos
+   estrangeiros. E o mapa deixou de PINTAR O ESTADO INTEIRO a partir de um ponto na capital: a
+   medida é de um ponto, então o mapa mostra um ponto. Pintar a UF afirmava visualmente uma
+   cobertura estadual que o dado não tem — o que a direção de arte §10 proíbe. */
+const coordCapital = {};
+(window.__refMunicipios || []).forEach(m => {
+  const t = temp(m.uf);
+  if (t && t.capital && m.nome === t.capital && m.lat != null) coordCapital[m.uf] = {lat: m.lat, lon: m.lon};
+});
+const tmaxDe = uf => { const t = temp(uf); return t && typeof t.tmax === 'number' ? t.tmax : null; };
+const temps = UFS.map(tmaxDe).filter(v => v != null);
 const tMin = temps.length ? Math.min(...temps) : 0, tMax = temps.length ? Math.max(...temps) : 1;
 const escalaTemp = d3.scaleLinear().domain([tMin, tMax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
-desenharMapa('mapaTemperatura', 'legTemperatura',
-  uf => { const v = maxPrev(uf); return typeof v === 'number' ? escalaTemp(v) : NEUTRA; },
-  uf => { const t = temp(uf); if(!t) return 'Aguardando a primeira coleta desta fonte';
-    const amanha = diaDe(uf, 1), ontem = diaDe(uf, -1);
-    return esc(t.capital && t.capital.nome || uf) + '<br>Máxima prevista para amanhã: '
-      + (amanha && amanha.maxima != null ? amanha.maxima + ' ' + esc(t.unidade) : 'sem valor')
-      + (ontem && ontem.maxima != null ? '<br>Máxima de ontem: ' + ontem.maxima + ' ' + esc(t.unidade) : '')
-      + '<br>' + esc(t.natureza); },
-  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo: temps.length ? tMin.toFixed(0) + ' °C' : 'menor'},
-   {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo: temps.length ? tMax.toFixed(0) + ' °C' : 'maior'},
-   {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
-credito('boxTemperatura', 'open_meteo_tempo');
-preencherTabela('tblTemperatura', uf => { const t = temp(uf); if(!t) return null;
-  const a = diaDe(uf, 1), o = diaDe(uf, -1);
-  return [t.capital && t.capital.nome || '', o && o.maxima != null ? o.maxima + ' °C' : 'sem valor',
-          a && a.maxima != null ? a.maxima + ' °C' : 'sem valor',
-          a && a.minima != null ? a.minima + ' °C' : 'sem valor']; });
+const rotuloTemp = uf => { const t = temp(uf); if (!t) return 'Aguardando a primeira coleta desta fonte';
+  return esc(t.capital || uf) + '<br>M\u00e1xima prevista: ' + (t.tmax != null ? t.tmax + ' \u00b0C' : 'sem valor')
+    + (t.tmin != null ? '<br>M\u00ednima prevista: ' + t.tmin + ' \u00b0C' : '')
+    + (t.resumo ? '<br>' + esc(t.resumo) : '') + '<br>' + esc(t.data || '') + ' \u00b7 ' + esc(t.natureza || ''); };
+// o mapa base fica NEUTRO: ele é só o contorno onde os pontos se apoiam
+desenharMapa('mapaTemperatura', 'legTemperatura', () => NEUTRA, rotuloTemp,
+  [{cor: MonitorMapas.PALETA.rampaPerigo[0], rotulo: temps.length ? tMin.toFixed(0) + ' \u00b0C' : 'menor'},
+   {cor: MonitorMapas.PALETA.rampaPerigo[1], rotulo: temps.length ? tMax.toFixed(0) + ' \u00b0C' : 'maior'},
+   {cor: NEUTRA, rotulo: 'Capital sem coleta at\u00e9 o corte'}]);
+MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
+  UFS.filter(uf => coordCapital[uf] && tmaxDe(uf) != null)
+     .map(uf => ({uf, lat: coordCapital[uf].lat, lon: coordCapital[uf].lon, v: tmaxDe(uf)})),
+  {r: () => 6, cor: d => escalaTemp(d.v), rotulo: d => rotuloTemp(d.uf), classe: 'pontosTemp'});
+credito('boxTemperatura', 'inmet_previsao_capitais');
+preencherTabela('tblTemperatura', uf => { const t = temp(uf); if (!t) return null;
+  return [t.capital || '', t.tmax != null ? t.tmax + ' \u00b0C' : 'sem valor',
+          t.tmin != null ? t.tmin + ' \u00b0C' : 'sem valor', t.resumo || 'sem resumo']; });
 
-// ---- Mapa 4: material particulado fino nas capitais (24/09/2026) ----
-/* Escala ancorada na linha da OMS (15 µg/m³ de média diária), que vem DO DADO — o número não vive
-   no HTML nem aqui. A relação com a linha é descrita ("acima"/"abaixo"), sem qualificar o valor. */
+// ---- Mapa 4: índice de qualidade do ar nas capitais (27/09/2026) ----
+/* Decisão da editoria: a página mostra ÍNDICE, não PM2,5 — é o que interessa a quem lê. O índice
+   vem PRONTO da fonte e nunca é calculado aqui: calculá-lo faria dele uma afirmação do Monitor, e
+   ele precisa ser evidência de terceiro. Não existe índice nacional aberto (conferido em
+   27/09/2026), por isso a escala é a europeia e a legenda diz isso. Pontos nas capitais, não
+   pintura por UF, pela mesma razão da temperatura. */
 const ar = uf => (SINAIS.uf[uf] || {}).qualidade_ar;
-const pm25 = uf => ((ar(uf) || {}).media_diaria || {}).pm2_5;
-const REF_PM25 = ((SINAIS._formato || {}).referencia_pm25_oms || {}).valor;
-const pmVals = UFS.map(pm25).filter(v => typeof v === 'number');
-const pmMax = pmVals.length ? Math.max(...pmVals) : 1;
-const escalaPm = d3.scaleLinear().domain([0, pmMax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
-const relacaoOms = v => typeof v !== 'number' || REF_PM25 == null ? '' : (v > REF_PM25 ? 'acima da linha da OMS' : 'abaixo da linha da OMS');
-desenharMapa('mapaAr', 'legAr',
-  uf => { const v = pm25(uf); return typeof v === 'number' ? escalaPm(v) : NEUTRA; },
-  uf => { const a = ar(uf); if(!a) return 'Aguardando a primeira coleta desta fonte';
-    const v = pm25(uf), u = (a.unidades || {}).pm2_5 || 'µg/m³';
-    return esc(a.capital && a.capital.nome || uf) + '<br>PM2,5: '
-      + (typeof v === 'number' ? v + ' ' + esc(u) + ' (' + relacaoOms(v) + ')' : 'sem valor')
-      + '<br>' + esc(a.natureza); },
-  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 µg/m³'},
-   {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo: pmVals.length ? pmMax.toFixed(0) + ' µg/m³' : 'maior'},
-   {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+const nomeCapital = (o, uf) => (o && ((o.capital && o.capital.nome) || o.capital)) || uf;
+const iqa = uf => ((ar(uf) || {}).indice || {}).valor;
+const iqaVals = UFS.map(iqa).filter(v => typeof v === 'number');
+const iqaMax = iqaVals.length ? Math.max(...iqaVals) : 1;
+const escalaAr = d3.scaleLinear().domain([0, iqaMax]).range(MonitorMapas.PALETA.rampaPerigo).clamp(true);
+const rotuloAr = uf => { const a = ar(uf); if (!a) return 'Aguardando a primeira coleta desta fonte';
+  const i = a.indice; if (!i) return esc(nomeCapital(a, uf)) + '<br>\u00cdndice sem publica\u00e7\u00e3o nesta rodada';
+  return esc(nomeCapital(a, uf)) + '<br>\u00cdndice ' + esc(i.escala) + ': ' + i.valor
+    + '<br>' + esc(i.criterio) + ' (' + esc(String(i.hora).replace('T', ' \u00e0s ')) + ')'
+    + '<br>publicado por ' + esc(i.publicado_por); };
+desenharMapa('mapaAr', 'legAr', () => NEUTRA, rotuloAr,
+  [{cor: MonitorMapas.PALETA.rampaPerigo[0], rotulo: '0'},
+   {cor: MonitorMapas.PALETA.rampaPerigo[1], rotulo: iqaVals.length ? String(Math.round(iqaMax)) : 'maior'},
+   {cor: NEUTRA, rotulo: 'Capital sem coleta at\u00e9 o corte'}]);
+MonitorMapas.pontos(__ctx(), 'mapaAr',
+  UFS.filter(uf => coordCapital[uf] && typeof iqa(uf) === 'number')
+     .map(uf => ({uf, lat: coordCapital[uf].lat, lon: coordCapital[uf].lon, v: iqa(uf)})),
+  {r: () => 6, cor: d => escalaAr(d.v), rotulo: d => rotuloAr(d.uf), classe: 'pontosAr'});
 credito('boxAr', 'open_meteo_ar');
 
 
@@ -312,10 +310,12 @@ credito('boxAr', 'open_meteo_ar');
     + ' sob alerta do CEMADEN, em ' + esc(MonitorMapas.dataBR(ALERTAS.gerado_em) || '')
     + ' · <a href="defesa-civil.html#alertas">Defesa civil</a>';
 })();
-preencherTabela('tblAr', uf => { const a = ar(uf); if(!a) return null;
+preencherTabela('tblAr', uf => { const a = ar(uf); if (!a) return null;
   const m = a.media_diaria || {}, u = (a.unidades || {}).pm2_5 || 'µg/m³';
   const num = (x) => typeof x === 'number' ? x + ' ' + u : 'sem valor';
-  return [a.capital && a.capital.nome || '', num(m.pm2_5), num(m.pm10), num(m.ozone), relacaoOms(m.pm2_5)]; });
+  const i = a.indice;
+  return [nomeCapital(a, uf), i ? i.escala + ' ' + i.valor : 'sem valor',
+          num(m.pm2_5), num(m.pm10), num(m.ozone)]; });
 
 // ---- Mapa 4: focos ativos ----
 const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
@@ -337,13 +337,17 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
   const serie = (oni && oni.serie) || []; const u = serie[serie.length - 1]; const pg = SINAIS.enos.prognostico;
   const cls = v => v >= 2.0 ? 'muito forte' : v >= 1.5 ? 'forte' : v >= 1.0 ? 'moderado' : v >= 0.5 ? 'fraco' : 'abaixo do limiar';
   const estado = u ? (u.anomalia >= 0.5 ? 'El Niño' : u.anomalia <= -0.5 ? 'La Niña' : 'Neutro') : '—';
-  el('stEstado').innerHTML = esc(estado) + (u ? ' <small>confirmado pelo Painel em 29/06/2026</small>' : '');
-  el('stIntensidade').innerHTML = u ? esc(cls(u.anomalia)) + ' <small>pelo ONI observado; projeção: muito forte (Boletim nº 3)</small>' : '—';
+  // 27/09/2026: o estado do ENOS passa a vir da Discussão Diagnóstica do CPC, coletada a cada
+  // rodada, e carrega a DATA DE EMISSÃO do documento. Antes vinha de um campo semeado à mão que
+  // nada renovava, e a página o exibia como leitura corrente.
+  el('stEstado').innerHTML = esc(estado) + (pg && pg.emitido_em
+    ? ' <small>' + esc(pg.estado || '') + ' · CPC/NOAA, emitido em ' + esc(pg.emitido_em) + '</small>'
+    : (u ? ' <small>confirmado pelo Painel em 29/06/2026</small>' : ''));
+  el('stIntensidade').innerHTML = u ? esc(cls(u.anomalia)) + ' <small>pelo ONI observado; projeção: muito forte</small>' : '—';
   let d = null;
   if (serie.length >= 3) { d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; el('stTendencia').innerHTML = esc(d > 0.15 ? 'fortalecendo' : d < -0.15 ? 'enfraquecendo' : 'estável') + ' <small>' + (d >= 0 ? '+' : '') + esc(d.toFixed(2).replace('.', ',')) + ' °C em dois trimestres</small>'; }
   el('stOni').innerHTML = u ? esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C <small>' + esc(u.trimestre + '/' + u.ano) + ' · média móvel trimestral</small>' : '—';
   el('stProb').innerHTML = ultimaProb ? esc(ultimaProb.el_nino.toFixed(0)) + '% <small>' + esc(ultimaProb.trimestre) + ' (IRI/CPC)</small>' : (pg && pg.enso ? '> 90% <small>SON/2026 · CPC/NOAA, ago/2026</small>' : '—');
-  el('stDocumento').innerHTML = coletada('painel_el_nino') ? esc(fonteDe('painel_el_nino').documento) : '<span class="lacuna">sem coleta até o corte</span>';
   // 17/09/2026 (pedido da editoria): "Situação atual" virava justaposição de fragmentos ("· · ·"), não
   // frase — trocado por prosa corrida, priorizando a leitura já escrita e coerente que o próprio
   // prognóstico traz (SINAIS.enos.prognostico.enso.leitura), com a tendência do ONI observado ao final.
@@ -357,7 +361,12 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
   const partes = [];
   if (u) partes.push('<strong>Observação:</strong> o ONI está em ' + esc((u.anomalia >= 0 ? '+' : '') + u.anomalia.toFixed(1).replace('.', ',')) + ' °C (' + esc(u.trimestre + '/' + u.ano) + '), ' + esc(cls(u.anomalia)) + ' pela escala do CPC.');
   if (serie.length >= 3) { const d = serie[serie.length - 1].anomalia - serie[serie.length - 3].anomalia; partes.push('<strong>Interpretação:</strong> a anomalia ' + (d > 0.15 ? 'vem subindo' : d < -0.15 ? 'vem caindo' : 'está estável') + ' nos últimos trimestres; o fenômeno ' + (d > 0.15 ? 'se fortalece' : d < -0.15 ? 'perde força' : 'persiste sem mudança de intensidade') + '.'); }
-  if (pg) partes.push('<strong>Projeção (Boletim nº 3, SON/2026):</strong> chuva abaixo da normal no Norte, Nordeste e centro-norte; acima no Sul; temperatura acima da normal em quase todo o País. Permanência do El Niño até o início de 2027 com alta probabilidade.');
+  // A frase em inglês do CPC NÃO é traduzida: tradução de máquina sem fonte é texto inventado.
+  // A página compõe em português a partir dos fatos declarados — status, probabilidade, data.
+  if (pg && pg.probabilidade != null) partes.push('<strong>CPC/NOAA (' + esc(pg.emitido_em || '') +
+    '):</strong> chance ' + esc(pg.limiar || 'de') + ' ' + esc(String(pg.probabilidade)) +
+    '% de evento muito forte.');
+  if (pg && pg.__antigo) partes.push('<strong>Projeção para SON/2026:</strong> chuva abaixo da normal no Norte, Nordeste e centro-norte; acima no Sul; temperatura acima da normal em quase todo o País. Permanência do El Niño até o início de 2027 com alta probabilidade.');
   el('stDiagnostico').innerHTML = partes.join(' ') || 'sem coleta até o corte';
   // 13/09/2026 (pedido de Patricia: unificar com 'Estado do ciclo'): citação combinada das fontes
   // que alimentam este painel — antes, cada uma tinha um cartão próprio em outra seção. A fonte da
@@ -419,7 +428,7 @@ if(oni && oni.serie && oni.serie.length){
     const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
     // 17/09/2026 (pedido da editoria): a observação precisa dizer o que o leitor está vendo e o que o
     // ONI mede, não só o número do trimestre corrente — a frase fixa vem antes dos números do dado.
-    let txt = 'O ONI mede a anomalia da temperatura do mar na região Niño 3.4: valores acima de zero indicam El Niño, abaixo indicam La Niña. ';
+    let txt = 'Índice que define El Niño e La Niña: afastamento da temperatura do mar na região Niño 3.4 em relação à média histórica, em janelas de três meses. ';
     txt += 'ONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na escala do CPC';
     if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + (d >= 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' °C em dois trimestres'; }
     el.textContent = txt + '.'; el.hidden = false;
@@ -445,7 +454,7 @@ if (roni && roni.serie && roni.serie.length) {
     const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
     // 17/09/2026 (pedido da editoria): a nota deste gráfico precisa se explicar sozinha, sem depender
     // de o leitor ter lido a nota do ONI ao lado — cada figura carrega sua própria explicação completa.
-    let txt = 'O RONI mede a mesma anomalia do ONI, descontando o aquecimento do oceano tropical; é a medida oficial da NOAA desde agosto de 2026. ';
+    let txt = 'Afastamento da temperatura do mar na região Niño 3.4 em relação à média dos oceanos tropicais, medida oficial da NOAA desde agosto de 2026. ';
     txt += 'RONI em ' + fmt(u.anomalia) + ' °C (' + u.trimestre + '/' + u.ano + '), ' + cls(u.anomalia) + ' na mesma escala do CPC';
     if (s.length >= 3) { const d = u.anomalia - s[s.length - 3].anomalia; txt += '; ' + (d >= 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' °C em dois trimestres'; }
     el.textContent = txt + '.'; el.hidden = false;
@@ -471,7 +480,7 @@ if (nino34Mensal && nino34Mensal.serie && nino34Mensal.serie.length) {
     // 23/09/2026 (governança editorial §18): "Este gráfico mostra" é metadiscurso — a lista do §18 o
     // traz nominalmente. O conteúdo e a autossuficiência pedidos pela editoria em 17/09 ficam; o
     // sujeito passa a ser a medida, como já era nas notas do ONI e do RONI, e não o gráfico.
-    el.textContent = 'A anomalia mensal é a mesma temperatura da região Niño 3.4, mês a mês, sem a suavização de três meses do ONI e do RONI. Anomalia de ' + fmt(u.anomalia) + ' °C em ' + MES_CURTO[u.mes - 1] + '/' + u.ano + '.';
+    el.textContent = 'Afastamento da temperatura do mar na região Niño 3.4 em relação à média de cada mês, sem janela de três meses. Anomalia de ' + fmt(u.anomalia) + ' °C em ' + MES_CURTO[u.mes - 1] + '/' + u.ano + '.';
     el.hidden = false;
   })();
 } else { lacuna('wrapAnomalia', 'A anomalia mensal aparece aqui assim que a rotina semanal registrar a primeira coleta no CPC/NOAA. Até lá, ela pode ser consultada na origem, no link abaixo.'); }

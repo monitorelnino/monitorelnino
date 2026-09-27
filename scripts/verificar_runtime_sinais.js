@@ -57,22 +57,31 @@ setTimeout(() => {
   // 24/09/2026: mapaAvisos e mapaCemaden saíram desta página — avisos e alertas moram na
   // Defesa civil, com granularidade municipal (verificar_runtime_defesa_civil.js cobre lá).
   // Entraram mapaTemperatura e mapaAr, por capital.
-  for (const id of ["mapaTipoRisco", "mapaSecas", "mapaTemperatura", "mapaAr", "mapaFogo"]) {
+  // 27/09/2026: mapaTipoRisco saiu desta página — o risco projetado passou para o cartão de cada
+  // estado na inicial (coberto em verificar_runtime.js). E temperatura e ar deixaram de PINTAR a
+  // UF: a medida é de um ponto (a capital), então o mapa desenha um ponto. O contorno das 27 UFs
+  // continua lá como base, mas a cor agora vive nos círculos.
+  for (const id of ["mapaSecas", "mapaFogo"]) {
     teste(`${id}: 27 estados desenhados`, q(id) && q(id).querySelectorAll("path").length === 27);
     teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 2);
   }
+  for (const [id, classe] of [["mapaTemperatura", "pontosTemp"], ["mapaAr", "pontosAr"]]) {
+    teste(`${id}: contorno das 27 UFs como base`, q(id) && q(id).querySelectorAll("path").length === 27);
+    teste(`${id}: um ponto por capital com dado, e não pintura por UF`, (() => {
+      const pts = q(id) && q(id).querySelectorAll(`g.${classe} circle`);
+      const fundos = new Set([...q(id).querySelectorAll("path")].map(x => x.getAttribute("fill")));
+      return pts && pts.length > 0 && pts.length <= 27 && fundos.size === 1;
+    })());
+    teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 2);
+  }
 
-  // --- o mapa de tipo de risco reflete o registro, não um valor fixo no HTML ---
-  const tipos = new Set(Object.values(SINAIS.uf).map(u => u.risco_projetado && u.risco_projetado.tipo).filter(Boolean));
-  const cores = new Set([...q("mapaTipoRisco").querySelectorAll("path")].map(p => p.getAttribute("fill")));
-  teste(`mapa de tipo de risco: ${tipos.size} tipo(s) distintos no registro viram ${cores.size} cor(es)`,
-    cores.size === tipos.size);
-  teste("tabela de risco projetado: 27 linhas",
-    q("tblTipoRisco") && q("tblTipoRisco").querySelectorAll("tbody tr").length === 27);
+  // 27/09/2026: o risco projetado saiu desta página. O que resta conferir aqui é que ele NÃO
+  // voltou por engano — o dado segue no registro e é exibido na inicial.
+  teste("risco projetado não é mais desenhado nesta página", !q("mapaTipoRisco") && !q("tblTipoRisco"));
 
   // --- gráficos: os dois derivados do registro sempre existem;
   //     os dois dependentes de coleta existem OU exibem lacuna declarada ---
-  teste("gráfico de estados por tipo de risco criado", graficos.some(g => g.ctx && g.ctx.id === "cTipos"));
+  teste("gráfico de estados por tipo de risco também saiu", !graficos.some(g => g.ctx && g.ctx.id === "cTipos"));
   // 15/09/2026: o cruzamento risco × estágio (cCruz) mudou para o fim da página inicial — testado em verificar_runtime.js.
   teste("cruzamento risco × estágio não fica mais nesta página (mora na inicial)", !q("cCruz") && !graficos.some(g => g.ctx && g.ctx.id === "cCruz"));
   // 15/09/2026: o ONI vem logo abaixo de "Situação atual", com leitura descritiva junto do gráfico e o diagnóstico abaixo da figura
@@ -94,7 +103,7 @@ setTimeout(() => {
 
   // --- PROVENIÊNCIA VISÍVEL: regra própria desta página ---
   const creditos = [...d.querySelectorAll("[data-credito]")];
-  const figuras = ["boxTipoRisco", "boxSecas", "boxTemperatura", "boxAr", "boxFogo", "boxOni", "situacao"]   // 24/09/2026: boxAvisos e boxCemaden foram para defesa-civil.html; entraram boxTemperatura e boxAr   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
+  const figuras = ["boxSecas", "boxTemperatura", "boxAr", "boxFogo", "boxOni", "situacao"]   // 24/09/2026: boxAvisos e boxCemaden foram para defesa-civil.html; entraram boxTemperatura e boxAr   // boxTipos fundido em boxTipoRisco (figura dupla) em 15/09/2026;   // boxCruz foi para a página inicial em 15/09/2026   // ids a partir de 1 (auditoria 07/09/2026); boxPlume retirado em 13/09/2026 (sem cobertura); cartaoCiclo1-4 retirados em 13/09/2026 (unificados em 'situacao')
   const semCredito = figuras.filter(id => !q(id) || !q(id).querySelector("[data-credito]"));
   teste(`toda figura tem crédito de fonte (${creditos.length} créditos)`, semCredito.length === 0);
   if (semCredito.length) console.log("      sem crédito:", semCredito.join(", "));
@@ -116,7 +125,7 @@ setTimeout(() => {
   // v3.1 §7: a tabela das oito fontes vive em pesquisadores.html
 
   // --- tooltip funciona no gesto do usuário (lição de 30/08: teste o gesto) ---
-  const alvo = d.querySelector("#mapaTipoRisco path");
+  const alvo = d.querySelector("#mapaSecas path");
   alvo.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
   teste("tooltip de mapa exibe conteúdo no mouseenter",
     q("mapTooltip").style.display === "block" && q("mapTooltip").innerHTML.length > 10);

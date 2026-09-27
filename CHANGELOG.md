@@ -9,6 +9,97 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §244 · Cabeçalho novo, duas fontes trocadas por órgão competente, figuras reescritas · 27/09/2026
+
+Classe **design e coleta**.
+
+### O cabeçalho da página principal
+
+Pedido da editoria, com o site da Futura Evidence Lab como referência. O que fazia o topo parecer
+institucional não era cor nem moldura: era **escala e ar**. A marca era um logotipo de canto ao
+lado de um título do mesmo tamanho, tudo apertado e separado por filete, e a descrição corria
+1132px — cerca de **110 caracteres por linha**, contra os 45 a 75 da medida confortável.
+
+Agora a marca é o elemento dominante (620px), o nome é declaração em Fraunces no topo da escala, e
+a descrição ocupa coluna estreita ao lado. A separação é por espaço, não por filete. Foram
+tomados os **princípios** da referência, não a composição: o `CLAUDE.md` diz que as duas marcas têm
+parentesco visual "sem ser gêmea" e proíbe copiar o leiaute de uma na outra.
+
+O nome por extenso fica **só na página principal**; as outras doze ficam com o logotipo, e o texto
+invisível voltou ao nome completo — sem isso o cabeçalho delas se anunciaria ao leitor de tela
+apenas como "MARÉ ·".
+
+### O menu como uma peça só
+
+A editoria pediu que os dez botões fossem tratados como uma peça única, com o degradê
+atravessando todos. Agora o degradê vive **na barra**: não há emenda porque não há dois pintados.
+Os botões esticam para preencher a linha — com largura de conteúdo sobrava cor no fim.
+
+**A faixa morta de luminosidade, que foi o limite real.** Com texto escuro o contraste só atinge
+4,5:1 quando o fundo tem L≥0,201; com texto branco, quando tem L≤0,183. Entre 0,183 e 0,201
+**nenhum dos dois passa**, e o arco do índice atravessa essa faixa duas vezes, debaixo de botão.
+Por isso o arco inteiro desceu para o registro escuro: aí o texto branco passa em qualquer
+posição, inclusive se um rótulo mudar de tamanho. Medido: 4,69:1 em 1280px, 4,72:1 em 768px,
+4,70:1 em 375px. Abaixo de 1020px o eixo vira vertical, senão o degradê se repetiria em cada linha.
+
+Com isso **somem as dez regras `:nth-child` de cor** — e some a lista escrita à mão que envelhecia
+a cada item novo no menu. O portão que a vigiava virou outro: confere que a cor vem de um degradê
+e que nenhuma regra por posição voltou.
+
+### Duas fontes trocadas por órgão competente
+
+**Temperatura.** Vinha do Open-Meteo, que roda modelos europeus e americanos. O **INMET** publica
+previsão própria para as 27 capitais em JSON aberto, sem chave — e já era a fonte dos avisos e das
+estações neste mesmo site. As 27 UFs passam a ter máxima, mínima e resumo do tempo do instituto
+oficial brasileiro. Critério declarado no dado: maior máxima e menor mínima entre manhã, tarde e noite.
+
+**Qualidade do ar.** A página mostrava PM2,5; passa a mostrar **índice**, que é o que interessa a
+quem lê. O índice vem **pronto da fonte** e nunca é calculado aqui: calculá-lo faria dele uma
+afirmação do Monitor, e ele precisa ser evidência de terceiro. Não existe índice nacional aberto
+— conferido: o Qualiar do MMA não resolve (HTTP 000), o QUALAR da CETESB cobre só São Paulo, o
+WAQI exige token. A escala é a europeia, e o texto de apoio diz isso.
+
+### Os mapas param de afirmar o que o dado não diz
+
+Temperatura e ar eram medidos **na capital** e pintavam o **estado inteiro**. A medição de Rio
+Branco colorindo todo o Acre afirma visualmente uma cobertura estadual que o dado não tem — o que
+a direção de arte §10 proíbe. Agora são **pontos nas capitais** sobre contorno neutro.
+
+### As oito figuras
+
+A editoria apontou que as legendas não seguiam critério. A governança §13 exige legenda
+**autossuficiente**, e três falhavam: a do RONI dizia "a mesma anomalia do ONI", a da Anomalia
+dizia "sem a suavização do ONI e do RONI". Quem lê uma figura não deveria precisar ter lido as
+outras. Reescritas, cada uma se explica sozinha.
+
+As quatro figuras de mapa **não tinham texto de leitura nenhum**; ganharam. A de focos explica que
+foco de calor não equivale a incêndio — o título continua preciso porque chamá-lo de incêndio
+afirmaria mais do que o satélite sustenta. A de seca declara a cadência mensal: a fonte é
+consultada todo dia, e o mapa mais recente que ela publica é o do mês anterior.
+
+O portão 19 reprovou três vezes até as legendas caberem em **2 frases e 240 caracteres**, que é o
+limite da §13. Ele conta a descrição **somada à leitura dinâmica do valor** — a descrição teve de
+virar uma frase só.
+
+### O risco projetado muda de lugar
+
+O mapa saiu do monitor de riscos e o dado foi para o **cartão de cada estado** na página inicial,
+que é onde o leitor procura o próprio estado. No cartão vai o vocabulário fechado (estiagem,
+incêndios, chuvas); a frase inteira do boletim fica na janela de detalhe.
+
+### O teto de palavras da inicial
+
+A página estava a poucas palavras do teto editorial e estourou. Cortei **só o que eu havia
+acrescentado**, e enxuguei a frase do boletim preservando todos os fatos — painel federal, data,
+projeções por região, obrigação legal. Página em 947 de 950.
+
+### Portões
+
+Doze checagens novas nos autotestes de coleta, seis delas negativas. Em `verificar_runtime_sinais.js`,
+as checagens do mapa removido foram **substituídas**, não apagadas: agora exigem que ele não volte,
+e que temperatura e ar desenhem ponto e não pintura por UF. O portão de fichas semânticas pegou a
+ficha órfã da figura removida — fazendo exatamente o que existe para fazer.
+
 ## §243 · O relatório em PDF sai do detalhe do estado · 26/09/2026
 
 Classe **produto**. Pedido da editoria: *"remova de todos os cartões estaduais a opção de baixar o
