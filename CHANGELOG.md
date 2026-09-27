@@ -9,6 +9,86 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §251 · Registro de erros de localização, e as sete fixtures que falham · 27/09/2026
+
+Classe **aprendizado da descoberta**. Bloco I do pedido da editoria de 27/09 (repositório privado
+`robo-registro`).
+
+### O vermelho é a entrega
+
+Sete documentos e classificações de saúde e defesa civil foram achados em 27/09 por verificação
+humana em canal público, e **nenhum estava no repositório**. O pedido da editoria é explícito: os
+sete existem para provar que a **descoberta** falhou, e a correção é fazer a descoberta encontrá-los
+sozinha — não digitá-los no dado. Inserir à mão "para fechar" fecha o caso e deixa o próximo
+Espírito Santo escapar igual.
+
+Então a primeira entrega é o vermelho, registrado:
+
+```
+verdes 0 · vermelhas 6 · indeterminadas 0 · em aberto sem fixture 1
+```
+
+| UF | desfecho | por quê |
+|---|---|---|
+| ES · PA · MA | `NAO_ACHOU` | o laço de busca corta em dois termos; não enumera `/media/`; não varre seção de navegação |
+| AC | `SEM_MECANISMO` | o adaptador de agências oficiais de notícias estaduais não existe |
+| MT | **em aberto** | o pedido nomeia a fixture sem URL; endereço não se inventa |
+| SE | `NAO_ACHOU` | esperado `suspensa=false escopo=noticias`; obtido `suspensa=true escopo=None` |
+| TO | `NAO_ACHOU` | esperado `suspensa=true escopo=governo_estadual`; obtido `suspensa=false escopo=None` |
+
+### Uma premissa do pedido que a medição desmentiu
+
+A causa 2 do pedido manda "**construir** `descobrir_planos.py` (§11 de 06/09, **nunca
+implementado**)".
+
+Ele **existe**, tem 26.468 bytes, e já consulta `wp-json/wp/v2/posts` e
+`wp/v2/media?mime_type=application/pdf`, com `--uf` e `--setor`. Não é construir, é consertar.
+
+E a causa real é mais estreita, e pior:
+
+```python
+TERMOS_BUSCA = {"saude": ["plano de ações de saúde", "plano estadual de enfrentamento",
+                          "plano de contingência arboviroses"]}
+...
+for termo in TERMOS_BUSCA[setor][:2]:
+```
+
+**Só os dois primeiros termos são usados.** O terceiro já é código morto. Acrescentar os termos do
+bloco D ao fim da lista não mudaria nada — e o relatório diria "dicionário ampliado" com o coletor
+sem usar um único termo novo. Seguir o pedido à letra produziria exatamente a falsa implementação
+que o bloco I existe para impedir. A premissa desmentida ficou **dentro** do registro, porque
+premissa errada em pedido é erro de localização como qualquer outro.
+
+### Quatro desfechos, nunca dois
+
+Confundir "não achou" com "não deu para procurar" é o defeito que custou os §§246 a 248 nesta
+mesma noite. O teste distingue `ACHOU`, `NAO_ACHOU`, `SEM_MECANISMO` e `REDE_OU_BLOQUEIO`, e
+**indeterminado não passa**. Sete asserções no autoteste provam que os quatro se separam — entre
+elas, que caminho inexistente dá `SEM_MECANISMO` com nome próprio, e não `NAO_ACHOU`.
+
+### Gerador, não JSON à mão
+
+`data/**.json` é território de derivado, e há hook que bloqueia edição direta. A fonte é
+`gerar_erros_localizacao.py`; o precedente é o dicionário `ESTADOS` de `recalcular_mare.py`. E é
+melhor assim: o registro se regenera a cada rodada, quando `achados_novos_pela_regra` muda — que é
+**a medida de aprendizado**, e regra com duas semanas de zero achados é revista, não apagada.
+
+### Portões
+
+Entram os dois **autotestes**, que passam. A **corrida** das fixtures fica de fora de propósito:
+ela é vermelha por desenho, e "nada sobe com portão vermelho". Ela entra na lista no PR que fizer
+as sete passarem — e só então.
+
+### O que segue aberto
+
+- A Action `ler_documento`, que o pedido manda usar, **não existe**: nenhum workflow a menciona, e
+  a única referência é um comentário em `gerar_painel.py`. O caminho equivalente existe dentro de
+  `descobrir_planos.py` (descobrir, baixar, hashear, preservar, com trava absoluta contra promoção
+  automática) e é o que será usado, porque cumpre a regra substantiva: nada entra à mão.
+- A fixture do MT não tem URL no pedido. Caso em aberto, lacuna declarada.
+- Os blocos A a F não começaram. Pela ordem do próprio pedido, eles só entram **depois** de as
+  fixtures passarem.
+
 ## §250 · Skill `caveman` instalada, subordinada e com o idioma preservado · 27/09/2026
 
 Classe **modo de trabalho**. Pedido da editoria.

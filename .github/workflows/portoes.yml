@@ -239,6 +239,16 @@ jobs:
           # rodada caiba; promete que ela não está condenada por construção.
           python3 scripts/verificar_tetos_da_rodada.py
           python3 scripts/verificar_tetos_da_rodada.py --autoteste
+          # §251 (27/09/2026): o registro de erros de LOCALIZAÇÃO e as sete fixtures de 27/09.
+          # Entram aqui os dois AUTOTESTES, que passam. A CORRIDA das fixtures
+          # (`scripts/testar_fixtures_localizacao.py --seco`) fica DE FORA de propósito: ela é
+          # vermelha por desenho — 0 de 7 hoje — porque os coletores que deveriam achar os
+          # documentos não existem, e o pedido §I da editoria manda que o vermelho inicial seja
+          # evidência registrada, não erro a esconder. Pôr uma corrida vermelha na lista
+          # derrubaria o CI e contrariaria "nada sobe com portão vermelho".
+          # Ela entra na lista no PR que fizer as sete passarem — e só então.
+          python3 gerar_erros_localizacao.py --autoteste
+          python3 scripts/testar_fixtures_localizacao.py --autoteste
           # §226 (26/09/2026): o coletor de transferências do Portal da Transparência estava no
           # pipeline SEM autoteste e sem portão — o único assim entre os que pedem rede. O
           # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429
