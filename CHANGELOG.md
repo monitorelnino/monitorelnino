@@ -61,6 +61,28 @@ A conferência passa a rodar **dentro da rodada**, não só na CI do PR, com `co
 contradição aparece no log da rodada sem impedir o commit dos dados já coletados — o portão do PR é
 que reprova de verdade. Soma dos tetos por passo: 253 min, dentro do teto de 300 do job.
 
+### O portão media a saúde da rodada e reprovava todo PR
+
+A primeira rodada com o conjunto de nove consultas mediu **139 de 150 consultas (93%) sem resposta
+do motor**. O portão do funil fez o que devia — a rodada não conta como verificação da camada 4 —,
+mas o arquivo `data/funil/<data>.json` é commitado pela rodada, e o portão roda também na CI de todo
+PR. Resultado: um PR que não toca na busca web herdava a reprovação de uma rodada passada, e ficava
+impedido de subir justamente o conserto.
+
+O portão passa a ter dois modos. Em `--modo rodada`, o teto de 25% é **falha**: ali a mensagem
+significa "esta rodada não conta", e é a rodada que precisa saber. No modo `pr` (padrão), é
+**alerta**. O que reprova nos dois é **contradição na contagem** — mais cobertos sem menção do que
+consultas com resultado bruto, ou mais promoções do que pistas com documento: contradição é defeito
+do código que conta, não notícia sobre o motor.
+
+**O 93% continua sendo um fato a decidir, e é da editoria.** Nove consultas por município em vez de
+uma multiplicaram por nove o número de requisições à instância efêmera do SearXNG, e a hipótese
+mais provável é limite de taxa do próprio metabuscador. Não mexi no conjunto de consultas por
+iniciativa própria: adotar o **conjunto mínimo que recupere o máximo** era, no handover, uma decisão
+que depende da medição de revocação — e essa medição é exatamente o que o motor mudo impede. Fica
+como pedido separado, com três caminhos possíveis (espaçar as consultas, reduzir o lote, ou rodar a
+medição num job próprio com a instância dedicada) para a editoria escolher.
+
 ### O que a auditoria achou e NÃO entra aqui
 
 Um PR por defeito, como o handover pede. Ficam como pedido separado, listados em

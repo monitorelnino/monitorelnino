@@ -310,7 +310,7 @@ jobs:
       - name: Conferir o funil da rodada (contagem por etapa)
         continue-on-error: true
         timeout-minutes: 3
-        run: python3 scripts/verificar_funil.py
+        run: python3 scripts/verificar_funil.py --modo rodada
 
       # §17 (29/08/2026): vigia de imprensa nacional (Google News RSS) por
       # possíveis instrumentos ainda não registrados — descoberta pura, com
