@@ -309,6 +309,12 @@ origem editável — o rótulo do CEPDEC/ES e o texto estático de `defesa-civil
 renderização, para o separador de metadado do site (`·`), onde o texto vem de dado: `fontes_monitoramento`
 em `data/transferencias.json` e a nota dos cartões em `data/saude_federal.json`. O dado não foi tocado.
 
+`verificar_saude.py` cobrava a grafia `fonteFigura('<id>'` no texto da página e acusava três
+figuras creditadas — `#boxAreas`, `#boxCatalogo`, `#boxGatilhos` — como sem crédito. `fonteFigura`
+é **alias** de `MonitorMapas.credito` (está escrito assim em `assets/js/proveniencia.js`), e o JS
+migrado usa as duas grafias. O portão passa a aceitar as duas, e ganhou um caso negativo para a
+segunda: sem ele, alguém poderia remover o ramo do alias sem nenhum teste reclamar.
+
 `verificar_runtime.js` deixou de contar 10 itens de navegação por número fixo e passa a derivar a
 contagem de `NAV_ORDEM`, em `verificar_estrutura.js` — a lista canônica. Com a barra perdendo um item,
 o número fixo reprovava por estar certo.
