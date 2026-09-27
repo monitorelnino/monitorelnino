@@ -96,6 +96,17 @@ jobs:
           node scripts/verificar_seguranca.js
           # assunto: cor rapido
           node scripts/verificar_seo.js
+          # §258 (27/09/2026): a página "Pesquisadores" foi arquivada por decisão da editoria,
+          # para reconstrução depois do preprint. `publish = "."` serve a raiz inteira, então
+          # mover o arquivo para `arquivo/` NÃO o retira do ar por si: sem a regra de 404 ele
+          # segue acessível por URL, só sem link apontando — que é pior, porque ninguém olharia.
+          # O portão trava quatro coisas: nenhum HTML publicado linka a página, os arquivos não
+          # voltaram à raiz, a regra de 404 existe, e voltar exige linha no CHANGELOG — o
+          # arquivo de volta, sozinho, não basta.
+          # assunto: texto rapido
+          python3 scripts/verificar_pagina_arquivada.py
+          # assunto: texto rapido
+          python3 scripts/verificar_pagina_arquivada.py --autoteste
       - name: Portões — dado e coleta (só se dado mudou)
         if: steps.diff.outputs.dado_mudou == 'true'
         run: |

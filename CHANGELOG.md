@@ -9,6 +9,85 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §258 · Página "Pesquisadores" arquivada, com as provas nas páginas que as usam · 27/09/2026
+
+Classe **página pública**. Decisão da editoria, handover
+`notas/HANDOVER_suprimir_pagina_pesquisadores_27-09-2026.md` (repositório privado).
+**Nenhuma nota muda** — `recalcular_mare.py --check` reproduz os 27 estados × 7 campos idênticos,
+média 46,6.
+
+**Não mesclar sem o "vai" da editoria.** O handover é explícito: capturas primeiro, merge depois.
+
+### Arquivar, não apagar
+
+`pesquisadores.html` e `assets/js/pesquisadores.js` foram para `arquivo/pesquisadores/`, com um
+`LEIA-ME.md` que diz a data, o motivo, para onde foi cada seção e como reativar.
+
+`publish = "."` serve a raiz inteira, então **mover não retira do ar**. Sem a regra de 404 o
+arquivo seguiria acessível por URL, só sem link apontando — que é pior, porque ninguém olharia.
+`netlify.toml` passa a devolver 404 para `/arquivo/*`.
+
+### As provas não saíram do site
+
+As doze seções foram para a página que as citava, com as **âncoras preservadas** — são elas que os
+links de fora usam:
+
+| seção | foi para |
+|---|---|
+| Fontes dos sinais de risco | `monitor-de-riscos.html` |
+| Fontes e consultas do financiamento · Créditos extraordinários de 2026 | `financiamento.html` |
+| O que a União publicou · Backlog de fontes | `saude.html` |
+| Log de verificação e cobertura · Registros e fontes dos dados · Painel amostral | `defesa-civil.html` |
+| tabela `AREAS` (COBRADE) | `assets/js/saude.js`, e `verificar_consistencia.py` lê de lá |
+
+Quatro ficaram arquivadas por decisão da editoria: "Como usar o site e os dados", "Metodologia e
+versões", "Dados abertos, feeds e selos" e "Código e replicação" — esta última porque contém a
+frase sobre "código para replicar" que a editoria mandou rever em 23/09.
+
+Nenhum HTML publicado menciona a página. As sete fichas semânticas foram reapontadas para a página
+que hospeda cada figura.
+
+### Duas premissas do handover que a medição desmentiu
+
+**1. O formulário não estava lá.** O handover manda mover o formulário "Indique um documento
+publicado" para o rodapé de todas as páginas, num `<dialog>`, e conta "9 ocorrências de `form` na
+página". Medido: a página arquivada tem **zero** ocorrências de `<form`, de `data-netlify` e de
+"Indique um documento". O formulário vive em `index.html`, e o próprio `verificar_palavras.js`
+registra que ele migrou de Pesquisadores para a inicial em **16/09/2026**.
+
+Ele não depende do arquivamento. Movê-lo agora seria mexer na página inicial por escopo que o
+arquivamento não exige, e a partir de uma premissa falsa. **Não feito**, declarado.
+
+**2. As âncoras em uso eram duas, não seis.** O handover lista `#fontes-sinais`,
+`#saude-federal-h2` e `#saude-backlog-h2` entre as linkadas. Medido: só `#fontes` (17 vezes) e
+`#fontes-financiamento` (1) eram alvo de link. As outras existiam na página, sem ninguém apontando.
+
+### O portão
+
+`scripts/verificar_pagina_arquivada.py`, dez asserções, oito negativas. Trava quatro coisas:
+nenhum HTML publicado linka a página; os arquivos não voltaram à raiz; a regra de 404 existe; e
+**voltar exige linha no CHANGELOG** — o arquivo de volta, sozinho, não basta. Arquivar sem trava é
+deixar a página voltar por descuido.
+
+`previa/` é exceção **declarada**: 16 protótipos ainda citam a página, e o portão imprime a
+contagem em vez de calá-la. Eles são servidos por `publish = "."`, mas atrás de senha própria e
+fora da navegação pública.
+
+### Perda de cobertura declarada
+
+A cadência semanal era prometida ao leitor em **dois** textos independentes que
+`scripts/testar_cadencia_publicacao.py` obrigava a concordar. Sobrou um, `obrigado.html`. O portão
+segue conferindo que ele nomeia o mesmo dia que a constante e que o cron, mas a redundância
+deixou de existir. Está registrado no código e no §34 da metodologia.
+
+### Palavras estáticas
+
+Os blocos migrados estouraram o teto de três páginas — defesa civil chegou a 1.011 contra 450. Em
+vez de afrouxar o teto, os blocos passam a ser **excluídos da contagem**, marcados com
+`data-proveniencia="1"`, pelo mesmo precedente que já exclui subtítulo de figura: são lista de
+fonte e log de consulta, evidência e não prosa de edição. O teto existe para medir o que o editor
+escreve, não para pressionar alguém a encurtar a lista de fontes.
+
 ## §257 · Errata de texto no §5.3: a METODOLOGIA passa a dizer o que o código faz · 27/09/2026
 
 Classe **errata de texto**. T2 do pedido do preprint. **Nenhuma nota muda** — `recalcular_mare.py

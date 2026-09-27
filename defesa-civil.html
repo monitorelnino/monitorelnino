@@ -148,7 +148,7 @@
   <!-- §258 (27/09/2026): bloco de fontes e registros migrado da página
        Pesquisadores, arquivada em arquivo/pesquisadores/. As âncoras internas
        foram preservadas: são elas que os links das outras páginas usam. -->
-<div class="panel" id="log">
+<div class="panel" id="log" data-proveniencia="1">
       <h2>Log de verificação e cobertura</h2>
       <ul class="fontes-list">
         <li><a href="data/log_buscas.json">log_buscas.json</a> — <strong id="pqLog">—</strong> execuções registradas (data, canal, camada, string, decisão, executor); resumo em <a href="data/verificacao_resumo.json">verificacao_resumo.json</a> e <a href="data/verificacao_municipal.json">verificacao_municipal.json</a> (5.571 municípios × nível de verificação)</li>
@@ -159,7 +159,7 @@
       <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblLog"><thead><tr><th>UF</th><th>Nacional</th><th>Estadual</th><th>Municipal parcial</th><th>Municipal completo</th><th>Não verificado</th></tr></thead><tbody></tbody></table></div>
       <p class="hint u-mt-2 u-mb-0">Por canal, na última rodada: <span id="pqCanais">—</span></p>
     </div>
-<div class="panel" id="fontes">
+<div class="panel" id="fontes" data-proveniencia="1">
       <h2>Registros e fontes dos dados</h2>
       <p class="hint">Todas as fontes utilizadas na coleta, em dois níveis: <strong>links diretos</strong> apenas para URLs citadas e verificadas na pesquisa; <strong>portais institucionais</strong> (DOU, Planalto, IBGE, gov.br/mdr) como porta de entrada oficial quando o ato tem número/data mas não URL própria verificada. Itens sem link têm a fonte nominal na tabela de municípios; regra metodológica: nenhum link sem verificação.</p>
       <div class="grade-fontes">
@@ -237,7 +237,7 @@
         </div>
       </details>
     </div>
-<div class="panel" id="painel-amostral">
+<div class="panel" id="painel-amostral" data-proveniencia="1">
       <h2>Painel amostral</h2>
       <p class="hint u-mb-0">Universo dos 5.571 municípios, estratos por região e porte, semente registrada; lista e fichas completas em <a href="data/painel/lista.json">lista.json</a> e <a href="data/painel/fichas.json">fichas.json</a>. <span id="notaPainel"></span></p>
       <div id="painelResumo" class="u-mt-3"></div>

@@ -35,7 +35,14 @@ NOMES_POR_INDICE = {
 # Onde o dia aparece para o leitor. Cada par: arquivo e o trecho que cita a cadência.
 TEXTOS_PUBLICOS = [
     ("obrigado.html", r"entra na atualização seguinte do mapa e do índice — normalmente (?:na|no) (\w+)"),
-    ("pesquisadores.html", r"Atualização automática semanal \((\w+)s?,"),
+    # §258 (27/09/2026): `pesquisadores.html` saiu daqui porque a página foi ARQUIVADA por decisão
+    # da editoria (arquivo/pesquisadores/). Ela declarava "Atualização automática semanal (…)", e
+    # era o segundo lugar em que o leitor via o dia prometido.
+    # Sobrou UM. O portão continua valendo: ele confere que o texto público nomeia o MESMO dia que
+    # a constante e que o cron, e um lugar basta para isso. Mas a redundância que existia — dois
+    # textos independentes tendo de concordar — deixou de existir, e isso é perda de cobertura, não
+    # simplificação. Quando a página voltar, ou quando a cadência for prometida em outro lugar, a
+    # promessa volta para esta lista.
 ]
 
 falhas = []
@@ -234,7 +241,7 @@ def main():
 
     print(f"✓ cadência coerente: DIA_PUBLICACAO={dia} ({nome_dia}) medido no fuso da redação; "
           f"portão usa a constante; cron semanal cai no dia certo em Brasília; "
-          f"obrigado.html e pesquisadores.html prometem o mesmo dia ao leitor; "
+          f"obrigado.html promete ao leitor o mesmo dia (pesquisadores.html saiu no §258, arquivada); "
           f"destrava de rodada completa só pelo botão manual e sem suprimir o commit")
     return 0
 
