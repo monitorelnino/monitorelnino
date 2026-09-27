@@ -221,6 +221,15 @@ jobs:
           # função, e derrubava a rodada inteira. O autoteste é offline, não toca em data/, e
           # trava as duas metades: esquema alheio não quebra nem se perde, e a dedução continua.
           python3 scripts/testar_fila_de_pistas.py
+          # §246 (27/09/2026): a resolução do conflito de rebase da rodada. O laço abortava e
+          # repetia seis vezes com o mesmo conteúdo — e conflitava igual nas seis, porque
+          # data/log_buscas.json tem 20,7 MB em UMA linha. O autoteste monta repositórios git de
+          # verdade, provoca conflitos de verdade, e trava as duas metades: une o log que só
+          # cresce pela BASE COMUM, e RECUSA tudo o que não tem política decidida. A asserção que
+          # mais importa é a de 23/09 — duas execuções idênticas são DUAS tentativas, não uma;
+          # sem ela o autoteste passava com a dedução por conteúdo dentro, e foi assim que quase
+          # 3.000 execuções sumiram caladas.
+          python3 scripts/unir_conflito_de_rodada.py --autoteste
           # §226 (26/09/2026): o coletor de transferências do Portal da Transparência estava no
           # pipeline SEM autoteste e sem portão — o único assim entre os que pedem rede. O
           # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429
