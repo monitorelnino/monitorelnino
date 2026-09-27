@@ -243,8 +243,9 @@ def registrar(fila, novas):
     descoberta em imprensa (com `alvo`, `titulo`, `url` e `hash`); a esteira de triagem grava
     registros de outro tipo (rebaixamento C10 e afins, com `id`, `municipio`, `documento`), que
     não têm `hash` nem os campos de que `_hash` precisa. Ler o conjunto exigindo `hash` de todos
-    quebrava com `KeyError: 'hash'` — três vezes por rodada, nos três monitores que chamam esta
-    função, e a rodada inteira parava.
+    quebrava com `KeyError: 'hash'` — três vezes por rodada, nos três passos que chamam esta
+    função. Cada um deles tem `continue-on-error: true`, de modo que a rodada seguia e commitava:
+    o que se perdia, calado, era a descoberta dessas três camadas.
     A dedução passa a usar só quem TEM hash. Registro de outro produtor não é hasheado com a
     fórmula daqui (ele não tem os campos, e a identidade dele é outra) e fica intacto na lista —
     nada se perde, e nada de outro esquema é reescrito por este monitor.

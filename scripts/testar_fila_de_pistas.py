@@ -9,8 +9,9 @@ que `_hash` precisa.
 
 `registrar()` montava o conjunto de vistos exigindo `hash` de TODOS e quebrava com
 `KeyError: 'hash'` na primeira pista do outro produtor. Isso acontecia três vezes por rodada,
-nos três monitores que chamam a função, e derrubava a rodada inteira de atualização — em
-produção, silenciosamente, porque o erro aparecia no meio de um log de milhares de linhas.
+nos três passos que chamam a função. Como cada passo tem `continue-on-error: true`, a rodada
+seguia e commitava: o que se perdia era a descoberta dessas três camadas, calada, porque o erro
+aparecia no meio de um log de milhares de linhas.
 
 O teste roda sem rede e sem tocar em `data/`.
 
