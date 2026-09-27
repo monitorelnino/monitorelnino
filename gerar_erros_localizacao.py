@@ -30,6 +30,8 @@ import json
 import pathlib
 import sys
 
+from coletores_base import gravar_em
+
 RAIZ = pathlib.Path(__file__).resolve().parent
 SAIDA = RAIZ / "data" / "erros_localizacao.json"
 
@@ -336,8 +338,10 @@ def main() -> int:
     if "--autoteste" in sys.argv[1:]:
         return autoteste()
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    SAIDA.write_text(json.dumps(montar(), ensure_ascii=False, indent=1) + "\n",
-                     encoding="utf-8", newline="\n")
+    # §229: JSON de data/ passa pela porta atômica, nunca por write_text direto. Uma auditoria de
+    # 26/09 achou trinta e três escritas fora dela — entre elas o log de 24 MB e o banco municipal.
+    # O portão 29 reprova quem repetir, e me reprovou no CI do PR #403.
+    gravar_em(SAIDA, montar())
     print(f"→ {SAIDA.relative_to(RAIZ)} gravado ({len(CASOS)} caso(s)).")
     return 0
 
