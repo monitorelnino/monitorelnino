@@ -587,6 +587,7 @@ jobs:
           python3 scripts/gerar_manifesto.py
 
       - name: Commit das alterações de dados
+        id: commit
         if: github.event.inputs.ensaio != 'true'
         run: |
           git config user.name "monitor-el-nino-bot"
@@ -642,7 +643,16 @@ jobs:
               # O resolvedor une o que a regra do projeto declara (log que só cresce, pela BASE
               # COMUM) e RECUSA o resto. Recusa é o comportamento certo: arbitrar mesclagem que
               # ninguém decidiu é como se apagam evidências sem aviso.
-              if python3 scripts/unir_conflito_de_rodada.py | tee /tmp/uniao.log; then
+              # §252 (27/09/2026): NÃO usar `python3 ... | tee`. O status de um pipeline é o do
+              # ÚLTIMO comando, e este passo não tem `set -o pipefail` — o `tee` devolve 0 sempre.
+              # Medido na rodada de 27/09 às 08h29: o resolvedor RECUSOU dois caminhos e saiu com
+              # código 2, o `if` foi verdadeiro por causa do tee, e o laço tentou
+              # `rebase --continue` com caminhos não resolvidos. A rodada falhou igual, mas o log
+              # disse "rebase --continue reprovou" em vez de "conflito SEM resolução conhecida" —
+              # diagnóstico errado, que é o defeito dos §§246 a 248 repetido dentro do conserto.
+              python3 scripts/unir_conflito_de_rodada.py > /tmp/uniao.log 2>&1; UNIAO=$?
+              cat /tmp/uniao.log
+              if [ "$UNIAO" -eq 0 ]; then
                 if GIT_EDITOR=true git rebase --continue; then
                   echo "tentativa $TENTATIVA: conflito resolvido pela união da base comum"
                   # Derivado resolvido com a versão de cima fica defasado: regenera a cadeia
@@ -733,3 +743,37 @@ jobs:
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg_repor 2>/dev/null
           mkdir -p /tmp/reg_repor/relatorios && cp /tmp/repor_relatorio.txt "/tmp/reg_repor/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_repor_dominio.txt"
           cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio ${GITHUB_SHA::7}" && git push -q
+
+      # ── VIGIA DO DESFECHO (§254, 27/09/2026) ─────────────────────────────────────────────
+      # Por que este passo existe. Em 27/09 mediu-se que o último commit automático de dados
+      # bem-sucedido tinha sido em 24/09 às 07h15 — TRÊS DIAS. Quatro defeitos distintos
+      # (§§245 a 248), cada um escondido atrás do anterior, e todos com a mesma assinatura:
+      # a rodada falhava com o passo de PUBLICAÇÃO em `success`, republicando dado velho.
+      # Nada ficava vermelho de um jeito que se veja, e a rotina diária de auditoria que
+      # rodava nesses três dias não pegou nenhum — porque olhava portões e saúde do site, não
+      # o DESFECHO da rodada.
+      #
+      # Este passo é o que faltava, e é deliberadamente determinístico em vez de uma sessão de
+      # agente: `if` em workflow não esquece, não custa e não interpreta.
+      #
+      # A regra: se a rodada NÃO estava em ensaio, então ou o commit concluiu com sucesso, ou
+      # não havia nada a comitar. Qualquer outro desfecho — `failure`, `skipped`, `cancelled` —
+      # é rodada que não entregou, e o job termina VERMELHO mesmo que a publicação tenha ido.
+      # `skipped` entra na lista de propósito: foi o desfecho das quatro rodadas de 26/09, e o
+      # `continue-on-error` NÃO protege contra ele (§246, §252).
+      - name: Vigia do desfecho — a rodada comitou dado?
+        if: always() && github.event.inputs.ensaio != 'true'
+        env:
+          DESFECHO_COMMIT: ${{ steps.commit.outcome }}
+        run: |
+          echo "desfecho do passo de commit: ${DESFECHO_COMMIT:-(sem id)}"
+          echo "houve alteração a comitar: ${HOUVE_ALTERACAO:-(não definido)}"
+          if [ "${DESFECHO_COMMIT}" = "success" ]; then
+            echo "Rodada comitou (ou não havia nada a comitar, e o passo disse isso)."
+            exit 0
+          fi
+          echo "::error::A rodada NÃO comitou dado (passo de commit: ${DESFECHO_COMMIT:-ausente})."
+          echo "::error::O passo de publicação pode ter dado success e republicado dado VELHO —"
+          echo "::error::foi exatamente o que aconteceu de 24/09 a 27/09/2026 (§§245 a 248)."
+          echo "::error::Não trate esta rodada como bem-sucedida. Ver o passo de commit acima."
+          exit 1

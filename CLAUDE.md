@@ -72,7 +72,17 @@ Documentos canônicos:
 > comprimidos mas inteiros. Cortar hedging não autoriza afirmar o não medido;
 > tabela que carrega medição é prova, não enfeite; e nada disso toca texto
 > público do site. As colisões estão nomeadas uma a uma em
-> `.claude/skills/caveman/SUBORDINACAO.md`. Desligar: "stop caveman".
+> `.claude/skills/caveman/SUBORDINACAO.md`.
+>
+> **LIGADA POR PADRÃO, PERMANENTEMENTE (editoria, 27/09/2026, §253).** A skill declara persistência
+> só até o fim da sessão; a editoria pediu permanente. Este parágrafo é o que torna permanente,
+> porque o `CLAUDE.md` é lido em toda sessão. Regime: **invocar a skill `caveman` no início de cada
+> sessão, nível `full`, em português do Brasil**, sem esperar pedido. Não perguntar; já foi decidido.
+> Desligar só a pedido da editoria, com "stop caveman" ou "normal mode" — e, se ela pedir para
+> desligar de vez, este parágrafo sai por PR.
+>
+> O que a compressão **não** encurta, porque o `CLAUDE.md` vence: suposição declarada, plano em
+> `passo → verificação`, e resumo final. Três linhas bastam para os três; parágrafo não.
 
 ## Fluxo de mudança (PROTOCOLO §3.1)
 

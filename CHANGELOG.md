@@ -9,6 +9,209 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §257 · Errata de texto no §5.3: a METODOLOGIA passa a dizer o que o código faz · 27/09/2026
+
+Classe **errata de texto**. T2 do pedido do preprint. **Nenhuma nota muda** — `recalcular_mare.py
+--check` reproduz os 27 estados × 7 campos idênticos, média nacional 46,6.
+
+### Por que a errata
+
+O preprint descreve o método **pelo texto**. Onde o texto e o código divergem, o preprint
+publicaria uma descrição que o cálculo não confirma.
+
+As constantes foram lidas do próprio `recalcular_mare.py` por `importlib` — nunca transcritas — e
+comparadas com os valores do §5.3, transcritos à mão com a frase de origem. Onze parâmetros:
+
+| situação | n | quais |
+|---|---|---|
+| concordam | 6 | `plano` · `plano_elaboracao` · `coberto_estadual` · `nao_localizado` · `nao_verificado` · `nao_el_nino` |
+| **divergem** | 1 | `plano_antigo`: texto 0,6 × código **1,0** |
+| **ausentes do texto** | 4 | `plano_novo` 1,0 · `plano_readaptado` 0,65 · `plano_recorrente` 0,45 · `estrutura` 0,45 |
+
+**Quem estava atrasado era o texto.** As seis diferenças têm decisão da editoria por trás: o §196
+pôs plano vigente de ciclo anterior em crédito integral, e o C28 criou a escada municipal com as
+mesmas proporções da escada estadual. O código executa o que foi decidido.
+
+### O texto contradizia a si mesmo
+
+Achado que o pedido não listava: no mesmo §5.3, a **prosa** dizia `declarado desatualizado = 0,35`
+e a **fórmula**, duas linhas depois, `× 0,3`. Dois valores diferentes para o mesmo parâmetro, e
+nenhum deles em vigor.
+
+### A propagação do §196, declarada
+
+O motor aplica `crédito da categoria × 0,5` na camada declarada. Ao pôr `plano_antigo` em 1,0, o
+§196 levou o declarado desatualizado de 0,35 para **0,5** — numa camada diferente daquela sobre a
+qual se decidiu.
+
+A errata alinha o texto ao valor em vigor **e registra que a propagação é consequência aritmética,
+não decisão tomada sobre a camada declarada**. Se não era o efeito pretendido, quem diz é a
+editoria; alterar o motor por reinterpretação seria trocar o juízo dela pelo meu, que é justamente
+o que o §196 recusou fazer.
+
+### Pendência da editoria, não corrigida aqui
+
+`analise_sensibilidade.py` usa `d_antigo=0.3` por padrão, contra 0,5 no motor, e alimenta o PDF de
+documentação do índice. **Não corrigido**, por instrução explícita do próprio T2: é arquivo de
+produção. Fica registrado.
+## §256 · Paridade da cobertura do Querido Diário, e um sintoma que não se confirmou · 27/09/2026
+
+Classe **portão**. T1 do pedido do preprint (repositório privado), pendência aberta em
+`notas/PENDENCIAS_2026-09-14.md`.
+
+### O sintoma relatado não se confirma
+
+O pedido descreve `data/cobertura_qd.json` com "as 5.571 entradas com `cobertura_qd: false`" e
+`data_teste` 2026-09-06, contra `indexados = 527` em `verificacao_resumo.json`.
+
+Medido:
+
+| valor | municípios |
+|---|---|
+| `true` (diário indexado) | **527** |
+| `false` | 5.041 |
+| `None` (indefinido) | 3 |
+| total | 5.571 |
+
+**Os dois arquivos já concordavam.** As `data_teste` também variam — 12/09 em 2.362 municípios,
+09/09 em 1.859, 08/09 em 741, 25/09 em 266 —, não um 06/09 único.
+
+O `false` e o `06/09` do relato eram os do **primeiro município da ordem de iteração**, tomado pelo
+todo. Não houve arquivo parado, e nada foi consertado porque nada estava quebrado.
+
+### O que faltava de verdade
+
+O **portão de paridade**. Ele não existia, e é o que a pendência de 14/09 cobrava. O número entra no
+preprint como limitação quantificada do E6: uma divergência entre os dois arquivos viraria duas
+afirmações incompatíveis publicadas no mesmo trabalho.
+
+`scripts/verificar_paridade_cobertura_qd.py` trava seis desacordos: `indexados` divergentes, não
+indexados divergentes, total divergente, as três classes que não somam o total, a partição interna
+do resumo (`com_mencao + coberto_sem_mencao = indexados`) que não fecha, e **zero indexado** — que é
+o sintoma relatado, e que reprova mesmo se os dois arquivos concordarem, porque 5.571 em `false` é
+falha de coleta e não um fato.
+
+`None` é contado à parte, nunca como `false`: somá-lo aos não indexados inflaria a limitação
+declarada no E6.
+
+### Número canônico
+
+**527 municípios com diário indexado**, última varredura em **25/09/2026**. O pedido cita 522
+declarados pela plataforma do Querido Diário e 518 em 23/09; nenhum dos dois foi verificado aqui, e
+a diferença fica declarada em vez de reconciliada.
+
+## §254 · Vigia do desfecho: a rodada agora fica vermelha quando não comita · 27/09/2026
+
+Classe **infraestrutura da rodada**. Fecha o buraco que deixou quatro defeitos passarem três dias.
+
+### O buraco
+
+Medido em 27/09: o último commit automático de dados bem-sucedido foi **24/09 às 07h15**. Três
+dias. Quatro defeitos distintos (§§245 a 248), cada um escondido atrás do anterior, e **todos com a
+mesma assinatura**: a rodada falhava com o passo de **publicação em `success`**, republicando dado
+velho. Nada ficava vermelho de um jeito que se veja.
+
+A rotina diária de auditoria rodou nesses três dias e não pegou nenhum, porque olhava portões,
+saúde do site e filas humanas — não o **desfecho da rodada**.
+
+### O conserto
+
+Passo final, `if: always()`, fora de ensaio: se o passo de commit não concluiu `success`, o job
+termina **vermelho**, com a mensagem dizendo que a publicação pode ter republicado dado velho.
+
+`skipped` entra na condição de propósito — foi o desfecho das quatro rodadas de 26/09, e
+`continue-on-error` não protege contra ele (§246, §252). `cancelled` também, que foi o de 27/09 às
+01h15 (§248).
+
+Determinístico, não sessão de agente: `if` em workflow não esquece, não custa e não interpreta.
+
+### Decisão sobre a rotina diária
+
+O aviso da editoria de 27/09 pediu que esta sessão decidisse o destino do scheduled task
+`trig_01CRu9A8SgLPb3sB3LZm8K8G` (rotina diária, 09h30 UTC, já desativado).
+
+**Decisão: permanece desativado, e não é apagado.** As razões, medidas:
+
+1. Ela rodou nos três dias de silêncio e não pegou o defeito — olhava o lugar errado.
+2. O §238 tirou o mandato de auditoria transversal, que era metade do escopo dela.
+3. Ela não conseguia empurrar na maioria dos dias, então o valor era só diagnóstico.
+
+Apagar é irreversível e some com o histórico; desativado não custa nada. O que a rotina deveria ter
+pegado passa a ser pego por este §, de graça e sem esquecer.
+
+## §253 · Skill `caveman` ligada por padrão, permanentemente · 27/09/2026
+
+Classe **modo de trabalho**. Pedido da editoria. Entrou na `main` pelo PR #405 **sem linha aqui** —
+falha de protocolo, registrada com atraso.
+
+A skill do §250 declara persistência só até o fim da sessão. O `CLAUDE.md` é lido em toda sessão, e
+é ele que torna permanente: **invocar `caveman` no início de cada sessão, nível `full`, em português
+do Brasil**, sem esperar pedido.
+
+O que a compressão não encurta, porque o `CLAUDE.md` vence a skill: **suposição declarada**, **plano
+em `passo → verificação`**, **resumo final**. Três linhas bastam para os três; parágrafo não — foi
+assim que o registro foi descumprido nas primeiras respostas com a skill ligada, e a editoria
+notou antes de mim, duas vezes.
+
+## §252 · O `tee` engolia a recusa do resolvedor, e derivado estava sendo recusado à toa · 27/09/2026
+
+Classe **infraestrutura da rodada**. Dois defeitos medidos na rodada de 27/09 às 08h29 — a
+primeira que rodou com os §§245 a 248 dentro.
+
+### O que a rodada provou que funciona
+
+O commit **rodou** em vez de ser pulado, e o resolvedor do §247 entrou em ação:
+
+```
+resolvido  data/log_buscas.json: 44683 + 46819 → 46969 (união pela base comum)
+resolvido  docs/MANIFEST_SHA256.txt: versão de cima (derivado, será regenerado)
+RECUSADO   dados-abertos/verificacao_municipal.csv
+RECUSADO   data/fontes_consultadas.json
+```
+
+46.969 é maior que cada um dos lados — a trava de 23/09 segurou, e o arquivo de 20,7 MB em uma
+linha, que garantia conflito, deixou de garantir.
+
+### Defeito 1 — o `tee` engolia o código de saída
+
+O resolvedor recusou dois caminhos e saiu com **código 2**. O laço deveria ter dito "conflito SEM
+resolução conhecida". Disse:
+
+```
+tentativa 1: rebase --continue reprovou; nova tentativa
+```
+
+A causa está no `| tee /tmp/uniao.log` que o §247 escreveu: **o status de um pipeline é o do último
+comando**, e o passo não tem `set -o pipefail`. O `tee` devolve 0 sempre, o `if` foi verdadeiro
+apesar da recusa, e o laço tentou `rebase --continue` com caminhos não resolvidos.
+
+A rodada falhou igual — mas o **diagnóstico saiu errado**, que é precisamente o defeito que os
+§§246 a 248 existem para não repetir, cometido dentro do conserto. Provado fora do CI:
+`python3 -c "sys.exit(2)" | tee` devolve **0**; sem o `tee`, devolve **2**.
+
+Agora o código de saída é capturado em variável e o log é impresso depois, sem pipeline.
+
+### Defeito 2 — derivado recusado sem razão
+
+`dados-abertos/verificacao_municipal.csv` foi recusado por "política de mesclagem não decidida".
+A política dele está decidida desde sempre: `.claude/hooks/bloquear_derivados.py` declara
+`dados-abertos/.+` como **derivado**. Derivado resolve com a versão de cima e a cadeia canônica
+regenera — é o mesmo caso do manifesto, que o resolvedor já tratava.
+
+Entram como **prefixos**, não nomes exatos: `dados-abertos/`, `feeds/`, `selos/`. Prefixo porque o
+conjunto cresce com o dado — um CSV novo em `dados-abertos/` nasce derivado, e não deve precisar de
+PR para ser resolvido.
+
+Sobra **um** caminho esperando a editoria: `data/fontes_consultadas.json`. Asserção negativa nova
+garante que ele siga recusado, para o prefixo novo não ter virado porta larga. Dezesseis asserções
+agora, seis negativas.
+
+### O que segue aberto
+
+A rodada de 08h29 não comitou, e o passo de publicação deu `success` republicando dado velho — de
+novo. Com os dois consertos deste §, a próxima rodada resolve três dos quatro caminhos que
+conflitaram; o quarto depende da política que só a editoria decide.
+
 ## §251 · Registro de erros de localização, e as sete fixtures que falham · 27/09/2026
 
 Classe **aprendizado da descoberta**. Bloco I do pedido da editoria de 27/09 (repositório privado
@@ -88,7 +291,6 @@ as sete passarem — e só então.
 - A fixture do MT não tem URL no pedido. Caso em aberto, lacuna declarada.
 - Os blocos A a F não começaram. Pela ordem do próprio pedido, eles só entram **depois** de as
   fixtures passarem.
-
 ## §250 · Skill `caveman` instalada, subordinada e com o idioma preservado · 27/09/2026
 
 Classe **modo de trabalho**. Pedido da editoria.
@@ -3086,6 +3288,20 @@ Classe **código**. Não altera pesos, créditos, componentes ou régua; a camad
 
 **Teste.** Autoteste com fixture `.xlsx` (não mais CSV): parser confirma cabeçalho por nome de coluna, ignora código IBGE inválido, dois casos negativos novos (aba inexistente → vazio, sem exceção; coluna do plano ausente → casa por IBGE sem o campo). Rodado também contra o arquivo `.xlsx` real da MUNIC 2020: **5.570 de 5.571 municípios casados** com a referência IBGE; `Mgrd184`: 1.407 "sim" / 4.054 "não" / 109 "NA"; `Mgrd05`: 1.230 "sim" / 3.814 "não" — distribuição plausível, sem outliers. `docs/MANIFEST_SHA256.txt` regenerado.
 
+## §127 · Autotestes das sondas de ENSO (IRI) e MUNIC (IBGE) ligados ao portão de regressão · 20/09/2026
+
+Classe **código**. Não altera pesos, créditos, componentes ou régua.
+
+Os dois autotestes existentes — `sondar_enso_probabilidades.py --autoteste` (§125) e
+`sondar_munic_ibge.py --autoteste` (§126) — passam a rodar no bloco **Portões de regressão
+(testes negativos dedicados)** de `portoes.yml`. Não foram incluídos nos PRs originais para
+evitar conflito com o §123, que criou o bloco. Ambos verdes na `main` atual.
+
+`pip install openpyxl==3.1.5 --break-system-packages -q` foi adicionado antes da sonda
+MUNIC: o workflow `portoes.yml` não instala `requirements.txt` (usa só a biblioteca padrão
+para todo o resto), mas a sonda MUNIC chama `openpyxl` no autoteste quando a biblioteca está
+presente e o pula (com aviso) se não estiver — o portão precisa da instalação explícita para
+que o caso de xlsx seja efetivamente testado e não silenciosamente omitido.
 ## §126 · Sonda da MUNIC/IBGE: qual edição traz o bloco de riscos e o nome real das colunas · 22/09/2026
 
 Classe **diagnóstico** — não toca dados, pesos, créditos, componentes ou régua. Cria
@@ -3318,12 +3534,6 @@ Achado da rotina diária: portão 12 (`scripts/verificar_derivados.sh`) vermelho
 - **Causa-raiz.** Em 17/09/2026 (§87) `coletar_sinais_risco.py` passou a rodar incondicionalmente todo dia, antes do corte de cadência semanal do índice — para que ONI, avisos do INMET e focos do INPE em `data/sinais_risco.json` deixassem de esperar até segunda-feira. `gerar_monitor_saude.py`, que copia `focos_24h` por UF de `sinais_risco.json` para `data/monitor_saude.json` (campo lido pela página `saude.html`), continuou só no bloco semanal, depois do corte de cadência — então nos dias 17 e 18/09 o robô atualizou o sinal bruto mas não o derivado, que ficou parado com os focos de 31/08.
 - **Correção.** `gerar_monitor_saude.py` passa a rodar também logo após `coletar_sinais_risco.py`, incondicionalmente, todo dia — chamada idempotente (mesma função pura já usada no bloco semanal, provada por `--idempotencia`). `data/monitor_saude.json` e `docs/MANIFEST_SHA256.txt` regenerados nesta correção para a `main` ficar verde já hoje.
 - **Teste.** `scripts/verificar_derivados.sh` (árvore limpa, com a correção) e `--idempotencia` (segunda regeneração não altera nada) verdes. Nenhum arquivo de `.github/workflows/` tocado.
-
-## §55 · Saúde: títulos-fato do dado (auditoria editorial 14/09, onda E2 §2.10) · 15/09/2026
-
-Nenhuma alteração de método. Classe **conteúdo**.
-
-- MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
 
 ## §110 · Gatilho de reverificação por marco federal (handover ponto cego saúde, §3.5 — fecha o handover) · 18/09/2026
 
@@ -3703,20 +3913,6 @@ Pedido direto da editoria, com nove partes.
 
 Cinco portões quebraram no caminho — todos por dependerem de elementos ou textos que este pedido removeu ou renomeou de propósito (o link "como ler o MARÉ", a própria figura de cruzamento, o card resumo em Defesa Civil, a ordem de painéis da home, as listas do fallback estático §78) — todos corrigidos para refletir a nova realidade da página, não revertidos. Suíte inteira verde (21 verificações); cadeia de derivados regenerada em árvore limpa; conferido visualmente em tela cheia, sem erro de JavaScript.
 
-## §81 · "Medida de Antecipação" sobrevivia em 10 das 11 páginas; confirmado direto no domínio publicado; portão novo · 17/09/2026
-
-Patricia disse, pela segunda vez, que não via o marcador temporal nem os ajustes de linguagem nas demais páginas. Da primeira vez, verifiquei só localmente e assumi que estava tudo certo — dessa vez fui direto ao domínio publicado buscar prova, e a prova encontrou um erro real.
-
-**Como confirmei**: sem acesso de rede direto a monitorelnino.com.br daqui, usei o mecanismo que já existe (`verificar_publicado.yml`, que tem a senha do domínio como segredo do GitHub Actions) para buscar o HTML publicado de verdade e procurar pelos textos específicos. Descoberta: o marcador temporal **está** publicado, correto, nas duas páginas (home e Saúde) — mas `saude.html` ainda trazia **"Medida de Antecipação"** no subtítulo do cabeçalho.
-
-**A causa**: o §79 (busca e substituição do nome) usava correspondência de string simples — e o subtítulo do masthead é `<p class="mast-sub">Medida de Antecipação e Resposta ao <em>El Niño</em></p>`, com uma tag `<em>` bem no meio da frase. Uma busca simples não vê a string como o leitor vê; só achei e corrigi esse padrão na home, quando reescrevi aquele trecho por inteiro no §4 — nunca apliquei a mesma correção, com essa mesma tag, às outras 10 páginas, que compartilham o mesmo masthead. Uma varredura sem remover as tags primeiro não pega esse tipo de erro; foi assim que passou pelas minhas checagens de antes.
-
-**Corrigido**: as 10 páginas restantes. Conferência final, ampla, removendo tags antes de buscar, em três frentes (nome antigo, "MARÉ · Defesa civil", "aviso federal", travessão no cabeçalho) — nada mais sobrou.
-
-**Portão novo, em `verificar_estrutura.js`**: para toda página do pacote, remove as tags e confere que "Medida de Antecipação" e "MARÉ · Defesa civil" não sobrevivem — pega exatamente esse tipo de erro (string partida por tag), que uma busca ingênua deixa passar. Teste negativo executado (reintroduzido o padrão exato que causou o bug) e revertido com segurança.
-
-Lição registrada: quando alguém relata, pela segunda vez, que não vê uma mudança que eu já verifiquei, o próximo passo é ir buscar prova direto na fonte, não checar de novo do mesmo jeito e confiar de novo.
-
 ## §82 · Consolidação estrutural: duplicações de código e documentação achadas em auditoria · 17/09/2026
 
 A pedido da editoria, depois de uma auditoria de código (não só do CHANGELOG) que apontou onde
@@ -3744,6 +3940,20 @@ mudança visível de conteúdo ou de método.
 
 Suíte de portões (todos, incluindo os dois de tom) verde; cadeia de derivados regenerada em
 árvore limpa; `recalcular_mare.py --check` reproduz a média nacional bit a bit (43.6, inalterada).
+
+## §81 · "Medida de Antecipação" sobrevivia em 10 das 11 páginas; confirmado direto no domínio publicado; portão novo · 17/09/2026
+
+Patricia disse, pela segunda vez, que não via o marcador temporal nem os ajustes de linguagem nas demais páginas. Da primeira vez, verifiquei só localmente e assumi que estava tudo certo — dessa vez fui direto ao domínio publicado buscar prova, e a prova encontrou um erro real.
+
+**Como confirmei**: sem acesso de rede direto a monitorelnino.com.br daqui, usei o mecanismo que já existe (`verificar_publicado.yml`, que tem a senha do domínio como segredo do GitHub Actions) para buscar o HTML publicado de verdade e procurar pelos textos específicos. Descoberta: o marcador temporal **está** publicado, correto, nas duas páginas (home e Saúde) — mas `saude.html` ainda trazia **"Medida de Antecipação"** no subtítulo do cabeçalho.
+
+**A causa**: o §79 (busca e substituição do nome) usava correspondência de string simples — e o subtítulo do masthead é `<p class="mast-sub">Medida de Antecipação e Resposta ao <em>El Niño</em></p>`, com uma tag `<em>` bem no meio da frase. Uma busca simples não vê a string como o leitor vê; só achei e corrigi esse padrão na home, quando reescrevi aquele trecho por inteiro no §4 — nunca apliquei a mesma correção, com essa mesma tag, às outras 10 páginas, que compartilham o mesmo masthead. Uma varredura sem remover as tags primeiro não pega esse tipo de erro; foi assim que passou pelas minhas checagens de antes.
+
+**Corrigido**: as 10 páginas restantes. Conferência final, ampla, removendo tags antes de buscar, em três frentes (nome antigo, "MARÉ · Defesa civil", "aviso federal", travessão no cabeçalho) — nada mais sobrou.
+
+**Portão novo, em `verificar_estrutura.js`**: para toda página do pacote, remove as tags e confere que "Medida de Antecipação" e "MARÉ · Defesa civil" não sobrevivem — pega exatamente esse tipo de erro (string partida por tag), que uma busca ingênua deixa passar. Teste negativo executado (reintroduzido o padrão exato que causou o bug) e revertido com segurança.
+
+Lição registrada: quando alguém relata, pela segunda vez, que não vê uma mudança que eu já verifiquei, o próximo passo é ir buscar prova direto na fonte, não checar de novo do mesmo jeito e confiar de novo.
 
 ## §80 · Paridade de Saúde com a home: medidor "Depois" compacto e contador de tempo · 17/09/2026
 
@@ -4045,6 +4255,12 @@ Nenhuma alteração de método. Classe **nome/texto/estrutura de página** (deci
 - **Textos explicativos** (`.hint` e parágrafos de painel) em todas as páginas: largura total do painel (a medida de leitura de 68ch fica só na citação) e reescrita objetiva — descrevem o que a figura mostra, sem comentário sobre o site, instrução de uso ("clique", "passe o mouse") nem nota interna (as menções a migrações de 13/09 e à "proposta de enxugamento" saem do texto público).
 - **Monitor de risco**: ordem 1 · Situação atual (ONI e prognóstico) · 2 · O risco projetado, estado a estado · 3 · O que está acontecendo agora; o gráfico "Estados por tipo de risco projetado" entra no mesmo quadro do mapa (figura dupla `.figura--dupla`: mapa e gráfico lado a lado, uma legenda, um crédito); o painel "Gráficos" deixa de existir.
 
+## §55 · Saúde: títulos-fato do dado (auditoria editorial 14/09, onda E2 §2.10) · 15/09/2026
+
+Nenhuma alteração de método. Classe **conteúdo**.
+
+- MARÉ · Saúde: "Saúde: {n} estados com plano para o ciclo, {n} com o de todo ano, {n} em elaboração, {n} não verificados" (do `saude_uf.json`); mapa de status com a mesma contagem; contador "Emergências sanitárias declaradas no ciclo: {n}" com "nenhuma localizada até {corte}" quando zero; dengue/chikungunya: "{n} municípios em alerta laranja ou vermelho na semana SE {n} de 2026 (painel amostral)", recalculado ao trocar a doença. Interpretação fixa do InfoDengue ("o Monitor não atribui casos ao El Niño") fora da figura, no bloco "O que se observa" (portão 19). Títulos calculados após o carregamento; sem dado, o título original permanece. Runtime confere contra o dado; títulos dentro do teto de 100 caracteres do portão 19.
+
 ## §55 · Correções da editoria de 15/09: nomes das páginas, página inicial, uma só arte de barra, resposta como índice, MARÉ · Saúde v0.3, coletores de sinais · 15/09/2026
 
 Classe **método (peso zero) + estrutura de página + coletores**. Constantes do motor do MARÉ inalteradas (congelamento C25 mantido; `recalcular_mare.py --check` reproduz a média nacional). Metodologia §39, §32.4 e §31 (v0.3).
@@ -4074,12 +4290,6 @@ Nenhuma alteração de método. Classe **estrutura de página**. (PR #223, mescl
 
 - Seletor de estado no bloco "Qual é o risco projetado no seu estado" — a lista vem de `data/sinais_risco.json`. Ao escolher, a página mostra a classificação da UF com a fonte e **abre o guia correspondente** (chuvas, incêndios/fumaça, estiagem/calor; "misto" abre mais de um; "sem sinal elevado" não abre nenhum e diz isso). Os três guias viraram acordeões fechados por padrão; a impressão em PDF continua lendo todos. Runtime próprio da página.
 
-## §51 · O dinheiro volta para Financiamento; quarta porta para o calendário (auditoria editorial 14/09, onda E1 §1.7 e §1.6) · 15/09/2026
-
-Nenhuma alteração de método. Classe **estrutura de página**.
-
-- Financiamento ganha o bloco **"O que a União prometeu — e o que pagou"** (antes de "Por estado"): título-fato do dado (nº de compromissos verificados; R$ transferidos a municípios em 2026 até a última semana da série), a série semanal por rota como **miniatura** com a faixa do período eleitoral, e a tabela de compromissos verificados. A faixa vem com a **quarta porta** ("a faixa sombreada é a lei, não a inação… a única porta aberta é o decreto — por que há páginas fora do ar →").
-- Em Pesquisadores fica só o gráfico do plano federal por área (valores anunciados), com a nota de que o resto voltou. Renderizadores movidos de `pesquisadores.js` para `financiamento.js` sem mudança de lógica; runtime cobre título, tabela, faixa e porta.
 ## §52 · Legendas neutras: auditoria de todas as figuras e portão 19 (regra editorial permanente da editoria, 15/09) · 15/09/2026
 
 Nenhuma alteração de método, dado, cálculo ou fonte. Classe **texto/editorial + portão**. A editoria fixou uma regra permanente: legenda, título auxiliar, subtítulo, item de legenda, crédito, tooltip e cartão com número **descrevem** (variável, período, território, unidade, fato principal) e **nunca** avaliam, dramatizam, interpretam ou atribuem causa; interpretação vive no texto narrativo, fora da figura.
@@ -4092,6 +4302,12 @@ Nenhuma alteração de método, dado, cálculo ou fonte. Classe **texto/editoria
 - Home: a frase "o plano publicado antes decide o que acontece nas primeiras horas" (§2.15 do handover de 14/09) sai da nota do contador (elemento de dado) e vai para a linha narrativa logo abaixo; a nota guarda os dois fatos legais (art. 73, VI, *a*; "o decreto de emergência é a porta legal do recurso"). Nada foi apagado; `verificar_runtime_resposta.js` segue exigindo o art. 73 no contador.
 - **Novo portão 19 — `scripts/verificar_legendas.js`** (em `portoes.yml`, protocolo §3.3 e Guia do Editor): nas 11 páginas renderizadas, para toda `.figura` (título, subtítulo, `.figura-leitura`, itens de legenda, crédito, resumos, rótulos de lacuna na mídia), cartões-indicador da home e strings de `showTip` dos scripts: léxico avaliativo e alarmista, aberturas interpretativas, conectivos causais, "não existe / não tem plano / sem plano|instrumento|ato" sem "localizado", ênfase em caixa alta, título > 100 caracteres, leitura > 2 frases ou > 240 caracteres. Lista de exceções para termos técnicos ("síndrome respiratória aguda grave", "janela crítica", "nível 3 (alerta)"). Teste negativo feito em três frentes (título, item de legenda, tooltip), restauração verde. Suíte passa a 19 portões.
 - Consequência para a onda E3 (visualizações) do handover de 14/09: as "interpretações" com juízo previstas para dentro das figuras ("o sistema funcionando", "o recurso chegando para improvisar") passam a viver no texto narrativo da seção; os títulos-fato com número do dado seguem como planejado (Regra 2 do handover já os exigia sem adjetivo e sem causa).
+## §51 · O dinheiro volta para Financiamento; quarta porta para o calendário (auditoria editorial 14/09, onda E1 §1.7 e §1.6) · 15/09/2026
+
+Nenhuma alteração de método. Classe **estrutura de página**.
+
+- Financiamento ganha o bloco **"O que a União prometeu — e o que pagou"** (antes de "Por estado"): título-fato do dado (nº de compromissos verificados; R$ transferidos a municípios em 2026 até a última semana da série), a série semanal por rota como **miniatura** com a faixa do período eleitoral, e a tabela de compromissos verificados. A faixa vem com a **quarta porta** ("a faixa sombreada é a lei, não a inação… a única porta aberta é o decreto — por que há páginas fora do ar →").
+- Em Pesquisadores fica só o gráfico do plano federal por área (valores anunciados), com a nota de que o resto voltou. Renderizadores movidos de `pesquisadores.js` para `financiamento.js` sem mudança de lógica; runtime cobre título, tabela, faixa e porta.
 ## §51 · Errata: URL da evidência de Ouro Branco/AL restaurada ao caminho informado pela API do Querido Diário (portão 6) · 15/09/2026
 
 Nenhuma alteração de método; nenhum número do índice muda. Classe **dados** (PROTOCOLO §3.2), correção de registro anterior — errata da entrada de 10/09/2026. Preparada em 14/09 (ramo ficou em `ramos_pendentes/` por bloqueio de rede) e refeita sobre a `main` de 15/09.
@@ -7157,17 +7373,3 @@ aceito apenas se exatamente zero) que validou cada correção abaixo.
   subcritério do componente de instrumento estadual, condicionada à
   bateria negativa completa nas 27 UFs.
 
-## §127 · Autotestes das sondas de ENSO (IRI) e MUNIC (IBGE) ligados ao portão de regressão · 20/09/2026
-
-Classe **código**. Não altera pesos, créditos, componentes ou régua.
-
-Os dois autotestes existentes — `sondar_enso_probabilidades.py --autoteste` (§125) e
-`sondar_munic_ibge.py --autoteste` (§126) — passam a rodar no bloco **Portões de regressão
-(testes negativos dedicados)** de `portoes.yml`. Não foram incluídos nos PRs originais para
-evitar conflito com o §123, que criou o bloco. Ambos verdes na `main` atual.
-
-`pip install openpyxl==3.1.5 --break-system-packages -q` foi adicionado antes da sonda
-MUNIC: o workflow `portoes.yml` não instala `requirements.txt` (usa só a biblioteca padrão
-para todo o resto), mas a sonda MUNIC chama `openpyxl` no autoteste quando a biblioteca está
-presente e o pula (com aviso) se não estiver — o portão precisa da instalação explícita para
-que o caso de xlsx seja efetivamente testado e não silenciosamente omitido.
