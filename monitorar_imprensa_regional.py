@@ -237,8 +237,23 @@ def carregar_fila():
 
 
 def registrar(fila, novas):
-    """Deduplica por hash e anexa pistas inéditas com os campos de trava absoluta."""
-    vistos = {p["hash"] for p in fila["pistas"]}
+    """Deduplica por hash e anexa pistas inéditas com os campos de trava absoluta.
+
+    27/09/2026: `data/pistas_imprensa.json` tem DOIS produtores. Este monitor grava pistas de
+    descoberta em imprensa (com `alvo`, `titulo`, `url` e `hash`); a esteira de triagem grava
+    registros de outro tipo (rebaixamento C10 e afins, com `id`, `municipio`, `documento`), que
+    não têm `hash` nem os campos de que `_hash` precisa. Ler o conjunto exigindo `hash` de todos
+    quebrava com `KeyError: 'hash'` — três vezes por rodada, nos três monitores que chamam esta
+    função, e a rodada inteira parava.
+    A dedução passa a usar só quem TEM hash. Registro de outro produtor não é hasheado com a
+    fórmula daqui (ele não tem os campos, e a identidade dele é outra) e fica intacto na lista —
+    nada se perde, e nada de outro esquema é reescrito por este monitor.
+    """
+    vistos = {p["hash"] for p in fila["pistas"] if "hash" in p}
+    de_outro_produtor = sum(1 for p in fila["pistas"] if "hash" not in p)
+    if de_outro_produtor:
+        print(f"[nota] {de_outro_produtor} registro(s) de outro produtor na fila, preservados "
+              f"e fora da dedução deste monitor")
     ineditas = []
     for p in novas:
         p["hash"] = _hash(p)

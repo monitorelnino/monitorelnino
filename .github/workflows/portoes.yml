@@ -215,6 +215,12 @@ jobs:
           # onde repetir ajuda (429, 5xx) e NUNCA repetir onde a fonte disse não (401, 403, 451,
           # muro de robô) — e que a política não volte a existir em cópia.
           python3 scripts/testar_espera_de_rede.py
+          # §245 (27/09/2026): a fila de pistas em imprensa tem DOIS produtores no mesmo
+          # arquivo, e um deles grava sem `hash`. Ler o conjunto de vistos exigindo `hash` de
+          # todos quebrava com KeyError três vezes por rodada, nos três monitores que chamam a
+          # função, e derrubava a rodada inteira. O autoteste é offline, não toca em data/, e
+          # trava as duas metades: esquema alheio não quebra nem se perde, e a dedução continua.
+          python3 scripts/testar_fila_de_pistas.py
           # §226 (26/09/2026): o coletor de transferências do Portal da Transparência estava no
           # pipeline SEM autoteste e sem portão — o único assim entre os que pedem rede. O
           # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429
