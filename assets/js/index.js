@@ -263,6 +263,16 @@ fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).catch(() => nu
     const r = sr.uf[uf] && sr.uf[uf].risco_projetado;
     if (r && r.texto) RISCO_UF[uf] = r;
   });
+  const f = (sr.fontes || {})['painel_el_nino'];
+  const leg = document.querySelector('#regions + .legend');
+  if (f && leg && !leg.querySelector('.fonte-risco')) {
+    const sp = document.createElement('span');
+    sp.className = 'fonte-risco';
+    sp.innerHTML = 'Risco projetado: ' + (f.url_publica
+      ? '<a href="' + f.url_publica + '" target="_blank" rel="noopener">' + f.nome + '</a>' : f.nome)
+      + (f.consultado_em ? ' · ' + f.consultado_em : '');
+    leg.appendChild(sp);
+  }
   document.querySelectorAll('#regions .tile').forEach(t => {
     const r = RISCO_UF[t.dataset.uf];
     if (!r || t.querySelector('.tile-risco')) return;

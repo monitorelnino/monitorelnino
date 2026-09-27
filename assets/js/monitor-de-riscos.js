@@ -135,6 +135,10 @@ MonitorMapas.pontos(__ctx(), 'mapaTemperatura',
      .map(uf => ({uf, lat: coordCapital[uf].lat, lon: coordCapital[uf].lon, v: tmaxDe(uf)})),
   {r: () => 6, cor: d => escalaTemp(d.v), rotulo: d => rotuloTemp(d.uf), classe: 'pontosTemp'});
 credito('boxTemperatura', 'inmet_previsao_capitais');
+// A visão MUNICIPAL da temperatura continua vindo do Open-Meteo (clima_municipios.json): o INMET
+// publica previsão por capital, não pelos 5.571 municípios. São duas fontes para duas granularidades,
+// e cada uma é creditada onde aparece.
+if (document.getElementById('boxTemperaturaMun')) credito('boxTemperaturaMun', 'open_meteo_tempo');
 preencherTabela('tblTemperatura', uf => { const t = temp(uf); if (!t) return null;
   return [t.capital || '', t.tmax != null ? t.tmax + ' \u00b0C' : 'sem valor',
           t.tmin != null ? t.tmin + ' \u00b0C' : 'sem valor', t.resumo || 'sem resumo']; });
@@ -374,11 +378,16 @@ const ultimaProb = prob && prob.trimestres && prob.trimestres.length ? prob.trim
   // 'cptec_prognostico' (o prognóstico já usado no Boletim) — a citação segue a mesma fonte no ar.
   // 17/09/2026 (achado, pedido da editoria): "NOAA/CPC — Índice ONI" saiu daqui — a Figura 1 (o ONI)
   // já credita a mesma fonte logo abaixo; citar duas vezes na mesma tela era redundância, não reforço.
-  const fontesSituacao = ['Painel El Niño 2026-2027 (CEMADEN/INPE)'];
+  // 27/09/2026: o estado do ENOS passou a vir da Discussão Diagnóstica do CPC, coletada a cada
+  // rodada. O crédito acompanha o dado — antes citava o prognóstico do CPTEC, que era campo
+  // semeado à mão e sem caminho de atualização.
+  const fontesSituacao = [];
+  if (pg && pg.fonte === 'cpc_ensodisc') fontesSituacao.push('CPC/NOAA — discussão diagnóstica do ENOS');
   fontesSituacao.push(ultimaProb ? 'IRI/CPC — probabilidades trimestrais' : 'CPTEC/INPE — prognóstico trimestral');
   MonitorMapas.credito('situacao', {fontes: fontesSituacao, data: SINAIS.gerado_em});
   const __situacaoFonte = document.querySelector('#situacao .fonte-figura');
-  if (__situacaoFonte) __situacaoFonte.dataset.credito = ultimaProb ? 'iri_plume' : 'cptec_prognostico';
+  if (__situacaoFonte) __situacaoFonte.dataset.credito =
+    (pg && pg.fonte === 'cpc_ensodisc') ? 'cpc_ensodisc' : (ultimaProb ? 'iri_plume' : 'cptec_prognostico');
 })();
 
 // 13/09/2026: cartoesCiclo/cartaoCiclo1-4 removidos — três dos quatro cartões duplicavam valores já
