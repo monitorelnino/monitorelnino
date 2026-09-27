@@ -92,14 +92,21 @@ orquestrador antigo identifica a pista por `alvo` (rótulos estadual/municipal),
 mais UF; reescrevê-lo agora quebraria cinco fixtures e mexeria na máquina de rollback sem que o
 relatório das filas já tenha mostrado quais formas de pista chegam lá. Fica como pedido separado.
 
-### O modo relatório escrevia
+### Duas portas gravando a mesma prova
 
-A primeira execução de `julgar_filas.py --relatorio` preservou **45 documentos oficiais** em
-`evidencias/` e indexou os hashes, enquanto imprimia "relatório apenas; nada escrito". Os 45
-documentos são evidência legítima — vieram de fonte oficial, com hash — e ficam; a frase é que
-estava errada. O modo relatório passa a não preservar evidência, não marcar a pista em memória e
-não gravar arquivo de fila, e três travas de autoteste leem o código de `main()` para que a guarda
-não desapareça sem quebrar o portão.
+A primeira versão preservava o texto julgado com `preservar_evidencia(..., ext="txt")`. O portão 26
+(`verificar_evidencias.py`) reprovou, e a razão é séria: evidência de texto cuja URL termina em
+`.pdf`, sem `texto_manual: true`, **seria sobrescrita** por `preservar_evidencias.py --ler`, que é
+a porta canônica e guarda o binário. Duas portas gravando a mesma chave é como se perde prova.
+
+O juiz deixa de preservar: ele calcula o hash do texto que julgou, para identificar no registro o
+que leu, e a preservação continua com quem já a faz. Os 45 arquivos que a execução de teste havia
+escrito saíram do commit.
+
+Na mesma execução apareceu um segundo defeito: `--relatorio` escrevia enquanto imprimia "nada
+escrito". O modo relatório passa a não preservar, não marcar a pista em memória e não gravar
+arquivo de fila, com travas de autoteste sobre o código de `main()` para que a guarda não
+desapareça em silêncio.
 
 ### Registro, amostra e contagem
 

@@ -175,16 +175,19 @@ def autoteste() -> int:
     import inspect
     import re as _re
     fonte = inspect.getsource(main)
-    guarda_preservar = _re.search(r"if not aplicar:\s+return None", fonte)
+    # a docstring de `hash_do_texto` CITA preservar_evidencia para explicar por que não a usa;
+    # a trava tem de procurar a CHAMADA, não a palavra.
+    nao_preserva = not _re.search(r"preservar_evidencia\s*\(", fonte)
     guarda_pista = _re.search(r"if not aplicar:\s+continue", fonte)
     grava_fila_sob_guarda = _re.search(r"if aplicar:\s+gravar_em\(DATA / nome_fila", fonte)
-    casos.append(("o modo relatório não preserva evidência", bool(guarda_preservar)))
+    casos.append(("o juiz não preserva evidência: a porta canônica é preservar_evidencias.py --ler",
+                  nao_preserva))
     casos.append(("o modo relatório não marca a pista em memória", bool(guarda_pista)))
     casos.append(("a fila só é gravada sob --aplicar", bool(grava_fila_sob_guarda)))
     # e o caminho sem preservador devolve veredito sem hash
     v_sem = julgar_uma({"id": "z", "municipio": "Bonito", "uf": "MS",
                         "url": CANARIOS["plano_novo"]["url"]}, buscar, None)
-    casos.append(("sem preservador, o veredito não inventa hash", "hash_evidencia" not in v_sem))
+    casos.append(("sem função de hash, o veredito não inventa hash", "hash_evidencia" not in v_sem))
 
     # todo motivo que o juiz produz está na lista do relatório
     motivos_vistos = {v.get("motivo") for v in vereditos if not v["promove"]}
@@ -211,20 +214,20 @@ def main() -> int:
     limite = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None
 
     import funil
-    from coletores_base import DATA, gravar_em, ler, log_busca, hoje_editorial, preservar_evidencia
+    from coletores_base import DATA, gravar_em, ler, log_busca, hoje_editorial
     from julgar_e_aplicar_descobertas import buscar_texto
 
-    def preservar(url, texto):
-        # SÓ com --aplicar. O modo relatório imprime "nada escrito", e gravar evidência (arquivo em
-        # evidencias/ mais linha em data/evidencias.json) tornaria essa frase falsa. Achado em
-        # 27/09/2026: a primeira execução do relatório preservou 45 documentos.
-        if not aplicar:
-            return None
-        try:
-            # assinatura: (conteudo, url, ext, origem) — não (url, conteudo, mime)
-            return preservar_evidencia(texto.encode("utf-8"), url, "txt", "juiz automático")
-        except Exception:  # noqa: BLE001 — falha ao preservar não derruba o julgamento
-            return None
+    def hash_do_texto(url, texto):
+        """O hash do texto julgado, para o registro da decisão — NÃO preserva evidência.
+
+        27/09/2026: a primeira versão chamava `preservar_evidencia` com o texto extraído e extensão
+        `txt`. O portão 26 (`verificar_evidencias.py`) reprovou com razão: evidência de texto cuja
+        URL termina em `.pdf` e sem `texto_manual: true` seria SOBRESCRITA por
+        `preservar_evidencias.py --ler`, que é a porta canônica de preservação e guarda o binário.
+        Duas portas gravando a mesma chave é como se perde prova. O juiz precisa do hash para
+        identificar o que julgou; preservar o documento é trabalho de quem já o faz."""
+        from coletores_base import sha256
+        return sha256(texto.encode("utf-8")) if texto else None
 
     vereditos, por_fila = [], {}
     for nome_fila in FILAS:
@@ -238,7 +241,7 @@ def main() -> int:
         por_fila[nome_fila] = len(alvo)
         print(f"{nome_fila}: {len(alvo)} pendente(s) de {len(lista)}")
         for p in alvo:
-            v = julgar_uma(p, buscar_texto, preservar)
+            v = julgar_uma(p, buscar_texto, hash_do_texto)
             vereditos.append(v)
             if not aplicar:
                 continue   # relatório não escreve nem no objeto em memória que será gravado
