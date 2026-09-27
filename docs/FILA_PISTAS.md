@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 27/09/2026 · 660 pendente(s) · 15 decidida(s) · A=104 B=384 C=172
+Gerado em 27/09/2026 · 1146 pendente(s) · 15 decidida(s) · A=119 B=648 C=379
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1080,6 +1080,180 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: May 12, 2026 ... Canoinhas se prepara para possível impacto do El Niño ... Zenilda ressaltou que o município trabalha com plano de contingência e definição clara ...
   - juiz: portão automático: fonte não oficial
 
+## Ipuaçu/SC — 41 pendente(s)
+- `a353384432` · nível **A** (8 pts) · busca_web · — · data 31/03/2023 (do trecho)
+  - título: Plano de Contingência de Proteção e Defesa Civil – PLANCON -
+  - url: https://ipuacu.sc.gov.br/plano-de-contingencia-de-protecao-e-defesa-civil-plancon/
+  - trecho: Nov 18, 2022 ... Plano de Contingência de Proteção e Defesa Civil – PLANCON. 18 de ... IPUAÇU-SC 2023 · 31 de março de 2023 5 de julho de 2024 ciipuacu ...
+- `75b3f1d0ad` · nível **A** (8 pts) · busca_web · — · citação não extraída
+  - título: denner, Autor em - ipuacu-sc
+  - url: https://ipuacu.sc.gov.br/author/denner/
+  - trecho: Autor: denner · Plano de Contingência de Proteção e Defesa Civil – PLANCON · Novos vereadores mirins são eleitos em Ipuaçu · Alunos do SCFV realizam diversas ...
+- `ba99f92ee6` · nível **A** (8 pts) · busca_web · — · data 07/04/2026 (do trecho)
+  - título: Ipuaçu celebra 34 anos com grande festa -
+  - url: https://ipuacu.sc.gov.br/ipuacu-celebra-34-anos-com-grande-festa/
+  - trecho: Ipuaçu celebra 34 anos com grande festa. 7 de abril de 2026 7 de abril de 2026 ... Plano de Contingência de Proteção e Defesa Civil – PLANCON · 18 de ...
+- `d9a3aad0f1` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL ...
+  - url: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
+  - trecho: Xanxerê fica a uma distância de 514,3 km (via BR-282) da Capital, Florianópolis e limita-se ao norte com Ipuaçu e Bom Jesus, a oeste com Xaxim e Lajeado Grande,.
+  - ⚠ ano_anterior_ao_ciclo
+- `5d0ec7f96f` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Defesa Civil apura ocorrência de tornado após tempestade em ...
+  - url: https://thmais.com.br/giro-de-noticias/defesa-civil-apura-ocorrencia-de-tornado-apos-tempestade-em-santa-catarina/
+  - trecho: Aug 31, 2026 ... ... Ipuaçu, Entre Rios, Biguaçu e Florianópolis decretaram situação de ... plano de contingência. No sábado, uma mulher de 39 anos morreu ...
+- `ac3b4c3bc9` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Combo de ocorrências climáticas foi a causa de tempestades ...
+  - url: https://www.nsctotal.com.br/tempo/combo-de-ocorrencias-climaticas-foi-a-causa-de-tempestades-severas-que-causaram-estragos-em-dezenas-de-cidades-de-sc
+  - trecho: Aug 31, 2026 ... Ipuaçu; Biguaçu; Florianópolis; Entre Rios; São José do Cedro. Em ... Plano de contingência do El Niño. Durante o final de semana, o plano ...
+- `a036ef1933` · nível **B** (4 pts) · busca_web · — · data 10/07/2026 (do trecho)
+  - título: Sexta-feira - 10 de Julho de 2026 Florianópolis/SC Edição N° 5187
+  - url: https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf
+  - trecho: Jul 22, 2026 ... ... Ipuaçu ....................................................... 403 ... Plano de Contingência da Assistência Social do Município de.
+- `f9baba7449` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Defesa Civil realizará audiência pública para debater Plano...
+  - url: https://www.redeprincesa.com.br/noticias/9946-defesa-civil-realizara-audiencia-publica-para-debater-plano-de-contingencia
+  - trecho: Jul 28, 2025 ... Ipuaçu · Ipumirim · Ouro Verde · Polícia · Polícia · Polícia · Polícia ... Plano de Contingência para eventos extremos, às 9 horas, na Câmara ...
+- `f50b225bef` · nível **B** (4 pts) · busca_web · — · data 2012 (do trecho)
+  - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
+  - url: https://www.gov.br/mme/pt-br/arquivos/do-12-07-2012-s1.pdf
+  - trecho: Jul 12, 2012 ... ... Ipuaçu. 6.798. 11 6 SC Ipumirim. 7.220. 11 7 SC Iraceminha. 4.253. 11 8 SC ... plano de ação dos órgãos e entidades integrantes da.
+  - ⚠ ano_anterior_ao_ciclo
+- `be507b5ad0` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
+  - url: https://www.gov.br/mme/pt-br/arquivos/do-30-08-2013-s1.pdf
+  - trecho: Aug 30, 2013 ... ... IPUAÇU"), Advª Drª Ana Theresa Bit- tencourt Barbosa Cruz Soares ... Plano de Ação Regional do Estado de Minas. Gerais, resolve: Art. 1º ...
+  - ⚠ ano_anterior_ao_ciclo
+- `28f5cf1a8c` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: El Niño é confirmado e Defesa Civil amplia prevenção em SC
+  - url: https://www.tudosobrexanxere.com.br/noticias/17804/el-nino-e-confirmado-e-defesa-civil-amplia-prevencao-em-sc.html
+  - trecho: Jun 19, 2026 ... Também apresenta informações sobre o Plano de Contingência (Plancon) e o Plano Emergencial Familiar. ... Bom Jesus e Ipuaçu recebem ajuda após ...
+- `63ad7feb07` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Atenção! As fortes chuvas desta segunda-feira, dia 21 ... - Instagram
+  - url: https://www.instagram.com/p/DdjZEwKjtjH/
+  - trecho: 6 days ago ... ⛈️ IPUAÇU MOBILIZA EQUIPES APÓS FORTE TEMPORAL E CERCA DE 200 CASAS SÃO ATINGIDAS PELO GRANIZO ... Plano de Contingência, além dos ...
+- `9b559956ed` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Nas próximas horas: Defesa Civil aponta regiões que mais ...
+  - url: https://www.nsctotal.com.br/tempo/nas-proximas-horas-defesa-civil-aponta-regioes-que-mais-preocupam-para-chances-de-granizo-e-chuva-forte-em-sc
+  - trecho: Aug 31, 2026 ... ... SC. Alerta vermelho também foi emitido pelo ... Ipuaçu; Florianópolis; Biguaçu; Entre Rios; São José do Cedro. Plano de contingência do El Niño.
+- `83978fd3e3` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Defesa Civil: 199 Bombeiros: 193 🌩️ “A natureza é bela, mas ao ...
+  - url: https://www.instagram.com/reel/DWo0wqDj643/
+  - trecho: Apr 2, 2026 ... No Oeste, Ipuaçu registrou 210 residências afetadas, enquanto Bom Jesus contabilizou 81 imóveis danificados. ... plano de contingência municipal.
+- `8a1d5e0207` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: PCH LUDESA PLANO DE AÇÃO DE EMERGÊNCIA - PAE Rio ...
+  - url: https://www.grupocpfl.com.br/sites/default/files/PAE-HMP-PCH-LUD-HOBG-001-R2_site.pdf
+  - trecho: Sep 11, 2025 ... realizar regularmente exercícios simulados, conforme Plano de Contingência de ... Ipuaçu: PONTO DE ENCONTRO. COORDENADAS UTM SIRGAS 2000 ...
+- `36bdc9eb72` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Ipuaçu; Palma Sola; Salete; Major Vieira; Treze de Maio; Timbó Grande; Trombudo ...
+- `bdf1aefcf0` · nível **B** (3 pts) · busca_web · — · data 30/05/2025 (do trecho)
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250602/Jornal/22524.pdf
+  - trecho: Jun 2, 2025 ... em consonância com o Plano de Contingência da Concessionária. § 14 ... Ipuaçu/SC, 30 de maio de 2025. Nelson Brisola. Prefeito. Cod. Mat ...
+  - ⚠ ano_anterior_ao_ciclo
+- `ece0294af7` · nível **B** (3 pts) · busca_web · — · data 06/07/2022 (do trecho)
+  - título: FLORIANÓPOLIS, QUARTA-FEIRA, 06 DE JULHO DE 2022 ANO ...
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2022/20220706/Jornal/2935.pdf
+  - trecho: Jul 6, 2022 ... Plano de Ação de Liquidação da COHAB/SC - O Liquidante da. COHAB/SC ... Ipuaçu - SC, em 01 de julho de 2022. CLORI PEROZA - Prefeita ...
+  - ⚠ ano_anterior_ao_ciclo
+- `f4cb0ee0e7` · nível **B** (3 pts) · busca_web · — · data 1997 (do trecho)
+  - título: OFICIA - Arquivo Público do Estado de Santa Catarina
+  - url: https://acervo.arquivopublico.sc.gov.br/uploads/r/arquivo-publico-do-estado-de-santa-catarina-apesc/8/8/d/88de21c8ad2c19e60d351a7707d26b61643d39a78fbc8c80f7518f4423501ae1/93120dc8-1d60-4afb-b27d-274c03fa41cc-18687-DOE_15756_09_09_1997_36F.pdf
+  - trecho: Sep 9, 1997 ... leitura do Plano de Ação do Governo para a região por representante ... - Ipuaçu. - Iraceminha. - Irati. - Itá. - Itapiranga. - Jardinópolis.
+- `5ebbcf2a83` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Após temporais atingirem 62 cidades, MPSC cria estrutura para ...
+  - url: https://www.instagram.com/p/DdWU8QSHPK4/
+  - trecho: Sep 16, 2026 ... SC apresenta plano de contingência para enfrentar possíveis impactos do El Niño em 2026 ... Ipuaçu, Florianópolis, Biguaçu, Entre Rios e ...
+- `8e8d613027` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: “El Niño que está diante de nós é prova de que ... - Instagram
+  - url: https://www.instagram.com/reel/DX-EcB7ozhm/
+  - trecho: May 5, 2026 ... ... plano de contingência elaborado em uma escola estadual — iniciativa ... Bom Jesus contabiliza 313 pessoas e 81 famílias afetadas, enquanto Ipuaçu ...
+- `7b203900e0` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Orientações para chuva intensa Meteorologista Nicolle Reis alerta e ...
+  - url: https://www.instagram.com/reel/Ddcexs9POq3/
+  - trecho: Sep 18, 2026 ... ... plano de contingência do município. A Defesa Civil também deve ... Diante dos estragos, Bom Jesus, Quilombo, Ipuaçu, Biguaçu e Florianópolis ...
+- `78775d1826` · nível **C** (2 pts) · busca_web · — · data 2025 (do trecho)
+  - título: E o nosso município foi reconhecido com o Selo Plancon de ...
+  - url: https://www.instagram.com/p/DLXsdRdxZdO/
+  - trecho: Jun 26, 2025 ... ... Plano de Contingência garante proteção à população em situações de ... Ipuaçu IPUACU . Iraceminha 28.04 1989 IRACEMINHA . Irinkópolis ...
+- `98ffe0d180` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Artigos de Opinião II
+  - url: https://arevares.comunidades.net/artigos
+  - trecho: Clori Peroza (PT), prefeito de Ipuaçu, preso na operação Fundraising; ... Plano de Contingência específico, voltado à detecção precoce e à interrupção ...
+- `216d9364d0` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Estive nesta tarde na Secretaria de Estado da Proteção e Defesa ...
+  - url: https://www.instagram.com/p/DcrfvG_K1y3/
+  - trecho: Aug 30, 2026 ... Ipuaçu teve 210 residências atingidas, Bom Jesus, 81, Entre Rios, 80 ... Plano de contingência será elaborado. Uma das principais ...
+- `42545f5452` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: A Prefeitura de Simões decretou situação de emergência no ...
+  - url: https://www.instagram.com/reel/DVeR_o_kXM0/
+  - trecho: Mar 4, 2026 ... Ipuaçu: mais de 160. Entre Rios: mais de 80. Ouro Verde: 23 ... Plano de Contingência. Foram registrados mais de 100 milímetros de ...
+- `fc083247c1` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Um vazamento de amônia em uma empresa de pescados próxima a ...
+  - url: https://www.instagram.com/reel/DdZ_VycDqfT/
+  - trecho: Sep 17, 2026 ... Se você mora em área de risco, tenha um plano de contingência ... Segundo a Defesa Civil, Florianópolis, Biguaçu, Ipuaçu, Bom Jesus, Entre Rios e ...
+- `1815d581e5` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Fortes chuvas acompanhadas de granizo atingiram Quilombo na ...
+  - url: https://www.instagram.com/reel/DcoklHVjB3G/
+  - trecho: Aug 29, 2026 ... O Plano de Contingência (Plancon) permanece no ... IPUAÇU SC MOBILIZA EQUIPES PARA ATENDER FAMÍLIAS ATINGIDAS PELO FORTE TEMPORAL⛈️
+- `ae59e5fd71` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: A combinação de chuva intensa e maré elevada provocou uma ...
+  - url: https://www.instagram.com/reel/DYhS2CNpUAG/
+  - trecho: May 19, 2026 ... Diante da situação, a Defesa Civil elevou o Plano de Contingência (Plancon) para o estágio laranja. ... No Oeste, Ipuaçu teve 210 imóveis ...
+- `731f2ebd75` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: A prevenção segue sendo prioridade em Putinga Na manhã desta ...
+  - url: https://www.instagram.com/reel/DbbO5WCBIW1/
+  - trecho: Jul 30, 2026 ... IPUAÇU MOBILIZA EQUIPES PARA ATENDER FAMÍLIAS ATINGIDAS PELO FORTE TEMPORAL⛈️ ... Com o Plano de Contingência ativado e o suporte do ...
+- `d106f502df` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: radio
+  - url: https://o-dia-a-dia96.webnode.page/
+  - trecho: ... (Ipuaçu), em Feira de Santana. A vítima foi atingida por tiros de espingarda ... plano de ação, com as sugestões discutidas, seráelaborado para provocar ...
+- `0849741ea2` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Santa Catarina sente os efeitos do El Niño e já soma 12 cidades em ...
+  - url: https://ndmais.com.br/tempo/santa-catarina-sente-os-efeitos-do-el-nino-e-ja-soma-12-cidades-em-emergencia-apos-temporais-com-granizo-ventos-fortes-e-rastro-de-destruicao/
+  - trecho: Sep 3, 2026 ... situação de emergência El Niño Granizo surpreende moradores em duas cidades do Norte de SC ... Ipuaçu. - Prefeitura de Ipuaçu/ND Mais. 8 de ...
+- `176f4147c1` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Ministério Público da Comarca de Itapiranga fiscaliza ações do ...
+  - url: https://www.instagram.com/p/DYE5Z1AkagG/
+  - trecho: May 8, 2026 ... Uma das principais atribuições da Sala de Situação será avançar na elaboração de um Plano de Contingência Institucional. ... Ipuaçu decretaram ...
+- `889128a131` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Manual de Gestão de Riscos e Impactos Ambientais e Sociais
+  - url: https://documents1.worldbank.org/curated/en/099092625123524474/pdf/P170682-e25d39d6-7526-4bd5-89ea-5de220ce8740.pdf
+  - trecho: PCE - Plano de Contingência / Emergência. ACB – Autorização/Alvará do ... Ipuaçu (50,5%), Entre Rios. (20,5%) ae José Boiteux (18,7%) em Santa Catarina ...
+- `8f3a916f7f` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Laudo periculosidade e insalubridade - Inia - Soluções Sustentáveis
+  - url: https://www.inia.eco.br/laudo-periculosidade-insalubridade
+  - trecho: ... Plano de ação nr 1 · Plano de gerenciamento de resíduos da construção civil ... Ipuaçu; Palma Sola; Salete; Major Vieira; Treze de Maio; Timbó Grande; Trombudo ...
+- `c05b08f4ed` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Direitos-fundamentais-trabalho-digno-e-igualdade ... - Unoesc
+  - url: https://www.unoesc.edu.br/wp-content/uploads/2023/08/Direitos-fundamentais-trabalho-digno-e-igualdade-debates.pdf
+  - trecho: no Plano de Ação da Comissão Nacional para os ODS de atuações focadas no ... voto (em Abelardo Luz, Ipuaçu, por exemplo) o que demonstra, infelizmente, que.
+  - ⚠ ano_anterior_ao_ciclo
+- `2e539a80ee` · nível **C** (1 pts) · busca_web · — · data 2022 (do trecho)
+  - título: UMA ANTROPOLOGIA DA PRÁXIS: - Páginas UFSC
+  - url: https://repositorio.ufsc.br/bitstream/handle/123456789/245230/Uma_antropologia_da_praxis-Ebook-20mar23.pdf?sequence=1&isAllowed=y
+  - trecho: Nov 2, 2022 ... ... plano de ação. (LANGDON, 1997, p. 188, grifo nosso, tradução nossa) ... Ipuaçu e Entre. Rios, em Santa Catarina, distante mais ou menos ...
+- `03b6314062` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Biologia-da-conservacao-Programa-Nacional-para ... - ResearchGate
+  - url: https://www.researchgate.net/profile/Nemora-Prestes-2/publication/354638598_Biologia_da_conservacao_-_Programa_Nacional_para_Conservacao_do_Papagaio-de-peito-roxo_e_outras_iniciativas/links/61438e11d5f4292c01fe6b2d/Biologia-da-conservacao-Programa-Nacional-para-Conservacao-do-Papagaio-de-peito-roxo-e-outras-iniciativas.pdf
+  - trecho: Plano de Ação Nacional (PAN Papagaios) e Programa Papagaios do Brasil na ... (Ipuaçu), AL (Abelardo Luz), ER (Entre Rios),. AG (Água Doce) e LR (Lebon ...
+- `a97481d2b5` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: (PDF) Trabalhos - Academia.edu
+  - url: https://www.academia.edu/4381478/Trabalhos
+  - trecho: ... plano de ação que aborde não apenas a descrição e análise do ambiente ... Ipuaçu, foram analisadas seis amostras de vinhos, método de Analise ...
+- `bf62dfa828` · nível **C** (1 pts) · busca_web · — · data 2006 (do trecho)
+  - título: Relatório Anual 2006 - Fundação Abrinq
+  - url: https://www.fadc.org.br/sites/default/files/2018-12/Relatorio_Anual_2006.pdf
+  - trecho: desenvolvimento do plano de ação, além de disponibilizar dados e ... Ipuaçu • Irani • Irineópolis • Itajaí • Itapema • Itupo- ranga • Jaraguá do ...
+  - ⚠ ano_anterior_ao_ciclo
+- `f3099dd6c4` · nível **C** (1 pts) · busca_web · — · data 2016 (do trecho)
+  - título: Eleições Municipais no Brasil: 2016 e 2020 | PDF - Scribd
+  - url: https://pt.scribd.com/document/546655789/Prefeitos-eleitos-em-2016-e-2020-Fagundes
+  - trecho: em estudar política e eleições, terminei aprendendo muito. O Plano de ação político-partidária-eleitoral do PSDB para as eleições ... 153 Ipuaçu Clori – PT Clori ...
+  - ⚠ ano_anterior_ao_ciclo
+
 ## Itajaí/SC — 20 pendente(s)
 - `856520058d` · nível **A** (6 pts) · busca_web · RESPOSTA · data 25/08/2026 (do trecho)
   - título: Super El Niño acende alerta em Itajaí e mobiliza estrutura para ...
@@ -1183,6 +1357,269 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 8 days ago ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...
   - juiz: portão automático: fonte não oficial
 
+## Maracajá/SC — 58 pendente(s)
+- `01750e6cef` · nível **A** (7 pts) · busca_web · — · citação não extraída
+  - título: TRIBUNAL DE CONTAS DO ESTADO DE SANTA CATARINA ...
+  - url: https://consulta.tce.sc.gov.br/RelatoriosDecisao/ConsultaDecisao/2380020552_151707.pdf
+  - trecho: Maracajá, Romelândia, Nova Itaberaba, Caxambu do Sul, Calmon, Urupema ... simulados, conforme o Plano de Contingência de Proteção e Defesa Civil Municipal, ...
+- `71a64e62a1` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Defesa Civil de Maracajá reúne entidades para reforçar prevenção ...
+  - url: https://maracaja.sc.gov.br/defesa-civil-de-maracaja-reune-entidades-para-reforcar-prevencao-e-preparacao-para-possiveis-desastres-ambientais/
+  - trecho: Sep 10, 2026 ... Plano de Contingência para Covid-19 · MARACAJÁ – COVID-19 · EDITAL ... BR 101 KM 402, Bairro Vila Beatriz - Maracajá/SC (ás margens da BR101) ...
+- `d107b7a8a0` · nível **A** (6 pts) · busca_web · — · citação não extraída
+  - título: Plano Municipal da Primeira Infância - PMPI - Prefeitura de Maracajá
+  - url: https://maracaja.sc.gov.br/plano-municipal-da-primeira-infancia-pmpi/
+  - trecho: Plano de Contingência para Covid-19 · MARACAJÁ – COVID-19 · EDITAL DE ... BR 101 KM 402, Bairro Vila Beatriz - Maracajá/SC (ás margens da BR101); CEP ...
+- `4638b824bd` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Agenda - Prefeitura de Maracajá
+  - url: https://maracaja.sc.gov.br/agenda/
+  - trecho: Plano de Contingência para Covid-19 · MARACAJÁ – COVID-19 · EDITAL DE ... BR 101 KM 402, Bairro Vila Beatriz - Maracajá/SC (ás margens da BR101); CEP ...
+- `2efb9bc789` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Planos Orçamentários - Prefeitura de Maracajá
+  - url: https://maracaja.sc.gov.br/pagina-61311/
+  - trecho: Plano de Contingência para Covid-19 · MARACAJÁ – COVID-19 · EDITAL DE ... BR 101 KM 402, Bairro Vila Beatriz - Maracajá/SC (ás margens da BR101); CEP ...
+- `09688d83ba` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - título: ATENÇÃO, POPULAÇÃO DE MARACAJÁ!
+  - url: https://maracaja.sc.gov.br/atencao-populacao-de-maracaja/
+  - trecho: Apr 6, 2026 ... Plano de Contingência para Covid-19 · MARACAJÁ – COVID-19 · EDITAL ... BR 101 KM 402, Bairro Vila Beatriz - Maracajá/SC (ás margens da BR101) ...
+- `90b712cc41` · nível **B** (5 pts) · busca_web · DUVIDA · **Portaria nº 281**, 2020
+  - título: PLANO MUNICIPAL DE CONTINGÊNCIA-EDUCAÇÃO
+  - url: https://meleiro.sc.gov.br/uploads/sites/378/2021/12/2066890_2064928_PLANCON_Municipal_de_Meleiro.pdf
+  - trecho: ao leste com os municípios de Maracajá e Araranguá e à oeste com o município de Morro Grande. ... Este plano de contingência vincula-se aos níveis de prontidão/ ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `63fc97f220` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Prefeitura de Maracajá -
+  - url: https://maracaja.sc.gov.br/
+  - trecho: Plano de Contingência para Covid-19 · MARACAJÁ ... Contato. Município de Maracajá; BR 101 KM 402, Bairro Vila Beatriz - Maracajá/SC (ás margens da BR101) ...
+- `37523ae287` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Licitações - Prefeitura de Maracajá
+  - url: https://maracaja.sc.gov.br/licitacoes/
+  - trecho: Plano de Contingência para Covid-19 · MARACAJÁ – COVID-19 · EDITAL DE ... BR 101 KM 402, Bairro Vila Beatriz - Maracajá/SC (ás margens da BR101); CEP ...
+- `704ce7d2a4` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Plano de Ação para Prevenção e Controle do Desmatamento e das ...
+  - url: https://www.gov.br/casacivil/pt-br/.arquivos/101116%20-%20PPCerrado_Vfinal.pdf
+  - trecho: PLANO DE AÇÃO PARA PREVENÇÃO E CONTROLE DO DESMATAMENTO E DAS QUEIMADAS NO CERRADO ... PA Maracajá I. MA. 36,07. 0,80. 0,34%. PA Maracajá III. MA. 23,07. 2,55. 1, ...
+  - juiz: portão automático: ato de 2010 — pode ser edição anterior; decisão humana
+- `932bb6a784` · nível **B** (5 pts) · busca_web · DUVIDA · data 2020 (do trecho)
+  - título: PLANO DE AÇÃO REGIONAL DA REDE DE ATENÇÃO ÀS ...
+  - url: https://www.saude.sc.gov.br/index.php/pt/redes-de-atencao-a-saude/rede-de-urgencia-e-emergencia-rue/planos-de-acao/documentos-planos-de-acao-regionais/par-macrorregiao-do-sul/download
+  - trecho: Nov 4, 2020 ... ... Maracajá, Meleiro, Morro. Grande, Passo de Torres, Praia Grande ... 4 PROPOSTA DE INCLUSÃO NO PLANO DE AÇÃO REGIONAL ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `e210ca0c41` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
+  - url: https://www.mpsc.mp.br/w/noticias/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc
+  - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Maracajá; 5ª PJ de Balneário Camboriú ...
+  - juiz: portão automático: fonte não oficial
+- `b9b980f6e9` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
+  - url: https://www.sulinfoco.com.br/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/
+  - trecho: 2 days ago ... Maracajá · Morro da Fumaça · Nova Veneza · Orleans · São Ludgero · Siderópolis ... Resumindo: plano de contingência, população das áreas de risco ...
+  - juiz: portão automático: fonte não oficial
+- `42458062c0` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto....................................................................................................................................................................1**, 22/10/2025
+  - título: Decreto - Prefeitura Municipal de Criciúma
+  - url: https://apoio.criciuma.sc.gov.br/files/68f93fa032a0c22102025.pdf
+  - trecho: Oct 22, 2025 ... O Plano de Contingência para alagamento, deslizamento, vendavais e ... 15.9km, Urussanga 18.1 km, Treviso 20.2 km, Maracajá 20.6 km ...
+  - juiz: portão automático: ato de 2025 — pode ser edição anterior; decisão humana
+- `4960895aba` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Coopercocal apresenta Plano de Contingência para atuação em ...
+  - url: https://www.sulinfoco.com.br/coopercocal-apresenta-plano-de-contingencia-para-atuacao-em-periodos-de-alertas-climaticos/
+  - trecho: Aug 31, 2026 ... Maracajá · Morro da Fumaça · Nova Veneza · Orleans · São Ludgero · Siderópolis ... A Coopercocal apresentou aos colaboradores, na manhã desta ...
+  - juiz: portão automático: fonte não oficial
+- `a37b511d60` · nível **B** (4 pts) · busca_web · DUVIDA · **lei 12.608**, 2018
+  - título: PLANOS DIRETORES DE PROTEÇÃO E DEFESA CIVIL
+  - url: https://educacao.cemaden.gov.br/wp-content/uploads/2024/03/PLANOSDIRETORESDEPROTECAOEDEFESACIVIL.pdf
+  - trecho: possuem ao menos plano de contingência e 82% possui lei específica para a Proteção ... 30 Maracajá. Sim. Não. Sim, sem contemplar áreas de risco. Não. 31 ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `0627ce2386` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: plano de - contingência - Defesa Civil de Blumenau
+  - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2024.pdf
+  - trecho: Aug 6, 2024 ... Plano de Contingência – Inundações e Movimentos de Massa - Anexo B ... Maracajá. Casa nº 241. Itoupava Norte. 9,65. 25 de Julho. Defronte a ...
+- `59e7e36cf7` · nível **B** (4 pts) · busca_web · DUVIDA · **Portaria nº271**, 17/11/2011
+  - título: PPRP (1)Sideropolis.docx - Vigilância Sanitária
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/400-regional-de-saude-de-criciuma.html?download=1243%3Appr-esp-sideropolis&Itemid=109
+  - trecho: Sep 2, 2003 ... ... Maracajá, Nova Veneza,. Forquilhinha e parte de Içara. - Rio ... Figura 05 – Hidrografia do município de Siderópolis, SC- Plano Municipal de.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `138010b0a6` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto Estadual nº 733**, 24/10/2024
+  - título: EDITAL DE CHAMAMENTO PÚBLICO PARA TERMO DE ...
+  - url: https://www.cultura.sc.gov.br/downloads/fcc/editais/3362-edital-de-chamamento-publico-para-termo-de-convenio-sc-cultura-boa-165-2025-atualizado-docx/file
+  - trecho: Nov 12, 2025 ... Maracajá, Meleiro, Morro Grande, Turvo ... ajuizamento de ação e/ou apresentação de plano de ação, especialmente no caso de obra com etapa.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `aadf6fb771` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
+  - título: Das espécies consideradas ameaçadas de extinção, duas foram ...
+  - url: https://tubarao.sc.gov.br/uploads/sites/265/2026/03/8_RIMA_3_CN_Loteamento_Blue_Park_42_82.pdf
+  - trecho: Gato-maracajá. Jaguarundi. EN. VU. EN. VU. VU. VU. LC. VU. NT. LC. MOLOSSIDAE. Molossops ... Plano de Ação Nacional para a Conservação dos Pequenos. Felinos – PAN ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ee5c21214a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - url: https://maracaja.sc.gov.br/pagina-40824/
+  - trecho: Nova escola municipal de Maracajá será entregue em 2026 à comunidade de Espigão Grande
+- `fd222e14af` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: SAS - Secretaria da Assistência Social, Mulher e Família - SAS-SC
+  - url: https://www.sas.sc.gov.br/index.php/component/content/featured
+  - trecho: ... Plano de Contingência da Assistência Social (Plancon AS). “Atualmente temos ... Os Capis serão construídos em Canoinhas, Joaçaba, Lages, Maracajá ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `a2f34e731c` · nível **B** (3 pts) · busca_web · — · **Decreto N° 46**, 2021
+  - título: Decreto N° 46/2021 - Leis.org
+  - url: https://leis.org/emwyg
+  - trecho: ... Plano de Contingência Municipal para a Educação, seguindo o modelo do ... Município de Maracajá/SC, Gabinete do Prefeito, 11 de março de 2021. ANIBAL ...
+  - ⚠ ano_anterior_ao_ciclo
+- `a1a7b9fb42` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
+  - url: https://valedoitajainoticias.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
+  - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Maracajá. 5ª PJ de Balneário Camboriú ...
+- `cb4ea7e881` · nível **B** (3 pts) · busca_web · — · data 2023 (do trecho)
+  - título: sumário - Portal Gov.br
+  - url: https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal/programas-de-saude-animal/pnsa/Relatorio_do_plano_de_vigilancia_de_influenza_aviaria_e_doenca_de_Newcastle___2__ciclo.pdf
+  - trecho: previstas no Plano de Contingência, caso haja confirmação de focos. ... O primeiro foi atendido em julho de 2023, em Maracajá/SC, em uma propriedade ...
+- `ea91d913de` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Maracajá; Rio do Oeste; Monte Castelo; Ipuaçu; Palma Sola; Salete; Major Vieira ...
+  - juiz: portão automático: fonte não oficial
+- `53a1d72f7e` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Relato Institucional - FVA
+  - url: https://www.fva.com.br/relato-institucional
+  - trecho: ... Maracajá. ​. Na busca por estabelecer-se como referência, a intuição abre-se ... Plano de Contingência - PLANCON e grande investimento financeiro em ...
+  - juiz: portão automático: fonte não oficial
+- `4ff33e1dd6` · nível **B** (3 pts) · busca_web · DUVIDA · data 2025 (do trecho)
+  - título: DEFESA CIVIL | São João Batista ganhou um importante reforço ...
+  - url: https://www.instagram.com/p/DJZDb5igT3J/
+  - trecho: May 8, 2025 ... Reunião em Maracajá discutiu obras de contenção, estrutura de ... O simulado vai testar, na prática, o Plano de Contingência (Plancon) ...
+  - juiz: portão automático: fonte não oficial
+- `a3e78912b8` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
+  - título: Notícias de Clima | Portal JC Redação Online
+  - url: https://jcredacao.com.br/clima
+  - trecho: Maracajá intensifica ações preventivas e reforça estrutura da Defesa Civil diante dos riscos do El Niño. Clima. Maracajá intensifica ações preventivas e ...
+  - juiz: portão automático: fonte não oficial
+- `4faaaa7ea9` · nível **B** (3 pts) · busca_web · EX_ANTE · **PORTARIA Nº 032**, 17/06/2026
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2026/20260622/Jornal/22779.pdf
+  - trecho: Jun 22, 2026 ... d) ao cumprimento do plano de ação e dos objetivos institucionais; ... Município de Maracajá. OBJETO: infraestrutura do parque de eventos.
+  - juiz: portão automático: triagem do ato: destino=indefinido (autoridade=indefinido, objeto=el_nino)
+- `ffb3a23042` · nível **C** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Plano de Contingência para Covid-19 - Prefeitura de Maracajá
+  - url: https://maracaja.sc.gov.br/pagina-40824/
+  - trecho: Matrículas e rematrículas para o ano letivo de 2026 na Rede Municipal de Ensino de Maracajá iniciam em novembro.
+  - ⚠ risco_errado_no_titulo
+- `a542d44da1` · nível **C** (4 pts) · busca_web · — · citação não extraída
+  - título: Plano de Contingência de Influenza Aviária em Humanos
+  - url: https://www.saude.df.gov.br/documents/37101/0/PLANO+DE+CONTINGENCIA+IA+SAUDE+DF.pdf/2f25dd48-d5b9-d086-4223-5fea8bf76802?t=1692294346899
+  - trecho: O Plano de Contingência de Influenza Aviária em Humanos do Distrito ... Maracajá-SC (galinha) e outro no município de Serra-ES (ganso) (MAPA, 2023a) ...
+  - ⚠ risco_errado_no_titulo, uf_divergente_na_url
+- `2d20bc8ec9` · nível **C** (4 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE CONTROLE AMBIENTAL (PCA) CENTRAL GERADORA ...
+  - url: https://www.iat.pr.gov.br/sites/agua-terra/arquivos_restritos/files/documento/2026-03/pca_corvo_i_atualizado2025.pdf
+  - trecho: Leopardus wiedii (gato-maracajá), Puma concolor (puma), Puma yagouaroundi ... Plano de ação. O monitoramento da fauna ocorrerá com os seguintes grupos ...
+  - ⚠ uf_divergente_na_url
+- `f03c10fc32` · nível **C** (4 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE MANEJO DA APA EMBU VERDE VERSÃO PRELIMINAR
+  - url: https://cidadeembudasartes.sp.gov.br/wp-content/uploads/2023/07/PRODUTO-4-PLANO-DE-MANEJO-DA-APAEV-rev002.pdf
+  - trecho: Figura 7 - Leopardus wiedii (gato-maracajá), espécie ameaçada de extinção, listada ... Apresentar plano de ação de emergência de acidentes com produtos perigosos;.
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `3dcd811104` · nível **C** (3 pts) · busca_web · — · data 2023 (do trecho)
+  - título: INFLUENZA AVIÁRIA E DOENÇA DE NEWCASTLE
+  - url: https://repositorio-dspace.agricultura.gov.br/bitstream/1/6196/1/Relat%C3%B3rio%202%C2%BA%20ciclo%2023_24_PT%5Bdefeso%5D%201%20%281%29.pdf
+  - trecho: previstas no Plano de Contingência, caso haja confirmação de focos. ... O primeiro foi atendido em julho de 2023, em Maracajá/SC, em uma propriedade ...
+  - ⚠ risco_errado_no_titulo
+- `9bb34aa608` · nível **C** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: plano de gestão integrada de resíduos sólidos
+  - url: https://www.camaramontealegredoscampos.rs.gov.br/painel/leis/20240307_134708_projeto0132024-combinado.pdf
+  - trecho: Apr 24, 2024 ... 8 PLANO DE CONTINGÊNCIA E MONITORAMENTO ... Gato maracajá (Leopardus wiedii). Gato-do-mato-pequeno (Leopardus tigrinus). Paca (Cuniculus ...
+  - ⚠ uf_divergente_na_url
+- `dc3ad3f6b5` · nível **C** (3 pts) · busca_web · — · citação não extraída
+  - título: meio ambiente paulista - DataGeo - Semil
+  - url: https://datageo.ambiente.sp.gov.br/datageofiles/Relatorios/RQA/RQA_2022.pdf
+  - trecho: ... PLANCON. Plano de Contingência Municipal. PMA-SC. Polícia Militar Ambiental de ... maracajá. Leopardus wiedii. 1 macaco prego de testa branca/ coatá. Ateles ...
+  - ⚠ uf_divergente_na_url
+- `a4b0895de5` · nível **C** (2 pts) · busca_web · — · data 2025 (do trecho)
+  - título: E o nosso município foi reconhecido com o Selo Plancon de ...
+  - url: https://www.instagram.com/p/DLXsdRdxZdO/
+  - trecho: Jun 26, 2025 ... ... Plano de Contingência garante proteção à população em situações de ... Maracajá ពំ O MASACALA . Marema MARKMA SC . M.Meleiro POPCOR ...
+- `60363e9003` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Prefeitura de Criciúma reúne sociedade civil para ampliar ...
+  - url: https://www.portalfolharegional.com/noticias/geral/prefeitura-de-criciuma-reune-sociedade-civil-para-ampliar-preparacao-diante-de-el-nino.15483477
+  - trecho: Sep 8, 2026 ... “Um Plano de Contingência precisa funcionar na prática. Isso depende de ... Maracajá abre 9ª edição dos Jogos Escolares Municipais com ...
+- `0b4b8dc9df` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Fogo compromete parte da estrutura de árvore centenária no Largo ...
+  - url: https://www.instagram.com/p/Dai2EglpX7c/
+  - trecho: Jul 8, 2026 ... E sobre um "Plano de Contingência" para lidar com as consequências ... ÁRVORE COM RISCO DE QUEDA OBRIGA MORADORES A DEIXAREM CASA EM MARACAJÁ
+- `a70b01d8ce` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: plano local de ação climática de belém /pa - UNDRR
+  - url: https://www.undrr.org/media/114858/download
+  - trecho: Maracajá; 6) Marambaia; 7) Pratinha; 8) Tapanã; 9) Telégrafo e 10) Terra ... seu Plano de Contingência e Emergência dos serviços de abastecimento de.
+- `a880e06534` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: MPSC ABRE 136 PROCEDIMENTOS PARA COBRAR ...
+  - url: https://www.vbnoticias.com.br/mpsc-abre-136-procedimentos-para-cobrar-prevencao-a-enchentes-e-deslizamentos-em-santa-catarina/
+  - trecho: 4 days ago ... ... Plano de Contingência Municipal, a definição antecipada de 10 ... 5ª PJ de Araranguá: Araranguá, Balneário Arroio do Silva e Maracajá * ...
+- `9a3bda764f` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Copa AMESC de Seleções tem sua segunda rodada – AMESC ...
+  - url: https://amesc.com.br/copa-amesc-de-selecoes-tem-sua-segunda-rodada/
+  - trecho: ... PLANO DE CONTINGÊNCIA para a COVID-19 · Licitações CIMGEPA · CIS AMESC · LGPD ... Maracajá. Timbé do Sul 3×0 Baln. Arroio do Silva. Ermo 0x7 Araranguá. Meleiro ...
+- `5eca0febb7` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Plano Municipal de Redução de Riscos de Santo André - IPT
+  - url: https://ipt.br/wp-content/uploads/2026/06/Plano-Municipal-de-Reducao-de-Riscos-Santo-Andre.pdf
+  - trecho: Figura 25 – Isolinhas de precipitação média para o período chuvoso (outubro a março) para o ... Maracajá; Recreio da Borda do Campo – R. Jubarte; Recreio da Borda ...
+- `95c38c7090` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE AÇÃO PARA CONSERVAÇÃO DA BIODIVERSIDADE ...
+  - url: https://www.reparacaobaciariodoce.com/wp-content/uploads/2024/09/Livro-Plano-de-Acao-Conserv-Bio-Terrestre-PG30.pdf
+  - trecho: ... Plano de Ação e não de um Plano de Ação Nacional. Para viabilizar a ... Nomes comuns: gato-do-mato, gato-maracajá, gato-peludo, maracajá-peludo.
+  - ⚠ ano_anterior_ao_ciclo
+- `a6b606d62b` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Plano de Manejo da APA do Morro do Gavião
+  - url: https://authentic-cuddle-867e555521.media.strapiapp.com/Anexo_Plano_de_Manejo_da_APA_do_Morro_do_Gaviao_f8069d7ac4.pdf
+  - trecho: maracajá (Leopardus wiedii) e o gato-do-mato-pequeno (Leopardus guttulus). O ... Quadro 20 - Plano de ação do Programa de Gestão Interinstitucional da ...
+- `9719f383ec` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Descubra os encantos de Araranguá! Entre praias ... - Instagram
+  - url: https://www.instagram.com/p/DYFL-pWlZdz/
+  - trecho: May 8, 2026 ... ... Maracajá e Siderópolis, além de Torres (RS), entre os dias 21 e 25 ... plano de ação estratégico voltado ao desenvolvimento do turismo no ...
+- `577edbbb0d` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: (PDF) IUCN SSC Cat Specialist Group Small Cat Report
+  - url: https://www.researchgate.net/publication/389416176_IUCN_SSC_Cat_Specialist_Group_Small_Cat_Report
+  - trecho: maracajá Leopardus wiedii (Schinz, 1821) no Brasil. Biodiversidade ... In Plano de ação para. conservação de Leopardus tigrinus no Brasil. De Oliveira ...
+- `aa2ffd09f7` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Educação MÍDIAS SOCIAIS COMO F - Rede Unida
+  - url: https://www.redeunida.org.br/media/ckeditor_files/2026/06/18/grade_programacao_ensalamento.pdf
+  - trecho: Jun 18, 2026 ... ... PLANO DE CONTINGÊNCIA PARA ATENDIMENTO DE MÚLTIPLAS VÍTIMAS NO ... MARACAJÁ NA UAPI COMO ESPAÇO FORMATIVO EM SAÚDE COLETIVA. TAMARA ...
+- `40a432d4dd` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: PARECER TÉCNICO
+  - url: https://smastr16.blob.core.windows.net/home/2026/03/Parecer-Tecnico-CETESB.pdf
+  - trecho: O Plano de Contingência Integrado, proposto no EIA, deverá contemplar protocolos de resposta ... o cateto (Dicotyles tajacu), o gato-maracajá (Leopardus wiedii), ...
+- `b1589d34c9` · nível **C** (1 pts) · busca_web · — · data 2024 (do trecho)
+  - título: PDI 2024 - 2028 1 - UNESC
+  - url: https://www.unesc.net/files/editor/files/Plano%20de%20Desenvolvimento%20Institucional(1).pdf
+  - trecho: Dec 6, 2019 ... ... Plano de Contingência. 6.3.1.1 Centro de Inteligência Tecnológica e ... Maracajá, Meleiro, Morro Grande, Passo de. Torres, Praia Grande ...
+  - ⚠ ano_anterior_ao_ciclo
+- `e98a7400af` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Repositório Institucional UFC - Universidade Federal do Ceará
+  - url: https://repositorio.ufc.br/bitstream/riufc/78615/3/2024_dis_snlbrito.pdf
+  - trecho: A prefeitura prepara um plano de contingência, caso necessário, com mudanças ... Maracajá, no sul do estado, em que havia um bloqueio parcial. A PRF teve ...
+- `0c7407888d` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Integração entre municípios no Atendimento a Pessoas em Situação ...
+  - url: https://www.instagram.com/reel/DXUE92oDmiM/
+  - trecho: Apr 19, 2026 ... Equipes da Secretaria de Assistência Social recepcionando o Procurador do Trabalho Dr Raulino Maracajá ... Plano de Contingência! Temos que nos ...
+- `e91bc66c3f` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Laudo periculosidade e insalubridade - Inia - Soluções Sustentáveis
+  - url: https://www.inia.eco.br/laudo-periculosidade-insalubridade
+  - trecho: ... Plano de ação nr 1 · Plano de gerenciamento de resíduos da construção civil ... Maracajá; Rio do Oeste; Monte Castelo; Ipuaçu; Palma Sola; Salete; Major Vieira ...
+- `4eb3b68009` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Jornal Sul Catarinense - Facebook
+  - url: https://www.facebook.com/JornalSulCatarinensesc/posts/turismo-em-ararangu%C3%A1-avan%C3%A7a-com-planejamento-estrat%C3%A9gicoo-conselho-municipal-de-/1687137563413862/
+  - trecho: Sep 11, 2026 ... ... plano de ação estratégico voltado ao desenvolvimento do turismo no ... Maracajá enfrentou Araranguá/Mesquita, que venceu por duas ...
+- `908cba817e` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: universidade federal de santa catarina
+  - url: https://repositorio.ufsc.br/bitstream/handle/123456789/270335/PTIC0205-D.pdf?sequence=1
+  - trecho: ... plano de ação global em prol do planeta, dos indivíduos e da prosperidade ... Maracajá/SC: estudo de caso da · parceria entre Prefeitura Municipal e o ...
+- `523e523fdd` · nível **C** (1 pts) · busca_web · — · data 2007 (do trecho)
+  - título: PLANO DE MANEJO Área de Proteção Ambiental Piquiri-Una
+  - url: https://documentacao.socioambiental.org/ato_normativo/UC/4153_20200204_171502.pdf
+  - trecho: Plano de Ação Emergencial da APA (FUNDEP; IDEMA, 2007), e também por visitas ... Gato-maracajá. Leopartus pardalis mitis (LINNAEUS, 1758). Jaguatirica.
+- `fcf8814659` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Gatos do Mato - Brasil - Pró-Carnívoros
+  - url: https://procarnivoros.org.br/projeto/gatos-do-mato-brasil/
+  - trecho: Plano de Ação Nacional dos Pequenos Felinos;; Subsídios para manejo de ... maracajá-verdadeiro), ditaria o aumento ou a diminuição dos números ...
+
 ## Ouro/SC — 2 pendente(s)
 - `39cae9c286` · nível **A** (6 pts) · busca_web · EX_ANTE · data 23/06/2026 (do trecho)
   - url: https://capinzalfm.com.br/noticia/ouro-apresenta-plano-de-contingencia-da-defesa-civil-e-reforca-preparacao-para-eventos-climaticos
@@ -1204,11 +1641,675 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 3 days ago ... Conhecer os potenciais riscos de desastres na sua cidade e no seu bairro bem como estar ciente do plano de contingência, com os locais seguros e ...
   - juiz: portão automático: data do ato incompleta (2026)
 
+## Palma Sola/SC — 45 pendente(s)
+- `497a4c5ffd` · nível **A** (6 pts) · busca_web · — · citação não extraída
+  - título: MUNICÍPIO DE PALMA SOLA SC SECRETARIA MUNICIPAL DA ...
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/392-regional-de-saude-sao-miguel-do-oeste.html?download=1107%3Apalma-sola&Itemid=109
+  - trecho: Rua Pedro Mello dos Santos, 750 – Centro – Palma Sola/SC. Fone: (49) 3652-3270 ... O Plano de Contingência da Saúde para Desastres Naturais foi desenvolvido.
+- `7a747ce42c` · nível **B** (5 pts) · busca_web · — · data 30/09/2020 (do trecho)
+  - título: FLORIANÓPOLIS, quARtA-FeIRA, 30 de SetembRO de 2020 ANO ...
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20200930/Jornal/2490.pdf
+  - trecho: Sep 30, 2020 ... III - Ato da PMSC nº 434/2020 que aprova o plano de contingência para ... PREFEITURA MUNICIPAL DE PALMA SOLA - SC. AVISO DE LICITAÇÃO. O ...
+  - ⚠ ano_anterior_ao_ciclo
+- `3585312bae` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: módulo inundações - Vigilância Sanitária
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/392-regional-de-saude-sao-miguel-do-oeste.html?download=1111%3Asao-jose-do-cedro&Itemid=109
+  - trecho: Mondai, Palma Sola, Paraíso, Princesa, Santa Helena, São João do Oeste, São ... descrito nesse plano de contingência, sempre, no entanto, a partir da liberação ...
+- `8ac9f4196e` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDU
+  - url: https://bandeirante.sc.gov.br/galeria/pagina-45715/
+  - trecho: ... Palma Sola, Paraíso, Princesa, Santa Helena, São João do Oeste, São José do ... PLANO DE CONTINGÊNCIA BANDEIRANTE · CONVÊNIOS · PLANO MUNICIPAL DE GESTÃO ...
+- `2e59691e38` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: COMPILADO DE ENUNCIADOS APROVADOS - MPSC
+  - url: https://www.mpsc.mp.br/documents/d/guest/compilacao-de-enunciados-aprovados-gedclima-mpsc
+  - trecho: SC Palma Sola. 7.605. 292. Deslizamento,Enxurrada. Inundação. SC Palmitos. 15.626 ... Além disso, o Plano de Contingência da Assistência Social deve ser.
+- `f640203a96` · nível **B** (5 pts) · busca_web · — · data 2022 (do trecho)
+  - título: Anchieta/SC 2022/2025
+  - url: https://anchieta.sc.gov.br/uploads/sites/403/2022/01/Resolucao-n.-10.2021-Aprova-Plano-Municipal-de-Assistencia-Social-2022-2025.pdf
+  - trecho: e Palma Sola/SC. Anchieta se destaca pela produção de sementes de milho ... Conhecer o plano de contingência da. Defesa Civil Municipal e sugerir ...
+  - ⚠ ano_anterior_ao_ciclo
+- `69d53810d2` · nível **B** (5 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Palma Sola | Cidade - G1 - Globo
+  - url: https://g1.globo.com/sc/santa-catarina/cidade/palma-sola/
+  - trecho: Cidades de SC ativam plano de contingência, decretam situação de emergência e contabilizam estragos por conta da chuvas ... Eleições 2024 em Palma Sola (SC): veja ...
+- `4c29f5f9a4` · nível **B** (4 pts) · busca_web · — · data 10/07/2026 (do trecho)
+  - título: Sexta-feira - 10 de Julho de 2026 Florianópolis/SC Edição N° 5187
+  - url: https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf
+  - trecho: Jul 22, 2026 ... ... Palma Sola ................................................. 787 ... Plano de Contingência da Assistência Social do Município de.
+- `a37e6e9a71` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Sd Natalia - CCS - Blog de Notícias - Página 23 - CBMSC
+  - url: https://cbm.sc.gov.br/index.php/blog-de-noticias/blogger/nataliaf?start=220
+  - trecho: No domingo, 17, a equipe de plantão do Corpo de Bombeiros Militar de Santa Catarina (CBMSC), em Palma Sola ... Plano de Contingência da Defesa Civil de ...
+- `59392d26d2` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250602/Jornal/22524.pdf
+  - trecho: Jun 2, 2025 ... e Palma Sola/SC. Rio das Antas. BACIA HIDROGRÁFICA: Rio das Antas ... em consonância com o Plano de Contingência da Concessionária.
+  - ⚠ ano_anterior_ao_ciclo
+- `580a8a079b` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Chuvas em SC deixam desalojados com ao menos 22 cidades ...
+  - url: https://www.nsctotal.com.br/cotidiano/chuvas-em-sc-deixam-desalojados-com-ao-menos-15-cidades-afetadas-e-uma-em-situacao-de-emergencia
+  - trecho: Dec 7, 2024 ... Palma Sola: chuvas intensas e enxurradas ... Guaramirim: fortes chuvas, cota do rio elevada e iminente inundação; cidade tem plano de contingência ...
+- `45cf3df106` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Maior simulado de desastres da história mobiliza 260 mil pessoas ...
+  - url: https://tvgc.com.br/maior-simulado-de-desastres-da-historia-mobiliza-260-mil-pessoas-de-256-municipios-em-sc/
+  - trecho: May 19, 2025 ... PALMA SOLA · PARAÍSO · POLÍCIA · POLÍTICA · PROGRAMAS · BOTECO GC · DE OLHO ... “Esperamos nunca precisar utilizar nosso Plano de Contingência, ...
+- `35c93bca51` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: INSERIR CAPA - Prefeitura Municipal de São Miguel do Oeste - SC
+  - url: https://www.saomiguel.sc.gov.br/storage/page/file/lV2pAtGl8gkDaR03udeHVUm8VBDRXlGFQYCLDN7I.pdf
+  - trecho: 15 Palma Sola. Rio das. Antas. 6 673,68 260116 7064647 22,54 15,78 3,61 2 ... • Plano de Contingência (a cada 5 anos):. O objetivo do Plano de Contingência ...
+- `efd9ef1646` · nível **B** (4 pts) · busca_web · — · data 23/08/2024 (do trecho)
+  - título: Sexta-feira - 23 de Agosto de 2024 Florianópolis/SC Edição N° 4619
+  - url: https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf
+  - trecho: Aug 14, 2024 ... ... Palma Sola ..................................................783 ... Plano de Contingência (PLANCON) organiza as ações sistêmicas de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `e1cc86b3a1` · nível **B** (4 pts) · busca_web · — · data 16/8/2010 (do trecho)
+  - título: controle PÚBlIco d - TCE/SC
+  - url: https://www.tcesc.tc.br/sites/default/files/controle_publico_n09.pdf
+  - trecho: w Palma Sola w Palmitos w Paraíso w Peritiba w Pinhalzinho w Piratuba w ... SC aprova o Plano de Ação apresentado pela. Casan. 16/8/2010 w Pleno profere ...
+- `51d7d22601` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: CNCFlora • Myrceugenia myrcioides (Cambess.) O.Berg
+  - url: https://proflora.jbrj.gov.br/html/Myrceugenia%20myrcioides_2022.html
+  - trecho: ... Palma Sola, Papanduva, Paulo Lopes, Petrolândia, Ponte Alta, Porto União ... Plano de Ação Nacional para a conservação da flora endêmica ameaçada de ...
+- `d652557b31` · nível **B** (4 pts) · busca_web · — · data 27/09/2021 (do trecho)
+  - título: FLORIANÓPOLIS, SeguNdA-FeIRA, 27 de SeteMbRO de 2021 ANO ...
+  - url: https://www.sea.sc.gov.br/wp-content/uploads/2022/10/Jornal_2021_09_27_21614.pdf
+  - trecho: município de Palma Sola - Sed. MARCELO PANOSSO MENDONÇA. Presidente do IPREV ... Aprovação do novo plano de ação;. 3. Aprovação do procedimento de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `4562800f37` · nível **B** (4 pts) · busca_web · — · data 12/03/2024 (do trecho)
+  - título: Terça-feira - 12 de Março de 2024 Florianópolis/SC Edição N° 4481
+  - url: https://edicao.dom.sc.gov.br/2024/03/1710256950_edicao_4481_assinada.pdf
+  - trecho: Mar 11, 2024 ... Palma Sola ..................................................945 ... Considerando o Plano de Ação do CMDCA e o Plano de Aplicação do ...
+  - ⚠ ano_anterior_ao_ciclo
+- `4154da118f` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Cidades de SC ativam plano de contingência, decretam situação de ...
+  - url: https://g1.globo.com/sc/santa-catarina/noticia/2024/12/08/sc-plano-contingencia-situacao-emergencia-chuvas-estragos.ghtml
+  - trecho: Dec 8, 2024 ... Cidades de SC ativam plano de contingência, decretam situação ... Palma Sola: infraestrutura viária danificada;; Flor do Sertão: ponte ...
+  - ⚠ ano_anterior_ao_ciclo
+- `e70bff28e7` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: SC: 14 cidades registram estragos após fortes chuvas, diz Defesa Civil
+  - url: https://noticias.uol.com.br/cotidiano/ultimas-noticias/2024/12/07/chuvas-em-santa-catarina.htm
+  - trecho: Dec 7, 2024 ... ... plano de contingência em andamento;; Guarujá ... Palma Sola: chuvas intensas e enxurradas (autoridades estão fazendo levantamento de danos); ...
+  - ⚠ ano_anterior_ao_ciclo
+- `224fa67430` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Chuvas seguem causando estragos em SC | Florianópolis
+  - url: https://www.imagemdailha.com.br/blog/chuvas-seguem-causando-estragos-em-sc.html
+  - trecho: Dec 9, 2024 ... Em Guaramirim, o plano de contingência ... Dionísio Cerqueira e Palma Sola enfrentam estragos em rodovias, com possibilidade de Situação de ...
+- `3802fef8da` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Palma Sola; Salete; Major Vieira; Treze de Maio; Timbó Grande; Trombudo Central ...
+- `632271eb9a` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Chuvas em SC: boletim aponta ocorrências em 22 municípios e um ...
+  - url: https://www.jornaldepomerode.com.br/chuvas-em-sc-boletim-aponta-ocorrencias-em-22-municipios-e-um-decreto-de-situacao-de-emergencia/
+  - trecho: Dec 8, 2024 ... Plano de contingência em acionamento. • Jaraguá do Sul: Chuvas ... Dionísio Cerqueira, Guarujá do Sul, Palma Sola, Princesa e Paraíso: Chuvas ...
+- `706037dbce` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: FOTOS: Chuvas em Santa Catarina passam o esperado para o mês
+  - url: https://ndmais.com.br/tempo/fotos-chuvas-em-santa-catarina-passam-o-esperado-para-o-mes/
+  - trecho: Dec 9, 2024 ... Guaramirim: plano de contingência teve que ser ativado, possui risco de inundação; ... Dionísio Cerqueira, Guarujá do Sul, Palma Sola ...
+- `665eae1ed0` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: ATA DA CORREIÇÃO ORDINÁRIA REALIZADA - TST
+  - url: https://www.tst.jus.br/documents/24638414/25124389/Ata+TRT12+assinada.pdf/4b827a28-6978-841c-cfb3-2727c69bca68?t=1634144920332
+  - trecho: Jan 24, 2024 ... O plano de ação está disponível na página eletrônica do TRT12. De ... Castelo; Paial; Palhoça; Palma Sola; Passos Maia; Paulo Lopes; Pomerode; ...
+- `a3bd57cda3` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: MINISTÉRIO PÚBLICO FEDERAL PROCURADORIA GERAL DA ...
+  - url: https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/docs/2025-1/ata-da-10a-sessao-ordinaria-de-revisao
+  - trecho: ... plano de ação para completa regularização do sistema elétrico; c ... Iraceminha, Itapiranga, Maravilha, Mondaí, Palma Sola, Paraíso, Princesa, Riqueza,.
+  - ⚠ ano_anterior_ao_ciclo
+- `c463cd569f` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: HISTÓRIAS QUE TRANSFORMAM - Agência Sebrae de Notícias
+  - url: https://pr.agenciasebrae.com.br/wp-content/uploads/sites/16/2024/04/HISTORIAS-QUE-TRANSFORMAM.pdf
+  - trecho: Palma Sola. SC/Brasil. Cleomar Jose Mantelli. Anchieta. SC/Brasil. Ivan Jose ... com confiança, credibilidade e um plano de ação coletiva juntos, cada um ...
+  - ⚠ ano_anterior_ao_ciclo
+- `e33b533444` · nível **B** (3 pts) · busca_web · — · data 1997 (do trecho)
+  - título: OFICIA - Arquivo Público do Estado de Santa Catarina
+  - url: https://acervo.arquivopublico.sc.gov.br/uploads/r/arquivo-publico-do-estado-de-santa-catarina-apesc/8/8/d/88de21c8ad2c19e60d351a7707d26b61643d39a78fbc8c80f7518f4423501ae1/93120dc8-1d60-4afb-b27d-274c03fa41cc-18687-DOE_15756_09_09_1997_36F.pdf
+  - trecho: Sep 9, 1997 ... leitura do Plano de Ação do Governo para a região por representante ... - Palma Sola. - Içara. - Lontras. - Palmitos. - Jacinto Machado. - Mirim ...
+- `02ac3032b2` · nível **C** (3 pts) · busca_web · — · data 2020 (do trecho)
+  - título: Lista Geral de Fornecedores - Transparência Porto Velho
+  - url: https://transparencia.portovelho.ro.gov.br/fornecedores
+  - trecho: Plano de contingência. 13/ago/2020 · 15/jul/2020 · 27/mai/2020 · 25/mai/2020 · 28/abr ... PALMA SOLA, PALMEIRA, PALMITOS, PAPANDUVA, PARAISO, PASSO DE TORRES ...
+  - ⚠ uf_divergente_na_url
+- `932a7252c9` · nível **C** (3 pts) · busca_web · — · data 2023 (do trecho)
+  - título: Estado de Santa Catarina - Vigilância Sanitária
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/392-regional-de-saude-sao-miguel-do-oeste.html?download=1099%3Adionisio-cerqueira&Itemid=109
+  - trecho: Jul 20, 2023 ... O Plano Municipal de Preparação e Resposta a Emergências em Saúde ... Sul/SC, Anchieta/SC, Palma Sola/SC, Barracão/PR, Flor da Serra/PR e ...
+  - ⚠ padrao_lista_de_municipios, municipio_citado_de_passagem
+- `cd23eeccb3` · nível **C** (3 pts) · busca_web · — · citação não extraída
+  - título: Linha Guia - Secretaria de Saúde do Paraná
+  - url: https://www.saude.pr.gov.br/sites/default/arquivos_restritos/files/documento/2022-07/linha_guia_mi-_gestacao_8a_ed_v4_-_revisada_em_01-07-22.pdf
+  - trecho: Possuir plano de ação para redução das taxas de cesárea. • Utilizar e apresentar ... Palma Sola - SC. Flor da Serra do Sul. Page 35. 35. 9ª RS. REFERÊNCIA ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `9c5d9bc0d3` · nível **C** (2 pts) · busca_web · — · data 2025 (do trecho)
+  - título: 0800 048 0196. • SMS: disponível para informar falta de energia ...
+  - url: https://www.instagram.com/p/DSH4QgQABOF/?hl=en
+  - trecho: Dec 11, 2025 ... falta de enerjia na rua abilio manteli palma sola aqui e toda noite asim ... A empresa mantém um Plano de Contingência permanente e atua de forma ...
+  - ⚠ risco_errado_no_titulo
+- `c10acb0725` · nível **C** (2 pts) · busca_web · — · data 2024 (do trecho)
+  - título: TCE determina que municípios da região elaborem plano de ...
+  - url: https://tvgc.com.br/tce-determina-que-municipios-da-regiao-elaborem-plano-de-contingencia-contra-a-dengue/
+  - trecho: May 28, 2024 ... ... plano de contingência. Segundo o relator, o último informe ... PALMA SOLA · SANTA HELENA · BRASIL · AMEOSC · SICOOB · SÃO MIGUEL DO OESTE ...
+- `dc84576a57` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: TCE/SC Educação
+  - url: https://servicos.tcesc.tc.br/tceeducacao/
+  - trecho: Palma Sola; Palmeira; Palmitos; Papanduva; Paraíso; Passo de Torres; Passos Maia ... Plano de Contingência Escolar e open_in_new Novas diretrizes para o ...
+- `a8b7763b4e` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Fábio Franzosi
+  - url: https://repositorio.unisc.br/jspui/bitstream/11624/1523/1/F%C3%A1bio%20Franzosi.pdf
+  - trecho: ... Palma Sola, Paraíso,. Princesa, Riqueza, Romelândia, Santa Helena, São João d ... as falhas, um plano de ação para eliminar um problema e padronização de.
+- `d223880e9f` · nível **C** (2 pts) · busca_web · — · data 2008 (do trecho)
+  - título: Fundamentos e Institucionalização da Política Nacional de Saúde ...
+  - url: https://repositorio.ufsc.br/bitstream/handle/123456789/268000/PGSS0349-T.pdf?sequence=-1
+  - trecho: ... Palma Sola. 7.475. Cunhataí. 1.957. Palmitos. 16.182. Descanso. 2.146. Paraíso. 3.515 ... Plano de Ação Mundial sobre a Saúde dos Trabalhadores (PAMST 2008–2017) ...
+- `d948c158be` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: exemplar de assinante da imprensa nacional - PtDocs.com
+  - url: https://ptdocz.com/doc/574618/exemplar-de-assinante-da-imprensa-nacional
+  - trecho: ... PALMA SOLA PORTO BELO SAO JOSE DO CERRITO SIDEROPOLIS TAIO TIJUCAS XANXERE ... Plano de Ação Regional do respectivo Estado; e Considerando a avaliação ...
+- `f7f74f4b39` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: (PDF) Desastres Socioambientais em Santa Catarina - Academia.edu
+  - url: https://www.academia.edu/29361664/Desastres_Socioambientais_em_Santa_Catarina
+  - trecho: ] um plano de ação organizado ... Em sua Unidade Produtora de Leitões (UPL) em Palma Sola, no Oeste Catarinense, a Cooperalfa instalou três biodigestores.
+- `aef78fc6b9` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Investimento de R$ 10 milhões tem como objetivo aumentar a frota ...
+  - url: https://www.instagram.com/p/DWXBNOOD8jb/
+  - trecho: Mar 26, 2026 ... As ambulâncias serão destinadas aos municípios de Rio Rufino, Palma Sola e Caibi. ... plano de contingência, adotado em razão de um incidente na ...
+- `1adbba16c4` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Laudo periculosidade e insalubridade - Inia - Soluções Sustentáveis
+  - url: https://www.inia.eco.br/laudo-periculosidade-insalubridade
+  - trecho: ... Plano de ação nr 1 · Plano de gerenciamento de resíduos da construção civil ... Palma Sola; Salete; Major Vieira; Treze de Maio; Timbó Grande; Trombudo ...
+- `cc30fb1baf` · nível **C** (1 pts) · busca_web · — · data 2012 (do trecho)
+  - título: Biologia-da-conservacao-Programa-Nacional-para ... - ResearchGate
+  - url: https://www.researchgate.net/profile/Nemora-Prestes-2/publication/354638598_Biologia_da_conservacao_-_Programa_Nacional_para_Conservacao_do_Papagaio-de-peito-roxo_e_outras_iniciativas/links/61438e11d5f4292c01fe6b2d/Biologia-da-conservacao-Programa-Nacional-para-Conservacao-do-Papagaio-de-peito-roxo-e-outras-iniciativas.pdf
+  - trecho: Plano de Ação Nacional (PAN Papagaios) e Programa Papagaios do Brasil na ... Palma Sola, Água Doce (Müller, 2012) e São Domingos (Cassol e Müller,. 2014) ...
+- `06af9b6036` · nível **C** (1 pts) · busca_web · — · data 2022 (do trecho)
+  - título: Licitação do Bloco Ametista - CNPE | PDF - Scribd
+  - url: https://pt.scribd.com/document/667773252/2022-08-24-ASSINADO-do1-1
+  - trecho: do Plano de Ação tendo em vista que o Plano foi elaborado em fevereiro/2022 ... PALMA SOLA (83.028.639/0001-02), RESEDAS (08.543.007/0001-61) ...
+  - ⚠ ano_anterior_ao_ciclo
+- `fff089844a` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Principios do equador - Mineral Engenharia e Meio Ambiente
+  - url: https://www.mineral.eng.br/principios-do-equador
+  - trecho: ... plano de ação e acompanhamento da implantação do plano de ação para diversos projetos. ... Palma Sola; Palmeira; Palmitos; Papanduva; Paraíso; Passo de Torres ...
+- `1b4879e2a5` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: universidade do extremo sul catarinense - unesc
+  - url: https://repositorio.unesc.net/server/api/core/bitstreams/9757b54c-d706-4d6c-bbed-6b19ce3ad76e/content
+  - trecho: b) Agenda 21 - plano de ação para ser adotado global, nacional e localmente em ... Palma Sola, Palmitos, Paraíso, Passos Maia, Peritiba, Pinhalzinho,. Pinheiro ...
+- `f87ecb59cd` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: RELATÓRIO PERIÓDICO MENSAL - Agência Pública
+  - url: https://apublica.org/wp-content/uploads/2021/08/os-ecos-do-orvil-em-2021-o-livro-secreto-da-ditadura-arquivos-89.pdf
+  - trecho: PT elaborou o seu "Plano de Ação de Governo", a partir do qual a Co ... de Palma Sola/SC - em 16 Set 89 e. Arvoredo - município de Ronda. Alta/RS - em ...
+  - ⚠ ano_anterior_ao_ciclo
+
 ## Pedras Grandes/SC — 1 pendente(s)
 - `2a96d9194b` · nível **A** (6 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - url: https://folharegionalwebtv.com/cotidiano/com-alerta-de-el-nino-pedras-grandes-amplia-obras-de-desassoreamento-de-rios-e-corregos-93671
   - trecho: Jul 30, 2026 ... Pedras Grandes tem um Plano de Contingência de Proteção e Defesa Civil que estabelece os protocolos para monitorar, alertar e responder a ...
   - juiz: portão automático: fonte não oficial
+
+## Rio do Oeste/SC — 50 pendente(s)
+- `c5beca2c33` · nível **A** (7 pts) · busca_web · — · data 13/04/2021 (do trecho)
+  - título: Conselho Municipal de Educação - MUNICÍPIO DE RIO DO OESTE
+  - url: https://riodooeste.sc.gov.br/noticia-575578/
+  - trecho: 13/04/2021 - plano de contingência 2020 EEB Exp Mário Nardelli · 13/04/2021 ... Prefeitura da Cidade de Rio do Oeste- Rua Paulo Sardagna, 797- Bela Vista ...
+- `62d01ecb74` · nível **A** (6 pts) · busca_web · — · data 9/6/2009 (do trecho)
+  - título: Diário da Justiça - ELETRÔNICO - TJSC
+  - url: https://busca.tjsc.jus.br/dje-consulta/rest/diario/caderno?edicao=4204&cdCaderno=4
+  - trecho: Mar 13, 2024 ... Rio do Oeste. Laurentino. Escrivania de Paz. 9/6/2009. 27/3/1958 ... justificativa e plano de ação para implementação das exigências, com.
+- `c5ba96c426` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA - Defesa Civil Taió-SC
+  - url: https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf
+  - trecho: Plano de Contingência de Taió-SC, elaborado com base na metodologia DEL ... Cota dos Rio do Oeste: igual ou menor de 5 metros;. Previsão meteorológica: a ...
+- `ca74a85837` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
+  - url: https://www.mpsc.mp.br/w/noticias/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc
+  - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... PJ de Rio do Oeste: Laurentino e Rio do Oeste; PJ de ...
+  - juiz: portão automático: fonte não oficial
+- `161c524ad2` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Prevenção contra enchentes antes do El Niño em SC - ND Mais
+  - url: https://ndmais.com.br/tempo/com-r-1-bilhao-governo-aposta-em-prevencao-contra-enchentes-antes-do-el-nino-em-sc/
+  - trecho: Jun 14, 2026 ... Agrolândia e Rio do Oeste também cancelaram eventos para destinar ... Plano de Contingência, que define protocolos de resposta e ...
+- `9d116e36a9` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: CONSELHO MUNICIPAL DE DEFESA DO MEIO AMBIENTE
+  - url: https://s3cache.dom.sc.gov.br/atos/2024/11/1730817243_74970511__homologa_o_plano_municipal_de_gua_e_esgoto_de_timb_com_anexos.pdf
+  - trecho: Nov 5, 2024 ... ... Rio do Oeste, Rio dos Cedros, Rio do Sul,. Page 56. RESERVADO. PMAE ... plano de contingência e emergência para a unidade que permita ...
+  - ⚠ ano_anterior_ao_ciclo
+- `47c7927844` · nível **B** (4 pts) · busca_web · — · data 23/08/2024 (do trecho)
+  - título: Sexta-feira - 23 de Agosto de 2024 Florianópolis/SC Edição N° 4619
+  - url: https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf
+  - trecho: Aug 14, 2024 ... ... Rio do Oeste ...............................................982. Rio ... Plano de Contingência (PLANCON) organiza as ações sistêmicas de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `5228064404` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: estado de santa catarina - DOE SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
+  - trecho: Dec 2, 2024 ... nereu, agronômica, laurentino, rio do oeste e aurora. VALOR. DOS ... Continuidade de negócio (plano de contingência, de recuperação de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `186c12ced5` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Tentativa de roubo a banco com família refém termina com oito ...
+  - url: https://canoinhasonline.com.br/2026/06/operacao-pm-roubo-banco-rio-do-oeste-presos.html
+  - trecho: Jun 10, 2026 ... ... Rio do Oeste, Alfredo Wagner, Ituporanga, Rio do Sul, Rancho ... Defesa Civil detalha plano de contingência contra enchentes na Câmara de ...
+- `d84f547abb` · nível **B** (4 pts) · busca_web · — · data 16/10/2024 (do trecho)
+  - título: 16 de Outubro de 2024 Florianópolis/SC Edição N° 4665
+  - url: https://edicao.dom.sc.gov.br/2024/10/1729097308_edicao_4665_assinada.pdf
+  - trecho: Oct 1, 2024 ... ... Rio do Oeste ...............................................795. Rio ... Plano de Contingência de um instrumento público serve como um ...
+  - ⚠ ano_anterior_ao_ciclo
+- `0d71b3bc0e` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Defesa Civil - Acompanhe o monitoramento do Rio Itajaí do Oeste
+  - url: https://laurentino.sc.gov.br/defesa-civil-acompanhe-o-monitoramento-do-rio-itajai-do-oeste/
+  - trecho: Dec 9, 2024 ... Havendo necessidade de acionar o plano de contingência para ... Rio do Oeste e Laurentino. Já o rio Itajaí-Açu segue próximo a ...
+- `be6c31fda9` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - título: Política Estadual de Defesa Civil no Estado de Santa Catarina ...
+  - url: http://oficinadefesacivil.com.br/wp-content/uploads/2017/08/F_TCFabiano_VIII_Encontro_Regional.pdf
+  - trecho: 2013 INUNDAÇÃO em Rio do Oeste ... Nele teremos todas as informações que vão desde o cadastro do. Plano de Contingência, limiares críticos, ameaças, alertas, ...
+  - ⚠ ano_anterior_ao_ciclo
+- `4b0cf22c29` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Defesa Civil de Rio do Oeste - Facebook
+  - url: https://www.facebook.com/100064783356364/?locale=sr_RS
+  - trecho: Entre suas principais contribuições, destaca-se o papel de *criador e incentivador do Plano de Contingência Municipal, instrumento essencial para orientar ...
+- `0ce54a4e2e` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: medidas estruturais e não estruturais implementadas para
+  - url: https://www.ensinosuperior.sed.sc.gov.br/wp-content/uploads/2017/09/Orli-Jos%C3%A9-Machado.pdf
+  - trecho: O Plano de Contingência da Defesa Civil de Taió, uma das mais importantes medidas ... DEFESA CIVIL DE RIO DO OESTE, Barragens. Disponível em: <http://www ...
+  - ⚠ ano_anterior_ao_ciclo
+- `e3635d8c67` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Empresa Consultora - Santa Catarina
+  - url: https://estado.sc.gov.br/wp-content/uploads/sites/3/2025/02/Revisado-RIMA_ATUALIZADO_c_oficio-sem-assinatura-2.pdf
+  - trecho: Rio do Oeste, Laurentino e Agronômica, au- mentando em 0,2m ou mais os ... O Plano de Ação de Emergência (PAE) esta- belece um conjunto de orientações ...
+  - ⚠ ano_anterior_ao_ciclo
+- `6b027bc477` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
+  - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2024/DMPF-EXTRAJUDICIAL-2024-05-03.pdf
+  - trecho: May 3, 2024 ... ... Rio do Oeste/SC, qual seja: Centro de Educação Infantil Celma Ignes ... além de mais concretas (porque há um Plano de Ação efetivamente delineado) ...
+  - ⚠ ano_anterior_ao_ciclo
+- `95bb32ecb0` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
+  - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
+  - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Rio do Oeste. 7.118. Rio do Sul. 61.931. Salete. 7.386. Santa Terezinha. 8.762. Taió.
+- `4a1e929530` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2026/20260407/Jornal/22729.pdf
+  - trecho: Apr 7, 2026 ... rio do oeste ... 1º - aprovar o plano de ação e aplicação do FEi-sc para o exercício ...
+- `acbc065f1b` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: prefeitura municipal de agrolândia
+  - url: https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf
+  - trecho: ... RIO DO OESTE / 485 - Prefeitura Municipal de Rio do. Oeste - SC ... PLANO DE AÇÃO ELABORADO PARA. ATENDIMENTO À POPULAÇÃO IMIGRANTE, COM FUNDAMENTO NA.
+- `d8cc7959b3` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: EDITAL DE CHAMAMENTO PÚBLICO PARA TERMO DE ...
+  - url: https://www.cultura.sc.gov.br/downloads/fcc/editais/3362-edital-de-chamamento-publico-para-termo-de-convenio-sc-cultura-boa-165-2025-atualizado-docx/file
+  - trecho: Nov 12, 2025 ... Nereu, Rio do Campo, Rio do Oeste, Rio ... ajuizamento de ação e/ou apresentação de plano de ação, especialmente no caso de obra com etapa.
+  - ⚠ ano_anterior_ao_ciclo
+- `074d9526be` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: ROI: Radiologia Intervencionista - Pesquisa - Anvisa
+  - url: https://pesquisa.anvisa.gov.br/index.php/616471?lang=pt-BR
+  - trecho: Rio do Oeste, Rio do Sul, Rio dos Cedros ... Mesma situação anterior e realiza avaliação anual dos registros das manutenções com elaboração de plano de ação.
+- `f82b6f1596` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
+  - url: https://valedoitajainoticias.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
+  - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... PJ de Rio do Oeste: Laurentino e Rio do Oeste. PJ de ...
+- `82466e6231` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: El Niño em Blumenau: Chuvas no 2º Semestre de 2026 - Veja!
+  - url: https://blumenauemfoco.com.br/noticias/el-nino-em-blumenau-e-regiao/
+  - trecho: Apr 1, 2026 ... Para quem vive em áreas com histórico de alagamentos ou deslizamentos, é recomendado ter um plano de contingência ... Rio do Oeste (1) Rio ...
+- `30641055ba` · nível **B** (3 pts) · busca_web · — · data 28/12/2021 (do trecho)
+  - título: FLORIANÓPOLIS, teRçA-FeIRA, 28 De DezeMbRO De 2021 ANO ...
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2021/20211228/Jornal/2802.pdf
+  - trecho: Dec 28, 2021 ... Plano de Contingência aprovado pelo município-sede, poderão ser ... budo, Laurentino, Rio do Oeste, Rio do Sul e Trombudo Central,.
+  - ⚠ ano_anterior_ao_ciclo
+- `d27c727f09` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Morre aos 67 anos Gilmar Sofiati, servidor público e um dos ...
+  - url: https://www.rbatv.com.br/noticias/gilmar-sofiati-morre-rio-do-oeste/
+  - trecho: Jan 27, 2026 ... Segundo a Funerária Ronchi, a despedida acontece na Câmara de Vereadores de Rio do Oeste. ... Plano de Contingência Municipal, instrumento ...
+- `db4aeabf0b` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Rio do Oeste; Monte Castelo; Ipuaçu; Palma Sola; Salete; Major Vieira; Treze de ...
+- `c466b7a306` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plancon - AMAVI
+  - url: https://amavi.org.br/plancon
+  - trecho: Rio do Oeste · Rio do Sul · Salete · Santa Terezinha · Taió · Trombudo Central · Vidal ... Plano de Contingência Estadual para a Educação · 1 - Diretrizes ...
+- `bf5c25a815` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: ALERTA DE CHUVAS INTENSAS ⚠️ O Espírito Santo está sob ...
+  - url: https://www.instagram.com/p/DTI7TgVEaRi/
+  - trecho: Jan 5, 2026 ... ... Rio do Oeste, Salete, Santa Terezinha, Taió, Vitor Meireles e ... plano de contingência municipal. Em caso de emergência, ligue 199 ou ...
+- `bb63d08bcc` · nível **B** (3 pts) · busca_web · — · data 2023 (do trecho)
+  - título: Estado de Santa Catarina Prefeitura Municipal de Chapadão do ...
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/399-regional-de-saude-de-rio-do-sul.html?download=1230%3Appr-esp-chapadao-do-lageado&Itemid=109
+  - trecho: Aug 25, 2023 ... O Plano Municipal de Vigilância Para Emergências em Saúde Pública. – ... Presidente Nereu, Rio do Campo, Rio do Oeste, Rio do Sul, Salete, Santa ...
+- `c41bc735d4` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Enchentes inesperadas? vulnerabilidades e políticas públicas em ...
+  - url: https://www.researchgate.net/publication/266735034_Enchentes_inesperadas_vulnerabilidades_e_politicas_publicas_em_Rio_do_Sul_-_SC_Brasil
+  - trecho: ... Rio do Oeste, onde as águas subiram 9,20 metros”.19. 22. Revista Esboços ... plano de ação organizado com as associações de. bairros e a ideia é fazer ...
+- `460d6daa0e` · nível **B** (3 pts) · busca_web · — · data 1975 (do trecho)
+  - título: (PDF) Desastres Socioambientais em Santa Catarina - Academia.edu
+  - url: https://www.academia.edu/29361664/Desastres_Socioambientais_em_Santa_Catarina
+  - trecho: ... Rio do Oeste, onde as águas subiram 9,20 metros” (SILVA, 1975, p. 16). 4 ... ] um plano de ação organizado com as associações de bairros e a ideia é ...
+- `8b187836d1` · nível **C** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE AÇÃO E ESTRATÉGIAS PARA A BIODIVERSIDADE DE ...
+  - url: https://www.toledo.pr.gov.br/sites/default/files/paginabasica-2022-08/diagnostico_de_dados_secundarios.pdf
+  - trecho: macroinvertebrados em um rio do oeste do Paraná. Mestrado em Ciências ... Plano de Ação para a Conservação no Brasil. Chiroptera Neotropical 16 (1): ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `2000c59608` · nível **C** (3 pts) · busca_web · — · citação não extraída
+  - título: estudos e pesquisas relacionados ao planejamento do transporte ...
+  - url: https://www.gov.br/turismo/pt-br/acesso-a-informacao/acoes-e-programas/mobilidade-e-conectividade-turistica/iniciativas/plano-de-acao-voltado-a-melhoria-da-mobilidade-e-conectividade-turistica-no-brasil/MTurProduto8_VF.1.pdf
+  - trecho: Em conexão ao Plano de Ação para Mobilidade e Conectividade Turística (BRASIL; ... Rio do Oeste. (SC). Rio do Sul (SC). Rio Rufino (SC). Salete (SC). Santa ...
+  - ⚠ padrao_lista_de_municipios, municipio_citado_de_passagem
+- `4f141b4a83` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: MPSC ABRE 136 PROCEDIMENTOS PARA COBRAR ...
+  - url: https://www.vbnoticias.com.br/mpsc-abre-136-procedimentos-para-cobrar-prevencao-a-enchentes-e-deslizamentos-em-santa-catarina/
+  - trecho: 4 days ago ... ... Plano de Contingência Municipal, a definição antecipada de 10 abrigos ... * PJ de Rio do Oeste: Laurentino e Rio do Oeste * PJ de Seara ...
+- `e1c13588fc` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: TCE/SC Educação
+  - url: https://servicos.tcesc.tc.br/tceeducacao/
+  - trecho: Rio do Oeste; Rio do Sul; Rio dos Cedros; Rio Fortuna; Rio Negrinho; Rio Rufino ... Plano de Contingência Escolar e open_in_new Novas diretrizes para o ...
+- `e21763b51d` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: A Defesa Civil de Joinville elevou, na manhã desta sexta-feira (8/5 ...
+  - url: https://www.instagram.com/p/DYFpRTykQ-p/
+  - trecho: May 8, 2026 ... ... Plano de Contingência (Plancon) para o nível Amarelo. A decisão ... Rio do Oeste, com 51,2 mm; Ibirama e Presidente Nereu, com 50,4 mm ...
+- `3842ee9faf` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Três polêmicas cercam a Oktoberfest Blumenau a três meses do ...
+  - url: https://oauditorio.com/noticias/geral-noticias/07/2026/tres-polemicas-cercam-a-oktoberfest-blumenau-a-tres-meses-do-evento/
+  - trecho: Jul 9, 2026 ... ... Rio do Oeste foram cancelados por suas prefeituras, embora sejam de ... Segundo ele, a organização trabalha com um plano de contingência ...
+- `567461f1ba` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA - Instituto DEL
+  - url: https://institutodel.org.br/wp-content/uploads/2025/04/PLANCON_TAIO_2025_RGB_versao.digital.pdf
+  - trecho: Plano de Contingência de Taió-SC, elaborado com base na metodologia DEL ... O Plano de Contingência será ativado quando o nível do Rio do Oeste for:.
+  - ⚠ ano_anterior_ao_ciclo
+- `48e9eb2dbc` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Estar preparado faz toda a diferença em situações de emergência ...
+  - url: https://www.instagram.com/p/DbJoVL0ARNm/
+  - trecho: Jul 23, 2026 ... Photo by Prefeitura de Rio do Oeste on July 23, 2026. May be an ... Ter um Plano de Contingência Familiar é uma das formas mais simples ...
+- `e6f6f235a8` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: | Estrela apresentou nesta quarta-feira (15) a atualização do Plano ...
+  - url: https://www.instagram.com/reel/Da1WBi1J7Zq/
+  - trecho: Jul 15, 2026 ... ... Plano de Contingência para desastres naturais e climáticos ... Rio do Oeste, Salete, São Cristóvão do Sul e Taió. Em caso de ocorrência ...
+- `baf55eb696` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: CAPÍTULO 3 CARACTERÍSTICAS DE ENCHENTES E VAZÃO DE ...
+  - url: https://openjicareport.jica.go.jp/pdf/12043600_02.pdf
+  - trecho: alerta para enchentes e fazer parte do plano de contingência para enchentes em caso de evacuação. ... de Laurentino e Rio do Oeste (rio Itajaí do Oeste). O ...
+- `5d6b6e00e9` · nível **C** (2 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Cheias no Alto Vale: saiba o que foi feito para a contenção
+  - url: https://www.gcd.com.br/alto-vale/um-ano-apos-enchentes-saiba-o-que-foi-feito-para-a-contencao-de-cheias-no-alto-vale/
+  - trecho: Oct 31, 2024 ... ... plano de contingência para garantir o atendimento à população. ... Rio do Oeste. O processo contempla portanto, 7,8 quilômetros de ...
+- `f0e32dd9e7` · nível **C** (2 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Prefeitura de Laurentino - Facebook
+  - url: https://www.facebook.com/PrefeituraLaurentino/posts/o-munic%C3%ADpio-de-laurentino-segue-acompanhando-o-monitoramento-das-precipita%C3%A7%C3%B5es-e/981067420722597/
+  - trecho: Dec 9, 2024 ... ... plano de contingência para inundação, e qualquer novo aviso, estará ... Rio do Oeste e Laurentino. Já o rio Itajaí-Açu segue próximo a ...
+- `1f42a7dd1c` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Gerenciamento de riscos ocupacionais gro - Previsio Engenharia
+  - url: https://www.previsio.com.br/gerenciamento-riscos-ocupacionais-gro
+  - trecho: Plano de ação de emergência PAE · Plano de ação de emergência e resgate · Plano ... Rio do Oeste; Monte Castelo; Ipuaçu; Palma Sola; Salete; Major Vieira; Treze ...
+- `eff08a297d` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Pior El Niño em 150 anos? Santa Catarina se antecipa e decreta ...
+  - url: https://jornalrazao.com/meio-ambiente/el-nino-santa-catarina-decreto-alerta-climatico-jorginho-mello
+  - trecho: May 19, 2026 ... Conforme o decreto, o estado de alerta climático não configura situação de emergência ... Rio do Oeste, no Alto Vale, transferiu a ...
+- `bbfec629df` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Violações dos direitos humanos no Brasil : relatório de casos com ...
+  - url: https://monitoramentodh.org.br/wp-content/uploads/2025/04/violacoes_direitos_humanos_brasil.pdf
+  - trecho: Plano de Contingência para Eventos Hidrológicos e Geológicos da Comunidade Indígena ... da Gruta do Tigre em Rio do Oeste. Essas retomadas, apesar de não estarem ...
+  - ⚠ ano_anterior_ao_ciclo
+- `fb295a17e8` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Rio do Sul reforça prevenção às cheias e acelera obras pela cidade ...
+  - url: https://www.instagram.com/reel/DaS8AidIpco/
+  - trecho: Jul 2, 2026 ... ... Plano de contingência, Ponte dos Arcos, Elevado e novos ... Rio Do Oeste. 141 likes. rbatv ...
+- `023e8dd4f0` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: O PREFEITO DE RIO NEGRO REFORÇA ATENÇÃO À ... - Facebook
+  - url: https://www.facebook.com/reportermarcospiroskiscnoticias/videos/o-prefeito-de-rio-negro-refor%C3%A7a-aten%C3%A7%C3%A3o-%C3%A0-popula%C3%A7%C3%A3o-diante-da-enchente-a-popula%C3%A7/1726904281698925/
+  - trecho: Sep 13, 2026 ... Plano de Contingência em ação. Rio atingindo sua cota d... Jul 28 ... 🌧️ Nível dos rios em Rio do Oeste Apesar de as previsões meteorológicas ...
+- `7148fffbfe` · nível **C** (1 pts) · busca_web · — · data 2018 (do trecho)
+  - título: uma análise territorial nos 5.570 municípios brasileiros - SciELO
+  - url: https://www.scielo.br/j/rbafs/a/FHfTFs8TXwvWQLYVT3WNQTd/?lang=pt
+  - trecho: Em 2018, a Organização Mundial da Saúde pu-blicou o Plano de Ação Global ... Rio do Oeste/Santa Catarina; Pedra Mole/Sergipe; Salga-dinho/Pernambuco ...
+- `f8a7bb2c37` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Efeitos da lei europeia contra desmatamento sobre as exportações ...
+  - url: https://www.econstor.eu/bitstream/10419/311739/1/1917568762.pdf
+  - trecho: Iniciativas anteriores, como o Plano de Ação de Governança e Comércio para Exe- ... Rio do Oeste. MT. Peixoto de. Azevedo. CE. Acaraú. GO. Buriti de Goiás. TO.
+
+## Salete/SC — 58 pendente(s)
+- `3645fef486` · nível **A** (7 pts) · busca_web · — · citação não extraída
+  - título: Coordenadoria Municipal de Proteção e Defesa Civil
+  - url: https://salete.sc.gov.br/estrutura/pagina-9384/
+  - trecho: XI- Realizar regularmente exercícios simulados, conforme Plano de Contingência de Proteção e Defesa Civil. ... E-mail: defesacivil@salete.sc.gov.br. Fone: 47 ...
+- `f416669a43` · nível **A** (7 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Formação de Alunos no Programa Defesa Civil na Escola
+  - url: https://marema.sc.gov.br/formacao-de-alunos-no-programa-defesa-civil-na-escola/
+  - trecho: Nov 19, 2025 ... ... Salete Chitolina, e dos professores responsáveis pela organização ... Plano de Contingência de Proteção e Defesa Civil · Plano Municipal ...
+- `2b4ceec828` · nível **A** (6 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL DE CONTINGÊNCIA
+  - url: https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf
+  - trecho: • Salões Paroquiais das comunidades de: Nossa Senhora da Salete; São ... devem estar contidas no Plano de Contingência no órgão de Defesa Civil responsável.
+- `3cdd586d67` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Marema Fortalece Defesa Civil com Recebimento de Caminhão
+  - url: https://marema.sc.gov.br/marema-fortalece-defesa-civil-com-recebimento-de-caminhao-pipa-e-veiculo-4x4/
+  - trecho: Mar 5, 2026 ... Plano de Contingência de Proteção e Defesa Civil ... Segundo a coordenadora da Defesa Civil de Marema, Salete Chitolina, trata-se de uma ...
+- `d20bd28ea0` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA - Defesa Civil Taió-SC
+  - url: https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf
+  - trecho: Plano de Contingência de Taió-SC, elaborado com base na metodologia DEL ... de Rio do Campo Salete e Mirim Doce apresenta uma leitura inferior ou igual a. 7 ...
+- `9a5a93a8e7` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO
+  - url: https://schroeder.sc.gov.br/uploads/sites/353/2021/12/1277144_PMSB___Schroeder.pdf
+  - trecho: Franciele Salete Mella. Assessora de Saneamento e Gestão Ambiental ... 13 PLANO DE CONTINGÊNCIA E EMERGÊNCIA PARA OS SERVIÇOS DO SANEAMENTO. BÁSICO ...
+  - ⚠ ano_anterior_ao_ciclo
+- `ee7f324041` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - título: plano municipal de saúde 2026-2029 - Prefeitura de Lindóia do Sul
+  - url: https://lindoiadosul.sc.gov.br/uploads/sites/20/2025/12/PLANO-MUNICIPAL-DE-SAUDE-2026-2029.pdf
+  - trecho: d_ Maria Salete Fracasso – Clube dos Idosos; e_ Paulo ... Ações Atualização anual ou sempre que se fizer necessário do Plano de Contingência para a dengue;.
+- `d09f4bf3b2` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL ...
+  - url: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
+  - trecho: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E. DEFESA CIVIL. Eventos Extremos ... No interior, Linha Cambuinzal, Linha Salete, Linha. Pesqueiro do Meio e Linha ...
+  - ⚠ ano_anterior_ao_ciclo
+- `fb83ea3ef6` · nível **B** (5 pts) · busca_web · — · data 2023 (do trecho)
+  - título: estado de santa catarina preeitura municipal de monte carlo ...
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/398-regional-de-saude-de-joacaba.html?download=1207%3Appr-esp-monte-carlo&Itemid=109
+  - trecho: Oct 3, 2023 ... Sonia Salete Vedovatto. Vice prefeito(a). Osmar Marques da Silva ... Plano de Contingência de Vigilância em Saúde frente à inundações/SVS ...
+- `5333d33639` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: COMPILADO DE ENUNCIADOS APROVADOS - MPSC
+  - url: https://www.mpsc.mp.br/documents/d/guest/compilacao-de-enunciados-aprovados-gedclima-mpsc
+  - trecho: SC Salete. 7.489. 208. Deslizamento. Enxurrada Inundação. SC Sangão. 12.882. 82 ... Além disso, o Plano de Contingência da Assistência Social deve ser.
+- `e5fad3f6b8` · nível **B** (5 pts) · busca_web · — · data 2023 (do trecho)
+  - título: A situação dos direitos humanos de crianças e adolescentes em ...
+  - url: https://www.portouniao.sc.gov.br/realizada-nesta-quinta-feira-01-12-nas-dependencias-do-gremio-ribeiro-pires-a-viii-conferencia-municipal-dos-direitos-da-crianca-e-adolescente-com-o-tema-a-situacao-dos-direitos-humanos-de-criancas/
+  - trecho: Jan 31, 2023 ... A presidente do CMDCA, Salete Venancio e a Secretária de Assistência ... ← PLANO DE CONTINGÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL ...
+- `bcdd629980` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA: - Portal Gov.br
+  - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/008_boaspraticas_plancon_plano_contingencia_enfrentamento_riscos_desastres_natal_rn.pdf
+  - trecho: De um modo geral, o período chuvoso inicia-se já no mês de março, ficando ... Maria da Salete Alves. Durante o desastre. Page 78. PREFEITURA MUNICIPAL DO ...
+- `d31bceeb04` · nível **B** (5 pts) · busca_web · — · data 2015 (do trecho)
+  - título: PLANO MUNICIPAL DA EDUCAÇÃO
+  - url: https://www.bomjesusdooeste.sc.gov.br/uploads/sites/278/2023/07/Plano-Municipal-de-Educacao-Bom-Jesus-do-Oeste.pdf
+  - trecho: SALETE FUZINATTO ZIMMERMANN. Representante da Associação de pais e ... Plano Estadual de Santa Catarina 2015/2015- Versão Preliminar. Florianópolis ...
+  - ⚠ ano_anterior_ao_ciclo
+- `cb319c3dda` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: requerimento nº 0023/2026 - Câmara Municipal de Biguaçu/SC
+  - url: https://www.cmb.sc.gov.br/proposicoes/Requerimentos/0/1/0/36789
+  - trecho: May 4, 2026 ... Salete Orlandina Cardoso, Salmir da ... - Existe plano de contingência específico para eventos climáticos extremos associados ao fenômeno?
+- `9e1b7dcbb2` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Educação Infantil - Criciúma - Afasc
+  - url: https://www.afasc.com.br/noticias?setor=educacao-infantil
+  - trecho: ... Salete, CEP: 88815-500, (48) 98843-4873. 11, CEI AFASC HG, R: Felipe Serafim ... Afasc inicia plano de contingência em parceria com a Defesa Civil de Criciúma.
+- `b8d420647f` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250602/Jornal/22524.pdf
+  - trecho: Jun 2, 2025 ... pela SAS e Salete Luiza Marchesini, pela OSC. SCC 304/2025. Cod. Mat ... em consonância com o Plano de Contingência da Concessionária.
+  - ⚠ ano_anterior_ao_ciclo
+- `ac375f4d1d` · nível **B** (4 pts) · busca_web · — · data 10/07/2026 (do trecho)
+  - título: Sexta-feira - 10 de Julho de 2026 Florianópolis/SC Edição N° 5187
+  - url: https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf
+  - trecho: Jul 22, 2026 ... ... Salete ........................................................ 938 ... Plano de Contingência da Assistência Social do Município de.
+- `4a26e91d6c` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: CONSELHO MUNICIPAL DE DEFESA DO MEIO AMBIENTE
+  - url: https://s3cache.dom.sc.gov.br/atos/2024/11/1730817243_74970511__homologa_o_plano_municipal_de_gua_e_esgoto_de_timb_com_anexos.pdf
+  - trecho: Nov 5, 2024 ... ... Salete, Santa Cecília, Santa Terezinha, São João do Itaperiú, Taió ... plano de contingência e emergência para a unidade que permita ...
+  - ⚠ ano_anterior_ao_ciclo
+- `c30932e557` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Plano de Contingência – PLANCON - Portal Gov.br
+  - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/PlanodeContingnciaparaEnfrentamentodeRiscoseDesastres.pdf
+  - trecho: ( x ) Sim ( ) Não. O Plano de Contingência da Cidade de Natal – PLANCON ... Pitimbu. CMEI Prof. Maria Salete Alves Bila. Rua Abreulândia , s/n, Planalto ...
+- `a624e36cd6` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: plano de - contingência - Defesa Civil de Blumenau
+  - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2024.pdf
+  - trecho: Aug 6, 2024 ... Plano de Contingência – Inundações e Movimentos de Massa - Anexo ... Dalvina Salete R. Almeida. Setor de Higiene e Limpeza. Izete Beppler ...
+- `cb91d1b257` · nível **B** (4 pts) · busca_web · — · data 2020 (do trecho)
+  - título: PLANCON EDU - MunicÍpio de IRANI
+  - url: https://irani.sc.gov.br/uploads/sites/427/2021/12/1999583_Plano_Contingencia___Escola_Sebastiao.pdf
+  - trecho: Outubro de 2020. Page 2. 2. Este Plano de Contingência foi construído com base no Modelo do Plano de Contingência elaborado e ... Salete do Amaral. Elizangela ...
+  - ⚠ ano_anterior_ao_ciclo
+- `efacbe3f35` · nível **B** (4 pts) · busca_web · — · data 2020 (do trecho)
+  - título: PLANCON EDU
+  - url: https://chapeco.sc.gov.br/download/1003/DocumentoArquivo
+  - trecho: Chapecó. Outubro de 2020. Page 2. 2. Este Plano de Contingência foi construído com base no Modelo do Plano de Contingência elaborado e ... ROSANGELA SALETE MULLER ...
+- `6017a83b82` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: lei ordinária nº 3060/2025 - Câmara Municipal de Cunha Porã/SC
+  - url: https://www.camaracunhapora.sc.gov.br/proposicoes/Leis-Ordinarias/2025/1/0/8688
+  - trecho: Izonha Salete Gollmann, Jacy Arcangelo Foresti, Jairo José de Marco, José ... plano de contingência (PLANCON); XVI - Manter a população informada sobre ...
+  - ⚠ ano_anterior_ao_ciclo
+- `1c0b05cf9b` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: plano municipal de - PREFEITURA DE IRATI/SC -
+  - url: https://www.irati.sc.gov.br/uploads/364/arquivos/2008302_PLANO_DE_CONTINGENCIA_IRATI_SC.pdf
+  - trecho: Plano de contingência aplicável ao Município de IRATI-SC. Equipe responsável ... SALETE F. M. DAL BELLO e SANDRA B. ZANCHET: Representante dos ...
+- `6de10d0c73` · nível **B** (4 pts) · busca_web · — · **Decreto N° 99**, 2026 (do trecho)
+  - título: Decreto N° 99/2026 - Leis.org
+  - url: https://leis.org/3mrbp
+  - trecho: May 20, 2026 ... Suplente: Sidiane Salete Dalla Costa. Função/Cargo exercido ... I - Auxiliar na elaboração e implementação do Plano de Contingência ...
+- `8970575884` · nível **B** (4 pts) · busca_web · — · data 2022 (do trecho)
+  - título: plano municipal de saúde 2022-2025 - Prefeitura de Ipumirim
+  - url: https://ipumirim.sc.gov.br/uploads/sites/386/2024/06/Plano-Municipal-Ipumirim-2022-2025-atualizado.pdf
+  - trecho: RESOLUÇÃO DE APROVAÇÃO DO PLANO ... ➢ Festa da Romaria de Nossa Senhora da Salete, com procissão, missa, churrasco,.
+  - ⚠ ano_anterior_ao_ciclo
+- `1f0c2467c8` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE AÇÃO DA REDE DE ATENÇÃO A SAÚDE DAS ...
+  - url: https://www.saude.sc.gov.br/index.php/pt/atencao-primaria-a-saude/gerencias-da-aps/gapps/plano-de-acao-da-rede-de-atencao-a-saude-das-pessoas-com-cancer-em-santa-catarina-2/download
+  - trecho: Este Plano de ação da rede de atenção a saúde das pessoas com câncer em Santa ... Salete,. Santa. Terezinha,. Taió,. Rio do. Sul. Rio do. Sul. Lages. Blumenau/.
+- `ac9c337538` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Plano Setorial para Adaptação à Mudança do Clima e Baixa ...
+  - url: https://www.gov.br/agricultura/pt-br/arquivos/abc_final.pdf
+  - trecho: Salete Alves de Moraes. Saulo Pastor Santos. Sebastião de Campos Valadares ... Plano de Ação Estadual. PD. Plantio direto. PDHC II. Projeto Dom Helder Câmara ...
+- `9d2cfa81cf` · nível **B** (4 pts) · busca_web · — · data 2003 (do trecho)
+  - título: Política de Educação para o Envelhecimento - SED/SC
+  - url: https://www.sed.sc.gov.br/wp-content/uploads/2024/04/Politica-de-Educacao-para-o-Envelhecimento-4-11-22.pdf
+  - trecho: Salete Teresinha Pompermaier. Sandra Dartora. Silvia Cardoso Bittencourt ... Plano de Ação Internacional contra o Envelhe- cimento. 2003. Disponível em ...
+  - ⚠ ano_anterior_ao_ciclo
+- `4a7b3a505b` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Plano Estratégico para o Desenvolvimento Sustentável da ... - Epagri
+  - url: https://docweb.epagri.sc.gov.br/website_epagri/Cedap/Publicacao-Seriada/15-Publicacao-seriada-maricultura-gestao.pdf
+  - trecho: Senac – Ivanir Salete Bazzei. IMA – Ivana Becker, Fábio Castagna da ... Plano de ação para formalização da cadeia de comércio de moluscos em Santa Catarina.
+- `f44a722a53` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Prefeitura de Caçador intensifica ações preventivas diante da ...
+  - url: https://cacador.sc.gov.br/prefeitura-de-cacador-intensifica-acoes-preventivas-diante-da-possibilidade-de-el-nino/
+  - trecho: May 28, 2026 ... As novas residências foram construídas no Loteamento Nossa Senhora Salete. ... Confira o Plano de Contingência de Caçador. ← Prefeitura de ...
+- `4ca3feb784` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Içara sediará seminário que impulsiona a Rota dos Santuários do ...
+  - url: https://engeplus.com.br/noticia/geral/230457/icara-sediara-seminario-que-impulsiona-a-rota-dos-santuarios-do-sul-catarinense
+  - trecho: May 23, 2026 ... Conforme a diretora de Cultura e Turismo de Içara, Salete Goulart ... plano de contingência para períodos de temporais. El Niño. Afasc e ...
+- `3add7c24b0` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Salete | Santa Catarina | | Assistência Social amplia equipe e ...
+  - url: https://www.instagram.com/p/DWmVGcXAMiG/
+  - trecho: Apr 1, 2026 ... Photo by Salete | Santa Catarina ... ÁGUA DOCE REÚNE 12 MUNICÍPIOS PARA CAPACITAÇÃO SOBRE O PLANO DE CONTINGÊNCIA DA ASSISTÊNCIA SOCIAL.
+- `91b198d460` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Santa Salete; Dirce Reis; União Paulista; Flora Rica; Uru; Nova Castilho; Borá.
+- `517b90be4c` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Reunião de início de ano com o Corpo de Bombeiros de Santa ...
+  - url: https://www.instagram.com/reel/DTLj-CkEZlX/
+  - trecho: Jan 6, 2026 ... ... Salete. Quando a guarnição chegou, o incêndio já se encontrava em ... Entre os temas abordados estiveram o Plano de Contingência ...
+- `0d46eae357` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250724/Jornal/22561.pdf
+  - trecho: Jul 24, 2025 ... plano de ação do Conselho Estadual da Criança e do adolescente - sC ... buição contido(s) no processo: sEd 139798/2025 de Vania salETE.
+  - ⚠ ano_anterior_ao_ciclo
+- `8900661359` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Pesquisa textual | Tribunal de Contas da União
+  - url: https://pesquisa.apps.tcu.gov.br/#/documento/btcu/281/%2520/DTRELEVANCIA%2520desc/12/%2520
+  - trecho: ... plano de ação para propor medidas com vistas a dotar o processo de maior ... Salete da Silva, em razão de a responsável, dependente não habilitada, ter ...
+- `bf4828b2e1` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Prefeitura Municipal de Paial - ARIS
+  - url: https://aris.sc.gov.br/uploads/pagina/2706/3e7yzhyw3OwnbUSEVBd9kgrDBkRcxppU.pdf
+  - trecho: 15 PLANO DE AÇÃO ... José Albino, Rio Ariranha, Arroio Ariranhazinho, Salete e Lajeado Tapera, conforme.
+- `b4416f521a` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: BOMBINHAS RECEBE VISITA TÉCNICA DE AGENTES DE ...
+  - url: https://bombinhas.sc.gov.br/noticia-748319/
+  - trecho: SIAFIC Plano de Ação de Adequação ao Decreto Federal Nº 10.540 ... Salete Pinheiro. Na ocasião, o grupo de Rendeiras de Bombinhas demonstrou os ...
+- `daba8ba571` · nível **C** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: DIÁRIO OFICIAL
+  - url: https://do-api-publication-pdf.doe.sp.gov.br/v1/editions/776bfb07-8111-4fb4-b32d-e218d5867649
+  - trecho: Feb 4, 2026 ... ... Salete Marton (Coordenadoria de Políticas de. Empreendedorismo) a ... Plano de Contingência e um sistema de resgate que atenda às ...
+  - ⚠ uf_divergente_na_url
+- `bdd6c5c1ed` · nível **C** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Versão: 1.2 - Prefeitura do Natal
+  - url: https://www.natal.rn.gov.br/storage/app/media/semdes/planodecontigencia.pdf
+  - trecho: ... Plano de Contingência para enfrentamento de riscos e desastres 2025/2026. ... Maria Salete Alves Bila. Rua Abreulândia , s/n, Planalto. CMEI Prof. Maria ...
+  - ⚠ uf_divergente_na_url
+- `3498fd5744` · nível **C** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: ANO XLVIII n. 12.256 Campo Grande, sexta-feira, 21 de agosto de ...
+  - url: https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/08/21/DO12256_21_08_2026.pdf
+  - trecho: Aug 21, 2026 ... do Plano de Contingência deverão ser registrados no sistema ... CORREGEDORA-GERAL: Salete de Fátima do Nascimento. SUBCORREGEDOR-GERAL ...
+  - ⚠ uf_divergente_na_url
+- `ae331b859d` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Lontras sai na frente no Alto Vale no planejamento para enfrentar as ...
+  - url: https://www.facebook.com/PrefeituraLontras/videos/lontras-sai-na-frente-no-alto-vale-no-planejamento-para-enfrentar-as-mudan%C3%A7as-cl/27254878187542324/
+  - trecho: Jul 17, 2026 ... Prefeitura de Salete. Government Organization. No photo ... plano de contingência, né? E tudo isso é pra quê? Trazer uma maior ...
+- `f1c596be56` · nível **C** (2 pts) · busca_web · — · data 2023 (do trecho)
+  - título: ATLETA DE BALNEÁRIO CAMBORIÚ CONQUISTA PRATA EM ...
+  - url: https://www.facebook.com/ojanelao/posts/atleta-de-balne%C3%A1rio-cambori%C3%BA-conquista-prata-em-torneio-internacional-de-jiu-jit/3032252500416435/
+  - trecho: Apr 4, 2023 ... ... Salete Varela. GIF, description not available, sent by Salete Varela ... Plano de Contingência para a comunidade em audiência na Câmara ...
+- `be046d9de7` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Uma área de instabilidade de forte intensidade avança do oceano ...
+  - url: https://www.instagram.com/reel/DWhU7WWCH_B/
+  - trecho: Mar 30, 2026 ... salete.belle. Gostei é só p floripa. August 31 ... plano de contingência municipal. Em caso de emergência, ligue 199 ou ...
+- `bbddebdf03` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: | Estrela apresentou nesta quarta-feira (15) a atualização do Plano ...
+  - url: https://www.instagram.com/reel/Da1WBi1J7Zq/
+  - trecho: Jul 15, 2026 ... ... Plano de Contingência para desastres naturais e climáticos ... Photo by Salete | Santa Catarina | on September 18, 2026. May.
+- `2095770093` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE CONTINGÊNCIA - Instituto DEL
+  - url: https://institutodel.org.br/wp-content/uploads/2025/04/PLANCON_TAIO_2025_RGB_versao.digital.pdf
+  - trecho: Plano de Contingência de Taió-SC, elaborado com base na metodologia DEL ... de Rio do Campo Salete e Mirim Doce apresenta uma leitura inferior ou igual a. 7 ...
+  - ⚠ ano_anterior_ao_ciclo
+- `718b7ef595` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Prefeitura Municipal de Lontras SC - Facebook
+  - url: https://www.facebook.com/PrefeituraLontras/posts/lontras-sai-na-frente-no-alto-vale-no-planejamento-para-enfrentar-as-mudan%C3%A7as-cl/1329311049355692/
+  - trecho: Jul 17, 2026 ... Prefeitura de Salete. 󱙶. Follow · Adriano Pereira. 󱙶. Follow ... plano de contingência, né? E tudo isso é pra quê? Trazer uma maior ...
+- `dda656e972` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Após reunião com a Defesa Civil Regional, o Município de Estrela ...
+  - url: https://www.facebook.com/governodeestrelars/videos/ap%C3%B3s-reuni%C3%A3o-com-a-defesa-civil-regional-o-munic%C3%ADpio-de-estrela-segue-acompanhan/1097066166627478/
+  - trecho: 6 days ago ... O município apresentou oficialmente o Plano de Contingência da Defesa Civil, reunindo forças de segurança ... A Defesa Civil de Salete ...
+- `e4a8968d2a` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: PRIORIDADES DO ALTO VALE DO ITAJAÍ - AMAVI
+  - url: https://amavi.org.br/arquivos/amavi/areas-tecnicas/secretaria-executiva/2026/carta-alto-vale-2026.pdf
+  - trecho: b) Rodovia Intermunicipal Salete – Rio do Campo (16km) (projeto elaborado); ... Auxiliar os municípios na elaboração do Plano de Contingência de Proteção e ...
+- `ebd8388ec0` · nível **C** (2 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Atualizações sobre a chuva em Esteio A cidade registrou um ...
+  - url: https://www.instagram.com/reel/DSFt2K-Dfki/
+  - trecho: Dec 10, 2025 ... O Plano de Contingência (PLANCON) ... prefeituradesalete. •. Follow · Salete. Photo by Salete | Santa Catarina | on September 18, 2026.
+- `eba6d697a8` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: OPINIÃO O fenômeno El Niño pode trazer impactos significativos ...
+  - url: https://www.facebook.com/portalleouve/videos/opini%C3%A3oo-fen%C3%B4meno-el-ni%C3%B1o-pode-trazer-impactos-significativos-para-a-economia-gl/1355159096750544/
+  - trecho: Aug 27, 2026 ... #leouve #gruporscom #serragaúcha #tanoleouve · Salete Fich Fich and 11 others · 12.
+- `5dc52a5ca5` · nível **C** (2 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Untitled
+  - url: https://periodicos.unb.br/index.php/revistadedireitounb/article/download/45265/44426
+  - trecho: Dec 29, 2025 ... ... Salete Oro Boff,. Joel Marcos Reginato e William Andrade exploram o ... Plano de Ação 3 do BEPS. Rio de. Janeiro: Fundação Getúlio Vargas ...
+- `7c122bb1ea` · nível **C** (2 pts) · busca_web · — · data 2017 (do trecho)
+  - título: 1 Comissão Nacional ODS | Relatório de Atividades 2017-2018
+  - url: https://gtagenda2030.org.br/wp-content/uploads/2019/05/relatorio-cnods-2017-18.pdf
+  - trecho: Dec 11, 2018 ... Miriam Salete Licnerski Barreto – Segov/PR. Morganna M. P. de Oliveira ... no Plano de Ação da CNODS 2017-2019 (Produto E3.2.1), de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `591c5ca65e` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: El Niño é confirmado e Defesa Civil do Estado reforça ... - Radio Rural
+  - url: https://www.radiorural.com.br/noticias/62894-el-nio-e-confirmado-e-defesa-civil-do-estado-reforca-monitoramento-do-fenomeno-em-sc-nos-proximos-meses
+  - trecho: Jun 14, 2026 ... ... situação de emergência ou calamidade pública. Na próxima segunda ... Bairro Nossa Senhora da Salete Concórdia / SC - 89700-280. Fale ...
+- `ead7c8c48d` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Quero expressar minha sincera gratidão ao prefeito de ... - Instagram
+  - url: https://www.instagram.com/p/DZdjEy3Cdli/
+  - trecho: Jun 11, 2026 ... ... Plano de Contingência de Itajaí. Para ampliar a capacidade regional ... Estava muito curioso, mas é só é floripa a previsão? salete.belle.
+- `51cb471883` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Informação ⚠️ Nível do Rio 4.94 M 30/06 21:45 Sigam os perfis da ...
+  - url: https://www.instagram.com/reel/DaOxMFNpODC/
+  - trecho: Jun 30, 2026 ... Oh viragem dolorosissima vossas lágrimas derrubaram o poder infernal. salete.machado.351756 ... Plano de Contingência do município. A Defesa ...
+- `aea3da0475` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Carolina Schaffer, Autor em Apremavi • Página 4 de 73
+  - url: https://apremavi.org.br/author/carol/page/4/
+  - trecho: Difusão de conhecimento: Foco em apoiar demais pilares do plano de ação com divulgação de informações concisas e atrair novos parceiros e interessados. ... Salete ...
 
 ## Taió/SC — 1 pendente(s)
 - `7f083b5d99` · nível **A** (7 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -1216,6 +2317,551 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf
   - trecho: Proteção e Defesa Civil de Taió-SC | 01/2026. Taió-SC. Page 2. COORDENADORIA ... Plano de Contingência de Taió-SC, elaborado com base na metodologia DEL.
   - juiz: portão automático: data do ato incompleta (2026)
+
+## Timbó Grande/SC — 61 pendente(s)
+- `f822b5cffa` · nível **A** (6 pts) · busca_web · — · **Lei n. 13.005**, 2014 (do trecho)
+  - título: Diário Oficial Eletrônico - TCE/SC
+  - url: https://consulta.tce.sc.gov.br/Diario/dotc-e2025-07-29.pdf
+  - trecho: Jul 29, 2025 ... Timbó Grande ... o cumprimento do Plano Nacional de Educação – PNE (Lei n. 13.005/2014) e das Metas 18 e 19 do Plano Municipal de Educação.
+- `8ab6a8ac23` · nível **B** (6 pts) · busca_web · — · **DECRETO Nº 051**, 17/05/2023 (do trecho)
+  - título: DECRETO Nº 051 DE 17 DE MAIO DE 2023 “HOMOLOGA A ...
+  - url: https://tangara.sc.gov.br/uploads/sites/450/2023/05/DECRETO-No-051-Aprova-Resolucao-Conselho.pdf
+  - trecho: May 17, 2023 ... Cleonice Ribeiro Pontes Flor (Timbó Grande). Cristiane Turmina (Lebon ... O professor deve contemplar, em seu plano de ação, atividades que.
+  - ⚠ ano_anterior_ao_ciclo
+- `35485c3aeb` · nível **B** (5 pts) · busca_web · — · data 30/09/2020 (do trecho)
+  - título: FLORIANÓPOLIS, quARtA-FeIRA, 30 de SetembRO de 2020 ANO ...
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20200930/Jornal/2490.pdf
+  - trecho: Sep 30, 2020 ... III - Ato da PMSC nº 434/2020 que aprova o plano de contingência ... Costa, Rio das Antas e Timbó Grande,pertencentes à Secretaria de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `1f30ee6cce` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Princesa de Timbó Grande morre atropelada por motorista ...
+  - url: https://canoinhasonline.com.br/2026/09/princesa-de-timbo-grande-morre-atropelada-por-motorista-embriagado-em-cacador.html
+  - trecho: Sep 5, 2026 ... Home Santa Catarina Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador ... Defesa Civil detalha plano de contingência ...
+- `855977129d` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: COMPILADO DE ENUNCIADOS APROVADOS - MPSC
+  - url: https://www.mpsc.mp.br/documents/d/guest/compilacao-de-enunciados-aprovados-gedclima-mpsc
+  - trecho: SC Timbó Grande. 7.342. 130. Deslizamento,Enxurrada. Inundação. SC Três Barras ... Além disso, o Plano de Contingência da Assistência Social deve ser.
+- `c974a5cd81` · nível **B** (5 pts) · busca_web · — · data 2021 (do trecho)
+  - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
+  - url: https://biblioteca.mpf.mp.br/server/api/core/bitstreams/28b48a6b-ad87-4d4d-be07-d4a9c4250cf4/content
+  - trecho: Nov 16, 2021 ... normas de proteção ambiental, em Timbó Grande/SC, tendo em vista que ... Plano de Contingência da Barragem de Santana pela Defesa Civil ...
+- `202d759caf` · nível **B** (5 pts) · busca_web · — · data 2010 (do trecho)
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO CALMON
+  - url: https://calmon.sc.gov.br/uploads/sites/273/2025/05/PMSB-VOLUME-I-CONSOLDACAO-DO-PLANO-MUNICIPAL-DE-SANEAMENTO-BASICO.pdf
+  - trecho: ... Timbó Grande, Matos Costa,. Lebon Régis e General Carneiro. Page 30. 29. Figura 2 – Acesso ao Município de Calmon. Fonte: SANTA CATARINA / CIASC, 2010. A seguir ...
+  - ⚠ ano_anterior_ao_ciclo
+- `494759142a` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Chuvas em Santa Catarina provocam 'caos' em diversas regiões
+  - url: https://ndmais.com.br/tempo/chuvas-em-santa-catarina-provocam-alagamentos-falta-de-energia-e-caos-no-transito/
+  - trecho: Dec 29, 2025 ... ... Timbó Grande ficou destelhada em decorrência das fortes chuvas que ... O município elevou o Plano de Contingência para o nível Laranja no fim da ...
+- `434dadc57b` · nível **B** (4 pts) · busca_web · — · data 27/09/2021 (do trecho)
+  - título: FLORIANÓPOLIS, SeguNdA-FeIRA, 27 de SeteMbRO de 2021 ANO ...
+  - url: https://www.sea.sc.gov.br/wp-content/uploads/2022/10/Jornal_2021_09_27_21614.pdf
+  - trecho: tIMbÓ gRANde: 15mx5m, Localidade: Antinha; SgP-e SdC. 3940/2018. Cod. Mat ... § 2º O Plano de Contingência é organizado pela definição e carac-.
+  - ⚠ ano_anterior_ao_ciclo
+- `61580b8a72` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL DE SAÚDE
+  - url: https://timbogrande.sc.gov.br/uploads/sites/352/2025/05/plano-de-saude.pdf
+  - trecho: Plano de Contingência para que assim possamos dar assistência assegurada a toda a população ... TIMBÓ GRANDE/SC. APRESENTAÇÃO DAS METAS A SEREM DESENVOLVIDAS NO ...
+  - ⚠ ano_anterior_ao_ciclo
+- `24956de1a2` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Seis municípios decretam emergência após temporais em Santa ...
+  - url: https://www.santacatarinaempauta.com.br/2026/07/02/seis-municipios-decretam-emergencia-apos-temporais-em-santa-catarina-defesa-civil-inicia-entrega-de-assistencia/
+  - trecho: Jul 2, 2026 ... ... Timbó Grande. Conforme a Defesa Civil estadual, essas cidades ... A distribuição faz parte do plano de contingência previsto para a ...
+- `bce37ccd31` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Plano de contingência em escolas de SC terá medidas ... - ND Mais
+  - url: https://ndmais.com.br/educacao/plano-de-contingencia-em-escolas-de-sc-tera-medidas-preventivas-em-situacao-de-risco/
+  - trecho: Jan 22, 2026 ... ... plano de contingência em escolas de SC que abrange desde creches à universidades. ... Timbó GrandeFoto: Reprodução/Defesa Civil/ND Mais. Para ...
+- `b0523a0d9b` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250929/Jornal/22608.pdf
+  - trecho: Sep 29, 2025 ... nicípio de timbó Grande. OBJETO: aquisição de uma motoniveladora ... iV – possuir plano de contingência municipal vigente;. V – ter ato ...
+  - ⚠ ano_anterior_ao_ciclo
+- `ad7982d183` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Videira intensifica ações para enfrentar o El Niño e reduzir riscos
+  - url: https://portalrbv.com.br/noticias/seguranca/videira-intensifica-acoes-para-enfrentar-o-el-nino-e-reduzir-riscos-de-enchentes-ej/
+  - trecho: Jun 19, 2026 ... Timbó Grande · Treze Tílias · Videira. Sobre nós. A RBV ... Celesc reforça plano de contingência para enfrentar possíveis impactos do El Niño.
+- `96d876c78c` · nível **B** (4 pts) · busca_web · — · data 2022 (do trecho)
+  - título: PLANO MUNICIPAL DE SAUDE 2022 a 2025 CALMON / SC
+  - url: https://calmon.sc.gov.br/uploads/sites/273/2024/05/PLANO-MUNICIPAL-DE-SAUDE-2022-2025.pdf
+  - trecho: O Plano Municipal de Saúde está de acordo com o Plano Plurianual de. Saúde 2022 ... Lebon Régis, Matos Costa, Timbó Grande e Arroio Trinta; e à Secretaria.
+  - ⚠ ano_anterior_ao_ciclo
+- `a54b6b1eab` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
+  - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
+  - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Timbó Grande e Videira. População de Referência da Macrorregião: Municípios.
+- `d627170233` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Diário Oficial - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20251107/Jornal/22637.pdf
+  - trecho: Nov 7, 2025 ... ... Timbó Grande. 7,03. sCC. 00004071/2024 r$188 311,40 seara. 7,00. sCC ... plano de ação e aplicação do. Fundo Estadual do idoso (FEi-sC) ...
+  - ⚠ ano_anterior_ao_ciclo
+- `d574a712b9` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: MINISTÉRIO PÚBLICO FEDERAL PROCURADORIA GERAL DA ...
+  - url: https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/docs/ata-da-15a-sessao-ordinaria-da-1a-camara
+  - trecho: Timbó Grande/SC. 2. Oficiado, o Município de Timbó Grande confirmou que a ... e implementação de um plano de ação para mitigar esses riscos; b) a recomendação da.
+- `9bfa3f5960` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Diário Oficial Eletrônico - TCE/SC
+  - url: https://consulta.tce.sc.gov.br/Diario/dotc-e2025-12-15.pdf
+  - trecho: Dec 15, 2025 ... Timbó Grande ... sobre a necessidade de plano de ação, se for o caso, observando os apontamentos constantes no item 2.19.8 do Relatório DLC.
+- `2077921e4b` · nível **B** (4 pts) · busca_web · — · data 2021 (do trecho)
+  - título: sef/sc - contexto socioeconômico
+  - url: https://www.sef.sc.gov.br/arquivos_portal/relatorios/46/PPA___2020_2023_Contexto_Socioeconomico.pdf
+  - trecho: Timbó Grande. Calmon. Lebon Régis. Rio das Antas. Videira. Fraiburgo. Macieira. Salto ... plano de ação por equipe. A partir de. 2021 inicia-se a avaliação do ...
+- `1791908ac6` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: ROI: Radiologia Intervencionista - Pesquisa - Anvisa
+  - url: https://pesquisa.anvisa.gov.br/index.php/616471?lang=pt-BR
+  - trecho: Timbó Grande, Três Barras, Treviso, Treze ... Mesma situação anterior e realiza avaliação anual dos registros das manutenções com elaboração de plano de ação.
+- `c6f7645962` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Forno a céu aberto: Cidades catarinenses registram 55ºC de ...
+  - url: https://canoinhasonline.com.br/2025/03/forno-a-ceu-aberto-cidades-catarinenses-registram-55oc-de-sensacao-termica.html
+  - trecho: Mar 3, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `fa47db9dbc` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: PL de Jorginho Mello foi o que mais elegeu prefeitos em SC
+  - url: https://canoinhasonline.com.br/2024/10/pl-de-jorginho-mello-foi-o-que-mais-elegeu-prefeitos-em-sc.html
+  - trecho: Oct 7, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `ff834d1488` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
+  - título: cidades de SC decretam situação de emergência após ciclone
+  - url: https://canoinhasonline.com.br/2022/08/estragos-sem-precedentes-cidades-de-sc-decretam-situacao-de-emergencia-apos-ciclone.html
+  - trecho: Aug 11, 2022 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `55448d3a64` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Frente fria provoca temporais e ventos fortes neste fim de semana
+  - url: https://canoinhasonline.com.br/2025/06/frente-fria-provoca-temporais-e-ventos-fortes-neste-fim-de-semana.html
+  - trecho: Jun 13, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `af13ab9474` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Verão será marcado por temperaturas acima da média em Santa ...
+  - url: https://canoinhasonline.com.br/2024/10/verao-sera-marcado-por-temperaturas-acima-da-media-em-santa-catarina.html
+  - trecho: Oct 27, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `aa09f507d0` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Justiça tenta solução pacífica para discutir ocupação indígena no ...
+  - url: https://canoinhasonline.com.br/2025/07/justica-tenta-solucao-pacifica-para-discutir-ocupacao-indigena-no-colegio-agricola-de-mafra.html
+  - trecho: Jul 2, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `f1829ca1ac` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Capotamento na SC-135 deixa dois mortos e um ferido em Caçador
+  - url: https://canoinhasonline.com.br/2025/07/capotamento-na-sc-135-deixa-dois-mortos-e-um-ferido-em-cacador.html
+  - trecho: Jul 20, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `c0524a9c88` · nível **B** (3 pts) · busca_web · — · data 2021 (do trecho)
+  - título: O balão do vovô, uma história de luto e de amor - Canoinhas Online
+  - url: https://canoinhasonline.com.br/2021/10/o-balao-do-vovo-uma-historia-de-luto-e-de-amor.html
+  - trecho: Oct 12, 2021 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `d205041018` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Tombamentos de caminhões são registrados na SC-135 em dois ...
+  - url: https://canoinhasonline.com.br/2024/12/tombamentos-de-caminhoes-sao-registrados-na-sc-135-em-dois-dias-consecutivos.html
+  - trecho: Dec 19, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `fbe93b2753` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Irmãos que morreram afogados no Rio Irani são identificados
+  - url: https://canoinhasonline.com.br/2025/01/irmaos-que-morreram-afogados-no-rio-irani-sao-identificados.html
+  - trecho: Jan 20, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `ea3ad4ceb8` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Acidente entre carros na SC-418 deixa duas mulheres encarceradas
+  - url: https://canoinhasonline.com.br/2024/07/acidente-entre-carros-na-sc-418-deixa-duas-mulheres-encarceradas.html
+  - trecho: Jul 23, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `75c887a2c1` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Abandono e fome: crianças são encontradas sozinhas em casa e ...
+  - url: https://canoinhasonline.com.br/2024/07/abandono-e-fome-criancas-sao-encontradas-sozinhas-em-casa-e-mae-e-presa-em-balneario-camboriu.html
+  - trecho: Jul 16, 2024 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ ano_anterior_ao_ciclo
+- `33aed66392` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe para seis o número de municípios catarinenses que ...
+  - url: https://www.correiodopovo.com.br/not%C3%ADcias/cidades/sobe-para-seis-o-numero-de-municipios-catarinenses-que-decretaram-situacao-de-emergencia-apos-temporais-1.1727397
+  - trecho: Jul 2, 2026 ... Já em Timbó Grande, os temporais atingiram 40 habitações nas ... A ação faz parte do Plano de Contingência específico para as ...
+- `af957396a2` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Seis municípios de SC decretam situação de emergência após ...
+  - url: https://radiomirador.com.br/seis-municipios-de-sc-decretam-situacao-de-emergencia-apos-temporais-alto-vale-segue-em-monitoramento/
+  - trecho: Jul 2, 2026 ... ... Timbó Grande oficializaram os decretos e solicitaram apoio do Estado ... A entrega faz parte do plano de contingência elaborado pelo ...
+- `6f9f9a1bef` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Situação em Timbé do Sul - Instagram
+  - url: https://www.instagram.com/reel/Ddj3MWyPEJz/
+  - trecho: 6 days ago ... ⚠️ Timbó Grande está na área de alerta da Defesa Civil para ... As ações foram embasadas no Plano de contingência municipal.
+- `e4a345ae23` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja alinhado ... Timbó Grande; Trombudo Central; Campo Belo do Sul; Itá; Ouro; Meleiro; Aurora ...
+- `191f4cba92` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe para 6 os municípios em situação de emergência após ...
+  - url: https://ndmais.com.br/tempo/sobe-para-6-os-municipios-em-situacao-de-emergencia-apos-temporais-castigarem-sc/
+  - trecho: Jul 2, 2026 ... ... Timbó Grande decretaram o alerta vermelho após registrarem danos ... plano de contingência elaborado para a área. De acordo com a ...
+- `5fdd20342a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Defesa Civil | O número de municípios em situação de emergência ...
+  - url: https://www.instagram.com/p/DaTUCJTFAHH/
+  - trecho: Jul 2, 2026 ... ... Timbó Grande. Segundo a Defesa Civil, as cidades solicitaram itens ... Plano de contingência A partir desta sexta, a Defesa Civil ...
+- `f760d3e486` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Diário Oficial Eletrônico - TCE/SC
+  - url: https://consulta.tce.sc.gov.br/Diario/dotc-e2024-05-22.pdf
+  - trecho: May 22, 2024 ... do Plano de Contingência para o enfrentamento ... INTERESSADOS:Prefeitura Municipal de Timbó Grande, Prefeitura Municipal de Timbó Grande.
+- `448a956181` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Defesa Civil inicia entrega de mais de mil cestas básicas a ...
+  - url: https://radiomirador.com.br/defesa-civil-inicia-entrega-de-mais-de-mil-cestas-basicas-a-indigenas-isolados-em-jose-boiteux/
+  - trecho: Jul 3, 2026 ... Plano de contingência foi acionado após aldeias permanecerem ... Timbó Grande. As entregas incluíram cestas básicas, kits de limpeza ...
+- `503aab739a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Balanço do feriadão aponta 66 mortes e quase mil motoristas ...
+  - url: https://canoinhasonline.com.br/2026/09/balanco-do-feriadao-aponta-66-mortes-e-quase-mil-motoristas-autuados-por-embriaguez-nas-rodovias-federais.html
+  - trecho: Sep 8, 2026 ... Defesa Civil detalha plano de contingência contra enchentes na Câmara de Canoinhas ... Princesa de Timbó Grande morre atropelada por ...
+- `16a7122a03` · nível **B** (3 pts) · busca_web · — · data 2010 (do trecho)
+  - título: Ata - Pesquisa textual | Tribunal de Contas da União - TCU
+  - url: https://pesquisa.apps.tcu.gov.br/#//documento/ata-sessao/*/NUMEROATA%3A18%20ANOATA%3A2011%20COLEGIADO%3A%222%C2%AA%20C%C3%A2mara%22/DTRELEVANCIA%20desc/0/%20
+  - trecho: ... plano de ação de que trata o item 1.4.4 do Acórdão 7.312/2010 - TCU ... Anoldo Ferreira de Castilho, ex‑Prefeito do Município de Timbó Grande/SC, em ...
+- `c99d32aadb` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Alarme de Incêndio - NFL Group
+  - url: https://www.nflgroup.com.br/alarme-incendio
+  - trecho: Plano de ação contra incêndio · Plano de emergência de combate a incêndio ... Timbó Grande; Trombudo Central; Campo Belo do Sul; Itá; Ouro; Meleiro; Aurora ...
+- `6eedc3be45` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: CALMON/SC - ARIS
+  - url: https://aris.sc.gov.br/uploads/pagina/2641/Kv_JCIzvuc0rfTuWi6E61IYKGcHcUB7f.pdf
+  - trecho: PLANO DE AÇÃO ... Calmon fica a 378 Km da capital Florianópolis, apresentando como municípios limítrofes Caçador, Porto União, Timbó Grande, Matos Costa, Lebon ...
+- `26b9a2391e` · nível **C** (4 pts) · busca_web · — · citação não extraída
+  - título: Aves web.cdr
+  - url: https://www.conexaoambiental.pr.gov.br/sites/conexao-ambiental/arquivos_restritos/files/documento/2021-12/Plano%20de%20A%C3%A7%C3%A3o%20Estadual%20para%20a%20Conserva%C3%A7%C3%A3o%20de%20Aves_2009.pdf
+  - trecho: norte de Santa Catarina (município de Timbó Grande), próximo da divisa com o ... representantes do gênero tratados no presente Plano de Ação. Mesmo.
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `732550632d` · nível **C** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: SC intensifica defesa sanitária após caso de gripe aviária no Rio ...
+  - url: https://canoinhasonline.com.br/2025/05/sc-intensifica-defesa-sanitaria-apos-caso-de-gripe-aviaria-no-rio-grande-do-sul.html
+  - trecho: May 16, 2025 ... Defesa Civil detalha plano de contingência contra ... Princesa de Timbó Grande morre atropelada por motorista embriagado em Caçador.
+  - ⚠ risco_errado_no_titulo, ano_anterior_ao_ciclo
+- `fc692a9c81` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: TCE/SC Educação
+  - url: https://servicos.tcesc.tc.br/tceeducacao/
+  - trecho: Timbó Grande; Três Barras; Treviso; Treze de Maio; Treze Tílias; Trombudo Central ... Plano de Contingência Escolar e open_in_new Novas diretrizes para o ...
+- `6627d1e9af` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Administração - Campus Joinville - Univille
+  - url: https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1501022/PPC_Administacao_de_Empresas.pdf
+  - trecho: Timbó Grande. 598,473. 7.632. Três Barras. 437,556. 18.945. Microrregião de Joinville ... O Plano de Contingência prevê ações que durem até o retorno à situação.
+- `1513329565` · nível **C** (2 pts) · busca_web · — · data 2021 (do trecho)
+  - título: plano de desenvolvimento institucional (pdi) 2021-2025 caçador 2021
+  - url: https://uniarp.edu.br/wp-content/uploads/2022/06/PDI-2021-2025.pdf
+  - trecho: 9.6.8 Plano de Contingência ... Timbó Grande e Videira, possui um. IDHM médio de 0,721, 6,81% a menos do que a média do Estado de Santa. Catarina e, sabendo ...
+  - ⚠ ano_anterior_ao_ciclo
+- `0a20b23481` · nível **C** (2 pts) · busca_web · — · data 2018 (do trecho)
+  - título: CURSO DE CIÊNCIAS ECONÔMICAS - Joinville - Univille
+  - url: https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1463133/PPC_Economia.pdf
+  - trecho: Sep 3, 2018 ... Timbó Grande. 598,473. 7.632. Três Barras. 437,556. 18.945 ... acesso mais demandadas, sendo adotado plano de contingência que na íntegra, se.
+- `4f1b5c481c` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe para seis o número de municípios catarinenses em situação ...
+  - url: https://engeplus.com.br/noticia/santa-catarina/231988/sobe-para-seis-o-numero-de-municipios-catarinenses-em-situacao-de-emergencia-apos-temporais
+  - trecho: Jul 2, 2026 ... Bom Retiro, Guaramirim, Jaraguá do Sul, Schroeder, Major Vieira e Timbó Grande ... A ação faz parte do Plano de Contingência específico ...
+- `e4d90a0948` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe número de municípios catarinenses em situação ... - OCP News
+  - url: https://ocp.news/cotidiano/sobe-numero-de-municipios-catarinenses-em-situacao-de-emergencia-apos-temporais
+  - trecho: Jul 3, 2026 ... Guaramirim, Jaraguá do Sul, Schroeder, Bom Retiro, Major Vieira e Timbó Grande ... A ação faz parte do Plano de Contingência específico ...
+- `52e404160f` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe para sete o número de municípios catarinenses que decretam ...
+  - url: https://www.correiodopovo.com.br/not%C3%ADcias/cidades/sobe-para-sete-o-numero-de-municipios-catarinenses-que-decretam-situacao-de-emergencia-em-razao-da-chuva-de-granizo-1.1728346
+  - trecho: Jul 5, 2026 ... Além de Ibicaré, também decretaram situação de emergência Timbó Grande ... A ação faz parte do Plano de Contingência específico para as ...
+- `be61282f26` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: VÍDEO: Casa é levada pela correnteza e ônibus é arrastado pela ...
+  - url: https://testonoticias.com.br/destaques/video-casa-e-levada-pela-correnteza-e-onibus-e-arrastado-pela-agua-durante-temporais-no-rs/
+  - trecho: Jul 22, 2026 ... Por isso, a prefeitura colocou o plano de contingência em prática e ... Jovem de 20 anos, 1ª Princesa de Timbó Grande morre após ser atropelada em ...
+- `e35240e3fa` · nível **C** (2 pts) · busca_web · — · data 2020 (do trecho)
+  - título: PLANO DE AÇÃO REGIONAL DA REDE DE CUIDADOS À PESSOA ...
+  - url: https://www.cosemssc.org.br/wp-content/uploads/2020/11/ANEXO-II-PAR.pdf
+  - trecho: Nov 13, 2020 ... residentes no Estado de Santa Catarina, conforme preconizado no Plano de Ação Estadual e ... Peritiba, Irani, Salto Veloso, Timbó grande ...
+  - ⚠ ano_anterior_ao_ciclo
+- `08c0e492eb` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Anais II CIEDUS - Seletivo Uniarp
+  - url: http://www.seletivo.uniarp.edu.br/Anais-II-CIEDUS.pdf?v=2
+  - trecho: ... TIMBÓ GRANDE ... plano de ação com vistas ao desenvolvimento sustentável. No documento, foram definidos 17 ODS com a intenção de serem adotados por todos ...
+- `b12dfe6e3b` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Laudo periculosidade e insalubridade - Inia - Soluções Sustentáveis
+  - url: https://www.inia.eco.br/laudo-periculosidade-insalubridade
+  - trecho: ... Plano de ação nr 1 · Plano de gerenciamento de resíduos da construção civil ... Timbó Grande; Trombudo Central; Campo Belo do Sul; Itá; Ouro; Meleiro; Aurora ...
+- `2e2c233db3` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Efeitos da lei europeia contra desmatamento sobre as exportações ...
+  - url: https://www.econstor.eu/bitstream/10419/311739/1/1917568762.pdf
+  - trecho: Iniciativas anteriores, como o Plano de Ação de Governança e Comércio para Exe- ... Timbó Grande. MT. Tabaporã. CE. Ibiapina. GO. Nova Roma. TO. Santa Rosa do.
+- `84fd29edc4` · nível **C** (1 pts) · busca_web · — · data 2024 (do trecho)
+  - título: universidade federal de santa catarina
+  - url: https://repositorio.ufsc.br/bitstream/handle/123456789/265886/PGEA0797-D.pdf?sequence=-1&isAllowed=y
+  - trecho: Aug 8, 2024 ... 13 Plano de Ação de Emergência;. C/S. 14 Programa de Compensação de ... BR-280 a divisa entre Ireneópolis e Timbó Grande. Nota: Projeção ...
+- `fa38334faa` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Principios do equador - Mineral Engenharia e Meio Ambiente
+  - url: https://www.mineral.eng.br/principios-do-equador
+  - trecho: ... plano de ação e acompanhamento da implantação do plano de ação para diversos projetos. ... Timbó Grande; Três Barras; Treviso; Treze de Maio; Treze Tílias ...
+
+## Treze de Maio/SC — 63 pendente(s)
+- `872cd83aab` · nível **A** (8 pts) · busca_web · — · data 2014 (do trecho)
+  - título: plano municipal de preparação e resposta a emergências
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/401-regional-de-saude-de-blumenau.html?download=1248%3Appr-esp-blumenau&Itemid=109
+  - trecho: Grande do Treze de Maio;. ✓ Córregos: Córrego Fundo Kilan. 5.6 PEDOLOGIA ... Plano de contingência de proteção e defesa civil. 2014. UNIFESP. Gestão de ...
+- `d00818759b` · nível **B** (6 pts) · busca_web · — · data 29/06/2017 (do trecho)
+  - título: [29/06/2017] Relatório Final - Prefeitura de Imaruí
+  - url: https://imarui.sc.gov.br/uploads/sites/130/2021/12/1005072_Relatorio_Final.pdf
+  - trecho: ... Treze de Maio e Tubarão. O Consórcio CATARINA é uma possibilidade dos ... Plano de Contingência é um plano elaborado para orientar as ações de.
+  - ⚠ ano_anterior_ao_ciclo
+- `0fc5941aeb` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: plano municipal de preparação e resposta às emergências em ...
+  - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/402-regional-de-saude-de-tubarao.html?download=1260%3A3-plano-treze-de-maio&Itemid=109
+  - trecho: Neste sentido, em Treze de Maio / SC existem diversas iniciativas do ... Também elaborou plano de contingência acerca da emergência em saúde pública, bem ...
+- `a516b01da7` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL DE CONTINGÊNCIA
+  - url: https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf
+  - trecho: • Cidades Próximas: São Ludgero, Tubarão, Treze de Maio, Cocal do Sul, Urussanga, Orleans ... O Plano de Contingência Municipal - PLANCON Municipal será ativado ...
+  - ⚠ ano_anterior_ao_ciclo
+- `b38879014a` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Treze de Maio promove baile da Melhor Idade com música ...
+  - url: https://diarioomunicipio.com.br/geral/treze-de-maio-promove-baile-da-melhor-idade-com-musica-diversao-e-confraternizacao-130172
+  - trecho: 3 days ago ... Treze de Maio promove baile da Melhor Idade com música ... Grac Municipal é instituído e plano de contingência é atualizado em Jaguaruna.
+- `9186ca417f` · nível **B** (5 pts) · busca_web · — · data 2020 (do trecho)
+  - título: PLANO DE AÇÃO REGIONAL DA REDE DE ATENÇÃO ÀS ...
+  - url: https://www.saude.sc.gov.br/index.php/pt/redes-de-atencao-a-saude/rede-de-urgencia-e-emergencia-rue/planos-de-acao/documentos-planos-de-acao-regionais/par-macrorregiao-do-sul/download
+  - trecho: Nov 4, 2020 ... Martinho, Treze de Maio, Tubarão, Balneário Rincão, Cocal do Sul ... 4 PROPOSTA DE INCLUSÃO NO PLANO DE AÇÃO REGIONAL ...
+- `8d3c92eadb` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: SC - Prefeitura de Tubarão
+  - url: https://tubarao.sc.gov.br/uploads/sites/265/2025/04/Plano-de-Contingencia-APROVADO-1-2024.pdf
+  - trecho: com o município de Jaguaruna, a Sudoeste com Treze de Maio, e a Sudeste com Laguna. ... plano de contingência. Nível de. Mobilização. Limiares Críticos. Ações ...
+  - ⚠ ano_anterior_ao_ciclo
+- `51488ee4f9` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: plano de - contingência - Defesa Civil de Blumenau
+  - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2024.pdf
+  - trecho: Aug 6, 2024 ... Plano de Contingência – Inundações e Movimentos de Massa - Anexo ... Treze de Maio. Localidade Treze de Maio. 8411-0169 (falar com. Kleine).
+- `e7a4e4f96f` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Ex-prefeito Edenilson da Costa apoia Dr. Elói à Câmara Federal ...
+  - url: https://diarioomunicipio.com.br/geral/ex-prefeito-edenilson-da-costa-apoia-dr-eloi-a-camara-federal-reforcando-compromisso-com-jaguaruna-130071
+  - trecho: 4 days ago ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
+- `d14edb32fb` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Tempo segue firme, com predomínio de sol, poucas nuvens e ...
+  - url: https://diarioomunicipio.com.br/tempo/tempo-segue-firme-com-predominio-de-sol-poucas-nuvens-e-temperaturas-em-elevacao-em-santa-catarina-130238
+  - trecho: 2 days ago ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
+- `1c3e37bc42` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Decreto - Prefeitura Municipal de Criciúma
+  - url: https://apoio.criciuma.sc.gov.br/files/68f93fa032a0c22102025.pdf
+  - trecho: Oct 22, 2025 ... O Plano de Contingência para alagamento, deslizamento, vendavais e ... Treze de Maio 25.7 km,. Page 17. Nº 3834– Ano 16 quarta-feira, 22 ...
+- `559e0b2606` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Plano de Ação para Prevenção e Controle do Desmatamento e das ...
+  - url: https://www.gov.br/casacivil/pt-br/.arquivos/101116%20-%20PPCerrado_Vfinal.pdf
+  - trecho: Durante o período chuvoso, é comum a ocorrência de veranicos, ou seja ... PA Treze de Maio. MG. 3,84. 0,09. 0,04%. PA Trombetas. PI. 16,08. 2,71. 1,15%. PA ...
+- `e6c562566c` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: prefeitura municipal de agrolândia
+  - url: https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf
+  - trecho: ... TREZE DE MAIO / 1 -. FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL DE TREZE DE MAIO ... PLANO DE AÇÃO ELABORADO PARA. ATENDIMENTO À POPULAÇÃO IMIGRANTE, COM ...
+- `d4333df511` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: ESTADOBE SANTA - Arquivo Público do Estado de Santa Catarina
+  - url: https://acervo.arquivopublico.sc.gov.br/uploads/r/arquivo-publico-do-estado-de-santa-catarina-apesc/3/4/0/340526054f6edc94d6608999a63b78a92df888e853ec7c7f8d1eee4a179b096e/dfc32411-412a-4b3c-b1bf-804b3865605f-32048-DOE_7903_16_09_1965_28F_DJ_1899_04F.pdf
+  - trecho: nicípio de Treze de Maio,. |. Benta Ghisi Barbosa, Regente de. 800 40. -18 das ... bem orientado plano de ação repressiva do Govêrno. E, já agora, podem-se ...
+- `91c9b257ad` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Diário Oficial - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2026/20260608/Jornal/22769.pdf
+  - trecho: Jun 8, 2026 ... ... Treze de Maio OBJETO: auxilio financeiro para custeio e manutenção ... plano de ação, pro- por uma solução técnica e elaborar o termo ...
+- `645710216a` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Currículo base da educação infantil e do ensino fundamental do ...
+  - url: https://tubarao.sc.gov.br/uploads/sites/265/2022/11/1853591_Curriculo_Base_da_Educacao_Infantil_e_Fundamental_do_Territorio_Catarinense.pdf
+  - trecho: ... Treze de Maio; Caldas do Cubatão – Santo Amaro da Imperatriz; Aldeia ... Plano de ação para satisfazer as necessidades básicas de aprendizagem. Jomtien ...
+  - ⚠ ano_anterior_ao_ciclo
+- `71392208fc` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Editor Comitê Tubarão e Complexo Lagunar - Aguas SC
+  - url: https://www.aguas.sc.gov.br/servicos/noticias/itemlist/user/199-editorcomitetubaraoecomplexolagunar
+  - trecho: ... plano de contingência com o intuito de enfrentar os momentos de crise. ... Treze de Maio. Publicado em Notícias. Tagged sob. Comitê Tubarão e Complexo ...
+- `0ea2fd9a54` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
+  - título: Publicações Epagri
+  - url: https://sistemas.epagri.sc.gov.br/semob/consulta.action?subFuncao=consultaPublicacoes
+  - trecho: ... Plano de contingência da Epagri diante da pandemia da Covid-19 2022 ... Treze de Maio, SC. 2014 - Publicação seriada (Boletim Didático) Livre download ...
+- `eab9a1876f` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: estado de santa catarina - DOE SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
+  - trecho: Dec 2, 2024 ... Continuidade de negócio (plano de contingência, de recuperação de ... ção da agência de Treze de maio. oriGEm: Dl nº 79/2024 Valor: r ...
+  - ⚠ ano_anterior_ao_ciclo
+- `69523f26ef` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
+  - título: Publicações-Livres - Epagri
+  - url: https://www.epagri.sc.gov.br/solucoes/publicacoes/publicacoes-livres/
+  - trecho: Plano de contingência da Epagri diante da pandemia da Covid-19 2022 ... Treze de Maio, SC. 2014 - Publicação seriada (Boletim Didático) Livre ...
+- `3117895f56` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja alinhado ... Treze de Maio; Timbó Grande; Trombudo Central; Campo Belo do Sul; Itá; Ouro ...
+- `a90af4340a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Coopercocal apresenta Plano de Contingência para atuação em ...
+  - url: https://www.ligadonosul.com.br/geral/coopercocal-apresenta-plano-de-contingencia-para-atuacao-em-periodos-de-alertas-climaticos/
+  - trecho: Sep 1, 2026 ... A Coopercocal apresentou aos colaboradores, na manhã desta segunda-feira, dia 31, o Plano de Contingência ... Treze de Maio em Destaque. Jailson ...
+- `93c498b2a2` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Treze de maio: 707 imagens, fotos e ilustrações stock livres de direitos
+  - url: https://www.shutterstock.com/pt/search/treze-de-maio
+  - trecho: ... Treze de Maio, state of Santa Catarina. TREZE DE MAIO, BRAZIL - CIRCA APRIL ... No entanto, o governo regional implementou um plano de contingência ...
+- `73c4015e23` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: regulamento/plano de operação da promoção - Cresol
+  - url: https://cresol.com.br/wp-content/uploads/2026/02/Regulamento-Aprovado-Cooperar-e-Ganhar-Cresol-Geral-SPA-04.047374-2026.pdf
+  - trecho: Bairro: CENTRO Município: TREZE DE MAIO UF: SC CEP:88710-000. CNPJ/MF nº ... plano de contingência específico para solução dos possíveis problemas e ...
+- `baa9e60ba6` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20251125/Jornal/22647.pdf
+  - trecho: Nov 25, 2025 ... de plano de contingência para doação de itens de assistência hu- ... de TrEZE dE maio/sc, para o exercício da atividade de vistoria de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `914c191325` · nível **B** (3 pts) · busca_web · — · data 14/10/2020 (do trecho)
+  - título: FLORIANÓPOLIS, quARtA-FeIRA, 14 de OutubRO de 2020 ANO ...
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20201014/Jornal/2499.pdf
+  - trecho: Oct 14, 2020 ... NO PLANO DE CONTINGÊNCIA - PLANCon- EDU. data: _____/_____/_____ ... MUNICÍPIO DE TREZE DE MAIO / SC. PROCESSO DE LICITAÇÃO Nº 035/2020.
+  - ⚠ ano_anterior_ao_ciclo
+- `882d3693b7` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: estado de santa catarina - AMREC
+  - url: https://amrec.com.br/uploads/sites/550/2022/12/2467540_025_anexo_PLANO_DE_ACAO_REGIONAL___MACROSUL_2021.pdf
+  - trecho: Martinho, Treze de Maio, Tubarão ... Intergestores Bipartite do Estado de Santa Catarina - CIB/SC, que aprova o primeiro aditivo do Plano de Ação Regional.
+  - ⚠ ano_anterior_ao_ciclo
+- `877c7eb3c9` · nível **B** (3 pts) · busca_web · — · data 16/09/2026 (do trecho)
+  - título: Paraná , 16 de Setembro de 2026 • Diário Oficial dos Municípios do ...
+  - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118184_2026-09-15_73e5003f6ec967b8a272135117a4ec83.pdf
+  - trecho: Sep 15, 2026 ... ... Treze de Maio, nº 906, Centro, Cruzeiro do. Iguaçu/PR, neste ato ... Plano de Ação e do. Plano de Trabalho referente a Deliberação nº 13 ...
+- `87310f1d2d` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Ata - Pesquisa textual | Tribunal de Contas da União
+  - url: https://pesquisa.apps.tcu.gov.br/#/doc/ata-sessao/6/2022/p/publica
+  - trecho: ... plano de ação para implemento das recomendações, bem como justificativa para ... Treze de Maio, 139 - Fátima - Fortaleza/CE, na verdade funciona uma ...
+  - ⚠ ano_anterior_ao_ciclo
+- `53156f516d` · nível **C** (7 pts) · busca_web · — · data 2054 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA - Prefeitura Municipal de Monte Sião
+  - url: https://montesiao.mg.gov.br/public/admin/globalarq/uploads/files/PLANO_DE_CONTINGENCIA%20-%20Divulga%C3%A7%C3%A3o%20popula%C3%A7%C3%A3o.pdf
+  - trecho: O Plano de Contingência de Proteção e Defesa Civil- PLANCON ... Casa de Caridade. Ouro Fino. Ouro Fino. Rua Treze de Maio, 2054, Bela vista. (35)3441-1059.
+  - ⚠ uf_divergente_na_url
+- `eae07c4828` · nível **C** (5 pts) · busca_web · — · data 16/04/2021 (do trecho)
+  - título: Edição 5.393 – 16/04/2021 - Prefeitura Municipal de Dourados
+  - url: https://do.dourados.ms.gov.br/index.php/edicao-5-393-16-04-2021/
+  - trecho: Apr 16, 2021 ... ... Plano de Contingência durante o período de circulação dos agentes ... Treze de Maio, s/n, Vila Martins, Dourados – MS 21.800/2020 26/11 ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `b30ba919b3` · nível **C** (4 pts) · busca_web · — · data 27/06/2025 (do trecho)
+  - título: Rio Grande do Sul , 27 de Junho de 2025 • Diário Oficial dos ...
+  - url: https://www.altofeliz.rs.gov.br/web/imgs/arquivos/publicacao-famurs-n-52-de-27-de-junho-de-20251751025320.pdf
+  - trecho: Jun 26, 2025 ... ... Treze de Maio nº 1922, torna público que, no dia 09 de julho de 2025 ... Plano De Contingência, bem como das comunicações com a ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `1812283959` · nível **C** (4 pts) · busca_web · — · data 2022 (do trecho)
+  - título: Diário Oficial Eletrônico do Estado do Rio Grande do Sul
+  - url: https://pge.rs.gov.br/upload/arquivos/202201/11084252-doe-2022-01-11.pdf
+  - trecho: Jan 11, 2022 ... TREZE DE MAIO, N.º 1922, CENTRO, NA CIDADE DE PINHAL/RS, CEP 95.555 ... O plano de contingência e continuidade do serviço de TI será ...
+  - ⚠ texto_falso_positivo_provavel, uf_divergente_na_url, ano_anterior_ao_ciclo
+- `b58d8cc14f` · nível **C** (4 pts) · busca_web · — · data 2021 (do trecho)
+  - título: COMPDEC/ALEGRE - CEPDEC
+  - url: https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/ALEGRE%20-%20PLANO%20DE%20CONTIG%C3%8ANCIA.pdf
+  - trecho: No Plano de Contingência Municipal 2021-2022 estão contidos todos os setores e atribuições ... Rua Treze de Maio. ES_ALEGRE_SR_03_CPRM. Deslizamento. Bairro ...
+  - ⚠ uf_divergente_na_url
+- `a68d8ad19f` · nível **C** (4 pts) · busca_web · — · citação não extraída
+  - título: VOLUME II - Home - Prefeitura
+  - url: https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/arquivos/secretarias/meio_ambiente/cades/audiencias/0001/eia_rima_congonhas_vol_2.pdf
+  - trecho: Lago Treze De Maio-Caps Adulto. Centro de Atenção Psicossocial Adulto ... ➢ Plano de ação de emergência (PAE);. ➢ Auditorias de conformidade legal e ...
+  - ⚠ uf_divergente_na_url
+- `3c8423f7b2` · nível **C** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Edição Regular - ARQUIP | DOSP
+  - url: https://diariooficial.prefeitura.sp.gov.br/md_epubli_controlador.php?acao=edicao_consultar&formato=O&dta=22%2F04%2F2026
+  - trecho: Apr 22, 2026 ... ... plano de contingência para os meses de março/2026 a junho/2026 ... Treze de Maio, nºs 613 e 621 - Bela Vista (SQL 009.022.0128-1) ...
+  - ⚠ uf_divergente_na_url
+- `0fbb5ce92b` · nível **C** (3 pts) · busca_web · — · citação não extraída
+  - título: Vereadores - Marco Antônio Xavier - Proposituras
+  - url: https://siave.limeira.sp.leg.br/Vereadores/Proposituras/5964
+  - trecho: ... Plano de Contingência para Enfrentamento das Arboviroses no âmbito do ... Treze de Maio x rua Santa Teresinha e rua Dr. Trajano x Rua Santa Teresinha ...
+  - ⚠ risco_errado_no_titulo, uf_divergente_na_url
+- `71c82df743` · nível **C** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Diário Oficial 14-05-2026 Eduardo.indd - A União
+  - url: https://auniao.pb.gov.br/servicos/doe/2026/maio/diario-oficial-14-05-2026-portal.pdf
+  - trecho: May 14, 2026 ... ASSOCIAÇÃO RECREATIVA E CULTURAL DO JARDIM TREZE DE MAIO - ARC ... com recursos federal oriundos de Transferência Especial – Plano de Ação nº ...
+  - ⚠ uf_divergente_na_url
+- `6ea28e461a` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: TCE/SC Educação
+  - url: https://servicos.tcesc.tc.br/tceeducacao/
+  - trecho: Treze de Maio; Treze Tílias; Trombudo Central; Tubarão; Tunápolis; Turvo; União do ... Plano de Contingência Escolar e open_in_new Novas diretrizes para o ...
+- `f0fbec564e` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Atos Oficiais de Nova Iguaçu
+  - url: https://www.noticiasdenovaiguacu.com/p/a.html
+  - trecho: ... Plano de Contingência,1,Plano de Prevenção à Violência contra a Juventude ... Treze de Maio,1,Ruas,3,Rubens Barborema,3,Rubens Rodrigues Borborema,1 ...
+- `bc4fa60255` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Ocorrência de Resgate em Pedreira Na manhã desta quarta-feira ...
+  - url: https://www.instagram.com/reel/DbHYMbXMHTz/
+  - trecho: Jul 22, 2026 ... ... Treze de Maio. Segundo as informações repassadas no local, um ... A atividade faz parte da estruturação do PLANCOM (Plano de Contingência) ...
+- `9cf3a915b9` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Tubarão realiza 2º Simulado de Catástrofes com foco ... - HC Notícias
+  - url: https://hcnoticias.com.br/geral/80321/tubarao-realiza-2-simulado-de-catastrofes-com-foco-em-deslizamentos-de-terra
+  - trecho: Mar 1, 2026 ... O exercício também orientou a população sobre o uso do plano de contingência ... Vereador de Treze de Maio morre após ser atingido por ...
+- `623d941d48` · nível **C** (2 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Falta de energia: como o seu condomínio pode se prevenir?
+  - url: https://graiche.com.br/news/falta-de-energia-eletrica-como-seu-condominio-pode-se-prevenir/
+  - trecho: Nov 29, 2024 ... ... Plano de Contingência para Portaria. Baixe agora mesmo e garanta a ... Matriz: Rua Treze de Maio , 1954 – 1º – 12º Andar, Paraíso – São ...
+  - ⚠ risco_errado_no_titulo
+- `f339d74dd1` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: O temporal previsto pela Defesa Civil no fim da tarde desta terça ...
+  - url: https://www.instagram.com/reel/DaQCuqpjg4P/?hl=en
+  - trecho: Jul 1, 2026 ... Segundo a Prefeitura, a medida faz parte do plano de contingência ... ➡️ Na Rua Treze de Maio, no trecho sob a ponte Desembargador Mário ...
+- `40f9ea03d6` · nível **C** (2 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Governo de SC irá entregar uniformes escolares para mais de 200 ...
+  - url: https://www.instagram.com/reel/DNlfVvmRTBE/
+  - trecho: Aug 20, 2025 ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
+- `13ecf70787` · nível **C** (2 pts) · busca_web · — · data 26.04.13 (do trecho)
+  - título: 2026.04.13.DOE.pdf - Diário Oficial
+  - url: http://www.ioepa.com.br/arquivos/2026/2026.04.13.DOE.pdf
+  - trecho: Apr 13, 2026 ... ... PLANO DE CONTINGÊNCIA DAS ARBOVIROSES PARA O ANO DE 2026. ORIGEM ... Treze de Maio, n. 80, Sala 202, Bairro: Campina, CEP: 66.013-080 ...
+- `08e2a47a86` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Veja calendário do mutirão de coleta de lixo em João Pessoa - G1
+  - url: https://g1.globo.com/pb/paraiba/noticia/2026/04/16/veja-calendario-do-mutirao-de-coleta-de-lixo-em-joao-pessoa.ghtml
+  - trecho: Apr 16, 2026 ... A medida faz parte do plano de contingência para normalizar o ... Noturno. Torre, Ter, Quin, Sáb, Noturno. Treze de Maio, Ter, Quin, Sáb ...
+- `1c0b840c1f` · nível **C** (2 pts) · busca_web · — · data 2023 (do trecho)
+  - título: Mapa da APA da Baleia Franca | PDF - Scribd
+  - url: https://de.scribd.com/document/717034426/Mapa-Zoneamento-APA-Baleia-Franca
+  - trecho: TREZE DE MAIO LAGOA DE SANTA MARTA GALHETA NORTE ZONA DE MÉDIA INTERVENÇÃO ... Plano de Contingência Goiana 2023-2024. 99 Seiten. Mapa das Áreas ...
+- `c97429168a` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Sem categoria - Sul em Destaque
+  - url: https://www.sulemdestaque.com.br/category/sem-categoria/
+  - trecho: ... plano de ação para o cumprimento da Meta 18 do Plano Municipal de Educação ... Treze de Maio A Secretaria de Assistência Social, por meio do CRAS ...
+- `3e98f20c39` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: GASODUTO BOLiVIA - BRASIL (Trecho Brasileiro)
+  - url: https://documents1.worldbank.org/curated/en/114721468742195461/pdf/multi-page.pdf
+  - trecho: Treze de Maio. 4.384,00. _. _. _. *. Urussanga. 6.534,00 __37. -. *. Cocal do Sul ... o plano de ação a ser apresentado pela CONTRATADA com a devida aprovação do ...
+- `95d769f49d` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Rafaela Costa, Autor em Ligado no Sul
+  - url: https://www.ligadonosul.com.br/colunista/rafaelacosta/
+  - trecho: ... plano de ação para os próximos trabalhos. O Conselho tem papel importante no ... Treze de Maio em Destaque. Jailson · Urologia & Saúde Sexual Masculina.
+- `7d7dd61040` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: A subestação de São Bento do Sul já conta com um ... - Instagram
+  - url: https://www.instagram.com/p/DXwzSD8kb1t/
+  - trecho: Apr 30, 2026 ... Após a inauguração da subestação própria, instalada no bairro São Luiz, em Treze de Maio ... A empresa mantém um Plano de Contingência ...
+- `4a808d601b` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Em entrevista, o superintendente da CEEE Equatorial Região Sul ...
+  - url: https://www.instagram.com/reel/DW9jB8Bgh4V/
+  - trecho: Apr 10, 2026 ... Após a inauguração da subestação própria, instalada no bairro São Luiz, em Treze de Maio ... A empresa mantém um Plano de Contingência ...
+- `f7d509b141` · nível **C** (1 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Está chegando um dos momentos mais importantes da ... - Instagram
+  - url: https://www.instagram.com/p/DPR8zDSiQ70/?hl=nl
+  - trecho: Oct 1, 2025 ... Após a inauguração da subestação, instalada no bairro São Luiz, em Treze de Maio ... A empresa mantém um Plano de Contingência permanente e ...
+- `1e9007712f` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Um projeto que partiu dos próprios moradores, e ali, o medo deu ...
+  - url: https://www.instagram.com/reel/DTTIMd-keUO/
+  - trecho: Jan 9, 2026 ... Ativamos o nosso Plano de Contingência e unificamos a gestão de ... Rua Treze de Maio, 702, Cristo Redentor - Caxias do Sul/RS
+- `928b507ca6` · nível **C** (1 pts) · busca_web · — · data 2024 (do trecho)
+  - título: PDI 2024 - 2028 1 - UNESC
+  - url: https://www.unesc.net/files/editor/files/Plano%20de%20Desenvolvimento%20Institucional(1).pdf
+  - trecho: Dec 6, 2019 ... ... Plano de Contingência. 6.3.1.1 Centro de Inteligência Tecnológica e ... Treze de Maio e Tubarão. Sua população soma 392.168 habitantes ...
+  - ⚠ ano_anterior_ao_ciclo
+- `b6b2e59a8c` · nível **C** (1 pts) · busca_web · — · data 2022 (do trecho)
+  - título: plano de desenvolvimento institucional pdi 2022 - 2026 - FASUL
+  - url: https://www.fasuleducacional.edu.br/docs/Plano-de-Desenvolvimento-Institucional.pdf
+  - trecho: plataformas estão descritos no Plano de Contingência de Tecnologia da Informação e ... Treze de Maio, Polo Campo Grande - Treze de Maio - Centro / MS, 4059 ...
+- `5d36b5c98d` · nível **C** (1 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Edição 1143 - Calaméo
+  - url: https://www.calameo.com/books/0074059619789992ef05d
+  - trecho: Jun 5, 2024 ... A Plano de Contingência Já as estações hidrológicas guladora de ... Treze de Maio participa de debate do Sebrae sobre políticas ...
+- `e52ab46ad9` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Desenvolvimento Social inaugura abrigo para adolescentes em
+  - url: https://ptdocz.com/doc/1701280/desenvolvimento-social-inaugura-abrigo-para-adolescentes-em
+  - trecho: ... plano de contingência dos serviços tecnológicos suportados e/ou gerenciados ... Treze de Maio, junto ao bordo direito, das 21h às 4h do dia subsequente ...
+- `f726dd3c3d` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Maravilha sediará importante encontro regional! No dia ... - Instagram
+  - url: https://www.instagram.com/p/DXXfEI7EW0J/
+  - trecho: Apr 20, 2026 ... ... Plano de Contingência da Assistência Social (PLANCON AS). O ... Photo by Prefeitura de Treze de Maio on August 24, 2026. May be an.
+- `b8e25a6cfb` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: avaliação de risco e impacto para a biodiversidade e serviços ...
+  - url: https://www.hydro.com/globalassets/08-about-hydro/hydro-worldwide/brasil/extrudados/sgi---tubarao/08---relatorio-de-biodiversidade_hydro-tubarao_08-24.pdf
+  - trecho: Implementar um Plano de Ação de Biodiversidade, com metas e prazos, para abordar os ... Rosa de Lima, São Ludgero, São Martinho, Treze de Maio e Tubarão. Tubarão ...
+- `80eedb40e4` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Página: 4 – Centro Universitário Univinte
+  - url: https://univinte.edu.br/portal/page/4/
+  - trecho: Plano de Ação em Projeto de Extensão. MODELO DE DECLARAÇÕES: Declaração de ... Prefeitura de Treze de Maio. Trajeto: Treze de Maio – Capivari de Baixo.
+- `ea25d1248d` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Conselho Federal dos Técnicos Industriais - CFT
+  - url: https://www.cft.org.br/wp-content/uploads/2023/04/Revista_Digital_CFT.pdf
+  - trecho: O colegiado elabora, a cada ano, o plano de ação de suas linhas de atuação indicando ... Treze de Maio, 2500, 9º andar, sala 901, Centro, Campo Grande, MS ...
+  - ⚠ ano_anterior_ao_ciclo
 
 ## Tubarão/SC — 2 pendente(s)
 - `f6426a3c3b` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
@@ -2941,15 +4587,498 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 1, 2026 ... Defesa Civil de Mafra apresenta plano de contingência para enchentes e alagamentos ... El Niño. Durante o encontro, o prefeito Carlos Nitz ...
   - juiz: portão automático: fonte não oficial
 
-## Maracajá/SC — 2 pendente(s)
-- `ee5c21214a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
-  - url: https://maracaja.sc.gov.br/pagina-40824/
-  - trecho: Nova escola municipal de Maracajá será entregue em 2026 à comunidade de Espigão Grande
-- `ffb3a23042` · nível **C** (6 pts) · busca_web · — · data 2026 (do trecho)
-  - título: Plano de Contingência para Covid-19 - Prefeitura de Maracajá
-  - url: https://maracaja.sc.gov.br/pagina-40824/
-  - trecho: Matrículas e rematrículas para o ano letivo de 2026 na Rede Municipal de Ensino de Maracajá iniciam em novembro.
+## Major Vieira/SC — 53 pendente(s)
+- `f005c24366` · nível **B** (6 pts) · busca_web · — · data 23/10/2025 (do trecho)
+  - título: DIÁRIO DO LEGISLATIVO - 23/10/2025
+  - url: https://diariolegislativo.almg.gov.br/2025/L20251023.pdf
+  - trecho: Oct 23, 2025 ... Major Vieira, nº 324, Centro, no Município de Cataguases, e ... adoção de medidas emergenciais e de plano de contingência para variações sazonais ...
+  - ⚠ ano_anterior_ao_ciclo
+- `e39a9db1ab` · nível **B** (5 pts) · busca_web · — · data 2024 (do trecho)
+  - título: plano municipal de contingência de desastres naturais
+  - url: https://saude.prefeitura.rio/wp-content/uploads/sites/47/2024/10/Livro_PlanoDeContingenciaDeDesastresNaturais_2024-2026_PDFDigital_20241022.pdf
+  - trecho: Este documento apresenta o Plano de Contingência de Desastres Naturais 2024-2026 ela- ... Praça Major Vieira de Mello, 13/fundos —. Comari, Campo Grande. (21) ...
+- `8e2ead313a` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Elaboração do Plano de Recursos Hídricos – Atividade E1 a E3
+  - url: https://www.aguas.sc.gov.br/jsmallfib_top/DHRI/Planos%20de%20Bacias/Plano%20da%20Bacia%20Hidrografica%20do%20Rio%20Canoinhas%20e%20Afluentes%20do%20Negro%20%20/Produto_Etapa_E_PRH_Canoinhas_Negro.pdf
+  - trecho: Major Vieira (UG 2), e duas no município de Mafra (UG 6 e UG 7), sendo que ... Plano de Contingência e Defesa Civil - PLANCON. Prefeitura de Campo.
+- `e98c34fe19` · nível **B** (5 pts) · busca_web · — · **PORtARIA Nº 232**, 01/09/2021 (do trecho)
+  - título: FLORIANÓPOLIS, SeguNdA-FeIRA, 27 de SeteMbRO de 2021 ANO ...
+  - url: https://www.sea.sc.gov.br/wp-content/uploads/2022/10/Jornal_2021_09_27_21614.pdf
+  - trecho: § 2º O Plano de Contingência é organizado pela definição e carac- terização ... de Major Vieira - Sed. PORtARIA Nº 2325 - 01/09/2021. CONCEDER ...
+  - ⚠ ano_anterior_ao_ciclo
+- `a1eb7503aa` · nível **B** (5 pts) · busca_web · — · data 2022 (do trecho)
+  - título: PLANO MUNICIPAL DE ASSISTÊNCIA SOCIAL 2022 - 2025
+  - url: https://papanduva.sc.gov.br/uploads/sites/306/2022/06/2354533_PLANO_MUNICIPAL_DE_ASSISTENCIA_SOCIAL_2022___2025.pdf
+  - trecho: Itaiópolis, Mafra, Major Vieira, Monte Castelo, Rio do Campo, Santa Terezinha, ... https://leismunicipais.com.br/plano-municipal-de-educacao-papanduva-sc.
+  - ⚠ ano_anterior_ao_ciclo
+- `f9da5b32b8` · nível **B** (5 pts) · busca_web · — · **Decreto nº 11.367**, 2023 (do trecho)
+  - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
+  - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-07-29.pdf?noCache=20260729135540192517
+  - trecho: Jul 29, 2026 ... - Que, ademais, por força do Decreto nº 11.367/2023, seria elaborado o Plano de Ação Para Prevenção e Controle do ... Major Vieira/SC; d) nome e ...
+- `4f70a8ec85` · nível **B** (5 pts) · busca_web · — · data 2013 (do trecho)
+  - título: PLANO MUNICIPAL DE SAÚDE
+  - url: https://timbogrande.sc.gov.br/uploads/sites/352/2025/05/plano-de-saude.pdf
+  - trecho: ... Major Vieira,. Ireneópolis, Lebon Régis, estas famílias buscam ... Plano de Enfrentamento das. DCNT's. Segundo o Plano de Ação da OMS (2013-2020) ...
+  - ⚠ ano_anterior_ao_ciclo
+- `7c8fd9e086` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: estado de santa catarina - DOE SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
+  - trecho: Dec 2, 2024 ... comarca de major Vieira, abrangendo 1,54ha (um vírgula cinquenta e ... Continuidade de negócio (plano de contingência, de recuperação de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `c856a8aaba` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Seis municípios decretam emergência após temporais em Santa ...
+  - url: https://www.santacatarinaempauta.com.br/2026/07/02/seis-municipios-decretam-emergencia-apos-temporais-em-santa-catarina-defesa-civil-inicia-entrega-de-assistencia/
+  - trecho: Jul 2, 2026 ... ... Major Vieira e Timbó Grande. Conforme a Defesa Civil estadual, essas ... A distribuição faz parte do plano de contingência previsto ...
+- `ab1a0a3542` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
+  - url: https://www.mpsc.mp.br/w/noticias/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc
+  - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Major Vieira e Três Barras; 3ª PJ de Mafra ...
+- `d6fe631651` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Dupla é presa em flagrante pela PM após assaltar conveniência em ...
+  - url: https://canoinhasonline.com.br/2026/09/dupla-e-presa-em-flagrante-pela-pm-apos-assaltar-conveniencia-major-vieira.html
+  - trecho: 2 days ago ... Home Major Vieira Dupla é presa em flagrante pela PM após assaltar conveniência em Major Vieira ... Defesa Civil detalha plano de contingência ...
+- `94673643db` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Proposta Curricular da Educação Básica - Prefeitura de Monte Castelo
+  - url: https://montecastelo.sc.gov.br/uploads/sites/449/2021/12/2213358_1732258_PROPOSTA_CURRICULAR_AMPLANORTE_COMPLETA_160120.pdf
+  - trecho: ... Major Vieira. Page 10. A partir da necessidade de que as discussões e ... plano de ação que possibilite contínuas melhorias, qualitativas e quantitativas ...
+  - ⚠ ano_anterior_ao_ciclo
+- `e8cfd5f970` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: EDITAL DE CHAMAMENTO PÚBLICO PARA TERMO DE ...
+  - url: https://www.cultura.sc.gov.br/downloads/fcc/editais/3362-edital-de-chamamento-publico-para-termo-de-convenio-sc-cultura-boa-165-2025-atualizado-docx/file
+  - trecho: Nov 12, 2025 ... Irineópolis, Itaiópolis, Mafra, Major Vieira, ... ajuizamento de ação e/ou apresentação de plano de ação, especialmente no caso de obra com etapa.
+  - ⚠ ano_anterior_ao_ciclo
+- `4edb8c4f5e` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
+  - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
+  - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Major Vieira. 7.523. Monte Castelo. 8.346. Papanduva. 18.013. Porto União. 33.619.
+- `1ba1743c16` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - título: estado de santa catarina - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250829/Jornal/22587.pdf
+  - trecho: Aug 29, 2025 ... Município de Major Vieira. OBJETO: aquisição de uma escavadeira ... plano de ação 09032024-068012/2024 deputada Julia Zanatta, conforme ...
+  - ⚠ ano_anterior_ao_ciclo
+- `a6e5bba104` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: prefeitura municipal de agrolândia
+  - url: https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf
+  - trecho: ... MAJOR VIEIRA / 05 - FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL. DE MAJOR VIEIRA ... PLANO DE AÇÃO ELABORADO PARA. ATENDIMENTO À POPULAÇÃO IMIGRANTE, COM ...
+- `a79b07a162` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
+  - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-10-01.pdf
+  - trecho: Oct 1, 2025 ... (Araucaria angustifolia e Ocotea porosa), sem autorização ambiental, em Major Vieira ... PLANO DE CONTINGÊNCIA (PLANCON). MUNICÍPIO DE ANITA ...
+  - ⚠ ano_anterior_ao_ciclo
+- `d9c71ee4b7` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Ondas de calor no Brasil se tornam mais longas e frequentes
+  - url: https://mais.opovo.com.br/reportagens-especiais/calor-impactos-economia-meio-ambiente/2026/01/27/ondas-de-calor-o-planeta-no-limite.html
+  - trecho: Jan 27, 2026 ... ... plano de contingência contra efeitos de Foto: Fernando Frazão ... MAJOR VIEIRA 33 XANXERE 31 LAGES 31 SAO JOAQUIM 30 FLORIANOPOLIS 30 ...
+- `fc1f29e557` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Tecnologia 5G deve chegar em Canoinhas só em 2026
+  - url: https://canoinhasonline.com.br/2022/07/tecnologia-5g-deve-chegar-em-canoinhas-so-em-2026.html
+  - trecho: Jul 13, 2022 ... Defesa Civil detalha plano de contingência ... Morador de Major Vieira cai em golpe das notas falsas ao vender computador em Canoinhas.
+- `19ff83b5e1` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Lions Clube Canoinhas Ouro Verde completa 40 anos de ...
+  - url: https://canoinhasonline.com.br/2025/06/lions-clube-canoinhas-ouro-verde-completa-40-anos-de-dedicacao-a-comunidade.html
+  - trecho: Jun 26, 2025 ... Defesa Civil detalha plano de contingência ... Morador de Major Vieira cai em golpe das notas falsas ao vender computador em Canoinhas.
+  - ⚠ ano_anterior_ao_ciclo
+- `9c433c5f81` · nível **B** (3 pts) · busca_web · — · data 28/10/2020 (do trecho)
+  - título: Educação – AMPLANORTE – Associação dos Municípios do ...
+  - url: https://amplanorte.org.br/pagina-36462/
+  - trecho: 28/10/2020 - PROTOCOLO DE ENTREGA E RECEBIMENTO DO PLANO DE CONTINGÊNCIA ESCOLAR ... Quer conhecer Major Vieira? Veja os atrativos turísticos da cidade ...
+- `0bf3a5b146` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Major Vieira; Treze de Maio; Timbó Grande; Trombudo Central; Campo Belo do Sul ...
+- `9e6abd8ae3` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Temporal acompanhado de 38 milímetros de chuva eleva atenção ...
+  - url: https://www.instagram.com/reel/DdmFJxXDtKf/
+  - trecho: 5 days ago ... chuva eleva atenção na região; Major Vieira pode ter registrado ... O Plano de Contingência já foi acionado pela Defesa Civil de São ...
+- `abe9a3590d` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
+  - url: https://valedoitajainoticias.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
+  - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Major Vieira e Três Barras. 3ª PJ de Porto ...
+- `ab894cf17b` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe para 6 os municípios em situação de emergência após ...
+  - url: https://ndmais.com.br/tempo/sobe-para-6-os-municipios-em-situacao-de-emergencia-apos-temporais-castigarem-sc/
+  - trecho: Jul 2, 2026 ... ... Major Vieira e Timbó Grande decretaram o alerta vermelho após ... plano de contingência elaborado para a área. De acordo com a Defesa ...
+- `a850a6348d` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Instrução Normativa Nº 11 Suinocultura
+  - url: https://in.ima.sc.gov.br/instrucaoNormativa/downloadPDF/11
+  - trecho: solicitar estudos complementares como Plano de Ação Emergencial, bem como outras informações ... Major Vieira. 0,565. 0,272. 0,293. JUL-OUT. Ponte Serrada. 0,873.
+- `ab1717172b` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Alarme de Incêndio - NFL Group
+  - url: https://www.nflgroup.com.br/alarme-incendio
+  - trecho: Plano de ação contra incêndio · Plano de emergência de combate a incêndio ... Major Vieira; Treze de Maio; Timbó Grande; Trombudo Central; Campo Belo do Sul ...
+- `d7dcd86491` · nível **C** (4 pts) · busca_web · — · citação não extraída
+  - título: política nacional de assistência social pnas - Prefeitura de Maringá
+  - url: http://www3.maringa.pr.gov.br/sistema/arquivos/1fcf2b46578d.pdf
+  - trecho: Irineópolis; Major Vieira; Matos Costa; Porto União; Três Barras); ... c) preencher o plano de ação no sistema SUAS-WEB e apresentar o relatório de gestão.
+  - ⚠ uf_divergente_na_url
+- `79804a1a7e` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: ALERTA DE TEMPO SEVERO Santo Antônio da Patrulha segue sob ...
+  - url: https://www.facebook.com/itapuifm/videos/-alerta-de-tempo-severosanto-ant%C3%B4nio-da-patrulha-segue-sob-alerta-vermelho-da-de/1464706488901561/
+  - trecho: 6 days ago ... 🌧️ Temporal atinge Major Vieira! Na tarde desta ... ALERTA | Taquara acionou o Plano de Contingência após a elevação dos rios Sinos e.
+- `6ece4d89ed` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: DISPENSA DE LICITAÇÃO Nº 018/2026 Processo Administrativo nº ...
+  - url: https://alagoinhas.com.br/contratos/admin/upload/anexo1-1779891994.pdf
+  - trecho: Jun 2, 2026 ... ... Plano de Contingência (PLANCON), que fot devidamente ativado no ... MAJOR VIEIRA 45 - FUNDO MUNICIPAL DF, ASSISTENCIA SOCIAL DE. MAJOR ...
+- `7341d65f18` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: MP abre procedimentos sobre prevenção ao El Niño em Canoinhas ...
+  - url: https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720
+  - trecho: 4 days ago ... Entre as cidades abrangidas estão Canoinhas, Três Barras, Major Vieira e Bela Vista do Toldo, que fazem parte da atuação da 3ª Promotoria de ...
+- `a377fd75a7` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: TCE/SC Educação
+  - url: https://servicos.tcesc.tc.br/tceeducacao/
+  - trecho: Major Vieira; Maracajá; Maravilha; Marema; Massaranduba; Matos Costa; Meleiro ... Plano de Contingência Escolar e open_in_new Novas diretrizes para o retorno ...
+- `ca47390dc9` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Administração - Campus Joinville - Univille
+  - url: https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1501022/PPC_Administacao_de_Empresas.pdf
+  - trecho: Major Vieira. 525,495. 7.899. Monte Castelo. 573,585. 8.475. Papanduva ... O Plano de Contingência do Sistema Integrado de Bibliotecas da. Universidade ...
+- `8c714c7898` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Câmara de Vereadores Canoinhas (@camaradecanoinhas)
+  - url: https://www.instagram.com/camaradecanoinhas/
+  - trecho: Rua Major Vieira: requerimento solicitando informações sobre a existência de ... Plano de Contingência Municipal. Também foram discutidas demandas ...
   - ⚠ risco_errado_no_titulo
+- `9d550bd1a4` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Arquivos Saúde - Canoinhas Online
+  - url: https://canoinhasonline.com.br/saude
+  - trecho: Estratégia reforça o estoque da Relação Municipal de Medicamentos e integra plano de contingência ... Major Vieira · Caminhonete furtada em Porto União leva ...
+- `0f2bb030c3` · nível **C** (2 pts) · busca_web · — · data 2024 (do trecho)
+  - título: TCE determina que municípios da região elaborem plano de ...
+  - url: https://tvgc.com.br/tce-determina-que-municipios-da-regiao-elaborem-plano-de-contingencia-contra-a-dengue/
+  - trecho: May 28, 2024 ... ... plano de contingência. Segundo o relator, o último informe ... Major Vieira; Marema; Monte Carlo; Monte Castelo; Morro Grande; Nova Trento ...
+- `d0669b2339` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Às 13h desta quinta-feira (30), o Rio dos Sinos atingiu 7,20 metros ...
+  - url: https://www.instagram.com/p/DbbNwp0EXPY/
+  - trecho: Jul 30, 2026 ... ... Plano de Contingência em execução, mantendo equipes mobilizadas para ... Major Vieira e Bela Vista do Toldo, além da Defesa Civil de ...
+- `a32acb273f` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Seis municípios decretam emergência após temporais em SC
+  - url: https://www.correiosc.com.br/seis-municipios-em-emergencia-apos-temporais-sc/
+  - trecho: Jul 2, 2026 ... A ação integra o Plano de Contingência da região, ativado após a ... A maior parte dos casos ocorreu em Guaramirim e Major Vieira. Até ...
+- `7c3e5a4878` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Seis municípios de SC decretam situação de emergência após ...
+  - url: https://radiomirador.com.br/seis-municipios-de-sc-decretam-situacao-de-emergencia-apos-temporais-alto-vale-segue-em-monitoramento/
+  - trecho: Jul 2, 2026 ... ... Santa Catarina, principalmente nos municípios de Guaramirim e Major Vieira. ... A entrega faz parte do plano de contingência elaborado pelo ...
+- `b3c551e382` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe para seis o número de municípios catarinenses em situação ...
+  - url: https://engeplus.com.br/noticia/santa-catarina/231988/sobe-para-seis-o-numero-de-municipios-catarinenses-em-situacao-de-emergencia-apos-temporais
+  - trecho: Jul 2, 2026 ... A ação faz parte do Plano de Contingência específico para as ... Major Vieira. Até o momento, não há registro de pessoas desabrigadas ...
+- `95a32e68ff` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: A Defesa Civil de Monte Mor informou que a Rua Siqueira Campos ...
+  - url: https://www.facebook.com/cbncampinas/videos/a-defesa-civil-de-monte-mor-informou-que-a-rua-siqueira-campos-um-dos-principais/1532918741645714/
+  - trecho: Jun 25, 2026 ... ... plano de contingência desde o ano passado ... Uma forte enxurrada atingiu o centro de Major Vieira, no Planalto Norte de Santa Catarina.
+- `92905ab1b2` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe número de municípios catarinenses em situação ... - OCP News
+  - url: https://ocp.news/cotidiano/sobe-numero-de-municipios-catarinenses-em-situacao-de-emergencia-apos-temporais
+  - trecho: Jul 3, 2026 ... A ação faz parte do Plano de Contingência específico para as ... Major Vieira. Até o momento, não há registro de pessoas desabrigadas ...
+- `96d4ada1fc` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Defesa Civil | O número de municípios em situação de emergência ...
+  - url: https://www.instagram.com/p/DaTUCJTFAHH/
+  - trecho: Jul 2, 2026 ... ... Plano de contingência A partir desta sexta, a Defesa Civil ... Santa Catarina, principalmente nos municípios de Guaramirim e Major Vieira.
+- `62bd10a731` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: MPSC ABRE 136 PROCEDIMENTOS PARA COBRAR ...
+  - url: https://www.vbnoticias.com.br/mpsc-abre-136-procedimentos-para-cobrar-prevencao-a-enchentes-e-deslizamentos-em-santa-catarina/
+  - trecho: 4 days ago ... ... Plano de Contingência Municipal, a definição antecipada de 10 ... Major Vieira e Três Barras * 3ª PJ de Mafra: Mafra * 3ª PJ de Porto ...
+- `a2f5d7d001` · nível **C** (2 pts) · busca_web · — · data 2025 (do trecho)
+  - título: - ZUM ZUM 394.indd - Faasc
+  - url: https://faasc.com.br/wp-content/uploads/2025/07/ZUM-ZUM-394-site.pdf
+  - trecho: Jul 16, 2025 ... parência, um plano de ação, que delegue aos associados a vidades ... , em Major Vieira, no dia 14 de agosto. • 26º Seminário Estadual de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `ed788ca8ae` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Licitações de Serviços de engenharia - Alerta Licitação
+  - url: https://alertalicitacao.com.br/!cnae/1070
+  - trecho: ... PLANO DE AÇÃO Nº 09032024-073039 EMENDA PARLAMENTAR Nº 202439850002. ... Cidade: Major Vieira - SC. Orgão: MUNICIPIO DE MAJOR VIEIRA. CONTRATAÇÃO DE ...
+- `41d91f5c4a` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Canoinhas investe na limpeza do Arroio Monjolo recuperação da ...
+  - url: https://canoinhasonline.com.br/2026/04/canoinhas-investe-na-limpeza-do-arroio-monjolo-recuperacao-da-rua-almeida-cardoso.html
+  - trecho: Apr 23, 2026 ... A iniciativa parte de um estudo de macrodrenagem que visa elaborar um plano de ação ... Morador de Major Vieira cai em golpe das notas falsas ao ...
+- `04c102a77a` · nível **C** (2 pts) · busca_web · — · data 2009 (do trecho)
+  - título: ECOLOGIA E MANEJO DE JAVALI (Sus scrofa L.) NA AMÉRICA DO ...
+  - url: https://www.researchgate.net/profile/Carlos_Salvador6/publication/282659323_Ecologia_e_manejo_de_javali_Sus_scrofa_L_na_America_do_Sul_Ecology_and_management_of_Eurasian_wild_boar_Sus_scrofa_L_in_South_America/links/5616899008ae0f214007258c/Ecologia-e-manejo-de-javali-Sus-scrofa-L-na-America-do-Sul-Ecology-and-management-of-Eurasian-wild-boar-Sus-scrofa-L-in-South-America.pdf
+  - trecho: Major Vieira. 543. 20,1 0,2. _. Monte Castelo. 565. 1,95 0,2. _. Papanduva. 776. 0. 0 ... Plano de ação de controle, esforço de. (Bach 2009; IAP. 2006) e ...
+- `b0d31e6fca` · nível **C** (1 pts) · busca_web · — · data 2025 (do trecho)
+  - título: EXPURGO POR ISE
+  - url: https://website.amazonasenergia.com/wp-content/uploads/2025/10/Relatorio-ISE-47_08_2025.pdf
+  - trecho: Oct 2, 2025 ... ... Major Vieira (SC), Rancharia (SP) e Quaraí (RS) registraram mínimas ... O Plano de Contingência será revisado, divulgado e ampliado ...
+  - ⚠ padrao_lista_de_municipios, municipio_citado_de_passagem, ano_anterior_ao_ciclo
+- `4c4731e923` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Laudo periculosidade e insalubridade - Inia - Soluções Sustentáveis
+  - url: https://www.inia.eco.br/laudo-periculosidade-insalubridade
+  - trecho: ... Plano de ação nr 1 · Plano de gerenciamento de resíduos da construção civil ... Major Vieira; Treze de Maio; Timbó Grande; Trombudo Central; Campo Belo do ...
+- `7ea00a2bd1` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: programa planorte leite no contexto do desenvolvimento
+  - url: https://www.periodicos.unc.br/index.php/drd/article/view/1233/621
+  - trecho: Destacamos aqui a justificativa, os objetivos e o plano de ação. ... demonstrado pela existência das quatro cooperativas de produtores de leite (Major Vieira,.
+- `6bbaa79026` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Efeitos da lei europeia contra desmatamento sobre as exportações ...
+  - url: https://www.econstor.eu/bitstream/10419/311739/1/1917568762.pdf
+  - trecho: Iniciativas anteriores, como o Plano de Ação de Governança e Comércio para Exe- ... Major Vieira. MT. Itaúba. BA. Canudos. RN. São Tomé. PI. São João da. Serra.
+- `6a21451e76` · nível **C** (1 pts) · busca_web · — · data 2016 (do trecho)
+  - título: ASPECTOS GEOECONÔMICOS DA CADEIA PRODUTIVA DA ...
+  - url: https://www.e-publicacoes.uerj.br/geouerj/article/download/26863/23070/107072
+  - trecho: Nacional de Crédito Rural (SNCR), do Plano de Ação Econômica do Governo (PAEG) e do Fundo ... outubro de 2016 em Major vieira (SC). 8 A produção de milho em Santa ...
+
+## Monte Castelo/SC — 59 pendente(s)
+- `07981b1d57` · nível **B** (5 pts) · busca_web · — · data 4/9/2026 (do trecho)
+  - título: Foram publicadas em 4/9/2026 as edições extras nºs 168-A e 168-B ...
+  - url: https://primeirapagina.com.br/wp-content/uploads/2026/09/2026_09_08_ASSINADO_do1-1.pdf
+  - trecho: Sep 8, 2026 ... ... Monte Castelo), CNPJ nº. 10.735.145/0019-13, para executar atividades ... Plano de Contingência de Tecnologia da. Informação (PLCONT) ...
+- `f972c30d6c` · nível **B** (5 pts) · busca_web · — · data 2024 (do trecho)
+  - título: plano municipal de contingência de desastres naturais
+  - url: https://saude.prefeitura.rio/wp-content/uploads/sites/47/2024/10/Livro_PlanoDeContingenciaDeDesastresNaturais_2024-2026_PDFDigital_20241022.pdf
+  - trecho: Este documento apresenta o Plano de Contingência de Desastres Naturais 2024-2026 ela- ... E.M. Monte Castelo. Rua Ouseley, s/n.º — Coelho Neto. Jardim.
+- `d4e10c939e` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO
+  - url: https://schroeder.sc.gov.br/uploads/sites/353/2021/12/1277144_PMSB___Schroeder.pdf
+  - trecho: Monte Castelo – CEP: 79010-210 – Fone: (67) 3253-5177. EQUIPE TÉCNICA. Robson ... 13 PLANO DE CONTINGÊNCIA E EMERGÊNCIA PARA OS SERVIÇOS DO SANEAMENTO.
+  - ⚠ ano_anterior_ao_ciclo
+- `ecee6648db` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL DE CONTINGÊNCIA - Prefeitura de Tubarão
+  - url: https://tubarao.sc.gov.br/uploads/sites/265/2025/04/PLANO_DE_CONTINGE_NCIA_2025.pdf
+  - trecho: ... Monte Castelo, Sombrio, São Bernardo,. Bom Pastor, São João M/E, Rio do ... Este Plano de Contingência tem validade de 1(um) ano a contar da data de ...
+  - ⚠ ano_anterior_ao_ciclo
+- `0fe76dd54a` · nível **B** (5 pts) · busca_web · — · **DECRETO Nº. 68**, 2025 (do trecho)
+  - título: DECRETO Nº. 68/2025 - Prefeitura de Mafra
+  - url: https://mafra.sc.gov.br/legislacao/decreto-no-68-2025/
+  - trecho: Plano Municipal de Educação ... AUTORIZA O PODER EXECUTIVO MUNICIPAL A EFETUAR A CESSÃO DE VEÍCULO AO MUNICÍPIO DE MONTE CASTELO DIANTE DE SUA SITUAÇÃO DE ...
+  - ⚠ ano_anterior_ao_ciclo
+- `ea9e312e94` · nível **B** (5 pts) · busca_web · — · data 07/07/2026 (do trecho)
+  - título: Inauguração! - Prefeitura de Monte Castelo
+  - url: https://montecastelo.sc.gov.br/noticia-510984/
+  - trecho: Plano Municipal de Educação · Proposta Curricular Da Educação Básica ... MONTE CASTELO – SC · 7 de julho de 2026 7 de julho de 2026 pedropmmc ...
+- `7f9c627e01` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Elaboração do Plano de Recursos Hídricos – Atividade E1 a E3
+  - url: https://www.aguas.sc.gov.br/jsmallfib_top/DHRI/Planos%20de%20Bacias/Plano%20da%20Bacia%20Hidrografica%20do%20Rio%20Canoinhas%20e%20Afluentes%20do%20Negro%20%20/Produto_Etapa_E_PRH_Canoinhas_Negro.pdf
+  - trecho: Monte Castelo e o Sindicato das Indústrias de Celulose e Papel de Santa Catarina ... Plano de Contingência e Defesa Civil - PLANCON. Prefeitura de Campo.
+- `f95bf6b303` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Plano de Ação para Prevenção e Controle do Desmatamento e das ...
+  - url: https://www.gov.br/casacivil/pt-br/.arquivos/101116%20-%20PPCerrado_Vfinal.pdf
+  - trecho: PLANO DE AÇÃO PARA PREVENÇÃO E CONTROLE DO DESMATAMENTO E DAS QUEIMADAS NO CERRADO ... PA Monte Castelo. MA. 12,54. 5,59. 2,37%. PA Monte Cristo. MA. 71,88. 2,32.
+- `cbdc20bada` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Proposta Curricular da Educação Básica - Prefeitura de Monte Castelo
+  - url: https://montecastelo.sc.gov.br/uploads/sites/449/2021/12/2213358_1732258_PROPOSTA_CURRICULAR_AMPLANORTE_COMPLETA_160120.pdf
+  - trecho: ... Monte Castelo. Prefeito. Jean Carlo Medeiros de. Souza. Secretário de Educação. Osner ... plano de ação que possibilite contínuas melhorias, qualitativas e ...
+  - ⚠ ano_anterior_ao_ciclo
+- `0df4dd0775` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: CONSELHO MUNICIPAL DE DEFESA DO MEIO AMBIENTE
+  - url: https://s3cache.dom.sc.gov.br/atos/2024/11/1730817243_74970511__homologa_o_plano_municipal_de_gua_e_esgoto_de_timb_com_anexos.pdf
+  - trecho: Nov 5, 2024 ... ... Monte Castelo, Navegantes, Otacílio Costa, Papanduva,. Penha ... plano de contingência e emergência para a unidade que permita mitigar ...
+  - ⚠ ano_anterior_ao_ciclo
+- `52bad71f78` · nível **B** (4 pts) · busca_web · — · data 23/08/2024 (do trecho)
+  - título: Sexta-feira - 23 de Agosto de 2024 Florianópolis/SC Edição N° 4619
+  - url: https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf
+  - trecho: Aug 14, 2024 ... ... Monte Castelo .............................................747. Morro ... Plano de Contingência (PLANCON) organiza as ações sistêmicas ...
+  - ⚠ ano_anterior_ao_ciclo
+- `37affc6df8` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
+  - url: https://www.mpsc.mp.br/w/noticias/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc
+  - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... 2ª PJ de Papanduva: Monte Castelo e Papanduva ...
+- `b6c7f99d6e` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Papanduva e Monte Castelo se comprometem com MPSC a revisar ...
+  - url: https://www.jmais.com.br/papanduva-e-monte-castelo-se-comprometem-com-mpsc-a-revisar-seus-planos-diretores/
+  - trecho: Jun 6, 2024 ... Devem também estar pontuadas as providências para redução do risco, como a execução de plano de contingência e de obras de segurança e ...
+- `4c3441280b` · nível **B** (4 pts) · busca_web · — · data 2022 (do trecho)
+  - título: Expo Monte Castelo é adiada após novo decreto da prefeitura ... - G1
+  - url: https://g1.globo.com/pr/norte-noroeste/noticia/2022/01/20/expo-monte-castelo-e-adiada-apos-novo-decreto-da-prefeitura-limitar-publico-de-eventos.ghtml
+  - trecho: Jan 20, 2022 ... ... plano de contingência para a realização do evento. A diretoria da Sormoc garantiu que a 15ª Expo Monte Castelo está confirmada e que, nos ...
+  - ⚠ ano_anterior_ao_ciclo
+- `de38023535` · nível **B** (4 pts) · busca_web · — · data 2020 (do trecho)
+  - título: PLANCON EDU
+  - url: https://chapeco.sc.gov.br/download/1003/DocumentoArquivo
+  - trecho: Chapecó. Outubro de 2020. Page 2. 2. Este Plano de Contingência foi construído com base no Modelo do Plano de Contingência elaborado e ... Monte Castelo, Bairro.
+- `6d9a0357a0` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
+  - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
+  - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Vieira, Monte Castelo, Papanduva, Porto União, Rio Negrinho, São Bento do ...
+- `9dbdae971a` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Diário Oficial - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2026/20260608/Jornal/22769.pdf
+  - trecho: Jun 8, 2026 ... ... Monte Castelo, no(a) área não titulada sob posse direta ... plano de ação, pro- por uma solução técnica e elaborar o termo de ...
+- `1c60b93f73` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: MP abre procedimentos sobre prevenção ao El Niño em Canoinhas ...
+  - url: https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720
+  - trecho: 4 days ago ... Em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Monte Castelo e Papanduva, acompanhados pela 2ª ...
+- `4c15f77aed` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Editor Comitê Tubarão e Complexo Lagunar - Aguas SC
+  - url: https://www.aguas.sc.gov.br/servicos/noticias/itemlist/user/199-editorcomitetubaraoecomplexolagunar
+  - trecho: ... plano de contingência com o intuito de enfrentar os momentos de crise. ... Monte Castelo (estação meteorológica) e na Ponte Paulo Osny May; um na Ponte ...
+- `1b7c9a5d44` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
+  - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-02-26.pdf
+  - trecho: Feb 26, 2026 ... PLANO DE CONTINGÊNCIA (PLANCON). MUNICÍPIO DE PIRATUBA/SC ... Monte Castelo, o inquérito civil e o inquérito policial foram arquivados ...
+- `7e64504f1f` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO: - PERS-MT
+  - url: https://persmt.setec.ufmt.br/wp-content/uploads/2020/08/PMSB_Sa%CC%83o-Jose%CC%81-do-Rio-Claro_PMSB.pdf
+  - trecho: ... PLANO DE CONTINGÊNCIA ... Monte Castelo. 16°37'5.64"S. 54°27'49.94"O. Travessa 1. 16°36'47.88"S. 54°27'48.18"O. Fonte: Quadro elaborado pela equipe técnica do ...
+  - ⚠ ano_anterior_ao_ciclo
+- `0b59b96004` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO COMENDADOR ...
+  - url: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-levy-gasparian.pdf
+  - trecho: bairros de Três Rios, como Monte Castelo, distante a menos de 5 quilômetros da prefeitura ... Portanto, enquanto o plano de contingência aborda ações programadas ...
+- `c5cdd51d79` · nível **B** (3 pts) · busca_web · — · data 2010 (do trecho)
+  - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
+  - url: https://www.gov.br/mme/pt-br/arquivos/do-23-12-2010-s1.pdf
+  - trecho: Dec 23, 2010 ... ... plano de contingência relativo a acidentes por vazamento de petróleo ... Monte Castelo. Associação Comunitária do Bairro Ellery e. Monte ...
+  - ⚠ ano_anterior_ao_ciclo
+- `223a928f30` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Seis municípios decretam emergência após temporais em Santa ...
+  - url: https://www.santacatarinaempauta.com.br/2026/07/02/seis-municipios-decretam-emergencia-apos-temporais-em-santa-catarina-defesa-civil-inicia-entrega-de-assistencia/
+  - trecho: Jul 2, 2026 ... ... Monte Castelo e Presidente Getúlio. Os principais registros incluem ... A distribuição faz parte do plano de contingência previsto para ...
+- `138b5b3f54` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: PLANO DE CONTINGÊNCIA DE DESASTRES NATURAIS 2024
+  - url: https://epirio.svs.rio.br/wp-content/uploads/2024/02/Livro_PlanoDeContingenciaDeDesastresNaturais2024_PDFDigital_20240206-1.pdf
+  - trecho: Nov 16, 2023 ... Plano de Contingência 2021-2022. Disponível em: https://www ... E.M. Monte Castelo. Rua Ouseley, s/n — Coelho Neto. Jardim. América. 3.1.
+  - ⚠ ano_anterior_ao_ciclo
+- `6062106d02` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
+  - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
+  - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Monte Castelo; Corumbataí; Espírito Santo do Turvo; Glicério; Monteiro Lobato ...
+- `044ad02c4a` · nível **B** (3 pts) · busca_web · — · data 2019 (do trecho)
+  - título: SeCRetaRia De eStaDO Da aDMiniStRaçÃO - DOE/SC
+  - url: https://portal.doe.sea.sc.gov.br/repositorio/2019/20191203/Jornal/2281.pdf
+  - trecho: Dec 3, 2019 ... Civil e Plano de Contingência atualizado quando o ente beneficiário ... Monte Castelo/SC. Área total de intervenção 868,00 (Oitocentos e ...
+  - ⚠ ano_anterior_ao_ciclo
+- `c03366b160` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe para 6 os municípios em situação de emergência após ...
+  - url: https://ndmais.com.br/tempo/sobe-para-6-os-municipios-em-situacao-de-emergencia-apos-temporais-castigarem-sc/
+  - trecho: Jul 2, 2026 ... Monte Castelo;; Presidente Getúlio. As principais ocorrências incluem ... plano de contingência elaborado para a área. De acordo com a ...
+- `514248e9e4` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
+  - url: https://valedoitajainoticias.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
+  - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... 2ª PJ de Papanduva: Monte Castelo e Papanduva.
+- `3c10a0c505` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
+  - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-10-01.pdf
+  - trecho: Oct 1, 2025 ... de Contingência (Plancon) integrados ao Plano de Ação Emergencial ... em Monte Castelo/SC. 2. O SUSCITADO declinou do feito sustentando ...
+  - ⚠ ano_anterior_ao_ciclo
+- `fe6bdbb276` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - título: Resumo Público IMARIBO REV 10 2025
+  - url: https://imaribo.com.br/wp-content/uploads/2025/05/Resumo-Publico-IMARIBO-REV-10-maio_2025.pdf
+  - trecho: Nas áreas de Monte Castelo há o Neosso- lo. Caracterizados como solos ... PLANO DE AÇÃO. OPERADOR DE MOTOSSERA. OPERADOR DE MÁQUINA. MEMBRO CIPA. PRIMEIROS ...
+  - ⚠ ano_anterior_ao_ciclo
+- `6902e4eb01` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano de Vigilância e Atenção à Saúde de Populações Expostas ...
+  - url: https://mandatogoura.com.br/wp-content/uploads/2019/06/PlanoAgrotoxic30_05_18.pdf
+  - trecho: Santa Cruz de Monte Castelo. 81,7. 100,4. 111. 151,9. 444,9. Santa Isabel do ... • Elaborar o Plano de Ação Regional para a Vigilância e Atenção à Saúde das ...
+  - ⚠ ano_anterior_ao_ciclo
+- `871eff0534` · nível **C** (7 pts) · busca_web · — · data 2024 (do trecho)
+  - título: CDU 35 ©2024. Senai - Sesp/PR
+  - url: https://www.seguranca.pr.gov.br/sites/default/arquivos_restritos/files/documento/2025-07/pespds_2024-2034_-_final.pdf
+  - trecho: Santa Cruz de Monte Castelo. 18º. Califórnia. 16ª. Santa Isabel do Ivaí. 18º ... PLANCON - Plano de Contingência de Proteção e Defesa Civil Plancon 2013/2014.
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `bafeb4d565` · nível **C** (5 pts) · busca_web · — · citação não extraída
+  - título: CIB/PR - Comissão Intergestores Bipartite do Paraná
+  - url: https://www.saude.pr.gov.br/Pagina/CIBPR-Comissao-Intergestores-Bipartite-do-Parana
+  - trecho: Deliberação nº 287 - Aprova o Plano de Contingência para Vírus Respiratórios do Estado do Paraná ... Monte Castelo a ser financiado com recursos do Novo ...
+  - ⚠ uf_divergente_na_url
+- `868aef5e14` · nível **C** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Plano Municipal de Saúde - 2026-2029
+  - url: https://www.generalcarneiro.pr.gov.br/uploads/copiado_20260914183133_zrZ4ezvc.pdf
+  - trecho: ... Monte Castelo. O setor é composto por duas agendadoras e enfrenta dois ... se em Plano de Contingência acompanhado pela SESA. Com a conclusão da obra ...
+  - ⚠ uf_divergente_na_url
+- `7668c3ef24` · nível **C** (4 pts) · busca_web · — · citação não extraída
+  - título: Notícias – Prefeitura Municipal de Colombo
+  - url: https://prefeitura.colombo.pr.gov.br/01-2/
+  - trecho: Reunião com secretarias, Defesa Civil, Guarda Municipal e Polícia Militar alinhou plano de contingência ... Monte Castelo A força-tarefa do programa ...
+  - ⚠ uf_divergente_na_url
+- `ec3ffb3eb1` · nível **C** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Abordagem por drogas termina em agressão, dano a viatura e ...
+  - url: https://canoinhasonline.com.br/2026/09/abordagem-por-drogas-termina-em-agressao-dano-a-viatura-e-prisao-em-monte-castelo.html
+  - trecho: Sep 19, 2026 ... ... Monte Castelo. Durante rondas pela região, uma guarnição da Polícia ... Defesa Civil detalha plano de contingência contra enchentes na Câmara de ...
+  - ⚠ risco_errado_no_titulo
+- `22c002bf41` · nível **C** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: Diário Oficial 25-01-2024.indd - A União
+  - url: https://auniao.pb.gov.br/servicos/doe/2024/janeiro/diario-oficial-25-01-2024-ass.pdf
+  - trecho: Jan 25, 2024 ... PB, acionarão o “Plano de Contingência” a ser publicado pela DOCAS/PB. ... Monte Castelo,. Cabedelo/PB, CNPJ nº 09.012.493/0001-54 ...
+  - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
+- `46c480a29f` · nível **C** (3 pts) · busca_web · — · citação não extraída
+  - título: meio ambiente paulista - DataGeo - Semil
+  - url: https://datageo.ambiente.sp.gov.br/datageofiles/Relatorios/RQA/RQA_2022.pdf
+  - trecho: ... PLANCON. Plano de Contingência Municipal. PMA-SC. Polícia Militar Ambiental ... Monte Castelo, Nova Guataporanga, Nova Independência, Pacaembu, Panorama ...
+  - ⚠ uf_divergente_na_url
+- `0e41af0883` · nível **C** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - título: 33° relatório de acompanhamento ambiental – antt - Portal Gov.br
+  - url: https://www.gov.br/antt/pt-br/assuntos/rodovias/relatorios/acompanhamento-ambiental-das-concessoes-rodoviarias-1/por-concessao/acompanhamento-ambiental-autopista-planalto-sul-1/arquivos/33_relatorio-de-acompanhamento-ambiental_raa_rev-1-jan2024-a-jul2024-1.pdf
+  - trecho: Jan 15, 2024 ... Papanduva/SC; Monte Castelo/SC; Santa. Cecília/SC; Ponte Alta do ... no âmbito do Plano de ação para mitigação do de atropelamento ...
+  - ⚠ padrao_lista_de_municipios, municipio_citado_de_passagem
+- `dd84e118ea` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: TCE/SC Educação
+  - url: https://servicos.tcesc.tc.br/tceeducacao/
+  - trecho: Monte Castelo; Morro da Fumaça; Morro Grande; Navegantes; Nova Erechim; Nova ... Plano de Contingência Escolar e open_in_new Novas diretrizes para o retorno ...
+- `8e85c949f2` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: COMO A RESPOSTA A DESASTRES LIMITA A TRANSFORMAÇÃO ...
+  - url: https://repositoriocopia.utfpr.edu.br/jspui/bitstream/1/40750/1/paradoxoresilienciatransformacaourbana.pdf
+  - trecho: caso do plano de contingência dacidade do Rio de Janeiro. Sociedade ... Monte Castelo, Santa Isabel do Ivaí, Santa Mônica, Santo Antônio do Caiuá ...
+- `7c6a7580b4` · nível **C** (2 pts) · busca_web · — · data 2023 (do trecho)
+  - título: RELATÓRIO DE ATIVIDADES - Semil | 2023
+  - url: https://smastr16.blob.core.windows.net/2001/2024/02/Relatorio-de-Atividades-2023-1.pdf
+  - trecho: pios de Dracena, Monte Castelo, Nova. Independência ... da Vila Sahy; avaliação de riscos e elaboração de Plano de Contingência adaptativo na Escola.
+  - ⚠ ano_anterior_ao_ciclo
+- `eb111a43b0` · nível **C** (2 pts) · busca_web · — · data 2025 (do trecho)
+  - título: NOTA DE FALECIMENTO - São Pedro do Ivaí - Instagram
+  - url: https://www.instagram.com/p/DL_XhAlsVqT/
+  - trecho: Jul 11, 2025 ... ... Monte Castelo, em Ivaiporã. A Polícia Civil reforça a importância de ... plano de contingência para o enfrentamento do fenômeno climático.
+- `75de22e9d5` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE DESENVOLVIMENTO INSTITUCIONAL - UNIFATECIE
+  - url: https://site.unifatecie.edu.br/wp-content/uploads/2025/09/PDI-2025-A-2029.pdf
+  - trecho: ... Monte Castelo, Santa Isabel do Ivaí, Loanda, Nova Londrina, Terra Rica ... plano de contingência que preveja o suporte, o pleno atendimento e a.
+  - ⚠ ano_anterior_ao_ciclo
+- `183e22f6d0` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: MPSC ABRE 136 PROCEDIMENTOS PARA COBRAR ...
+  - url: https://www.vbnoticias.com.br/mpsc-abre-136-procedimentos-para-cobrar-prevencao-a-enchentes-e-deslizamentos-em-santa-catarina/
+  - trecho: 4 days ago ... ... Plano de Contingência Municipal, a definição antecipada de 10 ... * 2ª PJ de Papanduva: Monte Castelo e Papanduva * 2ª PJ de Presidente ...
+- `2decc78299` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe para seis o número de municípios catarinenses em situação ...
+  - url: https://engeplus.com.br/noticia/santa-catarina/231988/sobe-para-seis-o-numero-de-municipios-catarinenses-em-situacao-de-emergencia-apos-temporais
+  - trecho: Jul 2, 2026 ... A ação faz parte do Plano de Contingência específico para as ... Monte Castelo e Presidente Getúlio. As principais ocorrências ...
+- `ca77bc4905` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Sobe número de municípios catarinenses em situação ... - OCP News
+  - url: https://ocp.news/cotidiano/sobe-numero-de-municipios-catarinenses-em-situacao-de-emergencia-apos-temporais
+  - trecho: Jul 3, 2026 ... A ação faz parte do Plano de Contingência específico para as ... Monte Castelo e Presidente Getúlio. As principais ocorrências ...
+- `d66c117768` · nível **C** (2 pts) · busca_web · — · data 2024 (do trecho)
+  - título: TCE determina que municípios da região elaborem plano de ...
+  - url: https://tvgc.com.br/tce-determina-que-municipios-da-regiao-elaborem-plano-de-contingencia-contra-a-dengue/
+  - trecho: May 28, 2024 ... “A apresentação do plano de contingência para o enfrentamento da ... Monte Castelo; Morro Grande; Nova Trento; Novo Horizonte; Orleans ...
+- `a98e238253` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Seis municípios decretam emergência após temporais em SC
+  - url: https://www.correiosc.com.br/seis-municipios-em-emergencia-apos-temporais-sc/
+  - trecho: Jul 2, 2026 ... A ação integra o Plano de Contingência da região, ativado após a estrada ... Monte Castelo e Presidente Getúlio. As equipes registraram ...
+- `e8529f1621` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Licitações de Serviços de engenharia - Alerta Licitação
+  - url: https://alertalicitacao.com.br/!cnae/1070
+  - trecho: ... PLANO DE AÇÃO Nº 09032024-073039 EMENDA PARLAMENTAR Nº 202439850002. ... Monte Castelo, Tubarão – SC. Edital 26/2026 (21 visual.) Identificador desta ...
+- `34cccaaa4a` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: TV DIARINHO
+  - url: https://diarinho.net/tv.php?id=1060&pagina=43
+  - trecho: O céu de Monte Castelo, no norte catarinense, ficou avermelhado por ... PLANO DE AÇÃO | Itajaí quer construir, junto com a população, um plano ...
+- `c4010d2c4a` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: Plano de Ação da Rede de Cuidados à Pessoa com Deficiência do ...
+  - url: https://www.cosemssp.org.br/wp-content/uploads/2021/04/Plano-Estadual-RCPD-Versao-Final-dia-29.09.pdf
+  - trecho: ... Plano de Ação da Rede de Cuidados à. Pessoa com Deficiência do Estado de ... MONTE CASTELO. 9282173 11 FISIOTERAPIA DE MONTE. CASTELO. -. -. -. -. -. -. -. 1.235 ...
+  - ⚠ ano_anterior_ao_ciclo
+- `c04d8de2c7` · nível **C** (2 pts) · busca_web · — · citação não extraída
+  - título: áreas especiais no estado de santa catarina - SciELO
+  - url: https://www.scielo.br/j/floram/a/CJ6mf58f3BTDmW66wRnm89C/?lang=pt
+  - trecho: ... Monte Castelo), propõe-se a instalação de uma unidade de conservação (do ... CÂMARA, I.G. Plano de ação para a Mata Alântica. Roteiro para a ...
+- `d44f9961dc` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: Laudo periculosidade e insalubridade - Inia - Soluções Sustentáveis
+  - url: https://www.inia.eco.br/laudo-periculosidade-insalubridade
+  - trecho: ... Plano de ação nr 1 · Plano de gerenciamento de resíduos da construção civil ... Monte Castelo; Corumbataí; Espírito Santo do Turvo; Glicério; Monteiro Lobato ...
+- `cd0e852114` · nível **C** (1 pts) · busca_web · — · data 2024 (do trecho)
+  - título: RELATÓRIO DE ATIVIDADES - Semil | 2024
+  - url: https://smastr16.blob.core.windows.net/home/2025/04/Relatorio-Atividades-2024_5P-revisado.pdf
+  - trecho: Plano de Ação Climática 2050 (PAC 2050), um dos pilares da estratégia ... • Monte Castelo/São João do Pau D'Alho: Fase 05 – Lote 40 – Obras e serviços ...
+  - ⚠ ano_anterior_ao_ciclo
+- `b8323044af` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: PLANO AMBIENTAL EMERGENCIAL – PAE BR-101/SC
+  - url: https://www.ceped.ufsc.br/wp-content/uploads/2012/01/Plano-Ambiental-Emerg%C3%AAncial-BR101Trecho-Sul-DNIT.pdf
+  - trecho: elaboram um plano de ação com objetivos comuns a todos os presentes (SC ... Monte Castelo,. Tubarão. (48) 3 22-0024 ·. Madeireira Menegaz. Avenida Patrício ...
+  - ⚠ ano_anterior_ao_ciclo
+- `9e6d8b2947` · nível **C** (1 pts) · busca_web · — · data 2025 (do trecho)
+  - título: o plano ABC como territorialização de uma inovação conservadora
+  - url: https://theses.hal.science/tel-05116741v1/file/FreitasRosa.pdf
+  - trecho: Jun 17, 2025 ... plano de ação que concilia métodos de proteção ambiental, justiça social e ... 132 São eles: Maringá – Monte Castelo, Tereza do Cedro e Dandara.
+- `cb1a10b80c` · nível **C** (1 pts) · busca_web · — · citação não extraída
+  - título: programa planorte leite no contexto do desenvolvimento
+  - url: https://www.periodicos.unc.br/index.php/drd/article/view/1233/621
+  - trecho: Destacamos aqui a justificativa, os objetivos e o plano de ação. ... Monte Castelo, Papanduva e Porto União). Page 14. Programa Planorte Leite no contexto ...
 
 ## Navegantes/SC — 1 pendente(s)
 - `027ed149de` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
