@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 26/09/2026 · 621 pendente(s) · 15 decidida(s) · A=98 B=360 C=163
+Gerado em 26/09/2026 · 622 pendente(s) · 15 decidida(s) · A=98 B=361 C=163
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -2474,6 +2474,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: El Niño pode provocar tempestades severas no Paraná - G1 - Globo
   - url: https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml
   - trecho: Devido à previsão, Defesa Civil começou a revisar Plano de Contingência e a orientar prefeituras sobre prevenção a desastres. Por Millena Sartori, g1 PR. 14 ...
+  - juiz: portão automático: fonte não oficial
+
+## Portalegre/RN — 1 pendente(s)
+- `ed61fcdedc` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Plano de Contingência do Município de Portalegre para as ondas ...
+  - url: https://www.cm-portalegre.pt/blog/2026/07/02/plano-de-contingencia-do-municipio-de-portalegre-para-as-ondas-de-calor-temperaturas-elevadas/
+  - trecho: Devido às elevadas temperaturas ... os seguintes espaços climatizados como abrigo temporário: Centro de Artes do Espetáculo – 14h00-19h00 e 20h30-23h30 ......
   - juiz: portão automático: fonte não oficial
 
 ## RODOLFO FERNANDES/RN — 5 pendente(s)

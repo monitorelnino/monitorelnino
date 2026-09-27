@@ -1,11 +1,11 @@
 {
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; ausência = nada localizado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-09-10",
- "total": 2211,
+ "total": 2212,
  "com_registro": 267,
- "com_imprensa": 147,
+ "com_imprensa": 148,
  "prioritarios": 2095,
- "com_despesa_182": 2211,
+ "com_despesa_182": 2212,
  "municipios": {
   "1100023": {
    "nome": "Ariquemes",
@@ -8271,6 +8271,30 @@
     "classe": "com_lancamento",
     "rs_hab": 4.408172,
     "liquidada": 134356.67,
+    "fonte": "SICONFI (Tesouro Nacional)",
+    "ressalva": "inclui preparação e resposta",
+    "peso_no_indice": "nenhum"
+   },
+   "categoria": "nao_localizado"
+  },
+  "2410207": {
+   "nome": "Portalegre",
+   "uf": "RN",
+   "prioritario": false,
+   "imprensa": [
+    {
+     "titulo": "Plano de Contingência do Município de Portalegre para as ondas ...",
+     "url": "https://www.cm-portalegre.pt/blog/2026/07/02/plano-de-contingencia-do-municipio-de-portalegre-para-as-ondas-de-calor-temperaturas-elevadas/",
+     "data": "26/09/2026",
+     "veiculo": "cm-portalegre.pt",
+     "nivel": "B"
+    }
+   ],
+   "defesa_civil_orcamento": {
+    "exercicio": 2025,
+    "classe": "sem_lancamento_182",
+    "rs_hab": null,
+    "liquidada": null,
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"

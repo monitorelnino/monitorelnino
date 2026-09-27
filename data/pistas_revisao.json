@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-26",
- "total_pistas": 636,
- "total_municipios": 275,
+ "total_pistas": 637,
+ "total_municipios": 276,
  "por_nivel": {
   "A": 100,
-  "B": 362,
+  "B": 363,
   "C": 174
  },
  "grupos": [
@@ -12119,6 +12119,37 @@
      "titulo": "El Niño pode provocar tempestades severas no Paraná - G1 - Globo",
      "trecho": "Devido à previsão, Defesa Civil começou a revisar Plano de Contingência e a orientar prefeituras sobre prevenção a desastres. Por Millena Sartori, g1 PR. 14 ...",
      "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2410207",
+   "municipio": "Portalegre",
+   "uf": "RN",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "ed61fcdedc",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.cm-portalegre.pt/blog/2026/07/02/plano-de-contingencia-do-municipio-de-portalegre-para-as-ondas-de-calor-temperaturas-elevadas/",
+     "titulo": "Plano de Contingência do Município de Portalegre para as ondas ...",
+     "trecho": "Devido às elevadas temperaturas ... os seguintes espaços climatizados como abrigo temporário: Centro de Artes do Espetáculo – 14h00-19h00 e 20h30-23h30 ......",
+     "data": "26/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
