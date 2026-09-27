@@ -13,6 +13,15 @@
 // Sem ele, três portões reprovam por figura sem crédito — e foi o que aconteceu na primeira
 // tentativa de arquivar.
 
+// ESCOPO PRÓPRIO (27/09/2026). O conteúdo vai dentro de um IIFE porque este arquivo passou
+// a conviver com o JS de quatro páginas que ele nunca viu, e três delas já declaram os
+// mesmos nomes no escopo global: `esc` e `fonteFigura` em saúde e financiamento, `AREAS`
+// em saúde, `CAMADA_ROTULO` no monitor de riscos. Sem o IIFE, o navegador levanta
+// `Identifier 'X' has already been declared` e TODO o arquivo para de executar — foi o
+// que aconteceu, e o sintoma era figura sem crédito, que não aponta para a causa.
+
+(function () {
+'use strict';
 // ===== pesquisadores.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
@@ -123,7 +132,7 @@ async function __load(){
     const PAINEL = await fetch('data/painel/agregados.json').then(r => r.ok ? r.json() : null);
     if (PAINEL && PAINEL.lista_publicada_em) {
       (document.getElementById('notaPainel')||{}).textContent = 'Painel de ' + PAINEL.n + ' municípios; semente ' + PAINEL.semente + ', lista publicada em ' + PAINEL.lista_publicada_em + ' (hash ' + String(PAINEL.hash_lista).slice(0,12) + '…).';
-      document.getElementById('painelResumo').innerHTML = '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>Região × porte</th><th>Municípios</th><th>Com instrumento publicado</th><th>Ainda não verificados</th></tr></thead><tbody>'
+      if (document.getElementById('painelResumo')) document.getElementById('painelResumo').innerHTML = '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table"><thead><tr><th>Região × porte</th><th>Municípios</th><th>Com instrumento publicado</th><th>Ainda não verificados</th></tr></thead><tbody>'
         + (PAINEL.agregados || []).map(a => '<tr><td>' + esc(a.regiao) + ' · ' + esc(a.porte) + '</td><td>' + a.n + '</td><td>' + a.com_instrumento + '</td><td>' + a.nao_verificados + '</td></tr>').join('') + '</tbody></table></div>';
       MonitorMapas.credito('boxPainel', {fontes: ['MARÉ', 'painel amostral'], data: PAINEL.lista_publicada_em});
     } else {
@@ -134,8 +143,9 @@ async function __load(){
   // quatro áreas com valores digitados direto no JS (nunca lidos de um arquivo) — 13x o valor de TODO o plano federal
   // (R$ 1,335 bi) citado em toda a documentação do site. Sem fonte real por trás, a figura foi removida; os compromissos
   // verificados e a série semanal, com fonte por linha, estão em financiamento.html#prometeu.
-document.getElementById('fontesMonitoramento').innerHTML = TRANSFERENCIAS.fontes_monitoramento
-  .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join('');
+{ const fmon = document.getElementById('fontesMonitoramento');
+  if (fmon) fmon.innerHTML = TRANSFERENCIAS.fontes_monitoramento
+    .map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}</a></li>`).join(''); }
   const ROTULO_HOST = {
   'www.diariomunicipal.com.br': 'Diários Oficiais dos Municípios (FAMUP/FEMURN/AMA/FAMEP/Sergipe)',
   'acaoinverno.recife.pe.gov.br': 'Ação Inverno · Prefeitura do Recife',
@@ -152,7 +162,8 @@ TABELA_MUNICIPIOS.filter(m => m.url).forEach(m => {
   g.urls.push(m.url); g.n++;
   porFonte.set(chave, g);
 });
-document.getElementById('fontesVerificadas').innerHTML =
+{ const fver = document.getElementById('fontesVerificadas');
+  if (fver) fver.innerHTML =
   [...porFonte.values()]
     .map(g => {
       const nome = ROTULO_HOST[g.host] || g.host;
@@ -160,8 +171,9 @@ document.getElementById('fontesVerificadas').innerHTML =
       return {nome, href, n: g.n};
     })
     .sort((a,b)=>b.n - a.n || a.nome.localeCompare(b.nome))
-    .map(f => `<li><a href="${f.href}" target="_blank" rel="noopener">${f.nome}</a> <span class="u-muted">· ${f.n} registro${f.n > 1 ? 's' : ''}</span></li>`).join('');
-document.getElementById('fontesFederaisCount').textContent = document.querySelectorAll('#fontesFederais li').length;
+    .map(f => `<li><a href="${f.href}" target="_blank" rel="noopener">${f.nome}</a> <span class="u-muted">· ${f.n} registro${f.n > 1 ? 's' : ''}</span></li>`).join(''); }
+{ const ffc = document.getElementById('fontesFederaisCount');
+  if (ffc) ffc.textContent = document.querySelectorAll('#fontesFederais li').length; }
 
   const CAT_LABEL_TBL = {
     plano:['Plano preventivo',MonitorMapas.PALETA.categorias.plano], plano_antigo:['Plano vigente, de ciclo anterior',MonitorMapas.PALETA.categorias.plano_antigo],
@@ -185,9 +197,11 @@ function renderTable(){
         <td>${m.documento}</td><td class="nowrap">${m.data}</td><td>${fonte}</td><td class="nowrap dado">${m.canal||'—'}</td></tr>`;
     }).join('');
   }
-  document.getElementById('tblSearch').addEventListener('input', renderTable);
-  document.getElementById('tblCat').addEventListener('change', renderTable);
-  renderTable();
+  if (document.getElementById('tblSearch') && document.getElementById('tblCat') && document.getElementById('tblBody')) {
+    document.getElementById('tblSearch').addEventListener('input', renderTable);
+    document.getElementById('tblCat').addEventListener('change', renderTable);
+    renderTable();
+  }
   
   
   (document.getElementById('munCount')||{}).textContent = TABELA_MUNICIPIOS.length;
@@ -217,14 +231,16 @@ function renderTable(){
   MonitorMapas.credito('boxConsultas', {fontes: ['MARÉ', 'consultas registradas'], data: cons.length ? (META.atualizado_em || META.corte) : null}); }
   MonitorMapas.credito('boxFontesMonit', {fontes: 'as listadas', data: '25/08/2026'});
   const el = id => document.getElementById(id);
-  el('pqCorte').textContent = META.corte || '—'; el('pqAtualizado').textContent = META.atualizado_em || '—';
-  fetch('data/log_buscas.json').then(r => r.ok ? r.json() : null).then(l => { if (!(l && l.execucoes)) return; el('pqLog').textContent = l.execucoes.length.toLocaleString('pt-BR');
+  { const c = el('pqCorte'), a = el('pqAtualizado');
+    if (c) c.textContent = META.corte || '—';
+    if (a) a.textContent = META.atualizado_em || '—'; }
+  fetch('data/log_buscas.json').then(r => r.ok ? r.json() : null).then(l => { if (!(l && l.execucoes) || !el('pqLog')) return; el('pqLog').textContent = l.execucoes.length.toLocaleString('pt-BR');
     const ult = l.execucoes.reduce((a, e) => e.data > a ? e.data : a, ''); const c = {}; l.execucoes.filter(e => e.data === ult).forEach(e => { c[e.canal] = (c[e.canal] || 0) + 1; });
-    el('pqCanais').textContent = ult + ' — ' + Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => k + ' ' + v).join(' · '); });
-  fetch('data/verificacao_resumo.json').then(r => r.ok ? r.json() : null).then(v => { if (!(v && v.por_uf)) return;
+    if (el('pqCanais')) el('pqCanais').textContent = ult + ' — ' + Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => k + ' ' + v).join(' · '); });
+  fetch('data/verificacao_resumo.json').then(r => r.ok ? r.json() : null).then(v => { if (!(v && v.por_uf) || !document.querySelector('#tblLog tbody')) return;
     document.querySelector('#tblLog tbody').innerHTML = Object.keys(v.por_uf).sort().map(uf => { const n = v.por_uf[uf]; return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + (n.nacional || 0) + '</td><td>' + (n.estadual || 0) + '</td><td>' + (n.municipal_parcial || 0) + '</td><td>' + (n.municipal_completo || 0) + '</td><td>' + (n.nao_verificado || 0) + '</td></tr>'; }).join(''); });
-  fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(c => { const m = (c && c.municipios) || {}; const t = Object.values(m); el('pqCobertura').textContent = t.length ? t.filter(x => x.cobertura_qd === true).length + ' indexados · ' + t.filter(x => x.cobertura_qd === false).length + ' não indexados · ' + (5571 - t.length) + ' ainda não testados' : 'ainda não testada (a rotina preenche a partir da próxima rodada)'; });
-  fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).then(f => { const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0; el('pqSuspensas').textContent = n + ' fonte(s) suspensa(s) detectada(s)'; });
+  fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(c => { const m = (c && c.municipios) || {}; const t = Object.values(m); if (!el('pqCobertura')) return; el('pqCobertura').textContent = t.length ? t.filter(x => x.cobertura_qd === true).length + ' indexados · ' + t.filter(x => x.cobertura_qd === false).length + ' não indexados · ' + (5571 - t.length) + ' ainda não testados' : 'ainda não testada (a rotina preenche a partir da próxima rodada)'; });
+  fetch('data/calendario/fontes_suspensas.json').then(r => r.ok ? r.json() : null).then(f => { const n = f ? Object.values(f.fontes || {}).filter(x => x.suspensa).length : 0; if (!el('pqSuspensas')) return; el('pqSuspensas').textContent = n + ' fonte(s) suspensa(s) detectada(s)'; });
   // 13/09/2026 (proposta de enxugamento, Manus AI): detalhamento completo das MPs — fetch próprio
   // de BR_GEOJSON (mapa geográfico) e MPS, independente de financiamento.js.
   try {
@@ -316,4 +332,6 @@ const AREAS = [
     hint.innerHTML = 'Conforme o diretório oficial do MIDR' + (D.fonte && D.fonte.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + esc(D.fonte.atualizado_pelo_orgao_em) : '') + '. ' + (semPortal.length ? 'Estados sem portal listado no diretório: ' + esc(semPortal.join(', ')) + '.' : 'Todos os 27 estados têm portal listado no diretório.');
     lista.innerHTML = comPortal.map(uf => '<a href="' + esc(D.uf[uf].portal) + '" target="_blank" rel="noopener">' + uf + '</a>').join(' · ');
   }).catch(() => { hint.textContent = 'Lista não carregada.'; });
+})();
+
 })();
