@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 27/09/2026 · 632 pendente(s) · 15 decidida(s) · A=101 B=367 C=164
+Gerado em 27/09/2026 · 640 pendente(s) · 15 decidida(s) · A=102 B=370 C=168
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -680,7 +680,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Cabo Frio/RJ — 11 pendente(s)
+## Cabo Frio/RJ — 15 pendente(s)
 - `17218417dd` · nível **A** (6 pts) · busca_web · EX_ANTE · data 18/09/2026 (do trecho)
   - url: https://lagosinforma.com.br/cidades/cabofrio/cabo-frio-prepara-plano-de-contingencia-na-saude-para-possiveis-impactos-do-el-nino/
   - trecho: Cabo Frio prepara plano de contingência na Saúde para possíveis impactos do El Niño. Foto de Redação Por Redação; • 18/09/2026; - 15:31.
@@ -719,6 +719,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://radiorcfm.com/news/view/3975-saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-ni-o
   - trecho: Diversos setores da pasta participaram de um encontro realizado nesta semana, com a participação da Defesa Civil. 21/09/2026 09:20. Saúde de Cabo Frio ...
   - ⚠ risco_errado_no_titulo
+- `c59ccee271` · nível **C** (7 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Saúde de Cabo Frio estrutura plano de contingência para possíveis ...
+  - url: https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/
+  - trecho: Sep 18, 2026 ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...
+  - ⚠ risco_errado_no_titulo
+- `d731e5fef7` · nível **C** (7 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Prefeitura de Cabo Frio prepara plano de contingência para ...
+  - url: https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino
+  - trecho: Sep 19, 2026 ... Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos associados ...
+  - ⚠ risco_errado_no_titulo
 - `853cd22bce` · nível **C** (6 pts) · busca_web · — · citação não extraída
   - título: Saúde de Cabo Frio prepara plano de contingência para possíveis ...
   - url: https://rc24h.com.br/saude-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/
@@ -728,6 +738,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Saúde de Cabo Frio estrutura plano de contingência para possíveis ...
   - url: https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2
   - trecho: 6 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño. A Prefeitura de Cabo Frio avança na elaboração do Plano ...
+  - ⚠ risco_errado_no_titulo
+- `d104215dde` · nível **C** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Saúde de Cabo Frio prepara plano de contingência para possíveis ...
+  - url: https://rc24h.com.br/saude-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/
+  - trecho: Sep 18, 2026 ... Saúde de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...
+  - ⚠ risco_errado_no_titulo
+- `f89b0fefe8` · nível **C** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Saúde de Cabo Frio estrutura plano de contingência para possíveis ...
+  - url: https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2
+  - trecho: Sep 18, 2026 ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño. A Prefeitura de Cabo Frio avança na elaboração do Plano ...
   - ⚠ risco_errado_no_titulo
 
 ## Duque de Caxias/RJ — 6 pendente(s)
@@ -845,6 +865,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E · DEFESA CIVIL PLANCON · MARÉS DE TEMPESTADE OU · RESSACA MARÍTIMA · Degradação severa das Regiões Costeiras · COBRADE: 1.3.1.1.2 · RIO DAS OSTRAS · VERSÃO: 8.0 / 2024 · ÚLTIMA ATUALIZ
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+
+## Saquarema/RJ — 1 pendente(s)
+- `456aa025e5` · nível **A** (6 pts) · busca_web · EX_ANTE · **Lei 12.340**, 2011
+  - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
+  - url: https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html
+  - trecho: 2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...
+  - juiz: portão automático: fonte não oficial
 
 ## São Vicente/RN — 2 pendente(s)
 - `c9edcbd126` · nível **A** (7 pts) · busca_web · DUVIDA · citação não extraída
@@ -2395,11 +2422,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Bom Jesus do Itabapoana/RJ — 2 pendente(s)
+## Bom Jesus do Itabapoana/RJ — 3 pendente(s)
 - `5d7fd533db` · nível **B** (6 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
   - título: Bom Jesus do Itabapoana apresenta plano de contingência para ...
   - url: https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml
   - trecho: Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
+- `7aea6e5b4b` · nível **B** (6 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes
+  - url: https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml
+  - trecho: 1 de 1 O documento prevê ações como limpeza de bueiros, monitoramento de áreas de risco e implantação de um sistema de alerta para avisar a população sobre temporais. — Foto: Arquivo da Defesa Civil de Bom Jesus do Itaba
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: fonte não oficial
 - `c3bd28f4ca` · nível **C** (1 pts) · busca_web · — · data 2026 (do trecho)
@@ -2410,6 +2443,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `1c75f04b6d` · nível **B** (5 pts) · diario_consorciado · DUVIDA · **DECRETO Nº 449**, 02/09/2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=265&i=publicado_117413_2026-09-01_30182f5bd18c2ec63128c35ac5145311.pdf
   - trecho:  Núcleos Comunitários de Proteção e Defesa Civil – NUPDEC;  Plano de Adaptação à Mudança do Clima;  Plano de Contingência de Proteção e Defesa Civil;  Plano de Redução de Riscos Municipal;  Planos de Ações Estruturais  P
+  - juiz: portão automático: fonte não oficial
+
+## Macaé/RJ — 1 pendente(s)
+- `4f3e0c2f47` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Macaé está se preparando para os possíveis impactos do El Niño ...
+  - url: https://www.instagram.com/p/Da0Kligjr2w/
+  - trecho: Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...
   - juiz: portão automático: fonte não oficial
 
 ## Nova Friburgo/RJ — 2 pendente(s)
@@ -2501,7 +2541,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.silvajardim.rj.gov.br/index.php/plano-de-contingencia-da-defesa-civil/
   - trecho: Please wait while flipbook is loading. For more related info, FAQs and issues please refer to DearFlip WordPress Flipbook Plugin Help documentation · Prefeitura Municipal de Silva Jardim - CNPJ: 28.741.098/0001-57 - Rua 
 
-## São João da Barra/RJ — 2 pendente(s)
+## São João da Barra/RJ — 3 pendente(s)
+- `1dcfe978e1` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: São João da Barra se planeja para impactos do fenômeno El Niño ...
+  - url: https://www.folha1.com.br/geral/2026/07/1317511-sao-joao-da-barra-se-planeja-para-impactos-do-fenomeno-el-nino.html
+  - trecho: "Existe a necessidade de atendermos às orientações das esferas superiores e apresentar a estrutura existente no município para resposta a possíveis desastres naturais. No plano de contingência já existente, estamos traba
+  - juiz: portão automático: fonte não oficial
 - `cc4266e0a8` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - url: https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html
   - trecho: Jul 23, 2026 ... São João da Barra - Plano Municipal de Contingência para o enfrentamento dos possíveis impactos do fenômeno El Niño é uma das prioridades do ...

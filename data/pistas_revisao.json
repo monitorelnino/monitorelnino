@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-27",
- "total_pistas": 647,
- "total_municipios": 280,
+ "total_pistas": 655,
+ "total_municipios": 282,
  "por_nivel": {
-  "A": 103,
-  "B": 369,
-  "C": 175
+  "A": 104,
+  "B": 372,
+  "C": 179
  },
  "grupos": [
   {
@@ -644,6 +644,310 @@
    ]
   },
   {
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 15,
+   "niveis": {
+    "A": 1,
+    "B": 5,
+    "C": 9
+   },
+   "pistas": [
+    {
+     "id": "17218417dd",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://lagosinforma.com.br/cidades/cabofrio/cabo-frio-prepara-plano-de-contingencia-na-saude-para-possiveis-impactos-do-el-nino/",
+     "titulo": null,
+     "trecho": "Cabo Frio prepara plano de contingência na Saúde para possíveis impactos do El Niño. Foto de Redação Por Redação; • 18/09/2026; - 15:31.",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "454ffeddcd",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+     "titulo": null,
+     "trecho": "3 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "438126adad",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino",
+     "titulo": null,
+     "trecho": "2 days ago ... Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos associados ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4e915972de",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://odiariofluminense.com/2026/09/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+     "titulo": null,
+     "trecho": "3 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b4b939ce17",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2",
+     "titulo": null,
+     "trecho": "3 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño. A Prefeitura de Cabo Frio avança na elaboração do Plano ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c2ecd3c7f1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://fontecerta.com/noticias-da-regiao-dos-lagos/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+     "titulo": null,
+     "trecho": "3 days ago ... ... 2026 Débora Clara Santos. Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "0e2c464646",
+     "nivel_confianca": "C",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+     "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
+     "trecho": "6 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "0610669d73",
+     "nivel_confianca": "C",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino",
+     "titulo": "Prefeitura de Cabo Frio prepara plano de contingência para ...",
+     "trecho": "5 days ago ... Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos associados ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "162b614875",
+     "nivel_confianca": "C",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://radiorcfm.com/news/view/3975-saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-ni-o",
+     "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
+     "trecho": "Diversos setores da pasta participaram de um encontro realizado nesta semana, com a participação da Defesa Civil. 21/09/2026 09:20. Saúde de Cabo Frio ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c59ccee271",
+     "nivel_confianca": "C",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+     "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
+     "trecho": "Sep 18, 2026 ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d731e5fef7",
+     "nivel_confianca": "C",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino",
+     "titulo": "Prefeitura de Cabo Frio prepara plano de contingência para ...",
+     "trecho": "Sep 19, 2026 ... Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos associados ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "853cd22bce",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://rc24h.com.br/saude-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+     "titulo": "Saúde de Cabo Frio prepara plano de contingência para possíveis ...",
+     "trecho": "6 days ago ... Saúde de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a393cf8444",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2",
+     "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
+     "trecho": "6 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño. A Prefeitura de Cabo Frio avança na elaboração do Plano ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d104215dde",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://rc24h.com.br/saude-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+     "titulo": "Saúde de Cabo Frio prepara plano de contingência para possíveis ...",
+     "trecho": "Sep 18, 2026 ... Saúde de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f89b0fefe8",
+     "nivel_confianca": "C",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2",
+     "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
+     "trecho": "Sep 18, 2026 ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño. A Prefeitura de Cabo Frio avança na elaboração do Plano ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3205002",
    "municipio": "Serra",
    "uf": "ES",
@@ -1071,230 +1375,6 @@
      "titulo": "Cascavel se prepara para enfrentar os efeitos do El Niño ...",
      "trecho": "Sep 8, 2026 ... renatosilvacascavel on September 8, 2026: \"Cascavel se prepara para enfrentar os efeitos do El Niño. 🌧️ Nossa Defesa Civil está em campo ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3300704",
-   "municipio": "Cabo Frio",
-   "uf": "RJ",
-   "melhor_nivel": "A",
-   "n_pistas": 11,
-   "niveis": {
-    "A": 1,
-    "B": 5,
-    "C": 5
-   },
-   "pistas": [
-    {
-     "id": "17218417dd",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://lagosinforma.com.br/cidades/cabofrio/cabo-frio-prepara-plano-de-contingencia-na-saude-para-possiveis-impactos-do-el-nino/",
-     "titulo": null,
-     "trecho": "Cabo Frio prepara plano de contingência na Saúde para possíveis impactos do El Niño. Foto de Redação Por Redação; • 18/09/2026; - 15:31.",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "454ffeddcd",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
-     "titulo": null,
-     "trecho": "3 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "438126adad",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino",
-     "titulo": null,
-     "trecho": "2 days ago ... Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos associados ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "4e915972de",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://odiariofluminense.com/2026/09/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
-     "titulo": null,
-     "trecho": "3 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "b4b939ce17",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2",
-     "titulo": null,
-     "trecho": "3 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño. A Prefeitura de Cabo Frio avança na elaboração do Plano ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "c2ecd3c7f1",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://fontecerta.com/noticias-da-regiao-dos-lagos/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
-     "titulo": null,
-     "trecho": "3 days ago ... ... 2026 Débora Clara Santos. Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "0e2c464646",
-     "nivel_confianca": "C",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo"
-     ],
-     "origem": "busca_web",
-     "url": "https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
-     "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
-     "trecho": "6 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "0610669d73",
-     "nivel_confianca": "C",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo"
-     ],
-     "origem": "busca_web",
-     "url": "https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino",
-     "titulo": "Prefeitura de Cabo Frio prepara plano de contingência para ...",
-     "trecho": "5 days ago ... Prefeitura de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos associados ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "162b614875",
-     "nivel_confianca": "C",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo"
-     ],
-     "origem": "busca_web",
-     "url": "https://radiorcfm.com/news/view/3975-saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-ni-o",
-     "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
-     "trecho": "Diversos setores da pasta participaram de um encontro realizado nesta semana, com a participação da Defesa Civil. 21/09/2026 09:20. Saúde de Cabo Frio ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "853cd22bce",
-     "nivel_confianca": "C",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo"
-     ],
-     "origem": "busca_web",
-     "url": "https://rc24h.com.br/saude-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
-     "titulo": "Saúde de Cabo Frio prepara plano de contingência para possíveis ...",
-     "trecho": "6 days ago ... Saúde de Cabo Frio prepara plano de contingência para possíveis impactos do El Niño ... RJ), no mês passado, sobre eventos relacionados à ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "a393cf8444",
-     "nivel_confianca": "C",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo"
-     ],
-     "origem": "busca_web",
-     "url": "https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2",
-     "titulo": "Saúde de Cabo Frio estrutura plano de contingência para possíveis ...",
-     "trecho": "6 days ago ... Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño. A Prefeitura de Cabo Frio avança na elaboração do Plano ...",
-     "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -5256,6 +5336,39 @@
    ]
   },
   {
+   "ibge": "3305505",
+   "municipio": "Saquarema",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "456aa025e5",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4312401",
    "municipio": "Montenegro",
    "uf": "RS",
@@ -8929,6 +9042,77 @@
    ]
   },
   {
+   "ibge": "3300605",
+   "municipio": "Bom Jesus do Itabapoana",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "5d7fd533db",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
+     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para ...",
+     "trecho": "Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7aea6e5b4b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
+     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes",
+     "trecho": "1 de 1 O documento prevê ações como limpeza de bueiros, monitoramento de áreas de risco e implantação de um sistema de alerta para avisar a população sobre temporais. — Foto: Arquivo da Defesa Civil de Bom Jesus do Itabapoana",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c3bd28f4ca",
+     "nivel_confianca": "C",
+     "pontos_confianca": 1,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DcjeKSYhTDO/",
+     "titulo": null,
+     "trecho": "Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: \"Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3305604",
    "municipio": "Silva Jardim",
    "uf": "RJ",
@@ -8988,6 +9172,74 @@
      "url": "https://www.silvajardim.rj.gov.br/index.php/plano-de-contingencia-da-defesa-civil/",
      "titulo": null,
      "trecho": "Please wait while flipbook is loading. For more related info, FAQs and issues please refer to DearFlip WordPress Flipbook Plugin Help documentation · Prefeitura Municipal de Silva Jardim - CNPJ: 28.741.098/0001-57 - Rua Luiz Gomes, 46, Centro - Silva Jardim/RJ - CEP: 28820-000",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3305000",
+   "municipio": "São João da Barra",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "1dcfe978e1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.folha1.com.br/geral/2026/07/1317511-sao-joao-da-barra-se-planeja-para-impactos-do-fenomeno-el-nino.html",
+     "titulo": "São João da Barra se planeja para impactos do fenômeno El Niño ...",
+     "trecho": "\"Existe a necessidade de atendermos às orientações das esferas superiores e apresentar a estrutura existente no município para resposta a possíveis desastres naturais. No plano de contingência já existente, estamos trabalhando um plano específico em relação a incêndios florestais e da vegetação em geral dentro de todo o território sanjoanense.",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cc4266e0a8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html",
+     "titulo": null,
+     "trecho": "Jul 23, 2026 ... São João da Barra - Plano Municipal de Contingência para o enfrentamento dos possíveis impactos do fenômeno El Niño é uma das prioridades do ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ea0671aa2d",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/Dai6_4EoDv0/",
+     "titulo": null,
+     "trecho": "Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...",
      "data": "21/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -9948,57 +10200,6 @@
    ]
   },
   {
-   "ibge": "3300605",
-   "municipio": "Bom Jesus do Itabapoana",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "5d7fd533db",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "busca_web",
-     "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
-     "titulo": "Bom Jesus do Itabapoana apresenta plano de contingência para ...",
-     "trecho": "Nov 4, 2025 ... Bom Jesus do Itabapoana apresenta plano de contingência para enfrentar chuvas fortes ... Com El Niño muito forte, Sul deve ter chuva ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "c3bd28f4ca",
-     "nivel_confianca": "C",
-     "pontos_confianca": 1,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DcjeKSYhTDO/",
-     "titulo": null,
-     "trecho": "Aug 27, 2026 ... 1 likes, 0 comments - fallaregiao on August 27, 2026: \"Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "3303401",
    "municipio": "Nova Friburgo",
    "uf": "RJ",
@@ -10044,56 +10245,6 @@
      "titulo": "Diário oficial de 2025-10-23",
      "trecho": "Aberto e fechado Objeto da compra: REGISTRO DE PREÇOS para futura e eventual CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE CESTAS BÁSICAS, em atendimento às necessidades das famílias de risco alto e risco muito alto do Plano de Contingência do Município, at ingidas por situações de emergência e calamidade, provenientes de intempéries climáticas, pelo período de 01 (um) ano. • Aceito e Habilitado para a empresa Z E S COMERCIAL LTDA, CNPJ 47.496.710/ 0001-18, pelo melhor",
      "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3305000",
-   "municipio": "São João da Barra",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "cc4266e0a8",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html",
-     "titulo": null,
-     "trecho": "Jul 23, 2026 ... São João da Barra - Plano Municipal de Contingência para o enfrentamento dos possíveis impactos do fenômeno El Niño é uma das prioridades do ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "ea0671aa2d",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/Dai6_4EoDv0/",
-     "titulo": null,
-     "trecho": "Jul 8, 2026 ... ... plano de contingência já existente, estamos trabalhando um plano ... Os impactos do Novo El Niño fazem com que São João da Barra se ...",
-     "data": "21/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -12230,6 +12381,37 @@
      "trecho": "\nNúcleos Comunitários de Proteção e Defesa Civil – NUPDEC; \nPlano de Adaptação à Mudança do Clima; \nPlano de Contingência de Proteção e Defesa Civil; \nPlano de Redução de Riscos Municipal; \nPlanos de Ações Estruturais \nPlano Integrado para Comunidades Vulnerabilizadas. \nParágrafo Único: os planos previstos nos incisos III, IV, V, VI e VII \ndevem se adequar as disposições dos Planos Nacionais de Proteção e \nDefesa Civil (PNDC",
      "data": "2026-09-02",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3302403",
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "4f3e0c2f47",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/Da0Kligjr2w/",
+     "titulo": "Macaé está se preparando para os possíveis impactos do El Niño ...",
+     "trecho": "Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
