@@ -49,7 +49,17 @@ concurrency:
   # de cancelar um dos dois, ja que ambos podem ter trabalho valido a commitar
   # (o daily so encerra sem commit se estiver fora da semana intensiva E nao
   # for segunda — na propria segunda ele roda por completo).
-  group: atualizar-dados
+  # §259 (27/09/2026): o grupo é CONDICIONAL. A trava acima existe para serializar RODADAS, que
+  # commitam e dão push — e ela está certa nisso. Mas `concurrency` no nível do workflow enfileira
+  # o RUN inteiro, e o job `repor_dominio_manual` foi construído para ser independente: o
+  # comentário dele diz "não espera nem bloqueia a rodada semanal", e ele tem grupo próprio de
+  # job. Não bastava: em 27/09, uma reposição disparada às 15h30 ficou `pending` porque a rodada
+  # das 13h14 ocupava `atualizar-dados` e tinha até 300 min de teto. O caminho de reposição
+  # URGENTE não era urgente enquanto uma rodada corresse — e é justamente quando ele é urgente,
+  # porque é quando o domínio pode estar no ar errado.
+  # Com o grupo condicional, reposição e rodada deixam de disputar fila. Rodadas seguem
+  # serializadas entre si, que é o que a trava de 14/09 protege.
+  group: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.apenas_repor_dominio == 'true') && 'repor-dominio-urgente' || 'atualizar-dados' }}
   cancel-in-progress: false
 
 permissions:
