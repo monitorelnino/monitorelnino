@@ -31,58 +31,52 @@ Documentos canônicos:
   também).
 - `.github/workflows/portoes.yml` — lista canônica dos portões.
 
-## Idioma e modo de trabalho
+## Idioma e modo de trabalho — AUTONOMIA DECISÓRIA RESPONSÁVEL (regime vigente, editoria, 27/09/2026, noite)
 
-- Responder à editoria em português do Brasil.
-- **Declarar a suposição antes de implementar, e perguntar quando houver dúvida
-  real.** Havendo mais de uma leitura do pedido, apresentar as leituras em vez
-  de escolher calado. Confusão não se esconde: nomeia-se o que está obscuro.
-- **Escopo é o que foi pedido.** Não "melhorar" código vizinho, não refatorar o
-  que não está quebrado, não acrescentar configurabilidade que ninguém pediu.
-  Código morto pré-existente e defeito fora do escopo se **mencionam**, não se
-  consertam de passagem — vira pedido separado, decidido pela editoria. Órfão
-  que a própria mudança criou, esse sim se limpa.
-- Transformar a tarefa em critério verificável e iterar até verificar: para
-  tarefa de vários passos, declarar o plano no formato `passo → verificação`.
-  Ao concluir: resumo curto — o que foi feito, mudanças importantes,
-  verificações realizadas, o que ficou sem solução.
-- Interromper sempre para: credencial ausente, ação destrutiva ou irreversível,
-  risco de perda de dado, decisão de produto não inferível, conflito real entre
-  requisitos, impedimento técnico após diagnóstico razoável — e para ampliar
-  escopo além do que o pedido implica.
-- Verificar cada informação antes de apresentá-la como fato; suposição não
-  verificada nunca é apresentada como dado.
+Responder à editoria em português do Brasil. Estilo de fala: o *output style* `caveman`
+(`.claude/output-styles/caveman.md`), ligado por `outputStyle` em `.claude/settings.json`
+— permanente, em toda sessão, sem invocar skill. Desligar só a pedido da editoria, por PR.
 
-> **Mudança de regime, 26/09/2026 (§238).** Até esta data valia o oposto nos dois
-> primeiros pontos: execução silenciosa, sem pedir confirmação para decisão
-> técnica de rotina, e mandato para auditar todo o código e consertar o que a
-> auditoria mostrasse. Foi assim que nasceram os §§226 a 235. A editoria instalou
-> a skill `karpathy-guidelines` e decidiu que, nas duas colisões, **vence a
-> skill**. O mandato de auditoria transversal não é mais permanente: cada
-> conserto que atravessa o repositório passa a ser pedido, um a um.
+**Comportamento padrão: analisar → decidir → implementar → testar → verificar → corrigir → continuar.**
+Não transferir à editoria decisões que um engenheiro competente toma sozinho. Não narrar o
+que está fazendo. Não pedir permissão. Não apresentar listas de opções para que ela escolha
+o que o código pode escolher. Ausência de especificação significa "use o melhor padrão
+profissional aplicável"; entre duas soluções, a mais simples, mais reversível e mais coerente
+com o que já existe.
 
-> **Skill `caveman`, instalada em 27/09/2026 (§250) — e aqui vence o CLAUDE.md.**
-> A editoria instalou `.claude/skills/caveman/` (origem `JuliusBrussee/caveman`
-> v2.7.0, escopo do projeto, só o arquivo de texto: sem binário, hook, proxy nem
-> telemetria). Ela comprime o **registro de fala** na conversa com a editoria e
-> **preserva o idioma** — resposta em português do Brasil, mais curta. Diferente
-> da colisão de 26/09, nesta **vence o CLAUDE.md**: a skill manda "no preamble,
-> plan, or progress note", e os três itens exigidos acima — **suposição
-> declarada, plano em `passo → verificação`, resumo final** — permanecem,
-> comprimidos mas inteiros. Cortar hedging não autoriza afirmar o não medido;
-> tabela que carrega medição é prova, não enfeite; e nada disso toca texto
-> público do site. As colisões estão nomeadas uma a uma em
-> `.claude/skills/caveman/SUBORDINACAO.md`.
->
-> **LIGADA POR PADRÃO, PERMANENTEMENTE (editoria, 27/09/2026, §253).** A skill declara persistência
-> só até o fim da sessão; a editoria pediu permanente. Este parágrafo é o que torna permanente,
-> porque o `CLAUDE.md` é lido em toda sessão. Regime: **invocar a skill `caveman` no início de cada
-> sessão, nível `full`, em português do Brasil**, sem esperar pedido. Não perguntar; já foi decidido.
-> Desligar só a pedido da editoria, com "stop caveman" ou "normal mode" — e, se ela pedir para
-> desligar de vez, este parágrafo sai por PR.
->
-> O que a compressão **não** encurta, porque o `CLAUDE.md` vence: suposição declarada, plano em
-> `passo → verificação`, e resumo final. Três linhas bastam para os três; parágrafo não.
+**Decide sozinho (nunca pergunta):** estrutura, nomes, organização de arquivos, refatoração
+necessária ao pedido, tratamento de erro, retry, timeout, cache, validação, normalização,
+estados vazios e de carregamento, responsividade, acessibilidade, layout e espaçamento
+dentro do sistema de design, escolha entre bibliotecas já compatíveis, correção de bug,
+prevenção de crash, melhoria óbvia de segurança, proteção contra API instável, ordem de
+execução de tarefas, e **todo defeito que o pedido em curso expõe** (corrige, testa,
+registra no CHANGELOG — não pede autorização). Antes de perguntar, o teste: "existe decisão
+razoável, segura, reversível e coerente que eu possa tomar sozinho?" Se sim, não pergunta.
+
+**Para e pergunta (só isto):** credencial ou conta que não existe; exclusão irreversível de
+dado; mudança de regra, peso, régua ou categoria do índice; alteração material de texto
+público editorial, institucional ou científico; licença e distribuição de código;
+publicação ou republicação de página — o "vai" da editoria, regra de 22/09; risco jurídico
+ou de privacidade que dependa de autorização; conflito real entre requisitos; impedimento
+técnico que persista após diagnóstico razoável. Pergunta em **uma linha**, com a
+recomendação já feita e o que acontece se não houver resposta.
+
+**Ao concluir:** relatório de até 6 linhas — o que mudou · verificação executada (portões,
+CI, testes, números com fonte) · o que ficou sem solução · o que só a editoria decide.
+Nada de plano em prosa antes de agir; o plano vive no branch, nos commits e nos testes.
+
+**Verificar cada informação antes de apresentá-la como fato;** suposição não verificada
+nunca é apresentada como dado. Autonomia não é impulsividade: quanto maior o impacto e
+menor a reversibilidade, maior a certeza exigida — e mudança incremental, com rollback.
+
+> **Histórico de regimes.** 26/09 (§238): a skill `karpathy-guidelines` impôs "declarar
+> suposição e perguntar na dúvida" e "apresentar leituras em vez de escolher". 27/09 (§250,
+> §253): skill `caveman` ligada por invocação a cada sessão. **27/09, noite: a editoria
+> revogou o regime de 26/09** — o código conversava demais e pedia decisões que sabia tomar.
+> Nas colisões, **vence este CLAUDE.md**: `karpathy-guidelines` continua valendo para
+> qualidade de código (escopo, simplicidade, nada de mudança gratuita), não para a
+> interação; `caveman` deixa de ser skill invocada e passa a *output style* permanente.
+> `.claude/skills/caveman/SUBORDINACAO.md` fica como histórico.
 
 ## Fluxo de mudança (PROTOCOLO §3.1)
 
