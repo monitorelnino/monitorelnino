@@ -9,6 +9,186 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §262 · Juiz automático regrado da fila de pistas · 27/09/2026
+
+Classe **método e coleta**. Decisão editorial de 27/09/2026, handover
+`notas/HANDOVER_juiz_automatico_e_busca_web_27-09-2026.md` (PR 2), repositório privado.
+**Nenhuma nota muda neste PR:** o juiz é entregue com os canários e o relatório; a aplicação sobre
+as filas antigas roda depois, sob auditoria.
+
+### O problema
+
+627 das 675 pistas aguardavam leitura humana para promoção (R7). O funil descobre mais rápido do
+que a editoria lê — e "descobriu mas não promoveu" é indistinguível de "não existe" para quem olha
+o índice.
+
+### R7 revisada
+
+Promover a registro passa a ser decisão do **juiz automático** quando todos os critérios do
+codebook passam **no documento primário**; falhou um, a pista fica, com o motivo visível; a
+editoria audita amostra semanal e reverte por errata. A frase do §5.2.1 — "nenhuma promoção ocorre
+sem leitura do documento primário" — continua verdadeira: a leitura é do juiz, no documento, nunca
+no título ou na notícia.
+
+**Falso positivo é pior que falso negativo.** Um plano não creditado se corrige na rodada seguinte;
+um ato de resposta pontuado como preparação contamina o índice publicado. Nenhum modelo de
+linguagem decide: `juiz.py` é regra versionada (`CODEBOOK_VERSAO = "1.0 (27/09/2026)"`).
+
+### As oito etapas
+
+0. documento primário em fonte oficial, preservado com hash, texto extraível
+1. identidade do ente (é ela que impede o diário consorciado de creditar o município errado)
+2. citação completa (§3.2), com a exceção do plano técnico sem número — data obrigatória sempre
+3. autoridade do Executivo; colegiado é `executivo_pendente`
+4. natureza, com o teste do objeto em três partes cumulativas
+5. família de risco do ciclo, pela exposição do próprio município
+6. categoria e data (§3, §5.3) — **sem tocar em peso, régua ou escada de créditos** (§12)
+7. aplicar com rede de proteção — vive em `julgar_e_aplicar_descobertas.py`, que já a tinha
+8. auditoria amostral semanal, em planilha cega
+
+As etapas 0 a 6 são funções **puras** sobre o texto: é por isso que o juiz é testável sem rede.
+
+### Quatro defeitos que os canários pegaram antes de qualquer promoção
+
+Os dez canários — um documento por desfecho — não passaram de primeira, e o que eles acharam era
+grave:
+
+- **`RE_DECLARA_ANORMALIDADE` casava dentro de "não declara situação de emergência".** A negação
+  precede a declaração; sem excluí-la, o juiz lia um plano preventivo como ato de resposta. Pego
+  pelo canário `plano_readaptado`.
+- **Multirrisco engolia o fora do objeto.** Um plano de geada diz "plano de contingência
+  municipal" e caía na família multirrisco, que é a de menor especificidade — seria promovido.
+  Agora família específica vence, e sem família específica o risco fora do objeto decide. O caso
+  Salvador (03/09/2026) continua travado: plano multirrisco que lista arbovirose entre os riscos
+  não é plano de arbovirose.
+- **`citacao_completa` recebia "numero data" e reprovava tudo.** Ela exige o tipo do ato junto do
+  número; a citação precisa ser remontada. Todos os dez canários reprovavam por isso.
+- **Ano solto passava por data.** `extrair_data` devolve o ano quando não há data completa, e
+  "versão 2026" não situa o ato no ciclo (§5.3). Agora só `dd/mm/aaaa` vale na Etapa 2.
+
+### Dois consertos no classificador de natureza, ambos falso negativo
+
+Também achados por canário, e ambos na direção segura (nada que pontuava deixa de pontuar):
+
+- **A comparação por substring não via o disclaimer quebrado em duas linhas.** Diário oficial vem
+  com quebra de linha, e "não configurando / situação de emergência" não casava com a forma de uma
+  linha só. Normalizar o espaço em branco antes de comparar conserta isso para **todos** os sinais
+  de uma vez, em vez de multiplicar variantes no dicionário.
+- **Flexões do disclaimer preventivo** entraram no dicionário com origem e data.
+
+Regressão conferida contra os registros reais: 122 planos, 108 reconhecidos, 14 em dúvida,
+**0 erros**; 97 decretos de resposta, 56 rejeitados, 41 em dúvida, **0 falsos positivos** — os
+mesmos números de antes.
+
+### O juiz como barreira adicional, não como substituto
+
+`julgar_e_aplicar_descobertas.py` continua decidindo e aplicando pelo caminho que tem testado
+desde 31/08/2026. O juiz entra no caminho municipal como barreira **adicional**: só pode recusar o
+que aquele caminho já aprovou. As etapas que ele acrescenta ali — identidade do ente, autoridade
+do Executivo, família de risco — são exatamente as que faltavam, e as três derrubam falso positivo.
+
+**Escopo declarado:** a unificação completa dos dois caminhos num só não entra neste PR. O
+orquestrador antigo identifica a pista por `alvo` (rótulos estadual/municipal), não por município
+mais UF; reescrevê-lo agora quebraria cinco fixtures e mexeria na máquina de rollback sem que o
+relatório das filas já tenha mostrado quais formas de pista chegam lá. Fica como pedido separado.
+
+### Duas portas gravando a mesma prova
+
+A primeira versão preservava o texto julgado com `preservar_evidencia(..., ext="txt")`. O portão 26
+(`verificar_evidencias.py`) reprovou, e a razão é séria: evidência de texto cuja URL termina em
+`.pdf`, sem `texto_manual: true`, **seria sobrescrita** por `preservar_evidencias.py --ler`, que é
+a porta canônica e guarda o binário. Duas portas gravando a mesma chave é como se perde prova.
+
+O juiz deixa de preservar: ele calcula o hash do texto que julgou, para identificar no registro o
+que leu, e a preservação continua com quem já a faz. Os 45 arquivos que a execução de teste havia
+escrito saíram do commit.
+
+Na mesma execução apareceu um segundo defeito: `--relatorio` escrevia enquanto imprimia "nada
+escrito". O modo relatório passa a não preservar, não marcar a pista em memória e não gravar
+arquivo de fila, com travas de autoteste sobre o código de `main()` para que a guarda não
+desapareça em silêncio.
+
+### Registro, amostra e contagem
+
+Toda decisão vai para `data/promocoes_automaticas.json` com a pista, o documento (hash e URL), os
+critérios 1 a 6 **com o trecho que satisfez cada um**, categoria, data e versão do codebook.
+`scripts/amostra_auditoria_semanal.py` sorteia 10% das promoções e 10% das recusas (mínimo dez) em
+planilha **cega** — os trechos, sem a decisão do juiz — com o gabarito em arquivo irmão, aberto
+depois do preenchimento. Sem isso a auditoria mediria concordância com um rótulo já visto, que é
+outra coisa, e é o E1 do preprint que depende dela. A amostra é reprodutível pela data.
+
+`julgar_filas.py` roda o juiz sobre as quatro filas e conta por critério de recusa, alimentando a
+etapa `juiz` de `data/funil/<data>.json`.
+
+Três portões novos (88 no total): 10 canários mais 8 travas no juiz, 16 casos no executor das
+filas, 14 na amostra semanal.
+
+## §261 · Busca web: zero resultado não é ausência · 27/09/2026
+
+Classe **método e coleta**. Decisão editorial de 27/09/2026, handover
+`notas/HANDOVER_juiz_automatico_e_busca_web_27-09-2026.md` (PR 1), repositório privado.
+**Nenhuma nota muda:** a camada 4 produz pista, nunca registro — e a correção retroativa mexe
+só no log, não no banco.
+
+### O defeito, medido
+
+A camada 4 tinha duas decisões: `pista` quando algum resultado passava a peneira,
+`coberto_sem_mencao` quando nenhum passava — **inclusive quando o motor não devolvia resultado
+nenhum**. Medido no `data/log_buscas.json` de 21 a 27/09: das consultas da busca web, **5.329
+voltaram com zero resultado bruto e receberam `coberto_sem_mencao`**, que é afirmação de
+ausência. O motor mudo entrava no registro como cobertura.
+
+### As quatro decisões
+
+`decidir(n_brutos, n_pistas, rodadas_sem_pista)` é função pura, e por isso testável sem rede:
+
+- `motor_sem_resposta` — zero resultado bruto em todas as strings, timeout, erro HTTP, instância
+  que não subiu. A consulta **não conta como verificação** do município.
+- `nao_localizado_ate_o_momento` — houve resultado bruto e nenhuma pista, primeira rodada nessa
+  situação.
+- `coberto_sem_mencao` — resultado bruto e nenhuma pista em **duas** rodadas. Só aqui a ausência
+  é afirmável, e no teto do §3.2.
+- `pista` — algum resultado passou a peneira.
+
+O estado de espera por município vive em `data/busca_web_espera.json`; uma pista o zera.
+
+### Nove consultas, e a peneira que aceita o trecho
+
+Oito strings novas mais a de até 26/09, mantida como **controle da medição**:
+`"plano de contingência"` · `... 2026` · `"período chuvoso"` · `estiagem OR seca "plano"` ·
+`PLANCON` · `"plano de ação" El Niño` · `"plano de enfrentamento"` ·
+`decreto "situação de emergência" preventiv`. A peneira passa a aceitar o nome do município no
+título, na URL **ou no trecho**, e o termo de plano no título **ou no trecho**: diário oficial
+raramente traz o nome do município no título do resultado, e exigi-lo descartava o documento
+primário e guardava a notícia.
+
+`scripts/medir_revocacao_das_consultas.py` mede revocação por string sobre duas populações — 30
+municípios com plano já registrado (verdade forte: documento preservado) e a amostra manual de 30
+do item D. **A medição com motor de verdade ainda não foi feita:** o SearXNG é efêmero, sobe
+dentro do job da Action. O autoteste roda offline, com motor injetado. Até a medição, o conjunto
+inteiro roda: custa mais consultas e não afirma ausência a menos.
+
+A pausa entre consultas caiu de 0,5 s para 0,15 s — com nove strings, a pausa antiga somava 675 s
+de espera pura num lote de 150. Estimativa do lote: ~21 min, dentro do teto de 60 min do job.
+
+### Correção retroativa, sem apagar nada
+
+`scripts/corrigir_zero_resultado_no_log.py` acrescentou **5.329 linhas de correção** ao log
+(45.154 para 50.483 execuções). A execução original permanece exatamente como estava; a correção
+é execução nova, com `corrige` apontando para a posição da original e a decisão original guardada.
+Idempotente pela posição: rodar duas vezes não produz duas correções. `n_resultados` ausente
+**não** é tratado como zero — o que não foi medido não se corrige.
+
+### Contagem por etapa, em toda rodada
+
+`funil.py` grava `data/funil/<AAAA-MM-DD>.json` com as contagens por etapa, acumulando dentro do
+dia (a rodada chama o mesmo coletor várias vezes). `scripts/verificar_funil.py` reprova quando
+`motor_sem_resposta + lacunas` passa de 25% das consultas, quando há mais cobertos sem menção do
+que consultas com resultado bruto, e quando o juiz promove mais do que as pistas com documento
+(invariante do PR 3). Etapa que já produziu e devolve zero hoje **alerta**, não reprova.
+
+Cinco portões novos (85 no total). `METODOLOGIA.md` recebeu as duas decisões datadas.
+
 ## §260 · Preprint e site são rotinas separadas · 27/09/2026
 
 Classe **governança**. Decisão da editoria, e correção de um erro meu.
@@ -50,6 +230,44 @@ Conferido: nenhum arquivo do site **chama** código do preprint. As únicas men�
 de procedência, que registram de onde veio cada conserto. As referências a `robo-registro` nos
 workflows são o canal de relatório da editoria, anterior a tudo isso. O worktree foi removido.
 
+## §259 · A reposição urgente do domínio não é urgente enquanto a rodada corre · 27/09/2026
+
+Classe **infraestrutura da rodada**. Achado ao publicar o site a pedido da editoria.
+
+### O que aconteceu
+
+Reposição do domínio disparada às **15h30**. Ficou `pending`. Causa: a rodada agendada das
+**13h14** ocupava o grupo de concorrência `atualizar-dados`, com **até 300 minutos** de teto.
+
+O job `repor_dominio_manual` foi construído em 21/09 justamente para ser independente — o
+comentário dele diz *"não espera nem bloqueia a rodada semanal"* —, e tem grupo de concorrência
+**próprio de job**. Não bastava: `concurrency` declarado no nível do **workflow** enfileira o
+**run inteiro**, antes de qualquer job ser avaliado. O `if:` que pula a rodada e o grupo próprio
+do job só valem depois que o run começa, e ele não começava.
+
+O resultado é o pior possível para esse caminho: ele existe para o caso urgente, e o caso urgente
+é exatamente quando uma rodada está correndo — porque é aí que o domínio pode estar no ar errado.
+
+### O conserto
+
+O grupo passa a ser **condicional**:
+
+```yaml
+group: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.apenas_repor_dominio == 'true') && 'repor-dominio-urgente' || 'atualizar-dados' }}
+```
+
+Reposição e rodada deixam de disputar fila. **Rodadas seguem serializadas entre si**, que é o que
+a trava de 14/09 protege — ela nasceu porque a semanal e a diária caíam no mesmo minuto toda
+segunda e podiam colidir no push.
+
+### O portão
+
+`scripts/validar_workflows.py` passa a exigir que o grupo cite `apenas_repor_dominio`. Conferido
+que reprova: com o grupo fixo de volta, ele acusa "a reposição urgente do domínio voltaria a
+esperar a rodada na fila".
+
+Sem o portão a regressão volta calada, e só aparece no dia em que o domínio estiver no ar errado —
+que é o único dia em que isso importa.
 ## §258 · Página "Pesquisadores" arquivada, com as provas nas páginas que as usam · 27/09/2026
 
 Classe **página pública**. Decisão da editoria, handover
@@ -169,7 +387,6 @@ vez de afrouxar o teto, os blocos passam a ser **excluídos da contagem**, marca
 `data-proveniencia="1"`, pelo mesmo precedente que já exclui subtítulo de figura: são lista de
 fonte e log de consulta, evidência e não prosa de edição. O teto existe para medir o que o editor
 escreve, não para pressionar alguém a encurtar a lista de fontes.
-
 ## §257 · Errata de texto no §5.3: a METODOLOGIA passa a dizer o que o código faz · 27/09/2026
 
 Classe **errata de texto**. T2 do pedido do preprint. **Nenhuma nota muda** — `recalcular_mare.py

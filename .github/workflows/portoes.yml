@@ -322,3 +322,19 @@ jobs:
           # as regras que dão sentido ao recurso: a fila só chama escaneado, o texto de OCR tem arquivo
           # próprio (não sobrescreve a camada de texto), CPF redigido antes do hash, marcador e LF.
           python3 preservar_evidencias.py --autoteste
+          # 27/09/2026 (PR 1 do juiz automático): zero resultado bruto na busca web não é ausência.
+          # O autoteste do coletor trava a regra de decisão (motor_sem_resposta, duas rodadas para
+          # coberto_sem_mencao) e o conjunto de nove consultas; o portão do funil trava a contagem
+          # por etapa da rodada, com o teto de 25% de motor sem resposta.
+          python3 funil.py --autoteste
+          python3 scripts/verificar_funil.py --autoteste
+          python3 scripts/verificar_funil.py
+          python3 scripts/corrigir_zero_resultado_no_log.py --autoteste
+          python3 scripts/medir_revocacao_das_consultas.py --autoteste
+          # 27/09/2026 (PR 2 do juiz automático): a regra R7 revisada. Os dez canários são um
+          # documento por desfecho — plano novo, readaptado, de elaboração, decreto de resposta,
+          # aprovação por conselho, plano de geada, notícia sem documento, PDF ilegível, ente errado
+          # e citação incompleta. Falso positivo é pior que falso negativo: é isso que eles travam.
+          python3 juiz.py --autoteste
+          python3 julgar_filas.py --autoteste
+          python3 scripts/amostra_auditoria_semanal.py --autoteste

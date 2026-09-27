@@ -97,7 +97,23 @@ else:
               f"{'…' if len(_sem) > 3 else ''}")
         erros += 1
 
+# §259 (27/09/2026): a reposição urgente do domínio não pode compartilhar fila com a rodada.
+# `concurrency` no nível do workflow enfileira o RUN inteiro, e o job `repor_dominio_manual` foi
+# construído para ser independente — mas ficava preso mesmo assim. Em 27/09 uma reposição
+# disparada às 15h30 ficou `pending` porque a rodada das 13h14 ocupava o grupo, com até 300 min
+# de teto. O grupo passou a ser CONDICIONAL, e este portão exige que continue sendo: sem isso, a
+# regressão volta calada, e só aparece no dia em que o domínio estiver no ar errado.
+import pathlib as _pl  # noqa: E402
+_at = _pl.Path(__file__).resolve().parent.parent / ".github" / "workflows" / "atualizar.yml"
+if _at.exists():
+    _grupo = (yaml.safe_load(_at.read_text(encoding="utf-8")).get("concurrency") or {}).get("group", "")
+    if "apenas_repor_dominio" not in str(_grupo):
+        print("  ✗ atualizar.yml: o grupo de concorrência não é condicional em "
+              "`apenas_repor_dominio` — a reposição urgente do domínio voltaria a esperar a "
+              "rodada na fila, e é justamente quando ela é urgente que a rodada está correndo")
+        erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
-      "todo portão de página com assunto declarado."
+      "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")
 sys.exit(1 if erros else 0)

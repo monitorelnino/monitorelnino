@@ -1011,7 +1011,14 @@ def fechar_lote_log():
 # lista é o que permite que o coletor que INVENTA uma decisão prove, no autoteste dele, que ela
 # cabe aqui.
 DECISOES_LOG = ("registro", "pista", "nada", "consultado", "fonte", "erro", "acesso",
-                "sem_cobertura_qd", "sem_edicao_no_periodo", "coberto_sem_mencao", "com_excerto")
+                "sem_cobertura_qd", "sem_edicao_no_periodo", "coberto_sem_mencao", "com_excerto",
+                # 27/09/2026 (decisão editorial, PR 1 do juiz automático): zero resultado bruto
+                # não é ausência. "motor_sem_resposta" é o motor doente (0 resultados brutos,
+                # timeout, erro HTTP, instância que não subiu) — a consulta NÃO conta como
+                # verificação do município. "nao_localizado_ate_o_momento" é o estado de espera:
+                # houve resultado bruto e nenhuma pista, mas ainda não houve a segunda rodada que
+                # autoriza "coberto_sem_mencao".
+                "motor_sem_resposta", "nao_localizado_ate_o_momento")
 
 
 def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: str = "",
