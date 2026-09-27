@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 26/09/2026 · 621 pendente(s) · 15 decidida(s) · A=98 B=360 C=163
+Gerado em 26/09/2026 · 623 pendente(s) · 15 decidida(s) · A=98 B=361 C=164
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -2469,11 +2469,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jul 23, 2026 ... Com a atualização do Plano de Contingência e o fortalecimento da integração entre os órgãos municipais e estaduais, Valença busca ampliar ...
   - juiz: portão automático: fonte não oficial
 
-## Paraná/RN — 1 pendente(s)
+## Paraná/RN — 2 pendente(s)
 - `f4a1c5aa12` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: El Niño pode provocar tempestades severas no Paraná - G1 - Globo
   - url: https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml
   - trecho: Devido à previsão, Defesa Civil começou a revisar Plano de Contingência e a orientar prefeituras sobre prevenção a desastres. Por Millena Sartori, g1 PR. 14 ...
+  - juiz: portão automático: fonte não oficial
+- `2236b63f59` · nível **C** (6 pts) · busca_web · — · data 2026 (do trecho)
+  - título: El Niño no Paraná: prevenção, cenários e desafios | Legis Vídeos
+  - url: https://legisvideos.assembleia.pr.leg.br/video/2330
+  - trecho: Jul 14, 2026 ... El Niño no Paraná: prevenção, cenários e desafios. Transcrição ... plano de contingência de enfrentamento é o Ninho. Já temos dentro do ...
+  - ⚠ uf_divergente_na_url
+
+## Portalegre/RN — 1 pendente(s)
+- `ed61fcdedc` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Plano de Contingência do Município de Portalegre para as ondas ...
+  - url: https://www.cm-portalegre.pt/blog/2026/07/02/plano-de-contingencia-do-municipio-de-portalegre-para-as-ondas-de-calor-temperaturas-elevadas/
+  - trecho: Devido às elevadas temperaturas ... os seguintes espaços climatizados como abrigo temporário: Centro de Artes do Espetáculo – 14h00-19h00 e 20h30-23h30 ......
   - juiz: portão automático: fonte não oficial
 
 ## RODOLFO FERNANDES/RN — 5 pendente(s)
