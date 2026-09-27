@@ -43,6 +43,20 @@ respondida sem abrir o código, e duas cegueiras mostraram por quê:
 | `busca_web` | (§261) consultas, com resultado bruto, motor sem resposta, pistas, cobertos, espera, lacunas, brutos por string |
 | `juiz` | (§262) pistas recebidas, com documento, promovidas, recusas por critério |
 
+### O portão dos autotestes isolados pegou a contagem
+
+O primeiro CI do §263 reprovou em `verificar_autotestes_isolados.py` (§220, §228): os autotestes de
+`coletar_diarios_municipais.py` e `coletar_diarios_consorciados.py` chegam ao fim do caminho
+principal, e a contagem do funil acabava escrita em `data/funil/<data>.json`. Autoteste offline não
+toca em `data/`, nem por um contador.
+
+A guarda ficou numa porta só — `funil.registrar` não escreve quando o processo roda com
+`--autoteste` **e** o destino é o `data/` do repositório —, em vez de um mock por autoteste: cinco
+coletores estão instrumentados hoje e qualquer outro herda a proteção. A primeira versão da guarda
+olhava só o modo e barrava também o autoteste do próprio `funil.py`, que escreve num diretório
+temporário; a condição correta é o destino, e o autoteste agora cobra as duas coisas (no
+temporário a escrita tem de acontecer; em `data/`, não).
+
 A conferência passa a rodar **dentro da rodada**, não só na CI do PR, com `continue-on-error`: a
 contradição aparece no log da rodada sem impedir o commit dos dados já coletados — o portão do PR é
 que reprova de verdade. Soma dos tetos por passo: 253 min, dentro do teto de 300 do job.
