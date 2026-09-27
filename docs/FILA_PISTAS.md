@@ -1,8 +1,45 @@
 # Fila de pistas — revisão humana
 
-Gerado em 27/09/2026 · 625 pendente(s) · 15 decidida(s) · A=98 B=363 C=164
+Gerado em 27/09/2026 · 632 pendente(s) · 15 decidida(s) · A=101 B=367 C=164
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
+
+## Manaus/AM — 7 pendente(s)
+- `cece6e304a` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2024 (do trecho)
+  - título: plano de ação climática da cidade de manaus
+  - url: https://www.manaus.am.gov.br/wp-content/uploads/2026/02/20251015_PAC_MAU_V04.pdf
+  - trecho: Plano de Contingência – PLANCON 2024. ... Disponível em: https://www2.manaus.am.gov.br/docs/portal/secretarias/smtu/PlanMobManaus.pdf e https://www2.manaus.am ...
+  - juiz: portão automático: data do ato incompleta (2024)
+- `3621ef564b` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE MANAUS – PMSBM
+  - url: https://planodesaneamento.manaus.am.gov.br/wp-content/uploads/2025/12/DIAGNOSTICO-E-PROGNOSTICO-ESGOTAMENTO-SANITARIO-1.pdf
+  - trecho: 1.17 CONTINGÊNCIAS E EMERGÊNCIAS ............................................... 150 · 1.17.1 Plano de contingências e emergências ........................................
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `3800c57450` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Decreto de estado de emergência em Manaus devido à ...
+  - url: https://manaus.am.gov.br/noticia/decreto/prefeito-vai-decretar-estado-de-emergencia-em-manaus-devido-a-estiagem-nesta-quarta-feira-11-9
+  - trecho: Meio Ambiente · Arborização · Infraestrutura · Atenção primária · Arborização · Mobilidade · Compromisso · Mobilidade · Oportunidade · ÚLTIMAS NOTÍCIAS · Oportunidade · Fiscalização · Nota de Pesar · Mais notícias · Plan
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `4e6b0deeb7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - url: https://exame.com/esg/el-nino-manaus-usa-drones-monitora-qualidade-do-ar-e-combate-queimadas-em-prevencao/
+  - trecho: Jul 16, 2026 ... Ainda neste mês, a prefeitura pretende lançar o Plano de Contingência ... El Niño pela Prefeitura de Manaus (Prefeitura de Manaus/Divulgação).
+  - juiz: portão automático: fonte não oficial
+- `2b9ac0d88a` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - url: https://plasticonews.org/el-nino-2026-depois-do-choque-logistico-de-2023-manaus-volta-a-acender-o-alerta-para-o-escoamento-de-filmes-e-embalagens/
+  - trecho: Aug 20, 2026 ... El Niño 2026: depois do choque logístico de 2023, Manaus volta a acender o alerta para o escoamento de filmes e embalagens · 2023 mostrou quanto ...
+  - juiz: portão automático: fonte não oficial
+- `1e6cce79ba` · nível **C** (3 pts) · seguimento_busca_oficial · DUVIDA · **LEI Nº 5.145**, 24/03/2020
+  - título: LEIS-E-DECRETOS-AM-COVID-19. ...
+  - url: https://www.amazonprev.am.gov.br/wp-content/uploads/2020/06/LEIS-E-DECRETOS-AM-COVID-19.pdf
+  - trecho: Amazonas (FTI), “ações do combate a pandemia da COVID-19 (novo coronavírus)”. ... Estadual, e dá outras providências. Institui o Plano de Contingenciamento de Gastos, que terá como objetivo promover
+  - ⚠ risco_errado_no_titulo, ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `53f1d1ef3e` · nível **C** (2 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Novo decreto do Governo do Amazonas traz mudanças em regras de ...
+  - url: http://www.amazonas.am.gov.br/2021/03/novo-decreto-do-governo-do-amazonas-traz-mudancas-em-regras-de-circulacao-ensino-privado-restaurantes-e-balnearios/
+  - trecho: Entre as mudanças está o horário de funcionamento de restaurantes e lanchonetes, que passará a ser das 06h às 23h, de segunda a sábado, e das 7h às 16h aos domingos. O decreto com as alterações, que entrará em vigor na p
+  - ⚠ ano_anterior_ao_ciclo
 
 ## Sobral/CE — 1 pendente(s)
 - `f2688a9eeb` · nível **A** (6 pts) · querido_diario · DUVIDA · **Decreto Municipal Nº 196**, 22/11/2017
@@ -10,7 +47,19 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho:  Representante da Contratada: Francisco Helton Soares  de Sousa. Jackson Lira Cavalcante - Coordenador Jurídico da SEDHAS.   EXTRATO DO PLANO DE CONTINGÊNCIA - 2026 -  ALAGAMENTOS, ENCHENTES DA DEFESA CIVIL. PROCESSO  nº
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Serra/ES — 9 pendente(s)
+## Nova Venécia/ES — 1 pendente(s)
+- `6ba6dc00ca` · nível **A** (6 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: Nova Venécia prepara Plano de Contingência pensando no período ...
+  - url: https://www.novavenecia.es.gov.br/nova-venecia-prepara-plano-de-contingencia-pensando-no-periodo-de-chuvas/
+  - trecho: Nesta terça-feira (21), acontenceu ... servidores públicos e membros de entidades locais sobre a elaboração do Plano de Contingência Municipal....
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+
+## Serra/ES — 11 pendente(s)
+- `49d4550b60` · nível **A** (8 pts) · busca_web · EX_ANTE · data 08/08/2026 (do trecho)
+  - título: Serra apresenta plano de contingência para enfrentar possíveis ...
+  - url: https://www.portaltemponovo.com.br/serra-apresenta-plano-de-contingencia-para-enfrentar-possiveis-impactos-do-el-nino/
+  - trecho: Serra apresenta plano de contingência para enfrentar possíveis impactos do El Niño. Foto de Jady Oliveira Jady Oliveira. 08/08/2026 - 08:25. 08/08/2026 - 08 ...
+  - juiz: portão automático: fonte não oficial
 - `d53c841939` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
   - título: Defesa Civil da Serra elabora Plano de Contingência ...
   - url: https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade
@@ -43,6 +92,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram co
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `82f9f02ce6` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Serra cria plano para enfrentar efeitos do El Niño - Revista ES Brasil
+  - url: https://esbrasil.com.br/serra-cria-plano-para-enfrentar-efeitos-do-elnino/
+  - trecho: Aug 7, 2026 ... A Serra é a primeira prefeitura a apresentar um Plano de Contingência para o El Niño, demonstrando nosso compromisso com o planejamento, a ...
+  - juiz: portão automático: fonte não oficial
 - `c4320e89f3` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: O Super El Niño está confirmado, e a Serra precisa se preparar para ...
   - url: https://www.instagram.com/reel/DclxdDCOw7_/
@@ -78,7 +132,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.
   - juiz: portão automático: fonte não oficial
 
-## Vitória/ES — 8 pendente(s)
+## Vitória/ES — 9 pendente(s)
 - `ab9dfdc5bf` · nível **A** (7 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
   - título: Saúde de Vitória desenvolve Plano de Contingência para situações ...
   - url: https://m.vitoria.es.gov.br/noticia/saude-de-vitoria-desenvolve-plano-de-contingencia-para-situacoes-de-desastres-51224
@@ -114,6 +168,10 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DZ5wii5gHCw/
   - trecho: Jun 22, 2026 ... A atuação integrada entre a Defesa Civil e as secretarias municipais, a atualização do Plano de Contingência, a criação do Conselho Municipal de ...
   - juiz: portão automático: fonte não oficial
+- `038c548f92` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: El Niño coloca municípios em alerta e Prefeitura de Vitória da ...
+  - url: https://bahiadestaque.com/noticia/36193/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos
+  - trecho: Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...
 - `403eb09b43` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 7.534**, 2008
   - título: Diário oficial de 2026-07-29
   - url: https://data.queridodiario.ok.org.br/3205309/2026-07-29/a7f158e2d5e7fd975935d29393b6f819beea151d.pdf
@@ -1356,6 +1414,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: nais;     CONSIDERANDO que a Fundação de Vigilância em Saúde do  Amazonas – FVS-RCP disponibiliza o Plano de Contingência para  Eventos Climáticos Sazonais de Seca e Estiagem do Estado do  Amazonas 2026 e a Nota Técnica 
   - juiz: portão automático: fonte não oficial
 
+## Caapiranga/AM — 1 pendente(s)
+- `bfc9ac179d` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
+  - título: Super El Niño: MP acompanha medidas preventivas para fenômeno ...
+  - url: https://www.portalmarcossantos.com.br/2026/08/11/super-el-nino-mp-acompanha-medidas-preventivas-para-fenomeno-em-caapiranga/
+  - trecho: Aug 11, 2026 ... Por conta da previsão de ocorrência do fenômeno climático Super El Niño em Caapiranga ... Plano de Contingência Municipal (Plancon) e a ...
+  - juiz: portão automático: fonte não oficial
+
 ## ITAPIRANGA/AM — 2 pendente(s)
 - `509724bef5` · nível **B** (3 pts) · diario_consorciado · DUVIDA · **PORTARIA Nº 063**, 2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118936_2026-08-31_5976aa056909873e4c6a3839b690952b.pdf
@@ -1393,43 +1458,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: o Climática, a ser elaborado no prazo  máximo de 12 meses a partir da publicação desta Lei;  II - o Plano de Contingência Municipal de Proteção e Defesa Civil;  III - o Fundo Municipal de Meio Ambiente - FMMA, que também
   - juiz: portão automático: fonte não oficial
 
-## Manaus/AM — 6 pendente(s)
-- `3621ef564b` · nível **B** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
-  - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE MANAUS – PMSBM
-  - url: https://planodesaneamento.manaus.am.gov.br/wp-content/uploads/2025/12/DIAGNOSTICO-E-PROGNOSTICO-ESGOTAMENTO-SANITARIO-1.pdf
-  - trecho: 1.17 CONTINGÊNCIAS E EMERGÊNCIAS ............................................... 150 · 1.17.1 Plano de contingências e emergências ........................................
-  - ⚠ ano_anterior_ao_ciclo
-  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `3800c57450` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
-  - título: Decreto de estado de emergência em Manaus devido à ...
-  - url: https://manaus.am.gov.br/noticia/decreto/prefeito-vai-decretar-estado-de-emergencia-em-manaus-devido-a-estiagem-nesta-quarta-feira-11-9
-  - trecho: Meio Ambiente · Arborização · Infraestrutura · Atenção primária · Arborização · Mobilidade · Compromisso · Mobilidade · Oportunidade · ÚLTIMAS NOTÍCIAS · Oportunidade · Fiscalização · Nota de Pesar · Mais notícias · Plan
-  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `4e6b0deeb7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
-  - url: https://exame.com/esg/el-nino-manaus-usa-drones-monitora-qualidade-do-ar-e-combate-queimadas-em-prevencao/
-  - trecho: Jul 16, 2026 ... Ainda neste mês, a prefeitura pretende lançar o Plano de Contingência ... El Niño pela Prefeitura de Manaus (Prefeitura de Manaus/Divulgação).
-  - juiz: portão automático: fonte não oficial
-- `2b9ac0d88a` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
-  - url: https://plasticonews.org/el-nino-2026-depois-do-choque-logistico-de-2023-manaus-volta-a-acender-o-alerta-para-o-escoamento-de-filmes-e-embalagens/
-  - trecho: Aug 20, 2026 ... El Niño 2026: depois do choque logístico de 2023, Manaus volta a acender o alerta para o escoamento de filmes e embalagens · 2023 mostrou quanto ...
-  - juiz: portão automático: fonte não oficial
-- `1e6cce79ba` · nível **C** (3 pts) · seguimento_busca_oficial · DUVIDA · **LEI Nº 5.145**, 24/03/2020
-  - título: LEIS-E-DECRETOS-AM-COVID-19. ...
-  - url: https://www.amazonprev.am.gov.br/wp-content/uploads/2020/06/LEIS-E-DECRETOS-AM-COVID-19.pdf
-  - trecho: Amazonas (FTI), “ações do combate a pandemia da COVID-19 (novo coronavírus)”. ... Estadual, e dá outras providências. Institui o Plano de Contingenciamento de Gastos, que terá como objetivo promover
-  - ⚠ risco_errado_no_titulo, ano_anterior_ao_ciclo
-  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `53f1d1ef3e` · nível **C** (2 pts) · seguimento_busca_oficial · — · citação não extraída
-  - título: Novo decreto do Governo do Amazonas traz mudanças em regras de ...
-  - url: http://www.amazonas.am.gov.br/2021/03/novo-decreto-do-governo-do-amazonas-traz-mudancas-em-regras-de-circulacao-ensino-privado-restaurantes-e-balnearios/
-  - trecho: Entre as mudanças está o horário de funcionamento de restaurantes e lanchonetes, que passará a ser das 06h às 23h, de segunda a sábado, e das 7h às 16h aos domingos. O decreto com as alterações, que entrará em vigor na p
-  - ⚠ ano_anterior_ao_ciclo
-
 ## NHAMUNDÁ/AM — 1 pendente(s)
 - `20b18949c6` · nível **B** (3 pts) · diario_consorciado · DUVIDA · **PORTARIA Nº 050**, 2026
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118940_2026-09-04_9e1ed9cde6af72b7a229329950218130.pdf
   - trecho: te os índices pluviométricos, níveis de  reservatórios e focos de calor no município.  • Elaborar o Plano de Contingência Municipal para Estiagem e  Incêndios Florestais.  • Articular o fornecimento emergencial de água p
   - juiz: portão automático: fonte não oficial
+
+## Parintins/AM — 1 pendente(s)
+- `a86d3d616f` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
+  - url: https://parintinsnoticias.com/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/
+  - trecho: 3 days ago ... Resumindo: plano de contingência, população das áreas de risco ... Parintins, Amazonas. © 2026 Parintins Notícias. Todos os direitos ...
 
 ## Alagoinhas/BA — 1 pendente(s)
 - `dcbb078c19` · nível **B** (3 pts) · querido_diario · EX_ANTE · citação não extraída

@@ -587,6 +587,7 @@ jobs:
           python3 scripts/gerar_manifesto.py
 
       - name: Commit das alterações de dados
+        id: commit
         if: github.event.inputs.ensaio != 'true'
         run: |
           git config user.name "monitor-el-nino-bot"
@@ -742,3 +743,37 @@ jobs:
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg_repor 2>/dev/null
           mkdir -p /tmp/reg_repor/relatorios && cp /tmp/repor_relatorio.txt "/tmp/reg_repor/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_repor_dominio.txt"
           cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio ${GITHUB_SHA::7}" && git push -q
+
+      # ── VIGIA DO DESFECHO (§254, 27/09/2026) ─────────────────────────────────────────────
+      # Por que este passo existe. Em 27/09 mediu-se que o último commit automático de dados
+      # bem-sucedido tinha sido em 24/09 às 07h15 — TRÊS DIAS. Quatro defeitos distintos
+      # (§§245 a 248), cada um escondido atrás do anterior, e todos com a mesma assinatura:
+      # a rodada falhava com o passo de PUBLICAÇÃO em `success`, republicando dado velho.
+      # Nada ficava vermelho de um jeito que se veja, e a rotina diária de auditoria que
+      # rodava nesses três dias não pegou nenhum — porque olhava portões e saúde do site, não
+      # o DESFECHO da rodada.
+      #
+      # Este passo é o que faltava, e é deliberadamente determinístico em vez de uma sessão de
+      # agente: `if` em workflow não esquece, não custa e não interpreta.
+      #
+      # A regra: se a rodada NÃO estava em ensaio, então ou o commit concluiu com sucesso, ou
+      # não havia nada a comitar. Qualquer outro desfecho — `failure`, `skipped`, `cancelled` —
+      # é rodada que não entregou, e o job termina VERMELHO mesmo que a publicação tenha ido.
+      # `skipped` entra na lista de propósito: foi o desfecho das quatro rodadas de 26/09, e o
+      # `continue-on-error` NÃO protege contra ele (§246, §252).
+      - name: Vigia do desfecho — a rodada comitou dado?
+        if: always() && github.event.inputs.ensaio != 'true'
+        env:
+          DESFECHO_COMMIT: ${{ steps.commit.outcome }}
+        run: |
+          echo "desfecho do passo de commit: ${DESFECHO_COMMIT:-(sem id)}"
+          echo "houve alteração a comitar: ${HOUVE_ALTERACAO:-(não definido)}"
+          if [ "${DESFECHO_COMMIT}" = "success" ]; then
+            echo "Rodada comitou (ou não havia nada a comitar, e o passo disse isso)."
+            exit 0
+          fi
+          echo "::error::A rodada NÃO comitou dado (passo de commit: ${DESFECHO_COMMIT:-ausente})."
+          echo "::error::O passo de publicação pode ter dado success e republicado dado VELHO —"
+          echo "::error::foi exatamente o que aconteceu de 24/09 a 27/09/2026 (§§245 a 248)."
+          echo "::error::Não trate esta rodada como bem-sucedida. Ver o passo de commit acima."
+          exit 1
