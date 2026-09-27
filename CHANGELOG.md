@@ -9,6 +9,23 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §245 · A fila de pistas aguenta dois produtores no mesmo arquivo · 27/09/2026
+
+Classe **coleta**. Preparo da rodada de atualização.
+
+O ensaio da rodada mostrou `KeyError: 'hash'` **três vezes**, nos três monitores que gravam pista
+de descoberta. A causa: `data/pistas_imprensa.json` tem **dois produtores**. O monitor de imprensa
+grava pistas com `alvo`, `titulo`, `url` e `hash`; a esteira de triagem grava outros 638 registros,
+com `id`, `municipio` e `documento` — e **sem** `hash`, porque a identidade deles é outra.
+
+`registrar()` montava o conjunto de vistos exigindo `hash` de todos e quebrava na primeira pista
+alheia. A dedução passa a usar só quem tem `hash`, e a função anota quantos registros de outro
+produtor ficaram fora dela. Nada se perde, e nada de outro esquema é reescrito por este monitor.
+
+Portão novo (**70**): `scripts/testar_fila_de_pistas.py`, cinco asserções, offline, sem tocar em
+`data/`. Conferido que ele **sabe reprovar**: com a linha antiga restaurada, o `KeyError` derruba
+as duas primeiras — asserção que não sabe reprovar não vale nada.
+
 ## §244 · Cabeçalho novo, duas fontes trocadas por órgão competente, figuras reescritas · 27/09/2026
 
 Classe **design e coleta**.
