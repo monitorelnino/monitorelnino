@@ -9,6 +9,52 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §257 · Errata de texto no §5.3: a METODOLOGIA passa a dizer o que o código faz · 27/09/2026
+
+Classe **errata de texto**. T2 do pedido do preprint. **Nenhuma nota muda** — `recalcular_mare.py
+--check` reproduz os 27 estados × 7 campos idênticos, média nacional 46,6.
+
+### Por que a errata
+
+O preprint descreve o método **pelo texto**. Onde o texto e o código divergem, o preprint
+publicaria uma descrição que o cálculo não confirma.
+
+As constantes foram lidas do próprio `recalcular_mare.py` por `importlib` — nunca transcritas — e
+comparadas com os valores do §5.3, transcritos à mão com a frase de origem. Onze parâmetros:
+
+| situação | n | quais |
+|---|---|---|
+| concordam | 6 | `plano` · `plano_elaboracao` · `coberto_estadual` · `nao_localizado` · `nao_verificado` · `nao_el_nino` |
+| **divergem** | 1 | `plano_antigo`: texto 0,6 × código **1,0** |
+| **ausentes do texto** | 4 | `plano_novo` 1,0 · `plano_readaptado` 0,65 · `plano_recorrente` 0,45 · `estrutura` 0,45 |
+
+**Quem estava atrasado era o texto.** As seis diferenças têm decisão da editoria por trás: o §196
+pôs plano vigente de ciclo anterior em crédito integral, e o C28 criou a escada municipal com as
+mesmas proporções da escada estadual. O código executa o que foi decidido.
+
+### O texto contradizia a si mesmo
+
+Achado que o pedido não listava: no mesmo §5.3, a **prosa** dizia `declarado desatualizado = 0,35`
+e a **fórmula**, duas linhas depois, `× 0,3`. Dois valores diferentes para o mesmo parâmetro, e
+nenhum deles em vigor.
+
+### A propagação do §196, declarada
+
+O motor aplica `crédito da categoria × 0,5` na camada declarada. Ao pôr `plano_antigo` em 1,0, o
+§196 levou o declarado desatualizado de 0,35 para **0,5** — numa camada diferente daquela sobre a
+qual se decidiu.
+
+A errata alinha o texto ao valor em vigor **e registra que a propagação é consequência aritmética,
+não decisão tomada sobre a camada declarada**. Se não era o efeito pretendido, quem diz é a
+editoria; alterar o motor por reinterpretação seria trocar o juízo dela pelo meu, que é justamente
+o que o §196 recusou fazer.
+
+### Pendência da editoria, não corrigida aqui
+
+`analise_sensibilidade.py` usa `d_antigo=0.3` por padrão, contra 0,5 no motor, e alimenta o PDF de
+documentação do índice. **Não corrigido**, por instrução explícita do próprio T2: é arquivo de
+produção. Fica registrado.
+
 ## §254 · Vigia do desfecho: a rodada agora fica vermelha quando não comita · 27/09/2026
 
 Classe **infraestrutura da rodada**. Fecha o buraco que deixou quatro defeitos passarem três dias.
