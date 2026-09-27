@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 27/09/2026 · 640 pendente(s) · 15 decidida(s) · A=102 B=370 C=168
+Gerado em 27/09/2026 · 648 pendente(s) · 15 decidida(s) · A=102 B=374 C=172
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -866,12 +866,33 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
-## Saquarema/RJ — 1 pendente(s)
+## Saquarema/RJ — 5 pendente(s)
 - `456aa025e5` · nível **A** (6 pts) · busca_web · EX_ANTE · **Lei 12.340**, 2011
   - título: Especialista resume alertas sobre El Niño e cobra ações urgentes ...
   - url: https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html
   - trecho: 2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...
   - juiz: portão automático: fonte não oficial
+- `cf5bb3f6d7` · nível **B** (4 pts) · seguimento_querido_diario · DUVIDA · **DECRETO Nº 3.118**, 03/12/2025
+  - título: Diário oficial de 2025-12-05
+  - url: https://data.queridodiario.ok.org.br/3305505/2025-12-05/2e89b8976c8bdcaafb20133421c51d34a5cc75e6.pdf
+  - trecho: de 2025 DECRETO Nº 3.118, DE 3 DE DEZEMBRO DE 2025 Abre Crédito Adicional Suplementar, por anulação parcial, no valor de R$ 3.398.800,00 (três milhões, trezentos e noventa e oito mil e oitocentos reais) para Reforço de D
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `d2cfac6a6c` · nível **B** (4 pts) · seguimento_querido_diario · DUVIDA · **DECRETO Nº 3.179**, 06/03/2026
+  - título: Diário oficial de 2026-03-11
+  - url: https://data.queridodiario.ok.org.br/3305505/2026-03-11/1f44fdc80935ee135ea105b34c35b0dcb71ef4f4.pdf
+  - trecho: será compensado observado o inci- so III do § 1º do art. 43 da Lei Federal n° 4.320/64, resultante de anulação de dota- ção orçamentária. Art. 3º Em decorrência deste Decreto, fica alterado o Quadro de Detalhamento das D
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `66ce0eb422` · nível **B** (4 pts) · seguimento_querido_diario · DUVIDA · **Lei Municipal nº 2.837**, 16/03/2026
+  - título: Diário oficial de 2026-03-23
+  - url: https://data.queridodiario.ok.org.br/3305505/2026-03-23/a354a774d51c2aa915811ed66b993a729b950b79.pdf
+  - trecho: Municipal nº 2.837, de 16 de março de 2026; DECRETA Art. 1º Fica aberto Crédito Adicional Es- pecial, no montante de R$ 59.010,00 (cinquenta e nove mil e dez reais), por Anulação Parcial de Dotação, alocada na Secretaria
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `9dcb3b22ad` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
+  - título: Diário oficial de 2026-04-22
+  - url: https://data.queridodiario.ok.org.br/3305505/2026-04-22/e356e157a90e44fa51139715ebffe6de2c90b8f7.pdf
+  - trecho: nicipais de Assistência Social, da Crian- ça e Adolescente, de Direitos do Idoso, e de Meio Ambiente no valor total de R$ 8.638.082,95 (oito milhões, seiscentos e trinta e oito mil, oitenta e dois reais e no- venta e cin
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## São Vicente/RN — 2 pendente(s)
 - `c9edcbd126` · nível **A** (7 pts) · busca_web · DUVIDA · citação não extraída
@@ -2445,12 +2466,35 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho:  Núcleos Comunitários de Proteção e Defesa Civil – NUPDEC;  Plano de Adaptação à Mudança do Clima;  Plano de Contingência de Proteção e Defesa Civil;  Plano de Redução de Riscos Municipal;  Planos de Ações Estruturais  P
   - juiz: portão automático: fonte não oficial
 
-## Macaé/RJ — 1 pendente(s)
+## Macaé/RJ — 5 pendente(s)
 - `4f3e0c2f47` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Macaé está se preparando para os possíveis impactos do El Niño ...
   - url: https://www.instagram.com/p/Da0Kligjr2w/
   - trecho: Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...
   - juiz: portão automático: fonte não oficial
+- `a169a4ca43` · nível **B** (3 pts) · seguimento_querido_diario · EX_ANTE · data 2025 (do trecho)
+  - título: Diário oficial de 2025-10-11
+  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-11/0cc3251b8329372bb9921aba468701a459a5738f.pdf
+  - trecho: entra o Município de Macaé e o Consórcio Público Intermunicipal de Desenvolvimento do Norte e Noroeste Fluminense – CIDENF, e eventuais contratações oriundos desta, ao titular da Secretaria Executiva de Relações Instituc
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `66f8ba9275` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **LEI Nº. 5.593**, 2026
+  - título: Diário oficial de 2026-09-16
+  - url: https://data.queridodiario.ok.org.br/3302403/2026-09-16/a345866ab86301e92a3f7ea7e510c128f5f802de.pdf
+  - trecho: anterior, o saldo remanescente será revertido para a Reserva de Contingência na Secretaria Municipal de Planejamen- to e Gestão, conforme estabelecida no caput deste artigo. § 4º As Emendas Parlamentares Impositivas que 
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `d6bbf7595b` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · **PORTARIA Nº. 1.503**, 2025
+  - título: Diário oficial de 2025-10-03
+  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-03/cbd9f3bfe5ec0ec19e8e387e610e9b27818d3287.pdf
+  - trecho: Automotivo Tipo: Mineral Premium Classificação: Api Gl-4 Viscosidade: Sae 80w DESCRIÇÃO COMPLEMENTAR: óleo lubrificante API GL 4 80W formulado com básicos parafínicos e aditivos de extrema pressão, desenvolvido para engr
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `e417076448` · nível **C** (2 pts) · seguimento_querido_diario · DUVIDA · data 2025 (do trecho)
+  - título: Diário oficial de 2025-10-15
+  - url: https://data.queridodiario.ok.org.br/3302403/2025-10-15/e630e72e75c26f7ef11f660a095ea27e0e5cf1aa.pdf
+  - trecho: vigência. O Edital, seus anexos e demais informações estarão disponíveis para download nos sites www.macae.rj.gov.br e www. compras.gov.br. Contato: licitacao@macae.rj.gov.br. Objeto: Seleção de propostas que tenham por 
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Nova Friburgo/RJ — 2 pendente(s)
 - `ee78fe94d7` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)

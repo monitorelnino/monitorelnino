@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-27",
- "total_pistas": 655,
+ "total_pistas": 663,
  "total_municipios": 282,
  "por_nivel": {
   "A": 104,
-  "B": 372,
-  "C": 179
+  "B": 376,
+  "C": 183
  },
  "grupos": [
   {
@@ -3506,6 +3506,105 @@
    ]
   },
   {
+   "ibge": "3305505",
+   "municipio": "Saquarema",
+   "uf": "RJ",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 1,
+    "B": 3,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "456aa025e5",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "cf5bb3f6d7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "ato_formal"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3305505/2025-12-05/2e89b8976c8bdcaafb20133421c51d34a5cc75e6.pdf",
+     "titulo": "Diário oficial de 2025-12-05",
+     "trecho": "de 2025 DECRETO Nº 3.118, DE 3 DE DEZEMBRO DE 2025 Abre Crédito Adicional Suplementar, por anulação parcial, no valor de R$ 3.398.800,00 (três milhões, trezentos e noventa e oito mil e oitocentos reais) para Reforço de Dotações Consignadas no Or- çamento Geral do Município. A PREFEITA MUNICIPAL DE SAQUA- REMA, Estado do Rio de Janeiro, no uso de suas atribuições legais e de acordo com a Lei Municipal nº 2.668, de 18 de dezembro de 2024; DECRETA Art. 1º Fica aberto Crédito Adicional Su-",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d2cfac6a6c",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3305505/2026-03-11/1f44fdc80935ee135ea105b34c35b0dcb71ef4f4.pdf",
+     "titulo": "Diário oficial de 2026-03-11",
+     "trecho": "será compensado observado o inci- so III do § 1º do art. 43 da Lei Federal n° 4.320/64, resultante de anulação de dota- ção orçamentária. Art. 3º Em decorrência deste Decreto, fica alterado o Quadro de Detalhamento das Despesas da respectiva unidade or- çamentária. Art. 4º Este Decreto entra em vigor na data de sua publicação, produzindo seus efeitos a partir de 6 de março de 2026. Saquarema, 6 de março de 2026. Lucimar Pereira Vidal da Costa Prefeita ANEXO ÚNICO DECRETO Nº 3.179, DE 6 DE MARÇO",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "66ce0eb422",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3305505/2026-03-23/a354a774d51c2aa915811ed66b993a729b950b79.pdf",
+     "titulo": "Diário oficial de 2026-03-23",
+     "trecho": "Municipal nº 2.837, de 16 de março de 2026; DECRETA Art. 1º Fica aberto Crédito Adicional Es- pecial, no montante de R$ 59.010,00 (cinquenta e nove mil e dez reais), por Anulação Parcial de Dotação, alocada na Secretaria Municipal de Segurança e Or- dem Pública, consignada no Orçamento Geral do Município, conforme previamen- te autorizado pela Lei nº 2.837 de 16 de março de 2026, para reforço orçamentário na forma do Anexo Único deste Decreto. Art. 2º O crédito de que trata o artigo anterior",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "9dcb3b22ad",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3305505/2026-04-22/e356e157a90e44fa51139715ebffe6de2c90b8f7.pdf",
+     "titulo": "Diário oficial de 2026-04-22",
+     "trecho": "nicipais de Assistência Social, da Crian- ça e Adolescente, de Direitos do Idoso, e de Meio Ambiente no valor total de R$ 8.638.082,95 (oito milhões, seiscentos e trinta e oito mil, oitenta e dois reais e no- venta e cinco centavos), para reforço or- çamentário conforme Anexo Único. Art. 2º O crédito de que trata o artigo anterior será compensado na forma do inciso III do § 1º do art. 43 da Lei Fede- ral n° 4.320/64, proveniente de anulação parcial. Art. 3º Em decorrência deste Decreto, fica",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4202909",
    "municipio": "Brusque",
    "uf": "SC",
@@ -5331,39 +5430,6 @@
      "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE APERIBÉ",
      "trecho": "urbana do município de Aperibé/RJ, ao longo do período de planejamento do PMSB. ... O município de Aperibé possui o Plano de Contingência de Proteção e Defesa ...",
      "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3305505",
-   "municipio": "Saquarema",
-   "uf": "RJ",
-   "melhor_nivel": "A",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 1,
-    "B": 0,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "456aa025e5",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html",
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "trecho": "2 days ago ... Saquarema,25/09/2026. tempo hoje 26°|26°. Serramar FM. ○ AO VIVO92,1 ... Resumindo: plano de contingência, população das áreas de risco ...",
-     "data": "27/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -7702,6 +7768,105 @@
      "trecho": "ndo solicitar informações, relatórios \ne esclarecimentos relacionados à sua execução. \n  \nArt. 6º O Plano Municipal de Contingência para o Enfrentamento das \nArboviroses integra os registros do Conselho Municipal de Saúde e da \nSecretaria Municipal de Saúde, devendo permanecer arquivado para \nfins de acompanhamento, transparência e controle social. \n  \nArt. 7º Esta Resolução entra em vigor na data de sua publicação. \n  \nTerra Rica, Estado do Paran",
      "data": "2026-09-25",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3302403",
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "melhor_nivel": "B",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 3
+   },
+   "pistas": [
+    {
+     "id": "4f3e0c2f47",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/Da0Kligjr2w/",
+     "titulo": "Macaé está se preparando para os possíveis impactos do El Niño ...",
+     "trecho": "Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a169a4ca43",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-11/0cc3251b8329372bb9921aba468701a459a5738f.pdf",
+     "titulo": "Diário oficial de 2025-10-11",
+     "trecho": "entra o Município de Macaé e o Consórcio Público Intermunicipal de Desenvolvimento do Norte e Noroeste Fluminense – CIDENF, e eventuais contratações oriundos desta, ao titular da Secretaria Executiva de Relações Institucionais, em especial quanto à or- denação de despesas e demais atos de gestão orçamentária, financeira e patrimonial. Art. 2º O Secretário Municipal de Governo, poderá, a qualquer momento, avocar para si, as atribuições e/ou competências aqui delegadas, de acordo com a conveniência",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "66f8ba9275",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2026-09-16/a345866ab86301e92a3f7ea7e510c128f5f802de.pdf",
+     "titulo": "Diário oficial de 2026-09-16",
+     "trecho": "anterior, o saldo remanescente será revertido para a Reserva de Contingência na Secretaria Municipal de Planejamen- to e Gestão, conforme estabelecida no caput deste artigo. § 4º As Emendas Parlamentares Impositivas que apresentarem impedimentos de or- dem técnica que não puderem ser implementadas pelo Poder Executivo, com o fim de viabilizar a execução total ou parcial das programações orçamentárias, deverão obser- var os seguintes procedimentos e prazos, contados a partir da publicação do Decreto",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d6bbf7595b",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-03/cbd9f3bfe5ec0ec19e8e387e610e9b27818d3287.pdf",
+     "titulo": "Diário oficial de 2025-10-03",
+     "trecho": "Automotivo Tipo: Mineral Premium Classificação: Api Gl-4 Viscosidade: Sae 80w DESCRIÇÃO COMPLEMENTAR: óleo lubrificante API GL 4 80W formulado com básicos parafínicos e aditivos de extrema pressão, desenvolvido para engrenagens automotivas: or ASTM: 4,0 (80W), 4,5 (90), 5,5 (140) (ASTM D1500) Viscosidade a 100°C (cSt): 8,30 (80W), 16,71 (90), 26,98 (140) (ASTM D445) Viscosidade a 40°C (cSt): 53,2 (80W), 178,45 (90), 377,85 (140) (ASTM D445) Densidade 20/4°C (g/cm³): 0,875 (80W)",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e417076448",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3302403/2025-10-15/e630e72e75c26f7ef11f660a095ea27e0e5cf1aa.pdf",
+     "titulo": "Diário oficial de 2025-10-15",
+     "trecho": "vigência. O Edital, seus anexos e demais informações estarão disponíveis para download nos sites www.macae.rj.gov.br e www. compras.gov.br. Contato: licitacao@macae.rj.gov.br. Objeto: Seleção de propostas que tenham por objeto celebração de parceria com Or- ganização da Sociedade Civil – OSC, sem fins lucrativos, regularmente constituída, para gestão das Unidades de Assistência e Bem-Estar, em funcionamento no municí- pio, e a criação de uma Unidade Básica de Assistência e Bem-Estar Animal em região",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -12381,37 +12546,6 @@
      "trecho": "\nNúcleos Comunitários de Proteção e Defesa Civil – NUPDEC; \nPlano de Adaptação à Mudança do Clima; \nPlano de Contingência de Proteção e Defesa Civil; \nPlano de Redução de Riscos Municipal; \nPlanos de Ações Estruturais \nPlano Integrado para Comunidades Vulnerabilizadas. \nParágrafo Único: os planos previstos nos incisos III, IV, V, VI e VII \ndevem se adequar as disposições dos Planos Nacionais de Proteção e \nDefesa Civil (PNDC",
      "data": "2026-09-02",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "3302403",
-   "municipio": "Macaé",
-   "uf": "RJ",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "4f3e0c2f47",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/Da0Kligjr2w/",
-     "titulo": "Macaé está se preparando para os possíveis impactos do El Niño ...",
-     "trecho": "Jul 15, 2026 ... May be a meme. Photo by Defesa Civil de Macaé on July 15, 2026. May be ...",
-     "data": "27/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
