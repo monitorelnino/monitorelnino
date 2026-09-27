@@ -271,16 +271,16 @@ setTimeout(() => {
     const p = [...d.querySelectorAll("#regions .tile")].map(t => t.style.gridRow + ":" + t.style.gridColumn);
     return p.length === 27 && p.every(x => /^\d+:\d+$/.test(x)) && new Set(p).size === 27;
   })());
-  // 26/09/2026: a gradação do menu é escrita em base.css por :nth-child, e lista escrita à mão
-  // envelhece calada — defeito que este projeto já viu três vezes (§213, §222, §226). Se um item
-  // entrar ou sair do menu, as posições deslocam e o ramo passa a pintar o botão errado sem avisar.
-  // Aqui as posições são lidas do DOM e comparadas com a lista que está na folha.
-  teste("menu: os dez botões estão nas posições que a gradação de base.css pinta", (() => {
-    const filhos = [...d.querySelectorAll(".mainnav > *")];
-    const posDOM = filhos.map((e, i) => (e.matches("a, span") ? i + 1 : 0)).filter(Boolean);
+  // 27/09/2026: a gradação do menu deixou de ser dez regras `:nth-child` e virou UM degradê na
+  // barra. Com isso some a lista de posições escrita à mão — e some a classe de defeito que a
+  // checagem anterior existia para pegar (§213, §222, §226: lista que envelhece em silêncio).
+  // O que resta conferir é que a barra carrega o degradê e que nenhuma cor por posição voltou.
+  teste("menu: a cor vem de UM degradê na barra, não de regra por posição", (() => {
     const css = require("fs").readFileSync(require("path").join(__dirname, "..", "assets", "base.css"), "utf8");
-    const posCSS = [...css.matchAll(/\.mainnav > :is\(a, span\):nth-child\((\d+)\)/g)].map(m => Number(m[1]));
-    return posDOM.length === 10 && posCSS.length === 10 && posDOM.join(",") === posCSS.join(",");
+    const temDegrade = /\.mainnav\{[^}]*background-image:\s*var\(--degrade-menu\)/.test(css);
+    const semPosicao = !/\.mainnav > :is\(a, span\):nth-child\(\d+\)/.test(css);
+    const dez = d.querySelectorAll(".mainnav > a, .mainnav > span").length === 10;
+    return temDegrade && semPosicao && dez;
   })());
 
   // Medidor principal do herói: a barra de progresso precisa de fato preencher

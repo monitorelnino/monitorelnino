@@ -38,6 +38,7 @@ As três camadas (METODOLOGIA §23.2):
   enos       — ONI/CPC-NOAA, plume IRI, prognóstico trimestral INMET/CPTEC
 """
 import hashlib
+import html
 import json
 import math
 import os
@@ -197,6 +198,18 @@ FONTES = {
         "natureza": NATUREZA_MODELO,
         "licenca": "CC BY 4.0 — crédito obrigatório: Weather data by Open-Meteo.com",
     },
+    "inmet_previsao_capitais": {
+        # 27/09/2026 (pedido da editoria: "temperatura reportada por órgão competente, para a gente
+        # referenciar um órgão de referência"). Até aqui a previsão vinha do Open-Meteo, que roda
+        # modelos europeus e americanos. O INMET publica previsão própria para as 27 capitais, em
+        # JSON aberto e sem chave — e já é a fonte dos avisos e das estações neste mesmo site.
+        # Conferido em 27/09/2026: 27 capitais, 27 UFs, cinco dias, com manhã, tarde e noite.
+        "nome": "Previsão do tempo para as capitais", "orgao": "INMET", "camada": "observado",
+        "url_publica": "https://previsao.inmet.gov.br/",
+        "endpoint": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
+        "papel": "Máxima e mínima previstas para cada capital, pelo instituto oficial brasileiro.",
+        "natureza": NATUREZA_MODELO,
+    },
     "open_meteo_ar": {
         "nome": "Qualidade do ar estimada", "orgao": "Copernicus CAMS via Open-Meteo",
         "camada": "observado",
@@ -204,7 +217,13 @@ FONTES = {
         # A API entrega só série HORÁRIA (24 valores por dia, sonda de 24/09/2026); a média
         # diária é cálculo nosso e está declarada como tal no dado.
         "endpoint": "https://air-quality-api.open-meteo.com/v1/air-quality",
-        "papel": "PM2,5, PM10, ozônio, NO₂ e CO estimados por modelo, por capital, em µg/m³.",
+        # 27/09/2026 (decisão da editoria): a página passa a mostrar ÍNDICE de qualidade do ar, e
+        # não PM2,5. O índice vem PRONTO da fonte (`european_aqi`), nunca calculado aqui: calcular
+        # transformaria o índice numa afirmação do Monitor, e ele tem de ser evidência de terceiro.
+        # Não há índice nacional aberto — conferido em 27/09/2026: o Qualiar do MMA não resolve
+        # (HTTP 000), o QUALAR da CETESB cobre só São Paulo, e o WAQI exige token. Por isso a
+        # escala é a europeia, e a legenda diz isso com todas as letras.
+        "papel": "Índice europeu de qualidade do ar (EAQI) e poluentes por capital, estimados por modelo.",
         "natureza": NATUREZA_MODELO,
         "licenca": "CC BY 4.0 — crédito obrigatório: Copernicus CAMS via Open-Meteo.com",
     },
@@ -230,6 +249,15 @@ FONTES = {
     #     `/condicao/capitais/<data>` (200, 28 registros, sem token), abaixo.
     # ---------------------------------------------------------------------
     "openaq": {
+        # 27/09/2026: investigado a pedido da editoria, porque o campo nunca teve dado.
+        # A causa é só uma: a API v3 exige `X-API-Key` (responde 401 sem ela) e a v2 foi
+        # desativada (410). O código JÁ estava inteiro para isso — `credencial` declarada abaixo,
+        # `credencial_de()` lendo do AMBIENTE (nunca do repositório, que é público), o cabeçalho
+        # enviado no despacho, e `atualizar.yml` passando o segredo. O status
+        # `aguardando_credencial` que o registro mostrava era a coisa certa sendo dita.
+        # Faltava apenas o segredo existir. A editoria o cadastrou em 26/09/2026.
+        # NOTA: a chave é gratuita e viaja em cabeçalho, nunca em URL — por isso não entra no
+        # livro de consultas, que vai ao repositório público.
         "nome": "Qualidade do ar medida", "orgao": "OpenAQ (agrega redes oficiais brasileiras)",
         "camada": "observado",
         "url_publica": "https://openaq.org/",
@@ -273,26 +301,50 @@ FONTES = {
         "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
     },
     "iri_plume": {
-        # 24/09/2026 (§209): varredura completa dos caminhos, e o resultado é que HOJE não há
-        # fonte aberta para esta tabela. Testado e registrado para ninguém repetir:
+        # 24/09/2026 (§209): varredura dos caminhos de DADO, com o resultado de que não há tabela
+        # aberta. Registrado para ninguém repetir:
         #   · `~forecast/ensofcst/Data/ensofcst_ONI` e as duas variantes: HTTP 404 (desde ~15/09);
         #   · `ensoforecast.iri.columbia.edu`, host novo que serve os gráficos da página:
         #     HTTP 403 em tudo que não seja a imagem publicada. 403 é bloqueio de acesso real e
-        #     se respeita — não se insiste;
-        #   · a página QuickLook do IRI e a discussão do CPC: nenhuma tabela por trimestre no HTML,
-        #     a figura de probabilidades é imagem (`enso-probs-current.png`).
-        # O parser (`parse_plume_iri`) continua provado por fixture e pronto para o dia em que a
-        # tabela voltar. Até lá, lacuna declarada — que é o comportamento correto, não uma falha.
+        #     se respeita — não se insiste.
+        #
+        # 27/09/2026: aquela varredura procurou TABELA e por isso concluiu cedo demais. As
+        # probabilidades estão publicadas na mesma página, em PROSA, com os trimestres nomeados:
+        #   "El Niño probabilities remain at 100% from SON 2026 through FMA 2027, followed by
+        #    99% in MAM 2027 and 90% in AMJ, before declining to 61% in MJJ 2027."
+        # O endpoint passa a ser a própria página pública, lida por `parse_plume_prosa`. Esse
+        # leitor só aceita par explicito de porcentagem e trimestre nomeado, e guarda o TRECHO de
+        # onde cada número saiu — na dúvida ele não classifica, e a lacuna continua declarada.
+        # `parse_plume_iri` fica, provado por fixture, para o dia em que a tabela voltar.
         "nome": "Probabilidades ENSO (plume IRI/CPC)", "orgao": "IRI/Columbia", "camada": "enos",
         "url_publica": "https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/",
-        "endpoint": "https://iri.columbia.edu/~forecast/ensofcst/Data/ensofcst_ONI",
+        "endpoint": "https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/",
         "papel": "Probabilidade de El Niño, neutro e La Niña por trimestre.",
     },
     "cptec_prognostico": {
+        # 27/09/2026: esta fonte NUNCA teve endereço. O campo `enos.prognostico` que ela alimentava
+        # foi semeado à mão uma vez, em 07/09/2026, e nada no repositório o renovava: `leitura_em`
+        # não é escrito em lugar nenhum do módulo, e `coletar()` nunca tocava em `prognostico`. Como
+        # o registro é lido do arquivo e modificado, o campo sobrevivia a cada rodada — congelado.
+        # A página o exibia como leitura corrente. Fica declarado e sem coleta, até que exista
+        # endereço aberto: a leitura automática do estado do ENOS passou a vir de `cpc_ensodisc`.
         "nome": "Prognóstico climático trimestral", "orgao": "INMET/CPTEC-INPE", "camada": "enos",
         "url_publica": "https://portal.inmet.gov.br/boletinsagro",
         "endpoint": None,
         "papel": "A leitura brasileira da mesma previsão, em português.",
+    },
+    "cpc_ensodisc": {
+        # 27/09/2026 (pedido da editoria: "construa coletores automáticos, pode até trocar a fonte").
+        # A Discussão Diagnóstica do ENOS é publicada pelo CPC todo mês, aberta, sem chave, com
+        # estrutura estável: data de emissão, "ENSO Alert System Status", sinopse e data da próxima.
+        # O coletor extrai FATOS (status, probabilidade declarada, datas) e guarda a sinopse
+        # original para conferência. A frase em inglês NÃO é traduzida automaticamente: tradução de
+        # máquina sem fonte é texto inventado, e a página compõe a frase em português a partir dos
+        # fatos, que é o que se pode afirmar.
+        "nome": "Discussão diagnóstica do ENOS", "orgao": "CPC/NCEP/NWS (NOAA)", "camada": "enos",
+        "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+        "endpoint": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+        "papel": "Estado oficial do alerta de El Niño e a probabilidade declarada, mês a mês.",
     },
 }
 
@@ -511,6 +563,135 @@ def parse_plume_iri(texto: str) -> list:
     return saida
 
 
+# Trimestres ENOS: as doze janelas de três meses, pelas iniciais em inglês, como o IRI publica.
+TRIMESTRES_ENOS = ("DJF", "JFM", "FMA", "MAM", "AMJ", "MJJ",
+                   "JJA", "JAS", "ASO", "SON", "OND", "NDJ")
+
+
+def parse_plume_prosa(texto: str) -> list:
+    """Extrai probabilidade de El Niño por trimestre da PROSA da página do IRI.
+
+    Devolve [{'trimestre','el_nino','la_nina','neutro','trecho'}]. `la_nina` e `neutro` ficam em
+    None de propósito: a prosa publica só a probabilidade de El Niño, e completar os outros dois
+    por subtração seria inventar número que a fonte não dá.
+
+    Só aceita par explícito de porcentagem e trimestre nomeado, na mesma frase, e guarda o trecho
+    de onde saiu — todo número fica conferível contra o texto da fonte. Na dúvida, não classifica.
+    """
+    limpo = re.sub(r"<script.*?</script>|<style.*?</style>", " ", texto, flags=re.S | re.I)
+    limpo = re.sub(r"<[^>]+>", " ", limpo)
+    limpo = html.unescape(limpo)
+    limpo = re.sub(r"\s+", " ", limpo)
+
+    tri = "|".join(TRIMESTRES_ENOS)
+    saida, vistos = [], set()
+    for frase in re.split(r"(?<=[.!?])\s+", limpo):
+        if "el ni" not in frase.lower():
+            continue
+        # "100% from SON 2026", "99% in MAM 2027", "90% in AMJ", "61% in MJJ 2027"
+        padrao = r"(\d{1,3})\s*%[^.%]{0,40}?\b(" + tri + r")\b(?:\s+(\d{4}))?"
+        for m in re.finditer(padrao, frase):
+            pct, rotulo, ano = int(m.group(1)), m.group(2), m.group(3)
+            if not 0 <= pct <= 100:
+                continue
+            chave = rotulo + (ano or "")
+            if chave in vistos:
+                continue
+            vistos.add(chave)
+            saida.append({"trimestre": rotulo + (" " + ano if ano else ""), "el_nino": float(pct),
+                          "la_nina": None, "neutro": None, "trecho": frase.strip()[:300]})
+    return saida
+
+
+MESES_EN = {n: i + 1 for i, n in enumerate("January February March April May June July August September October November December".split())}
+
+
+def parse_ensodisc_cpc(texto: str) -> dict:
+    """Lê a Discussão Diagnóstica do ENOS (CPC) e devolve os FATOS declarados.
+
+    Devolve {'estado', 'sinopse', 'emitido_em', 'proxima_em', 'probabilidade', 'limiar'}.
+    Nada é traduzido: a sinopse fica no original, para conferência, e a página compõe o texto em
+    português a partir dos fatos. Campo que a página não encontrar fica None — na dúvida, não
+    classifica.
+    """
+    limpo = re.sub(r"<script.*?</script>|<style.*?</style>", " ", texto, flags=re.S | re.I)
+    limpo = html.unescape(re.sub(r"<[^>]+>", " ", limpo))
+    limpo = re.sub(r"[ \t\xa0]+", " ", limpo)
+    plano = re.sub(r"\s+", " ", limpo)
+
+    def data(m):
+        if not m:
+            return None
+        dia, mes, ano = int(m.group(1)), MESES_EN.get(m.group(2)), int(m.group(3))
+        return "%02d/%02d/%04d" % (dia, mes, ano) if mes else None
+
+    datas = list(re.finditer(r"\b(\d{1,2}) (" + "|".join(MESES_EN) + r") (20\d\d)\b", plano))
+    emitido = data(datas[0]) if datas else None
+    proxima = data(datas[1]) if len(datas) > 1 else None
+
+    m_estado = re.search(r"ENSO Alert System Status:\s*(.{0,40}?)\s{2,}", limpo)
+    estado = m_estado.group(1).strip() if m_estado else None
+    if estado:
+        estado = re.sub(r"\s+", " ", estado)
+
+    m_sin = re.search(r"Synopsis:\s*(.+?\.)(?:\s|$)", plano)
+    sinopse = m_sin.group(1).strip() if m_sin else None
+
+    prob, limiar = None, None
+    if sinopse:
+        m_p = re.search(r"(greater than|less than|about|approximately)?\s*(\d{1,3})\s*% chance", sinopse, re.I)
+        if m_p:
+            valor = int(m_p.group(2))
+            if 0 <= valor <= 100:
+                prob = valor
+                limiar = {"greater than": "acima de", "less than": "abaixo de"}.get(
+                    (m_p.group(1) or "").lower(), "de")
+
+    return {"estado": estado, "sinopse": sinopse, "emitido_em": emitido,
+            "proxima_em": proxima, "probabilidade": prob, "limiar": limiar}
+
+
+def parse_previsao_capitais_inmet(dados, quando: str = None) -> dict:
+    """Lê a previsão do INMET para as capitais e devolve {UF: {...}} do dia pedido.
+
+    A API devolve {cidade: {dd/mm/aaaa: {manha|tarde|noite: {...}}}}. Para cada UF toma-se a MAIOR
+    máxima e a MENOR mínima entre os períodos do dia — é o que "máxima e mínima do dia" significa,
+    e o critério fica declarado no registro.
+
+    Sem `quando`, usa a primeira data que a resposta traz. UF sem máxima não entra: lacuna, nunca
+    zero. Função pura.
+    """
+    saida = {}
+    for cidade, dias in (dados or {}).items():
+        if not isinstance(dias, dict) or not dias:
+            continue
+        dia = quando if quando in dias else sorted(dias, key=lambda t: t.split("/")[::-1])[0]
+        periodos = dias.get(dia) or {}
+        maximas, minimas, resumos, uf = [], [], [], None
+        for nome, bloco in periodos.items():
+            if not isinstance(bloco, dict):
+                continue
+            uf = bloco.get("uf") or uf
+            for campo, alvo in (("temp_max", maximas), ("temp_min", minimas)):
+                valor = bloco.get(campo)
+                if isinstance(valor, (int, float)) and -90 <= valor <= 60:
+                    alvo.append(float(valor))
+            if bloco.get("resumo"):
+                resumos.append(str(bloco["resumo"]))
+        if not uf or not maximas:
+            continue
+        saida[uf] = {
+            "capital": cidade,
+            "data": dia,
+            "tmax": max(maximas),
+            "tmin": min(minimas) if minimas else None,
+            "resumo": resumos[0] if resumos else None,
+            "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
+            "natureza": NATUREZA_MODELO,
+        }
+    return saida
+
+
 def parse_focos_inpe(texto: str) -> dict:
     """Conta focos ativos por UF a partir do CSV de focos abertos do INPE (coluna 'estado' ou 'uf'), devolvendo {'UF': n}."""
     import csv
@@ -602,6 +783,8 @@ def parse_open_meteo_ar(dados, chaves) -> dict:
     Função pura."""
     itens = dados if isinstance(dados, list) else [dados]
     campos = ("pm2_5", "pm10", "ozone", "nitrogen_dioxide", "carbon_monoxide")
+    # O ÍNDICE vem pronto da fonte. Guardamos o pior do dia (o máximo), que é como um índice de
+    # qualidade do ar se reporta — e também a hora em que ele ocorreu, para ser conferível.
     saida = {}
     for chave, bloco in zip(chaves, itens):
         h = (bloco or {}).get("hourly") or {}
@@ -612,7 +795,13 @@ def parse_open_meteo_ar(dados, chaves) -> dict:
         medias = {c: _media(h.get(c)) for c in campos}
         if medias.get("pm2_5") is None:
             continue
+        serie_indice = h.get("european_aqi") or []
+        validos = [(i, v) for i, v in enumerate(serie_indice) if isinstance(v, (int, float))]
+        pior = max(validos, key=lambda x: x[1]) if validos else None
         saida[chave] = {
+            "indice": ({"escala": "EAQI", "valor": pior[1], "hora": horas[pior[0]],
+                        "publicado_por": "Open-Meteo (Copernicus CAMS)",
+                        "criterio": "maior valor horário do dia"} if pior else None),
             "horas_lidas": len(horas),
             "media_diaria": medias,
             "media_diaria_calculada_por": "média aritmética das horas devolvidas pela API",
@@ -1104,7 +1293,7 @@ def coletar_fonte(chave: str):
             return ({"por_uf": lido, "capitais": capitais},
                     f"Open-Meteo Forecast — 27 capitais, {dias[0]} a {dias[-1]}")
         url = (f"{fonte['endpoint']}?{_coordenadas_em_lote(capitais)}"
-               "&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide"
+               "&hourly=pm2_5,pm10,ozone,nitrogen_dioxide,carbon_monoxide,european_aqi"
                "&timezone=America%2FSao_Paulo&forecast_days=1&domains=cams_global")
         lido = parse_open_meteo_ar(json.loads(_buscar_registrado(chave, url)), chaves)
         if len(lido) < 20:
@@ -1131,8 +1320,23 @@ def coletar_fonte(chave: str):
             raise ValueError(f"série mensal Niño 3.4 curta demais ({len(serie)} pontos) — recusada")
         ultimo = serie[-1]
         return {"serie": serie}, f"Niño 3.4 mensal, último mês {ultimo['mes']:02d}/{ultimo['ano']}"
+    if chave == "inmet_previsao_capitais":
+        lido = parse_previsao_capitais_inmet(json.loads(_buscar_registrado(chave, fonte["endpoint"])))
+        if not lido:
+            raise ValueError("previsão do INMET sem capital com máxima — recusada")
+        return {"por_uf": lido}, f"INMET — previsão para {len(lido)} capital(is)"
+
+    if chave == "cpc_ensodisc":
+        lido = parse_ensodisc_cpc(bruto)
+        if not lido.get("estado") or not lido.get("emitido_em"):
+            raise ValueError("discussão do CPC sem estado de alerta ou sem data de emissão — recusada")
+        return lido, f"ENOS: {lido['estado']} (emitida em {lido['emitido_em']})"
+
     if chave == "iri_plume":
-        plume = parse_plume_iri(bruto)
+        # A tabela (formato antigo) tem precedência: ela traz os três valores por trimestre.
+        # A prosa é o caminho de hoje e só traz a probabilidade de El Niño — melhor que a lacuna,
+        # e cada número guarda o trecho de onde saiu.
+        plume = parse_plume_iri(bruto) or parse_plume_prosa(bruto)
         if not plume:
             raise ValueError("plume IRI sem trimestres reconhecíveis — recusada")
         return {"trimestres": plume}, f"Plume ENSO, {len(plume)} trimestres"
@@ -1343,7 +1547,7 @@ def coletar_clima_municipal(args) -> int:
     if quais in ("ambos", "ar"):
         varrer("qualidade do ar", "pm25",
                lambda lote: (f"{FONTES['open_meteo_ar']['endpoint']}?{_coordenadas_em_lote(lote)}"
-                             "&hourly=pm2_5&timezone=America%2FSao_Paulo&forecast_days=1"
+                             "&hourly=pm2_5,european_aqi&timezone=America%2FSao_Paulo&forecast_days=1"
                              "&domains=cams_global"),
                lambda d, ch: {k: v for k, v in _so_pm25(d, ch).items()})
 
@@ -1527,6 +1731,16 @@ def coletar(registro: dict, camadas) -> dict:
             registro["enos"]["roni"] = {**payload, "fonte": chave, "documento": documento}
         elif chave == "noaa_nino34_mensal":
             registro["enos"]["nino34_mensal"] = {**payload, "fonte": chave, "documento": documento}
+        elif chave == "inmet_previsao_capitais":
+            for uf, valor in (payload.get("por_uf") or {}).items():
+                if uf in registro["uf"]:
+                    registro["uf"][uf]["temperatura"] = {**valor, "fonte": chave, "documento": documento}
+
+        elif chave == "cpc_ensodisc":
+            # Substitui a leitura humana congelada: agora o estado do ENOS chega sozinho, com a
+            # data de emissão do próprio documento, a cada rodada.
+            registro["enos"]["prognostico"] = {**payload, "fonte": chave, "documento": documento}
+
         elif chave == "iri_plume":
             registro["enos"]["probabilidades"] = {**payload, "fonte": chave, "documento": documento}
         # 15/09/2026: INPE, INMET e CEMADEN respondem pelo país inteiro — UF ausente da resposta é ZERO
@@ -1713,6 +1927,44 @@ def autoteste() -> int:
         print(("  ✓ " if condicao else "  ✗ ") + nome)
         if not condicao:
             falhas.append(nome)
+
+    # ── Previsão do INMET (27/09/2026): órgão competente no lugar de modelo estrangeiro ─────
+    _prev = {"Bras\u00edlia": {"27/09/2026": {
+        "manha": {"uf": "DF", "entidade": "Bras\u00edlia", "resumo": "Muitas nuvens", "temp_max": 30, "temp_min": 19},
+        "tarde": {"uf": "DF", "entidade": "Bras\u00edlia", "resumo": "Sol", "temp_max": 33, "temp_min": 22},
+        "noite": {"uf": "DF", "entidade": "Bras\u00edlia", "resumo": "Nublado", "temp_max": 25, "temp_min": 18}}}}
+    _r = parse_previsao_capitais_inmet(_prev)
+    checar("INMET: maior m\u00e1xima entre os per\u00edodos", _r["DF"]["tmax"] == 33.0)
+    checar("INMET: menor m\u00ednima entre os per\u00edodos", _r["DF"]["tmin"] == 18.0)
+    checar("INMET: capital e data preservadas", _r["DF"]["capital"] == "Bras\u00edlia" and _r["DF"]["data"] == "27/09/2026")
+    _semmax = parse_previsao_capitais_inmet({"X": {"27/09/2026": {"manha": {"uf": "SP", "temp_min": 12}}}})
+    checar("INMET negativo: UF sem m\u00e1xima n\u00e3o entra (lacuna, nunca zero)", _semmax == {})
+    _absurdo = parse_previsao_capitais_inmet({"Y": {"27/09/2026": {"manha": {"uf": "RJ", "temp_max": 999}}}})
+    checar("INMET negativo: temperatura imposs\u00edvel recusada", _absurdo == {})
+    checar("INMET negativo: resposta vazia n\u00e3o inventa UF", parse_previsao_capitais_inmet({}) == {})
+
+    # ── Discussão do CPC (27/09/2026): substitui a leitura humana congelada ─────────────
+    _cpc = ("<p>DIAGNOSTIC DISCUSSION issued by CLIMATE PREDICTION CENTER/NCEP/NWS "
+            "10 September 2026</p><p>ENSO Alert System Status: \n\n El Ni\u00f1o Advisory \n\n</p>"
+            "<p>Synopsis: El Ni\u00f1o is strengthening, with a greater than 90% chance of a very "
+            "strong event during the Northern Hemisphere fall and winter 2026-27.</p>"
+            "<p>The next update is 8 October 2026.</p>")
+    _d = parse_ensodisc_cpc(_cpc)
+    checar("CPC: estado do alerta lido", _d["estado"] == "El Ni\u00f1o Advisory")
+    checar("CPC: data de emiss\u00e3o em formato brasileiro", _d["emitido_em"] == "10/09/2026")
+    checar("CPC: data da pr\u00f3xima atualiza\u00e7\u00e3o", _d["proxima_em"] == "08/10/2026")
+    checar("CPC: probabilidade e limiar declarados", _d["probabilidade"] == 90 and _d["limiar"] == "acima de")
+    checar("CPC: sinopse guardada no original, sem tradu\u00e7\u00e3o", _d["sinopse"].startswith("El Ni\u00f1o is strengthening"))
+    # negativos: o que n\u00e3o estiver declarado fica None, e nada \u00e9 deduzido
+    _vazio = parse_ensodisc_cpc("<p>Nenhuma discuss\u00e3o aqui.</p>")
+    checar("CPC negativo: p\u00e1gina sem discuss\u00e3o n\u00e3o inventa estado", _vazio["estado"] is None and _vazio["emitido_em"] is None)
+    _sem_prob = parse_ensodisc_cpc("<p>ENSO Alert System Status: \n\n La Ni\u00f1a Watch \n\n</p>"
+                                   "<p>Synopsis: La Ni\u00f1a conditions are expected to emerge. </p>"
+                                   "<p>1 March 2027</p>")
+    checar("CPC negativo: sinopse sem porcentagem n\u00e3o vira n\u00famero", _sem_prob["probabilidade"] is None)
+    _absurdo = parse_ensodisc_cpc("<p>ENSO Alert System Status: \n\n El Ni\u00f1o Advisory \n\n</p>"
+                                  "<p>Synopsis: chance is 180% chance of something. </p><p>2 May 2027</p>")
+    checar("CPC negativo: porcentagem imposs\u00edvel recusada", _absurdo["probabilidade"] is None)
 
     oni = parse_oni("SEAS YR TOTAL ANOM\nDJF 2025 26.8 0.3\nJFM 2025 27.0 0.5\nlixo\nMAM 2025 27.4 0.9\n")
     checar("ONI: 3 pontos lidos e lixo descartado", len(oni) == 3)

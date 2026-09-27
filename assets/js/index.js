@@ -253,6 +253,41 @@ const GRADE_BR = {
   PR:[7,3], SC:[7,4],
   RS:[8,3],
 };
+// 27/09/2026 (pedido da editoria): o risco projetado sai do mapa no monitor de riscos e entra no
+// cartão de cada estado, que é onde o leitor procura o próprio estado. Carregado à parte para não
+// atrasar o índice: se falhar, o cartão fica sem a linha e nada mais muda.
+let RISCO_UF = {};
+fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).catch(() => null).then(sr => {
+  if (!sr || !sr.uf) return;
+  Object.keys(sr.uf).forEach(uf => {
+    const r = sr.uf[uf] && sr.uf[uf].risco_projetado;
+    if (r && r.texto) RISCO_UF[uf] = r;
+  });
+  const f = (sr.fontes || {})['painel_el_nino'];
+  const leg = document.querySelector('#regions + .legend');
+  if (f && leg && !leg.querySelector('.fonte-risco')) {
+    const sp = document.createElement('span');
+    sp.className = 'fonte-risco';
+    sp.innerHTML = 'Risco projetado: ' + (f.url_publica
+      ? '<a href="' + f.url_publica + '" target="_blank" rel="noopener">' + f.nome + '</a>' : f.nome)
+      + (f.consultado_em ? ' · ' + f.consultado_em : '');
+    leg.appendChild(sp);
+  }
+  document.querySelectorAll('#regions .tile').forEach(t => {
+    const r = RISCO_UF[t.dataset.uf];
+    if (!r || t.querySelector('.tile-risco')) return;
+    const el = document.createElement('span');
+    el.className = 'tile-risco';
+    // Os COMPONENTES são vocabulário fechado e curtos; a frase inteira fica no detalhe.
+    el.textContent = (r.componentes && r.componentes.length ? r.componentes : [r.tipo])
+      .map(c => ({estiagem: 'estiagem', incendios: 'incêndios', chuvas: 'chuvas',
+                  sem_sinal: 'sem sinal elevado'}[c] || c)).join(' · ');
+    el.title = r.texto;
+    const face = t.querySelector('.tile-face');
+    if (face) t.insertBefore(el, face); else t.appendChild(el);
+  });
+});
+
 const regionsEl = document.getElementById('regions');
 
 // 26/09/2026: dentro de cada faixa de região, ordem decrescente pelo índice — não alfabética.
@@ -353,6 +388,7 @@ function selectUF(uf, tileEl){
     <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
     <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}</div></div>
     <div class="field"><div class="k">Órgão responsável</div><div class="v">${esc(d.orgao)}</div></div>
+    ${(function(){ const r = RISCO_UF[d.uf]; return r ? `<div class="field"><div class="k">Risco projetado para o ciclo</div><div class="v">${esc(r.texto)}</div></div>` : ''; })()}
     ${(function(){ // 26/09/2026: a face da célula não comporta este campo, e ele NÃO existia no
       // detalhe — sem isto, o alcance da varredura sumiria da interface inteira.
       const niv = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[d.uf]) || {};

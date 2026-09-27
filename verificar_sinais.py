@@ -30,7 +30,11 @@ PAGINA = RAIZ / "monitor-de-riscos.html"
 # CEMADEN foram para defesa-civil.html, com granularidade municipal. A invariante NÃO afrouxou:
 # toda fonte catalogada continua tendo de ser creditada em ALGUMA destas páginas — o que mudou é
 # que a lista de páginas existe em vez de ser uma só implícita.
-PAGINAS_DE_SINAL = ("monitor-de-riscos.html", "defesa-civil.html", "saude.html", "proteja-se.html")
+# 27/09/2026: o risco projetado saiu do monitor de riscos e passou para o cartão de cada estado
+# na página inicial (§244). A inicial entra aqui porque passou a exibir sinal — e a regra é que
+# toda fonte catalogada seja creditada onde aparece, não numa página escolhida a dedo.
+PAGINAS_DE_SINAL = ("index.html", "monitor-de-riscos.html", "defesa-civil.html", "saude.html",
+                    "proteja-se.html")
 ALERTAS = RAIZ / "data" / "alertas" / "vigentes.json"
 INDICE = RAIZ / "data" / "indice.json"
 MOTOR = RAIZ / "recalcular_mare.py"

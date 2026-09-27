@@ -63,8 +63,17 @@
      O botão usa a cor cheia na borda e uma tinta dela no fundo, com texto em --ink. Medido: a
      pior borda fica em 3,16:1 e o pior texto em 11,5:1. Preenchido com texto branco reprovaria
      em oito dos dez botões, por isso não é preenchido. */
-  --nav-1:#7C4A34; --nav-2:#8F583A; --nav-3:#A2653F; --nav-4:#B57345; --nav-5:#C8804B;
-  --nav-6:#B48059; --nav-7:#9F7F67; --nav-8:#897E76; --nav-9:#747D84; --nav-10:#5E7C93;
+  /* 27/09/2026 (pedido da editoria): o menu deixa de ter dez cores chapadas e passa a ser UMA
+     peça — um só degradê atravessando a barra, e cada botão mostra a fatia dele. É a mesma viagem
+     da barra do índice: quente e terroso à esquerda, frio e esverdeado à direita.
+     O arco inteiro desce abaixo de L=0,175 e isso NÃO é gosto, é aritmética: com texto escuro o
+     contraste só atinge 4,5:1 quando o fundo tem L>=0,201; com texto branco, quando tem L<=0,183.
+     Entre 0,183 e 0,201 nenhum dos dois passa, e o arco do índice atravessa essa faixa morta duas
+     vezes, debaixo de botão. Trazido para o registro escuro, o texto branco passa em qualquer
+     posição — inclusive se um rótulo mudar de tamanho e as fatias se deslocarem.
+     Medido: pior contraste 4,69:1 em 1280px, 4,72:1 em 768px, 4,70:1 em 375px. */
+  --degrade-menu: linear-gradient(90deg, #7C4A34 0.0%, #A56332 22.7%, #60787B 54.5%, #2E3D30 100.0%);
+  --degrade-menu-vertical: linear-gradient(180deg, #7C4A34 0.0%, #A56332 22.7%, #60787B 54.5%, #2E3D30 100.0%);
   --gauge-trilho:#E7DECD; --gauge-borda:#CDBB9F; --gauge-osso:#F5F1E8; --gauge-cinza:#DDDED9; --ambar-escuro:#A87A50; --sintetico-escuro:#2A4457;
   --tooltip-bg:#141B16; --tooltip-ink:#EDE6D8;
   --sombra: 0 1px 3px rgba(21,32,26,.10);
