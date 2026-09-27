@@ -112,6 +112,16 @@ jobs:
           # truncada não reabre fonte, e notícia institucional suspensa não fecha o canal de documento.
           python3 scripts/reavaliar_fontes_suspensas.py --autoteste
           python3 verificar_resposta.py
+          # §255 (27/09/2026): os cartões "Esta semana em números" da Imprensa. Trava paridade
+          # (o que a página mostra é o que o dado diz), período em todo cartão de janela, zero
+          # que não é "sem coleta", ausência de variação enquanto não houver edição anterior,
+          # frase pronta sem cláusula de valor zero, e peso zero nos índices. Trava também que
+          # TODA data de dados-abertos/atos_resposta.csv seja legível: o arquivo tem 740 datas em
+          # dd/mm/aaaa e 71 em ISO, e um parser de um formato só mediu "71 decretos sem data" —
+          # quase virou lacuna falsa no CHANGELOG.
+          python3 scripts/verificar_imprensa.py
+          python3 scripts/verificar_imprensa.py --autoteste
+          python3 gerar_imprensa_semana.py --autoteste
           # §256 (27/09/2026): paridade entre data/cobertura_qd.json e o bloco
           # varredura_diarios de data/verificacao_resumo.json. Os dois contam a MESMA coisa —
           # municípios com diário indexado no Querido Diário — e nada garantia que concordassem.

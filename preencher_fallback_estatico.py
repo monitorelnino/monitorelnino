@@ -37,6 +37,56 @@ def sub_id(html, id_, novo_texto, contador=[0]):
     return novo
 
 
+def sub_attr(html, atributo, valor_do_atributo, novo_texto, contador=[0]):
+    """Troca o conteúdo de <... atributo="valor">CONTEÚDO< por novo_texto.
+
+    §253: os cartões da Imprensa são identificados por `data-imprensa`, não por `id` — há oito, e
+    dar `id` a cada um só para o fallback seria ruído. O portão verificar_imprensa.py lê o mesmo
+    atributo para conferir paridade.
+    """
+    padrao = re.compile(r'(' + re.escape(atributo) + r'="' + re.escape(valor_do_atributo)
+                        + r'"[^>]*>)[^<]*(<)')
+    novo, n = padrao.subn(lambda m: m.group(1) + novo_texto + m.group(2), html, count=1)
+    contador[0] += n
+    return novo
+
+
+def preencher_imprensa():
+    """Os oito cartões de "Esta semana em números", para quem não roda JS.
+
+    Formata igual ao portão (`verificar_imprensa.formatar`) e igual ao JS: se os três divergirem,
+    a paridade reprova por diferença de idioma em vez de diferença de dado.
+    """
+    p = RAIZ / "imprensa.html"
+    if not p.exists():
+        return
+    semana = ler("imprensa/semana.json")
+    if not semana:
+        print("imprensa.html: data/imprensa/semana.json ausente — nada a preencher")
+        return
+    h = p.read_text(encoding="utf-8")
+    h0 = h
+    n = [0]
+
+    def formatar(v):
+        if v is None:
+            return "sem coleta"
+        if isinstance(v, float):
+            return f"{v:.1f}".replace(".", ",")
+        if isinstance(v, int):
+            return f"{v:,}".replace(",", ".")
+        return str(v)
+
+    for c in semana.get("cartoes", []):
+        texto = "sem coleta" if c.get("sem_coleta") else formatar(c.get("valor"))
+        h = sub_attr(h, "data-imprensa", c["id"], texto, n)
+    if semana.get("texto_pronto"):
+        h = sub_id(h, "semanaTextoPronto", semana["texto_pronto"], n)
+    if h != h0:
+        p.write_text(h, encoding="utf-8", newline="\n")
+    print(f"imprensa.html: {n[0]} campo(s) de fallback estático regravado(s)")
+
+
 def preencher_index():
     p = RAIZ / "index.html"; h = p.read_text(encoding="utf-8"); h0 = h
     n = [0]
@@ -147,4 +197,5 @@ if __name__ == "__main__":
     preencher_index()
     preencher_saude()
     preencher_financiamento()
+    preencher_imprensa()
     sys.exit(0)
