@@ -9,6 +9,65 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §252 · O `tee` engolia a recusa do resolvedor, e derivado estava sendo recusado à toa · 27/09/2026
+
+Classe **infraestrutura da rodada**. Dois defeitos medidos na rodada de 27/09 às 08h29 — a
+primeira que rodou com os §§245 a 248 dentro.
+
+### O que a rodada provou que funciona
+
+O commit **rodou** em vez de ser pulado, e o resolvedor do §247 entrou em ação:
+
+```
+resolvido  data/log_buscas.json: 44683 + 46819 → 46969 (união pela base comum)
+resolvido  docs/MANIFEST_SHA256.txt: versão de cima (derivado, será regenerado)
+RECUSADO   dados-abertos/verificacao_municipal.csv
+RECUSADO   data/fontes_consultadas.json
+```
+
+46.969 é maior que cada um dos lados — a trava de 23/09 segurou, e o arquivo de 20,7 MB em uma
+linha, que garantia conflito, deixou de garantir.
+
+### Defeito 1 — o `tee` engolia o código de saída
+
+O resolvedor recusou dois caminhos e saiu com **código 2**. O laço deveria ter dito "conflito SEM
+resolução conhecida". Disse:
+
+```
+tentativa 1: rebase --continue reprovou; nova tentativa
+```
+
+A causa está no `| tee /tmp/uniao.log` que o §247 escreveu: **o status de um pipeline é o do último
+comando**, e o passo não tem `set -o pipefail`. O `tee` devolve 0 sempre, o `if` foi verdadeiro
+apesar da recusa, e o laço tentou `rebase --continue` com caminhos não resolvidos.
+
+A rodada falhou igual — mas o **diagnóstico saiu errado**, que é precisamente o defeito que os
+§§246 a 248 existem para não repetir, cometido dentro do conserto. Provado fora do CI:
+`python3 -c "sys.exit(2)" | tee` devolve **0**; sem o `tee`, devolve **2**.
+
+Agora o código de saída é capturado em variável e o log é impresso depois, sem pipeline.
+
+### Defeito 2 — derivado recusado sem razão
+
+`dados-abertos/verificacao_municipal.csv` foi recusado por "política de mesclagem não decidida".
+A política dele está decidida desde sempre: `.claude/hooks/bloquear_derivados.py` declara
+`dados-abertos/.+` como **derivado**. Derivado resolve com a versão de cima e a cadeia canônica
+regenera — é o mesmo caso do manifesto, que o resolvedor já tratava.
+
+Entram como **prefixos**, não nomes exatos: `dados-abertos/`, `feeds/`, `selos/`. Prefixo porque o
+conjunto cresce com o dado — um CSV novo em `dados-abertos/` nasce derivado, e não deve precisar de
+PR para ser resolvido.
+
+Sobra **um** caminho esperando a editoria: `data/fontes_consultadas.json`. Asserção negativa nova
+garante que ele siga recusado, para o prefixo novo não ter virado porta larga. Dezesseis asserções
+agora, seis negativas.
+
+### O que segue aberto
+
+A rodada de 08h29 não comitou, e o passo de publicação deu `success` republicando dado velho — de
+novo. Com os dois consertos deste §, a próxima rodada resolve três dos quatro caminhos que
+conflitaram; o quarto depende da política que só a editoria decide.
+
 ## §250 · Skill `caveman` instalada, subordinada e com o idioma preservado · 27/09/2026
 
 Classe **modo de trabalho**. Pedido da editoria.

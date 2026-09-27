@@ -78,6 +78,21 @@ REGENERAVEIS = (
     "data/pistas_revisao.json",
 )
 
+# §252 (27/09/2026): prefixos que o PRÓPRIO projeto já declara derivados, em
+# `.claude/hooks/bloquear_derivados.py`: `dados-abertos/.+`, `feeds/.+\.xml`, `selos/.+\.svg`.
+# Medido na rodada de 27/09 às 08h29: o resolvedor recusou
+# `dados-abertos/verificacao_municipal.csv` por "política de mesclagem não decidida" — mas a
+# política DELE está decidida desde sempre: é derivado, logo resolve com a versão de cima e a
+# cadeia canônica regenera. Recusar derivado era conservadorismo sem razão, e custou a rodada.
+# Fica como PREFIXO, não nome exato, porque o conjunto cresce com o dado (um CSV novo em
+# dados-abertos/ nasce derivado, e não deve precisar de PR para ser resolvido).
+PREFIXOS_REGENERAVEIS = ("dados-abertos/", "feeds/", "selos/")
+
+
+def e_regeneravel(caminho: str) -> bool:
+    """O caminho é função de outros dados, e portanto resolve com a versão de cima?"""
+    return caminho in REGENERAVEIS or caminho.startswith(PREFIXOS_REGENERAVEIS)
+
 
 class Recusa(Exception):
     """O script não sabe resolver este caminho, e adivinhar apagaria dado."""
@@ -172,7 +187,7 @@ def resolver(repo=None, escrever=True):
                     git("add", "--", norm, repo=repo)
                 resolvidos.append(f"{norm}: {a} + {b} → {t} (união pela base comum)")
 
-            elif norm in REGENERAVEIS:
+            elif e_regeneravel(norm):
                 de_cima = estagio(norm, 2, repo=repo)
                 if de_cima is None:
                     raise Recusa("o lado de cima não tem o arquivo")
@@ -331,6 +346,28 @@ def autoteste() -> int:
         d = json.loads((r / P).read_text(encoding="utf-8")) if not rec else {}
         checar("sem base comum, a união é nosso + deles",
                not rec and [x["i"] for x in d["execucoes"]] == [1, 2])
+
+    # 9. §252: derivado sob prefixo declarado resolve, em vez de ser recusado. O caso real da
+    #    rodada de 27/09 às 08h29, que recusou dados-abertos/verificacao_municipal.csv.
+    with tempfile.TemporaryDirectory() as t:
+        r = _repo_com_conflito(t, "dados-abertos/verificacao_municipal.csv",
+                               "a\nb\n", "a\nDE_CIMA\n", "a\nDA_RODADA\n")
+        res, reg, rec = resolver(repo=r)
+        checar("derivado sob dados-abertos/ é RESOLVIDO, não recusado",
+               not rec and reg == ["dados-abertos/verificacao_municipal.csv"])
+        checar("e resolve com a versão de cima",
+               (r / "dados-abertos/verificacao_municipal.csv").read_text(encoding="utf-8")
+               == "a\nDE_CIMA\n")
+
+    # 10. NEGATIVO: caminho que NÃO é derivado nem log declarado segue recusado. O prefixo novo
+    #     não pode ter virado uma porta larga.
+    with tempfile.TemporaryDirectory() as t:
+        r = _repo_com_conflito(t, "data/fontes_consultadas.json",
+                               '{"municipios":{}}', '{"municipios":{"1":1}}',
+                               '{"municipios":{"2":2}}')
+        res, reg, rec = resolver(repo=r)
+        checar("data/fontes_consultadas.json segue RECUSADO (política não decidida)",
+               not res and len(rec) == 1 and "não está decidida" in rec[0])
 
     # 8. O CASO DE 23/09, e o único que separa união-pela-base de dedução-por-conteúdo.
     #    Execuções IDÊNTICAS no log v2 são tentativas reais distintas e CONTAM. Uma dedução
