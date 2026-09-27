@@ -9,6 +9,55 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §250 · Skill `caveman` instalada, subordinada e com o idioma preservado · 27/09/2026
+
+Classe **modo de trabalho**. Pedido da editoria.
+
+### O que entrou
+
+`.claude/skills/caveman/SKILL.md`, corpo **verbatim** de `JuliusBrussee/caveman` **v2.7.0**
+(`plugins/caveman/skills/caveman/SKILL.md`), no **escopo do projeto** — o que o `INSTALL.md` de lá
+chama de instalação sem `-g`.
+
+**O que NÃO entrou:** nenhum binário, hook, proxy, preset de subagente, badge de statusline nem
+telemetria. O instalador de uma linha do projeto de origem faz tudo isso e detecta todos os
+agentes da máquina; nada disso foi executado. Entrou um arquivo de texto, lido inteiro antes de
+ser instalado.
+
+### Por que ela é subordinada, e onde vence o `CLAUDE.md`
+
+Ela governa **registro de fala**, e nada mais. A ordem é: prova → narrativa → estética →
+`CLAUDE.md` → esta skill.
+
+Diferente da colisão de 26/09 com a `karpathy-guidelines`, onde a editoria decidiu pela skill,
+**aqui vence o `CLAUDE.md`**. A colisão é frontal: a skill manda *"No preamble, plan, or progress
+note before or between calls"*, e o `CLAUDE.md` exige suposição declarada, plano em
+`passo → verificação` e resumo final. Os três permanecem — a compressão vale para a prosa deles,
+nunca para a existência deles. Plano de uma linha é plano; plano ausente é descumprimento.
+
+Mais três, nomeadas em `.claude/skills/caveman/SUBORDINACAO.md`: cortar *hedging* não autoriza
+afirmar o não medido; tabela que carrega medição é prova e fica; e texto público do site não é
+tocado — o que a própria skill já manda, na seção *Boundaries*, ao exigir prosa normal em commit,
+documentação, texto de PR, comentário e arquivo de memória.
+
+### O que ela traz que serve aqui
+
+Abandona o modo comprimido em aviso de segurança, em confirmação de ação irreversível, em
+sequência cuja ordem possa ser lida errado, e quando a compressão criaria ambiguidade. Nunca
+descarta `não`/`nunca`/`só`/`exceto`. Mantém número, unidade, código, nome de API e mensagem de
+erro exatos. E **preserva o idioma dominante** — *"compress the style, not the language"* —, que
+foi a condição posta pela editoria ao instalar.
+
+### O proxy, deixado de fora de propósito
+
+O projeto de origem tem três partes; só a skill entrou. O proxy comprime o que o agente **lê** —
+logs, saída de teste, JSON, diffs — e resolveria um problema real deste repositório
+(`data/log_buscas.json` tem 20,7 MB em uma linha). Mas ele cria na **leitura** a mesma classe de
+risco que os §§246 a 248 consertaram na **gravação**: conteúdo encurtado que se parece com
+conteúdo inteiro. Recusa servida com `200` é recusa, e `detectar_muro_de_robo` depende de ver a
+resposta como ela veio; um resumo apagaria o sinal e a prova falsa entraria no índice. Se a
+editoria quiser o proxy, o caminho defensável está registrado: nunca na leitura de evidência.
+
 ## §249 · A sonda de credenciais anunciava uma lacuna que não existe · 27/09/2026
 
 Classe **diagnóstico**. Achado a partir de uma pista da editoria: o pacote público

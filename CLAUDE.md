@@ -61,6 +61,19 @@ Documentos canônicos:
 > skill**. O mandato de auditoria transversal não é mais permanente: cada
 > conserto que atravessa o repositório passa a ser pedido, um a um.
 
+> **Skill `caveman`, instalada em 27/09/2026 (§250) — e aqui vence o CLAUDE.md.**
+> A editoria instalou `.claude/skills/caveman/` (origem `JuliusBrussee/caveman`
+> v2.7.0, escopo do projeto, só o arquivo de texto: sem binário, hook, proxy nem
+> telemetria). Ela comprime o **registro de fala** na conversa com a editoria e
+> **preserva o idioma** — resposta em português do Brasil, mais curta. Diferente
+> da colisão de 26/09, nesta **vence o CLAUDE.md**: a skill manda "no preamble,
+> plan, or progress note", e os três itens exigidos acima — **suposição
+> declarada, plano em `passo → verificação`, resumo final** — permanecem,
+> comprimidos mas inteiros. Cortar hedging não autoriza afirmar o não medido;
+> tabela que carrega medição é prova, não enfeite; e nada disso toca texto
+> público do site. As colisões estão nomeadas uma a uma em
+> `.claude/skills/caveman/SUBORDINACAO.md`. Desligar: "stop caveman".
+
 ## Fluxo de mudança (PROTOCOLO §3.1)
 
 1. Partir da `main` atualizada; ramo `edicao/AAAA-MM-DD-tema`.
