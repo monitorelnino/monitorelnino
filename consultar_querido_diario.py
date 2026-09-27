@@ -32,6 +32,7 @@ Contrato da API validado ao vivo em 27/08/2026 (schema: total_gazettes,
 gazettes[{territory_id,date,url,territory_name,state_code,excerpts,edition,txt_url}]).
 """
 import json, pathlib, sys, time, urllib.parse, urllib.request
+import funil
 from coletores_base import preservar_evidencia, preservar_texto_integral, ua_de, gravar_em, hoje_editorial
 
 RAIZ = pathlib.Path(__file__).parent
@@ -136,6 +137,10 @@ def rodar(alvos=None, ufs=None):
     execucao["ufs_varridas"] = ufs if ufs is not None else UFS_LAC
     gravar_em(DESTINO, {"execucao": execucao, "pistas": pistas})   # §229
     n_cob = sum(1 for p in pistas if p.get("cobertura_qd"))
+    # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
+    # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
+    funil.registrar("querido_diario", entradas=len(pistas), com_cobertura=n_cob,
+                    ufs_varridas=len(execucao["ufs_varridas"]))
     print(f"✓ {len(pistas)} entradas ({n_cob} com cobertura) → {DESTINO.name} — triagem humana pendente")
     return 0
 

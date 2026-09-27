@@ -116,6 +116,7 @@ USO
 """
 import http.cookiejar, io, json, pathlib, re, subprocess, sys, time, unicodedata, urllib.parse, urllib.request
 from datetime import date, timedelta
+import funil
 from coletores_base import (UA, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste,
                             CANAIS_ATO, hoje_editorial, normalizar_nome)
@@ -576,6 +577,11 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
                  f"{len(r['pistas'])} pista(s), {len(r['decretos'])} decreto(s) brutos "
                  f"[gravado: {total_pistas} pista(s), {total_decretos_novos} decreto(s) no acumulado]", flush=True)
     gravar("pistas_imprensa.json", pistas_reg); gravar("atos_resposta.json", atos)
+    # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
+    # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
+    funil.registrar("diario_consorciado", fontes=total_fontes, pistas=total_pistas,
+                    decretos_novos=total_decretos_novos, bloqueadas=total_bloqueadas,
+                    fora_do_ar=total_fora_do_ar)
     print(f"total: {total_pistas} pistas novas, {total_decretos_novos} decretos novos, "
          f"{total_bloqueadas}/{total_fontes} fonte(s) bloqueada(s) por token JS, "
          f"{total_fora_do_ar}/{total_fontes} fora do ar (lacuna declarada)")

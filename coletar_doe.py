@@ -21,6 +21,7 @@ USO
 """
 import json, re, sys, time, urllib.parse
 from datetime import date
+import funil
 from coletores_base import (buscar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
@@ -589,5 +590,9 @@ if __name__ == "__main__":
     finally:
         fechar_lote_log(); fechar_lote_livro()
     gravar("fontes_doe.json", cfg)
+    # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
+    # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
+    funil.registrar("doe", ufs_consultadas=len(ufs),
+                    ufs_com_resultado=sum(1 for r in res.values() if r))
     print("DOE:", ", ".join(f"{u}={r}" for u, r in res.items()))
     sys.exit(0)
