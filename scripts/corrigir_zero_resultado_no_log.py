@@ -26,7 +26,6 @@ USO
   python3 scripts/corrigir_zero_resultado_no_log.py --de 2026-09-21 --ate 2026-09-27 --escrever
   python3 scripts/corrigir_zero_resultado_no_log.py --autoteste
 """
-import datetime
 import json
 import pathlib
 import sys
@@ -173,7 +172,11 @@ def main() -> int:
         return 0
 
     log["execucoes"] = execucoes + novas
-    log["atualizado_em"] = datetime.datetime.now().replace(microsecond=0).isoformat()
+    # NÃO acrescenta carimbo algum ao documento: `scripts/unir_conflito_de_rodada.py` (§247/§252)
+    # recusa a união quando os campos fora de 'execucoes' divergem entre os lados — e com razão,
+    # porque divergência de formato pode esconder perda de dado. Uma chave nova aqui transformaria
+    # todo merge da rodada numa recusa. O carimbo de quando a correção rodou já vive em cada linha
+    # de correção, no campo `executor`.
     # trava de append-only: o log só cresce, e cresce exatamente o que foi contado
     assert len(log["execucoes"]) == antes + len(novas), "o log teria mudado de tamanho fora do previsto"
     gravar_em(caminho, log)
