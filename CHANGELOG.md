@@ -9,6 +9,92 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §255 · Imprensa · "Esta semana em números", só o que o dado sustenta · 27/09/2026
+
+Classe **página pública**. Handover da editoria de 27/09, ordem §5.1: os cartões calculáveis hoje,
+com fallback estático e portão.
+
+### Os oito cartões que o dado sustenta
+
+| cartão | valor no corte de 10/09 |
+|---|---|
+| Municípios que decretaram emergência ou calamidade no período | 20 |
+| Municípios reconhecidos pelo governo federal no período | 55 |
+| Planos municipais com data de ato no período | 0 |
+| Focos de calor nas últimas 24 horas | 112 |
+| Avisos meteorológicos em vigor | 13 |
+| Alertas do CEMADEN em vigor | 2 |
+| Maior máxima prevista entre as capitais | 39,0 °C |
+| Capitais com índice EAQI acima de 40 | 19 |
+
+Cada um traz período, fonte, hora da consulta e, onde há lista, o botão que abre os nomes num
+`<dialog>`. A frase pronta é montada do dado e **omite cláusula de valor zero** — o cartão mostra o
+zero; a frase, não.
+
+### Três coisas do handover que a medição desmentiu
+
+**1. O `81` do cartão 1 não reproduz.** Com os dois formatos de data lidos, 7 dias até 27/09 dá
+**33**; 14 dias dá 75; e no corte de 10/09, que é a janela da edição, dá **20**. O número entra no
+código como cálculo, nunca como literal — e o portão reprova quem cravar o 81.
+
+**2. O cartão 2 é calculável, contra o "a construir" do handover.** Ele supõe que o adaptador do
+S2iD guardaria só o total. Medido: `atos_resposta.csv` tem data em **todos os 653** reconhecimentos.
+
+**3. O cartão 7 NÃO é calculável, contra o "calculável agora" do handover.** `dengue_capitais` tem
+27 **capitais** com uma única semana epidemiológica corrente, e `serie_capitais` é série agregada
+das 27, não nível por município por SE. Sem o nível da SE anterior, a passagem para laranja ou
+vermelho seria inventada — o que a própria regra do handover proíbe. Fica entre os **declarados não
+calculáveis**, com o motivo.
+
+Os outros três não calculáveis, também declarados com motivo: planos localizados nesta edição
+(campo `localizado_em` inexistente, 0 de 267), mudanças de categoria (sem `data/edicao_anterior/`) e
+páginas fora do ar por escopo (depende do bloco E, não executado).
+
+### O cartão 10 trocou de variável, por decisão mais recente
+
+O handover pede **PM2,5**. A editoria mandou removê-lo em 27/09, e o §244 trocou por **índice**. O
+cartão usa o índice EAQI, com a faixa da própria fonte. Declarado em vez de arbitrado.
+
+### Duas datas no mesmo campo
+
+`dados-abertos/atos_resposta.csv` publica a data do ato em **dois formatos**: 740 em `dd/mm/aaaa` e
+71 em ISO, estas vindas dos diários consorciados. A origem é `data/atos_resposta.json`; o CSV só
+copia.
+
+Um parser que aceitava só `dd/mm/aaaa` mediu **"71 decretos sem data legível"**, e isso quase entrou
+aqui como fato. A editoria corrigiu: os decretos têm data. **811 de 811 são legíveis.** O defeito
+era do leitor.
+
+`data_do_ato()` aceita os dois, e o portão exige que toda data seja legível e **imprime a mistura** —
+porque `dados-abertos/` é consumido por terceiros, e quem ler um formato só perde 71 linhas
+caladamente. **Normalizar o formato publicado é decisão da editoria**, não daqui: mudaria o CSV para
+quem já o lê.
+
+### Portão e teste negativo
+
+`scripts/verificar_imprensa.py` trava paridade, período, `zero ≠ sem coleta`, ausência de variação
+sem edição anterior, estimativa de modelo declarada, frase sem cláusula zero, peso zero nos índices,
+e a legibilidade das datas.
+
+**Paridade é igualdade, não ausência.** O primeiro desenho do portão proibia número no HTML — e
+teria quebrado o fallback estático, que existe justamente para escrever o número lá. Corrigido: o
+que está na página tem de ser o que está no dado.
+
+Teste negativo do handover, executado: cravar `81` onde o dado diz `112` reprova com
+`paridade rompida`.
+
+### Dois defeitos meus, pegos por portão
+
+O **portão 19** reprovou o travessão nos campos `fonte` e `documento` do dado, montados em runtime;
+trocado por vírgula na apresentação, sem tocar no dado. O **portão 29** reprovou a gravação de
+`semana.json` fora da porta atômica — o mesmo defeito que o CI do PR #403 pegou no outro gerador, na
+mesma hora.
+
+### Órfão do próprio conserto, limpo
+
+`index.html` tinha "Última verificação: 24/09/2026" cravado, defasado de `meta.json` (25/09). O
+`preencher_fallback_estatico.py` corrigiu ao rodar.
+
 ## §252 · O `tee` engolia a recusa do resolvedor, e derivado estava sendo recusado à toa · 27/09/2026
 
 Classe **infraestrutura da rodada**. Dois defeitos medidos na rodada de 27/09 às 08h29 — a
