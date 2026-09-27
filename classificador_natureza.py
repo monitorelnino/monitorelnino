@@ -55,6 +55,17 @@ SINAIS_DANO_OCORRIDO = ["ocasionaram", "afetad", "danos causados", "desde a madr
                          "atingiu", "atingid", "que atingiram", "processo erosivo"]
 SINAIS_PREVENTIVO_EXPLICITO = ["não representa situação de emergência",
                                 "não configura situação de emergência",
+                                # 27/09/2026 (canário `plano_novo` do juiz): flexões da MESMA
+                                # expressão. Sem elas, um decreto que encerra com "não configurando
+                                # situação de emergência" — forma comum na redação de decreto — caía
+                                # em DÚVIDA por falta de disclaimer, embora o disclaimer estivesse
+                                # ali. Falso negativo, não falso positivo: nada que pontuava deixa
+                                # de pontuar por causa desta entrada.
+                                "não configurando situação de emergência",
+                                "não configuram situação de emergência",
+                                "não representando situação de emergência",
+                                "não declara situação de emergência",
+                                "não se trata de situação de emergência",
                                 "caráter preventivo", "caráter exclusivamente preventivo"]
 RE_GATILHO_PREVISAO = re.compile(
     r"projeç|previs|prognóstic|boletim|painel el ni|cemaden|inmet|monitorament|alerta clim|"
@@ -97,7 +108,13 @@ def classificar(texto, tem_reconhecimento_federal=False):
     """
     if not texto or not texto.strip():
         return "DUVIDA", "texto vazio ou ausente"
-    t = texto.lower()
+    # 27/09/2026 (canário `plano_novo` do juiz): todo sinal aqui é comparado por substring, e o
+    # texto de um diário oficial vem quebrado em linhas: o disclaimer preventivo com uma quebra
+    # entre "configurando" e "situação" não casava com a forma de uma linha só — estava no documento
+    # e o classificador não o via.
+    # Normalizar o espaço em branco antes de comparar conserta isso para TODOS os sinais de uma
+    # vez, em vez de multiplicar variantes no dicionário.
+    t = re.sub(r"\s+", " ", texto.lower())
 
     if tem_reconhecimento_federal or any(s in t for s in SINAIS_FIDE_FEDERAL):
         return "RESPOSTA", "teste-fósforo: menciona rota de reconhecimento federal/FIDE"

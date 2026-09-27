@@ -320,3 +320,10 @@ jobs:
           python3 scripts/verificar_funil.py
           python3 scripts/corrigir_zero_resultado_no_log.py --autoteste
           python3 scripts/medir_revocacao_das_consultas.py --autoteste
+          # 27/09/2026 (PR 2 do juiz automático): a regra R7 revisada. Os dez canários são um
+          # documento por desfecho — plano novo, readaptado, de elaboração, decreto de resposta,
+          # aprovação por conselho, plano de geada, notícia sem documento, PDF ilegível, ente errado
+          # e citação incompleta. Falso positivo é pior que falso negativo: é isso que eles travam.
+          python3 juiz.py --autoteste
+          python3 julgar_filas.py --autoteste
+          python3 scripts/amostra_auditoria_semanal.py --autoteste
