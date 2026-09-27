@@ -9,6 +9,68 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §263 · Instrumentação do funil: a rodada conta por etapa · 27/09/2026
+
+Classe **método e coleta**. Decisão editorial de 27/09/2026, handovers
+`HANDOVER_juiz_automatico_e_busca_web_27-09-2026.md` (PR 3) e
+`HANDOVER_auditoria_funil_de_coleta_27-09-2026.md` (item B), repositório privado.
+**Nenhuma nota muda:** contagem mede o funil, não pontua.
+
+### O que a auditoria mediu e que este PR conserta
+
+A pergunta da editoria — "os coletores estão de fato encontrando os planos?" — não tinha como ser
+respondida sem abrir o código, e duas cegueiras mostraram por quê:
+
+- **`descobrir_planos.py` está agendado quatro vezes ao dia e tinha UMA execução em todo o
+  `log_buscas.json`** — e essa única era de uma triagem autorizada à mão em 19/09. O coletor rodava
+  e não registrava o que fazia. Agora registra: contagem por etapa e uma linha no log por execução,
+  com alvos consultados, achados inéditos e o tamanho da fila acumulada.
+- **`motor_de_busca` parou em 05/09, e as três últimas execuções são `erro`.** O canal morreu e
+  ninguém foi avisado. O alerta do portão do funil sobre etapa com histórico que devolve zero
+  (§261) é o que passa a avisar; a causa do erro fica como pedido separado.
+
+### As etapas instrumentadas
+
+`funil.registrar(...)` entra em cinco coletores, com os contadores que cada um já calculava:
+
+| etapa | contagens |
+|---|---|
+| `querido_diario` | entradas, com cobertura, UFs varridas |
+| `diario_municipal` | consultados, lacunas, decretos novos, pistas |
+| `diario_consorciado` | fontes, pistas, decretos novos, bloqueadas, fora do ar |
+| `doe` | UFs consultadas, UFs com resultado |
+| `descobrir_planos` | alvos consultados, achados novos, fila acumulada |
+| `busca_web` | (§261) consultas, com resultado bruto, motor sem resposta, pistas, cobertos, espera, lacunas, brutos por string |
+| `juiz` | (§262) pistas recebidas, com documento, promovidas, recusas por critério |
+
+A conferência passa a rodar **dentro da rodada**, não só na CI do PR, com `continue-on-error`: a
+contradição aparece no log da rodada sem impedir o commit dos dados já coletados — o portão do PR é
+que reprova de verdade. Soma dos tetos por passo: 253 min, dentro do teto de 300 do job.
+
+### O que a auditoria achou e NÃO entra aqui
+
+Um PR por defeito, como o handover pede. Ficam como pedido separado, listados em
+`notas/preprint/funil/RELATORIO_2026-09-27.md`:
+
+- **169 de 242 municípios (70%) com excerto reconhecido no diário não estão em lugar nenhum do
+  funil** — nem no banco, nem em fila. É o achado de maior efeito sobre a cobertura, e é reparo de
+  dado: reprocessar os 169 do log para a fila e deixar o juiz decidir.
+- O `com_mencao` publicado (347) não é reproduzível a partir do log (400 execuções `com_excerto`,
+  242 municípios distintos): três contagens com o mesmo nome, nenhuma documentada.
+- `data/pistas_querido_diario.json` é declarada por `consultar_querido_diario.py`, **não existe** e
+  nenhum outro arquivo do repositório a menciona.
+- `scripts/caderno_de_pistas.py` é órfão (só ele mesmo se menciona no repositório inteiro).
+- `dominios_oficiais` e `saude_sinais` só se atualizam quando a CI roda os coletores.
+
+**Uma preocupação do §158 NÃO se confirmou:** dos 13 registros com canal `imprensa`, 12 são
+`nao_verificado` e o único categorizado é um decreto, que pontua zero. Nenhum registro pontuável do
+banco tem a imprensa como canal.
+
+**Erro de método corrigido no próprio relatório:** a primeira reconciliação juntava as menções ao
+banco pelo código IBGE e dava "0 registros". `data/municipios.json` **não tem código IBGE** — cada
+registro é identificado por nome e UF. Refeita a junção, 35 dos 242 estão no banco, e o número do
+achado caiu de 190 para 169.
+
 ## §262 · Juiz automático regrado da fila de pistas · 27/09/2026
 
 Classe **método e coleta**. Decisão editorial de 27/09/2026, handover

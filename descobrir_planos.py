@@ -49,6 +49,7 @@ import sys
 import time
 import urllib.parse
 
+import funil
 from coletores_base import (RAIZ, buscar, preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, setor_da_url)
@@ -481,6 +482,18 @@ def main() -> int:
             break
 
     gravar("pistas_descobertas.json", fila)
+    # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
+    # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
+    # Defeito 3 da auditoria: este coletor está agendado 4x ao dia e tinha UMA execução em todo o
+    # log_buscas.json — rodava e não registrava o que fazia, o que o tornava invisível ao
+    # instrumento pelo qual se responde "está encontrando?".
+    funil.registrar("descobrir_planos", alvos_consultados=consultas, achados_novos=total_novos,
+                    fila_acumulada=len(fila["itens"]))
+    log_busca("descobrir_planos", 3, [f"{len(setores)} setor(es)"],
+              "pista" if total_novos else "consultado sem achado",
+              n_resultados=total_novos,
+              resultados=f"{consultas} alvo(s) consultado(s); {total_novos} achado(s) inédito(s); "
+                         f"fila com {len(fila['itens'])} item(ns)")
     print(f"Descoberta via wp-json: {consultas} alvo(s) consultado(s) ({'/'.join(setores)}).")
     if total_novos:
         print(f"[ACHADOS NOVOS] {total_novos} para triagem humana (status pendente_confirmacao_documento):")
