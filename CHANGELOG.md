@@ -9,6 +9,72 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §261 · Busca web: zero resultado não é ausência · 27/09/2026
+
+Classe **método e coleta**. Decisão editorial de 27/09/2026, handover
+`notas/HANDOVER_juiz_automatico_e_busca_web_27-09-2026.md` (PR 1), repositório privado.
+**Nenhuma nota muda:** a camada 4 produz pista, nunca registro — e a correção retroativa mexe
+só no log, não no banco.
+
+### O defeito, medido
+
+A camada 4 tinha duas decisões: `pista` quando algum resultado passava a peneira,
+`coberto_sem_mencao` quando nenhum passava — **inclusive quando o motor não devolvia resultado
+nenhum**. Medido no `data/log_buscas.json` de 21 a 27/09: das consultas da busca web, **5.329
+voltaram com zero resultado bruto e receberam `coberto_sem_mencao`**, que é afirmação de
+ausência. O motor mudo entrava no registro como cobertura.
+
+### As quatro decisões
+
+`decidir(n_brutos, n_pistas, rodadas_sem_pista)` é função pura, e por isso testável sem rede:
+
+- `motor_sem_resposta` — zero resultado bruto em todas as strings, timeout, erro HTTP, instância
+  que não subiu. A consulta **não conta como verificação** do município.
+- `nao_localizado_ate_o_momento` — houve resultado bruto e nenhuma pista, primeira rodada nessa
+  situação.
+- `coberto_sem_mencao` — resultado bruto e nenhuma pista em **duas** rodadas. Só aqui a ausência
+  é afirmável, e no teto do §3.2.
+- `pista` — algum resultado passou a peneira.
+
+O estado de espera por município vive em `data/busca_web_espera.json`; uma pista o zera.
+
+### Nove consultas, e a peneira que aceita o trecho
+
+Oito strings novas mais a de até 26/09, mantida como **controle da medição**:
+`"plano de contingência"` · `... 2026` · `"período chuvoso"` · `estiagem OR seca "plano"` ·
+`PLANCON` · `"plano de ação" El Niño` · `"plano de enfrentamento"` ·
+`decreto "situação de emergência" preventiv`. A peneira passa a aceitar o nome do município no
+título, na URL **ou no trecho**, e o termo de plano no título **ou no trecho**: diário oficial
+raramente traz o nome do município no título do resultado, e exigi-lo descartava o documento
+primário e guardava a notícia.
+
+`scripts/medir_revocacao_das_consultas.py` mede revocação por string sobre duas populações — 30
+municípios com plano já registrado (verdade forte: documento preservado) e a amostra manual de 30
+do item D. **A medição com motor de verdade ainda não foi feita:** o SearXNG é efêmero, sobe
+dentro do job da Action. O autoteste roda offline, com motor injetado. Até a medição, o conjunto
+inteiro roda: custa mais consultas e não afirma ausência a menos.
+
+A pausa entre consultas caiu de 0,5 s para 0,15 s — com nove strings, a pausa antiga somava 675 s
+de espera pura num lote de 150. Estimativa do lote: ~21 min, dentro do teto de 60 min do job.
+
+### Correção retroativa, sem apagar nada
+
+`scripts/corrigir_zero_resultado_no_log.py` acrescentou **5.329 linhas de correção** ao log
+(45.154 para 50.483 execuções). A execução original permanece exatamente como estava; a correção
+é execução nova, com `corrige` apontando para a posição da original e a decisão original guardada.
+Idempotente pela posição: rodar duas vezes não produz duas correções. `n_resultados` ausente
+**não** é tratado como zero — o que não foi medido não se corrige.
+
+### Contagem por etapa, em toda rodada
+
+`funil.py` grava `data/funil/<AAAA-MM-DD>.json` com as contagens por etapa, acumulando dentro do
+dia (a rodada chama o mesmo coletor várias vezes). `scripts/verificar_funil.py` reprova quando
+`motor_sem_resposta + lacunas` passa de 25% das consultas, quando há mais cobertos sem menção do
+que consultas com resultado bruto, e quando o juiz promove mais do que as pistas com documento
+(invariante do PR 3). Etapa que já produziu e devolve zero hoje **alerta**, não reprova.
+
+Cinco portões novos (85 no total). `METODOLOGIA.md` recebeu as duas decisões datadas.
+
 ## §259 · A reposição urgente do domínio não é urgente enquanto a rodada corre · 27/09/2026
 
 Classe **infraestrutura da rodada**. Achado ao publicar o site a pedido da editoria.
