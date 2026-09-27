@@ -62,13 +62,28 @@ FONTES = {
         "onde_pedir": "https://portaldatransparencia.gov.br/api-de-dados/cadastrar-email",
     },
     "inmet_estacoes": {
-        "nome": "Temperatura medida em estação (INMET)",
+        "nome": "Temperatura medida em estação (INMET) — cobertura EXTRA, não lacuna",
         "credencial": "INMET_API_TOKEN",
-        # A rota com token existe e valida: sem token devolve 204 vazio, com token inválido
-        # responde 200 com "CHAVE INVÁLIDA!" (medido em 24/09/2026).
+        # A rota com token existe e valida: com token inválido responde 200 com "CHAVE INVÁLIDA!"
+        # (medido em 24/09/2026).
+        # 27/09/2026 (§249): duas correções nesta entrada, e as duas eram fato errado.
+        #   1. Dizia que sem token a rota devolve "204 vazio". Devolve **404** — o §233 mediu isso
+        #      em 26/09 e corrigiu no coletor, mas a cópia daqui ficou para trás.
+        #   2. Dizia "sem caminho público documentado". HÁ caminho documentado: pede-se o token
+        #      por e-mail a cadastro.act@inmet.gov.br. Fonte: JuliaClimate/INMET.jl, que é um
+        #      cliente público da mesma API e traz a instrução no README e no próprio erro.
         "url": "https://apitempo.inmet.gov.br/token/estacao/diaria/{data}/{data}/A001/{token}",
         "cabecalho": None,          # o INMET põe o token no CAMINHO, não em cabeçalho
-        "onde_pedir": "sem caminho público documentado; ver Central de Serviços do INMET",
+        "onde_pedir": "token por e-mail a cadastro.act@inmet.gov.br",
+        # §249: esta credencial NÃO é exigida por nenhuma fonte do coletor. O §233 mediu que
+        # `apitempo.inmet.gov.br/estacoes/T` responde 200 com 673 estações SEM token, tirou o
+        # `INMET_API_TOKEN` da declaração de `inmet_estacoes`, e há portão travando isso.
+        # Com o token, a API abre o que a rota pública não dá: série histórica por estação
+        # (`/token/estacao/diaria/...`) e TODAS as ~600 estações automáticas numa requisição
+        # (`/token/estacao/dados/{data}/{hora}/{token}`) — hoje medimos só as capitais, por
+        # `/condicao/capitais/{data}`. Ausência aqui é cobertura que não temos, não dado que
+        # falta ao site. A sonda CONFERE isso contra o coletor em vez de acreditar nesta linha.
+        "opcional": True,
     },
 }
 MARCAS_DE_RECUSA = ("chave inválida", "chave invalida", "unauthorized", "forbidden",
@@ -138,17 +153,60 @@ def sondar_uma(chave: str, fonte: dict, buscar_fn=None) -> dict:
         return {**base, "estado": "rede_indisponivel", "detalhe": f"{type(e).__name__}"}
 
 
+def exigida_pelo_coletor(chave: str) -> bool | None:
+    """A fonte `chave` declara credencial em coletar_sinais_risco.FONTES? None se não deu para ver.
+
+    §249 (27/09/2026): esta função existe porque a tabela acima é uma CÓPIA, e cópia diverge. Em
+    26/09 o §233 mediu que a rota de estações do INMET é pública e tirou o `INMET_API_TOKEN` da
+    declaração do coletor — mas a cópia daqui continuou pedindo o token, com a nota "sem caminho
+    público documentado". Resultado: a sonda anunciava uma lacuna que não existia, e ela foi
+    repetida à editoria como fato. Agora a verdade vem de quem coleta, não daqui.
+    """
+    try:
+        import importlib.util
+        import pathlib
+        raiz = pathlib.Path(__file__).resolve().parent.parent
+        spec = importlib.util.spec_from_file_location("_csr", raiz / "coletar_sinais_risco.py")
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        fonte = m.FONTES.get(chave)
+        if fonte is None:
+            return None
+        return bool(fonte.get("credencial"))
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def main() -> int:
     print("=== credenciais das fontes que exigem chave (§208, §224) ===")
     resultados = [sondar_uma(k, f) for k, f in FONTES.items()]
     simbolo = {"aceita": "✓", "ausente": "—", "recusada": "✗", "erro_da_fonte": "!",
                "rede_indisponivel": "?"}
+    divergencias = []
     for r in resultados:
+        fonte = FONTES[r["fonte"]]
         print(f"  {simbolo.get(r['estado'], '?')} {r['nome']}")
         print(f"      {r['credencial']}: {r['credencial_no_ambiente']}")
         print(f"      {r['estado']} — {r['detalhe']}")
+
+        # A verdade sobre "esta chave é necessária?" mora no coletor (§249).
+        exigida = exigida_pelo_coletor(r["fonte"])
+        if exigida is False and r["estado"] == "ausente":
+            print("      papel: COBERTURA EXTRA — o coletor NÃO exige esta credencial; a fonte "
+                  "coleta pela rota pública. Ausência aqui não é lacuna no site.")
+        if exigida is True and fonte.get("opcional"):
+            divergencias.append(f"{r['fonte']}: marcada 'opcional' aqui, mas o coletor EXIGE a "
+                                f"credencial")
+        if exigida is False and not fonte.get("opcional"):
+            divergencias.append(f"{r['fonte']}: o coletor NÃO exige a credencial, mas esta tabela "
+                                f"a apresenta como necessária — marque 'opcional': True")
+
     aceitas = sum(1 for r in resultados if r["estado"] == "aceita")
     print(f"\n{aceitas} de {len(resultados)} fonte(s) com credencial aceita.")
+    if divergencias:
+        print("  ATENÇÃO — esta tabela divergiu do coletor:")
+        for d in divergencias:
+            print(f"    · {d}")
     # Saída 0 sempre: isto é diagnóstico, não portão. Credencial ausente é decisão pendente da
     # editoria, e não falha de build — tratá-la como falha bloquearia o pipeline por uma escolha.
     return 0
@@ -206,6 +264,19 @@ def autoteste() -> int:
         for k, v in _ambiente.items():
             if v is not None:
                 os.environ[k] = v
+
+    # §249: o invariante que faltava. Esta tabela é uma CÓPIA do que o coletor declara, e cópia
+    # diverge: em 26/09 o §233 tirou o `INMET_API_TOKEN` da declaração do coletor e a cópia daqui
+    # continuou pedindo o token, com a nota "sem caminho público documentado". A sonda anunciou
+    # uma lacuna que não existia, e ela foi repetida à editoria como fato. Asserção, não print:
+    # print de aviso ninguém lê.
+    for chave, fonte in FONTES.items():
+        exigida = exigida_pelo_coletor(chave)
+        if exigida is None:
+            continue  # a fonte não é do coletor de sinais (Portal da Transparência); nada a casar
+        checar(f"§249 {chave}: 'opcional' nesta tabela casa com o que o coletor exige "
+               f"(coletor exige={exigida})",
+               bool(fonte.get("opcional")) == (not exigida))
 
     if falhas:
         print(f"\n✗ AUTOTESTE: {len(falhas)} falha(s).")
