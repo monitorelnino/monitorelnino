@@ -54,6 +54,51 @@ o que o §196 recusou fazer.
 `analise_sensibilidade.py` usa `d_antigo=0.3` por padrão, contra 0,5 no motor, e alimenta o PDF de
 documentação do índice. **Não corrigido**, por instrução explícita do próprio T2: é arquivo de
 produção. Fica registrado.
+## §256 · Paridade da cobertura do Querido Diário, e um sintoma que não se confirmou · 27/09/2026
+
+Classe **portão**. T1 do pedido do preprint (repositório privado), pendência aberta em
+`notas/PENDENCIAS_2026-09-14.md`.
+
+### O sintoma relatado não se confirma
+
+O pedido descreve `data/cobertura_qd.json` com "as 5.571 entradas com `cobertura_qd: false`" e
+`data_teste` 2026-09-06, contra `indexados = 527` em `verificacao_resumo.json`.
+
+Medido:
+
+| valor | municípios |
+|---|---|
+| `true` (diário indexado) | **527** |
+| `false` | 5.041 |
+| `None` (indefinido) | 3 |
+| total | 5.571 |
+
+**Os dois arquivos já concordavam.** As `data_teste` também variam — 12/09 em 2.362 municípios,
+09/09 em 1.859, 08/09 em 741, 25/09 em 266 —, não um 06/09 único.
+
+O `false` e o `06/09` do relato eram os do **primeiro município da ordem de iteração**, tomado pelo
+todo. Não houve arquivo parado, e nada foi consertado porque nada estava quebrado.
+
+### O que faltava de verdade
+
+O **portão de paridade**. Ele não existia, e é o que a pendência de 14/09 cobrava. O número entra no
+preprint como limitação quantificada do E6: uma divergência entre os dois arquivos viraria duas
+afirmações incompatíveis publicadas no mesmo trabalho.
+
+`scripts/verificar_paridade_cobertura_qd.py` trava seis desacordos: `indexados` divergentes, não
+indexados divergentes, total divergente, as três classes que não somam o total, a partição interna
+do resumo (`com_mencao + coberto_sem_mencao = indexados`) que não fecha, e **zero indexado** — que é
+o sintoma relatado, e que reprova mesmo se os dois arquivos concordarem, porque 5.571 em `false` é
+falha de coleta e não um fato.
+
+`None` é contado à parte, nunca como `false`: somá-lo aos não indexados inflaria a limitação
+declarada no E6.
+
+### Número canônico
+
+**527 municípios com diário indexado**, última varredura em **25/09/2026**. O pedido cita 522
+declarados pela plataforma do Querido Diário e 518 em 23/09; nenhum dos dois foi verificado aqui, e
+a diferença fica declarada em vez de reconciliada.
 
 ## §254 · Vigia do desfecho: a rodada agora fica vermelha quando não comita · 27/09/2026
 

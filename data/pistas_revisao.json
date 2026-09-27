@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-27",
- "total_pistas": 640,
- "total_municipios": 277,
+ "total_pistas": 647,
+ "total_municipios": 280,
  "por_nivel": {
-  "A": 100,
-  "B": 365,
+  "A": 103,
+  "B": 369,
   "C": 175
  },
  "grupos": [
@@ -639,6 +639,228 @@
      "titulo": "PALOTINA REALIZA PALESTRA SOBRE O EL NIÑO E ... - Instagram",
      "trecho": "Sep 4, 2026 ... Palotina realizará no dia 11 de setembro uma palestra sobre o fenômeno El Niño e apresentará o Plano de Contingência Municipal. O encontro será ...",
      "data": "25/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "melhor_nivel": "A",
+   "n_pistas": 11,
+   "niveis": {
+    "A": 4,
+    "B": 6,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "49d4550b60",
+     "nivel_confianca": "A",
+     "pontos_confianca": 8,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.portaltemponovo.com.br/serra-apresenta-plano-de-contingencia-para-enfrentar-possiveis-impactos-do-el-nino/",
+     "titulo": "Serra apresenta plano de contingência para enfrentar possíveis ...",
+     "trecho": "Serra apresenta plano de contingência para enfrentar possíveis impactos do El Niño. Foto de Jady Oliveira Jady Oliveira. 08/08/2026 - 08:25. 08/08/2026 - 08 ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d53c841939",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade",
+     "titulo": "Defesa Civil da Serra elabora Plano de Contingência ...",
+     "trecho": "A Defesa Cívil da Serra, em conjunto com as demais secretarias da Prefeitura da Serra, está trabalhando no Plano de Contingência, que tem como objetivo elaborar ações preventivas para os períodos chuvosos e evitar ocorrências indesejadas.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3f8922a3b6",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo",
+      "texto_candidato_forte"
+     ],
+     "alertas": [],
+     "origem": "querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf",
+     "titulo": null,
+     "trecho": "e na restauração da \nnormalidade social, articulando e facilitando as ações \nde prevenção, preparação, resposta e recuperação no \nMunicípio de Serra. “\n\nLeia-se: […]\n“ Art. 1º Fica instituído o Plano Municipal de Proteção e \nDefesa Civil (Plano de Contingência de Proteção e Defesa \nCivil), como inst",
+     "data": "06/07/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "900b8ddce3",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino",
+     "titulo": "Serra sai na frente e apresenta plano para enfrentar os efeitos ...",
+     "trecho": "Com o objetivo de preparar a cidade ... quinta-feira (6), o Plano de Contingência que irá nortear as ações do município para enfrentar situações como chuvas intensas, alagamentos, inundações e períodos de estiagem....",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "941cec3cf2",
+     "nivel_confianca": "B",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://prefeiturasempapel.serra.es.gov.br/Arquivo/Documents/legislacao/html/D68232015.html",
+     "titulo": "decreto nº 6823, de 5 de novembro de 2015",
+     "trecho": "Neste sentido, a Defesa Civil do Município, seguindo a orientação da Defesa Civil Nacional/Estadual, elaborou o Plano Municipal de Contingência, importante instrumento de planejamento das ações, com vista à preparação para atuação em situações de eventos adversos (chuvas de grandes proporções, vendavais, incêndios, turfas, entre outros), que possam causar danos e prejuízos à comunidade.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "914f69a7da",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2025-12-19/35d226b9dea4bc74b05a648fb52e72ac5d1116a2.pdf",
+     "titulo": "Diário oficial de 2025-12-19",
+     "trecho": "ficando revogadas as disposições em contrário. Palácio Municipal em Serra, 17 de dezembro de 2025. WEVERSON VALCKER MEIRELES Prefeito Municipal Protocolo 1693752 Decretos DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTITUI O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) E DISPÕE SOBRE A ESTRUTURA DO COMITÊ MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL. O PREFEITO MUNICIPAL DA SERRA, ESTADO DO ESPÍRITO SANTO, usando das atribuições legais que lhe são conferidas pelo disposto no inciso V do artigo",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "93ee2f87e5",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
+     "titulo": "plano de contingência 2020/2021 - Portal Gov.br",
+     "trecho": "PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas\". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram com",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "82f9f02ce6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://esbrasil.com.br/serra-cria-plano-para-enfrentar-efeitos-do-elnino/",
+     "titulo": "Serra cria plano para enfrentar efeitos do El Niño - Revista ES Brasil",
+     "trecho": "Aug 7, 2026 ... A Serra é a primeira prefeitura a apresentar um Plano de Contingência para o El Niño, demonstrando nosso compromisso com o planejamento, a ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c4320e89f3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DclxdDCOw7_/",
+     "titulo": "O Super El Niño está confirmado, e a Serra precisa se preparar para ...",
+     "trecho": "Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "19d201966d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "ato_formal",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_querido_diario",
+     "url": "s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf",
+     "titulo": "Diário oficial de 2025-12-29",
+     "trecho": "Protocolo 1697291 PORTARIA CG Nº 046/2025 PUBLICA O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE SERRA - 2025 (PMPDEC). A COORDENADORA MUNICIPAL DE GOVERNO, no uso das atribuições que lhe são conferidas por lei; CONSIDERANDO o Decreto Municipal nº 1.871, de 10 de dezembro de 2025, publicado no Diário Oficial de 19 de dezembro de 2025, que instituiu o Plano Municipal de Proteção e Defesa Civil da Serra - PMPDEC (Plano de Contingência Municipal); CONSIDERANDO a necessidade de coordenação",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "6a02a7e1d2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [],
+     "origem": "seguimento_querido_diario",
+     "url": "https://data.queridodiario.ok.org.br/3205002/2026-01-06/6d23fe1ca4e777b647898ca2bc48b40769f6cfd3.pdf",
+     "titulo": "Diário oficial de 2026-01-06",
+     "trecho": "APLICACOES DIRETAS 33.745.000,003.1.90.00.00 1.500.0000.0000 APL. DIR. DEC. DE OP. ÓRGÃOS, FUNDOS E ENT. DOS OR 2.500.000,003.1.91.00.00 1.500.0000.0000 APLICACOES DIRETAS 28.255.000,003.3.90.00.00 1.500.0000.0000 64.500.000,00 Natureza Despesa 01.031.0022.2.162",
+     "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -1643,199 +1865,14 @@
    ]
   },
   {
-   "ibge": "3205002",
-   "municipio": "Serra",
-   "uf": "ES",
-   "melhor_nivel": "A",
-   "n_pistas": 9,
-   "niveis": {
-    "A": 3,
-    "B": 5,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "d53c841939",
-     "nivel_confianca": "A",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade",
-     "titulo": "Defesa Civil da Serra elabora Plano de Contingência ...",
-     "trecho": "A Defesa Cívil da Serra, em conjunto com as demais secretarias da Prefeitura da Serra, está trabalhando no Plano de Contingência, que tem como objetivo elaborar ações preventivas para os períodos chuvosos e evitar ocorrências indesejadas.",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3f8922a3b6",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo",
-      "texto_candidato_forte"
-     ],
-     "alertas": [],
-     "origem": "querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2026-07-06/14f15f4983a66fc582e0ec3782574ebbf13b3917.pdf",
-     "titulo": null,
-     "trecho": "e na restauração da \nnormalidade social, articulando e facilitando as ações \nde prevenção, preparação, resposta e recuperação no \nMunicípio de Serra. “\n\nLeia-se: […]\n“ Art. 1º Fica instituído o Plano Municipal de Proteção e \nDefesa Civil (Plano de Contingência de Proteção e Defesa \nCivil), como inst",
-     "data": "06/07/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "900b8ddce3",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino",
-     "titulo": "Serra sai na frente e apresenta plano para enfrentar os efeitos ...",
-     "trecho": "Com o objetivo de preparar a cidade ... quinta-feira (6), o Plano de Contingência que irá nortear as ações do município para enfrentar situações como chuvas intensas, alagamentos, inundações e períodos de estiagem....",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "941cec3cf2",
-     "nivel_confianca": "B",
-     "pontos_confianca": 7,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://prefeiturasempapel.serra.es.gov.br/Arquivo/Documents/legislacao/html/D68232015.html",
-     "titulo": "decreto nº 6823, de 5 de novembro de 2015",
-     "trecho": "Neste sentido, a Defesa Civil do Município, seguindo a orientação da Defesa Civil Nacional/Estadual, elaborou o Plano Municipal de Contingência, importante instrumento de planejamento das ações, com vista à preparação para atuação em situações de eventos adversos (chuvas de grandes proporções, vendavais, incêndios, turfas, entre outros), que possam causar danos e prejuízos à comunidade.",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "914f69a7da",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2025-12-19/35d226b9dea4bc74b05a648fb52e72ac5d1116a2.pdf",
-     "titulo": "Diário oficial de 2025-12-19",
-     "trecho": "ficando revogadas as disposições em contrário. Palácio Municipal em Serra, 17 de dezembro de 2025. WEVERSON VALCKER MEIRELES Prefeito Municipal Protocolo 1693752 Decretos DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTITUI O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) E DISPÕE SOBRE A ESTRUTURA DO COMITÊ MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL. O PREFEITO MUNICIPAL DA SERRA, ESTADO DO ESPÍRITO SANTO, usando das atribuições legais que lhe são conferidas pelo disposto no inciso V do artigo",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "93ee2f87e5",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_so_no_trecho",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
-     "titulo": "plano de contingência 2020/2021 - Portal Gov.br",
-     "trecho": "PLANO DE CONTINGÊNCIA 2020/2021 PARA ENFRENTAMENTO DE DESASTRES EM DE BELO HORIZONTE ... Arrudas\". Em 2003, deslizamentos nos aglomerados do Morro das · Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram com",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "c4320e89f3",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DclxdDCOw7_/",
-     "titulo": "O Super El Niño está confirmado, e a Serra precisa se preparar para ...",
-     "trecho": "Aug 28, 2026 ... ... plano de contingência, que prevê até o uso de escolas como abrigo ... O Super El Niño está confirmado, e a Serra precisa se preparar ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "19d201966d",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "ato_formal",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_querido_diario",
-     "url": "s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf",
-     "titulo": "Diário oficial de 2025-12-29",
-     "trecho": "Protocolo 1697291 PORTARIA CG Nº 046/2025 PUBLICA O PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE SERRA - 2025 (PMPDEC). A COORDENADORA MUNICIPAL DE GOVERNO, no uso das atribuições que lhe são conferidas por lei; CONSIDERANDO o Decreto Municipal nº 1.871, de 10 de dezembro de 2025, publicado no Diário Oficial de 19 de dezembro de 2025, que instituiu o Plano Municipal de Proteção e Defesa Civil da Serra - PMPDEC (Plano de Contingência Municipal); CONSIDERANDO a necessidade de coordenação",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "6a02a7e1d2",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [],
-     "origem": "seguimento_querido_diario",
-     "url": "https://data.queridodiario.ok.org.br/3205002/2026-01-06/6d23fe1ca4e777b647898ca2bc48b40769f6cfd3.pdf",
-     "titulo": "Diário oficial de 2026-01-06",
-     "trecho": "APLICACOES DIRETAS 33.745.000,003.1.90.00.00 1.500.0000.0000 APL. DIR. DEC. DE OP. ÓRGÃOS, FUNDOS E ENT. DOS OR 2.500.000,003.1.91.00.00 1.500.0000.0000 APLICACOES DIRETAS 28.255.000,003.3.90.00.00 1.500.0000.0000 64.500.000,00 Natureza Despesa 01.031.0022.2.162",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
    "ibge": "3205309",
    "municipio": "Vitória",
    "uf": "ES",
    "melhor_nivel": "A",
-   "n_pistas": 8,
+   "n_pistas": 9,
    "niveis": {
     "A": 4,
-    "B": 3,
+    "B": 4,
     "C": 1
    },
    "pistas": [
@@ -1963,6 +2000,24 @@
      "titulo": "Diante das previsões relacionadas ao El Niño, União da Vitória tem ...",
      "trecho": "Jun 22, 2026 ... A atuação integrada entre a Defesa Civil e as secretarias municipais, a atualização do Plano de Contingência, a criação do Conselho Municipal de ...",
      "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "038c548f92",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://bahiadestaque.com/noticia/36193/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos",
+     "titulo": "El Niño coloca municípios em alerta e Prefeitura de Vitória da ...",
+     "trecho": "Sep 10, 2026 ... A partir daí, estamos elaborando o plano de contingência específico. ... El Niño em Vitória da Conquista. * O conteúdo de cada comentário é ...",
+     "data": "27/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
@@ -2128,6 +2183,144 @@
      "titulo": "Diário oficial de 2026-06-30",
      "trecho": "ESTADO DO PARANÁ CNPJ: 76.021.450/0001-22 MEDICAMENTO S LTDA. 34 GLIMEPIRIDA 2MG cod br 273119 Cimed COM 32000 0,0774 2.476,80 INOVAMED HOSPITALAR LTDA 35 HEPARINA 5000 UI/ ML INTRAVENOSA COM 5ML cod br 272796 HIPOLAB OR FRA 50 12,97 648,50 PONTAMED FARMACEUTIC A LTDA. 36 HIPROMELOSE, ASSOCIADA COM DEXTRAN 70 E GLICEROL, DOSAGEM: 3 MG + 1 MG + 2 MG/ML, SOLUÇÃO OFTÁLMICA 15 ML cod br 312390 GEOLAB( F) FRA 180 17,6623 3.179,214 ALTERMED MATERIAL MÉDICO",
      "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1302603",
+   "municipio": "Manaus",
+   "uf": "AM",
+   "melhor_nivel": "A",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 1,
+    "B": 4,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "cece6e304a",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.manaus.am.gov.br/wp-content/uploads/2026/02/20251015_PAC_MAU_V04.pdf",
+     "titulo": "plano de ação climática da cidade de manaus",
+     "trecho": "Plano de Contingência – PLANCON 2024. ... Disponível em: https://www2.manaus.am.gov.br/docs/portal/secretarias/smtu/PlanMobManaus.pdf e https://www2.manaus.am ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3621ef564b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://planodesaneamento.manaus.am.gov.br/wp-content/uploads/2025/12/DIAGNOSTICO-E-PROGNOSTICO-ESGOTAMENTO-SANITARIO-1.pdf",
+     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE MANAUS – PMSBM",
+     "trecho": "1.17 CONTINGÊNCIAS E EMERGÊNCIAS ............................................... 150 · 1.17.1 Plano de contingências e emergências ........................................",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "3800c57450",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://manaus.am.gov.br/noticia/decreto/prefeito-vai-decretar-estado-de-emergencia-em-manaus-devido-a-estiagem-nesta-quarta-feira-11-9",
+     "titulo": "Decreto de estado de emergência em Manaus devido à ...",
+     "trecho": "Meio Ambiente · Arborização · Infraestrutura · Atenção primária · Arborização · Mobilidade · Compromisso · Mobilidade · Oportunidade · ÚLTIMAS NOTÍCIAS · Oportunidade · Fiscalização · Nota de Pesar · Mais notícias · Plano de Ação Climática de Manaus · Plano Municipal de Saneamento Básico de Manaus · PPA Participativo · Recadastramento · Plano de Contingência (Plancon) PPA MANAUS ·",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4e6b0deeb7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://exame.com/esg/el-nino-manaus-usa-drones-monitora-qualidade-do-ar-e-combate-queimadas-em-prevencao/",
+     "titulo": null,
+     "trecho": "Jul 16, 2026 ... Ainda neste mês, a prefeitura pretende lançar o Plano de Contingência ... El Niño pela Prefeitura de Manaus (Prefeitura de Manaus/Divulgação).",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2b9ac0d88a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://plasticonews.org/el-nino-2026-depois-do-choque-logistico-de-2023-manaus-volta-a-acender-o-alerta-para-o-escoamento-de-filmes-e-embalagens/",
+     "titulo": null,
+     "trecho": "Aug 20, 2026 ... El Niño 2026: depois do choque logístico de 2023, Manaus volta a acender o alerta para o escoamento de filmes e embalagens · 2023 mostrou quanto ...",
+     "data": "21/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "1e6cce79ba",
+     "nivel_confianca": "C",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo",
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://www.amazonprev.am.gov.br/wp-content/uploads/2020/06/LEIS-E-DECRETOS-AM-COVID-19.pdf",
+     "titulo": "LEIS-E-DECRETOS-AM-COVID-19. ...",
+     "trecho": "Amazonas (FTI), “ações do combate a pandemia da COVID-19 (novo coronavírus)”. ... Estadual, e dá outras providências. Institui o Plano de Contingenciamento de Gastos, que terá como objetivo promover",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "53f1d1ef3e",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_oficial"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "http://www.amazonas.am.gov.br/2021/03/novo-decreto-do-governo-do-amazonas-traz-mudancas-em-regras-de-circulacao-ensino-privado-restaurantes-e-balnearios/",
+     "titulo": "Novo decreto do Governo do Amazonas traz mudanças em regras de ...",
+     "trecho": "Entre as mudanças está o horário de funcionamento de restaurantes e lanchonetes, que passará a ser das 06h às 23h, de segunda a sábado, e das 7h às 16h aos domingos. O decreto com as alterações, que entrará em vigor na próxima segunda-feira (05/03) e terá validade de 15 dias, também ...",
+     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -4774,6 +4967,37 @@
    ]
   },
   {
+   "ibge": "3203908",
+   "municipio": "Nova Venécia",
+   "uf": "ES",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "6ba6dc00ca",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.novavenecia.es.gov.br/nova-venecia-prepara-plano-de-contingencia-pensando-no-periodo-de-chuvas/",
+     "titulo": "Nova Venécia prepara Plano de Contingência pensando no período ...",
+     "trecho": "Nesta terça-feira (21), acontenceu ... servidores públicos e membros de entidades locais sobre a elaboração do Plano de Contingência Municipal....",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3205200",
    "municipio": "Vila Velha",
    "uf": "ES",
@@ -6293,127 +6517,6 @@
      "trecho": "o Municipal de Saúde acompanhará, no âmbito de \nsuas atribuições, a execução das ações previstas no Plano Municipal \nde Contingência. \nArt. 6º Esta Resolução entra em vigor na data de sua aprovação. \n  \nSapopema – Paraná, 11 de setembro de 2026 \n  \nERALDO ROQUE BRIZOLA \nPresidente do Conselh",
      "data": "2026-09-15",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "1302603",
-   "municipio": "Manaus",
-   "uf": "AM",
-   "melhor_nivel": "B",
-   "n_pistas": 6,
-   "niveis": {
-    "A": 0,
-    "B": 4,
-    "C": 2
-   },
-   "pistas": [
-    {
-     "id": "3621ef564b",
-     "nivel_confianca": "B",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://planodesaneamento.manaus.am.gov.br/wp-content/uploads/2025/12/DIAGNOSTICO-E-PROGNOSTICO-ESGOTAMENTO-SANITARIO-1.pdf",
-     "titulo": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE MANAUS – PMSBM",
-     "trecho": "1.17 CONTINGÊNCIAS E EMERGÊNCIAS ............................................... 150 · 1.17.1 Plano de contingências e emergências ........................................",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "3800c57450",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_no_titulo",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://manaus.am.gov.br/noticia/decreto/prefeito-vai-decretar-estado-de-emergencia-em-manaus-devido-a-estiagem-nesta-quarta-feira-11-9",
-     "titulo": "Decreto de estado de emergência em Manaus devido à ...",
-     "trecho": "Meio Ambiente · Arborização · Infraestrutura · Atenção primária · Arborização · Mobilidade · Compromisso · Mobilidade · Oportunidade · ÚLTIMAS NOTÍCIAS · Oportunidade · Fiscalização · Nota de Pesar · Mais notícias · Plano de Ação Climática de Manaus · Plano Municipal de Saneamento Básico de Manaus · PPA Participativo · Recadastramento · Plano de Contingência (Plancon) PPA MANAUS ·",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "4e6b0deeb7",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://exame.com/esg/el-nino-manaus-usa-drones-monitora-qualidade-do-ar-e-combate-queimadas-em-prevencao/",
-     "titulo": null,
-     "trecho": "Jul 16, 2026 ... Ainda neste mês, a prefeitura pretende lançar o Plano de Contingência ... El Niño pela Prefeitura de Manaus (Prefeitura de Manaus/Divulgação).",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "2b9ac0d88a",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://plasticonews.org/el-nino-2026-depois-do-choque-logistico-de-2023-manaus-volta-a-acender-o-alerta-para-o-escoamento-de-filmes-e-embalagens/",
-     "titulo": null,
-     "trecho": "Aug 20, 2026 ... El Niño 2026: depois do choque logístico de 2023, Manaus volta a acender o alerta para o escoamento de filmes e embalagens · 2023 mostrou quanto ...",
-     "data": "21/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "1e6cce79ba",
-     "nivel_confianca": "C",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_oficial",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "risco_errado_no_titulo",
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "https://www.amazonprev.am.gov.br/wp-content/uploads/2020/06/LEIS-E-DECRETOS-AM-COVID-19.pdf",
-     "titulo": "LEIS-E-DECRETOS-AM-COVID-19. ...",
-     "trecho": "Amazonas (FTI), “ações do combate a pandemia da COVID-19 (novo coronavírus)”. ... Estadual, e dá outras providências. Institui o Plano de Contingenciamento de Gastos, que terá como objetivo promover",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "53f1d1ef3e",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_oficial"
-     ],
-     "alertas": [
-      "ano_anterior_ao_ciclo"
-     ],
-     "origem": "seguimento_busca_oficial",
-     "url": "http://www.amazonas.am.gov.br/2021/03/novo-decreto-do-governo-do-amazonas-traz-mudancas-em-regras-de-circulacao-ensino-privado-restaurantes-e-balnearios/",
-     "titulo": "Novo decreto do Governo do Amazonas traz mudanças em regras de ...",
-     "trecho": "Entre as mudanças está o horário de funcionamento de restaurantes e lanchonetes, que passará a ser das 06h às 23h, de segunda a sábado, e das 7h às 16h aos domingos. O decreto com as alterações, que entrará em vigor na próxima segunda-feira (05/03) e terá validade de 15 dias, também ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -10768,6 +10871,38 @@
    ]
   },
   {
+   "ibge": "1300839",
+   "municipio": "Caapiranga",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "bfc9ac179d",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.portalmarcossantos.com.br/2026/08/11/super-el-nino-mp-acompanha-medidas-preventivas-para-fenomeno-em-caapiranga/",
+     "titulo": "Super El Niño: MP acompanha medidas preventivas para fenômeno ...",
+     "trecho": "Aug 11, 2026 ... Por conta da previsão de ocorrência do fenômeno climático Super El Niño em Caapiranga ... Plano de Contingência Municipal (Plancon) e a ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "1302306",
    "municipio": "JUTAÍ",
    "uf": "AM",
@@ -10826,6 +10961,38 @@
      "trecho": "te os índices pluviométricos, níveis de \nreservatórios e focos de calor no município. \n• Elaborar o Plano de Contingência Municipal para Estiagem e \nIncêndios Florestais. \n• Articular o fornecimento emergencial de água potável para as \ncomunidades afetadas, com prioridade para escolas, hospital, UBS’s e \nPostos de Saúde. \n• Coo",
      "data": "2026-09-08",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "1303403",
+   "municipio": "Parintins",
+   "uf": "AM",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "a86d3d616f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://parintinsnoticias.com/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico/",
+     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
+     "trecho": "3 days ago ... Resumindo: plano de contingência, população das áreas de risco ... Parintins, Amazonas. © 2026 Parintins Notícias. Todos os direitos ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
