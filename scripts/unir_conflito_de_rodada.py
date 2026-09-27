@@ -217,7 +217,7 @@ def _repo_com_conflito(tmp, caminho, base, nosso, deles):
         escrever(base)
         g("add", "-A"); g("commit", "-qm", "base")
     else:
-        (r / "semente.txt").write_text("x", encoding="utf-8")
+        (r / "semente.txt").write_text("x", encoding="utf-8", newline="\n")
         g("add", "-A"); g("commit", "-qm", "base")
 
     g("checkout", "-qb", "lado")
