@@ -28157,7 +28157,41 @@
      "motivo": "portão automático: fonte não oficial"
     },
     "resultado": "preparada"
+   },
+   "seguimento": {
+    "data": "26/09/2026",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
+  },
+  {
+   "municipio": "Paraná",
+   "uf": "RN",
+   "ibge": "2408607",
+   "origem": "busca_web",
+   "data": "26/09/2026",
+   "url": "https://legisvideos.assembleia.pr.leg.br/video/2330",
+   "trecho": "Jul 14, 2026 ... El Niño no Paraná: prevenção, cenários e desafios. Transcrição ... plano de contingência de enfrentamento é o Ninho. Já temos dentro do ...",
+   "titulo": "El Niño no Paraná: prevenção, cenários e desafios | Legis Vídeos",
+   "registrado_em": "2026-09-26",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — promover a registro exige documento primário lido por humano",
+   "id": "2236b63f59",
+   "nivel_confianca": "C",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_oficial",
+    "municipio_no_titulo",
+    "plano_no_trecho",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": [
+    "uf_divergente_na_url"
+   ]
   }
  ]
 }
