@@ -61,6 +61,7 @@ from pathlib import Path
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
 from coletores_base import ua_de, hoje_editorial, gravar_em
+import juiz
 from classificador_natureza import classificar, citacao_completa, extrair_data, RE_NUMERO_ATO
 from verificar_recorrencia_uf import checar_recorrencia, registrar_no_historico, REGUA_ANTECIPACAO_RECORRENTE
 
@@ -609,6 +610,17 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
         nome_mun = pista["alvo"].split("/", 1)[1].rsplit("/", 1)[0] if rotulo.startswith("D-") else None
         if nome_mun is None:
             return {"decisao": "FILA_HUMANA", "motivo": "não foi possível determinar o nome do município a partir do alvo"}
+        # 27/09/2026 (PR 2 do juiz automático): o juiz de `juiz.py` entra aqui como barreira
+        # ADICIONAL, nunca como substituto. Ele só pode recusar o que este caminho já aprovou — as
+        # etapas que ele acrescenta (identidade do ente, autoridade do Executivo, família de risco
+        # do ciclo) são as que faltavam, e todas as três derrubam falso positivo. A decisão de
+        # aplicar, o backup, os portões e o rollback continuam sendo deste arquivo, que os tem
+        # testados desde 31/08/2026.
+        veredito = juiz.julgar(texto, nome=nome_mun, uf=uf, url=pista["url"])
+        if not veredito["promove"]:
+            return {"decisao": "FILA_HUMANA",
+                    "motivo": f"juiz {veredito['codebook']}: {veredito['motivo']}",
+                    "juiz": veredito}
         aplicado, motivo_ap = aplicar_municipal(nome_mun, uf, texto, numero, data, pista["url"], hoje)
 
     if not aplicado:
