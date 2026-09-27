@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 26/09/2026 · 623 pendente(s) · 15 decidida(s) · A=98 B=361 C=164
+Gerado em 27/09/2026 · 624 pendente(s) · 15 decidida(s) · A=98 B=362 C=164
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -2941,7 +2941,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
 
-## Cachoeirinha/TO — 2 pendente(s)
+## Cachoeirinha/TO — 3 pendente(s)
 - `c374e77c18` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...
   - url: https://www.instagram.com/p/DdZX8XIRdv_/
@@ -2951,6 +2951,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...
   - url: https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/
   - trecho: Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...
+  - juiz: portão automático: fonte não oficial
+- `28af31ddc8` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
+  - título: Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...
+  - url: https://www.instagram.com/p/DdZX8XIRdv_/
+  - trecho: Sep 17, 2026 ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: " Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...
   - juiz: portão automático: fonte não oficial
 
 ## Lajeado/TO — 1 pendente(s)

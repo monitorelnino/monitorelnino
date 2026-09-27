@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
- "gerado_em": "2026-09-26",
- "total_pistas": 638,
+ "gerado_em": "2026-09-27",
+ "total_pistas": 639,
  "total_municipios": 276,
  "por_nivel": {
   "A": 100,
-  "B": 363,
+  "B": 364,
   "C": 175
  },
  "grupos": [
@@ -9098,6 +9098,72 @@
    ]
   },
   {
+   "ibge": "1703826",
+   "municipio": "Cachoeirinha",
+   "uf": "TO",
+   "melhor_nivel": "B",
+   "n_pistas": 3,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "c374e77c18",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
+     "trecho": "6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4de3abf82b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
+     "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
+     "trecho": "Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...",
+     "data": "23/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "28af31ddc8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
+     "trecho": "Sep 17, 2026 ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "1302009",
    "municipio": "ITAPIRANGA",
    "uf": "AM",
@@ -10573,55 +10639,6 @@
      "titulo": null,
      "trecho": "razão da natureza,\ncomplexidade ou riscos envolvidos no objeto.\n \nArt. 11. O documento deverá conter, sempre que aplicável:\nI – identificação dos riscos;\nII – probabilidade;\nIII – impacto;\nIV – nível de risco;\nV – medidas preventivas;\nVI – plano de contingência;\nVII – responsáveis pelo acompanhament",
      "data": "20/08/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "1703826",
-   "municipio": "Cachoeirinha",
-   "uf": "TO",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "c374e77c18",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_titulo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
-     "titulo": "Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura ...",
-     "trecho": "6 days ago ... 46 likes, 0 comments - prefcachoeirinhars on September 17, 2026: \" Cachoeirinha vai atualizar seu Plano de Contingência! A Prefeitura, por ...",
-     "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "4de3abf82b",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
-     "titulo": "Cachoeirinha é contemplada no Prepara RS - El Niño e vai receber ...",
-     "trecho": "Jun 18, 2026 ... Cachoeirinha - Cachoeirinha é um dos municípios contemplados no ... plano de contingência municipal atualizado e a conclusão do ...",
-     "data": "23/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
