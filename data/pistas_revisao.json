@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-27",
- "total_pistas": 639,
- "total_municipios": 276,
+ "total_pistas": 640,
+ "total_municipios": 277,
  "por_nivel": {
   "A": 100,
-  "B": 364,
+  "B": 365,
   "C": 175
  },
  "grupos": [
@@ -11394,6 +11394,39 @@
      "titulo": null,
      "trecho": "... Naviraí/MS. ...... 58. Tabela 30: Geração total de esgoto no horizonte de projeto ... •PLANO DE CONTINGÊNCIA E MERGÊNCIA. -Comunicar a Defesa Civil para ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2508109",
+   "municipio": "Lagoa",
+   "uf": "PB",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "8a4014bfe8",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://www.anglogoldashanti.com.br/wp-content/uploads/2024/01/PAELG-PN0151-Revisao-5_08.01.2024_tarjado_-LAGOA_GRANDE.pdf",
+     "titulo": "Plano de ação de Emergência - PAE BARRAGEM LAGOA GRANDE ...",
+     "trecho": "Horizonte é um sistema integrado, a implantação de um Plano de Contingência. Operacional, pode garantir um acréscimo no fornecimento de água para a área ...",
+     "data": "27/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]

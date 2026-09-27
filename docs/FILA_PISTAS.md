@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 27/09/2026 · 624 pendente(s) · 15 decidida(s) · A=98 B=362 C=164
+Gerado em 27/09/2026 · 625 pendente(s) · 15 decidida(s) · A=98 B=363 C=164
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1711,6 +1711,14 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: A primavera começa nesta terça-feira (22) com influência do El Niño ...
   - url: https://www.instagram.com/reel/DdjcfUDOx9f/
   - trecho: 4 days ago ... ... likes, 15 comments - defesacivil_petropolis on September 21, 2026: "A primavera ... Entre as ações estão a elaboração do Plano de Contingência ...
+  - juiz: portão automático: fonte não oficial
+
+## Lagoa/PB — 1 pendente(s)
+- `8a4014bfe8` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
+  - título: Plano de ação de Emergência - PAE BARRAGEM LAGOA GRANDE ...
+  - url: https://www.anglogoldashanti.com.br/wp-content/uploads/2024/01/PAELG-PN0151-Revisao-5_08.01.2024_tarjado_-LAGOA_GRANDE.pdf
+  - trecho: Horizonte é um sistema integrado, a implantação de um Plano de Contingência. Operacional, pode garantir um acréscimo no fornecimento de água para a área ...
+  - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: fonte não oficial
 
 ## GRAVATÁ/PE — 1 pendente(s)
