@@ -9,6 +9,59 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §254 · Vigia do desfecho: a rodada agora fica vermelha quando não comita · 27/09/2026
+
+Classe **infraestrutura da rodada**. Fecha o buraco que deixou quatro defeitos passarem três dias.
+
+### O buraco
+
+Medido em 27/09: o último commit automático de dados bem-sucedido foi **24/09 às 07h15**. Três
+dias. Quatro defeitos distintos (§§245 a 248), cada um escondido atrás do anterior, e **todos com a
+mesma assinatura**: a rodada falhava com o passo de **publicação em `success`**, republicando dado
+velho. Nada ficava vermelho de um jeito que se veja.
+
+A rotina diária de auditoria rodou nesses três dias e não pegou nenhum, porque olhava portões,
+saúde do site e filas humanas — não o **desfecho da rodada**.
+
+### O conserto
+
+Passo final, `if: always()`, fora de ensaio: se o passo de commit não concluiu `success`, o job
+termina **vermelho**, com a mensagem dizendo que a publicação pode ter republicado dado velho.
+
+`skipped` entra na condição de propósito — foi o desfecho das quatro rodadas de 26/09, e
+`continue-on-error` não protege contra ele (§246, §252). `cancelled` também, que foi o de 27/09 às
+01h15 (§248).
+
+Determinístico, não sessão de agente: `if` em workflow não esquece, não custa e não interpreta.
+
+### Decisão sobre a rotina diária
+
+O aviso da editoria de 27/09 pediu que esta sessão decidisse o destino do scheduled task
+`trig_01CRu9A8SgLPb3sB3LZm8K8G` (rotina diária, 09h30 UTC, já desativado).
+
+**Decisão: permanece desativado, e não é apagado.** As razões, medidas:
+
+1. Ela rodou nos três dias de silêncio e não pegou o defeito — olhava o lugar errado.
+2. O §238 tirou o mandato de auditoria transversal, que era metade do escopo dela.
+3. Ela não conseguia empurrar na maioria dos dias, então o valor era só diagnóstico.
+
+Apagar é irreversível e some com o histórico; desativado não custa nada. O que a rotina deveria ter
+pegado passa a ser pego por este §, de graça e sem esquecer.
+
+## §253 · Skill `caveman` ligada por padrão, permanentemente · 27/09/2026
+
+Classe **modo de trabalho**. Pedido da editoria. Entrou na `main` pelo PR #405 **sem linha aqui** —
+falha de protocolo, registrada com atraso.
+
+A skill do §250 declara persistência só até o fim da sessão. O `CLAUDE.md` é lido em toda sessão, e
+é ele que torna permanente: **invocar `caveman` no início de cada sessão, nível `full`, em português
+do Brasil**, sem esperar pedido.
+
+O que a compressão não encurta, porque o `CLAUDE.md` vence a skill: **suposição declarada**, **plano
+em `passo → verificação`**, **resumo final**. Três linhas bastam para os três; parágrafo não — foi
+assim que o registro foi descumprido nas primeiras respostas com a skill ligada, e a editoria
+notou antes de mim, duas vezes.
+
 ## §252 · O `tee` engolia a recusa do resolvedor, e derivado estava sendo recusado à toa · 27/09/2026
 
 Classe **infraestrutura da rodada**. Dois defeitos medidos na rodada de 27/09 às 08h29 — a
