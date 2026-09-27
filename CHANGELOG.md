@@ -13,13 +13,16 @@ não pontuados permanecem na versão corrente.
 
 Classe **coleta**. Preparo da rodada de atualização.
 
-O ensaio da rodada mostrou `KeyError: 'hash'` **três vezes**, nos três monitores que gravam pista
-de descoberta. A causa: `data/pistas_imprensa.json` tem **dois produtores**. O monitor de imprensa
+O ensaio da rodada mostrou `KeyError: 'hash'` **três vezes**, nos três passos que gravam pista
+de descoberta em imprensa. A causa: `data/pistas_imprensa.json` tem **dois produtores**. O monitor de imprensa
 grava pistas com `alvo`, `titulo`, `url` e `hash`; a esteira de triagem grava outros 638 registros,
 com `id`, `municipio` e `documento` — e **sem** `hash`, porque a identidade deles é outra.
 
 `registrar()` montava o conjunto de vistos exigindo `hash` de todos e quebrava na primeira pista
-alheia. A dedução passa a usar só quem tem `hash`, e a função anota quantos registros de outro
+alheia. Os três passos têm `continue-on-error: true`, então a rodada **não** morria: ela seguia e
+commitava. O que morria eram os três passos de **descoberta** — instrumentos novos na imprensa
+nacional, atos de resposta, e o painel da Política Por Inteiro — calados, a cada rodada. Perda
+silenciosa de cobertura é pior que rodada vermelha: rodada vermelha se vê. A dedução passa a usar só quem tem `hash`, e a função anota quantos registros de outro
 produtor ficaram fora dela. Nada se perde, e nada de outro esquema é reescrito por este monitor.
 
 Portão novo (**70**): `scripts/testar_fila_de_pistas.py`, cinco asserções, offline, sem tocar em
