@@ -9,6 +9,58 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §247 · A rodada aprende a resolver o conflito, e para de comer o próprio orçamento · 27/09/2026
+
+Classe **infraestrutura da rodada**. Fecha o segundo e o terceiro defeitos abertos no §246.
+
+### Repetir não resolve conflito
+
+O laço de commit da rodada fazia, na falha do rebase: abortar, dormir, repetir — seis vezes.
+Repetir reaplica **exatamente o mesmo conteúdo sobre a mesma `main`** e conflita igual. Medido:
+seis tentativas, seis conflitos idênticos, nos mesmos seis arquivos, nas rodadas de 24 e 25/09.
+A repetição só resolve o caso de **push recusado**, que é outro ramo do laço.
+
+`scripts/unir_conflito_de_rodada.py` resolve **duas classes e recusa todo o resto**:
+
+- **log que só cresce** (`data/log_buscas.json`, `data/historico_mudancas.json`): união pela
+  **base comum** — `base + nossos_novos + deles_novos`. Antes de unir, confere que os dois lados
+  realmente começam com a base, item a item; se não começarem, o arquivo não se comportou como
+  append-only e o script **recusa em vez de adivinhar**. Depois, confere que o total é maior ou
+  igual a cada lado.
+- **arquivo regenerável** (`docs/MANIFEST_SHA256.txt`, `docs/FILA_PISTAS.md`,
+  `data/pistas_revisao.json`): resolve com a versão de cima e é **nomeado** na saída, para que o
+  laço regenere a cadeia canônica e emende o commit — senão o portão 12 reprovaria na `main`
+  depois do push.
+
+`data/pistas_imprensa.json` e `data/fontes_consultadas.json` seguem **recusados de propósito**,
+esperando a editoria: os dois lados alteram os mesmos registros, e escolher qual vence é política
+de mesclagem com risco de perda silenciosa de evidência.
+
+### O autoteste que passou com o defeito dentro
+
+Portão **71**, treze asserções, cinco negativas. Ele monta repositórios git de verdade e provoca
+conflitos de verdade.
+
+A asserção que mais importa quase não existiu. Ao restaurar o defeito de 23/09 de propósito — a
+dedução por **conteúdo** —, **o autoteste passou**: nenhum dos casos tinha item idêntico nos dois
+lados, que é justamente o cenário do estrago. Execuções idênticas no log v2 são **tentativas
+reais distintas e contam**; uma dedução por conteúdo colapsa as duas e apaga uma sem aviso. Com o
+caso acrescentado, o autoteste reprova pelo motivo certo. A primeira montagem dele também estava
+errada: com os dois lados escrevendo conteúdo idêntico, o git mescla limpo e não há conflito
+nenhum para resolver.
+
+### O passo que comia o orçamento do job
+
+Terceiro defeito. "Atualizar dados" era o único passo pesado **sem teto próprio**, e por isso
+consumia os 180 minutos do job inteiro. Medido: a rodada de 27/09 às 01h15 ficou **3 horas**
+nele e foi cortada ainda ali — os passos 27 a 39, **incluindo o commit e a publicação**, nunca
+rodaram. As de 26/09 às 13h14 e 19h07, idem.
+
+Teto de 90 minutos, com o `continue-on-error` que já existia: a coleta longa é truncada, a falha
+fica visível **naquele passo**, e a rodada segue e comita o que coletou. Coleta truncada com
+commit é melhor que coleta completa sem commit — e o perigo era que a segunda **se parecia com
+sucesso**.
+
 ## §246 · Um relatório de diagnóstico estava pulando o commit dos dados · 27/09/2026
 
 Classe **infraestrutura da rodada**. Achado ao preparar a rodada cuidadosa pedida pela editoria.

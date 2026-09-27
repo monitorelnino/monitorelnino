@@ -365,6 +365,15 @@ jobs:
           python3 coletar_sinais_risco.py --municipios --apenas "$VARIAVEL" 2>&1 | tee /tmp/clima_mun.log
 
       - name: Atualizar dados (boletins + instrumentos estaduais + transferências)
+        # §246 (27/09/2026): este era o único passo pesado SEM teto próprio, e por isso comia o
+        # orçamento inteiro do job. Medido: a rodada de 27/09 às 01h15 ficou 3 h aqui e foi
+        # cortada pelo teto de 180 min do job, ainda neste passo — os passos 27 a 39, incluindo
+        # o COMMIT e a publicação, nunca rodaram. As de 26/09 às 13h14 e 19h07, idem.
+        # Com teto próprio e `continue-on-error`, a coleta longa é truncada (e a falha fica
+        # visível NESTE passo) mas a rodada segue e comita o que coletou. Coleta truncada com
+        # commit é melhor que coleta completa sem commit — e o truque é que a segunda se parecia
+        # com sucesso. 90 min aqui deixa ~75 para os passos seguintes, que já têm tetos próprios.
+        timeout-minutes: 90
         env:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
           # §208: a camada de MEDIÇÃO dos sinais (OpenAQ e estações do INMET) só liga com
@@ -606,9 +615,36 @@ jobs:
           for TENTATIVA in 1 2 3 4 5 6; do
             GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
             if ! git rebase FETCH_HEAD; then
-              git rebase --abort || true
-              echo "tentativa $TENTATIVA: rebase conflitou em data/; nova tentativa"
-              sleep $((TENTATIVA * 10)); continue
+              # §246 (27/09/2026): conflito NÃO se resolve repetindo. Abortar e repetir reaplica
+              # exatamente o mesmo conteúdo sobre a mesma main e conflita igual — medido: seis
+              # tentativas, seis conflitos idênticos, nas rodadas de 24 e 25/09. A repetição só
+              # resolve o caso de PUSH RECUSADO, que é o `continue` lá embaixo.
+              # A causa estrutural: data/log_buscas.json tem 20,7 MB em UMA linha, então qualquer
+              # mudança dos dois lados é conflito textual garantido — e busca_web_cadencia.yml
+              # commita esse arquivo a cada 2 h, enquanto a rodada leva mais que isso.
+              # O resolvedor une o que a regra do projeto declara (log que só cresce, pela BASE
+              # COMUM) e RECUSA o resto. Recusa é o comportamento certo: arbitrar mesclagem que
+              # ninguém decidiu é como se apagam evidências sem aviso.
+              if python3 scripts/unir_conflito_de_rodada.py | tee /tmp/uniao.log; then
+                if GIT_EDITOR=true git rebase --continue; then
+                  echo "tentativa $TENTATIVA: conflito resolvido pela união da base comum"
+                  # Derivado resolvido com a versão de cima fica defasado: regenera a cadeia
+                  # canônica e emenda, senão o portão 12 reprova na main depois do push.
+                  if grep -q '^REGENERAR=' /tmp/uniao.log; then
+                    bash scripts/verificar_derivados.sh || true
+                    git add -A && GIT_EDITOR=true git commit -q --amend --no-edit || true
+                    echo "tentativa $TENTATIVA: derivados regenerados e emendados no commit"
+                  fi
+                else
+                  git rebase --abort || true
+                  echo "tentativa $TENTATIVA: rebase --continue reprovou; nova tentativa"
+                  sleep $((TENTATIVA * 10)); continue
+                fi
+              else
+                git rebase --abort || true
+                echo "tentativa $TENTATIVA: conflito SEM resolução conhecida; nova tentativa"
+                sleep $((TENTATIVA * 10)); continue
+              fi
             fi
             if GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
               EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
