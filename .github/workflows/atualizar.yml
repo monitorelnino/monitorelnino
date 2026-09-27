@@ -391,6 +391,16 @@ jobs:
           python atualizar.py 2>&1 | tee /tmp/atualizar.log
       - name: Relatório da execução no repositório privado (sempre)
         if: always()
+        # §246 (27/09/2026): `continue-on-error` aqui é o que separa DIAGNÓSTICO de PRODUTO.
+        # O `if:` do passo de commit não traz função de status, e quando o `if:` não traz uma, o
+        # GitHub soma o `success()` implícito — "todos os passos anteriores passaram". Este passo
+        # clona um repositório PRIVADO com `ROBO_TOKEN`; quando o clone falha, ele reprova, o
+        # `success()` cai, e **o commit dos dados é pulado**. Medido: nas rodadas de 26/09 às
+        # 01h14, 07h13, 13h14 e 19h07 o relatório reprovou e o commit saiu `skipped` nas quatro.
+        # O site foi republicado sem dado novo, e nada ficou vermelho de um jeito que se veja.
+        # Um relatório de diagnóstico nunca pode barrar o produto. Ele segue reprovando — a falha
+        # continua visível no passo — mas deixa de derrubar a rodada com ela.
+        continue-on-error: true
         env:
           ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
           ENSAIO: ${{ github.event.inputs.ensaio == 'true' && '1' || '' }}
