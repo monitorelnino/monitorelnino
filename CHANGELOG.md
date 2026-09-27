@@ -9,6 +9,56 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §249 · A sonda de credenciais anunciava uma lacuna que não existe · 27/09/2026
+
+Classe **diagnóstico**. Achado a partir de uma pista da editoria: o pacote público
+[`JuliaClimate/INMET.jl`](https://github.com/JuliaClimate/INMET.jl), cliente Julia da mesma API
+do INMET.
+
+### O que estava errado
+
+`scripts/sondar_credenciais.py` listava `INMET_API_TOKEN` como credencial **necessária** para a
+temperatura medida em estação, com a nota "sem caminho público documentado". Duas afirmações, as
+duas falsas:
+
+1. **A credencial não é exigida.** O §233 mediu em 26/09 que `apitempo.inmet.gov.br/estacoes/T`
+   responde HTTP 200 com 673 estações **sem token**, tirou o `INMET_API_TOKEN` da declaração de
+   `inmet_estacoes` e travou isso com portão. A fonte coleta: na rodada de 27/09, 22 estações de
+   capital e 19 capitais com máxima e mínima medidas. A **cópia** dentro da sonda ficou para trás.
+2. **Há caminho documentado.** O token se pede por e-mail a `cadastro.act@inmet.gov.br` — o
+   `INMET.jl` traz a instrução no README e no próprio texto do erro.
+
+Também sobrevivia aqui um terceiro fato já corrigido no coletor: a nota dizia que sem token a
+rota de dados devolve "204 vazio". Devolve **404**, medido pelo §233.
+
+O custo não foi teórico: a sonda foi lida e a lacuna inexistente foi **repetida à editoria como
+fato**, na mesma noite.
+
+### O conserto
+
+A pergunta "esta chave é necessária?" passa a ser respondida por **quem coleta**, não pela cópia:
+`exigida_pelo_coletor()` lê `coletar_sinais_risco.FONTES` e a sonda declara o papel real —
+`COBERTURA EXTRA — o coletor NÃO exige esta credencial; a fonte coleta pela rota pública.
+Ausência aqui não é lacuna no site.`
+
+E o invariante virou **asserção no autoteste**, que já é portão, em vez de aviso impresso: o
+campo `opcional` da tabela tem de casar com o que o coletor declara, fonte por fonte. Conferido
+que reprova — trocando `opcional` para `False`, o autoteste sai com código 1. Aviso impresso
+ninguém lê; foi um deles que sustentou o erro por um dia.
+
+### O que o token abriria, se um dia a editoria o pedir
+
+Medido no código do `INMET.jl`, e é cobertura que hoje não temos:
+
+| rota | o que dá | token? |
+|---|---|---|
+| `/estacoes/T` e `/estacoes/M` | lista de estações automáticas e manuais | **não** — é a nossa |
+| `/token/estacao/diaria/{de}/{ate}/{estacao}/{token}` | série histórica por estação | sim |
+| `/token/estacao/dados/{data}/{hora}/{token}` | **todas** as ~600 automáticas numa requisição | sim |
+
+Hoje medimos só capitais, por `/condicao/capitais/{data}`. A terceira rota daria temperatura
+medida fora das capitais em **uma** requisição, em vez de um laço por estação.
+
 ## §248 · O teto do job era menor que a soma dos tetos dos passos · 27/09/2026
 
 Classe **infraestrutura da rodada**. Quarto defeito da mesma noite, e o que de fato impedia o

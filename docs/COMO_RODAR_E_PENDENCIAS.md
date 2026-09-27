@@ -98,6 +98,41 @@ User-Agent e roda uma vez por semana. Isto encerra a pendência
 "conciliação fina com o catálogo Talanoa" listada abaixo: passou de tarefa
 manual a mecanismo.
 
+## Pendências guardadas por decisão da editoria
+
+Nada aqui está bloqueando o site. São coisas que a editoria **decidiu adiar**, com o motivo e o
+caminho já apurados, para não serem redescobertas do zero depois.
+
+### Token do INMET — cobertura de temperatura fora das capitais (adiado em 27/09/2026)
+
+**Status: adiado pela editoria.** Não pedir sem ela pedir. Ela pediu para ser lembrada quando
+voltar ao assunto.
+
+**Não é lacuna.** A temperatura medida em estação **já coleta hoje, sem chave nenhuma**:
+`apitempo.inmet.gov.br/estacoes/T` responde HTTP 200 com 673 estações sem token (§233), e em
+27/09 trouxe 22 estações de capital e 19 capitais com máxima e mínima medidas. Quem dizia o
+contrário era a sonda de credenciais, com uma cópia desatualizada — corrigido no §249.
+
+**O que o token abriria** (medido no código de `JuliaClimate/INMET.jl`, cliente público da mesma
+API, pista da editoria em 27/09):
+
+| rota | o que dá | token? |
+|---|---|---|
+| `/estacoes/T` e `/estacoes/M` | estações automáticas e manuais | **não** — é a que usamos |
+| `/token/estacao/diaria/{de}/{ate}/{estacao}/{token}` | série histórica por estação | sim |
+| `/token/estacao/dados/{data}/{hora}/{token}` | **todas** as ~600 automáticas numa requisição | sim |
+
+Hoje o site mede só capitais, por `/condicao/capitais/{data}`. A terceira rota daria temperatura
+medida **fora** das capitais em uma requisição, em vez de um laço por estação.
+
+**Como se pede:** e-mail a `cadastro.act@inmet.gov.br`. O token viaja no **caminho** da URL, não
+em cabeçalho — o que significa que ele apareceria em qualquer registro de consulta; a coleta tem
+de mantê-lo fora de `data/sinais_risco_consultas.json`.
+
+**O que falta decidir antes de pedir:** como a editoria se identifica no pedido (o canal é de
+cadastro de órgão público) e qual uso declarar. Nenhum dos dois é inferível daqui, e nenhum se
+inventa.
+
 ## O que falta para publicar
 
 **1. Bloqueio duro (ação da editora, fora do escopo deste código):**
