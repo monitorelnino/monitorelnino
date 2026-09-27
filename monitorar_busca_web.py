@@ -8,7 +8,20 @@ open-source, sem chave, sem cadastro, sem produto pago no código — sobe
 dentro do próprio job da Action via Docker, no início da rodada, e encerra
 com ela; qualquer fork do projeto sobe a mesma instância automaticamente).
 
-Query por município: '"{município}" {UF} "plano de contingência" El Niño 2026'.
+CONJUNTO DE CONSULTAS (27/09/2026, PR 1 do juiz automático). Até 26/09 era UMA string
+estreita por município — `'"{município}" {UF} "plano de contingência" El Niño 2026'` — e a
+peneira exigia termo de plano no TÍTULO. Medido no log de 21–27/09: 11.412 consultas,
+5.263 (46%) com zero resultado bruto. Agora são oito strings por município (CONSULTAS, abaixo),
+e a peneira aceita o nome do município no título, na URL OU no trecho.
+
+ZERO RESULTADO NÃO É AUSÊNCIA (decisão editorial de 27/09/2026). Três decisões separadas:
+  motor_sem_resposta            0 resultado bruto em TODAS as strings, timeout, erro HTTP,
+                                instância que não subiu — o motor está doente, e a consulta
+                                NÃO conta como verificação do município.
+  nao_localizado_ate_o_momento  houve resultado bruto e nenhuma pista, mas foi a PRIMEIRA
+                                rodada nessa situação.
+  coberto_sem_mencao            houve resultado bruto e nenhuma pista em DUAS rodadas.
+  pista                         ao menos um resultado passou a peneira.
 Peneira local (nenhuma IA, nenhuma inferência semântica): resultado só vira
 pista se o nome do município aparecer no título OU na URL, E algum termo de
 plano aparecer no título — mesma disciplina de "documento primário, achado
@@ -32,14 +45,53 @@ USO
 """
 import json, sys, time, urllib.parse, urllib.request
 from datetime import date
+import funil
 from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste, ua_de, hoje_editorial
 from classificar_pista_civil import triagem_completa
 from coletar_diarios_municipais import ordem_prioridade
 
 FONTE_BUSCA_WEB = "Busca web (SearXNG)"
 SEARXNG_URL = "http://127.0.0.1:8080/search"
-PAUSA_ENTRE_CONSULTAS = 0.5   # segundos; cortesia com a instância local
+# 27/09/2026: com nove consultas por município (oito novas + a antiga como controle), a pausa de
+# 0,5 s somava 675 s de espera pura num lote de 150. Baixada para 0,15 s — a instância é local e
+# efêmera, sobe no próprio job; a cortesia que importa é com as fontes externas, e essa é do
+# SearXNG. Estimativa do lote de 150: ~21 min, dentro do teto de 60 min do job da cadência.
+PAUSA_ENTRE_CONSULTAS = 0.15
 TERMOS_PLANO_TITULO = ("plano de conting", "plano de ação", "plano municipal", "el niño", "el nino")
+
+# Conjunto de consultas por município (27/09/2026, handover do juiz automático, PR 1 item 4).
+# Cada entrada é (id, molde). O id entra no log e no contador do funil, para que a revocação
+# por string seja medível depois — é o que `medir_revocacao_das_consultas.py` lê.
+CONSULTAS = (
+    ("plancon_ciclo",      '"{nome}" {uf} "plano de contingência" El Niño 2026'),   # a de até 26/09, mantida como controle
+    ("plancon",            '"{nome}" {uf} "plano de contingência"'),
+    ("plancon_ano",        '"{nome}" {uf} "plano de contingência" 2026'),
+    ("periodo_chuvoso",    '"{nome}" {uf} "período chuvoso"'),
+    ("estiagem",           '"{nome}" {uf} estiagem OR seca "plano"'),
+    ("plancon_sigla",      '"{nome}" {uf} PLANCON'),
+    ("plano_de_acao",      '"{nome}" {uf} "plano de ação" El Niño'),
+    ("plano_enfrentamento", '"{nome}" {uf} "plano de enfrentamento"'),
+    ("decreto_preventivo", '"{nome}" {uf} decreto "situação de emergência" preventiv'),
+)
+TETO_MOTOR_SEM_RESPOSTA = 0.25   # PR 1 item 3: acima disso a rodada não conta como verificação
+
+
+def consultas_de(nome: str, uf: str) -> list:
+    """As consultas de um município, na ordem de CONSULTAS. Devolve [(id, string)]."""
+    return [(ident, molde.format(nome=nome, uf=uf)) for ident, molde in CONSULTAS]
+
+
+def decidir(n_brutos: int, n_pistas: int, rodadas_sem_pista: int) -> str:
+    """A decisão da camada 4, isolada para ser testável sem rede.
+
+    `rodadas_sem_pista` é quantas rodadas ANTERIORES este município já teve com resultado
+    bruto e sem pista. A regra editorial de 27/09/2026: zero resultado bruto nunca produz
+    `coberto_sem_mencao`, e uma rodada sozinha também não — precisa da segunda."""
+    if n_pistas > 0:
+        return "pista"
+    if n_brutos <= 0:
+        return "motor_sem_resposta"
+    return "coberto_sem_mencao" if rodadas_sem_pista >= 1 else "nao_localizado_ate_o_momento"
 
 
 def buscar_searxng(query: str, timeout: int = 20) -> dict:
@@ -52,14 +104,20 @@ def buscar_searxng(query: str, timeout: int = 20) -> dict:
 
 
 def relevante(resultado: dict, nome_municipio: str) -> bool:
-    """Peneira local, sem inferência: nome do município no título OU na URL,
-    E algum termo de plano no título. Ambas as condições são literais (substring
-    após normalizar minúsculas), nunca semânticas."""
+    """Peneira local, sem inferência: nome do município no título, na URL OU no trecho,
+    E algum termo de plano no título ou no trecho. Ambas as condições são literais
+    (substring após normalizar minúsculas), nunca semânticas.
+
+    27/09/2026 (PR 1 item 4): o trecho passa a contar nas duas condições. Diário oficial
+    raramente traz o nome do município no título do resultado — ele está no corpo, que é o
+    `content` do SearXNG. Exigir título descartava o documento primário e guardava a notícia.
+    Isto AGRUPA candidatos; não promove ninguém a registro (§3.2)."""
     titulo = (resultado.get("title") or "").lower()
     url = (resultado.get("url") or "").lower()
+    trecho = (resultado.get("content") or "").lower()
     nome_norm = nome_municipio.lower()
-    tem_municipio = nome_norm in titulo or nome_norm in url
-    tem_termo_plano = any(t in titulo for t in TERMOS_PLANO_TITULO)
+    tem_municipio = nome_norm in titulo or nome_norm in url or nome_norm in trecho
+    tem_termo_plano = any(t in titulo or t in trecho for t in TERMOS_PLANO_TITULO)
     return tem_municipio and tem_termo_plano
 
 
@@ -118,22 +176,44 @@ def rodar(lote: str | None, tamanho: int) -> int:
 
     pistas = ler("pistas_imprensa.json") or {"pistas": []}
     vistos_pistas = {(p.get("ibge"), p.get("url"), p.get("trecho")) for p in pistas["pistas"]}
+    # 27/09/2026 (PR 1 item 2): quantas rodadas cada município já teve COM resultado bruto e SEM
+    # pista. Duas são necessárias para "coberto_sem_mencao"; até lá o estado é de espera.
+    espera = ler("busca_web_espera.json") or {"municipios": {}}
     n_ok = n_lac = npist = 0
+    n_motor_sem_resposta = n_com_bruto = n_coberto = n_esperando = 0
+    brutos_por_consulta = {ident: 0 for ident, _ in CONSULTAS}
 
     for cod in alvo:
         ref_mun = por_cod[cod]
         nome, uf = ref_mun["nome"], ref_mun["uf"]
-        query = f'"{nome}" {uf} "plano de contingência" El Niño 2026'
-        time.sleep(PAUSA_ENTRE_CONSULTAS)
-        try:
-            dados = buscar_searxng(query)
-        except Exception as e:  # noqa: BLE001
-            registrar_lacuna(f"{FONTE_BUSCA_WEB}/{nome}-{uf}", f"{type(e).__name__}", canal="busca_web", camada=4,
-                             uf=uf, municipio=nome, ibge=cod, strings=[query])
+        consultas = consultas_de(nome, uf)
+        strings = [q for _, q in consultas]
+        resultados_brutos, achados, falhas_de_rede = [], [], 0
+        vistos_url = set()
+        for ident, query in consultas:
+            time.sleep(PAUSA_ENTRE_CONSULTAS)
+            try:
+                dados = buscar_searxng(query)
+            except Exception:  # noqa: BLE001 — falha de uma string não derruba as outras sete
+                falhas_de_rede += 1
+                continue
+            crus = dados.get("results") or []
+            brutos_por_consulta[ident] += len(crus)
+            for r in crus:
+                if r.get("url") in vistos_url:
+                    continue   # a mesma página achada por duas strings é um resultado, não dois
+                vistos_url.add(r.get("url"))
+                resultados_brutos.append(r)
+                if relevante(r, nome):
+                    r["_consulta"] = ident   # qual string recuperou este achado (revocação por string)
+                    achados.append(r)
+
+        if falhas_de_rede == len(consultas):
+            registrar_lacuna(f"{FONTE_BUSCA_WEB}/{nome}-{uf}", "todas as consultas falharam",
+                             canal="busca_web", camada=4, uf=uf, municipio=nome, ibge=cod, strings=strings)
             n_lac += 1
             continue
 
-        achados = [r for r in (dados.get("results") or []) if relevante(r, nome)]
         for r in achados:
             trecho = (r.get("content") or r.get("title") or "")[:500]
             chave_pista = (cod, r.get("url"), trecho)
@@ -150,15 +230,47 @@ def rodar(lote: str | None, tamanho: int) -> int:
             vistos_pistas.add(chave_pista)
             npist += 1
 
+        rodadas_sem_pista = int((espera["municipios"].get(cod) or {}).get("rodadas_com_bruto_sem_pista", 0) or 0)
+        decisao = decidir(len(resultados_brutos), len(achados), rodadas_sem_pista)
+        # o estado de espera só avança quando houve resultado bruto e nenhuma pista; pista zera.
+        if decisao == "pista":
+            espera["municipios"].pop(cod, None)
+        elif decisao in ("nao_localizado_ate_o_momento", "coberto_sem_mencao"):
+            espera["municipios"][cod] = {"rodadas_com_bruto_sem_pista": rodadas_sem_pista + 1,
+                                        "ultima_rodada": hoje_editorial().isoformat()}
         marcar_fonte_consultada([cod], FONTE_BUSCA_WEB, "nao_verificado",
-                                resultado=f"{len(achados)} pista(s) via busca web")
-        log_busca("busca_web", 4, [query], "pista" if achados else "coberto_sem_mencao",
-                  uf=uf, municipio=nome, ibge=cod, n_resultados=len(dados.get("results") or []),
-                  resultados=f"{len(achados)} pista(s) relevante(s) de {len(dados.get('results') or [])} resultado(s) brutos")
+                                resultado=f"{len(achados)} pista(s) via busca web; decisão {decisao}")
+        log_busca("busca_web", 4, strings, decisao,
+                  uf=uf, municipio=nome, ibge=cod, n_resultados=len(resultados_brutos),
+                  resultados=(f"{len(achados)} pista(s) relevante(s) de {len(resultados_brutos)} resultado(s) brutos"
+                              f" em {len(consultas) - falhas_de_rede}/{len(consultas)} consultas"))
         n_ok += 1
+        if decisao == "motor_sem_resposta":
+            n_motor_sem_resposta += 1
+        else:
+            n_com_bruto += 1
+            if decisao == "coberto_sem_mencao":
+                n_coberto += 1
+            elif decisao == "nao_localizado_ate_o_momento":
+                n_esperando += 1
 
     gravar("pistas_imprensa.json", pistas)
+    gravar("busca_web_espera.json", {"municipios": espera["municipios"],
+                                     "atualizado_em": hoje_editorial().isoformat()})
+    funil.registrar("busca_web", consultas=n_ok + n_lac, com_resultado_bruto=n_com_bruto,
+                    motor_sem_resposta=n_motor_sem_resposta, pistas=npist,
+                    coberto_sem_mencao=n_coberto, nao_localizado_ate_o_momento=n_esperando,
+                    lacunas=n_lac, **{f"brutos_{ident}": n for ident, n in brutos_por_consulta.items()})
+    tentadas = n_ok + n_lac
+    doentes = n_motor_sem_resposta + n_lac
     print(f"busca web lote {lote_n}/{total_lotes}: {n_ok} municípios consultados, {n_lac} lacunas, {npist} pistas novas")
+    print(f"  motor sem resposta: {doentes}/{tentadas}" + (f" ({100 * doentes / tentadas:.0f}%)" if tentadas else ""))
+    if tentadas and doentes / tentadas > TETO_MOTOR_SEM_RESPOSTA:
+        # PR 1 item 3: acima do teto o motor está doente e a rodada não conta como verificação.
+        # Sai com erro para que a rodada registre a falha em vez de publicar cobertura falsa.
+        print(f"✗ busca web: {100 * doentes / tentadas:.0f}% sem resposta do motor, acima do teto de "
+              f"{100 * TETO_MOTOR_SEM_RESPOSTA:.0f}% — esta rodada NÃO conta como verificação da camada 4")
+        return 1
     return 0
 
 
@@ -192,8 +304,53 @@ def autoteste():
         # uma decisão possa conferir se ela cabe —, o teste reprovou sem nada ter mudado de
         # comportamento. Era o mesmo defeito em dois arquivos. Agora ele importa a lista e usa as
         # decisões que ESTE script de fato registra.
-        usadas = {"pista", "coberto_sem_mencao", "registro", "erro"}
+        # 27/09/2026: as decisões que este script produz saem agora de `decidir()` — a lista
+        # deixa de ser escrita à mão aqui, e o conjunto real é exercitado contra o vocabulário.
+        usadas = {decidir(0, 0, 0), decidir(3, 0, 0), decidir(3, 0, 1), decidir(3, 1, 0), "erro"}
         return usadas <= set(coletores_base.DECISOES_LOG)
+
+    def t8_zero_bruto_nunca_e_coberto_sem_mencao():
+        """A regra editorial de 27/09/2026, no caso que a motivou: 5.263 consultas de 21-27/09
+        voltaram com zero resultado bruto e receberam `coberto_sem_mencao`."""
+        return (decidir(0, 0, 0) == "motor_sem_resposta"
+                and decidir(0, 0, 5) == "motor_sem_resposta")   # nem com histórico de espera
+
+    def t9_uma_rodada_nao_basta_duas_bastam():
+        return (decidir(7, 0, 0) == "nao_localizado_ate_o_momento"
+                and decidir(7, 0, 1) == "coberto_sem_mencao"
+                and decidir(7, 0, 2) == "coberto_sem_mencao")
+
+    def t10_pista_vence_tudo():
+        return decidir(1, 1, 0) == "pista" and decidir(99, 3, 7) == "pista"
+
+    def t11_conjunto_de_consultas_cobre_o_handover():
+        """As oito strings pedidas no handover, mais a de até 26/09 como controle."""
+        qs = [q for _, q in consultas_de("Salvador", "BA")]
+        exigidos = ["plano de contingência", '"plano de contingência" 2026', "período chuvoso",
+                    'estiagem OR seca "plano"', "PLANCON", '"plano de ação" El Niño',
+                    '"plano de enfrentamento"', 'decreto "situação de emergência" preventiv']
+        tem_todos = all(any(e in q for q in qs) for e in exigidos)
+        tem_controle = any('"plano de contingência" El Niño 2026' in q for q in qs)
+        nomeia_o_municipio = all('"Salvador" BA' in q for q in qs)
+        ids_unicos = len({i for i, _ in CONSULTAS}) == len(CONSULTAS)
+        return tem_todos and tem_controle and nomeia_o_municipio and ids_unicos
+
+    def t12_peneira_aceita_municipio_no_trecho():
+        """O caso que a peneira antiga descartava: diário oficial com o nome do município no
+        corpo e não no título. Era o documento primário; ficava de fora."""
+        r = {"title": "Diário Oficial do Município - Edição 1.234",
+             "url": "https://diariomunicipal.com.br/famep/edicao/1234",
+             "content": "DECRETO. O Prefeito de Bonito, no uso de suas atribuições, institui o Plano de Contingência para o período chuvoso"}
+        aceita_pelo_trecho = relevante(r, "Bonito")
+        r_sem_nome = dict(r, content="institui o Plano de Contingência para o período chuvoso")
+        rejeita_sem_nome = not relevante(r_sem_nome, "Bonito")
+        r_sem_plano = dict(r, content="O Prefeito de Bonito nomeia servidores para o quadro efetivo")
+        rejeita_sem_termo = not relevante(r_sem_plano, "Bonito")
+        return aceita_pelo_trecho and rejeita_sem_nome and rejeita_sem_termo
+
+    def t13_teto_do_motor_e_fracao_nao_percentual():
+        """Trava de unidade: 0,25 é fração. Se alguém escrever 25 aqui, o teto nunca dispara."""
+        return 0 < TETO_MOTOR_SEM_RESPOSTA < 1
 
     def t5_dedup_mesma_chave():
         vistos = {("0000001", "https://x.gov.br/a", "trecho x")}
@@ -240,6 +397,12 @@ def autoteste():
         "relevante(): rejeita termo de plano sem o nome do município": t2_relevante_rejeita_sem_municipio,
         "relevante(): rejeita nome do município sem termo de plano": t3_relevante_rejeita_sem_termo_plano,
         "vocabulário de decisao usado aqui existe de fato em log_busca()": t4_vocabulario_log_busca_bate_com_o_codigo,
+        "zero resultado bruto nunca vira coberto_sem_mencao": t8_zero_bruto_nunca_e_coberto_sem_mencao,
+        "coberto_sem_mencao exige duas rodadas com resultado bruto": t9_uma_rodada_nao_basta_duas_bastam,
+        "pista vence qualquer estado de espera": t10_pista_vence_tudo,
+        "as oito consultas do handover, mais a antiga como controle": t11_conjunto_de_consultas_cobre_o_handover,
+        "peneira aceita o nome do município no trecho, não só no título": t12_peneira_aceita_municipio_no_trecho,
+        "teto do motor sem resposta é fração, não percentual": t13_teto_do_motor_e_fracao_nao_percentual,
         "dedup: mesma chave (ibge,url,trecho) é reconhecida como vista": t5_dedup_mesma_chave,
         "rotação automática: avança 1→2→3 e volta para 1 (cobertura cíclica)": t6_rotacao_avanca_e_da_a_volta,
         "prioritários vêm primeiro, cobertura total preservada (nada some)": t7_prioritarios_vem_primeiro_e_ninguem_some,
