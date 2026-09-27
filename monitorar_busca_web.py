@@ -43,7 +43,7 @@ USO
   python monitorar_busca_web.py --autoteste
   python monitorar_busca_web.py --lote 1 --tamanho 60
 """
-import json, sys, time, urllib.parse, urllib.request
+import json, random, sys, time, urllib.parse, urllib.request
 from datetime import date
 import funil
 from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste, ua_de, hoje_editorial
@@ -52,18 +52,18 @@ from coletar_diarios_municipais import ordem_prioridade
 
 FONTE_BUSCA_WEB = "Busca web (SearXNG)"
 SEARXNG_URL = "http://127.0.0.1:8080/search"
-# 27/09/2026: com nove consultas por município (oito novas + a antiga como controle), a pausa de
-# 0,5 s somava 675 s de espera pura num lote de 150. Baixada para 0,15 s — a instância é local e
-# efêmera, sobe no próprio job; a cortesia que importa é com as fontes externas, e essa é do
-# SearXNG. Estimativa do lote de 150: ~21 min, dentro do teto de 60 min do job da cadência.
-PAUSA_ENTRE_CONSULTAS = 0.15
+# 27/09/2026 (PR 1c): a pausa fixa deu lugar a `espera_do_ritmo()` — intervalo mínimo com jitter e
+# back-off exponencial. A constante antiga saiu junto: em 0,15 s, com nove strings por município, era
+# ela que ajudava a queimar o limite de taxa dos motores de origem.
 TERMOS_PLANO_TITULO = ("plano de conting", "plano de ação", "plano municipal", "el niño", "el nino")
 
 # Conjunto de consultas por município (27/09/2026, handover do juiz automático, PR 1 item 4).
 # Cada entrada é (id, molde). O id entra no log e no contador do funil, para que a revocação
 # por string seja medível depois — é o que `medir_revocacao_das_consultas.py` lê.
-CONSULTAS = (
-    ("plancon_ciclo",      '"{nome}" {uf} "plano de contingência" El Niño 2026'),   # a de até 26/09, mantida como controle
+# Leque COMPLETO, 27/09/2026 — usado só pelo job de MEDIÇÃO (`medir_revocacao_das_consultas.py`),
+# nunca na rodada. Ver `CONSULTAS` abaixo.
+CONSULTAS_MEDICAO = (
+    ("plancon_ciclo",      '"{nome}" {uf} "plano de contingência" El Niño 2026'),   # a de até 26/09, controle
     ("plancon",            '"{nome}" {uf} "plano de contingência"'),
     ("plancon_ano",        '"{nome}" {uf} "plano de contingência" 2026'),
     ("periodo_chuvoso",    '"{nome}" {uf} "período chuvoso"'),
@@ -73,12 +73,64 @@ CONSULTAS = (
     ("plano_enfrentamento", '"{nome}" {uf} "plano de enfrentamento"'),
     ("decreto_preventivo", '"{nome}" {uf} decreto "situação de emergência" preventiv'),
 )
+
+# Conjunto PROVISÓRIO da rodada (decisão da central, 27/09/2026, noite — PR 1c). Três strings, em
+# CASCATA: rodam em ordem e param na primeira que devolve pista. O leque de nove, lançado de uma vez
+# sobre 150 municípios, somava ~1.350 requisições que a instância efêmera repassa aos motores de
+# origem, e o runner do GitHub compartilha IP: a primeira rodada mediu 139 de 150 consultas sem
+# resposta (93%). É limite de taxa, não defeito das strings. O conjunto definitivo sai da medição
+# (item 6), e a troca vem por PR com o número no CHANGELOG.
+CONSULTAS = (
+    ("plancon",     '"{nome}" {uf} "plano de contingência"'),
+    ("periodo_ou_seca", '"{nome}" {uf} "período chuvoso" OR estiagem OR seca plano'),
+    ("siglas_e_variantes", '"{nome}" {uf} PLANCON OR "plano de ação" OR "plano de enfrentamento"'),
+)
 TETO_MOTOR_SEM_RESPOSTA = 0.25   # PR 1 item 3: acima disso a rodada não conta como verificação
+
+# Ritmo (PR 1c item 3). Intervalo mínimo com jitter, e back-off exponencial ao primeiro sinal de
+# limite de taxa: 429, CAPTCHA ou corpo vazio.
+INTERVALO_MINIMO = 3.0
+JITTER = 1.0
+BACKOFF = (10, 30, 90)
+# Sonda dos primeiros municípios: se o mudo passar do teto, pausa e retoma; se passar de novo,
+# encerra a rodada e o lote volta ao topo da fila da próxima (item 3).
+SONDA_MUNICIPIOS = 20
+PAUSA_DA_SONDA = 600
 
 
 def consultas_de(nome: str, uf: str) -> list:
-    """As consultas de um município, na ordem de CONSULTAS. Devolve [(id, string)]."""
+    """As consultas da RODADA, na ordem da cascata. Devolve [(id, string)]."""
     return [(ident, molde.format(nome=nome, uf=uf)) for ident, molde in CONSULTAS]
+
+
+def consultas_de_medicao(nome: str, uf: str) -> list:
+    """O leque completo, para o job de medição de revocação — nunca para a rodada."""
+    return [(ident, molde.format(nome=nome, uf=uf)) for ident, molde in CONSULTAS_MEDICAO]
+
+
+def espera_do_ritmo(tentativa_de_backoff: int = 0, aleatorio=None) -> float:
+    """Quanto esperar antes da próxima consulta.
+
+    Sem back-off: intervalo mínimo com jitter de ±1 s — o jitter existe para que 150 municípios não
+    batam no motor em pulsos regulares. Com back-off: 10 s, 30 s, 90 s, e depois fica em 90 s.
+    `aleatorio` é injetável para que o autoteste não dependa de sorteio."""
+    if tentativa_de_backoff > 0:
+        return float(BACKOFF[min(tentativa_de_backoff, len(BACKOFF)) - 1])
+    r = (aleatorio or random.uniform)(-JITTER, JITTER)
+    return max(0.5, INTERVALO_MINIMO + r)
+
+
+def sinal_de_limite_de_taxa(erro: Exception = None, dados: dict = None) -> bool:
+    """429, CAPTCHA ou corpo vazio — os três dizem a mesma coisa: o motor está barrando.
+
+    Corpo vazio conta porque o SearXNG devolve 200 com `results: []` quando os motores de origem
+    recusam: recusa servida com 200 é recusa (§186)."""
+    if erro is not None:
+        texto = f"{type(erro).__name__} {erro}".lower()
+        return any(s in texto for s in ("429", "too many requests", "captcha", "forbidden", "403"))
+    if dados is None:
+        return False
+    return not dados.get("results")
 
 
 def decidir(n_brutos: int, n_pistas: int, rodadas_sem_pista: int) -> str:
@@ -182,6 +234,10 @@ def rodar(lote: str | None, tamanho: int) -> int:
     n_ok = n_lac = npist = 0
     n_motor_sem_resposta = n_com_bruto = n_coberto = n_esperando = 0
     brutos_por_consulta = {ident: 0 for ident, _ in CONSULTAS}
+    # estado do ritmo, em lista para poder ser mutado dentro do laço interno
+    backoff = [0]
+    pausas_da_sonda = 0
+    encerrada_pela_sonda = False
 
     for cod in alvo:
         ref_mun = por_cod[cod]
@@ -190,15 +246,24 @@ def rodar(lote: str | None, tamanho: int) -> int:
         strings = [q for _, q in consultas]
         resultados_brutos, achados, falhas_de_rede = [], [], 0
         vistos_url = set()
+        # CASCATA com parada precoce (PR 1c item 1): as strings rodam em ordem e param na primeira
+        # que devolve pista. Sem pista, a cascata segue até o fim — é o caso da maioria, e é por
+        # isso que o conjunto da rodada tem três strings e não nove.
         for ident, query in consultas:
-            time.sleep(PAUSA_ENTRE_CONSULTAS)
+            time.sleep(espera_do_ritmo(backoff[0]))
             try:
                 dados = buscar_searxng(query)
-            except Exception:  # noqa: BLE001 — falha de uma string não derruba as outras sete
+            except Exception as erro:  # noqa: BLE001 — falha de uma string não derruba as outras
                 falhas_de_rede += 1
+                if sinal_de_limite_de_taxa(erro=erro):
+                    backoff[0] += 1   # 429/CAPTCHA: o próximo intervalo é 10 s, 30 s, 90 s
                 continue
             crus = dados.get("results") or []
             brutos_por_consulta[ident] += len(crus)
+            if sinal_de_limite_de_taxa(dados=dados):
+                backoff[0] += 1       # corpo vazio é recusa servida com 200 (§186)
+            else:
+                backoff[0] = 0        # o motor respondeu: volta ao intervalo mínimo
             for r in crus:
                 if r.get("url") in vistos_url:
                     continue   # a mesma página achada por duas strings é um resultado, não dois
@@ -207,6 +272,8 @@ def rodar(lote: str | None, tamanho: int) -> int:
                 if relevante(r, nome):
                     r["_consulta"] = ident   # qual string recuperou este achado (revocação por string)
                     achados.append(r)
+            if achados:
+                break   # parada precoce: já há pista, as strings seguintes não mudariam o desfecho
 
         if falhas_de_rede == len(consultas):
             registrar_lacuna(f"{FONTE_BUSCA_WEB}/{nome}-{uf}", "todas as consultas falharam",
@@ -229,6 +296,22 @@ def rodar(lote: str | None, tamanho: int) -> int:
             })
             vistos_pistas.add(chave_pista)
             npist += 1
+
+        # SONDA (PR 1c item 3): nos primeiros 20 municípios, se o mudo passar do teto, pausa 10 min
+        # e retoma; se passar de novo, encerra a rodada — o restante do lote fica `motor_sem_resposta`
+        # e o lote volta ao topo da fila da próxima rodada.
+        if n_ok + n_lac == SONDA_MUNICIPIOS:
+            mudos = n_motor_sem_resposta + n_lac
+            if mudos / max(1, SONDA_MUNICIPIOS) > TETO_MOTOR_SEM_RESPOSTA:
+                if pausas_da_sonda == 0:
+                    print(f"  sonda: {mudos}/{SONDA_MUNICIPIOS} mudos — pausa de "
+                          f"{PAUSA_DA_SONDA // 60} min e retoma", flush=True)
+                    pausas_da_sonda += 1
+                    time.sleep(PAUSA_DA_SONDA)
+                else:
+                    print(f"  sonda: {mudos}/{SONDA_MUNICIPIOS} mudos de novo — rodada encerrada; "
+                          f"o lote volta ao topo da fila da próxima", flush=True)
+                    encerrada_pela_sonda = True
 
         rodadas_sem_pista = int((espera["municipios"].get(cod) or {}).get("rodadas_com_bruto_sem_pista", 0) or 0)
         decisao = decidir(len(resultados_brutos), len(achados), rodadas_sem_pista)
@@ -324,8 +407,12 @@ def autoteste():
         return decidir(1, 1, 0) == "pista" and decidir(99, 3, 7) == "pista"
 
     def t11_conjunto_de_consultas_cobre_o_handover():
-        """As oito strings pedidas no handover, mais a de até 26/09 como controle."""
-        qs = [q for _, q in consultas_de("Salvador", "BA")]
+        """As oito strings pedidas no handover, mais a de até 26/09 como controle.
+
+        27/09/2026 (PR 1c): o leque completo saiu da RODADA e passou a viver em `CONSULTAS_MEDICAO`,
+        para o job de medição. A rodada usa três strings em cascata. Este teste continua guardando o
+        leque — é ele que a medição vai comparar — e passou a olhar o conjunto certo."""
+        qs = [q for _, q in consultas_de_medicao("Salvador", "BA")]
         exigidos = ["plano de contingência", '"plano de contingência" 2026', "período chuvoso",
                     'estiagem OR seca "plano"', "PLANCON", '"plano de ação" El Niño',
                     '"plano de enfrentamento"', 'decreto "situação de emergência" preventiv']
@@ -351,6 +438,44 @@ def autoteste():
     def t13_teto_do_motor_e_fracao_nao_percentual():
         """Trava de unidade: 0,25 é fração. Se alguém escrever 25 aqui, o teto nunca dispara."""
         return 0 < TETO_MOTOR_SEM_RESPOSTA < 1
+
+    def t14_cascata_provisoria():
+        """Três strings na rodada; nove na medição; nenhuma string da rodada fora do leque."""
+        rodada = {i for i, _ in CONSULTAS}
+        medicao = {i for i, _ in CONSULTAS_MEDICAO}
+        tres = len(CONSULTAS) == 3
+        leque = len(CONSULTAS_MEDICAO) == 9
+        # a cascata começa pela string mais direta: é ela que resolve o caso fácil na primeira volta
+        comeca_pelo_plancon = CONSULTAS[0][0] == "plancon"
+        # o leque tem de conter a busca exata da rodada (`plancon`), senão a medição não compara
+        contem_a_da_rodada = "plancon" in medicao
+        return tres and leque and comeca_pelo_plancon and contem_a_da_rodada and len(rodada) == 3
+
+    def t15_ritmo_e_backoff():
+        """Intervalo mínimo com jitter dentro da faixa; back-off 10/30/90 e depois estável em 90."""
+        sem_jitter = espera_do_ritmo(0, aleatorio=lambda a, b: 0) == INTERVALO_MINIMO
+        piso = espera_do_ritmo(0, aleatorio=lambda a, b: -JITTER) >= INTERVALO_MINIMO - JITTER
+        teto = espera_do_ritmo(0, aleatorio=lambda a, b: JITTER) <= INTERVALO_MINIMO + JITTER
+        escada = [espera_do_ritmo(i) for i in (1, 2, 3)] == [10.0, 30.0, 90.0]
+        estavel = espera_do_ritmo(99) == 90.0        # não cresce sem limite
+        nunca_zero = espera_do_ritmo(0, aleatorio=lambda a, b: -99) >= 0.5
+        return sem_jitter and piso and teto and escada and estavel and nunca_zero
+
+    def t16_sinais_de_limite():
+        """Os três sinais que o handover nomeia, e o que NÃO é sinal."""
+        quatro_vinte_nove = sinal_de_limite_de_taxa(erro=Exception("HTTP Error 429: Too Many Requests"))
+        captcha = sinal_de_limite_de_taxa(erro=Exception("captcha required"))
+        proibido = sinal_de_limite_de_taxa(erro=Exception("HTTP Error 403: Forbidden"))
+        vazio = sinal_de_limite_de_taxa(dados={"results": []})       # §186: recusa servida com 200
+        com_resultado = not sinal_de_limite_de_taxa(dados={"results": [{"url": "x"}]})
+        timeout_nao_e = not sinal_de_limite_de_taxa(erro=TimeoutError("timed out"))
+        nada = not sinal_de_limite_de_taxa()
+        return all((quatro_vinte_nove, captcha, proibido, vazio, com_resultado, timeout_nao_e, nada))
+
+    def t17_valores_da_sonda():
+        """Trava de unidade: a pausa é em SEGUNDOS. 10 aqui viraria 10 segundos, não 10 minutos."""
+        return (SONDA_MUNICIPIOS == 20 and PAUSA_DA_SONDA == 600
+                and BACKOFF == (10, 30, 90) and INTERVALO_MINIMO >= 1.0)
 
     def t5_dedup_mesma_chave():
         vistos = {("0000001", "https://x.gov.br/a", "trecho x")}
@@ -403,6 +528,10 @@ def autoteste():
         "as oito consultas do handover, mais a antiga como controle": t11_conjunto_de_consultas_cobre_o_handover,
         "peneira aceita o nome do município no trecho, não só no título": t12_peneira_aceita_municipio_no_trecho,
         "teto do motor sem resposta é fração, não percentual": t13_teto_do_motor_e_fracao_nao_percentual,
+        "a rodada usa três strings em cascata, e o leque fica para a medição": t14_cascata_provisoria,
+        "o ritmo tem intervalo mínimo com jitter e back-off exponencial": t15_ritmo_e_backoff,
+        "429, CAPTCHA e corpo vazio são lidos como limite de taxa": t16_sinais_de_limite,
+        "a sonda e a pausa têm valores de segundo, não de minuto": t17_valores_da_sonda,
         "dedup: mesma chave (ibge,url,trecho) é reconhecida como vista": t5_dedup_mesma_chave,
         "rotação automática: avança 1→2→3 e volta para 1 (cobertura cíclica)": t6_rotacao_avanca_e_da_a_volta,
         "prioritários vêm primeiro, cobertura total preservada (nada some)": t7_prioritarios_vem_primeiro_e_ninguem_some,

@@ -1,0 +1,84 @@
+# Medição de revocação por string da camada 4 — job PRÓPRIO, instância dedicada.
+#
+# PR 1c item 6 do handover do juiz automático (27/09/2026). A medição não cabe na rodada: ela usa o
+# LEQUE COMPLETO de nove strings, e foi o leque lançado na rodada que queimou o limite de taxa dos
+# motores de origem (139 de 150 consultas sem resposta). Aqui são 60 municípios com 5 s entre
+# consultas, numa instância que não divide o tempo com mais nada.
+#
+# `workflow_dispatch` de propósito: quem decide medir é a editoria, e o resultado vira PR — a troca
+# do conjunto provisório de três strings pelo conjunto mínimo medido precisa de número no CHANGELOG.
+name: Medir revocação das consultas (camada 4)
+
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "Municípios com plano registrado na amostra (padrão 30)"
+        required: false
+        default: "30"
+
+permissions:
+  contents: read
+
+concurrency:
+  # fila, não cancela: uma medição interrompida no meio não vale nada
+  group: medir-revocacao
+  cancel-in-progress: false
+
+jobs:
+  medir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120   # 60 municípios x 9 strings x 5 s = 45 min de espera pura, mais latência
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955  # v4.3.0
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Subir SearXNG dedicado
+        id: searxng
+        run: |
+          docker run -d --name searxng -p 127.0.0.1:8080:8080 \
+            -v "$PWD/scripts/searxng_settings.yml:/etc/searxng/settings.yml:ro" \
+            searxng/searxng:latest
+          ok=""
+          for i in $(seq 1 30); do
+            if curl -sf "http://127.0.0.1:8080/search?q=teste&format=json" > /dev/null 2>&1; then ok=1; break; fi
+            sleep 2
+          done
+          [ -n "$ok" ] && echo "pronto=1" >> "$GITHUB_OUTPUT" || echo "SearXNG não subiu a tempo"
+
+      - name: Medir
+        if: steps.searxng.outputs.pronto == '1'
+        run: |
+          python3 scripts/medir_revocacao_das_consultas.py --n "${{ inputs.n || '30' }}" \
+            --saida "/tmp/REVOCACAO_CONSULTAS_$(date -u +%Y-%m-%d).md" | tee /tmp/medicao.log
+
+      - name: Saúde da instância (motores que barraram)
+        if: always() && steps.searxng.outputs.pronto == '1'
+        continue-on-error: true
+        run: |
+          echo "### SearXNG — motores com erro nesta medição" >> "$GITHUB_STEP_SUMMARY"
+          docker logs searxng 2>&1 | grep -iE "error|429|captcha|timeout|blocked|too many" | sort | uniq -c | sort -rn | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Publicar o resultado como artefato
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: revocacao-consultas
+          path: |
+            /tmp/REVOCACAO_CONSULTAS_*.md
+            /tmp/medicao.log
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Resumo no job
+        if: always()
+        run: |
+          echo "### Revocação por string" >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/REVOCACAO_CONSULTAS_*.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || echo "sem resultado" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "O resultado NÃO troca o conjunto da rodada por si: a troca vem por PR, com o número no CHANGELOG (PR 1c item 6)." >> "$GITHUB_STEP_SUMMARY"
