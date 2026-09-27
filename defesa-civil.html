@@ -39,7 +39,7 @@
 <div class="wrap">
   <header class="masthead masthead--mini">
     <p class="site-title site-title--logo"><span class="sr-only">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span><svg viewBox="0 0 400 116" role="img" aria-hidden="true" focusable="false" data-marca-fixa="1"><defs><linearGradient id="mareLogoAgua" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C04430"/><stop offset="100%" stop-color="#5E7C93"/></linearGradient></defs><line x1="28" y1="18" x2="28" y2="92" stroke="#5E7C93" stroke-width="0.75"/><line x1="28" y1="26" x2="38" y2="26" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="41" x2="33" y2="41" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="55" x2="38" y2="55" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="69" x2="33" y2="69" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="84" x2="38" y2="84" stroke="#5E7C93" stroke-width="1.2"/><text x="56" y="92" style="font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:76px;letter-spacing:-1.14px;fill:#0E0F0D;font-optical-sizing:auto">MARÉ</text><path d="M22 106 C45.7 102.5,69.5 102.5,93.2 106 C116.9 109.5,140.7 109.5,164.4 106 C188.1 102.5,211.9 102.5,235.6 106 C259.3 109.5,283.1 109.5,306.8 106 C330.5 102.5,354.3 102.5,378.0 106" fill="none" stroke="url(#mareLogoAgua)" stroke-width="1.15" stroke-linecap="round"/></svg></p>
-    <div class="mast-top">      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">MARÉ Legal</a><i class="nav-sep" aria-hidden="true"></i><a href="monitor-de-riscos.html">Monitor de riscos</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Defesa civil</span><a href="saude.html">MARÉ Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="prefeituras.html">Para gestores</a><i class="nav-sep" aria-hidden="true"></i><a href="blog.html">Blog do MARÉ</a><a href="imprensa.html">Imprensa</a><a href="pesquisadores.html">Pesquisadores</a></nav>
+    <div class="mast-top">      <nav class="mainnav" aria-label="Páginas do site"><a href="index.html">MARÉ Legal</a><i class="nav-sep" aria-hidden="true"></i><a href="monitor-de-riscos.html">Monitor de riscos</a><i class="nav-sep" aria-hidden="true"></i><a href="proteja-se.html">Proteja-se</a><i class="nav-sep" aria-hidden="true"></i><span class="ativa" aria-current="page">Defesa civil</span><a href="saude.html">MARÉ Saúde</a><i class="nav-sep" aria-hidden="true"></i><a href="financiamento.html">Financiamento</a><i class="nav-sep" aria-hidden="true"></i><a class="btn-nav" href="prefeituras.html">Para gestores</a><i class="nav-sep" aria-hidden="true"></i><a href="blog.html">Blog do MARÉ</a><a href="imprensa.html">Imprensa</a></nav>
     </div>
     <p class="kicker">2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab</p>
     
@@ -144,6 +144,105 @@
     </div>
   </div>
 
+
+  <!-- §258 (27/09/2026): bloco de fontes e registros migrado da página
+       Pesquisadores, arquivada em arquivo/pesquisadores/. As âncoras internas
+       foram preservadas: são elas que os links das outras páginas usam. -->
+<div class="panel" id="log">
+      <h2>Log de verificação e cobertura</h2>
+      <ul class="fontes-list">
+        <li><a href="data/log_buscas.json">log_buscas.json</a> — <strong id="pqLog">—</strong> execuções registradas (data, canal, camada, string, decisão, executor); resumo em <a href="data/verificacao_resumo.json">verificacao_resumo.json</a> e <a href="data/verificacao_municipal.json">verificacao_municipal.json</a> (5.571 municípios × nível de verificação)</li>
+        <li>Cobertura do Querido Diário por município (diário indexado ou não): <a href="data/cobertura_qd.json">cobertura_qd.json</a> — <strong id="pqCobertura">—</strong></li>
+        <li>Fontes oficiais que responderam com página de período eleitoral: <a href="data/calendario/fontes_suspensas.json">fontes_suspensas.json</a> — <strong id="pqSuspensas">—</strong></li>
+      </ul>
+      <h3 id="log-detalhe">Log por estado, canal e nível</h3>
+      <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblLog"><thead><tr><th>UF</th><th>Nacional</th><th>Estadual</th><th>Municipal parcial</th><th>Municipal completo</th><th>Não verificado</th></tr></thead><tbody></tbody></table></div>
+      <p class="hint u-mt-2 u-mb-0">Por canal, na última rodada: <span id="pqCanais">—</span></p>
+    </div>
+<div class="panel" id="fontes">
+      <h2>Registros e fontes dos dados</h2>
+      <p class="hint">Todas as fontes utilizadas na coleta, em dois níveis: <strong>links diretos</strong> apenas para URLs citadas e verificadas na pesquisa; <strong>portais institucionais</strong> (DOU, Planalto, IBGE, gov.br/mdr) como porta de entrada oficial quando o ato tem número/data mas não URL própria verificada. Itens sem link têm a fonte nominal na tabela de municípios; regra metodológica: nenhum link sem verificação.</p>
+      <div class="grade-fontes">
+        <div>
+          <h3>Registros federais</h3>
+          <ul class="fontes-list" id="fontesFederais">
+            <li>Sala de Situação do El Niño · 24 ministérios e instituições, coordena o plano federal de 29/07/2026 · <a href="https://www.gov.br/mds/pt-br/noticias/planejamento-para-enfrentamento-de-eventos-climaticos-associados-ao-el-nino-preve-r-1-335-bilhao-para-acoes-de-preparacao-e-resposta" target="_blank" rel="noopener">nota oficial (MDS)</a></li>
+            <li><a href="https://www.gov.br/mds/pt-br/noticias/planejamento-para-enfrentamento-de-eventos-climaticos-associados-ao-el-nino-preve-r-1-335-bilhao-para-acoes-de-preparacao-e-resposta" target="_blank" rel="noopener">Plano federal de preparação · R$ 1,335 bi (29/07/2026)</a></li>
+            <li>MP nº 1.367/2026 (12/06/2026) · crédito extraordinário de R$ 337,5 mi para incêndios e fiscalização ambiental (Ibama/ICMBio), em cumprimento às ADPFs 743 e 760 · <a href="https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624" target="_blank" rel="noopener">texto e tramitação (Congresso Nacional)</a></li>
+            <li>MP nº 1.384/2026 (12/08/2026) · crédito extraordinário de R$ 925 mi (MDA e MDS) para estoques públicos, cestas e PAA — a parte de alimentos do plano federal · <a href="https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455" target="_blank" rel="noopener">texto e tramitação (Congresso Nacional)</a></li>
+            <li>Painel El Niño 2026/2027 · boletins mensais (INMET · INPE · CEMADEN · ANA · SGB · SEDEC · CENSIPAM) · <a href="https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/el-nino/boletim-do-painel-el-nino-ndeg-03-agosto-de-2026-potenciais-impactos-e-orientacoes/painel-el-nino-3-edicao.pdf" target="_blank" rel="noopener">Boletim nº 3, 01/09/2026 (INPE/Cemaden)</a></li>
+            <li>Portarias SEDEC de reconhecimento (nºs 459, 875, 1.878, 1.948, 2.215, 2.420, 2.659…) · <a href="https://www.in.gov.br" target="_blank" rel="noopener">DOU</a></li>
+            <li>S2iD · Sistema Integrado de Informações sobre Desastres · <a href="https://s2id.mi.gov.br" target="_blank" rel="noopener">s2id.mi.gov.br</a></li>
+            <li>Lei nº 12.340/2010 · transferências obrigatórias e CPDC · <a href="https://www.planalto.gov.br" target="_blank" rel="noopener">planalto.gov.br</a></li>
+            <li>Malha municipal, códigos e coordenadas · <a href="https://www.ibge.gov.br" target="_blank" rel="noopener">IBGE</a></li>
+            <li><a href="https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-no-brasil-e-no-mundo-1/defesa-civil-no-brasil" target="_blank" rel="noopener">Diretório oficial das Defesas Civis estaduais: endereços, telefones e e-mails (MIDR)</a></li>
+            <li><a href="https://www.gov.br/cemaden/pt-br/lancado-o-primeiro-boletim-do-painel-do-el-nino-2026-2027-apresentando-potenciais-impactos-e-orientacoes" target="_blank" rel="noopener">Boletim nº 1 · Painel El Niño 2026-2027 (CEMADEN/MCTI)</a></li>
+            <li><a href="https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf" target="_blank" rel="noopener">Boletim nº 2 · Painel El Niño 2026-2027, íntegra em PDF (INPE)</a></li>
+            <li><a href="https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/el-nino/boletim-do-painel-el-nino-ndeg-03-agosto-de-2026-potenciais-impactos-e-orientacoes/painel-el-nino-3-edicao.pdf" target="_blank" rel="noopener">Boletim nº 3 · Painel El Niño 2026-2027, íntegra em PDF (INPE/Cemaden)</a></li>
+            <li><a href="MARE_Indice_Documentacao.pdf" target="_blank" rel="noopener">Documentação do Índice MARÉ · cálculo, escolhas normativas e auditoria de robustez, em PDF (regenerado a cada atualização de dados)</a></li>
+            <li><a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Documento Técnico-Metodológico da plataforma · MARÉ v3.1, íntegra em PDF</a></li>
+          </ul>
+          <p class="note u-mt-2">Fonte de descoberta (agregador terceiro, usado como pista, não como registro): painel El Niño 2026/2027 da Política Por Inteiro / Instituto Talanoa · <a href="https://politicaporinteiro.org/el-nino/" target="_blank" rel="noopener">politicaporinteiro.org/el-nino</a>.</p>
+          <p class="note">Os <span id="fontesFederaisCount">—</span> registros federais completos constam do banco de dados do projeto e do documento metodológico.</p>
+        </div>
+        <div>
+          <p class="note"><strong>Fontes oficiais consultadas pela rotina automática:</strong> DOU — portarias SEDEC/MIDR de reconhecimento (atos de resposta, peso zero) · diários oficiais dos 27 estados e diários municipais (via Querido Diário, cobertura declarada por UF) · MUNIC/IBGE e ICM/SEDEC (camada declarada, simulada; vigência 26/10/2026) · Painel de Arboviroses/MS e modelo InfoDengue (Fiocruz/FGV), INMET e INPE (página de Saúde) · <strong>SICONFI/Tesouro Nacional</strong> — Declaração de Contas Anuais, despesa municipal por função e subfunção (dinheiro próprio do município), com a população do <strong>Censo 2022/IBGE</strong> no cálculo por habitante · pedidos de acesso à informação (registro público em Para gestores). Fonte não confirmada aparece como lacuna.</p>
+          <h3>Plataformas oficiais de monitoramento</h3>
+          <ul class="fontes-list" id="fontesMonitoramento"></ul>
+        </div>
+        <div>
+          <h3>Fontes municipais e estaduais verificadas</h3>
+          <ul class="fontes-list" id="fontesVerificadas"></ul>
+        </div>
+        <div>
+          <h3>Dados abertos e feeds</h3>
+          <ul class="fontes-list">
+            <li><a href="dados-abertos/indice.csv">indice.csv</a> · <a href="dados-abertos/estados.csv">estados.csv</a> · <a href="dados-abertos/municipios.csv">municipios.csv</a> · <a href="dados-abertos/atos_resposta.csv">atos_resposta.csv</a></li>
+            <li><a href="dados-abertos/datapackage.json">datapackage.json</a> (esquema Frictionless) · <a href="data/indice.json">JSON brutos em data/</a></li>
+            <li><a href="feeds/brasil.xml" type="application/atom+xml">Feed nacional (Atom)</a> · um por estado em <code>feeds/UF.xml</code>, no detalhe de cada estado</li>
+            <li><a href="selos/README.md">Selos por estado</a> para embutir, no detalhe de cada estado</li>
+          </ul>
+          <p class="note u-mt-2">Como citar: Futura Evidence Lab (2026), <em>MARÉ · Monitor de Antecipação e Resposta ao El Niño, dados verificados</em>, v3.1, corte de <span id="citacaoCorte">—</span>. Regravados a cada atualização; esquema e roteiro de DOI em <code>docs/DADOS_ABERTOS.md</code>.</p>
+        </div>
+        <div>
+          <h3>Portais oficiais das Defesas Civis estaduais</h3>
+          <p class="hint u-mb-2" id="portaisDCHint">Conforme o diretório oficial do MIDR. Carregando…</p>
+          <p class="lista-inline" id="portaisDCLista"></p>
+        </div>
+      </div>
+      <details class="figura-dados">
+        <summary>Registros da verificação individual · <span id="munCount">—</span> municípios verificados um a um (camada de auditoria)</summary>
+        <p class="hint u-mt-2">Categoria, documento, data, fonte e canal de cada registro. Links levam à fonte oficial ou à plataforma do Diário Oficial dos Municípios; use número e data do documento para localizar o ato.</p>
+        <div class="tbl-controls">
+          <input id="tblSearch" type="text" placeholder="Buscar município ou UF..." aria-label="Buscar município ou UF na tabela de registros">
+          <select id="tblCat" aria-label="Filtrar a tabela por categoria do ato">
+            <option value="">Todas as categorias</option>
+            <option value="plano">Plano preventivo publicado</option>
+            <option value="plano_antigo">Plano vigente, de ciclo anterior</option>
+            <option value="plano_elaboracao">Plano em elaboração</option>
+            <option value="estrutura">Estrutura de coordenação para o ciclo</option>
+            <option value="decreto">Decreto de emergência (reativo)</option>
+            <option value="coberto_estadual">Coberto pelo estado</option>
+            <option value="nao_el_nino">Ato não relacionado a El Niño</option>
+            <option value="nao_localizado">Nenhum ato localizado</option>
+            <option value="nao_verificado">Ainda não verificado</option>
+          </select>
+        </div>
+        <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">
+          <table class="mun-table">
+            <caption class="sr-only">Municípios verificados: categoria do ato, documento, data, fonte e canal de verificação</caption>
+            <thead><tr><th>Município</th><th>UF</th><th>Categoria</th><th>Documento</th><th>Data</th><th>Fonte</th><th>Canal</th></tr></thead>
+            <tbody id="tblBody"></tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+<div class="panel" id="painel-amostral">
+      <h2>Painel amostral</h2>
+      <p class="hint u-mb-0">Universo dos 5.571 municípios, estratos por região e porte, semente registrada; lista e fichas completas em <a href="data/painel/lista.json">lista.json</a> e <a href="data/painel/fichas.json">fichas.json</a>. <span id="notaPainel"></span></p>
+      <div id="painelResumo" class="u-mt-3"></div>
+      <div id="boxPainel"></div>
+    </div>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>

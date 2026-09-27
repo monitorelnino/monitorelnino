@@ -20,6 +20,23 @@
   to = "/obrigado.html"
   status = 200
 
+# --- Pasta de arquivo: guardada no repositório, NUNCA servida (§258, 27/09/2026) ---
+# `publish = "."` serve a raiz inteira, então arquivar um arquivo dentro do repositório não o
+# retira do ar por si: sem esta regra, `arquivo/pesquisadores/pesquisadores.html` continuaria
+# acessível por URL, e a página que a editoria mandou suprimir seguiria publicada — só sem link
+# apontando para ela, o que é pior, porque ninguém veria.
+# 404 e não 301: redirecionar sugeriria que o conteúdo mudou de lugar, e ele não mudou — foi
+# retirado. O portão `scripts/verificar_pagina_arquivada.py` confere que esta regra existe.
+# O site não tem `404.html`, e isso está certo aqui: sem o arquivo, o Netlify devolve a própria
+# página de 404 dele com o status 404, que é exatamente o que se quer. Criar um `404.html` só
+# para esta regra obrigaria a página nova a passar pelos portões de estrutura e navegação, o que
+# é escopo que o handover não pediu.
+[[redirects]]
+  from = "/arquivo/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # --- Formulário público (prefeituras.html) ---
 # O formulário usa Netlify Forms (atributo data-netlify="true" na marcação),
 # detectado automaticamente pelo Netlify no build — nenhuma configuração
