@@ -369,7 +369,6 @@ function selectUF(uf, tileEl){
         return (dt >= ini && dt <= fim) ? `<div class="card-note">Publicado em ${d.data}, dentro do período eleitoral (04/07–25/10/2026), quando transferências voluntárias e publicidade institucional estão suspensas por lei — a publicação em diário oficial é ato oficial, não publicidade (METODOLOGIA §24).</div>` : '';
       })()}
     ${capitalBlock}
-    <button type="button" class="btn-pdf" id="btnPDFEstado" data-uf="${d.uf}">Baixar relatório do estado (PDF)</button>
     <p class="note">Acompanhe ${d.nome} sem visitar o site: <a href="feeds/${d.uf}.xml" type="application/atom+xml">feed de atualizações (Atom)</a> — cada instrumento localizado, cada mudança no índice, com data.</p>
   `;
   const __dialogDetail = document.getElementById('detail');
@@ -876,18 +875,8 @@ function gerarPDF(){
   if (!uf) { alert('Selecione o estado.'); return; }
   gerarRelatorioCidadao(uf, cid || null);
 }
-function gerarPDFEstado(uf){ gerarRelatorioCidadao(uf, null); }
 document.getElementById('meuCard').addEventListener('click', (e) => {
   if (e.target && e.target.id === 'btnPDF') gerarPDF();
-});
-// Botão do relatório de ESTADO: mesmo padrão de delegação do botão municipal.
-// Bug de produção achado em 31/08/2026 ao gerar uma amostra de PDFs: o botão
-// usava onclick inline, que só enxerga escopo global — mas gerarPDFEstado é
-// declarada dentro de __init(), então o clique lançava "gerarPDFEstado is not
-// defined" e nenhum PDF saía. O portão de runtime não clicava nesse botão.
-document.getElementById('detail').addEventListener('click', (e) => {
-  const b = e.target && e.target.closest && e.target.closest('#btnPDFEstado');
-  if (b) gerarPDFEstado(b.dataset.uf);
 });
 // Copiar o pedido de informação (cartão da cidade e detalhe do estado).
 function copiarPedido(botao){
