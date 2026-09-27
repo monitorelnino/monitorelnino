@@ -9,6 +9,30 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §243 · O relatório em PDF sai do detalhe do estado · 26/09/2026
+
+Classe **produto**. Pedido da editoria: *"remova de todos os cartões estaduais a opção de baixar o
+PDF. Isso não será mais necessário."*
+
+**A distinção que precisou ser feita antes de mexer.** O site tem **dois** botões de PDF, e eles não
+são a mesma coisa: `#btnPDFEstado`, na janela de detalhe do estado, e `#btnPDF`, no cartão da cidade
+("Encontre sua cidade"). O pedido nomeia os cartões **estaduais**, então saiu só o primeiro. O
+municipal continua onde estava; se a editoria quiser tirá-lo também, é pedido separado.
+
+**O que saiu junto, por ter ficado órfão da própria remoção.** `gerarPDFEstado(uf)` existia só para
+esse botão, e o ouvinte delegado em `#detail` existia só para alcançá-la. Os dois foram removidos.
+`gerarRelatorioCidadao` **fica**: é o gerador que o cartão da cidade usa.
+
+**Portões.** Duas checagens descreviam o mundo antigo e foram **atualizadas, não apagadas**: uma
+clicava nos dois botões e exigia que ambos respondessem (agora exerce só o municipal); a outra exigia
+que "estado e município usassem o mesmo gerador" (agora confere que o municipal continua ligado a
+ele). Duas checagens novas garantem que o botão não volte em silêncio — uma no DOM, outra no
+código-fonte — e as duas foram provadas reintroduzindo o botão de propósito.
+
+O comentário do bug de 31/08/2026 (`"gerarPDFEstado is not defined"`, caçado porque o portão não
+clicava no botão) foi preservado no arquivo do portão: a lição — checagem que não exercita o
+caminho não vê o defeito — vale independentemente do botão ter saído.
+
 ## §242 · O calendário vira linha do tempo; o formulário, três etapas · 26/09/2026
 
 Classe **design**. Nenhum dado, número ou fonte mudou.

@@ -139,12 +139,16 @@ setTimeout(() => {
   // portão nunca tinha clicado no botão, então nunca viu. Sem jsPDF (CDN não
   // carrega no jsdom) a função avisa e retorna — o que se testa aqui é que ela
   // EXISTE e é alcançável a partir do clique.
+  // 26/09/2026 (pedido da editoria): o relatório em PDF saiu do detalhe do estado. Sobra o do
+  // cartão da cidade, que não foi tocado — e o clique nele continua sendo exercido aqui.
   const errosAntesPDF = erros.length;
   d.defaultView.alert = () => {};
-  try { q("btnPDFEstado").click(); } catch (e) { erros.push("clique btnPDFEstado: " + e.message); }
   try { q("btnPDF").click(); } catch (e) { erros.push("clique btnPDF: " + e.message); }
-  teste("botões de PDF (estado e município) são alcançáveis pelo clique, sem erro",
+  teste("botão de PDF do município é alcançável pelo clique, sem erro",
     erros.length === errosAntesPDF);
+  // O botão do estado tem de estar AUSENTE: sem esta checagem, ele voltaria em silêncio.
+  teste("detalhe do estado não oferece mais PDF",
+    !q("detail").querySelector("#btnPDFEstado, .btn-pdf"));
 
   // Relatório do cidadão (31/08/2026): um único template para estado e município.
   // Sem jsPDF no jsdom o PDF não é gerado, então aqui se confere o CONTRATO do
@@ -224,8 +228,11 @@ setTimeout(() => {
   // 13/09/2026 (pedido de Patricia): gerador de pedido de LAI pronto (31/08/2026–13/09/2026)
   // retirado da parte visível do site — pedidos de LAI passam a ser feitos por e-mail, de forma
   // privada. Testes correspondentes (cartão da cidade e detalhe do estado) removidos junto.
-  teste("PDF do cidadão: estado e município usam o mesmo gerador",
-    /function gerarPDFEstado\(uf\)\{ ?gerarRelatorioCidadao\(uf, null\)/.test(fonte) && /gerarRelatorioCidadao\(uf, cid \|\| null\)/.test(fonte));
+  // 26/09/2026: era "estado e município usam o mesmo gerador". O do estado saiu a pedido da
+  // editoria, então o que resta conferir é que o do município continua ligado ao gerador.
+  teste("PDF do cidadão: o cartão do município continua ligado ao gerador",
+    /gerarRelatorioCidadao\(uf, cid \|\| null\)/.test(fonte));
+  teste("nenhum resto do PDF do estado no código", !/btnPDFEstado|gerarPDFEstado/.test(fonte));
 
   // 15/09/2026: a linha do tempo do herói saiu da inicial (pedido da editoria); o tooltip compartilhado é testado nas páginas de mapas.
 
