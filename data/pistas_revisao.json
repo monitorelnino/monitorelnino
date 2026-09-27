@@ -1,11 +1,11 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-27",
- "total_pistas": 663,
- "total_municipios": 282,
+ "total_pistas": 675,
+ "total_municipios": 285,
  "por_nivel": {
-  "A": 104,
-  "B": 376,
+  "A": 106,
+  "B": 386,
   "C": 183
  },
  "grupos": [
@@ -14,10 +14,10 @@
    "municipio": "Itajaí",
    "uf": "SC",
    "melhor_nivel": "A",
-   "n_pistas": 18,
+   "n_pistas": 20,
    "niveis": {
     "A": 2,
-    "B": 9,
+    "B": 11,
     "C": 7
    },
    "pistas": [
@@ -125,6 +125,42 @@
      "titulo": "CMGPC19",
      "trecho": "Jornal 2317, de 23 de outubro de 2020 - Torna publico o Plano de Contingência Municipal para a Educação de Itajaí.",
      "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "4ea0c3e390",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DdeH-bKxvPQ/",
+     "titulo": "Radar El Niño A Defesa Civil de Itajaí está ampliando a rede de ...",
+     "trecho": "Sep 19, 2026 ... ... plano de contingência. A estratégia inclui o monitoramento de ... Photo by Defesa Civil de Itajaí on September 08, 2026. May be an ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7fa80c0d6a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DdrzWiLR0wF/",
+     "titulo": "Defesa Civil de Itajaí realiza palestra sobre o fenômeno El Niño ...",
+     "trecho": "3 days ago ... ... Itajaí para mais uma de suas reuniões de alinhamento do Plano de Contingência do Município. Reuniram-se, na sede da Defesa Civil, as equipes ...",
+     "data": "27/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
@@ -1380,6 +1416,212 @@
    ]
   },
   {
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "melhor_nivel": "A",
+   "n_pistas": 11,
+   "niveis": {
+    "A": 2,
+    "B": 7,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "47a4f304b5",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
+     "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
+     "trecho": "Jun 16, 2026 ... Balneário Camboriú reforça plano de ação para enfrentar impactos do El Niño ... Plano de Contingência, validação de abrigos temporários ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "00c8844837",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
+     "titulo": "Plano de Contingência de Balneário Camboriú entra em consulta ...",
+     "trecho": "Sep 15, 2026 ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "97c71884e1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/",
+     "titulo": "Município lança o Plano \"Camboriú em Alerta ao El Niño\" - JM Litoral",
+     "trecho": "Jul 31, 2026 ... ... Plano de Contingência para a comunidade em audiência na Câmara de ... A Defesa Civil de Camboriú lançamento o Plano “Camboriú em Alerta ao El Niño ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "09ed714bdc",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://pagina3.com.br/wp-content/uploads/2026/09/Cartilha_El_Nino_2026.pdf",
+     "titulo": "Cartilha El Niño 2026 · Bacia do Rio Camboriú - Página 3",
+     "trecho": "El Niño 2026 · Comitê de Bacia do Rio Camboriú ... Sacos de areia ou comportas nos acessos historicamente vulneráveis a alagamento. Plano de contingência.",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "2c82c3db53",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
+     "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
+     "trecho": "Jun 16, 2026 ... ... Plano de Contingência, validação de abrigos temporários, reforço ... Balneário Camboriú terá 54 escalas de cruzeiros na temporada 2026/2027.",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "afc5fc9c39",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.blogdoprisco.com.br/camboriu-lanca-plano-contra-o-el-nino-com-aporte-de-r-5-milhoes-articulado-por-carlos-humberto/",
+     "titulo": null,
+     "trecho": "Aug 4, 2026 ... ... Camboriú em Alerta ao El Niño. Durante a cerimônia, o parlamentar ... O Plano de Contingência para Enchentes foi dividido de forma ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7cff064735",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
+     "titulo": null,
+     "trecho": "7 days ago ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "01f42ba144",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/",
+     "titulo": null,
+     "trecho": "Jul 31, 2026 ... A Defesa Civil de Camboriú lançamento o Plano “Camboriú em Alerta ao El Niño”, uma iniciativa que reúne ações de conscientização, ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "738d8dd3b1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DbTWe49Asge/",
+     "titulo": "Prefeitura de Camboriú on Instagram: \"Os efeitos do El Niño exigem ...",
+     "trecho": "Jul 27, 2026 ... 8h45 — Cenário climático para Camboriú e prognóstico do El Niño 2026/2027 ... Camboriú-SC. Photo by Linha Popular | Portal de notícias de ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "8972896ab3",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_inicio_do_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DbaxUUaia33/",
+     "titulo": null,
+     "trecho": "Jul 30, 2026 ... 8h45 — Cenário climático para Camboriú e prognóstico do El Niño 2026/2027 ... Camboriú-SC. Photo by Linha Popular | Portal de notícias de ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e5e29169cd",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.jmlitoral.com.br/2026/06/22/camboriu-fortalece-plano-de-prevencao-ao-el-nino-e-cria-gabinete-de-crise-para-proteger-a-populacao/",
+     "titulo": null,
+     "trecho": "Jun 22, 2026 ... Na última sexta-feira (19), o prefeito de Camboriú, Leonel Pavan, reuniu no Auditório Ulisses Guimarães, no Paço Municipal, ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4106902",
    "municipio": "Curitiba",
    "uf": "PR",
@@ -1557,195 +1799,6 @@
      "titulo": "Diário oficial de 2026-02-06",
      "trecho": "1.000m2. Marca: Não se aplica. Modelo: Não se aplica. Valor unitário: R$ 1.000,0000 Quantidade: 21,0000 - UNIDADE Protocolo 01-143579/2025 Anexo 188.3 - PE Nº 06_2025 - ATA REGISTRO PREÇOS.PDF do Trâmite 188 INFORMAÇÃO - IPPUCMAT3 Exp or tad o d o S ist em a Ú nic o d e P ro toc olo s - 01 -1 43 57 9/2 02 5 - po r H UGO L EONARDO D E A LM EID A P IN TO - M atr ícu la 82 04 0 e m 04 /02 /20 26 às 15 :14 :04 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE",
      "data": "23/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4203204",
-   "municipio": "Camboriú",
-   "uf": "SC",
-   "melhor_nivel": "A",
-   "n_pistas": 10,
-   "niveis": {
-    "A": 2,
-    "B": 6,
-    "C": 2
-   },
-   "pistas": [
-    {
-     "id": "47a4f304b5",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
-     "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
-     "trecho": "Jun 16, 2026 ... Balneário Camboriú reforça plano de ação para enfrentar impactos do El Niño ... Plano de Contingência, validação de abrigos temporários ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "00c8844837",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
-     "titulo": "Plano de Contingência de Balneário Camboriú entra em consulta ...",
-     "trecho": "Sep 15, 2026 ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "97c71884e1",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/",
-     "titulo": "Município lança o Plano \"Camboriú em Alerta ao El Niño\" - JM Litoral",
-     "trecho": "Jul 31, 2026 ... ... Plano de Contingência para a comunidade em audiência na Câmara de ... A Defesa Civil de Camboriú lançamento o Plano “Camboriú em Alerta ao El Niño ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "09ed714bdc",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://pagina3.com.br/wp-content/uploads/2026/09/Cartilha_El_Nino_2026.pdf",
-     "titulo": "Cartilha El Niño 2026 · Bacia do Rio Camboriú - Página 3",
-     "trecho": "El Niño 2026 · Comitê de Bacia do Rio Camboriú ... Sacos de areia ou comportas nos acessos historicamente vulneráveis a alagamento. Plano de contingência.",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "afc5fc9c39",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.blogdoprisco.com.br/camboriu-lanca-plano-contra-o-el-nino-com-aporte-de-r-5-milhoes-articulado-por-carlos-humberto/",
-     "titulo": null,
-     "trecho": "Aug 4, 2026 ... ... Camboriú em Alerta ao El Niño. Durante a cerimônia, o parlamentar ... O Plano de Contingência para Enchentes foi dividido de forma ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "7cff064735",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
-     "titulo": null,
-     "trecho": "7 days ago ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "01f42ba144",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/",
-     "titulo": null,
-     "trecho": "Jul 31, 2026 ... A Defesa Civil de Camboriú lançamento o Plano “Camboriú em Alerta ao El Niño”, uma iniciativa que reúne ações de conscientização, ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "738d8dd3b1",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_titulo",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DbTWe49Asge/",
-     "titulo": "Prefeitura de Camboriú on Instagram: \"Os efeitos do El Niño exigem ...",
-     "trecho": "Jul 27, 2026 ... 8h45 — Cenário climático para Camboriú e prognóstico do El Niño 2026/2027 ... Camboriú-SC. Photo by Linha Popular | Portal de notícias de ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "8972896ab3",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_inicio_do_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DbaxUUaia33/",
-     "titulo": null,
-     "trecho": "Jul 30, 2026 ... 8h45 — Cenário climático para Camboriú e prognóstico do El Niño 2026/2027 ... Camboriú-SC. Photo by Linha Popular | Portal de notícias de ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "e5e29169cd",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.jmlitoral.com.br/2026/06/22/camboriu-fortalece-plano-de-prevencao-ao-el-nino-e-cria-gabinete-de-crise-para-proteger-a-populacao/",
-     "titulo": null,
-     "trecho": "Jun 22, 2026 ... Na última sexta-feira (19), o prefeito de Camboriú, Leonel Pavan, reuniu no Auditório Ulisses Guimarães, no Paço Municipal, ...",
-     "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -3605,6 +3658,109 @@
    ]
   },
   {
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 2,
+    "B": 2,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "d11d9042f8",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
+     "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
+     "trecho": "Jun 16, 2026 ... Balneário Camboriú reforça plano de ação para enfrentar impactos do El Niño ... Plano de Contingência, validação de abrigos temporários ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a3382c4401",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
+     "titulo": "Plano de Contingência de Balneário Camboriú entra em consulta ...",
+     "trecho": "Sep 15, 2026 ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
+     "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e716dbe8bf",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
+     "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
+     "trecho": "Jun 16, 2026 ... ... Plano de Contingência, validação de abrigos temporários, reforço ... Balneário Camboriú terá 54 escalas de cruzeiros na temporada 2026/2027.",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b37728af79",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
+     "titulo": null,
+     "trecho": "7 days ago ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a61d32c5be",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_so_no_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/DdUOT62G-yP/",
+     "titulo": null,
+     "trecho": "7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4202909",
    "municipio": "Brusque",
    "uf": "SC",
@@ -3705,55 +3861,73 @@
    ]
   },
   {
-   "ibge": "4202008",
-   "municipio": "Balneário Camboriú",
+   "ibge": "4203808",
+   "municipio": "Canoinhas",
    "uf": "SC",
    "melhor_nivel": "A",
    "n_pistas": 4,
    "niveis": {
-    "A": 2,
-    "B": 1,
-    "C": 1
+    "A": 1,
+    "B": 3,
+    "C": 0
    },
    "pistas": [
     {
-     "id": "d11d9042f8",
+     "id": "4276ecbded",
      "nivel_confianca": "A",
      "pontos_confianca": 6,
      "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_titulo",
+      "fonte_oficial",
+      "municipio_na_url",
+      "ato_formal",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
-     "titulo": "Balneário Camboriú reforça plano de ação para enfrentar impactos ...",
-     "trecho": "Jun 16, 2026 ... Balneário Camboriú reforça plano de ação para enfrentar impactos do El Niño ... Plano de Contingência, validação de abrigos temporários ...",
+     "url": "https://diariodoplanalto.com.br/geral/trabalho-preventivo-da-prefeitura-reduz-impactos-do-el-nino-em-canoinhas.15484817",
+     "titulo": "Trabalho preventivo da prefeitura reduz impactos do El Niño em ...",
+     "trecho": "... CANOINHAS. Trabalho preventivo da prefeitura reduz impactos do El Niño em Canoinhas. 23/09/2026 10:49. '; Divulgação -. A prevenção de uma enchente não ...",
      "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "a3382c4401",
-     "nivel_confianca": "A",
-     "pontos_confianca": 6,
+     "id": "3e3c4c04d1",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
      "sinais": [
       "fonte_imprensa",
       "municipio_no_titulo",
-      "plano_no_titulo",
+      "plano_no_trecho",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
-     "titulo": "Plano de Contingência de Balneário Camboriú entra em consulta ...",
-     "trecho": "Sep 15, 2026 ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
+     "url": "https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720",
+     "titulo": "MP abre procedimentos sobre prevenção ao El Niño em Canoinhas ...",
+     "trecho": "18 hours ago ... Em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Unidade Canoinhas / SC. CNPJ: 62.276.888/0001-47. © ...",
      "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "b37728af79",
+     "id": "cfd075ff62",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720",
+     "titulo": "MP abre procedimentos sobre prevenção ao El Niño em Canoinhas ...",
+     "trecho": "4 days ago ... Em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Unidade Canoinhas / SC. CNPJ: 62.276.888/0001-47. © ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "446cb04b13",
      "nivel_confianca": "B",
      "pontos_confianca": 4,
      "sinais": [
@@ -3764,27 +3938,9 @@
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
+     "url": "https://rwtv.com.br/planaltonorte/canoinhas-se-prepara-para-possivel-impacto-do-el-nino-e-reforca-acoes-preventivas/",
      "titulo": null,
-     "trecho": "7 days ago ... Plano de Contingência de Balneário Camboriú entra em consulta pública nesta terça-feira ... El Niño, previsto para os próximos meses. Ela ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "a61d32c5be",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_so_no_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/p/DdUOT62G-yP/",
-     "titulo": null,
-     "trecho": "7 days ago ... PREVENÇÃO E REPRESENTATIVIDADE | EL NIÑO 2026. A CDL Balneário Camboriú esteve presente na apresentação do Plano de Contingência de Proteção ...",
+     "trecho": "May 12, 2026 ... Canoinhas se prepara para possível impacto do El Niño ... Zenilda ressaltou que o município trabalha com plano de contingência e definição clara ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -4147,8 +4303,8 @@
    ]
   },
   {
-   "ibge": "4203808",
-   "municipio": "Canoinhas",
+   "ibge": "4209300",
+   "municipio": "Lages",
    "uf": "SC",
    "melhor_nivel": "A",
    "n_pistas": 3,
@@ -4159,25 +4315,25 @@
    },
    "pistas": [
     {
-     "id": "4276ecbded",
+     "id": "7596e02225",
      "nivel_confianca": "A",
      "pontos_confianca": 6,
      "sinais": [
       "fonte_oficial",
       "municipio_na_url",
-      "ato_formal",
+      "plano_no_titulo",
       "familia_de_risco_do_ciclo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://diariodoplanalto.com.br/geral/trabalho-preventivo-da-prefeitura-reduz-impactos-do-el-nino-em-canoinhas.15484817",
-     "titulo": "Trabalho preventivo da prefeitura reduz impactos do El Niño em ...",
-     "trecho": "... CANOINHAS. Trabalho preventivo da prefeitura reduz impactos do El Niño em Canoinhas. 23/09/2026 10:49. '; Divulgação -. A prevenção de uma enchente não ...",
-     "data": "24/09/2026",
+     "url": "https://www.lages.sc.gov.br/noticia-descricao/6793/grupo-de-acoes-coordenadas-discute-plano-de-contingencia-em-situacoes-de-desastre-em-lages",
+     "titulo": "Grupo de Ações Coordenadas discute plano de contingência em ...",
+     "trecho": "Mar 14, 2025 ... Grupo de Ações Coordenadas discute plano de contingência em situações de desastre em Lages ... Prefeitura Municipal de Lages 2026. Todos os ...",
+     "data": "27/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "3e3c4c04d1",
+     "id": "4419188894",
      "nivel_confianca": "B",
      "pontos_confianca": 5,
      "sinais": [
@@ -4188,14 +4344,14 @@
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720",
-     "titulo": "MP abre procedimentos sobre prevenção ao El Niño em Canoinhas ...",
-     "trecho": "18 hours ago ... Em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Unidade Canoinhas / SC. CNPJ: 62.276.888/0001-47. © ...",
+     "url": "https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/",
+     "titulo": "Defesa Civil de Lages participa de encontro nacional sobre El Niño",
+     "trecho": "Sep 14, 2026 ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...",
      "data": "24/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "446cb04b13",
+     "id": "8aa38d8664",
      "nivel_confianca": "B",
      "pontos_confianca": 4,
      "sinais": [
@@ -4206,9 +4362,9 @@
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://rwtv.com.br/planaltonorte/canoinhas-se-prepara-para-possivel-impacto-do-el-nino-e-reforca-acoes-preventivas/",
+     "url": "https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/",
      "titulo": null,
-     "trecho": "May 12, 2026 ... Canoinhas se prepara para possível impacto do El Niño ... Zenilda ressaltou que o município trabalha com plano de contingência e definição clara ...",
+     "trecho": "8 days ago ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -5654,6 +5810,38 @@
      "titulo": null,
      "trecho": "Jul 30, 2026 ... Pedras Grandes tem um Plano de Contingência de Proteção e Defesa Civil que estabelece os protocolos para monitorar, alertar e responder a ...",
      "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4217808",
+   "municipio": "Taió",
+   "uf": "SC",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "7f083b5d99",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA - Defesa Civil Taió-SC",
+     "trecho": "Proteção e Defesa Civil de Taió-SC | 01/2026. Taió-SC. Page 2. COORDENADORIA ... Plano de Contingência de Taió-SC, elaborado com base na metodologia DEL.",
+     "data": "27/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -8738,6 +8926,91 @@
    ]
   },
   {
+   "ibge": "4204608",
+   "municipio": "Criciúma",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 4,
+   "niveis": {
+    "A": 0,
+    "B": 3,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "7804b7b382",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://folha1sc.com.br/2026/09/04/prefeitura-de-criciuma-apresenta-plano-de-contingencia-contra-el-nino/",
+     "titulo": null,
+     "trecho": "Sep 4, 2026 ... Início › Cidades SC › Criciúma › Prefeitura de Criciúma apresenta Plano de Contingência contra El Niño ... 2026. Prefeitura de Criciúma ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "40409d11e4",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/p/Dbbd0HoEY6T/",
+     "titulo": "Prefeitura de Criciúma on Instagram: \"Com a influência do El Niño e ...",
+     "trecho": "Jul 30, 2026 ... ... Criciúma tem um Plano de Contingência para organizar o monitoramento, os alertas e a atuação das equipes em casos de chuvas fortes ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b1716f8dc3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.youtube.com/watch?v=EZ9qXUkowyo",
+     "titulo": null,
+     "trecho": "Jun 19, 2026 ... O município de Criciúma, em Santa Catarina, atualizou o seu Plano ... Criciúma atualiza plano de contingência para desastres naturais.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "bb234937a9",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://tnsul.com/2026/06/17/plano-de-contingencia-de-criciuma-prepara-mobilizacao-em-emergencias/",
+     "titulo": null,
+     "trecho": "Plano de contingência de Criciúma prepara mobilização em emergências. 17 de junho de 2026. Foto: Divulgação / Prefeitura de Criciúma. A Prefeitura de ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "2929800",
    "municipio": "Saúde",
    "uf": "BA",
@@ -9473,73 +9746,6 @@
      "url": "https://www.instagram.com/p/DdjWyeyFvGR/",
      "titulo": null,
      "trecho": "19 hours ago ... 4 likes, 1 comments - studiotvnoticias on September 21, 2026: \"#Chuvas #Veranópolis | Veranópolis aciona Plano de Contingência após chuvas ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4204608",
-   "municipio": "Criciúma",
-   "uf": "SC",
-   "melhor_nivel": "B",
-   "n_pistas": 3,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "7804b7b382",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://folha1sc.com.br/2026/09/04/prefeitura-de-criciuma-apresenta-plano-de-contingencia-contra-el-nino/",
-     "titulo": null,
-     "trecho": "Sep 4, 2026 ... Início › Cidades SC › Criciúma › Prefeitura de Criciúma apresenta Plano de Contingência contra El Niño ... 2026. Prefeitura de Criciúma ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "b1716f8dc3",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_no_inicio_do_trecho",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.youtube.com/watch?v=EZ9qXUkowyo",
-     "titulo": null,
-     "trecho": "Jun 19, 2026 ... O município de Criciúma, em Santa Catarina, atualizou o seu Plano ... Criciúma atualiza plano de contingência para desastres naturais.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "bb234937a9",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://tnsul.com/2026/06/17/plano-de-contingencia-de-criciuma-prepara-mobilizacao-em-emergencias/",
-     "titulo": null,
-     "trecho": "Plano de contingência de Criciúma prepara mobilização em emergências. 17 de junho de 2026. Foto: Divulgação / Prefeitura de Criciúma. A Prefeitura de ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -10566,6 +10772,104 @@
    ]
   },
   {
+   "ibge": "4203907",
+   "municipio": "Capinzal",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "ffefa000e0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://capinzalfm.com.br/noticia/ouro-inicia-acoes-preventivas-contra-impactos-do-el-nino-e-promove-mutirao-de-cadastramento-neste-sabado",
+     "titulo": "Ouro inicia ações preventivas contra impactos do El Niño e promove ...",
+     "trecho": "Jun 20, 2026 ... Rádio Capinzal. Início; Notícias ... As medidas fazem parte de um plano de contingência elaborado após ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "d915e221c3",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://capinzalfm.com.br/noticia/ouro-apresenta-plano-de-contingencia-da-defesa-civil-e-reforca-preparacao-para-eventos-climaticos",
+     "titulo": null,
+     "trecho": "Jun 23, 2026 ... ... Plano de Contingência do município. O encontro ocorreu na Sala do ... Capinzal e região), 3º Sargento BM David Azevedo de Souza, que ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4203006",
+   "municipio": "Caçador",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 2,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 1
+   },
+   "pistas": [
+    {
+     "id": "312d30994b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.facebook.com/prefeituradecacador/videos/o-el-ni%C3%B1o-vai-atingir-ca%C3%A7ador-a-dragagem-do-rio-do-peixe-resolveria-as-enchentes/1492919225921170/",
+     "titulo": "O El Niño vai atingir Caçador? A dragagem do Rio do Peixe ...",
+     "trecho": "Jul 11, 2026 ... ☺️ - in Caçador, SC, Brazil. Rosemeri Moura and 3 others · 󰍸 4 · 󰍹 5 · 󰤧 2 ... Além disso, Caçador tem o plano de contingência da Defesa ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "363746d364",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.instagram.com/reel/DaqEP-KuSM8/?hl=en",
+     "titulo": null,
+     "trecho": "Jul 11, 2026 ... Duas famílias que vivem em áreas de risco já receberam atendimento da assistência social. A Defesa Civil mantém o plano de contingência em ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4204202",
    "municipio": "Chapecó",
    "uf": "SC",
@@ -10660,56 +10964,6 @@
      "url": "https://www.gcd.com.br/ituporanga/ituporanga-decreta-estado-de-alerta-climatico-por-previsoes-do-el-nino/",
      "titulo": null,
      "trecho": "May 29, 2026 ... Ituporanga decreta estado de alerta climático ... Diante do El Niño, lojistas de Rio do Sul são orientados a fazer plano de contingência.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4209300",
-   "municipio": "Lages",
-   "uf": "SC",
-   "melhor_nivel": "B",
-   "n_pistas": 2,
-   "niveis": {
-    "A": 0,
-    "B": 2,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "4419188894",
-     "nivel_confianca": "B",
-     "pontos_confianca": 5,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_no_titulo",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/",
-     "titulo": "Defesa Civil de Lages participa de encontro nacional sobre El Niño",
-     "trecho": "Sep 14, 2026 ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...",
-     "data": "24/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "8aa38d8664",
-     "nivel_confianca": "B",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/",
-     "titulo": null,
-     "trecho": "8 days ago ... Defesa Civil de Lages participa de encontro nacional sobre El Niño. A ... plano de contingência local. As diretrizes obtidas durante as ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -12865,6 +13119,69 @@
    ]
   },
   {
+   "ibge": "4201307",
+   "municipio": "Araquari",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "c72bffd2a7",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_na_url",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://folhadearaquari.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/",
+     "titulo": "MPSC amplia atuação preventiva contra impactos do El Niño e abre ...",
+     "trecho": "3 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Araquari - SC, 89245-000. Redes sociais. Facebook ...",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4201703",
+   "municipio": "Ascurra",
+   "uf": "SC",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "1046080b53",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://jornaldomediovale.com.br/geral/ascurra-reforca-prevencao-para-enfrentar-possiveis-impactos-do-el-nino/",
+     "titulo": "Ascurra se prepara para o El Niño",
+     "trecho": "Defesa Civil de Ascurra amplia ações preventivas, atualiza planos de contingência e fortalece equipes para reduzir riscos durante o período de influência do El Niño 2026/2027.",
+     "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "4202537",
    "municipio": "Bom Jesus",
    "uf": "SC",
@@ -12891,37 +13208,6 @@
      "url": "https://www.instagram.com/reel/DZFHb2qRQl7/",
      "titulo": "EL NIÑO PROVOCA ALAGAMENTOS EM BOM JESUS DO ...",
      "trecho": "Jun 2, 2026 ... 1 like. fallaregiao. Bom Jesus do Itabapoana Estrutura Plano de Contingência para Emergências Climáticas A Secretaria Municipal de Assistência ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4203907",
-   "municipio": "Capinzal",
-   "uf": "SC",
-   "melhor_nivel": "B",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 1,
-    "C": 0
-   },
-   "pistas": [
-    {
-     "id": "d915e221c3",
-     "nivel_confianca": "B",
-     "pontos_confianca": 3,
-     "sinais": [
-      "fonte_imprensa",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://capinzalfm.com.br/noticia/ouro-apresenta-plano-de-contingencia-da-defesa-civil-e-reforca-preparacao-para-eventos-climaticos",
-     "titulo": null,
-     "trecho": "Jun 23, 2026 ... ... Plano de Contingência do município. O encontro ocorreu na Sala do ... Capinzal e região), 3º Sargento BM David Azevedo de Souza, que ...",
      "data": "22/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
@@ -15261,37 +15547,6 @@
      "trecho": "e agosto de 2026, a \nparametrização municipal, os testes de homologação, a validação de \nacesso e o plano de contingência necessários à transição. \nI – a habilitação do Município e dos contribuintes nos módulos \nnacionais aplicáveis; \nII – a recepção e consulta municipal das NFS-e no ADN; \nIII – a dispon",
      "data": "2026-09-02",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
-    }
-   ]
-  },
-  {
-   "ibge": "4203006",
-   "municipio": "Caçador",
-   "uf": "SC",
-   "melhor_nivel": "C",
-   "n_pistas": 1,
-   "niveis": {
-    "A": 0,
-    "B": 0,
-    "C": 1
-   },
-   "pistas": [
-    {
-     "id": "363746d364",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "plano_no_trecho",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.instagram.com/reel/DaqEP-KuSM8/?hl=en",
-     "titulo": null,
-     "trecho": "Jul 11, 2026 ... Duas famílias que vivem em áreas de risco já receberam atendimento da assistência social. A Defesa Civil mantém o plano de contingência em ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
