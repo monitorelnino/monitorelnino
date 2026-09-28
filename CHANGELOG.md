@@ -9,6 +9,43 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §273 · O painel de saúde sai da cadeia canônica · 28/09/2026
+
+Classe **infraestrutura da rodada**. Correção do §266, achada pela **primeira execução real** do
+`publicar_dados.yml`. **Nenhuma nota muda.**
+
+### O defeito, e por que o portão estava certo
+
+Pus `docs/SAUDE_PIPELINE.md` na cadeia canônica de derivados. Na primeira execução do publicador, o
+portão 12 reprovou: a regeneração alterava o painel e o manifesto.
+
+A razão é estrutural, não um carimbo desatualizado. O portão 12 cobra que **regenerar não altere nada
+versionado** — e isso só pode valer para derivado que é função do **dado commitado**. O painel é
+relatório da **execução em curso**: o passo que recalcula o índice grava a própria linha de saúde, e a
+regeneração seguinte encontra o painel legitimamente diferente do commitado. Derivado que muda durante a
+própria rodada não cabe naquele invariante.
+
+### A correção
+
+O painel sai da cadeia (e da constante `CADEIA_DERIVADOS` do orquestrador, que tem de ser idêntica) e
+passa a ser gerado **depois dos portões e antes do commit**, nos dois workflows que commitam:
+`publicar_dados.yml` e `_coletor.yml`. Ele continua versionado e continua sendo o painel que a editoria
+abre — só deixa de ser cobrado por uma regra que não se aplica a ele.
+
+`data/log_buscas_resumo.json` **fica** na cadeia, e a diferença importa: ele é função do log
+commitado, não da execução em curso. O publicador não escreve no log de buscas.
+
+### O que isto diz sobre o §266
+
+A revisão do §266 passou nos portões locais e no CI do PR porque em nenhum dos dois o painel havia sido
+escrito por um passo anterior da mesma execução — o defeito só aparece quando o pipeline roda de
+verdade, na ordem de verdade. É o argumento a favor de ter desacoplado: a primeira execução do
+publicador novo encontrou, em cinco minutos, um defeito que a suíte não encontraria.
+
+**O domínio foi republicado nessa mesma execução** e está conferido: `HTTP/1.1 401` com
+`Www-Authenticate: Basic`. O passo de reposição tem `if: always()` justamente para isso — falha em
+passo anterior não deixa o domínio no ar errado.
+
 ## §272 · Os horários da janela deixam de colidir no mesmo minuto · 28/09/2026
 
 Classe **infraestrutura da rodada**. Correção do §265, achada por auditoria dos próprios horários que
