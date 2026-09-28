@@ -1,0 +1,96 @@
+{
+ "formato_versao": 1,
+ "execucoes": [
+  {
+   "data": "2026-09-28",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-09-28T08:54:30",
+   "duracao_s": 123.7,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-09-28T08:56:33",
+   "duracao_s": 103.4,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-09-28T08:58:16",
+   "duracao_s": 318.2,
+   "itens": 1161,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-09-28T09:03:34",
+   "duracao_s": 1.5,
+   "itens": 1161,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-09-28T09:03:35",
+   "duracao_s": 3.8,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-09-28T09:03:38",
+   "duracao_s": 1.7,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "verificar_prazos_legais.py",
+   "inicio": "2026-09-28T09:03:39",
+   "duracao_s": 0.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-09-28T09:03:39",
+   "duracao_s": 881.0,
+   "itens": 41,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-09-28T09:18:20",
+   "duracao_s": 18.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-28",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-09-28T09:18:38",
+   "duracao_s": 1.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  }
+ ],
+ "atualizado_em": "2026-09-28T09:18:39"
+}
