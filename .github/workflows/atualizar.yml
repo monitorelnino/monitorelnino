@@ -1,27 +1,26 @@
 name: Atualização semanal de dados
 
 on:
+  # 28/09/2026 (item 1 do handover de desacoplamento + cadência do item 1b): as quatro execuções
+  # diárias e a semanal SAÍRAM daqui. Medido em 27/09, com 100 execuções: mediana de 92 min, máximo de
+  # 240, e de 12 execuções sete canceladas, duas falhas e um sucesso — porque a cadência de 6 h era
+  # menor que a duração, e execuções que se sobrepõem se cancelam.
+  #
+  # O que rodava aqui agora vive em jobs independentes, cada um com teto próprio e concorrência em
+  # fila: `noturno_diarios.yml` (22h30), `noturno_descoberta.yml` (23h30), `noturno_evidencias.yml`
+  # (1h), `noturno_juiz.yml` (3h), `semanal_sinais_e_links.yml` (domingo 4h) e `publicar_dados.yml`
+  # (06h e 22h). Todos no fuso de Brasília, dentro da janela noturna de 22h às 06h aprovada pela
+  # editoria em 27/09/2026.
+  #
+  # Este workflow PERMANECE, só por disparo manual: é a rodada completa de uma vez, útil para
+  # reprocessar um dia inteiro ou para investigar. Nada aqui foi apagado — o monólito continua
+  # reversível, e é por isso que o `schedule` saiu em vez de o arquivo.
+  #
+  # O semanal de DOMINGO permanece, porque o item 1b o mantém explicitamente: é a rodada completa que
+  # o site promete ao leitor, e é ela que o portão `scripts/testar_cadencia_publicacao.py` cobra
+  # contra a frase pública de `obrigado.html`.
   schedule:
-    - cron: "0 3 * * 0"  # atualizacao SEMANAL (compromisso publico do site): DOMINGO 0h de Brasilia.
-                         # ATENCAO AO FUSO: o cron do GitHub e UTC; meia-noite de Brasilia e 03h UTC
-                         # do MESMO dia, entao o campo de dia da semana e 0 (domingo) e bate com o
-                         # domingo brasileiro. O portao de cadencia em atualizar.py decide pelo dia
-                         # no fuso America/Sao_Paulo. A rodada (75-105 min) termina por volta de
-                         # 01h20 de Brasilia, ainda no domingo -- nao cruza a meia-noite.
-                         # 20/09/2026 (editoria): segundas 09h UTC -> sabado 22h40 -> domingo 0h.
-    - cron: "0 1 * * *"   # 22/09/2026 (decisao editorial): cadencia de 4x/dia, a cada 6h. Substitui as duas
-                          # rodadas diarias de 09h e 21h UTC (v2.2.4 E4 e 03/09/2026). Motivo: acelerar a
-                          # varredura integral dos 5.571 municipios enquanto INTENSIVO_DE/INTENSIVO_ATE
-                          # estiverem ativas -- e MANTIDA depois disso como cadencia permanente, ate nova
-                          # instrucao da editoria.
-                          # Os quatro horarios sao deslocados da rodada semanal de domingo ("0 3 * * 0")
-                          # para nao colidir no mesmo minuto: 1, 7, 13 e 19 UTC contra 3 UTC.
-                          # Regra de cadencia inalterada: atualizar.py encerra sem comitar fora da semana
-                          # intensiva (INTENSIVO_ATE) se nao for o dia de publicacao.
-                          # 01h UTC = 22h de Brasilia do dia anterior
-    - cron: "0 7 * * *"   # 04h de Brasilia
-    - cron: "0 13 * * *"  # 10h de Brasilia
-    - cron: "0 19 * * *"  # 16h de Brasilia
+    - cron: "0 3 * * 0"   # domingo, 0h de Brasília (o cron é UTC; 3 UTC = 0h BRT do mesmo domingo)
   workflow_dispatch:       # execução manual pelo botão "Run workflow"
     inputs:
       ensaio:

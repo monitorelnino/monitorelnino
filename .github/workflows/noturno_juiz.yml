@@ -1,0 +1,33 @@
+# O juiz automático — 3h de Brasília (06:00 UTC), DEPOIS dos diários e da descoberta.
+#
+# Item 1 do handover de desacoplamento e cadência do item 1b. "Depois" aqui é por HORÁRIO, não por
+# dependência de job: se os diários falharem, o juiz roda sobre a fila que existe. A regra do item 1 é
+# explícita — nenhum job espera pelo término de outro; o que não chegou fica com a data anterior,
+# declarada.
+#
+# O juiz precisa de Node porque a rede de proteção roda a suíte de portões (jsdom) antes de aplicar, e
+# desfaz em disco se algum reprovar (§262, Etapa 7).
+name: Noturno — juiz automático
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 3h de Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  juiz:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: juiz
+      timeout_minutos: 90
+      precisa_node: true
+      comandos: |
+        revisar_pistas.py --preparar --relatorio
+        julgar_e_aplicar_descobertas.py
+        julgar_filas.py --relatorio
+        scripts/amostra_auditoria_semanal.py
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

@@ -18,7 +18,11 @@
 name: Busca web — cadência automática
 on:
   schedule:
-    - cron: "0 */2 * * *"   # a cada 2h; o próprio job decide se pula (fase 2 só roda em 0/6/12/18 UTC)
+    # 28/09/2026 (item 1b, "vai" da editoria em 27/09 à noite): a cada 2 h DENTRO DA JANELA NOTURNA
+    # de 22h às 6h de Brasília — 1, 3, 5, 7 e 9 UTC. Cinco rodadas por noite x 150 municípios = 750,
+    # e o ciclo completo dos 5.571 passa a ~7,5 dias. Fora da janela, nada: a coleta não interfere no
+    # trabalho da editoria durante o dia. Antes eram 12 rodadas por dia, a qualquer hora.
+    - cron: "0 1,3,5,7,9 * * *"
   workflow_dispatch:
     inputs:
       forcar:

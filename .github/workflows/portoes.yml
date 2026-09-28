@@ -338,3 +338,8 @@ jobs:
           python3 juiz.py --autoteste
           python3 julgar_filas.py --autoteste
           python3 scripts/amostra_auditoria_semanal.py --autoteste
+          # 28/09/2026 (§265, itens 1 e 1a do desacoplamento): a linha de saúde por script. O
+          # autoteste trava o que dá sentido a ela — itens nulo é "não medido" e nunca zero, o resumo
+          # do erro é a linha decisiva e não o log inteiro, a poda mantém sete dias, e o próprio
+          # autoteste não escreve em data/.
+          python3 scripts/saude_pipeline.py --autoteste

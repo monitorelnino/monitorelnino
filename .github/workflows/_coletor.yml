@@ -1,0 +1,175 @@
+# Workflow REUTILIZÁVEL: um coletor noturno.
+#
+# Handover `HANDOVER_desacoplar_pipeline_e_emagrecer_repositorio_27-09-2026.md`, itens 1, 1a e 1b.
+#
+# POR QUE ELE EXISTE
+# ------------------
+# O `atualizar.yml` é um job monolítico com cerca de trinta scripts em sequência: mediana de 92 min,
+# máximo de 240, e de 12 execuções medidas em 27/09 sete foram canceladas, duas falharam e uma deu
+# certo. Com cadência de 6 h e duração de 1,5 a 4 h, as execuções se sobrepõem e se cancelam — e uma
+# fonte lenta derruba tudo o que vem depois dela.
+#
+# Aqui cada coletor roda no seu próprio job, com teto curto, `continue-on-error` por script, o seu
+# arquivo de saída e a sua linha de saúde. Coletor grava; o publicador lê. **Nenhum job espera por
+# outro:** o que não chegou fica com a data anterior, declarada.
+#
+# ITEM 1a (correção obrigatória, 27/09 23h50 UTC): a rodada longa não falhava na coleta, falhava no
+# COMMIT. O run 36338485886 passou por todas as etapas de coleta e perdeu tudo no passo 37, porque
+# entre o início e o commit entraram três PRs e duas rodadas de busca web na `main`. Por isso o commit
+# aqui é um LAÇO de rebase-e-push, com até cinco tentativas; conflito em arquivo de dado gerado se
+# resolve regenerando depois do rebase, nunca à mão.
+name: Coletor noturno (reutilizável)
+
+on:
+  workflow_call:
+    inputs:
+      nome:
+        description: "Nome curto do coletor, usado na mensagem de commit e no resumo do job"
+        required: true
+        type: string
+      comandos:
+        description: "Um comando por linha. Cada um roda pelo invólucro de saúde e NUNCA derruba o job."
+        required: true
+        type: string
+      timeout_minutos:
+        description: "Teto do job inteiro"
+        required: false
+        default: 45
+        type: number
+      precisa_tesseract:
+        description: "true só para o coletor de evidências (OCR)"
+        required: false
+        default: false
+        type: boolean
+      precisa_node:
+        description: "true quando algum comando aciona portão em Node (jsdom)"
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      ROBO_DEPLOY_KEY:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.timeout_minutos }}
+    # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
+    # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
+    concurrency:
+      group: coletor-${{ inputs.nome }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }
+
+      # Partir do main REAL, não do SHA fixado no disparo (§148): com vários jobs noturnos e a
+      # editoria mesclando de dia, o SHA do disparo envelhece entre a fila e a execução.
+      - name: Partir do main atual
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git fetch --quiet --depth=50 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git reset --hard FETCH_HEAD
+          echo "main atual: $(git rev-parse --short HEAD)"
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+          cache: pip                       # item 5: instalação abaixo de 1 min por job
+      - run: pip install -r requirements.txt
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        if: inputs.precisa_node
+        with: { node-version: "22", cache: npm }
+      - run: npm ci
+        if: inputs.precisa_node
+
+      - name: Instalar Tesseract com o modelo português (§177)
+        if: inputs.precisa_tesseract
+        timeout-minutes: 5
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por
+
+      # Cada comando passa pelo invólucro, que cronometra e grava a linha de saúde. `|| true` é
+      # deliberado: coletor que falha não derruba os outros nem impede o commit do que já foi achado.
+      - name: Coletar
+        run: |
+          while IFS= read -r cmd; do
+            [ -z "$(echo "$cmd" | tr -d '[:space:]')" ] && continue
+            echo "::group::$cmd"
+            python3 scripts/saude_pipeline.py --rodar $cmd || true
+            echo "::endgroup::"
+          done <<'COMANDOS'
+          ${{ inputs.comandos }}
+          COMANDOS
+
+      - name: Regenerar derivados
+        continue-on-error: true
+        timeout-minutes: 10
+        run: bash scripts/verificar_derivados.sh || true
+
+      - name: Commit com rebase-e-push (item 1a)
+        id: commit
+        env:
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        run: |
+          git config user.name "monitor-el-nino-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          git commit -m "${{ inputs.nome }} automático ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
+          echo "houve=1" >> "$GITHUB_OUTPUT"
+          git checkout -- . 2>/dev/null || true
+          mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
+          EMPURROU=0
+          for TENTATIVA in 1 2 3 4 5; do
+            GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+            if ! git rebase FETCH_HEAD; then
+              # conflito em arquivo de dado GERADO se resolve regenerando, nunca à mão (item 1a).
+              git rebase --abort || true
+              echo "tentativa $TENTATIVA: rebase conflitou; regenerando derivados e tentando de novo"
+              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+              git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
+              bash scripts/verificar_derivados.sh || true
+              git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+              git diff --cached --quiet || git commit --amend --no-edit
+            fi
+            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
+              EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
+            fi
+            echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
+            sleep $((TENTATIVA * 10))
+          done
+          rm -f ~/.ssh/robo
+          if [ "$EMPURROU" != "1" ]; then
+            echo "empurrou=0" >> "$GITHUB_OUTPUT"
+            echo "::error::commit perdido para main em movimento"
+            exit 1
+          fi
+          echo "empurrou=1" >> "$GITHUB_OUTPUT"
+
+      # As saídas viram artefato quando o commit se perde: o dado coletado não desaparece junto com
+      # o job (item 1a).
+      - name: Guardar as saídas quando o commit se perde
+        if: failure() && steps.commit.outputs.houve == '1'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: coleta-perdida-${{ inputs.nome }}-${{ github.run_id }}
+          path: |
+            data/
+            docs/MANIFEST_SHA256.txt
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Resumo no job
+        if: always()
+        run: |
+          echo "### Coletor ${{ inputs.nome }}" >> "$GITHUB_STEP_SUMMARY"
+          python3 scripts/saude_pipeline.py --listar | tail -20 >> "$GITHUB_STEP_SUMMARY" || true
