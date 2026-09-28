@@ -70,6 +70,12 @@ pipeline. Erro em **duas rodadas seguidas** vira **alerta**, porque aí não é 
 sequência zera no primeiro sucesso: falhas alternadas não alertam, e isso é deliberado — alerta que
 dispara por intermitência de fonte deixa de ser lido.
 
+O painel é derivado, e derivado novo na cadeia obriga a mexer em **duas** listas: a de
+`scripts/verificar_derivados.sh` e a constante `CADEIA_DERIVADOS` de
+`julgar_e_aplicar_descobertas.py`, que o juiz usa para regenerar antes de aplicar. Eu mexi só na
+primeira, e o autoteste do orquestrador reprovou — é exatamente o invariante do §163, criado porque a
+divergência entre as duas deixou o portão 12 vermelho na `main` em 22/09/2026.
+
 Dezessete casos de autoteste, entre eles os que separam as duas classes (`regerar_algo.py` **não** é
 essencial: `gerar` tem de começar o nome), o que confere que a sequência de erros zera no sucesso, e
 o que garante que `itens` nulo apareça como travessão e nunca como zero — no painel como no dado,
