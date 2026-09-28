@@ -1,0 +1,29 @@
+# Preservação de evidência (baixar, ler texto, OCR) — 1h de Brasília (04:00 UTC), lotes pequenos.
+#
+# Item 1 do handover de desacoplamento e cadência do item 1b. É o passo mais lento da rodada antiga:
+# download de PDF, extração de texto e OCR de escaneado, com teto somado de 75 min dentro do job
+# monolítico. Em job próprio, ele pode demorar sem levar a publicação com ele.
+name: Noturno — evidências e OCR
+
+on:
+  schedule:
+    - cron: "0 4 * * *"   # 1h de Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidencias:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: evidencias
+      timeout_minutos: 90
+      precisa_tesseract: true
+      comandos: |
+        preservar_evidencias.py --limite 20
+        preservar_evidencias.py --ler --limite 20
+        preservar_evidencias.py --ocr --limite 6
+        scripts/preservar_textos_integrais.py
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
