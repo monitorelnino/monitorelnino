@@ -101,6 +101,9 @@ jobs:
         if: always() && steps.searxng.outputs.pronto == '1'
         continue-on-error: true
         run: |
+          echo "### Disjuntor por motor de origem (item 7b)" >> "$GITHUB_STEP_SUMMARY"
+          python3 motores_busca.py --estado >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### SearXNG — motores com erro nesta rodada" >> "$GITHUB_STEP_SUMMARY"
           docker logs searxng 2>&1 | grep -iE "error|429|captcha|timeout|blocked|too many" | sort | uniq -c | sort -rn | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
           docker logs searxng 2>&1 | grep -iE "error|429|captcha|timeout|blocked|too many" | sort | uniq -c | sort -rn | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
