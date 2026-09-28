@@ -24,7 +24,11 @@ jobs:
       timeout_minutos: 90
       comandos: |
         coletar_diarios_municipais.py --tamanho 150
-        coletar_diarios_consorciados.py --desde 2026-06-29
+        # 28/09/2026 (§276): a janela era `--desde 2026-06-29`, ou seja TRÊS MESES revarridos a cada
+        # noite — 87 dos 90 min do teto, e o job cancelado a segundos do fim. O orquestrador sempre
+        # usou oito dias corridos (`atualizar.py`, linha 250), e é isso que faz sentido para um coletor
+        # que roda todas as noites: a janela cobre o atraso de publicação do diário, não o histórico.
+        coletar_diarios_consorciados.py --desde-dias 8
         coletar_doe.py
         coletar_s2id.py
     secrets:
