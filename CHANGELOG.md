@@ -9,6 +9,67 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §282 · O juiz nunca promoveu nada, e o publicador morria do próprio trabalho · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 1 do bloco "Frescor do site" (decisão da central,
+28/09/2026, tarde). **Nenhuma nota muda, nenhum peso muda.**
+
+### O fato que a editoria mediu, e a causa
+
+Nada do que foi coletado desde **25/09** chegou ao site: `data/meta.json` marcava 25/09, o banco
+seguia com 267 registros e 111 planos, `data/promocoes_automaticas.json` não existia. Não era um
+defeito, eram quatro, em dois workflows.
+
+**No juiz.** `noturno_juiz.yml` rodava `julgar_filas.py --relatorio`. Sem `--aplicar`, o script
+imprime o veredito e **não escreve** — nem na fila, nem no registro de decisões, nem no log. Mesmo
+que a noite terminasse, ela não deixava traço; era por isso que o arquivo de promoções não existia.
+Nenhum dos dois julgadores tinha teto, e a fila de imprensa tem **1.495** pendentes de documento e
+cerca de **1.174** pendentes de codebook, cada uma com busca na rede: o job de 90 min foi
+**cancelado** às 12h08 de 28/09, e como o `_coletor.yml` só commita ao final, a noite inteira de
+trabalho foi perdida sem rastro. O aplicador rodava **antes** do juiz de codebook, de modo que
+buscava documento de pista que o codebook descartaria.
+
+**No publicador.** O passo "Regenerar a cadeia canônica" chamava `verificar_derivados.sh` no modo
+`git`, que exige árvore limpa **depois** de regenerar. É o único modo que nunca pode valer ali: o
+publicador existe para pôr os derivados em dia depois de a coleta commitar dado novo, então ele
+regenerava, encontrava a diferença que ele mesmo acabara de produzir, e reprovava. As duas execuções
+de 28/09 (04h14 e 09h07) morreram assim. **O publicador falhava precisamente porque tinha trabalho a
+fazer** — e o efeito é o pior possível num monitor de evidências: silêncio que parece normalidade.
+
+### O que mudou
+
+- `julgar_filas.py --aplicar --limite 250` e `julgar_e_aplicar_descobertas.py --limite 150`, nesta
+  ordem: o codebook julga primeiro, porque ele só **aperta** o critério. Teto que termina e commita
+  vale mais que fila inteira que não chega ao fim, e o que sobra fica declarado na saída.
+- `--limite` novo no aplicador, com recusa de zero e de negativo, e a saída dizendo quantas ficaram
+  para a próxima — fila declarada não é lacuna de coleta.
+- No publicador, `--idempotencia` no lugar do modo `git`: regenera e exige que uma **segunda**
+  regeneração não altere nada, que é a propriedade de verdade. O portão 12 no modo `git` continua
+  valendo onde faz sentido — na suíte, **depois** do commit local, quando a árvore está limpa.
+- Ordem nova no publicador: commit local, suíte inteira, e só então o push. Nada sobe sem a suíte; o
+  push está condicionado a ela.
+
+### O defeito que ligar o `--aplicar` teria exposto
+
+`--aplicar` gravava recusa **permanente** na pista, e `pendente()` nunca mais a devolveria à fila.
+Mas o veredito de recusa não distingue "lemos e não serve" de "não conseguimos ler": um 403 de uma
+hora, um portal fora do ar, uma falha de rede apagariam a pista para sempre. Ligado sobre 1.174
+pistas numa noite ruim, isso queimaria a fila em silêncio.
+
+O veredito passou a carregar `leu_documento`, e a aplicação virou função pura (`aplicar_no_objeto`)
+com três saídas: **promovida**, **recusada** e **adiada**. Adiada não recebe `juiz` — se recebesse,
+`pendente()` a consideraria julgada — e volta à fila na próxima rodada. É a distinção de sempre, um
+nível abaixo: entre "a fonte não tem" e "não conseguimos ler o que a fonte tem". Sete travas novas no
+autoteste (27 casos).
+
+### O que este PR não faz, e é da editoria
+
+O juiz de codebook promove no **veredito** e escreve em `promocoes_automaticas.json`; quem aplica no
+banco é `julgar_e_aplicar_descobertas.py`, e ele só olha pistas de imprensa com status
+`pendente_confirmacao_documento`. **Um veredito `promove: true` do codebook não tem hoje caminho até
+o banco** — nada lê aquele campo para promover. Não abri esse caminho aqui: criá-lo muda o que entra
+no índice, e isso é decisão da editoria. Fica registrado como pedido separado.
+
 ## §281 · "Imprensa" é canal de descoberta, e o rótulo passa a dizer isso · 28/09/2026
 
 Classe **texto público**. Defeito 6 do relatório da auditoria do funil, item 3 do bloco de decisões da
