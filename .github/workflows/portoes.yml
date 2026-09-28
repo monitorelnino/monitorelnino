@@ -376,4 +376,10 @@ jobs:
           # preservam evidência.
           python3 scripts/verificar_binario_novo_em_evidencias.py --contra origin/main
           python3 scripts/declarar_evidencia_perdida.py --autoteste
+          # 28/09/2026 (decisão da editoria, item 1): o Querido Diário volta ao funil. O autoteste do
+          # juiz trava o recorte do ato — a pista do QD aponta a EDIÇÃO, e o documento primário do
+          # §5.2.1 é o ATO. O da fila trava que ela gera ALVOS, não pistas: a primeira tentativa montou
+          # pistas com o excerto errado, e a medição mostrou antes de confiar.
+          python3 scripts/fila_do_juiz_querido_diario.py --autoteste
+          python3 consultar_querido_diario.py --check
           python3 scripts/empacotar_evidencias.py --autoteste

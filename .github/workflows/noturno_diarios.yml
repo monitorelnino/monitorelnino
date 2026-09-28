@@ -23,6 +23,7 @@ jobs:
       nome: diarios
       timeout_minutos: 90
       comandos: |
+        consultar_querido_diario.py --alvos data/fila_qd_169.json --limite 40
         coletar_diarios_municipais.py --tamanho 150
         coletar_diarios_consorciados.py --desde 2026-06-29
         coletar_doe.py
