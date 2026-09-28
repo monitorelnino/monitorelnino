@@ -9,6 +9,48 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §290 · A busca dirigida estava escrita e não estava ligada · 28/09/2026
+
+Classe **método e coleta**. Conclusão do bloco das 17:20. **Nenhuma nota muda, nenhum peso muda:**
+a busca dirigida não afrouxa critério nenhum — ela entrega um documento melhor para o juiz julgar,
+com as mesmas etapas.
+
+### A correção de uma afirmação minha
+
+O §288 descreveu as três rotas como se elas executassem. Não executavam: o módulo tinha as
+consultas, os identificadores e a fila de revisita, mas **nenhuma rota de rede e nenhum chamador**.
+Rodar o noturno naquele estado produziria "zero das 176 viraram promoção" — e o zero não seria do
+mundo, seria do código não ligado. Fica registrado porque o erro é do tipo que se esconde bem: o
+portão do autoteste passava, e o número sairia com cara de medição.
+
+### O que foi ligado
+
+`procurar()` executa as três rotas e para na primeira que devolve fonte oficial:
+
+1. **Querido Diário**, pelo território — e **só** quando o código IBGE é conhecido: sem ele não há
+   território a consultar, e chutar o código consultaria o diário de outro município.
+2. **Sítio oficial**, com `site:gov.br` mais a consulta específica. É o que se pode afirmar sem
+   conhecer o domínio do município: a lista de domínios oficiais cobre os **estados**, não os 5.571
+   municípios, e montar `prefeitura<nome>.<uf>.gov.br` erraria na maioria.
+3. **Cascata aberta**, string por string, da mais específica para a menos.
+
+Toda consulta passa pelo **ritmo da rodada** e pelo **disjuntor por motor de origem** — a busca
+dirigida some no mesmo limite de taxa que qualquer outra, e não há caminho de rede novo a manter.
+Motor mudo devolve lista vazia: **ausência de resposta não vira ausência de ato**, a recusa original
+fica e a pista volta pela fila de reprocessamento.
+
+No juiz, a recusa por `sem_documento_primario` ou `citacao_incompleta` aciona a busca; achando
+documento, o veredito é refeito **sobre ele**, guardando qual era a recusa original.
+
+### O teto caiu, e é proposital
+
+De 250 para 150 no codebook: cada recusa por falta de documento passa a custar até quatro consultas
+de rede com 3 s de ritmo entre elas, e a noite anterior mostrou que **74% das recusas são desse
+tipo**. O noturno do juiz ganhou `precisa_searxng` — ligar o coletor sem a instância que ele
+consulta produziria lacuna toda noite com cara de "fonte fora do ar", que foi o erro do §278.
+
+Seis travas novas no juiz de filas (48 casos) e treze na busca dirigida (34 casos), todas offline.
+
 ## §289 · O caminho do juiz até o banco, aberto — e a primeira promoção não entrou · 28/09/2026
 
 Classe **método e prova**. Item 1 do bloco das 19:50 (decisão da central). **Nenhum peso, régua ou
