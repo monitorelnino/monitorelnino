@@ -290,14 +290,19 @@ def trecho_em_volta(texto: str, achado, largura: int = 160) -> str:
 # Etapa 0 — documento primário
 # =============================================================================================
 def etapa0_documento_primario(url: str, texto: str) -> tuple:
-    """(ok, motivo, trecho). Fonte oficial e texto extraível — nada disso se presume."""
+    """(ok, motivo, trecho). Fonte oficial e texto extraível — nada disso se presume.
+
+    28/09/2026: "documento não obtido" ganhou motivo PRÓPRIO (`documento_inacessivel`). Ele estava
+    junto de "url fora dos padrões de fonte oficial" sob o mesmo nome, e as duas coisas são
+    opostas: a segunda é estável (a URL é o que é), a primeira é uma noite ruim de rede. Separá-las
+    é o que permite recusar uma e adiar a outra."""
     if not url:
         return False, "sem_documento_primario", ""
     u = str(url).lower()
     if not any(p in u for p in PADROES_FONTE_PROVAVEL_OFICIAL):
         return False, "sem_documento_primario", f"url fora dos padrões de fonte oficial: {url}"
     if texto is None:
-        return False, "sem_documento_primario", "documento não obtido"
+        return False, "documento_inacessivel", "documento não obtido nesta tentativa"
     if len(texto.strip()) < TEXTO_MINIMO:
         # 400 caracteres é o piso do que pode ser um ato. Abaixo disso é resumo, menu de portal
         # ou recusa servida com 200 (§186) — e nenhum deles é documento primário.

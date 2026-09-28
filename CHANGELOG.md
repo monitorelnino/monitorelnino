@@ -9,6 +9,43 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §287 · Recusa por causa técnica deixa de ser permanente, com back-off e histórico · 28/09/2026
+
+Classe **método e coleta**. Item 2 do bloco das 19:50 (decisão da central). **Nenhuma nota muda,
+nenhum peso muda.**
+
+### Duas coisas com o mesmo nome
+
+A Etapa 0 chamava de `sem_documento_primario` três situações diferentes: a pista sem URL, a URL que
+não é fonte oficial, e **o documento que não respondeu**. As duas primeiras são estáveis — a URL é o
+que é. A terceira é uma noite ruim de rede, e tratá-la como as outras apaga pista por 403 de uma
+hora. "Documento não obtido" ganhou motivo próprio: `documento_inacessivel`.
+
+Com ele, a recusa passa a ter **classe**, e é a classe que decide o destino:
+
+| classe | o que é | destino |
+|---|---|---|
+| `tecnica` | `documento_inacessivel`, `texto_nao_extraivel` — não conseguimos ler | volta pelo back-off |
+| `criterio` | documento lido e reprovado nas etapas 1–6, ou URL que não é fonte oficial | recusa estável |
+
+### O back-off, e o fim dele
+
+1, 3 e depois 7 dias. Sem a espera, a mesma fonte fora do ar seria consultada toda noite, o teto da
+rodada seria gasto com ela, e as pistas nunca tentadas ficariam para trás. Na **quinta** tentativa
+sem leitura a pista vira `inacessivel_persistente`: sai da fila e **continua no registro**, porque
+fonte que ninguém consegue ler é um fato sobre a fonte — some do processo, não do arquivo.
+
+Um erro meu de índice, achado pelo autoteste: a primeira versão indexava o back-off pelo número de
+tentativas e **pulava o 1 dia inteiro**, começando em 3. A trava agora exige a sequência exata.
+
+### Toda tentativa fica escrita
+
+`juiz_tentativas` guarda data, classe, motivo e versão do codebook de cada passada. É por esse
+histórico que se distingue uma fonte fora do ar há uma noite de outra fora do ar há um mês — e a
+pista adiada **não** recebe `juiz`, porque receber a tiraria da fila para sempre.
+
+Catorze travas novas no autoteste (42 casos), todas sem rede e sem escrita.
+
 ## §286 · "Institui" solto promoveu quatro registros falsos de cinco · 28/09/2026
 
 Classe **método e prova**. Pré-requisito do item 1 do bloco das 19:50 — abrir o caminho do juiz até

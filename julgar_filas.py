@@ -47,7 +47,8 @@ FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json", "
 PROMOCOES = "promocoes_automaticas.json"
 
 # Motivos de recusa do codebook, na ordem das etapas — a ordem do relatório segue esta.
-MOTIVOS = ("sem_documento_primario", "texto_nao_extraivel", "ente_nao_confirmado",
+MOTIVOS = ("sem_documento_primario", "documento_inacessivel", "texto_nao_extraivel",
+           "ente_nao_confirmado",
            "citacao_incompleta", "executivo_pendente", "autoridade_nao_confirmada",
            "natureza_duvidosa", "fora_do_objeto", "familia_de_risco_nao_identificada",
            "resposta")
@@ -61,18 +62,29 @@ def pistas_da_fila(doc: dict) -> list:
     return []
 
 
-def pendente(p: dict) -> bool:
+def pendente(p: dict, hoje=None) -> bool:
     """Pista que ainda espera decisão. Já resolvida, não se mexe.
 
     28/09/2026: o comentário aqui dizia "já julgada por ESTA versão do codebook" e o código não
     olhava a versão nenhuma — qualquer julgamento anterior tirava a pista da fila para sempre.
     Ficava sem efeito o único mecanismo que faz um critério novo alcançar o que o critério velho já
     decidiu: subir a versão. A regra que promoveu quatro registros falsos não teria sido reaplicada
-    sobre eles. Agora a comparação é com a versão em vigor, que é o que o comentário sempre disse."""
+    sobre eles. Agora a comparação é com a versão em vigor, que é o que o comentário sempre disse.
+
+    28/09/2026 (item 2): a pista adiada por causa técnica volta, mas **na data do back-off** — 1, 3
+    e depois 7 dias. Sem essa espera, a mesma fonte fora do ar seria consultada toda noite, o teto
+    da rodada seria gasto com ela, e as pistas nunca tentadas ficariam para trás. Esgotadas as
+    tentativas, a pista fica `inacessivel_persistente`: sai da fila e **continua no registro**, com
+    o histórico do que se tentou."""
     from juiz import CODEBOOK_VERSAO
     status = str(p.get("status") or "")
     if (p.get("juiz") or {}).get("codebook") == CODEBOOK_VERSAO:
         return False    # já julgada por esta versão do codebook
+    if "inacessivel_persistente" in status:
+        return False
+    prox = p.get("proxima_tentativa_em")
+    if prox and str(prox) > (hoje or _hoje_data()).isoformat():
+        return False    # ainda dentro do back-off
     return status.startswith("pista") or status.startswith("rebaixado") or status.startswith("revertida")
 
 
@@ -104,22 +116,86 @@ def julgar_uma(p: dict, buscar, preservar=None) -> dict:
     return veredito
 
 
+# 28/09/2026 (item 2 do bloco das 19:50): recusa nunca é permanente por causa técnica.
+#
+# Duas coisas diferentes vinham com o mesmo nome. **Técnica** é não ter conseguido ler: 403, 429,
+# timeout, portal fora do ar, texto que não se extrai do PDF. **Por critério** é ter lido e o
+# documento não servir. A primeira fala do nosso lado da linha; a segunda, do documento. Tratá-las
+# igual apaga pista por causa de uma noite ruim de rede — foi o que o desenho de `leu_documento`
+# evitou na primeira passada real, poupando 32 pistas.
+MOTIVOS_TECNICOS = ("documento_inacessivel", "texto_nao_extraivel")
+# Back-off entre tentativas. Cinco tentativas, e então `inacessivel_persistente` — que continua
+# VISÍVEL no arquivo: pista que ninguém consegue ler é um fato sobre a fonte, e some do processo,
+# não do registro.
+BACKOFF_DIAS = (1, 3, 7)
+TENTATIVAS_ATE_PERSISTENTE = 5
+
+
+def classe_da_recusa(v: dict) -> str:
+    """'tecnica' | 'criterio' | '' (quando promove). A classe decide o destino, não o motivo."""
+    if v.get("promove"):
+        return ""
+    if v.get("motivo") in MOTIVOS_TECNICOS or not v.get("leu_documento", True):
+        return "tecnica"
+    return "criterio"
+
+
+def proxima_tentativa(n_feitas: int, hoje):
+    """A data da próxima leitura, depois de `n_feitas` tentativas técnicas. None quando esgotou.
+
+    1, 3 e depois 7 dias; na quinta tentativa não há próxima, e a pista vira
+    `inacessivel_persistente`. O primeiro retorno é a espera **depois da primeira** tentativa — a
+    versão anterior indexava pelo número de tentativas e pulava o 1 dia inteiro."""
+    import datetime
+    if n_feitas >= TENTATIVAS_ATE_PERSISTENTE:
+        return None
+    return hoje + datetime.timedelta(days=BACKOFF_DIAS[min(max(n_feitas, 1) - 1,
+                                                           len(BACKOFF_DIAS) - 1)])
+
+
 def aplicar_no_objeto(p: dict, v: dict) -> str:
     """Escreve o veredito na pista e diz o que foi feito: promovida, recusada ou adiada.
 
     Função pura sobre o dicionário da pista — é o que permite ao autoteste provar, sem rede e sem
     escrita, que documento não lido NÃO queima a pista. Adiada não recebe `juiz`: se recebesse,
-    `pendente()` a consideraria julgada e ela nunca voltaria."""
-    if not v.get("leu_documento"):
+    `pendente()` a consideraria julgada e ela nunca voltaria.
+
+    28/09/2026 (item 2 do bloco das 19:50): toda tentativa fica registrada em `juiz_tentativas`,
+    com data, classe e motivo. Nada se apaga — a pista guarda o que já se tentou, e é por esse
+    histórico que se sabe se uma fonte está fora do ar há uma noite ou há um mês."""
+    import datetime
+    hoje = _hoje_data()
+    classe = classe_da_recusa(v)
+    tentativas = p.setdefault("juiz_tentativas", [])
+    tentativas.append({"em": hoje.isoformat(), "classe": classe or "promocao",
+                       "motivo": v.get("motivo"), "codebook": v.get("codebook")})
+
+    if classe == "tecnica":
+        # Não escreve `juiz`: a pista continua pendente, e volta na data do back-off.
+        tecnicas = sum(1 for t in tentativas if t.get("classe") == "tecnica")
+        prox = proxima_tentativa(tecnicas, hoje)
+        if prox is None:
+            p["status"] = (f"pista — inacessivel_persistente: {tecnicas} tentativas sem leitura do "
+                           f"documento; continua no registro, fora da fila")
+            p.pop("proxima_tentativa_em", None)
+            return "inacessivel"
+        p["proxima_tentativa_em"] = prox.isoformat()
         return "adiada"
+
+    p.pop("proxima_tentativa_em", None)
     p["juiz"] = {"codebook": v["codebook"], "promove": v["promove"], "motivo": v["motivo"],
                  "criterios": v["criterios"], "categoria": v["categoria"],
-                 "data": v["data"], "julgado_em": _hoje_iso(),
+                 "data": v["data"], "julgado_em": hoje.isoformat(),
                  "hash_evidencia": v.get("hash_evidencia")}
     if v["promove"]:
         return "promovida"
     p["status"] = f"pista — recusada pelo juiz: {v['motivo']}"
     return "recusada"
+
+
+def _hoje_data():
+    from coletores_base import hoje_editorial
+    return hoje_editorial()
 
 
 def _hoje_iso() -> str:
@@ -208,8 +284,8 @@ def autoteste() -> int:
     # documento ausente: a pista fica, com motivo, e nada é preservado
     v = julgar_uma({"id": "x", "municipio": "Bonito", "uf": "MS", "url": "https://bonito.ms.gov.br/x.pdf"},
                    lambda u: None, preservar)
-    casos.append(("documento não obtido devolve sem_documento_primario",
-                  v["motivo"] == "sem_documento_primario" and not v["promove"]))
+    casos.append(("documento não obtido devolve documento_inacessivel, não sem_documento_primario",
+                  v["motivo"] == "documento_inacessivel" and not v["promove"]))
     casos.append(("documento não lido é marcado como tal no veredito", v["leu_documento"] is False))
     casos.append(("documento lido é marcado como tal",
                   all(x["leu_documento"] for x in vereditos if x.get("hash_evidencia"))))
@@ -221,7 +297,51 @@ def autoteste() -> int:
                   aplicar_no_objeto(p_adiada, v) == "adiada"
                   and "juiz" not in p_adiada
                   and p_adiada["status"].startswith("pista — promover")))
-    casos.append(("pista adiada continua pendente para a próxima rodada", pendente(p_adiada)))
+    import datetime as _dt
+    _hoje = _dt.date(2026, 9, 28)
+    casos.append(("pista adiada NÃO volta hoje: espera o back-off",
+                  not pendente(p_adiada, _hoje)))
+    casos.append(("a data da próxima tentativa fica escrita na pista",
+                  p_adiada.get("proxima_tentativa_em") is not None))
+    casos.append(("pista adiada volta depois do back-off",
+                  pendente(p_adiada, _dt.date(2026, 10, 30))))
+    casos.append(("a tentativa fica no histórico, com classe e motivo",
+                  p_adiada["juiz_tentativas"][-1]["classe"] == "tecnica"
+                  and p_adiada["juiz_tentativas"][-1]["motivo"] == "documento_inacessivel"))
+
+    # A classe da recusa: é ela que decide o destino, não o motivo.
+    casos.append(("documento inacessível é recusa TÉCNICA",
+                  classe_da_recusa({"promove": False, "motivo": "documento_inacessivel",
+                                    "leu_documento": False}) == "tecnica"))
+    casos.append(("texto não extraível é recusa TÉCNICA",
+                  classe_da_recusa({"promove": False, "motivo": "texto_nao_extraivel",
+                                    "leu_documento": True}) == "tecnica"))
+    casos.append(("documento lido e reprovado é recusa POR CRITÉRIO",
+                  classe_da_recusa({"promove": False, "motivo": "fora_do_objeto",
+                                    "leu_documento": True}) == "criterio"))
+    casos.append(("url que não é fonte oficial é recusa POR CRITÉRIO (a url é o que é)",
+                  classe_da_recusa({"promove": False, "motivo": "sem_documento_primario",
+                                    "leu_documento": True}) == "criterio"))
+    casos.append(("promoção não tem classe de recusa",
+                  classe_da_recusa({"promove": True}) == ""))
+
+    # O back-off e o fim dele.
+    casos.append(("o back-off é 1, 3 e depois 7 dias",
+                  [(proxima_tentativa(n, _hoje) - _hoje).days for n in (1, 2, 3, 4)] == [1, 3, 7, 7]))
+    casos.append(("esgotadas as cinco tentativas, não há próxima data",
+                  proxima_tentativa(5, _hoje) is None))
+
+    p_teimosa = {"status": "pista — promover a registro exige documento primário"}
+    v_tec = dict(v, leu_documento=False, motivo="documento_inacessivel", promove=False)
+    saidas = [aplicar_no_objeto(p_teimosa, v_tec) for _ in range(5)]
+    casos.append(("quatro tentativas adiam; a quinta vira inacessivel_persistente",
+                  saidas == ["adiada"] * 4 + ["inacessivel"]))
+    casos.append(("a pista inacessível sai da fila", not pendente(p_teimosa, _dt.date(2027, 1, 1))))
+    casos.append(("e continua no registro, com o histórico inteiro",
+                  "inacessivel_persistente" in p_teimosa["status"]
+                  and len(p_teimosa["juiz_tentativas"]) == 5))
+    casos.append(("nada foi apagado: a pista não recebeu veredito de recusa",
+                  "juiz" not in p_teimosa))
 
     v_recusa = dict(v, leu_documento=True, motivo="fora_do_objeto", promove=False)
     p_recusa = {"id": "z", "status": "pista — promover a registro exige documento primário"}
@@ -302,7 +422,7 @@ def main() -> int:
         return sha256(texto.encode("utf-8")) if texto else None
 
     vereditos, por_fila = [], {}
-    feitos = {"promovida": 0, "recusada": 0, "adiada": 0}
+    feitos = {"promovida": 0, "recusada": 0, "adiada": 0, "inacessivel": 0}
     for nome_fila in FILAS:
         doc = ler(nome_fila)
         if not doc:
@@ -330,8 +450,10 @@ def main() -> int:
     imprimir_relatorio(c, por_categoria)
     if aplicar:
         print(f"aplicado na fila: {feitos['promovida']} promovida(s), "
-              f"{feitos['recusada']} recusada(s), {feitos['adiada']} adiada(s) por "
-              f"documento não lido nesta rodada (voltam à fila na próxima)")
+              f"{feitos['recusada']} recusada(s) por critério, {feitos['adiada']} adiada(s) por "
+              f"causa técnica (voltam pelo back-off de 1, 3 e 7 dias), "
+              f"{feitos['inacessivel']} inacessivel_persistente (cinco tentativas sem leitura; "
+              f"saem da fila e ficam no registro)")
 
     if aplicar:
         funil.registrar("juiz", pistas_recebidas=c["pistas"], com_documento=c["com_documento"],
