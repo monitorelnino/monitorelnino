@@ -9,6 +9,88 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §280 · O número público de menções era 347 e é 260 · 28/09/2026
+
+Classe **correção de dado publicado**. Defeito 1 do relatório da auditoria do funil, item 3 do bloco
+de decisões da editoria de 28/09/2026. **Nenhum peso, régua ou categoria muda**, e o índice não se
+move: a conta corrigida é um contador de cobertura.
+
+### O que estava errado
+
+`data/verificacao_resumo.json` declarava **347** municípios com menção ao tema no diário municipal.
+São **260**. Os 87 registros de diferença são execuções com a decisão `sem_edicao_no_periodo` —
+diário indexado, **nenhuma edição dentro da janela**. Nesses municípios não houve o que ler, e o
+site os contava como tendo menção.
+
+A causa não é aritmética, é de definição. `com_mencao` era definida por **exclusão**: contava como
+menção todo resultado que **não** começasse por um de três prefixos conhecidos. Uma definição assim
+não erra uma vez — ela erra a cada decisão nova que alguém criar, porque toda string que o código
+não conhece cai no lado que **afirma**. `sem_edicao_no_periodo` foi criada pelo §194, quatro dias
+antes, e entrou nessa conta sem que ninguém escrevesse uma linha a respeito.
+
+A classificação passou a ser **positiva**, com cinco estados e um balde honesto:
+
+| estado | o que se sabe |
+|---|---|
+| `sem_cobertura_qd` | 5.041 · não há diário indexado; nada foi nem pode ser lido |
+| `sem_edicao_no_periodo` | 56 · indexado, nenhuma edição na janela; não houve o que ler |
+| `coberto_sem_mencao` | 211 · indexado e lido; nenhum excerto com os termos |
+| `com_mencao` | 260 · a consulta com os termos devolveu edição |
+| `cobertura_indefinida` | 3 · teste de cobertura falhou, **ou** string desconhecida |
+
+`indexados` continua **527** — a repartição mudou, o alcance da varredura não. `sem_mencao` segue
+valendo só para diário efetivamente lido (211), porque "não indexado" e "sem edição na janela" não
+são leitura negativa: tratá-los como leitura afirmaria ausência de plano onde há ausência de fonte
+(§4.1.2).
+
+### A regra nova está ancorada em outro arquivo, não na minha leitura
+
+`com_mencao` = 260 é **exatamente** o número de municípios com execução `com_excerto` (242) ou
+`registro` (22) no canal DOM do log. Dois arquivos de origens diferentes, produzidos por caminhos
+diferentes, dão o mesmo número — e essa igualdade é agora um portão, não uma coincidência anotada.
+
+### O erro que eu quase publiquei no lugar do que estava lá
+
+A primeira versão desta correção baixava `com_mencao` para **57**. Eu havia tratado a string
+`0 decreto(s), 0 pista(s)` — 243 municípios — como "diário lido, nada encontrado". Fui ler o ramo do
+coletor que grava essa string e ela significa o oposto: só é escrita **depois** de a consulta com os
+termos devolver edição, e o zero é dos atos *classificados*, não dos excertos. No log, esses
+municípios são `com_excerto`. Chamá-los de "lido sem menção" teria trocado um erro por outro, na
+direção contrária, com 243 municípios em vez de 87 — e eu estava a um commit de fazer isso apoiado
+numa medição que eu mesmo havia feito e lido errado.
+
+O que me pegou: a medição estava certa e a **interpretação** do campo, não. A reconciliação contra o
+log foi o que denunciou — a contagem não fechava com o que o log dizia, e foi essa discordância que
+me mandou ler o coletor. É por isso que ela ficou como portão.
+
+### O portão que já existia e passou verde sobre este defeito
+
+`scripts/testar_contador_varredura.py` nasceu no §121 para impedir exatamente esta família de erro,
+e ficou verde durante oito dias sobre 347. Ele conferia a **assinatura** do defeito antigo
+(`com_mencao == consultados`, o caso extremo) em vez da propriedade. Reescrito, ele agora:
+
+1. recomputa os cinco estados por conta própria e exige que o resumo publicado concorde — dois
+   códigos independentes, um número;
+2. reconcilia `com_mencao` contra o log, e reprova município contado como menção sem execução
+   `com_excerto` nem `registro`;
+3. recusa `not m.startswith` no código-fonte da classificação, com a razão escrita: definição por
+   exclusão volta a engolir a próxima decisão nova.
+
+`scripts/verificar_paridade_cobertura_qd.py` somava a partição dos indexados em **duas** parcelas.
+São três. O autoteste dele passou a encenar o defeito: `347 + 180 = 527` fechava a soma e agora
+reprova, porque fechar a soma nunca provou que as parcelas estavam certas.
+
+### A terceira lista
+
+A mesma decisão `sem_edicao_no_periodo` já ficou fora de duas listas antes — as duas estão no
+comentário do coletor, e o incidente está no §213: a varredura nacional morreu no primeiro município
+daquele tipo e ficou parada um dia. O §45 da metodologia foi escrito por causa disso, sobre
+vocabulário fechado. Esta é a terceira lista, e ela não era um vocabulário: era uma **contagem**. Daí
+o §45.1, que estende a regra — contagem definida por exclusão é vocabulário aberto com outro nome, e
+o lado de fora nunca pode ser o lado que afirma.
+
+Dois autotestes novos no workflow (107 portões).
+
 ## §277 · O Querido Diário volta ao funil, pelo juiz · 28/09/2026
 
 Classe **método e coleta**. Item 1 do bloco de decisões da editoria de 28/09/2026. **Nenhuma nota

@@ -186,6 +186,7 @@ jobs:
           set -e
           python3 scripts/testar_cadencia_publicacao.py
           python3 scripts/testar_contador_varredura.py
+          python3 scripts/testar_contador_varredura.py --autoteste
           python3 scripts/testar_nivel_log_buscas.py
           python3 scripts/testar_reposicao_dominio.py
           python3 scripts/testar_ordem_prioridade_ufs.py
