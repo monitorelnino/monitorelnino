@@ -55,6 +55,13 @@ e para isso o navegador do leitor baixava o log **inteiro**. Agora lê `data/log
 derivado, com 376 bytes. Os números são os mesmos. O link público passa a apontar o resumo e o texto
 diz onde está o registro completo: arquivos mensais em `data/log_buscas/`, no formato `AAAA-MM.jsonl`.
 
+O resumo é derivado, e derivado novo na cadeia obriga a mexer em **duas** listas: a de
+`scripts/verificar_derivados.sh` e a constante `CADEIA_DERIVADOS` de
+`julgar_e_aplicar_descobertas.py`, que o juiz usa para regenerar antes de aplicar. Mexi só na primeira
+e o autoteste do orquestrador reprovou — é o invariante do §163, que existe porque essa divergência
+deixou o portão 12 vermelho na `main` em 22/09/2026. Cometi o mesmo esquecimento nos dois PRs do dia
+que acrescentam derivado.
+
 Quatro portões novos (96 no total): autoteste da migração, do resumo, do portão de paridade, e o
 portão de paridade rodando de verdade.
 
