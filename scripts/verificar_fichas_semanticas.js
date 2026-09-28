@@ -19,7 +19,7 @@
 const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const fs = require("fs"), path = require("path");
 const raiz = path.join(__dirname, "..");
-const PAGINAS = ["index.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html",
+const PAGINAS = ["index.html", "calendario-eleitoral.html", "defesa-civil.html",
                  "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html",
                  "imprensa.html", "blog.html", "prefeituras.html"];
 const falhas = [];

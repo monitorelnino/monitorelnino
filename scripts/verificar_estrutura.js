@@ -16,7 +16,7 @@ let __baseCss = null;
 function baseCssParaBreakpoints() { if (__baseCss === null) __baseCss = fs.readFileSync(path.join(RAIZ, "assets", "base.css"), "utf-8"); return __baseCss; }
 // 03/09/2026: YAML dos workflows sem chave duplicada (o GitHub recusa o arquivo inteiro)
 try { require("child_process").execSync("python3 scripts/validar_workflows.py", { cwd: RAIZ, stdio: "pipe" }); } catch (e) { console.log("  ✗ workflows inválidos: " + String(e.stdout || "")); process.exit(1); }
-const PADRAO = ["index.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "pesquisadores.html", "calendario-eleitoral.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "imprensa.html", "blog.html"]
+const PADRAO = ["index.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "calendario-eleitoral.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "imprensa.html", "blog.html"]
   .map(a => path.join(RAIZ, a));
 const arquivos = process.argv.length > 2 ? process.argv.slice(2) : PADRAO;
 
@@ -43,7 +43,7 @@ for (const arq of arquivos) {
   // (1-bis) harmonização v2.2.4: fonte única de tokens e navegação canônica
   if (!/<link[^>]+href="assets\/tokens\.css(\?v=[0-9a-f]+)?"/.test(html)) falha(`${nome}: sem <link> para assets/tokens.css`);
   if (/:root\s*\{/.test(semScripts)) falha(`${nome}: bloco :root inline (tokens só em assets/tokens.css)`);
-  const NAV_ORDEM = ["MARÉ Legal", "Monitor de riscos", "Proteja-se", "Defesa civil", "MARÉ Saúde", "Financiamento", "Para gestores", "Blog do MARÉ", "Imprensa", "Pesquisadores"];   // 22/09/2026: Blog antes de Imprensa (pedido da editoria)   // 17/09/2026: Monitor de riscos (plural) e monitor-de-riscos.html; era Monitor de risco / sinais-de-risco.html
+  const NAV_ORDEM = ["MARÉ Legal", "Monitor de riscos", "Proteja-se", "Defesa civil", "MARÉ Saúde", "Financiamento", "Para gestores", "Blog do MARÉ", "Imprensa"]   // §258 (27/09/2026): "Pesquisadores" saiu — a página foi arquivada em arquivo/pesquisadores/;   // 22/09/2026: Blog antes de Imprensa (pedido da editoria)   // 17/09/2026: Monitor de riscos (plural) e monitor-de-riscos.html; era Monitor de risco / sinais-de-risco.html
   const navM = html.match(/<nav class="mainnav"[^>]*>([\s\S]*?)<\/nav>/);
   if (!navM) { falha(`${nome}: sem <nav class="mainnav">`); }
   else {

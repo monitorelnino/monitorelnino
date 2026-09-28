@@ -279,8 +279,17 @@ setTimeout(() => {
     const css = require("fs").readFileSync(require("path").join(__dirname, "..", "assets", "base.css"), "utf8");
     const temDegrade = /\.mainnav\{[^}]*background-image:\s*var\(--degrade-menu\)/.test(css);
     const semPosicao = !/\.mainnav > :is\(a, span\):nth-child\(\d+\)/.test(css);
-    const dez = d.querySelectorAll(".mainnav > a, .mainnav > span").length === 10;
-    return temDegrade && semPosicao && dez;
+    // §258 (27/09/2026): eram 10; são 9 desde que a página "Pesquisadores" foi arquivada. A
+    // contagem existe para garantir que o degradê cubra a barra INTEIRA — item somem, o degradê
+    // continua um só —, então o que importa é que ela bata com a ordem canônica declarada em
+    // `verificar_estrutura.js`, e não um número cravado aqui que envelhece a cada mudança de menu.
+    const canonico = require("fs")
+      .readFileSync(require("path").join(__dirname, "verificar_estrutura.js"), "utf8")
+      .match(/const NAV_ORDEM = \[(.*?)\]/s);
+    const esperados = canonico ? canonico[1].split(",").filter(x => x.trim().startsWith('"')).length : 0;
+    const bate = esperados > 0
+      && d.querySelectorAll(".mainnav > a, .mainnav > span").length === esperados;
+    return temDegrade && semPosicao && bate;
   })());
 
   // Medidor principal do herói: a barra de progresso precisa de fato preencher

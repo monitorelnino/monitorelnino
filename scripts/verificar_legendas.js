@@ -18,7 +18,7 @@ const fs = require("fs"), path = require("path");
 const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("--listar");
 const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento.html", "monitor-de-riscos.html", "calendario-eleitoral.html",
-  "pesquisadores.html", "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+  "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 
 // Exceções: colocações técnicas ou oficiais que contêm uma palavra da lista, mas não são juízo.
 const EXCECOES = [/síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
@@ -123,7 +123,13 @@ function renderizar(pagina) {
     for (const pagina of PAGINAS_PROSA) {
       const domP = renderizar(pagina); await new Promise(r => setTimeout(r, 2200)); const dP = domP.window.document;
       dP.querySelectorAll("main p, main li, main dd, main summary, main figcaption, dialog p, dialog li, dialog dd").forEach(e => {
-        const dentroFichaOuLei = e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]');   // exceções declaradas
+        // 27/09/2026 (§258): terceira exceção declarada, data-proveniencia="1" — os blocos de prova que
+        // vieram da página Pesquisadores arquivada. Como a ficha, é onde a ressalva metodológica mora:
+        // ali o texto nomeia o artefato e descreve o método. Vale para as checagens de CONTEÚDO. A
+        // checagem de estilo de frase (travessão) continua valendo, porque ela é testada antes desta
+        // guarda — regra geral de escrita não tem exceção por bloco.
+        const dentroFichaOuLei = e.closest('[data-voz="ficha"]') || e.closest('[data-voz="lei"]')
+          || e.closest('[data-proveniencia="1"]');
         if (e.closest(".figura")) return;                                                // já coberto acima
         if (e.querySelector("p, li")) return;                                            // só as folhas
         const s = t(e); if (!s || s.length < 12) return; elementos++;

@@ -287,6 +287,47 @@ que consultas com resultado bruto, e quando o juiz promove mais do que as pistas
 
 Cinco portões novos (85 no total). `METODOLOGIA.md` recebeu as duas decisões datadas.
 
+## §260 · Preprint e site são rotinas separadas · 27/09/2026
+
+Classe **governança**. Decisão da editoria, e correção de um erro meu.
+
+### O que eu misturei
+
+Rodei as tarefas T0 a T4 do preprint e transformei dois achados em **PRs públicos no repositório do
+site**: o §256 (portão de paridade da cobertura do Querido Diário, vindo do T1) e o §257 (errata do
+§5.3 da METODOLOGIA, vinda do T2). Também criei um worktree do repositório do site para a análise.
+
+A editoria não pediu nada disso. Ela pediu o preprint; eu deixei o preprint entrar na rotina do
+site por conta própria.
+
+### A regra
+
+Registrada no `CLAUDE.md`, que é lido em toda sessão. Sem pedido explícito da editoria:
+
+- não rodar tarefa do preprint por iniciativa própria;
+- não abrir PR público a partir de achado do preprint;
+- não acrescentar portão ao site por causa dele;
+- não disparar rodada nem reposição de domínio para produzir dado de preprint;
+- não criar worktree do repositório do site para análise de preprint.
+
+Achado do preprint que revele defeito no site vira **pedido separado**, registrado na saída do
+preprint no repositório privado, e a editoria decide se vira mudança no site.
+
+### O que não foi desfeito, e por quê
+
+O §256 e o §257 ficam. Desfazê-los seria pior que a mistura que os gerou: o §256 é um portão que
+protege dado do site — ele reprova se `cobertura_qd.json` e `verificacao_resumo.json` discordarem —
+e o §257 alinhou o texto da metodologia ao código em vigor, corrigindo inclusive uma contradição
+que o próprio §5.3 tinha consigo mesmo.
+
+O caminho por onde eles entraram é que estava errado, e é esse que a regra corrige.
+
+### Acoplamento medido, e não havia
+
+Conferido: nenhum arquivo do site **chama** código do preprint. As únicas menções são comentários
+de procedência, que registram de onde veio cada conserto. As referências a `robo-registro` nos
+workflows são o canal de relatório da editoria, anterior a tudo isso. O worktree foi removido.
+
 ## §259 · A reposição urgente do domínio não é urgente enquanto a rodada corre · 27/09/2026
 
 Classe **infraestrutura da rodada**. Achado ao publicar o site a pedido da editoria.
@@ -325,7 +366,145 @@ esperar a rodada na fila".
 
 Sem o portão a regressão volta calada, e só aparece no dia em que o domínio estiver no ar errado —
 que é o único dia em que isso importa.
+## §258 · Página "Pesquisadores" arquivada, com as provas nas páginas que as usam · 27/09/2026
 
+Classe **página pública**. Decisão da editoria, handover
+`notas/HANDOVER_suprimir_pagina_pesquisadores_27-09-2026.md` (repositório privado).
+**Nenhuma nota muda** — `recalcular_mare.py --check` reproduz os 27 estados × 7 campos idênticos,
+média 46,6.
+
+**Não mesclar sem o "vai" da editoria.** O handover é explícito: capturas primeiro, merge depois.
+
+### As seis figuras sem crédito, e os quatro portões que o bloco de prova encontrou no caminho
+
+Depois da migração, seis figuras ficaram sem crédito: `boxCatalogo`, `boxGatilhos`, `boxConsultas`,
+`boxRotaMPs`, `boxMpsBrUf` e `boxMpsUf`. Causa única: os créditos das seis vivem dentro de `__load()`,
+em `assets/js/proveniencia.js`, e acima deles o código migrado acessava sem guarda elementos que hoje
+existem só em `defesa-civil.html` (`fontesMonitoramento`, `fontesVerificadas`, `fontesFederaisCount`,
+`tblSearch`/`tblCat`/`tblBody`, `#tblLog tbody`, `painelResumo`) e dois que não existem em nenhuma
+página (`pqCorte`, `pqAtualizado`). O primeiro ausente lançava `TypeError`, `__load()` morria, e nenhum
+crédito abaixo executava — nas quatro páginas, inclusive em defesa-civil, por causa do `pqCorte`. Antes
+disso, o arquivo compartilhado colidia em quatro identificadores globais (`esc`, `fonteFigura`, `AREAS`,
+`CAMADA_ROTULO`) e nem chegava a rodar; virou IIFE.
+
+Três portões reprovaram pelo mesmo motivo de fundo: a regra estava atrelada ao **nome** da página
+arquivada, ou pressupunha que o bloco de prova não existia em página publicada. Em todos, a exceção
+passa a seguir o marcador `data-proveniencia="1"`, que viaja com o bloco:
+
+- `verificar_vocabulario_publico.js` — a exceção v3.1 §9 (nome de arquivo e caminho de dados **são** o
+  assunto da ficha de proveniência) estava escrita como `p === "pesquisadores.html"`. Com a página
+  arquivada, a exceção deixou de valer para ninguém.
+- `verificar_legendas.js` — terceira exceção declarada, ao lado de `data-voz="ficha"` e `data-voz="lei"`,
+  e **só para as checagens de conteúdo**. A checagem de estilo de frase continua valendo: o travessão
+  como pontuação é regra geral de escrita e não tem exceção por bloco.
+- `verificar_runtime_financiamento.js` — a proibição de tabela (15/09, "tabelas viraram figuras") vale
+  para a prosa da página; no bloco de prova a tabela **é** o registro (endpoint, parâmetro, data, itens,
+  hash), e era essa a forma da página de origem.
+
+Os 18 travessões que o portão de legendas apontou não eram texto novo: viajaram com o bloco para
+páginas que têm checagem de prosa (a página arquivada não tinha). Corrigidos na origem onde havia
+origem editável — o rótulo do CEPDEC/ES e o texto estático de `defesa-civil.html` — e normalizados na
+renderização, para o separador de metadado do site (`·`), onde o texto vem de dado: `fontes_monitoramento`
+em `data/transferencias.json` e a nota dos cartões em `data/saude_federal.json`. O dado não foi tocado.
+
+`verificar_financiamento.py`, checagem (j), proibia `<table>` na página inteira. A exceção é a
+mesma dos outros portões — o bloco de prova —, mas aqui ela custou três tentativas, e cada erro vale
+registro. A primeira subtraía o bloco por regex `.*?` e deixava a tabela fora do recorte; a segunda
+fatiava a página "até o painel seguinte", e assim o ÚLTIMO painel engolia o resto do documento — uma
+tabela acrescentada antes de `</main>` passava sem ser vista; a terceira, que ficou, acha o fim de
+cada bloco por **profundidade de `<div>`**. Faltava ainda uma coisa: o portão lê a página com o JS
+embutido, e o JS do bloco de prova **monta** uma tabela dentro de uma string, então o conteúdo de
+`<script>` sai antes da checagem (trocado por espaços do mesmo tamanho, para não deslocar as
+posições). Dois casos negativos novos cobrem tabela na prosa antes e depois dos blocos, para que a
+exceção não cresça até engolir a regra.
+
+Esse portão só reprovou no CI porque eu havia rodado o caminho errado localmente
+(`scripts/verificar_financiamento.py`, que não existe) e tratei o silêncio como aprovação.
+
+`verificar_saude.py` cobrava a grafia `fonteFigura('<id>'` no texto da página e acusava três
+figuras creditadas — `#boxAreas`, `#boxCatalogo`, `#boxGatilhos` — como sem crédito. `fonteFigura`
+é **alias** de `MonitorMapas.credito` (está escrito assim em `assets/js/proveniencia.js`), e o JS
+migrado usa as duas grafias. O portão passa a aceitar as duas, e ganhou um caso negativo para a
+segunda: sem ele, alguém poderia remover o ramo do alias sem nenhum teste reclamar.
+
+`verificar_runtime.js` deixou de contar 10 itens de navegação por número fixo e passa a derivar a
+contagem de `NAV_ORDEM`, em `verificar_estrutura.js` — a lista canônica. Com a barra perdendo um item,
+o número fixo reprovava por estar certo.
+
+**Pendência para a editoria, fora deste escopo:** `coletar_saude.py` e o `data/saude_federal.json`
+publicado divergem no primeiro cartão federal — status (`anunciado_nao_localizado` × `localizado`), URL
+(ausente × presente) e nota. Rodar o coletor hoje substituiria o texto publicado, mais completo, pelo
+literal do script. É divergência de **fato**, não de estilo; não foi tocada.
+
+### Arquivar, não apagar
+
+`pesquisadores.html` e `assets/js/pesquisadores.js` foram para `arquivo/pesquisadores/`, com um
+`LEIA-ME.md` que diz a data, o motivo, para onde foi cada seção e como reativar.
+
+`publish = "."` serve a raiz inteira, então **mover não retira do ar**. Sem a regra de 404 o
+arquivo seguiria acessível por URL, só sem link apontando — que é pior, porque ninguém olharia.
+`netlify.toml` passa a devolver 404 para `/arquivo/*`.
+
+### As provas não saíram do site
+
+As doze seções foram para a página que as citava, com as **âncoras preservadas** — são elas que os
+links de fora usam:
+
+| seção | foi para |
+|---|---|
+| Fontes dos sinais de risco | `monitor-de-riscos.html` |
+| Fontes e consultas do financiamento · Créditos extraordinários de 2026 | `financiamento.html` |
+| O que a União publicou · Backlog de fontes | `saude.html` |
+| Log de verificação e cobertura · Registros e fontes dos dados · Painel amostral | `defesa-civil.html` |
+| tabela `AREAS` (COBRADE) | `assets/js/saude.js`, e `verificar_consistencia.py` lê de lá |
+
+Quatro ficaram arquivadas por decisão da editoria: "Como usar o site e os dados", "Metodologia e
+versões", "Dados abertos, feeds e selos" e "Código e replicação" — esta última porque contém a
+frase sobre "código para replicar" que a editoria mandou rever em 23/09.
+
+Nenhum HTML publicado menciona a página. As sete fichas semânticas foram reapontadas para a página
+que hospeda cada figura.
+
+### Duas premissas do handover que a medição desmentiu
+
+**1. O formulário não estava lá.** O handover manda mover o formulário "Indique um documento
+publicado" para o rodapé de todas as páginas, num `<dialog>`, e conta "9 ocorrências de `form` na
+página". Medido: a página arquivada tem **zero** ocorrências de `<form`, de `data-netlify` e de
+"Indique um documento". O formulário vive em `index.html`, e o próprio `verificar_palavras.js`
+registra que ele migrou de Pesquisadores para a inicial em **16/09/2026**.
+
+Ele não depende do arquivamento. Movê-lo agora seria mexer na página inicial por escopo que o
+arquivamento não exige, e a partir de uma premissa falsa. **Não feito**, declarado.
+
+**2. As âncoras em uso eram duas, não seis.** O handover lista `#fontes-sinais`,
+`#saude-federal-h2` e `#saude-backlog-h2` entre as linkadas. Medido: só `#fontes` (17 vezes) e
+`#fontes-financiamento` (1) eram alvo de link. As outras existiam na página, sem ninguém apontando.
+
+### O portão
+
+`scripts/verificar_pagina_arquivada.py`, dez asserções, oito negativas. Trava quatro coisas:
+nenhum HTML publicado linka a página; os arquivos não voltaram à raiz; a regra de 404 existe; e
+**voltar exige linha no CHANGELOG** — o arquivo de volta, sozinho, não basta. Arquivar sem trava é
+deixar a página voltar por descuido.
+
+`previa/` é exceção **declarada**: 16 protótipos ainda citam a página, e o portão imprime a
+contagem em vez de calá-la. Eles são servidos por `publish = "."`, mas atrás de senha própria e
+fora da navegação pública.
+
+### Perda de cobertura declarada
+
+A cadência semanal era prometida ao leitor em **dois** textos independentes que
+`scripts/testar_cadencia_publicacao.py` obrigava a concordar. Sobrou um, `obrigado.html`. O portão
+segue conferindo que ele nomeia o mesmo dia que a constante e que o cron, mas a redundância
+deixou de existir. Está registrado no código e no §34 da metodologia.
+
+### Palavras estáticas
+
+Os blocos migrados estouraram o teto de três páginas — defesa civil chegou a 1.011 contra 450. Em
+vez de afrouxar o teto, os blocos passam a ser **excluídos da contagem**, marcados com
+`data-proveniencia="1"`, pelo mesmo precedente que já exclui subtítulo de figura: são lista de
+fonte e log de consulta, evidência e não prosa de edição. O teto existe para medir o que o editor
+escreve, não para pressionar alguém a encurtar a lista de fontes.
 ## §257 · Errata de texto no §5.3: a METODOLOGIA passa a dizer o que o código faz · 27/09/2026
 
 Classe **errata de texto**. T2 do pedido do preprint. **Nenhuma nota muda** — `recalcular_mare.py

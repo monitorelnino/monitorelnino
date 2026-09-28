@@ -152,11 +152,11 @@ if _sem != _lac: erro(f"figuras: consist.json SEM difere dos LAC: {sorted(_sem ^
 for _u, _v in _cons.items():
     if (_v["cat"] == "SEM") != _v["instr"].startswith("Nenhum"):
         erro(f"figuras: consist.json {_u} cat×instr inconsistentes")
-# 14/09/2026 (auditoria editorial §1.4): a tabela COBRADE mudou de defesa-civil.js para pesquisadores.js (página de provas)
-_hA = open("assets/js/pesquisadores.js", encoding="utf-8").read()
+# 14/09/2026 (auditoria editorial §1.4): a tabela COBRADE mudou de defesa-civil.js para pesquisadores.js e, em 27/09 (§258), para saude.js, quando a página Pesquisadores foi arquivada (página de provas)
+_hA = open("assets/js/saude.js", encoding="utf-8").read()
 _mA = _re.search(r"const AREAS = \[(.*?)\];", _hA, _re.S)
 if not _mA:
-    erro("figuras: AREAS não encontrado em assets/js/pesquisadores.js")
+    erro("figuras: AREAS não encontrado em assets/js/saude.js")
 else:
     _ufsA = set(_re.findall(r"'([A-Z]{2})'", _mA.group(1)))
     if _ufsA != _nao_lac:
