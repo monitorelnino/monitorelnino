@@ -382,4 +382,11 @@ jobs:
           # pistas com o excerto errado, e a medição mostrou antes de confiar.
           python3 scripts/fila_do_juiz_querido_diario.py --autoteste
           python3 consultar_querido_diario.py --check
+          # 28/09/2026 (decisão da editoria, item 2): rede social é canal de DESCOBERTA. O portão cobra
+          # a condição que a autoriza — nada de rede social como fonte de registro nem como fonte no
+          # site. O autoteste dele pegou o buraco que eu deixei: fonte escrita à mão ("Instagram da
+          # Prefeitura") não tem domínio, e a primeira versão olhava só o domínio.
+          python3 monitorar_redes_oficiais.py --autoteste
+          python3 scripts/verificar_rede_social_nao_e_fonte.py --autoteste
+          python3 scripts/verificar_rede_social_nao_e_fonte.py
           python3 scripts/empacotar_evidencias.py --autoteste

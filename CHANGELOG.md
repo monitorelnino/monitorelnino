@@ -48,6 +48,64 @@ Ao acrescentar os três, escrevi `precisa_searxng: true` no workflow supondo que
 consultasse o metabuscador. Fui conferir antes de deixar: **ele não consulta nada disso** — testa padrões
 de domínio declarados (`defesacivil.{uf}.gov.br` e afins) direto por HTTP e decide pela resposta e pelo
 título. A linha saiu. Era o quarto erro do mesmo tipo em dois dias, e o único que não chegou a subir.
+## §278 · Redes sociais entram como descoberta, e só como descoberta · 28/09/2026
+
+Classe **método e coleta**. Item 2 do bloco de decisões da editoria de 28/09/2026. **Nenhuma nota
+muda:** nada aqui pontua, e nada aqui pode virar fonte de registro.
+
+### As três condições, e onde cada uma é imposta
+
+A editoria aprovou redes sociais como canal de descoberta com três condições. Cada uma virou código, não
+promessa:
+
+**1. Só perfil oficial, verificado pelo domínio.** O perfil entra apenas quando um domínio oficial do
+próprio ente (`*.gov.br`) **linka para ele**. Sem selo de API, sem lista de handles digitada à mão, sem
+inferência por nome parecido: se o site oficial não aponta o perfil, o perfil não existe para o Monitor.
+Link de compartilhamento (`sharer`, `intent`, `watch`) é descartado — ele aparece em quase toda página e
+não é conta institucional.
+
+**2. A pista exige documento primário em fonte oficial no juiz.** Post de rede social **não passa a
+Etapa 0**: nenhum domínio de rede social está em `PADROES_FONTE_PROVAVEL_OFICIAL`, e há autoteste nos
+dois lados — no coletor e no portão — provando isso. A pista serve para acionar o seguimento (§159), que
+procura o ato na fonte oficial.
+
+**3. Rede social nunca é fonte de registro nem aparece como fonte no site.**
+`scripts/verificar_rede_social_nao_e_fonte.py` reprova se um registro de `municipios.json`,
+`estados.json` ou `atos_resposta.json` tiver rede social em `url`, `fonte`, `canal` ou `documento`, e se
+uma página pública citar rede social **no crédito de figura ou depois de "Fonte:"**. Menção em prosa não
+é alvo: o que não pode é rede social ocupar o lugar onde o leitor lê de onde veio o dado.
+
+### Sem chave, e reusando o que já existe
+
+A consulta vai pela instância efêmera do SearXNG que a rodada já sobe, restrita ao perfil confirmado
+(`site:<rede> "<perfil>" "<termo>"`). Isso cumpre o que a decisão pediu — **o mesmo disjuntor por motor
+de origem e os mesmos contadores** — sem um segundo caminho de rede a manter, e sem API paga, que o
+repositório proíbe.
+
+### O alcance é declarado, não escondido
+
+Só é possível confirmar perfil onde já conhecemos o domínio oficial: **47 alvos estaduais** com domínio
+em `data/dominios_oficiais.json` e **90 registros municipais** com URL `.gov.br` em
+`data/municipios.json`. Para os outros municípios o coletor **não gera pista**, e dizer isso é parte do
+método — ausência de cobertura não é ausência de plano.
+
+### Dois defeitos meus, achados antes de subir
+
+**O portão olhava só o domínio.** O autoteste que eu mesmo escrevi reprovou em três casos e mostrou o
+buraco: fonte escrita à mão não traz domínio — "Instagram da Prefeitura", "post no Facebook". Era
+exatamente a forma mais provável de a rede social virar fonte. O portão passou a casar também o **nome**
+da plataforma, com fronteira de palavra; `x` sozinho ficou de fora, porque uma letra casaria em qualquer
+texto.
+
+**O noturno de descoberta não subia o SearXNG.** Eu liguei o coletor a um workflow sem a instância que
+ele consulta — e o efeito seria pior que uma falha: lacuna a cada noite, com cara de "fonte fora do ar".
+O workflow reutilizável ganhou `precisa_searxng`, e a descoberta pede a instância. `seguir_pistas.py`,
+que já rodava ali, dependia dela pelo mesmo motivo e estava no mesmo escuro.
+
+É o terceiro erro do mesmo tipo em dois dias — ligar uma peça sem conferir se a dependência dela está no
+lugar. O padrão que me pegou nos três: **antes de ligar, listar o que a peça precisa e onde isso existe.**
+
+Três portões novos (109).
 
 ## §277 · O Querido Diário volta ao funil, pelo juiz · 28/09/2026
 
@@ -108,6 +166,49 @@ texto do ato —, mas muda o que passa. Cinco travas novas no autoteste do juiz 
 canários).
 
 Dois portões novos (106).
+
+## §276 · Os três runs vermelhos da primeira noite · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 7 do bloco de decisões da editoria de 28/09/2026 (manhã).
+**Nenhuma nota muda.** Dois dos três defeitos são meus, dos PRs de ontem.
+
+### A — diários noturnos cancelados aos 90 minutos
+
+`coletar_diarios_consorciados.py --desde 2026-06-29` consumiu **87 dos 90 minutos** do teto e o job foi
+cancelado a segundos do fim. A data fixa era minha, e o erro é de tipo conhecido: **data fixa em YAML
+envelhece**. Escrita em 28/09, ela mandava revarrer três meses **a cada noite**, e a cada semana
+pioraria.
+
+O orquestrador antigo nunca fez isso: `atualizar.py` sempre passou uma **janela corrida de oito dias**,
+que é o que faz sentido para um coletor que roda todas as noites — a janela cobre o atraso de publicação
+do diário, não o histórico. O coletor ganhou `--desde-dias N`, contado do corte editorial para trás,
+com `--desde` explícito mantendo precedência para reprocessar período nomeado à mão. Recusa `0`,
+negativo e não-número, e o autoteste cobre os quatro casos de recusa mais a precedência.
+
+### B — auditoria semanal de segurança falhando depois de passar
+
+A auditoria rodava com sucesso e o job reprovava **depois dela**, no passo posterior do
+`setup-python`: `Cache folder path is retrieved for pip but doesn't exist on disk`. Causa: o §267 pôs
+`cache: pip` em todos os workflows com Python, e este **não instala dependência nenhuma** — roda com a
+biblioteca padrão. Sem instalação, não há cache para salvar, e o passo posterior falha.
+
+É exatamente a razão pela qual, no §267, deixei `publicar_previa` e `publicar_dominio_ensaio` fora do
+cache de **npm** — e que não apliquei ao **pip**. `auditoria_seguranca.yml` e `medir_revocacao.yml`
+perderam o `cache: pip`.
+
+### C — Publicar dados
+
+Os dois runs pararam em "Regenerar a cadeia canônica de derivados", e os dois estavam certos: a `main`
+tinha derivado genuinamente obsoleto entre o §272 e o §275 — o painel na cadeia (§273) e o relatório da
+execução no manifesto (§274). Com os dois consertos na `main`, a cadeia regenera sem diferença. A
+confirmação de um run verde de ponta a ponta fica registrada depois que o §274 entrar.
+
+### O padrão que atravessa A e B
+
+Os dois defeitos nasceram de **generalizar uma regra sem olhar quem ela atinge**: pus uma data onde
+precisava de janela, e pus cache onde não havia instalação. No mesmo dia eu já havia cometido o mesmo
+tipo de erro no §270, ao ignorar binário de evidência cobrindo um só dos caminhos que preservam. A
+correção de método é a mesma nos três: **antes de aplicar uma regra a um conjunto, listar o conjunto.**
 
 ## §275 · A regra que ignorava binário de evidência custou 1.496 páginas de prova · 28/09/2026
 

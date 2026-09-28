@@ -46,6 +46,11 @@ on:
         required: false
         default: false
         type: boolean
+      precisa_searxng:
+        description: "true quando algum comando consulta o metabuscador (busca web, perfis oficiais)"
+        required: false
+        default: false
+        type: boolean
     secrets:
       ROBO_DEPLOY_KEY:
         required: true
@@ -87,6 +92,22 @@ jobs:
         with: { node-version: "22", cache: npm }
       - run: npm ci
         if: inputs.precisa_node
+
+      # §278: instância efêmera do metabuscador, para os comandos que consultam a web. Sem ela, um
+      # coletor que depende do SearXNG produz lacuna a cada noite em vez de pista — e a lacuna pareceria
+      # "fonte fora do ar". Quem depende dela pede `precisa_searxng: true`.
+      - name: Subir SearXNG efêmero
+        if: inputs.precisa_searxng
+        id: searxng
+        continue-on-error: true
+        run: |
+          docker run -d --name searxng -p 127.0.0.1:8080:8080             -v "$PWD/scripts/searxng_settings.yml:/etc/searxng/settings.yml:ro"             searxng/searxng:latest
+          ok=""
+          for i in $(seq 1 30); do
+            if curl -sf "http://127.0.0.1:8080/search?q=teste&format=json" > /dev/null 2>&1; then ok=1; break; fi
+            sleep 2
+          done
+          [ -n "$ok" ] && echo "pronto=1" >> "$GITHUB_OUTPUT" || echo "SearXNG não subiu a tempo"
 
       - name: Instalar Tesseract com o modelo português (§177)
         if: inputs.precisa_tesseract
