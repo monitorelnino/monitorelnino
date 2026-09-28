@@ -9,6 +9,65 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §278 · Redes sociais entram como descoberta, e só como descoberta · 28/09/2026
+
+Classe **método e coleta**. Item 2 do bloco de decisões da editoria de 28/09/2026. **Nenhuma nota
+muda:** nada aqui pontua, e nada aqui pode virar fonte de registro.
+
+### As três condições, e onde cada uma é imposta
+
+A editoria aprovou redes sociais como canal de descoberta com três condições. Cada uma virou código, não
+promessa:
+
+**1. Só perfil oficial, verificado pelo domínio.** O perfil entra apenas quando um domínio oficial do
+próprio ente (`*.gov.br`) **linka para ele**. Sem selo de API, sem lista de handles digitada à mão, sem
+inferência por nome parecido: se o site oficial não aponta o perfil, o perfil não existe para o Monitor.
+Link de compartilhamento (`sharer`, `intent`, `watch`) é descartado — ele aparece em quase toda página e
+não é conta institucional.
+
+**2. A pista exige documento primário em fonte oficial no juiz.** Post de rede social **não passa a
+Etapa 0**: nenhum domínio de rede social está em `PADROES_FONTE_PROVAVEL_OFICIAL`, e há autoteste nos
+dois lados — no coletor e no portão — provando isso. A pista serve para acionar o seguimento (§159), que
+procura o ato na fonte oficial.
+
+**3. Rede social nunca é fonte de registro nem aparece como fonte no site.**
+`scripts/verificar_rede_social_nao_e_fonte.py` reprova se um registro de `municipios.json`,
+`estados.json` ou `atos_resposta.json` tiver rede social em `url`, `fonte`, `canal` ou `documento`, e se
+uma página pública citar rede social **no crédito de figura ou depois de "Fonte:"**. Menção em prosa não
+é alvo: o que não pode é rede social ocupar o lugar onde o leitor lê de onde veio o dado.
+
+### Sem chave, e reusando o que já existe
+
+A consulta vai pela instância efêmera do SearXNG que a rodada já sobe, restrita ao perfil confirmado
+(`site:<rede> "<perfil>" "<termo>"`). Isso cumpre o que a decisão pediu — **o mesmo disjuntor por motor
+de origem e os mesmos contadores** — sem um segundo caminho de rede a manter, e sem API paga, que o
+repositório proíbe.
+
+### O alcance é declarado, não escondido
+
+Só é possível confirmar perfil onde já conhecemos o domínio oficial: **47 alvos estaduais** com domínio
+em `data/dominios_oficiais.json` e **90 registros municipais** com URL `.gov.br` em
+`data/municipios.json`. Para os outros municípios o coletor **não gera pista**, e dizer isso é parte do
+método — ausência de cobertura não é ausência de plano.
+
+### Dois defeitos meus, achados antes de subir
+
+**O portão olhava só o domínio.** O autoteste que eu mesmo escrevi reprovou em três casos e mostrou o
+buraco: fonte escrita à mão não traz domínio — "Instagram da Prefeitura", "post no Facebook". Era
+exatamente a forma mais provável de a rede social virar fonte. O portão passou a casar também o **nome**
+da plataforma, com fronteira de palavra; `x` sozinho ficou de fora, porque uma letra casaria em qualquer
+texto.
+
+**O noturno de descoberta não subia o SearXNG.** Eu liguei o coletor a um workflow sem a instância que
+ele consulta — e o efeito seria pior que uma falha: lacuna a cada noite, com cara de "fonte fora do ar".
+O workflow reutilizável ganhou `precisa_searxng`, e a descoberta pede a instância. `seguir_pistas.py`,
+que já rodava ali, dependia dela pelo mesmo motivo e estava no mesmo escuro.
+
+É o terceiro erro do mesmo tipo em dois dias — ligar uma peça sem conferir se a dependência dela está no
+lugar. O padrão que me pegou nos três: **antes de ligar, listar o que a peça precisa e onde isso existe.**
+
+Três portões novos (109).
+
 ## §277 · O Querido Diário volta ao funil, pelo juiz · 28/09/2026
 
 Classe **método e coleta**. Item 1 do bloco de decisões da editoria de 28/09/2026. **Nenhuma nota
