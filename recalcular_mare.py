@@ -326,7 +326,8 @@ def _recomputar_verificacao_em_memoria():
     import re as _re
     PONT = {"plano","plano_antigo","plano_elaboracao","estrutura","coberto_estadual","decreto","nao_el_nino"}
     with open(RAIZ / "data" / "municipios.json", encoding="utf-8") as f: mun = json.load(f)
-    with open(RAIZ / "data" / "log_buscas.json", encoding="utf-8") as f: lg = json.load(f)
+    from coletores_base import ler_log
+    lg = ler_log()   # item 4: log em JSONL mensal, concatenado pela porta única
     with open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8") as f: ref = json.load(f)
     completos = set()
     for e in lg.get("execucoes", []):
@@ -374,7 +375,8 @@ def _resumo_verificacao(out):
         d_uf = por_uf.setdefault(v["uf"], {}); d_uf[n] = d_uf.get(n, 0) + 1
         if n != "nao_verificado": acima[v["ibge"]] = n
     try:
-        lg = json.load(open(RAIZ / "data" / "log_buscas.json", encoding="utf-8"))
+        from coletores_base import ler_log
+        lg = ler_log()   # item 4
         datas = [e["data"] for e in lg.get("execucoes", []) if e.get("data")]
         ult = max(datas) if datas else None
         suspensas = sum(1 for e in lg.get("execucoes", []) if e.get("data") == ult and e.get("fonte_suspensa_defeso"))

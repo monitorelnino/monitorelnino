@@ -29,7 +29,7 @@ Uso: python3 gerar_cobertura_declarada.py [--saida data/cobertura_declarada_uf.j
 import sys
 from collections import defaultdict
 
-from coletores_base import hoje, ler, gravar, rodar_autoteste
+from coletores_base import hoje, ler, gravar, rodar_autoteste, ler_log
 
 SAIDA = "cobertura_declarada_uf.json"
 
@@ -121,7 +121,7 @@ def derivar(execucoes: list) -> dict:
 
 
 def construir() -> dict:
-    lg = ler("log_buscas.json") or {"execucoes": []}
+    lg = ler_log()   # item 4: concatena os meses em JSONL (e o monólito antigo, enquanto existir)
     ufs = derivar(lg.get("execucoes", []))
     return {
         "_governanca": (

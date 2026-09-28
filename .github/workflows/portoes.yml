@@ -354,6 +354,14 @@ jobs:
           # do erro é a linha decisiva e não o log inteiro, a poda mantém sete dias, e o próprio
           # autoteste não escreve em data/.
           python3 scripts/saude_pipeline.py --autoteste
+          # item 4 (28/09/2026): o log vira JSONL mensal. O portão de paridade é o que impede a perda
+          # silenciosa — com o log fatiado, perder um arquivo de mês passaria sem ruído, porque o JSON
+          # continuaria válido, só menor. Foi assim que uma união por conteúdo apagou quase 3.000
+          # execuções em 23/09.
+          python3 scripts/migrar_log_para_jsonl.py --autoteste
+          python3 scripts/gerar_resumo_do_log.py --autoteste
+          python3 scripts/verificar_paridade_log.py --autoteste
+          python3 scripts/verificar_paridade_log.py
           # §266: o painel que a editoria lê sem cavar log. O portão reprova script ESSENCIAL
           # com erro (recalcular, gerar_*) e apenas ALERTA quando um coletor erra duas rodadas
           # seguidas — fonte fora do ar é rotina; coletor quebrado não é.

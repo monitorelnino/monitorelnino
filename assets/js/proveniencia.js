@@ -236,9 +236,18 @@ function renderTable(){
   { const c = el('pqCorte'), a = el('pqAtualizado');
     if (c) c.textContent = META.corte || '—';
     if (a) a.textContent = META.atualizado_em || '—'; }
-  fetch('data/log_buscas.json').then(r => r.ok ? r.json() : null).then(l => { if (!(l && l.execucoes) || !el('pqLog')) return; el('pqLog').textContent = l.execucoes.length.toLocaleString('pt-BR');
-    const ult = l.execucoes.reduce((a, e) => e.data > a ? e.data : a, ''); const c = {}; l.execucoes.filter(e => e.data === ult).forEach(e => { c[e.canal] = (c[e.canal] || 0) + 1; });
-    if (el('pqCanais')) el('pqCanais').textContent = ult + ' · ' + Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => k + ' ' + v).join(' · '); });
+  // 28/09/2026 (item 4): a pagina baixava o log INTEIRO no navegador do leitor — 30,8 MB para
+  // mostrar dois numeros. O log agora vive em arquivos mensais JSONL, e o que a pagina precisa esta
+  // no resumo derivado, de alguns quilobytes. Os numeros sao os mesmos.
+  fetch('data/log_buscas_resumo.json').then(r => r.ok ? r.json() : null).then(l => {
+    if (!l || !el('pqLog')) return;
+    el('pqLog').textContent = Number(l.total || 0).toLocaleString('pt-BR');
+    const canais = Object.entries(l.por_canal_na_ultima || {});
+    if (el('pqCanais') && l.ultima_data) {
+      el('pqCanais').textContent = l.ultima_data + ' · '
+        + canais.map(([k, v]) => k + ' ' + v).join(' · ');
+    }
+  });
   fetch('data/verificacao_resumo.json').then(r => r.ok ? r.json() : null).then(v => { if (!(v && v.por_uf) || !document.querySelector('#tblLog tbody')) return;
     document.querySelector('#tblLog tbody').innerHTML = Object.keys(v.por_uf).sort().map(uf => { const n = v.por_uf[uf]; return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + (n.nacional || 0) + '</td><td>' + (n.estadual || 0) + '</td><td>' + (n.municipal_parcial || 0) + '</td><td>' + (n.municipal_completo || 0) + '</td><td>' + (n.nao_verificado || 0) + '</td></tr>'; }).join(''); });
   fetch('data/cobertura_qd.json').then(r => r.ok ? r.json() : null).then(c => { const m = (c && c.municipios) || {}; const t = Object.values(m); if (!el('pqCobertura')) return; el('pqCobertura').textContent = t.length ? t.filter(x => x.cobertura_qd === true).length + ' indexados · ' + t.filter(x => x.cobertura_qd === false).length + ' não indexados · ' + (5571 - t.length) + ' ainda não testados' : 'ainda não testada (a rotina preenche a partir da próxima rodada)'; });
