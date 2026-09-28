@@ -310,7 +310,8 @@ except Exception as _e:
 
 # ── Portões v2.2.4 (doc de redesenho 02/09/2026, §2, §3, §6) ────────────────
 try:
-    _lg = json.load(open(RAIZ / "data" / "log_buscas.json", encoding="utf-8"))
+    from coletores_base import ler_log
+    _lg = ler_log()   # item 4
     if _lg.get("formato_versao") != 2:
         erro("log_buscas: esquema v2 ausente (formato_versao != 2)")
     _NIVEIS = {None, "nacional", "estadual", "municipal_completo"}
@@ -450,7 +451,8 @@ except Exception as _e:
 # ── PR-N0 §1.6 (06/09/2026): canal de diários e detector de defeso ─────────────────────────
 try:
     import json as _j0
-    _lg = _j0.load(open(RAIZ / "data" / "log_buscas.json", encoding="utf-8"))
+    from coletores_base import ler_log
+    _lg = ler_log()   # item 4
     # 25/09/2026 (§213): era uma cópia, e ficou para trás quando o §194 criou
     # `sem_edicao_no_periodo` — o portão reprovou 86 execuções legítimas. O conjunto agora vem de
     # quem produz as decisões, para que as duas listas não possam divergir de novo.
