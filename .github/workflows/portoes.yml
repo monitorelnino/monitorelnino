@@ -98,6 +98,7 @@ jobs:
           # traziam "via imprensa" ao lado de fonte descrita como oficial.
           # assunto: texto rapido
           python3 scripts/verificar_rotulo_canal_descoberta.py --autoteste
+          # assunto: texto rapido
           python3 scripts/verificar_rotulo_canal_descoberta.py
           # assunto: cor texto
           node scripts/verificar_runtime_resposta.js
