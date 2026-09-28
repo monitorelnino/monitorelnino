@@ -362,6 +362,11 @@ jobs:
           python3 scripts/gerar_resumo_do_log.py --autoteste
           python3 scripts/verificar_paridade_log.py --autoteste
           python3 scripts/verificar_paridade_log.py
+          # §266: o painel que a editoria lê sem cavar log. O portão reprova script ESSENCIAL
+          # com erro (recalcular, gerar_*) e apenas ALERTA quando um coletor erra duas rodadas
+          # seguidas — fonte fora do ar é rotina; coletor quebrado não é.
+          python3 scripts/gerar_saude_pipeline.py --autoteste
+          python3 scripts/gerar_saude_pipeline.py --check
           # item 3 (28/09/2026): binário novo de evidência não entra no git. O texto extraído
           # continua; o binário vai para o ativo de Release do mês. Extensão não declarada bloqueia —
           # a dúvida não passa calada.
