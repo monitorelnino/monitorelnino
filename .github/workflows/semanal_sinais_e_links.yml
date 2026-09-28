@@ -1,0 +1,26 @@
+# Sinais climáticos por município e verificação de links — 1x por semana, domingo 4h de Brasília.
+#
+# Item 1 do handover de desacoplamento e cadência do item 1b: "sinais climáticos e links só domingo".
+# São os dois passos de maior duração e menor urgência — clima municipal tinha teto de 50 min no job
+# monolítico, e a verificação de links varre o site inteiro. Semanal é o que eles precisam ser.
+name: Semanal — sinais climáticos e links
+
+on:
+  schedule:
+    - cron: "0 7 * * 0"   # domingo, 4h de Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sinais_e_links:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: sinais-e-links
+      timeout_minutos: 120
+      comandos: |
+        coletar_sinais_risco.py --municipios
+        verificar_links.py
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

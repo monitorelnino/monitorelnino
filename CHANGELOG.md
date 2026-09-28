@@ -9,6 +9,80 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §265 · O pipeline desacoplado, e a rodada só na janela noturna · 28/09/2026
+
+Classe **infraestrutura da rodada**. Handover
+`notas/HANDOVER_desacoplar_pipeline_e_emagrecer_repositorio_27-09-2026.md`, itens 1, 1a e 1b
+(repositório privado). Cadência aprovada pela editoria em 27/09/2026 (noite). **Nenhuma nota muda.**
+
+### O que foi medido
+
+`atualizar.yml`, 789 linhas, quatro execuções por dia: **mediana de 92 min, máximo de 240**; de 12
+execuções medidas, **sete canceladas, duas com falha, uma com sucesso**. A causa é aritmética: a
+cadência era de 6 h e a duração de 1,5 a 4 h, então execuções se sobrepunham — e execução pendente é
+cancelada quando a seguinte chega. Um job monolítico com cerca de trinta scripts em sequência também
+tem a propriedade de que uma fonte lenta derruba tudo o que vem depois dela.
+
+### Jobs independentes
+
+Cada coletor passa a ter job próprio, teto curto, `continue-on-error` por script, a sua saída e a sua
+**linha de saúde**. O workflow reutilizável `_coletor.yml` carrega a parte comum:
+
+| workflow | hora (Brasília) | o que roda |
+|---|---|---|
+| `noturno_diarios.yml` | 22h30 | diários municipais, consorciados, DOE, S2iD |
+| `noturno_descoberta.yml` | 23h30 | imprensa, agregadores, sítios oficiais, triagem |
+| `noturno_evidencias.yml` | 1h | baixar, ler texto e OCR, em lotes pequenos |
+| `noturno_juiz.yml` | 3h | preparar pistas, aplicar descobertas, juiz, amostra semanal |
+| `semanal_sinais_e_links.yml` | domingo 4h | clima municipal e verificação de links |
+| `publicar_dados.yml` | 6h e 22h | recalcular, derivados, portões, publicar |
+
+**Concorrência por papel:** coletor usa fila (`cancel-in-progress: false`) porque coleta
+interrompida perde o que já achou; o publicador é o único que cancela o anterior, porque publicar
+duas vezes o mesmo estado não tem valor. **Nenhum job espera pelo término de outro**: "depois dos
+diários" é por horário, não por dependência. O que não chegou fica com a data anterior, declarada.
+
+`atualizar.yml` **não foi apagado**: perdeu as quatro execuções diárias e ficou com o semanal de
+domingo (que o item 1b mantém) e o disparo manual, para reprocessar um dia inteiro ou investigar. O
+monólito continua reversível — foi o `schedule` que saiu, não o arquivo.
+
+### Item 1a: a rodada não falhava na coleta, falhava no commit
+
+Diagnóstico adicional da central: o run 36338485886 passou por **todas** as etapas de coleta e perdeu
+tudo no passo 37, depois de 3h45 — entre o início e o commit entraram três PRs e duas rodadas de
+busca web na `main`. Por isso o commit de cada job é um **laço de rebase-e-push**, com até cinco
+tentativas e espera crescente; conflito em arquivo de dado gerado se resolve **regenerando** depois
+do rebase, nunca à mão. Se as cinco falharem, o job grava as saídas como artefato e falha com uma
+mensagem única: `commit perdido para main em movimento`.
+
+### Item 1b: janela noturna, regime permanente
+
+Coleta e commit automáticos **só entre 22h e 6h de Brasília**. A busca web passa de 12 rodadas por
+dia a qualquer hora para 5 dentro da janela (1, 3, 5, 7 e 9 UTC), 150 municípios cada: 750 por noite,
+ciclo completo a cada ~7,5 dias. Entre 6h e 22h não há commit automático na `main`.
+
+O registro é obrigatório porque cadência é compromisso público: `METODOLOGIA.md` recebeu o regime
+datado, com a ordem declarada da fila de re-varredura, e `obrigado.html` diz ao leitor a janela e as
+duas publicações diárias. A primeira versão dessa frase levou a página a 166 palavras e o portão
+`verificar_palavras.js` reprovou (teto 160) — reescrita mais curta, 151 palavras, sem perder a janela,
+os horários nem a data da decisão. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
+atualização completa — continua valendo e continua verdadeira.
+
+### Uma linha de saúde por script
+
+`scripts/saude_pipeline.py --rodar <script>` cronometra, captura a saída, conta os itens que o
+próprio script relatou, resume a linha decisiva do erro e devolve o **mesmo** código de saída. Sete
+dias de histórico em `data/saude_pipeline.json`. `itens` nulo é "não medido", nunca zero. É sobre
+estas linhas que o painel do item 2 será construído.
+
+### Um erro meu no caminho, porque ele quase apagou o registro
+
+Ao inserir esta seção, um script de edição avaliou `open(arquivo, "w")` **antes** de montar o texto a
+escrever, e a expressão do texto levantou exceção: o `CHANGELOG.md` foi truncado a zero byte e o
+arquivo vazio entrou num commit. Recuperado do commit anterior, íntegro, com as 4.972 linhas. A lição
+é de método, e vale para toda edição programática de arquivo grande: **montar o conteúdo inteiro
+primeiro, abrir para escrita depois** — e o `assert` de âncora, que o PROTOCOLO já exige, precisa vir
+antes de qualquer abertura em modo de escrita.
 ## §264 · Busca web: ritmo, não volume · 27/09/2026
 
 Classe **método e coleta**. Decisão da central de 27/09/2026 (noite), handover
