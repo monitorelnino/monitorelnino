@@ -19,6 +19,8 @@ jobs:
     with:
       nome: descoberta
       timeout_minutos: 60
+      # §278: `monitorar_redes_oficiais.py` e `seguir_pistas.py` consultam o metabuscador.
+      precisa_searxng: true
       comandos: |
         monitorar_imprensa_regional.py --limite 40
         monitorar_imprensa_saude.py --limite 27
@@ -28,6 +30,7 @@ jobs:
         detectar_marcos_federais.py
         verificar_prazos_legais.py
         descobrir_planos.py --limite 20
+        monitorar_redes_oficiais.py --limite 20
         seguir_pistas.py --limite 20
         triar_confianca_pistas.py
     secrets:
