@@ -62,6 +62,12 @@ e o autoteste do orquestrador reprovou — é o invariante do §163, que existe 
 deixou o portão 12 vermelho na `main` em 22/09/2026. Cometi o mesmo esquecimento nos dois PRs do dia
 que acrescentam derivado.
 
+`scripts/testar_lote_de_escrita.py` também precisou mudar de porta, e eu esqueci: ele contava
+gravações espiando `gravar()` e conferia a contagem abrindo o monólito, então cinco dos seus casos
+reprovaram no CI. O cofre do teste passou a espiar **também** `acrescentar_ao_log()`, registrando com o
+mesmo nome de sempre, e a contagem sai de `ler_log()`. Os testes continuam fazendo a pergunta de
+sempre — "quantas gravações do log aconteceram" e "quantas execuções o log tem" — sem saber do formato.
+
 Quatro portões novos (96 no total): autoteste da migração, do resumo, do portão de paridade, e o
 portão de paridade rodando de verdade.
 
