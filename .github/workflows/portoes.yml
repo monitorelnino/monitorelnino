@@ -52,6 +52,13 @@ jobs:
         run: |
           set -e
           # assunto: cor texto rapido
+          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com <<<<<<< dentro, e o
+          # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
+          # barato, repositório inteiro, antes de qualquer outra coisa.
+          python3 scripts/verificar_marcadores_de_conflito.py --autoteste
+          # assunto: cor texto rapido
+          python3 scripts/verificar_marcadores_de_conflito.py
+          # assunto: cor texto rapido
           python3 scripts/validar_workflows.py
           # §178 (23/09/2026): escrita em modo texto sem newline fixado corrompe todo derivado
           # regenerado fora do runner (CRLF contra o LF que o manifesto sela). Roda sempre, não só

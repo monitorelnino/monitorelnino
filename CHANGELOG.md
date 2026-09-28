@@ -9,7 +9,6 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## §267 · Ambiente reprodutível e mais rápido · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 5 do handover de desacoplamento (27/09/2026).
@@ -31,11 +30,23 @@ cache.
 baixa a ferramenta na hora. Cache ali não economizaria nada, e pedir cache onde não há instalação é
 enfeite de configuração.
 
+### Um portão contra o erro que eu cometi duas vezes hoje
+
+`git add -A` marca o caminho como **resolvido** mesmo quando o conteúdo ainda tem `<<<<<<<`,
+`=======` e `>>>>>>>`, e `git commit` então aceita sem reclamar. O `CHANGELOG.md` subiu assim **duas
+vezes** em 28/09/2026, nas duas uniões de ramo que atravessavam vários PRs. Não é distração que se
+corrige prometendo atenção: é ausência de verificação.
+
+`scripts/verificar_marcadores_de_conflito.py` varre os arquivos **rastreados pelo git** e acusa
+caminho e linha. Ele procura a abertura e o fechamento, não o `=======` sozinho — esse aparece em
+texto legítimo (sublinhado de título em Markdown, régua em docstring), e portão que acusa texto
+legítimo deixa de ser lido. Entra como **primeiro** portão de página: é barato e evita que tudo o que
+vem depois analise um arquivo que nem está resolvido.
+
 Meta do item: instalação abaixo de 1 min por job. Ela **não está medida** — o cache só produz efeito a
 partir da segunda execução, e a comparação antes/depois entra em `notas/ESTADO_ATUAL.md` quando as
 próximas rodadas noturnas tiverem número.
 
-=======
 ## §265 · O pipeline desacoplado, e a rodada só na janela noturna · 28/09/2026
 
 Classe **infraestrutura da rodada**. Handover
@@ -110,7 +121,6 @@ arquivo vazio entrou num commit. Recuperado do commit anterior, íntegro, com as
 é de método, e vale para toda edição programática de arquivo grande: **montar o conteúdo inteiro
 primeiro, abrir para escrita depois** — e o `assert` de âncora, que o PROTOCOLO já exige, precisa vir
 antes de qualquer abertura em modo de escrita.
->>>>>>> origin/main
 ## §264 · Busca web: ritmo, não volume · 27/09/2026
 
 Classe **método e coleta**. Decisão da central de 27/09/2026 (noite), handover
