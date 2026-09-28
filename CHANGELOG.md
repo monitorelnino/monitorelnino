@@ -9,6 +9,50 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §288 · Procurar o ato antes de recusar por falta dele · 28/09/2026
+
+Classe **método e coleta**. Bloco das 17:20 de 28/09/2026 (decisão da central). **Nenhuma nota muda,
+nenhum peso muda:** nada aqui promove — a busca dirigida devolve candidato a documento, e quem julga
+continua sendo o juiz, pelas mesmas etapas.
+
+### O gargalo, medido
+
+Das 250 decisões da primeira passada, **176 pararam na Etapa 0** por `sem_documento_primario`. Dos
+171 com URL, **34 eram Instagram**, 4 Facebook, o resto portais de imprensa. O juiz está certo em
+recusar: notícia não é ato. O que faltava era **procurar o ato** antes de encerrar — a notícia diz
+que ele existe, e diz onde procurar.
+
+### As três rotas
+
+1. **Querido Diário**, pelo território e pelo número/data extraídos da pista.
+2. **Sítio oficial do município**, pelos domínios já conhecidos, procurando o título do ato.
+3. **Cascata da busca web**, com string específica — `"{município}" "{tipo} nº {número}"` e
+   `"{município}" "{nome do plano}"` —, sob o **mesmo ritmo e o mesmo disjuntor** da rodada. Não há
+   caminho de rede novo a manter.
+
+Achou → o juiz segue das etapas 1 a 7 sobre o documento encontrado. Não achou → a recusa fica, e a
+pista passa a dizer **onde se procurou e quando**: recusa que não diz onde procurou não é
+conferível.
+
+### O que a medição diz sobre as rotas
+
+Sobre as 207 recusas elegíveis (Etapa 0 e citação incompleta): **170 têm consulta dirigida**
+possível, 172 trazem nome de plano — e apenas **1** traz número de ato. A notícia quase nunca cita o
+número, e é por isso que a rota do nome do plano carrega o peso, com o nome do município entre
+aspas fazendo a precisão.
+
+**Um erro meu, achado na medição.** A captura do nome do plano ia até quatro palavras adiante e
+produzia consulta que não casaria nada: *"Plano de contingência preventivo estruturado pela
+Secretaria"* é frase de jornalista, não nome de ato. Duas palavras, e sem os adjetivos de redação.
+
+### A fila de reprocessamento
+
+**O ato pode ser publicado depois da notícia** — e uma recusa definitiva perderia exatamente esse
+caso, que é o mais comum quando a imprensa noticia o anúncio. A pista não achada volta a cada 7
+dias, e cada passagem fica no histórico, com as fontes tentadas.
+
+Um portão novo (116), com 18 casos offline.
+
 ## §287 · Recusa por causa técnica deixa de ser permanente, com back-off e histórico · 28/09/2026
 
 Classe **método e coleta**. Item 2 do bloco das 19:50 (decisão da central). **Nenhuma nota muda,
