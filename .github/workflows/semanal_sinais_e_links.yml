@@ -7,7 +7,9 @@ name: Semanal — sinais climáticos e links
 
 on:
   schedule:
-    - cron: "0 7 * * 0"   # domingo, 4h de Brasília
+    # 28/09/2026: 4h30 e não 4h00 — às 4h em ponto roda a busca web da janela, e as duas no mesmo
+    # minuto competem pelo runner sem necessidade.
+    - cron: "30 7 * * 0"   # domingo, 4h30 de Brasília
   workflow_dispatch:
 
 permissions:

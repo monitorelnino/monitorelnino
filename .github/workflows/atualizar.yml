@@ -20,7 +20,10 @@ on:
   # o site promete ao leitor, e é ela que o portão `scripts/testar_cadencia_publicacao.py` cobra
   # contra a frase pública de `obrigado.html`.
   schedule:
-    - cron: "0 3 * * 0"   # domingo, 0h de Brasília (o cron é UTC; 3 UTC = 0h BRT do mesmo domingo)
+    # 28/09/2026: 0h10 e não 0h00 — a busca web da janela roda às 0h em ponto, e a rodada completa de
+    # domingo no mesmo minuto competiria com ela pelo runner. O DIA não muda, e é o dia que o portão
+    # `scripts/testar_cadencia_publicacao.py` cobra contra a frase pública de `obrigado.html`.
+    - cron: "10 3 * * 0"   # domingo, 0h10 de Brasília (o cron é UTC; 3 UTC = 0h BRT do mesmo domingo)
   workflow_dispatch:       # execução manual pelo botão "Run workflow"
     inputs:
       ensaio:
