@@ -20,9 +20,21 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: sinais-e-links
-      timeout_minutos: 120
+      timeout_minutos: 150
+      # §279 (item 5 da decisão da editoria, 28/09/2026): os três scripts que só rodavam na CI entram
+      # aqui. Eles produzem dado que a rodada USA — `dominios_oficiais.json` alimenta
+      # `descobrir_planos.py`, `saude_sinais.json` alimenta a camada de saúde — e rodar só quando um PR
+      # abre significava dado envelhecendo sem ninguém notar: a última busca ativa de domínio registrada
+      # era de 23/09. Semanal é a cadência que eles pedem: domínio oficial e ESPIN não mudam por dia.
+      # SEM `precisa_searxng`: conferi antes de afirmar. `descobrir_dominios.py` não consulta
+      # metabuscador nenhum — ele testa padrões de domínio declarados (`defesacivil.{uf}.gov.br` e
+      # afins) direto por HTTP, e decide pela resposta e pelo título. Subir instância aqui seria
+      # dependência inventada, que é o erro que eu cometi três vezes nestes dois dias.
       comandos: |
         coletar_sinais_risco.py --municipios
+        descobrir_dominios.py
+        coletar_espin.py
+        classificar_planos_municipais.py
         verificar_links.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

@@ -9,6 +9,74 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §281 · "Imprensa" é canal de descoberta, e o rótulo passa a dizer isso · 28/09/2026
+
+Classe **texto público**. Defeito 6 do relatório da auditoria do funil, item 3 do bloco de decisões da
+editoria de 28/09/2026. **Nenhuma nota muda, nenhum cálculo muda:** é rótulo.
+
+### O que o leitor via
+
+Treze registros de `municipios.json` têm `canal: "imprensa"`. A página mostrava "· via imprensa" ao
+lado de uma fonte descrita como oficial — em Rio Branco/AC, por exemplo, "Prefeitura de Rio Branco
+(oficial)" —, e a tabela de procedência mostrava o código cru na coluna de canal. Nada ali dizia que
+aquele canal é de **descoberta**: a matéria serve para achar o documento, e a prova continua sendo o
+ato na fonte oficial (§5.2.1).
+
+O rótulo passou a ser **"imprensa (descoberta)"** nos dois lugares. Os outros canais são de registro
+— diário oficial, repositório estadual, site do município —, e para eles o código já diz o que é.
+
+### Por que só o rótulo
+
+Nenhum dos treze pontua: doze são `nao_verificado` e um é `decreto`, que não entra no índice por
+regra. O valor gravado não muda — `imprensa` continua sendo a chave no dado e no vocabulário fechado
+de canais, porque renomear a chave quebraria o vocabulário e o histórico do log sem melhorar nada
+para quem lê.
+
+### A trava
+
+`scripts/verificar_rotulo_canal_descoberta.py` reprova quando uma página atribui ao canal de
+descoberta um rótulo sem a palavra "descoberta", e reprova também se um dos arquivos de rótulo
+desaparecer — portão que fica verde olhando para o vazio não é portão. Dois portões novos (111).
+
+## §279 · Cadência para os três coletores de CI, e um defeito que não existia · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 5 do bloco de decisões da editoria de 28/09/2026.
+**Nenhuma nota muda.**
+
+### Os três que só rodavam na CI
+
+`descobrir_dominios.py`, `coletar_espin.py` e `classificar_planos_municipais.py` produzem dado que a
+rodada **usa** — `dominios_oficiais.json` alimenta `descobrir_planos.py`, `saude_sinais.json` alimenta a
+camada observada de saúde —, e rodavam só quando um PR abria. O efeito era dado envelhecendo sem ninguém
+notar: a última busca ativa de domínio registrada era de **23/09**.
+
+Entraram no `semanal_sinais_e_links.yml`, domingo 4h30 de Brasília, dentro da janela noturna. Semanal é a
+cadência que eles pedem: domínio oficial e ESPIN não mudam por dia. O teto do job subiu de 120 para 150
+min por causa dos três.
+
+### O "defeito 4" da auditoria do funil não existia, e o erro era meu
+
+O item 5 pedia investigar e consertar a causa do erro de 05/09 no canal `motor_de_busca`. Investiguei, e
+o que achei foi uma conclusão errada minha, escrita no relatório do funil: **aquele canal não tem script
+produtor nenhum.** Uma busca no repositório inteiro mostra que só `gerar_cobertura_declarada.py` o
+menciona, e apenas para **mapeá-lo** em `busca_web`.
+
+As 78 execuções são de **busca manual de sessão editorial** — bateria estadual de saúde, reclassificações,
+emergências sanitárias —, e as 44 com decisão `erro` são registros honestos de busca que não localizou
+nada. O canal não morreu: as sessões manuais pararam, e o equivalente automático é a camada 4
+(`busca_web`), que roda.
+
+Não havia defeito a consertar; havia um diagnóstico meu a corrigir, e o relatório em
+`notas/preprint/funil/RELATORIO_2026-09-27.md` foi corrigido no privado. A lição de método fica escrita
+junto: **canal parado no log só é defeito quando existe produtor esperado** — antes de chamar de defeito,
+procurar quem deveria escrever.
+
+### Uma dependência que eu quase inventei de novo
+
+Ao acrescentar os três, escrevi `precisa_searxng: true` no workflow supondo que `descobrir_dominios.py`
+consultasse o metabuscador. Fui conferir antes de deixar: **ele não consulta nada disso** — testa padrões
+de domínio declarados (`defesacivil.{uf}.gov.br` e afins) direto por HTTP e decide pela resposta e pelo
+título. A linha saiu. Era o quarto erro do mesmo tipo em dois dias, e o único que não chegou a subir.
 ## §280 · O número público de menções era 347 e é 260 · 28/09/2026
 
 Classe **correção de dado publicado**. Defeito 1 do relatório da auditoria do funil, item 3 do bloco
