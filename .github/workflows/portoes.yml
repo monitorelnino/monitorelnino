@@ -371,5 +371,9 @@ jobs:
           # continua; o binário vai para o ativo de Release do mês. Extensão não declarada bloqueia —
           # a dúvida não passa calada.
           python3 scripts/verificar_binario_novo_em_evidencias.py --autoteste
+          # §275: informativo enquanto a trava do .gitignore está revertida — ela custou 1.496 páginas
+          # de prova na primeira noite no ar, porque o lote de Release cobria só um dos caminhos que
+          # preservam evidência.
           python3 scripts/verificar_binario_novo_em_evidencias.py --contra origin/main
+          python3 scripts/declarar_evidencia_perdida.py --autoteste
           python3 scripts/empacotar_evidencias.py --autoteste
