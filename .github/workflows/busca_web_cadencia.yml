@@ -89,6 +89,17 @@ jobs:
       - name: Busca web (150 municípios, prioritários primeiro, rotação automática)
         if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
         run: python3 monitorar_busca_web.py --tamanho 150 2>&1 | tee /tmp/busca_web.log
+
+      # 27/09/2026 (PR 1c item 5): quais motores de origem devolveram 429/CAPTCHA. A decisão de
+      # desligar motor exige evidência, e a evidência estava só dentro do contêiner, que morre com o
+      # job. Sem isto, a escolha de motores seria adivinhação.
+      - name: Saúde da instância (motores que barraram)
+        if: always() && steps.searxng.outputs.pronto == '1'
+        continue-on-error: true
+        run: |
+          echo "### SearXNG — motores com erro nesta rodada" >> "$GITHUB_STEP_SUMMARY"
+          docker logs searxng 2>&1 | grep -iE "error|429|captcha|timeout|blocked|too many" | sort | uniq -c | sort -rn | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
+          docker logs searxng 2>&1 | grep -iE "error|429|captcha|timeout|blocked|too many" | sort | uniq -c | sort -rn | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Sincronizar índice e derivados
         if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
         run: |
