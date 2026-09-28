@@ -842,7 +842,27 @@ def autoteste() -> int:
         # toda entidade encerrada declara a data da última edição, ou None explícito
         return all("ultima_edicao" in f for fs in SIGPUB_ENCERRADO.values() for f in fs)
 
+    def t_janela_desde():
+        """§276: a janela corrida existe porque data fixa no YAML envelhece. Uma janela de três meses
+        revarrida a cada noite consumiu 87 dos 90 min do job e o fez ser cancelado."""
+        import datetime as _dt
+        h = _dt.date(2026, 9, 28)
+        explicito = janela_desde(["--desde", "2026-06-29"], hoje=h) == "2026-06-29"
+        corrida = janela_desde(["--desde-dias", "8"], hoje=h) == "2026-09-20"
+        padrao = janela_desde([], hoje=h) == "2026-08-29"
+        # `--desde` explícito vence a janela corrida: é como se reprocessa período nomeado à mão
+        precedencia = janela_desde(["--desde", "2026-01-01", "--desde-dias", "8"], hoje=h) == "2026-01-01"
+        recusas = 0
+        for ruim in (["--desde-dias", "zero"], ["--desde-dias", "0"], ["--desde-dias", "-3"],
+                     ["--desde-dias"]):
+            try:
+                janela_desde(ruim, hoje=h)
+            except SystemExit:
+                recusas += 1
+        return all((explicito, corrida, padrao, precedencia)) and recusas == 4
+
     return rodar_autoteste({
+        "§276 janela corrida: --desde-dias, com --desde vencendo e recusa do inválido": t_janela_desde,
         "§222 o canal deste coletor existe no vocabulário de canais": t_canal_no_vocabulario,
         "extrai token do HTML do calendário": t1,
         "regressão 22/09: token com atributos em ordem diferente (achado contra produção)": t1b,
@@ -863,11 +883,34 @@ def autoteste() -> int:
     })
 
 
+def janela_desde(argv: list, hoje=None) -> str:
+    """A data inicial da varredura: `--desde` explícito, `--desde-dias N` corrido, ou 30 dias.
+
+    Função separada para ser testável sem rede e sem relógio: `hoje` é injetável."""
+    hoje = hoje or hoje_editorial()
+    if "--desde" in argv:
+        return argv[argv.index("--desde") + 1]
+    if "--desde-dias" in argv:
+        try:
+            dias = int(argv[argv.index("--desde-dias") + 1])
+        except (ValueError, IndexError):
+            raise SystemExit("✗ --desde-dias exige um número inteiro de dias")
+        if dias < 1:
+            raise SystemExit("✗ --desde-dias exige pelo menos 1 dia")
+        return (hoje - timedelta(days=dias)).isoformat()
+    return (hoje - timedelta(days=30)).isoformat()
+
+
 if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(autoteste())
     a = sys.argv
-    desde = a[a.index("--desde") + 1] if "--desde" in a else (hoje_editorial() - timedelta(days=30)).isoformat()
+    # 28/09/2026 (§276): `--desde-dias N` é janela CORRIDA, contada do corte editorial para trás. Existe
+    # porque o workflow noturno precisa de uma janela que não envelheça: uma data fixa no YAML vira, com
+    # o passar das semanas, uma revarredura de meses a cada noite — foi o que consumiu 87 dos 90 min do
+    # job e o fez ser cancelado. `--desde` continua valendo e ganha precedência, para reprocessar um
+    # período nomeado à mão.
+    desde = janela_desde(a)
     ate = a[a.index("--ate") + 1] if "--ate" in a else hoje_editorial().isoformat()
     uf = a[a.index("--uf") + 1] if "--uf" in a else ""
     sys.exit(coletar(desde, ate, apenas_uf=uf))
