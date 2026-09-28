@@ -716,7 +716,17 @@ def self_test():
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--self-test", action="store_true")
+    # 28/09/2026 (item 1 do bloco de frescor): teto de pistas por execução. Sem ele, a fila de
+    # 1.495 pendentes era processada inteira, cada uma com busca de documento na rede, e o job de
+    # 90 min foi CANCELADO no meio — o `_coletor.yml` só commita ao final, então a noite inteira de
+    # trabalho foi perdida sem deixar rastro. Teto baixo que termina e commita vale mais que fila
+    # inteira que não chega ao fim.
+    ap.add_argument("--limite", type=int, default=None,
+                    help="processa no máximo N pistas pendentes nesta execução")
     args = ap.parse_args()
+    if args.limite is not None and args.limite <= 0:
+        print("--limite tem de ser inteiro positivo.")
+        sys.exit(2)
     if args.self_test:
         self_test()
         sys.exit(0)
@@ -728,6 +738,9 @@ if __name__ == "__main__":
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     fila = json.load(open(PISTAS_IMPRENSA, encoding="utf-8"))
     pendentes = [p for p in fila["pistas"] if p.get("status") == "pendente_confirmacao_documento"]
+    total_pendentes = len(pendentes)
+    if args.limite is not None:
+        pendentes = pendentes[:args.limite]
     resultados = {"APLICADA": 0, "DESCARTADA": 0, "FILA_HUMANA": 0, "REVERTIDA": 0}
     for pista in pendentes:
         r = processar_pista(pista, hoje)
@@ -739,4 +752,7 @@ if __name__ == "__main__":
                         "decisao": r["decisao"], "motivo": r.get("motivo", "")})
 
     gravar_em(PISTAS_IMPRENSA, fila)
-    print(f"Processadas {len(pendentes)} pistas pendentes: {resultados}")
+    print(f"Processadas {len(pendentes)} de {total_pendentes} pistas pendentes: {resultados}")
+    if len(pendentes) < total_pendentes:
+        print(f"Teto de --limite alcançado: {total_pendentes - len(pendentes)} pista(s) ficam para a "
+              f"próxima execução. Não é lacuna de coleta — é fila, e ela está declarada aqui.")

@@ -84,11 +84,40 @@ def julgar_uma(p: dict, buscar, preservar=None) -> dict:
                       ibge=p.get("ibge"), url=url, trecho=p.get("trecho"))
     veredito["pista_id"] = p.get("id")
     veredito["origem"] = p.get("origem")
+    # 28/09/2026: separar "não pudemos ler" de "lemos e não serve". Sem esta marca, `--aplicar`
+    # gravava recusa PERMANENTE numa pista cujo documento apenas não respondeu naquela noite —
+    # uma falha de rede, um 403 de uma hora, um portal fora do ar apagariam a pista para sempre,
+    # e `pendente()` nunca mais a devolveria à fila. É a mesma distinção de sempre, um nível
+    # abaixo: entre "a fonte não tem" e "não conseguimos ler o que a fonte tem".
+    veredito["leu_documento"] = bool(texto)
     # O hash só se grava quando há documento de verdade: preservar um erro servido com 200 (§186)
     # criaria prova falsa.
     if preservar and texto and veredito["criterios"].get("0_documento_primario", {}).get("ok"):
         veredito["hash_evidencia"] = preservar(url, texto)
     return veredito
+
+
+def aplicar_no_objeto(p: dict, v: dict) -> str:
+    """Escreve o veredito na pista e diz o que foi feito: promovida, recusada ou adiada.
+
+    Função pura sobre o dicionário da pista — é o que permite ao autoteste provar, sem rede e sem
+    escrita, que documento não lido NÃO queima a pista. Adiada não recebe `juiz`: se recebesse,
+    `pendente()` a consideraria julgada e ela nunca voltaria."""
+    if not v.get("leu_documento"):
+        return "adiada"
+    p["juiz"] = {"codebook": v["codebook"], "promove": v["promove"], "motivo": v["motivo"],
+                 "criterios": v["criterios"], "categoria": v["categoria"],
+                 "data": v["data"], "julgado_em": _hoje_iso(),
+                 "hash_evidencia": v.get("hash_evidencia")}
+    if v["promove"]:
+        return "promovida"
+    p["status"] = f"pista — recusada pelo juiz: {v['motivo']}"
+    return "recusada"
+
+
+def _hoje_iso() -> str:
+    from coletores_base import hoje_editorial
+    return hoje_editorial().isoformat()
 
 
 def contar(vereditos: list) -> dict:
@@ -171,6 +200,32 @@ def autoteste() -> int:
                    lambda u: None, preservar)
     casos.append(("documento não obtido devolve sem_documento_primario",
                   v["motivo"] == "sem_documento_primario" and not v["promove"]))
+    casos.append(("documento não lido é marcado como tal no veredito", v["leu_documento"] is False))
+    casos.append(("documento lido é marcado como tal",
+                  all(x["leu_documento"] for x in vereditos if x.get("hash_evidencia"))))
+
+    # 28/09/2026: a trava que impede a pista de ser queimada por uma falha de rede. Sem ela,
+    # `--aplicar` gravava recusa permanente e `pendente()` nunca mais devolvia a pista à fila.
+    p_adiada = {"id": "y", "status": "pista — promover a registro exige documento primário"}
+    casos.append(("documento não lido ADIA: não escreve juiz nem muda status",
+                  aplicar_no_objeto(p_adiada, v) == "adiada"
+                  and "juiz" not in p_adiada
+                  and p_adiada["status"].startswith("pista — promover")))
+    casos.append(("pista adiada continua pendente para a próxima rodada", pendente(p_adiada)))
+
+    v_recusa = dict(v, leu_documento=True, motivo="fora_do_objeto", promove=False)
+    p_recusa = {"id": "z", "status": "pista — promover a registro exige documento primário"}
+    casos.append(("documento lido e recusado marca a recusa com o motivo",
+                  aplicar_no_objeto(p_recusa, v_recusa) == "recusada"
+                  and p_recusa["status"] == "pista — recusada pelo juiz: fora_do_objeto"))
+    casos.append(("pista recusada não volta ao juiz", not pendente(p_recusa)))
+
+    v_promove = dict(v, leu_documento=True, promove=True, motivo=None)
+    p_promove = {"id": "w", "status": "pista — promover a registro exige documento primário"}
+    casos.append(("promovida recebe juiz e NÃO é marcada como recusada",
+                  aplicar_no_objeto(p_promove, v_promove) == "promovida"
+                  and p_promove["juiz"]["promove"] is True
+                  and "recusada" not in p_promove["status"]))
 
     # as filas: leitura tolerante ao nome da lista
     casos.append(("lê fila com 'pistas'", len(pistas_da_fila({"pistas": [1, 2]})) == 2))
@@ -237,6 +292,7 @@ def main() -> int:
         return sha256(texto.encode("utf-8")) if texto else None
 
     vereditos, por_fila = [], {}
+    feitos = {"promovida": 0, "recusada": 0, "adiada": 0}
     for nome_fila in FILAS:
         doc = ler(nome_fila)
         if not doc:
@@ -252,12 +308,7 @@ def main() -> int:
             vereditos.append(v)
             if not aplicar:
                 continue   # relatório não escreve nem no objeto em memória que será gravado
-            p["juiz"] = {"codebook": v["codebook"], "promove": v["promove"], "motivo": v["motivo"],
-                         "criterios": v["criterios"], "categoria": v["categoria"],
-                         "data": v["data"], "julgado_em": hoje_editorial().isoformat(),
-                         "hash_evidencia": v.get("hash_evidencia")}
-            if not v["promove"]:
-                p["status"] = f"pista — recusada pelo juiz: {v['motivo']}"
+            feitos[aplicar_no_objeto(p, v)] += 1
         if aplicar:
             gravar_em(DATA / nome_fila, doc)
 
@@ -267,6 +318,10 @@ def main() -> int:
         if v["promove"]:
             por_categoria[v["categoria"]] = por_categoria.get(v["categoria"], 0) + 1
     imprimir_relatorio(c, por_categoria)
+    if aplicar:
+        print(f"aplicado na fila: {feitos['promovida']} promovida(s), "
+              f"{feitos['recusada']} recusada(s), {feitos['adiada']} adiada(s) por "
+              f"documento não lido nesta rodada (voltam à fila na próxima)")
 
     if aplicar:
         funil.registrar("juiz", pistas_recebidas=c["pistas"], com_documento=c["com_documento"],

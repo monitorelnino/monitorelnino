@@ -24,10 +24,28 @@ jobs:
       nome: juiz
       timeout_minutos: 90
       precisa_node: true
+      # 28/09/2026 (item 1 do bloco de frescor): três defeitos aqui, e o efeito somado era um juiz
+      # que nunca promoveu nada desde que foi criado.
+      #
+      # 1. `julgar_filas.py` rodava com `--relatorio`. Sem `--aplicar` ele imprime o veredito e não
+      #    escreve: nem na fila, nem em `promocoes_automaticas.json`, nem no log. Mesmo terminando,
+      #    a noite inteira não deixava traço — e era por isso que `data/promocoes_automaticas.json`
+      #    não existia.
+      # 2. Nenhum dos dois tinha teto. A fila de imprensa tem 1.495 pendentes de documento e 1.174
+      #    pendentes de codebook, cada uma com busca na rede; o job de 90 min foi CANCELADO no meio
+      #    em 28/09 às 12h08. O `_coletor.yml` só commita ao final, então o trabalho feito até ali
+      #    foi perdido inteiro. Teto que termina e commita vale mais que fila inteira que não chega
+      #    ao fim — e o que sobra fica declarado na saída de cada script.
+      # 3. O aplicador rodava ANTES do juiz de codebook. Agora o codebook julga primeiro: ele só
+      #    aperta o critério (recusa mais, nunca promove por conta própria), e recusa lida antes
+      #    poupa o aplicador de buscar documento de pista que o codebook já descartou.
+      #
+      # Os tetos são conservadores de propósito, para caber com folga nos 90 min e serem medidos na
+      # primeira noite antes de subir.
       comandos: |
         revisar_pistas.py --preparar --relatorio
-        julgar_e_aplicar_descobertas.py
-        julgar_filas.py --relatorio
+        julgar_filas.py --aplicar --limite 250
+        julgar_e_aplicar_descobertas.py --limite 150
         scripts/amostra_auditoria_semanal.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

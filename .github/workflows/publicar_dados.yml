@@ -63,13 +63,21 @@ jobs:
         timeout-minutes: 5
         run: python3 scripts/saude_pipeline.py --rodar recalcular_mare.py --write
 
+      # 28/09/2026 (item 1 do bloco de frescor): este passo usava o modo `git`, que exige árvore
+      # limpa DEPOIS de regenerar — e é exatamente o que nunca vale aqui. O publicador existe para
+      # trazer os derivados em dia depois de a coleta noturna commitar dado novo; no modo `git` ele
+      # regenerava, encontrava a diferença que ele mesmo acabou de produzir e reprovava. Foi assim
+      # que as duas execuções de 28/09 (04h14 e 09h07) morreram no portão 12, e nada do que foi
+      # coletado desde 25/09 chegou ao site: o publicador falhava precisamente porque tinha
+      # trabalho a fazer.
+      #
+      # `--idempotencia` é o modo escrito para árvore suja: regenera e exige que uma SEGUNDA
+      # regeneração não altere nada, que é a propriedade de verdade (derivado é função pura do dado
+      # desta rodada). O portão 12 no modo `git` continua valendo onde ele faz sentido — na suíte,
+      # abaixo, DEPOIS do commit local, quando a árvore está limpa de novo.
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
-        run: bash scripts/verificar_derivados.sh
-
-      - name: Portões
-        timeout-minutes: 12
-        run: python3 scripts/portoes_locais.py tudo
+        run: bash scripts/verificar_derivados.sh --idempotencia
 
       # §273: o painel é gerado AQUI, depois dos portões e antes do commit, porque ele resume a
       # execução em curso — inclusive a linha de saúde que o passo de recalcular acabou de gravar.
@@ -79,10 +87,14 @@ jobs:
         timeout-minutes: 3
         run: python3 scripts/gerar_saude_pipeline.py
 
-      - name: Commit com rebase-e-push (item 1a)
+      # 28/09/2026: o commit LOCAL vem antes da suíte, e o push depois dela. A ordem importa por um
+      # motivo só: o portão 12 no modo `git` exige árvore limpa, e a árvore só fica limpa depois de
+      # o dado novo e os derivados regenerados estarem commitados. Antes, a suíte rodava sobre a
+      # árvore suja e o portão 12 reprovava o publicador pelo trabalho dele mesmo. Nada sobe sem a
+      # suíte: o push está condicionado a ela, e commit local que não passe nos portões morre no
+      # runner sem chegar à `main`.
+      - name: Commit local
         id: commit
-        env:
-          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
@@ -93,6 +105,16 @@ jobs:
           git commit -m "Publicação automática ($(date -u +%d/%m/%Y\ %H:%M) UTC)"
           echo "houve=1" >> "$GITHUB_OUTPUT"
           git checkout -- . 2>/dev/null || true
+
+      - name: Portões
+        timeout-minutes: 12
+        run: python3 scripts/portoes_locais.py tudo
+
+      - name: Empurrar com rebase (item 1a)
+        if: steps.commit.outputs.houve == '1'
+        env:
+          ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+        run: |
           mkdir -p ~/.ssh && printf '%s\n' "$ROBO_DEPLOY_KEY" > ~/.ssh/robo && chmod 600 ~/.ssh/robo
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
           SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
@@ -105,7 +127,7 @@ jobs:
               GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
               git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
               python3 recalcular_mare.py --write || true
-              bash scripts/verificar_derivados.sh || true
+              bash scripts/verificar_derivados.sh --idempotencia || true
               git add -A data/ dados-abertos/ feeds/ selos/ docs/ *.html 2>/dev/null || true
               git diff --cached --quiet || git commit --amend --no-edit
             fi
