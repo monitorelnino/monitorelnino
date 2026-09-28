@@ -62,9 +62,16 @@ def pistas_da_fila(doc: dict) -> list:
 
 
 def pendente(p: dict) -> bool:
-    """Pista que ainda espera decisão. Já resolvida, não se mexe."""
+    """Pista que ainda espera decisão. Já resolvida, não se mexe.
+
+    28/09/2026: o comentário aqui dizia "já julgada por ESTA versão do codebook" e o código não
+    olhava a versão nenhuma — qualquer julgamento anterior tirava a pista da fila para sempre.
+    Ficava sem efeito o único mecanismo que faz um critério novo alcançar o que o critério velho já
+    decidiu: subir a versão. A regra que promoveu quatro registros falsos não teria sido reaplicada
+    sobre eles. Agora a comparação é com a versão em vigor, que é o que o comentário sempre disse."""
+    from juiz import CODEBOOK_VERSAO
     status = str(p.get("status") or "")
-    if p.get("juiz") and (p["juiz"] or {}).get("codebook"):
+    if (p.get("juiz") or {}).get("codebook") == CODEBOOK_VERSAO:
         return False    # já julgada por esta versão do codebook
     return status.startswith("pista") or status.startswith("rebaixado") or status.startswith("revertida")
 
@@ -186,6 +193,9 @@ def autoteste() -> int:
     # pista já julgada por este codebook não volta à fila
     p_julgada = {"status": "pista — …", "juiz": {"codebook": CODEBOOK_VERSAO}}
     casos.append(("pista já julgada por este codebook não é rejulgada", not pendente(p_julgada)))
+    casos.append(("pista julgada por codebook ANTERIOR volta à fila",
+                  pendente({"status": "pista — promover a registro exige documento primário",
+                            "juiz": {"codebook": "0.9 (ontem)"}})))
     casos.append(("pista pendente é reconhecida",
                   pendente({"status": "pista — promover a registro exige documento primário"})))
     casos.append(("pista rebaixada pelo C10 volta ao juiz",

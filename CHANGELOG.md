@@ -9,6 +9,66 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §286 · "Institui" solto promoveu quatro registros falsos de cinco · 28/09/2026
+
+Classe **método e prova**. Pré-requisito do item 1 do bloco das 19:50 — abrir o caminho do juiz até
+o banco antes disto publicaria os quatro. **Codebook sobe para 1.1.** Nenhum peso, régua ou
+categoria muda.
+
+### Os cinco, conferidos um a um contra a prova preservada
+
+A editoria mandou aplicar as cinco promoções da primeira passada. Antes de aplicar, reli a evidência
+de cada uma no disco. Quatro não se sustentam:
+
+| município | o que havia nos 20.000 caracteres julgados |
+|---|---|
+| Salto/SP | **nenhuma** ocorrência de termo de plano |
+| Apucarana/PR | **nenhuma**; o objeto casou em "Comitê Gestor do Programa **Sandbox**" |
+| Goiânia/GO | **nenhuma**; e a data extraída foi **21/08/1959** |
+| Alagoinhas/BA | uma: "Plano de Contingência / PGR" numa **condicionante de licença ambiental** de estabelecimento privado — obrigação imposta a um licenciado, não plano do município |
+| Serra/ES | verdadeiro: "Art. 1º Fica instituído o **Plano Municipal de Proteção e Defesa Civil (PMPDEC)**" |
+
+### A causa
+
+`RE_OBJETO_EX_ANTE` era **uma alternância só**, e entre as alternativas estava o verbo solto
+`institu[ií]`. Numa edição inteira de diário — vinte mil caracteres, dezenas de atos — sempre há um
+"institui" em algum lugar, e quase sempre um "comitê gestor" de outra coisa. O gatilho, por sua vez,
+casa em qualquer menção a previsão ou ao período chuvoso, que todo diário tem. Somados, os três
+testes cumulativos da Etapa 4 passavam sobre um jornal inteiro.
+
+A Etapa 4 passa a exigir **duas** coisas, e perto uma da outra: o **verbo** que cria ou atualiza e o
+**instrumento** nomeado, a menos de 300 caracteres um do outro. "Institui" sozinho não diz o que foi
+instituído; "plano de contingência" sozinho pode ser exigência feita a terceiro. Em Serra os dois
+são vizinhos imediatos, e é por isso que ele sobrevive.
+
+O trecho registrado passou a ser o **par**, e não o primeiro casamento solto: os `trecho` das quatro
+promoções falsas traziam cabeçalho de diário e até texto invertido (`ogidóc o emrofni e…`) — ninguém
+conseguiria conferir a decisão por eles, que é o que um registro de decisão existe para permitir.
+
+### O que a medição mostrou
+
+Sobre as 42 decisões com prova no disco: **4 promoções caem, 1 permanece, 37 recusas permanecem, e
+nenhuma recusa vira promoção**. A regra só aperta. As outras 208 decisões são recusas de Etapa 0 —
+documento nunca lido, nada preservado.
+
+### O mecanismo que não funcionava, e sem o qual nada disso alcançaria o passado
+
+`pendente()` dizia, no comentário, "já julgada por **esta** versão do codebook", e o código não
+olhava versão nenhuma: qualquer julgamento anterior tirava a pista da fila **para sempre**. Ficava
+sem efeito o único mecanismo que faz um critério novo alcançar o que o critério velho já decidiu.
+Agora a comparação é com a versão em vigor — que é o que o comentário sempre disse.
+
+### As decisões erradas ficam no arquivo
+
+`scripts/rejulgar_decisoes_do_juiz.py` relê a prova do disco (**sem rede**), rejulga com o codebook
+em vigor e **acrescenta** o veredito novo; a decisão antiga recebe `superada_por` e permanece.
+Apagar o erro tiraria da auditoria amostral semanal exatamente o caso que ela precisa ver. Depois de
+rodar: 250 decisões mantidas, 42 acrescentadas, **uma única promoção viva** — Serra/ES,
+`plano_antigo`.
+
+Dois canários novos, com a forma exata dos dois modos de falha (12 canários), e um portão novo
+(115).
+
 ## §285 · O carimbo da data de atualização ficou para trás no desacoplamento · 28/09/2026
 
 Classe **infraestrutura da rodada**. Quarta e última camada do item 1 do bloco "Frescor do site".
