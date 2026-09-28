@@ -63,7 +63,9 @@ ciclo completo a cada ~7,5 dias. Entre 6h e 22h não há commit automático na `
 
 O registro é obrigatório porque cadência é compromisso público: `METODOLOGIA.md` recebeu o regime
 datado, com a ordem declarada da fila de re-varredura, e `obrigado.html` diz ao leitor a janela e as
-duas publicações diárias. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
+duas publicações diárias. A primeira versão dessa frase levou a página a 166 palavras e o portão
+`verificar_palavras.js` reprovou (teto 160) — reescrita mais curta, 151 palavras, sem perder a janela,
+os horários nem a data da decisão. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
 atualização completa — continua valendo e continua verdadeira.
 
 ### Uma linha de saúde por script
