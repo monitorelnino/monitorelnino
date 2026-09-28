@@ -10,6 +10,7 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## §266 · Painel de saúde do pipeline · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 2 do handover de desacoplamento (27/09/2026).
@@ -36,6 +37,49 @@ o que garante que `itens` nulo apareça como travessão e nunca como zero — no
 "não medido" e "zero" são coisas diferentes.
 
 =======
+>>>>>>> origin/main
+=======
+## §268 · Disjuntor por motor de origem da busca web · 28/09/2026
+
+Classe **método e coleta**. Item 7b do handover
+`notas/HANDOVER_juiz_automatico_e_busca_web_27-09-2026.md` (decisão da central, 28/09/2026).
+**Nenhuma nota muda.**
+
+### Por que não bastava reduzir as consultas
+
+O §264 cortou de nove strings para três e pôs ritmo, e ao fazê-lo eu disse uma coisa que continuava
+verdadeira: **nenhum motor de origem foi desligado, porque desligar sem saber qual barrou é
+adivinhação.** A central respondeu com a regra que transforma isso em medição.
+
+### A regra
+
+- **Sentinela.** No início de cada rodada, uma consulta fixa **por motor** —
+  `"Brasil" "defesa civil" plano de contingência`. Qualquer motor em funcionamento responde; sentinela
+  vazia é motor mudo. Ela não nomeia município nenhum, e é isso que a torna interpretável: "vazio"
+  aqui nunca pode ser lido como "o município não tem plano".
+- **Contagem.** Por motor, durante a rodada: 429, CAPTCHA, timeout e corpo vazio. Quem não respondeu
+  vem no campo `unresponsive_engines` da própria resposta do SearXNG.
+- **Queda.** Mais de **50%** de falhas numa rodada, **ou** sentinela muda em **duas** rodadas
+  seguidas: **24 h desligado**, e volta sozinho com nova sentinela. O teto é "acima de 50%", não "a
+  partir de" — e há caso de teste para exatamente 50%.
+- **Piso de dois.** Nunca se desligam todos. Se as quedas levariam a menos de dois ativos, as de menor
+  taxa de falha são poupadas, **e o fato de terem sido poupadas fica escrito no estado**. Com menos de
+  dois ativos a rodada encerra registrando `motor_sem_resposta`: afirmar "não localizamos" tendo
+  perguntado a um motor só seria declarar ausência sem ter perguntado.
+
+### Desligar sem desligar em disco
+
+O desligamento é por **requisição** — o parâmetro `engines` da consulta —, não por edição de
+`scripts/searxng_settings.yml`. Nada fica desligado em disco, a volta depois de 24 h é automática, e
+um autoteste inspeciona a URL montada para provar que o parâmetro é enviado: sem ele o disjuntor
+decidiria e o SearXNG continuaria consultando todos.
+
+A lista de ativos e desligados, com o motivo de cada queda, fica em `data/busca_web_motores.json` e no
+resumo do job da cadência. **O `docs/MANIFEST_SHA256.txt` não recebeu nada:** ele é selo de hash, não
+quadro de situação, e enfiar estado mutável ali quebraria o que ele serve para provar.
+
+Dezenove casos de autoteste no disjuntor e um novo no coletor; um portão novo (92).
+
 >>>>>>> origin/main
 ## §265 · O pipeline desacoplado, e a rodada só na janela noturna · 28/09/2026
 
