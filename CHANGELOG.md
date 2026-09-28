@@ -9,6 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+<<<<<<< HEAD
 ## §266 · Painel de saúde do pipeline · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 2 do handover de desacoplamento (27/09/2026).
@@ -34,6 +35,8 @@ essencial: `gerar` tem de começar o nome), o que confere que a sequência de er
 o que garante que `itens` nulo apareça como travessão e nunca como zero — no painel como no dado,
 "não medido" e "zero" são coisas diferentes.
 
+=======
+>>>>>>> origin/main
 ## §265 · O pipeline desacoplado, e a rodada só na janela noturna · 28/09/2026
 
 Classe **infraestrutura da rodada**. Handover
@@ -88,7 +91,13 @@ ciclo completo a cada ~7,5 dias. Entre 6h e 22h não há commit automático na `
 
 O registro é obrigatório porque cadência é compromisso público: `METODOLOGIA.md` recebeu o regime
 datado, com a ordem declarada da fila de re-varredura, e `obrigado.html` diz ao leitor a janela e as
+<<<<<<< HEAD
 duas publicações diárias. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
+=======
+duas publicações diárias. A primeira versão dessa frase levou a página a 166 palavras e o portão
+`verificar_palavras.js` reprovou (teto 160) — reescrita mais curta, 151 palavras, sem perder a janela,
+os horários nem a data da decisão. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
+>>>>>>> origin/main
 atualização completa — continua valendo e continua verdadeira.
 
 ### Uma linha de saúde por script
@@ -106,6 +115,60 @@ arquivo vazio entrou num commit. Recuperado do commit anterior, íntegro, com as
 é de método, e vale para toda edição programática de arquivo grande: **montar o conteúdo inteiro
 primeiro, abrir para escrita depois** — e o `assert` de âncora, que o PROTOCOLO já exige, precisa vir
 antes de qualquer abertura em modo de escrita.
+<<<<<<< HEAD
+=======
+## §264 · Busca web: ritmo, não volume · 27/09/2026
+
+Classe **método e coleta**. Decisão da central de 27/09/2026 (noite), handover
+`notas/HANDOVER_juiz_automatico_e_busca_web_27-09-2026.md`, PR 1c — resposta ao alerta que o §261
+produziu. **Nenhuma nota muda.**
+
+### O que foi medido
+
+A primeira rodada com o leque de nove strings do §261 devolveu **139 de 150 consultas sem resposta
+do motor (93%)**. A causa não são as strings: nove consultas por município sobre 150 municípios em
+poucos minutos somam cerca de 1.350 requisições, que a instância efêmera repassa aos motores de
+origem — e o runner do GitHub compartilha endereço. É limite de taxa.
+
+### O que muda
+
+- **Cascata com parada precoce.** As strings rodam em ordem e param na primeira que devolve pista.
+  Sem pista, a cascata vai até o fim — é o caso da maioria, e é por isso que o conjunto da rodada
+  encolheu.
+- **Três strings na rodada**, provisórias até a medição: `"plano de contingência"` ·
+  `"período chuvoso" OR estiagem OR seca plano` ·
+  `PLANCON OR "plano de ação" OR "plano de enfrentamento"`. O leque de nove passa a viver em
+  `CONSULTAS_MEDICAO` e **não roda na rodada**.
+- **Ritmo:** 3 s com jitter de ±1 s entre consultas; back-off exponencial de 10 s, 30 s e 90 s ao
+  primeiro 429, CAPTCHA ou **corpo vazio** — corpo vazio conta porque recusa servida com 200 é
+  recusa (§186, §187). O back-off volta a zero quando o motor responde.
+- **Sonda** nos primeiros 20 municípios: acima de 25% de mudo, pausa de 10 min e retoma; acima de
+  novo, a rodada encerra, o restante do lote recebe `motor_sem_resposta` com linha declarada no log,
+  e o lote volta ao **topo** da fila da rodada seguinte.
+- **Prioridade da fila:** município que ficou com motor mudo volta primeiro. Deixá-lo esperar a
+  volta inteira do ciclo trataria "não perguntamos" como "não achamos". Os **139** da rodada de 93%
+  já estão marcados em `data/busca_web_espera.json`.
+- **Instância** (`scripts/searxng_settings.yml`): `request_timeout` explícito de 6 s
+  (`max_request_timeout` 12 s) e pool declarado. O limitador interno continua desligado, agora com a
+  razão escrita: ele protege instância pública de abuso, e esta é local e efêmera — ligado, barraria
+  a rodada sem que nenhum motor de origem tivesse reclamado. O limite que importa é o dos motores, e
+  esse se respeita no cliente.
+- **Evidência para a escolha de motores.** Desligar motor exige saber qual barrou, e o log do
+  contêiner morria com o job. A cadência passa a publicar no resumo do job quais motores devolveram
+  429, CAPTCHA ou timeout. **Nenhum motor foi desligado neste PR** — fazê-lo agora seria adivinhação.
+
+### A medição sai de job próprio
+
+`.github/workflows/medir_revocacao.yml` (`workflow_dispatch`, instância dedicada, 5 s entre
+consultas, teto de 120 min) roda o leque de nove sobre 60 municípios — os 30 da amostra manual do
+item D e 30 com plano já registrado — e publica revocação por string como artefato e no resumo do
+job. Critério de adoção declarado: **conjunto mínimo que recupere ao menos 95%** do que o leque
+recupera. A troca do provisório pelo definitivo vem por PR, com o número no CHANGELOG.
+
+`PAUSA_ENTRE_CONSULTAS` saiu: era o órfão que esta mudança criou. Quatro autotestes novos (17 no
+total no coletor): cascata e leque separados, ritmo e back-off, os três sinais de limite de taxa, e
+uma trava de unidade para a pausa da sonda — 10 ali seriam 10 segundos, não 10 minutos.
+>>>>>>> origin/main
 
 ## §263 · Instrumentação do funil: a rodada conta por etapa · 27/09/2026
 
