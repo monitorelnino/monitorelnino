@@ -9,6 +9,53 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §275 · A regra que ignorava binário de evidência custou 1.496 páginas de prova · 28/09/2026
+
+Classe **método e coleta**. Reversão do §270, no mesmo dia em que ele entrou. **Nenhuma nota muda, e
+os 93 registros pontuáveis continuam com prova preservada** — mas isto é o defeito mais grave desta
+sequência, e fica registrado como tal.
+
+### O que aconteceu
+
+O §270 pôs em `.gitignore` as extensões de binário sob `evidencias/`, com a publicação do lote mensal
+de Release como substituta. Na **primeira noite** com a regra no ar,
+`monitorar_imprensa_regional.py` preservou **1.496 páginas HTML**, indexou as 1.496 em
+`data/evidencias.json` — e o git ignorou os arquivos. O índice passou a **afirmar cópia preservada que
+não existia**, e `verificar_evidencias.py` reprovou a `main`.
+
+### O erro foi de escopo, e eu o descrevi sem cumpri-lo
+
+No próprio §270 eu escrevi que ignorar sem publicar o lote "faria a prova desaparecer com o runner", e
+liguei o job de publicação ao `noturno_evidencias.yml`. Mas **qualquer** coletor que chama
+`preservar_evidencia` produz binário: imprensa regional, imprensa de saúde, diários, o juiz. Cobri um
+caminho e tranquei todos.
+
+### O que foi feito
+
+**A regra voltou atrás.** O binário é versionado de novo. `scripts/empacotar_evidencias.py`, o job de
+publicação do lote e o portão do binário novo continuam no lugar — o portão passou a ser
+**informativo**, e o cabeçalho dele diz por quê. A trava só volta quando a publicação do lote cobrir
+todo caminho que preserva **e** `verificar_evidencias.py` souber aceitar "está no lote do mês" como
+cópia preservada.
+
+**As 1.496 viraram lacuna declarada.** `scripts/declarar_evidencia_perdida.py` moveu o caminho para
+`arquivo_perdido`, zerou `arquivo` e escreveu a nota com o motivo e a data, seguindo a convenção que o
+índice já usava desde 03/09/2026. **Nenhum item foi apagado:** hash, URL de origem, data e tamanho
+ficam, porque é por eles que a re-preservação acha o que buscar e é a URL que permite a qualquer pessoa
+conferir a fonte. O script não baixa nada e não marca nada como preservado — ele troca uma afirmação
+falsa por uma lacuna declarada, que é o que a METODOLOGIA exige.
+
+Índice: 4.932 itens antes e depois. `verificar_evidencias.py`: **93 de 93 registros pontuáveis com
+evidência preservada**. As 1.496 eram pistas de imprensa — descoberta, nunca registro que pontua.
+
+### O que isto ensina, e que vale mais que o conserto
+
+Afirmação de prova sem prova é o pior defeito possível neste projeto, e ele não veio de pressa nem de
+descuido de digitação: veio de eu ter **descrito o risco com precisão e implementado a proteção pela
+metade**. A regra de ouro a tirar daqui é de ordem, não de intenção: **nunca desligar o caminho antigo
+de preservação antes de o novo cobrir todos os produtores** — e, quando a substituição for de prova,
+conferir que a prova chegou ao novo lugar antes de tirá-la do antigo.
+
 ## §274 · O manifesto não sela relatório de execução · 28/09/2026
 
 Classe **infraestrutura da rodada**. Correção do §266, achada pela **segunda** execução do
@@ -45,7 +92,6 @@ produziu dois sintomas em duas execuções: primeiro o painel na cadeia, depois 
 Os dois só apareceram porque o pipeline passou a rodar desacoplado, na ordem de verdade. A suíte local e
 o CI do PR não os encontrariam: em nenhum dos dois existe um passo anterior da mesma execução
 escrevendo o arquivo.
-
 ## §273 · O painel de saúde sai da cadeia canônica · 28/09/2026
 
 Classe **infraestrutura da rodada**. Correção do §266, achada pela **primeira execução real** do

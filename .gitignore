@@ -25,26 +25,19 @@ previa/
 # entregavel. Foi versionado por engano em 27/09/2026 e nao deve voltar.
 diagnostico_sinais.json
 
-# Item 3 do handover de desacoplamento (28/09/2026): BINÁRIO NOVO de evidência não entra no git.
-# Medido em 28/09: evidencias/ tem 1,5 GB em 3.755 arquivos, dos quais 1,25 GB são binários (1,0 GB de
-# PDF, 254 MB de HTML) contra 10,9 MB de TEXTO extraído. O texto é insumo do pipeline e CONTINUA
-# versionado; o binário é prova de registro e vai para o ativo de Release do mês, com URL estável
-# (scripts/empacotar_evidencias.py monta o lote, e noturno_evidencias.yml o publica antes de o job
-# terminar — sem esse passo, ignorar aqui faria a prova desaparecer com o runner).
-# O índice data/evidencias.json continua no git com hash, URL de origem, data, tamanho e onde está.
-# O que JÁ está commitado não é removido por esta regra: arquivo rastreado continua rastreado.
-evidencias/*.pdf
-evidencias/*.html
-evidencias/*.htm
-evidencias/*.xlsx
-evidencias/*.xls
-evidencias/*.docx
-evidencias/*.doc
-evidencias/*.zip
-evidencias/*.png
-evidencias/*.jpg
-evidencias/*.jpeg
-evidencias/*.gif
-evidencias/*.webp
-evidencias/*.odt
-evidencias/*.ods
+# Item 3 do handover de desacoplamento (28/09/2026) — REVERTIDO no mesmo dia, §275.
+#
+# A regra que ignorava binário novo de evidência estava aqui e CAUSOU PERDA DE PROVA: na primeira noite
+# com ela no ar, `monitorar_imprensa_regional.py` preservou 1.496 páginas HTML, indexou as 1.496 em
+# `data/evidencias.json` — e o git ignorou os arquivos. O índice passou a afirmar cópia preservada que
+# não existia, e `verificar_evidencias.py` reprovou a `main`.
+#
+# O erro foi de escopo, não de ideia: eu liguei a publicação do lote de Release só ao
+# `noturno_evidencias.yml`, mas QUALQUER coletor que chama `preservar_evidencia` produz binário —
+# imprensa regional, imprensa de saúde, diários, juiz. Ignorar antes de o lote cobrir todos os caminhos
+# é trocar prova por nada.
+#
+# O binário volta a ser versionado. A regra só volta quando a publicação do lote acontecer em todo
+# caminho que preserva, e com o `verificar_evidencias.py` sabendo aceitar "está no lote do mês" como
+# cópia preservada. Enquanto isso, `scripts/empacotar_evidencias.py`, o portão do binário novo e o job
+# de publicação do lote continuam no lugar, sem a trava que os tornava perigosos.
