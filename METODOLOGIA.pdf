@@ -4542,7 +4542,7 @@ endstream
 endobj
 119 0 obj
 <<
-/Length 9554
+/Length 9544
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4594,7 +4594,7 @@ Q
 q
 1 0 0 1 57.02362 80.13543 cm
 q
-BT 1 0 0 1 0 91.5 Tm .027891 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (O log de buscas passa a ser mensal \(28/09/2026\).) Tj /F1 9.3 Tf ( O livro-raz\343o das consultas \227 cada execu\347\343o com data, canal,) Tj T* 0 Tw .303062 Tw (camada, strings, n\372mero de resultados e decis\343o \227 vivia num \372nico data/log_buscas.json que chegou a ) Tj /F2 9.3 Tf (30,8 MB) Tj /F1 9.3 Tf ( e) Tj T* 0 Tw .322584 Tw (era lido ) Tj /F2 9.3 Tf (e regravado inteiro) Tj /F1 9.3 Tf ( a cada execu\347\343o registrada, por v\341rios coletores a cada rodada. Duas consequ\352ncias:) Tj T* 0 Tw 1.985297 Tw (tempo gasto reescrevendo 30 MB, e um erro de escrita no meio pondo em risco o arquivo todo. Agora cada) Tj T* 0 Tw 2.027388 Tw (execu\347\343o \351 ) Tj /F2 9.3 Tf (uma linha) Tj /F1 9.3 Tf ( acrescentada em data/log_buscas/AAAA-MM.jsonl, em append puro: o arquivo do m\352s) Tj T* 0 Tw .344093 Tw (cresce no fim e nada antes \351 reescrito. Quem l\352 usa uma porta \372nica que concatena os meses e devolve a mesma) Tj T* 0 Tw .056825 Tw (forma de antes \227 nenhuma contagem muda, e o \355ndice reproduz id\352ntico. A migra\347\343o foi conferida por ) Tj /F2 9.3 Tf (paridade de) Tj T* 0 Tw 1.03229 Tw (contagem) Tj /F1 9.3 Tf ( \(50.849 execu\347\365es antes e depois\) e h\341 port\343o permanente contra encolhimento, por total e por m\352s:) Tj T* 0 Tw ET
+BT 1 0 0 1 0 91.5 Tm 1.806846 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Onde a prova preservada fica \(28/09/2026\).) Tj /F1 9.3 Tf ( A preserva\347\343o n\343o muda: todo documento que sustenta registro) Tj T* 0 Tw -0.077068 Tw (pontu\341vel continua copiado, com sha256 como chave, e o \355ndice data/evidencias.json continua p\372blico e versionado,) Tj T* 0 Tw .44285 Tw (com hash, URL de origem, data, tamanho e onde o arquivo est\341. O que muda \351 ) Tj /F2 9.3 Tf (onde o bin\341rio mora) Tj /F1 9.3 Tf (. Medido em) Tj T* 0 Tw .464527 Tw (28/09: evidencias/ tem 1,5 GB, dos quais 1,25 GB s\343o bin\341rios \(PDF e HTML\) contra 10,9 MB de texto extra\355do. O) Tj T* 0 Tw .295902 Tw /F2 9.3 Tf (texto continua versionado) Tj /F1 9.3 Tf ( \227 \351 ele que a rotina l\352 e que a classifica\347\343o usa, e o \24710.1 j\341 determinava "a c\363pia do) Tj T* 0 Tw .261278 Tw (bin\341rio s\363 at\351 5 MB, o texto sempre". O ) Tj /F2 9.3 Tf (bin\341rio passa a ser publicado em lote mensal) Tj /F1 9.3 Tf ( como ativo de Release do) Tj T* 0 Tw .24427 Tw (pr\363prio reposit\363rio \(evidencias-AAAA-MM.zip, com \355ndice interno\), com URL est\341vel, e o lote \351 publicado na mesma) Tj T* 0 Tw 1.793913 Tw (noite em que a evid\352ncia \351 preservada \227 antes disso o bin\341rio n\343o deixa de ser versionado, para que prova) Tj T* 0 Tw ET
 Q
 Q
  
@@ -4602,7 +4602,7 @@ endstream
 endobj
 120 0 obj
 <<
-/Length 8858
+/Length 8626
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -4615,63 +4615,63 @@ BT 1 0 0 1 511.312 34.01575 Tm (p\341gina 42) Tj T* ET
 n 51.02362 45.35433 m 544.252 45.35433 l S
 Q
 q
-1 0 0 1 57.02362 740.1354 cm
+1 0 0 1 57.02362 752.7354 cm
 q
-BT 1 0 0 1 0 41.1 Tm .362227 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (com o log fatiado, perder um arquivo de m\352s passaria sem ru\355do, porque o JSON continuaria v\341lido, s\363 menor \227 e) Tj T* 0 Tw -0.036628 Tw (foi exatamente assim que uma uni\343o por conte\372do apagou quase 3.000 execu\347\365es em 23/09/2026. A p\341gina p\372blica) Tj T* 0 Tw 1.001656 Tw (deixa de baixar o log inteiro no navegador do leitor: ela l\352 data/log_buscas_resumo.json, derivado, com o total, a) Tj T* 0 Tw (divis\343o por canal da \372ltima rodada e o total por m\352s; o registro completo continua p\372blico, em arquivos mensais.) Tj T* ET
+BT 1 0 0 1 0 28.5 Tm .944975 Tw 12.6 TL /F1 9.3 Tf .101961 .054902 .031373 rg (nenhuma dependa de um passo que ainda n\343o rodou. Nada do que j\341 est\341 preservado foi removido: remover da) Tj T* 0 Tw -0.113675 Tw (\341rvore os bin\341rios j\341 commitados, e mais ainda reescrever o hist\363rico do reposit\363rio, s\343o decis\365es da editoria e est\343o) Tj T* 0 Tw (registradas como pend\352ncias.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 602.1354 cm
+1 0 0 1 57.02362 614.7354 cm
 q
 BT 1 0 0 1 0 119.5 Tm 13 TL /F2 10.5 Tf .207843 .337255 .419608 rg (Cad\352ncia e janela noturna \227 regime permanente \(decis\343o da editoria, 27/09/2026, noite;) Tj T* (substitui as decis\365es de 22/09 e 24/09\). Coleta e commit autom\341ticos acontecem s\363 entre 22h e) Tj T* (6h de Bras\355lia) Tj (, para n\343o interferir no trabalho da reda\347\343o durante o dia. Dentro da janela: busca) Tj T* (web a cada 2 h \(22h, 0h, 2h, 4h e 6h\), 150 munic\355pios por rodada, ciclo completo dos 5.571 a) Tj T* (cada ~7,5 dias; di\341rios oficiais \340s 22h30; descoberta \340s 23h30; preserva\347\343o de evid\352ncia e OCR) Tj T* (\340 1h; juiz autom\341tico \340s 3h; sinais clim\341ticos por munic\355pio e verifica\347\343o de links s\363 no) Tj T* -0.009833 Tw (domingo. Publica\347\343o duas vezes ao dia) Tj (, \340s 6h \(fecha a noite\) e \340s 22h \(abre a noite, com o que a) Tj T* 0 Tw (reda\347\343o mesclou de dia\). A atualiza\347\343o completa de domingo, 0h) Tj (, permanece \227 \351 ela que) Tj T* (obrigado.html promete a quem envia documento. Entre 6h e 22h n\343o h\341 commit autom\341tico na) Tj T* (main; s\363 leitura. A cad\352ncia \351 compromisso p\372blico e s\363 muda por pedido escrito da editoria.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 548.7354 cm
+1 0 0 1 57.02362 561.3354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 41.1 Tm /F1 9.3 Tf 12.6 TL .544287 Tw (A ordem da fila de re-varredura da busca web \351 declarada: primeiro os munic\355pios em que o motor n\343o respondeu) Tj T* 0 Tw 2.818731 Tw (\(motor_sem_resposta\), depois os nao_localizado_ate_o_momento por popula\347\343o e prioridade, e por \372ltimo a) Tj T* 0 Tw 2.325572 Tw (re-varredura peri\363dica dos demais. Munic\355pio em que n\343o se perguntou volta antes de munic\355pio em que se) Tj T* 0 Tw (perguntou e n\343o se achou \227 a ordem inversa trataria "n\343o perguntamos" como "n\343o achamos".) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 455.5354 cm
+1 0 0 1 57.02362 468.1354 cm
 q
 BT 1 0 0 1 0 78.9 Tm 1.033841 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Cad\352ncia \(decis\343o E4\).) Tj /F1 9.3 Tf ( Na primeira semana ap\363s a sess\343o de constru\347\343o o site atualiza todo dia, em lotes por) Tj T* 0 Tw -0.07007 Tw (fonte, controlados pela vari\341vel de reposit\363rio INTENSIVO_ATE; fora do per\355odo, a execu\347\343o di\341ria encerra antes de) Tj T* 0 Tw 2.033203 Tw (qualquer coleta se n\343o for domingo \227 o retorno \340 cad\352ncia semanal \351 autom\341tico. ) Tj /F2 9.3 Tf (Altera\347\343o de 20/09/2026) Tj T* 0 Tw .114175 Tw (\(decis\343o da editoria\):) Tj /F1 9.3 Tf ( o dia de publica\347\343o semanal passa de segunda-feira para domingo, 0h de Bras\355lia; o cron do) Tj T* 0 Tw 2.095591 Tw (workflow n\343o mudou \(a execu\347\343o di\341ria das 09h UTC j\341 dispara todo dia\), apenas o port\343o de cad\352ncia em) Tj T* 0 Tw 2.030046 Tw (atualizar.py \(DIA_PUBLICACAO\). Nenhum peso, cr\351dito, componente ou r\351gua foi tocado \227 a mudan\347a \351 de) Tj T* 0 Tw /F3 9.3 Tf (quando) Tj /F1 9.3 Tf ( a rodada publica, n\343o de ) Tj /F3 9.3 Tf (o que) Tj /F1 9.3 Tf ( ela mede.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 437.9354 cm
+1 0 0 1 57.02362 450.5354 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 27. Sa\372de e El Ni\361o: p\341gina setorial de peso zero \(02/09/2026; decis\365es E2, C1\226C3\)) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 369.9354 cm
+1 0 0 1 57.02362 382.5354 cm
 q
 BT 1 0 0 1 0 53.7 Tm .903834 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Postura.) Tj /F1 9.3 Tf ( A p\341gina reproduz o que \363rg\343os oficiais publicaram \(\363rg\343o, documento, data\), verifica o que os estados) Tj T* 0 Tw .762592 Tw (publicaram com o protocolo do Monitor e nunca projeta. ) Tj /F2 9.3 Tf (Nada dela entra no MAR\311) Tj /F1 9.3 Tf (, e isso \351 provado por port\343o:) Tj T* 0 Tw 2.532375 Tw (verificar_saude.py bloqueia se recalcular_mare.py ou data/indice.json mencionarem qualquer chave de sa\372de.) Tj T* 0 Tw -0.000009 Tw (Emerg\352ncia em sa\372de \(ESPIN, decreto municipal por dengue ou calor\) \351 ) Tj /F2 9.3 Tf (resposta) Tj /F1 9.3 Tf (: registro \340 parte, peso zero, teste) Tj T* 0 Tw (do objeto \(\2474.1 da transfer\352ncia\) sem adapta\347\343o. Dado epidemiol\363gico \351 observa\347\343o, nunca ju\355zo de preparo.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 201.1354 cm
+1 0 0 1 57.02362 213.7354 cm
 q
 BT 1 0 0 1 0 154.5 Tm .66029 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Camadas.) Tj /F1 9.3 Tf ( \(1\) Federal \227 cart\365es com estatuto "localizado" ou "anunciado, n\343o localizado at\351 o corte"; sem cart\343o) Tj T* 0 Tw -0.058392 Tw (inventado. \(2\) Estadual \227 instrumento ex-ante da secretaria estadual de sa\372de, do CIEVS ou do COE para os riscos) Tj T* 0 Tw 1.18441 Tw (sanit\341rios do ciclo, no vocabul\341rio fechado NOVO \267 READAPTADO \267 VIGENTE-recorrente \267 EM ELABORA\307\303O \267) Tj T* 0 Tw 1.39034 Tw (N\303O LOCALIZADO \(s\363 com bateria estadual datada e logada\) \267 ) Tj /F2 9.3 Tf (N\303O VERIFICADO) Tj /F1 9.3 Tf (; em 02/09/2026 as 27 UFs) Tj T* 0 Tw 1.249473 Tw (nascem N\303O VERIFICADO \(C1\) e a p\341gina diz isso. Os riscos sanit\341rios projetados por UF s\343o ) Tj /F2 9.3 Tf (derivados) Tj /F1 9.3 Tf ( das) Tj T* 0 Tw 1.87053 Tw (fam\355lias de risco dos boletins \(seca/calor ) Tj /F4 9.3 Tf 12.6 TL (\256) Tj /F1 9.3 Tf 12.6 TL ( arboviroses, respirat\363rias por queimada, ondas de calor, \341gua em) Tj T* 0 Tw 2.127542 Tw (estiagem; chuvas ) Tj /F4 9.3 Tf 12.6 TL (\256) Tj /F1 9.3 Tf 12.6 TL ( leptospirose, diarreias, hepatite A, abrigos; transversal ) Tj /F4 9.3 Tf 12.6 TL (\256) Tj /F1 9.3 Tf 12.6 TL ( continuidade de servi\347os\), sem) Tj T* 0 Tw .577138 Tw (proje\347\343o nova. Municipal: fora desta vers\343o; capitais como fase 2. \(3\) Observada \227 casos de dengue por semana) Tj T* 0 Tw .605262 Tw (epidemiol\363gica \(Painel de Arboviroses/MS como fonte prim\341ria do n\372mero; modelo InfoDengue, Fiocruz/FGV, para) Tj T* 0 Tw -0.076733 Tw (n\355vel de alerta e s\351rie municipal, com cr\351dito obrigat\363rio \227 diverg\352ncia exibe o MS e loga a diferen\347a, C2\), avisos de) Tj T* 0 Tw .00371 Tw (calor \(reuso INMET\), focos de queimada \(reuso INPE\), \341gua em estiagem \(SISAGUA, a verificar\), ESPIN \(resposta\).) Tj T* 0 Tw .841059 Tw (\(4\) Cidad\343o \227 orienta\347\365es do Minist\351rio da Sa\372de reproduzidas com link; o Monitor n\343o emite orienta\347\343o m\351dica) Tj T* 0 Tw (pr\363pria.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 145.7354 cm
+1 0 0 1 57.02362 158.3354 cm
 q
 BT 1 0 0 1 0 41.1 Tm .48226 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Matriz de compet\352ncia e lacuna a declarar.) Tj /F1 9.3 Tf ( SES \(s\355tio, DOE, boletins\), CIEVS estadual, CONASS, CONASEMS.) Tj T* 0 Tw 2.291859 Tw (Est\341 ) Tj /F2 9.3 Tf (a verificar) Tj /F1 9.3 Tf ( se existe obriga\347\343o normativa de plano estadual de conting\352ncia para arboviroses \227 o que) Tj T* 0 Tw .702722 Tw (condiciona o valor informativo do "n\343o localizado" nessa camada; enquanto n\343o verificada, a p\341gina n\343o usa "n\343o) Tj T* 0 Tw (localizado" para instrumento estadual de sa\372de.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 102.9354 cm
+1 0 0 1 57.02362 115.5354 cm
 q
 BT 1 0 0 1 0 28.5 Tm 1.366544 Tw 12.6 TL /F2 9.3 Tf .101961 .054902 .031373 rg (Rela\347\343o com a agenda v2.4.) Tj /F1 9.3 Tf ( saude_uf.json usa o mesmo vocabul\341rio do instrumento estadual do \355ndice e \351 o) Tj T* 0 Tw .118232 Tw (insumo do candidato v2.4 "instrumento estadual composto por camadas setoriais" \(\24712.4.4, item 3\): publicado agora) Tj T* 0 Tw (como transpar\352ncia, pontu\341vel s\363 por decis\343o futura da editoria.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 85.33543 cm
+1 0 0 1 57.02362 97.93543 cm
 q
 .101961 .054902 .031373 rg
 BT 1 0 0 1 0 3.3 Tm /F1 9.3 Tf 12.6 TL (## 28. Fundamenta\347\343o normativa incorporada em 02/09/2026 \(justificativa de m\351todo, n\343o recomenda\347\343o\)) Tj T* ET
@@ -7220,32 +7220,32 @@ xref
 0000359981 00000 n 
 0000369993 00000 n 
 0000378666 00000 n 
-0000388273 00000 n 
-0000397184 00000 n 
-0000407640 00000 n 
-0000416791 00000 n 
-0000425696 00000 n 
-0000434685 00000 n 
-0000445345 00000 n 
-0000454838 00000 n 
-0000463829 00000 n 
-0000472959 00000 n 
-0000482654 00000 n 
-0000492044 00000 n 
-0000501808 00000 n 
-0000511126 00000 n 
-0000520398 00000 n 
-0000529268 00000 n 
-0000539721 00000 n 
-0000549683 00000 n 
-0000559005 00000 n 
-0000568279 00000 n 
-0000577520 00000 n 
-0000586423 00000 n 
-0000595166 00000 n 
-0000604232 00000 n 
-0000613230 00000 n 
-0000621935 00000 n 
+0000388263 00000 n 
+0000396942 00000 n 
+0000407398 00000 n 
+0000416549 00000 n 
+0000425454 00000 n 
+0000434443 00000 n 
+0000445103 00000 n 
+0000454596 00000 n 
+0000463587 00000 n 
+0000472717 00000 n 
+0000482412 00000 n 
+0000491802 00000 n 
+0000501566 00000 n 
+0000510884 00000 n 
+0000520156 00000 n 
+0000529026 00000 n 
+0000539479 00000 n 
+0000549441 00000 n 
+0000558763 00000 n 
+0000568037 00000 n 
+0000577278 00000 n 
+0000586181 00000 n 
+0000594924 00000 n 
+0000603990 00000 n 
+0000612988 00000 n 
+0000621693 00000 n 
 trailer
 <<
 /ID 
@@ -7257,5 +7257,5 @@ trailer
 /Size 146
 >>
 startxref
-624577
+624335
 %%EOF
