@@ -9,6 +9,38 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §285 · O carimbo da data de atualização ficou para trás no desacoplamento · 28/09/2026
+
+Classe **infraestrutura da rodada**. Quarta e última camada do item 1 do bloco "Frescor do site".
+**Nenhuma nota muda.**
+
+Com o publicador enfim verde, o dado de 28/09 foi publicado — e o rodapé continuou dizendo
+**25/09**. A causa é do mesmo tipo das outras três: `meta.atualizado_em` só era carimbado por
+`atualizar.py`, a rotina semanal monolítica. O desacoplamento (§266, §267) moveu a coleta para os
+noturnos e a publicação para o `publicar_dados.yml`, e **o carimbo ficou para trás**. Enquanto a
+rodada semanal ainda rodava, ninguém viu; quando ela deixou de ser o caminho normal, o site passou a
+declarar a data da última vez em que aquela rotina rodou.
+
+`scripts/frescor.py --carimbar` entrou no publicador, **antes** de recalcular — os geradores de
+derivado carimbam `gerado_em` a partir dessa data, e depois ficariam um dia atrás, que é o defeito
+que o §? de 10/09 já havia pago uma vez.
+
+**A data vem do repositório, não do relógio:** é a do commit mais recente que tocou `data/`. Rodada
+sem dado novo não avança nada — carimbar hoje numa rodada sem coleta diria que o site foi
+atualizado quando não foi, que é o mesmo erro do item 4 visto do outro lado. `corte` nunca é tocado:
+ele é decisão editorial sobre até quando o dado vale, e não tem relação com quando a rodada
+publicou.
+
+Rodado local, e idempotente na segunda vez:
+
+```
+OK CARIMBO — data/meta.json passa a declarar 28/09/2026, a data do último dado que chegou à main
+OK FRESCOR — site em dia: publicado em 28/09/2026, último dado em 28/09/2026
+OK CARIMBO — nada a mudar; data/meta.json já declara 28/09/2026 e não há dado mais novo
+```
+
+Cinco travas novas no autoteste do frescor (17 casos).
+
 ## §284 · O publicador não tinha navegador para os portões de página · 28/09/2026
 
 Classe **infraestrutura da rodada**. Terceira camada do item 1 do bloco "Frescor do site".

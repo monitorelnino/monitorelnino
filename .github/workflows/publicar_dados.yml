@@ -87,6 +87,19 @@ jobs:
         with: { node-version: "22", cache: npm }
       - run: npm ci
 
+      # 28/09/2026: o carimbo da data de atualização vinha SÓ de `atualizar.py`, a rotina semanal
+      # monolítica. O desacoplamento (§266, §267) moveu a coleta para os noturnos e a publicação
+      # para cá, e o carimbo ficou para trás: o publicador publicava dado novo e o site seguia
+      # declarando a data da última rodada semanal. Era por isso que o rodapé dizia 25/09 com dado
+      # de 28/09 no ar.
+      #
+      # Vem ANTES de recalcular porque os geradores de derivado carimbam `gerado_em` a partir dele;
+      # depois, ficariam um dia atrás e o portão 12 cobraria a diferença. A data sai do repositório
+      # (último commit que tocou `data/`), nunca do relógio: rodada sem dado novo não avança nada.
+      - name: Carimbar a data de atualização
+        timeout-minutes: 3
+        run: python3 scripts/frescor.py --carimbar
+
       - name: Recalcular o índice
         timeout-minutes: 5
         run: python3 scripts/saude_pipeline.py --rodar recalcular_mare.py --write
