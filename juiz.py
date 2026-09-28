@@ -65,6 +65,10 @@ PADROES_FONTE_PROVAVEL_OFICIAL = (
     "dosp.com.br", "sigpub.com.br", "imprensaoficial", "diariooficial", "doe.",
 )
 TEXTO_MINIMO = 400   # menos que isto não é documento: é resumo, menu de portal ou erro servido com 200
+# Piso do RECORTE do ato, que é outra pergunta: aqui já se sabe que a edição é documento, e ato curto
+# existe — um decreto de instituição de plano cabe em 400 caracteres. O piso serve só para impedir que
+# um cabeçalho solto, ou duas linhas de sumário, sejam julgados como se fossem o ato.
+MINIMO_DO_RECORTE = 200
 
 # --- Etapa 2 ---------------------------------------------------------------------------------
 # Tipo de ato + número. A data sai de `classificador_natureza.extrair_data`, que já trata
@@ -152,6 +156,73 @@ RE_SO_DETERMINA_ELABORACAO = re.compile(
     r"determina\s+(?:a\s+)?elabora[çc][ãa]o|institui\s+(?:o\s+)?grupo\s+de\s+trabalho\s+para\s+elabora|"
     r"para\s+(?:a\s+)?elabora[çc][ãa]o\s+do\s+plano|elabora[çc][ãa]o\s+do\s+plano\s+de\s+conting[êe]ncia"
     r"(?!\s+(?:aprovado|institu))", re.I)
+
+
+# Cabeçalho de ato dentro de uma edição de diário. Uma edição do Querido Diário traz dezenas de atos
+# num arquivo só; o documento primário do §5.2.1 é o ATO, não a edição.
+RE_CABECALHO_DE_ATO = re.compile(
+    r"^[ 	]*((?:DECRETO|PORTARIA|LEI|RESOLU[ÇC][ÃA]O|INSTRU[ÇC][ÃA]O\s+NORMATIVA)"
+    r"(?:\s+(?:MUNICIPAL|ESTADUAL|COMPLEMENTAR|ORDIN[ÁA]RI[AO]))?[^\n]{0,80})$",
+    re.I | re.M)
+
+
+def posicao_do_trecho(texto: str, trecho: str) -> int:
+    """Onde o `trecho` começa no `texto`, tolerando quebra de linha e caixa. -1 se não achar.
+
+    O excerto do Querido Diário vem com quebras próprias e caixa diferente da do diário — busca
+    literal não acha. A comparação é feita sobre uma cópia com espaço colapsado e em minúsculas, com um
+    mapa de posições de volta ao texto ORIGINAL, porque é no original que o recorte é feito."""
+    if not texto or not trecho:
+        return -1
+    plano, mapa, espaco = [], [], False
+    for i, ch in enumerate(texto):
+        if ch.isspace():
+            if not espaco and plano:
+                plano.append(" ")
+                mapa.append(i)
+            espaco = True
+        else:
+            plano.append(ch.lower())
+            mapa.append(i)
+            espaco = False
+    plano = "".join(plano)
+    alvo = " ".join(str(trecho).split()).lower()
+    for tamanho in (120, 60, 30):
+        pedaco = alvo[:tamanho].strip()
+        if len(pedaco) < 12:
+            continue
+        j = plano.find(pedaco)
+        if j >= 0:
+            return mapa[j]
+    return -1
+
+
+def recortar_ato(texto: str, trecho: str, margem: int = 6000) -> str:
+    """O ato que contém o `trecho`, recortado de dentro da edição do diário.
+
+    Por que isto existe (28/09/2026, item 1): a pista do Querido Diário aponta a EDIÇÃO — vinte mil
+    caracteres com dezenas de atos. O juiz lido sobre a edição inteira cai em `natureza_duvidosa`
+    corretamente, porque não há um ato a julgar: há muitos. O documento primário do §5.2.1 é o ato.
+
+    O recorte vai do cabeçalho de ato imediatamente ANTES do trecho até o cabeçalho seguinte. Sem
+    trecho, sem cabeçalho antes dele, ou trecho ausente do texto, devolve o texto INTEIRO — a regra é
+    conservadora de propósito: na dúvida o juiz lê tudo e provavelmente recusa, que é o erro tolerado.
+    """
+    if not texto or not trecho:
+        return texto
+    pos = posicao_do_trecho(texto, trecho)
+    if pos < 0:
+        return texto
+    cabecalhos = [m.start() for m in RE_CABECALHO_DE_ATO.finditer(texto)]
+    antes = [i for i in cabecalhos if i <= pos]
+    if not antes:
+        return texto
+    inicio = antes[-1]
+    depois = [i for i in cabecalhos if i > pos]
+    fim = depois[0] if depois else min(len(texto), inicio + margem)
+    recorte = texto[inicio:fim]
+    # recorte minúsculo não é ato: devolve o texto inteiro em vez de julgar um pedaço
+    return recorte if len(recorte.strip()) >= MINIMO_DO_RECORTE else texto
 
 
 def normalizar(s: str) -> str:
@@ -373,7 +444,7 @@ def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False) -> tuple:
 # O juiz
 # =============================================================================================
 def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
-           eh_estadual: bool = False, eh_plano_tecnico: bool = False) -> dict:
+           eh_estadual: bool = False, eh_plano_tecnico: bool = False, trecho: str = None) -> dict:
     """Aplica as etapas 0 a 6 e devolve o veredito.
 
     `promove` é True só quando TODAS passam. Quando não promove, `motivo` é o critério que
@@ -382,11 +453,19 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
                 "criterios": {}, "categoria": None, "data": None, "natureza": None,
                 "ibge": ibge, "municipio": nome, "uf": uf, "url": url}
 
-    ok, motivo, trecho = etapa0_documento_primario(url, texto)
-    veredito["criterios"]["0_documento_primario"] = {"ok": ok, "trecho": trecho}
+    ok, motivo, prova = etapa0_documento_primario(url, texto)
+    veredito["criterios"]["0_documento_primario"] = {"ok": ok, "trecho": prova}
     if not ok:
         veredito["motivo"] = motivo
         return veredito
+
+    # Edição de diário traz dezenas de atos; o documento primário é o ATO que contém o excerto.
+    if trecho:
+        recorte = recortar_ato(texto, trecho)
+        if recorte is not texto and len(recorte) < len(texto):
+            veredito["criterios"]["0_documento_primario"]["recorte_do_ato"] = (
+                f"{len(recorte)} de {len(texto)} caracteres — ato recortado da edição pelo excerto")
+            texto = recorte
 
     ok, motivo, trecho = etapa1_identidade(texto, nome, uf)
     veredito["criterios"]["1_identidade"] = {"ok": ok, "trecho": trecho}
@@ -444,6 +523,22 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
 # Canários — um documento por desfecho, exigidos pelo handover
 # =============================================================================================
 URL_OFICIAL = "https://bonito.ms.gov.br/diariooficial/edicao-1234.pdf"
+
+# Edição de diário com três atos, para exercitar o recorte: o do meio é o que interessa, e o juiz não
+# pode julgar a edição inteira nem misturar atos vizinhos.
+EDICAO_DE_DIARIO = """DIÁRIO OFICIAL DO MUNICÍPIO DE BONITO - MS
+ANO V EDIÇÃO Nº 1234
+LEI Nº 87, DE 2 DE JULHO DE 2026
+Denomina logradouro público no bairro Centro e dá outras providências.
+O PREFEITO MUNICIPAL, no uso de suas atribuições, sanciona a seguinte lei sobre denominação de rua.
+DECRETO Nº 88, DE 3 DE JULHO DE 2026
+Institui o Plano de Contingência Municipal para o período de estiagem 2026/2027.
+O PREFEITO MUNICIPAL DE BONITO, no uso de suas atribuições, CONSIDERANDO o prognóstico do INMET,
+DECRETA: Art. 1º Fica instituído o Plano de Contingência Municipal para a estiagem, com
+pré-posicionamento de carro-pipa. Art. 2º Este decreto não configura situação de emergência.
+PORTARIA Nº 45, DE 4 DE JULHO DE 2026
+Concede licença a servidor do quadro efetivo, sem relação com o ciclo climático.
+"""
 
 CANARIOS = {
     "plano_novo": dict(
@@ -602,6 +697,18 @@ def autoteste() -> int:
         ("plano técnico sem número passa a citação quando tem data",
          etapa2_citacao("Plano de Contingência Municipal, versão 2026. Publicado em 14/07/2026. "
                         + "x" * 500, eh_plano_tecnico=True)[0] is True),
+        ("recorte do ato: o trecho isola o ato dentro da edição do diário",
+         recortar_ato(EDICAO_DE_DIARIO, "institui o Plano de Contingência").strip().startswith("DECRETO Nº 88")
+         and "PORTARIA" not in recortar_ato(EDICAO_DE_DIARIO, "institui o Plano de Contingência")),
+        ("recorte sem trecho devolve o texto inteiro",
+         recortar_ato(EDICAO_DE_DIARIO, "") == EDICAO_DE_DIARIO),
+        ("trecho ausente do texto devolve o texto inteiro",
+         recortar_ato(EDICAO_DE_DIARIO, "isto não está na edição") == EDICAO_DE_DIARIO),
+        ("texto sem cabeçalho de ato devolve o texto inteiro",
+         recortar_ato("um texto qualquer com o trecho aqui " + "x" * 500, "trecho aqui")
+         .endswith("x" * 10)),
+        ("recorte minúsculo é recusado e devolve o texto inteiro",
+         recortar_ato("DECRETO Nº 1\ncurto\nPORTARIA Nº 2\n" + "y" * 500, "curto").count("y") == 500),
         ("plano técnico sem número e SEM data não passa",
          etapa2_citacao("Plano de Contingência Municipal, versão 2026." + "x" * 500,
                         eh_plano_tecnico=True)[0] is False),

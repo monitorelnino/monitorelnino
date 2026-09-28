@@ -9,6 +9,66 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §277 · O Querido Diário volta ao funil, pelo juiz · 28/09/2026
+
+Classe **método e coleta**. Item 1 do bloco de decisões da editoria de 28/09/2026. **Nenhuma nota
+muda:** nada aqui promove nada — a fila existe para o juiz julgar.
+
+### A suspensão cai, mas o que a causou é consertado primeiro
+
+A suspensão de 06/09/2026 tinha causa nomeada: a consulta **em lote** (`territory_ids` com vírgulas)
+devolveu **8.165 zeros uniformes** em 03/09, e o diagnóstico de resultado conhecido mostrou que **um
+território por chamada** devolve 3 diários e 3 excertos onde o lote devolvia 0 (caso Cerrito/RS).
+Reativar o coletor como estava reproduziria o defeito. A função mudou de nome junto com o
+comportamento — `_lote` deixou de existir, e no lugar está `_por_territorio` —, para que ninguém a
+chame por engano.
+
+`consultar_querido_diario.py` volta à rodada, e a regra que substitui a suspensão é explícita: **toda
+pista do QD passa pelas etapas 0 a 7 do juiz e nunca entra direto no banco.** A fila
+`pistas_querido_diario.json` entrou na lista de `julgar_filas.py`.
+
+### A primeira fila: os 169
+
+São os municípios em que a varredura do diário reconheceu excerto com termo do dicionário e que **não
+estão no banco nem em fila nenhuma** — o achado do item C da auditoria do funil.
+`scripts/fila_do_juiz_querido_diario.py` os lista em `data/fila_qd_169.json`, ordenados por UF e nome
+para ser reproduzível, e o noturno consulta 40 por noite com
+`consultar_querido_diario.py --alvos data/fila_qd_169.json --limite 40`. Distribuição: SP 57, AL 24,
+BA 22, SE 12, MG 12, PR 11, RJ 11, RS 9, MS 5, e um cada em CE, GO, MT, PA, PE, TO.
+
+### O erro que a medição pegou antes de eu confiar nele
+
+A primeira versão da fila montava **pistas** a partir da evidência já preservada de cada município: o
+índice guarda, sob o `hash_evidencia` da execução, o registro da edição com a URL do PDF, a do texto e
+um excerto. Escrevi as 168 pistas e fui medir o que o juiz faria com elas. O juiz recusou todas, e ao
+olhar o motivo o defeito apareceu: **o excerto preservado não é a menção ao plano.** A preservação
+manteve uma gazeta por consulta e o primeiro excerto dela — que nos casos examinados falava de hectares
+de um evento, de adjudicação de licitação e de objetivos pedagógicos de escola.
+
+As 168 pistas foram descartadas, e o arquivo guarda o motivo por escrito. A fila passou a ser de
+**alvos**, e a pista vem de consulta nova, por município e por termo de plano: aí o excerto aponta a
+menção. É a diferença entre "achei este município" e "achei esta menção".
+
+### O recorte do ato, que é o que faltava no juiz
+
+A pista do QD aponta a **edição** do diário — nos casos medidos, 3.663 e 20.000 caracteres com dezenas
+de atos. O juiz lido sobre a edição inteira cai em `natureza_duvidosa`, e **corretamente**: não há um ato
+a julgar, há muitos. Mas o documento primário do §5.2.1 é o **ato**, não a edição.
+
+`recortar_ato()` isola o ato que contém o excerto: do cabeçalho de ato imediatamente anterior até o
+cabeçalho seguinte. A busca do excerto tolera quebra de linha e caixa — o excerto do QD vem com as
+quebras dele e o diário usa outra caixa —, com um mapa de posições de volta ao texto original, porque é
+no original que o recorte é feito. Sem excerto, sem cabeçalho antes dele, ou recorte abaixo de 200
+caracteres, **devolve o texto inteiro**: na dúvida o juiz lê tudo e provavelmente recusa, que é o erro
+tolerado pelo codebook.
+
+Dito com clareza, porque é o efeito que importa: o recorte **torna possível promover** onde a edição
+inteira mascarava o ato. Ele não afrouxa critério nenhum — as seis etapas continuam valendo sobre o
+texto do ato —, mas muda o que passa. Cinco travas novas no autoteste do juiz (13 no total, com os dez
+canários).
+
+Dois portões novos (106).
+
 ## §276 · Os três runs vermelhos da primeira noite · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 7 do bloco de decisões da editoria de 28/09/2026 (manhã).
@@ -52,6 +112,89 @@ precisava de janela, e pus cache onde não havia instalação. No mesmo dia eu j
 tipo de erro no §270, ao ignorar binário de evidência cobrindo um só dos caminhos que preservam. A
 correção de método é a mesma nos três: **antes de aplicar uma regra a um conjunto, listar o conjunto.**
 
+## §275 · A regra que ignorava binário de evidência custou 1.496 páginas de prova · 28/09/2026
+
+Classe **método e coleta**. Reversão do §270, no mesmo dia em que ele entrou. **Nenhuma nota muda, e
+os 93 registros pontuáveis continuam com prova preservada** — mas isto é o defeito mais grave desta
+sequência, e fica registrado como tal.
+
+### O que aconteceu
+
+O §270 pôs em `.gitignore` as extensões de binário sob `evidencias/`, com a publicação do lote mensal
+de Release como substituta. Na **primeira noite** com a regra no ar,
+`monitorar_imprensa_regional.py` preservou **1.496 páginas HTML**, indexou as 1.496 em
+`data/evidencias.json` — e o git ignorou os arquivos. O índice passou a **afirmar cópia preservada que
+não existia**, e `verificar_evidencias.py` reprovou a `main`.
+
+### O erro foi de escopo, e eu o descrevi sem cumpri-lo
+
+No próprio §270 eu escrevi que ignorar sem publicar o lote "faria a prova desaparecer com o runner", e
+liguei o job de publicação ao `noturno_evidencias.yml`. Mas **qualquer** coletor que chama
+`preservar_evidencia` produz binário: imprensa regional, imprensa de saúde, diários, o juiz. Cobri um
+caminho e tranquei todos.
+
+### O que foi feito
+
+**A regra voltou atrás.** O binário é versionado de novo. `scripts/empacotar_evidencias.py`, o job de
+publicação do lote e o portão do binário novo continuam no lugar — o portão passou a ser
+**informativo**, e o cabeçalho dele diz por quê. A trava só volta quando a publicação do lote cobrir
+todo caminho que preserva **e** `verificar_evidencias.py` souber aceitar "está no lote do mês" como
+cópia preservada.
+
+**As 1.496 viraram lacuna declarada.** `scripts/declarar_evidencia_perdida.py` moveu o caminho para
+`arquivo_perdido`, zerou `arquivo` e escreveu a nota com o motivo e a data, seguindo a convenção que o
+índice já usava desde 03/09/2026. **Nenhum item foi apagado:** hash, URL de origem, data e tamanho
+ficam, porque é por eles que a re-preservação acha o que buscar e é a URL que permite a qualquer pessoa
+conferir a fonte. O script não baixa nada e não marca nada como preservado — ele troca uma afirmação
+falsa por uma lacuna declarada, que é o que a METODOLOGIA exige.
+
+Índice: 4.932 itens antes e depois. `verificar_evidencias.py`: **93 de 93 registros pontuáveis com
+evidência preservada**. As 1.496 eram pistas de imprensa — descoberta, nunca registro que pontua.
+
+### O que isto ensina, e que vale mais que o conserto
+
+Afirmação de prova sem prova é o pior defeito possível neste projeto, e ele não veio de pressa nem de
+descuido de digitação: veio de eu ter **descrito o risco com precisão e implementado a proteção pela
+metade**. A regra de ouro a tirar daqui é de ordem, não de intenção: **nunca desligar o caminho antigo
+de preservação antes de o novo cobrir todos os produtores** — e, quando a substituição for de prova,
+conferir que a prova chegou ao novo lugar antes de tirá-la do antigo.
+
+## §274 · O manifesto não sela relatório de execução · 28/09/2026
+
+Classe **infraestrutura da rodada**. Correção do §266, achada pela **segunda** execução do
+`publicar_dados.yml`. **Nenhuma nota muda.**
+
+### O defeito
+
+O §273 tirou o painel de saúde da cadeia canônica, e a execução seguinte reprovou de novo no portão 12
+— agora por uma linha a mais no manifesto. O manifesto é gerado por glob sobre `data/*.json`, e
+`data/saude_pipeline.json` passou a existir: é ele que cada passo da rodada preenche com a sua linha de
+saúde. O passo que recalcula o índice escreve a linha, e a regeneração seguinte encontra o manifesto
+diferente do commitado.
+
+### A razão de fundo, que é a que importa
+
+Não é só um problema de ordem de passos. **O manifesto sela prova** — o dado, as páginas, os derivados
+publicados, as evidências. **Quanto tempo um script levou não é prova de nada sobre o índice.** Selar o
+relatório da execução confunde as duas coisas, e o sintoma (portão 12 vermelho toda rodada) é o aviso.
+
+Saem do manifesto, declarados em `FORA`:
+
+- `data/saude_pipeline.json` — relatório da execução em curso;
+- `docs/SAUDE_PIPELINE.md` — o painel que o resume, e por uma segunda razão: desde o §273 ele é gerado
+  **depois** dos portões e **antes** do commit, então selá-lo deixaria o manifesto obsoleto na rodada
+  seguinte, com o painel mudando no commit e o manifesto sem acompanhar.
+
+`data/log_buscas_resumo.json` **continua selado**, e a distinção é a mesma do §273: ele é função do log
+**commitado**, não da execução em curso.
+
+### Sobre as duas correções seguidas
+
+O §266 entrou com um erro de classificação — tratei relatório de execução como derivado de dado — e ele
+produziu dois sintomas em duas execuções: primeiro o painel na cadeia, depois o seu insumo no manifesto.
+Os dois só apareceram porque o pipeline passou a rodar desacoplado, na ordem de verdade. A suíte local e
+o CI do PR não os encontrariam: em nenhum dos dois existe um passo anterior da mesma execução
+escrevendo o arquivo.
 ## §273 · O painel de saúde sai da cadeia canônica · 28/09/2026
 
 Classe **infraestrutura da rodada**. Correção do §266, achada pela **primeira execução real** do

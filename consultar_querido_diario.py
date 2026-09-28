@@ -73,11 +73,24 @@ def _preservar_achado(g):
         return None
 
 
-def _lote(territorios, termo):
-    """Consulta em lote: todos os códigos de uma UF numa chamada só."""
-    return _get({"territory_ids": ",".join(territorios), "querystring": f'"{termo}"',
-                 "published_since": JANELA_DESDE, "size": 20,
-                 "excerpt_size": 300, "number_of_excerpts": 1})
+def _por_territorio(territorios, termo):
+    """Um território por chamada, acumulando as gazetas. Substitui a consulta em lote.
+
+    28/09/2026 (reativação decidida pela editoria): a consulta em lote — `territory_ids` com vírgulas —
+    é a causa documentada da suspensão de 06/09/2026: ela devolveu **8.165 zeros uniformes** em 03/09, e
+    o diagnóstico de resultado conhecido mostrou que um território por chamada devolve 3 diários e 3
+    excertos onde o lote devolvia 0 (caso Cerrito/RS). Reativar o coletor sem consertar isto
+    reproduziria o defeito, então a função mudou de nome junto com o comportamento: não existe mais um
+    `_lote` a ser chamado por engano.
+    """
+    gazetas = []
+    for t in territorios:
+        r = _get({"territory_ids": t, "querystring": f'"{termo}"',
+                  "published_since": JANELA_DESDE, "size": 5,
+                  "excerpt_size": 300, "number_of_excerpts": 1})
+        time.sleep(1.1)
+        gazetas.extend(r.get("gazettes", []))
+    return {"gazettes": gazetas}
 
 
 def varrer_uf(uf, ref, pistas):
@@ -91,8 +104,7 @@ def varrer_uf(uf, ref, pistas):
                        "nota": f"nenhum dos {len(terr)} municípios de {uf} coberto no QD — ausência NÃO é evidência negativa"})
         return
     for termo in TERMOS:
-        r = _lote(terr, termo)
-        time.sleep(1.1)
+        r = _por_territorio(terr, termo)
         for g in r.get("gazettes", []):
             t = g.get("territory_id")
             pistas.append({"nome": nomes.get(t, g.get("territory_name")), "uf": uf,
@@ -165,6 +177,19 @@ def main():
                   {"execucao": hoje_editorial().isoformat(), "sementes": sementes, "achados": achados})
         print(f"OK {len(achados)} excertos nacionais colhidos -> termos_candidatos_qd.json (triagem humana)")
         return 0
+    if "--alvos" in sys.argv:
+        # 28/09/2026 (decisão da editoria, item 1): a primeira fila do juiz é uma LISTA DE ALVOS —
+        # os municípios em que a varredura do diário reconheceu excerto e que não estão no banco nem em
+        # fila nenhuma. Consulta-se cada um por termo de plano, e a pista sai com o excerto CERTO, que é
+        # o que permite ao juiz recortar o ato de dentro da edição.
+        caminho = pathlib.Path(sys.argv[sys.argv.index("--alvos") + 1])
+        doc = json.load(open(caminho, encoding="utf-8"))
+        alvos = [(a["nome"], a["uf"]) for a in doc.get("alvos", []) if a.get("nome") and a.get("uf")]
+        limite = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None
+        if limite:
+            alvos = alvos[:limite]
+        print(f"fila de alvos: {len(alvos)} município(s) de {caminho.name}")
+        return rodar(alvos=alvos)
     if "--uf" in sys.argv:
         uf = sys.argv[sys.argv.index("--uf") + 1].upper()
         return rodar(alvos=[], ufs=[uf])
@@ -173,7 +198,12 @@ def main():
             print("(sem arquivo de pistas ainda — ok; roda na primeira execução em produção)")
             return 0
         d = json.load(open(DESTINO, encoding="utf-8"))
-        assert "execucao" in d and "pistas" in d
+        assert "pistas" in d, "o arquivo de pistas precisa ter a lista `pistas`"
+        if "execucao" not in d:
+            # 28/09/2026: a fila foi reativada e ainda não houve consulta. Arquivo sem `execucao` é
+            # estado legítimo — a fila existe, com governança escrita, esperando a primeira varredura.
+            print(f"✓ fila reativada, sem execução ainda — {len(d['pistas'])} pista(s)")
+            return 0
         print(f"✓ pistas válidas — execução de {d['execucao']['data']}, {len(d['pistas'])} entradas")
         return 0
     return rodar()

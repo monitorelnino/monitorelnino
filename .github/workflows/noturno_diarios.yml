@@ -23,6 +23,7 @@ jobs:
       nome: diarios
       timeout_minutos: 90
       comandos: |
+        consultar_querido_diario.py --alvos data/fila_qd_169.json --limite 40
         coletar_diarios_municipais.py --tamanho 150
         # 28/09/2026 (§276): a janela era `--desde 2026-06-29`, ou seja TRÊS MESES revarridos a cada
         # noite — 87 dos 90 min do teto, e o job cancelado a segundos do fim. O orquestrador sempre
