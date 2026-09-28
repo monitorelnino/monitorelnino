@@ -9,6 +9,31 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §267 · Ambiente reprodutível e mais rápido · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 5 do handover de desacoplamento (27/09/2026).
+**Nenhuma nota muda.**
+
+Três das quatro exigências do item já estavam cumpridas, e vale dizer quais para não parecer que
+foram feitas agora: `requirements.txt` tem **versões travadas** desde 27/08/2026, com a razão de cada
+travamento escrita ao lado e documentada em `docs/SBOM.md`; a versão do Python está **fixada em
+3.12** em todos os workflows; e o `apt` instala só o que o OCR precisa — `tesseract-ocr` e
+`tesseract-ocr-por`, nada além.
+
+O que faltava era o **cache**. `actions/setup-python` e `actions/setup-node` sabem cachear pip e npm a
+partir do lockfile, e nenhum workflow pedia isso: cada job baixava as onze dependências Python e o
+`node_modules` inteiro de novo. Agora os oito jobs com Python e os cinco que rodam `npm ci` pedem o
+cache.
+
+**Dois workflows ficaram de fora do cache de npm, de propósito:** `publicar_previa.yml` e
+`publicar_dominio_ensaio.yml` não instalam dependência nenhuma — usam `npx --yes netlify-cli@17`, que
+baixa a ferramenta na hora. Cache ali não economizaria nada, e pedir cache onde não há instalação é
+enfeite de configuração.
+
+Meta do item: instalação abaixo de 1 min por job. Ela **não está medida** — o cache só produz efeito a
+partir da segunda execução, e a comparação antes/depois entra em `notas/ESTADO_ATUAL.md` quando as
+próximas rodadas noturnas tiverem número.
+
 ## §264 · Busca web: ritmo, não volume · 27/09/2026
 
 Classe **método e coleta**. Decisão da central de 27/09/2026 (noite), handover
