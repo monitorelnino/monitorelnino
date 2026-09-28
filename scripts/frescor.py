@@ -144,6 +144,36 @@ def publicado_no_site(base):
         return None, f"{url}: {type(e).__name__}"
 
 
+def carimbar(publicado, coletado):
+    """A data que `data/meta.json` deve declarar: a do último dado que chegou à `main`.
+
+    28/09/2026. `meta.atualizado_em` só era carimbado por `atualizar.py`, a rotina semanal
+    monolítica. O desacoplamento (§266, §267) moveu a coleta para os noturnos e a publicação para
+    `publicar_dados.yml`, e **o carimbo ficou para trás**: o publicador publicava dado novo e o site
+    seguia declarando a data da última rodada semanal. Foi por isso que o rodapé dizia 25/09 com
+    dado de 28/09 no ar.
+
+    A data vem do repositório, não do relógio: é a do commit mais recente que tocou `data/`. Assim
+    ela **não avança quando nada foi coletado** — carimbar o dia de hoje numa rodada sem dado novo
+    seria dizer que o site foi atualizado quando não foi, que é o mesmo erro visto do outro lado.
+
+    Devolve None quando não há o que mudar."""
+    if coletado is None or coletado == publicado:
+        return None
+    return coletado
+
+
+def gravar_carimbo(nova_data) -> bool:
+    """Escreve `atualizado_em` em data/meta.json. `corte` NUNCA é tocado: ele é decisão editorial
+    sobre até quando o dado vale, e não tem relação com quando a rodada publicou."""
+    sys.path.insert(0, str(RAIZ))
+    from coletores_base import gravar_em   # §229: escrita atômica de data/
+    doc = json.loads(META.read_text(encoding="utf-8"))
+    doc["atualizado_em"] = nova_data.strftime("%d/%m/%Y")
+    gravar_em(META, doc)
+    return True
+
+
 def autoteste() -> int:
     casos = []
     d = datetime.date
@@ -170,6 +200,18 @@ def autoteste() -> int:
                   veredito(d(2026, 9, 25), d(2026, 9, 28), limite_dias=5)["estado"] == "em_dia"))
     casos.append(("o vigia nunca inventa data: indeterminado não vira em_dia",
                   veredito(None, None)["atraso_dias"] is None))
+
+    casos.append(("carimbo: sem dado novo, nada muda",
+                  carimbar(d(2026, 9, 28), d(2026, 9, 28)) is None))
+    casos.append(("carimbo: dado novo avança a data",
+                  carimbar(d(2026, 9, 25), d(2026, 9, 28)) == d(2026, 9, 28)))
+    casos.append(("carimbo: sem data de coleta, nada muda (nunca carimba o relógio)",
+                  carimbar(d(2026, 9, 25), None) is None))
+    casos.append(("carimbo: a data vem do dado, não de hoje",
+                  carimbar(None, d(2026, 9, 26)) == d(2026, 9, 26)))
+    import inspect as _insp
+    casos.append(("o carimbo nunca toca o corte dos dados",
+                  "corte" not in _insp.getsource(gravar_carimbo).split('"""')[2]))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
@@ -215,6 +257,20 @@ def main() -> int:
     v = veredito(publicado, coletado, limite)
     if erro:
         v["mensagem"] += f" · não foi possível ler o site: {erro}"
+
+    if "--carimbar" in sys.argv:
+        if base:
+            print("--carimbar é local: ele escreve data/meta.json, não lê o site. Rode sem --base.")
+            return 2
+        nova = carimbar(publicado, coletado)
+        if nova is None:
+            print(f"OK CARIMBO — nada a mudar; data/meta.json já declara "
+                  f"{publicado.strftime('%d/%m/%Y') if publicado else 'nada'} e não há dado mais novo")
+            return 0
+        gravar_carimbo(nova)
+        print(f"OK CARIMBO — data/meta.json passa a declarar {nova.strftime('%d/%m/%Y')}, a data do "
+              f"último dado que chegou à main")
+        return 0
 
     if "--json" in sys.argv:
         print(json.dumps({"publicado_em": publicado.isoformat() if publicado else None,
