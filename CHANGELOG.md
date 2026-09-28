@@ -90,7 +90,7 @@ Secretaria"* é frase de jornalista, não nome de ato. Duas palavras, e sem os a
 caso, que é o mais comum quando a imprensa noticia o anúncio. A pista não achada volta a cada 7
 dias, e cada passagem fica no histórico, com as fontes tentadas.
 
-Um portão novo (116), com 18 casos offline.
+Um portão novo (117), com 18 casos offline.
 
 ## §287 · Recusa por causa técnica deixa de ser permanente, com back-off e histórico · 28/09/2026
 
