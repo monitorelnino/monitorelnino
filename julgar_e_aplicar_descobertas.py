@@ -60,7 +60,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import ua_de, hoje_editorial, gravar_em
+from coletores_base import ua_de, hoje_editorial, gravar_em, log_busca
 import juiz
 from classificador_natureza import classificar, citacao_completa, extrair_data, RE_NUMERO_ATO
 from verificar_recorrencia_uf import checar_recorrencia, registrar_no_historico, REGUA_ANTECIPACAO_RECORRENTE
@@ -488,14 +488,44 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje):
     return True, "aplicado"
 
 
+# 28/09/2026: a decisão do aplicador vira execução do log v2 pela porta canônica.
+# O vocabulário é fechado, e o mapeamento diz o que cada saída significa de fato:
+#   APLICADA    entrou no banco                     -> registro
+#   FILA_HUMANA continua pista, para leitura humana  -> pista
+#   DESCARTADA  documento lido, não era plano        -> consultado sem achado
+#   REVERTIDA   aplicada e desfeita pelos portões    -> erro
+# "nada localizado" NUNCA entra aqui: aquele valor é da bateria municipal completa (§2.1), e usá-lo
+# afirmaria ausência de plano a partir de uma pista só.
+DECISAO_NO_LOG = {"APLICADA": "registro", "FILA_HUMANA": "pista",
+                  "DESCARTADA": "consultado sem achado", "REVERTIDA": "erro"}
+
+
+def municipio_uf_do_alvo(alvo):
+    """'D-municipio-prioritario/Camaçari/BA' -> ('Camaçari', 'BA'). (None, None) quando não dá.
+
+    A pista de imprensa não carrega `municipio`/`uf` estruturados; o alvo é o único lugar onde eles
+    existem. Sem eles a execução entraria no log sem território e não serviria para conferência."""
+    partes = [x.strip() for x in str(alvo or "").split("/") if x.strip()]
+    if len(partes) >= 2 and len(partes[-1]) == 2 and partes[-1].isalpha():
+        return partes[-2], partes[-1].upper()
+    return None, None
+
+
 def registrar_log(entrada):
-    """Anexa uma linha de decisão (aplicada, descartada, revertida ou enfileirada) a
-    data/log_buscas.json — o mesmo log usado nas correções manuais desta sessão,
-    agora também recebendo as decisões automáticas."""
-    log = json.load(open(LOG_BUSCAS, encoding="utf-8")) if LOG_BUSCAS.exists() else \
-        {"formato": "registro por execução da bateria/aquisição (§4.1.1c e §4.1.3-iv)", "execucoes": []}
-    log["execucoes"].append(entrada)
-    gravar_em(LOG_BUSCAS, log)
+    """Registra a decisão do aplicador no log v2, pela porta canônica `log_busca`.
+
+    28/09/2026: até aqui esta função montava um dicionário PRÓPRIO (`data`, `canal`, `alvo`,
+    `decisao`, `motivo`) e o escrevia direto no monólito `data/log_buscas.json`. Duas coisas
+    erradas. A primeira é de esquema: a execução saía sem `strings`, sem `executor` e sem `nivel`, e
+    `verificar_consistencia.py` reprovava — 150 linhas de uma vez na primeira noite em que o
+    aplicador rodou com teto e commitou. A segunda é a porta: o §269 migrou o log para JSONL, e
+    quem escreve no monólito escreve num arquivo que ninguém mais alimenta. Duas portas gravando o
+    mesmo log é como se perde registro."""
+    municipio, uf = municipio_uf_do_alvo(entrada.get("alvo"))
+    log_busca("julgamento_automatico", 5, [str(entrada.get("alvo") or "")],
+              DECISAO_NO_LOG.get(entrada.get("decisao"), "erro"),
+              resultados=str(entrada.get("motivo") or entrada.get("decisao") or ""),
+              uf=uf, municipio=municipio)
 
 
 def atualizar_gauge_estatico():
@@ -708,6 +738,27 @@ def self_test():
         f"  juiz   : {[' '.join(p) for p in CADEIA_DERIVADOS]}\n"
         f"  portão : {[' '.join(p) for p in do_portao]}")
     print(f"✓ self-test OK — cadeia de derivados do juiz idêntica à do portão 12 ({len(do_portao)} passos)")
+
+    # 28/09/2026: o log do aplicador. As 150 linhas da primeira noite saíram sem `strings` e sem
+    # `executor` e reprovaram `verificar_consistencia.py`; estas travas provam o esquema e o
+    # vocabulário sem escrever nada.
+    assert municipio_uf_do_alvo("D-municipio-prioritario/Camaçari/BA") == ("Camaçari", "BA")
+    assert municipio_uf_do_alvo("A/B/Sao Paulo/SP") == ("Sao Paulo", "SP")
+    assert municipio_uf_do_alvo("sem barra") == (None, None), "alvo sem UF não inventa território"
+    assert municipio_uf_do_alvo(None) == (None, None)
+    assert municipio_uf_do_alvo("x/y/ZZZ") == (None, None), "três letras não é UF"
+    from coletores_base import DECISOES_LOG
+    for _saida, _dec in DECISAO_NO_LOG.items():
+        assert _dec.split(" ")[0] in DECISOES_LOG, f"{_saida} fora do vocabulário fechado"
+    assert "nada localizado" not in DECISAO_NO_LOG.values(), (
+        "'nada localizado' é da bateria municipal completa (§2.1); usá-lo aqui afirmaria ausência "
+        "de plano a partir de uma pista só")
+    assert DECISAO_NO_LOG["APLICADA"] == "registro" and DECISAO_NO_LOG["FILA_HUMANA"] == "pista"
+    import inspect as _insp
+    _fonte = _insp.getsource(registrar_log)
+    assert "log_busca(" in _fonte, "o aplicador tem de escrever pela porta canônica"
+    assert "gravar_em(LOG_BUSCAS" not in _fonte, (
+        "duas portas gravando o mesmo log é como se perde registro (§269)")
 
     print("\n✓ self-test do orquestrador OK — 6 cenários cobertos (aplicar exigiria banco real; "
           "ver classificador_natureza.py e verificar_recorrencia_uf.py para os self-tests de aplicação).")

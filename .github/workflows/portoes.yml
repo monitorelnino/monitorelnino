@@ -159,6 +159,7 @@ jobs:
           # §283 (28/09/2026): frescor — compara o que foi coletado com o que foi publicado.
           # O autoteste é offline e puro; o vigia com rede vive em verificar_publicado.yml.
           python3 scripts/frescor.py --autoteste
+          python3 scripts/corrigir_log_do_aplicador.py --autoteste
       - name: Portão móvel (390 px, Chromium real — v3.1 §14.3)
         run: |
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium

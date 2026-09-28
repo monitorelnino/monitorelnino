@@ -51,6 +51,29 @@ real, ele diz: *dado novo não publicado desde 25/09/2026 (3 dias de atraso)*.
 O mesmo script escreve a linha de frescor no resumo do job do publicador, com `if: always()` — a
 linha aparece justamente quando o publicador falha, que é quando ela importa.
 
+### O defeito que a primeira noite de verdade expôs
+
+Com o juiz aplicando e com teto, o aplicador rodou até o fim e **commitou** — e aí apareceu o que
+nunca tinha aparecido: ele escrevia no log por uma **porta própria**. Um dicionário com `data`,
+`canal`, `alvo`, `decisao` e `motivo`, gravado direto no monólito `data/log_buscas.json`, sem
+`strings`, sem `executor` e sem `nivel`. `verificar_consistencia.py` reprovou 150 linhas de uma vez,
+duas faltas cada, e o publicador parou ali — corretamente.
+
+Duas coisas erradas na mesma função. A de esquema, acima. E a da porta: o §269 migrou o log para
+JSONL, e quem escreve no monólito escreve num arquivo que ninguém mais alimenta. **Duas portas
+gravando o mesmo log é como se perde registro** — é o §229 um nível acima.
+
+`registrar_log` passou a chamar `log_busca`, com o vocabulário fechado e o mapeamento declarado:
+`APLICADA` → registro, `FILA_HUMANA` → pista, `DESCARTADA` → consultado sem achado, `REVERTIDA` →
+erro. "Nada localizado" **não** entra: aquele valor é da bateria municipal completa (§2.1), e usá-lo
+afirmaria ausência de plano a partir de uma pista só. O território sai do `alvo`, que é o único
+lugar onde ele existe na pista de imprensa — e alvo sem UF reconhecível fica sem território, em vez
+de inventá-lo.
+
+As 150 execuções já gravadas foram **convertidas, não apagadas**:
+`scripts/corrigir_log_do_aplicador.py` as reescreve no esquema v2 preservando alvo, motivo e data, e
+recusa gravar se o total do log mudar. Antes e depois: **51.400 execuções**.
+
 ### Item 4 — o mostrador
 
 O rodapé da página inicial mostrava "Última atualização", que é a data da **publicação**. Sozinha,
@@ -62,7 +85,7 @@ segunda que aconteceu. Agora, ao lado: **"Última coleta: 28/09/2026 · última 
 Sem as duas pontas, a linha fica oculta: não se afirma meia data. É mostrador, não interpretação —
 descreve o que está nos arquivos, sem juízo e sem instrução de uso.
 
-Um portão novo (113).
+Dois portões novos (114): o autoteste do frescor e o do conserto do log do aplicador.
 
 ## §282 · O juiz nunca promoveu nada, e o publicador morria do próprio trabalho · 28/09/2026
 
