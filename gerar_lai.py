@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# NÃO É ÓRFÃO, e o mapa do funil (item A da auditoria, 27/09/2026) o listou como se fosse: nenhum
+# workflow da rodada o chama, e só a CI o testa. É por desenho — o pedido de LAI é redigido quando a
+# editoria decide pedir, não a cada rodada. Esta nota existe porque a ausência de chamador, sozinha,
+# não distingue "esquecido" de "acionado por pessoa", e a auditoria precisou de leitura à mão para
+# separar os dois.
 """
 gerar_lai.py — pedidos de acesso à informação (doc de redesenho §12; decisão C13)
 =================================================================================

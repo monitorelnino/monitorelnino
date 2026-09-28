@@ -9,6 +9,44 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §271 · Poda: um órfão para o arquivo, e a consolidação que não se faz · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 6 do handover de desacoplamento (27/09/2026), que dependia
+do item A da auditoria do funil. **Nenhuma nota muda.**
+
+### O único órfão de verdade
+
+`scripts/caderno_de_pistas.py` é o único arquivo do repositório que se menciona a si mesmo e a mais
+ninguém: nenhum workflow o chama, nenhum script o importa, e a saída é um `.md` não versionado na raiz.
+Era material de trabalho de uma sessão que passou — a leitura assistida das pistas hoje é
+`revisar_pistas.py --preparar --relatorio` (§153) e, desde 27/09, o juiz automático (§262).
+
+Foi para `arquivo/scripts/`, **não apagado**: a rotina de julgamento §5 que ele descreve continua
+valendo, e o formato pode servir de referência. O cabeçalho dele agora diz por que está ali.
+
+### Um que PARECIA órfão e não é
+
+`gerar_lai.py` não é chamado por workflow nenhum da rodada, e só a CI o testa. É **por desenho**: o
+pedido de LAI é redigido quando a editoria decide pedir, não a cada rodada. O cabeçalho passou a dizer
+isso, porque a ausência de chamador, sozinha, não distingue "esquecido" de "acionado por pessoa" — e a
+auditoria precisou de leitura à mão para separar os dois. Esse é o limite declarado do mapa automático.
+
+### A consolidação dos `gerar_*.py` NÃO foi feita, e a razão é positiva
+
+O item pede consolidá-los num só ponto de entrada "se o ganho for real". **Não é:** o ponto de entrada
+único já existe e é `scripts/verificar_derivados.sh`, a cadeia canônica que o portão 12 cobra. Criar um
+segundo ponto de entrada criaria uma segunda lista a manter em sincronia — e o invariante do §163
+existe justamente porque duas listas divergiram e deixaram o portão 12 vermelho na `main`. Consolidar
+aqui trocaria uma cadeia conferida por portão por duas listas a conciliar.
+
+### O que fica para a editoria
+
+`descobrir_dominios.py`, `coletar_espin.py` e `classificar_planos_municipais.py` produzem dado que a
+rodada usa (`dominios_oficiais.json`, `saude_sinais.json`) e **só rodam na CI** — a última busca ativa
+de domínio registrada é de 23/09. Não são órfãos: são coletores sem cadência. Colocá-los numa rodada
+noturna é decisão de produto (quanto o dado deles precisa envelhecer antes de importar), e está
+registrada como pendência no relatório do funil.
+
 ## §268 · Disjuntor por motor de origem da busca web · 28/09/2026
 
 Classe **método e coleta**. Item 7b do handover
