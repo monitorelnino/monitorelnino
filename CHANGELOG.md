@@ -9,36 +9,6 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-## §266 · Painel de saúde do pipeline · 28/09/2026
-
-Classe **infraestrutura da rodada**. Item 2 do handover de desacoplamento (27/09/2026).
-**Nenhuma nota muda:** o painel mede o pipeline, não pontua nada.
-
-O §265 fez cada script gravar a sua linha de saúde. Aqui essas linhas viram
-`docs/SAUDE_PIPELINE.md`, arquivo **derivado** (entra na cadeia canônica, antes do manifesto, e não
-se edita à mão): uma linha por script com a última execução, duração, itens, status e o resumo do
-erro — mais o histórico de sete dias que `data/saude_pipeline.json` guarda.
-
-### Duas classes, porque a diferença importa
-
-**Essencial** — `recalcular_mare.py` e os `gerar_*.py`: se um deles erra, o site publica um estado
-que não corresponde ao dado. O portão **reprova**.
-
-**Coletor** — todo o resto: fonte fora do ar é rotina, e uma falha isolada não é defeito do
-pipeline. Erro em **duas rodadas seguidas** vira **alerta**, porque aí não é a fonte, é o coletor. A
-sequência zera no primeiro sucesso: falhas alternadas não alertam, e isso é deliberado — alerta que
-dispara por intermitência de fonte deixa de ser lido.
-
-Dezessete casos de autoteste, entre eles os que separam as duas classes (`regerar_algo.py` **não** é
-essencial: `gerar` tem de começar o nome), o que confere que a sequência de erros zera no sucesso, e
-o que garante que `itens` nulo apareça como travessão e nunca como zero — no painel como no dado,
-"não medido" e "zero" são coisas diferentes.
-
-=======
->>>>>>> origin/main
-=======
 ## §268 · Disjuntor por motor de origem da busca web · 28/09/2026
 
 Classe **método e coleta**. Item 7b do handover
@@ -80,7 +50,31 @@ quadro de situação, e enfiar estado mutável ali quebraria o que ele serve par
 
 Dezenove casos de autoteste no disjuntor e um novo no coletor; um portão novo (92).
 
->>>>>>> origin/main
+## §266 · Painel de saúde do pipeline · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 2 do handover de desacoplamento (27/09/2026).
+**Nenhuma nota muda:** o painel mede o pipeline, não pontua nada.
+
+O §265 fez cada script gravar a sua linha de saúde. Aqui essas linhas viram
+`docs/SAUDE_PIPELINE.md`, arquivo **derivado** (entra na cadeia canônica, antes do manifesto, e não
+se edita à mão): uma linha por script com a última execução, duração, itens, status e o resumo do
+erro — mais o histórico de sete dias que `data/saude_pipeline.json` guarda.
+
+### Duas classes, porque a diferença importa
+
+**Essencial** — `recalcular_mare.py` e os `gerar_*.py`: se um deles erra, o site publica um estado
+que não corresponde ao dado. O portão **reprova**.
+
+**Coletor** — todo o resto: fonte fora do ar é rotina, e uma falha isolada não é defeito do
+pipeline. Erro em **duas rodadas seguidas** vira **alerta**, porque aí não é a fonte, é o coletor. A
+sequência zera no primeiro sucesso: falhas alternadas não alertam, e isso é deliberado — alerta que
+dispara por intermitência de fonte deixa de ser lido.
+
+Dezessete casos de autoteste, entre eles os que separam as duas classes (`regerar_algo.py` **não** é
+essencial: `gerar` tem de começar o nome), o que confere que a sequência de erros zera no sucesso, e
+o que garante que `itens` nulo apareça como travessão e nunca como zero — no painel como no dado,
+"não medido" e "zero" são coisas diferentes.
+
 ## §265 · O pipeline desacoplado, e a rodada só na janela noturna · 28/09/2026
 
 Classe **infraestrutura da rodada**. Handover
@@ -135,13 +129,10 @@ ciclo completo a cada ~7,5 dias. Entre 6h e 22h não há commit automático na `
 
 O registro é obrigatório porque cadência é compromisso público: `METODOLOGIA.md` recebeu o regime
 datado, com a ordem declarada da fila de re-varredura, e `obrigado.html` diz ao leitor a janela e as
-<<<<<<< HEAD
 duas publicações diárias. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
-=======
 duas publicações diárias. A primeira versão dessa frase levou a página a 166 palavras e o portão
 `verificar_palavras.js` reprovou (teto 160) — reescrita mais curta, 151 palavras, sem perder a janela,
 os horários nem a data da decisão. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
->>>>>>> origin/main
 atualização completa — continua valendo e continua verdadeira.
 
 ### Uma linha de saúde por script
@@ -159,8 +150,6 @@ arquivo vazio entrou num commit. Recuperado do commit anterior, íntegro, com as
 é de método, e vale para toda edição programática de arquivo grande: **montar o conteúdo inteiro
 primeiro, abrir para escrita depois** — e o `assert` de âncora, que o PROTOCOLO já exige, precisa vir
 antes de qualquer abertura em modo de escrita.
-<<<<<<< HEAD
-=======
 ## §264 · Busca web: ritmo, não volume · 27/09/2026
 
 Classe **método e coleta**. Decisão da central de 27/09/2026 (noite), handover
@@ -212,7 +201,6 @@ recupera. A troca do provisório pelo definitivo vem por PR, com o número no CH
 `PAUSA_ENTRE_CONSULTAS` saiu: era o órfão que esta mudança criou. Quatro autotestes novos (17 no
 total no coletor): cascata e leque separados, ritmo e back-off, os três sinais de limite de taxa, e
 uma trava de unidade para a pausa da sonda — 10 ali seriam 10 segundos, não 10 minutos.
->>>>>>> origin/main
 
 ## §263 · Instrumentação do funil: a rodada conta por etapa · 27/09/2026
 
