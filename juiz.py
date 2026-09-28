@@ -55,7 +55,11 @@ import unicodedata
 from classificador_natureza import classificar as classificar_natureza
 from classificador_natureza import citacao_completa, extrair_data
 
-CODEBOOK_VERSAO = "1.0 (27/09/2026)"
+# 1.1 (28/09/2026): a Etapa 4 passou a exigir VERBO e INSTRUMENTO na mesma vizinhança. A versão sobe
+# porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
+# aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
+# promoveu por engano.
+CODEBOOK_VERSAO = "1.1 (28/09/2026)"
 
 # --- Etapa 0 ---------------------------------------------------------------------------------
 # Padrões de fonte provável oficial. Mesma lista que `descobrir_planos.py` usa desde 18/09/2026;
@@ -98,17 +102,57 @@ RE_APROVACAO_COLEGIADA = re.compile(
 
 # --- Etapa 4 ---------------------------------------------------------------------------------
 # Objeto ex-ante: o que o ato FAZ. Origem: METODOLOGIA §5.2.1 (teste do objeto), 03/09/2026.
-RE_OBJETO_EX_ANTE = re.compile(
+#
+# 28/09/2026: a regra era UMA alternância só, e entre as alternativas estava o verbo solto
+# `institu[ií]`. Numa edição inteira de diário — vinte mil caracteres, dezenas de atos — sempre há
+# um "institui" em algum lugar, e quase sempre há um "comitê gestor" de outra coisa. Na primeira
+# passada real do juiz isso promoveu **quatro registros falsos de cinco**: em Salto/SP, Apucarana/PR
+# e Goiânia/GO não havia NENHUMA ocorrência de termo de plano nos 20.000 caracteres julgados
+# (Apucarana casou em "Comitê Gestor do Programa Sandbox"; Goiânia saiu com data de 21/08/1959), e
+# Alagoinhas/BA casou em "Plano de Contingência / PGR" dentro de condicionante de licença ambiental
+# de estabelecimento privado — obrigação imposta a um licenciado, não plano do município.
+#
+# O objeto passa a exigir DUAS coisas, e perto uma da outra: o VERBO que cria ou atualiza, e o
+# INSTRUMENTO nomeado. "Institui" sozinho não diz o que foi instituído; "plano de contingência"
+# sozinho pode ser exigência feita a terceiro. A vizinhança é o que liga um ao outro — em Serra/ES,
+# o único caso verdadeiro dos cinco, eles são vizinhos imediatos: "Fica instituído o Plano Municipal
+# de Proteção e Defesa Civil".
+JANELA_OBJETO = 300   # caracteres entre o verbo e o instrumento
+
+RE_VERBO_EX_ANTE = re.compile(
     r"institu[ií]|aprova\s+o\s+plano|atualiza[çr]|revis[ãa]o\s+do\s+plano|"
-    r"plano\s+de\s+conting[êe]ncia|plancon|plano\s+de\s+a[çc][ãa]o|plano\s+de\s+enfrentamento|"
-    r"opera[çc][ãa]o\s+(?:ver[ãa]o|inverno|estiagem|chuvas|seca)|"
-    r"comit[êe]\s+(?:gestor|de\s+crise|de\s+enfrentamento|permanente)|"
-    r"pr[ée]-?posiciona|sala\s+de\s+situa[çc][ãa]o|"
     # 27/09/2026 (canário `plano_em_elaboracao`): determinar a elaboração TAMBÉM é objeto ex-ante —
     # é o que a categoria `plano_elaboracao` registra (§3). Sem isto, o ato de elaboração caía em
     # dúvida por "não diz o que institui", e o caso fundador de Belém (27/08/2026) não passaria.
-    r"determina(?:d[ao])?\s+(?:a\s+)?elabora[çc][ãa]o|"
-    r"plano\s+(?:municipal|estadual)\s+de\s+(?:enfrentamento|conting[êe]ncia|a[çc][ãa]o)", re.I)
+    r"determina(?:d[ao])?\s+(?:a\s+)?elabora[çc][ãa]o", re.I)
+
+RE_INSTRUMENTO_EX_ANTE = re.compile(
+    r"plano\s+de\s+conting[êe]ncia|plancon|plano\s+de\s+a[çc][ãa]o|plano\s+de\s+enfrentamento|"
+    r"plano\s+(?:municipal|estadual)\s+de\s+(?:enfrentamento|conting[êe]ncia|a[çc][ãa]o|"
+    r"prote[çc][ãa]o\s+e\s+defesa\s+civil)|"
+    r"opera[çc][ãa]o\s+(?:ver[ãa]o|inverno|estiagem|chuvas|seca)|"
+    r"comit[êe]\s+(?:gestor|de\s+crise|de\s+enfrentamento|permanente)|"
+    r"pr[ée]-?posiciona|sala\s+de\s+situa[çc][ãa]o", re.I)
+
+
+def objeto_ex_ante(texto: str) -> tuple:
+    """(ok, trecho). Exige verbo E instrumento a menos de JANELA_OBJETO caracteres um do outro.
+
+    Devolve o trecho que mostra os dois juntos — que é o que faltava no registro: os `trecho` dos
+    critérios das quatro promoções falsas traziam cabeçalho de diário e até texto invertido, e
+    ninguém conseguiria conferir a decisão por eles."""
+    verbos = list(RE_VERBO_EX_ANTE.finditer(texto))
+    if not verbos:
+        return False, ""
+    instrumentos = list(RE_INSTRUMENTO_EX_ANTE.finditer(texto))
+    if not instrumentos:
+        return False, ""
+    for v in verbos:
+        for x in instrumentos:
+            if abs(x.start() - v.start()) <= JANELA_OBJETO:
+                ini, fim = sorted((v.start(), x.start()))
+                return True, " ".join(texto[max(0, ini - 40):fim + 160].split())
+    return False, ""
 # Gatilho: previsão, aviso público, limiar observacional — OU, para plano de contingência, a
 # referência ao período/ciclo (chuvoso, estiagem, 2026/2027).
 RE_GATILHO_CICLO = re.compile(
@@ -356,21 +400,22 @@ def etapa4_natureza(texto: str) -> tuple:
     if decisao == "DUVIDA":
         return "DUVIDA", f"natureza_duvidosa: {motivo}", {}
 
-    m_objeto = RE_OBJETO_EX_ANTE.search(texto)
+    tem_objeto, prova_objeto = objeto_ex_ante(texto)
     m_ciclo = RE_GATILHO_CICLO.search(texto)
     m_obs = RE_GATILHO_OBSERVACIONAL.search(texto)
     m_anormal = RE_DECLARA_ANORMALIDADE.search(texto)
 
     if m_anormal:
         return "RESPOSTA", "declara anormalidade — é ato de resposta", {}
-    if not m_objeto:
-        return "DUVIDA", "natureza_duvidosa: o texto não diz o que o ato institui ou ativa", {}
+    if not tem_objeto:
+        return "DUVIDA", ("natureza_duvidosa: o texto não traz verbo de instituição junto de um "
+                          "instrumento nomeado"), {}
     if not (m_ciclo or m_obs):
         return "DUVIDA", "natureza_duvidosa: sem gatilho (previsão, limiar ou referência ao ciclo)", {}
     if tem_rota_federal:
         return "DUVIDA", "natureza_duvidosa: a rota do recurso depende de reconhecimento federal", {}
     return "EX_ANTE", motivo, {
-        "objeto": trecho_em_volta(texto, m_objeto),
+        "objeto": prova_objeto,
         "gatilho": trecho_em_volta(texto, m_ciclo or m_obs),
         "rota_do_recurso": "sem dependência de reconhecimento federal no texto",
     }
@@ -658,6 +703,37 @@ DECRETA: Art. 1º Fica instituído o Plano de Contingência Municipal de Proteç
 para o período de estiagem, com pré-posicionamento de carro-pipa e alerta antecipado. Art. 2º
 Este decreto tem caráter preventivo e não configura situação de emergência. Publicado sem número
 e sem data no expediente."""),
+
+    # 28/09/2026 — as duas formas que promoveram registro FALSO na primeira passada real. Elas não
+    # são hipóteses: são o resumo do que estava nos 20.000 caracteres julgados em Salto/SP,
+    # Apucarana/PR, Goiânia/GO (verbo solto em edição inteira, sem instrumento nenhum) e em
+    # Alagoinhas/BA (instrumento presente, mas como obrigação imposta a um licenciado).
+    "edicao_inteira_com_verbo_solto": dict(
+        esperado={"promove": False, "motivo": "natureza_duvidosa"},
+        nome="Bonito", uf="MS", url="https://bonito.ms.gov.br/diariooficial/edicao-1400.pdf",
+        texto="""DIÁRIO OFICIAL DO MUNICÍPIO DE BONITO - MS
+Publicação Oficial do Município, conforme Lei Municipal n. 3.713, de 13 de dezembro de 2017.
+O PREFEITO MUNICIPAL DE BONITO, no uso de suas atribuições, DECRETA:
+PORTARIA Nº 221/2026 — Institui a Comissão de Organização, Bens e Serviços da Secretaria de
+Administração, para o exercício de 2026, e designa seus membros.
+EXTRATO DE CONTRATO — objeto: aquisição de mobiliário escolar. Vigência: 12 meses.
+AVISO — a Secretaria de Meio Ambiente informa a previsão de chuvas para o período chuvoso
+2026/2027 divulgada pelo INMET, para conhecimento dos munícipes.
+COMITÊ GESTOR do Programa Sandbox Municipal — convocação da terceira reunião ordinária."""),
+
+    "instrumento_exigido_de_terceiro": dict(
+        esperado={"promove": False, "motivo": "natureza_duvidosa"},
+        nome="Bonito", uf="MS", url="https://bonito.ms.gov.br/diariooficial/edicao-1401.pdf",
+        texto="""PREFEITURA MUNICIPAL DE BONITO - MS
+DECRETO Nº 44/2026, DE 26 DE AGOSTO DE 2026.
+Concede licença ambiental de operação e fixa condicionantes.
+O SECRETÁRIO MUNICIPAL DE MEIO AMBIENTE DE BONITO, no uso de suas atribuições, e CONSIDERANDO o
+prognóstico do INMET para o período chuvoso 2026/2027, resolve conceder licença de operação ao
+estabelecimento, mediante as seguintes condicionantes:
+XI – Manter em local de fácil acesso à equipe de fiscalização os relatórios de manutenção
+preventiva de equipamentos, os laudos de integridade estrutural da pista de concreto armado e o
+Plano de Contingência / PGR. Prazo: durante a vigência da Licença;
+XII – Realizar treinamentos periódicos voltados aos funcionários, comprovados documentalmente."""),
 }
 
 
