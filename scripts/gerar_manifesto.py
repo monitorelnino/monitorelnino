@@ -45,7 +45,18 @@ RAIZ = pathlib.Path(__file__).parent.parent
 MANIFESTO = RAIZ / "docs" / "MANIFEST_SHA256.txt"
 
 FORA_EXTRA = {"data/transferencias_api_raw.json"}
-FORA = {"gerar_tese.js", "data/transferencias_api_raw.json"}  # ferramenta de sessão (C8) e dump bruto da API (03/09): não selados
+# 28/09/2026 (§274): `data/saude_pipeline.json` é RELATÓRIO DA EXECUÇÃO EM CURSO — cada passo da rodada
+# grava ali a sua linha de saúde (início, duração, itens, status, erro). Selá-lo faz o manifesto mudar
+# no meio da própria rodada: o passo que recalcula o índice escreve a linha, e a regeneração seguinte
+# encontra o manifesto diferente do commitado. Foi o que reprovou o portão 12 na segunda execução do
+# `publicar_dados.yml`, pela mesma razão estrutural do §273 — e a razão de fundo é a que importa: o
+# manifesto sela PROVA, e quanto tempo um script levou não é prova de nada sobre o índice.
+FORA = {"gerar_tese.js", "data/transferencias_api_raw.json",   # ferramenta de sessão (C8) e dump bruto (03/09)
+        "data/saude_pipeline.json",                            # relatório da execução (§274), não prova
+        # E o painel que resume esse relatório, pela mesma razão e por uma segunda: desde o §273 ele é
+        # gerado DEPOIS dos portões e ANTES do commit. Selado, ele deixaria o manifesto obsoleto na
+        # rodada seguinte — o painel mudaria no commit e o manifesto não acompanharia.
+        "docs/SAUDE_PIPELINE.md"}
 
 
 def listar():

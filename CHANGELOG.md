@@ -56,6 +56,42 @@ metade**. A regra de ouro a tirar daqui é de ordem, não de intenção: **nunca
 de preservação antes de o novo cobrir todos os produtores** — e, quando a substituição for de prova,
 conferir que a prova chegou ao novo lugar antes de tirá-la do antigo.
 
+## §274 · O manifesto não sela relatório de execução · 28/09/2026
+
+Classe **infraestrutura da rodada**. Correção do §266, achada pela **segunda** execução do
+`publicar_dados.yml`. **Nenhuma nota muda.**
+
+### O defeito
+
+O §273 tirou o painel de saúde da cadeia canônica, e a execução seguinte reprovou de novo no portão 12
+— agora por uma linha a mais no manifesto. O manifesto é gerado por glob sobre `data/*.json`, e
+`data/saude_pipeline.json` passou a existir: é ele que cada passo da rodada preenche com a sua linha de
+saúde. O passo que recalcula o índice escreve a linha, e a regeneração seguinte encontra o manifesto
+diferente do commitado.
+
+### A razão de fundo, que é a que importa
+
+Não é só um problema de ordem de passos. **O manifesto sela prova** — o dado, as páginas, os derivados
+publicados, as evidências. **Quanto tempo um script levou não é prova de nada sobre o índice.** Selar o
+relatório da execução confunde as duas coisas, e o sintoma (portão 12 vermelho toda rodada) é o aviso.
+
+Saem do manifesto, declarados em `FORA`:
+
+- `data/saude_pipeline.json` — relatório da execução em curso;
+- `docs/SAUDE_PIPELINE.md` — o painel que o resume, e por uma segunda razão: desde o §273 ele é gerado
+  **depois** dos portões e **antes** do commit, então selá-lo deixaria o manifesto obsoleto na rodada
+  seguinte, com o painel mudando no commit e o manifesto sem acompanhar.
+
+`data/log_buscas_resumo.json` **continua selado**, e a distinção é a mesma do §273: ele é função do log
+**commitado**, não da execução em curso.
+
+### Sobre as duas correções seguidas
+
+O §266 entrou com um erro de classificação — tratei relatório de execução como derivado de dado — e ele
+produziu dois sintomas em duas execuções: primeiro o painel na cadeia, depois o seu insumo no manifesto.
+Os dois só apareceram porque o pipeline passou a rodar desacoplado, na ordem de verdade. A suíte local e
+o CI do PR não os encontrariam: em nenhum dos dois existe um passo anterior da mesma execução
+escrevendo o arquivo.
 ## §273 · O painel de saúde sai da cadeia canônica · 28/09/2026
 
 Classe **infraestrutura da rodada**. Correção do §266, achada pela **primeira execução real** do
