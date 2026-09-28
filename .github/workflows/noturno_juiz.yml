@@ -46,6 +46,7 @@ jobs:
         revisar_pistas.py --preparar --relatorio
         julgar_filas.py --aplicar --limite 250
         julgar_e_aplicar_descobertas.py --limite 150
+        aplicar_promocoes_do_juiz.py --aplicar
         scripts/amostra_auditoria_semanal.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
