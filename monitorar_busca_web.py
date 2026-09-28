@@ -46,6 +46,7 @@ USO
 import json, random, sys, time, urllib.parse, urllib.request
 from datetime import date
 import funil
+import motores_busca
 from coletores_base import log_busca, registrar_lacuna, marcar_fonte_consultada, referencia_ibge, ler, gravar, rodar_autoteste, ua_de, hoje_editorial
 from classificar_pista_civil import triagem_completa
 from coletar_diarios_municipais import ordem_prioridade
@@ -146,10 +147,17 @@ def decidir(n_brutos: int, n_pistas: int, rodadas_sem_pista: int) -> str:
     return "coberto_sem_mencao" if rodadas_sem_pista >= 1 else "nao_localizado_ate_o_momento"
 
 
-def buscar_searxng(query: str, timeout: int = 20) -> dict:
+def buscar_searxng(query: str, timeout: int = 20, motores: list = None) -> dict:
     """Consulta a instância local (formato JSON habilitado em searxng_settings.yml).
-    Falha de rede/parse vira exceção — quem chama decide entre lacuna e retry."""
-    url = f"{SEARXNG_URL}?{urllib.parse.urlencode({'q': query, 'format': 'json'})}"
+    Falha de rede/parse vira exceção — quem chama decide entre lacuna e retry.
+
+    27/09/2026 (item 7b): `motores` restringe a consulta aos motores de origem ATIVOS. O
+    desligamento é por requisição, não por edição de `scripts/searxng_settings.yml` — nada fica
+    desligado em disco, e a volta depois de 24 h é automática."""
+    parametros = {"q": query, "format": "json"}
+    if motores:
+        parametros["engines"] = ",".join(motores)
+    url = f"{SEARXNG_URL}?{urllib.parse.urlencode(parametros)}"
     req = urllib.request.Request(url, headers={"User-Agent": ua_de("busca web")})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8", "replace"))
@@ -226,6 +234,32 @@ def rodar(lote: str | None, tamanho: int) -> int:
 
     alvo = ordem[(lote_n - 1) * tamanho: lote_n * tamanho]
 
+    # ITEM 7b: o disjuntor por motor de origem. A sentinela é uma busca fixa que qualquer motor vivo
+    # responde — se vier vazia, o motor está mudo, e isso não se confunde com "o município não tem
+    # plano". Motor mudo em duas rodadas seguidas, ou com mais de 50% de falhas numa rodada, fica 24 h
+    # desligado e volta sozinho. Nunca menos de dois ativos.
+    estado_motores = motores_busca.ler_estado()
+    agora_utc = motores_busca.agora_iso()
+    motores = motores_busca.ativos(estado_motores, agora_utc)
+    print(f"motores ativos nesta rodada: {', '.join(motores)}")
+    for motor in motores:
+        try:
+            resposta = buscar_searxng(motores_busca.SENTINELA, timeout=15, motores=[motor])
+            muda = not (resposta.get("results") or [])
+        except Exception:  # noqa: BLE001 — sentinela que estoura é sentinela muda
+            muda = True
+        motores_busca.contabilizar(estado_motores, motor, sentinela_muda=muda)
+        if muda:
+            print(f"  sentinela muda: {motor}")
+        time.sleep(espera_do_ritmo(0))
+    if len(motores) < motores_busca.MINIMO_ATIVOS:
+        # menos de dois motores é pouco para afirmar ausência: a rodada não pergunta de verdade.
+        print(f"✗ busca web: só {len(motores)} motor(es) ativo(s); a rodada encerra sem afirmar "
+              f"ausência de nada")
+        motores_busca.aplicar_disjuntor(estado_motores, agora_utc)
+        gravar(motores_busca.ARQUIVO, estado_motores)
+        return 1
+
     pistas = ler("pistas_imprensa.json") or {"pistas": []}
     vistos_pistas = {(p.get("ibge"), p.get("url"), p.get("trecho")) for p in pistas["pistas"]}
     # 27/09/2026 (PR 1 item 2): quantas rodadas cada município já teve COM resultado bruto e SEM
@@ -252,12 +286,21 @@ def rodar(lote: str | None, tamanho: int) -> int:
         for ident, query in consultas:
             time.sleep(espera_do_ritmo(backoff[0]))
             try:
-                dados = buscar_searxng(query)
+                dados = buscar_searxng(query, motores=motores)
             except Exception as erro:  # noqa: BLE001 — falha de uma string não derruba as outras
                 falhas_de_rede += 1
                 if sinal_de_limite_de_taxa(erro=erro):
                     backoff[0] += 1   # 429/CAPTCHA: o próximo intervalo é 10 s, 30 s, 90 s
+                # consulta que estourou conta como falha para TODOS os motores pedidos: não há como
+                # saber qual barrou quando a resposta não chega.
+                for motor in motores:
+                    motores_busca.contabilizar(estado_motores, motor, consultas=1, falhas=1)
                 continue
+            # quem não respondeu está no próprio corpo da resposta (`unresponsive_engines`)
+            fora = motores_busca.falhas_por_motor(dados)
+            for motor in motores:
+                motores_busca.contabilizar(estado_motores, motor, consultas=1,
+                                           falhas=1 if motor in fora else 0)
             crus = dados.get("results") or []
             brutos_por_consulta[ident] += len(crus)
             if sinal_de_limite_de_taxa(dados=dados):
@@ -340,6 +383,12 @@ def rodar(lote: str | None, tamanho: int) -> int:
     gravar("pistas_imprensa.json", pistas)
     gravar("busca_web_espera.json", {"municipios": espera["municipios"],
                                      "atualizado_em": hoje_editorial().isoformat()})
+    estado_motores, caidos, motivos = motores_busca.aplicar_disjuntor(estado_motores, agora_utc)
+    gravar(motores_busca.ARQUIVO, estado_motores)
+    if caidos:
+        print(f"disjuntor: {len(caidos)} motor(es) desligado(s) por 24 h — "
+              + "; ".join(f"{m} ({motivos[m]})" for m in caidos))
+    print(motores_busca.resumo(estado_motores, agora_utc))
     funil.registrar("busca_web", consultas=n_ok + n_lac, com_resultado_bruto=n_com_bruto,
                     motor_sem_resposta=n_motor_sem_resposta, pistas=npist,
                     coberto_sem_mencao=n_coberto, nao_localizado_ate_o_momento=n_esperando,
@@ -477,6 +526,31 @@ def autoteste():
         return (SONDA_MUNICIPIOS == 20 and PAUSA_DA_SONDA == 600
                 and BACKOFF == (10, 30, 90) and INTERVALO_MINIMO >= 1.0)
 
+    def t18_consulta_restringe_motores():
+        """A URL da consulta leva `engines=` com os motores ativos, e só com eles.
+
+        É o que faz o desligamento existir: sem este parâmetro, o disjuntor decidiria e o SearXNG
+        continuaria consultando todos. Inspeciona a URL montada, sem rede."""
+        import urllib.parse
+        capturadas = []
+
+        class RespostaFalsa:
+            def __enter__(self): return self
+            def __exit__(self, *a): return False
+            def read(self): return b'{"results": []}'
+
+        real = urllib.request.urlopen
+        urllib.request.urlopen = lambda req, timeout=None: (capturadas.append(req.full_url),
+                                                            RespostaFalsa())[1]
+        try:
+            buscar_searxng("teste", motores=["bing", "brave"])
+            buscar_searxng("teste")
+        finally:
+            urllib.request.urlopen = real
+        com = urllib.parse.parse_qs(urllib.parse.urlparse(capturadas[0]).query)
+        sem = urllib.parse.parse_qs(urllib.parse.urlparse(capturadas[1]).query)
+        return com.get("engines") == ["bing,brave"] and "engines" not in sem
+
     def t5_dedup_mesma_chave():
         vistos = {("0000001", "https://x.gov.br/a", "trecho x")}
         chave = ("0000001", "https://x.gov.br/a", "trecho x")
@@ -528,6 +602,7 @@ def autoteste():
         "as oito consultas do handover, mais a antiga como controle": t11_conjunto_de_consultas_cobre_o_handover,
         "peneira aceita o nome do município no trecho, não só no título": t12_peneira_aceita_municipio_no_trecho,
         "teto do motor sem resposta é fração, não percentual": t13_teto_do_motor_e_fracao_nao_percentual,
+        "a consulta pede só os motores ativos do disjuntor": t18_consulta_restringe_motores,
         "a rodada usa três strings em cascata, e o leque fica para a medição": t14_cascata_provisoria,
         "o ritmo tem intervalo mínimo com jitter e back-off exponencial": t15_ritmo_e_backoff,
         "429, CAPTCHA e corpo vazio são lidos como limite de taxa": t16_sinais_de_limite,
