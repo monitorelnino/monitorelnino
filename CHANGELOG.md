@@ -9,7 +9,6 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## §280 · O número público de menções era 347 e é 260 · 28/09/2026
 
 Classe **correção de dado publicado**. Defeito 1 do relatório da auditoria do funil, item 3 do bloco
@@ -91,7 +90,6 @@ o §45.1, que estende a regra — contagem definida por exclusão é vocabulári
 o lado de fora nunca pode ser o lado que afirma.
 
 Dois autotestes novos no workflow (107 portões).
-=======
 ## §278 · Redes sociais entram como descoberta, e só como descoberta · 28/09/2026
 
 Classe **método e coleta**. Item 2 do bloco de decisões da editoria de 28/09/2026. **Nenhuma nota
@@ -150,7 +148,6 @@ que já rodava ali, dependia dela pelo mesmo motivo e estava no mesmo escuro.
 lugar. O padrão que me pegou nos três: **antes de ligar, listar o que a peça precisa e onde isso existe.**
 
 Três portões novos (109).
->>>>>>> origin/main
 
 ## §277 · O Querido Diário volta ao funil, pelo juiz · 28/09/2026
 
