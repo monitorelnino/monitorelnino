@@ -451,7 +451,11 @@ const HAB_SET = new Set(habilitados.map(p => (p.nome || '').toLowerCase() + '|' 
 // =========================================================
 const CANAL_LABEL = {DOM:'Diário Oficial dos Municípios', DOU:'Diário Oficial da União',
   repositorio_estadual:'repositório estadual de planos', orgao_estadual:'órgão estadual',
-  site_municipal:'site oficial do município', imprensa:'imprensa', '—':''};
+  // 28/09/2026 (§281): "imprensa" é canal de DESCOBERTA, não de registro, e o rótulo tinha de
+  // dizer isso. Treze registros traziam "via imprensa" ao lado de uma fonte descrita como
+  // oficial, e o leitor não tinha como saber que a matéria serviu para achar o documento, não
+  // para provar o ato. Nenhum dos treze pontua — o rótulo era o problema inteiro.
+  site_municipal:'site oficial do município', imprensa:'imprensa (descoberta)', '—':''};
 const CAT_LABEL_TBL = {
   plano:['Plano preventivo',MonitorMapas.PALETA.categorias.plano], plano_antigo:['Plano vigente, de ciclo anterior',MonitorMapas.PALETA.categorias.plano_antigo],
   plano_elaboracao:['Em elaboração',MonitorMapas.PALETA.categorias.plano_elaboracao], plano_novo:['Plano novo, dedicado ao ciclo',MonitorMapas.PALETA.categorias.plano_novo], plano_readaptado:['Plano readaptado para o ciclo',MonitorMapas.PALETA.categorias.plano_readaptado], plano_recorrente:['Plano recorrente, sazonal',MonitorMapas.PALETA.categorias.plano_recorrente], estrutura:['Estrutura de coordenação',MonitorMapas.PALETA.categorias.estrutura], decreto:['Decreto reativo',MonitorMapas.PALETA.categorias.decreto],

@@ -28,6 +28,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 // ===== pesquisadores.html · bloco 2 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let DATA, TRANSFERENCIAS, META, TABELA_MUNICIPIOS, SINAIS, CONSULTAS, MPS;
 const CAMADA_ROTULO = {ciclo:'Ciclo', observado:'Observado', enos:'ENOS'};   // tabela das oito fontes (migrada de Sinais)
+// 28/09/2026 (§281): a coluna "canal" mostra o código cru, e "imprensa" lido ali parece canal de
+// registro. É canal de DESCOBERTA: a matéria serve para achar o documento, nunca para provar o ato.
+// Só este canal recebe complemento — os outros são canais de registro e o código já diz o que são.
+const CANAL_DESCOBERTA = {imprensa: 'imprensa (descoberta)'};
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fonteFigura = MonitorMapas.credito;
 
@@ -196,7 +200,7 @@ function renderTable(){
       const fonte = m.url ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.fonte)}</a>` : esc(m.fonte);
       return `<tr><td><strong>${m.nome}</strong></td><td>${m.uf}</td>
         <td><span class="cat-pill" style="background:${cor}">${lbl}</span></td>
-        <td>${m.documento}</td><td class="nowrap">${m.data}</td><td>${fonte}</td><td class="nowrap dado">${m.canal||'—'}</td></tr>`;
+        <td>${m.documento}</td><td class="nowrap">${m.data}</td><td>${fonte}</td><td class="nowrap dado">${CANAL_DESCOBERTA[m.canal] || m.canal || '—'}</td></tr>`;
     }).join('');
   }
   if (document.getElementById('tblSearch') && document.getElementById('tblCat') && document.getElementById('tblBody')) {
