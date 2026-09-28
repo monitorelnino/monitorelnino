@@ -9,7 +9,6 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## §265 · O pipeline desacoplado, e a rodada só na janela noturna · 28/09/2026
 
 Classe **infraestrutura da rodada**. Handover
@@ -82,7 +81,6 @@ arquivo vazio entrou num commit. Recuperado do commit anterior, íntegro, com as
 é de método, e vale para toda edição programática de arquivo grande: **montar o conteúdo inteiro
 primeiro, abrir para escrita depois** — e o `assert` de âncora, que o PROTOCOLO já exige, precisa vir
 antes de qualquer abertura em modo de escrita.
-=======
 ## §264 · Busca web: ritmo, não volume · 27/09/2026
 
 Classe **método e coleta**. Decisão da central de 27/09/2026 (noite), handover
@@ -134,7 +132,6 @@ recupera. A troca do provisório pelo definitivo vem por PR, com o número no CH
 `PAUSA_ENTRE_CONSULTAS` saiu: era o órfão que esta mudança criou. Quatro autotestes novos (17 no
 total no coletor): cascata e leque separados, ritmo e back-off, os três sinais de limite de taxa, e
 uma trava de unidade para a pausa da sonda — 10 ali seriam 10 segundos, não 10 minutos.
->>>>>>> origin/main
 
 ## §263 · Instrumentação do funil: a rodada conta por etapa · 27/09/2026
 
