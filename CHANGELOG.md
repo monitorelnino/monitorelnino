@@ -9,6 +9,62 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §270 · Evidência: o binário sai do git, o texto fica · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 3 do handover de desacoplamento (27/09/2026).
+**Nenhuma nota muda, e nenhuma prova é perdida.**
+
+### O que foi medido
+
+`evidencias/` tem **1,5 GB em 3.755 arquivos**; o pack do git passa de **1 GB**. A separação que decide
+o item: **1,25 GB são binários** — 1,0 GB de PDF (619 arquivos) e 254 MB de HTML — contra **10,9 MB de
+texto extraído** (101 de texto, 6 de OCR). Presentes no disco e indexados: 2.772 binários, 1.255 MB,
+todos de setembro.
+
+### A regra
+
+**O texto continua no git.** É insumo do pipeline — `preservar_evidencias.py --ler`,
+`scripts/preservar_textos_integrais.py` e a classificação de saúde leem o texto, não o binário —, e o
+§10.1 já dizia "a cópia do binário só até 5 MB, o texto sempre".
+
+**O binário novo não entra.** Vai para o ativo de Release do mês (`evidencias-AAAA-MM.zip`, com
+`INDICE.tsv` dentro: hash, arquivo, URL de origem, data, tamanho, origem), e o índice
+`data/evidencias.json` continua no git com tudo isso.
+
+### Release, e por quê
+
+O handover deixou a escolha ao Code — ativo de Release ou repositório separado. **Release**, e a razão é
+medida: nenhum script da rodada precisa do binário num checkout; o que eles leem é o texto, que fica.
+Repositório separado só se justificaria se precisassem. Release dá URL estável, ativo de até 2 GB, sem
+clone e sem custo.
+
+### A ordem importa: upload antes do ignore
+
+Ignorar binário novo no git **sem** publicar o lote faria a prova desaparecer com o runner. Por isso o
+`noturno_evidencias.yml` ganhou um job que monta o lote do mês e o publica como ativo **antes de o job
+terminar**, com `--clobber` porque o lote é cumulativo, não incremental. O `.gitignore` só é seguro
+porque esse passo existe.
+
+`scripts/empacotar_evidencias.py` confere que o **sha256 de cada arquivo bate com a chave do índice**
+antes de empacotar: hash que não bate fica fora do pacote e é acusado. Ele **não publica sozinho** —
+imprime o comando, e publicar exige credencial.
+
+### O que NÃO foi feito, e por que depende da editoria
+
+Duas coisas ficam esperando a palavra dela, e são as duas que dariam o ganho de peso:
+
+1. **Remover da árvore os 1,25 GB já commitados.** É o que faria o clone raso caber no critério de
+   aceite do item ("< 1 min"): clone raso não baixa histórico, mas baixa a árvore atual. A remoção é
+   reversível pelo histórico, mas apagar 1,25 GB de prova preservada é ação que não se toma sozinho —
+   e o caminho seguro é: publicar o lote de setembro como Release, conferir que ele está lá, e só então
+   remover.
+2. **Reescrever o histórico** para encolher o pack de 1 GB. O próprio handover proíbe fazer agora:
+   é irreversível, exige decisão da editoria e clone novo em todas as máquinas. Fica anotado como opção
+   para depois do lançamento.
+
+Três portões novos (97 no total). O portão do binário roda contra `origin/main`, não contra o índice:
+é o diff do PR que interessa.
+
 ## §268 · Disjuntor por motor de origem da busca web · 28/09/2026
 
 Classe **método e coleta**. Item 7b do handover
