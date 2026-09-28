@@ -36,11 +36,14 @@ import json
 import pathlib
 import random
 import sys
+import time
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ))
 
 SEMENTE = 42   # a mesma do item D, para que as duas medições falem da mesma amostra
+ESPACO_ENTRE_CONSULTAS = 5.0   # PR 1c item 6: instância dedicada, sem pressa — 5 s entre consultas
+ALVO_DE_REVOCACAO = 0.95       # conjunto mínimo aceitável: recupera >= 95% do que o leque recupera
 
 
 def sortear_registrados(municipios: list, n: int, semente: int = SEMENTE) -> list:
@@ -54,7 +57,7 @@ def sortear_registrados(municipios: list, n: int, semente: int = SEMENTE) -> lis
     return r.sample(com_plano, min(n, len(com_plano)))
 
 
-def medir(municipios: list, buscar, relevante, consultas_de) -> dict:
+def medir(municipios: list, buscar, relevante, consultas_de, pausa=None) -> dict:
     """Roda cada string sobre cada município e conta o que ela recuperou.
 
     `buscar(query)` devolve o dicionário do SearXNG ou levanta — a injeção existe para que o
@@ -72,6 +75,8 @@ def medir(municipios: list, buscar, relevante, consultas_de) -> dict:
             alvo = por_string.setdefault(ident, {"brutos": 0, "candidatos": 0, "municipios_com_candidato": 0,
                                                  "consultas": 0, "falhas": 0})
             alvo["consultas"] += 1
+            if pausa:
+                pausa(ESPACO_ENTRE_CONSULTAS)
             try:
                 dados = buscar(query)
             except Exception:  # noqa: BLE001 — falha de uma string não invalida as outras
@@ -114,7 +119,7 @@ def tabela(resultado: dict, titulo: str) -> str:
 
 def autoteste() -> int:
     """Offline: motor de mentira, verdade conhecida por construção."""
-    from monitorar_busca_web import consultas_de, relevante
+    from monitorar_busca_web import consultas_de_medicao as consultas_de, relevante
     casos = []
 
     municipios = [{"nome": "Bonito", "uf": "MS", "codigo_ibge": "5002209", "categoria": "plano"},
@@ -174,7 +179,10 @@ def main() -> int:
         return autoteste()
 
     from coletores_base import ler, hoje_editorial
-    from monitorar_busca_web import buscar_searxng, consultas_de, relevante
+    # 27/09/2026 (PR 1c item 6): a medição usa o LEQUE COMPLETO, que saiu da rodada. A rodada roda
+    # três strings em cascata; aqui rodam as nove, com 5 s entre consultas, em job próprio e
+    # instância dedicada — é isso que torna a medição possível sem queimar o limite de taxa.
+    from monitorar_busca_web import buscar_searxng, consultas_de_medicao as consultas_de, relevante
 
     n = int(sys.argv[sys.argv.index("--n") + 1]) if "--n" in sys.argv else 30
 
@@ -188,7 +196,7 @@ def main() -> int:
 
     registrados = sortear_registrados((ler("municipios.json") or {}).get("municipios", []), n)
     print(f"medindo {len(registrados)} município(s) com plano registrado × {len(consultas_de('x', 'SP'))} strings")
-    r_reg = medir(registrados, buscar_searxng, relevante, consultas_de)
+    r_reg = medir(registrados, buscar_searxng, relevante, consultas_de, pausa=time.sleep)
 
     partes = [f"# Revocação por string da camada 4 · {hoje_editorial().strftime('%d/%m/%Y')}", "",
               "Medição pedida no PR 1 item 4 do handover do juiz automático. A verdade da população",
@@ -199,7 +207,7 @@ def main() -> int:
     if amostra.exists():
         alvo = json.loads(amostra.read_text(encoding="utf-8")).get("municipios", [])
         print(f"medindo {len(alvo)} município(s) da amostra manual do item D")
-        r_am = medir(alvo, buscar_searxng, relevante, consultas_de)
+        r_am = medir(alvo, buscar_searxng, relevante, consultas_de, pausa=time.sleep)
         partes += ["", tabela(r_am, "População: amostra manual do item D (sem coluna humana ainda)"),
                    "", "A coluna humana do item D ainda não foi preenchida: os números acima dizem o que cada",
                    "string TROUXE, não o que ela deixou de achar."]

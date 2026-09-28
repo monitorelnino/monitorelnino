@@ -4,6 +4,18 @@
 use_default_settings: true
 server:
   secret_key: "efemero-so-localhost-nunca-exposto-fora-do-job-da-action"
+  # O limitador do SearXNG protege uma instância PÚBLICA de abuso. Esta é local e efêmera, e quem
+  # consulta é o próprio job: ligado, ele barraria a rodada sem que nenhum motor de origem tivesse
+  # reclamado. O limite que importa é o dos motores, e esse se respeita no cliente
+  # (`espera_do_ritmo` em monitorar_busca_web.py: intervalo mínimo, jitter e back-off).
   limiter: false
 search:
   formats: [html, json]
+outgoing:
+  # 27/09/2026 (PR 1c item 5): teto explícito por requisição. Sem ele vale o padrão da imagem, e uma
+  # requisição pendurada consome o tempo do job sem devolver nada — o que aparece do lado de cá como
+  # "motor sem resposta" sem distinguir motor lento de motor que barrou.
+  request_timeout: 6.0
+  max_request_timeout: 12.0
+  pool_connections: 20
+  pool_maxsize: 10
