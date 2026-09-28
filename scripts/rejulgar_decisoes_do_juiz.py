@@ -83,7 +83,7 @@ def autoteste() -> int:
     import tempfile
     with tempfile.TemporaryDirectory() as d:
         pasta = pathlib.Path(d)
-        (pasta / ("a" * 64 + ".txt")).write_text("x", encoding="utf-8")
+        (pasta / ("a" * 64 + ".txt")).write_text("x", encoding="utf-8")  # escrita-nao-portavel-ok: arquivo de um caractere em diretório temporário do autoteste, nunca versionado
         casos.append(("acha a evidência pelo hash", caminho_da_evidencia("a" * 64, pasta) is not None))
         casos.append(("hash sem arquivo devolve None", caminho_da_evidencia("b" * 64, pasta) is None))
         casos.append(("hash vazio devolve None", caminho_da_evidencia(None, pasta) is None))
