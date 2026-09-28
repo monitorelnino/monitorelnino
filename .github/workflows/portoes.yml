@@ -20,9 +20,9 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false, fetch-depth: 0 }
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-        with: { python-version: "3.12" }
+        with: { python-version: "3.12", cache: pip }
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with: { node-version: "22" }
+        with: { node-version: "22", cache: npm }
       - run: pip install -r requirements.txt --quiet
       - run: npm ci --silent
       - name: Detectar se a mudança envolve dado/coleta (evita rodar portões de dado em edição só de página)
@@ -51,6 +51,13 @@ jobs:
       - name: Portões — página e estrutura (sempre)
         run: |
           set -e
+          # assunto: cor texto rapido
+          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com <<<<<<< dentro, e o
+          # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
+          # barato, repositório inteiro, antes de qualquer outra coisa.
+          python3 scripts/verificar_marcadores_de_conflito.py --autoteste
+          # assunto: cor texto rapido
+          python3 scripts/verificar_marcadores_de_conflito.py
           # assunto: cor texto rapido
           python3 scripts/validar_workflows.py
           # §178 (23/09/2026): escrita em modo texto sem newline fixado corrompe todo derivado
