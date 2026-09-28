@@ -13,6 +13,18 @@ O QUE FOI MEDIDO (28/09/2026)
 extraído** (101 arquivos de texto e 6 de OCR). O texto é o que a rodada lê e o que a classificação
 usa; o binário é prova de registro, consultada por pessoa, não por script.
 
+§275 (28/09/2026) — ESTE PORTÃO ESTÁ SUSPENSO, E O MOTIVO IMPORTA
+------------------------------------------------------------------
+A regra que ele cobra foi revertida no mesmo dia em que entrou. Na primeira noite com o `.gitignore` de
+binário no ar, `monitorar_imprensa_regional.py` preservou 1.496 páginas, indexou as 1.496 e o git
+ignorou os arquivos: o índice passou a afirmar cópia preservada que não existia. O erro foi de escopo —
+liguei a publicação do lote de Release só ao `noturno_evidencias.yml`, mas **qualquer** coletor que
+chama `preservar_evidencia` produz binário.
+
+O portão continua aqui e continua rodando, mas como **informativo**: ele diz quantos binários novos
+entraram, sem reprovar. Volta a reprovar quando a publicação do lote cobrir todo caminho que preserva e
+`verificar_evidencias.py` souber aceitar "está no lote do mês" como cópia preservada.
+
 A REGRA
 -------
 O **texto continua no git** (é insumo do pipeline, e o §10.1 já diz "a cópia do binário só até 5 MB, o
@@ -100,15 +112,18 @@ def main() -> int:
     bloqueados, permitidos, desconhecidos = classificar(novos_em_evidencias(contra))
 
     if bloqueados or desconhecidos:
-        print("✗ BINÁRIO NOVO EM evidencias/: não entra no git (item 3, 28/09/2026):")
+        # §275: informativo enquanto a trava está revertida. Reprovar aqui, com o lote cobrindo só um
+        # dos caminhos que preservam, foi o que custou 1.496 páginas de prova.
+        print("! BINÁRIO NOVO EM evidencias/ (informativo, §275 — a trava está revertida):")
         for c in bloqueados:
             print(f"   - {c}")
         for c in desconhecidos:
             print(f"   - {c} (extensão não declarada — decida e registre em "
                   f"scripts/verificar_binario_novo_em_evidencias.py)")
-        print("   O texto extraído continua no git; o binário vai para o lote mensal de Release "
-              "(scripts/empacotar_evidencias.py) e o índice guarda hash, URL e onde está.")
-        return 1
+        print("   O binário está versionado de novo (§275). O lote mensal de Release continua sendo "
+              "montado por scripts/empacotar_evidencias.py, e volta a ser a única cópia quando "
+              "cobrir todo caminho que preserva.")
+        return 0
     print(f"✓ EVIDÊNCIAS OK — nenhum binário novo no git"
           + (f"; {len(permitidos)} arquivo(s) de texto acrescentado(s)." if permitidos else "."))
     return 0
