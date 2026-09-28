@@ -113,6 +113,31 @@ if _at.exists():
               "rodada na fila, e é justamente quando ela é urgente que a rodada está correndo")
         erros += 1
 
+# 28/09/2026 (§272): dois workflows agendados no MESMO minuto competem pelo runner sem necessidade, e
+# no caso do publicador com a busca web isso põe um lendo enquanto o outro commita — o cenário de "main
+# em movimento" que o laço de rebase-e-push do item 1a existe para sobreviver. Colisão não cancela nada
+# (os grupos de concorrência são separados), então ela nunca aparece como falha: aparece como rodada
+# lenta e conflito de push. Deslocar minutos custa nada; este portão impede que a colisão volte.
+# A HORA continua livre — 06h e 22h são compromisso público. O que ele cobra é o minuto.
+_agendados = {}
+for _p in sorted((_pl.Path(__file__).resolve().parent.parent / ".github" / "workflows").glob("*.yml")):
+    _d = yaml.safe_load(_p.read_text(encoding="utf-8")) or {}
+    _gat = _d[True] if True in _d else (_d.get("on") or {})
+    if not isinstance(_gat, dict):
+        continue
+    for _c in (_gat.get("schedule") or []):
+        _campos = str(_c.get("cron", "")).split()
+        if len(_campos) != 5:
+            continue
+        for _hh in str(_campos[1]).split(","):
+            if _hh.strip().isdigit():
+                _agendados.setdefault((_campos[0], _hh.strip(), _campos[4]), []).append(_p.name)
+for (_m, _h, _dia), _quais in sorted(_agendados.items()):
+    if len(_quais) > 1:
+        print(f"  ✗ dois workflows no mesmo minuto ({_h}:{_m} UTC, dia-da-semana {_dia}): "
+              f"{', '.join(_quais)} — desloque o minuto de um deles")
+        erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
       "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")

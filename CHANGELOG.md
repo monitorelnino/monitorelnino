@@ -9,6 +9,36 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §272 · Os horários da janela deixam de colidir no mesmo minuto · 28/09/2026
+
+Classe **infraestrutura da rodada**. Correção do §265, achada por auditoria dos próprios horários que
+eu acabara de instalar. **Nenhuma nota muda.**
+
+### O defeito
+
+Quatro pares de workflows caíam no **mesmo minuto**: `publicar_dados` às 22h00 e 06h00 em ponto, junto
+com a rodada da busca web (que roda às 22h, 0h, 2h, 4h e 6h); a rodada completa de domingo às 0h00,
+junto com a busca web; e o semanal de sinais e links às 4h00, também junto.
+
+Colisão no mesmo minuto **não cancela nada** — os grupos de concorrência são separados, e foi o §148
+que os separou de propósito. Por isso ela nunca apareceria como falha: apareceria como rodada lenta e
+como conflito de push, porque põe o publicador **lendo enquanto a busca commita** — exatamente o cenário
+de "main em movimento" que o laço de rebase-e-push do item 1a existe para sobreviver. Fazer o laço
+trabalhar por descuido de agenda é desperdiçar a rede de proteção.
+
+### A correção
+
+Só os **minutos** mudam: `publicar_dados` às 22h05 e 06h05, semanal às 4h30, rodada completa de domingo
+às 0h10. **As horas não mudam, e isso é deliberado:** 06h e 22h são compromisso público, declarado em
+`obrigado.html` e na METODOLOGIA, e o dia de domingo é o que o portão
+`scripts/testar_cadencia_publicacao.py` cobra contra a frase pública.
+
+### O portão
+
+`scripts/validar_workflows.py` passa a reprovar dois workflows agendados no mesmo minuto do mesmo dia.
+Ele cobra o minuto e deixa a hora livre. Conferido com uma colisão injetada: reprova nomeando os dois
+arquivos, e volta a passar quando ela sai.
+
 ## §271 · Poda: um órfão para o arquivo, e a consolidação que não se faz · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 6 do handover de desacoplamento (27/09/2026), que dependia

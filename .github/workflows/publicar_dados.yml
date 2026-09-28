@@ -17,8 +17,14 @@ name: Publicar dados
 
 on:
   schedule:
-    - cron: "0 9 * * *"    # 06h de Brasília — fecha a noite
-    - cron: "0 1 * * *"    # 22h de Brasília — abre a noite, com o que a editoria mesclou de dia
+    # 28/09/2026: os MINUTOS saíram do zero porque 22h00 e 06h00 em ponto colidem com a rodada da
+    # busca web (`busca_web_cadencia.yml`, nas horas 22, 0, 2, 4 e 6). Colisão no mesmo minuto não
+    # cancela — os grupos de concorrência são separados —, mas põe o publicador lendo enquanto a busca
+    # commita, que é o cenário de "main em movimento" que o laço de rebase-e-push do item 1a existe
+    # para sobreviver. Cinco minutos custam nada e tiram a corrida do caminho. As HORAS não mudam:
+    # 06h e 22h são compromisso público declarado em obrigado.html e na METODOLOGIA.
+    - cron: "5 9 * * *"    # 06h05 de Brasília — fecha a noite
+    - cron: "5 1 * * *"    # 22h05 de Brasília — abre a noite, com o que a editoria mesclou de dia
   workflow_dispatch:
 
 permissions:
