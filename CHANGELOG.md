@@ -143,6 +143,37 @@ vem depois analise um arquivo que nem está resolvido.
 Meta do item: instalação abaixo de 1 min por job. Ela **não está medida** — o cache só produz efeito a
 partir da segunda execução, e a comparação antes/depois entra em `notas/ESTADO_ATUAL.md` quando as
 próximas rodadas noturnas tiverem número.
+## §266 · Painel de saúde do pipeline · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 2 do handover de desacoplamento (27/09/2026).
+**Nenhuma nota muda:** o painel mede o pipeline, não pontua nada.
+
+O §265 fez cada script gravar a sua linha de saúde. Aqui essas linhas viram
+`docs/SAUDE_PIPELINE.md`, arquivo **derivado** (entra na cadeia canônica, antes do manifesto, e não
+se edita à mão): uma linha por script com a última execução, duração, itens, status e o resumo do
+erro — mais o histórico de sete dias que `data/saude_pipeline.json` guarda.
+
+### Duas classes, porque a diferença importa
+
+**Essencial** — `recalcular_mare.py` e os `gerar_*.py`: se um deles erra, o site publica um estado
+que não corresponde ao dado. O portão **reprova**.
+
+**Coletor** — todo o resto: fonte fora do ar é rotina, e uma falha isolada não é defeito do
+pipeline. Erro em **duas rodadas seguidas** vira **alerta**, porque aí não é a fonte, é o coletor. A
+sequência zera no primeiro sucesso: falhas alternadas não alertam, e isso é deliberado — alerta que
+dispara por intermitência de fonte deixa de ser lido.
+
+O painel é derivado, e derivado novo na cadeia obriga a mexer em **duas** listas: a de
+`scripts/verificar_derivados.sh` e a constante `CADEIA_DERIVADOS` de
+`julgar_e_aplicar_descobertas.py`, que o juiz usa para regenerar antes de aplicar. Eu mexi só na
+primeira, e o autoteste do orquestrador reprovou — é exatamente o invariante do §163, criado porque a
+divergência entre as duas deixou o portão 12 vermelho na `main` em 22/09/2026.
+
+Dezessete casos de autoteste, entre eles os que separam as duas classes (`regerar_algo.py` **não** é
+essencial: `gerar` tem de começar o nome), o que confere que a sequência de erros zera no sucesso, e
+o que garante que `itens` nulo apareça como travessão e nunca como zero — no painel como no dado,
+"não medido" e "zero" são coisas diferentes.
+
 ## §265 · O pipeline desacoplado, e a rodada só na janela noturna · 28/09/2026
 
 Classe **infraestrutura da rodada**. Handover
@@ -197,6 +228,7 @@ ciclo completo a cada ~7,5 dias. Entre 6h e 22h não há commit automático na `
 
 O registro é obrigatório porque cadência é compromisso público: `METODOLOGIA.md` recebeu o regime
 datado, com a ordem declarada da fila de re-varredura, e `obrigado.html` diz ao leitor a janela e as
+duas publicações diárias. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
 duas publicações diárias. A primeira versão dessa frase levou a página a 166 palavras e o portão
 `verificar_palavras.js` reprovou (teto 160) — reescrita mais curta, 151 palavras, sem perder a janela,
 os horários nem a data da decisão. A frase que o portão `testar_cadencia_publicacao.py` cobra — o domingo da
