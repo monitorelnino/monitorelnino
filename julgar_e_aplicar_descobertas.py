@@ -155,10 +155,6 @@ CADEIA_DERIVADOS = (
     # IDÊNTICA à de scripts/verificar_derivados.sh — o autoteste compara as duas, e a divergência
     # deixou o portão 12 vermelho na main em 22/09/2026.
     ("scripts/gerar_resumo_do_log.py",),
-    # §266 (28/09/2026): o painel de saúde é derivado e entra na cadeia. Esta constante tem de ser
-    # IDÊNTICA à de scripts/verificar_derivados.sh — o autoteste compara as duas, e a divergência
-    # deixou o portão 12 vermelho na main em 22/09/2026 depois que o juiz aplicou Feira de Santana/BA.
-    ("scripts/gerar_saude_pipeline.py",),
     ("scripts/gerar_manifesto.py",),
 )
 

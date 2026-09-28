@@ -71,6 +71,14 @@ jobs:
         timeout-minutes: 12
         run: python3 scripts/portoes_locais.py tudo
 
+      # §273: o painel é gerado AQUI, depois dos portões e antes do commit, porque ele resume a
+      # execução em curso — inclusive a linha de saúde que o passo de recalcular acabou de gravar.
+      # Na cadeia canônica ele reprovava o portão 12, com razão.
+      - name: Gerar o painel de saúde
+        continue-on-error: true
+        timeout-minutes: 3
+        run: python3 scripts/gerar_saude_pipeline.py
+
       - name: Commit com rebase-e-push (item 1a)
         id: commit
         env:

@@ -111,6 +111,13 @@ jobs:
         timeout-minutes: 10
         run: bash scripts/verificar_derivados.sh || true
 
+      # §273: o painel resume a execução em curso, então é gerado depois dos comandos e antes do
+      # commit — não na cadeia canônica, onde o portão 12 o cobraria por não mudar.
+      - name: Gerar o painel de saúde
+        continue-on-error: true
+        timeout-minutes: 3
+        run: python3 scripts/gerar_saude_pipeline.py
+
       - name: Commit com rebase-e-push (item 1a)
         id: commit
         env:
