@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
 """Caderno de leitura das pistas pendentes (não decide nada; só formata para julgamento humano).
 
+ARQUIVADO EM 28/09/2026 (item 6 do handover de desacoplamento). O mapa do funil mostrou que este
+script é o único arquivo do repositório que se menciona: nenhum workflow o chama, nenhum script o
+importa, e a saída dele é um `.md` não versionado na raiz. Era material de trabalho de uma sessão
+que passou — a leitura assistida das pistas hoje é `revisar_pistas.py --preparar --relatorio`
+(§153) e, desde 27/09, o juiz automático (§262).
+
+Não foi apagado: está aqui porque a rotina de julgamento §5 que ele descreve continua valendo, e o
+formato pode servir de referência se a editoria quiser um caderno de leitura de novo. Para rodar:
+`python3 arquivo/scripts/caderno_de_pistas.py`.
+
 Por padrão as pistas C10 (rebaixamento) ficam de fora — rotina de julgamento §5: nunca
 misturar com o lote do diário. Para julgá-las, rodar em separado com --origem "rebaixamento C10".
 Achados com o mesmo hash_evidencia (o mesmo documento relogado em dias diferentes pela
