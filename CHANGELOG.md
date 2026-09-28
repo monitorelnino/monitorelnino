@@ -128,6 +128,49 @@ canários).
 
 Dois portões novos (106).
 
+## §276 · Os três runs vermelhos da primeira noite · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 7 do bloco de decisões da editoria de 28/09/2026 (manhã).
+**Nenhuma nota muda.** Dois dos três defeitos são meus, dos PRs de ontem.
+
+### A — diários noturnos cancelados aos 90 minutos
+
+`coletar_diarios_consorciados.py --desde 2026-06-29` consumiu **87 dos 90 minutos** do teto e o job foi
+cancelado a segundos do fim. A data fixa era minha, e o erro é de tipo conhecido: **data fixa em YAML
+envelhece**. Escrita em 28/09, ela mandava revarrer três meses **a cada noite**, e a cada semana
+pioraria.
+
+O orquestrador antigo nunca fez isso: `atualizar.py` sempre passou uma **janela corrida de oito dias**,
+que é o que faz sentido para um coletor que roda todas as noites — a janela cobre o atraso de publicação
+do diário, não o histórico. O coletor ganhou `--desde-dias N`, contado do corte editorial para trás,
+com `--desde` explícito mantendo precedência para reprocessar período nomeado à mão. Recusa `0`,
+negativo e não-número, e o autoteste cobre os quatro casos de recusa mais a precedência.
+
+### B — auditoria semanal de segurança falhando depois de passar
+
+A auditoria rodava com sucesso e o job reprovava **depois dela**, no passo posterior do
+`setup-python`: `Cache folder path is retrieved for pip but doesn't exist on disk`. Causa: o §267 pôs
+`cache: pip` em todos os workflows com Python, e este **não instala dependência nenhuma** — roda com a
+biblioteca padrão. Sem instalação, não há cache para salvar, e o passo posterior falha.
+
+É exatamente a razão pela qual, no §267, deixei `publicar_previa` e `publicar_dominio_ensaio` fora do
+cache de **npm** — e que não apliquei ao **pip**. `auditoria_seguranca.yml` e `medir_revocacao.yml`
+perderam o `cache: pip`.
+
+### C — Publicar dados
+
+Os dois runs pararam em "Regenerar a cadeia canônica de derivados", e os dois estavam certos: a `main`
+tinha derivado genuinamente obsoleto entre o §272 e o §275 — o painel na cadeia (§273) e o relatório da
+execução no manifesto (§274). Com os dois consertos na `main`, a cadeia regenera sem diferença. A
+confirmação de um run verde de ponta a ponta fica registrada depois que o §274 entrar.
+
+### O padrão que atravessa A e B
+
+Os dois defeitos nasceram de **generalizar uma regra sem olhar quem ela atinge**: pus uma data onde
+precisava de janela, e pus cache onde não havia instalação. No mesmo dia eu já havia cometido o mesmo
+tipo de erro no §270, ao ignorar binário de evidência cobrindo um só dos caminhos que preservam. A
+correção de método é a mesma nos três: **antes de aplicar uma regra a um conjunto, listar o conjunto.**
+
 ## §275 · A regra que ignorava binário de evidência custou 1.496 páginas de prova · 28/09/2026
 
 Classe **método e coleta**. Reversão do §270, no mesmo dia em que ele entrou. **Nenhuma nota muda, e
