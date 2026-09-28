@@ -127,7 +127,11 @@ def publicado_no_site(base):
     import urllib.error
     import urllib.request
     url = base.rstrip("/") + "/data/meta.json"
-    req = urllib.request.Request(url, headers={"User-Agent": "MARE-frescor (monitorelnino.com.br)"})
+    # §228: o cliente é um só, com o propósito declarado. String literal de User-Agent aqui
+    # seria a vigésima segunda cópia a envelhecer — e o portão do cliente identificado pegou.
+    sys.path.insert(0, str(RAIZ))
+    from coletores_base import ua_de
+    req = urllib.request.Request(url, headers={"User-Agent": ua_de("vigia de frescor do site")})
     senha = os.environ.get("PREVIA_BASIC_AUTH") or ""
     if senha:
         req.add_header("Authorization", "Basic " + base64.b64encode(senha.encode()).decode())
