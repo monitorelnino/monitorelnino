@@ -9,6 +9,31 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §266 · Painel de saúde do pipeline · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 2 do handover de desacoplamento (27/09/2026).
+**Nenhuma nota muda:** o painel mede o pipeline, não pontua nada.
+
+O §265 fez cada script gravar a sua linha de saúde. Aqui essas linhas viram
+`docs/SAUDE_PIPELINE.md`, arquivo **derivado** (entra na cadeia canônica, antes do manifesto, e não
+se edita à mão): uma linha por script com a última execução, duração, itens, status e o resumo do
+erro — mais o histórico de sete dias que `data/saude_pipeline.json` guarda.
+
+### Duas classes, porque a diferença importa
+
+**Essencial** — `recalcular_mare.py` e os `gerar_*.py`: se um deles erra, o site publica um estado
+que não corresponde ao dado. O portão **reprova**.
+
+**Coletor** — todo o resto: fonte fora do ar é rotina, e uma falha isolada não é defeito do
+pipeline. Erro em **duas rodadas seguidas** vira **alerta**, porque aí não é a fonte, é o coletor. A
+sequência zera no primeiro sucesso: falhas alternadas não alertam, e isso é deliberado — alerta que
+dispara por intermitência de fonte deixa de ser lido.
+
+Dezessete casos de autoteste, entre eles os que separam as duas classes (`regerar_algo.py` **não** é
+essencial: `gerar` tem de começar o nome), o que confere que a sequência de erros zera no sucesso, e
+o que garante que `itens` nulo apareça como travessão e nunca como zero — no painel como no dado,
+"não medido" e "zero" são coisas diferentes.
+
 ## §265 · O pipeline desacoplado, e a rodada só na janela noturna · 28/09/2026
 
 Classe **infraestrutura da rodada**. Handover
