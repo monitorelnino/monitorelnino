@@ -1,12 +1,12 @@
 {
  "_governanca": "Fila de revisão humana das pistas, agrupada por município e ordenada por nível de confiança (§150). DERIVADO — regenerado a cada rodada por triar_confianca_pistas.py. Nível C está no fim, visível, nunca oculto: esta fila só ordena, nunca descarta. Registro continua exigindo documento primário lido por humano (§3.2, C10).",
  "gerado_em": "2026-09-28",
- "total_pistas": 2658,
- "total_municipios": 294,
+ "total_pistas": 2679,
+ "total_municipios": 301,
  "por_nivel": {
-  "A": 121,
-  "B": 674,
-  "C": 1863
+  "A": 127,
+  "B": 685,
+  "C": 1867
  },
  "grupos": [
   {
@@ -9202,6 +9202,145 @@
    ]
   },
   {
+   "ibge": "2700300",
+   "municipio": "Arapiraca",
+   "uf": "AL",
+   "melhor_nivel": "A",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 2,
+    "B": 3,
+    "C": 2
+   },
+   "pistas": [
+    {
+     "id": "fbc2da7491",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://web.arapiraca.al.gov.br/tipo-de-arquivo/plano-de-contingencia/",
+     "titulo": "Arquivos Plano de Contingência - Prefeitura de Arapiraca",
+     "trecho": "Rua Samaritana, 1185, Bairro Santa Edwiges – CEP 57310-245 Arapiraca-AL ...",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "560a85f834",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://staging-transparencia.integra.arapiraca.al.gov.br/documentos_gerenciais_saude",
+     "titulo": "Plano Municipal de Saúde - staging-transparencia.integra.arapiraca.al ...",
+     "trecho": "Consulta pública do Plano Municipal de Saúde. Consulte os planos, avaliações e documentos vinculados ao planejamento municipal de saúde.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f80aecae01",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.gazetadealagoas.com.br/politica/411071/arapiraca-prefeitura-monta-acoes-para-caso-de-desastres-naturais",
+     "titulo": "ARAPIRACA: PREFEITURA MONTA AÇÕES PARA CASO DE DESASTRES NATURAIS",
+     "trecho": "A prefeitura de Arapiraca está montando um Plano de Contingência para não ser surpreendida em casos de desastres naturais. Neste momento, o plano foca em áreas próximas ao epicentro dos tremores de terra que assustam a maioria dos 234.696 habitantes do município.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "b70f5cde79",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_imprensa",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://globoplay.globo.com/v/11926309/",
+     "titulo": "AL TV 2ª Edição. Defesa Civil de Arapiraca vai fazer plano de ...",
+     "trecho": "AL TV 2ª Edição. Defesa Civil de Arapiraca vai fazer plano de contingência por causa dos tremores na região",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c137b07b8b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://arapiraca.ufal.br/institucional/informes/plano-de-contingencia-funcional-ufal-campus-arapiraca",
+     "titulo": "Plano de Contingência Funcional - UFAL - campus Arapiraca",
+     "trecho": "A direção do campus Arapiraca torna público o plano de contingenciamento funcional do campus Arapiraca e unidades educacionais de Penedo e Palmeira dos Índios. Clique aqui para acessar o documento.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "89e192563b",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://web.arapiraca.al.gov.br/arquivos/plano-de-contingencia/",
+     "titulo": "Plano de Contingência para Infecção Humana pelo Coronavírus",
+     "trecho": "Plano de Contingência para Infecção Humana pelo Coronavírus Clique aqui para baixar o arquivo.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "a41f22b2cb",
+     "nivel_confianca": "C",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "risco_errado_no_titulo"
+     ],
+     "origem": "busca_web",
+     "url": "https://transparencia.arapiraca.al.gov.br/relatorio_geral/147/arquivo/157/download",
+     "titulo": "Plano de Contingência para Infecção Humana pelo Novo Coronavírus (Covid ...",
+     "trecho": "Secretaria Municipal de Saúde de Arapiraca, sentindo a necessidade de buscar estratégias para o enfrentamento do COVID-19, vem através desse plano enfatizar a responsabilidade com a assistência prestada a população, tendo em vista a alta transmissibilidade do novo Coronavírus19.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "1302603",
    "municipio": "Manaus",
    "uf": "AM",
@@ -10534,6 +10673,110 @@
      "titulo": "Diário oficial de 2026-04-22",
      "trecho": "nicipais de Assistência Social, da Crian- ça e Adolescente, de Direitos do Idoso, e de Meio Ambiente no valor total de R$ 8.638.082,95 (oito milhões, seiscentos e trinta e oito mil, oitenta e dois reais e no- venta e cinco centavos), para reforço or- çamentário conforme Anexo Único. Art. 2º O crédito de que trata o artigo anterior será compensado na forma do inciso III do § 1º do art. 43 da Lei Fede- ral n° 4.320/64, proveniente de anulação parcial. Art. 3º Em decorrência deste Decreto, fica",
      "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "melhor_nivel": "A",
+   "n_pistas": 5,
+   "niveis": {
+    "A": 3,
+    "B": 2,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "20fa85ef94",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.santamaria.rs.gov.br/arquivos/baixar-arquivo/conteudo/D24-3863.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE SANTA MARIA (RS)",
+     "trecho": "Com esse programa, buscamos benefícios tangíveis para a população de Santa Maria, como a redução de danos ao fortalecer a infraestrutura e melhorar as práticas de resposta, o programa visa reduzir significativamente os danos causados por desastres; uma resposta rápida e eficaz com a conscientização e a preparação aprimoradas, as ...",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "f750f8d480",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.santamaria.rs.gov.br/smrcrc/1626-plano-de-contingencia",
+     "titulo": "PMSM - SMRCRC - Plano de Contingência - santamaria.rs.gov.br",
+     "trecho": "O Município de Santa Maria realizou, em 20 de dezembro de 2024, a revisão de seu Plano de Contingência, com foco na resposta a desastres de origem natural e tecnológica. A atualização contempla os aprendizados adquiridos em eventos anteriores, bem como a integração dos órgãos envolvidos na gestão de riscos e resposta a emergências.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "fb5709e16a",
+     "nivel_confianca": "A",
+     "pontos_confianca": 6,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_titulo",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.santamaria.rs.gov.br/noticias/28011-prefeitura-assina-novo-plano-municipal-de-contingencia-para-nortear-acoes-em-casos-desastres",
+     "titulo": "PMSM - Prefeitura assina novo Plano Municipal de Contingência para ...",
+     "trecho": "A Prefeitura de Santa Maria, por meio da Defesa Civil do Município, assinou na manhã desta terça-feira (19), a atualização do Plano Municipal de Contingência, documento que norteará as ações tomadas pelo Poder Público e Forças Auxiliares nas ocorrências de desastres.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "c86e72057b",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_titulo"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "busca_web",
+     "url": "https://www.ufsm.br/laboratorios/lageolam/2024/05/27/plano-municipal-de-reducao-de-riscos-pmrr-santa-maria-rs",
+     "titulo": "Plano Municipal de Redução de Riscos (PMRR – Santa Maria/RS) - LAGEOLAM",
+     "trecho": "Pesquisadores do Laboratório de Geologia Ambiental iniciaram, no dia 10 de março de 2024, suas pesquisas para a elaboração do Plano Municipal de Redução de Riscos de Santa Maria/RS. Desde que o convite foi feito pelas Secretaria de Periferias do Ministério das Cidades, em julho de ...",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "60ea06e1cf",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_so_no_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.santamaria.rs.gov.br/smrcrc/1686-plano-de-rotina-operacional--pro",
+     "titulo": "PMSM - SMRCRC - Plano de Rotina Operacional - PRO",
+     "trecho": "O Plano de Rotina Operacional, PRO, é um orientador de procedimentos a serem adotados pela Prefeitura Municipal de Santa Maria, através da Secretaria Municipal de Resiliência Climática e Relações Comunitárias a qual definirá o Nível Operacional de preparação até o acionamento do Plano de Contingência do Município.",
+     "data": "28/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -12241,6 +12484,38 @@
      "titulo": "Vila Velha apresenta plano de contingência com foco no El Niño ...",
      "trecho": "Aug 19, 2026 ... ... 2026. sexta-feira, 11 de setembro de 2026 ... Vila Velha apresenta plano de contingência com foco no El Niño.",
      "data": "24/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2104008",
+   "municipio": "Esperantinópolis",
+   "uf": "MA",
+   "melhor_nivel": "A",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "b30d5823c6",
+     "nivel_confianca": "A",
+     "pontos_confianca": 7,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho",
+      "ato_formal"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://esperantinopolis.ma.gov.br/planosmunicipais.php?grupo=plano_municipal_de_educacao",
+     "titulo": "Prefeitura de Esperantinópolis - esperantinopolis.ma.gov.br",
+     "trecho": "Lista de planos municipais. PLANO MUNICIPAL DE EDUCAÇÃO RELATÓRIO DE GESTÃO MUNICIPAL RELATÓRIO ANUAL DE AÇÕES DESENVOLVIDAS EM 2025 21/05/2026 RELATÓRIO DE GESTÃO DE EDUCAÇÃO 2024 06/02/2025 RELATÓRIO ANUAL DE GESTÃO DA EDUCAÇÃO 2023 20/03/2024 RELATÓRIO DE GESTÃO SECRETARIA EDUCAÇÃO 2022 16/03/2023 RELATÓRIO DE GESTÃO SECRETARIA EDUCAÇÃO 2021 23/03/2022 PLANO MUNICIPAL ...",
+     "data": "28/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
@@ -36503,10 +36778,10 @@
    "municipio": "Monte Castelo",
    "uf": "SC",
    "melhor_nivel": "B",
-   "n_pistas": 59,
+   "n_pistas": 60,
    "niveis": {
     "A": 0,
-    "B": 32,
+    "B": 33,
     "C": 27
    },
    "pistas": [
@@ -36817,6 +37092,25 @@
      "titulo": "Diário Oficial - DOE/SC",
      "trecho": "Jun 8, 2026 ... ... Monte Castelo, no(a) área não titulada sob posse direta ... plano de ação, pro- por uma solução técnica e elaborar o termo de ...",
      "data": "27/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "74fe8369e6",
+     "nivel_confianca": "B",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_inicio_do_trecho",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "ano_anterior_ao_ciclo"
+     ],
+     "origem": "seguimento_busca_oficial",
+     "url": "https://portal.doe.sea.sc.gov.br/repositorio/2024/20240313/Jornal/22223.pdf",
+     "titulo": "Diário Oficial - DOE/SC",
+     "trecho": "Mar 13, 2024 ... - MonTE CasTElo - sC - CEp: 89.380-000. 19. Processo SES 00087784 ... plano de Contingência para Emergências Zoossanitárias - parte ...",
+     "data": "28/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
@@ -39263,6 +39557,141 @@
      "trecho": "o Municipal de Saúde acompanhará, no âmbito de \nsuas atribuições, a execução das ações previstas no Plano Municipal \nde Contingência. \nArt. 6º Esta Resolução entra em vigor na data de sua aprovação. \n  \nSapopema – Paraná, 11 de setembro de 2026 \n  \nERALDO ROQUE BRIZOLA \nPresidente do Conselh",
      "data": "2026-09-15",
      "status": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "4317202",
+   "municipio": "Santa Rosa",
+   "uf": "RS",
+   "melhor_nivel": "B",
+   "n_pistas": 7,
+   "niveis": {
+    "A": 0,
+    "B": 2,
+    "C": 5
+   },
+   "pistas": [
+    {
+     "id": "4eebce38c0",
+     "nivel_confianca": "B",
+     "pontos_confianca": 5,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://prefeitura.santarosa.rs.gov.br/?p=17126",
+     "titulo": "Prefeitura de Santa Rosa alinha estratégias e atualiza Plano de ...",
+     "trecho": "A Prefeitura de Santa Rosa realizou uma importante reunião de trabalho nesta quarta-feira (10), para fortalecer as ações de prevenção e resposta a eventos climáticos adversos. O encontro teve como objetivo principal debater as diretrizes do Plano de Contingência Municipal e aperfeiçoar a integração entre os órgãos públicos e as forças de segurança. A atividade reuniu ...",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "51c8807b98",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://santarosa.atende.net/cidadao/noticia/prefeitura-de-santa-rosa-alinha-estrategias-e-atualiza-plano-de-contingencia-com-forcas-de-seguranca",
+     "titulo": "Portal do Cidadão - MUNICIPIO DE SANTA ROSA/RS - Prefeitura de Santa ...",
+     "trecho": "Portal do Cidadão - MUNICIPIO DE SANTA ROSA/RS - Prefeitura de Santa Rosa alinha estratégias e atualiza Plano de Contingência com forças de segurança",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "7c33c584b2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 4,
+     "sinais": [
+      "fonte_oficial",
+      "municipio_na_url",
+      "plano_no_trecho"
+     ],
+     "alertas": [
+      "uf_divergente_na_url"
+     ],
+     "origem": "busca_web",
+     "url": "https://novasantarosa.pr.gov.br/nova-santa-rosa-conta-com-plano-municipal-de-contingencia-para-situacoes-de-emergencia-e-calamidade-publica/",
+     "titulo": null,
+     "trecho": "Ferramentas de Acessibilidade · O Município de Nova Santa Rosa conta agora com um Plano Municipal de Contingência para Situações de Emergência e Calamidade Pública. O documento estabelece diretrizes, procedimentos, responsabilidades e ações para orientar a atuação do município diante ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "94a1ec65f5",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.hoy.com.py/nacionales/2026/08/03/el-nino-santa-rosa-activa-plan-de-contingencia-y-preve-evacuar-a-cientos-de-familias",
+     "titulo": null,
+     "trecho": "La Municipalidad de Santa Rosa, departamento de Misiones, puso en marcha un plan para mitigar los efectos de las inundaciones en sus zonas más vulnerables. Por su condición de distrito ribereño colindante con el río Tebicuary, iniciaron ...",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "e0248ce1e5",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_inicio_do_trecho",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.abc.com.py/nacionales/2026/08/03/misiones-distrito-declara-emergencia-preventiva-por-el-nino-y-teme-aislamiento-vial/",
+     "titulo": null,
+     "trecho": "El municipio de Santa Rosa, departamento de Misiones, declaró emergencia distrital para planear acciones preventivas ante el incremento de las lluvias que causaría el fenómeno meteorológico El Niño.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "ffe7e4f1c2",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://unisarc.edu.co/el-nino-2026-2027-que-puede-significar-para-santa-rosa-de-cabal-dosquebradas-y-pereira",
+     "titulo": null,
+     "trecho": "A continuación compartimos el más reciente boletín de la Unidad de Geoprocesamiento y Modelación Agroclimática – UGEMA de UNISARC, sobre los posibles escenarios climáticos y las recomendaciones preventivas para Santa Rosa de Cabal, Dosquebradas y Pereira, frente al fenómeno de El Niño.",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    },
+    {
+     "id": "11cbfdf188",
+     "nivel_confianca": "C",
+     "pontos_confianca": 2,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_na_url",
+      "familia_de_risco_do_ciclo"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://www.santarosa.gob.ar/el-nino-la-municipalidad-de-santa-rosa-detallo-el-plan-de-acciones-que-puso-en-marcha/",
+     "titulo": null,
+     "trecho": "La Municipalidad de Santa Rosa ... del evento climático “El Niño”. Ya se concretó la limpieza del 35% de los canales y el 30% de las bocas de tormenta, mientras que se realizó un mantenimiento general de los principales cuencos....",
+     "data": "22/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
   },
@@ -44113,6 +44542,99 @@
    ]
   },
   {
+   "ibge": "2100832",
+   "municipio": "Apicum-Açu",
+   "uf": "MA",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "a9ba25426a",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://infosanbas.org.br/municipio/apicum-acu-ma/",
+     "titulo": "Apicum-Açu - MA - Infosanbas",
+     "trecho": "Seu território é composto 100% pelo bioma Amazonia. O IDHM de Apicum-Açu é 0,57. O município possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2108454",
+   "municipio": "Peritoró",
+   "uf": "MA",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "11aa114104",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://infosanbas.org.br/municipio/peritoro-ma/",
+     "titulo": "Peritoró - MA - Infosanbas",
+     "trecho": "Seu território é composto 100% pelo bioma Cerrado. O IDHM de Peritoró é 0,56. O município não possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
+   "ibge": "2109270",
+   "municipio": "Presidente Sarney",
+   "uf": "MA",
+   "melhor_nivel": "B",
+   "n_pistas": 1,
+   "niveis": {
+    "A": 0,
+    "B": 1,
+    "C": 0
+   },
+   "pistas": [
+    {
+     "id": "f809a9822f",
+     "nivel_confianca": "B",
+     "pontos_confianca": 3,
+     "sinais": [
+      "fonte_desconhecida",
+      "municipio_no_titulo",
+      "plano_no_trecho"
+     ],
+     "alertas": [],
+     "origem": "busca_web",
+     "url": "https://infosanbas.org.br/municipio/presidente-sarney-ma/",
+     "titulo": "Presidente Sarney - MA - Infosanbas",
+     "trecho": "Seu território é composto 100% pelo bioma Amazonia. O IDHM de Presidente Sarney é 0,56. O município não possui Política Municipal de Saneamento Básico e possui Plano Municipal de Saneamento Básico.",
+     "data": "28/09/2026",
+     "status": "pista — promover a registro exige documento primário lido por humano"
+    }
+   ]
+  },
+  {
    "ibge": "3105400",
    "municipio": "Barão de Cocais",
    "uf": "MG",
@@ -46267,102 +46789,49 @@
    ]
   },
   {
-   "ibge": "4317202",
-   "municipio": "Santa Rosa",
-   "uf": "RS",
+   "ibge": "2702900",
+   "municipio": "Girau do Ponciano",
+   "uf": "AL",
    "melhor_nivel": "C",
-   "n_pistas": 5,
+   "n_pistas": 2,
    "niveis": {
     "A": 0,
     "B": 0,
-    "C": 5
+    "C": 2
    },
    "pistas": [
     {
-     "id": "7c33c584b2",
-     "nivel_confianca": "C",
-     "pontos_confianca": 4,
-     "sinais": [
-      "fonte_oficial",
-      "municipio_na_url",
-      "plano_no_trecho"
-     ],
-     "alertas": [
-      "uf_divergente_na_url"
-     ],
-     "origem": "busca_web",
-     "url": "https://novasantarosa.pr.gov.br/nova-santa-rosa-conta-com-plano-municipal-de-contingencia-para-situacoes-de-emergencia-e-calamidade-publica/",
-     "titulo": null,
-     "trecho": "Ferramentas de Acessibilidade · O Município de Nova Santa Rosa conta agora com um Plano Municipal de Contingência para Situações de Emergência e Calamidade Pública. O documento estabelece diretrizes, procedimentos, responsabilidades e ações para orientar a atuação do município diante ...",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "94a1ec65f5",
+     "id": "50407bdc23",
      "nivel_confianca": "C",
      "pontos_confianca": 2,
      "sinais": [
       "fonte_desconhecida",
-      "municipio_na_url",
-      "familia_de_risco_do_ciclo"
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://www.hoy.com.py/nacionales/2026/08/03/el-nino-santa-rosa-activa-plan-de-contingencia-y-preve-evacuar-a-cientos-de-familias",
-     "titulo": null,
-     "trecho": "La Municipalidad de Santa Rosa, departamento de Misiones, puso en marcha un plan para mitigar los efectos de las inundaciones en sus zonas más vulnerables. Por su condición de distrito ribereño colindante con el río Tebicuary, iniciaron ...",
-     "data": "22/09/2026",
+     "url": "https://ud10.arapiraca.ufal.br/repositorio/publicacoes/6127",
+     "titulo": "Diagnóstico estratégico e proposta de plano de ação em uma microempresa ...",
+     "trecho": "O presente trabalho teve o objetivo de analisar o perfil do gestor, realizar a análise SWOT em conjunto com a matriz GUT, fazer o diagnóstico estratégico e propor medidas corretivas por meio do plano 5W2H em uma microempresa do setor de comércio varejista de carnes denominada Açougue Central, localizado na cidade de Girau do Ponciano AL. A pesquisa se justifica pela importância das ...",
+     "data": "28/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     },
     {
-     "id": "e0248ce1e5",
+     "id": "614f093860",
      "nivel_confianca": "C",
      "pontos_confianca": 2,
      "sinais": [
       "fonte_desconhecida",
-      "municipio_no_inicio_do_trecho",
-      "familia_de_risco_do_ciclo"
+      "municipio_so_no_trecho",
+      "plano_no_titulo"
      ],
      "alertas": [],
      "origem": "busca_web",
-     "url": "https://www.abc.com.py/nacionales/2026/08/03/misiones-distrito-declara-emergencia-preventiva-por-el-nino-y-teme-aislamiento-vial/",
-     "titulo": null,
-     "trecho": "El municipio de Santa Rosa, departamento de Misiones, declaró emergencia distrital para planear acciones preventivas ante el incremento de las lluvias que causaría el fenómeno meteorológico El Niño.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "ffe7e4f1c2",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_na_url",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://unisarc.edu.co/el-nino-2026-2027-que-puede-significar-para-santa-rosa-de-cabal-dosquebradas-y-pereira",
-     "titulo": null,
-     "trecho": "A continuación compartimos el más reciente boletín de la Unidad de Geoprocesamiento y Modelación Agroclimática – UGEMA de UNISARC, sobre los posibles escenarios climáticos y las recomendaciones preventivas para Santa Rosa de Cabal, Dosquebradas y Pereira, frente al fenómeno de El Niño.",
-     "data": "22/09/2026",
-     "status": "pista — promover a registro exige documento primário lido por humano"
-    },
-    {
-     "id": "11cbfdf188",
-     "nivel_confianca": "C",
-     "pontos_confianca": 2,
-     "sinais": [
-      "fonte_desconhecida",
-      "municipio_na_url",
-      "familia_de_risco_do_ciclo"
-     ],
-     "alertas": [],
-     "origem": "busca_web",
-     "url": "https://www.santarosa.gob.ar/el-nino-la-municipalidad-de-santa-rosa-detallo-el-plan-de-acciones-que-puso-en-marcha/",
-     "titulo": null,
-     "trecho": "La Municipalidad de Santa Rosa ... del evento climático “El Niño”. Ya se concretó la limpieza del 35% de los canales y el 30% de las bocas de tormenta, mientras que se realizó un mantenimiento general de los principales cuencos....",
-     "data": "22/09/2026",
+     "url": "https://www.nescon.medicina.ufmg.br/biblioteca/registro/Plano_de_acao_para_reducao_da_incidencia_de_gravidez_nas_adolescentes_da_comunidade_Sete_Casas_do_municipio_de_Girau_do_Ponciano___AL/338",
+     "titulo": "Plano de ação para redução da incidência de gravidez nas adolescentes ...",
+     "trecho": "Sendo assim, este estudo teve como objetivo elaborar um plano de ação para reduzir a incidência de gravidez nas adolescentes da comunidade Sete Casas do município de Girau do Ponciano. A metodologia foi executada em três etapas: realização do diagnóstico situacional; revisão de literatura e desenvolvimento de um plano de ação.",
+     "data": "28/09/2026",
      "status": "pista — promover a registro exige documento primário lido por humano"
     }
    ]
