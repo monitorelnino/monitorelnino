@@ -4,7 +4,12 @@
 # 27/09/2026 (noite).
 #
 # ELE NUNCA COLETA. Lê os arquivos que os coletores noturnos deixaram, recalcula, regenera os
-# derivados, roda os portões e repõe o domínio. Meta declarada: menos de 10 min.
+# derivados, roda os portões e repõe o domínio.
+#
+# 28/09/2026: a meta declarada era 'menos de 10 min', e ela foi medida sobre um publicador
+# que morria no portão 12 antes de rodar a suíte inteira. Com os portões de navegador
+# incluídos, a rodada honesta passa disso. A meta agora é **publicar conferido**; o teto do
+# job (25 min) é o limite, não a meta.
 #
 # É o único workflow com `cancel-in-progress: true`: publicar duas vezes o mesmo estado não tem
 # valor, e a publicação mais nova sempre substitui a mais velha. Os coletores fazem o oposto — fila,
@@ -129,8 +134,19 @@ jobs:
           echo "houve=1" >> "$GITHUB_OUTPUT"
           git checkout -- . 2>/dev/null || true
 
+      # 28/09/2026: a suíte inclui portões de página que rodam em Chromium real (móvel 390 px e
+      # consistência visual). O publicador nunca tinha chegado neles — morria antes, no portão 12 —,
+      # e quando chegou, reprovou por navegador ausente. Instalar aqui é o que mantém a regra
+      # inteira: nada sobe com portão vermelho, e "não consegui rodar o portão" não é verde.
+      - name: Navegador para os portões de página
+        timeout-minutes: 6
+        run: npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+
+      # O teto subiu de 12 para 20 min por causa dos portões de navegador. A meta de "menos de 10
+      # min" era do publicador que não rodava a suíte inteira; publicar rápido nunca valeu mais do
+      # que publicar conferido.
       - name: Portões
-        timeout-minutes: 12
+        timeout-minutes: 20
         run: python3 scripts/portoes_locais.py tudo
 
       - name: Empurrar com rebase (item 1a)

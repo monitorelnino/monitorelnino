@@ -9,6 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §284 · O publicador não tinha navegador para os portões de página · 28/09/2026
+
+Classe **infraestrutura da rodada**. Terceira camada do item 1 do bloco "Frescor do site".
+**Nenhuma nota muda.**
+
+O §282 fez o publicador chegar à suíte de portões; o conserto do log do aplicador fez a suíte chegar
+ao fim. Aí apareceu a camada seguinte: a suíte inclui dois portões que rodam em **Chromium real**
+(móvel a 390 px e consistência visual), e o publicador nunca os instalava — `portoes.yml` instala o
+navegador antes deles, `publicar_dados.yml` não. Ele nunca tinha chegado tão longe para notar.
+
+O passo de instalação entrou. A alternativa seria rodar só o perfil `dados`, e ela foi recusada:
+escolher subconjunto de portões a olho já custou um ciclo de CI em 23/09, e **"não consegui rodar o
+portão" não é verde**.
+
+O teto do passo subiu de 12 para 20 min, e a meta declarada de "menos de 10 min" saiu do cabeçalho.
+Ela foi medida sobre um publicador que morria no portão 12 antes de rodar a suíte inteira — era meta
+de uma rodada que não acontecia. **Publicar rápido nunca valeu mais do que publicar conferido.**
+
 ## §283 · Toda coleta que muda dado termina em publicação, e o atraso passa a aparecer · 28/09/2026
 
 Classe **infraestrutura da rodada** e **mostrador**. Itens 2, 3 e 4 do bloco "Frescor do site"
