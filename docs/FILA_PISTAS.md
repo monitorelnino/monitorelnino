@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 28/09/2026 · 1169 pendente(s) · 1510 decidida(s) · A=125 B=659 C=385
+Gerado em 28/09/2026 · 1176 pendente(s) · 1503 decidida(s) · A=125 B=660 C=391
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -1154,75 +1154,90 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Ipuaçu celebra 34 anos com grande festa -
   - url: https://ipuacu.sc.gov.br/ipuacu-celebra-34-anos-com-grande-festa/
   - trecho: Ipuaçu celebra 34 anos com grande festa. 7 de abril de 2026 7 de abril de 2026 ... Plano de Contingência de Proteção e Defesa Civil – PLANCON · 18 de ...
-- `d9a3aad0f1` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `d9a3aad0f1` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL ...
   - url: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
   - trecho: Xanxerê fica a uma distância de 514,3 km (via BR-282) da Capital, Florianópolis e limita-se ao norte com Ipuaçu e Bom Jesus, a oeste com Xaxim e Lajeado Grande,.
   - ⚠ ano_anterior_ao_ciclo
-- `5d0ec7f96f` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `5d0ec7f96f` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Defesa Civil apura ocorrência de tornado após tempestade em ...
   - url: https://thmais.com.br/giro-de-noticias/defesa-civil-apura-ocorrencia-de-tornado-apos-tempestade-em-santa-catarina/
   - trecho: Aug 31, 2026 ... ... Ipuaçu, Entre Rios, Biguaçu e Florianópolis decretaram situação de ... plano de contingência. No sábado, uma mulher de 39 anos morreu ...
-- `ac3b4c3bc9` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `ac3b4c3bc9` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Combo de ocorrências climáticas foi a causa de tempestades ...
   - url: https://www.nsctotal.com.br/tempo/combo-de-ocorrencias-climaticas-foi-a-causa-de-tempestades-severas-que-causaram-estragos-em-dezenas-de-cidades-de-sc
   - trecho: Aug 31, 2026 ... Ipuaçu; Biguaçu; Florianópolis; Entre Rios; São José do Cedro. Em ... Plano de contingência do El Niño. Durante o final de semana, o plano ...
-- `a036ef1933` · nível **B** (4 pts) · busca_web · — · data 10/07/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `a036ef1933` · nível **B** (4 pts) · busca_web · DUVIDA · data 10/07/2026 (do trecho)
   - título: Sexta-feira - 10 de Julho de 2026 Florianópolis/SC Edição N° 5187
   - url: https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf
   - trecho: Jul 22, 2026 ... ... Ipuaçu ....................................................... 403 ... Plano de Contingência da Assistência Social do Município de.
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `f9baba7449` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
   - título: Defesa Civil realizará audiência pública para debater Plano...
   - url: https://www.redeprincesa.com.br/noticias/9946-defesa-civil-realizara-audiencia-publica-para-debater-plano-de-contingencia
   - trecho: Jul 28, 2025 ... Ipuaçu · Ipumirim · Ouro Verde · Polícia · Polícia · Polícia · Polícia ... Plano de Contingência para eventos extremos, às 9 horas, na Câmara ...
-- `f50b225bef` · nível **B** (4 pts) · busca_web · — · data 2012 (do trecho)
+- `f50b225bef` · nível **B** (4 pts) · busca_web · DUVIDA · data 2012 (do trecho)
   - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
   - url: https://www.gov.br/mme/pt-br/arquivos/do-12-07-2012-s1.pdf
   - trecho: Jul 12, 2012 ... ... Ipuaçu. 6.798. 11 6 SC Ipumirim. 7.220. 11 7 SC Iraceminha. 4.253. 11 8 SC ... plano de ação dos órgãos e entidades integrantes da.
   - ⚠ ano_anterior_ao_ciclo
-- `be507b5ad0` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `be507b5ad0` · nível **B** (4 pts) · busca_web · EX_ANTE · **Lei nº 5.662**, 24/08/2001
   - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
   - url: https://www.gov.br/mme/pt-br/arquivos/do-30-08-2013-s1.pdf
   - trecho: Aug 30, 2013 ... ... IPUAÇU"), Advª Drª Ana Theresa Bit- tencourt Barbosa Cruz Soares ... Plano de Ação Regional do Estado de Minas. Gerais, resolve: Art. 1º ...
   - ⚠ ano_anterior_ao_ciclo
-- `28f5cf1a8c` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `28f5cf1a8c` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño é confirmado e Defesa Civil amplia prevenção em SC
   - url: https://www.tudosobrexanxere.com.br/noticias/17804/el-nino-e-confirmado-e-defesa-civil-amplia-prevencao-em-sc.html
   - trecho: Jun 19, 2026 ... Também apresenta informações sobre o Plano de Contingência (Plancon) e o Plano Emergencial Familiar. ... Bom Jesus e Ipuaçu recebem ajuda após ...
-- `63ad7feb07` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `63ad7feb07` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Atenção! As fortes chuvas desta segunda-feira, dia 21 ... - Instagram
   - url: https://www.instagram.com/p/DdjZEwKjtjH/
   - trecho: 6 days ago ... ⛈️ IPUAÇU MOBILIZA EQUIPES APÓS FORTE TEMPORAL E CERCA DE 200 CASAS SÃO ATINGIDAS PELO GRANIZO ... Plano de Contingência, além dos ...
-- `9b559956ed` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `9b559956ed` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Nas próximas horas: Defesa Civil aponta regiões que mais ...
   - url: https://www.nsctotal.com.br/tempo/nas-proximas-horas-defesa-civil-aponta-regioes-que-mais-preocupam-para-chances-de-granizo-e-chuva-forte-em-sc
   - trecho: Aug 31, 2026 ... ... SC. Alerta vermelho também foi emitido pelo ... Ipuaçu; Florianópolis; Biguaçu; Entre Rios; São José do Cedro. Plano de contingência do El Niño.
-- `83978fd3e3` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `83978fd3e3` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Defesa Civil: 199 Bombeiros: 193 🌩️ “A natureza é bela, mas ao ...
   - url: https://www.instagram.com/reel/DWo0wqDj643/
   - trecho: Apr 2, 2026 ... No Oeste, Ipuaçu registrou 210 residências afetadas, enquanto Bom Jesus contabilizou 81 imóveis danificados. ... plano de contingência municipal.
-- `8a1d5e0207` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `8a1d5e0207` · nível **B** (3 pts) · busca_web · RESPOSTA · **Resolução 1.064**, 02/05/2023
   - título: PCH LUDESA PLANO DE AÇÃO DE EMERGÊNCIA - PAE Rio ...
   - url: https://www.grupocpfl.com.br/sites/default/files/PAE-HMP-PCH-LUD-HOBG-001-R2_site.pdf
   - trecho: Sep 11, 2025 ... realizar regularmente exercícios simulados, conforme Plano de Contingência de ... Ipuaçu: PONTO DE ENCONTRO. COORDENADAS UTM SIRGAS 2000 ...
-- `36bdc9eb72` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `36bdc9eb72` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
   - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
   - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Ipuaçu; Palma Sola; Salete; Major Vieira; Treze de Maio; Timbó Grande; Trombudo ...
-- `bdf1aefcf0` · nível **B** (3 pts) · busca_web · — · data 30/05/2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `bdf1aefcf0` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei n° 6.745**, 2025
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250602/Jornal/22524.pdf
   - trecho: Jun 2, 2025 ... em consonância com o Plano de Contingência da Concessionária. § 14 ... Ipuaçu/SC, 30 de maio de 2025. Nelson Brisola. Prefeito. Cod. Mat ...
   - ⚠ ano_anterior_ao_ciclo
-- `ece0294af7` · nível **B** (3 pts) · busca_web · — · data 06/07/2022 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ece0294af7` · nível **B** (3 pts) · busca_web · EX_ANTE · **Lei nº 6.745**, 2022
   - título: FLORIANÓPOLIS, QUARTA-FEIRA, 06 DE JULHO DE 2022 ANO ...
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2022/20220706/Jornal/2935.pdf
   - trecho: Jul 6, 2022 ... Plano de Ação de Liquidação da COHAB/SC - O Liquidante da. COHAB/SC ... Ipuaçu - SC, em 01 de julho de 2022. CLORI PEROZA - Prefeita ...
   - ⚠ ano_anterior_ao_ciclo
-- `f4cb0ee0e7` · nível **B** (3 pts) · busca_web · — · data 1997 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `f4cb0ee0e7` · nível **B** (3 pts) · busca_web · EX_ANTE · **LEINº 10.501**, 1997
   - título: OFICIA - Arquivo Público do Estado de Santa Catarina
   - url: https://acervo.arquivopublico.sc.gov.br/uploads/r/arquivo-publico-do-estado-de-santa-catarina-apesc/8/8/d/88de21c8ad2c19e60d351a7707d26b61643d39a78fbc8c80f7518f4423501ae1/93120dc8-1d60-4afb-b27d-274c03fa41cc-18687-DOE_15756_09_09_1997_36F.pdf
   - trecho: Sep 9, 1997 ... leitura do Plano de Ação do Governo para a região por representante ... - Ipuaçu. - Iraceminha. - Irati. - Itá. - Itapiranga. - Jardinópolis.
+  - juiz: portão automático: data do ato incompleta (1997)
 - `5ebbcf2a83` · nível **C** (2 pts) · busca_web · — · data 2026 (do trecho)
   - título: Após temporais atingirem 62 cidades, MPSC cria estrutura para ...
   - url: https://www.instagram.com/p/DdWU8QSHPK4/
@@ -1783,20 +1798,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: controle PÚBlIco d - TCE/SC
   - url: https://www.tcesc.tc.br/sites/default/files/controle_publico_n09.pdf
   - trecho: w Palma Sola w Palmitos w Paraíso w Peritiba w Pinhalzinho w Piratuba w ... SC aprova o Plano de Ação apresentado pela. Casan. 16/8/2010 w Pleno profere ...
-- `51d7d22601` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `51d7d22601` · nível **B** (4 pts) · busca_web · DUVIDA · **Portaria nº 751**, 29/08/2018
   - título: CNCFlora • Myrceugenia myrcioides (Cambess.) O.Berg
   - url: https://proflora.jbrj.gov.br/html/Myrceugenia%20myrcioides_2022.html
   - trecho: ... Palma Sola, Papanduva, Paulo Lopes, Petrolândia, Ponte Alta, Porto União ... Plano de Ação Nacional para a conservação da flora endêmica ameaçada de ...
-- `d652557b31` · nível **B** (4 pts) · busca_web · — · data 27/09/2021 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `d652557b31` · nível **B** (4 pts) · busca_web · EX_ANTE · **decreto nº 336**, 2019
   - título: FLORIANÓPOLIS, SeguNdA-FeIRA, 27 de SeteMbRO de 2021 ANO ...
   - url: https://www.sea.sc.gov.br/wp-content/uploads/2022/10/Jornal_2021_09_27_21614.pdf
   - trecho: município de Palma Sola - Sed. MARCELO PANOSSO MENDONÇA. Presidente do IPREV ... Aprovação do novo plano de ação;. 3. Aprovação do procedimento de ...
   - ⚠ ano_anterior_ao_ciclo
-- `4562800f37` · nível **B** (4 pts) · busca_web · — · data 12/03/2024 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `4562800f37` · nível **B** (4 pts) · busca_web · DUVIDA · data 12/03/2024 (do trecho)
   - título: Terça-feira - 12 de Março de 2024 Florianópolis/SC Edição N° 4481
   - url: https://edicao.dom.sc.gov.br/2024/03/1710256950_edicao_4481_assinada.pdf
   - trecho: Mar 11, 2024 ... Palma Sola ..................................................945 ... Considerando o Plano de Ação do CMDCA e o Plano de Aplicação do ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `4154da118f` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: Cidades de SC ativam plano de contingência, decretam situação de ...
   - url: https://g1.globo.com/sc/santa-catarina/noticia/2024/12/08/sc-plano-contingencia-situacao-emergencia-chuvas-estragos.ghtml
@@ -2186,156 +2204,185 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Formação de Alunos no Programa Defesa Civil na Escola
   - url: https://marema.sc.gov.br/formacao-de-alunos-no-programa-defesa-civil-na-escola/
   - trecho: Nov 19, 2025 ... ... Salete Chitolina, e dos professores responsáveis pela organização ... Plano de Contingência de Proteção e Defesa Civil · Plano Municipal ...
-- `2b4ceec828` · nível **A** (6 pts) · busca_web · — · citação não extraída
+- `2b4ceec828` · nível **A** (6 pts) · busca_web · DUVIDA · citação não extraída
   - título: PLANO MUNICIPAL DE CONTINGÊNCIA
   - url: https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf
   - trecho: • Salões Paroquiais das comunidades de: Nossa Senhora da Salete; São ... devem estar contidas no Plano de Contingência no órgão de Defesa Civil responsável.
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `3cdd586d67` · nível **A** (6 pts) · busca_web · — · data 2026 (do trecho)
   - título: Marema Fortalece Defesa Civil com Recebimento de Caminhão
   - url: https://marema.sc.gov.br/marema-fortalece-defesa-civil-com-recebimento-de-caminhao-pipa-e-veiculo-4x4/
   - trecho: Mar 5, 2026 ... Plano de Contingência de Proteção e Defesa Civil ... Segundo a coordenadora da Defesa Civil de Marema, Salete Chitolina, trata-se de uma ...
-- `d20bd28ea0` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `d20bd28ea0` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO DE CONTINGÊNCIA - Defesa Civil Taió-SC
   - url: https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf
   - trecho: Plano de Contingência de Taió-SC, elaborado com base na metodologia DEL ... de Rio do Campo Salete e Mirim Doce apresenta uma leitura inferior ou igual a. 7 ...
-- `9a5a93a8e7` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: data do ato incompleta (2026)
+- `9a5a93a8e7` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO
   - url: https://schroeder.sc.gov.br/uploads/sites/353/2021/12/1277144_PMSB___Schroeder.pdf
   - trecho: Franciele Salete Mella. Assessora de Saneamento e Gestão Ambiental ... 13 PLANO DE CONTINGÊNCIA E EMERGÊNCIA PARA OS SERVIÇOS DO SANEAMENTO. BÁSICO ...
   - ⚠ ano_anterior_ao_ciclo
-- `ee7f324041` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ee7f324041` · nível **B** (5 pts) · busca_web · EX_ANTE · **Lei Municipal n.º 1**, 08/02/1958
   - título: plano municipal de saúde 2026-2029 - Prefeitura de Lindóia do Sul
   - url: https://lindoiadosul.sc.gov.br/uploads/sites/20/2025/12/PLANO-MUNICIPAL-DE-SAUDE-2026-2029.pdf
   - trecho: d_ Maria Salete Fracasso – Clube dos Idosos; e_ Paulo ... Ações Atualização anual ou sempre que se fizer necessário do Plano de Contingência para a dengue;.
-- `d09f4bf3b2` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: ato de 1958 — pode ser edição anterior; decisão humana
+- `d09f4bf3b2` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL ...
   - url: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
   - trecho: PLANO DE CONTINGÊNCIA DE PROTEÇÃO E. DEFESA CIVIL. Eventos Extremos ... No interior, Linha Cambuinzal, Linha Salete, Linha. Pesqueiro do Meio e Linha ...
   - ⚠ ano_anterior_ao_ciclo
-- `fb83ea3ef6` · nível **B** (5 pts) · busca_web · — · data 2023 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `fb83ea3ef6` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2023 (do trecho)
   - título: estado de santa catarina preeitura municipal de monte carlo ...
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/398-regional-de-saude-de-joacaba.html?download=1207%3Appr-esp-monte-carlo&Itemid=109
   - trecho: Oct 3, 2023 ... Sonia Salete Vedovatto. Vice prefeito(a). Osmar Marques da Silva ... Plano de Contingência de Vigilância em Saúde frente à inundações/SVS ...
-- `5333d33639` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `5333d33639` · nível **B** (5 pts) · busca_web · RESPOSTA · **Lei n. 12.608**, 2012
   - título: COMPILADO DE ENUNCIADOS APROVADOS - MPSC
   - url: https://www.mpsc.mp.br/documents/d/guest/compilacao-de-enunciados-aprovados-gedclima-mpsc
   - trecho: SC Salete. 7.489. 208. Deslizamento. Enxurrada Inundação. SC Sangão. 12.882. 82 ... Além disso, o Plano de Contingência da Assistência Social deve ser.
+  - juiz: portão automático: fonte não oficial
 - `e5fad3f6b8` · nível **B** (5 pts) · busca_web · — · data 2023 (do trecho)
   - título: A situação dos direitos humanos de crianças e adolescentes em ...
   - url: https://www.portouniao.sc.gov.br/realizada-nesta-quinta-feira-01-12-nas-dependencias-do-gremio-ribeiro-pires-a-viii-conferencia-municipal-dos-direitos-da-crianca-e-adolescente-com-o-tema-a-situacao-dos-direitos-humanos-de-criancas/
   - trecho: Jan 31, 2023 ... A presidente do CMDCA, Salete Venancio e a Secretária de Assistência ... ← PLANO DE CONTINGÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL ...
-- `bcdd629980` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `bcdd629980` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: PLANO DE CONTINGÊNCIA: - Portal Gov.br
   - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/008_boaspraticas_plancon_plano_contingencia_enfrentamento_riscos_desastres_natal_rn.pdf
   - trecho: De um modo geral, o período chuvoso inicia-se já no mês de março, ficando ... Maria da Salete Alves. Durante o desastre. Page 78. PREFEITURA MUNICIPAL DO ...
-- `d31bceeb04` · nível **B** (5 pts) · busca_web · — · data 2015 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `d31bceeb04` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2015 (do trecho)
   - título: PLANO MUNICIPAL DA EDUCAÇÃO
   - url: https://www.bomjesusdooeste.sc.gov.br/uploads/sites/278/2023/07/Plano-Municipal-de-Educacao-Bom-Jesus-do-Oeste.pdf
   - trecho: SALETE FUZINATTO ZIMMERMANN. Representante da Associação de pais e ... Plano Estadual de Santa Catarina 2015/2015- Versão Preliminar. Florianópolis ...
   - ⚠ ano_anterior_ao_ciclo
-- `cb319c3dda` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `cb319c3dda` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: requerimento nº 0023/2026 - Câmara Municipal de Biguaçu/SC
   - url: https://www.cmb.sc.gov.br/proposicoes/Requerimentos/0/1/0/36789
   - trecho: May 4, 2026 ... Salete Orlandina Cardoso, Salmir da ... - Existe plano de contingência específico para eventos climáticos extremos associados ao fenômeno?
-- `9e1b7dcbb2` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `9e1b7dcbb2` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Educação Infantil - Criciúma - Afasc
   - url: https://www.afasc.com.br/noticias?setor=educacao-infantil
   - trecho: ... Salete, CEP: 88815-500, (48) 98843-4873. 11, CEI AFASC HG, R: Felipe Serafim ... Afasc inicia plano de contingência em parceria com a Defesa Civil de Criciúma.
-- `b8d420647f` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `b8d420647f` · nível **B** (4 pts) · busca_web · DUVIDA · **Lei n° 6.745**, 30/06/2025
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250602/Jornal/22524.pdf
   - trecho: Jun 2, 2025 ... pela SAS e Salete Luiza Marchesini, pela OSC. SCC 304/2025. Cod. Mat ... em consonância com o Plano de Contingência da Concessionária.
   - ⚠ ano_anterior_ao_ciclo
-- `ac375f4d1d` · nível **B** (4 pts) · busca_web · — · data 10/07/2026 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ac375f4d1d` · nível **B** (4 pts) · busca_web · DUVIDA · data 10/07/2026 (do trecho)
   - título: Sexta-feira - 10 de Julho de 2026 Florianópolis/SC Edição N° 5187
   - url: https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf
   - trecho: Jul 22, 2026 ... ... Salete ........................................................ 938 ... Plano de Contingência da Assistência Social do Município de.
-- `4a26e91d6c` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `4a26e91d6c` · nível **B** (4 pts) · busca_web · EX_ANTE · **DECRETO Nº 749**, 05/11/2024
   - título: CONSELHO MUNICIPAL DE DEFESA DO MEIO AMBIENTE
   - url: https://s3cache.dom.sc.gov.br/atos/2024/11/1730817243_74970511__homologa_o_plano_municipal_de_gua_e_esgoto_de_timb_com_anexos.pdf
   - trecho: Nov 5, 2024 ... ... Salete, Santa Cecília, Santa Terezinha, São João do Itaperiú, Taió ... plano de contingência e emergência para a unidade que permita ...
   - ⚠ ano_anterior_ao_ciclo
-- `c30932e557` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `c30932e557` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de Contingência – PLANCON - Portal Gov.br
   - url: https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/PlanodeContingnciaparaEnfrentamentodeRiscoseDesastres.pdf
   - trecho: ( x ) Sim ( ) Não. O Plano de Contingência da Cidade de Natal – PLANCON ... Pitimbu. CMEI Prof. Maria Salete Alves Bila. Rua Abreulândia , s/n, Planalto ...
+  - juiz: portão automático: ato de 2019 — pode ser edição anterior; decisão humana
 - `a624e36cd6` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
   - título: plano de - contingência - Defesa Civil de Blumenau
   - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2024.pdf
   - trecho: Aug 6, 2024 ... Plano de Contingência – Inundações e Movimentos de Massa - Anexo ... Dalvina Salete R. Almeida. Setor de Higiene e Limpeza. Izete Beppler ...
-- `cb91d1b257` · nível **B** (4 pts) · busca_web · — · data 2020 (do trecho)
+- `cb91d1b257` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2020 (do trecho)
   - título: PLANCON EDU - MunicÍpio de IRANI
   - url: https://irani.sc.gov.br/uploads/sites/427/2021/12/1999583_Plano_Contingencia___Escola_Sebastiao.pdf
   - trecho: Outubro de 2020. Page 2. 2. Este Plano de Contingência foi construído com base no Modelo do Plano de Contingência elaborado e ... Salete do Amaral. Elizangela ...
   - ⚠ ano_anterior_ao_ciclo
-- `efacbe3f35` · nível **B** (4 pts) · busca_web · — · data 2020 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `efacbe3f35` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2020 (do trecho)
   - título: PLANCON EDU
   - url: https://chapeco.sc.gov.br/download/1003/DocumentoArquivo
   - trecho: Chapecó. Outubro de 2020. Page 2. 2. Este Plano de Contingência foi construído com base no Modelo do Plano de Contingência elaborado e ... ROSANGELA SALETE MULLER ...
-- `6017a83b82` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `6017a83b82` · nível **B** (4 pts) · busca_web · DUVIDA · data 2025 (do trecho)
   - título: lei ordinária nº 3060/2025 - Câmara Municipal de Cunha Porã/SC
   - url: https://www.camaracunhapora.sc.gov.br/proposicoes/Leis-Ordinarias/2025/1/0/8688
   - trecho: Izonha Salete Gollmann, Jacy Arcangelo Foresti, Jairo José de Marco, José ... plano de contingência (PLANCON); XVI - Manter a população informada sobre ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `1c0b05cf9b` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: plano municipal de - PREFEITURA DE IRATI/SC -
   - url: https://www.irati.sc.gov.br/uploads/364/arquivos/2008302_PLANO_DE_CONTINGENCIA_IRATI_SC.pdf
   - trecho: Plano de contingência aplicável ao Município de IRATI-SC. Equipe responsável ... SALETE F. M. DAL BELLO e SANDRA B. ZANCHET: Representante dos ...
-- `6de10d0c73` · nível **B** (4 pts) · busca_web · — · **Decreto N° 99**, 2026 (do trecho)
+- `6de10d0c73` · nível **B** (4 pts) · busca_web · — · **Decreto N° 99**, 2026
   - título: Decreto N° 99/2026 - Leis.org
   - url: https://leis.org/3mrbp
   - trecho: May 20, 2026 ... Suplente: Sidiane Salete Dalla Costa. Função/Cargo exercido ... I - Auxiliar na elaboração e implementação do Plano de Contingência ...
-- `8970575884` · nível **B** (4 pts) · busca_web · — · data 2022 (do trecho)
+- `8970575884` · nível **B** (4 pts) · busca_web · EX_ANTE · **lei 8.080**, 2022
   - título: plano municipal de saúde 2022-2025 - Prefeitura de Ipumirim
   - url: https://ipumirim.sc.gov.br/uploads/sites/386/2024/06/Plano-Municipal-Ipumirim-2022-2025-atualizado.pdf
   - trecho: RESOLUÇÃO DE APROVAÇÃO DO PLANO ... ➢ Festa da Romaria de Nossa Senhora da Salete, com procissão, missa, churrasco,.
   - ⚠ ano_anterior_ao_ciclo
-- `1f0c2467c8` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `1f0c2467c8` · nível **B** (4 pts) · busca_web · EX_ANTE · **Portaria nº 3.712**, 2020
   - título: PLANO DE AÇÃO DA REDE DE ATENÇÃO A SAÚDE DAS ...
   - url: https://www.saude.sc.gov.br/index.php/pt/atencao-primaria-a-saude/gerencias-da-aps/gapps/plano-de-acao-da-rede-de-atencao-a-saude-das-pessoas-com-cancer-em-santa-catarina-2/download
   - trecho: Este Plano de ação da rede de atenção a saúde das pessoas com câncer em Santa ... Salete,. Santa. Terezinha,. Taió,. Rio do. Sul. Rio do. Sul. Lages. Blumenau/.
-- `ac9c337538` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `ac9c337538` · nível **B** (4 pts) · busca_web · RESPOSTA · citação não extraída
   - título: Plano Setorial para Adaptação à Mudança do Clima e Baixa ...
   - url: https://www.gov.br/agricultura/pt-br/arquivos/abc_final.pdf
   - trecho: Salete Alves de Moraes. Saulo Pastor Santos. Sebastião de Campos Valadares ... Plano de Ação Estadual. PD. Plantio direto. PDHC II. Projeto Dom Helder Câmara ...
-- `9d2cfa81cf` · nível **B** (4 pts) · busca_web · — · data 2003 (do trecho)
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
+- `9d2cfa81cf` · nível **B** (4 pts) · busca_web · DUVIDA · data 2003 (do trecho)
   - título: Política de Educação para o Envelhecimento - SED/SC
   - url: https://www.sed.sc.gov.br/wp-content/uploads/2024/04/Politica-de-Educacao-para-o-Envelhecimento-4-11-22.pdf
   - trecho: Salete Teresinha Pompermaier. Sandra Dartora. Silvia Cardoso Bittencourt ... Plano de Ação Internacional contra o Envelhe- cimento. 2003. Disponível em ...
   - ⚠ ano_anterior_ao_ciclo
-- `4a7b3a505b` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `4a7b3a505b` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Plano Estratégico para o Desenvolvimento Sustentável da ... - Epagri
   - url: https://docweb.epagri.sc.gov.br/website_epagri/Cedap/Publicacao-Seriada/15-Publicacao-seriada-maricultura-gestao.pdf
   - trecho: Senac – Ivanir Salete Bazzei. IMA – Ivana Becker, Fábio Castagna da ... Plano de ação para formalização da cadeia de comércio de moluscos em Santa Catarina.
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `f44a722a53` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
   - título: Prefeitura de Caçador intensifica ações preventivas diante da ...
   - url: https://cacador.sc.gov.br/prefeitura-de-cacador-intensifica-acoes-preventivas-diante-da-possibilidade-de-el-nino/
   - trecho: May 28, 2026 ... As novas residências foram construídas no Loteamento Nossa Senhora Salete. ... Confira o Plano de Contingência de Caçador. ← Prefeitura de ...
-- `4ca3feb784` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `4ca3feb784` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Içara sediará seminário que impulsiona a Rota dos Santuários do ...
   - url: https://engeplus.com.br/noticia/geral/230457/icara-sediara-seminario-que-impulsiona-a-rota-dos-santuarios-do-sul-catarinense
   - trecho: May 23, 2026 ... Conforme a diretora de Cultura e Turismo de Içara, Salete Goulart ... plano de contingência para períodos de temporais. El Niño. Afasc e ...
-- `3add7c24b0` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `3add7c24b0` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Salete | Santa Catarina | | Assistência Social amplia equipe e ...
   - url: https://www.instagram.com/p/DWmVGcXAMiG/
   - trecho: Apr 1, 2026 ... Photo by Salete | Santa Catarina ... ÁGUA DOCE REÚNE 12 MUNICÍPIOS PARA CAPACITAÇÃO SOBRE O PLANO DE CONTINGÊNCIA DA ASSISTÊNCIA SOCIAL.
-- `91b198d460` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `91b198d460` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
   - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
   - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Santa Salete; Dirce Reis; União Paulista; Flora Rica; Uru; Nova Castilho; Borá.
-- `517b90be4c` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `517b90be4c` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Reunião de início de ano com o Corpo de Bombeiros de Santa ...
   - url: https://www.instagram.com/reel/DTLj-CkEZlX/
   - trecho: Jan 6, 2026 ... ... Salete. Quando a guarnição chegou, o incêndio já se encontrava em ... Entre os temas abordados estiveram o Plano de Contingência ...
-- `0d46eae357` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `0d46eae357` · nível **B** (3 pts) · busca_web · EX_ANTE · **LEI Nº 19.382**, 24/07/2025
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250724/Jornal/22561.pdf
   - trecho: Jul 24, 2025 ... plano de ação do Conselho Estadual da Criança e do adolescente - sC ... buição contido(s) no processo: sEd 139798/2025 de Vania salETE.
   - ⚠ ano_anterior_ao_ciclo
-- `8900661359` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `8900661359` · nível **B** (3 pts) · busca_web · DUVIDA · citação não extraída
   - título: Pesquisa textual | Tribunal de Contas da União
   - url: https://pesquisa.apps.tcu.gov.br/#/documento/btcu/281/%2520/DTRELEVANCIA%2520desc/12/%2520
   - trecho: ... plano de ação para propor medidas com vistas a dotar o processo de maior ... Salete da Silva, em razão de a responsável, dependente não habilitada, ter ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `bf4828b2e1` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Prefeitura Municipal de Paial - ARIS
   - url: https://aris.sc.gov.br/uploads/pagina/2706/3e7yzhyw3OwnbUSEVBd9kgrDBkRcxppU.pdf
@@ -3230,6 +3277,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: RESPONSABILIDADE As si na do p or 5 p es so as : W AG N ER H AS H IM O TO , J O SN EI M AR F ER R EI R A D E FR EI TA S, L U AN V IN IC IU S LA C ER D A PI M EN TA , D AN N A SA N TO S D E O LI VE IR A C EZ AR M O R IA L
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+
+## Rio Branco/AC — 1 pendente(s)
+- `c53cf50fc3` · nível **B** (3 pts) · rebaixamento C10 · EX_ANTE · citação não extraída
+  - url: https://www.riobranco.ac.gov.br/saerb/prefeitura-de-rio-branco-apresenta-plano-de-contingencia-para-garantir-abastecimento-de-agua-durante-estiagem-severa/
+  - trecho: 
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
 ## Belém/AL — 4 pendente(s)
 - `f31b168edf` · nível **B** (5 pts) · busca_web · — · data 2026 (do trecho)
@@ -5339,12 +5392,15 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ risco_errado_no_titulo
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 
-## Campinas/SP — 1 pendente(s)
+## Campinas/SP — 2 pendente(s)
 - `19f12d575c` · nível **B** (3 pts) · querido_diario · DUVIDA · **DECRETO Nº 24.530**, 08/07/2026
   - url: https://data.queridodiario.ok.org.br/3509502/2026-07-13/80bed338bbc1cd2456dbc6b5cba027f2d96e9aff.pdf
   - trecho: CRMV/SP: 58404 DEFERIDO  PROTOCOLO: PMC.2026.00130122-77 INTERESSADO: REDE MUNICIPAL DR. MÁRIO GATTI DE URGÊNCIA,  EMERGÊNCIA E HOSPITALAR - UNIDADE PEDIÁTRICA MÁRIO GATTINHO CNPJ/CPF: 47.018.676/0001-76 ASSUNTO: Plano d
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `1317f4247b` · nível **C** (2 pts) · rebaixamento C10 · — · citação não extraída
+  - url: https://horacampinas.com.br/prefeitura-de-campinas-apresenta-pacote-de-acoes-para-enfrentar-o-super-el-nino/
+  - trecho: 
 
 ## Itapirapuã Paulista/SP — 1 pendente(s)
 - `abf3d08656` · nível **B** (3 pts) · querido_diario · EX_ANTE · **Lei nº 14.133**, 2021
@@ -5557,6 +5613,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=3392&i=publicado_114612_2026-08-21_7184df772ce72c04d56e991ac4350830.pdf
   - trecho: financeira,  conciliação financeira integral do contrato, saneamento processual e a  instituição do Plano de Contingência e Transição Hospitalar (prazo de  5 dias úteis);  • Acatou a Recomendação Ministerial nº 202600840
 
+## Belo Horizonte/MG — 1 pendente(s)
+- `48fe6dc786` · nível **C** (2 pts) · rebaixamento C10 · — · citação não extraída
+  - url: https://prefeitura.pbh.gov.br/obras-e-infraestruturadefesa-civil/plano-de-contingencia
+  - trecho: 
+
 ## Candeias/MG — 1 pendente(s)
 - `c83ac94522` · nível **C** (7 pts) · busca_web · — · data 2025 (do trecho)
   - título: Defesa Civil de Candeias apresenta Plano de Contingência para ...
@@ -5764,159 +5825,179 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jan 23, 2019 ... ... Dourado. Elevatória de Esgoto Bruto. Olinda Pires. Elevatória de Esgoto ... Plano de contingência tem como principal objetivo garantir o ...
   - ⚠ uf_divergente_na_url, ano_anterior_ao_ciclo
 
----
-## Decididas (1510) — registro permanente, nunca apagadas
+## Guarujá/SP — 1 pendente(s)
+- `84127cdc86` · nível **C** (2 pts) · rebaixamento C10 · — · citação não extraída
+  - url: https://www.plantaoguaruja.com.br/noticia/guaruja-amplia-plano-preventivo-da-defesa-civil-diante-da-previsao-de-el-nino
+  - trecho: 
 
-- `094c653590` None/None · pendente_confirmacao_documento · 
-- `5b22b54586` None/None · pendente_confirmacao_documento · 
-- `094c653590` None/None · pendente_confirmacao_documento · 
-- `dd230b8b6c` None/None · pendente_confirmacao_documento · 
-- `094c653590` None/None · pendente_confirmacao_documento · 
-- `5b22b54586` None/None · pendente_confirmacao_documento · 
-- `094c653590` None/None · pendente_confirmacao_documento · 
-- `ff977fb16b` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `a6bca90e68` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `872f97b918` None/None · pendente_confirmacao_documento · 
-- `25c29928e7` None/None · pendente_confirmacao_documento · 
-- `d671eeebdf` None/None · pendente_confirmacao_documento · 
-- `ff63688c3e` None/None · pendente_confirmacao_documento · 
-- `3c2f70f8e8` None/None · pendente_confirmacao_documento · 
-- `d671eeebdf` None/None · pendente_confirmacao_documento · 
-- `79e33a4b2c` None/None · pendente_confirmacao_documento · 
-- `384a3fe30b` None/None · pendente_confirmacao_documento · 
-- `04480c228c` None/None · pendente_confirmacao_documento · 
-- `a59c17b24d` None/None · pendente_confirmacao_documento · 
-- `b34d688911` None/None · pendente_confirmacao_documento · 
-- `e971adadee` None/None · pendente_confirmacao_documento · 
-- `130bde99cb` None/None · pendente_confirmacao_documento · 
-- `78f96fa1fa` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `8ac0dee6f3` None/None · pendente_confirmacao_documento · 
-- `652cd4ee2f` None/None · pendente_confirmacao_documento · 
-- `5ca8171414` None/None · pendente_confirmacao_documento · 
-- `5df1bfcd74` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `215a691cf7` None/None · pendente_confirmacao_documento · 
-- `712aede471` None/None · pendente_confirmacao_documento · 
-- `eec05e2bae` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `7c9f511783` None/None · pendente_confirmacao_documento · 
-- `094c653590` None/None · pendente_confirmacao_documento · 
-- `c409c89475` None/None · pendente_confirmacao_documento · 
-- `70d230c0cd` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `93d87556ce` None/None · pendente_confirmacao_documento · 
-- `b7f335fa6f` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `09952986c0` None/None · pendente_confirmacao_documento · 
-- `d9242f2d1b` None/None · pendente_confirmacao_documento · 
-- `094c653590` None/None · pendente_confirmacao_documento · 
-- `518ee28b06` None/None · pendente_confirmacao_documento · 
-- `003b39303a` None/None · pendente_confirmacao_documento · 
-- `ceb0b93480` None/None · pendente_confirmacao_documento · 
-- `d5641bac6b` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `8a4b4fbde4` None/None · pendente_confirmacao_documento · 
-- `da8e594f02` None/None · pendente_confirmacao_documento · 
-- `36b6dc9c94` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `25c29928e7` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `da8e594f02` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `8bdbc8e5c4` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `36b6dc9c94` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `70d230c0cd` None/None · pendente_confirmacao_documento · 
-- `60a4d5e6b1` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `36b6dc9c94` None/None · pendente_confirmacao_documento · 
-- `da8e594f02` None/None · pendente_confirmacao_documento · 
-- `63e932ff47` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `25c29928e7` None/None · pendente_confirmacao_documento · 
-- `da469d0b43` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `ed762ab27c` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `a9823bc856` None/None · pendente_confirmacao_documento · 
-- `885016571d` None/None · pendente_confirmacao_documento · 
-- `63e932ff47` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `811e665685` None/None · pendente_confirmacao_documento · 
-- `811e665685` None/None · pendente_confirmacao_documento · 
-- `811e665685` None/None · pendente_confirmacao_documento · 
-- `5641ea77eb` None/None · pendente_confirmacao_documento · 
-- `d671eeebdf` None/None · pendente_confirmacao_documento · 
-- `094c653590` None/None · pendente_confirmacao_documento · 
-- `d859cc272e` None/None · pendente_confirmacao_documento · 
-- `220130965b` None/None · pendente_confirmacao_documento · 
-- `2b0a37c4bd` None/None · pendente_confirmacao_documento · 
-- `594e25b92e` None/None · pendente_confirmacao_documento · 
-- `e778f65e81` None/None · pendente_confirmacao_documento · 
-- `b7dfb25735` None/None · pendente_confirmacao_documento · 
-- `12848a9f79` None/None · pendente_confirmacao_documento · 
-- `462039ce19` None/None · pendente_confirmacao_documento · 
-- `518ee28b06` None/None · pendente_confirmacao_documento · 
-- `161f190bb9` None/None · pendente_confirmacao_documento · 
-- `1396147ad8` None/None · pendente_confirmacao_documento · 
-- `78a32605f9` None/None · pendente_confirmacao_documento · 
-- `d671eeebdf` None/None · pendente_confirmacao_documento · 
-- `5ca8171414` None/None · pendente_confirmacao_documento · 
-- `f68c6cb61b` None/None · pendente_confirmacao_documento · 
-- `2e551d8f78` None/None · pendente_confirmacao_documento · 
-- `02c39c0323` None/None · pendente_confirmacao_documento · 
-- `cad3d03fe3` None/None · pendente_confirmacao_documento · 
-- `e320d480e5` None/None · pendente_confirmacao_documento · 
-- `0a27892882` None/None · pendente_confirmacao_documento · 
-- `59ac1d69ce` None/None · pendente_confirmacao_documento · 
-- `750da1f504` None/None · pendente_confirmacao_documento · 
-- `bdcf0f58dc` None/None · pendente_confirmacao_documento · 
-- `2542a62544` None/None · pendente_confirmacao_documento · 
-- `b1a051b8a1` None/None · pendente_confirmacao_documento · 
-- `b1a051b8a1` None/None · pendente_confirmacao_documento · 
-- `7447dc1dd3` None/None · pendente_confirmacao_documento · 
-- `f68c6cb61b` None/None · pendente_confirmacao_documento · 
-- `94c2a5a3f0` None/None · pendente_confirmacao_documento · 
-- `9636052c07` None/None · pendente_confirmacao_documento · 
-- `3116d87150` None/None · pendente_confirmacao_documento · 
-- `6ef186c42b` None/None · pendente_confirmacao_documento · 
-- `ca7e4b7f7c` None/None · pendente_confirmacao_documento · 
-- `6a59b98d6b` None/None · pendente_confirmacao_documento · 
-- `e389f12881` None/None · pendente_confirmacao_documento · 
-- `feb4b95b36` None/None · pendente_confirmacao_documento · 
-- `6cd3676ba9` None/None · pendente_confirmacao_documento · 
-- `24c798657c` None/None · pendente_confirmacao_documento · 
-- `c7580c9de9` None/None · pendente_confirmacao_documento · 
-- `d5f7f4aafa` None/None · pendente_confirmacao_documento · 
-- `1f2cb6539d` None/None · pendente_confirmacao_documento · 
-- `e70bc5fc31` None/None · pendente_confirmacao_documento · 
-- `ca1a8c23d5` None/None · pendente_confirmacao_documento · 
-- `f53e032664` None/None · pendente_confirmacao_documento · 
-- `35c8682d83` None/None · pendente_confirmacao_documento · 
-- `4fac268051` None/None · pendente_confirmacao_documento · 
-- `4fe86f6f1d` None/None · pendente_confirmacao_documento · 
-- `20e92e85eb` None/None · pendente_confirmacao_documento · 
-- `f2aff3351f` None/None · pendente_confirmacao_documento · 
-- `1f20c5a94d` None/None · pendente_confirmacao_documento · 
-- `949ac7ca26` None/None · pendente_confirmacao_documento · 
-- `5ec5d873f6` None/None · pendente_confirmacao_documento · 
-- `e496f79eec` None/None · pendente_confirmacao_documento · 
-- `cb4562e3ca` None/None · pendente_confirmacao_documento · 
-- `24679fe733` None/None · pendente_confirmacao_documento · 
-- `1125aadf47` None/None · pendente_confirmacao_documento · 
-- `bfecd0971f` None/None · pendente_confirmacao_documento · 
-- `96b310f212` None/None · pendente_confirmacao_documento · 
+## Jacareí/SP — 1 pendente(s)
+- `a37a69b31b` · nível **C** (2 pts) · rebaixamento C10 · — · citação não extraída
+  - url: https://www.vale360news.com.br/el-nino-em-jacarei-defesa-civil-monitora-30-areas-de-risco-e-atualiza-contingencia/
+  - trecho: 
+
+## Mauá/SP — 1 pendente(s)
+- `2440b4715a` · nível **C** (2 pts) · rebaixamento C10 · — · citação não extraída
+  - url: https://www.abcdoabc.com.br/saude-maua-plano-contra-impactos-el-nino/
+  - trecho: 
+
+## São Bernardo do Campo/SP — 1 pendente(s)
+- `5b7f46123d` · nível **C** (2 pts) · rebaixamento C10 · — · citação não extraída
+  - url: https://www.encontrasantoandre.com.br/sobre/santo-andre-e-sao-bernardo-do-campo-adotam-medidas-de-prevencao-de-desastres-para-diminuir-impactos-do-el-nino/
+  - trecho: 
+
+---
+## Decididas (1503) — registro permanente, nunca apagadas
+
+- `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `5b22b54586` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `dd230b8b6c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `5b22b54586` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `ff977fb16b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `a6bca90e68` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `872f97b918` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `25c29928e7` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d671eeebdf` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `ff63688c3e` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `3c2f70f8e8` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d671eeebdf` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `79e33a4b2c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `384a3fe30b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `04480c228c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `a59c17b24d` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `b34d688911` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e971adadee` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `130bde99cb` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `78f96fa1fa` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `8ac0dee6f3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `652cd4ee2f` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `5ca8171414` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `5df1bfcd74` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `215a691cf7` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `712aede471` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `eec05e2bae` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `7c9f511783` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `c409c89475` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `70d230c0cd` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `93d87556ce` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `b7f335fa6f` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `09952986c0` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d9242f2d1b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `518ee28b06` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `003b39303a` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `ceb0b93480` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d5641bac6b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `8a4b4fbde4` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `da8e594f02` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `36b6dc9c94` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `25c29928e7` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `da8e594f02` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `8bdbc8e5c4` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `36b6dc9c94` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `70d230c0cd` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `60a4d5e6b1` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `36b6dc9c94` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `da8e594f02` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `63e932ff47` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `25c29928e7` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `da469d0b43` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `ed762ab27c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `a9823bc856` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `885016571d` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `63e932ff47` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `811e665685` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `811e665685` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `811e665685` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `5641ea77eb` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d671eeebdf` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `094c653590` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d859cc272e` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `220130965b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `2b0a37c4bd` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `594e25b92e` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e778f65e81` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `b7dfb25735` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `12848a9f79` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `462039ce19` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `518ee28b06` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `161f190bb9` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `1396147ad8` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `78a32605f9` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d671eeebdf` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `5ca8171414` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `f68c6cb61b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `2e551d8f78` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `02c39c0323` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cad3d03fe3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e320d480e5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `0a27892882` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `59ac1d69ce` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `750da1f504` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `bdcf0f58dc` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `2542a62544` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `b1a051b8a1` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `b1a051b8a1` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `7447dc1dd3` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `f68c6cb61b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `94c2a5a3f0` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `9636052c07` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `3116d87150` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `6ef186c42b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `ca7e4b7f7c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `6a59b98d6b` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e389f12881` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `feb4b95b36` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `6cd3676ba9` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `24c798657c` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `c7580c9de9` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `d5f7f4aafa` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `1f2cb6539d` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e70bc5fc31` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `ca1a8c23d5` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `f53e032664` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `35c8682d83` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `4fac268051` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `4fe86f6f1d` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `20e92e85eb` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `f2aff3351f` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `1f20c5a94d` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `949ac7ca26` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `5ec5d873f6` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `e496f79eec` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `cb4562e3ca` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `24679fe733` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `1125aadf47` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `bfecd0971f` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
+- `96b310f212` None/None · pendente_confirmacao_documento · fonte não reconhecida como oficial (sem mudança)
 - `35ffc3eed9` None/None · pendente_confirmacao_documento · 
 - `2c0146cab5` None/None · pendente_confirmacao_documento · 
 - `3d968479b7` None/None · pendente_confirmacao_documento · 
@@ -7262,18 +7343,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `101362717f` None/None · pendente_confirmacao_documento · 
 - `711cbfc94a` None/None · pendente_confirmacao_documento · 
 - `44294b185c` None/None · pendente_confirmacao_documento · 
-- `c53cf50fc3` Rio Branco/AC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `ef69b9d26b` Ouro Branco/AL · aplicada — promovida a registro (plano) em 10/09/2026; revisão consumida · 
 - `c65f37b2cb` Macapá/AP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `66fdadd299` Feira de Santana/BA · aplicada_automaticamente · 
-- `48fe6dc786` Belo Horizonte/MG · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `c65f37b2cb` Belém/PA · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `c65f37b2cb` Florianópolis/SC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `c65f37b2cb` Indaial/SC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `c65f37b2cb` Rio do Sul/SC · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
-- `1317f4247b` Campinas/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
-- `84127cdc86` Guarujá/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
-- `a37a69b31b` Jacareí/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
-- `2440b4715a` Mauá/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
-- `5b7f46123d` São Bernardo do Campo/SP · rebaixado_c10 — volta a registro só com documento primário (ato com número e data, em fonte oficial) · 
 - `25519ed399` Votuporanga/SP · aplicada_automaticamente · 
