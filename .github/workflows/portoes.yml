@@ -93,6 +93,12 @@ jobs:
           python3 scripts/verificar_ausencia_declarada.py
           # assunto: texto
           node scripts/verificar_legendas.js
+          # §281 (28/09/2026): canal de DESCOBERTA exibido como canal de registro. "imprensa"
+          # serve para achar o documento, nunca para provar o ato (§5.2.1), e treze registros
+          # traziam "via imprensa" ao lado de fonte descrita como oficial.
+          # assunto: texto rapido
+          python3 scripts/verificar_rotulo_canal_descoberta.py --autoteste
+          python3 scripts/verificar_rotulo_canal_descoberta.py
           # assunto: cor texto
           node scripts/verificar_runtime_resposta.js
           # assunto: cor texto

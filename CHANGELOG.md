@@ -9,6 +9,35 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §281 · "Imprensa" é canal de descoberta, e o rótulo passa a dizer isso · 28/09/2026
+
+Classe **texto público**. Defeito 6 do relatório da auditoria do funil, item 3 do bloco de decisões da
+editoria de 28/09/2026. **Nenhuma nota muda, nenhum cálculo muda:** é rótulo.
+
+### O que o leitor via
+
+Treze registros de `municipios.json` têm `canal: "imprensa"`. A página mostrava "· via imprensa" ao
+lado de uma fonte descrita como oficial — em Rio Branco/AC, por exemplo, "Prefeitura de Rio Branco
+(oficial)" —, e a tabela de procedência mostrava o código cru na coluna de canal. Nada ali dizia que
+aquele canal é de **descoberta**: a matéria serve para achar o documento, e a prova continua sendo o
+ato na fonte oficial (§5.2.1).
+
+O rótulo passou a ser **"imprensa (descoberta)"** nos dois lugares. Os outros canais são de registro
+— diário oficial, repositório estadual, site do município —, e para eles o código já diz o que é.
+
+### Por que só o rótulo
+
+Nenhum dos treze pontua: doze são `nao_verificado` e um é `decreto`, que não entra no índice por
+regra. O valor gravado não muda — `imprensa` continua sendo a chave no dado e no vocabulário fechado
+de canais, porque renomear a chave quebraria o vocabulário e o histórico do log sem melhorar nada
+para quem lê.
+
+### A trava
+
+`scripts/verificar_rotulo_canal_descoberta.py` reprova quando uma página atribui ao canal de
+descoberta um rótulo sem a palavra "descoberta", e reprova também se um dos arquivos de rótulo
+desaparecer — portão que fica verde olhando para o vazio não é portão. Dois portões novos (111).
+
 ## §278 · Redes sociais entram como descoberta, e só como descoberta · 28/09/2026
 
 Classe **método e coleta**. Item 2 do bloco de decisões da editoria de 28/09/2026. **Nenhuma nota
