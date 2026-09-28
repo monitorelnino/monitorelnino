@@ -158,7 +158,34 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
         if "rota ao município ligada a plano e a nível de risco" not in aus: e.append("(l) preventivo_setores: nó de ausência da seca ausente ou com enunciado diferente do restrito")
     except FileNotFoundError:
         e.append("(i) preventivo_setores.json ausente")
-    if re.search(r"<table\b", html): e.append("(j) financiamento.html contém <table> — a página não tem tabelas (decisão editorial de 15/09/2026)")
+    # 27/09/2026 (§258): a proibição de 15/09 é sobre a PROSA da página — "tabelas viraram figuras".
+    # Os blocos de prova que vieram da página Pesquisadores arquivada ficam de fora: ali a tabela É o
+    # registro (endpoint, parâmetro, data, itens, hash), e era essa a forma da página de origem. A
+    # exceção segue o marcador `data-proveniencia="1"`, que viaja com o bloco — mesmo critério já
+    # aplicado em `scripts/verificar_runtime_financiamento.js`.
+    # O fim de cada bloco de prova sai por PROFUNDIDADE de <div>, não por "até o próximo painel".
+    # Duas tentativas anteriores erraram: subtrair por regex `.*?` deixou a tabela fora do recorte, e
+    # fatiar até o painel seguinte fazia o ÚLTIMO painel engolir o resto da página — uma tabela
+    # acrescentada antes de `</main>` passava sem ser vista.
+    # `ler_pagina` embute o JS da página, e o JS do bloco de prova MONTA uma tabela dentro de uma
+    # string ('<table class="mun-table">…'). Marcação de página e código não se confundem: o
+    # conteúdo de <script> sai antes da checagem, trocado por espaços do mesmo tamanho para que as
+    # posições do resto do documento não se desloquem.
+    html_sem_js = re.sub(r"<script\b.*?</script>",
+                         lambda m: " " * len(m.group(0)), html, flags=re.S | re.I)
+    faixas = []
+    for m in re.finditer(r'<div[^>]*data-proveniencia="1"[^>]*>', html_sem_js):
+        prof, i = 1, m.end()
+        for tag in re.finditer(r"<div\b|</div>", html_sem_js[m.end():]):
+            prof += 1 if tag.group(0) != "</div>" else -1
+            if prof == 0:
+                i = m.end() + tag.end()
+                break
+        faixas.append((m.start(), i))
+    em_bloco_de_prova = lambda pos: any(a <= pos < b for a, b in faixas)   # noqa: E731
+    if any(not em_bloco_de_prova(m.start()) for m in re.finditer(r"<table\b", html_sem_js)):
+        e.append("(j) financiamento.html contém <table> fora de bloco de prova — a prosa da página "
+                 "não tem tabelas (decisão editorial de 15/09/2026)")
     if 'id="dlPreventivoSetor"' not in html: e.append("(k) figura do dinheiro preventivo sem alternativa <dl>")
     if "preventivo_setores" in motor: e.append("(m) motor do índice lê preventivo_setores.json")
     d = serie.get("defeso", {})
@@ -235,6 +262,15 @@ def negativos() -> int:
     casos = {
         "chave de API no motor": lambda: checar(html, rotas, serie, poruf, motor + '\nchave-api-dados = "0123456789abcdef0123456789abcdef"', arqs),
         "figura sem crédito": lambda: checar(html.replace("fonteFigura('boxRede'", "fonteFigura('boxX'"), rotas, serie, poruf, motor, arqs),
+        # 27/09/2026 (§258): a checagem (j) agora tolera tabela DENTRO de bloco de prova. Os dois
+        # negativos abaixo cobrem o que ela não pode tolerar — tabela na prosa, antes e depois dos
+        # blocos —, senão a exceção poderia crescer até engolir a regra sem nenhum teste reclamar.
+        "tabela na prosa, no fim da página":
+            lambda: checar(html.replace("</main>", "<table><tr><td>x</td></tr></table></main>"),
+                           rotas, serie, poruf, motor, arqs),
+        "tabela na prosa, antes dos blocos de prova":
+            lambda: checar(html.replace("<main", "<table></table><main", 1),
+                           rotas, serie, poruf, motor, arqs),
         "reconciliação quebrada": lambda: checar(html, rotas, {**serie, "semanas": [{"semana": "2026-01-05", "r1": 10, "total": 99}]}, poruf, motor, arqs),
         "valor imputado": lambda: checar(html, rotas, serie, {**poruf, "uf": {**poruf["uf"], "SC": {**poruf["uf"]["SC"], "rotas": {**poruf["uf"]["SC"]["rotas"], "r1": {"valor_2026": 5, "status": "aguardando_coleta"}}}}}, motor, arqs),
         "motor lendo financiamento": lambda: checar(html, rotas, serie, poruf, motor + "\nx = 'data/financiamento/x.json'", arqs),

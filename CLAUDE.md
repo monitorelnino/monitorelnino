@@ -78,6 +78,34 @@ menor a reversibilidade, maior a certeza exigida — e mudança incremental, com
 > interação; `caveman` deixa de ser skill invocada e passa a *output style* permanente.
 > `.claude/skills/caveman/SUBORDINACAO.md` fica como histórico.
 
+## Preprint e site são rotinas SEPARADAS (editoria, 27/09/2026, §260)
+
+O trabalho do preprint — as tarefas T0 a T11 do
+`notas/PEDIDO_UNICO_CLAUDE_CODE_preprint.md`, no repositório privado — **não é rotina do site**.
+As duas só se tocam quando a editoria disser que se tocam.
+
+**O que não fazer, sem pedido explícito dela:**
+
+- não rodar tarefa do preprint (T0–T11) por iniciativa própria, nem "aproveitar" que já se está no
+  repositório;
+- não abrir PR no repositório público a partir de achado do preprint;
+- não acrescentar portão ao site por causa do preprint;
+- não disparar rodada de atualização nem reposição de domínio para produzir dado de preprint;
+- não criar worktree do repositório do site para análise de preprint — o clone do privado vive no
+  rascunho da sessão, fora daqui.
+
+**Onde o preprint vive:** `robo-registro/preprint/` (scripts e saídas) e `robo-registro/notas/`
+(pedidos, estado, fichas). Nada dele entra no repositório público.
+
+**Se uma tarefa do preprint encontrar defeito no site**, o caminho é: registrar o achado na saída
+do preprint, no privado, e **levar à editoria como pedido separado**. Ela decide se vira mudança no
+site. Foi assim que o §256 e o §257 deveriam ter nascido, e não nasceram — os dois vieram do T1 e
+do T2 e viraram PR público direto, o que misturou as duas rotinas. Ficam como estão, porque
+desfazê-los seria pior: o §256 é um portão que protege dado do site, e o §257 alinhou o texto da
+metodologia ao código em vigor. Mas o caminho está corrigido daqui em diante.
+
+**Quando a editoria pedir dado do preprint pela rodada**, ela diz. Até lá, a rodada serve ao site.
+
 ## Fluxo de mudança (PROTOCOLO §3.1)
 
 1. Partir da `main` atualizada; ramo `edicao/AAAA-MM-DD-tema`.

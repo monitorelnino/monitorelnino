@@ -941,11 +941,15 @@ Três julgamentos ficam explicitamente como **pistas** até o ato em fonte ofici
 | proteja-se.html | O que eu faço, no meu estado, em cada cenário? | serviço ao leitor | 1251 | 1107 |
 | para-gestores.html | O que um gestor publica, e o que ainda pode fazer no período eleitoral? | serviço ao gestor | 1008 | 832 |
 | imprensa.html | Quais são os dois números, a frase citável e o que mudou esta semana? | síntese | 1564 | 1038 |
-| pesquisadores.html | Onde está a prova de tudo o que o site afirma? | 5 · o que não sabemos (provas) | 0 | 1333 |
+| ~~pesquisadores.html~~ | Onde está a prova de tudo o que o site afirma? | 5 · o que não sabemos (provas) | 0 | 1333 → **arquivada em 27/09/2026** |
 | envie-dados.html | Como um documento oficial entra no Monitor? | porta de entrada | 589 | 496 |
 | obrigado.html | O envio foi recebido. | — | — | 139 |
 
-Contagem fora de navegação e rodapé; "antes" é a auditoria de 06/09 (manhã), "depois" o estado ao fechar a v3.1. O portão `scripts/verificar_palavras.js` mantém a meta do §7 por página (avisa) e um teto (bloqueia). Onze páginas de conteúdo mais a de agradecimento; a galeria "Mapas e gráficos" dissolveu-se em Defesa civil (redirecionamento 301). Nenhuma informação foi perdida: o que saiu da vista vive nos dados, na metodologia ou em Pesquisadores.
+Contagem fora de navegação e rodapé; "antes" é a auditoria de 06/09 (manhã), "depois" o estado ao fechar a v3.1.
+
+> **Página "Pesquisadores" arquivada em 27/09/2026 (§258), a reconstruir após a publicação científica.** Decisão da editoria, registrada no `CHANGELOG.md` §258 e em `arquivo/pesquisadores/LEIA-ME.md`. **Nenhuma mudança de método.** As seções de proveniência não saíram do site: cada uma foi para a página que a citava — fontes dos sinais para o monitor de riscos; fontes do financiamento e créditos extraordinários para o financiamento; o que a União publicou e o backlog para a saúde; log de verificação, registros e fontes, e painel amostral para a defesa civil. Ficaram arquivadas com a página as quatro seções de uso e replicação ("Como usar o site e os dados", "Metodologia e versões", "Dados abertos, feeds e selos", "Código e replicação"), esta última porque contém a frase sobre "código para replicar" que a editoria mandou rever em 23/09 e que não deve voltar ao ar como está. A pasta `arquivo/` não é servida: `netlify.toml` devolve 404 para `/arquivo/*`, e o portão `scripts/verificar_pagina_arquivada.py` reprova se algum HTML publicado voltar a linkar a página ou se ela reaparecer na raiz sem decisão registrada no CHANGELOG.
+>
+> Perda de cobertura declarada: a promessa da cadência semanal ao leitor existia em dois textos independentes que o portão `scripts/testar_cadencia_publicacao.py` obrigava a concordar. Sobrou um, `obrigado.html`. O portão continua conferindo que ele nomeia o mesmo dia que a constante e que o cron, mas a redundância deixou de existir. O portão `scripts/verificar_palavras.js` mantém a meta do §7 por página (avisa) e um teto (bloqueia). Onze páginas de conteúdo mais a de agradecimento; a galeria "Mapas e gráficos" dissolveu-se em Defesa civil (redirecionamento 301). Nenhuma informação foi perdida: o que saiu da vista vive nos dados, na metodologia ou em Pesquisadores.
 
 ## 35. Desfechos em saúde — "o que aconteceu" (§8 das instruções, 07/09/2026)
 

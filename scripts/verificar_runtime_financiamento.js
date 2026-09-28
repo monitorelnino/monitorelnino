@@ -72,7 +72,12 @@ setTimeout(() => {
   teste("RS: gráfico repasse preventivo × decreto × reconhecidos, com os números do dado na legenda", graficos.some(g => g.ctx && g.ctx.id === "cRS") && /138 municípios/.test(q("legRS").textContent) && /sob decreto: \d+/.test(q("legRS").textContent));
   teste("caminho do município: três momentos com chips de chave", d.querySelectorAll("#caminho .cartao").length === 3 && d.querySelectorAll("#caminho .chip-chave").length >= 12);
   teste("ficha 'Como ler as rotas': chaves, termos, 8 cartões e a rota do fogo (PNMIF)", /Chaves de acesso/.test(q("comolerRotas").textContent) && /PNMIF/.test(q("comolerRotas").textContent) && q("rotasCards").children.length === 8);
-  teste("nenhuma tabela na página (só figuras, mapas, rotas e fichas)", d.querySelectorAll("main table").length === 0);
+  // 27/09/2026 (§258): a proibição de 15/09 vale para a prosa da página — "tabelas viraram figuras".
+  // Os blocos de prova que vieram da página Pesquisadores arquivada ficam de fora: ali a tabela É o
+  // registro (endpoint, parâmetro, data, itens, hash), e era essa a forma da página de origem. A
+  // exceção segue o marcador `data-proveniencia="1"`, que viaja com o bloco.
+  teste("nenhuma tabela na prosa da página (só figuras, mapas, rotas e fichas; blocos de prova à parte)",
+    [...d.querySelectorAll("main table")].filter(el => !el.closest('[data-proveniencia="1"]')).length === 0);
   // 15/09/2026: figura "dinheiro preventivo por setor" — 3 faixas, 3 destinos, nó de ausência d0 sem aresta, glifos na legenda, tooltip, <dl>
   try {
     const PS = JSON.parse(fs.readFileSync(path.join(raiz, "data", "financiamento", "preventivo_setores.json"), "utf8")); const nRotas = PS.setores.reduce((a, s) => a + s.rotas.length, 0);

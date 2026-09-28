@@ -28,7 +28,12 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
     # (a) crédito por figura: cada cartão com svg/canvas precisa de chamada fonteFigura(id)
     caixas = re.findall(r'<figure class="figura[^"]*" id="([^"]+)"', html)
     for cid in caixas:
-        if f"fonteFigura('{cid}'" not in html:
+        # 27/09/2026 (§258): `fonteFigura` é ALIAS de `MonitorMapas.credito` — em
+        # `assets/js/proveniencia.js` está literalmente `const fonteFigura = MonitorMapas.credito`.
+        # O JS que veio da página Pesquisadores arquivada usa as duas grafias, e exigir só a primeira
+        # acusava três figuras creditadas (#boxAreas, #boxCatalogo, #boxGatilhos) como sem crédito.
+        # `verificar_figuras.js` confere o mesmo em tempo de execução, no DOM: lá as três passam.
+        if not any(f"{nome}('{cid}'" in html for nome in ("fonteFigura", "MonitorMapas.credito")):
             erros.append(f"(a) figura sem crédito de fonte: #{cid}")
     # (b) peso zero
     if re.search(r"saude_(uf|sinais|federal)", motor):
@@ -221,6 +226,10 @@ def negativos() -> int:
         "frase preditiva": lambda: checar(html.replace("</main>", "<p>Prevemos surto em outubro.</p></main>"), suf, ssin, sfed, motor, idx, atos),
         "cartão não localizado com URL": lambda: checar(html, suf, ssin, {"cartoes": [{"titulo": "X", "status": "anunciado_nao_localizado", "url": "https://x"}]}, motor, idx, atos),
         "figura sem crédito": lambda: checar(html.replace("fonteFigura('boxStatus'", "fonteFigura('boxOutro'"), suf, ssin, sfed, motor, idx, atos),
+        # 27/09/2026 (§258): a checagem aceita as duas grafias do MESMO crédito; o negativo cobre a
+        # segunda, senão alguém poderia remover o ramo do alias sem nenhum teste reclamar.
+        "figura sem crédito na grafia MonitorMapas.credito":
+            lambda: checar(html.replace("MonitorMapas.credito('boxCatalogo'", "MonitorMapas.credito('boxOutro'"), suf, ssin, sfed, motor, idx, atos),
     }
     falhas = 0
     for nome, fn in casos.items():
