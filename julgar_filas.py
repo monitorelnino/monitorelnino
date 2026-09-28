@@ -38,7 +38,12 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
-FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json", "pistas_revisao.json")
+# 28/09/2026 (decisão da editoria, item 1): `pistas_querido_diario.json` entra na lista. A suspensão de
+# 06/09 caiu, e a regra que a substitui é explícita: toda pista do QD passa pelas etapas 0 a 7 do juiz e
+# NUNCA entra direto no banco. A fila começa pelos 169 municípios com excerto reconhecido no diário e sem
+# registro nem pista, montada por `scripts/fila_do_juiz_querido_diario.py`.
+FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json", "pistas_revisao.json",
+         "pistas_querido_diario.json")
 PROMOCOES = "promocoes_automaticas.json"
 
 # Motivos de recusa do codebook, na ordem das etapas — a ordem do relatório segue esta.
@@ -73,8 +78,10 @@ def julgar_uma(p: dict, buscar, preservar=None) -> dict:
 
     url = p.get("url")
     texto = buscar(url) if url else None
+    # 28/09/2026 (item 1): o `trecho` da pista é o que permite recortar o ATO de dentro da edição do
+    # diário. Sem ele, o juiz lê vinte mil caracteres com dezenas de atos e cai em dúvida, corretamente.
     veredito = julgar(texto, nome=p.get("municipio") or "", uf=p.get("uf") or "",
-                      ibge=p.get("ibge"), url=url)
+                      ibge=p.get("ibge"), url=url, trecho=p.get("trecho"))
     veredito["pista_id"] = p.get("id")
     veredito["origem"] = p.get("origem")
     # O hash só se grava quando há documento de verdade: preservar um erro servido com 200 (§186)
