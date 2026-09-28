@@ -153,6 +153,76 @@ def proxima_tentativa(n_feitas: int, hoje):
                                                            len(BACKOFF_DIAS) - 1)])
 
 
+# Recusas que a busca dirigida ataca: as duas em que o problema é o DOCUMENTO, não o conteúdo dele.
+MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA = ("sem_documento_primario", "citacao_incompleta")
+
+
+def tentar_busca_dirigida(p: dict, v: dict, buscar_texto, preservar) -> dict:
+    """Procura o ato nas três rotas e, achando, rejulga sobre ele. Devolve o veredito que vale.
+
+    Achou → o juiz percorre as etapas 1 a 7 sobre o documento encontrado, com as mesmas regras: a
+    busca dirigida não afrouxa critério nenhum, ela só entrega um documento melhor para julgar.
+    Não achou → a recusa original fica, e a pista passa a dizer onde se procurou e quando."""
+    import importlib
+    import sys as _sys
+    _sys.path.insert(0, str(RAIZ / "scripts"))
+    bd = importlib.import_module("busca_dirigida_do_ato")
+    from coletores_base import hoje_editorial
+
+    ident = bd.identificadores(p)
+    url, fontes = bd.procurar(ident, consultar_qd=_qd_para_busca_dirigida,
+                              buscar_web=_web_para_busca_dirigida, esperar=_ritmo)
+    bd.registrar_busca(p, fontes, hoje_editorial(), achou_url=url)
+    if not url:
+        v["busca_dirigida"] = {"fontes": fontes, "encontrou": None}
+        return v
+
+    novo = julgar_uma({**p, "url": url}, buscar_texto, preservar)
+    novo["busca_dirigida"] = {"fontes": fontes, "encontrou": url,
+                              "recusa_original": v.get("motivo")}
+    return novo
+
+
+def _ritmo():
+    from monitorar_busca_web import espera_do_ritmo
+    import time
+    time.sleep(espera_do_ritmo())
+
+
+def _qd_para_busca_dirigida(ibge, ident):
+    """Rota 1: o diário do território, pelos termos do plano. Devolve a URL do TEXTO da edição."""
+    try:
+        from consultar_querido_diario import _por_territorio
+    except Exception:  # noqa: BLE001
+        return None
+    termo = ident.get("nome_do_plano") or "plano de contingência"
+    try:
+        dados = _por_territorio([ibge], termo)
+    except Exception:  # noqa: BLE001
+        return None
+    for g in (dados or {}).get("gazettes", []) or []:
+        url = g.get("txt_url") or g.get("url")
+        if url:
+            return url
+    return None
+
+
+def _web_para_busca_dirigida(consulta):
+    """Rotas 2 e 3: o metabuscador da rodada, com o mesmo disjuntor por motor de origem."""
+    try:
+        import motores_busca
+        from monitorar_busca_web import buscar_searxng
+        motores = motores_busca.ativos(motores_busca.ler_estado(), motores_busca.agora_iso())
+    except Exception:  # noqa: BLE001
+        return []
+    try:
+        return (buscar_searxng(consulta, motores=motores) or {}).get("results", [])
+    except Exception:  # noqa: BLE001
+        # Motor mudo não é ausência de ato: é ausência de resposta. A recusa original fica, e a
+        # pista volta pela fila de reprocessamento — nunca vira "não existe".
+        return []
+
+
 def aplicar_no_objeto(p: dict, v: dict) -> str:
     """Escreve o veredito na pista e diz o que foi feito: promovida, recusada ou adiada.
 
@@ -386,6 +456,47 @@ def autoteste() -> int:
     casos.append(("todo motivo produzido pelos canários está no codebook do relatório",
                   motivos_vistos <= set(MOTIVOS)))
 
+    # A busca dirigida, ligada ao juiz: achou documento, rejulga; não achou, a recusa fica.
+    import types as _types
+    _bd = _types.SimpleNamespace(
+        identificadores=lambda p: {"municipio": "Bonito", "uf": "MS", "ibge": "5002209",
+                                   "nome_do_plano": "Plano de Contingência"},
+        procurar=lambda ident, **kw: ("https://bonito.ms.gov.br/achado.pdf", ["querido_diario"]),
+        registrar_busca=lambda p, f, h, achou_url=None: p.setdefault("busca_dirigida", []).append(
+            {"fontes": f, "encontrou": achou_url}))
+    _mod = sys.modules.get("busca_dirigida_do_ato")
+    sys.modules["busca_dirigida_do_ato"] = _bd
+    try:
+        p_busca = {"id": "b1", "status": "pista — promover", "url": "https://g1.globo.com/x"}
+        v_recusa = {"motivo": "sem_documento_primario", "promove": False, "leu_documento": False,
+                    "codebook": CODEBOOK_VERSAO, "criterios": {}, "categoria": None, "data": None}
+        textos_achado = {"https://bonito.ms.gov.br/achado.pdf": CANARIOS["plano_novo"]["texto"]}
+        v2 = tentar_busca_dirigida(p_busca, v_recusa, lambda u: textos_achado.get(u), None)
+        casos.append(("busca dirigida que acha documento faz o juiz rejulgar sobre ele",
+                      v2.get("busca_dirigida", {}).get("encontrou", "").endswith("achado.pdf")))
+        casos.append(("o veredito novo guarda qual era a recusa original",
+                      v2["busca_dirigida"]["recusa_original"] == "sem_documento_primario"))
+        casos.append(("a pista registra onde se procurou",
+                      p_busca["busca_dirigida"][0]["fontes"] == ["querido_diario"]))
+
+        _bd.procurar = lambda ident, **kw: (None, ["querido_diario", "sitio_oficial", "busca_web"])
+        p2 = {"id": "b2", "status": "pista — promover"}
+        v3 = tentar_busca_dirigida(p2, dict(v_recusa), lambda u: None, None)
+        casos.append(("busca sem achado mantém a recusa original",
+                      v3["motivo"] == "sem_documento_primario" and not v3["promove"]))
+        casos.append(("e escreve as três rotas tentadas",
+                      v3["busca_dirigida"]["fontes"] == ["querido_diario", "sitio_oficial",
+                                                         "busca_web"]
+                      and v3["busca_dirigida"]["encontrou"] is None))
+        casos.append(("só recusa por falta de documento aciona a busca",
+                      MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA == ("sem_documento_primario",
+                                                           "citacao_incompleta")))
+    finally:
+        if _mod is None:
+            sys.modules.pop("busca_dirigida_do_ato", None)
+        else:
+            sys.modules["busca_dirigida_do_ato"] = _mod
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -403,6 +514,9 @@ def main() -> int:
         return autoteste()
 
     aplicar = "--aplicar" in sys.argv
+    # A busca dirigida custa rede e tempo; fica ligada por padrão (é o que a decisão das 17:20
+    # pede) e sai com `--sem-busca-dirigida` para uma passada puramente local.
+    dirigida = "--sem-busca-dirigida" not in sys.argv
     limite = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None
 
     import funil
@@ -435,6 +549,11 @@ def main() -> int:
         print(f"{nome_fila}: {len(alvo)} pendente(s) de {len(lista)}")
         for p in alvo:
             v = julgar_uma(p, buscar_texto, hash_do_texto)
+            # 28/09/2026 (bloco das 17:20): a recusa por falta de documento primário não encerra a
+            # pista antes de PROCURAR o ato. 176 das 250 primeiras recusas foram esta: a pista
+            # aponta a notícia, e a notícia não é o ato — mas diz que ele existe e onde procurar.
+            if dirigida and v.get("motivo") in MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA:
+                v = tentar_busca_dirigida(p, v, buscar_texto, hash_do_texto)
             vereditos.append(v)
             if not aplicar:
                 continue   # relatório não escreve nem no objeto em memória que será gravado

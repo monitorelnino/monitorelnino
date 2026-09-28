@@ -24,6 +24,10 @@ jobs:
       nome: juiz
       timeout_minutos: 90
       precisa_node: true
+      # 28/09/2026 (bloco das 17:20): a busca dirigida do ato consulta o metabuscador nas
+      # rotas 2 e 3. Ligar o coletor sem a instância que ele consulta produziria lacuna
+      # toda noite com cara de 'fonte fora do ar' — foi o erro do §278, e não se repete.
+      precisa_searxng: true
       # 28/09/2026 (item 1 do bloco de frescor): três defeitos aqui, e o efeito somado era um juiz
       # que nunca promoveu nada desde que foi criado.
       #
@@ -42,9 +46,14 @@ jobs:
       #
       # Os tetos são conservadores de propósito, para caber com folga nos 90 min e serem medidos na
       # primeira noite antes de subir.
+      #
+      # 28/09/2026: o teto do codebook caiu de 250 para 150 porque a busca dirigida entrou no
+      # caminho. Cada recusa por falta de documento passa a custar até quatro consultas de rede,
+      # com o ritmo de 3 s da rodada entre elas — e a noite anterior mostrou que 74% das recusas
+      # são desse tipo. Teto que termina e commita vale mais que fila inteira que não chega ao fim.
       comandos: |
         revisar_pistas.py --preparar --relatorio
-        julgar_filas.py --aplicar --limite 250
+        julgar_filas.py --aplicar --limite 150
         julgar_e_aplicar_descobertas.py --limite 150
         aplicar_promocoes_do_juiz.py --aplicar
         scripts/amostra_auditoria_semanal.py

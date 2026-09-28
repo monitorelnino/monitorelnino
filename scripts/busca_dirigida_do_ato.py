@@ -126,6 +126,80 @@ def registrar_busca(pista: dict, fontes_tentadas: list, hoje, achou_url=None) ->
     return registro
 
 
+def ibge_de(nome, uf, referencia=None):
+    """Código IBGE por nome e UF, da referência oficial. None quando não consta — nunca inventa."""
+    if not nome or not uf:
+        return None
+    if referencia is None:
+        referencia = json.loads(
+            (RAIZ / "data" / "municipios_ibge_referencia.json").read_text(encoding="utf-8"))
+    m = next((r for r in referencia
+              if r.get("nome") == nome and str(r.get("uf", "")).upper() == str(uf).upper()), None)
+    return str(m["codigo_ibge"]).zfill(7) if m else None
+
+
+def parece_fonte_oficial(url, padroes=None) -> bool:
+    """A mesma peneira da Etapa 0 — a busca dirigida não pode devolver o que o juiz recusaria."""
+    if padroes is None:
+        from juiz import PADROES_FONTE_PROVAVEL_OFICIAL as padroes
+    u = str(url or "").lower()
+    return bool(u) and any(pad in u for pad in padroes)
+
+
+def candidato_dos_resultados(resultados, padroes=None):
+    """A primeira URL de fonte provável oficial. Resultado de busca não é prova: é endereço."""
+    for r in resultados or []:
+        url = r.get("url") if isinstance(r, dict) else r
+        if parece_fonte_oficial(url, padroes):
+            return url
+    return None
+
+
+def procurar(ident: dict, consultar_qd=None, buscar_web=None, esperar=None) -> tuple:
+    """(url_candidata, fontes_tentadas). Três rotas, na ordem, parando na primeira que achar.
+
+    As funções de rede entram por parâmetro: é o que permite ao autoteste exercitar as três rotas
+    sem tocar a rede e sem instância de metabuscador. `esperar` é o ritmo da rodada — o mesmo de
+    `monitorar_busca_web`, porque a busca dirigida some no mesmo limite de taxa que qualquer outra.
+    """
+    tentadas = []
+
+    # Rota 1 — Querido Diário, pelo território. Só quando o código IBGE é conhecido: sem ele não há
+    # território a consultar, e chutar o código consultaria o diário de outro município.
+    ibge = ident.get("ibge") or ibge_de(ident.get("municipio"), ident.get("uf"))
+    if ibge and consultar_qd:
+        tentadas.append("querido_diario")
+        if esperar:
+            esperar()
+        url = consultar_qd(ibge, ident)
+        if url:
+            return url, tentadas
+
+    consultas = consultas_dirigidas(ident)
+    if not consultas or not buscar_web:
+        return None, tentadas
+
+    # Rota 2 — sítio oficial, restringindo a busca ao domínio público. `site:gov.br` é o que se pode
+    # afirmar sem conhecer o domínio do município: a lista de domínios oficiais cobre os estados,
+    # não os 5.571 municípios, e inventar `prefeitura<nome>.<uf>.gov.br` erraria na maioria.
+    tentadas.append("sitio_oficial")
+    if esperar:
+        esperar()
+    url = candidato_dos_resultados(buscar_web(f"site:gov.br {consultas[0]}"))
+    if url:
+        return url, tentadas
+
+    # Rota 3 — cascata aberta, string por string, parando na primeira que devolver fonte oficial.
+    tentadas.append("busca_web")
+    for consulta in consultas:
+        if esperar:
+            esperar()
+        url = candidato_dos_resultados(buscar_web(consulta))
+        if url:
+            return url, tentadas
+    return None, tentadas
+
+
 def autoteste() -> int:
     import datetime
     casos = []
@@ -168,6 +242,65 @@ def autoteste() -> int:
     casos.append(("o achado fica registrado com a URL",
                   alvo["busca_dirigida"][-1]["encontrou"].endswith("d.pdf")))
     casos.append(("a data da última busca acompanha", alvo["ultima_busca_em"] == "2026-10-05"))
+
+    # As três rotas, sem rede: as funções entram por parâmetro.
+    REF = [{"nome": "Bonito", "uf": "MS", "codigo_ibge": 5002209, "lat": 0, "lon": 0}]
+    casos.append(("acha o código IBGE por nome e UF", ibge_de("Bonito", "MS", REF) == "5002209"))
+    casos.append(("município fora da referência não inventa código",
+                  ibge_de("Cidade Que Não Existe", "MS", REF) is None))
+    casos.append(("sem UF não há código", ibge_de("Bonito", None, REF) is None))
+
+    PAD = (".gov.br", "queridodiario.ok.org.br")
+    casos.append(("fonte oficial é reconhecida",
+                  parece_fonte_oficial("https://bonito.ms.gov.br/d.pdf", PAD)))
+    casos.append(("portal de notícia não é fonte oficial",
+                  not parece_fonte_oficial("https://g1.globo.com/x", PAD)))
+    casos.append(("rede social não é fonte oficial",
+                  not parece_fonte_oficial("https://www.instagram.com/p/abc", PAD)))
+    casos.append(("url vazia não passa", not parece_fonte_oficial(None, PAD)))
+    casos.append(("dos resultados sai a primeira fonte oficial, não a primeira qualquer",
+                  candidato_dos_resultados([{"url": "https://g1.globo.com/a"},
+                                            {"url": "https://bonito.ms.gov.br/b.pdf"}], PAD)
+                  == "https://bonito.ms.gov.br/b.pdf"))
+    casos.append(("resultado sem nenhuma fonte oficial devolve None",
+                  candidato_dos_resultados([{"url": "https://g1.globo.com/a"}], PAD) is None))
+
+    ident = {"municipio": "Bonito", "uf": "MS", "ibge": "5002209", "tipo": "decreto",
+             "numero": "1.482", "nome_do_plano": "Plano de Contingência"}
+    url, fontes = procurar(ident, consultar_qd=lambda i, d: "https://bonito.ms.gov.br/qd.pdf",
+                           buscar_web=lambda q: [])
+    casos.append(("rota 1 acha e para ali", url.endswith("qd.pdf") and fontes == ["querido_diario"]))
+
+    url, fontes = procurar(ident, consultar_qd=lambda i, d: None,
+                           buscar_web=lambda q: ([{"url": "https://bonito.ms.gov.br/s.pdf"}]
+                                                 if q.startswith("site:") else []))
+    casos.append(("rota 2 entra quando a 1 não acha",
+                  url.endswith("s.pdf") and fontes == ["querido_diario", "sitio_oficial"]))
+
+    vistas = []
+    def _web(q):
+        vistas.append(q)
+        return [{"url": "https://bonito.ms.gov.br/w.pdf"}] if not q.startswith("site:") else []
+    url, fontes = procurar(ident, consultar_qd=lambda i, d: None, buscar_web=_web)
+    casos.append(("rota 3 entra por último",
+                  url.endswith("w.pdf") and fontes[-1] == "busca_web"))
+    casos.append(("a rota 3 usa a consulta mais específica primeiro",
+                  vistas[-1].startswith('"Bonito" MS "decreto')))
+
+    url, fontes = procurar(ident, consultar_qd=lambda i, d: None, buscar_web=lambda q: [])
+    casos.append(("nada achado devolve None e as três rotas tentadas",
+                  url is None and fontes == ["querido_diario", "sitio_oficial", "busca_web"]))
+
+    url, fontes = procurar({"municipio": "Cidade Que Não Existe", "uf": "ZZ", "ibge": None,
+                            "nome_do_plano": "Plano de Contingência"},
+                           consultar_qd=lambda i, d: "x", buscar_web=lambda q: [])
+    casos.append(("município fora da referência: a rota do diário não é tentada",
+                  "querido_diario" not in fontes))
+
+    ritmo = []
+    procurar(ident, consultar_qd=lambda i, d: None, buscar_web=lambda q: [],
+             esperar=lambda: ritmo.append(1))
+    casos.append(("toda consulta passa pelo ritmo da rodada", len(ritmo) >= 3))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
