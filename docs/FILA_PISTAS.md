@@ -1707,66 +1707,78 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - juiz: portão automático: data do ato incompleta (2026)
 
 ## Palma Sola/SC — 45 pendente(s)
-- `497a4c5ffd` · nível **A** (6 pts) · busca_web · — · citação não extraída
+- `497a4c5ffd` · nível **A** (6 pts) · busca_web · EX_ANTE · **Lei nº. 787**, 18/12/1961
   - título: MUNICÍPIO DE PALMA SOLA SC SECRETARIA MUNICIPAL DA ...
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/392-regional-de-saude-sao-miguel-do-oeste.html?download=1107%3Apalma-sola&Itemid=109
   - trecho: Rua Pedro Mello dos Santos, 750 – Centro – Palma Sola/SC. Fone: (49) 3652-3270 ... O Plano de Contingência da Saúde para Desastres Naturais foi desenvolvido.
-- `7a747ce42c` · nível **B** (5 pts) · busca_web · — · data 30/09/2020 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `7a747ce42c` · nível **B** (5 pts) · busca_web · EX_ANTE · **Lei nº 6.745**, 10/09/2020
   - título: FLORIANÓPOLIS, quARtA-FeIRA, 30 de SetembRO de 2020 ANO ...
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20200930/Jornal/2490.pdf
   - trecho: Sep 30, 2020 ... III - Ato da PMSC nº 434/2020 que aprova o plano de contingência para ... PREFEITURA MUNICIPAL DE PALMA SOLA - SC. AVISO DE LICITAÇÃO. O ...
   - ⚠ ano_anterior_ao_ciclo
-- `3585312bae` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `3585312bae` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: módulo inundações - Vigilância Sanitária
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/392-regional-de-saude-sao-miguel-do-oeste.html?download=1111%3Asao-jose-do-cedro&Itemid=109
   - trecho: Mondai, Palma Sola, Paraíso, Princesa, Santa Helena, São João do Oeste, São ... descrito nesse plano de contingência, sempre, no entanto, a partir da liberação ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `8ac9f4196e` · nível **B** (5 pts) · busca_web · — · citação não extraída
   - título: PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDU
   - url: https://bandeirante.sc.gov.br/galeria/pagina-45715/
   - trecho: ... Palma Sola, Paraíso, Princesa, Santa Helena, São João do Oeste, São José do ... PLANO DE CONTINGÊNCIA BANDEIRANTE · CONVÊNIOS · PLANO MUNICIPAL DE GESTÃO ...
-- `2e59691e38` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `2e59691e38` · nível **B** (5 pts) · busca_web · RESPOSTA · **Lei n. 12.608**, 2012
   - título: COMPILADO DE ENUNCIADOS APROVADOS - MPSC
   - url: https://www.mpsc.mp.br/documents/d/guest/compilacao-de-enunciados-aprovados-gedclima-mpsc
   - trecho: SC Palma Sola. 7.605. 292. Deslizamento,Enxurrada. Inundação. SC Palmitos. 15.626 ... Além disso, o Plano de Contingência da Assistência Social deve ser.
-- `f640203a96` · nível **B** (5 pts) · busca_web · — · data 2022 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `f640203a96` · nível **B** (5 pts) · busca_web · DUVIDA · data 2022 (do trecho)
   - título: Anchieta/SC 2022/2025
   - url: https://anchieta.sc.gov.br/uploads/sites/403/2022/01/Resolucao-n.-10.2021-Aprova-Plano-Municipal-de-Assistencia-Social-2022-2025.pdf
   - trecho: e Palma Sola/SC. Anchieta se destaca pela produção de sementes de milho ... Conhecer o plano de contingência da. Defesa Civil Municipal e sugerir ...
   - ⚠ ano_anterior_ao_ciclo
-- `69d53810d2` · nível **B** (5 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `69d53810d2` · nível **B** (5 pts) · busca_web · DUVIDA · data 2024 (do trecho)
   - título: Palma Sola | Cidade - G1 - Globo
   - url: https://g1.globo.com/sc/santa-catarina/cidade/palma-sola/
   - trecho: Cidades de SC ativam plano de contingência, decretam situação de emergência e contabilizam estragos por conta da chuvas ... Eleições 2024 em Palma Sola (SC): veja ...
-- `4c29f5f9a4` · nível **B** (4 pts) · busca_web · — · data 10/07/2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `4c29f5f9a4` · nível **B** (4 pts) · busca_web · DUVIDA · data 10/07/2026 (do trecho)
   - título: Sexta-feira - 10 de Julho de 2026 Florianópolis/SC Edição N° 5187
   - url: https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf
   - trecho: Jul 22, 2026 ... ... Palma Sola ................................................. 787 ... Plano de Contingência da Assistência Social do Município de.
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `a37e6e9a71` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: Sd Natalia - CCS - Blog de Notícias - Página 23 - CBMSC
   - url: https://cbm.sc.gov.br/index.php/blog-de-noticias/blogger/nataliaf?start=220
   - trecho: No domingo, 17, a equipe de plantão do Corpo de Bombeiros Militar de Santa Catarina (CBMSC), em Palma Sola ... Plano de Contingência da Defesa Civil de ...
-- `59392d26d2` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+- `59392d26d2` · nível **B** (4 pts) · busca_web · DUVIDA · **Lei n° 6.745**, 30/06/2025
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250602/Jornal/22524.pdf
   - trecho: Jun 2, 2025 ... e Palma Sola/SC. Rio das Antas. BACIA HIDROGRÁFICA: Rio das Antas ... em consonância com o Plano de Contingência da Concessionária.
   - ⚠ ano_anterior_ao_ciclo
-- `580a8a079b` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `580a8a079b` · nível **B** (4 pts) · busca_web · DUVIDA · data 2024 (do trecho)
   - título: Chuvas em SC deixam desalojados com ao menos 22 cidades ...
   - url: https://www.nsctotal.com.br/cotidiano/chuvas-em-sc-deixam-desalojados-com-ao-menos-15-cidades-afetadas-e-uma-em-situacao-de-emergencia
   - trecho: Dec 7, 2024 ... Palma Sola: chuvas intensas e enxurradas ... Guaramirim: fortes chuvas, cota do rio elevada e iminente inundação; cidade tem plano de contingência ...
-- `45cf3df106` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `45cf3df106` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2025 (do trecho)
   - título: Maior simulado de desastres da história mobiliza 260 mil pessoas ...
   - url: https://tvgc.com.br/maior-simulado-de-desastres-da-historia-mobiliza-260-mil-pessoas-de-256-municipios-em-sc/
   - trecho: May 19, 2025 ... PALMA SOLA · PARAÍSO · POLÍCIA · POLÍTICA · PROGRAMAS · BOTECO GC · DE OLHO ... “Esperamos nunca precisar utilizar nosso Plano de Contingência, ...
-- `35c93bca51` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `35c93bca51` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: INSERIR CAPA - Prefeitura Municipal de São Miguel do Oeste - SC
   - url: https://www.saomiguel.sc.gov.br/storage/page/file/lV2pAtGl8gkDaR03udeHVUm8VBDRXlGFQYCLDN7I.pdf
   - trecho: 15 Palma Sola. Rio das. Antas. 6 673,68 260116 7064647 22,54 15,78 3,61 2 ... • Plano de Contingência (a cada 5 anos):. O objetivo do Plano de Contingência ...
-- `efd9ef1646` · nível **B** (4 pts) · busca_web · — · data 23/08/2024 (do trecho)
+  - juiz: portão automático: data do ato incompleta (2021)
+- `efd9ef1646` · nível **B** (4 pts) · busca_web · DUVIDA · data 23/08/2024 (do trecho)
   - título: Sexta-feira - 23 de Agosto de 2024 Florianópolis/SC Edição N° 4619
   - url: https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf
   - trecho: Aug 14, 2024 ... ... Palma Sola ..................................................783 ... Plano de Contingência (PLANCON) organiza as ações sistêmicas de ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `e1cc86b3a1` · nível **B** (4 pts) · busca_web · — · data 16/8/2010 (do trecho)
   - título: controle PÚBlIco d - TCE/SC
   - url: https://www.tcesc.tc.br/sites/default/files/controle_publico_n09.pdf
@@ -1785,50 +1797,59 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://edicao.dom.sc.gov.br/2024/03/1710256950_edicao_4481_assinada.pdf
   - trecho: Mar 11, 2024 ... Palma Sola ..................................................945 ... Considerando o Plano de Ação do CMDCA e o Plano de Aplicação do ...
   - ⚠ ano_anterior_ao_ciclo
-- `4154da118f` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+- `4154da118f` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: Cidades de SC ativam plano de contingência, decretam situação de ...
   - url: https://g1.globo.com/sc/santa-catarina/noticia/2024/12/08/sc-plano-contingencia-situacao-emergencia-chuvas-estragos.ghtml
   - trecho: Dec 8, 2024 ... Cidades de SC ativam plano de contingência, decretam situação ... Palma Sola: infraestrutura viária danificada;; Flor do Sertão: ponte ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
 - `e70bff28e7` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
   - título: SC: 14 cidades registram estragos após fortes chuvas, diz Defesa Civil
   - url: https://noticias.uol.com.br/cotidiano/ultimas-noticias/2024/12/07/chuvas-em-santa-catarina.htm
   - trecho: Dec 7, 2024 ... ... plano de contingência em andamento;; Guarujá ... Palma Sola: chuvas intensas e enxurradas (autoridades estão fazendo levantamento de danos); ...
   - ⚠ ano_anterior_ao_ciclo
-- `224fa67430` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+- `224fa67430` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2024 (do trecho)
   - título: Chuvas seguem causando estragos em SC | Florianópolis
   - url: https://www.imagemdailha.com.br/blog/chuvas-seguem-causando-estragos-em-sc.html
   - trecho: Dec 9, 2024 ... Em Guaramirim, o plano de contingência ... Dionísio Cerqueira e Palma Sola enfrentam estragos em rodovias, com possibilidade de Situação de ...
-- `3802fef8da` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `3802fef8da` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
   - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
   - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Palma Sola; Salete; Major Vieira; Treze de Maio; Timbó Grande; Trombudo Central ...
-- `632271eb9a` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `632271eb9a` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: Chuvas em SC: boletim aponta ocorrências em 22 municípios e um ...
   - url: https://www.jornaldepomerode.com.br/chuvas-em-sc-boletim-aponta-ocorrencias-em-22-municipios-e-um-decreto-de-situacao-de-emergencia/
   - trecho: Dec 8, 2024 ... Plano de contingência em acionamento. • Jaraguá do Sul: Chuvas ... Dionísio Cerqueira, Guarujá do Sul, Palma Sola, Princesa e Paraíso: Chuvas ...
-- `706037dbce` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `706037dbce` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2024 (do trecho)
   - título: FOTOS: Chuvas em Santa Catarina passam o esperado para o mês
   - url: https://ndmais.com.br/tempo/fotos-chuvas-em-santa-catarina-passam-o-esperado-para-o-mes/
   - trecho: Dec 9, 2024 ... Guaramirim: plano de contingência teve que ser ativado, possui risco de inundação; ... Dionísio Cerqueira, Guarujá do Sul, Palma Sola ...
-- `665eae1ed0` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `665eae1ed0` · nível **B** (3 pts) · busca_web · DUVIDA · data 2024 (do trecho)
   - título: ATA DA CORREIÇÃO ORDINÁRIA REALIZADA - TST
   - url: https://www.tst.jus.br/documents/24638414/25124389/Ata+TRT12+assinada.pdf/4b827a28-6978-841c-cfb3-2727c69bca68?t=1634144920332
   - trecho: Jan 24, 2024 ... O plano de ação está disponível na página eletrônica do TRT12. De ... Castelo; Paial; Palhoça; Palma Sola; Passos Maia; Paulo Lopes; Pomerode; ...
-- `a3bd57cda3` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `a3bd57cda3` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei nº 10.741**, 2003
   - título: MINISTÉRIO PÚBLICO FEDERAL PROCURADORIA GERAL DA ...
   - url: https://www.mpf.mp.br/atuacao/ccr1/atos-e-publicacoes/atas-das-sessoes/atas-de-revisao/docs/2025-1/ata-da-10a-sessao-ordinaria-de-revisao
   - trecho: ... plano de ação para completa regularização do sistema elétrico; c ... Iraceminha, Itapiranga, Maravilha, Mondaí, Palma Sola, Paraíso, Princesa, Riqueza,.
   - ⚠ ano_anterior_ao_ciclo
-- `c463cd569f` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `c463cd569f` · nível **B** (3 pts) · busca_web · EX_ANTE · **lei nº 9.610**, 14/11/1951
   - título: HISTÓRIAS QUE TRANSFORMAM - Agência Sebrae de Notícias
   - url: https://pr.agenciasebrae.com.br/wp-content/uploads/sites/16/2024/04/HISTORIAS-QUE-TRANSFORMAM.pdf
   - trecho: Palma Sola. SC/Brasil. Cleomar Jose Mantelli. Anchieta. SC/Brasil. Ivan Jose ... com confiança, credibilidade e um plano de ação coletiva juntos, cada um ...
   - ⚠ ano_anterior_ao_ciclo
-- `e33b533444` · nível **B** (3 pts) · busca_web · — · data 1997 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `e33b533444` · nível **B** (3 pts) · busca_web · EX_ANTE · **LEINº 10.501**, 1997
   - título: OFICIA - Arquivo Público do Estado de Santa Catarina
   - url: https://acervo.arquivopublico.sc.gov.br/uploads/r/arquivo-publico-do-estado-de-santa-catarina-apesc/8/8/d/88de21c8ad2c19e60d351a7707d26b61643d39a78fbc8c80f7518f4423501ae1/93120dc8-1d60-4afb-b27d-274c03fa41cc-18687-DOE_15756_09_09_1997_36F.pdf
   - trecho: Sep 9, 1997 ... leitura do Plano de Ação do Governo para a região por representante ... - Palma Sola. - Içara. - Lontras. - Palmitos. - Jacinto Machado. - Mirim ...
+  - juiz: portão automático: data do ato incompleta (1997)
 - `02ac3032b2` · nível **C** (3 pts) · busca_web · — · data 2020 (do trecho)
   - título: Lista Geral de Fornecedores - Transparência Porto Velho
   - url: https://transparencia.portovelho.ro.gov.br/fornecedores
@@ -1915,10 +1936,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Conselho Municipal de Educação - MUNICÍPIO DE RIO DO OESTE
   - url: https://riodooeste.sc.gov.br/noticia-575578/
   - trecho: 13/04/2021 - plano de contingência 2020 EEB Exp Mário Nardelli · 13/04/2021 ... Prefeitura da Cidade de Rio do Oeste- Rua Paulo Sardagna, 797- Bela Vista ...
-- `62d01ecb74` · nível **A** (6 pts) · busca_web · — · data 9/6/2009 (do trecho)
+- `62d01ecb74` · nível **A** (6 pts) · busca_web · DUVIDA · data 9/6/2009 (do trecho)
   - título: Diário da Justiça - ELETRÔNICO - TJSC
   - url: https://busca.tjsc.jus.br/dje-consulta/rest/diario/caderno?edicao=4204&cdCaderno=4
   - trecho: Mar 13, 2024 ... Rio do Oeste. Laurentino. Escrivania de Paz. 9/6/2009. 27/3/1958 ... justificativa e plano de ação para implementação das exigências, com.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `c5ba96c426` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO DE CONTINGÊNCIA - Defesa Civil Taió-SC
   - url: https://defesacivil.taio.sc.gov.br/wp-content/uploads/2026/01/PLANO-DE-CONTINGENCIA-TAIO-JAN-2026.pdf
@@ -2011,11 +2033,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf
   - trecho: ... RIO DO OESTE / 485 - Prefeitura Municipal de Rio do. Oeste - SC ... PLANO DE AÇÃO ELABORADO PARA. ATENDIMENTO À POPULAÇÃO IMIGRANTE, COM FUNDAMENTO NA.
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `d8cc7959b3` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+- `d8cc7959b3` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto Estadual nº 733**, 24/10/2024
   - título: EDITAL DE CHAMAMENTO PÚBLICO PARA TERMO DE ...
   - url: https://www.cultura.sc.gov.br/downloads/fcc/editais/3362-edital-de-chamamento-publico-para-termo-de-convenio-sc-cultura-boa-165-2025-atualizado-docx/file
   - trecho: Nov 12, 2025 ... Nereu, Rio do Campo, Rio do Oeste, Rio ... ajuizamento de ação e/ou apresentação de plano de ação, especialmente no caso de obra com etapa.
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `074d9526be` · nível **B** (4 pts) · busca_web · — · citação não extraída
   - título: ROI: Radiologia Intervencionista - Pesquisa - Anvisa
   - url: https://pesquisa.anvisa.gov.br/index.php/616471?lang=pt-BR
@@ -4952,25 +4975,29 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Nacional de Crédito Rural (SNCR), do Plano de Ação Econômica do Governo (PAEG) e do Fundo ... outubro de 2016 em Major vieira (SC). 8 A produção de milho em Santa ...
 
 ## Monte Castelo/SC — 60 pendente(s)
-- `07981b1d57` · nível **B** (5 pts) · busca_web · — · data 4/9/2026 (do trecho)
+- `07981b1d57` · nível **B** (5 pts) · busca_web · DUVIDA · **Resolução nº 1**, 2002
   - título: Foram publicadas em 4/9/2026 as edições extras nºs 168-A e 168-B ...
   - url: https://primeirapagina.com.br/wp-content/uploads/2026/09/2026_09_08_ASSINADO_do1-1.pdf
   - trecho: Sep 8, 2026 ... ... Monte Castelo), CNPJ nº. 10.735.145/0019-13, para executar atividades ... Plano de Contingência de Tecnologia da. Informação (PLCONT) ...
-- `f972c30d6c` · nível **B** (5 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `f972c30d6c` · nível **B** (5 pts) · busca_web · DUVIDA · data 2024 (do trecho)
   - título: plano municipal de contingência de desastres naturais
   - url: https://saude.prefeitura.rio/wp-content/uploads/sites/47/2024/10/Livro_PlanoDeContingenciaDeDesastresNaturais_2024-2026_PDFDigital_20241022.pdf
   - trecho: Este documento apresenta o Plano de Contingência de Desastres Naturais 2024-2026 ela- ... E.M. Monte Castelo. Rua Ouseley, s/n.º — Coelho Neto. Jardim.
-- `d4e10c939e` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `d4e10c939e` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: PLANO MUNICIPAL INTEGRADO DE SANEAMENTO BÁSICO
   - url: https://schroeder.sc.gov.br/uploads/sites/353/2021/12/1277144_PMSB___Schroeder.pdf
   - trecho: Monte Castelo – CEP: 79010-210 – Fone: (67) 3253-5177. EQUIPE TÉCNICA. Robson ... 13 PLANO DE CONTINGÊNCIA E EMERGÊNCIA PARA OS SERVIÇOS DO SANEAMENTO.
   - ⚠ ano_anterior_ao_ciclo
-- `ecee6648db` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `ecee6648db` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: PLANO MUNICIPAL DE CONTINGÊNCIA - Prefeitura de Tubarão
   - url: https://tubarao.sc.gov.br/uploads/sites/265/2025/04/PLANO_DE_CONTINGE_NCIA_2025.pdf
   - trecho: ... Monte Castelo, Sombrio, São Bernardo,. Bom Pastor, São João M/E, Rio do ... Este Plano de Contingência tem validade de 1(um) ano a contar da data de ...
   - ⚠ ano_anterior_ao_ciclo
-- `0fe76dd54a` · nível **B** (5 pts) · busca_web · — · **DECRETO Nº. 68**, 2025 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `0fe76dd54a` · nível **B** (5 pts) · busca_web · — · **DECRETO Nº. 68**, 2025
   - título: DECRETO Nº. 68/2025 - Prefeitura de Mafra
   - url: https://mafra.sc.gov.br/legislacao/decreto-no-68-2025/
   - trecho: Plano Municipal de Educação ... AUTORIZA O PODER EXECUTIVO MUNICIPAL A EFETUAR A CESSÃO DE VEÍCULO AO MUNICÍPIO DE MONTE CASTELO DIANTE DE SUA SITUAÇÃO DE ...
@@ -4979,127 +5006,152 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Inauguração! - Prefeitura de Monte Castelo
   - url: https://montecastelo.sc.gov.br/noticia-510984/
   - trecho: Plano Municipal de Educação · Proposta Curricular Da Educação Básica ... MONTE CASTELO – SC · 7 de julho de 2026 7 de julho de 2026 pedropmmc ...
-- `7f9c627e01` · nível **B** (5 pts) · busca_web · — · citação não extraída
+- `7f9c627e01` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: Elaboração do Plano de Recursos Hídricos – Atividade E1 a E3
   - url: https://www.aguas.sc.gov.br/jsmallfib_top/DHRI/Planos%20de%20Bacias/Plano%20da%20Bacia%20Hidrografica%20do%20Rio%20Canoinhas%20e%20Afluentes%20do%20Negro%20%20/Produto_Etapa_E_PRH_Canoinhas_Negro.pdf
   - trecho: Monte Castelo e o Sindicato das Indústrias de Celulose e Papel de Santa Catarina ... Plano de Contingência e Defesa Civil - PLANCON. Prefeitura de Campo.
-- `f95bf6b303` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `f95bf6b303` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de Ação para Prevenção e Controle do Desmatamento e das ...
   - url: https://www.gov.br/casacivil/pt-br/.arquivos/101116%20-%20PPCerrado_Vfinal.pdf
   - trecho: PLANO DE AÇÃO PARA PREVENÇÃO E CONTROLE DO DESMATAMENTO E DAS QUEIMADAS NO CERRADO ... PA Monte Castelo. MA. 12,54. 5,59. 2,37%. PA Monte Cristo. MA. 71,88. 2,32.
-- `cbdc20bada` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: ato de 2010 — pode ser edição anterior; decisão humana
+- `cbdc20bada` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: Proposta Curricular da Educação Básica - Prefeitura de Monte Castelo
   - url: https://montecastelo.sc.gov.br/uploads/sites/449/2021/12/2213358_1732258_PROPOSTA_CURRICULAR_AMPLANORTE_COMPLETA_160120.pdf
   - trecho: ... Monte Castelo. Prefeito. Jean Carlo Medeiros de. Souza. Secretário de Educação. Osner ... plano de ação que possibilite contínuas melhorias, qualitativas e ...
   - ⚠ ano_anterior_ao_ciclo
-- `0df4dd0775` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `0df4dd0775` · nível **B** (4 pts) · busca_web · EX_ANTE · **DECRETO Nº 749**, 05/11/2024
   - título: CONSELHO MUNICIPAL DE DEFESA DO MEIO AMBIENTE
   - url: https://s3cache.dom.sc.gov.br/atos/2024/11/1730817243_74970511__homologa_o_plano_municipal_de_gua_e_esgoto_de_timb_com_anexos.pdf
   - trecho: Nov 5, 2024 ... ... Monte Castelo, Navegantes, Otacílio Costa, Papanduva,. Penha ... plano de contingência e emergência para a unidade que permita mitigar ...
   - ⚠ ano_anterior_ao_ciclo
-- `52bad71f78` · nível **B** (4 pts) · busca_web · — · data 23/08/2024 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `52bad71f78` · nível **B** (4 pts) · busca_web · DUVIDA · data 23/08/2024 (do trecho)
   - título: Sexta-feira - 23 de Agosto de 2024 Florianópolis/SC Edição N° 4619
   - url: https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf
   - trecho: Aug 14, 2024 ... ... Monte Castelo .............................................747. Morro ... Plano de Contingência (PLANCON) organiza as ações sistêmicas ...
   - ⚠ ano_anterior_ao_ciclo
-- `37affc6df8` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `37affc6df8` · nível **B** (4 pts) · busca_web · EX_ANTE · citação não extraída
   - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
   - url: https://www.mpsc.mp.br/w/noticias/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc
   - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... 2ª PJ de Papanduva: Monte Castelo e Papanduva ...
-- `b6c7f99d6e` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `b6c7f99d6e` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2024 (do trecho)
   - título: Papanduva e Monte Castelo se comprometem com MPSC a revisar ...
   - url: https://www.jmais.com.br/papanduva-e-monte-castelo-se-comprometem-com-mpsc-a-revisar-seus-planos-diretores/
   - trecho: Jun 6, 2024 ... Devem também estar pontuadas as providências para redução do risco, como a execução de plano de contingência e de obras de segurança e ...
-- `4c3441280b` · nível **B** (4 pts) · busca_web · — · data 2022 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `4c3441280b` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2022 (do trecho)
   - título: Expo Monte Castelo é adiada após novo decreto da prefeitura ... - G1
   - url: https://g1.globo.com/pr/norte-noroeste/noticia/2022/01/20/expo-monte-castelo-e-adiada-apos-novo-decreto-da-prefeitura-limitar-publico-de-eventos.ghtml
   - trecho: Jan 20, 2022 ... ... plano de contingência para a realização do evento. A diretoria da Sormoc garantiu que a 15ª Expo Monte Castelo está confirmada e que, nos ...
   - ⚠ ano_anterior_ao_ciclo
-- `de38023535` · nível **B** (4 pts) · busca_web · — · data 2020 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `de38023535` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2020 (do trecho)
   - título: PLANCON EDU
   - url: https://chapeco.sc.gov.br/download/1003/DocumentoArquivo
   - trecho: Chapecó. Outubro de 2020. Page 2. 2. Este Plano de Contingência foi construído com base no Modelo do Plano de Contingência elaborado e ... Monte Castelo, Bairro.
-- `6d9a0357a0` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `6d9a0357a0` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto nº 5.296**, 05/06/2002
   - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
   - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
   - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Vieira, Monte Castelo, Papanduva, Porto União, Rio Negrinho, São Bento do ...
-- `9dbdae971a` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: ato de 2002 — pode ser edição anterior; decisão humana
+- `9dbdae971a` · nível **B** (4 pts) · busca_web · EX_ANTE · **LEI Nº 19.876**, 03/06/2026
   - título: Diário Oficial - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2026/20260608/Jornal/22769.pdf
   - trecho: Jun 8, 2026 ... ... Monte Castelo, no(a) área não titulada sob posse direta ... plano de ação, pro- por uma solução técnica e elaborar o termo de ...
+  - juiz: portão automático: número extraído parece lei citada, não o ato instituinte (LEI Nº 19.876)
 - `74fe8369e6` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **lei nº 6.218**, 1983
   - título: Diário Oficial - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20240313/Jornal/22223.pdf
   - trecho: Mar 13, 2024 ... - MonTE CasTElo - sC - CEp: 89.380-000. 19. Processo SES 00087784 ... plano de Contingência para Emergências Zoossanitárias - parte ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `1c60b93f73` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `1c60b93f73` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: MP abre procedimentos sobre prevenção ao El Niño em Canoinhas ...
   - url: https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720
   - trecho: 4 days ago ... Em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Monte Castelo e Papanduva, acompanhados pela 2ª ...
-- `4c15f77aed` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `4c15f77aed` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Editor Comitê Tubarão e Complexo Lagunar - Aguas SC
   - url: https://www.aguas.sc.gov.br/servicos/noticias/itemlist/user/199-editorcomitetubaraoecomplexolagunar
   - trecho: ... plano de contingência com o intuito de enfrentar os momentos de crise. ... Monte Castelo (estação meteorológica) e na Ponte Paulo Osny May; um na Ponte ...
-- `1b7c9a5d44` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `1b7c9a5d44` · nível **B** (3 pts) · busca_web · EX_ANTE · **PORTARIA 4**, 09/02/2026
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-02-26.pdf
   - trecho: Feb 26, 2026 ... PLANO DE CONTINGÊNCIA (PLANCON). MUNICÍPIO DE PIRATUBA/SC ... Monte Castelo, o inquérito civil e o inquérito policial foram arquivados ...
-- `7e64504f1f` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `7e64504f1f` · nível **B** (3 pts) · busca_web · EX_ANTE · **Lei nº 9.610**, 2009
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO: - PERS-MT
   - url: https://persmt.setec.ufmt.br/wp-content/uploads/2020/08/PMSB_Sa%CC%83o-Jose%CC%81-do-Rio-Claro_PMSB.pdf
   - trecho: ... PLANO DE CONTINGÊNCIA ... Monte Castelo. 16°37'5.64"S. 54°27'49.94"O. Travessa 1. 16°36'47.88"S. 54°27'48.18"O. Fonte: Quadro elaborado pela equipe técnica do ...
   - ⚠ ano_anterior_ao_ciclo
-- `0b59b96004` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `0b59b96004` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: PLANO MUNICIPAL DE SANEAMENTO BÁSICO COMENDADOR ...
   - url: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-levy-gasparian.pdf
   - trecho: bairros de Três Rios, como Monte Castelo, distante a menos de 5 quilômetros da prefeitura ... Portanto, enquanto o plano de contingência aborda ações programadas ...
-- `c5cdd51d79` · nível **B** (3 pts) · busca_web · — · data 2010 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `c5cdd51d79` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2010 (do trecho)
   - título: EXEMPLAR DE ASSINANTE DA IMPRENSA NACIONAL
   - url: https://www.gov.br/mme/pt-br/arquivos/do-23-12-2010-s1.pdf
   - trecho: Dec 23, 2010 ... ... plano de contingência relativo a acidentes por vazamento de petróleo ... Monte Castelo. Associação Comunitária do Bairro Ellery e. Monte ...
   - ⚠ ano_anterior_ao_ciclo
-- `223a928f30` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `223a928f30` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Seis municípios decretam emergência após temporais em Santa ...
   - url: https://www.santacatarinaempauta.com.br/2026/07/02/seis-municipios-decretam-emergencia-apos-temporais-em-santa-catarina-defesa-civil-inicia-entrega-de-assistencia/
   - trecho: Jul 2, 2026 ... ... Monte Castelo e Presidente Getúlio. Os principais registros incluem ... A distribuição faz parte do plano de contingência previsto para ...
-- `138b5b3f54` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `138b5b3f54` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2024 (do trecho)
   - título: PLANO DE CONTINGÊNCIA DE DESASTRES NATURAIS 2024
   - url: https://epirio.svs.rio.br/wp-content/uploads/2024/02/Livro_PlanoDeContingenciaDeDesastresNaturais2024_PDFDigital_20240206-1.pdf
   - trecho: Nov 16, 2023 ... Plano de Contingência 2021-2022. Disponível em: https://www ... E.M. Monte Castelo. Rua Ouseley, s/n — Coelho Neto. Jardim. América. 3.1.
   - ⚠ ano_anterior_ao_ciclo
-- `6062106d02` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `6062106d02` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
   - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
   - trecho: Plano de contingência e emergência ambiental da sua empresa esteja ... Monte Castelo; Corumbataí; Espírito Santo do Turvo; Glicério; Monteiro Lobato ...
-- `044ad02c4a` · nível **B** (3 pts) · busca_web · — · data 2019 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `044ad02c4a` · nível **B** (3 pts) · busca_web · EX_ANTE · **Lei Estadual nº 5.164**, 27/11/1975
   - título: SeCRetaRia De eStaDO Da aDMiniStRaçÃO - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2019/20191203/Jornal/2281.pdf
   - trecho: Dec 3, 2019 ... Civil e Plano de Contingência atualizado quando o ente beneficiário ... Monte Castelo/SC. Área total de intervenção 868,00 (Oitocentos e ...
   - ⚠ ano_anterior_ao_ciclo
-- `c03366b160` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `c03366b160` · nível **B** (3 pts) · busca_web · RESPOSTA · data 2026 (do trecho)
   - título: Sobe para 6 os municípios em situação de emergência após ...
   - url: https://ndmais.com.br/tempo/sobe-para-6-os-municipios-em-situacao-de-emergencia-apos-temporais-castigarem-sc/
   - trecho: Jul 2, 2026 ... Monte Castelo;; Presidente Getúlio. As principais ocorrências incluem ... plano de contingência elaborado para a área. De acordo com a ...
+  - juiz: portão automático: fonte não oficial
 - `514248e9e4` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
   - url: https://valedoitajainoticias.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
   - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... 2ª PJ de Papanduva: Monte Castelo e Papanduva.
-- `3c10a0c505` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+- `3c10a0c505` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei 13.024**, 2014
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-10-01.pdf
   - trecho: Oct 1, 2025 ... de Contingência (Plancon) integrados ao Plano de Ação Emergencial ... em Monte Castelo/SC. 2. O SUSCITADO declinou do feito sustentando ...
   - ⚠ ano_anterior_ao_ciclo
-- `fe6bdbb276` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `fe6bdbb276` · nível **B** (3 pts) · busca_web · DUVIDA · data 2025 (do trecho)
   - título: Resumo Público IMARIBO REV 10 2025
   - url: https://imaribo.com.br/wp-content/uploads/2025/05/Resumo-Publico-IMARIBO-REV-10-maio_2025.pdf
   - trecho: Nas áreas de Monte Castelo há o Neosso- lo. Caracterizados como solos ... PLANO DE AÇÃO. OPERADOR DE MOTOSSERA. OPERADOR DE MÁQUINA. MEMBRO CIPA. PRIMEIROS ...
   - ⚠ ano_anterior_ao_ciclo
-- `6902e4eb01` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `6902e4eb01` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de Vigilância e Atenção à Saúde de Populações Expostas ...
   - url: https://mandatogoura.com.br/wp-content/uploads/2019/06/PlanoAgrotoxic30_05_18.pdf
   - trecho: Santa Cruz de Monte Castelo. 81,7. 100,4. 111. 151,9. 444,9. Santa Isabel do ... • Elaborar o Plano de Ação Regional para a Vigilância e Atenção à Saúde das ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: fonte não oficial
 - `871eff0534` · nível **C** (7 pts) · busca_web · — · data 2024 (do trecho)
   - título: CDU 35 ©2024. Senai - Sesp/PR
   - url: https://www.seguranca.pr.gov.br/sites/default/arquivos_restritos/files/documento/2025-07/pespds_2024-2034_-_final.pdf
