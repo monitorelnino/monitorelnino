@@ -23,6 +23,9 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        # 50 commits de histórico: o vigia de frescor precisa do último commit que tocou
+        # `data/`, e com profundidade 1 esse commit pode não estar no clone.
+        with: { fetch-depth: 50 }
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with: { node-version: "20", cache: npm }   # §267 item 5: este roda `npm ci`; o cache vale
       - name: Verificar
@@ -38,6 +41,19 @@ jobs:
       # ("Collaboration tools" pode não existir num projeto sem Git ligado). Pergunta ao Netlify, pela API, quais campos do
       # projeto falam de HUD/colaboração/injeção de snippet — só leitura; valores mascarados; nunca imprime o token.
       # 14/09/2026: canário em Chromium real contra o domínio — nossos scripts rodam sob a CSP por caminho; só a injeção do Netlify é bloqueada
+      # Item 3 do bloco de frescor (28/09/2026): vigia de frescor. Compara o `atualizado_em` do
+      # `data/meta.json` SERVIDO PELO DOMÍNIO com o último commit de dado na `main` — as duas pontas
+      # que importam, uma de cada lado do deploy. Diferença acima de um dia reprova visivelmente;
+      # entre 25/09 e 28/09 esse atraso existiu e nada o disse. Este passo NÃO leva
+      # `continue-on-error`: atraso silencioso foi o defeito, e um vigia que não reprova é silêncio
+      # com outro nome. A granularidade é de data porque `atualizado_em` é data, e está declarada
+      # no cabeçalho de `scripts/frescor.py`.
+      - name: Vigia de frescor (site publicado × último dado na main)
+        env:
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+        run: |
+          python3 scripts/frescor.py --vigia --base https://monitorelnino.com.br
+
       - name: Canário no navegador (Playwright) contra o domínio
         continue-on-error: true
         timeout-minutes: 10

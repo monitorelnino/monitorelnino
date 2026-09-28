@@ -9,6 +9,61 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §283 · Toda coleta que muda dado termina em publicação, e o atraso passa a aparecer · 28/09/2026
+
+Classe **infraestrutura da rodada** e **mostrador**. Itens 2, 3 e 4 do bloco "Frescor do site"
+(decisão da central, 28/09/2026, tarde). **Nenhuma nota muda, nenhum peso muda, nenhum texto
+editorial muda.**
+
+### O que o §282 consertou, e o que faltava
+
+O §282 consertou as causas: o juiz que não aplicava e o publicador que morria do próprio trabalho.
+Faltava o que impede a próxima parada de durar três dias. Entre 25/09 e 28/09 a coleta rodou todas
+as noites, o publicador falhou duas vezes por dia, e nada disse. **Defeito que se anuncia custa uma
+correção; defeito silencioso custou três dias de dado.**
+
+### Item 2 — o contrato
+
+`publicar_dados.yml` passa a ser disparado por `workflow_run` ao término, **com sucesso**, de
+qualquer coletor ou juiz que commita dado: os quatro noturnos, o semanal de sinais, a cadência da
+busca web, a atualização semanal e a preservação de textos. Os horários fixos continuam — 06h e 22h
+são compromisso público declarado em `obrigado.html` e na METODOLOGIA, e cobrem a noite em que
+nenhum coletor rodou.
+
+O `cancel-in-progress: true` do grupo faz o trabalho pesado: uma noite com cinco coletores não gera
+cinco publicações — a mais nova substitui a mais velha e publica o que todas commitaram. Publicação
+cancelada por uma mais nova não é dado não publicado, e o texto do workflow diz isso, para que
+ninguém leia o cancelamento como falha.
+
+### Item 3 — o vigia
+
+`scripts/frescor.py` compara o `atualizado_em` do `data/meta.json` **servido pelo domínio** com o
+último commit de dado na `main` — uma ponta de cada lado do deploy. `verificar_publicado.yml` ganhou
+o passo, **sem** `continue-on-error`: atraso silencioso foi o defeito, e vigia que não reprova é
+silêncio com outro nome.
+
+**A granularidade está declarada, não escondida.** `atualizado_em` é data, não instante, então o
+limite de 24 h da decisão é aplicado onde ele existe: reprova acima de **um dia** de diferença. Um
+dia pode ser uma hora ou quarenta e sete, e reprovar ali daria alarme falso toda manhã seguinte a
+uma noite que commitou tarde; dois dias é uma publicação inteira perdida. Rodado hoje sobre o estado
+real, ele diz: *dado novo não publicado desde 25/09/2026 (3 dias de atraso)*.
+
+O mesmo script escreve a linha de frescor no resumo do job do publicador, com `if: always()` — a
+linha aparece justamente quando o publicador falha, que é quando ela importa.
+
+### Item 4 — o mostrador
+
+O rodapé da página inicial mostrava "Última atualização", que é a data da **publicação**. Sozinha,
+ela não distingue "nada foi coletado desde então" de "foi coletado e não publicado" — e foi a
+segunda que aconteceu. Agora, ao lado: **"Última coleta: 28/09/2026 · última publicação:
+25/09/2026"**, das datas que já existem em `data/saude_pipeline.json` e `data/meta.json`, com
+`ultima_rodada_log` do resumo como segunda fonte.
+
+Sem as duas pontas, a linha fica oculta: não se afirma meia data. É mostrador, não interpretação —
+descreve o que está nos arquivos, sem juízo e sem instrução de uso.
+
+Um portão novo (113).
+
 ## §282 · O juiz nunca promoveu nada, e o publicador morria do próprio trabalho · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 1 do bloco "Frescor do site" (decisão da central,
