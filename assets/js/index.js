@@ -236,6 +236,31 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   if (elFooter && dataRef) elFooter.textContent = dataRef;
 })();
 
+// 28/09/2026 (item 4 do bloco de frescor). "Última atualização" é a data da PUBLICAÇÃO, e sozinha
+// ela não distingue duas coisas diferentes: "nada foi coletado desde então" e "foi coletado e não
+// publicado". Foi a segunda que aconteceu entre 25/09 e 28/09 — a coleta seguiu rodando, o
+// publicador falhava duas vezes por dia, e nada no site dizia isso. As duas datas, lado a lado,
+// dizem. Só descreve o que existe nos arquivos; nenhum juízo, nenhuma instrução de uso.
+(function(){
+  const el = document.getElementById('metaFrescor');
+  if (!el) return;
+  const brDeIso = s => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(s || ''));
+    return m ? `${m[3]}/${m[2]}/${m[1]}` : '';
+  };
+  const publicacao = (META && (META.atualizado_em || META.corte)) || '';
+  const doResumo = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.ultima_rodada_log) || '';
+  const mostrar = coleta => {
+    if (!coleta || !publicacao) return;   // sem as duas pontas, não se afirma nada
+    el.textContent = `Última coleta: ${coleta} · última publicação: ${publicacao}`;
+    el.hidden = false;
+  };
+  fetch('data/saude_pipeline.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(s => mostrar(brDeIso((s && s.atualizado_em) || doResumo)))
+    .catch(() => mostrar(brDeIso(doResumo)));
+})();
+
 // 26/09/2026 (pedido da editoria). Os estados eram agrupados numa COLUNA por região, e o
 // desequilíbrio de contagem (9 no Nordeste contra 3 no Sul) deixava um quadrante vazio, porque
 // toda coluna herda a altura da mais longa. Enquanto a contagem por região definir a geometria,

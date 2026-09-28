@@ -26,6 +26,26 @@ on:
     - cron: "5 9 * * *"    # 06h05 de Brasília — fecha a noite
     - cron: "5 1 * * *"    # 22h05 de Brasília — abre a noite, com o que a editoria mesclou de dia
   workflow_dispatch:
+  # 28/09/2026 (item 2 do bloco de frescor): CONTRATO — toda coleta que muda dado termina em
+  # publicação. Até aqui o publicador só tinha horário, e uma noite que commitava dado às 06h30
+  # esperava até as 22h05 para aparecer; noite em que o publicador falhava, o dado esperava o dia
+  # seguinte, e ninguém era avisado. Os horários fixos continuam — eles são o compromisso público de
+  # obrigado.html e da METODOLOGIA, e cobrem o caso de nenhum coletor ter rodado.
+  #
+  # `cancel-in-progress: true` no grupo faz o trabalho pesado aqui: uma noite com cinco coletores
+  # não gera cinco publicações: a mais nova substitui a mais velha, e a última publica tudo o que
+  # todas commitaram. Publicação cancelada por uma mais nova NÃO é dado não publicado.
+  workflow_run:
+    workflows:
+      - "Noturno — diários oficiais"
+      - "Noturno — descoberta"
+      - "Noturno — evidências e OCR"
+      - "Noturno — juiz automático"
+      - "Semanal — sinais climáticos e links"
+      - "Busca web — cadência automática"
+      - "Atualização semanal de dados"
+      - "Preservar textos integrais das evidências"
+    types: [completed]
 
 permissions:
   contents: read
@@ -36,6 +56,9 @@ concurrency:
 
 jobs:
   publicar:
+    # Coletor que falhou não tem dado novo para publicar; só o `success` dispara. Os outros
+    # gatilhos (horário e botão) não têm `workflow_run` e passam sempre.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 25   # meta é < 10 min; o teto existe para que um travamento não fique pendurado
     steps:
@@ -179,4 +202,9 @@ jobs:
         run: |
           echo "### Publicação" >> "$GITHUB_STEP_SUMMARY"
           echo "commit: ${{ steps.commit.outputs.houve == '1' && 'sim' || 'sem alterações' }}" >> "$GITHUB_STEP_SUMMARY"
+          # Item 2 do bloco de frescor: se o publicador falhou, o resumo diz "dado novo não
+          # publicado desde <data>" em vez de deixar o quadrado vermelho falar sozinho. `if:
+          # always()` garante que esta linha apareça justamente no caso em que ela importa.
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "frescor: $(python3 scripts/frescor.py --resumo 2>&1 | tail -1)" >> "$GITHUB_STEP_SUMMARY"
           python3 scripts/saude_pipeline.py --listar | tail -15 >> "$GITHUB_STEP_SUMMARY" || true
