@@ -21,7 +21,7 @@ Cinco regras herdadas de `coletar_sinais_risco.py` e da transferência conceitua
    É deste livro (mais o log) que `recalcular_mare.py` deriva o nível de
    verificação — os coletores nunca escrevem `verificacao_municipal.json`.
 """
-import hashlib, html, json, os, pathlib, re, ssl, sys, time, urllib.error, urllib.parse, urllib.request
+import hashlib, html, io, json, os, pathlib, re, ssl, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -987,10 +987,7 @@ def descarregar_lote_log():
     if not _LOTE_LOG:
         return 0
     pendentes, _LOTE_LOG = _LOTE_LOG, []
-    lg = ler("log_buscas.json")
-    assert lg and lg.get("formato_versao") == 2, "log_buscas.json precisa estar no esquema v2"
-    lg["execucoes"].extend(pendentes)
-    gravar("log_buscas.json", lg)
+    acrescentar_ao_log(pendentes)
     _LOTE_LOG = []
     return len(pendentes)
 
@@ -1010,6 +1007,73 @@ def fechar_lote_log():
 # mas a varredura ficou parada sem que isso aparecesse como problema de vocabulário. Nomear a
 # lista é o que permite que o coletor que INVENTA uma decisão prove, no autoteste dele, que ela
 # cabe aqui.
+# --- LOG EM JSONL MENSAL (item 4 do handover de desacoplamento, 28/09/2026) ---------------------
+# O `log_buscas.json` chegou a 30,8 MB num único JSON, lido E REGRAVADO inteiro a cada chamada de
+# `log_busca` por vários scripts a cada rodada. Duas consequências medidas: a rodada gastava tempo
+# reescrevendo 30 MB, e um erro de escrita no meio punha em risco o arquivo TODO — foi o que corrompeu
+# `fontes_consultadas.json` em 21/09 (368.019 para 166.961 linhas) e motivou a escrita atômica.
+#
+# Agora cada execução é UMA LINHA acrescentada em `data/log_buscas/AAAA-MM.jsonl`. Append puro: o
+# arquivo do mês cresce no fim e nada antes é reescrito. Quem lê usa `ler_log()`, que concatena os
+# meses (e o monólito antigo, enquanto existir) e devolve a MESMA forma de antes — nenhum leitor
+# precisa saber que o formato mudou.
+PASTA_LOG = "log_buscas"
+LOG_MONOLITO = "log_buscas.json"
+
+
+def _caminho_do_mes(data_iso: str) -> "pathlib.Path":
+    """`data/log_buscas/AAAA-MM.jsonl` para uma data `AAAA-MM-DD`. Data estranha vai para `sem-data`."""
+    mes = str(data_iso or "")[:7]
+    if len(mes) != 7 or mes[4] != "-":
+        mes = "sem-data"
+    return DATA / PASTA_LOG / f"{mes}.jsonl"
+
+
+def acrescentar_ao_log(execucoes: list) -> int:
+    """Acrescenta execuções ao arquivo do mês. APPEND PURO — nada antes é reescrito.
+
+    Devolve quantas linhas foram escritas. Agrupa por mês para abrir cada arquivo uma vez só."""
+    if not execucoes:
+        return 0
+    por_mes = {}
+    for e in execucoes:
+        por_mes.setdefault(_caminho_do_mes(e.get("data")), []).append(e)
+    escritas = 0
+    for caminho, linhas in por_mes.items():
+        caminho.parent.mkdir(parents=True, exist_ok=True)
+        with io.open(caminho, "a", encoding="utf-8", newline="\n") as fh:
+            for e in linhas:
+                fh.write(json.dumps(e, ensure_ascii=False) + "\n")
+                escritas += 1
+    return escritas
+
+
+def ler_log() -> dict:
+    """O log inteiro, na forma de sempre: {formato_versao, formato, execucoes: [...]}.
+
+    Concatena os meses em ordem e, ANTES deles, o monólito antigo — a ordem cronológica importa para
+    quem procura a última execução de um canal. Linha inválida é ignorada e contada, nunca estoura: um
+    JSONL truncado por interrupção perde a última linha, não o arquivo."""
+    doc = ler(LOG_MONOLITO) or {}
+    execucoes = list(doc.get("execucoes") or [])
+    invalidas = 0
+    pasta = DATA / PASTA_LOG
+    if pasta.exists():
+        for caminho in sorted(pasta.glob("*.jsonl")):
+            for linha in io.open(caminho, encoding="utf-8"):
+                linha = linha.strip()
+                if not linha:
+                    continue
+                try:
+                    execucoes.append(json.loads(linha))
+                except json.JSONDecodeError:
+                    invalidas += 1
+    return {"formato_versao": doc.get("formato_versao", 2),
+            "formato": doc.get("formato", "v2"),
+            "execucoes": execucoes,
+            "linhas_invalidas": invalidas}
+
+
 DECISOES_LOG = ("registro", "pista", "nada", "consultado", "fonte", "erro", "acesso",
                 "sem_cobertura_qd", "sem_edicao_no_periodo", "coberto_sem_mencao", "com_excerto",
                 # 27/09/2026 (decisão editorial, PR 1 do juiz automático): zero resultado bruto
@@ -1049,10 +1113,9 @@ def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: 
         if len(_LOTE_LOG) >= _LOTE_LOG_TETO:
             descarregar_lote_log()
         return
-    lg = ler("log_buscas.json")
-    assert lg and lg.get("formato_versao") == 2, "log_buscas.json precisa estar no esquema v2"
-    lg["execucoes"].append(execucao)
-    gravar("log_buscas.json", lg)
+    # item 4 (28/09/2026): uma linha acrescentada no arquivo do mês. Antes, cada chamada lia e
+    # regravava o JSON inteiro — 30,8 MB por execução registrada.
+    acrescentar_ao_log([execucao])
 
 
 # ── página de consulta do DOU (compartilhada por coletar_s2id e coletar_espin) ──
