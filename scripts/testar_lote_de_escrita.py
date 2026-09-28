@@ -37,12 +37,20 @@ class _Cofre:
         self.gravacoes = []
         self.gravar_real = cb.gravar
         cb.gravar = lambda nome, obj: (self.gravacoes.append(nome), self.gravar_real(nome, obj))[1]
+        # 28/09/2026 (item 4): o log deixou de passar por `gravar()` — cada execução é uma linha
+        # acrescentada em data/log_buscas/AAAA-MM.jsonl. O cofre espia a porta nova com o MESMO
+        # nome de sempre nas contagens ("log_buscas.json"), para que os testes continuem falando de
+        # "quantas gravações do log aconteceram" sem saber do formato.
+        self.acrescentar_real = cb.acrescentar_ao_log
+        cb.acrescentar_ao_log = lambda execucoes: (self.gravacoes.append("log_buscas.json"),
+                                                   self.acrescentar_real(execucoes))[1]
         return self
 
     def __exit__(self, *e):
         cb.fechar_lote_log()
         cb.fechar_lote_livro()
         cb.gravar = self.gravar_real
+        cb.acrescentar_ao_log = self.acrescentar_real
         cb.DATA = self.antigo
         self.dir.cleanup()
         return False
@@ -57,7 +65,9 @@ def _log(c, n):
 
 
 def _execucoes(c):
-    return len(json.loads((cb.DATA / "log_buscas.json").read_text(encoding="utf-8"))["execucoes"])
+    # item 4: `ler_log()` concatena os meses em JSONL (e o monólito antigo, enquanto existir). O
+    # teste pergunta "quantas execuções o log tem", que é a pergunta de sempre.
+    return len(cb.ler_log()["execucoes"])
 
 
 def _municipios():

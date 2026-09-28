@@ -95,6 +95,67 @@ Duas coisas ficam esperando a palavra dela, e são as duas que dariam o ganho de
 Três portões novos (97 no total). O portão do binário roda contra `origin/main`, não contra o índice:
 é o diff do PR que interessa.
 
+## §269 · O log de buscas em JSONL mensal · 28/09/2026
+
+Classe **infraestrutura da rodada**. Item 4 do handover de desacoplamento (27/09/2026).
+**Nenhuma nota muda:** `recalcular_mare.py --check` reproduz os 27 estados × 7 campos idênticos,
+média 46,6, lendo o log pela porta nova.
+
+### O que foi medido
+
+`data/log_buscas.json`: **30,8 MB** num único JSON, **50.849 execuções**, lido **e regravado inteiro**
+a cada execução registrada — por vários coletores, a cada rodada. Além do tempo, o risco: erro de
+escrita no meio põe em risco o arquivo todo, e foi assim que `fontes_consultadas.json` se corrompeu em
+21/09 (368.019 para 166.961 linhas).
+
+### Uma linha por execução
+
+Cada execução vira uma linha em `data/log_buscas/AAAA-MM.jsonl`. **Append puro:** o arquivo do mês
+cresce no fim e nada antes é reescrito. `ler_log()` concatena os meses — e o monólito antigo, enquanto
+existir — e devolve a **mesma forma de antes**, então nenhum dos oito leitores precisou mudar de
+lógica, só de porta.
+
+O monólito **não foi apagado**: ficou com `execucoes: []`, um campo `migrado_para` e 280 bytes.
+Apagá-lo quebraria quem ainda o abre direto, e a porta única já o soma enquanto ele existir.
+
+### A migração foi conferida, não confiada
+
+`scripts/migrar_log_para_jsonl.py` só esvazia o monólito **depois** de conferir paridade de contagem,
+e a conferência é condição: se não fechar, nada é tocado. Medido: **50.849 antes, 50.849 depois**. A
+ordem dentro de cada mês é a do arquivo original — o log é append-only e "a última execução deste
+canal" é pergunta real, que reordenar responderia errado.
+
+### O portão que o formato novo exige
+
+Com o log fatiado, **perder um arquivo de mês passaria sem ruído**: o JSON continuaria válido, só
+menor. `scripts/verificar_paridade_log.py` guarda uma marca d'água (maior total já visto, e por mês) e
+reprova se a contagem encolher — no total **ou em qualquer mês**, porque o total pode crescer enquanto
+um mês perde linhas. Linha inválida também reprova: `ler_log()` a ignora para não estourar, mas linha
+perdida é dado perdido. É o mesmo defeito de 23/09, quando uma união por conteúdo produziu um log
+menor que cada um dos lados e apagou quase 3.000 execuções sem aviso.
+
+### A página parava de baixar 30 MB
+
+`defesa-civil.html` mostrava dois números — total de execuções e divisão por canal da última rodada —
+e para isso o navegador do leitor baixava o log **inteiro**. Agora lê `data/log_buscas_resumo.json`,
+derivado, com 376 bytes. Os números são os mesmos. O link público passa a apontar o resumo e o texto
+diz onde está o registro completo: arquivos mensais em `data/log_buscas/`, no formato `AAAA-MM.jsonl`.
+
+O resumo é derivado, e derivado novo na cadeia obriga a mexer em **duas** listas: a de
+`scripts/verificar_derivados.sh` e a constante `CADEIA_DERIVADOS` de
+`julgar_e_aplicar_descobertas.py`, que o juiz usa para regenerar antes de aplicar. Mexi só na primeira
+e o autoteste do orquestrador reprovou — é o invariante do §163, que existe porque essa divergência
+deixou o portão 12 vermelho na `main` em 22/09/2026. Cometi o mesmo esquecimento nos dois PRs do dia
+que acrescentam derivado.
+
+`scripts/testar_lote_de_escrita.py` também precisou mudar de porta, e eu esqueci: ele contava
+gravações espiando `gravar()` e conferia a contagem abrindo o monólito, então cinco dos seus casos
+reprovaram no CI. O cofre do teste passou a espiar **também** `acrescentar_ao_log()`, registrando com o
+mesmo nome de sempre, e a contagem sai de `ler_log()`. Os testes continuam fazendo a pergunta de
+sempre — "quantas gravações do log aconteceram" e "quantas execuções o log tem" — sem saber do formato.
+
+Quatro portões novos (96 no total): autoteste da migração, do resumo, do portão de paridade, e o
+portão de paridade rodando de verdade.
 ## §268 · Disjuntor por motor de origem da busca web · 28/09/2026
 
 Classe **método e coleta**. Item 7b do handover
