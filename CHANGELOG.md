@@ -48,6 +48,86 @@ acontece também precisa dizer por quê.
 **Total de planos: 111 — inalterado. `atualizado_em`: 28/09/2026.**
 
 Um portão novo (116), com 13 casos offline.
+## §288 · Procurar o ato antes de recusar por falta dele · 28/09/2026
+
+Classe **método e coleta**. Bloco das 17:20 de 28/09/2026 (decisão da central). **Nenhuma nota muda,
+nenhum peso muda:** nada aqui promove — a busca dirigida devolve candidato a documento, e quem julga
+continua sendo o juiz, pelas mesmas etapas.
+
+### O gargalo, medido
+
+Das 250 decisões da primeira passada, **176 pararam na Etapa 0** por `sem_documento_primario`. Dos
+171 com URL, **34 eram Instagram**, 4 Facebook, o resto portais de imprensa. O juiz está certo em
+recusar: notícia não é ato. O que faltava era **procurar o ato** antes de encerrar — a notícia diz
+que ele existe, e diz onde procurar.
+
+### As três rotas
+
+1. **Querido Diário**, pelo território e pelo número/data extraídos da pista.
+2. **Sítio oficial do município**, pelos domínios já conhecidos, procurando o título do ato.
+3. **Cascata da busca web**, com string específica — `"{município}" "{tipo} nº {número}"` e
+   `"{município}" "{nome do plano}"` —, sob o **mesmo ritmo e o mesmo disjuntor** da rodada. Não há
+   caminho de rede novo a manter.
+
+Achou → o juiz segue das etapas 1 a 7 sobre o documento encontrado. Não achou → a recusa fica, e a
+pista passa a dizer **onde se procurou e quando**: recusa que não diz onde procurou não é
+conferível.
+
+### O que a medição diz sobre as rotas
+
+Sobre as 207 recusas elegíveis (Etapa 0 e citação incompleta): **170 têm consulta dirigida**
+possível, 172 trazem nome de plano — e apenas **1** traz número de ato. A notícia quase nunca cita o
+número, e é por isso que a rota do nome do plano carrega o peso, com o nome do município entre
+aspas fazendo a precisão.
+
+**Um erro meu, achado na medição.** A captura do nome do plano ia até quatro palavras adiante e
+produzia consulta que não casaria nada: *"Plano de contingência preventivo estruturado pela
+Secretaria"* é frase de jornalista, não nome de ato. Duas palavras, e sem os adjetivos de redação.
+
+### A fila de reprocessamento
+
+**O ato pode ser publicado depois da notícia** — e uma recusa definitiva perderia exatamente esse
+caso, que é o mais comum quando a imprensa noticia o anúncio. A pista não achada volta a cada 7
+dias, e cada passagem fica no histórico, com as fontes tentadas.
+
+Um portão novo (117), com 18 casos offline.
+
+## §287 · Recusa por causa técnica deixa de ser permanente, com back-off e histórico · 28/09/2026
+
+Classe **método e coleta**. Item 2 do bloco das 19:50 (decisão da central). **Nenhuma nota muda,
+nenhum peso muda.**
+
+### Duas coisas com o mesmo nome
+
+A Etapa 0 chamava de `sem_documento_primario` três situações diferentes: a pista sem URL, a URL que
+não é fonte oficial, e **o documento que não respondeu**. As duas primeiras são estáveis — a URL é o
+que é. A terceira é uma noite ruim de rede, e tratá-la como as outras apaga pista por 403 de uma
+hora. "Documento não obtido" ganhou motivo próprio: `documento_inacessivel`.
+
+Com ele, a recusa passa a ter **classe**, e é a classe que decide o destino:
+
+| classe | o que é | destino |
+|---|---|---|
+| `tecnica` | `documento_inacessivel`, `texto_nao_extraivel` — não conseguimos ler | volta pelo back-off |
+| `criterio` | documento lido e reprovado nas etapas 1–6, ou URL que não é fonte oficial | recusa estável |
+
+### O back-off, e o fim dele
+
+1, 3 e depois 7 dias. Sem a espera, a mesma fonte fora do ar seria consultada toda noite, o teto da
+rodada seria gasto com ela, e as pistas nunca tentadas ficariam para trás. Na **quinta** tentativa
+sem leitura a pista vira `inacessivel_persistente`: sai da fila e **continua no registro**, porque
+fonte que ninguém consegue ler é um fato sobre a fonte — some do processo, não do arquivo.
+
+Um erro meu de índice, achado pelo autoteste: a primeira versão indexava o back-off pelo número de
+tentativas e **pulava o 1 dia inteiro**, começando em 3. A trava agora exige a sequência exata.
+
+### Toda tentativa fica escrita
+
+`juiz_tentativas` guarda data, classe, motivo e versão do codebook de cada passada. É por esse
+histórico que se distingue uma fonte fora do ar há uma noite de outra fora do ar há um mês — e a
+pista adiada **não** recebe `juiz`, porque receber a tiraria da fila para sempre.
+
+Catorze travas novas no autoteste (42 casos), todas sem rede e sem escrita.
 
 ## §286 · "Institui" solto promoveu quatro registros falsos de cinco · 28/09/2026
 
