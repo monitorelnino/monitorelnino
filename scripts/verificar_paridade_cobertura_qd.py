@@ -76,11 +76,23 @@ def problemas(cobertura: dict, resumo: dict) -> list[str]:
         p.append(f"não indexados divergem: cobertura_qd.json conta {c['nao_indexados']} e "
                  f"verificacao_resumo.json declara {v['sem_cobertura_qd']}")
 
-    # `com_mencao + coberto_sem_mencao` é a partição dos indexados no resumo.
+    # A partição dos indexados no resumo tem TRÊS parcelas, não duas. Até 28/09/2026 (§280) este
+    # portão somava só `com_mencao + coberto_sem_mencao`, porque `sem_edicao_no_periodo` — criada
+    # pelo §194 — estava sendo contada dentro de `com_mencao` por definição por exclusão. Diário
+    # indexado sem edição na janela continua indexado: ele pertence à partição, e não a nenhuma
+    # das outras duas classes.
     com, sem = v.get("com_mencao"), v.get("coberto_sem_mencao")
-    if com is not None and sem is not None and com + sem != v.get("indexados"):
-        p.append(f"no resumo, com_mencao {com} + coberto_sem_mencao {sem} = {com + sem}, "
-                 f"que não é indexados {v.get('indexados')}")
+    vazio = v.get("sem_edicao_no_periodo")
+    if com is not None and sem is not None and vazio is not None:
+        if com + sem + vazio != v.get("indexados"):
+            p.append(f"no resumo, com_mencao {com} + coberto_sem_mencao {sem} + "
+                     f"sem_edicao_no_periodo {vazio} = {com + sem + vazio}, que não é indexados "
+                     f"{v.get('indexados')}")
+    elif com is not None and sem is not None:
+        p.append("o resumo traz com_mencao e coberto_sem_mencao sem sem_edicao_no_periodo — a "
+                 "partição dos indexados tem três parcelas desde o §280; sem a terceira, os "
+                 "municípios com diário indexado e nenhuma edição na janela voltam a ser "
+                 "contados como tendo menção")
 
     # Zero indexado seria o sintoma que o pedido do preprint relatou. Se acontecer de verdade,
     # reprova: 5.571 municípios sem um único diário indexado é falha de coleta, não um fato.
@@ -111,10 +123,11 @@ def autoteste() -> int:
     def res(**kw):
         return {"varredura_diarios": kw}
 
-    checar("estado real de 27/09 passa: 527 / 5041 / 3 contra indexados 527",
+    checar("estado real de 28/09 passa: 527 / 5041 / 3 contra indexados 527",
            problemas(cob(527, 5041, 3),
                      res(indexados=527, total=5571, sem_cobertura_qd=5041,
-                         com_mencao=347, coberto_sem_mencao=180)) == [])
+                         com_mencao=260, coberto_sem_mencao=211,
+                         sem_edicao_no_periodo=56)) == [])
 
     p = problemas(cob(500, 5068, 3), res(indexados=527, total=5571))
     checar("indexados divergentes REPROVAM", any("indexados divergem" in x for x in p))
@@ -128,9 +141,18 @@ def autoteste() -> int:
            any("não indexados divergem" in x for x in p))
 
     p = problemas(cob(527, 5041, 3),
-                  res(indexados=527, total=5571, com_mencao=300, coberto_sem_mencao=180))
+                  res(indexados=527, total=5571, com_mencao=300, coberto_sem_mencao=180,
+                      sem_edicao_no_periodo=56))
     checar("partição interna do resumo que não fecha REPROVA",
            any("não é indexados" in x for x in p))
+
+    # O defeito do §280 exatamente como ele estava publicado: 347 + 180 fechava 527 com a
+    # partição de duas parcelas, e o portão passava verde sobre uma conta errada.
+    p = problemas(cob(527, 5041, 3),
+                  res(indexados=527, total=5571, sem_cobertura_qd=5041,
+                      com_mencao=347, coberto_sem_mencao=180))
+    checar("partição de DUAS parcelas REPROVA, mesmo fechando a soma (o defeito do §280)",
+           any("três parcelas" in x for x in p))
 
     p = problemas(cob(527, 5041, 3), res(indexados=527, total=9999))
     checar("total divergente REPROVA", any("total de municípios diverge" in x for x in p))
@@ -143,7 +165,7 @@ def autoteste() -> int:
     if falhas:
         print(f"\n✗ AUTOTESTE DA PARIDADE: {len(falhas)} falha(s).")
         return 1
-    print("\n✓ AUTOTESTE DA PARIDADE OK — os seis desacordos reprovam, e o acordo real passa.")
+    print("\n✓ AUTOTESTE DA PARIDADE OK — os sete desacordos reprovam, e o acordo real passa.")
     return 0
 
 

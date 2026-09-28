@@ -1276,6 +1276,16 @@ Daí duas regras.
 
 **Corolário sobre testes.** O teste que guardava esse vocabulário lia o **texto** da função procurando a palavra, e reprovou quando a lista virou constante — sem que nada tivesse mudado de comportamento. Teste que lê código-fonte serve para regra estrutural ("nenhum script escreve neste arquivo"); para regra de comportamento, o teste chama a função. Confundir os dois produz reprovação falsa na refatoração e, pior, aprovação falsa quando o texto continua lá e o comportamento mudou.
 
+### 45.1 Contagem definida por exclusão é vocabulário aberto com outro nome (28/09/2026)
+
+A seção acima trata de vocabulário de decisões. A mesma decisão `sem_edicao_no_periodo` ficou de fora de uma terceira lista, e essa não era um vocabulário: era uma **contagem publicada**. O contador de menções no diário municipal definia "com menção" por exclusão — era menção todo resultado que não começasse por um de três prefixos conhecidos. A decisão nova, correta e criada num coletor, entrou na conta pública de menções sem que ninguém escrevesse uma linha: 347 municípios publicados onde eram 260. O caso está no `CHANGELOG.md` §280.
+
+**O lado de fora nunca pode ser o lado que afirma.** Uma classificação por exclusão erra de novo a cada categoria nova que alguém criar, e sempre para o mesmo lado — o da afirmação, porque é onde cai o que o código não conhece. A classificação é positiva: cada classe tem o critério do que a caracteriza, e o que não casa com nenhum critério cai num balde declarado de indefinido. Subdeclarar cobertura é erro tolerado; afirmar menção que não se viu, não.
+
+**Contagem publicada precisa reconciliar com outro arquivo.** Uma conta que só se confere contra si mesma está certa por construção. O contador corrigido bate, na unidade, com o número de municípios que o **log** registra com excerto ou registro no canal do diário — outro arquivo, outro caminho de produção —, e essa igualdade é um portão. Foi a discordância dela que denunciou uma primeira tentativa de correção que estava errada na direção contrária.
+
+**Portão que confere assinatura não confere propriedade.** O portão criado para impedir exatamente essa família de erro (§121) ficou verde sobre o defeito por oito dias, porque testava o caso extremo do erro anterior — "toda consulta contada como menção" — em vez da propriedade que importa. Assinatura de um defeito conhecido pega aquele defeito; a propriedade pega a família.
+
 ## 46. Livro-razão e janela: dois arquivos, duas perguntas, duas regras (25/09/2026)
 
 O projeto tem uma regra forte e bem estabelecida: **o log de buscas nunca se deduplica**. Duas execuções idênticas em dias diferentes são duas tentativas reais, e uma união por conteúdo já apagou quase 3.000 delas em 23/09/2026. A regra continua valendo integralmente.

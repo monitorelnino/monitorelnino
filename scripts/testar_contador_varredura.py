@@ -1,27 +1,46 @@
 #!/usr/bin/env python3
-"""Portão — o contador da varredura precisa classificar pelos prefixos REAIS.
+"""Portão — o contador da varredura precisa classificar POSITIVAMENTE, e bater com o log.
 
-Criado em 20/09/2026 (§121). Até aqui `recalcular_mare.py` contava como "sem menção"
-o município cujo resultado começasse com a string `"sem edições"` — string que
+Criado em 20/09/2026 (§121). Até ali `recalcular_mare.py` contava como "sem menção" o
+município cujo resultado começasse com a string `"sem edições"` — string que
 `coletar_diarios_municipais.py` nunca gravou. Efeito: nenhum município caía em
-`sem_mencao`, `com_mencao` igualava `consultados`, e o número publicado na cortina
-do domínio afirmava que **3.180 municípios tinham menção a El Niño** quando eram
-**153**. Vinte vezes mais. A Action ficava verde: nada falhava, a conta só media
-outra coisa.
+`sem_mencao`, `com_mencao` igualava `consultados`, e o número publicado na cortina do
+domínio afirmava que **3.180 municípios tinham menção a El Niño** quando eram **153**.
+A Action ficava verde: nada falhava, a conta só media outra coisa.
 
-Os quatro estados que o coletor grava são distintos e não podem ser colapsados:
+REESCRITO EM 28/09/2026 (§280), PORQUE ESTE PORTÃO PASSOU VERDE SOBRE O MESMO DEFEITO
+-------------------------------------------------------------------------------------
+O §121 trocou os prefixos errados pelos certos e manteve a definição por EXCLUSÃO:
+`com_mencao` era tudo o que não começasse por um de três prefixos. Este portão conferia
+a assinatura do defeito antigo (`com_mencao == consultados`) em vez da propriedade, e
+por isso não viu quando `sem_edicao_no_periodo` — decisão criada pelo §194 — passou a
+entrar na conta pública de menções: 347 publicados contra 260 reais.
+
+O portão agora faz três coisas diferentes disso:
+
+1. Recomputa os cinco estados por conta própria, a partir de `fontes_consultadas.json`,
+   e exige que o resumo publicado concorde. Dois códigos independentes, um número.
+2. Reconcilia `com_mencao` contra o **log**, que é outro arquivo e outra origem: todo
+   município contado como tendo menção precisa ter `com_excerto` ou `registro` no canal
+   DOM. Menção que o log não viu é menção inventada.
+3. Recusa definição por exclusão no código-fonte. Ela não erra uma vez: erra a cada
+   decisão nova que alguém criar.
+
+Os cinco estados são distintos e não podem ser colapsados:
 
   sem_cobertura_qd      o município NÃO tem diário indexado — não há o que ler
-  coberto_sem_mencao    indexado e lido; nenhum excerto sobre o tema
-  (conteúdo)            indexado, lido, com decreto ou pista localizada
-  cobertura a confirmar o teste de cobertura falhou; estado desconhecido
+  sem_edicao_no_periodo indexado, nenhuma edição DENTRO da janela — não houve o que ler
+  coberto_sem_mencao    indexado e lido; nenhum excerto com os termos
+  com_mencao            a consulta com os termos devolveu edição (log: com_excerto/registro)
+  cobertura_indefinida  teste de cobertura falhou, OU string desconhecida
 
-A distinção que mais importa é a primeira. **Não indexado não é sem menção.** Somar
-os dois faria o site afirmar ausência de plano onde há apenas ausência de fonte —
-exatamente o que §4.1.2 proíbe, e o que destrói a credibilidade de um índice cuja
-promessa é nunca dizer "não existe" quando só sabe "não localizamos".
+A distinção que mais importa é entre "não houve o que ler" e "leu e não achou". Somar os
+dois faria o site afirmar ausência de plano onde há apenas ausência de fonte — o que
+§4.1.2 proíbe, e o que destrói a credibilidade de um índice cuja promessa é nunca dizer
+"não existe" quando só sabe "não localizamos".
 
 Uso: python3 scripts/testar_contador_varredura.py
+     python3 scripts/testar_contador_varredura.py --autoteste
 """
 import json
 import pathlib
@@ -31,74 +50,219 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 FONTE = RAIZ / "recalcular_mare.py"
 RESUMO = RAIZ / "data" / "verificacao_resumo.json"
+FONTES = RAIZ / "data" / "fontes_consultadas.json"
+FQD = "Querido Diário (diário municipal)"
 
-# Prefixos que coletar_diarios_municipais.py realmente grava.
-PREFIXOS = ("sem_cobertura_qd", "coberto_sem_mencao", "cobertura a confirmar")
+CAMPOS = ["consultados", "total", "com_mencao", "coberto_sem_mencao", "sem_edicao_no_periodo",
+          "sem_cobertura_qd", "cobertura_indefinida", "indexados", "sem_mencao"]
+
+# A contagem que o coletor grava SÓ no ramo em que a consulta com os termos devolveu edição.
+RE_CONTAGEM = re.compile(r"^\d+ decreto\(s\), \d+ pista\(s\)$")
+
+
+def estado(marcas) -> str:
+    """Os cinco estados, classificados positivamente. Cópia deliberadamente independente da de
+    recalcular_mare.py: o portão vale porque são dois códigos, não um chamando o outro."""
+    if any(RE_CONTAGEM.match(m) or m.startswith("com_excerto") for m in marcas):
+        return "com_mencao"
+    if any(m.startswith("coberto_sem_mencao") for m in marcas):
+        return "coberto_sem_mencao"
+    if any(m.startswith("sem_edicao_no_periodo") for m in marcas):
+        return "sem_edicao_no_periodo"
+    if any(m.startswith("sem_cobertura_qd") for m in marcas):
+        return "sem_cobertura_qd"
+    return "cobertura_indefinida"
+
+
+def falhas_de_codigo(codigo: str) -> list:
+    """O código não pode voltar à string fantasma nem à definição por exclusão."""
+    p = []
+    if "sem edições" in codigo:
+        p.append('recalcular_mare.py voltou a classificar por "sem edições" — prefixo que o '
+                 'coletor nunca grava; a conta mediria outra coisa em silêncio (§121)')
+    if re.search(r"not m\.startswith", codigo):
+        p.append("recalcular_mare.py voltou a definir menção por EXCLUSÃO (`not m.startswith`): "
+                 "toda decisão nova que alguém criar entra na conta pública de menções sem "
+                 "ninguém notar, que foi o defeito do §280")
+    # Comparação LITERAL, não regex: em recalcular_mare.py a contagem é um literal de expressão
+    # regular (`decreto\(s\)`, com barra), e procurá-lo como regex não casaria com ele mesmo.
+    for marca in ("decreto", "pista", "sem_edicao_no_periodo", "coberto_sem_mencao"):
+        if marca not in codigo:
+            p.append(f"recalcular_mare.py não usa mais {marca!r} na classificação")
+    return p
+
+
+def falhas_de_aritmetica(v: dict) -> list:
+    """As classes precisam existir, somar os consultados e repartir os indexados."""
+    faltando = [c for c in CAMPOS if c not in v]
+    if faltando:
+        return [f"varredura_diarios sem os campos {faltando} — as classes precisam ser "
+                f"publicáveis separadamente"]
+    p = []
+    soma = (v["com_mencao"] + v["coberto_sem_mencao"] + v["sem_edicao_no_periodo"]
+            + v["sem_cobertura_qd"] + v["cobertura_indefinida"])
+    if soma != v["consultados"]:
+        p.append(f"as classes somam {soma} mas consultados = {v['consultados']} — algum "
+                 f"município está fora de classificação ou contado duas vezes")
+    if v["sem_mencao"] != v["coberto_sem_mencao"]:
+        p.append(f"sem_mencao ({v['sem_mencao']}) difere de coberto_sem_mencao "
+                 f"({v['coberto_sem_mencao']}) — 'sem menção' só vale para diário efetivamente "
+                 f"lido; incluir não indexado ou sem edição na janela afirma ausência de plano "
+                 f"onde há ausência de fonte (§4.1.2)")
+    esperado = v["com_mencao"] + v["coberto_sem_mencao"] + v["sem_edicao_no_periodo"]
+    if v["indexados"] != esperado:
+        p.append(f"indexados ({v['indexados']}) deve ser com_mencao + coberto_sem_mencao + "
+                 f"sem_edicao_no_periodo = {esperado}: diário indexado sem edição na janela "
+                 f"continua indexado")
+    if v["consultados"] and v["com_mencao"] == v["consultados"]:
+        p.append("com_mencao == consultados: assinatura do defeito de §121 (todo município "
+                 "consultado contado como tendo menção)")
+    return p
+
+
+def falhas_de_paridade(recontado: dict, v: dict) -> list:
+    """O resumo publicado tem de concordar com a recontagem independente deste portão."""
+    p = []
+    for classe, n in sorted(recontado.items()):
+        if v.get(classe) != n:
+            p.append(f"{classe}: este portão reconta {n} e verificacao_resumo.json declara "
+                     f"{v.get(classe)} — os dois códigos discordam sobre o mesmo dado")
+    return p
+
+
+def falhas_de_reconciliacao(com_mencao: set, positivos_no_log: set) -> list:
+    """Menção que o log não viu é menção inventada. O contrário é tolerado: o log é histórico e
+    o estado é o da última janela, então um município pode ter tido excerto antes e não agora."""
+    fantasmas = sorted(com_mencao - positivos_no_log)
+    if fantasmas:
+        return [f"{len(fantasmas)} município(s) contados em com_mencao sem nenhuma execução "
+                f"`com_excerto` nem `registro` no canal DOM do log — exemplos: "
+                f"{', '.join(fantasmas[:5])}"]
+    return []
+
+
+def autoteste() -> int:
+    casos = []
+    casos.append(("contagem com zero e zero é menção (houve excerto, não houve ato)",
+                  estado(["0 decreto(s), 0 pista(s)"]) == "com_mencao"))
+    casos.append(("sem edição na janela NÃO é menção",
+                  estado(["sem_edicao_no_periodo: diário indexado, nenhuma edição"])
+                  == "sem_edicao_no_periodo"))
+    casos.append(("string desconhecida cai em indefinida, nunca em menção",
+                  estado(["decisao_que_alguem_inventar_amanha: qualquer coisa"])
+                  == "cobertura_indefinida"))
+    casos.append(("leitura efetiva vence ausência de edição",
+                  estado(["sem_edicao_no_periodo: x", "coberto_sem_mencao: y"])
+                  == "coberto_sem_mencao"))
+    casos.append(("não indexado continua não indexado",
+                  estado(["sem_cobertura_qd: diário não indexado"]) == "sem_cobertura_qd"))
+    casos.append(("teste de cobertura falhado é indefinido",
+                  estado(["cobertura a confirmar (teste de cobertura falhou)"])
+                  == "cobertura_indefinida"))
+
+    # O defeito do §280, encenado: a definição por exclusão vista sobre as strings reais.
+    reais = ["sem_cobertura_qd: x", "0 decreto(s), 0 pista(s)", "coberto_sem_mencao: x",
+             "sem_edicao_no_periodo: x", "cobertura a confirmar (teste de cobertura falhou)"]
+    por_exclusao = [m for m in reais
+                    if not m.startswith(("sem_cobertura_qd", "coberto_sem_mencao",
+                                         "cobertura a confirmar"))]
+    casos.append(("a definição por exclusão de fato engolia sem_edicao_no_periodo",
+                  any(m.startswith("sem_edicao_no_periodo") for m in por_exclusao)))
+    casos.append(("o portão recusa definição por exclusão no código",
+                  any("EXCLUS" in f for f in falhas_de_codigo(
+                      'if any(not m.startswith(("sem_cobertura_qd",)) for m in marcas):'))))
+    casos.append(("o portão recusa a string fantasma do §121",
+                  any("sem edições" in f for f in falhas_de_codigo('if "sem edições" in m:'))))
+
+    bom = {"consultados": 100, "total": 5571, "com_mencao": 10, "coberto_sem_mencao": 20,
+           "sem_edicao_no_periodo": 5, "sem_cobertura_qd": 64, "cobertura_indefinida": 1,
+           "indexados": 35, "sem_mencao": 20}
+    casos.append(("estado coerente passa", falhas_de_aritmetica(bom) == []))
+    casos.append(("classe faltando reprova",
+                  falhas_de_aritmetica({k: n for k, n in bom.items()
+                                        if k != "sem_edicao_no_periodo"}) != []))
+    casos.append(("indexados sem sem_edicao_no_periodo reprova",
+                  any("indexados" in f for f in falhas_de_aritmetica({**bom, "indexados": 30}))))
+    casos.append(("sem_mencao absorvendo sem edição reprova",
+                  any("sem_mencao" in f for f in falhas_de_aritmetica({**bom, "sem_mencao": 25}))))
+    casos.append(("classes que não somam os consultados reprovam",
+                  any("somam" in f for f in falhas_de_aritmetica({**bom, "consultados": 101}))))
+    casos.append(("recontagem divergente reprova",
+                  falhas_de_paridade({"com_mencao": 11}, bom) != []))
+    casos.append(("recontagem igual passa", falhas_de_paridade({"com_mencao": 10}, bom) == []))
+    casos.append(("menção que o log não viu reprova",
+                  falhas_de_reconciliacao({"3205002"}, set()) != []))
+    casos.append(("excerto no log sem menção no estado é tolerado (o log é histórico)",
+                  falhas_de_reconciliacao(set(), {"3205002"}) == []))
+
+    ruins = [n for n, ok in casos if not ok]
+    for n, ok in casos:
+        print(f"  {'OK  ' if ok else 'FALHA'} {n}")
+    if ruins:
+        print(f"X AUTOTESTE: {len(ruins)} caso(s) reprovado(s).")
+        return 1
+    print(f"OK AUTOTESTE — {len(casos)} casos, sem rede e sem escrita.")
+    return 0
 
 
 def main() -> int:
+    if "--autoteste" in sys.argv:
+        return autoteste()
+
     falhas = []
     fonte = FONTE.read_text(encoding="utf-8")
-    # Só o CÓDIGO conta: o comentário que documenta o defeito cita a string fantasma
-    # de propósito, e o portão não pode cair por causa da própria explicação.
+    # Só o CÓDIGO conta: o comentário que documenta o defeito cita a string fantasma e a
+    # definição antiga de propósito, e o portão não pode cair por causa da própria explicação.
     codigo = "\n".join(l.split("#", 1)[0] for l in fonte.splitlines())
+    falhas += falhas_de_codigo(codigo)
 
-    # 1. A string fantasma não pode voltar (no código, não no comentário).
-    if "sem edições" in codigo:
-        falhas.append('recalcular_mare.py voltou a classificar por "sem edições" — prefixo que '
-                      'o coletor nunca grava; a conta mediria outra coisa em silêncio')
-
-    # 2. Os prefixos reais precisam estar sendo usados na classificação.
-    for p in PREFIXOS[:2]:
-        if p not in codigo:
-            falhas.append(f"recalcular_mare.py não menciona o prefixo real {p!r}")
-
-    # 3. O resumo derivado precisa trazer as classes separadas e somar os consultados.
     if not RESUMO.exists():
-        print("✗ data/verificacao_resumo.json não existe")
+        print("X data/verificacao_resumo.json não existe")
         return 1
     v = json.loads(RESUMO.read_text(encoding="utf-8")).get("varredura_diarios") or {}
     if not v:
-        print("✗ verificacao_resumo.json sem varredura_diarios")
+        print("X verificacao_resumo.json sem varredura_diarios")
         return 1
+    falhas += falhas_de_aritmetica(v)
 
-    obrigatorios = ["consultados", "total", "com_mencao", "coberto_sem_mencao",
-                    "sem_cobertura_qd", "cobertura_indefinida", "indexados", "sem_mencao"]
-    faltando = [c for c in obrigatorios if c not in v]
-    if faltando:
-        falhas.append(f"varredura_diarios sem os campos {faltando} — as classes precisam ser "
-                      f"publicáveis separadamente")
-    else:
-        soma = (v["com_mencao"] + v["coberto_sem_mencao"]
-                + v["sem_cobertura_qd"] + v["cobertura_indefinida"])
-        if soma != v["consultados"]:
-            falhas.append(f"as classes somam {soma} mas consultados = {v['consultados']} — "
-                          f"algum município está fora de classificação ou contado duas vezes")
+    # Recontagem independente, a partir do dado bruto.
+    fc = json.loads(FONTES.read_text(encoding="utf-8"))
+    fc = fc.get("municipios") or fc
+    recontado, com_mencao = {}, set()
+    for cod, m in fc.items():
+        fs = [f for f in (m.get("fontes") or []) if f.get("fonte") == FQD]
+        if not fs:
+            continue
+        e = estado([str(f.get("resultado", "")) for f in fs])
+        recontado[e] = recontado.get(e, 0) + 1
+        if e == "com_mencao":
+            com_mencao.add(str(cod).zfill(7))
+    recontado["consultados"] = sum(n for c, n in recontado.items() if c != "consultados")
+    falhas += falhas_de_paridade(recontado, v)
 
-        # 4. A confusão que destrói a credibilidade: sem_mencao não pode absorver os não indexados.
-        if v["sem_mencao"] != v["coberto_sem_mencao"]:
-            falhas.append(f"sem_mencao ({v['sem_mencao']}) difere de coberto_sem_mencao "
-                          f"({v['coberto_sem_mencao']}) — 'sem menção' só vale para diário "
-                          f"efetivamente lido; incluir não indexado afirma ausência de plano "
-                          f"onde há ausência de fonte (§4.1.2)")
-
-        # 5. com_mencao igual a consultados é a assinatura exata do defeito antigo.
-        if v["consultados"] and v["com_mencao"] == v["consultados"]:
-            falhas.append("com_mencao == consultados: assinatura do defeito de §121 (todo "
-                          "município consultado contado como tendo menção)")
-
-        if v["indexados"] != v["com_mencao"] + v["coberto_sem_mencao"]:
-            falhas.append("indexados deve ser com_mencao + coberto_sem_mencao")
+    # Reconciliação contra o log, que é outro arquivo e outra origem.
+    sys.path.insert(0, str(RAIZ))
+    from coletores_base import ler_log
+    positivos = set()
+    for e in ler_log().get("execucoes", []):
+        if e.get("canal") != "DOM":
+            continue
+        if str(e.get("decisao") or "").split(":")[0] in ("com_excerto", "registro"):
+            cod = str(e.get("ibge") or "").zfill(7)
+            if cod and cod != "0000000":
+                positivos.add(cod)
+    falhas += falhas_de_reconciliacao(com_mencao, positivos)
 
     if falhas:
         for f in falhas:
-            print(f"✗ {f}")
+            print(f"X {f}")
         return 1
 
-    print(f"✓ contador da varredura: {v['consultados']} consultados = {v['com_mencao']} com menção "
-          f"+ {v['coberto_sem_mencao']} lidos sem menção + {v['sem_cobertura_qd']} sem diário "
-          f"indexado + {v['cobertura_indefinida']} indefinidos; não indexado não é contado "
-          f"como sem menção")
+    print(f"OK contador da varredura: {v['consultados']} consultados = {v['com_mencao']} com menção "
+          f"+ {v['coberto_sem_mencao']} lidos sem menção + {v['sem_edicao_no_periodo']} sem edição "
+          f"na janela + {v['sem_cobertura_qd']} sem diário indexado + {v['cobertura_indefinida']} "
+          f"indefinidos. Recontagem independente concorda; as {len(com_mencao)} menções têm "
+          f"execução com_excerto ou registro no log. Não indexado e sem edição não são sem menção.")
     return 0
 
 

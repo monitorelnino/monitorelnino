@@ -415,19 +415,43 @@ def _resumo_verificacao(out):
         # grava. Até aqui a conta procurava resultados começando com "sem edições", string que
         # nunca existiu: nenhum município caía em sem_mencao, com_mencao igualava consultados, e
         # a cortina pública afirmava que 3.180 municípios tinham menção a El Niño quando eram 153.
-        # Os quatro estados são distintos e não podem ser colapsados:
-        #   sem_cobertura_qd   — o município NÃO tem diário indexado; nada foi ou pode ser lido
-        #   coberto_sem_mencao — indexado e lido; nenhum excerto sobre o tema
-        #   (conteúdo)         — indexado, lido, com decreto ou pista localizada
-        #   cobertura a confirmar — o teste de cobertura falhou; estado desconhecido
-        # "Não indexado" NÃO é "sem menção": no primeiro caso não há o que ler, e tratar os dois
-        # como a mesma coisa é afirmar ausência onde só há ausência de fonte (§4.1.2).
+        #
+        # 28/09/2026 (§280): a classificação passa a ser POSITIVA, e este é o conserto do defeito
+        # que o §121 deixou pela metade. Ele trocou os prefixos errados pelos certos e manteve a
+        # definição por EXCLUSÃO: `com_mencao` era tudo o que não começasse por um de três
+        # prefixos. Definição por exclusão não erra uma vez — erra a cada decisão nova que alguém
+        # criar. Foi o que aconteceu com `sem_edicao_no_periodo`, criada pelo §194: 87 registros de
+        # "diário indexado, nenhuma edição na janela" entraram na conta pública de menções, e o
+        # número publicado caiu de 347 para 260 quando a definição virou positiva. É a terceira
+        # lista de que essa decisão ficou de fora (as duas primeiras estão no comentário do
+        # coletor, linha 108).
+        #
+        # Os cinco estados são distintos e não podem ser colapsados:
+        #   sem_cobertura_qd      — o município NÃO tem diário indexado; nada foi ou pode ser lido
+        #   sem_edicao_no_periodo — indexado, nenhuma edição DENTRO da janela; não houve o que ler
+        #   coberto_sem_mencao    — indexado e lido; nenhum excerto com os termos
+        #   com_mencao            — a consulta COM OS TERMOS devolveu edição. É a contagem
+        #                           `N decreto(s), M pista(s)`, que o coletor grava só nesse ramo,
+        #                           e vale também com zero e zero: houve excerto com os termos, não
+        #                           houve ato classificado. No log é `com_excerto` ou `registro`.
+        #   cobertura_indefinida  — o teste de cobertura falhou, OU a string é desconhecida por
+        #                           este código. String desconhecida NUNCA vira menção: cair no
+        #                           balde indefinido subdeclara, cair em `com_mencao` afirma.
+        # "Não indexado" não é "sem menção", e "sem edição na janela" também não: nos dois casos
+        # não há o que ler, e tratar isso como leitura negativa afirma ausência onde só há ausência
+        # de fonte (§4.1.2). A ordem dos testes é deliberada — leitura efetiva vence ausência de
+        # edição, porque o município que teve o diário lido numa janela e nenhuma edição em outra
+        # foi, de fato, lido.
+        _RE_CONTAGEM_QD = re.compile(r"^\d+ decreto\(s\), \d+ pista\(s\)$")
+
         def _classificar(fs):
             marcas = [str(f.get("resultado", "")) for f in fs]
-            if any(not m.startswith(("sem_cobertura_qd", "coberto_sem_mencao", "cobertura a confirmar")) for m in marcas):
+            if any(_RE_CONTAGEM_QD.match(m) or m.startswith("com_excerto") for m in marcas):
                 return "com_mencao"
             if any(m.startswith("coberto_sem_mencao") for m in marcas):
                 return "coberto_sem_mencao"
+            if any(m.startswith("sem_edicao_no_periodo") for m in marcas):
+                return "sem_edicao_no_periodo"
             if any(m.startswith("sem_cobertura_qd") for m in marcas):
                 return "sem_cobertura_qd"
             return "cobertura_indefinida"
@@ -435,18 +459,20 @@ def _resumo_verificacao(out):
         _estado = {c: _classificar(fs) for c, fs in _qd.items()}
         _com_mencao = sum(1 for e in _estado.values() if e == "com_mencao")
         _coberto_sem_mencao = sum(1 for e in _estado.values() if e == "coberto_sem_mencao")
+        _sem_edicao = sum(1 for e in _estado.values() if e == "sem_edicao_no_periodo")
         _sem_cobertura = sum(1 for e in _estado.values() if e == "sem_cobertura_qd")
         _indefinido = sum(1 for e in _estado.values() if e == "cobertura_indefinida")
         _uf_de = {str(v["ibge"]).zfill(7): v["uf"] for v in out}; _por_uf_qd = {}
         for c in _qd: _u = _uf_de.get(str(c).zfill(7)); _por_uf_qd[_u] = _por_uf_qd.get(_u, 0) + 1
         varredura = {"fonte": _FQD, "consultados": len(_qd), "total": len(out), "com_mencao": _com_mencao,
-                     "coberto_sem_mencao": _coberto_sem_mencao, "sem_cobertura_qd": _sem_cobertura,
+                     "coberto_sem_mencao": _coberto_sem_mencao,
+                     "sem_edicao_no_periodo": _sem_edicao, "sem_cobertura_qd": _sem_cobertura,
                      "cobertura_indefinida": _indefinido,
-                     # sem_mencao = lidos e sem excerto. NÃO inclui os não indexados: onde não há
-                     # diário não há leitura, e somar os dois afirmaria ausência de plano onde só
-                     # há ausência de fonte.
+                     # sem_mencao = lidos e sem excerto. NÃO inclui os não indexados nem os sem
+                     # edição na janela: nos dois casos não há leitura, e somá-los afirmaria
+                     # ausência de plano onde só há ausência de fonte.
                      "sem_mencao": _coberto_sem_mencao,
-                     "indexados": _com_mencao + _coberto_sem_mencao,
+                     "indexados": _com_mencao + _coberto_sem_mencao + _sem_edicao,
                      "desde": (_datas[0] if _datas else None), "ultima": (_datas[-1] if _datas else None),
                      "por_uf": _por_uf_qd}   # 07/09/2026: diário consultado por UF (face do cartão)
     except Exception:
