@@ -24,3 +24,27 @@ previa/
 # Saida local de scripts/diagnosticar_fontes_sinais.py: relatorio de sondagem, nao
 # entregavel. Foi versionado por engano em 27/09/2026 e nao deve voltar.
 diagnostico_sinais.json
+
+# Item 3 do handover de desacoplamento (28/09/2026): BINÁRIO NOVO de evidência não entra no git.
+# Medido em 28/09: evidencias/ tem 1,5 GB em 3.755 arquivos, dos quais 1,25 GB são binários (1,0 GB de
+# PDF, 254 MB de HTML) contra 10,9 MB de TEXTO extraído. O texto é insumo do pipeline e CONTINUA
+# versionado; o binário é prova de registro e vai para o ativo de Release do mês, com URL estável
+# (scripts/empacotar_evidencias.py monta o lote, e noturno_evidencias.yml o publica antes de o job
+# terminar — sem esse passo, ignorar aqui faria a prova desaparecer com o runner).
+# O índice data/evidencias.json continua no git com hash, URL de origem, data, tamanho e onde está.
+# O que JÁ está commitado não é removido por esta regra: arquivo rastreado continua rastreado.
+evidencias/*.pdf
+evidencias/*.html
+evidencias/*.htm
+evidencias/*.xlsx
+evidencias/*.xls
+evidencias/*.docx
+evidencias/*.doc
+evidencias/*.zip
+evidencias/*.png
+evidencias/*.jpg
+evidencias/*.jpeg
+evidencias/*.gif
+evidencias/*.webp
+evidencias/*.odt
+evidencias/*.ods

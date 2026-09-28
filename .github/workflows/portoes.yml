@@ -354,3 +354,14 @@ jobs:
           # do erro é a linha decisiva e não o log inteiro, a poda mantém sete dias, e o próprio
           # autoteste não escreve em data/.
           python3 scripts/saude_pipeline.py --autoteste
+          # §266: o painel que a editoria lê sem cavar log. O portão reprova script ESSENCIAL
+          # com erro (recalcular, gerar_*) e apenas ALERTA quando um coletor erra duas rodadas
+          # seguidas — fonte fora do ar é rotina; coletor quebrado não é.
+          python3 scripts/gerar_saude_pipeline.py --autoteste
+          python3 scripts/gerar_saude_pipeline.py --check
+          # item 3 (28/09/2026): binário novo de evidência não entra no git. O texto extraído
+          # continua; o binário vai para o ativo de Release do mês. Extensão não declarada bloqueia —
+          # a dúvida não passa calada.
+          python3 scripts/verificar_binario_novo_em_evidencias.py --autoteste
+          python3 scripts/verificar_binario_novo_em_evidencias.py --contra origin/main
+          python3 scripts/empacotar_evidencias.py --autoteste
