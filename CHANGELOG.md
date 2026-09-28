@@ -9,6 +9,45 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §289 · O caminho do juiz até o banco, aberto — e a primeira promoção não entrou · 28/09/2026
+
+Classe **método e prova**. Item 1 do bloco das 19:50 (decisão da central). **Nenhum peso, régua ou
+categoria muda, e o banco não mudou:** a única promoção viva era duplicata, e a duplicata não entra.
+
+### O que faltava
+
+O juiz gravava `promove: true` em `data/promocoes_automaticas.json` e **nada lia aquele campo**.
+Quem aplicava no banco era `julgar_e_aplicar_descobertas.py`, que só olha pistas de imprensa com
+status `pendente_confirmacao_documento`. O veredito do codebook morria no arquivo — era o achado que
+levei à editoria, e a resposta foi que isto não é decisão nova: é a Etapa 7 do handover, decidida em
+27/09.
+
+`aplicar_promocoes_do_juiz.py` faz a sequência com a rede de proteção que já existia, testada desde
+31/08/2026: **backup em memória → aplica → recalcula → suíte de portões**; portão vermelho restaura
+os bytes originais e devolve a decisão com o erro escrito. O caminho antigo continua, como legado.
+
+### Duas travas que o §286 tornou obrigatórias
+
+Aplica **só** vereditos do codebook em vigor e não superados. A regra frouxa de objeto ex-ante
+promoveu quatro registros falsos de cinco; eles continuam no arquivo, marcados, e esta trava é o que
+impede que voltem pelo caminho novo.
+
+E a `categoria` vem **do veredito**, não é fixa. O caminho antigo gravava sempre `"plano"`: um
+`plano_antigo` entraria como plano novo, mudando o que o índice conta — defeito que só apareceu
+porque a primeira promoção real era, justamente, `plano_antigo`.
+
+### A primeira aplicação, e por que ela não aconteceu
+
+Sobrou **uma** promoção viva: Serra/ES, `plano_antigo`, ato de 30/12/2025. O banco já tem Serra —
+`plano`, PLANCON edição 2025, pelo repositório estadual da CEPDEC/ES. Duplicar registro é pior que
+não aplicar, e o registro existente é o mais forte: a revisão humana decide se há atualização.
+
+A recusa ficou escrita na decisão (`nao_aplicado`, com data e motivo), porque aplicação que não
+acontece também precisa dizer por quê.
+
+**Total de planos: 111 — inalterado. `atualizado_em`: 28/09/2026.**
+
+Um portão novo (116), com 13 casos offline.
 ## §288 · Procurar o ato antes de recusar por falta dele · 28/09/2026
 
 Classe **método e coleta**. Bloco das 17:20 de 28/09/2026 (decisão da central). **Nenhuma nota muda,
