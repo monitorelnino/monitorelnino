@@ -626,7 +626,6 @@ function animarGauges(root){
     requestAnimationFrame(passo);
   });
 }
-const STATUS_HUMANO_ESTR = {NOVO:'órgão de coordenação criado para o ciclo', READ:'estrutura permanente ativada para o ciclo por ato', VIG:'mobilização recorrente anual do sistema', ELAB:'estrutura anunciada, ato não localizado', LAC:'nenhum ato do ciclo toca a estrutura'};
 const STATUS_HUMANO = {NOVO:'plano estadual novo, específico para o El Niño', READ:'plano recorrente readaptado para o ciclo',
   VIG:'instrumento recorrente, sem menção nominal ao El Niño', ELAB:'plano estadual ainda em elaboração', LAC:'sem plano estadual nominal para o El Niño'};
 const nrm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
@@ -656,7 +655,7 @@ function renderMinha(){
   const card = document.getElementById('meuCard');
   const q = nrm(document.getElementById('cidadeInput').value);
   const uf = selUF.value;
-  if (!q && !uf){ card.hidden = true; return; }
+  if (!q){ card.hidden = true; return; }
   let matches = q ? TABELA_MUNICIPIOS.filter(m => nrm(m.nome) === q) : [];
   if (uf && q) matches = matches.filter(m => m.uf === uf);
   const ufFinal = uf || (matches.length === 1 ? matches[0].uf : '');
@@ -696,9 +695,9 @@ function renderMinha(){
         const _r = RESP_MUN && RESP_MUN.municipios && RESP_MUN.municipios[_ib];
         html += `<p class="u-mb-2"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
       if (_cob !== undefined) html += `<p class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
-      html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
+      html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o que fazer.</p>
       <p><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="prefeituras.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
-      ${ufFinal ? '' : '<p class="u-muted">Selecione o estado para ver o retrato estadual.</p>'}<hr class="card-sep">`;
+      ${ufFinal ? '' : '<p class="u-muted">Selecione também o estado para ver contatos, orientações e o relatório em PDF.</p>'}<hr class="card-sep">`;
     }
   }
 
@@ -712,22 +711,12 @@ function renderMinha(){
     else acoes.push('Predominam planos preventivos no seu estado; verifique se o da sua cidade está atualizado para o ciclo 2026/2027.');
     if (decl && 100*decl/i.total > 5*i.pct) acoes.push('Muitos municípios declaram ter plano a órgãos de controle, mas poucos documentos estão públicos: peça a publicação do PLANCON no site da prefeitura.');
 
-    // 24/09/2026: o cartão do leitor mostrava só a barra do MARÉ (preparação: Argila → Musgo) e dizia o
-    // número de decretos em texto corrido. O índice de RESPOSTA — população sob decreto, frio → quente
-    // (Mineral → Argila) — só existia na grade de estados e na ficha do estado, de modo que a mesma
-    // grandeza aparecia com escala num lugar e sem escala no outro. É a mesma barra, com a mesma arte e
-    // os mesmos números da ficha; nunca somada ao MARÉ (C17).
-    html += `<h4>${UF_NOME[ufFinal]} no MARÉ</h4>
-      ${miniGauge(v.total)}
-      ${barraResposta(ufFinal)}
-      <p class="note">Confiança da verificação: ${v.confianca}</p>
-      <ul>
-        <li>Instrumento operacional estadual: ${STATUS_HUMANO[v.status_estadual]}</li>
-        <li>Estrutura de coordenação estadual: ${STATUS_HUMANO_ESTR[v.estrutura_status] || v.estrutura_status}</li>
-        <li>Cobertura municipal documentada: <strong>${String(i.pct).replace('.',',')}%</strong> (${i.n_plano} plano(s) preventivo(s), ${i.n_decreto} decreto(s) reativo(s))${decl ? ` · declarada a órgãos de controle: ${(100*decl/i.total).toFixed(1).replace('.',',')}%` : ''}</li>
-        ${RESP && RESP.uf && RESP.uf[ufFinal] ? '<li class="note">Os dois números vêm de cadastros diferentes: a cobertura documentada conta atos de planejamento localizados no banco do Monitor; o índice de resposta conta decretos de emergência no registro federal (S2iD) e nos diários oficiais.</li>' : ''}
-      </ul>
-      <h4>O que fazer e o que cobrar</h4>
+    // 30/09/2026 (pedido da editoria): o retrato do estado (medidor MARÉ e lista de status —
+    // instrumento operacional, estrutura de coordenação, cobertura documentada) saiu daqui —
+    // duplicava a ficha do estado (dialog#detail), que já mostra os três, e estava
+    // desatualizado por viver em dois lugares. O que segue (contatos, PDF, guias, FGTS,
+    // formulário de correção) não existe na ficha e continua aqui.
+    html += `<h4>O que fazer e o que cobrar</h4>
       <ul>
         <li><strong>Emergência:</strong> Defesa Civil: ligue <strong>199</strong> · Corpo de Bombeiros, <strong>193</strong>.</li>
         <li><strong>Alertas oficiais no celular:</strong> envie seu CEP por SMS para <strong>40199</strong> (cadastro gratuito de alertas da Defesa Civil Nacional).</li>
