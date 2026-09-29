@@ -65,6 +65,8 @@ _LIVRO_CONSULTAS = []
 # data/alertas/vigentes.json. Fica fora do registro por UF de propósito: aquele é agregado
 # e as páginas atuais dependem do formato dele.
 _DETALHE_ALERTAS = {"inmet": None, "cemaden": None}
+# 29/09/2026: pontos de foco agregados em grade, gravados em arquivo próprio ao fim da rodada.
+_PONTOS_FOCOS = {}
 
 RAIZ = pathlib.Path(__file__).parent
 REGISTRO = RAIZ / "data" / "sinais_risco.json"
@@ -692,6 +694,9 @@ def parse_previsao_capitais_inmet(dados, quando: str = None) -> dict:
     return saida
 
 
+PASSO_GRADE_FOCOS = 0.1   # grau; ~11 km — ver `agregar_focos_em_grade`
+
+
 def parse_focos_inpe(texto: str) -> dict:
     """Conta focos ativos por UF a partir do CSV de focos abertos do INPE (coluna 'estado' ou 'uf'), devolvendo {'UF': n}."""
     import csv
@@ -710,6 +715,45 @@ def parse_focos_inpe(texto: str) -> dict:
         if sigla:
             contagem[sigla] = contagem.get(sigla, 0) + 1
     return contagem
+
+
+def agregar_focos_em_grade(texto: str, passo: float = PASSO_GRADE_FOCOS) -> list:
+    """[[lat, lon, n]] — focos agrupados numa grade regular. Função pura.
+
+    29/09/2026 (decisão da editoria): o mapa de focos passa a ser de PONTOS pela posição real, e não
+    coroplético por UF. O CSV do INPE traz `lat` e `lon` por foco, mas o volume não desenha: em
+    28/09 foram **26.873 focos num dia**, e um SVG com vinte e seis mil círculos é ilegível antes de
+    ser pesado.
+
+    A escolha é agrupar na renderização, como o handover manda, e o agrupamento é feito **aqui** —
+    não no navegador — porque mandar quatro megabytes de CSV para o leitor agrupar seria pior. A
+    grade de 0,1° foi medida contra as alternativas sobre o dia real:
+
+        0,05° -> 4.195 células     0,1° -> 3.315     0,25° -> 2.238     0,5° -> 1.251
+
+    0,1° (~11 km) guarda o desenho do arco do desmatamento e do cerrado baiano e cabe em ~70 KB.
+    O dado bruto continua no INPE, e a contagem por UF continua no arquivo de sinais: nada do que
+    já existia foi substituído por esta agregação.
+
+    O que NÃO se faz aqui: escala de intensidade por foco. O CSV traz `frp` e `risco_fogo`, e a
+    editoria foi explícita — não introduzir escala que o dado não sustente foco a foco. O que o
+    ponto diz é **quantos focos naquele pedaço de mapa**, e nada mais."""
+    import csv
+    import io
+    linhas = csv.DictReader(io.StringIO(texto))
+    celulas = {}
+    for linha in linhas:
+        try:
+            la = float(str(linha.get("lat") or linha.get("latitude") or "").strip())
+            lo = float(str(linha.get("lon") or linha.get("longitude") or "").strip())
+        except (TypeError, ValueError):
+            continue
+        if not (-35 <= la <= 6 and -75 <= lo <= -32):   # fora do Brasil não entra
+            continue
+        chave = (round(la / passo) * passo, round(lo / passo) * passo)
+        celulas[chave] = celulas.get(chave, 0) + 1
+    return sorted(([round(la, 3), round(lo, 3), n] for (la, lo), n in celulas.items()),
+                  key=lambda c: (-c[2], c[0], c[1]))
 
 
 def escolher_csv_focos(html_indice: str) -> str:
@@ -1344,10 +1388,26 @@ def coletar_fonte(chave: str):
         nome = escolher_csv_focos(bruto)   # `bruto` é o ÍNDICE do diretório
         if not nome:
             raise ValueError("índice do INPE sem arquivo focos_diario_br_*.csv — recusado")
-        focos = parse_focos_inpe(_buscar(fonte["endpoint"] + nome))
+        csv_focos = _buscar(fonte["endpoint"] + nome)
+        focos = parse_focos_inpe(csv_focos)
+        if not focos:
+            # 29/09/2026: o arquivo do dia corrente nasce **só com cabeçalho** e é preenchido ao
+            # longo do dia — medido: 29/09 com 0 focos às 9h, 28/09 com 26.873. Tratar isso como
+            # recusa daria falha declarada toda manhã, e tratar como zero seria pior ainda: diria
+            # "nenhum foco no Brasil" onde só faltava o arquivo encher. Cai para o dia anterior,
+            # UMA vez, e o nome do arquivo (que vai para a figura) diz de que dia é o dado.
+            dias = sorted(set(re.findall(r"focos_diario_br_(\d{8})\.csv", bruto or "")))
+            if len(dias) >= 2:
+                nome = f"focos_diario_br_{dias[-2]}.csv"
+                csv_focos = _buscar(fonte["endpoint"] + nome)
+                focos = parse_focos_inpe(csv_focos)
         if not focos:
             raise ValueError("CSV de focos sem coluna de UF reconhecível — recusado")
-        return {"focos_por_uf": focos}, f"Focos do dia — {nome}"
+        # 29/09/2026: além da contagem por UF, os PONTOS agregados em grade — é o que o mapa novo
+        # desenha. A contagem por UF fica: ela alimenta a lista e o texto, e trocá-la pelos pontos
+        # tiraria do leitor de tela o número exato.
+        return {"focos_por_uf": focos, "pontos": agregar_focos_em_grade(csv_focos),
+                "arquivo": nome}, f"Focos do dia — {nome}"
     if chave == "inmet_avisos":
         dados = json.loads(bruto)
         registrar_consulta(chave, fonte["endpoint"], bruto)
@@ -1750,6 +1810,12 @@ def coletar(registro: dict, camadas) -> dict:
             for uf in UFS:
                 registro["uf"][uf]["fogo"] = {"focos_24h": payload["focos_por_uf"].get(uf, 0), "fonte": chave,
                                               "documento": documento, "consultado_em": hoje()}
+            # Os pontos vão para arquivo PRÓPRIO: são milhares de células e não cabem no arquivo de
+            # sinais, que o navegador carrega inteiro em toda página da seção.
+            _PONTOS_FOCOS.update({"pontos": payload.get("pontos") or [],
+                                  "arquivo": payload.get("arquivo"),
+                                  "por_uf": payload["focos_por_uf"],
+                                  "passo_grau": PASSO_GRADE_FOCOS})
         elif chave == "inmet_avisos":
             _DETALHE_ALERTAS["inmet"] = payload.get("detalhe") or []
             for uf in UFS:
@@ -1829,6 +1895,37 @@ def gravar(registro: dict) -> None:
     registro["gerado_em"] = hoje()
     escrever_json(REGISTRO, registro)
     print(f"→ {REGISTRO.relative_to(RAIZ)} gravado.")
+
+
+def gravar_pontos_de_foco() -> None:
+    """Grava data/focos_pontos.json com os focos agregados em grade.
+
+    Só grava quando a coleta do INPE respondeu nesta rodada: reescrever com lista vazia mostraria
+    "nenhum foco" onde houve "não perguntamos", que é a distinção que este projeto existe para
+    manter. Quando o INPE não responde, o arquivo anterior fica, com a data dele — e a figura dirá
+    de quando é."""
+    if not _PONTOS_FOCOS.get("pontos"):
+        print("[aviso] focos: INPE não respondeu nesta rodada — data/focos_pontos.json mantido.")
+        return
+    escrever_json(RAIZ / "data" / "focos_pontos.json", {
+        "_governanca": ("Focos de calor do INPE agregados numa grade de "
+                        f"{PASSO_GRADE_FOCOS}° (~11 km) para desenho. Cada item é [lat, lon, "
+                        "focos na célula]. Peso zero, sinal físico. O agrupamento é de DESENHO: o "
+                        "dado bruto, foco a foco, é do INPE e não é redistribuído aqui. Não há "
+                        "escala de intensidade — o ponto diz quantos focos há na célula, e nada "
+                        "mais."),
+        "gerado_em": hoje(), "fonte": "INPE — Programa Queimadas",
+        "arquivo_de_origem": _PONTOS_FOCOS.get("arquivo"),
+        "passo_grau": _PONTOS_FOCOS.get("passo_grau", PASSO_GRADE_FOCOS),
+        "celulas": len(_PONTOS_FOCOS["pontos"]),
+        # A contagem por UF sai do MESMO arquivo do INPE que gerou os pontos. Ela também está em
+        # sinais_risco.json, mas ali pode ser de outra rodada — e mapa e lista discordando na mesma
+        # figura é o tipo de defeito que ninguém percebe até alguém somar.
+        "por_uf": _PONTOS_FOCOS.get("por_uf") or {},
+        "focos": sum(p[2] for p in _PONTOS_FOCOS["pontos"]),
+        "pontos": _PONTOS_FOCOS["pontos"]})
+    print(f"→ data/focos_pontos.json: {len(_PONTOS_FOCOS['pontos'])} célula(s), "
+          f"{sum(p[2] for p in _PONTOS_FOCOS['pontos'])} foco(s).")
 
 
 def gravar_alertas_vigentes() -> None:
@@ -1979,6 +2076,28 @@ def autoteste() -> int:
     focos = parse_focos_inpe("estado,municipio\nPARÁ,Altamira\nPará,Novo Progresso\nBAHIA,Barreiras\nXX,Nada\n")
     checar("focos: agrega por UF com acentuação e caixa variadas", focos == {"PA": 2, "BA": 1})
     checar("focos negativo: CSV sem coluna de UF devolve vazio", parse_focos_inpe("a,b\n1,2\n") == {})
+
+    # 29/09/2026: o mapa de focos virou de PONTOS. A grade é de desenho, e estas travas garantem
+    # que ela não invente posição nem escala.
+    _linhas_focos = ["id,lat,lon,estado",
+                     "1, -11.373500, -43.420900,BAHIA",
+                     "2, -11.379000, -43.425000,BAHIA",
+                     "3,  -4.504600, -54.944600,PARA",
+                     "4, 40.000000,  -3.000000,ESPANHA",   # fora do Brasil
+                     "5, , ,BAHIA"]                        # sem coordenada
+    _csv_pontos = "\n".join(_linhas_focos) + "\n"
+    _g = agregar_focos_em_grade(_csv_pontos)
+    checar("focos em grade: pontos proximos caem na mesma celula",
+           [c for c in _g if c[2] == 2] == [[-11.4, -43.4, 2]])
+    checar("focos em grade: coordenada fora do Brasil nao entra",
+           all(-35 <= c[0] <= 6 and -75 <= c[1] <= -32 for c in _g))
+    checar("focos em grade: linha sem coordenada nao vira ponto na origem",
+           all(c[:2] != [0.0, 0.0] for c in _g) and sum(c[2] for c in _g) == 3)
+    checar("focos em grade: a celula mais cheia vem primeiro", _g[0][2] >= _g[-1][2])
+    checar("focos em grade: CSV vazio devolve lista vazia, nao erro",
+           agregar_focos_em_grade("id,lat,lon" + "\n") == [])
+    checar("focos em grade: o passo e o medido, 0,1 grau", PASSO_GRADE_FOCOS == 0.1)
+
 
     avisos = parse_avisos_inmet({"hoje": {"avisos": [
         {"severidade": "Perigo Potencial", "descricao": "Chuvas intensas", "estados": "BA, SE"},
@@ -2344,6 +2463,7 @@ def main() -> None:
     if "--semear" in args:
         registro = semear(esqueleto() if "--zerar" in args else registro)
         gravar(registro)
+        gravar_pontos_de_foco()
         return
     camadas = {"ciclo", "observado", "enos"}
     if "--camada" in args:
@@ -2351,6 +2471,7 @@ def main() -> None:
     print(f"Coletando sinais oficiais de risco · camadas: {', '.join(sorted(camadas))}")
     registro = coletar(registro, camadas)
     gravar(registro)
+    gravar_pontos_de_foco()
     gravar_alertas_vigentes()
     gravar_consultas()
 
