@@ -401,12 +401,11 @@ credito('boxFogo', 'inpe_fogo');
 (function desenharAvisos(){
   const avisos = uf => (SINAIS.uf[uf] || {}).avisos_inmet;
   const respondeu = coletada('inmet_avisos');
-  const resumo = document.getElementById('resumoAvisos');
   const corpo = document.querySelector('#tblAvisos tbody');
 
   if (!respondeu) {
-    MonitorMapas.legenda('legAvisos', [{cor: NEUTRA, rotulo: 'A fonte não respondeu nesta consulta'}]);
-    if (resumo) resumo.textContent = 'A fonte não respondeu na última consulta. Isto não quer dizer que não haja aviso em vigor — quer dizer que não conseguimos ler.';
+    MonitorMapas.legenda('legAvisos', [{cor: NEUTRA,
+      rotulo: 'A fonte não respondeu nesta consulta — não quer dizer que não haja aviso em vigor'}]);
     if (corpo) corpo.innerHTML = '<tr><td colspan="4">A fonte não respondeu nesta consulta</td></tr>';
     credito('boxAvisos', 'inmet_avisos');
     return;
@@ -422,20 +421,22 @@ credito('boxFogo', 'inpe_fogo');
 
   const maxAviso = Math.max(1, ...UFS.map(uf => Number((avisos(uf) || {}).total || 0)));
   const escalaAviso = d3.scaleSqrt().domain([0, maxAviso]).range(MonitorMapas.PALETA.rampaPerigo);
+  const ordena = o => Object.entries(o).sort((a, b) => b[1] - a[1]);
+  /* O resumo por grau e por fenômeno entra na LEGENDA, não num segundo subtítulo: o portão de
+     figuras admite um subtítulo por cartão, e tem razão — dois viram parágrafo, e cartão não é
+     texto corrido. Foi a CI que pegou, em 29/09. */
+  const legenda = total
+    ? ordena(graus).map(([g, n]) => ({cor: escalaAviso(n), rotulo: g + ': ' + n}))
+        .concat(Object.keys(fenomenos).length
+          ? [{cor: NEUTRA, rotulo: 'Fenômenos: ' + ordena(fenomenos).map(([f]) => f).join(', ')}]
+          : [])
+    : [{cor: MonitorMapas.PALETA.rampaPerigo[0],
+        rotulo: 'Nenhum aviso em vigor nesta consulta — a fonte respondeu, a lista é que está vazia'}];
   desenharMapa('mapaAvisos', 'legAvisos',
     uf => { const n = Number((avisos(uf) || {}).total || 0); return n ? escalaAviso(n) : MonitorMapas.PALETA.rampaPerigo[0]; },
     uf => { const a = avisos(uf) || {}; const n = Number(a.total || 0);
             return n ? n + ' aviso(s) em vigor · ' + Object.keys(a.graus || {}).join(', ') : 'Nenhum aviso em vigor nesta consulta'; },
-    [{cor: MonitorMapas.PALETA.rampaPerigo[0], rotulo: 'Nenhum aviso'},
-     {cor: MonitorMapas.PALETA.rampaPerigo[1], rotulo: maxAviso + ' aviso(s)'}]);
-
-  const ordena = o => Object.entries(o).sort((a, b) => b[1] - a[1]);
-  if (resumo) {
-    resumo.textContent = total
-      ? ordena(graus).map(([g, n]) => g + ': ' + n).join(' · ') +
-        (Object.keys(fenomenos).length ? ' — fenômenos: ' + ordena(fenomenos).map(([f]) => f).join(', ') : '')
-      : 'Nenhum aviso em vigor no momento da consulta. A fonte respondeu; a lista é que está vazia.';
-  }
+    legenda);
   if (corpo) {
     const linhas = UFS.map(uf => ({uf, a: avisos(uf) || {}}))
       .filter(x => Number(x.a.total || 0) > 0)

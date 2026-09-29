@@ -190,6 +190,11 @@ mapa base: os focos flutuavam sem Brasil. Quem pegou foi o portão de runtime, q
 estados desenhados — e estava certo em exigir. O padrão da página já era esse nos mapas de capital:
 base neutro, pontos por cima.
 
+**E o resumo do card do INMET era um segundo subtítulo.** Pus a contagem por grau e por fenômeno num
+`figura-sub` próprio; o portão de figuras admite **um** subtítulo por cartão, e tem razão — dois
+viram parágrafo, e cartão não é texto corrido. O resumo passou para a **legenda**, que é onde
+contagem por categoria pertence. Pegou na CI, não aqui.
+
 Sete travas novas no autoteste do coletor.
 
 ## §293 · Óbitos pelo Registro Civil, e o estado real de cada um dos vinte desfechos · 29/09/2026
