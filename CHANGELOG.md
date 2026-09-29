@@ -9,6 +9,119 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §300 · O portão de paridade reprovava a `main` porque dois contadores mediam universos diferentes · 29/09/2026
+
+Classe **defeito de prova**. Falha **pré-existente na `main`**, encontrada porque bloqueava o merge
+do §299: `verificar_paridade_cobertura_qd.py` reprovava com "não indexados divergem:
+cobertura_qd.json conta 5041 e verificacao_resumo.json declara 5021".
+
+**Nenhum dos dois números estava errado; eles respondiam a perguntas diferentes.**
+`data/cobertura_qd.json` fala dos **5.571 municípios que existem**: 527 com diário indexado, 5.041
+sem, 3 indefinidos. O resumo da varredura classificava apenas os **5.551 com linha de log**. A
+diferença de 20 é exatamente de municípios que **não têm diário indexado e, por isso mesmo, nunca
+foram consultados** — não havia linha de log a classificar, e eles caíam fora da conta.
+
+O estado deles não é indefinido: a cobertura diz `false`, e `false` é `sem_cobertura_qd`.
+`recalcular_mare.py` passou a preencher o estado desses municípios pela cobertura, de modo que as
+cinco classes somam o **total** (5.571) e não os consultados. `consultados` continua publicado e
+continua verificado, como o que sempre foi: quantos têm linha de log. O contador independente
+(`scripts/testar_contador_varredura.py`, §280) foi alinhado à mesma verdade **sem copiar o código do
+produtor** — ele soma os não consultados pela própria cobertura, que é o único arquivo que sabe
+deles, e a independência da recontagem se mantém.
+
+Números publicados depois da correção: com menção **260** · lidos sem menção **200** · sem edição na
+janela **67** · sem diário indexado **5.041** · indefinidos **3** · total **5.571** · indexados **527**.
+Nenhum peso, crédito, régua ou categoria mudou; o que mudou foi o universo de uma contagem que
+declarava menos municípios do que o país tem.
+
+## §299 · Verificador de imprensa, fase 1: agregador resolvido, data em escada, lista que cresce por critério e limiar com intervalo · 29/09/2026
+
+Classe **método e prova**. Itens 1 a 5 do bloco "29/09/2026 (noite) — Verificador de imprensa,
+fase 1". A fase 2 continua sem rodar.
+
+**Item 1 — o link do agregador é caminho, não fonte.** `resolver_redirecionamento()` tenta duas
+rotas, nesta ordem: redirecionamento HTTP servido pela própria fonte e URL embutida no link
+(formato antigo do Google News, em base64 no caminho). O formato em uso hoje é opaco: o blob
+decodifica sem trazer URL nenhuma, não há redirecionamento HTTP, e o domínio do veículo não
+aparece em nenhum lugar dos 585 KB da página. O endereço só chega por um endpoint interno não
+documentado do próprio site — e **ele não é usado, por escolha registrada no código**: usá-lo
+seria fazer engenharia reversa de API privada, não ler documento público. Sem as duas rotas, a
+pista recebe `redirecionamento_nao_resolvido`, visível na fila. O monitor de imprensa passou a
+guardar `veiculo_dominio` do atributo `<source url>` do RSS, que antes era descartado.
+
+**Item 2 — data em escada.** `data_de_publicacao()` devolve `(data, degrau)` e tenta, na ordem:
+`datePublished` do JSON-LD, `article:published_time`, `<time datetime>` e data visível nos
+primeiros 600 caracteres do corpo. O B4 passou a dizer de onde a data veio; data longe da cabeça
+da matéria, mês inexistente e dia impossível não viram data.
+
+**Item 3 — a lista de veículos cresce por critério medido, não por leitura humana de cada
+domínio.** Um domínio entra quando cumpre **todos**: HTTPS; página de expediente com nome do
+veículo ou CNPJ localizável; ao menos 2 matérias distintas na fila (distintas por título —
+sindicação não conta duas vezes); e não estar em `data/dominios_bloqueados.json` (15 agregadores
+e fazendas de conteúdo). A entrada grava a data e cada sinal que a justificou, para veto da
+editoria em uma linha. Teto de 15 domínios avaliados por noite.
+
+**Defeito que o item expôs, e que ele mesmo corrigiu.** A primeira rodada terminou com 5.425
+pistas na fila e **zero lidas**: a sonda de `/expediente` em domínio desconhecido dá 404 na maior
+parte das vezes, e essas recusas esperadas, contadas no orçamento da verificação, disparavam o
+disjuntor de 25% antes da primeira matéria. Sonda de descoberta e leitura de matéria passaram a
+ter orçamentos separados.
+
+**Segundo defeito exposto pelo item 1, no mesmo lugar.** A resolução do link passou a ser tentada
+para **toda** pista da fila, antes do critério B5 — uma requisição de rede por pista, 5.425 por
+noite, para depois descartar a quase totalidade por "veículo não listado", que é decisão que nunca
+precisou de rede. A rodada de medição estourou 28 minutos sem imprimir o funil. O `<source url>` do
+feed já diz de quem é a matéria: quando ele diz e o domínio não está na lista, a recusa sai sem
+rede, e só o que pode ser lido é resolvido. **O que se decide sem rede, decide-se sem rede** — e o
+custo de esquecer isso não aparece no autoteste, que é offline por construção; aparece no relógio.
+
+**Item 4 — o limiar tem n e intervalo, não só proporção.** A amostra humana abre com **20**
+exibíveis (mais 10 recusadas), e a exibição só liga com precisão observada de no mínimo 95% **e**
+limite inferior do intervalo de Wilson a 95% de no mínimo 80%. A razão de exigir os dois está no
+próprio número: "19 de 20 = 95%" tem limite inferior de **76,4%** e **não passa**; "38 de 40 =
+95%" passa. O relatório escreve a regra por extenso antes da leitura, para que ela não se ajuste
+ao resultado, e `--veredito <corretas> <n>` devolve a frase com o n e o intervalo. Se depois de 14
+noites a fila não tiver 20 exibíveis, o que vale é o relato da composição da fila e da causa
+dominante — não uma amostra menor.
+
+**Item 5 — o funil da noite.** `--funil` escreve fila, lidas, inacessíveis, não lidas por
+orçamento, exibíveis, entradas automáticas e cada motivo de recusa com o seu número, e o resumo
+do job do coletor noturno passou a publicá-lo nas noites em que o verificador roda. Sem o funil,
+"0 exibíveis" chegaria à editoria sem a causa ao lado.
+
+**Mais três defeitos que a medição real expôs, e que o autoteste offline não poderia ter
+mostrado.** (a) O disjuntor do orçamento contava **404 como recusa de acesso**: a página de
+expediente que não existe naquele caminho é ausência, não barreira, e tratar as duas como a mesma
+coisa desligava a sonda depois de dois domínios — 149 candidatos, 13 nunca avaliados. Passou a
+haver `eh_recusa_de_acesso()`, que reconhece 401, 403, 429 e 451, e a sonda **para naquele domínio**
+na primeira recusa real, em vez de insistir nos outros três caminhos. (b) Os candidatos do topo da
+fila não eram veículos: um repositório de dados e um host de armazenamento, que responderam 403 em
+tudo. Quatro domínios assim entraram em `data/dominios_bloqueados.json`, que vai a 19.
+(c) **Sítio de ente público não é veículo de imprensa** — e entrou. `gov.br` passou por uma fresta
+(o domínio **nu** não termina em `.gov.br`) e `prefeitura.poa.br` passou por não ter sufixo de
+governo nenhum. `eh_dominio_de_ente()` fecha as duas: sufixo oficial, inclusive nu, e palavra de
+ente no nome. Deixar isso passar confundiria *imprensa descobre* com *documento registra*, que é a
+distinção em que o método inteiro se apoia. As duas entradas indevidas foram removidas e o
+autoteste passou a reprovar a presença de qualquer domínio de ente na lista de veículos — foi esse
+canário que as encontrou.
+
+**Funil medido na noite de 29/09/2026** (`--limite 25`): fila **5.587** · lidas **25** ·
+inacessíveis **1** · não lidas por orçamento **4.875** · **exibíveis 0** (limiar da amostra: 20).
+Recusas: `veiculo_nao_listado` 679 · `sem_data` 13 · `sem_https` 7 · `ente_nao_confirmado` 3 ·
+`genero_nao_noticia` 3 · `natureza_duvidosa` 3 · `recusada_pelo_juiz` 2 · `fora_do_ciclo` 1 ·
+`inacessivel` 1. Entradas automáticas: **6** de 88 candidatos (`ndmais.com.br`,
+`canoinhasonline.com.br`, `nsctotal.com.br`, `ceivap.org.br`, `upiara.com.br`,
+`portaldoholanda.com.br`). Sobre a resolução de agregador, o número é o resultado: **150
+tentativas, 150 falhas**; o formato em uso do Google News não redireciona e não carrega a URL do
+veículo. Por isso o teto caiu a 20 por noite — sonda, não varredura.
+
+> `ceivap.org.br` é comitê de bacia, não jornal, e cumpriu os quatro sinais. **É caso de veto da
+> editoria**, exatamente o que o item 3 previu ao exigir que a entrada gravasse data e sinais e
+> fosse revista semanalmente. Não se inventou critério novo para expulsá-lo: critério escrito para
+> derrubar um caso conhecido deixa de ser critério.
+
+Autoteste: **89 casos** (20 canários), sem rede e sem escrita.
+
 ## §295 · Verificador da fonte das pistas de imprensa, em modo sombra · 29/09/2026
 
 Classe **método e prova**. Bloco 2 do handover consolidado de 29/09/2026 (seções A, B, D, E, F do

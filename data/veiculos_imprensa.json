@@ -1,42 +1,120 @@
 {
- "_governanca": "Lista FECHADA de veículos de imprensa aceitos pelo verificador de pistas (critério B5 do handover de 29/09/2026). Só domínio listado aqui pode gerar pista exibível. A lista começa com os veículos que já geraram registro CONFIRMADO no banco, pelo canal `imprensa`, e cresce por PR — nunca automaticamente, e nunca por um coletor. Sítio de prefeitura ou de órgão estadual NÃO é imprensa: se a matéria for cópia de release, o link certo é o do órgão.",
- "atualizado_em": "29/09/2026",
- "versao": 1,
- "veiculos": [
-  {
-   "dominio": "horacampinas.com.br",
-   "nome": "Hora Campinas",
-   "cobertura": "Campinas/SP",
-   "incluido_em": "29/09/2026",
-   "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
-  },
-  {
-   "dominio": "encontrasantoandre.com.br",
-   "nome": "Encontra Santo André",
-   "cobertura": "Santo André/SP",
-   "incluido_em": "29/09/2026",
-   "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
-  },
-  {
-   "dominio": "vale360news.com.br",
-   "nome": "Vale 360 News",
-   "cobertura": "Jacareí/SP",
-   "incluido_em": "29/09/2026",
-   "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
-  },
-  {
-   "dominio": "plantaoguaruja.com.br",
-   "nome": "Plantão Guarujá",
-   "cobertura": "Guarujá/SP",
-   "incluido_em": "29/09/2026",
-   "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
-  },
-  {
-   "dominio": "abcdoabc.com.br",
-   "nome": "ABC do ABC",
-   "cobertura": "Santo André/SP",
-   "incluido_em": "29/09/2026",
-   "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
-  }
- ]
+  "_governanca": "Lista FECHADA de veículos de imprensa aceitos pelo verificador de pistas (critério B5 do handover de 29/09/2026). Só domínio listado aqui pode gerar pista exibível. A lista começa com os veículos que já geraram registro CONFIRMADO no banco, pelo canal `imprensa`, e cresce por PR — nunca automaticamente, e nunca por um coletor. Sítio de prefeitura ou de órgão estadual NÃO é imprensa: se a matéria for cópia de release, o link certo é o do órgão.",
+  "atualizado_em": "29/09/2026",
+  "versao": 1,
+  "veiculos": [
+    {
+      "dominio": "horacampinas.com.br",
+      "nome": "Hora Campinas",
+      "cobertura": "Campinas/SP",
+      "incluido_em": "29/09/2026",
+      "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
+    },
+    {
+      "dominio": "encontrasantoandre.com.br",
+      "nome": "Encontra Santo André",
+      "cobertura": "Santo André/SP",
+      "incluido_em": "29/09/2026",
+      "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
+    },
+    {
+      "dominio": "vale360news.com.br",
+      "nome": "Vale 360 News",
+      "cobertura": "Jacareí/SP",
+      "incluido_em": "29/09/2026",
+      "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
+    },
+    {
+      "dominio": "plantaoguaruja.com.br",
+      "nome": "Plantão Guarujá",
+      "cobertura": "Guarujá/SP",
+      "incluido_em": "29/09/2026",
+      "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
+    },
+    {
+      "dominio": "abcdoabc.com.br",
+      "nome": "ABC do ABC",
+      "cobertura": "Santo André/SP",
+      "incluido_em": "29/09/2026",
+      "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
+    },
+    {
+      "dominio": "ndmais.com.br",
+      "nome": "ndmais.com.br",
+      "cobertura": "a confirmar",
+      "incluido_em": "2026-09-29",
+      "incluido_por": "entrada automática por critério (item 3, 29/09/2026)",
+      "sinais": {
+        "https": true,
+        "expediente": "https://ndmais.com.br/expediente",
+        "nome_ou_cnpj": true,
+        "materias_na_fila": 23
+      }
+    },
+    {
+      "dominio": "canoinhasonline.com.br",
+      "nome": "canoinhasonline.com.br",
+      "cobertura": "a confirmar",
+      "incluido_em": "2026-09-29",
+      "incluido_por": "entrada automática por critério (item 3, 29/09/2026)",
+      "sinais": {
+        "https": true,
+        "expediente": "https://canoinhasonline.com.br/expediente",
+        "nome_ou_cnpj": true,
+        "materias_na_fila": 22
+      }
+    },
+    {
+      "dominio": "nsctotal.com.br",
+      "nome": "nsctotal.com.br",
+      "cobertura": "a confirmar",
+      "incluido_em": "2026-09-29",
+      "incluido_por": "entrada automática por critério (item 3, 29/09/2026)",
+      "sinais": {
+        "https": true,
+        "expediente": "https://nsctotal.com.br/expediente",
+        "nome_ou_cnpj": true,
+        "materias_na_fila": 9
+      }
+    },
+    {
+      "dominio": "ceivap.org.br",
+      "nome": "ceivap.org.br",
+      "cobertura": "a confirmar",
+      "incluido_em": "2026-09-29",
+      "incluido_por": "entrada automática por critério (item 3, 29/09/2026)",
+      "sinais": {
+        "https": true,
+        "expediente": "https://ceivap.org.br/expediente",
+        "nome_ou_cnpj": true,
+        "materias_na_fila": 8
+      }
+    },
+    {
+      "dominio": "upiara.com.br",
+      "nome": "upiara.com.br",
+      "cobertura": "a confirmar",
+      "incluido_em": "2026-09-29",
+      "incluido_por": "entrada automática por critério (item 3, 29/09/2026)",
+      "sinais": {
+        "https": true,
+        "expediente": "https://upiara.com.br/expediente",
+        "nome_ou_cnpj": true,
+        "materias_na_fila": 6
+      }
+    },
+    {
+      "dominio": "portaldoholanda.com.br",
+      "nome": "portaldoholanda.com.br",
+      "cobertura": "a confirmar",
+      "incluido_em": "2026-09-29",
+      "incluido_por": "entrada automática por critério (item 3, 29/09/2026)",
+      "sinais": {
+        "https": true,
+        "expediente": "https://portaldoholanda.com.br/expediente",
+        "nome_ou_cnpj": true,
+        "materias_na_fila": 5
+      }
+    }
+  ]
 }

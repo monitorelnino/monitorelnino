@@ -49,5 +49,64 @@
    "brutos_siglas_e_variantes": 1555
   }
  },
- "atualizado_em": "2026-09-29T14:28:30"
+ "atualizado_em": "2026-09-29T14:28:30",
+ "verificador_imprensa": {
+  "na_fila": 5587,
+  "lidas": 25,
+  "exibiveis": 0,
+  "inacessiveis": 1,
+  "nao_lidas_por_orcamento": 4875,
+  "resolucoes": 0,
+  "nao_resolvidas_por_orcamento": 0,
+  "por_motivo": {
+   "fora_do_ciclo": 1,
+   "ente_nao_confirmado": 3,
+   "recusada_pelo_juiz": 2,
+   "veiculo_nao_listado": 679,
+   "sem_data": 13,
+   "genero_nao_noticia": 3,
+   "natureza_duvidosa": 3,
+   "sem_https": 7,
+   "inacessivel": 1
+  },
+  "crescimento_da_lista": {
+   "candidatos": 88,
+   "avaliados_por_noite": 15,
+   "entraram": [
+    "ndmais.com.br",
+    "canoinhasonline.com.br",
+    "gov.br",
+    "prefeitura.poa.br",
+    "nsctotal.com.br",
+    "ceivap.org.br",
+    "upiara.com.br",
+    "portaldoholanda.com.br"
+   ],
+   "recusas": {
+    "sem_https": 6,
+    "expediente_sem_nome_nem_cnpj": 1
+   }
+  },
+  "orcamento": {
+   "paginas_lidas": 26,
+   "por_host": {
+    "horacampinas.com.br": 1,
+    "encontrasantoandre.com.br": 1,
+    "vale360news.com.br": 2,
+    "plantaoguaruja.com.br": 1,
+    "abcdoabc.com.br": 1,
+    "ceivap.org.br": 8,
+    "upiara.com.br": 3,
+    "ndmais.com.br": 3,
+    "gov.br": 6
+   },
+   "recusas_por_host": {
+    "gov.br": 1
+   },
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
 }

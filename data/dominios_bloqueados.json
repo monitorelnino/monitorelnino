@@ -1,0 +1,83 @@
+{
+  "_governanca": "Domínios que NUNCA entram na lista de veículos de imprensa, por não serem veículo: agregadores, feeds, redes sociais e sites de conteúdo gerado. É a primeira peneira da entrada automática (item 3 do bloco de 29/09/2026) — um domínio daqui não é avaliado, é recusado. Cresce por PR; a editoria pode acrescentar em uma linha.",
+  "atualizado_em": "2026-09-29",
+  "versao": 1,
+  "dominios": [
+    {
+      "dominio": "news.google.com",
+      "motivo": "agregador — redireciona para o veículo, não é o veículo"
+    },
+    {
+      "dominio": "feedproxy.google.com",
+      "motivo": "redirecionador de feed"
+    },
+    {
+      "dominio": "flipboard.com",
+      "motivo": "agregador"
+    },
+    {
+      "dominio": "msn.com",
+      "motivo": "agregador — republica matéria de terceiros"
+    },
+    {
+      "dominio": "instagram.com",
+      "motivo": "rede social"
+    },
+    {
+      "dominio": "facebook.com",
+      "motivo": "rede social"
+    },
+    {
+      "dominio": "x.com",
+      "motivo": "rede social"
+    },
+    {
+      "dominio": "twitter.com",
+      "motivo": "rede social"
+    },
+    {
+      "dominio": "youtube.com",
+      "motivo": "rede social"
+    },
+    {
+      "dominio": "linkedin.com",
+      "motivo": "rede social"
+    },
+    {
+      "dominio": "wordpress.com",
+      "motivo": "hospedagem de blog pessoal"
+    },
+    {
+      "dominio": "blogspot.com",
+      "motivo": "hospedagem de blog pessoal"
+    },
+    {
+      "dominio": "medium.com",
+      "motivo": "plataforma de publicação pessoal"
+    },
+    {
+      "dominio": "acheconcursos.com.br",
+      "motivo": "conteúdo gerado — agrega editais e notícias"
+    },
+    {
+      "dominio": "jusbrasil.com.br",
+      "motivo": "agregador de conteúdo jurídico"
+    },
+    {
+      "dominio": "data.queridodiario.ok.org.br",
+      "motivo": "repositório de dados do Querido Diário, não veículo de imprensa"
+    },
+    {
+      "dominio": "voxtecnologia.com.br",
+      "motivo": "host de armazenamento de arquivos, não veículo"
+    },
+    {
+      "dominio": "storage.googleapis.com",
+      "motivo": "host de armazenamento, não veículo"
+    },
+    {
+      "dominio": "scribd.com",
+      "motivo": "repositório de documentos de terceiros, não veículo"
+    }
+  ]
+}
