@@ -9,84 +9,6 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
-## §294 · Focos por posição, avisos do INMET, grade de três e a fonte junto da figura · 29/09/2026
-
-Classe **texto público** e **coleta**. Bloco 1 do handover consolidado de 29/09/2026. **Peso zero:**
-são sinais físicos, e nenhuma nota, régua ou categoria do índice muda. **Não mesclar sem o "vai"** —
-muda página.
-
-### 1 · Focos de calor: onde o fogo está, não em que estado ele está
-
-O mapa era coroplético por UF: o estado inteiro pintado pela contagem. O CSV do INPE traz latitude e
-longitude **de cada foco**, e pintar a UF jogava fora justamente a informação que importa — um foco
-no oeste da Bahia e outro no litoral viravam a mesma mancha.
-
-Agora é um ponto por célula de 0,1° (~11 km). O agrupamento é de desenho e foi medido sobre o dia
-real, 28/09, com **26.873 focos**:
-
-| passo | células |
-|---|---|
-| 0,05° | 4.195 |
-| **0,1°** | **3.315** |
-| 0,25° | 2.238 |
-| 0,5° | 1.251 |
-
-0,1° guarda o desenho do arco do desmatamento e do cerrado baiano, cabe em ~110 KB e desenha. O
-agrupamento é feito no **coletor**, não no navegador: mandar quatro megabytes de CSV para o leitor
-agrupar seria pior. **Não há escala de intensidade** — o CSV traz `frp`, e a editoria foi explícita
-em não introduzir escala que o dado não sustente foco a foco; o ponto diz quantos focos há na
-célula, e nada mais.
-
-A contagem por UF **não saiu**: continua na lista, que é o que serve a leitor de tela e a quem quer
-o número exato. E passou a vir do **mesmo arquivo** dos pontos — mapa e lista de rodadas diferentes
-discordando na mesma figura é defeito que ninguém percebe até alguém somar.
-
-### 2 · Card de avisos do INMET
-
-Contagem de avisos ativos por grau e por fenômeno, mapa por UF e lista. O grau e o nome do fenômeno
-são os que o INMET escreve, sem tradução para escala própria (§23.3).
-
-**Corpo vazio servido com 200 é recusa, não ausência de aviso** — a lição que a página de Saúde
-pagou em 24/09. O coletor já falha alto nesse caso; o card agora diz "a fonte não respondeu" e
-**nunca desenha zero**. Resposta válida com lista vazia tem texto próprio, e os dois não se
-confundem.
-
-A linha do topo mudou junto: os avisos do INMET passam a estar aqui, e a Defesa civil segue com os
-alertas do CEMADEN por município.
-
-### 4 · Cinco cartões em grade de três
-
-Classe `.grade-figuras--3`, que já existia. Terceira linha com dois cartões, como em outras páginas.
-A página **encurtou**: de 5.438 para 3.482 px em 1366 px de largura, com cinco cartões em vez de
-quatro. Em 768 px e 390 px a grade colapsa para coluna única pelo sistema existente — conferido nas
-capturas, não suposto.
-
-### 3 · A fonte pertence à figura
-
-A seção "Fontes dos sinais de risco" saiu. A tabela de três camadas obrigava o leitor a sair da
-figura, procurar a linha e voltar. Cada cartão passou a trazer **órgão · o que o dado é · data da
-última consulta**, no mesmo componente de crédito que a inicial e a Saúde já usam — e a **situação**
-só aparece quando não é "coletado": dizer "coletado" em toda linha seria ruído, e calar quando a
-fonte falhou seria esconder.
-
-O preenchimento da tabela removida saiu de `proveniencia.js` junto: guardado por um `if` que nunca
-mais seria verdadeiro, viraria código morto.
-
-### Dois defeitos que o dado e os portões expuseram
-
-**O arquivo do INPE do dia corrente nasce vazio.** Medido: 29/09 com 0 focos às 9h, 28/09 com
-26.873. Tratar isso como recusa daria falha declarada toda manhã; tratar como zero diria "nenhum
-foco no Brasil" onde só faltava o arquivo encher. Cai para o dia anterior, uma vez, e o nome do
-arquivo — que vai para a figura — diz de que dia é o dado.
-
-**O mapa de pontos ficou sem o contorno do país.** Ao trocar o coroplético pelos pontos, esqueci o
-mapa base: os focos flutuavam sem Brasil. Quem pegou foi o portão de runtime, que exige os 27
-estados desenhados — e estava certo em exigir. O padrão da página já era esse nos mapas de capital:
-base neutro, pontos por cima.
-
-Sete travas novas no autoteste do coletor.
-=======
 ## §295 · Verificador da fonte das pistas de imprensa, em modo sombra · 29/09/2026
 
 Classe **método e prova**. Bloco 2 do handover consolidado de 29/09/2026 (seções A, B, D, E, F do
@@ -193,7 +115,82 @@ O relatório de amostra diz isso por escrito quando a amostra sai incompleta, em
 recusadas — completar mediria outra coisa.
 
 Dois portões novos (122).
->>>>>>> origin/main
+## §294 · Focos por posição, avisos do INMET, grade de três e a fonte junto da figura · 29/09/2026
+
+Classe **texto público** e **coleta**. Bloco 1 do handover consolidado de 29/09/2026. **Peso zero:**
+são sinais físicos, e nenhuma nota, régua ou categoria do índice muda. **Não mesclar sem o "vai"** —
+muda página.
+
+### 1 · Focos de calor: onde o fogo está, não em que estado ele está
+
+O mapa era coroplético por UF: o estado inteiro pintado pela contagem. O CSV do INPE traz latitude e
+longitude **de cada foco**, e pintar a UF jogava fora justamente a informação que importa — um foco
+no oeste da Bahia e outro no litoral viravam a mesma mancha.
+
+Agora é um ponto por célula de 0,1° (~11 km). O agrupamento é de desenho e foi medido sobre o dia
+real, 28/09, com **26.873 focos**:
+
+| passo | células |
+|---|---|
+| 0,05° | 4.195 |
+| **0,1°** | **3.315** |
+| 0,25° | 2.238 |
+| 0,5° | 1.251 |
+
+0,1° guarda o desenho do arco do desmatamento e do cerrado baiano, cabe em ~110 KB e desenha. O
+agrupamento é feito no **coletor**, não no navegador: mandar quatro megabytes de CSV para o leitor
+agrupar seria pior. **Não há escala de intensidade** — o CSV traz `frp`, e a editoria foi explícita
+em não introduzir escala que o dado não sustente foco a foco; o ponto diz quantos focos há na
+célula, e nada mais.
+
+A contagem por UF **não saiu**: continua na lista, que é o que serve a leitor de tela e a quem quer
+o número exato. E passou a vir do **mesmo arquivo** dos pontos — mapa e lista de rodadas diferentes
+discordando na mesma figura é defeito que ninguém percebe até alguém somar.
+
+### 2 · Card de avisos do INMET
+
+Contagem de avisos ativos por grau e por fenômeno, mapa por UF e lista. O grau e o nome do fenômeno
+são os que o INMET escreve, sem tradução para escala própria (§23.3).
+
+**Corpo vazio servido com 200 é recusa, não ausência de aviso** — a lição que a página de Saúde
+pagou em 24/09. O coletor já falha alto nesse caso; o card agora diz "a fonte não respondeu" e
+**nunca desenha zero**. Resposta válida com lista vazia tem texto próprio, e os dois não se
+confundem.
+
+A linha do topo mudou junto: os avisos do INMET passam a estar aqui, e a Defesa civil segue com os
+alertas do CEMADEN por município.
+
+### 4 · Cinco cartões em grade de três
+
+Classe `.grade-figuras--3`, que já existia. Terceira linha com dois cartões, como em outras páginas.
+A página **encurtou**: de 5.438 para 3.482 px em 1366 px de largura, com cinco cartões em vez de
+quatro. Em 768 px e 390 px a grade colapsa para coluna única pelo sistema existente — conferido nas
+capturas, não suposto.
+
+### 3 · A fonte pertence à figura
+
+A seção "Fontes dos sinais de risco" saiu. A tabela de três camadas obrigava o leitor a sair da
+figura, procurar a linha e voltar. Cada cartão passou a trazer **órgão · o que o dado é · data da
+última consulta**, no mesmo componente de crédito que a inicial e a Saúde já usam — e a **situação**
+só aparece quando não é "coletado": dizer "coletado" em toda linha seria ruído, e calar quando a
+fonte falhou seria esconder.
+
+O preenchimento da tabela removida saiu de `proveniencia.js` junto: guardado por um `if` que nunca
+mais seria verdadeiro, viraria código morto.
+
+### Dois defeitos que o dado e os portões expuseram
+
+**O arquivo do INPE do dia corrente nasce vazio.** Medido: 29/09 com 0 focos às 9h, 28/09 com
+26.873. Tratar isso como recusa daria falha declarada toda manhã; tratar como zero diria "nenhum
+foco no Brasil" onde só faltava o arquivo encher. Cai para o dia anterior, uma vez, e o nome do
+arquivo — que vai para a figura — diz de que dia é o dado.
+
+**O mapa de pontos ficou sem o contorno do país.** Ao trocar o coroplético pelos pontos, esqueci o
+mapa base: os focos flutuavam sem Brasil. Quem pegou foi o portão de runtime, que exige os 27
+estados desenhados — e estava certo em exigir. O padrão da página já era esse nos mapas de capital:
+base neutro, pontos por cima.
+
+Sete travas novas no autoteste do coletor.
 
 ## §293 · Óbitos pelo Registro Civil, e o estado real de cada um dos vinte desfechos · 29/09/2026
 
