@@ -114,6 +114,13 @@ metodologia ao código em vigor. Mas o caminho está corrigido daqui em diante.
 
 **Quando a editoria pedir dado do preprint pela rodada**, ela diz. Até lá, a rodada serve ao site.
 
+## Quem commita, mescla e publica (editoria, 30/09/2026)
+
+**A central (chat) não commita, não mescla e não publica no repositório do site.** Todo código e
+toda publicação passam exclusivamente pelo Code, a partir de handover; a central escreve o handover
+e mais nada. A regra nasceu de três mudanças publicadas fora do fluxo (#451, #452, #453) — que
+ficam como estão, revisadas e confirmadas, e não se repetem.
+
 ## Fluxo de mudança (PROTOCOLO §3.1)
 
 1. Partir da `main` atualizada; ramo `edicao/AAAA-MM-DD-tema`.
