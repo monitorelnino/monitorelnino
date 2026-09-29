@@ -457,6 +457,26 @@ def _resumo_verificacao(out):
             return "cobertura_indefinida"
 
         _estado = {c: _classificar(fs) for c, fs in _qd.items()}
+
+        # 29/09/2026: o log não fala de TODOS os municípios. Vinte deles não têm diário indexado no
+        # Querido Diário e, justamente por isso, nunca foram consultados — não há linha de log a
+        # classificar. O estado deles não é indefinido: `data/cobertura_qd.json` diz `false`, e
+        # `false` é `sem_cobertura_qd`. Sem este preenchimento, o resumo contava 5.021 e o arquivo
+        # de cobertura 5.041, e o portão de paridade (§256) reprovava a `main` por comparar
+        # universos diferentes: o dos consultados contra o dos existentes. `consultados` continua
+        # sendo o número de quem tem linha de log, que é outra pergunta e segue respondida.
+        _cob_qd = {}
+        _p_cob = RAIZ / "data" / "cobertura_qd.json"
+        if _p_cob.exists():
+            _cob_qd = (json.loads(_p_cob.read_text(encoding="utf-8")) or {}).get("municipios") or {}
+        for _v in out:
+            _c = str(_v["ibge"]).zfill(7)
+            if _c in _estado:
+                continue
+            _r = _cob_qd.get(_c)
+            _val = _r.get("cobertura_qd") if isinstance(_r, dict) else _r
+            _estado[_c] = "sem_cobertura_qd" if _val is False else "cobertura_indefinida"
+
         _com_mencao = sum(1 for e in _estado.values() if e == "com_mencao")
         _coberto_sem_mencao = sum(1 for e in _estado.values() if e == "coberto_sem_mencao")
         _sem_edicao = sum(1 for e in _estado.values() if e == "sem_edicao_no_periodo")

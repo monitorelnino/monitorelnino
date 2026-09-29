@@ -51,6 +51,7 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 FONTE = RAIZ / "recalcular_mare.py"
 RESUMO = RAIZ / "data" / "verificacao_resumo.json"
 FONTES = RAIZ / "data" / "fontes_consultadas.json"
+COBERTURA = RAIZ / "data" / "cobertura_qd.json"
 FQD = "Querido Diário (diário municipal)"
 
 CAMPOS = ["consultados", "total", "com_mencao", "coberto_sem_mencao", "sem_edicao_no_periodo",
@@ -101,8 +102,13 @@ def falhas_de_aritmetica(v: dict) -> list:
     p = []
     soma = (v["com_mencao"] + v["coberto_sem_mencao"] + v["sem_edicao_no_periodo"]
             + v["sem_cobertura_qd"] + v["cobertura_indefinida"])
-    if soma != v["consultados"]:
-        p.append(f"as classes somam {soma} mas consultados = {v['consultados']} — algum "
+    # 29/09/2026: as classes somam o TOTAL, não os consultados. Município sem diário indexado nunca
+    # foi consultado e não tem linha de log — mas tem estado, e o estado é `sem_cobertura_qd`, dito
+    # por `data/cobertura_qd.json`. Conferir contra `consultados` fazia este teste e o portão de
+    # paridade (§256) exigirem coisas incompatíveis: um pedia 5.021, o outro 5.041. `consultados`
+    # segue verificado abaixo, como o que é: quantos têm linha de log.
+    if soma != v["total"]:
+        p.append(f"as classes somam {soma} mas o total é {v['total']} — algum "
                  f"município está fora de classificação ou contado duas vezes")
     if v["sem_mencao"] != v["coberto_sem_mencao"]:
         p.append(f"sem_mencao ({v['sem_mencao']}) difere de coberto_sem_mencao "
@@ -174,8 +180,10 @@ def autoteste() -> int:
     casos.append(("o portão recusa a string fantasma do §121",
                   any("sem edições" in f for f in falhas_de_codigo('if "sem edições" in m:'))))
 
+    # As classes somam o TOTAL. Os 100 consultados são os que têm linha de log; os 5.471 restantes
+    # não têm diário indexado e entram em `sem_cobertura_qd` pela cobertura.
     bom = {"consultados": 100, "total": 5571, "com_mencao": 10, "coberto_sem_mencao": 20,
-           "sem_edicao_no_periodo": 5, "sem_cobertura_qd": 64, "cobertura_indefinida": 1,
+           "sem_edicao_no_periodo": 5, "sem_cobertura_qd": 5535, "cobertura_indefinida": 1,
            "indexados": 35, "sem_mencao": 20}
     casos.append(("estado coerente passa", falhas_de_aritmetica(bom) == []))
     casos.append(("classe faltando reprova",
@@ -185,8 +193,8 @@ def autoteste() -> int:
                   any("indexados" in f for f in falhas_de_aritmetica({**bom, "indexados": 30}))))
     casos.append(("sem_mencao absorvendo sem edição reprova",
                   any("sem_mencao" in f for f in falhas_de_aritmetica({**bom, "sem_mencao": 25}))))
-    casos.append(("classes que não somam os consultados reprovam",
-                  any("somam" in f for f in falhas_de_aritmetica({**bom, "consultados": 101}))))
+    casos.append(("classes que não somam o total reprovam",
+                  any("somam" in f for f in falhas_de_aritmetica({**bom, "total": 5572}))))
     casos.append(("recontagem divergente reprova",
                   falhas_de_paridade({"com_mencao": 11}, bom) != []))
     casos.append(("recontagem igual passa", falhas_de_paridade({"com_mencao": 10}, bom) == []))
@@ -228,16 +236,32 @@ def main() -> int:
     # Recontagem independente, a partir do dado bruto.
     fc = json.loads(FONTES.read_text(encoding="utf-8"))
     fc = fc.get("municipios") or fc
-    recontado, com_mencao = {}, set()
+    recontado, com_mencao, vistos_no_log = {}, set(), set()
     for cod, m in fc.items():
         fs = [f for f in (m.get("fontes") or []) if f.get("fonte") == FQD]
         if not fs:
             continue
         e = estado([str(f.get("resultado", "")) for f in fs])
         recontado[e] = recontado.get(e, 0) + 1
+        vistos_no_log.add(str(cod).zfill(7))
         if e == "com_mencao":
             com_mencao.add(str(cod).zfill(7))
-    recontado["consultados"] = sum(n for c, n in recontado.items() if c != "consultados")
+    consultados = sum(recontado.values())
+    if consultados != v["consultados"]:
+        falhas.append(f"consultados: este portão conta {consultados} municípios com linha de log do "
+                      f"Querido Diário e verificacao_resumo.json declara {v['consultados']}")
+    # Os não consultados entram pela cobertura, que é o único arquivo que sabe deles — e a
+    # recontagem os soma aqui, de forma independente do produtor, para o total fechar.
+    cob = {}
+    if COBERTURA.exists():
+        cob = (json.loads(COBERTURA.read_text(encoding="utf-8")) or {}).get("municipios") or {}
+    for cod, r in cob.items():
+        if str(cod).zfill(7) in vistos_no_log:
+            continue
+        val = r.get("cobertura_qd") if isinstance(r, dict) else r
+        e = "sem_cobertura_qd" if val is False else "cobertura_indefinida"
+        recontado[e] = recontado.get(e, 0) + 1
+    recontado["consultados"] = consultados
     falhas += falhas_de_paridade(recontado, v)
 
     # Reconciliação contra o log, que é outro arquivo e outra origem.
@@ -258,7 +282,7 @@ def main() -> int:
             print(f"X {f}")
         return 1
 
-    print(f"OK contador da varredura: {v['consultados']} consultados = {v['com_mencao']} com menção "
+    print(f"OK contador da varredura: {v['total']} municípios = {v['com_mencao']} com menção "
           f"+ {v['coberto_sem_mencao']} lidos sem menção + {v['sem_edicao_no_periodo']} sem edição "
           f"na janela + {v['sem_cobertura_qd']} sem diário indexado + {v['cobertura_indefinida']} "
           f"indefinidos. Recontagem independente concorda; as {len(com_mencao)} menções têm "

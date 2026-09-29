@@ -9,6 +9,31 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §300 · O portão de paridade reprovava a `main` porque dois contadores mediam universos diferentes · 29/09/2026
+
+Classe **defeito de prova**. Falha **pré-existente na `main`**, encontrada porque bloqueava o merge
+do §299: `verificar_paridade_cobertura_qd.py` reprovava com "não indexados divergem:
+cobertura_qd.json conta 5041 e verificacao_resumo.json declara 5021".
+
+**Nenhum dos dois números estava errado; eles respondiam a perguntas diferentes.**
+`data/cobertura_qd.json` fala dos **5.571 municípios que existem**: 527 com diário indexado, 5.041
+sem, 3 indefinidos. O resumo da varredura classificava apenas os **5.551 com linha de log**. A
+diferença de 20 é exatamente de municípios que **não têm diário indexado e, por isso mesmo, nunca
+foram consultados** — não havia linha de log a classificar, e eles caíam fora da conta.
+
+O estado deles não é indefinido: a cobertura diz `false`, e `false` é `sem_cobertura_qd`.
+`recalcular_mare.py` passou a preencher o estado desses municípios pela cobertura, de modo que as
+cinco classes somam o **total** (5.571) e não os consultados. `consultados` continua publicado e
+continua verificado, como o que sempre foi: quantos têm linha de log. O contador independente
+(`scripts/testar_contador_varredura.py`, §280) foi alinhado à mesma verdade **sem copiar o código do
+produtor** — ele soma os não consultados pela própria cobertura, que é o único arquivo que sabe
+deles, e a independência da recontagem se mantém.
+
+Números publicados depois da correção: com menção **260** · lidos sem menção **200** · sem edição na
+janela **67** · sem diário indexado **5.041** · indefinidos **3** · total **5.571** · indexados **527**.
+Nenhum peso, crédito, régua ou categoria mudou; o que mudou foi o universo de uma contagem que
+declarava menos municípios do que o país tem.
+
 ## §299 · Verificador de imprensa, fase 1: agregador resolvido, data em escada, lista que cresce por critério e limiar com intervalo · 29/09/2026
 
 Classe **método e prova**. Itens 1 a 5 do bloco "29/09/2026 (noite) — Verificador de imprensa,
