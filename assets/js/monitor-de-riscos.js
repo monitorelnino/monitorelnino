@@ -350,6 +350,14 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
     MonitorMapas.legenda('legFogo', [{cor: NEUTRA, rotulo: 'Sem coleta até o corte'}]);
     return;
   }
+  /* O mapa base fica NEUTRO: é só o contorno onde os pontos se apoiam — mesmo padrão dos mapas de
+     capital desta página. Sem ele os focos flutuavam sem país, e foi o portão de runtime que pegou:
+     ele exige os 27 estados desenhados, e estava certo em exigir. */
+  desenharMapa('mapaFogo', 'legFogo', () => NEUTRA,
+    uf => { const f = fogo(uf); const n = f ? f.focos_24h : null;
+            return n == null ? 'Aguardando a primeira coleta desta fonte'
+                             : n.toLocaleString('pt-BR') + ' foco(s) nas últimas 24 h'; },
+    []);
   const itens = base.map(p => ({lat: p[0], lon: p[1], n: p[2]}));
   const maxCel = Math.max(...itens.map(p => p.n));
   /* Raiz quadrada: a área do círculo fica proporcional à contagem, que é como o olho compara
