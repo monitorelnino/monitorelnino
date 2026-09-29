@@ -2,18 +2,23 @@
  "data": "2026-09-29",
  "formato_versao": 1,
  "etapas": {
-  "busca_web": {
-   "consultas": 150,
-   "com_resultado_bruto": 150,
-   "motor_sem_resposta": 0,
-   "pistas": 0,
-   "coberto_sem_mencao": 0,
-   "nao_localizado_ate_o_momento": 150,
-   "lacunas": 0,
-   "brutos_plancon": 1434,
-   "brutos_periodo_ou_seca": 1425,
-   "brutos_siglas_e_variantes": 1468
+  "diario_municipal": {
+   "consultados": 140,
+   "lacunas": 10,
+   "decretos_novos": 0,
+   "pistas": 0
+  },
+  "diario_consorciado": {
+   "fontes": 16,
+   "pistas": 2,
+   "decretos_novos": 19,
+   "bloqueadas": 1,
+   "fora_do_ar": 0
+  },
+  "doe": {
+   "ufs_consultadas": 27,
+   "ufs_com_resultado": 27
   }
  },
- "atualizado_em": "2026-09-29T07:03:31"
+ "atualizado_em": "2026-09-29T08:14:06"
 }
