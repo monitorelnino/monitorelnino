@@ -22,6 +22,8 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: juiz
+      # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
+      grupo_de_concorrencia: noturno
       timeout_minutos: 90
       precisa_node: true
       # 28/09/2026 (bloco das 17:20): a busca dirigida do ato consulta o metabuscador nas

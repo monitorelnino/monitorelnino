@@ -36,5 +36,34 @@
    "recusa_documento_inacessivel": 11
   }
  },
- "atualizado_em": "2026-09-28T23:16:55"
+ "atualizado_em": "2026-09-28T23:16:55",
+ "verificador_imprensa": {
+  "na_fila": 2674,
+  "lidas": 6,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "por_motivo": {
+   "fora_do_ciclo": 1,
+   "ente_nao_confirmado": 3,
+   "recusada_pelo_juiz": 2,
+   "veiculo_nao_listado": 2656,
+   "sem_https": 12
+  },
+  "orcamento": {
+   "paginas_lidas": 6,
+   "por_host": {
+    "horacampinas.com.br": 1,
+    "encontrasantoandre.com.br": 1,
+    "vale360news.com.br": 2,
+    "plantaoguaruja.com.br": 1,
+    "abcdoabc.com.br": 1
+   },
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
 }

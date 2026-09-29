@@ -21,6 +21,8 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: diarios
+      # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
+      grupo_de_concorrencia: noturno
       timeout_minutos: 90
       comandos: |
         consultar_querido_diario.py --alvos data/fila_qd_169.json --limite 40
