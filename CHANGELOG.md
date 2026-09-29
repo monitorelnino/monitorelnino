@@ -9,6 +9,68 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §291 · SRAG passa do InfoGripe para a fonte primária, o SIVEP-Gripe · 29/09/2026
+
+Classe **método e coleta**. Bloco 4 · Doenças respiratórias (decisão da central, 29/09/2026).
+**Peso zero, sem nota, sem faixa** — como todo o MARÉ Saúde. Nenhuma régua do índice muda.
+
+### Por que a troca
+
+O bloco aparecia sem coleta, e a causa estava registrada: o repositório do InfoGripe no GitLab da
+Fiocruz **passou a exigir autenticação**, e o outro host não responde desde 09/09. Login é recusa
+que se respeita (§170), e `coletar_srag_gripe.py` fazia o certo — falhava alto e declarava lacuna,
+sem inventar.
+
+A substituição é para a **origem**: o Sivep-Gripe é o sistema oficial de registro de SRAG, e o
+Ministério da Saúde publica o banco completo por ano epidemiológico, com atualização semanal. A
+hierarquia de fontes da metodologia já prefere a primária; o InfoGripe era o atalho.
+
+### O que muda no dado, dito ao leitor
+
+O InfoGripe trazia **estimativa de dados recentes**. O Sivep-Gripe traz **contagem como está no
+sistema**, sem estimativa. As últimas semanas aparecem menores do que ficarão — notificação e
+laboratório chegam depois —, e por isso as últimas 4 SE seguem marcadas como incompletas. O que
+deixou de existir é a estimativa: onde se dizia "provavelmente serão N", agora se diz "até agora são
+N, e este número ainda sobe". A ressalva de não-atribuição continua.
+
+### Microdado não se guarda
+
+Cada ano do banco tem ~250 MB com sexo, idade, raça, município e comorbidades — e são oito anos.
+Nada disso entra no repositório: `coletar_srag_sivep.py` lê **em fluxo** e guarda só o agregado por
+UF de residência e semana epidemiológica. `coletores_base.buscar_em_fluxo()` é a porta nova, com as
+mesmas travas da porta de sempre — cliente identificado, robots respeitado com rastro, e **muro de
+robô testado no primeiro pedaço**, porque uma página de bloqueio servida com 200 seria lida como CSV
+e viraria linha zerada se ninguém olhasse.
+
+Linha sem UF ou sem semana legível **não é contada nem adivinhada**: na conferência sobre dado real,
+10 de 20.000.
+
+### Ano congelado se lê uma vez
+
+O portal declara 2019–2024 "congelados" e só o corrente "vivo". O agregado dos congelados fica em
+cache com o nome do arquivo de origem, e só é relido quando esse nome muda. Sem isso, o canal
+endêmico custaria ~1,5 GB de rede por semana para produzir o mesmo número.
+
+### O InfoGripe vira sonda, e não escreve mais
+
+`coletar_srag_gripe.py` deixa de coletar por padrão: o modo padrão passa a ser **sondar** e registrar
+o diagnóstico. A coleta só roda com `--coletar`, avisando que sobrescreveria a primária por uma
+derivada. **Duas fontes gravando o mesmo arquivo é como se perde a procedência.** Se o acesso à
+Fiocruz voltar, a sonda avisa — retomar o InfoGripe como complementar é decisão da editoria.
+
+O bloco 4 pediu para manter `sondar_boletim_infogripe.py`; esse arquivo **não existe** no
+repositório, e o que existe é a sonda dentro do próprio coletor. Ficou essa, e o nome está dito no
+workflow para ninguém procurar o outro.
+
+### Um defeito que a troca expôs
+
+O catálogo do §36 declarava `srag` como **"coletado" desde 09/09 com `srag_serie.json`
+inexistente**: a fonte caiu e a declaração ficou para trás. O portão passou a exigir, para todo
+desfecho com `arquivo` declarado, que "coletado" tenha arquivo em disco — e que arquivo em disco
+tenha "coletado". Estado de coleta que não olha o dado é promessa, não registro.
+
+Dois portões novos (118); 20 casos offline no coletor novo.
+
 ## §290 · A busca dirigida estava escrita e não estava ligada · 28/09/2026
 
 Classe **método e coleta**. Conclusão do bloco das 17:20. **Nenhuma nota muda, nenhum peso muda:**

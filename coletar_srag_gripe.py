@@ -220,6 +220,41 @@ def sondar_sitio_oficial(ler_fn=None) -> dict:
         return {"alcancado": False, "erro": f"{type(e).__name__}: {str(e)[:80]}"}
 
 
+def sondar() -> int:
+    """Modo SONDA (29/09/2026, bloco 4): tenta a série do InfoGripe, registra o diagnóstico e
+    **não escreve `srag_serie.json`**.
+
+    Desde a decisão da central, a série de SRAG vem da fonte primária (SIVEP-Gripe, ver
+    `coletar_srag_sivep.py`). O InfoGripe fica como fonte **complementar**: vale saber se o acesso
+    voltou, e é isso que esta sonda responde — mas deixá-lo coletar de novo sobrescreveria a série
+    primária por uma derivada, e duas fontes gravando o mesmo arquivo é como se perde a
+    procedência."""
+    erro_por_url = {}
+    for url in URLS_SERIE:
+        try:
+            bruto = buscar(url, timeout=60).decode("utf-8", "replace")
+        except Exception as e:  # noqa: BLE001
+            erro_por_url[url] = type(e).__name__
+            continue
+        if parece_pagina_de_login(bruto):
+            erro_por_url[url] = "acesso recusado: repositório exige autenticação"
+            continue
+        try:
+            cabecalho, _d, disponiveis = dados_disponiveis(bruto)
+        except ValueError as e:
+            erro_por_url[url] = f"formato inesperado: {e}"[:120]
+            continue
+        _gravar_diagnostico(url, list(cabecalho), disponiveis, erro_por_url)
+        print(f"sonda InfoGripe: ACESSO VOLTOU em {url} — dados disponíveis: {sorted(disponiveis)[:8]}")
+        print("a série primária continua sendo a do SIVEP-Gripe; retomar o InfoGripe como fonte "
+              "complementar é decisão da editoria (bloco 4, 29/09/2026)")
+        return 0
+    _gravar_diagnostico(None, [], set(), erro_por_url)
+    print("sonda InfoGripe: acesso segue fechado — " +
+          " · ".join(f"{u.split('/')[2]}: {e}" for u, e in erro_por_url.items()))
+    return 0
+
+
 def coletar() -> int:
     bruto = None; url_ok = None; erro_por_url = {}
     for url in URLS_SERIE:
@@ -356,4 +391,13 @@ def autoteste() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(autoteste() if "--autoteste" in sys.argv else coletar())
+    # 29/09/2026 (bloco 4): a coleta sai do caminho padrão. Quem grava `srag_serie.json` agora
+    # é `coletar_srag_sivep.py`, da fonte primária; aqui fica a SONDA, que só diz se o acesso
+    # ao InfoGripe voltou. `--coletar` ainda existe para uso manual, e avisa o que faz.
+    if "--autoteste" in sys.argv:
+        sys.exit(autoteste())
+    if "--coletar" in sys.argv:
+        print("ATENCAO: isto sobrescreve srag_serie.json com a serie do InfoGripe, que e fonte "
+              "DERIVADA. A primaria e o SIVEP-Gripe (coletar_srag_sivep.py).")
+        sys.exit(coletar())
+    sys.exit(sondar())

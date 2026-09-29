@@ -102,6 +102,18 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
         if (_sd / "catalogo.json").exists():
             for d in json.load(open(_sd / "catalogo.json", encoding="utf-8")).get("desfechos", []):
                 if not (d.get("id") and d.get("sistema") and d.get("periodicidade") and d.get("status_coleta")): erros.append(f"(o) catálogo: desfecho incompleto {d.get('id')}")
+                # 29/09/2026 (bloco 4): "coletado" tem de ter arquivo em disco. O catálogo declarava
+                # `srag` como coletado desde 09/09 com `srag_serie.json` inexistente — a fonte havia
+                # caído (o repositório do InfoGripe passou a exigir login) e a declaração ficou para
+                # trás. Estado de coleta que não olha o dado é promessa, não registro.
+                if d.get("arquivo"):
+                    _existe = (_sd / d["arquivo"]).exists()
+                    if d.get("status_coleta") == "coletado" and not _existe:
+                        erros.append(f"(o) catálogo: {d.get('id')} diz 'coletado' e "
+                                     f"data/saude_desfechos/{d['arquivo']} não existe")
+                    if d.get("status_coleta") != "coletado" and _existe:
+                        erros.append(f"(o) catálogo: {d.get('id')} tem "
+                                     f"data/saude_desfechos/{d['arquivo']} em disco e não diz 'coletado'")
         if (_sd / "instrumentos.json").exists():
             for i in json.load(open(_sd / "instrumentos.json", encoding="utf-8")).get("federais", []):
                 if str(i.get("status", "")).startswith("localizado e lido") and not (i.get("url") and i.get("lido_em")): erros.append(f"(o) instrumento lido sem url/data: {i.get('id')}")
