@@ -9,6 +9,67 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §307 · Os sinais físicos tinham virado semanais sem ninguém decidir isso · 30/09/2026
+
+Classe **defeito de cadência**. Item 1 da fila viva — e, dentro dele, o item **2b**, que era o único
+que faltava: focos por ponto, card do INMET, grade de três e a saída do quadro de fontes já tinham
+entrado no §294.
+
+**O que a decisão dizia.** Em 29/09/2026 a editoria determinou que os sinais físicos do Monitor de
+riscos — avisos do INMET, focos do INPE, seca, temperatura, ar — são diários na fonte e **nenhum
+deles pode cair na cadência semanal**, com a razão escrita: "sem isso, o card de avisos e o mapa de
+focos ficam bonitos e desatualizados, que é pior do que o quadro que está saindo". O handover mandava
+**confirmar** que os dois entravam nas quatro coletas diárias do `atualizar.yml`.
+
+**A conferência derrubou a premissa.** Não há mais quatro coletas diárias: o desacoplamento do item
+1b tirou o `schedule` diário do monólito e o deixou só no domingo. `coletar_sinais_risco.py` ficou
+vivo apenas no `semanal_sinais_e_links.yml`, que roda **domingo às 4h30**. Ninguém decidiu isso: foi
+efeito colateral de outra mudança, e não havia nada que reprovasse. A própria página mostrava o
+resultado — as cinco figuras carimbavam "atualização: 26/09/2026" em 30/09. Um aviso de perigo do
+INMET com sete dias de atraso não é sinal, é arquivo, e o card diria "em vigor" sobre aviso que
+expirou na terça.
+
+**O conserto.** `noturno_sinais.yml` roda `coletar_sinais_risco.py` todo dia às 5h de Brasília, dentro
+da janela noturna e pouco antes do publicador que a fecha, de modo que o site publicado de manhã
+leve o sinal da noite. O publicador passou a escutá-lo. O clima municipal (5.570 municípios,
+temperatura e ar) **não** veio junto: ele tem teto diário de localidade no Open-Meteo, alterna a
+variável por rodada e continua onde essa lógica mora.
+
+**A trava.** `scripts/verificar_cadencia_sinais.py` exige que **algum** workflow com cron diário
+chame o coletor. Ele trava a propriedade, não o arranjo: se a coleta mudar de arquivo amanhã, o
+portão continua valendo. Sem ele, a mesma regressão volta do mesmo jeito — de lado, sem decisão, sem
+aviso. 16 casos de autoteste.
+
+Nenhum dado do índice muda: sinal físico tem peso zero.
+
+## §308 · Cabeçalho da inicial em duas colunas: logo e título à esquerda, descrição à direita · 30/09/2026
+
+Classe **página pública**. Item 2 da fila viva — opção **B** das três que a editoria viu.
+
+O cabeçalho empilhava o logo e, abaixo, uma grade de duas colunas de peso igual com título e
+descrição lado a lado. Agora são duas colunas: à esquerda o logo com o título **logo abaixo dele**,
+como um bloco só; à direita a descrição, **centrada verticalmente** em relação a esse bloco.
+
+**O logo não mudou, e isso foi conferido, não suposto.** O `<svg>` inteiro — `viewBox`, as linhas da
+régua, o `<text>` "MARÉ", o `<path>` da onda e o gradiente `mareLogoAgua` — é **idêntico caractere a
+caractere** ao de antes (1.174 caracteres, comparados contra a versão anterior); a única diferença no
+diff daquela linha é a indentação, porque o `<h1>` passou a viver dentro da coluna. A onda faz parte
+do desenho e não foi separada, recortada nem duplicada.
+
+**CSS:** a coluna da marca recebe `minmax(0,540px)` e o resto vai para a descrição, com o mesmo
+token de `column-gap` que a abertura já usava; `align-items` passou de `start` a `center`, que é o
+que centra a descrição no bloco logo+título; o título ganhou `margin-top: var(--sp-4)` e perdeu o
+`max-width:14ch`, que existia para a antiga coluna estreita. **Nenhum token novo de cor ou
+tipografia** — só `--fs-*`, `--sp-*`, `--font-titulo`, `--ink` e `--muted`, todos já em uso.
+
+Em telas estreitas as duas colunas empilham, como a abertura já fazia: logo e título acima,
+descrição abaixo. Conferido a 390 px — o logo não ultrapassa a largura da tela e não há rolagem
+horizontal. `masthead--mini` (páginas internas) **não foi tocado**, e o resto do masthead — kicker,
+nav, `mast-body`, `.grad-line` — segue onde estava. Nenhum texto mudou.
+
+Portões verdes, inclusive consistência visual e o de telas pequenas. Capturas em desktop, tablet e
+mobile no PR.
+
 ## §304 · Erro estrutural: escolher só o estado não abre mais nada em "Sua cidade" · 30/09/2026
 
 Classe **defeito** e **método e prova**. Decisão da editoria de 30/09/2026, implementada diretamente (fora do fluxo do Claude Code).
