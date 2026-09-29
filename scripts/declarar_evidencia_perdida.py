@@ -53,15 +53,34 @@ def orfaos(itens: dict, existe=None) -> list:
     return fora
 
 
+def com_texto_integral_ausente(itens: dict, existe=None) -> list:
+    """Itens cujo `texto_integral` aponta arquivo que não está no disco."""
+    existe = existe or (lambda c: pathlib.Path(c).exists())
+    return [h for h, x in itens.items()
+            if x.get("texto_integral") and not existe(x["texto_integral"])]
+
+
 def declarar(itens: dict, hashes: list, motivo: str, data: str) -> int:
     """Troca a afirmação de cópia por lacuna declarada. Devolve quantos itens mudaram."""
     n = 0
     for h in hashes:
         item = itens[h]
-        if item.get("arquivo_perdido"):
-            continue                      # já declarado: idempotente
-        item["arquivo_perdido"] = item.get("arquivo")
-        item["arquivo"] = None
+        # Idempotente por CAMPO, não pelo item: um item já declarado no binário pode ter o texto
+        # integral ainda afirmado, e pular o item inteiro deixava a segunda afirmação de pé.
+        mudou = False
+        if item.get("arquivo") and not item.get("arquivo_perdido"):
+            item["arquivo_perdido"] = item.get("arquivo")
+            item["arquivo"] = None
+            mudou = True
+        # 29/09/2026: o `texto_integral` some junto com o binário — é gravado pelo mesmo caminho e
+        # ficou de fora na primeira versão deste script, que só olhava `arquivo`. Um item com o
+        # binário declarado perdido e o texto ainda afirmado seria a mesma mentira, menor.
+        if item.get("texto_integral"):
+            item["texto_integral_perdido"] = item.get("texto_integral")
+            item["texto_integral"] = None
+            mudou = True
+        if not mudou:
+            continue
         nota = (f"cópia perdida em {data}: {motivo}. O hash, a URL de origem e o tamanho ficam no "
                 f"índice; a re-preservação usa a URL. Nenhuma nota do índice depende deste item.")
         item["nota"] = (str(item.get("nota") or "").strip() + " " + nota).strip()
@@ -121,8 +140,13 @@ def main() -> int:
     doc = json.loads(INDICE.read_text(encoding="utf-8"))
     itens = doc.get("itens") or {}
     fora = orfaos(itens)
+    # Item cujo binário está no disco mas cujo TEXTO INTEGRAL sumiu também entra: os dois são
+    # gravados pelo mesmo caminho, e afirmar texto preservado que não existe é a mesma falta.
+    so_texto = [h for h in com_texto_integral_ausente(itens) if h not in fora]
+    fora = fora + so_texto
     import collections
-    print(f"{len(fora)} item(ns) apontando arquivo inexistente")
+    print(f"{len(fora)} item(ns) apontando arquivo inexistente"
+          + (f" ({len(so_texto)} só no texto integral)" if so_texto else ""))
     for chave, contagem in (("preservado_em", "data"), ("origem", "origem")):
         c = collections.Counter(str(itens[h].get(chave)) for h in fora)
         print(f"  por {contagem}: {c.most_common(5)}")

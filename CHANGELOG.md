@@ -115,6 +115,55 @@ O relatório de amostra diz isso por escrito quando a amostra sai incompleta, em
 recusadas — completar mediria outra coisa.
 
 Dois portões novos (122).
+## §297 · O §270 de novo, por outro caminho: o `git add` do noturno não incluía `evidencias/` · 29/09/2026
+
+Classe **prova**. Segundo defeito da `main` achado enquanto o PR do bloco 1 esperava CI. **Nenhum
+peso, régua ou categoria muda; os 93 registros pontuáveis continuam todos com prova.**
+
+### O defeito
+
+`verificar_evidencias.py` reprovou com **216 itens apontando arquivo que não existe**, todos de hoje,
+de quatro coletores: `coletar_s2id` (195), `coletar_diarios_consorciados` (15), `coletar_doe` (5) e
+`coletar_diarios_municipais` (1).
+
+A causa está no `git add` do workflow reutilizável dos coletores:
+
+```
+git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
+```
+
+**`evidencias/` não está na lista.** Todo coletor que chama `preservar_evidencia` grava o binário em
+`evidencias/` e o registro em `data/evidencias.json`; o índice ia para a `main` no commit da noite, e
+o arquivo ficava no runner. O índice passava a **afirmar cópia preservada que não existe** — que é o
+defeito mais grave que este projeto pode ter.
+
+### Por que o §275 não pegou isto
+
+O §270 tinha a mesma consequência por outra causa: uma regra de `.gitignore` descartava o binário. O
+§275 consertou o `.gitignore` e **não olhou o `git add`**. Os dois caminhos levam ao mesmo lugar, e o
+portão só reprova quando o índice chega à `main` — o que acontecia no mesmo commit, todas as noites,
+sem ninguém ver porque a `main` só é conferida quando um PR abre.
+
+A lição, escrita para a próxima vez: **consertar a causa que se achou não prova que era a única**.
+Quando o sintoma é "o índice afirma arquivo que não existe", vale perguntar por quantos caminhos um
+arquivo pode deixar de chegar ao repositório.
+
+### O conserto
+
+`evidencias/` entrou no `git add` dos dois pontos do `_coletor.yml`.
+
+Os 216 já perdidos não se recuperam: foram produzidos no runner e descartados com ele. Viraram
+**lacuna declarada** por `scripts/declarar_evidencia_perdida.py`, com o motivo e a data — hash, URL
+de origem e tamanho ficam, e é pela URL que a re-preservação acha o que buscar. **5.150 itens no
+índice, antes e depois.**
+
+### Um defeito dentro do conserto
+
+O script que declara a perda só olhava o campo `arquivo`. Um item cujo binário estava no disco e cujo
+**texto integral** havia sumido continuava afirmando texto preservado inexistente — a mesma mentira,
+menor. Agora ele declara os dois campos, e a idempotência passou a ser **por campo**, não por item:
+pular o item inteiro porque o binário já estava declarado deixava a segunda afirmação de pé.
+
 ## §296 · A chave de deduplicação olhava um nome e o registro gravava outro · 29/09/2026
 
 Classe **correção de dado publicado**. Achado enquanto o PR do bloco 1 esperava CI: a `main` estava
