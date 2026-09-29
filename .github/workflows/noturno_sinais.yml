@@ -1,0 +1,45 @@
+# Sinais físicos do ciclo — 5h de Brasília (08:00 UTC), pouco antes do publicador que fecha a noite.
+#
+# POR QUE ESTE WORKFLOW EXISTE (30/09/2026, §306; item 2b do handover do Monitor de riscos)
+# =========================================================================================
+# Os sinais desta página são DIÁRIOS na fonte: o INMET reemite avisos várias vezes ao dia e o INPE
+# publica focos por dia. A decisão da editoria de 29/09 diz, com todas as letras, que nenhum deles
+# pode cair na cadência semanal — "sem isso, o card de avisos e o mapa de focos ficam bonitos e
+# desatualizados, que é pior do que o quadro que está saindo".
+#
+# Quando a decisão foi escrita, `coletar_sinais_risco.py` de fato rodava nas quatro coletas diárias
+# do `atualizar.yml`. **Não roda mais.** O desacoplamento do item 1b tirou o `schedule` diário do
+# monólito e o deixou só no domingo; hoje o script sobrevive no `semanal_sinais_e_links.yml`, que é
+# semanal. Ou seja: a condição que a decisão exigia deixou de valer por efeito colateral de outra
+# mudança, sem ninguém notar. Um aviso de perigo do INMET com até sete dias de atraso não é sinal,
+# é arquivo — e o card diria "em vigor" sobre um aviso que expirou na terça.
+#
+# Este workflow devolve a frequência diária dentro da janela noturna, que é o desenho em vigor: uma
+# coleta por noite, no mesmo horário do publicador que a fecha (09:05 UTC), de modo que o site
+# publicado de manhã leve o sinal da noite, não o do domingo passado.
+#
+# O passo do clima municipal (temperatura e qualidade do ar dos 5.570 municípios) NÃO entra aqui:
+# ele tem teto diário de localidade no Open-Meteo, alterna a variável por rodada e continua no
+# `atualizar.yml`, onde essa lógica mora. Aqui ficam os sinais de país inteiro, que são baratos.
+name: Noturno — sinais físicos
+
+on:
+  schedule:
+    - cron: "0 8 * * *"    # 5h de Brasília, antes do publicador das 06h05
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sinais:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: sinais-fisicos
+      timeout_minutos: 30
+      comandos: |
+        # Avisos do INMET, focos do INPE, seca, ONI/RONI e anomalia — tudo o que o Monitor de riscos
+        # desenha. Sem `--municipios`: esse recorte é do clima municipal, que fica no atualizar.yml.
+        coletar_sinais_risco.py
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
