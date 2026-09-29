@@ -326,7 +326,14 @@ def verificar(pagina_html: str, pista: dict, contexto: dict) -> dict:
     from classificador_natureza import classificar as classificar_natureza
     from classificar_pista_civil import classificar_objeto
 
-    hoje = contexto.get("hoje") or datetime.date.today()
+    # A data vem do contexto (o autoteste passa uma fixa) ou da data EDITORIAL — nunca de
+    # `date.today()`, que no runner é UTC: uma matéria publicada às 22h de Brasília cairia no dia
+    # seguinte e o teste do ciclo (B4) julgaria pela data errada. O portão pegou isto na CI.
+    if contexto.get("hoje"):
+        hoje = contexto["hoje"]
+    else:
+        from coletores_base import hoje_editorial
+        hoje = hoje_editorial()
     veredito = {"versao": VERSAO, "exibivel": False, "motivo": None, "criterios": {},
                 "lido_em": hoje.isoformat(), "url": pista.get("url")}
 

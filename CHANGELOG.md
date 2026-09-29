@@ -259,9 +259,14 @@ o diagnóstico. A coleta só roda com `--coletar`, avisando que sobrescreveria a
 derivada. **Duas fontes gravando o mesmo arquivo é como se perde a procedência.** Se o acesso à
 Fiocruz voltar, a sonda avisa — retomar o InfoGripe como complementar é decisão da editoria.
 
-O bloco 4 pediu para manter `sondar_boletim_infogripe.py`; esse arquivo **não existe** no
-repositório, e o que existe é a sonda dentro do próprio coletor. Ficou essa, e o nome está dito no
-workflow para ninguém procurar o outro.
+O bloco 4 pediu para manter `sondar_boletim_infogripe.py`.
+
+> **ERRATA (29/09/2026, mesmo dia).** Escrevi aqui que esse arquivo "não existe no repositório".
+> **Ele existe**, em `scripts/sondar_boletim_infogripe.py`, e estava ligado ao
+> `diagnostico_sinais.yml`, que roda por botão. Procurei na raiz, não achei, e concluí demais do que
+> não achei — que é exatamente o erro que este projeto passa o dia inteiro impedindo em dado
+> público. A sonda entrou no semanal, como o bloco pedia, ao lado da sonda do próprio coletor: uma
+> olha o boletim em PDF, a outra olha os endpoints do CSV no GitLab. Nenhuma das duas escreve série.
 
 ### Um defeito que a troca expôs
 
