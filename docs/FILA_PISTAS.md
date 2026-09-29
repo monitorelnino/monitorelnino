@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 29/09/2026 · 1221 pendente(s) · 3966 decidida(s) · A=134 B=689 C=398
+Gerado em 29/09/2026 · 1239 pendente(s) · 3966 decidida(s) · A=135 B=704 C=400
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -93,6 +93,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Novo decreto do Governo do Amazonas traz mudanças em regras de ...
   - url: http://www.amazonas.am.gov.br/2021/03/novo-decreto-do-governo-do-amazonas-traz-mudancas-em-regras-de-circulacao-ensino-privado-restaurantes-e-balnearios/
   - trecho: Entre as mudanças está o horário de funcionamento de restaurantes e lanchonetes, que passará a ser das 06h às 23h, de segunda a sábado, e das 7h às 16h aos domingos. O decreto com as alterações, que entrará em vigor na p
+  - ⚠ ano_anterior_ao_ciclo
+
+## Pacajus/CE — 2 pendente(s)
+- `0f13e405fb` · nível **A** (7 pts) · busca_web · — · **Lei nº 403**, 24/06/2015 (do trecho)
+  - título: Governo de Pacajus - pacajus.ce.gov.br
+  - url: https://pacajus.ce.gov.br/planosmunicipais.php
+  - trecho: O Plano Municipal de Educação (PME) de Pacajus, instituído pela Lei nº 403, de 24 de junho de 2015, estabelece as diretrizes, metas e estratégias para a política educacional do município, com vigência de 10 (dez) anos. O
+- `2de5881f83` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Plano Municipal da Primeira Infância CE
+  - url: https://pt.scribd.com/document/950996085/PLANO-MUNICIPAL-PELA-PRIMEIRA-INFA-NCIA-DE-PACAJUS-2022-1
+  - trecho: A Comissão do Comitê Municipal da Primeira Infância de Pacajus-CE, dialogou de forma intersetorial, identificando a partir destes dados coletados, quais as reais problemáticas, os desafios,
   - ⚠ ano_anterior_ao_ciclo
 
 ## Sobral/CE — 1 pendente(s)
@@ -2917,49 +2928,57 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: ... plano de ação e acompanhamento da implantação do plano de ação para diversos projetos. ... Timbó Grande; Três Barras; Treviso; Treze de Maio; Treze Tílias ...
 
 ## Treze de Maio/SC — 63 pendente(s)
-- `872cd83aab` · nível **A** (8 pts) · busca_web · — · data 2014 (do trecho)
+- `872cd83aab` · nível **A** (8 pts) · busca_web · DUVIDA · **Lei nº 860**, 04/02/1880
   - título: plano municipal de preparação e resposta a emergências
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/401-regional-de-saude-de-blumenau.html?download=1248%3Appr-esp-blumenau&Itemid=109
   - trecho: Grande do Treze de Maio;. ✓ Córregos: Córrego Fundo Kilan. 5.6 PEDOLOGIA ... Plano de contingência de proteção e defesa civil. 2014. UNIFESP. Gestão de ...
-- `d00818759b` · nível **B** (6 pts) · busca_web · — · data 29/06/2017 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `d00818759b` · nível **B** (6 pts) · busca_web · EX_ANTE · data 29/06/2017 (do trecho)
   - título: [29/06/2017] Relatório Final - Prefeitura de Imaruí
   - url: https://imarui.sc.gov.br/uploads/sites/130/2021/12/1005072_Relatorio_Final.pdf
   - trecho: ... Treze de Maio e Tubarão. O Consórcio CATARINA é uma possibilidade dos ... Plano de Contingência é um plano elaborado para orientar as ações de.
   - ⚠ ano_anterior_ao_ciclo
-- `0fc5941aeb` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `0fc5941aeb` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: plano municipal de preparação e resposta às emergências em ...
   - url: https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/402-regional-de-saude-de-tubarao.html?download=1260%3A3-plano-treze-de-maio&Itemid=109
   - trecho: Neste sentido, em Treze de Maio / SC existem diversas iniciativas do ... Também elaborou plano de contingência acerca da emergência em saúde pública, bem ...
-- `a516b01da7` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `a516b01da7` · nível **B** (5 pts) · busca_web · RESPOSTA · citação não extraída
   - título: PLANO MUNICIPAL DE CONTINGÊNCIA
   - url: https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf
   - trecho: • Cidades Próximas: São Ludgero, Tubarão, Treze de Maio, Cocal do Sul, Urussanga, Orleans ... O Plano de Contingência Municipal - PLANCON Municipal será ativado ...
   - ⚠ ano_anterior_ao_ciclo
-- `b38879014a` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
+- `b38879014a` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: Treze de Maio promove baile da Melhor Idade com música ...
   - url: https://diarioomunicipio.com.br/geral/treze-de-maio-promove-baile-da-melhor-idade-com-musica-diversao-e-confraternizacao-130172
   - trecho: 3 days ago ... Treze de Maio promove baile da Melhor Idade com música ... Grac Municipal é instituído e plano de contingência é atualizado em Jaguaruna.
+  - juiz: portão automático: fonte não oficial
 - `9186ca417f` · nível **B** (5 pts) · busca_web · — · data 2020 (do trecho)
   - título: PLANO DE AÇÃO REGIONAL DA REDE DE ATENÇÃO ÀS ...
   - url: https://www.saude.sc.gov.br/index.php/pt/redes-de-atencao-a-saude/rede-de-urgencia-e-emergencia-rue/planos-de-acao/documentos-planos-de-acao-regionais/par-macrorregiao-do-sul/download
   - trecho: Nov 4, 2020 ... Martinho, Treze de Maio, Tubarão, Balneário Rincão, Cocal do Sul ... 4 PROPOSTA DE INCLUSÃO NO PLANO DE AÇÃO REGIONAL ...
-- `8d3c92eadb` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `8d3c92eadb` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: SC - Prefeitura de Tubarão
   - url: https://tubarao.sc.gov.br/uploads/sites/265/2025/04/Plano-de-Contingencia-APROVADO-1-2024.pdf
   - trecho: com o município de Jaguaruna, a Sudoeste com Treze de Maio, e a Sudeste com Laguna. ... plano de contingência. Nível de. Mobilização. Limiares Críticos. Ações ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `51488ee4f9` · nível **B** (4 pts) · busca_web · — · data 2024 (do trecho)
   - título: plano de - contingência - Defesa Civil de Blumenau
   - url: https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2024.pdf
   - trecho: Aug 6, 2024 ... Plano de Contingência – Inundações e Movimentos de Massa - Anexo ... Treze de Maio. Localidade Treze de Maio. 8411-0169 (falar com. Kleine).
-- `e7a4e4f96f` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `e7a4e4f96f` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Ex-prefeito Edenilson da Costa apoia Dr. Elói à Câmara Federal ...
   - url: https://diarioomunicipio.com.br/geral/ex-prefeito-edenilson-da-costa-apoia-dr-eloi-a-camara-federal-reforcando-compromisso-com-jaguaruna-130071
   - trecho: 4 days ago ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
-- `d14edb32fb` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `d14edb32fb` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Tempo segue firme, com predomínio de sol, poucas nuvens e ...
   - url: https://diarioomunicipio.com.br/tempo/tempo-segue-firme-com-predominio-de-sol-poucas-nuvens-e-temperaturas-em-elevacao-em-santa-catarina-130238
   - trecho: 2 days ago ... Treze de Maio promove baile da Melhor Idade com música, diversão e confraternização ... Grac Municipal é instituído e plano de contingência ...
+  - juiz: portão automático: fonte não oficial
 - `1c3e37bc42` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
   - título: Decreto - Prefeitura Municipal de Criciúma
   - url: https://apoio.criciuma.sc.gov.br/files/68f93fa032a0c22102025.pdf
@@ -2985,44 +3004,52 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://tubarao.sc.gov.br/uploads/sites/265/2022/11/1853591_Curriculo_Base_da_Educacao_Infantil_e_Fundamental_do_Territorio_Catarinense.pdf
   - trecho: ... Treze de Maio; Caldas do Cubatão – Santo Amaro da Imperatriz; Aldeia ... Plano de ação para satisfazer as necessidades básicas de aprendizagem. Jomtien ...
   - ⚠ ano_anterior_ao_ciclo
-- `71392208fc` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `71392208fc` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Editor Comitê Tubarão e Complexo Lagunar - Aguas SC
   - url: https://www.aguas.sc.gov.br/servicos/noticias/itemlist/user/199-editorcomitetubaraoecomplexolagunar
   - trecho: ... plano de contingência com o intuito de enfrentar os momentos de crise. ... Treze de Maio. Publicado em Notícias. Tagged sob. Comitê Tubarão e Complexo ...
-- `0ea2fd9a54` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `0ea2fd9a54` · nível **B** (3 pts) · busca_web · DUVIDA · data 2022 (do trecho)
   - título: Publicações Epagri
   - url: https://sistemas.epagri.sc.gov.br/semob/consulta.action?subFuncao=consultaPublicacoes
   - trecho: ... Plano de contingência da Epagri diante da pandemia da Covid-19 2022 ... Treze de Maio, SC. 2014 - Publicação seriada (Boletim Didático) Livre download ...
-- `eab9a1876f` · nível **B** (3 pts) · busca_web · — · data 2024 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `eab9a1876f` · nível **B** (3 pts) · busca_web · EX_ANTE · **lei n. 6.745**, 29.11.2024
   - título: estado de santa catarina - DOE SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
   - trecho: Dec 2, 2024 ... Continuidade de negócio (plano de contingência, de recuperação de ... ção da agência de Treze de maio. oriGEm: Dl nº 79/2024 Valor: r ...
   - ⚠ ano_anterior_ao_ciclo
-- `69523f26ef` · nível **B** (3 pts) · busca_web · — · data 2022 (do trecho)
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `69523f26ef` · nível **B** (3 pts) · busca_web · DUVIDA · data 2022 (do trecho)
   - título: Publicações-Livres - Epagri
   - url: https://www.epagri.sc.gov.br/solucoes/publicacoes/publicacoes-livres/
   - trecho: Plano de contingência da Epagri diante da pandemia da Covid-19 2022 ... Treze de Maio, SC. 2014 - Publicação seriada (Boletim Didático) Livre ...
-- `3117895f56` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `3117895f56` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: Plano de contingência e emergência ambiental - Cristal - Consultoria
   - url: https://www.cristalconsult.com.br/plano-contingencia-emergencia-ambiental
   - trecho: Plano de contingência e emergência ambiental da sua empresa esteja alinhado ... Treze de Maio; Timbó Grande; Trombudo Central; Campo Belo do Sul; Itá; Ouro ...
-- `a90af4340a` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `a90af4340a` · nível **B** (3 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Coopercocal apresenta Plano de Contingência para atuação em ...
   - url: https://www.ligadonosul.com.br/geral/coopercocal-apresenta-plano-de-contingencia-para-atuacao-em-periodos-de-alertas-climaticos/
   - trecho: Sep 1, 2026 ... A Coopercocal apresentou aos colaboradores, na manhã desta segunda-feira, dia 31, o Plano de Contingência ... Treze de Maio em Destaque. Jailson ...
+  - juiz: portão automático: fonte não oficial
 - `93c498b2a2` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Treze de maio: 707 imagens, fotos e ilustrações stock livres de direitos
   - url: https://www.shutterstock.com/pt/search/treze-de-maio
   - trecho: ... Treze de Maio, state of Santa Catarina. TREZE DE MAIO, BRAZIL - CIRCA APRIL ... No entanto, o governo regional implementou um plano de contingência ...
-- `73c4015e23` · nível **B** (3 pts) · busca_web · — · citação não extraída
+- `73c4015e23` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
   - título: regulamento/plano de operação da promoção - Cresol
   - url: https://cresol.com.br/wp-content/uploads/2026/02/Regulamento-Aprovado-Cooperar-e-Ganhar-Cresol-Geral-SPA-04.047374-2026.pdf
   - trecho: Bairro: CENTRO Município: TREZE DE MAIO UF: SC CEP:88710-000. CNPJ/MF nº ... plano de contingência específico para solução dos possíveis problemas e ...
-- `baa9e60ba6` · nível **B** (3 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `baa9e60ba6` · nível **B** (3 pts) · busca_web · DUVIDA · **PORTARIA Nº 09**, 24.11.2025
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20251125/Jornal/22647.pdf
   - trecho: Nov 25, 2025 ... de plano de contingência para doação de itens de assistência hu- ... de TrEZE dE maio/sc, para o exercício da atividade de vistoria de ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `914c191325` · nível **B** (3 pts) · busca_web · — · data 14/10/2020 (do trecho)
   - título: FLORIANÓPOLIS, quARtA-FeIRA, 14 de OutubRO de 2020 ANO ...
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2020/20201014/Jornal/2499.pdf
@@ -3640,12 +3667,42 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: A Prefeitura de Valença realizou, ... do Plano de Contingência voltado ao enfrentamento dos impactos do fenômeno climático El Niño no município....
   - juiz: portão automático: fonte não oficial
 
-## Cascavel/CE — 1 pendente(s)
+## Cascavel/CE — 8 pendente(s)
+- `7a83f1ad18` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Prefeitura de Cascavel detalha plano contra efeitos do El Niño
+  - url: https://oparana.com.br/clima/el-nino-coloca-cascavel-em-alerta-e-municipio-reforca-acoes-preventivas/
+  - trecho: Prefeitura de Cascavel adota Plano de Ação e Contingência para enfrentar condições climáticas extremas do El Niño.
+- `d19c23e8b4` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Prefeitura de Cascavel lança plano para enfrentar efeitos do El ...
+  - url: https://www.opresente.com.br/municipios/prefeitura-de-cascavel-lanca-plano-para-enfrentar-efeitos-do-el-nino/
+  - trecho: A Prefeitura de Cascavel estruturou um Plano de Ação integrado para o enfrentamento dos possíveis efeitos do El Niño.
 - `76376a0214` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Cascavel está preparada para enfrentar um “Super El Niño”? A ...
   - url: https://www.instagram.com/reel/DZxKeajCt-W/
   - trecho: Jun 19, 2026 ... ⚠️🌧️ CASCAVEL EM ALERTA! A Prefeitura acionou nesta sexta-feira (11) o plano de contingência diante da previsão de tempo severo para os ...
   - juiz: portão automático: fonte não oficial
+- `65caf2f8d7` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Plano Diretor de Cascavel - PR
+  - url: https://leismunicipais.com.br/plano-diretor-cascavel-pr
+  - trecho: 3º O Plano Diretor de Cascavel e o Plano de Ação e Investimentos devem ter suas disposições e prioridades observadas para a formulação do Plano Plurianual do Município, da Lei de Diretrizes Orçamentárias e da Lei do Orça
+- `20fa6a4e9c` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: Prefeitura reforça plano de ação para enfrentar impactos do ...
+  - url: https://cgn.inf.br/noticia/2169350/prefeitura-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino-em-cascavel
+  - trecho: “É importante dizer à sociedade ... do super El Niño”. A declaração é do prefeito Renato Silva durante reunião do Plano de Ação e Contingência para o enfrentamento do El Niño, realizada na manhã desta quarta-feira ...
+- `e583b7f2c7` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - título: Audiência pública apresenta planejamento de Cascavel para os ...
+  - url: https://sot.inf.br/noticia/59998/audiencia-publica-apresenta-planejamento-de-cascavel-para-os-proximos-cinco-anos-nesta-segunda-feira-28
+  - trecho: Encontro será realizado hoje, às 18h, na Câmara de Vereadores, e vai apresentar 438 ações previstas no Plano de Ação e Investimentos
+- `723512b134` · nível **C** (5 pts) · busca_web · — · citação não extraída
+  - título: IPC – Instituto de Planejamento de Cascavel
+  - url: https://ipc.cascavel.pr.gov.br/
+  - trecho: Para colocar a visão de futuro do Plano Diretor em prática, utiliza-se o Plano de Ação e Investimentos (PAI) como seu instrumento complementar de efetivação. No contexto de Cascavel, o PAI detalha as operações, estimando
+  - ⚠ uf_divergente_na_url
+- `b554fa1f48` · nível **C** (5 pts) · busca_web · — · citação não extraída
+  - título: INSTITUTO DE PLANEJAMENTO DE CASCAVEL
+  - url: https://prefa.cascavel.pr.gov.br/subportal/instituto-de-planejamento-de-cascavel
+  - trecho: IPC CASCAVEL DO FUTURO | IPC convoca comunidade para audiência pública do Plano de Ação e Investimentos
+  - ⚠ uf_divergente_na_url
 
 ## Fortaleza/CE — 5 pendente(s)
 - `0a8db47e79` · nível **B** (4 pts) · busca_web · — · data 2026 (do trecho)
@@ -3675,6 +3732,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
 - `cc8670ea5e` · nível **C** (2 pts) · diario_consorciado · — · citação não extraída
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116916_2026-09-17_6168da75348341282d6e64042dab876f.pdf
   - trecho:  de risco;  III – realizar levantamentos preventivos;  IV – auxiliar na elaboração e atualização do Plano Municipal de  Contingência;  V – elaborar planos, projetos e programas destinados à prevenção e  redução de riscos
+
+## Massapê/CE — 1 pendente(s)
+- `aba2890c38` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Prefeitura de Massapê - massape.ce.gov.br
+  - url: https://massape.ce.gov.br/planosmunicipais.php
+  - trecho: Lista de planos municipais. Lista de planos municipais Início Planos municipais Opções de filtro Escolha o campo para a pesquisa e clique no botão pesquisar Período Descrição Grupo Selecione um grupo Plano Diretor Plano 
+
+## Parambu/CE — 1 pendente(s)
+- `de1be370ba` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: Alterações no Plano Anual de Aplicação de Recursos (PAAR) de Parambu
+  - url: https://parambu.ce.gov.br/cultura/622-alteracoes-no-plano-anual-de-aplicacao-paar-de-parambu
+  - trecho: Alterações no Plano Anual de Aplicações de Recursos (PAAR) de Parambu Considerando que a Política Nacional Aldir Blanc (PNAB) é uma política pública de aplicação anual e estava previsto possíveis alterações no decorrer d
 
 ## None/GO — 1 pendente(s)
 - `d7b81c79ef` · nível **B** (4 pts) · imprensa · EX_ANTE · citação não extraída
@@ -3838,6 +3907,41 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://acritica.net/saude/ponta-pora-capacita-servidores-sobre-impactos-do-el-nino-na-saude/
   - trecho: 3 hours ago ... Evento reúne profissionais da região de fronteira para discutir prevenção e resposta a mudanças climáticas Ponta Porã realiza capacitação ...
   - juiz: portão automático: fonte não oficial
+
+## São Gabriel do Oeste/MS — 1 pendente(s)
+- `4bca90fe09` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: São Gabriel do Oeste — Controladoria-Geral da União
+  - url: https://www.gov.br/cgu/pt-br/governo-aberto/time-brasil-antiga/planos-de-acao/planos/mato-grosso-do-sul/sao-gabriel-do-oeste
+  - trecho: Nesta página, você pode navegar pelo plano de ação de São Gabriel do Oeste. Aqui, é possível verificar as ações, o andamento delas, bem como documentos de adesão.
+
+## Chapada dos Guimarães/MT — 5 pendente(s)
+- `af71d1c3f1` · nível **B** (5 pts) · busca_web · — · citação não extraída
+  - título: CMA quer ouvir empresa que levou concessão da Chapada dos Guimarães ...
+  - url: https://www12.senado.leg.br/noticias/materias/2024/04/25/cma-quer-ouvir-empresa-que-levou-concessao-da-chapada-dos-guimaraes
+  - trecho: A Parques Fundos de Investimento em Participações em Infraestrutura (Parques FIP) deve apresentar à Comissão de Meio Ambiente (CMA) um plano de ação de como investirá, em cinco anos, os R$ 18 milhões dos serviços de apoi
+  - ⚠ ano_anterior_ao_ciclo
+- `f257e6db38` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: MidiaNews | TCE-MT e Chapada dos Guimarães firmam parceria para ...
+  - url: https://www.midianews.com.br/judiciario/tce-mt-e-chapada-dos-guimaraes-firmam-parceria-para-projeto-piloto-contra-hanseniase/514727
+  - trecho: Plano de ação será lançado em 30 dias e poderá ser replicado nos 142 municípios do Estado. O Tribunal de Contas de Mato Grosso (TCE-MT) e a Prefeitura de Chapada dos Guimarães estão desenvolvendo, de forma conjunta, um p
+- `4a829a266e` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: TCE-MT e Chapada dos Guimarães firmam parceria para projeto-piloto ...
+  - url: https://odocumento.com.br/tce-mt-e-chapada-dos-guimaraes-firmam-parceria-para-projeto-piloto-contra-a-doenca/
+  - trecho: Plano de ação será lançado ... O Tribunal de Contas de Mato Grosso (TCE-MT) e a Prefeitura de Chapada dos Guimarães estão desenvolvendo, de forma conjunta, um projeto-piloto de enfrentamento à hanseníase...
+- `f82c2495b1` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: TCE-MT e Chapada dos Guimarães firmam parceria para projeto-piloto ...
+  - url: https://www.ignews.com.br/2026/02/25/tce-mt-e-chapada-dos-guimaraes-firmam-parceria-para-projeto-piloto-contra-hanseniase/
+  - trecho: Plano de ação será lançado em 30 dias e poderá ser replicado nos 142 municípios…
+- `cb789ae4f6` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: TCE-MT e Chapada dos Guimarães firmam parceria para projeto-piloto ...
+  - url: https://www.estadaomatogrosso.com.br/geral/tce-mt-e-chapada-dos-guimaraes-firmam-parceria-para-projeto-piloto-contra-a-hanseniase/132759
+  - trecho: Plano de ação será lançado em 30 dias e poderá ser replicado nos 142 municípios do Estado
+
+## Diamantino/MT — 1 pendente(s)
+- `86bdd63001` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - título: PLANO DE AÇÃO DE COMUNICAÇÃO INTERNA E EXTERNA DAS AÇÕES PARA GARANTIA ...
+  - url: https://amm.diariomunicipal.org/publicacao/1884982/
+  - trecho: O sucesso do Plano de Comunicação Municipal para a Alfabetização na Idade Certaem Diamantino – MT depende diretamente da sinergia entre a Secretaria Municipal de Educação, a assessoria de comunicação da prefeitura e as e
 
 ## Almeirim/PA — 2 pendente(s)
 - `ddb47cb55c` · nível **B** (3 pts) · busca_web · EX_ANTE · citação não extraída
@@ -5046,20 +5150,23 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: § 2º O Plano de Contingência é organizado pela definição e carac- terização ... de Major Vieira - Sed. PORtARIA Nº 2325 - 01/09/2021. CONCEDER ...
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
-- `a1eb7503aa` · nível **B** (5 pts) · busca_web · — · data 2022 (do trecho)
+- `a1eb7503aa` · nível **B** (5 pts) · busca_web · DUVIDA · **Portaria 236**, 2019
   - título: PLANO MUNICIPAL DE ASSISTÊNCIA SOCIAL 2022 - 2025
   - url: https://papanduva.sc.gov.br/uploads/sites/306/2022/06/2354533_PLANO_MUNICIPAL_DE_ASSISTENCIA_SOCIAL_2022___2025.pdf
   - trecho: Itaiópolis, Mafra, Major Vieira, Monte Castelo, Rio do Campo, Santa Terezinha, ... https://leismunicipais.com.br/plano-municipal-de-educacao-papanduva-sc.
   - ⚠ ano_anterior_ao_ciclo
-- `f9da5b32b8` · nível **B** (5 pts) · busca_web · — · **Decreto nº 11.367**, 2023 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `f9da5b32b8` · nível **B** (5 pts) · busca_web · EX_ANTE · **PORTARIA 2**, 27/07/2026
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-07-29.pdf?noCache=20260729135540192517
   - trecho: Jul 29, 2026 ... - Que, ademais, por força do Decreto nº 11.367/2023, seria elaborado o Plano de Ação Para Prevenção e Controle do ... Major Vieira/SC; d) nome e ...
-- `4f70a8ec85` · nível **B** (5 pts) · busca_web · — · data 2013 (do trecho)
+  - juiz: portão automático: fonte não oficial
+- `4f70a8ec85` · nível **B** (5 pts) · busca_web · DUVIDA · data 2013 (do trecho)
   - título: PLANO MUNICIPAL DE SAÚDE
   - url: https://timbogrande.sc.gov.br/uploads/sites/352/2025/05/plano-de-saude.pdf
   - trecho: ... Major Vieira,. Ireneópolis, Lebon Régis, estas famílias buscam ... Plano de Enfrentamento das. DCNT's. Segundo o Plano de Ação da OMS (2013-2020) ...
   - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `7c8fd9e086` · nível **B** (4 pts) · busca_web · EX_ANTE · **lei n. 6.745**, 29.11.2024
   - título: estado de santa catarina - DOE SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2024/20241202/Jornal/22407.pdf
@@ -5081,29 +5188,34 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://canoinhasonline.com.br/2026/09/dupla-e-presa-em-flagrante-pela-pm-apos-assaltar-conveniencia-major-vieira.html
   - trecho: 2 days ago ... Home Major Vieira Dupla é presa em flagrante pela PM após assaltar conveniência em Major Vieira ... Defesa Civil detalha plano de contingência ...
   - juiz: portão automático: fonte não oficial
-- `94673643db` · nível **B** (4 pts) · busca_web · — · citação não extraída
+- `94673643db` · nível **B** (4 pts) · busca_web · DUVIDA · citação não extraída
   - título: Proposta Curricular da Educação Básica - Prefeitura de Monte Castelo
   - url: https://montecastelo.sc.gov.br/uploads/sites/449/2021/12/2213358_1732258_PROPOSTA_CURRICULAR_AMPLANORTE_COMPLETA_160120.pdf
   - trecho: ... Major Vieira. Page 10. A partir da necessidade de que as discussões e ... plano de ação que possibilite contínuas melhorias, qualitativas e quantitativas ...
   - ⚠ ano_anterior_ao_ciclo
-- `e8cfd5f970` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `e8cfd5f970` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto Estadual nº 733**, 24/10/2024
   - título: EDITAL DE CHAMAMENTO PÚBLICO PARA TERMO DE ...
   - url: https://www.cultura.sc.gov.br/downloads/fcc/editais/3362-edital-de-chamamento-publico-para-termo-de-convenio-sc-cultura-boa-165-2025-atualizado-docx/file
   - trecho: Nov 12, 2025 ... Irineópolis, Itaiópolis, Mafra, Major Vieira, ... ajuizamento de ação e/ou apresentação de plano de ação, especialmente no caso de obra com etapa.
   - ⚠ ano_anterior_ao_ciclo
-- `4edb8c4f5e` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `4edb8c4f5e` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto nº 5.296**, 05/06/2002
   - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
   - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
   - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Major Vieira. 7.523. Monte Castelo. 8.346. Papanduva. 18.013. Porto União. 33.619.
-- `1ba1743c16` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: ato de 2002 — pode ser edição anterior; decisão humana
+- `1ba1743c16` · nível **B** (4 pts) · busca_web · DUVIDA · **lei nº 18.316**, 29/12/2021
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250829/Jornal/22587.pdf
   - trecho: Aug 29, 2025 ... Município de Major Vieira. OBJETO: aquisição de uma escavadeira ... plano de ação 09032024-068012/2024 deputada Julia Zanatta, conforme ...
   - ⚠ ano_anterior_ao_ciclo
-- `a6e5bba104` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `a6e5bba104` · nível **B** (4 pts) · busca_web · DUVIDA · **Lei nº 14.133**, 30/03/2026
   - título: prefeitura municipal de agrolândia
   - url: https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf
   - trecho: ... MAJOR VIEIRA / 05 - FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL. DE MAJOR VIEIRA ... PLANO DE AÇÃO ELABORADO PARA. ATENDIMENTO À POPULAÇÃO IMIGRANTE, COM ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `a79b07a162` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei 13.024**, 2014
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-10-01.pdf
@@ -5144,14 +5256,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: MPSC amplia atuação preventiva contra impactos do El Niño e abre ...
   - url: https://valedoitajainoticias.com.br/mpsc-amplia-atuacao-preventiva-contra-impactos-do-el-nino-e-abre-mais-de-130-procedimentos-em-cidades-de-sc/
   - trecho: 4 days ago ... Já em Passo de Torres, o acompanhamento verificou a atualização do Plano de Contingência ... Major Vieira e Três Barras. 3ª PJ de Porto ...
-- `ab894cf17b` · nível **B** (3 pts) · busca_web · — · data 2026 (do trecho)
+- `ab894cf17b` · nível **B** (3 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Sobe para 6 os municípios em situação de emergência após ...
   - url: https://ndmais.com.br/tempo/sobe-para-6-os-municipios-em-situacao-de-emergencia-apos-temporais-castigarem-sc/
   - trecho: Jul 2, 2026 ... ... Major Vieira e Timbó Grande decretaram o alerta vermelho após ... plano de contingência elaborado para a área. De acordo com a Defesa ...
-- `a850a6348d` · nível **B** (3 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: fonte não oficial
+- `a850a6348d` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei nº. 146**, 01.54.00
   - título: Instrução Normativa Nº 11 Suinocultura
   - url: https://in.ima.sc.gov.br/instrucaoNormativa/downloadPDF/11
   - trecho: solicitar estudos complementares como Plano de Ação Emergencial, bem como outras informações ... Major Vieira. 0,565. 0,272. 0,293. JUL-OUT. Ponte Serrada. 0,873.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `ab1717172b` · nível **B** (3 pts) · busca_web · — · citação não extraída
   - título: Alarme de Incêndio - NFL Group
   - url: https://www.nflgroup.com.br/alarme-incendio
