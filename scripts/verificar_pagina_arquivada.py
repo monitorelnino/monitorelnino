@@ -44,18 +44,18 @@ ARQUIVADAS = {
         "nao_pode_estar_em": ["assets/js/pesquisadores.js"],
         "decisao_no_changelog": "§258",
     },
-    # 30/09/2026 (§304, item 3 da fila viva): a página inteira do calendário eleitoral saiu do site.
+    # 30/09/2026 (§306, item 3 da fila viva): a página inteira do calendário eleitoral saiu do site.
     # DADO E COLETA CONTINUAM — `data/marcos_ciclo.json` e `data/calendario/dispositivos.json` seguem
     # sendo mantidos, porque a editoria quer a informação guardada para uso futuro. Só a página some.
     "calendario-eleitoral.html": {
         "arquivo_em": "arquivo/calendario-eleitoral/calendario-eleitoral.html",
         "nao_pode_estar_em": ["calendario-eleitoral.html"],
-        "decisao_no_changelog": "§304",
+        "decisao_no_changelog": "§306",
     },
     "calendario-eleitoral.js": {
         "arquivo_em": "arquivo/calendario-eleitoral/calendario-eleitoral.js",
         "nao_pode_estar_em": ["assets/js/calendario-eleitoral.js"],
-        "decisao_no_changelog": "§304",
+        "decisao_no_changelog": "§306",
     },
 }
 

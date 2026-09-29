@@ -9,6 +9,52 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §306 · A página do calendário eleitoral saiu do site — o dado e a coleta ficaram · 30/09/2026
+
+Classe **página pública**. Item 3 da fila viva. Mesmo desenho do arquivamento da página
+"Pesquisadores" (§258): **arquivar, não apagar**.
+
+`calendario-eleitoral.html` e `assets/js/calendario-eleitoral.js` foram para
+`arquivo/calendario-eleitoral/`, com um `LEIA-ME.md` que diz a data, o motivo e **como reativar**,
+passo a passo. `netlify.toml` já devolve 404 para `/arquivo/*`, e as duas entradas novas em
+`scripts/verificar_pagina_arquivada.py` travam o retorno por descuido: nenhum HTML publicado pode
+linká-la, os arquivos não podem voltar à raiz, e se voltarem, o CHANGELOG tem de registrar a decisão.
+
+**A diferença em relação ao §258, e ela é deliberada: o dado e a coleta NÃO pararam.**
+`data/marcos_ciclo.json` e `data/calendario/dispositivos.json` seguem sendo mantidos, porque a
+editoria quer o histórico guardado para uso futuro. Parar a coleta abriria um buraco que não se
+preenche depois: diário oficial não guarda o que o Monitor não leu na época. Por isso
+`verificar_calendario.js` **não foi desligado**: ele passou a rodar só a metade que confere o dado
+(contrafactual, trecho, fonte, data de conferência), e a metade que renderiza a página ficou atrás
+de uma condição de uma linha, que volta junto com a página. Desligar o portão inteiro deixaria sem
+trava um JSON que continua vivo — o oposto do que "o dado continua" significa.
+
+**Os quatro links, e o que foi feito com cada frase.** Nenhum virou link morto e nenhum ficou
+órfão: as frases foram **reescritas**, não só desligadas.
+
+| página | dizia | ficou |
+|---|---|---|
+| `index.html` | "… O que a lei suspende e o que não suspende no período eleitoral está detalhado no calendário eleitoral." | a segunda oração saiu; a primeira, que descreve a seção Calendário, ficou |
+| `prefeituras.html` | "Por que há páginas fora do ar → · **Sem decretar:** …" | a chamada era o próprio link e saiu; o resto da linha segue |
+| `financiamento.html` | "Faixa sombreada: período eleitoral (04/07–25/10)… Calendário eleitoral →" | o ponteiro saiu; **a faixa do gráfico ficou** — ela é o dado, não o ponteiro |
+| `imprensa.html` | "… o que reaparece a partir de 26 de outubro. Calendário →" | o item descreve um fato do ciclo e continua de pé sem o link |
+
+Saíram também a entrada do `sitemap.xml` e a menção em `assets/js/index.js`.
+
+**Nove portões listavam a página** (estrutura, acessibilidade, figuras, fichas semânticas, legendas,
+voz editorial, vocabulário público, runtime da inicial, runtime do financiamento). Os sete de lista
+deixaram de listá-la; os dois de runtime **cobravam a existência da porta** e passaram a cobrar a
+ausência dela — portão que cobra o que foi removido reprova por estar certo, e portão que não cobra
+a remoção deixa ela ser desfeita sem ninguém ver.
+
+**Um defeito que este item expôs no próprio portão de arquivamento.** O autoteste de
+`verificar_pagina_arquivada.py` montava à mão a pasta de "Pesquisadores"; com a segunda página na
+tabela, ele reprovava por falta de arquivo — reprovava a si mesmo, não o repositório. A fixture
+passou a nascer da tabela `ARQUIVADAS`. Fixture que não acompanha a tabela mede a fixture.
+
+`METODOLOGIA.md` registra a data e o motivo na tabela de páginas. Nenhum método, peso, crédito,
+régua ou categoria mudou.
+
 ## §304 · Erro estrutural: escolher só o estado não abre mais nada em "Sua cidade" · 30/09/2026
 
 Classe **defeito** e **método e prova**. Decisão da editoria de 30/09/2026, implementada diretamente (fora do fluxo do Claude Code).

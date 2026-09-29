@@ -949,7 +949,7 @@ Três julgamentos ficam explicitamente como **pistas** até o ato em fonte ofici
 |---|---|---|---|---|
 | index.html | O Brasil se preparou, e o que já foi decretado? | todos | 1589 | 767 |
 | sinais-de-risco.html | O que foi anunciado — e que risco isso projeta em cada estado? | 1 · anunciado | 732 | 402 |
-| ~~calendario-eleitoral.html~~ | **Arquivada em 30/09/2026** (decisão da editoria, §304 do CHANGELOG): a página saiu do site e ficou guardada em `arquivo/calendario-eleitoral/`. **O dado e a coleta continuam** — `data/marcos_ciclo.json` e `data/calendario/dispositivos.json` seguem sendo mantidos e conferidos. Nenhum método mudou. | — | — | — |
+| ~~calendario-eleitoral.html~~ | **Arquivada em 30/09/2026** (decisão da editoria, §306 do CHANGELOG): a página saiu do site e ficou guardada em `arquivo/calendario-eleitoral/`. **O dado e a coleta continuam** — `data/marcos_ciclo.json` e `data/calendario/dispositivos.json` seguem sendo mantidos e conferidos. Nenhum método mudou. | — | — | — |
 | defesa-civil.html | O que cada estado publicou antes e o que decretou depois? | 2 · publicado e 3 · decretado | — | 346 |
 | saude.html | A saúde está preparada — e houve emergência sanitária? | 2 e 3 (saúde) | 554 | 394 |
 | financiamento.html | O dinheiro chegou — por qual rota, antes ou depois? | 4 · chegou | 760 | 704 |

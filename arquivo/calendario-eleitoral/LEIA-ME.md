@@ -3,7 +3,7 @@
 **Arquivada em 30/09/2026, por decisão da editoria** (item 3 da fila viva). A página inteira sai do
 site — não era o bloco 4, era ela toda. Fica guardada e inativa; se voltar, é por decisão nova.
 
-Registro no `CHANGELOG.md`: **§304**.
+Registro no `CHANGELOG.md`: **§306**.
 
 ## O que está aqui
 
@@ -39,5 +39,5 @@ raiz, se a regra de 404 sair do `netlify.toml`, ou se ele voltar sem decisão re
 4. Devolver a entrada ao `sitemap.xml`.
 5. Refazer os links que saíram em `index.html`, `prefeituras.html`, `financiamento.html` e
    `imprensa.html` — as frases foram **ajustadas**, não só desligadas, então é preciso reescrevê-las,
-   não só recolocar o `<a>`. O §304 do CHANGELOG diz o que cada uma dizia antes.
+   não só recolocar o `<a>`. O §306 do CHANGELOG diz o que cada uma dizia antes.
 6. Reativar a seção dela nos portões de página que deixaram de listá-la.

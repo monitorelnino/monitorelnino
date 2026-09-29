@@ -4,7 +4,7 @@
 const { JSDOM } = require("jsdom"); const { inlinePageJs } = require("./_inline_js"); const fs = require("fs"), path = require("path"); const raiz = path.join(__dirname, "..");
 const falhas = [];
 const PROIB = [/\bteria(m)?\b/i, /\bpoderia(m)? ter\b/i, /\bse n[ãa]o fosse\b/i, /\bsem a lei\b/i, /\bcustou\b/i, /\bteriam sido\b/i, /\bhouvesse\b/i, /\bcontrafactual\b/i];
-/* 30/09/2026 (§304, item 3 da fila viva): a PÁGINA foi arquivada em arquivo/calendario-eleitoral/,
+/* 30/09/2026 (§306, item 3 da fila viva): a PÁGINA foi arquivada em arquivo/calendario-eleitoral/,
  * mas o DADO e a COLETA continuam — `data/calendario/dispositivos.json` segue sendo mantido, porque a
  * editoria quer o histórico guardado para uso futuro. Então este portão não foi apagado nem
  * desligado: ele passou a rodar SÓ a metade que confere o dado (contrafactual, trecho, fonte, data de
@@ -35,6 +35,6 @@ setTimeout(() => {
   }
   if (falhas.length) { console.log("✗ CALENDÁRIO:"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
   console.log(PAGINA_ARQUIVADA
-    ? "✓ CALENDÁRIO OK (só o dado) — a página está arquivada desde 30/09/2026 (§304); o JSON segue conferido: sem contrafactual, dispositivos com trecho e fonte, data de conferência."
+    ? "✓ CALENDÁRIO OK (só o dado) — a página está arquivada desde 30/09/2026 (§306); o JSON segue conferido: sem contrafactual, dispositivos com trecho e fonte, data de conferência."
     : "✓ CALENDÁRIO OK — sem contrafactual, dispositivos com trecho conferido e fonte, tabela e lista renderizadas.");
 }, 1500);
