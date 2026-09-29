@@ -9,6 +9,53 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §293 · Óbitos pelo Registro Civil, e o estado real de cada um dos vinte desfechos · 29/09/2026
+
+Classe **método e coleta**. Itens 3 a 7 do bloco "fontes primárias". **Peso zero, sem nota, sem
+faixa** — nenhuma régua do índice muda.
+
+### Item 5 — óbitos, e um erro que só a conferência pegou
+
+A API do Portal da Transparência do Registro Civil responde aberta, e a primeira versão deste
+coletor pediu **semanas** e escreveu uma série semanal. Os números saíram errados de um jeito que
+passaria por normal numa leitura rápida: semanas diferentes do mesmo mês devolviam o **mesmo** total,
+e 96.348 óbitos numa semana é cerca de três vezes o que o país registra.
+
+A medição explicou: qualquer intervalo dentro de agosto devolve **agosto inteiro** (123.642), e um
+intervalo de 15/08 a 15/09 devolve a soma dos dois meses (219.990). **A API agrega por mês**, e a
+data escolhe quais meses entram, não o recorte. A série passou a ser mensal — pedir semana e publicar
+o número do mês seria inventar granularidade que a fonte não tem.
+
+Com a correção, 14 meses lidos: de 107.927 a 139.525 registros por mês, com o corrente declarado
+incompleto. É sinal precoce **sem causa**; o SIM, que tem causa básica, é outra perna e continua
+pendente de coletor.
+
+### Itens 3, 4, 6 e 7 — o que não dá para coletar, dito com o teste que mostrou
+
+O bloco manda marcar "não coletável por máquina" em vez de esconder. Conferido fonte a fonte em
+29/09:
+
+| desfecho | o que se achou |
+|---|---|
+| síndrome gripal (item 4) | os bancos do e-SUS Notifica **param em 2024**, e a API OpenSearch responde **401** |
+| DDA (item 3) | MDDA/SIVEP-DDA só por TabNet; no portal, só o módulo indígena |
+| malária (item 6) | zero conjuntos no portal; só BI público e TabNet |
+| leptospirose e DTHA (item 6) | só TabNet; no portal, apenas indicador agregado da RIPSA |
+| internações: IRA, cardio, renal, pele, saúde mental, ICSAP, calor, fumaça (item 7) | SIH/SUS por TabNet ou `.dbc` no FTP (formato proprietário comprimido); no portal, só agregados da RIPSA |
+| desnutrição (item 7) | SISVAN publica CSV por ano, mas o último é **2023** — três anos de defasagem |
+
+O catálogo passou a ter **vocabulário declarado** de estado de coleta, com `nao_coletavel_por_maquina`
+e `fonte_desatualizada` separados de `nao_coletado`: as três coisas são diferentes, e colapsá-las
+esconderia qual delas tem conserto.
+
+### O retrato honesto dos vinte
+
+**3 coletados** (dengue, chikungunya e óbitos), **1 não coletado** (SRAG, que passa a ter coletor e
+roda no próximo semanal), **2 com fonte desatualizada** (síndrome gripal e desnutrição) e **14 não
+coletáveis por máquina**. Era isso o tempo todo; o que mudou é que agora está escrito.
+
+Um portão novo (121); 13 casos offline no coletor de óbitos.
+
 ## §292 · Dengue e chikungunya passam a contar pela primária, e o InfoDengue fica com o alerta · 29/09/2026
 
 Classe **método e coleta**. Item 2 do bloco "fontes primárias". **Peso zero, sem nota, sem faixa** —
