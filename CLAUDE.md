@@ -55,8 +55,7 @@ razoável, segura, reversível e coerente que eu possa tomar sozinho?" Se sim, n
 
 **Para e pergunta (só isto):** credencial ou conta que não existe; exclusão irreversível de
 dado; mudança de regra, peso, régua ou categoria do índice; alteração material de texto
-público editorial, institucional ou científico; licença e distribuição de código;
-publicação ou republicação de página — o "vai" da editoria, regra de 22/09; risco jurídico
+público editorial, institucional ou científico; licença e distribuição de código; risco jurídico
 ou de privacidade que dependa de autorização; conflito real entre requisitos; impedimento
 técnico que persista após diagnóstico razoável. Pergunta em **uma linha**, com a
 recomendação já feita e o que acontece se não houver resposta.
@@ -68,6 +67,15 @@ Nada de plano em prosa antes de agir; o plano vive no branch, nos commits e nos 
 **Verificar cada informação antes de apresentá-la como fato;** suposição não verificada
 nunca é apresentada como dado. Autonomia não é impulsividade: quanto maior o impacto e
 menor a reversibilidade, maior a certeza exigida — e mudança incremental, com rollback.
+
+> **Publicação de página (30/09/2026, revoga a regra de 22/09):** a editoria removeu a
+> trava do "vai" para publicar. Merge com portões verdes já autoriza publicar e republicar
+> o domínio, sempre no regime vigente de "cortina" (senha + `noindex`) — é ambiente fechado
+> ao público, não uma página ao vivo. Segue exigindo capturas no PR, para a editoria ver a
+> mudança (antes ou depois de publicada, não importa mais a ordem), mas não espera resposta
+> para publicar. Isso vale para todo PR que só muda a página dentro da cortina; não se
+> aplica a alterar a própria configuração de cortina/senha/noindex, remover o domínio da
+> lista de indexação bloqueada, nem a nenhuma das outras paradas desta lista.
 
 > **Histórico de regimes.** 26/09 (§238): a skill `karpathy-guidelines` impôs "declarar
 > suposição e perguntar na dúvida" e "apresentar leituras em vez de escolher". 27/09 (§250,
