@@ -29,7 +29,13 @@
       "nome": "ABC do ABC",
       "cobertura": "Santo André/SP",
       "incluido_em": "29/09/2026",
-      "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)"
+      "incluido_por": "semente: domínio com registro confirmado no banco (canal imprensa)",
+      "falso_negativo_conhecido": {
+        "desde": "2026-09-30",
+        "sinal": "sem_vitrine_datada_nem_cargo_de_redacao",
+        "motivo": "é jornal de verdade — o expediente se declara portal de notícias —, mas a sonda não acha marca de tempo nem cargo de redação no que consegue abrir. Falha do sinal, não do veículo.",
+        "decisao_da_editoria": "30/09/2026: tratar como falso negativo conhecido, SEM exceção nomeada. Exceção por domínio no código faria a regra parar de ser regra."
+      }
     },
     {
       "dominio": "ndmais.com.br",
