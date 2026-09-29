@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Portão: sinal diário não pode cair em cadência semanal.
 
-POR QUE ESTE PORTÃO EXISTE (30/09/2026, §306)
+POR QUE ESTE PORTÃO EXISTE (30/09/2026, §307)
 =============================================
 A editoria decidiu, em 29/09/2026, que os sinais físicos do Monitor de riscos — avisos do INMET,
 focos do INPE, seca, temperatura, ar — são **diários na fonte** e não podem cair na cadência
