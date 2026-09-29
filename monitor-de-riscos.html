@@ -85,15 +85,15 @@
 
   <div class="panel" id="agora">
     <h2>O que está acontecendo agora</h2>
-    <p class="hint">Seca observada (Monitor de Secas, ANA), temperatura e qualidade do ar nas capitais e focos de calor (INPE), por estado.</p>
-    <p class="hint" id="linhaAlertas">Os avisos do INMET em vigor estão no cartão abaixo. Os alertas do CEMADEN, por município, e a lista de municípios sob aviso: <a href="defesa-civil.html#alertas">Defesa civil</a>.</p>
+    <p class="hint">Seca, temperatura, qualidade do ar, focos de calor e avisos meteorológicos, com a fonte em cada cartão.</p>
+    <p class="hint" id="linhaAlertas">Alertas do CEMADEN, por município: <a href="defesa-civil.html#alertas">Defesa civil</a>.</p>
     <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxSecas">
         <h3 class="figura-titulo">Seca observada, Monitor de Secas</h3>
         <p class="figura-sub">Categoria de seca em pelo menos metade da área da UF · sem seca · S0 a S4 · Monitor de Secas</p>
         <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
-      <p class="figura-leitura">O Monitor de Secas classifica a seca de S0 (fraca) a S4 (excepcional), a partir de chuva, umidade do solo, vazão dos rios e impactos em campo. O mapa sai uma vez por mês, com semanas de defasagem.</p></figure>
+      <p class="figura-leitura">A seca vai de S0 (fraca) a S4 (excepcional). O mapa sai uma vez por mês, com semanas de defasagem.</p></figure>
       <figure class="figura figura--mapa" id="boxTemperatura">
         <h3 class="figura-titulo">Temperatura prevista para as capitais</h3>
         <p class="figura-sub">Um ponto por capital · máxima e mínima previstas · °C · previsão do INMET</p>
@@ -132,22 +132,22 @@
       <p class="figura-leitura">O índice europeu (EAQI) reúne material particulado, ozônio, dióxido de nitrogênio e dióxido de enxofre numa escala única. Cada ponto marca a capital, e não o estado.</p></figure>
       <figure class="figura figura--mapa" id="boxFogo">
         <h3 class="figura-titulo">Focos ativos nas últimas 24 horas</h3>
-        <p class="figura-sub">Último dia disponível · focos de calor detectados por satélite, pela posição de cada foco · células de ~11 km · INPE</p>
+        <p class="figura-sub">Último dia disponível · focos por posição · células de ~11 km · INPE</p>
         <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legFogo"></div>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th></tr></thead><tbody></tbody></table></div>
         </details>
-      <p class="figura-leitura">Cada ponto é uma célula de cerca de 11 km com foco detectado, e cresce com a quantidade de focos. Foco não equivale a incêndio: um incêndio gera vários focos, nenhum sob nuvem, e queima controlada também aparece.</p></figure>
+      <p class="figura-leitura">Foco não equivale a incêndio: um incêndio gera vários focos, nenhum sob nuvem, e queima controlada também aparece.</p></figure>
       <figure class="figura figura--mapa" id="boxAvisos">
         <h3 class="figura-titulo">Avisos meteorológicos em vigor</h3>
-        <p class="figura-sub">Avisos ativos no momento da consulta · por UF alcançada · grau e fenômeno como o INMET os nomeia · INMET</p>
+        <p class="figura-sub">Avisos ativos na consulta · por UF alcançada · grau e fenômeno do INMET</p>
         <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos do INMET em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAvisos"></div>
         <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
           <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAvisos"><thead><tr><th>UF</th><th>Avisos</th><th>Grau</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div>
         </details>
-      <p class="figura-leitura">O INMET emite aviso por área, com grau e vigência próprios. Um aviso pode alcançar mais de um estado: a soma por UF é maior que o número de avisos emitidos.</p></figure>
+      <p class="figura-leitura">O INMET emite aviso por área. Um aviso alcança mais de um estado: a soma por UF passa do número de avisos.</p></figure>
     </div>
   </div>
 
