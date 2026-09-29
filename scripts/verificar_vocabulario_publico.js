@@ -7,7 +7,9 @@
  * Uso: node scripts/verificar_vocabulario_publico.js [--listar] */
 const fs = require("fs"), path = require("path"); const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const RAIZ = path.join(__dirname, ".."); const listar = process.argv.includes("--listar");
-const PAGINAS = ["index.html", "calendario-eleitoral.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "imprensa.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
+  // 30/09/2026 (§309): "calendario-eleitoral.html" saiu desta lista — a página foi apagada do
+  // código, com as outras duas telas de calendário (decisão da editoria).
+const PAGINAS = ["index.html", "defesa-civil.html", "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html", "prefeituras.html", "obrigado.html", "imprensa.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 const PROIBIDOS = [
   [/\b(?!datapackage\b)[\w-]+\.(py|json|js|yml|sh)\b/g, "nome de arquivo/script (os .csv dos dados abertos são permitidos)"],
   [/\bdata\/[\w./-]+/g, "caminho de dados"],

@@ -9,6 +9,45 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §309 · O calendário saiu de vez do código — as três telas, não uma · 30/09/2026
+
+Classe **página pública**. Decisão da editoria de 30/09/2026 à noite, **mais forte que a anterior**:
+não é arquivar, é apagar. O §306 (PR #455), que implementava o arquivamento, foi **fechado sem
+mesclar** — corrigir o que ele fazia seria consertar a resposta a uma pergunta que mudou.
+
+**Eram três telas, não uma.** A página do calendário eleitoral (`calendario-eleitoral.html` e o JS
+dela), o painel "Calendário" da inicial (bloco `#prazos` e a função `calendario()` de `index.js`, 87
+linhas) e o calendário compacto da página de imprensa. As três saíram, e com elas o que só elas
+consumiam: `data/marcos_ciclo.json`, `data/prazos_uf.json`, `data/calendario/dispositivos.json`, o
+gerador `verificar_prazos_legais.py`, as chamadas dele em dois workflows e o portão
+`scripts/verificar_calendario.js`. A suíte vai de 124 a **121**.
+
+**O conhecimento migrou antes de o código sumir.** Os quatro marcos do ciclo — 1º turno 04/10;
+fim do período eleitoral 25/10; o que o Monitor publica em 26/10; janela crítica do El Niño
+01/10/2026–31/03/2027 — estão na `METODOLOGIA.md` §24, como texto fixo e datado, com a fonte de cada
+linha. **A tabela de dispositivos da Lei 9.504 não foi duplicada, e isso foi conferido antes de
+apagar:** o §24 já trata da mesma norma, com trecho e fonte, desde 02/09/2026, e repetir a mesma lei
+em dois lugares do mesmo documento cria duas versões que envelhecem em ritmos diferentes. Uma nota
+interna em `robo-registro/notas/` guarda o porquê, o que havia e onde cada coisa foi parar, com o
+JSON dos dispositivos preservado ao lado.
+
+**O que NÃO saiu, e é a parte que importa.** O **motor do defeso** continua inteiro: `DEFESO` e
+`FRASE_C18` em `gerar_resposta.py`, os lotes de `atualizar.py`, `PADROES_DEFESO` em
+`coletores_base.py`, e os outros dezessete scripts que consultam o período eleitoral para decidir o
+que coletar e como ler fonte fora do ar. Isso nunca foi calendário — é o que faz o §24 funcionar, e
+é o que vai liberar, em 26/10, a publicação do que o período eleitoral escondeu. Ficou também a
+faixa do período eleitoral no gráfico de financiamento: anotação de data num gráfico de outro
+assunto, não uma tela de calendário.
+
+**Os portões acompanharam a remoção, e duas travas novas nasceram dela.** Nove verificações do painel
+da home saíram de `verificar_runtime.js` — não foram afrouxadas, deixaram de existir junto com o que
+mediam — e a ordem da home passou a terminar no formulário. No lugar entraram duas que cobram o
+oposto: **nenhuma tela de calendário voltou à home** e **nenhum link para a página apagada
+reapareceu**. Sem elas, um `revert` distraído devolveria link morto ao ar sem ninguém ver.
+
+Quatro links foram removidos com as frases reescritas (inicial, imprensa, financiamento,
+prefeituras), mais a entrada do `sitemap.xml`. Nenhum peso, crédito, régua ou categoria mudou.
+
 ## §308 · Cabeçalho da inicial em duas colunas: logo e título à esquerda, descrição à direita · 30/09/2026
 
 Classe **página pública**. Item 2 da fila viva — opção **B** das três que a editoria viu.

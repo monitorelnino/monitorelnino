@@ -48,20 +48,8 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   }).catch(() => { if (ul) ul.innerHTML = '<li class="u-muted">Lista não carregada; ver o calendário eleitoral.</li>'; if (ul2) ul2.innerHTML = '<li class="u-muted">Lista não carregada.</li>'; });
 })();
 
-// 16/09/2026 (handover §1.8): calendário compacto para a imprensa — reusa data/marcos_ciclo.json (mesma
-// fonte do "Calendário" da inicial), filtrado para os marcos ainda não passados.
-(function(){
-  const ul = document.getElementById('listaCalendarioImprensa'); if (!ul) return;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  fetch('data/marcos_ciclo.json').then(r => r.ok ? r.json() : null).then(M => {
-    if (!M || !Array.isArray(M.marcos)) { ul.innerHTML = '<li class="u-muted">Calendário não carregado.</li>'; return; }
-    const hoje = new Date(); hoje.setHours(0, 0, 0, 0);
-    const dBR = s => { const [d, m, a] = s.split('/').map(Number); return new Date(a, m - 1, d); };
-    const vindos = M.marcos.filter(m => dBR(m.ate || m.data) >= hoje);
-    ul.innerHTML = vindos.length ? vindos.map(m => '<li><strong>' + esc(m.data) + (m.ate ? '–' + esc(m.ate) : '') + ':</strong> ' + esc(m.titulo) + ' <span class="u-muted">(' + esc(m.fonte) + ')</span></li>').join('')
-      : '<li class="u-muted">Nenhum marco futuro registrado.</li>';
-  }).catch(() => { ul.innerHTML = '<li class="u-muted">Calendário não carregado.</li>'; });
-})();
+// 30/09/2026: o calendário compacto da imprensa saiu do código, com as outras duas telas de
+// calendário (decisão da editoria). O que ele mostrava vive na METODOLOGIA.
 
 // ===== imprensa.html · "Esta semana em números" (§253, 27/09/2026) =====
 // Números vêm de data/imprensa/semana.json, gerado por gerar_imprensa_semana.py. Texto fixo no
