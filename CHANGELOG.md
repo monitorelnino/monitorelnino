@@ -152,10 +152,14 @@ arquivo pode deixar de chegar ao repositório.
 
 `evidencias/` entrou no `git add` dos dois pontos do `_coletor.yml`.
 
-Os 216 já perdidos não se recuperam: foram produzidos no runner e descartados com ele. Viraram
-**lacuna declarada** por `scripts/declarar_evidencia_perdida.py`, com o motivo e a data — hash, URL
-de origem e tamanho ficam, e é pela URL que a re-preservação acha o que buscar. **5.150 itens no
-índice, antes e depois.**
+Os já perdidos não se recuperam: foram produzidos no runner e descartados com ele. Viraram **lacuna
+declarada** por `scripts/declarar_evidencia_perdida.py`, com o motivo e a data — hash, URL de origem
+e tamanho ficam, e é pela URL que a re-preservação acha o que buscar.
+
+**O número cresceu enquanto o conserto esperava CI**, e isso mede o defeito melhor que qualquer
+descrição: eram **216** às 11h e **2.680** no fim da tarde, porque cada rodada noturna acrescentava
+índice sem arquivo. **7.614 itens no índice, antes e depois da declaração** — nenhum item foi
+apagado. Os 93 registros pontuáveis continuam todos com prova em disco.
 
 ### Um defeito dentro do conserto
 
