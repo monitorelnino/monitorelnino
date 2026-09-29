@@ -132,7 +132,10 @@ setTimeout(() => {
   // 15/09/2026 (§1.7/§1.6): "O que a União prometeu — e o que pagou" de volta a Financiamento, com a quarta porta para o calendário
   try {
     teste("prometeu: título-fato com nº de compromissos (do dado)", /\d+ compromissos federais verificados/.test(q("prometeuTitulo").textContent));
-    teste("prometeu: série semanal com a faixa do período eleitoral e a porta para o calendário eleitoral", !!q("svgSerie").querySelector("rect") && !![...q("prometeu").querySelectorAll("a")].find(a => /calendario-eleitoral\.html/.test(a.getAttribute("href") || "")));
+    // 30/09/2026 (§304): a porta para o calendário eleitoral saiu — a página foi arquivada. A faixa
+    // do período eleitoral no gráfico FICA: ela é o dado, não o ponteiro.
+    teste("prometeu: série semanal com a faixa do período eleitoral", !!q("svgSerie").querySelector("rect"));
+    teste("e sem porta para a página arquivada do calendário", ![...q("prometeu").querySelectorAll("a")].some(a => /calendario-eleitoral\.html/.test(a.getAttribute("href") || "")));
   } catch (e) { teste("prometeu: bloco (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (financiamento) OK — rotas, faixa do defeso, mapas, resposta, compromissos, fontes, E10 e soma de preparação.");
   process.exit(falhas.length ? 1 : 0);

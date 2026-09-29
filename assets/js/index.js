@@ -489,7 +489,8 @@ const CAT_LABEL_TBL = {
   nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.categorias.nao_verificado],
 };
 // 15/09/2026: os relógios de prazo (renderPrazos) e a nota do período eleitoral saíram da página inicial; os prazos
-// vivem no Calendário acima e o período eleitoral na página calendario-eleitoral.html (bloco pós-defeso incluído).
+// vivem no Calendário acima. 30/09/2026: a página do calendário eleitoral foi arquivada
+// (item 3 da fila viva); o dado e a coleta seguem, só a página saiu.
 MonitorMapas.credito('prazosFonte', {fontes: ['registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384, calendário do TSE, boletins do Painel El Niño)'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
 (function(){ const c = document.getElementById('citacaoCorte'); if (c && META && META.corte) c.textContent = META.corte; })();
 // Link direto para um estado (#SC): usado pelos selos embutidos em outros sites (31/08/2026).

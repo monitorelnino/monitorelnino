@@ -259,7 +259,9 @@ setTimeout(() => {
   // 17/09/2026 (pedido da editoria): Calendário passa para o fim da main, trocando de lugar com "Indique um documento".
   teste("ordem da home: medidores → sua cidade → estados → indique um documento → calendário", (() => { const ids = [...d.querySelectorAll("main > .panel, main > .mare-duas, main > .hero")].map(e => e.id); const pos = k => ids.indexOf(k); return pos("hero") < pos("cidade") && pos("cidade") < pos("formulario") && pos("formulario") < pos("prazos") && pos("prazos") === ids.length - 1; })());
   teste("calendário nunca vazio (marcos do ciclo)", q("marcosCiclo").querySelectorAll(".cal-linha:not(.cal-cabecalho)").length >= 1 && !/Nenhum prazo em curso até o corte/.test(d.body.textContent));
-  teste("porta para o calendário eleitoral segue na inicial (seção Calendário)", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length >= 1);
+  // 30/09/2026 (§304): a porta para o calendário eleitoral saiu da inicial — a página foi arquivada.
+  // O portão passou a cobrar o contrário: nenhuma porta pode voltar sem decisão registrada.
+  teste("nenhuma porta para a página arquivada do calendário eleitoral", d.querySelectorAll('a[href="calendario-eleitoral.html"]').length === 0);
   teste("cruzamento risco × estágio (#cCruz/#boxCruz) não existe mais na inicial (17/09/2026, pedido da editoria)", !q("cCruz") && !q("boxCruz") && !q("cruzamento"));
   teste("todas as barras usam a arte única do medidor (nenhum .resp-fill / .tile-fill2 / .barra-resp)", !d.querySelector(".resp-fill, .tile-fill2, .barra-resp") && d.querySelectorAll("#hero .gauge-fill").length === 2 && !!d.querySelector("#hero .gauge-fill--resposta"));
   // 26/09/2026: a célula da grade territorial não comporta os três campos de texto, que passaram

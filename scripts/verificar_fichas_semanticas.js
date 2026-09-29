@@ -19,7 +19,9 @@
 const { JSDOM, VirtualConsole } = require("jsdom"); const { inlinePageJs } = require("./_inline_js");
 const fs = require("fs"), path = require("path");
 const raiz = path.join(__dirname, "..");
-const PAGINAS = ["index.html", "calendario-eleitoral.html", "defesa-civil.html",
+  // 30/09/2026 (§304, item 3 da fila viva): "calendario-eleitoral.html" saiu desta lista — a
+  // página foi arquivada em arquivo/calendario-eleitoral/. O DADO e a COLETA continuam.
+const PAGINAS = ["index.html", "defesa-civil.html",
                  "monitor-de-riscos.html", "saude.html", "financiamento.html", "proteja-se.html",
                  "imprensa.html", "blog.html", "prefeituras.html"];
 const falhas = [];

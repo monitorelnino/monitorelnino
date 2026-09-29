@@ -44,6 +44,19 @@ ARQUIVADAS = {
         "nao_pode_estar_em": ["assets/js/pesquisadores.js"],
         "decisao_no_changelog": "§258",
     },
+    # 30/09/2026 (§304, item 3 da fila viva): a página inteira do calendário eleitoral saiu do site.
+    # DADO E COLETA CONTINUAM — `data/marcos_ciclo.json` e `data/calendario/dispositivos.json` seguem
+    # sendo mantidos, porque a editoria quer a informação guardada para uso futuro. Só a página some.
+    "calendario-eleitoral.html": {
+        "arquivo_em": "arquivo/calendario-eleitoral/calendario-eleitoral.html",
+        "nao_pode_estar_em": ["calendario-eleitoral.html"],
+        "decisao_no_changelog": "§304",
+    },
+    "calendario-eleitoral.js": {
+        "arquivo_em": "arquivo/calendario-eleitoral/calendario-eleitoral.js",
+        "nao_pode_estar_em": ["assets/js/calendario-eleitoral.js"],
+        "decisao_no_changelog": "§304",
+    },
 }
 
 # Protótipos de prévia: servidos por `publish = "."`, mas atrás de Basic-Auth próprio e fora da
@@ -148,13 +161,15 @@ def autoteste() -> int:
         anterior = RAIZ
         with tempfile.TemporaryDirectory() as t:
             r = pathlib.Path(t)
-            (r / "arquivo" / "pesquisadores").mkdir(parents=True)
-            (r / "arquivo" / "pesquisadores" / "pesquisadores.html").write_text(
-                "x", encoding="utf-8", newline="\n")
-            (r / "arquivo" / "pesquisadores" / "pesquisadores.js").write_text(
-                "x", encoding="utf-8", newline="\n")
-            (r / "arquivo" / "pesquisadores" / "LEIA-ME.md").write_text(
-                "x", encoding="utf-8", newline="\n")
+            # 30/09/2026: a fixture nasce da TABELA, não de uma página escrita à mão. Com o
+            # calendário eleitoral entrando em ARQUIVADAS, a fixture antiga montava só a pasta de
+            # Pesquisadores e o autoteste reprovava por falta de arquivo — reprovava a si mesma,
+            # não o repositório. Fixture que não acompanha a tabela mede a fixture.
+            for _cfg in ARQUIVADAS.values():
+                _destino = r / _cfg["arquivo_em"]
+                _destino.parent.mkdir(parents=True, exist_ok=True)
+                _destino.write_text("x", encoding="utf-8", newline="\n")
+                (_destino.parent / "LEIA-ME.md").write_text("x", encoding="utf-8", newline="\n")
             (r / "netlify.toml").write_text(
                 'publish = "."\n[[redirects]]\n  from = "/arquivo/*"\n  status = 404\n',
                 encoding="utf-8", newline="\n")
