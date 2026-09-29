@@ -385,8 +385,11 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const porUf = (FOCOS && FOCOS.por_uf) || null;
   const linhas = UFS.map(uf => [uf, porUf ? porUf[uf] : (fogo(uf) || {}).focos_24h])
     .filter(l => l[1] != null).sort((a, b) => b[1] - a[1]);
+  /* `esc()` mesmo em número e sigla: o portão de segurança exige, e tem razão em não abrir exceção
+     por "aqui o dado é confiável" — a exceção é que envelhece, não a regra. */
   corpo.innerHTML = linhas.length
-    ? linhas.map(l => '<tr><td>' + l[0] + '</td><td class="dado">' + l[1].toLocaleString('pt-BR') + '</td></tr>').join('')
+    ? linhas.map(l => '<tr><td>' + esc(l[0]) + '</td><td class="dado">'
+                    + esc(Number(l[1]).toLocaleString('pt-BR')) + '</td></tr>').join('')
     : '<tr><td colspan="2">Sem coleta até o corte</td></tr>';
 })();
 credito('boxFogo', 'inpe_fogo');
