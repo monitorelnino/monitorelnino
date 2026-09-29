@@ -9,6 +9,100 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §293 · Óbitos pelo Registro Civil, e o estado real de cada um dos vinte desfechos · 29/09/2026
+
+Classe **método e coleta**. Itens 3 a 7 do bloco "fontes primárias". **Peso zero, sem nota, sem
+faixa** — nenhuma régua do índice muda.
+
+### Item 5 — óbitos, e um erro que só a conferência pegou
+
+A API do Portal da Transparência do Registro Civil responde aberta, e a primeira versão deste
+coletor pediu **semanas** e escreveu uma série semanal. Os números saíram errados de um jeito que
+passaria por normal numa leitura rápida: semanas diferentes do mesmo mês devolviam o **mesmo** total,
+e 96.348 óbitos numa semana é cerca de três vezes o que o país registra.
+
+A medição explicou: qualquer intervalo dentro de agosto devolve **agosto inteiro** (123.642), e um
+intervalo de 15/08 a 15/09 devolve a soma dos dois meses (219.990). **A API agrega por mês**, e a
+data escolhe quais meses entram, não o recorte. A série passou a ser mensal — pedir semana e publicar
+o número do mês seria inventar granularidade que a fonte não tem.
+
+Com a correção, 14 meses lidos: de 107.927 a 139.525 registros por mês, com o corrente declarado
+incompleto. É sinal precoce **sem causa**; o SIM, que tem causa básica, é outra perna e continua
+pendente de coletor.
+
+### Itens 3, 4, 6 e 7 — o que não dá para coletar, dito com o teste que mostrou
+
+O bloco manda marcar "não coletável por máquina" em vez de esconder. Conferido fonte a fonte em
+29/09:
+
+| desfecho | o que se achou |
+|---|---|
+| síndrome gripal (item 4) | os bancos do e-SUS Notifica **param em 2024**, e a API OpenSearch responde **401** |
+| DDA (item 3) | MDDA/SIVEP-DDA só por TabNet; no portal, só o módulo indígena |
+| malária (item 6) | zero conjuntos no portal; só BI público e TabNet |
+| leptospirose e DTHA (item 6) | só TabNet; no portal, apenas indicador agregado da RIPSA |
+| internações: IRA, cardio, renal, pele, saúde mental, ICSAP, calor, fumaça (item 7) | SIH/SUS por TabNet ou `.dbc` no FTP (formato proprietário comprimido); no portal, só agregados da RIPSA |
+| desnutrição (item 7) | SISVAN publica CSV por ano, mas o último é **2023** — três anos de defasagem |
+
+O catálogo passou a ter **vocabulário declarado** de estado de coleta, com `nao_coletavel_por_maquina`
+e `fonte_desatualizada` separados de `nao_coletado`: as três coisas são diferentes, e colapsá-las
+esconderia qual delas tem conserto.
+
+### O retrato honesto dos vinte
+
+**3 coletados** (dengue, chikungunya e óbitos), **1 não coletado** (SRAG, que passa a ter coletor e
+roda no próximo semanal), **2 com fonte desatualizada** (síndrome gripal e desnutrição) e **14 não
+coletáveis por máquina**. Era isso o tempo todo; o que mudou é que agora está escrito.
+
+Um portão novo (121); 13 casos offline no coletor de óbitos.
+
+## §292 · Dengue e chikungunya passam a contar pela primária, e o InfoDengue fica com o alerta · 29/09/2026
+
+Classe **método e coleta**. Item 2 do bloco "fontes primárias". **Peso zero, sem nota, sem faixa** —
+nenhuma régua do índice muda.
+
+### A divisão de trabalho, dita com clareza
+
+As contagens vinham do **InfoDengue**, que é produto **derivado** do SINAN: ele estima casos
+prováveis e calcula nível de alerta a partir da mesma notificação que o SINAN publica. A regra da
+decisão é primária quando existir, derivado só para o que a primária não dá. Então:
+
+- **SINAN (novo):** a contagem, por UF de residência e semana epidemiológica de primeiros sintomas.
+- **InfoDengue (onde já estava):** o **nível de alerta**, que é interpretação da série e não existe
+  no banco primário. Ele não passa a contar nada, e continua na rodada.
+
+### Conta-se notificação, e o arquivo diz isso
+
+Cada linha do banco é uma **notificação**. Parte será descartada pela investigação
+(`CLASSI_FIN = 5`) e parte ainda não tem classificação fechada. Contar só as confirmadas daria um
+número menor e mais velho — a classificação demora. Contar notificação é o que o Ministério publica
+como série corrente; o que não se pode é **chamar notificação de caso confirmado**, e a ressalva no
+`_governanca` do arquivo diz exatamente o que foi contado.
+
+### Uma peça comum, para não haver duas cópias
+
+`saude_opendatasus.py` reúne o que o coletor de SRAG e o de arboviroses fazem igual: descoberta de
+recurso por ano, leitura em fluxo, leitura de CSV dentro de `.zip` (o SINAN publica assim),
+resolução de UF — **por sigla no SIVEP-Gripe, por código numérico no SINAN** — e agregação por UF ×
+semana. O coletor de SRAG foi reescrito para usar a peça comum em vez da cópia dele.
+
+O que **não** mora lá é regra de desfecho: quais colunas, o que conta e o que não conta. Esconder
+isso numa função genérica seria fingir que SRAG e dengue se contam do mesmo jeito.
+
+### Medido sobre dado real
+
+30.000 linhas do banco de 2026: 21 UFs, 35 semanas, **zero linhas descartadas**. O zip de um ano tem
+14,7 MB e o CSV de dentro, 127 MB — que nunca vira texto na memória.
+
+### O catálogo, conferido contra o disco
+
+A varredura do §291 achou outro caso do mesmo defeito: `sg` (síndrome gripal) declarava **"coletado"
+com `sg_serie.json` inexistente** — a fonte era o mesmo InfoGripe que caiu. Está declarado como não
+coletado, que é o que ele é. Cada desfecho já coletado passou a nomear o `arquivo` que o comprova, e
+o portão confere os dois lados.
+
+Dois portões novos (120); 23 casos offline na peça comum e 9 no coletor.
+
 ## §291 · SRAG passa do InfoGripe para a fonte primária, o SIVEP-Gripe · 29/09/2026
 
 Classe **método e coleta**. Bloco 4 · Doenças respiratórias (decisão da central, 29/09/2026).

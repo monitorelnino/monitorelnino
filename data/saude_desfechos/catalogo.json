@@ -13,8 +13,8 @@
    "comprometimento": "água; saneamento",
    "sistema": "Sivep-DDA / Sinan (surtos DTHA); SISAB (atendimentos APS)",
    "periodicidade": "semanal",
-   "fonte_aberta": "Sem publicação aberta do MS (o OpenDataSUS não hospeda o Sivep-DDA — verificado em 14/09/2026). Resposta LAI do MS (processo 25072.030308202612) redistribuída no Zenodo por R. Saldanha/Fiocruz, CC BY 4.0, MD5 publicado — coletado em 14/09/2026 (semanal por município, unidades sentinela; depósito preliminar, atualização mensal)",
-   "status_coleta": "coletado"
+   "fonte_aberta": "MDDA/SIVEP-DDA só por TabNet (consulta interativa); o OpenDataSUS hospeda apenas o módulo indígena (Siasi). O Zenodo que alimentava a série está parado.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "dtha",
@@ -22,8 +22,8 @@
    "comprometimento": "água; alimentos",
    "sistema": "Sinan (surto DTHA)",
    "periodicidade": "semanal",
-   "fonte_aberta": "OpenDataSUS Sinan",
-   "status_coleta": "candidato"
+   "fonte_aberta": "DTHA só por TabNet; busca no portal em 29/09/2026 devolveu zero conjuntos.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "dengue",
@@ -31,8 +31,9 @@
    "comprometimento": "vetores",
    "sistema": "Sinan",
    "periodicidade": "semanal",
-   "fonte_aberta": "InfoDengue (Fiocruz/FGV), painel amostral · + boletim semanal por município da SES-MS (coletado em 10/09/2026, prova de conceito para verificação estadual cruzada) · + informativo semanal por Região de Saúde da SES-DF (coletado em 10/09/2026; DF é município-estado, sem tabela municipal) · + informe semanal do CIEVS-PE (10/09/2026; só totais estaduais — tabela municipal é imagem)",
-   "status_coleta": "coletado"
+   "fonte_aberta": "SINAN/OpenDataSUS (contagem de notificações, primária) + InfoDengue (Fiocruz/FGV) só para o nível de alerta",
+   "status_coleta": "coletado",
+   "arquivo": "serie_uf.json"
   },
   {
    "id": "chik",
@@ -40,8 +41,9 @@
    "comprometimento": "vetores",
    "sistema": "Sinan",
    "periodicidade": "semanal",
-   "fonte_aberta": "InfoDengue (disease=chikungunya) · + informativo semanal por Região de Saúde da SES-DF (coletado em 10/09/2026, junto com dengue) · + informe semanal do CIEVS-PE (10/09/2026; só totais estaduais — tabela municipal é imagem)",
-   "status_coleta": "coletado"
+   "fonte_aberta": "SINAN/OpenDataSUS (contagem de notificações, primária) + InfoDengue só para o nível de alerta",
+   "status_coleta": "coletado",
+   "arquivo": "chik_serie_uf.json"
   },
   {
    "id": "malaria",
@@ -49,8 +51,8 @@
    "comprometimento": "vetores",
    "sistema": "Sivep-Malária",
    "periodicidade": "semanal",
-   "fonte_aberta": "Sivep-Malária (BI público)",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIVEP-Malária só por BI público e TabNet; nenhum conjunto no Portal de Dados Abertos (busca de 29/09/2026 devolveu zero).",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "lepto",
@@ -58,8 +60,8 @@
    "comprometimento": "água",
    "sistema": "Sinan",
    "periodicidade": "semanal",
-   "fonte_aberta": "OpenDataSUS Sinan (acesso à API em verificação)",
-   "status_coleta": "candidato"
+   "fonte_aberta": "Leptospirose no SINAN só por TabNet; no portal existe apenas indicador agregado da RIPSA, que não dá série por UF e semana.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "desidratacao",
@@ -67,8 +69,8 @@
    "comprometimento": "água; calor",
    "sistema": "SISAB (APS) / SIH",
    "periodicidade": "semanal",
-   "fonte_aberta": "TabNet SIH (CID E86) · e-SUS APS",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "desnutricao",
@@ -76,8 +78,8 @@
    "comprometimento": "segurança alimentar",
    "sistema": "SISVAN / SIH",
    "periodicidade": "mensal",
-   "fonte_aberta": "SISVAN público (estado nutricional) · TabNet SIH",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SISVAN estado nutricional publica CSV por ano no portal, mas o último é 2023 — três anos de defasagem para um ciclo que começou em 2026.",
+   "status_coleta": "fonte_desatualizada"
   },
   {
    "id": "sg",
@@ -85,8 +87,8 @@
    "comprometimento": "ar",
    "sistema": "e-SUS Notifica",
    "periodicidade": "semanal",
-   "fonte_aberta": "InfoGripe (Fiocruz/FGV), série longa nacional e por UF — coletado em 09/09/2026",
-   "status_coleta": "coletado"
+   "fonte_aberta": "e-SUS Notifica: os bancos de síndrome gripal leve param em 2024 e a API OpenSearch responde 401 (conferido em 29/09/2026). InfoGripe, a fonte anterior, exige login desde 09/2026. Sem fonte aberta com dado corrente.",
+   "status_coleta": "fonte_desatualizada"
   },
   {
    "id": "srag",
@@ -104,8 +106,8 @@
    "comprometimento": "ar; fumaça",
    "sistema": "SIH/SUS (CID J)",
    "periodicidade": "mensal",
-   "fonte_aberta": "TabNet SIH",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "intox_fumaca",
@@ -113,8 +115,8 @@
    "comprometimento": "fumaça",
    "sistema": "Sinan (intoxicação exógena) / CIATox",
    "periodicidade": "semanal",
-   "fonte_aberta": "OpenDataSUS Sinan",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "cardio",
@@ -122,8 +124,8 @@
    "comprometimento": "calor; fumaça",
    "sistema": "SIH/SUS (CID I)",
    "periodicidade": "mensal",
-   "fonte_aberta": "TabNet SIH",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "renal",
@@ -131,8 +133,8 @@
    "comprometimento": "água; calor",
    "sistema": "SIH/SUS (CID N)",
    "periodicidade": "mensal",
-   "fonte_aberta": "TabNet SIH",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "calor_agravo",
@@ -140,8 +142,8 @@
    "comprometimento": "calor",
    "sistema": "SIH / SIM / Painel Nacional de Excesso de Calor",
    "periodicidade": "semanal",
-   "fonte_aberta": "Painel de Excesso de Calor (MS) · TabNet SIH/SIM",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "pele_olhos",
@@ -149,8 +151,8 @@
    "comprometimento": "água; higiene",
    "sistema": "SISAB / Sinan (tracoma)",
    "periodicidade": "mensal",
-   "fonte_aberta": "e-SUS APS",
-   "status_coleta": "sem fonte aberta identificada"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "saude_mental",
@@ -158,8 +160,8 @@
    "comprometimento": "psicossocial",
    "sistema": "SIH / SIM / Sinan (violência autoprovocada)",
    "periodicidade": "mensal",
-   "fonte_aberta": "TabNet SIM/SIH · OpenDataSUS Sinan",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "obitos",
@@ -167,8 +169,9 @@
    "comprometimento": "todos",
    "sistema": "SIM",
    "periodicidade": "mensal (preliminar)",
-   "fonte_aberta": "OpenDataSUS SIM preliminar · Portal da Transparência do Registro Civil",
-   "status_coleta": "candidato"
+   "fonte_aberta": "Portal da Transparência do Registro Civil (ARPEN/CNJ), API aberta, mensal por UF — sinal precoce sem causa. SIM (OpenDataSUS) publica CSV por ano até 2026 e entra como consolidação com causa; coletor ainda não escrito.",
+   "status_coleta": "coletado",
+   "arquivo": "obitos_registro_civil.json"
   },
   {
    "id": "icsap",
@@ -176,8 +179,8 @@
    "comprometimento": "serviços",
    "sistema": "SIH/SUS",
    "periodicidade": "mensal",
-   "fonte_aberta": "TabNet SIH",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   },
   {
    "id": "tb_continuidade",
@@ -185,8 +188,15 @@
    "comprometimento": "serviços",
    "sistema": "Sinan-TB",
    "periodicidade": "mensal",
-   "fonte_aberta": "OpenDataSUS Sinan",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
+   "status_coleta": "nao_coletavel_por_maquina"
   }
- ]
+ ],
+ "_vocabulario_status": {
+  "coletado": "há coletor e o arquivo declarado existe em disco",
+  "candidato": "fonte existe em formato legível por máquina; coletor ainda não escrito",
+  "nao_coletado": "há coletor, e a fonte falhou ou não respondeu — lacuna declarada",
+  "nao_coletavel_por_maquina": "a fonte pública existe só como consulta interativa (TabNet) ou atrás de autenticação; não há arquivo nem API aberta para ler",
+  "fonte_desatualizada": "a fonte é legível por máquina, mas parou de publicar dado corrente"
+ }
 }
