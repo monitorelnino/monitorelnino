@@ -124,6 +124,12 @@ def extrair_itens_rss(xml):
         link = re.search(r"<link>(.*?)</link>", bloco, re.S)
         data = re.search(r"<pubDate>(.*?)</pubDate>", bloco, re.S)
         fonte = re.search(r"<source[^>]*>(.*?)</source>", bloco, re.S)
+        # 29/09/2026 (item 1 do bloco do verificador): o `<source>` do RSS traz o NOME do veículo no
+        # texto e o **domínio** no atributo `url` — e o atributo vinha sendo descartado. É a única
+        # peça do feed que identifica o veículo sem depender de resolver o link do agregador, e o
+        # critério B5 do verificador precisa exatamente disso. Guardar não custa nada e a falta dele
+        # obrigava a abrir a página só para descobrir de quem é a matéria.
+        fonte_url = re.search(r"<source[^>]*\burl=[\"']([^\"']+)[\"']", bloco, re.S)
         if not (titulo and link):
             continue
         t = re.sub(r"<!\[CDATA\[|\]\]>", "", titulo.group(1)).strip()
@@ -132,6 +138,7 @@ def extrair_itens_rss(xml):
             "url": link.group(1).strip(),
             "data_publicacao": (data.group(1).strip() if data else ""),
             "fonte_veiculo": (re.sub(r"<!\[CDATA\[|\]\]>", "", fonte.group(1)).strip() if fonte else ""),
+            "veiculo_dominio": (fonte_url.group(1).strip() if fonte_url else ""),
         })
     return itens
 
@@ -260,6 +267,26 @@ def registrar(fila, novas):
         p["hash"] = _hash(p)
         if p["hash"] in vistos:
             continue
+        # 29/09/2026 (item 1 do bloco do verificador): o link do agregador se resolve JÁ NA COLETA,
+        # antes da preservação. Duas razões. A fila deixa de encher de `news.google.com`, e o que se
+        # preserva passa a ser a página do veículo — até aqui a evidência guardada era a casca de
+        # JavaScript do agregador, que não prova matéria nenhuma. Resolve-se DEPOIS do hash, de
+        # propósito: o hash continua calculado sobre o link do feed, que é estável, e trocar a base
+        # do hash faria toda pista já coletada voltar como inédita.
+        try:
+            from verificar_pista_imprensa import (abrir_seguindo_redirecionamento,
+                                                  resolver_redirecionamento)
+            final, degrau = resolver_redirecionamento(
+                p["url"], abrir=lambda u: abrir_seguindo_redirecionamento(u, timeout=30))
+        except Exception:  # noqa: BLE001
+            final, degrau = p["url"], "nao_tentado"
+        if final and final != p["url"]:
+            p["url_do_agregador"] = p["url"]
+            p["url"] = final
+            p["degrau_do_redirecionamento"] = degrau
+        elif final is None:
+            p["degrau_do_redirecionamento"] = "redirecionamento_nao_resolvido"
+
         p["fonte_provavel_oficial"] = parece_fonte_oficial(p["url"])
         # 10/09/2026: preserva a própria página no ato do registro (proteção contra
         # link rot e portais que bloqueiem acesso depois). Best-effort: falha não

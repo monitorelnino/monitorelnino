@@ -226,3 +226,8 @@ jobs:
         run: |
           echo "### Coletor ${{ inputs.nome }}" >> "$GITHUB_STEP_SUMMARY"
           python3 scripts/saude_pipeline.py --listar | tail -20 >> "$GITHUB_STEP_SUMMARY" || true
+          # 29/09/2026 (item 5): o funil do verificador de imprensa sai no resumo da noite em que
+          # ele rodou. Sem isso, "0 exibíveis" chegaria à editoria sem a causa ao lado.
+          if printf '%s' '${{ inputs.scripts }}' | grep -q verificar_pista_imprensa; then
+            python3 verificar_pista_imprensa.py --funil >> "$GITHUB_STEP_SUMMARY" || true
+          fi
