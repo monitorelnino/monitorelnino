@@ -9,6 +9,44 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §304 · Erro estrutural: escolher só o estado não abre mais nada em "Sua cidade" · 30/09/2026
+
+Classe **defeito** e **método e prova**. Decisão da editoria de 30/09/2026, implementada diretamente (fora do fluxo do Claude Code).
+
+No painel "Sua cidade" da inicial, escolher o estado sozinho, sem digitar o município, já abria um
+cartão com o retrato do estado — medidor do MARÉ e a lista de status (instrumento operacional,
+estrutura de coordenação, cobertura documentada). Isso duplicava a ficha do estado (janela de
+detalhe da grade "O MARÉ Legal por estado", que já mostra os três) e ficava desatualizado por
+viver em dois lugares.
+
+Correção: `renderMinha()` agora exige sempre o município para mostrar qualquer coisa (antes, `uf`
+sozinho já bastava). O retrato do estado — medidor e lista de status — saiu de vez. O que não
+duplicava a ficha continua: contatos de emergência, alerta por SMS, contato do órgão estadual, o
+link de financiamento, o botão de baixar o relatório em PDF, os guias de proteção por risco, o
+aviso do Saque Calamidade do FGTS e o formulário de correção — nada disso existe na ficha, e nada
+foi removido. `STATUS_HUMANO_ESTR`, que só alimentava o trecho removido, saiu como código morto.
+
+`assets/js/index.js`. Portões locais (os mesmos 17 do §303, incluindo os testes específicos de
+"PDF do cidadão" e "resumo de preparação") rodados e verdes antes do commit.
+
+## §303 · Cartões de estado: mais compactos, sem risco na frente, sem ponto de capital · 30/09/2026
+
+Classe **design**. Decisão da editoria de 30/09/2026, implementada diretamente (fora do fluxo do Claude Code).
+
+A grade "O MARÉ Legal por estado" tinha ficado grande demais para a informação que carrega. Quatro
+mudanças, todas de apresentação — nenhuma nota, peso ou dado muda:
+
+- A frase explicativa sob o título saiu; o título "O MARÉ Legal por estado" já basta.
+- A grade ficou mais compacta (padding e espaçamento menores, largura máxima menor).
+- O risco projetado do estado (entrado no cartão em 27/09) saiu da frente do cartão e passou a
+  viver só na ficha (janela de detalhe), num bloco destacado com acento de cor por família de risco
+  (chuva/seca/fogo), os componentes como etiquetas e a fonte do Painel El Niño.
+- O ponto de "capital verificada" no canto do cartão saiu, com a linha correspondente da legenda.
+
+`index.html`, `assets/js/index.js`, `assets/base.css`. Portões locais (estrutura, runtime e as
+variantes, acessibilidade, vocabulário público, voz editorial, figuras, fichas semânticas,
+legendas, palavras, segurança, SEO) rodados e verdes antes do commit.
+
 ## §302 · Falso negativo se trata como falso negativo: nenhuma exceção por domínio no código · 30/09/2026
 
 Classe **método e prova**. Decisão da editoria de 30/09/2026 sobre a pendência aberta no §301.

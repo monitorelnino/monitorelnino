@@ -278,39 +278,18 @@ const GRADE_BR = {
   PR:[7,3], SC:[7,4],
   RS:[8,3],
 };
-// 27/09/2026 (pedido da editoria): o risco projetado sai do mapa no monitor de riscos e entra no
-// cartão de cada estado, que é onde o leitor procura o próprio estado. Carregado à parte para não
-// atrasar o índice: se falhar, o cartão fica sem a linha e nada mais muda.
-let RISCO_UF = {};
+// 27/09/2026 (pedido da editoria): o risco projetado entrou no cartão de cada estado.
+// 30/09/2026 (pedido da editoria): sai da frente do cartão — fica só na ficha (janela de
+// detalhe), destacado. Carregado à parte para não atrasar o índice: se falhar, a ficha fica
+// sem o bloco e nada mais muda. RISCO_UF e RISCO_FONTE são lidos por selectUF() (abaixo).
+let RISCO_UF = {}, RISCO_FONTE = null;
 fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).catch(() => null).then(sr => {
   if (!sr || !sr.uf) return;
   Object.keys(sr.uf).forEach(uf => {
     const r = sr.uf[uf] && sr.uf[uf].risco_projetado;
     if (r && r.texto) RISCO_UF[uf] = r;
   });
-  const f = (sr.fontes || {})['painel_el_nino'];
-  const leg = document.querySelector('#regions + .legend');
-  if (f && leg && !leg.querySelector('.fonte-risco')) {
-    const sp = document.createElement('span');
-    sp.className = 'fonte-risco';
-    sp.innerHTML = 'Risco projetado: ' + (f.url_publica
-      ? '<a href="' + f.url_publica + '" target="_blank" rel="noopener">' + f.nome + '</a>' : f.nome)
-      + (f.consultado_em ? ' · ' + f.consultado_em : '');
-    leg.appendChild(sp);
-  }
-  document.querySelectorAll('#regions .tile').forEach(t => {
-    const r = RISCO_UF[t.dataset.uf];
-    if (!r || t.querySelector('.tile-risco')) return;
-    const el = document.createElement('span');
-    el.className = 'tile-risco';
-    // Os COMPONENTES são vocabulário fechado e curtos; a frase inteira fica no detalhe.
-    el.textContent = (r.componentes && r.componentes.length ? r.componentes : [r.tipo])
-      .map(c => ({estiagem: 'estiagem', incendios: 'incêndios', chuvas: 'chuvas',
-                  sem_sinal: 'sem sinal elevado'}[c] || c)).join(' · ');
-    el.title = r.texto;
-    const face = t.querySelector('.tile-face');
-    if (face) t.insertBefore(el, face); else t.appendChild(el);
-  });
+  RISCO_FONTE = (sr.fontes || {})['painel_el_nino'] || null;
 });
 
 const regionsEl = document.getElementById('regions');
@@ -346,8 +325,7 @@ ufsOrdenadas.forEach(item=>{
       : `<span class="tile-score" data-contar="${v}">0,0</span>
          <div class="tile-bar"><div class="tile-fill" data-alvo="${v}" style="--galvo:${Math.max(v, 0.1)};"></div></div>`) +
     respostaTile(item.uf) +
-    faceTile(item.uf) +
-    (item.capital ? '<span class="cap-dot"></span>' : '');
+    faceTile(item.uf);
   // 26/09/2026: a linha do estado abre o detalhe e sempre foi uma caixa genérica com ouvinte de clique —
   // sem papel e sem índice de tabulação, quem navega por teclado não alcançava nenhum estado. O
   // defeito é anterior à troca de cartão por linha; a troca só o deixou visível. `role` e `tabindex`
@@ -376,6 +354,31 @@ function renderDetalhePadrao(){
 setTimeout(renderDetalhePadrao, 0);
 
 
+// 30/09/2026 (pedido da editoria): bloco de risco projetado da ficha do estado, destacado —
+// acento de cor pela família dominante (chuva/seca/fogo), componentes em vocabulário fechado
+// como chips, frase inteira do boletim e a fonte. Vazio quando não há risco carregado para a UF.
+function riscoBox(uf){
+  const r = RISCO_UF[uf];
+  if (!r) return '';
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const NOME_COMP = {estiagem:'estiagem', incendios:'incêndios', chuvas:'chuvas', sem_sinal:'sem sinal elevado'};
+  const FAMILIA = {estiagem:'r-seca', incendios:'r-fogo', chuvas:'r-chuva'};
+  const comps = (r.componentes && r.componentes.length ? r.componentes : [r.tipo]);
+  const familia = comps.map(c => FAMILIA[c]).find(Boolean) || '';
+  const chips = comps.map(c => `<span class="chip-risco">${esc(NOME_COMP[c] || c)}</span>`).join('');
+  const fonte = RISCO_FONTE
+    ? 'Fonte: ' + (RISCO_FONTE.url_publica
+        ? `<a href="${RISCO_FONTE.url_publica}" target="_blank" rel="noopener">${esc(RISCO_FONTE.nome)}</a>`
+        : esc(RISCO_FONTE.nome))
+      + (RISCO_FONTE.consultado_em ? ' · ' + esc(RISCO_FONTE.consultado_em) : '')
+    : '';
+  return `<div class="risco-box ${familia}">
+    <p class="k">Risco projetado para o ciclo</p>
+    <p class="v">${esc(r.texto)}</p>
+    <div class="chips">${chips}</div>
+    ${fonte ? `<p class="fonte">${fonte}</p>` : ''}
+  </div>`;
+}
 function selectUF(uf, tileEl){
   // P2 (auditoria 07/09/2026): d.doc, d.orgao, d.estrutura.doc, d.capital.info e
   // d.capital.nome são texto editorial (resumo humano de documento oficial), não
@@ -410,10 +413,10 @@ function selectUF(uf, tileEl){
     ${typeof MARE !== 'undefined' && MARE[d.uf] ? miniGauge(MARE[d.uf].total) : ''}
     <div class="uf-region">${d.regiao}</div>
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
+    ${riscoBox(d.uf)}
     <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
     <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}</div></div>
     <div class="field"><div class="k">Órgão responsável</div><div class="v">${esc(d.orgao)}</div></div>
-    ${(function(){ const r = RISCO_UF[d.uf]; return r ? `<div class="field"><div class="k">Risco projetado para o ciclo</div><div class="v">${esc(r.texto)}</div></div>` : ''; })()}
     ${(function(){ // 26/09/2026: a face da célula não comporta este campo, e ele NÃO existia no
       // detalhe — sem isto, o alcance da varredura sumiria da interface inteira.
       const niv = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[d.uf]) || {};
@@ -624,7 +627,6 @@ function animarGauges(root){
     requestAnimationFrame(passo);
   });
 }
-const STATUS_HUMANO_ESTR = {NOVO:'órgão de coordenação criado para o ciclo', READ:'estrutura permanente ativada para o ciclo por ato', VIG:'mobilização recorrente anual do sistema', ELAB:'estrutura anunciada, ato não localizado', LAC:'nenhum ato do ciclo toca a estrutura'};
 const STATUS_HUMANO = {NOVO:'plano estadual novo, específico para o El Niño', READ:'plano recorrente readaptado para o ciclo',
   VIG:'instrumento recorrente, sem menção nominal ao El Niño', ELAB:'plano estadual ainda em elaboração', LAC:'sem plano estadual nominal para o El Niño'};
 const nrm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
@@ -654,7 +656,7 @@ function renderMinha(){
   const card = document.getElementById('meuCard');
   const q = nrm(document.getElementById('cidadeInput').value);
   const uf = selUF.value;
-  if (!q && !uf){ card.hidden = true; return; }
+  if (!q){ card.hidden = true; return; }
   let matches = q ? TABELA_MUNICIPIOS.filter(m => nrm(m.nome) === q) : [];
   if (uf && q) matches = matches.filter(m => m.uf === uf);
   const ufFinal = uf || (matches.length === 1 ? matches[0].uf : '');
@@ -694,9 +696,9 @@ function renderMinha(){
         const _r = RESP_MUN && RESP_MUN.municipios && RESP_MUN.municipios[_ib];
         html += `<p class="u-mb-2"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
       if (_cob !== undefined) html += `<p class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
-      html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
+      html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o que fazer.</p>
       <p><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="prefeituras.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
-      ${ufFinal ? '' : '<p class="u-muted">Selecione o estado para ver o retrato estadual.</p>'}<hr class="card-sep">`;
+      ${ufFinal ? '' : '<p class="u-muted">Selecione também o estado para ver contatos, orientações e o relatório em PDF.</p>'}<hr class="card-sep">`;
     }
   }
 
@@ -710,22 +712,12 @@ function renderMinha(){
     else acoes.push('Predominam planos preventivos no seu estado; verifique se o da sua cidade está atualizado para o ciclo 2026/2027.');
     if (decl && 100*decl/i.total > 5*i.pct) acoes.push('Muitos municípios declaram ter plano a órgãos de controle, mas poucos documentos estão públicos: peça a publicação do PLANCON no site da prefeitura.');
 
-    // 24/09/2026: o cartão do leitor mostrava só a barra do MARÉ (preparação: Argila → Musgo) e dizia o
-    // número de decretos em texto corrido. O índice de RESPOSTA — população sob decreto, frio → quente
-    // (Mineral → Argila) — só existia na grade de estados e na ficha do estado, de modo que a mesma
-    // grandeza aparecia com escala num lugar e sem escala no outro. É a mesma barra, com a mesma arte e
-    // os mesmos números da ficha; nunca somada ao MARÉ (C17).
-    html += `<h4>${UF_NOME[ufFinal]} no MARÉ</h4>
-      ${miniGauge(v.total)}
-      ${barraResposta(ufFinal)}
-      <p class="note">Confiança da verificação: ${v.confianca}</p>
-      <ul>
-        <li>Instrumento operacional estadual: ${STATUS_HUMANO[v.status_estadual]}</li>
-        <li>Estrutura de coordenação estadual: ${STATUS_HUMANO_ESTR[v.estrutura_status] || v.estrutura_status}</li>
-        <li>Cobertura municipal documentada: <strong>${String(i.pct).replace('.',',')}%</strong> (${i.n_plano} plano(s) preventivo(s), ${i.n_decreto} decreto(s) reativo(s))${decl ? ` · declarada a órgãos de controle: ${(100*decl/i.total).toFixed(1).replace('.',',')}%` : ''}</li>
-        ${RESP && RESP.uf && RESP.uf[ufFinal] ? '<li class="note">Os dois números vêm de cadastros diferentes: a cobertura documentada conta atos de planejamento localizados no banco do Monitor; o índice de resposta conta decretos de emergência no registro federal (S2iD) e nos diários oficiais.</li>' : ''}
-      </ul>
-      <h4>O que fazer e o que cobrar</h4>
+    // 30/09/2026 (pedido da editoria): o retrato do estado (medidor MARÉ e lista de status —
+    // instrumento operacional, estrutura de coordenação, cobertura documentada) saiu daqui —
+    // duplicava a ficha do estado (dialog#detail), que já mostra os três, e estava
+    // desatualizado por viver em dois lugares. O que segue (contatos, PDF, guias, FGTS,
+    // formulário de correção) não existe na ficha e continua aqui.
+    html += `<h4>O que fazer e o que cobrar</h4>
       <ul>
         <li><strong>Emergência:</strong> Defesa Civil: ligue <strong>199</strong> · Corpo de Bombeiros, <strong>193</strong>.</li>
         <li><strong>Alertas oficiais no celular:</strong> envie seu CEP por SMS para <strong>40199</strong> (cadastro gratuito de alertas da Defesa Civil Nacional).</li>
