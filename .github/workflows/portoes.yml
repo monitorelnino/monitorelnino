@@ -163,6 +163,9 @@ jobs:
           python3 scripts/rejulgar_decisoes_do_juiz.py --autoteste
           python3 aplicar_promocoes_do_juiz.py --autoteste
           python3 coletar_srag_sivep.py --autoteste
+          python3 saude_opendatasus.py
+          python3 coletar_arboviroses_sinan.py --autoteste
+          python3 coletar_obitos_registro_civil.py --autoteste
           python3 scripts/busca_dirigida_do_ato.py --autoteste
       - name: Portão móvel (390 px, Chromium real — v3.1 §14.3)
         run: |
