@@ -9,6 +9,27 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §302 · Falso negativo se trata como falso negativo: nenhuma exceção por domínio no código · 30/09/2026
+
+Classe **método e prova**. Decisão da editoria de 30/09/2026 sobre a pendência aberta no §301.
+
+`abcdoabc.com.br` é jornal de verdade — o expediente se declara portal de notícias — e não passa
+pelos sinais de entrada no que a sonda consegue abrir. A editoria decidiu: **tratar como falso
+negativo conhecido, sem exceção nomeada.**
+
+Duas coisas entram por causa disso. A primeira é o registro no próprio veículo, em
+`data/veiculos_imprensa.json`, com data, sinal que falhou, motivo e a decisão — falso negativo
+anotado é dívida visível; falso negativo esquecido é só um número errado que ninguém sabe explicar
+depois. A segunda é um **canário que proíbe a exceção**: ele lê o código-fonte das sete funções do
+caminho de decisão e reprova se aparecer qualquer domínio literal. No dia em que alguém quiser
+salvar um veículo escrevendo o nome dele dentro da regra, o autoteste reprova antes do CI.
+
+A razão de a trava valer mais que o conserto: exceção por domínio faria a regra parar de ser regra, e
+é a regra que permite a entrada ser automática. Um critério com lista de salvados não é critério —
+é a lista de salvados com um critério em volta.
+
+Autoteste: **113 casos** (20 canários), sem rede e sem escrita.
+
 ## §301 · A lista de veículos aceita só imprensa — sítio institucional com expediente não é veículo · 30/09/2026
 
 Classe **método e prova**. Decisão da editoria de 30/09/2026, a partir do caso que a própria entrada

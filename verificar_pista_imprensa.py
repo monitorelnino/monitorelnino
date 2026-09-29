@@ -1018,6 +1018,23 @@ def autoteste() -> int:
                        _pagina("Somos o Comitê de Integração da Bacia do Paraíba do Sul.")}).lower()))
     casos.append(("a identidade jornalística se lê no expediente, não na vitrine",
                   tem_identidade_jornalistica({"https://x.com.br/": exp_jornal}) == ""))
+    # 30/09/2026 (decisão da editoria): falso negativo se trata como falso negativo, SEM exceção
+    # nomeada. Este canário é a trava: no dia em que alguém quiser salvar um veículo escrevendo o
+    # domínio dele dentro da decisão, o autoteste reprova. Exceção por domínio faria a regra parar de
+    # ser regra — e a regra é o que permite a entrada ser automática.
+    import inspect
+    fonte_da_decisao = "".join(inspect.getsource(f)
+                               for f in (pode_entrar, sinais_de_veiculo, eh_dominio_de_ente,
+                                         tem_identidade_jornalistica, tem_cargo_de_redacao,
+                                         tem_secao_de_noticias, eh_sitio_institucional))
+    casos.append(("o caminho de decisão não tem exceção por domínio: nenhum `.com.br`, `.org.br` "
+                  "ou `.net` literal",
+                  not re.search(r"[\"'][\w.-]+\.(?:com|org|net|br)\b", fonte_da_decisao)))
+    casos.append(("o falso negativo conhecido está registrado no próprio veículo, com data e motivo",
+                  (lambda vs: any(v.get("falso_negativo_conhecido", {}).get("desde")
+                                  and v["falso_negativo_conhecido"].get("motivo")
+                                  for v in vs.values()))(carregar_listas()[0])))
+
     casos.append(("nenhum domínio institucional continua na lista de veículos",
                   not (set(carregar_listas()[0]) & ler_institucionais())))
 
