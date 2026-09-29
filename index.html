@@ -36,7 +36,7 @@
 
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=e8733166">
-<link rel="stylesheet" href="assets/base.css?v=6a5c7708">
+<link rel="stylesheet" href="assets/base.css?v=692521b6">
 <script src="assets/mapas.js?v=412fe5b7"></script>
 </head>
 <body>
@@ -44,9 +44,15 @@
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
 <div class="wrap">
   <header class="masthead">
-    <h1 class="site-title site-title--logo"><span class="sr-only">MARÉ ·</span><svg viewBox="0 0 400 116" role="img" aria-hidden="true" focusable="false" data-marca-fixa="1"><defs><linearGradient id="mareLogoAgua" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C04430"/><stop offset="100%" stop-color="#5E7C93"/></linearGradient></defs><line x1="28" y1="18" x2="28" y2="92" stroke="#5E7C93" stroke-width="0.75"/><line x1="28" y1="26" x2="38" y2="26" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="41" x2="33" y2="41" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="55" x2="38" y2="55" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="69" x2="33" y2="69" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="84" x2="38" y2="84" stroke="#5E7C93" stroke-width="1.2"/><text x="56" y="92" style="font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:76px;letter-spacing:-1.14px;fill:#0E0F0D;font-optical-sizing:auto">MARÉ</text><path d="M22 106 C45.7 102.5,69.5 102.5,93.2 106 C116.9 109.5,140.7 109.5,164.4 106 C188.1 102.5,211.9 102.5,235.6 106 C259.3 109.5,283.1 109.5,306.8 106 C330.5 102.5,354.3 102.5,378.0 106" fill="none" stroke="url(#mareLogoAgua)" stroke-width="1.15" stroke-linecap="round"/></svg></h1>
+    <!-- 30/09/2026 (item 2 da fila viva, opção B da editoria): duas colunas — logo com o título
+         logo abaixo dele à esquerda, descrição à direita, centrada verticalmente no bloco.
+         O SVG do logo entra INTEIRO e sem alteração nenhuma: régua, "MARÉ", onda e gradiente
+         são o mesmo desenho de sempre. Só o contêiner em volta dele mudou. -->
     <div class="mast-abertura">
-      <p class="site-nome-p"><span class="site-nome">Monitor de Antecipação e Resposta ao El Niño</span></p>
+      <div class="mast-marca">
+        <h1 class="site-title site-title--logo"><span class="sr-only">MARÉ ·</span><svg viewBox="0 0 400 116" role="img" aria-hidden="true" focusable="false" data-marca-fixa="1"><defs><linearGradient id="mareLogoAgua" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C04430"/><stop offset="100%" stop-color="#5E7C93"/></linearGradient></defs><line x1="28" y1="18" x2="28" y2="92" stroke="#5E7C93" stroke-width="0.75"/><line x1="28" y1="26" x2="38" y2="26" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="41" x2="33" y2="41" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="55" x2="38" y2="55" stroke="#5E7C93" stroke-width="1.2"/><line x1="28" y1="69" x2="33" y2="69" stroke="#5E7C93" stroke-width="0.7"/><line x1="28" y1="84" x2="38" y2="84" stroke="#5E7C93" stroke-width="1.2"/><text x="56" y="92" style="font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:76px;letter-spacing:-1.14px;fill:#0E0F0D;font-optical-sizing:auto">MARÉ</text><path d="M22 106 C45.7 102.5,69.5 102.5,93.2 106 C116.9 109.5,140.7 109.5,164.4 106 C188.1 102.5,211.9 102.5,235.6 106 C259.3 109.5,283.1 109.5,306.8 106 C330.5 102.5,354.3 102.5,378.0 106" fill="none" stroke="url(#mareLogoAgua)" stroke-width="1.15" stroke-linecap="round"/></svg></h1>
+        <p class="site-nome-p"><span class="site-nome">Monitor de Antecipação e Resposta ao El Niño</span></p>
+      </div>
       <p class="site-intro">O MARÉ reúne num só lugar como o Brasil se prepara e responde ao El Niño 2026/2027. Dois índices, MARÉ Legal e MARÉ Saúde, mostram os planos publicados por estados e municípios e os decretos de emergência em vigor. Sinais físicos do fenômeno, alertas, dinheiro público, orientações para quem mora em área de risco e para quem governa. Fontes oficiais, atualização semanal, para jornalistas, gestores, pesquisadores e cidadãos.</p>
     </div>
     
@@ -107,6 +113,7 @@
       </div>
     </div>
   </div>
+  <p class="hint u-mt-2" id="resumoPreparacao" aria-live="polite">—</p>
 
   <div class="panel panel--destaque" id="comoler-painel" hidden>
     <div id="comoler" hidden data-voz="ficha">
@@ -211,7 +218,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/index.js?v=930fdffa" defer></script>
+<script src="assets/js/index.js?v=831827c1" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
