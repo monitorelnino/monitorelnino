@@ -509,19 +509,20 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
    mesmo peso visual, do Amazonas ao DF, o que um mapa de área fiel não dá: medido na geometria do
    próprio site, o AM tem 271x a área do DF, e o cartão não caberia em 16 das 27 formas reais.
    A grade é a `br_states_grid1` do geofacet, publicada; as posições vivem em assets/js/index.js. */
-.regions{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:var(--sp-2); max-width:880px; margin:0 auto;}
+/* 30/09/2026 (pedido da editoria): os cartões estavam grandes demais — grade mais compacta
+   (gap e padding menores, max-width reduzido) e sem a linha de risco (que saiu para a ficha). */
+.regions{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:var(--sp-1); max-width:720px; margin:0 auto;}
 .regions > *{min-width:0;}
-.tile{display:block; text-align:center; border-radius:var(--radius); padding:var(--sp-2); cursor:pointer;
+.tile{display:block; text-align:center; border-radius:var(--radius); padding:var(--sp-1) var(--sp-2); cursor:pointer;
   font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-medio);
   border:1px solid var(--line); transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
   position:relative; color:var(--branco); background:var(--branco);}
 .tile:hover{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); border-color:var(--teal);}
 .tile:focus-visible{transform:translateY(-2px); box-shadow:0 4px 14px rgba(21,32,26,.14); outline:2px solid var(--link); outline-offset:2px;}
 .tile.active{outline:2px solid var(--ink); outline-offset:2px;}
-.tile .cap-dot{position:absolute; top:4px; right:5px; width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.6;}
 .tile .tile-uf{display:block; font-weight:var(--peso-bold);}
-/* Medido a 140px de célula: nenhum nome quebra, nem "Rio Grande do Norte". Cada fileira da grade se
-   ajusta à sua célula mais alta, então o alinhamento se mantém sozinho se algum quebrar. */
+/* Cada fileira da grade se ajusta à sua célula mais alta, então o alinhamento se mantém
+   sozinho se um nome longo ("Rio Grande do Norte") quebrar em mais de uma linha. */
 .tile .tile-nome{display:block; font-family:var(--font-dado); font-weight:var(--peso-regular); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin-top:1px; hyphens:none; white-space:normal;}
 .tile .tile-score{display:block; font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); opacity:.85; margin-top:2px; font-family:var(--font-dado); font-variant-numeric:tabular-nums;}
 .tile .tile-bar{height:6px; background:var(--sem-dado); border-radius:3px; overflow:hidden; margin-top:var(--sp-1);}
@@ -531,11 +532,8 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 /* Os três campos de texto não cabem numa célula de 140px junto com sigla, nome, nota e as duas
    barras. Eles vivem na janela de detalhe — inclusive "Diários municipais consultados", que ANTES
    desta mudança não existia lá e teria sumido da interface (ver assets/js/index.js). */
-/* 27/09/2026: o risco projetado do estado, em vocabulário fechado e curto. A frase inteira do
-   boletim fica na janela de detalhe — aqui cabe o tipo, não a sentença. */
-.tile .tile-risco{display:block; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--rust); margin-top:var(--sp-1); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .tile .tile-face{display:none;}
-.regions + .legend{max-width:880px; margin-left:auto; margin-right:auto; justify-content:center;}
+.regions + .legend{max-width:720px; margin-left:auto; margin-right:auto; justify-content:center;}
 .legend{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-3); margin-top:var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 /* 13/09/2026: regra global — qualquer componente com display: explícito (flex/block/grid) sobrepõe
    [hidden] da UA stylesheet à mesma especificidade; !important garante que 'hidden' sempre esconda,
@@ -560,6 +558,18 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .field .v, .fv{font-size:var(--fs-small); line-height:var(--lh-small); margin:0 0 var(--sp-1);}
 .capital-box{background:var(--surface-2); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin-top:var(--sp-2); border:1px solid var(--line);}
 .capital-box .k{color:var(--rust);}
+/* 30/09/2026 (pedido da editoria): o risco projetado saiu da frente do cartão de estado e
+   passou a viver só na ficha (janela de detalhe), destacado — mesma família visual das fichas
+   de risco de proteja-se.html, acento por família (chuva/seca/fogo) na borda esquerda. */
+.risco-box{background:var(--surface-2); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0; border:1px solid var(--line); border-left:4px solid var(--rust);}
+.risco-box.r-chuva{border-left-color:var(--chuva);}
+.risco-box.r-seca{border-left-color:var(--seca);}
+.risco-box.r-fogo{border-left-color:var(--fogo);}
+.risco-box .k{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps); margin:0 0 var(--sp-1);}
+.risco-box .v{font-size:var(--fs-body); line-height:var(--lh-body); margin:0 0 var(--sp-2);}
+.risco-box .chips{display:flex; flex-wrap:wrap; gap:var(--sp-1);}
+.risco-box .chip-risco{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); padding:2px var(--sp-2); border-radius:999px; background:var(--branco); border:1px solid currentColor;}
+.risco-box .fonte{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:var(--sp-2) 0 0;}
 .meu-card{background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-4) var(--sp-5); margin-top:var(--sp-3); box-shadow:var(--sombra);}
 .meu-card ul{margin:var(--sp-2) 0 0; padding-left:var(--sp-4);}
 .meu-num{font-family:var(--font-titulo); font-size:var(--fs-h1); line-height:1; font-weight:var(--peso-display);}

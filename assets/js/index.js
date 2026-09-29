@@ -278,39 +278,18 @@ const GRADE_BR = {
   PR:[7,3], SC:[7,4],
   RS:[8,3],
 };
-// 27/09/2026 (pedido da editoria): o risco projetado sai do mapa no monitor de riscos e entra no
-// cartão de cada estado, que é onde o leitor procura o próprio estado. Carregado à parte para não
-// atrasar o índice: se falhar, o cartão fica sem a linha e nada mais muda.
-let RISCO_UF = {};
+// 27/09/2026 (pedido da editoria): o risco projetado entrou no cartão de cada estado.
+// 30/09/2026 (pedido da editoria): sai da frente do cartão — fica só na ficha (janela de
+// detalhe), destacado. Carregado à parte para não atrasar o índice: se falhar, a ficha fica
+// sem o bloco e nada mais muda. RISCO_UF e RISCO_FONTE são lidos por selectUF() (abaixo).
+let RISCO_UF = {}, RISCO_FONTE = null;
 fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).catch(() => null).then(sr => {
   if (!sr || !sr.uf) return;
   Object.keys(sr.uf).forEach(uf => {
     const r = sr.uf[uf] && sr.uf[uf].risco_projetado;
     if (r && r.texto) RISCO_UF[uf] = r;
   });
-  const f = (sr.fontes || {})['painel_el_nino'];
-  const leg = document.querySelector('#regions + .legend');
-  if (f && leg && !leg.querySelector('.fonte-risco')) {
-    const sp = document.createElement('span');
-    sp.className = 'fonte-risco';
-    sp.innerHTML = 'Risco projetado: ' + (f.url_publica
-      ? '<a href="' + f.url_publica + '" target="_blank" rel="noopener">' + f.nome + '</a>' : f.nome)
-      + (f.consultado_em ? ' · ' + f.consultado_em : '');
-    leg.appendChild(sp);
-  }
-  document.querySelectorAll('#regions .tile').forEach(t => {
-    const r = RISCO_UF[t.dataset.uf];
-    if (!r || t.querySelector('.tile-risco')) return;
-    const el = document.createElement('span');
-    el.className = 'tile-risco';
-    // Os COMPONENTES são vocabulário fechado e curtos; a frase inteira fica no detalhe.
-    el.textContent = (r.componentes && r.componentes.length ? r.componentes : [r.tipo])
-      .map(c => ({estiagem: 'estiagem', incendios: 'incêndios', chuvas: 'chuvas',
-                  sem_sinal: 'sem sinal elevado'}[c] || c)).join(' · ');
-    el.title = r.texto;
-    const face = t.querySelector('.tile-face');
-    if (face) t.insertBefore(el, face); else t.appendChild(el);
-  });
+  RISCO_FONTE = (sr.fontes || {})['painel_el_nino'] || null;
 });
 
 const regionsEl = document.getElementById('regions');
@@ -346,8 +325,7 @@ ufsOrdenadas.forEach(item=>{
       : `<span class="tile-score" data-contar="${v}">0,0</span>
          <div class="tile-bar"><div class="tile-fill" data-alvo="${v}" style="--galvo:${Math.max(v, 0.1)};"></div></div>`) +
     respostaTile(item.uf) +
-    faceTile(item.uf) +
-    (item.capital ? '<span class="cap-dot"></span>' : '');
+    faceTile(item.uf);
   // 26/09/2026: a linha do estado abre o detalhe e sempre foi uma caixa genérica com ouvinte de clique —
   // sem papel e sem índice de tabulação, quem navega por teclado não alcançava nenhum estado. O
   // defeito é anterior à troca de cartão por linha; a troca só o deixou visível. `role` e `tabindex`
@@ -376,6 +354,31 @@ function renderDetalhePadrao(){
 setTimeout(renderDetalhePadrao, 0);
 
 
+// 30/09/2026 (pedido da editoria): bloco de risco projetado da ficha do estado, destacado —
+// acento de cor pela família dominante (chuva/seca/fogo), componentes em vocabulário fechado
+// como chips, frase inteira do boletim e a fonte. Vazio quando não há risco carregado para a UF.
+function riscoBox(uf){
+  const r = RISCO_UF[uf];
+  if (!r) return '';
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const NOME_COMP = {estiagem:'estiagem', incendios:'incêndios', chuvas:'chuvas', sem_sinal:'sem sinal elevado'};
+  const FAMILIA = {estiagem:'r-seca', incendios:'r-fogo', chuvas:'r-chuva'};
+  const comps = (r.componentes && r.componentes.length ? r.componentes : [r.tipo]);
+  const familia = comps.map(c => FAMILIA[c]).find(Boolean) || '';
+  const chips = comps.map(c => `<span class="chip-risco">${esc(NOME_COMP[c] || c)}</span>`).join('');
+  const fonte = RISCO_FONTE
+    ? 'Fonte: ' + (RISCO_FONTE.url_publica
+        ? `<a href="${RISCO_FONTE.url_publica}" target="_blank" rel="noopener">${esc(RISCO_FONTE.nome)}</a>`
+        : esc(RISCO_FONTE.nome))
+      + (RISCO_FONTE.consultado_em ? ' · ' + esc(RISCO_FONTE.consultado_em) : '')
+    : '';
+  return `<div class="risco-box ${familia}">
+    <p class="k">Risco projetado para o ciclo</p>
+    <p class="v">${esc(r.texto)}</p>
+    <div class="chips">${chips}</div>
+    ${fonte ? `<p class="fonte">${fonte}</p>` : ''}
+  </div>`;
+}
 function selectUF(uf, tileEl){
   // P2 (auditoria 07/09/2026): d.doc, d.orgao, d.estrutura.doc, d.capital.info e
   // d.capital.nome são texto editorial (resumo humano de documento oficial), não
@@ -410,10 +413,10 @@ function selectUF(uf, tileEl){
     ${typeof MARE !== 'undefined' && MARE[d.uf] ? miniGauge(MARE[d.uf].total) : ''}
     <div class="uf-region">${d.regiao}</div>
     <span class="badge ${badgeClass}">${STATUS_LABEL[d.status]}</span>
+    ${riscoBox(d.uf)}
     <div class="field"><div class="k">Estrutura de coordenação</div><div class="v">${d.estrutura ? '<span class="pill-nivel">' + (STATUS_LABEL[d.estrutura.status] || d.estrutura.status) + '</span> ' + esc(d.estrutura.doc) + (d.estrutura.data && d.estrutura.data !== '—' ? ' (' + d.estrutura.data + ')' : '') : '—'}</div></div>
     <div class="field"><div class="k">Instrumento operacional</div><div class="v"><span class="pill-nivel">${STATUS_LABEL[d.status]}</span> ${esc(d.doc)}${d.data ? ' (' + d.data + ')' : ''}</div></div>
     <div class="field"><div class="k">Órgão responsável</div><div class="v">${esc(d.orgao)}</div></div>
-    ${(function(){ const r = RISCO_UF[d.uf]; return r ? `<div class="field"><div class="k">Risco projetado para o ciclo</div><div class="v">${esc(r.texto)}</div></div>` : ''; })()}
     ${(function(){ // 26/09/2026: a face da célula não comporta este campo, e ele NÃO existia no
       // detalhe — sem isto, o alcance da varredura sumiria da interface inteira.
       const niv = (typeof VRESUMO !== 'undefined' && VRESUMO && VRESUMO.por_uf && VRESUMO.por_uf[d.uf]) || {};
