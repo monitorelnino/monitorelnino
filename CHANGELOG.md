@@ -90,6 +90,27 @@ A composição da fila explica o resto, e é o dado que importa para a decisão:
 caminho até ela. Mesmo com a lista de veículos ampliada, essas 1.495 não viram pista exibível sem
 antes resolver o redirecionamento para a URL original.
 
+### E se a lista de veículos fosse ampliada? Também não daria 40
+
+A pergunta óbvia é se basta crescer a lista. Medi, sem mudar regra nenhuma: sorteei 120 pistas de
+domínio de imprensa (semente 42), li **107 páginas** dentro do orçamento e rodei os seis critérios
+**fingindo que todo domínio estava listado**. Passariam todos os critérios: **1**.
+
+| por que as outras caíram | n |
+|---|---|
+| sem data de publicação nos metadados | 39 |
+| ente não confirmado (B1) | 35 |
+| fora do ciclo (antes de 29/06/2026 ou futura) | 22 |
+| inacessível | 13 |
+| gênero não é notícia | 7 |
+| texto insuficiente · recusada pelo juiz · já tem registro | 3 |
+
+A ~1% de aproveitamento, 40 exibíveis exigiriam ler cerca de **4.000 páginas** — seis noites inteiras
+de orçamento, e a fila só tem **488** pistas de domínio de imprensa no total. **A amostra de 40 é
+inalcançável com esta fila, por aritmética, não por defeito.** O maior motivo isolado é a ausência de
+data em metadados, que é decisão de quem publica a página, não coisa que o verificador possa
+contornar sem afrouxar o B4 — e afrouxar o B4 é como matéria de 2015 volta.
+
 O relatório de amostra diz isso por escrito quando a amostra sai incompleta, em vez de completar com
 recusadas — completar mediria outra coisa.
 
