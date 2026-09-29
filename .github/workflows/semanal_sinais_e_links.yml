@@ -32,6 +32,15 @@ jobs:
       # dependência inventada, que é o erro que eu cometi três vezes nestes dois dias.
       comandos: |
         coletar_sinais_risco.py --municipios
+        # 29/09/2026 (bloco 4): SRAG pela fonte primária, semanal como o dado. Lê o banco do
+        # SIVEP-Gripe em fluxo e guarda só o agregado por UF e semana; os anos congelados
+        # (2019–2024) saem do cache e não são rebaixados da rede toda semana.
+        coletar_srag_sivep.py
+        # Sonda do InfoGripe: a série da Fiocruz volta a ser fonte complementar se o acesso
+        # voltar, e a sonda é o que avisa. O bloco 4 a chamou de `sondar_boletim_infogripe.py`,
+        # nome que não existe no repositório; a sonda é o modo padrão do próprio
+        # `coletar_srag_gripe.py`, que agora NÃO escreve série — só o diagnóstico.
+        coletar_srag_gripe.py
         descobrir_dominios.py
         coletar_espin.py
         classificar_planos_municipais.py
