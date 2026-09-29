@@ -252,7 +252,115 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-09-29T08:55:52",
+   "duracao_s": 544.9,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-09-29T09:04:57",
+   "duracao_s": 106.9,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-09-29T09:06:44",
+   "duracao_s": 588.3,
+   "itens": 1186,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-09-29T09:16:32",
+   "duracao_s": 3.1,
+   "itens": 1186,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-09-29T09:16:35",
+   "duracao_s": 3.7,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-09-29T09:16:38",
+   "duracao_s": 1.9,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "verificar_prazos_legais.py",
+   "inicio": "2026-09-29T09:16:40",
+   "duracao_s": 0.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-09-29T09:16:40",
+   "duracao_s": 926.1,
+   "itens": 41,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-09-29T09:32:06",
+   "duracao_s": 0.3,
+   "itens": null,
+   "status": "erro",
+   "erro": "AttributeError: 'list' object has no attribute 'get'"
+  },
+  {
+   "data": "2026-09-29",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-09-29T09:32:06",
+   "duracao_s": 58.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-09-29T09:33:04",
+   "duracao_s": 1.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-09-29",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-09-29T09:33:05",
+   "duracao_s": 8.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-09-29T08:26:32"
+ "atualizado_em": "2026-09-29T09:33:13"
 }
