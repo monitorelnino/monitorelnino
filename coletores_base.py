@@ -681,6 +681,75 @@ def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
     return corpo
 
 
+class OrcamentoDeRequisicoes:
+    """Teto compartilhado de páginas por noite — seção G2 do handover de 29/09/2026.
+
+    A editoria exigiu que o verificador de imprensa rodasse junto da coleta **sem provocar recusa
+    das fontes**. O limitador é um só, e vale para quem o usar: busca web, busca dirigida do juiz e
+    verificador. Ele não substitui `_respeitar_ritmo` (que respeita o `Crawl-delay` do robots): ele
+    acrescenta o que o robots não diz — **quantas páginas por host e por noite**.
+
+    Os tetos são os da decisão: 40 páginas por host de imprensa, 600 no total, e o host sai por 24 h
+    quando passa de 25% de recusa. Nada disso acelera se sobrar orçamento: o que não couber espera a
+    noite seguinte, e é registrado como `nao_lido_esta_noite` — que **não** é recusa da fonte nem
+    ausência de pista.
+    """
+
+    def __init__(self, teto_por_host: int = 40, teto_global: int = 600,
+                 fracao_de_recusa: float = 0.25, minimo_para_desligar: int = 8):
+        self.teto_por_host = teto_por_host
+        self.teto_global = teto_global
+        self.fracao_de_recusa = fracao_de_recusa
+        self.minimo_para_desligar = minimo_para_desligar
+        self.lidas = {}
+        self.recusas = {}
+        self.desligados = set()
+        self.total = 0
+
+    def host_de(self, url: str) -> str:
+        return (urllib.parse.urlparse(str(url or "")).netloc or "").lower().removeprefix("www.")
+
+    def pode_ler(self, url: str) -> tuple:
+        """(pode, motivo). Motivo vazio quando pode — quem chama registra o motivo tal e qual."""
+        if self.total >= self.teto_global:
+            return False, "teto_global_da_noite"
+        h = self.host_de(url)
+        if not h:
+            return False, "url_sem_host"
+        if h in self.desligados:
+            return False, "host_desligado_pelo_disjuntor"
+        if self.lidas.get(h, 0) >= self.teto_por_host:
+            return False, "teto_do_host_na_noite"
+        return True, ""
+
+    def registrar(self, url: str, recusada: bool = False) -> None:
+        """Conta a leitura e, se for o caso, desliga o host.
+
+        O piso de tentativas existe para não desligar um host por causa de um 403 isolado: uma
+        recusa em uma leitura é 100% de recusa, e desligar por isso seria desligar por ruído."""
+        h = self.host_de(url)
+        self.lidas[h] = self.lidas.get(h, 0) + 1
+        self.total += 1
+        if recusada:
+            self.recusas[h] = self.recusas.get(h, 0) + 1
+        n, r = self.lidas[h], self.recusas.get(h, 0)
+        if n >= self.minimo_para_desligar and r / n > self.fracao_de_recusa:
+            self.desligados.add(h)
+
+    def encerrar_a_rodada(self) -> bool:
+        """True quando a noite inteira passou do teto de recusa — a rodada para, e o que sobrou
+        fica `nao_lido_esta_noite`. Insistir seria pedir para ser bloqueado."""
+        if self.total < self.minimo_para_desligar:
+            return False
+        return sum(self.recusas.values()) / self.total > self.fracao_de_recusa
+
+    def contadores(self) -> dict:
+        return {"paginas_lidas": self.total, "por_host": dict(self.lidas),
+                "recusas_por_host": dict(self.recusas),
+                "hosts_desligados": sorted(self.desligados),
+                "teto_por_host": self.teto_por_host, "teto_global": self.teto_global}
+
+
 def buscar_em_fluxo(url: str, timeout: int = 120, origem: str = None, pedaco: int = 1 << 20):
     """Gera o corpo em pedaços, para arquivo grande demais para caber na memória.
 

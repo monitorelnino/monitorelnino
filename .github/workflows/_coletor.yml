@@ -36,6 +36,17 @@ on:
         required: false
         default: 45
         type: number
+      grupo_de_concorrencia:
+        description: >-
+          Grupo de concorrência do job. Padrão: um por coletor, que é o que serve à maioria — dois
+          coletores diferentes podem rodar ao mesmo tempo sem se atrapalhar. Os que ESCREVEM em
+          `data/pistas_*.json` passam `noturno` (seção G1 do handover de 29/09/2026): o monitor de
+          imprensa grava a pista, o verificador escreve `verificacao_fonte` nela e o juiz escreve
+          `juiz` — três escritores no mesmo arquivo, e um só campo cada. Com o grupo compartilhado,
+          se dois se cruzarem o segundo ESPERA; nunca cancela nem escreve por cima.
+        required: false
+        default: ""
+        type: string
       precisa_tesseract:
         description: "true só para o coletor de evidências (OCR)"
         required: false
@@ -65,7 +76,7 @@ jobs:
     # Fila, não cancelamento: uma coleta interrompida no meio perde o que já achou. Só o publicador
     # cancela o anterior, porque publicar duas vezes o mesmo estado não tem valor.
     concurrency:
-      group: coletor-${{ inputs.nome }}
+      group: ${{ inputs.grupo_de_concorrencia != '' && inputs.grupo_de_concorrencia || format('coletor-{0}', inputs.nome) }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4

@@ -18,6 +18,8 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: descoberta
+      # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
+      grupo_de_concorrencia: noturno
       timeout_minutos: 60
       # §278: `monitorar_redes_oficiais.py` e `seguir_pistas.py` consultam o metabuscador.
       precisa_searxng: true
@@ -33,5 +35,10 @@ jobs:
         monitorar_redes_oficiais.py --limite 20
         seguir_pistas.py --limite 20
         triar_confianca_pistas.py
+        # 29/09/2026 (bloco 2, fase 1): verificador da fonte das pistas de imprensa, em MODO
+        # SOMBRA — grava `verificacao_fonte` e NÃO toca o cartão. Entra aqui, depois do monitor
+        # de imprensa gravar as pistas novas e antes do juiz (3h) consumir as mesmas pistas.
+        # O teto de páginas por noite é do orçamento compartilhado (seção G2), não deste limite.
+        verificar_pista_imprensa.py --sombra
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

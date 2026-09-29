@@ -43,10 +43,16 @@ jobs:
         # 29/09/2026 (item 5): óbitos registrados em cartório, por UF e MÊS — sinal precoce sem
         # causa. A granularidade é a que a fonte tem: a API agrega por mês, medido.
         coletar_obitos_registro_civil.py
-        # Sonda do InfoGripe: a série da Fiocruz volta a ser fonte complementar se o acesso
-        # voltar, e a sonda é o que avisa. O bloco 4 a chamou de `sondar_boletim_infogripe.py`,
-        # nome que não existe no repositório; a sonda é o modo padrão do próprio
-        # `coletar_srag_gripe.py`, que agora NÃO escreve série — só o diagnóstico.
+        # Sondas do InfoGripe, as duas: a série da Fiocruz volta a ser fonte complementar se o
+        # acesso voltar, e são elas que avisam. Nenhuma escreve série.
+        #
+        # ERRATA (29/09/2026): o §291 afirmou que `sondar_boletim_infogripe.py` "não existe no
+        # repositório". Ele existe, em `scripts/` — eu procurei na raiz e concluí demais do que
+        # não achei. Ele estava ligado só ao `diagnostico_sinais.yml`, que roda por botão; o
+        # bloco 4 pediu sonda SEMANAL, e é isto aqui.
+        scripts/sondar_boletim_infogripe.py
+        # A outra sonda cobre o que a primeira não vê: os endpoints do CSV no GitLab. O modo
+        # padrão de `coletar_srag_gripe.py` passou a ser sondar — ele não escreve mais série.
         coletar_srag_gripe.py
         descobrir_dominios.py
         coletar_espin.py
