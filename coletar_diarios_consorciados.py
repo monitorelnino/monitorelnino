@@ -552,10 +552,18 @@ def coletar(desde_iso: str, ate_iso: str, apenas_uf: str = "") -> int:
                 print(f"  BLOQUEADA: token exige JavaScript (ver STATUS no topo do arquivo)")
                 continue
             for d in r["decretos"]:
-                chave = (d["municipio"] or f"{uf}(consorciado)", uf, d["data"], d.get("tipo"))
-                if chave in vistos or not d.get("ibge"):
+                if not d.get("ibge"):
                     continue  # sem município identificado: registrado como pista, não como ato (regra 2)
                 ref = por_cod[d["ibge"]]
+                # 29/09/2026: a chave saía do nome extraído do PDF (`d["municipio"]`) e o registro
+                # gravava o nome da referência do IBGE (`ref["nome"]`). Quando os dois diferem —
+                # acentuação, caixa, "CORACAO DE JESUS" contra "Coração de Jesus" —, a chave nunca
+                # casava com o que já estava no arquivo, e o MESMO ato entrava de novo a cada
+                # rodada. Foram 14 duplicatas na `main`, todas idênticas, hash de evidência
+                # incluído. A chave passa a ser a do registro: comparar pelo que se grava.
+                chave = (ref["nome"], uf, d["data"], d.get("tipo"))
+                if chave in vistos:
+                    continue
                 atos["eventos"].append({"nome": ref["nome"], "uf": uf, "ibge": d["ibge"], "data": d["data"],
                                         "causa": d["tipo"], "decreto": d["decreto"],
                                         "fonte": f"Diário consorciado (via {d['fonte']})", "url": d["url"],
@@ -861,8 +869,26 @@ def autoteste() -> int:
                 recusas += 1
         return all((explicito, corrida, padrao, precedencia)) and recusas == 4
 
+    def t_chave_de_dedup_e_a_do_registro():
+        """A chave que decide se o ato já existe tem de ser a MESMA que o registro grava.
+
+        29/09/2026: a chave saía do nome extraído do PDF e o registro gravava o nome da referência
+        do IBGE. Quando diferem — acentuação, caixa —, a checagem nunca casa e o mesmo ato entra a
+        cada rodada. Foram 14 duplicatas na `main`, idênticas, hash incluído. A trava é sobre o
+        CÓDIGO, porque exercitar o laço de verdade exigiria a rede e o banco."""
+        import inspect
+        import re as _re
+        fonte = inspect.getsource(coletar)
+        trecho = fonte[fonte.index('for d in r["decretos"]'):]
+        trecho = trecho[:trecho.index("vistos.add(chave)")]
+        monta_com_ref = bool(_re.search(r'chave\s*=\s*\(\s*ref\["nome"\]', trecho))
+        nao_usa_o_do_pdf = 'chave = (d["municipio"]' not in trecho
+        resolve_ref_antes = trecho.index('ref = por_cod') < trecho.index("chave = (")
+        return monta_com_ref and nao_usa_o_do_pdf and resolve_ref_antes
+
     return rodar_autoteste({
         "§276 janela corrida: --desde-dias, com --desde vencendo e recusa do inválido": t_janela_desde,
+        "a chave de deduplicação é a mesma que o registro grava (14 duplicatas em 29/09)": t_chave_de_dedup_e_a_do_registro,
         "§222 o canal deste coletor existe no vocabulário de canais": t_canal_no_vocabulario,
         "extrai token do HTML do calendário": t1,
         "regressão 22/09: token com atributos em ordem diferente (achado contra produção)": t1b,

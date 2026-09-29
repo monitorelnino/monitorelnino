@@ -115,6 +115,37 @@ O relatório de amostra diz isso por escrito quando a amostra sai incompleta, em
 recusadas — completar mediria outra coisa.
 
 Dois portões novos (122).
+## §296 · A chave de deduplicação olhava um nome e o registro gravava outro · 29/09/2026
+
+Classe **correção de dado publicado**. Achado enquanto o PR do bloco 1 esperava CI: a `main` estava
+**vermelha** no portão de consistência, e não por causa daquele PR. **Nenhum peso, régua ou categoria
+muda.**
+
+### O defeito
+
+`data/atos_resposta.json` tinha **14 eventos duplicados** — mesmo município, mesma data, mesma causa,
+e o mesmo `hash_evidencia`. Duplicatas idênticas, não registros parecidos.
+
+A causa está numa linha de `coletar_diarios_consorciados.py`: a chave que decide se o ato já existe
+era montada com o nome **extraído do PDF** (`d["municipio"]`), e o registro era gravado com o nome da
+**referência do IBGE** (`ref["nome"]`). Quando os dois diferem — acentuação, caixa, "CORACAO DE
+JESUS" contra "Coração de Jesus" —, a chave nunca casa com o que já está no arquivo, e o **mesmo ato
+entra de novo a cada rodada**.
+
+A correção é de uma linha e de ordem: resolve-se a referência primeiro e a chave passa a ser a do
+registro. **Comparar pelo que se grava** — se a chave e o registro não falam do mesmo nome, a
+deduplicação não deduplica nada.
+
+Os 14 foram removidos mantendo um de cada: 862 eventos para 848. Nenhum dado se perdeu, porque as
+cópias eram idênticas até o hash da evidência.
+
+### A trava
+
+Autoteste novo sobre o código do laço: a chave tem de sair de `ref["nome"]`, não pode sair de
+`d["municipio"]`, e a referência tem de ser resolvida **antes** da chave. É trava estrutural porque
+exercitar o laço de verdade exigiria rede e banco — e a regra aqui é de forma, não de comportamento
+de rede.
+
 ## §294 · Focos por posição, avisos do INMET, grade de três e a fonte junto da figura · 29/09/2026
 
 Classe **texto público** e **coleta**. Bloco 1 do handover consolidado de 29/09/2026. **Peso zero:**
