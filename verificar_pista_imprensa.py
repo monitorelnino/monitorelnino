@@ -243,6 +243,116 @@ RE_EXPEDIENTE = re.compile(
 RE_CNPJ = re.compile(r"\b\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}\b")
 
 
+# 30/09/2026 (decisão da editoria, caso CEIVAP) — a lista de veículos aceita SÓ IMPRENSA.
+#
+# `ceivap.org.br` entrou pela entrada automática cumprindo os quatro sinais do item 3: HTTPS, página
+# de expediente, nome localizável e itens na fila. Não é imprensa: é o Comitê de Integração da Bacia
+# Hidrográfica do Rio Paraíba do Sul, órgão colegiado do sistema de recursos hídricos, e os itens
+# eram PDFs de Planos Municipais de Saneamento Básico hospedados no sítio dele. O defeito não estava
+# em nenhum dos quatro sinais: estava no que eles NÃO perguntavam. Um sítio institucional tem
+# expediente, tem HTTPS e publica documento — e não é veículo.
+#
+# Dois sinais novos, ambos obrigatórios, e uma exclusão por padrão. Sítio de órgão, comitê, agência,
+# associação, consórcio, ONG, universidade ou empresa **não é bloqueado**: é fonte institucional, e o
+# caminho dela é o juiz, com documento primário. Vai para `data/dominios_institucionais.json`, que é
+# encaminhamento, não punição — confundir as duas listas jogaria fonte oficial no lixo.
+RE_IDENTIDADE_JORNALISTICA = re.compile(
+    r"\b(jornal|jornalismo|jornalista|portal de not[ií]cias|site de not[ií]cias|r[áa]dio|"
+    r"emissora|tv\b|televis[ãa]o|ag[êe]ncia de not[ií]cias|reda[çc][ãa]o|editor[ -]?chefe|"
+    r"editora[ -]?chefe|chefe de reda[çc][ãa]o|jornal[íi]stico|jornal[íi]stica)\b", re.I)
+RE_INSTITUCIONAL = re.compile(
+    r"\b(comit[êe] (?:de )?(?:bacia|integra[çc][ãa]o)|comit[êe] de bacia|ag[êe]ncia reguladora|"
+    r"autarquia|ag[êe]ncia nacional|cons[óo]rcio (?:p[úu]blico|intermunicipal)|"
+    r"associa[çc][ãa]o (?:de|dos|das)|federa[çc][ãa]o (?:de|dos|das)|sindicato|"
+    r"conselho (?:municipal|estadual|nacional|deliberativo|gestor)|"
+    r"universidade|instituto federal|funda[çc][ãa]o (?:p[úu]blica|estadual|municipal)|"
+    r"organiza[çc][ãa]o (?:n[ãa]o governamental|da sociedade civil)|oscip|"
+    r"secretaria (?:de|municipal|estadual)|minist[ée]rio (?:da|do|de)|"
+    r"empresa (?:p[úu]blica|de economia mista)|sistema de recursos h[íi]dricos)\b", re.I)
+INSTITUCIONAIS = RAIZ / "data" / "dominios_institucionais.json"
+MATERIAS_DATADAS_MINIMAS = 3
+CAMINHOS_DE_NOTICIAS = ("/", "/noticias", "/notícias", "/ultimas-noticias")
+
+
+RE_TIME_DATETIME = re.compile(r"<time[^>]*datetime=[\"']20\d\d-[01]\d-[0-3]\d", re.I)
+RE_DATA_RELATIVA = re.compile(r"\bh[áa]\s+\d+\s+(?:minuto|hora|dia|semana)s?\b", re.I)
+
+
+def tem_secao_de_noticias(paginas: dict) -> bool:
+    """True quando alguma página do domínio mostra pelo menos três itens com MARCA DE TEMPO.
+
+    Este é o sinal que o sítio institucional não tem: ele publica documento, e documento não vem
+    numa lista de manchetes com hora ao lado. Três, não uma, porque uma data solta aparece em
+    qualquer rodapé de "atualizado em".
+
+    **Conta-se a marca de tempo como a imprensa a escreve**, não como seria conveniente medir: data
+    por extenso, data numérica, `<time datetime>` e o "há 2 horas" das capas. A primeira versão
+    exigia data literal no texto e reprovou `ndmais.com.br` e `abcdoabc.com.br`, que são jornais de
+    verdade — critério que derruba o caso típico está medindo a própria implementação, não o mundo."""
+    for html in (paginas or {}).values():
+        texto = corpo_da_pagina(html)
+        marcas = (len(set(RE_DATA_EXTENSO.findall(texto)))
+                  + len(set(RE_DATA_NUMERICA.findall(texto)))
+                  + len(RE_TIME_DATETIME.findall(html or ""))
+                  + len(set(m.lower() for m in RE_DATA_RELATIVA.findall(texto or ""))))
+        if marcas >= MATERIAS_DATADAS_MINIMAS:
+            return True
+        if len(RE_ITEM_DE_FEED.findall(html or "")) >= MATERIAS_DATADAS_MINIMAS:
+            return True
+    return False
+
+
+# Cargo de redação no expediente é marca de imprensa tão forte quanto capa datada — e funciona onde
+# a capa não funciona. `plantaoguaruja.com.br` e `abcdoabc.com.br` são jornais, têm DIRETOR e
+# EDITOR-CHEFE no expediente, e a home deles devolve "Aguarde, carregando..." porque é renderizada
+# por JavaScript. Exigir só a capa datada expulsaria os dois, e expulsar veículo real por limitação
+# da minha sonda seria perder prova para preservar a regra.
+RE_CARGO_DE_REDACAO = re.compile(
+    r"\b(editor[ -]?chefe|editora[ -]?chefe|chefe de reda[çc][ãa]o|diretor de reda[çc][ãa]o|"
+    r"diretor[ae]? respons[áa]vel|editor[ae]? geral|jornalista respons[áa]vel|"
+    r"reda[çc][ãa]o)\b", re.I)
+AUTODESCRICAO = 700
+
+
+def tem_cargo_de_redacao(paginas: dict) -> str:
+    """O cargo de redação encontrado no expediente, ou string vazia."""
+    for url, html in (paginas or {}).items():
+        if not RE_EXPEDIENTE.search(str(url)):
+            continue
+        m = RE_CARGO_DE_REDACAO.search(corpo_da_pagina(html))
+        if m:
+            return m.group(0)
+    return ""
+
+
+def eh_sitio_institucional(paginas: dict) -> str:
+    """O termo institucional encontrado na AUTODESCRIÇÃO do sítio, ou string vazia.
+
+    Onde se lê é decisivo. A primeira versão varria a página inteira e transformava jornal em
+    instituição porque a capa trazia "Secretaria de" numa manchete — `horacampinas.com.br`,
+    `portaldoholanda.com.br` e outros dois caíram assim. Jornal fala de órgão público todo dia; o
+    que distingue o sítio institucional é ele **dizer que é um**, e isso está no começo da página de
+    expediente, onde mora o "somos". Fora do expediente não se lê nada: manchete não define dono."""
+    for url, html in (paginas or {}).items():
+        if not RE_EXPEDIENTE.search(str(url)):
+            continue
+        m = RE_INSTITUCIONAL.search(corpo_da_pagina(html)[:AUTODESCRICAO])
+        if m:
+            return m.group(0)
+    return ""
+
+
+def tem_identidade_jornalistica(paginas: dict) -> str:
+    """O termo jornalístico encontrado na página de expediente, ou string vazia."""
+    for url, html in (paginas or {}).items():
+        if not RE_EXPEDIENTE.search(str(url)):
+            continue
+        m = RE_IDENTIDADE_JORNALISTICA.search(corpo_da_pagina(html))
+        if m:
+            return m.group(0)
+    return ""
+
+
 def sinais_de_veiculo(dominio: str, paginas: dict, materias: int) -> dict:
     """Os quatro sinais do item 3, medidos — e o que faltou, quando falta.
 
@@ -270,7 +380,11 @@ def sinais_de_veiculo(dominio: str, paginas: dict, materias: int) -> dict:
             break
     return {"https": tem_https, "expediente": achou_expediente,
             "nome_ou_cnpj": tem_nome_ou_cnpj, "materias_na_fila": materias,
-            "materias_suficientes": materias >= MATERIAS_MINIMAS}
+            "materias_suficientes": materias >= MATERIAS_MINIMAS,
+            "identidade_jornalistica": tem_identidade_jornalistica(paginas),
+            "secao_de_noticias": tem_secao_de_noticias(paginas),
+            "cargo_de_redacao": tem_cargo_de_redacao(paginas),
+            "termo_institucional": eh_sitio_institucional(paginas)}
 
 
 def pode_entrar(dominio: str, sinais: dict, bloqueados: set) -> tuple:
@@ -297,7 +411,53 @@ def pode_entrar(dominio: str, sinais: dict, bloqueados: set) -> tuple:
         return False, "expediente_sem_nome_nem_cnpj"
     if not sinais.get("materias_suficientes"):
         return False, f"menos_de_{MATERIAS_MINIMAS}_materias_na_fila"
+    # A exclusão institucional vem ANTES da identidade jornalística, de propósito: um comitê de bacia
+    # que cite "nossa redação" em algum lugar continua não sendo imprensa, e a ordem inversa deixaria
+    # a palavra solta vencer o que o sítio é.
+    if sinais.get("termo_institucional"):
+        return False, "sitio_institucional_nao_e_veiculo"
+    if not sinais.get("identidade_jornalistica"):
+        return False, "expediente_sem_identidade_jornalistica"
+    if not (sinais.get("secao_de_noticias") or sinais.get("cargo_de_redacao")):
+        return False, "sem_vitrine_datada_nem_cargo_de_redacao"
     return True, ""
+
+
+def registrar_institucionais(itens: list, hoje) -> dict:
+    """Encaminha o domínio institucional, em vez de descartá-lo.
+
+    `data/dominios_institucionais.json` **não é lista de bloqueio**. Quem está nela é fonte oficial
+    ou institucional, cujo caminho é o juiz com documento primário — não o verificador de imprensa.
+    Tratar as duas listas como uma jogaria fonte oficial no lixo, que é o oposto do que o método
+    quer."""
+    from coletores_base import gravar_em
+    doc = {}
+    if INSTITUCIONAIS.exists():
+        doc = json.loads(INSTITUCIONAIS.read_text(encoding="utf-8")) or {}
+    doc.setdefault("_governanca", "Domínios institucionais ou oficiais que NÃO são veículos de "
+                                  "imprensa. Não é lista de bloqueio: o caminho deles é o juiz, com "
+                                  "documento primário. Decisão da editoria de 30/09/2026 (CEIVAP).")
+    lista = doc.setdefault("dominios", [])
+    tem = {str(x.get("dominio", "")).lower() for x in lista}
+    for dominio, sinais in itens:
+        if dominio in tem:
+            continue
+        lista.append({"dominio": dominio,
+                      "termo_institucional": sinais.get("termo_institucional"),
+                      "expediente": sinais.get("expediente"),
+                      "incluido_em": hoje.isoformat(),
+                      "incluido_por": "triagem automática da entrada de veículos (30/09/2026)"})
+        tem.add(dominio)
+    doc["atualizado_em"] = hoje.isoformat()
+    gravar_em(INSTITUCIONAIS, doc)          # §229
+    return doc
+
+
+def ler_institucionais() -> set:
+    if not INSTITUCIONAIS.exists():
+        return set()
+    d = json.loads(INSTITUCIONAIS.read_text(encoding="utf-8")) or {}
+    return {str(x.get("dominio", "")).lower() for x in (d.get("dominios") or [])}
 
 
 def ler_bloqueados() -> set:
@@ -731,8 +891,12 @@ def autoteste() -> int:
                   sinais_de_veiculo("horacampinas.com.br",
                                     {"https://horacampinas.com.br/noticia/x":
                                      _pagina("Hora Campinas")}, 5)["expediente"] is None))
-    casos.append(("entra quando cumpre os quatro sinais",
-                  pode_entrar("horacampinas.com.br", s_ok, bloq) == (True, "")))
+    # 30/09/2026: `s_ok` tem os quatro sinais do §299 e NÃO tem os dois novos. Ele passou a ser o
+    # caso do sítio que cumpre a forma e não se identifica como imprensa — que é exatamente o que a
+    # decisão da editoria manda recusar.
+    casos.append(("os quatro sinais do §299 já não bastam sozinhos",
+                  pode_entrar("horacampinas.com.br", s_ok, bloq)[1]
+                  == "expediente_sem_identidade_jornalistica"))
     casos.append(("agregador NÃO entra, mesmo com HTTPS e expediente em ordem",
                   pode_entrar("news.google.com", s_ok, bloq) == (False, "dominio_bloqueado")))
     casos.append(("subdomínio de fazenda de conteúdo também não entra",
@@ -772,16 +936,101 @@ def autoteste() -> int:
     casos.append(("nenhum domínio da lista de veículos está bloqueado",
                   not (set(carregar_listas()[0]) & ler_bloqueados())))
 
+    # --- 30/09/2026: a lista aceita só imprensa (caso CEIVAP) ------------------------------------
+    exp_jornal = _pagina("O Hora Campinas é um portal de notícias. Editor-chefe: alguém. "
+                         "CNPJ 12.345.678/0001-90.")
+    vitrine = _pagina("Chuva alaga bairro 12/08/2026 Prefeitura decreta 13/08/2026 "
+                      "Defesa Civil alerta 14/08/2026")
+    pags_jornal = {"https://horacampinas.com.br/expediente": exp_jornal,
+                   "https://horacampinas.com.br/": vitrine}
+    s_jornal = sinais_de_veiculo("horacampinas.com.br", pags_jornal, 3)
+    casos.append(("veículo com expediente jornalístico e vitrine datada entra",
+                  pode_entrar("horacampinas.com.br", s_jornal, bloq) == (True, "")))
+    casos.append(("o termo jornalístico é o achado literal, não inferência",
+                  s_jornal["identidade_jornalistica"].lower() == "portal de notícias"))
+
+    exp_ceivap = _pagina("O CEIVAP é o Comitê de Integração da Bacia Hidrográfica do Rio Paraíba "
+                         "do Sul, órgão colegiado do sistema de recursos hídricos.")
+    pags_ceivap = {"https://ceivap.org.br/quem-somos": exp_ceivap,
+                   "https://ceivap.org.br/": _pagina("PMSB Barra do Piraí 12/08/2026 "
+                                                     "PMSB Miguel Pereira 13/08/2026 "
+                                                     "Ata da reunião 14/08/2026")}
+    s_ceivap = sinais_de_veiculo("ceivap.org.br", pags_ceivap, 9)
+    casos.append(("CANÁRIO: sítio institucional com expediente NÃO é veículo",
+                  pode_entrar("ceivap.org.br", s_ceivap, bloq)
+                  == (False, "sitio_institucional_nao_e_veiculo")))
+    casos.append(("o termo institucional achado fica registrado, para a decisão ser auditável",
+                  "comit" in s_ceivap["termo_institucional"].lower()))
+    casos.append(("sítio institucional NÃO vai para a lista de bloqueio — vai ao juiz",
+                  "ceivap.org.br" not in ler_bloqueados()))
+    casos.append(("institucional vence palavra jornalística solta: comitê que diz 'redação' segue "
+                  "não sendo veículo",
+                  pode_entrar("ceivap.org.br", {**s_ceivap,
+                                                "identidade_jornalistica": "redação"}, bloq)[1]
+                  == "sitio_institucional_nao_e_veiculo"))
+    casos.append(("expediente sem identidade jornalística não entra",
+                  pode_entrar("x.com.br", {**s_jornal, "identidade_jornalistica": ""}, bloq)[1]
+                  == "expediente_sem_identidade_jornalistica"))
+    casos.append(("sem vitrine datada E sem cargo de redação não entra",
+                  pode_entrar("x.com.br", {**s_jornal, "secao_de_noticias": False,
+                                           "cargo_de_redacao": ""}, bloq)[1]
+                  == "sem_vitrine_datada_nem_cargo_de_redacao"))
+    casos.append(("expediente com editor-chefe basta, mesmo com capa renderizada por JavaScript",
+                  pode_entrar("x.com.br", {**s_jornal, "secao_de_noticias": False,
+                                           "cargo_de_redacao": "EDITOR – CHEFE"}, bloq)[0] is True))
+    casos.append(("o cargo se lê no expediente, não na capa",
+                  tem_cargo_de_redacao({"https://x.com.br/":
+                                        _pagina("Editor-chefe comenta")}) == ""))
+    casos.append(("comitê sem cargo de redação no expediente não tem o sinal",
+                  tem_cargo_de_redacao({"https://ceivap.org.br/quem-somos":
+                                        _pagina("Somos o Comitê de Integração da Bacia.")}) == ""))
+    casos.append((f"uma data solta não faz seção de notícias (o mínimo é "
+                  f"{MATERIAS_DATADAS_MINIMAS})",
+                  tem_secao_de_noticias({"https://x.com.br/":
+                                         _pagina("atualizado em 12/08/2026")}) is False))
+    casos.append(("três matérias datadas fazem seção de notícias",
+                  tem_secao_de_noticias({"https://x.com.br/": vitrine}) is True))
+    casos.append(("<time datetime> conta como marca de tempo",
+                  tem_secao_de_noticias({"https://x.com.br/":
+                                         '<time datetime="2026-08-15">a</time>'
+                                         '<time datetime="2026-08-16">b</time>'
+                                         '<time datetime="2026-08-17">c</time>'}) is True))
+    casos.append(("o 'há 2 horas' das capas conta como marca de tempo",
+                  tem_secao_de_noticias({"https://x.com.br/":
+                                         _pagina("há 2 horas · há 3 horas · há 1 dia")}) is True))
+    casos.append(("feed com três itens conta como seção de notícias",
+                  tem_secao_de_noticias({"https://x.com.br/feed":
+                                         "<pubDate>a</pubDate><pubDate>b</pubDate>"
+                                         "<pubDate>c</pubDate>"}) is True))
+    casos.append(("feed com um item só não conta",
+                  tem_secao_de_noticias({"https://x.com.br/feed":
+                                         "<pubDate>a</pubDate>"}) is False))
+    casos.append(("'pauta' não é identidade jornalística — sinal fraco, fora da lista da editoria",
+                  tem_identidade_jornalistica(
+                      {"https://x.com.br/expediente": _pagina("Sugira uma pauta.")}) == ""))
+    casos.append(("o termo institucional se lê SÓ na autodescrição do expediente: manchete com "
+                  "'Secretaria de' não transforma jornal em instituição",
+                  eh_sitio_institucional(
+                      {"https://x.com.br/": _pagina("Secretaria de Saúde anuncia mutirão")}) == ""))
+    casos.append(("e se lê quando o próprio expediente diz o que é",
+                  "comit" in eh_sitio_institucional(
+                      {"https://x.com.br/quem-somos":
+                       _pagina("Somos o Comitê de Integração da Bacia do Paraíba do Sul.")}).lower()))
+    casos.append(("a identidade jornalística se lê no expediente, não na vitrine",
+                  tem_identidade_jornalistica({"https://x.com.br/": exp_jornal}) == ""))
+    casos.append(("nenhum domínio institucional continua na lista de veículos",
+                  not (set(carregar_listas()[0]) & ler_institucionais())))
+
     casos.append(("domínio de governo não entra na lista de veículos",
-                  pode_entrar("curitiba.pr.gov.br", s_ok, bloq)[1]
+                  pode_entrar("curitiba.pr.gov.br", s_jornal, bloq)[1]
                   == "dominio_de_governo_nao_e_veiculo"))
     casos.append(("nem câmara, nem tribunal, nem ministério público",
-                  all(pode_entrar("x." + g, s_ok, bloq)[1] == "dominio_de_governo_nao_e_veiculo"
+                  all(pode_entrar("x." + g, s_jornal, bloq)[1] == "dominio_de_governo_nao_e_veiculo"
                       for g in SUFIXOS_DE_GOVERNO)))
     casos.append(("o domínio NU de governo também não entra — a fresta que deixou `gov.br` passar",
-                  pode_entrar("gov.br", s_ok, bloq)[1] == "dominio_de_governo_nao_e_veiculo"))
+                  pode_entrar("gov.br", s_jornal, bloq)[1] == "dominio_de_governo_nao_e_veiculo"))
     casos.append(("prefeitura fora do .gov.br não entra",
-                  pode_entrar("prefeitura.poa.br", s_ok, bloq)[1]
+                  pode_entrar("prefeitura.poa.br", s_jornal, bloq)[1]
                   == "dominio_de_ente_publico_nao_e_veiculo"))
     casos.append(("ente público não ocupa vaga da sonda",
                   not (set(dominios_candidatos(
@@ -791,8 +1040,10 @@ def autoteste() -> int:
                        {"url": "https://gov.br/2", "titulo": "d"}], {}, bloq)))))
     casos.append(("nenhum domínio de ente público está na lista de veículos",
                   not [d for d in carregar_listas()[0] if eh_dominio_de_ente(d)]))
-    casos.append(("veículo comum continua entrando", pode_entrar("horacampinas.com.br", s_ok,
-                                                                 bloq)[0] is True))
+    casos.append(("veículo comum continua entrando",
+                  pode_entrar("horacampinas.com.br",
+                              {**s_ok, "identidade_jornalistica": "jornal",
+                               "secao_de_noticias": True}, bloq)[0] is True))
     import urllib.error as _ue
     def _http(c):
         return _ue.HTTPError("https://x.com.br/expediente", c, "", None, None)
@@ -887,6 +1138,14 @@ def ordem_da_fila(pistas: list, veiculos: dict) -> list:
 # seis caminhos a 30 s e 15 domínios, o pior caso da sonda passava de 40 minutos dentro de uma
 # rotina noturna que tem outras coisas para fazer — e o ganho do quinto caminho é marginal.
 CAMINHOS_DE_EXPEDIENTE = ("/expediente", "/quem-somos", "/sobre", "/contato")
+# A sonda abre também a home e a seção de notícias: o sinal "matérias datadas" não mora no
+# expediente, e sem ele o sítio institucional voltaria a entrar.
+CAMINHOS_DE_VITRINE = ("/", "/noticias", "/ultimas-noticias")
+# O feed entra na sonda porque capa de jornal hoje é renderizada por JavaScript: `plantaoguaruja` e
+# `abcdoabc` dizem "site de notícias" no expediente e não mostravam marca de tempo nenhuma no HTML
+# da home. O feed mostra — e é a mesma fonte que o monitor de imprensa já lê.
+CAMINHOS_DE_FEED = ("/feed", "/rss", "/feed/rss")
+RE_ITEM_DE_FEED = re.compile(r"<(?:pubDate|updated|published)>", re.I)
 TIMEOUT_DA_SONDA = 12
 
 
@@ -975,7 +1234,7 @@ def crescer_lista_de_veiculos(fila: list, veiculos: dict, orcamento=None, hoje=N
                                        origem="verificar_pista_imprensa").decode("utf-8", "replace"))
     bloqueados = ler_bloqueados()
     candidatos = dominios_candidatos(fila, veiculos, bloqueados)
-    entradas, recusas = [], {}
+    entradas, recusas, institucionais = [], {}, []
 
     for dominio, materias in sorted(candidatos.items(), key=lambda kv: -kv[1])[
             :DOMINIOS_AVALIADOS_POR_NOITE]:
@@ -1007,20 +1266,40 @@ def crescer_lista_de_veiculos(fila: list, veiculos: dict, orcamento=None, hoje=N
                     break
                 continue
             break
+        for caminho in tuple(CAMINHOS_DE_VITRINE) + tuple(CAMINHOS_DE_FEED):
+            url = f"https://{dominio}{caminho}"
+            pode, _ = orcamento.pode_ler(url)
+            if not pode:
+                break
+            try:
+                paginas[url] = abrir(url)
+                orcamento.registrar(url, recusada=False)
+            except Exception as e:  # noqa: BLE001
+                recusou = eh_recusa_de_acesso(e)
+                orcamento.registrar(url, recusada=recusou)
+                if recusou:
+                    break
+                continue
+            break
         sinais = sinais_de_veiculo(dominio, paginas, materias)
         entra, motivo = pode_entrar(dominio, sinais, bloqueados)
         if entra:
             entradas.append((dominio, sinais))
         else:
             recusas[motivo] = recusas.get(motivo, 0) + 1
+            if motivo == "sitio_institucional_nao_e_veiculo":
+                institucionais.append((dominio, sinais))
 
+    if institucionais and escrever:
+        registrar_institucionais(institucionais, hoje)
     if entradas and escrever:
         lista = json.loads(VEICULOS.read_text(encoding="utf-8")) if VEICULOS.exists() else {}
         for dominio, sinais in entradas:
             registrar_entrada(lista, dominio, sinais, hoje)
         gravar_em(VEICULOS, lista)          # §229
     return {"candidatos": len(candidatos), "avaliados_por_noite": DOMINIOS_AVALIADOS_POR_NOITE,
-            "entraram": [d for d, _ in entradas], "recusas": recusas}
+            "entraram": [d for d, _ in entradas], "recusas": recusas,
+            "institucionais": [d for d, _ in institucionais]}
 
 
 def rodar_sombra(limite: int = None, escrever: bool = True) -> dict:

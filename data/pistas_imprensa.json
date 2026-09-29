@@ -7697,26 +7697,17 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "sem_data",
-        "criterios": {
-          "B5_veiculo": {
-            "ok": true,
-            "trecho": "ceivap.org.br · a confirmar"
-          },
-          "A1_corpo": {
-            "ok": true,
-            "trecho": "4677515 caracteres"
-          },
-          "B4_ciclo_e_genero": {
-            "ok": false,
-            "trecho": "sem data de publicação em nenhum degrau da escada"
-          }
-        },
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
         "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-barra-do-pirai.pdf",
-        "tamanho_do_corpo": 4677515,
-        "hash_do_corpo": "33a595b468497f76ecc0dd2e2e90bed3ff6c9b63cf86daf57e087e60d747a927"
-      }
+        "criterios": {
+          "B3_objeto": {
+            "ok": false,
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
+          }
+        }
+      },
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Seropédica",
@@ -8312,26 +8303,17 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "sem_data",
-        "criterios": {
-          "B5_veiculo": {
-            "ok": true,
-            "trecho": "ceivap.org.br · a confirmar"
-          },
-          "A1_corpo": {
-            "ok": true,
-            "trecho": "3206861 caracteres"
-          },
-          "B4_ciclo_e_genero": {
-            "ok": false,
-            "trecho": "sem data de publicação em nenhum degrau da escada"
-          }
-        },
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
         "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-miguel-pereira.pdf",
-        "tamanho_do_corpo": 3206861,
-        "hash_do_corpo": "21e24fc7f7ef00f0a1386a4839f74b2419b17f1304b91fd66308efe6ed7a427b"
-      }
+        "criterios": {
+          "B3_objeto": {
+            "ok": false,
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
+          }
+        }
+      },
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Pinheiral",
@@ -8394,26 +8376,17 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "sem_data",
-        "criterios": {
-          "B5_veiculo": {
-            "ok": true,
-            "trecho": "ceivap.org.br · a confirmar"
-          },
-          "A1_corpo": {
-            "ok": true,
-            "trecho": "3387073 caracteres"
-          },
-          "B4_ciclo_e_genero": {
-            "ok": false,
-            "trecho": "sem data de publicação em nenhum degrau da escada"
-          }
-        },
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
         "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-pinheiral.pdf",
-        "tamanho_do_corpo": 3387073,
-        "hash_do_corpo": "1e199f5af66e1c16242b7eeeb71e52093fad197593c89329d38e028d324646eb"
-      }
+        "criterios": {
+          "B3_objeto": {
+            "ok": false,
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
+          }
+        }
+      },
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Silva Jardim",
@@ -16685,25 +16658,15 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "sem_data",
-        "criterios": {
-          "B5_veiculo": {
-            "ok": true,
-            "trecho": "ceivap.org.br · a confirmar"
-          },
-          "A1_corpo": {
-            "ok": true,
-            "trecho": "1446381 caracteres"
-          },
-          "B4_ciclo_e_genero": {
-            "ok": false,
-            "trecho": "sem data de publicação em nenhum degrau da escada"
-          }
-        },
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
         "url": "https://www.ceivap.org.br/mata/Rosario-da-Limeira.pdf",
-        "tamanho_do_corpo": 1446381,
-        "hash_do_corpo": "d0e0a1519dc2762adf7b659021ce8866feb0f5af2b74e864294767244bde3552"
+        "criterios": {
+          "B3_objeto": {
+            "ok": false,
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
+          }
+        }
       },
       "busca_dirigida": [
         {
@@ -16724,7 +16687,8 @@
           "motivo": "sem_documento_primario",
           "codebook": "1.1 (28/09/2026)"
         }
-      ]
+      ],
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Atibaia",
@@ -24626,25 +24590,15 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "sem_data",
-        "criterios": {
-          "B5_veiculo": {
-            "ok": true,
-            "trecho": "ceivap.org.br · a confirmar"
-          },
-          "A1_corpo": {
-            "ok": true,
-            "trecho": "2967595 caracteres"
-          },
-          "B4_ciclo_e_genero": {
-            "ok": false,
-            "trecho": "sem data de publicação em nenhum degrau da escada"
-          }
-        },
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
         "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-quatis.pdf",
-        "tamanho_do_corpo": 2967595,
-        "hash_do_corpo": "e08a4c71a0cfd5972404f0d71d4bdf180035c2f8d4d40876f9b4471137b68ba1"
+        "criterios": {
+          "B3_objeto": {
+            "ok": false,
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
+          }
+        }
       },
       "busca_dirigida": [
         {
@@ -24680,7 +24634,8 @@
         "data": null,
         "julgado_em": "2026-09-29",
         "hash_evidencia": null
-      }
+      },
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Aperibé",
@@ -24847,25 +24802,15 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "sem_data",
-        "criterios": {
-          "B5_veiculo": {
-            "ok": true,
-            "trecho": "ceivap.org.br · a confirmar"
-          },
-          "A1_corpo": {
-            "ok": true,
-            "trecho": "4096826 caracteres"
-          },
-          "B4_ciclo_e_genero": {
-            "ok": false,
-            "trecho": "sem data de publicação em nenhum degrau da escada"
-          }
-        },
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
         "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-rio-das-flores.pdf",
-        "tamanho_do_corpo": 4096826,
-        "hash_do_corpo": "45a228f033585577d820413302ca424cc25845ecbfdc37f5044256c14657d7dd"
+        "criterios": {
+          "B3_objeto": {
+            "ok": false,
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
+          }
+        }
       },
       "busca_dirigida": [
         {
@@ -24901,7 +24846,8 @@
         "data": null,
         "julgado_em": "2026-09-29",
         "hash_evidencia": null
-      }
+      },
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Primavera",
@@ -28192,26 +28138,17 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "sem_data",
-        "criterios": {
-          "B5_veiculo": {
-            "ok": true,
-            "trecho": "ceivap.org.br · a confirmar"
-          },
-          "A1_corpo": {
-            "ok": true,
-            "trecho": "1155995 caracteres"
-          },
-          "B4_ciclo_e_genero": {
-            "ok": false,
-            "trecho": "sem data de publicação em nenhum degrau da escada"
-          }
-        },
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
         "url": "https://www.ceivap.org.br/mata/Guidoval.pdf",
-        "tamanho_do_corpo": 1155995,
-        "hash_do_corpo": "cc3f5ece4b8030347094145fddcff8b3881de9f7d15bf95e05c2879f43a2fd2b"
-      }
+        "criterios": {
+          "B3_objeto": {
+            "ok": false,
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
+          }
+        }
+      },
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Pinhais",
@@ -29123,26 +29060,17 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "sem_data",
-        "criterios": {
-          "B5_veiculo": {
-            "ok": true,
-            "trecho": "ceivap.org.br · a confirmar"
-          },
-          "A1_corpo": {
-            "ok": true,
-            "trecho": "1589283 caracteres"
-          },
-          "B4_ciclo_e_genero": {
-            "ok": false,
-            "trecho": "sem data de publicação em nenhum degrau da escada"
-          }
-        },
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
         "url": "https://www.ceivap.org.br/mata/Chacara.pdf",
-        "tamanho_do_corpo": 1589283,
-        "hash_do_corpo": "f44d8661ffd133f992708bfb4ef5bf1c0169f94f3aeffafb80c52187819601e0"
-      }
+        "criterios": {
+          "B3_objeto": {
+            "ok": false,
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
+          }
+        }
+      },
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Piau",
@@ -55626,16 +55554,17 @@
       "verificacao_fonte": {
         "versao": "1.0 (29/09/2026)",
         "exibivel": false,
-        "motivo": "veiculo_nao_listado",
+        "motivo": "fora_do_objeto",
         "lido_em": "2026-09-29",
+        "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-levy-gasparian.pdf",
         "criterios": {
-          "B5_veiculo": {
+          "B3_objeto": {
             "ok": false,
-            "trecho": "ceivap.org.br não está em data/veiculos_imprensa.json"
+            "trecho": "Plano Municipal de Saneamento Básico hospedado no sítio do CEIVAP: saneamento, não risco do ciclo El Niño 2026/2027 (decisão da editoria, 30/09/2026)"
           }
-        },
-        "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-levy-gasparian.pdf"
-      }
+        }
+      },
+      "fora_do_objeto_em": "2026-09-29"
     },
     {
       "municipio": "Monte Castelo",

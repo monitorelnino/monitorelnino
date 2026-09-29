@@ -9,6 +9,57 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §301 · A lista de veículos aceita só imprensa — sítio institucional com expediente não é veículo · 30/09/2026
+
+Classe **método e prova**. Decisão da editoria de 30/09/2026, a partir do caso que a própria entrada
+automática produziu na víspera.
+
+**O caso.** `ceivap.org.br` entrou em `data/veiculos_imprensa.json` cumprindo os quatro sinais do
+§299: HTTPS, página de expediente, nome localizável e matérias na fila. Não é imprensa — é o
+**CEIVAP, Comitê de Integração da Bacia Hidrográfica do Rio Paraíba do Sul**, órgão colegiado do
+sistema de recursos hídricos, e os nove itens eram PDFs de **Planos Municipais de Saneamento
+Básico** hospedados no sítio dele. O defeito não estava em nenhum dos quatro sinais: estava no que
+eles não perguntavam. Sítio institucional tem HTTPS, tem expediente e publica documento.
+
+**Dois sinais novos, obrigatórios.** (1) **Identidade jornalística** no expediente — jornal, portal de
+notícias, rádio, TV, agência de notícias, redação, editor-chefe. (2) **Vitrine datada ou cargo de
+redação**: capa com ao menos três marcas de tempo (data por extenso, data numérica, `<time
+datetime>`, o "há 2 horas" das capas, ou três itens de feed) **ou** cargo de redação nomeado no
+expediente. E uma **exclusão por padrão**: órgão público, comitê de bacia, agência reguladora,
+associação, consórcio, ONG, universidade e empresa não entram.
+
+**Institucional não é bloqueado — é encaminhado.** O domínio institucional vai para
+`data/dominios_institucionais.json`, que **não é lista de bloqueio**: quem está nela é fonte oficial,
+e o caminho dela é o juiz, com documento primário. Tratar as duas listas como uma jogaria fonte
+oficial no lixo, que é o oposto do que o método quer.
+
+**Dois ajustes que a medição contra os sítios reais impôs**, e que valem registro porque a primeira
+versão da regra reprovava o caso típico. (a) O termo institucional passou a ser lido **só na
+autodescrição do expediente**: varrendo a página inteira, "Secretaria de" numa manchete transformava
+jornal em instituição, e quatro veículos caíram assim, `horacampinas.com.br` entre eles. Jornal fala
+de órgão público todo dia; o que distingue o sítio institucional é ele **dizer que é um**.
+(b) Exigir capa datada sozinha expulsava `plantaoguaruja.com.br` e `abcdoabc.com.br`, que são
+jornais com diretor e editor-chefe no expediente e capa renderizada por JavaScript —
+**critério que derruba o caso típico está medindo a própria implementação, não o mundo**. Daí o cargo
+de redação como alternativa de igual peso.
+
+**Reavaliação dos 11 listados, com a regra nova.** Entram 8: `horacampinas.com.br`,
+`vale360news.com.br`, `plantaoguaruja.com.br`, `ndmais.com.br`, `canoinhasonline.com.br`,
+`nsctotal.com.br`, `upiara.com.br`, `portaldoholanda.com.br`. **Saíram 2**, para a lista
+institucional: `ceivap.org.br` (ordem da editoria) e `encontrasantoandre.com.br` — guia de cidade,
+cuja página institucional lista bairros, cidades vizinhas e pontos turísticos, sem termo
+jornalístico e sem cargo de redação. `abcdoabc.com.br` **fica**: é jornal de verdade, e cai apenas
+porque a sonda não achou marca de tempo nem cargo no que conseguiu abrir. Remover veículo real por
+limitação da sonda seria perder prova para preservar a regra; está registrado como falso negativo
+conhecido do sinal.
+
+**As nove pistas de PMSB** ficaram `fora_do_objeto` — saneamento básico não é risco do ciclo. Nenhuma
+foi apagada: cada uma guarda motivo e data, porque descarte silencioso impede conferir a decisão
+depois.
+
+Autoteste: **111 casos** (20 canários), sem rede e sem escrita. O canário que a editoria pediu está
+escrito com esse nome: *"sítio institucional com expediente não é veículo"*.
+
 ## §300 · O portão de paridade reprovava a `main` porque dois contadores mediam universos diferentes · 29/09/2026
 
 Classe **defeito de prova**. Falha **pré-existente na `main`**, encontrada porque bloqueava o merge
