@@ -157,7 +157,14 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+          # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama
+          # `preservar_evidencia` gravava o índice em `data/evidencias.json` e deixava o
+          # arquivo para trás no runner — o índice afirmando cópia preservada que não existe.
+          # Foram 216 numa noite. É o §270 outra vez, por outro caminho: lá o `.gitignore`
+          # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
+          # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
+          # à `main` — e ele chegava junto, no mesmo commit.
+          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -177,7 +184,14 @@ jobs:
               GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
               git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
               bash scripts/verificar_derivados.sh || true
-              git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
+              # 29/09/2026: `evidencias/` ENTRA no commit. Sem ela, todo coletor que chama
+          # `preservar_evidencia` gravava o índice em `data/evidencias.json` e deixava o
+          # arquivo para trás no runner — o índice afirmando cópia preservada que não existe.
+          # Foram 216 numa noite. É o §270 outra vez, por outro caminho: lá o `.gitignore`
+          # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
+          # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
+          # à `main` — e ele chegava junto, no mesmo commit.
+          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md 2>/dev/null || true
               git diff --cached --quiet || git commit --amend --no-edit
             fi
             if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then

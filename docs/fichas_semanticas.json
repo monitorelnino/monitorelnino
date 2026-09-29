@@ -113,20 +113,21 @@
    "pergunta_que_responde": "Onde há foco de calor ativo nas últimas 24 horas?",
    "dimensao_da_preparacao": null,
    "universo": "27 UFs",
-   "unidade_de_analise": "UF",
+   "unidade_de_analise": "célula de ~11 km (0,1° de latitude e longitude); a lista traz a contagem por UF",
    "territorio": "Brasil",
    "periodo": "último dia disponível",
-   "variavel_principal": "contagem de focos em 24 h",
+   "variavel_principal": "contagem de focos na célula, em 24 h",
    "denominador": null,
    "fonte": "INPE (satélite de referência)",
-   "metodologia": "satélite de referência do INPE",
+   "metodologia": "focos detectados por satélite, na posição publicada pelo INPE, agrupados numa grade de 0,1° apenas para desenho — o dado bruto, foco a foco, é do INPE e não é redistribuído aqui. Sem escala de intensidade: o CSV traz potência radiativa, e ela não sustenta comparação foco a foco",
    "conclusoes_permitidas": [
     "distribuição de focos no dia"
    ],
    "conclusoes_nao_permitidas": [
-    "área queimada",
     "atribuição ao El Niño",
-    "comparação entre satélites distintos"
+    "comparação entre satélites distintos",
+    "intensidade do fogo em cada foco",
+    "área queimada"
    ],
    "funcao_narrativa": "evidência do agora",
    "acao_relacionada": null
@@ -954,6 +955,30 @@
    ],
    "funcao_narrativa": "evidência do dinheiro próprio",
    "acao_relacionada": "consultar a declaração do município no SICONFI"
+  },
+  "monitor-de-riscos.html#boxAvisos": {
+   "tipo": "mapa temático",
+   "pergunta_que_responde": "Quantos avisos meteorológicos do INMET estão em vigor agora, e de que grau e fenômeno, em cada estado?",
+   "dimensao_da_preparacao": null,
+   "universo": "avisos ativos no momento da consulta",
+   "unidade_de_analise": "unidade da federação alcançada pelo aviso",
+   "territorio": "Brasil, por UF",
+   "periodo": "momento da consulta",
+   "variavel_principal": "número de avisos em vigor",
+   "denominador": null,
+   "fonte": "INMET",
+   "metodologia": "contagem dos avisos ativos por UF alcançada; grau e fenômeno preservados como o INMET os nomeia, sem tradução para escala própria. Um aviso pode alcançar mais de uma UF, e a soma por UF é maior que o número de avisos emitidos",
+   "conclusoes_permitidas": [
+    "onde há aviso meteorológico em vigor no momento da consulta",
+    "qual grau e qual fenômeno o INMET declarou"
+   ],
+   "conclusoes_nao_permitidas": [
+    "risco climático do ciclo El Niño",
+    "preparação do município ou do estado",
+    "ausência de aviso como ausência de risco"
+   ],
+   "funcao_narrativa": "observação: mostra o que os sistemas de monitoramento registram agora, antes de qualquer evidência de preparação",
+   "acao_relacionada": null
   }
  }
 }

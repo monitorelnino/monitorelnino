@@ -115,6 +115,171 @@ O relatório de amostra diz isso por escrito quando a amostra sai incompleta, em
 recusadas — completar mediria outra coisa.
 
 Dois portões novos (122).
+## §297 · O §270 de novo, por outro caminho: o `git add` do noturno não incluía `evidencias/` · 29/09/2026
+
+Classe **prova**. Segundo defeito da `main` achado enquanto o PR do bloco 1 esperava CI. **Nenhum
+peso, régua ou categoria muda; os 93 registros pontuáveis continuam todos com prova.**
+
+### O defeito
+
+`verificar_evidencias.py` reprovou com **216 itens apontando arquivo que não existe**, todos de hoje,
+de quatro coletores: `coletar_s2id` (195), `coletar_diarios_consorciados` (15), `coletar_doe` (5) e
+`coletar_diarios_municipais` (1).
+
+A causa está no `git add` do workflow reutilizável dos coletores:
+
+```
+git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt docs/FILA_PISTAS.md
+```
+
+**`evidencias/` não está na lista.** Todo coletor que chama `preservar_evidencia` grava o binário em
+`evidencias/` e o registro em `data/evidencias.json`; o índice ia para a `main` no commit da noite, e
+o arquivo ficava no runner. O índice passava a **afirmar cópia preservada que não existe** — que é o
+defeito mais grave que este projeto pode ter.
+
+### Por que o §275 não pegou isto
+
+O §270 tinha a mesma consequência por outra causa: uma regra de `.gitignore` descartava o binário. O
+§275 consertou o `.gitignore` e **não olhou o `git add`**. Os dois caminhos levam ao mesmo lugar, e o
+portão só reprova quando o índice chega à `main` — o que acontecia no mesmo commit, todas as noites,
+sem ninguém ver porque a `main` só é conferida quando um PR abre.
+
+A lição, escrita para a próxima vez: **consertar a causa que se achou não prova que era a única**.
+Quando o sintoma é "o índice afirma arquivo que não existe", vale perguntar por quantos caminhos um
+arquivo pode deixar de chegar ao repositório.
+
+### O conserto
+
+`evidencias/` entrou no `git add` dos dois pontos do `_coletor.yml`.
+
+Os já perdidos não se recuperam: foram produzidos no runner e descartados com ele. Viraram **lacuna
+declarada** por `scripts/declarar_evidencia_perdida.py`, com o motivo e a data — hash, URL de origem
+e tamanho ficam, e é pela URL que a re-preservação acha o que buscar.
+
+**O número cresceu enquanto o conserto esperava CI**, e isso mede o defeito melhor que qualquer
+descrição: eram **216** às 11h e **2.680** no fim da tarde, porque cada rodada noturna acrescentava
+índice sem arquivo. **7.614 itens no índice, antes e depois da declaração** — nenhum item foi
+apagado. Os 93 registros pontuáveis continuam todos com prova em disco.
+
+### Um defeito dentro do conserto
+
+O script que declara a perda só olhava o campo `arquivo`. Um item cujo binário estava no disco e cujo
+**texto integral** havia sumido continuava afirmando texto preservado inexistente — a mesma mentira,
+menor. Agora ele declara os dois campos, e a idempotência passou a ser **por campo**, não por item:
+pular o item inteiro porque o binário já estava declarado deixava a segunda afirmação de pé.
+
+## §296 · A chave de deduplicação olhava um nome e o registro gravava outro · 29/09/2026
+
+Classe **correção de dado publicado**. Achado enquanto o PR do bloco 1 esperava CI: a `main` estava
+**vermelha** no portão de consistência, e não por causa daquele PR. **Nenhum peso, régua ou categoria
+muda.**
+
+### O defeito
+
+`data/atos_resposta.json` tinha **14 eventos duplicados** — mesmo município, mesma data, mesma causa,
+e o mesmo `hash_evidencia`. Duplicatas idênticas, não registros parecidos.
+
+A causa está numa linha de `coletar_diarios_consorciados.py`: a chave que decide se o ato já existe
+era montada com o nome **extraído do PDF** (`d["municipio"]`), e o registro era gravado com o nome da
+**referência do IBGE** (`ref["nome"]`). Quando os dois diferem — acentuação, caixa, "CORACAO DE
+JESUS" contra "Coração de Jesus" —, a chave nunca casa com o que já está no arquivo, e o **mesmo ato
+entra de novo a cada rodada**.
+
+A correção é de uma linha e de ordem: resolve-se a referência primeiro e a chave passa a ser a do
+registro. **Comparar pelo que se grava** — se a chave e o registro não falam do mesmo nome, a
+deduplicação não deduplica nada.
+
+Os 14 foram removidos mantendo um de cada: 862 eventos para 848. Nenhum dado se perdeu, porque as
+cópias eram idênticas até o hash da evidência.
+
+### A trava
+
+Autoteste novo sobre o código do laço: a chave tem de sair de `ref["nome"]`, não pode sair de
+`d["municipio"]`, e a referência tem de ser resolvida **antes** da chave. É trava estrutural porque
+exercitar o laço de verdade exigiria rede e banco — e a regra aqui é de forma, não de comportamento
+de rede.
+
+## §294 · Focos por posição, avisos do INMET, grade de três e a fonte junto da figura · 29/09/2026
+
+Classe **texto público** e **coleta**. Bloco 1 do handover consolidado de 29/09/2026. **Peso zero:**
+são sinais físicos, e nenhuma nota, régua ou categoria do índice muda. **Não mesclar sem o "vai"** —
+muda página.
+
+### 1 · Focos de calor: onde o fogo está, não em que estado ele está
+
+O mapa era coroplético por UF: o estado inteiro pintado pela contagem. O CSV do INPE traz latitude e
+longitude **de cada foco**, e pintar a UF jogava fora justamente a informação que importa — um foco
+no oeste da Bahia e outro no litoral viravam a mesma mancha.
+
+Agora é um ponto por célula de 0,1° (~11 km). O agrupamento é de desenho e foi medido sobre o dia
+real, 28/09, com **26.873 focos**:
+
+| passo | células |
+|---|---|
+| 0,05° | 4.195 |
+| **0,1°** | **3.315** |
+| 0,25° | 2.238 |
+| 0,5° | 1.251 |
+
+0,1° guarda o desenho do arco do desmatamento e do cerrado baiano, cabe em ~110 KB e desenha. O
+agrupamento é feito no **coletor**, não no navegador: mandar quatro megabytes de CSV para o leitor
+agrupar seria pior. **Não há escala de intensidade** — o CSV traz `frp`, e a editoria foi explícita
+em não introduzir escala que o dado não sustente foco a foco; o ponto diz quantos focos há na
+célula, e nada mais.
+
+A contagem por UF **não saiu**: continua na lista, que é o que serve a leitor de tela e a quem quer
+o número exato. E passou a vir do **mesmo arquivo** dos pontos — mapa e lista de rodadas diferentes
+discordando na mesma figura é defeito que ninguém percebe até alguém somar.
+
+### 2 · Card de avisos do INMET
+
+Contagem de avisos ativos por grau e por fenômeno, mapa por UF e lista. O grau e o nome do fenômeno
+são os que o INMET escreve, sem tradução para escala própria (§23.3).
+
+**Corpo vazio servido com 200 é recusa, não ausência de aviso** — a lição que a página de Saúde
+pagou em 24/09. O coletor já falha alto nesse caso; o card agora diz "a fonte não respondeu" e
+**nunca desenha zero**. Resposta válida com lista vazia tem texto próprio, e os dois não se
+confundem.
+
+A linha do topo mudou junto: os avisos do INMET passam a estar aqui, e a Defesa civil segue com os
+alertas do CEMADEN por município.
+
+### 4 · Cinco cartões em grade de três
+
+Classe `.grade-figuras--3`, que já existia. Terceira linha com dois cartões, como em outras páginas.
+A página **encurtou**: de 5.438 para 3.482 px em 1366 px de largura, com cinco cartões em vez de
+quatro. Em 768 px e 390 px a grade colapsa para coluna única pelo sistema existente — conferido nas
+capturas, não suposto.
+
+### 3 · A fonte pertence à figura
+
+A seção "Fontes dos sinais de risco" saiu. A tabela de três camadas obrigava o leitor a sair da
+figura, procurar a linha e voltar. Cada cartão passou a trazer **órgão · o que o dado é · data da
+última consulta**, no mesmo componente de crédito que a inicial e a Saúde já usam — e a **situação**
+só aparece quando não é "coletado": dizer "coletado" em toda linha seria ruído, e calar quando a
+fonte falhou seria esconder.
+
+O preenchimento da tabela removida saiu de `proveniencia.js` junto: guardado por um `if` que nunca
+mais seria verdadeiro, viraria código morto.
+
+### Dois defeitos que o dado e os portões expuseram
+
+**O arquivo do INPE do dia corrente nasce vazio.** Medido: 29/09 com 0 focos às 9h, 28/09 com
+26.873. Tratar isso como recusa daria falha declarada toda manhã; tratar como zero diria "nenhum
+foco no Brasil" onde só faltava o arquivo encher. Cai para o dia anterior, uma vez, e o nome do
+arquivo — que vai para a figura — diz de que dia é o dado.
+
+**O mapa de pontos ficou sem o contorno do país.** Ao trocar o coroplético pelos pontos, esqueci o
+mapa base: os focos flutuavam sem Brasil. Quem pegou foi o portão de runtime, que exige os 27
+estados desenhados — e estava certo em exigir. O padrão da página já era esse nos mapas de capital:
+base neutro, pontos por cima.
+
+**E o resumo do card do INMET era um segundo subtítulo.** Pus a contagem por grau e por fenômeno num
+`figura-sub` próprio; o portão de figuras admite **um** subtítulo por cartão, e tem razão — dois
+viram parágrafo, e cartão não é texto corrido. O resumo passou para a **legenda**, que é onde
+contagem por categoria pertence. Pegou na CI, não aqui.
+
+Sete travas novas no autoteste do coletor.
 
 ## §293 · Óbitos pelo Registro Civil, e o estado real de cada um dos vinte desfechos · 29/09/2026
 

@@ -85,15 +85,15 @@
 
   <div class="panel" id="agora">
     <h2>O que está acontecendo agora</h2>
-    <p class="hint">Seca observada (Monitor de Secas, ANA), temperatura e qualidade do ar nas capitais e focos de calor (INPE), por estado.</p>
-    <p class="hint" id="linhaAlertas">Avisos do INMET e alertas do CEMADEN em vigor: <a href="defesa-civil.html#alertas">Defesa civil</a>.</p>
-    <div class="grade-figuras">
+    <p class="hint">Seca, temperatura, qualidade do ar, focos de calor e avisos meteorológicos, com a fonte em cada cartão.</p>
+    <p class="hint" id="linhaAlertas">Alertas do CEMADEN, por município: <a href="defesa-civil.html#alertas">Defesa civil</a>.</p>
+    <div class="grade-figuras grade-figuras--3">
       <figure class="figura figura--mapa" id="boxSecas">
         <h3 class="figura-titulo">Seca observada, Monitor de Secas</h3>
         <p class="figura-sub">Categoria de seca em pelo menos metade da área da UF · sem seca · S0 a S4 · Monitor de Secas</p>
         <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil pela categoria de seca observada no Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
-      <p class="figura-leitura">O Monitor de Secas classifica a seca de S0 (fraca) a S4 (excepcional), a partir de chuva, umidade do solo, vazão dos rios e impactos em campo. O mapa sai uma vez por mês, com semanas de defasagem.</p></figure>
+      <p class="figura-leitura">A seca vai de S0 (fraca) a S4 (excepcional). O mapa sai uma vez por mês, com semanas de defasagem.</p></figure>
       <figure class="figura figura--mapa" id="boxTemperatura">
         <h3 class="figura-titulo">Temperatura prevista para as capitais</h3>
         <p class="figura-sub">Um ponto por capital · máxima e mínima previstas · °C · previsão do INMET</p>
@@ -132,23 +132,31 @@
       <p class="figura-leitura">O índice europeu (EAQI) reúne material particulado, ozônio, dióxido de nitrogênio e dióxido de enxofre numa escala única. Cada ponto marca a capital, e não o estado.</p></figure>
       <figure class="figura figura--mapa" id="boxFogo">
         <h3 class="figura-titulo">Focos ativos nas últimas 24 horas</h3>
-        <p class="figura-sub">Último dia disponível · focos de calor detectados por satélite, por UF · contagem em 24 h · INPE</p>
-        <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil pelo número de focos ativos nas últimas 24 horas segundo o INPE" viewBox="0 0 480 460"></svg></div>
+        <p class="figura-sub">Último dia disponível · focos por posição · células de ~11 km · INPE</p>
+        <div class="figura-midia"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legFogo"></div>
-      <p class="figura-leitura">Foco de calor é a superfície quente que o satélite detecta, em geral fogo em vegetação. Não equivale a incêndio: um incêndio pode gerar vários focos, nenhum sob nuvem, e queima controlada também aparece.</p></figure>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFogo"><thead><tr><th>UF</th><th>Focos em 24 h</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      <p class="figura-leitura">Foco não equivale a incêndio: um incêndio gera vários focos, nenhum sob nuvem, e queima controlada também aparece.</p></figure>
+      <figure class="figura figura--mapa" id="boxAvisos">
+        <h3 class="figura-titulo">Avisos meteorológicos em vigor</h3>
+        <p class="figura-sub">Avisos ativos na consulta · por UF alcançada · grau e fenômeno do INMET</p>
+        <div class="figura-midia"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil pelo número de avisos meteorológicos do INMET em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
+        <div class="map-legend" id="legAvisos"></div>
+        <details class="figura-dados" data-alternativa="dados"><summary>Ver em lista</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblAvisos"><thead><tr><th>UF</th><th>Avisos</th><th>Grau</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      <p class="figura-leitura">O INMET emite aviso por área. Um aviso alcança mais de um estado: a soma por UF passa do número de avisos.</p></figure>
     </div>
   </div>
 
 
-  <!-- §258 (27/09/2026): bloco de fontes e registros migrado da página
-       Pesquisadores, arquivada em arquivo/pesquisadores/. As âncoras internas
-       foram preservadas: são elas que os links das outras páginas usam. -->
-<div class="panel" id="fontes-sinais-painel" data-proveniencia="1">
-      <h2 id="fontes-sinais">Fontes dos sinais de risco</h2>
-      <p class="hint">Organizadas em três camadas: o <strong>ciclo</strong> (o que se projeta para o período), o <strong>observado</strong> (o que os sistemas de monitoramento registram agora) e o <strong>ENOS</strong> (o estado do fenômeno no Pacífico). Cada linha diz o que a fonte informa, quando foi consultada e para onde ir conferir.</p>
-      <div class="tbl-wrap tbl-wrap--livre" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblFontes"><thead><tr><th>Fonte</th><th>Órgão</th><th>O que informa</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
-      <p class="note u-mt-3 u-mb-0">Imprensa e agregadores de terceiros não aparecem nesta tabela: servem para descobrir um documento; o registro é a fonte oficial.</p>
-    </div>
+  <!-- 29/09/2026 (decisão da editoria): a seção "Fontes dos sinais de risco" saiu. A tabela de
+       três camadas obrigava o leitor a sair da figura, procurar a linha e voltar — e a fonte de
+       uma figura pertence à figura. Cada cartão desta página passou a trazer a sua, no mesmo
+       componente de crédito que a inicial e a Saúde já usam: órgão · o que o dado é · data da
+       última consulta · situação. Fonte que não sustenta figura desta página não aparece nela. -->
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -159,7 +167,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/monitor-de-riscos.js?v=e197ff09" defer></script><script src="assets/js/proveniencia.js?v=e58a5153" defer></script>
+<script src="assets/js/monitor-de-riscos.js?v=46aebb9e" defer></script><script src="assets/js/proveniencia.js?v=656e2dad" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

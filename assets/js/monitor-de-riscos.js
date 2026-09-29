@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, ALERTAS, CLIMA;
+let BR_GEOJSON, SINAIS, MARE, ALERTAS, CLIMA, FOCOS;
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 const TIPO_COR = {estiagem:MonitorMapas.PALETA.risco.seca, chuvas:MonitorMapas.PALETA.risco.chuvas, incendios:MonitorMapas.PALETA.risco.fogo, misto:MonitorMapas.PALETA.risco.multi, sem_sinal:MonitorMapas.PALETA.risco.sem_sinal};   // paleta semântica única
@@ -28,6 +28,10 @@ async function __load(){
   /* §209: temperatura e PM2,5 dos 5.570, em arquivo próprio (compacto) — a série por capital
      continua em sinais_risco.json. Ausente, a figura segue só com as capitais. */
   CLIMA = await fetch('data/clima_municipios.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  /* 29/09/2026: focos do INPE agregados em grade, em arquivo próprio — são milhares de células
+     e não cabem no arquivo de sinais, que toda página da seção carrega inteiro. Ausente, o mapa
+     diz que não houve coleta; nunca desenha zero. */
+  FOCOS = await fetch('data/focos_pontos.json').then(r => r.ok ? r.json() : null).catch(() => null);
   window.__refMunicipios = await fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : []).catch(() => []);
   __init();
 }
@@ -44,8 +48,18 @@ const coletada = id => fonteDe(id).status === 'coletado';
 
 /* Crédito de UMA linha ao pé do cartão (04/09/2026): "Fonte: nome · data" ou "· sem coleta até o corte". */
 function credito(caixaId, fonteId){
+  /* 29/09/2026: a linha passou a trazer o que a tabela removida trazia — órgão, o que o dado é e a
+     situação —, porque a seção "Fontes dos sinais de risco" saiu e a fonte de uma figura pertence
+     à figura. Situação só aparece quando NÃO é "coletado": dizer "coletado" em toda linha seria
+     ruído, e dizer nada quando a fonte falhou seria esconder. */
   const f = fonteDe(fonteId);
-  MonitorMapas.credito(caixaId, {fontes: f.nome, url: f.url_publica, data: coletada(fonteId) ? f.consultado_em : null});
+  const SITUACAO = {aguardando_credencial: 'aguardando credencial', falhou: 'a fonte não respondeu na última consulta',
+                    nao_coletado: 'sem coleta até o corte'};
+  const partes = [f.orgao, f.nome].filter(Boolean);
+  const situacao = coletada(fonteId) ? null : (SITUACAO[f.status] || 'sem coleta até o corte');
+  if (situacao) partes.push(situacao);
+  MonitorMapas.credito(caixaId, {fontes: partes.join(' · '), url: f.url_publica,
+                                 data: coletada(fonteId) ? f.consultado_em : null});
   const d = document.querySelector('#' + caixaId + ' .fonte-figura'); if (d) d.dataset.credito = fonteId;
 }
 
@@ -321,15 +335,122 @@ preencherTabela('tblAr', uf => { const a = ar(uf); if (!a) return null;
   return [nomeCapital(a, uf), i ? i.escala + ' ' + i.valor : 'sem valor',
           num(m.pm2_5), num(m.pm10), num(m.ozone)]; });
 
-// ---- Mapa 4: focos ativos ----
+// ---- Mapa 4: focos ativos, por POSIÇÃO (29/09/2026) ----
+/* Era coroplético por UF: o estado inteiro pintado pela contagem. O CSV do INPE traz latitude e
+   longitude de cada foco, e pintar a UF jogava fora justamente onde o fogo está — um foco no oeste
+   da Bahia e outro no litoral viravam a mesma mancha. Agora é um ponto por célula de 0,1° (~11 km),
+   agregado no coletor porque 26.873 focos num dia não desenham num SVG.
+   A contagem por UF não saiu: ela continua na lista e no rótulo, que é o que serve a leitor de
+   tela e a quem quer o número exato. */
 const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
-const maxFogo = Math.max(1, ...UFS.map(uf => (fogo(uf) || {}).focos_24h || 0));
-const escalaFogo = d3.scaleSqrt().domain([0, maxFogo]).range(MonitorMapas.PALETA.rampaPerigo);
-desenharMapa('mapaFogo', 'legFogo',
-  uf => { const f = fogo(uf); return f ? escalaFogo(f.focos_24h) : NEUTRA; },
-  uf => { const f = fogo(uf); return f ? f.focos_24h + ' foco(s) nas últimas 24 h' : 'Aguardando a primeira coleta desta fonte'; },
-  [{cor:MonitorMapas.PALETA.rampaPerigo[0], rotulo:'0 focos'}, {cor:MonitorMapas.PALETA.rampaPerigo[1], rotulo:maxFogo + ' foco(s)'}, {cor:NEUTRA, rotulo:'Sem coleta até o corte'}]);
+(function desenharFocos(){
+  const svg = d3.select('#mapaFogo');
+  const base = FOCOS && Array.isArray(FOCOS.pontos) ? FOCOS.pontos : null;
+  if (!base || !base.length) {
+    MonitorMapas.legenda('legFogo', [{cor: NEUTRA, rotulo: 'Sem coleta até o corte'}]);
+    return;
+  }
+  /* O mapa base fica NEUTRO: é só o contorno onde os pontos se apoiam — mesmo padrão dos mapas de
+     capital desta página. Sem ele os focos flutuavam sem país, e foi o portão de runtime que pegou:
+     ele exige os 27 estados desenhados, e estava certo em exigir. */
+  desenharMapa('mapaFogo', 'legFogo', () => NEUTRA,
+    uf => { const f = fogo(uf); const n = f ? f.focos_24h : null;
+            return n == null ? 'Aguardando a primeira coleta desta fonte'
+                             : n.toLocaleString('pt-BR') + ' foco(s) nas últimas 24 h'; },
+    []);
+  const itens = base.map(p => ({lat: p[0], lon: p[1], n: p[2]}));
+  const maxCel = Math.max(...itens.map(p => p.n));
+  /* Raiz quadrada: a área do círculo fica proporcional à contagem, que é como o olho compara
+     círculo. Teto de 4,2 px para a célula mais cheia — acima disso as manchas do arco do
+     desmatamento viram um borrão só. */
+  const raio = d3.scaleSqrt().domain([1, maxCel]).range([0.9, 4.2]).clamp(true);
+  MonitorMapas.pontos(__ctx(), 'mapaFogo', itens, {
+    r: d => raio(d.n),
+    cor: () => MonitorMapas.PALETA.risco.fogo,
+    opacidade: .62,
+    classe: 'focos',
+    rotulo: d => d.n + ' foco(s) nesta célula de ~11 km · ' + d.lat.toFixed(1) + '°, ' + d.lon.toFixed(1) + '°',
+  });
+  MonitorMapas.legenda('legFogo', [
+    {cor: MonitorMapas.PALETA.risco.fogo, rotulo: 'Cada ponto: célula de ~11 km com foco detectado'},
+    {cor: MonitorMapas.PALETA.risco.fogo, rotulo: 'Ponto maior: mais focos na célula (até ' + maxCel + ')'},
+  ]);
+})();
+/* "Ver em lista" com a contagem por UF — a via tabular que o handover manda preservar. */
+(function listaFocos(){
+  const corpo = document.querySelector('#tblFogo tbody');
+  if (!corpo) return;
+  /* A contagem vem do MESMO arquivo dos pontos: mapa e lista discordando na mesma figura é
+     defeito que ninguém percebe até alguém somar. Só se não houver, cai para sinais_risco.json. */
+  const porUf = (FOCOS && FOCOS.por_uf) || null;
+  const linhas = UFS.map(uf => [uf, porUf ? porUf[uf] : (fogo(uf) || {}).focos_24h])
+    .filter(l => l[1] != null).sort((a, b) => b[1] - a[1]);
+  /* `esc()` mesmo em número e sigla: o portão de segurança exige, e tem razão em não abrir exceção
+     por "aqui o dado é confiável" — a exceção é que envelhece, não a regra. */
+  corpo.innerHTML = linhas.length
+    ? linhas.map(l => '<tr><td>' + esc(l[0]) + '</td><td class="dado">'
+                    + esc(Number(l[1]).toLocaleString('pt-BR')) + '</td></tr>').join('')
+    : '<tr><td colspan="2">Sem coleta até o corte</td></tr>';
+})();
 credito('boxFogo', 'inpe_fogo');
+
+// ---- Mapa 5: avisos do INMET em vigor (29/09/2026) ----
+/* Estava só na Defesa civil, e o sinal é físico: é desta página. O grau e o nome do fenômeno são
+   os que o INMET escreve, sem tradução para escala própria (§23.3).
+   A distinção que este card precisa fazer, e que a página de Saúde pagou caro para aprender em
+   24/09: **corpo vazio servido com 200 é recusa da fonte, não ausência de aviso**. O coletor já
+   falha alto nesse caso e a fonte fica sem `status: coletado`; aqui, isso vira "a fonte não
+   respondeu" — nunca um mapa pintado de zero. Resposta válida com lista vazia tem texto próprio. */
+(function desenharAvisos(){
+  const avisos = uf => (SINAIS.uf[uf] || {}).avisos_inmet;
+  const respondeu = coletada('inmet_avisos');
+  const corpo = document.querySelector('#tblAvisos tbody');
+
+  if (!respondeu) {
+    MonitorMapas.legenda('legAvisos', [{cor: NEUTRA,
+      rotulo: 'A fonte não respondeu nesta consulta — não quer dizer que não haja aviso em vigor'}]);
+    if (corpo) corpo.innerHTML = '<tr><td colspan="4">A fonte não respondeu nesta consulta</td></tr>';
+    credito('boxAvisos', 'inmet_avisos');
+    return;
+  }
+
+  const total = UFS.reduce((s, uf) => s + Number((avisos(uf) || {}).total || 0), 0);
+  const graus = {}, fenomenos = {};
+  UFS.forEach(uf => {
+    const a = avisos(uf) || {};
+    Object.entries(a.graus || {}).forEach(([g, n]) => { graus[g] = (graus[g] || 0) + Number(n || 0); });
+    (a.exemplos || []).forEach(f => { fenomenos[f] = (fenomenos[f] || 0) + 1; });
+  });
+
+  const maxAviso = Math.max(1, ...UFS.map(uf => Number((avisos(uf) || {}).total || 0)));
+  const escalaAviso = d3.scaleSqrt().domain([0, maxAviso]).range(MonitorMapas.PALETA.rampaPerigo);
+  const ordena = o => Object.entries(o).sort((a, b) => b[1] - a[1]);
+  /* O resumo por grau e por fenômeno entra na LEGENDA, não num segundo subtítulo: o portão de
+     figuras admite um subtítulo por cartão, e tem razão — dois viram parágrafo, e cartão não é
+     texto corrido. Foi a CI que pegou, em 29/09. */
+  const legenda = total
+    ? ordena(graus).map(([g, n]) => ({cor: escalaAviso(n), rotulo: g + ': ' + n}))
+        .concat(Object.keys(fenomenos).length
+          ? [{cor: NEUTRA, rotulo: 'Fenômenos: ' + ordena(fenomenos).map(([f]) => f).join(', ')}]
+          : [])
+    : [{cor: MonitorMapas.PALETA.rampaPerigo[0],
+        rotulo: 'Nenhum aviso em vigor nesta consulta — a fonte respondeu, a lista é que está vazia'}];
+  desenharMapa('mapaAvisos', 'legAvisos',
+    uf => { const n = Number((avisos(uf) || {}).total || 0); return n ? escalaAviso(n) : MonitorMapas.PALETA.rampaPerigo[0]; },
+    uf => { const a = avisos(uf) || {}; const n = Number(a.total || 0);
+            return n ? n + ' aviso(s) em vigor · ' + Object.keys(a.graus || {}).join(', ') : 'Nenhum aviso em vigor nesta consulta'; },
+    legenda);
+  if (corpo) {
+    const linhas = UFS.map(uf => ({uf, a: avisos(uf) || {}}))
+      .filter(x => Number(x.a.total || 0) > 0)
+      .sort((a, b) => Number(b.a.total || 0) - Number(a.a.total || 0));
+    corpo.innerHTML = linhas.length
+      ? linhas.map(x => '<tr><td>' + x.uf + '</td><td class="dado">' + Number(x.a.total) + '</td><td>' +
+          esc(Object.keys(x.a.graus || {}).join(', ')) + '</td><td>' + esc((x.a.exemplos || []).join(', ')) + '</td></tr>').join('')
+      : '<tr><td colspan="4">Nenhum aviso em vigor nesta consulta</td></tr>';
+  }
+  credito('boxAvisos', 'inmet_avisos');
+})();
 
 // =====================  Cartões do estado do ciclo  =====================
 const oni = SINAIS.enos.oni, prob = SINAIS.enos.probabilidades;
