@@ -115,6 +115,22 @@ O relatório de amostra diz isso por escrito quando a amostra sai incompleta, em
 recusadas — completar mediria outra coisa.
 
 Dois portões novos (122).
+## §298 · O publicador regenerava os PDFs e não os commitava · 29/09/2026
+
+Classe **infraestrutura da rodada**. Achado na primeira publicação depois do bloco 1. **Nenhum peso,
+régua ou categoria muda.**
+
+O publicador reprovou no portão 12 com **um** arquivo obsoleto: `MARE_Indice_Documentacao.pdf`.
+
+A cadeia canônica regenera os dois PDFs da raiz — o do índice e o da metodologia —, e o `git add` do
+publicador listava `data/`, `dados-abertos/`, `feeds/`, `selos/`, `docs/` e `*.html`. **A raiz não
+estava lá.** O PDF era regenerado, ficava sem commit, e o portão 12 — que roda logo depois, sobre
+árvore que deveria estar limpa — via a diferença e reprovava.
+
+É a mesma família do §297, no mesmo dia: **o `git add` que não inclui o que a própria rotina
+produz**. Lá era `evidencias/`, aqui é `*.pdf`. Dois lugares, uma causa — a lista de caminhos do
+commit foi escrita quando a rotina produzia menos coisas, e cresceu sem ela.
+
 ## §297 · O §270 de novo, por outro caminho: o `git add` do noturno não incluía `evidencias/` · 29/09/2026
 
 Classe **prova**. Segundo defeito da `main` achado enquanto o PR do bloco 1 esperava CI. **Nenhum

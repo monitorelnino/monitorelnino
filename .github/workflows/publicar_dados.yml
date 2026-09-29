@@ -139,7 +139,13 @@ jobs:
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add -A data/ dados-abertos/ feeds/ selos/ docs/ *.html 2>/dev/null || true
+          # 29/09/2026: os PDFs da RAIZ entram. A cadeia canônica regenera
+          # `MARE_Indice_Documentacao.pdf` e `METODOLOGIA.pdf`, e eles não estavam em nenhum
+          # dos diretórios listados — ficavam regenerados e NÃO commitados, e o portão 12,
+          # que roda logo depois sobre árvore que deveria estar limpa, via a diferença e
+          # reprovava o publicador. Mesma família do §297: o `git add` que não inclui o que
+          # a própria rotina produz.
+          git add -A data/ dados-abertos/ feeds/ selos/ docs/ *.html *.pdf 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Sem alterações a publicar."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -180,7 +186,7 @@ jobs:
               git rebase -X theirs FETCH_HEAD || { git rebase --abort || true; sleep $((TENTATIVA * 10)); continue; }
               python3 recalcular_mare.py --write || true
               bash scripts/verificar_derivados.sh --idempotencia || true
-              git add -A data/ dados-abertos/ feeds/ selos/ docs/ *.html 2>/dev/null || true
+              git add -A data/ dados-abertos/ feeds/ selos/ docs/ *.html *.pdf 2>/dev/null || true
               git diff --cached --quiet || git commit --amend --no-edit
             fi
             if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
