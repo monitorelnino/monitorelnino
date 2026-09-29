@@ -71,13 +71,22 @@ setTimeout(() => {
   } catch (e) { teste("ficha 'Como ler o MARÉ' (" + e.message + ")", false); }
 
   try {
+    // 30/09/2026 (item 5 da fila viva): escolher SÓ o estado não abre nada. Antes, bastava haver UF
+    // para o cartão montar o retrato estadual inteiro — duplicado da ficha do estado e desatualizado.
     q("ufSelect").value = "SC";
     q("ufSelect").dispatchEvent(new dom.window.Event("change"));
+    const vazio = q("meuCard");
+    teste("só o estado escolhido: o cartão não abre", vazio.hidden && !vazio.innerHTML.trim());
+    teste("mas a lista de municípios é populada", q("listaMun").children.length === 295);
+
     q("cidadeInput").value = "Blumenau";
     q("cidadeInput").dispatchEvent(new dom.window.Event("input"));
     const card = q("meuCard");
-    teste("consulta municipal: card visível com contatos", !card.hidden && card.innerHTML.includes("199") && card.innerHTML.includes("mailto:"));
-    teste("datalist com municípios de SC", q("listaMun").children.length === 295);
+    // Os contatos de emergência (199, 193, 40199, e-mail do órgão) saíram do cartão junto com o
+    // bloco "o que fazer e o que cobrar". Seguem em proteja-se.html e no PDF do cidadão.
+    teste("consulta municipal: cartão do município visível, com documento e fonte",
+          !card.hidden && /Documento verificado|Ainda não verificamos/i.test(card.innerHTML));
+    teste("o cartão não recria o retrato estadual", !/Medidor|barra de resposta|O que fazer e o que cobrar/i.test(card.innerHTML));
   } catch (e) { teste("fluxo da consulta municipal", false); }
 
   // ── v2.2.4 (§6): portão de linguagem — "não localizamos" só com verificação completa ──
@@ -93,17 +102,12 @@ setTimeout(() => {
     const alvo = parseFloat(q("gaugeFill").dataset.alvo); const num = (q("gaugeNum").textContent || "").replace(",", ".");
     return Math.abs(alvo - media) < 0.05 && q("gaugeFill").style.width === alvo + "%";
   })());
-  // 18/09/2026 (pedido da editoria): "N estados com plano para o ciclo" e "Por região: X concentra..."
-  // saíram de defesa-civil.html (boxRegion/interpAntes) — moram aqui, abaixo dos dois medidores
-  // (#resumoPreparacao), mesmo cálculo, mesma fonte (data/estados.json).
-  teste("resumo de preparação: três contagens somam 27 e a região mais frequente aparece", (() => {
-    const DATA = JSON.parse(fs.readFileSync(path.join(raiz, "data", "estados.json"), "utf-8"));
-    const st = DATA.ufs.map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
-    const novo = c(["NOVO"]), readVig = c(["READ", "VIG"]), elabLac = c(["ELAB", "LAC"]);
-    const txt = q("resumoPreparacao").textContent;
-    return new RegExp(`^${novo} estados com plano para o ciclo; ${readVig} com plano de todo ano; ${elabLac} sem plano localizado`).test(txt)
-      && (novo + readVig + elabLac) === 27 && /Por região:|Nenhum estado/.test(txt);
-  })());
+  // 30/09/2026 (item 4 da fila viva): a frase-resumo "N estados com plano para o ciclo..." SAIU da
+  // inicial. Ela entrara em 18/09 vinda de defesa-civil.html; a editoria decidiu que não agregava
+  // ali. O portão deixou de cobrar o texto e passou a cobrar a ausência — sem isso, o elemento
+  // voltaria numa edição futura sem ninguém perceber.
+  teste("a frase-resumo de preparação não existe mais na inicial",
+        !q("resumoPreparacao") && !/estados com plano para o ciclo;/.test(d.body.innerHTML));
   // 16/09/2026 (handover §2.1): recalcular_mare.py reescreve gaugeNum e data-alvo desde 03/09 — este
   // teste garante que o aria-label (paridade de acessibilidade) nunca fica para trás dos dois.
   teste("medidor do herói: aria-label com o mesmo número de data-alvo (paridade de acessibilidade)", (() => {

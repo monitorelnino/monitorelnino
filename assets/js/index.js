@@ -653,7 +653,11 @@ function renderMinha(){
   const card = document.getElementById('meuCard');
   const q = nrm(document.getElementById('cidadeInput').value);
   const uf = selUF.value;
-  if (!q && !uf){ card.hidden = true; return; }
+  // 30/09/2026 (item 5 da fila viva): escolher o estado sozinho não gera conteúdo nenhum.
+  // O cartão é do MUNICÍPIO; o retrato do estado vive na ficha do estado (dialog#detail),
+  // logo abaixo nesta mesma página. Antes bastava haver UF para montar o cartão inteiro,
+  // e as duas coisas conviviam duplicadas, com a daqui desatualizada.
+  if (!q){ card.hidden = true; return; }
   let matches = q ? TABELA_MUNICIPIOS.filter(m => nrm(m.nome) === q) : [];
   if (uf && q) matches = matches.filter(m => m.uf === uf);
   const ufFinal = uf || (matches.length === 1 ? matches[0].uf : '');
@@ -693,55 +697,22 @@ function renderMinha(){
         const _r = RESP_MUN && RESP_MUN.municipios && RESP_MUN.municipios[_ib];
         html += `<p class="u-mb-2"><strong>Decreto no ciclo:</strong> ${_r ? 'sim (' + (_r.primeiro_decreto || 'data a confirmar') + ' · ' + _r.tipos.map(t => ({SE:'SE', ECP:'ECP', reconhecimento_federal:'reconhecido pela União'})[t] || t).join(', ') + ' · evento observado: em classificação)' : 'não consta decreto reconhecido no ciclo (o registro federal é completo; diários estaduais e municipais, parcial)'}</p>`; }
       if (_cob !== undefined) html += `<p class="fv">${_cob === true ? 'Diário oficial verificado (indexado no Querido Diário).' : _cob === false ? 'Diário oficial não indexado — verificação por outro canal pendente.' : 'Cobertura do diário oficial ainda não testada.'}</p>`;
-      html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano. Abaixo, o retrato do seu estado e o que fazer.</p>
+      html += `<p><span class="pill-nivel">${NIVEL_ROTULO[_nivCard]}</span> ${naLista ? 'Este município consta da lista oficial do IBGE.' : ''} Ainda não verificamos sua cidade com a bateria completa de fontes — a verificação municipal avança por níveis (nacional → estadual → completa; <a href="METODOLOGIA.pdf">metodologia, §25</a>). Isso <em>não</em> é uma afirmação sobre a existência do plano.</p>
       <p><strong>Sua prefeitura tem plano ou decreto publicado?</strong> <a href="prefeituras.html?uf=${ufFinal}&tipo=plano&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Envie o documento oficial pelo formulário</a>; a verificação é automática e, aprovado, ele entra na atualização semanal seguinte.</p>
-      ${ufFinal ? '' : '<p class="u-muted">Selecione o estado para ver o retrato estadual.</p>'}<hr class="card-sep">`;
+      <hr class="card-sep">`;
     }
   }
 
-  if (ufFinal){
-    const v = MARE[ufFinal], i = PCT_POR_UF[ufFinal];
-    const decl = (i.declarado_plano||0) + (i.declarado_antigo||0);
-    const acoes = [];
-    if (v.status_estadual === 'LAC') acoes.push('Seu estado ainda não publicou plano estadual nominal para o El Niño; este é o primeiro item a cobrar da Defesa Civil estadual.');
-    if (i.com_ato === 0) acoes.push('Nenhum ato municipal foi localizado no seu estado até o corte; verifique diretamente com a Defesa Civil municipal.');
-    else if (i.n_decreto > i.n_plano) acoes.push('A cobertura municipal do seu estado é majoritariamente reativa (decretos de emergência): pergunte à prefeitura se existe plano preventivo publicado, e onde.');
-    else acoes.push('Predominam planos preventivos no seu estado; verifique se o da sua cidade está atualizado para o ciclo 2026/2027.');
-    if (decl && 100*decl/i.total > 5*i.pct) acoes.push('Muitos municípios declaram ter plano a órgãos de controle, mas poucos documentos estão públicos: peça a publicação do PLANCON no site da prefeitura.');
-
-    // 24/09/2026: o cartão do leitor mostrava só a barra do MARÉ (preparação: Argila → Musgo) e dizia o
-    // número de decretos em texto corrido. O índice de RESPOSTA — população sob decreto, frio → quente
-    // (Mineral → Argila) — só existia na grade de estados e na ficha do estado, de modo que a mesma
-    // grandeza aparecia com escala num lugar e sem escala no outro. É a mesma barra, com a mesma arte e
-    // os mesmos números da ficha; nunca somada ao MARÉ (C17).
-    html += `<h4>${UF_NOME[ufFinal]} no MARÉ</h4>
-      ${miniGauge(v.total)}
-      ${barraResposta(ufFinal)}
-      <p class="note">Confiança da verificação: ${v.confianca}</p>
-      <ul>
-        <li>Instrumento operacional estadual: ${STATUS_HUMANO[v.status_estadual]}</li>
-        <li>Estrutura de coordenação estadual: ${STATUS_HUMANO_ESTR[v.estrutura_status] || v.estrutura_status}</li>
-        <li>Cobertura municipal documentada: <strong>${String(i.pct).replace('.',',')}%</strong> (${i.n_plano} plano(s) preventivo(s), ${i.n_decreto} decreto(s) reativo(s))${decl ? ` · declarada a órgãos de controle: ${(100*decl/i.total).toFixed(1).replace('.',',')}%` : ''}</li>
-        ${RESP && RESP.uf && RESP.uf[ufFinal] ? '<li class="note">Os dois números vêm de cadastros diferentes: a cobertura documentada conta atos de planejamento localizados no banco do Monitor; o índice de resposta conta decretos de emergência no registro federal (S2iD) e nos diários oficiais.</li>' : ''}
-      </ul>
-      <h4>O que fazer e o que cobrar</h4>
-      <ul>
-        <li><strong>Emergência:</strong> Defesa Civil: ligue <strong>199</strong> · Corpo de Bombeiros, <strong>193</strong>.</li>
-        <li><strong>Alertas oficiais no celular:</strong> envie seu CEP por SMS para <strong>40199</strong> (cadastro gratuito de alertas da Defesa Civil Nacional).</li>
-        <li><strong>Órgão estadual responsável:</strong> ${EST[ufFinal] ? EST[ufFinal].orgao : 'Defesa Civil estadual'}${EMAILS[ufFinal] ? ` · <a href="mailto:${EMAILS[ufFinal]}">${EMAILS[ufFinal]}</a>` : ''}${DOM_LINKS[ufFinal] ? ` · decretos municipais publicados no <a href="${DOM_LINKS[ufFinal]}" target="_blank" rel="noopener">Diário Oficial dos Municípios</a>` : ''}.</li>
-        ${FIN && FIN[ufFinal] ? `<li><strong>Dinheiro:</strong> por onde o recurso chega ao seu estado — fundo estadual preventivo, rotas federais e o que o decreto destranca — está em <a href="financiamento.html#porestado">Por onde o dinheiro chega</a> (peso zero no índice).</li>` : ''}
-        <li class="note">Contatos estaduais conforme o diretório oficial do MIDR (atualizado pelo ministério em 11/09/2024); confirme no site do órgão antes de demandas formais.</li>
-        ${acoes.map(a => `<li>${a}</li>`).join('')}
-      </ul>
-      <button type="button" id="btnPDF" class="btn-pdf">Baixar relatório em PDF</button>
-      <p class="note">Relatório com os dados desta consulta, contatos e fontes, para guardar, imprimir ou encaminhar.</p>
-      <h4>Como se proteger (${guiasDoEstado(ufFinal).length < 3 ? 'riscos projetados do seu estado' : 'guias gerais'})</h4>
-      ${guiasDoEstado(ufFinal).map(g => htmlGuia(g)).join('')}
-      ${(typeof HAB_SET !== 'undefined' && HAB_SET.has((document.getElementById('cidadeInput').value.trim().toLowerCase()) + '|' + ufFinal))
-        ? `<p class="aviso-direito"><strong>Seu município tem reconhecimento federal vigente.</strong> Quem teve a moradia atingida pode ter direito ao Saque Calamidade do FGTS (até R$ 6.220 por conta, pelo App FGTS, em até 90 dias do reconhecimento). <a href="proteja-se.html">Veja as condições e a fonte oficial</a>.</p>`
-        : ''}
-      <p class="note">Encontrou erro, atualização ou um documento que não temos? <a href="prefeituras.html?uf=${ufFinal}&tipo=correcao&mun=${encodeURIComponent(document.getElementById('cidadeInput').value.trim())}">Use o formulário de envio de documentos</a>; toda entrada passa pela fila de conferência da plataforma.</p>`;
-  }
+  // 30/09/2026 (item 5 da fila viva): o bloco `if (ufFinal){...}` saiu daqui — medidor MARÉ do
+  // estado, barra de resposta, instrumento operacional, estrutura de coordenação, "o que fazer e o
+  // que cobrar", guias por risco, botão de PDF e a nota do FGTS. Essa informação vive na ficha do
+  // estado (`dialog#detail`), e não se recria em outro lugar: era ela, duplicada e desatualizada,
+  // que aparecia ao escolher só o estado.
+  // 30/09/2026: o botão do relatório do cidadão desceu para o cartão do MUNICÍPIO. Ele vivia dentro
+  // do bloco removido acima, e a ficha do estado não oferece PDF nenhum — sair junto teria apagado,
+  // sem pedido, um recurso público que funciona. `gerarRelatorioCidadao()` monta o documento a partir
+  // do dado, não do `innerHTML` do cartão, então nada mais precisou mudar.
+  if (html) html += `<p class="u-mt-2"><button type="button" class="btn" id="btnPDF">Baixar o relatório da sua cidade (PDF)</button></p>`;
   card.innerHTML = html;
   animarGauges(card);
   card.hidden = !html;
@@ -974,23 +945,9 @@ function copiarPedido(botao){
       }
     }
   } catch (e) {}
-  // 18/09/2026 (pedido da editoria): resumo embutido abaixo dos dois medidores — mesmo cálculo que
-  // morava em defesa-civil.html (titulosFato/boxRegion, removido de lá), mesma fonte (data/estados.json,
-  // já carregado como DATA). "N estados com plano para o ciclo" = status NOVO; "com plano de todo ano" =
-  // READ+VIG (readaptado ou vigente recorrente); "sem plano localizado" = ELAB+LAC (em elaboração ou lacuna).
-  try {
-    const elResumo = document.getElementById('resumoPreparacao');
-    if (elResumo && typeof DATA === 'object' && DATA && DATA.ufs) {
-      const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-      const st = DATA.ufs.map(u => u.status); const c = k => st.filter(x => k.includes(x)).length;
-      const novo = c(['NOVO']), readVig = c(['READ', 'VIG']), elabLac = c(['ELAB', 'LAC']);
-      const porReg = {}; DATA.ufs.forEach(u => { if (u.status === 'NOVO') porReg[u.regiao || u.region || '—'] = (porReg[u.regiao || u.region || '—'] || 0) + 1; });
-      const maior = Object.entries(porReg).sort((a, b) => b[1] - a[1])[0];
-      const partes = [`${novo} estados com plano para o ciclo; ${readVig} com plano de todo ano; ${elabLac} sem plano localizado.`];
-      if (maior) partes.push(`Por região: <strong>${esc(maior[0])}</strong> concentra os planos feitos para o ciclo (${maior[1]} de ${novo}).`);
-      elResumo.innerHTML = partes.join(' ');
-    }
-  } catch (e) {}
+  // 30/09/2026 (item 4 da fila viva): a frase-resumo "N estados com plano para o ciclo..."
+  // saiu da inicial. Ela já tinha migrado de defesa-civil.html em 18/09; não se recria em
+  // nenhum outro lugar sem novo pedido.
   const temRAF = (typeof requestAnimationFrame === 'function');
   const raf = temRAF
     ? (f) => requestAnimationFrame(() => requestAnimationFrame(f))

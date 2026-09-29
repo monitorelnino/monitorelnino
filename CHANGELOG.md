@@ -9,6 +9,46 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §303 · A inicial parou de abrir o retrato do estado quando só se escolhe o estado; a frase-resumo saiu · 30/09/2026
+
+Classe **página pública**. Itens 4 e 5 da fila viva (`HANDOVER_FILA_VIVA.md`), no mesmo PR por
+tocarem os mesmos dois arquivos.
+
+**Item 5 — o erro estrutural.** `renderMinha()` rodava no `change` do seletor de estado e montava o
+bloco `if (ufFinal){...}` **sempre que houvesse UF**, com ou sem município: medidor MARÉ do estado,
+barra de resposta, instrumento operacional, estrutura de coordenação, "o que fazer e o que cobrar",
+guias por risco, botão de PDF e a nota do FGTS. Era o retrato do estado, **duplicado** da ficha do
+estado (`dialog#detail`) logo abaixo na mesma página, e desatualizado. O painel "Sua cidade" é do
+município: sem município, o cartão não abre. A condição de saída passou a exigir sempre `q`, o bloco
+inteiro saiu (43 linhas), e a frase órfã que prometia "abaixo, o retrato do seu estado" saiu com ele.
+Trocar de estado segue populando a lista de municípios — esse comportamento é o certo e ficou.
+
+**Duas dependências que o bloco carregava, e o que foi feito com cada uma.** (a) O botão do
+**relatório do cidadão em PDF** existia só ali, e a ficha do estado não oferece PDF nenhum: sair
+junto teria apagado, sem pedido, um recurso público que funciona. Ele desceu para o cartão do
+município, que é de quem o relatório fala; `gerarRelatorioCidadao()` monta o documento a partir do
+dado, não do `innerHTML`, e nada mais precisou mudar. (b) Os **contatos de emergência** (199, 193,
+40199, e-mail do órgão estadual) estavam sob o título "O que fazer e o que cobrar", que a decisão
+nomeia para remoção — então saíram. **Eles não se perderam do site**: seguem em `proteja-se.html`,
+com barra tocável de 190 · 192 · 193 · 199 e 40199, e no PDF do cidadão. Fica dito aqui porque
+informação de emergência saindo de uma página é coisa que a editoria tem de saber que saiu.
+
+**Item 4 — a frase-resumo.** "N estados com plano para o ciclo; N com plano de todo ano; N sem plano
+localizado. Por região: X concentra os planos feitos para o ciclo" saiu da inicial: o bloco que a
+preenchia em `assets/js/index.js` e o `<p id="resumoPreparacao">` em `index.html`. Era a segunda
+mudança de casa da frase — veio de `defesa-civil.html` em 18/09 — e ela não se recria em nenhum
+outro lugar sem pedido novo.
+
+**Dois portões cobravam o arranjo antigo e foram virados.** `verificar_runtime.js` exigia que o
+cartão do município trouxesse "199" e "mailto:" (que agora moram noutro lugar) e que a frase-resumo
+existisse. Passaram a cobrar o contrário, que é o que a decisão quer preservar: **só o estado
+escolhido não abre nada**, a lista de municípios continua populada, o cartão do município aparece com
+documento e fonte, **não** recria o retrato estadual, e a frase-resumo não volta. Portão que cobra o
+que foi removido reprova por estar certo; portão que não cobra a remoção deixa ela ser desfeita sem
+ninguém ver.
+
+Capturas em desktop, tablet e mobile no PR. Nenhum peso, crédito, régua ou categoria do índice mudou.
+
 ## §302 · Falso negativo se trata como falso negativo: nenhuma exceção por domínio no código · 30/09/2026
 
 Classe **método e prova**. Decisão da editoria de 30/09/2026 sobre a pendência aberta no §301.
