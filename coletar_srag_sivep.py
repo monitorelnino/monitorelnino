@@ -39,13 +39,9 @@ USO
   python3 coletar_srag_sivep.py --relatorio     # o que seria lido, sem baixar
   python3 coletar_srag_sivep.py
 """
-import csv
-import io
 import json
 import pathlib
-import re
 import sys
-from collections import defaultdict
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
@@ -60,170 +56,50 @@ RESSALVA = ("O Monitor não atribui casos ao El Niño. A série é a contagem de
 # Colunas do banco, pelo dicionário de variáveis do próprio conjunto.
 COL_SEMANA = "SEM_PRI"     # semana epidemiológica dos primeiros sintomas
 COL_UF = "SG_UF"           # UF de residência
-RE_ANO_NO_NOME = re.compile(r"/SRAG/(20\d\d)/", re.I)
+PADRAO_ANO = r"/SRAG/(20\d\d)/"   # o ano vem do caminho do arquivo no bucket
 
 
-def recursos_csv(html: str) -> dict:
-    """{ano: {'url', 'arquivo'}} lido do JSON que a própria página carrega.
-
-    A URL do arquivo carrega a data de publicação (`INFLUD26-28-09-2026.csv`), então não dá para
-    montá-la: ela se descobre. O portal é uma aplicação Next.js e embute o pacote inteiro em
-    `__NEXT_DATA__` — é o caminho estável, sem depender do `buildId`, que muda a cada publicação
-    do site."""
-    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.S)
-    if not m:
-        raise ValueError("a página do conjunto não trouxe __NEXT_DATA__ — formato mudou")
-    dados = json.loads(m.group(1))
-    recursos = (((dados.get("props") or {}).get("pageProps") or {}).get("resources")) or []
-    out = {}
-    for r in recursos:
-        url = str(r.get("url") or "")
-        if not url.lower().endswith(".csv"):
-            continue
-        ano = RE_ANO_NO_NOME.search(url)
-        if not ano:
-            continue
-        out[int(ano.group(1))] = {"url": url, "arquivo": url.rsplit("/", 1)[-1]}
-    if not out:
-        raise ValueError("nenhum CSV por ano no pacote — formato mudou")
-    return out
 
 
-def agregar_linhas(linhas, ano: int) -> dict:
-    """{'BR'|UF: {'AAAA-SS': casos}} contando uma notificação por linha. Função pura.
 
-    Linha sem UF de residência ou sem semana legível **não é contada e não é adivinhada**: ela
-    existe no banco e não diz onde nem quando, e inventar qualquer um dos dois seria pior que
-    perdê-la. O total nacional é a soma das UFs, e por isso ele também não inclui essas linhas."""
-    out = defaultdict(lambda: defaultdict(int))
-    for linha in linhas:
-        uf = str(linha.get(COL_UF) or "").strip().upper()
-        if len(uf) != 2 or not uf.isalpha():
-            continue
-        bruto = re.sub(r"\D", "", str(linha.get(COL_SEMANA) or ""))
-        if not bruto:
-            continue
-        se = int(bruto[-2:]) if len(bruto) > 2 else int(bruto)
-        if not 1 <= se <= 53:
-            continue
-        chave = f"{ano}-{se:02d}"
-        out[uf][chave] += 1
-        out["BR"][chave] += 1
-    return {loc: dict(v) for loc, v in out.items()}
-
-
-def juntar(agregados: list) -> dict:
-    """Une agregados de anos diferentes. Chaves são 'AAAA-SS', então não há colisão entre anos."""
-    out = defaultdict(dict)
-    for a in agregados:
-        for loc, serie in (a or {}).items():
-            out[loc].update(serie)
-    return dict(out)
-
-
-def linhas_do_fluxo(pedacos, limite_linhas: int = None):
-    """Gera dicionários de linha a partir de um fluxo de bytes, sem materializar o arquivo.
-
-    O banco vem em latin-1 com `;` — mas nada disso se presume: o delimitador sai do cabeçalho, e a
-    decodificação é tolerante, porque uma linha com acento estragado não pode derrubar a leitura de
-    dois milhões de outras."""
-    resto = b""
-    cabecalho = None
-    delim = ";"
-    n = 0
-    for bloco in pedacos:
-        resto += bloco
-        *linhas, resto = resto.split(b"\n")
-        for bruta in linhas:
-            texto = bruta.decode("latin-1", "replace").rstrip("\r")
-            if cabecalho is None:
-                delim = ";" if texto.count(";") >= texto.count(",") else ","
-                cabecalho = next(csv.reader(io.StringIO(texto), delimiter=delim))
-                continue
-            valores = next(csv.reader(io.StringIO(texto), delimiter=delim), None)
-            if not valores:
-                continue
-            yield dict(zip(cabecalho, valores))
-            n += 1
-            if limite_linhas and n >= limite_linhas:
-                return
-    if resto and cabecalho is not None:
-        valores = next(csv.reader(io.StringIO(resto.decode("latin-1", "replace")), delimiter=delim), None)
-        if valores:
-            yield dict(zip(cabecalho, valores))
-
-
-def precisa_reler(cache: dict, ano: int, arquivo: str) -> bool:
-    """Ano congelado só se relê quando o arquivo publicado muda de nome."""
-    guardado = (cache.get("anos") or {}).get(str(ano))
-    if not guardado:
-        return True
-    return guardado.get("arquivo") != arquivo
 
 
 def autoteste() -> int:
+    """O que é específico do SRAG. O que migrou para `saude_opendatasus.py` é testado lá — e este
+    autoteste prova que a ligação existe, em vez de repetir os casos."""
+    from coletar_srag_gripe import ANOS_CANAL, canal_endemico, vazar_incompletas
+    from saude_opendatasus import agregar_por_uf_semana, recursos_por_ano
     casos = []
 
     html = ('<html><script id="__NEXT_DATA__" type="application/json">'
             + json.dumps({"props": {"pageProps": {"resources": [
                 {"url": "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/2026/INFLUD26-28-09-2026.csv"},
                 {"url": "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/2025/INFLUD25-28-09-2026.csv"},
-                {"url": "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/dicionario.pdf"},
-            ]}}})
+                {"url": "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/dicionario.pdf"}]}}})
             + "</script></html>")
-    r = recursos_csv(html)
-    casos.append(("acha um CSV por ano", sorted(r) == [2025, 2026]))
-    casos.append(("guarda o nome do arquivo publicado",
+    r = recursos_por_ano(html, PADRAO_ANO, sufixos=(".csv",))
+    casos.append(("o padrão do SRAG acha um CSV por ano", sorted(r) == [2025, 2026]))
+    casos.append(("guarda o nome do arquivo publicado, que carrega a data",
                   r[2026]["arquivo"] == "INFLUD26-28-09-2026.csv"))
-    casos.append(("PDF não entra", all(x["url"].endswith(".csv") for x in r.values())))
-    try:
-        recursos_csv("<html>sem next data</html>")
-        casos.append(("página sem __NEXT_DATA__ levanta, não devolve vazio", False))
-    except ValueError:
-        casos.append(("página sem __NEXT_DATA__ levanta, não devolve vazio", True))
 
-    linhas = [{"SG_UF": "ES", "SEM_PRI": "10"}, {"SG_UF": "es", "SEM_PRI": "10"},
-              {"SG_UF": "SP", "SEM_PRI": "202611"}, {"SG_UF": "", "SEM_PRI": "10"},
-              {"SG_UF": "SP", "SEM_PRI": ""}, {"SG_UF": "XX1", "SEM_PRI": "10"},
-              {"SG_UF": "SP", "SEM_PRI": "99"}]
-    a = agregar_linhas(linhas, 2026)
-    casos.append(("conta por UF e semana", a["ES"]["2026-10"] == 2))
+    # No SIVEP-Gripe a UF vem como SIGLA, não como código — é a diferença que justifica o
+    # `uf_da_linha` aceitar as duas formas.
+    a = agregar_por_uf_semana([{"SG_UF": "ES", "SEM_PRI": "10"}, {"SG_UF": "es", "SEM_PRI": "10"},
+                               {"SG_UF": "SP", "SEM_PRI": "202611"}],
+                              2026, COL_UF, COL_SEMANA)
+    casos.append(("conta por UF e semana, com a sigla do SIVEP", a["ES"]["2026-10"] == 2))
     casos.append(("semana com ano colado é lida pelos dois últimos dígitos", a["SP"]["2026-11"] == 1))
-    casos.append(("o nacional é a soma das UFs", a["BR"]["2026-10"] == 2 and a["BR"]["2026-11"] == 1))
-    casos.append(("linha sem UF não é contada nem adivinhada", sum(a["BR"].values()) == 3))
-    casos.append(("semana fora de 1–53 não entra", "2026-99" not in a["BR"]))
-    casos.append(("UF de três letras não vira UF", "XX" not in a and "XX1" not in a))
 
-    j = juntar([{"BR": {"2025-01": 5}}, {"BR": {"2026-01": 7}, "SP": {"2026-01": 7}}])
-    casos.append(("anos diferentes se somam sem colidir",
-                  j["BR"] == {"2025-01": 5, "2026-01": 7} and j["SP"]["2026-01"] == 7))
-
-    fluxo = [b'"SG_UF";"SEM_PRI"\n"ES";"10"\n"S', b'P";"11"\n"RJ";"12"\n']
-    lidas = list(linhas_do_fluxo(fluxo))
-    casos.append(("o fluxo remonta linha partida entre pedaços", len(lidas) == 3))
-    casos.append(("e lê os valores certos",
-                  [l["SG_UF"] for l in lidas] == ["ES", "SP", "RJ"]))
-    casos.append(("o limite de linhas para a leitura",
-                  len(list(linhas_do_fluxo(fluxo, limite_linhas=2))) == 2))
-    casos.append(("delimitador sai do cabeçalho",
-                  [l["SG_UF"] for l in linhas_do_fluxo([b"SG_UF,SEM_PRI\nBA,5\n"])] == ["BA"]))
-
-    cache = {"anos": {"2019": {"arquivo": "INFLUD19-23-03-2026.csv"}}}
-    casos.append(("ano congelado com o mesmo arquivo não é relido",
-                  not precisa_reler(cache, 2019, "INFLUD19-23-03-2026.csv")))
-    casos.append(("arquivo republicado com outro nome é relido",
-                  precisa_reler(cache, 2019, "INFLUD19-30-09-2026.csv")))
-    casos.append(("ano que não está no cache é lido", precisa_reler(cache, 2020, "x.csv")))
-
-    from coletar_srag_gripe import ANOS_CANAL, canal_endemico, vazar_incompletas
     serie = {f"{ano}-10": 100 + ano for ano in ANOS_CANAL}
     c = canal_endemico(serie)
-    casos.append(("o canal endêmico é o mesmo do coletor anterior, reusado",
+    casos.append(("o canal endêmico é o do coletor anterior, reusado e não recriado",
                   c["10"]["n_anos"] == len(ANOS_CANAL)
                   and c["10"]["p90"] >= c["10"]["p75"] >= c["10"]["mediana"]))
     cons, vaz = vazar_incompletas({f"2026-{s:02d}": 1 for s in range(1, 21)}, 2026)
     casos.append(("as últimas 4 SE do ano corrente saem como incompletas",
                   len(vaz) == 4 and cons["2026-20"] is None and cons["2026-16"] == 1))
+    casos.append(("os anos congelados declarados são os que o portal declara",
+                  list(ANOS_CONGELADOS) == list(range(2019, 2025))))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
@@ -242,10 +118,12 @@ def main() -> int:
     from coletar_srag_gripe import ANOS_CANAL, SE_INCOMPLETAS, canal_endemico, vazar_incompletas
     from coletores_base import (DATA, buscar, buscar_em_fluxo, gravar_em, hoje_editorial,
                                 log_busca, registrar_lacuna)
+    from saude_opendatasus import (agregar_por_uf_semana, juntar, linhas_do_fluxo, precisa_reler,
+                                   recursos_por_ano)
 
     try:
         html = buscar(PAGINA, timeout=60).decode("utf-8", "replace")
-        recursos = recursos_csv(html)
+        recursos = recursos_por_ano(html, PADRAO_ANO, sufixos=(".csv",))
     except Exception as e:  # noqa: BLE001
         registrar_lacuna("SIVEP-Gripe (catálogo do conjunto SRAG)", f"{type(e).__name__}: {e}"[:180],
                          canal="DOU", camada=1)
@@ -275,9 +153,10 @@ def main() -> int:
             reusados.append(ano)
             continue
         try:
-            serie = agregar_linhas(
+            serie = agregar_por_uf_semana(
                 linhas_do_fluxo(buscar_em_fluxo(recursos[ano]["url"], timeout=180,
-                                                origem="coletar_srag_sivep")), ano)
+                                                origem="coletar_srag_sivep")),
+                ano, COL_UF, COL_SEMANA)
         except Exception as e:  # noqa: BLE001
             falhas[ano] = f"{type(e).__name__}"
             continue

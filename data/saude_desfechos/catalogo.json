@@ -14,7 +14,8 @@
    "sistema": "Sivep-DDA / Sinan (surtos DTHA); SISAB (atendimentos APS)",
    "periodicidade": "semanal",
    "fonte_aberta": "Sem publicação aberta do MS (o OpenDataSUS não hospeda o Sivep-DDA — verificado em 14/09/2026). Resposta LAI do MS (processo 25072.030308202612) redistribuída no Zenodo por R. Saldanha/Fiocruz, CC BY 4.0, MD5 publicado — coletado em 14/09/2026 (semanal por município, unidades sentinela; depósito preliminar, atualização mensal)",
-   "status_coleta": "coletado"
+   "status_coleta": "coletado",
+   "arquivo": "dda_serie.json"
   },
   {
    "id": "dtha",
@@ -31,8 +32,9 @@
    "comprometimento": "vetores",
    "sistema": "Sinan",
    "periodicidade": "semanal",
-   "fonte_aberta": "InfoDengue (Fiocruz/FGV), painel amostral · + boletim semanal por município da SES-MS (coletado em 10/09/2026, prova de conceito para verificação estadual cruzada) · + informativo semanal por Região de Saúde da SES-DF (coletado em 10/09/2026; DF é município-estado, sem tabela municipal) · + informe semanal do CIEVS-PE (10/09/2026; só totais estaduais — tabela municipal é imagem)",
-   "status_coleta": "coletado"
+   "fonte_aberta": "SINAN/OpenDataSUS (contagem de notificações, primária) + InfoDengue (Fiocruz/FGV) só para o nível de alerta",
+   "status_coleta": "coletado",
+   "arquivo": "serie_uf.json"
   },
   {
    "id": "chik",
@@ -40,8 +42,9 @@
    "comprometimento": "vetores",
    "sistema": "Sinan",
    "periodicidade": "semanal",
-   "fonte_aberta": "InfoDengue (disease=chikungunya) · + informativo semanal por Região de Saúde da SES-DF (coletado em 10/09/2026, junto com dengue) · + informe semanal do CIEVS-PE (10/09/2026; só totais estaduais — tabela municipal é imagem)",
-   "status_coleta": "coletado"
+   "fonte_aberta": "SINAN/OpenDataSUS (contagem de notificações, primária) + InfoDengue só para o nível de alerta",
+   "status_coleta": "coletado",
+   "arquivo": "chik_serie_uf.json"
   },
   {
    "id": "malaria",
@@ -86,7 +89,8 @@
    "sistema": "e-SUS Notifica",
    "periodicidade": "semanal",
    "fonte_aberta": "InfoGripe (Fiocruz/FGV), série longa nacional e por UF — coletado em 09/09/2026",
-   "status_coleta": "coletado"
+   "status_coleta": "nao_coletado",
+   "arquivo": "sg_serie.json"
   },
   {
    "id": "srag",

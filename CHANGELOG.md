@@ -9,6 +9,53 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §292 · Dengue e chikungunya passam a contar pela primária, e o InfoDengue fica com o alerta · 29/09/2026
+
+Classe **método e coleta**. Item 2 do bloco "fontes primárias". **Peso zero, sem nota, sem faixa** —
+nenhuma régua do índice muda.
+
+### A divisão de trabalho, dita com clareza
+
+As contagens vinham do **InfoDengue**, que é produto **derivado** do SINAN: ele estima casos
+prováveis e calcula nível de alerta a partir da mesma notificação que o SINAN publica. A regra da
+decisão é primária quando existir, derivado só para o que a primária não dá. Então:
+
+- **SINAN (novo):** a contagem, por UF de residência e semana epidemiológica de primeiros sintomas.
+- **InfoDengue (onde já estava):** o **nível de alerta**, que é interpretação da série e não existe
+  no banco primário. Ele não passa a contar nada, e continua na rodada.
+
+### Conta-se notificação, e o arquivo diz isso
+
+Cada linha do banco é uma **notificação**. Parte será descartada pela investigação
+(`CLASSI_FIN = 5`) e parte ainda não tem classificação fechada. Contar só as confirmadas daria um
+número menor e mais velho — a classificação demora. Contar notificação é o que o Ministério publica
+como série corrente; o que não se pode é **chamar notificação de caso confirmado**, e a ressalva no
+`_governanca` do arquivo diz exatamente o que foi contado.
+
+### Uma peça comum, para não haver duas cópias
+
+`saude_opendatasus.py` reúne o que o coletor de SRAG e o de arboviroses fazem igual: descoberta de
+recurso por ano, leitura em fluxo, leitura de CSV dentro de `.zip` (o SINAN publica assim),
+resolução de UF — **por sigla no SIVEP-Gripe, por código numérico no SINAN** — e agregação por UF ×
+semana. O coletor de SRAG foi reescrito para usar a peça comum em vez da cópia dele.
+
+O que **não** mora lá é regra de desfecho: quais colunas, o que conta e o que não conta. Esconder
+isso numa função genérica seria fingir que SRAG e dengue se contam do mesmo jeito.
+
+### Medido sobre dado real
+
+30.000 linhas do banco de 2026: 21 UFs, 35 semanas, **zero linhas descartadas**. O zip de um ano tem
+14,7 MB e o CSV de dentro, 127 MB — que nunca vira texto na memória.
+
+### O catálogo, conferido contra o disco
+
+A varredura do §291 achou outro caso do mesmo defeito: `sg` (síndrome gripal) declarava **"coletado"
+com `sg_serie.json` inexistente** — a fonte era o mesmo InfoGripe que caiu. Está declarado como não
+coletado, que é o que ele é. Cada desfecho já coletado passou a nomear o `arquivo` que o comprova, e
+o portão confere os dois lados.
+
+Dois portões novos (120); 23 casos offline na peça comum e 9 no coletor.
+
 ## §291 · SRAG passa do InfoGripe para a fonte primária, o SIVEP-Gripe · 29/09/2026
 
 Classe **método e coleta**. Bloco 4 · Doenças respiratórias (decisão da central, 29/09/2026).

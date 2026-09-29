@@ -36,6 +36,10 @@ jobs:
         # SIVEP-Gripe em fluxo e guarda só o agregado por UF e semana; os anos congelados
         # (2019–2024) saem do cache e não são rebaixados da rede toda semana.
         coletar_srag_sivep.py
+        # 29/09/2026 (item 2): contagem de dengue e chikungunya pela fonte primária (SINAN).
+        # O InfoDengue continua rodando na rodada semanal para o NÍVEL DE ALERTA, que é
+        # interpretação da série e não existe no banco primário.
+        coletar_arboviroses_sinan.py
         # Sonda do InfoGripe: a série da Fiocruz volta a ser fonte complementar se o acesso
         # voltar, e a sonda é o que avisa. O bloco 4 a chamou de `sondar_boletim_infogripe.py`,
         # nome que não existe no repositório; a sonda é o modo padrão do próprio
