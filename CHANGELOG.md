@@ -9,6 +9,92 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §295 · Verificador da fonte das pistas de imprensa, em modo sombra · 29/09/2026
+
+Classe **método e prova**. Bloco 2 do handover consolidado de 29/09/2026 (seções A, B, D, E, F do
+handover do cartão, mais a seção G do consolidado). **Nada muda no cartão, nada muda no índice:**
+fase 1 é sombra.
+
+### O que o verificador faz, e o que ele se recusa a fazer
+
+Cada pista de imprensa passa por seis critérios obrigatórios, na ordem, e **para no primeiro que
+falha** — não há nota média. Ele lê o **corpo** da página, nunca o título nem o trecho de busca;
+abaixo de 300 caracteres de texto corrido a pista é `texto_insuficiente`, que é como paywall, página
+só com título e JS que não renderiza caem fora sem precisar de navegador.
+
+| critério | o que ele impede |
+|---|---|
+| B1 · cidade certa | homônimo, nome de rua, matéria regional que cita a cidade sem ação própria |
+| B2 · preparação | decreto pós-enchente narrado como prevenção, balanço de danos |
+| B3 · risco do ciclo | plano de dengue, comitê de outra coisa, licença ambiental |
+| B4 · ciclo atual e notícia | matéria de 2023, página sem data, coluna, patrocinado, sátira |
+| B5 · veículo e página original | agregador, blog, sindicação em dez domínios, HTTP sem TLS |
+| B6 · não duplica | município já com registro, pista já recusada por critério pelo juiz |
+
+Nenhum modelo de linguagem decide exibição. Cada decisão grava URL, hash do corpo lido, data da
+leitura, versão do verificador e **o trecho que satisfez ou reprovou cada critério** — é esse trecho
+que permite conferir a decisão, e foi a falta dele que tornou ilegíveis as promoções falsas do §286.
+
+**Vinte canários**, um por falha nomeada no handover. Três deles vieram de casos reais desta semana:
+a licença ambiental de Alagoinhas e o "Comitê Gestor do Programa Sandbox" de Apucarana, que
+enganaram o juiz em 28/09, e a recusa **técnica** do juiz, que mantém a pista viva enquanto a recusa
+por critério a tira.
+
+### Seção G · o orçamento que evita a recusa das fontes
+
+`OrcamentoDeRequisicoes`, em `coletores_base.py`, é um limitador **compartilhado**: 40 páginas por
+host por noite, 600 no total, disjuntor que desliga o host acima de 25% de recusa e encerra a rodada
+se a noite inteira passar disso. Ele não substitui o `Crawl-delay` do robots — acrescenta o que o
+robots não diz: **quantas páginas**. O que não couber espera a noite seguinte e fica
+`nao_lido_esta_noite`, que **não** é recusa da fonte nem ausência de pista.
+
+O piso de oito tentativas antes de desligar um host existe por uma razão: uma recusa em uma leitura
+é 100% de recusa, e desligar por isso seria desligar por ruído.
+
+**Um escritor por campo** (seção G1): o verificador escreve **só** `verificacao_fonte`. Os três
+noturnos que escrevem em `data/pistas_*.json` passaram a compartilhar o grupo de concorrência
+`noturno`, com `cancel-in-progress: false` — se dois se cruzarem, o segundo espera; nunca cancela
+nem escreve por cima.
+
+### A medição da fase 1, e por que a amostra 40+20 não existe
+
+Rodado sobre a fila real, **2.674 pistas**:
+
+| resultado | n |
+|---|---|
+| veículo não listado | **2.656** |
+| sem HTTPS | 12 |
+| ente não confirmado | 3 |
+| recusada pelo juiz | 2 |
+| fora do ciclo | 1 |
+| **exibíveis** | **0** |
+
+Só **6 páginas foram efetivamente lidas**: o critério B5 é decidido sem rede, e não se gasta
+requisição para descobrir que o domínio não está na lista.
+
+**A amostra de 40 exibíveis + 20 recusadas não pode ser sorteada: não há exibível nenhum.** A causa
+não é defeito do verificador — é a regra funcionando como foi escrita. A lista de veículos começa,
+por determinação do handover, com os domínios que **já geraram registro confirmado** no banco: são
+**cinco**, e eles aparecem em pouquíssimas pistas da fila.
+
+A composição da fila explica o resto, e é o dado que importa para a decisão:
+
+| origem | n | % |
+|---|---|---|
+| agregador (Google News) | 1.495 | 55% |
+| oficial ou diário (não é imprensa) | 558 | 20% |
+| domínio de imprensa em potencial | 488 | 18% |
+| rede social | 133 | 4% |
+
+**Mais da metade da fila é link de redirecionamento do Google News** — que não é a matéria, é o
+caminho até ela. Mesmo com a lista de veículos ampliada, essas 1.495 não viram pista exibível sem
+antes resolver o redirecionamento para a URL original.
+
+O relatório de amostra diz isso por escrito quando a amostra sai incompleta, em vez de completar com
+recusadas — completar mediria outra coisa.
+
+Dois portões novos (122).
+
 ## §293 · Óbitos pelo Registro Civil, e o estado real de cada um dos vinte desfechos · 29/09/2026
 
 Classe **método e coleta**. Itens 3 a 7 do bloco "fontes primárias". **Peso zero, sem nota, sem
