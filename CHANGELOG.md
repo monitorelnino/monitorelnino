@@ -42,6 +42,34 @@ aviso. 16 casos de autoteste.
 
 Nenhum dado do índice muda: sinal físico tem peso zero.
 
+## §308 · Cabeçalho da inicial em duas colunas: logo e título à esquerda, descrição à direita · 30/09/2026
+
+Classe **página pública**. Item 2 da fila viva — opção **B** das três que a editoria viu.
+
+O cabeçalho empilhava o logo e, abaixo, uma grade de duas colunas de peso igual com título e
+descrição lado a lado. Agora são duas colunas: à esquerda o logo com o título **logo abaixo dele**,
+como um bloco só; à direita a descrição, **centrada verticalmente** em relação a esse bloco.
+
+**O logo não mudou, e isso foi conferido, não suposto.** O `<svg>` inteiro — `viewBox`, as linhas da
+régua, o `<text>` "MARÉ", o `<path>` da onda e o gradiente `mareLogoAgua` — é **idêntico caractere a
+caractere** ao de antes (1.174 caracteres, comparados contra a versão anterior); a única diferença no
+diff daquela linha é a indentação, porque o `<h1>` passou a viver dentro da coluna. A onda faz parte
+do desenho e não foi separada, recortada nem duplicada.
+
+**CSS:** a coluna da marca recebe `minmax(0,540px)` e o resto vai para a descrição, com o mesmo
+token de `column-gap` que a abertura já usava; `align-items` passou de `start` a `center`, que é o
+que centra a descrição no bloco logo+título; o título ganhou `margin-top: var(--sp-4)` e perdeu o
+`max-width:14ch`, que existia para a antiga coluna estreita. **Nenhum token novo de cor ou
+tipografia** — só `--fs-*`, `--sp-*`, `--font-titulo`, `--ink` e `--muted`, todos já em uso.
+
+Em telas estreitas as duas colunas empilham, como a abertura já fazia: logo e título acima,
+descrição abaixo. Conferido a 390 px — o logo não ultrapassa a largura da tela e não há rolagem
+horizontal. `masthead--mini` (páginas internas) **não foi tocado**, e o resto do masthead — kicker,
+nav, `mast-body`, `.grad-line` — segue onde estava. Nenhum texto mudou.
+
+Portões verdes, inclusive consistência visual e o de telas pequenas. Capturas em desktop, tablet e
+mobile no PR.
+
 ## §304 · Erro estrutural: escolher só o estado não abre mais nada em "Sua cidade" · 30/09/2026
 
 Classe **defeito** e **método e prova**. Decisão da editoria de 30/09/2026, implementada diretamente (fora do fluxo do Claude Code).

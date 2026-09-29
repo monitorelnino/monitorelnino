@@ -175,11 +175,18 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
    contra os 45 a 75 da medida confortável. A separação é por ESPAÇO, não por filete.
    Princípios da referência, não a composição dela: o `CLAUDE.md` diz que as duas marcas têm
    parentesco visual "sem ser gêmea" e proíbe copiar o leiaute de uma na outra. */
-.masthead .site-title--logo{display:block; margin:0 0 var(--sp-5);}
+/* 30/09/2026 (item 2 da fila viva, opção B): o logo deixa de abrir a página sozinho e passa a ser
+   o topo da coluna esquerda, com o título logo abaixo. O SVG não muda — nem viewBox, nem régua,
+   nem onda, nem gradiente. Muda o contêiner. */
+.masthead .site-title--logo{display:block; margin:0;}
 .masthead .site-title--logo svg{width:min(620px, 80%); max-width:100%;}
-.mast-abertura{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:var(--sp-7); align-items:start; margin:0 0 var(--sp-6);}
+/* Coluna esquerda com a largura que o bloco logo+título pede; o resto vai para a descrição, que
+   fica centrada verticalmente em relação a ele (align-items:center). O column-gap é o mesmo
+   token que a abertura já usava. */
+.mast-abertura{display:grid; grid-template-columns:minmax(0,540px) minmax(0,1fr); column-gap:var(--sp-7); align-items:center; margin:0 0 var(--sp-6);}
+.mast-marca{min-width:0;}
 .site-nome-p{margin:0;}
-.site-nome{display:block; font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display); letter-spacing:var(--ls-titulo); color:var(--ink); max-width:14ch; margin:0;}
+.site-nome{display:block; font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display); letter-spacing:var(--ls-titulo); color:var(--ink); max-width:none; margin:var(--sp-4) 0 0;}
 .site-intro{font-size:var(--fs-body); line-height:var(--lh-body); color:var(--muted); max-width:52ch; margin:0;}
 .masthead--mini .site-title--logo{margin:0 0 var(--sp-1);}
 .masthead--mini .site-title--logo svg{width:210px;}
@@ -755,7 +762,8 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 @media (max-width:1020px){
   /* §24: recompor. A marca encolhe, o nome desce um degrau da escala, e a abertura empilha. */
   .masthead .site-title--logo svg{width:min(460px, 92%);}
-  .mast-abertura{grid-template-columns:1fr; row-gap:var(--sp-5);}
+  /* Telas estreitas: as duas colunas empilham — logo+título acima, descrição abaixo. */
+  .mast-abertura{grid-template-columns:1fr; row-gap:var(--sp-5); align-items:start;}
   .site-nome{font-size:var(--fs-h1); line-height:var(--lh-h1); max-width:none;}
   .site-intro{max-width:none;}
   /* A barra quebra em várias linhas e o degradê horizontal se repetia em cada uma — várias
