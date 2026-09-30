@@ -282,7 +282,11 @@ FONTES = {
         "endpoint_medida": "https://apitempo.inmet.gov.br/condicao/capitais/{data}",
     },
     "noaa_oni": {
-        "nome": "Oceanic Niño Index (ONI)", "orgao": "NOAA/CPC", "camada": "enos",
+        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
+        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
+        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
+        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
+        "nome": "Oceanic Niño Index (ONI)", "orgao": "NOAA/CPC", "camada": "apoio_tecnico",
         "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt",
         "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
@@ -297,7 +301,11 @@ FONTES = {
         "papel": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico.",
     },
     "noaa_nino34_mensal": {
-        "nome": "Anomalia mensal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC", "camada": "enos",
+        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
+        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
+        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
+        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
+        "nome": "Anomalia mensal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC", "camada": "apoio_tecnico",
         "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
         "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
@@ -324,18 +332,26 @@ FONTES = {
         "papel": "Probabilidade de El Niño, neutro e La Niña por trimestre.",
     },
     "cptec_prognostico": {
+        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
+        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
+        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
+        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
         # 27/09/2026: esta fonte NUNCA teve endereço. O campo `enos.prognostico` que ela alimentava
         # foi semeado à mão uma vez, em 07/09/2026, e nada no repositório o renovava: `leitura_em`
         # não é escrito em lugar nenhum do módulo, e `coletar()` nunca tocava em `prognostico`. Como
         # o registro é lido do arquivo e modificado, o campo sobrevivia a cada rodada — congelado.
         # A página o exibia como leitura corrente. Fica declarado e sem coleta, até que exista
         # endereço aberto: a leitura automática do estado do ENOS passou a vir de `cpc_ensodisc`.
-        "nome": "Prognóstico climático trimestral", "orgao": "INMET/CPTEC-INPE", "camada": "enos",
+        "nome": "Prognóstico climático trimestral", "orgao": "INMET/CPTEC-INPE", "camada": "apoio_tecnico",
         "url_publica": "https://portal.inmet.gov.br/boletinsagro",
         "endpoint": None,
         "papel": "A leitura brasileira da mesma previsão, em português.",
     },
     "cpc_ensodisc": {
+        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
+        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
+        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
+        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
         # 27/09/2026 (pedido da editoria: "construa coletores automáticos, pode até trocar a fonte").
         # A Discussão Diagnóstica do ENOS é publicada pelo CPC todo mês, aberta, sem chave, com
         # estrutura estável: data de emissão, "ENSO Alert System Status", sinopse e data da próxima.
@@ -343,7 +359,7 @@ FONTES = {
         # original para conferência. A frase em inglês NÃO é traduzida automaticamente: tradução de
         # máquina sem fonte é texto inventado, e a página compõe a frase em português a partir dos
         # fatos, que é o que se pode afirmar.
-        "nome": "Discussão diagnóstica do ENOS", "orgao": "CPC/NCEP/NWS (NOAA)", "camada": "enos",
+        "nome": "Discussão diagnóstica do ENOS", "orgao": "CPC/NCEP/NWS (NOAA)", "camada": "apoio_tecnico",
         "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
         "endpoint": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
         "papel": "Estado oficial do alerta de El Niño e a probabilidade declarada, mês a mês.",
