@@ -146,6 +146,7 @@ CADEIA_DERIVADOS = (
     ("gerar_contadores_financiamento.py",),
     ("gerar_feeds.py",),
     ("gerar_dados_abertos.py",),
+    ("scripts/gerar_enquadramento_card.py",),
     ("gerar_card_municipios.py",),
     ("gerar_pdf_indice.py",),
     ("gerar_pdf_metodologia.py",),
