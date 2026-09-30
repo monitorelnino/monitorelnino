@@ -21,11 +21,28 @@
 # O passo do clima municipal (temperatura e qualidade do ar dos 5.570 municípios) NÃO entra aqui:
 # ele tem teto diário de localidade no Open-Meteo, alterna a variável por rodada e continua no
 # `atualizar.yml`, onde essa lógica mora. Aqui ficam os sinais de país inteiro, que são baratos.
+# 30/09/2026 (item 7 da rodada 2 — certificação dos coletores). O cron do GitHub é de MELHOR
+# ESFORÇO: atrasa sob carga e descarta. Medido em 30/09: `noturno_diarios`, com cron de 01:30 UTC,
+# começou às 06:59 (5h30 de atraso) e morreu no teto; a busca web, com cinco crons por noite, rodou
+# duas vezes por dia, uma delas às 13:22 UTC — dentro do horário de trabalho da editoria, que é
+# justamente o que a janela noturna existe para evitar.
+#
+# A noite passa a ser UMA CORRENTE: um disparo cedo (00:05 UTC) e cada elo acionado quando o
+# anterior TERMINA. Cinco horários independentes davam cinco oportunidades de atrasar; um disparo e
+# uma corrente dão uma. A ordem é:
+#
+#   diários → descoberta → busca web → evidências → juiz → sinais
+#
+# RECUPERAÇÃO, de propósito: o gatilho NÃO filtra por conclusão. Se o elo anterior falhou ou foi
+# cancelado, o seguinte roda assim mesmo — cada coletor processa a fila pendente independentemente
+# do horário, e uma noite perdida não pode levar a seguinte junto. `workflow_dispatch` continua em
+# todos, para rodar à mão quando preciso.
 name: Noturno — sinais físicos
 
 on:
-  schedule:
-    - cron: "0 8 * * *"    # 5h de Brasília, antes do publicador das 06h05
+  workflow_run:
+    workflows: ["Noturno — juiz automático"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:

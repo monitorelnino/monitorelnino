@@ -104,6 +104,7 @@ def rodar(cmd, obrigatorio=False, env_extra=None, teto_s=TETO_ETAPA_S):
     # que "[aviso] iri_plume: ..." passou despercebido rodada após rodada.
     print(f"\n=== {' '.join(cmd)} ===", flush=True)
     env = {**os.environ, **(env_extra or {})}
+    _inicio = datetime.datetime.now().replace(microsecond=0)
     try:
         codigo = subprocess.run(cmd, cwd=RAIZ, env=env, timeout=teto_s).returncode
     except subprocess.TimeoutExpired:
@@ -114,6 +115,23 @@ def rodar(cmd, obrigatorio=False, env_extra=None, teto_s=TETO_ETAPA_S):
               f"{' '.join(cmd)} — tratada como fonte fora do ar (lacuna declarada), "
               f"a rodada continua", flush=True)
     sys.stdout.flush()
+    # 30/09/2026 (item 7 da rodada 2 — certificação dos coletores): TODA etapa daqui grava a sua
+    # linha de saúde. Antes só o invólucro do `_coletor.yml` registrava, e por isso financiamento,
+    # saúde, painel amostral e os semanais simplesmente não existiam no painel — o que foi lido
+    # como "estão bem" por semanas. Coletor que não aparece no painel não pode ser certificado.
+    #
+    # O registro NUNCA derruba a rodada: se ele falhar, a etapa já aconteceu, e perder a rodada
+    # por causa do relatório dela seria trocar o dado pela contabilidade do dado.
+    try:
+        from scripts.saude_pipeline import registrar as _registrar_saude
+        _nome = next((a for a in cmd if str(a).endswith(".py")), " ".join(map(str, cmd)))
+        _registrar_saude(script=_nome, inicio=_inicio.isoformat(),
+                         duracao_s=(datetime.datetime.now() - _inicio).total_seconds(),
+                         itens=None, status="ok" if codigo == 0 else "erro",
+                         erro="" if codigo == 0 else f"código de saída {codigo}")
+    except Exception as _e:  # noqa: BLE001
+        print(f"[aviso] linha de saúde não registrada para {' '.join(map(str, cmd))}: {_e}",
+              flush=True)
     if codigo != 0 and obrigatorio:
         print(f"[erro] etapa obrigatória falhou: {' '.join(cmd)}", flush=True)
         sys.exit(codigo)

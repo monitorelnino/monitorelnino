@@ -32,12 +32,20 @@ Contrato da API validado ao vivo em 27/08/2026 (schema: total_gazettes,
 gazettes[{territory_id,date,url,territory_name,state_code,excerpts,edition,txt_url}]).
 """
 import json, pathlib, sys, time, urllib.parse, urllib.request
+import ssl
+
 import funil
 from coletores_base import preservar_evidencia, preservar_texto_integral, ua_de, gravar_em, hoje_editorial
 
 RAIZ = pathlib.Path(__file__).parent
 DESTINO = RAIZ / "data" / "pistas_querido_diario.json"
-API = "https://api.queridodiario.ok.org.br/gazettes"
+# 30/09/2026 (certificação dos coletores): `api.queridodiario.ok.org.br` recusa o handshake TLS
+# (`SSLV3_ALERT_HANDSHAKE_FAILURE`) em parte das saídas, e era a única porta deste coletor — por
+# isso ele falhava noite após noite. O mesmo acervo responde por `queridodiario.ok.org.br/api/...`,
+# e `coletar_cobertura_qd.py` já usava as duas nesta ordem desde 30/09. Aqui vai a mesma ordem: a
+# que responde vale; se nenhuma responder, o erro é real e sobe.
+APIS = ("https://queridodiario.ok.org.br/api/gazettes",
+        "https://api.queridodiario.ok.org.br/gazettes")
 TERMOS = ["plano de contingência", "PLANCON", "PLACON", "plano de enfrentamento",
           "protocolo de alerta e enfrentamento", "plano preventivo", "operação estiagem"]
 JANELA_DESDE = "2026-01-01"  # ciclo 2026/2027; atos antigos vigentes ficam p/ busca dirigida
@@ -48,12 +56,23 @@ CAPITAIS = {"Rio Branco":"AC","Maceió":"AL","Manaus":"AM","Macapá":"AP","Salva
  "Porto Velho":"RO","Boa Vista":"RR","Florianópolis":"SC","São Paulo":"SP","Aracaju":"SE","Palmas":"TO"}
 
 
-def _get(params):
-    """Requisição HTTP à API do Querido Diário com User-Agent identificado e tratamento de timeout."""
-    url = API + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={"User-Agent": ua_de("consulta ao Querido Diário")})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)
+def _get(params, apis=None):
+    """Requisição à API do Querido Diário, tentando as portas conhecidas na ordem.
+
+    Uma recusa de TLS numa das portas não é ausência de acervo: é uma porta fechada. Só quando
+    todas fecham o erro sobe — e aí ele é real."""
+    ultimo = None
+    for base in (apis or APIS):
+        url = base + "?" + urllib.parse.urlencode(params)
+        req = urllib.request.Request(url,
+                                     headers={"User-Agent": ua_de("consulta ao Querido Diário")})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.load(r)
+        except (urllib.error.URLError, ssl.SSLError, TimeoutError) as e:
+            ultimo = e
+            continue
+    raise ultimo
 
 
 UFS_LAC = ["AL", "AP", "DF", "PA", "PB", "RN", "SE"]  # estados sem plano estadual nominal
