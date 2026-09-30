@@ -550,15 +550,24 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .field{margin-bottom:var(--sp-3);}
 .field .k, .fk{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps); margin:var(--sp-2) 0 2px;}
 .field .v, .fv{font-size:var(--fs-small); line-height:var(--lh-small); margin:0 0 var(--sp-1);}
-.capital-box{background:var(--surface-2); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin-top:var(--sp-2); border:1px solid var(--line);}
+/* 30/09/2026 (rodada 2, item 2): a ficha do estado fica toda branca. O cinza que separava os
+   blocos some; quem separa passa a ser o espaço e, no máximo, uma linha fina. Os selos de
+   status (.badge, .pill-nivel) NÃO mudam — eles são o destaque que já funcionava. */
+.capital-box{background:var(--branco); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin-top:var(--sp-2); border:1px solid var(--line);}
 .capital-box .k{color:var(--rust);}
 /* 30/09/2026 (pedido da editoria): o risco projetado saiu da frente do cartão de estado e
    passou a viver só na ficha (janela de detalhe), destacado — mesma família visual das fichas
    de risco de proteja-se.html, acento por família (chuva/seca/fogo) na borda esquerda. */
-.risco-box{background:var(--surface-2); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0; border:1px solid var(--line); border-left:4px solid var(--rust);}
+/* Sem fundo cinza, o risco precisava de outro jeito de ser o primeiro bloco que o olho encontra
+   depois do selo: o filete da família engrossa (4 → 6 px) e o rótulo assume a cor da família.
+   O componente é o mesmo do cartão do município, de propósito — a mudança vale nos dois. */
+.risco-box{background:var(--branco); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0; border:1px solid var(--line); border-left:6px solid var(--rust);}
 .risco-box.r-chuva{border-left-color:var(--chuva);}
 .risco-box.r-seca{border-left-color:var(--seca);}
 .risco-box.r-fogo{border-left-color:var(--fogo);}
+.risco-box.r-chuva .k{color:var(--chuva);}
+.risco-box.r-seca .k{color:var(--seca);}
+.risco-box.r-fogo .k{color:var(--fogo);}
 .risco-box .k{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps); margin:0 0 var(--sp-1);}
 .risco-box .v{font-size:var(--fs-body); line-height:var(--lh-body); margin:0 0 var(--sp-2);}
 .risco-box .chips{display:flex; flex-wrap:wrap; gap:var(--sp-1);}
@@ -566,7 +575,7 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .risco-box .fonte{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:var(--sp-2) 0 0;}
 /* 30/09/2026 (PR 4): enquadramento federal de risco no cartão do município. Mesmo sistema do
    .risco-box — superfície, raio, filete de família — sem token novo e sem hex solto. */
-.enq-box{background:var(--surface-2); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0; border:1px solid var(--line);}
+.enq-box{background:var(--branco); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0; border:1px solid var(--line);}
 .enq-box .k{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps); margin:0 0 var(--sp-2);}
 .enq-box .enq-linha{border-left:4px solid var(--line); padding-left:var(--sp-3); margin:0 0 var(--sp-3);}
 .enq-box .enq-linha:last-child{margin-bottom:0;}
