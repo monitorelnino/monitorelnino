@@ -194,6 +194,7 @@ jobs:
           python3 verificar_pista_imprensa.py --autoteste
           python3 scripts/busca_dirigida_do_ato.py --autoteste
           python3 coletar_prioritarios_mma.py --autoteste
+          python3 coletar_semiarido_sudene.py --autoteste
       # 30/09/2026 (§316): os cinco portões de TEXTO saíram do bloco "sempre". Eles leem páginas,
       # folhas e fichas — um PR que só toca `.py` de coletor não tem como afetá-los, e eles custam
       # cerca de 100 s. Continuam bloqueantes onde podem falhar.

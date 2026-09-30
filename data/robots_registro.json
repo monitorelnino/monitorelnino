@@ -65,14 +65,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 1079,
+   "total_acessos": 1080,
    "acessos": [
-    {
-     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
-     "quando": "2026-09-29T08:15:03Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.172-de-23-de-setembro-de-2026-733722339",
      "quando": "2026-09-29T08:15:07Z",
@@ -1264,6 +1258,12 @@
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
      "quando": "2026-09-30T17:37:08Z",
+     "origem": "coletar_prioritarios_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+     "quando": "2026-09-30T17:49:25Z",
      "origem": "coletar_prioritarios_mma",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
