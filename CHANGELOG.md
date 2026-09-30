@@ -50,6 +50,30 @@ todo o site. Mudar a frase faz o portão voltar a reprovar, que é o comportamen
 
 Nenhum peso, crédito, régua ou categoria do índice mudou.
 
+## §305 · A frase-resumo de preparação saiu da página inicial · 30/09/2026
+
+Classe **página pública**. Item 4 da fila viva.
+
+"N estados com plano para o ciclo; N com plano de todo ano; N sem plano localizado. Por região: X
+concentra os planos feitos para o ciclo (N de N)." saiu de baixo dos dois medidores: o bloco que a
+preenchia em `assets/js/index.js` e o `<p id="resumoPreparacao">` em `index.html`. É a segunda
+mudança de casa da frase — ela veio de `defesa-civil.html` em 18/09 — e agora ela não se recria em
+nenhum outro lugar sem pedido novo.
+
+`verificar_runtime.js` **cobrava a existência** do texto, com as três contagens somando 27. Passou a
+cobrar a ausência: portão que cobra o que foi removido reprova por estar certo, e portão que não
+cobra a remoção deixa ela ser desfeita sem ninguém ver.
+
+> **Nota sobre o item 5 da mesma fila.** Ele foi entregue pelo §304 (#453) enquanto este trabalho
+> corria noutro ramo: a inicial já não abre nada ao escolher só o estado. A versão que eu tinha em
+> ramo próprio removia também o bloco `if (ufFinal){...}` inteiro, como o handover pedia no passo 2,
+> e foi **descartada** em favor do que já está na `main` — refazer decisão recém-mesclada para
+> ganhar a diferença entre os dois desenhos custaria mais do que vale. Fica registrado que, no
+> desenho em vigor, o retrato estadual continua sendo montado **quando há município**, e que os
+> contatos de emergência e o botão de PDF seguem nele.
+
+Nenhum peso, crédito, régua ou categoria mudou.
+
 ## §309 · O calendário saiu de vez do código — as três telas, não uma · 30/09/2026
 
 Classe **página pública**. Decisão da editoria de 30/09/2026 à noite, **mais forte que a anterior**:

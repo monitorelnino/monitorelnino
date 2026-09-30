@@ -23,8 +23,12 @@ USO
 import json
 import os
 import sys
+import pathlib
 import urllib.error
 import urllib.request
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from coletores_base import ua_de  # noqa: E402 — o caminho precisa entrar antes do import
 
 API = "https://api.netlify.com/api/v1"
 FORMULARIO = "contribuicao"
@@ -59,7 +63,10 @@ def pedir(caminho: str, token: str, dados: dict = None):
     req = urllib.request.Request(
         API + caminho,
         data=(json.dumps(dados).encode() if dados is not None else None),
-        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
+                 # §185/§228: o cliente se identifica em toda requisição, inclusive numa API
+                 # autenticada. Quem recebe o pedido tem direito de saber quem o fez.
+                 "User-Agent": ua_de("notificação de e-mail do formulário de contribuição")},
         method=("POST" if dados is not None else "GET"))
     with urllib.request.urlopen(req, timeout=60) as r:
         corpo = r.read()
