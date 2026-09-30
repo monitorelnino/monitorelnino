@@ -22,6 +22,23 @@ exatamente aí que um passo condicionado ao sucesso seria pulado.
 
 As capturas ficam no `.gitignore`: são artefato do run, nunca arquivo do repositório.
 
+## §317 · CHANGELOG curto, com chave por data e PR · 30/09/2026
+
+Classe **processo**. Item 4 do handover de otimização. Última entrada com `§`.
+
+**Teto de 80 palavras** para entrada nova: as desta semana passaram de 400. Fundamentação longa vai
+para a `METODOLOGIA.md`, que é onde se procura método; o CHANGELOG responde "o quê · por quê, numa
+frase · onde".
+
+**Chave `## AAAA-MM-DD · #PR · título`, sem numeração global.** O `§` sequencial colidia entre ramos:
+dois PRs abertos no mesmo dia escolhiam o mesmo número, e a união sobrescrevia a entrada de um deles
+— aconteceu três vezes em 29 e 30/09, e uma seção inteira se perdeu numa união textual. Data e PR
+são únicos por construção.
+
+**O histórico fica como está**: o portão só cobra o que nasce a partir de 01/10/2026 — reescrever
+mil entradas seria trabalho sem leitor. Tabela e bloco de código não contam no teto: tabela é dado,
+e cobrá-la empurraria para prosa pior. 15 casos de autoteste; a suíte vai a **127**.
+
 ## §316 · Cada portão roda onde pode falhar · 30/09/2026
 
 Classe **processo**. Item 3 do handover de otimização.
