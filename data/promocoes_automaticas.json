@@ -6995,7 +6995,7 @@
     "promovia": true
    },
    "nao_aplicado": {
-    "em": "2026-09-29",
+    "em": "2026-09-30",
     "motivo": "já consta no banco — a revisão humana decide se é atualização"
    }
   },
@@ -9253,7 +9253,7 @@
    "leu_documento": true,
    "hash_evidencia": "93d09f52d8b56f538511580972bd1aab7138dcd451529f8ed4a231d6069e6b60",
    "nao_aplicado": {
-    "em": "2026-09-29",
+    "em": "2026-09-30",
     "motivo": "já consta no banco — a revisão humana decide se é atualização"
    }
   },
@@ -18570,6 +18570,5117 @@
    "origem": "seguimento_querido_diario",
    "leu_documento": true,
    "hash_evidencia": "c87b0937c951562ded0e2c3f011d910dcb67a8bbcef069d65ca72ecdd6d35f36"
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.santarosa.gob.ar/el-nino-la-municipalidad-de-santa-rosa-detallo-el-plan-de-acciones-que-puso-en-marcha/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4317202",
+   "municipio": "Santa Rosa",
+   "uf": "RS",
+   "url": "https://www.santarosa.gob.ar/el-nino-la-municipalidad-de-santa-rosa-detallo-el-plan-de-acciones-que-puso-en-marcha/",
+   "pista_id": "11cbfdf188",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5003702",
+   "municipio": "Dourados",
+   "uf": "MS",
+   "url": "https://do.dourados.ms.gov.br/wp-content/uploads/2019/01/ANEXO-4.pdf",
+   "pista_id": "9dd3bf8ab8",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4176 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Fortaleza Portal A Cidade Canais Institucional Notícias Fortaleza Inclusiva Acessibilidade: A- A A+ Com inauguração do novo Cras Vila Ve"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2304400",
+   "municipio": "Fortaleza",
+   "uf": "CE",
+   "url": "https://www.fortaleza.ce.gov.br/",
+   "pista_id": "0a8db47e79",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1bce0f88d39800ad0da24a10ab2a99dbcc8296a4e6a92a5eb8f1b44a5e91dfaa",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.fortaleza.ce.gov.br/",
+    "recusa_original": "sem_documento_primario"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4176 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Fortaleza Portal A Cidade Canais Institucional Notícias Fortaleza Inclusiva Acessibilidade: A- A A+ Com inauguração do novo Cras Vila Ve"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2304400",
+   "municipio": "Fortaleza",
+   "uf": "CE",
+   "url": "https://www.fortaleza.ce.gov.br/",
+   "pista_id": "33884f648b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1bce0f88d39800ad0da24a10ab2a99dbcc8296a4e6a92a5eb8f1b44a5e91dfaa",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.fortaleza.ce.gov.br/",
+    "recusa_original": "sem_documento_primario"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://midiabahia.com.br/valenca-reforca-acoes-para-enfrentar-os-efeitos-do-el-nino-e-prevenir-queimadas/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2932903",
+   "municipio": "Valença",
+   "uf": "BA",
+   "url": "https://midiabahia.com.br/valenca-reforca-acoes-para-enfrentar-os-efeitos-do-el-nino-e-prevenir-queimadas/",
+   "pista_id": "5914b8cfee",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3118007",
+   "municipio": "Congonhas",
+   "uf": "MG",
+   "url": "https://www.congonhas.mg.gov.br/wp-content/uploads/2017/10/PGRSU-FINAL.pdf",
+   "pista_id": "b9c96715ad",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3551009",
+   "municipio": "São Vicente",
+   "uf": "SP",
+   "url": "http://www.saovicente.sp.gov.br/informacao/sao-vicente-reforca-preparacao-para-o-el-nino-com-obras-de-drenagem-investimentos-e-plano-preventivo",
+   "pista_id": "d0631f1419",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12060 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Leme Portal da transparência A- A+ cidadãos servidores empresas webmail imprensa Inicial Prefeitura Poder executivo Gabinete Cidade Dado"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "30/09/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "30/09/2026",
+   "natureza": null,
+   "ibge": "3526704",
+   "municipio": "Leme",
+   "uf": "SP",
+   "url": "https://www.leme.sp.gov.br/",
+   "pista_id": "468c7d518a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9000efdfc43304bbf38482da19a3c47cb8889a0bb0ff2ae731379138f6ec31c3",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.leme.sp.gov.br/",
+    "recusa_original": "sem_documento_primario"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3556701",
+   "municipio": "Vinhedo",
+   "uf": "SP",
+   "url": "https://www.camaravinhedo.sp.gov.br/imprensa/noticias/0/4/0/4337",
+   "pista_id": "2ed1c8ce14",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://www.curitiba.pr.gov.br/",
+   "pista_id": "6a630cc284",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.curitiba.pr.gov.br/",
+    "recusa_original": "sem_documento_primario"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4109401",
+   "municipio": "Guarapuava",
+   "uf": "PR",
+   "url": "https://guarapuava.pr.gov.br/wp-content/uploads/2025/12/Plano-Municipal-de-Saude-2026-2029.pdf",
+   "pista_id": "e8111187e2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://bntonline.com.br/el-nino-castro-decreta-estado-de-alerta-hidrologico-geologico-e-climatico-por-180-dias/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104907",
+   "municipio": "Castro",
+   "uf": "PR",
+   "url": "https://bntonline.com.br/el-nino-castro-decreta-estado-de-alerta-hidrologico-geologico-e-climatico-por-180-dias/",
+   "pista_id": "6ac5fc7306",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.portalmaripa.com.br/noticia/72851/prefeitura-de-palotina-promove-palestra-sobre-impactos-do-el-nino-e-acoes-de-prevencao"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4117909",
+   "municipio": "Palotina",
+   "uf": "PR",
+   "url": "https://www.portalmaripa.com.br/noticia/72851/prefeitura-de-palotina-promove-palestra-sobre-impactos-do-el-nino-e-acoes-de-prevencao",
+   "pista_id": "7068f16c13",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://bemoeste.com.br/noticia/4219/palotina-apresenta-plano-de-contingencia-para-prevencao-de-eventos-climaticos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4117909",
+   "municipio": "Palotina",
+   "uf": "PR",
+   "url": "https://bemoeste.com.br/noticia/4219/palotina-apresenta-plano-de-contingencia-para-prevencao-de-eventos-climaticos",
+   "pista_id": "51fdf21230",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.clickriomafra.com.br/noticias/rio-negro/el-nino-prefeitura-e-defesa-civil-de-rio-negro-se-preparam-para-eventuais-efeitos/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4122305",
+   "municipio": "Rio Negro",
+   "uf": "PR",
+   "url": "https://www.clickriomafra.com.br/noticias/rio-negro/el-nino-prefeitura-e-defesa-civil-de-rio-negro-se-preparam-para-eventuais-efeitos/",
+   "pista_id": "228cf24014",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.independente.com.br/artigo/relvado-apresenta-estudo-socioambiental-e-plano-de-contingencia-em-audiencia-publica"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315453",
+   "municipio": "Relvado",
+   "uf": "RS",
+   "url": "https://www.independente.com.br/artigo/relvado-apresenta-estudo-socioambiental-e-plano-de-contingencia-em-audiencia-publica",
+   "pista_id": "f2695b78ea",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1302603",
+   "municipio": "Manaus",
+   "uf": "AM",
+   "url": "http://www.amazonas.am.gov.br/2021/03/novo-decreto-do-governo-do-amazonas-traz-mudancas-em-regras-de-circulacao-ensino-privado-restaurantes-e-balnearios/",
+   "pista_id": "53f1d1ef3e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "39 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301702",
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "url": "https://duquedecaxias.rj.gov.br/noticia/plano-de-contingencia-municipal-ajuda-a-mitigar-danos-causados-por-desastres-naturais/5368",
+   "pista_id": "dc942a39be",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "39 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301702",
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "url": "https://duquedecaxias.rj.gov.br/noticia/defesa-civil-de-duque-de-caxias-lanca-plano-verao-20242025/5797",
+   "pista_id": "f5961f3406",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "a-feira, 2 de outubro de 2025 EXECUTIVO PESSOAL Portarias PREFEITO MUNICIPAL DE PORTO ALEGRE, no uso de suas atribuições legais, AUTORIZA JHONNY PRADO SILVA, ma"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "em Brasília/DF, com ônus para o Município, com base no artigo 32, inciso III da Lei Complementar 133, de 31/12/1985, através da Portaria 861, de 29/09/2025 (Pro",
+     "dados": {
+      "tipo": "lei",
+      "numero": "133",
+      "data": "01/10/2025",
+      "trecho": "em Brasília/DF, com ônus para o Município, com base no artigo 32, inciso III da Lei Complementar 133, de 31/12/1985, através da Portaria 861, de 29/09/2025 (Pro"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "2025 Publicação: Quinta-feira, 2 de outubro de 2025 EXECUTIVO PESSOAL Portarias PREFEITO MUNICIPAL DE PORTO ALEGRE, no uso de suas atribuições legais, AUTORIZA"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "01/10/2025",
+   "natureza": "DUVIDA",
+   "ibge": "4314902",
+   "municipio": "Porto Alegre",
+   "uf": "RS",
+   "url": "https://data.queridodiario.ok.org.br/4314902/2025-10-01/769f10071e5b1facc71affd7dca1f64f05ecabca.pdf",
+   "pista_id": "22583b25d3",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "0c63211cd5eb590f3fca44a1df45500777fa052ae97f90e223b50c150e4fc541"
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.saaefervedouro.com.br/uploads/conteudoarquivo_arquivo/2528/fervedouroplanosaneamento.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3125952",
+   "municipio": "Fervedouro",
+   "uf": "MG",
+   "url": "https://www.saaefervedouro.com.br/uploads/conteudoarquivo_arquivo/2528/fervedouroplanosaneamento.pdf",
+   "pista_id": "e6fda1e3b1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano XI | Edição nº 2557A de 02 de março de 2017 Sexta-feira, 20 de fevereiro de 2026 |"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano XI | Edição nº 2557A de 02 de março de 2017 Sexta-feira, 20 de fevereiro de 2026 |",
+     "dados": {
+      "tipo": "lei",
+      "numero": "5.927",
+      "data": "29/01/2026",
+      "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano XI | Edição nº 2557A de 02 de março de 2017 Sexta-feira, 20 de fevereiro de 2026 |"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "de 02 de março de 2017 Sexta-feira, 20 de fevereiro de 2026 SUMÁRIO Gabinete do Prefeito ......................................................................."
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "29/01/2026",
+   "natureza": "DUVIDA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://data.queridodiario.ok.org.br/3557105/2026-02-20/10c9f8a3467bc3a282b035b0964ab8aa6d79d72e.pdf",
+   "pista_id": "ac326b52aa",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "2c6b62c5a18c03f4613185d881dcf311c372d2b1ba4abf6db13f2c65955125df"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano X | Edição nº 2484A de 02 de março de 2017 Segunda-feira, 27 de outubro de 2025 |1"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano X | Edição nº 2484A de 02 de março de 2017 Segunda-feira, 27 de outubro de 2025 |1",
+     "dados": {
+      "tipo": "lei",
+      "numero": "5.927",
+      "data": "24/10/2025",
+      "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano X | Edição nº 2484A de 02 de março de 2017 Segunda-feira, 27 de outubro de 2025 |1"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ão nº 2484A de 02 de março de 2017 Segunda-feira, 27 de outubro de 2025 SUMÁRIO Secretaria Municipal da Fazenda ................................................"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "24/10/2025",
+   "natureza": "DUVIDA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://data.queridodiario.ok.org.br/3557105/2025-10-27/17b7e57b76a1c6d2b3990aab37da8c375afc5198.pdf",
+   "pista_id": "d85304d71b",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "32b3d6b9caebabf492954fb509bbd5edfab4f3a32e6c404fddde6ce82b2bac92"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano X | Edição nº 2490 de 02 de março de 2017 Quarta-feira, 05 de novembro de 2025 | 1"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano X | Edição nº 2490 de 02 de março de 2017 Quarta-feira, 05 de novembro de 2025 | 1",
+     "dados": {
+      "tipo": "lei",
+      "numero": "5.927",
+      "data": "12/08/2025",
+      "trecho": "DIÁRIO OFICIAL ELETRÔNICO DE VOTUPORANGA Conforme Lei Municipal nº 5.927, Ano X | Edição nº 2490 de 02 de março de 2017 Quarta-feira, 05 de novembro de 2025 | 1"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "de 02 de março de 2017 Quarta-feira, 05 de novembro de 2025 SUMÁRIO Gabinete do Prefeito ......................................................................."
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "12/08/2025",
+   "natureza": "DUVIDA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://data.queridodiario.ok.org.br/3557105/2025-11-05/9009e9286ffa6204accff6b73d2a73268122a835.pdf",
+   "pista_id": "1edaadc6ce",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "857fec9554ba5059ed722db5092801586df85aea02ceac58a2e221fe8aabbedd"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "os Links Telefones Úteis Emprega Agenda Contato Legislação Principal Legislação DECRETO Nº 20472, 09 DE JUNHO DE 2026 Atualizado em: 15/06/2026 às 16h22 ARRASTE",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "20472",
+      "data": "15/06/2026",
+      "trecho": "os Links Telefones Úteis Emprega Agenda Contato Legislação Principal Legislação DECRETO Nº 20472, 09 DE JUNHO DE 2026 Atualizado em: 15/06/2026 às 16h22 ARRASTE"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a se cadastrar ° ° Busca Principal Estrutura Organograma Secretarias Municipais Prefeito(a) Vice-Prefeito(a) A História Conheça Votuporanga Inauguração A ferrov"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "15/06/2026",
+   "natureza": "RESPOSTA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://www.votuporanga.sp.gov.br/portal/leis_decretos/13164/",
+   "encaminhar": "atos_resposta",
+   "pista_id": "a9a8b28bac",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "d94f2d96e9ac7da3e383b03ce86cff934b103b0e7072d42d9d67e82ac75ce2cf"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "os Links Telefones Úteis Emprega Agenda Contato Legislação Principal Legislação DECRETO Nº 15899, 29 DE JUNHO DE 2023 Atualizado em: 25/07/2023 às 09h26 ARRASTE",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "15899",
+      "data": "25/07/2023",
+      "trecho": "os Links Telefones Úteis Emprega Agenda Contato Legislação Principal Legislação DECRETO Nº 15899, 29 DE JUNHO DE 2023 Atualizado em: 25/07/2023 às 09h26 ARRASTE"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a se cadastrar ° ° Busca Principal Estrutura Organograma Secretarias Municipais Prefeito(a) Vice-Prefeito(a) A História Conheça Votuporanga Inauguração A ferrov"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "25/07/2023",
+   "natureza": "RESPOSTA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://www.votuporanga.sp.gov.br/portal/leis_decretos/1427/",
+   "encaminhar": "atos_resposta",
+   "pista_id": "84a881d48b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "07db6f36d7c34f1b6418fa7506a5c1ff700219b3b4893bfe617642138fc90474"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "os Links Telefones Úteis Emprega Agenda Contato Legislação Principal Legislação DECRETO Nº 14462, 13 DE ABRIL DE 2022 Atualizado em: 04/04/2024 às 15h00 ARRASTE",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "14462",
+      "data": "04/04/2024",
+      "trecho": "os Links Telefones Úteis Emprega Agenda Contato Legislação Principal Legislação DECRETO Nº 14462, 13 DE ABRIL DE 2022 Atualizado em: 04/04/2024 às 15h00 ARRASTE"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a se cadastrar ° ° Busca Principal Estrutura Organograma Secretarias Municipais Prefeito(a) Vice-Prefeito(a) A História Conheça Votuporanga Inauguração A ferrov"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "04/04/2024",
+   "natureza": "RESPOSTA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://www.votuporanga.sp.gov.br/portal/leis_decretos/4360",
+   "encaminhar": "atos_resposta",
+   "pista_id": "241d37933f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "1faa116fee857e694a1eb0d4295aa41997b07e6e252ad4892b20ba932ff3740d"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6264 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "os Links Telefones Úteis Emprega Agenda Contato Legislação Principal Legislação DECRETO Nº 12464, 15 DE JULHO DE 2020 Atualizado em: 27/11/2024 às 14h23 ARRASTE",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "12464",
+      "data": "27/11/2024",
+      "trecho": "os Links Telefones Úteis Emprega Agenda Contato Legislação Principal Legislação DECRETO Nº 12464, 15 DE JULHO DE 2020 Atualizado em: 27/11/2024 às 14h23 ARRASTE"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a se cadastrar ° ° Busca Principal Estrutura Organograma Secretarias Municipais Prefeito(a) Vice-Prefeito(a) A História Conheça Votuporanga Inauguração A ferrov"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "27/11/2024",
+   "natureza": "DUVIDA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://www.votuporanga.sp.gov.br/portal/leis_decretos/7585/",
+   "pista_id": "d5d0fd8e7d",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "0bc5301b3b1c910e97c0a646b4401cb73b9450775f531fbc8ac2b2dee589c3c0"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Nº 14 - ANO XV CURITIBA, QUINTA-FEIRA, 22 DE JANEIRO DE 2026 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE CURITIBA SUMÁRIO Licitações • SECRETARIA MUNICIPAL D"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AUTORIZAÇÃO PROTOCOLO N.º 01-009650/2026. Consoante subdelegação promovida pela Portaria n.º 7, de 10 de janeiro de 2025, AUTORIZO a aquisição de 200 (duzentas)",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "7",
+      "data": "23/01/2026",
+      "trecho": "AUTORIZAÇÃO PROTOCOLO N.º 01-009650/2026. Consoante subdelegação promovida pela Portaria n.º 7, de 10 de janeiro de 2025, AUTORIZO a aquisição de 200 (duzentas)"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "ratos • PROCURADORIA GERAL DO MUNICÍPIO - PGM • FUNDAÇÃO DE AÇÃO SOCIAL - FAS • CÂMARA MUNICIPAL DE CURITIBA - CMC Convênios • PROCURADORIA GERAL DO MUNICÍPIO -"
+    }
+   },
+   "categoria": null,
+   "data": "23/01/2026",
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4106902/2026-01-22/eab7a52d061a5a0fe550b5c54d56b05c77693667.pdf",
+   "pista_id": "93f2b30e7a",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "03b8193402e2f1670e96d2207f7779dba2de55be90bcc25f894d3bc382cf4404"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Nº 31 - ANO XV CURITIBA, QUARTA-FEIRA, 18 DE FEVEREIRO DE 2026 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE CURITIBA SUMÁRIO Licitações • SECRETARIA MUNICIPAL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "de e Inovação”, sob a modalidade de INEXIGIBILIDADE DE LICITAÇÃO, nos termos da Lei nº 14.133/2021, com base no Parecer Referencial n°17/2025 – PGM, em favor da",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133/2021",
+      "data": "29/01/2026",
+      "trecho": "de e Inovação”, sob a modalidade de INEXIGIBILIDADE DE LICITAÇÃO, nos termos da Lei nº 14.133/2021, com base no Parecer Referencial n°17/2025 – PGM, em favor da"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "26 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE CURITIBA SUMÁRIO Licitações • SECRETARIA MUNICIPAL DO MEIO AMBIENTE - SMMA • INSTITUTO MUNICIPAL DE ADMINISTRA"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "29/01/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4106902/2026-02-18/fcc4c7e93b9b30b2c390f9f0c78a1c9cc748beeb.pdf",
+   "pista_id": "c2c2f54bb9",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "540957025ec36509ce9b8aa5eb9c825fc5dabc889f519f9782c9889ccfb5c372"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Nº 18 - ANO XV CURITIBA, QUARTA-FEIRA, 28 DE JANEIRO DE 2026 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE CURITIBA SUMÁRIO Licitações • SECRETARIA MUNICIPAL D"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AUTORIZAÇÃO PROTOCOLO N.º 01-010740/2026. Consoante subdelegação promovida pela Portaria n.º 7, de 10 de janeiro de 2025, AUTORIZO a aquisição de 600 (seiscenta",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "7",
+      "data": "10/02/2026",
+      "trecho": "AUTORIZAÇÃO PROTOCOLO N.º 01-010740/2026. Consoante subdelegação promovida pela Portaria n.º 7, de 10 de janeiro de 2025, AUTORIZO a aquisição de 600 (seiscenta"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/02/2026",
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4106902/2026-01-28/34769132c312aa234d59d859c86d8f6817e93cba.pdf",
+   "pista_id": "b1c83eec27",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "09d45d560986ccfee8028a2d88856735c70b7553f2eae564f12bcd86541a4825"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Nº 25 - ANO XV CURITIBA, SEXTA-FEIRA, 6 DE FEVEREIRO DE 2026 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE CURITIBA SUMÁRIO Licitações • SECRETARIA MUNICIPAL D"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AUTORIZAÇÃO PROTOCOLO N.º 01-022957/2026. Consoante subdelegação promovida pela Portaria n.º 7, de 10 de janeiro de 2025, AUTORIZO a aquisição de 750 (setecento",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "7",
+      "data": "09/02/2026",
+      "trecho": "AUTORIZAÇÃO PROTOCOLO N.º 01-022957/2026. Consoante subdelegação promovida pela Portaria n.º 7, de 10 de janeiro de 2025, AUTORIZO a aquisição de 750 (setecento"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "26 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE CURITIBA SUMÁRIO Licitações • SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO E TECNOLOGIA DA INFORMAÇÃO - SMATI • SECRE"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "09/02/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4106902/2026-02-06/ad8977333887bb17f454d5be3dff627ab08cb8ba.pdf",
+   "pista_id": "b641fea0e5",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "09f5e7d2e6a4f3325f1f5c7d72eb31fd36590ae09dddf7aff0b54f1a7ec2d8b8"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CURITIBA DECRETO - AVISO DE PUBLICAÇÃO Nº 123 Torna Público DECRETO n.º 700/2022 - Institui o novo Protocolo de Responsabilidade Sanitár"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CURITIBA DECRETO - AVISO DE PUBLICAÇÃO Nº 123 Torna Público DECRETO n.º 700/2022 - Institui o novo Protocolo de Responsabilidade Sanitár",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "123",
+      "data": "20/08/2012",
+      "trecho": "PREFEITURA MUNICIPAL DE CURITIBA DECRETO - AVISO DE PUBLICAÇÃO Nº 123 Torna Público DECRETO n.º 700/2022 - Institui o novo Protocolo de Responsabilidade Sanitár"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": ", na forma do anexo deste decreto, mantém a disponibilização das orientações da Secretaria Municipal da Saúde, na página www.saude.curitiba.pr.gov.br, no que se"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "20/08/2012",
+   "natureza": "DUVIDA",
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://saude.curitiba.pr.gov.br/images/Decreto%20n%C2%BA%20700.2022.pdf",
+   "pista_id": "164be351c2",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "4a1371e3c515b5a68f10f2b73f90fdc684e6e4d70a53ed37a82806d2ff02496f"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236",
+   "pista_id": "0bb73f1765",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "96 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://saude.curitiba.pr.gov.br/noticias/2168-situacao-de-emergencia-e-encerrada-em-curitiba-municipio-segue-com-novo-protocolo.html",
+   "pista_id": "ad219e719d",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://www.curitiba.pr.gov.br/",
+   "pista_id": "d0f22de20c",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.curitiba.pr.gov.br/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Civil (FUMPDEC) e cria o seu respectivo Conselho Gestor. A CÂMARA MUNICIPAL DE LONDRINA, ESTADO DO PARANÁ, APROVOU E EU, PREFEITO DO MUNICÍPIO, SANCIONO A SEGU"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Quarta-feira, 16 de setembro de 2026 JORNAL DO EXECUTIVO ATOS LEGISLATIVOS LEIS LEI N.º 14247, DE 11 DE SETEMBRO DE 2026 SÚMULA: Institui o Fundo Municipal de P",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14247",
+      "data": "16/09/2026",
+      "trecho": "Quarta-feira, 16 de setembro de 2026 JORNAL DO EXECUTIVO ATOS LEGISLATIVOS LEIS LEI N.º 14247, DE 11 DE SETEMBRO DE 2026 SÚMULA: Institui o Fundo Municipal de P"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "onselho Gestor. A CÂMARA MUNICIPAL DE LONDRINA, ESTADO DO PARANÁ, APROVOU E EU, PREFEITO DO MUNICÍPIO, SANCIONO A SEGUINTE LEI: CAPÍTULO I DO FUNDO MUNICIPAL DE"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'estado de calamidade pública' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "16/09/2026",
+   "natureza": "RESPOSTA",
+   "ibge": "4113700",
+   "municipio": "Londrina",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4113700/2026-09-16/f81dac043c2295a950fbb7d3381a65f66e67736f.pdf",
+   "encaminhar": "atos_resposta",
+   "pista_id": "f3513a0ca1",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "5ac59528830f5700cfcbb596dec6bf75271a385dee2c1dc84978d0e7bc9c4f60"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DE 03 DE SETEMBRO DE 2026 SÚMULA: Inclui a Copa da Amizade de Futebol Suíço de Londrina no Calendário de Comemorações Oficiais do Município de Londrina e dá ou"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "egunda-feira, 14 de setembro de 2026 JORNAL DO EXECUTIVO ATOS LEGISLATIVOS LEIS LEI N.º 14236, DE 03 DE SETEMBRO DE 2026 SÚMULA: Inclui a Copa da Amizade de Fut",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14236",
+      "data": "14/09/2026",
+      "trecho": "egunda-feira, 14 de setembro de 2026 JORNAL DO EXECUTIVO ATOS LEGISLATIVOS LEIS LEI N.º 14236, DE 03 DE SETEMBRO DE 2026 SÚMULA: Inclui a Copa da Amizade de Fut"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "s providências. A CÂMARA MUNICIPAL DE LONDRINA, ESTADO DO PARANÁ, APROVOU E EU, PREFEITO DO MUNICÍPIO, SANCIONO A SEGUINTE LEI: Art. 1º Fica incluída no Calendá"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "14/09/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4113700",
+   "municipio": "Londrina",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4113700/2026-09-14/fc977526057018cd7f5437d935955d65047b4864.pdf",
+   "pista_id": "caeeb2386d",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "a4f14f926a750b28a0608968f45cb3826f0c5ce0f9a81b58f305bf7eb6ea12db"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "MAIO DE 2026 SÚMULA: Institui o Alerta para Resgate de Pessoas no Município de Londrina, estabelecendo a política municipal de contingência nas hipóteses de de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ia Segunda-feira, 18 de maio de 2026 JORNAL DO EXECUTIVO ATOS LEGISLATIVOS LEIS LEI N.º 14131, DE 14 DE MAIO DE 2026 SÚMULA: Institui o Alerta para Resgate de P",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14131",
+      "data": "23/09/2026",
+      "trecho": "ia Segunda-feira, 18 de maio de 2026 JORNAL DO EXECUTIVO ATOS LEGISLATIVOS LEIS LEI N.º 14131, DE 14 DE MAIO DE 2026 SÚMULA: Institui o Alerta para Resgate de P"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "e adolescentes. A CÂMARA MUNICIPAL DE LONDRINA, ESTADO DO PARANÁ, APROVOU E EU, PREFEITO DO MUNICÍPIO, SANCIONO A SEGUINTE LEI: Art. 1º Institui o Alerta para R"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "23/09/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4113700",
+   "municipio": "Londrina",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4113700/2026-05-18/2dc458566aa8e7f65f5740b3d978b0c29e7e43e9.pdf",
+   "pista_id": "ac31393747",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "bf3a1c6c5fe47fbbad82710ee3772f33a383200bc3ba5d81a1cf74aee1db0900"
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.ceivap.org.br/mata/Guidoval.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3128808",
+   "municipio": "Guidoval",
+   "uf": "MG",
+   "url": "https://www.ceivap.org.br/mata/Guidoval.pdf",
+   "pista_id": "58f84392fd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Diário Oficial do Município Edição Nº 2135 - Suplementar Pinhais - Paraná, 3 de Fevereiro de 2026 MUNICÍPIO DE PINHAIS Chamamento Publico Chamamento Publico 2/2"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "03/02/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2026",
+   "natureza": null,
+   "ibge": "4119152",
+   "municipio": "Pinhais",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4119152/2026-02-03/dd75254fd615b0f9c8dad15963da4dcdb48cc2a8.pdf",
+   "pista_id": "cb263f587f",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "832ec2d7d49fc0e0fa07d4b1072d0b00c003618df363b0241f08834615b84c53",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Diário Oficial do Município Edição Nº 2269 - Suplementar Pinhais - Paraná, 21 de Agosto de 2026 MUNICÍPIO DE PINHAIS Edital Edital 7/2026, de 21/08/2026 Edital"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o Município Edição Nº 2269 - Suplementar Pinhais - Paraná, 21 de Agosto de 2026 Portaria Portaria 125/2026, de 17/08/2026 Portaria 125-26_Tabela de Temporalidad",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "125/2026",
+      "data": "21/08/2026",
+      "trecho": "o Município Edição Nº 2269 - Suplementar Pinhais - Paraná, 21 de Agosto de 2026 Portaria Portaria 125/2026, de 17/08/2026 Portaria 125-26_Tabela de Temporalidad"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "rsão 02 PREFEITURA MUNICIPAL DE PINHAIS ESTADO DO PARANÁ PORTARIA Nº 125/2026 A SECRETÁRIA MUNICIPAL DE SAÚDE de Pinhais, Estado do Paraná, no uso de suas atrib"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "21/08/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4119152",
+   "municipio": "Pinhais",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4119152/2026-08-21/a91636060117d972a85a657f2f0dd53e9eaf10b3.pdf",
+   "pista_id": "db8716315e",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "89472c20f90bef20260bfc707ac08115d7493d7bbb8440c93c5a4408d9deb879"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Diário Oficial do Município Edição Nº 2103 - Suplementar Pinhais - Paraná, 11 de Dezembro de 2025 MUNICÍPIO DE PINHAIS Edital Edital 21/2025, de 11/12/2025 Edit"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "025 à 11/03/2026. Fiscal de Contrato: Maria Fernanda Caldeira Ribeiro. Conforme Decreto 053/2024. Valor total: R$ 129.261,60. Data de Assinatura: 11/12/2025. Di",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "053/2024",
+      "data": "11/12/2025",
+      "trecho": "025 à 11/03/2026. Fiscal de Contrato: Maria Fernanda Caldeira Ribeiro. Conforme Decreto 053/2024. Valor total: R$ 129.261,60. Data de Assinatura: 11/12/2025. Di"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "2025 DECOL - EXTRATOS DE COMPRA DIRETA PREFEITURA MUNICIPAL DE PINHAIS - PARANÁ Secretaria Municipal de Administração Extratos de Compra Direta Contrato n.º 047"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "11/12/2025",
+   "natureza": "DUVIDA",
+   "ibge": "4119152",
+   "municipio": "Pinhais",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4119152/2025-12-11/6bc24ea3ba71c71c168b618d7356ac2e1f67d3c5.pdf",
+   "pista_id": "fa21e3c096",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "f23c78860914a2864aeff21b1ec63ceac414dfdefb7e88580a9522352c5f5333"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Diário Oficial do Município Edição Nº 2061 - Ordinária Pinhais - Paraná, 9 de Outubro de 2025 MUNICÍPIO DE PINHAIS Decreto Decreto 1172/2025, de 08/10/2025 Disp"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Nº 2061 - Ordinária Pinhais - Paraná, 9 de Outubro de 2025 MUNICÍPIO DE PINHAIS Decreto Decreto 1172/2025, de 08/10/2025 Dispõe sobre o atual Regimento Interno",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "1172/2025",
+      "data": "08/10/2025",
+      "trecho": "Nº 2061 - Ordinária Pinhais - Paraná, 9 de Outubro de 2025 MUNICÍPIO DE PINHAIS Decreto Decreto 1172/2025, de 08/10/2025 Dispõe sobre o atual Regimento Interno"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "nto Básico - CMMASB, do Município de Pinhais e revoga o Decreto nº 1257/2024. A PREFEITA MUNICIPAL DE PINHAIS, Estado do Paraná, no uso de suas atribuições lega"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "08/10/2025",
+   "natureza": "DUVIDA",
+   "ibge": "4119152",
+   "municipio": "Pinhais",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4119152/2025-10-09/5a5fe77e6cb8f6f6ca45ff238b8771d7e276e6b5.pdf",
+   "pista_id": "3ac7871458",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "9deff589663cb5b250bd479c327ce598f4b0d062b1e6caebf8dd6f189f925554"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "E CONTROLE INTERNO 1 www.campomourao.atende.net Orgão Oficial Eletrônico - 3316 Campo Mourão - Sexta-feira - 06/02/2026 - SUPLEMENTO 1 Sumário 1. PLANO ANUAL DE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "- Unidade Central de Controle Interno do Município de Campo Mourão, criada pela lei nr. 2403 de 11 de agosto de 2008, a qual foi revogada e substituída pela Lei",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2403",
+      "data": "06/02/2026",
+      "trecho": "- Unidade Central de Controle Interno do Município de Campo Mourão, criada pela lei nr. 2403 de 11 de agosto de 2008, a qual foi revogada e substituída pela Lei"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/02/2026",
+   "natureza": null,
+   "ibge": "4104303",
+   "municipio": "Campo Mourão",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4104303/2026-02-06/0f3432b06f1e027dbc268f312d2924c428314968.pdf",
+   "pista_id": "3dbeb8dd50",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "c4ac9f13a3ee3339068132487fd6ca5137d6d4fd4bb6f565e762345b2e3b0b3c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "E INVESTIMENTOS 2026 PREVIDÊNCIA SOCIAL DOS SERVIDORES PÚBLICOS DO MUNICÍPIO DE CAMPO MOURÃO PREVISCAM 1 www.campomourao.atende.net Orgão Oficial Eletrônico - 3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "l do RPPS. Esta Política de Investimentos constitui-se em uma versão adequada à Resolução CMN nº 5.272 de 18 de dezembro de 2025 cuja vigência tem início em 1º",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5.272",
+      "data": "29/01/2026",
+      "trecho": "l do RPPS. Esta Política de Investimentos constitui-se em uma versão adequada à Resolução CMN nº 5.272 de 18 de dezembro de 2025 cuja vigência tem início em 1º"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "29/01/2026",
+   "natureza": null,
+   "ibge": "4104303",
+   "municipio": "Campo Mourão",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4104303/2026-01-29/6756480d7a8a26ccf93b18bcd8f299c4f81fca22.pdf",
+   "pista_id": "a8e48f0ba9",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "7f465dd30239a57c39411dccc6986c44c2c3d9558b8f41440dcf76d8edffac1c"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "VI - Edição Extraordinária Quinta-feira - 23/04/2026 ÓRGÃO OFICIAL DO MUNICÍPIO Campo Mourão - Paraná Lei nº 707, de 21 de novembro de 1990 e Lei nº 3.640, de 3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ária Quinta-feira - 23/04/2026 ÓRGÃO OFICIAL DO MUNICÍPIO Campo Mourão - Paraná Lei nº 707, de 21 de novembro de 1990 e Lei nº 3.640, de 30 de setembro de 2015",
+     "dados": {
+      "tipo": "lei",
+      "numero": "707",
+      "data": "23/04/2026",
+      "trecho": "ária Quinta-feira - 23/04/2026 ÓRGÃO OFICIAL DO MUNICÍPIO Campo Mourão - Paraná Lei nº 707, de 21 de novembro de 1990 e Lei nº 3.640, de 30 de setembro de 2015"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "30 de setembro de 2015 – Edição Eletrônica Atos do Poder Executivo: GABINETE DO PREFEITO D E C R E T O Nº 1 2 6 7 1 De 23 de abril de 2026 Altera dispositivos d"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "23/04/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4104303",
+   "municipio": "Campo Mourão",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4104303/2026-04-23/7572e3a6ca905e1a7bcec0765a56736d865f0583.pdf",
+   "pista_id": "58bb5548e5",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "cf7168a0716e179c58edffbe26f2788e66e77daffa5ccdebe966809dea13e2f0"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "VI - Edição Extraordinária Quarta-feira - 22/04/2026 ÓRGÃO OFICIAL DO MUNICÍPIO Campo Mourão - Paraná Lei nº 707, de 21 de novembro de 1990 e Lei nº 3.640, de 3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ária Quarta-feira - 22/04/2026 ÓRGÃO OFICIAL DO MUNICÍPIO Campo Mourão - Paraná Lei nº 707, de 21 de novembro de 1990 e Lei nº 3.640, de 30 de setembro de 2015",
+     "dados": {
+      "tipo": "lei",
+      "numero": "707",
+      "data": "22/04/2026",
+      "trecho": "ária Quarta-feira - 22/04/2026 ÓRGÃO OFICIAL DO MUNICÍPIO Campo Mourão - Paraná Lei nº 707, de 21 de novembro de 1990 e Lei nº 3.640, de 30 de setembro de 2015"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "30 de setembro de 2015 – Edição Eletrônica Atos do Poder Executivo: GABINETE DO PREFEITO PORTARIA Nº 373/2026 - GAPRE Nomeia Sidineia Aparecida de Souza habilit"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "22/04/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4104303",
+   "municipio": "Campo Mourão",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4104303/2026-04-22/f11d986a9304e31fbda76f7ea096c7b28774be75.pdf",
+   "pista_id": "8bab8d5538",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "0a1ff752a7f69698d0734428780b64f424290cf038fe6857f6b38cbe168dd96c"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Castro DIÁRIO OFICIAL ELETRÔNSecreItariaC MunicOipal de G oDverno O MUNICÍPIO DE EDITCAL DE CONAVOCAÇÃO NºS 89/2026 TRO O Secretário Mun"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "nstante no Processo Administrativo nº 13670/2026; C O N V O C A ÓRGÃO OFICIAL - LEI Nº 2628/2013 CASTRO, 11 DE julhO DE 2026 • 3429 • 253 PÁGINAS NOME CARGO CLA",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2628/2013",
+      "data": "04/12/2025",
+      "trecho": "nstante no Processo Administrativo nº 13670/2026; C O N V O C A ÓRGÃO OFICIAL - LEI Nº 2628/2013 CASTRO, 11 DE julhO DE 2026 • 3429 • 253 PÁGINAS NOME CARGO CLA"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "MunicOipal de G oDverno O MUNICÍPIO DE EDITCAL DE CONAVOCAÇÃO NºS 89/2026 TRO O Secretário Municipal de Governo, no uso de suas atribuições legais, e tendo em v"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "04/12/2025",
+   "natureza": "DUVIDA",
+   "ibge": "4104907",
+   "municipio": "Castro",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4104907/2026-07-11/c7cdbbbf4ea7208f0c997348a22ee81dd84fdedf.pdf",
+   "pista_id": "62470160e3",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "ced45e5e35a97ae667d52736d6775074ed84bee6bee0a7af3f3202f09d779778"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DO MUNICÍPIO DE CASTRO ÓRGÃO OFICIAL - LEI Nº 2628/2013 CASTRO, 04 DE DEzEmbRO DE 2025 • 3292 • 352 PÁGINAS LEIS Prefeitura Municipal"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DO MUNICÍPIO DE CASTRO ÓRGÃO OFICIAL - LEI Nº 2628/2013 CASTRO, 04 DE DEzEmbRO DE 2025 • 3292 • 352 PÁGINAS LEIS Prefeitura Municipal",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2628/2013",
+      "data": "02/80/92",
+      "trecho": "DIÁRIO OFICIAL ELETRÔNICO DO MUNICÍPIO DE CASTRO ÓRGÃO OFICIAL - LEI Nº 2628/2013 CASTRO, 04 DE DEzEmbRO DE 2025 • 3292 • 352 PÁGINAS LEIS Prefeitura Municipal"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ipal para o quadriênio 2026 a 2029. A CÂMARA MUNICIPAL DE CASTRO decretou e eu, PREFEITO MUNICIPAL sanciono esta Lei: Art.1º. Esta Lei institui o Plano Plurianu"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "02/80/92",
+   "natureza": "DUVIDA",
+   "ibge": "4104907",
+   "municipio": "Castro",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4104907/2025-12-04/ec6f8df73776c86fc7df026503513b34873dae6b.pdf",
+   "pista_id": "178475fe7e",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "8cf1406ee611b8d7ec5075b3fd96b0c28891a106bfab5077b0d9b9a8595f4882"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DO MUNICÍPIO DE CASTRO Prefeitura do Município de Castro ÓRGÃO OFICIAL - LEI Nº 2628/2013 CASTRO, 29 DE jAnEiRO DE 2026 • 3323 • 85 PÁ"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "RÔNICO DO MUNICÍPIO DE CASTRO Prefeitura do Município de Castro ÓRGÃO OFICIAL - LEI Nº 2628/2013 CASTRO, 29 DE jAnEiRO DE 2026 • 3323 • 85 PÁGinAS DECRETOS DECR",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2628/2013",
+      "data": "16/12/2025",
+      "trecho": "RÔNICO DO MUNICÍPIO DE CASTRO Prefeitura do Município de Castro ÓRGÃO OFICIAL - LEI Nº 2628/2013 CASTRO, 29 DE jAnEiRO DE 2026 • 3323 • 85 PÁGinAS DECRETOS DECR"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ENTOS E VINTE E TRÊS REAIS E CINQUENTA E QUATRO CENTAVOS). DECRETO Nº 30/2026 O PREFEITO DO MUNICÍPIO DE CASTRO, ESTADO DO PARANÁ, NO USO DE SUAS ATRIBUIÇÕES LE"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "16/12/2025",
+   "natureza": "DUVIDA",
+   "ibge": "4104907",
+   "municipio": "Castro",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4104907/2026-01-29/9a9c66fb045c4a4d41cece5e14e2c5977e9c4bff.pdf",
+   "pista_id": "d55d2bbd62",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "bb3e8099caac855f10115fdc95efa80a263ef341769ff17d0b3f4adeea0306cd"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DO Prefeitura Municipal de Castro Secretaria Municipal de Governo MUNICÍPIO DE CASTRO EDITAL DE CONVOCAÇÃO Nº 75/2026 O Secretário Mun"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "cipal de Governo, no uso de suas atribuições legais, e tendo em ÓRGÃO OFICIAL - LEI Nº 2628/2013 vista a nCecAessSidTadRe dOe s,u p2rir9 v aDgasE e xmisteAnteis",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2628/2013",
+      "data": "17/06/2026",
+      "trecho": "cipal de Governo, no uso de suas atribuições legais, e tendo em ÓRGÃO OFICIAL - LEI Nº 2628/2013 vista a nCecAessSidTadRe dOe s,u p2rir9 v aDgasE e xmisteAnteis"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "DIÁRIO OFICIAL ELETRÔNICO DO Prefeitura Municipal de Castro Secretaria Municipal de Governo MUNICÍPIO DE CASTRO EDITAL DE CONVOCAÇÃO Nº 75/2026 O Secretário Mun"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "17/06/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4104907",
+   "municipio": "Castro",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4104907/2026-05-29/2ec744608d982f6ac33d3ab6e5daa5c0f72b6c84.pdf",
+   "pista_id": "399b7a1ad5",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "5e6fe253953ce3441be7bf5e61b3e39045d85c93d75a42de9e8266d4765c70de"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5134 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Irati\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4110706",
+   "municipio": "Irati",
+   "uf": "PR",
+   "url": "https://www.parana.pr.gov.br/sites/default/arquivos_restritos/files/documento/2026-05/nota_tecnicandeg001_2026.pdf",
+   "pista_id": "dee7d22f38",
+   "origem": "seguimento_link_noticia",
+   "leu_documento": true,
+   "hash_evidencia": "6cf02d8e7d106f6aa06896f55d4bcdf6adaabff34bcef655e4ece18ad53ea91c"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Lei Municipal nº 1.997/2010 - Responsável: Ana Luiza Guimarães de Lima SÃO MATEUS DO SUL/PR, Terça-feira, 30 de Junho de 2026 - EDIÇÃO Nº 3885 SUMÁRIO PODER EXE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Lei Municipal nº 1.997/2010 - Responsável: Ana Luiza Guimarães de Lima SÃO MATEUS DO SUL/PR, Terça-feira, 30 de Junho de 2026 - EDIÇÃO Nº 3885 SUMÁRIO PODER EXE",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.997/2010",
+      "data": "15/12/2025",
+      "trecho": "Lei Municipal nº 1.997/2010 - Responsável: Ana Luiza Guimarães de Lima SÃO MATEUS DO SUL/PR, Terça-feira, 30 de Junho de 2026 - EDIÇÃO Nº 3885 SUMÁRIO PODER EXE"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "RETO N° 482/2026 Abre Crédito Adicional Suplementar e da outras providências. A Prefeita Municipal de SÃO MATEUS DO SUL, PR, no uso de suas atribuições legais e"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "15/12/2025",
+   "natureza": "DUVIDA",
+   "ibge": "4125605",
+   "municipio": "São Mateus do Sul",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4125605/2026-06-30/ed645c3ccee3b1adcb2c38df011136fcdf267488.pdf",
+   "pista_id": "dd01820f8b",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "2cfa376b1ccd37da095037e4d74d795831c253127623ccbe2ddfc56bcade78c8"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Lei Municipal nº 1.997/2010 - Responsável: Ana Luiza Guimarães de Lima SÃO MATEUS DO SUL/PR, Terça-feira, 03 de Março de 2026 - EDIÇÃO Nº 3805 SUMÁRIO PODER EXE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Lei Municipal nº 1.997/2010 - Responsável: Ana Luiza Guimarães de Lima SÃO MATEUS DO SUL/PR, Terça-feira, 03 de Março de 2026 - EDIÇÃO Nº 3805 SUMÁRIO PODER EXE",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.997/2010",
+      "data": "15/12/2025",
+      "trecho": "Lei Municipal nº 1.997/2010 - Responsável: Ana Luiza Guimarães de Lima SÃO MATEUS DO SUL/PR, Terça-feira, 03 de Março de 2026 - EDIÇÃO Nº 3805 SUMÁRIO PODER EXE"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "lamenta a abertura de Crédito Adicional Suplementar e da outras providências. A Prefeita Municipal de SÃO MATEUS DO SUL, PR, no uso das atribuições que lhe são"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "15/12/2025",
+   "natureza": "DUVIDA",
+   "ibge": "4125605",
+   "municipio": "São Mateus do Sul",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4125605/2026-03-03/cc19b4c8e24e34d1088fc54df8626255eee7b9f7.pdf",
+   "pista_id": "fcbc27b1d0",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "edb515646a5af267194cb5fc536b2cc23b142f1053e200ec0f76b69ced69cd95"
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.ceivap.org.br/mata/Chacara.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3115904",
+   "municipio": "Chácara",
+   "uf": "MG",
+   "url": "https://www.ceivap.org.br/mata/Chacara.pdf",
+   "pista_id": "b9a8774e49",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.instagram.com/p/DZnD7JLlSBT/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3150109",
+   "municipio": "Piau",
+   "uf": "MG",
+   "url": "https://www.instagram.com/p/DZnD7JLlSBT/",
+   "pista_id": "434571d764",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://coresab.com.br/wp-content/uploads/2019/08/P8_Morro_da_Garca.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3143609",
+   "municipio": "Morro da Garça",
+   "uf": "MG",
+   "url": "https://coresab.com.br/wp-content/uploads/2019/08/P8_Morro_da_Garca.pdf",
+   "pista_id": "3c6300c5d6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11973 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Quatis\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "município &#8211; enfatizou o prefeito. Na rotina interna da Prefeitura, o novo decreto dispensa do trabalho por 15 dias, servidores municipais com idade acima",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "15",
+      "data": "18/03/2020",
+      "trecho": "município &#8211; enfatizou o prefeito. Na rotina interna da Prefeitura, o novo decreto dispensa do trabalho por 15 dias, servidores municipais com idade acima"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "18/03/2020",
+   "natureza": null,
+   "ibge": "3304128",
+   "municipio": "Quatis",
+   "uf": "RJ",
+   "url": "https://quatis.rj.gov.br/prefeitura-de-quatis-decreta-medidas-de-combate-ao-coronavirus/",
+   "pista_id": "c930576b25",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "60b0a947749474fa4062c80d8b743fc4aad118a57c4fdf7a5c7dced914a888a6"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Quatis\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304128",
+   "municipio": "Quatis",
+   "uf": "RJ",
+   "url": "https://www.saude.rj.gov.br/controladoria-geral-da-ses/legislacao",
+   "pista_id": "55526c44cb",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "297c6c3080cfd070b470e2ce312fe6c7fc894ab2f2294680a9e8a019c9a9b945"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Sr. Sérgio Gomes 10 da Silva; SMS de Piraí, Sra. Giane Aparecida Gióia; SMS de Quatis, Sra. Cláudia de Sá Xavier 11 Monteiro; SMS de Resende, Sr. Alexandre Sér"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "174",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304128",
+   "municipio": "Quatis",
+   "uf": "RJ",
+   "url": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NDE2NDg%2C",
+   "pista_id": "def55639fb",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "beb3f0be92740c97a79638d4d1a10f5007899970580fd454ecb77f9d6215ea71",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Rio das Flores\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "http://www.rio.rj.gov.br/dlstatic/10112/7502221/4349502/PLANODECONTINGENCIA20212022.pdf",
+   "pista_id": "7207bc00aa",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "c4c5f48d1e8c0d69dbd7c6d78ef72f8d85af3807215b079009b52b6d955093b0"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9896 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Rio das Flores\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "https://www.cbmerj.rj.gov.br/estado-do-rio-apresenta-plano-de-contingencias-para-enfrentamento-da-seca-estiagem-e-incendio-florestal/",
+   "pista_id": "38bcaa7326",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "6370d2d12cc3eb6ebcbfe007610b0757b4f93f9e64fc5b59ae44656ead29df0e"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Rio das Flores\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "https://www.defesacivil.rj.gov.br/images/sedec-arquivos/PLANCON_23_24__Versao_1_0.pdf",
+   "pista_id": "717dc075f0",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "7b8f7d60aa49cce28ce2335acd10d5c54ac56d70af7ce835540d6d042fbaed97"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf",
+   "pista_id": "90923bfd42",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://oregional.net/flip/edicao-2522"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3548005",
+   "municipio": "Santo Antônio de Posse",
+   "uf": "SP",
+   "url": "https://oregional.net/flip/edicao-2522",
+   "pista_id": "7c938d57b7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3507100",
+   "municipio": "Bom Jesus dos Perdões",
+   "uf": "SP",
+   "url": "https://agencia.baciaspcj.org.br/docs/pmsb-pmgirs/p7-bom-jesus-perdoes-vol2.pdf",
+   "pista_id": "befac87760",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14927 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado de Santa Catarina Município de Bocaina do Sul DECRETO N. 3264, DE 09 DE MARÇO DE 2021. DISPÕE SOBRE NOVAS MEDIDAS, EXTRAORDINÁRIAS E POR TEMPO DETERMINAD"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Estado de Santa Catarina Município de Bocaina do Sul DECRETO N. 3264, DE 09 DE MARÇO DE 2021. DISPÕE SOBRE NOVAS MEDIDAS, EXTRAORDINÁRIAS E POR TEMPO DETERMINAD",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "3264",
+      "data": "09/03/2021",
+      "trecho": "Estado de Santa Catarina Município de Bocaina do Sul DECRETO N. 3264, DE 09 DE MARÇO DE 2021. DISPÕE SOBRE NOVAS MEDIDAS, EXTRAORDINÁRIAS E POR TEMPO DETERMINAD"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "RONAVÍRUS (COVID-19) NO MUNICÍPIO DE BOCAINA DO SUL E DÁ OUTRAS PROVIDÊNCIAS. O PREFEITO MUNICIPAL DE BOCAINA DO SUL, Estado de Santa Catarina, no uso de sua co"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "09/03/2021",
+   "natureza": "DUVIDA",
+   "ibge": "4202438",
+   "municipio": "Bocaina do Sul",
+   "uf": "SC",
+   "url": "https://bocaina.sc.gov.br/uploads/sites/291/2022/08/2069740_09032021_Decreto_3264_novas_restricoes_COVID.pdf",
+   "pista_id": "adfbaef6ee",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "d0f8dd4673ab3c9b49035afd9c63ee4b17a6c3aa6a5a85c8a4e4143c4ae2b143"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202438",
+   "municipio": "Bocaina do Sul",
+   "uf": "SC",
+   "url": "https://bocaina.sc.gov.br/remume-2/",
+   "pista_id": "7c06fceaa8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS SÓLIDOS QUELUZ - SP PLANO MUNICIPAL DE GESTÃO INTEGRADA DE RESÍDUOS SÓLIDOS DO MUNICÍPIO DE QUELUZ - SP ATO CONV"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.305/2010",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3541901",
+   "municipio": "Queluz",
+   "uf": "SP",
+   "url": "https://queluz.sp.gov.br/wp-content/uploads/2024/06/P6-PMGIRS-Versao-Preliminar-do-PMGIRS-Queluz.pdf",
+   "pista_id": "0768d2e16c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8b07d8720e4854d0f40ff80458d887231448df063351720f3bff60b90590d09f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "l': 35.183-7 Folha 103 SSRH 0.03/2017 CT SABESP 290/17 PREFEITURA MUNICIPAL DE PEREIRAS C.N.P.J 46.634.622/0001-72 Taço MunícipaCJ^ataCino Crísjyí '«31-^88» Ru"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "890/12",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3537503",
+   "municipio": "Pereiras",
+   "uf": "SP",
+   "url": "https://www.pereiras.sp.gov.br/public/admin/globalarq/contrato/arquivo/5d92f86ed6e83979b3c8100a5aceb3a6.pdf",
+   "pista_id": "742c031931",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "987ebd63375db7b7b51943094d234b29558802b6f400dcc8cfcaaad76ef7e9df",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://smastr20.blob.core.windows.net/conesan/Monte%20Alegre%20do%20Sul_AE_DU_RS_2014.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3531209",
+   "municipio": "Monte Alegre do Sul",
+   "uf": "SP",
+   "url": "https://smastr20.blob.core.windows.net/conesan/Monte%20Alegre%20do%20Sul_AE_DU_RS_2014.pdf",
+   "pista_id": "4918e7db22",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3514304",
+   "municipio": "Dourado",
+   "uf": "SP",
+   "url": "https://do.dourados.ms.gov.br/wp-content/uploads/2019/01/ANEXO-4.pdf",
+   "pista_id": "b34956c94d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://smastr20.blob.core.windows.net/conesan/Lavrinhas_AE_DU_RS_2011.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3526605",
+   "municipio": "Lavrinhas",
+   "uf": "SP",
+   "url": "https://smastr20.blob.core.windows.net/conesan/Lavrinhas_AE_DU_RS_2011.pdf",
+   "pista_id": "431efa4aa9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "VID – 19 Diretoria Municipal de Desenvolvimento Social e Cidadania Município de Santo Antônio de Posse/SP.·. SUMÁRIO 1 IDENTIFICAÇÃO ..........................."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "de 2020, em decorrência da Infecção Humana pelo novo Coronavírus (COVID-19); b) Portaria MS nº 188, de 4 de fevereiro de 2020, que declara Emergência em Saúde P",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "188",
+      "data": "02/04/2020",
+      "trecho": "de 2020, em decorrência da Infecção Humana pelo novo Coronavírus (COVID-19); b) Portaria MS nº 188, de 4 de fevereiro de 2020, que declara Emergência em Saúde P"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "la ampliação dos mesmos em virtude das necessidades locais; ✓ Articular junto a Secretaria de Saúde para capacitação dos profissionais em relação ao uso de EPIs"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "02/04/2020",
+   "natureza": "DUVIDA",
+   "ibge": "3548005",
+   "municipio": "Santo Antônio de Posse",
+   "uf": "SP",
+   "url": "https://pmsaposse.sp.gov.br/wp-content/uploads/2020/08/Plano-de-Conting%C3%AAncia-SUAS-Santo-Antonio-de-Posse.pdf",
+   "pista_id": "5edede613c",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "ec186c32c09c650d250b3bee6697d2778f72ab9fa1760534bd52e82f80a15eb1"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "março de 2024 ANO XIV - EDIÇÃO Nº 1076 Órgão Oficial do Município Município de Santo Antônio de Posse – Estado de São Paulo | Conforme Lei Municipal nº 3.151,"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "3.151",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3548005",
+   "municipio": "Santo Antônio de Posse",
+   "uf": "SP",
+   "url": "https://pmsaposse.sp.gov.br/wp-content/uploads/2024/03/Edicao-1076.pdf",
+   "pista_id": "756e6a8b69",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "2ab4d8b43366ac51800d8ba06da45bfdfa8102c395ed9be04126624326f654d4",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7787 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Notícia - PLANO DE CONTINGÊNCIA AO CORONAVÍRUS. - Prefeitura Municipal de Bom Jesus dos Perdões . . . Acessibilidade Aumentar Fonte . Diminuir Fonte . Fonte Nor"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "29/07/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "29/07/2021",
+   "natureza": null,
+   "ibge": "3507100",
+   "municipio": "Bom Jesus dos Perdões",
+   "uf": "SP",
+   "url": "https://bjperdoes.sp.gov.br/noticia/339/plano-de-contingencia-ao-coronavirus/",
+   "pista_id": "e762e0e502",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "949d35e904c42d8b5fdc1f64f0b6eab2333f9b256e80244fb096669d3b775737",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE SAÚDE DE CAMPINA DA LAGOA 2026-2029 2025 Sumário 1 – Introdução ............................................................................."
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "141/2012",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4103909",
+   "municipio": "Campina da Lagoa",
+   "uf": "PR",
+   "url": "https://www.campinadalagoa.pr.gov.br/documentos/legislacao/142510-planos-1-2026.pdf",
+   "pista_id": "5e453245c9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "293c8154df508daf7f0ec3e8126b298326453c83eab8f1980d6b84ea9aea428b",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "............................................................................ 87 BITURUNA - PR 2 PLANO MUNICIPAL DE EDUCAÇÃO 2.6.7 FORMAÇÃO DOS PROFESSORES E VAL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "se pretende atingir na educação municipal, em consonância com a determinação da Lei Federal nº 10.172 de 09 de janeiro de 2001, que estabelece a necessidade de",
+     "dados": {
+      "tipo": "lei",
+      "numero": "10.172",
+      "data": "09/01/2001",
+      "trecho": "se pretende atingir na educação municipal, em consonância com a determinação da Lei Federal nº 10.172 de 09 de janeiro de 2001, que estabelece a necessidade de"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/01/2001",
+   "natureza": null,
+   "ibge": "4102901",
+   "municipio": "Bituruna",
+   "uf": "PR",
+   "url": "https://arquivo.bituruna.pr.gov.br/publicacoes/download/1715/plano-municipal-de-educao",
+   "pista_id": "8e36414ea8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f6ecf79fdf37ed9dc94d53fbab09dcd879f9e5165a39b5bd295781af40a4b343"
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4124806",
+   "municipio": "São João",
+   "uf": "PR",
+   "url": "https://odia.ig.com.br/sao-joao-da-barra/2026/07/7281194-enfrentamento-ao-el-nino-e-priorizado-em-sao-joao-da-barra.html",
+   "pista_id": "f2fa11f62e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://amazoniareal.com.br/super-el-nino-impoe-riscos-de-incendios-florestais-na-amazonia/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4107900",
+   "municipio": "Floresta",
+   "uf": "PR",
+   "url": "https://amazoniareal.com.br/super-el-nino-impoe-riscos-de-incendios-florestais-na-amazonia/",
+   "pista_id": "8fae3caa6a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.datoposta.com/mercedes-activa-el-comite-de-emergencia-frente-a-el-nino/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4115853",
+   "municipio": "Mercedes",
+   "uf": "PR",
+   "url": "https://www.datoposta.com/mercedes-activa-el-comite-de-emergencia-frente-a-el-nino/",
+   "pista_id": "e6a4dbbe87",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4107900",
+   "municipio": "Floresta",
+   "uf": "PR",
+   "url": "https://www.gov.br/saude/pt-br/composicao/svsa/saude-ambiental/vigiar/monitoramento-de-incendios-florestais/2026/informe-monitoramento-de-incendios-florestais-se-27.pdf",
+   "pista_id": "dba3a689b5",
+   "origem": "seguimento_link_noticia",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7014 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "dos Planos de Gestão de Terras Indígenas Formação e Capacitação de Agentes Agroflorestais Indígenas Pagamento de Bolsa aos Agentes Agroflorestais Indígenas Man"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4107900",
+   "municipio": "Floresta",
+   "uf": "PR",
+   "url": "https://sepi.ac.gov.br/governo-do-acre-intensifica-acoes-para-reduzir-impactos-do-super-el-nino-em-terras-indigenas-do-estado/",
+   "pista_id": "37a9499afc",
+   "origem": "seguimento_link_noticia",
+   "leu_documento": true,
+   "hash_evidencia": "9c362eec9f417b66dd1df054708e1b616c3eda4d95e5ac39a6555dcf77f97df1",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.rondoniaovivo.com/noticia/interior/2026/04/07/el-nino-alvorada-doeste-planeja-racionamento-de-agua-diante-de-alerta-de-seca-severa.html"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1100346",
+   "municipio": "Alvorada D'Oeste",
+   "uf": "RO",
+   "url": "https://www.rondoniaovivo.com/noticia/interior/2026/04/07/el-nino-alvorada-doeste-planeja-racionamento-de-agua-diante-de-alerta-de-seca-severa.html",
+   "pista_id": "bc54c96f5a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://santaportal.com.br/baixada/sao-vicente-reforca-preparacao-para-o-el-nino/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2413003",
+   "municipio": "São Vicente",
+   "uf": "RN",
+   "url": "https://santaportal.com.br/baixada/sao-vicente-reforca-preparacao-para-o-el-nino/",
+   "pista_id": "c9edcbd126",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2413003",
+   "municipio": "São Vicente",
+   "uf": "RN",
+   "url": "https://jornaldaorla.com.br/noticias/sao-vicente-reforca-drenagem-como-prevencao-ao-el-nino/",
+   "pista_id": "dfbc75c84b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2408607",
+   "municipio": "Paraná",
+   "uf": "RN",
+   "url": "https://g1.globo.com/pr/campos-gerais-sul/noticia/2026/05/14/el-nino-pode-provocar-tempestades-severas-no-parana-entenda-o-fenomeno-e-veja-o-que-dizem-os-meteorologistas.ghtml",
+   "pista_id": "f4a1c5aa12",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1712009",
+   "municipio": "Lajeado",
+   "uf": "TO",
+   "url": "http://www.lajeado.rs.gov.br/",
+   "pista_id": "81bac8fc03",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "http://www.lajeado.rs.gov.br/",
+    "recusa_original": "sem_documento_primario"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.instagram.com/p/DdZX8XIRdv_/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1703826",
+   "municipio": "Cachoeirinha",
+   "uf": "TO",
+   "url": "https://www.instagram.com/p/DdZX8XIRdv_/",
+   "pista_id": "c374e77c18",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1703826",
+   "municipio": "Cachoeirinha",
+   "uf": "TO",
+   "url": "https://www.oreporter.net/cachoeirinha-e-contemplada-no-prepara-rs-el-nino-e-vai-receber-r-300-mil/",
+   "pista_id": "4de3abf82b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.instagram.com/reel/DclxdDCOw7_/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://www.instagram.com/reel/DclxdDCOw7_/",
+   "pista_id": "c4320e89f3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://eshoje.com.br/meio-ambiente/2026/08/vila-velha-apresenta-plano-de-contingencia-com-foco-no-el-nino/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205200",
+   "municipio": "Vila Velha",
+   "uf": "ES",
+   "url": "https://eshoje.com.br/meio-ambiente/2026/08/vila-velha-apresenta-plano-de-contingencia-com-foco-no-el-nino/",
+   "pista_id": "213cfdefc1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://rbtv.com.br/noticia/13581/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://rbtv.com.br/noticia/13581/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos",
+   "pista_id": "f3c4158eff",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.instagram.com/p/DZ5wii5gHCw/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://www.instagram.com/p/DZ5wii5gHCw/",
+   "pista_id": "f63069b16f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204906",
+   "municipio": "São Mateus",
+   "uf": "ES",
+   "url": "https://portalrdx.com.br/21/07/2026/sao-mateus-do-sul-reuniao-sobre-o-plano-de-contingencia-para-o-el-nino-acontece-nesta-terca-21/",
+   "pista_id": "9e41a19f6f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204906",
+   "municipio": "São Mateus",
+   "uf": "ES",
+   "url": "https://folhadeirati.com.br/sao-mateus-do-sul-apresenta-plano-de-contingencia-e-reforca-preparacao-para-possiveis-cheias/",
+   "pista_id": "0a6f89093a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6193 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño - Notícias --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> -->"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/09/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/09/2026",
+   "natureza": null,
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "url": "https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+   "pista_id": "0e2c464646",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9e3ac1adcf6f5e089e7425b72fd9ec845398478b042df51e6a20a3bc93a6842d",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "url": "https://odiario24h.com.br/noticia/prefeitura-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino",
+   "pista_id": "0610669d73",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://radiorcfm.com/news/view/3975-saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-ni-o"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "url": "https://radiorcfm.com/news/view/3975-saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-ni-o",
+   "pista_id": "162b614875",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://rc24h.com.br/saude-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "url": "https://rc24h.com.br/saude-de-cabo-frio-prepara-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+   "pista_id": "853cd22bce",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "url": "https://www.lagoscultura.com.br/noticia.php?id=rss10d20f13c7fe2cd2",
+   "pista_id": "a393cf8444",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.facebook.com/wandersonnogueira.rj/videos/como-nova-friburgo-ser%C3%A1-atingida-pelo-super-el-ni%C3%B1o-segundo-especialistas-com-pa/1720640012274128/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303401",
+   "municipio": "Nova Friburgo",
+   "uf": "RJ",
+   "url": "https://www.facebook.com/wandersonnogueira.rj/videos/como-nova-friburgo-ser%C3%A1-atingida-pelo-super-el-ni%C3%B1o-segundo-especialistas-com-pa/1720640012274128/",
+   "pista_id": "ee78fe94d7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://riodasostras.com.br/noticias/Noticias.php?noticia=14414"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304524",
+   "municipio": "Rio das Ostras",
+   "uf": "RJ",
+   "url": "https://riodasostras.com.br/noticias/Noticias.php?noticia=14414",
+   "pista_id": "2153e2be9a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300605",
+   "municipio": "Bom Jesus do Itabapoana",
+   "uf": "RJ",
+   "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2025/11/04/bom-jesus-do-itabapoana-apresenta-plano-de-contingencia-para-enfrentar-chuvas-fortes.ghtml",
+   "pista_id": "5d7fd533db",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://diariodovale.com.br/cidade/itatiaia-avanca-na-construcao-de-plano-de-acao-para-eventos-climaticos-extremos/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302254",
+   "municipio": "Itatiaia",
+   "uf": "RJ",
+   "url": "https://diariodovale.com.br/cidade/itatiaia-avanca-na-construcao-de-plano-de-acao-para-eventos-climaticos-extremos/",
+   "pista_id": "a691ddb18c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "s3://okbr-qd-migration//3205002/2025-12-29/c949d9bb8d6ed6cee21f7b449559a342fd8cba47.pdf",
+   "pista_id": "19d201966d",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CCiivviitt 11 OOrrgguullhhoo ddee sseerr SSEERRRRAANNOO!! Serra (ES), terça-feira, 06 de janeiro de 2026 Weverson Valcker Meireles Gracimeri Vieira Soeiro De Ca"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ra, 5 de janeiro de 2026. Decretos WEVERSON VALCKER MEIRELES Prefeito Municipal DECRETO Nº 002, DE 5 DE JANEIRO DE 2026 Protocolo 1700664 DESIGNA SECRETÁRIO MUN",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "002",
+      "data": "19/01/2026",
+      "trecho": "ra, 5 de janeiro de 2026. Decretos WEVERSON VALCKER MEIRELES Prefeito Municipal DECRETO Nº 002, DE 5 DE JANEIRO DE 2026 Protocolo 1700664 DESIGNA SECRETÁRIO MUN"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ro de 2026 Weverson Valcker Meireles Gracimeri Vieira Soeiro De Castro Gaviorno Prefeito Vice-prefeita SECRETARIADO MUNICIPAL Lilian Siqueira da Costa Schmidt C"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "19/01/2026",
+   "natureza": "DUVIDA",
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://data.queridodiario.ok.org.br/3205002/2026-01-06/6d23fe1ca4e777b647898ca2bc48b40769f6cfd3.pdf",
+   "pista_id": "6a02a7e1d2",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "0d5a74906bd024e07eff51db8400f21bdb825f8727f3b232aaaca73862252e47"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CCiivviitt 11 OOrrgguullhhoo ddee sseerr SSEERRRRAANNOO!! Serra (ES), sexta-feira, 19 de dezembro de 2025 Weverson Valcker Meireles Gracimeri Vieira Soeiro De C"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "r Serra (ES), sexta-feira, 19 de Dezembro de 2025 Edição N1.211 ATOS MUNICIPAIS LEI Nº 6.238, DE 17 DE DEZEMBRO DE 2025 Atos Municipais DENOMINA DE “DINORAH PER",
+     "dados": {
+      "tipo": "lei",
+      "numero": "6.238",
+      "data": "19/12/2025",
+      "trecho": "r Serra (ES), sexta-feira, 19 de Dezembro de 2025 Edição N1.211 ATOS MUNICIPAIS LEI Nº 6.238, DE 17 DE DEZEMBRO DE 2025 Atos Municipais DENOMINA DE “DINORAH PER"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ro de 2025 Weverson Valcker Meireles Gracimeri Vieira Soeiro De Castro Gaviorno Prefeito Vice-prefeita SECRETARIADO MUNICIPAL Lilian Siqueira da Costa Schmidt C"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "sem sinalizador de resposta, gatilho de previsão presente",
+     "objeto": "no Município nos últimos anos, Art. 1º Institui e inclui no Calendário Oficial de Eventos do Município da Serra, o “Arraiá Beneficente de Belvedere”, D E C R E T A: a ser comemorado anualmente no início do mês de junho. CAPÍTULO I Parágrafo único. A Tabela do Art. 1º da Lei Municipal DO PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL nº 4.950, de 16 de janeiro de 2019, que consolida a (PMPDEC) legislação em vigor referente ao Calendário Oficial de E",
+     "gatilho": "e permite acompanhar de forma O Orçamento da Criança e do a prioridade absoluta prevista na clara a execução do orçamento Adolescente funciona como um Constitui",
+     "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "multirrisco_pdc",
+     "trecho": "O I Parágrafo único. A Tabela do Art. 1º da Lei Municipal DO PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL nº 4.950, de 16 de janeiro de 2019, que consolida a (PMP"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "ato de 19/12/2025, anterior ao Boletim nº 1 (29/06/2026)"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "19/12/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://data.queridodiario.ok.org.br/3205002/2025-12-19/35d226b9dea4bc74b05a648fb52e72ac5d1116a2.pdf",
+   "familia_de_risco": "multirrisco_pdc",
+   "pista_id": "914f69a7da",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "20d0f82468e8d11663f5e278c58e2f0e32f53d364016f7720d1822ea3cf8d8be",
+   "nao_aplicado": {
+    "em": "2026-09-30",
+    "motivo": "já consta no banco — a revisão humana decide se é atualização"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12762 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Defesa Civil da Serra elabora Plano de Contingência para períodos de chuva na cidade - Portal da Prefeitura Municipal da Serra Acessibilidade: e-SIC Ouvidoria T"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "26/11/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "26/11/2024",
+   "natureza": null,
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade",
+   "pista_id": "d53c841939",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "78644d63db338eaa9d76e1e3582bb692e4b0a5a247fd618070b00ae159cd6a18",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "2016-03-03T13:43:00Z 2026-07-13T18:56:00Z 1 7965 43017 Prefeitura Municipal da Serra 358 101 50881 16.00 Clean Clean false 21 5 pt 0 0 false false false PT-BR"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DECRETO 6823/2015 05/11/2015 SEPROM Leidiani Martins Braz 25 221 2015-06-02T20:46:00Z 2016-03-03T13:43:00Z 2026-07-13T18:56:00Z 1 7965 43017 Prefeitura Municipa",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "6823/2015",
+      "data": "05/11/2015",
+      "trecho": "DECRETO 6823/2015 05/11/2015 SEPROM Leidiani Martins Braz 25 221 2015-06-02T20:46:00Z 2016-03-03T13:43:00Z 2026-07-13T18:56:00Z 1 7965 43017 Prefeitura Municipa"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "O DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL E DÁ OUTRAS PROVIDÊNCIAS. &nbsp; O PREFEITO MUNICIPAL DA SERRA , ESTADO DO ESPÍRITO SANTO , usando das atribuições"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "05/11/2015",
+   "natureza": "RESPOSTA",
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://prefeiturasempapel.serra.es.gov.br/Arquivo/Documents/legislacao/html/D68232015.html",
+   "encaminhar": "atos_resposta",
+   "pista_id": "941cec3cf2",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "b03cb1c49ac851e0fd89a888be043daaa2d7c4cd5affec190556cd43e2e8c797"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7696 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Serra sai na frente e apresenta plano para enfrentar os efeitos do El Niño - Portal da Prefeitura Municipal da Serra Acessibilidade: e-SIC Ouvidoria Transparênc"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "07/08/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "07/08/2026",
+   "natureza": null,
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino",
+   "pista_id": "900b8ddce3",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "7b2823eb53cd81f3c33fec23bb86e83139d5c5358e001872e0b28dce5a64f657",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ale do Arrudas\". Em 2003, deslizamentos nos aglomerados do Morro das Pedras, da Serra e no Taquaril vitimaram 16 pessoas e culminaram com a remoção de quase dua"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ortante. Tais sinistros levaram à criação da Defesa Civil Municipal por meio da Lei Municipal nº 3.135, de 23/11/1979, regulamentada pelo Decreto nº 3.651, de 2",
+     "dados": {
+      "tipo": "lei",
+      "numero": "3.135",
+      "data": "23/11/1979",
+      "trecho": "ortante. Tais sinistros levaram à criação da Defesa Civil Municipal por meio da Lei Municipal nº 3.135, de 23/11/1979, regulamentada pelo Decreto nº 3.651, de 2"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "23/11/1979",
+   "natureza": null,
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
+   "pista_id": "93ee2f87e5",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "0760a72e102c6518fac6a0cd6c066a556e2ea239ad13c875abe2beb5dc1b6115"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ste ano e representaram um investimento aproximado de R$ 220 mil. O prefeito de Vitória, Lorenzo Pazolini, esteve presente na solenidade de entrega e comemorou"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "estoques pesqueiros no litoral do Espírito Santo. A proteção segue as regras da Portaria SAP/MAPA nº 656/2022, que regulamenta a pesca de camarões marinhos no m",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "656/2022",
+      "data": "27/11/2025",
+      "trecho": "estoques pesqueiros no litoral do Espírito Santo. A proteção segue as regras da Portaria SAP/MAPA nº 656/2022, que regulamenta a pesca de camarões marinhos no m"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "em julho deste ano e representaram um investimento aproximado de R$ 220 mil. O prefeito de Vitória, Lorenzo Pazolini, esteve presente na solenidade de entrega"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "27/11/2025",
+   "natureza": "DUVIDA",
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://data.queridodiario.ok.org.br/3205309/2025-12-01/452d5c537adf89813a2b1cb664786c90bf0a6a92.pdf",
+   "pista_id": "d18d64a5a8",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "2c213a7f1750af029ef4f789b784ed30274d9deeee2b59e7abd28e7fd44042ad"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "934 29 de Julho Prefeitura realiza cinco mil atendimentos em mais uma edição do Vitória com Você Publicada em 25/07/2026, às 15h20 Por Michelle Moretti (msmoret"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "am convocados os candidatos aprovados no Edital por tempo determinado, conforme Lei Municipal nº 7.534/2008. de Processo Seletivo Simplificado, abaixo relaciona",
+     "dados": {
+      "tipo": "lei",
+      "numero": "7.534/2008",
+      "data": "25/07/2026",
+      "trecho": "am convocados os candidatos aprovados no Edital por tempo determinado, conforme Lei Municipal nº 7.534/2008. de Processo Seletivo Simplificado, abaixo relaciona"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "25/07/2026",
+   "natureza": null,
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://data.queridodiario.ok.org.br/3205309/2026-07-29/a7f158e2d5e7fd975935d29393b6f819beea151d.pdf",
+   "pista_id": "403eb09b43",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "9042eefe5dc2e58b2afd36f68c8d8f4dc50895fd79266f4be11f05ce5303c91a"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Proteção e Defesa Civil &ndash; Prefeitura de Vitória Prefeitura de Vitória Atalhos de teclado: Ir para a página de instruções de acessibilid"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "9.271/2018",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://m.vitoria.es.gov.br/cidadao/defesa-civil-plano-de-contingencia-para-desastre-e-emergencia",
+   "pista_id": "7168e66e84",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "53e5d2bd384181f795c07676a4a523517edbed9d137f671db931553fdb3d03f5",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Saúde de Vitória desenvolve Plano de Contingência para situações de desastres &ndash; Prefeitura de Vitória Prefeitura de Vitória Atalhos de teclado: Ir para a"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "9.271/2018",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://m.vitoria.es.gov.br/noticia/saude-de-vitoria-desenvolve-plano-de-contingencia-para-situacoes-de-desastres-51224",
+   "pista_id": "ab9dfdc5bf",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "37c72f5a31ca7901c3498d8503b36dffefb4732953839a2e043e750643b36ebd",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "OGRÁFICOS Viana é um municíp io que faz parte da Região Metropolitana da Grande Vitória (RMV), uma área que reúne várias cidades próximas, funcionando como um g"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DEFESA SOCIAL E TRÂNSITO DIRETORIA DE PROTEÇÃO E DEFESA CIVIL 1. APRESENTAÇÃO A Lei nº 14.750, de 12 de dezembro de 2023, que alterou as Leis nº 12.608/2012 e n",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.750",
+      "data": "12/12/2023",
+      "trecho": "DEFESA SOCIAL E TRÂNSITO DIRETORIA DE PROTEÇÃO E DEFESA CIVIL 1. APRESENTAÇÃO A Lei nº 14.750, de 12 de dezembro de 2023, que alterou as Leis nº 12.608/2012 e n"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "12/12/2023",
+   "natureza": null,
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-2025.pdf",
+   "pista_id": "04bfce3cfe",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "6a73e16c9972c63a986d09ad6cbdb02adb39ca67f0b51adf10c18f1843b0c862"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Defesa Civil &ndash; Prefeitura de Vitória Prefeitura de Vitória Atalhos de teclado: Ir para a página de instruções de acessibilidade [ Tecla de acesso desconhe"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "9.271/2018",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://www.vitoria.es.gov.br/prefeitura/defesa-civil",
+   "pista_id": "938a518d32",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "d78f00b42470a015beb7f4113e0caa7b392a138fe81de61468385d64d6e348ff",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2611101",
+   "municipio": "Petrolina",
+   "uf": "PE",
+   "url": "https://acessoinformacao.org.br/licitacoes/arquivos/download/519738d5b18c9de931797692eae9444c09bb4aaf.pdf",
+   "pista_id": "b53b04907d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.instagram.com/p/DdZ_Zs9DJqA/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2610707",
+   "municipio": "Paulista",
+   "uf": "PE",
+   "url": "https://www.instagram.com/p/DdZ_Zs9DJqA/",
+   "pista_id": "417950010d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2610707",
+   "municipio": "Paulista",
+   "uf": "PE",
+   "url": "https://www.gazetaderiopreto.com.br/el-nino-coloca-saude-do-noroeste-paulista-no-radar-do-ministerio-da-saude/",
+   "pista_id": "6d7dc08e68",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "do PadrãoICPBrasil, em conformidade com a MP nº 2.200-2, de 2001 O Município de Nova Friburgo - RJ, garante a autenticidade deste documento,desde que visualizad"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ário Atos do Prefeito ....................................................... 2 Decreto Nº. 3.800, de 23 de Outubro de 2025 .................................. 2",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "3.800",
+      "data": "28/10/2025",
+      "trecho": "ário Atos do Prefeito ....................................................... 2 Decreto Nº. 3.800, de 23 de Outubro de 2025 .................................. 2"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ra, 23 de Outubro de 2025 Ano V | Edição nº 2445 Página 1 de 25 Sumário Atos do Prefeito ....................................................... 2 Decreto Nº. 3"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "28/10/2025",
+   "natureza": "DUVIDA",
+   "ibge": "3303401",
+   "municipio": "Nova Friburgo",
+   "uf": "RJ",
+   "url": "https://data.queridodiario.ok.org.br/3303401/2025-10-23/73b365c36a8eb243297134684209517b6c1694c4.pdf",
+   "pista_id": "7fe1c44b7c",
+   "origem": "seguimento_querido_diario",
+   "leu_documento": true,
+   "hash_evidencia": "8d99298720a781febb2ae7777726f5766bb9b3bf0b5ecce1c8db2511352105bf"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "entos Enxurradas Movimentos de massa Classificação COBRADE:1.3.2.1.4 Município: Rio das Ostras – RJ Versão: 4.0 - 2025/2026 Atualização: 24/10/2025 Este exempla"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ípios da Política Nacional de Proteção e Defesa Civil (PNPDEC), instituída pela Lei Federal nº 12.608, de 10 de abril de 2012, que define diretrizes para a prev",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608",
+      "data": "24/10/2025",
+      "trecho": "ípios da Política Nacional de Proteção e Defesa Civil (PNPDEC), instituída pela Lei Federal nº 12.608, de 10 de abril de 2012, que define diretrizes para a prev"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "DE FIGURAS Figura 1 - MAPA HIDROGRAFIA DO MUNICÍPIO – ELABORADO PELA ENGENHARIA COMDEC – 2020. ................................................................."
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "teste-fósforo: menciona rota de reconhecimento federal/FIDE"
+    }
+   },
+   "categoria": null,
+   "data": "24/10/2025",
+   "natureza": "RESPOSTA",
+   "ibge": "3304524",
+   "municipio": "Rio das Ostras",
+   "uf": "RJ",
+   "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2025/11/plancon-chuvas-intensas-2025-2026.pdf",
+   "encaminhar": "atos_resposta",
+   "pista_id": "91ff9d71c6",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "ff522efa4dec8cadc81d8d40032c35cdf1fe0f476f93c3ce99e155488f0a6316"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Rio das Ostras\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "534/01",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304524",
+   "municipio": "Rio das Ostras",
+   "uf": "RJ",
+   "url": "https://appro.riodasostras.rj.gov.br/storage/riodasostrasapp/jornais/2026/07/5c20e01c-6d1f-4e66-a433-d2c71a2f24e5.pdf",
+   "pista_id": "f1c181077f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "d88281350833ef8b47296f5d09db6de11db9c39160233a6a4093ee9b2d8dee38",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "as ruas e nos perímetros urbanos, por problemas de drenagem. COBRADE: 1.2.3.0.0 RIO DAS OSTRAS VERSÃO: 8.0 / 2024 ÚLTIMA ATUALIZAÇÃO: 02 de Outubro de 2024 EXEM"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "02/10/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "02/10/2024",
+   "natureza": null,
+   "ibge": "3304524",
+   "municipio": "Rio das Ostras",
+   "uf": "RJ",
+   "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-alagamentos-2024.pdf",
+   "pista_id": "2790627bda",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "653375af1c650b5c01fcba637a964a6985e5b3806293a5a0c211c1ca3a485933",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "OU RESSACA MARÍTIMA Degradação severa das Regiões Costeiras COBRADE: 1.3.1.1.2 RIO DAS OSTRAS VERSÃO: 8.0 / 2024 ÚLTIMA ATUALIZAÇÃO: 20 DE SETEMBRO DE 2024 EXE"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "20/09/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "20/09/2024",
+   "natureza": null,
+   "ibge": "3304524",
+   "municipio": "Rio das Ostras",
+   "uf": "RJ",
+   "url": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2024/10/plancon-mares-de-tempestade-2024.pdf",
+   "pista_id": "64324be146",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "29c1a7375373afab3de047b4ac3ecf49a7ac8955a71cd65233d70100991b5986",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Contingência para ITATIAIA/RJ PLANO DE CONTINGÊNCIA DA DEFESA CIVIL ITATIAIA / RJ INUNDAÇÕES Atualizado por: Rodrigo de Oliveira Rocha 1 Plano de Conti"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "/RJ ITATIAIA é um município brasileiro do Estado do Rio de Janeiro, criado pela Lei nº 1330, de 06/07/1988, por desmembramento de Resende. Sua sede foi elevada",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1330",
+      "data": "06/07/1988",
+      "trecho": "/RJ ITATIAIA é um município brasileiro do Estado do Rio de Janeiro, criado pela Lei nº 1330, de 06/07/1988, por desmembramento de Resende. Sua sede foi elevada"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "iel - Administradora Regional de Maringá/Maromba 25 Bruno Diniz - Presidente da Câmara de Vereadores 26 Ten Cel BM Diego Paiva - Comandante da REDEC SUL I 27 Ma"
+    }
+   },
+   "categoria": null,
+   "data": "06/07/1988",
+   "natureza": null,
+   "ibge": "3302254",
+   "municipio": "Itatiaia",
+   "uf": "RJ",
+   "url": "https://itatiaia.rj.gov.br/wp-content/uploads/2025/10/2025-PLANO-DE-CONTINGENCIA-INUNDACOES-Atualizado.pdf",
+   "pista_id": "62152476bb",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "72d38277a61c7da4780744401a8add5b6e79d6d0be90122a248812fb61442b39"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302254",
+   "municipio": "Itatiaia",
+   "uf": "RJ",
+   "url": "http://iprevi.rj.gov.br/index.php/seja-bem-vindo/noticias/156-decreto-estabelece-medidas-da-prefeitura-para-prevencao-contra-o-novo-coronavirus",
+   "pista_id": "271267c5be",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.portoitajai.com.br/informacoes-el-nino"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://www.portoitajai.com.br/informacoes-el-nino",
+   "pista_id": "b11bbc9e9c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://ndmais.com.br/tempo/super-el-nino-acende-alerta-em-itajai-e-mobiliza-estrutura-para-possiveis-resgates/",
+   "pista_id": "856520058d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "66 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://itajai.sc.gov.br/noticias/36482/itajai-antecipa-prevencao-e-se-prepara-para-combater-el-nino-no-segundo-semestre--",
+   "pista_id": "3425f8be32",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.instagram.com/reel/DdeH-bKxvPQ/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://www.instagram.com/reel/DdeH-bKxvPQ/",
+   "pista_id": "0443bc037e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.portoitajai.com.br/infomacoes-el-ni-o"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://www.portoitajai.com.br/infomacoes-el-ni-o",
+   "pista_id": "91a6821421",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://upiara.com.br/noticias/super-el-nino-o-que-chapeco-fez-para-prevenir-e-combater-emergencias/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204202",
+   "municipio": "Chapecó",
+   "uf": "SC",
+   "url": "https://upiara.com.br/noticias/super-el-nino-o-que-chapeco-fez-para-prevenir-e-combater-emergencias/",
+   "pista_id": "f5990f6e1e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4209300",
+   "municipio": "Lages",
+   "uf": "SC",
+   "url": "https://scc10.com.br/radioclube/defesa-civil-de-lages-participa-de-encontro-nacional-sobre-el-nino/",
+   "pista_id": "4419188894",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://araguaiabrusque.com.br/brusque-preparativos-para-o-el-nino-e-plano-de-contingencia-de-produtos-perigosos/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202909",
+   "municipio": "Brusque",
+   "uf": "SC",
+   "url": "https://araguaiabrusque.com.br/brusque-preparativos-para-o-el-nino-e-plano-de-contingencia-de-produtos-perigosos/",
+   "pista_id": "6c00236c0f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
+   "pista_id": "d11d9042f8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
+   "pista_id": "a3382c4401",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.instagram.com/p/DbTWe49Asge/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "url": "https://www.instagram.com/p/DbTWe49Asge/",
+   "pista_id": "738d8dd3b1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "url": "https://www.jmlitoral.com.br/2026/07/31/municipio-lanca-o-plano-camboriu-em-alerta-ao-el-nino/",
+   "pista_id": "97c71884e1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "url": "https://portaldafoz.com.br/noticia/5566/balneario-camboriu-reforca-plano-de-acao-para-enfrentar-impactos-do-el-nino.html",
+   "pista_id": "47a4f304b5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://pagina3.com.br/wp-content/uploads/2026/09/Cartilha_El_Nino_2026.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "url": "https://pagina3.com.br/wp-content/uploads/2026/09/Cartilha_El_Nino_2026.pdf",
+   "pista_id": "09ed714bdc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "url": "https://pagina3.com.br/cidade/plano-de-contingencia-de-balneario-camboriu-entra-em-consulta-publica-nesta-terca-feira/",
+   "pista_id": "00c8844837",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://portalrbv.com.br/noticias/seguranca/videira-intensifica-acoes-para-enfrentar-o-el-nino-e-reduzir-riscos-de-enchentes-ej/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219309",
+   "municipio": "Videira",
+   "uf": "SC",
+   "url": "https://portalrbv.com.br/noticias/seguranca/videira-intensifica-acoes-para-enfrentar-o-el-nino-e-reduzir-riscos-de-enchentes-ej/",
+   "pista_id": "b0d9e10b95",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203808",
+   "municipio": "Canoinhas",
+   "uf": "SC",
+   "url": "https://canoinhas.portaldacidade.com/noticias/regiao/mp-abre-procedimentos-sobre-prevencao-ao-el-nino-em-canoinhas-e-mais-134-cidades-5720",
+   "pista_id": "3e3c4c04d1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://diariodoplanalto.com.br/geral/trabalho-preventivo-da-prefeitura-reduz-impactos-do-el-nino-em-canoinhas.15484817"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203808",
+   "municipio": "Canoinhas",
+   "uf": "SC",
+   "url": "https://diariodoplanalto.com.br/geral/trabalho-preventivo-da-prefeitura-reduz-impactos-do-el-nino-em-canoinhas.15484817",
+   "pista_id": "4276ecbded",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.instagram.com/p/Da5UB4kn5ns/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217709",
+   "municipio": "Sombrio",
+   "uf": "SC",
+   "url": "https://www.instagram.com/p/Da5UB4kn5ns/",
+   "pista_id": "ecaa8ff4d8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.liberdadesbs.com.br/noticia/plano-de-contingencia-de-papanduva-chega-as-escolas"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212205",
+   "municipio": "Papanduva",
+   "uf": "SC",
+   "url": "https://www.liberdadesbs.com.br/noticia/plano-de-contingencia-de-papanduva-chega-as-escolas",
+   "pista_id": "031ae6ccfa",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.1 (28/09/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.liberdadesbs.com.br/noticia/papanduva-prepara-abrigo-animal-por-causa-do-el-nino"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212205",
+   "municipio": "Papanduva",
+   "uf": "SC",
+   "url": "https://www.liberdadesbs.com.br/noticia/papanduva-prepara-abrigo-animal-por-causa-do-el-nino",
+   "pista_id": "a2b34dcdc9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }
