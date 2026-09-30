@@ -209,6 +209,66 @@ fetch('data/sinais_risco.json').then(r => r.ok ? r.json() : null).catch(() => nu
   RISCO_FONTE = (sr.fontes || {})['painel_el_nino'] || null;
 });
 
+// 30/09/2026 (PR 4 do enquadramento federal de risco): quem consta de qual lista federal, por
+// município. Arquivo derivado e enxuto (69 kB) — as bases de origem somam 680 kB e trazem o que a
+// transparência pede, não o que o cartão usa. Carregado à parte: se falhar, o cartão fica sem o
+// bloco e nada mais muda.
+let ENQ_MUN = null, ENQ_FONTES = {};
+fetch('data/enquadramento_card.json').then(r => r.ok ? r.json() : null).catch(() => null).then(e => {
+  if (!e || !e.municipios) return;
+  ENQ_MUN = e.municipios; ENQ_FONTES = e.fontes || {};
+});
+
+// Os quatro textos são LITERAIS, aprovados pela editoria em 30/09/2026, e não variam. Só o
+// complemento "Risco identificado" da linha de chuva muda, e só entre três valores fechados —
+// quando a nota técnica não nomeia o tipo, a frase termina no parêntese.
+//
+// Nenhuma palavra de dever, obrigação ou recomendação: duas destas listas não criam dever nenhum
+// para o município, e a que cria (o cadastro do art. 3º-A da Lei 12.340) não é nenhuma delas.
+// `scripts/verificar_textos_enquadramento.py` reprova se estes textos mudarem ou se palavra de
+// dever entrar aqui.
+const ENQ_TEXTO = {
+  chuva: 'Consta do cadastro federal de municípios suscetíveis a enxurradas e inundações (Casa Civil, 2025).',
+  seca: 'Integra a delimitação oficial do Semiárido brasileiro, região sujeita a estiagens prolongadas (Sudene, 2024).',
+  fogo: 'Consta da lista federal de municípios prioritários para controle do desmatamento e dos incêndios florestais na Amazônia (MMA, 2024).',
+  nenhuma: 'Não consta de nenhuma das listas federais de risco por município: enxurradas e inundações (Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA).',
+};
+const ENQ_RISCO = {i: 'inundação', e: 'enxurrada', ie: 'inundação e enxurrada'};
+
+// Bloco do cartão do município. Vazio quando não se sabe DE QUE município se trata: "não consta de
+// nenhuma lista" é afirmação sobre um município identificado, e sem código IBGE não há afirmação a
+// fazer. Camada de contexto, peso zero — não entra na nota do MARÉ.
+function enquadramentoBox(uf, nome){
+  if (!ENQ_MUN || !uf || !nome) return '';
+  const cod = MUN_COD[uf + '|' + nome];
+  if (!cod) return '';
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const marcas = ENQ_MUN[cod] || {};
+  const fonte = fam => {
+    const f = ENQ_FONTES[fam];
+    if (!f || !f.instrumento) return '';
+    const nomeFonte = f.url
+      ? `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.instrumento)}</a>`
+      : esc(f.instrumento);
+    return `<p class="fonte">Fonte: ${nomeFonte}${f.consultado_em ? ' · consultado em ' + esc(f.consultado_em) : ''}</p>`;
+  };
+  // Ordem fixa chuva → seca → fogo, decidida pela editoria. Interseção mostra todas as linhas.
+  const linhas = [];
+  if (marcas.ch !== undefined){
+    const tipo = ENQ_RISCO[marcas.ch];
+    linhas.push({fam: 'chuva', texto: ENQ_TEXTO.chuva + (tipo ? ' Risco identificado: ' + tipo + '.' : '')});
+  }
+  if (marcas.sa) linhas.push({fam: 'seca', texto: ENQ_TEXTO.seca});
+  if (marcas.mma) linhas.push({fam: 'fogo', texto: ENQ_TEXTO.fogo});
+  const corpo = linhas.length
+    ? linhas.map(l => `<div class="enq-linha r-${l.fam}"><p class="v">${esc(l.texto)}</p>${fonte(l.fam)}</div>`).join('')
+    : `<div class="enq-linha"><p class="v">${esc(ENQ_TEXTO.nenhuma)}</p>${fonte('chuva')}${fonte('seca')}${fonte('fogo')}</div>`;
+  return `<div class="enq-box">
+    <p class="k">Enquadramento federal de risco</p>
+    ${corpo}
+  </div>`;
+}
+
 const regionsEl = document.getElementById('regions');
 
 // 26/09/2026: dentro de cada faixa de região, ordem decrescente pelo índice — não alfabética.
@@ -633,6 +693,7 @@ function renderMinha(){
   }
 
   html += riscoBox(ufFinal);
+  html += enquadramentoBox(ufFinal, m ? m.nome : '');
 
   if (status === 'encontrado' || status === 'estadual'){
     const fonte = m.url
