@@ -170,6 +170,11 @@ Limites do merge automático:
 
 ## Portões
 
+**Antes do commit, rode só o que a mudança pode afetar:** `python3 scripts/quais_portoes.py` diz
+quais são, pelo mesmo critério que a CI usa (`--comando` imprime a linha pronta). PR que só toca
+`.py` de coletor não abre navegador; PR que só toca texto de página não roda portão de dado.
+
+
 ```
 python3 scripts/portoes_locais.py tudo        # ou: paginas | dados
 ```

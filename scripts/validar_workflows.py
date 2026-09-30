@@ -24,6 +24,42 @@ for f in sorted(glob.glob(".github/workflows/*.yml")):
 #
 # O teto é por JOB e não por passo de propósito: um passo sem teto dentro de um job com teto
 # ainda termina; um job sem teto, não. Workflow novo nasce com a rede de segurança.
+# SINTAXE DO SHELL EM TODO `run:` (30/09/2026). Achado real: um `if/else` com DOIS `else`
+# seguidos passou por este validador, pelo pyyaml e pelo GitHub — e só quebrou no runner, depois de
+# esperar a fila, com "syntax error: unexpected 'else'". O YAML estava válido; o shell dentro dele,
+# não. `bash -n` lê sem executar e custa milissegundos.
+#
+# As expressões do GitHub (`${{ ... }}`) viram um valor inócuo antes da checagem: elas não são
+# shell, e deixá-las no texto faria o `bash -n` reclamar do que não é problema.
+import re as _re
+import subprocess as _sp
+import tempfile as _tmp
+
+_RE_EXPRESSAO = _re.compile(r"\$\{\{[^}]*\}\}")
+erros_de_shell = []
+for f, wf in carregados.items():
+    for nome, job in ((wf or {}).get("jobs") or {}).items():
+        if not isinstance(job, dict):
+            continue
+        for i, passo in enumerate(job.get("steps") or []):
+            corpo = passo.get("run") if isinstance(passo, dict) else None
+            if not corpo:
+                continue
+            limpo = _RE_EXPRESSAO.sub("x", corpo)
+            with _tmp.NamedTemporaryFile("w", suffix=".sh", delete=False,
+                                         encoding="utf-8", newline="\n") as t:
+                t.write(limpo)
+                caminho = t.name
+            r = _sp.run(["bash", "-n", caminho], capture_output=True, text=True)
+            pathlib.Path(caminho).unlink(missing_ok=True)
+            if r.returncode != 0:
+                rotulo = passo.get("name") or f"passo {i + 1}"
+                detalhe = r.stderr.strip().splitlines()[-1] if r.stderr.strip() else "shell invalido"
+                erros_de_shell.append(f"{f}: job '{nome}', {rotulo}: {detalhe}")
+for m in erros_de_shell:
+    print(f"  X {m}")
+erros += len(erros_de_shell)
+
 TETO_MAXIMO_MIN = 360   # o padrão do GitHub; declarar 360 é o mesmo que não declarar nada
 sem_teto = []
 for f, wf in carregados.items():
