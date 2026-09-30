@@ -145,7 +145,7 @@
   "noaa_oni": {
    "nome": "Oceanic Niño Index (ONI)",
    "orgao": "NOAA/CPC",
-   "camada": "enos",
+   "camada": "apoio_tecnico",
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
@@ -167,7 +167,7 @@
   "cptec_prognostico": {
    "nome": "Prognóstico climático trimestral",
    "orgao": "INMET/CPTEC-INPE",
-   "camada": "enos",
+   "camada": "apoio_tecnico",
    "url_publica": "https://portal.inmet.gov.br/uploads/notastecnicas/Painel-El-Ni%C3%B1o-3-Edi%C3%A7%C3%A3o.pdf",
    "papel": "A leitura brasileira da mesma previsão, em português.",
    "status": "coletado",
@@ -189,7 +189,7 @@
   "noaa_nino34_mensal": {
    "nome": "Anomalia mensal da temperatura do mar, região Niño 3.4",
    "orgao": "NOAA/CPC",
-   "camada": "enos",
+   "camada": "apoio_tecnico",
    "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
    "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
    "status": "coletado",
@@ -256,7 +256,7 @@
   "cpc_ensodisc": {
    "nome": "Discussão diagnóstica do ENOS",
    "orgao": "CPC/NCEP/NWS (NOAA)",
-   "camada": "enos",
+   "camada": "apoio_tecnico",
    "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
    "papel": "Estado oficial do alerta de El Niño e a probabilidade declarada, mês a mês.",
    "status": "coletado",

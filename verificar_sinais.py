@@ -62,6 +62,10 @@ falhas = []
 avisos = []
 
 
+# Lido uma vez: o portão de peso zero compara o catálogo de fontes com o índice publicado.
+INDICE_BRUTO = (RAIZ / "data" / "indice.json").read_text(encoding="utf-8") \
+    if (RAIZ / "data" / "indice.json").exists() else ""
+
 def falha(msg):
     """Registra uma falha bloqueante."""
     falhas.append(msg)
@@ -91,9 +95,16 @@ def main():
                 falha(f"fonte {chave}: campo obrigatório ausente ({campo})")
         if not str(fonte.get("url_publica", "")).startswith("http"):
             falha(f"fonte {chave}: url_publica não é endereço absoluto")
+    # As TRÊS camadas de exibição (§23.2) continuam obrigatórias. `apoio_tecnico` é uma quarta
+    # categoria, de 30/09/2026, e não é camada de exibição: é a fonte que continua coletada e saiu
+    # das páginas para a METODOLOGIA. Ela não conta como camada nem substitui nenhuma.
+    EXIBIDAS = {"ciclo", "observado", "enos"}
     camadas = {f.get("camada") for f in reg.get("fontes", {}).values()}
-    if camadas != {"ciclo", "observado", "enos"}:
+    if not EXIBIDAS <= camadas:
         falha(f"as três camadas não estão representadas no catálogo: {sorted(camadas)}")
+    estranhas = camadas - EXIBIDAS - {"apoio_tecnico"}
+    if estranhas:
+        falha(f"camada desconhecida no catálogo: {sorted(estranhas)}")
 
     # ---- 2. proveniência de todo valor exibido ----------------------------
     conhecidas = set(reg.get("fontes", {}))
@@ -154,13 +165,16 @@ def main():
             achado = re.search(padrao, texto, re.I)
             if achado:
                 falha(f"monitor-de-riscos.html: '{achado.group(0)}' — {motivo}")
-        # 16/09/2026 (handover da voz editorial, §3): as duas ressalvas saíram do subtítulo e do corpo e
-        # passaram a morar UMA vez, na nota "O que esta página não diz". Continuam obrigatórias — mudou
-        # a redação ("reproduzidos dos órgãos", "não entram na nota") e o lugar, não a exigência.
-        if "reproduzidos dos órgãos" not in texto:
-            falha("monitor-de-riscos.html: falta a declaração de que os sinais são reproduzidos dos órgãos")
-        if "não entram na nota" not in texto:
-            falha("monitor-de-riscos.html: falta a declaração de que os sinais não entram na nota")
+        # 30/09/2026 (decisão da editoria): a frase "são sinais reproduzidos dos órgãos, que não
+        # entram na nota" saiu da página — a abertura aprovada não recebe acréscimo. A cobrança de
+        # TEXTO cai junto, porque portão que não tem como ser cumprido vira ruído.
+        #
+        # A garantia não cai: ela é de método (METODOLOGIA §23, peso zero) e passa a ser conferida
+        # onde é FATO e não frase — nenhuma fonte de sinal pode aparecer no índice. Frase, alguém
+        # apaga sem querer; o fato, não.
+        vazou = [c for c in reg["fontes"] if f'"{c}"' in (INDICE_BRUTO or "")]
+        if vazou:
+            falha(f"fonte de sinal no índice (peso zero, §23): {', '.join(sorted(vazou))}")
         # O crédito é montado em tempo de execução a partir do registro (função
         # `credito`), então o que se verifica aqui é o que É estático: a chamada
         # existe para cada fonte do catálogo. Que o crédito renderize com link,
@@ -181,9 +195,23 @@ def main():
         for chave in reg["fontes"]:
             if f"'{chave}'" in corpo:
                 creditadas.add(chave)
+    # 30/09/2026: o ONI, a anomalia mensal e os prognósticos saíram das páginas e passaram a ser
+    # APOIO TÉCNICO da METODOLOGIA. Eles continuam coletados; exigir crédito numa página onde não
+    # aparecem seria cobrança impossível. A fonte que se declara apoio técnico no catálogo não é
+    # cobrada na página — é cobrada na METODOLOGIA, que é onde ela passou a viver. Assim ninguém
+    # tira uma fonte do site sem que ela caia em algum lugar conferível.
+    metodologia = (RAIZ / "METODOLOGIA.md").read_text(encoding="utf-8") \
+        if (RAIZ / "METODOLOGIA.md").exists() else ""
     for chave in sorted(set(reg["fontes"]) - creditadas):
+        fonte = reg["fontes"][chave]
+        if fonte.get("camada") == "apoio_tecnico":
+            nome = str(fonte.get("nome") or "")
+            if nome and nome not in metodologia:
+                falha(f"fonte '{chave}' é apoio técnico e não aparece na METODOLOGIA — apoio "
+                      f"técnico que não é citado em lugar nenhum é fonte órfã")
+            continue
         falha(f"fonte '{chave}' catalogada mas nunca creditada em nenhuma página de sinal "
-              f"({', '.join(PAGINAS_DE_SINAL)})")
+              f"({', '.join(PAGINAS_DE_SINAL)}) e não declarada como apoio técnico no catálogo")
 
     # ---- 5. lacuna honesta ------------------------------------------------
     for chave, fonte in reg["fontes"].items():

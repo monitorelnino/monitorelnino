@@ -244,3 +244,9 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "frescor: $(python3 scripts/frescor.py --resumo 2>&1 | tail -1)" >> "$GITHUB_STEP_SUMMARY"
           python3 scripts/saude_pipeline.py --listar | tail -15 >> "$GITHUB_STEP_SUMMARY" || true
+          # 30/09/2026 (item 7 da rodada 2): a lista de coletores ATRASADOS fecha o resumo.
+          # O painel dizia o que rodou; faltava dizer o que DEVIA ter rodado e não rodou —
+          # e foi por isso que duas noites canceladas de diários passaram sem ninguém notar.
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Cadência dos coletores" >> "$GITHUB_STEP_SUMMARY"
+          python3 scripts/verificar_cadencia_coletores.py >> "$GITHUB_STEP_SUMMARY" 2>&1 || true

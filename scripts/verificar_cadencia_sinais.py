@@ -48,18 +48,61 @@ def eh_diario(cron: str) -> bool:
     return dia_do_mes.strip() == "*" and mes.strip() == "*" and dia_da_semana.strip() == "*"
 
 
+RE_NOME = re.compile(r"^name:\s*(.+?)\s*$", re.M)
+RE_ACIONADO_POR = re.compile(r"workflow_run:\s*\n\s*workflows:\s*\[([^\]]*)\]")
+
+
+def nome_do_fluxo(texto: str) -> str:
+    """O `name:` do workflow. Função pura. Vazio quando não há."""
+    m = RE_NOME.search(texto or "")
+    return m.group(1).strip().strip("\"'") if m else ""
+
+
+def acionado_por(texto: str) -> list:
+    """Os workflows que disparam este, por `workflow_run`. Função pura."""
+    m = RE_ACIONADO_POR.search(texto or "")
+    if not m:
+        return []
+    return [x.strip().strip("\"'") for x in m.group(1).split(",") if x.strip()]
+
+
+def tem_cadencia_diaria(nome_arquivo: str, fluxos: dict, visitados=None) -> bool:
+    """True quando o workflow roda todo dia — por cron PRÓPRIO ou por uma corrente que nasce
+    de um cron diário. Função pura.
+
+    30/09/2026: a noite virou corrente (um disparo cedo, cada elo acionado pelo término do
+    anterior). Ler só o cron do próprio arquivo passou a dizer "sem cadência" sobre um elo que roda
+    todo dia. Seguir a corrente é o que mede a propriedade; ler o cron media o arranjo de ontem.
+
+    `visitados` corta corrente circular: workflow que se aciona em círculo não tem cadência, e
+    seguir o círculo para sempre seria pior do que dizer isso."""
+    visitados = visitados or set()
+    if nome_arquivo in visitados:
+        return False
+    visitados = visitados | {nome_arquivo}
+    texto = (fluxos or {}).get(nome_arquivo, "")
+    if any(eh_diario(c) for c in crons(texto)):
+        return True
+    por_nome = {nome_do_fluxo(t): n for n, t in (fluxos or {}).items() if nome_do_fluxo(t)}
+    for anterior in acionado_por(texto):
+        arquivo = por_nome.get(anterior)
+        if arquivo and tem_cadencia_diaria(arquivo, fluxos, visitados):
+            return True
+    return False
+
+
 def problemas(fluxos: dict) -> list:
     """`fluxos` é {nome: conteúdo}. Devolve a lista de falhas, vazia quando está tudo certo."""
     chamam = {n: t for n, t in (fluxos or {}).items() if SCRIPT in t}
     if not chamam:
         return [f"nenhum workflow chama {SCRIPT} — a coleta de sinais físicos sumiu"]
-    diarios = [n for n, t in chamam.items() if any(eh_diario(c) for c in crons(t))]
+    diarios = [n for n in chamam if tem_cadencia_diaria(n, fluxos)]
     if diarios:
         return []
     onde = ", ".join(sorted(chamam))
-    return [f"{SCRIPT} só aparece em workflow sem cron diário ({onde}) — os sinais físicos são "
-            f"diários na fonte (decisão da editoria, 29/09/2026) e não podem cair em cadência "
-            f"semanal"]
+    return [f"{SCRIPT} só aparece em workflow sem cadência diária ({onde}) — nem por cron próprio "
+            f"nem por corrente que nasça de um cron diário. Os sinais físicos são diários na fonte "
+            f"(decisão da editoria, 29/09/2026) e não podem cair em cadência semanal"]
 
 
 def autoteste() -> int:
@@ -93,6 +136,27 @@ def autoteste() -> int:
                   "a.yml" in problemas({"a.yml": semanal})[0]))
     casos.append(("a falha diz que a decisão é da editoria e a data",
                   "29/09/2026" in problemas({"a.yml": semanal})[0]))
+
+    # A corrente: um elo sem cron próprio, acionado pelo término de um que tem cron diário.
+    cabeca = 'name: Cabeça\non:\n  schedule:\n    - cron: "5 0 * * *"\n'
+    elo = ('name: Elo\non:\n  workflow_run:\n    workflows: ["Cabeça"]\n'
+           '    types: [completed]\n' + SCRIPT)
+    elo_de_semanal = ('name: Elo\non:\n  workflow_run:\n    workflows: ["Semanal"]\n'
+                      '    types: [completed]\n' + SCRIPT)
+    semanal_nomeado = 'name: Semanal\non:\n  schedule:\n    - cron: "30 7 * * 0"\n'
+    casos.append(("lê o nome do workflow", nome_do_fluxo(cabeca) == "Cabeça"))
+    casos.append(("nome ausente devolve vazio", nome_do_fluxo("on:\n  push:") == ""))
+    casos.append(("lê quem aciona por workflow_run", acionado_por(elo) == ["Cabeça"]))
+    casos.append(("sem workflow_run devolve lista vazia", acionado_por(cabeca) == []))
+    casos.append(("elo de corrente diária tem cadência diária",
+                  problemas({"cabeca.yml": cabeca, "elo.yml": elo}) == []))
+    casos.append(("elo de corrente SEMANAL reprova",
+                  len(problemas({"s.yml": semanal_nomeado, "elo.yml": elo_de_semanal})) == 1))
+    casos.append(("elo cujo acionador não existe reprova",
+                  len(problemas({"elo.yml": elo})) == 1))
+    casos.append(("corrente circular não trava e reprova",
+                  len(problemas({"a.yml": 'name: A\non:\n  workflow_run:\n    workflows: ["B"]\n' + SCRIPT,
+                                 "b.yml": 'name: B\non:\n  workflow_run:\n    workflows: ["A"]\n'})) == 1))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:

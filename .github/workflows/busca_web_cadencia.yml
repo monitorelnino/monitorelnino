@@ -15,14 +15,27 @@
 # a busca de 2h ficava na fila, e uma execução pendente é cancelada quando a seguinte chega. A coleta
 # parava por atividade alheia. Com grupo próprio ela nunca espera por outro workflow; a segurança do
 # commit simultâneo passa a vir do laço de rebase-e-push abaixo, que é onde ela deve estar.
+# 30/09/2026 (item 7 da rodada 2 — certificação dos coletores). O cron do GitHub é de MELHOR
+# ESFORÇO: atrasa sob carga e descarta. Medido em 30/09: `noturno_diarios`, com cron de 01:30 UTC,
+# começou às 06:59 (5h30 de atraso) e morreu no teto; a busca web, com cinco crons por noite, rodou
+# duas vezes por dia, uma delas às 13:22 UTC — dentro do horário de trabalho da editoria, que é
+# justamente o que a janela noturna existe para evitar.
+#
+# A noite passa a ser UMA CORRENTE: um disparo cedo (00:05 UTC) e cada elo acionado quando o
+# anterior TERMINA. Cinco horários independentes davam cinco oportunidades de atrasar; um disparo e
+# uma corrente dão uma. A ordem é:
+#
+#   diários → descoberta → busca web → evidências → juiz → sinais
+#
+# RECUPERAÇÃO, de propósito: o gatilho NÃO filtra por conclusão. Se o elo anterior falhou ou foi
+# cancelado, o seguinte roda assim mesmo — cada coletor processa a fila pendente independentemente
+# do horário, e uma noite perdida não pode levar a seguinte junto. `workflow_dispatch` continua em
+# todos, para rodar à mão quando preciso.
 name: Busca web — cadência automática
 on:
-  schedule:
-    # 28/09/2026 (item 1b, "vai" da editoria em 27/09 à noite): a cada 2 h DENTRO DA JANELA NOTURNA
-    # de 22h às 6h de Brasília — 1, 3, 5, 7 e 9 UTC. Cinco rodadas por noite x 150 municípios = 750,
-    # e o ciclo completo dos 5.571 passa a ~7,5 dias. Fora da janela, nada: a coleta não interfere no
-    # trabalho da editoria durante o dia. Antes eram 12 rodadas por dia, a qualquer hora.
-    - cron: "0 1,3,5,7,9 * * *"
+  workflow_run:
+    workflows: ["Noturno — descoberta"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       forcar:
@@ -37,7 +50,9 @@ concurrency:
 jobs:
   busca_web:
     runs-on: ubuntu-latest
-    timeout-minutes: 60   # §153: --preparar pode acionar o juiz (portões) em pistas de fonte oficial
+    # 30/09/2026: cinco rodadas num job só pedem teto maior. 150 min é teto CLARO, não
+    # aberto: cinco rodadas medidas em ~20 min cada, mais folga para a instância subir.
+    timeout-minutes: 150   # §153: --preparar pode acionar o juiz (portões) em pistas de fonte oficial
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false }
@@ -90,9 +105,25 @@ jobs:
             sleep 2
           done
           [ -n "$ok" ] && echo "pronto=1" >> "$GITHUB_OUTPUT" || echo "SearXNG não subiu a tempo"
-      - name: Busca web (150 municípios, prioritários primeiro, rotação automática)
+      # 30/09/2026 (item 7 da rodada 2): as CINCO rodadas da noite acontecem AQUI, em sequência,
+      # dentro do mesmo job. Antes eram cinco crons (01,03,05,07,09 UTC) — e cinco crons davam cinco
+      # oportunidades de o agendador atrasar ou descartar: medido em 30/09, saíram duas rodadas por
+      # dia, uma delas às 13h22 UTC. Cinco rodadas em sequência num job disparado uma vez por noite
+      # entregam as 750 consultas que a cadência promete, com o mesmo tamanho de lote e o mesmo
+      # disjuntor de antes.
+      #
+      # Cada rodada é independente: a que falhar não derruba as seguintes, porque o estado da
+      # rotação está em disco e a rodada seguinte continua de onde a anterior parou. Por isso o
+      # `|| true` — aqui ele não esconde erro, ele impede que uma fonte fora do ar custe as outras
+      # quatro rodadas da noite.
+      - name: Busca web — cinco rodadas da noite (150 municípios cada, rotação automática)
         if: steps.fase.outputs.rodar == '1' && steps.searxng.outputs.pronto == '1'
-        run: python3 monitorar_busca_web.py --tamanho 150 2>&1 | tee /tmp/busca_web.log
+        run: |
+          for rodada in 1 2 3 4 5; do
+            echo "::group::rodada $rodada de 5"
+            python3 monitorar_busca_web.py --tamanho 150 2>&1 | tee -a /tmp/busca_web.log || true
+            echo "::endgroup::"
+          done
 
       # 27/09/2026 (PR 1c item 5): quais motores de origem devolveram 429/CAPTCHA. A decisão de
       # desligar motor exige evidência, e a evidência estava só dentro do contêiner, que morre com o

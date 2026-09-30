@@ -192,7 +192,12 @@ def autoteste() -> int:
 
 def rodar(limite: int = LIMITE_PADRAO) -> int:
     dominios = ler("dominios_oficiais.json") or {}
-    municipios = (ler("municipios.json") or {}).get("municipios") or []
+    # 30/09/2026 (certificação dos coletores): `data/municipios.json` é uma LISTA de registros, e
+    # este leitor esperava um mapa com a chave "municipios". O coletor falhava em TODA execução —
+    # 2 de 2 nas últimas —, sempre na primeira linha, sem nunca chegar à rede. Aceita as duas
+    # formas: a de hoje e a que ele esperava, para a troca de forma não voltar a derrubá-lo.
+    _mun = ler("municipios.json")
+    municipios = _mun if isinstance(_mun, list) else (_mun or {}).get("municipios") or []
     alvos = alvos_com_dominio(dominios, municipios)[:limite]
     print(f"{len(alvos)} ente(s) com domínio oficial conhecido nesta rodada "
           f"(alcance declarado: só onde o domínio é conhecido)")

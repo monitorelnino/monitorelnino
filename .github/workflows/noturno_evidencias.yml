@@ -3,11 +3,28 @@
 # Item 1 do handover de desacoplamento e cadência do item 1b. É o passo mais lento da rodada antiga:
 # download de PDF, extração de texto e OCR de escaneado, com teto somado de 75 min dentro do job
 # monolítico. Em job próprio, ele pode demorar sem levar a publicação com ele.
+# 30/09/2026 (item 7 da rodada 2 — certificação dos coletores). O cron do GitHub é de MELHOR
+# ESFORÇO: atrasa sob carga e descarta. Medido em 30/09: `noturno_diarios`, com cron de 01:30 UTC,
+# começou às 06:59 (5h30 de atraso) e morreu no teto; a busca web, com cinco crons por noite, rodou
+# duas vezes por dia, uma delas às 13:22 UTC — dentro do horário de trabalho da editoria, que é
+# justamente o que a janela noturna existe para evitar.
+#
+# A noite passa a ser UMA CORRENTE: um disparo cedo (00:05 UTC) e cada elo acionado quando o
+# anterior TERMINA. Cinco horários independentes davam cinco oportunidades de atrasar; um disparo e
+# uma corrente dão uma. A ordem é:
+#
+#   diários → descoberta → busca web → evidências → juiz → sinais
+#
+# RECUPERAÇÃO, de propósito: o gatilho NÃO filtra por conclusão. Se o elo anterior falhou ou foi
+# cancelado, o seguinte roda assim mesmo — cada coletor processa a fila pendente independentemente
+# do horário, e uma noite perdida não pode levar a seguinte junto. `workflow_dispatch` continua em
+# todos, para rodar à mão quando preciso.
 name: Noturno — evidências e OCR
 
 on:
-  schedule:
-    - cron: "0 4 * * *"   # 1h de Brasília
+  workflow_run:
+    workflows: ["Busca web — cadência automática"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:

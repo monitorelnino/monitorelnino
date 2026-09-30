@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-09-30 · #482 · Certificação dos coletores: cadência declarada, corrente noturna e dois erros corrigidos
+
+O cron do GitHub atrasava e descartava; a noite passa a ser uma corrente — um disparo às 00:05 UTC
+e cada elo acionado pelo término do anterior, rodando mesmo se ele falhou. Busca web: cinco rodadas
+num job. Diários: teto de 240 min e lotes de 50. `docs/CADENCIAS.md` declara a cadência de cada
+coletor e um portão marca atrasado acima de 1,1×. Corrigidos o TLS do Querido Diário e a forma de
+`municipios.json` no monitor de redes.
+
 ## 2026-09-30 · #483 · Monitor de riscos: duas seções, quatro famílias e os textos aprovados
 
 A página passa a ter "Situação atual" (resumo, três perguntas, gráfico do RONI) e "Os riscos no

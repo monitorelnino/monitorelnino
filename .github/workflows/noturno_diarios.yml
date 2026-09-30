@@ -6,11 +6,29 @@
 # Saía de dentro do `atualizar.yml`, que somava ~30 scripts num job só: quando o diário municipal
 # demorava, tudo o que vinha depois morria com ele. Aqui o coletor tem teto próprio e a sua falha não
 # arrasta ninguém.
+# 30/09/2026 (item 7 da rodada 2 — certificação dos coletores). O cron do GitHub é de MELHOR
+# ESFORÇO: atrasa sob carga e descarta. Medido em 30/09: `noturno_diarios`, com cron de 01:30 UTC,
+# começou às 06:59 (5h30 de atraso) e morreu no teto; a busca web, com cinco crons por noite, rodou
+# duas vezes por dia, uma delas às 13:22 UTC — dentro do horário de trabalho da editoria, que é
+# justamente o que a janela noturna existe para evitar.
+#
+# A noite passa a ser UMA CORRENTE: um disparo cedo (00:05 UTC) e cada elo acionado quando o
+# anterior TERMINA. Cinco horários independentes davam cinco oportunidades de atrasar; um disparo e
+# uma corrente dão uma. A ordem é:
+#
+#   diários → descoberta → busca web → evidências → juiz → sinais
+#
+# RECUPERAÇÃO, de propósito: o gatilho NÃO filtra por conclusão. Se o elo anterior falhou ou foi
+# cancelado, o seguinte roda assim mesmo — cada coletor processa a fila pendente independentemente
+# do horário, e uma noite perdida não pode levar a seguinte junto. `workflow_dispatch` continua em
+# todos, para rodar à mão quando preciso.
 name: Noturno — diários oficiais
 
 on:
   schedule:
-    - cron: "30 1 * * *"   # 22h30 de Brasília
+    # 30/09/2026 (item 7): 00:05 UTC — o disparo mais cedo da janela noturna, e o ÚNICO
+    # cron da corrente. Os elos seguintes são acionados pelo término deste, não por hora.
+    - cron: "5 0 * * *"   # 21h05 de Brasília, abre a noite
   workflow_dispatch:
 
 permissions:
@@ -23,10 +41,21 @@ jobs:
       nome: diarios
       # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
       grupo_de_concorrencia: noturno
-      timeout_minutos: 90
+      # 30/09/2026 (item 7): 90 min não comportava o lote — duas das três últimas noites
+      # foram CANCELADAS no teto, e diários municipais, DOE e S2iD ficaram sem coleta. Um job
+      # cancelado não deixa rastro de erro: ele só some, e o dado envelhece em silêncio. Teto
+      # de 240 min, que é claro e não aberto, mais lotes menores abaixo: cada coletor commita
+      # o que já colheu, então uma noite que não termina não perde o que colheu até ali.
+      timeout_minutos: 240
       comandos: |
         consultar_querido_diario.py --alvos data/fila_qd_169.json --limite 40
-        coletar_diarios_municipais.py --tamanho 150
+        # 30/09/2026 (item 7): o lote de 150 num comando só era o que estourava o teto. Três lotes
+        # de 50, cada um como comando próprio, passam pelo invólucro de saúde um a um — e o
+        # invólucro grava a linha de saúde de cada um. Se o terceiro não couber na noite, os dois
+        # primeiros já entraram, e a fila continua de onde parou na noite seguinte.
+        coletar_diarios_municipais.py --tamanho 50
+        coletar_diarios_municipais.py --tamanho 50
+        coletar_diarios_municipais.py --tamanho 50
         # 28/09/2026 (§276): a janela era `--desde 2026-06-29`, ou seja TRÊS MESES revarridos a cada
         # noite — 87 dos 90 min do teto, e o job cancelado a segundos do fim. O orquestrador sempre
         # usou oito dias corridos (`atualizar.py`, linha 250), e é isso que faz sentido para um coletor
