@@ -9,6 +9,45 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §311 · Formulário mínimo: o site deixou de coletar dado pessoal · 30/09/2026
+
+Classe **página pública** e **privacidade**. Design "C" escolhido pela editoria.
+
+**O formulário ficou compacto e sem etapas.** Sem numeração, sem borda de *fieldset*, sem a coluna
+lateral fixa: quatro campos sempre visíveis (estado, município, tipo do documento, link em fonte
+oficial) e os opcionais — número do ato e observações — atrás de um `<details>` fechado. O painel usa
+o mesmo espaçamento dos outros da página, como a editoria pediu.
+
+**O campo de e-mail saiu do HTML, e com ele o último dado pessoal do site.** Não virou opcional nem
+escondido: sumiu. A interface passou a dizer isso ao leitor, com a frase que a editoria fixou
+palavra por palavra: *"Não pedimos seu nome nem contato, só as informações sobre o documento. A
+conferência é feita pela nossa equipe."*
+
+**As três dependências foram atrás, não só o campo.** `verificar_contribuicoes.py` **continua lendo**
+`email_contato` — de propósito: submissões antigas ainda o têm, e deixar de ler quebraria o
+histórico; nas novas ele chega vazio. `docs/LGPD_PRIVACIDADE.md` **não foi apagado**: continua como
+registro de auditoria do que existiu e passou a declarar, datado, que **o formulário não coleta
+nenhum dado pessoal** desde 30/09/2026, valendo o fluxo descrito só para o que foi enviado antes.
+`obrigado.html` foi conferido e não promete contato de volta.
+
+**O campo de município também nasce desabilitado aqui**, como no cartão da cidade: digitar município
+antes do estado mandava um nome que a lista não podia validar.
+
+**A notificação por e-mail não é código do repositório, e a tentativa foi até onde dá.** Ela vive na
+conta do Netlify e exige o `NETLIFY_AUTH_TOKEN`, que **só existe como segredo do GitHub**. Então
+entrou um workflow por botão (`notificacao_formulario.yml`) e o script que ele chama: confere se já
+existe notificação para o formulário, **não duplica** se existir, cria se faltar, e **falha com o
+erro exato** se a API recusar — porque o caminho manual só serve se a editoria souber que precisa
+fazer. O destino é conferido contra o endereço confirmado, `monitorelnino@gmail.com`: houve
+divergência de grafia no pedido original, e notificação para caixa errada é pior que nenhuma —
+parece configurada e não chega. 11 casos de autoteste.
+
+**Um defeito do próprio portão 19, exposto pela frase da editoria.** A checagem de ênfase
+("só/única/nunca/sempre") lia o texto **cru**, sem passar pelas exceções declaradas que a checagem
+irmã já usava: o mesmo portão lia o mesmo texto de duas maneiras. Agora as duas passam pela mesma
+lista, e a frase de privacidade entrou nela **inteira** — não a palavra "só", que se alargaria para
+todo o site. Mudar a frase faz o portão voltar a reprovar, que é o comportamento certo.
+
 ## §312 · Cobertura do Querido Diário: a fonte estava errada, e a rotina não existia · 30/09/2026
 
 Classe **método e prova**. Item 6 da fila viva, achado pelo exemplo de Abatiá/PR.

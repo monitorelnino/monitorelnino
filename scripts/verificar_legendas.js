@@ -23,7 +23,13 @@ const PAGINAS = ["index.html", "defesa-civil.html", "saude.html", "financiamento
   "imprensa.html", "prefeituras.html", "proteja-se.html", "obrigado.html", "blog.html"].filter(p => fs.existsSync(path.join(RAIZ, p)));
 
 // Exceções: colocações técnicas ou oficiais que contêm uma palavra da lista, mas não são juízo.
-const EXCECOES = [/síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
+// 30/09/2026 (§311): a frase de privacidade do formulário entra aqui, LITERAL e por decisão escrita
+// da editoria, que a fixou palavra por palavra. Ela cai na regra de ênfase por causa do "só", mas
+// não é texto de figura nem juízo sobre dado: é o que o site declara não coletar, e a precisão do
+// "só" é justamente o ponto. A exceção é a frase inteira, não a palavra — assim ela não se alarga
+// para outros textos, e mudar a frase faz o portão voltar a reprovar.
+const FRASE_DE_PRIVACIDADE = /Não pedimos seu nome nem contato, só as informações sobre o documento\. A conferência é feita pela nossa equipe\./g;
+const EXCECOES = [FRASE_DE_PRIVACIDADE, /síndrome respiratória aguda grave/gi, /aguda grave/gi, /janela crítica/gi, /sinais de alarme/gi, /nível \d \((?:baixa atividade|atenção|alerta|emergência)\)/gi,
   /alerta[s]? (?:hidrológic|geológic|meteorológic|vigente|de risco|nacional|laranja|vermelh)/gi, /nível de alerta/gi, /em alerta/gi, /avisos? meteorológic/gi, /alertas? (?:do|de) CEMADEN/gi,
   /restrição importante de transporte/gi, /grau de urgência/gi, /situação de emergência|estado de emergência|emergência sanitária|emergências sanitárias|decreto de emergência|decretos de emergência/gi,
   /grave e urgente necessidade pública/gi, /seca (?:fraca|moderada|grave|extrema|excepcional)/gi,   /* categorias S0–S4 do Monitor de Secas (ANA), vocabulário da fonte */ /matéria urgente, relevante/gi, /risco de fogo/gi, /pior desfecho/gi, /melhor(?:es)? (?:esforços|estimativa)/gi];
@@ -141,7 +147,11 @@ function renderizar(pagina) {
         if (TRAVESSAO_PONTUACAO.test(s)) a.push('travessão como pontuação de frase (reescreva com vírgula, ponto, ou duas frases)');
         if (!dentroFichaOuLei) {
           a.push(...classificar(s));
-          if (ENFASE.test(s)) a.push('ênfase "só/única/nunca/sempre"');
+          // 30/09/2026: a checagem de ênfase passa pelas MESMAS exceções declaradas que o
+          // `classificar()` já usa. Antes ela lia a frase crua, de modo que uma exceção aceita numa
+          // regra era ignorada na outra — duas leituras do mesmo texto no mesmo portão.
+          let sSemExcecoes = s; EXCECOES.forEach(re => { sSemExcecoes = sSemExcecoes.replace(re, " "); });
+          if (ENFASE.test(sSemExcecoes)) a.push('ênfase "só/única/nunca/sempre"');
           if (INTERR.test(s)) a.push("interrogação");
           if (LEI.test(s)) a.push("artigo de lei fora da ficha/bloco legal");
           if (DENUNCIA.test(s)) a.push('"denuncia/expõe"');

@@ -396,32 +396,19 @@ table th, .mun-table thead th{font-family:var(--font-dado); font-size:var(--fs-c
    vinha o ar de formulário genérico. Coluna única com medida de leitura, três etapas nomeadas, e o
    destino do envio dito ANTES do botão. Nenhum campo entrou, saiu ou mudou de nome: o que o
    Monitor coleta é decisão da editoria (governança §29); ordem e agrupamento, não. */
-.contrib-grid{display:block; max-width:660px; counter-reset:etapa;}
-.contrib-grid > *{min-width:0;}
-.contrib-etapa{border:0; margin:0 0 var(--sp-6); padding:0; min-width:0;}
-.contrib-etapa:last-child{margin-bottom:var(--sp-4);}
-.contrib-etapa > legend{display:block; width:100%; padding:0 0 var(--sp-2); margin:0 0 var(--sp-3); border-bottom:1px solid var(--line); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted);}
-.contrib-etapa > legend b{color:var(--ink); font-weight:var(--peso-semibold);}
-/* O número vem de contador: numeração escrita à mão desalinha quando a ordem muda. */
-.contrib-etapa > legend::before{counter-increment:etapa; content:counter(etapa) " · "; color:var(--argila); font-variant-numeric:tabular-nums;}
-.contrib-etapa .fld{margin:0 0 var(--sp-4);}
-.contrib-etapa .fld:last-child, .contrib-etapa > p:last-child{margin-bottom:0;}
-.contrib-etapa .hint{margin:calc(var(--sp-3) * -1) 0 var(--sp-4);}
-/* Par acoplado: estado e município são uma coisa só, e é a exceção à coluna única que a
-   pesquisa de usabilidade de formulário reconhece. Abaixo de 560px voltam a empilhar. */
-.contrib-par{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:var(--sp-4);}
-.contrib-par .fld{margin:0;}
-.contrib-destino{background:var(--campo); border:1px solid var(--campo-borda); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:0 0 var(--sp-4); max-width:660px; font-size:var(--fs-small); line-height:var(--lh-small);}
-/* Em tela larga sobrava metade do painel vazia à direita da coluna única. O aviso de destino ocupa
-   esse espaço e acompanha a rolagem: quem preenche vê o destino o tempo todo, e não só ao chegar
-   no botão. Assimetria com função, que é o que a direção de arte §5 pede.
-   Escrito como PADRÃO e desfeito em 1020px porque esta folha só usa consultas `max-width`, e
-   `verificar_estrutura.js` reprova ponto de quebra que não seja 640 ou 1020. */
-#formContrib{display:grid; grid-template-columns:minmax(0,660px) minmax(0,1fr); column-gap:var(--sp-7); align-items:start;}
-#formContrib .contrib-grid{grid-column:1; grid-row:1;}
-#formContrib .contrib-destino{grid-column:2; grid-row:1 / span 3; position:sticky; top:var(--sp-5); margin:0; max-width:none;}
-#formContrib button[type="submit"]{grid-column:1; grid-row:2; justify-self:start;}
-#formContrib #contribOffline{grid-column:1; grid-row:3;}
+/* 30/09/2026 (§311, design C da editoria): formulário mínimo. Sem numeração de etapas, sem borda de
+   fieldset, sem coluna lateral fixa — e COMPACTO: o painel usa o mesmo espaçamento dos outros
+   `.panel` da página, não mais. Os campos opcionais vivem atrás de um `<details>` fechado, porque o
+   que é opcional não deve disputar atenção com o que é obrigatório. */
+.contrib-campos{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:var(--sp-4); max-width:660px;}
+.contrib-campos .fld{margin:0;}
+.contrib-campos .fld:nth-child(3), .contrib-campos .fld:nth-child(4){grid-column:1 / -1;}
+.contrib-opcional{max-width:660px; margin:var(--sp-4) 0 0; border-top:1px solid var(--line); padding-top:var(--sp-3);}
+.contrib-opcional > summary{cursor:pointer; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); text-transform:uppercase; color:var(--muted);}
+.contrib-opcional .fld{margin:var(--sp-3) 0 0;}
+#formContrib{display:block;}
+#formContrib .note{max-width:660px;}
+#formContrib button[type="submit"]{margin-top:var(--sp-4);}
 .fld{display:flex; flex-direction:column; gap:var(--sp-1); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted);}
 .fld input, .fld select, .fld textarea{font-family:var(--font-corpo); font-size:var(--fs-body); color:var(--ink); background:var(--campo); border:1px solid var(--campo-borda); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3); text-transform:none; letter-spacing:0; width:100%; min-width:0; max-width:100%; min-height:var(--alvo-toque);}
 .fld-full{grid-column:1 / -1;}
@@ -771,7 +758,6 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .mainnav{background-image:var(--degrade-menu-vertical);}
   /* Abaixo de 1020px não há espaço para o aviso ao lado: ele volta ao fluxo, antes do botão. */
   #formContrib{display:block;}
-  #formContrib .contrib-destino{position:static; margin:0 0 var(--sp-4); max-width:660px;}
   /* §24: a faixa de tempo desce para baixo do texto, em largura inteira, e a régua sai — ela
      precisa das três colunas para apontar para o lugar certo. */
   .calendario .cal-eixo{display:none;}
@@ -793,7 +779,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .mast-top{gap:var(--sp-3) var(--sp-4);}
 }
 @media (max-width:640px){
-  .contrib-par{grid-template-columns:1fr;}
+  .contrib-campos{grid-template-columns:1fr;}
   .regions{grid-template-columns:repeat(2, minmax(0,1fr));}
   .emerg-nums{grid-template-columns:repeat(2, minmax(0, 1fr));}
   .emerg-num--sms{grid-column:1 / -1;}
@@ -816,7 +802,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .tile .tile-face span{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .gauge-head .glabel{flex-basis:100%; margin-left:0; text-align:left; margin-top:var(--sp-1);}
   .strip-tick span{display:none;}
-  .contrib-grid, .ficha-cols{grid-template-columns:1fr;}
+  .ficha-cols{grid-template-columns:1fr;}
   .calendario{grid-template-columns:minmax(110px, auto) minmax(0, 1fr);}
   .calendario .cal-cabecalho .cal-fonte, .calendario .cal-cabecalho > span:nth-child(3){display:none;}
   .calendario .cal-fonte{grid-column:1 / -1; border-top:0; padding-top:0;}
