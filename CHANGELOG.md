@@ -9,6 +9,23 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §321 · Enquadramento federal de risco no cartão do município · 30/09/2026
+
+Classe **contexto, peso zero**. PR 4 do enquadramento federal de risco.
+
+O cartão do município passa a dizer, abaixo do risco projetado do estado, se o município consta de
+uma lista federal de risco e por qual instrumento: enxurradas e inundações (Casa Civil), Semiárido
+(Sudene), prioritários para desmatamento (MMA). Interseção mostra todas as linhas, na ordem chuva →
+seca → fogo; quem não consta de nenhuma vê a frase que nomeia as três. Sem linha de calor — não há
+lista federal de calor por município, e ausência de lista não se preenche com outra coisa.
+
+Os quatro textos são literais, aprovados pela editoria, e `verificar_textos_enquadramento.py`
+reprova se mudarem ou se palavra de dever, obrigação ou recomendação entrar no bloco: duas destas
+listas não criam dever nenhum, e a que cria não é nenhuma delas.
+
+O cartão lê um derivado de 69 kB (`enquadramento_card.json`), gerado na cadeia canônica a partir das
+duas bases de origem, que somam 680 kB e trazem o que a transparência pede, não o que a página usa.
+
 ## §320 · Municípios prioritários do MMA: a lista do Anexo I, pelo DOU · 30/09/2026
 
 Classe **dado de contexto, peso zero**. PR 3 do enquadramento federal de risco.
