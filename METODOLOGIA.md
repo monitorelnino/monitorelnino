@@ -659,6 +659,30 @@ A "edição narrativa" muda como o site conta o que o índice mede — não o qu
 
 **Seis municípios novos, verificados individualmente.** Guarulhos, Campinas, São Gonçalo, São Bernardo do Campo, Duque de Caxias e Nova Iguaçu — juntos, mais de 5 milhões de habitantes — entraram no banco nominal com instrumentos ex-ante reais e datados (Campinas: pacote de ações contra o "Super El Niño", 17/06/2026; São Gonçalo: PLAMCON 2025/2026; Nova Iguaçu: PLANCON-NI v8.0, PDF publicado; Duque de Caxias: dois planos apresentados à Câmara em 27/08/2026). Jaboatão dos Guararapes foi buscado e **descartado**: só localizado ato de resposta (Decreto nº 130/2026, chuvas de maio), sem instrumento ex-ante nomeado — registro de disciplina, não de sucesso. Cobertura nominal: 254 → 260 municípios. Média nacional: 46,9 → **47,0**.
 
+<!-- PROPOSTA DE CORREÇÃO (Code, 30/09/2026) — NÃO PUBLICADA: a redação final é da editoria.
+
+O parágrafo abaixo está factualmente SUPERADO desde 29/04/2025 e a varredura de 30/09/2026 provou
+isso: a lista nominal NÃO exige autenticação. O Decreto 12.444/2025 passou a competência à
+SEPAC/Casa Civil, que publica os três documentos em página aberta, sem login. O que a varredura de
+02/09 encontrou fechado foi a pasta da SEDEC no MIDR — endereço antigo. Foi lacuna de CANAL, não de
+publicação: o dado estava público o tempo todo, noutro lugar.
+
+Consequência prática: o "proxy" por população deixou de ser necessário. O coletor
+`coletar_cadastro_prioritarios.py` lê a lista nominal, com código IBGE, e grava em
+`data/cadastro_prioritarios_federal.json` — 2.095 municípios, dos quais 2.086 no cadastro publicado
+e 9 fora dele por serem só de deslizamento.
+
+E um cuidado de nome, da conferência jurídica da central: esta lista NÃO é o "Cadastro Nacional de
+Municípios com Áreas Suscetíveis" do art. 3º-A da Lei 12.340 — aquele é de inscrição voluntária,
+inclui deslizamentos e gera o DEVER DE PLANO DE CONTINGÊNCIA. Este é o cadastro de municípios
+suscetíveis a enxurradas e inundações, do art. 50 da Lei 11.445 (saneamento), e não cria esse dever.
+Chamá-lo de "Cadastro Nacional" no site afirmaria obrigação legal que ele não estabelece.
+
+Redação sugerida para a primeira frase: "A lista nominal dos 2.095 municípios suscetíveis a risco
+geo-hidrológico é publicada pela Casa Civil da Presidência (Decreto 12.444/2025), em página aberta,
+com código IBGE por município."
+-->
+
 **O proxy de municípios prioritários — limitação declarada e solução transparente.** A lista NOMINAL dos 2.095 municípios do Cadastro Nacional de Municípios Suscetíveis a Enxurradas e Inundações (Nota Técnica nº 1/2025/SADJ-VI/SEPAC/CC/PR, Casa Civil da Presidência) exige autenticação no portal do MDR (servicos.mdr.gov.br, CPF e senha) e não é acessível por busca pública nem por download direto — verificado em 31/08/2026, cinco tentativas de acesso ao PDF anexo, todas retornando "Conteúdo Restrito". O que É público, na própria nota técnica (Tabela 2), são as **contagens por UF**: quantos municípios de cada estado entraram no cadastro. `data/cadastro_prioritarios.json` registra essas contagens com a fonte e a limitação declaradas.
 
 A partir delas, o mapa novo constrói uma **aproximação documentada, não a lista real**: em cada UF, toma os N municípios de maior população (Censo 2022), onde N é a contagem oficial daquela UF. A soma da aproximação bate exatamente com o total oficial nacional (2.095), o que é evidência de calibração correta — não prova de que os municípios certos foram escolhidos, apenas de que a contagem está certa. A rotulagem do mapa (legenda, texto de introdução, tooltip) declara isto explicitamente ao leitor: "não é a lista oficial nome a nome — é a melhor aproximação pública disponível". Achado auxiliar do próprio mapa: dos 260 municípios do banco, 177 já coincidem com o proxy de prioritários — evidência indireta de que a busca dirigida por população (mesmo critério usado nesta e nas sessões anteriores) já vinha concentrando esforço onde a política pública também concentra.
@@ -844,6 +868,13 @@ Cláusula de neutralidade (padrão do §5.2.1): o que segue explica escolhas de 
 **Tamanho e alocação.** 12 por UF; capitais fora da cota; dentro da UF, por porte proporcional ao universo (mínimo 1 por classe existente), mínimo 2 no marcador dominante disponível e 1 no controle. **Exceção declarada:** o DF tem um único município, que é a capital — entra fora da regra; o painel tem **313 = 12 × 26 + 1**, não os 324 do documento de redesenho. Sorteio determinístico com **semente 20260902**; lista publicada em 02/09/2026 com **hash `12603c06d8161bf73c26dce9529909e615724adfb874244aa63deed4e24469b1`** (`data/painel/lista.json`; `dados-abertos/painel_amostral.csv`). Troca posterior só por errata. Ponte Serrada/SC (4213401), sorteado em 02/09 sobre os 1.942 com a mesma semente, integra o painel por decisão registrada.
 
 **Ficha e cadência.** Mesmas colunas para os 313: nível de verificação, instrumento localizado e natureza, decreto reconhecido/homologado, plano declarado (MUNIC/ICM), data do ato × data de localização, as sete rotas em R$ (2025 e 2026) mais a estadual, programas permanentes, marcadores vigentes — cada campo com fonte; nulo = não coletado. Reverificação toda semana, no domingo desde 20/09/2026 (segunda-feira até 19/09/2026) — é o instrumento de medida da variação e da recontagem pós-defeso, §29; a série permanece semanal e comparável, o deslocamento do dia não altera o intervalo entre observações. Leitura honesta: **região × porte × risco**, não UF isolada. Portão `verificar_painel.py`: lista imutável (hash), 313, sem capitais, fichas com fonte e data, marcadores arquivados, nada lido pelo motor, agregados em paridade.
+
+<!-- PROPOSTA DE CORREÇÃO (Code, 30/09/2026) — NÃO PUBLICADA: redação final da editoria.
+O achado abaixo ficou incompleto. A pasta da SEDEC no MIDR de fato responde "conteúdo restrito",
+mas a lista oficial NÃO está só em espelho do Cemaden Educação: desde o Decreto 12.444/2025 ela é
+publicada pela Casa Civil, em página aberta e com código IBGE. A varredura de 02/09 olhou o
+endereço certo do órgão errado — lacuna de canal, não de publicação.
+-->
 
 **Achados registrados.** A pasta de publicações da SEDEC no MIDR responde "conteúdo restrito — é necessário autenticar" (a lista oficial só foi localizada em espelho do Cemaden Educação); o cadastro federal é exclusivamente geo-hidrológico; a própria NT 1/2025 admite que a ausência de pessoas mapeadas em BA, GO, MA, MS, PR, RJ e RN decorre da falta de mapeamento estadual, não da ausência de risco.
 
