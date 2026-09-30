@@ -130,11 +130,11 @@
   </div>
 
   <div class="panel" id="cidade">
-    <h2 id="minhacidade">Sua cidade: o que foi publicado, o que foi decretado, o que fazer</h2>
-    <p class="hint">Busque um estado e um município: se houver plano publicado, mostra o documento, a data e a fonte; se houver decreto de emergência no ciclo, mostra também; se ainda não verificamos com todas as fontes, mostra até onde a verificação chegou.</p>
+    <h2 id="minhacidade">Sua cidade: o plano foi publicado?</h2>
+    <p class="hint">Escolha o estado e depois o município. O cartão diz se o plano de contingência foi localizado, mostra o risco projetado para o estado e leva ao documento. Quando o plano ainda não foi localizado, leva ao formulário de envio.</p>
     <div class="tbl-controls">
       <select id="ufSelect" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
-      <input id="cidadeInput" type="text" list="listaMun" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off"><button type="button" id="limparCidade" class="btn-limpar" aria-label="Limpar e escolher outro município" title="Trocar de município">×</button>
+      <input id="cidadeInput" type="text" list="listaMun" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled><button type="button" id="limparCidade" class="btn-limpar" aria-label="Limpar e escolher outro município" title="Trocar de município">×</button>
       <datalist id="listaMun"></datalist>
     </div>
     <div id="meuCard" class="meu-card" aria-live="polite" hidden></div>
@@ -206,7 +206,7 @@
 </div>
 
 <script src="assets/colunas.js?v=c7f1719a" defer></script>
-<script src="assets/js/index.js?v=5a8bd514" defer></script>
+<script src="assets/js/index.js?v=74868103" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
