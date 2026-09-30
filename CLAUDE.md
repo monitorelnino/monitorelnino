@@ -171,6 +171,24 @@ Limites do merge automático:
 - `data/publicacao.json` (indexação e regime do domínio) só muda por decisão da editoria.
 - Alterar `.github/workflows/` é permitido quando o pedido exigir.
 
+## O que NÃO se faz mais (itens 6 e 7 do handover de otimização, 30/09/2026)
+
+Cada PR paga cerca de dez minutos de custo fixo — abrir, esperar a fila, mesclar. As regras abaixo
+existem para não pagar isso à toa, e nenhuma delas afrouxa verificação:
+
+- **Não reexplorar o repositório** quando o `CODEMAP.md` responde.
+- **Não regenerar derivado dentro de PR de página**: o portão 12 no PR só confere que a cadeia
+  regenera; quem sela o manifesto é o push para a `main`.
+- **Não rodar portão que a mudança não pode afetar** — `scripts/quais_portoes.py` diz quais são.
+- **Não escrever CHANGELOG longo**: 80 palavras, chave por data e PR. Fundamentação vai para a
+  `METODOLOGIA.md`.
+- **Não tirar captura à mão**: os portões de navegador as sobem como artefato do run.
+- **Não abrir PR para uma frase.** Pedido pequeno de texto entra no próximo PR de página da fila, ou
+  se junta a outros pequenos num só "ajustes de texto de dd/mm". **Exceção:** quando a editoria
+  disser "publica isso agora".
+- **Não redigir educação**: sem preâmbulo, sem ressalva de cortesia, sem explicar o óbvio. Só o
+  relatório de até 6 linhas ao fim.
+
 ## Portões
 
 **Antes do commit, rode só o que a mudança pode afetar:** `python3 scripts/quais_portoes.py` diz

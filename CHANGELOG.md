@@ -22,6 +22,27 @@ exatamente aí que um passo condicionado ao sucesso seria pulado.
 
 As capturas ficam no `.gitignore`: são artefato do run, nunca arquivo do repositório.
 
+## §319 · Regras do ciclo no CLAUDE.md, e a medição que dirá se elas funcionaram · 30/09/2026
+
+Classe **processo**. Itens 6, 7 e 8 do handover de otimização.
+
+**As sete regras** entraram no `CLAUDE.md`, numa seção própria: não reexplorar quando o CODEMAP
+responde · não regenerar derivado em PR de página · não rodar portão que a mudança não afeta · não
+escrever CHANGELOG longo · não tirar captura à mão · **não abrir PR para uma frase** (entra no
+próximo de página, ou junta-se a outros pequenos; exceção: "publica isso agora") · não redigir
+educação.
+
+**A medição (item 8)** lê os PRs mesclados pela API e grava em `data/saude_pipeline.json`: minutos do
+primeiro commit ao merge, por tipo de PR, e rodadas de CI. Usa **mediana, não média** — um PR que
+dormiu esperando a editoria não é um ciclo de oito horas, e a média deixaria esse caso mandar no
+número.
+
+**A primeira medição é desconfortável, e fica registrada como saiu:** página **53,7 min** (meta 20),
+coletor **64,8 min** (meta 15), misto 86,7 min. O único número já dentro da meta é o das rodadas de
+CI: **mediana 1, nenhum PR com mais de uma**. Ou seja, os 12 PRs medidos são de **antes** dos itens
+1 a 5 valerem — esta é a linha de base contra a qual a próxima rodada vai ser comparada, não um
+resultado deles. 18 casos de autoteste.
+
 ## §317 · CHANGELOG curto, com chave por data e PR · 30/09/2026
 
 Classe **processo**. Item 4 do handover de otimização. Última entrada com `§`.
