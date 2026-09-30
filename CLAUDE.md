@@ -33,6 +33,24 @@ Documentos canônicos:
 
 ## Idioma e modo de trabalho — AUTONOMIA DECISÓRIA RESPONSÁVEL (regime vigente, editoria, 27/09/2026, noite)
 
+> # LEI PERMANENTE
+> **(reforçada pela editoria em 30/09/2026)**
+>
+> ## Toda rodada, todo handover, sem exceção: **rápido, limpo, eficiente, sem narrar progresso, sem pedir confirmação fora das paradas listadas abaixo, sem elucubração.**
+>
+> **Isto não precisa ser lembrado a cada pedido — vale sempre, por padrão, em todo handover,
+> existente ou futuro.** Não substitui o que vem abaixo (decide sozinho · para e pergunta ·
+> relatório de até 6 linhas): **reforça** o mesmo princípio e declara que ele é permanente e não
+> precisa ser reinvocado.
+>
+> **Na prática, três consequências que a editoria nomeou:**
+> - **Execução em lote, não uma pergunta por vez.** Lista de itens se executa inteira, na ordem
+>   dada, sem parar entre um item e outro para relatar ou pedir confirmação. Relatório só ao fim de
+>   cada entrega (PR aberto) ou de tudo — nunca a cada passo intermediário.
+> - **Conflito de merge não é parada.** Resolve-se sozinho, pela regra de união pela base comum.
+> - **Portão vermelho não é parada.** Diagnostica-se e corrige-se sozinho; só vira pergunta se o
+>   impedimento persistir **depois** de diagnóstico razoável — condição que já está na lista abaixo.
+
 Responder à editoria em português do Brasil. Estilo de fala: o *output style* `caveman`
 (`.claude/output-styles/caveman.md`), ligado por `outputStyle` em `.claude/settings.json`
 — permanente, em toda sessão, sem invocar skill. Desligar só a pedido da editoria, por PR.
