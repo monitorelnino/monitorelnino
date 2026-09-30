@@ -38,6 +38,10 @@ jobs:
         # que ainda não têm diário indexado, que é onde a mudança acontece: quem já está coberto não
         # volta à fila, porque edição indexada não desaparece. Por isso ela fica barata com o tempo.
         coletar_cobertura_qd.py
+        # 30/09/2026 (PR 2 do enquadramento federal de risco): delimitação do Semiárido. Semanal
+        # porque a delimitação muda por resolução, não por dia; o próprio script pula a gravação
+        # quando o hash do arquivo do IBGE não mudou e a última conferência tem menos de 7 dias.
+        coletar_semiarido_sudene.py
         coletar_sinais_risco.py --municipios
         # 29/09/2026 (bloco 4): SRAG pela fonte primária, semanal como o dado. Lê o banco do
         # SIVEP-Gripe em fluxo e guarda só o agregado por UF e semana; os anos congelados

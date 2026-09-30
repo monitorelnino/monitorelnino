@@ -9,6 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §319 · Semiárido: a lista nominal dos 1.477 municípios, pela tabela do IBGE · 30/09/2026
+
+Classe **dado de contexto, peso zero**. PR 2 do enquadramento federal de risco.
+
+`coletar_semiarido_sudene.py` grava `data/enquadramento_federal.json` com um registro por município
+da delimitação oficial do Semiárido: 1.477, distribuídos por onze UFs, cada código conferido contra
+a base de municípios do projeto — código desconhecido não grava nada.
+
+A fonte pedida pelo handover era o anexo da Resolução Condel/Sudene nº 150/2021 em `gov.br/sudene`.
+Essa página está vazia ("Conteúdo em atualização"), a resolução não aparece na página de resoluções
+e os endereços diretos devolvem 404. Com autorização da editoria, a lista vem da **tabela do IBGE**
+(estrutura territorial, situação 2022), que publica a mesma delimitação. A delimitação é da Sudene;
+a tabela é do IBGE, e o site declara as duas coisas.
+
+Estar no Semiárido é contexto: não pontua e não entra no índice. Cadência semanal, com gravação só
+quando o hash do arquivo muda ou a última conferência passa de sete dias — para o carimbo de
+consulta não congelar numa data velha.
+
 ## §318 · As capturas do PR deixam de ser tiradas à mão · 30/09/2026
 
 Classe **processo**. Item 5 do handover de otimização.
