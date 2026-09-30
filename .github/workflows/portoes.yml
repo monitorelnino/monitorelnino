@@ -45,6 +45,8 @@ jobs:
             echo "arquivos alterados:"; echo "$ARQUIVOS"
             if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$'; then
               echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
+            else
+              echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
             fi
             # 30/09/2026 (§316, item 3 do handover de otimização): a segunda pergunta. Os portões de
             # TEXTO (legendas, vocabulário, voz, fichas, figuras) e os dois de navegador custam ~4
@@ -56,8 +58,6 @@ jobs:
               echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
             else
               echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
-            else
-              echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
             fi
           fi
       - name: Portões — página e estrutura (sempre)

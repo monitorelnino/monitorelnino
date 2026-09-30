@@ -30,6 +30,13 @@ vermelho depois de esperar a fila; nem mais, e pagar quatro minutos de navegador
 de arquivos, ele manda rodar tudo: "não sei o que mudou" não é "nada mudou". 16 casos de autoteste;
 a suíte vai a **126**.
 
+
+**E uma trava que nasceu do meu próprio erro neste PR.** A primeira versão do detector tinha **dois
+`else` seguidos** — YAML válido, shell inválido. Passou pelo `validar_workflows.py`, pelo pyyaml e
+pelo GitHub, e só quebrou no runner, depois de esperar a fila. O validador passou a rodar `bash -n`
+em todo bloco `run:`, com as expressões `${{ }}` substituídas antes (elas não são shell). Conferido
+contra o defeito real: plantado de volta, o portão reprova.
+
 ## §313 · CODEMAP: o mapa que evita reexplorar o repositório a cada pedido · 30/09/2026
 
 Classe **processo**. Item 1 do handover de otimização do ciclo de mudança.
