@@ -42,6 +42,10 @@ jobs:
         # que ainda não têm diário indexado, que é onde a mudança acontece: quem já está coberto não
         # volta à fila, porque edição indexada não desaparece. Por isso ela fica barata com o tempo.
         coletar_cobertura_qd.py
+        # 30/09/2026 (PR 2 do enquadramento federal de risco): delimitação do Semiárido. Semanal
+        # porque a delimitação muda por resolução, não por dia; o próprio script pula a gravação
+        # quando o hash do arquivo do IBGE não mudou e a última conferência tem menos de 7 dias.
+        coletar_semiarido_sudene.py
         # 30/09/2026 (PR 3 do enquadramento federal de risco): municípios prioritários do MMA.
         # Semanal porque a portaria é anual; o coletor só preserva evidência quando o TEXTO do ato
         # muda, e avisa em voz alta quando a janela da atualização anual passou sem mudança.
