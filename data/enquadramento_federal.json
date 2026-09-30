@@ -1,0 +1,654 @@
+{
+ "municipios": {
+  "1100130": {
+   "codigo_ibge": "1100130",
+   "uf": "RO",
+   "municipio": "Machadinho D'Oeste",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1100189": {
+   "codigo_ibge": "1100189",
+   "uf": "RO",
+   "municipio": "Pimenta Bueno",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "1100205": {
+   "codigo_ibge": "1100205",
+   "uf": "RO",
+   "municipio": "Porto Velho",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1100338": {
+   "codigo_ibge": "1100338",
+   "uf": "RO",
+   "municipio": "Nova Mamoré",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1100452": {
+   "codigo_ibge": "1100452",
+   "uf": "RO",
+   "municipio": "Buritis",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1100809": {
+   "codigo_ibge": "1100809",
+   "uf": "RO",
+   "municipio": "Candeias do Jamari",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1100940": {
+   "codigo_ibge": "1100940",
+   "uf": "RO",
+   "municipio": "Cujubim",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1200302": {
+   "codigo_ibge": "1200302",
+   "uf": "AC",
+   "municipio": "Feijó",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1200344": {
+   "codigo_ibge": "1200344",
+   "uf": "AC",
+   "municipio": "Manoel Urbano",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1200401": {
+   "codigo_ibge": "1200401",
+   "uf": "AC",
+   "municipio": "Rio Branco",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1200500": {
+   "codigo_ibge": "1200500",
+   "uf": "AC",
+   "municipio": "Sena Madureira",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1200609": {
+   "codigo_ibge": "1200609",
+   "uf": "AC",
+   "municipio": "Tarauacá",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1300144": {
+   "codigo_ibge": "1300144",
+   "uf": "AM",
+   "municipio": "Apuí",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1300706": {
+   "codigo_ibge": "1300706",
+   "uf": "AM",
+   "municipio": "Boca do Acre",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1300904": {
+   "codigo_ibge": "1300904",
+   "uf": "AM",
+   "municipio": "Canutama",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1301704": {
+   "codigo_ibge": "1301704",
+   "uf": "AM",
+   "municipio": "Humaitá",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1302009": {
+   "codigo_ibge": "1302009",
+   "uf": "AM",
+   "municipio": "Itapiranga",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1302405": {
+   "codigo_ibge": "1302405",
+   "uf": "AM",
+   "municipio": "Lábrea",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1302603": {
+   "codigo_ibge": "1302603",
+   "uf": "AM",
+   "municipio": "Manaus",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1302702": {
+   "codigo_ibge": "1302702",
+   "uf": "AM",
+   "municipio": "Manicoré",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1302900": {
+   "codigo_ibge": "1302900",
+   "uf": "AM",
+   "municipio": "Maués",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1303304": {
+   "codigo_ibge": "1303304",
+   "uf": "AM",
+   "municipio": "Novo Aripuanã",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1400308": {
+   "codigo_ibge": "1400308",
+   "uf": "RR",
+   "municipio": "Mucajaí",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1400472": {
+   "codigo_ibge": "1400472",
+   "uf": "RR",
+   "municipio": "Rorainópolis",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1500602": {
+   "codigo_ibge": "1500602",
+   "uf": "PA",
+   "municipio": "Altamira",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1500859": {
+   "codigo_ibge": "1500859",
+   "uf": "PA",
+   "municipio": "Anapu",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1501253": {
+   "codigo_ibge": "1501253",
+   "uf": "PA",
+   "municipio": "Bannach",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1501725": {
+   "codigo_ibge": "1501725",
+   "uf": "PA",
+   "municipio": "Brasil Novo",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "1502764": {
+   "codigo_ibge": "1502764",
+   "uf": "PA",
+   "municipio": "Cumaru do Norte",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1502939": {
+   "codigo_ibge": "1502939",
+   "uf": "PA",
+   "municipio": "Dom Eliseu",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1503606": {
+   "codigo_ibge": "1503606",
+   "uf": "PA",
+   "municipio": "Itaituba",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1503705": {
+   "codigo_ibge": "1503705",
+   "uf": "PA",
+   "municipio": "Itupiranga",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1503754": {
+   "codigo_ibge": "1503754",
+   "uf": "PA",
+   "municipio": "Jacareacanga",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1504208": {
+   "codigo_ibge": "1504208",
+   "uf": "PA",
+   "municipio": "Marabá",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1504455": {
+   "codigo_ibge": "1504455",
+   "uf": "PA",
+   "municipio": "Medicilândia",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1504703": {
+   "codigo_ibge": "1504703",
+   "uf": "PA",
+   "municipio": "Moju",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1504752": {
+   "codigo_ibge": "1504752",
+   "uf": "PA",
+   "municipio": "Mojuí dos Campos",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1505031": {
+   "codigo_ibge": "1505031",
+   "uf": "PA",
+   "municipio": "Novo Progresso",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1505064": {
+   "codigo_ibge": "1505064",
+   "uf": "PA",
+   "municipio": "Novo Repartimento",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1505486": {
+   "codigo_ibge": "1505486",
+   "uf": "PA",
+   "municipio": "Pacajá",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1505502": {
+   "codigo_ibge": "1505502",
+   "uf": "PA",
+   "municipio": "Paragominas",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1505650": {
+   "codigo_ibge": "1505650",
+   "uf": "PA",
+   "municipio": "Placas",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1505809": {
+   "codigo_ibge": "1505809",
+   "uf": "PA",
+   "municipio": "Portel",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1506005": {
+   "codigo_ibge": "1506005",
+   "uf": "PA",
+   "municipio": "Prainha",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1506187": {
+   "codigo_ibge": "1506187",
+   "uf": "PA",
+   "municipio": "Rondon do Pará",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1506195": {
+   "codigo_ibge": "1506195",
+   "uf": "PA",
+   "municipio": "Rurópolis",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1506583": {
+   "codigo_ibge": "1506583",
+   "uf": "PA",
+   "municipio": "Santa Maria das Barreiras",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1506708": {
+   "codigo_ibge": "1506708",
+   "uf": "PA",
+   "municipio": "Santana do Araguaia",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1507300": {
+   "codigo_ibge": "1507300",
+   "uf": "PA",
+   "municipio": "São Félix do Xingu",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1507805": {
+   "codigo_ibge": "1507805",
+   "uf": "PA",
+   "municipio": "Senador José Porfírio",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1507953": {
+   "codigo_ibge": "1507953",
+   "uf": "PA",
+   "municipio": "Tailândia",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "1508050": {
+   "codigo_ibge": "1508050",
+   "uf": "PA",
+   "municipio": "Trairão",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1508126": {
+   "codigo_ibge": "1508126",
+   "uf": "PA",
+   "municipio": "Ulianópolis",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "1508159": {
+   "codigo_ibge": "1508159",
+   "uf": "PA",
+   "municipio": "Uruará",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "2100600": {
+   "codigo_ibge": "2100600",
+   "uf": "MA",
+   "municipio": "Amarante do Maranhão",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "5100250": {
+   "codigo_ibge": "5100250",
+   "uf": "MT",
+   "municipio": "Alta Floresta",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "5100359": {
+   "codigo_ibge": "5100359",
+   "uf": "MT",
+   "municipio": "Alto Boa Vista",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "5100805": {
+   "codigo_ibge": "5100805",
+   "uf": "MT",
+   "municipio": "Apiacás",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5101407": {
+   "codigo_ibge": "5101407",
+   "uf": "MT",
+   "municipio": "Aripuanã",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5101852": {
+   "codigo_ibge": "5101852",
+   "uf": "MT",
+   "municipio": "Bom Jesus do Araguaia",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5101902": {
+   "codigo_ibge": "5101902",
+   "uf": "MT",
+   "municipio": "Brasnorte",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "5103056": {
+   "codigo_ibge": "5103056",
+   "uf": "MT",
+   "municipio": "Cláudia",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5103254": {
+   "codigo_ibge": "5103254",
+   "uf": "MT",
+   "municipio": "Colniza",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5103304": {
+   "codigo_ibge": "5103304",
+   "uf": "MT",
+   "municipio": "Comodoro",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5103353": {
+   "codigo_ibge": "5103353",
+   "uf": "MT",
+   "municipio": "Confresa",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5103361": {
+   "codigo_ibge": "5103361",
+   "uf": "MT",
+   "municipio": "Conquista D'Oeste",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5103379": {
+   "codigo_ibge": "5103379",
+   "uf": "MT",
+   "municipio": "Cotriguaçu",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5103700": {
+   "codigo_ibge": "5103700",
+   "uf": "MT",
+   "municipio": "Feliz Natal",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5103858": {
+   "codigo_ibge": "5103858",
+   "uf": "MT",
+   "municipio": "Gaúcha do Norte",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5104104": {
+   "codigo_ibge": "5104104",
+   "uf": "MT",
+   "municipio": "Guarantã do Norte",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5105101": {
+   "codigo_ibge": "5105101",
+   "uf": "MT",
+   "municipio": "Juara",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5105150": {
+   "codigo_ibge": "5105150",
+   "uf": "MT",
+   "municipio": "Juína",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5105507": {
+   "codigo_ibge": "5105507",
+   "uf": "MT",
+   "municipio": "Vila Bela da Santíssima Trindade",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5105580": {
+   "codigo_ibge": "5105580",
+   "uf": "MT",
+   "municipio": "Marcelândia",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5106158": {
+   "codigo_ibge": "5106158",
+   "uf": "MT",
+   "municipio": "Nova Bandeirantes",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5106240": {
+   "codigo_ibge": "5106240",
+   "uf": "MT",
+   "municipio": "Nova Ubiratã",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5106299": {
+   "codigo_ibge": "5106299",
+   "uf": "MT",
+   "municipio": "Paranaíta",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5106307": {
+   "codigo_ibge": "5106307",
+   "uf": "MT",
+   "municipio": "Paranatinga",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5106422": {
+   "codigo_ibge": "5106422",
+   "uf": "MT",
+   "municipio": "Peixoto de Azevedo",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5106802": {
+   "codigo_ibge": "5106802",
+   "uf": "MT",
+   "municipio": "Porto dos Gaúchos",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5107065": {
+   "codigo_ibge": "5107065",
+   "uf": "MT",
+   "municipio": "Querência",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5107180": {
+   "codigo_ibge": "5107180",
+   "uf": "MT",
+   "municipio": "Ribeirão Cascalheira",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5107248": {
+   "codigo_ibge": "5107248",
+   "uf": "MT",
+   "municipio": "Santa Carmem",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "5107354": {
+   "codigo_ibge": "5107354",
+   "uf": "MT",
+   "municipio": "São José do Xingu",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5107578": {
+   "codigo_ibge": "5107578",
+   "uf": "MT",
+   "municipio": "Rondolândia",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5107776": {
+   "codigo_ibge": "5107776",
+   "uf": "MT",
+   "municipio": "Santa Terezinha",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5107859": {
+   "codigo_ibge": "5107859",
+   "uf": "MT",
+   "municipio": "São Félix do Araguaia",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5108006": {
+   "codigo_ibge": "5108006",
+   "uf": "MT",
+   "municipio": "Tapurah",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "5108303": {
+   "codigo_ibge": "5108303",
+   "uf": "MT",
+   "municipio": "União do Sul",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  },
+  "5108600": {
+   "codigo_ibge": "5108600",
+   "uf": "MT",
+   "municipio": "Vila Rica",
+   "mma_prioritario_desmatamento": false,
+   "mma_monitorado_sob_controle": true
+  },
+  "5108907": {
+   "codigo_ibge": "5108907",
+   "uf": "MT",
+   "municipio": "Nova Maringá",
+   "mma_prioritario_desmatamento": true,
+   "mma_monitorado_sob_controle": false
+  }
+ },
+ "fontes": {
+  "mma_desmatamento": {
+   "instrumento": "Portaria GM/MMA nº 1.202, de 11 de novembro de 2024, publicada no Diário Oficial da União de 13/11/2024, seção 1, página 121 (revoga a Portaria MMA nº 834/2023)",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-gm/mma-n-1.202-de-11-de-novembro-de-2024-595667200",
+   "consultado_em": "2026-09-30",
+   "publicada_em": "2024-11-13",
+   "hash": "6bb4404e52096bef8ff022898a2fb99888b9cb9899c95ab2bb1d90ef5f0a2606",
+   "total_anexo_i": 81,
+   "total_anexo_ii": 10
+  }
+ },
+ "_governanca": "Enquadramento federal de risco por município: camada de CONTEXTO, PESO ZERO. Não pontua e não entra no índice. Constar de lista federal não é preparação; não constar não é falta de preparação. Cada família tem seu instrumento e sua fonte, declarados em `fontes`.",
+ "atualizado_em": "2026-09-30"
+}
