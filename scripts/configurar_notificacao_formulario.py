@@ -60,6 +60,10 @@ def destino_valido(endereco: str) -> bool:
 
 
 def pedir(caminho: str, token: str, dados: dict = None):
+    """Uma chamada à API. O caminho entra no erro quando ela falha.
+
+    A execução de 30/09 devolveu "HTTP 404 — Not Found" sem dizer QUAL chamada 404: com quatro
+    chamadas em sequência, isso é um erro que não se conserta, só se adivinha."""
     req = urllib.request.Request(
         API + caminho,
         data=(json.dumps(dados).encode() if dados is not None else None),
@@ -68,8 +72,13 @@ def pedir(caminho: str, token: str, dados: dict = None):
                  # autenticada. Quem recebe o pedido tem direito de saber quem o fez.
                  "User-Agent": ua_de("notificação de e-mail do formulário de contribuição")},
         method=("POST" if dados is not None else "GET"))
-    with urllib.request.urlopen(req, timeout=60) as r:
-        corpo = r.read()
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            corpo = r.read()
+    except urllib.error.HTTPError as e:
+        raise urllib.error.HTTPError(
+            e.url, e.code, f"{e.reason} em {'POST' if dados is not None else 'GET'} {caminho}",
+            e.headers, None) from None
     return json.loads(corpo) if corpo else {}
 
 
@@ -129,8 +138,10 @@ def main() -> int:
         sites = pedir("/sites", token)
         alvo = next((s for s in sites if SITIO in (s.get("name", "") + s.get("url", ""))), None)
         if not alvo:
-            print(f"X não achei o site {SITIO} entre os {len(sites)} da conta. Nada foi criado.")
+            print(f"X não achei o site {SITIO} entre os {len(sites)} da conta: "
+                  f"{[s.get('name') for s in sites]}. Nada foi criado.")
             return 1
+        print(f"sítio: {alvo.get('name')} ({alvo.get('id')}) · {alvo.get('url')}")
         formularios = pedir(f"/sites/{alvo['id']}/forms", token)
         form = next((f for f in formularios if f.get("name") == FORMULARIO), None)
         if not form:
@@ -150,7 +161,9 @@ def main() -> int:
                 print("  Outros formulários aparecem, então a detecção está ligada — este ainda não"
                       " foi detectado no último deploy, ou mudou de nome.")
             return 1
-        hooks = pedir(f"/sites/{alvo['id']}/hooks", token)
+        # A leitura dos hooks é `/hooks?site_id=`, não `/sites/{id}/hooks` — esta segunda não
+        # existe na API e devolvia 404, que era lido como "a API recusou".
+        hooks = pedir(f"/hooks?site_id={alvo['id']}", token)
         if ja_existe(hooks, form["id"], destino):
             print(f"OK a notificação para {destino} já existe — nada a fazer.")
             return 0
@@ -160,7 +173,9 @@ def main() -> int:
         print(f"OK notificação criada: e-mail para {destino} a cada envio de {FORMULARIO!r}.")
         return 0
     except urllib.error.HTTPError as e:
-        print(f"X a API do Netlify recusou: HTTP {e.code} — {e.read()[:300]!r}")
+        # `e.reason` carrega o método e o caminho (posto em `pedir`); `e.read()` vem vazio quando o
+        # erro foi relançado, então imprimir só o corpo escondia justamente o que interessa.
+        print(f"X a API do Netlify recusou: HTTP {e.code} — {e.reason}")
         print("  Caminho manual: Site settings → Forms → Form notifications → Add notification → "
               f"Email notification → {DESTINO_CONFIRMADO}, marcado para o formulário {FORMULARIO!r}.")
         return 1

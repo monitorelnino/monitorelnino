@@ -42,3 +42,8 @@ jobs:
             exit 1
           fi
           python3 scripts/configurar_notificacao_formulario.py
+      - name: Teste de ponta a ponta do formulário (envia, confere, apaga)
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+        run: python3 scripts/testar_formulario_ponta_a_ponta.py
