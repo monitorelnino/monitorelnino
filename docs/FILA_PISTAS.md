@@ -1,6 +1,6 @@
 # Fila de pistas — revisão humana
 
-Gerado em 30/09/2026 · 1323 pendente(s) · 5502 decidida(s) · A=149 B=762 C=412
+Gerado em 30/09/2026 · 1349 pendente(s) · 5502 decidida(s) · A=153 B=781 C=415
 
 Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --data dd/mm/aaaa [--url-documento …]` · `--rejeitar ID --motivo "…"` · `--adiar ID`. Nada some: C fica no fim, decididas abaixo. Registro exige documento primário lido por pessoa (§3.2).
 
@@ -546,11 +546,33 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Cambé, Cascavel, Maringá e Ponta Grossa em todas as etapas ... O Plano de Contingência prevê a realização de ações de acordo com estágios operacionais.
   - ⚠ risco_errado_no_titulo
 
-## Curitiba/PR — 12 pendente(s)
+## Colombo/PR — 3 pendente(s)
+- `914b9ec2dc` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Mapa do Site – Prefeitura Municipal de Colombo
+  - url: https://prefeitura.colombo.pr.gov.br/mapa-do-site/
+  - trecho: Reunião com secretarias, Defesa Civil, Guarda Municipal e Polícia Militar alinhou plano de contingência diante da previsão de temporais O prefeito de Colombo ...
+- `f7778f6ca8` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
+  - título: El Niño aumenta risco de chuvas intensas no Paraná, e Colombo ...
+  - url: https://ivandecolombo.com.br/blog/2026/09/16/el-nino-aumenta-risco-de-chuvas-intensas-no-parana-e-colombo-reforca-prevencao/
+  - trecho: 6 days ago ... El Niño aumenta risco de chuvas intensas no Paraná, e Colombo reforça prevenção ... O documento municipal aponta que o Plano de Contingência de ...
+  - juiz: portão automático: fonte não oficial
+- `cdf39eabaa` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Estadual n° 4.230**, 16/03/2020
+  - título: RESOLUÇÃO SESA Nº 632/2020
+  - url: https://portal.colombo.pr.gov.br/downloads/saude/Resoluccao-SESA-632_2020.pdf.pdf
+  - trecho: May 5, 2020 ... www.saude.pr.gov.br – gabinete@sesa.pr.gov.br. 1 ... - o Plano de Contingência Estadual para Infecção Humana pela COVID-19, editado pela.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+
+## Curitiba/PR — 15 pendente(s)
 - `0bb73f1765` · nível **A** (6 pts) · seguimento_busca_oficial · — · citação não extraída
   - título: Hospitais privados precisam apresentar plano de contingência - Prefeitura de Curitiba
   - url: https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236
   - trecho: Documento estabelece que os hospitais privados devem prever o remanejamento de no mínimo de 50% dos leitos clínicos e cirúrgicos para atendimento exclusivo da covid-19
+- `d16feec1b0` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Plano de Contingência SRAG - Prefeitura Municipal de Curitiba
+  - url: https://mid.curitiba.pr.gov.br/2026/00463452.pdf
+  - trecho: Fonte: Secretaria Municipal da Saúde de Curitiba. PLANO DE CONTINGÊNCIA MUNICIPAL PARA RESPOSTA ... Publicar, por meio de Decreto em Diário Oficial e em ...
+  - juiz: portão automático: data do ato incompleta (2026)
 - `d0f22de20c` · nível **B** (6 pts) · seguimento_busca_oficial · DUVIDA · **Lei Municipal nº 14.286**, 12/07/2013
   - título: PREFEITURA MUNICIPAL DE CURITIBA DECRETO Nº 1868
   - url: https://mid.curitiba.pr.gov.br/2024/00444371.pdf
@@ -581,6 +603,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: social, que compõem o Plano de Contingência para Resposta às Emergências em · Saúde Pública, e evitar prejuízo ao atendimento da população, fica instituído regime de · transição para os seguintes atos destinados ao enfre
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `9405467d2a` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Plano de Contingência para Emergências de Saúde Pública dos ...
+  - url: https://www.portosdoparana.pr.gov.br/sites/portos/arquivos_restritos/files/documento/2022-08/plano_de_contingencia_pvpaf-pgua.pdf
+  - trecho: Equipe da CVPAF-PR responsável pela elaboração do Plano de Contingência para ... localizado a uma distância de 91 km da capital do estado, Curitiba. Cidade ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `8f574a1cca` · nível **B** (3 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Consulta de Atos Normativos
+  - url: https://celepar7.pr.gov.br/sia/atosnormativos/form_cons_ato1.asp?Codigo=4574
+  - trecho: ... para atendimento aos Acidentes Ambientais na Região Metropolitana de Curitiba ... - Considerando a participação ativa do IAT no “Plano de Contingência para ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `0d2a82fd93` · nível **C** (5 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
   - título: Plano de Contingência Dengue.pdf - Secretaria Municipal da Saúde
   - url: https://saude.curitiba.pr.gov.br/images/Plano%20de%20Conting%C3%AAncia%20Dengue.pdf
@@ -608,12 +641,28 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 1.000m2. Marca: Não se aplica. Modelo: Não se aplica. Valor unitário: R$ 1.000,0000 Quantidade: 21,0000 - UNIDADE Protocolo 01-143579/2025 Anexo 188.3 - PE Nº 06_2025 - ATA REGISTRO PREÇOS.PDF do Trâmite 188 INFORMAÇÃO -
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Foz do Iguaçu/PR — 1 pendente(s)
+## Foz do Iguaçu/PR — 4 pendente(s)
 - `00461f6b27` · nível **A** (6 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Câmara de Foz do Iguaçu cobra plano de contingência para efeitos ...
   - url: https://portaliguacu.com.br/camara-de-foz-do-iguacu-cobra-plano-de-contingencia-para-efeitos-do-el-nino/
   - trecho: Jun 22, 2026 ... Câmara de Foz do Iguaçu cobra plano de contingência para efeitos do El Niño. A Câmara Municipal de Foz do Iguaçu aprovou o Requerimento nº ...
   - juiz: portão automático: fonte não oficial
+- `a2d2726586` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · data 2025 (do trecho)
+  - título: PREFEITURA MUNICIPAL DE FOZ DO IGUAÇU - SAPL
+  - url: https://sapl.fozdoiguacu.pr.leg.br/media/sapl/public/materialegislativa/2025/49610/oficio_no_10917_-_rel._circunstanciado.pdf
+  - trecho: Aug 28, 2025 ... Cidade/ UF: Foz do Iguaçu – PR. Telefone: (45) 3576-8082 - 3576-8043 ... plano de contingência para garantir a continuida- de das ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `6ec0fcaa20` · nível **B** (4 pts) · seguimento_busca_oficial · — · data 09/04/2020 (do trecho)
+  - título: Diário Oficial do Município - Prefeitura de Foz do Iguaçu
+  - url: https://www.foz.pr.gov.br/wp-content/uploads/2025/09/Diario%20Oficial%20PSS%20002_2020.pdf
+  - trecho: 8o Este Decreto entra em vigor na data de sua publicação. Gabinete do Prefeito Municipal de Foz do Iguaçu, Estado do Paraná, em 9 de abril de 2020. Francisco ...
+  - ⚠ ano_anterior_ao_ciclo
+- `d482a07916` · nível **B** (3 pts) · seguimento_busca_oficial · — · data 2024 (do trecho)
+  - título: RESOLUÇÃO SESA Nº 285/2024 - Documentador
+  - url: https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=%40gtf-escriba-sesa%4061bd690e-81c2-4630-87cf-4e7b25c77a42
+  - trecho: Mar 14, 2024 ... - considerando o Plano de Contingência contemplado no Plano de Ação para o ... Foz do Iguaçu. 257971. 4641. 1,80%. R$. 568.914,66. 9. Itaipulândia.
+  - ⚠ ano_anterior_ao_ciclo
 
 ## Francisco Beltrão/PR — 1 pendente(s)
 - `d67c026a71` · nível **A** (9 pts) · busca_web · DUVIDA · data 08/09/2026 (do trecho)
@@ -821,12 +870,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: ESTADO DO PARANÁ CNPJ: 76.021.450/0001-22 MEDICAMENTO S LTDA. 34 GLIMEPIRIDA 2MG cod br 273119 Cimed COM 32000 0,0774 2.476,80 INOVAMED HOSPITALAR LTDA 35 HEPARINA 5000 UI/ ML INTRAVENOSA COM 5ML cod br 272796 HIPOLAB OR
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Umuarama/PR — 3 pendente(s)
+## Umuarama/PR — 7 pendente(s)
 - `93531db81d` · nível **A** (8 pts) · busca_web · EX_ANTE · data 11/08/2026 (do trecho)
   - título: Plano de Contingência Municipal de Proteção e Defesa Civil ...
   - url: https://umuarama.pr.gov.br/files/ArquivoDiversos/arquivo/1786533277.pdf
   - trecho: Plano de contingência do município de Umuarama - PR. 11/08/2026. Página 2 de 72 ... del.gsmenezes@pc.pr.gov. br. Page 60. Plano de contingência do município ...
   - juiz: portão automático: sem texto normativo articulado (Art. 1º / fica instituído)
+- `6ce5bdbaeb` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Decretos - Prefeitura de Umuarama
+  - url: https://www.umuarama.pr.gov.br/decretos
+  - trecho: Plano de Contingência - Defesa Civil · Requerimento Padrão. Empresa ... imprensa@umuarama.pr.gov.br. Atendimento das 8h às 12h e das 13h30 às 17h30.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `f087347cc6` · nível **A** (6 pts) · seguimento_busca_oficial · EX_ANTE · citação não extraída
+  - título: Decretos | Prefeitura de Umuarama
+  - url: https://www.umuarama.pr.gov.br/decretos?page=8
+  - trecho: Plano de Contingência - Defesa Civil · Requerimento Padrão. Empresa ... imprensa@umuarama.pr.gov.br. Atendimento das 8h às 12h e das 13h30 às 17h30.
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `64a5717321` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Francisco Alves atualiza Plano de Contingência e reforça ações ...
   - url: https://portalumuaramanews.com.br/2026/09/10/francisco-alves-atualiza-plano-de-contingencia-e-reforca-acoes-preventivas-diante-da-intensificacao-do-el-nino/
@@ -837,6 +896,16 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://globoplay.globo.com/v/14865940/
   - trecho: Aug 13, 2026 ... Detalhes. Meio-Dia Paraná - Noroeste. Umuarama reforça prevenção para enfrentar El Niño ... Município também atualiza plano de contingência da ...
   - juiz: portão automático: fonte não oficial
+- `1899f95181` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 06/12/2017 (do trecho)
+  - título: sanepar - Câmara Municipal de Cianorte
+  - url: https://camaracianorte.pr.gov.br/downloadDocumentos/download/TlRjPU5XTT1OVFE9TlRVPU5UVT0=/correspondencias-recebidas.pdf
+  - trecho: de 06/12/2017, estabelece diretrizes denominado Plano de Contingência. A ... CEP 87.501-050 - Umuarama/PR - www.sanepar.com.br. MOOSTFOET S ob & JIA ob ...
+- `658ffeb419` · nível **C** (3 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto 2.900**, 04/2.011
+  - título: Ata da Audiência Pública - Prefeitura de Itanhaém
+  - url: https://www2.itanhaem.sp.gov.br/plano-municipal-saneamento/ata-audiencia-publica.pdf
+  - trecho: implantação de setorização nos bairros Umuarama,Tupi,Gaivota,Campos Elíseos, Ivoty/Oásis. 2014-2017 construção de reservatórios: Umuarama, Tupi, Gaivota e ...
+  - ⚠ uf_divergente_na_url
+  - juiz: portão automático: alerta da triagem de confiança: uf_divergente_na_url
 
 ## VITORINO/PR — 5 pendente(s)
 - `fd8c051343` · nível **A** (6 pts) · diario_consorciado · DUVIDA · **RESOLUÇÃO Nº 39**, 24/09/2026
@@ -4408,7 +4477,13 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - ⚠ texto_falso_positivo_provavel
   - juiz: portão automático: triagem do ato: destino=indefinido (autoridade=indefinido, objeto=indefinido)
 
-## Araucária/PR — 2 pendente(s)
+## Araucária/PR — 4 pendente(s)
+- `c78b640537` · nível **B** (7 pts) · seguimento_busca_oficial · DUVIDA · **LEI Nº 2.020**, 2017
+  - título: PROJETO DE LEI Nº 2.020/2017 Ementa: “Dispõe sobre a criação ...
+  - url: https://sapl.araucaria.pr.leg.br/media/sapl/public/materialegislativa/2017/2429/2429_texto_integral.pdf
+  - trecho: elaborar o Plano de Contingência e Emergência de Araucária, e submetê-lo à aprovação do Conselho Proteção e Defesa Civil de Araucária;. VI. submeter ao ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `508df0e165` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: Araucária começa a se preparar para Super El Niño - G1 - Globo
   - url: https://g1.globo.com/pr/parana/especial-publicitario/municipio-de-araucaria/araucaria-noticias/noticia/2026/08/11/araucaria-comeca-a-se-preparar-para-super-el-nino.ghtml
@@ -4419,6 +4494,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.araucariatemtudo.com.br/blog/araucaria-comeca-a-se-preparar-para-super-el-nino
   - trecho: Jun 29, 2026 ... Araucária - PR. Menu Araucária Tem Tudo Quem somosMelhores do Ano ... Entre as iniciativas estão a atualização do Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
+- `2facea976e` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · **Lei Estadual nº 12.020**, 1998
+  - título: Chamada Pública da Fundação Araucária
+  - url: https://www.fappr.pr.gov.br/sites/fundacao-araucaria/arquivos_restritos/files/documento/2020-07/2020_cp09_coronavirus_4acomplementarbolsistas_aditivo1.pdf
+  - trecho: Jul 24, 2020 ... ... Plano de Contingência Nacional ... 4.4 Os recursos serão providos pela Fundação Araucária, nos termos da Lei Estadual nº 12.020/1998, alterada ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## CANDÓI/PR — 3 pendente(s)
 - `c0f04f179c` · nível **B** (4 pts) · diario_consorciado · EX_ANTE · **DECRETO Nº 355**, 01/09/2026
@@ -4471,13 +4552,6 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: : E xe cu tiv o P er ío do d e R ef er ên ci a: 0 5/ 20 25 a 0 4/ 20 26 P ág 1 / 2 IP M S is te m as L td a A te nd e. N et - W P R v :2 01 3. 01 Id en tif ic ad or : W P R 48 41 10 1- 97 37 -E A LD P G B V E O Q N -9 - 
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Colombo/PR — 1 pendente(s)
-- `f7778f6ca8` · nível **B** (5 pts) · busca_web · EX_ANTE · citação não extraída
-  - título: El Niño aumenta risco de chuvas intensas no Paraná, e Colombo ...
-  - url: https://ivandecolombo.com.br/blog/2026/09/16/el-nino-aumenta-risco-de-chuvas-intensas-no-parana-e-colombo-reforca-prevencao/
-  - trecho: 6 days ago ... El Niño aumenta risco de chuvas intensas no Paraná, e Colombo reforça prevenção ... O documento municipal aponta que o Plano de Contingência de ...
-  - juiz: portão automático: fonte não oficial
-
 ## FOZ DO JORDÃO/PR — 2 pendente(s)
 - `dab5e7acc3` · nível **B** (5 pts) · diario_consorciado · — · **Lei Municipal nº 
 109**, 2025
@@ -4488,7 +4562,12 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: entual deve ser efetivada para  indivíduos, famílias, e grupos, independentemente da existência de  Plano de Contingência Local ou da decretação de situação de  emergência ou estado de calamidade pública pelo Estado, Mun
   - juiz: portão automático: fonte não oficial
 
-## Fazenda Rio Grande/PR — 2 pendente(s)
+## Fazenda Rio Grande/PR — 5 pendente(s)
+- `34bee04024` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 24/08/2019 (do trecho)
+  - título: Licença Prévia nº 007-2018 Validade: 24/08/2019 Protocolo: 8.825 ...
+  - url: https://fazendariogrande.pr.gov.br/wp-content/uploads/2019/02/SMMA-LICEN%C3%87A-PR%C3%89VIA-N%C2%B0007_2018-.pdf
+  - trecho: Com Rua Macauã, 17, Bairro Gralha Azul,. Município de Fazenda Rio Grande – PR. ... 19)Plano de Contingência – PC;. 20)Apresentar o projeto arquitetônico ...
+  - ⚠ ano_anterior_ao_ciclo
 - `da6fbe3938` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: El Niño coloca Fazenda Rio Grande em atenção para período de ...
   - url: https://www.facebook.com/NoticiaFazenda/posts/el-ni%C3%B1o-coloca-fazenda-rio-grande-em-aten%C3%A7%C3%A3o-para-per%C3%ADodo-de-chuvas-intensasa-co/1519122706319589/
@@ -4499,6 +4578,18 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.instagram.com/p/DZfGtwfkYSt/
   - trecho: Jun 12, 2026 ... ... Fazenda Rio Grande conta com mecanismos de preparação para situações climáticas extremas. A Defesa Civil municipal possui Plano de Contingência ...
   - juiz: portão automático: fonte não oficial
+- `581838a3d2` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **LeiEstadual11.362**, 20/04/2023
+  - título: DIOE - Ata - Ordinária Abril - Ceas-PR
+  - url: https://www.ceas.pr.gov.br/sites/ceas/arquivos_restritos/files/documento/2023-10/dioe_-_ata_-_ordinaria_abril.pdf
+  - trecho: contato com o Município de Fazenda Rio Grande ... Saúde em caráter emergencial conforme Plano de contingência, mas em 2022 voltou a atender ao público-alvo.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
+- `351eab4cce` · nível **B** (3 pts) · seguimento_busca_oficial · DUVIDA · citação não extraída
+  - título: SEJUF - Secretaria da Justiça e Cidadania
+  - url: https://www.justica.pr.gov.br/sites/default/arquivos_restritos/files/documento/2022-10/portaria_n._32.2022_-_dispoe_de_mecanismos_de_prevencao_ao_covid-19.pdf
+  - trecho: adota e providências como o Plano de Contingência de Prevenção ao ... em atendimento nos CENSE's de Campo Mourão, Fazenda Rio Grande, Paranavaí, Pato.
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
 ## Floresta/PR — 3 pendente(s)
 - `dba3a689b5` · nível **B** (5 pts) · seguimento_link_noticia · — · citação não extraída
@@ -4543,7 +4634,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Defesa Civil;   II - promover o mapeamento das áreas de risco de desastres e a identificação de ameaças;   III - incorporar as ações de proteção e defesa civil no planejamento municipal;   IV - elaborar, manter atualizad
   - juiz: portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho
 
-## Guarapuava/PR — 5 pendente(s)
+## Guarapuava/PR — 7 pendente(s)
 - `c5e2e5d0d1` · nível **B** (5 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño: Guarapuava monta operação para reduzir danos das ...
   - url: https://paranacentral.com.br/el-nino-guarapuava-monta-operacao-para-reduzir-danos-das-chuvas-no-2semestre
@@ -4568,6 +4659,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.gazetaguarapuava.com.br/noticia/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico
   - trecho: 9 hours ago ... Resumindo: plano de contingência, população das áreas de risco ... 2026 Gazeta Guarapuava - Todos os direitos reservados. / Gazeta ...
   - juiz: portão automático: fonte não oficial
+- `d801e86f44` · nível **C** (5 pts) · seguimento_busca_oficial · — · citação não extraída
+  - título: Plano de Contingência Municipal para Dengue, Chikungunya e Zika
+  - url: https://guarapuava.pr.gov.br/wp-content/uploads/2025/10/Resolucao-CMS-020.2025.pdf
+  - trecho: Considerando o Plano de Contingência para Resposta às Emergências em Saúde Pública por Dengue ... cms@guarapuava.pr.gov.br Fone (42) 3142 - 1506.
+  - ⚠ risco_errado_no_titulo, ano_anterior_ao_ciclo
+- `40fef53bc8` · nível **C** (4 pts) · seguimento_busca_oficial · EX_ANTE · data 2025 (do trecho)
+  - título: Dengue, Chikungunya e Zika 2025 - Prefeitura municipal de Reserva
+  - url: https://reserva.pr.gov.br/wp-content/uploads/2025/11/Plano-de-Contingencia-RESERVA-2025-.pdf
+  - trecho: unidades em Ponta Grossa, Curitiba, Guarapuava e Laranjeiras do Sul. Na ... O Plano de Contingência é composto por dois níveis de resposta, cada qual com um.
+  - ⚠ risco_errado_no_titulo, ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo, risco_errado_no_titulo
 
 ## ITAMBÉ/PR — 3 pendente(s)
 - `8ae4f3adf8` · nível **B** (4 pts) · diario_consorciado · DUVIDA · **RESOLUÇÃO Nº005**, 12.06/2005
@@ -4607,7 +4709,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: 07 Descumprimento de   normas de segurança e   legislação vigente   Baixa Alto Médio Cláusulas contratuais específicas e   fiscalização   08 Interrupção do serviço   durante o evento.   Baixa Alto Médio Previsão de equip
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 
-## Londrina/PR — 9 pendente(s)
+## Londrina/PR — 10 pendente(s)
 - `b2ad938867` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · data 2025 (do trecho)
   - título: PLANO DE CONTINGÊNCIA MUNICIPAL SÍNDROME ...
   - url: https://saude.londrina.pr.gov.br/images/plano_contingencia_sindrome_respiratoria.pdf
@@ -4617,6 +4719,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - título: Prefeitura divulga Plano de Contingenciamento para Síndromes ...
   - url: https://blog.londrina.pr.gov.br/?p=192603
   - trecho: A etapa vigente do Plano de Contingenciamento, que é a fase 2, elenca outras medidas que podem ser aplicadas em breve. Dentre elas, a determinação da UPA Sabará como unidade de atendimento exclusivo de Síndromes Gripais;
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `91f90a24fa` · nível **B** (5 pts) · seguimento_busca_oficial · DUVIDA · data 2026 (do trecho)
+  - título: Projetos de Lei / 2026 - Câmara Municipal de Londrina/PR
+  - url: https://www.cml.pr.gov.br/proposicoes/Projetos-de-Lei/2026/5/0
+  - trecho: ... Plano de Contingência Energética e dá outras providências. Autoria: Emanoel ... Centro Cívico, Londrina/PR. (43) 3374-1300 atendimento telefônico: RAMAL ...
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
 - `89e500dcd9` · nível **B** (4 pts) · busca_web · EX_ANTE · data 2026 (do trecho)
   - título: El Niño é confirmado e Simepar prevê aumento de chuvas até ...
@@ -4770,7 +4877,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Jun 21, 2026 ... Atenção Pato Branco: o El Niño vem aí e precisamos nos preparar Pato ... Plano de Contingência Climática foi cancelada. Em breve ...
   - juiz: portão automático: fonte não oficial
 
-## Pinhais/PR — 8 pendente(s)
+## Pinhais/PR — 11 pendente(s)
 - `9103511ece` · nível **B** (5 pts) · busca_web · RESPOSTA · **Decreto 043**, 2026
   - título: Pinhais adota medidas preventivas para enfrentar o El Niño
   - url: https://www.bemparana.com.br/publicacao/blogs/metropole/pinhais-adota-medidas-preventivas-para-enfrentar-o-el-nino/
@@ -4781,6 +4888,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www.bemparana.com.br/noticias/regiao-metropolitana/el-nino-pinhais-reforca-prevencao-contra-chuvas-fortes-e-alagamentos/
   - trecho: Jul 17, 2026 ... ... plano de contingência. El Niño: Pinhais reforça prevenção contra chuvas fortes e alagamentos ... El Niño 2026, que reúne municípios da Região ...
   - juiz: portão automático: fonte não oficial
+- `7fe6011407` · nível **B** (5 pts) · seguimento_busca_oficial · — · data 15/02/2023 (do trecho)
+  - título: VOTO Nº 70/2023/SEI/DIRE5/ANVISA - Portal Gov.br
+  - url: https://www.gov.br/anvisa/pt-br/composicao/diretoria-colegiada/reunioes-da-diretoria/votos/2023/copy5_of_rop-7.2023/4-5-2-1.pdf
+  - trecho: May 10, 2023 ... plano de contingência apresentado não encontra-se adequado à ... Pinhais/PR. Deste modo, a Resolução – RE nº 53, de 15/02/2023, deve ...
+  - ⚠ ano_anterior_ao_ciclo
 - `15a9294f0f` · nível **B** (4 pts) · busca_web · DUVIDA · data 2026 (do trecho)
   - título: Como Pinhais está se preparando para o El Niño? Os dados não ...
   - url: https://www.instagram.com/p/DZ8p_KXAOXD/
@@ -4796,6 +4908,17 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://data.queridodiario.ok.org.br/4119152/2026-08-21/a91636060117d972a85a657f2f0dd53e9eaf10b3.pdf
   - trecho: 03.04 - Relatório de vistorias Relatórios referentes a fatores de risco ambientais relacionados às doenças ou a outros agravos à saúde, e relatórios para a instrução de processos administrativos. 06.01.03.05 - Planos de 
   - juiz: portão automático: data do ato incompleta (06.01.03)
+- `0503d77f32` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Lei 126**, 10/04/2012
+  - título: DEFESA CIVIL - TCE-PR
+  - url: https://www.tce.pr.gov.br/lumis/portal/file/fileDownload.jsp?fileId=4936B6209D2C5746019D68DD278C30BD&inline=1
+  - trecho: D1. Ato normativo municipal (lei, decreto, portaria ou instrução normativa) de instituição do Plano de Contingência de Proteção e Defesa Civil e Plano contendo ...
+  - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
+- `b51ee35761` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **DECRETO Nº 3.726**, 17/03/2020
+  - título: decreto nº 3.726, de 17 de março de 2020
+  - url: https://www.sjp.pr.gov.br/wp-content/uploads/2020/07/decreto-3726.pdf
+  - trecho: Mar 17, 2020 ... 1º Estabelece, no âmbito da Administração Pública Direta e Indireta do. Município de São José dos Pinhais, as medidas para enfrentamento da ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 - `cb263f587f` · nível **B** (3 pts) · seguimento_querido_diario · DUVIDA · data 2026 (do trecho)
   - título: Diário oficial de 2026-02-03
   - url: https://data.queridodiario.ok.org.br/4119152/2026-02-03/dd75254fd615b0f9c8dad15963da4dcdb48cc2a8.pdf
@@ -4947,7 +5070,7 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118191_2026-09-24_b80c49ce86bb6faeac7721bab7c16695.pdf
   - trecho: ndo solicitar informações, relatórios  e esclarecimentos relacionados à sua execução.     Art. 6º O Plano Municipal de Contingência para o Enfrentamento das  Arboviroses integra os registros do Conselho Municipal de Saúd
 
-## Toledo/PR — 4 pendente(s)
+## Toledo/PR — 7 pendente(s)
 - `9efaaf6098` · nível **B** (5 pts) · busca_web · DUVIDA · citação não extraída
   - título: Assistência Social apresenta plano de contingência para ...
   - url: https://www.toledo.pr.gov.br/noticias/assistencia-social/assistencia-social-apresenta-plano-de-contingencia-para-emergencias
@@ -4963,11 +5086,27 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - url: https://vivertoledo.com.br/noticia/defesa-civil-de-toledo-promove-palestra-sobre-o-el-nino-no-ceu-das-artes-home
   - trecho: 20 hours ago ... Toledo, PRqua, 23 de set. --°C. Viver Toledo Logo. Anuncie. Início ... Assistência Social apresenta plano de contingência para emergências ...
   - juiz: portão automático: fonte não oficial
+- `34d2789282` · nível **B** (5 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Nº 101**, 09/12/2025
+  - título: SECRETARIA DA SAÚDE DE TOLEDO
+  - url: https://www.toledo.pr.gov.br/sites/default/files/paginabasica-2026-01/plano_de_contingencia_para_enfrentamento_das_arboviroses_2026.pdf
+  - trecho: o Plano de Contingência calcule a capacidade de leitos (observação e UTI) e a ... http://equiplanoweb.toledo.pr.gov.br/tramitacaoProcesso/#/consulta-anexo ...
+  - juiz: portão automático: ato de 2025 — pode ser edição anterior; decisão humana
 - `0670e58642` · nível **B** (4 pts) · busca_web · EX_ANTE · data 1950 (do trecho)
   - título: El Niño pode ser o mais forte desde 1950, aponta nova projeção
   - url: https://www.radiouniaodetoledo.com.br/noticia/6/482130/el-nino-pode-ser-o-mais-forte-desde-1950-aponta-nova-projecao
   - trecho: Sep 10, 2026 ... Toledo cria núcleo de prevenção para enfrentar possíveis efeitos do El Niño ... Defesa Civil atualiza plano de contingência e articula ...
   - juiz: portão automático: fonte não oficial
+- `011ccafbb2` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Decreto Nº 101**, 2020
+  - título: ATOS DO PODER EXECUTIVO
+  - url: https://www.toledo.pr.gov.br/sites/default/files/paginabasica-2026-09/24-09-2026_instrucao_normativa_no_17-2026_smed_plano_de_contingencia_da_rede_publica_municipal_de_ensino_para_eventos_climaticos_adversos.pdf
+  - trecho: 6 days ago ... 1º Fica instituído, no âmbito da Rede Pública Municipal de Ensino de Toledo –. PR, o Plano de Contingência para Eventos Climáticos Adversos , ...
+  - juiz: portão automático: data do ato incompleta (2020)
+- `544ec10453` · nível **B** (4 pts) · seguimento_busca_oficial · EX_ANTE · **Lei Estadual nº 19.848**, 03/05/2019
+  - título: PREFEITURA DO MUNICÍPIO DE TOLEDO
+  - url: https://www.toledo.pr.gov.br/sites/default/files/paginabasica-2022-12/portaria_001_2020_coe.pdf
+  - trecho: Toledo/PR, no uso de suas atribuições que lhe confere o art. 4º da Lei Estadual nº 19.848, de 03 de maio de 2019, a Lei Estadual nº 13.331, de 23 de ...
+  - ⚠ ano_anterior_ao_ciclo
+  - juiz: portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo
 
 ## UNIÃO DA VITÓRIA/PR — 2 pendente(s)
 - `a4932bf3b2` · nível **B** (4 pts) · diario_consorciado · EX_ANTE · **DECRETO Nº 355**, 01/09/2026
@@ -5588,10 +5727,11 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Itaiópolis, Mafra, Major Vieira, Monte Castelo, Rio do Campo, Santa Terezinha, ... https://leismunicipais.com.br/plano-municipal-de-educacao-papanduva-sc.
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
-- `f9da5b32b8` · nível **B** (5 pts) · busca_web · — · **Decreto nº 11.367**, 2023 (do trecho)
+- `f9da5b32b8` · nível **B** (5 pts) · busca_web · EX_ANTE · **PORTARIA 2**, 27/07/2026
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2026/DMPF-EXTRAJUDICIAL-2026-07-29.pdf?noCache=20260729135540192517
   - trecho: Jul 29, 2026 ... - Que, ademais, por força do Decreto nº 11.367/2023, seria elaborado o Plano de Ação Para Prevenção e Controle do ... Major Vieira/SC; d) nome e ...
+  - juiz: portão automático: fonte não oficial
 - `4f70a8ec85` · nível **B** (5 pts) · busca_web · — · data 2013 (do trecho)
   - título: PLANO MUNICIPAL DE SAÚDE
   - url: https://timbogrande.sc.gov.br/uploads/sites/352/2025/05/plano-de-saude.pdf
@@ -5630,19 +5770,22 @@ Como decidir: `python3 revisar_pistas.py --aceitar ID --ato "Decreto nº X" --da
   - trecho: Nov 12, 2025 ... Irineópolis, Itaiópolis, Mafra, Major Vieira, ... ajuizamento de ação e/ou apresentação de plano de ação, especialmente no caso de obra com etapa.
   - ⚠ ano_anterior_ao_ciclo
   - juiz: portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato
-- `4edb8c4f5e` · nível **B** (4 pts) · busca_web · — · data 2013 (do trecho)
+- `4edb8c4f5e` · nível **B** (4 pts) · busca_web · EX_ANTE · **Decreto nº 5.296**, 05/06/2002
   - título: PROPOSTA DE PLANO DE AÇÃO - Portal SES/SC
   - url: https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/planos-de-acao-regionais-ras/Profissionais%20-%20Plano_de%20acao%20estadual.pdf
   - trecho: estruturação da Rede e Plano de Ação Regional, em agosto de 2013. ... Major Vieira. 7.523. Monte Castelo. 8.346. Papanduva. 18.013. Porto União. 33.619.
-- `1ba1743c16` · nível **B** (4 pts) · busca_web · — · data 2025 (do trecho)
+  - juiz: portão automático: ato de 2002 — pode ser edição anterior; decisão humana
+- `1ba1743c16` · nível **B** (4 pts) · busca_web · DUVIDA · **lei nº 18.316**, 29/12/2021
   - título: estado de santa catarina - DOE/SC
   - url: https://portal.doe.sea.sc.gov.br/repositorio/2025/20250829/Jornal/22587.pdf
   - trecho: Aug 29, 2025 ... Município de Major Vieira. OBJETO: aquisição de uma escavadeira ... plano de ação 09032024-068012/2024 deputada Julia Zanatta, conforme ...
   - ⚠ ano_anterior_ao_ciclo
-- `a6e5bba104` · nível **B** (4 pts) · busca_web · — · citação não extraída
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
+- `a6e5bba104` · nível **B** (4 pts) · busca_web · DUVIDA · **Lei nº 14.133**, 30/03/2026
   - título: prefeitura municipal de agrolândia
   - url: https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf
   - trecho: ... MAJOR VIEIRA / 05 - FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL. DE MAJOR VIEIRA ... PLANO DE AÇÃO ELABORADO PARA. ATENDIMENTO À POPULAÇÃO IMIGRANTE, COM ...
+  - juiz: portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho
 - `a79b07a162` · nível **B** (3 pts) · busca_web · DUVIDA · **Lei 13.024**, 2014
   - título: DIÁRIO DO MINISTÉRIO PÚBLICO FEDERAL ELETRÔNICO
   - url: https://transparencia.mpf.mp.br/conteudo/diarios-e-boletins/diario-eletronico-dmpf-e/2025/DMPF-EXTRAJUDICIAL-2025-10-01.pdf
