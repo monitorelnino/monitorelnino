@@ -68,6 +68,7 @@ Atualizado em 30/09/2026.
 | `coletar_financiamento.py` | — | `financiamento_uf.json`, `recursos_uf.json` | — | não |
 | `coletar_obitos_registro_civil.py` | — | `saude_desfechos/obitos_registro_civil.json` | — | não |
 | `coletar_painel_am.py` | — | — | — | não |
+| `coletar_prioritarios_mma.py` | — | `enquadramento_federal.json` | — | não |
 | `coletar_s2id.py` | — | `atos_resposta.json` | — | não |
 | `coletar_saude.py` | — | `saude_federal.json`, `saude_sinais.json`, `saude_uf.json` | — | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | não |
