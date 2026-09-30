@@ -7,6 +7,11 @@ name: Portões (pull request)
 on:
   pull_request:
     branches: [main]
+  # 30/09/2026 (§314): a suíte passa a rodar também NA `main`. É lá que o portão 12 cobra derivado
+  # obsoleto de verdade — no PR ele só confere que a cadeia regenera. Sem esta linha, tirar a
+  # cobrança do PR a tiraria do projeto inteiro, que não é o que o item 2 pede.
+  push:
+    branches: [main]
   workflow_dispatch: {}
 
 permissions:
@@ -193,11 +198,21 @@ jobs:
         run: |
           # assunto: cor
           node scripts/verificar_consistencia_visual.js
-      - name: Portão 12 — derivados em árvore limpa
+      # 30/09/2026 (§314): no PR, o portão 12 confere que a cadeia REGENERA sem erro; a comparação
+      # com o git é do publicador, a partir do `main`. O manifesto sela o hash de todo arquivo
+      # versionado, então qualquer mudança o deixa obsoleto — cobrar isso aqui custava um segundo
+      # ciclo de CI por entrega e criava conflito de manifesto em toda união com o `main`.
+      - name: Portão 12 — a cadeia de derivados regenera sem erro
         id: p12
         if: steps.diff.outputs.dado_mudou == 'true'
         continue-on-error: true
-        run: bash scripts/verificar_derivados.sh
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Na `main`: comparação estrita com o git — derivado obsoleto é bloqueio.
+            bash scripts/verificar_derivados.sh
+          else
+            bash scripts/verificar_derivados.sh --pode-regenerar
+          fi
       - name: Diagnóstico do portão 12 (relatório no repositório privado)
         if: steps.diff.outputs.dado_mudou == 'true' && steps.p12.outcome == 'failure'
         env:
