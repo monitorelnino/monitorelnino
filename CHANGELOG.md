@@ -9,6 +9,27 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## §316 · Cada portão roda onde pode falhar · 30/09/2026
+
+Classe **processo**. Item 3 do handover de otimização.
+
+A CI já separava PR de dado de PR de página desde 21/09. Faltava a segunda pergunta: os cinco
+portões de **texto** (legendas, vocabulário, voz, fichas, figuras) e os dois de **navegador** custam
+cerca de quatro minutos juntos e só podem ser afetados por página, folha, script de página ou ficha
+semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre legenda.
+
+`pagina_mudou` decide isso pelo caminho alterado, com o **padrão amplo de propósito**: falso
+positivo custa tempo, falso negativo custa um defeito no ar. Disparo manual e push para a `main`
+rodam tudo.
+
+**O navegador do Playwright era baixado a cada execução.** Agora tem cache por versão.
+
+**A mesma regra vale no local**, e isso importa mais do que parece: `scripts/quais_portoes.py` diz
+quais portões rodar antes do commit pelo **mesmo critério da CI** — nem menos, e descobrir o
+vermelho depois de esperar a fila; nem mais, e pagar quatro minutos de navegador à toa. Sem lista
+de arquivos, ele manda rodar tudo: "não sei o que mudou" não é "nada mudou". 16 casos de autoteste;
+a suíte vai a **126**.
+
 ## §313 · CODEMAP: o mapa que evita reexplorar o repositório a cada pedido · 30/09/2026
 
 Classe **processo**. Item 1 do handover de otimização do ciclo de mudança.
